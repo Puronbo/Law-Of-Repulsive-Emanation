@@ -403,7 +403,7 @@
 
         <!-- Mersenne Gap Analysis -->
         <div class="card">
-            <h2>Mersenne Gaps: Harmonic Seventh Dominates</h2>
+            <h2>Mersenne Gaps: Odd Productive, Even Barren, k=9 Avoids Mod-3</h2>
             <canvas id="mersenneChart" width="550" height="200"></canvas>
             <div id="mersenneSummary" style="font-size:0.8em; color:#64748b; margin-top:8px;"></div>
         </div>
@@ -1443,29 +1443,42 @@
                     data: {
                         labels: labels.map((k,i) => `2\u22C5\u207F\u2212${k}`),
                         datasets: [{
-                            label: 'Primes up to 2\u2075\u2070\u2070',
+                            label: 'Primes up to 2\u2075\u2070\u2070\u2070',
                             data: counts,
-                            backgroundColor: counts.map(c => c > 0 ? '#34d39980' : '#f43f5e80'),
-                            borderColor: counts.map(c => c > 0 ? '#34d399' : '#f43f5e'),
+                            backgroundColor: counts.map((c,i) => {
+                                const k = offsets[i];
+                                if (k === 9) return '#34d39980';  // green for k=9
+                                if (k % 2 === 0) return '#f43f5e80';  // red for even
+                                if (k === 7) return '#fbbf2480';  // amber for k=7 (covering congruence)
+                                return '#38bdf880';  // blue for productive odd
+                            }),
+                            borderColor: counts.map((c,i) => {
+                                const k = offsets[i];
+                                if (k === 9) return '#34d399';
+                                if (k % 2 === 0) return '#f43f5e';
+                                if (k === 7) return '#fbbf24';
+                                return '#38bdf8';
+                            }),
                             borderWidth: 1,
                         }]
                     },
                     options: {
                         responsive: false,
                         scales: {
-                            y: { title: { display: true, text: 'Prime count', color: '#64748b' }, grid: { color: '#1e3a5f' }, ticks: { color: '#64748b' } },
+                            y: { title: { display: true, text: 'Prime count (n\u22645000)', color: '#64748b' }, grid: { color: '#1e3a5f' }, ticks: { color: '#64748b' } },
                             x: { grid: { display: false }, ticks: { color: '#64748b' } },
                         },
                         plugins: { legend: { display: false } }
                     }
                 });
-                const k9 = mersenneData.summary['9'];
-                const n9 = k9 ? k9.n_values : [];
-                document.getElementById('mersenneSummary').textContent =
-                    `k=9 (harmonic seventh): ${n9.length} primes. ` +
-                    `n-values: ${n9.join(', ')}. ` +
-                    `Offsets 2,4,8,10: 0 primes (overtone series is barren). ` +
-                    `The 9:8 interval is the only musical offset yielding primes.`;
+                const k3 = mersenneData.summary['3']; const k5 = mersenneData.summary['5'];
+                const k7 = mersenneData.summary['7']; const k9 = mersenneData.summary['9'];
+                const k10 = mersenneData.summary['10'];
+                document.getElementById('mersenneSummary').innerHTML =
+                    `<b style="color:#38bdf8">Odd offsets productive:</b> k=3 (${k3?k3.hits:0}), k=5 (${k5?k5.hits:0}), k=9 (${k9?k9.hits:0})<br>` +
+                    `<b style="color:#f43f5e">Even offsets barren:</b> k=2,4,8,10 = 0 primes<br>` +
+                    `<b style="color:#fbbf24">k=7 anomaly:</b> only ${k7?k7.hits:0} primes (covering congruence)<br>` +
+                    `<i>The user's resolution M-9 (k=10) is a zero-probability event in general. k=9 avoids mod-3 because 9=3\u00B2.</i>`;
             }
         });
     </script>
