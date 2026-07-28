@@ -351,6 +351,13 @@
             <canvas id="c0Chart" width="550" height="260"></canvas>
             <div id="c0Summary" style="font-size:0.8em; color:#64748b; margin-top:8px;"></div>
         </div>
+
+        <!-- Prime Geodesics -->
+        <div class="card">
+            <h2>Prime Geodesics: Selberg-Riemann Connection</h2>
+            <canvas id="primeChart" width="550" height="200"></canvas>
+            <div id="primeSummary" style="font-size:0.8em; color:#64748b; margin-top:8px;"></div>
+        </div>
     </div>
 
     <script>
@@ -425,7 +432,8 @@
             fetch('exp3_early_stop_results.json').then(r => r.json()).catch(() => null),
             fetch('fold_visual_data.json').then(r => r.json()).catch(() => null),
             fetch('c0_law_data.json').then(r => r.json()).catch(() => null),
-        ]).then(([webData, recData, creaseData, entropyData, hamData, exp1, exp1bData, exp2, oodData, pruneData, exp3Data, foldData, c0Data]) => {
+            fetch('prime_data.json').then(r => r.json()).catch(() => null),
+        ]).then(([webData, recData, creaseData, entropyData, hamData, exp1, exp1bData, exp2, oodData, pruneData, exp3Data, foldData, c0Data, primeData]) => {
 
             // ---- POINCARE DISK ----
             const typeStyles = {
@@ -484,6 +492,21 @@
                         pointRadius: 6,
                         pointStyle: 'crossRot',
                         order: 0,
+                    });
+                }
+            }
+
+            // Add prime-indexed states overlay
+            if (primeData && primeData.conservative && primeData.conservative.prime_states) {
+                const primePts = primeData.conservative.prime_states.filter(s => s.radius < 0.95);
+                if (primePts.length > 0) {
+                    datasets.push({
+                        label: 'Prime Steps',
+                        data: primePts.map(s => ({ x: s.q[0], y: s.q[1] })),
+                        backgroundColor: '#fbbf24',
+                        pointRadius: 4,
+                        pointStyle: 'triangle',
+                        order: 5,
                     });
                 }
             }
@@ -1065,6 +1088,41 @@
                     `Law: C0 = V(q0) = H(q0, 0) uniquely determined. ${c0Data.verifications.length} tests, ` +
                     (allPass === 0 ? 'ALL PASS' : `${c0Data.verifications.length - allPass}/${c0Data.verifications.length} pass`) +
                     ` | Derivation: H(0) = K(0) + V(q0) = 0 + V(q0) = C0`;
+            }
+
+            // ---- PRIME GEODESICS ----
+            if (primeData && primeData.conservative && primeData.conservative.prime_geodesics) {
+                const geos = primeData.conservative.prime_geodesics;
+                const pCtx = document.getElementById('primeChart').getContext('2d');
+                const dists = geos.map(g => g.distance).filter(d => d < 10);
+                new Chart(pCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: geos.slice(0, 40).map(g => `${g.from_idx}\u2192${g.to_idx}`),
+                        datasets: [{
+                            label: 'Prime Geodesic Distance',
+                            data: dists.slice(0, 40),
+                            backgroundColor: '#fbbf2480',
+                            borderColor: '#fbbf24',
+                            borderWidth: 1,
+                        }]
+                    },
+                    options: {
+                        responsive: false,
+                        scales: {
+                            x: { title: { display: true, text: 'Prime step pair', color: '#64748b' }, grid: { color: '#1e3a5f' }, ticks: { color: '#64748b', font: { size: 8 } } },
+                            y: { title: { display: true, text: 'Geodesic distance', color: '#64748b' }, grid: { color: '#1e3a5f' }, ticks: { color: '#64748b' } },
+                        },
+                        plugins: { legend: { labels: { color: '#c8d6e5' } } }
+                    }
+                });
+                const m = dists.reduce((a, b) => a + b, 0) / dists.length;
+                const s = Math.sqrt(dists.reduce((a, b) => a + (b - m) ** 2, 0) / dists.length);
+                document.getElementById('primeSummary').textContent =
+                    `C\u2080 law holds: ${primeData.summary.c0_law_verified} | ` +
+                    `${primeData.conservative.prime_count} prime-indexed states | ` +
+                    `Prime geodesic distances: \u03bc=${m.toFixed(4)}, \u03c3=${s.toFixed(4)} | ` +
+                    `Recurrence times factored: ${primeData.recurrence_factorization.length} total, ${primeData.prime_recurrence_count} prime`;
             }
 
             // ---- FOLD VISUALIZATION ----
