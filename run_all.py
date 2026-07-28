@@ -27,6 +27,7 @@ steps = [
     ("Modular Forms + L-Functions", "python", "Universals/modular_forms.py"),
     ("Quantum Thermodynamics", "python", "Universals/thermodynamics.py"),
     ("Mersenne Gap Analysis", "python", "Universals/mersenne_gaps.py", ["--quick"]),
+    ("Mersenne Taxonomy: L_k(s) + Covering", "python", "Universals/mersenne_taxonomy.py"),
     ("C0 Law Dashboard Data", "python", "generate_c0_data.py"),
     ("Quickstart Example", "python", "example.py"),
 ]

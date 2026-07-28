@@ -407,6 +407,13 @@
             <canvas id="mersenneChart" width="550" height="200"></canvas>
             <div id="mersenneSummary" style="font-size:0.8em; color:#64748b; margin-top:8px;"></div>
         </div>
+
+        <!-- Mersenne Taxonomy: L_k(s) -->
+        <div class="card">
+            <h2>Mersenne Taxonomy: L&#8322;(2) Values by Offset k</h2>
+            <canvas id="taxonomyChart" width="550" height="200"></canvas>
+            <div id="taxonomySummary" style="font-size:0.8em; color:#64748b; margin-top:8px;"></div>
+        </div>
     </div>
     </div>
 
@@ -490,7 +497,8 @@
             fetch('modular_data.json').then(r => r.json()).catch(() => null),
             fetch('thermo_data.json').then(r => r.json()).catch(() => null),
             fetch('mersenne_gap_data.json').then(r => r.json()).catch(() => null),
-        ]).then(([webData, recData, creaseData, entropyData, hamData, exp1, exp1bData, exp2, oodData, pruneData, exp3Data, foldData, c0Data, primeData, noetherData, landscapeData, spectralData, bekShiftData, modularData, thermoData, mersenneData]) => {
+            fetch('mersenne_taxonomy_data.json').then(r => r.json()).catch(() => null),
+        ]).then(([webData, recData, creaseData, entropyData, hamData, exp1, exp1bData, exp2, oodData, pruneData, exp3Data, foldData, c0Data, primeData, noetherData, landscapeData, spectralData, bekShiftData, modularData, thermoData, mersenneData, taxonomyData]) => {
 
             // ---- POINCARE DISK ----
             const typeStyles = {
@@ -1479,6 +1487,52 @@
                     `<b style="color:#f43f5e">Even offsets barren:</b> k=2,4,8,10 = 0 primes<br>` +
                     `<b style="color:#fbbf24">k=7 anomaly:</b> only ${k7?k7.hits:0} primes (covering congruence)<br>` +
                     `<i>The user's resolution M-9 (k=10) is a zero-probability event in general. k=9 avoids mod-3 because 9=3\u00B2.</i>`;
+            }
+
+            // ---- MERSENNE TAXONOMY: L_k(2) ----
+            if (taxonomyData && taxonomyData.L_k) {
+                const txCtx = document.getElementById('taxonomyChart').getContext('2d');
+                const ks = Object.keys(taxonomyData.L_k).map(Number).sort((a,b) => a-b);
+                const L2s = ks.map(k => taxonomyData.L_k[String(k)].L2 || 0);
+                const labels = ks.map(k => `k=${k}`);
+                new Chart(txCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'L_k(2) = sum 1/n^2',
+                            data: L2s,
+                            backgroundColor: ks.map(k => {
+                                if (k === 7) return '#fbbf2480';
+                                if (k === 9) return '#34d39980';
+                                if (k % 2 === 0) return '#f43f5e80';
+                                return '#38bdf880';
+                            }),
+                            borderColor: ks.map(k => {
+                                if (k === 7) return '#fbbf24';
+                                if (k === 9) return '#34d399';
+                                if (k % 2 === 0) return '#f43f5e';
+                                return '#38bdf8';
+                            }),
+                            borderWidth: 1,
+                        }]
+                    },
+                    options: {
+                        responsive: false,
+                        scales: {
+                            y: { title: { display: true, text: 'L_k(2)', color: '#64748b' }, grid: { color: '#1e3a5f' }, ticks: { color: '#64748b' } },
+                            x: { grid: { display: false }, ticks: { color: '#64748b' } },
+                        },
+                        plugins: { legend: { display: false } }
+                    }
+                });
+                const k7cover = taxonomyData.k7_covering || [];
+                document.getElementById('taxonomySummary').innerHTML =
+                    `<b>L_k(2) = Dirichlet density at offset k.</b> ` +
+                    `k=1 (Mersenne): ${(taxonomyData.L_k['1']?.L2 || 0).toFixed(4)}. ` +
+                    `k=9 (3\u00B2): ${(taxonomyData.L_k['9']?.L2 || 0).toFixed(4)}. ` +
+                    `k=7 (covering ${k7cover.slice(0,4).join(',')}...): ${(taxonomyData.L_k['7']?.L2 || 0).toFixed(6)}. <br>` +
+                    `<i>Even k have L_k(2)=0 (parity). Odd L_k(2) measures arithmetic density.</i>`;
             }
         });
     </script>
