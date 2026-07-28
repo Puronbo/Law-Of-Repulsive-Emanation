@@ -354,9 +354,9 @@
     </div>
 
     <script>
-        // Unit circle drawing plugin for Chart.js
-        const unitCirclePlugin = {
-            id: 'unitCircle',
+        // Poincaré disk overlay plugin: boundary, geodesic rings, C0 marker
+        const diskOverlayPlugin = {
+            id: 'diskOverlay',
             afterDraw(chart) {
                 if (chart.canvas.id !== 'poincareChart') return;
                 const { ctx, scales: { x, y } } = chart;
@@ -364,6 +364,17 @@
                 const cy = y.getPixelForValue(0);
                 const r = Math.abs(x.getPixelForValue(1) - x.getPixelForValue(0));
                 ctx.save();
+                // Geodesic distance rings (conformal circles)
+                const rings = [0.5, 1.0, 1.5, 2.0, 2.5, 3.0];
+                for (const d of rings) {
+                    const rr = r * Math.tanh(d / 2);
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, rr, 0, 2 * Math.PI);
+                    ctx.strokeStyle = '#38bdf815';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                }
+                // Unit circle boundary (dashed)
                 ctx.beginPath();
                 ctx.arc(cx, cy, r, 0, 2 * Math.PI);
                 ctx.strokeStyle = '#38bdf840';
@@ -371,18 +382,34 @@
                 ctx.setLineDash([6, 4]);
                 ctx.stroke();
                 ctx.setLineDash([]);
-                // Mark C_0 at origin
+                // C0 marker at origin
+                const pulse = 4 + 2 * Math.sin(Date.now() / 600);
+                ctx.beginPath();
+                ctx.arc(cx, cy, pulse, 0, 2 * Math.PI);
+                ctx.fillStyle = '#ffffff30';
+                ctx.fill();
                 ctx.beginPath();
                 ctx.arc(cx, cy, 4, 0, 2 * Math.PI);
                 ctx.fillStyle = '#ffffff';
                 ctx.fill();
-                ctx.fillStyle = '#64748b';
+                ctx.fillStyle = '#94a3b8';
                 ctx.font = '11px monospace';
-                ctx.fillText('C_0', cx + 8, cy - 8);
+                ctx.fillText('C\u2080', cx + 9, cy - 9);
+                // Label geodesic rings
+                ctx.fillStyle = '#38bdf820';
+                ctx.font = '9px monospace';
+                for (const d of rings) {
+                    const rr = r * Math.tanh(d / 2);
+                    ctx.fillText(`d=${d}`, cx + rr + 3, cy - 3);
+                }
                 ctx.restore();
+                // Animate the pulse
+                if (chart.canvas.id === 'poincareChart') {
+                    requestAnimationFrame(() => chart.draw());
+                }
             }
         };
-        Chart.register(unitCirclePlugin);
+        Chart.register(diskOverlayPlugin);
 
         Promise.all([
             fetch('web_data.json').then(r => r.json()),
@@ -423,18 +450,42 @@
                 });
             }
 
-            // Add viz trajectory as a line on the disk
+            // Add Hamiltonian trajectory as a smooth line on the disk
             if (hamData.viz_q_trace && hamData.viz_q_trace.length > 0) {
-                const step = Math.max(1, Math.floor(hamData.viz_q_trace.length / 500));
+                const step = Math.max(1, Math.floor(hamData.viz_q_trace.length / 800));
+                const trace = hamData.viz_q_trace.filter((_, i) => i % step === 0);
                 datasets.push({
                     label: 'H-Path',
-                    data: hamData.viz_q_trace.filter((_, i) => i % step === 0).map(q => ({ x: q[0], y: q[1] })),
+                    data: trace.map(q => ({ x: q[0], y: q[1] })),
                     backgroundColor: '#e879f9',
-                    pointRadius: 0.5,
+                    pointRadius: 0,
                     showLine: true,
-                    borderColor: '#e879f960',
-                    borderWidth: 1,
+                    borderColor: '#e879f980',
+                    borderWidth: 1.5,
+                    order: 10,
                 });
+                // Start point marker
+                if (trace.length > 0) {
+                    datasets.push({
+                        label: 'Start',
+                        data: [{ x: trace[0].x, y: trace[0].y }],
+                        backgroundColor: '#34d399',
+                        pointRadius: 6,
+                        pointStyle: 'circle',
+                        order: 0,
+                    });
+                }
+                // End point marker
+                if (trace.length > 1) {
+                    datasets.push({
+                        label: 'End',
+                        data: [{ x: trace[trace.length-1].x, y: trace[trace.length-1].y }],
+                        backgroundColor: '#f43f5e',
+                        pointRadius: 6,
+                        pointStyle: 'crossRot',
+                        order: 0,
+                    });
+                }
             }
 
             const diskCtx = document.getElementById('poincareChart').getContext('2d');
