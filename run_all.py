@@ -20,7 +20,8 @@ steps = [
     ("Experiment 3: Early Stopping", "python", "Universals/exp3_early_stop.py"),
     ("Experiment: OOD Detection", "python", "Universals/demo_ood.py"),
     ("Experiment: Pruning", "python", "Universals/exp_pruning.py"),
-    ("L.O.R.E. Proofs", "python", "Universals/prove_c0.py"),
+    ("C0 Law Dashboard Data", "python", "generate_c0_data.py"),
+    ("Quickstart Example", "python", "example.py"),
 ]
 
 start = time.time()

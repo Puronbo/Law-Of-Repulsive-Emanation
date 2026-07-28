@@ -344,6 +344,13 @@
                 </div>
             </div>
         </div>
+
+        <!-- Law of Repulsive Emanation (L.O.R.E.) -->
+        <div class="card">
+            <h2>L.O.R.E.: C&#8320; = V(q&#8320;) is Not Arbitrary</h2>
+            <canvas id="c0Chart" width="550" height="260"></canvas>
+            <div id="c0Summary" style="font-size:0.8em; color:#64748b; margin-top:8px;"></div>
+        </div>
     </div>
 
     <script>
@@ -390,7 +397,8 @@
             fetch('exp_pruning_results.json').then(r => r.json()).catch(() => null),
             fetch('exp3_early_stop_results.json').then(r => r.json()).catch(() => null),
             fetch('fold_visual_data.json').then(r => r.json()).catch(() => null),
-        ]).then(([webData, recData, creaseData, entropyData, hamData, exp1, exp1bData, exp2, oodData, pruneData, exp3Data, foldData]) => {
+            fetch('c0_law_data.json').then(r => r.json()).catch(() => null),
+        ]).then(([webData, recData, creaseData, entropyData, hamData, exp1, exp1bData, exp2, oodData, pruneData, exp3Data, foldData, c0Data]) => {
 
             // ---- POINCARE DISK ----
             const typeStyles = {
@@ -974,6 +982,38 @@
                     document.getElementById('exp3Summary').textContent =
                         `Deep (5L) stops: ${labels.map((l,i) => `${l}@ep${stopEps[i]}/${500}(${savings[i]}% saved) acc=${accs[i].toFixed(3)}`).join(' | ')}`;
                 }
+            }
+
+            // ---- C0 LAW VERIFICATION ----
+            if (c0Data && c0Data.verifications && c0Data.verifications.length > 0) {
+                const c0Ctx = document.getElementById('c0Chart').getContext('2d');
+                const labels = c0Data.verifications.map(v => v.name);
+                const c0vals = c0Data.verifications.map(v => v.C0);
+                const h0vals = c0Data.verifications.map(v => v.H0);
+                const colors = c0Data.verifications.map(v => v.match ? '#34d399' : '#f43f5e');
+                new Chart(c0Ctx, {
+                    type: 'bar',
+                    data: {
+                        labels,
+                        datasets: [
+                            { label: 'C0 = V(q0)', data: c0vals, backgroundColor: '#38bdf880', borderColor: '#38bdf8', borderWidth: 1 },
+                            { label: 'H(q0, 0)', data: h0vals, backgroundColor: '#34d39980', borderColor: '#34d399', borderWidth: 1 },
+                        ]
+                    },
+                    options: {
+                        responsive: false,
+                        scales: {
+                            x: { title: { display: true, text: 'Test case', color: '#64748b' }, grid: { color: '#1e3a5f' }, ticks: { color: '#64748b' } },
+                            y: { title: { display: true, text: 'Value', color: '#64748b' }, grid: { color: '#1e3a5f' }, ticks: { color: '#64748b' } },
+                        },
+                        plugins: { legend: { labels: { color: '#c8d6e5' } } }
+                    }
+                });
+                const allPass = c0Data.verifications.filter(v => !v.match).length;
+                document.getElementById('c0Summary').textContent =
+                    `Law: C0 = V(q0) = H(q0, 0) uniquely determined. ${c0Data.verifications.length} tests, ` +
+                    (allPass === 0 ? 'ALL PASS' : `${c0Data.verifications.length - allPass}/${c0Data.verifications.length} pass`) +
+                    ` | Derivation: H(0) = K(0) + V(q0) = 0 + V(q0) = C0`;
             }
 
             // ---- FOLD VISUALIZATION ----
