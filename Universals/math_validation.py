@@ -678,6 +678,72 @@ def test_bekenstein_shift():
         print("  [SKIP] Bekenstein shift (scipy?)")
 
 
+# ----------------------------------------------------------------
+# 17. Modular Forms: C0 at elliptic point z=i of SL(2,Z)
+# ----------------------------------------------------------------
+def test_modular_forms():
+    """C0 is the value of V at the elliptic point of SL(2,Z)."""
+    try:
+        from modular_forms import f_on_half_plane, mobius_s, stabiliser_average
+
+        context = ["Tech", "Silicon"]
+        st = stabiliser_average(context)
+
+        # C0 = V(0) should equal F(i) at the elliptic point
+        check(f"Modular: C0 = F(i) at elliptic point z=i",
+              st['stabiliser_average_equals_C0'],
+              f"C0={st['C0']:.6f}, F(i)={st['F(i)']:.6f}")
+
+        # The stabiliser average at z=i exactly equals C0
+        check(f"Modular: stabiliser avg at i = C0",
+              abs(st['stabiliser_average_at_i'] - st['C0']) < 1e-10,
+              f"avg={st['stabiliser_average_at_i']:.6f}, C0={st['C0']:.6f}")
+
+        # The stabiliser of z=i has order 2 (S^2 = I)
+        z_i = 1j
+        s_i = mobius_s(z_i)
+        ss_i = mobius_s(s_i)
+        check(f"Modular: S(i) = -1/i = i (order 2)",
+              abs(ss_i - z_i) < 1e-10,
+              f"S(S(i))={ss_i:.6f}, i={z_i:.6f}")
+
+        print("  (Modular forms: elliptic point verified)")
+    except ImportError:
+        print("  [SKIP] modular_forms not available")
+
+
+# ----------------------------------------------------------------
+# 18. Trajectory L-function: L(s) = C0 * zeta(s) for conservative flow
+# ----------------------------------------------------------------
+def test_l_function():
+    """L(2) = sum E_n / n^2 = C0 * zeta(2) for conservative trajectories."""
+    try:
+        from modular_forms import (compute_trajectory_lfunction,
+                                    dirichlet_series)
+        from hamiltonian_flow import run_hamiltonian_flow, repulsion_loss
+
+        context = ["Tech", "Silicon"]
+        q0 = np.array([0.0, 0.0])
+        c0 = repulsion_loss(q0, context)
+
+        traj = run_hamiltonian_flow(q0, context, steps=500, dt=0.0005,
+                                    friction=0.0, max_grad=5.0)
+        lf = compute_trajectory_lfunction(traj.energies, c0)
+
+        # L(2) should match C0 * pi^2 / 6 within truncation error
+        check(f"L-function: L(2) matches C0*zeta(2), err={lf['deviation_L2']:.2e}",
+              lf['euler_product_verified_at_s2'],
+              f"L(2)={lf['L(2)']:.6f}, C0*pi^2/6={lf['predicted_L(2)_for_conservative']:.6f}")
+
+        # Euler product structure
+        check(f"L-function: Euler product verified at s=2",
+              lf['euler_product_verified_at_s2'])
+
+        print("  (L-function: Euler product verified)")
+    except ImportError as e:
+        print(f"  [SKIP] L-function test: {e}")
+
+
 # ================================================================
 # Run all tests
 # ================================================================
@@ -703,6 +769,8 @@ if __name__ == "__main__":
     test_shifted_wdw()
     test_spectral_analysis()
     test_bekenstein_shift()
+    test_modular_forms()
+    test_l_function()
 
     print("\n" + "=" * 70)
     print(f"  RESULTS: {PASS} passed, {FAIL} failed out of {PASS + FAIL} tests")

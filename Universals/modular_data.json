@@ -1,0 +1,50 @@
+{
+  "C0": 24.434791603891032,
+  "elliptic_point": "z = i (Cayley image of disk origin)",
+  "stabiliser": {
+    "C0": 24.434791603891032,
+    "F(i)": 24.434791603891032,
+    "F(S(i))": 24.434791603891032,
+    "stabiliser_average_at_i": 24.434791603891032,
+    "stabiliser_average_equals_C0": true,
+    "F(rho)": 15.549617172188228,
+    "F(S(rho))": 22.875737503612736,
+    "stabiliser_average_at_rho": 19.21267733790048,
+    "rho": "exp(pi*i/3)"
+  },
+  "l_function_conservative": {
+    "n_terms": 501,
+    "c0": 24.434791603891032,
+    "L(1.5)": 61.65060730528469,
+    "L(2)": 40.144902853570336,
+    "predicted_L(2)_for_conservative": 40.19362112557737,
+    "deviation_L2": 0.0012120896461362727,
+    "analytic_continuation_L0": -12.217395801945516,
+    "analytic_continuation_Lneg1": -2.036232633657586,
+    "euler_product_verified_at_s2": true
+  },
+  "l_function_dissipative": {
+    "n_terms": 501,
+    "c0": 24.434791603891032,
+    "L(1.5)": 61.209910727313506,
+    "L(2)": 40.116275103517836,
+    "predicted_L(2)_for_conservative": 40.19362112557737,
+    "deviation_L2": 0.0019243357501401467,
+    "analytic_continuation_L0": -12.217395801945516,
+    "analytic_continuation_Lneg1": -2.036232633657586,
+    "euler_product_verified_at_s2": true
+  },
+  "deviation_L_tilde(1)": 7.500134594899837,
+  "deviation_L_tilde(2)": 0.0286226252347619,
+  "euler_product": {
+    "c0": 24.434791603891032,
+    "s": 2.0,
+    "euler_product_approx": 40.16357465796952,
+    "C0_times_zeta(s)": 40.19362112557737,
+    "match_vs_analytic": 0.030046467607853344
+  },
+  "context": [
+    "Tech",
+    "Silicon"
+  ]
+}
