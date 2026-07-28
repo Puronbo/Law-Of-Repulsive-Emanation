@@ -365,6 +365,13 @@
             <canvas id="noetherChart" width="550" height="200"></canvas>
             <div id="noetherSummary" style="font-size:0.8em; color:#64748b; margin-top:8px;"></div>
         </div>
+
+        <!-- Energy Landscape -->
+        <div class="card">
+            <h2>Energy Landscape: Potential &#8594; Boundary Attractor</h2>
+            <canvas id="landscapeChart" width="550" height="200"></canvas>
+            <div id="landscapeSummary" style="font-size:0.8em; color:#64748b; margin-top:8px;"></div>
+        </div>
     </div>
 
     <script>
@@ -441,7 +448,8 @@
             fetch('c0_law_data.json').then(r => r.json()).catch(() => null),
             fetch('prime_data.json').then(r => r.json()).catch(() => null),
             fetch('noether_data.json').then(r => r.json()).catch(() => null),
-        ]).then(([webData, recData, creaseData, entropyData, hamData, exp1, exp1bData, exp2, oodData, pruneData, exp3Data, foldData, c0Data, primeData, noetherData]) => {
+            fetch('landscape_data.json').then(r => r.json()).catch(() => null),
+        ]).then(([webData, recData, creaseData, entropyData, hamData, exp1, exp1bData, exp2, oodData, pruneData, exp3Data, foldData, c0Data, primeData, noetherData, landscapeData]) => {
 
             // ---- POINCARE DISK ----
             const typeStyles = {
@@ -1168,6 +1176,34 @@
                 const theorem = noetherData.summary.theorem;
                 document.getElementById('noetherSummary').textContent =
                     `Noether charge Q = C\u2080 conserved across all ${nTraj} trajectories: ${allConserved ? 'YES' : 'PARTIAL'} | ${theorem}`;
+            }
+
+            // ---- ENERGY LANDSCAPE ----
+            if (landscapeData && landscapeData.radial_profile) {
+                const rp = landscapeData.radial_profile;
+                const lCtx = document.getElementById('landscapeChart').getContext('2d');
+                new Chart(lCtx, {
+                    type: 'line',
+                    data: {
+                        labels: rp.radii.map(r => r.toFixed(2)),
+                        datasets: [
+                            { label: 'Mean V(q)', data: rp.V_mean, borderColor: '#38bdf8', backgroundColor: '#38bdf820', borderWidth: 1.5, pointRadius: 0, fill: true },
+                            { label: '|grad V|', data: rp.grad_mean, borderColor: '#f43f5e', backgroundColor: '#f43f5e20', borderWidth: 1.5, pointRadius: 0, fill: true, yAxisID: 'y1' },
+                        ]
+                    },
+                    options: {
+                        responsive: false,
+                        scales: {
+                            x: { title: { display: true, text: 'Radius from origin', color: '#64748b' }, grid: { color: '#1e3a5f' }, ticks: { color: '#64748b' } },
+                            y: { title: { display: true, text: 'V(q)', color: '#38bdf8' }, grid: { color: '#1e3a5f' }, ticks: { color: '#64748b' }, position: 'left' },
+                            y1: { title: { display: true, text: '|grad V|', color: '#f43f5e' }, grid: { drawOnChartArea: false }, ticks: { color: '#64748b' }, position: 'right' },
+                        },
+                        plugins: { legend: { labels: { color: '#c8d6e5' } } }
+                    }
+                });
+                document.getElementById('landscapeSummary').textContent =
+                    `Origin: source (Morse index 2). Boundary: attractor. Poincar\u00e9-Hopf: \u03c7(disk) = 1. ` +
+                    `V decays from ${rp.V_mean[0].toFixed(1)} at origin to ${rp.V_mean[rp.V_mean.length-1].toFixed(2)} at boundary.`;
             }
 
             // ---- FOLD VISUALIZATION ----

@@ -22,6 +22,7 @@ steps = [
     ("Experiment: Pruning", "python", "Universals/exp_pruning.py"),
     ("Prime Geodesics Analysis", "python", "Universals/prime_analysis.py"),
     ("Noether's Theorem Analysis", "python", "Universals/noether_analysis.py"),
+    ("Energy Landscape Critical Points", "python", "Universals/energy_landscape.py"),
     ("C0 Law Dashboard Data", "python", "generate_c0_data.py"),
     ("Quickstart Example", "python", "example.py"),
 ]
