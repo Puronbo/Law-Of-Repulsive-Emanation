@@ -744,6 +744,51 @@ def test_l_function():
         print(f"  [SKIP] L-function test: {e}")
 
 
+# ----------------------------------------------------------------
+# 19. Quantum Thermodynamics: partition function, Weyl law
+# ----------------------------------------------------------------
+def test_thermodynamics():
+    """Partition function Z(beta) and classical/quantum ground states."""
+    try:
+        from thermodynamics import (thermodynamics, partition_function)
+        from hamiltonian_flow import run_hamiltonian_flow, repulsion_loss
+
+        context = ["Tech", "Silicon"]
+        q0 = np.array([0.0, 0.0])
+        c0 = repulsion_loss(q0, context)
+
+        # Classical conservative: all E_n = C0, so Z = N (shifted by C0)
+        traj_con = run_hamiltonian_flow(q0, context, steps=200, dt=0.0005,
+                                        friction=0.0, max_grad=5.0)
+        betas = np.array([0.1, 1.0, 10.0])
+        Z_con = np.array([partition_function(traj_con.energies, b) for b in betas])
+        N = len(traj_con.energies)
+
+        # For conservative: Z = sum exp(-b*(E_n - E_min)) = N at all beta
+        check(f"Thermo: conservative Z ~ N = {N} at beta={betas[-1]}",
+              abs(Z_con[-1] - N) / N < 0.1,
+              f"Z={Z_con[-1]:.1f}, N={N}")
+
+        # Classical dissipative: ground state should be < C0
+        traj_diss = run_hamiltonian_flow(q0, context, steps=200, dt=0.002,
+                                         friction=0.3, max_grad=5.0)
+        thermo_diss = thermodynamics(traj_diss.energies, betas)
+        e0_diss = thermo_diss["ground_state_energy"]
+        check(f"Thermo: dissipative ground state E0={e0_diss:.4f} < C0={c0:.4f}",
+              e0_diss < c0,
+              f"E0_diss={e0_diss:.4f}, C0={c0:.4f}")
+
+        # Shifted free energy at high beta should approach 0 (ground state dominates)
+        F_high = thermo_diss["free_energy"][-1]
+        check(f"Thermo: shifted F(b={betas[-1]:.0f}) ~ 0",
+              abs(F_high) < 1.0,
+              f"F_shifted={F_high:.4f}")
+
+        print("  (Thermodynamics verified)")
+    except ImportError as e:
+        print(f"  [SKIP] Thermodynamics: {e}")
+
+
 # ================================================================
 # Run all tests
 # ================================================================
@@ -771,6 +816,7 @@ if __name__ == "__main__":
     test_bekenstein_shift()
     test_modular_forms()
     test_l_function()
+    test_thermodynamics()
 
     print("\n" + "=" * 70)
     print(f"  RESULTS: {PASS} passed, {FAIL} failed out of {PASS + FAIL} tests")

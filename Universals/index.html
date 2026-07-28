@@ -393,6 +393,13 @@
             <canvas id="modularChart" width="550" height="200"></canvas>
             <div id="modularSummary" style="font-size:0.8em; color:#64748b; margin-top:8px;"></div>
         </div>
+
+        <!-- Quantum Thermodynamics -->
+        <div class="card">
+            <h2>Quantum Thermodynamics: Z(&beta;), Weyl Law, Selberg Trace</h2>
+            <canvas id="thermoChart" width="550" height="200"></canvas>
+            <div id="thermoSummary" style="font-size:0.8em; color:#64748b; margin-top:8px;"></div>
+        </div>
     </div>
     </div>
 
@@ -474,7 +481,8 @@
             fetch('spectral_data.json').then(r => r.json()).catch(() => null),
             fetch('bekenstein_shift_data.json').then(r => r.json()).catch(() => null),
             fetch('modular_data.json').then(r => r.json()).catch(() => null),
-        ]).then(([webData, recData, creaseData, entropyData, hamData, exp1, exp1bData, exp2, oodData, pruneData, exp3Data, foldData, c0Data, primeData, noetherData, landscapeData, spectralData, bekShiftData, modularData]) => {
+            fetch('thermo_data.json').then(r => r.json()).catch(() => null),
+        ]).then(([webData, recData, creaseData, entropyData, hamData, exp1, exp1bData, exp2, oodData, pruneData, exp3Data, foldData, c0Data, primeData, noetherData, landscapeData, spectralData, bekShiftData, modularData, thermoData]) => {
 
             // ---- POINCARE DISK ----
             const typeStyles = {
@@ -1379,6 +1387,41 @@
                     `Stabiliser avg: ${st['stabiliser_average_at_i'].toFixed(4)}. ` +
                     `L(2) = ${lc['L(2)'].toFixed(3)} (C\u2080\u00b7\u03c0\u00b2/6 = ${lc['predicted_L(2)_for_conservative'].toFixed(3)}). ` +
                     `Euler product verified: ${lc['euler_product_verified_at_s2']}.`;
+            }
+
+            // ---- QUANTUM THERMODYNAMICS ----
+            if (thermoData && thermoData.C0 !== undefined) {
+                const thCtx = document.getElementById('thermoChart').getContext('2d');
+                const qs = thermoData.quantum_spectrum;
+                const cl = thermoData.classical_conservative;
+                const wl = thermoData.weyl_law;
+                const sl = thermoData.selberg_trace;
+                new Chart(thCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Classical C\u2080', 'Quantum E\u2080', 'Entropy (high T)', 'Weyl area', 'Geodesics in trace'],
+                        datasets: [{
+                            label: 'Value',
+                            data: [cl.ground_state_energy, qs.ground_state_energy, cl.high_temp_entropy, wl.disk_area, sl.n_geodesics],
+                            backgroundColor: ['#38bdf880', '#34d39980', '#a78bfa80', '#f43f5e80', '#fbbf2480'],
+                            borderColor: ['#38bdf8', '#34d399', '#a78bfa', '#f43f5e', '#fbbf24'],
+                            borderWidth: 1,
+                        }]
+                    },
+                    options: {
+                        responsive: false,
+                        scales: {
+                            y: { title: { display: true, text: 'Value', color: '#64748b' }, grid: { color: '#1e3a5f' }, ticks: { color: '#64748b' } },
+                            x: { grid: { color: '#1e3a5f' }, ticks: { color: '#64748b' } },
+                        },
+                        plugins: { legend: { display: false } }
+                    }
+                });
+                document.getElementById('thermoSummary').textContent =
+                    `Classical C\u2080 = ${cl.ground_state_energy.toFixed(2)}. ` +
+                    `Quantum E\u2080 = ${qs.ground_state_energy.toFixed(2)}. ` +
+                    `Weyl area = ${wl.disk_area.toFixed(3)}. ` +
+                    `Selberg trace: ${sl.n_geodesics} prime geodesics.`;
             }
         });
     </script>
