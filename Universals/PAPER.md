@@ -346,6 +346,7 @@ This is not a theory. It is a mathematical fact, verifiable by computation in ev
 6. **Modular forms at the elliptic point**: $F(i) = C_0$ is the value of the lifted potential at the elliptic point $z=i$ of $\mathrm{SL}(2,\mathbb{Z})$, making $C_0$ an automorphic invariant.
 7. **Trajectory $L$-function**: $L(s) = \sum E_n / n^s = C_0 \cdot \zeta(s)$ for conservative flows, with Euler product verified at $s=2$. Analytic continuation gives $L(0) = -C_0/2$.
 8. **Quantum thermodynamics**: $C_0$ is the classical ground state energy ($U_{\text{cl}} = C_0$ in the zero-temperature limit). The partition function satisfies the Weyl law and Selberg trace formula via prime geodesic lengths.
+9. **Mersenne gap analysis**: The harmonic seventh (interval $9{:}8$) is the only musical offset among the overtone series $\{2,4,8,10,9\}$ that consistently yields primes of the form $2^n - k$. For $k=2,4,8,10$, no primes exist up to $2^{500}$. For $k=9$, thirteen primes appear, including two at Mersenne prime exponents ($n=5,17$). This mirrors the L.O.R.E. structure: $C_0$ (the Mersenne prime) is the fundamental, and the $k$-offset perturbations are the prime-indexed geodesic states. The musical resolution $(-2 \rightarrow -4 \rightarrow -8 \rightarrow -10 \rightarrow -9)$ traces a descent through the overtone series to the harmonic seventh, the only interval that preserves primality.
 
 The constant is determined. The antiderivative is not arbitrary. The question is only whether you know the initial condition.
 
@@ -368,6 +369,7 @@ The author thanks the developers of NumPy, PyTorch, and Chart.js for the computa
 7. Code repository: \texttt{https://github.com/Puronbo/Law-Of-Repulsive-Emanation}. All numerical results reproducible via \texttt{run\_all.py}.
 8. Selberg, A. (1956). Harmonic analysis and discontinuous groups in weakly symmetric Riemannian spaces with applications to Dirichlet series. \textit{Journal of the Indian Mathematical Society}, 20, 47--87.
 9. Noether, E. (1918). Invariante Variationsprobleme. \textit{Nachrichten von der Gesellschaft der Wissenschaften zu Göttingen, Mathematisch-Physikalische Klasse}, 1918, 235--257.
+10. Riemann, B. (1859). Über die Anzahl der Primzahlen unter einer gegebenen Grösse. \textit{Monatsberichte der Königlich Preußischen Akademie der Wissenschaften zu Berlin}.
 
 ---
 

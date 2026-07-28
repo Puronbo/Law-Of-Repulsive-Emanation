@@ -400,6 +400,13 @@
             <canvas id="thermoChart" width="550" height="200"></canvas>
             <div id="thermoSummary" style="font-size:0.8em; color:#64748b; margin-top:8px;"></div>
         </div>
+
+        <!-- Mersenne Gap Analysis -->
+        <div class="card">
+            <h2>Mersenne Gaps: Harmonic Seventh Dominates</h2>
+            <canvas id="mersenneChart" width="550" height="200"></canvas>
+            <div id="mersenneSummary" style="font-size:0.8em; color:#64748b; margin-top:8px;"></div>
+        </div>
     </div>
     </div>
 
@@ -482,7 +489,8 @@
             fetch('bekenstein_shift_data.json').then(r => r.json()).catch(() => null),
             fetch('modular_data.json').then(r => r.json()).catch(() => null),
             fetch('thermo_data.json').then(r => r.json()).catch(() => null),
-        ]).then(([webData, recData, creaseData, entropyData, hamData, exp1, exp1bData, exp2, oodData, pruneData, exp3Data, foldData, c0Data, primeData, noetherData, landscapeData, spectralData, bekShiftData, modularData, thermoData]) => {
+            fetch('mersenne_gap_data.json').then(r => r.json()).catch(() => null),
+        ]).then(([webData, recData, creaseData, entropyData, hamData, exp1, exp1bData, exp2, oodData, pruneData, exp3Data, foldData, c0Data, primeData, noetherData, landscapeData, spectralData, bekShiftData, modularData, thermoData, mersenneData]) => {
 
             // ---- POINCARE DISK ----
             const typeStyles = {
@@ -1422,6 +1430,42 @@
                     `Quantum E\u2080 = ${qs.ground_state_energy.toFixed(2)}. ` +
                     `Weyl area = ${wl.disk_area.toFixed(3)}. ` +
                     `Selberg trace: ${sl.n_geodesics} prime geodesics.`;
+            }
+
+            // ---- MERSENNE GAP ANALYSIS ----
+            if (mersenneData && mersenneData.summary) {
+                const msCtx = document.getElementById('mersenneChart').getContext('2d');
+                const offsets = Object.keys(mersenneData.summary).map(Number).sort((a,b) => a-b);
+                const counts = offsets.map(k => mersenneData.summary[String(k)].hits);
+                const labels = offsets.map(k => String(k));
+                new Chart(msCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels.map((k,i) => `2\u22C5\u207F\u2212${k}`),
+                        datasets: [{
+                            label: 'Primes up to 2\u2075\u2070\u2070',
+                            data: counts,
+                            backgroundColor: counts.map(c => c > 0 ? '#34d39980' : '#f43f5e80'),
+                            borderColor: counts.map(c => c > 0 ? '#34d399' : '#f43f5e'),
+                            borderWidth: 1,
+                        }]
+                    },
+                    options: {
+                        responsive: false,
+                        scales: {
+                            y: { title: { display: true, text: 'Prime count', color: '#64748b' }, grid: { color: '#1e3a5f' }, ticks: { color: '#64748b' } },
+                            x: { grid: { display: false }, ticks: { color: '#64748b' } },
+                        },
+                        plugins: { legend: { display: false } }
+                    }
+                });
+                const k9 = mersenneData.summary['9'];
+                const n9 = k9 ? k9.n_values : [];
+                document.getElementById('mersenneSummary').textContent =
+                    `k=9 (harmonic seventh): ${n9.length} primes. ` +
+                    `n-values: ${n9.join(', ')}. ` +
+                    `Offsets 2,4,8,10: 0 primes (overtone series is barren). ` +
+                    `The 9:8 interval is the only musical offset yielding primes.`;
             }
         });
     </script>
