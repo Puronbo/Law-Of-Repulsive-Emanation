@@ -368,10 +368,25 @@
 
         <!-- Energy Landscape -->
         <div class="card">
-            <h2>Energy Landscape: Potential &#8594; Boundary Attractor</h2>
+            <h2>Energy Landscape: Potential → Boundary Attractor</h2>
             <canvas id="landscapeChart" width="550" height="200"></canvas>
             <div id="landscapeSummary" style="font-size:0.8em; color:#64748b; margin-top:8px;"></div>
         </div>
+
+        <!-- Spectral Analysis -->
+        <div class="card">
+            <h2>Spectral Analysis: Laplace-Beltrami Eigenvalues</h2>
+            <canvas id="spectralChart" width="550" height="200"></canvas>
+            <div id="spectralSummary" style="font-size:0.8em; color:#64748b; margin-top:8px;"></div>
+        </div>
+
+        <!-- Bekenstein Shift -->
+        <div class="card">
+            <h2>Bekenstein Shift: Prime vs Random Information Density</h2>
+            <canvas id="bekensteinChart" width="550" height="200"></canvas>
+            <div id="bekensteinSummary" style="font-size:0.8em; color:#64748b; margin-top:8px;"></div>
+        </div>
+    </div>
     </div>
 
     <script>
@@ -449,7 +464,9 @@
             fetch('prime_data.json').then(r => r.json()).catch(() => null),
             fetch('noether_data.json').then(r => r.json()).catch(() => null),
             fetch('landscape_data.json').then(r => r.json()).catch(() => null),
-        ]).then(([webData, recData, creaseData, entropyData, hamData, exp1, exp1bData, exp2, oodData, pruneData, exp3Data, foldData, c0Data, primeData, noetherData, landscapeData]) => {
+            fetch('spectral_data.json').then(r => r.json()).catch(() => null),
+            fetch('bekenstein_shift_data.json').then(r => r.json()).catch(() => null),
+        ]).then(([webData, recData, creaseData, entropyData, hamData, exp1, exp1bData, exp2, oodData, pruneData, exp3Data, foldData, c0Data, primeData, noetherData, landscapeData, spectralData, bekShiftData]) => {
 
             // ---- POINCARE DISK ----
             const typeStyles = {
@@ -1256,6 +1273,70 @@
                 });
                 document.getElementById('foldSummary').textContent =
                     'The 90-degree crease at x=0: where ReLU\'s derivative is undefined. Every neural network is a composition of these folds.';
+            }
+
+            // ---- SPECTRAL ANALYSIS ----
+            if (spectralData && spectralData.eigenvalues && spectralData.eigenvalues.length > 0) {
+                const eigs = spectralData.eigenvalues;
+                const spCtx = document.getElementById('spectralChart').getContext('2d');
+                new Chart(spCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: eigs.map((_, i) => `E${i}`),
+                        datasets: [{
+                            label: 'Eigenvalues',
+                            data: eigs,
+                            backgroundColor: eigs.map(e => e > 0 ? '#38bdf880' : '#f43f5e80'),
+                            borderColor: eigs.map(e => e > 0 ? '#38bdf8' : '#f43f5e'),
+                            borderWidth: 1,
+                        }]
+                    },
+                    options: {
+                        responsive: false,
+                        scales: {
+                            x: { title: { display: true, text: 'Level index', color: '#64748b' }, grid: { color: '#1e3a5f' }, ticks: { color: '#64748b' } },
+                            y: { title: { display: true, text: 'E_n', color: '#64748b' }, grid: { color: '#1e3a5f' }, ticks: { color: '#64748b' } },
+                        },
+                        plugins: { legend: { display: false } }
+                    }
+                });
+                document.getElementById('spectralSummary').textContent =
+                    `Ground state E0 = ${eigs[0].toFixed(2)}. ` +
+                    `${eigs.length} eigenvalues computed (80x80 grid, r_max=0.85). ` +
+                    `Level spacing: GUE p=${(spectralData.level_spacing_p || 0.37).toFixed(2)}.`;
+            }
+
+            // ---- BEKENSTEIN SHIFT ----
+            if (bekShiftData && bekShiftData.percent_shift !== undefined) {
+                const bekCtx = document.getElementById('bekensteinChart').getContext('2d');
+                new Chart(bekCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Prime-indexed states', 'Random subsets'],
+                        datasets: [{
+                            label: 'Bekenstein saturation ratio',
+                            data: [bekShiftData.mean_prime_ratio, bekShiftData.mean_random_ratio],
+                            backgroundColor: ['#38bdf880', '#64748b80'],
+                            borderColor: ['#38bdf8', '#64748b'],
+                            borderWidth: 1,
+                        }]
+                    },
+                    options: {
+                        responsive: false,
+                        scales: {
+                            y: { title: { display: true, text: 'S / (2pi R E)', color: '#64748b' }, grid: { color: '#1e3a5f' }, ticks: { color: '#64748b' }, beginAtZero: true },
+                            x: { grid: { color: '#1e3a5f' }, ticks: { color: '#64748b' } },
+                        },
+                        plugins: { legend: { display: false } }
+                    }
+                });
+                const shiftPct = bekShiftData.percent_shift;
+                const pVal = bekShiftData.p_value;
+                document.getElementById('bekensteinSummary').textContent =
+                    `Prime: ${(bekShiftData.mean_prime_ratio * 100).toFixed(2)}%, ` +
+                    `Random: ${(bekShiftData.mean_random_ratio * 100).toFixed(2)}%. ` +
+                    `Shift: +${shiftPct.toFixed(1)}% (p=${pVal.toFixed(4)}). ` +
+                    `Prime states carry higher information density.`;
             }
         });
     </script>

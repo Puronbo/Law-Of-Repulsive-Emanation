@@ -12,7 +12,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 os.chdir(ROOT)
 
 steps = [
-    ("Validation (88 tests)", "python", "Universals/math_validation.py"),
+    ("Validation (101 tests)", "python", "Universals/math_validation.py"),
     ("Engine (7 phases)", "python", "Universals/engine.py"),
     ("Experiment 1: Subgradient", "python", "Universals/exp1_crease_subgradient.py"),
     ("Experiment 1b: Wider threshold", "python", "Universals/exp1b_crease_subgradient.py"),
@@ -23,6 +23,7 @@ steps = [
     ("Prime Geodesics Analysis", "python", "Universals/prime_analysis.py"),
     ("Noether's Theorem Analysis", "python", "Universals/noether_analysis.py"),
     ("Energy Landscape Critical Points", "python", "Universals/energy_landscape.py"),
+    ("Spectral Analysis + Bekenstein Shift", "python", "Universals/spectral_analysis.py"),
     ("C0 Law Dashboard Data", "python", "generate_c0_data.py"),
     ("Quickstart Example", "python", "example.py"),
 ]

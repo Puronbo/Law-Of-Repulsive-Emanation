@@ -450,8 +450,72 @@ def detect_kawasaki_constraint(states: list[HamiltonianState], epsilon: float = 
 
 
 # ---------------------------------------------------------------------------
-# Wheeler-DeWitt constraint: H_hat |Psi> = 0
+# Wheeler-DeWitt constraint: (H - C0) |Psi> = 0
 # ---------------------------------------------------------------------------
+
+def shifted_wheeler_dewitt_constraint(
+    state: HamiltonianState,
+    context: list[str],
+    c0: float,
+    epsilon: float = 0.1,
+) -> dict:
+    """Check (H - C0)|Psi> = 0: the shifted Wheeler-DeWitt constraint.
+
+    Physical interpretation:
+        The unconstrained Wheeler-DeWitt equation H|Psi> = 0 must be
+        corrected by the vacuum energy (cosmological constant):
+
+            (H - C0) |Psi> = 0
+
+        where C0 = V(q0) = H(q0, 0) is the initial Hamiltonian value.
+        This is the Noether charge under time-translation symmetry:
+        the Hamiltonian itself. Shifting by C0 normalises the zero-point
+        energy so that the constraint surface contains all physical states.
+
+    Returns:
+        shifted_energy: H - C0
+        constraint_violation: |H - C0|
+        satisfied: bool (|H - C0| < epsilon)
+    """
+    total = state.total_energy(context)
+    shifted = total - c0
+    violation = abs(shifted)
+
+    return {
+        "total_energy": total,
+        "c0": c0,
+        "shifted_energy": shifted,
+        "constraint_violation": violation,
+        "satisfied": bool(violation < epsilon),
+    }
+
+
+def shifted_wheeler_dewitt_filter(
+    states: list[HamiltonianState],
+    context: list[str],
+    c0: float,
+    epsilon: float = 0.5,
+) -> dict:
+    """Apply the shifted Wheeler-DeWitt constraint across a trajectory."""
+    if not states:
+        return {"fraction_satisfied": 0.0, "mean_violation": 0.0,
+                "max_violation": 0.0, "n_states": 0}
+
+    violations = []
+    for s in states:
+        result = shifted_wheeler_dewitt_constraint(s, context, c0, epsilon)
+        violations.append(result["constraint_violation"])
+
+    violations = np.array(violations)
+    return {
+        "fraction_satisfied": float(np.mean(violations < epsilon)),
+        "mean_violation": float(np.mean(violations)),
+        "max_violation": float(np.max(violations)),
+        "median_violation": float(np.median(violations)),
+        "n_states": len(states),
+        "epsilon": epsilon,
+        "c0": c0,
+    }
 
 def wheeler_dewitt_constraint(
     state: HamiltonianState,

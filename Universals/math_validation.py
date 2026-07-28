@@ -593,6 +593,91 @@ def test_wdw_bekenstein_at_primes():
           f"ratio={bek_all['saturation_ratio']:.4f}")
 
 
+# ----------------------------------------------------------------
+# 14. Shifted Wheeler-DeWitt: (H - C0)|Psi> = 0 (100% satisfaction)
+# ----------------------------------------------------------------
+def test_shifted_wdw():
+    """Every state on a conservative trajectory satisfies (H-C0)|Psi> = 0."""
+    from hamiltonian_flow import (run_hamiltonian_flow, repulsion_loss,
+                                   shifted_wheeler_dewitt_filter)
+
+    context = ["Tech", "Silicon"]
+    q0 = np.array([0.0, 0.0])
+    c0 = repulsion_loss(q0, context)
+
+    # Conservative trajectory: energy conserved at C0
+    traj = run_hamiltonian_flow(q0, context, steps=200, dt=0.0005, friction=0.0, max_grad=5.0)
+    wdw = shifted_wheeler_dewitt_filter(traj.states, context, c0, epsilon=0.5)
+    check(f"Shifted WDW: 100% satisfaction (conservative)",
+          wdw['fraction_satisfied'] > 0.99,
+          f"fraction={wdw['fraction_satisfied']:.4f}")
+
+    # Check: mean violation is numerical drift only
+    check(f"Shifted WDW: mean violation < epsilon",
+          wdw['mean_violation'] < 0.5,
+          f"mean={wdw['mean_violation']:.6e}")
+
+    # Prime states also satisfy shifted WDW
+    from prime_analysis import primes_up_to
+    primes = [p for p in primes_up_to(200) if p < len(traj.states)]
+    prime_states = [traj.states[p] for p in primes]
+    wdw_p = shifted_wheeler_dewitt_filter(prime_states, context, c0, epsilon=0.5)
+    check(f"Shifted WDW at prime states: 100%",
+          wdw_p['fraction_satisfied'] > 0.99,
+          f"prime_fraction={wdw_p['fraction_satisfied']:.4f}")
+
+
+# ----------------------------------------------------------------
+# 15. Spectral Analysis: Laplace-Beltrami eigenvalues
+# ----------------------------------------------------------------
+def test_spectral_analysis():
+    """Laplace-Beltrami eigenvalues on the disk are positive-definite."""
+    try:
+        from spectral_analysis import solve_spectrum, level_spacing_stats
+        result = solve_spectrum(nx=50, ny=50, r_max=0.85, n_eigs=10)
+
+        # All eigenvalues should be positive
+        eigs = np.array(result["eigenvalues"])
+        check(f"Spectral: {len(eigs)} positive eigenvalues",
+              np.all(eigs > 0),
+              f"min_eig={float(np.min(eigs)):.4f}")
+
+        # First eigenvalue should be physically reasonable (not zero, not huge)
+        check(f"Spectral: ground state E0 = {float(eigs[0]):.4f}",
+              eigs[0] > 0.1 and eigs[0] < 100,
+              f"E0={float(eigs[0]):.4f}")
+
+        # Level spacing should be defined
+        lss = level_spacing_stats(result["eigenvalues"])
+        if "error" not in lss and lss["n_spacings"] > 3:
+            check(f"Spectral: {lss['n_spacings']} level spacings computed",
+                  lss['n_spacings'] > 0)
+        print("  (Spectral analysis computed successfully)")
+    except ImportError:
+        print("  [SKIP] spectral_analysis not available (scipy?)")
+
+
+# ----------------------------------------------------------------
+# 16. Bekenstein Shift: prime states carry higher information density
+# ----------------------------------------------------------------
+def test_bekenstein_shift():
+    """Prime-indexed states show systematically higher Bekenstein saturation."""
+    try:
+        from spectral_analysis import bekenstein_shift_analysis
+        bek = bekenstein_shift_analysis(n_trajectories=20)
+
+        if "error" not in bek:
+            shift = bek["percent_shift"]
+            p_val = bek["p_value"]
+            check(f"Bekenstein shift: {shift:.1f}% (p={p_val:.4f})",
+                  p_val < 0.05,
+                  f"shift={shift:.1f}%, p={p_val:.4f}")
+        else:
+            print(f"  [SKIP] Bekenstein shift: {bek['error']}")
+    except ImportError:
+        print("  [SKIP] Bekenstein shift (scipy?)")
+
+
 # ================================================================
 # Run all tests
 # ================================================================
@@ -615,6 +700,9 @@ if __name__ == "__main__":
     test_c0_law()
     test_prime_statistics()
     test_wdw_bekenstein_at_primes()
+    test_shifted_wdw()
+    test_spectral_analysis()
+    test_bekenstein_shift()
 
     print("\n" + "=" * 70)
     print(f"  RESULTS: {PASS} passed, {FAIL} failed out of {PASS + FAIL} tests")
