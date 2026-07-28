@@ -3,7 +3,7 @@ import numpy as np
 from math import atanh
 from hamiltonian_flow import (
     HamiltonianState, POSITIONS, repulsion_loss,
-    riemannian_metric, run_hamiltonian_flow, hyperbolic_dist
+    inverse_metric, run_hamiltonian_flow, hyperbolic_dist
 )
 
 print("=" * 60)

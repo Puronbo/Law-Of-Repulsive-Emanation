@@ -20,8 +20,8 @@ def hyperbolic_dist(u, v):
     return np.arccosh(1.0 + 2.0 * sq_dist / denom)
 
 
-def riemannian_metric(x):
-    """Conformal Riemannian scale factor: ds² = λ(x)² dx²."""
+def inverse_metric(x):
+    """Inverse metric g^{ij} = (1-||x||^2)^2 / 4. Used for Hamiltonian flow."""
     return ((1.0 - np.sum(x**2))**2) / 4.0
 
 
@@ -125,7 +125,7 @@ def inject_and_evaluate_novelty(query_text, context_affinities):
 
                 grad += np.array([g0, g1])
 
-        riemannian_factor = riemannian_metric(xq)
+        riemannian_factor = inverse_metric(xq)
         xq = xq - lr * grad * riemannian_factor
 
         xq = project_to_disk(xq)
@@ -186,7 +186,7 @@ def time_reverse_reconstruct(x_final, context_affinities, steps=200, lr=0.02, al
 
                 grad += np.array([g0, g1])
 
-        riemannian_factor = riemannian_metric(xq)
+        riemannian_factor = inverse_metric(xq)
         # Ascent: ADD the gradient instead of subtracting
         xq = xq + lr * grad * riemannian_factor
 
@@ -501,7 +501,7 @@ class ClosedTimelikeCurve:
 
                     grad += np.array([g0, g1])
 
-            riemannian_factor = riemannian_metric(xq)
+            riemannian_factor = inverse_metric(xq)
             xq_new = xq - lr * grad * riemannian_factor
             xq_new = project_to_disk(xq_new)
 

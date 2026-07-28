@@ -34,12 +34,8 @@ def hyperbolic_dist(u: np.ndarray, v: np.ndarray) -> float:
     return float(np.arccosh(1.0 + 2.0 * sq_dist / denom))
 
 
-def riemannian_metric(x: np.ndarray) -> float:
-    """Inverse conformal factor: 1/lambda^2 = (1 - ||x||^2)^2 / 4.
-
-    This is the inverse metric component g^{ij} = (1/lambda^2) delta^{ij}.
-    Used in Hamilton's equations: dq/dt = g^{ij} p_j = (1/lambda^2) p_i,
-    and kinetic energy: K = (1/2) g^{ij} p_i p_j.
+def inverse_metric(x: np.ndarray) -> float:
+    """Inverse metric g^{ij} = (1-||x||^2)^2 / 4. Used for Hamiltonian flow.
 
     Note: The conformal factor lambda^2 = 4/(1-||x||^2)^2 is returned by
     manifold.poincare.riemannian_scale(). The inverse is used here because
@@ -109,10 +105,10 @@ class HamiltonianState:
     def kinetic_energy(self) -> float:
         """K = (1/2) g^{ij} p_i p_j where g^{ij} = (1/lambda^2) delta^{ij}.
 
-        riemannian_metric() returns 1/lambda^2 = (1-||x||^2)^2/4,
+        inverse_metric() returns 1/lambda^2 = (1-||x||^2)^2/4,
         which IS the inverse metric component g^{ij}/delta^{ij}.
         """
-        lam_sq = riemannian_metric(self.q)
+        lam_sq = inverse_metric(self.q)
         if lam_sq < 1e-12:
             lam_sq = 1e-12
         return 0.5 * lam_sq * float(np.sum(self.p**2))
@@ -169,7 +165,7 @@ def leapfrog_step(state: HamiltonianState, context: list[str],
     Gradient clamping (max_grad) is only applied when friction > 0,
     to preserve the conservative structure for T-symmetry tests.
     """
-    lam_sq = riemannian_metric(state.q)
+    lam_sq = inverse_metric(state.q)
     if lam_sq < 1e-4:
         lam_sq = 1e-4
 
@@ -185,7 +181,7 @@ def leapfrog_step(state: HamiltonianState, context: list[str],
 
     # Full-step position drift
     # dq/dt = g^{ij} p_j = (1/lambda^2) p_i
-    # riemannian_metric returns 1/lambda^2, so velocity = lam_sq * p
+    # inverse_metric returns 1/lambda^2, so velocity = lam_sq * p
     velocity = p_half * lam_sq
     q_new = state.q + dt * velocity
     q_new = project_to_disk(q_new)

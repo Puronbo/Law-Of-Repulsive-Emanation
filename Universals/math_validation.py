@@ -13,8 +13,9 @@ Verifies each formula against known analytical results:
   6. Wheeler-DeWitt constraint (H|Psi> = 0)
   7. Soft crease second derivatives (GELU, Swish)
   8. Hyperbolic exponential/log maps (inverse pair)
-  9. Mobius addition (associativity, identity)
-"""
+   9. Mobius addition (associativity, identity)
+  10. Crease density metrics (hard/soft/straddle)
+  11. Law of C0 (L.O.R.E.) — constant is always determined"""
 
 import math
 import sys
@@ -80,25 +81,25 @@ def test_geodesic_distance():
 # ================================================================
 def test_conformal_factor():
     print("\n--- 2. Conformal Factor (Inverse Metric) ---")
-    from hamiltonian_flow import riemannian_metric
+    from hamiltonian_flow import inverse_metric
 
     # At origin: 1/lambda^2 = (1-0)^2/4 = 1/4
     origin = np.array([0.0, 0.0])
-    val = riemannian_metric(origin)
+    val = inverse_metric(origin)
     check("1/lam^2 at origin = 1/4", abs(val - 0.25) < 1e-10,
           f"got={val}")
 
     # At r=0.5: 1/lam^2 = (1-0.25)^2/4 = 0.75^2/4 = 0.140625
     x_half = np.array([0.5, 0.0])
     expected = (1.0 - 0.25) ** 2 / 4.0
-    val = riemannian_metric(x_half)
+    val = inverse_metric(x_half)
     check(f"1/lam^2 at r=0.5 = {expected}", abs(val - expected) < 1e-10,
           f"got={val}")
 
     # 1/lambda^2 * lambda^2 = 1 (inverse relationship)
     for r in [0.0, 0.3, 0.7, 0.95]:
         x = np.array([r, 0.0])
-        inv_lam_sq = riemannian_metric(x)
+        inv_lam_sq = inverse_metric(x)
         lam_sq = 4.0 / (1.0 - r**2)**2
         check(f"(1/lam^2)*(lam^2) = 1 at r={r}", abs(inv_lam_sq * lam_sq - 1.0) < 1e-10,
               f"product={inv_lam_sq * lam_sq}")
@@ -106,7 +107,7 @@ def test_conformal_factor():
     # Boundary: 1/lam^2 -> 0 as r -> 1
     r_near = 0.999
     x_near = np.array([r_near, 0.0])
-    val = riemannian_metric(x_near)
+    val = inverse_metric(x_near)
     check(f"1/lam^2 -> 0 at r={r_near}", val < 0.001, f"got={val}")
 
 
@@ -443,6 +444,67 @@ def test_crease_metrics():
           0 <= cost["straddle_fraction"] <= 1)
 
 
+# ----------------------------------------------------------------
+# 11. The Law of C0 (L.O.R.E.): constant is always determined
+# ----------------------------------------------------------------
+def test_c0_law():
+    """Prove C0 = V(q0) = H(q0, 0) for every initial condition."""
+    from hamiltonian_flow import inverse_metric, POSITIONS, repulsion_loss, HamiltonianState
+
+    context = ["Tech", "Silicon"]
+    alpha = 2.5
+
+    # Test across multiple initial positions
+    positions = [
+        np.array([0.0, 0.0]),
+        np.array([0.1, 0.0]),
+        np.array([-0.1, 0.0]),
+        np.array([0.0, 0.1]),
+        np.array([0.0, -0.1]),
+        np.array([0.3, 0.3]),
+        np.array([-0.3, -0.3]),
+        np.array([0.5, 0.0]),
+        np.array([0.0, 0.5]),
+    ]
+
+    for i, q0 in enumerate(positions):
+        C0 = repulsion_loss(q0, context)
+        state = HamiltonianState(q=q0, p=np.zeros(2))
+        H0 = state.total_energy(context)
+        check(f"C0 law at pos {i}: C0 = H(q0,0)",
+              abs(C0 - H0) < 1e-10,
+              f"C0={C0:.6f}, H0={H0:.6f}")
+
+    # Test across multiple contexts
+    contexts = [
+        ["Tech", "Silicon"],
+        ["Bio", "Mammal"],
+        ["Art", "Music"],
+        ["Origin"],
+        [],
+    ]
+    q0 = np.array([0.0, 0.0])
+    for ctx in contexts:
+        C0 = repulsion_loss(q0, ctx)
+        state = HamiltonianState(q=q0, p=np.zeros(2))
+        H0 = state.total_energy(ctx)
+        check(f"C0 law ctx {ctx}: C0 = H(q0,0)",
+              abs(C0 - H0) < 1e-10,
+              f"C0={C0:.6f}, H0={H0:.6f}")
+
+    # Test across multiple alpha values
+    for a in [0.5, 1.0, 1.5, 2.0, 2.5, 3.0]:
+        C0 = repulsion_loss(q0, context, alpha=a)
+        check(f"C0 law alpha={a}: C0 >= 0",
+              C0 >= 0,
+              f"C0={C0:.6f}")
+
+    # Test: inverse metric at origin = 1/4
+    m = inverse_metric(np.array([0.0, 0.0]))
+    check("inverse_metric at origin = 1/4", abs(m - 0.25) < 1e-10,
+          f"m={m:.10f}")
+
+
 # ================================================================
 # Run all tests
 # ================================================================
@@ -462,6 +524,7 @@ if __name__ == "__main__":
     test_exp_log_map()
     test_mobius_addition()
     test_crease_metrics()
+    test_c0_law()
 
     print("\n" + "=" * 70)
     print(f"  RESULTS: {PASS} passed, {FAIL} failed out of {PASS + FAIL} tests")
