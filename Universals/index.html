@@ -358,6 +358,13 @@
             <canvas id="primeChart" width="550" height="200"></canvas>
             <div id="primeSummary" style="font-size:0.8em; color:#64748b; margin-top:8px;"></div>
         </div>
+
+        <!-- Noether's Theorem -->
+        <div class="card">
+            <h2>Noether Charge: C&#8320; Conserved by Time-Translation Symmetry</h2>
+            <canvas id="noetherChart" width="550" height="200"></canvas>
+            <div id="noetherSummary" style="font-size:0.8em; color:#64748b; margin-top:8px;"></div>
+        </div>
     </div>
 
     <script>
@@ -433,7 +440,8 @@
             fetch('fold_visual_data.json').then(r => r.json()).catch(() => null),
             fetch('c0_law_data.json').then(r => r.json()).catch(() => null),
             fetch('prime_data.json').then(r => r.json()).catch(() => null),
-        ]).then(([webData, recData, creaseData, entropyData, hamData, exp1, exp1bData, exp2, oodData, pruneData, exp3Data, foldData, c0Data, primeData]) => {
+            fetch('noether_data.json').then(r => r.json()).catch(() => null),
+        ]).then(([webData, recData, creaseData, entropyData, hamData, exp1, exp1bData, exp2, oodData, pruneData, exp3Data, foldData, c0Data, primeData, noetherData]) => {
 
             // ---- POINCARE DISK ----
             const typeStyles = {
@@ -1123,6 +1131,43 @@
                     `${primeData.conservative.prime_count} prime-indexed states | ` +
                     `Prime geodesic distances: \u03bc=${m.toFixed(4)}, \u03c3=${s.toFixed(4)} | ` +
                     `Recurrence times factored: ${primeData.recurrence_factorization.length} total, ${primeData.prime_recurrence_count} prime`;
+            }
+
+            // ---- NOETHER CHARGE CONSERVATION ----
+            if (noetherData && noetherData.results) {
+                const firstKey = Object.keys(noetherData.results)[0];
+                const series = noetherData.results[firstKey].noether_charge_values || [];
+                const nCtx = document.getElementById('noetherChart').getContext('2d');
+                new Chart(nCtx, {
+                    type: 'line',
+                    data: {
+                        labels: series.map((_, i) => i),
+                        datasets: [{
+                            label: `Noether charge Q = H(t) (${firstKey})`,
+                            data: series,
+                            borderColor: '#a78bfa',
+                            backgroundColor: '#a78bfa20',
+                            borderWidth: 1.5,
+                            pointRadius: 0,
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false,
+                        scales: {
+                            x: { title: { display: true, text: 'Step', color: '#64748b' }, grid: { color: '#1e3a5f' }, ticks: { color: '#64748b' } },
+                            y: { title: { display: true, text: 'Q = H(t)', color: '#64748b' }, grid: { color: '#1e3a5f' }, ticks: { color: '#64748b' } },
+                        },
+                        plugins: {
+                            legend: { labels: { color: '#c8d6e5' } },
+                        }
+                    }
+                });
+                const allConserved = noetherData.summary.all_trajectories_conserved;
+                const nTraj = noetherData.summary.total_trajectories;
+                const theorem = noetherData.summary.theorem;
+                document.getElementById('noetherSummary').textContent =
+                    `Noether charge Q = C\u2080 conserved across all ${nTraj} trajectories: ${allConserved ? 'YES' : 'PARTIAL'} | ${theorem}`;
             }
 
             // ---- FOLD VISUALIZATION ----

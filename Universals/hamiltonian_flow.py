@@ -120,6 +120,14 @@ class HamiltonianState:
     def total_energy(self, context: list[str]) -> float:
         return self.kinetic_energy + self.potential_energy(context)
 
+    def noether_charge(self, context: list[str]) -> float:
+        """Noether charge under time-translation symmetry.
+
+        For a time-independent Hamiltonian, the Noether charge is H itself.
+        Conservation: dQ/dt = 0 follows from dH/dt = {H, H} = 0 (Poisson bracket).
+        """
+        return self.total_energy(context)
+
 
 @dataclass
 class HamiltonianTrajectory:
@@ -147,6 +155,28 @@ class HamiltonianTrajectory:
         return [s.p.tolist() for s in self.states]
 
 
+def _christoffel_force(q: np.ndarray, p: np.ndarray) -> np.ndarray:
+    r"""Metric correction to dp/dt from q-dependence of the inverse metric.
+
+    Kinetic energy: K = 0.5 * g^{ij}(q) * p_i * p_j
+    g^{ij}(q) = (1 - ||q||^2)^2 / 4 * delta^{ij}
+
+    dK/dq_k = 0.5 * dg^{ij}/dq_k * p_i * p_j
+            = 0.5 * [-(1 - ||q||^2) * q_k] * ||p||^2
+            = -0.5 * (1 - ||q||^2) * q_k * ||p||^2
+
+    Hamilton: dp_k/dt = -dH/dq_k = -dV/dq_k - dK/dq_k
+                       = -dV/dq_k + 0.5 * (1 - ||q||^2) * q_k * ||p||^2
+
+    Returns the Christoffel force = -dK/dq.
+    """
+    q_norm_sq = float(np.dot(q, q))
+    if q_norm_sq >= 1.0:
+        q_norm_sq = 0.99
+    p_norm_sq = float(np.dot(p, p))
+    return 0.5 * (1.0 - q_norm_sq) * q * p_norm_sq
+
+
 def leapfrog_step(state: HamiltonianState, context: list[str],
                   dt: float, alpha: float = 2.5,
                   friction: float = 0.5,
@@ -155,12 +185,16 @@ def leapfrog_step(state: HamiltonianState, context: list[str],
     Symplectic leapfrog (Verlet) integration of Hamilton's equations on the
     Poincare disk, with optional dissipative friction.
 
-    Hamilton's equations:
-        dq/dt =  (1/lambda^2) * p
-        dp/dt = -grad V(q) - gamma * p
+    Hamilton's equations (with metric correction):
+        dq/dt =  g^{ij}(q) * p_j          = (1/lambda^2) * p
+        dp/dt = -dV/dq - dK/dq - gamma*p  = -grad V + F_christoffel - gamma*p
 
-    When friction=0, the system is conservative (T-symmetric).
-    When friction>0, energy dissipates and T-symmetry is broken.
+    The Christoffel correction accounts for the q-dependence of g^{ij}.
+    Without it, the kinetic energy term K = 0.5*g^{ij}(q)*p_i*p_j is
+    treated as independent of q, breaking energy conservation.
+
+    When friction=0, the system is conservative and T-symmetric.
+    When friction>0, energy dissipates toward the attractor.
 
     Gradient clamping (max_grad) is only applied when friction > 0,
     to preserve the conservative structure for T-symmetry tests.
@@ -169,32 +203,37 @@ def leapfrog_step(state: HamiltonianState, context: list[str],
     if lam_sq < 1e-4:
         lam_sq = 1e-4
 
-    # Force computation
+    # Total force = -dV/dq - dK/dq = -grad_V + F_christoffel
     grad_v = repulsion_gradient(state.q, context, alpha)
+    christ = _christoffel_force(state.q, state.p)
+    total_force = -grad_v + christ  # net dp/dt (excluding friction)
     if max_grad is not None and friction > 0:
-        grad_norm = float(np.linalg.norm(grad_v))
-        if grad_norm > max_grad:
-            grad_v = grad_v * (max_grad / grad_norm)
+        fnorm = float(np.linalg.norm(total_force))
+        if fnorm > max_grad:
+            total_force = total_force * (max_grad / fnorm)
 
-    # Half-step momentum kick (force + friction)
-    p_half = state.p - 0.5 * dt * (grad_v + friction * state.p)
+    # Half-step momentum kick (total force + friction)
+    p_half = state.p + 0.5 * dt * (total_force - friction * state.p)
 
     # Full-step position drift
-    # dq/dt = g^{ij} p_j = (1/lambda^2) p_i
-    # inverse_metric returns 1/lambda^2, so velocity = lam_sq * p
     velocity = p_half * lam_sq
     q_new = state.q + dt * velocity
     q_new = project_to_disk(q_new)
 
-    # Force at new position
+    # Force at new position (evaluate with p_half for symplectic structure)
+    lam_sq_new = inverse_metric(q_new)
+    if lam_sq_new < 1e-4:
+        lam_sq_new = 1e-4
     grad_v_new = repulsion_gradient(q_new, context, alpha)
+    christ_new = _christoffel_force(q_new, p_half)
+    total_force_new = -grad_v_new + christ_new
     if max_grad is not None and friction > 0:
-        grad_norm_new = float(np.linalg.norm(grad_v_new))
-        if grad_norm_new > max_grad:
-            grad_v_new = grad_v_new * (max_grad / grad_norm_new)
+        fnorm_new = float(np.linalg.norm(total_force_new))
+        if fnorm_new > max_grad:
+            total_force_new = total_force_new * (max_grad / fnorm_new)
 
     # Half-step momentum kick with friction damping
-    p_new = p_half - 0.5 * dt * (grad_v_new + friction * p_half)
+    p_new = p_half + 0.5 * dt * (total_force_new - friction * p_half)
     if friction > 0:
         p_new = p_new / (1.0 + 0.5 * dt * friction)
 

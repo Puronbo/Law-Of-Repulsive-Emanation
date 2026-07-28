@@ -21,6 +21,7 @@ steps = [
     ("Experiment: OOD Detection", "python", "Universals/demo_ood.py"),
     ("Experiment: Pruning", "python", "Universals/exp_pruning.py"),
     ("Prime Geodesics Analysis", "python", "Universals/prime_analysis.py"),
+    ("Noether's Theorem Analysis", "python", "Universals/noether_analysis.py"),
     ("C0 Law Dashboard Data", "python", "generate_c0_data.py"),
     ("Quickstart Example", "python", "example.py"),
 ]
