@@ -1,0 +1,409 @@
+{
+  "cycles": [
+    {
+      "cycle": 1,
+      "query": "Quantum entanglement in distributed systems",
+      "context": [
+        "Tech",
+        "Silicon"
+      ],
+      "x0": [
+        0.011599697090570255,
+        0.00493292420985183
+      ],
+      "x_final": [
+        -0.6749101719703012,
+        0.5827473832992645
+      ],
+      "radius": 0.89168282083436,
+      "trajectory_length": 201,
+      "entropy": 0.0,
+      "recurrence_time": 1.0,
+      "dream_triggered": false
+    },
+    {
+      "cycle": 2,
+      "query": "A painting of a sunset on Mars",
+      "context": [
+        "Art"
+      ],
+      "x0": [
+        -0.01720027398318987,
+        -0.022095819391590027
+      ],
+      "x_final": [
+        -0.48475495302646493,
+        -0.8246214695833158
+      ],
+      "radius": 0.9565500157239232,
+      "trajectory_length": 201,
+      "entropy": 0.9999999999971146,
+      "recurrence_time": 2.718281828451202,
+      "dream_triggered": false
+    },
+    {
+      "cycle": 3,
+      "query": "The economic implications of faster-than-light travel",
+      "context": [],
+      "x0": [
+        0.00505575058716044,
+        0.010403628889802275
+      ],
+      "x_final": [
+        0.0659019455143781,
+        0.8619691368501889
+      ],
+      "radius": 0.8644847363052975,
+      "trajectory_length": 201,
+      "entropy": 0.9182958340516036,
+      "recurrence_time": 2.505017784347643,
+      "dream_triggered": false
+    },
+    {
+      "cycle": 4,
+      "query": "Mammalian neural architecture for music classification",
+      "context": [
+        "Bio",
+        "Mammal"
+      ],
+      "x0": [
+        -0.014383044466086193,
+        -0.01590875163964497
+      ],
+      "x_final": [
+        0.8424979015853309,
+        -0.2970867847554407
+      ],
+      "radius": 0.8933438709992986,
+      "trajectory_length": 201,
+      "entropy": 0.8112781244562468,
+      "recurrence_time": 2.2507829297257698,
+      "dream_triggered": true
+    },
+    {
+      "cycle": 5,
+      "query": "Recursive self-improvement in autonomous agents",
+      "context": [
+        "Tech"
+      ],
+      "x0": [
+        -0.02464668473901413,
+        -0.023846878747929214
+      ],
+      "x_final": [
+        -0.49256709912307584,
+        0.7915959064545043
+      ],
+      "radius": 0.9323338598667595,
+      "trajectory_length": 201,
+      "entropy": 1.3709505944503397,
+      "recurrence_time": 3.939093396615362,
+      "dream_triggered": false
+    },
+    {
+      "cycle": 6,
+      "query": "The emotional weight of a minor key resolution",
+      "context": [
+        "Art",
+        "Music"
+      ],
+      "x0": [
+        -0.020469678273358962,
+        0.005919300466654365
+      ],
+      "x_final": [
+        -0.26853408192615896,
+        -0.8521411983465249
+      ],
+      "radius": 0.893451271796832,
+      "trajectory_length": 201,
+      "entropy": 1.2516291673834938,
+      "recurrence_time": 3.4960339448921514,
+      "dream_triggered": true
+    },
+    {
+      "cycle": 7,
+      "query": "Bootstrap paradoxes in closed causal loops",
+      "context": [],
+      "x0": [
+        0.009015376929388986,
+        -0.002475037401522851
+      ],
+      "x_final": [
+        0.05932896869099406,
+        0.8628026970673974
+      ],
+      "radius": 0.8648401127333953,
+      "trajectory_length": 201,
+      "entropy": 1.1488348542765878,
+      "recurrence_time": 3.154515297620369,
+      "dream_triggered": false
+    },
+    {
+      "cycle": 8,
+      "query": "Silicon-based life forms dreaming in hyperbolic space",
+      "context": [
+        "Silicon"
+      ],
+      "x0": [
+        -0.005729174873004195,
+        -0.02420168738898929
+      ],
+      "x_final": [
+        -0.6506855832239185,
+        0.6836769563939386
+      ],
+      "radius": 0.943825147429083,
+      "trajectory_length": 201,
+      "entropy": 1.2987949406910697,
+      "recurrence_time": 3.664877610660333,
+      "dream_triggered": true
+    }
+  ],
+  "recurrence_times": [
+    1.0,
+    2.718281828451202,
+    2.505017784347643,
+    2.2507829297257698,
+    3.939093396615362,
+    3.4960339448921514,
+    3.154515297620369,
+    3.664877610660333
+  ],
+  "stats": {
+    "total_cycles": 8,
+    "mean_recurrence_time": 2.841075349039104,
+    "max_recurrence_time": 3.939093396615362,
+    "min_recurrence_time": 1.0,
+    "total_entropy": 1.2987949406910697,
+    "history_length": 8,
+    "self_chain_length": 11,
+    "classification_history_length": 8
+  },
+  "self_chain": [
+    {
+      "cycle": 1,
+      "type": "classification",
+      "position": [
+        -0.6749101719703012,
+        0.5827473832992645
+      ],
+      "radius": 0.89168282083436,
+      "metadata": {
+        "query": "Quantum entanglement in distributed systems",
+        "label": "structured"
+      }
+    },
+    {
+      "cycle": 2,
+      "type": "classification",
+      "position": [
+        -0.48475495302646493,
+        -0.8246214695833158
+      ],
+      "radius": 0.9565500157239232,
+      "metadata": {
+        "query": "A painting of a sunset on Mars",
+        "label": "anomaly"
+      }
+    },
+    {
+      "cycle": 3,
+      "type": "classification",
+      "position": [
+        0.0659019455143781,
+        0.8619691368501889
+      ],
+      "radius": 0.8644847363052975,
+      "metadata": {
+        "query": "The economic implications of faster-than-light travel",
+        "label": "structured"
+      }
+    },
+    {
+      "cycle": 4,
+      "type": "classification",
+      "position": [
+        0.8424979015853309,
+        -0.2970867847554407
+      ],
+      "radius": 0.8933438709992986,
+      "metadata": {
+        "query": "Mammalian neural architecture for music classification",
+        "label": "structured"
+      }
+    },
+    {
+      "cycle": 4,
+      "type": "dream_thought",
+      "position": [
+        -0.11749528205179632,
+        0.09194263641057976
+      ],
+      "radius": 0.14919312884499486,
+      "metadata": {}
+    },
+    {
+      "cycle": 5,
+      "type": "classification",
+      "position": [
+        -0.49256709912307584,
+        0.7915959064545043
+      ],
+      "radius": 0.9323338598667595,
+      "metadata": {
+        "query": "Recursive self-improvement in autonomous agents",
+        "label": "anomaly"
+      }
+    },
+    {
+      "cycle": 6,
+      "type": "classification",
+      "position": [
+        -0.26853408192615896,
+        -0.8521411983465249
+      ],
+      "radius": 0.893451271796832,
+      "metadata": {
+        "query": "The emotional weight of a minor key resolution",
+        "label": "structured"
+      }
+    },
+    {
+      "cycle": 6,
+      "type": "dream_thought",
+      "position": [
+        -0.1799221826012073,
+        0.06953856258571892
+      ],
+      "radius": 0.19289272531246512,
+      "metadata": {}
+    },
+    {
+      "cycle": 7,
+      "type": "classification",
+      "position": [
+        0.05932896869099406,
+        0.8628026970673974
+      ],
+      "radius": 0.8648401127333953,
+      "metadata": {
+        "query": "Bootstrap paradoxes in closed causal loops",
+        "label": "structured"
+      }
+    },
+    {
+      "cycle": 8,
+      "type": "classification",
+      "position": [
+        -0.6506855832239185,
+        0.6836769563939386
+      ],
+      "radius": 0.943825147429083,
+      "metadata": {
+        "query": "Silicon-based life forms dreaming in hyperbolic space",
+        "label": "anomaly"
+      }
+    },
+    {
+      "cycle": 8,
+      "type": "dream_thought",
+      "position": [
+        -0.19590124132185333,
+        0.1758217323310084
+      ],
+      "radius": 0.2632310352358167,
+      "metadata": {}
+    }
+  ],
+  "classification_history": [
+    {
+      "cycle": 1,
+      "query": "Quantum entanglement in distributed systems",
+      "position": [
+        -0.6749101719703012,
+        0.5827473832992645
+      ],
+      "radius": 0.89168282083436,
+      "novelty": 0.10831717916563999,
+      "label": "structured"
+    },
+    {
+      "cycle": 2,
+      "query": "A painting of a sunset on Mars",
+      "position": [
+        -0.48475495302646493,
+        -0.8246214695833158
+      ],
+      "radius": 0.9565500157239232,
+      "novelty": 0.043449984276076825,
+      "label": "anomaly"
+    },
+    {
+      "cycle": 3,
+      "query": "The economic implications of faster-than-light travel",
+      "position": [
+        0.0659019455143781,
+        0.8619691368501889
+      ],
+      "radius": 0.8644847363052975,
+      "novelty": 0.13551526369470246,
+      "label": "structured"
+    },
+    {
+      "cycle": 4,
+      "query": "Mammalian neural architecture for music classification",
+      "position": [
+        0.8424979015853309,
+        -0.2970867847554407
+      ],
+      "radius": 0.8933438709992986,
+      "novelty": 0.10665612900070143,
+      "label": "structured"
+    },
+    {
+      "cycle": 5,
+      "query": "Recursive self-improvement in autonomous agents",
+      "position": [
+        -0.49256709912307584,
+        0.7915959064545043
+      ],
+      "radius": 0.9323338598667595,
+      "novelty": 0.06766614013324046,
+      "label": "anomaly"
+    },
+    {
+      "cycle": 6,
+      "query": "The emotional weight of a minor key resolution",
+      "position": [
+        -0.26853408192615896,
+        -0.8521411983465249
+      ],
+      "radius": 0.893451271796832,
+      "novelty": 0.10654872820316796,
+      "label": "structured"
+    },
+    {
+      "cycle": 7,
+      "query": "Bootstrap paradoxes in closed causal loops",
+      "position": [
+        0.05932896869099406,
+        0.8628026970673974
+      ],
+      "radius": 0.8648401127333953,
+      "novelty": 0.13515988726660466,
+      "label": "structured"
+    },
+    {
+      "cycle": 8,
+      "query": "Silicon-based life forms dreaming in hyperbolic space",
+      "position": [
+        -0.6506855832239185,
+        0.6836769563939386
+      ],
+      "radius": 0.943825147429083,
+      "novelty": 0.05617485257091703,
+      "label": "anomaly"
+    }
+  ]
+}

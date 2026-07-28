@@ -1,0 +1,610 @@
+[
+    {
+        "id": "Origin",
+        "label": "C_0: Pure Awareness",
+        "tier": 0,
+        "x": 0.0,
+        "y": 0.0,
+        "type": "known"
+    },
+    {
+        "id": "System",
+        "label": "Abstract System",
+        "tier": 1,
+        "x": -0.15,
+        "y": 0.1,
+        "type": "known"
+    },
+    {
+        "id": "Matter",
+        "label": "Physical Matter",
+        "tier": 1,
+        "x": 0.18,
+        "y": -0.05,
+        "type": "known"
+    },
+    {
+        "id": "Idea",
+        "label": "Conceptual Idea",
+        "tier": 1,
+        "x": -0.05,
+        "y": -0.18,
+        "type": "known"
+    },
+    {
+        "id": "Tech",
+        "label": "Computing Infrastructure",
+        "tier": 2,
+        "x": -0.4,
+        "y": 0.3,
+        "type": "known"
+    },
+    {
+        "id": "Bio",
+        "label": "Biological Organisms",
+        "tier": 2,
+        "x": 0.45,
+        "y": -0.2,
+        "type": "known"
+    },
+    {
+        "id": "Art",
+        "label": "Creative Arts",
+        "tier": 2,
+        "x": -0.1,
+        "y": -0.45,
+        "type": "known"
+    },
+    {
+        "id": "Mammal",
+        "label": "Mammalian Branch",
+        "tier": 3,
+        "x": 0.7,
+        "y": -0.35,
+        "type": "known"
+    },
+    {
+        "id": "Silicon",
+        "label": "Silicon Hard Systems",
+        "tier": 3,
+        "x": -0.65,
+        "y": 0.5,
+        "type": "known"
+    },
+    {
+        "id": "Music",
+        "label": "Sonic Wave Theory",
+        "tier": 3,
+        "x": -0.2,
+        "y": -0.75,
+        "type": "known"
+    },
+    {
+        "id": "Probe_Structured",
+        "label": "Structured Input",
+        "tier": 4,
+        "x": -0.6749101719703012,
+        "y": 0.5827473832992645,
+        "type": "probe"
+    },
+    {
+        "id": "Probe_Anomaly",
+        "label": "Universal Chaos Anomaly",
+        "tier": 4,
+        "x": 0.17862365286968532,
+        "y": 0.8392950917653891,
+        "type": "anomaly"
+    },
+    {
+        "id": "Reconstructed_Structured",
+        "label": "T-Reversed Structured",
+        "tier": 5,
+        "x": -0.6000184879891494,
+        "y": 0.5168191539613087,
+        "type": "reversed"
+    },
+    {
+        "id": "Reconstructed_Anomaly",
+        "label": "T-Reversed Anomaly",
+        "tier": 5,
+        "x": 0.1608267620007943,
+        "y": 0.7721013608976716,
+        "type": "reversed"
+    },
+    {
+        "id": "CTC_Fixed_Point",
+        "label": "CTC Self-Consistent Point",
+        "tier": 6,
+        "x": 0.34900536816197314,
+        "y": 0.7703881851655362,
+        "type": "ctc"
+    },
+    {
+        "id": "H_Traj_0",
+        "label": "H-t=0.00",
+        "tier": 7,
+        "x": 0.008126114217699099,
+        "y": -0.009414446195529454,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_50",
+        "label": "H-t=0.15",
+        "tier": 7,
+        "x": 0.020390943793944974,
+        "y": 0.021814584294367594,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_100",
+        "label": "H-t=0.30",
+        "tier": 7,
+        "x": 0.05605853749106207,
+        "y": 0.1686849589020891,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_150",
+        "label": "H-t=0.45",
+        "tier": 7,
+        "x": 0.10502055316474708,
+        "y": 0.4144353431502809,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_200",
+        "label": "H-t=0.60",
+        "tier": 7,
+        "x": 0.1464268428249846,
+        "y": 0.6243437135506698,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_250",
+        "label": "H-t=0.75",
+        "tier": 7,
+        "x": 0.1708110667004782,
+        "y": 0.7447379697226378,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_300",
+        "label": "H-t=0.90",
+        "tier": 7,
+        "x": 0.18393159860390854,
+        "y": 0.8076765909773265,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_350",
+        "label": "H-t=1.05",
+        "tier": 7,
+        "x": 0.19113657222169755,
+        "y": 0.8417791236195831,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_400",
+        "label": "H-t=1.20",
+        "tier": 7,
+        "x": 0.19535860531500832,
+        "y": 0.8617297163375641,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_450",
+        "label": "H-t=1.35",
+        "tier": 7,
+        "x": 0.19806708981741053,
+        "y": 0.8745282591239769,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_500",
+        "label": "H-t=1.50",
+        "tier": 7,
+        "x": 0.19992130165973987,
+        "y": 0.8832900628478223,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_550",
+        "label": "H-t=1.65",
+        "tier": 7,
+        "x": 0.20124971732362884,
+        "y": 0.889567294523819,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_600",
+        "label": "H-t=1.80",
+        "tier": 7,
+        "x": 0.20223339615108565,
+        "y": 0.8942155232842671,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_650",
+        "label": "H-t=1.95",
+        "tier": 7,
+        "x": 0.20298001784355485,
+        "y": 0.8977435736267583,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_700",
+        "label": "H-t=2.10",
+        "tier": 7,
+        "x": 0.20355751477095835,
+        "y": 0.9004724499145277,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_750",
+        "label": "H-t=2.25",
+        "tier": 7,
+        "x": 0.20401080597832158,
+        "y": 0.9026144104489148,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_800",
+        "label": "H-t=2.40",
+        "tier": 7,
+        "x": 0.20437074799313384,
+        "y": 0.9043152631852389,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_850",
+        "label": "H-t=2.55",
+        "tier": 7,
+        "x": 0.2046592129644414,
+        "y": 0.9056783617277587,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_900",
+        "label": "H-t=2.70",
+        "tier": 7,
+        "x": 0.20489211421784048,
+        "y": 0.9067789021421465,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_950",
+        "label": "H-t=2.85",
+        "tier": 7,
+        "x": 0.20508128507470838,
+        "y": 0.9076728010377906,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_1000",
+        "label": "H-t=3.00",
+        "tier": 7,
+        "x": 0.205235687787851,
+        "y": 0.9084024082143289,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_1050",
+        "label": "H-t=3.15",
+        "tier": 7,
+        "x": 0.20536221586486975,
+        "y": 0.9090002979220131,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_1100",
+        "label": "H-t=3.30",
+        "tier": 7,
+        "x": 0.20546624121072835,
+        "y": 0.9094918543029566,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_1150",
+        "label": "H-t=3.45",
+        "tier": 7,
+        "x": 0.20555199635037583,
+        "y": 0.9098970775275904,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_1200",
+        "label": "H-t=3.60",
+        "tier": 7,
+        "x": 0.20562284724157645,
+        "y": 0.9102318729313235,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_1250",
+        "label": "H-t=3.75",
+        "tier": 7,
+        "x": 0.20568149177738657,
+        "y": 0.9105089890086319,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_1300",
+        "label": "H-t=3.90",
+        "tier": 7,
+        "x": 0.20573010673054576,
+        "y": 0.9107387117770347,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_1350",
+        "label": "H-t=4.05",
+        "tier": 7,
+        "x": 0.20577045822360526,
+        "y": 0.9109293867873437,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_1400",
+        "label": "H-t=4.20",
+        "tier": 7,
+        "x": 0.2058039859319979,
+        "y": 0.9110878170128125,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_1450",
+        "label": "H-t=4.35",
+        "tier": 7,
+        "x": 0.20583186805890774,
+        "y": 0.9112195698782671,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_1500",
+        "label": "H-t=4.50",
+        "tier": 7,
+        "x": 0.2058550720216376,
+        "y": 0.9113292167710401,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_1550",
+        "label": "H-t=4.65",
+        "tier": 7,
+        "x": 0.20587439437311267,
+        "y": 0.9114205216841264,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_1600",
+        "label": "H-t=4.80",
+        "tier": 7,
+        "x": 0.20589049251074915,
+        "y": 0.9114965910517524,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_1650",
+        "label": "H-t=4.95",
+        "tier": 7,
+        "x": 0.20590391004799677,
+        "y": 0.9115599936388448,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_1700",
+        "label": "H-t=5.10",
+        "tier": 7,
+        "x": 0.20591509724509535,
+        "y": 0.9116128570835496,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_1750",
+        "label": "H-t=5.25",
+        "tier": 7,
+        "x": 0.2059244275521681,
+        "y": 0.9116569460691705,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_1800",
+        "label": "H-t=5.40",
+        "tier": 7,
+        "x": 0.20593221106810025,
+        "y": 0.91169372592211,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_1850",
+        "label": "H-t=5.55",
+        "tier": 7,
+        "x": 0.20593870553479723,
+        "y": 0.9117244145636074,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_1900",
+        "label": "H-t=5.70",
+        "tier": 7,
+        "x": 0.20594412534936052,
+        "y": 0.9117500250954464,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_1950",
+        "label": "H-t=5.85",
+        "tier": 7,
+        "x": 0.20594864897336285,
+        "y": 0.9117714008113835,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_2000",
+        "label": "H-t=6.00",
+        "tier": 7,
+        "x": 0.20595242503959318,
+        "y": 0.911789244053673,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_2050",
+        "label": "H-t=6.15",
+        "tier": 7,
+        "x": 0.20595557739594428,
+        "y": 0.9118041400472084,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_2100",
+        "label": "H-t=6.30",
+        "tier": 7,
+        "x": 0.2059582092789011,
+        "y": 0.9118165766207251,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_2150",
+        "label": "H-t=6.45",
+        "tier": 7,
+        "x": 0.20596040677205493,
+        "y": 0.911826960549497,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_2200",
+        "label": "H-t=6.60",
+        "tier": 7,
+        "x": 0.20596224167577887,
+        "y": 0.9118356311155643,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_2250",
+        "label": "H-t=6.75",
+        "tier": 7,
+        "x": 0.20596377389086978,
+        "y": 0.9118428713712793,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_2300",
+        "label": "H-t=6.90",
+        "tier": 7,
+        "x": 0.20596505340025495,
+        "y": 0.9118489175035713,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_2350",
+        "label": "H-t=7.05",
+        "tier": 7,
+        "x": 0.20596612191778696,
+        "y": 0.911853966625079,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_2400",
+        "label": "H-t=7.20",
+        "tier": 7,
+        "x": 0.20596701426091746,
+        "y": 0.9118581832605169,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_2450",
+        "label": "H-t=7.35",
+        "tier": 7,
+        "x": 0.2059677594941015,
+        "y": 0.9118617047496681,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_2500",
+        "label": "H-t=7.50",
+        "tier": 7,
+        "x": 0.20596838188164743,
+        "y": 0.911864645749932,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_2550",
+        "label": "H-t=7.65",
+        "tier": 7,
+        "x": 0.20596890168206589,
+        "y": 0.9118671019899033,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_2600",
+        "label": "H-t=7.80",
+        "tier": 7,
+        "x": 0.20596933581048898,
+        "y": 0.9118691533995358,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_2650",
+        "label": "H-t=7.95",
+        "tier": 7,
+        "x": 0.2059696983912154,
+        "y": 0.911870866721114,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_2700",
+        "label": "H-t=8.10",
+        "tier": 7,
+        "x": 0.20597000121870762,
+        "y": 0.911872297687624,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_2750",
+        "label": "H-t=8.25",
+        "tier": 7,
+        "x": 0.2059702541422769,
+        "y": 0.9118734928405303,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_2800",
+        "label": "H-t=8.40",
+        "tier": 7,
+        "x": 0.20597046538714037,
+        "y": 0.9118744910468783,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_2850",
+        "label": "H-t=8.55",
+        "tier": 7,
+        "x": 0.20597064182240665,
+        "y": 0.9118753247656246,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_2900",
+        "label": "H-t=8.70",
+        "tier": 7,
+        "x": 0.20597078918478662,
+        "y": 0.9118760211047481,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_2950",
+        "label": "H-t=8.85",
+        "tier": 7,
+        "x": 0.20597091226536243,
+        "y": 0.9118766027037988,
+        "type": "hamiltonian"
+    },
+    {
+        "id": "H_Traj_3000",
+        "label": "H-t=9.00",
+        "tier": 7,
+        "x": 0.20597101506552482,
+        "y": 0.911877088470757,
+        "type": "hamiltonian"
+    }
+]

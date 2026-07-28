@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "puno-calculus"
+version = "0.1.0"
+description = "A hyperbolic novelty engine, Hamiltonian flow on the Poincare disk, and the Law of Repulsive Emanation."
+authors = [
+    { name = "Michael Grafiel Sayson Puno" }
+]
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+include = ["puno_calculus*"]

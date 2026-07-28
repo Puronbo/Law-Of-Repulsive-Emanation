@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Universal Novelty Framework Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #f8fafc; margin: 30px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1300px; margin: 0 auto; }
+        .card { background: #1e293b; padding: 25px; border-radius: 12px; border: 1px solid #334155; }
+        h1, h2 { margin-top: 0; color: #38bdf8; }
+        p { color: #94a3b8; line-height: 1.6; }
+        .accent { font-weight: bold; color: #f43f5e; }
+    </style>
+</head>
+<body>
+    <div style="text-align:center; margin-bottom: 40px;">
+        <h1>Framework Interface: The Antiderivative of Universals</h1>
+        <p>Architected Framework Visualization Dashboard</p>
+    </div>
+    <div class="grid">
+        <div class="card">
+            <h2>The Conformal Poincaré Metric Space</h2>
+            <p>Every circle inside this chart represents a concept. Note how the un-anchored chaotic prompt <span class="accent">(Universal Chaos Anomaly)</span> gets actively pushed completely to the outer perimeter boundary horizon ($r \rightarrow 1$).</p>
+            <canvas id="poincareChart" width="500" height="500"></canvas>
+        </div>
+        <div class="card">
+            <h2>System Control Matrix</h2>
+            <div style="background:#0f172a; padding:15px; border-radius:8px; border-left:4px solid #38bdf8; margin-bottom:15px;">
+                <h3>Hyperbolic Efficiency Metric Equation</h3>
+                <code style="color:#a7f3d0; font-size:1.1em;">E_H = 1 - ||Capital &otimes; Attention||&sup2;</code>
+            </div>
+            <p><b>Production Execution Status:</b> Operating under optimal non-Euclidean compression constraints. Vector space profile shrunk from 1,536 spatial tracking channels down to a highly responsive 2-dimensional hyperbolic grid map.</p>
+            <p>All data structural paths remain linked chronologically straight down to the absolute ancestral master configuration coordinate constant <b>C_0</b> located directly at the origin point (0,0).</p>
+        </div>
+    </div>
+
+    <script>
+        fetch('web_data.json')
+            .then(res => res.json())
+            .then(data => {
+                const datasets = [
+                    { label: 'Core / Known Taxonomy', data: data.filter(d => d.type === 'known'), backgroundColor: '#38bdf8', pointRadius: 8 },
+                    { label: 'Structured Probes', data: data.filter(d => d.type === 'probe'), backgroundColor: '#34d399', pointRadius: 10, pointStyle: 'triangle' },
+                    { label: 'Universal Anomalies', data: data.filter(d => d.type === 'anomaly'), backgroundColor: '#f43f5e', pointRadius: 12, pointStyle: 'rectRot' }
+                ];
+
+                const ctx = document.getElementById('poincareChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'scatter',
+                    data: { datasets: datasets },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            x: { min: -1.1, max: 1.1, grid: { color: '#334155' } },
+                            y: { min: -1.1, max: 1.1, grid: { color: '#334155' } }
+                        },
+                        plugins: {
+                            tooltip: { callbacks: { label: context => context.raw.label } },
+                            legend: { labels: { color: '#f8fafc' } }
+                        }
+                    }
+                });
+            });
+    </script>
+</body>
+</html>

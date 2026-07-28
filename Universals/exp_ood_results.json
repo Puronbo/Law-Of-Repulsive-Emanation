@@ -1,0 +1,54 @@
+{
+  "experiment": "demo_ood",
+  "id_accuracy": 0.815,
+  "results": {
+    "ID (checkerboard)": {
+      "mean_density": 0.009322916666666667,
+      "std_density": 0.01191490917984224,
+      "mean_msp": 0.8169634269526713,
+      "std_msp": 0.16525851905254774
+    },
+    "Far-OOD (uniform)": {
+      "mean_density": 0.00458984375,
+      "std_density": 0.007963426594540041,
+      "mean_msp": 0.9282526809852375,
+      "std_msp": 0.12601772932326502
+    },
+    "Far-OOD (Gaussian)": {
+      "mean_density": 0.00123046875,
+      "std_density": 0.004214603599893087,
+      "mean_msp": 0.9964420073885962,
+      "std_msp": 0.029347715486153565
+    },
+    "Near-OOD (shifted)": {
+      "mean_density": 0.00919921875,
+      "std_density": 0.012109779269125433,
+      "mean_msp": 0.8201021574056301,
+      "std_msp": 0.16270852098639035
+    },
+    "Center noise": {
+      "mean_density": 0.03429036458333334,
+      "std_density": 0.02017589679433409,
+      "mean_msp": 0.6998689854717244,
+      "std_msp": 0.13688360657648438
+    }
+  },
+  "auroc": {
+    "Far-OOD (uniform)": {
+      "crease": 0.60848125,
+      "msp": 0.7706652777777778
+    },
+    "Far-OOD (Gaussian)": {
+      "crease": 0.6798208333333333,
+      "msp": 0.9868277777777777
+    },
+    "Near-OOD (shifted)": {
+      "crease": 0.5113854166666667,
+      "msp": 0.5047215277777778
+    },
+    "Center noise": {
+      "crease": 0.8834951388888889,
+      "msp": 0.706088888888889
+    }
+  }
+}

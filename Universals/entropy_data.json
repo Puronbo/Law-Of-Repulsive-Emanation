@@ -1,0 +1,35 @@
+{
+  "entropy": 1.1705591270905695,
+  "max_entropy": 4.321928094887363,
+  "bekenstein_ratio": 0.2708418792240634,
+  "mean_radius": 0.8761661117917207,
+  "max_radius": 0.9348496582472646,
+  "boundary_fraction": 0.8907030989670109,
+  "kawasaki": {
+    "n_vertices_tested": 10,
+    "mean_alternating_sum": 2.320137937905451,
+    "std_alternating_sum": 3.2687204448284826,
+    "mean_deviation_from_target": 3.357049128733295,
+    "kawasaki_satisfied": 0.0,
+    "target": 0.0,
+    "epsilon": 0.1
+  },
+  "trajectory_length": 3001,
+  "energy_drift": 0.9999999999531505,
+  "bekenstein": {
+    "shannon_entropy": 1.1705591270905695,
+    "bekenstein_limit": 8.954782828194885,
+    "saturation_ratio": 0.13071887387430167,
+    "mean_radius": 0.8761661117917207,
+    "mean_energy": 1.6266298504825438,
+    "is_saturated": false
+  },
+  "wheeler_dewitt": {
+    "fraction_satisfied": 0.8680439853382206,
+    "mean_violation": 1.6266298504825438,
+    "max_violation": 24.491166263591555,
+    "median_violation": 5.7308218033377696e-05,
+    "n_states": 3001,
+    "epsilon": 0.5
+  }
+}

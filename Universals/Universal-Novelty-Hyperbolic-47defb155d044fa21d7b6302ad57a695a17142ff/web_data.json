@@ -1,0 +1,98 @@
+[
+    {
+        "id": "Origin",
+        "label": "C_0: Pure Awareness",
+        "tier": 0,
+        "x": 0.0,
+        "y": 0.0,
+        "type": "known"
+    },
+    {
+        "id": "System",
+        "label": "Abstract System",
+        "tier": 1,
+        "x": -0.15,
+        "y": 0.1,
+        "type": "known"
+    },
+    {
+        "id": "Matter",
+        "label": "Physical Matter",
+        "tier": 1,
+        "x": 0.18,
+        "y": -0.05,
+        "type": "known"
+    },
+    {
+        "id": "Idea",
+        "label": "Conceptual Idea",
+        "tier": 1,
+        "x": -0.05,
+        "y": -0.18,
+        "type": "known"
+    },
+    {
+        "id": "Tech",
+        "label": "Computing Infrastructure",
+        "tier": 2,
+        "x": -0.4,
+        "y": 0.3,
+        "type": "known"
+    },
+    {
+        "id": "Bio",
+        "label": "Biological Organisms",
+        "tier": 2,
+        "x": 0.45,
+        "y": -0.2,
+        "type": "known"
+    },
+    {
+        "id": "Art",
+        "label": "Creative Arts",
+        "tier": 2,
+        "x": -0.1,
+        "y": -0.45,
+        "type": "known"
+    },
+    {
+        "id": "Mammal",
+        "label": "Mammalian Branch",
+        "tier": 3,
+        "x": 0.7,
+        "y": -0.35,
+        "type": "known"
+    },
+    {
+        "id": "Silicon",
+        "label": "Silicon Hard Systems",
+        "tier": 3,
+        "x": -0.65,
+        "y": 0.5,
+        "type": "known"
+    },
+    {
+        "id": "Music",
+        "label": "Sonic Wave Theory",
+        "tier": 3,
+        "x": -0.2,
+        "y": -0.75,
+        "type": "known"
+    },
+    {
+        "id": "Probe_Structured",
+        "label": "Structured Input",
+        "tier": 4,
+        "x": -0.6749101719703012,
+        "y": 0.5827473832992645,
+        "type": "probe"
+    },
+    {
+        "id": "Probe_Anomaly",
+        "label": "Universal Chaos Anomaly",
+        "tier": 4,
+        "x": 0.17862365286968532,
+        "y": 0.8392950917653891,
+        "type": "anomaly"
+    }
+]
