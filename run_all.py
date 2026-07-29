@@ -50,7 +50,8 @@ for item in steps:
     args = item[3] if len(item) > 3 else []
     print(f"\n--- {label} ---")
     cmd = [sys.executable, script] + args
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    script_dir = os.path.dirname(os.path.abspath(script))
+    result = subprocess.run(cmd, capture_output=True, text=True, cwd=script_dir)
     elapsed = time.time() - start
     if result.returncode == 0:
         print(f"  PASS ({elapsed:.1f}s)")

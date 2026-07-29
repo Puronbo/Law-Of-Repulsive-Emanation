@@ -10,9 +10,11 @@ venv/
 .venv/
 .env
 
-# Generated data artifacts
+# Generated data artifacts (both canonical data/ and legacy Universals/ locations)
 data/*.json
 data/*.dot
+Universals/*.json
+Universals/*.dot
 
 # Logs & OS
 *.log
