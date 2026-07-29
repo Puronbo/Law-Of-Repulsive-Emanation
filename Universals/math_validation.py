@@ -400,6 +400,47 @@ def test_mobius_addition():
 
 
 # ================================================================
+# 9b. Manifold Cross-Validation (numpy vs PyTorch)
+# ================================================================
+def test_manifold_cross_validation():
+    """Verify numpy (hamiltonian_flow) and PyTorch (manifold.poincare)
+    compute the same geometric primitives."""
+    import numpy as np, torch
+    from hamiltonian_flow import hyperbolic_dist, inverse_metric, project_to_disk as np_project
+    from manifold.poincare import geodesic_distance, riemannian_scale, project_to_disk as pt_project
+    print("\n--- 9b. Manifold Cross-Validation (numpy ↔ torch) ---")
+    rng = np.random.default_rng(1729)
+    for i in range(5):
+        # Uniform in disk: r = sqrt(unif) * 0.9, theta = unif * 2pi
+        theta1, theta2 = rng.uniform(0, 2*np.pi, 2)
+        r1 = np.sqrt(rng.uniform(0, 1)) * 0.9
+        r2 = np.sqrt(rng.uniform(0, 1)) * 0.9
+        a = np.array([r1*np.cos(theta1), r1*np.sin(theta1)])
+        b = np.array([r2*np.cos(theta2), r2*np.sin(theta2)])
+        a_pt = torch.tensor([list(a)])
+        b_pt = torch.tensor([list(b)])
+        d_np = hyperbolic_dist(a, b)
+        d_pt = float(geodesic_distance(a_pt, b_pt)[0])
+        check(f"  geodesic distance [{i}]: numpy={d_np:.6f} torch={d_pt:.6f}",
+              abs(d_np - d_pt) < 1e-6)
+        inv_np = inverse_metric(a)
+        inv_pt = float(riemannian_scale(a_pt)[0, 0])
+        check(f"  inverse metric [{i}]: numpy={inv_np:.6f} torch={inv_pt:.6f}",
+              abs(inv_np - inv_pt) < 1e-6)
+        cn = np_project(a, max_norm=0.99)
+        cp = pt_project(a_pt, max_norm=0.99)[0].numpy()
+        check(f"  project_to_disk [{i}]: {'OK' if np.allclose(cn, cp, atol=1e-6) else 'MISMATCH'}",
+              np.allclose(cn, cp, atol=1e-6))
+    far = np.array([0.995, 0.0])
+    c_np = np_project(far, max_norm=0.99)
+    c_pt = pt_project(torch.tensor([[0.995, 0.0]]), max_norm=0.99)[0].numpy()
+    check("  clamp beyond bound: radius=0.99",
+          abs(np.linalg.norm(c_np) - 0.99) < 1e-6 and
+          np.allclose(c_np, c_pt, atol=1e-6))
+    print("  (numpy and PyTorch manifold primitives agree)")
+
+
+# ================================================================
 # 10. Crease Metrics (raw, sign-straddle)
 # ================================================================
 def test_crease_metrics():
@@ -885,6 +926,7 @@ if __name__ == "__main__":
     test_soft_crease()
     test_exp_log_map()
     test_mobius_addition()
+    test_manifold_cross_validation()
     test_crease_metrics()
     test_c0_law()
     test_prime_statistics()
