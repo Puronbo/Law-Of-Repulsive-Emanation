@@ -12,6 +12,9 @@ from manifold.poincare import (
     project_to_disk,
     riemannian_scale,
     inverse_metric,
+    mobius_add,
+    exp_map,
+    log_map,
 )
 
 __all__ = [
@@ -20,4 +23,7 @@ __all__ = [
     "project_to_disk",
     "riemannian_scale",
     "inverse_metric",
+    "mobius_add",
+    "exp_map",
+    "log_map",
 ]
