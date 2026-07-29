@@ -1,0 +1,182 @@
+{
+  "title": "All 2^n - 3 Mersenne-gap primes less than a googol (10^100)",
+  "googol": 10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,
+  "n_max": 332,
+  "count": 21,
+  "primes": [
+    {
+      "n": 3,
+      "digits": 1,
+      "prime": "5",
+      "geodesic_length": 0.980829253,
+      "selberg_eigenvalue": 1.2120260236,
+      "selberg_r": 0.980829253
+    },
+    {
+      "n": 4,
+      "digits": 2,
+      "prime": "13",
+      "geodesic_length": 1.6739764336,
+      "selberg_eigenvalue": 3.0521971002,
+      "selberg_r": 1.6739764336
+    },
+    {
+      "n": 5,
+      "digits": 2,
+      "prime": "29",
+      "geodesic_length": 2.3671236141,
+      "selberg_eigenvalue": 5.8532742046,
+      "selberg_r": 2.3671236141
+    },
+    {
+      "n": 6,
+      "digits": 2,
+      "prime": "61",
+      "geodesic_length": 3.0602707947,
+      "selberg_eigenvalue": 9.6152573368,
+      "selberg_r": 3.0602707947
+    },
+    {
+      "n": 9,
+      "digits": 3,
+      "prime": "509",
+      "geodesic_length": 5.1397123364,
+      "selberg_eigenvalue": 26.6666429006,
+      "selberg_r": 5.1397123364
+    },
+    {
+      "n": 10,
+      "digits": 4,
+      "prime": "1021",
+      "geodesic_length": 5.8328595169,
+      "selberg_eigenvalue": 34.2722501443,
+      "selberg_r": 5.8328595169
+    },
+    {
+      "n": 12,
+      "digits": 4,
+      "prime": "4093",
+      "geodesic_length": 7.2191538781,
+      "selberg_eigenvalue": 52.366182715,
+      "selberg_r": 7.2191538781
+    },
+    {
+      "n": 14,
+      "digits": 5,
+      "prime": "16381",
+      "geodesic_length": 8.6054482392,
+      "selberg_eigenvalue": 74.3037393971,
+      "selberg_r": 8.6054482392
+    },
+    {
+      "n": 20,
+      "digits": 7,
+      "prime": "1048573",
+      "geodesic_length": 12.7643313225,
+      "selberg_eigenvalue": 163.1781541113,
+      "selberg_r": 12.7643313225
+    },
+    {
+      "n": 22,
+      "digits": 7,
+      "prime": "4194301",
+      "geodesic_length": 14.1506256837,
+      "selberg_eigenvalue": 200.4902072388,
+      "selberg_r": 14.1506256837
+    },
+    {
+      "n": 24,
+      "digits": 8,
+      "prime": "16777213",
+      "geodesic_length": 15.5369200448,
+      "selberg_eigenvalue": 241.6458844776,
+      "selberg_r": 15.5369200448
+    },
+    {
+      "n": 29,
+      "digits": 9,
+      "prime": "536870909",
+      "geodesic_length": 19.0026559476,
+      "selberg_eigenvalue": 361.3509330617,
+      "selberg_r": 19.0026559476
+    },
+    {
+      "n": 94,
+      "digits": 29,
+      "prime": "19807040628566084398385987581",
+      "geodesic_length": 64.057222684,
+      "selberg_eigenvalue": 4103.5777779833,
+      "selberg_r": 64.057222684
+    },
+    {
+      "n": 116,
+      "digits": 35,
+      "prime": "83076749736557242056487941267521533",
+      "geodesic_length": 79.3064606563,
+      "selberg_eigenvalue": 6289.764701827,
+      "selberg_r": 79.3064606563
+    },
+    {
+      "n": 122,
+      "digits": 37,
+      "prime": "5316911983139663491615228241121378301",
+      "geodesic_length": 83.4653437396,
+      "selberg_eigenvalue": 6966.7136055771,
+      "selberg_r": 83.4653437396
+    },
+    {
+      "n": 150,
+      "digits": 46,
+      "prime": "1427247692705959881058285969449495136382746621",
+      "geodesic_length": 102.8734647953,
+      "selberg_eigenvalue": 10583.1997589947,
+      "selberg_r": 102.8734647953
+    },
+    {
+      "n": 174,
+      "digits": 53,
+      "prime": "23945242826029513411849172299223580994042798784118781",
+      "geodesic_length": 119.5089971288,
+      "selberg_eigenvalue": 14282.6503947225,
+      "selberg_r": 119.5089971288
+    },
+    {
+      "n": 213,
+      "digits": 65,
+      "prime": "13164036458569648337239753460458804039861886925068638906788872189",
+      "geodesic_length": 146.5417371706,
+      "selberg_eigenvalue": 21474.7307329773,
+      "selberg_r": 146.5417371706
+    },
+    {
+      "n": 221,
+      "digits": 67,
+      "prime": "3369993333393829974333376885877453834204643052817571560137951281149",
+      "geodesic_length": 152.0869146151,
+      "selberg_eigenvalue": 23130.6795971346,
+      "selberg_r": 152.0869146151
+    },
+    {
+      "n": 233,
+      "digits": 71,
+      "prime": "13803492693581127574869511724554050904902217944340773110325048447598589",
+      "geodesic_length": 160.4046807818,
+      "selberg_eigenvalue": 25729.9116167109,
+      "selberg_r": 160.4046807818
+    },
+    {
+      "n": 266,
+      "digits": 81,
+      "prime": "118571099379011784113736688648896417641748464297615937576404566024103044751294461",
+      "geodesic_length": 183.2785377403,
+      "selberg_eigenvalue": 33591.2723962143,
+      "selberg_r": 183.2785377403
+    }
+  ],
+  "framework": "Puno Calculus \u2014 C7 Prime Geodesic Bridge (Selberg \u2194 Mersenne)",
+  "theorems": [
+    "T6 (Parity sieve)",
+    "T7 (Congruence sieve)",
+    "C7 (Prime geodesic bridge)"
+  ]
+}

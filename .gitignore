@@ -15,6 +15,7 @@ data/*.json
 data/*.dot
 !data/mersenne_prime_5630.json
 !data/mersenne_m52_bridge.json
+!data/googol_census.json
 Universals/*.json
 Universals/*.dot
 
