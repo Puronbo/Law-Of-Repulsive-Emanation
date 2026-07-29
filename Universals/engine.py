@@ -526,11 +526,28 @@ class ClosedTimelikeCurve:
 # Main execution
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Proof-to-Phase mapping: each engine phase is grounded in the proof hierarchy
+# ---------------------------------------------------------------------------
+PROOF_PHASE_MAP = [
+    ("Phase 1", "Unitary Evolution (Forward Pass)", "A1, T1, T2", "Poincare metric, conformal metric, geodesic distance"),
+    ("Phase 2", "Time Reversal (T-Symmetry)", "T5", "Symplectic structure: time-reversal invariance"),
+    ("Phase 3", "Poincare Recurrence (Cyclical Universe)", "C4, C5", "Poincare recurrence, Bekenstein bound"),
+    ("Phase 4", "Closed Timelike Curve (Self-Consistent Loop)", "—", "Novikov principle — grounded in test_ctc_convergence"),
+    ("Phase 5", "Hamiltonian Flow (Phase-Space Dynamics)", "A2, T4, T5, T8", "Hamilton's equations, Christoffel, symplectic, C0 law"),
+    ("Phase 6", "Holographic Entropy (Bekenstein Bound)", "C5, C6", "Bekenstein bound, generalization gap"),
+    ("Phase 7", "Crease Diagnostics (Hard/Soft/Kawasaki)", "T9, C2, C3, C6", "Crease density, depth-indep bound, dissipative crease, generalization"),
+]
+
 if __name__ == "__main__":
     print("=" * 60)
     print("  PUNO CALCULUS -- PHYSICAL UNIVERSAL MAP ENGINE")
     print("  Hamiltonian Flow on the Poincare Disk")
     print("=" * 60)
+    print("\n  Proof↔Phase mapping:")
+    for ph, name, items, desc in PROOF_PHASE_MAP:
+        print(f"    {ph:9s} | {name:42s} | {items:20s} | {desc}")
+    print()
 
     # --- Phase 1: Standard forward evaluation ---
     print("\n--- PHASE 1: Unitary Evolution (Forward Pass) ---")
