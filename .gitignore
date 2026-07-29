@@ -37,3 +37,4 @@ scripts/*
 !scripts/genesis_prime.py
 !scripts/next_k3_sieve.py
 !scripts/deep_sieve.py
+!scripts/googol_census.py
