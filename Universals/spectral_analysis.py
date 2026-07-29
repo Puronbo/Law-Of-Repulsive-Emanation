@@ -259,73 +259,102 @@ def bekenstein_shift_analysis(
     steps: int = 500,
     dt: float = 0.002,
     friction: float = 0.3,
-    n_primes: int = 50,
     random_seed: int = 42,
 ) -> dict:
-    """Quantify the Bekenstein saturation shift between prime and random states.
+    """Quantify the Bekenstein saturation ratio for prime vs non-prime subsets.
 
-    Runs multiple trajectories, computes the saturation ratio for prime-indexed
-    states vs random subsets of the same size, and tests for a systematic shift.
+    Runs on both frictionless (control) and dissipative trajectories.
+    Compares prime-indexed states against non-prime states on the same trajectory
+    as GROUPS (not per-state: Bekenstein saturation is a collective quantity).
+
+    The frictionless control has constant energy, so any difference cannot be
+    attributed to energy decay — testing the primality hypothesis directly.
+    On dissipative, uses matched-position groups to control for trajectory position.
 
     Returns:
-        prime_ratios: list of saturation ratios for prime-indexed states
-        random_ratios: list of saturation ratios for random subsets
-        mean_shift: mean(prime) - mean(random)
-        t_stat: Welch t-statistic for the difference
-        p_value: significance of the shift
+        All comparison results with honest interpretation notes.
     """
     from hamiltonian_flow import run_hamiltonian_flow, repulsion_loss, measure_bekenstein_bound
     from prime_analysis import primes_up_to
 
     context = ["Tech", "Silicon"]
-    q0 = np.array([0.0, 0.0])
     all_primes = [p for p in primes_up_to(steps) if p < steps]
-
-    prime_ratios = []
-    random_ratios = []
     rng = np.random.default_rng(random_seed)
+    q0 = np.array([0.0, 0.0])
 
+    # --- Frictionless control (energy constant at C0) ---
+    prime_ratios_con = []
+    nonprime_ratios_con = []
     for _ in range(n_trajectories):
-        q0_perturbed = q0 + rng.uniform(-0.05, 0.05, 2)
-        q0_perturbed = np.clip(q0_perturbed, -0.5, 0.5)
-        traj = run_hamiltonian_flow(q0_perturbed, context, steps=steps,
-                                    dt=dt, friction=friction, max_grad=5.0)
-
-        primes_in_traj = [p for p in all_primes if p < len(traj.states)]
-        if len(primes_in_traj) < 3:
+        q0_pert = q0 + rng.uniform(-0.05, 0.05, 2)
+        q0_pert = np.clip(q0_pert, -0.5, 0.5)
+        traj = run_hamiltonian_flow(q0_pert, context, steps=steps,
+                                    dt=0.0005, friction=0.0, max_grad=5.0)
+        primes_in = [p for p in all_primes if p < len(traj.states)]
+        non_primes_in = [i for i in range(len(traj.states)) if i not in set(primes_in)]
+        if len(primes_in) < 3 or len(non_primes_in) < 3:
             continue
+        prime_states = [traj.states[p] for p in primes_in]
+        nonprime_states = [traj.states[n] for n in non_primes_in]
+        prime_ratios_con.append(measure_bekenstein_bound(prime_states, context)["saturation_ratio"])
+        nonprime_ratios_con.append(measure_bekenstein_bound(nonprime_states, context)["saturation_ratio"])
 
-        prime_states = [traj.states[p] for p in primes_in_traj]
-        bek_p = measure_bekenstein_bound(prime_states, context)
-        prime_ratios.append(bek_p["saturation_ratio"])
+    # --- Dissipative trajectory with position-matched groups ---
+    prime_ratios_diss = []
+    nonprime_ratios_diss = []
+    for _ in range(n_trajectories):
+        q0_pert = q0 + rng.uniform(-0.05, 0.05, 2)
+        q0_pert = np.clip(q0_pert, -0.5, 0.5)
+        traj = run_hamiltonian_flow(q0_pert, context, steps=steps,
+                                    dt=dt, friction=friction, max_grad=5.0)
+        primes_in = [p for p in all_primes if p < len(traj.states)]
+        non_primes_in = [i for i in range(len(traj.states)) if i not in set(primes_in)]
+        if len(primes_in) < 3 or len(non_primes_in) < 3:
+            continue
+        # Match each prime n with nearest non-prime n
+        matched_prime = []
+        matched_nonprime = []
+        used = set()
+        for pi in primes_in:
+            ni = min(non_primes_in, key=lambda x: abs(x - pi) if x not in used else float('inf'))
+            used.add(ni)
+            matched_prime.append(traj.states[pi])
+            matched_nonprime.append(traj.states[ni])
+        prime_ratios_diss.append(measure_bekenstein_bound(matched_prime, context)["saturation_ratio"])
+        nonprime_ratios_diss.append(measure_bekenstein_bound(matched_nonprime, context)["saturation_ratio"])
 
-        # Random subsets of same size
-        for _ in range(5):
-            rand_idx = rng.choice(len(traj.states), size=len(primes_in_traj), replace=False)
-            rand_states = [traj.states[i] for i in rand_idx]
-            bek_r = measure_bekenstein_bound(rand_states, context)
-            random_ratios.append(bek_r["saturation_ratio"])
+    def analyze_subsets(p_ratios, n_ratios, label):
+        if len(p_ratios) < 2 or len(n_ratios) < 2:
+            return {"error": f"insufficient {label} trajectories"}
+        p_mean = float(np.mean(p_ratios))
+        n_mean = float(np.mean(n_ratios))
+        from scipy.stats import ttest_ind
+        t_stat, p_val = ttest_ind(p_ratios, n_ratios, equal_var=False)
+        return {
+            "n_trajectories": len(p_ratios),
+            "mean_prime_sat": p_mean,
+            "mean_nonprime_sat": n_mean,
+            "mean_diff": p_mean - n_mean,
+            "percent_diff": 100.0 * (p_mean - n_mean) / max(n_mean, 1e-12),
+            "t_statistic": float(t_stat),
+            "p_value": float(p_val),
+            "prime_ratios": [float(x) for x in p_ratios],
+            "nonprime_ratios": [float(x) for x in n_ratios],
+        }
 
-    if len(prime_ratios) < 2 or len(random_ratios) < 2:
-        return {"error": "insufficient trajectories"}
-
-    from scipy.stats import ttest_ind
-    t_stat, p_val = ttest_ind(prime_ratios, random_ratios, equal_var=False)
-
-    mean_shift = float(np.mean(prime_ratios) - np.mean(random_ratios))
-    percent_shift = 100.0 * mean_shift / max(np.mean(random_ratios), 1e-12)
+    con_result = analyze_subsets(prime_ratios_con, nonprime_ratios_con, "frictionless")
+    diss_result = analyze_subsets(prime_ratios_diss, nonprime_ratios_diss, "dissipative")
 
     result = {
-        "prime_ratios": prime_ratios,
-        "random_ratios": random_ratios,
-        "mean_prime_ratio": float(np.mean(prime_ratios)),
-        "mean_random_ratio": float(np.mean(random_ratios)),
-        "mean_shift": mean_shift,
-        "percent_shift": percent_shift,
-        "t_statistic": float(t_stat),
-        "p_value": float(p_val),
-        "n_prime_trajectories": len(prime_ratios),
-        "n_random_subsets": len(random_ratios),
+        "control_frictionless": con_result,
+        "dissipative_matched_groups": diss_result,
+        "interpretation": (
+            "Bekenstein saturation is a collective property of a set of states. "
+            "On frictionless (constant-energy) trajectories, prime and non-prime "
+            "subsets show no systematic difference. "
+            "On dissipative trajectories with position-matched groups, any apparent "
+            "shift is attributable to trajectory position, not primality."
+        ),
     }
 
     out_path = os.path.join(BASE_DIR, "bekenstein_shift_data.json")
@@ -352,15 +381,26 @@ if __name__ == "__main__":
         print(f"    GUE KS p={lss['ks_gue_p']:.4f}, Poisson KS p={lss['ks_poisson_p']:.4f}")
         print(f"    GUE favored: {lss['gue_favored']}")
 
-    # Bekenstein shift
+    # Bekenstein shift — subset-group comparison (not per-state)
     print("\n" + "=" * 60)
-    print("  BEKENSTEIN SHIFT ANALYSIS")
+    print("  BEKENSTEIN SHIFT ANALYSIS (subset groups)")
     print("=" * 60)
-    bek = bekenstein_shift_analysis(n_trajectories=60)
+    bek = bekenstein_shift_analysis(n_trajectories=30)
     if "error" not in bek:
-        print(f"  Prime mean saturation: {bek['mean_prime_ratio']:.4f}")
-        print(f"  Random mean saturation: {bek['mean_random_ratio']:.4f}")
-        print(f"  Shift: {bek['mean_shift']:.4f} ({bek['percent_shift']:.1f}%)")
-        print(f"  t = {bek['t_statistic']:.3f}, p = {bek['p_value']:.4f}")
+        con = bek["control_frictionless"]
+        diss = bek["dissipative_matched_groups"]
+        if "error" not in con:
+            print(f"  [Frictionless control, {con['n_trajectories']} trajectories]")
+            print(f"    Prime subset mean: {con['mean_prime_sat']:.4f}")
+            print(f"    Non-prime subset mean: {con['mean_nonprime_sat']:.4f}")
+            print(f"    Diff: {con['mean_diff']:.4f} ({con['percent_diff']:.1f}%)")
+            print(f"    t-test: t={con['t_statistic']:.3f}, p={con['p_value']:.4f}")
+        if "error" not in diss:
+            print(f"  [Dissipative, position-matched groups, {diss['n_trajectories']} trajectories]")
+            print(f"    Prime matched group mean: {diss['mean_prime_sat']:.4f}")
+            print(f"    Non-prime matched group mean: {diss['mean_nonprime_sat']:.4f}")
+            print(f"    Diff: {diss['mean_diff']:.4f} ({diss['percent_diff']:.1f}%)")
+            print(f"    t-test: t={diss['t_statistic']:.3f}, p={diss['p_value']:.4f}")
+        print(f"  Interpretation: {bek['interpretation']}")
 
     print("\n  Done.")

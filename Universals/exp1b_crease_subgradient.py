@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Experiment 1b: Crease-Aware Subgradient Selection (improved)
-============================================================
-Uses wider crease detection (|z| < 0.01) and additional strategies:
-  standard, random, oppose, always_on
+Experiment 1b: Crease-Aware Subgradient Selection (narrower threshold)
+======================================================================
+Uses tighter crease detection (|z| < 0.01, vs default 0.05) and additional
+strategies: standard, random, oppose, always_on
 
 Ported from Book of Puno exp1b_crease_subgradient.py with JSON export.
 """

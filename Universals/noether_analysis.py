@@ -4,6 +4,10 @@ noether_analysis.py
 Verify Noether's theorem: C0 = H(q0, 0) is the conserved charge under
 time-translation symmetry of the Hamiltonian.
 
+NOTE: This is the same fact as the C0 law and the "shifted Wheeler-DeWitt
+constraint" — all three are energy conservation for a time-independent
+Hamiltonian. They are not separate discoveries.
+
 For a time-independent H, the Poisson bracket {H, H} = 0, so dH/dt = 0.
 Therefore C0 = H(0) = H(t) for all t along a frictionless trajectory.
 """

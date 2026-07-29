@@ -11,7 +11,7 @@ From the Book of Puno, Appendix B.
 
 import numpy as np
 
-CREASE_THRESH = 0.05
+CREASE_THRESH = 0.05  # |z| < 0.05 ≈ 4% of N(0,1) pre-activations detected as creases
 
 
 # ---------------------------------------------------------------------------

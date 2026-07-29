@@ -16,6 +16,24 @@ Physics correspondences:
   - dH/dt = 0 along trajectories (energy conservation)
   - T-symmetry: (q, p, t) -> (q, -p, -t)
   - Poincare recurrence: return to (q_0, p_0) after tau ~ exp(S)
+
+Key constants and their rationale:
+  ALPHA = 2.5           : interaction radius in geodesic distance.
+                          Covers all topic positions (max topic norm ~0.82
+                          gives geodesic distance ~2*arctanh(0.82) ≈ 2.3).
+                          Set to 2.5 to include a small margin.
+  R_MAX_DISK = 0.99     : numerical safety clamp for project_to_disk.
+                          Prevents points from reaching the singular
+                          boundary (r=1) where the metric diverges.
+  R_MAX_GRID = tanh(ALPHA/2) ≈ 0.85 : spectral solver grid boundary.
+                          Matches the interaction horizon — beyond this
+                          radius the repulsion potential is zero.
+  MAX_GRAD = 5.0        : gradient clipping threshold ~ C0/2.4.
+                          Prevents numerical blowup near the boundary.
+                          Applied only in dissipative (friction > 0) mode.
+  FRICTION_DEFAULT = 0.5: default dissipative strength.
+                          0.0 = conservative (energy-conserving),
+                          > 0 = dissipative (converges to attractor).
 """
 
 from __future__ import annotations
@@ -23,6 +41,19 @@ from __future__ import annotations
 import math
 import numpy as np
 from dataclasses import dataclass, field
+
+# ------------------------------------------------------------------
+# Physical constants (see docstring for rationale)
+# ------------------------------------------------------------------
+ALPHA = 2.5              # interaction radius (geodesic distance)
+R_MAX_DISK = 0.99        # numerical safety clamp for disk boundary
+R_MAX_GRID = 0.85        # spectral solver grid boundary = tanh(ALPHA/2)
+MAX_GRAD = 5.0           # gradient clipping (dissipative mode only)
+FRICTION_DEFAULT = 0.5   # default friction coefficient
+__all__ = ["ALPHA", "R_MAX_DISK", "R_MAX_GRID", "MAX_GRAD", "FRICTION_DEFAULT"]
+
+# Derived: R_MAX_GRID = tanh(ALPHA/2) is exact; 0.85 is the numerical approx.
+# ALPHA = 2 * arctanh(R_MAX_GRID) ≈ 2 * arctanh(0.85) ≈ 2.5
 
 
 def hyperbolic_dist(u: np.ndarray, v: np.ndarray) -> float:
@@ -44,7 +75,7 @@ def inverse_metric(x: np.ndarray) -> float:
     return ((1.0 - float(np.sum(x**2)))**2) / 4.0
 
 
-def project_to_disk(x: np.ndarray, max_norm: float = 0.99) -> np.ndarray:
+def project_to_disk(x: np.ndarray, max_norm: float = R_MAX_DISK) -> np.ndarray:
     r = float(np.linalg.norm(x))
     if r >= max_norm:
         x = (x / r) * max_norm
@@ -66,7 +97,7 @@ POSITIONS = {
 }
 
 
-def repulsion_loss(xq: np.ndarray, context: list[str], alpha: float = 2.5) -> float:
+def repulsion_loss(xq: np.ndarray, context: list[str], alpha: float = ALPHA) -> float:
     """Potential energy: sum of squared repulsion from non-affinity nodes."""
     loss = 0.0
     for node_id, pos in POSITIONS.items():
@@ -78,7 +109,7 @@ def repulsion_loss(xq: np.ndarray, context: list[str], alpha: float = 2.5) -> fl
     return loss
 
 
-def repulsion_gradient(xq: np.ndarray, context: list[str], alpha: float = 2.5) -> np.ndarray:
+def repulsion_gradient(xq: np.ndarray, context: list[str], alpha: float = ALPHA) -> np.ndarray:
     """Numerical gradient of repulsion loss w.r.t. position."""
     grad = np.zeros(2)
     eps = 1e-5
@@ -178,8 +209,8 @@ def _christoffel_force(q: np.ndarray, p: np.ndarray) -> np.ndarray:
 
 
 def leapfrog_step(state: HamiltonianState, context: list[str],
-                  dt: float, alpha: float = 2.5,
-                  friction: float = 0.5,
+                  dt: float, alpha: float = ALPHA,
+                  friction: float = FRICTION_DEFAULT,
                   max_grad: float | None = None) -> HamiltonianState:
     """
     Symplectic leapfrog (Verlet) integration of Hamilton's equations on the
@@ -245,8 +276,8 @@ def run_hamiltonian_flow(
     context: list[str],
     steps: int = 500,
     dt: float = 0.005,
-    alpha: float = 2.5,
-    friction: float = 0.5,
+    alpha: float = ALPHA,
+    friction: float = FRICTION_DEFAULT,
     max_grad: float | None = None,
     p0: np.ndarray | None = None,
 ) -> HamiltonianTrajectory:

@@ -12,6 +12,43 @@ The antiderivative ∫f(x)dx = F(x) + C has an arbitrary constant only when the 
 
 This is **L.O.R.E.** — the Law of Repulsive Emanation. The constant emanates from the origin. It is measured, not chosen.
 
+## Repository Structure
+
+```
+Puno_Calculus/
+├── Universals/          # Core library: proofs, engine, experiments, utilities
+│   ├── proofs.py        # Formal proof hierarchy (26 items: axioms → lemmas → theorems → corollaries)
+│   ├── duality.py       # 12 dual attestations (forward-backward consistency)
+│   ├── engine.py        # Core Hamiltonian flow engine
+│   ├── hamiltonian_flow.py  # Hamiltonian dynamics on Poincare disk
+│   ├── math_validation.py   # 121 validation tests
+│   ├── puno_utils.py        # General utilities
+│   ├── crease_metrics.py    # Crease analysis utilities
+│   ├── serve_dashboard.py   # Dashboard server
+│   ├── fold_visual.py       # Fold visualization
+│   ├── demo_ood.py          # Out-of-distribution detection demo
+│   ├── energy_landscape.py  # Critical point analysis
+│   ├── exp*_*.py            # Experiments 1-3 (crease subgradient, density, early stopping)
+│   ├── *_analysis.py        # Specialized analyses (prime, spectral, noether, etc.)
+│   ├── mersenne_*.py        # Mersenne gap, taxonomy, congruence analysis
+│   ├── manifold/            # Manifold modules
+│   └── ...
+├── data/               # Generated JSON data from experiments and analyses
+├── docs/               # Documentation, papers, migration guides
+│   ├── PAPER.md
+│   ├── MIGRATION.md
+│   └── CONTRIBUTING.md
+├── scripts/            # Standalone utility scripts (non-core)
+├── archive/            # Archived/legacy projects (not part of Puno Calculus)
+├── run_all.py          # One-command orchestrator for the full pipeline
+├── example.py          # Quickstart example
+├── generate_c0_data.py # Dashboard data generator
+├── dependency_tree.dot # Proof dependency graph (Graphviz)
+├── pyproject.toml       # Project metadata
+├── README.md            # This file
+└── LICENSE
+```
+
 ## What the Engine Does
 
 The Poincare disk engine:

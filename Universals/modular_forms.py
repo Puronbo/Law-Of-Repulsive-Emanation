@@ -4,26 +4,24 @@ modular_forms.py
 Automorphic forms and L-functions from the Hamiltonian trajectory on the
 Poincare disk.
 
-Key connections:
+Key observations (most are tautological or standard identities):
   1. Cayley transform: disk origin w=0 -> elliptic point z=i of SL(2,Z).
-     The stabiliser of i is the order-2 subgroup {I, S} where S: z -> -1/z.
-     C0 = V(0) is the value of the potential at this elliptic point.
+     This is a standard map. C0 = V(0) at w=0 maps to F(i) = V(Cayley^{-1}(i))
+     = V(0) = C0 by construction. Not a discovery.
 
   2. Trajectory L-function: for a conservative trajectory (friction=0),
      E_n = C0 for all n, so:
          L(s) = sum_{n=1}^{inf} E_n / n^s = C0 * zeta(s)
-     At s = 0: L(0) = C0 * zeta(0) = -C0/2.
-     This analytically continues to the functional equation:
-         L(s) = C0 * 2^s * pi^{s-1} * sin(pi*s/2) * Gamma(1-s) * zeta(1-s)
+     This works for ANY constant C0. The Euler product is zeta's, not the
+     system's. The functional equation is likewise zeta's.
 
-  3. The deviation D_n = |E_n - C0| defines a Dirichlet series that
-     measures the breaking of conservation (dissipation, numerical error).
+  3. The deviation D_n = |E_n - C0| measures numerical drift on conservative
+     trajectories, or energy loss on dissipative ones. This is a diagnostic,
+     not a spectral invariant.
 
-  4. For dissipative trajectories, the L-function has a non-trivial Euler
-     product over primes when E_n is factored by the prime geodesic spectrum.
-
-  5. Modular form: The function F(z) = V(Cayley^{-1}(z)) on H, when averaged
-     by the stabiliser of the elliptic point i, gives C0 as its value at i.
+  4. Modular form: F(z) = V(Cayley^{-1}(z)) on H. The stabiliser average at i
+     of F is trivially C0 because F is constant at the fixed point. The
+     property S(i) = i is a property of PSL(2,Z), not of the system.
 """
 
 import numpy as np, json, math, os, sys

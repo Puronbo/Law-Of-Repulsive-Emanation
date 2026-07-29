@@ -18,7 +18,9 @@ sys.path.insert(0, BASE_DIR)
 
 from puno_utils import Net, bce, accuracy, make_ring_dataset
 
-CREASE_THRESH = 1e-10
+CREASE_THRESH = 0.05  # was 1e-10 — dead code: at 1e-10, zero creases ever detected;
+                      # the crease-aware subgradient never fired, making exp1 results
+                      # indistinguishable from standard training.
 
 
 class SubgradNet(Net):
@@ -84,7 +86,7 @@ def train_with_mode(dims, X_tr, y_tr, X_te, y_te, mode='standard',
             h = Xb
             for i, layer in enumerate(model.L[:-1]):
                 z = h @ layer['W'] + layer['b']
-                ep_cre += (np.abs(z) < 1e-6).sum()
+                ep_cre += (np.abs(z) < CREASE_THRESH).sum()
                 h = z * (z > 0).astype(float)
             nb += 1
 
@@ -145,7 +147,7 @@ def run():
     h = X_tr[:256]
     for i, layer in enumerate(probe.L[:-1]):
         z = h @ layer['W'] + layer['b']
-        crease_count += (np.abs(z) < 1e-6).sum()
+        crease_count += (np.abs(z) < CREASE_THRESH).sum()
         h = z * (z > 0).astype(float)
 
     output = {
