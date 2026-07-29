@@ -13,6 +13,7 @@ venv/
 # Generated data artifacts (both canonical data/ and legacy Universals/ locations)
 data/*.json
 data/*.dot
+!data/mersenne_prime_5630.json
 Universals/*.json
 Universals/*.dot
 
@@ -30,4 +31,5 @@ debug_output/
 archive/
 
 # Scripts that are not part of the core
-scripts/
+scripts/*
+!scripts/genesis_prime.py
