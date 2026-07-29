@@ -68,9 +68,11 @@ def hyperbolic_dist(u: np.ndarray, v: np.ndarray) -> float:
 def inverse_metric(x: np.ndarray) -> float:
     """Inverse metric g^{ij} = (1-||x||^2)^2 / 4. Used for Hamiltonian flow.
 
-    Note: The conformal factor lambda^2 = 4/(1-||x||^2)^2 is returned by
-    manifold.poincare.riemannian_scale(). The inverse is used here because
-    the Hamiltonian formulation requires the inverse metric.
+    The conformal factor lambda^2 = 4/(1-||x||^2)^2 (the actual Riemannian
+    metric scale) is returned by manifold.poincare.riemannian_scale().
+    The inverse is used here because the Hamiltonian formulation requires
+    g^{ij}, and both manifold.poincare.inverse_metric() and the numpy
+    equivalent compute (1-r²)²/4.
     """
     return ((1.0 - float(np.sum(x**2)))**2) / 4.0
 

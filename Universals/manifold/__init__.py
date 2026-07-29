@@ -11,6 +11,7 @@ from manifold.poincare import (
     pairwise_geodesic_distance,
     project_to_disk,
     riemannian_scale,
+    inverse_metric,
 )
 
 __all__ = [
@@ -18,4 +19,5 @@ __all__ = [
     "pairwise_geodesic_distance",
     "project_to_disk",
     "riemannian_scale",
+    "inverse_metric",
 ]

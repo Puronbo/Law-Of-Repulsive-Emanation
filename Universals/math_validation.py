@@ -406,8 +406,8 @@ def test_manifold_cross_validation():
     """Verify numpy (hamiltonian_flow) and PyTorch (manifold.poincare)
     compute the same geometric primitives."""
     import numpy as np, torch
-    from hamiltonian_flow import hyperbolic_dist, inverse_metric, project_to_disk as np_project
-    from manifold.poincare import geodesic_distance, riemannian_scale, project_to_disk as pt_project
+    from hamiltonian_flow import hyperbolic_dist, inverse_metric as np_inv_metric, project_to_disk as np_project
+    from manifold.poincare import geodesic_distance, riemannian_scale, inverse_metric as pt_inv_metric, project_to_disk as pt_project
     print("\n--- 9b. Manifold Cross-Validation (numpy ↔ torch) ---")
     rng = np.random.default_rng(1729)
     for i in range(5):
@@ -423,10 +423,15 @@ def test_manifold_cross_validation():
         d_pt = float(geodesic_distance(a_pt, b_pt)[0])
         check(f"  geodesic distance [{i}]: numpy={d_np:.6f} torch={d_pt:.6f}",
               abs(d_np - d_pt) < 1e-6)
-        inv_np = inverse_metric(a)
-        inv_pt = float(riemannian_scale(a_pt)[0, 0])
+        # Inverse metric: g^{ij} = (1-r²)²/4
+        inv_np = np_inv_metric(a)
+        inv_pt = float(pt_inv_metric(a_pt)[0, 0])
         check(f"  inverse metric [{i}]: numpy={inv_np:.6f} torch={inv_pt:.6f}",
               abs(inv_np - inv_pt) < 1e-6)
+        # Riemannian scale: λ² = 4/(1-r²)²  (the conformal factor)
+        scale_pt = float(riemannian_scale(a_pt)[0, 0])
+        check(f"  riemannian scale = 1/inv [{i}]: {inv_np:.4f} * {scale_pt:.4f} = {inv_np*scale_pt:.4f}",
+              abs(inv_np * scale_pt - 1.0) < 1e-6)
         cn = np_project(a, max_norm=0.99)
         cp = pt_project(a_pt, max_norm=0.99)[0].numpy()
         check(f"  project_to_disk [{i}]: {'OK' if np.allclose(cn, cp, atol=1e-6) else 'MISMATCH'}",

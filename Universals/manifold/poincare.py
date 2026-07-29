@@ -52,7 +52,13 @@ def pairwise_geodesic_distance(u: torch.Tensor, v: torch.Tensor) -> torch.Tensor
 
 
 def riemannian_scale(u: torch.Tensor) -> torch.Tensor:
-    """Conformal factor: lambda(x)^2 = ((1 - ||x||^2)^2) / 4."""
+    """Conformal factor: lambda(x)^2 = 4 / (1 - ||x||^2)^2."""
+    sq_norm = (u ** 2).sum(-1, keepdim=True)
+    return 4.0 / ((1.0 - sq_norm) ** 2).clamp_min(EPS)
+
+
+def inverse_metric(u: torch.Tensor) -> torch.Tensor:
+    """Inverse metric: g^{ij} = (1 - ||x||^2)^2 / 4."""
     sq_norm = (u ** 2).sum(-1, keepdim=True)
     return ((1.0 - sq_norm) ** 2) / 4.0
 
