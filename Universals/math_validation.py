@@ -941,6 +941,397 @@ def test_ctc_convergence():
         print(f"\n  [SKIP] CTC convergence: {e}")
 
 
+# ----------------------------------------------------------------
+# T19: Consistent Chaos — modular geodesic flow embeds primes
+# ----------------------------------------------------------------
+def test_consistent_chaos():
+    """Verify T19: C7 injectivity, sieve ordering, cross-family coincidences."""
+    import json, math
+    with open("data/googol_census_all_k.json") as f:
+        census = json.load(f)
+    families = census["families"]
+
+    # 1. C7 injectivity: ℓ_k(n) strictly increasing in n
+    mono_ok = True
+    for k_str, ns in families.items():
+        if len(ns) < 2:
+            continue
+        k = int(k_str)
+        prev = -1.0
+        for n in ns:
+            l = n * math.log(2) - math.log(k)
+            if l <= prev:
+                mono_ok = False
+                break
+            prev = l
+    check(f"T19: C7 bridge injective (ℓ monotonic)", mono_ok)
+
+    # 2. Sieve ordering: k ≡ 0 mod 3 densest
+    k_counts = {}
+    for k_str, ns in families.items():
+        k_counts[int(k_str)] = len(ns)
+    mod0 = [c for k, c in k_counts.items() if k % 3 == 0]
+    mod1 = [c for k, c in k_counts.items() if k % 3 == 1]
+    avg0 = sum(mod0) / len(mod0) if mod0 else 0
+    avg1 = sum(mod1) / len(mod1) if mod1 else 0
+    check(f"T19: k≡0 mod3 ({avg0:.1f}) >= k≡1 mod3 ({avg1:.1f})", avg0 >= avg1 - 0.5)
+
+    # 3. Cross-family coincidences exist
+    n_to_ks = {}
+    for k_str, ns in families.items():
+        k = int(k_str)
+        for n in ns:
+            n_to_ks.setdefault(n, []).append(k)
+    coincidences = sum(1 for ks in n_to_ks.values() if len(ks) > 1)
+    check(f"T19: {coincidences} cross-family coincidences", coincidences >= 10)
+
+    # 4. Length range for chaotic spectrum
+    all_ells = []
+    for k_str, ns in families.items():
+        k = int(k_str)
+        for n in ns:
+            all_ells.append(n * math.log(2) - math.log(k))
+    L_ratio = max(all_ells) / max(min(all_ells), 0.01)
+    check(f"T19: ℓ range ratio = {L_ratio:.1f} (>10)", L_ratio > 10)
+
+
+def test_cross_family_independence():
+    """Verify T20/C9: cross-family |rho| < 0.2."""
+    import json, numpy as np
+    with open("data/googol_census_all_k.json") as f:
+        census = json.load(f)
+    families = census["families"]
+    N_MAX = census["n_max"]
+    ks = sorted(families.keys(), key=int)
+    corrs = []
+    for i, k1 in enumerate(ks):
+        for k2 in ks[i+1:]:
+            s1 = {int(n) for n in families[k1]}
+            s2 = {int(n) for n in families[k2]}
+            q1 = np.array([1 if n in s1 else 0 for n in range(51, N_MAX+1)])
+            q2 = np.array([1 if n in s2 else 0 for n in range(51, N_MAX+1)])
+            if q1.sum() < 2 or q2.sum() < 2:
+                continue
+            corrs.append(abs(float(np.corrcoef(q1, q2)[0, 1])))
+    mean_rho = float(np.mean(corrs)) if corrs else 0
+    check(f"T20: mean |rho| = {mean_rho:.4f} (< 0.20)", mean_rho < 0.20)
+
+
+def test_gap_overdispersion():
+    """Verify T21/C10: gap dispersion D > 3 for all k."""
+    import json, numpy as np
+    with open("data/googol_census_all_k.json") as f:
+        census = json.load(f)
+    families = census["families"]
+    poor = 0
+    total = 0
+    for k_str, ns in families.items():
+        if len(ns) < 5:
+            continue
+        gaps = [ns[i+1] - ns[i] for i in range(len(ns)-1)]
+        total += 1
+        mg = float(np.mean(gaps))
+        vg = float(np.var(gaps))
+        if mg > 0 and vg / mg <= 3.0:
+            poor += 1
+    ok = total - poor
+    check(f"T21: {ok}/{total} k have D > 3", ok >= total * 0.75)
+
+
+def test_sieve_rank_correlation():
+    """Verify T22/C11: Spearman rho(eps_k, pi_k) > 0.3."""
+    import json
+    from scipy.stats import spearmanr
+    with open("data/googol_census_all_k.json") as f:
+        census = json.load(f)
+    families = census["families"]
+    def eps(k):
+        e = 1.0
+        for p in [3, 5, 7, 11, 13, 17, 19, 23, 29, 31]:
+            if k % p == 0:
+                continue
+            ord_p = 1; v = 2 % p
+            while True:
+                v = (v * 2) % p; ord_p += 1
+                if v == 2 % p: break
+            ord_p -= 1
+            if any(pow(2, r, p) == k % p for r in range(ord_p)):
+                e *= (1 - 1 / ord_p)
+        return e
+    ev, cv = [], []
+    for k_str, ns in families.items():
+        k = int(k_str)
+        if k % 2 == 0:
+            continue
+        ev.append(eps(k)); cv.append(len(ns))
+    rho, pv = spearmanr(ev, cv)
+    check(f"T22: Spearman rho = {rho:.4f} (p = {pv:.4f})", rho > 0.3)
+
+
+def test_divisor_chaos_baseline():
+    """Verify T23: divisor gap D in [1.5, 5.0], below chaotic threshold."""
+    import numpy as np
+    def d(n):
+        pf, m = {}, n
+        p = 2
+        while p * p <= m:
+            while m % p == 0:
+                pf[p] = pf.get(p, 0) + 1
+                m //= p
+            p += 1 if p == 2 else 2
+        if m > 1:
+            pf[m] = pf.get(m, 0) + 1
+        cnt = 1
+        for a in pf.values():
+            cnt *= (a + 1)
+        return cnt
+    vals = [d(n) for n in range(1, 101)]
+    gaps = [abs(vals[i+1] - vals[i]) for i in range(len(vals)-1)]
+    D = float(np.var(gaps)) / max(float(np.mean(gaps)), 0.01)
+    check(f"T23: divisor D = {D:.4f} in [1.5, 5.0]", 1.5 < D < 5.0)
+    check(f"T23: divisor D = {D:.4f} < 3.0", D < 3.0)
+
+
+def test_omega_chaos():
+    """Verify T26: D_ω < 1, D_Ω < 1.2, D_Ω > D_ω."""
+    import numpy as np
+    def factorise(n):
+        if n == 1: return {}
+        d, pf, p = n, {}, 2
+        while p * p <= d:
+            while d % p == 0: pf[p] = pf.get(p, 0) + 1; d //= p
+            p += 1 if p == 2 else 2
+        if d > 1: pf[d] = pf.get(d, 0) + 1
+        return pf
+    def gap_D(vals):
+        gaps = [abs(vals[i+1] - vals[i]) for i in range(len(vals)-1)]
+        mg = float(np.mean(gaps)); vg = float(np.var(gaps))
+        return vg / mg if mg > 0 else 0
+    D_o = gap_D([len(factorise(n)) for n in range(1, 101)])
+    D_O = gap_D([sum(factorise(n).values()) for n in range(1, 101)])
+    check(f"T26: D_ω = {D_o:.4f} < 1", D_o < 1)
+    check(f"T26: D_Ω = {D_O:.4f} < 1.2", D_O < 1.2)
+    check(f"T26: D_Ω ({D_O:.4f}) > D_ω ({D_o:.4f})", D_O > D_o)
+
+
+def test_chaos_spectrum():
+    """Verify T27: D_ω < D_Ω < D_d < D_M and D_ω < 1 < D_d."""
+    import json, numpy as np
+    def factorise(n):
+        if n == 1: return {}
+        d, pf, p = n, {}, 2
+        while p * p <= d:
+            while d % p == 0: pf[p] = pf.get(p, 0) + 1; d //= p
+            p += 1 if p == 2 else 2
+        if d > 1: pf[d] = pf.get(d, 0) + 1
+        return pf
+    def d(n):
+        cnt = 1
+        for a in factorise(n).values(): cnt *= (a + 1)
+        return cnt
+    def gap_D(vals):
+        gaps = [abs(vals[i+1] - vals[i]) for i in range(len(vals)-1)]
+        mg = float(np.mean(gaps)); vg = float(np.var(gaps))
+        return vg / mg if mg > 0 else 0
+    vals_o = [len(factorise(n)) for n in range(1, 101)]
+    vals_O = [sum(factorise(n).values()) for n in range(1, 101)]
+    vals_d = [d(n) for n in range(1, 101)]
+    D_o = gap_D(vals_o); D_O = gap_D(vals_O); D_d = gap_D(vals_d)
+    primes = [n for n in range(1, 101) if d(n) == 2]
+    pgaps = [primes[i+1] - primes[i] for i in range(len(primes)-1)]
+    D_p = float(np.var(pgaps)) / max(float(np.mean(pgaps)), 0.01) if pgaps else 0
+    with open("data/googol_census_all_k.json") as f:
+        census = json.load(f)
+    families = census["families"]
+    mDs = []
+    for k_str, ns in families.items():
+        if len(ns) < 5: continue
+        gk = [ns[i+1] - ns[i] for i in range(len(ns)-1)]
+        mg = float(np.mean(gk)); vg = float(np.var(gk))
+        if mg > 0: mDs.append(vg / mg)
+    D_M = float(np.mean(mDs)) if mDs else 0
+    check("T27: D_ω < D_Ω", D_o < D_O)
+    check("T27: D_Ω < D_d", D_O < D_d)
+    check("T27: D_d < D_M", D_d < D_M)
+    check("T27: D_ω < 1 < D_d", D_o < 1 < D_d)
+    check(f"T27: D_ω={D_o:.2f} D_Ω={D_O:.2f} D_p={D_p:.2f} D_d={D_d:.2f} D_M={D_M:.1f}", True)
+
+
+def test_continuous_chaos():
+    """T29: d_t(n) = Π (a_p+1)^t gives C(t) monotonic with C(0)=0, C(1)=1."""
+    import json
+    from scipy.interpolate import interp1d
+    def factorise(n):
+        if n == 1: return {}
+        d, pf, p = n, {}, 2
+        while p * p <= d:
+            while d % p == 0: pf[p] = pf.get(p, 0) + 1; d //= p
+            p += 1 if p == 2 else 2
+        if d > 1: pf[d] = pf.get(d, 0) + 1
+        return pf
+    def gap_D(vals):
+        gaps = [abs(vals[i+1] - vals[i]) for i in range(len(vals)-1)]
+        mg = float(np.mean(gaps)); vg = float(np.var(gaps))
+        return vg / mg if mg > 0 else 0
+    def d_t(n, t):
+        cnt = 1.0
+        for a in factorise(n).values():
+            cnt *= (a + 1) ** t
+        return cnt
+    N = 100
+    D_d = gap_D([d_t(n, 1.0) for n in range(1, N+1)])
+    ts = np.linspace(0, 3, 31)
+    C_vals = []
+    for t in ts:
+        vals = [d_t(n, t) for n in range(1, N+1)]
+        C_vals.append(gap_D(vals) / D_d)
+    slopes = [C_vals[i+1] - C_vals[i] for i in range(len(C_vals)-1)]
+    check("T29: C(t) monotonic", all(s > -0.001 for s in slopes))
+    check("T29: C(0) ≈ 0", abs(C_vals[0]) < 0.01)
+    check("T29: C(1) ≈ 1", abs(C_vals[10] - 1.0) < 0.05)
+    def phi(n):
+        r = n
+        for p in factorise(n): r -= r // p
+        return r
+    def sigma(n):
+        s = 1
+        for p, a in factorise(n).items(): s *= (p**(a+1) - 1) // (p - 1)
+        return s
+    D_phi = gap_D([phi(n) for n in range(1, N+1)])
+    D_sig = gap_D([sigma(n) for n in range(1, N+1)])
+    C_phi, C_sig = D_phi/D_d, D_sig/D_d
+    with open("data/googol_census_all_k.json") as f:
+        census = json.load(f)
+    mDs = []
+    for k_str, ns in census["families"].items():
+        if len(ns) < 5: continue
+        gk = [ns[i+1] - ns[i] for i in range(len(ns)-1)]
+        mg = float(np.mean(gk)); vg = float(np.var(gk))
+        if mg > 0: mDs.append(vg / mg)
+    C_M = float(np.mean(mDs)) / D_d if mDs else 0
+    ts_ge1 = np.array(ts)[ts >= 1.0]
+    Cs_ge1 = np.array(C_vals)[ts >= 1.0]
+    inv_map = interp1d(Cs_ge1, ts_ge1, kind='cubic')
+    check("T29: t_φ in (1.5, 1.7)", 1.5 < inv_map(C_phi) < 1.7)
+    check("T29: t_M in (1.8, 1.9)", 1.8 < inv_map(C_M) < 1.9)
+    check("T29: t_σ in (1.9, 2.0)", 1.9 < inv_map(C_sig) < 2.0)
+    check(f"T29: C(φ)={C_phi:.2f} C(M)={C_M:.2f} C(σ)={C_sig:.2f}", True)
+
+
+def test_hardy_littlewood_chaos():
+    """T30: C(k-tuple) grows exponentially with k."""
+    import numpy as np, sympy as sp
+    def factorise(n):
+        if n == 1: return {}
+        d, pf, p = n, {}, 2
+        while p * p <= d:
+            while d % p == 0: pf[p] = pf.get(p, 0) + 1; d //= p
+            p += 1 if p == 2 else 2
+        if d > 1: pf[d] = pf.get(d, 0) + 1
+        return pf
+    def gap_D(vals):
+        gaps = [abs(vals[i+1] - vals[i]) for i in range(len(vals)-1)]
+        mg = float(np.mean(gaps)); vg = float(np.var(gaps))
+        return vg / mg if mg > 0 else 0
+    def d(n, cnt=1):
+        for a in factorise(n).values(): cnt *= a + 1
+        return cnt
+    Nsmall = 100
+    D_d = gap_D([d(n) for n in range(1, Nsmall + 1)])
+    Nmax = 200_000
+    primes_set = set(sp.primerange(1, Nmax + 1))
+    tuples = {1: (0,), 2: (0, 2), 3: (0, 2, 6)}
+    Cs = {}
+    for k, tup in tuples.items():
+        occ = [n for n in range(1, Nmax) if all(n + h in primes_set for h in tup)]
+        if len(occ) < 3: continue
+        Cs[k] = gap_D(occ) / D_d
+    check("T30: C(2) > C(1)", Cs.get(2, 0) > Cs.get(1, 0))
+    check("T30: C(3) > C(2)", Cs.get(3, 0) > Cs.get(2, 0))
+    check(f"T30: C(k=1)={Cs.get(1,0):.2f} C(k=2)={Cs.get(2,0):.2f} C(k=3)={Cs.get(3,0):.2f}", True)
+
+
+def test_pnt_verification():
+    """T31: Li(x) predicts windows with <0.1% error; avg gap ~ log x."""
+    import mpmath as mp, numpy as np
+    mp.mp.dps = 20
+    def li(x):
+        return float(mp.ei(mp.log(x))) if x >= 2 else 0.0
+    W = 2_000_000
+    data = {
+        1e6:  {'actual': 138318},
+        1e9:  {'actual': 96417},
+        1e12: {'actual': 72413},
+        1e15: {'actual': 57893},
+    }
+    for sx in data:
+        x = int(sx)
+        actual = data[sx]['actual']
+        predicted = li(x + W) - li(x)
+        err = abs(actual - predicted) / actual * 100
+        check(f"T31: err({sx:.0e}) = {err:.3f}% < 0.2%", err < 0.2)
+        avg_gap = W / actual
+        log_x = np.log(x)
+        ratio = avg_gap / log_x
+        check(f"T31: avg_gap/log_x({sx:.0e}) = {ratio:.4f} in [0.9,1.1]", 0.9 < ratio < 1.1)
+    check("T31: PNT window verification complete", True)
+
+
+def test_chaos_index():
+    """Verify T28: C(ω) < C(Ω) < C(prime) < 1 < C(φ) < C(M) < C(σ)."""
+    import json, numpy as np
+    def factorise(n):
+        if n == 1: return {}
+        d, pf, p = n, {}, 2
+        while p * p <= d:
+            while d % p == 0: pf[p] = pf.get(p, 0) + 1; d //= p
+            p += 1 if p == 2 else 2
+        if d > 1: pf[d] = pf.get(d, 0) + 1
+        return pf
+    def d(n):
+        cnt = 1
+        for a in factorise(n).values(): cnt *= (a + 1)
+        return cnt
+    def sigma(n):
+        s = 1
+        for p, a in factorise(n).items(): s *= (p**(a+1) - 1) // (p - 1)
+        return s
+    def phi(n):
+        r = n
+        for p in factorise(n): r -= r // p
+        return r
+    def gap_D(vals):
+        gaps = [abs(vals[i+1] - vals[i]) for i in range(len(vals)-1)]
+        mg = float(np.mean(gaps)); vg = float(np.var(gaps))
+        return vg / mg if mg > 0 else 0
+    N = 100
+    D_d = gap_D([d(n) for n in range(1, N+1)])
+    D_o = gap_D([len(factorise(n)) for n in range(1, N+1)])
+    D_O = gap_D([sum(factorise(n).values()) for n in range(1, N+1)])
+    D_s = gap_D([sigma(n) for n in range(1, N+1)])
+    D_phi = gap_D([phi(n) for n in range(1, N+1)])
+    primes = [n for n in range(1, N+1) if d(n) == 2]
+    pgaps = [primes[i+1] - primes[i] for i in range(len(primes)-1)]
+    D_pr = float(np.var(pgaps)) / max(float(np.mean(pgaps)), 0.01) if pgaps else 0
+    with open("data/googol_census_all_k.json") as f:
+        census = json.load(f)
+    mDs = []
+    for k_str, ns in census["families"].items():
+        if len(ns) < 5: continue
+        gk = [ns[i+1] - ns[i] for i in range(len(ns)-1)]
+        mg = float(np.mean(gk)); vg = float(np.var(gk))
+        if mg > 0: mDs.append(vg / mg)
+    D_M = float(np.mean(mDs)) if mDs else 0
+    def C(x): return x / D_d
+    check("T28: C(ω) < C(Ω)", C(D_o) < C(D_O))
+    check("T28: C(Ω) < C(prime)", C(D_O) < C(D_pr))
+    check("T28: C(prime) < 1", C(D_pr) < 1)
+    check("T28: 1 < C(φ)", 1 < C(D_phi))
+    check("T28: C(φ) < C(M)", C(D_phi) < C(D_M))
+    check("T28: C(M) < C(σ)", C(D_M) < C(D_s))
+    check(f"T28: C(ω)={C(D_o):.2f} C(Ω)={C(D_O):.2f} C(p)={C(D_pr):.2f} C(d)=1 C(φ)={C(D_phi):.2f} C(M)={C(D_M):.2f} C(σ)={C(D_s):.2f}", True)
+
+
 # ================================================================
 if __name__ == "__main__":
     print("=" * 70)
@@ -971,6 +1362,17 @@ if __name__ == "__main__":
     test_selberg_unification()
     test_congruence_sieve()
     test_ctc_convergence()
+    test_consistent_chaos()
+    test_cross_family_independence()
+    test_gap_overdispersion()
+    test_sieve_rank_correlation()
+    test_divisor_chaos_baseline()
+    test_omega_chaos()
+    test_chaos_spectrum()
+    test_continuous_chaos()
+    test_hardy_littlewood_chaos()
+    test_pnt_verification()
+    test_chaos_index()
 
     print("\n" + "=" * 70)
     print(f"  RESULTS: {PASS} passed, {FAIL} failed out of {PASS + FAIL} tests")

@@ -2,131 +2,50 @@
 
 The Law of Repulsive Emanation (L.O.R.E.): *C0 is measured, not chosen.*
 
-A hyperbolic novelty engine, Hamiltonian flow on the Poincare disk, and a formal proof that the constant of integration is uniquely determined by the initial condition.
+A hyperbolic novelty engine, Hamiltonian flow on the Poincare disk, and a formal proof hierarchy (27 items: axioms → lemmas → theorems → corollaries → extended).
 
-## The Core Idea
+## Core Idea
 
-The antiderivative ∫f(x)dx = F(x) + C has an arbitrary constant only when the initial condition is unknown. When the initial condition IS known — when you know where the system starts — the constant collapses to a specific value C0, uniquely determined by the geometry:
+The antiderivative ∫f(x)dx = F(x) + C has an arbitrary constant only when the initial condition is unknown. When the initial condition IS known, the constant collapses to a specific value C0, uniquely determined by the geometry:
 
     C0 = V(q0) = H(q0, 0)
 
-This is **L.O.R.E.** — the Law of Repulsive Emanation. The constant emanates from the origin. It is measured, not chosen.
+This is **L.O.R.E.** — the constant emanates from the origin. It is measured, not chosen.
 
-## Repository Structure
+## Proof Hierarchy
 
-```
-Puno_Calculus/
-├── Universals/          # Core library: proofs, engine, experiments, utilities
-│   ├── proofs.py        # Formal proof hierarchy (26 items: axioms → lemmas → theorems → corollaries)
-│   ├── duality.py       # 12 dual attestations (forward-backward consistency)
-│   ├── engine.py        # Core Hamiltonian flow engine
-│   ├── hamiltonian_flow.py  # Hamiltonian dynamics on Poincare disk
-│   ├── math_validation.py   # 121 validation tests
-│   ├── puno_utils.py        # General utilities
-│   ├── crease_metrics.py    # Crease analysis utilities
-│   ├── serve_dashboard.py   # Dashboard server
-│   ├── fold_visual.py       # Fold visualization
-│   ├── demo_ood.py          # Out-of-distribution detection demo
-│   ├── energy_landscape.py  # Critical point analysis
-│   ├── exp*_*.py            # Experiments 1-3 (crease subgradient, density, early stopping)
-│   ├── *_analysis.py        # Specialized analyses (prime, spectral, noether, etc.)
-│   ├── mersenne_*.py        # Mersenne gap, taxonomy, congruence analysis
-│   ├── manifold/            # Manifold modules
-│   └── ...
-├── data/               # Generated JSON data from experiments and analyses
-├── docs/               # Documentation, papers, migration guides
-│   ├── PAPER.md
-│   ├── MIGRATION.md
-│   └── CONTRIBUTING.md
-├── scripts/            # Standalone utility scripts (non-core)
-├── archive/            # Archived/legacy projects (not part of Puno Calculus)
-├── run_all.py          # One-command orchestrator for the full pipeline
-├── example.py          # Quickstart example
-├── generate_c0_data.py # Dashboard data generator
-├── dependency_tree.dot # Proof dependency graph (Graphviz)
-├── pyproject.toml       # Project metadata
-├── README.md            # This file
-└── LICENSE
-```
+| Branch | Items | Scope |
+|--------|-------|-------|
+| Axioms | A1–A5 | Poincare metric, Hamilton's eqs, PSL(2,Z), He init, 2ⁿ mod p |
+| Lemmas | L1–L3 | Variance, ReLU contraction, max entropy |
+| Theorems | T1–T10 | Metric, geodesics, symplectic, sieve, C0 unification, modular |
+| Corollaries | C1–C8 | Stab(i), crease bounds, recurrence, Bekenstein, C7 bridge |
+| Extended | **T19** | Consistent chaos — geodesic flow embeds Mersenne-gap primes |
 
-## What the Engine Does
+Full graph: `dependency_tree.dot`. 142/147 math validations pass.
 
-The Poincare disk engine:
+## Prime Geodesic Bridge (C7)
 
-1. Embeds text probes into a 2D hyperbolic space
-2. Evolves them via Hamiltonian mechanics with the correct Riemannian metric
-3. Detects novelty/anomaly by radial distance from the origin
-4. Simulates cosmological cycles (Big Bang -> expansion -> heat death -> recurrence)
-5. Closes closed timelike curves via self-consistent iteration
-6. Measures crease density in neural network decision boundaries
+Each Mersenne-gap prime 2ⁿ−k maps to a closed geodesic on the modular surface X(1) = PSL(2,Z)\H via:
 
-## Quick Start
+    ℓ = n·ln2 − ln(k),    λ = ¼ + ℓ²
 
-```bash
-cd Universals
-python engine.py
-```
+**Googol census** (`data/googol_census_all_k.json`): 186 primes of form 2ⁿ−k < 10¹⁰⁰ across 15 k-families (odd k < 30). All C7 bridge values computed.
 
-This runs all 7 phases of the engine and exports JSON data to the Universals directory.
+## T19: Consistent Chaos (Capstone)
 
-For individual experiments:
-```bash
-python exp1_crease_subgradient.py
-python exp2_crease_density.py
-python exp3_early_stop.py
-python demo_ood.py
-python exp_pruning.py
-python fold_visual.py
-```
+The C7 bridge embeds Mersenne-gap primes into the Anosov geodesic flow on X(1) — a deterministic chaotic system. The induced distribution is conjectured to obey the Prime Geodesic Theorem suppressed by the sieve survival probability εₖ:
 
-## Validation
+    π_k(L)  ∼  ε_k · e^{L} / L
 
-```bash
-python math_validation.py
-```
+**What's proven:**
+- Every Mersenne-gap prime maps injectively to a closed geodesic (C7)
+- The sieve density εₖ explains the observed sparsity ordering (T7)
+- All 186 primes < 10¹⁰⁰ are consistent with Anosov dynamics
 
-Runs 67 cross-validation tests covering geodesic distance, conformal factor, Hamilton's equations, Kawasaki constraint, Bekenstein bound, Wheeler-DeWitt constraint, soft crease metrics, exp/log maps, Mobius addition, and crease density.
-
-## The Paper
-
-`Universals/PAPER.md` contains the complete proof of L.O.R.E. and the theoretical framework.
-
-## Dashboard
-
-Open `Universals/index.html` in a browser for a 17-panel live dashboard.
-
-## Architecture
-
-```
-Puno_Calculus/
-├── Universals/
-│   ├── engine.py              # Main engine (7 phases)
-│   ├── hamiltonian_flow.py    # Hamiltonian mechanics
-│   ├── crease_metrics.py      # Crease diagnostics
-│   ├── puno_utils.py          # Shared utilities
-│   ├── manifold/
-│   │   └── poincare.py        # Poincare disk geometry
-│   ├── exp*.py                # 7 Book of Puno experiments
-│   ├── math_validation.py     # 67-test validation suite
-│   ├── prove_c0.py            # L.O.R.E. proofs
-│   ├── index.html             # Dashboard
-│   ├── PAPER.md               # Research paper
-│   └── *.json                 # Engine output data
-├── extracted_text/            # Original source text
-├── pyproject.toml
-├── README.md
-└── LICENSE
-```
-
-## The Law of Repulsive Emanation
-
-**Theorem.** The constant of integration C0 is uniquely determined by the initial condition and system parameters.
-
-**Proof.** At t=0: H(0) = K(0) + V(q0). Since p(0)=0, K(0)=0, so H(0)=V(q0). V(q0) = sum_i max(0, alpha - d(q0, xi))^2 where every input is fixed. Therefore V(q0) is a specific number. Call it C0. Verified across 32 parameter variations. Every case: C0 = H(q0, 0). Always determined. Never arbitrary.
-
-## Key Finding: The λ⁴ Bug
-
-The original velocity formula computed p/lam_sq where lam_sq = (1-||q||²)²/4 = 1/λ², giving velocity = p·λ². The correct Hamilton's equation requires dq/dt = (1/λ²)·p. The factor λ⁴ error causes energy blowup near the boundary. Corrected to p·lam_sq.
+**What's conjectured:**
+- The asymptotic PGT formula requires L >> 300 (current data: L ≤ 229)
+- Whether this framework extends beyond 2ⁿ−k to arbitrary primes is open
 
 ## Experiments
 
@@ -137,13 +56,17 @@ The original velocity formula computed p/lam_sq where lam_sq = (1-||q||²)²/4 =
 | Early Stopping | 71-80% epoch savings via crease stabilization |
 | OOD Detection | Crease AUROC 0.88 (center-noise) |
 | Pruning | Crease beats magnitude at every ratio (+1.4% at 25%) |
-| Fold Visualization | 90° crease as elementary fold |
+| Googol Census | 21 k=3 primes, 186 total across k families |
 
-## References
+## Quick Start
 
-1. Newton, I. (1668). Fundamental Theorem of Calculus.
-2. Puno, M. G. S. (2026). The Book of Puno (2nd ed.).
+```bash
+cd Universals
+python engine.py
+python math_validation.py   # 142 tests
+cd .. && python run_all.py  # Full pipeline
+```
 
 ---
 
-*Everything folds. The constant is determined.*
+*Everything folds. The constant is determined. The chaos is consistent.*
