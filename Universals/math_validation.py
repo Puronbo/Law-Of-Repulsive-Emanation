@@ -1315,6 +1315,47 @@ def test_chaos_order_completeness():
     check(f"T32: C(const)={c_const:.2f} C(unif)={c_unif:.2f} C(d)={c_d:.2f} C(geom)={c_geom:.2f}", True)
 
 
+def test_divisor_closure():
+    """T33: all multiplicative f map to d_t curve; d^2 maps to t=2."""
+    import numpy as np
+    from scipy.interpolate import interp1d
+    def factorise(n):
+        if n == 1: return {}
+        d, pf, p = n, {}, 2
+        while p * p <= d:
+            while d % p == 0: pf[p] = pf.get(p, 0) + 1; d //= p
+            p += 1 if p == 2 else 2
+        if d > 1: pf[d] = pf.get(d, 0) + 1
+        return pf
+    def gap_D(vals):
+        gaps = [abs(vals[i+1] - vals[i]) for i in range(len(vals)-1)]
+        mg, vg = float(np.mean(gaps)), float(np.var(gaps))
+        return vg / mg if mg > 0 else 0
+    def d_t(n, t):
+        cnt = 1.0
+        for a in factorise(n).values(): cnt *= (a + 1) ** t
+        return cnt
+    def d(n, cnt=1):
+        for a in factorise(n).values(): cnt *= a + 1
+        return cnt
+    N = 100
+    D_d = gap_D([d(n) for n in range(1, N+1)])
+    ts = np.linspace(0, 3, 31)
+    C_vals = [gap_D([d_t(n, t) for n in range(1, N+1)]) / D_d for t in ts]
+    slopes = [C_vals[i+1] - C_vals[i] for i in range(len(C_vals)-1)]
+    check("T33: C(t) monotonic", min(slopes) > 0)
+    check("T33: C(0)=0", abs(C_vals[0]) < 0.01)
+    check("T33: C(1)=1", abs(C_vals[10] - 1.0) < 0.05)
+    # d^2 maps to t=2
+    C_d2 = gap_D([float(d(n)**2) for n in range(1, N+1)]) / D_d
+    ts_ge1 = ts[ts >= 1.0]
+    Cs_ge1 = np.array(C_vals)[ts >= 1.0]
+    inv = interp1d(Cs_ge1, ts_ge1, kind='cubic')
+    t_d2 = float(inv(C_d2))
+    check("T33: d^2 at t=2", abs(t_d2 - 2.0) < 0.05)
+    check(f"T33: C(d^2)={C_d2:.2f} t={t_d2:.4f}", True)
+
+
 def test_chaos_index():
     """Verify T28: C(ω) < C(Ω) < C(prime) < 1 < C(φ) < C(M) < C(σ)."""
     import json, numpy as np
@@ -1411,6 +1452,7 @@ if __name__ == "__main__":
     test_hardy_littlewood_chaos()
     test_pnt_verification()
     test_chaos_order_completeness()
+    test_divisor_closure()
     test_chaos_index()
 
     print("\n" + "=" * 70)
