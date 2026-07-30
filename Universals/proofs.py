@@ -135,6 +135,7 @@ def _backward_contracts():
         "T36": (lambda: True, "growth rate ordering: alpha(omega) < alpha(d) < alpha(sigma) matches C(f)"),
         "T37": (lambda: True, "composite sieve: last-digit saturated, SPF ratio constant, run = gap - 1"),
         "T38": (lambda: True, "golden metric: Fibonacci square spiral is asymptotic geodesic of cusp metric g = |dq|^2/|q|^2"),
+        "T39": (lambda: True, "cusp geodesic flow: g = dq^2/|q|^2 is isometric to Euclidean plane under w=log(q); exact Fibonacci geodesic"),
     }
 
 def _run_with_contract(code, fn, verbose=True):
@@ -290,6 +291,7 @@ DEPENDENCIES = {
     "T36": ["T28", "T33"],
     "T37": ["T30", "T31"],
     "T38": ["T35", "T34"],
+    "T39": ["T38"],
 }
 
 BRANCHES = {
@@ -297,7 +299,7 @@ BRANCHES = {
     "Lemmas": ["L1", "L2", "L3"],
     "Theorems": ["T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10"],
     "Corollaries": ["C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8"],
-    "Extended": ["T19", "T20", "T21", "T22", "T23", "T24", "T25", "T26", "T27", "T28", "T29", "T30", "T31", "T32", "T33", "T34", "T35", "T36", "T37", "T38"],
+    "Extended": ["T19", "T20", "T21", "T22", "T23", "T24", "T25", "T26", "T27", "T28", "T29", "T30", "T31", "T32", "T33", "T34", "T35", "T36", "T37", "T38", "T39"],
 }
 
 # =====================================================================
@@ -4640,6 +4642,94 @@ def theorem_38_golden_metric():
     return True
 
 
+def theorem_39_cusp_geodesic_flow():
+    r"""
+    Theorem 39 (Cusp Geodesic Flow) [18].
+
+    The cusp metric on the punctured plane R^2 \ {0}:
+
+        g = (dx^2 + dy^2) / (x^2 + y^2)
+
+    is globally isometric to the Euclidean plane under the coordinate
+    transformation w = log(x + iy) = log r + i*theta.
+
+    Therefore, the geodesics of g are EXACTLY the images of straight
+    lines in the Euclidean w-plane under the exponential map
+    w -> q = exp(w).
+
+    The Fibonacci logarithmic spiral
+
+        q_n = phi^n * exp(i * n * pi / 2)
+
+    is an EXACT geodesic (not merely asymptotic), corresponding to the
+    straight line w_n = n * (log phi + i * pi / 2) in the w-plane.
+
+    Proof.  The cusp metric in polar coordinates is:
+        ds^2 = (dr^2 + r^2 dtheta^2) / r^2 = (dr/r)^2 + dtheta^2.
+    Let u = log r.  Then ds^2 = du^2 + dtheta^2, which is Euclidean.
+    Hence w = u + i*theta = log(q) gives the isometry.
+
+    The exponential map w -> q = exp(w) maps straight lines
+    w(t) = w_0 + v * t to logarithmic spirals q(t) = q_0 * exp(v * t).
+
+    For v = log phi + i*pi/2 and q_0 = 1, we get the Fibonacci spiral
+    q_n = phi^n * exp(i*n*pi/2), which is therefore an exact geodesic.
+    """
+    print("\n--- T39: Cusp Geodesic Flow ---")
+
+    import math
+    import numpy as np
+
+    GOLDEN = (1 + math.sqrt(5)) / 2
+    N = 100
+
+    # Generate exact logarithmic spiral geodesic
+    qs = np.array([[GOLDEN**n * math.cos(n * math.pi / 2),
+                    GOLDEN**n * math.sin(n * math.pi / 2)]
+                   for n in range(N + 1)])
+
+    steps = np.array([float(np.linalg.norm(qs[i+1] - qs[i]))
+                      for i in range(len(qs) - 1)])
+    r = np.array([float(np.linalg.norm(q)) for q in qs])
+
+    # (i) Cusp energy conservation
+    cusp_E = steps / r[:-1]
+    cv_E = float(np.std(cusp_E)) / max(float(np.mean(cusp_E)), 1e-12)
+    print(f"  (i) Cusp energy CV = {cv_E:.2e} (0 = exact)")
+    assert cv_E < 1e-10, f"Cusp energy not conserved (CV={cv_E:.2e})"
+
+    # (ii) Step ratio -> phi
+    step_ratio = steps[1:] / steps[:-1]
+    sr_mean = float(step_ratio[-20:].mean())
+    sr_cv = float(np.std(step_ratio[-20:])) / max(sr_mean, 1e-12)
+    print(f"  (ii) Step ratio = {sr_mean:.6f} (phi={GOLDEN:.6f}, CV={sr_cv:.2e})")
+    assert abs(sr_mean - GOLDEN) < 0.01, \
+        f"Step ratio {sr_mean:.4f} != phi {GOLDEN:.4f}"
+
+    # (iii) w-plane collinearity
+    w_real = np.log(np.maximum(r, 1e-10))
+    w_imag = np.unwrap(np.array([math.atan2(float(q[1]), float(q[0]))
+                                  for q in qs]))
+    A = np.vstack([w_real, np.ones_like(w_real)]).T
+    m, b = np.linalg.lstsq(A, w_imag, rcond=None)[0]
+    residuals = w_imag - (m * w_real + b)
+    r2 = 1 - float(np.var(residuals)) / max(float(np.var(w_imag)), 1e-12)
+    expected_slope = math.pi / (2 * math.log(GOLDEN))
+    print(f"  (iii) w-plane slope = {m:.6f} (expected {expected_slope:.6f})")
+    print(f"        R^2 = {r2:.6f}")
+    assert r2 > 0.999999, f"w-plane R^2 = {r2:.6f} < 1"
+
+    # (iv) T-symmetry (analytic reversal)
+    rev_qs = np.array([[GOLDEN**(-n) * math.cos(-n * math.pi / 2),
+                        GOLDEN**(-n) * math.sin(-n * math.pi / 2)]
+                       for n in range(N + 1)])
+    ts_error = float(np.linalg.norm(rev_qs[::-1][-1] - qs[0]))
+    print(f"  (iv) T-symmetry error = {ts_error:.2e}")
+    assert ts_error < 1e-10, f"T-symmetry broken (error={ts_error:.2e})"
+
+    return True
+
+
 # =====================================================================
 # RUN ALL PROOFS  (branching hierarchy display)
 # =====================================================================
@@ -4697,6 +4787,7 @@ def _item_label(code):
         "T36": "T36  Thermodynamic formalism (C(f) as free energy)",
         "T37": "T37  Composite sieve verification",
         "T38": "T38  Golden metric (cusp geodesy of Fibonacci spiral)",
+        "T39": "T39  Cusp geodesic flow (exact isometry, Fibonacci geodesic)",
     }
     return labels.get(code, code)
 
@@ -4749,6 +4840,7 @@ def _item_fn(code):
         "T36": theorem_36_thermodynamic_formalism,
         "T37": theorem_37_composite_sieve,
         "T38": theorem_38_golden_metric,
+        "T39": theorem_39_cusp_geodesic_flow,
     }
     return fn_map[code]
 

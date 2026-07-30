@@ -50,6 +50,7 @@ digraph PunoCalculus {
   T36 [label="T36: Thermodynamic formalism (C(f) as free energy)", fillcolor="#999", style="filled,rounded", fontcolor="white"];
   T37 [label="T37: Composite sieve verification", fillcolor="#999", style="filled,rounded", fontcolor="white"];
   T38 [label="T38: Golden metric (cusp geodesy of Fibonacci spiral)", fillcolor="#999", style="filled,rounded", fontcolor="white"];
+  T39 [label="T39: Cusp geodesic flow (exact isometry, Fibonacci geodesic)", fillcolor="#999", style="filled,rounded", fontcolor="white"];
 
   A4 -> L1;
   A1 -> T1;
@@ -136,4 +137,5 @@ digraph PunoCalculus {
   T31 -> T37;
   T35 -> T38;
   T34 -> T38;
+  T38 -> T39;
 }

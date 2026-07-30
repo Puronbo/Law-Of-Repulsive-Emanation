@@ -65,20 +65,28 @@ def hyperbolic_dist(u: np.ndarray, v: np.ndarray) -> float:
     return float(np.arccosh(1.0 + 2.0 * sq_dist / denom))
 
 
-def inverse_metric(x: np.ndarray) -> float:
-    """Inverse metric g^{ij} = (1-||x||^2)^2 / 4. Used for Hamiltonian flow.
+def inverse_metric(x: np.ndarray, metric: str = "poincare") -> float:
+    """Inverse metric g^{ij}.
 
-    The conformal factor lambda^2 = 4/(1-||x||^2)^2 (the actual Riemannian
-    metric scale) is returned by manifold.poincare.riemannian_scale().
-    The inverse is used here because the Hamiltonian formulation requires
-    g^{ij}, and both manifold.poincare.inverse_metric() and the numpy
-    equivalent compute (1-r²)²/4.
+    For 'poincare' (standard, default):
+        g^{ij} = (1-||x||^2)^2 / 4
+    For 'cusp' (hyperbolic cusp, golden metric):
+        g^{ij} = ||x||^2
     """
-    return ((1.0 - float(np.sum(x**2)))**2) / 4.0
+    r2 = float(np.sum(x**2))
+    if metric == "cusp":
+        return max(r2, 1e-12)
+    # Poincare (default)
+    return ((1.0 - r2)**2) / 4.0
 
 
-def project_to_disk(x: np.ndarray, max_norm: float = R_MAX_DISK) -> np.ndarray:
+def project_to_disk(x: np.ndarray, max_norm: float = R_MAX_DISK, metric: str = "poincare") -> np.ndarray:
     r = float(np.linalg.norm(x))
+    if metric == "cusp":
+        # Cusp metric: project away from origin (singularity) but no disk bound
+        if r < 1e-10 and r > 0:
+            x = (x / r) * 1e-10
+        return x
     if r >= max_norm:
         x = (x / r) * max_norm
     return x
@@ -188,84 +196,76 @@ class HamiltonianTrajectory:
         return [s.p.tolist() for s in self.states]
 
 
-def _christoffel_force(q: np.ndarray, p: np.ndarray) -> np.ndarray:
+def _christoffel_force(q: np.ndarray, p: np.ndarray, metric: str = "poincare") -> np.ndarray:
     r"""Metric correction to dp/dt from q-dependence of the inverse metric.
 
     Kinetic energy: K = 0.5 * g^{ij}(q) * p_i * p_j
-    g^{ij}(q) = (1 - ||q||^2)^2 / 4 * delta^{ij}
 
-    dK/dq_k = 0.5 * dg^{ij}/dq_k * p_i * p_j
-            = 0.5 * [-(1 - ||q||^2) * q_k] * ||p||^2
-            = -0.5 * (1 - ||q||^2) * q_k * ||p||^2
+    For Poincaré:
+        g^{ij} = (1-||q||^2)^2/4
+        dK/dq_k = -0.5 * (1 - ||q||^2) * q_k * ||p||^2
+        F_christ = -dK/dq = 0.5 * (1 - ||q||^2) * q * ||p||^2
 
-    Hamilton: dp_k/dt = -dH/dq_k = -dV/dq_k - dK/dq_k
-                       = -dV/dq_k + 0.5 * (1 - ||q||^2) * q_k * ||p||^2
-
-    Returns the Christoffel force = -dK/dq.
+    For cusp:
+        g^{ij} = ||q||^2
+        dK/dq_k = 2 * q_k * ||p||^2 / 2 ... = q_k * ||p||^2
+        F_christ = -dK/dq = -q * ||p||^2
     """
+    p_norm_sq = float(np.dot(p, p))
+    if metric == "cusp":
+        return -q * p_norm_sq
     q_norm_sq = float(np.dot(q, q))
     if q_norm_sq >= 1.0:
         q_norm_sq = 0.99
-    p_norm_sq = float(np.dot(p, p))
     return 0.5 * (1.0 - q_norm_sq) * q * p_norm_sq
 
 
 def leapfrog_step(state: HamiltonianState, context: list[str],
                   dt: float, alpha: float = ALPHA,
                   friction: float = FRICTION_DEFAULT,
-                  max_grad: float | None = None) -> HamiltonianState:
+                  max_grad: float | None = None,
+                  metric: str = "poincare") -> HamiltonianState:
     """
     Symplectic leapfrog (Verlet) integration of Hamilton's equations on the
     Poincare disk, with optional dissipative friction.
 
-    Hamilton's equations (with metric correction):
-        dq/dt =  g^{ij}(q) * p_j          = (1/lambda^2) * p
-        dp/dt = -dV/dq - dK/dq - gamma*p  = -grad V + F_christoffel - gamma*p
-
-    The Christoffel correction accounts for the q-dependence of g^{ij}.
-    Without it, the kinetic energy term K = 0.5*g^{ij}(q)*p_i*p_j is
-    treated as independent of q, breaking energy conservation.
+    metric='poincare' (default): standard C0 flow.
+    metric='cusp': cusp metric g = dq^2/|q|^2 for Fibonacci geodesics.
 
     When friction=0, the system is conservative and T-symmetric.
     When friction>0, energy dissipates toward the attractor.
 
-    Gradient clamping (max_grad) is only applied when friction > 0,
-    to preserve the conservative structure for T-symmetry tests.
+    Gradient clamping (max_grad) is only applied when friction > 0.
     """
-    lam_sq = inverse_metric(state.q)
-    if lam_sq < 1e-4:
+    lam_sq = inverse_metric(state.q, metric)
+    if metric != "cusp" and lam_sq < 1e-4:
         lam_sq = 1e-4
 
-    # Total force = -dV/dq - dK/dq = -grad_V + F_christoffel
     grad_v = repulsion_gradient(state.q, context, alpha)
-    christ = _christoffel_force(state.q, state.p)
-    total_force = -grad_v + christ  # net dp/dt (excluding friction)
+    christ = _christoffel_force(state.q, state.p, metric)
+    total_force = -grad_v + christ
     if max_grad is not None and friction > 0:
         fnorm = float(np.linalg.norm(total_force))
         if fnorm > max_grad:
             total_force = total_force * (max_grad / fnorm)
 
-    # Half-step momentum kick (total force + friction)
     p_half = state.p + 0.5 * dt * (total_force - friction * state.p)
 
-    # Full-step position drift
     velocity = p_half * lam_sq
     q_new = state.q + dt * velocity
-    q_new = project_to_disk(q_new)
+    q_new = project_to_disk(q_new, metric=metric)
 
-    # Force at new position (evaluate with p_half for symplectic structure)
-    lam_sq_new = inverse_metric(q_new)
-    if lam_sq_new < 1e-4:
+    lam_sq_new = inverse_metric(q_new, metric)
+    if metric != "cusp" and lam_sq_new < 1e-4:
         lam_sq_new = 1e-4
     grad_v_new = repulsion_gradient(q_new, context, alpha)
-    christ_new = _christoffel_force(q_new, p_half)
+    christ_new = _christoffel_force(q_new, p_half, metric)
     total_force_new = -grad_v_new + christ_new
     if max_grad is not None and friction > 0:
         fnorm_new = float(np.linalg.norm(total_force_new))
         if fnorm_new > max_grad:
             total_force_new = total_force_new * (max_grad / fnorm_new)
 
-    # Half-step momentum kick with friction damping
     p_new = p_half + 0.5 * dt * (total_force_new - friction * p_half)
     if friction > 0:
         p_new = p_new / (1.0 + 0.5 * dt * friction)
@@ -279,13 +279,17 @@ def run_hamiltonian_flow(
     steps: int = 500,
     dt: float = 0.005,
     alpha: float = ALPHA,
+    p0: np.ndarray | None = None,
     friction: float = FRICTION_DEFAULT,
     max_grad: float | None = None,
-    p0: np.ndarray | None = None,
+    metric: str = "poincare",
 ) -> HamiltonianTrajectory:
     """
     Evolve a probe under Hamilton's equations on the Poincare disk
     with optional dissipative friction.
+
+    metric='poincare': standard flow (T8 C0 geodesic).
+    metric='cusp': cusp metric flow (T38 golden geodesic).
 
     When friction=0, the system is conservative and T-symmetric.
     When friction>0, energy dissipates toward the attractor.
@@ -300,7 +304,9 @@ def run_hamiltonian_flow(
     traj.times.append(0.0)
 
     for i in range(steps):
-        state = leapfrog_step(state, context, dt, alpha, friction=friction, max_grad=max_grad)
+        state = leapfrog_step(state, context, dt, alpha,
+                              friction=friction, max_grad=max_grad,
+                              metric=metric)
         traj.states.append(HamiltonianState(q=state.q.copy(), p=state.p.copy()))
         traj.energies.append(state.total_energy(context))
         traj.times.append((i + 1) * dt)
@@ -311,7 +317,8 @@ def run_hamiltonian_flow(
 def hamiltonian_time_reverse(traj: HamiltonianTrajectory, context: list[str],
                              dt: float = 0.005,
                              friction: float = 0.5,
-                             max_grad: float | None = None) -> HamiltonianTrajectory:
+                             max_grad: float | None = None,
+                             metric: str = "poincare") -> HamiltonianTrajectory:
     """
     Time-reverse a Hamiltonian trajectory.
 
@@ -327,7 +334,7 @@ def hamiltonian_time_reverse(traj: HamiltonianTrajectory, context: list[str],
     final_state = traj.states[-1]
     reversed_state = HamiltonianState(
         q=final_state.q.copy(),
-        p=-final_state.p.copy(),  # Negate momentum: T-symmetry
+        p=-final_state.p.copy(),
     )
 
     reversed_traj = HamiltonianTrajectory()
@@ -337,7 +344,9 @@ def hamiltonian_time_reverse(traj: HamiltonianTrajectory, context: list[str],
 
     steps = len(traj.states) - 1
     for i in range(steps):
-        reversed_state = leapfrog_step(reversed_state, context, dt, friction=friction, max_grad=max_grad)
+        reversed_state = leapfrog_step(reversed_state, context, dt,
+                                       friction=friction, max_grad=max_grad,
+                                       metric=metric)
         reversed_traj.states.append(HamiltonianState(q=reversed_state.q.copy(), p=reversed_state.p.copy()))
         reversed_traj.energies.append(reversed_state.total_energy(context))
         reversed_traj.times.append((i + 1) * dt)
