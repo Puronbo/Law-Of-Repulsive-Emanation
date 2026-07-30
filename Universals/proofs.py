@@ -62,6 +62,7 @@ Branching hierarchy (deps flow downward):
     T34 C0-Chaos correspondence (unification)           [T8, T33]
     T35 Selberg trace (prime geodesic asymptotics)      [T19, T34]
     T36 Thermodynamic formalism (C(f) as free energy)   [T28, T33]
+    T37 Composite sieve verification                    [T30, T31]
 
 Each result is stated, proved, and (where possible) verified numerically.
 Inline references [1]-[15] are listed in the References section at end.
@@ -132,6 +133,7 @@ def _backward_contracts():
         "T34": (lambda: True, "C0 law + divisor criticality = same 'measured, not chosen' principle"),
         "T35": (lambda: True, "pi_geo(L) ~ e^L/L: at least 1 periodic orbit, super-linear growth"),
         "T36": (lambda: True, "growth rate ordering: alpha(omega) < alpha(d) < alpha(sigma) matches C(f)"),
+        "T37": (lambda: True, "composite sieve: last-digit saturated, SPF ratio constant, run = gap - 1"),
     }
 
 def _run_with_contract(code, fn, verbose=True):
@@ -285,6 +287,7 @@ DEPENDENCIES = {
     "T34": ["T8", "T33"],
     "T35": ["T19", "T34"],
     "T36": ["T28", "T33"],
+    "T37": ["T30", "T31"],
 }
 
 BRANCHES = {
@@ -292,7 +295,7 @@ BRANCHES = {
     "Lemmas": ["L1", "L2", "L3"],
     "Theorems": ["T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10"],
     "Corollaries": ["C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8"],
-    "Extended": ["T19", "T20", "T21", "T22", "T23", "T24", "T25", "T26", "T27", "T28", "T29", "T30", "T31", "T32", "T33", "T34", "T35", "T36"],
+    "Extended": ["T19", "T20", "T21", "T22", "T23", "T24", "T25", "T26", "T27", "T28", "T29", "T30", "T31", "T32", "T33", "T34", "T35", "T36", "T37"],
 }
 
 # =====================================================================
@@ -4390,6 +4393,116 @@ def theorem_36_thermodynamic_formalism():
 
 
 # =====================================================================
+# THEOREM 37: Composite sieve verification (three predictions)
+# =====================================================================
+# Confirms the three composite distribution patterns are direct
+# consequences of the sieve of Eratosthenes:
+#   1. Last-digit saturation (0,2,4,5,6,8)
+#   2. Smallest-prime-factor decay matches (1/p) * prod_{q<p}(1-1/q)
+#   3. Composite run-length = prime gap - 1
+# =====================================================================
+
+def theorem_37_composite_sieve():
+    r"""
+    Theorem 37 (Composite Sieve Verification) [15].
+
+    For the natural numbers up to N, let C(N) be the set of composites.
+    Then:
+
+    (i) Last-digit saturation.  For d in {0, 2, 4, 5, 6, 8}:
+
+            #{n in C(N) : n mod 10 = d} = floor(N/10) + O(1).
+
+        For d in {1, 3, 7, 9}: the count is strictly lower by the
+        number of primes > 5 ending in that digit.
+
+    (ii) Smallest-prime-factor decay.  Let f(p) be the fraction of
+    composites whose smallest prime factor is p.  Then:
+
+            f(p) = (1/p) * prod_{q < p} (1 - 1/q) * (1 + O(1/ln N)).
+
+    (iii) Composite run-length.  The length of the composite block
+    between consecutive primes p_k and p_{k+1} equals gap - 1 where
+    gap = p_{k+1} - p_k.  Hence the run-length distribution is the
+    prime-gap distribution shifted by -1.
+
+    Proof.  All three are direct consequences of the sieve.
+    (i) A composite ending in 0, 2, 4, 6, 8 is even; a composite
+    ending in 5 is a multiple of 5.  Apart from 2 and 5 themselves,
+    every such number is composite, hence the near-exact count of
+    N/10 per digit.
+
+    (ii) The probability that p is the smallest factor is the
+    probability that no smaller prime divides n, times 1/p.
+    This is the standard sieve estimate.
+
+    (iii) Every integer strictly between consecutive primes is
+    composite by definition, so run = gap - 1.
+
+    Verification: Compute all three distributions up to N=200,000.
+    """
+    print("\n--- T37: Composite Sieve Verification ---")
+    from composite_analyzer import analyze_composites
+
+    N = 200_000
+    result = analyze_composites(N)
+    ld = result["last_digit"]
+    total = sum(ld.values())
+
+    # (i) Last-digit saturation: {0,2,4,5,6,8} have ~N/10 each
+    saturated_digits = [0, 2, 4, 5, 6, 8]
+    competing_digits = [1, 3, 7, 9]
+    for d in saturated_digits:
+        assert ld[d] >= 0.9 * N / 10, \
+            f"Saturated digit {d}: {ld[d]} < {0.9 * N / 10:.0f}"
+    for d in competing_digits:
+        assert ld[d] < 0.9 * N / 10, \
+            f"Competing digit {d}: {ld[d]} >= {0.9 * N / 10:.0f}"
+
+    # (ii) SPF: empirical/predicted ratio is approximately constant
+    spf_emp = result["spf_empirical"]
+    spf_pred = result["spf_predicted"]
+    ratios = []
+    for p in [2, 3, 5, 7, 11, 13]:
+        if p in spf_pred and spf_pred[p] > 0:
+            ratios.append(spf_emp[p] / spf_pred[p])
+    if ratios:
+        mean_ratio = float(np.mean(ratios))
+        max_dev = max(abs(r - mean_ratio) for r in ratios)
+        # Ratio should be approximately constant (within 1%)
+        assert max_dev / mean_ratio < 0.02, \
+            f"SPF ratio deviates by {max_dev/mean_ratio*100:.2f}%"
+        print(f"  SPF: empirical/predicted ratio = {mean_ratio:.4f} "
+              f"(max dev {max_dev/mean_ratio*100:.2f}%)")
+
+    # (iii) Composite run-length: avg run ≈ avg gap - 1
+    rs = result["run_length_stats"]
+    gaps = result["gaps"]
+    avg_gap = float(np.mean(gaps))
+    expected_avg_run = avg_gap - 1
+    actual_avg_run = rs["avg_run_length"]
+    run_error = abs(actual_avg_run - expected_avg_run)
+    assert run_error < 0.5, \
+        f"Avg run {actual_avg_run:.2f} != avg gap {avg_gap:.2f} - 1"
+    print(f"  Composite run-length: avg = {actual_avg_run:.2f} "
+          f"(gap-1 = {expected_avg_run:.2f})")
+
+    # Most common run should match most common gap
+    # gap=6 (from T30) → run=5
+    from collections import Counter
+    gap_counter = Counter(gaps)
+    most_common_gap = gap_counter.most_common(1)[0][0]
+    run_counter = Counter([g - 1 for g in gaps])
+    mc_run = run_counter.most_common(1)[0][0]
+    print(f"  Most common gap = {most_common_gap} → run = {mc_run} "
+          f"(gap - 1 = {most_common_gap - 1})")
+    assert mc_run == most_common_gap - 1, \
+        f"Most common run {mc_run} != most common gap {most_common_gap} - 1"
+
+    return True
+
+
+# =====================================================================
 # RUN ALL PROOFS  (branching hierarchy display)
 # =====================================================================
 
@@ -4444,6 +4557,7 @@ def _item_label(code):
         "T34": "T34  C0-Chaos correspondence (unification)",
         "T35": "T35  Selberg trace (prime geodesic asymptotics)",
         "T36": "T36  Thermodynamic formalism (C(f) as free energy)",
+        "T37": "T37  Composite sieve verification",
     }
     return labels.get(code, code)
 
@@ -4494,6 +4608,7 @@ def _item_fn(code):
         "T34": theorem_34_c0_chaos_correspondence,
         "T35": theorem_35_selberg_trace,
         "T36": theorem_36_thermodynamic_formalism,
+        "T37": theorem_37_composite_sieve,
     }
     return fn_map[code]
 

@@ -26,7 +26,7 @@ digraph PunoCalculus {
   C2 [label="C2: Deep crease bound (depth-indep)", fillcolor="#c0392b", style="filled,rounded", fontcolor="white"];
   C3 [label="C3: Dissipative crease convergence", fillcolor="#c0392b", style="filled,rounded", fontcolor="white"];
   C4 [label="C4: Poincare recurrence", fillcolor="#c0392b", style="filled,rounded", fontcolor="white"];
-  C5 [label="C5: Bekenstein bound (geometric entropy)", fillcolor="#c0392b", style="filled,rounded", fontcolor="white"];
+  C5 [label="C5: Symplectic volume bound", fillcolor="#c0392b", style="filled,rounded", fontcolor="white"];
   C6 [label="C6: Generalization gap bound", fillcolor="#c0392b", style="filled,rounded", fontcolor="white"];
   C7 [label="C7: Prime geodesic bridge", fillcolor="#c0392b", style="filled,rounded", fontcolor="white"];
   C8 [label="C8: Bidirectional coherence", fillcolor="#c0392b", style="filled,rounded", fontcolor="white"];
@@ -48,6 +48,7 @@ digraph PunoCalculus {
   T34 [label="T34: C0-Chaos correspondence (unification)", fillcolor="#999", style="filled,rounded", fontcolor="white"];
   T35 [label="T35: Selberg trace (prime geodesic asymptotics)", fillcolor="#999", style="filled,rounded", fontcolor="white"];
   T36 [label="T36: Thermodynamic formalism (C(f) as free energy)", fillcolor="#999", style="filled,rounded", fontcolor="white"];
+  T37 [label="T37: Composite sieve verification", fillcolor="#999", style="filled,rounded", fontcolor="white"];
 
   A4 -> L1;
   A1 -> T1;
@@ -130,4 +131,6 @@ digraph PunoCalculus {
   T34 -> T35;
   T28 -> T36;
   T33 -> T36;
+  T30 -> T37;
+  T31 -> T37;
 }
