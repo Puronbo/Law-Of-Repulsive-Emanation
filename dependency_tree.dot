@@ -46,6 +46,8 @@ digraph PunoCalculus {
   T32 [label="T32: Chaos-order completeness (C measures clustering)", fillcolor="#999", style="filled,rounded", fontcolor="white"];
   T33 [label="T33: Divisor closure (universal d_t family)", fillcolor="#999", style="filled,rounded", fontcolor="white"];
   T34 [label="T34: C0-Chaos correspondence (unification)", fillcolor="#999", style="filled,rounded", fontcolor="white"];
+  T35 [label="T35: Selberg trace (prime geodesic asymptotics)", fillcolor="#999", style="filled,rounded", fontcolor="white"];
+  T36 [label="T36: Thermodynamic formalism (C(f) as free energy)", fillcolor="#999", style="filled,rounded", fontcolor="white"];
 
   A4 -> L1;
   A1 -> T1;
@@ -124,4 +126,8 @@ digraph PunoCalculus {
   T32 -> T33;
   T8 -> T34;
   T33 -> T34;
+  T19 -> T35;
+  T34 -> T35;
+  T28 -> T36;
+  T33 -> T36;
 }

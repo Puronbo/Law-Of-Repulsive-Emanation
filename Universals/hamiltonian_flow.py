@@ -694,6 +694,142 @@ def measure_bekenstein_bound(
     }
 
 
+def find_periodic_orbits(
+    context: list[str],
+    q0: np.ndarray | None = None,
+    steps: int = 5000,
+    dt: float = 0.002,
+    friction: float = 0.0,
+    max_grad: float = 5.0,
+    return_threshold: float = 0.05,
+    min_period: int = 50,
+) -> dict:
+    """
+    Find approximate closed geodesics (periodic orbits) by detecting
+    near-recurrences in a long frictionless trajectory.
+
+    A "return" is when the position q(t) comes within `return_threshold`
+    of the starting position q0 (in Euclidean norm).
+
+    Returns:
+        orbit_lengths: list of geodesic orbit lengths (in steps)
+        n_orbits: total number of distinct orbits found
+        trajectory: the full Hamiltonian trajectory
+    """
+    if q0 is None:
+        q0 = np.array([0.05, 0.0])
+
+    traj = run_hamiltonian_flow(q0, context, steps=steps, dt=dt,
+                                friction=friction, max_grad=max_grad)
+
+    n = len(traj.states)
+    lengths = []
+    for i in range(min_period, n):
+        dist = float(np.linalg.norm(traj.states[i].q - q0))
+        if dist < return_threshold:
+            # Check this is a new minimum period (not a multiple of a shorter one)
+            period = i
+            is_primitive = True
+            for p in lengths:
+                if period % p == 0 and period // p >= 2:
+                    is_primitive = False
+                    break
+            if is_primitive:
+                lengths.append(period)
+
+    return {
+        "orbit_lengths": lengths,
+        "n_orbits": len(lengths),
+        "trajectory": traj,
+    }
+
+
+def estimate_symplectic_volume(
+    context: list[str],
+    n_samples: int = 3000,
+    energy_width: float = 10.0,
+    n_bins: int = 20,
+) -> dict:
+    """
+    Estimate the symplectic volume (Liouville measure) of the energy shell.
+
+    For a 2D phase space (q in D_R, p in R^2), the symplectic form is
+    omega = dq^1 ^ dp_1 + dq^2 ^ dp_2.  The volume of the energy shell:
+
+        Omega_E = {(q,p) : |H(q,p) - E| < delta}
+
+    is estimated by Monte Carlo sampling on a momentum grid.
+
+    Returns:
+        shell_volume: estimated symplectic volume of the energy shell
+        n_states_estimate: estimated number of distinguishable states (= volume / (2*pi)^d)
+        mean_energy: mean total energy of sampled states
+        n_shell_cells: number of grid cells inside the energy shell
+        n_total_cells: total number of grid cells
+    """
+
+    def _repulsion_loss(q):
+        total = 0.0
+        for word in context:
+            xi = np.array([hash(word) % 1000 / 500 - 1 for _ in range(2)])
+            xi = xi / max(np.linalg.norm(xi), 0.01) * 0.9
+            d = hyperbolic_dist(q, xi)
+            total += max(0, 2.5 - d) ** 2
+        return total
+
+    def _hamiltonian(q, p):
+        g = (1 - np.dot(q, q)) ** 2 / 4
+        kinetic = 0.5 * np.dot(p, p) / g
+        return kinetic + _repulsion_loss(q)
+
+    # Two-pass: estimate mean energy, then count shell volume
+    np.random.seed(42)
+    energies = []
+    for _ in range(n_samples):
+        q = np.random.uniform(-0.99, 0.99, 2)
+        if np.dot(q, q) >= 0.98:
+            continue
+        p = np.random.normal(0, 1.5, 2)
+        energies.append(_hamiltonian(q, p))
+
+    mean_E = float(np.mean(energies))
+    dp_max = 5.0
+    dq_step = (2 * 0.99) / n_bins
+    dp_step = (2 * dp_max) / n_bins
+    cell_vol = dq_step * dq_step * dp_step * dp_step
+
+    shell_cells = 0
+    total_cells = 0
+    for i in range(n_bins):
+        qx = -0.99 + (i + 0.5) * dq_step
+        for j in range(n_bins):
+            qy = -0.99 + (j + 0.5) * dq_step
+            if qx*qx + qy*qy >= 0.98:
+                continue
+            q = np.array([qx, qy])
+            for k in range(n_bins):
+                px = -dp_max + (k + 0.5) * dp_step
+                for l in range(n_bins):
+                    py = -dp_max + (l + 0.5) * dp_step
+                    p = np.array([px, py])
+                    total_cells += 1
+                    E = _hamiltonian(q, p)
+                    if abs(E - mean_E) < energy_width:
+                        shell_cells += 1
+
+    shell_volume = float(shell_cells * cell_vol)
+    d = 2
+    n_states = shell_volume / ((2 * math.pi) ** d)
+
+    return {
+        "shell_volume": shell_volume,
+        "n_states_estimate": n_states,
+        "mean_energy": mean_E,
+        "n_shell_cells": shell_cells,
+        "n_total_cells": total_cells,
+    }
+
+
 # ---------------------------------------------------------------------------
 # Demo
 # ---------------------------------------------------------------------------
