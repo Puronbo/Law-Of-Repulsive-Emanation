@@ -1277,6 +1277,44 @@ def test_pnt_verification():
     check("T31: PNT window verification complete", True)
 
 
+def test_chaos_order_completeness():
+    """T32: C=0 for ordered; C<1 for i.i.d.; C=1 for d(n); C>1 for bursty."""
+    import numpy as np, math
+    def gap_D(vals):
+        gaps = [abs(vals[i+1] - vals[i]) for i in range(len(vals)-1)]
+        mg, vg = float(np.mean(gaps)), float(np.var(gaps))
+        return vg / mg if mg > 0 else 0
+    def factorise(n):
+        if n == 1: return {}
+        d, pf, p = n, {}, 2
+        while p * p <= d:
+            while d % p == 0: pf[p] = pf.get(p, 0) + 1; d //= p
+            p += 1 if p == 2 else 2
+        if d > 1: pf[d] = pf.get(d, 0) + 1
+        return pf
+    def d(n, cnt=1):
+        for a in factorise(n).values(): cnt *= a + 1
+        return cnt
+    N = 100
+    D_d = gap_D([d(n) for n in range(1, N+1)])
+    np.random.seed(42)
+    # Ordered
+    c_const = gap_D([1.0]*N) / D_d
+    check("T32: C(constant) ≈ 0", c_const < 0.001)
+    c_alt = gap_D([(-1.0)**n for n in range(N)]) / D_d
+    check("T32: C((-1)^n) ≈ 0", c_alt < 0.001)
+    # Sub-chaotic (i.i.d. random)
+    c_unif = gap_D(list(np.random.uniform(0, 1, N))) / D_d
+    check("T32: C(uniform) < 1", c_unif < 1.0)
+    # Critical
+    c_d = gap_D([float(d(n)) for n in range(1, N+1)]) / D_d
+    check("T32: C(d(n)) ≈ 1", abs(c_d - 1.0) < 0.01)
+    # Super-chaotic
+    c_geom = gap_D([float(np.random.geometric(0.1)) for _ in range(N)]) / D_d
+    check("T32: C(geometric) > 1", c_geom > 1.0)
+    check(f"T32: C(const)={c_const:.2f} C(unif)={c_unif:.2f} C(d)={c_d:.2f} C(geom)={c_geom:.2f}", True)
+
+
 def test_chaos_index():
     """Verify T28: C(ω) < C(Ω) < C(prime) < 1 < C(φ) < C(M) < C(σ)."""
     import json, numpy as np
@@ -1372,6 +1410,7 @@ if __name__ == "__main__":
     test_continuous_chaos()
     test_hardy_littlewood_chaos()
     test_pnt_verification()
+    test_chaos_order_completeness()
     test_chaos_index()
 
     print("\n" + "=" * 70)
