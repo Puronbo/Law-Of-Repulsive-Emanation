@@ -49,6 +49,7 @@ digraph PunoCalculus {
   T35 [label="T35: Selberg trace (prime geodesic asymptotics)", fillcolor="#999", style="filled,rounded", fontcolor="white"];
   T36 [label="T36: Thermodynamic formalism (C(f) as free energy)", fillcolor="#999", style="filled,rounded", fontcolor="white"];
   T37 [label="T37: Composite sieve verification", fillcolor="#999", style="filled,rounded", fontcolor="white"];
+  T38 [label="T38: Golden metric (cusp geodesy of Fibonacci spiral)", fillcolor="#999", style="filled,rounded", fontcolor="white"];
 
   A4 -> L1;
   A1 -> T1;
@@ -133,4 +134,6 @@ digraph PunoCalculus {
   T33 -> T36;
   T30 -> T37;
   T31 -> T37;
+  T35 -> T38;
+  T34 -> T38;
 }

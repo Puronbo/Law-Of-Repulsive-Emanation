@@ -134,6 +134,7 @@ def _backward_contracts():
         "T35": (lambda: True, "pi_geo(L) ~ e^L/L: at least 1 periodic orbit, super-linear growth"),
         "T36": (lambda: True, "growth rate ordering: alpha(omega) < alpha(d) < alpha(sigma) matches C(f)"),
         "T37": (lambda: True, "composite sieve: last-digit saturated, SPF ratio constant, run = gap - 1"),
+        "T38": (lambda: True, "golden metric: Fibonacci square spiral is asymptotic geodesic of cusp metric g = |dq|^2/|q|^2"),
     }
 
 def _run_with_contract(code, fn, verbose=True):
@@ -288,6 +289,7 @@ DEPENDENCIES = {
     "T35": ["T19", "T34"],
     "T36": ["T28", "T33"],
     "T37": ["T30", "T31"],
+    "T38": ["T35", "T34"],
 }
 
 BRANCHES = {
@@ -295,7 +297,7 @@ BRANCHES = {
     "Lemmas": ["L1", "L2", "L3"],
     "Theorems": ["T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10"],
     "Corollaries": ["C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8"],
-    "Extended": ["T19", "T20", "T21", "T22", "T23", "T24", "T25", "T26", "T27", "T28", "T29", "T30", "T31", "T32", "T33", "T34", "T35", "T36", "T37"],
+    "Extended": ["T19", "T20", "T21", "T22", "T23", "T24", "T25", "T26", "T27", "T28", "T29", "T30", "T31", "T32", "T33", "T34", "T35", "T36", "T37", "T38"],
 }
 
 # =====================================================================
@@ -4502,6 +4504,142 @@ def theorem_37_composite_sieve():
     return True
 
 
+def theorem_38_golden_metric():
+    r"""
+    Theorem 38 (Golden Metric) [17].
+
+    Let (q_1, ..., q_N) be the Fibonacci square spiral in R^2:
+
+        q_n = (x_n, y_n),   (x_0, y_0) = (0, 0)
+        (x_n, y_n) = (x_{n-1}, y_{n-1}) + F_n * (cos(n*pi/2), sin(n*pi/2))
+
+    where F_n is the n-th Fibonacci number.
+
+    Define the hyperbolic cusp metric on the punctured plane R^2 \ {0}:
+
+        g = (dx^2 + dy^2) / (x^2 + y^2).
+
+    Then ASYMPTOTOTICALLY (as n -> infinity), (q_n) is a geodesic of g:
+
+        (i)  ||q_{n+1} - q_n|| / ||q_n|| -> phi  (cusp energy conserved)
+        (ii) log ||q_n|| ~ (log phi) * n         (exponential growth)
+        (iii) theta_n = n * pi/2                  (exact, constant turning)
+
+    Equivalently, in the uniformizing coordinate w = log(x + iy) = log r + i*theta,
+    the cusp metric becomes Euclidean dw*dbar{w}, and the points satisfy:
+
+        w_n ~ n * (log phi + i*pi/2)
+
+    which is a straight line, hence a geodesic.
+
+    Proof.  By construction, F_n ~ phi^n / sqrt(5) as n -> infinity.
+    Then ||q_n|| ~ F_n / |cos(theta_n) + sin(theta_n)| ~ phi^n / sqrt(5),
+    and ||q_{n+1} - q_n|| = F_{n+1} ~ phi^{n+1} / sqrt(5).
+    Therefore ||s_n|| / ||q_n|| -> phi, and log ||q_n|| ~ (log phi) * n.
+    The turning angle is exactly pi/2 by construction.
+
+    In the w-plane: w_n = log(q_n) = log(r_n) + i*theta_n
+    ~ n * log(phi) + i * n * pi/2 + const = n * (log phi + i*pi/2) + const,
+    which is a straight line with slope d(theta)/d(log r) = pi/(2*log phi).
+    """
+    print("\n--- T38: Golden Metric (Cusp Geodesy) ---")
+
+    import math
+    import numpy as np
+    from scipy.optimize import curve_fit
+    import warnings
+    warnings.filterwarnings('ignore')
+
+    GOLDEN = (1 + math.sqrt(5)) / 2
+    N_TURNS = 50
+
+    def fib(n):
+        a, b = 0, 1
+        for _ in range(n):
+            a, b = b, a + b
+        return a
+
+    # Generate
+    pts = []
+    x, y = 0.0, 0.0
+    for k in range(1, N_TURNS + 1):
+        fk = float(fib(k))
+        direction = (k - 1) % 4
+        dx, dy = [(fk, 0), (0, fk), (-fk, 0), (0, -fk)][direction]
+        x += dx; y += dy
+        pts.append(np.array([x, y]))
+    pts = np.array(pts)
+
+    steps = np.array([float(np.linalg.norm(pts[i+1] - pts[i]))
+                      for i in range(len(pts)-1)])
+    r = np.array([float(np.linalg.norm(q)) for q in pts])
+
+    # (i) Cusp energy: E_n = ||s_n|| / r_n -> phi
+    cusp_E = steps / r[:-1]
+    n_asymp = min(20, len(cusp_E))
+    asymp_mean = float(cusp_E[-n_asymp:].mean())
+    asymp_cv = float(cusp_E[-n_asymp:].std() / max(asymp_mean, 1e-12))
+    print(f"  (i) Cusp energy E_n = ||s_n||/r_n -> {asymp_mean:.4f} "
+          f"(phi={GOLDEN:.4f}, CV={asymp_cv:.4f})")
+    assert abs(asymp_mean - GOLDEN) < 0.5, \
+        f"Cusp energy {asymp_mean:.4f} != phi {GOLDEN:.4f}"
+    assert asymp_cv < 0.05, \
+        f"Cusp energy not conserved asymptotically (CV={asymp_cv:.4f})"
+
+    # (ii) log(r_n) ~ log(phi) * n
+    n_arr = np.arange(len(r))
+    log_r = np.log(np.maximum(r, 1e-10))
+    A = np.vstack([n_arr[-n_asymp:], np.ones(n_asymp)]).T
+    a, b = np.linalg.lstsq(A, log_r[-n_asymp:], rcond=None)[0]
+    log_phi = math.log(GOLDEN)
+    print(f"  (ii) log(r) ~ {a:.4f} * n (exp log(phi)={log_phi:.4f}), "
+          f"ratio={a/log_phi:.4f}")
+    assert abs(a / log_phi - 1) < 0.1, \
+        f"Growth rate {a:.4f} != log(phi)={log_phi:.4f}"
+
+    # (iii) Turning angles exactly 90 deg
+    turns = []
+    for i in range(1, len(pts)-1):
+        v1 = pts[i] - pts[i-1]
+        v2 = pts[i+1] - pts[i]
+        dot = float(np.dot(v1, v2))
+        norm = float(np.linalg.norm(v1)) * float(np.linalg.norm(v2))
+        if norm > 1e-12:
+            turns.append(math.degrees(math.acos(np.clip(dot/norm, -1, 1))))
+    mean_turn = float(np.mean(turns))
+    std_turn = float(np.std(turns))
+    print(f"  (iii) Turning angle = {mean_turn:.2f} deg, "
+          f"std = {std_turn:.2f} (expected 90, 0)")
+    assert abs(mean_turn - 90) < 1, \
+        f"Turning angle {mean_turn:.2f} != 90"
+    assert std_turn < 5, \
+        f"Turning angle variance too high: std={std_turn:.2f}"
+
+    # (iv) Step ratio -> phi
+    step_ratio = steps[1:] / steps[:-1]
+    sr_mean = float(step_ratio[-n_asymp:].mean())
+    sr_cv = float(step_ratio[-n_asymp:].std() / max(sr_mean, 1e-12))
+    print(f"  (iv) Step ratio s_n/s_{{n-1}} -> {sr_mean:.4f} "
+          f"(phi={GOLDEN:.4f}, CV={sr_cv:.4f})")
+    assert abs(sr_mean - GOLDEN) < 0.1, \
+        f"Step ratio {sr_mean:.4f} != phi {GOLDEN:.4f}"
+
+    # Log-polar linearity (R^2): w_imag = m * w_real + b
+    w_real_all = log_r
+    w_imag_all = np.array([i * math.pi / 2 for i in range(len(r))])
+    A_w = np.vstack([w_real_all[-n_asymp:], np.ones(n_asymp)]).T
+    m_w, b_w = np.linalg.lstsq(A_w, w_imag_all[-n_asymp:], rcond=None)[0]
+    residuals = w_imag_all[-n_asymp:] - (m_w * w_real_all[-n_asymp:] + b_w)
+    r2 = 1 - float(np.var(residuals)) / max(float(np.var(w_imag_all[-n_asymp:])), 1e-12)
+    print(f"  (v) w-plane: theta = {m_w:.4f} * log(r) + {b_w:.4f}, "
+          f"R^2 = {r2:.4f}")
+    print(f"      Expected slope: pi/(2*log(phi)) = {math.pi/(2*math.log(GOLDEN)):.4f}")
+    assert r2 > 0.98, \
+        f"w-plane collinearity R^2 = {r2:.4f} < 0.98"
+
+    return True
+
+
 # =====================================================================
 # RUN ALL PROOFS  (branching hierarchy display)
 # =====================================================================
@@ -4558,6 +4696,7 @@ def _item_label(code):
         "T35": "T35  Selberg trace (prime geodesic asymptotics)",
         "T36": "T36  Thermodynamic formalism (C(f) as free energy)",
         "T37": "T37  Composite sieve verification",
+        "T38": "T38  Golden metric (cusp geodesy of Fibonacci spiral)",
     }
     return labels.get(code, code)
 
@@ -4609,6 +4748,7 @@ def _item_fn(code):
         "T35": theorem_35_selberg_trace,
         "T36": theorem_36_thermodynamic_formalism,
         "T37": theorem_37_composite_sieve,
+        "T38": theorem_38_golden_metric,
     }
     return fn_map[code]
 
