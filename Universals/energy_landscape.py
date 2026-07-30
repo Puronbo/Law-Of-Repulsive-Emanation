@@ -139,11 +139,13 @@ def run(context: list[str] | None = None, alpha: float = 2.5):
               f"evals={hessian_data[name]['hessian_evals']}")
 
     # Poincare-Hopf: sum of indices over critical points = Euler characteristic of disk = 1
-    # The origin has index +1 (source), giving Euler characteristic 1.
+    index_map = {0: 1, 1: -1, 2: 1}  # (-1)^morse
+    index_sum = sum(index_map.get(d["morse_index"], 0) for d in hessian_data.values())
     poincare_hopf = {
         "euler_characteristic": 1,
-        "index_sum": 1,  # origin contributes +1 (source with 2D unstable manifold)
-        "note": "Poincare-Hopf theorem: sum(indices) = chi(disk) = 1. Origin is a source (index +1).",
+        "index_sum": index_sum,
+        "n_critical": len(hessian_data),
+        "note": f"Poincare-Hopf: sum(indices) = chi(disk) = 1. Computed index sum = {index_sum} across {len(hessian_data)} sampled points.",
     }
 
     export = {
