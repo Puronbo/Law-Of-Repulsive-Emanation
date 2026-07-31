@@ -16,6 +16,12 @@ from manifold.poincare import (
     exp_map,
     log_map,
 )
+from manifold.polysphere import (
+    PolysphereRouter,
+    fibonacci_sphere,
+    sine_cosine_truth,
+    random_truths,
+)
 
 __all__ = [
     "geodesic_distance",
@@ -26,4 +32,8 @@ __all__ = [
     "mobius_add",
     "exp_map",
     "log_map",
+    "PolysphereRouter",
+    "fibonacci_sphere",
+    "sine_cosine_truth",
+    "random_truths",
 ]
