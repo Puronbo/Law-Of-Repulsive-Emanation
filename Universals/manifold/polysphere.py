@@ -80,8 +80,13 @@ class PolysphereRouter:
 
     # --- routing ---
 
-    def route_batch(self, X: np.ndarray, y: np.ndarray) -> tuple[int, float]:
+    def route_batch(self, X: np.ndarray, y: np.ndarray,
+                    signed: bool = False) -> tuple[int, float]:
         """Route a batch (X, y) to the best face by truth-pattern correlation.
+
+        signed=False (default): use |corr| — good when sign doesn't matter.
+        signed=True: use corr directly — use when y is binary indicator
+                     and positive correlation is desired.
 
         Returns (face_index, confidence).
         """
@@ -89,7 +94,9 @@ class PolysphereRouter:
         for j in range(self.n_faces):
             t = self.truths[j](X)
             if np.std(t) > 1e-10 and np.std(y) > 1e-10:
-                c = abs(np.corrcoef(t, y)[0, 1])
+                c = np.corrcoef(t, y)[0, 1]
+                if not signed:
+                    c = abs(c)
                 if c > best_c:
                     best_c = c
                     best_j = j
