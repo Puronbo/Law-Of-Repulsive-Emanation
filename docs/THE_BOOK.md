@@ -145,7 +145,7 @@ the observation kinds attached (Ch. 2).  One net, all manner of information.
 |---|---|
 | Book | `docs/DECENTRAL_NET.md` (short) + this document (canonical) |
 | Net module | `Universals/manifold/decentral_net.py` (numpy-only) |
-| Snapshot | `%LOCALAPPDATA%\Temp\opencode\top1m\internet_net.pkl` (3.17 GB, 1,531,932 survivors + domain map) |
+| Snapshot | `%LOCALAPPDATA%\Temp\opencode\top1m\internet_net.pkl` (3.02 GB, 1,531,932 survivors + domain map); full union: `internet_net_full.pkl` (2.0 GB, 1,914,915 sites, rebuild with `python experiments/decentral_net_union.py --full`) |
 | Daemon | `experiments/decentral_net_live.py` (indefinite, checkpoint/resume, stopfile drain) |
 | Benchmarks | `experiments/decentral_net{,_mnist,_continual,_internet,_union,_ceiling,_anomaly}.py` |
 
@@ -211,7 +211,13 @@ folds up on itself (mirror/retrace/golden/helix + overcoil ring lock) ·
 T59 the clock test (convention carries a law at 1.000, breaks to 0.417 under
 a +15-day re-index) · T60 the fold as optimizer (Hamiltonian retrace
 conserves, damped mirror locks) · T61 the rotation test (structure survives
-rotations at 1.000, collapses under relabeling).
+rotations at 1.000, collapses under relabeling) · T62 prime engine from
+scratch (π(943,901,200,001)=35,575,526,191 exact; retrace chain 9.4e11→
+1,914,467→730,421→26,102→10,262) · T63 the fold derived (mirror fold =
+unique viscosity solution of |r′|=a; crease = cut locus) · T64 the retrace
+derived (reflecting boundary at Θ = cut locus selected by viscosity out of
+the infinite weak-solution family).  The spring-fold cosmology is closed:
+no imposed folds, no open theorems.
 
 *Read, copy, and disagree with this Book — but if you disagree, you are no
 longer in this network.  That is the whole of the constitution.*
