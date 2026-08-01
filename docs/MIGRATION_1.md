@@ -1,3 +1,5 @@
+> **STATUS: SUPERSEDED.** The v2 engine described here was never migrated into this repo; the v2 symbols exist only in rchive/hyperbolic-ai/. All live work happens in Universals/engine.py (v1). Per docs/AUDIT.md §1.4, this migration plan is unexecuted and kept for reference only.
+
 # Migration Instructions: Import Hyperbolic Engine v2
 
 Give this whole file to your coding assistant (Claude Code, Cursor, etc.)

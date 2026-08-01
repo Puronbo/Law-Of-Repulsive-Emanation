@@ -22,7 +22,7 @@ This is **L.O.R.E.** — the constant emanates from the origin. It is measured, 
 | Corollaries | C1–C8 | Stab(i), crease bounds, recurrence, Bekenstein, C7 bridge |
 | Extended | **T19** | Consistent chaos — geodesic flow embeds Mersenne-gap primes |
 
-Full graph: `dependency_tree.dot`. 142/147 math validations pass.
+Full graph: `dependency_tree.dot`. 192 math-validation checks pass (0 failures).
 
 ## Prime Geodesic Bridge (C7)
 
@@ -63,7 +63,7 @@ The C7 bridge embeds Mersenne-gap primes into the Anosov geodesic flow on X(1) �
 ```bash
 cd Universals
 python engine.py
-python math_validation.py   # 142 tests
+python math_validation.py   # 192 checks, 0 fails
 cd .. && python run_all.py  # Full pipeline
 ```
 

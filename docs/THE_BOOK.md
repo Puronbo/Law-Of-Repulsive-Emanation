@@ -145,7 +145,7 @@ the observation kinds attached (Ch. 2).  One net, all manner of information.
 |---|---|
 | Book | `docs/DECENTRAL_NET.md` (short) + this document (canonical) |
 | Net module | `Universals/manifold/decentral_net.py` (numpy-only) |
-| Snapshot | `%LOCALAPPDATA%\Temp\opencode\top1m\internet_net.pkl` (3.02 GB, 1,531,932 survivors + domain map); full union: `internet_net_full.pkl` (2.0 GB, 1,914,915 sites, rebuild with `python experiments/decentral_net_union.py --full`) |
+| Snapshot | `%LOCALAPPDATA%\Temp\opencode\top1m\internet_net.pkl` (3.17 GB, 1,531,932 survivors + domain map); full union: `internet_net_full.pkl` (2.0 GB, 1,914,915 sites, rebuild with `python experiments/decentral_net_union.py --full`) |
 | Daemon | `experiments/decentral_net_live.py` (indefinite, checkpoint/resume, stopfile drain) |
 | Benchmarks | `experiments/decentral_net{,_mnist,_continual,_internet,_union,_ceiling,_anomaly}.py` |
 

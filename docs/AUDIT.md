@@ -62,12 +62,13 @@ given so it can be re-run).
   `dependency_tree.dot` has 86 edges, `Universals/math_validation.py` has 37
   test functions.  **[claimed; count via `run_all.py`]**
 
-### 1.7 Documented inconsistencies (fixable)
-| Item | Value A | Value B |
-|---|---|---|
-| PAPER.md test count | 88 (abstract) | 109 (conclusion) **[verified]** |
-| PAPER.md ground state | E₀ = 5.84 | E₀ = 5.58 **[verified]** |
-| `internet_net.pkl` size | 3.02 GB (THE_BOOK) | 3.17 GB (DECENTRAL_NET) **[verified: actual 3.17 GB]** |
+### 1.7 Documented inconsistencies (fixable) — **RESOLVED 2026-08-01**
+| Item | Value A | Value B | Resolution |
+|---|---|---|---|
+| PAPER.md test count | 88 (abstract) | 109 (conclusion) | Unified on **109**; abstract now cites §9 and notes unification. No rerun yet — a full re-count via `run_all.py` is still a TODO. |
+| PAPER.md ground state | E₀ = 5.84 | E₀ = 5.58 | **5.84 is correct** (`spectral_data.json` eig[0] = `thermo_data.json` ground_state = 5.843778304934855; r = 2.365 → λ = ¼ + r²). PAPER edited to 5.84. |
+| `internet_net.pkl` size | 3.02 GB (THE_BOOK) | 3.17 GB (DECENTRAL_NET) | Actual 3,172,999,165 B = **3.17 GB**. THE_BOOK corrected. |
+| README validation count | 142/147 | actual | Reran `math_validation.py`: **192 PASS, 0 FAIL**. README updated. Also fixed the script's UnicodeEncodeError on Windows consoles (stdout reconfigured to UTF-8). |
 
 ---
 
