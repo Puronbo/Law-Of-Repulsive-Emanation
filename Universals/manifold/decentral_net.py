@@ -26,6 +26,19 @@ Why mu0 exists: a private always-on home tether is required, otherwise pure
 local expansion never slows (per-neuron steps) and the cloud collapses onto
 the container rim.  See experiments/decentral_net.py (T55c) for the full
 multi-seed benchmark and verdict.
+
+Caveats (T55e, experiments/decentral_net_continual.py):
+  1. NEVER mix frames: after removing/add-ing neurons, always reflow the net
+     (settle/absorb) before routing.  A fresh point appended to a floated
+     anchor set sits in the data frame and steals the old classes' points
+     (routing collapses ~0.86 -> ~0.04).  The demo's regrow loop reflows.
+  2. The dynamics have gauge freedom (no global center): the anchor set can
+     float as a whole.  When homes ARE the data centroids, reflow slightly
+     LOSES to plain nearest-centroid routing - the flow buys a consistent
+     frame, not accuracy.
+  3. mu0/A are dimension-sensitive: mu0=0.12 is calibrated for the 2D disk;
+     in 64D it over-drifts anchors ~0.5 from their homes.  Raise mu0 with
+     the dimension (mu0 ~ 1-4 in 64D) to reduce drift.
 """
 
 import numpy as np
