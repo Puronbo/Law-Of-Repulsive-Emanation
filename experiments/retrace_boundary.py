@@ -72,7 +72,8 @@ def weak_solution(r, theta):
     """|r'| = a a.e. (finite differences, excluding kinks) and endpoints."""
     d = np.diff(r) / np.diff(theta)
     body = d[np.abs(d) > A / 2]  # slope magnitudes at smooth grid points
-    ok_slope = bool(np.all(np.isclose(np.abs(d), A))) and (r[0] == 0 and r[-1] == 0)
+    ok_slope = bool(bool(np.all(np.isclose(np.abs(d), A)))
+                    and bool(r[0] == 0 and r[-1] == 0))
     max_dev = float(np.max(np.abs(np.diff(r) / np.diff(theta)))) if len(d) else 0.0
     return ok_slope, max_dev
 
