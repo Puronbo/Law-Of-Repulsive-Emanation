@@ -20,7 +20,9 @@ Prediction (if the geometry is meaningful):
     random (near-miss anomalies, e.g. gooogle.com ~ google.com)
   * a data-driven anomaly threshold comes from the legit 5th percentile
 
-Usage: python decentral_net_anomaly.py [n_sample]
+Usage: python decentral_net_anomaly.py [n_sample] [--full]
+       --full analyzes the complete 1.91M union (internet_net_full.pkl)
+       instead of the default post-outage survivors (internet_net.pkl)
 """
 
 import numpy as np
@@ -30,9 +32,11 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'Universals'))
 from sklearn.feature_extraction.text import HashingVectorizer
 
 TOP = os.path.expandvars(r'%LOCALAPPDATA%\Temp\opencode\top1m')
-PKL = os.path.join(TOP, 'internet_net.pkl')
+PKL = os.path.join(TOP, 'internet_net_full.pkl') if '--full' in sys.argv \
+    else os.path.join(TOP, 'internet_net.pkl')
 HOSTS = os.path.join(TOP, 'stevenblack_hosts.txt')
-N_SAMPLE = int(sys.argv[1]) if len(sys.argv) > 1 else 5000
+N_SAMPLE = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1].lstrip('-').isdigit() \
+    else 5000
 DIM = 128
 NGRAM = (2, 4)
 
@@ -65,7 +69,8 @@ art = pickle.load(open(PKL, 'rb'))
 net, legit_dom = art['net'], art['domains']
 Q = net.q.astype(np.float32)                    # (m,128) fp32
 m = Q.shape[0]
-print(f"  loaded internet net: {m:,} legit sites in {time.time()-t0:.1f}s")
+print(f"  loaded internet net: {m:,} legit sites in {time.time()-t0:.1f}s "
+      f"({os.path.basename(PKL)})")
 
 hv = make_hv()
 rng = np.random.RandomState(0)

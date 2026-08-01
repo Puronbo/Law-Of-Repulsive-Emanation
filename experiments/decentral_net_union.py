@@ -17,6 +17,9 @@ reusable internet-net checkpoint (net + domain label map).
   PART 5  persist checkpoint; reload and verify identical routing
 
 Usage: python decentral_net_union.py  (uses both CSVs from top1m dir)
+       python decentral_net_union.py --full
+           persist the FULL union (no outage) as internet_net_full.pkl;
+           default persists the post-outage survivors as internet_net.pkl
 """
 
 import numpy as np
@@ -30,6 +33,9 @@ TOP = os.path.expandvars(r'%LOCALAPPDATA%\Temp\opencode\top1m')
 UMB = os.path.join(TOP, 'top-1m.csv')
 MJS = os.path.join(TOP, 'majestic_million.csv')
 OUT = os.path.join(TOP, 'internet_net.pkl')
+OUT_FULL = os.path.join(TOP, 'internet_net_full.pkl')
+
+FULL = '--full' in sys.argv
 
 DIM = 128
 NGRAM = (2, 4)
@@ -115,16 +121,22 @@ for q in present:
     print(f"  {'%-20s' % q} -> "
           f"{' | '.join('%-24s %.3f' % (domains[k], v) for k, v in zip(j, s))}")
 
-# -------------------- PART 4: outage -------------------- #
-print("\n" + "-" * 72)
-print("PART 4: OUTAGE - kill 20% of the union (random)")
-rng = np.random.RandomState(42)
-kill = rng.choice(n, size=int(0.2 * n), replace=False)
-surv_idx = np.setdiff1d(np.arange(n), kill)
-surv_domains = [domains[i] for i in surv_idx]
-net.remove(list(kill))
-print(f"  killed {len(kill):,} sites -> survivors {net.n:,} "
-      f"(no repair unit)")
+# -------------------- PART 4: outage (skipped in --full) -------------------- #
+if FULL:
+    print("\n" + "-" * 72)
+    print("PART 4: (--full) NO OUTAGE - persist the complete union")
+    surv_idx = np.arange(n)
+    surv_domains = domains
+else:
+    print("\n" + "-" * 72)
+    print("PART 4: OUTAGE - kill 20% of the union (random)")
+    rng = np.random.RandomState(42)
+    kill = rng.choice(n, size=int(0.2 * n), replace=False)
+    surv_idx = np.setdiff1d(np.arange(n), kill)
+    surv_domains = [domains[i] for i in surv_idx]
+    net.remove(list(kill))
+    print(f"  killed {len(kill):,} sites -> survivors {net.n:,} "
+          f"(no repair unit)")
 for q in present:
     j, s = neighbors(net.q, X[idx[q]], k=3)
     print(f"  {'%-20s' % q} -> "
@@ -134,14 +146,16 @@ for q in present:
 print("\n" + "-" * 72)
 print("PART 5: PERSIST the internet net as a reusable checkpoint")
 t0 = time.time()
-with open(OUT, 'wb') as f:
+out_path = OUT_FULL if FULL else OUT
+with open(out_path, 'wb') as f:
     pickle.dump({'net': net, 'domains': surv_domains}, f, protocol=4)
 save_s = time.time() - t0
-sz = os.path.getsize(OUT) / 1e6
-print(f"  saved {net.n:,} survivors + domain map -> {os.path.basename(OUT)} "
+sz = os.path.getsize(out_path) / 1e6
+print(f"  saved {net.n:,} {'(full union)' if FULL else 'survivors'} "
+      f"+ domain map -> {os.path.basename(out_path)} "
       f"({sz:.0f} MB, {save_s:.1f}s)")
 t0 = time.time()
-with open(OUT, 'rb') as f:
+with open(out_path, 'rb') as f:
     art = pickle.load(f)
 load_s = time.time() - t0
 net2, dom2 = art['net'], art['domains']
@@ -158,6 +172,8 @@ print("SUMMARY")
 print("=" * 72)
 print(f"  The net now holds {net2.n:,} widely-used real websites "
       f"({gb:.2f} GB),")
-print(f"  persisted to {os.path.basename(OUT)} for reuse.  The remaining")
+print(f"  persisted to {os.path.basename(out_path)} "
+      f"{'(full union)' if FULL else '(post-outage survivors)'} for reuse.  "
+      f"The remaining")
 print(f"  RAM headroom (~{0.6*31.7e9/2048/1e6:.0f}M sites) is capacity-only;")
 print(f"  FLOWING that population still needs the O(1)-per-neuron search.")
