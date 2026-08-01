@@ -172,13 +172,19 @@ folding is the integral; the crease is where the action is.*
    was the *interval* count, not π; π(943,901,200,001) = 35,575,526,191.
 5. **Digit-coincidences are not arithmetic** (T57): the "26" and "102" gap
    digits reassembling into 26102 is a coincidence, not a law.
-6. ~~**The open theorem**~~ **Now derived** (T63): the mirror fold is the
+6. ~~**The open theorem**~~ **Now derived** (T63, T64): the mirror fold is the
    unique **viscosity solution** of the eikonal/Hamilton-Jacobi equation
    **|r′| = a** with r(0) = r(2Θ) = 0 — the tent r = a·dist(θ, {0, 2Θ}).
    Development is the outgoing characteristic (+a), the fold is the return
    characteristic (−a), and the crease is a **shock / cut locus** where the
    characteristics collide with equal eikonal time (measured convergence
-   3.3e-13).  The fold is no longer imposed: it is the law of the equation.
+   3.3e-13).  The equation + pins admit *infinitely many* weak solutions
+   (the zig-zag family); the viscosity condition selects exactly one.  The
+   retrace is a consequence, not an assumption: the "reflecting boundary"
+   at Θ is the shock where outgoing and returning characteristics collide
+   (T64: flat-tangent supersolution test kills every down-up corner; upwind
+   erosion converges to the tent from any seed).  The fold is not imposed:
+   it is the law of the equation.
 
 ---
 
@@ -191,6 +197,8 @@ T60 the fold as optimizer (Hamiltonian retrace conserves, damped mirror
 locks) · T61 the rotation test (structure survives rotations, collapses
 under relabeling) · T62 prime count + record gaps at 9.4e11 from scratch
 (35,575,526,191 exact; the 176-gap measured) · T63 the fold derived
-(the mirror fold = unique viscosity solution of |r′| = a; crease = shock).
+(the mirror fold = unique viscosity solution of |r′| = a; crease = shock)
+· T64 the retrace derived (the reflecting boundary at Θ is the cut locus,
+selected by viscosity out of the infinite weak-solution family).
 
 *Everything folds.  The constant is determined.  The clock is infinite.*

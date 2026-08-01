@@ -296,6 +296,7 @@ closed, committed experiment (`experiments/`):
 | **T61 Rotation Test** | Orthogonal rotations preserve neighbor structure (overlap 1.0000, sim corr 1.0000) while coordinates change (0.745); $\|x\|$ relabeling collapses to 0.426 vs chance 0.065 | Verified |
 | **T62 Prime Engine** | $\pi(943,901,200,001) = 35,575,526,191$ from scratch (Lucy-Hedgehog + segmented sieve, no sympy) — matches sympy exactly; max gap 176 at $9.4\times10^{11}$; retrace chain 9.4e11 → 1,914,467 → 730,421 → 26,102 → 10,262 | Verified |
 | **T63 The Fold Derived** | The mirror fold is the unique **viscosity solution** of $\|r'\| = a$ with $C_0$ pinned at both loop ends (upwind convergence $3.3\times10^{-13}$); the crease is the **cut locus / shock** of equal eikonal time — the fold is no longer imposed | Verified |
+| **T64 The Retrace Derived** | The reflecting boundary at $\Theta$ is the **cut locus**, selected by viscosity: the equation admits infinitely many weak solutions (zig-zag family), the flat-tangent supersolution test eliminates every down-up corner, upwind erosion converges to the tent from any seed; reflection conserves $\|r'\|$ | Verified |
 
 ### 10.5 Open Questions
 
@@ -305,7 +306,14 @@ closed, committed experiment (`experiments/`):
 
 3. **Does the Kawasaki analogue constrain CTC consistency?** If Robertson's generalization imposes angle-sum constraints on ReLU decision region vertices, these constraints may limit which causal loops are self-consistent — a mathematical version of the Novikov principle.
 
-4. **What is the retrace boundary condition from first principles?** T63 derives the forward fold uniquely, but the reflecting boundary at $\Theta$ that produces the *return* characteristic is still assumed, not derived.
+4. ~~**What is the retrace boundary condition from first principles?**~~
+   **Resolved** (T64): the reflecting boundary at $\Theta$ is not assumed.
+   The equation $\|r'\| = a$ with both pins admits *infinitely many* weak
+   solutions (the zig-zag family); the flat-tangent supersolution test
+   eliminates every down-to-up corner, leaving the tent as the unique
+   viscosity solution.  The "reflecting boundary" is the **cut locus** —
+   the shock where outgoing and returning characteristics collide at equal
+   eikonal time.  Retrace is a consequence, not an assumption.
 
 ---
 
