@@ -235,6 +235,7 @@ All eight mappings are mutually consistent:
 | Time Reversal | $T$-symmetry (broken by friction) | Friction damped reversal | $T:(q,p,t) \to (q,-p,-t)$ |
 | Infinite Clock | Poincaré recurrence | 8-cycle cosmological epochs | $\tau \sim e^{S/k_B}$ |
 | Folding | Crease density | Kawasaki + soft crease metrics | $\sum (-1)^k \theta_k = 0$ (alternating sum = 0) |
+| Spring fold | Eikonal / Hamilton-Jacobi | T58–T63 spring series (verified) | $\|r'\| = a$; crease = shock (cut locus) |
 
 The framework is self-consistent: the initial singularity ($C_0$) generates the manifold, the holographic registry (`web_data.json`) encodes it, the unitary evolution (geodesic propagation) evolves it, time reversal (gradient ascent) reconstructs it, and Poincaré recurrence (dream/reset cycles) perpetuates it.
 
@@ -280,13 +281,31 @@ All seven experiments from the Book of Puno have been ported and verified:
 | **Exp 5: Pruning** | Crease pruning outperforms magnitude at every ratio; +0.14 gap at 25% | Verified |
 | **Fold Visualization** | The 90-degree crease as elementary fold; composition of folds | Verified |
 
-### 10.4 Open Questions
+### 10.4 Spring-Fold Results (T58–T63, Verified)
+
+The wound-up spring of §2 has been simulated and measured. Each result is a
+closed, committed experiment (`experiments/`):
+
+| Experiment | Key Finding | Status |
+|---|---|---|
+| **T58 Fold Models** | Archimedean + mirror fold: swept area 2,666.7 = $2 a^2 \Theta^3 / 6$ (doubling the unfolded area); retrace returns to $C_0$ (net area $10^{-9}$, closure 0, crease $1.0000\pi$ = full reversal) | Verified |
+| **T58 Golden Ratio** | $r_{close} = 12.2754 = \text{apex} \cdot 0.6138$; the fold's closing radius is set by the crease, not by free choice | Verified |
+| **T58c Overcoil Ring Lock** | The fold coils over itself and locks at *both* ends (end tucks under the start coil: $r = 0.253 < 2\pi$, $z = -1.85$); topological threading $\Theta > \pi$ = the ring lock of §8 | Verified |
+| **T59 Clock Test** | Calendar-encoded features carry a law at 1.0000 but collapse to 0.4167 when re-indexed (+15 days); intrinsic one-hot residues stay 1.0000 — laws live in invariants, not conventions | Verified |
+| **T60 Fold as Optimizer** | Hamiltonian retrace conserves (drift $3.9\times10^{-3}$, area ratio 0.99, recurrence 0.000 — never locks); damped mirror contracts to area 0 and locks at $x = +1$ (dissipation = locking, §7 friction) | Verified |
+| **T61 Rotation Test** | Orthogonal rotations preserve neighbor structure (overlap 1.0000, sim corr 1.0000) while coordinates change (0.745); $\|x\|$ relabeling collapses to 0.426 vs chance 0.065 | Verified |
+| **T62 Prime Engine** | $\pi(943,901,200,001) = 35,575,526,191$ from scratch (Lucy-Hedgehog + segmented sieve, no sympy) — matches sympy exactly; max gap 176 at $9.4\times10^{11}$; retrace chain 9.4e11 → 1,914,467 → 730,421 → 26,102 → 10,262 | Verified |
+| **T63 The Fold Derived** | The mirror fold is the unique **viscosity solution** of $\|r'\| = a$ with $C_0$ pinned at both loop ends (upwind convergence $3.3\times10^{-13}$); the crease is the **cut locus / shock** of equal eikonal time — the fold is no longer imposed | Verified |
+
+### 10.5 Open Questions
 
 1. **Can the Wheeler-DeWitt equation be simulated on the Poincaré disk?** The Hamiltonian constraint $\hat{H}|\Psi\rangle = 0$ selects physical states from the full Hilbert space. Can an analogous constraint be defined on the Poincaré disk that selects "physical" knowledge configurations?
 
-2. **Is the fold-and-cut theorem the discrete analogue of unitary evolution?** If ReLU networks fold space like origami, and unitary evolution preserves information, then fold-and-cut may be the computational primitive that implements unitary gates.
+2. **Is the fold-and-cut theorem the discrete analogue of unitary evolution?** T63 shows the fold itself is a shock of the eikonal equation; the discrete question — whether fold-and-cut realizes unitary gates — remains open.
 
 3. **Does the Kawasaki analogue constrain CTC consistency?** If Robertson's generalization imposes angle-sum constraints on ReLU decision region vertices, these constraints may limit which causal loops are self-consistent — a mathematical version of the Novikov principle.
+
+4. **What is the retrace boundary condition from first principles?** T63 derives the forward fold uniquely, but the reflecting boundary at $\Theta$ that produces the *return* characteristic is still assumed, not derived.
 
 ---
 
