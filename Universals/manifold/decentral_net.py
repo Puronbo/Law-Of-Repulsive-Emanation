@@ -126,6 +126,20 @@ class DecentralNet:
             self.settle()
         return self
 
+    def add_many(self, X, homes=None):
+        """Bulk-insert many neurons at once (vectorized; homes = X by
+        default).  For loading large populations without a per-neuron loop."""
+        X = np.asarray(X, dtype=float)
+        if X.ndim == 1:
+            X = X[None, :]
+        H = X if homes is None else np.asarray(homes, dtype=float)
+        if self.n == 0:
+            self.q, self.h = X, H
+        else:
+            self.q = np.vstack([self.q, X])
+            self.h = np.vstack([self.h, H])
+        return self
+
     def remove(self, indices):
         """Damage: drop neurons (and their homes)."""
         self.q = np.delete(self.q, indices, axis=0)
