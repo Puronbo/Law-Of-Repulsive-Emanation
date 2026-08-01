@@ -17,14 +17,24 @@ A perpetual, self-sustaining session for the numpy-only DecentralNet module
 Everything is bounded-memory (fixed-size ring summaries, no log growth),
 numpy-only apart from the standard library.
 
+Checkpoint / resume (stop anytime, continue with no damage):
+  --save PATH     checkpoint full state (net + homes + RNG + counters) on
+                  graceful stop and every AUTOSAVE_EVERY ticks
+  --load PATH     resume a checkpoint: tick counter, population and the
+                  RNG stream all carry on - the cycle is continuous
+  --stopfile PATH exit (draining to --save) the moment this file appears;
+                  create it with:  New-Item stop.flag
+
 Usage:
   python decentral_net_live.py                  # run FOREVER (Ctrl-C stops)
   python decentral_net_live.py --seconds 120    # bounded run (validation)
   python decentral_net_live.py --ticks 50000    # bounded run by tick count
+  python decentral_net_live.py --save live.pkl --stopfile stop.flag
+  python decentral_net_live.py --load live.pkl  # resume
 """
 
 import numpy as np
-import sys, os, time, signal
+import sys, os, time, signal, pickle
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'Universals'))
 from manifold.decentral_net import DecentralNet
@@ -41,6 +51,7 @@ MIN_POP = 3
 PROBE_PTS = 60
 PROBE_NOISE = 0.02
 RING = 10                     # heartbeat history kept in memory
+AUTOSAVE_EVERY = 50000        # ticks between automatic checkpoints
 
 # ---------------------------------------------------------------------- #
 def home_position(rng):
@@ -124,8 +135,25 @@ class Live:
         print(line, flush=True)
 
     # ------------------------------------------------------------------ #
-    def run(self, max_seconds=None, max_ticks=None):
+    def save(self, path):
+        """Checkpoint the full live state (net + homes + rng + counters)."""
+        with open(path, 'wb') as f:
+            pickle.dump(self, f)
+        print(f"[checkpoint] state saved -> {path} at tick {self.tick} "
+              f"(n={self.net.n})", flush=True)
+
+    @staticmethod
+    def load(path):
+        """Resume a checkpointed live session.  The cycle continues with no
+        damage: tick counter, population, homes, RNG stream all carry on."""
+        with open(path, 'rb') as f:
+            return pickle.load(f)
+
+    # ------------------------------------------------------------------ #
+    def run(self, max_seconds=None, max_ticks=None,
+            save_path=None, stopfile=None):
         t0 = time.time()
+        last_save = 0
 
         def _sig(signum, frame):
             self._stop = True
@@ -151,10 +179,24 @@ class Live:
                 self.recent_ms.pop(0)
             if self.tick % HEARTBEAT_EVERY == 0:
                 self._heartbeat(t0)
+            if save_path and self.tick - last_save >= AUTOSAVE_EVERY:
+                self.save(save_path)
+                last_save = self.tick
+            if stopfile and os.path.exists(stopfile):
+                print(f"[stopfile] {stopfile} found at tick {self.tick}; "
+                      f"draining...", flush=True)
+                try:
+                    os.remove(stopfile)
+                except OSError:
+                    pass
+                break
             if max_seconds is not None and (time.time() - t0) >= max_seconds:
                 break
             if max_ticks is not None and self.tick >= max_ticks:
                 break
+
+        if save_path:
+            self.save(save_path)
 
         uptime = time.time() - t0
         print("\n" + "=" * 62)
@@ -180,6 +222,12 @@ def main(argv):
     seed = 42
     if '--seed' in argv:
         seed = int(argv[argv.index('--seed') + 1])
+    save_path = None
+    if '--save' in argv:
+        save_path = argv[argv.index('--save') + 1]
+    stopfile = None
+    if '--stopfile' in argv:
+        stopfile = argv[argv.index('--stopfile') + 1]
 
     print("=" * 62)
     print("T55f: DECENTRALNET LIVE DAEMON (runs indefinitely by default)")
@@ -187,8 +235,14 @@ def main(argv):
           f"damage every {DAMAGE_EVERY}")
     print(f"  local-only: home trap + k-NN repulsion, no central controller")
     print("=" * 62)
-    live = Live(seed=seed, cap=CAP)
-    live.run(max_seconds=max_seconds, max_ticks=max_ticks)
+    if '--load' in argv:
+        live = Live.load(argv[argv.index('--load') + 1])
+        print(f"[resume] loaded tick={live.tick} n={live.net.n} "
+              f"(cycle continues, no damage)", flush=True)
+    else:
+        live = Live(seed=seed, cap=CAP)
+    live.run(max_seconds=max_seconds, max_ticks=max_ticks,
+             save_path=save_path, stopfile=stopfile)
 
 
 if __name__ == "__main__":
