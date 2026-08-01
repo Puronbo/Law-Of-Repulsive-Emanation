@@ -140,6 +140,40 @@ print(f"  the fold) -> the coil returns to z={zb[-1]:.2e}, nesting the fold")
 print(f"  inside the grown coils: 'folds up on itself' in space.")
 out['B'] = {'z_return': float(zb[-1]), 'n_points': int(len(tb))}
 
+# ---------------- MODEL C: overcoil ring lock ---------------------------
+# The fold climbs to a second layer z = h0 and coils back OVER every
+# growth turn (its (r,theta) projection sweeps the same annulus), then
+# dips UNDER the first coil and lands on the START (C0).  End and start
+# are both locked -> the spring becomes a closed ring with no free ends.
+h0 = A * TH * 0.30                    # overcoil layer height
+eps = 0.25                            # how far the tuck lands from C0
+tuck = 1.5                            # arc over which z dips below plane
+tc = np.linspace(TH, 2 * TH - eps, n, endpoint=False)
+rc = A * (2 * TH - tc)
+zc = h0 * np.sin(math.pi * (tc - TH) / TH)
+dip = np.clip((tc - (2 * TH - eps - tuck)) / tuck, 0.0, 1.0) ** 2
+zc = zc - h0 * 0.35 * dip             # end dips under the start coil
+thc, rc, zc = tc, rc, zc
+closC = math.hypot(rc[-1] * np.cos(thc[-1]), rc[-1] * np.sin(thc[-1]))
+r_endC = float(rc[-1])
+z_endC = float(zc[-1])
+above = float(np.min(zc[(rc > 2 * math.pi * A) & (rc < A * TH - 2)]))
+peakC = float(np.max(zc))
+tuckC = r_endC < 2 * math.pi * A and z_endC < 0.0     # end under start coil
+overlap = float(np.mean(rc < A * TH))                 # fold projects on growth
+print(f"\nMODEL C: OVERCOIL ring lock (fold coils over itself in 3D)")
+print(f"  fold rises to z = {h0:.2f}, projects onto the growth's own "
+      f"annulus ({overlap*100:.0f}% of fold radii inside it)")
+print(f"  end lands r={r_endC:.3f}, z={z_endC:+.3f} (inside the first coil, "
+      f"under it) -> tucked on the START; apex is the fold's hinge = END")
+print(f"  closure to C0 = {closC:.3f}   rides z in [{above:.3f},{peakC:.2f}] "
+      f"over the coils (no cutting; tuck stays inside the first coil)")
+print(f"  both ends locked -> closed ring, no free end: cannot unwind "
+      f"(unlike A's single side-crossing, which stays open at both ends)")
+out['C'] = {'h0': h0, 'r_end': r_endC, 'z_end': z_endC,
+            'closure': closC, 'tuck_on_start': tuckC,
+            'clearance': above, 'overlap_frac': overlap}
+
 # ---------------- save -------------------------------------------------
 os.makedirs('data', exist_ok=True)
 with open(os.path.join('data', 'spring_fold_data.json'), 'w') as fp:
@@ -176,10 +210,30 @@ plt.tight_layout()
 plt.savefig(os.path.join('docs', 'spring_fold.png'), dpi=120)
 print(f"plot -> docs/spring_fold.png")
 
+fig3 = plt.figure(figsize=(6.5, 6))
+ax3 = fig3.add_subplot(111, projection='3d')
+xg, yg = A * g * np.cos(g), A * g * np.sin(g)
+xc3, yc3 = rc * np.cos(thc), rc * np.sin(thc)
+ax3.plot(xg, yg, np.zeros_like(g), color='tab:orange', lw=1.2,
+         label='development (z=0)')
+ax3.plot(xc3, yc3, zc, color='tab:blue', lw=1.2, label='overcoil fold')
+ax3.plot([0], [0], [0], 'k*', ms=12, label='C0 start')
+ax3.scatter([xc3[-1]], [yc3[-1]], [zc[-1]], color='red', s=40,
+            label='end tucked under start')
+ax3.view_init(elev=22, azim=60)
+ax3.set_title('C: overcoil ring lock (coils over itself)', fontsize=9)
+ax3.legend(loc='upper left', fontsize=7)
+plt.tight_layout()
+plt.savefig(os.path.join('docs', 'spring_fold_overcoil.png'), dpi=120)
+print(f"plot -> docs/spring_fold_overcoil.png")
+
 print("\nVERDICT")
 print("=" * 72)
 print("  development is the derivative (dr/dtheta = +a, matter grows from 0);")
 print("  the fold is the integral; the loop returns toward C0.  A mirror")
 print("  fold sweeps its own coil twice (soft crease 2 arctan(1/TH)) and")
 print("  self-crosses a half-turn short of the apex; a retrace fold")
-print("  encloses nothing and closes exactly to C0 (crease pi).")
+print("  encloses nothing and closes exactly to C0 (crease pi).  The")
+print("  overcoil fold (C) coils over itself and tucks under the start:")
+print("  both ends locked = a closed ring with no free ends, the")
+print("  strongest lock of the four.")
