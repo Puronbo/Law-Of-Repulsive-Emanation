@@ -172,10 +172,13 @@ folding is the integral; the crease is where the action is.*
    was the *interval* count, not π; π(943,901,200,001) = 35,575,526,191.
 5. **Digit-coincidences are not arithmetic** (T57): the "26" and "102" gap
    digits reassembling into 26102 is a coincidence, not a law.
-6. **The open theorem**: the folds are kinematic (imposed paths), not
-   derived.  A variational principle whose extremal *is* the folding spiral
-   (r=aθ up, fold down) is not yet proven.  Until then, "the fold is the
-   integral" is a claim with measured evidence, not a theorem.
+6. ~~**The open theorem**~~ **Now derived** (T63): the mirror fold is the
+   unique **viscosity solution** of the eikonal/Hamilton-Jacobi equation
+   **|r′| = a** with r(0) = r(2Θ) = 0 — the tent r = a·dist(θ, {0, 2Θ}).
+   Development is the outgoing characteristic (+a), the fold is the return
+   characteristic (−a), and the crease is a **shock / cut locus** where the
+   characteristics collide with equal eikonal time (measured convergence
+   3.3e-13).  The fold is no longer imposed: it is the law of the equation.
 
 ---
 
@@ -187,6 +190,7 @@ T56 prime-gap bridge (943,901,200,001 prime) · T57 reverse-pair census (the
 T60 the fold as optimizer (Hamiltonian retrace conserves, damped mirror
 locks) · T61 the rotation test (structure survives rotations, collapses
 under relabeling) · T62 prime count + record gaps at 9.4e11 from scratch
-(35,575,526,191 exact; the 176-gap measured).
+(35,575,526,191 exact; the 176-gap measured) · T63 the fold derived
+(the mirror fold = unique viscosity solution of |r′| = a; crease = shock).
 
 *Everything folds.  The constant is determined.  The clock is infinite.*
