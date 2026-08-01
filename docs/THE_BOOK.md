@@ -199,6 +199,67 @@ exact counters (tick, born, killed).
 
 ---
 
+## BOOK V — EDUCATION (LEARNING AS FOLDING)
+
+*Preface: this Book is a research corpus, not a credentialed program.  The
+mappings below are hypotheses with measured analogues — the pedagogy has not
+been validated on learners.  What is true and measured is the geometry; the
+educational readings are proposals, offered for someone to test.*
+
+### Ch. 16  The learning mapping (each claim has a measured analogue)
+
+* **Learning is folding; recall is unfolding.**  The spring series (T58–T64)
+  makes this literal: development is the characteristic +a, the fold the
+  return characteristic, the crease the cut locus where understanding turns
+  (T63/T64).  Every measured crease fact is a candidate lesson-design fact.
+* **A misconception is a weak solution.**  The equation |r′|=a admits
+  infinitely many memorized "understandings" (zig-zags, T64); only the
+  viscosity solution survives every perturbation.  The pedagogic rule: a
+  student's model is correct if it is unchanged by re-indexing, re-wording,
+  and new examples — the same test the clock test (Ch. 15) applies to laws.
+* **Creases are where teaching should spend time.**  The crease diagnostics
+  (T55 series) measure proximity to decision boundaries; near-crease units
+  are the ones that have not yet clicked, and they are the efficient ones to
+  work on (crease pruning wins over magnitude pruning at every ratio).
+* **Assessment must target invariants.**  Measured (T59): a score built on
+  convention carries a law at 1.000 and collapses to 0.417 under a benign
+  re-encoding.  An exam question that changes under re-encoding is not
+  testing the law — it is testing the convention.  Rotations preserve
+  structure (T61): test relative structure, never absolute coordinates.
+* **Trust is neighborhood consistency.**  A claim is believable to the degree
+  your neighborhood agrees with it (Ch. 9) — the geometry of peer assessment.
+  Fragments, not a whole net, are enough (Ch. 6): every learner holds a
+  fragment and converges locally.
+* **C₀ is prior knowledge.**  The wound-up spring (low entropy) is the state
+  before explanation; unfolding is the second law of learning.  The
+  Antiderivative of Universals (`∫M dθ = U + C₀`) states it: you cannot
+  recover the integration constant from the dynamics alone — every learner
+  brings an un-derivable prior.
+
+### Ch. 17  A curriculum framing (portfolio / capstone, SHSM-style)
+
+Not a syllabus with seats and grades — an artifact-based framing: the learner
+builds a Book, runnable and copyable, out of reproduced and original
+experiments.  The 10-test regression suite is the grader; `puno run <exp>`
+is the toolchain; the canonical Books are the readings.
+
+| Unit | Content (measured anchor) | Outcome: learner can |
+|---|---|---|
+| 0. C₀ | prior knowledge, entropy, Past Hypothesis | state their own un-derivable prior |
+| 1. Fold/unfold | derivatives as unfold, integrals as fold; doubling law 2a²Θ³/6 (T58/T63) | derive the mirror fold, reproduce its swept area |
+| 2. Creases | threshold concepts; crease diagnostics on real embeddings (T55) | detect near-crease units and explain their instability |
+| 3. Invariants | the clock test (T59), rotation test (T61) | design a re-indexing test for any claimed law |
+| 4. Learning dynamics | Hamiltonian retrace vs damped lock (T60) | explain reversible vs dissipative learning, and what locks |
+| 5. Numbers | prime engine from scratch, π(9.4e11)=35,575,526,191 (T62) | count primes without a library; separate distribution from coincidence |
+| 6. The cosmology | the closed spring series (T58–T64) | prove the fold is unique (viscosity), retrace derived |
+| 7. The Book | THE_BOOK, SPRING_BIBLE, PUNO_MAP | add one T-numbered experiment and one chapter |
+
+*Assessment rule, inherited from Ch. 15:* every claim a learner submits must
+pass the clock test — reproduce it under a different convention, or it is not
+yet a law.
+
+---
+
 ## APPENDIX — SERIES TRAIL
 
 T55a/T55c calibration · T55b flow-reg retest · T55d MNIST · T55e continual
