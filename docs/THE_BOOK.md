@@ -178,6 +178,25 @@ exact counters (tick, born, killed).
 5. Windows RAM reads need `OpenProcess(PROCESS_QUERY_INFORMATION)`; the
    `GetCurrentProcess()` pseudohandle fails with ERROR_INVALID_HANDLE.
 
+### Ch. 15  The clock test (invariants, not conventions)
+* **A pattern that dies under a benign re-encoding was not a law.**  Measured
+  (T59): a calendar-encoded feature (weekday/month/...) carries a real
+  arithmetic law at 100% balanced accuracy, then collapses to 0.417 under a
+  +15-day epoch re-index — same physical dates, same weekdays, same model.
+  The intrinsic residue feature stays 1.000 under both clocks.
+* **What survives: the relative geometry.**  Measured (T61): rotating every
+  embedding by an orthogonal map preserves top-8 neighbor structure exactly
+  (overlap 1.000, similarity correlation 1.000) while changing every
+  coordinate (max |Qx−x| = 0.745); a nonlinear relabeling collapses the same
+  structure to 0.426 (chance 0.065).
+* **Canon:** the net's law is its *relative geometry*; convergence and trust
+  (Ch. 8, 9) must be defined on rotation-invariant structure, never on
+  absolute coordinates or calendar-derived numbers.  Any claim validated
+  under one clock must be re-tested under another.
+* **Physics entry:** density laws (1/ln N, the prime number theorem, PNT) are
+  clock-independent; point coincidences (a twin prime on a specific date) are
+  convention-bound.  Arithmetic has distributional invariants, not atomic ones.
+
 ---
 
 ## APPENDIX — SERIES TRAIL
@@ -186,7 +205,13 @@ T55a/T55c calibration · T55b flow-reg retest · T55d MNIST · T55e continual
 & frame creases · T55f indefinite daemon + checkpoint · T55g real top-1M
 copy · T55h measured ceiling (2×10⁴) · T55i union fill + persisted artifact
 (1.9M sites) · T55j anomaly validation (novelty works, impersonation partial,
-multivariate required).
+multivariate required) · T56 prime-gap bridge (943,901,200,001 is prime) ·
+T57 reverse-pair census (the "reversal" claim is false) · T58 the spring that
+folds up on itself (mirror/retrace/golden/helix + overcoil ring lock) ·
+T59 the clock test (convention carries a law at 1.000, breaks to 0.417 under
+a +15-day re-index) · T60 the fold as optimizer (Hamiltonian retrace
+conserves, damped mirror locks) · T61 the rotation test (structure survives
+rotations at 1.000, collapses under relabeling).
 
 *Read, copy, and disagree with this Book — but if you disagree, you are no
 longer in this network.  That is the whole of the constitution.*
