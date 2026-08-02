@@ -741,6 +741,48 @@ numbers.
 * Rule: **port the method and the instruments, not the coincidences.** The
   curriculum-relevant material is real; the "law" is not.
 
+### Ch. 5.11  The Decentral Bank (T68, measured)
+
+A fragment bank built on DecentralNet (same routing primitive as Ch. 5's
+identity layer, now carrying value): each account's *name* routes to its
+owning fragment via the nearest-centroid embedding; each fragment keeps a
+SHA-256 hash-chained double-entry ledger; transactions carry nonces; commits
+require a majority witness quorum of the fragment's kNN neighbours; the
+anomaly layer flags amount outliers. Six tests, all honest verdicts:
+
+* **T1 routing (PASS):** ownership *is* routing — accounts land with the
+  fragment whose home is nearest, so "wrong fragment" is a contradiction by
+  construction. The meaningful property is the partition spread: 640 accounts
+  split across 16 fragments with min 6 / max 111 / σ 34 accounts, zero empty
+  fragments — the name-embedding layer actually distributes the book, instead
+  of dumping it on one centroid.
+* **T2 integrity (PASS):** 3000 random transfers leave total balance conserved
+  exactly (64000 = 64000) and every chain re-validates (link hashes + nonce
+  monotonicity).
+* **T3 double-spend (PASS):** the first spend at nonce 1 commits; a replay of
+  the same nonce is rejected as `nonce-replay` before quorum is even asked.
+* **T4 damage (PASS):** killing 30% of fragments (6/20) and healing leaves the
+  surviving chains valid and value conserved — the self-healing topology that
+  Ch. 5's identity layer already had transfers to the money layer intact.
+* **T5 faulty quorum (MEASURED — the finding):** with 0% or 20% of fragments
+  lying about head hashes and refusing to replicate, *every* faulty-owned
+  transfer is caught (caught-frac 1.0) while honest availability stays 1.0.
+  At 40% corrupt, fault-catches are still 1.0 but honest availability drops
+  to 0.47 (refusing neighbours starve legit commits). At ≥50% corruption the
+  corrupt side wins: faulty sends slip through (caught-frac collapses to
+  0.23–0.27) and honest availability stays depressed. The quorum is *majority
+  honesty inside a neighbourhood*, not Byzantine fault tolerance.
+* **T6 anomaly (PASS/MEASURED):** the novelty layer flags 20×-amount fraud at
+  recall 0.51, precision 0.63 — against a random-flagging null of 0.019
+  precision. The univariate amount-outlier detector works; the multivariate
+  observation bank (THE_BOOK Ch. 2) is still declared-not-built.
+
+What it buys the corpus: the routing layer was identity-only ("names alone
+necessary but not sufficient", T55j); T68 adds the append-only ledger, nonce
+double-spend rejection, and witness quorum that the "no ledger/consensus/
+transaction layer" gap in AUDIT §1 named. The crease is the honest wall: a
+>50% corrupt neighbourhood beats the quorum.
+
 ---
 
 ## Ch. 6  Creases (never forget these)
@@ -835,6 +877,12 @@ numbers.
     swap survives every trailing-zero scale and holds for ~15-19% of *all*
     dates; the *specific* value τ=80 is k=0-only and dies above 8 digits. The
     pattern is stable; the number is not. (Ch. 5.10.)
+16. **A witness quorum is majority honesty, not Byzantine fault tolerance.**
+    The Decentral Bank (T68) catches every faulty-owned transfer while <40% of
+    fragments are corrupt, and honest availability survives ≤20% corruption —
+    but once a >50%-corrupt neighbourhood exists, faulty sends slip through
+    the quorum (caught-frac 1.0 → 0.23–0.27). Consensus geometry protects
+    against a minority of liars; it is not BFT. (Ch. 5.11.)
 
 ---
 
@@ -843,6 +891,8 @@ numbers.
 * `data/calibration_probe_data.json` — the anti-Dunning-Kruger category: instrument, null (+25 floor), demo validation, cultural connections.
 * `data/t65_fourpack_results.json` — the PUM §10.1 four-pack (0.5/4 confirmed; P1 tautological, P2/P4 refuted, P3 synthetic).
 * `data/bekenstein_shift_data.json` — the persisted Bekenstein source, which **contradicts** the PAPER's p=0.002 claim (creases #13–#14).
+* `data/decentral_bank_data.json` — T68 the Decentral Bank: T1–T6 verdicts, the
+  faulty-quorum curve (crease #16), anomaly precision vs random null.
 * `docs/SPRING_BIBLE.md` BOOK V Ch. 13–15 — the date's 5-digit treatment, the
   retrace chain, the creases (T57, T59, T61, T62).
 * `docs/THE_BOOK.md` Ch. 2 (observations), Ch. 8 (time and convergence) — the

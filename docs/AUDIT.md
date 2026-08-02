@@ -153,6 +153,7 @@ given so it can be re-run).
 | **Partition function match** (PAPER) | L(2)=40.14 vs C₀·π²/6=40.19 (<0.2%) | **Tautology.** C₀·π²/6 = 40.1936 holds for *any* C₀; the code flags `L(s)=C0*zeta(s)` as a tautology "for ANY constant C0." A match by construction is not a test. |
 | **Thermodynamics/entropy** | ln-thinning ↔ entropy; second law as folding | Analogical, not falsifiable as stated |
 | **PUM §10.1 four-pack (T65)** | P1 τ~entropy; P2 T-symmetry; P3 holographic MI; P4 CTC fixed point | **0.5/4 confirmed.** P1 = tautology (τ := exp(entropy) in source); P2 refuted (recon err ≈ 1.8); P4 refuted (converged fraction 0.0); P3 weakly positive (MI 0.034 vs null 0.009) but synthetic. See `data/t65_fourpack_results.json` |
+| **Decentral Bank (T68)** | routing is ownership; double-entry ledger + nonce rejects double-spend; witness quorum catches faulty transfers; anomaly layer flags outliers | **New, measured.** T1–T6: routing deterministic with a real partition spread (min 6 / max 111 / σ 34 over 16 fragments); integrity conserved exactly over 3000 txs; nonce replay rejected; 30% damage survives; quorum catches *every* faulty send below 40% corruption while honest availability holds — but collapses at ≥50% corrupt neighbourhoods (caught-frac 1.0 → 0.23–0.27), i.e. **quorum is majority honesty, not BFT** (crease #16). Anomaly recall 0.51 / precision 0.63 vs random null 0.019. Addresses the AUDIT §1 "no ledger/consensus/transaction layer" gap at toy scale. See `data/decentral_bank_data.json` |
 
 ---
 
@@ -194,7 +195,11 @@ is contradicted by its own persisted data file (p=0.789/0.938 vs claimed
 p=0.002); **(b)** the partition-function match and **(c)** the Selberg
 L-function unification are tautologies by the code's own admission; and the
 T65 four-pack executed the last four explicit predictions at **0.5/4**
-(P2, P4 refuted).  The remaining gaps: **(1)** the two declared builds
+(P2, P4 refuted).  On 2026-08-02 T68 shipped the first value-carrying layer
+(a fragment bank: hashed double-entry ledgers, nonce double-spend rejection,
+witness quorum, amount-outlier anomaly) — **T1–T6 all honest verdicts**, with
+the quorum's own wall measured: majority-honesty-in-a-neighbourhood, not BFT
+(crease #16).  The remaining gaps: **(1)** the two declared builds
 (observation bank, O(1) search) are absent; **(2)** PGT and BOOK-V pedagogy
 remain conjectured; **(3)** the PAPER's Bekenstein numbers now contradict the
 repo's own artifact and must be corrected or re-run; **(4)** hygiene items

@@ -1,0 +1,83 @@
+{
+  "results": {
+    "T1 routing": {
+      "test": "T1 routing",
+      "deterministic": true,
+      "partition_spread": {
+        "min": 6,
+        "max": 111,
+        "std": 34.03,
+        "empty_fragments": 0
+      },
+      "verdict": "PASS"
+    },
+    "T2 integrity": {
+      "test": "T2 integrity",
+      "invariants": true,
+      "detail": "total=64000 vs 64000",
+      "verdict": "PASS"
+    },
+    "T3 double-spend": {
+      "test": "T3 double-spend",
+      "first": true,
+      "replay_rejected": true,
+      "verdict": "PASS"
+    },
+    "T4 damage": {
+      "test": "T4 damage",
+      "killed": 6,
+      "surviving_invariants": true,
+      "detail": "total=60000 vs 60000",
+      "verdict": "PASS"
+    },
+    "T5 faulty quorum": {
+      "test": "T5 faulty quorum",
+      "results": [
+        {
+          "faulty_frac": 0.0,
+          "honest_ok_frac": 1.0,
+          "faulty_send_caught_frac": 0.0,
+          "null_coinflip": 0.5
+        },
+        {
+          "faulty_frac": 0.2,
+          "honest_ok_frac": 1.0,
+          "faulty_send_caught_frac": 1.0,
+          "null_coinflip": 0.5
+        },
+        {
+          "faulty_frac": 0.4,
+          "honest_ok_frac": 0.467,
+          "faulty_send_caught_frac": 1.0,
+          "null_coinflip": 0.5
+        },
+        {
+          "faulty_frac": 0.5,
+          "honest_ok_frac": 0.467,
+          "faulty_send_caught_frac": 0.233,
+          "null_coinflip": 0.5
+        },
+        {
+          "faulty_frac": 0.6,
+          "honest_ok_frac": 0.414,
+          "faulty_send_caught_frac": 0.267,
+          "null_coinflip": 0.5
+        }
+      ],
+      "verdict": "MEASURED"
+    },
+    "T6 anomaly": {
+      "test": "T6 anomaly",
+      "recall_fraud": 0.514,
+      "precision": 0.633,
+      "null_precision_random": 0.0186,
+      "verdict": "PASS"
+    }
+  },
+  "limits": {
+    "no_byzantine": "a >50% corrupt neighbourhood wins; quorum is weak consensus, not BFT",
+    "toy": "single-threaded, in-memory, deterministic; not a real bank",
+    "no_real_crypto": "nonce+hash stand-in, not cryptographic signatures",
+    "observation_bank_missing": "anomaly uses tx amounts only; the declared T66 multivariate bank is still absent"
+  }
+}
