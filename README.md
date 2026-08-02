@@ -47,6 +47,18 @@ The C7 bridge embeds Mersenne-gap primes into the Anosov geodesic flow on X(1) �
 - The asymptotic PGT formula requires L >> 300 (current data: L ≤ 229)
 - Whether this framework extends beyond 2ⁿ−k to arbitrary primes is open
 
+## Epoch 0d (2000-10-26 10:26:20.00)
+
+The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.json`, `docs/WEAVERS_SCRIBE.md`, SPRING_BIBLE Ch. 14).
+
+**The anchor pair:** `10,262,000 = 2⁴·5³·7·733` and `26,102,000 = 2⁴·5³·31·421` — both have **80 divisors** and **digit sum 11** under MM/DD↔DD/MM swap.
+
+**Key findings:**
+- **Prime-pairing rule**: each number = exactly **one Mersenne prime** (≡3 mod 4) + **one sum-of-two-squares prime** (≡1 mod 4); both two-square primes' roots sum to the same prime **29** ({7, 733}: 7=2³−1, 733=2²+27²; {31, 421}: 31=2⁵−1, 421=14²+15²).
+- **The fold 1,914,467 = 31 × 61,757** — the chain bridge to the DD/MM side; the pairing rule extends (61,757 = 139²+206²), and survives reversal (7,644,191 = 197 × 38,803).
+- **Three-way connection** (10,262,000 ↔ 26,102,000 ↔ 1,914,467): gcd triangle **2000 / 31 / 1** — the two date forms share the *year* 2000; the DD form and the fold share the *Mersenne* 31; **B = 26,102,000 is the hub**. Chain mod-31 ladder: 15, 0, −1, 0, 1.
+- **Null analysis (binding creases)**: τ=80 equality is a year-2000 trailing-zero artifact (0/365 in 2007; 17/366 = 4.64% in 2000, all even-month/even-day); τ=8 equality is the generic ~7.4% coincidence; base-invariance survives **base 10 and 12 only**.
+
 ## Experiments
 
 | Experiment | Result |
