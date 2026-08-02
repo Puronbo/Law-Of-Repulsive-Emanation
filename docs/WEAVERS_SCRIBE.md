@@ -419,6 +419,48 @@ artifacts already falsified.
 * **Weak near-miss:** 86400/37580 = 2.2991 vs ln 10 = 2.3026 (0.15%) — noted,
   not carried.
 
+### Ch. 5.4  Pentatonic and harmonic reading (measured)
+
+* **Transposing either orientation by a pentatonic major third lands on the
+  sexagesimal base.** A×5/4 = 12,827,500 and B×5/4 = 32,627,500 both have
+  exactly **τ = 60**. The major seventh and compound third are *invariant*:
+  A,B ×15/8 and ×5/2 both keep **τ = 80** — the self-referential count
+  survives transposition. The fifth (3/2, the only 3-in-numerator interval)
+  gives **τ = 128 = 2⁷**; the octave, whole tone, and minor sixth give 96.
+  The 3-in-denominator pentatonic notes (4/3, 5/3) are *structurally
+  impossible* — 3 does not divide A or B. So τ under pentatonic transposition
+  stays in {60, 80, 96, 128}, and the whole table is *identical* for both
+  orientations. (Creased: generic for any 2⁴·5³·p·q, exponent arithmetic
+  only — but the musical dressing is new.)
+* **Two independent perfect fourths.** A/C = 5.3602 → 506.8 cents ≈ **4/3**
+  (8.7 cents off), and the spectral bridge λ(31)/λ(7) = 12.261/4.574 →
+  507.1 cents ≈ **4/3** (9.0 cents off). The number-corpus ratio and the
+  C7-bridge both stand a just perfect fourth apart.
+* **The harmonic content splits the orientations.** Reading each prime as its
+  harmonic: A's primes {2, 5, 7, 733} give the exact harmonic seventh (7/4),
+  the 5/4 third, and **733 ≈ 10/7** (the septimal tritone, 3.7 cents) — and
+  733 sits only 9.5 cents above 3⁶ = 729 (six stacked fifths). A is
+  5+7-limit pentatonic-friendly. B's odd primes {31, 421} are remote (31 = 55
+  cents below the octave; 421 ≈ 13/8 at 21 cents). **A is the pentatonic
+  orientation; B is the remote one.** The chain's own prime 61,757 is
+  8.9 cents from 15/8.
+* **The golden fold is a 13th-harmonic near-miss too.** φ = 833.1 cents ≈
+  13/8 (7.4 cents); 1/r_close = 1/0.6138 ≈ 13/8 (4.5 cents). Same geometry,
+  new interval name.
+* **Null control:** the 30 spectral eigenvalues, mapped mod the octave, give
+  only 4/30 hits within 25 cents of pentatonic pitch classes (6.25 expected by
+  chance) — an honest negative. The modes do not prefer the pentatonic scale.
+* **Non-math lenses (all creased, reported for breadth):** the moon at the
+  epoch was 9.95 days old, waxing gibbous ~76% — a 10-day moon echoing the 10s;
+  Oct 26 2000 was a **Thursday, Jupiter's day** (Jueves/Giovedì/Jeudi), and
+  Jupiter/Marduk was the Babylonian patron of base-60 — a cultural echo of the
+  τ=60; the clock read as coordinates is 10°26'20"N 26°20'20"E (central
+  Africa), carrying the clock's own minutes/seconds; and the MM↔DD gap
+  |B−A| = 2⁸·3²·5⁴·11 has **τ = 270** and contains the digit-sum motif **11**
+  as a prime factor. Binary popcounts (A = 12, C = 12, B = 11) and the
+  mod-12 pitch-class equality (A ≡ B ≡ 8) are the same facts re-read in new
+  costumes.
+
 ---
 
 ## Ch. 6  Creases (never forget these)
@@ -449,6 +491,12 @@ artifacts already falsified.
    base (seconds, the clock's own unit) is a convention. The pentagonal
    structure survives any shift of base; the individual τ values (12, 60, 144)
    do not. Same class of caveat as crease 1.
+7. **Transposition is exponent arithmetic in costume.** The τ = 60 under ×5/4,
+   τ = 80 under ×15/8 and ×5/2, and the 3-denominator exclusions are
+   properties of the exponents (4, 3, 1, 1) of any 2⁴·5³·p·q number — not of
+   this date. The *musical vocabulary* (major third, sexagesimal, pentatonic)
+   is a lens the corpus is holding at arm's length, exactly as it does with
+   "80 both ways".
 
 ---
 

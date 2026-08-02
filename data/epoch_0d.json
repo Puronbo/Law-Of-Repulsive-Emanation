@@ -570,5 +570,61 @@
       "relative": 0.00152
     },
     "verified": true
+  },
+  "pentatonic_and_musical_probe": {
+    "method": "just-intonation (cents) analysis of corpus ratios + harmonics; pentatonic transposition of A and B; spectral pitch-class null test; calendrical, astronomical, geographic, binary, gematria lenses",
+    "transposition_table": {
+      "note": "A and B give IDENTICAL results under every pentatonic/just transposition",
+      "x5_over_4_major_third": { "tau": 60, "note": "the pentatonic third transposes both orientations to tau = 60, the sexagesimal base" },
+      "x15_over_8_major_seventh": { "tau": 80, "note": "tau INVARIANT: the major-seventh transpose keeps the self-referential 80" },
+      "x5_over_2_compound_major_third": { "tau": 80, "note": "tau INVARIANT: compound-third transpose also keeps 80" },
+      "x3_over_2_fifth": { "tau": 128, "note": "the only 3-in-numerator interval; tau = 2^7, a power of two" },
+      "x2_octave": { "tau": 96 },
+      "x9_over_8_whole_tone": { "tau": 96 },
+      "x8_over_5_minor_sixth": { "tau": 96 },
+      "x4_over_3_fourth": { "integer": false, "note": "NON-INTEGER: 3 does not divide A or B - the 3-denominator pentatonic notes are structurally excluded" },
+      "x5_over_3_major_sixth": { "integer": false, "note": "NON-INTEGER: same 3-exclusion" },
+      "summary": "tau stays in {60, 80, 96, 128} under pentatonic transposition; the third gives exactly 60 and the fifth gives exactly 2^7",
+      "crease": "generic for any number 2^4 x 5^3 x p x q (tau arithmetic only depends on the exponents), not specific to this date"
+    },
+    "perfect_fourths": {
+      "A_over_C": { "ratio": 5.360239, "cents_mod_octave": 506.76, "nearest": "4/3 = 498.04 cents, off 8.7", "note": "A/C stands within 9 cents of a just perfect fourth" },
+      "lambda31_over_lambda7": { "ratio": 2.6806, "cents_mod_octave": 507.1, "nearest": "4/3, off 9.0", "note": "the spectral bridge ratio C7-bridge: lambda(31)/lambda(7) is also within 9 cents of 4/3 - two independent perfect fourths" }
+    },
+    "harmonic_content_of_primes": {
+      "7": "7/4 exact - the harmonic seventh (barbershop) by construction",
+      "733": "733rd harmonic = 621.2 cents = 3.7 cents from 10/7 (septimal tritone); and 733 is 9.5 cents above 3^6 = 729 (six stacked fifths)",
+      "61757": "61757th harmonic = 1097.2 cents = 8.9 cents from 15/8 major seventh",
+      "421": "421st harmonic = 861.2 cents = 20.7 cents from 13/8 - remote",
+      "31": "31st harmonic = 1145 cents = 55 cents below the octave - remote, leading-tone region",
+      "197": "197th harmonic = 746.5 cents = 26.2 cents from 25/16 - remote",
+      "summary": "A's primes {2,5,7,733} are 5+7-limit pentatonic-friendly (exact 7/4, 733~10/7); B's {2,5,31,421} are remote. A is the pentatonic orientation, B the remote one."
+    },
+    "golden_fold_as_interval": {
+      "phi_cents": 833.09,
+      "nearest_just": "13/8 = 840.53, off 7.4",
+      "inverse_T58_r": "1/0.6138 = 844.99 cents, 4.5 from 13/8",
+      "note": "the golden fold dressed as the 13th harmonic; consistent with the existing phi story, new musical reading only"
+    },
+    "spectral_pentatonic_null_test": {
+      "hits_within_25_cents": 4,
+      "n_eigenvalues": 30,
+      "expected_by_chance": 6.25,
+      "verdict": "HONEST NEGATIVE: the 30 spectral modes do NOT preferentially fall on pentatonic pitch classes"
+    },
+    "non_math_lenses": {
+      "moon_age_at_epoch": 9.945,
+      "moon_note": "waxing gibbous ~76% illuminated; a 10-day-old moon echoes the 10s (10th month, 10:26:20) - creased",
+      "weekday": "Thursday = Jupiter's day (Jueves/Giovedi/Jeudi); Jupiter was the Babylonian patron (Marduk) of the sexagesimal culture that invented base-60 - a cultural echo of tau=60, creased",
+      "day_of_year": 300,
+      "tau_of_300": 18,
+      "clock_as_coordinates": "10 deg 26'20\" N, 26 deg 20'20\" E (central Africa) - the clock's minutes/seconds appear in the longitude, creased",
+      "binary": "A popcount 12, B popcount 11 (= its digit sum), C popcount 12; both A,B end in hex 0xF0 - creased trivia",
+      "gap_carries_11": "|B-A| = 15840000 = 2^8 x 3^2 x 5^4 x 11, tau = 270 - the MM/DD gap factorization contains the digit-sum motif 11 as a prime",
+      "mod12_pitch_class": "A = B = 8 (mod 12): both orientations are the same note class - literally the shared digit-sum = 2 (mod 3) fact re-read, creased",
+      "gematria": "PUNO = 66, SCRIBE = 56 (A1-Z26) - no finding",
+      "weak_near_misses": "B/A ~ 5/2 major tenth (30 cents); A/B ~ 25/16 (11.2 cents); E1/E0 ~ 10/9 (19 cents) - noted, not carried"
+    },
+    "verified": true
   }
 }
