@@ -157,6 +157,23 @@ folding is the integral; the crease is where the action is.*
   (10262000 / 26102000), which is a year-2000 trailing-zero artifact (0/365 in
   2007); the τ = 8 is the generic, year-independent coincidence. Base test:
   agreement survives base 10 and 12, dies in 8 and 16.
+* **1,914,467 (measured, BOOK VI)**: the second-largest chain member factors as
+  **31 × 61,757** — both primes, a semiprime with **τ = 4**, all four divisors
+  odd. It is the **31-family member**: gcd(1,914,467, 26,102,000) = 31 and
+  gcd(1,914,467, 26,102) = 31, while gcd with every MM-first form is 1 — the
+  chain bridge carries the Mersenne prime 31 to the DD/MM side. Its prime pair
+  obeys the same **one-Mersenne + one-two-square rule** as the date numbers:
+  31 = 2⁵−1 (≡3 mod 4), 61,757 = 139² + 206² (≡1 mod 4). Its reverse
+  7,644,191 = 197 × 38,803 is also a semiprime with the same balanced split
+  (197 = 1²+14², ≡1 mod 4; 38,803 ≡3 mod 4) — the structure survives reversal.
+  Honest negatives: digit sum is 32, not 11 (the 11-motif is date-specific);
+  no gap-2 twins (all divisors odd → gaps [30, 61726, 1852710] all even); and
+  2²¹ − 1,914,467 = 182,685 = 3·5·19·641 is not a census-gap k.
+* **Chain congruence signature (measured)**: down the retrace chain, the mod-4 /
+  τ profile is 943,901,200,001 (≡1, prime, = 121,924² + 963,865², τ=2) →
+  1,914,467 (≡3, 31·61,757, τ=4) → 730,421 (≡1, prime, = 89² + 850², τ=2) →
+  26,102 (≡2, 2·31·421, τ=8) → 10,262 (≡2, 2·7·733, τ=8). Both 4k+1 primes are
+  sums of two squares (Fermat); the sole 4k+3 semiprime is not.
 * Rung lengths (primes between points): 1,610 · 55,944 · 84,218 ·
   35,575,383,161 (the last is the interval count).
 * The prime 730,783 (the date's twin) is coprime to both user numbers; the
