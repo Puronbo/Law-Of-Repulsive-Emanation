@@ -494,5 +494,36 @@
       "C4": "level statistics <r>=0.46 neither Poisson nor GOE; T19 needs more modes to be measured, not asserted"
     },
     "verified": true
+  },
+  "special_numbers_probe": {
+    "doubled_11_motif": {
+      "5131_mod_80": 11,
+      "13051_mod_80": 11,
+      "note": "both odd cores are congruent to 11 (mod 80), where 80 = tau; the 11-motif has two independent carriers: digit sum AND mod-tau residue of the odd cores"
+    },
+    "shared_1375_tail": {
+      "largest_odd_A_mod_1e4": 1375,
+      "largest_odd_B_mod_1e4": 1375,
+      "factorization": "1375 = 125 * 11 = 5^3 * 11 (shared 5^3 block x the 11-motif)",
+      "note": "because both cores are = 11 (mod 80), both largest odd divisors end in 1375"
+    },
+    "137_fine_structure_coincidence": {
+      "C0_at_alpha_5_in_PAPER": 137.574398,
+      "inverse_fine_structure": 137.035999,
+      "relative_match": 0.0039,
+      "note": "coincidence-scale; the corpus's own C0(5.0) and the shared 1375 tails both carry '137'; not a claimed signal"
+    },
+    "taxicab_1729": {
+      "divisible_by_1729": "none of A/B/C",
+      "1729": "12^3 + 1 = 1^3 + 12^3",
+      "note": "honest negative: no direct taxicab connection, but 1729 = 12^3+1 echoes the E1<->ln(12) spectral match"
+    },
+    "golden_ratio_usage": {
+      "golden_fold": "SPRING_BIBLE Ch.6: length_growth/length_fold = phi = 1.618034 (measured exactly)",
+      "T58_closing_radius": "r_close = apex * 0.6138 ~ apex/phi",
+      "retrace_rung": "1914467/730421 = 2.62105 ~ phi^2 (0.12%)",
+      "note": "the golden ratio is a named corpus fold (Ch.6) and now also appears in the retrace chain; the reason for 0.6138 remains AUDIT-open"
+    },
+    "verified": true
   }
 }

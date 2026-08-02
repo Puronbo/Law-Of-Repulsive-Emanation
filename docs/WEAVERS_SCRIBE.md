@@ -364,6 +364,31 @@ artifacts already falsified.
   nor GOE; the "chaos is consistent" capstone (T19) needs more modes to be
   measured, not asserted.
 
+### Ch. 5.2  Special numbers (measured)
+
+* **The 11-motif doubles.** Digit sum 11 was the first carrier; now a second,
+  independent one: **5,131 ≡ 13,051 ≡ 11 (mod 80)**, where 80 = τ. The two odd
+  cores are congruent to 11 modulo their own divisor count. Because of this,
+  both largest odd divisors end in **1375 = 5³·11** (the shared 5³ block × the
+  motif). A structure that survives two unrelated encodings (digit sum, mod-τ
+  residue) is the kind the ML reading §5 marks as *candidate-invariant*.
+* **The golden ratio is already the corpus's own fold** (SPRING_BIBLE Ch. 6):
+  length_growth/length_fold = φ = 1.618034 measured exactly; T58 closes at
+  r = apex·0.6138 ≈ apex/φ. The retrace rung 1,914,467/730,421 = 2.62105 ≈ φ²
+  (0.12%) is the chain joining that same geometry. The *why* of 0.6138 stays
+  open (AUDIT §1.2) — now with two data points (0.6138, 2.62105) instead of one.
+* **137 appears twice, at coincidence scale.** Both 1375 tails carry "137",
+  and the corpus's own PAPER §6.3 has C₀(α=5.0) = 137.574398 vs 1/α ≈ 137.036
+  (0.4%). Reported and set aside: fine-structure numerology is exactly the
+  class of near-miss this book has learned to stop chasing.
+* **Taxicab 1729: honest negative.** None of A/B/C is divisible by 1729, but
+  1729 = 12³+1 = 1³+12³ echoes the E₁↔ln(12) spectral match — worth one line,
+  nothing more.
+* **Special-number inventory (all verified):** Mersenne primes 7, 31 (2³−1,
+  2⁵−1 — the C7-bridge subjects); 4k+1 two-square primes 733, 421, 61,757, 197
+  with root-sums converging on the prime 29; τ = 80 (self-referential count);
+  gcd = 2000 = the year; odd-part gcd = 125 = 5³; the doubled 11; 1375 = 5³·11.
+
 ---
 
 ## Ch. 6  Creases (never forget these)
