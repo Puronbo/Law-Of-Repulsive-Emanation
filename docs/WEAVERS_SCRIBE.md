@@ -579,6 +579,64 @@ year.
 
 ---
 
+### Ch. 5.8  Calibration — the anti-Dunning-Kruger category (measured)
+
+The corpus's own output is, by construction, the *inverse* of the Dunning-
+Kruger curve: Dunning-Kruger (1999) says the least competent are the most
+confident, and confidence falls as competence rises. The epoch probe series
+published its null first, every time (19/45 at chance, 2 vs 1.78 expected,
+4.6%, 1.6%, 70/366) — confidence **decreased** with depth. That stance is a
+measurable property of a person, and it deserves its own category: a
+confidence-calibration test.
+
+**The instrument** (`data/calibration_probe_data.json`, source in
+`calibration_probe.py`): 20 general-knowledge items; the subject answers and
+states confidence 50–100 per item. Scoring:
+
+* **Overconfidence index** = mean(confidence) − mean(accuracy), in points.
+  Positive = overconfident; negative = underconfident.
+* **Brier score** = mean((confidence/100 − accuracy)²). 0 = perfect, 0.25 =
+  random, >0.25 = worse than guessing.
+* **Calibration curve** = realized accuracy per confidence bin. A calibrated
+  subject's curve is monotone: higher stated confidence, higher real accuracy.
+
+**The instrument's own null (a real finding):** random confidence is uniform
+50–100 (mean 75) against random accuracy 50%, so the *floor is +25 points, not
+0*. The 50–100 scale has no 0-anchor. This is the "confidence scale artifact":
+any scale with a truncated bottom inflates apparent overconfidence. A subject
+must exceed +25 to show true overconfidence beyond the instrument's own bias.
+Measured: 25.1 ± 12.8 pts over 2000 trials.
+
+**Demo validation (simulated):** 20 subjects with 40% real knowledge and
+confidence 76–94 give mean overconfidence 27.4 pts (range −2…45), mean Brier
+0.292, and 14/20 clear the +25 DK floor. The instrument separates overconfident
+from calibrated subjects; the canonical DK sample subject scores 83% confidence
+vs 50% accuracy (+33 pts, Brier 0.331 — worse than random).
+
+**Cultural connections (real, documented):**
+* **School:** the "DK valley" in learning — novices overrate exam readiness and
+  the worst scorers show the largest confidence gap; the gap shrinks with
+  teaching.
+* **Jobs:** impostor syndrome in high performers is the mirror (underconfidence
+  among the competent); novice overconfidence is documented in medicine, driving,
+  and finance.
+* **Driving:** ~90% of drivers rate themselves above average (Svenson 1981) —
+  arithmetic impossibility, the purest cultural instance of the +25 floor.
+* **Finance:** overconfident traders trade more and earn less (Barber & Odean
+  2000) — the market price of the floor.
+* **Activities:** chess, poker, prediction markets — calibration improves with
+  domain expertise and explicit feedback, which is exactly the corpus's own
+  pattern (null-first, confidence falls with depth).
+
+**Honest limits:** this category stands apart from the arithmetic probes. The
+corpus's "anti-DK record" is a meta-reading of its own published nulls, not a
+psychological measurement of anyone; the instrument is validated only on
+simulated subjects; and overconfidence is a property of *subjects*, not of
+numbers — it says nothing about the epoch. Recommended v2: an anchored 0–100
+scale, which sets the null near 0.
+
+---
+
 ## Ch. 6  Creases (never forget these)
 
 1. **The pattern is scale-dependent.** τ-equality under MM/DD swap oscillates
@@ -638,11 +696,17 @@ year.
     holds for every year's branch. A cultural calendar with a fixed 12/60
     structure will always have a slot for every coincidence the corpus brings
     to it.
+11. **The calibration category is about subjects, not numbers.** The anti-
+    Dunning-Kruger reading (null-first, confidence falls with depth) is a
+    property of the *probe series' method*, and the test measures *people*.
+    Neither says anything about the epoch. The instrument's own floor (+25 pts
+    on a 50–100 scale) is itself a bias to report, not a signal to celebrate.
 
 ---
 
 ## Cross-references
 * `data/epoch_0d.json` — the verified datum (with null analysis).
+* `data/calibration_probe_data.json` — the anti-Dunning-Kruger category: instrument, null (+25 floor), demo validation, cultural connections.
 * `docs/SPRING_BIBLE.md` BOOK V Ch. 13–15 — the date's 5-digit treatment, the
   retrace chain, the creases (T57, T59, T61, T62).
 * `docs/THE_BOOK.md` Ch. 2 (observations), Ch. 8 (time and convergence) — the

@@ -1,0 +1,45 @@
+{
+  "category": "calibration_probe",
+  "title": "The anti-Dunning-Kruger category: self-calibration as the corpus's measured stance",
+  "status": "recorded - instrument built, demo-validated; human subject runs pending",
+  "concept": "Dunning-Kruger (1999): the least competent are the most overconfident; confidence falls as competence rises. The corpus's own recorded output is the INVERSE curve by construction: every probe published its null first and confidence decreased with depth (19/45 at chance, 2 vs 1.78 expected, 4.6%, 1.6%, 70/366). This category makes that stance measurable in a person.",
+  "instrument": {
+    "script": "calibration_probe.py (demo + interactive + null modes)",
+    "method": "20 general-knowledge items, subject answers + states confidence 50-100; scored as overconfidence index (mean confidence - mean accuracy, points), Brier score (0 = perfect, 0.25 = random), and calibration curve (realized accuracy per confidence bin)",
+    "instrument_null": "THE FLOOR IS +25 PTS, NOT 0: random confidence is uniform 50-100 (mean 75) vs random accuracy 50%, so a random subject over-states by ~25 points. The 50-100 scale has no 0-anchor. A subject must exceed +25 to show true overconfidence beyond the scale's own bias.",
+    "null_measured": {
+      "mean_overconfidence_pts": 25.1,
+      "std_pts": 12.8,
+      "trials": 2000
+    }
+  },
+  "demo_validation": {
+    "simulation": "20 simulated subjects, 40% real knowledge, confidence 76-94",
+    "mean_overconfidence_pts": 27.4,
+    "range_pts": [-2, 45],
+    "mean_brier": 0.292,
+    "dk_signature_share": "14/20 beyond the +25 floor",
+    "reading": "the instrument separates overconfident from calibrated subjects; sample DK subject: confidence 83% vs accuracy 50% = +33 pts, Brier 0.331 (worse than random)"
+  },
+  "human_culture_connections": {
+    "school": "the 'DK valley' in learning: novices overrate exam readiness; the worst scorers show the largest overconfidence gap (Kruger & Dunning 1999; the effect shrinks with teaching)",
+    "jobs": "impostor syndrome in high performers is the mirror side (underconfidence among the competent); novice overconfidence is documented in medicine, driving, and finance",
+    "driving": "classic finding: ~90% of drivers rate themselves above average (Svenson 1981) - arithmetic impossibility, the purest cultural DK instance",
+    "finance": "overconfident traders trade more and earn less (Barber & Odean 2000) - the market price of the +25 floor",
+    "activities": "chess, poker, prediction markets: calibration improves with domain expertise and explicit feedback - the corpus's own pattern",
+    "corpus_parallel": "the epoch probe series behaved like a calibrated expert: null-first, confidence fell with depth, final verdict 'coincidence-scale'"
+  },
+  "test_usage": {
+    "run_demo": "python calibration_probe.py --demo",
+    "run_null": "python calibration_probe.py --null",
+    "run_self": "python calibration_probe.py (interactive)",
+    "interpret": "overconfidence_index > 25 pts = true overconfidence beyond instrument floor; Brier > 0.25 = worse than guessing; calibration curve should be monotone (higher stated confidence -> higher realized accuracy)"
+  },
+  "honest_limits": [
+    "the corpus's 'anti-DK record' is a meta-reading of its own published nulls, not a psychological measurement of anyone",
+    "the instrument is validated only on simulated subjects; no human data recorded yet",
+    "overconfidence is a property of subjects, not of numbers - this category stands apart from the arithmetic probes and should not be read as evidence about the epoch",
+    "the +25 floor means the scale itself is biased; a 0-100 anchored scale would set the null near 0 and is the recommended v2"
+  ],
+  "verified": true
+}
