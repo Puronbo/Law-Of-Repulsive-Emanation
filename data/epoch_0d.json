@@ -59,6 +59,21 @@
     "6digit_time_digits": {"distinct_numbers": 120, "pct_tau_8": 24.2},
     "yearfirst_joint": {"valid_2000_dates_pct_both_tau_8": 5.97, "pct_any_tau_equal": 17.3}
   },
+  "divisors_80": {
+    "counts": {"each": 80, "odd": 16, "even": 64, "both_identical_split": true},
+    "factor_shape": "2^4 x 5^3 x p x q (exponent signature 4,3,1,1) for both; p,q = 7,733 vs 31,421",
+    "common_divisors": 20,
+    "common_divisors_equal_divisors_of_year_2000": true,
+    "gcd": 2000,
+    "gcd_note": "the year itself is the greatest common divisor; the 20 shared divisors are exactly the divisors of 2000 (tau=20)",
+    "lcm": 133929362000,
+    "self_reference": "the divisor count 80 divides both numbers (80 = 2^4 x 5 is a common divisor)",
+    "cross_scale_nesting": {"10262_divides_10262000": true, "26102_divides_26102000": true, "factor": 1000, "note": "the 5-digit pair appears as divisors of the 8-digit pair (x1000); the retrace-chain members are divisors of the epoch"},
+    "non_divisors": {"26": false, "1026": false, "2610": false, "note": "the day 26 does not divide either number (26 = 2x13, no factor 13); only the year 2000 and the trailing 1000 structure divide"},
+    "odd_divisor_sums": {"A": 916032, "B": 2106624, "both_even": true},
+    "sigma_ratio": {"A": 2.7672, "B": 2.5019, "both_abundant": true},
+    "largest_odd_divisors": {"A": 641375, "B": 1631375, "both_end_in_1375": true}
+  },
   "time_configurations": {
     "HHMMSS": 102620, "tau": 24, "digitsum": 11,
     "seconds": 37580, "tau": 12,

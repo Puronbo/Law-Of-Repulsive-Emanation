@@ -105,6 +105,34 @@ and 14. The strongest agreement is at 5/6/8 digits, where the user's original
 pair (10262/26102, τ = 8) and the full-date pair (10262000/26102000, τ = 80)
 both land equal. The 3-digit break is the reason the creases below exist.
 
+### The divisor lattice (all 80 divisors, both numbers)
+
+Both numbers factor as **2⁴·5³·p·q** (exponent signature 4,3,1,1), so both
+have **80 divisors: 16 odd, 64 even** — an identical parity split. The shared
+divisor structure is the cleanest fact of the whole sweep:
+
+* The **20 common divisors are exactly the divisors of the year 2000**
+  {1, 2, 4, 5, 8, 10, 16, 20, 25, 40, 50, 80, 100, 125, 200, 250, 400, 500,
+  1000, 2000}.
+* Therefore **gcd(10262000, 26102000) = 2000** — the year itself is the
+  greatest common divisor, and lcm = 133,929,362,000.
+* **Self-reference:** the divisor count *80* is itself a common divisor
+  (80 = 2⁴·5 divides both). The τ count lives inside the divisor set.
+* **Cross-scale nesting:** the 5-digit pair divides the 8-digit pair
+  (10262 = 10262000/1000, 26102 = 26102000/1000) — the retrace-chain members
+  are divisors of the epoch.
+* **The day does not divide the number:** 26, 1026, 2610 are divisors of
+  neither (26 = 2·13, no factor 13). Only the year's lattice and the trailing
+  `000` structure divide. The month 10 divides both (trailing zero).
+* Odd divisors: 16 each; largest odd are 641,375 (A) and 1,631,375 (B) — both
+  ≡ 1375 (mod 10⁴), i.e. 5³·p·q tail. σ/n = 2.77 vs 2.50 — both abundant.
+* The odd-divisor digit-sum multisets coincide on 14 of 16 values.
+
+**Reading:** the τ = 80 equality is not two unrelated facts — both numbers were
+forced into the *same exponent shape* by the trailing `000`, and the overlap of
+their divisor sets is precisely the year that produced those zeros. The pattern
+is the year, made visible.
+
 ---
 
 ## Ch. 2  The measured instinct: why divisor-rich notation won
