@@ -374,5 +374,32 @@
     "rule": "each number carries exactly one Mersenne prime (mod4=3) and one sum-of-two-squares prime (mod4=1)",
     "root_sum_coincidence": "both two-square primes have square-roots summing to 29 (prime)",
     "verified": true
+  },
+  "three_way_connection": {
+    "A": 10262000,
+    "B": 26102000,
+    "C": 1914467,
+    "gcd_triangle": {
+      "gcd_A_B": 2000,
+      "gcd_B_C": 31,
+      "gcd_A_C": 1,
+      "note": "A-B edge is the year 2000; B-C edge is the Mersenne 31 (2^5 - 1); A-C coprime. B is the hub."
+    },
+    "B_is_hub": "B=2^4*5^3*31*421 shares a factor with both others (2000 with A, 31 with C); B/31=842000=2000*421, C/31=61757",
+    "chain_mod31_ladder": {
+      "943901200001": 15,
+      "1914467": 0,
+      "730421": -1,
+      "26102": 0,
+      "10262": 1,
+      "note": "the two 31-multiples (C and the DD tail) bracketed by +-1: 730421=31*23562-1, 10262=31*331+1",
+      "date_forms": {
+        "A_mod31": 8,
+        "B_mod31": 0
+      }
+    },
+    "prime_distribution_up_chain": "26102=2*31*421; 31 lands in C=31*61757, 421 surfaces in 730421 (contains 421; 730421 mod 421 = 407 = 11*37), 2 stays in the tail",
+    "no_date_part_arithmetic": "no expression over {26,10,2000,1026,2610,300,37580} constructs C=1914467 exactly; connection is factorization- and chain-structural, not digit-arithmetic",
+    "verified": true
   }
 }

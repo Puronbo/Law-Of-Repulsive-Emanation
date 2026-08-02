@@ -173,7 +173,31 @@ folding is the integral; the crease is where the action is.*
   τ profile is 943,901,200,001 (≡1, prime, = 121,924² + 963,865², τ=2) →
   1,914,467 (≡3, 31·61,757, τ=4) → 730,421 (≡1, prime, = 89² + 850², τ=2) →
   26,102 (≡2, 2·31·421, τ=8) → 10,262 (≡2, 2·7·733, τ=8). Both 4k+1 primes are
-  sums of two squares (Fermat); the sole 4k+3 semiprime is not.
+     sums of two squares (Fermat); the sole 4k+3 semiprime is not.
+* **Three-way connection (measured, BOOK VI)** — the date forms and the chain
+  fold form a triangle with two real edges:
+  * A = 10,262,000 ↔ B = 26,102,000: **edge 2000** — gcd = 2000, the year
+    itself; their 20 common divisors are exactly the divisors of 2000; each is
+    the chain-tail pair scaled by the year structure (10,262·1000 / 26,102·1000).
+  * B = 26,102,000 ↔ C = 1,914,467: **edge 31** — gcd = 31, the Mersenne
+    2⁵−1; B/31 = 842,000 = 2000·421 and C/31 = 61,757.
+  * A = 10,262,000 ↔ C = 1,914,467: **edge 1** — coprime. The chain fold is
+    strictly DD-family; it reaches the MM-first form only through B.
+  * So **B is the hub**: the only number with a nontrivial factor shared with
+    both others, and its two edges are the year (2000) and the Mersenne (31) —
+    the two structures the null analysis separated (trailing-000 lattice vs
+    τ = 8 hinge). 2000 and 31 are coprime; 2000·31 = 62,000, 2000+31 = 2031.
+  * **Chain mod-31 ladder (measured)**: 943,901,200,001 ≡ 15, 1,914,467 ≡ 0,
+    730,421 ≡ −1, 26,102 ≡ 0, 10,262 ≡ +1 (mod 31) — the two 31-multiples
+    (C and the DD tail) are bracketed by ±1 (730,421 = 31·23,562 − 1,
+    10,262 = 31·331 + 1). The date forms sit at B ≡ 0 and A ≡ 8.
+  * **Prime distribution up the chain**: 26,102 = 2·31·421 — its primes travel
+    upward separately: 31 lands in C = 31·61,757, and 421 surfaces in
+    730,421 (name carries the 421; 730,421 ≡ 407 = 11·37 mod 421); the 2 stays
+    in the tail.
+  * Honest limit: no date-part arithmetic (26, 10, 2000, 10:26:20, day 300,
+    seconds 37,580) constructs 1,914,467 exactly — the connection is
+    factorization- and chain-structural, not digit-arithmetic.
 * Rung lengths (primes between points): 1,610 · 55,944 · 84,218 ·
   35,575,383,161 (the last is the interval count).
 * The prime 730,783 (the date's twin) is coprime to both user numbers; the
