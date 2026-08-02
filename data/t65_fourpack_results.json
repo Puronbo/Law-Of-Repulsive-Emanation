@@ -1,0 +1,75 @@
+{
+  "P1": {
+    "curiosity_drive": [
+      0.0,
+      0.2,
+      0.4,
+      0.6,
+      0.8,
+      1.0
+    ],
+    "mean_tau": [
+      1.4272,
+      1.4272,
+      1.4272,
+      1.4272,
+      1.4272,
+      1.4272
+    ],
+    "entropy": [
+      0.9183,
+      0.9183,
+      0.9183,
+      0.9183,
+      0.9183,
+      0.9183
+    ],
+    "corr_cd_tau": NaN
+  },
+  "P2": [
+    {
+      "seed": [
+        0.02,
+        0.01
+      ],
+      "reconstructed": [
+        0.626555970097722,
+        0.3635426437612962
+      ],
+      "hyperbolic_err_to_seed": 1.789
+    },
+    {
+      "seed": [
+        0.03,
+        -0.02
+      ],
+      "reconstructed": [
+        0.7027174136790042,
+        0.20096631990396857
+      ],
+      "hyperbolic_err_to_seed": 1.8162
+    },
+    {
+      "seed": [
+        -0.01,
+        0.04
+      ],
+      "reconstructed": [
+        0.4764944190168846,
+        0.5525666272136247
+      ],
+      "hyperbolic_err_to_seed": 1.8108
+    }
+  ],
+  "P3": {
+    "mi_projection": 0.0344,
+    "mi_null": 0.0088,
+    "mi_single_coord": 1.0,
+    "retention_ratio": 1.0
+  },
+  "P4": {
+    "mean_last_step": 0.0024,
+    "converged_fraction": 0.0,
+    "max_dist_from_final": 0.4499
+  }
+}

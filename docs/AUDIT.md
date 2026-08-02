@@ -126,6 +126,7 @@ given so it can be re-run).
 | **Selberg unification** (PAPER) | 30 eigenvalues ↔ 196 Mersenne geodesics, ε(2)=0.000265 | **[claimed]**; eigenvalue sample too small to discriminate GUE |
 | **Partition function match** (PAPER) | L(2)=40.14 vs C₀·π²/6=40.19 (<0.2%) | **[claimed]** |
 | **Thermodynamics/entropy** | ln-thinning ↔ entropy; second law as folding | Analogical, not falsifiable as stated |
+| **PUM §10.1 four-pack (T65)** | P1 τ~entropy; P2 T-symmetry; P3 holographic MI; P4 CTC fixed point | **0.5/4 confirmed.** P1 = tautology (τ := exp(entropy) in source); P2 refuted (recon err ≈ 1.8); P4 refuted (converged fraction 0.0); P3 weakly positive (MI 0.034 vs null 0.009) but synthetic. See `data/t65_fourpack_results.json` |
 
 ---
 
@@ -135,7 +136,9 @@ given so it can be re-run).
    paths) — minutes, removes noise from every future reading.
 2. **Execute the four PUM testable predictions** as a T65 four-pack (quick,
    local, closes §2.4) — the cheapest way to convert "conjectures" into
-   measured facts, matching the project's own doctrine.
+   measured facts, matching the project's own doctrine. **DONE 2026-08-02 —
+   0.5/4 confirmed; P2 and P4 refuted, P1 tautological, P3 synthetic. See Ch.
+   5.9 of WEAVERS_SCRIBE + `data/t65_fourpack_results.json`.**
 3. **Scrub `scripts/` credentials** (and either delete or quarantine the orphan)
    before the repo is shared.
 4. **Observation bank (T66)** — the declared-required capability; the one gap

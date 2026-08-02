@@ -633,7 +633,47 @@ corpus's "anti-DK record" is a meta-reading of its own published nulls, not a
 psychological measurement of anyone; the instrument is validated only on
 simulated subjects; and overconfidence is a property of *subjects*, not of
 numbers — it says nothing about the epoch. Recommended v2: an anchored 0–100
-scale, which sets the null near 0.
+   scale, which sets the null near 0.
+
+### Ch. 5.9  The T65 four-pack — the universal map's testable predictions (measured)
+
+`docs/PHYSICAL_UNIVERSAL_MAP.md` §10.1 makes four claims against the engine.
+Each was executed against the actual `Universals/engine.py` with an explicit
+null (`experiments/t65_fourpack.py`, results in `data/t65_fourpack_results.json`):
+
+* **P1 — recurrence time scales with entropy.** *Satisfied by definition, not
+  by dynamics.* `_compute_recurrence_time()` *is* `exp(entropy)` in the source;
+  the "law" is the code's own definition. The driver in the prediction,
+  `curiosity_drive`, has zero effect on τ (corr = NaN because τ is constant at
+  1.0000 across every drive value): curiosity only gates *dream probability*,
+  never the recurrence time. P1 is circular — nothing discovered.
+* **P2 — T-symmetry: ascent from the forward endpoint recovers the seed.**
+  **Refuted.** Over three seeds, the reversed reconstruction lands at
+  hyperbolic distance 1.79, 1.82, 1.81 from the true initial probe (radius
+  ≈ 0.02 → reconstructed radius ≈ 0.6–0.7). The claimed 3e-3 T-symmetry of the
+  `hamiltonian_flow` series is not reproduced through the engine's own
+  `time_reverse_reconstruct` path.
+* **P3 — holographic compression 1536 → 2D preserves bounded MI.** **Weakly
+  positive, synthetic.** With the (broken) MI estimator fixed to a histogram
+  normalized-MI: projection of a constructed 1536-dim embedding onto 2 dims
+  retains MI 0.034 vs random-coordinate null 0.009 (≈ 3.9×). Caveats: the
+  "latent" is *constructed* (the engine itself is only 2-dim; the 1536 claim is
+  the engine's own framing), and MI(single coordinate 0) = 1.0 is a construction
+  artifact — coordinate 0 *is* the latent. Signal survives compression, but the
+  magnitude is small and the setup is not the engine's internal state.
+* **P4 — the CTC self_chain converges to a fixed point under dream/remix.**
+  **Refuted.** Over 60 dream cycles, mean |Δthought| over the last 20 steps is
+  0.0024 (not < 1e-3), converged fraction = 0.0, and the furthest history point
+  sits 0.45 away from the final thought. The chain is a decaying weighted
+  average (weights 1/(1+0.1i), pruned at 200 entries) — it *tracks recent
+  events*, it never fixes.
+
+**Verdict: 0.5/4 confirmed.** Two predictions are refuted by their own engine,
+one is a tautology (τ = exp(entropy) by assignment), and the only positive
+(P3) is weak and synthetic. This is the second engine-level test in the series
+to fail against the engine it describes (see AUDIT §4), and it is reported
+exactly as measured. The T-symmetry and CTC-fixed-point claims should not be
+cited as verified.
 
 ---
 
@@ -701,12 +741,21 @@ scale, which sets the null near 0.
     property of the *probe series' method*, and the test measures *people*.
     Neither says anything about the epoch. The instrument's own floor (+25 pts
     on a 50–100 scale) is itself a bias to report, not a signal to celebrate.
+12. **The universal map's engine-predictions fail against the engine.**
+    T65 four-pack: τ = exp(entropy) is the code's *definition* (P1, circular);
+    ascent does not recover the seed (P2, err ≈ 1.8); the self_chain is a
+    decaying moving average, not a fixed point (P4, converged fraction 0.0).
+    Only P3 passes and it is synthetic (MI 0.034 vs null 0.009, but the latent
+    is constructed). A claim verified by re-deriving its own source code is not
+    a measurement; a claim refuted by the engine it describes is a red flag for
+    every narrative-level statement in the map that lacks a test.
 
 ---
 
 ## Cross-references
 * `data/epoch_0d.json` — the verified datum (with null analysis).
 * `data/calibration_probe_data.json` — the anti-Dunning-Kruger category: instrument, null (+25 floor), demo validation, cultural connections.
+* `data/t65_fourpack_results.json` — the PUM §10.1 four-pack (0.5/4 confirmed; P1 tautological, P2/P4 refuted, P3 synthetic).
 * `docs/SPRING_BIBLE.md` BOOK V Ch. 13–15 — the date's 5-digit treatment, the
   retrace chain, the creases (T57, T59, T61, T62).
 * `docs/THE_BOOK.md` Ch. 2 (observations), Ch. 8 (time and convergence) — the
