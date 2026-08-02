@@ -27,10 +27,20 @@
     "random_8digit_pct_with_tau_80": 0.48,
     "valid_2000_dates_pct_tau_80": 20.4,
     "valid_2000_dates_both_orientations_pct_tau_80": 4.64,
+    "exact_count_2000": {"both_tau_80": 17, "of": 366, "pct": 4.64, "hits": [[2,2],[4,4],[4,20],[6,6],[6,14],[6,18],[6,20],[6,26],[8,12],[8,20],[8,28],[10,14],[10,22],[10,26],[12,8],[12,14],[12,16]], "any_tau_equal": 60, "any_tau_equal_pct": 16.39, "parity_note": "all 17 are even-month/even-day; the date (10,26) is one of them"},
+    "year_2007_comparison": {"both_tau_80": 0, "of": 365, "pct": 0.0, "both_tau_8_pct": 7.4, "reading": "the tau=80 both-orientation property is a trailing-000 (year-2000) artifact; tau=8 agreement is the generic small-tau coincidence"},
     "reading": "rare among arbitrary 8-digit numbers; common within year-2000 (trailing 000 inflates tau >= 16); both-orientation agreement ~1 in 22. A mild, real coincidence, not a law.",
     "clock_time_seconds": 37580,
     "clock_time_seconds_tau": 12,
     "clock_time_tau_note": "tau(37580)=12 equals tau(60) and tau(260): the sexagesimal and tzolkin divisor counts."
+  },
+  "base_invariance": {
+    "test": "tau-equality of the orientation pairs when the digit strings are re-encoded in bases 8, 10, 12, 16",
+    "8digit_MMDDYYYY": {"base10": true, "base8": false, "base12": true, "base16": false},
+    "5digit_pair": {"base10": true, "base8": false, "base12": true, "base16": false},
+    "yearfirst": {"base10": true, "base8": false, "base12": false, "base16": false},
+    "3digit": {"base10": false, "base8": false, "base12": false, "base16": true},
+    "reading": "agreement survives decimal AND duodecimal encoding, breaks in octal and hexadecimal. Base-selective, not convention-free. Note that 12^2 = 144 and 10^2 = 100 are the two bases whose squares are divisor-rich."
   },
   "scale_dependence": {
     "2digit": {"MM": 10, "tau": 4, "DD": 26, "tau2": 4, "equal": true},

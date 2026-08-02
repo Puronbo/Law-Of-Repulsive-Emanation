@@ -49,6 +49,31 @@ dates it is common. The joint coincidence — both orientations landing on
 exactly 80 — survives that conditioning at ~1 in 22. **A mild, real
 coincidence. Not a law.**
 
+**Exact census (all 366 valid dates of 2000):** exactly **17** dates have
+both-orientation τ = 80 (4.64% — the MC estimate was exact): Feb 2, Apr 4, Apr
+20, Jun 6, Jun 14, Jun 18, Jun 20, Jun 26, Aug 12, Aug 20, Aug 28, Oct 14, Oct
+22, **Oct 26**, Dec 8, Dec 14, Dec 16. All 17 are even-month/even-day. In a
+generic year (2007, no trailing `000`) the count is **zero** — the τ = 80
+phenomenon is a year-2000 trailing-zero artifact. The τ = 8 agreement (the
+5-digit and year-first pairs) is the generic one: it survives in any year
+(~7.4%).
+
+**Base-invariance (the crease's own test):** re-encoding the digit strings in
+bases 8/10/12/16, the τ-agreement survives **base 10 and base 12** (duodecimal)
+and breaks in base 8 and base 16:
+
+| Pair | b=10 | b=8 | b=12 | b=16 |
+|---|---|---|---|---|
+| 10262000 / 26102000 | 80=80 | 22≠88 | 256=256 | 28≠56 |
+| 10262 / 26102 | 8=8 | 4≠16 | 16=16 | 4≠8 |
+| 20001026 / 20002610 | 8=8 | 8≠32 | 32≠24 | 4≠40 |
+| 102 / 261 | 8≠6 | 8≠4 | 4≠3 | 8=8 |
+
+Base-selective, not convention-free — and the two surviving bases are precisely
+10 and 12, the two whose *squares* are divisor-rich (100 → τ 9; 144 → τ 15).
+The pattern "resonates" in the two bases civilization actually chose; that is a
+measured fact, and it is exactly as meaningful as the creases below say it is.
+
 ### Other configurations (measured, exhaustive)
 The same digits, rearranged — every orientation family of the date:
 
@@ -179,7 +204,10 @@ digit-sum 11, its own clock-time τ = 12 — the base's own divisor count.
    miraculous.
 3. **Conventions break** (T59, T61): re-encode benignly and the surface
    coincidence dies; only invariant content (divisor counts, digit sums) — which
-   are arithmetic, not mystical — survives.
+   are arithmetic, not mystical — survives. *Measured refinement:* the τ-agreement
+   of this date survives base 10 and base 12 only, and dies in bases 8 and 16 —
+   base-selective, which is the definition of convention-dependence. The τ = 80
+   phenomenon dies entirely in any year without trailing zeros.
 4. **Cultural parallels are mappings, not evidence.** Thoth, the quipu, the
    Moirai, and the Norns are offered as illustrations of a *shared measured
    instinct* (choose divisor-rich notation; record by thread). They are not

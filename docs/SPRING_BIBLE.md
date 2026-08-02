@@ -151,6 +151,12 @@ folding is the integral; the crease is where the action is.*
 * The hinge: **26102 = 2 × 31 × 421**, and **730,421 is prime** — the factor
   421 of the small number is the "421" in the prime that closes the date
   (730,421 = 421·1734 + 407, and 407 = 11 × 37 — the 11-motif again).
+* **Divisor echoes (measured, BOOK VI)**: both chain members share τ = 8 —
+  τ(10262) = τ(26102) = 8 (each is 2·p·q squarefree). The hinge factor **31 is
+  the Mersenne prime 2⁵ − 1**. The full-date forms keep the equality at τ = 80
+  (10262000 / 26102000), which is a year-2000 trailing-zero artifact (0/365 in
+  2007); the τ = 8 is the generic, year-independent coincidence. Base test:
+  agreement survives base 10 and 12, dies in 8 and 16.
 * Rung lengths (primes between points): 1,610 · 55,944 · 84,218 ·
   35,575,383,161 (the last is the interval count).
 * The prime 730,783 (the date's twin) is coprime to both user numbers; the
