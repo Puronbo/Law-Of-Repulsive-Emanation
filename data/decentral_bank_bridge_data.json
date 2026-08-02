@@ -1,0 +1,40 @@
+{
+  "results": {
+    "T9 round trip": {
+      "test": "T9 round trip",
+      "onramp_ok": true,
+      "offramp_ok": true,
+      "dcn_credit": 1000,
+      "dcn_burn": 400,
+      "customer_fiat": 1400.0,
+      "reconcile": true,
+      "diff": 0.0,
+      "verdict": "PASS"
+    },
+    "T10 idempotency": {
+      "test": "T10 idempotency",
+      "replayed_onramp_rejected": true,
+      "replayed_offramp_rejected": true,
+      "custody_unchanged": true,
+      "dcn_unchanged": true,
+      "reconcile": true,
+      "diff": 0.0,
+      "verdict": "PASS"
+    },
+    "T11 backing": {
+      "test": "T11 backing",
+      "ops_ok": 115,
+      "replays_seen": 170,
+      "forged_overwithdraw_rejected": true,
+      "reconcile": true,
+      "diff": 0.0,
+      "verdict": "PASS"
+    }
+  },
+  "limits": {
+    "single_key_custody": "one gateway key, no m-of-n threshold, no HSM",
+    "mock_bank": "no network, no TLS, no KYC/AML/sanctions, no regulator reporting",
+    "trusted_refs": "idempotency by caller-supplied ref; a real bridge must derive refs from bank-side txn IDs",
+    "no_compensation": "burn-before-payout uses a custody peek so payout cannot fail after burn; no reversal path"
+  }
+}

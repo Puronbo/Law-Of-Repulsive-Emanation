@@ -783,6 +783,58 @@ double-spend rejection, and witness quorum that the "no ledger/consensus/
 transaction layer" gap in AUDIT §1 named. The crease is the honest wall: a
 >50% corrupt neighbourhood beats the quorum.
 
+### Ch. 5.12  Hardening and the centralized-bank bridge (T68 Phase 1, T69, measured)
+
+**Phase 1 — real primitives.** The "signatures are a stand-in" limit is closed:
+accounts are now Ed25519 keypairs, an address = first 40 hex chars of
+SHA-256(pubkey), and routing embeds the address (the name layer and the money
+layer stay the same postal system). Every transaction carries the sender's
+public key and a signature over the canonical tx body (which covers the pubkey,
+so an address can't be detached from its key). The ledger verifies signature
+*and* address↔pubkey binding at append and again during full re-validation.
+
+* **T7 signatures (PASS):** a legitimately signed tx commits; a tampered
+  committed block fails re-validation (`hash-mismatch`); a tx signed by the
+  wrong key fails (`bad-signature`); a tx that claims the victim's address but
+  carries the attacker's pubkey fails (`addr-mismatch`). All four attack
+  surfaces rejected; a fresh legit tx still commits afterwards.
+* **T8 persistence (PASS):** per-fragment write-ahead log (append + fsync,
+  committed blocks only — quorum-denied blocks are rolled back and never
+  logged). After save + load into a fresh bank, every head hash is bit-identical,
+  invariants hold (15000 = 15000), and the loaded bank still transacts.
+
+**T69 — the bridge, and the fact that shapes it.** A decentralized ledger cannot
+self-settle fiat; money becomes bank money only through a gateway holding
+custody. So the bridge is a `Gateway` DCN account (the mint reserve) plus a
+`MockBank` (one custody account, per-customer fiat ledger, idempotent by ref).
+On-ramp: fiat into custody → gateway mints a DCN credit. Off-ramp: DCN burn →
+custody pays the customer. The measured null is the backing invariant
+`custody + gateway_DCN == initial_reserve` — the bridge may never pay out more
+than it holds.
+
+* **T9 round trip (PASS):** on-ramp 1000 credits DCN exactly +1000; off-ramp
+  400 pays fiat exactly +400; customer fiat ledger 1400; reconcile diff 0.0.
+* **T10 idempotency (PASS):** replaying either ref settles NOTHING twice —
+  custody and DCN balances unchanged, both replays rejected. (The null is the
+  naive bank, which would double-pay.)
+* **T11 backing (PASS):** 300 randomized ops (170 ref replays, forged
+  over-withdraw attempts at 10× a user's DCN balance) — every forged withdrawal
+  is rejected, and reconcile() holds EXACTLY (diff 0.0). The bridge cannot pay
+  out more than its backing.
+
+Debugging that mattered: the first T11 run broke reconcile by −282 — the
+gateway account was in the bank's own account list, so the random batch could
+pick the reserve as a "user" and an off-ramp would "burn" gw→gw (a self
+transfer, no real backing) while custody paid out. The fix (users exclude the
+gateway) is a real finding: a bridge must never let the reserve pay itself.
+
+The honest walls left (all printed as limits): one gateway key (no m-of-n
+threshold, no HSM); a mock bank (no network, no TLS, no KYC/AML/sanctions, no
+regulator reporting — the parts a real bank actually demands); idempotency by
+caller-supplied ref (a real bridge must derive refs from bank-side txn IDs);
+burn-before-payout uses a custody peek instead of a compensation path; and the
+quorum is still an in-process simulation, not network consensus.
+
 ---
 
 ## Ch. 6  Creases (never forget these)
@@ -883,6 +935,14 @@ transaction layer" gap in AUDIT §1 named. The crease is the honest wall: a
     but once a >50%-corrupt neighbourhood exists, faulty sends slip through
     the quorum (caught-frac 1.0 → 0.23–0.27). Consensus geometry protects
     against a minority of liars; it is not BFT. (Ch. 5.11.)
+17. **A bridge's trust boundary moves to the gateway; it never disappears.**
+    The T69 on/off-ramp proves the DCN can move value against a centralized
+    bank *only through* a custody-holding gateway whose backing invariant
+    (`custody + reserve_DCN == initial`) is the security metric — reconcile
+    holds to diff 0.0 under ref replays and forged withdrawals. But that
+    custody is one simulated key: no threshold multisig, no HSM, no KYC/AML,
+    no regulator. The decentralized part is real; the "connection to the bank"
+    is a regulated custody relationship, not a protocol. (Ch. 5.12.)
 
 ---
 
@@ -893,6 +953,8 @@ transaction layer" gap in AUDIT §1 named. The crease is the honest wall: a
 * `data/bekenstein_shift_data.json` — the persisted Bekenstein source, which **contradicts** the PAPER's p=0.002 claim (creases #13–#14).
 * `data/decentral_bank_data.json` — T68 the Decentral Bank: T1–T6 verdicts, the
   faulty-quorum curve (crease #16), anomaly precision vs random null.
+* `data/decentral_bank_bridge_data.json` — T69 the bridge: on/off-ramp round
+  trip, ref-idempotency, and the backing invariant (crease #17).
 * `docs/SPRING_BIBLE.md` BOOK V Ch. 13–15 — the date's 5-digit treatment, the
   retrace chain, the creases (T57, T59, T61, T62).
 * `docs/THE_BOOK.md` Ch. 2 (observations), Ch. 8 (time and convergence) — the

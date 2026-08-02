@@ -4,9 +4,9 @@
       "test": "T1 routing",
       "deterministic": true,
       "partition_spread": {
-        "min": 6,
-        "max": 111,
-        "std": 34.03,
+        "min": 7,
+        "max": 68,
+        "std": 19.84,
         "empty_fragments": 0
       },
       "verdict": "PASS"
@@ -47,19 +47,19 @@
         },
         {
           "faulty_frac": 0.4,
-          "honest_ok_frac": 0.467,
+          "honest_ok_frac": 0.733,
           "faulty_send_caught_frac": 1.0,
           "null_coinflip": 0.5
         },
         {
           "faulty_frac": 0.5,
-          "honest_ok_frac": 0.467,
-          "faulty_send_caught_frac": 0.233,
+          "honest_ok_frac": 0.8,
+          "faulty_send_caught_frac": 0.333,
           "null_coinflip": 0.5
         },
         {
           "faulty_frac": 0.6,
-          "honest_ok_frac": 0.414,
+          "honest_ok_frac": 0.6,
           "faulty_send_caught_frac": 0.267,
           "null_coinflip": 0.5
         }
@@ -72,12 +72,30 @@
       "precision": 0.633,
       "null_precision_random": 0.0186,
       "verdict": "PASS"
+    },
+    "T7 signatures": {
+      "test": "T7 signatures",
+      "accepted": true,
+      "accepted_again": true,
+      "tamper_rejected": true,
+      "wrong_key_rejected": true,
+      "addr_spoof_rejected": true,
+      "verdict": "PASS"
+    },
+    "T8 persistence": {
+      "test": "T8 persistence",
+      "heads_equal": true,
+      "invariants": true,
+      "detail": "total=15000 vs 15000",
+      "loaded_transacts": true,
+      "verdict": "PASS"
     }
   },
   "limits": {
     "no_byzantine": "a >50% corrupt neighbourhood wins; quorum is weak consensus, not BFT",
-    "toy": "single-threaded, in-memory, deterministic; not a real bank",
-    "no_real_crypto": "nonce+hash stand-in, not cryptographic signatures",
+    "toy": "single-process, local filesystem, deterministic; not a real bank",
+    "no_network": "no transport, no cross-process consensus; quorum is an in-process simulation",
+    "no_crash_recovery": "WAL is append+fsync but torn-log recovery is untested; an OS crash mid-commit could orphan a block",
     "observation_bank_missing": "anomaly uses tx amounts only; the declared T66 multivariate bank is still absent"
   }
 }
