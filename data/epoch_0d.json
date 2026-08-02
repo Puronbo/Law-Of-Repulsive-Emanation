@@ -1,6 +1,6 @@
 {
   "id": "epoch_0d",
-  "title": "2000-10-26 10:26:20.00 — datum-zero anchor on the number line",
+  "title": "2000-10-26 10:26:20.00 \u2014 datum-zero anchor on the number line",
   "role": "0d reference datum; both calendar renderings are divisor-rich and digit-sum-palindromic.",
   "clock_time": "2000-10-26 10:26:20.00",
   "unix_epoch_seconds": 972527180,
@@ -27,8 +27,91 @@
     "random_8digit_pct_with_tau_80": 0.48,
     "valid_2000_dates_pct_tau_80": 20.4,
     "valid_2000_dates_both_orientations_pct_tau_80": 4.64,
-    "exact_count_2000": {"both_tau_80": 17, "of": 366, "pct": 4.64, "hits": [[2,2],[4,4],[4,20],[6,6],[6,14],[6,18],[6,20],[6,26],[8,12],[8,20],[8,28],[10,14],[10,22],[10,26],[12,8],[12,14],[12,16]], "any_tau_equal": 60, "any_tau_equal_pct": 16.39, "parity_note": "all 17 are even-month/even-day; the date (10,26) is one of them"},
-    "year_2007_comparison": {"both_tau_80": 0, "of": 365, "pct": 0.0, "both_tau_8_pct": 7.4, "reading": "the tau=80 both-orientation property is a trailing-000 (year-2000) artifact; tau=8 agreement is the generic small-tau coincidence"},
+    "exact_count_2000": {
+      "both_tau_80": 17,
+      "of": 366,
+      "pct": 4.64,
+      "hits": [
+        [
+          2,
+          2
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          20
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          14
+        ],
+        [
+          6,
+          18
+        ],
+        [
+          6,
+          20
+        ],
+        [
+          6,
+          26
+        ],
+        [
+          8,
+          12
+        ],
+        [
+          8,
+          20
+        ],
+        [
+          8,
+          28
+        ],
+        [
+          10,
+          14
+        ],
+        [
+          10,
+          22
+        ],
+        [
+          10,
+          26
+        ],
+        [
+          12,
+          8
+        ],
+        [
+          12,
+          14
+        ],
+        [
+          12,
+          16
+        ]
+      ],
+      "any_tau_equal": 60,
+      "any_tau_equal_pct": 16.39,
+      "parity_note": "all 17 are even-month/even-day; the date (10,26) is one of them"
+    },
+    "year_2007_comparison": {
+      "both_tau_80": 0,
+      "of": 365,
+      "pct": 0.0,
+      "both_tau_8_pct": 7.4,
+      "reading": "the tau=80 both-orientation property is a trailing-000 (year-2000) artifact; tau=8 agreement is the generic small-tau coincidence"
+    },
     "reading": "rare among arbitrary 8-digit numbers; common within year-2000 (trailing 000 inflates tau >= 16); both-orientation agreement ~1 in 22. A mild, real coincidence, not a law.",
     "clock_time_seconds": 37580,
     "clock_time_seconds_tau": 12,
@@ -36,31 +119,125 @@
   },
   "base_invariance": {
     "test": "tau-equality of the orientation pairs when the digit strings are re-encoded in bases 8, 10, 12, 16",
-    "8digit_MMDDYYYY": {"base10": true, "base8": false, "base12": true, "base16": false},
-    "5digit_pair": {"base10": true, "base8": false, "base12": true, "base16": false},
-    "yearfirst": {"base10": true, "base8": false, "base12": false, "base16": false},
-    "3digit": {"base10": false, "base8": false, "base12": false, "base16": true},
+    "8digit_MMDDYYYY": {
+      "base10": true,
+      "base8": false,
+      "base12": true,
+      "base16": false
+    },
+    "5digit_pair": {
+      "base10": true,
+      "base8": false,
+      "base12": true,
+      "base16": false
+    },
+    "yearfirst": {
+      "base10": true,
+      "base8": false,
+      "base12": false,
+      "base16": false
+    },
+    "3digit": {
+      "base10": false,
+      "base8": false,
+      "base12": false,
+      "base16": true
+    },
     "reading": "agreement survives decimal AND duodecimal encoding, breaks in octal and hexadecimal. Base-selective, not convention-free. Note that 12^2 = 144 and 10^2 = 100 are the two bases whose squares are divisor-rich."
   },
   "scale_dependence": {
-    "2digit": {"MM": 10, "tau": 4, "DD": 26, "tau2": 4, "equal": true},
-    "3digit": {"MM": "102", "tau": 8, "digitsum": 3, "YY": "261", "tau2": 6, "digitsum2": 9, "equal": false},
-    "4digit": {"MMDD": 1026, "tau": 16, "DDMM": 2610, "tau2": 24, "equal": false},
-    "5digit": {"MMYY": 10262, "tau": 8, "digitsum": 11, "YYMM": 26102, "tau2": 8, "digitsum2": 11, "equal": true},
-    "6digit": {"MMDDYY": 102600, "tau": 96, "DDMMYY": 261000, "tau2": 96, "equal": true},
-    "8digit": {"MMDDYYYY": 10262000, "tau": 80, "digitsum": 11, "DDMMYYYY": 26102000, "tau2": 80, "digitsum2": 11, "equal": true},
-    "8digit_yearfirst": {"YYYYMMDD": 20001026, "tau": 8, "YYYYDDMM": 20002610, "tau2": 8, "digitsum": 11, "equal": true},
-    "14digit": {"YYYYMMDDHHMMSS": 20001026102620, "tau": 96, "DDMMYYYYHHMMSS": 26102000102620, "tau2": 24, "equal": false},
+    "2digit": {
+      "MM": 10,
+      "tau": 4,
+      "DD": 26,
+      "tau2": 4,
+      "equal": true
+    },
+    "3digit": {
+      "MM": "102",
+      "tau": 8,
+      "digitsum": 3,
+      "YY": "261",
+      "tau2": 6,
+      "digitsum2": 9,
+      "equal": false
+    },
+    "4digit": {
+      "MMDD": 1026,
+      "tau": 16,
+      "DDMM": 2610,
+      "tau2": 24,
+      "equal": false
+    },
+    "5digit": {
+      "MMYY": 10262,
+      "tau": 8,
+      "digitsum": 11,
+      "YYMM": 26102,
+      "tau2": 8,
+      "digitsum2": 11,
+      "equal": true
+    },
+    "6digit": {
+      "MMDDYY": 102600,
+      "tau": 96,
+      "DDMMYY": 261000,
+      "tau2": 96,
+      "equal": true
+    },
+    "8digit": {
+      "MMDDYYYY": 10262000,
+      "tau": 80,
+      "digitsum": 11,
+      "DDMMYYYY": 26102000,
+      "tau2": 80,
+      "digitsum2": 11,
+      "equal": true
+    },
+    "8digit_yearfirst": {
+      "YYYYMMDD": 20001026,
+      "tau": 8,
+      "YYYYDDMM": 20002610,
+      "tau2": 8,
+      "digitsum": 11,
+      "equal": true
+    },
+    "14digit": {
+      "YYYYMMDDHHMMSS": 20001026102620,
+      "tau": 96,
+      "DDMMYYYYHHMMSS": 26102000102620,
+      "tau2": 24,
+      "equal": false
+    },
     "reading": "tau-equality under MM/DD swap OSCILLATES with scale: holds at 2, 5, 6, 8 digits; breaks at 3, 4, 14. Not a systematic law; a scale-dependent coincidence."
   },
   "exhaustive_permutations": {
-    "8digit_digits_20001026": {"distinct_numbers": 420, "pct_tau_8": 18.3, "pct_tau_80": 3.6, "note": "tau=8 is the mode among ALL permutations of the date's 8 digits; the 80-pair sits in a 3.6% family."},
-    "5digit_digits": {"distinct_numbers": 48, "pct_tau_8": 35.4},
-    "6digit_time_digits": {"distinct_numbers": 120, "pct_tau_8": 24.2},
-    "yearfirst_joint": {"valid_2000_dates_pct_both_tau_8": 5.97, "pct_any_tau_equal": 17.3}
+    "8digit_digits_20001026": {
+      "distinct_numbers": 420,
+      "pct_tau_8": 18.3,
+      "pct_tau_80": 3.6,
+      "note": "tau=8 is the mode among ALL permutations of the date's 8 digits; the 80-pair sits in a 3.6% family."
+    },
+    "5digit_digits": {
+      "distinct_numbers": 48,
+      "pct_tau_8": 35.4
+    },
+    "6digit_time_digits": {
+      "distinct_numbers": 120,
+      "pct_tau_8": 24.2
+    },
+    "yearfirst_joint": {
+      "valid_2000_dates_pct_both_tau_8": 5.97,
+      "pct_any_tau_equal": 17.3
+    }
   },
   "divisors_80": {
-    "counts": {"each": 80, "odd": 16, "even": 64, "both_identical_split": true},
+    "counts": {
+      "each": 80,
+      "odd": 16,
+      "even": 64,
+      "both_identical_split": true
+    },
     "factor_shape": "2^4 x 5^3 x p x q (exponent signature 4,3,1,1) for both; p,q = 7,733 vs 31,421",
     "common_divisors": 20,
     "common_divisors_equal_divisors_of_year_2000": true,
@@ -68,30 +245,134 @@
     "gcd_note": "the year itself is the greatest common divisor; the 20 shared divisors are exactly the divisors of 2000 (tau=20)",
     "lcm": 133929362000,
     "self_reference": "the divisor count 80 divides both numbers (80 = 2^4 x 5 is a common divisor)",
-    "cross_scale_nesting": {"10262_divides_10262000": true, "26102_divides_26102000": true, "factor": 1000, "note": "the 5-digit pair appears as divisors of the 8-digit pair (x1000); the retrace-chain members are divisors of the epoch"},
-    "non_divisors": {"26": false, "1026": false, "2610": false, "note": "the day 26 does not divide either number (26 = 2x13, no factor 13); only the year 2000 and the trailing 1000 structure divide"},
-    "odd_divisor_sums": {"A": 916032, "B": 2106624, "both_even": true},
-    "sigma_ratio": {"A": 2.7672, "B": 2.5019, "both_abundant": true},
-    "largest_odd_divisors": {"A": 641375, "B": 1631375, "both_end_in_1375": true}
+    "cross_scale_nesting": {
+      "10262_divides_10262000": true,
+      "26102_divides_26102000": true,
+      "factor": 1000,
+      "note": "the 5-digit pair appears as divisors of the 8-digit pair (x1000); the retrace-chain members are divisors of the epoch"
+    },
+    "non_divisors": {
+      "26": false,
+      "1026": false,
+      "2610": false,
+      "note": "the day 26 does not divide either number (26 = 2x13, no factor 13); only the year 2000 and the trailing 1000 structure divide"
+    },
+    "odd_divisor_sums": {
+      "A": 916032,
+      "B": 2106624,
+      "both_even": true
+    },
+    "sigma_ratio": {
+      "A": 2.7672,
+      "B": 2.5019,
+      "both_abundant": true
+    },
+    "largest_odd_divisors": {
+      "A": 641375,
+      "B": 1631375,
+      "both_end_in_1375": true
+    }
   },
   "gap_and_difference_analysis": {
-    "odd_odd_prime_gaps": {"A": [2], "B": [], "note": "differences of odds are even, so the only prime gap possible is 2. A has exactly one: 5 and 7 are CONSECUTIVE odd divisors AND twin primes. B has none."},
-    "even_even_prime_gaps": {"A": [2,2,2], "B": [2,2,2], "A_pairs": [[2,4],[8,10],[14,16]], "B_pairs": [[2,4],[8,10],[248,250]], "shared_bottom_twins": [[2,4],[8,10]], "note": "both even sets share the same two gap-2 twins at the bottom, from the common year-lattice divisors."},
-    "signature_prime_as_doubling_difference": {"A": "733 = |733 - 1466| = |p - 2p|", "B": "421 = |421 - 842| = |p - 2p|", "note": "each number's own large prime p yields a prime cross-parity difference by doubling, since p (odd) and 2p (even) are both divisors."},
-    "shared_prime_difference": {"7": "|1 - 8| in BOTH A and B (1 odd, 8 even, both common divisors)", "31": "|25-56| in A and |31-62| in B"},
-    "chain_reemergence_as_gaps": {"10262_is_evenA_gap": true, "261020_equals_26102x10_is_evenB_gap": true, "note": "the 5-digit pair re-appears as gaps between consecutive even divisors; 733-multiple and 421-multiple gaps form ladders in A and B respectively."},
+    "odd_odd_prime_gaps": {
+      "A": [
+        2
+      ],
+      "B": [],
+      "note": "differences of odds are even, so the only prime gap possible is 2. A has exactly one: 5 and 7 are CONSECUTIVE odd divisors AND twin primes. B has none."
+    },
+    "even_even_prime_gaps": {
+      "A": [
+        2,
+        2,
+        2
+      ],
+      "B": [
+        2,
+        2,
+        2
+      ],
+      "A_pairs": [
+        [
+          2,
+          4
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          14,
+          16
+        ]
+      ],
+      "B_pairs": [
+        [
+          2,
+          4
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          248,
+          250
+        ]
+      ],
+      "shared_bottom_twins": [
+        [
+          2,
+          4
+        ],
+        [
+          8,
+          10
+        ]
+      ],
+      "note": "both even sets share the same two gap-2 twins at the bottom, from the common year-lattice divisors."
+    },
+    "signature_prime_as_doubling_difference": {
+      "A": "733 = |733 - 1466| = |p - 2p|",
+      "B": "421 = |421 - 842| = |p - 2p|",
+      "note": "each number's own large prime p yields a prime cross-parity difference by doubling, since p (odd) and 2p (even) are both divisors."
+    },
+    "shared_prime_difference": {
+      "7": "|1 - 8| in BOTH A and B (1 odd, 8 even, both common divisors)",
+      "31": "|25-56| in A and |31-62| in B"
+    },
+    "chain_reemergence_as_gaps": {
+      "10262_is_evenA_gap": true,
+      "261020_equals_26102x10_is_evenB_gap": true,
+      "note": "the 5-digit pair re-appears as gaps between consecutive even divisors; 733-multiple and 421-multiple gaps form ladders in A and B respectively."
+    },
     "small_prime_ubiquity": "cross-parity differences produce 65 (A) and 59 (B) distinct primes, starting 3,5,7,11,13,17,19,23,31,43 - small primes are unavoidable from a dense divisor lattice, so only the specific ones above are diagnostic."
   },
   "time_configurations": {
-    "HHMMSS": 102620, "tau": 24, "digitsum": 11,
-    "seconds": 37580, "tau": 12,
-    "year": 2000, "tau": 20,
-    "day_of_year": 300, "tau": 18,
-    "YYYYMMDDHHMMSS": 20001026102620, "tau": 96, "digitsum": 22,
-    "YYYYDDMMHHMMSS": 20002610102620, "tau": 12,
-    "HHMMSSYYYYMMDD": 10262020001026, "tau": 32,
-    "reverse_full": 2620102610002, "tau": 16
+    "HHMMSS": 102620,
+    "tau": 16,
+    "digitsum": 22,
+    "seconds": 37580,
+    "year": 2000,
+    "day_of_year": 300,
+    "YYYYMMDDHHMMSS": 20001026102620,
+    "YYYYDDMMHHMMSS": 20002610102620,
+    "HHMMSSYYYYMMDD": 10262020001026,
+    "reverse_full": 2620102610002
   },
   "note": "Both orientations of the date share divisor count (80) and digit sum (11): the anchor is orientation-stable under MM/DD <-> DD/MM at several scales. See docs/WEAVERS_SCRIBE.md for the cultural mapping and the binding creases.",
-  "verified": true
+  "verified": true,
+  "prime_pairings": {
+    "A_primes": {
+      "7": "2^3 - 1 Mersenne, mod4=3",
+      "733": "2^2 + 27^2, mod4=1, root sum 2+27=29"
+    },
+    "B_primes": {
+      "31": "2^5 - 1 Mersenne, mod4=3",
+      "421": "14^2 + 15^2 (consecutive), mod4=1, root sum 14+15=29"
+    },
+    "rule": "each number carries exactly one Mersenne prime (mod4=3) and one sum-of-two-squares prime (mod4=1)",
+    "root_sum_coincidence": "both two-square primes have square-roots summing to 29 (prime)",
+    "verified": true
+  }
 }
