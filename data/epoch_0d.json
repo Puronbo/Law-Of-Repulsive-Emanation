@@ -401,5 +401,47 @@
     "prime_distribution_up_chain": "26102=2*31*421; 31 lands in C=31*61757, 421 surfaces in 730421 (contains 421; 730421 mod 421 = 407 = 11*37), 2 stays in the tail",
     "no_date_part_arithmetic": "no expression over {26,10,2000,1026,2610,300,37580} constructs C=1914467 exactly; connection is factorization- and chain-structural, not digit-arithmetic",
     "verified": true
+  },
+  "odd_divisor_pairings": {
+    "counts": {
+      "total": 80,
+      "odd": 16,
+      "even": 64,
+      "per_number": true,
+      "note": "odd count 16 = 2^4 = 2^v2 is determined solely by the 2-adic exponent, NOT by the odd primes; even = 16*4 = 64; tau = 16*5 = 80"
+    },
+    "odd_parts": {
+      "A_odd": 641375,
+      "A_odd_factorization": "5^3 * 7 * 733 (MM-family core)",
+      "B_odd": 1631375,
+      "B_odd_factorization": "5^3 * 31 * 421 (DD-family core)",
+      "gcd_odd_parts": 125,
+      "note": "families share only the 5^3 block; they separate entirely on the odd side"
+    },
+    "year_2000_pairing": {
+      "A": "5131 x 2000",
+      "B": "13051 x 2000",
+      "note": "5131 = 7*733 and 13051 = 31*421 are the chain tails' odd parts; the date numbers are (tail odd-core) x 2000"
+    },
+    "shared_even_complements": [
+      16,
+      80,
+      400,
+      2000
+    ],
+    "shared_even_complements_note": "= 2^4 x {1,5,25,125} = 2^4 x shared odd divisors; tau=80 self-reference appears as an even complement (128275 x 80 in A, 65255 x 80 in B)",
+    "odd_bridge_to_chain": {
+      "gcd_1914467_with_A_odd": 1,
+      "gcd_1914467_with_B_odd": 31,
+      "note": "the 31-bridge is odd-only: the chain fold connects to B purely through the odd core; the 2^4*5^3 scaffolding is irrelevant"
+    },
+    "abundance": {
+      "sigma_odd_A": 916032,
+      "sigma_odd_B": 2106624,
+      "ratio_A": 1.4282,
+      "ratio_B": 1.2913,
+      "note": "both odd parts abundant (sigma_odd / odd_part > 1)"
+    },
+    "verified": true
   }
 }

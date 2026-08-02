@@ -198,6 +198,26 @@ folding is the integral; the crease is where the action is.*
   * Honest limit: no date-part arithmetic (26, 10, 2000, 10:26:20, day 300,
     seconds 37,580) constructs 1,914,467 exactly — the connection is
     factorization- and chain-structural, not digit-arithmetic.
+* **Odd-divisor pairings (measured, BOOK VI)**: each date number has
+  **16 odd / 64 even** divisors (not 20/60): odd count 16 = 2⁴ = 2^v₂ is
+  determined solely by the 2-adic exponent — the odd primes 7,733 vs 31,421
+  are irrelevant to the split (τ = 16·5 = 80). The 16 odd divisors are exactly
+  the divisors of the odd part:
+  * A_odd = 5³·7·733 = 641,375 (MM-family core), B_odd = 5³·31·421 =
+    1,631,375 (DD-family core); gcd = 125 = 5³ — the families share only the
+    5³ block and separate entirely on the odd side.
+  * The 16 pairings (d, N/d) with d odd include **core × 2000** in both:
+    5,131 × 2000 and 13,051 × 2000, where 5,131 = 7·733 and 13,051 = 31·421
+    are exactly the chain tails' odd parts — the date numbers are
+    (tail odd-core) × 2000.
+  * Shared even complements across both tables: 16, 80, 400, 2000 = 2⁴ ×
+    {1,5,25,125} — the shared odd divisors mirrored by 2⁴; the τ = 80
+    self-reference appears as an even complement (128,275 × 80 / 65,255 × 80).
+  * **The 31-bridge is odd-only**: gcd(1,914,467, B_odd) = 31 while
+    gcd(1,914,467, A_odd) = 1 — the chain fold connects to B purely through
+    the odd core; the 2⁴·5³ scaffolding is irrelevant to it.
+  * Both odd parts are abundant (σ_odd ratios 1.428 / 1.291; sums 916,032 /
+    2,106,624).
 * Rung lengths (primes between points): 1,610 · 55,944 · 84,218 ·
   35,575,383,161 (the last is the interval count).
 * The prime 730,783 (the date's twin) is coprime to both user numbers; the
