@@ -56,6 +56,15 @@ given so it can be re-run).
   Currently gitignored, but it must be scrubbed before the repo is ever shared.
 * `web_data.json` exists twice with identical MD5: `Universals/` (served by the
   dashboard) and `data/` (dead copy).
+* **NEW 2026-08-02:** `c0_law_data.json` exists twice with identical MD5:
+  `data/` and `Universals/` — same duplicate-class as `web_data.json`.  The
+  producer (`generate_c0_data.py`) writes the `Universals/` copy; the `data/`
+  copy is a dead duplicate.  (Also: 6 data files have no in-repo producer
+  script — `googol_census.json`, `mersenne_m52_bridge.json`,
+  `mersenne_prime_5630.json` are produced by gitignored `scripts/`;
+  `epoch_0d.json` and `calibration_probe_data.json` are probe artifacts written
+  by external/one-off scripts — all claimed via git history or README, not
+  orphaned.)
 * No CI, no lockfile.  `pyproject.toml` + `puno` CLI exist (recent).
 * README quickstart implies `math_validation.py` at root; it lives in
   `Universals/`.  The "142/147 validations pass" count is unverified here —
@@ -69,6 +78,11 @@ given so it can be re-run).
 | PAPER.md ground state | E₀ = 5.84 | E₀ = 5.58 | **5.84 is correct** (`spectral_data.json` eig[0] = `thermo_data.json` ground_state = 5.843778304934855; r = 2.365 → λ = ¼ + r²). PAPER edited to 5.84. |
 | `internet_net.pkl` size | 3.02 GB (THE_BOOK) | 3.17 GB (DECENTRAL_NET) | Actual 3,172,999,165 B = **3.17 GB**. THE_BOOK corrected. |
 | README validation count | 142/147 | actual | Reran `math_validation.py`: **192 PASS, 0 FAIL**. README updated. Also fixed the script's UnicodeEncodeError on Windows consoles (stdout reconfigured to UTF-8). |
+
+### 1.8 New inconsistency found 2026-08-02 — **PAPER Bekenstein claim vs persisted data**
+| Item | Value A | Value B | Resolution |
+|---|---|---|---|
+| Bekenstein shift | PAPER.md: η_prime=0.1336, η_random=0.1285, Δη **+3.9%, p=0.002** | `data/bekenstein_shift_data.json`: control p=0.789 (+2.5%), dissipative p=0.938 (−0.1%), interpretation "no systematic difference"; claimed numbers absent | **REFUTED by its own data file** (see §4). PAPER must be corrected or the analysis re-run. Open for a fresh n≥60 run. |
 
 ---
 
@@ -88,6 +102,11 @@ given so it can be re-run).
    (i) recurrence time scales with entropy; (ii) T-symmetry of the loss
    landscape; (iii) holographic compression ratio (1,536 → 2); (iv) CTC/self-chain
    fixed point at 10⁶ iterations.  None has a dedicated experiment.
+   **RESOLVED 2026-08-02 — T65 four-pack executed: 0.5/4 confirmed.** P1 is a
+   tautology (τ := exp(entropy) in source, `curiosity_drive` has zero effect);
+   P2 refuted (recon err ≈ 1.8); P4 refuted (converged fraction 0.0); P3 weakly
+   positive but synthetic (MI 0.034 vs null 0.009, constructed latent).  See
+   `data/t65_fourpack_results.json`, WEAVERS_SCRIBE Ch. 5.9.
 5. **Golden-ratio closure mechanism** (SPRING_BIBLE/T58): the fold "closes to
    r = apex·0.6138" — measured, but the *reason* the closing radius is set by
    the crease is asserted, not derived.
@@ -107,9 +126,16 @@ given so it can be re-run).
 * **Retrace boundary condition** — **RESOLVED by T64** (viscosity-selected cut
   locus).  **Fold theorem** — **RESOLVED by T63** (eikonal/viscosity).  Both
   should be treated as closed, not open.  **[verified]**
+* **PUM §10.1 (i)–(iv)** — **RESOLVED by T65 2026-08-02, 0.5/4.** (i) circular,
+  (ii) refuted, (iii) synthetic-weak, (iv) refuted.  See §2 conjecture 4 and
+  §4.  The PUM's narrative cosmology should no longer be cited as verified
+  beyond the specific engine claims that survive testing.
 * **Prime-metric framework beyond 2ⁿ−k** (README).
 * **Continuum limit**: PAPER's "residual drift is numerical and converges to
   zero as dt→0" is anticipated, not measured at arbitrary precision.
+* **Bekenstein re-run (n ≥ 60)**: the PAPER's claimed shift is refuted by the
+  persisted 30-trajectory data; a fresh, higher-power run is required to know
+  whether the effect exists at all.
 
 ---
 
@@ -117,14 +143,14 @@ given so it can be re-run).
 
 | Theory | Claim | Strength |
 |---|---|---|
-| **L.O.R.E.** (C₀ determined, not chosen) | C₀ = H(q₀,0), never arbitrary | PAPER: 109 tests, T-symmetry error 3e-3. |
+| **L.O.R.E.** (C₀ determined, not chosen) | C₀ = H(q₀,0), never arbitrary | PAPER: 109 tests; T-symmetry error 3e-3 **of the Hamiltonian integrator** (a trajectory-integration property, distinct from the PUM §10.1.2 "ascent recovers seed" claim, which T65 refutes). |
 | **Noether charge Q = H(t) ≈ C₀** | <1% drift over 1000 steps, converges as dt→0 | Measured on 6 trajectories; limit anticipated |
 | **Eikonal fold cosmology** (T63/T64) | fold = unique viscosity solution of |r′|=a; retrace = cut locus | **Derived + 10-test regression suite** — the strongest theory in the repo |
 | **Clock-test canon** (T59/T61) | laws live in invariants, not conventions | Measured 1.000→0.417→1.000 |
 | **Anomaly doctrine** (T55j) | novelty works; impersonation partial; observation bank required | Measured, incomplete by its own verdict |
-| **Arithmetic Bekenstein shift** (PAPER) | η_prime=0.1336 vs η_random=0.1285, Δη +3.9%, p=0.002 | 60 trajectories **[claimed]**; small-signal — re-verify |
-| **Selberg unification** (PAPER) | 30 eigenvalues ↔ 196 Mersenne geodesics, ε(2)=0.000265 | **[claimed]**; eigenvalue sample too small to discriminate GUE |
-| **Partition function match** (PAPER) | L(2)=40.14 vs C₀·π²/6=40.19 (<0.2%) | **[claimed]** |
+| **Arithmetic Bekenstein shift** (PAPER) | η_prime=0.1336 vs η_random=0.1285, Δη +3.9%, p=0.002 | **REFUTED by the persisted data file.** `data/bekenstein_shift_data.json` (30 trajectories) shows no systematic difference: control p=0.789 (+2.5%), dissipative p=0.938 (−0.1%); the file's own interpretation is "no systematic difference"; the claimed numbers 0.1336/0.1285/p=0.002 appear nowhere in it. Re-run required before any further citation. |
+| **Selberg unification** (PAPER) | 30 eigenvalues ↔ 196 Mersenne geodesics, ε(2)=0.000265 | ε(2)=0.000265 is real **but it is algebra**: `L_total = L_traj + Σ L_k` is the code's own construction (`L(s)=C₀·ζ(s)` is flagged tautological in the code). Spectral-vs-zeros match is poor (code: min |t_n − t_zeta| ~ 2.5–9.0 "not a match by any standard"). |
+| **Partition function match** (PAPER) | L(2)=40.14 vs C₀·π²/6=40.19 (<0.2%) | **Tautology.** C₀·π²/6 = 40.1936 holds for *any* C₀; the code flags `L(s)=C0*zeta(s)` as a tautology "for ANY constant C0." A match by construction is not a test. |
 | **Thermodynamics/entropy** | ln-thinning ↔ entropy; second law as folding | Analogical, not falsifiable as stated |
 | **PUM §10.1 four-pack (T65)** | P1 τ~entropy; P2 T-symmetry; P3 holographic MI; P4 CTC fixed point | **0.5/4 confirmed.** P1 = tautology (τ := exp(entropy) in source); P2 refuted (recon err ≈ 1.8); P4 refuted (converged fraction 0.0); P3 weakly positive (MI 0.034 vs null 0.009) but synthetic. See `data/t65_fourpack_results.json` |
 
@@ -139,27 +165,40 @@ given so it can be re-run).
    measured facts, matching the project's own doctrine. **DONE 2026-08-02 —
    0.5/4 confirmed; P2 and P4 refuted, P1 tautological, P3 synthetic. See Ch.
    5.9 of WEAVERS_SCRIBE + `data/t65_fourpack_results.json`.**
-3. **Scrub `scripts/` credentials** (and either delete or quarantine the orphan)
+3. **Correct or re-run the Bekenstein claim (NEW, from §1.8)** — the PAPER's
+   Δη +3.9% p=0.002 is contradicted by its own persisted data (p=0.789/0.938).
+   Either edit PAPER to report the null, or run a fresh n≥60 Bekenstein
+   analysis.  Highest value: this is a live contradiction in a *claimed*
+   result, not a hygiene item.
+4. **Scrub `scripts/` credentials** (and either delete or quarantine the orphan)
    before the repo is shared.
-4. **Observation bank (T66)** — the declared-required capability; the one gap
+5. **Observation bank (T66)** — the declared-required capability; the one gap
    with genuine new science.  Needs an external data source (ASN/TLS/WHOIS) —
    network-bound.
-5. **O(1)-per-neuron spatial search (T67)** — the declared next build; the one
+6. **O(1)-per-neuron spatial search (T67)** — the declared next build; the one
    that unlocks flowing 1.9M sites.  Significant engineering.
-6. **Either execute or retire MIGRATION** — currently a dead-but-authoritative
+7. **Either execute or retire MIGRATION** — currently a dead-but-authoritative
    doc; mark superseded to stop future confusion.
-7. **Regression coverage for the T55 series + library** — the experiments print
-   results but nothing pins them.
+8. **Regression coverage for the T55 series + library** — the experiments print
+   results but nothing pins them.  (T65 was the first probe to ship a JSON
+   verdict; make that the norm.)
 
 ---
 
 ## 6. BOTTOM LINE
 
-Nothing in the *claimed physics* is contradicted by the code — the strongest
-results (fold derivation, clock test, anomaly doctrine, scaling law) are all
-reproducible and internally consistent.  The gaps are: **(1)** the two declared
-builds (observation bank, O(1) search) are absent; **(2)** four explicit
-predictions and several conjectures (Selberg, PGT, pedagogy) are untested;
-**(3)** the PAPER.md numbers contain two hard inconsistencies; **(4)** hygiene
-items (orphaned `scripts/` with live credentials, dead doc copies, MIGRATION
-superseded-but-present).
+The strongest engine claims (fold derivation, clock test, anomaly doctrine,
+scaling law) remain reproducible.  But the sweep on 2026-08-02 moved three
+items from "claimed" to **refuted/tautological**: **(a)** the Bekenstein shift
+is contradicted by its own persisted data file (p=0.789/0.938 vs claimed
+p=0.002); **(b)** the partition-function match and **(c)** the Selberg
+L-function unification are tautologies by the code's own admission; and the
+T65 four-pack executed the last four explicit predictions at **0.5/4**
+(P2, P4 refuted).  The remaining gaps: **(1)** the two declared builds
+(observation bank, O(1) search) are absent; **(2)** PGT and BOOK-V pedagogy
+remain conjectured; **(3)** the PAPER's Bekenstein numbers now contradict the
+repo's own artifact and must be corrected or re-run; **(4)** hygiene items
+(orphaned `scripts/` with live credentials, dead doc copies, MIGRATION
+superseded-but-present).  The honest headline: the framework's *engine-level*
+results stand, but its *arithmetic-selection* and *number-theory* claims
+(Bekenstein, Selberg, partition match) are no longer citable as verified.

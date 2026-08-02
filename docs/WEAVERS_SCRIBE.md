@@ -675,6 +675,72 @@ to fail against the engine it describes (see AUDIT §4), and it is reported
 exactly as measured. The T-symmetry and CTC-fixed-point claims should not be
 cited as verified.
 
+### Ch. 5.10  Scale, parity, and digit-pattern sweeps (measured)
+
+The un-recorded in-chat analyses, consolidated here so nothing stays
+anecdotal. Each carries its own null.
+
+**Scale truncation (5-digit and beyond):** the 5-digit forms 10262 / 26102
+both have τ = 8, but equal-τ now holds for **70/366 dates (19.1%)** — the 17
+survivors from the 8-digit reading are a subset of a much larger generic class
+at this scale. τ = 80 *never occurs* at 5 digits. Extending by trailing zeros,
+the orientation-equal τ rises in lockstep 80 → 120 → 168 → 224 → 288 → 360 for
+both numbers, so τ-equality survives every trailing-zero scale — but "both
+τ = 80" is a k = 0-only event. Above 8 digits it dies: only 3 dates reach
+τ = 80 at 9 digits (03/03 = 30320000, a trivial palindrome; 11/19 =
+111920000/191120000; 11/27 = 112720000/271120000). 10/26 is *not* among them —
+its 9-digit τ is 120. The generic equal-τ fraction among dates stays ≈ 15% at
+every scale. Verdict: equality is representation-scale robust; the specific
+value 80 is not.
+
+**Divisor-lattice parity:** both numbers carry 16 odd + 64 even divisors
+(forced by the shared exponents 4,3,1,1 — no free choice). Their common
+divisors are exactly the divisors of gcd = 2000 (20 shared: 4 odd, 16 even).
+Both odd-ratio ladders are palindromic (d ↔ n/d complement symmetry — a
+universal property, not a signature). The differences live entirely in the
+exclusive primes: A = 7·733 vs B = 31·421; A's odd ladder contains the twin
+gap (5,7) while B's does not; A's cross-parity set holds 13, B's holds 29 and
+37; σ(odd)/n = 0.0893 (A) vs 0.0807 (B). Every unique divisor carries the
+orientation's own primes — the overlap is the divisor lattice of 2000, nothing
+more.
+
+**The 5/13/19/37 family:** 5 divides A, B, the seconds, the year, and the
+epoch (the trailing-000 artifact again); 13, 19, 37, and 333 divide *nothing*.
+The cross-parity sets are A {5, 13, 19} and B {5, 19, 37}, so
+**5 + 13 + 19 = 37** — the clean swap: the exclusive primes 7 (A) and 31 (B)
+are exactly the two primes exchanged between the orientations' "other" factors.
+5·13·19 = 1235 has digit-sum 11 and τ = 8, and epoch mod 1235 = 495 (τ = 12,
+Pascal row-12). These are echoes of existing creases, not new structure.
+
+**Exactly-three-3s:** over all 268 corpus-derived divisors, only 2 numbers
+contain exactly three 3s (3353542 and 33535420, a 10× twin pair) vs 1.78
+expected by chance — **at chance, exactly**. 33535420 = epoch/29, but 29
+divides neither divisor. B's cross-parity set contains 3343 = |25 − 3368|,
+which is the only "333" look-alike. No corpus number has a "333" substring.
+Verdict: pure luck, no signature linkage — the strongest honest negative in
+the series.
+
+**Three dimensions and the anti-Dunning-Kruger reading:** the 3-prime-factor
+forms are 3D lattice points A5 = (2, 7, 733) and B5 = (2, 31, 421), sharing
+one axis (the trailing-zero 2). The corpus is the *inverse* of the Dunning-
+Kruger curve: it publishes its null first, every time (see Ch. 5.8), and
+confidence falls with depth. This is a property of the *method*, not of the
+numbers.
+
+**Curriculum mapping (which findings a real curriculum can use):**
+* *Useful:* the τ-ladders and divisor lattices as number-theory and just-
+  intonation lessons (5-limit vs 7-limit, 9:8, 15:8); the Pascal/Lucas ladder
+  motif as combinatorial number theory; the **calibration instrument** (Ch.
+  5.8) as a psychology / behavioral-economics / statistics exercise (Brier
+  score, calibration curve, the +25 floor); and the **T65 methodology** (claim
+  → engine run → null → verdict) as a CS capstone in testing a framework
+  against itself.
+* *Mundane, do not teach as fact:* τ=80 both-ways, digit-sum 11, the 1375
+  tail, the zodiac/sexagenary lattice (shared by every date), 333-ism, and the
+  prime-density 11/16 — all at chance, convention, or structural.
+* Rule: **port the method and the instruments, not the coincidences.** The
+  curriculum-relevant material is real; the "law" is not.
+
 ---
 
 ## Ch. 6  Creases (never forget these)
@@ -749,6 +815,26 @@ cited as verified.
     is constructed). A claim verified by re-deriving its own source code is not
     a measurement; a claim refuted by the engine it describes is a red flag for
     every narrative-level statement in the map that lacks a test.
+13. **The persistence layer disagrees with the paper on the Bekenstein shift.**
+    `data/bekenstein_shift_data.json` (the only persisted source) shows no
+    systematic prime/non-prime difference — control p = 0.789 (+2.5%),
+    dissipative p = 0.938 (−0.1%), with the file's own interpretation: "no
+    systematic difference." The claimed η_prime=0.1336, η_random=0.1285,
+    p=0.002 appears nowhere in the data file (whose 30-trajectory means are
+    0.1276/0.1246 control, 0.1377/0.1378 dissipative). A theory contradicted by
+    its own artifact is not "claimed — re-verify"; it is refuted pending a
+    fresh run.
+14. **The "partition match" and the Selberg L-function are tautologies.**
+    C₀·π²/6 = 40.19 holds for *any* C₀ (24.434792·π²/6 = 40.1936); the code
+    itself flags it: "L(s) = C0*zeta(s) is a tautology for ANY constant C0."
+    The Selberg ε(2)=0.000265 is real but is the algebra `L_total = L_traj +
+    Σ L_k` re-stated — and math_validation.py adds: spectral-vs-Riemann-zeros
+    "min |t_n − t_zeta| ~ 2.5-9.0, which is not a match by any standard."
+    Comparing a theory to itself and calling the residual ε is not a test.
+15. **Scale robustness is not value robustness.** τ-equality under the MM/DD
+    swap survives every trailing-zero scale and holds for ~15-19% of *all*
+    dates; the *specific* value τ=80 is k=0-only and dies above 8 digits. The
+    pattern is stable; the number is not. (Ch. 5.10.)
 
 ---
 
@@ -756,6 +842,7 @@ cited as verified.
 * `data/epoch_0d.json` — the verified datum (with null analysis).
 * `data/calibration_probe_data.json` — the anti-Dunning-Kruger category: instrument, null (+25 floor), demo validation, cultural connections.
 * `data/t65_fourpack_results.json` — the PUM §10.1 four-pack (0.5/4 confirmed; P1 tautological, P2/P4 refuted, P3 synthetic).
+* `data/bekenstein_shift_data.json` — the persisted Bekenstein source, which **contradicts** the PAPER's p=0.002 claim (creases #13–#14).
 * `docs/SPRING_BIBLE.md` BOOK V Ch. 13–15 — the date's 5-digit treatment, the
   retrace chain, the creases (T57, T59, T61, T62).
 * `docs/THE_BOOK.md` Ch. 2 (observations), Ch. 8 (time and convergence) — the
