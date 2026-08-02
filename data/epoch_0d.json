@@ -74,6 +74,14 @@
     "sigma_ratio": {"A": 2.7672, "B": 2.5019, "both_abundant": true},
     "largest_odd_divisors": {"A": 641375, "B": 1631375, "both_end_in_1375": true}
   },
+  "gap_and_difference_analysis": {
+    "odd_odd_prime_gaps": {"A": [2], "B": [], "note": "differences of odds are even, so the only prime gap possible is 2. A has exactly one: 5 and 7 are CONSECUTIVE odd divisors AND twin primes. B has none."},
+    "even_even_prime_gaps": {"A": [2,2,2], "B": [2,2,2], "A_pairs": [[2,4],[8,10],[14,16]], "B_pairs": [[2,4],[8,10],[248,250]], "shared_bottom_twins": [[2,4],[8,10]], "note": "both even sets share the same two gap-2 twins at the bottom, from the common year-lattice divisors."},
+    "signature_prime_as_doubling_difference": {"A": "733 = |733 - 1466| = |p - 2p|", "B": "421 = |421 - 842| = |p - 2p|", "note": "each number's own large prime p yields a prime cross-parity difference by doubling, since p (odd) and 2p (even) are both divisors."},
+    "shared_prime_difference": {"7": "|1 - 8| in BOTH A and B (1 odd, 8 even, both common divisors)", "31": "|25-56| in A and |31-62| in B"},
+    "chain_reemergence_as_gaps": {"10262_is_evenA_gap": true, "261020_equals_26102x10_is_evenB_gap": true, "note": "the 5-digit pair re-appears as gaps between consecutive even divisors; 733-multiple and 421-multiple gaps form ladders in A and B respectively."},
+    "small_prime_ubiquity": "cross-parity differences produce 65 (A) and 59 (B) distinct primes, starting 3,5,7,11,13,17,19,23,31,43 - small primes are unavoidable from a dense divisor lattice, so only the specific ones above are diagnostic."
+  },
   "time_configurations": {
     "HHMMSS": 102620, "tau": 24, "digitsum": 11,
     "seconds": 37580, "tau": 12,
