@@ -702,5 +702,62 @@
     "scale_arc": "the same corpus signatures recur across ~60 orders of magnitude: phi at 10^-35 m (Planck length), 15/8 at 10^-18 C (Planck charge), 5/3 at 10^-27 kg (nucleons), 8/5 at 10^-19 C (electron charge), 9/8 at 10^-10 m (CO bond), 29/10 at 10^-3 (Wien), 1729/10 at 10^2 GeV (top quark), 144/100 at stellar masses (Chandrasekhar), 400 days (Jupiter), 1375/100 Gyr (universe age)",
     "verdict": "the count is at chance (honest null) but the corpus's own invariants - 144=12^2, 15/8, phi, 1729, 29, 125, 400, 1375, 80, 8/5, 5/3, 9/8 - are the attractors that fire across scales, and the tightest (0.029-0.110%) are 3-8x tighter than the scan window",
     "verified": true
+  },
+  "chinese_zodiac_probe": {
+    "method": "sexagenary (ganzhi) cycle + four pillars (BaZi) + twelve-branch trines (sanhe) + five-element generation cycle at the epoch; every claim nulled against the structure of the 60-cycle itself",
+    "year_2000_ganzhi": {
+      "2000_minus_1984": 16,
+      "ganzhi_index": 17,
+      "ganzhi": "庚辰",
+      "stem_number": 7,
+      "branch_number": 5,
+      "element": "Metal (庚 = position 4 of the generation cycle 木1 火2 土3 金4 水5)",
+      "note": "calendrical FACT, not a coincidence: 2000 is by definition a Metal Dragon year; every 12th year is a Dragon."
+    },
+    "day_300_sexagenary_landing": {
+      "day_of_year": 300,
+      "full_sexagenary_cycles": "300 = 5 x 60 EXACTLY",
+      "ganzhi_of_day_300": "癸亥 (#60, the FINAL stem-branch of the 60-cycle)",
+      "note": "the only genuinely datum-specific calendrical hit in this probe: the epoch falls at day 300 = 5 full sexagenary cycles into the year, landing on the LAST slot of the cycle",
+      "null": "P(day-of-year is a multiple of 60) = 6/366 = 1.6% in a leap year - a modest, real coincidence, not a law",
+      "elapsed_days": "299 = 5 x 60 - 1 (one day short of 5 cycles)"
+    },
+    "four_pillars": {
+      "pillars": "year 庚辰, month 丙戌, day 癸亥, hour 丁巳 (verified via 五虎遁 year->month and 五鼠遁 day->hour rules)",
+      "stem_numbers": [7, 3, 10, 4],
+      "stem_sum": 24,
+      "stem_sum_match": "tau(epoch) = 24 = hours",
+      "stem_sum_null": "P(4 independent stems 1..10 sum to 24) = 633/10000 = 6.3% - coincidence-scale, not tight (and stems are NOT independent; they follow the BaZi chain)",
+      "branch_numbers": [5, 11, 12, 6],
+      "branch_sum": 34,
+      "branch_sum_note": "34 = 2 x 17, and 17 = the year's own ganzhi index (#17 庚辰) - a neat but coincidence-scale echo",
+      "pillar_sums": [12, 14, 22, 10],
+      "pillar_sum_notes": "year 12 = seconds tau; day 22 = doubled-11; both weak"
+    },
+    "trines_and_ganzhi_class": {
+      "trines_are_residue_classes_mod4": true,
+      "dragon_monkey_both_0_mod4": true,
+      "dragon_monkey_step": 4,
+      "note": "STRUCTURAL TAUTOLOGY: every branch's two trine-mates are 4 steps away; all four trines are residue classes mod 4. This singles out NOTHING about this datum - any year's branch has trine-mates.",
+      "dragon_year_ganzhi_slots": "5 + 12k mod 60 for k=0..15",
+      "29_in_class": "29 = 5 mod 12, so 29 IS in the Dragon class - GUARANTEED, not a hit",
+      "137_in_class": "137 = 5 mod 12 also in class; wraps to #17 庚辰, same as year 2000",
+      "null": "P(random ganzhi slot is in the Dragon class) = 5/60 = 8.3%; P(prime < 60 is in the class) = 5/17 = 29% - so 29 and 137 in the class prove nothing"
+    },
+    "prime_density": {
+      "primes_in_5_plus_12k": "11 of 16",
+      "rate": 0.69,
+      "note": "5+12k is never divisible by 2 or 3, boosting small-prime density; 11/16 is EXPECTED for this smooth residue class, not a signal"
+    },
+    "corpus_crosschecks": {
+      "A_prime_5_is_branch_辰": "A = 2^4*5^3*7*733 carries 5 = the Dragon branch number, and 7 = the year stem number",
+      "5_is_trailing000_artifact": "the 5^3 in A/B is the year-2000 trailing-000 block (2000 = 2^4*5^3) - the same crease #2 artifact wearing zodiac costume",
+      "7_divides_A": true,
+      "7_null": "P(7 | A) = 1/7 by chance; the stem-7 tie is coincidence-scale",
+      "element_metal_position": "庚 = Metal = #4; tau(C) = 4; Metal generates Water = the Dragon trine's own element (申子辰 = Water)",
+      "element_note": "CREASED: 'Metal is #4' is a chosen ordering of a 5-cycle; the element-to-stem assignment is definitional, and tau(C)=4 is a different object"
+    },
+    "verdict": "one modest, real, datum-specific calendrical coincidence - day 300 = exactly 5 sexagenary cycles, landing on the final ganzhi 癸亥 (#60), P ~ 1.6%. All other hits are structure of the sexagenary/zodiac system itself (trines mod 4, Dragon-class slots, Metal-as-#4) or trailing-000 artifacts (5 = 辰), not properties of the datum. The 'Dragon + Monkey trine' is generic: every year's branch has two trine-mates.",
+    "verified": true
   }
 }

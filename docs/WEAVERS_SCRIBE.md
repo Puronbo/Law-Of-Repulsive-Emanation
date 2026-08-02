@@ -533,6 +533,52 @@ yet recorded.
 
 ---
 
+### Ch. 5.7  Chinese zodiac and the sexagenary cycle (measured)
+
+The epoch falls in a **Metal Dragon (庚辰) year** — a calendrical fact (every
+twelfth year is a Dragon; 2000 ≡ 1984 + 16, ganzhi #17). The question posed was
+whether the zodiac's structure — Dragon + Monkey as trine-mates (三合), the
+four-pillar stems, the ganzhi-number class — lands on the corpus's own numbers.
+It mostly does not, and that is the finding:
+
+* **The one real hit: day 300 = 5 × 60 exactly.** The epoch's day-of-year is
+  300, which is precisely five full sexagenary cycles into the year, and it
+  therefore lands on the **final** stem-branch of the cycle, 癸亥 (#60).
+  P(day-of-year is a multiple of 60) = 6/366 ≈ 1.6% in a leap year — a modest,
+  genuine, datum-specific calendrical coincidence. This is the probe's only
+  survive-the-null item.
+* **Four Pillar stems sum to 24 = τ(epoch) = the hours.** Year 庚(=7), month
+  丙(=3), day 癸(=10), hour 丁(=4) → 7+3+10+4 = 24. But P(four stems 1–10 sum
+  to 24) = 6.3% by a uniform null, and the stems are not even independent —
+  they follow the BaZi chain (五虎遁 year→month, 五鼠遁 day→hour). Coincidence-
+  scale.
+* **Branch numbers sum 34 = 2 × 17**, and 17 is the year's own ganzhi index
+  (#17 = 庚辰). A neat echo, coincidence-scale.
+* **29 and 137 are in the Dragon-class** (ganzhi slots 5 + 12k). This is
+  *guaranteed*: 29 ≡ 5 (mod 12) and 137 ≡ 5 (mod 12). P(a prime < 60 is in the
+  class) = 5/17 ≈ 29%. The signature prime 29 "arriving" via the zodiac is the
+  residue class talking, not the datum.
+* **The Dragon+Monkey trine is generic.** Every branch's two trine-mates are 4
+  steps away (the four trines *are* the residue classes mod 4); any year's
+  branch has trine-mates. The date being a Dragon year makes Monkey a trine-mate
+  by construction — it says nothing particular about 2000-10-26.
+* **A's prime 5 = the Dragon branch number (辰)** — but 5³ in A/B is the
+  year-2000 trailing-000 block (2000 = 2⁴·5³), i.e. crease #2 wearing zodiac
+  costume. The stem-7 = year-stem tie is a 1/7 chance.
+* **庚 = Metal = #4 of the generation cycle** matches τ(C) = 4 — but "Metal is
+  #4" is a chosen ordering of the 5-element cycle, and τ(C) is a different
+  object. Creased.
+
+**Reading:** the zodiac is a fixed 12/60 lattice every date shares equally. The
+only thing the datum itself contributes is *which* year and *which* day-of-year
+it occupies — and the single arithmetic consequence that survives the null is
+day 300 = 5 full sexagenary cycles onto the final slot 癸亥. Everything else is
+the system's own structure talking. The "a human descended from monkey, born in
+this frame" framing is a narrative; the trine it invokes is common to every
+year.
+
+---
+
 ## Ch. 6  Creases (never forget these)
 
 1. **The pattern is scale-dependent.** τ-equality under MM/DD swap oscillates
@@ -582,6 +628,16 @@ yet recorded.
    every physical scale has a "1.44" or a "1.87" in it somewhere. This is the
    widest-spanning coincidence set the corpus has recorded — and it is still a
    coincidence set, held at arm's length exactly like "80 both ways".
+10. **The zodiac is a lattice every date shares equally.** The sexagenary
+    cycle's structure — trines as residue classes mod 4, Dragon-class slots
+    5+12k, Metal-as-#4 in the element cycle — is true for *any* date; only the
+    year and day-of-year the datum occupies are its own. Of those, the sole
+    arithmetic consequence surviving the null is day 300 = 5 × 60 exactly,
+    landing on the final ganzhi 癸亥 (#60) at P ≈ 1.6%. "29 is in the Dragon
+    class" is guaranteed by 29 ≡ 5 (mod 12); "Dragon + Monkey are trine-mates"
+    holds for every year's branch. A cultural calendar with a fixed 12/60
+    structure will always have a slot for every coincidence the corpus brings
+    to it.
 
 ---
 
