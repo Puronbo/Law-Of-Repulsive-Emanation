@@ -389,6 +389,36 @@ artifacts already falsified.
   with root-sums converging on the prime 29; τ = 80 (self-referential count);
   gcd = 2000 = the year; odd-part gcd = 125 = 5³; the doubled 11; 1375 = 5³·11.
 
+### Ch. 5.3  Ticks and degrees (measured)
+
+* **The tick-scale τ-ladder is pentagonal.** At 10:26:20 the divisor count of
+  the elapsed time of day under successive tick units is exactly
+  τ_k = 12·Pent(k+1), i.e. **12, 60, 144, 264, 420, 612** for s/ms/µs/ns/ps/fs
+  (quotients {1, 5, 12, 22, 35, 51} = the pentagonal numbers). Two highlights:
+  the **milliseconds of the day have τ = 60, the sexagesimal base itself**, and
+  the microseconds have **τ = 144 = 12²** (dozenal squared). Nesting: τ(60) = 12
+  = τ(37,580) — the ms count's divisor count equals the seconds' divisor count,
+  a self-consistent two-level loop. The formula 2(3k+3)(3k+2) was verified
+  exactly for all six scales.
+* **The signature prime 29 divides the epoch.** 972,527,180 = 2²·5·29·1,676,771
+  (1,676,771 prime; τ = 24 = the day's hours). The same 29 that carried the
+  root-sum motif (2+27, 14+15) sits in the epoch's own factorization — a
+  ~1/29 coincidence, reported as such. Epoch in ms: 972,527,180,000 has
+  τ = 120 = 2·60 (twice the sexagesimal tick count), and τ(120) = 16.
+* **E₁ is nearly a quadratic irrational.** The spectral value E₁ = 6.42195
+  opens its continued fraction [6; 2,2,1,2,2,1,2,...] with a period-(2,2,1)
+  run; the quadratic irrational (55+√85)/10 = 6.4219544 matches to **3.4e-6**.
+  Curiosity-grade: a coincidental CF coincidence, creased, but the cleanest
+  algebraic near-identity in the corpus.
+* **Degrees close the pentagonal loop.** ln(B/A) = 53.49° ≈ the pentagon's
+  54° (1%), and the τ-ladder quotients are themselves pentagonal — a
+  resonance between two unrelated pentagon appearances; reported, not claimed.
+* **137.5 vs the golden angle.** Both 1375 tails, read as 137.5, sit 0.006%
+  from the golden angle 360/φ² = 137.508° and 0.34% from 1/α = 137.036. The
+  whole 137-family is coincidence-scale (see §5.2) and is creased.
+* **Weak near-miss:** 86400/37580 = 2.2991 vs ln 10 = 2.3026 (0.15%) — noted,
+  not carried.
+
 ---
 
 ## Ch. 6  Creases (never forget these)
@@ -414,6 +444,11 @@ artifacts already falsified.
 5. **Digit-coincidences are not arithmetic** (T57): the "80 both ways" and the
    "11" sums are computed facts; the *resonance* is a human response to them,
    which is exactly what this book exists to hold at arm's length.
+6. **The tick ladder starts at a convention.** τ_k = 12·Pent(k+1) is a real
+   arithmetic fact about the integers 37,580·10^(3k) — but *which* tick is the
+   base (seconds, the clock's own unit) is a convention. The pentagonal
+   structure survives any shift of base; the individual τ values (12, 60, 144)
+   do not. Same class of caveat as crease 1.
 
 ---
 

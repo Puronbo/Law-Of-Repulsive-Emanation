@@ -525,5 +525,50 @@
       "note": "the golden ratio is a named corpus fold (Ch.6) and now also appears in the retrace chain; the reason for 0.6138 remains AUDIT-open"
     },
     "verified": true
+  },
+  "tick_and_degree_scale": {
+    "tick_tau_ladder": {
+      "seconds": 12,
+      "milliseconds": 60,
+      "microseconds": 144,
+      "nanoseconds": 264,
+      "picoseconds": 420,
+      "femtoseconds": 612,
+      "formula": "tau_k = 12 * Pent(k+1) where Pent(m)=m(3m-1)/2, k = tick exponent/3",
+      "pentagonal_quotients": [1, 5, 12, 22, 35, 51],
+      "headline": "the milliseconds of the day (10:26:20) have exactly 60 divisors = the sexagesimal base; microseconds = 144 = 12^2",
+      "nesting": "tau(37580000)=60 and tau(60)=12 = tau(37580): the ms divisor count's own divisor count equals the seconds' divisor count"
+    },
+    "epoch_seconds": {
+      "972527180_factorization": "2^2 * 5 * 29 * 1676771",
+      "1676771_is_prime": true,
+      "tau_epoch": 24,
+      "note": "tau(epoch)=24 = the day's hours; the signature prime 29 (the root-sum motif) divides the epoch",
+      "epoch_in_ms_tau": 120,
+      "note_ms": "tau(epoch_ms) = 120 = 2*60; tau(120) = 16"
+    },
+    "E1_quadratic_approximation": {
+      "E1": 6.421951056864357,
+      "continued_fraction_start": [6, 2, 2, 1, 2, 2, 1, 2],
+      "approximation": "(55 + sqrt(85))/10 = 6.42195444573",
+      "absolute_difference": 3.39e-06,
+      "note": "E1's CF opens with the period-(2,2,1) pattern; the quadratic irrational (55+sqrt85)/10 matches to 3.4e-6 (curiosity, creased)"
+    },
+    "degrees": {
+      "time_of_day_in_degrees": 156.583,
+      "ln_B_over_A_in_degrees": 53.489,
+      "pentagon_angle_degrees": 54.0,
+      "golden_angle_degrees": 137.507764,
+      "our_1375_tail_over_10": 137.5,
+      "golden_angle_relative_match": 0.000056,
+      "note": "137.5 within 0.006% of the golden angle (137.508) and 0.34% of 1/alpha = 137.036 - the whole 137-family, creased as coincidence-scale",
+      "pentagon_resonance": "the tick ladder quotients are pentagonal numbers AND ln(B/A)=53.49 deg ~ 54 deg pentagon angle (1%) - reported, not claimed"
+    },
+    "weak_near_misses": {
+      "86400_over_37580": 2.2991,
+      "ln10": 2.3026,
+      "relative": 0.00152
+    },
+    "verified": true
   }
 }
