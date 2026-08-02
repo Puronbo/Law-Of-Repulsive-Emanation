@@ -16,6 +16,7 @@ data/*.dot
 !data/mersenne_prime_5630.json
 !data/mersenne_m52_bridge.json
 !data/googol_census.json
+!data/epoch_0d.json
 Universals/*.json
 Universals/*.dot
 

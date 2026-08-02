@@ -1,0 +1,28 @@
+{
+  "id": "epoch_0d",
+  "title": "2000-10-26 10:26:20.00 — datum-zero anchor on the number line",
+  "role": "0d reference datum; both calendar renderings are divisor-rich and digit-sum-palindromic.",
+  "clock_time": "2000-10-26 10:26:20.00",
+  "unix_epoch_seconds": 972527180,
+  "renderings": {
+    "MMDDYYYY": 10262000,
+    "DDMMYYYY": 26102000
+  },
+  "verification": {
+    "10262000": {
+      "factorization": "2^4 x 5^3 x 7 x 733",
+      "divisor_count": 80,
+      "digit_sum": 11
+    },
+    "26102000": {
+      "factorization": "2^4 x 5^3 x 31 x 421",
+      "divisor_count": 80,
+      "digit_sum": 11
+    },
+    "shared_structure": "2^4 x 5^3 x p (two primes) -> (4+1)(3+1)(2)(2) = 80 divisors in both directions",
+    "digit_sum_equality": 11,
+    "method": "exact factorization + divisor count computed with integer arithmetic"
+  },
+  "note": "Both orientations of the date share divisor count (80) and digit sum (11): the anchor is orientation-stable under MM/DD <-> DD/MM.",
+  "verified": true
+}
