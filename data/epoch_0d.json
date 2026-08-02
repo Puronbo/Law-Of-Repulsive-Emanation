@@ -33,10 +33,32 @@
     "clock_time_tau_note": "tau(37580)=12 equals tau(60) and tau(260): the sexagesimal and tzolkin divisor counts."
   },
   "scale_dependence": {
-    "3digit": {"MM": "102", "tau": 8, "digitsum": 3, "YY": "261", "tau2": 6, "digitsum2": 9, "breaks": true},
-    "5digit": {"MMYY": 10262, "tau": 8, "digitsum": 11, "YYMM": 26102, "tau2": 8, "digitsum2": 11, "breaks": false},
-    "8digit": {"MMDDYYYY": 10262000, "tau": 80, "digitsum": 11, "DDMMYYYY": 26102000, "tau2": 80, "digitsum2": 11, "breaks": false}
+    "2digit": {"MM": 10, "tau": 4, "DD": 26, "tau2": 4, "equal": true},
+    "3digit": {"MM": "102", "tau": 8, "digitsum": 3, "YY": "261", "tau2": 6, "digitsum2": 9, "equal": false},
+    "4digit": {"MMDD": 1026, "tau": 16, "DDMM": 2610, "tau2": 24, "equal": false},
+    "5digit": {"MMYY": 10262, "tau": 8, "digitsum": 11, "YYMM": 26102, "tau2": 8, "digitsum2": 11, "equal": true},
+    "6digit": {"MMDDYY": 102600, "tau": 96, "DDMMYY": 261000, "tau2": 96, "equal": true},
+    "8digit": {"MMDDYYYY": 10262000, "tau": 80, "digitsum": 11, "DDMMYYYY": 26102000, "tau2": 80, "digitsum2": 11, "equal": true},
+    "8digit_yearfirst": {"YYYYMMDD": 20001026, "tau": 8, "YYYYDDMM": 20002610, "tau2": 8, "digitsum": 11, "equal": true},
+    "14digit": {"YYYYMMDDHHMMSS": 20001026102620, "tau": 96, "DDMMYYYYHHMMSS": 26102000102620, "tau2": 24, "equal": false},
+    "reading": "tau-equality under MM/DD swap OSCILLATES with scale: holds at 2, 5, 6, 8 digits; breaks at 3, 4, 14. Not a systematic law; a scale-dependent coincidence."
   },
-  "note": "Both orientations of the date share divisor count (80) and digit sum (11): the anchor is orientation-stable under MM/DD <-> DD/MM. See docs/WEAVERS_SCRIBE.md for the cultural mapping and the binding creases.",
+  "exhaustive_permutations": {
+    "8digit_digits_20001026": {"distinct_numbers": 420, "pct_tau_8": 18.3, "pct_tau_80": 3.6, "note": "tau=8 is the mode among ALL permutations of the date's 8 digits; the 80-pair sits in a 3.6% family."},
+    "5digit_digits": {"distinct_numbers": 48, "pct_tau_8": 35.4},
+    "6digit_time_digits": {"distinct_numbers": 120, "pct_tau_8": 24.2},
+    "yearfirst_joint": {"valid_2000_dates_pct_both_tau_8": 5.97, "pct_any_tau_equal": 17.3}
+  },
+  "time_configurations": {
+    "HHMMSS": 102620, "tau": 24, "digitsum": 11,
+    "seconds": 37580, "tau": 12,
+    "year": 2000, "tau": 20,
+    "day_of_year": 300, "tau": 18,
+    "YYYYMMDDHHMMSS": 20001026102620, "tau": 96, "digitsum": 22,
+    "YYYYDDMMHHMMSS": 20002610102620, "tau": 12,
+    "HHMMSSYYYYMMDD": 10262020001026, "tau": 32,
+    "reverse_full": 2620102610002, "tau": 16
+  },
+  "note": "Both orientations of the date share divisor count (80) and digit sum (11): the anchor is orientation-stable under MM/DD <-> DD/MM at several scales. See docs/WEAVERS_SCRIBE.md for the cultural mapping and the binding creases.",
   "verified": true
 }

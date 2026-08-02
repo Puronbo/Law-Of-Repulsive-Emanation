@@ -41,12 +41,44 @@ Sampled against real distributions:
 * Random 8-digit numbers: mean τ ≈ 18.9; only **0.48%** have τ = 80.
 * Valid *MMDD2000* dates (year = 2000, trailing `000`): **20.4%** have τ = 80.
 * Valid 2000 dates where **both** orientations have τ = 80: **4.64%**.
+* Year-first pair (YYYYMMDD / YYYYDDMM) both τ = 8: **5.97%**; any τ-equality: **17.3%**.
 
 Reading: τ = 80 is rare among arbitrary 8-digit numbers, but the trailing zeros
 of the year *force* high divisor counts (τ ≥ 16 guaranteed), so within year-2000
 dates it is common. The joint coincidence — both orientations landing on
 exactly 80 — survives that conditioning at ~1 in 22. **A mild, real
 coincidence. Not a law.**
+
+### Other configurations (measured, exhaustive)
+The same digits, rearranged — every orientation family of the date:
+
+| Scale | A | τ(A) | B | τ(B) | Equal? | Digit sums |
+|---|---|---|---|---|---|---|
+| 2-digit | 10 | 4 | 26 | 4 | **yes** | 1 vs 8 |
+| 3-digit | 102 | 8 | 261 | 6 | no | 3 vs 9 |
+| 4-digit | 1026 | 16 | 2610 | 24 | no | 9 vs 9 |
+| 5-digit | 10262 | 8 | 26102 | 8 | **yes** | 11 vs 11 |
+| 6-digit | 102600 | 96 | 261000 | 96 | **yes** | 9 vs 9 |
+| 8-digit | 10262000 | 80 | 26102000 | 80 | **yes** | 11 vs 11 |
+| 8-digit, year first | 20001026 | 8 | 20002610 | 8 | **yes** | 11 vs 11 |
+| 14-digit full | 20001026102620 | 96 | 26102000102620 | 24 | no | 22 vs 22 |
+
+Time and derived forms: HHMMSS 102620 → τ = 24 · total seconds 37,580 → τ = 12
+· year 2000 → τ = 20 · day 300 → τ = 18 · YYYYMMDDHHMMSS → τ = 96 ·
+reverse(full) 2620102610002 → τ = 16.
+
+Exhaustive permutation counts (all distinct orderings of the date's digits):
+
+* 8-digit set {2,0,0,0,1,0,2,6}: 420 distinct numbers — **τ = 8 is the mode
+  (18.3%)**; τ = 80 appears in 3.6%. The 80-pair sits inside that 3.6% family.
+* 5-digit set: 48 distinct — τ = 8 the mode (35.4%).
+* 6-digit time set: 120 distinct — τ = 8 the mode (24.2%).
+
+**Finding:** the τ-equality under MM/DD swap **oscillates with scale** — it holds
+at 2, 5, 6, and 8 digits (including both year placements), and breaks at 3, 4,
+and 14. The strongest agreement is at 5/6/8 digits, where the user's original
+pair (10262/26102, τ = 8) and the full-date pair (10262000/26102000, τ = 80)
+both land equal. The 3-digit break is the reason the creases below exist.
 
 ---
 
@@ -137,10 +169,11 @@ digit-sum 11, its own clock-time τ = 12 — the base's own divisor count.
 
 ## Ch. 5  Creases (never forget these)
 
-1. **The pattern is scale-dependent.** At 3 digits the orientations disagree
-   (102: τ=8, 261: τ=6). At 5 and 8 digits they agree (τ=8, τ=80). A pattern
-   that breaks under truncation is a property of the *representation*, not of
-   the number line.
+1. **The pattern is scale-dependent.** τ-equality under MM/DD swap oscillates
+   with scale: holds at 2, 5, 6, and 8 digits; breaks at 3, 4, and 14
+   (e.g. 102: τ=8 vs 261: τ=6; 1026: τ=16 vs 2610: τ=24). A pattern that
+   survives only at selected truncations is a property of the *representation*,
+   not of the number line.
 2. **Trailing zeros inflate divisor counts.** τ=80 is ~20% likely for *any*
    year-2000 date; both-orientation τ=80 is ~4.6% (1 in 22). Mild, not
    miraculous.
