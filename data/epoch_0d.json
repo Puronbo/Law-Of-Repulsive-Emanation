@@ -443,5 +443,56 @@
       "note": "both odd parts abundant (sigma_odd / odd_part > 1)"
     },
     "verified": true
+  },
+  "physics_logarithmic_probes": {
+    "E1_dozenal_match": {
+      "E1": 6.421951056864357,
+      "quarter_plus_ln12_sq": 6.424761058160624,
+      "relative_match": 0.000437370552901431,
+      "note": "the toy's second eigenvalue matches 1/4 + ln^2(12) to 0.04%; E0 does NOT match ln(10) (5% off)"
+    },
+    "golden_fold": {
+      "rung_1914467_over_730421": 2.621045944735981,
+      "phi_squared": 2.618033988749895,
+      "relative_match": 0.00115,
+      "T58_closing_ratio": 0.6138,
+      "one_over_phi": 0.6180339887498948,
+      "note": "two independent golden hits: chain rung ~ phi^2 (0.12%) and T58 closing radius ~ 1/phi (0.7%)"
+    },
+    "C7_bridge_for_date_mersenne_primes": {
+      "7": {"lambda": 4.574077125263812, "below_spectral_floor": true, "E0": 5.843778304934855},
+      "31": {"lambda": 12.261325347955035, "nearest_eig": 12.0595853500534, "distance": 0.202}
+    },
+    "level_spacing_statistics": {
+      "mean_r_ratio": 0.4602,
+      "poisson": 0.3863,
+      "GOE": 0.5359,
+      "gap_cv": 0.6876,
+      "note": "intermediate; cannot decide T19 chaos claim at n=30"
+    },
+    "arithmetic_functions": {
+      "phi_A": 3513600,
+      "phi_B": 10080000,
+      "phi_C": 1852680,
+      "sigma_over_n_A": 2.7672,
+      "sigma_over_n_B": 2.5019,
+      "sigma_over_n_C": 1.0323,
+      "note": "A and B highly abundant; C barely abundant (least-abundant family member)"
+    },
+    "weak_near_misses": {
+      "B_over_A": 2.54356,
+      "sqrt_2pi": 2.50663,
+      "five_over_two": 2.5,
+      "ln_B_over_A_degrees": 53.489,
+      "three_pi_over_10": 54.0,
+      "note": "all at coincidence scale (1-2%), same magnitude as already-falsified trailing-000 and base-8 artifacts"
+    },
+    "conjectures": {
+      "C1": "low spectral radii r_k track ln of convention-scale integers; 12 is first/cleanest; test with n>30 modes",
+      "C2": "further retrace folds lock on phi or phi^2 rungs; fold is golden-geometric (extends T58 0.6138 ~ 1/phi)",
+      "C3": "a mode exists near lambda=4.574 (from prime 7) below the current floor; lambda(31)=12.26 falls in gap [12.06,12.85]",
+      "C4": "level statistics <r>=0.46 neither Poisson nor GOE; T19 needs more modes to be measured, not asserted"
+    },
+    "verified": true
   }
 }

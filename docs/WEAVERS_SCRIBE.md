@@ -314,6 +314,56 @@ believe) any pattern the toy reports:
    regression suite: if a "discovered" structure dies when the input is
    re-encoded, it was never a structure.
 
+### Ch. 5.1  Physics and logarithmic probes (measured)
+
+Cross-checking the three numbers, the retrace chain, and the toy's own
+30-eigenvalue spectrum (`data/spectral_data.json`). Honest positives first:
+
+* **E₁ = ¼ + ln²(12) to 0.04%.** The toy's second eigenvalue is
+  E₁ = 6.42195; its spectral radius r = √(E₁−¼) = 2.48434, and ln(12) =
+  2.48491 — relative match 4×10⁻⁴. 12 is the corpus's own signature dozenal
+  (τ(12) = 6, Sumer/sexagesimal motif). The ground state E₀ = 5.84 does NOT
+  match ln(10) (5% off) — the match is specific to E₁ and to 12.
+* **The golden fold (two independent hits).** The upper retrace rung is a
+  φ² hinge: 1,914,467/730,421 = 2.62105 vs φ² = 2.61803 (0.12%). And T58's
+  measured closing radius was r_close = apex·0.6138 ≈ apex/φ (0.7%). The fold
+  is golden-ratio-geometric in both the closing radius and the chain rung.
+* **C7 bridge applied to the date's own Mersenne primes.** 7 = 2³−1 gives
+  ℓ = 3·ln2, λ = ¼+ℓ² = 4.574 — below the measured spectral floor E₀ = 5.84
+  (predicts a sub-floor mode); 31 = 2⁵−1 gives λ = 12.261, within 0.20 of
+  eig[5] = 12.060. The two Mersenne primes straddle the low spectrum.
+* **Level-spacing statistics (first time computed).** The 30 eigenvalues give
+  ⟨r⟩ = 0.460 (intermediate: Poisson 0.386, GOE 0.536), gap CV 0.69. Small-n,
+  so the spectrum cannot yet decide the T19 "chaos is consistent" claim —
+  a genuine open measurement, not a settled one.
+
+Arithmetic functions (never tabulated before):
+φ(A) = 3,513,600, φ(B) = 10,080,000, φ(C) = 1,852,680; σ(A)/A = 2.767,
+σ(B)/B = 2.502 (both highly abundant), σ(C)/C = 1.032 (barely abundant — the
+fold is the least-abundant member of the family).
+
+Weak/near-miss (report-and-forget, the creases):
+B/A = 2.5436 ≈ √(2π) (1.5%) ≈ 5/2 (1.7%); ln(B/A) = 0.9336 rad = 53.49° ≈
+3π/10 = 54° (1%); chain lower rungs 730,421/1,914,467 = 0.3815 and
+10,262/26,102 = 0.3931 both hover near A/B = 0.3931 (within 3%). All at
+coincidence scale — the same magnitude as the trailing-000 and base-8
+artifacts already falsified.
+
+**Conjectures (falsifiable):**
+* **C1 (E₁-dozenal):** the toy's low spectral radii r_k track ln of
+  convention-scale integers; 12 is the first and cleanest. Test: add modes
+  (n > 30) and look for r_k ≈ ln(k) for k ∈ {10, 26, 2000}.
+* **C2 (golden fold):** further retrace folds lock on φ (or φ²) rungs — the
+  fold is golden-geometric, extending T58's 0.6138 ≈ 1/φ. Test: derive the
+  next fold above the giant; predict ratio ∈ {φ, φ²}.
+* **C3 (Mersenne-λ spectrum):** a mode exists near λ = 4.574 (from the prime
+  7), below the current floor; and the λ(31) = 12.26 falls inside the gap
+  [12.06, 12.85]. Test: recompute the spectral problem with more modes /
+  higher resolution.
+* **C4 (intermediate statistics):** ⟨r⟩ = 0.46 ± finite-n is neither Poisson
+  nor GOE; the "chaos is consistent" capstone (T19) needs more modes to be
+  measured, not asserted.
+
 ---
 
 ## Ch. 6  Creases (never forget these)
