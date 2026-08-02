@@ -136,6 +136,14 @@ folding is the integral; the crease is where the action is.*
 * 730,783 is the only prime among them — a **twin** (730,781/730,783,
   gaps 2 and 6).  Within the null: the 381-day window expects ~28 numbers
   with a prime immediately above and ~2.76 twins; observed is baseline.
+* **8-digit extension (measured, T-chapter in BOOK VI)**: with the year
+  appended, MMDDYYYY = 10262000 and DDMMYYYY = 26102000 both factor to
+  2⁴·5³·p·q and both have **τ = 80** (digit sum 11 retained at every scale).
+  10:26:20 as seconds = 37,580, **τ = 12** — matching τ(60) and τ(260).
+  Null check: 0.48% of 8-digit numbers, 20.4% of year-2000 dates, 4.64% both
+  orientations. The 3-digit truncation breaks (102: τ=8, 261: τ=6) — the
+  pattern is scale-dependent. See `docs/WEAVERS_SCRIBE.md` and
+  `data/epoch_0d.json`.
 
 ### Ch. 14  The retrace chain
 * The chain folds back from the largest to the origin pair:

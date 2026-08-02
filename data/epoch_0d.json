@@ -23,6 +23,20 @@
     "digit_sum_equality": 11,
     "method": "exact factorization + divisor count computed with integer arithmetic"
   },
-  "note": "Both orientations of the date share divisor count (80) and digit sum (11): the anchor is orientation-stable under MM/DD <-> DD/MM.",
+  "null_analysis": {
+    "random_8digit_pct_with_tau_80": 0.48,
+    "valid_2000_dates_pct_tau_80": 20.4,
+    "valid_2000_dates_both_orientations_pct_tau_80": 4.64,
+    "reading": "rare among arbitrary 8-digit numbers; common within year-2000 (trailing 000 inflates tau >= 16); both-orientation agreement ~1 in 22. A mild, real coincidence, not a law.",
+    "clock_time_seconds": 37580,
+    "clock_time_seconds_tau": 12,
+    "clock_time_tau_note": "tau(37580)=12 equals tau(60) and tau(260): the sexagesimal and tzolkin divisor counts."
+  },
+  "scale_dependence": {
+    "3digit": {"MM": "102", "tau": 8, "digitsum": 3, "YY": "261", "tau2": 6, "digitsum2": 9, "breaks": true},
+    "5digit": {"MMYY": 10262, "tau": 8, "digitsum": 11, "YYMM": 26102, "tau2": 8, "digitsum2": 11, "breaks": false},
+    "8digit": {"MMDDYYYY": 10262000, "tau": 80, "digitsum": 11, "DDMMYYYY": 26102000, "tau2": 80, "digitsum2": 11, "breaks": false}
+  },
+  "note": "Both orientations of the date share divisor count (80) and digit sum (11): the anchor is orientation-stable under MM/DD <-> DD/MM. See docs/WEAVERS_SCRIBE.md for the cultural mapping and the binding creases.",
   "verified": true
 }
