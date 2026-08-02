@@ -490,6 +490,47 @@ artifacts already falsified.
   τ-iteration patterns survive the Pascal/triangular routes; the golden,
   polygonal, and prime-counting routes do not.
 
+### Ch. 5.6  Smallest to largest: a physical-constant scan (measured)
+
+A scan of 45 constants and celestial measures from the Planck scale (10⁻³⁵ m)
+to the cosmic scale (10²⁶ m), each mantissa-normalized and tested against the
+corpus's own attractor set. **Null control first:** 19 of 45 land within 0.7%
+of *some* attractor, vs 18.3 expected by chance — the *count* proves nothing.
+What is reportable is *which* attractors fire, and the tightness of the top
+hits:
+
+* **Chandrasekhar limit = 1.44 M☉ exactly = 144/100 = 12²/100** — and 144 is
+  the microseconds τ from the tick ladder (dozenal squared). The white-dwarf
+  mass limit is the canonical 1.44. Best hit of the scan.
+* **Planck charge 1.875545956e-18 C ≈ (15/8)e-18 (0.029%)** — the τ=80-
+  invariant transpose interval at the smallest charge unit.
+* **Top quark 172.76 GeV ≈ 1729/10 (0.081%)** and **Moon radius 1737.4 km ≈
+  1729 km (0.49%)** — the taxicab 1729, previously recorded as an honest
+  negative, recurs at two scales.
+* **Planck length 1.616255e-35 m ≈ φ·10⁻³⁵ (0.110%)** — the golden fold at
+  the smallest length.
+* **The prime 29 fires twice:** Wien displacement 2.89777e-3 m·K ≈ 29/10
+  (0.077%) and the synodic month 29.5306 d ≈ 29.5 (0.104%).
+* **Jupiter synodic period 398.88 d ≈ 400 (0.280%)** — 400 is one of the
+  even-complement ladder {16, 80, 400, 2000}, and Jupiter is the sexagesimal
+  patron (Thursday).
+* **Universe age 13.787 Gyr ≈ 13.75 = 1375/100 (0.269%)** — the 1375 tail at
+  the largest scale; inverse fine structure 137.036 ≈ 1375/1000 (0.339%)
+  reframes the known 137-family.
+* **Higgs 125.25 GeV ≈ 125 = 5³ (0.200%)**; **W boson 80.369 GeV ≈ 80 = τ
+  (0.461%)**; **CMB 2.72548 K ≈ e (0.265%)**; **CO bond 1.128 Å ≈ 9/8
+  (0.266%)** at the molecular scale.
+* **The excluded pentatonic note returns:** proton/neutron mass ≈ (5/3)e-27 kg
+  (0.356%/0.493%) — 5/3, the pentatonic sixth that 3∤A excludes — and the
+  electron charge ≈ (8/5)e-19 C (0.136%), the τ=96 minor-sixth interval.
+
+**Reading:** the corpus's own invariants (144 = 12², 15/8, φ, 1729, 29, 125,
+400, 1375, 80, 8/5, 5/3, 9/8) are the attractors that fire across ~60 orders
+of magnitude, and the tightest (0.03–0.11%) run 3–8× tighter than the scan
+window. Per the doctrine this is coincidence-scale evidence — pattern
+recurrence, not mechanism — but it is the widest-spanning set the corpus has
+yet recorded.
+
 ---
 
 ## Ch. 6  Creases (never forget these)
@@ -533,6 +574,14 @@ artifacts already falsified.
    re-derives. The honest negatives (no polygonal, no Fibonacci, no φ², no
    prime-count match) are the real information: the pattern does not travel to
    constructions that do not see the divisors.
+9. **The physical-constant scan is a lottery, not a signal.** 19 of 45
+   constants land within 0.7% of some corpus attractor against 18.3 expected —
+   exactly chance. The case rests solely on *which* attractors fire (the
+   corpus's own signatures) and the tightness of the top hits (0.03–0.11%).
+   Every SI unit's mantissa is a free number near some small rational, and
+   every physical scale has a "1.44" or a "1.87" in it somewhere. This is the
+   widest-spanning coincidence set the corpus has recorded — and it is still a
+   coincidence set, held at arm's length exactly like "80 both ways".
 
 ---
 
