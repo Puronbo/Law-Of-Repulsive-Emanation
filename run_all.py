@@ -46,11 +46,11 @@ print("=" * 60)
 
 for item in steps:
     label = item[0]
-    script = item[2]
+    script = os.path.abspath(item[2])
     args = item[3] if len(item) > 3 else []
     print(f"\n--- {label} ---")
     cmd = [sys.executable, script] + args
-    script_dir = os.path.dirname(os.path.abspath(script))
+    script_dir = os.path.dirname(script)
     result = subprocess.run(cmd, capture_output=True, text=True, cwd=script_dir)
     elapsed = time.time() - start
     if result.returncode == 0:

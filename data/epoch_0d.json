@@ -626,5 +626,56 @@
       "weak_near_misses": "B/A ~ 5/2 major tenth (30 cents); A/B ~ 25/16 (11.2 cents); E1/E0 ~ 10/9 (19 cents) - noted, not carried"
     },
     "verified": true
+  },
+  "pascal_ladder_probe": {
+    "method": "Pascal's triangle / binomial ladders + classical number ladders (iterated tau, iterated digit sum, Lucas' theorem, Fibonacci, polygonal, prime counting, Catalan/Bell, Euler totient) - checking which routes arrive at the corpus patterns",
+    "tick_ladder_triangular_form": {
+      "identity": "tau_k = 12*Pent(k+1) = 4*T(3k+2) = 4*C(3k+3, 2)",
+      "verified_k_0_to_5": [12, 60, 144, 264, 420, 612],
+      "note": "the pentagonal tick ladder is exactly 4x the Pascal second-column entries C(3k+3,2) at rows 6, 9, 12, 15, 18 (triangular indices 2, 5, 8, 11, 14, 17 = 2 mod 3)"
+    },
+    "iterated_tau_ladder": {
+      "A": [10262000, 80, 10, 4, 3, 2],
+      "B": [26102000, 80, 10, 4, 3, 2],
+      "C": [1914467, 4, 3, 2],
+      "37580": [37580, 12, 6, 4, 3, 2],
+      "2000": [2000, 20, 6, 4, 3, 2],
+      "headline": "the ENTIRE iterated-divisor-count chain is identical for both orientations (80 -> 10 -> 4 -> 3 -> 2): the shared invariant is the whole ladder, not just tau=80",
+      "note": "80->10: tau(80)=10 = the decade motif (10:26:20, 10th month, 10-day moon)"
+    },
+    "iterated_digit_sum_ladder": {
+      "A": [10262000, 11, 2],
+      "B": [26102000, 11, 2],
+      "C": [1914467, 32, 5],
+      "note": "the 11-motif arrives again via the digit ladder"
+    },
+    "pascal_row_11": {
+      "index": "the digit sum 11",
+      "interior_entries_all_divisible_by_11": true,
+      "row_sum": "2^11 = 2048, tau = 12 = the seconds' tau",
+      "note": "row 11 of Pascal's triangle is an 11-ladder: every interior entry is 11 x C(11,k)"
+    },
+    "pascal_row_12": {
+      "index": "the dozenal 12",
+      "entries_with_tau_12": [220, 495],
+      "note": "220 is the amicable-pair member (sigma(220)=284, sigma(284)=220) with tau=12; 495 = 3^2*5*11 with tau=12 - the dozenal row carries the seconds' tau twice"
+    },
+    "lucas_odd_binomial_counts": {
+      "A": "2^popcount = 2^12 = 4096 odd entries in row A",
+      "B": "2^popcount = 2^11 = 2048 odd entries in row B",
+      "C": "2^popcount = 2^12 = 4096 odd entries in row C",
+      "headline": "row B's odd-entry count = 2048 = 2^(popcount B) = 2^(digit sum B), and tau(2048) = 12 = the seconds' tau - the measured binary popcounts (A=12, C=12, B=11) arrive through Pascal's triangle via Lucas' theorem",
+      "note": "C(k) odd iff each bit of k is a subset of n's bits"
+    },
+    "totient_note": "phi(B) = 10,080,000 has tau = 270 = tau(|B-A|) = 270 (curiosity; phi(A) = 3,513,600, tau 162)",
+    "honest_negatives": {
+      "polygonal": "none of A, B, C, 37580, 2000, 80 is square, triangular, or pentagonal",
+      "fibonacci": "no corpus number is near a Fibonacci number (nearest off by ~0.3M-1M)",
+      "golden_ladder": "B/A = 2.5436 vs phi^2 = 2.6180 (-2.84%); 5/2 = 2.5 (+1.74%) remains the best simple ratio",
+      "prime_counting": "pi(B)/pi(A) = 2.3949 vs B/A = 2.5436 (prime counting is sublinear - not a match)",
+      "catalan_bell": "no near-miss above off-by ~500"
+    },
+    "verdict": "the divisor-count, digit, and tau-iteration patterns are reproduced exactly by Pascal/triangular and iterative routes; the golden, polygonal, and prime-counting routes do NOT reproduce them (honest negatives)",
+    "verified": true
   }
 }

@@ -461,6 +461,35 @@ artifacts already falsified.
   mod-12 pitch-class equality (A ≡ B ≡ 8) are the same facts re-read in new
   costumes.
 
+### Ch. 5.5  Pascal's ladder and classical number ladders (measured)
+
+* **The tick ladder is a Pascal ladder.** τ_k = 12·Pent(k+1) = **4·T(3k+2)** =
+  4·C(3k+3, 2): the pentagonal τ-ladder is exactly 4× the Pascal second-column
+  entries at rows 6, 9, 12, 15, 18. Verified k = 0…5 (12, 60, 144, 264, 420,
+  612).
+* **The iterated-divisor-count chain is identical for both orientations.**
+  A: 80 → 10 → 4 → 3 → 2; B: 80 → 10 → 4 → 3 → 2. The shared invariant is the
+  *whole ladder*, not just τ = 80. (C: 4 → 3 → 2; 37,580: 12 → 6 → 4 → 3 → 2;
+  2000: 20 → 6 → 4 → 3 → 2.) Note 80 → 10: τ(80) = 10, the decade motif.
+* **Pascal row 11 (index = the digit sum 11) is an 11-ladder.** Every interior
+  entry is divisible by 11, and the row sum 2¹¹ = 2048 has **τ = 12** — the
+  seconds' divisor count. Row 12 (dozenal index) carries the seconds' τ twice:
+  **220** (τ = 12, the amicable-pair member: σ(220) = 284, σ(284) = 220) and
+  **495** = 3²·5·11 (τ = 12).
+* **The popcount motif arrives through Lucas' theorem.** Row A and row C of
+  Pascal's triangle have 2¹² = 4096 odd binomial entries; row B has 2¹¹ = 2048
+  = 2^(popcount B) = 2^(digit sum B), and τ(2048) = 12. The binary popcounts
+  already measured (A = 12, C = 12, B = 11) arrive by a genuinely different
+  route — binomial coefficients mod 2.
+* **Totient curiosity:** φ(B) = 10,080,000 has τ = 270 = τ(|B−A|).
+* **Honest negatives.** None of A, B, C, 37,580, 2000, 80 is square,
+  triangular, or pentagonal; no corpus number is near a Fibonacci number; the
+  golden ladder does not reproduce B/A (φ² is 2.84% off — 5/2 at 1.74% remains
+  the best simple ratio); π(B)/π(A) = 2.3949 ≠ B/A = 2.5436 (prime counting is
+  sublinear); no Catalan/Bell near-misses. The divisor-count, digit, and
+  τ-iteration patterns survive the Pascal/triangular routes; the golden,
+  polygonal, and prime-counting routes do not.
+
 ---
 
 ## Ch. 6  Creases (never forget these)
@@ -497,6 +526,13 @@ artifacts already falsified.
    this date. The *musical vocabulary* (major third, sexagesimal, pentatonic)
    is a lens the corpus is holding at arm's length, exactly as it does with
    "80 both ways".
+8. **Every ladder is the same arithmetic in a new uniform.** The Pascal form
+   τ_k = 4·T(3k+2), the τ-iteration chain 80→10→4→3→2, and the Lucas-theorem
+   popcount reading are all *restatements* of the exponents — divisor counts
+   depend only on factorizations, and factorizations are what each "ladder"
+   re-derives. The honest negatives (no polygonal, no Fibonacci, no φ², no
+   prime-count match) are the real information: the pattern does not travel to
+   constructions that do not see the divisors.
 
 ---
 
