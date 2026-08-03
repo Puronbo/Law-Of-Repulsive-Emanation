@@ -56,7 +56,10 @@ Limits (crease-worthy, printed):
 import json
 import multiprocessing as mp
 import os
+import socket
+import struct
 import sys
+import threading
 import time
 import traceback
 from collections import defaultdict, deque
@@ -78,22 +81,210 @@ from manifold.decentral_net import DecentralNet  # noqa: E402
 
 
 # ---------------------------------------------------------------------- #
+# Transports (the SAME protocol runs over either)
+# ---------------------------------------------------------------------- #
+SOCK_PORT_BASE = 60100
+
+
+def _frame(msg):
+    data = json.dumps(msg).encode()
+    return struct.pack(">I", len(data)) + data
+
+
+def _unframe(buf):
+    """Pull complete frames from a byte buffer; returns (frames, rest)."""
+    frames = []
+    while len(buf) >= 4:
+        (ln,) = struct.unpack(">I", buf[:4])
+        if len(buf) < 4 + ln:
+            break
+        frames.append(json.loads(buf[4:4 + ln].decode()))
+        buf = buf[4 + ln:]
+    return frames, buf
+
+
+class QueueTransport:
+    """Driver-relayed transport (mp.Queue).  Messages move as Python tuples
+    through the controllable relay; used by the deterministic T12-T15 suite."""
+    def __init__(self, inq, outq):
+        self.inq = inq
+        self.outq = outq
+
+    def recv(self, timeout):
+        try:
+            msg = self.inq.get(timeout=timeout)
+        except Exception:
+            return None
+        return (msg[0], msg[1], msg[2:])
+
+    def is_ready(self, peers):
+        return True
+
+    def send(self, dst, kind, args=()):
+        self.outq.put((dst, (kind, *args)))
+
+
+class SocketTransport:
+    """Real TCP loopback transport with the SAME message schema.  Each node
+    listens on its own port and keeps outbound connections to every peer and
+    to the driver; inbound messages land in a shared queue.  Reachability
+    (partitions) is enforced by the driver sending REACH - a node drops
+    inbound traffic from peers outside its allowed set.  A maintainer thread
+    re-establishes any connection that dies (crash/restart)."""
+    def __init__(self, node_id, n_frag, inq):
+        self.node_id = node_id
+        self.inq = inq
+        self.port = SOCK_PORT_BASE + node_id
+        self.n = n_frag
+        self.allowed = None
+        self._conns = {}
+        self._pending = defaultdict(list)       # dst -> buffered frames
+        self._lock = threading.Lock()
+        self._stop = threading.Event()
+        self._srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self._srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        deadline = time.time() + 6        # retry bind: a killed process from a
+        while True:                       # previous test can still hold the port
+            try:
+                self._srv.bind(("127.0.0.1", self.port))
+                break
+            except OSError as e:
+                if time.time() > deadline:
+                    raise
+                time.sleep(0.1)
+        self._srv.listen(64)
+        threading.Thread(target=self._serve, daemon=True).start()
+        ports = {j: SOCK_PORT_BASE + j for j in range(n_frag) if j != node_id}
+        ports["driver"] = SOCK_PORT_BASE + n_frag
+        threading.Thread(target=self._maintain, args=(ports,),
+                         daemon=True).start()
+
+    def recv(self, timeout):
+        try:
+            msg = self.inq.get(timeout=timeout)
+        except Exception:
+            return None
+        return (msg[0], msg[1], msg[2])
+
+    def set_reachability(self, allowed):
+        self.allowed = set(allowed) if allowed is not None else None
+
+    def is_ready(self, peers):
+        """True while a quorum is still ATTAINABLE: more than half of the
+        given witnesses are connected.  A dead witness leaves k-1 > half live
+        ones, so its owner keeps committing (it just waits out the deadline);
+        if every witness is gone no commit is possible and blocks wait."""
+        with self._lock:
+            live = sum(1 for p in peers if p in self._conns)
+            return live > len(peers) / 2
+
+    def _serve(self):
+        while not self._stop.is_set():
+            try:
+                c, _ = self._srv.accept()
+            except OSError:
+                return
+            threading.Thread(target=self._reader, args=(c,),
+                             daemon=True).start()
+
+    def _maintain(self, ports):
+        while not self._stop.is_set():
+            for pid, port in ports.items():
+                with self._lock:
+                    have = pid in self._conns
+                if not have:
+                    self._connect(pid, port)
+            time.sleep(0.2)
+
+    def _connect(self, peer_id, port):
+        try:
+            s = socket.create_connection(("127.0.0.1", port), timeout=0.25)
+        except OSError:
+            return
+        s.settimeout(None)              # blocking: idle conns must NOT look EOF
+        with self._lock:
+            self._conns[peer_id] = s
+        threading.Thread(target=self._reader, args=(s, peer_id),
+                         daemon=True).start()
+        self._flush(peer_id, s)
+
+    def _flush(self, dst, s):
+        """Deliver everything buffered for 'dst' once the connection exists.
+        Frames that cannot be sent stay buffered for the next reconnect."""
+        with self._lock:
+            pending = self._pending.get(dst, [])
+            self._pending[dst] = []
+        i = 0
+        while i < len(pending):
+            try:
+                s.sendall(pending[i])
+                i += 1
+            except OSError:
+                with self._lock:
+                    self._pending[dst] = pending[i:] + self._pending[dst]
+                    if self._conns.get(dst) is s:
+                        del self._conns[dst]
+                try:
+                    s.close()
+                except OSError:
+                    pass
+                return
+
+    def _reader(self, s, outbound_for=None):
+        buf = b""
+        while not self._stop.is_set():
+            try:
+                data = s.recv(65536)
+            except OSError:
+                break
+            if not data:
+                break
+            buf += data
+            frames, buf = _unframe(buf)
+            for msg in frames:
+                src, kind, args = msg[0], msg[1], msg[2]
+                if (self.allowed is not None and src != "driver"
+                        and src not in self.allowed):
+                    continue
+                self.inq.put((src, kind, tuple(args)))
+        if outbound_for is not None:
+            with self._lock:
+                if self._conns.get(outbound_for) is s:
+                    del self._conns[outbound_for]
+        try:
+            s.close()
+        except OSError:
+            pass
+
+    def send(self, dst, kind, args=()):
+        frame = _frame([self.node_id, kind, list(args)])
+        with self._lock:
+            s = self._conns.get(dst)
+            if s is None:
+                self._pending[dst].append(frame)
+                return
+            self._pending[dst].append(frame)
+        self._flush(dst, s)
+
+
+# ---------------------------------------------------------------------- #
 # Node (a fragment, running in its own process)
 # ---------------------------------------------------------------------- #
-def node_main(node_id, witnesses, faulty, refusing, n_frag, vote_timeout,
-              inq, outq):
+def node_main_loop(node_id, witnesses, faulty, refusing, n_frag, vote_timeout,
+                   transport):
     """Event loop for one fragment process.  'faulty'/'refusing' simulate a
-    corrupt fragment: vote-inverting and vote-silencing respectively."""
+    corrupt fragment: vote-inverting and vote-silencing respectively.
+    'transport' abstracts delivery; the SAME loop runs over the queue relay
+    and over real TCP sockets."""
     ledger = Ledger(node_id)
     replicas = {f: Ledger(f) for f in range(n_frag)}
     pending = defaultdict(list)       # frag -> out-of-order buffered blocks
     sync_inflight = defaultdict(int)  # frag -> consecutive SYNC re-requests
     quorums = []                      # in-flight commit proposals
     submit_buffer = deque()   # serialized pending client txs
-    stop = False
 
-    def send(dst, payload):
-        outq.put((dst, payload))
+    def send(dst, kind, args=()):
+        transport.send(dst, kind, args)
 
     def drain(frag):
         while pending.get(frag):
@@ -109,13 +300,15 @@ def node_main(node_id, witnesses, faulty, refusing, n_frag, vote_timeout,
     def handle(src, kind, args):
         if kind == "STOP":
             pass
+        elif kind == "REACH":
+            transport.set_reachability(args[0])
         elif kind == "QUERY_STATE":
             cid = args[0]
             snap = {}
             for f in range(n_frag):
                 rep = rep_for(f)
                 snap[f] = {"head": rep.head, "blocks": rep.blocks}
-            send("driver", ("STATE", cid, snap))
+            send("driver", "STATE", (cid, snap))
         elif kind == "NOTIFY":
             frag, block = args
             ok, _ = rep_for(frag).replica_append(block)
@@ -123,13 +316,13 @@ def node_main(node_id, witnesses, faulty, refusing, n_frag, vote_timeout,
                 pending[frag].append(block)
                 if sync_inflight[frag] < 3:
                     sync_inflight[frag] += 1
-                    send(frag, ("SYNC_REQ", frag, len(rep_for(frag).blocks)))
+                    send(frag, "SYNC_REQ", (frag, len(rep_for(frag).blocks)))
             else:
                 drain(frag)
                 sync_inflight[frag] = 0
         elif kind == "SYNC_REQ":
             frag, from_idx = args
-            send(src, ("SYNC", frag, rep_for(frag).blocks[from_idx:]))
+            send(src, "SYNC", (frag, rep_for(frag).blocks[from_idx:]))
         elif kind == "SYNC":
             frag, blocks = args
             for b in blocks:
@@ -139,7 +332,7 @@ def node_main(node_id, witnesses, faulty, refusing, n_frag, vote_timeout,
                     sync_inflight[frag] = 0
                 elif sync_inflight[frag] < 3:
                     sync_inflight[frag] += 1
-                    send(frag, ("SYNC_REQ", frag, len(rep_for(frag).blocks)))
+                    send(frag, "SYNC_REQ", (frag, len(rep_for(frag).blocks)))
         elif kind == "RESYNC":
             # Full catch-up (used on rejoin AND on stateless restart): pull
             # every OTHER fragment from its owner, and our OWN fragment from
@@ -152,9 +345,9 @@ def node_main(node_id, witnesses, faulty, refusing, n_frag, vote_timeout,
                 if f == node_id:
                     for j in range(n_frag):
                         if j != node_id:
-                            send(j, ("SYNC_REQ", f, len(rep_for(f).blocks)))
+                            send(j, "SYNC_REQ", (f, len(rep_for(f).blocks)))
                 else:
-                    send(f, ("SYNC_REQ", f, len(rep_for(f).blocks)))
+                    send(f, "SYNC_REQ", (f, len(rep_for(f).blocks)))
         elif kind == "PROPOSE":
             proposer, frag, block = args
             rep = rep_for(frag)
@@ -163,7 +356,7 @@ def node_main(node_id, witnesses, faulty, refusing, n_frag, vote_timeout,
             ok, _ = validate_proposal(rep, block)
             if faulty:
                 ok = not ok
-            send(proposer, ("VOTE", frag, block["index"], ok))
+            send(proposer, "VOTE", (frag, block["index"], ok))
         elif kind == "VOTE":
             frag, idx, approved = args
             for q in quorums:
@@ -178,24 +371,21 @@ def node_main(node_id, witnesses, faulty, refusing, n_frag, vote_timeout,
         only when no quorum for this fragment is in flight (serialized)."""
         ok, why = ledger.try_append([tx])
         if not ok:
-            send("driver", ("CLIENT_RESULT", cid, False, why))
+            send("driver", "CLIENT_RESULT", (cid, False, why))
             return
         block = ledger.blocks[-1]
         for w in witnesses:
-            send(w, ("PROPOSE", node_id, node_id, block))
+            send(w, "PROPOSE", (node_id, node_id, block))
         quorums.append({"frag": node_id, "idx": block["index"], "cid": cid,
                         "replies": {}, "deadline": time.time() + vote_timeout})
 
     while True:
-        try:
-            msg = inq.get(timeout=0.05)
-        except Exception:
-            msg = None
+        msg = transport.recv(0.05)
         if msg is not None:
             if msg[1] == "STOP":
                 break
             try:
-                handle(msg[0], msg[1], msg[2:])
+                handle(msg[0], msg[1], msg[2])
             except Exception:
                 print(f"NODE {node_id} CRASHED on {msg[0]} {msg[1]}:",
                       file=sys.stderr)
@@ -209,20 +399,30 @@ def node_main(node_id, witnesses, faulty, refusing, n_frag, vote_timeout,
                     block = ledger.blocks[q["idx"]]
                     for j in range(n_frag):
                         if j != node_id:
-                            send(j, ("NOTIFY", node_id, block))
-                    send("driver", ("CLIENT_RESULT", q["cid"], True, "ok"))
+                            send(j, "NOTIFY", (node_id, block))
+                    send("driver", "CLIENT_RESULT", (q["cid"], True, "ok"))
                 else:
                     ledger.rollback()
-                    send("driver", ("CLIENT_RESULT", q["cid"], False,
-                                    "quorum-denied"))
+                    send("driver", "CLIENT_RESULT", (q["cid"], False,
+                                                     "quorum-denied"))
                 quorums.remove(q)
         if not any(q["frag"] == node_id for q in quorums) and submit_buffer:
-            try:
-                start_block(*submit_buffer.popleft())
-            except Exception:
-                print(f"NODE {node_id} CRASHED in start_block:", file=sys.stderr)
-                traceback.print_exc()
-                break
+            if transport.is_ready(witnesses):
+                try:
+                    start_block(*submit_buffer.popleft())
+                except Exception:
+                    print(f"NODE {node_id} CRASHED in start_block:", file=sys.stderr)
+                    traceback.print_exc()
+                    break
+
+
+def node_main_socket(node_id, witnesses, faulty, refusing, n_frag,
+                     vote_timeout, inq):
+    """Spawn entry for the socket mode: the SocketTransport (sockets, locks,
+    threads) is created HERE in the child process - it cannot be pickled
+    through Windows spawn."""
+    node_main_loop(node_id, witnesses, faulty, refusing, n_frag, vote_timeout,
+                   SocketTransport(node_id, n_frag, inq))
 
 
 def validate_proposal(rep, block):
@@ -308,9 +508,9 @@ class Network:
         for i in range(n_frag):
             inq = mp.Queue()
             outq = mp.Queue()
-            p = mp.Process(target=node_main, args=(
+            p = mp.Process(target=node_main_loop, args=(
                 i, self.witnesses[i], i in faulty, i in refusing,
-                n_frag, vote_timeout, inq, outq))
+                n_frag, vote_timeout, QueueTransport(inq, outq)))
             p.daemon = True
             p.start()
             self.inqs.append(inq)
@@ -372,9 +572,10 @@ class Network:
         self.kill(node_id)
         inq = mp.Queue()
         outq = mp.Queue()
-        p = mp.Process(target=node_main, args=(
+        p = mp.Process(target=node_main_loop, args=(
             node_id, self.witnesses[node_id], node_id in self.faulty,
-            node_id in self.refusing, self.n, self.vote_timeout, inq, outq))
+            node_id in self.refusing, self.n, self.vote_timeout,
+            QueueTransport(inq, outq)))
         p.daemon = True
         p.start()
         self.inqs[node_id] = inq
@@ -403,7 +604,9 @@ class Network:
                 except Exception:
                     break
                 if msg and msg[0] == "STATE" and msg[1] in cids:
-                    got[msg[1]] = msg[2]
+                    # JSON round-trip (sockets) stringifies integer fragment
+                    # keys; normalize so both transports hand back int keys.
+                    got[msg[1]] = {int(k): v for k, v in msg[2].items()}
             time.sleep(0.02)
         if len(got) < self.n:
             raise RuntimeError("state query timeout")
@@ -448,6 +651,216 @@ class Network:
         for p in self.procs:
             if p.is_alive():
                 p.terminate()
+
+
+# ---------------------------------------------------------------------- #
+# SocketNetwork: the SAME protocol over a real TCP loopback transport
+# ---------------------------------------------------------------------- #
+class SocketNetwork:
+    """Driver side for real sockets.  The driver binds a listener (every
+    node connects out to it) and also connects out to every node, so
+    driver->node and node->driver traffic both flow over TCP.  Reachability
+    (partitions) is enforced by REACH: the driver tells each node which peers
+    it may receive from, and the node drops the rest - the same cut semantics
+    as the relay's edge set, but over real TCP/IP packets."""
+
+    def __init__(self, n_frag, k, vote_timeout=0.8, faulty=set(),
+                 refusing=set()):
+        self.n = n_frag
+        self.k = k
+        self.vote_timeout = vote_timeout
+        self.faulty = set(faulty)
+        self.refusing = set(refusing)
+        self.net, self.witnesses = build_topology(n_frag, k)
+        self.result_q = mp.Queue()
+        self.driver_port = SOCK_PORT_BASE + n_frag
+        self._srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self._srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        self._srv.bind(("127.0.0.1", self.driver_port))
+        self._srv.listen(64)
+        self._stop = threading.Event()
+        threading.Thread(target=self._serve, daemon=True).start()
+        self.inqs, self.procs = [], []
+        for i in range(n_frag):
+            inq = mp.Queue()
+            p = mp.Process(target=node_main_socket, args=(
+                i, self.witnesses[i], i in faulty, i in refusing,
+                n_frag, vote_timeout, inq))
+            p.daemon = True
+            p.start()
+            self.inqs.append(inq)
+            self.procs.append(p)
+        self.conns = {}                       # node id -> driver outbound sock
+        self._clk = threading.Lock()
+        self._wait_conn_all(deadline=12)
+
+    def _serve(self):
+        while not self._stop.is_set():
+            try:
+                c, _ = self._srv.accept()
+            except OSError:
+                return
+            threading.Thread(target=self._reader, args=(c,),
+                             daemon=True).start()
+
+    def _reader(self, s):
+        buf = b""
+        while not self._stop.is_set():
+            try:
+                data = s.recv(65536)
+            except OSError:
+                break
+            if not data:
+                break
+            buf += data
+            frames, buf = _unframe(buf)
+            for msg in frames:
+                src, kind, args = msg[0], msg[1], msg[2]
+                self.result_q.put((kind, *args))
+        try:
+            s.close()
+        except OSError:
+            pass
+
+    def _connect_all(self):
+        with self._clk:
+            for i in range(self.n):
+                if i not in self.conns:
+                    try:
+                        s = socket.create_connection(
+                            ("127.0.0.1", SOCK_PORT_BASE + i), timeout=0.25)
+                        s.settimeout(None)
+                        self.conns[i] = s
+                    except OSError:
+                        pass
+
+    def _wait_conn_all(self, deadline):
+        """Retry driver->node connections until every node answers (nodes boot
+        asynchronously; refused loopback conns cost ~0.25s each)."""
+        end = time.time() + deadline
+        while time.time() < end and len(self.conns) < self.n:
+            self._connect_all()
+            if len(self.conns) < self.n:
+                time.sleep(0.2)
+
+    def _send(self, node_id, kind, args=()):
+        with self._clk:
+            s = self.conns.get(node_id)
+        if s is None:
+            return
+        try:
+            s.sendall(_frame(["driver", kind, list(args)]))
+        except OSError:
+            pass
+
+    def set_partition(self, groups):
+        allowed = {}
+        for g in groups:
+            for i in g:
+                allowed[i] = [j for j in g if j != i] + ["driver"]
+        for i in range(self.n):
+            self._send(i, "REACH", (allowed.get(i, ["driver"]),))
+
+    def full_network(self):
+        for i in range(self.n):
+            self._send(i, "REACH", ([j for j in range(self.n) if j != i]
+                                    + ["driver"],))
+
+    def resync_all(self):
+        for i in range(self.n):
+            self._send(i, "RESYNC")
+
+    def resync(self, node_id):
+        self._send(node_id, "RESYNC")
+
+    def submit(self, tx, cid):
+        self._send(self._owner_of(tx["from"]), "SUBMIT", (tx, cid))
+
+    def _owner_of(self, addr):
+        return int(route(self.net, addr))
+
+    def query_states(self, timeout=5.0):
+        cids = [f"q{i}" for i in range(self.n)]
+        for i in range(self.n):
+            self._send(i, "QUERY_STATE", (cids[i],))
+        got, deadline = {}, time.time() + timeout
+        while len(got) < self.n and time.time() < deadline:
+            while True:
+                try:
+                    msg = self.result_q.get_nowait()
+                except Exception:
+                    break
+                if msg and msg[0] == "STATE" and msg[1] in cids:
+                    # JSON round-trip (sockets) stringifies integer fragment
+                    # keys; normalize so both transports hand back int keys.
+                    got[msg[1]] = {int(k): v for k, v in msg[2].items()}
+            time.sleep(0.02)
+        if len(got) < self.n:
+            raise RuntimeError("socket state query timeout")
+        return got
+
+    def collect_results(self, cids, timeout=25.0):
+        cids = set(cids)
+        got, deadline = {}, time.time() + timeout
+        while time.time() < deadline and len(got) < len(cids):
+            while True:
+                try:
+                    msg = self.result_q.get_nowait()
+                except Exception:
+                    break
+                if msg and msg[0] == "CLIENT_RESULT" and msg[1] in cids:
+                    got[msg[1]] = (msg[2], msg[3])
+            time.sleep(0.02)
+        return got
+
+    def wait(self, seconds):
+        deadline = time.time() + seconds
+        while time.time() < deadline:
+            time.sleep(0.05)
+
+    def kill(self, node_id):
+        p = self.procs[node_id]
+        if p.is_alive():
+            p.terminate()
+            p.join(timeout=2)
+        with self._clk:
+            if node_id in self.conns:
+                try:
+                    self.conns[node_id].close()
+                except OSError:
+                    pass
+                del self.conns[node_id]
+
+    def restart(self, node_id):
+        """Stateless restart over sockets: a fresh process rebinds the node's
+        port and the maintainer threads on both sides re-establish the dead
+        connections automatically."""
+        self.kill(node_id)
+        inq = mp.Queue()
+        p = mp.Process(target=node_main_socket, args=(
+            node_id, self.witnesses[node_id], node_id in self.faulty,
+            node_id in self.refusing, self.n, self.vote_timeout, inq))
+        p.daemon = True
+        p.start()
+        self.inqs[node_id] = inq
+        self.procs[node_id] = p
+        self._wait_conn_all(deadline=10)
+
+    def stop(self):
+        self._stop.set()
+        for i in range(self.n):
+            self._send(i, "STOP")
+        for p in self.procs:
+            p.join(timeout=2)
+        for p in self.procs:
+            if p.is_alive():
+                p.terminate()
+                p.join(timeout=2)
+        time.sleep(0.3)      # let OS release the node ports before a new test
+        try:
+            self._srv.close()
+        except OSError:
+            pass
 
 
 # ---------------------------------------------------------------------- #
@@ -786,15 +1199,196 @@ def test_t15_crash_restart():
                 and conserved and recovered_commits) else "FAIL"}
 
 
+def test_t16_socket_commit():
+    """T16a: the SAME consensus over a real TCP loopback transport.  The
+    protocol is transport-agnostic - node_main runs identically over the
+    queue relay and over sockets.  Verifies commit, cross-node consistency,
+    and conservation over real TCP/IP packets."""
+    n, k = 6, 3
+    sn = SocketNetwork(n, k)
+    frag_for, keys, addrs = make_accounts(sn.net, 24)
+    rng = np.random.RandomState(16)
+    nonces = defaultdict(int)
+    cids = []
+    while len(cids) < 14:
+        s, r = rng.randint(0, len(addrs), size=2)
+        if s == r:
+            continue
+        tx = next_tx(keys, nonces, addrs[s], addrs[r], int(rng.randint(1, 30)))
+        cids.append(f"s{len(cids)}")
+        sn.submit(tx, cids[-1])
+    results = sn.collect_results(cids, timeout=40)
+    missing = [c for c in cids if c not in results]
+    ok_all = all(v[0] for v in results.values())
+    snaps = sn.query_states()
+    heads = consensus_heads(snaps, n)
+    consistent = all(h[0] for h in heads.values())
+    valid, conserved = replay_from(snaps, n, addrs)
+    sn.stop()
+    return {"test": "T16a socket commit",
+            "commits": len(results), "missing": missing, "all_ok": ok_all,
+            "consistent": consistent, "conserved": conserved,
+            "chains_valid": valid,
+            "verdict": "PASS" if (ok_all and consistent and conserved and valid)
+            else "FAIL"}
+
+
+def test_t16_socket_partition():
+    """T16b: partition + rejoin over real sockets.  The driver cuts the ring
+    with REACH (nodes drop inbound traffic from the other half), measures
+    degraded commit availability, then rejoins and verifies convergence over
+    the same TCP transport."""
+    n, k = 8, 3
+    sn = SocketNetwork(n, k)
+    frag_for, keys, addrs = make_accounts(sn.net, 32)
+    group_a = {0, 1, 2, 3}
+    group_b = {4, 5, 6, 7}
+    sn.set_partition([list(group_a), list(group_b)])
+    sn.wait(0.3)
+    rng = np.random.RandomState(17)
+    nonces = defaultdict(int)
+    submitted = {}
+    while len(submitted) < 16:
+        s, r = rng.randint(0, len(addrs), size=2)
+        if s == r:
+            continue
+        tx = next_tx(keys, nonces, addrs[s], addrs[r], int(rng.randint(1, 30)))
+        cid = f"sp{len(submitted)}"
+        submitted[cid] = tx
+        sn.submit(tx, cid)
+    results = sn.collect_results(list(submitted.keys()), timeout=40)
+    ok_during = sum(1 for v in results.values() if v[0])
+    sn.full_network()
+    sn.resync_all()
+    sn.wait(3.0)
+    snaps = sn.query_states()
+    heads = consensus_heads(snaps, n)
+    consistent = all(h[0] for h in heads.values())
+    valid, conserved = replay_from(snaps, n, addrs)
+    sn.stop()
+    return {"test": "T16b socket partition + rejoin",
+            "commits_during_partition": ok_during,
+            "attempted": len(submitted),
+            "converged": consistent, "conserved": conserved,
+            "chains_valid": valid,
+            "verdict": "PASS" if (consistent and conserved and valid) else "FAIL"}
+
+
+def test_t17_socket_crash_restart():
+    """T17: the T15 crash + stateless-restart guarantee over REAL TCP sockets
+    instead of the controllable relay.  Kill a node (its listener and every
+    conn die; peers' maintainers keep failing to reconnect).  While it is
+    dead: its OWN accounts cannot commit (no process to submit to), but live
+    owners with k-1 > half witnesses still commit.  Restarting is truly
+    stateless: a fresh process rebinds the port, re-establishes the fabric,
+    and must rebuild every fragment - including its own chain - from peers'
+    replicas, then propose a fresh tx."""
+    n, k = 6, 3
+    sn = SocketNetwork(n, k)
+    frag_for, keys, addrs = make_accounts(sn.net, 24)
+    owners = sorted({frag_for[a] for a in addrs})
+    rng = np.random.RandomState(21)
+    nonces = defaultdict(int)
+
+    cids = []
+    for owner in owners:
+        accts = [a for a in addrs if frag_for[a] == owner]
+        for _ in range(2):
+            s = accts[rng.randint(len(accts))]
+            r = addrs[rng.randint(len(addrs))]
+            if s == r:
+                continue
+            tx = next_tx(keys, nonces, s, r, int(rng.randint(1, 30)))
+            cids.append(f"a{len(cids)}")
+            sn.submit(tx, cids[-1])
+    before = sn.collect_results(cids, timeout=60)
+    before_ok = all(v[0] for v in before.values()) and len(before) == len(cids)
+
+    target = 2
+    sn.kill(target)
+
+    dead_accts = [a for a in addrs if frag_for[a] == target]
+    dead_cids = []
+    for _ in range(3):
+        s = dead_accts[rng.randint(len(dead_accts))]
+        r = addrs[rng.randint(len(addrs))]
+        if s == r:
+            continue
+        tx = next_tx(keys, nonces, s, r, int(rng.randint(1, 20)))
+        dead_cids.append(f"d{len(dead_cids)}")
+        sn.submit(tx, dead_cids[-1])
+
+    live_owners = [o for o in owners if o != target]
+    live_cids = []
+    while len(live_cids) < 8:
+        owner = live_owners[rng.randint(len(live_owners))]
+        accts = [a for a in addrs if frag_for[a] == owner]
+        s = accts[rng.randint(len(accts))]
+        r = addrs[rng.randint(len(addrs))]
+        if s == r:
+            continue
+        tx = next_tx(keys, nonces, s, r, int(rng.randint(1, 20)))
+        live_cids.append(f"l{len(live_cids)}")
+        sn.submit(tx, live_cids[-1])
+    live = sn.collect_results(live_cids, timeout=60)
+    live_ok = all(v[0] for v in live.values()) and len(live) == len(live_cids)
+
+    dead = sn.collect_results(dead_cids, timeout=8)
+    dead_committed = len(dead)
+
+    sn.restart(target)
+    sn.resync(target)
+    deadline = time.time() + 15
+    converged = False
+    snaps = None
+    while time.time() < deadline and not converged:
+        sn.wait(0.5)
+        snaps = sn.query_states(timeout=8)
+        heads = consensus_heads(snaps, n)
+        converged = all(h[0] for h in heads.values())
+        if not converged:
+            sn.resync(target)
+    recovered_own_matches_peers = (snaps is not None and
+                                   snaps[f"q{target}"][target]["head"] ==
+                                   snaps["q0"][target]["head"])
+
+    s = dead_accts[rng.randint(len(dead_accts))]
+    others = [a for a in addrs if a != s]
+    r = others[rng.randint(len(others))]
+    tx = next_tx(keys, nonces, s, r, int(rng.randint(1, 20)))
+    sn.submit(tx, "recovered")
+    post = sn.collect_results(["recovered"], timeout=60)
+    recovered_commits = post.get("recovered", (False, ""))[0]
+
+    valid, conserved = replay_from(snaps, n, addrs)
+    sn.stop()
+    return {"test": "T17 socket crash + stateless restart",
+            "committed_before_crash": len(before), "before_all_ok": before_ok,
+            "crashed_owner_txs_committed": dead_committed,
+            "live_owner_commits_during_crash": len(live),
+            "live_all_ok": live_ok,
+            "recovered_own_chain_matches_peers": recovered_own_matches_peers,
+            "converged": converged, "chains_valid": valid,
+            "conserved": conserved,
+            "recovered_node_commits_after": recovered_commits,
+            "verdict": "PASS" if (
+                before_ok and dead_committed == 0 and live_ok
+                and recovered_own_matches_peers and converged and valid
+                and conserved and recovered_commits) else "FAIL"}
+
+
 # ---------------------------------------------------------------------- #
 def main():
     print("=" * 66)
     print("DECENTRAL BANK NETWORK (T70/T71) - fragments as real processes")
+    print("with the crash/restart guarantees repeated over real TCP sockets")
     print("=" * 66)
     results = {}
     for fn in [test_t12_network_commit, test_t13_partition_rejoin,
                test_t14_fabrication, test_t14_availability_wall,
-               test_t14_equivocation, test_t15_crash_restart]:
+               test_t14_equivocation, test_t15_crash_restart,
+               test_t16_socket_commit, test_t16_socket_partition,
+               test_t17_socket_crash_restart]:
         r = fn()
         results[r["test"]] = r
         print(f"  [{r['verdict']:8s}] {r['test']}")
@@ -804,7 +1398,7 @@ def main():
 
     limits = {
         "not_bft": "majority-honesty quorum; >50% corrupt neighbourhood or an exploitable partition wins until detected",
-        "single_machine": "no real sockets/TLS; the relay is a controllable network model",
+        "single_machine": "real loopback TCP sockets but still one machine and no TLS; transport-specific faults (partitions, machine death) are only modelled at the fragment level",
         "no_total_state_loss": "a crash recovers from PEERS' replicas (stateless restart); if every node loses state at once only the per-fragment WAL (T8) can rebuild - not tested here",
         "equivocation_needs_collusion": "a double-signed tx needs the account holder's key; the network only detects the fork afterwards",
     }

@@ -881,6 +881,37 @@ holds a validated replica of every other fragment's.
   rejoin the fork is DETECTED — every node holds exactly one version and the
   other is rejected — but not healed. Detection, not prevention, is the honest
   wall.
+* **T16a socket commit (PASS):** the SAME consensus over REAL TCP loopback
+  sockets — every node listens on its own port and keeps outbound connections
+  to its peers and the driver; the relay model is gone. 14/14 randomized
+  transfers commit; every node's replica of every ledger is bit-identical,
+  chains re-validate, conservation holds. Three socket-specific bugs were
+  fixed along the way: **(d)** `send()` only flushed *previously buffered*
+  frames when a live connection existed, so the frame being sent never
+  reached the socket (all frames now flow through one `_pending` → `_flush`
+  path, which also re-buffers on failure and drops dead connections so the
+  maintainer reconnects); **(e)** `create_connection(timeout=…)` leaves that
+  recv timeout on the socket, so idle links mis-read as EOF and a reconnect
+  storm hit (3,446 connects / 3,420 EOFs) — sockets are set blocking after
+  connect; **(f)** the driver connected once with a fixed sleep, so a node
+  that booted late was silently unreachable — it now retries until all n
+  nodes answer (and `restart` reuses the same loop). The loopback stack also
+  costs ~2s per refused connect here, so every connect uses a 0.25s timeout.
+* **T16b socket partition + rejoin (PASS):** the ring cut in two over real
+  sockets — 12/16 txs commit inside the halves, post-rejoin all nodes
+  converge to identical ledgers, chains re-validate, conservation holds.
+* **T17 socket crash + stateless restart (PASS):** T15's crash guarantee
+  repeated over sockets. Kill a node (listener + all connections die; peers'
+  maintainers keep failing to reconnect): its OWN accounts freeze (0 commits
+  while down) yet live owners keep committing (k−1 > half witnesses). The
+  block-start gate is **quorum-attainable readiness** — an owner starts blocks
+  while more than half its witnesses are connected — so a dead non-witness
+  never blocks a commit, a dead witness costs only the quorum deadline, and a
+  node with every witness gone honestly waits. Restart is truly stateless: a
+  fresh process rebinds the port (bind retried 6s against a dying
+  predecessor's held port), re-establishes the fabric, rebuilds every
+  fragment — its own chain included — from peers' replicas, converges to
+  identical ledgers, and commits a fresh tx with correct nonce continuity.
 
 Three real protocol bugs were found and fixed while making this pass, each
 worth recording: **(a)** a proposer must NOT start the next block for a
@@ -892,10 +923,12 @@ replica, or the owner never sees its own commits; **(c)** `rollback()` left
 `head = ""` instead of `"genesis"` when the chain emptied, poisoning every
 later commit for that fragment.
 
-Limits (printed): majority-honesty, not BFT; single machine with a
-controllable relay, no sockets/TLS; nodes don't crash or restart here;
-equivocation needs the account holder's key (the network detects the fork
-afterwards). Data: `data/decentral_bank_net_data.json`.
+Limits (printed): majority-honesty, not BFT; single machine with real
+loopback TCP sockets but still no TLS and no cross-machine transport —
+partitions and machine death are modelled only at the fragment level; a
+crash recovers from PEERS' replicas, so a total simultaneous state loss is
+not covered here; equivocation needs the account holder's key (the network
+detects the fork afterwards). Data: `data/decentral_bank_net_data.json`.
 
 ---
 
@@ -1025,6 +1058,16 @@ afterwards). Data: `data/decentral_bank_net_data.json`.
     with correct nonces. So per-fragment availability = owner availability,
     but per-fragment DURABILITY = the ring's, not the owner's. The node is
     disposable; the fragment's chain lives in its neighbours. (Ch. 5.13.)
+20. **Readiness must be quorum-attainable, not fabric-complete.** Gating block
+    starts on ALL peers connected freezes a live node the moment any
+    non-witness is down — worse, gating on ALL witnesses freezes an owner
+    whose witness died even though k−1 > half witnesses could still commit
+    (T17, Ch. 5.13). The gate that preserves the crash guarantee is: start
+    blocks while MORE THAN HALF the witnesses are connected. A dead
+    non-witness never blocks a commit; a dead witness costs only the quorum
+    deadline (wait out the missing vote, still commit); every witness gone is
+    honestly frozen. Same policy on the startup race: the owner starts the
+    moment a quorum is reachable, and late peers are absorbed by buffering.
 
 ---
 
@@ -1037,10 +1080,10 @@ afterwards). Data: `data/decentral_bank_net_data.json`.
   faulty-quorum curve (crease #16), anomaly precision vs random null.
 * `data/decentral_bank_bridge_data.json` — T69 the bridge: on/off-ramp round
   trip, ref-idempotency, and the backing invariant (crease #17).
-* `data/decentral_bank_net_data.json` — T70/T71 fragments as processes: T12–T15
-  verdicts, the scattered-corruption wall vs contiguous-corruption resilience
-  (crease #18), partition/rejoin + crash/stateless-restart recovery (crease
-  #19).
+* `data/decentral_bank_net_data.json` — T70/T71 fragments as processes: T12–T17
+  verdicts (T16/T17 over real TCP sockets), the scattered-corruption wall vs
+  contiguous-corruption resilience (crease #18), partition/rejoin +
+  crash/stateless-restart recovery (creases #19, #20).
 * `docs/SPRING_BIBLE.md` BOOK V Ch. 13–15 — the date's 5-digit treatment, the
   retrace chain, the creases (T57, T59, T61, T62).
 * `docs/THE_BOOK.md` Ch. 2 (observations), Ch. 8 (time and convergence) — the

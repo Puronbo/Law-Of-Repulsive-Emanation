@@ -12,10 +12,10 @@
     },
     "T13 partition + rejoin": {
       "test": "T13 partition + rejoin",
-      "commits_during_partition": 11,
+      "commits_during_partition": 12,
       "attempted": 16,
-      "commits_side_a": 8,
-      "commits_side_b": 3,
+      "commits_side_a": 3,
+      "commits_side_b": 9,
       "converged": true,
       "conserved": true,
       "chains_valid": true,
@@ -37,7 +37,7 @@
         },
         {
           "faulty_frac": 0.3,
-          "honest_commit_frac": 0.562
+          "honest_commit_frac": 0.5
         },
         {
           "faulty_frac": 0.5,
@@ -74,11 +74,44 @@
       "conserved": true,
       "recovered_node_commits_after": true,
       "verdict": "PASS"
+    },
+    "T16a socket commit": {
+      "test": "T16a socket commit",
+      "commits": 14,
+      "missing": [],
+      "all_ok": true,
+      "consistent": true,
+      "conserved": true,
+      "chains_valid": true,
+      "verdict": "PASS"
+    },
+    "T16b socket partition + rejoin": {
+      "test": "T16b socket partition + rejoin",
+      "commits_during_partition": 13,
+      "attempted": 16,
+      "converged": true,
+      "conserved": true,
+      "chains_valid": true,
+      "verdict": "PASS"
+    },
+    "T17 socket crash + stateless restart": {
+      "test": "T17 socket crash + stateless restart",
+      "committed_before_crash": 12,
+      "before_all_ok": true,
+      "crashed_owner_txs_committed": 0,
+      "live_owner_commits_during_crash": 8,
+      "live_all_ok": true,
+      "recovered_own_chain_matches_peers": true,
+      "converged": true,
+      "chains_valid": true,
+      "conserved": true,
+      "recovered_node_commits_after": true,
+      "verdict": "PASS"
     }
   },
   "limits": {
     "not_bft": "majority-honesty quorum; >50% corrupt neighbourhood or an exploitable partition wins until detected",
-    "single_machine": "no real sockets/TLS; the relay is a controllable network model",
+    "single_machine": "real loopback TCP sockets but still one machine and no TLS; transport-specific faults (partitions, machine death) are only modelled at the fragment level",
     "no_total_state_loss": "a crash recovers from PEERS' replicas (stateless restart); if every node loses state at once only the per-fragment WAL (T8) can rebuild - not tested here",
     "equivocation_needs_collusion": "a double-signed tx needs the account holder's key; the network only detects the fork afterwards"
   }
