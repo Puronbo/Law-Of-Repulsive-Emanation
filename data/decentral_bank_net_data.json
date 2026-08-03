@@ -12,10 +12,10 @@
     },
     "T13 partition + rejoin": {
       "test": "T13 partition + rejoin",
-      "commits_during_partition": 12,
+      "commits_during_partition": 11,
       "attempted": 16,
-      "commits_side_a": 5,
-      "commits_side_b": 7,
+      "commits_side_a": 8,
+      "commits_side_b": 3,
       "converged": true,
       "conserved": true,
       "chains_valid": true,
@@ -33,7 +33,7 @@
       "scattered_corruption_curve": [
         {
           "faulty_frac": 0.0,
-          "honest_commit_frac": 0.958
+          "honest_commit_frac": 1.0
         },
         {
           "faulty_frac": 0.3,
@@ -41,7 +41,7 @@
         },
         {
           "faulty_frac": 0.5,
-          "honest_commit_frac": 0.4
+          "honest_commit_frac": 0.286
         },
         {
           "faulty_frac": 0.7,
@@ -60,12 +60,26 @@
       "nodes_holding_single_version": 6,
       "total": 6,
       "verdict": "PASS"
+    },
+    "T15 crash + stateless restart": {
+      "test": "T15 crash + stateless restart",
+      "committed_before_crash": 12,
+      "before_all_ok": true,
+      "crashed_owner_txs_committed": 0,
+      "live_owner_commits_during_crash": 8,
+      "live_all_ok": true,
+      "recovered_own_chain_matches_peers": true,
+      "converged": true,
+      "chains_valid": true,
+      "conserved": true,
+      "recovered_node_commits_after": true,
+      "verdict": "PASS"
     }
   },
   "limits": {
     "not_bft": "majority-honesty quorum; >50% corrupt neighbourhood or an exploitable partition wins until detected",
     "single_machine": "no real sockets/TLS; the relay is a controllable network model",
-    "no_node_crash": "process crash/restart of a fragment is not tested here",
+    "no_total_state_loss": "a crash recovers from PEERS' replicas (stateless restart); if every node loses state at once only the per-fragment WAL (T8) can rebuild - not tested here",
     "equivocation_needs_collusion": "a double-signed tx needs the account holder's key; the network only detects the fork afterwards"
   }
 }

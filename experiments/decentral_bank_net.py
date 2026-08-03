@@ -37,12 +37,20 @@ Tests (each with a null):
           and nonce committed to opposite halves; each half accepts its own
           during the partition (double-spend window), and the fork is
           DETECTED after rejoin (not prevented) - the honest wall.
+  T15 crash + stateless restart (T71): terminate one node process mid-flight,
+      confirm its accounts cannot transact while it is down but everyone
+      else's commits survive (k-1 honest witnesses still exceed half), then
+      restart it with EMPTY ledgers and let it recover EVERY fragment - its
+      OWN included - from peers' replicas.  A stateless node is rebuilt
+      entirely from the local-witness ring; recovery is proven by
+      re-convergence, chain validity, conservation, and a fresh commit.
 
 Limits (crease-worthy, printed):
   - Still majority-honesty, not BFT: a >50%-corrupt neighbourhood, or a
     partition the proposer can exploit, wins until detection.
-  - Single machine, deterministic topology (no real sockets/TLS), node
-    processes do not crash here.
+  - Single machine, deterministic topology (no real sockets/TLS).
+  - Crash recovery is from PEERS' replicas: if every node loses state at
+    once, only the per-fragment WAL (T8) can rebuild - not tested here.
 """
 
 import json
@@ -133,9 +141,19 @@ def node_main(node_id, witnesses, faulty, refusing, n_frag, vote_timeout,
                     sync_inflight[frag] += 1
                     send(frag, ("SYNC_REQ", frag, len(rep_for(frag).blocks)))
         elif kind == "RESYNC":
+            # Full catch-up (used on rejoin AND on stateless restart): pull
+            # every OTHER fragment from its owner, and our OWN fragment from
+            # every peer - a peer's replica of us is authoritative until we
+            # catch up, and we cannot serve ourselves (the relay drops
+            # self-messages).  For a synced owner this is a no-op (peers can
+            # never be ahead of the authority), so the extra traffic is safe.
             for f in range(n_frag):
-                if f != node_id:
-                    sync_inflight[f] = 0
+                sync_inflight[f] = 0
+                if f == node_id:
+                    for j in range(n_frag):
+                        if j != node_id:
+                            send(j, ("SYNC_REQ", f, len(rep_for(f).blocks)))
+                else:
                     send(f, ("SYNC_REQ", f, len(rep_for(f).blocks)))
         elif kind == "PROPOSE":
             proposer, frag, block = args
@@ -282,6 +300,9 @@ class Network:
                  refusing=set()):
         self.n = n_frag
         self.k = k
+        self.vote_timeout = vote_timeout
+        self.faulty = set(faulty)
+        self.refusing = set(refusing)
         self.net, self.witnesses = build_topology(n_frag, k)
         self.inqs, self.outqs, self.procs = [], [], []
         for i in range(n_frag):
@@ -331,6 +352,35 @@ class Network:
         for i in range(self.n):
             self.inqs[i].put(("driver", "RESYNC"))
         self.pump()
+
+    def resync(self, node_id):
+        self.inqs[node_id].put(("driver", "RESYNC"))
+        self.pump()
+
+    def kill(self, node_id):
+        """Simulate a process crash: terminate the node abruptly (no
+        shutdown, no state flush).  Its queues stay behind but go silent."""
+        p = self.procs[node_id]
+        if p.is_alive():
+            p.terminate()
+            p.join(timeout=2)
+
+    def restart(self, node_id):
+        """Stateless restart: a fresh process with EMPTY ledgers and new
+        queues.  It recovers purely by pulling from peers (RESYNC), including
+        its own fragment's chain from their replicas."""
+        self.kill(node_id)
+        inq = mp.Queue()
+        outq = mp.Queue()
+        p = mp.Process(target=node_main, args=(
+            node_id, self.witnesses[node_id], node_id in self.faulty,
+            node_id in self.refusing, self.n, self.vote_timeout, inq, outq))
+        p.daemon = True
+        p.start()
+        self.inqs[node_id] = inq
+        self.outqs[node_id] = outq
+        self.procs[node_id] = p
+        time.sleep(0.8)                          # let the fresh node spin up
 
     def submit(self, tx, cid):
         owner = self._owner_of(tx["from"])
@@ -626,15 +676,125 @@ def test_t14_equivocation():
             "verdict": "PASS" if (divergent and detected > 0) else "FAIL"}
 
 
+def test_t15_crash_restart():
+    """Node crash + stateless restart.  A fragment's authority lives in its
+    OWN process: while that process is dead its accounts cannot transact,
+    while every other owner's commit still succeeds (the dead node's missing
+    vote leaves k-1 honest witnesses, still > half).  A restarted node starts
+    with EMPTY ledgers and must recover every fragment from peers' replicas -
+    including its OWN fragment's chain.  Recovery is proven by re-convergence,
+    chain validity, conservation, and a fresh commit (nonce continuity means
+    the node truly rebuilt its own authority)."""
+    n, k = 6, 3
+    netw = Network(n, k)
+    frag_for, keys, addrs = make_accounts(netw.net, 24)
+    owners = sorted({frag_for[a] for a in addrs})
+    rng = np.random.RandomState(15)
+    nonces = defaultdict(int)
+
+    # phase 1: healthy batch - at least one committed block in EVERY fragment
+    cids = []
+    for owner in owners:
+        accts = [a for a in addrs if frag_for[a] == owner]
+        for _ in range(2):
+            s = accts[rng.randint(len(accts))]
+            r = addrs[rng.randint(len(addrs))]
+            if s == r:
+                continue
+            tx = next_tx(keys, nonces, s, r, int(rng.randint(1, 30)))
+            cids.append(f"a{len(cids)}")
+            netw.submit(tx, cids[-1])
+    before = netw.collect_results(cids, timeout=40)
+    before_ok = all(v[0] for v in before.values()) and len(before) == len(cids)
+
+    # crash one node
+    target = 2
+    netw.kill(target)
+
+    # phase 2a: txs OWNED by the dead fragment must NOT commit
+    dead_accts = [a for a in addrs if frag_for[a] == target]
+    dead_cids = []
+    for _ in range(3):
+        s = dead_accts[rng.randint(len(dead_accts))]
+        r = addrs[rng.randint(len(addrs))]
+        if s == r:
+            continue
+        tx = next_tx(keys, nonces, s, r, int(rng.randint(1, 20)))
+        dead_cids.append(f"d{len(dead_cids)}")
+        netw.submit(tx, dead_cids[-1])
+
+    # phase 2b: txs owned by LIVE fragments must still commit
+    live_owners = [o for o in owners if o != target]
+    live_cids = []
+    while len(live_cids) < 8:
+        owner = live_owners[rng.randint(len(live_owners))]
+        accts = [a for a in addrs if frag_for[a] == owner]
+        s = accts[rng.randint(len(accts))]
+        r = addrs[rng.randint(len(addrs))]
+        if s == r:
+            continue
+        tx = next_tx(keys, nonces, s, r, int(rng.randint(1, 20)))
+        live_cids.append(f"l{len(live_cids)}")
+        netw.submit(tx, live_cids[-1])
+    live = netw.collect_results(live_cids, timeout=40)
+    live_ok = all(v[0] for v in live.values()) and len(live) == len(live_cids)
+
+    # the dead node's submissions must NOT resolve (its process is gone)
+    dead = netw.collect_results(dead_cids, timeout=6)
+    dead_committed = len(dead)
+
+    # phase 3: stateless restart + full catch-up from peers
+    netw.restart(target)
+    netw.resync(target)
+    deadline = time.time() + 12
+    converged = False
+    snaps = None
+    while time.time() < deadline and not converged:
+        netw.wait(0.5)
+        snaps = netw.query_states(timeout=8)
+        heads = consensus_heads(snaps, n)
+        converged = all(h[0] for h in heads.values())
+        if not converged:
+            netw.resync(target)
+    recovered_own_matches_peers = (snaps is not None and
+                                   snaps[f"q{target}"][target]["head"] ==
+                                   snaps["q0"][target]["head"])
+
+    # phase 4: recovered node must propose + commit a NEW tx
+    s = dead_accts[rng.randint(len(dead_accts))]
+    others = [a for a in addrs if a != s]
+    r = others[rng.randint(len(others))]
+    tx = next_tx(keys, nonces, s, r, int(rng.randint(1, 20)))
+    netw.submit(tx, "recovered")
+    post = netw.collect_results(["recovered"], timeout=40)
+    recovered_commits = post.get("recovered", (False, ""))[0]
+
+    valid, conserved = replay_from(snaps, n, addrs)
+    netw.stop()
+    return {"test": "T15 crash + stateless restart",
+            "committed_before_crash": len(before), "before_all_ok": before_ok,
+            "crashed_owner_txs_committed": dead_committed,
+            "live_owner_commits_during_crash": len(live),
+            "live_all_ok": live_ok,
+            "recovered_own_chain_matches_peers": recovered_own_matches_peers,
+            "converged": converged, "chains_valid": valid,
+            "conserved": conserved,
+            "recovered_node_commits_after": recovered_commits,
+            "verdict": "PASS" if (
+                before_ok and dead_committed == 0 and live_ok
+                and recovered_own_matches_peers and converged and valid
+                and conserved and recovered_commits) else "FAIL"}
+
+
 # ---------------------------------------------------------------------- #
 def main():
     print("=" * 66)
-    print("DECENTRAL BANK NETWORK (T70) - fragments as real processes")
+    print("DECENTRAL BANK NETWORK (T70/T71) - fragments as real processes")
     print("=" * 66)
     results = {}
     for fn in [test_t12_network_commit, test_t13_partition_rejoin,
                test_t14_fabrication, test_t14_availability_wall,
-               test_t14_equivocation]:
+               test_t14_equivocation, test_t15_crash_restart]:
         r = fn()
         results[r["test"]] = r
         print(f"  [{r['verdict']:8s}] {r['test']}")
@@ -645,7 +805,7 @@ def main():
     limits = {
         "not_bft": "majority-honesty quorum; >50% corrupt neighbourhood or an exploitable partition wins until detected",
         "single_machine": "no real sockets/TLS; the relay is a controllable network model",
-        "no_node_crash": "process crash/restart of a fragment is not tested here",
+        "no_total_state_loss": "a crash recovers from PEERS' replicas (stateless restart); if every node loses state at once only the per-fragment WAL (T8) can rebuild - not tested here",
         "equivocation_needs_collusion": "a double-signed tx needs the account holder's key; the network only detects the fork afterwards",
     }
     print("\nLIMITS (crease-worthy):")

@@ -835,7 +835,7 @@ caller-supplied ref (a real bridge must derive refs from bank-side txn IDs);
 burn-before-payout uses a custody peek instead of a compensation path; and the
 quorum is still an in-process simulation, not network consensus.
 
-### Ch. 5.13  Fragments as real processes: network consensus (T70, measured)
+### Ch. 5.13  Fragments as real processes: network consensus + crash recovery (T70/T71, measured)
 
 The last wall of Ch. 5.12 — "quorum is an in-process simulation" — is closed
 *as a simulation limit*. Every fragment now runs as its OWN OS process
@@ -857,15 +857,24 @@ holds a validated replica of every other fragment's.
 * **T14a fabrication (PASS):** a forged block (garbage Ed25519 signature)
   injected to every honest node's replica is rejected at rate 1.0.
 * **T14b availability wall (MEASURED):** with *scattered* corruption the honest
-  commit fraction follows the majority-honesty prediction P = (1−f)⁴+4f(1−f)³ —
-  latest run {0.96, 0.56, 0.40, 0.0} at f = {0, 0.3, 0.5, 0.7} (theory {1.0,
-  0.65, 0.31, 0.08}) — the wall of crease #16 reproduced across real processes.
-  With *contiguous* corruption at f = 0.7 the honest cluster keeps 0.6
-  availability — spatially-local corruption is partly absorbed by the
-  local-witness ring (crease #18). These numbers fluctuate run-to-run (the
-  relay's message timing is a real race), but the qualitative shape is stable
-  across every run: the curve tracks theory downward and contiguous beats
-  scattered at every f ≥ 0.3.
+  commit fraction follows the majority-honesty prediction P = (1−f)⁴+4f(1−f)³
+  — across four full runs the curve fell in {0.95–1.0, 0.56–0.63, 0.20–0.40,
+  0.0–0.13} at f = {0, 0.3, 0.5, 0.7} (theory {1.0, 0.65, 0.31, 0.08}) — the
+  wall of crease #16 reproduced across real processes. With *contiguous*
+  corruption at f = 0.7 the honest cluster keeps 0.25–0.67 availability —
+  spatially-local corruption is partly absorbed by the local-witness ring
+  (crease #18). The numbers fluctuate run-to-run (the relay's message timing
+  is a real race), but the qualitative shape is stable in every run: the curve
+  tracks theory downward and contiguous beats scattered at every f ≥ 0.3.
+* **T15 crash + stateless restart (PASS, T71):** terminating one node process
+  mid-flight freezes its OWN fragment — 0/3 txs owned by the dead node commit
+  while it is down — while every other owner's commits survive (8/8; the dead
+  node's missing vote leaves k−1 honest witnesses, still > half). Restarting
+  the node with EMPTY ledgers recovers every fragment from peers' replicas,
+  its OWN fragment's chain included: post-restart all nodes converge to
+  identical ledgers, chains re-validate, conservation holds, the recovered
+  node's own head matches a peer's replica, and it commits a fresh tx (nonce
+  continuity proves it truly rebuilt its own authority).
 * **T14c partition equivocation (PASS):** two conflicting blocks for the same
   account+nonce injected to opposite halves are each accepted by their half
   (the double-spend window), the heads diverge during the partition, and after
@@ -1006,6 +1015,16 @@ afterwards). Data: `data/decentral_bank_net_data.json`.
     local corruption far better than it resists the same *fraction* scattered
     uniformly — so "x% corrupt" is not a well-posed threat model; the spatial
     distribution is the variable that matters.
+19. **A fragment's authority is its process; its memory is its peers.** T71
+    (Ch. 5.13): kill the node that owns an account and that account is
+    un-spendable — 0/3 of its txs commit while every live owner's commits
+    survive. Authority is single-owner and non-portable. Yet the same local-
+    witness ring that provides consensus is ALSO the redundant store: a
+    stateless restart (empty ledgers) rebuilds every fragment — the node's
+    OWN chain included, recovered from peers' replicas — and commits again
+    with correct nonces. So per-fragment availability = owner availability,
+    but per-fragment DURABILITY = the ring's, not the owner's. The node is
+    disposable; the fragment's chain lives in its neighbours. (Ch. 5.13.)
 
 ---
 
@@ -1018,9 +1037,10 @@ afterwards). Data: `data/decentral_bank_net_data.json`.
   faulty-quorum curve (crease #16), anomaly precision vs random null.
 * `data/decentral_bank_bridge_data.json` — T69 the bridge: on/off-ramp round
   trip, ref-idempotency, and the backing invariant (crease #17).
-* `data/decentral_bank_net_data.json` — T70 fragments as processes: T12–T14
+* `data/decentral_bank_net_data.json` — T70/T71 fragments as processes: T12–T15
   verdicts, the scattered-corruption wall vs contiguous-corruption resilience
-  (crease #18), partition/rejoin convergence.
+  (crease #18), partition/rejoin + crash/stateless-restart recovery (crease
+  #19).
 * `docs/SPRING_BIBLE.md` BOOK V Ch. 13–15 — the date's 5-digit treatment, the
   retrace chain, the creases (T57, T59, T61, T62).
 * `docs/THE_BOOK.md` Ch. 2 (observations), Ch. 8 (time and convergence) — the
