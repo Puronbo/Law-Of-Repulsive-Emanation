@@ -12,10 +12,10 @@
     },
     "T13 partition + rejoin": {
       "test": "T13 partition + rejoin",
-      "commits_during_partition": 11,
+      "commits_during_partition": 10,
       "attempted": 16,
-      "commits_side_a": 5,
-      "commits_side_b": 6,
+      "commits_side_a": 3,
+      "commits_side_b": 7,
       "converged": true,
       "conserved": true,
       "chains_valid": true,
@@ -41,16 +41,16 @@
         },
         {
           "faulty_frac": 0.5,
-          "honest_commit_frac": 0.2
+          "honest_commit_frac": 0.286
         },
         {
           "faulty_frac": 0.7,
-          "honest_commit_frac": 0.2
+          "honest_commit_frac": 0.0
         }
       ],
       "contiguous_corruption_at_0.7": {
         "faulty_frac": 0.7,
-        "honest_commit_frac": 1.0
+        "honest_commit_frac": 0.75
       },
       "verdict": "MEASURED"
     },
@@ -63,7 +63,7 @@
     },
     "T15 crash + stateless restart": {
       "test": "T15 crash + stateless restart",
-      "committed_before_crash": 11,
+      "committed_before_crash": 12,
       "before_all_ok": true,
       "crashed_owner_txs_committed": 0,
       "live_owner_commits_during_crash": 8,
@@ -87,7 +87,7 @@
     },
     "T16b socket partition + rejoin": {
       "test": "T16b socket partition + rejoin",
-      "commits_during_partition": 13,
+      "commits_during_partition": 11,
       "attempted": 16,
       "converged": true,
       "conserved": true,
@@ -96,7 +96,7 @@
     },
     "T17 socket crash + stateless restart": {
       "test": "T17 socket crash + stateless restart",
-      "committed_before_crash": 9,
+      "committed_before_crash": 11,
       "before_all_ok": true,
       "crashed_owner_txs_committed": 0,
       "live_owner_commits_during_crash": 8,
@@ -119,11 +119,22 @@
       "conserved": true,
       "fresh_commit_after": true,
       "verdict": "PASS"
+    },
+    "T19 socket TLS": {
+      "test": "T19 socket TLS",
+      "client_without_identity_rejected": true,
+      "commits": 14,
+      "all_ok": true,
+      "consistent": true,
+      "conserved": true,
+      "chains_valid": true,
+      "reconverged_after_tls_restart": true,
+      "verdict": "PASS"
     }
   },
   "limits": {
     "not_bft": "majority-honesty quorum; >50% corrupt neighbourhood or an exploitable partition wins until detected",
-    "single_machine": "real loopback TCP sockets but still one machine and no TLS; transport-specific faults (partitions, machine death) are only modelled at the fragment level",
+    "single_machine": "real mutual-TLS loopback sockets (T19) but still one machine and no cross-machine transport; transport-specific faults (partitions, machine death) are only modelled at the fragment level",
     "no_total_state_loss": "a crash recovers from PEERS' replicas (stateless restart) AND, when every node dies at once, from each node's OWN T8-style WAL (T18); an OS-level crash mid-commit could still tear the log",
     "equivocation_needs_collusion": "a double-signed tx needs the account holder's key; the network only detects the fork afterwards"
   }

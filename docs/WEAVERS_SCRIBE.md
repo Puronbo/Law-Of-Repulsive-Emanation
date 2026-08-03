@@ -922,6 +922,17 @@ holds a validated replica of every other fragment's.
   Verified: every owner's post-rebuild head and block count match pre-crash
   exactly, all nodes converge to identical ledgers, chains re-validate,
   conservation holds, and a fresh tx commits with correct nonce continuity.
+* **T19 socket TLS (PASS):** the same consensus over MUTUAL-TLS sockets. A
+  self-signed identity is shared by every node and the driver; every
+  listener and outbound connection is wrapped, and each side demands the
+  peer's identity (CERT_REQUIRED). Negative proof: a client that trusts the
+  server but presents no identity cannot exchange a single byte — the
+  server rejects it at the handshake and closes the connection. Positive
+  proof: 14/14 txs commit, replicas bit-identical, chains re-validate,
+  conservation holds, and a crash + restart re-establishes the encrypted
+  fabric and re-converges. Honest limit: ONE shared identity (loopback
+  test), so this proves authenticated+encrypted transport, not a real PKI
+  with per-node identities.
 
 Three real protocol bugs were found and fixed while making this pass, each
 worth recording: **(a)** a proposer must NOT start the next block for a
@@ -934,11 +945,13 @@ replica, or the owner never sees its own commits; **(c)** `rollback()` left
 later commit for that fragment.
 
 Limits (printed): majority-honesty, not BFT; single machine with real
-loopback TCP sockets but still no TLS and no cross-machine transport —
+mutual-TLS loopback sockets (T19) but no cross-machine transport —
 partitions and machine death are modelled only at the fragment level; a
-crash recovers from PEERS' replicas, so a total simultaneous state loss is
-not covered here; equivocation needs the account holder's key (the network
-detects the fork afterwards). Data: `data/decentral_bank_net_data.json`.
+single crash recovers from PEERS' replicas, and a TOTAL simultaneous loss
+is rebuilt from each node's OWN T8-style WAL (T18), though an OS-level
+crash mid-commit could still tear the log; equivocation needs the account
+holder's key (the network detects the fork afterwards). Data:
+`data/decentral_bank_net_data.json`.
 
 ---
 
@@ -1100,10 +1113,11 @@ detects the fork afterwards). Data: `data/decentral_bank_net_data.json`.
   faulty-quorum curve (crease #16), anomaly precision vs random null.
 * `data/decentral_bank_bridge_data.json` — T69 the bridge: on/off-ramp round
   trip, ref-idempotency, and the backing invariant (crease #17).
-* `data/decentral_bank_net_data.json` — T70/T71 fragments as processes: T12–T18
-  verdicts (T16/T17/T18 over real TCP sockets), the scattered-corruption wall vs
-  contiguous-corruption resilience (crease #18), partition/rejoin +
-  crash/stateless-restart + total-loss/WAL recovery (creases #19, #20, #21).
+* `data/decentral_bank_net_data.json` — T70/T71 fragments as processes: T12–T19
+  verdicts (T16/T17/T18/T19 over real TCP sockets, T19 mutual-TLS), the
+  scattered-corruption wall vs contiguous-corruption resilience (crease #18),
+  partition/rejoin + crash/stateless-restart + total-loss/WAL recovery
+  (creases #19, #20, #21).
 * `docs/SPRING_BIBLE.md` BOOK V Ch. 13–15 — the date's 5-digit treatment, the
   retrace chain, the creases (T57, T59, T61, T62).
 * `docs/THE_BOOK.md` Ch. 2 (observations), Ch. 8 (time and convergence) — the

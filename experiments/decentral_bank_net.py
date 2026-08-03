@@ -48,9 +48,9 @@ Tests (each with a null):
 Limits (crease-worthy, printed):
   - Still majority-honesty, not BFT: a >50%-corrupt neighbourhood, or a
     partition the proposer can exploit, wins until detection.
-  - Real loopback TCP sockets but one machine (no TLS, no cross-machine
-    transport; transport-specific faults are modelled only at the fragment
-    level).
+  - Real loopback TCP sockets, mutual-TLS authenticated (T19), but still one
+    machine and no cross-machine transport; transport-specific faults are
+    modelled only at the fragment level.
   - Crash recovery: with live peers a stateless restart rebuilds from
     replicas; TOTAL simultaneous loss is rebuilt from each node's OWN
     T8-style WAL (T18).  An OS-level crash mid-commit could still tear the
@@ -62,6 +62,7 @@ import multiprocessing as mp
 import os
 import shutil
 import socket
+import ssl
 import struct
 import sys
 import tempfile
@@ -72,11 +73,14 @@ from collections import defaultdict, deque
 
 import numpy as np
 
+from cryptography import x509
+from cryptography.hazmat.primitives import hashes, serialization
+from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.hazmat.primitives.asymmetric.ed25519 import (  # noqa: E402
     Ed25519PrivateKey)
 from cryptography.hazmat.primitives.serialization import (  # noqa: E402
     Encoding, PublicFormat)
-
+from cryptography.x509.oid import NameOID
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                 "..", "Universals"))
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -90,6 +94,52 @@ from manifold.decentral_net import DecentralNet  # noqa: E402
 # Transports (the SAME protocol runs over either)
 # ---------------------------------------------------------------------- #
 SOCK_PORT_BASE = 60100
+
+
+def _gen_tls(dirpath):
+    """Self-signed cert + key for the loopback test net.  One shared identity
+    proves the channel is authenticated+encrypted (a client WITHOUT it is
+    rejected) - it is NOT per-node identity, which is a real PKI task."""
+    import datetime
+    import ipaddress
+    key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+    name = x509.Name([x509.NameAttribute(NameOID.COMMON_NAME,
+                                         "decentral-bank-loopback-test")])
+    san = x509.SubjectAlternativeName([
+        x509.IPAddress(ipaddress.ip_address("127.0.0.1")),
+        x509.DNSName("localhost")])
+    now = datetime.datetime.now(datetime.timezone.utc)
+    cert = (x509.CertificateBuilder()
+            .subject_name(name).issuer_name(name)
+            .public_key(key.public_key())
+            .serial_number(x509.random_serial_number())
+            .not_valid_before(now - datetime.timedelta(days=1))
+            .not_valid_after(now + datetime.timedelta(days=30))
+            .add_extension(san, critical=False)
+            .sign(key, hashes.SHA256()))
+    cert_path = os.path.join(dirpath, "cert.pem")
+    key_path = os.path.join(dirpath, "key.pem")
+    with open(cert_path, "wb") as f:
+        f.write(cert.public_bytes(serialization.Encoding.PEM))
+    with open(key_path, "wb") as f:
+        f.write(key.private_bytes(
+            serialization.Encoding.PEM,
+            serialization.PrivateFormat.TraditionalOpenSSL,
+            serialization.NoEncryption()))
+    return cert_path, key_path
+
+
+def _tls_ctx(cert_path, key_path):
+    """Mutual-TLS context: both sides present the shared identity and demand
+    it of the peer.  Usable as a server context (server_side=True) AND as a
+    client context (server_side=False), so one context threads through every
+    node, peer link, and driver connection."""
+    ctx = ssl.SSLContext(ssl.PROTOCOL_TLS)
+    ctx.verify_mode = ssl.CERT_REQUIRED
+    ctx.check_hostname = False
+    ctx.load_cert_chain(cert_path, key_path)
+    ctx.load_verify_locations(cafile=cert_path)
+    return ctx
 
 
 def _frame(msg):
@@ -137,12 +187,13 @@ class SocketTransport:
     (partitions) is enforced by the driver sending REACH - a node drops
     inbound traffic from peers outside its allowed set.  A maintainer thread
     re-establishes any connection that dies (crash/restart)."""
-    def __init__(self, node_id, n_frag, inq):
+    def __init__(self, node_id, n_frag, inq, tls_cert=None, tls_key=None):
         self.node_id = node_id
         self.inq = inq
         self.port = SOCK_PORT_BASE + node_id
         self.n = n_frag
         self.allowed = None
+        self._tls = _tls_ctx(tls_cert, tls_key) if tls_cert else None
         self._conns = {}
         self._pending = defaultdict(list)       # dst -> buffered frames
         self._lock = threading.Lock()
@@ -190,6 +241,17 @@ class SocketTransport:
                 c, _ = self._srv.accept()
             except OSError:
                 return
+            if self._tls is not None:
+                c.settimeout(3.0)          # bound the handshake so a hung
+                try:                       # client can't stall the accept loop
+                    c = self._tls.wrap_socket(c, server_side=True)
+                    c.settimeout(None)
+                except (ssl.SSLError, OSError):
+                    try:
+                        c.close()
+                    except OSError:
+                        pass
+                    continue
             threading.Thread(target=self._reader, args=(c,),
                              daemon=True).start()
 
@@ -208,6 +270,15 @@ class SocketTransport:
         except OSError:
             return
         s.settimeout(None)              # blocking: idle conns must NOT look EOF
+        if self._tls is not None:
+            try:
+                s = self._tls.wrap_socket(s, server_side=False)
+            except (ssl.SSLError, OSError):
+                try:
+                    s.close()
+                except OSError:
+                    pass
+                return
         with self._lock:
             self._conns[peer_id] = s
         threading.Thread(target=self._reader, args=(s, peer_id),
@@ -430,12 +501,14 @@ def node_main_loop(node_id, witnesses, faulty, refusing, n_frag, vote_timeout,
 
 
 def node_main_socket(node_id, witnesses, faulty, refusing, n_frag,
-                     vote_timeout, inq, wal_path=None):
+                     vote_timeout, inq, wal_path=None, tls_cert=None,
+                     tls_key=None):
     """Spawn entry for the socket mode: the SocketTransport (sockets, locks,
     threads) is created HERE in the child process - it cannot be pickled
     through Windows spawn."""
     node_main_loop(node_id, witnesses, faulty, refusing, n_frag, vote_timeout,
-                   SocketTransport(node_id, n_frag, inq), wal_path)
+                   SocketTransport(node_id, n_frag, inq, tls_cert, tls_key),
+                   wal_path)
 
 
 def validate_proposal(rep, block):
@@ -678,7 +751,7 @@ class SocketNetwork:
     as the relay's edge set, but over real TCP/IP packets."""
 
     def __init__(self, n_frag, k, vote_timeout=0.8, faulty=set(),
-                 refusing=set(), wal_dir=None):
+                 refusing=set(), wal_dir=None, tls=False):
         self.n = n_frag
         self.k = k
         self.vote_timeout = vote_timeout
@@ -689,6 +762,12 @@ class SocketNetwork:
         if wal_dir is not None:
             self._wal = wal_dir
             os.makedirs(wal_dir, exist_ok=True)
+        self._tls = False
+        self._tls_cert = self._tls_key = None
+        if tls:
+            self._tls = True
+            self._tls_dir = tempfile.mkdtemp(prefix="tls_")
+            self._tls_cert, self._tls_key = _gen_tls(self._tls_dir)
         self.net, self.witnesses = build_topology(n_frag, k)
         self.result_q = mp.Queue()
         self.driver_port = SOCK_PORT_BASE + n_frag
@@ -704,7 +783,8 @@ class SocketNetwork:
             p = mp.Process(target=node_main_socket, args=(
                 i, self.witnesses[i], i in faulty, i in refusing,
                 n_frag, vote_timeout, inq,
-                self._wal_path(i) if self._wal is not None else None))
+                self._wal_path(i) if self._wal is not None else None,
+                self._tls_cert, self._tls_key))
             p.daemon = True
             p.start()
             self.inqs.append(inq)
@@ -719,6 +799,18 @@ class SocketNetwork:
                 c, _ = self._srv.accept()
             except OSError:
                 return
+            if self._tls_cert:
+                c.settimeout(3.0)
+                try:
+                    c = _tls_ctx(self._tls_cert, self._tls_key) \
+                        .wrap_socket(c, server_side=True)
+                    c.settimeout(None)
+                except (ssl.SSLError, OSError):
+                    try:
+                        c.close()
+                    except OSError:
+                        pass
+                    continue
             threading.Thread(target=self._reader, args=(c,),
                              daemon=True).start()
 
@@ -749,6 +841,9 @@ class SocketNetwork:
                         s = socket.create_connection(
                             ("127.0.0.1", SOCK_PORT_BASE + i), timeout=0.25)
                         s.settimeout(None)
+                        if self._tls_cert:
+                            s = _tls_ctx(self._tls_cert, self._tls_key) \
+                                .wrap_socket(s, server_side=False)
                         self.conns[i] = s
                     except OSError:
                         pass
@@ -865,7 +960,8 @@ class SocketNetwork:
         p = mp.Process(target=node_main_socket, args=(
             node_id, self.witnesses[node_id], node_id in self.faulty,
             node_id in self.refusing, self.n, self.vote_timeout, inq,
-            self._wal_path(node_id) if self._wal is not None else None))
+            self._wal_path(node_id) if self._wal is not None else None,
+            self._tls_cert, self._tls_key))
         p.daemon = True
         p.start()
         self.inqs[node_id] = inq
@@ -906,6 +1002,8 @@ class SocketNetwork:
             pass
         if self._wal is not None:
             shutil.rmtree(self._wal, ignore_errors=True)
+        if self._tls_cert is not None:
+            shutil.rmtree(self._tls_dir, ignore_errors=True)
 
 
 # ---------------------------------------------------------------------- #
@@ -1401,6 +1499,101 @@ def test_t18_total_state_loss_wal():
                 and conserved and after_commits) else "FAIL"}
 
 
+def test_t19_socket_tls():
+    """T19: the SAME consensus over MUTUAL-TLS sockets.  A self-signed
+    identity is shared by every node and the driver; every listener and every
+    outbound connection is wrapped, and each side demands the identity of the
+    peer (CERT_REQUIRED).  Negative proof: a TLS client WITHOUT the identity
+    is rejected at the handshake - the channel is authenticated+encrypted,
+    not just a renamed port.  Positive proof: 14/14 txs commit, replicas are
+    bit-identical, chains re-validate, conservation holds, and a crash +
+    restart re-establishes the encrypted fabric and re-converges."""
+    n, k = 6, 3
+    sn = SocketNetwork(n, k, tls=True)
+
+    # Negative proof: a client that TRUSTS the server but presents NO
+    # identity cannot exchange a single byte - the server's CERT_REQUIRED
+    # rejects it at the handshake and closes the connection (a cert-less
+    # wrap_socket can still "complete" client-side, so probe DATA flow).
+    unauth_rejected = True
+    try:
+        ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_REQUIRED
+        ctx.load_verify_locations(cafile=sn._tls_cert)
+        s = ctx.wrap_socket(socket.create_connection(
+            ("127.0.0.1", SOCK_PORT_BASE), timeout=2),
+            server_hostname="localhost")
+        time.sleep(0.2)                    # let the server finish rejecting
+        s.settimeout(2.0)
+        try:
+            s.sendall(b"PING")
+            deadline = time.time() + 4
+            data = None
+            while time.time() < deadline:
+                try:
+                    data = s.recv(8)
+                    break
+                except socket.timeout:
+                    continue
+                except (ssl.SSLError, OSError):
+                    data = b""               # peer refused / closed
+                    break
+            unauth_rejected = (data == b"")  # EOF or error = no channel
+        except socket.timeout:
+            unauth_rejected = False          # still-open silent channel
+        except (ssl.SSLError, OSError):
+            unauth_rejected = True
+        finally:
+            try:
+                s.close()
+            except OSError:
+                pass
+    except (ssl.SSLError, OSError):
+        unauth_rejected = True
+
+    frag_for, keys, addrs = make_accounts(sn.net, 24)
+    rng = np.random.RandomState(19)
+    nonces = defaultdict(int)
+    cids = []
+    while len(cids) < 14:
+        s, r = rng.randint(0, len(addrs), size=2)
+        if s == r:
+            continue
+        tx = next_tx(keys, nonces, addrs[s], addrs[r], int(rng.randint(1, 30)))
+        cids.append(f"s{len(cids)}")
+        sn.submit(tx, cids[-1])
+    results = sn.collect_results(cids, timeout=60)
+    ok = all(v[0] for v in results.values()) and len(results) == len(cids)
+    snaps = sn.query_states(timeout=8)
+    heads = consensus_heads(snaps, n)
+    consistent = all(h[0] for h in heads.values())
+    valid, conserved = replay_from(snaps, n, addrs)
+
+    sn.kill(2)
+    sn.restart(2)
+    sn.resync_all()
+    deadline = time.time() + 12
+    reconverged = False
+    while time.time() < deadline and not reconverged:
+        sn.wait(0.5)
+        snaps2 = sn.query_states(timeout=8)
+        h2 = consensus_heads(snaps2, n)
+        reconverged = all(x[0] for x in h2.values())
+        if not reconverged:
+            sn.resync_all()
+    sn.stop()
+    return {"test": "T19 socket TLS",
+            "client_without_identity_rejected": unauth_rejected,
+            "commits": len(results), "all_ok": ok,
+            "consistent": consistent, "conserved": conserved,
+            "chains_valid": valid,
+            "reconverged_after_tls_restart": reconverged,
+            "verdict": "PASS" if (unauth_rejected and ok and consistent
+                                  and conserved and valid
+                                  and reconverged) else "FAIL"}
+
+
 def test_t17_socket_crash_restart():
     """T17: the T15 crash + stateless-restart guarantee over REAL TCP sockets
     instead of the controllable relay.  Kill a node (its listener and every
@@ -1516,7 +1709,8 @@ def main():
                test_t14_equivocation, test_t15_crash_restart,
                test_t16_socket_commit, test_t16_socket_partition,
                test_t17_socket_crash_restart,
-               test_t18_total_state_loss_wal]:
+               test_t18_total_state_loss_wal,
+               test_t19_socket_tls]:
         r = fn()
         results[r["test"]] = r
         print(f"  [{r['verdict']:8s}] {r['test']}")
@@ -1526,7 +1720,7 @@ def main():
 
     limits = {
         "not_bft": "majority-honesty quorum; >50% corrupt neighbourhood or an exploitable partition wins until detected",
-        "single_machine": "real loopback TCP sockets but still one machine and no TLS; transport-specific faults (partitions, machine death) are only modelled at the fragment level",
+        "single_machine": "real mutual-TLS loopback sockets (T19) but still one machine and no cross-machine transport; transport-specific faults (partitions, machine death) are only modelled at the fragment level",
         "no_total_state_loss": "a crash recovers from PEERS' replicas (stateless restart) AND, when every node dies at once, from each node's OWN T8-style WAL (T18); an OS-level crash mid-commit could still tear the log",
         "equivocation_needs_collusion": "a double-signed tx needs the account holder's key; the network only detects the fork afterwards",
     }
