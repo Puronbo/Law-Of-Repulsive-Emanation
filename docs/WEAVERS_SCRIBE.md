@@ -907,11 +907,21 @@ holds a validated replica of every other fragment's.
   block-start gate is **quorum-attainable readiness** — an owner starts blocks
   while more than half its witnesses are connected — so a dead non-witness
   never blocks a commit, a dead witness costs only the quorum deadline, and a
-  node with every witness gone honestly waits. Restart is truly stateless: a
+  node with every witness gone honestly waits.   Restart is truly stateless: a
   fresh process rebinds the port (bind retried 6s against a dying
   predecessor's held port), re-establishes the fabric, rebuilds every
   fragment — its own chain included — from peers' replicas, converges to
   identical ledgers, and commits a fresh tx with correct nonce continuity.
+* **T18 total state loss + WAL rebuild (PASS):** the one crash case T15/T17
+  cannot cover — every node dies SIMULTANEOUSLY, so there are no live peers
+  to recover from. Each node's OWN committed chain is persisted to a T8-style
+  append+fsync WAL *before* the commit is announced; replicas are memory-only.
+  After the total kill, restarting every node WAL-loads its own chain, and
+  the same RESYNC exchange reconstructs every fragment from its owner (the
+  owner's chain is authoritative and intact even when every replica is lost).
+  Verified: every owner's post-rebuild head and block count match pre-crash
+  exactly, all nodes converge to identical ledgers, chains re-validate,
+  conservation holds, and a fresh tx commits with correct nonce continuity.
 
 Three real protocol bugs were found and fixed while making this pass, each
 worth recording: **(a)** a proposer must NOT start the next block for a
@@ -1068,6 +1078,16 @@ detects the fork afterwards). Data: `data/decentral_bank_net_data.json`.
     deadline (wait out the missing vote, still commit); every witness gone is
     honestly frozen. Same policy on the startup race: the owner starts the
     moment a quorum is reachable, and late peers are absorbed by buffering.
+21. **Replicas are caches; a node's OWN WAL is the only thing that survives
+    the network itself.** T15/T17 (Ch. 5.13) rebuild from peers' replicas —
+    the ring is the redundant store — but a TOTAL simultaneous crash empties
+    every replica at once and no peer remains. T18 shows the durability
+    floor is per-node and asymmetric: each node persists ONLY its OWN
+    fragment's committed chain (fsynced before the commit is announced); a
+    total-kill restart WAL-loads the own chains and the ring reassembles all
+    fragments from their owners. Durability per fragment = the OWNER's disk,
+    not the ring's, for the instant of total loss — the peer-replica copy is
+    the redundant store only while at least one replica survives.
 
 ---
 
@@ -1080,10 +1100,10 @@ detects the fork afterwards). Data: `data/decentral_bank_net_data.json`.
   faulty-quorum curve (crease #16), anomaly precision vs random null.
 * `data/decentral_bank_bridge_data.json` — T69 the bridge: on/off-ramp round
   trip, ref-idempotency, and the backing invariant (crease #17).
-* `data/decentral_bank_net_data.json` — T70/T71 fragments as processes: T12–T17
-  verdicts (T16/T17 over real TCP sockets), the scattered-corruption wall vs
+* `data/decentral_bank_net_data.json` — T70/T71 fragments as processes: T12–T18
+  verdicts (T16/T17/T18 over real TCP sockets), the scattered-corruption wall vs
   contiguous-corruption resilience (crease #18), partition/rejoin +
-  crash/stateless-restart recovery (creases #19, #20).
+  crash/stateless-restart + total-loss/WAL recovery (creases #19, #20, #21).
 * `docs/SPRING_BIBLE.md` BOOK V Ch. 13–15 — the date's 5-digit treatment, the
   retrace chain, the creases (T57, T59, T61, T62).
 * `docs/THE_BOOK.md` Ch. 2 (observations), Ch. 8 (time and convergence) — the

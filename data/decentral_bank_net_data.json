@@ -12,10 +12,10 @@
     },
     "T13 partition + rejoin": {
       "test": "T13 partition + rejoin",
-      "commits_during_partition": 12,
+      "commits_during_partition": 11,
       "attempted": 16,
-      "commits_side_a": 3,
-      "commits_side_b": 9,
+      "commits_side_a": 5,
+      "commits_side_b": 6,
       "converged": true,
       "conserved": true,
       "chains_valid": true,
@@ -37,20 +37,20 @@
         },
         {
           "faulty_frac": 0.3,
-          "honest_commit_frac": 0.5
+          "honest_commit_frac": 0.714
         },
         {
           "faulty_frac": 0.5,
-          "honest_commit_frac": 0.286
+          "honest_commit_frac": 0.2
         },
         {
           "faulty_frac": 0.7,
-          "honest_commit_frac": 0.0
+          "honest_commit_frac": 0.2
         }
       ],
       "contiguous_corruption_at_0.7": {
         "faulty_frac": 0.7,
-        "honest_commit_frac": 0.6
+        "honest_commit_frac": 1.0
       },
       "verdict": "MEASURED"
     },
@@ -63,7 +63,7 @@
     },
     "T15 crash + stateless restart": {
       "test": "T15 crash + stateless restart",
-      "committed_before_crash": 12,
+      "committed_before_crash": 11,
       "before_all_ok": true,
       "crashed_owner_txs_committed": 0,
       "live_owner_commits_during_crash": 8,
@@ -96,7 +96,7 @@
     },
     "T17 socket crash + stateless restart": {
       "test": "T17 socket crash + stateless restart",
-      "committed_before_crash": 12,
+      "committed_before_crash": 9,
       "before_all_ok": true,
       "crashed_owner_txs_committed": 0,
       "live_owner_commits_during_crash": 8,
@@ -107,12 +107,24 @@
       "conserved": true,
       "recovered_node_commits_after": true,
       "verdict": "PASS"
+    },
+    "T18 total state loss + WAL rebuild": {
+      "test": "T18 total state loss + WAL rebuild",
+      "committed_before_loss": 12,
+      "before_all_ok": true,
+      "rebuilt_heads_match_pre_crash": true,
+      "rebuilt_block_counts_match": true,
+      "converged": true,
+      "chains_valid": true,
+      "conserved": true,
+      "fresh_commit_after": true,
+      "verdict": "PASS"
     }
   },
   "limits": {
     "not_bft": "majority-honesty quorum; >50% corrupt neighbourhood or an exploitable partition wins until detected",
     "single_machine": "real loopback TCP sockets but still one machine and no TLS; transport-specific faults (partitions, machine death) are only modelled at the fragment level",
-    "no_total_state_loss": "a crash recovers from PEERS' replicas (stateless restart); if every node loses state at once only the per-fragment WAL (T8) can rebuild - not tested here",
+    "no_total_state_loss": "a crash recovers from PEERS' replicas (stateless restart) AND, when every node dies at once, from each node's OWN T8-style WAL (T18); an OS-level crash mid-commit could still tear the log",
     "equivocation_needs_collusion": "a double-signed tx needs the account holder's key; the network only detects the fork afterwards"
   }
 }

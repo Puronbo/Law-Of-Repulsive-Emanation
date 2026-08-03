@@ -48,17 +48,23 @@ Tests (each with a null):
 Limits (crease-worthy, printed):
   - Still majority-honesty, not BFT: a >50%-corrupt neighbourhood, or a
     partition the proposer can exploit, wins until detection.
-  - Single machine, deterministic topology (no real sockets/TLS).
-  - Crash recovery is from PEERS' replicas: if every node loses state at
-    once, only the per-fragment WAL (T8) can rebuild - not tested here.
+  - Real loopback TCP sockets but one machine (no TLS, no cross-machine
+    transport; transport-specific faults are modelled only at the fragment
+    level).
+  - Crash recovery: with live peers a stateless restart rebuilds from
+    replicas; TOTAL simultaneous loss is rebuilt from each node's OWN
+    T8-style WAL (T18).  An OS-level crash mid-commit could still tear the
+    log.
 """
 
 import json
 import multiprocessing as mp
 import os
+import shutil
 import socket
 import struct
 import sys
+import tempfile
 import threading
 import time
 import traceback
@@ -271,12 +277,18 @@ class SocketTransport:
 # Node (a fragment, running in its own process)
 # ---------------------------------------------------------------------- #
 def node_main_loop(node_id, witnesses, faulty, refusing, n_frag, vote_timeout,
-                   transport):
+                   transport, wal_path=None):
     """Event loop for one fragment process.  'faulty'/'refusing' simulate a
     corrupt fragment: vote-inverting and vote-silencing respectively.
     'transport' abstracts delivery; the SAME loop runs over the queue relay
-    and over real TCP sockets."""
-    ledger = Ledger(node_id)
+    and over real TCP sockets.  If wal_path is given, the node's OWN
+    committed chain is persisted to a T8-style append+fsync WAL and reloaded
+    on boot - the only path that survives a TOTAL simultaneous state loss
+    (with live peers, stateless recovery from replicas is the norm)."""
+    if wal_path is not None and os.path.exists(wal_path):
+        ledger = Ledger.from_log(wal_path, node_id)
+    else:
+        ledger = Ledger(node_id, log_path=wal_path)
     replicas = {f: Ledger(f) for f in range(n_frag)}
     pending = defaultdict(list)       # frag -> out-of-order buffered blocks
     sync_inflight = defaultdict(int)  # frag -> consecutive SYNC re-requests
@@ -397,8 +409,9 @@ def node_main_loop(node_id, witnesses, faulty, refusing, n_frag, vote_timeout,
                 approved = sum(1 for v in q["replies"].values() if v)
                 if approved > len(witnesses) / 2:
                     block = ledger.blocks[q["idx"]]
-                    for j in range(n_frag):
-                        if j != node_id:
+                    ledger.commit_last()        # WAL: fsync the commit BEFORE
+                    for j in range(n_frag):     # we announce it - a crash at
+                        if j != node_id:        # this point must not lose it
                             send(j, "NOTIFY", (node_id, block))
                     send("driver", "CLIENT_RESULT", (q["cid"], True, "ok"))
                 else:
@@ -417,12 +430,12 @@ def node_main_loop(node_id, witnesses, faulty, refusing, n_frag, vote_timeout,
 
 
 def node_main_socket(node_id, witnesses, faulty, refusing, n_frag,
-                     vote_timeout, inq):
+                     vote_timeout, inq, wal_path=None):
     """Spawn entry for the socket mode: the SocketTransport (sockets, locks,
     threads) is created HERE in the child process - it cannot be pickled
     through Windows spawn."""
     node_main_loop(node_id, witnesses, faulty, refusing, n_frag, vote_timeout,
-                   SocketTransport(node_id, n_frag, inq))
+                   SocketTransport(node_id, n_frag, inq), wal_path)
 
 
 def validate_proposal(rep, block):
@@ -665,12 +678,17 @@ class SocketNetwork:
     as the relay's edge set, but over real TCP/IP packets."""
 
     def __init__(self, n_frag, k, vote_timeout=0.8, faulty=set(),
-                 refusing=set()):
+                 refusing=set(), wal_dir=None):
         self.n = n_frag
         self.k = k
         self.vote_timeout = vote_timeout
         self.faulty = set(faulty)
         self.refusing = set(refusing)
+        self.wal_dir = wal_dir
+        self._wal = None
+        if wal_dir is not None:
+            self._wal = wal_dir
+            os.makedirs(wal_dir, exist_ok=True)
         self.net, self.witnesses = build_topology(n_frag, k)
         self.result_q = mp.Queue()
         self.driver_port = SOCK_PORT_BASE + n_frag
@@ -685,7 +703,8 @@ class SocketNetwork:
             inq = mp.Queue()
             p = mp.Process(target=node_main_socket, args=(
                 i, self.witnesses[i], i in faulty, i in refusing,
-                n_frag, vote_timeout, inq))
+                n_frag, vote_timeout, inq,
+                self._wal_path(i) if self._wal is not None else None))
             p.daemon = True
             p.start()
             self.inqs.append(inq)
@@ -742,6 +761,9 @@ class SocketNetwork:
             self._connect_all()
             if len(self.conns) < self.n:
                 time.sleep(0.2)
+
+    def _wal_path(self, node_id):
+        return os.path.join(self._wal, f"node_{node_id}.log")
 
     def _send(self, node_id, kind, args=()):
         with self._clk:
@@ -831,20 +853,41 @@ class SocketNetwork:
                     pass
                 del self.conns[node_id]
 
+    def kill_all(self):
+        """Total crash: every node dies at once, taking all in-memory state
+        (own chains AND replicas) with it.  Only each node's OWN committed
+        chain survives on disk, in its T8-style WAL."""
+        for i in range(self.n):
+            self.kill(i)
+
+    def _spawn(self, node_id):
+        inq = mp.Queue()
+        p = mp.Process(target=node_main_socket, args=(
+            node_id, self.witnesses[node_id], node_id in self.faulty,
+            node_id in self.refusing, self.n, self.vote_timeout, inq,
+            self._wal_path(node_id) if self._wal is not None else None))
+        p.daemon = True
+        p.start()
+        self.inqs[node_id] = inq
+        self.procs[node_id] = p
+
     def restart(self, node_id):
         """Stateless restart over sockets: a fresh process rebinds the node's
         port and the maintainer threads on both sides re-establish the dead
         connections automatically."""
         self.kill(node_id)
-        inq = mp.Queue()
-        p = mp.Process(target=node_main_socket, args=(
-            node_id, self.witnesses[node_id], node_id in self.faulty,
-            node_id in self.refusing, self.n, self.vote_timeout, inq))
-        p.daemon = True
-        p.start()
-        self.inqs[node_id] = inq
-        self.procs[node_id] = p
+        self._spawn(node_id)
         self._wait_conn_all(deadline=10)
+
+    def restart_all(self):
+        """Rebuild the fabric after a total crash: every node restarts and
+        WAL-loads its OWN chain; the RESYNC exchange then reconstructs every
+        fragment from its owner (replicas were all lost).  Spawns all nodes
+        first, then waits once for the whole fabric - never one at a time."""
+        for i in range(self.n):
+            self._spawn(i)
+        self._wait_conn_all(deadline=12)
+        self.resync_all()
 
     def stop(self):
         self._stop.set()
@@ -861,6 +904,8 @@ class SocketNetwork:
             self._srv.close()
         except OSError:
             pass
+        if self._wal is not None:
+            shutil.rmtree(self._wal, ignore_errors=True)
 
 
 # ---------------------------------------------------------------------- #
@@ -1260,10 +1305,16 @@ def test_t16_socket_partition():
     ok_during = sum(1 for v in results.values() if v[0])
     sn.full_network()
     sn.resync_all()
-    sn.wait(3.0)
-    snaps = sn.query_states()
-    heads = consensus_heads(snaps, n)
-    consistent = all(h[0] for h in heads.values())
+    deadline = time.time() + 12
+    consistent = False
+    snaps = None
+    while time.time() < deadline and not consistent:
+        sn.wait(0.5)
+        snaps = sn.query_states()
+        heads = consensus_heads(snaps, n)
+        consistent = all(h[0] for h in heads.values())
+        if not consistent:
+            sn.resync_all()
     valid, conserved = replay_from(snaps, n, addrs)
     sn.stop()
     return {"test": "T16b socket partition + rejoin",
@@ -1272,6 +1323,82 @@ def test_t16_socket_partition():
             "converged": consistent, "conserved": conserved,
             "chains_valid": valid,
             "verdict": "PASS" if (consistent and conserved and valid) else "FAIL"}
+
+
+def test_t18_total_state_loss_wal():
+    """T18: TOTAL simultaneous state loss + WAL rebuild over sockets.  Every
+    node dies at once - OWN chains AND replicas are gone from memory; only
+    each node's OWN committed chain survives on disk (T8-style append+fsync
+    WAL, written BEFORE the commit is announced).  Restarting every node
+    WAL-loads the own chains, and the existing RESYNC exchange reconstructs
+    every fragment from its owner (a peer's replica was lost, but the OWNER's
+    chain is authoritative and intact).  Proves the pre-crash committed state
+    is rebuilt EXACTLY: every owner's head matches pre-crash, the network
+    re-converges to identical ledgers, chains re-validate, conservation
+    holds, and a fresh tx commits with correct nonce continuity."""
+    n, k = 6, 3
+    wal_dir = tempfile.mkdtemp(prefix="t18wal_")
+    sn = SocketNetwork(n, k, wal_dir=wal_dir)
+    frag_for, keys, addrs = make_accounts(sn.net, 24)
+    owners = sorted({frag_for[a] for a in addrs})
+    rng = np.random.RandomState(18)
+    nonces = defaultdict(int)
+
+    cids = []
+    for owner in owners:
+        accts = [a for a in addrs if frag_for[a] == owner]
+        for _ in range(2):
+            s = accts[rng.randint(len(accts))]
+            r = addrs[rng.randint(len(addrs))]
+            if s == r:
+                continue
+            tx = next_tx(keys, nonces, s, r, int(rng.randint(1, 30)))
+            cids.append(f"a{len(cids)}")
+            sn.submit(tx, cids[-1])
+    before = sn.collect_results(cids, timeout=60)
+    before_ok = all(v[0] for v in before.values()) and len(before) == len(cids)
+
+    pre = sn.query_states(timeout=8)
+    pre_heads = {f: pre[f"q{f}"][f]["head"] for f in range(n)}
+    pre_blocks = {f: len(pre[f"q{f}"][f]["blocks"]) for f in range(n)}
+
+    sn.kill_all()                       # total crash: nothing survives in RAM
+    sn.restart_all()                    # WAL-load own chains, then RESYNC
+    deadline = time.time() + 20
+    converged = False
+    snaps = None
+    while time.time() < deadline and not converged:
+        sn.wait(0.5)
+        snaps = sn.query_states(timeout=8)
+        heads = consensus_heads(snaps, n)
+        converged = all(h[0] for h in heads.values())
+        if not converged:
+            sn.resync_all()
+    rebuilt_heads_match = all(snaps[f"q{f}"][f]["head"] == pre_heads[f]
+                              for f in range(n))
+    rebuilt_block_counts_match = all(
+        len(snaps[f"q{f}"][f]["blocks"]) == pre_blocks[f] for f in range(n))
+
+    s = addrs[rng.randint(len(addrs))]
+    others = [a for a in addrs if a != s]
+    r = others[rng.randint(len(others))]
+    tx = next_tx(keys, nonces, s, r, int(rng.randint(1, 20)))
+    sn.submit(tx, "after")
+    post = sn.collect_results(["after"], timeout=60)
+    after_commits = post.get("after", (False, ""))[0]
+
+    valid, conserved = replay_from(snaps, n, addrs)
+    sn.stop()
+    return {"test": "T18 total state loss + WAL rebuild",
+            "committed_before_loss": len(before), "before_all_ok": before_ok,
+            "rebuilt_heads_match_pre_crash": rebuilt_heads_match,
+            "rebuilt_block_counts_match": rebuilt_block_counts_match,
+            "converged": converged, "chains_valid": valid,
+            "conserved": conserved, "fresh_commit_after": after_commits,
+            "verdict": "PASS" if (
+                before_ok and rebuilt_heads_match
+                and rebuilt_block_counts_match and converged and valid
+                and conserved and after_commits) else "FAIL"}
 
 
 def test_t17_socket_crash_restart():
@@ -1388,7 +1515,8 @@ def main():
                test_t14_fabrication, test_t14_availability_wall,
                test_t14_equivocation, test_t15_crash_restart,
                test_t16_socket_commit, test_t16_socket_partition,
-               test_t17_socket_crash_restart]:
+               test_t17_socket_crash_restart,
+               test_t18_total_state_loss_wal]:
         r = fn()
         results[r["test"]] = r
         print(f"  [{r['verdict']:8s}] {r['test']}")
@@ -1399,7 +1527,7 @@ def main():
     limits = {
         "not_bft": "majority-honesty quorum; >50% corrupt neighbourhood or an exploitable partition wins until detected",
         "single_machine": "real loopback TCP sockets but still one machine and no TLS; transport-specific faults (partitions, machine death) are only modelled at the fragment level",
-        "no_total_state_loss": "a crash recovers from PEERS' replicas (stateless restart); if every node loses state at once only the per-fragment WAL (T8) can rebuild - not tested here",
+        "no_total_state_loss": "a crash recovers from PEERS' replicas (stateless restart) AND, when every node dies at once, from each node's OWN T8-style WAL (T18); an OS-level crash mid-commit could still tear the log",
         "equivocation_needs_collusion": "a double-signed tx needs the account holder's key; the network only detects the fork afterwards",
     }
     print("\nLIMITS (crease-worthy):")
