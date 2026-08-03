@@ -155,6 +155,7 @@ given so it can be re-run).
 | **PUM §10.1 four-pack (T65)** | P1 τ~entropy; P2 T-symmetry; P3 holographic MI; P4 CTC fixed point | **0.5/4 confirmed.** P1 = tautology (τ := exp(entropy) in source); P2 refuted (recon err ≈ 1.8); P4 refuted (converged fraction 0.0); P3 weakly positive (MI 0.034 vs null 0.009) but synthetic. See `data/t65_fourpack_results.json` |
 | **Decentral Bank (T68)** | routing is ownership; double-entry ledger + nonce rejects double-spend; witness quorum catches faulty transfers; anomaly layer flags outliers | **New, measured.** T1–T6: routing deterministic with a real partition spread (min 6 / max 111 / σ 34 over 16 fragments); integrity conserved exactly over 3000 txs; nonce replay rejected; 30% damage survives; quorum catches *every* faulty send below 40% corruption while honest availability holds — but collapses at ≥50% corrupt neighbourhoods (caught-frac 1.0 → 0.23–0.27), i.e. **quorum is majority honesty, not BFT** (crease #16). Anomaly recall 0.51 / precision 0.63 vs random null 0.019. Addresses the AUDIT §1 "no ledger/consensus/transaction layer" gap at toy scale. See `data/decentral_bank_data.json` |
 | **Decentral Bank hardened (T68 Ph.1) + bridge (T69)** | Ed25519 account signatures verified at append & re-validation; WAL persistence + replay; on/off-ramp against a centralized bank via a custody-holding gateway | **New, measured.** T7: tampered block, wrong-key signature, and address-spoof all rejected, legit tx still commits. T8: save/load reproduces bit-identical heads + conserved balances. T69: on-ramp credits DCN 1:1, off-ramp pays fiat 1:1; ref replays settle nothing twice; backing invariant `custody + reserve_DCN == initial` holds to diff 0.0 under 300 randomized ops with 170 ref replays and forged over-withdrawals rejected. Honest walls: single-key custody (no threshold/HSM), mock bank (no network/TLS/KYC/AML), caller-supplied refs, no compensation path (crease #17). See `data/decentral_bank_bridge_data.json` |
+| **Decentral Bank network (T70)** | every fragment a real OS process; PROPOSE→VOTE→COMMIT→NOTIFY over a controllable relay; replicas + SYNC/RESYNC; partition/equivocation/forgery tests | **New, measured.** T12: 23 txs commit over real messages, all nodes' replicas bit-identical, replay conserves. T13: ring cut in two — 12/16 commit within halves, post-rejoin RESYNC converges to identical ledgers. T14a: forged block rejected at rate 1.0. T14b: scattered corruption collapses honest commits along the majority-honesty prediction P(f)=(1−f)⁴+4f(1−f)³ (latest {0.96, 0.56, 0.40, 0.0} at f={0,0.3,0.5,0.7}, theory {1.0, 0.65, 0.31, 0.08}; fluctuates run-to-run with relay timing but tracks theory) — crease #16 reproduced across processes — while *contiguous* corruption at f=0.7 keeps 0.6 (crease #18: corruption geometry, not just quantity, decides the quorum). T14c: partition equivocation creates a double-spend window; the fork is detected after rejoin, not healed. Still majority-honesty, not BFT; single-machine relay, no sockets/TLS, no node crash/restart. See `data/decentral_bank_net_data.json` |
 
 ---
 
@@ -206,13 +207,23 @@ address-spoof all rejected), **WAL persistence + replay** (T8: save/load
 bit-identical), and the **T69 on/off-ramp** to a mock centralized bank whose
 backing invariant holds to diff 0.0 under ref replays and forged withdrawals —
 with the honest wall that the trust boundary moved to a single-key custody
-gateway, not to a protocol (crease #17).  The remaining gaps: **(1)** the two
+gateway, not to a protocol (crease #17).  On the same day the last simulation
+limit of the bank was closed: **T70** runs every fragment as its own OS
+process and drives PROPOSE→VOTE→COMMIT→NOTIFY through a controllable relay —
+T12/T13/T14a/T14c pass, the scattered-corruption wall reproduces crease #16
+across processes (latest {0.96, 0.56, 0.40, 0.0} vs theory {1.0, 0.65, 0.31,
+0.08}; fluctuates run-to-run, tracks theory), and a new crease fell out:
+contiguous corruption is absorbed by the honest cluster's local witnesses
+(crease #18) — corruption *geometry*, not just fraction, decides quorum
+survival.  The remaining gaps: **(1)** the two
 declared builds (observation bank, O(1) search) are absent; **(2)** PGT and
 BOOK-V pedagogy remain conjectured; **(3)** the PAPER's Bekenstein numbers now
 contradict the repo's own artifact and must be corrected or re-run; **(4)**
 hygiene items (orphaned `scripts/` with live credentials, dead doc copies,
-MIGRATION superseded-but-present); **(5)** the bridge is a simulation — no
-network transport, no threshold custody, no KYC/AML, no regulator.  The honest
+MIGRATION superseded-but-present); **(5)** the network is a single-machine
+relay — no sockets/TLS, no node crash/restart, consensus is majority-honesty
+not BFT, and the bridge still has no threshold custody, KYC/AML, or regulator.
+The honest
 headline: the framework's *engine-level* results stand, but its
 *arithmetic-selection* and *number-theory* claims (Bekenstein, Selberg,
 partition match) are no longer citable as verified.

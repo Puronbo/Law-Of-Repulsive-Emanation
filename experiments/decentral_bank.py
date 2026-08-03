@@ -192,8 +192,31 @@ class Ledger:
         """Undo the most recently appended block (a quorum refused it)."""
         if self.blocks:
             self.blocks.pop()
-            self.head = self.blocks[-1]["hash"] if self.blocks else ""
+            self.head = self.blocks[-1]["hash"] if self.blocks else "genesis"
             self._rewrite_log()
+
+    def replica_append(self, b):
+        """Append a block received from the network to a REPLICA of this
+        ledger (also used for the authoritative copy).  Rejects out-of-order
+        blocks (gap) and any block whose txs don't verify.  Returns
+        (ok, reason)."""
+        if b["index"] != len(self.blocks):
+            return False, "gap-index"
+        if b["prev"] != self.head:
+            return False, "gap-prev"
+        if b["hash"] != self.block_hash(b["index"], b["prev"], b["txs"]):
+            return False, "hash-mismatch"
+        for t in b["txs"]:
+            ok, why = verify_tx(t)
+            if not ok:
+                return False, why
+            if t["nonce"] <= self.nonces[t["from"]]:
+                return False, "nonce-replay"
+        self.blocks.append(b)
+        for t in b["txs"]:
+            self.nonces[t["from"]] = t["nonce"]
+        self.head = b["hash"]
+        return True, "ok"
 
     def validate(self):
         """Full chain re-validation: link hashes, nonce monotonicity, and

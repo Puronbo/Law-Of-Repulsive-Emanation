@@ -1,0 +1,71 @@
+{
+  "results": {
+    "T12 network commit": {
+      "test": "T12 network commit",
+      "commits": 23,
+      "missing": [],
+      "all_ok": true,
+      "consistent": true,
+      "conserved": true,
+      "chains_valid": true,
+      "verdict": "PASS"
+    },
+    "T13 partition + rejoin": {
+      "test": "T13 partition + rejoin",
+      "commits_during_partition": 12,
+      "attempted": 16,
+      "commits_side_a": 5,
+      "commits_side_b": 7,
+      "converged": true,
+      "conserved": true,
+      "chains_valid": true,
+      "verdict": "PASS"
+    },
+    "T14a fabrication": {
+      "test": "T14a fabrication",
+      "nodes_rejecting_forgery": 6,
+      "total": 6,
+      "forgery_accept_rate": 0.0,
+      "verdict": "PASS"
+    },
+    "T14b availability wall": {
+      "test": "T14b availability wall",
+      "scattered_corruption_curve": [
+        {
+          "faulty_frac": 0.0,
+          "honest_commit_frac": 0.958
+        },
+        {
+          "faulty_frac": 0.3,
+          "honest_commit_frac": 0.562
+        },
+        {
+          "faulty_frac": 0.5,
+          "honest_commit_frac": 0.4
+        },
+        {
+          "faulty_frac": 0.7,
+          "honest_commit_frac": 0.0
+        }
+      ],
+      "contiguous_corruption_at_0.7": {
+        "faulty_frac": 0.7,
+        "honest_commit_frac": 0.6
+      },
+      "verdict": "MEASURED"
+    },
+    "T14c partition equivocation": {
+      "test": "T14c partition equivocation",
+      "divergent_heads_during_partition": true,
+      "nodes_holding_single_version": 6,
+      "total": 6,
+      "verdict": "PASS"
+    }
+  },
+  "limits": {
+    "not_bft": "majority-honesty quorum; >50% corrupt neighbourhood or an exploitable partition wins until detected",
+    "single_machine": "no real sockets/TLS; the relay is a controllable network model",
+    "no_node_crash": "process crash/restart of a fragment is not tested here",
+    "equivocation_needs_collusion": "a double-signed tx needs the account holder's key; the network only detects the fork afterwards"
+  }
+}

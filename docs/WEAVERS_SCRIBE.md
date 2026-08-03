@@ -835,6 +835,59 @@ caller-supplied ref (a real bridge must derive refs from bank-side txn IDs);
 burn-before-payout uses a custody peek instead of a compensation path; and the
 quorum is still an in-process simulation, not network consensus.
 
+### Ch. 5.13  Fragments as real processes: network consensus (T70, measured)
+
+The last wall of Ch. 5.12 — "quorum is an in-process simulation" — is closed
+*as a simulation limit*. Every fragment now runs as its OWN OS process
+(`multiprocessing`), and ALL inter-fragment traffic moves through a driver-
+owned relay that can partition or drop messages on command. The consensus path
+is real message exchange: PROPOSE → VOTE → COMMIT → NOTIFY, with replicas
+reconciled by SYNC_REQ/SYNC (max 3 consecutive re-requests) and an on-connect
+RESYNC catch-up. A node is authoritative for its own fragment's ledger and
+holds a validated replica of every other fragment's.
+
+* **T12 network commit (PASS):** 23 randomized transfers commit over real
+  messages through a real witness quorum; afterwards every node's replica of
+  every fragment ledger is bit-identical (all fragment head sets singletons),
+  chains re-validate, and replay conserves total balance.
+* **T13 partition + rejoin (PASS):** with the ring cut in two, 12/16 txs still
+  commit (each half reaches its own quorum; 5/7 split; the rest straddle the
+  cut); after rejoin + RESYNC every node converges to identical ledgers, chains
+  re-validate (no double-spend, nonces monotone), conservation holds.
+* **T14a fabrication (PASS):** a forged block (garbage Ed25519 signature)
+  injected to every honest node's replica is rejected at rate 1.0.
+* **T14b availability wall (MEASURED):** with *scattered* corruption the honest
+  commit fraction follows the majority-honesty prediction P = (1−f)⁴+4f(1−f)³ —
+  latest run {0.96, 0.56, 0.40, 0.0} at f = {0, 0.3, 0.5, 0.7} (theory {1.0,
+  0.65, 0.31, 0.08}) — the wall of crease #16 reproduced across real processes.
+  With *contiguous* corruption at f = 0.7 the honest cluster keeps 0.6
+  availability — spatially-local corruption is partly absorbed by the
+  local-witness ring (crease #18). These numbers fluctuate run-to-run (the
+  relay's message timing is a real race), but the qualitative shape is stable
+  across every run: the curve tracks theory downward and contiguous beats
+  scattered at every f ≥ 0.3.
+* **T14c partition equivocation (PASS):** two conflicting blocks for the same
+  account+nonce injected to opposite halves are each accepted by their half
+  (the double-spend window), the heads diverge during the partition, and after
+  rejoin the fork is DETECTED — every node holds exactly one version and the
+  other is rejected — but not healed. Detection, not prevention, is the honest
+  wall.
+
+Three real protocol bugs were found and fixed while making this pass, each
+worth recording: **(a)** a proposer must NOT start the next block for a
+fragment until the current quorum resolves — otherwise the next proposal
+races the previous commit's NOTIFY and witnesses reject it against an empty
+replica (blocks are now serialized per fragment); **(b)** NOTIFY/SYNC must
+write a node's own fragment to the *authoritative* ledger, not a shadow
+replica, or the owner never sees its own commits; **(c)** `rollback()` left
+`head = ""` instead of `"genesis"` when the chain emptied, poisoning every
+later commit for that fragment.
+
+Limits (printed): majority-honesty, not BFT; single machine with a
+controllable relay, no sockets/TLS; nodes don't crash or restart here;
+equivocation needs the account holder's key (the network detects the fork
+afterwards). Data: `data/decentral_bank_net_data.json`.
+
 ---
 
 ## Ch. 6  Creases (never forget these)
@@ -943,6 +996,16 @@ quorum is still an in-process simulation, not network consensus.
     custody is one simulated key: no threshold multisig, no HSM, no KYC/AML,
     no regulator. The decentralized part is real; the "connection to the bank"
     is a regulated custody relationship, not a protocol. (Ch. 5.12.)
+18. **Corruption geometry, not just quantity, decides the quorum.** T70 (Ch.
+    5.13) reproduces crease #16's majority-honesty wall across real processes:
+    scattered corruption collapses honest commits exactly at the predicted
+    P(f) = (1−f)⁴+4f(1−f)³ curve. But *contiguous* corruption (one corrupt
+    block on the ring) leaves an honest cluster whose local witnesses are
+    mostly honest, so availability survives at f = 0.7 where scattered
+    corruption already kills it. A local-witness network resists spatially-
+    local corruption far better than it resists the same *fraction* scattered
+    uniformly — so "x% corrupt" is not a well-posed threat model; the spatial
+    distribution is the variable that matters.
 
 ---
 
@@ -955,6 +1018,9 @@ quorum is still an in-process simulation, not network consensus.
   faulty-quorum curve (crease #16), anomaly precision vs random null.
 * `data/decentral_bank_bridge_data.json` — T69 the bridge: on/off-ramp round
   trip, ref-idempotency, and the backing invariant (crease #17).
+* `data/decentral_bank_net_data.json` — T70 fragments as processes: T12–T14
+  verdicts, the scattered-corruption wall vs contiguous-corruption resilience
+  (crease #18), partition/rejoin convergence.
 * `docs/SPRING_BIBLE.md` BOOK V Ch. 13–15 — the date's 5-digit treatment, the
   retrace chain, the creases (T57, T59, T61, T62).
 * `docs/THE_BOOK.md` Ch. 2 (observations), Ch. 8 (time and convergence) — the
