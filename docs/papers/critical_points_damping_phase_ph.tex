@@ -1,0 +1,156 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\newtheorem{proposition}{Proposition}
+
+\begin{document}
+
+\title{Exact Critical Points: Damping, Phase Transitions, and Chemical Equilibrium}
+\author{Formal Metrology Working Group}
+\markboth{Journal of Decimal Chrono-Metrics, Vol. 14, No. 3, August 2026}{}
+
+\IEEEtitleabstractindextext{
+\begin{abstract}
+This paper examines three systems, from three different fields, unified by the same structural fact this series has repeatedly found: the boundary between qualitatively different behavior sits at an exact, calculable point rather than a fuzzy region. We prove and numerically confirm the critical damping ratio $\zeta=1$ as the sharp boundary between oscillatory and non-oscillatory response in a second-order system, the mean-field critical temperature $T_c$ as the exact point where spontaneous magnetization vanishes, and the exact neutrality point $\mathrm{pH}=7$ together with a titration equivalence point, both derived from first principles and confirmed against a simulated titration curve.
+\end{abstract}
+}
+
+\maketitle
+
+\section{Critical Damping: The Exact Oscillation Boundary}
+A standard second-order system, $\ddot x + 2\zeta\omega_n\dot x+\omega_n^2 x=0$, has closed-form solutions depending on the damping ratio $\zeta$:
+\begin{equation}
+    x(t)=\begin{cases}
+        e^{-\zeta\omega_n t}\left(\cos\omega_d t+\dfrac{\zeta\omega_n}{\omega_d}\sin\omega_d t\right), & \zeta<1,\ \omega_d=\omega_n\sqrt{1-\zeta^2} \\
+        (1+\omega_n t)e^{-\omega_n t}, & \zeta=1 \\
+        Ae^{r_1 t}+Be^{r_2 t}, & \zeta>1,\ r_{1,2}=-\omega_n(\zeta\mp\sqrt{\zeta^2-1})
+    \end{cases}
+\end{equation}
+
+\begin{proposition}
+For $\zeta\ge 1$, $x(t)\ge 0$ for all $t\ge0$ (no overshoot below the equilibrium). For $\zeta<1$, $x(t)$ crosses zero and goes negative.
+\end{proposition}
+\begin{proof}[Proof sketch]
+For $\zeta=1$: $x(t)=(1+\omega_nt)e^{-\omega_nt}>0$ for all $t\ge0$, since both factors are positive. For $\zeta>1$: both $r_1,r_2<0$ are real and $A,B>0$ (from initial conditions $x(0)=1,\dot x(0)=0$), so $x(t)$ is a positive combination of decaying exponentials, always positive. For $\zeta<1$: the solution contains $\cos\omega_dt$, which is negative for $\omega_dt\in(\pi/2,3\pi/2)$, and the envelope $e^{-\zeta\omega_nt}$ is strictly positive, so $x(t)$ must cross zero and go negative before fully decaying, for any $\zeta\in[0,1)$.
+\end{proof}
+
+\subsection{Worked numerical verification}
+Using the exact closed-form solutions (not numerical integration, to avoid precision artifacts) across $\zeta\in\{0.3,0.7,0.9,1.0,1.5,3.0\}$:
+
+\begin{table}[ht]
+\centering
+\caption{Overshoot and settling time vs. damping ratio}
+\begin{tabular}{cccc}
+\toprule
+$\zeta$ & Overshoot & Settling time (2\% band) \\
+\midrule
+0.3 & 0.37233 & 5.615 \\
+0.7 & 0.04599 & 2.990 \\
+0.9 & 0.00152 & 2.350 \\
+1.0 & 0.00000 & 2.917 \\
+1.5 & 0.00000 & 5.327 \\
+3.0 & 0.00000 & (never settles within window) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent Overshoot is exactly zero for every $\zeta\ge1$ tested and strictly positive for every $\zeta<1$ tested, with the magnitude shrinking toward zero as $\zeta\to1^-$ — confirming $\zeta=1$ is the sharp, exact boundary, not an approximate one. Settling time is also near-minimal at $\zeta=1$ among non-oscillatory responses (compare $2.917$ at $\zeta=1$ to $5.327$ at $\zeta=1.5$), the basis for critical damping's standard engineering role: fastest return to equilibrium without overshoot.
+
+\section{Mean-Field Phase Transition: The Exact Critical Temperature}
+The mean-field (Curie--Weiss) model of a ferromagnet gives magnetization $m$ as the self-consistent solution of
+\begin{equation}
+    m = \tanh(\beta J z\, m), \qquad \beta=1/T \text{ (units with }k_B=1\text{)}.
+\end{equation}
+
+\begin{proposition}
+A nonzero solution $m\ne0$ exists if and only if $T<T_c := Jz$.
+\end{proposition}
+\begin{proof}[Proof sketch]
+$m=0$ is always a solution. Writing $f(m)=\tanh(\beta Jz\,m)$, a nonzero fixed point exists near $m=0$ exactly when $f'(0)>1$, i.e., $\beta Jz>1$, i.e., $T<Jz$, since $\tanh$ is concave for $m>0$ and $f(0)=0$, guaranteeing a unique positive crossing whenever the initial slope exceeds $1$, and none otherwise.
+\end{proof}
+
+\subsection{Worked numerical verification}
+Solving Eq.~(2) numerically (root-finding on the nonzero branch) across a range of temperatures with $Jz=1$ (so $T_c=1$ exactly):
+
+\begin{table}[h]
+\centering
+\caption{Nonzero-branch magnetization vs. temperature}
+\begin{tabular}{cc}
+\toprule
+$T/T_c$ & Magnetization $m$ \\
+\midrule
+0.500 & 0.957504 \\
+0.800 & 0.710412 \\
+0.950 & 0.379485 \\
+0.990 & 0.172511 \\
+1.000 & 0.000000 \\
+1.010 & 0.000000 \\
+1.200 & 0.000000 \\
+1.500 & 0.000000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Nonzero magnetization shrinks continuously toward zero as $T\to T_c^-$ and is exactly zero for every $T\ge T_c$ tested — the transition is sharp and occurs precisely at the value the algebra predicts, not approximately near it.
+
+\section{Chemical Equilibrium: Two Exact Midpoints}
+\begin{proposition}
+In pure water at $25^\circ$C, the neutral pH is exactly $7$.
+\end{proposition}
+\begin{proof}
+Water autoionizes: $\mathrm{H_2O} \rightleftharpoons \mathrm{H^+}+\mathrm{OH^-}$, with $K_w=[\mathrm{H^+}][\mathrm{OH^-}]=10^{-14}$ at $25^\circ$C. In pure water, $[\mathrm{H^+}]=[\mathrm{OH^-}]$ by stoichiometry, so $[\mathrm{H^+}]^2=10^{-14}$, giving $[\mathrm{H^+}]=10^{-7}$ and $\mathrm{pH}=-\log_{10}(10^{-7})=7$ exactly.
+\end{proof}
+
+\begin{proposition}
+For a titration of a weak acid with a strong base, the equivalence point occurs at exactly $V_b = C_aV_a/C_b$.
+\end{proposition}
+\begin{proof}
+The equivalence point is defined by equal moles of acid and base added: $n_a=C_aV_a=n_b=C_bV_b$, solving directly for $V_b$.
+\end{proof}
+
+\subsection{Worked numerical verification}
+For acetic acid ($K_a=1.8\times10^{-5}$, $C_a=0.1$M, $V_a=50$mL) titrated with $0.1$M strong base, the predicted equivalence point is $V_b=(0.1\times50)/0.1=50.0$mL exactly. Simulating the titration curve (Henderson--Hasselbalch in the buffer region, hydrolysis equilibrium at and past equivalence) confirms a sharp inflection precisely there:
+
+\begin{table}[h]
+\centering
+\caption{Simulated titration curve near equivalence}
+\begin{tabular}{cc}
+\toprule
+$V_b$ (mL) & pH \\
+\midrule
+45.00 & 5.699 \\
+49.00 & 6.435 \\
+49.90 & 7.443 \\
+50.00 & 8.722 \\
+50.10 & 10.000 \\
+51.00 & 10.996 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The pH jumps by more than $2.5$ units between $V_b=49.9$ and $V_b=50.1$ mL — a span of only $0.2$mL, or $0.4\%$ of the total titration volume — confirming the equivalence point is a genuine, sharp feature of the curve located exactly where the stoichiometric formula predicts, not a gradual transition spread across the titration.
+
+\section{Conclusion}
+Three unrelated fields, one recurring structural fact:
+\begin{itemize}
+    \item Critical damping ($\zeta=1$) is the exact, zero-slack boundary between oscillatory and non-oscillatory response — confirmed by exact closed-form solutions showing zero overshoot for every $\zeta\ge1$ tested and nonzero overshoot for every $\zeta<1$ tested.
+    \item The mean-field critical temperature ($T_c=Jz$) is the exact point where spontaneous order vanishes — confirmed numerically with magnetization shrinking continuously to zero exactly at $T/T_c=1$.
+    \item Chemical neutrality (pH$=7$) and titration equivalence ($V_b=C_aV_a/C_b$) are both exact, derivable midpoints — confirmed by a simulated titration curve showing a sharp, $2.5$-pH-unit jump concentrated within $0.4\%$ of the total titration volume, centered exactly on the predicted point.
+\end{itemize}
+As throughout this series: in every system examined, the critical point was never a rough region to be gestured at — it was a specific, calculable number, and the numbers computed here landed on it exactly.
+
+\section*{References}
+\begin{small}
+\begin{enumerate}
+    \item K. Ogata, \textit{Modern Control Engineering}, Pearson, 2010.
+    \item R. K. Pathria and P. D. Beale, \textit{Statistical Mechanics}, Academic Press, 2011.
+    \item P. Atkins and J. de Paula, \textit{Physical Chemistry}, Oxford University Press, 2014.
+\end{enumerate}
+\end{small}
+
+\end{document}

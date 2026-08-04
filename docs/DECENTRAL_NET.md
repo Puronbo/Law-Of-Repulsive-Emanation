@@ -52,7 +52,9 @@ sims = net.q @ net.q[domains.index('google.com')]  # nearest-centroid routing
    matrix under-estimates peak memory: kNN sort temp peaked at **22.6 GB
    working set at n=20,000 (D itself only 3.2 GB)** → real all-pairs ceiling on
    a 31.7 GB box is ~2×10⁴, not the naive 5×10⁴.  Holding is cheap (~2 KB/node);
-   flowing is not.  Scaling flow past 20k needs O(1)-per-neuron spatial search.
+   flowing is not.  **Built as T67 (2026-08-04):** `use_index=True` flows 10⁵
+   in 2D/3D (numpy-only exact grid, exponent 1.02) and ~10⁴ in high dim
+   (cKDTree), at the cost of an honest high-dim tree wall (crease #22).
 
 5. **Array mutation breaks labels.** After `remove()`, surviving rows no longer
    index the original label list — remap explicitly (survivor→name map), or you

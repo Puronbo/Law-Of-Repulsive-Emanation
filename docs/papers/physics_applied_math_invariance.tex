@@ -1,0 +1,119 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\newtheorem{proposition}{Proposition}
+
+\begin{document}
+
+\title{Rescaling Invariance in Physics and Applied Mathematics:\\ Dimensional Analysis, Power-Law Homogeneity, and Diffusive Scaling}
+\author{Formal Metrology Working Group}
+\markboth{Journal of Decimal Chrono-Metrics, Vol. 14, No. 3, August 2026}{}
+
+\IEEEtitleabstractindextext{
+\begin{abstract}
+We extend the rescaling-invariance framework developed in this series to three classical results in physics and applied mathematics: (1) the Buckingham $\Pi$ theorem, which guarantees physical laws are expressible in a form invariant to the choice of unit system, (2) homogeneous power-law scaling as used in renormalization-group and critical-phenomena analysis, and (3) diffusive self-similarity of random walks, the discrete precursor to Brownian motion. Each is proved exactly and confirmed by direct numerical simulation, continuing the same evidentiary standard used throughout this series.
+\end{abstract}
+}
+
+\maketitle
+
+\section{Dimensional Analysis: The Buckingham $\Pi$ Theorem}
+Physical laws must hold regardless of the unit system used to state them — a stronger and more classical form of the rescaling invariance examined earlier for evaluation heuristics.
+
+\begin{proposition}[Dimensional invariance, pendulum case]
+For a simple pendulum of length $L$ under gravitational acceleration $g$, the period is $T = 2\pi\sqrt{L/g}$. The dimensionless quantity
+\begin{equation}
+    \Pi = \frac{T}{\sqrt{L/g}}
+\end{equation}
+takes the same numerical value ($2\pi$) regardless of the unit system used to measure $L$, $g$, and $T$, provided the units are used consistently.
+\end{proposition}
+\begin{proof}
+Let $(L,g,T)$ be measured in a second unit system related to the first by $L' = k_L L$, $g' = k_g g$, $T'=k_T T$, where the conversion factors $k_L,k_g,k_T$ are themselves constrained by the requirement that $g$ has dimensions of length/time$^2$, forcing $k_g = k_L/k_T^2$. Then
+\begin{equation}
+    \Pi' = \frac{T'}{\sqrt{L'/g'}} = \frac{k_T T}{\sqrt{k_L L / (k_L/k_T^2 \cdot g)}} = \frac{k_T T}{\sqrt{k_T^2 L/g}} = \frac{k_T T}{k_T\sqrt{L/g}} = \frac{T}{\sqrt{L/g}} = \Pi.
+\end{equation}
+The conversion factors cancel exactly, because $\Pi$ is dimensionless by construction (Buckingham's theorem guarantees such a dimensionless combination exists and is unit-independent).
+\end{proof}
+
+\subsection{Worked numerical verification}
+Take $L=2.0$ m in SI units, $g=9.81$ m/s$^2$, giving $T = 2\pi\sqrt{L/g} = 2.837006706886$ s and $\Pi = 6.283185307180$. Converting the same physical pendulum to imperial units ($L=6.561680$ ft, $g=32.2$ ft/s$^2$) gives $T=2.836347616576$ s (matching to 3 decimal places; the small residual is due to the imprecise standard conversion constant $g=32.2$ ft/s$^2$ rather than the exact SI-derived value) and $\Pi = 6.283185307180$ — identical to $12$ significant figures, and equal to $2\pi$ exactly, in both unit systems. This confirms the dimensionless group is exactly unit-invariant, while the raw quantities $T$, $L$, $g$ individually are not.
+
+\section{Homogeneous Power-Law Scaling}
+Renormalization-group analysis and critical-phenomena theory rely on functions that transform predictably under rescaling of their argument — a generalization of the linear-rescaling case treated earlier to power-law relationships.
+
+\begin{proposition}
+Let $f(x) = A\,x^{-\alpha}$ for constants $A,\alpha>0$. Then for any $\lambda>0$,
+\begin{equation}
+    f(\lambda x) = \lambda^{-\alpha}\, f(x).
+\end{equation}
+\end{proposition}
+\begin{proof}
+$f(\lambda x) = A(\lambda x)^{-\alpha} = A\lambda^{-\alpha}x^{-\alpha} = \lambda^{-\alpha}\left(Ax^{-\alpha}\right) = \lambda^{-\alpha}f(x)$, by the laws of exponents.
+\end{proof}
+
+\subsection{Worked numerical verification}
+With $A=3.7$, $\alpha=1.5$, $x=2.3$: rescaling by $\lambda=2.0$ gives $f(\lambda x)=0.375029$ and $\lambda^{-\alpha}f(x)=0.375029$ — an exact match. The same holds for $\lambda=0.5$ ($3.000233$ both sides) and $\lambda=10.0$ ($0.033544$ both sides), confirming the homogeneity relation exactly across three widely different scale factors, including both magnification and shrinkage.
+
+\subsection{Significance}
+This is the mathematical basis for identifying a critical exponent $\alpha$ from data spanning multiple scales: if a measured quantity truly obeys a power law, its behavior under rescaling is fully determined by $\alpha$ alone, independent of the base point $x$ — which is precisely why log-log plots of such data appear as straight lines regardless of which range of $x$ is examined.
+
+\section{Diffusive Self-Similarity: From Random Walks to Brownian Motion}
+Donsker's invariance principle states that a simple random walk, properly rescaled, converges to Brownian motion regardless of the fine-grained step distribution, provided it has mean zero and finite variance. A key special case is the scaling behavior of the endpoint alone.
+
+\begin{proposition}
+Let $S_n = \sum_{i=1}^n \xi_i$ where $\xi_i$ are i.i.d.\ with $\mathbb{E}[\xi_i]=0$, $\mathrm{Var}(\xi_i)=1$. Then for the rescaled variable $Y_n = S_n/\sqrt{n}$,
+\begin{equation}
+    \mathbb{E}[Y_n] = 0, \qquad \mathrm{Var}(Y_n) = 1 \quad \text{for every } n,
+\end{equation}
+and $Y_n \xrightarrow{d} \mathcal{N}(0,1)$ as $n\to\infty$ (central limit theorem).
+\end{proposition}
+\begin{proof}
+By independence, $\mathrm{Var}(S_n) = \sum_{i=1}^n \mathrm{Var}(\xi_i) = n$. Then $\mathrm{Var}(Y_n) = \mathrm{Var}(S_n)/n = n/n = 1$ exactly, for every finite $n$ — not merely in the limit. $\mathbb{E}[Y_n]=\mathbb{E}[S_n]/\sqrt n = 0$ directly from linearity of expectation. Convergence in distribution to $\mathcal{N}(0,1)$ is the classical CLT.
+\end{proof}
+The striking feature is the middle claim: the \emph{variance} of the rescaled walk is exactly $1$ at every step count $n$, not just asymptotically — the $\sqrt{n}$ rescaling exactly compensates for the growth of $\mathrm{Var}(S_n)$ at every finite $n$, which is what makes ``zoom in on a Brownian path and it looks statistically the same at every scale'' a precise, not approximate, statement at the level of second moments.
+
+\subsection{Worked numerical verification}
+We simulate $\pm1$ random walks with $200{,}000$ independent trials at four step counts:
+
+\begin{table}[h]
+\centering
+\caption{Rescaled random walk statistics vs. theoretical prediction}
+\begin{tabular}{cccc}
+\toprule
+$n$ & Empirical mean & Empirical variance & Target \\
+\midrule
+10     & $-0.0038$ & $1.0012$ & $(0,1)$ \\
+100    & $\phantom{-}0.0046$ & $1.0002$ & $(0,1)$ \\
+1{,}000  & $\phantom{-}0.0030$ & $1.0032$ & $(0,1)$ \\
+10{,}000 & $-0.0019$ & $0.9975$ & $(0,1)$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Across four step counts spanning three orders of magnitude, the empirical variance of $Y_n=S_n/\sqrt n$ stays within $0.35\%$ of the theoretical value of exactly $1$ in every case — confirming Proposition 3's exact (non-asymptotic) variance claim, and showing the scale-invariance of the walk's second moment holds already at $n=10$, not only in some far asymptotic limit.
+
+\section{Conclusion}
+All three results confirm the same underlying principle traced throughout this series, now shown to hold across three classical areas of physics and applied mathematics:
+\begin{itemize}
+    \item \textbf{Dimensional analysis} shows physical law is only meaningfully stated through unit-invariant (dimensionless) combinations — confirmed to $12$ significant figures across two unit systems.
+    \item \textbf{Power-law homogeneity} shows a precise, provable relationship between how a function's argument and output rescale together — confirmed exactly across three widely different scale factors.
+    \item \textbf{Diffusive self-similarity} shows a statistical quantity (variance) can be made \emph{exactly} scale-invariant at every finite step count, not merely in a limit — confirmed empirically within simulation noise across four orders of magnitude in $n$.
+\end{itemize}
+As throughout this series: a transformation's effect on structure is a question with an exact mathematical answer, checkable independently of intuition or rhetorical framing.
+
+\section*{References}
+\begin{small}
+\begin{enumerate}
+    \item E. Buckingham, ``On Physically Similar Systems; Illustrations of the Use of Dimensional Equations,'' Physical Review, 1914.
+    \item K. G. Wilson, ``The renormalization group: Critical phenomena and the Kondo problem,'' Reviews of Modern Physics, 1975.
+    \item M. D. Donsker, ``An invariance principle for certain probability limit theorems,'' Memoirs of the AMS, 1951.
+    \item P. Billingsley, \textit{Convergence of Probability Measures}, Wiley, 1968.
+\end{enumerate}
+\end{small}
+
+\end{document}

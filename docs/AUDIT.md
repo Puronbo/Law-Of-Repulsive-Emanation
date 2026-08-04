@@ -15,6 +15,12 @@ given so it can be re-run).
   `decentral_net_union.py` (T55i) and `reverse_pair_gaps.py` (T57) repeat it.
   THE_BOOK Ch. 14: "the declared next build."  This is THE single most
   explicit unbuilt capability.  **[verified: repeated in 4 sources]**
+  **BUILT 2026-08-04 as T67** (`experiments/decentral_net_t67.py`): the grid
+  path is numpy-only and exact for dim ≤ 3, the cKDTree path exact for
+  dim ≥ 4; the index is off by default so every existing experiment is
+  unchanged.  Indexed 2D flow measures exponent 1.02 vs exact 1.88, and
+  flows n=100,000 at ~5 s/step where all-pairs would need a 160 GB distance
+  matrix (see §5 item 6 for the full record).
 
 ### 1.2 The declared-required capability
 * **The multivariate observation bank** (ASN, TLS age, WHOIS, content).  THE_BOOK
@@ -184,6 +190,21 @@ given so it can be re-run).
    network-bound.
 6. **O(1)-per-neuron spatial search (T67)** — the declared next build; the one
    that unlocks flowing 1.9M sites.  Significant engineering.
+   **DONE 2026-08-04** — `DecentralNet(use_index=True, index_min_n=512)`:
+   a numpy-only uniform-grid k-NN for dim ≤ 3 (cells sized for ~k points,
+   Chebyshev ring grown until the k-th candidate is provably closer than any
+   unscanned cell — min distance to a ring-(r+1) cell is ≥ r·cell — so results
+   are EXACT, only the expected work is O(1)) and scipy.cKDTree
+   (`workers=-1`) for dim ≥ 4.  `experiments/decentral_net_t67.py` verifies:
+   indexed flow is bit-identical to all-pairs flow (2D grid and 64D tree),
+   spacing/predict match, grid kNN == brute force across 3 seeds × 1D/2D/3D,
+   measured 2D exponents exact 1.88 vs indexed 1.02, and flows n=100,000 2D
+   (~5 s/step; all-pairs D = 160 GB, physically impossible) and 10,000 real
+   top-1M domain embeddings in 128-D (~2 s/step; all-pairs D = 102 GB).
+   `data/decentral_net_t67_data.json` is the verdict artifact.  Honest
+   boundary: high-dim k-d trees degenerate on dense data (~2–16 s/step at
+   n=10k×128D), so high-dim indexed flow stays ~10⁴; the low-dim grid (the
+   live daemon's geometry) flows 10⁵+ on one box.
 7. **Either execute or retire MIGRATION** — currently a dead-but-authoritative
    doc; mark superseded to stop future confusion.
 8. **Regression coverage for the T55 series + library** — the experiments print
@@ -250,8 +271,9 @@ replicas, chains re-validate, conservation holds, crash + restart
 re-converges over the NIC — the transport is proven beyond loopback, on a
 real interface with the interface IP in the cert SAN.  A true two-host
 deployment (per-node host tables, two boxes) still needs a second machine.
-The remaining gaps: **(1)** the two
-declared builds (observation bank, O(1) search) are absent; **(2)** PGT and
+The remaining gaps: **(1)** the observation bank (T66) is the one
+declared build still absent (the O(1) search, T67, shipped on 2026-08-04);
+**(2)** PGT and
 BOOK-V pedagogy remain conjectured; **(3)** the PAPER's Bekenstein claim was
 corrected on 2026-08-04 — §8.7 and the conclusion now report the null that
 the persisted data always showed (the claimed +3.9% p=0.002 is withdrawn; a

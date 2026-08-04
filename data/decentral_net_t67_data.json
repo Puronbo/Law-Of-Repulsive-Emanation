@@ -1,0 +1,44 @@
+{
+  "correctness": {
+    "grid2d_flow_bit_identical": true,
+    "tree64d_flow_bit_identical": true,
+    "spacing_equal": true,
+    "predict_equal": true,
+    "grid_knn_equals_bruteforce": true,
+    "verdict": "PASS"
+  },
+  "scaling": {
+    "exact_ms_per_step": {
+      "1000": 48.61,
+      "2000": 170.73,
+      "4000": 606.85,
+      "8000": 2454.21
+    },
+    "indexed_ms_per_step": {
+      "1000": 39.72,
+      "2000": 80.6,
+      "4000": 162.86,
+      "8000": 329.27,
+      "16000": 668.42,
+      "32000": 1348.83,
+      "64000": 2800.44,
+      "100000": 4502.87
+    },
+    "exact_exponent": 1.88,
+    "indexed_exponent": 1.025,
+    "verdict": "MEASURED"
+  },
+  "internet_scale": {
+    "grid2d_n100k_ms_per_step": 5333.5,
+    "grid2d_n100k_spacing": 0.0057424717446753915,
+    "grid2d_allpairs_d_gb": 160.0,
+    "highdim_real_top1m": true,
+    "highdim_n10k_ms_per_step": 2076.08,
+    "verdict": "MEASURED"
+  },
+  "limits": {
+    "highdim_tree": "cKDTree is exact but k-d trees degenerate in high dimension on dense data: ~5-16 s/step at n=10k x 128D (still the ONLY feasible path there - exact needs ~100 GB).  High-dim indexed flow ceiling is ~10^4; the 2D/3D grid (the live daemon's geometry) flows 10^5+.",
+    "grid_numpy_only": "the grid needs numpy only; the tree lazily imports scipy and falls back to exact all-pairs on ImportError.",
+    "still_one_machine": "internet-scale flow here is a single 31.7 GB box (like T20/T55g); distributing it across machines remains unbuilt."
+  }
+}

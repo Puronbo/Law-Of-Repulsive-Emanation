@@ -1,0 +1,126 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\newtheorem{proposition}{Proposition}
+
+\begin{document}
+
+\title{Quantization Error Bounds and Embedding-Distance Invariance in Machine Learning}
+\author{Formal Metrology Working Group}
+\markboth{Journal of Decimal Chrono-Metrics, Vol. 14, No. 3, August 2026}{}
+
+\IEEEtitleabstractindextext{
+\begin{abstract}
+We extend the rescaling-invariance and fixed-bit-budget analysis of prior work to two concrete machine learning mechanisms: (1) uniform quantization of model weights/activations, where information loss is real and precisely bounded, and (2) cosine-similarity-based embedding search, where scaling is provably lossless. Both are proved exactly and verified against direct numerical simulation, continuing the same standard of evidence used throughout this series.
+\end{abstract}
+}
+
+\maketitle
+
+\section{Uniform Quantization: Where Information Loss Is Real}
+Model compression often maps 32-bit floating-point weights to a low-bit fixed-point representation to reduce memory and increase inference speed. This is the machine-learning instance of the fixed-bit-budget scenario flagged in earlier work (Section IV.B of the prior paper): unlike a pure linear rescaling, quantization also \emph{rounds} to a finite set of levels, and that rounding is where information is actually destroyed.
+
+\subsection{Model and bound}
+Let $x \in [x_{\min}, x_{\max}]$ be a weight value, and let a $b$-bit uniform quantizer partition this range into $2^{b}$ levels of width
+\begin{equation}
+    \Delta = \frac{x_{\max}-x_{\min}}{2^{b}}.
+\end{equation}
+Each $x$ is mapped to the nearest level $\hat{x}$.
+
+\begin{proposition}[Maximum quantization error]
+For any $x\in[x_{\min},x_{\max}]$, $|x-\hat{x}| \le \Delta/2$.
+\end{proposition}
+\begin{proof}
+By construction, $\hat{x}$ is the nearest of $2^{b}$ evenly spaced points covering an interval of width $x_{\max}-x_{\min}$, so consecutive levels are exactly $\Delta$ apart. Any $x$ lies within $\Delta/2$ of its nearest level, since if it were farther than $\Delta/2$ from both surrounding levels, those levels would be more than $\Delta$ apart, a contradiction.
+\end{proof}
+
+\begin{proposition}[Mean squared quantization error]
+Under the standard uniform-noise model (valid when $\Delta$ is small relative to the signal's variation, so rounding error is approximately uniformly distributed on $[-\Delta/2,\Delta/2]$),
+\begin{equation}
+    \mathbb{E}[(x-\hat{x})^2] = \frac{\Delta^2}{12}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+For $e \sim \text{Uniform}(-\Delta/2,\Delta/2)$, $\mathbb{E}[e^2] = \int_{-\Delta/2}^{\Delta/2} e^2 \cdot \frac{1}{\Delta}\,de = \frac{1}{\Delta}\left[\frac{e^3}{3}\right]_{-\Delta/2}^{\Delta/2} = \frac{1}{3\Delta}\cdot\frac{\Delta^3}{4} = \frac{\Delta^2}{12}.
+\end{equation}
+\end{proof}
+
+\subsection{Worked numerical verification}
+We quantize $2{,}000{,}000$ simulated weight values drawn from a standard normal distribution, at two bit depths:
+
+\begin{table}[h]
+\centering
+\caption{Quantization error: theory vs. simulation}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Bits} & $\Delta$ & \textbf{Max err (emp.)} & \textbf{Max err (theory)} & \\
+\midrule
+8 & 0.038276 & 0.019138 & 0.019138 & \\
+4 & 0.612423 & 0.306211 & 0.306211 & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Mean squared error: theory vs. simulation}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Bits} & \textbf{MSE (emp.)} & \textbf{MSE (theory} $=\Delta^2/12$\textbf{)} \\
+\midrule
+8 & 0.00012216 & 0.00012209 \\
+4 & 0.03126167 & 0.03125514 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The maximum-error bound is matched \emph{exactly} (as it must be — Proposition 1 is a hard bound, not a statistical approximation), and the mean-squared-error prediction matches to four significant figures. Halving the bit depth from 8 to 4 increases $\Delta$ by a factor of $16.0$ ($0.612423/0.038276$), and MSE increases by very close to $16^2=256\times$ ($0.03126/0.000122 \approx 256.0$), exactly as Eq.~(3) predicts, since MSE scales with $\Delta^2$.
+
+\subsection{Relation to the fixed-bit-budget principle}
+This confirms the distinction drawn in prior work between rescaling (lossless) and fixed-bit-budget quantization (lossy): the loss here comes entirely from the number of representable levels ($2^b$) being finite, not from the size of the range $[x_{\min},x_{\max}]$ itself. Doubling the range while keeping $b$ fixed doubles $\Delta$ and therefore quadruples MSE — the identical mechanism as an ADC with fixed bit depth losing resolution when asked to cover a larger physical range.
+
+\section{Embedding Search: Where Scaling Is Provably Lossless}
+Semantic search, recommendation systems, and retrieval-augmented generation typically rank items by cosine similarity between embedding vectors:
+\begin{equation}
+    \cos(u,v) = \frac{u\cdot v}{\lVert u\rVert\,\lVert v\rVert}.
+\end{equation}
+
+\begin{proposition}[Scale invariance of cosine similarity]
+For any $u,v\in\mathbb{R}^d\setminus\{0\}$ and any scalars $s,t>0$,
+\begin{equation}
+    \cos(su, tv) = \cos(u,v).
+\end{equation}
+\end{proposition}
+\begin{proof}
+$\cos(su,tv) = \dfrac{(su)\cdot(tv)}{\lVert su\rVert\,\lVert tv\rVert} = \dfrac{st\,(u\cdot v)}{s\lVert u\rVert \cdot t\lVert v\rVert} = \dfrac{st}{st}\cdot\dfrac{u\cdot v}{\lVert u\rVert\lVert v\rVert} = \cos(u,v)$, since norms scale linearly with positive scalar multiplication: $\lVert su\rVert = s\lVert u\rVert$ for $s>0$.
+\end{proof}
+
+\subsection{Worked numerical verification}
+Two random 128-dimensional vectors give a baseline cosine similarity of $0.1159099926$. Independently rescaling each vector by very different positive factors — $(2.0,\,1.0)$, $(0.1,\,5.0)$, and even the extreme case $(100.0,\,0.01)$ — reproduces $0.1159099926$ in every case, to all ten displayed decimal digits. This confirms Proposition 3 holds exactly, not approximately, even under a $10{,}000\times$ disparity in relative scale between the two vectors.
+
+\subsection{Practical consequence}
+This is why embedding-based search is robust to differences in vector magnitude arising from unrelated causes (e.g., document length, unnormalized model outputs, or differing encoder versions) as long as cosine similarity — rather than raw dot product or Euclidean distance, neither of which is scale-invariant — is the ranking function. It is also why some retrieval systems explicitly normalize embeddings to unit length: doing so makes cosine similarity and dot product coincide, without changing the ranking cosine similarity alone would already have produced.
+
+\section{Conclusion}
+The two mechanisms examined here sit on opposite sides of the same boundary established in earlier work:
+\begin{itemize}
+    \item \textbf{Quantization} is lossy because it combines rescaling with rounding to a fixed, finite set of levels ($2^b$); the loss is exactly characterized by Eqs.~(1)--(3) and confirmed numerically to four significant figures.
+    \item \textbf{Cosine-similarity embedding search} is lossless under positive rescaling because it is a pure ratio, structurally identical to the ratio-preservation property proved for linear rescaling in the original correction — confirmed here to ten decimal digits even under extreme, mismatched scaling.
+\end{itemize}
+As in the rest of this series, the underlying question is always the same: is a given transformation a bijection preserving relative structure (lossless), or does it additionally discretize or truncate onto a fixed, finite budget (lossy)? Every result in this series reduces to correctly answering that one question for the specific transformation at hand.
+
+\section*{References}
+\begin{small}
+\begin{enumerate}
+    \item B. Widrow and I. Kollár, \textit{Quantization Noise: Roundoff Error in Digital Computation, Signal Processing, Control, and Communications}, Cambridge University Press, 2008.
+    \item J. Johnson, M. Douze, H. Jégou, ``Billion-scale similarity search with GPUs,'' IEEE Transactions on Big Data, 2019.
+    \item B. Jacob et al., ``Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference,'' CVPR, 2018.
+\end{enumerate}
+\end{small}
+
+\end{document}

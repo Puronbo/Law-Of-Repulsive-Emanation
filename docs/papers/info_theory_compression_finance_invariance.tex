@@ -1,0 +1,99 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\newtheorem{proposition}{Proposition}
+
+\begin{document}
+
+\title{Invariance and Its Limits in Information Theory, Compression, and Finance}
+\author{Formal Metrology Working Group}
+\markboth{Journal of Decimal Chrono-Metrics, Vol. 14, No. 3, August 2026}{}
+
+\IEEEtitleabstractindextext{
+\begin{abstract}
+This paper extends the series to three further domains, combined for efficiency. We prove: (1) Shannon entropy is exactly invariant under relabeling of outcomes but strictly decreases under lossy binning (a direct information-theoretic statement of the data-processing inequality), (2) practical fixed-rate uniform quantization approaches, but never reaches, the Shannon rate-distortion bound for a Gaussian source, converging to an empirically constant rate penalty — the compression-domain analogue of the ADC quantization results earlier in this series, and (3) the Black-Scholes call option price is exactly homogeneous of degree one in the spot price and strike price jointly, the finance-domain analogue of the power-law homogeneity proved earlier for physics. All three are verified numerically.
+\end{abstract}
+}
+
+\maketitle
+
+\section{Entropy: Invariant Under Relabeling, Not Under Binning}
+Shannon entropy $H(X) = -\sum_i p_i\log_2 p_i$ depends only on the \emph{probabilities} assigned to outcomes, not on how those outcomes are labeled or ordered.
+
+\begin{proposition}
+For any permutation $\pi$ of outcome labels, $H(X_\pi) = H(X)$ exactly. For any deterministic, non-injective merging of outcomes (binning), $H(\text{binned}) \le H(X)$, with equality only if the merge combines zero-probability outcomes.
+\end{proposition}
+\begin{proof}
+The first claim is immediate: $H$ is a sum over the multiset of probabilities $\{p_i\}$, unchanged by which label each $p_i$ is attached to. The second is the data-processing inequality applied to a deterministic function of $X$: any deterministic mapping $f$ satisfies $H(f(X)) \le H(X)$, since $f(X)$ is a coarsening — some distinct outcomes become indistinguishable, which can only reduce (never increase) the information needed to describe the result.
+\end{proof}
+
+\subsection{Worked numerical verification}
+For outcome probabilities $\{0.4,0.25,0.2,0.1,0.05\}$, $H=2.041446$ bits. Randomly permuting the labels reproduces $H=2.041446$ bits exactly. Merging the two largest outcomes into one bin (a lossy, coarser labeling) drops entropy to $H_{\text{merged}}=1.416642$ bits — confirming $H_{\text{merged}} \le H$, as the data-processing inequality requires.
+
+\section{Compression: Approaching, Never Reaching, the Rate-Distortion Bound}
+For a Gaussian source with variance $\sigma^2$, Shannon's rate-distortion theorem gives the minimum bit rate needed to achieve mean-squared distortion $D$:
+\begin{equation}
+    R(D) = \tfrac12\log_2\!\left(\frac{\sigma^2}{D}\right).
+\end{equation}
+This is the theoretical floor; practical fixed-rate uniform quantizers (as used, in transform-coefficient form, by JPEG and MP3-style codecs) cannot reach it exactly.
+
+\subsection{Worked numerical verification}
+Quantizing $500{,}000$ samples from $\mathcal N(0,1)$ with a uniform quantizer over $[-4,4]$ at several bit depths, and comparing the achieved distortion $D$ to the rate $R(D)$ the Shannon bound would permit for that same $D$:
+
+\begin{table}[h]
+\centering
+\caption{Uniform quantization vs. the Shannon rate-distortion bound}
+\begin{tabular}{ccccc}
+\toprule
+\textbf{Bits used} & \textbf{Distortion $D$} & \textbf{$R(D)$ bound} & \textbf{Gap (bits)} \\
+\midrule
+2 & 0.330442 & 0.799 & 1.201 \\
+4 & 0.020820 & 2.793 & 1.207 \\
+6 & 0.001308 & 4.789 & 1.211 \\
+8 & 0.000087 & 6.743 & 1.257 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+At every bit depth tested, the uniform quantizer requires roughly $1.2$ more bits than the Shannon-optimal rate for the same distortion — and this gap stays nearly constant as bit depth increases, rather than shrinking to zero. This matches the well-established theoretical result that fixed-rate uniform scalar quantization incurs an asymptotically constant rate penalty relative to $R(D)$ (the classical entropy-coded version of this penalty is the well-known $1.53$~dB, or $\approx 0.25$~bit, gap; the larger $\approx\!1.2$-bit gap confirmed here reflects the additional cost of \emph{fixed}-length, non-entropy-coded symbols, consistent with why real codecs like JPEG apply entropy coding, e.g. Huffman coding, \emph{after} quantization rather than relying on the raw quantizer alone).
+
+\section{Finance: Homogeneity of the Black-Scholes Price}
+The Black-Scholes call price is
+\begin{equation}
+    C(S,K,T,r,\sigma) = S\,\Phi(d_1) - Ke^{-rT}\Phi(d_2), \qquad d_1=\frac{\ln(S/K)+(r+\tfrac12\sigma^2)T}{\sigma\sqrt T},\ \ d_2=d_1-\sigma\sqrt T.
+\end{equation}
+
+\begin{proposition}
+For any $c>0$, $C(cS,cK,T,r,\sigma) = c\,C(S,K,T,r,\sigma)$.
+\end{proposition}
+\begin{proof}
+$d_1$ depends on $S,K$ only through $\ln(S/K)$, which is unchanged by a common positive scaling: $\ln(cS/cK)=\ln(S/K)$. Hence $d_1,d_2$ (and therefore $\Phi(d_1),\Phi(d_2)$) are unchanged. Then $C(cS,cK,\ldots) = cS\,\Phi(d_1) - cKe^{-rT}\Phi(d_2) = c\big[S\Phi(d_1)-Ke^{-rT}\Phi(d_2)\big] = c\,C(S,K,\ldots)$.
+\end{proof}
+
+\subsection{Worked numerical verification}
+With $S=100$, $K=95$, $T=1$, $r=0.03$, $\sigma=0.25$: $C=13.961178$. Scaling both $S$ and $K$ by $c\in\{2.0,\,0.5,\,10.0,\,0.1\}$ reproduces $c\cdot C$ exactly in every case (e.g., $c=10$: $C(1000,950,\ldots)=139.611783=10\times13.961178$). This is the finance-domain instance of the same power-law/linear homogeneity proved for physical power laws earlier in this series: an option's price responds proportionally to a common rescaling of the price scale in which both the underlying and the strike are quoted (e.g., switching currency, or a stock split combined with a proportional strike adjustment), because only the \emph{ratio} $S/K$, not the absolute scale, enters the pricing formula.
+
+\section{Conclusion}
+Three more domains, three more instances of the same distinction that has organized this entire series:
+\begin{itemize}
+    \item Entropy is exactly invariant to relabeling but strictly decreases under lossy coarsening — confirmed exactly (permutation) and directionally (binning) in Section I.
+    \item Fixed-rate quantization approaches but never reaches the Shannon-optimal rate-distortion tradeoff, converging to a measurable, roughly constant gap — confirmed at $\approx\!1.2$ bits across four bit depths in Section II.
+    \item Black-Scholes option pricing is exactly homogeneous of degree one in $(S,K)$ jointly — confirmed exactly across a $100\times$ range of scale factors in Section III.
+\end{itemize}
+As throughout: whether a transformation preserves structure is never a matter of intuition or rhetorical framing — it is a specific, provable claim, and this series has now checked that claim across nine domains.
+
+\section*{References}
+\begin{small}
+\begin{enumerate}
+    \item C. E. Shannon, ``A Mathematical Theory of Communication,'' Bell System Technical Journal, 1948.
+    \item T. Berger, \textit{Rate Distortion Theory}, Prentice-Hall, 1971.
+    \item F. Black and M. Scholes, ``The Pricing of Options and Corporate Liabilities,'' Journal of Political Economy, 1973.
+\end{enumerate}
+\end{small}
+
+\end{document}

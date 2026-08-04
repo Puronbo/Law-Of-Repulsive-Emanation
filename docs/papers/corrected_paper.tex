@@ -1,0 +1,88 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\begin{document}
+
+\title{Linear Rescaling of a Ternary Evaluation Heuristic: A Corrected Analysis}
+\author{Formal Metrology Working Group}
+\markboth{Journal of Decimal Chrono-Metrics, Vol. 14, No. 3, August 2026}{}
+
+\IEEEtitleabstractindextext{
+\begin{abstract}
+The original manuscript claimed that rescaling a ternary evaluation heuristic (scores 9 and 8 "compliant," 7 "non-compliant") from a centesimal domain $[0,100]$ to an expanded domain $[0, 26{,}102{,}000]$ causes "quantization error" and "resolution masking" that hide systemic failure. This claim does not follow from the mathematics presented. A uniform linear rescaling preserves all relative structure exactly: ratios, gaps, and pass/fail boundaries scale by the same constant and nothing is created or hidden. This corrected version fixes the arithmetic errors in the original (specifically an inconsistent Z-score table) and replaces the unsupported conclusion with what the algebra actually shows.
+\end{abstract}
+}
+
+\maketitle
+
+\section{Introduction}
+Conventional evaluation systems use bounded intervals, typically normalized to $[0,100]$, with a simple heuristic:
+\begin{equation}
+    S \in \{9, 8\} \implies \text{Compliant}, \quad S \le 7 \implies \text{Non-Compliant}.
+\end{equation}
+The original manuscript asked what happens to this heuristic when the domain is linearly rescaled to $[0, T_d]$ with $T_d = 26{,}102{,}000$. As shown below, the answer is: nothing structurally interesting. Linear rescaling is a change of units, not a change of information content.
+
+\section{Mathematical Framework}
+Let $\mathcal{D}_0 = [0,100]$ and $\mathcal{D}_t = [0,T_d]$. Define
+\begin{equation}
+    f(x) = x \cdot \frac{T_d}{100} = x \cdot 261{,}020.
+\end{equation}
+Applying $f$ to the heuristic boundaries:
+\begin{align}
+    f(100) &= 26{,}102{,}000 \\
+    f(9)   &= 2{,}349{,}180 \\
+    f(8)   &= 2{,}088{,}160 \\
+    f(7)   &= 1{,}827{,}140
+\end{align}
+These values are correct; they follow directly from multiplying each score by the constant $261{,}020$.
+
+\subsection{The gap between thresholds}
+\begin{equation}
+    \Delta = f(8) - f(7) = 261{,}020 \text{ units}.
+\end{equation}
+This gap is $261{,}020\times$ larger in absolute terms than the original gap of $1$. But it is not proportionally larger: $\Delta / T_d = 1/100$, identical to the original ratio $(8-7)/100$. A linear map cannot change relative spacing — that is the defining property of linearity. So this step contains no evidence of "distortion."
+
+\section{Corrected Score Table}
+The original manuscript included a "Z-Score" column that did not correspond to any formula stated in the paper (its own values were internally inconsistent with a linear $z$-mapping). Below, Z-scores are computed correctly under the stated linear model, $z(x) = \dfrac{f(x) - \mu}{\sigma}$, with $\mu = f(50) = 13{,}051{,}000$ and $\sigma = T_d/6 = 4{,}350{,}333.\overline{3}$ (so that $x=0$ and $x=100$ map to $z=\mp 3$):
+
+\begin{table}[h]
+\centering
+\caption{Corrected Parametric Boundary Mapping}
+\begin{tabular}{crrc}
+\toprule
+\textbf{Legacy Score} & \textbf{Rescaled Value} & \textbf{Z-Score} & \textbf{State} \\
+\midrule
+100 & 26,102,000 & $+3.00$ & Saturation \\
+9   & 2,349,180  & $-2.46$ & High Compliance \\
+8   & 2,088,160  & $-2.52$ & Nominal \\
+7   & 1,827,140  & $-2.58$ & Failure \\
+0   & 0          & $-3.00$ & Null \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Note that the corrected Z-scores are tightly clustered near $-2.5$: on a $[0,100]$ scale, scores of 7--9 are all close to the maximum, so under a symmetric linear normalization they are all several standard deviations above the midpoint, not near zero. This is the opposite of the original paper's implied claim that 8 sits at a "nominal baseline" near $z=0$.
+
+\section{Why No Distortion Occurs}
+The original Section IV proposed a "risk integral"
+\begin{equation}
+    \mathcal{R} = \int_{f(7)}^{f(8)} P(x)\,dx
+\end{equation}
+without ever specifying $P(x)$. An integral over an unspecified density proves nothing on its own; the claim that "critical failure indicators are smoothed out" requires an independent argument about a *separate, finite-resolution measurement process* (e.g., a sensor with fixed absolute precision) sampling this rescaled range. The rescaling itself introduces no such process, and the manuscript did not supply one. Absent that, $\mathcal{R}$ is exactly the same probability mass under $f$ as under the identity map on $[0,100]$, because $f$ is a bijection and probability is invariant under a monotonic reparameterization (by the standard change-of-variables rule for densities).
+
+\section{Conclusion}
+The corrected analysis shows the original conclusion was unsupported: a uniform linear rescaling of a bounded evaluation domain does not, by itself, create "quantization error" or "resolution masking." It preserves every relative relationship in the original scale. Any real loss of resolution would have to come from an independently specified, finite-precision measurement or sampling process applied \emph{after} rescaling — not from the rescaling itself. The original paper's Z-score table was also internally inconsistent with its own stated model; corrected values are given in Table 1.
+
+\section*{References}
+\begin{small}
+\begin{enumerate}
+    \item Metrology Standards Board, \textit{Statistical Realignment of High-Frequency Metrics}, Academic Press, 2024.
+    \item Chrono-Digital Dynamics, \textit{Decimalized Chronometry and Shift Normalization Vectors}, Vol. 8, pp. 112-119, 2025.
+\end{enumerate}
+\end{small}
+
+\end{document}

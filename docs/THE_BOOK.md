@@ -165,7 +165,11 @@ exact counters (tick, born, killed).
   scale to millions.
 * Conclusion written into the doctrine: **flow the small core, route the
   large static mass** (Ch. 6).  Scaling flow past 2×10⁴ requires O(1)-per-
-  neuron spatial search, which is the declared next build (Ch. 14).
+  neuron spatial search — **built as T67 on 2026-08-04** (`use_index=True`:
+  numpy-only exact grid for 2D/3D at exponent 1.02, cKDTree for high dim;
+  `experiments/decentral_net_t67.py`, `data/decentral_net_t67_data.json`).
+  The low-dim grid flows 10⁵+; the honest residue is a high-dim tree
+  degeneration wall near 10⁴ (crease #22).
 
 ### Ch. 14  The creases (never forget these)
 1. Never mix frames: after add/remove, reflow before routing, or routing

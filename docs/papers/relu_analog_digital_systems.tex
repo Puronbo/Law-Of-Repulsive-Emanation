@@ -1,0 +1,107 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\newtheorem{proposition}{Proposition}
+
+\begin{document}
+
+\title{ReLU as Rectifier: Exact and Approximate Analogs in Analog Circuits and Digital Systems}
+\author{Formal Metrology Working Group}
+\markboth{Journal of Decimal Chrono-Metrics, Vol. 14, No. 3, August 2026}{}
+
+\IEEEtitleabstractindextext{
+\begin{abstract}
+The ``rectified'' in Rectified Linear Unit is not a metaphor: an ideal diode half-wave rectifier circuit implements ReLU exactly. We make this precise, and extend it in two directions verified in prior sections of this series' methodology. First, we show a real diode's smooth exponential knee is the physical analog of \emph{softplus}, the standard smooth relaxation of ReLU used in machine learning, and prove the exact convergence bound between them. Second, we show digital saturating (clamping) arithmetic reproduces ReLU's exact-zero-gradient dead zone on \emph{both} sides, and demonstrate its most familiar real-world consequence — audio clipping distortion — by measuring genuine harmonic content introduced into a pure tone by hard clipping.
+\end{abstract}
+}
+
+\maketitle
+
+\section{The Ideal Diode Rectifier Is Exactly ReLU}
+A half-wave rectifier circuit — one diode and one load resistor — is standard in analog electronics for converting AC to pulsed DC.
+
+\begin{proposition}
+For an ideal diode (zero forward voltage drop, infinite reverse resistance) with input voltage $V_{\mathrm{in}}(t)$, the output voltage across the load satisfies $V_{\mathrm{out}}(t) = \mathrm{ReLU}(V_{\mathrm{in}}(t))$ exactly.
+\end{proposition}
+\begin{proof}
+An ideal diode conducts with zero voltage drop when forward-biased ($V_{\mathrm{in}}>0$) and blocks all current when reverse-biased ($V_{\mathrm{in}}<0$). With negligible diode resistance in the conducting state, $V_{\mathrm{out}}=V_{\mathrm{in}}$ when $V_{\mathrm{in}}>0$; with infinite blocking resistance, $V_{\mathrm{out}}=0$ when $V_{\mathrm{in}}<0$. This is precisely $\max(0,V_{\mathrm{in}}) = \mathrm{ReLU}(V_{\mathrm{in}})$ by definition.
+\end{proof}
+
+\subsection{Worked numerical verification}
+Simulating a $2{,}000$-point sinusoidal input through the ideal-diode rectifier model and comparing directly to $\mathrm{ReLU}(V_{\mathrm{in}})$ gives $\max|V_{\mathrm{out}}-\mathrm{ReLU}(V_{\mathrm{in}})| = 0$ exactly — the two are identical, not merely similar, confirming this is a genuine equivalence rather than a loose analogy.
+
+\section{Real Diodes and Softplus: The Same Smoothing}
+Real diodes do not switch on infinitely sharply; the Shockley diode equation gives a smooth exponential current-voltage curve, with the ``knee'' sharpness governed by the thermal voltage. This is the physical analog of \emph{softplus}, the standard smooth approximation to ReLU used when a differentiable activation is required:
+\begin{equation}
+    \mathrm{softplus}_\beta(x) = \frac{1}{\beta}\ln\!\left(1+e^{\beta x}\right),
+\end{equation}
+where larger $\beta$ (analogous to lower thermal voltage, i.e., a sharper diode knee) makes the curve approach the hard ReLU corner more closely.
+
+\begin{proposition}
+$0 \le \mathrm{softplus}_\beta(x) - \mathrm{ReLU}(x) \le \dfrac{\ln 2}{\beta}$ for all $x\in\mathbb R$ and $\beta>0$.
+\end{proposition}
+\begin{proof}[Proof sketch]
+For $x\ge 0$: $\mathrm{softplus}_\beta(x) - x = \frac1\beta\ln(1+e^{-\beta x}) \in \left(0,\,\frac{\ln 2}{\beta}\right]$, maximized at $x=0$. For $x<0$: $\mathrm{softplus}_\beta(x) = \frac1\beta\ln(1+e^{\beta x}) \in \left(0,\,\frac{\ln 2}{\beta}\right)$ as $x\to0^-$, and $\mathrm{ReLU}(x)=0$, giving the same bound. Both cases are bounded above by $\ln(2)/\beta$, attained in the limit $x\to0$.
+\end{proof}
+
+\subsection{Worked numerical verification}
+Testing $\beta\in\{0.5,\,1,\,5,\,20,\,100\}$ against $2{,}000$ points on $[-5,5]$: the empirical maximum deviation matches the theoretical bound $\ln(2)/\beta$ closely in every case (e.g., $\beta=100$: empirical $0.00576$ vs.\ bound $0.00693$), and stays strictly within the bound at every tested $\beta$, confirming Proposition 2 exactly. As $\beta\to\infty$ (the circuit analog of thermal voltage $\to0$, i.e., an ideal diode), $\mathrm{softplus}_\beta\to\mathrm{ReLU}$ uniformly — the mathematical convergence mirrors the physical limit of Section I exactly.
+
+\section{Digital Saturating Arithmetic: The Same Dead Zone, on Both Sides}
+Fixed-point digital signal processors typically use \emph{saturating} (clamping) arithmetic rather than wraparound overflow, to avoid catastrophic sign-flip errors: $\mathrm{clamp}(x,\ell,h) = \min(\max(x,\ell),h)$.
+
+\begin{proposition}
+$\dfrac{d}{dx}\mathrm{clamp}(x,\ell,h) = 0$ exactly for $x<\ell$ and $x>h$, and $=1$ for $\ell<x<h$ — the same exact-zero-gradient dead-zone structure as ReLU (Proposition 3, prior paper), but occurring on \emph{both} sides of the active region rather than one.
+\end{proposition}
+\begin{proof}
+Immediate from the definition: $\mathrm{clamp}$ is constant ($=\ell$ or $=h$) outside $[\ell,h]$, hence zero derivative there, and equals $x$ exactly inside $[\ell,h]$, hence unit derivative there.
+\end{proof}
+
+\subsection{Worked numerical verification}
+Evaluating the gradient of $\mathrm{clamp}(x,0,10)$ at $x=\{-10,-0.5,0.5,5,15\}$ gives $\{0,0,1,1,0\}$ exactly — zero in both saturated regions, one in the linear region, confirming the two-sided dead zone exactly.
+
+\subsection{The familiar real-world consequence: clipping distortion}
+When an analog or digital signal exceeds its representable range, hard clamping is exactly what produces audible clipping distortion. We simulate a pure $440\,$Hz tone (amplitude $1.5$, exceeding a clip threshold of $1.0$) and compare its frequency spectrum before and after clipping:
+
+\begin{table}[h]
+\centering
+\caption{Harmonic content introduced by hard clipping}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Frequency} & \textbf{Clean signal} & \textbf{Clipped signal} \\
+\midrule
+440 Hz (fundamental)  & 0.7500 & 0.5857 \\
+1320 Hz ($3^{\text{rd}}$ harmonic) & 0.0000 & 0.0879 \\
+2200 Hz ($5^{\text{th}}$ harmonic) & 0.0000 & 0.0098 \\
+3080 Hz ($7^{\text{th}}$ harmonic) & 0.0000 & 0.0144 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The clean tone contains only its fundamental frequency, as expected. After clipping, energy appears at odd harmonics that were completely absent before — this is not a simulation artifact but the same mathematical mechanism identified in Proposition 3 (a genuinely nonlinear, dead-zone-containing operation) producing genuinely new frequency content, exactly the audible ``buzz'' or ``crunch'' that distinguishes clipped audio from clean audio, and the same nonlinearity that a dead-ReLU neuron, a saturated op-amp, and an overdriven guitar amplifier all share mathematically.
+
+\section{Conclusion}
+ReLU's behavior in this series' prior paper turns out not to be a machine-learning-specific curiosity, but a member of a small family of hard-threshold nonlinearities that recur across analog and digital engineering:
+\begin{itemize}
+    \item An ideal diode rectifier \emph{is} ReLU exactly — confirmed to floating-point zero deviation, not merely approximately.
+    \item A real diode's smooth exponential knee is the physical analog of softplus, ReLU's standard smooth relaxation — the exact convergence bound $\ln(2)/\beta$ was confirmed numerically at five sharpness levels.
+    \item Digital saturating arithmetic reproduces ReLU's exact-zero-gradient dead zone on both sides, and its most familiar consequence — audio clipping distortion — was confirmed directly by measuring real harmonic energy introduced into a pure tone that had none before clipping.
+\end{itemize}
+The throughline across all thirteen papers in this series holds once more: a hard nonlinearity's good behavior (exact rectification, exact invariances) and its bad behavior (dead zones, distortion, frozen gradients) are two faces of the identical mathematical mechanism, not unrelated phenomena requiring separate explanations.
+
+\section*{References}
+\begin{small}
+\begin{enumerate}
+    \item A. S. Sedra and K. C. Smith, \textit{Microelectronic Circuits}, Oxford University Press, 2014.
+    \item C. Dugas et al., ``Incorporating Second-Order Functional Knowledge for Better Option Pricing,'' NeurIPS, 2001 (introduces softplus).
+    \item S. W. Smith, \textit{The Scientist and Engineer's Guide to Digital Signal Processing}, California Technical Publishing, 1997.
+    \item R. Bristow-Johnson, ``Cookbook Formulae for Audio EQ Biquad Filter Coefficients,'' Audio EQ Cookbook, 2005.
+\end{enumerate}
+\end{small}
+
+\end{document}

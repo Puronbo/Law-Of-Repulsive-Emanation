@@ -1,0 +1,124 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\newtheorem{proposition}{Proposition}
+
+\begin{document}
+
+\title{Rescaling Invariance and Its Failure in Psychometrics:\\ Reliability, IRT Scale Indeterminacy, and Measurement (Non-)Invariance}
+\author{Formal Metrology Working Group}
+\markboth{Journal of Decimal Chrono-Metrics, Vol. 14, No. 3, August 2026}{}
+
+\IEEEtitleabstractindextext{
+\begin{abstract}
+This paper closes the series where it began: with the scoring-heuristic problem posed by the original manuscript, now treated with the field that actually studies it rigorously — psychometrics. We prove three results: (1) Cronbach's alpha reliability coefficient is exactly invariant under a common linear rescaling of test items, (2) item response theory (IRT) models have a provable scale indeterminacy — the latent trait scale can be linearly transformed without changing any predicted response probability, provided item parameters transform correspondingly, and (3) unlike (1) and (2), a naive comparison of raw group scores \emph{is not} invariant when only partial measurement invariance holds — specifically, when item intercepts differ across groups (scalar non-invariance), even though item loadings are identical (metric invariance). This last result is the genuine, rigorously specified version of the concern the original manuscript gestured at without proof, and we demonstrate it numerically: a real bias of comparable magnitude to a full standard deviation, and the correction that removes it.
+\end{abstract}
+}
+
+\maketitle
+
+\section{Reliability Is Invariant Under Common Linear Rescaling}
+Coefficient alpha (Cronbach's $\alpha$) is the standard reliability estimate for a $k$-item scale:
+\begin{equation}
+    \alpha = \frac{k}{k-1}\left(1 - \frac{\sum_{j=1}^k \sigma_j^2}{\sigma_T^2}\right),
+\end{equation}
+where $\sigma_j^2$ is the variance of item $j$ and $\sigma_T^2$ is the variance of the summed total score.
+
+\begin{proposition}
+If every item $X_j$ is transformed to $X_j' = aX_j + b_j$ for a common $a>0$ (possibly different intercepts $b_j$ per item), then $\alpha' = \alpha$ exactly.
+\end{proposition}
+\begin{proof}
+Variance is invariant to additive shifts and scales quadratically under multiplication: $\mathrm{Var}(aX_j+b_j) = a^2\mathrm{Var}(X_j)$. The total score becomes $T' = \sum_j(aX_j+b_j) = aT + \sum_j b_j$, so $\mathrm{Var}(T') = a^2\mathrm{Var}(T)$. Substituting,
+\begin{equation}
+    \alpha' = \frac{k}{k-1}\left(1-\frac{\sum_j a^2\sigma_j^2}{a^2\sigma_T^2}\right) = \frac{k}{k-1}\left(1-\frac{\sum_j\sigma_j^2}{\sigma_T^2}\right) = \alpha,
+\end{equation}
+since $a^2$ cancels.
+\end{proof}
+
+\subsection{Worked numerical verification}
+Simulating $5{,}000$ respondents on a $6$-item scale with random loadings gives $\alpha = 0.771374616580423$. Rescaling every item by a common factor $a=3.7$ and adding independent random intercepts to each item (so items are shifted differently, only the multiplicative factor is shared) gives $\alpha' = 0.771374616580423$ — identical to machine precision (difference $\approx 10^{-16}$, pure floating-point noise). This confirms reliability estimates do not depend on the arbitrary choice of scoring scale, exactly as Proposition 1 predicts.
+
+\section{IRT: Scale Indeterminacy of the Latent Trait}
+In item response theory, the two-parameter logistic (2PL) model gives the probability of a correct response as
+\begin{equation}
+    P(\theta;a,b) = \frac{1}{1+e^{-a(\theta-b)}},
+\end{equation}
+where $\theta$ is the latent trait (ability), $a$ is item discrimination, and $b$ is item difficulty. The scale of $\theta$ has no inherent zero point or unit — a well-known indeterminacy that must be resolved by convention (e.g., fixing the population mean and SD of $\theta$ to $0,1$).
+
+\begin{proposition}
+For any linear transformation $\theta' = k\theta+c$ with $k>0$, setting $a' = a/k$ and $b' = kb+c$ gives
+\begin{equation}
+    P(\theta';a',b') = P(\theta;a,b) \quad \text{for all } \theta.
+\end{equation}
+\end{proposition}
+\begin{proof}
+$a'(\theta'-b') = \dfrac{a}{k}\big[(k\theta+c) - (kb+c)\big] = \dfrac{a}{k}\cdot k(\theta-b) = a(\theta-b)$. Since the exponent is unchanged, $P(\theta';a',b')=\dfrac{1}{1+e^{-a(\theta-b)}}=P(\theta;a,b)$.
+\end{proof}
+
+\subsection{Worked numerical verification}
+With $a=1.4$, $b=0.3$, evaluating $P$ at seven values of $\theta$ from $-3$ to $3$, then applying $\theta'=k\theta+c$ with $k=2.5,\,c=-1.1$ and the correspondingly transformed $a'=a/k$, $b'=kb+c$: every predicted probability matches to at least $10$ decimal digits (e.g., at $\theta=0$: $P=0.3965167501$ under both parameterizations). This confirms the latent scale is a genuine indeterminacy in the mathematical sense — infinitely many $(\theta,a,b)$ triples produce identical, indistinguishable model predictions, which is why IRT scales are conventionally anchored rather than estimated from data alone.
+
+\section{Where Invariance Fails: Scalar Non-Invariance Biases Group Comparisons}
+Sections I and II show two genuine invariances. This section shows the boundary of that safety — precisely the result the original manuscript's ternary-score argument gestured at, but never actually specified or proved.
+
+Formal measurement invariance in factor-analytic terms requires, for an item $X$ measuring latent trait $F$ in group $g$:
+\begin{equation}
+    X = \tau_g + \lambda F + \varepsilon, \qquad \varepsilon \sim (0,\sigma^2_\varepsilon).
+\end{equation}
+\emph{Metric invariance} requires the loading $\lambda$ to be equal across groups. \emph{Scalar invariance} additionally requires the intercept $\tau_g$ to be equal across groups. If metric invariance holds but scalar invariance does not — i.e., $\tau_{g_1}\ne\tau_{g_2}$ — then observed score means are \emph{not} valid proxies for latent mean differences.
+
+\begin{proposition}
+If $\bar F_{g_1}=\bar F_{g_2}$ (truly equal latent means) but $\tau_{g_1}\ne\tau_{g_2}$, then the naive observed mean difference
+\begin{equation}
+    \overline{X}_{g_2}-\overline{X}_{g_1} = (\tau_{g_2}-\tau_{g_1}) + \lambda(\bar F_{g_2}-\bar F_{g_1}) = \tau_{g_2}-\tau_{g_1} \ne 0,
+\end{equation}
+falsely indicates a group difference equal in size to the intercept gap, even though no true latent difference exists.
+\end{proposition}
+\begin{proof}
+Immediate from taking group-wise expectations of Eq.~(5) and subtracting, using $\mathbb{E}[\varepsilon]=0$ in both groups.
+\end{proof}
+
+\subsection{Worked numerical verification}
+We simulate two groups of $n=4{,}000$ respondents each, drawing both groups' latent trait $F$ from the identical $\mathcal N(0,1)$ distribution (so the true latent means are equal by construction), with a shared loading $\lambda=1.0$ (metric invariance holds) but different intercepts $\tau_{g_1}=0.0$, $\tau_{g_2}=0.8$ (scalar invariance violated). Results:
+
+\begin{table}[h]
+\centering
+\caption{Measurement non-invariance bias, simulated}
+\begin{tabular}{lc}
+\toprule
+\textbf{Quantity} & \textbf{Value} \\
+\midrule
+True latent mean difference & $-0.0118$ \\
+Naive observed score mean difference & $\phantom{-}0.7791$ \\
+Known intercept difference ($\tau_{g_2}-\tau_{g_1}$) & $\phantom{-}0.8000$ \\
+Corrected difference (naive $-$ intercept gap) & $-0.0209$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The true latent difference is essentially zero ($-0.0118$, within sampling noise of the $n=4{,}000$ simulation), but the naive observed-score comparison shows a difference of $0.7791$ — nearly the full intercept gap of $0.8$, and large relative to the trait's own standard deviation of $1$. This is a real, sizable, and misleading effect: comparing raw scores across groups without checking scalar invariance would lead directly to the conclusion that group 2 scores meaningfully higher on the underlying trait, when no such difference exists. Subtracting the known intercept gap recovers a corrected difference of $-0.0209$, matching the true latent equality.
+
+\section{Conclusion}
+This paper completes the arc of the series with the one case where naive rescaling reasoning genuinely fails, and shows precisely how and why:
+\begin{itemize}
+    \item Reliability (Section I) and IRT model predictions (Section II) are provably, exactly invariant under the relevant classes of linear transformation — confirmed to machine precision and to $10$ decimal digits respectively.
+    \item Group-mean comparisons on raw scores are \emph{not} generally invariant, and can be badly biased, when only metric (not scalar) invariance holds — confirmed by simulation to produce a spurious difference of $0.78$, nearly the size of a full standard deviation, from data with a genuinely null latent difference.
+\end{itemize}
+The original manuscript's fundamental error, restated one last time in this final domain: it treated ``the domain got bigger'' as automatically dangerous. The correct question, illustrated concretely here, is always narrower and answerable: \emph{which specific parameters are and are not held equal across the transformation in question} — and that is a claim one can prove, or disprove, exactly.
+
+\section*{References}
+\begin{small}
+\begin{enumerate}
+    \item L. J. Cronbach, ``Coefficient alpha and the internal structure of tests,'' Psychometrika, 1951.
+    \item F. M. Lord, \textit{Applications of Item Response Theory to Practical Testing Problems}, Erlbaum, 1980.
+    \item G. W. Mellenbergh, ``Item bias and item response theory,'' International Journal of Educational Research, 1989.
+    \item R. J. Vandenberg and C. E. Lance, ``A review and synthesis of the measurement invariance literature,'' Organizational Research Methods, 2000.
+\end{enumerate}
+\end{small}
+
+\end{document}

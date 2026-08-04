@@ -1,0 +1,159 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\begin{document}
+
+\title{Linear Rescaling of a Ternary Evaluation Heuristic: A Detailed Corrected Analysis}
+\author{Formal Metrology Working Group}
+\markboth{Journal of Decimal Chrono-Metrics, Vol. 14, No. 3, August 2026}{}
+
+\IEEEtitleabstractindextext{
+\begin{abstract}
+The original manuscript claimed that rescaling a ternary evaluation heuristic (scores 9 and 8 ``compliant,'' 7 ``non-compliant'') from a centesimal domain $[0,100]$ to an expanded domain $[0,\,26{,}102{,}000]$ produces ``quantization error'' and ``resolution masking'' that conceal systemic failure. This claim does not follow from the stated mathematics. We give a fully worked, exact treatment of the rescaling map, its effect (or lack thereof) on the pass/fail boundary, a corrected and derived Z-score table, and a formal change-of-variables argument showing that probability mass is invariant under the transformation. We conclude with a precise statement of the one condition under which resolution loss \emph{can} occur, since the original manuscript gestured at this possibility without ever defining it.
+\end{abstract}
+}
+
+\maketitle
+
+\section{Introduction and Scope}
+The evaluation heuristic under study is
+\begin{equation}
+    S \in \{9,8\} \implies \text{Compliant}, \qquad S \le 7 \implies \text{Non-Compliant},
+\end{equation}
+defined on the legacy domain $\mathcal{D}_0 = [0,100] \subset \mathbb{Z}_{\ge 0}$ (or its real-valued closure $[0,100]\subset\mathbb{R}$, depending on whether $S$ is treated as discrete or continuous — this distinction matters and is addressed in Section III).
+
+The original manuscript proposed expanding this domain to $\mathcal{D}_t = [0,T_d]$, $T_d = 26{,}102{,}000$, via a claimed ``non-linear'' transformation, but then defined and used only a linear map. We retain the linear map, since that is what was actually specified and computed, and analyze it exactly.
+
+\section{The Rescaling Map}
+Define
+\begin{equation}
+    f : \mathcal{D}_0 \to \mathcal{D}_t, \qquad f(x) = x\cdot k, \qquad k = \frac{T_d}{100} = 261{,}020.
+\end{equation}
+This is affine with zero intercept, i.e., a pure dilation. Three exact properties follow immediately and are not in dispute:
+
+\begin{enumerate}
+    \item \textbf{Bijectivity.} $f$ is a strictly increasing bijection $\mathcal{D}_0 \to \mathcal{D}_t$, since $k>0$. Every point in $[0,100]$ has exactly one image in $[0,T_d]$ and vice versa.
+    \item \textbf{Ratio preservation.} For any $a,b \in \mathcal{D}_0$ with $b \ne 0$: $\dfrac{f(a)}{f(b)} = \dfrac{a}{b}$. Scaling changes units, not proportions.
+    \item \textbf{Gap preservation (relative).} For any $a>b$: $\dfrac{f(a)-f(b)}{T_d} = \dfrac{a-b}{100}$.
+\end{enumerate}
+
+\subsection{Exact boundary values}
+Applying $f$ to the heuristic's three boundary scores:
+\begin{align}
+    f(9) &= 9 \times 261{,}020 = 2{,}349{,}180 \\
+    f(8) &= 8 \times 261{,}020 = 2{,}088{,}160 \\
+    f(7) &= 7 \times 261{,}020 = 1{,}827{,}140
+\end{align}
+These match the original manuscript's arithmetic exactly; no correction is needed here.
+
+\subsection{The pass/fail gap, exactly}
+\begin{equation}
+    \Delta = f(8) - f(7) = 261{,}020.
+\end{equation}
+As a fraction of the full rescaled domain:
+\begin{equation}
+    \frac{\Delta}{T_d} = \frac{261{,}020}{26{,}102{,}000} = \frac{1}{100} = 0.01,
+\end{equation}
+which is \emph{identical}, to machine precision, to the original relative gap $(8-7)/100 = 0.01$. This is the exact rebuttal of the manuscript's central claim: the gap is $261{,}020\times$ larger in absolute units, but $0\times$ larger in relative terms. A quantity that is unchanged after normalization cannot be evidence of ``dilution'' — dilution is by definition a relative effect.
+
+\section{Corrected Z-Score Derivation}
+The original Z-score column was asserted, not derived, and its values ($+0.46$ for $x=9$, $-0.05$ for $x=8$, $-0.56$ for $x=7$) are inconsistent with any linear model consistent with the paper's own boundary conditions ($z(100)=+3$, $z(0)=-3$).
+
+We derive the correct values. Under a symmetric linear normalization mapping $[0,T_d] \to [-3,+3]$:
+\begin{equation}
+    z(x) = \frac{f(x) - \mu}{\sigma}, \qquad \mu = f(50) = \frac{T_d}{2} = 13{,}051{,}000,
+\end{equation}
+\begin{equation}
+    \sigma = \frac{T_d}{6} = 4{,}350{,}333.\overline{3}.
+\end{equation}
+(The divisor 6 follows from requiring the endpoints $x=0,100$ to sit at exactly $\pm 3\sigma$, i.e. $6\sigma = T_d$.)
+
+\begin{table}[h]
+\centering
+\caption{Exact Corrected Z-Scores}
+\begin{tabular}{crrc}
+\toprule
+\textbf{Score $x$} & \textbf{$f(x)$} & \textbf{$z(x)$, exact} & \textbf{$z(x)$, decimal} \\
+\midrule
+100 & 26,102,000 & $+3$ & $+3.000$ \\
+9   & 2,349,180  & $-\dfrac{41}{50}\cdot 3 = -\dfrac{123}{50}$ & $-2.460$ \\
+8   & 2,088,160  & $-\dfrac{42}{50}\cdot 3 = -\dfrac{126}{50}$ & $-2.520$ \\
+7   & 1,827,140  & $-\dfrac{43}{50}\cdot 3 = -\dfrac{129}{50}$ & $-2.580$ \\
+0   & 0          & $-3$ & $-3.000$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+General closed form, exact:
+\begin{equation}
+    z(x) = \frac{x-50}{50}\times 3 = \frac{3x - 150}{50}.
+\end{equation}
+Note this closed form depends only on $x$ on the \emph{original} $[0,100]$ scale — $T_d$ cancels out entirely, since $z(f(x)) = z_0(x)$ where $z_0$ is the Z-score computed directly on $\mathcal{D}_0$. This is a second, independent proof that the rescaling carries no new statistical information: any Z-score computed after rescaling is algebraically identical to the Z-score computed before it.
+
+All three thresholds (7, 8, 9) cluster tightly between $z=-2.46$ and $z=-2.58$ — near the extreme high end of a $[-3,+3]$ normalization, not near the ``nominal baseline'' of $z\approx 0$ that the original table implied for score 8.
+
+\section{Formal Argument Against ``Resolution Masking''}
+\subsection{Change of variables}
+Let $X$ be a random variable on $\mathcal{D}_0$ with density $p(x)$, and let $Y = f(X)$ be its image on $\mathcal{D}_t$. Since $f$ is a differentiable bijection with $f'(x) = k$, the density of $Y$ is
+\begin{equation}
+    p_Y(y) = p_X\!\left(f^{-1}(y)\right)\cdot \left|\frac{d}{dy}f^{-1}(y)\right| = p_X\!\left(\frac{y}{k}\right)\cdot \frac{1}{k}.
+\end{equation}
+Then for any risk mass defined over the corresponding interval:
+\begin{equation}
+    \mathcal{R}_t = \int_{f(7)}^{f(8)} p_Y(y)\,dy = \int_{7}^{8} p_X(x)\,dx = \mathcal{R}_0,
+\end{equation}
+by direct substitution $y = f(x) = kx$, $dy = k\,dx$. \textbf{The risk mass is exactly conserved.} The original manuscript's integral $\mathcal{R} = \int_{f(7)}^{f(8)} P(x)\,dx$ is not well-formed as written (it never specifies whether $P$ is the density on $\mathcal{D}_0$ or $\mathcal{D}_t$, nor performs the required Jacobian correction), and once corrected, it proves the opposite of what was claimed.
+
+\subsection{The one condition under which resolution loss is real}
+Resolution loss is a genuine phenomenon, but it requires an \emph{additional, independently specified} process — not implied by rescaling itself. Concretely: if a measurement or sampling instrument has a fixed \emph{absolute} precision $\epsilon$ (for example, a sensor that can only resolve differences of $\pm 1$ unit regardless of scale), then:
+\begin{itemize}
+    \item On $\mathcal{D}_0$, that instrument resolves $100/\epsilon$ distinguishable levels.
+    \item On $\mathcal{D}_t$ with the \emph{same absolute} $\epsilon$, it resolves $T_d/\epsilon$ levels — vastly more, not fewer.
+\end{itemize}
+The failure mode the original manuscript gestured at (fine-grained events becoming invisible) would require the instrument's precision to scale \emph{with} the domain rather than staying fixed — i.e., a fixed \emph{relative} (not absolute) precision, such as a sensor that can only resolve $1\%$ of full scale. In that scenario, resolution in absolute terms grows with $T_d$, potentially hiding sub-percent events that used to be visible on the coarser $[0,100]$ scale. This is a real and correctly-describable effect — but it is a property of the \emph{measurement apparatus}, not of the rescaling map $f$ itself, and the original manuscript never specified which regime it meant.
+
+\section{Real-World Analogues}
+The mathematics above is not merely academic; the same distinction between ``rescaling'' and ``resolution loss'' recurs across several applied fields, and the literature there confirms the corrected picture rather than the original manuscript's claim.
+
+\subsection{Analog-to-digital conversion: the genuine mechanism}
+The one place where an expanded numeric range \emph{does} cause real information loss is analog-to-digital conversion (ADC), and it illustrates exactly the caveat given in Section IV.B. An ADC with a fixed bit depth has a fixed number of discrete levels regardless of the physical range it covers — e.g., an 8-bit converter always has 256 levels, a 12-bit converter 4096. If the same fixed-bit-depth converter is asked to span a larger physical range, its \emph{absolute} step size grows, and sub-step variation becomes invisible. This is a real, well-documented effect in sensor engineering. Crucially, it is caused by a fixed \emph{bit budget} (a fixed relative resolution), not by rescaling the target range itself — which is precisely the distinction drawn in Section IV.B. The original manuscript conflated ``the domain got bigger'' with ``resolution was lost,'' when the two are independent unless a fixed-precision instrument is explicitly introduced.
+
+\subsection{Econometrics: which quantities are and are not rescaling-invariant}
+In econometric theory, many models are, by construction, invariant to a change of measurement units, since fitted parameters absorb the rescaling. However, it has been shown that certain classical hypothesis tests — notably Wald-type tests — are \emph{not} invariant to such reparameterizations even when the underlying statistical model is. This is instructive: it shows that non-invariance to rescaling is a possible artifact, but it arises from a specific test statistic's construction, not automatically from the act of rescaling. A correct analysis, as here, must show \emph{which} step in a pipeline is or is not invariant, rather than asserting distortion in general terms.
+
+\subsection{Psychometrics: measurement invariance as a live methodological concern}
+In psychological and educational measurement, ``measurement invariance'' is a formally studied question: does a scale (e.g., a test or survey) measure the same underlying construct after transformation, or across different populations and time points? This is the legitimate, rigorously-defined version of the concern the original manuscript gestured at with its ``compliance score'' heuristic — but unlike the original manuscript, this literature specifies exact statistical conditions (e.g., invariant factor loadings and intercepts) under which invariance holds or fails, rather than asserting failure from scale expansion alone.
+
+\subsection{Physics: scale invariance as a structural principle}
+In statistical mechanics and dynamical systems theory, invariance under rescaling transformations is a central tool for characterizing critical phenomena and phase transitions. The typical direction of use is the reverse of the original manuscript's claim: physicists look for the specific transformations under which a system's structure is \emph{preserved}, and treat that invariance as informative, not as a source of hidden distortion.
+
+\subsection{A formal analogue in metric-space statistics}
+A clean mathematical parallel to Section IV.A appears in the study of synchrony measures on metric spaces: if a distance metric $d$ is rescaled to $d_\lambda(x,y) = \lambda\, d(x,y)$ for $\lambda>0$, a broad class of statistical measures defined on that space is provably unchanged. This is the same structural fact this paper proves for the risk integral $\mathcal{R}$ in Section IV.A, in a more general setting.
+
+\section{Conclusion}
+\begin{itemize}
+    \item The rescaling arithmetic in the original manuscript (Eqs. 2–5) is correct.
+    \item The claimed consequence — that failure becomes ``hidden'' or ``smoothed'' — does not follow from a linear bijection, which provably preserves all ratios, relative gaps, and probability mass (Sections II–IV).
+    \item The original Z-score table (Table 1 of the source) was numerically inconsistent with its own stated model; corrected values are $z(9)=-2.46$, $z(8)=-2.52$, $z(7)=-2.58$, not $+0.46,\,-0.05,\,-0.56$.
+    \item A genuine resolution-loss effect exists only under a specific, additional assumption (fixed \emph{relative}, not absolute, measurement precision) that the original paper never stated. Any future version of this analysis should state that assumption explicitly rather than treating it as a consequence of rescaling alone.
+\end{itemize}
+
+\section*{References}
+\begin{small}
+\begin{enumerate}
+    \item Metrology Standards Board, \textit{Statistical Realignment of High-Frequency Metrics}, Academic Press, 2024.
+    \item Chrono-Digital Dynamics, \textit{Decimalized Chronometry and Shift Normalization Vectors}, Vol. 8, pp. 112-119, 2025.
+    \item A. S. Bais, ``Quantization Error and Other Sensor Challenges like Bias, Drift, and Hysteresis,'' \textit{Medium}, 2025.
+    \item ``Sensor Accuracy and Sensor Resolution,'' Rapidlogger Oilfield Technology, 2026.
+    \item M. G. Dagenais and J.-M. Dufour, ``Nonlinear models, rescaling and test invariance,'' \textit{Journal of Statistical Planning and Inference / related econometric literature}, 1991--1992.
+    \item ``Measurement invariance within and between individuals: a distinct problem in testing the equivalence of intra- and inter-individual model structures,'' \textit{PMC}, 2014.
+    \item ``Scaling invariance: a bridge between geometry, dynamics and criticality,'' arXiv:2602.17839, 2026.
+    \item ``Generalized Measures of Population Synchrony,'' arXiv:2406.15987, 2024.
+\end{enumerate}
+\end{small}
+
+\end{document}

@@ -11,8 +11,10 @@ global mean, NO global gradient, NO central controller:
 
 Routing is plain nearest-centroid: label(x) = argmin_i |x - q_i|.
 
-No imports beyond numpy.  Run directly for a self-contained demonstration
-(`python decentral_net.py`) or import it from anywhere:
+No imports beyond numpy (the fast index path, use_index=True, lazily uses
+scipy.cKDTree for dim >= 4; the dim <= 3 grid path is numpy-only).  Run
+directly for a self-contained demonstration (`python decentral_net.py`) or
+import it from anywhere:
 
     from manifold.decentral_net import DecentralNet
     net = DecentralNet(dim=2, k=8, mu0=0.12)
@@ -21,6 +23,16 @@ No imports beyond numpy.  Run directly for a self-contained demonstration
     net.absorb(400)                  # tighten toward homes (mu = 0.5)
     net.heal(800)                    # re-spread survivors after neuron loss
     net.predict(X); net.accuracy(X, y)
+
+Spatial index (T67): the exact path builds an n x n distance matrix per
+flow step - O(n^2) memory and time, which caps the population at ~10^4.
+With use_index=True the same k-NN sets come from a spatial index instead:
+a uniform grid (dim <= 3, O(1)-expected per-neuron queries, exact) or
+scipy.cKDTree (any dim, O(log n) per query, exact).  Results are identical
+to the exact path (both return true k-NN), so indexed flow is not an
+approximation - it is the same dynamics with a sub-quadratic neighbour
+search, which is what unlocks flowing internet-scale populations (T67).
+Off by default: every existing experiment keeps the exact path unchanged.
 
 Why mu0 exists: a private always-on home tether is required, otherwise pure
 local expansion never slows (per-neuron steps) and the cloud collapses onto
@@ -41,6 +53,8 @@ Caveats (T55e, experiments/decentral_net_continual.py):
      the dimension (mu0 ~ 1-4 in 64D) to reduce drift.
 """
 
+import itertools
+
 import numpy as np
 
 __all__ = ["DecentralNet", "to_disk"]
@@ -57,6 +71,100 @@ def to_disk(q, max_r=0.9):
     return q
 
 
+class _GridIndex:
+    """Uniform-grid k-NN for dim <= 3: O(1)-expected per-neuron queries (T67).
+
+    The domain is bucketed into cells whose size tracks the current point
+    density (a few points per cell), so a query finds its k neighbours by
+    scanning a small expanding ring of cells.  The ring grows until k
+    candidates are found, which makes the result EXACT for any set - it is
+    only the *expected* work per query that is constant, not the answer.
+    """
+
+    def __init__(self, pts, k=8, cell=None):
+        self.pts = np.asarray(pts, dtype=float)
+        self.dim = self.pts.shape[1]
+        self.n = self.pts.shape[0]
+        lo = self.pts.min(axis=0)
+        hi = self.pts.max(axis=0)
+        span = np.maximum(hi - lo, 1e-12)
+        if cell is None:
+            vol = span.prod()
+            cell = max((vol * max(k, 1) / max(self.n, 1)) ** (1.0 / self.dim), 1e-9)
+        self.cell = cell
+        self.origin = lo - 0.5 * cell
+        self.ni = np.maximum(np.ceil((span + cell) / cell).astype(int), 1)
+        ci = np.floor((self.pts - self.origin) / cell).astype(int)
+        self.idx = np.clip(ci, 0, self.ni - 1)
+        self.cells = {}
+        for i in range(self.n):
+            self.cells.setdefault(tuple(self.idx[i]), []).append(i)
+
+    def _scan(self, x, ci, k=1, drop=-1):
+        """All points in cells within the smallest Chebyshev ring r such that
+        the k-th nearest candidate is provably closer than every point in an
+        unscanned cell (min distance to a ring-(r+1) cell is >= r*cell)."""
+        cand, seen = [], set()
+        for r in range(0, int(self.ni.max())):
+            for off in itertools.product(range(-r, r + 1), repeat=self.dim):
+                cc = tuple(ci[d] + off[d] for d in range(self.dim))
+                if cc in seen:
+                    continue
+                seen.add(cc)
+                for j in self.cells.get(cc, ()):
+                    if j != drop:
+                        cand.append(j)
+            if len(cand) < k:
+                continue
+            c = np.asarray(cand, dtype=int)
+            d = np.linalg.norm(self.pts[c] - x, axis=-1)
+            order = np.argsort(d)
+            if d[order[k - 1]] <= r * self.cell:
+                return c[order]
+        c = np.asarray(cand, dtype=int)
+        d = np.linalg.norm(self.pts[c] - x, axis=-1)
+        return c[np.argsort(d)]
+
+    def knn(self, i, k):
+        x = self.pts[i]
+        c = self._scan(x, tuple(self.idx[i]), k, drop=i)
+        return c[:k] if len(c) > k else c
+
+    def knn_all(self, k):
+        return [self.knn(i, k) for i in range(self.n)]
+
+    def nearest(self, X):
+        out = np.empty(len(X), dtype=int)
+        for r0, x in enumerate(X):
+            xc = tuple(np.clip(
+                np.floor((x - self.origin) / self.cell).astype(int),
+                0, self.ni - 1).tolist())
+            c = self._scan(x, xc, 1)
+            d = np.linalg.norm(self.pts[c] - x, axis=-1)
+            out[r0] = c[np.argmin(d)]
+        return out
+
+
+class _KDTreeIndex:
+    """Exact k-NN for dim >= 4 via scipy.cKDTree: O(log n) per query (T67)."""
+
+    def __init__(self, pts):
+        from scipy.spatial import cKDTree
+        self.pts = np.asarray(pts, dtype=float)
+        self.tree = cKDTree(self.pts)
+
+    def knn_all(self, k):
+        _, nb = self.tree.query(self.pts, k=k + 1, workers=-1)
+        nb = np.asarray(nb)
+        if nb.ndim == 1:
+            nb = nb[:, None]
+        return [nb[i, 1:].astype(int) for i in range(nb.shape[0])]
+
+    def nearest(self, X):
+        _, nb = self.tree.query(np.asarray(X, dtype=float), k=1)
+        return np.atleast_1d(nb).astype(int)
+
+
 class DecentralNet:
     """Balance network with local-only dynamics.
 
@@ -70,7 +178,8 @@ class DecentralNet:
         max_r : container radius (disk clamp)
     """
 
-    def __init__(self, dim=2, k=8, mu0=0.12, A=120.0, dt=0.05, max_r=0.9, eps=1e-3):
+    def __init__(self, dim=2, k=8, mu0=0.12, A=120.0, dt=0.05, max_r=0.9,
+                 eps=1e-3, use_index=False, index_min_n=512):
         self.q = np.zeros((0, dim))
         self.h = np.zeros((0, dim))
         self.k = k
@@ -79,19 +188,37 @@ class DecentralNet:
         self.dt = dt
         self.max_r = max_r
         self.eps = eps
+        self.use_index = use_index
+        self.index_min_n = index_min_n
 
     # ------------------------------------------------------------------ #
     @property
     def n(self):
         return len(self.q)
 
+    def _index(self):
+        """Spatial index over the CURRENT q (T67): O(1)-expected grid for
+        dim <= 3, exact cKDTree for higher dims.  Returns None when the
+        index is disabled or the population is too small for it to pay."""
+        if not self.use_index or self.n < self.index_min_n:
+            return None
+        if self.q.shape[1] <= 3:
+            return _GridIndex(self.q, k=self.k)
+        try:
+            return _KDTreeIndex(self.q)
+        except ImportError:
+            return None
+
     def _knn(self):
         n = self.n
         if n <= 1:
             return [np.zeros(0, dtype=int)] * n
+        kk = min(self.k, n - 1)
+        idx = self._index()
+        if idx is not None:
+            return idx.knn_all(kk)
         D = np.linalg.norm(self.q[:, None] - self.q[None], axis=-1)
         np.fill_diagonal(D, np.inf)
-        kk = min(self.k, n - 1)
         return list(np.argsort(D, axis=1)[:, :kk])
 
     # ------------------------------------------------------------------ #
@@ -155,14 +282,23 @@ class DecentralNet:
         """Consensus spacing: median over neurons of mean k-NN distance."""
         if self.n < 2:
             return 0.0
+        kk = min(self.k, self.n - 1)
+        idx = self._index()
+        if idx is not None:
+            nb = idx.knn_all(kk)
+            means = np.array([np.linalg.norm(self.q[i] - self.q[nb[i]],
+                                             axis=-1).mean() for i in range(self.n)])
+            return float(np.median(means))
         D = np.linalg.norm(self.q[:, None] - self.q[None], axis=-1)
         np.fill_diagonal(D, np.inf)
-        kk = min(self.k, self.n - 1)
         return float(np.median(np.sort(D, axis=1)[:, :kk].mean(axis=1)))
 
     def predict(self, X):
         """Nearest-centroid labels."""
         X = np.asarray(X, dtype=float)
+        idx = self._index()
+        if idx is not None:
+            return idx.nearest(X)
         D = np.linalg.norm(X[:, None, :] - self.q[None, :, :], axis=-1)
         return np.argmin(D, axis=1)
 

@@ -963,6 +963,53 @@ crash mid-commit could still tear the log; equivocation needs the account
 holder's key (the network detects the fork afterwards). Data:
 `data/decentral_bank_net_data.json`.
 
+### Ch. 5.14  Flow without the n² wall: O(1)-per-neuron spatial search (T67, measured)
+
+Ch. 5.10's ceiling experiment (T55h) measured the all-pairs wall at ~2×10⁴
+neurons and declared the fix: "scaling beyond ~2×10⁴ needs O(1)-per-neuron
+spatial search, not all-pairs." T67 is that search. `DecentralNet` gains an
+opt-in index path — `use_index=True` (off by default, so every existing
+experiment is unchanged), activated once the population passes
+`index_min_n=512`:
+
+* **dim ≤ 3 — uniform-grid scan (numpy only, EXACT):** cells are sized for
+  ~k points each; a query grows a Chebyshev ring of cells until the k-th
+  candidate is provably closer than any unscanned cell. The proof is
+  geometric: the minimum distance to a cell at Chebyshev ring r+1 is ≥ r·cell,
+  so once the k-th collected distance is ≤ r·cell the k nearest are all
+  collected. Expected work per query is O(1); the answer is exact for ANY
+  set (the ring cap is the full grid extent, so the scan is unconditional).
+  Three correctness bugs were found and fixed while validating it: the ring
+  scan must not stop at the *first* candidate cell (a ring-2 point can be
+  closer than a ring-1 point), must not count the query point itself toward
+  k (it stopped one ring early), and needs cells sized for ~k points with a
+  full-extent ring cap (mean-spacing cells left sparse 1-D stretches
+  unreachable).
+* **dim ≥ 4 — scipy.cKDTree (EXACT, O(log n) per query, `workers=-1`):** the
+  only feasible path once n²·dim·8 B exceeds RAM (already ~26 GB at
+  n=5,000×128D); falls back to all-pairs on ImportError.
+
+Verification (`experiments/decentral_net_t67.py`,
+`data/decentral_net_t67_data.json`):
+
+* **Correctness (PASS):** indexed flow is bit-identical to all-pairs flow —
+  2D grid at n=2,000 after settle(10) and 64D tree at n=500 after settle(5);
+  `spacing()` and `predict()` identical; grid kNN == brute force for every
+  neuron across 3 seeds × 1D/2D/3D.
+* **Scaling law (MEASURED):** fitted ms/step exponents in 2D — all-pairs
+  1.88, indexed 1.02. Indexed steps measure 40 ms at n=1,000 → 4.5 s at
+  n=100,000 (a clean ~linear curve from n=1k to n=100k).
+* **Internet scale (MEASURED):** flows n=100,000 in 2D at ~5.3 s/step —
+  all-pairs would need a 160 GB distance matrix and simply cannot; and
+  10,000 REAL top-1M domain embeddings (T55g's CSV, 128D ngram) at
+  ~2.1 s/step — all-pairs would need 102 GB.
+
+Honest boundaries: high-dimensional k-d trees degenerate on dense data
+(~2–16 s/step at n=10k×128D), so high-dim indexed flow stays ~10⁴ — the
+2D/3D grid, which is the live daemon's flow geometry, is the 10⁵+ path;
+and internet-scale flow is still one 31.7 GB box (T20's single-machine
+boundary) — distributing it across machines remains unbuilt.
+
 ---
 
 ## Ch. 6  Creases (never forget these)
@@ -1113,6 +1160,16 @@ holder's key (the network detects the fork afterwards). Data:
     fragments from their owners. Durability per fragment = the OWNER's disk,
     not the ring's, for the instant of total loss — the peer-replica copy is
     the redundant store only while at least one replica survives.
+22. **Spatial search is exact, but high dimension is a different wall.** T67
+    (Ch. 5.14): the grid's ring scan is O(1)-expected and EXACT in 2D/3D
+    (only the expected work is constant; the answer is always the true k-NN),
+    and it flows 10⁵. But in 128D a k-d tree degenerates on dense data —
+    ~2–16 s/step at n=10k — so "flow at internet scale" is a *dimension*
+    question, not just a population one: the internet's network-geometry
+    (2D/3D, the live daemon's flow) is cheap, while the internet's real
+    name-embedding space (128D) is bounded near 10⁴ on one box. Exactness
+    was not free either: the grid cost three real bugs to validate
+    (first-candidate ring stop, self-counting, mean-spacing cells).
 
 ---
 
@@ -1131,6 +1188,10 @@ holder's key (the network detects the fork afterwards). Data:
   scattered-corruption wall vs contiguous-corruption resilience (crease #18),
   partition/rejoin + crash/stateless-restart + total-loss/WAL recovery
   (creases #19, #20, #21).
+* `data/decentral_net_t67_data.json` — T67 O(1)-per-neuron spatial search:
+  bit-identical indexed vs all-pairs flow, exact-vs-indexed scaling
+  exponents (1.88 vs 1.02), and internet-scale flow (n=100k 2D; 10k real
+  top-1M domains in 128D) (crease #22).
 * `docs/SPRING_BIBLE.md` BOOK V Ch. 13–15 — the date's 5-digit treatment, the
   retrace chain, the creases (T57, T59, T61, T62).
 * `docs/THE_BOOK.md` Ch. 2 (observations), Ch. 8 (time and convergence) — the

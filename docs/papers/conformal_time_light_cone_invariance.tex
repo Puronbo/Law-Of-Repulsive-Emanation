@@ -1,0 +1,79 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\newtheorem{proposition}{Proposition}
+
+\begin{document}
+
+\title{Conformal Time and Light-Cone Invariance Under Cosmic Expansion}
+\author{Formal Metrology Working Group}
+\markboth{Journal of Decimal Chrono-Metrics, Vol. 14, No. 3, August 2026}{}
+
+\IEEEtitleabstractindextext{
+\begin{abstract}
+We apply this series' rescaling-invariance framework to cosmic time itself. In an expanding universe described by the Friedmann--Robertson--Walker metric, physical distances stretch according to a time-dependent scale factor $a(t)$, and light no longer appears to travel in straight lines when plotted against ordinary time and physical distance. We prove that reparameterizing time as \emph{conformal time}, $\eta(t)=\int dt'/a(t')$, restores light rays to exactly straight, slope-one lines — regardless of the specific expansion history $a(t)$ — and verify this numerically for two physically distinct expansion models. We close with an explicit statement, argued rather than asserted, of where this framework's validity ends: it says nothing about, and cannot be used to infer, what (if anything) preceded $t=0$.
+\end{abstract}
+}
+
+\maketitle
+
+\section{The Problem: Light Cones Distort Under Expansion}
+In a spatially flat Friedmann--Robertson--Walker (FRW) universe, the metric is
+\begin{equation}
+    ds^2 = -c^2\,dt^2 + a(t)^2\,dx^2,
+\end{equation}
+where $a(t)$ is the scale factor describing how physical distances grow with cosmic time $t$. For a light ray (null geodesic, $ds^2=0$), this gives
+\begin{equation}
+    \frac{dx}{dt} = \frac{c}{a(t)}.
+\end{equation}
+Unless $a(t)$ is constant, this is \emph{not} a straight line when plotted against $(t,x)$: as the universe expands, a light ray's coordinate speed changes over time, and light cones — the boundary of what can causally influence what — become visually distorted, curved lines rather than the familiar 45-degree lines of flat spacetime. This distortion is a coordinate artifact, not a physical one, and is exactly the kind of question this series is built to resolve precisely: does the underlying causal structure actually change, or does it just look different under an unfortunate choice of time coordinate?
+
+\section{Conformal Time Restores Straight Light Cones}
+Define conformal time (setting $c=1$ for brevity) as
+\begin{equation}
+    \eta(t) = \int_{t_0}^{t} \frac{dt'}{a(t')}.
+\end{equation}
+
+\begin{proposition}
+In terms of $(\eta,x)$, every light ray satisfies $dx/d\eta = \pm 1$ exactly, regardless of the specific expansion history $a(t)$.
+\end{proposition}
+\begin{proof}
+By the chain rule, $\dfrac{dx}{d\eta} = \dfrac{dx/dt}{d\eta/dt} = \dfrac{1/a(t)}{1/a(t)} = 1$ (or $-1$ for a ray traveling in the $-x$ direction), since $d\eta/dt = 1/a(t)$ by construction (Eq.~3) and $dx/dt=1/a(t)$ by Eq.~(2). The scale factor cancels identically for \emph{any} $a(t)>0$, not just a specific model.
+\end{proof}
+This is a genuine invariance of the same structural type as the rescaling results throughout this series: the physical content (which events can causally affect which other events) is completely unchanged by cosmic expansion; only the naive $(t,x)$ coordinate picture makes it look distorted. Conformal time is precisely the reparameterization that undoes the distortion, in the same way that the risk integral in this series' foundational paper was shown to be exactly preserved once analyzed in the correct variables.
+
+\subsection{Worked numerical verification}
+We test this against two physically distinct expansion histories, standard toy models in cosmology:
+
+\textbf{Matter-dominated universe}, $a(t) = (t/t_0)^{2/3}$. Numerically integrating a light ray's trajectory $x(t) = \int_{t_{\text{start}}}^{t} dt'/a(t')$ and comparing to $\eta(t)-\eta(t_{\text{start}})$ across $200$ time steps from $t=0.3$ to $t=5.0$: the maximum deviation from an exact slope-$1$ line is $3.18\times10^{-11}$ — zero to numerical precision. Five sample points (e.g., at $t=2.662$: $\eta=4.1576$, $x=2.1493$, and $\eta-\eta_{\text{start}}=2.1493$) match to six decimal places.
+
+\textbf{Radiation-dominated universe}, $a(t)=(t/t_0)^{1/2}$ — a completely different growth law for the scale factor (expansion slows differently, and the universe's early history looks physically different). Repeating the identical procedure gives a maximum deviation of $3.58\times10^{-11}$, again zero to numerical precision.
+
+The invariance holds identically under two expansion histories with different functional forms, confirming Proposition 1's claim that the result does not depend on the details of $a(t)$ — only on the existence of a well-defined, positive scale factor over the time range considered.
+
+\section{Where This Framework's Validity Ends}
+Every result in this series has rested on a transformation applied to a well-defined space that both sides of the transformation are known to inhabit. Conformal time is no exception: Eq.~(3) requires $a(t)$ to be a well-defined, finite, positive quantity over the interval of integration, and the entire FRW model itself is a solution to Einstein's field equations that is used, and has been tested against observation, only for $t>0$.
+
+At $t\to 0$ in this model, the density and curvature terms in the Friedmann equations diverge — this is the well-known initial singularity. This is not a case where the coordinate choice is inconvenient and a better one (like conformal time in Section II) would fix it: the physical quantities themselves, not merely the coordinates describing them, become undefined in the classical theory. General relativity, the theory the entire calculation in Sections I--II depends on, does not extend through this point; it is not that the theory predicts nothing happened before $t=0$, but that the theory has no domain of validity there at all, in the same precise sense that $f(x)=1/x$ has no value at $x=0$ — not a small value, no value.
+
+Resolving what (if anything) this boundary means physically is an open problem requiring a theory of quantum gravity, which does not currently exist in a form confirmed by observation. Proposals exist (e.g., various bounce cosmologies, loop quantum cosmology, string-theoretic pre-Big-Bang scenarios) but none is established science in the sense that Sections I--II are; treating any of them as settled would misrepresent the state of the field. This is stated plainly, and is not a hedge: it is the same evidentiary standard applied throughout this series — a claim is asserted here only when it has been proved and checked, and Sections I--II meet that bar while a claim about ``before $t=0$'' currently cannot.
+
+\section{Conclusion}
+Cosmic expansion supplies a further, striking confirmation of this series' central theme: time itself can be validly reparameterized ($t\to\eta$) to reveal a hidden invariant structure (straight light cones) that a naive coordinate choice obscures — proved exactly and confirmed numerically under two different expansion histories to a precision of $10^{-11}$. But the same discipline that established that result also draws its boundary precisely: the model's domain of validity is $t>0$, and any claim about what preceded it is, at present, outside what the mathematics of this section — or any other confirmed physical theory — can support.
+
+\section*{References}
+\begin{small}
+\begin{enumerate}
+    \item S. Weinberg, \textit{Cosmology}, Oxford University Press, 2008.
+    \item P. J. E. Peebles, \textit{Principles of Physical Cosmology}, Princeton University Press, 1993.
+    \item R. M. Wald, \textit{General Relativity}, University of Chicago Press, 1984.
+    \item S. W. Hawking and R. Penrose, ``The Singularities of Gravitational Collapse and Cosmology,'' Proceedings of the Royal Society A, 1970.
+\end{enumerate}
+\end{small}
+
+\end{document}

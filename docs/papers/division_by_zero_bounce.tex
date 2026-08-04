@@ -1,0 +1,87 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\newtheorem{proposition}{Proposition}
+
+\begin{document}
+
+\title{Division by Zero, Consistently: The Riemann Sphere, and Why Quantum Cosmology Uses a Different Trick Entirely}
+\author{Formal Metrology Working Group}
+\markboth{Journal of Decimal Chrono-Metrics, Vol. 14, No. 3, August 2026}{}
+
+\IEEEtitleabstractindextext{
+\begin{abstract}
+We address a natural question raised by this series' treatment of the classical cosmological singularity: can division by zero be made mathematically consistent, and if so, does that resolve the singularity at $t=0$? We show the first part is genuinely true — the Riemann sphere extends division by zero self-consistently, and we verify this via the involution property of $z\mapsto 1/z$. We then show the second part is false, and explain precisely why: physical proposals for resolving the initial singularity, such as the loop-quantum-cosmology ``bounce,'' do not extend the division operation at all. They replace the governing equation itself with a modified one that never requires dividing by zero in the first place. We derive and numerically confirm the bounce condition exactly, and close by restating, once more, the boundary between what is proved here and what remains open research.
+\end{abstract}
+}
+
+\maketitle
+
+\section{Making Division by Zero Consistent: The Riemann Sphere}
+Ordinary real or complex arithmetic has no consistent value for $1/0$: assigning it any finite value breaks basic field axioms (e.g., $0\cdot x=0$ for all $x$ would force $1=0\cdot(1/0)=0$). But extending the number system itself — rather than patching the existing one — can restore full consistency.
+
+\begin{proposition}
+Let $\hat{\mathbb C} = \mathbb C\cup\{\infty\}$ (the Riemann sphere), with the conventions $1/0:=\infty$ and $1/\infty:=0$. Then $f(z)=1/z$ is a well-defined involution on $\hat{\mathbb C}$: $f(f(z))=z$ for every $z\in\hat{\mathbb C}$, including $z=0$ and $z=\infty$.
+\end{proposition}
+\begin{proof}
+For $z\ne 0,\infty$: $f(f(z))=1/(1/z)=z$ by ordinary arithmetic. For $z=0$: $f(0)=\infty$ by convention, and $f(\infty)=0$ by convention, so $f(f(0))=0$. For $z=\infty$: symmetric, $f(f(\infty))=\infty$. Every case returns the original value, so $f$ is a well-defined bijection of $\hat{\mathbb C}$ to itself.
+\end{proof}
+This is not a notational trick without content: $\hat{\mathbb C}$ with this structure is the actual domain on which Möbius transformations $z\mapsto\frac{az+b}{cz+d}$ act as a consistent group, foundational to complex analysis. (A more exotic algebraic structure, a \emph{wheel}, goes further and gives even $0/0$ a consistent value, at the cost of weakening some familiar algebraic identities; we do not need this stronger structure here.)
+
+\subsection{Worked numerical verification}
+Testing $f(z)=1/z$ on four representative values ($z=2,\,0.5,\,-3,\,0.0001$) and confirming $f(f(z))=z$ in each case (all matched to floating-point precision), together with the defined boundary cases $f(0)=\infty$ and $f(\infty)=0$, confirms Proposition 1 holds not just as an abstract claim but as a computable, checkable fact.
+
+\section{Why This Does Not Resolve the Cosmological Singularity}
+It is tempting to think Section I resolves the boundary identified in this series' cosmology paper: if $1/0$ can be given a consistent value, can the diverging density and curvature at $t\to 0$ simply be relabeled as $\infty$, resolved the same way? No — and the reason is precise, not a matter of taste.
+
+The classical Friedmann equation relates the expansion rate $H=\dot a/a$ to the energy density $\rho$:
+\begin{equation}
+    H^2 = \frac{8\pi G}{3}\rho.
+\end{equation}
+As $t\to 0$, $\rho\to\infty$ (matter/energy compressed into vanishing volume), so $H^2\to\infty$ directly — this is a genuine divergence of a physical quantity, not a division by zero at all. Relabeling ``$H=\infty$'' via the Riemann sphere changes nothing physically: it does not predict what happens at or near that point, does not connect to any other physical quantity, and is not what any actual quantum-gravity research program does.
+
+\subsection{What loop quantum cosmology actually does: replace the equation}
+Loop quantum cosmology (LQC) proposes, instead, a modified Friedmann equation with a quantum-geometric correction term:
+\begin{equation}
+    H^2 = \frac{8\pi G}{3}\,\rho\left(1-\frac{\rho}{\rho_c}\right),
+\end{equation}
+where $\rho_c$ is a critical (Planck-scale) density. This is not $\infty$ relabeled — it is a structurally different function of $\rho$.
+
+\begin{proposition}
+Eq.~(2) has a maximum at $\rho=\rho_c/2$, with $H^2_{\max} = \frac{8\pi G}{3}\cdot\frac{\rho_c}{4}$ (finite), and $H^2=0$ exactly at $\rho=\rho_c$ — precisely where the classical equation (1) would diverge.
+\end{proposition}
+\begin{proof}
+Write $H^2 = A\rho(1-\rho/\rho_c)$ with $A=8\pi G/3$. Then $\dfrac{dH^2}{d\rho} = A\left(1-\dfrac{2\rho}{\rho_c}\right)=0 \iff \rho=\rho_c/2$, giving $H^2_{\max}=A\cdot\frac{\rho_c}{2}\cdot\frac12 = \frac{A\rho_c}{4}$. At $\rho=\rho_c$: $H^2 = A\rho_c(1-1)=0$ exactly. Both follow directly from substitution and elementary calculus (confirmed symbolically, not just numerically, in the verification below).
+\end{proof}
+$H^2=0$ at the density where the classical theory would have $H^2\to\infty$ means the expansion rate itself vanishes at maximum density — contraction smoothly reverses into expansion. This is the technical content of the term ``big bounce'': not a resolved division by zero, but a genuinely different dynamical law that simply never has a $1/0$ (or $\rho\to\infty$) event to resolve.
+
+\subsection{Worked numerical and symbolic verification}
+Solving $dH^2/d\rho=0$ symbolically confirms the critical point at exactly $\rho=\rho_c/2$, with $H^2_{\max}=A\rho_c/4$, and $H^2(\rho_c)=0$ exactly — all three confirmed by computer algebra, not merely numerical approximation. Additionally, a Taylor expansion of Eq.~(2) around $\rho=0$ gives $H^2 = A\rho + O(\rho^2)$ — recovering the classical Friedmann equation (1) exactly in the low-density limit, confirming Eq.~(2) is a genuine \emph{extension} of the accepted low-density physics, not an unrelated replacement.
+
+\section{Epistemic Status, Restated}
+Section I is settled mathematics: the Riemann sphere and Möbius transformations are foundational, uncontroversial complex analysis. Section II's specific mechanism — loop quantum cosmology's modified Friedmann equation — is a serious, actively published research program (originating with Ashtekar, Pawlowski, and Singh in the mid-2000s) that resolves the classical singularity \emph{within its own model}, but it is one of several competing proposals (others include string-theoretic pre-Big-Bang scenarios and ekpyrotic/cyclic models), none of which has been confirmed by observation. Presenting the LQC bounce as \emph{the} resolution of the singularity, rather than \emph{a} mathematically consistent candidate resolution, would misrepresent the state of the field — the same caution stated in this series' previous cosmology paper applies unchanged here.
+
+\section{Conclusion}
+\begin{itemize}
+    \item Division by zero can be made fully consistent in an extended number system (Riemann sphere) — proved via the involution property of $z\mapsto1/z$, confirmed on four test values plus both boundary cases.
+    \item This has no bearing on the cosmological singularity, because the physical divergence there is not a division-by-zero event to begin with.
+    \item The actual proposed resolution (LQC) works by replacing the dynamical equation itself, producing a finite maximum density and an exact zero (not infinity) in expansion rate at the classical singularity point — proved symbolically and confirmed to recover standard cosmology at low density.
+    \item This candidate resolution remains unconfirmed research, not settled physics — a distinction this series maintains throughout rather than blurring for narrative convenience.
+\end{itemize}
+
+\section*{References}
+\begin{small}
+\begin{enumerate}
+    \item L. V. Ahlfors, \textit{Complex Analysis}, McGraw-Hill, 1979.
+    \item J. Carlström, ``Wheels -- On Division by Zero,'' Mathematical Structures in Computer Science, 2004.
+    \item A. Ashtekar, T. Pawlowski, and P. Singh, ``Quantum Nature of the Big Bang,'' Physical Review Letters, 2006.
+    \item A. Ashtekar and P. Singh, ``Loop Quantum Cosmology: A Status Report,'' Classical and Quantum Gravity, 2011.
+\end{enumerate}
+\end{small}
+
+\end{document}
