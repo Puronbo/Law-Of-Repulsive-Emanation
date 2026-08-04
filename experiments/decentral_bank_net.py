@@ -48,8 +48,8 @@ Tests (each with a null):
 Limits (crease-worthy, printed):
   - Still majority-honesty, not BFT: a >50%-corrupt neighbourhood, or a
     partition the proposer can exploit, wins until detection.
-  - Real loopback TCP sockets, mutual-TLS authenticated (T19), but still one
-    machine and no cross-machine transport; transport-specific faults are
+  - Real sockets: mutual-TLS over the machine's LAN NIC (T20), but still one
+    machine; a true two-host deployment and transport-specific faults are
     modelled only at the fragment level.
   - Crash recovery: with live peers a stateless restart rebuilds from
     replicas; TOTAL simultaneous loss is rebuilt from each node's OWN
@@ -94,9 +94,10 @@ from manifold.decentral_net import DecentralNet  # noqa: E402
 # Transports (the SAME protocol runs over either)
 # ---------------------------------------------------------------------- #
 SOCK_PORT_BASE = 60100
+SOCK_HOST = "127.0.0.1"        # default interface; a LAN IP (T20) proves NIC
 
 
-def _gen_tls(dirpath):
+def _gen_tls(dirpath, host=SOCK_HOST):
     """Self-signed cert + key for the loopback test net.  One shared identity
     proves the channel is authenticated+encrypted (a client WITHOUT it is
     rejected) - it is NOT per-node identity, which is a real PKI task."""
@@ -106,7 +107,7 @@ def _gen_tls(dirpath):
     name = x509.Name([x509.NameAttribute(NameOID.COMMON_NAME,
                                          "decentral-bank-loopback-test")])
     san = x509.SubjectAlternativeName([
-        x509.IPAddress(ipaddress.ip_address("127.0.0.1")),
+        x509.IPAddress(ipaddress.ip_address(host)),
         x509.DNSName("localhost")])
     now = datetime.datetime.now(datetime.timezone.utc)
     cert = (x509.CertificateBuilder()
@@ -187,9 +188,11 @@ class SocketTransport:
     (partitions) is enforced by the driver sending REACH - a node drops
     inbound traffic from peers outside its allowed set.  A maintainer thread
     re-establishes any connection that dies (crash/restart)."""
-    def __init__(self, node_id, n_frag, inq, tls_cert=None, tls_key=None):
+    def __init__(self, node_id, n_frag, inq, tls_cert=None, tls_key=None,
+                 host=SOCK_HOST):
         self.node_id = node_id
         self.inq = inq
+        self.host = host
         self.port = SOCK_PORT_BASE + node_id
         self.n = n_frag
         self.allowed = None
@@ -203,7 +206,7 @@ class SocketTransport:
         deadline = time.time() + 6        # retry bind: a killed process from a
         while True:                       # previous test can still hold the port
             try:
-                self._srv.bind(("127.0.0.1", self.port))
+                self._srv.bind((self.host, self.port))
                 break
             except OSError as e:
                 if time.time() > deadline:
@@ -266,7 +269,7 @@ class SocketTransport:
 
     def _connect(self, peer_id, port):
         try:
-            s = socket.create_connection(("127.0.0.1", port), timeout=0.25)
+            s = socket.create_connection((self.host, port), timeout=0.25)
         except OSError:
             return
         s.settimeout(None)              # blocking: idle conns must NOT look EOF
@@ -502,12 +505,13 @@ def node_main_loop(node_id, witnesses, faulty, refusing, n_frag, vote_timeout,
 
 def node_main_socket(node_id, witnesses, faulty, refusing, n_frag,
                      vote_timeout, inq, wal_path=None, tls_cert=None,
-                     tls_key=None):
+                     tls_key=None, host=SOCK_HOST):
     """Spawn entry for the socket mode: the SocketTransport (sockets, locks,
     threads) is created HERE in the child process - it cannot be pickled
     through Windows spawn."""
     node_main_loop(node_id, witnesses, faulty, refusing, n_frag, vote_timeout,
-                   SocketTransport(node_id, n_frag, inq, tls_cert, tls_key),
+                   SocketTransport(node_id, n_frag, inq, tls_cert, tls_key,
+                                   host),
                    wal_path)
 
 
@@ -751,12 +755,13 @@ class SocketNetwork:
     as the relay's edge set, but over real TCP/IP packets."""
 
     def __init__(self, n_frag, k, vote_timeout=0.8, faulty=set(),
-                 refusing=set(), wal_dir=None, tls=False):
+                 refusing=set(), wal_dir=None, tls=False, host=SOCK_HOST):
         self.n = n_frag
         self.k = k
         self.vote_timeout = vote_timeout
         self.faulty = set(faulty)
         self.refusing = set(refusing)
+        self.host = host
         self.wal_dir = wal_dir
         self._wal = None
         if wal_dir is not None:
@@ -767,13 +772,13 @@ class SocketNetwork:
         if tls:
             self._tls = True
             self._tls_dir = tempfile.mkdtemp(prefix="tls_")
-            self._tls_cert, self._tls_key = _gen_tls(self._tls_dir)
+            self._tls_cert, self._tls_key = _gen_tls(self._tls_dir, host)
         self.net, self.witnesses = build_topology(n_frag, k)
         self.result_q = mp.Queue()
         self.driver_port = SOCK_PORT_BASE + n_frag
         self._srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self._srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        self._srv.bind(("127.0.0.1", self.driver_port))
+        self._srv.bind((self.host, self.driver_port))
         self._srv.listen(64)
         self._stop = threading.Event()
         threading.Thread(target=self._serve, daemon=True).start()
@@ -784,7 +789,7 @@ class SocketNetwork:
                 i, self.witnesses[i], i in faulty, i in refusing,
                 n_frag, vote_timeout, inq,
                 self._wal_path(i) if self._wal is not None else None,
-                self._tls_cert, self._tls_key))
+                self._tls_cert, self._tls_key, host))
             p.daemon = True
             p.start()
             self.inqs.append(inq)
@@ -839,7 +844,7 @@ class SocketNetwork:
                 if i not in self.conns:
                     try:
                         s = socket.create_connection(
-                            ("127.0.0.1", SOCK_PORT_BASE + i), timeout=0.25)
+                            (self.host, SOCK_PORT_BASE + i), timeout=0.25)
                         s.settimeout(None)
                         if self._tls_cert:
                             s = _tls_ctx(self._tls_cert, self._tls_key) \
@@ -961,7 +966,7 @@ class SocketNetwork:
             node_id, self.witnesses[node_id], node_id in self.faulty,
             node_id in self.refusing, self.n, self.vote_timeout, inq,
             self._wal_path(node_id) if self._wal is not None else None,
-            self._tls_cert, self._tls_key))
+            self._tls_cert, self._tls_key, self.host))
         p.daemon = True
         p.start()
         self.inqs[node_id] = inq
@@ -1594,6 +1599,61 @@ def test_t19_socket_tls():
                                   and reconverged) else "FAIL"}
 
 
+def test_t20_socket_lan_interface():
+    """T20: the SAME consensus + mutual-TLS over a REAL network interface,
+    not loopback.  The host is parameterized: every listener binds to and
+    every connection crosses this machine's LAN NIC (real ARP/routing/MTU
+    path, cert carrying the interface IP in its SAN).  Proves the transport
+    is not loopback-only.  Honest boundary: still ONE machine - a true
+    two-host deployment (per-node host tables, two boxes) is not provable
+    here and needs a second machine."""
+    host = socket.gethostbyname(socket.gethostname())
+    if host.startswith("127."):
+        return {"test": "T20 socket on LAN interface",
+                "lan_ip": host, "verdict": "SKIP",
+                "reason": "host has no non-loopback interface"}
+    n, k = 6, 3
+    sn = SocketNetwork(n, k, tls=True, host=host)
+    frag_for, keys, addrs = make_accounts(sn.net, 24)
+    rng = np.random.RandomState(31)
+    nonces = defaultdict(int)
+    cids = []
+    while len(cids) < 14:
+        s, r = rng.randint(0, len(addrs), size=2)
+        if s == r:
+            continue
+        tx = next_tx(keys, nonces, addrs[s], addrs[r], int(rng.randint(1, 30)))
+        cids.append(f"n{len(cids)}")
+        sn.submit(tx, cids[-1])
+    results = sn.collect_results(cids, timeout=60)
+    ok = all(v[0] for v in results.values()) and len(results) == len(cids)
+    snaps = sn.query_states(timeout=8)
+    heads = consensus_heads(snaps, n)
+    consistent = all(h[0] for h in heads.values())
+    valid, conserved = replay_from(snaps, n, addrs)
+
+    sn.kill(2)
+    sn.restart(2)
+    sn.resync_all()
+    deadline = time.time() + 12
+    reconverged = False
+    while time.time() < deadline and not reconverged:
+        sn.wait(0.5)
+        snaps2 = sn.query_states(timeout=8)
+        h2 = consensus_heads(snaps2, n)
+        reconverged = all(x[0] for x in h2.values())
+        if not reconverged:
+            sn.resync_all()
+    sn.stop()
+    return {"test": "T20 socket on LAN interface",
+            "lan_ip": host, "commits": len(results), "all_ok": ok,
+            "consistent": consistent, "conserved": conserved,
+            "chains_valid": valid,
+            "reconverged_after_nic_restart": reconverged,
+            "verdict": "PASS" if (ok and consistent and conserved and valid
+                                  and reconverged) else "FAIL"}
+
+
 def test_t17_socket_crash_restart():
     """T17: the T15 crash + stateless-restart guarantee over REAL TCP sockets
     instead of the controllable relay.  Kill a node (its listener and every
@@ -1710,7 +1770,8 @@ def main():
                test_t16_socket_commit, test_t16_socket_partition,
                test_t17_socket_crash_restart,
                test_t18_total_state_loss_wal,
-               test_t19_socket_tls]:
+               test_t19_socket_tls,
+               test_t20_socket_lan_interface]:
         r = fn()
         results[r["test"]] = r
         print(f"  [{r['verdict']:8s}] {r['test']}")
@@ -1720,7 +1781,7 @@ def main():
 
     limits = {
         "not_bft": "majority-honesty quorum; >50% corrupt neighbourhood or an exploitable partition wins until detected",
-        "single_machine": "real mutual-TLS loopback sockets (T19) but still one machine and no cross-machine transport; transport-specific faults (partitions, machine death) are only modelled at the fragment level",
+        "single_machine": "real mutual-TLS sockets on the machine's LAN NIC (T20) but still one machine; a true two-host deployment and transport-specific faults (partitions, machine death) are only modelled at the fragment level",
         "no_total_state_loss": "a crash recovers from PEERS' replicas (stateless restart) AND, when every node dies at once, from each node's OWN T8-style WAL (T18); an OS-level crash mid-commit could still tear the log",
         "equivocation_needs_collusion": "a double-signed tx needs the account holder's key; the network only detects the fork afterwards",
     }

@@ -933,6 +933,15 @@ holds a validated replica of every other fragment's.
   fabric and re-converges. Honest limit: ONE shared identity (loopback
   test), so this proves authenticated+encrypted transport, not a real PKI
   with per-node identities.
+* **T20 socket on LAN interface (PASS):** the SAME consensus + mutual-TLS
+  over a real network interface. The host is now parameterized: every
+  listener binds to and every connection crosses this machine's LAN NIC
+  (192.168.100.241) — a real ARP/routing/MTU path, with the interface IP in
+  the TLS cert's SAN. 14/14 txs commit, replicas bit-identical, chains
+  re-validate, conservation holds, and a crash + restart re-converges over
+  the NIC. Honest boundary: still ONE machine — a true two-host deployment
+  (per-node host tables, two boxes) needs a second machine and is not
+  provable here.
 
 Three real protocol bugs were found and fixed while making this pass, each
 worth recording: **(a)** a proposer must NOT start the next block for a
@@ -945,8 +954,9 @@ replica, or the owner never sees its own commits; **(c)** `rollback()` left
 later commit for that fragment.
 
 Limits (printed): majority-honesty, not BFT; single machine with real
-mutual-TLS loopback sockets (T19) but no cross-machine transport —
-partitions and machine death are modelled only at the fragment level; a
+mutual-TLS sockets on the machine's LAN NIC (T20) but no true cross-machine
+transport — partitions and machine death are modelled only at the fragment
+level; a
 single crash recovers from PEERS' replicas, and a TOTAL simultaneous loss
 is rebuilt from each node's OWN T8-style WAL (T18), though an OS-level
 crash mid-commit could still tear the log; equivocation needs the account
@@ -1113,8 +1123,9 @@ holder's key (the network detects the fork afterwards). Data:
   faulty-quorum curve (crease #16), anomaly precision vs random null.
 * `data/decentral_bank_bridge_data.json` — T69 the bridge: on/off-ramp round
   trip, ref-idempotency, and the backing invariant (crease #17).
-* `data/decentral_bank_net_data.json` — T70/T71 fragments as processes: T12–T19
-  verdicts (T16/T17/T18/T19 over real TCP sockets, T19 mutual-TLS), the
+* `data/decentral_bank_net_data.json` — T70/T71 fragments as processes: T12–T20
+  verdicts (T16/T17/T18/T19 over real TCP sockets, T19 mutual-TLS, T20 over
+  the machine's LAN NIC), the
   scattered-corruption wall vs contiguous-corruption resilience (crease #18),
   partition/rejoin + crash/stateless-restart + total-loss/WAL recovery
   (creases #19, #20, #21).
