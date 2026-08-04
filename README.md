@@ -121,6 +121,7 @@ python math_validation.py   # 192 checks, 0 fails
 cd .. && python run_all.py  # Full pipeline
 pytest tests/test_spring_series.py   # 10 passed
 python experiments/prime_count_from_scratch.py   # pi(943901200001) = 35575526191
+python Universals/serve_dashboard.py   # L.O.R.E. dashboard -> http://localhost:8080/docs/
 ```
 
 ---
