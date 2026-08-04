@@ -99,28 +99,35 @@ class _GridIndex:
         self.cells = {}
         for i in range(self.n):
             self.cells.setdefault(tuple(self.idx[i]), []).append(i)
+        # precompute the NEW cells at each Chebyshev ring once (ring 0 = own
+        # cell, ring r = cells with max |offset| == r) so a query never pays
+        # for itertools.product or a seen-set again
+        self.ring_offsets = []
+        for r in range(int(self.ni.max())):
+            offs = [off for off in itertools.product(
+                range(-r, r + 1), repeat=self.dim)
+                if max(abs(o) for o in off) == r]
+            self.ring_offsets.append(offs)
 
     def _scan(self, x, ci, k=1, drop=-1):
         """All points in cells within the smallest Chebyshev ring r such that
         the k-th nearest candidate is provably closer than every point in an
         unscanned cell (min distance to a ring-(r+1) cell is >= r*cell)."""
-        cand, seen = [], set()
-        for r in range(0, int(self.ni.max())):
-            for off in itertools.product(range(-r, r + 1), repeat=self.dim):
-                cc = tuple(ci[d] + off[d] for d in range(self.dim))
-                if cc in seen:
-                    continue
-                seen.add(cc)
-                for j in self.cells.get(cc, ()):
+        dim = self.dim
+        cells = self.cells
+        cand = []
+        for r, offs in enumerate(self.ring_offsets):
+            for off in offs:
+                cc = tuple(ci[d] + off[d] for d in range(dim))
+                for j in cells.get(cc, ()):
                     if j != drop:
                         cand.append(j)
             if len(cand) < k:
                 continue
             c = np.asarray(cand, dtype=int)
             d = np.linalg.norm(self.pts[c] - x, axis=-1)
-            order = np.argsort(d)
-            if d[order[k - 1]] <= r * self.cell:
-                return c[order]
+            if np.partition(d, k - 1)[k - 1] <= r * self.cell:
+                return c[np.argsort(d)]
         c = np.asarray(cand, dtype=int)
         d = np.linalg.norm(self.pts[c] - x, axis=-1)
         return c[np.argsort(d)]
@@ -224,16 +231,23 @@ class DecentralNet:
     # ------------------------------------------------------------------ #
     def flow(self, mu=0.0, steps=400):
         """Run `steps` local dynamics steps.  mu is the absorption knob."""
+        A = self.A
+        m = self.mu0 + mu
+        dt = self.dt
+        eps = self.eps
+        max_r = self.max_r
         for _ in range(steps):
             nb = self._knn()
+            q = self.q
+            h = self.h
             for i in range(self.n):
-                out = self.q[i] - self.q[nb[i]]              # outward vectors
-                r3 = np.maximum(np.linalg.norm(out, axis=-1), self.eps) ** 3
-                rep = (out / r3[:, None]).sum(axis=0) if len(nb[i]) else 0.0
-                g = -self.A * (self.mu0 + mu) * (self.q[i] - self.h[i]) + rep
+                out = q[i] - q[nb[i]]                    # outward vectors
+                r3 = np.maximum(np.linalg.norm(out, axis=-1), eps) ** 3
+                rep = (out / r3[:, None]).sum(axis=0)
+                g = -A * m * (q[i] - h[i]) + rep
                 gm = np.linalg.norm(g) + 1e-9
-                self.q[i] += self.dt * g / gm
-            self.q = to_disk(self.q, self.max_r)
+                q[i] += dt * g / gm
+            self.q = to_disk(self.q, max_r)
         return self
 
     def settle(self, steps=400):
@@ -285,9 +299,9 @@ class DecentralNet:
         kk = min(self.k, self.n - 1)
         idx = self._index()
         if idx is not None:
-            nb = idx.knn_all(kk)
-            means = np.array([np.linalg.norm(self.q[i] - self.q[nb[i]],
-                                             axis=-1).mean() for i in range(self.n)])
+            nb = np.asarray(idx.knn_all(kk))
+            means = np.linalg.norm(self.q[:, None, :] - self.q[nb],
+                                   axis=-1).mean(axis=1)
             return float(np.median(means))
         D = np.linalg.norm(self.q[:, None] - self.q[None], axis=-1)
         np.fill_diagonal(D, np.inf)

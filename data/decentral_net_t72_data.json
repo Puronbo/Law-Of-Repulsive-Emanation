@@ -1,0 +1,30 @@
+{
+  "flow_whole_internet": {
+    "n_sites": 1914915,
+    "ms_per_step": 277218.2,
+    "allpairs_d_gb": 58670.0,
+    "spacing_before": 0.00032710685089075333,
+    "spacing_after_step": 0.00036374194235191894,
+    "pca_explained_var_2d": 0.1094144480723157,
+    "verdict": "MEASURED"
+  },
+  "heal_whole_internet": {
+    "killed": 382983,
+    "survivors": 1531932,
+    "spacing_after_kill": 0.0004067228586803157,
+    "heal_ms_per_step": 209088.6,
+    "spacing_after_heal": 0.00043826749797431006,
+    "verdict": "MEASURED"
+  },
+  "highdim_wall": {
+    "n": 10000,
+    "ms_per_step": 12306.3,
+    "allpairs_d_gb": 102.0,
+    "verdict": "MEASURED"
+  },
+  "limits": {
+    "flow_geometry_is_2d_projection": "the whole internet is flowed in the PCA(2) projection of its real 128D embeddings (~11% of variance); the 128D native space is the routing/embedding space (T55i) and its flow stays near 10^4 (crease #22)",
+    "one_machine": "this is still one 31.7 GB box (T20/T67); a true distributed flow across machines remains unbuilt",
+    "sequential_flow": "flow keeps its Gauss-Seidel per-neuron loop (identical to T67; a vectorized Jacobi update would change the dynamics)"
+  }
+}
