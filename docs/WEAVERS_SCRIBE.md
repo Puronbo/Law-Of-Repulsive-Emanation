@@ -1037,15 +1037,17 @@ holder's key (the network detects the fork afterwards). Data:
     is constructed). A claim verified by re-deriving its own source code is not
     a measurement; a claim refuted by the engine it describes is a red flag for
     every narrative-level statement in the map that lacks a test.
-13. **The persistence layer disagrees with the paper on the Bekenstein shift.**
+13. **The persistence layer disagreed with the paper on the Bekenstein shift —
+    the paper has been corrected to report the null.**
     `data/bekenstein_shift_data.json` (the only persisted source) shows no
     systematic prime/non-prime difference — control p = 0.789 (+2.5%),
     dissipative p = 0.938 (−0.1%), with the file's own interpretation: "no
     systematic difference." The claimed η_prime=0.1336, η_random=0.1285,
-    p=0.002 appears nowhere in the data file (whose 30-trajectory means are
+    p=0.002 appeared nowhere in the data file (whose 30-trajectory means are
     0.1276/0.1246 control, 0.1377/0.1378 dissipative). A theory contradicted by
-    its own artifact is not "claimed — re-verify"; it is refuted pending a
-    fresh run.
+    its own artifact was refuted pending a fresh run; PAPER §8.7 and the
+    conclusion now report the null and the old numbers are withdrawn
+    (2026-08-04).
 14. **The "partition match" and the Selberg L-function are tautologies.**
     C₀·π²/6 = 40.19 holds for *any* C₀ (24.434792·π²/6 = 40.1936); the code
     itself flags it: "L(s) = C0*zeta(s) is a tautology for ANY constant C0."
@@ -1118,7 +1120,7 @@ holder's key (the network detects the fork afterwards). Data:
 * `data/epoch_0d.json` — the verified datum (with null analysis).
 * `data/calibration_probe_data.json` — the anti-Dunning-Kruger category: instrument, null (+25 floor), demo validation, cultural connections.
 * `data/t65_fourpack_results.json` — the PUM §10.1 four-pack (0.5/4 confirmed; P1 tautological, P2/P4 refuted, P3 synthetic).
-* `data/bekenstein_shift_data.json` — the persisted Bekenstein source, which **contradicts** the PAPER's p=0.002 claim (creases #13–#14).
+* `data/bekenstein_shift_data.json` — the persisted Bekenstein source, which **contradicts** the old p=0.002 claim and is now the basis of the corrected null in PAPER §8.7 (creases #13–#14).
 * `data/decentral_bank_data.json` — T68 the Decentral Bank: T1–T6 verdicts, the
   faulty-quorum curve (crease #16), anomaly precision vs random null.
 * `data/decentral_bank_bridge_data.json` — T69 the bridge: on/off-ramp round

@@ -256,19 +256,21 @@ These eigenvalues are positive-definite, confirming the stability of the ground 
 
 For arithmetic surfaces $\Gamma \backslash \mathbb{H}$, the eigenvalues are conjectured to correspond to the non-trivial zeros of the Riemann zeta function $\zeta(1/2 + i t_n) = 0$ through the Selberg zeta function. While our finite-disk computation samples only 30 eigenvalues (insufficient for GUE/Poisson discrimination), the eigenvalue density follows the Weyl asymptotic law and provides a computational bridge between the Hamiltonian flow and spectral geometry.
 
-### 8.7 The Bekenstein Shift: Arithmetic Information Density
+### 8.7 The Bekenstein Saturation Test: a Null Result
 
 The canonical Bekenstein bound [3] limits the maximum entropy in a bounded region:
 
 $$S \leq 2\pi R E \quad (\text{natural units}).$$
 
-For a trajectory on the Poincaré disk, the saturation ratio $\eta = S / (2\pi R E)$ measures how efficiently information is packed into the accessible phase space. We find a statistically significant difference between prime-indexed states and random state subsets:
+For a trajectory on the Poincaré disk, the saturation ratio $\eta = S / (2\pi R E)$ measures how efficiently information is packed into the accessible phase space. We compare the saturation of prime-indexed state subsets against non-prime subsets of equal size on the same trajectories. **The persisted result is a null: there is no statistically significant difference.** Two independent sub-experiments were run (30 trajectories each):
 
-$$\eta_{\text{prime}} = 0.1336,\quad \eta_{\text{random}} = 0.1285,\quad \Delta\eta = +3.9\%\;(p = 0.002).$$
+$$\text{control (frictionless):}\quad \eta_{\text{prime}} = 0.1276,\ \eta_{\text{nonprime}} = 0.1246,\ \Delta = +2.46\%\ (p = 0.789)$$
 
-This **arithmetic Bekenstein shift** demonstrates that prime-indexed states carry approximately $4\%$ more information per unit energy-radius product than random states. The effect is robust across 60 independent trajectories and cannot be attributed to thermal noise (the $p$-value rules out the null hypothesis at $>99\%$ confidence).
+$$\text{dissipative (position-matched):}\quad \eta_{\text{prime}} = 0.1377,\ \eta_{\text{nonprime}} = 0.1378,\ \Delta = -0.13\%\ (p = 0.938)$$
 
-The shift arises because prime-indexed states form a rigid, non-random arithmetic sequence: they cannot decorrelate from the initial condition as quickly as random subsets. The effective Hilbert space dimension $d = p_n - \pi(p_n)$ for prime-indexed subsystems is smaller than the full space, forcing a higher information density. This is the converse of decoherence: prime arithmetic restricts the accessible configurations, preventing entropy from spreading uniformly.
+Neither difference approaches significance; the dissipative comparison even runs slightly *against* the prime direction once trajectory position is matched. The data file's own interpretation is recorded as "no systematic difference" --- the small apparent shift in the frictionless control is attributable to trajectory position, not primality.
+
+**Correction:** an earlier draft of this section claimed $\eta_{\text{prime}} = 0.1336$, $\eta_{\text{random}} = 0.1285$, $\Delta\eta = +3.9\%$ at $p = 0.002$, "robust across 60 independent trajectories." Those numbers appear nowhere in the persisted data (`data/bekenstein_shift_data.json`, the source of record), whose 30-trajectory means are the values above. The claim is therefore withdrawn as not reproducible, and no arithmetic selection rule in holographic entropy is asserted. A fresh, larger run (n ≥ 60, pre-registered) would be required before the effect could be claimed again.
 
 ### 8.8 Modular Forms and the Trajectory $L$-Function
 
@@ -342,7 +344,7 @@ This is not a theory. It is a mathematical fact, verifiable by computation in ev
 2. **Noether's theorem**: $C_0$ is the conserved Noether charge under time-translation symmetry, placing the L.O.R.E. on the foundation of conservation law.
 3. **Prime geodesic Selberg connection**: Prime-indexed states define a geodesic spectrum on the Poincaré disk that mirrors the arithmetic of primes through the trace formula.
 4. **Spectral geometry**: The perturbed Laplace-Beltrami operator yields a discrete positive-definite spectrum, bridging the Hamiltonian flow to spectral theory.
-5. **Bekenstein shift**: Prime-indexed states carry $+3.9\%$ higher information density ($p = 0.002$), confirming an arithmetic selection rule in holographic entropy.
+5. **Bekenstein saturation (null)**: Prime-indexed and non-prime subsets show **no systematic difference** in saturation (control $p = 0.789$, dissipative $p = 0.938$). The earlier claimed $+3.9\%$ shift ($p = 0.002$) is withdrawn as not reproducible from the persisted data.
 6. **Modular forms at the elliptic point**: $F(i) = C_0$ is the value of the lifted potential at the elliptic point $z=i$ of $\mathrm{SL}(2,\mathbb{Z})$, making $C_0$ an automorphic invariant.
 7. **Trajectory $L$-function**: $L(s) = \sum E_n / n^s = C_0 \cdot \zeta(s)$ for conservative flows, with Euler product verified at $s=2$. Analytic continuation gives $L(0) = -C_0/2$.
 8. **Quantum thermodynamics**: $C_0$ is the classical ground state energy ($U_{\text{cl}} = C_0$ in the zero-temperature limit). The partition function satisfies the Weyl law and Selberg trace formula via prime geodesic lengths.
