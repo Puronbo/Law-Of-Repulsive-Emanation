@@ -1192,6 +1192,11 @@ boundary) — distributing it across machines remains unbuilt.
   bit-identical indexed vs all-pairs flow, exact-vs-indexed scaling
   exponents (1.88 vs 1.02), and internet-scale flow (n=100k 2D; 10k real
   top-1M domains in 128D) (crease #22).
+* `docs/US7284987B2_ANALYSIS.md` + PUM §11 — the McGrath atomic-model patent
+  (expired 2024-04-24, physical teaching model, class G09B): NO conflict with
+  the repo's claims; C(6,4)=15 and the mass-radius ratios reproduce
+  (1105/85=325/25=13; 36:60:108=3:5:9), but the arcsin(⅓) axis-angle claim
+  and the gravity/EM ratio do not (illustrative, order-of-magnitude only).
 * `docs/SPRING_BIBLE.md` BOOK V Ch. 13–15 — the date's 5-digit treatment, the
   retrace chain, the creases (T57, T59, T61, T62).
 * `docs/THE_BOOK.md` Ch. 2 (observations), Ch. 8 (time and convergence) — the

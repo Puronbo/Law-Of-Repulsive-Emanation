@@ -90,6 +90,20 @@ given so it can be re-run).
 |---|---|---|---|
 | Bekenstein shift | PAPER.md: η_prime=0.1336, η_random=0.1285, Δη **+3.9%, p=0.002** | `data/bekenstein_shift_data.json`: control p=0.789 (+2.5%), dissipative p=0.938 (−0.1%), interpretation "no systematic difference"; claimed numbers absent | **RESOLVED 2026-08-04 — claim withdrawn.** PAPER §8.7 + conclusion #5 rewritten to report the null (control p=0.789, dissipative p=0.938); old numbers explicitly withdrawn as not reproducible. A fresh pre-registered n≥60 run remains the only way the effect could be claimed again. |
 
+### 1.9 External prior-art cross-reference — **US7284987B2 (verified 2026-08-04)**
+* McGrath's "Physical Quantum Model for the Atom" (US7284987B2, Elemetric LLC,
+  granted 2007, **expired fee-related 2024-04-24** → public domain) is
+  cross-referenced in PHYSICAL_UNIVERSAL_MAP §11.  Full analysis in
+  `docs/US7284987B2_ANALYSIS.md`.  Key findings: all 17 claims recite a
+  *physical teaching model* (class G09B23/20); **no overlap** with the repo's
+  computational/mathematical claims.  Of the patent's own numbers: C(6,4)=15
+  reproduces, the mass-radius ratios reproduce (1105/85 = 325/25 = 13;
+  36:60:108 = 3:5:9), but the claim-2 geometry (15 axes at equal angle
+  arcsin(⅓) ≈ 19.47° in R⁶) **does not** reproduce from the stated coordinate
+  construction, and the gravity/EM ratio 9.39e-39 matches α_G ≈ 5.91e-39 only
+  to within 1.6×.  **[verified: reproducible numbers re-computed; geometry
+  claim flagged as illustrative, not established]**
+
 ---
 
 ## 2. CONJECTURES (explicit)
