@@ -106,3 +106,23 @@ The package also exercises the local-only ethic in other guises
   k-NN - neighbourhoods are read once and held fixed while the cloud
   relaxes, and each step can still be chained to the ledger.
 
+## Autonomous applications
+
+`puno_flow/apps/` contains self-contained applications that run without a
+central controller - the units spread, repair, route, and audit themselves
+using the local-only dynamics, the exact search index, creation, and the
+per-unit ledgers:
+
+- **`guard_mesh`** - a self-healing coverage mesh.  It monitors its own
+  coverage (mean k-NN spacing), finds the most isolated unit with the search
+  engine, respawns units into the gaps it detects, and survives scheduled
+  damage.  `python -m puno_flow.apps.guard_mesh [ticks] [n]`.
+- **`search_service`** - an autonomous search-engine daemon.  Units are
+  records (each born with a genesis block); queries return ranked hits;
+  every mutation is appended to an operation ledger.  Interactive REPL.
+  `python -m puno_flow.apps.search_service`.
+- **`router`** - greedy geographic routing over the toy network, with a
+  fallback through the exact index when greedy hits a void.  When routers
+  die the mesh reflows locally and routing self-heals.
+  `python -m puno_flow.apps.router [n] [trials]`.
+

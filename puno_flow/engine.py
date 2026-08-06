@@ -299,9 +299,9 @@ class FlowEngine:
         self.h = np.delete(self.h, indices, axis=0)
         return self
 
-    def heal(self, steps=800):
+    def heal(self, steps=800, record=False):
         """Self-repair: local re-spread of the survivors (no central unit)."""
-        return self.settle(steps=steps)
+        return self.settle(steps=steps, record=record)
 
     def spacing(self):
         """Consensus spacing: median over units of mean k-NN distance."""
