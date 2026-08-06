@@ -69,6 +69,7 @@ PPA-002's crease-stabilization claim therefore stands on its specific label-free
 | US4759063A | Blind signature systems (privacy-protecting e-cash; Chaum) | David L. Chaum | filed 1983-08-22, granted 1988-07-19, expired 2005-07-19 | **Expired - Lifetime** |
 | US5136646A | Digital document time-stamping with catenate certificate (**hash-chained timestamp ledger — "private blockchain" core**) | Haber, Stornetta / Bellcore | filed 1991-03-08, granted 1992-08-04, ant. exp. 2011-03-08 | **Expired - Lifetime** |
 | US5136647A | Method for secure time-stamping of digital documents (multi-agency variant) | Haber, Stornetta / Bellcore | filed 1990-08-02, granted 1992-08-04, ant. exp. 2010-08-02 | **Ceased** |
+| US5261085A | Fault-tolerant system and method for implementing a distributed state machine (**Paxos consensus**; majority quorum, prepare/accept phases) | Leslie Lamport / Digital Equipment Corp | priority 1989-06-23, filed 1992-07-13, granted 1993-11-09, ant. exp. 2010-06-23 | **Expired - Lifetime** |
 
 **Ed25519 stack (used by PPA-003):** The Ed25519 authors state they have *not been notified of any patent claims* against Ed25519; reference implementations are public domain (CC0/0BSD). The historical elliptic-curve patents are all expired (per the authors' public chart):
 - US4964164 batch RSA — expired 2007-10-16
@@ -79,7 +80,7 @@ PPA-002's crease-stabilization claim therefore stands on its specific label-free
 - US6141420 point compression — expired 2014-07-29
 - US5999627 fixed-base exponentiation — expired 2015-06-06
 
-**Relevance:** Every cryptographic primitive the fragment bank builds on — public-key encryption/signatures (RSA, Diffie-Hellman), Merkle hash trees for block hashing, hash-chained timestamp ledgers (Haber–Stornetta, the direct ancestor of the PPA-003 hash-chained ledger), and privacy-preserving e-cash (Chaum) — is in the public domain. The patentable contribution remains the *routing-defined ownership* (ownership IS routing), the *majority-honesty witness quorum with measured liveness curve*, and the *benchmarked anomaly layer* — not the primitives themselves.
+**Relevance:** Every cryptographic primitive the fragment bank builds on — public-key encryption/signatures (RSA, Diffie-Hellman), Merkle hash trees for block hashing, hash-chained timestamp ledgers (Haber–Stornetta, the direct ancestor of the PPA-003 hash-chained ledger), privacy-preserving e-cash (Chaum), and majority-quorum consensus (Paxos, US5261085A) — is in the public domain. The patentable contribution remains the *routing-defined ownership* (ownership IS routing), the *majority-honesty witness quorum with measured liveness curve*, and the *benchmarked anomaly layer* — not the primitives themselves.
 
 **Routing-defined ownership — publication prior art (not patents):** The concept that an account's custodian is a *pure function of a hashed identifier* (deterministic routing with no registry) descends directly from distributed hash-table routing, which was published, never patented:
 - **Consistent hashing** — Karger et al., *Consistent hashing and random trees*, STOC 1997.
@@ -87,6 +88,13 @@ PPA-002's crease-stabilization claim therefore stands on its specific label-free
 - **Kademlia** — Maymounkov & Mazières, *Kademlia: a peer-to-peer information system based on the XOR metric*, IPTPS 2002.
 - **Pastry** — Rowstron & Druschel, SIGOPS 2001.
 A search of Google Patents for expired consistent-hashing/DHT patents returned only **active** or non-expired family members (e.g., `US11150953B2` consistent-hash, `US9378106B1` hash-based replication, `US8725862B1` query-hashing) — none expired and none a direct antecedent. The routing-defined-ownership claim therefore stands on the publication foundation above plus the invention's specific embedding and re-resolution rule, not on any expired patent.
+
+**Witness quorum — Paxos/consensus prior art:** The majority-honesty witness quorum (prepare/accept, quorum-size liveness) descends from classic replicated-state-machine consensus, which is both patented-but-expired and widely published:
+- **US5261085A (above)** — Lamport's original Paxos patent (Digital Equipment Corp, 1989 priority, Expired - Lifetime). Teaches fault-tolerant consensus on an asynchronous network with a majority quorum and a distinguishable leader: the direct antecedent of the PPA-003 witness-quorum claim.
+- **Viewstamped Replication** — B. Oki & B. Liskov, *Viewstamped replication: a new primary copy method to support highly-available distributed systems*, PODC 1988. Publication prior art, never patented.
+- **Paxos paper** — L. Lamport, *The part-time parliament*, ACM TOCS 16(2), 1998 (first submitted 1990). Publication prior art.
+- **Excluded (active):** `US20090150566A1` (Microsoft, *Virtually Synchronous Paxos*, Malkhi/Lamport/Zhou) is an **application** whose family is not expired — do not rely on it. Only the expired US5261085A art is unencumbered.
+The PPA-003 contribution therefore remains the *fragment-ledger-specific* coupling of routing-defined ownership to the quorum (and the measured liveness curve), not consensus itself.
 
 ---
 
@@ -96,7 +104,7 @@ A search of Google Patents for expired consistent-hashing/DHT patents returned o
 |---|---|---|---|
 | PPA-001 | Grid/space indexing, R-tree, k-d tree, spatial hashing, bounded NN search | **Free** (expired/publication) | Proven-exact Chebyshev-ring termination + bit-identical trajectory guarantee |
 | PPA-002 | Weight-saliency and second-order pruning (OBS), boundary-based OOD detection (US5359699A), adaptive networks | **Free** (expired) | Crease-density (near-fold pre-activation) criteria; label-free stop/OOD signal |
-| PPA-003 | Merkle trees, RSA/DH, Chaum e-cash, Haber–Stornetta hash-chained timestamps, Ed25519 | **Free** (expired/public-domain design) | Routing-defined ownership; majority-honesty quorum; measured anomaly layer |
+| PPA-003 | Merkle trees, RSA/DH, Chaum e-cash, Haber–Stornetta hash-chained timestamps, Ed25519, Paxos consensus (US5261085A) | **Free** (expired/public-domain design) | Routing-defined ownership; majority-honesty quorum; measured anomaly layer |
 
 ---
 
