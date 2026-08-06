@@ -79,3 +79,23 @@ lazy, optional import for high dimensions).
 
 Run the tests with `python -m pytest tests/` and the benchmark card with
 `python puno_flow/examples/benchmark_card.py [n]`.
+
+## Toy-network extras
+
+The package also exercises the local-only ethic in other guises
+(`examples/toy_network.py`):
+
+- **Creation** - `create(x, home=...)` / `spawn(count, ...)`: units are born
+  with a genesis block over their home; `parent=` adds a provenance block.
+- **Blockchains** - `ledger.py` gives every unit its own append-only,
+  content-addressed chain (`sha256(prev || seq || payload)`).  `flow(record=...)`
+  appends a state block per step; `verify_ledger()` audits every chain and
+  detects any tamper.  Agreement is *verified locally*, not mined - there is
+  no shared ledger and no proof-of-work.
+- **Search engine** - `search(X, k)` returns ranked nearest-centroid hits
+  (indices + distances); `search_by_identity(home, k)` searches the homes.
+- **Consensus** - `consensus()` reports k-NN reciprocity: the fraction of a
+  unit's neighbours that also list it among theirs (1.0 = every link mutual).
+- **Status** - `status()` returns a compact snapshot (n, dim, spacing,
+  consensus, ledger counts).
+
