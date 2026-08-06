@@ -34,7 +34,7 @@
 - **k-d tree** — J. L. Bentley, *Multidimensional binary search trees used for associative searching*, CACM 18(9), 1975. Never patented; pure publication prior art.
 - **R-tree** — A. Guttman, *R-trees: a dynamic index structure for spatial searching*, SIGMOD 1984. Never patented; the structure itself is publication prior art (R-tree *packing* was patented, US6252605 above — expired).
 
-**Relevance:** The grid-index + ring-scan kNN method in PPA-001 is an *exact* variant of classic spatial-index / near-neighbor search. The foundational spatial-indexing art (grid indexing, R-trees, k-d trees, spatial hashing, bounded NN search) is free to practice. The patentable contribution remains the *proven-exact termination bound* (`d_k ≤ r·cell`) with bit-identical trajectories — not the existence of spatial indexing itself.
+**Relevance:** The grid-index + ring-scan kNN method in PPA-001 is an *exact* variant of classic spatial-index / near-neighbor search. The foundational spatial-indexing art (grid indexing, R-trees, k-d trees, spatial hashing, bounded NN search) is free to practice. The Gauss-Seidel update rule (claim 3) is classical publication prior art (iterative linear-algebra relaxation, 19th c., never patented). The patentable contribution remains the *proven-exact termination bound* (`d_k ≤ r·cell`) with bit-identical trajectories and the verification gate (claims 4–5) — not the existence of spatial indexing or iterative relaxation itself.
 
 ---
 
@@ -54,6 +54,8 @@
 - L. Prechelt, *Early stopping — but when?*, in Neural Networks: Tricks of the Trade, 1996.
 - W. S. Sarle, *Stopped training and other remedies for overfitting*, Interface Symp., 1995.
 PPA-002's crease-stabilization claim therefore stands on its specific label-free fold-density signal, not on any expired patent.
+
+**Subgradient methods — publication prior art (not patents):** The fold-adjacent subgradient signal (a gradient through a non-differentiable crease) descends from classic non-smooth optimization, published, never patented: N. Z. Shor, *Minimization methods for non-differentiable functions* (1972, English transl. 1985) and B. T. Polyak, *A general method of solving extremum problems* (Dokl. Akad. Nauk SSSR, 1969). Subgradient descent is unencumbered publication art; the crease-density criterion built on top of it remains the distinct contribution.
 
 > **Note:** Modern neural-network training patents (e.g., dropout, US9406017B2 / Google) remain **active** — do not assume freedom to practice all training techniques; only the expired art above is unencumbered.
 
