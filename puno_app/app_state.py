@@ -87,6 +87,8 @@ class NetworkApp:
         return self.snapshot()
 
     def step(self, steps=10, mode="settle", mu=0.0):
+        if self.engine is None:
+            raise ValueError("create a network first")
         steps = max(1, int(steps))
         if mode == "over" and self.edges is not None:
             self.engine.flow_over(self.edges, steps=steps,
@@ -142,6 +144,8 @@ class NetworkApp:
 
     # ------------------------------------------------------------------ #
     def autotick(self, steps=3, respawn=3):
+        if self.engine is None:
+            raise ValueError("create a network first")
         events = []
         if self.edges is not None and self.topology == "scale-free":
             self.engine.flow_over(self.edges, steps=int(steps),

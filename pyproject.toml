@@ -5,25 +5,35 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "puno-calculus"
 version = "1.0.0"
-description = "The Puno Calculus: folding, unfolding, creases, the Universal Map, and the epoch_0d datum (2000-10-26: 80-divisor pair, prime-pairing rule, 1,914,467 chain fold, gcd triangle 2000/31/1)"
+description = "The Puno Calculus: folding, unfolding, creases, the Universal Map, and the epoch_0d datum (2000-10-26: 80-divisor pair, prime-pairing rule, 1,914,467 chain fold, gcd triangle 2000/31/1); ships puno_flow, the exact, numpy-only toy network"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "numpy",
-    "scikit-learn",
-    "scipy",
-    "matplotlib",
 ]
 
 [project.optional-dependencies]
+# scipy is a lazy optional import in puno_flow.index; the lab and the
+# toy network run on numpy + the standard library alone.
+experiments = ["scipy", "scikit-learn", "matplotlib"]
+all = ["scipy", "scikit-learn", "matplotlib"]
 dev = ["pytest"]
 
 [project.scripts]
 puno = "puno_cli:main"
+puno-lab = "puno_app.canned_ui:main"
 
 [tool.setuptools]
 py-modules = ["puno_cli"]
-packages = ["puno_flow"]
+packages = [
+    "puno_flow",
+    "puno_flow.apps",
+    "puno_flow.examples",
+    "puno_app",
+]
+
+[tool.setuptools.package-data]
+puno_app = ["ui.html"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

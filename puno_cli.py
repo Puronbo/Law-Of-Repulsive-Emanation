@@ -20,11 +20,21 @@ TESTS = os.path.join(ROOT, 'tests')
 
 
 def _available():
+    if not os.path.isdir(EXPERIMENTS):
+        return []
     names = []
     for f in sorted(os.listdir(EXPERIMENTS)):
         if f.endswith('.py') and not f.startswith('__'):
             names.append(f[:-3])
     return names
+
+
+def _need_checkout():
+    """Explain that experiments only run from a source checkout."""
+    print("puno: no experiments/ directory here; the experiment catalog "
+          "ships with a source checkout of the repo, not in the wheel.")
+    print("      clone Law-Of-Repulsive-Emanation and run `pip install -e .`, "
+          "or run experiments/ directly.")
 
 
 def main(argv=None):
@@ -39,13 +49,23 @@ def main(argv=None):
     args = p.parse_args(argv)
 
     if args.cmd == 'list':
-        for name in _available():
+        names = _available()
+        if not names:
+            _need_checkout()
+            return 0
+        for name in names:
             print(name)
         return 0
     if args.cmd == 'test':
+        if not os.path.isdir(TESTS):
+            _need_checkout()
+            return 0
         return subprocess.call(
             [sys.executable, '-m', 'pytest', TESTS, '-q'])
     if args.cmd == 'run':
+        if not _available():
+            _need_checkout()
+            return 2
         if args.name not in _available():
             print(f"unknown experiment {args.name!r}; try: puno list")
             return 2

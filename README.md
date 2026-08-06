@@ -115,6 +115,24 @@ See `data/decentral_bank_data.json`, `data/decentral_bank_bridge_data.json`, `da
 ## Quick Start
 
 ```bash
+# install the package (numpy + stdlib only; the lab and toy network need
+# nothing else.  scipy/sklearn/matplotlib are optional extras for the
+# legacy experiments/ catalog)
+pip install -e .            # or: pip install .[experiments] for experiments
+
+# toy network / exact k-NN SDK
+python -m puno_flow.examples.toy_network
+python -m puno_flow.examples.benchmark_card
+
+# autonomous apps (self-healing mesh, search daemon, greedy router)
+python -m puno_flow.apps.router [n] [trials]
+python -m puno_flow.apps.guard_mesh [ticks] [n]
+python -m puno_flow.apps.search_service
+
+# the browser lab: open the printed URL
+puno-lab [--host 127.0.0.1] [--port 8765]      # or: python -m puno_app.canned_ui
+
+# classic quick start from a checkout
 cd Universals
 python engine.py
 python math_validation.py   # 192 checks, 0 fails
