@@ -70,6 +70,10 @@ PPA-002's crease-stabilization claim therefore stands on its specific label-free
 | US5136646A | Digital document time-stamping with catenate certificate (**hash-chained timestamp ledger — "private blockchain" core**) | Haber, Stornetta / Bellcore | filed 1991-03-08, granted 1992-08-04, ant. exp. 2011-03-08 | **Expired - Lifetime** |
 | US5136647A | Method for secure time-stamping of digital documents (multi-agency variant) | Haber, Stornetta / Bellcore | filed 1990-08-02, granted 1992-08-04, ant. exp. 2010-08-02 | **Ceased** |
 | US5261085A | Fault-tolerant system and method for implementing a distributed state machine (**Paxos consensus**; majority quorum, prepare/accept phases) | Leslie Lamport / Digital Equipment Corp | priority 1989-06-23, filed 1992-07-13, granted 1993-11-09, ant. exp. 2010-06-23 | **Expired - Lifetime** |
+| US4507751A | Method and apparatus for logging journal data using a log write ahead data set (**WAL journal / write-ahead log**) | Dieter Gawlick, James N. Gray, Wallace M. Iimura, Ronald L. Obermarck / IBM | filed 1982-06-21, granted 1985-03-26, ant. exp. 2002-06-21 | **Expired - Fee Related** |
+| US5333303A | Method for providing data availability in a transaction-oriented system during restart after a failure (**ARIES restart recovery**; analysis/REDO/UNDO passes, LSN-based low-water access) | Chandrasekaran Mohan / IBM | filed 1991-03-28, granted 1994-07-26, ant. exp. 2011-07-26 | **Expired - Fee Related** |
+| US5369757A | Recovery logging in the presence of snapshot files by ordering of buffer pool flushing (redo log + checkpoint + flush ordering) | P. M. Spiro, A. Raghavan, T. K. Rengarajan / Digital Equipment Corp | priority 1991-06-18, granted 1994-11-29, ant. exp. 2011-11-29 | **Expired - Lifetime** |
+| US6185699B1 | Method and apparatus providing system availability during DBMS restart recovery (partially-delayed UNDO; object interest list) | D. J. Haderle, J. A. Watts / IBM | filed 1998-01-05, granted 2001-02-06, ant. exp. 2018-01-05 | **Expired - Fee Related** |
 
 **Ed25519 stack (used by PPA-003):** The Ed25519 authors state they have *not been notified of any patent claims* against Ed25519; reference implementations are public domain (CC0/0BSD). The historical elliptic-curve patents are all expired (per the authors' public chart):
 - US4964164 batch RSA — expired 2007-10-16
@@ -96,6 +100,15 @@ A search of Google Patents for expired consistent-hashing/DHT patents returned o
 - **Excluded (active):** `US20090150566A1` (Microsoft, *Virtually Synchronous Paxos*, Malkhi/Lamport/Zhou) is an **application** whose family is not expired — do not rely on it. Only the expired US5261085A art is unencumbered.
 The PPA-003 contribution therefore remains the *fragment-ledger-specific* coupling of routing-defined ownership to the quorum (and the measured liveness curve), not consensus itself.
 
+**WAL / crash-recovery prior art:** PPA-003's append+fsync WAL (written before a commit is announced, claim 5) and its rebuild-from-WAL crash recovery sit on fully expired database-recovery art:
+- **US4507751A (above)** — James N. Gray's own write-ahead-log patent (IBM 1982); the "log write ahead" mechanism itself (log forced to non-volatile storage before the data change) is described here.
+- **US5333303A (above)** — Mohan's ARIES-style restart recovery: analysis/REDO/UNDO passes, log sequence numbers, and permitting new work during recovery.
+- **US5369757A (above)** — DEC's redo-log + checkpoint + buffer-flush-ordering recovery logging.
+- **US6185699B1 (above)** — IBM's partially-delayed UNDO so a restarted system begins accepting new work before recovery completes.
+- **Publication prior art (never patented):** J. N. Gray, *The transaction concept: virtues and limitations*, VLDB 1981 (the WAL rule); C. Mohan et al., *ARIES: a transaction recovery method supporting fine-granularity locking and partial rollbacks*, SIGMOD 1992; J. N. Gray & A. Reuter, *Transaction Processing: Concepts and Techniques*, 1993.
+- **Excluded (active):** `US10891202B2` (backward-scan transaction-log recovery, 2021) and `US11003549B2` (constant-time crash recovery, 2021) are **active** — do not rely on them. Only the expired art above is unencumbered.
+The PPA-003 contribution therefore remains the *ledger-specific* torn-WAL handling and bit-identical chain rebuild in the fragment-bank context, not WAL or restart recovery per se.
+
 ---
 
 ## Summary for FTO
@@ -104,7 +117,7 @@ The PPA-003 contribution therefore remains the *fragment-ledger-specific* coupli
 |---|---|---|---|
 | PPA-001 | Grid/space indexing, R-tree, k-d tree, spatial hashing, bounded NN search | **Free** (expired/publication) | Proven-exact Chebyshev-ring termination + bit-identical trajectory guarantee |
 | PPA-002 | Weight-saliency and second-order pruning (OBS), boundary-based OOD detection (US5359699A), adaptive networks | **Free** (expired) | Crease-density (near-fold pre-activation) criteria; label-free stop/OOD signal |
-| PPA-003 | Merkle trees, RSA/DH, Chaum e-cash, Haber–Stornetta hash-chained timestamps, Ed25519, Paxos consensus (US5261085A) | **Free** (expired/public-domain design) | Routing-defined ownership; majority-honesty quorum; measured anomaly layer |
+| PPA-003 | Merkle trees, RSA/DH, Chaum e-cash, Haber–Stornetta hash-chained timestamps, Ed25519, Paxos consensus (US5261085A), WAL/restart recovery (US4507751A, US5333303A, US5369757A, US6185699B1) | **Free** (expired/public-domain design) | Routing-defined ownership; majority-honesty quorum; measured anomaly layer |
 
 ---
 
