@@ -1,0 +1,6 @@
+# state files (addresses, ledgers, seals)
+data/
+__pycache__/
+*.pyc
+*.log
+chain_memory.json

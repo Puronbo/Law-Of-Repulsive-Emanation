@@ -1,0 +1,275 @@
+"""
+TOY DECENTRALIZED LEDGER SIMULATION
+------------------------------------
+Purely educational. No real cryptocurrency, wallets, or private keys.
+Demonstrates: hashing, Merkle trees, block-chaining, and a simple
+multi-node consensus check -- the structural ideas behind
+decentralized systems, using only synthetic transaction data.
+"""
+
+import hashlib
+import json
+import time
+
+
+# ---------------------------------------------------------------------
+# 1. Merkle Tree: efficiently summarize a set of records into one hash
+# ---------------------------------------------------------------------
+def sha256(data: str) -> str:
+    return hashlib.sha256(data.encode()).hexdigest()
+
+def build_merkle_root(records: list) -> str:
+    """Hashes pairs of records repeatedly until one root hash remains."""
+    layer = [sha256(r) for r in records]
+    if not layer:
+        return sha256("")
+    while len(layer) > 1:
+        next_layer = []
+        for i in range(0, len(layer), 2):
+            left = layer[i]
+            right = layer[i + 1] if i + 1 < len(layer) else left
+            next_layer.append(sha256(left + right))
+        layer = next_layer
+    return layer[0]
+
+
+# ---------------------------------------------------------------------
+# 2. Block: bundles records + links to the previous block via hash
+# ---------------------------------------------------------------------
+class Block:
+    def __init__(self, index: int, records: list, prev_hash: str):
+        self.index = index
+        self.timestamp = time.time()
+        self.records = records
+        self.prev_hash = prev_hash
+        self.merkle_root = build_merkle_root(records)
+        self.nonce = 0
+        self.hash = self._compute_hash()
+
+    def _compute_hash(self) -> str:
+        block_summary = json.dumps({
+            "index": self.index,
+            "prev_hash": self.prev_hash,
+            "merkle_root": self.merkle_root,
+            "nonce": self.nonce,
+        }, sort_keys=True)
+        return sha256(block_summary)
+
+    def mine(self, difficulty: int = 3) -> int:
+        """Proof-of-work: find a nonce so the hash starts with `difficulty` zeros."""
+        target = "0" * difficulty
+        attempts = 0
+        while not self.hash.startswith(target):
+            self.nonce += 1
+            attempts += 1
+            self.hash = self._compute_hash()
+        return attempts
+
+    def is_valid(self, expected_prev_hash: str, difficulty: int = 0) -> bool:
+        """A node re-derives everything to confirm nothing was altered."""
+        recomputed_root = build_merkle_root(self.records)
+        recomputed_hash = sha256(json.dumps({
+            "index": self.index,
+            "prev_hash": self.prev_hash,
+            "merkle_root": recomputed_root,
+            "nonce": self.nonce,
+        }, sort_keys=True))
+        return (
+            recomputed_root == self.merkle_root
+            and recomputed_hash == self.hash
+            and self.prev_hash == expected_prev_hash
+            and self.hash.startswith("0" * difficulty)
+        )
+
+
+# ---------------------------------------------------------------------
+# 3. Chain: an ordered sequence of linked blocks
+# ---------------------------------------------------------------------
+class ToyChain:
+    def __init__(self, difficulty: int = 3):
+        self.difficulty = difficulty
+        genesis = Block(0, ["genesis"], prev_hash="0" * 64)
+        genesis.mine(difficulty)
+        self.blocks = [genesis]
+
+    def add_block(self, records: list):
+        prev = self.blocks[-1]
+        new_block = Block(len(self.blocks), records, prev.hash)
+        attempts = new_block.mine(self.difficulty)
+        self.blocks.append(new_block)
+        print(f"    (mined block {new_block.index} in {attempts} attempts, nonce={new_block.nonce})")
+        return new_block
+
+    def is_chain_valid(self) -> bool:
+        for i in range(1, len(self.blocks)):
+            expected_prev = self.blocks[i - 1].hash
+            if not self.blocks[i].is_valid(expected_prev, self.difficulty):
+                return False
+        return True
+
+
+# ---------------------------------------------------------------------
+# 4. Multi-node "consensus": independent nodes each verify the same chain
+# ---------------------------------------------------------------------
+def node_verify(node_name: str, chain: ToyChain) -> bool:
+    valid = chain.is_chain_valid()
+    print(f"  [{node_name}] independently recomputed chain -> {'VALID' if valid else 'INVALID'}")
+    return valid
+
+
+# ---------------------------------------------------------------------
+# 4b. Node rankings: track each node's validation performance over time
+# ---------------------------------------------------------------------
+class NodeRegistry:
+    def __init__(self, node_names: list):
+        self.history = {name: [] for name in node_names}  # list of bools per round
+
+    def record_round(self, node_results: dict):
+        """node_results: {node_name: bool} for this round, already computed."""
+        for name, passed in node_results.items():
+            self.history[name].append(passed)
+
+    def rankings(self) -> list:
+        """Ranks nodes by fraction of rounds where they reported VALID."""
+        scores = []
+        for name, results in self.history.items():
+            total = len(results)
+            correct = sum(results)
+            rate = correct / total if total else 0.0
+            scores.append((name, correct, total, rate))
+        return sorted(scores, key=lambda x: x[3], reverse=True)
+
+    def print_rankings(self):
+        print("\n  Node reliability rankings (validations passed / total rounds):")
+        for rank, (name, correct, total, rate) in enumerate(self.rankings(), start=1):
+            print(f"    #{rank} {name}: {correct}/{total} ({rate*100:.0f}%)")
+
+
+# ---------------------------------------------------------------------
+# 4c. Distribution history: chain-wide stats snapshot per round
+# ---------------------------------------------------------------------
+class DistributionTracker:
+    def __init__(self):
+        self.snapshots = []  # one dict per round
+
+    def capture(self, round_label: str, chain: ToyChain, node_results: list):
+        block_sizes = [len(b.records) for b in chain.blocks]
+        snapshot = {
+            "round": round_label,
+            "block_count": len(chain.blocks),
+            "avg_records_per_block": sum(block_sizes) / len(block_sizes) if block_sizes else 0,
+            "min_records": min(block_sizes) if block_sizes else 0,
+            "max_records": max(block_sizes) if block_sizes else 0,
+            "nodes_valid": sum(node_results),
+            "nodes_total": len(node_results),
+        }
+        self.snapshots.append(snapshot)
+        return snapshot
+
+    def print_history(self):
+        print("\n  Distribution history across rounds:")
+        for s in self.snapshots:
+            print(
+                f"    [{s['round']}] blocks={s['block_count']} "
+                f"avg_records/block={s['avg_records_per_block']:.2f} "
+                f"(min={s['min_records']}, max={s['max_records']}) "
+                f"consensus={s['nodes_valid']}/{s['nodes_total']}"
+            )
+
+
+# ---------------------------------------------------------------------
+# 4d. Chain memory: recall mined nonces so they survive a restart
+# ---------------------------------------------------------------------
+class ChainMemory:
+    """Persists the chain -- including each block's mined PoW nonce --
+    and restores it so a later run recalls the exact nonces that were
+    mined instead of re-mining (and losing) them."""
+
+    @staticmethod
+    def save(chain: ToyChain, path: str):
+        blocks = [{
+            "index": b.index, "timestamp": b.timestamp, "records": b.records,
+            "prev_hash": b.prev_hash, "merkle_root": b.merkle_root,
+            "nonce": b.nonce, "hash": b.hash,
+        } for b in chain.blocks]
+        with open(path, "w") as f:
+            json.dump({"difficulty": chain.difficulty, "blocks": blocks}, f, indent=2)
+
+    @staticmethod
+    def load(path: str) -> ToyChain:
+        with open(path) as f:
+            data = json.load(f)
+        chain = ToyChain.__new__(ToyChain)
+        chain.difficulty = data.get("difficulty", 3)
+        chain.blocks = []
+        for b in data["blocks"]:
+            block = Block(b["index"], b["records"], b["prev_hash"])
+            block.timestamp = b["timestamp"]
+            block.merkle_root = b["merkle_root"]
+            block.nonce = b["nonce"]
+            block.hash = b["hash"]
+            chain.blocks.append(block)
+        return chain
+
+
+# ---------------------------------------------------------------------
+# 5. Full demonstration
+# ---------------------------------------------------------------------
+if __name__ == "__main__":
+    print("=" * 65)
+    print("TOY DECENTRALIZED LEDGER: build, tamper, and verify")
+    print("=" * 65)
+
+    chain = ToyChain()
+    chain.add_block(["record: alice sent bob a message", "record: event logged at t1"])
+    chain.add_block(["record: bob acknowledged", "record: event logged at t2"])
+
+    nodes = ["Node-A", "Node-B", "Node-C"]
+    registry = NodeRegistry(nodes)
+    tracker = DistributionTracker()
+
+    print("\n[STEP 1] Chain built with", len(chain.blocks), "blocks.")
+    for b in chain.blocks:
+        print(f"  Block {b.index}: hash={b.hash[:16]}... merkle_root={b.merkle_root[:16]}... nonce={b.nonce}")
+
+    print("\n[STEP 2] Round 1 -- three independent nodes verify the chain:")
+    results = [node_verify(n, chain) for n in nodes]
+    registry.record_round(dict(zip(nodes, results)))
+    tracker.capture("round_1_clean", chain, results)
+    print(f"  Consensus reached: {all(results)} ({sum(results)}/{len(nodes)} nodes agree)")
+
+    memory_path = "chain_memory.json"
+    saved_nonces = [b.nonce for b in chain.blocks]
+    ChainMemory.save(chain, memory_path)
+    print(f"  Mined nonces saved to memory ({memory_path}): {saved_nonces}")
+
+    print("\n[STEP 3] Add another block, then simulate tampering with Block 1's data...")
+    chain.add_block(["record: carol joined the network", "record: event logged at t3"])
+    chain.blocks[1].records[0] = "record: alice sent bob a DIFFERENT message"
+    # Note: merkle_root and hash are NOT recomputed here -- simulating a bad actor
+    # silently editing history without redoing the cryptographic work.
+
+    print("[STEP 4] Round 2 -- nodes re-verify after tampering:")
+    results_after = [node_verify(n, chain) for n in nodes]
+    registry.record_round(dict(zip(nodes, results_after)))
+    tracker.capture("round_2_tampered", chain, results_after)
+    print(f"  Consensus reached: {all(results_after)} ({sum(results_after)}/{len(nodes)} nodes agree)")
+    print("  -> Tampering detected: nodes reject the altered block because the")
+    print("     stored hash no longer matches the recomputed hash of the data.")
+
+    print("\n[STEP 5] Rankings and distribution history:")
+    registry.print_rankings()
+    tracker.print_history()
+
+    print("\n[STEP 6] Recall the mined nonces from memory (fresh load):")
+    recalled = ChainMemory.load(memory_path)
+    for b in recalled.blocks:
+        print(f"  Block {b.index}: nonce={b.nonce}  hash={b.hash[:16]}...")
+    nonces_match = [b.nonce for b in recalled.blocks] == saved_nonces
+    ok = node_verify("Memory-Restored", recalled)
+    print(f"  Recalled nonces match original: {nonces_match and ok} "
+          f"(nonces preserved, chain still valid)")
+
+    print("\n" + "=" * 65)
+    print("DEMO COMPLETE")
+    print("=" * 65)

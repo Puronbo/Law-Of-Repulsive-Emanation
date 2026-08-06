@@ -1,0 +1,9 @@
+web3>=7.0.0
+fastapi>=0.139.0
+uvicorn>=0.51.0
+pydantic>=2.0.0
+httpx>=0.24.0
+# Real BIP44 derivation + ECDSA signing (used by engine / fold_crypto)
+coincurve>=20.0.0
+# Optional: bip-utils real HD derivation (requires a coincurve wheel for your Python version)
+# bip-utils>=0.9.0

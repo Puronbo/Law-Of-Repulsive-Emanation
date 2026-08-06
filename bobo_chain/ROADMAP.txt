@@ -1,0 +1,217 @@
+================================================================================
+IMAM-V3 FOLD-METRIC / MULTI-CHAIN STACK -- ROADMAP TO COMPLETION
+Repo: bobo Chain (wallet matrix + fold agent) | Anchor: 26/10/2000T10:26:20.00
+================================================================================
+
+MILESTONE 1 - FOLD-WALLET AGENT (DONE)
+  [x] imam_agent.py: agent identity (BIP44 acct 1 / fold-identity fallback)
+  [x] 57,434,001 channel partition across wallet matrix + integrity check
+  [x] Fold clock anchored to 26/10/2000T10:26:20.00 (57.26 MHz / 17.46 ns ticks)
+  [x] Fold root (Merkle) over the anchored channel manifest
+  [x] API: /api/agent, /api/agent/activate, /api/agent/foldclock,
+            /api/agent/wallets/{index}
+  [x] Dashboard: IMAM-V3 Fold-Wallet Agent panel (Query/Activate)
+  [x] engine.py: bip-utils lazy + fold-identity fallback (boots on py3.14)
+  [x] Verified via TestClient (anchor schema, integrity, 200/404 paths)
+
+MILESTONE 2 - COLD-WALLET ACTIVITY + NEIGHBOR-JUMP AGENT TOY (DONE)
+  [x] agent_toy.py: cold-wallet registry (keys offline, nothing broadcast)
+  [x] Neighbor jumping: token walks fold channels, ring-hops at wallet boundaries
+  [x] Activity records (SIGN / SWEEP / ROTATE / JUMP) in universal schema
+  [x] Deterministic signatures seeded from fold clock + jump count
+  [x] Persistence: append-only data/agent_toy_activity.json (state repairable
+      after matrix resize)
+  [x] API: /api/toy, /api/toy/coldwallets, /api/toy/step, /api/toy/reset,
+            /api/toy/activity
+  [x] Dashboard: Cold-Wallet Agent Toy panel (Step / Reset / feed)
+  [x] Verify: 1000-step run, boundary crossings == matrix-size cycles, reset
+
+MILESTONE 3 - DECENTRALIZED INTERNET INTEGRATION (DONE)
+  [x] Time-anchored toy registry: every block/record stamped in the
+      26/10/2000T10:26:20.00 schema (fold ticks since anchor)
+  [x] Multi-node consensus toy: N independent verifiers recompute the
+      activity ledger + fold root and vote (builds on sUntitled.txt)
+  [x] Chain-of-custody proof: each block chains via prev_hash + merkle root
+      over record signatures (tamper-evident)
+  [x] API: /api/internet/registry, /api/internet/ingest, /api/internet/consensus
+  [x] Dashboard: "Decentralized Internet" section (registry + consensus vote)
+  [x] Docs: INTEGRATION.md tying fold metric -> channel -> address -> record
+
+MILESTONE 4 - HARDENING & PACKAGING (DONE)
+  [x] requirements.txt + README run guide (uvicorn server:app --port 8000)
+  [x] config-driven networks (networks.json, loaded at import)
+  [x] Secrets hygiene: mnemonic moved to IMAM_MNEMONIC env var (built-in
+      fallback clearly labeled DEMO, not for real funds)
+  [x] End-to-end verify of agent + toy + internet endpoints (consensus VALID
+      3/3 clean; INVALID + tamper detected after altering any record)
+
+MILESTONE 5 - COLD-WALLET CRAWLER + MASTER PAYOFF TOY (DONE)
+  [x] cold_crawler.py: inactivity detection (never-swept OR not swept/regen'd
+      for a window of crawls) on the cold-wallet matrix
+  [x] Token routing: inactive reserves SWEPT into the fold-derived MASTER
+      wallet (account 2), signed + stamped in the universal schema
+  [x] Reserve cycle: swept wallets regenerate while dormant and re-sweep once
+      they clear the sweep minimum (living sweep loop)
+  [x] Master payoff toy agent: exactly 1 token to EVERY hot wallet when the
+      master balance covers all of them, only on interval boundaries
+      (every N crawl cycles)
+  [x] API: /api/crawler, /api/crawler/table, /api/crawler/run,
+            /api/crawler/reset, /api/crawler/ledger
+  [x] Dashboard: Cold-Wallet Crawler + Master Payoff section
+  [x] Verified: full sweep -> interval payoff (5 hot wallets x 1.0), master
+      never negative, payoffs only at interval boundaries, records signed +
+      schema-timestamped; /api/configure rebuilds the crawler
+  [x] Stress-verified (120 cycles): 120 sweeps / 12 payoffs, conservation
+      swept == paid + master holds, all hot balances equal
+
+MILESTONE 6 - MASTER DASHBOARD / NODE 0D (DONE)
+  [x] Dashboard restructured as MASTER DASHBOARD over the universal date
+      protocol (anchor 26/10/2000T10:26:20.00): live protocol clock in the
+      header + auto-sync on page load
+  [x] Node 0D: master dashboard node registered as the first consensus node
+      (votes alongside INTERNET-NODE-0..N)
+  [x] /api/master: aggregates every layer (wallet matrix, fold agent, cold
+      toy, internet registry, crawler + master) under the date protocol
+  [x] Protocol layer stack table (Layer 0..4) + master overview cards
+  [x] Layer numbering on every existing section (L1 fold agent, L2 cold toy,
+      L3 internet, L4 crawler, L0 scan leaderboard)
+  [x] Verified: 4/4 consensus incl. Node 0D vote; clean boot state
+
+MILESTONE 7 - THEORETICAL -> ACTUAL (REAL CHAIN DATA) (DONE)
+  [x] Stress test: 20-wallet matrix (partition integrity 57,434,001), 3000 toy
+      steps -> 188 blocks, consensus 4/4 VALID + tamper at 4 seqs, crawler 300
+      cycles -> 1200 sweeps / 30 payoffs all on-interval, conservation holds
+  [x] Actual mode: POST /api/crawler/actual runs the REAL RPC scan and swaps
+      simulated reserves for real on-chain balances (native + ERC-20 across all
+      networks) and uses real tx counts for dormancy (nonce == 0 -> dormant)
+  [x] Mechanics stay toy accounting (no broadcast, keys never leave machine)
+  [x] Fixed aiohttp session leak in engine scans (close web3 v7 cached sessions)
+  [x] Mode switching: /api/crawler/theoretical, dashboard Apply Actual Scan /
+      Sim Mode buttons, real-nonce column, master dashboard reports mode
+  [x] Verified: real scan applied (5 wallets, nonce 0, balance 0), no session
+      leak, clean theoretical restore
+
+MILESTONE 8 - EXTERNAL WALLET BRIDGE + CONNECTED-WALLET TEST (DONE)
+  [x] wallet_connect.py: Base58Check decode -> version byte, pubkey hash,
+      EVM bridge address (0x + pubkey hash)
+  [x] Anchor wallet usage: engine wallet mode derives the matrix via
+      0x + sha256(anchor|idx); /api/configure accepts {"wallet": ...}
+  [x] Connected-wallet battery: checksum, 20-byte pubkey hash, EVM bridge,
+      derivation link, fold-channel neighbor ring, single Merkle fold root
+  [x] Verified with 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa: pubkey hash
+      62e907b1...f18 -> EVM 0x62e907b15cbf27d5425399ebf6f0fb50ebb88f18,
+      CONNECTED 6/6, report == configured matrix; invalid wallet -> 400
+  [x] Dashboard: Layer 5 (Use This Wallet / Test Connections), master layer
+      reports anchor + derivation
+
+MILESTONE 9 - MULTI-NETWORK GENESIS WALLETS (DONE)
+  [x] Genesis registry in wallet_connect.py: BTC, BCH, LTC, DOGE with
+      per-network version bytes, genesis pubkeys, and notes
+  [x] BCH CashAddr support: encoder verified against reference-implementation
+      test vectors (P2PKH/P2SH); genesis CashAddr matches official docs
+      (bitcoincash:qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyy)
+  [x] decode_wallet(wallet, network): version-byte enforcement rejects
+      cross-chain addresses (e.g. BTC genesis as "litecoin" -> 400)
+  [x] Derived addresses recomputed from each chain's genesis P2PK key and
+      cross-checked: LTC Ler4HNAE... (Charlie Lee's SatoshiLite signature),
+      DOGE DQmCZQo... (same key, 0x1e), BCH shares BTC's 1A1zP1e...
+  [x] API: /api/genesis (4/4 CONNECTED, 7/7 each), /api/connected?network=,
+      /api/master connected.genesis; CashAddr decode path
+  [x] Dashboard: Layer 5 "Genesis Wallets (other blockchain networks)" panel
+      with Test All Genesis Networks button
+  [x] Verified via TestClient: 4/4 genesis CONNECTED, per-network reports,
+      wrong-network 400, bad-checksum 400, BCH cashaddr CONNECTED, master
+      aggregates genesis 4/4, /api/configure works with any genesis anchor
+
+MILESTONE 10 - REMOVE MASTER PAYOFF; CRAWLER = ACTUAL ONLY (DONE)
+  [x] Master payoff toy agent REMOVED: no PAYOFF records, no hot-wallet
+      payout logic, no paid_total / payoff_count / payoff interval
+  [x] Theoretical simulation REMOVED: no simulated reserves, no reserve
+      regeneration; reserves come only from the real chain scan
+  [x] Crawler is actual-only: apply_actual_scan -> run() sweeps dormant /
+      inactive (real nonce == 0) cold balances into MASTER
+  [x] API: /api/crawler/theoretical deleted; /api/crawler/table returns cold
+      only; /api/crawler/actual and /api/crawler/run unchanged in shape
+  [x] Dashboard: payoff + hot-wallet cards and Sim Mode button removed;
+      ledger shows SWEEP-to-MASTER only
+  [x] Docs + master layer updated (no paid_total / payoff_count / hot_count)
+  [x] Verified: reset -> apply scan -> sweeps to MASTER only, no payoff
+      fields anywhere, master /api/master crawler layer clean
+
+MILESTONE 11 - WALLET PUBLIC KEYS + TRASH CLEANUP (DONE)
+  [x] engine.py: every wallet now exposes a public_key field (real HD key when
+      bip-utils is present; deterministic fold-identity public key otherwise,
+      labeled as such)
+  [x] cold_crawler.py: cold_table/listing include public_key; clean_trash()
+      zeroes and flags wallets with zero/dust reserves, logging address +
+      public key + reason + schema timestamp in a persistent trash ledger
+  [x] API: POST /api/crawler/clean (returns cleaned + full listing)
+  [x] Dashboard: Public Key column, Clean Trash Wallets button, trash ledger
+      table (idempotent: re-clean yields 0 new)
+  [x] Verified: server + real scan (5 wallets, 0 native / 0 nonce), 10,000
+      crawl cycles, clean -> 5 TRASH, re-clean idempotent, state persisted
+
+MILESTONE 12 - REAL HD WALLETS WITHOUT bip-utils (DONE)
+  [x] engine.py: self-contained BIP39 -> BIP32 -> BIP44 (m/44'/60'/0'/0/i)
+      derivation using only coincurve + hashlib/hmac (bip-utils needs native
+      wheels absent on this interpreter)
+  [x] Verified against known vectors: BIP39 seed test vector, abandon...about
+      -> 0x9858Ef..., test...junk -> 0xf39Fd6.../pk 0xac0974... (addr + pk)
+  [x] Wallets now carry real signable private keys + real 65-byte public keys
+  [x] Crawler scans all 5 networks on the real HD wallets (all VALIDATED),
+      runs sweeps + clean_trash; empty real wallets cleaned to TRASH with
+      public keys logged in the trash ledger
+
+MILESTONE 13 - ANCHOR-MNEMONIC RUN + MNEMONIC-DERIVED MASTER (DONE)
+  [x] IMAM_MNEMONIC set to the anchor schema (12-word mnemonic, kept out of the
+      repo; injected via setx + run_server.py that requires the env var)
+  [x] engine.py: _bip44_eth_private_key gains an account param (account 2 used
+      for MASTER); cold_crawler master derived from the anchor mnemonic via the
+      real coincurve BIP44 path (signable key) instead of the fold fallback
+  [x] cold_crawler.py: _validate_state rebinds cold-wallet addresses to the
+      engine's current derivation on mnemonic/engine change (stale reserves
+      dropped, never attributed to new addresses)
+  [x] Verified: server wallets = anchor derivation (all 5 MATCH), MASTER =
+      0x5E9aBD74DA8E952b856cafc9763b0D120d41F6c8 (account 2 idx0, signable)
+  [x] Real scan on anchor wallets across all 5 networks (VALIDATED, 4.3s);
+      crawler runs sweep-to-MASTER routing (crawl #104, SWEEP_MIN 0.5);
+      ledger empty (anchor wallets 0 native / 0 nonce -> nothing to sweep)
+  [x] 5 empty wallets cleaned to TRASH with public keys + fold schema;
+      re-clean idempotent (0 new)
+
+CURRENT STATUS: ALL MILESTONES COMPLETE (M1-M13).
+================================================================================
+
+MILESTONE 14 - ACTUAL SECURITY FOR THE DECENTRALIZED INTERNET (DONE)
+  [x] fold_crypto.py: SigningAuthority -- real ECDSA (secp256k1, RFC6979
+      deterministic, recoverable) over the available identities: MATRIX-0..N
+      (account 0, signs its own channel records), AGENT (account 1, signs every
+      block header), MASTER (account 2, signs parked / trash records)
+  [x] engine.py: public derive_identity(account, index) -- real coincurve BIP44
+      key; imam_agent AGENT identity now always signable (account 1)
+  [x] agent_toy.py: step()/play_trash() records carry real ECDSA signatures +
+      signer_role/signer_address/seed; migrate_signatures() upgrades legacy
+      fold-digest records; verify_activity() crypto battery; auth_mode +
+      signed_records in summary
+  [x] internet_registry.py: AGENT-signed block headers; consensus nodes are the
+      available identities (NODE-0D, MATRIX-0..N, AGENT, MASTER) verifying with
+      PUBLIC KEYS ONLY; per-record + per-block signature verification; Merkle
+      inclusion proof() (O(log n) sibling path); at-rest HMAC-SHA256 seal with
+      in-memory key -- disk edits flagged TAMPERED and block ingest until
+      POST /api/internet/reseal
+  [x] server.py: wiring for SigningAuthority; /api/internet/verify,
+      /api/internet/proof, /api/internet/nodes, /api/internet/identities,
+      /api/internet/reseal, /api/toy/verify, /api/toy/migrate, /api/security;
+      optional bearer-token auth middleware (API_TOKEN env)
+  [x] run_server.py: refuses to boot without IMAM_MNEMONIC; default 127.0.0.1
+      bind; HOST / PORT / TLS_CERT / TLS_KEY / API_TOKEN env config
+  [x] Hygiene: .gitignore (data/, __pycache__, chain_memory.json); SECURITY.md
+      threat model; INTEGRATION.md / README.md updated
+  [x] Verified: 15 legacy records migrated + ECDSA-verified 15/15; ingest ->
+      2 blocks, block headers signed by AGENT; independent consensus 8/8 VALID;
+      tamper at any seq -> INVALID; record-field tamper -> signature fails;
+      disk edit -> at-rest TAMPERED + all nodes INVALID until reseal; Merkle
+      proof root_verified; fresh step record signer == MASTER when parked
+
+CURRENT STATUS: ALL MILESTONES COMPLETE (M1-M14).
+================================================================================
