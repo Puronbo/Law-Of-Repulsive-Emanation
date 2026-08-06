@@ -1,0 +1,108 @@
+{
+  "phaseA_absolute_zero": {
+    "interpretation": "rubber ball = disk R=2 centred at (1,1); photon starts at (0,0) (strictly inside, distance sqrt(2) < R), initial direction toward (0,1); wall at T=0 (perfectly still rubber membrane)",
+    "ball_centre": [
+      1.0,
+      1.0
+    ],
+    "ball_radius": 2.0,
+    "energy_conserved_bit_exact": true,
+    "max_radius_vertical_orbit": 1.9999999999999998,
+    "max_radius_generic_orbit": 1.9999999999999996,
+    "contained_vertical": true,
+    "contained_generic": true,
+    "impact_parameter_invariant_vertical": true,
+    "impact_parameter_invariant_generic": true,
+    "impact_parameter_vertical": 1.0,
+    "impact_parameter_generic": 0.4472135954999579,
+    "first_leg_length": 2.732050807568877,
+    "n_collisions": 2000,
+    "verdict": "PASS"
+  },
+  "phaseB_release_temperature": {
+    "n_collisions": 2000,
+    "n_ensemble": 4000,
+    "seed": 20260804,
+    "headline_T_wall": 1.0,
+    "per_T": {
+      "1.0": {
+        "T_wall": 1.0,
+        "sigma_over_c": 0.02,
+        "mean_energy": 4.727623892593172,
+        "mean_energy_pred": 4.95937044086562,
+        "mean_ratio": 0.9532709744037595,
+        "median_energy": 0.9553611181544484,
+        "median_flat_max_dev": 0.05557473688329795,
+        "empirical_mean_F": 1.0007833325136868,
+        "series_mean_F": 1.0008009599999999,
+        "lnE_mean": -0.03425928196056148,
+        "lnE_std": 1.811964722392626,
+        "lnE_std_pred": 1.7888543819998317,
+        "lnE_std_ratio": 1.0129190730253619,
+        "lnE_skew": -0.014139451489135679,
+        "lnE_kurtosis": 2.953371842451603,
+        "T_photon_mean": 4.727623892593172,
+        "T_photon_median": 0.9553611181544484
+      },
+      "4.0": {
+        "T_wall": 4.0,
+        "sigma_over_c": 0.04,
+        "mean_energy": 336.0829538909137,
+        "mean_energy_pred": 614.2509562540939,
+        "mean_ratio": 0.5471427442953594,
+        "median_energy": 0.9889154661420576,
+        "median_flat_max_dev": 0.1245819489572606,
+        "empirical_mean_F": 1.0031971850341193,
+        "series_mean_F": 1.00321536,
+        "lnE_mean": -0.03232395533126483,
+        "lnE_std": 3.578722714777728,
+        "lnE_std_pred": 3.5777087639996634,
+        "lnE_std_ratio": 1.000283407858199,
+        "lnE_skew": 7.752156592865171e-06,
+        "lnE_kurtosis": 3.031437956496118,
+        "T_photon_mean": 336.0829538909137,
+        "T_photon_median": 0.9889154661420576
+      },
+      "9.0": {
+        "T_wall": 9.0,
+        "sigma_over_c": 0.06,
+        "mean_energy": 1160860.93811539,
+        "mean_energy_pred": 1988338.2475211017,
+        "mean_ratio": 0.5838347371543332,
+        "median_energy": 0.9793826192323332,
+        "median_flat_max_dev": 0.12344070971352816,
+        "empirical_mean_F": 1.0072897397196663,
+        "series_mean_F": 1.00727776,
+        "lnE_mean": 0.028705337239308307,
+        "lnE_std": 5.442620766942541,
+        "lnE_std_pred": 5.366563145999495,
+        "lnE_std_ratio": 1.014172500886297,
+        "lnE_skew": -0.008210097272215357,
+        "lnE_kurtosis": 2.958384441798615,
+        "T_photon_mean": 1160860.93811539,
+        "T_photon_median": 0.9793826192323332
+      }
+    },
+    "growth_scale": [
+      {
+        "T_wall": 1.0,
+        "growth": 0.0007770130823803179,
+        "growth_pred": 0.0008009599999998507,
+        "g_over_sigma2_c2": 1.9425327059507946
+      },
+      {
+        "T_wall": 4.0,
+        "growth": 0.002912913319243815,
+        "growth_pred": 0.0032153600000000004,
+        "g_over_sigma2_c2": 1.8205708245273844
+      },
+      {
+        "T_wall": 9.0,
+        "growth": 0.0070067695817532805,
+        "growth_pred": 0.007277760000000022,
+        "g_over_sigma2_c2": 1.9463248838203557
+      }
+    ],
+    "verdict": "MEASURED"
+  }
+}
