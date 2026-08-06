@@ -43,11 +43,17 @@
 | Patent | Title | Inventor / Assignee | Key dates | Status |
 |---|---|---|---|---|
 | US5636326A | Method for operating an optimal weight pruning apparatus for designing artificial neural networks (Optimal Brain Surgeon / Hessian-inverse pruning) | David G. Stork, Babak Hassibi / Ricoh | priority 1992-09-04, filed 1995-07-07, granted 1997-06-03, ant. exp. 2012-09-04 | **Expired - Lifetime** |
+| US5359699A | Method for using a feed forward neural network to perform classification with highly biased data (**OOD/novel-class detection**: network detects points in feature space outside a boundary learned from in-distribution + pseudo "outside" data) | David W. Tong, Paul A. Delano / General Electric | filed 1991-12-02, granted 1994-10-25, ant. exp. 2011-12-02 | **Expired - Fee Related** |
 | US3934231 | Adaptive Boolean Logic Element (adaptive logic networks; early adaptive-training art) | W. W. Armstrong / Dendronic | filed 1974-02-28, granted 1976-01-20, expired ~1991 (17-yr term) | **Expired - Lifetime** |
 
 > **Note (verified 2026-08-06):** Optimal Brain Damage (LeCun, Denker & Solla, NIPS 1989) was **published but never patented** — it is free as publication prior art. Common guesses for an "OBD patent" (`US5046019A` = fuzzy data comparator, `US5274714A` = feature-vector neural recognition) were checked on Google Patents and are **not** OBD; both are irrelevant to this invention. OBD remains cited here as publication prior art alongside the expired OBS patent above.
 
-**Relevance:** Weight/saliency-based pruning (including second-order Optimal Brain Surgeon) is fully public domain. PPA-002's crease-density pruning is an *input-activation-band* criterion, distinct from weight-saliency art. The early-stopping, OOD-detection, and fold-adjacent subgradient claims build on label-free signals; no directly-covering expired patents were found in this survey for those specific claims.
+**Relevance:** Weight/saliency-based pruning (including second-order Optimal Brain Surgeon) is fully public domain. PPA-002's crease-density pruning is an *input-activation-band* criterion, distinct from weight-saliency art. The OOD-detection claim sits on a long line of free art: **US5359699A** (expired) already teaches a network that flags points outside a learned boundary using pseudo "outside" data; modern far-OOD detection (MSP, Hendrycks & Gimpel 2016) is publication prior art. No expired patents were found directly covering the early-stopping or fold-adjacent subgradient claims.
+
+**Early stopping — publication prior art (not patents):** A search for expired early-stopping patents returned only **active** recent filings (e.g., `US20230061222A1` control-limits stopping, `US11644816B2` Bayesian-optimization stopping) — none expired, none a direct antecedent. The practice is decades-old publication prior art:
+- L. Prechelt, *Early stopping — but when?*, in Neural Networks: Tricks of the Trade, 1996.
+- W. S. Sarle, *Stopped training and other remedies for overfitting*, Interface Symp., 1995.
+PPA-002's crease-stabilization claim therefore stands on its specific label-free fold-density signal, not on any expired patent.
 
 > **Note:** Modern neural-network training patents (e.g., dropout, US9406017B2 / Google) remain **active** — do not assume freedom to practice all training techniques; only the expired art above is unencumbered.
 
@@ -89,7 +95,7 @@ A search of Google Patents for expired consistent-hashing/DHT patents returned o
 | Area | Foundational art | Status | Your contribution (distinct) |
 |---|---|---|---|
 | PPA-001 | Grid/space indexing, R-tree, k-d tree, spatial hashing, bounded NN search | **Free** (expired/publication) | Proven-exact Chebyshev-ring termination + bit-identical trajectory guarantee |
-| PPA-002 | Weight-saliency and second-order pruning (OBS), adaptive networks | **Free** (expired) | Crease-density (near-fold pre-activation) criteria; label-free stop/OOD signal |
+| PPA-002 | Weight-saliency and second-order pruning (OBS), boundary-based OOD detection (US5359699A), adaptive networks | **Free** (expired) | Crease-density (near-fold pre-activation) criteria; label-free stop/OOD signal |
 | PPA-003 | Merkle trees, RSA/DH, Chaum e-cash, Haber–Stornetta hash-chained timestamps, Ed25519 | **Free** (expired/public-domain design) | Routing-defined ownership; majority-honesty quorum; measured anomaly layer |
 
 ---
