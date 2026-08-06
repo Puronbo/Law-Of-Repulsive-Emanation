@@ -98,4 +98,11 @@ The package also exercises the local-only ethic in other guises
   unit's neighbours that also list it among theirs (1.0 = every link mutual).
 - **Status** - `status()` returns a compact snapshot (n, dim, spacing,
   consensus, ledger counts).
+- **Scale-free networks** - `topology.py` (`examples/scale_free.py`):
+  Barabasi-Albert preferential attachment, degree sequence, hubs, and a
+  discrete maximum-likelihood power-law exponent fit (Clauset-Shalizi-
+  Newman, solved by bisection).  `flow_over(edges, ...)` runs the *same*
+  local balance dynamics over a fixed hubs-and-spokes wiring instead of
+  k-NN - neighbourhoods are read once and held fixed while the cloud
+  relaxes, and each step can still be chained to the ledger.
 

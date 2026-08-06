@@ -154,6 +154,47 @@ class FlowEngine:
             self.chains.genesis(i, pack_state(self.h[i]))
         return self
 
+    def flow_over(self, edges, mu=0.0, steps=400, record=False):
+        """The same local dynamics over a FIXED edge topology instead of
+        k-NN: each unit talks only to its graph neighbours.  Neighbourhoods
+        are read once and held fixed while the cloud relaxes, so scale-free
+        wiring (puno_flow.topology) gives the same formula hubs-and-spokes
+        power-law neighbourhoods.  Undirected; self-loops ignored."""
+        A = self.A
+        m = self.mu0 + mu
+        dt = self.dt
+        eps = self.eps
+        max_r = self.max_r
+        chains = self.chains
+        n = self.n
+        neigh = [[] for _ in range(n)]
+        for u, v in np.asarray(edges, dtype=int):
+            if u != v and 0 <= u < n and 0 <= v < n:
+                neigh[u].append(int(v))
+                neigh[v].append(int(u))
+        nb = [np.unique(np.asarray(x, dtype=int)) for x in neigh]
+        for _ in range(steps):
+            q = self.q
+            h = self.h
+            for i in range(n):
+                ni = nb[i]
+                if len(ni) == 0:
+                    g = -A * m * (q[i] - h[i])
+                else:
+                    out = q[i] - q[ni]
+                    r3 = np.maximum(np.linalg.norm(out, axis=-1), eps) ** 3
+                    rep = (out / r3[:, None]).sum(axis=0)
+                    g = -A * m * (q[i] - h[i]) + rep
+                gm = np.linalg.norm(g) + 1e-9
+                q[i] += dt * g / gm
+            self.q = to_disk(self.q, max_r)
+            if record:
+                for i in range(n):
+                    chains.record(i, pack_state(self.q[i])
+                                     + pack_state(self.h[i])
+                                     + pack_indices(nb[i]))
+        return self
+
     def create(self, x, home=None, parent=None, settle=False):
         """Creation: spawn a new unit.  Its genesis block (written by add)
         records its home; parent (int) optionally adds a provenance block
