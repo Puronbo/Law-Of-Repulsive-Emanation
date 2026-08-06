@@ -27,7 +27,7 @@ def main():
         print(f"  {key}: {val}")
     print(f"  verdict: {report['verdict']}")
 
-    n = 100_000
+    n = int(sys.argv[1]) if len(sys.argv) > 1 else 100_000
     X = rng.uniform(-1.0, 1.0, (n, 2))
     net = FlowEngine(dim=2, k=8, use_index=True,
                      index_min_n=2).add_many(X, X)

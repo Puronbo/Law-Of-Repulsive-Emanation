@@ -42,34 +42,64 @@ class _Grid:
         self.ni = np.maximum(np.ceil((span + cell) / cell).astype(int), 1)
         ci = np.floor((self.pts - self.origin) / cell).astype(int)
         self.idx = np.clip(ci, 0, self.ni - 1)
-        self.cells = {}
-        for i in range(self.n):
-            self.cells.setdefault(tuple(self.idx[i]), []).append(i)
         self.ring_offsets = []
         for r in range(int(self.ni.max())):
             offs = [off for off in itertools.product(
                 range(-r, r + 1), repeat=self.dim)
                 if max(abs(o) for o in off) == r]
             self.ring_offsets.append(offs)
+        strides = np.ones(self.dim, dtype=int)
+        for d in range(self.dim - 2, -1, -1):
+            strides[d] = strides[d + 1] * self.ni[d + 1]
+        self._strides = strides
+        cid = np.ravel_multi_index(self.idx.T, self.ni)
+        order = np.argsort(cid, kind="stable")
+        self.order = order
+        sc = cid[order]
+        uniq, starts = np.unique(sc, return_index=True)
+        ends = np.append(starts[1:], self.n)
+        self._slices = dict(zip(uniq.tolist(),
+                                zip(starts.tolist(), ends.tolist())))
 
     def _scan(self, x, ci, k=1, drop=-1):
         dim = self.dim
-        cells = self.cells
+        nix = self.ni
+        strides = self._strides
+        slices = self._slices
+        order = self.order
+        pts = self.pts
+        cell = self.cell
         cand = []
+        tot = 0
         for r, offs in enumerate(self.ring_offsets):
             for off in offs:
-                cc = tuple(ci[d] + off[d] for d in range(dim))
-                for j in cells.get(cc, ()):
-                    if j != drop:
-                        cand.append(j)
-            if len(cand) < k:
+                cid = 0
+                ok = True
+                for d in range(dim):
+                    c = ci[d] + off[d]
+                    if not (0 <= c < nix[d]):
+                        ok = False
+                        break
+                    cid += c * strides[d]
+                if ok:
+                    s, e = slices.get(cid, (0, 0))
+                    if s < e:
+                        cand.append(order[s:e])
+                        tot += e - s
+            if tot < k:
                 continue
-            c = np.asarray(cand, dtype=int)
-            d = np.linalg.norm(self.pts[c] - x, axis=-1)
-            if np.partition(d, k - 1)[k - 1] <= r * self.cell:
+            c = np.concatenate(cand)
+            if drop >= 0:
+                c = c[c != drop]
+            if len(c) < k:
+                continue
+            d = np.linalg.norm(pts[c] - x, axis=-1)
+            if np.partition(d, k - 1)[k - 1] <= r * cell:
                 return c[np.argsort(d)]
-        c = np.asarray(cand, dtype=int)
-        d = np.linalg.norm(self.pts[c] - x, axis=-1)
+        c = np.concatenate(cand)
+        if drop >= 0:
+            c = c[c != drop]
+        d = np.linalg.norm(pts[c] - x, axis=-1)
         return c[np.argsort(d)]
 
     def knn(self, i, k):
