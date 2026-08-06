@@ -45,6 +45,8 @@
 | US5636326A | Method for operating an optimal weight pruning apparatus for designing artificial neural networks (Optimal Brain Surgeon / Hessian-inverse pruning) | David G. Stork, Babak Hassibi / Ricoh | priority 1992-09-04, filed 1995-07-07, granted 1997-06-03, ant. exp. 2012-09-04 | **Expired - Lifetime** |
 | US3934231 | Adaptive Boolean Logic Element (adaptive logic networks; early adaptive-training art) | W. W. Armstrong / Dendronic | filed 1974-02-28, granted 1976-01-20, expired ~1991 (17-yr term) | **Expired - Lifetime** |
 
+> **Note (verified 2026-08-06):** Optimal Brain Damage (LeCun, Denker & Solla, NIPS 1989) was **published but never patented** — it is free as publication prior art. Common guesses for an "OBD patent" (`US5046019A` = fuzzy data comparator, `US5274714A` = feature-vector neural recognition) were checked on Google Patents and are **not** OBD; both are irrelevant to this invention. OBD remains cited here as publication prior art alongside the expired OBS patent above.
+
 **Relevance:** Weight/saliency-based pruning (including second-order Optimal Brain Surgeon) is fully public domain. PPA-002's crease-density pruning is an *input-activation-band* criterion, distinct from weight-saliency art. The early-stopping, OOD-detection, and fold-adjacent subgradient claims build on label-free signals; no directly-covering expired patents were found in this survey for those specific claims.
 
 > **Note:** Modern neural-network training patents (e.g., dropout, US9406017B2 / Google) remain **active** — do not assume freedom to practice all training techniques; only the expired art above is unencumbered.
@@ -72,6 +74,13 @@
 - US5999627 fixed-base exponentiation — expired 2015-06-06
 
 **Relevance:** Every cryptographic primitive the fragment bank builds on — public-key encryption/signatures (RSA, Diffie-Hellman), Merkle hash trees for block hashing, hash-chained timestamp ledgers (Haber–Stornetta, the direct ancestor of the PPA-003 hash-chained ledger), and privacy-preserving e-cash (Chaum) — is in the public domain. The patentable contribution remains the *routing-defined ownership* (ownership IS routing), the *majority-honesty witness quorum with measured liveness curve*, and the *benchmarked anomaly layer* — not the primitives themselves.
+
+**Routing-defined ownership — publication prior art (not patents):** The concept that an account's custodian is a *pure function of a hashed identifier* (deterministic routing with no registry) descends directly from distributed hash-table routing, which was published, never patented:
+- **Consistent hashing** — Karger et al., *Consistent hashing and random trees*, STOC 1997.
+- **Chord** — Stoica et al., *Chord: a scalable peer-to-peer lookup service*, SIGCOMM 2001.
+- **Kademlia** — Maymounkov & Mazières, *Kademlia: a peer-to-peer information system based on the XOR metric*, IPTPS 2002.
+- **Pastry** — Rowstron & Druschel, SIGOPS 2001.
+A search of Google Patents for expired consistent-hashing/DHT patents returned only **active** or non-expired family members (e.g., `US11150953B2` consistent-hash, `US9378106B1` hash-based replication, `US8725862B1` query-hashing) — none expired and none a direct antecedent. The routing-defined-ownership claim therefore stands on the publication foundation above plus the invention's specific embedding and re-resolution rule, not on any expired patent.
 
 ---
 

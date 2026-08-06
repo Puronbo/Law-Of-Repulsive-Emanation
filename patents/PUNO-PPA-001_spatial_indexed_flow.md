@@ -14,6 +14,7 @@ date: "2026-08-04"
 **Inventor:** Michael Grafiel Sayson Puno
 **Filed (priority date basis):** 2026-08-04
 **Corpus reference:** Puno Calculus T67/T72 (`experiments/decentral_net_t67.py`, `experiments/decentral_net_t72.py`, `Universals/manifold/decentral_net.py`, `data/decentral_net_t67_data.json`, `data/decentral_net_t72_data.json`)
+**Prior-art / freedom-to-operate reference:** `patents/EXPIRED_PATENTS.md` (§ PPA-001)
 
 ---
 

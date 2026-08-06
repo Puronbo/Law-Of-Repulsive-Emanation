@@ -14,6 +14,7 @@ date: "2026-08-04"
 **Inventor:** Michael Grafiel Sayson Puno
 **Filed (priority date basis):** 2026-08-04
 **Corpus reference:** Puno Calculus (`Universals/crease_metrics.py`, `Universals/exp_pruning.py`, `Universals/exp3_early_stop.py`, `Universals/demo_ood.py`, `Universals/exp1b_crease_subgradient.py`, `data/exp_pruning_results.json`, `data/exp3_early_stop_results.json`, `data/exp_ood_results.json`, `data/exp2_results.json`, `data/exp1b_results.json`, `data/crease_data.json`)
+**Prior-art / freedom-to-operate reference:** `patents/EXPIRED_PATENTS.md` (§ PPA-002)
 
 ---
 

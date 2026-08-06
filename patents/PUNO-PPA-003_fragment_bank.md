@@ -14,6 +14,7 @@ date: "2026-08-04"
 **Inventor:** Michael Grafiel Sayson Puno
 **Filed (priority date basis):** 2026-08-04
 **Corpus reference:** Puno Calculus T1–T20 / T68–T71 (`experiments/decentral_bank.py`, `experiments/decentral_bank_bridge.py`, `experiments/decentral_bank_net.py`, `Universals/manifold/decentral_net.py`, `data/decentral_bank_data.json`, `data/decentral_bank_bridge_data.json`, `data/decentral_bank_net_data.json`)
+**Prior-art / freedom-to-operate reference:** `patents/EXPIRED_PATENTS.md` (§ PPA-003)
 
 ---
 
