@@ -125,4 +125,11 @@ per-unit ledgers:
   fallback through the exact index when greedy hits a void.  When routers
   die the mesh reflows locally and routing self-heals.
   `python -m puno_flow.apps.router [n] [trials]`.
+- **`puno_app` (the lab)** - a full-stack browser lab over one live
+  `NetworkApp`.  A stdlib-only `ThreadingHTTPServer` (`canned_ui.py`)
+  exposes the whole action surface as JSON - new / step / create / spawn /
+  damage / heal / rewire / search / route / autotick / verify / ledger /
+  topology - and `ui.html` is a single-file canvas app (no framework, no
+  bundler) that polls a snapshot and drives the network live.
+  `python -m puno_app.canned_ui [--port 8765]`, then open the printed URL.
 

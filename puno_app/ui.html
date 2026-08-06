@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>puno lab</title>
+<style>
+  :root {
+    --bg: #0d1117; --panel: #161b22; --line: #30363d;
+    --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff;
+    --good: #3fb950; --bad: #f85149;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.45 "SF Mono", Consolas, "DejaVu Sans Mono", monospace;
+  }
+  header {
+    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    padding: 10px 16px; border-bottom: 1px solid var(--line);
+    background: var(--panel);
+  }
+  header h1 { font-size: 16px; margin: 0; color: var(--accent); }
+  header .stats { color: var(--muted); font-size: 12px; }
+  main { display: flex; gap: 12px; padding: 12px 16px; align-items: flex-start; }
+  canvas {
+    border: 1px solid var(--line); background: #010409;
+    border-radius: 6px; width: 640px; height: 640px;
+  }
+  aside { width: 300px; display: flex; flex-direction: column; gap: 10px; }
+  .panel { background: var(--panel); border: 1px solid var(--line);
+           border-radius: 6px; padding: 10px; }
+  .panel h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .08em;
+              color: var(--muted); margin: 0 0 8px; }
+  .row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
+  button {
+    background: #21262d; color: var(--text); border: 1px solid var(--line);
+    border-radius: 4px; padding: 5px 10px; cursor: pointer; font: inherit;
+  }
+  button:hover { background: #30363d; border-color: var(--accent); }
+  button:disabled { opacity: .45; cursor: not-allowed; }
+  input, select {
+    background: #0d1117; color: var(--text); border: 1px solid var(--line);
+    border-radius: 4px; padding: 4px 6px; font: inherit; width: 100%;
+  }
+  .kv { font-size: 12px; color: var(--muted); }
+  .kv b { color: var(--text); font-weight: 600; }
+  #log {
+    height: 150px; overflow-y: auto; font-size: 11px; color: var(--muted);
+    white-space: pre-wrap;
+  }
+  #events { color: var(--good); font-size: 11px; min-height: 16px; }
+  .chips { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .chip { font-size: 11px; padding: 2px 8px; border-radius: 10px;
+          border: 1px solid var(--line); color: var(--muted); }
+  .chip.on { color: var(--good); border-color: var(--good); }
+  .status { font-size: 11px; color: var(--muted); }
+  .status.bad { color: var(--bad); }
+</style>
+</head>
+<body>
+<header>
+  <h1>puno lab</h1>
+  <span class="stats" id="stats">no network yet</span>
+  <span class="status" id="status">connecting…</span>
+</header>
+
+<main>
+  <div>
+    <canvas id="cv" width="640" height="640"></canvas>
+  </div>
+
+  <aside>
+    <div class="panel">
+      <h2>network</h2>
+      <div class="row">
+        <button id="btnNew">new</button>
+        <button id="btnRewire">rewire</button>
+        <button id="btnStep">step 10</button>
+        <button id="btnAutotick">autotick</button>
+      </div>
+      <div class="row">
+        <button id="btnSpawn">spawn 3</button>
+        <button id="btnDamage">damage 10</button>
+        <button id="btnHeal">heal 50</button>
+      </div>
+      <div class="row">
+        <label style="flex:1"><input id="rec" type="checkbox" checked> record ledger</label>
+      </div>
+      <div class="kv" id="kv"></div>
+    </div>
+
+    <div class="panel">
+      <h2>query</h2>
+      <div class="row">
+        <input id="qk" type="number" value="5" min="1" step="1" title="k">
+        <button id="btnSearch">search</button>
+      </div>
+      <div class="row">
+        <input id="qstart" type="number" value="0" min="0" step="1" title="start unit">
+        <button id="btnRoute">route</button>
+      </div>
+      <div class="kv" id="qresult"></div>
+    </div>
+
+    <div class="panel">
+      <h2>tools</h2>
+      <div class="chips">
+        <span class="chip" id="chipLedger">ledger</span>
+        <span class="chip" id="chipVerify">bit-exact</span>
+      </div>
+      <div class="kv" id="toolresult"></div>
+    </div>
+
+    <div class="panel">
+      <h2>log</h2>
+      <div id="events"></div>
+      <div id="log"></div>
+    </div>
+  </aside>
+</main>
+
+<script>
+"use strict";
+
+const canvas = document.getElementById("cv");
+const ctx = canvas.getContext("2d");
+const $ = id => document.getElementById(id);
+
+let state = { n: 0, positions: [], edges: null, degree: null, stats: {},
+              ledger: {}, log: [], events: [], k: 8, topology: "" };
+let highlight = null;      // {x, y} target for search/route
+let routePath = null;      // [ids]
+
+// ------------------------------------------------------------------ API
+async function api(path, body, method = "POST") {
+  const opts = { method, headers: { "Content-Type": "application/json" } };
+  if (body !== undefined) opts.body = JSON.stringify(body);
+  const res = await fetch(path, opts);
+  const data = await res.json();
+  if (!data.ok) throw new Error(data.error || "api error");
+  return data;
+}
+
+function post(path, body) { return api(path, body); }
+
+// ------------------------------------------------------------------ draw
+function draw() {
+  ctx.clearRect(0, 0, 640, 640);
+  const n = state.n;
+  const S = 640, pad = 16, box = S - 2 * pad;
+  const xy = (p) => [pad + (p[0] + 0.55) * box, pad + (p[1] + 0.55) * box];
+
+  ctx.strokeStyle = "#1b232d";
+  ctx.beginPath();
+  ctx.arc(S / 2, S / 2, box * 0.5 * 0.82, 0, 2 * Math.PI);
+  ctx.stroke();
+
+  if (state.edges && state.positions.length) {
+    const deg = state.degree || [];
+    const edges = state.edges;
+    ctx.strokeStyle = "#16222e";
+    ctx.lineWidth = 1;
+    for (const [a, b] of edges) {
+      const pa = state.positions[a], pb = state.positions[b];
+      if (!pa || !pb) continue;
+      ctx.beginPath();
+      ctx.moveTo(...xy(pa));
+      ctx.lineTo(...xy(pb));
+      ctx.stroke();
+    }
+  }
+
+  const positions = state.positions || [];
+  positions.forEach((p, i) => {
+    const [x, y] = xy(p);
+    const d = state.degree ? state.degree[i] : 1;
+    const r = d > 0 ? 2 + Math.min(2.5, Math.sqrt(d) * 0.4) : 2;
+    ctx.fillStyle = i === 0 ? "#ffd700" : "#58a6ff";
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, 2 * Math.PI);
+    ctx.fill();
+  });
+
+  if (highlight) {
+    const [x, y] = xy([highlight.x, highlight.y]);
+    ctx.strokeStyle = "#3fb950";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(x, y, 8, 0, 2 * Math.PI);
+    ctx.stroke();
+  }
+  if (routePath && routePath.length > 1) {
+    ctx.strokeStyle = "#f85149";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    let started = false;
+    for (const id of routePath) {
+      const p = state.positions[id];
+      if (!p) continue;
+      const [x, y] = xy(p);
+      if (!started) { ctx.moveTo(x, y); started = true; }
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  }
+}
+
+// ------------------------------------------------------------------ stats
+function fmt(x) {
+  if (x === null || x === undefined) return "—";
+  if (typeof x === "number") return +x.toFixed(4);
+  return x;
+}
+
+function refresh(snap, events) {
+  state = snap;
+  if (events && events.length) $("events").textContent = events.join(" · ");
+  $("stats").textContent =
+    `n=${snap.n} k=${snap.k} ${snap.topology || ""} blocks=${snap.ledger ? snap.ledger.blocks : 0}`;
+  const st = snap.stats || {};
+  $("kv").innerHTML =
+    `spacing <b>${fmt(st.spacing)}</b> · consensus <b>${fmt(st.consensus)}</b><br>` +
+    `max_r <b>${fmt(st.max_r)}</b> · finite <b>${fmt(st.finite)}</b><br>` +
+    `ledger <b>${snap.ledger ? snap.ledger.chains + " chains / " + snap.ledger.blocks + " blocks" : "—"}</b>` +
+    (snap.ledger ? ` <b style="color:${snap.ledger.verified ? "var(--good)" : "var(--bad)"}">${snap.ledger.verified ? "verified" : "FAIL"}</b>` : "");
+  if (snap.log && snap.log.length) {
+    $("log").textContent = snap.log.join("\n");
+    $("log").scrollTop = $("log").scrollHeight;
+  }
+  $("chipLedger").classList.toggle("on", snap.ledger && snap.ledger.verified);
+  draw();
+}
+
+// ------------------------------------------------------------------ actions
+async function act(path, body, evtFn) {
+  $("status").textContent = "working…";
+  $("status").className = "status";
+  try {
+    const data = await post(path, body || {});
+    refresh(data, data.events);
+    $("status").textContent = path + " ok";
+    if (evtFn) evtFn(data);
+  } catch (e) {
+    $("status").textContent = e.message;
+    $("status").className = "status bad";
+  }
+}
+
+function queryResult(html) { $("qresult").innerHTML = html; }
+function toolResult(html) { $("toolresult").innerHTML = html; }
+
+$("btnNew").onclick = () => act("/api/new", { n: 300, k: 8, topology: "scale-free", settle: 30 });
+$("btnRewire").onclick = () => act("/api/rewire", { m: 2 });
+$("btnStep").onclick = () => act("/api/step", { steps: 10, mode: "over" });
+$("btnAutotick").onclick = () => act("/api/autotick", { steps: 3, respawn: 3 });
+$("btnSpawn").onclick = () => act("/api/spawn", { count: 3 });
+$("btnDamage").onclick = () => act("/api/damage", { count: 10 });
+$("btnHeal").onclick = () => act("/api/heal", { steps: 50 });
+$("rec").onchange = () => act("/api/record", { on: $("rec").checked });
+
+$("btnSearch").onclick = () => {
+  const k = +$("qk").value || 5;
+  highlight = { x: 0.0, y: 0.0 };
+  act("/api/search", { x: 0.0, y: 0.0, k }, (d) => {
+    queryResult(d.hits.map(h => `#${h[0]} <b>${fmt(h[1])}</b>`).join(" · "));
+  });
+};
+
+$("btnRoute").onclick = () => {
+  const start = +$("qstart").value || 0;
+  highlight = { x: 0.0, y: 0.0 };
+  act("/api/route", { start, x: 0.0, y: 0.0 }, (d) => {
+    routePath = d.path;
+    queryResult(`path <b>${d.hops}</b> hops → ${d.delivered ? "delivered" : "lost"}`);
+  });
+};
+
+$("chipLedger").onclick = () => act("/api/ledger", {}, (d) => {
+  toolResult(`chains <b>${d.chains}</b> · blocks <b>${d.blocks}</b> · ` +
+             `verified <b>${d.verified}</b>`);
+});
+$("chipVerify").onclick = () => act("/api/verify", {}, (d) => {
+  toolResult(d.skipped ? `skipped: ${d.skipped}` : `ok=<b>${d.ok}</b> report=${fmt(d.report)}`);
+});
+
+// ------------------------------------------------------------------ loop
+let hold = false;
+canvas.addEventListener("click", (e) => {
+  hold = true;
+  setTimeout(() => { hold = false; }, 4000);
+});
+
+async function poll() {
+  try {
+    const snap = await api("/api/snapshot", undefined, "GET");
+    refresh(snap, snap.events);
+    $("status").className = "status";
+    $("status").textContent = "live";
+  } catch (e) {
+    $("status").textContent = "offline: " + e.message;
+    $("status").className = "status bad";
+  }
+}
+
+async function loop() {
+  if (!hold && state.n > 0) {
+    try {
+      const d = await post("/api/autotick", { steps: 3, respawn: 1 });
+      refresh(d, d.events);
+      $("status").className = "status";
+      $("status").textContent = "ticking";
+    } catch (e) { /* engine errors show on next poll */ }
+  }
+  setTimeout(loop, 4000);
+}
+
+(async () => {
+  await poll();
+  loop();
+})();
+</script>
+</body>
+</html>
