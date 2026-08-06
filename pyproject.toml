@@ -23,6 +23,8 @@ puno = "puno_cli:main"
 
 [tool.setuptools]
 py-modules = ["puno_cli"]
+packages = ["puno_flow"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]

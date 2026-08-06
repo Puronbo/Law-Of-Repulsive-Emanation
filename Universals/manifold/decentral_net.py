@@ -259,8 +259,8 @@ class DecentralNet:
     # ------------------------------------------------------------------ #
     def add(self, x, home=None, settle=False):
         """Insert a neuron.  Home defaults to its arrival position x."""
-        x = np.asarray(x, dtype=float).reshape(1, -1)
-        h = x if home is None else np.asarray(home, dtype=float).reshape(1, -1)
+        x = np.asarray(x, dtype=float).reshape(1, -1).copy()
+        h = x if home is None else np.asarray(home, dtype=float).reshape(1, -1).copy()
         self.q = x if self.n == 0 else np.vstack([self.q, x])
         self.h = h if len(self.h) == 0 else np.vstack([self.h, h])
         if settle:
@@ -269,13 +269,16 @@ class DecentralNet:
 
     def add_many(self, X, homes=None):
         """Bulk-insert many neurons at once (vectorized; homes = X by
-        default).  For loading large populations without a per-neuron loop."""
+        default).  For loading large populations without a per-neuron loop.
+        Inputs are copied so a caller may reuse the same array for several
+        nets without them sharing state."""
         X = np.asarray(X, dtype=float)
         if X.ndim == 1:
             X = X[None, :]
         H = X if homes is None else np.asarray(homes, dtype=float)
         if self.n == 0:
-            self.q, self.h = X, H
+            self.q = X.copy()
+            self.h = H.copy()
         else:
             self.q = np.vstack([self.q, X])
             self.h = np.vstack([self.h, H])
