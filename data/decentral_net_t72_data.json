@@ -1,7 +1,7 @@
 {
   "flow_whole_internet": {
     "n_sites": 1914915,
-    "ms_per_step": 277218.2,
+    "ms_per_step": 277600.0,
     "allpairs_d_gb": 58670.0,
     "spacing_before": 0.00032710685089075333,
     "spacing_after_step": 0.00036374194235191894,
@@ -12,13 +12,13 @@
     "killed": 382983,
     "survivors": 1531932,
     "spacing_after_kill": 0.0004067228586803157,
-    "heal_ms_per_step": 209088.6,
-    "spacing_after_heal": 0.00043826749797431006,
+    "heal_ms_per_step": 204102.4,
+    "spacing_after_heal": 0.0004382580862869713,
     "verdict": "MEASURED"
   },
   "highdim_wall": {
     "n": 10000,
-    "ms_per_step": 12306.3,
+    "ms_per_step": 11947.9,
     "allpairs_d_gb": 102.0,
     "verdict": "MEASURED"
   },

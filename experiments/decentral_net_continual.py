@@ -155,6 +155,8 @@ print("\n" + "-" * 70)
 print("PART 2: is the 2D-calibrated tether dimension-independent?  (seed 42)")
 print("  ADD policy, mu0 sweep in 64D vs CONTROL (raw centroids)")
 print("-" * 70)
+if 42 not in cached:
+    cached[42] = build(42)
 Z, cent = cached[42]
 cont_old = kNN_acc(cent[BASE], Z, subset=BASE)
 cont_all = kNN_acc(cent, Z)
