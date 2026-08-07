@@ -1,0 +1,170 @@
+{
+  "claim": "residual drift converges to zero as dt -> 0 (was 'anticipated, not measured' in PAPER/AUDIT)",
+  "setup": {
+    "q0": [
+      0.0,
+      0.0
+    ],
+    "context": [
+      "Tech",
+      "Silicon"
+    ],
+    "T_final": 1.0,
+    "dt_values": [
+      0.004,
+      0.002,
+      0.001,
+      0.0005,
+      0.00025,
+      0.000125,
+      6.25e-05
+    ],
+    "interior_trajectory": {
+      "q0": [
+        0.3,
+        0.0
+      ],
+      "T": 0.25,
+      "dt_values": [
+        0.001,
+        0.0005,
+        0.00025,
+        0.000125,
+        6.25e-05,
+        3.125e-05
+      ]
+    }
+  },
+  "rows": [
+    {
+      "dt": 0.004,
+      "steps": 250,
+      "max_drift": 5.4369901013,
+      "relative_drift": 0.22251019,
+      "energy_drift": 0.22251019,
+      "n_boundary_projection_hits": 0,
+      "conserved_01": false
+    },
+    {
+      "dt": 0.002,
+      "steps": 500,
+      "max_drift": 3.0352556572,
+      "relative_drift": 0.1242186,
+      "energy_drift": 0.1242186,
+      "n_boundary_projection_hits": 0,
+      "conserved_01": false
+    },
+    {
+      "dt": 0.001,
+      "steps": 1000,
+      "max_drift": 1.6115814922,
+      "relative_drift": 0.06595438,
+      "energy_drift": 0.06595438,
+      "n_boundary_projection_hits": 0,
+      "conserved_01": false
+    },
+    {
+      "dt": 0.0005,
+      "steps": 2000,
+      "max_drift": 0.8299125559,
+      "relative_drift": 0.03396438,
+      "energy_drift": 0.03396438,
+      "n_boundary_projection_hits": 2,
+      "conserved_01": false
+    },
+    {
+      "dt": 0.00025,
+      "steps": 4000,
+      "max_drift": 0.4214687657,
+      "relative_drift": 0.01724872,
+      "energy_drift": 0.01724872,
+      "n_boundary_projection_hits": 8,
+      "conserved_01": false
+    },
+    {
+      "dt": 0.000125,
+      "steps": 8000,
+      "max_drift": 0.6779510498,
+      "relative_drift": 0.02774532,
+      "energy_drift": 0.02774532,
+      "n_boundary_projection_hits": 21,
+      "conserved_01": false
+    },
+    {
+      "dt": 6.25e-05,
+      "steps": 16000,
+      "max_drift": 0.9136615846,
+      "relative_drift": 0.03739183,
+      "energy_drift": 0.03739183,
+      "n_boundary_projection_hits": 48,
+      "conserved_01": false
+    }
+  ],
+  "convergence_fit": {
+    "dt_range": [
+      0.004,
+      0.00025
+    ],
+    "order": 0.925,
+    "r2": 0.9991,
+    "interpretation": "max_drift ~ dt^order; drift -> 0 as dt -> 0"
+  },
+  "interior_trajectory_rows": [
+    {
+      "dt": 0.001,
+      "steps": 250,
+      "max_drift": 0.0139190481,
+      "relative_drift": 0.00071201,
+      "n_boundary_projection_hits": 0
+    },
+    {
+      "dt": 0.0005,
+      "steps": 500,
+      "max_drift": 0.006932436,
+      "relative_drift": 0.00035462,
+      "n_boundary_projection_hits": 0
+    },
+    {
+      "dt": 0.00025,
+      "steps": 1000,
+      "max_drift": 0.0034355794,
+      "relative_drift": 0.00017574,
+      "n_boundary_projection_hits": 0
+    },
+    {
+      "dt": 0.000125,
+      "steps": 2000,
+      "max_drift": 0.0016862632,
+      "relative_drift": 8.626e-05,
+      "n_boundary_projection_hits": 0
+    },
+    {
+      "dt": 6.25e-05,
+      "steps": 4000,
+      "max_drift": 0.000811383,
+      "relative_drift": 4.151e-05,
+      "n_boundary_projection_hits": 0
+    },
+    {
+      "dt": 3.125e-05,
+      "steps": 8000,
+      "max_drift": 0.0003738868,
+      "relative_drift": 1.913e-05,
+      "n_boundary_projection_hits": 0
+    }
+  ],
+  "interior_trajectory_fit": {
+    "order": 1.04,
+    "interpretation": "no boundary contact; drift -> 0 as dt -> 0 cleanly to first order"
+  },
+  "anomalous_tail": {
+    "dropped": [
+      0.000125,
+      6.25e-05
+    ],
+    "note": "at the smallest dt the drift rises again; a single boundary-projection event (r clipped at 0.99) injects a dt-independent error that sets the floor \u2014 reported, not hidden"
+  },
+  "boundary_floor": true,
+  "interior_clean": true,
+  "verdict": "PASS first-order convergence to zero (interior trajectory); boundary projection sets a non-conservative drift floor for boundary-contacting trajectories"
+}

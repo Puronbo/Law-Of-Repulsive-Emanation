@@ -8,6 +8,8 @@ A hyperbolic novelty engine: Hamiltonian flow on the Poincare disk, a formal pro
 
 Every number below was re-verified by rerun or direct read of the persisted data file. Full claim-by-claim declaration with references: `docs/NOVELTY_AND_CREATION.md`.
 
+Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics that don't appear in any file name.
+
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
@@ -21,7 +23,10 @@ Every number below was re-verified by rerun or direct read of the persisted data
 | T72 whole-internet flow | 1,914,915 sites flowed: **277,218 ms/step**, all-pairs D = 58,670 GB; 20% kill (382,983) then heal +7.8% spacing recovery |
 | Decentral Bank (T68–T71, T16–T20) | double-entry ledger conserved exactly over 3000 txs; nonce replay rejected; quorum = majority honesty (not BFT), catches every faulty send < 40% corruption; anomaly recall 0.51 / precision 0.63 vs null 0.019; Ed25519 sigs verified; WAL bit-identical save/load; 14/14 commit over real TCP sockets; mutual TLS; LAN NIC 192.168.100.241 |
 | Ground states | quantum E0 = 5.843778304934855; classical conservative 24.4328733; dissipative 10.0036703 (30 eigenvalues) |
-| Kawasaki | mean deviation 0.49 from target 0 — genuinely open |
+| Kawasaki | mean deviation 0.49 from target 0 — **resolved 2026-08-08: sampling artifact** (point-cloud scatter; exact 2-line criterion |4α−2π| fails generically, 9.5% vs 8% uniform null); ReLU fold vertices are NOT flat-foldable |
+| Continuum-limit drift | **measured PASS 2026-08-08** — first-order convergence to zero (order 0.925–1.040); residual is the boundary r=0.99 projection floor |
+| Golden-ratio closure (T58) | **derived 2026-08-08** — r_ret/apex = 0.6137690167 = θ*/Θ solving s(θ*)/s(Θ)=1/φ² on the Archimedean spiral (delta 0.0, → 1/φ as Θ→∞) |
+| Spectral C1/C3/C4 (100 modes) | C1 partial (k=12: 0.53%, k=26: 0.96%); C3a not supported (no mode near λ(7)); C3b supported (12.2416 vs λ(31)=12.261, Δ=0.0197); C4 → Poisson ⟨r⟩=0.372 (GOE 0.536) |
 
 **Honest walls (recorded, not hidden):** Bekenstein shift **withdrawn** (its own persisted data shows the null: p=0.789/0.938); Selberg unification and partition-function match are **tautologies** by the code's own construction; T65 four-pack scored **0.5/4** (P2, P4 refuted); PUM cosmological mapping is not citable as verified physics (`docs/AUDIT.md` §3–§4).
 
@@ -72,6 +77,14 @@ The C7 bridge embeds Mersenne-gap primes into the Anosov geodesic flow on X(1) �
 - The asymptotic PGT formula requires L >> 300 (current data: L ≤ 229)
 - Whether this framework extends beyond 2ⁿ−k to arbitrary primes is open
 
+**What's measured (2026-08-08, `experiments/pgt_finite_l.py`):** at finite L the
+growth form is **refuted** — π_k(L) grows like ln L (one candidate per n),
+slope 0.002 vs the predicted 1.0, and ε_k·e^L/L overpredicts the observed 186
+primes by ~95 orders of magnitude at L=200.  The sieve ordering is only partial
+(Pearson r=0.696, Spearman 0.816).  The literal PGT-with-sieve-suppression
+conjecture is falsified at finite L; the L≫300 asymptotic is unreachable from
+the googol census (n_max=332) and would need the full X(1) geodesic spectrum.
+
 ## Epoch 0d (2000-10-26 10:26:20.00)
 
 The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.json`, `docs/WEAVERS_SCRIBE.md`, SPRING_BIBLE Ch. 14).
@@ -94,6 +107,11 @@ The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.j
 | OOD Detection (exp_ood) | Crease AUROC **0.88** on center-noise (beats MSP's 0.71); MSP better on far-Gaussian (0.99) |
 | Pruning (exp_pruning) | Crease beats magnitude at 7/10 ratios, **+13.5 pts at 25%** (0.720 vs 0.585); not a strict win at 10%, 45%, 50% |
 | Googol Census (C7) | 186 primes across 15 k-families (k=3: 21, k=1: 12, k=5: 19) |
+| Continuum limit (`continuum_limit.py`) | drift → 0 at first order (0.925–1.040) on interior trajectories; boundary clip = floor |
+| Spectral extended (`spectral_extended.py`) | 100 modes; C1 partial (k=12 0.53%), C3b supported (Δ=0.0197), C4 → Poisson ⟨r⟩=0.372 |
+| Kawasaki null (`kawasaki_null.py`) | 0.4866 reproduced; shown to be point-cloud scatter, not flat-foldability failure |
+| PGT finite-L (`pgt_finite_l.py`) | growth form refuted (slope 0.002 vs 1.0); sieve ordering partial (r=0.696) |
+| Golden-ratio closure (`fold_golden_closure.py`) | 0.613769 derived exactly (s(θ*)/s(Θ)=1/φ², delta 0.0) |
 
 ## Internet-Scale Flow (T67, T72)
 

@@ -1,0 +1,43 @@
+{
+  "claim": "Kawasaki mean deviation 0.49 / 72.4% at eps=0.5 = genuine open problem (PUM 10.2)",
+  "measured": {
+    "n_tested": 1000,
+    "mean_alt": 0.0671,
+    "deviation": 0.4866,
+    "fraction_eps": 0.724,
+    "N_eff_mean": 643.886,
+    "N_eff_median": 702.0,
+    "N_eff_min": 17,
+    "N_eff_max": 880
+  },
+  "null_median_N": {
+    "N": 702,
+    "mean": 0.19117214155850643,
+    "std": 0.14415579926674596,
+    "P(|A|<0.5)": 0.9647
+  },
+  "null_mean_N": {
+    "N": 644,
+    "mean": 0.1970016492669468,
+    "std": 0.14810592514816306,
+    "P(|A|<0.5)": 0.9573
+  },
+  "random_control": {
+    "n_tested": 1000,
+    "mean_alt": 0.0621,
+    "deviation": 0.8349,
+    "fraction_eps": 0.52,
+    "N_eff_mean": 213.806,
+    "N_eff_median": 219.5,
+    "N_eff_min": 78,
+    "N_eff_max": 302
+  },
+  "exact_2line_vertices": {
+    "n_line_pairs": 95,
+    "mean_deviation": 3.2149,
+    "min_deviation": 0.0003,
+    "fraction_eps_0.5": 0.0947,
+    "criterion": "exact 2-line ReLU fold vertex: |A| = |4 alpha - 2 pi|, 0 only at perpendicular crossings"
+  },
+  "verdict": "RESOLVED (refutation + artifact attribution): 1) The 0.4866 / 72.4 percent diagnostic value is not a flat-foldability measurement: it samples ~1000 near-crease points under max_distance=1.0 (N_eff ~ 702-643 rays per vertex), a dense point cloud rather than crease rays. Uniform scatter at that N gives E|A| = 0.191, P(|A|<0.5) = 0.965, so the diagnostic value 0.49 reflects the line-structured (crease-aligned) sampling, not a geometric near-satisfaction. 2) Measured at the true fold geometry (exact 2-line crossing vertices, 4 rays alpha, pi-alpha, alpha, pi-alpha), the Kawasaki criterion |4 alpha - 2 pi| = 0 holds only at perpendicular crossings; this network's 95 crease-line pairs give mean deviation 3.215 and only 0.095 within eps=0.5, statistically indistinguishable from the uniform crossing-angle null (~0.08). ReLU decision-region vertices are NOT flat-foldable, as expected for a codimension-1 condition. The 'genuine open problem' (PUM 10.2) is closed."
+}

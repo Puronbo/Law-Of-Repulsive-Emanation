@@ -211,9 +211,13 @@ For each claim: **Status** (measured/derived), **the claim**, **evidence**
 | Selberg unification (30 eigenvalues ↔ 196 geodesics, ε(2)=0.000265) | **Tautological** | ε(2) is real but is the code's own construction; spectral-vs-zeros match is poor (min |t_n − t_zeta| ~ 2.5–9.0). |
 | T65 four-pack (PUM §10.1) | **0.5/4 confirmed** | P1 tautology (τ := exp(entropy)); P2 refuted (recon err ≈ 1.8); P4 refuted (converged fraction 0.0); P3 weakly positive (MI 0.034 vs null 0.009) but synthetic. `data/t65_fourpack_results.json` |
 | Kawasaki angle constraint | **Measured failure** | Mean deviation **0.49** from target 0 — genuinely open. `docs/PHYSICAL_UNIVERSAL_MAP.md` §10.2 |
+| Kawasaki flat-foldability (ReLU vertices) | **Resolved — artifact, not near-miss** | 2026-08-08: the 0.4866/72.4% reproduce exactly but are a ~700-ray point-cloud sampling scatter (uniform control 0.835/52.0%); the exact 2-line fold-vertex criterion |4α−2π| fails generically (mean 3.21, 9.5% within ε=0.5 ≈ 8% uniform null). ReLU fold vertices are NOT flat-foldable (codimension-1). `experiments/kawasaki_null.py`, `data/kawasaki_null_data.json` |
+| Golden-ratio closure (T58 r=apex·0.6138) | **Measured → derived** | 2026-08-08: r_ret/apex = θ*/Θ solving s(θ*)/s(Θ)=1/φ² on the Archimedean spiral, delta 0.0 at Θ=20, → 1/φ as Θ→∞. `experiments/fold_golden_closure.py`, `data/fold_golden_closure_data.json` |
 | PUM narrative cosmology | **Not citable as verified physics** | AUDIT §3; only surviving engine-level claims stand. |
 | PGT, BOOK-V pedagogy | **Conjectured** | Self-declared unvalidated. |
-| Continuum limit drift | **Anticipated** | Residual drift → 0 as dt→0 claimed, not measured at arbitrary precision. |
+| PGT growth form (π_k ~ ε_k·e^L/L) | **Refuted at finite L** | 2026-08-08: slope of log π_k vs L is 0.002 vs predicted 1.0; π_k ~ ln L (one candidate per n); ε_k·e^L/L overpredicts by ~95 orders at L=200. Sieve ordering only partial (Pearson 0.696). `experiments/pgt_finite_l.py`, `data/pgt_finite_l_data.json` |
+| Continuum limit drift | **Anticipated → measured PASS** | 2026-08-08: first-order convergence to zero on interior trajectories (order 0.925–1.040, r²=0.9991); boundary r=0.99 projection clip sets a non-conservative floor. `experiments/continuum_limit.py`, `data/continuum_limit_drift.json` |
+| Spectral C1/C3/C4 (WEAVERS Ch. 5.1) | **Tested 2026-08-08** | C1 partial (k=12 0.53%, k=26 0.96%; k=10/2000 miss); C3a not supported (no mode near λ(7)); C3b supported (mode 12.2416 vs λ(31)=12.261, Δ=0.0197); C4 → Poisson (⟨r⟩=0.372 vs GOE 0.536) — T19 "consistent chaos" refuted at level-spacing level. `experiments/spectral_extended.py`, `data/spectral_extended_data.json` |
 
 ---
 
@@ -226,6 +230,11 @@ python experiments/prime_count_from_scratch.py         # pi(943901200001) = 3557
 python experiments/spring_bible.py                     # T58–T64 fold suite
 python experiments/decentral_net_t67.py                # O(1)-index bit-identity + exponents
 python experiments/decentral_net_t72.py                # whole-internet flow (heavy; ~28 h)
+python experiments/continuum_limit.py                  # drift → 0 at first order
+python experiments/spectral_extended.py                # C1/C3/C4 at 100 modes
+python experiments/kawasaki_null.py                    # Kawasaki artifact attribution
+python experiments/pgt_finite_l.py                     # PGT finite-L refutation
+python experiments/fold_golden_closure.py              # 0.613769 derived exactly
 ```
 
 ---

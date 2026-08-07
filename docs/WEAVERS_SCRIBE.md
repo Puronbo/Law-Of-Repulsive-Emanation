@@ -353,16 +353,36 @@ artifacts already falsified.
 * **C1 (E₁-dozenal):** the toy's low spectral radii r_k track ln of
   convention-scale integers; 12 is the first and cleanest. Test: add modes
   (n > 30) and look for r_k ≈ ln(k) for k ∈ {10, 26, 2000}.
+  **TESTED 2026-08-08** (100 modes, 120×120 grid;
+  `experiments/spectral_extended.py`, `data/spectral_extended_data.json`):
+  PARTIAL and resolution-dependent — k=12 hits (r=2.4982 vs ln 12=2.4849,
+  0.53%; the dozenal claim *sharpens* from the 0.04% E₁ match), k=26 hits
+  (0.96%), but k=10 misses (3.3%) and k=2000 misses (7.5%).  The dozenal
+  anchor survives; the general r_k ≈ ln k rule does not.
 * **C2 (golden fold):** further retrace folds lock on φ (or φ²) rungs — the
   fold is golden-geometric, extending T58's 0.6138 ≈ 1/φ. Test: derive the
   next fold above the giant; predict ratio ∈ {φ, φ²}.
+  **OPEN.** Distinct from the closure mechanism: T58's 0.6138 is now DERIVED
+  exactly (r_ret/apex = θ*/Θ solving s(θ*)/s(Θ)=1/φ² on the Archimedean spiral,
+  delta 0.0 at Θ=20; `experiments/fold_golden_closure.py`), but the φ² chain
+  rung (1,914,467/730,421 = 2.62105) and the next fold above the giant remain
+  untested predictions.
 * **C3 (Mersenne-λ spectrum):** a mode exists near λ = 4.574 (from the prime
   7), below the current floor; and the λ(31) = 12.26 falls inside the gap
   [12.06, 12.85]. Test: recompute the spectral problem with more modes /
   higher resolution.
+  **TESTED 2026-08-08** (100 modes): **C3a NOT SUPPORTED** — no mode near
+  λ(7)=4.574; the nearest is the ground state E0=5.91, Δ=1.34.  **C3b
+  SUPPORTED** — a mode at 12.2416 vs λ(31)=12.261, Δ=0.0197 (0.16%).  Note:
+  the WEAVERS eig[5]=12.060 value is not reproducible from
+  `data/spectral_data.json` (which holds 8.5406).
 * **C4 (intermediate statistics):** ⟨r⟩ = 0.46 ± finite-n is neither Poisson
   nor GOE; the "chaos is consistent" capstone (T19) needs more modes to be
   measured, not asserted.
+  **TESTED 2026-08-08** (100 modes): ⟨r⟩ = 0.372 vs Poisson 0.386 / GOE
+  0.536 — the spectrum resolves toward **Poisson**, so the T19 "consistent
+  chaos" claim is refuted at level-spacing level (for this finite-disk
+  analog).
 
 ### Ch. 5.2  Special numbers (measured)
 
@@ -375,8 +395,12 @@ artifacts already falsified.
 * **The golden ratio is already the corpus's own fold** (SPRING_BIBLE Ch. 6):
   length_growth/length_fold = φ = 1.618034 measured exactly; T58 closes at
   r = apex·0.6138 ≈ apex/φ. The retrace rung 1,914,467/730,421 = 2.62105 ≈ φ²
-  (0.12%) is the chain joining that same geometry. The *why* of 0.6138 stays
-  open (AUDIT §1.2) — now with two data points (0.6138, 2.62105) instead of one.
+  (0.12%) is the chain joining that same geometry. The *why* of 0.6138 is now
+  **derived, not open** (2026-08-08): r_ret/apex = θ*/Θ solves
+  s(θ*)/s(Θ) = 1/φ² on the Archimedean spiral, delta 0.0 at Θ=20, → 1/φ as
+  Θ→∞ (`experiments/fold_golden_closure.py`,
+  `data/fold_golden_closure_data.json`).  What stays open is C2 — whether the
+  *next* fold above the giant locks on a φ or φ² rung.
 * **137 appears twice, at coincidence scale.** Both 1375 tails carry "137",
   and the corpus's own PAPER §6.3 has C₀(α=5.0) = 137.574398 vs 1/α ≈ 137.036
   (0.4%). Reported and set aside: fine-structure numerology is exactly the

@@ -1,0 +1,51 @@
+{
+  "claim": "golden-ratio closure r = apex*0.6138 ~ apex/phi (T58 / AUDIT 2.5): reason asserted, not derived",
+  "construction": {
+    "definition": "fold arc length s_fold = s_growth/phi^2 (s_growth/(s_growth - s_fold) = phi)",
+    "spiral": "r = a*theta, a = 1, apex TH = 20",
+    "arc_length": "s(th) = (a/2)(th*sqrt(1+th^2) + asinh th)",
+    "closure_equation": "s(theta*)/s(TH) = 1/phi^2  ->  r_ret/apex = theta*/TH"
+  },
+  "measured": 0.613769016722836,
+  "derived_at_TH_20": 0.613769016722836,
+  "delta": 0.0,
+  "asymptotic_limit": {
+    "1/phi": 0.6180339887498948,
+    "note": "quadratic limit s ~ a th^2/2 gives theta*/TH = 1/phi exactly; finite-TH sub-quadratic correction gives 0.61377"
+  },
+  "convergence_table": [
+    {
+      "TH": 20,
+      "theta_star_over_TH": 0.61376902
+    },
+    {
+      "TH": 50,
+      "theta_star_over_TH": 0.61716849
+    },
+    {
+      "TH": 100,
+      "theta_star_over_TH": 0.61778298
+    },
+    {
+      "TH": 200,
+      "theta_star_over_TH": 0.61796258
+    },
+    {
+      "TH": 500,
+      "theta_star_over_TH": 0.61802073
+    },
+    {
+      "TH": 1000,
+      "theta_star_over_TH": 0.61803033
+    },
+    {
+      "TH": 5000,
+      "theta_star_over_TH": 0.61803381
+    },
+    {
+      "TH": 10000,
+      "theta_star_over_TH": 0.61803394
+    }
+  ],
+  "verdict": "DERIVED: the measured 0.613769 is exactly s(theta*)/s(TH)=1/phi^2 solved on the Archimedean spiral's sub-quadratic arc-length map (delta 0.00e+00). The 'golden ratio' enters through the construction (arc-length ratio = phi), not as an independent law; theta*/TH = 1/phi is the theta->infinity limit of the spiral metric, and 0.61377 is that limit at the finite apex TH=20. C2 (next-fold ratio in {phi, phi^2}) remains a separate, epoch-chain claim."
+}

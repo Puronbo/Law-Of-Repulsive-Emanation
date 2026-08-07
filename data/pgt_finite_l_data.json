@@ -1,0 +1,213 @@
+{
+  "claim": "pi_k(L) ~ epsilon_k * e^L / L over the C7 bridge (T19), finite-L test",
+  "setup": {
+    "n_max": 332,
+    "L_max": 221.44,
+    "n_entries": 186,
+    "n_families": 15
+  },
+  "families": [
+    {
+      "k": 1,
+      "count": 12,
+      "n_candidates": 331,
+      "empirical_rate": 0.03625377643504532,
+      "epsilon_window": 0.19637462235649547,
+      "epsilon_long": 0.1964392878575715,
+      "count_per_epsilon_window": 61.107692307692304
+    },
+    {
+      "k": 3,
+      "count": 21,
+      "n_candidates": 331,
+      "empirical_rate": 0.0634441087613293,
+      "epsilon_window": 0.3323262839879154,
+      "epsilon_long": 0.33446689337867574,
+      "count_per_epsilon_window": 63.19090909090909
+    },
+    {
+      "k": 5,
+      "count": 19,
+      "n_candidates": 331,
+      "empirical_rate": 0.05740181268882175,
+      "epsilon_window": 0.2598187311178248,
+      "epsilon_long": 0.2590518103620724,
+      "count_per_epsilon_window": 73.12790697674419
+    },
+    {
+      "k": 7,
+      "count": 1,
+      "n_candidates": 331,
+      "empirical_rate": 0.0030211480362537764,
+      "epsilon_window": 0.09969788519637462,
+      "epsilon_long": 0.10282056411282256,
+      "count_per_epsilon_window": 10.03030303030303
+    },
+    {
+      "k": 9,
+      "count": 13,
+      "n_candidates": 331,
+      "empirical_rate": 0.03927492447129909,
+      "epsilon_window": 0.20241691842900303,
+      "epsilon_long": 0.19963992798559713,
+      "count_per_epsilon_window": 64.22388059701493
+    },
+    {
+      "k": 11,
+      "count": 10,
+      "n_candidates": 331,
+      "empirical_rate": 0.030211480362537766,
+      "epsilon_window": 0.09063444108761329,
+      "epsilon_long": 0.09961992398479697,
+      "count_per_epsilon_window": 110.33333333333334
+    },
+    {
+      "k": 13,
+      "count": 8,
+      "n_candidates": 331,
+      "empirical_rate": 0.02416918429003021,
+      "epsilon_window": 0.1299093655589124,
+      "epsilon_long": 0.1278255651130226,
+      "count_per_epsilon_window": 61.58139534883721
+    },
+    {
+      "k": 15,
+      "count": 13,
+      "n_candidates": 331,
+      "empirical_rate": 0.03927492447129909,
+      "epsilon_window": 0.29607250755287007,
+      "epsilon_long": 0.30006001200240046,
+      "count_per_epsilon_window": 43.90816326530613
+    },
+    {
+      "k": 17,
+      "count": 17,
+      "n_candidates": 331,
+      "empirical_rate": 0.0513595166163142,
+      "epsilon_window": 0.28700906344410876,
+      "epsilon_long": 0.28565713142628524,
+      "count_per_epsilon_window": 59.23157894736842
+    },
+    {
+      "k": 19,
+      "count": 16,
+      "n_candidates": 331,
+      "empirical_rate": 0.04833836858006042,
+      "epsilon_window": 0.1419939577039275,
+      "epsilon_long": 0.14782956591318264,
+      "count_per_epsilon_window": 112.68085106382978
+    },
+    {
+      "k": 21,
+      "count": 13,
+      "n_candidates": 331,
+      "empirical_rate": 0.03927492447129909,
+      "epsilon_window": 0.24773413897280966,
+      "epsilon_long": 0.25845169033806764,
+      "count_per_epsilon_window": 52.47560975609756
+    },
+    {
+      "k": 23,
+      "count": 10,
+      "n_candidates": 331,
+      "empirical_rate": 0.030211480362537766,
+      "epsilon_window": 0.16012084592145015,
+      "epsilon_long": 0.15463092618523705,
+      "count_per_epsilon_window": 62.45283018867924
+    },
+    {
+      "k": 25,
+      "count": 13,
+      "n_candidates": 331,
+      "empirical_rate": 0.03927492447129909,
+      "epsilon_window": 0.18429003021148035,
+      "epsilon_long": 0.1850370074014803,
+      "count_per_epsilon_window": 70.54098360655738
+    },
+    {
+      "k": 27,
+      "count": 16,
+      "n_candidates": 331,
+      "empirical_rate": 0.04833836858006042,
+      "epsilon_window": 0.2990936555891239,
+      "epsilon_long": 0.30006001200240046,
+      "count_per_epsilon_window": 53.494949494949495
+    },
+    {
+      "k": 29,
+      "count": 4,
+      "n_candidates": 331,
+      "empirical_rate": 0.012084592145015106,
+      "epsilon_window": 0.054380664652567974,
+      "epsilon_long": 0.05621124224844969,
+      "count_per_epsilon_window": 73.55555555555556
+    }
+  ],
+  "sieve_ordering": {
+    "pearson_log_log": 0.6963,
+    "spearman": 0.8159
+  },
+  "growth_form": {
+    "slope_logN_vs_L": 0.002,
+    "r2": 0.0433,
+    "e^L/L_log_derivative_at_200": 0.995
+  },
+  "per_family_slopes": [
+    {
+      "k": 1,
+      "slope": 0.005935979943968972,
+      "n": 4
+    },
+    {
+      "k": 3,
+      "slope": 0.004035630286278941,
+      "n": 8
+    },
+    {
+      "k": 5,
+      "slope": 0.004548068041549112,
+      "n": 9
+    },
+    {
+      "k": 9,
+      "slope": 0.002954400641847886,
+      "n": 6
+    },
+    {
+      "k": 11,
+      "slope": 0.005689142743682355,
+      "n": 5
+    },
+    {
+      "k": 15,
+      "slope": 0.004330512017045844,
+      "n": 5
+    },
+    {
+      "k": 17,
+      "slope": 0.004184935999142413,
+      "n": 7
+    },
+    {
+      "k": 19,
+      "slope": 0.004001959313731565,
+      "n": 8
+    },
+    {
+      "k": 23,
+      "slope": 0.0030814345909662023,
+      "n": 4
+    },
+    {
+      "k": 25,
+      "slope": 0.0075228680544421845,
+      "n": 7
+    },
+    {
+      "k": 27,
+      "slope": 0.0035800786725854843,
+      "n": 5
+    }
+  ],
+  "verdict": "finite-L RESULT: (a) sieve-ordering PARTIAL (Pearson r=0.696, Spearman 0.816); (b) growth form REFUTED for the literal conjecture: slope(log pi/eps vs L)=0.002 vs the e^L/L prediction of 1.0 (log-derivative of e^L/L at L~200 is 0.9950). The Mersenne-gap candidate set is one number per n (an arithmetic progression), so pi_k(L) is bounded by ~L/ln2 and grows like ln L, not e^L/L; epsilon_k * e^L/L at L=200 exceeds the observed count by ~95 orders of magnitude. The PGT asymptotic applies to the full geodesic spectrum of X(1), not to the single C7 progression; either the conjecture needs a different count functional or it is falsified at finite L. L>>300 remains out of reach (n_max=332, L_max=221.4)."
+}

@@ -111,6 +111,15 @@ given so it can be re-run).
 1. **Prime geodesic theorem with sieve suppression** (README): π_k(L) ∼ ε_k·e^L/L
    — "conjectured to obey."  Data limit L ≤ 229 vs required L ≫ 300.  Whether the
    framework extends beyond 2ⁿ−k to arbitrary primes is declared open.
+   **MEASURED 2026-08-08** (`experiments/pgt_finite_l.py`,
+   `data/pgt_finite_l_data.json`): at finite L the sieve ordering is only PARTIAL
+   (Pearson r=0.696, Spearman 0.816), and the growth form is REFUTED — slope of
+   log π_k vs L is 0.002 vs the predicted 1.0 (r²=0.043); π_k grows like ln L
+   (one candidate per n), so ε_k·e^L/L overpredicts the observed 186 primes by
+   ~95 orders of magnitude at L=200.  The literal README conjecture is falsified
+   at finite L; the PGT asymptotic (L ≫ 300) is out of reach of the googol
+   census (n_max = 332) and would need the full X(1) geodesic spectrum, not the
+   single C7 progression.
 2. **Selberg paradigm** (PAPER): the finite-disk spectrum (30 eigenvalues)
    "suggests" a concrete instance of Selberg's framework; the eigenvalues ↔
    Riemann-zero correspondence is "conjectured" — and explicitly undecidable at
@@ -130,9 +139,28 @@ given so it can be re-run).
 5. **Golden-ratio closure mechanism** (SPRING_BIBLE/T58): the fold "closes to
    r = apex·0.6138" — measured, but the *reason* the closing radius is set by
    the crease is asserted, not derived.
+   **DERIVED 2026-08-08** (`experiments/fold_golden_closure.py`,
+   `data/fold_golden_closure_data.json`): r_ret/apex = 0.6137690167 is exactly
+   θ*/Θ solving s(θ*)/s(Θ) = 1/φ² on the Archimedean spiral r = aθ with arc
+   length s(θ) = (a/2)(θ√(1+θ²) + asinh θ), at Θ = 20 — delta 0.0 to the
+   measurement.  The ratio → 1/φ as Θ→∞ (quadratic limit).  φ enters via the
+   construction (an arc-length ratio), not as an independent law.  The distinct
+   C2 claim (next fold above the giant locks on a φ or φ² rung) remains open.
 6. **"Golden metric" hypothesis** (`fibonacci_squares.py`): a metric where the
    log-spiral is geodesic — later confirmed *exactly* for the cusp metric by
    T39/golden_survey, so this one is effectively resolved.
+7. **Spectral C1 (E₁-dozenal) / C3 (Mersenne-λ) / C4 (intermediate statistics)**
+   (WEAVERS_SCRIBE Ch. 5.1): recomputed 2026-08-08 at 100 modes on a 120×120
+   grid (`experiments/spectral_extended.py`, `data/spectral_extended_data.json`):
+   **C1 PARTIAL and resolution-dependent** — r_k ≈ ln k hits at k=12 (2.4982 vs
+   ln 12 = 2.4849, 0.53%) and k=26 (0.96%) but misses at k=10 (3.3%) and k=2000
+   (7.5%); **C3a NOT SUPPORTED** (no mode near λ(7)=4.574 below the floor —
+   nearest is E0, Δ=1.34); **C3b SUPPORTED** (mode 12.2416 vs λ(31)=12.261,
+   Δ=0.0197); **C4 decided toward Poisson** — ⟨r⟩=0.372 at 100 modes vs Poisson
+   0.386 / GOE 0.536, so the T19 "consistent chaos" spectral signature is
+   refuted at level-spacing level (for this finite-disk analog).  The WEAVERS
+   eig[5]=12.060 claim is NOT reproducible from `data/spectral_data.json` (which
+   holds 8.5406).
 
 ---
 
@@ -143,6 +171,16 @@ given so it can be re-run).
 * **Fold-and-cut as discrete unitary evolution** (PUM §10.5.2): "remains open."
 * **Kawasaki constraint** (PUM §10.2): mean deviation **0.49** from target 0 —
   a measured *failure*, called "genuine open problem."
+  **RESOLVED 2026-08-08 — refutation + artifact attribution.**
+  `experiments/kawasaki_null.py`, `data/kawasaki_null_data.json`: the 0.4866 /
+  72.4% numbers reproduce exactly, but the diagnostic collects ~700 rays per
+  vertex (a dense point cloud, not crease rays); the uniform-scatter control
+  gives 0.835 / 52.0%, and the exact 2-line ReLU fold-vertex criterion
+  |4α−2π| fails generically (mean 3.21, 9.5% within ε=0.5 vs an 8% uniform-angle
+  null).  The 0.49 is a sampling-statistic scatter of the line-structured
+  point cloud, not a near-miss of flat-foldability — ReLU fold vertices are NOT
+  flat-foldable (a codimension-1 condition, zero only at perpendicular
+  crossings).
 * **Retrace boundary condition** — **RESOLVED by T64** (viscosity-selected cut
   locus).  **Fold theorem** — **RESOLVED by T63** (eikonal/viscosity).  Both
   should be treated as closed, not open.  **[verified]**
@@ -153,6 +191,15 @@ given so it can be re-run).
 * **Prime-metric framework beyond 2ⁿ−k** (README).
 * **Continuum limit**: PAPER's "residual drift is numerical and converges to
   zero as dt→0" is anticipated, not measured at arbitrary precision.
+  **MEASURED 2026-08-08** (`experiments/continuum_limit.py`,
+  `data/continuum_limit_drift.json`): dt-halving at fixed T=1.0 on the interior
+  trajectory (Q0=(0,0)) shows first-order convergence — drift 5.44→0.42 over
+  dt 4e-3→2.5e-4 with order 0.925 (r²=0.9991); a clean interior trajectory
+  (Q0=(0.3,0), T=0.25) gives order 1.040, drift → 0 to 3.7e-4.  The residual
+  is a boundary effect: trajectories that hit the r=0.99 projection clip
+  accumulate a per-hit non-conservative floor (0→48 hits as dt shrinks).
+  Verdict: PASS first-order convergence for interior trajectories; the
+  boundary projection sets a non-conservative floor.
 * **Bekenstein re-run (n ≥ 60)**: the PAPER once claimed a +3.9% shift (p=0.002)
   that its own 30-trajectory persisted data refuted; the PAPER now reports the
   null.  A fresh, higher-power pre-registered run remains the only way to know
@@ -167,6 +214,8 @@ given so it can be re-run).
 | **L.O.R.E.** (C₀ determined, not chosen) | C₀ = H(q₀,0), never arbitrary | PAPER: 109 tests; T-symmetry error 3e-3 **of the Hamiltonian integrator** (a trajectory-integration property, distinct from the PUM §10.1.2 "ascent recovers seed" claim, which T65 refutes). |
 | **Noether charge Q = H(t) ≈ C₀** | <1% drift over 1000 steps, converges as dt→0 | Measured on 6 trajectories; limit anticipated |
 | **Eikonal fold cosmology** (T63/T64) | fold = unique viscosity solution of |r′|=a; retrace = cut locus | **Derived + 10-test regression suite** — the strongest theory in the repo |
+| **Golden-ratio closure** (T58 + 2026-08-08) | r_ret/apex = θ*/Θ solving s(θ*)/s(Θ)=1/φ² on the Archimedean spiral | **Derived exactly** (delta 0.0 to the measured 0.6137690167 at Θ=20; → 1/φ as Θ→∞). `data/fold_golden_closure_data.json` |
+| **Kawasaki flat-foldability of ReLU vertices** (2026-08-08) | the 0.4866 "genuine open" deviation is a point-cloud sampling artifact; ReLU fold vertices are NOT flat-foldable | **Refuted as a near-miss, attributed to sampling** (mean |4α−2π|=3.21, 9.5% within ε=0.5 ≈ uniform null; control 0.835/52.0% vs corpus 0.4866/72.4%). `data/kawasaki_null_data.json` |
 | **Clock-test canon** (T59/T61) | laws live in invariants, not conventions | Measured 1.000→0.417→1.000 |
 | **Anomaly doctrine** (T55j) | novelty works; impersonation partial; observation bank required | Measured, incomplete by its own verdict |
 | **Arithmetic Bekenstein shift** (PAPER) | η_prime=0.1336 vs η_random=0.1285, Δη +3.9%, p=0.002 | **REFUTED by the persisted data file, and withdrawn from the PAPER (2026-08-04).** `data/bekenstein_shift_data.json` (30 trajectories) shows no systematic difference: control p=0.789 (+2.5%), dissipative p=0.938 (−0.1%); the file's own interpretation is "no systematic difference"; the claimed numbers 0.1336/0.1285/p=0.002 appeared nowhere in it. PAPER §8.7 + conclusion now report the null. A fresh n≥60 run could claim the effect again. |
