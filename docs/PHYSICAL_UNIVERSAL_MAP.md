@@ -261,7 +261,7 @@ These mappings have been implemented in `hamiltonian_flow.py` and the engine, wi
 |---|---|---|---|
 | **True Bekenstein Bound** $S \leq 2\pi RE$ | Shannon entropy of radial distribution vs. energy bound | `measure_bekenstein_bound()` | Saturation ratio: 0.13 (well below saturation for small networks) |
 | **Wheeler-DeWitt Constraint** $H\|\Psi\rangle = 0$ | Fraction of phase-space states with $\|H(q,p)\| < \epsilon$ | `wheeler_dewitt_filter()` | 86.8% satisfied at $\epsilon = 0.5$ |
-| **Kawasaki Constraint** | Alternating angle sum test on synthetic ReLU vertex | `kawasaki_angle_test()` | Mean deviation 0.49 from target 0 (genuine open problem) |
+| **Kawasaki Constraint** | Alternating angle sum test on synthetic ReLU vertex | `kawasaki_angle_test()` | Mean deviation 0.49 from target 0 — **resolved 2026-08-08: sampling artifact, not a flat-foldability failure** (`experiments/kawasaki_null.py`); exact 2-line criterion \|4α−2π\| fails generically (9.5% vs 8% uniform null) |
 | **Hamiltonian Flow** | Symplectic leapfrog integration with friction damping | `run_hamiltonian_flow()` | Converges; T-symmetry error 3e-3 (correct velocity: $p \cdot (1/\lambda^2)$ not $p/\lambda^2$) |
 | **T-Symmetry Breaking** | Friction $> 0$ breaks time-reversal invariance | `hamiltonian_time_reverse()` | Reversed trajectory diverges from forward (second law) |
 | **Crease Density Trajectory** | Near-zero pre-activation count during training | `crease_density_trajectory()` | Decreases monotonically as folds settle |

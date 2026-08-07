@@ -138,7 +138,7 @@ Mean crease density rises from 0.00932 (ID) to 0.03429 on center noise (≈3.7×
 ### 5.6 Related measured facts
 
 - Crease density correlates with boundary complexity r = −0.7658 (deeper networks crease less).
-- Kawasaki foldability test (alternating sum of vertex angles = 0, an N-dimensional generalization of Kawasaki's flat-foldability theorem): of 1000 tested decision-region vertices, mean deviation 0.4866 with 72.4% satisfied at ε = 0.5 — a genuine open problem, included as a diagnostic.
+- Kawasaki foldability test (alternating sum of vertex angles = 0, an N-dimensional generalization of Kawasaki's flat-foldability theorem): of 1000 tested decision-region vertices, mean deviation 0.4866 with 72.4% satisfied at ε = 0.5. **Resolution 2026-08-08** (`experiments/kawasaki_null.py`): the 0.4866 is a point-cloud sampling scatter — a uniform-scatter control gives 0.835/52.0%, and the exact 2-line ReLU fold-vertex criterion |4α−2π| fails generically (mean 3.21, 9.5% within ε = 0.5 vs an 8% uniform-angle null). ReLU fold vertices are NOT flat-foldable (a codimension-1 condition, zero only at perpendicular crossings); the test is retained as a diagnostic of the sampling geometry, not of flat-foldability.
 
 ## 6. CLAIMS (provisional)
 
