@@ -24,6 +24,9 @@ puno = "puno_cli:main"
 puno-lab = "puno_app.canned_ui:main"
 puno-net = "puno_app.live_net:main"
 puno-classify = "puno_app.classify:main"
+puno-bank = "puno_app.bank_server:main"
+puno-calculus = "puno_app.calculus_server:main"
+puno-constants = "puno_app.constant_explorer:main"
 
 [tool.setuptools]
 py-modules = ["puno_cli"]
@@ -32,10 +35,15 @@ packages = [
     "puno_flow.apps",
     "puno_flow.examples",
     "puno_app",
+    "Universals",
+    "Universals.manifold",
+    "data",
 ]
 
 [tool.setuptools.package-data]
-puno_app = ["ui.html", "live_net.html", "classify.html"]
+puno_app = ["ui.html", "live_net.html", "classify.html", "bank.html",
+            "calculus.html"]
+data = ["*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

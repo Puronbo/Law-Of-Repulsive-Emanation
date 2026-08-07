@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Puno Calculus</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --panel2:#1c2128; --line:#30363d;
+    --text:#c9d1d9; --dim:#8b949e; --acc:#58a6ff; --green:#3fb950;
+    --amber:#d29922; --red:#f85149; --mono:ui-monospace,Consolas,"Courier New",monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+       font:14px/1.45 -apple-system,"Segoe UI",Roboto,sans-serif}
+  header{display:flex;align-items:baseline;gap:14px;padding:14px 20px;
+         border-bottom:1px solid var(--line);background:var(--panel)}
+  header h1{margin:0;font-size:17px;letter-spacing:.4px}
+  header h1 b{color:var(--acc)}
+  header .sub{color:var(--dim);font-family:var(--mono);font-size:12px}
+  #live{color:var(--green);font-weight:600}
+  main{max-width:1120px;margin:0 auto;padding:16px 20px 60px}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;
+         padding:12px 14px;margin-top:14px}
+  .panel h2{margin:0 0 10px;font-size:12px;color:var(--dim);
+            text-transform:uppercase;letter-spacing:.6px}
+  .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+  .card{background:var(--panel2);border:1px solid var(--line);border-radius:8px;
+        padding:10px 12px;overflow:hidden}
+  .card .k{color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+  .card .v{font:600 16px var(--mono);margin-top:6px;word-break:break-all}
+  .card .v small{color:var(--dim);font-weight:400;font-size:12px}
+  canvas#plot{width:100%;height:360px;display:block;background:var(--panel2);
+              border:1px solid var(--line);border-radius:6px}
+  button{background:#21262d;color:var(--text);border:1px solid var(--line);
+         border-radius:6px;padding:7px 14px;font-size:13px;cursor:pointer}
+  button:hover{border-color:var(--acc)}
+  button.acc{background:#1f6feb;border-color:#1f6feb;color:#fff}
+  button.acc:hover{background:#1a5fd0}
+  input[type=number]{width:92px;background:var(--panel2);color:var(--text);
+         border:1px solid var(--line);border-radius:6px;padding:7px 8px;font-size:13px}
+  input[type=text]{background:var(--panel2);color:var(--text);
+         border:1px solid var(--line);border-radius:6px;padding:7px 8px;font-size:13px;
+         font-family:var(--mono)}
+  #expr{width:100%;margin-bottom:10px;font-size:15px}
+  label{font-size:12px;color:var(--dim);display:inline-flex;align-items:center;gap:6px}
+  .log{font-family:var(--mono);font-size:12px;background:var(--panel2);
+       border:1px solid var(--line);border-radius:6px;padding:10px;
+       max-height:220px;overflow-y:auto;white-space:pre-wrap}
+  .muted{color:var(--dim);font-size:12px}
+  .chip{display:inline-block;border:1px solid var(--line);border-radius:20px;
+        padding:3px 10px;margin:3px 4px 0 0;font-size:12px;cursor:pointer;
+        background:var(--panel2)}
+  .chip.on{border-color:var(--acc);color:var(--acc);background:#0d2538}
+  .ok{color:var(--green)} .bad{color:var(--red)} .warn{color:var(--amber)}
+  #toast{position:fixed;right:16px;bottom:16px;background:var(--panel);
+         border:1px solid var(--line);border-radius:8px;padding:10px 14px;
+         font-family:var(--mono);font-size:12px;display:none;max-width:60%}
+  #toast.err{border-color:var(--red)} #toast.ok{border-color:var(--green)}
+  .legend{font-size:12px;color:var(--dim);margin-top:6px}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;
+            margin:0 4px 0 12px;vertical-align:-1px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Puno <b>Calculus</b></h1>
+  <span class="sub" id="sub"></span>
+  <span id="live">● LIVE</span>
+</header>
+<main>
+
+  <div class="panel">
+    <h2>Expression</h2>
+    <input type="text" id="expr" value="3*x^2 + sin(x)"
+           placeholder="3*x^2 + sin(x)  —  functions: sin cos tan exp log sqrt atan; x, pi, e">
+    <div class="row">
+      <label>from <input type="number" id="a" value="0" step="0.1"></label>
+      <label>to <input type="number" id="b" value="2" step="0.1"></label>
+      <button id="doDerive" class="acc">d/dx</button>
+      <button id="doAnti">F(x) = ∫ (C = 0)</button>
+      <button id="doInt">∫ from a to b</button>
+      <button id="doPlot">Plot</button>
+      <span class="muted">definite integrals are constants, never a family</span>
+    </div>
+    <div class="grid" id="resCards"></div>
+    <canvas id="plot" style="margin-top:12px"></canvas>
+    <div class="legend">
+      <i style="background:#58a6ff"></i>f(x)<i style="background:#3fb950"></i>F(x)+C0 (definitive)
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Limit — lim f(x) as x → x0</h2>
+    <div class="row">
+      <label>f(x) <input type="text" id="limExpr" value="sin(x)/x" style="width:220px"></label>
+      <label>x → <input type="text" id="limX" value="0" style="width:70px" placeholder="0, inf, -inf"></label>
+      <label>side
+        <select id="limSide">
+          <option value="both" selected>both</option>
+          <option value="left">left</option>
+          <option value="right">right</option>
+        </select>
+      </label>
+      <button id="doLimit" class="acc">Evaluate</button>
+    </div>
+    <div class="grid" id="limCards" style="margin-top:10px"></div>
+  </div>
+
+  <div class="panel">
+    <h2>The definitive constant — C0 collapses when the initial condition is known</h2>
+    <div class="row">
+      <label>f(x) <input type="text" id="cExpr" value="x^2" style="width:220px"></label>
+      <label>q0 <input type="number" id="cQ0" value="1" step="0.1"></label>
+      <label>F(q0) measured <input type="number" id="cF0" value="5" step="0.1"></label>
+      <button id="doConstant" class="acc">C0 = F(q0) − F(q0)</button>
+    </div>
+    <div class="grid" id="cCards" style="margin-top:10px"></div>
+  </div>
+
+  <div class="panel">
+    <h2>L.O.R.E. measure — C0 = V(q0) = H(q0, 0) on the Poincaré disk</h2>
+    <div class="row">
+      <label>q0x <input type="number" id="qx" value="0" step="0.05"></label>
+      <label>q0y <input type="number" id="qy" value="0" step="0.05"></label>
+      <label>alpha <input type="number" id="alpha" value="2.5" step="0.1"></label>
+      <button id="doLore" class="acc">Measure V(q0)</button>
+    </div>
+    <div class="row" style="margin-top:8px"><span class="muted">affinity context (nodes whose potential is excluded):</span></div>
+    <div id="chips"></div>
+    <div class="grid" id="lCards" style="margin-top:10px"></div>
+  </div>
+
+  <div class="panel">
+    <h2>Log</h2>
+    <div class="log" id="log"></div>
+  </div>
+
+</main>
+<div id="toast"></div>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const logEl = $("log");
+function log(msg){ logEl.textContent += msg + "\n"; logEl.scrollTop = logEl.scrollHeight; }
+function toast(msg, kind){
+  const t = $("toast");
+  t.textContent = msg; t.className = (kind||"") + " ok"; t.style.display = "block";
+  clearTimeout(toast._h);
+  toast._h = setTimeout(() => t.style.display = "none", 2600);
+}
+async function post(path, body){
+  const r = await fetch(path, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(body)
+  });
+  return r.json();
+}
+function card(label, value, small){
+  const c = document.createElement("div");
+  c.className = "card";
+  c.innerHTML = '<div class="k">' + label + '</div><div class="v">' +
+                (value === null || value === undefined ? "—" : escapeHtml(String(value))) +
+                (small ? " <small>" + small + "</small>" : "") + "</div>";
+  return c;
+}
+function escapeHtml(s){
+  return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+function clearCards(id){ $(id).innerHTML = ""; }
+
+async function init(){
+  try{
+    const p = await fetch("/api/ping");
+    const j = await p.json();
+    $("sub").textContent = "engine " + j.version;
+    log("puno-calculus engine online: " + JSON.stringify(j));
+  }catch(e){ $("live").classList.add("paused"); $("live").textContent = "● OFFLINE"; }
+
+  try{
+    const r = await fetch("/api/positions");
+    const j = await r.json();
+    if(j.ok){
+      window._pos = j.positions;
+      const wrap = $("chips");
+      for(const name of Object.keys(j.positions)){
+        const chip = document.createElement("span");
+        chip.className = "chip" + (name === "Tech" || name === "Silicon" ? " on" : "");
+        chip.textContent = name;
+        chip.onclick = () => chip.classList.toggle("on");
+        wrap.appendChild(chip);
+      }
+      log("positions asset loaded: " + Object.keys(j.positions).length + " nodes");
+    }
+  }catch(e){ log("positions asset unavailable: " + e.message); }
+}
+window.addEventListener("DOMContentLoaded", init);
+
+$("doDerive").onclick = async () => {
+  clearCards("resCards");
+  const j = await post("/api/derive", {expr: $("expr").value});
+  if(j.ok){
+    $("resCards").appendChild(card("d/dx", j.derivative));
+    log("derive  " + j.expr + "  ->  " + j.derivative);
+    toast("derivative computed", "ok");
+  } else { toast(j.error, "err"); log("derive error: " + j.error); }
+};
+
+$("doAnti").onclick = async () => {
+  clearCards("resCards");
+  const j = await post("/api/antideriv", {expr: $("expr").value});
+  if(j.ok){
+    $("resCards").appendChild(card("F(x) = ∫ f dx (C = 0)",
+        j.exact ? j.antiderivative : "not in closed-form library", j.exact ? "particular" : "numeric only"));
+    if(j.exact) window._anti = j.antiderivative;
+    log("antideriv  " + j.expr + "  ->  " + (j.exact ? j.antiderivative : "not exact"));
+  } else { toast(j.error, "err"); log("antideriv error: " + j.error); }
+};
+
+$("doInt").onclick = async () => {
+  clearCards("resCards");
+  const j = await post("/api/integrate", {
+    expr: $("expr").value, a: parseFloat($("a").value), b: parseFloat($("b").value)});
+  if(j.ok){
+    const val = j.exact ? j.exact_value : j.numeric_value;
+    $("resCards").appendChild(card("∫ from a to b", val, j.method));
+    if(j.exact){
+      $("resCards").appendChild(card("antiderivative", j.antiderivative));
+      window._anti = j.antiderivative;
+    }
+    log("integrate  [" + j.a + ", " + j.b + "]  " + j.integrand + "  ->  " + val +
+        "  (" + j.method + ")");
+    toast("definite integral = constant", "ok");
+  } else { toast(j.error, "err"); log("integrate error: " + j.error); }
+};
+
+$("doLimit").onclick = async () => {
+  clearCards("limCards");
+  const j = await post("/api/limit", {
+    expr: $("limExpr").value, x: $("limX").value, side: $("limSide").value});
+  if(j.ok){
+    if(j.exists){
+      $("limCards").appendChild(card("lim x→" + $("limX").value, j.value,
+                                     j.exact ? "exact" : "numeric"));
+    } else {
+      $("limCards").appendChild(card("does not exist / diverges",
+                                     j.diverges || "—"));
+    }
+    if(j.side === "both"){
+      $("limCards").appendChild(card("left", j.left === null ? "—" : j.left));
+      $("limCards").appendChild(card("right", j.right === null ? "—" : j.right));
+    }
+    log("limit  " + j.expr + "  x->" + j.x0 + "  [" + j.side + "]  ->  " +
+        (j.exists ? j.value : j.diverges) + (j.exact ? "  (exact)" : ""));
+  } else { toast(j.error, "err"); log("limit error: " + j.error); }
+};
+
+$("doConstant").onclick = async () => {
+  clearCards("cCards");
+  const j = await post("/api/constant", {
+    expr: $("cExpr").value, q0: parseFloat($("cQ0").value), f0: parseFloat($("cF0").value)});
+  if(j.ok){
+    $("cCards").appendChild(card("C0 = F(q0) − F(q0)", j.C0, "measured"));
+    $("cCards").appendChild(card("particular F(x)", j.particular));
+    $("cCards").appendChild(card("F(x) + C0  (definitive)", j.definitive));
+    window._def = j.definitive;
+    log("constant  " + j.expr + "  q0=" + j.q0 + "  F(q0)=" + j.measured_F_q0 +
+        "  ->  C0=" + j.C0 + "  =>  " + j.definitive);
+    toast("integration constant collapsed: C0 = " + j.C0, "ok");
+  } else { toast(j.error, "err"); log("constant error: " + j.error); }
+};
+
+$("doLore").onclick = async () => {
+  clearCards("lCards");
+  const ctx = Array.from(document.querySelectorAll("#chips .chip.on")).map(c => c.textContent);
+  const j = await post("/api/lore", {
+    q0x: parseFloat($("qx").value), q0y: parseFloat($("qy").value),
+    context: ctx, alpha: parseFloat($("alpha").value)});
+  if(j.ok){
+    $("lCards").appendChild(card("V(q0)", j.V_q0, "repulsion potential"));
+    $("lCards").appendChild(card("H(q0, 0)", j.H_q0_0, "kinetic = 0"));
+    $("lCards").appendChild(card("C0", j.C0, "definitive constant"));
+    $("lCards").appendChild(card("context", j.context.join(", ")));
+    log("lore  q0=[" + j.q0[0] + ", " + j.q0[1] + "]  ctx=" + j.context.join(",") +
+        "  ->  V=" + j.V_q0 + "  H=" + j.H_q0_0 + "  C0=" + j.C0);
+    toast("C0 = " + j.C0 + " measured from the asset", "ok");
+  } else { toast(j.error, "err"); log("lore error: " + j.error); }
+};
+
+$("doPlot").onclick = async () => {
+  const a = parseFloat($("a").value), b = parseFloat($("b").value);
+  const expr = $("expr").value;
+  const f = await post("/api/points", {expr, a, b, n: 300});
+  let g = null;
+  if(window._def){
+    g = await post("/api/points", {expr: window._def, a, b, n: 300});
+  }
+  if(f.ok) draw(f.xs, f.ys, g && g.ok ? g.ys : null);
+};
+
+function draw(xs, fy, gy){
+  const cv = $("plot"), ctx = cv.getContext("2d");
+  const W = cv.width = cv.offsetWidth * devicePixelRatio;
+  const H = cv.height = 360 * devicePixelRatio;
+  ctx.fillStyle = "#1c2128"; ctx.fillRect(0, 0, W, H);
+  const pts = xs.map((x, i) => [x, fy[i]]);
+  const valid = pts.filter(p => p[1] !== null && isFinite(p[1]));
+  if(!valid.length) return;
+  let ysAll = valid.map(p => p[1]);
+  if(gy){
+    gy.forEach((y, i) => { if(y !== null && isFinite(y)) ysAll.push(y); });
+  }
+  const ymin = Math.min.apply(null, ysAll), ymax = Math.max.apply(null, ysAll);
+  const ypad = Math.max((ymax - ymin) * 0.15, 1e-6);
+  const X = x => (x - xs[0]) / (xs[xs.length - 1] - xs[0]) * W;
+  const Y = y => H - (y - (ymin - ypad)) / (ymax + ypad - (ymin - ypad)) * H;
+  const trace = (arr, color) => {
+    ctx.strokeStyle = color; ctx.lineWidth = 2 * devicePixelRatio;
+    ctx.beginPath();
+    let started = false;
+    arr.forEach((y, i) => {
+      if(y === null || !isFinite(y)){ started = false; return; }
+      const px = X(xs[i]), py = Y(y);
+      if(!started){ ctx.moveTo(px, py); started = true; }
+      else ctx.lineTo(px, py);
+    });
+    ctx.stroke();
+  };
+  trace(fy, "#58a6ff");
+  if(gy) trace(gy, "#3fb950");
+}
+</script>
+</body>
+</html>
