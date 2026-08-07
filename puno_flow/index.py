@@ -14,14 +14,22 @@ import numpy as np
 
 __all__ = ["ExactIndex", "brute_knn"]
 
+# Per-dimension grid cell cap: keeps the ring scan bounded even for
+# degenerate (near-zero-volume) point sets; never affects correctness.
+_MAX_NI = 512
+
 
 def brute_knn(X, k):
-    """All-pairs reference: (sorted) k-NN indices per point, self excluded."""
+    """All-pairs reference: (sorted) k-NN indices per point, self excluded.
+
+    Ties are broken canonically by ascending index (stable argsort), so the
+    result is deterministic even for exactly duplicated points.
+    """
     n = len(X)
     D = np.linalg.norm(X[:, None] - X[None], axis=-1)
     np.fill_diagonal(D, np.inf)
     kk = min(k, n - 1)
-    order = np.argsort(D, axis=1)[:, :kk]
+    order = np.argsort(D, axis=1, kind="stable")[:, :kk]
     return [np.asarray(order[i], dtype=int) for i in range(n)]
 
 
@@ -37,17 +45,18 @@ class _Grid:
             vol = span.prod()
             cell = max((vol * max(k, 1) / max(self.n, 1)) ** (1.0 / self.dim),
                        1e-9)
-        self.cell = cell
-        self.origin = lo - 0.5 * cell
-        self.ni = np.maximum(np.ceil((span + cell) / cell).astype(int), 1)
-        ci = np.floor((self.pts - self.origin) / cell).astype(int)
+        # Clamp the per-dimension cell count: a near-degenerate span (e.g.
+        # collinear points) makes the volume formula tiny, which would blow
+        # up the number of grid cells (and with it the ring scan).  The grid
+        # stays exact for any cell size; the clamp only bounds the work.
+        self.cell = max(float(cell), float(span.max()) / _MAX_NI)
+        self.origin = lo - 0.5 * self.cell
+        self.ni = np.maximum(
+            np.ceil((span + self.cell) / self.cell).astype(int), 1)
+        self.ni = np.minimum(self.ni, _MAX_NI + 1)
+        ci = np.floor((self.pts - self.origin) / self.cell).astype(int)
         self.idx = np.clip(ci, 0, self.ni - 1)
-        self.ring_offsets = []
-        for r in range(int(self.ni.max())):
-            offs = [off for off in itertools.product(
-                range(-r, r + 1), repeat=self.dim)
-                if max(abs(o) for o in off) == r]
-            self.ring_offsets.append(offs)
+        self._rings = []   # lazily built Chebyshev rings (cache)
         strides = np.ones(self.dim, dtype=int)
         for d in range(self.dim - 2, -1, -1):
             strides[d] = strides[d + 1] * self.ni[d + 1]
@@ -61,7 +70,18 @@ class _Grid:
         self._slices = dict(zip(uniq.tolist(),
                                 zip(starts.tolist(), ends.tolist())))
 
+    def _ring(self, r):
+        """Chebyshev ring of radius r as offsets, built on demand."""
+        while len(self._rings) <= r:
+            rr = len(self._rings)
+            self._rings.append([off for off in itertools.product(
+                range(-rr, rr + 1), repeat=self.dim)
+                if max(abs(o) for o in off) == rr])
+        return self._rings[r]
+
     def _scan(self, x, ci, k=1, drop=-1):
+        if k <= 0:
+            return np.zeros(0, dtype=int)
         dim = self.dim
         nix = self.ni
         strides = self._strides
@@ -71,8 +91,8 @@ class _Grid:
         cell = self.cell
         cand = []
         tot = 0
-        for r, offs in enumerate(self.ring_offsets):
-            for off in offs:
+        for r in range(int(nix.max())):
+            for off in self._ring(r):
                 cid = 0
                 ok = True
                 for d in range(dim):
@@ -95,12 +115,13 @@ class _Grid:
                 continue
             d = np.linalg.norm(pts[c] - x, axis=-1)
             if np.partition(d, k - 1)[k - 1] <= r * cell:
-                return c[np.argsort(d)]
+                # canonical order: distance, then index (deterministic ties)
+                return c[np.lexsort((c, d))]
         c = np.concatenate(cand)
         if drop >= 0:
             c = c[c != drop]
         d = np.linalg.norm(pts[c] - x, axis=-1)
-        return c[np.argsort(d)]
+        return c[np.lexsort((c, d))]
 
     def knn(self, i, k):
         x = self.pts[i]
@@ -129,11 +150,22 @@ class _KDTree:
         self.tree = cKDTree(self.pts)
 
     def knn_all(self, k):
-        _, nb = self.tree.query(self.pts, k=k + 1, workers=-1)
+        d, nb = self.tree.query(self.pts, k=k + 1, workers=-1)
         nb = np.asarray(nb)
+        d = np.asarray(d)
         if nb.ndim == 1:
             nb = nb[:, None]
-        return [nb[i, 1:].astype(int) for i in range(nb.shape[0])]
+            d = d[:, None]
+        out = []
+        for i in range(nb.shape[0]):
+            row = nb[i]
+            rd = d[i]
+            # drop self and any out-of-range padding (scipy pads with n)
+            m = (row != i) & (row < len(self.pts))
+            row, rd = row[m], rd[m]
+            o = np.lexsort((row, rd))       # canonical: distance, then index
+            out.append(row[o][:k].astype(int))
+        return out
 
     def nearest(self, X):
         _, nb = self.tree.query(np.asarray(X, dtype=float), k=1)
@@ -155,6 +187,9 @@ class ExactIndex:
             algorithm = "grid" if self.dim <= 3 else "kdtree"
         self.algorithm = algorithm
         if algorithm == "grid":
+            if self.dim > 3:
+                raise ValueError("grid index is exact only for dim <= 3 "
+                                 f"(got dim={self.dim}); use algorithm='kdtree'")
             self._index = _Grid(self.pts, k=k, cell=cell)
         elif algorithm == "kdtree":
             self._index = _KDTree(self.pts)
@@ -169,11 +204,13 @@ class ExactIndex:
         k = self.k if k is None else k
         if isinstance(self._index, _Grid):
             return self._index.knn(i, k)
-        _, nb = self._index.tree.query(self.pts[i], k=k + 1, workers=-1)
-        nb = np.asarray(nb)
-        if nb.ndim == 1:
-            nb = nb[:, None]
-        return nb[0, 1:].astype(int)
+        d, nb = self._index.tree.query(self.pts[i], k=k + 1, workers=-1)
+        nb = np.asarray(nb).ravel()
+        d = np.asarray(d).ravel()
+        m = (nb != i) & (nb < len(self.pts))
+        nb, d = nb[m], d[m]
+        o = np.lexsort((nb, d))
+        return nb[o][:k].astype(int)
 
     def knn_all(self, k=None):
         k = self.k if k is None else k

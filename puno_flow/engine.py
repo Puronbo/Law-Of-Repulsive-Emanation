@@ -294,10 +294,23 @@ class FlowEngine:
         }
 
     def remove(self, indices):
-        """Damage: drop units (and their homes)."""
-        self.q = np.delete(self.q, indices, axis=0)
-        self.h = np.delete(self.h, indices, axis=0)
-        return self
+        """Damage: drop units (and their homes).
+
+        Ledgers are rekeyed to the compact survivor indices (removed
+        units' chains are archived, not deleted, so history survives) and
+        a mapping old_index -> new_index (None for removed) is returned so
+        callers can renumber wiring.
+        """
+        indices = np.atleast_1d(np.asarray(indices, dtype=int))
+        indices = indices[(indices >= 0) & (indices < self.n)]
+        keep = np.ones(self.n, dtype=bool)
+        keep[indices] = False
+        survivors = np.flatnonzero(keep)
+        mapping = {int(old): int(new) for new, old in enumerate(survivors)}
+        self.q = self.q[keep]
+        self.h = self.h[keep]
+        self.chains.rekey(mapping)
+        return mapping
 
     def heal(self, steps=800, record=False):
         """Self-repair: local re-spread of the survivors (no central unit)."""

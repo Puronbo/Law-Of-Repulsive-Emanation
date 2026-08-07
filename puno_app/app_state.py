@@ -109,7 +109,7 @@ class NetworkApp:
         return self.snapshot()
 
     def spawn(self, count=3):
-        if self.engine.n == 0:
+        if self.engine is None or self.engine.n == 0:
             raise ValueError("no units to spawn around")
         created = self.engine.spawn(int(count),
                                     rng=np.random.RandomState(1))
@@ -120,7 +120,15 @@ class NetworkApp:
         count = min(int(count), self.engine.n)
         drop = np.random.RandomState(2).choice(self.engine.n, size=count,
                                                replace=False)
-        self.engine.remove(drop)
+        mapping = self.engine.remove(drop)
+        if self.edges is not None:
+            new_edges = []
+            for u, v in np.asarray(self.edges, dtype=int):
+                nu, nv = mapping.get(int(u)), mapping.get(int(v))
+                if nu is not None and nv is not None and nu != nv:
+                    new_edges.append((nu, nv))
+            self.edges = (np.asarray(new_edges, dtype=int)
+                          if new_edges else None)
         self._log(f"damage: removed {count} units")
         return self.snapshot()
 

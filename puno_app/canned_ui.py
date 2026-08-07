@@ -92,7 +92,8 @@ class Handler(BaseHTTPRequestHandler):
         if path in ("/", "/index.html"):
             self._serve_html()
         elif path == "/api/snapshot":
-            self._ok(_App.app.snapshot())
+            with _App.app.lock:
+                self._ok(_App.app.snapshot())
         else:
             self._error(f"unknown path {path}", 404)
 
@@ -174,8 +175,9 @@ def main(argv=None):
           f"(n={_App.app.engine.n if _App.app.engine else 0})")
     try:
         while True:
-            if _App.app.engine is not None:
-                _App.app.autotick(steps=1, respawn=1)
+            with _App.app.lock:
+                if _App.app.engine is not None:
+                    _App.app.autotick(steps=1, respawn=1)
             server.handle_request()
     except KeyboardInterrupt:
         print("\nbye")

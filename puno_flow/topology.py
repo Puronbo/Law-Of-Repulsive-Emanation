@@ -59,11 +59,9 @@ def degree_sequence(edges, n):
 
 def _hurwitz_zeta(s, a, kmax=2000):
     """zeta(s, a) = sum_{k>=0} (k+a)^{-s} via Euler-Maclaurin (integral tail
-    + half-term).  Accurate to ~1e-9 relative for s >= 1.5, good enough for
-    exponent fitting."""
-    total = 0.0
-    for k in range(kmax):
-        total += (k + a) ** (-s)
+    + half-term).  Vectorized: accurate to ~1e-9 relative for s >= 1.5."""
+    k = np.arange(kmax, dtype=float)
+    total = float(np.sum((k + a) ** (-s)))
     u = kmax + a
     total += u ** (1.0 - s) / (s - 1.0) + 0.5 * u ** (-s)
     return total
@@ -71,10 +69,9 @@ def _hurwitz_zeta(s, a, kmax=2000):
 
 def _zeta_logsum(s, a, kmax=2000):
     """sum_{k>=0} (k+a)^{-s} * ln(k+a) = -zeta'(s, a), Euler-Maclaurin."""
-    total = 0.0
-    for k in range(kmax):
-        u = k + a
-        total += u ** (-s) * np.log(u)
+    k = np.arange(kmax, dtype=float)
+    u = k + a
+    total = float(np.sum(u ** (-s) * np.log(u)))
     u = kmax + a
     total += (u ** (1.0 - s) * (np.log(u) / (s - 1.0) + 1.0 / (s - 1.0) ** 2)
               + 0.5 * u ** (-s) * np.log(u))
@@ -99,7 +96,9 @@ def power_law_exponent(degrees, xmin=1):
     lo, hi = 1.1, 20.0
     if f(lo) > 0.0:
         return float("nan")
-    for _ in range(200):
+    for _ in range(60):
+        if hi - lo < 1e-12:
+            break
         mid = 0.5 * (lo + hi)
         if f(mid) > 0.0:
             hi = mid

@@ -68,10 +68,14 @@ class LedgerChain:
 
     def verify(self):
         """Recompute every block hash and check the prev links.
-        Returns (ok, first_bad_seq_or_None)."""
+        Never raises: any malformed block (wrong types, bad hex, bad seq)
+        is reported as a failure.  Returns (ok, first_bad_seq_or_None)."""
         for b in self.blocks:
-            if _block_hash(b["prev"], b["seq"], b["payload"]) != b["hash"]:
-                return False, b["seq"]
+            try:
+                if _block_hash(b["prev"], b["seq"], b["payload"]) != b["hash"]:
+                    return False, b["seq"]
+            except (KeyError, TypeError, ValueError):
+                return False, b.get("seq")
             if b["seq"] > 0 and b["prev"] != self.blocks[b["seq"] - 1]["hash"]:
                 return False, b["seq"]
         return True, None
@@ -82,6 +86,7 @@ class ChainStore:
 
     def __init__(self):
         self.chains = {}
+        self.archived = {}   # ledgers of removed units (history preserved)
 
     def genesis(self, i, payload):
         """Start unit i's chain with a genesis block (idempotent)."""
@@ -94,6 +99,23 @@ class ChainStore:
             self.chains[i] = LedgerChain()
         return self.chains[i].append(payload)
 
+    def rekey(self, mapping):
+        """Renumber live chains after a removal.
+
+        mapping maps old unit index -> new compact index (None for units
+        that were removed).  Live chains move to their new keys so a
+        later create() can never alias a dead unit's ledger; removed
+        units' chains are archived, not deleted, so history survives.
+        """
+        moved = {}
+        for old, chain in self.chains.items():
+            new = mapping.get(int(old))
+            if new is None:
+                self.archived[int(old)] = chain
+            else:
+                moved[int(new)] = chain
+        self.chains = moved
+
     def head(self, i):
         chain = self.chains.get(i)
         return chain.head if chain else None
@@ -103,17 +125,26 @@ class ChainStore:
         return chain.length if chain else 0
 
     def verify_all(self):
-        """(ok, first_bad_unit, first_bad_seq) over every chain."""
+        """(ok, first_bad_unit, first_bad_seq) over every live chain."""
         for i, chain in self.chains.items():
             ok, bad = chain.verify()
             if not ok:
                 return False, i, bad
         return True, None, None
 
+    def verify_archived(self):
+        """(ok, first_bad_seq) over every archived (removed) chain."""
+        for i, chain in self.archived.items():
+            ok, bad = chain.verify()
+            if not ok:
+                return False, bad
+        return True, None
+
     def audit(self):
         """Summary: chain count, total blocks, and each chain's head hash."""
         return {
             "chains": len(self.chains),
             "blocks": sum(c.length for c in self.chains.values()),
+            "archived": len(self.archived),
             "heads": {i: c.head for i, c in self.chains.items()},
         }
