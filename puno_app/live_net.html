@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Puno Net</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --panel2:#1c2128; --line:#30363d;
+    --text:#c9d1d9; --dim:#8b949e; --acc:#58a6ff; --green:#3fb950;
+    --amber:#d29922; --red:#f85149; --mono:ui-monospace,Consolas,"Courier New",monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+       font:14px/1.45 -apple-system,"Segoe UI",Roboto,sans-serif}
+  header{display:flex;align-items:baseline;gap:14px;padding:14px 20px;
+         border-bottom:1px solid var(--line);background:var(--panel)}
+  header h1{margin:0;font-size:17px;letter-spacing:.4px}
+  header h1 b{color:var(--acc)}
+  header .sub{color:var(--dim);font-family:var(--mono);font-size:12px}
+  #live{color:var(--green);font-weight:600}
+  #live.paused{color:var(--amber)}
+  main{max-width:1080px;margin:0 auto;padding:16px 20px 60px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+         gap:10px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:8px;
+        padding:10px 12px}
+  .card .k{color:var(--dim);font-size:11px;text-transform:uppercase;
+           letter-spacing:.5px}
+  .card .v{font:600 20px var(--mono);margin-top:4px}
+  .card .v small{color:var(--dim);font-weight:400;font-size:12px}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;
+         padding:12px 14px;margin-top:14px}
+  .panel h2{margin:0 0 10px;font-size:12px;color:var(--dim);
+            text-transform:uppercase;letter-spacing:.6px}
+  .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .spark{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+         gap:10px}
+  canvas.spark{width:100%;height:72px;display:block;background:var(--panel2);
+               border:1px solid var(--line);border-radius:6px}
+  canvas#plot{width:100%;height:340px;display:block;background:var(--panel2);
+              border:1px solid var(--line);border-radius:6px}
+  button{background:#21262d;color:var(--text);border:1px solid var(--line);
+         border-radius:6px;padding:7px 14px;font-size:13px;cursor:pointer}
+  button:hover{border-color:var(--acc)}
+  button.acc{background:#1f6feb;border-color:#1f6feb;color:#fff}
+  button.acc:hover{background:#1a5fd0}
+  button.danger{background:#6e2f2a;border-color:#6e2f2a}
+  input[type=number]{width:86px;background:var(--panel2);color:var(--text);
+         border:1px solid var(--line);border-radius:6px;padding:7px 8px;font-size:13px}
+  label{font-size:12px;color:var(--dim);display:inline-flex;align-items:center;
+        gap:6px}
+  .log{font-family:var(--mono);font-size:12px;background:var(--panel2);
+       border:1px solid var(--line);border-radius:6px;padding:10px;
+       max-height:190px;overflow-y:auto;white-space:pre-wrap}
+  .alerts .a{color:var(--amber)}
+  .muted{color:var(--dim);font-size:12px}
+  select{background:var(--panel2);color:var(--text);border:1px solid var(--line);
+         border-radius:6px;padding:6px 8px;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Puno <b>Net</b></h1>
+  <span class="sub" id="sub"></span>
+  <span id="live">● LIVE</span>
+</header>
+<main>
+  <section class="cards" id="cards"></section>
+
+  <div class="row" style="margin-top:14px;gap:6px">
+    <button id="pause" class="danger">Pause</button>
+    <button id="resume">Resume</button>
+    <label>damage <input type="number" id="damage" value="1" min="1" max="99"></label>
+    <button id="doDamage">Apply</button>
+    <label>step <input type="number" id="stepN" value="100" min="1"></label>
+    <button id="doStep">Step</button>
+    <button id="checkpoint" class="acc">Checkpoint</button>
+  </div>
+
+  <div class="row" style="margin-top:12px">
+    <label>cap <input type="number" id="cfg_cap" min="3"></label>
+    <label>home_r <input type="number" id="cfg_home_r" step="0.01" min="0.05" max="0.6"></label>
+    <label>arrive/50t <input type="number" id="cfg_arrival" min="1"></label>
+    <label>damage/2000t <input type="number" id="cfg_damage" min="10"></label>
+    <button id="applyCfg" class="acc">Apply config</button>
+    <span class="muted" id="savePath"></span>
+  </div>
+
+  <div class="panel">
+    <h2>Shell (origin ring = home radius)</h2>
+    <canvas id="plot"></canvas>
+  </div>
+
+  <div class="panel">
+    <h2>History (heartbeats)</h2>
+    <div class="spark">
+      <canvas class="spark" id="spN"></canvas>
+      <canvas class="spark" id="spSpacing"></canvas>
+      <canvas class="spark" id="spMeanR"></canvas>
+      <canvas class="spark" id="spProbe"></canvas>
+    </div>
+  </div>
+
+  <div class="panel alerts">
+    <h2>Alerts</h2>
+    <div class="log" id="alerts"><span class="muted">none</span></div>
+  </div>
+
+  <div class="panel">
+    <h2>Heartbeat log</h2>
+    <div class="log" id="log"><span class="muted">no heartbeats yet</span></div>
+  </div>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+let status_ = null;
+
+function fmt(v, d = 3) {
+  return (v === null || v === undefined || v !== v) ? "–" :
+         Number(v).toFixed(d);
+}
+
+function drawSpark(canvas, data, color, fixed) {
+  const c = canvas.getContext("2d");
+  const W = canvas.width = canvas.clientWidth * devicePixelRatio;
+  const H = canvas.height = canvas.clientHeight * devicePixelRatio;
+  c.clearRect(0, 0, W, H);
+  if (!data || data.length < 2) return;
+  let lo = Math.min(...data), hi = Math.max(...data);
+  if (fixed) { lo = 0; hi = fixed; }
+  if (hi - lo < 1e-9) hi = lo + 1;
+  const step = W / (data.length - 1);
+  c.strokeStyle = color; c.lineWidth = 1.5 * devicePixelRatio;
+  c.beginPath();
+  data.forEach((v, i) => {
+    const x = i * step, y = H - (v - lo) / (hi - lo) * (H - 6) - 3;
+    i ? c.lineTo(x, y) : c.moveTo(x, y);
+  });
+  c.stroke();
+}
+
+function drawPlot(q, homeR) {
+  const canvas = $("plot");
+  const c = canvas.getContext("2d");
+  const W = canvas.width = canvas.clientWidth * devicePixelRatio;
+  const H = canvas.height = canvas.clientHeight * devicePixelRatio;
+  c.fillStyle = "#0d1117"; c.fillRect(0, 0, W, H);
+  const cx = W / 2, cy = H / 2, s = Math.min(W, H) / 2 - 14;
+  c.strokeStyle = "#30363d"; c.lineWidth = 1 * devicePixelRatio;
+  c.beginPath(); c.arc(cx, cy, s, 0, 2 * Math.PI); c.stroke();
+  c.strokeStyle = "#21262d"; c.setLineDash([4, 4]);
+  c.beginPath(); c.arc(cx, cy, s * homeR, 0, 2 * Math.PI); c.stroke();
+  c.setLineDash([]);
+  c.strokeStyle = "#21262d"; c.lineWidth = 1 * devicePixelRatio;
+  c.beginPath(); c.moveTo(cx, 0); c.lineTo(cx, H); c.moveTo(0, cy); c.lineTo(W, cy); c.stroke();
+  if (!q) return;
+  q.forEach(p => {
+    c.fillStyle = "#58a6ff";
+    c.beginPath(); c.arc(cx + p[0] * s, cy - p[1] * s, 4 * devicePixelRatio, 0, 2 * Math.PI); c.fill();
+  });
+}
+
+function renderCards(s) {
+  const cards = [
+    ["tick", s.tick, ""],
+    ["population", s.n, "/" + s.cap],
+    ["spacing", fmt(s.spacing), ""],
+    ["mean radius", fmt(s.mean_r), ""],
+    ["routing probe", fmt(s.probe), ""],
+    ["tick cost", fmt(s.avg_ms), "ms"],
+    ["uptime", (s.uptime / 60).toFixed(1), "min"],
+    ["born / pruned / killed", s.born + " / " + s.pruned + " / " + s.killed, ""],
+  ];
+  $("cards").innerHTML = cards.map(([k, v, sub]) =>
+    `<div class="card"><div class="k">${k}</div><div class="v">${v}<small>${sub}</small></div></div>`
+  ).join("");
+  const live = $("live");
+  live.textContent = s.running ? (s.paused ? "❚❚ PAUSED" : "● LIVE") : "● DRAINED";
+  live.className = (s.paused || !s.running) ? "paused" : "";
+  $("sub").textContent =
+    `dim=${s.dim} k=${s.k} home_r=${s.home_r} arrival/50t=${s.config.arrival_every} damage/2000t=${s.config.damage_every}`;
+  $("cfg_cap").value = s.cap;
+  $("cfg_home_r").value = s.home_r;
+  $("cfg_arrival").value = s.config.arrival_every;
+  $("cfg_damage").value = s.config.damage_every;
+  $("savePath").textContent = s.save_path ? "checkpoint → " + s.save_path : "";
+}
+
+function renderLog(s) {
+  const log = s.heartbeats || [];
+  $("log").innerHTML = log.length
+    ? log.map(l => `<div>${l}</div>`).join("")
+    : '<span class="muted">no heartbeats yet</span>';
+  const alerts = s.alerts || [];
+  $("alerts").innerHTML = alerts.length
+    ? alerts.map(a => `<div class="a">⚠ ${a}</div>`).join("")
+    : '<span class="muted">none</span>';
+}
+
+async function refreshStatus() {
+  try {
+    const r = await fetch("/api/status");
+    status_ = await r.json();
+    renderCards(status_);
+    renderLog(status_);
+  } catch (e) { /* server down */ }
+}
+
+async function refreshMetrics() {
+  try {
+    const r = await fetch("/api/metrics?limit=240");
+    const m = await r.json();
+    drawSpark($("spN"), m.n, "#58a6ff", 0);
+    drawSpark($("spSpacing"), m.spacing, "#3fb950", 0);
+    drawSpark($("spMeanR"), m.mean_r, "#d29922", 1.0);
+    drawSpark($("spProbe"), m.probe, "#f85149", 1.0);
+  } catch (e) {}
+}
+
+async function refreshPositions() {
+  try {
+    const r = await fetch("/api/positions");
+    const p = await r.json();
+    drawPlot(p.q, p.home_r);
+  } catch (e) {}
+}
+
+async function post(path, body = {}) {
+  try {
+    await fetch(path, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+  } catch (e) {}
+}
+
+$("pause").onclick = () => post("/api/pause");
+$("resume").onclick = () => post("/api/resume");
+$("doDamage").onclick = () => post("/api/damage", { count: +$("damage").value || 1 });
+$("doStep").onclick = () => post("/api/step", { count: +$("stepN").value || 1 });
+$("checkpoint").onclick = () => post("/api/checkpoint");
+$("applyCfg").onclick = () => post("/api/config", {
+  cap: +$("cfg_cap").value,
+  home_r: +$("cfg_home_r").value,
+  arrival_every: +$("cfg_arrival").value,
+  damage_every: +$("cfg_damage").value,
+});
+
+refreshStatus(); refreshMetrics(); refreshPositions();
+setInterval(refreshStatus, 1000);
+setInterval(refreshMetrics, 1500);
+setInterval(refreshPositions, 1500);
+</script>
+</body>
+</html>

@@ -22,6 +22,7 @@ dev = ["pytest"]
 [project.scripts]
 puno = "puno_cli:main"
 puno-lab = "puno_app.canned_ui:main"
+puno-net = "puno_app.live_net:main"
 
 [tool.setuptools]
 py-modules = ["puno_cli"]
@@ -33,7 +34,7 @@ packages = [
 ]
 
 [tool.setuptools.package-data]
-puno_app = ["ui.html"]
+puno_app = ["ui.html", "live_net.html"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
