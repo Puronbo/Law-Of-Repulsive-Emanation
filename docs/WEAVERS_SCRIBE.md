@@ -1140,6 +1140,26 @@ decided against the derived mirror fold r = a·min(θ, 2Θ−θ)
 If a discrete-unitary analogue exists anywhere in the fold-and-cut story, it
 is not the fold map itself — that map is a many-to-one projection.
 
+### Ch. 5.19  The Kawasaki analogue is not a CTC constraint (PUM §10.5.3, decided)
+
+The PUM asked whether Robertson's angle-sum constraints on ReLU vertices
+limit which causal loops are self-consistent (a Novikov analogue).  That
+question presupposes the constraint *bites*.  Combined with the Kawasaki
+resolution (`data/kawasaki_null_data.json`), `experiments/kawasaki_ctc.py`
+(`data/kawasaki_ctc_data.json`) closes it:
+
+* The exact 2-line angle-sum criterion |4α−2π| holds for **9.5%** of ReLU
+  fold vertices vs an **8%** uniform-angle null — satisfaction at the
+  background rate.
+* A constraint satisfied at the background rate constrains nothing: the
+  V-vertex loop admission fraction (0.095)^V collapses exactly as fast as
+  the null (0.08)^V (7.2e-7 vs 2.6e-7 at V=6).  There is no
+  Kawasaki-imposed restriction beyond what uniform geometry already imposes,
+  so the analogue cannot select self-consistent causal loops.
+
+The PUM §10.5 open-question list is now fully closed: retrace (T64),
+Wheeler–DeWitt selection (§5.17), fold-as-unitary (§5.18), and this one.
+
 ---
 
 ## Ch. 6  Creases (never forget these)

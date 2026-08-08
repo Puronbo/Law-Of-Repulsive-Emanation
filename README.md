@@ -13,7 +13,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
-| Regression suite | **20/20 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
+| Regression suite | **21/21 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
 | L.O.R.E. | C0 = V(q0) = H(q0,0), 109 tests; T-symmetry error 0.003 |
 | Fold theorem (T63/T64) | crease = **unique viscosity solution of |r′| = a**; retrace = cut locus; eikonal err 3.3e-13; measured crease 0.0350π vs derived 0.0318π; area 2666.6665 vs 2666.6666… |
 | Clock-test canon (T59/T61) | law-ness 1.000 → 0.417 under calendar re-index → 1.000 under rotation; rotation overlap/sim 1.000 |
@@ -32,6 +32,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Bekenstein shift (n=100 re-run) | the withdrawn +3.9% prime shift is **finally settled**: significant at power (+3.39%, p≈0) but **positional, not primality** — index-matched control on the same trajectories erases it (+0.14%, p=0.34); the null is causal, not underpowered |
 | Wheeler–DeWitt "selection" (PUM §10.5.1) | the constraint selects **nothing**: unshifted \|H\|<ε is empty on conservative flow (\|H\|=C₀≈24); shifted \|H−C₀\|<ε is the C₀ law relabeled (0↔1 at the drift level); the PUM's "86.8% at ε=0.5" is not reproduced |
 | Fold-and-cut as unitary (PUM §10.5.2) | the mirror fold is **not** a unitary gate: non-injective (400/801 angle collisions, 2 preimages), arc length not preserved (L_fold/L_dev=0.504) |
+| Kawasaki-as-CTC (PUM §10.5.3) | the Novikov antecedent is false: angle-sum criterion satisfied by 9.5% of vertices ≈ 8% uniform null, so (0.095)^V collapses as fast as the null — constrains no causal loop |
 
 **Honest walls (recorded, not hidden):** Bekenstein shift **withdrawn** (its own persisted data shows the null: p=0.789/0.938); Selberg unification and partition-function match are **tautologies** by the code's own construction; T65 four-pack scored **0.5/4** (P2, P4 refuted); PUM cosmological mapping is not citable as verified physics (`docs/AUDIT.md` §3–§4).
 

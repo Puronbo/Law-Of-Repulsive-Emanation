@@ -1,0 +1,38 @@
+{
+ "claim": "PUM 10.5.3: does the Kawasaki analogue constrain CTC consistency (Novikov)?",
+ "input": {
+  "kawasaki_exact_2line_fraction_eps_0_5": 0.0947,
+  "mean_deviation": 3.2149,
+  "uniform_angle_null": 0.08,
+  "source": "data/kawasaki_null_data.json"
+ },
+ "loop_sizes": {
+  "1": {
+   "measured_admitted": 0.0947,
+   "null_admitted": 0.08,
+   "binding": false
+  },
+  "2": {
+   "measured_admitted": 0.008968090000000001,
+   "null_admitted": 0.0064,
+   "binding": false
+  },
+  "4": {
+   "measured_admitted": 8.042663824810002e-05,
+   "null_admitted": 4.096e-05,
+   "binding": false
+  },
+  "8": {
+   "measured_admitted": 6.468444139890745e-09,
+   "null_admitted": 1.6777216000000004e-09,
+   "binding": false
+  },
+  "16": {
+   "measured_admitted": 4.1840769590886925e-17,
+   "null_admitted": 2.814749767106561e-18,
+   "binding": false
+  }
+ },
+ "satisfaction_at_null_rate": true,
+ "verdict": "NOT a CTC constraint: the Kawasaki angle-sum criterion is satisfied by only 9.5% of ReLU fold vertices (mean |4alpha-2pi| = 3.21), indistinguishable from the 8% uniform-angle null; at the exact 2-line criterion it holds for 9.5% vs an 8% null.  A constraint satisfied at the background rate constrains nothing: for a V=6-vertex causal loop the admitted fraction is (0.095)^6 = 7.21e-07, collapsing to zero exactly as fast as the null admits (2.62e-07) -- there is no Kawasaki-imposed restriction that the null does not already impose.  The antecedent of SS10.5.3 is false, so it cannot limit which causal loops are self-consistent."
+}

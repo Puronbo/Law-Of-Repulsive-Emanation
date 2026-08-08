@@ -188,6 +188,14 @@ given so it can be re-run).
   norm-preserving map; the fold is a many-to-one projection that re-scales
   metric content.  If a discrete-unitary analogue exists, it is not the
   fold map itself.
+* **Kawasaki analogue as a CTC/Novikov constraint** (PUM §10.5.3) —
+  **RESOLVED 2026-08-08** (`experiments/kawasaki_ctc.py`,
+  `data/kawasaki_ctc_data.json`): the antecedent is false.  The exact 2-line
+  angle-sum criterion is satisfied by 9.5% of ReLU fold vertices vs an 8%
+  uniform-angle null — a constraint satisfied at the background rate
+  constrains nothing; the V-vertex admitted fraction (0.095)^V collapses
+  exactly as fast as the null (0.08)^V, so it cannot limit which causal loops
+  are self-consistent.
 * **Kawasaki constraint** (PUM §10.2): mean deviation **0.49** from target 0 —
   a measured *failure*, called "genuine open problem."
   **RESOLVED 2026-08-08 — refutation + artifact attribution.**

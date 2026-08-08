@@ -146,3 +146,13 @@ def test_fold_not_a_unitary_gate():
     assert c['n_preimages'] == 2
     assert c['angle_collisions'] > 0
     assert abs(c['L_ratio'] - 0.5) < 0.05  # fold ~ half the development length
+
+
+def test_kawasaki_not_a_ctc_constraint():
+    d = load('kawasaki_ctc_data.json')
+    assert d['verdict'].startswith('NOT a CTC constraint')
+    assert d['satisfaction_at_null_rate'] is True
+    assert d['input']['kawasaki_exact_2line_fraction_eps_0_5'] < 0.15
+    # admission collapses with loop size exactly as the null does
+    for V in ('4', '8', '16'):
+        assert d['loop_sizes'][V]['binding'] is False

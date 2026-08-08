@@ -65,7 +65,7 @@ Usage: `grep -i "basketball" KEYWORDS.md` or just search this file.
 - **Incremental / continual learning / no-forgetting** — `experiments/flow_incremental.py`, `balance_continual.py`, `decentral_net_continual.py`
 - **Information theory / entropy / compression** — `docs/papers/info_theory_compression_finance_invariance.tex` (+ `.pdf`)
 - **Internet / whole-internet flow / Cisco Umbrella / Majestic / T72** — `README.md`, `experiments/decentral_net_internet.py`, `decentral_net_t72.py`, `data/decentral_net_t72_data.json`
-- **Kawasaki / flat foldability / crease / point-cloud artifact** — `docs/PAPER.md`, `Universals/crease_metrics.py`, `experiments/kawasaki_null.py`, `data/kawasaki_null_data.json`
+- **Kawasaki / flat foldability / crease / point-cloud artifact / CTC constraint** — `docs/PAPER.md`, `Universals/crease_metrics.py`, `experiments/kawasaki_null.py`, `data/kawasaki_null_data.json`, `experiments/kawasaki_ctc.py`, `data/kawasaki_ctc_data.json` (not a CTC/Novikov constraint)
 - **k-NN / nearest neighbor / exact index / grid / Chebyshev ring / cKDTree / T67** — `puno_flow/index.py`, `verify.py`, `patents/PUNO-PPA-001_spatial_indexed_flow.md`, `docs/AUDIT.md`, `data/decentral_net_t67_data.json`
 - **L-function / zeta / Dirichlet series / theta function / Euler product** — `docs/PAPER.md`, `Universals/modular_forms.py`, `mersenne_taxonomy.py`, `data/modular_data.json`
 - **Ledger / blockchain-inspired / hash chain** — `puno_flow/ledger.py`, `experiments/decentral_bank*.py`
