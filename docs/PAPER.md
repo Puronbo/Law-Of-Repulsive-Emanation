@@ -224,6 +224,8 @@ In our framework, the Hamiltonian trajectory traces a path through the Poincaré
 2. Prime geodesic distances follow a distribution concentrated at small values ($\mu = 0.065$, $\sigma = 0.058$ for $N=50$ prime steps), consistent with the local hyperbolic geometry near $C_0$.
 3. Recurrence times, when rounded to integers, factor into primes with a distribution consistent with random integer factorization.
 
+**Measured status (2026-08-08, `experiments/prime_time.py`, `data/prime_time_data.json`):** claim 1 is uniform energy conservation with nothing prime-special — the relative drift at the 214 prime-indexed states equals the drift at every step (ratio 0.999). Claim 2's "concentration" survives only inside the first $N\approx 50$ states ($\mu=0.027$, $\sigma=0.022$; consecutive-step $\mu=0.0135$) and the specific $\mu=0.065$ is not reproduced; by $N=214$ the mean pairwise distance has grown to $\mu=1.006$ — no concentration. Claim 3 is unmeasurable as stated: the frictionless flow exits the bounded disk ($r\ge 0.9$) after ~1310 steps with **zero** near-recurrences (eps-ball 0.01), so there is no return-time distribution to factor. The spectrum is a property of the short bounded transient, not of the primes.
+
 This connection suggests that the Hamiltonian flow on the Poincaré disk realizes a concrete instance of the Selberg paradigm: the trajectory's prime-indexed states define a geodesic spectrum that mirrors the arithmetic of primes.
 
 ### 8.5 Noether's Theorem: $C_0$ as the Conserved Charge

@@ -8,6 +8,8 @@ number so none of the resolved claims can silently drift:
   - Kawasaki 0.4866 reproduced and attributed to sampling scatter
   - PGT growth-form refutation at finite L
   - golden-ratio closure derived exactly (s(theta*)/s(TH) = 1/phi^2)
+  - prime-time PAPER §8.4: uniform conservation; spectrum transient; recurrence unmeasurable
+  - T-symmetry reversal error as a dt-dependent numerical bound
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -77,3 +79,29 @@ def test_fold_golden_closure_derived():
     assert d['delta'] == 0.0
     assert math.isclose(d['asymptotic_limit']['1/phi'],
                         1.0 / (0.5 * (1 + math.sqrt(5))), rel_tol=1e-6)
+
+
+def test_prime_time_uniform_and_unmeasurable():
+    d = load('prime_time_data.json')
+    v = d['verdict']
+    assert 'uniform energy conservation' in v
+    # drift at prime-indexed steps equals drift at all steps (nothing prime-special)
+    assert math.isclose(d['c1']['drift_ratio_prime_vs_all'], 1.0, abs_tol=0.05)
+    assert d['c1']['uniform'] is True
+    # the claimed N=50 mu=0.065 is not reproduced, and the spectrum diverges by N~214
+    assert d['c2']['mu_50'] < 0.05
+    assert d['c2']['mu_N'] > 0.5
+    # no near-recurrences before the flow escapes the disk
+    assert d['c3']['n_recurrences'] == 0
+    assert 'UNMEASURABLE' in v
+
+
+def test_time_reversal_convergence_bound():
+    d = load('time_reversal_convergence_data.json')
+    # error superconverges to far below the PAPER's 0.003 at finer dt
+    rows = {r['dt']: r for r in d['rows']}
+    assert rows[0.0005]['ts_error'] < 0.01          # 8.9e-3
+    assert rows[0.00025]['ts_error'] < 1e-3         # 7.2e-5
+    assert rows[0.000125]['ts_error'] < 1e-4        # 5.9e-7
+    assert d['superconvergent'] is True
+    assert d['verdict'].startswith('the coarsest dt escapes')

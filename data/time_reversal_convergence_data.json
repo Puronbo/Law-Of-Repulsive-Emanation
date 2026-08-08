@@ -1,0 +1,62 @@
+{
+ "claim": "PAPER: symplectic leapfrog is T-symmetric to error 0.003; symplectic integrators are time-reversible with O(dt^q) reconstruction error",
+ "setup": {
+  "q0": [
+   0.02,
+   0.0
+  ],
+  "context": [
+   "Tech",
+   "Silicon"
+  ],
+  "window_steps": 1000,
+  "dts": [
+   0.001,
+   0.0005,
+   0.00025,
+   0.000125
+  ],
+  "bound": 0.9
+ },
+ "rows": [
+  {
+   "dt": 0.001,
+   "ts_error": 0.11345234959631255,
+   "rmax": 0.9884025198090293,
+   "bounded": false,
+   "energy_drift": 0.06333561267320396
+  },
+  {
+   "dt": 0.0005,
+   "ts_error": 0.008901933643448207,
+   "rmax": 0.6925418580409081,
+   "bounded": true,
+   "energy_drift": 0.003374883283397765
+  },
+  {
+   "dt": 0.00025,
+   "ts_error": 7.18066168988891e-05,
+   "rmax": 0.19101832115975934,
+   "bounded": true,
+   "energy_drift": 2.0784278612914538e-05
+  },
+  {
+   "dt": 0.000125,
+   "ts_error": 5.892766791694068e-07,
+   "rmax": 0.05058941568925652,
+   "bounded": true,
+   "energy_drift": 2.4801582453575708e-06
+  }
+ ],
+ "fitted_order": 6.929027810513502,
+ "expected_order": 2.0,
+ "order_confirmed": false,
+ "superconvergent": true,
+ "reversal_error_claims": {
+  "paper_claimed": 0.003,
+  "measured_finest": 5.892766791694068e-07
+ },
+ "all_bounded": false,
+ "verdict": "the coarsest dt escapes the bounded disk (boundary clipping dominates its error), but the three bounded dt levels show reversal error decaying ~O(dt^6.93) and reaching 5.89e-07 at dt=0.000125 -- an order of magnitude below the PAPER's 0.003.  The 0.003 figure is a dt-dependent integrator bound, not a broken-symmetry signal.",
+ "note": "C0 = 24.4348 (V(0)); reverse window W=1000; bounded prefix only."
+}

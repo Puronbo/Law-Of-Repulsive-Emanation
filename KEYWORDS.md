@@ -83,6 +83,7 @@ Usage: `grep -i "basketball" KEYWORDS.md` or just search this file.
 - **Polysphere / sphere / higher-dim / routing** — `Universals/manifold/polysphere.py`, `experiments/polysphere_*.py`
 - **Prime count / pi(x) / sieve / Lucy-Hedgehog / segmented sieve / PNT / Li(x)** — `README.md`, `experiments/prime_count_from_scratch.py`, `Universals/segmented_sieve_benchmark.py`, `scripts/`, `data/prime_engine_data.json`
 - **Prime gaps / prime geodesics / geodesic bridge / C7 / prime geodesic theorem / PGT / finite-L** — `docs/PAPER.md`, `experiments/prime_gap_bridge.py`, `reverse_pair_gaps.py`, `pgt_finite_l.py`, `data/googol_census_all_k_c7.*`, `data/pgt_finite_l_data.json`
+- **Prime-indexed time steps / prime geodesic spectrum / PAPER §8.4 / recurrence-time factorization** — `experiments/prime_time.py`, `data/prime_time_data.json` (C0-at-primes = uniform conservation; spectrum = short-transient artifact; recurrence claim unmeasurable — flow escapes disk)
 - **Psychometrics / Cronbach / IRT / measurement invariance / DIF** — `docs/papers/psychometrics_invariance.tex` (+ `.pdf`)
 - **Quantum thermodynamics / ground state / partition function** — `Universals/thermodynamics.py`, `data/thermo_data.json`
 - **Quantization / resolution loss / bit depth / range–resolution** — `docs/papers/adc_quantization_invariance.tex` (+ `.pdf`), `ml_quantization_embedding_proofs.tex` (+ `.pdf`)
@@ -101,7 +102,7 @@ Usage: `grep -i "basketball" KEYWORDS.md` or just search this file.
 - **Spectrum statistics / level spacing / Poisson / GOE / C1 / C3 / C4** — `experiments/spectral_extended.py`, `data/spectral_extended_data.json`, `Universals/spectral_analysis.py`
 - **Spring fold / T63 / T64 / eikonal** — `experiments/spring_fold.py`, `data/spring_fold_data.json`, `docs/SPRING_BIBLE.md`
 - **T-series / theorems / T1–T72** — `docs/THE_BOOK.md`, `docs/AUDIT.md`, `docs/NOVELTY_AND_CREATION.md`, `Universals/proofs.py`
-- **T-symmetry / time reversal / energy conservation** — `experiments/c0_crossing_tsym.py`, `c0_cusp_flow.py`, `t39_cusp_flow.py`
+- **T-symmetry / time reversal / energy conservation** — `experiments/c0_crossing_tsym.py`, `c0_cusp_flow.py`, `t39_cusp_flow.py`, `experiments/time_reversal_convergence.py` (PAPER's 0.003 = dt-dependent integrator bound, superconverges O(dt^6.9)), `data/time_reversal_convergence_data.json`
 - **Ternary evaluation / scoring heuristic** — `docs/papers/corrected_paper.tex` (+ `.pdf`)
 - **Thermodynamics / entropy / partition function** — `Universals/thermodynamics.py`, `data/thermo_data.json`
 - **Toy network / live network / browser UI** — `puno_app/`, `puno_flow/examples/`

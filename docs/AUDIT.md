@@ -189,6 +189,30 @@ given so it can be re-run).
   §4.  The PUM's narrative cosmology should no longer be cited as verified
   beyond the specific engine claims that survive testing.
 * **Prime-metric framework beyond 2ⁿ−k** (README).
+* **Prime-time claims** (PAPER §8.4): C0 at every prime-indexed state; prime
+  geodesic spectrum μ=0.065/σ=0.058 at N=50; recurrence times factor like
+  random integers.
+  **RESOLVED 2026-08-08** (`experiments/prime_time.py`,
+  `data/prime_time_data.json`): (1) the "C0 law at primes" is *uniform energy
+  conservation* — drift at prime steps equals drift at every step (ratio
+  0.999), nothing prime-special; (2) the geodesic spectrum is concentrated
+  only inside the first N≈50 states (μ=0.0270/σ=0.0224 at N=50, consecutive
+  steps μ=0.0135 — not the claimed 0.065/0.058), and diverges to μ=1.006/σ=
+  0.797 by N=214; (3) the recurrence-time claim is **unmeasurable**: the
+  frictionless flow escapes the bounded disk (r ≥ 0.9) after ~1310 steps with
+  **zero** near-recurrences, so there is no return-time distribution to
+  factor.  All three claims were asserted on a transient that exits the
+  Poincaré disk.
+* **T-symmetry error 0.003** (PAPER, L.O.R.E. section): the reversal error is
+  quoted as a fixed constant.
+  **RESOLVED 2026-08-08** (`experiments/time_reversal_convergence.py`,
+  `data/time_reversal_convergence_data.json`): it is a *dt-dependent
+  integrator bound*, not a physical symmetry claim — measured reversal error
+  8.9e-3 at dt=5e-4, 7.2e-5 at dt=2.5e-4, 5.9e-7 at dt=1.25e-4, superconverging
+  as O(dt^6.9) near the symmetric origin crossing (order-2 leapfrog lower
+  bound; the coarsest dt=1e-3 window exits the disk, r=0.99).  The 0.003 is
+  consistent with dt≈5e-4 — fine, but it is a numerical bound, not an exact
+  symmetry.
 * **Continuum limit**: PAPER's "residual drift is numerical and converges to
   zero as dt→0" is anticipated, not measured at arbitrary precision.
   **MEASURED 2026-08-08** (`experiments/continuum_limit.py`,
@@ -211,7 +235,7 @@ given so it can be re-run).
 
 | Theory | Claim | Strength |
 |---|---|---|
-| **L.O.R.E.** (C₀ determined, not chosen) | C₀ = H(q₀,0), never arbitrary | PAPER: 109 tests; T-symmetry error 3e-3 **of the Hamiltonian integrator** (a trajectory-integration property, distinct from the PUM §10.1.2 "ascent recovers seed" claim, which T65 refutes). |
+| **L.O.R.E.** (C₀ determined, not chosen) | C₀ = H(q₀,0), never arbitrary | PAPER: 109 tests; T-symmetry error 3e-3 **of the Hamiltonian integrator** (a trajectory-integration property, distinct from the PUM §10.1.2 "ascent recovers seed" claim, which T65 refutes). 2026-08-08: the 3e-3 is a dt-dependent numerical bound (see `data/time_reversal_convergence_data.json`). |
 | **Noether charge Q = H(t) ≈ C₀** | <1% drift over 1000 steps, converges as dt→0 | Measured on 6 trajectories; limit anticipated |
 | **Eikonal fold cosmology** (T63/T64) | fold = unique viscosity solution of |r′|=a; retrace = cut locus | **Derived + 10-test regression suite** — the strongest theory in the repo |
 | **Golden-ratio closure** (T58 + 2026-08-08) | r_ret/apex = θ*/Θ solving s(θ*)/s(Θ)=1/φ² on the Archimedean spiral | **Derived exactly** (delta 0.0 to the measured 0.6137690167 at Θ=20; → 1/φ as Θ→∞). `data/fold_golden_closure_data.json` |
@@ -222,6 +246,8 @@ given so it can be re-run).
 | **Selberg unification** (PAPER) | 30 eigenvalues ↔ 196 Mersenne geodesics, ε(2)=0.000265 | ε(2)=0.000265 is real **but it is algebra**: `L_total = L_traj + Σ L_k` is the code's own construction (`L(s)=C₀·ζ(s)` is flagged tautological in the code). Spectral-vs-zeros match is poor (code: min |t_n − t_zeta| ~ 2.5–9.0 "not a match by any standard"). |
 | **Partition function match** (PAPER) | L(2)=40.14 vs C₀·π²/6=40.19 (<0.2%) | **Tautology.** C₀·π²/6 = 40.1936 holds for *any* C₀; the code flags `L(s)=C0*zeta(s)` as a tautology "for ANY constant C0." A match by construction is not a test. |
 | **Thermodynamics/entropy** | ln-thinning ↔ entropy; second law as folding | Analogical, not falsifiable as stated |
+| **Prime geodesic spectrum** (PAPER §8.4, 2026-08-08) | prime-indexed states define a geodesic spectrum mirroring the arithmetic of primes; recurrence times factor into primes | **Not supported.** C0-at-primes = uniform energy conservation (ratio 0.999); the spectrum is a transient of the first N≈50 states (μ=0.027, not 0.065) and diverges by N=214; the frictionless flow has **zero** near-recurrences before escaping the bounded disk, so the recurrence claim is unmeasurable. `data/prime_time_data.json` |
+| **T-symmetry of the integrator** (PAPER/L.O.R.E., 2026-08-08) | reversal error 0.003 | A **dt-dependent numerical bound, not a physical symmetry** — superconverges O(dt^6.9) near the origin crossing (8.9e-3 → 5.9e-7 over dt 5e-4→1.25e-4). `data/time_reversal_convergence_data.json` |
 | **PUM §10.1 four-pack (T65)** | P1 τ~entropy; P2 T-symmetry; P3 holographic MI; P4 CTC fixed point | **0.5/4 confirmed.** P1 = tautology (τ := exp(entropy) in source); P2 refuted (recon err ≈ 1.8); P4 refuted (converged fraction 0.0); P3 weakly positive (MI 0.034 vs null 0.009) but synthetic. See `data/t65_fourpack_results.json` |
 | **Decentral Bank (T68)** | routing is ownership; double-entry ledger + nonce rejects double-spend; witness quorum catches faulty transfers; anomaly layer flags outliers | **New, measured.** T1–T6: routing deterministic with a real partition spread (min 6 / max 111 / σ 34 over 16 fragments); integrity conserved exactly over 3000 txs; nonce replay rejected; 30% damage survives; quorum catches *every* faulty send below 40% corruption while honest availability holds — but collapses at ≥50% corrupt neighbourhoods (caught-frac 1.0 → 0.23–0.27), i.e. **quorum is majority honesty, not BFT** (crease #16). Anomaly recall 0.51 / precision 0.63 vs random null 0.019. Addresses the AUDIT §1 "no ledger/consensus/transaction layer" gap at toy scale. See `data/decentral_bank_data.json` |
 | **Decentral Bank hardened (T68 Ph.1) + bridge (T69)** | Ed25519 account signatures verified at append & re-validation; WAL persistence + replay; on/off-ramp against a centralized bank via a custody-holding gateway | **New, measured.** T7: tampered block, wrong-key signature, and address-spoof all rejected, legit tx still commits. T8: save/load reproduces bit-identical heads + conserved balances. T69: on-ramp credits DCN 1:1, off-ramp pays fiat 1:1; ref replays settle nothing twice; backing invariant `custody + reserve_DCN == initial` holds to diff 0.0 under 300 randomized ops with 170 ref replays and forged over-withdrawals rejected. Honest walls: single-key custody (no threshold/HSM), mock bank (no network/TLS/KYC/AML), caller-supplied refs, no compensation path (crease #17). See `data/decentral_bank_bridge_data.json` |

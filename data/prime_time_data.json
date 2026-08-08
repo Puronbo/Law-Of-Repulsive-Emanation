@@ -1,0 +1,52 @@
+{
+  "claim": "PAPER 8.4: C0 at prime-indexed states; prime geodesic distance distribution; recurrence-time prime factorization",
+  "setup": {
+    "q0": [
+      0.05,
+      0.02
+    ],
+    "context": [
+      "Tech",
+      "Silicon"
+    ],
+    "dt": 0.0005,
+    "steps": 30000,
+    "prime_n": 2000,
+    "return_eps": 0.01,
+    "bound": 0.9,
+    "n_steps_bounded": 1310
+  },
+  "c1": {
+    "n_primes": 214,
+    "max_rel_drift_prime": 0.04316937476777519,
+    "mean_rel_drift_prime": 0.03386619877651031,
+    "max_rel_drift_all_steps": 0.043223806174289406,
+    "holds": true,
+    "drift_ratio_prime_vs_all": 0.9987407076948583,
+    "uniform": true
+  },
+  "c2": {
+    "mu_50": 0.027025689161344832,
+    "sigma_50": 0.022402406587432137,
+    "claimed_mu_50": 0.065,
+    "claimed_sigma_50": 0.058,
+    "mu_N": 1.0062910310100819,
+    "sigma_N": 0.7969745381799507,
+    "mu_consecutive": 0.013460800487836697,
+    "sigma_consecutive": 0.013007085267499687,
+    "n_prime_states": 214,
+    "concentrated": false,
+    "concentrated_consecutive": true
+  },
+  "c3": {
+    "n_recurrences": 0,
+    "n_periods": 0,
+    "mean_period": null,
+    "mean_omega_measured": 0.0,
+    "mean_omega_null": 0.0,
+    "consistent": false,
+    "measurable": false
+  },
+  "sample_return_steps": [],
+  "verdict": "C1 HOLDS as uniform energy conservation; nothing prime-special (max rel drift at prime steps 4.3e-02 == all steps 4.3e-02, ratio 0.999); C2 NOT reproduced at N=50 (N=50 mu=0.0270 vs claimed 0.065; consecutive-prime mu=0.0135: concentrated at small values); C3 UNMEASURABLE: flow escapes the disk before any near-recurrence (n_recurrences=0)"
+}

@@ -1036,6 +1036,43 @@ boundary) — distributing it across machines remains unbuilt.
 
 ---
 
+### Ch. 5.15  Prime time and the T-symmetry bound (PAPER §8.4, measured)
+
+The PAPER's §8.4 "prime geodesic spectrum" and the L.O.R.E. "T-symmetry error
+0.003" were executed against the actual `Universals/hamiltonian_flow.py`
+(`experiments/prime_time.py`, `data/prime_time_data.json`;
+`experiments/time_reversal_convergence.py`,
+`data/time_reversal_convergence_data.json`):
+
+* **C0 at prime-indexed states — uniform energy conservation, nothing
+  prime-special.** Relative drift at the 214 prime steps (4.317e-2) equals the
+  drift at every step (4.322e-2); ratio 0.999. The "C0 law at primes" is the
+  integrator conserving energy uniformly, which is exactly what a symplectic
+  integrator should do. The absolute 4.3% is the trajectory approaching the
+  boundary, not a prime effect.
+* **Prime geodesic spectrum — a transient, not a law.** The claimed
+  concentration (μ=0.065, σ=0.058 at N=50) is not reproduced: at N=50 we
+  measure μ=0.027/σ=0.022 (pairwise) and μ=0.0135 (consecutive), and by
+  N=214 the mean pairwise distance has grown to μ=1.006 — no concentration.
+  The spectrum is a property of the first ~50 steps of a short bounded
+  transient, not of the primes.
+* **Recurrence times factor into primes — unmeasurable.** The frictionless
+  flow exits the bounded disk (r ≥ 0.9) after ~1310 steps at dt=5e-4 with
+  **zero** near-recurrences into an eps=0.01 ball around Q0. There is no
+  return-time distribution to factor, so the claim is vacuous on this flow.
+* **T-symmetry error 0.003 — a dt-dependent numerical bound.** Measured
+  reversal error: 8.9e-3 at dt=5e-4, 7.2e-5 at dt=2.5e-4, 5.9e-7 at
+  dt=1.25e-4 — superconverging O(dt^6.9) near the symmetric origin crossing
+  (order-2 leapfrog is the expected floor). The 0.003 matches dt≈5e-4 but is
+  an integrator truncation bound, not an exact symmetry, and the coarsest
+  dt=1e-3 window exits the disk (r=0.99) and measures boundary clipping.
+
+The through-line: every "prime-selected" or "exact-symmetry" claim measured on
+this flow reduces to a plain numerical property of the integrator or a
+short-transient artifact.
+
+---
+
 ## Ch. 6  Creases (never forget these)
 
 1. **The pattern is scale-dependent.** τ-equality under MM/DD swap oscillates
