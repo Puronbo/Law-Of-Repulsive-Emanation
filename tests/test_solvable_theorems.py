@@ -11,6 +11,8 @@ number so none of the resolved claims can silently drift:
   - prime-time PAPER §8.4: uniform conservation; spectrum transient; recurrence unmeasurable
   - T-symmetry reversal error as a dt-dependent numerical bound
   - Bekenstein shift settled at n=100: significant raw, erased by index-matching
+  - Wheeler-DeWitt constraint selects nothing (empty or C0-law relabeled)
+  - fold-and-cut is not a unitary gate (non-injective, not norm-preserving)
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -121,3 +123,26 @@ def test_bekenstein_rerun_settled():
     assert abs(fm['mean_diff']) < 0.1 * fc['mean_diff']
     assert 'NOT REPRODUCED' in d['verdict']
     assert 'artifact' in d['verdict']
+
+
+def test_wheeler_dewitt_selects_nothing():
+    d = load('wheeler_dewitt_selection_data.json')
+    v = d['verdict']
+    assert 'EMPTY' in v or 'selects nothing' in v
+    # unshifted |H|<eps is empty on every conservative trajectory at eps<=2
+    for r in d['results']:
+        if r['friction'] == 0.0:
+            for row in r['rows']:
+                if row['epsilon'] <= 2.0:
+                    assert row['unshifted_fraction'] == 0.0
+    # the PUM's 86.8% figure is not reproduced by the current filters
+    assert d['scan_for_86.8pct']['reproduced'] is False
+
+
+def test_fold_not_a_unitary_gate():
+    d = load('fold_unitary_data.json')
+    assert d['verdict'].startswith('NOT a unitary gate')
+    c = d['checks']
+    assert c['n_preimages'] == 2
+    assert c['angle_collisions'] > 0
+    assert abs(c['L_ratio'] - 0.5) < 0.05  # fold ~ half the development length

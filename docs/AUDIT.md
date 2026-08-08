@@ -166,9 +166,28 @@ given so it can be re-run).
 
 ## 3. OPEN THEORETICAL QUESTIONS
 
-* **Wheeler–DeWitt on the disk** (PUM §10.5.1): can an analogue of the
-  Hamiltonian constraint select "physical" knowledge configurations?
-* **Fold-and-cut as discrete unitary evolution** (PUM §10.5.2): "remains open."
+* **Wheeler–DeWitt on the disk** (PUM §10.5.1): "can an analogue of the
+  Hamiltonian constraint select 'physical' knowledge configurations?"
+  **RESOLVED 2026-08-08** (`experiments/wheeler_dewitt_selection.py`,
+  `data/wheeler_dewitt_selection_data.json`): the constraint selects nothing.
+  The unshifted filter |H(q,p)| = |K+V| < ε is **empty** on conservative flow
+  (H = C₀ ≈ 24 ≫ any meaningful ε; nonzero only at ε ≥ 10 = 42% of C₀); the
+  shifted filter |H−C₀| < ε is the C₀ law relabeled — fraction is 1.000 at
+  every ε for the origin-start trajectory and jumps 0→1 at the integrator
+  drift level otherwise.  The PUM's "86.8% satisfied at ε=0.5" is **not
+  reproduced** (grid max 1.000; the filter reads only 0 or 1) and is at best
+  a finite-precision drift number, never a selection of "physical" states.
+* **Fold-and-cut as discrete unitary evolution** (PUM §10.5.2): "whether
+  fold-and-cut realizes unitary gates — remains open."
+  **RESOLVED 2026-08-08** (`experiments/fold_unitary.py`,
+  `data/fold_unitary_data.json`): the mirror fold r = a·min(θ, 2Θ−θ) is
+  **not** a unitary gate.  It is non-injective — 400/801 grid angles collide
+  (θ and 2Θ−θ map to the same radius; a generic mid-branch point has 2
+  preimages), so it has no well-defined inverse — and it does not preserve
+  arc length (L_fold/L_dev = 0.504).  Unitarity requires a bijective,
+  norm-preserving map; the fold is a many-to-one projection that re-scales
+  metric content.  If a discrete-unitary analogue exists, it is not the
+  fold map itself.
 * **Kawasaki constraint** (PUM §10.2): mean deviation **0.49** from target 0 —
   a measured *failure*, called "genuine open problem."
   **RESOLVED 2026-08-08 — refutation + artifact attribution.**

@@ -1,0 +1,21 @@
+{
+ "claim": "PUM 10.5.2: is fold-and-cut the discrete analogue of unitary evolution? (unitary gate = bijective + norm-preserving)",
+ "setup": {
+  "a": 1.0,
+  "TH": 20.0,
+  "dth": 0.05
+ },
+ "checks": {
+  "angle_collisions": 400,
+  "total_grid_points": 801,
+  "preimages_of_mid_branch": [
+   10.0,
+   30.0
+  ],
+  "n_preimages": 2,
+  "L_fold": 404.1889836856004,
+  "L_development": 802.4409482396053,
+  "L_ratio": 0.5036993495562634
+ },
+ "verdict": "NOT a unitary gate: the mirror fold is NOT injective (400 angle collisions -- theta and 2TH-theta both land on the same radius, e.g. theta=10.0 and theta=30.0 both give r=10.00), so it has no well-defined inverse (2 preimages of a generic mid-branch point), and the folded path does not preserve the development's arc length (L_fold/L_dev = 0.504, not 1).  Unitarity requires a bijective norm-preserving map; the fold is a many-to-one projection that re-scales the metric content."
+}

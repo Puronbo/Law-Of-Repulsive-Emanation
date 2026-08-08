@@ -100,7 +100,7 @@ Usage: `grep -i "basketball" KEYWORDS.md` or just search this file.
 - **Spatial index / spatial search / O(1) search / grid index** — `puno_flow/index.py`, `patents/PUNO-PPA-001_spatial_indexed_flow.md`, `docs/AUDIT.md`, `experiments/decentral_net_t67.py`
 - **Spectral geometry / spectrum / eigenvalues / Erdos-Kac / multiplicative chaos** — `Universals/spectrum_analysis.py`, `spectrum_extended.py`, `spectral_analysis.py`, `continuous_spectrum.py`, `data/spectral_data.json`
 - **Spectrum statistics / level spacing / Poisson / GOE / C1 / C3 / C4** — `experiments/spectral_extended.py`, `data/spectral_extended_data.json`, `Universals/spectral_analysis.py`
-- **Spring fold / T63 / T64 / eikonal** — `experiments/spring_fold.py`, `data/spring_fold_data.json`, `docs/SPRING_BIBLE.md`
+- **Spring fold / T63 / T64 / eikonal / fold-as-unitary** — `experiments/spring_fold.py`, `data/spring_fold_data.json`, `docs/SPRING_BIBLE.md`, `experiments/fold_unitary.py`, `data/fold_unitary_data.json` (mirror fold NOT a unitary gate: non-injective, arc length not preserved)
 - **T-series / theorems / T1–T72** — `docs/THE_BOOK.md`, `docs/AUDIT.md`, `docs/NOVELTY_AND_CREATION.md`, `Universals/proofs.py`
 - **T-symmetry / time reversal / energy conservation** — `experiments/c0_crossing_tsym.py`, `c0_cusp_flow.py`, `t39_cusp_flow.py`, `experiments/time_reversal_convergence.py` (PAPER's 0.003 = dt-dependent integrator bound, superconverges O(dt^6.9)), `data/time_reversal_convergence_data.json`
 - **Ternary evaluation / scoring heuristic** — `docs/papers/corrected_paper.tex` (+ `.pdf`)
@@ -108,7 +108,7 @@ Usage: `grep -i "basketball" KEYWORDS.md` or just search this file.
 - **Toy network / live network / browser UI** — `puno_app/`, `puno_flow/examples/`
 - **Wald test / econometrics / non-invariance** — `docs/papers/econometrics_invariance.tex` (+ `.pdf`)
 - **Weyl law / eigenvalue density** — `docs/PAPER.md`, `Universals/thermodynamics.py`
-- **Wheeler–DeWitt / quantum cosmology / singularity / bounce** — `docs/papers/division_by_zero_bounce.tex` (+ `.pdf`)
+- **Wheeler–DeWitt / quantum cosmology / singularity / bounce** — `docs/papers/division_by_zero_bounce.tex` (+ `.pdf`), `experiments/wheeler_dewitt_selection.py`, `data/wheeler_dewitt_selection_data.json` (constraint selects nothing: unshifted empty on conservative flow, shifted = C₀ law relabeled)
 
 ---
 

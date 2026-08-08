@@ -1101,6 +1101,45 @@ Pre-registered re-run at n=100 (`experiments/bekenstein_rerun.py`,
 The pattern repeats: what survives is a density effect of *where prime
 indices sit in the index range*, never an arithmetic effect of primality.
 
+### Ch. 5.17  The Wheeler–DeWitt "selection" is empty or relabeled (PUM §10.5.1, measured)
+
+The PUM's open question — can an analogue of the Hamiltonian constraint
+select "physical" knowledge configurations on the Poincaré disk — was tested
+against the actual filters (`experiments/wheeler_dewitt_selection.py`,
+`data/wheeler_dewitt_selection_data.json`):
+
+* **Unshifted |H| = |K+V| < ε is EMPTY on conservative flow.**  H is conserved
+  at C₀ ≈ 24, so no state passes for any ε ≪ C₀ (0.000 at ε ≤ 2 for every
+  start point); nonzero only at ε ≥ 10, i.e. 42% of C₀ — not a selection.
+* **Shifted |H−C₀| < ε is the C₀ law relabeled.**  Fraction 1.000 at *every*
+  ε for the origin-start trajectory (H−C₀ ≡ 0 exactly), and a 0→1 jump at the
+  integrator drift level otherwise.  `math_validation.py` itself flags it:
+  "Shifted WDW is the same test with generous epsilon."
+* **The PUM's "86.8% satisfied at ε=0.5" is not reproduced.**  Across a
+  grid (friction {0.0, 0.3} × dt {5e-4, 2e-3} × steps {500, 2000} × 10 random
+  q0) the shifted filter reads only 0.000 or 1.000; nothing lands at 0.868.
+
+The constraint surface the PUM invokes is either empty (unshifted) or the
+entire trajectory at the drift tolerance (shifted) — it selects no
+lower-dimensional submanifold of "physical" configurations.
+
+### Ch. 5.18  The fold is not a unitary gate (PUM §10.5.2, measured)
+
+The PUM's open question — whether fold-and-cut realizes unitary gates — was
+decided against the derived mirror fold r = a·min(θ, 2Θ−θ)
+(`experiments/fold_unitary.py`, `data/fold_unitary_data.json`):
+
+* **Not injective.**  400 of 801 sampled development angles collide: θ and
+  2Θ−θ map to the same radius, so a generic mid-branch point has **two**
+  preimages (θ=10 and θ=30 both give r=10 at TH=20).  A unitary gate needs a
+  well-defined inverse; the fold has none.
+* **Not norm-preserving.**  The folded path's arc length is 0.504× the
+  unfolded development's — the fold re-scales the natural metric content
+  instead of preserving it.
+
+If a discrete-unitary analogue exists anywhere in the fold-and-cut story, it
+is not the fold map itself — that map is a many-to-one projection.
+
 ---
 
 ## Ch. 6  Creases (never forget these)

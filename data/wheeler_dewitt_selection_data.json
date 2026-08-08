@@ -1,0 +1,244 @@
+{
+ "claim": "PUM SS2/10.5.1: Wheeler-DeWitt constraint H|Psi>=0 selects 'physical' knowledge configurations; 86.8%% satisfied at eps=0.5",
+ "c0": 24.434791603891032,
+ "filters": {
+  "unshifted": "|H(q,p)| = |K+V| < eps  (constraint surface on conservative flow: H = C0 ~ 24, so empty for eps << C0)",
+  "shifted": "|H(q,p) - C0| < eps  (identical to the C0 law / energy conservation test; math_validation.py flags it as such)"
+ },
+ "results": [
+  {
+   "label": "frictionless",
+   "q0": [
+    0.05,
+    0.02
+   ],
+   "friction": 0.0,
+   "dt": 0.0005,
+   "c0": 24.434791603891032,
+   "mean_abs_H": 23.65876278452478,
+   "rows": [
+    {
+     "epsilon": 0.01,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 0.0
+    },
+    {
+     "epsilon": 0.1,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 0.0
+    },
+    {
+     "epsilon": 0.5,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 0.0
+    },
+    {
+     "epsilon": 2.0,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 1.0
+    },
+    {
+     "epsilon": 10.0,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 1.0
+    }
+   ]
+  },
+  {
+   "label": "frictionless",
+   "q0": [
+    0.0,
+    0.0
+   ],
+   "friction": 0.0,
+   "dt": 0.0005,
+   "c0": 24.434791603891032,
+   "mean_abs_H": 24.434525083513886,
+   "rows": [
+    {
+     "epsilon": 0.01,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 1.0
+    },
+    {
+     "epsilon": 0.1,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 1.0
+    },
+    {
+     "epsilon": 0.5,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 1.0
+    },
+    {
+     "epsilon": 2.0,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 1.0
+    },
+    {
+     "epsilon": 10.0,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 1.0
+    }
+   ]
+  },
+  {
+   "label": "frictionless",
+   "q0": [
+    -0.2,
+    0.1
+   ],
+   "friction": 0.0,
+   "dt": 0.0005,
+   "c0": 24.434791603891032,
+   "mean_abs_H": 18.76859510711072,
+   "rows": [
+    {
+     "epsilon": 0.01,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 0.0
+    },
+    {
+     "epsilon": 0.1,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 0.0
+    },
+    {
+     "epsilon": 0.5,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 0.0
+    },
+    {
+     "epsilon": 2.0,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 0.0
+    },
+    {
+     "epsilon": 10.0,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 1.0
+    }
+   ]
+  },
+  {
+   "label": "frictionless",
+   "q0": [
+    0.3,
+    -0.05
+   ],
+   "friction": 0.0,
+   "dt": 0.0005,
+   "c0": 24.434791603891032,
+   "mean_abs_H": 20.332602657502,
+   "rows": [
+    {
+     "epsilon": 0.01,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 0.0
+    },
+    {
+     "epsilon": 0.1,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 0.0
+    },
+    {
+     "epsilon": 0.5,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 0.0
+    },
+    {
+     "epsilon": 2.0,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 0.0
+    },
+    {
+     "epsilon": 10.0,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 1.0
+    }
+   ]
+  },
+  {
+   "label": "dissipative",
+   "q0": [
+    0.05,
+    0.02
+   ],
+   "friction": 0.3,
+   "dt": 0.002,
+   "c0": 24.434791603891032,
+   "mean_abs_H": 18.579533000653083,
+   "rows": [
+    {
+     "epsilon": 0.01,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 0.0
+    },
+    {
+     "epsilon": 0.1,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 0.0
+    },
+    {
+     "epsilon": 0.5,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 0.0
+    },
+    {
+     "epsilon": 2.0,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 0.29740518962075846
+    },
+    {
+     "epsilon": 10.0,
+     "unshifted_fraction": 0.029940119760479042,
+     "shifted_fraction": 0.7644710578842315
+    }
+   ]
+  },
+  {
+   "label": "dissipative",
+   "q0": [
+    0.0,
+    0.0
+   ],
+   "friction": 0.3,
+   "dt": 0.002,
+   "c0": 24.434791603891032,
+   "mean_abs_H": 19.377292142444375,
+   "rows": [
+    {
+     "epsilon": 0.01,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 0.027944111776447105
+    },
+    {
+     "epsilon": 0.1,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 0.08782435129740519
+    },
+    {
+     "epsilon": 0.5,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 0.19161676646706588
+    },
+    {
+     "epsilon": 2.0,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 0.37524950099800397
+    },
+    {
+     "epsilon": 10.0,
+     "unshifted_fraction": 0.0,
+     "shifted_fraction": 0.8003992015968064
+    }
+   ]
+  }
+ ],
+ "verdict": "NEITHER filter selects: the unshifted H|Psi>=0 is EMPTY on conservative flow (|H|=C0~24 >> any meaningful eps; the constraint surface is empty), and the shifted filter is the C0 law relabeled (0->1 at the integrator drift level).  The PUM's '86.8%% satisfied' is a finite-precision drift number, not a phase-space selection.  Independently, the exact '86.8% at eps=0.5' figure is NOT reproduced (grid max 1.000).",
+ "scan_for_86.8pct": {
+  "max_shifted_fraction_eps05": 1.0,
+  "reproduced": false,
+  "note": "grid: friction in {0.0,0.3}, dt in {5e-4,2e-3}, steps in {500,2000}, 10 random q0 each; the shifted (energy-drift) filter reads either 0.000 or 1.000 -- the '86.8% satisfied' figure is not reproduced by the current filter semantics."
+ }
+}
