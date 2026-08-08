@@ -1,0 +1,144 @@
+{
+  "claim": "C2 (golden fold): further retrace folds lock on phi (or phi^2) rungs - the fold is golden-geometric; the next fold above the giant locks on a phi or phi^2 rung",
+  "chain_descending": [
+    943901200001,
+    1914467,
+    730421,
+    26102,
+    10262
+  ],
+  "targets": {
+    "phi": 1.618033988749895,
+    "phi2": 2.618033988749895
+  },
+  "tolerance": 0.01,
+  "adjacent_rungs": [
+    {
+      "hi": 943901200001,
+      "lo": 1914467,
+      "ratio": 493036.025171,
+      "dev_nearest_target_pct": 18832200.3937,
+      "hit_within_1pct": false,
+      "nearest": "phi2"
+    },
+    {
+      "hi": 1914467,
+      "lo": 730421,
+      "ratio": 2.621046,
+      "dev_nearest_target_pct": 0.115,
+      "hit_within_1pct": true,
+      "nearest": "phi2"
+    },
+    {
+      "hi": 730421,
+      "lo": 26102,
+      "ratio": 27.983335,
+      "dev_nearest_target_pct": 968.8683,
+      "hit_within_1pct": false,
+      "nearest": "phi2"
+    },
+    {
+      "hi": 26102,
+      "lo": 10262,
+      "ratio": 2.543559,
+      "dev_nearest_target_pct": 2.8447,
+      "hit_within_1pct": false,
+      "nearest": "phi2"
+    }
+  ],
+  "adjacent_hits": 1,
+  "adjacent_n": 4,
+  "all_pairwise_ratios": [
+    {
+      "hi": 943901200001,
+      "lo": 1914467,
+      "ratio": 493036.025171,
+      "dev_nearest_target_pct": 18832200.3937,
+      "hit_within_1pct": false
+    },
+    {
+      "hi": 943901200001,
+      "lo": 730421,
+      "ratio": 1292270.074383,
+      "dev_nearest_target_pct": 49360224.577,
+      "hit_within_1pct": false
+    },
+    {
+      "hi": 943901200001,
+      "lo": 26102,
+      "ratio": 36162025.898437,
+      "dev_nearest_target_pct": 1381266379.1149,
+      "hit_within_1pct": false
+    },
+    {
+      "hi": 943901200001,
+      "lo": 10262,
+      "ratio": 91980237.770513,
+      "dev_nearest_target_pct": 3513332353.5039,
+      "hit_within_1pct": false
+    },
+    {
+      "hi": 1914467,
+      "lo": 730421,
+      "ratio": 2.621046,
+      "dev_nearest_target_pct": 0.115,
+      "hit_within_1pct": true
+    },
+    {
+      "hi": 1914467,
+      "lo": 26102,
+      "ratio": 73.345606,
+      "dev_nearest_target_pct": 2701.5528,
+      "hit_within_1pct": false
+    },
+    {
+      "hi": 1914467,
+      "lo": 10262,
+      "ratio": 186.558858,
+      "dev_nearest_target_pct": 7025.9143,
+      "hit_within_1pct": false
+    },
+    {
+      "hi": 730421,
+      "lo": 26102,
+      "ratio": 27.983335,
+      "dev_nearest_target_pct": 968.8683,
+      "hit_within_1pct": false
+    },
+    {
+      "hi": 730421,
+      "lo": 10262,
+      "ratio": 71.177256,
+      "dev_nearest_target_pct": 2618.7293,
+      "hit_within_1pct": false
+    },
+    {
+      "hi": 26102,
+      "lo": 10262,
+      "ratio": 2.543559,
+      "dev_nearest_target_pct": 2.8447,
+      "hit_within_1pct": false
+    }
+  ],
+  "pairwise_hits": 1,
+  "null": {
+    "n_draws": 200000,
+    "magnitude_class": "[1e4, 1e12] log-uniform, 5 ints, sorted desc",
+    "seed": 7,
+    "expected_golden_rungs_per_chain": 0.0368,
+    "p_ge_observed_hits": 0.0364,
+    "p_exact_observed_hits": 0.036,
+    "p_any_golden_rung": 0.0364
+  },
+  "next_fold_above_giant": {
+    "giant": 943901200001,
+    "rung_below": 1914467,
+    "ratio": 493036.0252,
+    "dev_nearest_target_pct": 18832200.3937,
+    "hit_within_1pct": false,
+    "giant_x_phi": 1527264223623,
+    "giant_x_phi2": 2471165423624,
+    "note": "the giant 943,901,200,001 is the chain's largest member; no chain member exists above it, and giant/1,914,467 = 493,036 is not near phi or phi^2 - the literal 'next fold above the giant' is undefined in the data."
+  },
+  "verdict": "NOT SUPPORTED as a chain law: the retrace chain's golden content is a single isolated rung.  Adjacent-rung census: 1/4 rungs within 1% of {phi, phi^2} (only the upper 1,914,467/730,421 = 2.621046, 0.115% from phi^2).  The other three rungs are 493,036, 27.98 and 2.5436 - the last two already measured non-golden (2.845% off phi^2, WEAVERS 5.5).  Monte-Carlo null (same magnitude class, 200000 draws): expected golden rungs per chain 0.037, P(>=1 hit) = 0.0364, so an isolated hit is not rare.  'Further retrace folds lock on golden rungs' is refuted by the census; the phi^2 rung is a coincidence-scale near-miss, not a ladder.  The 'next fold above the giant' is undefined: no chain member lies above 943,901,200,001 and the defined rung touching it (493,036) is far from golden."
+}

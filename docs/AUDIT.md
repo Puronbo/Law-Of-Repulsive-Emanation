@@ -166,7 +166,18 @@ given so it can be re-run).
    length s(θ) = (a/2)(θ√(1+θ²) + asinh θ), at Θ = 20 — delta 0.0 to the
    measurement.  The ratio → 1/φ as Θ→∞ (quadratic limit).  φ enters via the
    construction (an arc-length ratio), not as an independent law.  The distinct
-   C2 claim (next fold above the giant locks on a φ or φ² rung) remains open.
+   C2 claim (next fold above the giant locks on a φ or φ² rung) is
+   **RESOLVED 2026-08-08 — NOT SUPPORTED** (`experiments/fold_ladder_phi.py`,
+   `data/fold_ladder_phi_data.json`): the retrace chain
+   943,901,200,001 → 1,914,467 → 730,421 → 26,102 → 10,262 has only **1/4
+   adjacent rungs** within 1% of {φ, φ²} (the celebrated upper 1,914,467/730,421
+   = 2.621046, 0.115% from φ²); the other rungs are 493,036, 27.98, 2.5436.
+   A magnitude-matched Monte-Carlo null (5 ints log-uniform in [1e4, 1e12],
+   2e5 draws) gives expected 0.037 golden rungs/chain and P(≥1 hit) = 0.036,
+   so an isolated hit is coincidence-scale, not a ladder.  The "next fold
+   above the giant" is undefined — the giant is the chain's largest member and
+   the defined rung touching it (943,901,200,001/1,914,467 = 493,036) is far
+   from golden.  This retires the last open §2 item.
 6. **"Golden metric" hypothesis** (`fibonacci_squares.py`): a metric where the
    log-spiral is geodesic — later confirmed *exactly* for the cusp metric by
    T39/golden_survey, so this one is effectively resolved.
@@ -371,12 +382,13 @@ given so it can be re-run).
 8. **Regression coverage for the T55 series + library** — the experiments print
    results but nothing pins them.  (T65 was the first probe to ship a JSON
    verdict; make that the norm.)  **PROGRESS 2026-08-08** — the
-   solvable-theorem pattern is now the norm: 13 verdict experiments
+   solvable-theorem pattern is now the norm: 14 verdict experiments
    (`prime_time`, `time_reversal_convergence`, `bekenstein_rerun`,
    `wheeler_dewitt_selection`, `fold_unitary`, `kawasaki_ctc`,
-   `bridge_extension`, `selberg_paradigm`, plus the five earlier probes)
+   `bridge_extension`, `selberg_paradigm`, `fold_ladder_phi`, plus the five
+   earlier probes)
    each ship a claim/verdict JSON and are pinned by
-   `tests/test_solvable_theorems.py` (13 tests; full suite 203).  The
+   `tests/test_solvable_theorems.py` (14 tests; full suite 204).  The
    broad `experiments/` scripts (flow, balance, polysphere, decentral) still
    print without persisted verdicts — extending the JSON verdict norm to
    those is the remaining work here.

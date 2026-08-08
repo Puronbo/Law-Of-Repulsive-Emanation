@@ -489,7 +489,7 @@
     },
     "conjectures": {
       "C1": "low spectral radii r_k track ln of convention-scale integers; 12 is first/cleanest; test with n>30 modes",
-      "C2": "further retrace folds lock on phi or phi^2 rungs; fold is golden-geometric (extends T58 0.6138 ~ 1/phi)",
+      "C2": "further retrace folds lock on phi or phi^2 rungs; fold is golden-geometric (extends T58 0.6138 ~ 1/phi) - DECIDED 2026-08-08 NOT SUPPORTED: retrace chain is 1/4 golden rungs (data/fold_ladder_phi_data.json); the single phi^2 rung is coincidence-scale, not a ladder",
       "C3": "a mode exists near lambda=4.574 (from prime 7) below the current floor; lambda(31)=12.26 falls in gap [12.06,12.85]",
       "C4": "level statistics <r>=0.46 neither Poisson nor GOE; T19 needs more modes to be measured, not asserted"
     },

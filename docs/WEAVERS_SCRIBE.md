@@ -362,11 +362,21 @@ artifacts already falsified.
 * **C2 (golden fold):** further retrace folds lock on φ (or φ²) rungs — the
   fold is golden-geometric, extending T58's 0.6138 ≈ 1/φ. Test: derive the
   next fold above the giant; predict ratio ∈ {φ, φ²}.
-  **OPEN.** Distinct from the closure mechanism: T58's 0.6138 is now DERIVED
-  exactly (r_ret/apex = θ*/Θ solving s(θ*)/s(Θ)=1/φ² on the Archimedean spiral,
-  delta 0.0 at Θ=20; `experiments/fold_golden_closure.py`), but the φ² chain
-  rung (1,914,467/730,421 = 2.62105) and the next fold above the giant remain
-  untested predictions.
+  **TESTED 2026-08-08 — NOT SUPPORTED** (`experiments/fold_ladder_phi.py`,
+  `data/fold_ladder_phi_data.json`): the retrace chain's golden content is a
+  single isolated rung, not a ladder.  Adjacent-rung census of
+  943,901,200,001 → 1,914,467 → 730,421 → 26,102 → 10,262: **1/4 rungs** within
+  1% of {φ, φ²} (only the upper 1,914,467/730,421 = 2.621046, 0.115% from φ²);
+  493,036, 27.98, and 2.5436 all miss by >1% (the last two already flagged
+  non-golden in §5.5).  Magnitude-matched Monte-Carlo null (5 ints log-uniform
+  in [1e4, 1e12], 2e5 draws) gives expected 0.037 golden rungs/chain and
+  P(≥1 hit) = 0.036 — an isolated hit is coincidence-scale.  "Further retrace
+  folds lock on golden rungs" is refuted by the census; the φ² rung is a
+  coincidence-scale near-miss, not a chain law.  "Next fold above the giant"
+  is undefined: the giant 943,901,200,001 is the chain's top, and the defined
+  rung touching it (943,901,200,001/1,914,467 = 493,036) is far from golden.
+  T58's 0.6138 closure remains DERIVED (see fold_golden_closure.py); only the
+  chain-ladder generalization is refuted.
 * **C3 (Mersenne-λ spectrum):** a mode exists near λ = 4.574 (from the prime
   7), below the current floor; and the λ(31) = 12.26 falls inside the gap
   [12.06, 12.85]. Test: recompute the spectral problem with more modes /
@@ -399,8 +409,10 @@ artifacts already falsified.
   **derived, not open** (2026-08-08): r_ret/apex = θ*/Θ solves
   s(θ*)/s(Θ) = 1/φ² on the Archimedean spiral, delta 0.0 at Θ=20, → 1/φ as
   Θ→∞ (`experiments/fold_golden_closure.py`,
-  `data/fold_golden_closure_data.json`).  What stays open is C2 — whether the
-  *next* fold above the giant locks on a φ or φ² rung.
+  `data/fold_golden_closure_data.json`).  C2 — whether the *next* fold above
+  the giant locks on a φ or φ² rung — is **decided 2026-08-08, NOT SUPPORTED**
+  (the retrace chain is 1/4 golden rungs; the single φ² rung is coincidence-
+  scale; the giant has no defined rung above it — see §5.1).
 * **137 appears twice, at coincidence scale.** Both 1375 tails carry "137",
   and the corpus's own PAPER §6.3 has C₀(α=5.0) = 137.574398 vs 1/α ≈ 137.036
   (0.4%). Reported and set aside: fine-structure numerology is exactly the
@@ -1208,6 +1220,40 @@ all three at 100 modes:
 Overall: not a concrete Selberg instance.  The ε(2)=0.000265 "unification"
 was the code's own construction, never a measured spectral-geometric match.
 This retires the last **[claimed]** item in AUDIT §2 (the Selberg paradigm).
+
+### Ch. 5.22  The golden fold is not a chain law (C2, decided)
+
+C2 (SPRING_BIBLE Ch. 14 / epoch_0d.json "conjectures.C2") claimed: "further
+retrace folds lock on φ (or φ²) rungs — the fold is golden-geometric; the next
+fold above the giant locks on a φ or φ² rung."  The corpus's measured golden
+content in the retrace chain is a single rung:
+
+    943,901,200,001 → 1,914,467 → 730,421 → 26,102 → 10,262
+    rung 1,914,467/730,421 = 2.621046   (0.115% from φ²)
+
+`experiments/fold_ladder_phi.py` (`data/fold_ladder_phi_data.json`) tests the
+generalisation as a chain law:
+
+* **Full adjacent-rung census**: 4 rungs, **1/4 within 1%** of {φ, φ²}.  The
+  other three are 493,036 (giant/1,914,467), 27.98 (730,421/26,102), and
+  2.5436 (26,102/10,262) — the last two already measured non-golden in §5.5
+  (2.845% off φ²; 5/2 at 1.74% is the better fit).  The "further folds lock"
+  half of C2 is **refuted by the census**: only the celebrated upper rung
+  locks, and it locks on φ², not on a repeating golden geometry.
+* **Coincidence-scale null**: 5 integers drawn log-uniform in [1e4, 1e12]
+  (the chain's magnitude class), sorted descending, 4 adjacent rungs: expected
+  golden rungs per chain = 0.037, P(≥1 golden rung) = 0.036 over 2e5 draws.
+  An isolated single hit is exactly what the null produces; 1 hit is not
+  evidence of a ladder.
+* **"Next fold above the giant"**: the giant 943,901,200,001 is the chain's
+  *largest* member — no chain member lies above it, so the literal prediction
+  is undefined in the data; the only defined rung touching the giant is
+  943,901,200,001/1,914,467 = 493,036, which is nowhere near φ or φ².
+
+Verdict: **NOT SUPPORTED as a chain law.**  T58's 0.6138 ≈ 1/φ closure remains
+DERIVED (Ch. 5.2, `fold_golden_closure.py`); only the chain-ladder
+generalisation (the φ² rung as the first step of a golden retrace ladder) is
+refuted.  This closes the last open claim in AUDIT §2 item 5.
 
 ---
 

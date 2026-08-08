@@ -13,7 +13,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
-| Regression suite | **23/23 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
+| Regression suite | **24/24 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
 | L.O.R.E. | C0 = V(q0) = H(q0,0), 109 tests; T-symmetry error 0.003 |
 | Fold theorem (T63/T64) | crease = **unique viscosity solution of |r′| = a**; retrace = cut locus; eikonal err 3.3e-13; measured crease 0.0350π vs derived 0.0318π; area 2666.6665 vs 2666.6666… |
 | Clock-test canon (T59/T61) | law-ness 1.000 → 0.417 under calendar re-index → 1.000 under rotation; rotation overlap/sim 1.000 |
@@ -27,6 +27,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Kawasaki | mean deviation 0.49 from target 0 — **resolved 2026-08-08: sampling artifact** (point-cloud scatter; exact 2-line criterion |4α−2π| fails generically, 9.5% vs 8% uniform null); ReLU fold vertices are NOT flat-foldable |
 | Continuum-limit drift | **measured PASS 2026-08-08** — first-order convergence to zero (order 0.925–1.040); residual is the boundary r=0.99 projection floor (`data/continuum_limit_drift.json`) |
 | Golden-ratio closure (T58) | **derived 2026-08-08** — r_ret/apex = 0.6137690167 = θ*/Θ solving s(θ*)/s(Θ)=1/φ² on the Archimedean spiral (delta 0.0, → 1/φ as Θ→∞) (`data/fold_golden_closure_data.json`) |
+| Golden fold as chain law (C2) | **NOT SUPPORTED** — retrace chain 943,901,200,001 → … → 10,262 has **1/4 adjacent rungs** within 1% of {φ, φ²}; the φ² rung 1,914,467/730,421 (0.115%) is an isolated coincidence-scale hit (magnitude-matched null: expected 0.037 golden rungs/chain, P(≥1)=0.036); "next fold above the giant" undefined — giant is the chain's top (`data/fold_ladder_phi_data.json`) |
 | Spectral C1/C3/C4 (100 modes) | C1 partial (k=12: 0.53%, k=26: 0.96%); C3a not supported (no mode near λ(7)); C3b supported (12.2416 vs λ(31)=12.261, Δ=0.0197); C4 → Poisson ⟨r⟩=0.372 (GOE 0.536) (`data/spectral_extended_data.json`) |
 | Selberg paradigm (100 modes) | **not supported as a concrete instance**: GUE/Poisson now DECIDED → Poisson (⟨r⟩=0.374, GOE excluded at 5.6σ); eigenvalues ↔ Riemann zeros absent (min dist 7.10, 0/100 within 0.5); 186 Mersenne lengths show no spectral-form-factor peaks (`data/selberg_paradigm_data.json`) |
 | Prime-time §8.4 (PAPER) | C0 at prime-indexed states = **uniform energy conservation, nothing prime-special** (drift ratio prime vs all = 0.999); geodesic spectrum concentrated only in the first N≈50 states (μ=0.027 at N=50, not the claimed 0.065; diverges to μ=1.006 by N=214); recurrence claim **unmeasurable** — the frictionless flow escapes the bounded disk before any near-recurrence (`data/prime_time_data.json`) |
@@ -130,6 +131,7 @@ The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.j
 | Kawasaki null (`kawasaki_null.py`) | 0.4866 reproduced; shown to be point-cloud scatter, not flat-foldability failure |
 | PGT finite-L (`pgt_finite_l.py`) | growth form refuted (slope 0.002 vs 1.0); sieve ordering partial (r=0.696) |
 | Golden-ratio closure (`fold_golden_closure.py`) | 0.613769 derived exactly (s(θ*)/s(Θ)=1/φ², delta 0.0) |
+| Golden fold as chain law (`fold_ladder_phi.py`) | retrace chain is 1/4 golden rungs; the φ² rung is an isolated coincidence-scale hit (null: P(≥1)=0.036); NOT a ladder |
 
 ## Internet-Scale Flow (T67, T72)
 

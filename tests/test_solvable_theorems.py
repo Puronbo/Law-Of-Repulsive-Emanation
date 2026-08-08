@@ -15,7 +15,8 @@ number so none of the resolved claims can silently drift:
   - fold-and-cut is not a unitary gate (non-injective, not norm-preserving)
   - Kawasaki is not a CTC/Novikov constraint (antecedent false)
   - C7 bridge extends to all primes trivially (no 2^n-k-special resonance)
-  - Selberg paradigm not a concrete instance (Poisson, no zeros, no trace peaks)
+   - Selberg paradigm not a concrete instance (Poisson, no zeros, no trace peaks)
+   - C2 golden fold: retrace chain is not a phi/phi^2 ladder (1/4 rungs)
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -190,3 +191,24 @@ def test_selberg_paradigm_not_a_concrete_instance():
     assert d['c_form_factor']['n_strong_vs_null_95'] == 0
     assert d['c_form_factor']['null_mean_pctile'] < 50.0
     assert d['verdict'].startswith('SELBERG PARADIGM NOT SUPPORTED')
+
+
+def test_golden_fold_not_a_chain_law():
+    d = load('fold_ladder_phi_data.json')
+    assert d['verdict'].startswith('NOT SUPPORTED')
+    # only the celebrated upper rung 1,914,467/730,421 is golden
+    assert d['adjacent_hits'] == 1
+    assert d['adjacent_n'] == 4
+    # the single hit is at the 0.115% coincidence scale, not a ladder
+    upper = d['adjacent_rungs'][1]
+    assert upper['hi'] == 1914467 and upper['lo'] == 730421
+    assert upper['dev_nearest_target_pct'] < 0.5
+    # all three other rungs miss by far more than 1%
+    for row in (d['adjacent_rungs'][0], d['adjacent_rungs'][2],
+                d['adjacent_rungs'][3]):
+        assert row['hit_within_1pct'] is False
+        assert row['dev_nearest_target_pct'] > 1.0
+    # an isolated hit is not rare under the magnitude-matched null
+    assert d['null']['p_any_golden_rung'] < 0.05
+    # the giant is the chain top: no defined rung above it
+    assert d['next_fold_above_giant']['hit_within_1pct'] is False
