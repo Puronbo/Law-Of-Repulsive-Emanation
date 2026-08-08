@@ -13,7 +13,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
-| Regression suite | **17/17 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
+| Regression suite | **18/18 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
 | L.O.R.E. | C0 = V(q0) = H(q0,0), 109 tests; T-symmetry error 0.003 |
 | Fold theorem (T63/T64) | crease = **unique viscosity solution of |r′| = a**; retrace = cut locus; eikonal err 3.3e-13; measured crease 0.0350π vs derived 0.0318π; area 2666.6665 vs 2666.6666… |
 | Clock-test canon (T59/T61) | law-ness 1.000 → 0.417 under calendar re-index → 1.000 under rotation; rotation overlap/sim 1.000 |
@@ -29,6 +29,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Spectral C1/C3/C4 (100 modes) | C1 partial (k=12: 0.53%, k=26: 0.96%); C3a not supported (no mode near λ(7)); C3b supported (12.2416 vs λ(31)=12.261, Δ=0.0197); C4 → Poisson ⟨r⟩=0.372 (GOE 0.536) |
 | Prime-time §8.4 (PAPER) | C0 at prime-indexed states = **uniform energy conservation, nothing prime-special** (drift ratio prime vs all = 0.999); geodesic spectrum concentrated only in the first N≈50 states (μ=0.027 at N=50, not the claimed 0.065; diverges to μ=1.006 by N=214); recurrence claim **unmeasurable** — the frictionless flow escapes the bounded disk before any near-recurrence |
 | T-symmetry dt-convergence | reversal error superconverges **~O(dt^6.9)** near the symmetric crossing (8.9e-3 → 5.9e-7 over dt 5e-4→1.25e-4); PAPER's 0.003 is a dt-dependent integrator bound, not a physical symmetry claim |
+| Bekenstein shift (n=100 re-run) | the withdrawn +3.9% prime shift is **finally settled**: significant at power (+3.39%, p≈0) but **positional, not primality** — index-matched control on the same trajectories erases it (+0.14%, p=0.34); the null is causal, not underpowered |
 
 **Honest walls (recorded, not hidden):** Bekenstein shift **withdrawn** (its own persisted data shows the null: p=0.789/0.938); Selberg unification and partition-function match are **tautologies** by the code's own construction; T65 four-pack scored **0.5/4** (P2, P4 refuted); PUM cosmological mapping is not citable as verified physics (`docs/AUDIT.md` §3–§4).
 

@@ -10,6 +10,7 @@ number so none of the resolved claims can silently drift:
   - golden-ratio closure derived exactly (s(theta*)/s(TH) = 1/phi^2)
   - prime-time PAPER §8.4: uniform conservation; spectrum transient; recurrence unmeasurable
   - T-symmetry reversal error as a dt-dependent numerical bound
+  - Bekenstein shift settled at n=100: significant raw, erased by index-matching
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -105,3 +106,18 @@ def test_time_reversal_convergence_bound():
     assert rows[0.000125]['ts_error'] < 1e-4        # 5.9e-7
     assert d['superconvergent'] is True
     assert d['verdict'].startswith('the coarsest dt escapes')
+
+
+def test_bekenstein_rerun_settled():
+    d = load('bekenstein_rerun_data.json')
+    fc, fm = d['frictionless_control'], d['frictionless_matched']
+    # raw frictionless shift IS significant at n=100 (the old n=30 was underpowered)
+    assert fc['n_trajectories'] >= 60
+    assert fc['p_value_paired_t'] < 0.01
+    assert fc['mean_diff'] > 0
+    # but the index-matched control on the same trajectories erases it
+    assert fm['p_value_paired_t'] > 0.05
+    assert fm['bootstrap_95_ci'][0] < 0 < fm['bootstrap_95_ci'][1]
+    assert abs(fm['mean_diff']) < 0.1 * fc['mean_diff']
+    assert 'NOT REPRODUCED' in d['verdict']
+    assert 'artifact' in d['verdict']

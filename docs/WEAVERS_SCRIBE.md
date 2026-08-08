@@ -1073,6 +1073,36 @@ short-transient artifact.
 
 ---
 
+### Ch. 5.16  Bekenstein shift, settled at power (PAPER §8.7, measured)
+
+The PAPER's once-claimed "+3.9% prime Bekenstein shift (p=0.002)" was
+withdrawn 2026-08-04 because its own 30-trajectory data showed p=0.789.
+The open question was whether that null was real or just underpowered.
+Pre-registered re-run at n=100 (`experiments/bekenstein_rerun.py`,
+`data/bekenstein_rerun_data.json`):
+
+* **Raw frictionless comparison — the shift exists at power.** At n=100 the
+  prime-subset saturation exceeds the non-prime by +3.39% (paired t p≈0,
+  sign p≈0, 95% CI [0.0032, 0.0055]).  The old n=30 run was underpowered; it
+  could not have detected this.
+* **Index-matched control on the SAME trajectories — the shift is
+  positional.** Pairing each prime index with the nearest non-prime index
+  (position/energy control) erases it: matched diff +0.14% (p=0.34, CI ∋ 0).
+  Prime indices cluster at the start of the index range, which is early in
+  the trajectory — so the raw comparison is a *position* difference, not a
+  primality difference.
+* **Conclusion:** the withdrawn +3.9% is not revived.  The null is now
+  causal rather than merely underpowered: the effect vanishes under position
+  matching on the exact same frictionless trajectories.  (Honest residual:
+  the matched sign test stays nominally significant, p=1e-4, after a ~2400×
+  magnitude collapse with paired-t p=0.34 — an order of magnitude below the
+  withdrawn claim and not robust across tests.)
+
+The pattern repeats: what survives is a density effect of *where prime
+indices sit in the index range*, never an arithmetic effect of primality.
+
+---
+
 ## Ch. 6  Creases (never forget these)
 
 1. **The pattern is scale-dependent.** τ-equality under MM/DD swap oscillates

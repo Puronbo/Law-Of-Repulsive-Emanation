@@ -228,6 +228,17 @@ given so it can be re-run).
   that its own 30-trajectory persisted data refuted; the PAPER now reports the
   null.  A fresh, higher-power pre-registered run remains the only way to know
   whether the effect exists at all.
+  **RESOLVED 2026-08-08** (`experiments/bekenstein_rerun.py`,
+  `data/bekenstein_rerun_data.json`, n=100, alpha=0.01, pre-registered): the
+  raw frictionless shift IS significant at higher power (+3.39%, paired t
+  p≈0, sign p≈0, 95% CI [0.0032, 0.0055]) — the old n=30 run was simply
+  underpowered — but the **index-matched control on the same trajectories
+  erases it** (matched diff +0.00018, p=0.34, CI includes 0).  The +3.9% is
+  a position/index-density artifact (primes cluster at early indices), not a
+  primality effect; it is **not** revived.  Residual note: the matched sign
+  test stays nominally significant (p=1e-4) after a ~2400× magnitude
+  collapse with paired-t p=0.34 and CI ∋ 0 — if anything, an order of
+  magnitude below the withdrawn claim and not robust across tests.
 
 ---
 
@@ -242,7 +253,7 @@ given so it can be re-run).
 | **Kawasaki flat-foldability of ReLU vertices** (2026-08-08) | the 0.4866 "genuine open" deviation is a point-cloud sampling artifact; ReLU fold vertices are NOT flat-foldable | **Refuted as a near-miss, attributed to sampling** (mean |4α−2π|=3.21, 9.5% within ε=0.5 ≈ uniform null; control 0.835/52.0% vs corpus 0.4866/72.4%). `data/kawasaki_null_data.json` |
 | **Clock-test canon** (T59/T61) | laws live in invariants, not conventions | Measured 1.000→0.417→1.000 |
 | **Anomaly doctrine** (T55j) | novelty works; impersonation partial; observation bank required | Measured, incomplete by its own verdict |
-| **Arithmetic Bekenstein shift** (PAPER) | η_prime=0.1336 vs η_random=0.1285, Δη +3.9%, p=0.002 | **REFUTED by the persisted data file, and withdrawn from the PAPER (2026-08-04).** `data/bekenstein_shift_data.json` (30 trajectories) shows no systematic difference: control p=0.789 (+2.5%), dissipative p=0.938 (−0.1%); the file's own interpretation is "no systematic difference"; the claimed numbers 0.1336/0.1285/p=0.002 appeared nowhere in it. PAPER §8.7 + conclusion now report the null. A fresh n≥60 run could claim the effect again. |
+| **Arithmetic Bekenstein shift** (PAPER) | η_prime=0.1336 vs η_random=0.1285, Δη +3.9%, p=0.002 | **REFUTED by the persisted data file, and withdrawn from the PAPER (2026-08-04).** `data/bekenstein_shift_data.json` (30 trajectories) shows no systematic difference: control p=0.789 (+2.5%), dissipative p=0.938 (−0.1%); the file's own interpretation is "no systematic difference"; the claimed numbers 0.1336/0.1285/p=0.002 appeared nowhere in it. PAPER §8.7 + conclusion now report the null. **n=100 pre-registered re-run (2026-08-08, `data/bekenstein_rerun_data.json`) settles it:** the raw frictionless shift becomes significant at power (+3.39%, p≈0) but an index-matched control on the same trajectories erases it (+0.14%, p=0.34), i.e. the effect is positional (prime indices cluster early), not primality. The claim stays dead; the null is now causal, not just underpowered. |
 | **Selberg unification** (PAPER) | 30 eigenvalues ↔ 196 Mersenne geodesics, ε(2)=0.000265 | ε(2)=0.000265 is real **but it is algebra**: `L_total = L_traj + Σ L_k` is the code's own construction (`L(s)=C₀·ζ(s)` is flagged tautological in the code). Spectral-vs-zeros match is poor (code: min |t_n − t_zeta| ~ 2.5–9.0 "not a match by any standard"). |
 | **Partition function match** (PAPER) | L(2)=40.14 vs C₀·π²/6=40.19 (<0.2%) | **Tautology.** C₀·π²/6 = 40.1936 holds for *any* C₀; the code flags `L(s)=C0*zeta(s)` as a tautology "for ANY constant C0." A match by construction is not a test. |
 | **Thermodynamics/entropy** | ln-thinning ↔ entropy; second law as folding | Analogical, not falsifiable as stated |

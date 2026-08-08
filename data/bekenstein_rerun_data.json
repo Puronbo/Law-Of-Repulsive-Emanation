@@ -1,0 +1,71 @@
+{
+ "claim": "PAPER withdrawn claim: +3.9% prime Bekenstein shift at p=0.002; AUDIT open experiment = pre-registered n>=60 re-run",
+ "design": {
+  "n_trajectories": 100,
+  "steps": 500,
+  "alpha": 0.01,
+  "control": "frictionless, constant energy, same-trajectory prime vs non-prime subsets",
+  "dissipative": "position-matched (nearest-index) prime vs non-prime",
+  "frictionless_matched": "SAME frictionless trajectories, index-matched (nearest non-prime to each prime) -- decisive position control",
+  "seed": 20260808,
+  "verdict_rule": "effect claimed only if frictionless paired t p<0.01 AND sign-test p<0.01 AND bootstrap CI excludes 0 AND the frictionless-matched control does NOT erase the shift (i.e. position, not primality)"
+ },
+ "previous": {
+  "withdrawn_paper_claim": {
+   "percent_diff": 3.9,
+   "p_value": 0.002
+  },
+  "original_30_traj": {
+   "frictionless_p": 0.788871696939635,
+   "dissipative_p": 0.9383912432509637,
+   "source": "data/bekenstein_shift_data.json"
+  }
+ },
+ "frictionless_control": {
+  "n_trajectories": 100,
+  "n_differences": 100,
+  "mean_diff": 0.00440634401537194,
+  "percent_diff": 3.387972748545737,
+  "t_statistic": 7.542578871829631,
+  "p_value_paired_t": 2.2599290607388063e-11,
+  "fraction_positive": 0.76,
+  "p_value_sign_test": 1.8100026213029253e-07,
+  "bootstrap_95_ci": [
+   0.003242475082310513,
+   0.005530104115549168
+  ],
+  "sd": 0.005841959481297512
+ },
+ "dissipative_matched": {
+  "n_trajectories": 100,
+  "n_differences": 100,
+  "mean_diff": -4.9412645728589415e-05,
+  "percent_diff": -0.03610208049877773,
+  "t_statistic": -0.7926291758221147,
+  "p_value_paired_t": 0.4298892715510339,
+  "fraction_positive": 0.33,
+  "p_value_sign_test": 0.0008737198369123724,
+  "bootstrap_95_ci": [
+   -0.00016350327866068468,
+   7.943523924254926e-05
+  ],
+  "sd": 0.0006234018029596076
+ },
+ "frictionless_matched": {
+  "n_trajectories": 100,
+  "n_differences": 100,
+  "mean_diff": 0.00018106598744179226,
+  "percent_diff": 0.14476555787844178,
+  "t_statistic": 0.9550585252519468,
+  "p_value_paired_t": 0.34187437342163646,
+  "fraction_positive": 0.3,
+  "p_value_sign_test": 7.85013964559367e-05,
+  "bootstrap_95_ci": [
+   -0.0001524743761623141,
+   0.000579534269287612
+  ],
+  "sd": 0.001895862741961563
+ },
+ "verdict": "PRIME SHIFT NOT REPRODUCED as a primality effect at n=100: raw frictionless +3.3880% (p=0.000) is significant, but the raw frictionless shift is a position/index-density artifact (primes cluster at early indices): index-matched groups on the same trajectories show matched diff 0.00018 vs raw 0.00441.",
+ "note": "The frictionless index-matched sign test remains significant (p=0.0001) despite a ~2433.6x magnitude collapse (mean 0.00018 vs raw 0.00441) and a paired-t p=0.342 with 95% CI including 0; the residual, if any, is an order of magnitude below the withdrawn 3.9% claim and is not robust across tests."
+}

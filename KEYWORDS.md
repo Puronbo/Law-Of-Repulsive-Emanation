@@ -17,7 +17,7 @@ Usage: `grep -i "basketball" KEYWORDS.md` or just search this file.
 - **Automorphic forms / modular forms / L-functions / SL(2,Z)** — `docs/PAPER.md`, `Universals/modular_forms.py`, `Universals/mersenne_taxonomy.py`
 - **Balance / self-balancing dynamics** — `puno_flow/engine.py`, `experiments/balance_auto.py`, `balance_continual.py`, `balance_scale.py`, `balance_survey.py`, `self_balancing.py`
 - **Basketball / streaks / hot-hand fallacy** — `docs/papers/hot_hand_fallacy_reversal.pdf`
-- **Bekenstein bound / holographic entropy / saturation** — `docs/PAPER.md`, `data/bekenstein_shift_data.json` (claim withdrawn; see `docs/AUDIT.md`)
+- **Bekenstein bound / holographic entropy / saturation** — `docs/PAPER.md`, `data/bekenstein_shift_data.json` (claim withdrawn; see `docs/AUDIT.md`), `experiments/bekenstein_rerun.py`, `data/bekenstein_rerun_data.json` (n=100: raw shift significant but positional — index-matched control erases it)
 - **Black-Scholes / options / finance / stock splits** — `docs/papers/info_theory_compression_finance_invariance.tex` (+ `.pdf`)
 - **Brownian motion / random walks / diffusive scaling** — `docs/papers/physics_applied_math_invariance.tex` (+ `.pdf`)
 - **Buckingham Pi theorem / dimensional analysis / units** — `docs/papers/physics_applied_math_invariance.tex` (+ `.pdf`)
@@ -149,7 +149,7 @@ Usage: `grep -i "basketball" KEYWORDS.md` or just search this file.
 - Spectral / Hamiltonian / thermo → `data/spectral_data.json`, `data/hamiltonian_data.json`, `data/thermo_data.json`
 - Experiments (exp1/2/3, OOD, pruning) → `data/exp*_results.json`, `data/exp_ood_results.json`
 - DecentralNet / Decentral Bank → `data/decentral_net*.json`, `data/decentral_bank*.json`
-- Bekenstein (withdrawn) → `data/bekenstein_shift_data.json`
+- Bekenstein (withdrawn, then settled) → `data/bekenstein_shift_data.json`, `data/bekenstein_rerun_data.json`
 
 ## Code map
 
