@@ -13,7 +13,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
-| Regression suite | **24/24 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
+| Regression suite | **25/25 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
 | L.O.R.E. | C0 = V(q0) = H(q0,0), 109 tests; T-symmetry error 0.003 |
 | Fold theorem (T63/T64) | crease = **unique viscosity solution of |r′| = a**; retrace = cut locus; eikonal err 3.3e-13; measured crease 0.0350π vs derived 0.0318π; area 2666.6665 vs 2666.6666… |
 | Clock-test canon (T59/T61) | law-ness 1.000 → 0.417 under calendar re-index → 1.000 under rotation; rotation overlap/sim 1.000 |
@@ -132,6 +132,7 @@ The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.j
 | PGT finite-L (`pgt_finite_l.py`) | growth form refuted (slope 0.002 vs 1.0); sieve ordering partial (r=0.696) |
 | Golden-ratio closure (`fold_golden_closure.py`) | 0.613769 derived exactly (s(θ*)/s(Θ)=1/φ², delta 0.0) |
 | Golden fold as chain law (`fold_ladder_phi.py`) | retrace chain is 1/4 golden rungs; the φ² rung is an isolated coincidence-scale hit (null: P(≥1)=0.036); NOT a ladder |
+| Hierarchical C0 flow (`flow_hierarchical.py`) | 2-level C0 anchors match flat 30-anchor routing (router 0.910 vs 0.880) with 6 comparisons/level instead of 30; NC parity 0.997 |
 
 ## Internet-Scale Flow (T67, T72)
 
@@ -177,6 +178,8 @@ python math_validation.py   # 192 checks, 0 fails
 cd .. && python run_all.py  # Full pipeline
 pytest tests/test_spring_series.py   # 10 passed
 python experiments/prime_count_from_scratch.py   # pi(943901200001) = 35575526191
+python experiments/fold_ladder_phi.py             # C2 verdict (NOT a golden ladder)
+python experiments/flow_hierarchical.py           # hierarchical C0 flow verdict (SUPPORTED)
 python Universals/serve_dashboard.py   # L.O.R.E. dashboard -> http://localhost:8080/docs/
 ```
 

@@ -342,6 +342,9 @@ given so it can be re-run).
 
 1. **Fix the five verified inconsistencies** (PAPER 88/109 + E₀, pkl size, README
    paths) — minutes, removes noise from every future reading.
+   **DONE 2026-08-01** — all five resolved (§1.7 table): test count unified on
+   109, E₀ = 5.84 confirmed correct, pkl size 3.17 GB, `run_all.py` path bug
+   fixed, validation re-count 192 PASS / 0 FAIL.
 2. **Execute the four PUM testable predictions** as a T65 four-pack (quick,
    local, closes §2.4) — the cheapest way to convert "conjectures" into
    measured facts, matching the project's own doctrine. **DONE 2026-08-02 —
@@ -357,6 +360,16 @@ given so it can be re-run).
    again.**
 4. **Scrub `scripts/` credentials** (and either delete or quarantine the orphan)
    before the repo is shared.
+   **DONE 2026-08-08** — a repo-wide scan of tracked files found **no secret
+   patterns** (no JWTs, API keys, AWS keys, private keys, or passwords in any
+   tracked `.py/.json/.yaml/.ps1/.md`).  The one live credential found was
+   `scripts/cert.pem` (an Argo tunnel token) — it was **untracked and
+   gitignored** (never in git history), and has been **quarantined** to
+   `%TEMP%\opencode\cert.pem.quarantined`.  `scripts/start.ps1` holds only
+   literal `<REDACTED>` placeholders.  The remaining `scripts/*` orphans
+   (canary.py, controller.py, gossip.py, node.py, telemetry.py, etc.) are
+   untracked and gitignored; the four tracked scripts (deep_sieve,
+   genesis_prime, next_k3_sieve, googol_census) are clean.
 5. **Observation bank (T66)** — the declared-required capability; the one gap
    with genuine new science.  Needs an external data source (ASN/TLS/WHOIS) —
    network-bound.
@@ -379,17 +392,23 @@ given so it can be re-run).
    live daemon's geometry) flows 10⁵+ on one box.
 7. **Either execute or retire MIGRATION** — currently a dead-but-authoritative
    doc; mark superseded to stop future confusion.
+   **DONE 2026-08-08** — both `docs/MIGRATION.md` and `docs/MIGRATION_1.md`
+   already carry STATUS: SUPERSEDED banners (v2 engine never migrated; live
+   work is `Universals/engine.py` v1), and no tracked doc cites either as
+   authoritative (the only reference is this AUDIT entry).  Retired.
 8. **Regression coverage for the T55 series + library** — the experiments print
    results but nothing pins them.  (T65 was the first probe to ship a JSON
    verdict; make that the norm.)  **PROGRESS 2026-08-08** — the
-   solvable-theorem pattern is now the norm: 14 verdict experiments
+   solvable-theorem pattern is now the norm: 15 verdict experiments
    (`prime_time`, `time_reversal_convergence`, `bekenstein_rerun`,
    `wheeler_dewitt_selection`, `fold_unitary`, `kawasaki_ctc`,
-   `bridge_extension`, `selberg_paradigm`, `fold_ladder_phi`, plus the five
+   `bridge_extension`, `selberg_paradigm`, `fold_ladder_phi`,
+   `flow_hierarchical`, plus the five
    earlier probes)
    each ship a claim/verdict JSON and are pinned by
-   `tests/test_solvable_theorems.py` (14 tests; full suite 204).  The
-   broad `experiments/` scripts (flow, balance, polysphere, decentral) still
+   `tests/test_solvable_theorems.py` (15 tests; full suite 205).  The
+   broad `experiments/` scripts (remaining flow, balance, polysphere,
+   decentral) still
    print without persisted verdicts — extending the JSON verdict norm to
    those is the remaining work here.
 
@@ -462,7 +481,10 @@ the persisted data always showed (the claimed +3.9% p=0.002 is withdrawn; a
 fresh pre-registered n≥60 run would be required to claim the effect again);
 **(4)**
 hygiene items (orphaned `scripts/` with live credentials, dead doc copies,
-MIGRATION superseded-but-present); **(5)** the network is real mutual-TLS
+MIGRATION superseded-but-present) — **partial 2026-08-08: the live credential
+is gone** (`scripts/cert.pem` Argo token quarantined; tracked files scanned
+clean — see §5 item 4) and **MIGRATION is retired** (both docs carry SUPERSEDED
+banners, no doc cites them — see §5 item 7); dead doc copies remain; **(5)** the network is real mutual-TLS
 over the machine's LAN NIC (T20) but still one machine — no true two-host
 transport, one shared
 test identity (no per-node PKI), consensus is majority-honesty not BFT, an

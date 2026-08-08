@@ -58,7 +58,7 @@ Usage: `grep -i "basketball" KEYWORDS.md` or just search this file.
 - **Googol census / 2^n−k primes / k-families** — `README.md`, `data/googol_census*.json`, `data/googol_census*.md`, `scripts/googol_census.py`
 - **Ground state / quantum / eigenvalues / Laplace–Beltrami / Weyl law** — `docs/PAPER.md`, `Universals/spectral_analysis.py`, `thermodynamics.py`, `spectral_extended.py`, `data/spectral_data.json`, `data/spectral_extended_data.json`
 - **Hamiltonian flow / symplectic / leapfrog / Poincare disk** — `docs/PAPER.md`, `Universals/hamiltonian_flow.py`, `Universals/manifold/poincare.py`, `data/hamiltonian_data.json`
-- **Hierarchical flow / hierarchy / clustering** — `experiments/flow_hierarchical.py`, `flow_hier_incremental.py`, `flow_hier_reg*.py`
+- **Hierarchical flow / hierarchy / clustering** — `experiments/flow_hierarchical.py`, `flow_hier_incremental.py`, `flow_hier_reg*.py`, `data/flow_hierarchical_data.json` (SUPPORTED: 2-level C0 flow matches flat 30-anchor routing with 6 comparisons/level instead of 30)
 - **Hot hand / basketball / streaks** — `docs/papers/hot_hand_fallacy_reversal.pdf`
 - **Hyperbolic geometry / Poincare disk / upper half-plane / geodesics** — `Universals/manifold/poincare.py`, `docs/PAPER.md`, `docs/MIGRATION*.md`
 - **Impersonation / attack / adversarial** — `docs/AUDIT.md`, `experiments/decentral_net_anomaly.py`
@@ -145,7 +145,7 @@ Usage: `grep -i "basketball" KEYWORDS.md` or just search this file.
 - Epoch 0d corpus → `data/epoch_0d.json`, `data/epoch_0d_datescan.json`
 - Clock / rotation tests → `data/clock_test_data.json`, `data/rotation_test_data.json`
 - Spring fold / eikonal / retrace → `data/spring_fold_data.json`, `data/eikonal_fold_data.json`, `data/retrace_boundary_data.json`
-- Solvable-theorem verdicts (2026-08-08) → `data/continuum_limit_drift.json`, `data/spectral_extended_data.json`, `data/kawasaki_null_data.json`, `data/pgt_finite_l_data.json`, `data/fold_golden_closure_data.json`, `data/prime_time_data.json`, `data/time_reversal_convergence_data.json`, `data/bekenstein_rerun_data.json`, `data/wheeler_dewitt_selection_data.json`, `data/fold_unitary_data.json`, `data/kawasaki_ctc_data.json`, `data/bridge_extension_data.json`, `data/selberg_paradigm_data.json`, `data/fold_ladder_phi_data.json`
+- Solvable-theorem verdicts (2026-08-08) → `data/continuum_limit_drift.json`, `data/spectral_extended_data.json`, `data/kawasaki_null_data.json`, `data/pgt_finite_l_data.json`, `data/fold_golden_closure_data.json`, `data/prime_time_data.json`, `data/time_reversal_convergence_data.json`, `data/bekenstein_rerun_data.json`, `data/wheeler_dewitt_selection_data.json`, `data/fold_unitary_data.json`, `data/kawasaki_ctc_data.json`, `data/bridge_extension_data.json`, `data/selberg_paradigm_data.json`, `data/fold_ladder_phi_data.json`, `data/flow_hierarchical_data.json`
 - Spectral / Hamiltonian / thermo → `data/spectral_data.json`, `data/hamiltonian_data.json`, `data/thermo_data.json`
 - Experiments (exp1/2/3, OOD, pruning) → `data/exp*_results.json`, `data/exp_ood_results.json`
 - DecentralNet / Decentral Bank → `data/decentral_net*.json`, `data/decentral_bank*.json`
@@ -158,6 +158,6 @@ Usage: `grep -i "basketball" KEYWORDS.md` or just search this file.
 - Ledger / hash chains → `puno_flow/ledger.py`
 - Scale-free topology → `puno_flow/topology.py`
 - Hyperbolic manifold → `Universals/manifold/`
-- Solvable-theorem experiments → `experiments/continuum_limit.py`, `experiments/spectral_extended.py`, `experiments/kawasaki_null.py`, `experiments/pgt_finite_l.py`, `experiments/fold_golden_closure.py`, `experiments/prime_time.py`, `experiments/time_reversal_convergence.py`, `experiments/bekenstein_rerun.py`, `experiments/wheeler_dewitt_selection.py`, `experiments/fold_unitary.py`, `experiments/kawasaki_ctc.py`, `experiments/bridge_extension.py`, `experiments/selberg_paradigm.py`, `experiments/fold_ladder_phi.py`
+- Solvable-theorem experiments → `experiments/continuum_limit.py`, `experiments/spectral_extended.py`, `experiments/kawasaki_null.py`, `experiments/pgt_finite_l.py`, `experiments/fold_golden_closure.py`, `experiments/prime_time.py`, `experiments/time_reversal_convergence.py`, `experiments/bekenstein_rerun.py`, `experiments/wheeler_dewitt_selection.py`, `experiments/fold_unitary.py`, `experiments/kawasaki_ctc.py`, `experiments/bridge_extension.py`, `experiments/selberg_paradigm.py`, `experiments/fold_ladder_phi.py`, `experiments/flow_hierarchical.py`
 - Proofs / validation → `Universals/proofs.py`, `math_validation.py`
 - Patents → `patents/PUNO-PPA-001_spatial_indexed_flow.md` (+ 002, 003)

@@ -219,6 +219,7 @@ For each claim: **Status** (measured/derived), **the claim**, **evidence**
 | PGT growth form (π_k ~ ε_k·e^L/L) | **Refuted at finite L** | 2026-08-08: slope of log π_k vs L is 0.002 vs predicted 1.0; π_k ~ ln L (one candidate per n); ε_k·e^L/L overpredicts by ~95 orders at L=200. Sieve ordering only partial (Pearson 0.696). `experiments/pgt_finite_l.py`, `data/pgt_finite_l_data.json` |
 | Continuum limit drift | **Anticipated → measured PASS** | 2026-08-08: first-order convergence to zero on interior trajectories (order 0.925–1.040, r²=0.9991); boundary r=0.99 projection clip sets a non-conservative floor. `experiments/continuum_limit.py`, `data/continuum_limit_drift.json` |
 | Spectral C1/C3/C4 (WEAVERS Ch. 5.1) | **Tested 2026-08-08** | C1 partial (k=12 0.53%, k=26 0.96%; k=10/2000 miss); C3a not supported (no mode near λ(7)); C3b supported (mode 12.2416 vs λ(31)=12.261, Δ=0.0197); C4 → Poisson (⟨r⟩=0.372 vs GOE 0.536) — T19 "consistent chaos" refuted at level-spacing level. `experiments/spectral_extended.py`, `data/spectral_extended_data.json` |
+| Hierarchical C0 flow (coarse × fine anchors) | **Supported 2026-08-08** | 2-level C0 flow matches flat 30-anchor routing (router 0.910 vs 0.880, gain +0.030) while needing only 6 comparisons per routing level instead of 30; nearest-centroid parity (0.997 vs 1.000); fine local separation 0.12 enforced that flat packing cannot guarantee. `experiments/flow_hierarchical.py`, `data/flow_hierarchical_data.json` |
 
 ---
 
@@ -237,6 +238,7 @@ python experiments/kawasaki_null.py                    # Kawasaki artifact attri
 python experiments/pgt_finite_l.py                     # PGT finite-L refutation
 python experiments/fold_golden_closure.py              # 0.613769 derived exactly
 python experiments/fold_ladder_phi.py                   # C2: retrace chain is 1/4 golden rungs
+python experiments/flow_hierarchical.py                 # hierarchical C0 flow verdict (SUPPORTED)
 ```
 
 ---
@@ -244,7 +246,7 @@ python experiments/fold_ladder_phi.py                   # C2: retrace chain is 1
 ## 6. Bottom Line
 
 The corpus is a **measured** body of work: 126 commits, 51 experiments, 192
-passing validation checks, 10 passing regression tests, 109 L.O.R.E. tests,
+passing validation checks, 15 passing solvable-theorem regression tests, 109 L.O.R.E. tests,
 186 googol primes, a from-scratch prime count verified exact, a Decentral Bank
 brought to mutual-TLS over a real LAN NIC, and the 1.9M-site internet flowed
 with a proven-exact O(1) spatial index. Its strongest novelty is **derived**

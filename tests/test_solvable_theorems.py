@@ -17,6 +17,7 @@ number so none of the resolved claims can silently drift:
   - C7 bridge extends to all primes trivially (no 2^n-k-special resonance)
    - Selberg paradigm not a concrete instance (Poisson, no zeros, no trace peaks)
    - C2 golden fold: retrace chain is not a phi/phi^2 ladder (1/4 rungs)
+   - hierarchical C0 flow: SUPPORTED (NC parity with flat flow, router gain, 6 not 30 comps)
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -212,3 +213,17 @@ def test_golden_fold_not_a_chain_law():
     assert d['null']['p_any_golden_rung'] < 0.05
     # the giant is the chain top: no defined rung above it
     assert d['next_fold_above_giant']['hit_within_1pct'] is False
+
+
+def test_hierarchical_c0_flow_supported():
+    d = load('flow_hierarchical_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    r = d['results']
+    # hierarchical routing beats flat C0 flow routing
+    assert r['hierarchical']['router'] > r['flat_c0_flow']['router']
+    # and costs far fewer comparisons per level than flat (30)
+    assert r['comparisons_per_level'] == 6
+    assert r['comparisons_per_level'] < r['flat_comparisons'] / 4
+    # nearest-centroid accuracy stays high (~parity with flat)
+    assert r['hierarchical']['nc'] > 0.95
+    assert abs(r['hierarchical']['nc'] - r['flat_c0_flow']['nc']) < 0.05
