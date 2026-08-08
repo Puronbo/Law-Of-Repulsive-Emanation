@@ -13,12 +13,13 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
-| Regression suite | **21/21 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
+| Regression suite | **22/22 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
 | L.O.R.E. | C0 = V(q0) = H(q0,0), 109 tests; T-symmetry error 0.003 |
 | Fold theorem (T63/T64) | crease = **unique viscosity solution of |r′| = a**; retrace = cut locus; eikonal err 3.3e-13; measured crease 0.0350π vs derived 0.0318π; area 2666.6665 vs 2666.6666… |
 | Clock-test canon (T59/T61) | law-ness 1.000 → 0.417 under calendar re-index → 1.000 under rotation; rotation overlap/sim 1.000 |
 | Prime count (T62) | **π(943,901,200,001) = 35,575,526,191** from scratch (Lucy-Hedgehog + segmented sieve); 943,901,200,001 is prime |
 | Googol census (C7) | 186 primes 2ⁿ−k < 10¹⁰⁰ across 15 k-families (k=3: 21, k=1: 12, k=5: 19); n_max = 332 |
+| Bridge beyond 2ⁿ−k | **RESOLVED 2026-08-08**: extends trivially (every prime p = 2ⁿ−k uniquely); near-integer resonance 2.44% over 5.76M primes vs 2.26% matched random-integer bridge (z=19.5) and 2% uniform null — bridge arithmetic + small prime residue bias, **not** special 2ⁿ−k content; census 6/186 itself not significant (p=0.17) |
 | T67 O(1) spatial search | indexed flow **bit-identical** to all-pairs; 2D exponent 1.02 vs exact 1.88; n=100k flows at ~5 s/step (all-pairs D = 160 GB); 10k×128-D real domains ~2 s/step (D = 102 GB) |
 | T72 whole-internet flow | 1,914,915 sites flowed: **277,218 ms/step**, all-pairs D = 58,670 GB; 20% kill (382,983) then heal +7.8% spacing recovery |
 | Decentral Bank (T68–T71, T16–T20) | double-entry ledger conserved exactly over 3000 txs; nonce replay rejected; quorum = majority honesty (not BFT), catches every faulty send < 40% corruption; anomaly recall 0.51 / precision 0.63 vs null 0.019; Ed25519 sigs verified; WAL bit-identical save/load; 14/14 commit over real TCP sockets; mutual TLS; LAN NIC 192.168.100.241 |
@@ -81,7 +82,17 @@ The C7 bridge embeds Mersenne-gap primes into the Anosov geodesic flow on X(1) �
 
 **What's conjectured:**
 - The asymptotic PGT formula requires L >> 300 (current data: L ≤ 229)
-- Whether this framework extends beyond 2ⁿ−k to arbitrary primes is open
+- Whether this framework extends beyond 2ⁿ−k to arbitrary primes is open —
+  **RESOLVED 2026-08-08** (`experiments/bridge_extension.py`,
+  `data/bridge_extension_data.json`): it extends **trivially** — every prime
+  p has the unique representation p = 2ⁿ − k (k = 2ⁿ − p), so the bridge
+  λ = ¼ + (n·ln2 − ln k)² is defined for all primes.  Over all 5.76M primes
+  ≤ 10⁸ the near-integer(0.01) rate is 2.44%, only 0.17pp above a matched
+  random-integer bridge control (2.26%, z=19.5) and ~1.2× above the 2%
+  uniform-fractional null; the census's own 6/186 "spectral resonances"
+  (3.23%) are NOT significant (p=0.17; ~3.7 expected under uniformity).
+  The resonance is bridge arithmetic plus a small prime residue bias — not
+  special 2ⁿ−k content.
 
 **What's measured (2026-08-08, `experiments/pgt_finite_l.py`):** at finite L the
 growth form is **refuted** — π_k(L) grows like ln L (one candidate per n),

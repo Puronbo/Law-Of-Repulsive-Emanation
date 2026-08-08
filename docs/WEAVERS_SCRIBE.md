@@ -1160,6 +1160,29 @@ resolution (`data/kawasaki_null_data.json`), `experiments/kawasaki_ctc.py`
 The PUM §10.5 open-question list is now fully closed: retrace (T64),
 Wheeler–DeWitt selection (§5.17), fold-as-unitary (§5.18), and this one.
 
+### Ch. 5.20  The C7 bridge extends to all primes — trivially (README, decided)
+
+The README left open "whether this framework extends beyond 2ⁿ−k to
+arbitrary primes."  `experiments/bridge_extension.py`
+(`data/bridge_extension_data.json`) decides it with the bridge's own
+generalization: every prime p with 2ⁿ⁻¹ < p < 2ⁿ has the *unique*
+representation p = 2ⁿ − k (k = 2ⁿ − p), so the C7 formula
+λ = ¼ + (n·ln2 − ln k)² is defined for every prime.
+
+* Over all 5,761,455 primes ≤ 10⁸, the near-integer(0.01) rate is **2.437%**
+  (140,402 hits) — only 0.17pp above a matched random-integer bridge control
+  (uniform k per n-bin: 2.263%) and ~1.2× the 2% uniform-fractional null.
+* The census's headline "6 spectral resonances" (6/186 = 3.23%) is **not**
+  significant on its own: binomial p=0.17 vs the null (~3.7 expected), and
+  the k<30-restricted subsets give 4/85 = 4.7% (p=0.09).
+* frac(λ) is strongly non-uniform (χ² p<10⁻⁶), so the "resonance" is an
+  artifact of the bridge arithmetic on any integer near a power of two,
+  plus a small real prime residue bias (z=19.5 over 5.76M samples).
+
+Verdict: the framework extends trivially but carries no distinctive 2ⁿ−k
+content — the near-integer eigenvalues were never evidence of a special
+Mersenne-gap structure.
+
 ---
 
 ## Ch. 6  Creases (never forget these)

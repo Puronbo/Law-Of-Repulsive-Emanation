@@ -118,8 +118,15 @@ given so it can be re-run).
    (one candidate per n), so ε_k·e^L/L overpredicts the observed 186 primes by
    ~95 orders of magnitude at L=200.  The literal README conjecture is falsified
    at finite L; the PGT asymptotic (L ≫ 300) is out of reach of the googol
-   census (n_max = 332) and would need the full X(1) geodesic spectrum, not the
-   single C7 progression.
+    census (n_max = 332) and would need the full X(1) geodesic spectrum, not the
+    single C7 progression.  The "extends beyond 2ⁿ−k" sub-question is
+    **RESOLVED 2026-08-08** (`experiments/bridge_extension.py`,
+    `data/bridge_extension_data.json`): every prime p has the unique
+    representation p = 2ⁿ − k, so the bridge extends trivially; over 5.76M
+    primes ≤ 10⁸ the near-integer(0.01) rate is 2.437% vs 2.263% on a matched
+    random-integer bridge control (z=19.5, 0.17pp prime residue bias) and vs
+    the 2% uniform-fractional null; the census's own 6/186 resonances are
+    not significant (p=0.17, ~3.7 expected).  Nothing 2ⁿ−k-special.
 2. **Selberg paradigm** (PAPER): the finite-disk spectrum (30 eigenvalues)
    "suggests" a concrete instance of Selberg's framework; the eigenvalues ↔
    Riemann-zero correspondence is "conjectured" — and explicitly undecidable at
@@ -216,6 +223,19 @@ given so it can be re-run).
   §4.  The PUM's narrative cosmology should no longer be cited as verified
   beyond the specific engine claims that survive testing.
 * **Prime-metric framework beyond 2ⁿ−k** (README).
+  **RESOLVED 2026-08-08** (`experiments/bridge_extension.py`,
+  `data/bridge_extension_data.json`): the bridge extends **trivially** —
+  every prime p with 2ⁿ⁻¹ < p < 2ⁿ has the unique representation p = 2ⁿ − k
+  (k = 2ⁿ − p), so λ = ¼ + (n·ln2 − ln k)² is defined for every prime.  Over
+  all 5,761,455 primes ≤ 10⁸ the near-integer(0.01) rate is **2.437%** vs
+  2.263% on a matched random-integer bridge (uniform k per n-bin; z=19.5,
+  a 0.17pp prime residue bias) and vs the 2% uniform-fractional null.  The
+  census's 6/186 "spectral resonances" (3.23%) are **not** significant on
+  their own (binomial p=0.17; ~3.7 expected under uniformity), and the
+  k<30-restricted subsets (4/85 = 4.7%) are also within noise (p=0.09).
+  Verdict: the near-integer "resonance" is bridge arithmetic on any integer
+  near a power of two plus a small prime bias — there is no special 2ⁿ−k
+  content, and the framework does extend, but with nothing distinctive.
 * **Prime-time claims** (PAPER §8.4): C0 at every prime-indexed state; prime
   geodesic spectrum μ=0.065/σ=0.058 at N=50; recurrence times factor like
   random integers.

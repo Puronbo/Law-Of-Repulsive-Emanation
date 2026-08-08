@@ -1,0 +1,49 @@
+{
+  "claim": "README/T19: 'whether this framework extends beyond 2^n-k to arbitrary primes is open' -- C7 bridge, generalized by the unique p = 2^n - k representation of every prime",
+  "setup": {
+    "eps": 0.01,
+    "prime_limit": 100000000,
+    "census_n": 186,
+    "census_near_int": 6
+  },
+  "census": {
+    "near_int_rate": 0.03226,
+    "binom_p_gt_uniform": 0.17090602563832788,
+    "uniform_null_rate": 0.02,
+    "expected_near_int_under_null": 3.72
+  },
+  "extended": {
+    "n_primes": 5761455,
+    "near_int_rate": 0.024369,
+    "n_near_int": 140402,
+    "binom_p_gt_uniform": 0.0,
+    "frac_uniform_chi2": 361350.57,
+    "frac_uniform_p": 0.0
+  },
+  "subsets": {
+    "k_lt_30_n_2_332": {
+      "n": 85,
+      "near": 4,
+      "rate": 0.04706,
+      "binom_p": 0.09121359091584103
+    },
+    "k_lt_30_any_n": {
+      "n": 85,
+      "near": 4,
+      "rate": 0.04706,
+      "binom_p": 0.09121359091584103
+    }
+  },
+  "random_integer_control": {
+    "n": 5761455,
+    "near_int_rate": 0.02263,
+    "n_near_int": 130384
+  },
+  "prime_vs_random": {
+    "z": 19.48,
+    "p": 0.0,
+    "elevation": 0.001739,
+    "prime_specific": true
+  },
+  "verdict": "EXTENDED ELEVATION, PRIME-SPECIFIC (census p=0.171, ext 0.02437, primes-vs-random p=1.55e-84): the near-integer resonance is generic across primes at a small elevation ABOVE the bridge-on-any-integer baseline. The framework trivially extends -- every prime p has the unique representation p = 2^n - k -- but the effect is not special to the 2^n-k family; it is the bridge arithmetic plus a small prime residue bias."
+}

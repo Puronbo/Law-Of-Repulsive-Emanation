@@ -82,7 +82,7 @@ Usage: `grep -i "basketball" KEYWORDS.md` or just search this file.
 - **Photon / rubber ball / photon dynamics** — `experiments/photon_rubber_ball.py`, `data/photon_rubber_ball_data.json`
 - **Polysphere / sphere / higher-dim / routing** — `Universals/manifold/polysphere.py`, `experiments/polysphere_*.py`
 - **Prime count / pi(x) / sieve / Lucy-Hedgehog / segmented sieve / PNT / Li(x)** — `README.md`, `experiments/prime_count_from_scratch.py`, `Universals/segmented_sieve_benchmark.py`, `scripts/`, `data/prime_engine_data.json`
-- **Prime gaps / prime geodesics / geodesic bridge / C7 / prime geodesic theorem / PGT / finite-L** — `docs/PAPER.md`, `experiments/prime_gap_bridge.py`, `reverse_pair_gaps.py`, `pgt_finite_l.py`, `data/googol_census_all_k_c7.*`, `data/pgt_finite_l_data.json`
+- **Prime gaps / prime geodesics / geodesic bridge / C7 / prime geodesic theorem / PGT / finite-L / bridge extension** — `docs/PAPER.md`, `experiments/prime_gap_bridge.py`, `reverse_pair_gaps.py`, `pgt_finite_l.py`, `bridge_extension.py`, `data/googol_census_all_k_c7.*`, `data/pgt_finite_l_data.json`, `data/bridge_extension_data.json` (2ⁿ−k → arbitrary primes: trivial extension, no 2ⁿ−k-special resonance)
 - **Prime-indexed time steps / prime geodesic spectrum / PAPER §8.4 / recurrence-time factorization** — `experiments/prime_time.py`, `data/prime_time_data.json` (C0-at-primes = uniform conservation; spectrum = short-transient artifact; recurrence claim unmeasurable — flow escapes disk)
 - **Psychometrics / Cronbach / IRT / measurement invariance / DIF** — `docs/papers/psychometrics_invariance.tex` (+ `.pdf`)
 - **Quantum thermodynamics / ground state / partition function** — `Universals/thermodynamics.py`, `data/thermo_data.json`

@@ -13,6 +13,8 @@ number so none of the resolved claims can silently drift:
   - Bekenstein shift settled at n=100: significant raw, erased by index-matching
   - Wheeler-DeWitt constraint selects nothing (empty or C0-law relabeled)
   - fold-and-cut is not a unitary gate (non-injective, not norm-preserving)
+  - Kawasaki is not a CTC/Novikov constraint (antecedent false)
+  - C7 bridge extends to all primes trivially (no 2^n-k-special resonance)
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -156,3 +158,20 @@ def test_kawasaki_not_a_ctc_constraint():
     # admission collapses with loop size exactly as the null does
     for V in ('4', '8', '16'):
         assert d['loop_sizes'][V]['binding'] is False
+
+
+def test_bridge_extends_to_all_primes_trivially():
+    d = load('bridge_extension_data.json')
+    # census's own 6/186 resonance is NOT significant vs uniform null
+    assert d['census']['binom_p_gt_uniform'] > 0.05
+    # extended bridge: near-integer rate barely above the 2% uniform null
+    ext = d['extended']
+    assert 0.02 <= ext['near_int_rate'] <= 0.03
+    # random-integer control reproduces most of the elevation
+    ctrl = d['random_integer_control']['near_int_rate']
+    assert ctrl >= 0.022
+    # prime-specific residue is real but tiny (< 0.5pp)
+    pv = d['prime_vs_random']
+    assert pv['prime_specific'] is True
+    assert pv['elevation'] < 0.005
+    assert 'trivially extends' in d['verdict'] or 'trivial' in d['verdict']
