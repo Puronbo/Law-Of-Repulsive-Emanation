@@ -213,6 +213,7 @@ For each claim: **Status** (measured/derived), **the claim**, **evidence**
 | Kawasaki angle constraint | **Measured failure** | Mean deviation **0.49** from target 0 — genuinely open. `docs/PHYSICAL_UNIVERSAL_MAP.md` §10.2 |
 | Kawasaki flat-foldability (ReLU vertices) | **Resolved — artifact, not near-miss** | 2026-08-08: the 0.4866/72.4% reproduce exactly but are a ~700-ray point-cloud sampling scatter (uniform control 0.835/52.0%); the exact 2-line fold-vertex criterion |4α−2π| fails generically (mean 3.21, 9.5% within ε=0.5 ≈ 8% uniform null). ReLU fold vertices are NOT flat-foldable (codimension-1). `experiments/kawasaki_null.py`, `data/kawasaki_null_data.json` |
 | Golden-ratio closure (T58 r=apex·0.6138) | **Measured → derived** | 2026-08-08: r_ret/apex = θ*/Θ solving s(θ*)/s(Θ)=1/φ² on the Archimedean spiral, delta 0.0 at Θ=20, → 1/φ as Θ→∞. `experiments/fold_golden_closure.py`, `data/fold_golden_closure_data.json` |
+| Golden fold as chain law (C2) | **Refuted as a chain law** | 2026-08-08: the retrace chain 943,901,200,001 → 1,914,467 → 730,421 → 26,102 → 10,262 is **1/4 golden rungs**; the celebrated φ² rung 1,914,467/730,421 (0.115%) is an isolated coincidence-scale hit — a magnitude-matched null gives expected 0.037 golden rungs/chain, P(≥1)=0.036. T58's closure stays derived; only the ladder generalization fails. `experiments/fold_ladder_phi.py`, `data/fold_ladder_phi_data.json` |
 | PUM narrative cosmology | **Not citable as verified physics** | AUDIT §3; only surviving engine-level claims stand. |
 | PGT, BOOK-V pedagogy | **Conjectured** | Self-declared unvalidated. |
 | PGT growth form (π_k ~ ε_k·e^L/L) | **Refuted at finite L** | 2026-08-08: slope of log π_k vs L is 0.002 vs predicted 1.0; π_k ~ ln L (one candidate per n); ε_k·e^L/L overpredicts by ~95 orders at L=200. Sieve ordering only partial (Pearson 0.696). `experiments/pgt_finite_l.py`, `data/pgt_finite_l_data.json` |
@@ -235,6 +236,7 @@ python experiments/spectral_extended.py                # C1/C3/C4 at 100 modes
 python experiments/kawasaki_null.py                    # Kawasaki artifact attribution
 python experiments/pgt_finite_l.py                     # PGT finite-L refutation
 python experiments/fold_golden_closure.py              # 0.613769 derived exactly
+python experiments/fold_ladder_phi.py                   # C2: retrace chain is 1/4 golden rungs
 ```
 
 ---
