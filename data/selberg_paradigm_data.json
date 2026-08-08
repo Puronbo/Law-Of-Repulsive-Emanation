@@ -1,0 +1,38 @@
+{
+  "claim": "AUDIT \u00a72 item 2: PAPER 'suggests a concrete instance of Selberg's framework'; eigenvalues<->Riemann zeros 'conjectured'; GUE/Poisson 'impossible at 30'",
+  "setup": {
+    "n_modes": 100,
+    "n_census_lengths": 186,
+    "n_null_samples": 5000,
+    "length_range": [
+      0.098,
+      221.444
+    ]
+  },
+  "a_level_stats": {
+    "r_mean": 0.3738,
+    "r_median": 0.2776,
+    "r_std": 0.2895,
+    "se": 0.0292,
+    "poisson_0.386": 0.386,
+    "goe_0.536": 0.536,
+    "z_poisson": -0.42,
+    "z_goe": -5.55,
+    "verdict": "POISSON (consistent with 0.386 at z=-0.42, excludes GOE 0.536 at z=-5.55)"
+  },
+  "b_zeros": {
+    "min_dist": 7.1009,
+    "median_dist": 8.7202,
+    "within_0.5": 0,
+    "verdict": false
+  },
+  "c_form_factor": {
+    "mersenne_mean": 0.81634,
+    "mersenne_max_abs": 90.47645,
+    "null_mean_pctile": 18.8,
+    "null_max_pctile": 100.0,
+    "n_strong_vs_null_95": 0,
+    "verdict": "PEAKS ABSENT: the 186 Mersenne lengths sit inside the null distribution of the spectral form factor (mean pct=18.8, max pct=100.0, 0 strong) \u2014 the trace-formula oscillation prediction is not detected at 100 modes."
+  },
+  "verdict": "SELBERG PARADIGM NOT SUPPORTED as a concrete instance: (a) GUE/Poisson discrimination now DECIDED at 100 modes (impossible at 30): POISSON (consistent with 0.386 at z=-0.42, excludes GOE 0.536 at z=-5.55); (b) eigenvalues<->Riemann zeros: min dist=7.1009, 0 within 0.5 -> NO correspondence; (c) trace-formula length spectrum: PEAKS ABSENT: the 186 Mersenne lengths sit inside the null distribution of the spectral form factor (mean pct=18.8, max pct=100.0, 0 strong) \u2014 the trace-formula oscillation prediction is not detected at 100 modes."
+}

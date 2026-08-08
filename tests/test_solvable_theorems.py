@@ -15,6 +15,7 @@ number so none of the resolved claims can silently drift:
   - fold-and-cut is not a unitary gate (non-injective, not norm-preserving)
   - Kawasaki is not a CTC/Novikov constraint (antecedent false)
   - C7 bridge extends to all primes trivially (no 2^n-k-special resonance)
+  - Selberg paradigm not a concrete instance (Poisson, no zeros, no trace peaks)
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -175,3 +176,17 @@ def test_bridge_extends_to_all_primes_trivially():
     assert pv['prime_specific'] is True
     assert pv['elevation'] < 0.005
     assert 'trivially extends' in d['verdict'] or 'trivial' in d['verdict']
+
+
+def test_selberg_paradigm_not_a_concrete_instance():
+    d = load('selberg_paradigm_data.json')
+    assert d['a_level_stats']['verdict'].startswith('POISSON')
+    # GOE excluded at >5 sigma at 100 modes
+    assert d['a_level_stats']['z_goe'] < -5.0
+    # no Riemann-zero correspondence
+    assert d['b_zeros']['within_0.5'] == 0
+    assert d['b_zeros']['min_dist'] > 5.0
+    # Mersenne lengths produce no trace-formula peaks
+    assert d['c_form_factor']['n_strong_vs_null_95'] == 0
+    assert d['c_form_factor']['null_mean_pctile'] < 50.0
+    assert d['verdict'].startswith('SELBERG PARADIGM NOT SUPPORTED')

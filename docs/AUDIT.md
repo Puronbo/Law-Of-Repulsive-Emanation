@@ -130,7 +130,21 @@ given so it can be re-run).
 2. **Selberg paradigm** (PAPER): the finite-disk spectrum (30 eigenvalues)
    "suggests" a concrete instance of Selberg's framework; the eigenvalues ↔
    Riemann-zero correspondence is "conjectured" — and explicitly undecidable at
-   30 eigenvalues (GUE/Poisson discrimination impossible).  **[claimed]**
+   30 eigenvalues (GUE/Poisson discrimination impossible).
+   **RESOLVED 2026-08-08** (`experiments/selberg_paradigm.py`,
+   `data/selberg_paradigm_data.json`): now decidable at 100 modes.  (a)
+   GUE/Poisson discrimination is **DECIDED toward Poisson**: ⟨r⟩=0.374 ± 0.029
+   (se), z(Poisson)=−0.42, z(GOE)=−5.55 — the 30-mode "intermediate 0.460"
+   was a small-sample fluctuation; a chaotic (GOE) surface signature is
+   excluded at 5.6σ.  (b) Eigenvalues ↔ Riemann zeros: min distance 7.10,
+   0 of 100 within 0.5 — **no correspondence**.  (c) Selberg trace-formula
+   length spectrum: the spectral form factor C(ℓ)=Σ cos(t_j·ℓ) at the 186
+   Mersenne census lengths is inside the random-length null (mean percentile
+   18.8, 0/186 above the 95th-pct null max) — the 196 Mersenne "geodesic
+   lengths" produce **no trace-formula oscillation**.  Overall: the paradigm
+   is **not supported as a concrete instance**; the earlier ε(2)=0.000265
+   "unification" was the code's own construction (`L(s)=C₀·ζ(s)` tautological),
+   not a measured spectral-geometric match.
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**
@@ -301,7 +315,7 @@ given so it can be re-run).
 | **Clock-test canon** (T59/T61) | laws live in invariants, not conventions | Measured 1.000→0.417→1.000 |
 | **Anomaly doctrine** (T55j) | novelty works; impersonation partial; observation bank required | Measured, incomplete by its own verdict |
 | **Arithmetic Bekenstein shift** (PAPER) | η_prime=0.1336 vs η_random=0.1285, Δη +3.9%, p=0.002 | **REFUTED by the persisted data file, and withdrawn from the PAPER (2026-08-04).** `data/bekenstein_shift_data.json` (30 trajectories) shows no systematic difference: control p=0.789 (+2.5%), dissipative p=0.938 (−0.1%); the file's own interpretation is "no systematic difference"; the claimed numbers 0.1336/0.1285/p=0.002 appeared nowhere in it. PAPER §8.7 + conclusion now report the null. **n=100 pre-registered re-run (2026-08-08, `data/bekenstein_rerun_data.json`) settles it:** the raw frictionless shift becomes significant at power (+3.39%, p≈0) but an index-matched control on the same trajectories erases it (+0.14%, p=0.34), i.e. the effect is positional (prime indices cluster early), not primality. The claim stays dead; the null is now causal, not just underpowered. |
-| **Selberg unification** (PAPER) | 30 eigenvalues ↔ 196 Mersenne geodesics, ε(2)=0.000265 | ε(2)=0.000265 is real **but it is algebra**: `L_total = L_traj + Σ L_k` is the code's own construction (`L(s)=C₀·ζ(s)` is flagged tautological in the code). Spectral-vs-zeros match is poor (code: min |t_n − t_zeta| ~ 2.5–9.0 "not a match by any standard"). |
+| **Selberg unification** (PAPER) | 30 eigenvalues ↔ 196 Mersenne geodesics, ε(2)=0.000265 | ε(2)=0.000265 is real **but it is algebra**: `L_total = L_traj + Σ L_k` is the code's own construction (`L(s)=C₀·ζ(s)` is flagged tautological in the code). Spectral-vs-zeros match is poor (code: min |t_n − t_zeta| ~ 2.5–9.0 "not a match by any standard"). **Closed 2026-08-08** (`data/selberg_paradigm_data.json`): at 100 modes the spectrum is **Poisson** (⟨r⟩=0.374, GOE excluded at 5.6σ), zero-correspondence absent (min dist 7.10, 0 within 0.5), and the 186 Mersenne lengths show no spectral-form-factor peaks — not a concrete Selberg instance. |
 | **Partition function match** (PAPER) | L(2)=40.14 vs C₀·π²/6=40.19 (<0.2%) | **Tautology.** C₀·π²/6 = 40.1936 holds for *any* C₀; the code flags `L(s)=C0*zeta(s)` as a tautology "for ANY constant C0." A match by construction is not a test. |
 | **Thermodynamics/entropy** | ln-thinning ↔ entropy; second law as folding | Analogical, not falsifiable as stated |
 | **Prime geodesic spectrum** (PAPER §8.4, 2026-08-08) | prime-indexed states define a geodesic spectrum mirroring the arithmetic of primes; recurrence times factor into primes | **Not supported.** C0-at-primes = uniform energy conservation (ratio 0.999); the spectrum is a transient of the first N≈50 states (μ=0.027, not 0.065) and diverges by N=214; the frictionless flow has **zero** near-recurrences before escaping the bounded disk, so the recurrence claim is unmeasurable. `data/prime_time_data.json` |

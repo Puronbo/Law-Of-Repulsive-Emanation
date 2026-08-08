@@ -94,7 +94,7 @@ Usage: `grep -i "basketball" KEYWORDS.md` or just search this file.
 - **Riemann zeta / zeta function / special values / zeta regularization** — `docs/PAPER.md`, `Universals/modular_forms.py`, `puno_flow/topology.py`
 - **Rotation test / T61** — `experiments/rotation_test.py`, `data/rotation_test_data.json`
 - **Scale-free networks / power law / Barabasi–Albert / log-log fit / Broido–Clauset** — `docs/papers/scale_free_network_controversy.tex`, `docs/papers/scale_free_update_correction.pdf`, `puno_flow/topology.py`, `tests/test_topology.py`
-- **Selberg / trace formula / unification / spectral geometry** — `docs/PAPER.md`, `Universals/selberg_unification.py`, `data/selberg_unification_data.json`
+- **Selberg / trace formula / unification / spectral geometry / paradigm** — `docs/PAPER.md`, `Universals/selberg_unification.py`, `data/selberg_unification_data.json`, `experiments/selberg_paradigm.py`, `data/selberg_paradigm_data.json` (100 modes: Poisson not GOE; no zero correspondence; no trace-formula peaks — not a concrete Selberg instance)
 - **Self-balancing / gossip / mesh** — `puno_flow/apps/`, `experiments/self_balancing.py`
 - **Shannon entropy / information** — `docs/papers/info_theory_compression_finance_invariance.tex` (+ `.pdf`)
 - **Spatial index / spatial search / O(1) search / grid index** — `puno_flow/index.py`, `patents/PUNO-PPA-001_spatial_indexed_flow.md`, `docs/AUDIT.md`, `experiments/decentral_net_t67.py`

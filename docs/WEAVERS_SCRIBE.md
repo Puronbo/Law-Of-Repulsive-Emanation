@@ -1183,6 +1183,32 @@ Verdict: the framework extends trivially but carries no distinctive 2ⁿ−k
 content — the near-integer eigenvalues were never evidence of a special
 Mersenne-gap structure.
 
+### Ch. 5.21  The Selberg paradigm at 100 modes — decided (AUDIT §2 item 2)
+
+The PAPER "suggested" the finite-disk spectrum is a concrete instance of
+Selberg's framework, with eigenvalues ↔ Riemann zeros "conjectured" and
+GUE/Poisson discrimination declared "impossible at 30 eigenvalues".
+`experiments/selberg_paradigm.py` (`data/selberg_paradigm_data.json`) closes
+all three at 100 modes:
+
+* **GUE/Poisson is now decidable and decided**: ⟨r⟩ = 0.374 ± 0.029 (se),
+  z(Poisson) = −0.42, z(GOE) = −5.55.  The 30-mode "intermediate 0.460"
+  (WEAVERS Ch. 5.1) was a small-sample fluctuation; a chaotic surface (GOE)
+  signature is excluded at 5.6σ — the spectrum is **Poisson**, i.e. the
+  eigenvalues behave like random uncorrelated numbers, the opposite of a
+  Selberg/quantum-chaos expectation.
+* **Eigenvalues ↔ Riemann zeros**: min |t_n − t_ζ| = 7.10, 0 of 100 within
+  0.5.  No correspondence by any standard.
+* **Trace formula length spectrum**: the spectral form factor
+  C(ℓ) = Σ cos(t_j·ℓ) evaluated at the 186 Mersenne census lengths is inside
+  the matched random-length null (mean percentile 18.8; 0/186 above the
+  95th-pct null max).  The 196 "Mersenne gap geodesic lengths" leave **no
+  trace-formula oscillation** in the spectrum.
+
+Overall: not a concrete Selberg instance.  The ε(2)=0.000265 "unification"
+was the code's own construction, never a measured spectral-geometric match.
+This retires the last **[claimed]** item in AUDIT §2 (the Selberg paradigm).
+
 ---
 
 ## Ch. 6  Creases (never forget these)
