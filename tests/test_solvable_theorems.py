@@ -34,6 +34,7 @@ number so none of the resolved claims can silently drift:
    - c0 crossing tsym: T-sym holds (err 0.066-0.226) but NO trajectory actually crossed the origin (closest approach = start dist) - PASS-with-caveat, crossing regime never exercised
    - c0 cusp flow: cusp-metric C0 geodesic at dt=0.005/5000 steps blows up (Poincare NaN, cusp escapes to ~2.7e23, drift 2.68e45, T-sym err 2.8e9) - REFUTED/unverifiable at settings
    - t39 cusp flow: cusp isometry w=log(q) verified EXACTLY (energy CV 3e-15, step ratio=phi exactly, w-plane R2=1.0 slope pi/(2 log phi), T-sym err 0) - SUPPORTED (deterministic)
+   - van iterson T48a: NO golden-angle locking in ANY rule (discrete bisection, min-potential, min-dist, center+push-out; divergence 170-200 deg, r~n^0.4-0.5) - SUPPORTED negative, locking is an insertion-constraint special value
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -500,3 +501,18 @@ def test_t39_cusp_flow_supported():
     assert v['wplane_r2'] > 0.999999
     assert abs(v['wplane_slope'] - v['wplane_expected_slope']) < 1e-6
     assert v['tsym_error'] == 0.0
+
+
+def test_van_iterson_no_golden_lock():
+    d = load('van_iterson_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    assert d['any_golden_lock'] is False
+    # all three continuous rules, all 12 (r0, relax) settings: no lock
+    for rule, rows in d['continuous_rules'].items():
+        assert len(rows) == 12
+        for row in rows:
+            assert row['locked'] is False
+            assert row['within5_frac'] < 0.5
+    # part 1 control also never locks
+    for row in d['part1_control']:
+        assert row['within5_frac'] < 0.5

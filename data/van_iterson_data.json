@@ -1,0 +1,444 @@
+{
+  "claim": "T48a: the golden angle (137.51 deg) is a specific fixed point of the continuous contact dynamics (Van Iterson / Douady-Couder) and is NOT a generic emergent property of C0 repulsive flow",
+  "settings": {
+    "seed": 42,
+    "n_inject": 70,
+    "r0_grid": [
+      0.02,
+      0.04,
+      0.06,
+      0.09,
+      0.12,
+      0.2
+    ],
+    "relax_grid": [
+      60,
+      120
+    ],
+    "eps": 0.03,
+    "golden_deg": 137.50776405003785
+  },
+  "part1_control": [
+    {
+      "v": 0.02,
+      "mean_abs_d_golden": 132.89,
+      "within5_frac": 0.0
+    },
+    {
+      "v": 0.05,
+      "mean_abs_d_golden": 119.4,
+      "within5_frac": 0.0
+    },
+    {
+      "v": 0.1,
+      "mean_abs_d_golden": 117.1,
+      "within5_frac": 0.0
+    }
+  ],
+  "continuous_rules": {
+    "pot": [
+      {
+        "r0": 0.02,
+        "relax": 60,
+        "div_asym_deg": 164.48,
+        "abs_d_golden_deg": 75.81,
+        "within5_frac": 0.033,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.625,
+        "r_exp": 0.444,
+        "locked": false
+      },
+      {
+        "r0": 0.02,
+        "relax": 120,
+        "div_asym_deg": 164.48,
+        "abs_d_golden_deg": 75.81,
+        "within5_frac": 0.033,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.551,
+        "r_exp": 0.494,
+        "locked": false
+      },
+      {
+        "r0": 0.04,
+        "relax": 60,
+        "div_asym_deg": 164.48,
+        "abs_d_golden_deg": 75.81,
+        "within5_frac": 0.033,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.565,
+        "r_exp": 0.43,
+        "locked": false
+      },
+      {
+        "r0": 0.04,
+        "relax": 120,
+        "div_asym_deg": 164.48,
+        "abs_d_golden_deg": 75.81,
+        "within5_frac": 0.033,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.59,
+        "r_exp": 0.475,
+        "locked": false
+      },
+      {
+        "r0": 0.06,
+        "relax": 60,
+        "div_asym_deg": 164.48,
+        "abs_d_golden_deg": 75.81,
+        "within5_frac": 0.033,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.568,
+        "r_exp": 0.437,
+        "locked": false
+      },
+      {
+        "r0": 0.06,
+        "relax": 120,
+        "div_asym_deg": 164.48,
+        "abs_d_golden_deg": 75.81,
+        "within5_frac": 0.033,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.518,
+        "r_exp": 0.438,
+        "locked": false
+      },
+      {
+        "r0": 0.09,
+        "relax": 60,
+        "div_asym_deg": 164.48,
+        "abs_d_golden_deg": 75.81,
+        "within5_frac": 0.033,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.623,
+        "r_exp": 0.435,
+        "locked": false
+      },
+      {
+        "r0": 0.09,
+        "relax": 120,
+        "div_asym_deg": 164.48,
+        "abs_d_golden_deg": 75.81,
+        "within5_frac": 0.033,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.577,
+        "r_exp": 0.413,
+        "locked": false
+      },
+      {
+        "r0": 0.12,
+        "relax": 60,
+        "div_asym_deg": 164.48,
+        "abs_d_golden_deg": 75.81,
+        "within5_frac": 0.033,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.586,
+        "r_exp": 0.416,
+        "locked": false
+      },
+      {
+        "r0": 0.12,
+        "relax": 120,
+        "div_asym_deg": 164.48,
+        "abs_d_golden_deg": 75.81,
+        "within5_frac": 0.033,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.478,
+        "r_exp": 0.499,
+        "locked": false
+      },
+      {
+        "r0": 0.2,
+        "relax": 60,
+        "div_asym_deg": 164.48,
+        "abs_d_golden_deg": 75.81,
+        "within5_frac": 0.033,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.567,
+        "r_exp": 0.425,
+        "locked": false
+      },
+      {
+        "r0": 0.2,
+        "relax": 120,
+        "div_asym_deg": 164.48,
+        "abs_d_golden_deg": 75.81,
+        "within5_frac": 0.033,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.566,
+        "r_exp": 0.408,
+        "locked": false
+      }
+    ],
+    "dist": [
+      {
+        "r0": 0.02,
+        "relax": 60,
+        "div_asym_deg": 182.21,
+        "abs_d_golden_deg": 136.51,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.611,
+        "r_exp": 0.43,
+        "locked": false
+      },
+      {
+        "r0": 0.02,
+        "relax": 120,
+        "div_asym_deg": 182.21,
+        "abs_d_golden_deg": 136.51,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.541,
+        "r_exp": 0.559,
+        "locked": false
+      },
+      {
+        "r0": 0.04,
+        "relax": 60,
+        "div_asym_deg": 182.21,
+        "abs_d_golden_deg": 136.51,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.569,
+        "r_exp": 0.472,
+        "locked": false
+      },
+      {
+        "r0": 0.04,
+        "relax": 120,
+        "div_asym_deg": 182.21,
+        "abs_d_golden_deg": 136.51,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.515,
+        "r_exp": 0.504,
+        "locked": false
+      },
+      {
+        "r0": 0.06,
+        "relax": 60,
+        "div_asym_deg": 182.21,
+        "abs_d_golden_deg": 136.51,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.556,
+        "r_exp": 0.451,
+        "locked": false
+      },
+      {
+        "r0": 0.06,
+        "relax": 120,
+        "div_asym_deg": 182.21,
+        "abs_d_golden_deg": 136.51,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.531,
+        "r_exp": 0.417,
+        "locked": false
+      },
+      {
+        "r0": 0.09,
+        "relax": 60,
+        "div_asym_deg": 182.21,
+        "abs_d_golden_deg": 136.51,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.535,
+        "r_exp": 0.469,
+        "locked": false
+      },
+      {
+        "r0": 0.09,
+        "relax": 120,
+        "div_asym_deg": 182.21,
+        "abs_d_golden_deg": 136.51,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.549,
+        "r_exp": 0.505,
+        "locked": false
+      },
+      {
+        "r0": 0.12,
+        "relax": 60,
+        "div_asym_deg": 182.21,
+        "abs_d_golden_deg": 136.51,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.551,
+        "r_exp": 0.436,
+        "locked": false
+      },
+      {
+        "r0": 0.12,
+        "relax": 120,
+        "div_asym_deg": 182.21,
+        "abs_d_golden_deg": 136.51,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.577,
+        "r_exp": 0.479,
+        "locked": false
+      },
+      {
+        "r0": 0.2,
+        "relax": 60,
+        "div_asym_deg": 182.21,
+        "abs_d_golden_deg": 136.51,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.498,
+        "r_exp": 0.498,
+        "locked": false
+      },
+      {
+        "r0": 0.2,
+        "relax": 120,
+        "div_asym_deg": 182.21,
+        "abs_d_golden_deg": 136.51,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.514,
+        "r_exp": 0.455,
+        "locked": false
+      }
+    ],
+    "center": [
+      {
+        "r0": 0.02,
+        "relax": 60,
+        "div_asym_deg": 158.8,
+        "abs_d_golden_deg": 64.08,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.514,
+        "r_exp": 0.432,
+        "locked": false
+      },
+      {
+        "r0": 0.02,
+        "relax": 120,
+        "div_asym_deg": 158.8,
+        "abs_d_golden_deg": 64.08,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.523,
+        "r_exp": 0.458,
+        "locked": false
+      },
+      {
+        "r0": 0.04,
+        "relax": 60,
+        "div_asym_deg": 158.8,
+        "abs_d_golden_deg": 64.08,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.571,
+        "r_exp": 0.43,
+        "locked": false
+      },
+      {
+        "r0": 0.04,
+        "relax": 120,
+        "div_asym_deg": 158.8,
+        "abs_d_golden_deg": 64.08,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.569,
+        "r_exp": 0.455,
+        "locked": false
+      },
+      {
+        "r0": 0.06,
+        "relax": 60,
+        "div_asym_deg": 158.8,
+        "abs_d_golden_deg": 64.08,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.595,
+        "r_exp": 0.443,
+        "locked": false
+      },
+      {
+        "r0": 0.06,
+        "relax": 120,
+        "div_asym_deg": 158.8,
+        "abs_d_golden_deg": 64.08,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.544,
+        "r_exp": 0.475,
+        "locked": false
+      },
+      {
+        "r0": 0.09,
+        "relax": 60,
+        "div_asym_deg": 158.8,
+        "abs_d_golden_deg": 64.08,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.594,
+        "r_exp": 0.428,
+        "locked": false
+      },
+      {
+        "r0": 0.09,
+        "relax": 120,
+        "div_asym_deg": 158.8,
+        "abs_d_golden_deg": 64.08,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.621,
+        "r_exp": 0.531,
+        "locked": false
+      },
+      {
+        "r0": 0.12,
+        "relax": 60,
+        "div_asym_deg": 158.8,
+        "abs_d_golden_deg": 64.08,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.612,
+        "r_exp": 0.439,
+        "locked": false
+      },
+      {
+        "r0": 0.12,
+        "relax": 120,
+        "div_asym_deg": 158.8,
+        "abs_d_golden_deg": 64.08,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.597,
+        "r_exp": 0.41,
+        "locked": false
+      },
+      {
+        "r0": 0.2,
+        "relax": 60,
+        "div_asym_deg": 158.8,
+        "abs_d_golden_deg": 64.08,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.635,
+        "r_exp": 0.423,
+        "locked": false
+      },
+      {
+        "r0": 0.2,
+        "relax": 120,
+        "div_asym_deg": 158.8,
+        "abs_d_golden_deg": 64.08,
+        "within5_frac": 0.0,
+        "mean_gap_deg": 5.0,
+        "gap_cv": 0.566,
+        "r_exp": 0.445,
+        "locked": false
+      }
+    ]
+  },
+  "any_golden_lock": false,
+  "verdict": "SUPPORTED (negative result, seed 42): NO golden-angle locking in ANY rule. Part 1 (discrete largest-gap bisection) diverges near 360-small-arc with no lock (confirms golden_survey Part 3b). Parts 2-4 (continuous C0 rules: min-potential, min-dist-to-previous, center deposition + push-out) give whorl-like patterns with divergence ~170-200 deg (alternating placement) across the whole (r0, relax) grid - no golden lock; mean angular gap = 360/N (uniform on average), radius exponent r ~ n^0.4-0.5. The golden angle is NOT a generic emergent fixed point of C0 repulsion; Van Iterson golden locking is a SPECIAL value of the insertion-radius/contact-ratio family, i.e. the missing parameter is the INSERTION CONSTRAINT (contact geometry of the meristem rim), which pure repulsion does not encode."
+}
