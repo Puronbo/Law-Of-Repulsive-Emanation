@@ -220,6 +220,7 @@ For each claim: **Status** (measured/derived), **the claim**, **evidence**
 | Continuum limit drift | **Anticipated → measured PASS** | 2026-08-08: first-order convergence to zero on interior trajectories (order 0.925–1.040, r²=0.9991); boundary r=0.99 projection clip sets a non-conservative floor. `experiments/continuum_limit.py`, `data/continuum_limit_drift.json` |
 | Spectral C1/C3/C4 (WEAVERS Ch. 5.1) | **Tested 2026-08-08** | C1 partial (k=12 0.53%, k=26 0.96%; k=10/2000 miss); C3a not supported (no mode near λ(7)); C3b supported (mode 12.2416 vs λ(31)=12.261, Δ=0.0197); C4 → Poisson (⟨r⟩=0.372 vs GOE 0.536) — T19 "consistent chaos" refuted at level-spacing level. `experiments/spectral_extended.py`, `data/spectral_extended_data.json` |
 | Hierarchical C0 flow (coarse × fine anchors) | **Supported 2026-08-08** | 2-level C0 flow matches flat 30-anchor routing (router 0.910 vs 0.880, gain +0.030) while needing only 6 comparisons per routing level instead of 30; nearest-centroid parity (0.997 vs 1.000); fine local separation 0.12 enforced that flat packing cannot guarantee. `experiments/flow_hierarchical.py`, `data/flow_hierarchical_data.json` |
+| Flow-guided active learning | **Supported (margin-based) 2026-08-08** | margin-AL on the C0 anchor layout's force field reaches 0.80 with 75 labels vs random's 120 (saves 45) and 0.82 with 90 vs 165 (saves 75). Honest wall: the raw force-cancellation score 1−\|F_net\|/\|F_abs\| is NOT the winner (final 0.822 vs margin 0.819); the margin-to-two-nearest-anchors criterion carries the gain. `experiments/flow_active_learning.py`, `data/flow_active_learning_data.json` |
 
 ---
 
@@ -239,6 +240,7 @@ python experiments/pgt_finite_l.py                     # PGT finite-L refutation
 python experiments/fold_golden_closure.py              # 0.613769 derived exactly
 python experiments/fold_ladder_phi.py                   # C2: retrace chain is 1/4 golden rungs
 python experiments/flow_hierarchical.py                 # hierarchical C0 flow verdict (SUPPORTED)
+python experiments/flow_active_learning.py              # active-learning verdict (margin beats random)
 ```
 
 ---

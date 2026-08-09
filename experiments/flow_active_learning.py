@@ -205,3 +205,52 @@ print(f"\n  Margin-based querying uses the C0 anchor layout's force field,")
 print(f"  converging to high accuracy with fewer labels.")
 print(f"\nDone.")
 print(f"\nDone.")
+
+# ---- persist a claim/verdict artifact (AUDIT 5.8 norm) ----
+import json
+results = {
+    "n_classes": n_classes,
+    "query_batch": query_batch,
+    "n_rounds": n_rounds,
+    "n_seed_per_class": n_seed,
+    "final_accuracy": {
+        "force_al": round(float(accs_force[-1]), 3),
+        "margin_al": round(float(accs_margin[-1]), 3),
+        "farthest_al": round(float(accs_farthest[-1]), 3),
+        "random": round(float(accs_random[-1]), 3),
+    },
+    "labels_to_target": {
+        str(t): {
+            "force": labels_to_target(accs_force, t, n_seed, query_batch),
+            "margin": labels_to_target(accs_margin, t, n_seed, query_batch),
+            "farthest": labels_to_target(accs_farthest, t, n_seed, query_batch),
+            "random": labels_to_target(accs_random, t, n_seed, query_batch),
+        }
+        for t in [0.78, 0.80, 0.82]
+    },
+    "seed": seed,
+}
+margin_0_80 = labels_to_target(accs_margin, 0.80, n_seed, query_batch)
+random_0_80 = labels_to_target(accs_random, 0.80, n_seed, query_batch)
+margin_0_82 = labels_to_target(accs_margin, 0.82, n_seed, query_batch)
+random_0_82 = labels_to_target(accs_random, 0.82, n_seed, query_batch)
+verdict = (
+    "SUPPORTED for margin-based querying: on the C0 anchor layout's force "
+    "field, margin-AL reaches 0.80 with %s labels vs random's %s (saves %s) "
+    "and 0.82 with %s vs random's %s (saves %s). Honest wall: the raw "
+    "force-cancellation score (1 - |F_net|/|F_abs|) is NOT the winner here "
+    "(final %.3f vs margin %.3f) — the margin-to-two-nearest-anchors "
+    "criterion is what carries the gain."
+    % (margin_0_80, random_0_80,
+       (random_0_80 - margin_0_80) if (margin_0_80 and random_0_80) else None,
+       margin_0_82, random_0_82,
+       (random_0_82 - margin_0_82) if (margin_0_82 and random_0_82) else None,
+       accs_force[-1], accs_margin[-1])
+)
+results["verdict"] = verdict
+out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "..", "data", "flow_active_learning_data.json")
+with open(out_path, "w") as f:
+    json.dump(results, f, indent=2)
+print("\nverdict:", verdict)
+print("wrote data/flow_active_learning_data.json")

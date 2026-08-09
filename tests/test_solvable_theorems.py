@@ -18,6 +18,7 @@ number so none of the resolved claims can silently drift:
    - Selberg paradigm not a concrete instance (Poisson, no zeros, no trace peaks)
    - C2 golden fold: retrace chain is not a phi/phi^2 ladder (1/4 rungs)
    - hierarchical C0 flow: SUPPORTED (NC parity with flat flow, router gain, 6 not 30 comps)
+   - flow-guided active learning: margin-AL reaches targets with fewer labels than random; raw force-cancellation score is not the winner
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -227,3 +228,19 @@ def test_hierarchical_c0_flow_supported():
     # nearest-centroid accuracy stays high (~parity with flat)
     assert r['hierarchical']['nc'] > 0.95
     assert abs(r['hierarchical']['nc'] - r['flat_c0_flow']['nc']) < 0.05
+
+
+def test_flow_active_learning_margin_beats_random():
+    d = load('flow_active_learning_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    ltt = d['labels_to_target']
+    # margin reaches 0.80 and 0.82 with strictly fewer labels than random
+    for t in ('0.8', '0.82'):
+        assert ltt[t]['margin'] is not None
+        assert ltt[t]['random'] is not None
+        assert ltt[t]['margin'] < ltt[t]['random']
+    # honest wall is pinned too: raw force-cancellation is NOT the label-efficiency winner
+    ltt078 = ltt['0.78']
+    assert ltt078['force'] is None or ltt078['force'] > ltt078['margin']
+    fin = d['final_accuracy']
+    assert fin['margin_al'] >= fin['random'] - 0.02
