@@ -224,6 +224,7 @@ For each claim: **Status** (measured/derived), **the claim**, **evidence**
 | 50/50 balance as "total truth" (T49) | **Partial 2026-08-08** | mu=0.5 is the best shock ABSORBER (recovers to 95–100% of a fresh same-size packing; n4 re-anchor matches the fresh lattice; tight-core n2 mu=0.9 shatters) but NOT the layout optimum — packing peaks at mu=0.25, uniformity at mu=0.0, and pure repulsion wins routing decisively (base_route 0.960 vs 0.887 balanced; old-class routing after +5 degrades slower without balance). The two "total truths" are different optima. `experiments/balance_survey.py`, `data/balance_survey_data.json` |
 | n-scaling of the absorb (T54) | **Confound, not cause 2026-08-08** | A* ~ n^1.086 is real (fixed-A mu=0.5 absorb weakens as n grows, shell drifts mid→boundary) but the n-scaled absorb does NOT rescue the T53 scheduler (across seeds FIB+ABS(A=120) keeps best mean finals 0.910/0.880 vs 0.870/0.863 scaled); shell geometry is dimension-independent in normalized coords (2D vs 64D near-identical mean_r), so the real-data embedding A=120 was not mis-scaled. T53 stands. `experiments/balance_scale.py`, `data/balance_scale_data.json` |
 | Adaptive shrink/expand (T50) | **Supported 2026-08-08** | the adaptive schedule (mu=0.5 absorb during the explosive burst, then mu=0 settle) wins on BOTH axes in every seed — flat old-class routing AD 0.953/0.967/0.967 vs P0 0.920/0.947/0.907, hierarchical AD 0.947/0.887/0.893 vs P0 0.853/0.833/0.847 — keeping old-anchor displacement ~0.17 with best retention. Fixed balanced P5 is HARMFUL (min_d collapses to ~0.17 flat, 0.007–0.039 hier). The T49 "two truths" are combined by the adaptive schedule, not either fixed regime. `experiments/balance_continual.py`, `data/balance_continual_data.json` |
+| Polysphere extensions (learnable truths; S^2 C0 flow) | **Not supported as stated 2026-08-08** | (2) truth functions are NOT learnable by the regression fit at routing accuracy — learned-truth routing 0.483 vs true-truth 1.000 (fit RMSE ~0.46–0.50); (4) C0 repulsion on S^2 does NOT preserve clustering — initial face separation ratio 16.76x collapses to 0.97x under repulsion alone and 1.21x with same-face attraction. Anomaly detection and batch routing at scale DO hold: batch acc 1.000 → 0.921 at 100 faces, anomaly gap 0.731 → 0.593. `experiments/polysphere_extensions.py`, `data/polysphere_extensions_data.json` |
 
 ---
 
@@ -247,6 +248,7 @@ python experiments/flow_active_learning.py              # active-learning verdic
 python experiments/balance_survey.py                    # T49 balance verdict (PARTIAL)
 python experiments/balance_scale.py                     # T54 scaling verdict (confound, not cause)
 python experiments/balance_continual.py                 # T50 adaptive-schedule verdict (SUPPORTED)
+python experiments/polysphere_extensions.py             # polysphere extensions verdict (NOT SUPPORTED)
 ```
 
 ---

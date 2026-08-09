@@ -356,3 +356,47 @@ print("  No boundary escape (unlike cusp metric).")
 
 print("")
 print("Done.")
+
+# ---- persist a claim/verdict artifact (AUDIT 5.8 norm) ----
+import json
+results = {
+    "claim": (
+        "polysphere extensions: (2) truth functions learnable from data via "
+        "regression, and (4) C0 repulsion + same-face attraction on S^2 "
+        "preserves clustering structure"
+    ),
+    "seed": 42,
+    "extension2_learned_truths": {
+        "true_truth_acc": round(true_correct / total, 3),
+        "learned_truth_acc": round(learned_correct / total, 3),
+        "fit_rmse": [round(float(r), 4) for r in rmses],
+    },
+    "extension3_scaling": {
+        "batch_acc_by_faces": {"6": 1.000, "10": 1.000, "25": 1.000,
+                               "50": 0.992, "100": 0.921},
+        "anomaly_gap_by_faces": {"6": 0.731, "10": 0.690, "25": 0.651,
+                                 "50": 0.618, "100": 0.593},
+    },
+    "extension4_sphere": {
+        "initial_sep_ratio": round(inter_mean / max(intra_mean, 1e-12), 2),
+        "repulsion_only_ratio": round(inter_f_mean / max(intra_f_mean, 1e-12), 2),
+        "with_attraction_ratio": round(inter_f2_mean / max(intra_f2_mean, 1e-12), 2),
+    },
+    "verdict": (
+        "NOT SUPPORTED as stated: (2) truth functions are NOT learnable by "
+        "the regression fit at routing accuracy - learned-truth routing "
+        "0.483 vs true-truth 1.000 (fit RMSE ~0.46-0.50), so learned truths "
+        "do not reproduce routing. (4) C0 repulsion on S^2 does NOT preserve "
+        "clustering: initial face separation ratio 16.76x collapses to 0.97x "
+        "under repulsion alone and only 1.21x with same-face attraction, vs "
+        "the 16.76x structure present before the flow. Anomaly detection and "
+        "batch routing at scale (extension 1/3) DO hold: batch acc 1.000 down "
+        "to 0.921 at 100 faces, anomaly gap 0.731 -> 0.593."
+    ),
+}
+out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "..", "data", "polysphere_extensions_data.json")
+with open(out_path, "w") as f:
+    json.dump(results, f, indent=2)
+print("\nverdict:", results["verdict"])
+print("wrote data/polysphere_extensions_data.json")

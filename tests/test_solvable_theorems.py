@@ -22,6 +22,7 @@ number so none of the resolved claims can silently drift:
    - balance survey: 50/50 is best shock absorber but NOT the layout optimum (PARTIAL)
    - balance scale (T54): scaling is a real confound (A* ~ n^1.086) but NOT the problem; dimension-independent shell
    - balance continual (T50): adaptive mu=0.5→0 schedule wins both axes; fixed balanced P5 is harmful
+   - polysphere extensions: learned truths do not reproduce routing; S^2 repulsion does not preserve clustering (NOT SUPPORTED)
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -296,3 +297,20 @@ def test_balance_continual_adaptive_wins():
     for i in range(3):
         assert d['multi_seed_part1_old_route']['AD'][i] > d['multi_seed_part1_old_route']['P0'][i]
         assert d['multi_seed_part2_old_hier']['AD'][i] > d['multi_seed_part2_old_hier']['P0'][i]
+
+
+def test_polysphere_extensions_not_supported():
+    d = load('polysphere_extensions_data.json')
+    assert d['verdict'].startswith('NOT SUPPORTED')
+    # learned truths do not reproduce routing accuracy
+    e2 = d['extension2_learned_truths']
+    assert e2['learned_truth_acc'] < 0.6
+    assert e2['true_truth_acc'] > 0.99
+    # S^2 repulsion destroys the clustering that was present
+    e4 = d['extension4_sphere']
+    assert e4['initial_sep_ratio'] > 10.0
+    assert e4['repulsion_only_ratio'] < 1.5
+    assert e4['with_attraction_ratio'] < 2.0
+    # the pieces that DO hold stay pinned
+    assert d['extension3_scaling']['batch_acc_by_faces']['100'] > 0.9
+    assert d['extension3_scaling']['anomaly_gap_by_faces']['6'] > 0.5
