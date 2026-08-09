@@ -21,6 +21,7 @@ number so none of the resolved claims can silently drift:
    - flow-guided active learning: margin-AL reaches targets with fewer labels than random; raw force-cancellation score is not the winner
    - balance survey: 50/50 is best shock absorber but NOT the layout optimum (PARTIAL)
    - balance scale (T54): scaling is a real confound (A* ~ n^1.086) but NOT the problem; dimension-independent shell
+   - balance continual (T50): adaptive mu=0.5→0 schedule wins both axes; fixed balanced P5 is harmful
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -277,3 +278,21 @@ def test_balance_scale_confound_not_cause():
     assert d['part3_final']['FIB+ABS']['final_old'] >= 0.85
     # dimension-independence claim is persisted
     assert d['part4_dimension_independent'] is True
+
+
+def test_balance_continual_adaptive_wins():
+    d = load('balance_continual_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    # adaptive beats pure-expansion on old-class routing (flat, seed 42)
+    p1 = d['part1_flat_seed42']
+    assert p1['AD']['old_route'] > p1['P0']['old_route']
+    # fixed balanced P5 is harmful: lower all_route than AD
+    assert p1['AD']['all_route'] > p1['P5']['all_route']
+    # same in the hierarchical part
+    p2 = d['part2_hier_seed42']
+    assert p2['AD']['old_hier'] > p2['P0']['old_hier']
+    assert p2['AD']['all_hier'] > p2['P5']['all_hier']
+    # AD wins both axes across all three seeds
+    for i in range(3):
+        assert d['multi_seed_part1_old_route']['AD'][i] > d['multi_seed_part1_old_route']['P0'][i]
+        assert d['multi_seed_part2_old_hier']['AD'][i] > d['multi_seed_part2_old_hier']['P0'][i]

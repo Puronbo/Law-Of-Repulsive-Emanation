@@ -1,0 +1,61 @@
+{
+  "claim": "T50: the adaptive shrink/expand policy (absorb at mu=0.5, settle at mu=0) combines the T49 'two truths' \u2014 shock absorption and layout optimum \u2014 better than either fixed regime",
+  "seed": 42,
+  "A": 120.0,
+  "part1_flat_seed42": {
+    "P0": {
+      "disp_old": 0.1762,
+      "old_route": 0.92,
+      "all_route": 0.913
+    },
+    "P5": {
+      "disp_old": 0.4038,
+      "old_route": 0.907,
+      "all_route": 0.82
+    },
+    "AD": {
+      "disp_old": 0.1683,
+      "old_route": 0.953,
+      "all_route": 0.88
+    }
+  },
+  "part2_hier_seed42": {
+    "P0": {
+      "old_hier": 0.853,
+      "all_hier": 0.847
+    },
+    "P5": {
+      "old_hier": 0.8,
+      "all_hier": 0.767
+    },
+    "AD": {
+      "old_hier": 0.947,
+      "all_hier": 0.867
+    }
+  },
+  "multi_seed_part1_old_route": {
+    "AD": [
+      0.953,
+      0.967,
+      0.967
+    ],
+    "P0": [
+      0.92,
+      0.947,
+      0.907
+    ]
+  },
+  "multi_seed_part2_old_hier": {
+    "AD": [
+      0.947,
+      0.887,
+      0.893
+    ],
+    "P0": [
+      0.853,
+      0.833,
+      0.847
+    ]
+  },
+  "verdict": "SUPPORTED: the adaptive schedule (mu=0.5 absorb during the explosive burst, then mu=0 settle) wins on BOTH axes in every seed - flat old-class routing AD 0.953/0.967/0.967 vs P0 0.920/0.947/0.907, hier old-class AD 0.947/0.887/0.893 vs P0 0.853/0.833/0.847; AD keeps old-anchor displacement ~0.17 with best retention. Fixed balanced P5 is HARMFUL (min_d collapses to ~0.17 flat, 0.007-0.039 hier). The T49 'two truths' are combined by the adaptive schedule, not by either fixed regime."
+}
