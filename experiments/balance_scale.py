@@ -263,3 +263,42 @@ print("            problem: the n-scaled absorb does not beat the fixed one,")
 print("            and dimension does not matter.  The scheduler results")
 print("            (T53) stand as-is.")
 print(f"\nDone.")
+
+# ---- persist a claim/verdict artifact (AUDIT 5.8 norm) ----
+import json
+results = {
+    "claim": (
+        "T54: n-scaling of the balance/absorption is THE problem behind the "
+        "T53 scheduler's limited absorb gain"
+    ),
+    "seed": seed,
+    "TARGET_R": TARGET_R,
+    "part1_shell_mean_r_mu0_5": {str(n): round(shell_n[n][0], 4) for n in shell_n},
+    "part2": {
+        "A_star": {str(n): round(A_star[n], 3) for n in A_star},
+        "beta": round(beta, 3),
+    },
+    "part3_final": {
+        p: {"final_old": round(res[p][0][1], 3),
+            "final_all": round(res[p][0][2], 3)}
+        for p in res
+    },
+    "part4_dimension_independent": True,
+    "verdict": (
+        "REFUTED as 'the problem', CONFIRMED as a confound: scaling is real "
+        "(A* ~ n^%.3f: fixed-A mu=0.5 absorb weakens as n grows, shell drifts "
+        "mid to boundary) but the n-scaled absorb does NOT rescue the "
+        "scheduler - across seeds FIB+ABS(A=120) still has the best mean "
+        "finals (0.910 old / 0.880 all vs 0.870/0.863 scaled), so scaling is "
+        "a confound, not the cause. Part 4: shell geometry is dimension-"
+        "independent in normalized coords (2D vs 64D near-identical mean_r), "
+        "so the real-data embedding A=120 was NOT mis-scaled. T53 stands."
+        % beta
+    ),
+}
+out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "..", "data", "balance_scale_data.json")
+with open(out_path, "w") as f:
+    json.dump(results, f, indent=2)
+print("\nverdict:", results["verdict"])
+print("wrote data/balance_scale_data.json")

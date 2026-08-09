@@ -222,6 +222,7 @@ For each claim: **Status** (measured/derived), **the claim**, **evidence**
 | Hierarchical C0 flow (coarse × fine anchors) | **Supported 2026-08-08** | 2-level C0 flow matches flat 30-anchor routing (router 0.910 vs 0.880, gain +0.030) while needing only 6 comparisons per routing level instead of 30; nearest-centroid parity (0.997 vs 1.000); fine local separation 0.12 enforced that flat packing cannot guarantee. `experiments/flow_hierarchical.py`, `data/flow_hierarchical_data.json` |
 | Flow-guided active learning | **Supported (margin-based) 2026-08-08** | margin-AL on the C0 anchor layout's force field reaches 0.80 with 75 labels vs random's 120 (saves 45) and 0.82 with 90 vs 165 (saves 75). Honest wall: the raw force-cancellation score 1−\|F_net\|/\|F_abs\| is NOT the winner (final 0.822 vs margin 0.819); the margin-to-two-nearest-anchors criterion carries the gain. `experiments/flow_active_learning.py`, `data/flow_active_learning_data.json` |
 | 50/50 balance as "total truth" (T49) | **Partial 2026-08-08** | mu=0.5 is the best shock ABSORBER (recovers to 95–100% of a fresh same-size packing; n4 re-anchor matches the fresh lattice; tight-core n2 mu=0.9 shatters) but NOT the layout optimum — packing peaks at mu=0.25, uniformity at mu=0.0, and pure repulsion wins routing decisively (base_route 0.960 vs 0.887 balanced; old-class routing after +5 degrades slower without balance). The two "total truths" are different optima. `experiments/balance_survey.py`, `data/balance_survey_data.json` |
+| n-scaling of the absorb (T54) | **Confound, not cause 2026-08-08** | A* ~ n^1.086 is real (fixed-A mu=0.5 absorb weakens as n grows, shell drifts mid→boundary) but the n-scaled absorb does NOT rescue the T53 scheduler (across seeds FIB+ABS(A=120) keeps best mean finals 0.910/0.880 vs 0.870/0.863 scaled); shell geometry is dimension-independent in normalized coords (2D vs 64D near-identical mean_r), so the real-data embedding A=120 was not mis-scaled. T53 stands. `experiments/balance_scale.py`, `data/balance_scale_data.json` |
 
 ---
 
@@ -243,6 +244,7 @@ python experiments/fold_ladder_phi.py                   # C2: retrace chain is 1
 python experiments/flow_hierarchical.py                 # hierarchical C0 flow verdict (SUPPORTED)
 python experiments/flow_active_learning.py              # active-learning verdict (margin beats random)
 python experiments/balance_survey.py                    # T49 balance verdict (PARTIAL)
+python experiments/balance_scale.py                     # T54 scaling verdict (confound, not cause)
 ```
 
 ---

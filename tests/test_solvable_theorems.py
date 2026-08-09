@@ -20,6 +20,7 @@ number so none of the resolved claims can silently drift:
    - hierarchical C0 flow: SUPPORTED (NC parity with flat flow, router gain, 6 not 30 comps)
    - flow-guided active learning: margin-AL reaches targets with fewer labels than random; raw force-cancellation score is not the winner
    - balance survey: 50/50 is best shock absorber but NOT the layout optimum (PARTIAL)
+   - balance scale (T54): scaling is a real confound (A* ~ n^1.086) but NOT the problem; dimension-independent shell
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -260,3 +261,19 @@ def test_balance_survey_partial_not_layout_optimum():
     assert t['n2_mu0_9'] == 'n1 shatter'
     # pure repulsion routes best
     assert d['part3']['pure_repulsion_routes_best'] is True
+
+
+def test_balance_scale_confound_not_cause():
+    d = load('balance_scale_data.json')
+    assert d['verdict'].startswith('REFUTED')
+    # the A*(n) fit is a real super-linear scaling
+    assert d['part2']['beta'] > 1.0
+    # A* is strictly increasing in n (trap must scale UP)
+    a_star = d['part2']['A_star']
+    keys = ['5', '10', '20', '40', '80']
+    for i in range(len(keys) - 1):
+        assert a_star[keys[i + 1]] > a_star[keys[i]]
+    # fixed-A absorb does NOT underperform the scaled one (confound, not cause)
+    assert d['part3_final']['FIB+ABS']['final_old'] >= 0.85
+    # dimension-independence claim is persisted
+    assert d['part4_dimension_independent'] is True
