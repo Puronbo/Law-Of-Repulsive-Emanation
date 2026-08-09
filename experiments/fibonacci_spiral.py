@@ -168,3 +168,42 @@ print(f"  (drift < 1 = bounded pseudo-energy)")
 # Check if the turning is near-constant (hallmark of frictionless flow)
 print(f"\n  Turning angle std: spiral={r1['mean_turning_angle_deg']/2:.1f} deg")
 print(f"  (lower std = more regular turning = less 'friction')")
+
+# ---- persist a claim/verdict artifact (AUDIT 5.8 norm) ----
+import json
+results = {
+    "claim": (
+        "The Fibonacci spiral projected onto the Poincare disk turns at "
+        "the golden angle (~137.5 deg) and behaves like a frictionless C0 "
+        "trajectory (pseudo-energy conserved)"
+    ),
+    "experiments": {
+        "mod_square_spiral": r1,
+        "ratio_projection": r2,
+    },
+    "comparison": {
+        "golden_angle_deg": r1["golden_angle_deg"],
+        "mod_square_diff_deg": round(abs(r1["mean_turning_angle_deg"] - r1["golden_angle_deg"]), 2),
+        "ratio_diff_deg": round(abs(r2["mean_turning_angle_deg"] - r2["golden_angle_deg"]), 2),
+        "spiral_energy_drift": r1["energy_drift"],
+        "ratio_energy_drift": r2["energy_drift"],
+    },
+    "verdict": (
+        "REFUTED: neither Fibonacci-on-disk projection turns at the golden "
+        "angle. Mod-square spiral (n=200, scale=0.01): mean turn 42.14 deg "
+        "vs golden 137.51 deg (diff 95.36); ratio projection (n=100): mean "
+        "turn 29.23 deg (diff 108.28). Pseudo-energy is NOT conserved: "
+        "drift 1.0000 (spiral, marginal) and 11.8085 (ratio, unbounded). "
+        "The Fibonacci trajectory is NOT a frictionless golden-angle C0 "
+        "trajectory on the disk. This is consistent with golden_survey: the "
+        "golden angle is an exact property of the cusp (logarithmic) metric "
+        "geodesic (t39_cusp_flow), not of arbitrary Fibonacci number "
+        "embeddings into the Poincare disk."
+    ),
+}
+out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "..", "data", "fibonacci_spiral_data.json")
+with open(out_path, "w") as f:
+    json.dump(results, f, indent=2)
+print("\nverdict:", results["verdict"][:150], "...")
+print("wrote data/fibonacci_spiral_data.json")

@@ -36,6 +36,7 @@ number so none of the resolved claims can silently drift:
    - t39 cusp flow: cusp isometry w=log(q) verified EXACTLY (energy CV 3e-15, step ratio=phi exactly, w-plane R2=1.0 slope pi/(2 log phi), T-sym err 0) - SUPPORTED (deterministic)
    - van iterson T48a: NO golden-angle locking in ANY rule (discrete bisection, min-potential, min-dist, center+push-out; divergence 170-200 deg, r~n^0.4-0.5) - SUPPORTED negative, locking is an insertion-constraint special value
    - reverse pair gaps T57: NOT a reversal pair (reverse(10262)=26201 != 26102); 80-multiple + 11-sums hold but are plain arithmetic - REFUTED headline, census is ordinary
+   - fibonacci spiral on disk: neither projection turns at golden angle (42.14 / 29.23 deg vs 137.51) and pseudo-energy not conserved (drift 1.00 / 11.81) - REFUTED, golden angle is a cusp-metric property
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -533,3 +534,15 @@ def test_reverse_pair_gaps_refuted():
     assert d['gap_census_pair']['n_primes'] > 1000
     assert d['gap_census_mid']['n_primes'] > 100000
     assert d['emirps']['count'] > 300
+
+
+def test_fibonacci_spiral_disk_refuted():
+    d = load('fibonacci_spiral_data.json')
+    assert d['verdict'].startswith('REFUTED')
+    c = d['comparison']
+    # turning far from golden angle in both projections
+    assert c['mod_square_diff_deg'] > 50
+    assert c['ratio_diff_deg'] > 50
+    # pseudo-energy not conserved
+    assert c['ratio_energy_drift'] > 1.0
+    assert c['spiral_energy_drift'] > 0.5

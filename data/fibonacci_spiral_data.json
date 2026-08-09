@@ -1,0 +1,27 @@
+{
+  "claim": "The Fibonacci spiral projected onto the Poincare disk turns at the golden angle (~137.5 deg) and behaves like a frictionless C0 trajectory (pseudo-energy conserved)",
+  "experiments": {
+    "mod_square_spiral": {
+      "V_min": 0.0,
+      "V_max": 24.138428603084016,
+      "energy_drift": 1.0,
+      "mean_turning_angle_deg": 42.143484094201355,
+      "golden_angle_deg": 137.50776405003785
+    },
+    "ratio_projection": {
+      "V_min": 0.0,
+      "V_max": 24.434791624428332,
+      "energy_drift": 11.808497122348454,
+      "mean_turning_angle_deg": 29.22650184211247,
+      "golden_angle_deg": 137.50776405003785
+    }
+  },
+  "comparison": {
+    "golden_angle_deg": 137.50776405003785,
+    "mod_square_diff_deg": 95.36,
+    "ratio_diff_deg": 108.28,
+    "spiral_energy_drift": 1.0,
+    "ratio_energy_drift": 11.808497122348454
+  },
+  "verdict": "REFUTED: neither Fibonacci-on-disk projection turns at the golden angle. Mod-square spiral (n=200, scale=0.01): mean turn 42.14 deg vs golden 137.51 deg (diff 95.36); ratio projection (n=100): mean turn 29.23 deg (diff 108.28). Pseudo-energy is NOT conserved: drift 1.0000 (spiral, marginal) and 11.8085 (ratio, unbounded). The Fibonacci trajectory is NOT a frictionless golden-angle C0 trajectory on the disk. This is consistent with golden_survey: the golden angle is an exact property of the cusp (logarithmic) metric geodesic (t39_cusp_flow), not of arbitrary Fibonacci number embeddings into the Poincare disk."
+}
