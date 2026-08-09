@@ -1,0 +1,60 @@
+{
+  "claim": "The symplectic integrator preserves time-reversal symmetry even when the C0 geodesic trajectory crosses the origin q=0 (the C0 minimum)",
+  "settings": {
+    "dt": 0.0005,
+    "steps": 2000,
+    "friction": 0.0,
+    "max_grad": 5.0
+  },
+  "experiments": [
+    {
+      "label": "Exp A: 0+ > 0 < x_0+   (start positive, cross origin forward)",
+      "x0": [
+        0.02,
+        0.0
+      ],
+      "ts_error": 0.06615556358519996,
+      "crossed_origin": false,
+      "min_dist_to_origin": 0.02,
+      "energy_drift": 0.03263337002063979,
+      "pass": true
+    },
+    {
+      "label": "Exp B: 0- < 0 > x_0-   (start negative, cross origin forward)",
+      "x0": [
+        -0.02,
+        0.0
+      ],
+      "ts_error": 0.06621939286431093,
+      "crossed_origin": false,
+      "min_dist_to_origin": 0.02,
+      "energy_drift": 0.03205806732608819,
+      "pass": true
+    },
+    {
+      "label": "Exp C: larger positive offset",
+      "x0": [
+        0.1,
+        0.05
+      ],
+      "ts_error": 0.22561141382035924,
+      "crossed_origin": false,
+      "min_dist_to_origin": 0.1118033988749895,
+      "energy_drift": 0.23059588290299965,
+      "pass": true
+    },
+    {
+      "label": "Exp D: perpendicular offset (off the q_1 axis)",
+      "x0": [
+        0.0,
+        0.05
+      ],
+      "ts_error": 0.10187768370767705,
+      "crossed_origin": true,
+      "min_dist_to_origin": 0.05,
+      "energy_drift": 0.1318485229956059,
+      "pass": true
+    }
+  ],
+  "verdict": "CAVEAT: T-symmetry reconstruction errors are small (0.066-0.226) in all four runs, so the integrator IS time-reversible in these regimes. BUT the crossing premise never actually occurred: in every experiment the closest approach to the origin is the STARTING distance itself (idx=0), i.e. the trajectories monotonically recede from q=0. A/B/C have zero q1-axis crossings; only D crosses the axis once while keeping min dist = 0.05. The headline regime - a trajectory passing THROUGH the C0 critical point - was never exercised, so the claim is PASS-with-caveat, not confirmed."
+}

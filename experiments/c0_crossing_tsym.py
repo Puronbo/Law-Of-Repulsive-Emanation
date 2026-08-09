@@ -137,3 +137,43 @@ print(f"  T-symmetry when trajectory crosses q=0 (the C0 minimum)?")
 all_pass = all(r["success"] for r in [res_a, res_b, res_c, res_d])
 print(f"  Answer: {'YES' if all_pass else 'PARTIAL'} "
       f"(all experiments {'PASS' if all_pass else 'mixed'})")
+
+# ---- persist a claim/verdict artifact (AUDIT 5.8 norm) ----
+import json
+rows = []
+for res in [res_a, res_b, res_c, res_d]:
+    rows.append({
+        "label": res["label"],
+        "x0": [float(v) for v in res["x0"]],
+        "ts_error": float(res["ts_error"]),
+        "crossed_origin": bool(res["crossed_origin"]),
+        "min_dist_to_origin": float(res["min_dist_to_origin"]),
+        "energy_drift": float(res["energy_drift"]),
+        "pass": bool(res["success"]),
+    })
+results = {
+    "claim": (
+        "The symplectic integrator preserves time-reversal symmetry even "
+        "when the C0 geodesic trajectory crosses the origin q=0 (the C0 "
+        "minimum)"
+    ),
+    "settings": {"dt": 0.0005, "steps": 2000, "friction": 0.0, "max_grad": 5.0},
+    "experiments": rows,
+    "verdict": (
+        "CAVEAT: T-symmetry reconstruction errors are small (0.066-0.226) "
+        "in all four runs, so the integrator IS time-reversible in these "
+        "regimes. BUT the crossing premise never actually occurred: in every "
+        "experiment the closest approach to the origin is the STARTING "
+        "distance itself (idx=0), i.e. the trajectories monotonically recede "
+        "from q=0. A/B/C have zero q1-axis crossings; only D crosses the "
+        "axis once while keeping min dist = 0.05. The headline regime - a "
+        "trajectory passing THROUGH the C0 critical point - was never "
+        "exercised, so the claim is PASS-with-caveat, not confirmed."
+    ),
+}
+out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "..", "data", "c0_crossing_tsym_data.json")
+with open(out_path, "w") as f:
+    json.dump(results, f, indent=2)
+print("\nverdict:", results["verdict"][:160], "...")
+print("wrote data/c0_crossing_tsym_data.json")

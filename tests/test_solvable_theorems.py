@@ -31,6 +31,7 @@ number so none of the resolved claims can silently drift:
    - fib stream (T52): Fibonacci-sized continual stream is steady; AD_phi (absorb on large terms) beats P0 on both axes in all 3 seeds; golden insertion washes out; no golden scaling signature
    - hamiltonian routing: C0 flow separates centroids (routing 0.420->0.765, nc reaches oracle 0.909); min pair dist barely moves; flow is not the ceiling
    - metric comparison: Poincare vs cusp geodesic from a 'stable' start blows up numerically in BOTH (Poincare NaN, cusp ~2e13; C0 broken, T-sym fails) - REFUTED at these settings
+   - c0 crossing tsym: T-sym holds (err 0.066-0.226) but NO trajectory actually crossed the origin (closest approach = start dist) - PASS-with-caveat, crossing regime never exercised
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -456,3 +457,17 @@ def test_metric_comparison_refuted_numerically():
     assert p['c0_max_dev'] > 20 and c['c0_max_dev'] > 20
     assert not p['tsym_ok'] and not c['tsym_ok']
     assert c['energy_drift'] > 1e10
+
+
+def test_c0_crossing_tsym_caveat():
+    d = load('c0_crossing_tsym_data.json')
+    assert d['verdict'].startswith('CAVEAT')
+    rows = d['experiments']
+    assert len(rows) == 4
+    # T-symmetry holds (err < 0.5) in every run
+    assert all(r['pass'] for r in rows)
+    assert max(r['ts_error'] for r in rows) < 0.5
+    # BUT the crossing premise never occurred: closest approach == start dist
+    assert all(r['min_dist_to_origin'] > 0.0 for r in rows)
+    # A/B/C never cross the q1 axis
+    assert not rows[0]['crossed_origin'] and not rows[1]['crossed_origin']
