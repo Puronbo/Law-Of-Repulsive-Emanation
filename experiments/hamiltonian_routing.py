@@ -156,3 +156,52 @@ print(f"  Ceiling (true centroids):    routing={oracle_acc:.3f}, nc={nc_oracle:.
 print(f"\n  Implication: C0 Hamiltonian flow on the Poincare disk")
 print(f"  provides well-separated face anchors for routing.")
 print(f"\nDone.")
+
+# ---- persist a claim/verdict artifact (AUDIT 5.8 norm) ----
+import json
+results = {
+    "claim": (
+        "C0 Hamiltonian flow on the Poincare disk separates initially "
+        "crowded class centroids, providing well-separated anchors that "
+        "improve routing accuracy toward the true-cluster-centroid ceiling"
+    ),
+    "seed": 42,
+    "n_classes": n_classes,
+    "pair_dist": {
+        "init_min": round(float(init_min_d), 4),
+        "init_mean": round(float(init_mean_d), 4),
+        "flow_min": round(float(flow_min_d), 4),
+        "flow_mean": round(float(flow_mean_d), 4),
+        "flow_mean_r": round(float(np.linalg.norm(flowed, axis=1).mean()), 3),
+    },
+    "routing_acc": {
+        "init": round(float(init_acc), 3),
+        "flow": round(float(flow_acc), 3),
+        "delta_vs_init": round(float(flow_acc - init_acc), 3),
+        "oracle": round(float(oracle_acc), 3),
+        "best_random": round(float(random_best), 3),
+    },
+    "nearest_centroid": {
+        "init": round(float(nc_init), 3),
+        "flow": round(float(nc_flow), 3),
+        "oracle": round(float(nc_oracle), 3),
+    },
+    "verdict": (
+        "SUPPORTED: C0 Hamiltonian flow on the disk separates the crowded "
+        "init centroids (mean pair dist 0.1803 -> 1.1433), routing accuracy "
+        "jumps 0.420 -> 0.765 (+0.345), and nearest-centroid classification "
+        "0.537 -> 0.909 reaches the true-cluster oracle (0.911). Honest "
+        "walls: (a) the min pair distance barely moves (0.0326 -> 0.0328) - "
+        "the flow clamps everything to the disk boundary (mean r 0.850 = "
+        "max_r) so the separation gain is mean, not worst-case; (b) routing "
+        "0.765 stays below the true-centroid oracle 0.830, so the flow is "
+        "NOT the ceiling - it just beats a poor init by +0.345 and the best "
+        "random draw by +0.505."
+    ),
+}
+out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "..", "data", "hamiltonian_routing_data.json")
+with open(out_path, "w") as f:
+    json.dump(results, f, indent=2)
+print("\nverdict:", results["verdict"])
+print("wrote data/hamiltonian_routing_data.json")

@@ -29,6 +29,7 @@ number so none of the resolved claims can silently drift:
    - polysphere routing: batch routing exact (identity confusion, chance 0.167); silhouette 0.943; per-point weak
    - golden survey: phi EXACT in cusp metric; golden rotation maxes min gap; static C0 packing has no golden structure; gap-filling does not lock to golden angle
    - fib stream (T52): Fibonacci-sized continual stream is steady; AD_phi (absorb on large terms) beats P0 on both axes in all 3 seeds; golden insertion washes out; no golden scaling signature
+   - hamiltonian routing: C0 flow separates centroids (routing 0.420->0.765, nc reaches oracle 0.909); min pair dist barely moves; flow is not the ceiling
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -423,3 +424,20 @@ def test_fib_stream_steady_and_ad_wins_all_seeds():
     assert abs(c['fib_center_P0']['a_mean_r']) < 0.1
     assert -0.9 < c['fib_center_P0']['b_min_d'] < -0.5
     assert -0.9 < c['eq_center_P0']['b_min_d'] < -0.5
+
+
+def test_hamiltonian_routing_flow_separates():
+    d = load('hamiltonian_routing_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    pd = d['pair_dist']
+    # the flow separates centroids in the MEAN
+    assert pd['flow_mean'] > 5 * pd['init_mean']            # 1.1433 vs 0.1803
+    # ...but NOT in the min (clamped to the boundary)
+    assert pd['flow_min'] < 0.05
+    r = d['routing_acc']
+    assert r['flow'] > r['init'] + 0.2                      # +0.345
+    assert r['flow'] > r['best_random']                     # 0.765 vs 0.260
+    # nearest-centroid reaches the oracle ceiling
+    nc = d['nearest_centroid']
+    assert nc['flow'] > 0.9
+    assert nc['flow'] >= nc['oracle'] - 0.05                # 0.909 vs 0.911

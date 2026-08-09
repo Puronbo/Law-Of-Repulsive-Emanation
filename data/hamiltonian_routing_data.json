@@ -1,0 +1,25 @@
+{
+  "claim": "C0 Hamiltonian flow on the Poincare disk separates initially crowded class centroids, providing well-separated anchors that improve routing accuracy toward the true-cluster-centroid ceiling",
+  "seed": 42,
+  "n_classes": 10,
+  "pair_dist": {
+    "init_min": 0.0326,
+    "init_mean": 0.1803,
+    "flow_min": 0.0328,
+    "flow_mean": 1.1433,
+    "flow_mean_r": 0.85
+  },
+  "routing_acc": {
+    "init": 0.42,
+    "flow": 0.765,
+    "delta_vs_init": 0.345,
+    "oracle": 0.83,
+    "best_random": 0.26
+  },
+  "nearest_centroid": {
+    "init": 0.537,
+    "flow": 0.909,
+    "oracle": 0.911
+  },
+  "verdict": "SUPPORTED: C0 Hamiltonian flow on the disk separates the crowded init centroids (mean pair dist 0.1803 -> 1.1433), routing accuracy jumps 0.420 -> 0.765 (+0.345), and nearest-centroid classification 0.537 -> 0.909 reaches the true-cluster oracle (0.911). Honest walls: (a) the min pair distance barely moves (0.0326 -> 0.0328) - the flow clamps everything to the disk boundary (mean r 0.850 = max_r) so the separation gain is mean, not worst-case; (b) routing 0.765 stays below the true-centroid oracle 0.830, so the flow is NOT the ceiling - it just beats a poor init by +0.345 and the best random draw by +0.505."
+}
