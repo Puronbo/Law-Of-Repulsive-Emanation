@@ -13,7 +13,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
-| Regression suite | **26/26 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
+| Regression suite | **27/27 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
 | L.O.R.E. | C0 = V(q0) = H(q0,0), 109 tests; T-symmetry error 0.003 |
 | Fold theorem (T63/T64) | crease = **unique viscosity solution of |r′| = a**; retrace = cut locus; eikonal err 3.3e-13; measured crease 0.0350π vs derived 0.0318π; area 2666.6665 vs 2666.6666… |
 | Clock-test canon (T59/T61) | law-ness 1.000 → 0.417 under calendar re-index → 1.000 under rotation; rotation overlap/sim 1.000 |
@@ -134,6 +134,7 @@ The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.j
 | Golden fold as chain law (`fold_ladder_phi.py`) | retrace chain is 1/4 golden rungs; the φ² rung is an isolated coincidence-scale hit (null: P(≥1)=0.036); NOT a ladder |
 | Hierarchical C0 flow (`flow_hierarchical.py`) | 2-level C0 anchors match flat 30-anchor routing (router 0.910 vs 0.880) with 6 comparisons/level instead of 30; NC parity 0.997 |
 | Flow-guided active learning (`flow_active_learning.py`) | margin-AL reaches 0.80 with 75 labels vs random's 120, 0.82 with 90 vs 165; raw force-cancellation score is NOT the winner |
+| Balance survey T49 (`balance_survey.py`) | 50/50 balance is the best shock absorber (recovers to 95–100% of fresh packing) but NOT the layout optimum (packing peaks mu=0.25, uniformity mu=0.0, pure repulsion routes best 0.960 vs 0.887) — PARTIAL |
 
 ## Internet-Scale Flow (T67, T72)
 
@@ -182,6 +183,7 @@ python experiments/prime_count_from_scratch.py   # pi(943901200001) = 3557552619
 python experiments/fold_ladder_phi.py             # C2 verdict (NOT a golden ladder)
 python experiments/flow_hierarchical.py           # hierarchical C0 flow verdict (SUPPORTED)
 python experiments/flow_active_learning.py        # active-learning verdict (margin beats random)
+python experiments/balance_survey.py              # T49 balance verdict (PARTIAL)
 python Universals/serve_dashboard.py   # L.O.R.E. dashboard -> http://localhost:8080/docs/
 ```
 

@@ -19,6 +19,7 @@ number so none of the resolved claims can silently drift:
    - C2 golden fold: retrace chain is not a phi/phi^2 ladder (1/4 rungs)
    - hierarchical C0 flow: SUPPORTED (NC parity with flat flow, router gain, 6 not 30 comps)
    - flow-guided active learning: margin-AL reaches targets with fewer labels than random; raw force-cancellation score is not the winner
+   - balance survey: 50/50 is best shock absorber but NOT the layout optimum (PARTIAL)
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -244,3 +245,18 @@ def test_flow_active_learning_margin_beats_random():
     assert ltt078['force'] is None or ltt078['force'] > ltt078['margin']
     fin = d['final_accuracy']
     assert fin['margin_al'] >= fin['random'] - 0.02
+
+
+def test_balance_survey_partial_not_layout_optimum():
+    d = load('balance_survey_data.json')
+    assert d['verdict'].startswith('PARTIAL')
+    # the layout optima are NOT at mu=0.5
+    assert d['part1']['mu0_5_is_peak'] is False
+    assert d['part1']['best_packing_mu'] != 0.5
+    assert d['part1']['best_uniformity_mu'] != 0.5
+    # the balanced tier is the shock absorber; the tight core shatters
+    t = d['part2']['tiers']
+    assert t['n3_mu0_5'] == 'n3 equilibrate'
+    assert t['n2_mu0_9'] == 'n1 shatter'
+    # pure repulsion routes best
+    assert d['part3']['pure_repulsion_routes_best'] is True

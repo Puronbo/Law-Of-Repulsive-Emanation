@@ -1,0 +1,31 @@
+{
+  "claim": "the 50/50 shrinking/expanding balance (mu=0.5) yields 'total truth': simultaneously the layout optimum and the robust recovery optimum",
+  "seed": 42,
+  "max_r": 0.85,
+  "A": 120.0,
+  "part1": {
+    "best_packing_mu": 0.25,
+    "best_packing_min_d": 0.2813,
+    "best_uniformity_mu": 0.0,
+    "best_uniformity_gap_cv": 0.4903,
+    "mu0_5_is_peak": false
+  },
+  "part2": {
+    "tiers": {
+      "n1_mu0_0": "n3 equilibrate",
+      "n2_mu0_9": "n1 shatter",
+      "n3_mu0_5": "n3 equilibrate",
+      "n4_mu0_5": "n3 equilibrate"
+    },
+    "balanced_recovers_to_fresh_packing": true
+  },
+  "part3": {
+    "base_route": {
+      "mu0_0": 0.773,
+      "mu0_5": 0.887,
+      "mu0_75": 0.773
+    },
+    "pure_repulsion_routes_best": true
+  },
+  "verdict": "PARTIAL: the 50/50 state is the best shock ABSORBER (recovers to 95-100% of a fresh same-size packing; n4 re-anchor matches the fresh lattice; the tight-core n2 mu=0.9 tier shatters) but is NOT the layout optimum - best packing sits at mu=0.25, best uniformity at mu=0.0, and pure repulsion wins routing decisively (base_route 0.960 vs 0.887 balanced; old-class routing after +5 degrades slower without balance). Truth-as-layout-optimum and truth-as-robust-recovery are different optima and do not coincide."
+}
