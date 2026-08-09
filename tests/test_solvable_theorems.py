@@ -35,6 +35,7 @@ number so none of the resolved claims can silently drift:
    - c0 cusp flow: cusp-metric C0 geodesic at dt=0.005/5000 steps blows up (Poincare NaN, cusp escapes to ~2.7e23, drift 2.68e45, T-sym err 2.8e9) - REFUTED/unverifiable at settings
    - t39 cusp flow: cusp isometry w=log(q) verified EXACTLY (energy CV 3e-15, step ratio=phi exactly, w-plane R2=1.0 slope pi/(2 log phi), T-sym err 0) - SUPPORTED (deterministic)
    - van iterson T48a: NO golden-angle locking in ANY rule (discrete bisection, min-potential, min-dist, center+push-out; divergence 170-200 deg, r~n^0.4-0.5) - SUPPORTED negative, locking is an insertion-constraint special value
+   - reverse pair gaps T57: NOT a reversal pair (reverse(10262)=26201 != 26102); 80-multiple + 11-sums hold but are plain arithmetic - REFUTED headline, census is ordinary
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -516,3 +517,19 @@ def test_van_iterson_no_golden_lock():
     # part 1 control also never locks
     for row in d['part1_control']:
         assert row['within5_frac'] < 0.5
+
+
+def test_reverse_pair_gaps_refuted():
+    d = load('reverse_pair_gaps_data.json')
+    assert d['verdict'].startswith('REFUTED')
+    r = d['relations']
+    # NOT a reversal pair: reverse(10262) = 26201 != 26102
+    assert r['is_reversal_pair'] is False
+    assert r['reverse_10262'] == 26201
+    # sub-relations do hold
+    assert r['diff_80_multiple'] is True
+    assert r['digit_sum_10262'] == 11 and r['digit_sum_26102'] == 11
+    # censuses are ordinary exact arithmetic
+    assert d['gap_census_pair']['n_primes'] > 1000
+    assert d['gap_census_mid']['n_primes'] > 100000
+    assert d['emirps']['count'] > 300

@@ -13,7 +13,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
-| Regression suite | **42/42 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
+| Regression suite | **43/43 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
 | L.O.R.E. | C0 = V(q0) = H(q0,0), 109 tests; T-symmetry error 0.003 |
 | Fold theorem (T63/T64) | crease = **unique viscosity solution of |r′| = a**; retrace = cut locus; eikonal err 3.3e-13; measured crease 0.0350π vs derived 0.0318π; area 2666.6665 vs 2666.6666… |
 | Clock-test canon (T59/T61) | law-ness 1.000 → 0.417 under calendar re-index → 1.000 under rotation; rotation overlap/sim 1.000 |
@@ -150,6 +150,7 @@ The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.j
 | C0 cusp geodesic (`c0_cusp_flow.py`) | REFUTED/unverifiable at settings (same failure as `metric_comparison`): cusp C0 geodesic at dt=0.005/5000 steps blows up — Poincare NaN, cusp escapes to ~2.7e23 (drift 2.68e45, T-sym err 2.8e9); the "C0 broken" reading is an escape artifact, not a geodesic property |
 | T39 cusp isometry (`t39_cusp_flow.py`) | SUPPORTED (exact, deterministic): cusp metric isometric to Euclidean plane under w=log(q) — energy CV 3.06e-15, step ratio = phi exactly (CV 8e-15), w-plane R² = 1.0 with slope exactly π/(2·log φ)=3.264251, T-sym error 0.00e+00 |
 | Van Iterson T48a (`van_iterson.py`) | SUPPORTED (negative): NO golden-angle locking in ANY rule — discrete bisection (360-small-arc), min-potential, min-dist-to-previous, center+push-out all give divergence 170–200° (alternating placement), mean gap 360/N, r~n^0.4–0.5; golden locking is an insertion-constraint special value, not a C0-repulsion attractor |
+| Reverse-pair gaps T57 (`reverse_pair_gaps.py`) | REFUTED (headline premise): 10262 ↔ 26102 is NOT a reversal pair — reverse(10262)=26201≠26102 (script computes it itself); the 80-multiple (15840=80×198) and digit-sum-11 relations hold but are plain arithmetic; gap census (1610 primes, max gap 52) is exact but ordinary, no reversal signal |
 
 ## Internet-Scale Flow (T67, T72)
 
@@ -214,6 +215,7 @@ python experiments/c0_crossing_tsym.py             # C0-crossing T-sym verdict (
 python experiments/c0_cusp_flow.py                 # C0 cusp geodesic verdict (REFUTED at settings)
 python experiments/t39_cusp_flow.py                # T39 cusp-isometry verdict (SUPPORTED, exact)
 python experiments/van_iterson.py                  # T48a Van Iterson verdict (SUPPORTED, no lock)
+python experiments/reverse_pair_gaps.py           # T57 reverse-pair verdict (REFUTED headline)
 python Universals/serve_dashboard.py   # L.O.R.E. dashboard -> http://localhost:8080/docs/
 ```
 

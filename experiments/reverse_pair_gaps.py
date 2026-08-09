@@ -150,3 +150,58 @@ print("       at Cramer scale (~1520) with O(sqrt N) memory.")
 print("    3. In the net project, the analogous wall is the O(n^2) flow:")
 print("       the O(1)-per-neuron spatial search is the efficient fix,")
 print("       exactly as segmented sieve is the efficient fix here.")
+
+# ---- persist a claim/verdict artifact (AUDIT 5.8 norm) ----
+import json, os
+rev_ok = str(R) == str(L)[::-1]
+results = {
+    "claim": (
+        "T57: 10262 and 26102 are a reversal ('reverse pair') related by "
+        "reversal, by an 80-divisor multiple (26102 - 10262 = 15840 = 80*198), "
+        "and by equal digit sums (both 11)"
+    ),
+    "relations": {
+        "is_reversal_pair": bool(rev_ok),
+        "reverse_10262": int(str(L)[::-1]),
+        "diff_80_multiple": bool((R - L) % 80 == 0),
+        "diff": R - L,
+        "diff_over_80": (R - L) // 80,
+        "digit_sum_10262": int(sum(map(int, str(L)))),
+        "digit_sum_26102": int(sum(map(int, str(R)))),
+    },
+    "gap_census_pair": {"n_primes": int(len(P1)), "max_gap": int(g1.max()),
+                        "max_gap_at": int(P1[int(np.argmax(g1))]),
+                        "mean_gap": round(float(g1.mean()), 2),
+                        "gaps_div80": int((g1 % 80 == 0).sum()),
+                        "gaps_div11": int((g1 % 11 == 0).sum())},
+    "gap_census_mid": {"n_primes": int(len(P2)), "max_gap": int(g2.max()),
+                       "max_gap_at": int(P2[int(np.argmax(g2))]),
+                       "mean_gap": round(float(g2.mean()), 2),
+                       "gaps_div80": int((g2 % 80 == 0).sum()),
+                       "gaps_div11": int((g2 % 11 == 0).sum())},
+    "emirps": {"count": int(len(emirps)), "first": [list(e) for e in emirps[:6]]},
+    "digit_sum_11_primes": {"count": int(len(ds11)),
+                            "frac_of_interval_primes": round(100 * len(ds11) / len(P1), 1),
+                            "first": [int(p) for p in ds11[:6]]},
+    "verdict": (
+        "REFUTED (headline premise): the pair is NOT a reversal pair - the "
+        "script itself computes reverse(10262) = 26201, and 26201 != 26102 "
+        "(and reverse(26102) = 20162). The sub-relations do hold: "
+        "26102 - 10262 = 15840 = 80*198 (divisible by 80) and both digit "
+        "sums are 11 - but these are plain arithmetic, they carry no "
+        "reversal structure. The prime-gap census [10262, 26102] (1610 "
+        "primes, max gap 52 at 19609, 0 gaps divisible by 80, 30 by 11) and "
+        "[26102, 1914467] (140162 primes, max gap 132 at 1357201, 24 gaps "
+        "divisible by 80) are exact arithmetic over ordinary intervals and "
+        "contain no signal attributable to the 'reverse pair'; emirps (374) "
+        "and digit-sum-11 primes (67 = 4.2%) are generic counts. The 9.4e11 "
+        "endpoint is correctly handled analytically (Lucy_Hedgehog/Lehmer + "
+        "segmented sieve) rather than by sieve."
+    ),
+}
+out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "..", "data", "reverse_pair_gaps_data.json")
+with open(out_path, "w") as f:
+    json.dump(results, f, indent=2)
+print("\nverdict:", results["verdict"][:150], "...")
+print("wrote data/reverse_pair_gaps_data.json")

@@ -1,0 +1,70 @@
+{
+  "claim": "T57: 10262 and 26102 are a reversal ('reverse pair') related by reversal, by an 80-divisor multiple (26102 - 10262 = 15840 = 80*198), and by equal digit sums (both 11)",
+  "relations": {
+    "is_reversal_pair": false,
+    "reverse_10262": 26201,
+    "diff_80_multiple": true,
+    "diff": 15840,
+    "diff_over_80": 198,
+    "digit_sum_10262": 11,
+    "digit_sum_26102": 11
+  },
+  "gap_census_pair": {
+    "n_primes": 1610,
+    "max_gap": 52,
+    "max_gap_at": 19609,
+    "mean_gap": 9.84,
+    "gaps_div80": 0,
+    "gaps_div11": 30
+  },
+  "gap_census_mid": {
+    "n_primes": 140162,
+    "max_gap": 132,
+    "max_gap_at": 1357201,
+    "mean_gap": 13.47,
+    "gaps_div80": 24,
+    "gaps_div11": 4485
+  },
+  "emirps": {
+    "count": 374,
+    "first": [
+      [
+        10273,
+        37201
+      ],
+      [
+        10321,
+        12301
+      ],
+      [
+        10333,
+        33301
+      ],
+      [
+        10343,
+        34301
+      ],
+      [
+        10391,
+        19301
+      ],
+      [
+        10429,
+        92401
+      ]
+    ]
+  },
+  "digit_sum_11_primes": {
+    "count": 67,
+    "frac_of_interval_primes": 4.2,
+    "first": [
+      10271,
+      10343,
+      10433,
+      10613,
+      10631,
+      11027
+    ]
+  },
+  "verdict": "REFUTED (headline premise): the pair is NOT a reversal pair - the script itself computes reverse(10262) = 26201, and 26201 != 26102 (and reverse(26102) = 20162). The sub-relations do hold: 26102 - 10262 = 15840 = 80*198 (divisible by 80) and both digit sums are 11 - but these are plain arithmetic, they carry no reversal structure. The prime-gap census [10262, 26102] (1610 primes, max gap 52 at 19609, 0 gaps divisible by 80, 30 by 11) and [26102, 1914467] (140162 primes, max gap 132 at 1357201, 24 gaps divisible by 80) are exact arithmetic over ordinary intervals and contain no signal attributable to the 'reverse pair'; emirps (374) and digit-sum-11 primes (67 = 4.2%) are generic counts. The 9.4e11 endpoint is correctly handled analytically (Lucy_Hedgehog/Lehmer + segmented sieve) rather than by sieve."
+}
