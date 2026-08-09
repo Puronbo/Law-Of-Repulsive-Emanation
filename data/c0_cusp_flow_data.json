@@ -1,0 +1,44 @@
+{
+  "claim": "The C0 geodesic in the cusp metric explores the disk in a bounded way with the C0 law (V=C0) holding, conserved cusp energy, a chaos spectrum, and preserved T-symmetry",
+  "settings": {
+    "x0": [
+      -0.4,
+      0.3
+    ],
+    "dt": 0.005,
+    "steps": 5000,
+    "friction": 0.0,
+    "metric": "cusp"
+  },
+  "cusp": {
+    "r_range": [
+      0.5,
+      2.7259260472284958e+23
+    ],
+    "v_range": [
+      0.0,
+      8.150175001019846
+    ],
+    "c0": 24.434791603891032,
+    "c0_max_dev": 24.434791603891032,
+    "c0_holds": false,
+    "energy_drift": 2.6778563713914326e+45,
+    "tsym_err": 2819991401.227817,
+    "tsym_ok": false,
+    "mean_turn_deg": 0.05770109755121526
+  },
+  "poincare": {
+    "r_range": [
+      "nan",
+      "nan"
+    ],
+    "v_range": [
+      0.0,
+      24.434791603891032
+    ],
+    "energy_drift": "nan",
+    "tsym_err": "nan",
+    "tsym_ok": false
+  },
+  "verdict": "REFUTED/unverifiable at the configured settings - same failure mode as metric_comparison: BOTH metrics blow up numerically at dt=0.005 over 5000 steps. Poincare positions go NaN (overflow); the cusp escapes to ~2.7e23 with energy drift 2.68e45 and T-symmetry error 2.8e9. The 'C0 law BROKEN' reading (V range 0-8.15 vs C0=24.43) is an artifact of the escaped trajectory, not a property of the cusp geodesic. The cusp chaos-spectrum question cannot be answered at these settings."
+}

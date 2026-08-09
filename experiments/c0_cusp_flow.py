@@ -97,3 +97,62 @@ print(f"  Metric      r_range              V_range              Drift     T-sym"
 print(f"  {'-'*75}")
 print(f"  Poincare    [{r_p.min():.3f}, {r_p.max():.3f}]       [{Vs_p.min():.3f}, {Vs_p.max():.3f}]      {drift_p:.2e}  {'OK' if ts_p < 0.01 else 'FAIL':>4}")
 print(f"  Cusp        [{r.min():.3f}, {r.max():.3f}]       [{Vs.min():.3f}, {Vs.max():.3f}]      {drift:.2e}  {'OK' if ts_error < 0.01 else 'FAIL':>4}")
+
+# ---- persist a claim/verdict artifact (AUDIT 5.8 norm) ----
+import json
+
+def _finite(x):
+    import math as _m
+    if isinstance(x, (int, float)) and not isinstance(x, bool):
+        if not _m.isfinite(float(x)):
+            return "nan" if _m.isnan(float(x)) else "inf"
+        return x
+    if isinstance(x, dict):
+        return {k: _finite(v) for k, v in x.items()}
+    if isinstance(x, (list, tuple)):
+        return [_finite(v) for v in x]
+    return x
+
+results = _finite({
+    "claim": (
+        "The C0 geodesic in the cusp metric explores the disk in a bounded "
+        "way with the C0 law (V=C0) holding, conserved cusp energy, a "
+        "chaos spectrum, and preserved T-symmetry"
+    ),
+    "settings": {"x0": [-0.4, 0.3], "dt": 0.005, "steps": 5000, "friction": 0.0,
+                 "metric": "cusp"},
+    "cusp": {
+        "r_range": [float(r.min()), float(r.max())],
+        "v_range": [float(Vs.min()), float(Vs.max())],
+        "c0": float(C0),
+        "c0_max_dev": float(abs(Vs - C0).max()),
+        "c0_holds": bool(abs(Vs - C0).max() < 0.1),
+        "energy_drift": drift,
+        "tsym_err": float(ts_error),
+        "tsym_ok": bool(ts_error < 0.01),
+        "mean_turn_deg": float(np.mean(turns)),
+    },
+    "poincare": {
+        "r_range": [float(r_p.min()), float(r_p.max())],
+        "v_range": [float(Vs_p.min()), float(Vs_p.max())],
+        "energy_drift": drift_p,
+        "tsym_err": float(ts_p),
+        "tsym_ok": bool(ts_p < 0.01),
+    },
+    "verdict": (
+        "REFUTED/unverifiable at the configured settings - same failure "
+        "mode as metric_comparison: BOTH metrics blow up numerically at "
+        "dt=0.005 over 5000 steps. Poincare positions go NaN (overflow); "
+        "the cusp escapes to ~2.7e23 with energy drift 2.68e45 and "
+        "T-symmetry error 2.8e9. The 'C0 law BROKEN' reading (V range "
+        "0-8.15 vs C0=24.43) is an artifact of the escaped trajectory, not "
+        "a property of the cusp geodesic. The cusp chaos-spectrum question "
+        "cannot be answered at these settings."
+    ),
+})
+out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "..", "data", "c0_cusp_flow_data.json")
+with open(out_path, "w") as f:
+    json.dump(results, f, indent=2)
+print("\nverdict:", results["verdict"][:150], "...")
+print("wrote data/c0_cusp_flow_data.json")

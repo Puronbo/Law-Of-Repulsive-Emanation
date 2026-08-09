@@ -32,6 +32,7 @@ number so none of the resolved claims can silently drift:
    - hamiltonian routing: C0 flow separates centroids (routing 0.420->0.765, nc reaches oracle 0.909); min pair dist barely moves; flow is not the ceiling
    - metric comparison: Poincare vs cusp geodesic from a 'stable' start blows up numerically in BOTH (Poincare NaN, cusp ~2e13; C0 broken, T-sym fails) - REFUTED at these settings
    - c0 crossing tsym: T-sym holds (err 0.066-0.226) but NO trajectory actually crossed the origin (closest approach = start dist) - PASS-with-caveat, crossing regime never exercised
+   - c0 cusp flow: cusp-metric C0 geodesic at dt=0.005/5000 steps blows up (Poincare NaN, cusp escapes to ~2.7e23, drift 2.68e45, T-sym err 2.8e9) - REFUTED/unverifiable at settings
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -471,3 +472,18 @@ def test_c0_crossing_tsym_caveat():
     assert all(r['min_dist_to_origin'] > 0.0 for r in rows)
     # A/B/C never cross the q1 axis
     assert not rows[0]['crossed_origin'] and not rows[1]['crossed_origin']
+
+
+def test_c0_cusp_flow_refuted():
+    d = load('c0_cusp_flow_data.json')
+    assert d['verdict'].startswith('REFUTED')
+    c = d['cusp']
+    p = d['poincare']
+    # cusp escaped to ~2.7e23
+    assert c['r_range'][1] > 1e6
+    # Poincare overflowed to NaN
+    assert not isinstance(p['r_range'][1], float) or p['r_range'][1] > 1.0
+    assert not c['c0_holds']
+    assert not c['tsym_ok'] and not p['tsym_ok']
+    assert c['energy_drift'] > 1e10
+    assert c['tsym_err'] > 1e6
