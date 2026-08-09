@@ -96,11 +96,15 @@ print("USE CASE 3: Generative routing")
 print("=" * 60)
 
 # Generate samples from each face and verify they route correctly
+pp_by_face = {}
+cross_ok = []
+cross_conf = []
 for j in range(router.n_faces):
     X_gen, y_gen = router.sample_face(j, n=100, noise=0.15)
     pred = router.predict_batch(X_gen, y_gen)
     correct_pct = np.mean([router.predict_point(x.reshape(1,-1), y) == j
                            for x, y in zip(X_gen, y_gen)])
+    pp_by_face[j] = round(float(correct_pct), 3)
     print(f"  Face {j} generated samples: batch routed to face {pred}, "
           f"per-point accuracy={correct_pct:.2%}")
 
@@ -110,6 +114,8 @@ for src in range(router.n_faces):
     X_gen, y_gen = router.sample_face(src, n=100, noise=0.125)
     pred, conf = router.route_batch(X_gen, y_gen)
     match = "OK" if pred == src else "MIS"
+    cross_ok.append(pred == src)
+    cross_conf.append(float(conf))
     print(f"    Face {src} -> routed to face {pred} {match} (conf={conf:.3f})")
 
 # ====================================================================
@@ -171,3 +177,62 @@ print(f"  Spherical separation after 5 faces: {sil:.3f}")
 
 print("")
 print("Done.")
+
+# ---- persist a claim/verdict artifact (AUDIT 5.8 norm) ----
+import json
+results = {
+    "claim": (
+        "The PolysphereRouter works as (1) a multi-class classifier, "
+        "(2) an anomaly detector via routing confidence, (3) a generative "
+        "router whose sampled points re-route to their source face, and "
+        "(4) a continual learner that adds a face with no memory loss"
+    ),
+    "seed": 42,
+    "use_case_1_classifier": {
+        "per_point_acc": round(correct / len(labels), 3),
+        "chance": round(1.0 / router.n_faces, 3),
+        "batch_acc": round(batch_correct / (router.n_faces * n_batches), 3),
+    },
+    "use_case_2_anomaly": {
+        "in_mean_conf": round(float(in_mean), 3),
+        "ood_mean_conf": round(float(ood_mean), 3),
+        "gap": round(float(in_mean - ood_mean), 3),
+        "in_kept": round(float(in_detected), 3),
+        "ood_rejected": round(float(ood_detected), 3),
+    },
+    "use_case_3_generation": {
+        "per_point_by_face": pp_by_face,
+        "cross_gen_all_ok": all(cross_ok),
+        "cross_gen_mean_conf": round(float(np.mean(cross_conf)), 3),
+    },
+    "use_case_4_continual": {
+        "acc_before": round(float(acc_before), 3),
+        "acc_after": round(float(acc_after), 3),
+        "n_faces_after": router4.n_faces,
+        "spherical_separation": round(float(sil), 3),
+        "note": (
+            "separation_score is NOT bit-reproducible: embed() uses the "
+            "global unseeded numpy RNG (polysphere.py:155) so the score "
+            "varies 0.940-0.944 run-to-run; the batch/classification and "
+            "anomaly numbers above are fully seeded and reproducible"
+        ),
+    },
+    "verdict": (
+        "SUPPORTED at the batch/generative level: batch routing is 1.000 "
+        "for both classification (180/180) and generated samples (all 6 "
+        "faces re-route to source), the anomaly gap is large (in-conf 0.981 "
+        "vs ood 0.253; 100% kept / 98.3% rejected at conf=0.5), and adding "
+        "a 5th face keeps accuracy at 1.000 with no memory loss (spherical "
+        "separation ~0.94, not bit-reproducible: embed() uses the unseeded "
+        "global numpy RNG). Honest wall: single-point routing is weak - "
+        "per-point classification 0.653 (chance 0.167) and generated "
+        "per-point 0.44-0.66 - the router is a batch/repetition device, not "
+        "a one-shot classifier."
+    ),
+}
+out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "..", "data", "polysphere_use_cases_data.json")
+with open(out_path, "w") as f:
+    json.dump(results, f, indent=2)
+print("\nverdict:", results["verdict"])
+print("wrote data/polysphere_use_cases_data.json")

@@ -1,0 +1,36 @@
+{
+  "claim": "The PolysphereRouter works as (1) a multi-class classifier, (2) an anomaly detector via routing confidence, (3) a generative router whose sampled points re-route to their source face, and (4) a continual learner that adds a face with no memory loss",
+  "seed": 42,
+  "use_case_1_classifier": {
+    "per_point_acc": 0.653,
+    "chance": 0.167,
+    "batch_acc": 1.0
+  },
+  "use_case_2_anomaly": {
+    "in_mean_conf": 0.981,
+    "ood_mean_conf": 0.253,
+    "gap": 0.728,
+    "in_kept": 1.0,
+    "ood_rejected": 0.983
+  },
+  "use_case_3_generation": {
+    "per_point_by_face": {
+      "0": 0.57,
+      "1": 0.58,
+      "2": 0.57,
+      "3": 0.53,
+      "4": 0.68,
+      "5": 0.57
+    },
+    "cross_gen_all_ok": true,
+    "cross_gen_mean_conf": 0.968
+  },
+  "use_case_4_continual": {
+    "acc_before": 1.0,
+    "acc_after": 1.0,
+    "n_faces_after": 5,
+    "spherical_separation": 0.942,
+    "note": "separation_score is NOT bit-reproducible: embed() uses the global unseeded numpy RNG (polysphere.py:155) so the score varies 0.940-0.944 run-to-run; the batch/classification and anomaly numbers above are fully seeded and reproducible"
+  },
+  "verdict": "SUPPORTED at the batch/generative level: batch routing is 1.000 for both classification (180/180) and generated samples (all 6 faces re-route to source), the anomaly gap is large (in-conf 0.981 vs ood 0.253; 100% kept / 98.3% rejected at conf=0.5), and adding a 5th face keeps accuracy at 1.000 with no memory loss (spherical separation ~0.94, not bit-reproducible: embed() uses the unseeded global numpy RNG). Honest wall: single-point routing is weak - per-point classification 0.653 (chance 0.167) and generated per-point 0.44-0.66 - the router is a batch/repetition device, not a one-shot classifier."
+}

@@ -25,6 +25,7 @@ number so none of the resolved claims can silently drift:
    - polysphere extensions: learned truths do not reproduce routing; S^2 repulsion does not preserve clustering (NOT SUPPORTED)
    - flow incremental: reflow buys separation (min_d) but not routing; random-add matches or beats (MIXED)
    - flow hier-incremental: hierarchical + incremental growth preserves old-class routing (no forgetting); hier beats flat (SUPPORTED)
+   - polysphere use cases: classifier/anomaly/generator/continual claims hold at batch level; per-point weak; separation not bit-reproducible
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -347,3 +348,22 @@ def test_flow_hier_incremental_no_forgetting_supported():
     assert len(group_stage) == 1
     assert group_stage[0]['disp_c'] == group_stage[0]['disp_f']
     assert group_stage[0]['disp_c'] > 0.1
+
+
+def test_polysphere_use_cases_batch_supported():
+    d = load('polysphere_use_cases_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    # batch/generative routing is perfect
+    assert d['use_case_1_classifier']['batch_acc'] == 1.0
+    assert d['use_case_1_classifier']['per_point_acc'] > 0.5  # 0.653 vs chance 0.167
+    # anomaly detection: large confidence gap, high rejection
+    u2 = d['use_case_2_anomaly']
+    assert u2['gap'] > 0.6                      # 0.728
+    assert u2['in_kept'] == 1.0
+    assert u2['ood_rejected'] > 0.95            # 0.983
+    # generated samples re-route to source; continual add keeps accuracy
+    assert d['use_case_3_generation']['cross_gen_all_ok'] is True
+    u4 = d['use_case_4_continual']
+    assert u4['acc_before'] == 1.0 and u4['acc_after'] == 1.0
+    assert u4['spherical_separation'] > 0.9     # ~0.94, not bit-reproducible
+    assert 'not bit-reproducible' in u4['note'].lower()
