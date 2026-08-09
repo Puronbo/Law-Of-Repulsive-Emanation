@@ -13,7 +13,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
-| Regression suite | **30/30 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
+| Regression suite | **31/31 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
 | L.O.R.E. | C0 = V(q0) = H(q0,0), 109 tests; T-symmetry error 0.003 |
 | Fold theorem (T63/T64) | crease = **unique viscosity solution of |r′| = a**; retrace = cut locus; eikonal err 3.3e-13; measured crease 0.0350π vs derived 0.0318π; area 2666.6665 vs 2666.6666… |
 | Clock-test canon (T59/T61) | law-ness 1.000 → 0.417 under calendar re-index → 1.000 under rotation; rotation overlap/sim 1.000 |
@@ -138,6 +138,7 @@ The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.j
 | Balance scaling T54 (`balance_scale.py`) | scaling is a real confound (A* ~ n^1.086, fixed-A absorb weakens as n grows) but NOT the problem; shell geometry is dimension-independent (2D vs 64D); T53 stands |
 | Balance continual T50 (`balance_continual.py`) | adaptive mu=0.5 absorb → mu=0 settle wins both axes every seed (flat old-route 0.953 vs P0 0.920; hier 0.947 vs 0.853); fixed balanced P5 is harmful (min_d collapses) |
 | Polysphere extensions (`polysphere_extensions.py`) | NOT SUPPORTED: learned truths don't reproduce routing (0.483 vs 1.000); S^2 repulsion collapses separation 16.76x→1.21x; batch routing (1.000→0.921 at 100 faces) and anomaly gap (0.731→0.593) DO hold |
+| Incremental C0 reflow (`flow_incremental.py`) | MIXED: reflow buys separation (min_d 0.49–0.80 vs random-add 0.25–0.54) but not routing — random-add wins/ties new-class acc 4/5 stages and all-class 3/5 |
 
 ## Internet-Scale Flow (T67, T72)
 
@@ -190,6 +191,7 @@ python experiments/balance_survey.py              # T49 balance verdict (PARTIAL
 python experiments/balance_scale.py               # T54 scaling verdict (confound, not cause)
 python experiments/balance_continual.py           # T50 adaptive-schedule verdict (SUPPORTED)
 python experiments/polysphere_extensions.py       # polysphere extensions verdict (NOT SUPPORTED)
+python experiments/flow_incremental.py            # incremental reflow verdict (MIXED)
 python Universals/serve_dashboard.py   # L.O.R.E. dashboard -> http://localhost:8080/docs/
 ```
 

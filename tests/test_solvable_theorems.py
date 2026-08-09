@@ -23,6 +23,7 @@ number so none of the resolved claims can silently drift:
    - balance scale (T54): scaling is a real confound (A* ~ n^1.086) but NOT the problem; dimension-independent shell
    - balance continual (T50): adaptive mu=0.5→0 schedule wins both axes; fixed balanced P5 is harmful
    - polysphere extensions: learned truths do not reproduce routing; S^2 repulsion does not preserve clustering (NOT SUPPORTED)
+   - flow incremental: reflow buys separation (min_d) but not routing; random-add matches or beats (MIXED)
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -314,3 +315,17 @@ def test_polysphere_extensions_not_supported():
     # the pieces that DO hold stay pinned
     assert d['extension3_scaling']['batch_acc_by_faces']['100'] > 0.9
     assert d['extension3_scaling']['anomaly_gap_by_faces']['6'] > 0.5
+
+
+def test_flow_incremental_mixed_not_uniform():
+    d = load('flow_incremental_data.json')
+    assert d['verdict'].startswith('MIXED')
+    rows = d['stage_rows']
+    # reflow always keeps min_d strictly higher than random-add (separation)
+    for k in rows:
+        assert rows[k]['reflow']['min_d'] > rows[k]['random_add']['min_d']
+    # but random-add matches or beats reflow on all-class routing at least once
+    assert any(rows[k]['random_add']['all_acc'] >= rows[k]['reflow']['all_acc']
+               for k in rows)
+    # and reflow pays a displacement cost that random-add does not
+    assert any(rows[k]['reflow']['disp_old'] > 0.1 for k in rows)

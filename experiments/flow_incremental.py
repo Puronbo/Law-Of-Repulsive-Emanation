@@ -149,3 +149,43 @@ for (kr, _, _, nr, or_, ar), (ka, _, _, na, oa, aa) in zip(results_reflow, resul
 print(f"\n  Reflow keeps old classes stable while adding new ones.")
 print(f"  Random-add risks the new anchor landing on an existing class.")
 print(f"\nDone.")
+
+# ---- persist a claim/verdict artifact (AUDIT 5.8 norm) ----
+import json
+rows = {}
+for (kr, dmin_r, disp_r, nr, or_, ar), (ka, dmin_a, disp_a, na, oa, aa) in zip(results_reflow, results_rand):
+    rows[str(kr)] = {
+        "reflow": {"min_d": round(dmin_r, 4), "disp_old": round(disp_r, 4),
+                   "new_acc": round(nr, 3), "old_acc": round(or_, 3),
+                   "all_acc": round(ar, 3)},
+        "random_add": {"min_d": round(dmin_a, 4), "disp_old": round(disp_a, 4),
+                       "new_acc": round(na, 3), "old_acc": round(oa, 3),
+                       "all_acc": round(aa, 3)},
+    }
+results = {
+    "claim": (
+        "C0 reflow keeps old classes stable while adding new ones; the "
+        "random-add baseline risks the new anchor landing on an existing "
+        "class"
+    ),
+    "seed": 7,
+    "stage_rows": rows,
+    "verdict": (
+        "MIXED / NOT UNIFORMLY SUPPORTED: reflow does keep the layout "
+        "separated (min_d 0.49-0.80 across growth vs 0.25-0.54 for "
+        "random-add) but random-add does NOT risk collision at this noise "
+        "and scale, and it achieves equal-or-better routing: new-class acc "
+        "random-add wins or ties 4/5 stages (0.950/0.950/0.970 vs "
+        "0.780/0.780/0.960 reflow at k=6,7,10) and all-class acc random-add "
+        "wins 3/5 (0.980/0.987/0.973 vs 0.973/0.967/0.953). Reflow's "
+        "advantage shows only where random-add draws a weak position (k=8: "
+        "0.720, k=9: 0.600). The displacement cost of reflow (0.16-0.28) "
+        "buys separation, not routing."
+    ),
+}
+out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "..", "data", "flow_incremental_data.json")
+with open(out_path, "w") as f:
+    json.dump(results, f, indent=2)
+print("\nverdict:", results["verdict"])
+print("wrote data/flow_incremental_data.json")
