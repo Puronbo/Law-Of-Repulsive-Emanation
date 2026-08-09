@@ -26,6 +26,7 @@ number so none of the resolved claims can silently drift:
    - flow incremental: reflow buys separation (min_d) but not routing; random-add matches or beats (MIXED)
    - flow hier-incremental: hierarchical + incremental growth preserves old-class routing (no forgetting); hier beats flat (SUPPORTED)
    - polysphere use cases: classifier/anomaly/generator/continual claims hold at batch level; per-point weak; separation not bit-reproducible
+   - polysphere routing: batch routing exact (identity confusion, chance 0.167); silhouette 0.943; per-point weak
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -367,3 +368,17 @@ def test_polysphere_use_cases_batch_supported():
     assert u4['acc_before'] == 1.0 and u4['acc_after'] == 1.0
     assert u4['spherical_separation'] > 0.9     # ~0.94, not bit-reproducible
     assert 'not bit-reproducible' in u4['note'].lower()
+
+
+def test_polysphere_routing_batch_exact():
+    d = load('polysphere_routing_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    # batch routing is exact: identity confusion matrix
+    assert d['batch_acc'] == 1.0
+    assert d['confusion_offdiag'] == 0
+    # per-point routing is weak but well above chance
+    assert d['per_point_acc'] > 0.5                      # 0.659 vs chance 0.167
+    # spherical separation is strong
+    s = d['spherical_separation']
+    assert s['silhouette'] > 0.9
+    assert s['inter_mean'] > 10 * s['intra_mean']

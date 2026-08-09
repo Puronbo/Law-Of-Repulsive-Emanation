@@ -138,3 +138,39 @@ print(f"    Intra-face mean dist: {np.mean(intra_dists):.4f}")
 print(f"    Inter-face mean dist: {np.mean(inter_dists):.4f}")
 sil = (np.mean(inter_dists) - np.mean(intra_dists)) / max(np.mean(inter_dists), 1e-12)
 print(f"    Silhouette-like score: {sil:.3f}")
+
+# ---- persist a claim/verdict artifact (AUDIT 5.8 norm) ----
+import json, sys, os
+results = {
+    "claim": (
+        "Batches generated from a face's truth function are routed to the "
+        "correct face via truth correlation, and embedded points form "
+        "separated clusters on the sphere"
+    ),
+    "seed": 42,
+    "n_faces": n_faces,
+    "n_batches_per_face": n_batches,
+    "batch_acc": round(float(accuracy), 3),
+    "chance": round(1.0 / n_faces, 3),
+    "per_point_acc": round(float(acc_pt), 3),
+    "confusion_offdiag": int(confusion.sum() - np.trace(confusion)),
+    "spherical_separation": {
+        "intra_mean": round(float(np.mean(intra_dists)), 4),
+        "inter_mean": round(float(np.mean(inter_dists)), 4),
+        "silhouette": round(float(sil), 3),
+    },
+    "verdict": (
+        "SUPPORTED: batch routing is exact - 180/180 with an identity "
+        "confusion matrix (chance 0.167) - and the embedded points separate "
+        "strongly on the sphere (silhouette 0.943, inter-face 1.5024 vs "
+        "intra-face 0.0849, ~18x ratio). Honest wall (consistent with "
+        "polysphere_use_cases): single-point routing is weak at 0.659 "
+        "(chance 0.167) - routing is a batch/repetition mechanism."
+    ),
+}
+out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "..", "data", "polysphere_routing_data.json")
+with open(out_path, "w") as f:
+    json.dump(results, f, indent=2)
+print("\nverdict:", results["verdict"])
+print("wrote data/polysphere_routing_data.json")

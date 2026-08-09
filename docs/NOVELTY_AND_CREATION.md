@@ -228,6 +228,7 @@ For each claim: **Status** (measured/derived), **the claim**, **evidence**
 | Incremental C0 reflow (no-forgetting) | **Mixed 2026-08-08** | reflow keeps the layout separated (min_d 0.49–0.80 vs random-add 0.25–0.54) but random-add does NOT risk collision at this noise/scale and routes equal-or-better — new-class acc random-add wins/ties 4/5 stages (0.950/0.950/0.970 vs 0.780/0.780/0.960) and all-class 3/5. Reflow's displacement cost (0.16–0.28) buys separation, not routing. `experiments/flow_incremental.py`, `data/flow_incremental_data.json` |
 | Hierarchical + incremental growth | **Supported 2026-08-08** | when growth is hierarchical (new classes join a group via local fine-flow; a whole new group triggers coarse reflow), old-class routing is preserved across EVERY stage — old 0.892 avg vs all 0.840 (forgetting -0.052: old classes route BETTER than the new mix) — and hier beats flat 0.840 vs 0.821. The coarse reflow (stage 3, disp 0.1101) shifts old fine anchors 1:1 (disp_f == disp_c), i.e. pure translation, so local fine structure survives; min_d stays pinned at 0.12. No-forgetting holds where reflow moves each anchor less than its nearest-neighbor distance. `experiments/flow_hier_incremental.py`, `data/flow_hier_incremental_data.json` |
 | PolysphereRouter use-case claims (classifier / anomaly / generator / continual) | **Supported at batch level 2026-08-08** | batch routing is perfect for both classification (180/180) and generated samples (all 6 faces re-route to source, mean conf 0.97); anomaly detection gap is large (in-conf 0.981 vs OOD 0.253 → 100% kept / 98.3% rejected at conf=0.5); adding a 5th face keeps accuracy at 1.000 with no memory loss. Honest walls: single-point routing is weak (per-point classification 0.653 vs chance 0.167; generated per-point 0.44–0.66) — the router is a batch/repetition device; and the spherical separation score (~0.94) is NOT bit-reproducible because `embed()` draws from the global unseeded numpy RNG (`polysphere.py:155`). `experiments/polysphere_use_cases.py`, `data/polysphere_use_cases_data.json` |
+| Polysphere grid routing (truth-correlation batches) | **Supported 2026-08-08** | batch routing is exact — 180/180 with an identity confusion matrix (chance 0.167) — and embedded points separate strongly on the sphere (silhouette 0.943; inter-face 1.5024 vs intra-face 0.0849, ~18x). Honest wall: single-point routing is weak at 0.659, consistent with `polysphere_use_cases` — routing is a batch/repetition mechanism, not a one-shot classifier. `experiments/polysphere_routing.py`, `data/polysphere_routing_data.json` |
 
 ---
 
@@ -255,6 +256,7 @@ python experiments/polysphere_extensions.py             # polysphere extensions 
 python experiments/flow_incremental.py                  # incremental reflow verdict (MIXED)
 python experiments/flow_hier_incremental.py             # hier + incremental verdict (SUPPORTED)
 python experiments/polysphere_use_cases.py               # router use-case verdict (SUPPORTED at batch)
+python experiments/polysphere_routing.py                 # grid routing verdict (SUPPORTED, batch exact)
 ```
 
 ---

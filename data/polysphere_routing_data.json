@@ -1,0 +1,16 @@
+{
+  "claim": "Batches generated from a face's truth function are routed to the correct face via truth correlation, and embedded points form separated clusters on the sphere",
+  "seed": 42,
+  "n_faces": 6,
+  "n_batches_per_face": 30,
+  "batch_acc": 1.0,
+  "chance": 0.167,
+  "per_point_acc": 0.659,
+  "confusion_offdiag": 0,
+  "spherical_separation": {
+    "intra_mean": 0.0849,
+    "inter_mean": 1.5024,
+    "silhouette": 0.943
+  },
+  "verdict": "SUPPORTED: batch routing is exact - 180/180 with an identity confusion matrix (chance 0.167) - and the embedded points separate strongly on the sphere (silhouette 0.943, inter-face 1.5024 vs intra-face 0.0849, ~18x ratio). Honest wall (consistent with polysphere_use_cases): single-point routing is weak at 0.659 (chance 0.167) - routing is a batch/repetition mechanism."
+}
