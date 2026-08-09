@@ -33,6 +33,7 @@ number so none of the resolved claims can silently drift:
    - metric comparison: Poincare vs cusp geodesic from a 'stable' start blows up numerically in BOTH (Poincare NaN, cusp ~2e13; C0 broken, T-sym fails) - REFUTED at these settings
    - c0 crossing tsym: T-sym holds (err 0.066-0.226) but NO trajectory actually crossed the origin (closest approach = start dist) - PASS-with-caveat, crossing regime never exercised
    - c0 cusp flow: cusp-metric C0 geodesic at dt=0.005/5000 steps blows up (Poincare NaN, cusp escapes to ~2.7e23, drift 2.68e45, T-sym err 2.8e9) - REFUTED/unverifiable at settings
+   - t39 cusp flow: cusp isometry w=log(q) verified EXACTLY (energy CV 3e-15, step ratio=phi exactly, w-plane R2=1.0 slope pi/(2 log phi), T-sym err 0) - SUPPORTED (deterministic)
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -487,3 +488,15 @@ def test_c0_cusp_flow_refuted():
     assert not c['tsym_ok'] and not p['tsym_ok']
     assert c['energy_drift'] > 1e10
     assert c['tsym_err'] > 1e6
+
+
+def test_t39_cusp_flow_supported():
+    d = load('t39_cusp_flow_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    v = d['verification']
+    # exact conservation / exact geodesic
+    assert v['cusp_energy_cv'] < 1e-12
+    assert abs(v['step_ratio_asymp'] - v['phi']) < 1e-6
+    assert v['wplane_r2'] > 0.999999
+    assert abs(v['wplane_slope'] - v['wplane_expected_slope']) < 1e-6
+    assert v['tsym_error'] == 0.0

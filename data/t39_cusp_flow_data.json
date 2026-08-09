@@ -1,0 +1,14 @@
+{
+  "claim": "Theorem 39: the cusp metric g_cusp = (dx^2+dy^2)/(x^2+y^2) on the punctured plane is globally isometric to the Euclidean plane under w = log(q) = log r + i*theta, so geodesics of g_cusp are exactly the images of straight w-lines, and the Fibonacci spiral q_n = phi^n * exp(i n pi/2) is an EXACT geodesic",
+  "verification": {
+    "cusp_energy_cv": 3.0611267478566565e-15,
+    "step_ratio_asymp": 1.6180339887498945,
+    "phi": 1.618033988749895,
+    "step_ratio_cv": 8.001115253590862e-15,
+    "wplane_slope": 3.2642513026364988,
+    "wplane_expected_slope": 3.2642513026364965,
+    "wplane_r2": 1.0,
+    "tsym_error": 0.0
+  },
+  "verdict": "SUPPORTED (exact, deterministic - no RNG): cusp energy CV 3.06e-15 (exact conservation), asymptotic step ratio = phi = 1.618034 exactly (CV 8.00e-15), w-plane collinearity R^2 = 1.000000 with slope EXACTLY pi/(2*log phi) = 3.264251 (intercept -0.000000), and analytic T-symmetry reconstruction error 0.00e+00. The Fibonacci spiral is an exact geodesic of the cusp metric, consistent with golden_survey. Corollary T39a (prometric family has no cusp for finite p) is a definitional statement, not numerically tested."
+}

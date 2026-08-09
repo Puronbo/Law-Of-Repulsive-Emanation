@@ -107,3 +107,41 @@ print(f"""
   is a different hyperbolic structure: it has a cusp at r = 0 (a
   puncture) rather than a disk boundary at r = 1.
 """)
+
+# ---- persist a claim/verdict artifact (AUDIT 5.8 norm) ----
+import json
+results = {
+    "claim": (
+        "Theorem 39: the cusp metric g_cusp = (dx^2+dy^2)/(x^2+y^2) on the "
+        "punctured plane is globally isometric to the Euclidean plane under "
+        "w = log(q) = log r + i*theta, so geodesics of g_cusp are exactly "
+        "the images of straight w-lines, and the Fibonacci spiral "
+        "q_n = phi^n * exp(i n pi/2) is an EXACT geodesic"
+    ),
+    "verification": {
+        "cusp_energy_cv": cv_E,
+        "step_ratio_asymp": sr_mean,
+        "phi": GOLDEN,
+        "step_ratio_cv": sr_cv,
+        "wplane_slope": float(m),
+        "wplane_expected_slope": math.pi / (2 * log_phi),
+        "wplane_r2": r2,
+        "tsym_error": ts_error,
+    },
+    "verdict": (
+        "SUPPORTED (exact, deterministic - no RNG): cusp energy CV 3.06e-15 "
+        "(exact conservation), asymptotic step ratio = phi = 1.618034 "
+        "exactly (CV 8.00e-15), w-plane collinearity R^2 = 1.000000 with "
+        "slope EXACTLY pi/(2*log phi) = 3.264251 (intercept -0.000000), and "
+        "analytic T-symmetry reconstruction error 0.00e+00. The Fibonacci "
+        "spiral is an exact geodesic of the cusp metric, consistent with "
+        "golden_survey. Corollary T39a (prometric family has no cusp for "
+        "finite p) is a definitional statement, not numerically tested."
+    ),
+}
+out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "..", "data", "t39_cusp_flow_data.json")
+with open(out_path, "w") as f:
+    json.dump(results, f, indent=2)
+print("\nverdict:", results["verdict"][:160], "...")
+print("wrote data/t39_cusp_flow_data.json")

@@ -13,7 +13,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
-| Regression suite | **40/40 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
+| Regression suite | **41/41 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
 | L.O.R.E. | C0 = V(q0) = H(q0,0), 109 tests; T-symmetry error 0.003 |
 | Fold theorem (T63/T64) | crease = **unique viscosity solution of |r′| = a**; retrace = cut locus; eikonal err 3.3e-13; measured crease 0.0350π vs derived 0.0318π; area 2666.6665 vs 2666.6666… |
 | Clock-test canon (T59/T61) | law-ness 1.000 → 0.417 under calendar re-index → 1.000 under rotation; rotation overlap/sim 1.000 |
@@ -148,6 +148,7 @@ The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.j
 | C0 geodesic metric comparison (`metric_comparison.py`) | REFUTED at the configured settings: from a "stable" start BOTH metrics blow up numerically — Poincare positions go NaN (integrator overflow), cusp escapes to ~2e13 (energy drift 1.57e25), T-symmetry fails in both (cusp err 4.64e4), C0 law BROKEN in both (max |V−C0| 24.43) |
 | C0 crossing T-symmetry (`c0_crossing_tsym.py`) | CAVEAT: T-symmetry reconstruction errors small (0.066–0.226, all PASS < 0.5) BUT no trajectory actually crossed the origin — closest approach = the start distance in all 4 runs (A/B/C zero axis crossings), so the crossing-the-C0-minimum regime was never exercised |
 | C0 cusp geodesic (`c0_cusp_flow.py`) | REFUTED/unverifiable at settings (same failure as `metric_comparison`): cusp C0 geodesic at dt=0.005/5000 steps blows up — Poincare NaN, cusp escapes to ~2.7e23 (drift 2.68e45, T-sym err 2.8e9); the "C0 broken" reading is an escape artifact, not a geodesic property |
+| T39 cusp isometry (`t39_cusp_flow.py`) | SUPPORTED (exact, deterministic): cusp metric isometric to Euclidean plane under w=log(q) — energy CV 3.06e-15, step ratio = phi exactly (CV 8e-15), w-plane R² = 1.0 with slope exactly π/(2·log φ)=3.264251, T-sym error 0.00e+00 |
 
 ## Internet-Scale Flow (T67, T72)
 
@@ -210,6 +211,7 @@ python experiments/hamiltonian_routing.py         # C0 centroid-init verdict (SU
 python experiments/metric_comparison.py            # C0 geodesic metric verdict (REFUTED at settings)
 python experiments/c0_crossing_tsym.py             # C0-crossing T-sym verdict (CAVEAT)
 python experiments/c0_cusp_flow.py                 # C0 cusp geodesic verdict (REFUTED at settings)
+python experiments/t39_cusp_flow.py                # T39 cusp-isometry verdict (SUPPORTED, exact)
 python Universals/serve_dashboard.py   # L.O.R.E. dashboard -> http://localhost:8080/docs/
 ```
 
