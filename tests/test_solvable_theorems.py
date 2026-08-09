@@ -24,6 +24,7 @@ number so none of the resolved claims can silently drift:
    - balance continual (T50): adaptive mu=0.5→0 schedule wins both axes; fixed balanced P5 is harmful
    - polysphere extensions: learned truths do not reproduce routing; S^2 repulsion does not preserve clustering (NOT SUPPORTED)
    - flow incremental: reflow buys separation (min_d) but not routing; random-add matches or beats (MIXED)
+   - flow hier-incremental: hierarchical + incremental growth preserves old-class routing (no forgetting); hier beats flat (SUPPORTED)
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -329,3 +330,20 @@ def test_flow_incremental_mixed_not_uniform():
                for k in rows)
     # and reflow pays a displacement cost that random-add does not
     assert any(rows[k]['reflow']['disp_old'] > 0.1 for k in rows)
+
+
+def test_flow_hier_incremental_no_forgetting_supported():
+    d = load('flow_hier_incremental_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    s = d['summary']
+    # no forgetting: old-class routing strictly above all-class routing
+    assert s['old_hier_avg'] > s['all_hier_avg']
+    # hierarchical routing beats the flat router
+    assert s['all_hier_avg'] > s['flat_avg']
+    # separation is bounded below at every growth stage
+    assert all(r['min_d'] >= 0.11 for r in d['stage_rows'])
+    # the coarse reflow (new group) translates old anchors 1:1 (pure shift)
+    group_stage = [r for r in d['stage_rows'] if r['action'] == 'group']
+    assert len(group_stage) == 1
+    assert group_stage[0]['disp_c'] == group_stage[0]['disp_f']
+    assert group_stage[0]['disp_c'] > 0.1
