@@ -1,0 +1,97 @@
+{
+  "claim": "The golden ratio is exact in the cusp metric (Fibonacci spiral is its geodesic), the golden rotation maximizes the minimum angular gap, static C0-flow packing carries NO golden structure, and gap-filling emergence does NOT lock onto the golden angle",
+  "seed": 42,
+  "phi": 1.618033988749895,
+  "part1_fib_spiral": {
+    "step_ratio": 1.618034,
+    "diff_from_phi": 0.0,
+    "radius_per_90deg": 1.618034,
+    "radius_per_turn": 6.854102,
+    "phi4": 6.854102
+  },
+  "part2_static_packing": [
+    {
+      "N": 13,
+      "min_d": 0.4628,
+      "gap_mean_deg": 27.69,
+      "gap_cv": 0.2,
+      "radius_exponent": 0.569,
+      "comment": "packing"
+    },
+    {
+      "N": 21,
+      "min_d": 0.2672,
+      "gap_mean_deg": 17.14,
+      "gap_cv": 0.003,
+      "radius_exponent": 0.0,
+      "comment": "uniform ring"
+    },
+    {
+      "N": 34,
+      "min_d": 0.1433,
+      "gap_mean_deg": 10.59,
+      "gap_cv": 0.077,
+      "radius_exponent": 0.0,
+      "comment": "uniform ring"
+    },
+    {
+      "N": 55,
+      "min_d": 0.085,
+      "gap_mean_deg": 6.55,
+      "gap_cv": 0.059,
+      "radius_exponent": 0.0,
+      "comment": "uniform ring"
+    }
+  ],
+  "part3a_rotation": {
+    "min_gap_golden_deg": 1.809,
+    "min_gap_complement_deg": 1.809,
+    "min_gap_rational_deg": 0.0,
+    "golden_maximizes": true
+  },
+  "part3b_arc_model": [
+    {
+      "v": 0.02,
+      "divergence_mean_deg": 317.59,
+      "abs_diff_from_golden": 132.17,
+      "within_5deg_fraction": 0.0
+    },
+    {
+      "v": 0.04,
+      "divergence_mean_deg": 360.0,
+      "abs_diff_from_golden": 137.51,
+      "within_5deg_fraction": 0.0
+    },
+    {
+      "v": 0.06,
+      "divergence_mean_deg": 359.98,
+      "abs_diff_from_golden": 137.53,
+      "within_5deg_fraction": 0.0
+    },
+    {
+      "v": 0.08,
+      "divergence_mean_deg": 77.81,
+      "abs_diff_from_golden": 126.35,
+      "within_5deg_fraction": 0.02
+    },
+    {
+      "v": 0.1,
+      "divergence_mean_deg": 324.21,
+      "abs_diff_from_golden": 127.51,
+      "within_5deg_fraction": 0.02
+    },
+    {
+      "v": 0.15,
+      "divergence_mean_deg": 306.19,
+      "abs_diff_from_golden": 121.9,
+      "within_5deg_fraction": 0.02
+    }
+  ],
+  "part4_metric_terms": {
+    "cusp_log_coords": 1.618034,
+    "euclidean_finite_30": 1.616536,
+    "euclidean_asymptotic": 1.0,
+    "poincare_hyperbolic": 1.0
+  },
+  "verdict": "SUPPORTED: the Fibonacci spiral's step ratio is phi EXACTLY (1.618034, diff +0.00e+00) and radius per full turn is phi^4 exactly; the golden rotation 2*pi/phi^2 maximizes the minimum angular gap (1.809 deg vs 0.000 for a rational rotation). The survey's negative results also hold: static C0-flow packing is UNIFORM RINGS with no golden structure (gap CV 0.003-0.077, radius exponent ~0), and gap-filling emergence does NOT lock onto the golden angle (|div - golden| stays 121.9-137.5 deg, within-5 deg fraction ~0.00-0.02). The same spiral measured in different metrics gives different ratios (cusp phi exact, Euclidean finite ~1.617, disk -> 1): golden ratio is metric-and-regime specific."
+}

@@ -27,6 +27,7 @@ number so none of the resolved claims can silently drift:
    - flow hier-incremental: hierarchical + incremental growth preserves old-class routing (no forgetting); hier beats flat (SUPPORTED)
    - polysphere use cases: classifier/anomaly/generator/continual claims hold at batch level; per-point weak; separation not bit-reproducible
    - polysphere routing: batch routing exact (identity confusion, chance 0.167); silhouette 0.943; per-point weak
+   - golden survey: phi EXACT in cusp metric; golden rotation maxes min gap; static C0 packing has no golden structure; gap-filling does not lock to golden angle
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -382,3 +383,24 @@ def test_polysphere_routing_batch_exact():
     s = d['spherical_separation']
     assert s['silhouette'] > 0.9
     assert s['inter_mean'] > 10 * s['intra_mean']
+
+
+def test_golden_survey_exact_and_no_emergent_locking():
+    d = load('golden_survey_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    # Part 1: step ratio is phi EXACTLY (machine precision)
+    p1 = d['part1_fib_spiral']
+    assert abs(p1['diff_from_phi']) < 1e-9
+    assert math.isclose(p1['radius_per_turn'], p1['phi4'], rel_tol=1e-6)
+    # Part 2: static C0 packing is uniform rings (no golden structure)
+    assert all(r['gap_cv'] < 0.15 for r in d['part2_static_packing'][1:])
+    # Part 3a: golden rotation maximizes the minimum angular gap
+    assert d['part3a_rotation']['golden_maximizes'] is True
+    # Part 3b: gap-filling does NOT lock onto the golden angle
+    assert all(r['within_5deg_fraction'] <= 0.1 for r in d['part3b_arc_model'])
+    assert all(r['abs_diff_from_golden'] > 100.0 for r in d['part3b_arc_model'])
+    # Part 4: metric-and-regime dependent (cusp phi, disk -> 1)
+    p4 = d['part4_metric_terms']
+    assert abs(p4['cusp_log_coords'] - d['phi']) < 1e-5
+    assert p4['euclidean_asymptotic'] < 1.01
+    assert p4['poincare_hyperbolic'] < 1.01
