@@ -13,7 +13,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
-| Regression suite | **37/37 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
+| Regression suite | **38/38 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
 | L.O.R.E. | C0 = V(q0) = H(q0,0), 109 tests; T-symmetry error 0.003 |
 | Fold theorem (T63/T64) | crease = **unique viscosity solution of |r′| = a**; retrace = cut locus; eikonal err 3.3e-13; measured crease 0.0350π vs derived 0.0318π; area 2666.6665 vs 2666.6666… |
 | Clock-test canon (T59/T61) | law-ness 1.000 → 0.417 under calendar re-index → 1.000 under rotation; rotation overlap/sim 1.000 |
@@ -145,6 +145,7 @@ The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.j
 | Golden-ratio survey (`golden_survey.py`) | SUPPORTED: step ratio = phi EXACTLY (diff 0.00e+00), radius/turn = phi⁴; golden rotation 2π/φ² maximizes min angular gap (1.809° vs 0° rational); static C0 packing is uniform rings (no golden structure); gap-filling does NOT lock to golden angle (|Δ| 122–138°) |
 | Fibonacci stream T52 (`fib_stream.py`) | SUPPORTED (3 seeds): Fibonacci-sized stream is steady (T51 detector never fires); AD_phi (mu=0.5 on large terms) beats P0 on final all-routing (+0.050/+0.017/+0.084) and old-routing (+0.008/+0.108/+0.033); golden insertion washes out; min_d ~ n^-0.75 ring-packing law, no golden signature |
 | C0 Hamiltonian centroid init (`hamiltonian_routing.py`) | SUPPORTED: flow separates centroids (mean pair dist 0.180→1.143), routing 0.420→0.765 (+0.345), nearest-centroid reaches oracle (0.909 vs 0.911); min pair dist barely moves (0.033) and routing stays below the true-centroid ceiling (0.830) |
+| C0 geodesic metric comparison (`metric_comparison.py`) | REFUTED at the configured settings: from a "stable" start BOTH metrics blow up numerically — Poincare positions go NaN (integrator overflow), cusp escapes to ~2e13 (energy drift 1.57e25), T-symmetry fails in both (cusp err 4.64e4), C0 law BROKEN in both (max |V−C0| 24.43) |
 
 ## Internet-Scale Flow (T67, T72)
 
@@ -204,6 +205,7 @@ python experiments/polysphere_routing.py          # grid routing verdict (SUPPOR
 python experiments/golden_survey.py               # golden survey verdict (SUPPORTED, no static golden structure)
 python experiments/fib_stream.py                  # T52 Fibonacci stream verdict (SUPPORTED, 3 seeds)
 python experiments/hamiltonian_routing.py         # C0 centroid-init verdict (SUPPORTED)
+python experiments/metric_comparison.py            # C0 geodesic metric verdict (REFUTED at settings)
 python Universals/serve_dashboard.py   # L.O.R.E. dashboard -> http://localhost:8080/docs/
 ```
 

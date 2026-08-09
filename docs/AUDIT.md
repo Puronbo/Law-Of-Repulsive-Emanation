@@ -396,26 +396,26 @@ given so it can be re-run).
    already carry STATUS: SUPERSEDED banners (v2 engine never migrated; live
    work is `Universals/engine.py` v1), and no tracked doc cites either as
    authoritative (the only reference is this AUDIT entry).  Retired.
-8. **Regression coverage for the T55 series + library** — the experiments print
-   results but nothing pins them.  (T65 was the first probe to ship a JSON
-   verdict; make that the norm.)  **PROGRESS 2026-08-08** — the
-    solvable-theorem pattern is now the norm: 27 verdict experiments
-    (`prime_time`, `time_reversal_convergence`, `bekenstein_rerun`,
-    `wheeler_dewitt_selection`, `fold_unitary`, `kawasaki_ctc`,
-    `bridge_extension`, `selberg_paradigm`, `fold_ladder_phi`,
-    `flow_hierarchical`, `flow_active_learning`, `balance_survey`,
-    `balance_scale`, `balance_continual`, `polysphere_extensions`,
-    `flow_incremental`, `flow_hier_incremental`, `polysphere_use_cases`,
-    `polysphere_routing`, `golden_survey`, `fib_stream`,
-    `hamiltonian_routing`,
-    plus the five
-    earlier probes)
-    each ship a claim/verdict JSON and are pinned by
-    `tests/test_solvable_theorems.py` (27 tests; full suite 217).  The
-   broad `experiments/` scripts (remaining flow, balance, polysphere,
-   decentral) still
-   print without persisted verdicts — extending the JSON verdict norm to
-   those is the remaining work here.
+ 8. **Regression coverage for the T55 series + library** — the experiments print
+    results but nothing pins them.  (T65 was the first probe to ship a JSON
+    verdict; make that the norm.)  **PROGRESS 2026-08-08** — the
+     solvable-theorem pattern is now the norm: 28 verdict experiments
+     (`prime_time`, `time_reversal_convergence`, `bekenstein_rerun`,
+     `wheeler_dewitt_selection`, `fold_unitary`, `kawasaki_ctc`,
+     `bridge_extension`, `selberg_paradigm`, `fold_ladder_phi`,
+     `flow_hierarchical`, `flow_active_learning`, `balance_survey`,
+     `balance_scale`, `balance_continual`, `polysphere_extensions`,
+     `flow_incremental`, `flow_hier_incremental`, `polysphere_use_cases`,
+     `polysphere_routing`, `golden_survey`, `fib_stream`,
+     `hamiltonian_routing`, `metric_comparison`,
+     plus the five
+     earlier probes)
+     each ship a claim/verdict JSON and are pinned by
+     `tests/test_solvable_theorems.py` (28 tests; full suite 218).  The
+    broad `experiments/` scripts (remaining flow, balance, polysphere,
+    decentral) still
+    print without persisted verdicts — extending the JSON verdict norm to
+    those is the remaining work here.
 
 ---
 

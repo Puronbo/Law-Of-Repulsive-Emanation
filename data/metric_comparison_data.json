@@ -1,0 +1,47 @@
+{
+  "claim": "From a stable start (x0=0.05, p0=0.01/0.02) the C0 geodesic integrates cleanly in both the Poincare and the Cusp metric, with the C0 law and T-symmetry holding",
+  "settings": {
+    "dt": 0.005,
+    "steps": 2000,
+    "friction": 0.0
+  },
+  "metrics": {
+    "poincare": {
+      "r_range": [
+        0.0,
+        0.99
+      ],
+      "v_range": [
+        0.0,
+        24.4348
+      ],
+      "has_nan": true,
+      "c0_max_dev": 24.4348,
+      "c0_holds": false,
+      "energy_drift": "nan",
+      "tsym_err": "nan",
+      "tsym_ok": false,
+      "mean_turn_deg": 0.09,
+      "escaped": false
+    },
+    "cusp": {
+      "r_range": [
+        0.0707,
+        19885407377798.184
+      ],
+      "v_range": [
+        0.0,
+        22.8853
+      ],
+      "has_nan": false,
+      "c0_max_dev": 24.4348,
+      "c0_holds": false,
+      "energy_drift": 1.5706830497666053e+25,
+      "tsym_err": 46437.93719987687,
+      "tsym_ok": false,
+      "mean_turn_deg": 0.31,
+      "escaped": true
+    }
+  },
+  "verdict": "REFUTED at the configured settings: BOTH metrics blow up numerically from this 'stable' start. Poincare positions go NaN (integrator overflow), the cusp escapes to ~2e13 (energy drift 1.57e25), T-symmetry fails in both (cusp err 4.64e4), and the C0 law is BROKEN in both (max |V-C0| = 24.43). The C0 geodesic comparison cannot be made under these settings; the trajectories are numerically unstable, not a well-posed Poincare-vs-cusp comparison."
+}

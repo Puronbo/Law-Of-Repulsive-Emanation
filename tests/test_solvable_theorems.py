@@ -30,6 +30,7 @@ number so none of the resolved claims can silently drift:
    - golden survey: phi EXACT in cusp metric; golden rotation maxes min gap; static C0 packing has no golden structure; gap-filling does not lock to golden angle
    - fib stream (T52): Fibonacci-sized continual stream is steady; AD_phi (absorb on large terms) beats P0 on both axes in all 3 seeds; golden insertion washes out; no golden scaling signature
    - hamiltonian routing: C0 flow separates centroids (routing 0.420->0.765, nc reaches oracle 0.909); min pair dist barely moves; flow is not the ceiling
+   - metric comparison: Poincare vs cusp geodesic from a 'stable' start blows up numerically in BOTH (Poincare NaN, cusp ~2e13; C0 broken, T-sym fails) - REFUTED at these settings
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -441,3 +442,17 @@ def test_hamiltonian_routing_flow_separates():
     nc = d['nearest_centroid']
     assert nc['flow'] > 0.9
     assert nc['flow'] >= nc['oracle'] - 0.05                # 0.909 vs 0.911
+
+
+def test_metric_comparison_refuted_numerically():
+    d = load('metric_comparison_data.json')
+    assert d['verdict'].startswith('REFUTED')
+    p = d['metrics']['poincare']
+    c = d['metrics']['cusp']
+    # Poincare has NaN states; cusp escapes to ~2e13
+    assert p['has_nan']
+    assert c['r_range'][1] > 1e6
+    assert not p['c0_holds'] and not c['c0_holds']
+    assert p['c0_max_dev'] > 20 and c['c0_max_dev'] > 20
+    assert not p['tsym_ok'] and not c['tsym_ok']
+    assert c['energy_drift'] > 1e10
