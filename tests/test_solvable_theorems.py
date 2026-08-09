@@ -28,6 +28,7 @@ number so none of the resolved claims can silently drift:
    - polysphere use cases: classifier/anomaly/generator/continual claims hold at batch level; per-point weak; separation not bit-reproducible
    - polysphere routing: batch routing exact (identity confusion, chance 0.167); silhouette 0.943; per-point weak
    - golden survey: phi EXACT in cusp metric; golden rotation maxes min gap; static C0 packing has no golden structure; gap-filling does not lock to golden angle
+   - fib stream (T52): Fibonacci-sized continual stream is steady; AD_phi (absorb on large terms) beats P0 on both axes in all 3 seeds; golden insertion washes out; no golden scaling signature
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -404,3 +405,21 @@ def test_golden_survey_exact_and_no_emergent_locking():
     assert abs(p4['cusp_log_coords'] - d['phi']) < 1e-5
     assert p4['euclidean_asymptotic'] < 1.01
     assert p4['poincare_hyperbolic'] < 1.01
+
+
+def test_fib_stream_steady_and_ad_wins_all_seeds():
+    d = load('fib_stream_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    # AD_phi (absorb during large terms) beats P0 on BOTH axes in all 3 seeds
+    for sd, m in d['multi_seed_finals'].items():
+        assert m['final_all_ad'] > m['final_all_p0']
+        assert m['final_old_ad'] > m['final_old_p0']
+    # golden-rotation insertion is neutral after the flow (washes out)
+    for row in d['partB_golden_vs_center']:
+        assert abs(row['golden_all'] - row['center_all']) < 0.2
+        assert abs(row['golden_old'] - row['center_old']) < 0.2
+    # scaling: mean_r pinned by the clamp, min_d obeys a ring-packing law
+    c = d['partC_scaling']
+    assert abs(c['fib_center_P0']['a_mean_r']) < 0.1
+    assert -0.9 < c['fib_center_P0']['b_min_d'] < -0.5
+    assert -0.9 < c['eq_center_P0']['b_min_d'] < -0.5

@@ -1,0 +1,262 @@
+{
+  "claim": "A continual stream sized by Fibonacci numbers (ratio -> phi): (1) is steady with no explosive radius-variance shocks, (2) favors absorbing (mu=0.5) during the large terms, (3) washes out golden-rotation insertion order, and (4) obeys a ring-packing min_d law with no golden signature",
+  "seed": 42,
+  "base_n": 5,
+  "sizes_fib": [
+    1,
+    1,
+    2,
+    3,
+    5,
+    8,
+    13
+  ],
+  "partA_rows": {
+    "fib_center_P0": [
+      {
+        "size": 1,
+        "disp": 0.0,
+        "old": 0.975,
+        "all": 0.967,
+        "min_d": 0.9
+      },
+      {
+        "size": 1,
+        "disp": 0.3122,
+        "old": 0.925,
+        "all": 0.942,
+        "min_d": 0.781
+      },
+      {
+        "size": 2,
+        "disp": 0.1726,
+        "old": 0.925,
+        "all": 0.917,
+        "min_d": 0.6888
+      },
+      {
+        "size": 3,
+        "disp": 0.145,
+        "old": 0.908,
+        "all": 0.925,
+        "min_d": 0.5373
+      },
+      {
+        "size": 5,
+        "disp": 0.1814,
+        "old": 0.883,
+        "all": 0.883,
+        "min_d": 0.3922
+      },
+      {
+        "size": 8,
+        "disp": 0.1697,
+        "old": 0.842,
+        "all": 0.825,
+        "min_d": 0.3078
+      },
+      {
+        "size": 13,
+        "disp": 0.1526,
+        "old": 0.767,
+        "all": 0.792,
+        "min_d": 0.2302
+      }
+    ],
+    "fib_center_AD_phi": [
+      {
+        "size": 1,
+        "disp": 0.0,
+        "old": 1.0,
+        "all": 0.95,
+        "min_d": 0.9
+      },
+      {
+        "size": 1,
+        "disp": 0.3129,
+        "old": 0.967,
+        "all": 0.942,
+        "min_d": 0.781
+      },
+      {
+        "size": 2,
+        "disp": 0.1731,
+        "old": 0.917,
+        "all": 0.917,
+        "min_d": 0.6888
+      },
+      {
+        "size": 3,
+        "disp": 0.2046,
+        "old": 0.875,
+        "all": 0.95,
+        "min_d": 0.4659
+      },
+      {
+        "size": 5,
+        "disp": 0.2502,
+        "old": 0.792,
+        "all": 0.933,
+        "min_d": 0.3922
+      },
+      {
+        "size": 8,
+        "disp": 0.1502,
+        "old": 0.833,
+        "all": 0.917,
+        "min_d": 0.308
+      },
+      {
+        "size": 13,
+        "disp": 0.1628,
+        "old": 0.775,
+        "all": 0.842,
+        "min_d": 0.2143
+      }
+    ],
+    "eq_center_P0": [
+      {
+        "size": 5,
+        "disp": 0.1707,
+        "old": 0.983,
+        "all": 0.983,
+        "min_d": 0.6156
+      },
+      {
+        "size": 5,
+        "disp": 0.125,
+        "old": 0.917,
+        "all": 0.875,
+        "min_d": 0.4215
+      },
+      {
+        "size": 5,
+        "disp": 0.1567,
+        "old": 0.875,
+        "all": 0.858,
+        "min_d": 0.3691
+      },
+      {
+        "size": 5,
+        "disp": 0.1573,
+        "old": 0.858,
+        "all": 0.842,
+        "min_d": 0.2795
+      },
+      {
+        "size": 5,
+        "disp": 0.0357,
+        "old": 0.875,
+        "all": 0.817,
+        "min_d": 0.2783
+      },
+      {
+        "size": 5,
+        "disp": 0.1009,
+        "old": 0.817,
+        "all": 0.825,
+        "min_d": 0.2507
+      },
+      {
+        "size": 5,
+        "disp": 0.1024,
+        "old": 0.842,
+        "all": 0.808,
+        "min_d": 0.2213
+      }
+    ]
+  },
+  "partB_golden_vs_center": [
+    {
+      "event": 0,
+      "size": 1,
+      "golden_old": 1.0,
+      "golden_all": 0.975,
+      "center_old": 1.0,
+      "center_all": 0.975
+    },
+    {
+      "event": 1,
+      "size": 1,
+      "golden_old": 0.975,
+      "golden_all": 0.933,
+      "center_old": 0.925,
+      "center_all": 0.942
+    },
+    {
+      "event": 2,
+      "size": 2,
+      "golden_old": 0.875,
+      "golden_all": 0.925,
+      "center_old": 0.95,
+      "center_all": 0.95
+    },
+    {
+      "event": 3,
+      "size": 3,
+      "golden_old": 0.883,
+      "golden_all": 0.883,
+      "center_old": 0.95,
+      "center_all": 0.9
+    },
+    {
+      "event": 4,
+      "size": 5,
+      "golden_old": 0.925,
+      "golden_all": 0.9,
+      "center_old": 0.892,
+      "center_all": 0.85
+    },
+    {
+      "event": 5,
+      "size": 8,
+      "golden_old": 0.867,
+      "golden_all": 0.8,
+      "center_old": 0.875,
+      "center_all": 0.842
+    },
+    {
+      "event": 6,
+      "size": 13,
+      "golden_old": 0.733,
+      "golden_all": 0.767,
+      "center_old": 0.758,
+      "center_all": 0.742
+    }
+  ],
+  "partC_scaling": {
+    "fib_center_P0": {
+      "a_mean_r": -0.033,
+      "b_min_d": -0.746
+    },
+    "fib_center_AD_phi": {
+      "a_mean_r": -0.033,
+      "b_min_d": -0.768
+    },
+    "eq_center_P0": {
+      "a_mean_r": -0.052,
+      "b_min_d": -0.712
+    }
+  },
+  "multi_seed_finals": {
+    "42": {
+      "final_all_p0": 0.792,
+      "final_all_ad": 0.842,
+      "final_old_p0": 0.767,
+      "final_old_ad": 0.775
+    },
+    "11": {
+      "final_all_p0": 0.775,
+      "final_all_ad": 0.792,
+      "final_old_p0": 0.767,
+      "final_old_ad": 0.875
+    },
+    "7": {
+      "final_all_p0": 0.758,
+      "final_all_ad": 0.842,
+      "final_old_p0": 0.767,
+      "final_old_ad": 0.8
+    }
+  },
+  "verdict": "SUPPORTED (multi-seed 42/11/7): the Fibonacci stream is STEADY (T51 variance detector never fires). AD_phi (absorb mu=0.5 during the large terms 3,5,8,13) beats P0 on final all-routing in ALL 3 seeds (+0.050/+0.017/+0.084, avg +0.05) and on final old-routing (+0.008/+0.108/+0.033, avg +0.05): the small early terms keep the shell clean so the mu=0.5 absorb works - refining T51 to 'absorb helps a CLEAN shell, fails only when the core is already crowded'. min_d is slightly LOWER under AD_phi yet routing is HIGHER: shell coherence, not min_d, drives routing. Golden-rotation insertion is neutral after the flow (washes out, consistent with T48a). Scaling: mean_r pinned by the clamp (a~0), min_d ~ n^-0.75 fib vs n^-0.71 eq - a ring-packing law with no golden signature."
+}
