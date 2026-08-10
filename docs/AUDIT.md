@@ -413,11 +413,11 @@ given so it can be re-run).
      `rotation_test`, `clock_test`, `spring_fold`, `eikonal_fold`,
      `retrace_boundary`, `fold_optimizer`, `t65_fourpack`,
      `phi_scheduler`, `flow_regularized`, `flow_hier_reg`,
-     `flow_hier_reg_scaled`,
+     `flow_hier_reg_scaled`, `balance_auto`,
      plus the five
      earlier probes)
      each ship a claim/verdict JSON and are pinned by
-     `tests/test_solvable_theorems.py` (47 tests; full suite 237).  The
+     `tests/test_solvable_theorems.py` (48 tests; full suite 238).  The
     broad `experiments/` scripts (remaining flow, balance, polysphere,
     decentral) still
     print without persisted verdicts — extending the JSON verdict norm to

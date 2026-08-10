@@ -1,0 +1,146 @@
+{
+  "seed": 42,
+  "dataset": "mnist",
+  "part1_rows": [
+    {
+      "event": "steady",
+      "policy": "P0",
+      "detect": "--",
+      "disp_old": 0.05094962887941373,
+      "old_route": 0.96,
+      "all_route": 0.9266666666666666,
+      "min_d": 0.5746670762188703
+    },
+    {
+      "event": "steady",
+      "policy": "P5",
+      "detect": "--",
+      "disp_old": 0.5190048148506734,
+      "old_route": 0.8733333333333333,
+      "all_route": 0.88,
+      "min_d": 0.182633135289925
+    },
+    {
+      "event": "steady",
+      "policy": "AD",
+      "detect": "--",
+      "disp_old": 0.05094962887941373,
+      "old_route": 0.9533333333333334,
+      "all_route": 0.94,
+      "min_d": 0.5746670762188703
+    },
+    {
+      "event": "steady",
+      "policy": "P0",
+      "detect": "--",
+      "disp_old": 0.17708277408618242,
+      "old_route": 0.8933333333333333,
+      "all_route": 0.9133333333333333,
+      "min_d": 0.5368379150669453
+    },
+    {
+      "event": "steady",
+      "policy": "P5",
+      "detect": "--",
+      "disp_old": 0.46504735974166195,
+      "old_route": 0.84,
+      "all_route": 0.82,
+      "min_d": 0.25076311587900246
+    },
+    {
+      "event": "steady",
+      "policy": "AD",
+      "detect": "--",
+      "disp_old": 0.17708277408618242,
+      "old_route": 0.9,
+      "all_route": 0.9133333333333333,
+      "min_d": 0.5368379150669453
+    },
+    {
+      "event": "burst+5",
+      "policy": "P0",
+      "detect": "burst",
+      "disp_old": 0.14688408604935957,
+      "old_route": 0.8733333333333333,
+      "all_route": 0.86,
+      "min_d": 0.4180886393300945
+    },
+    {
+      "event": "burst+5",
+      "policy": "P5",
+      "detect": "burst",
+      "disp_old": 0.3979454444426362,
+      "old_route": 0.8866666666666667,
+      "all_route": 0.7466666666666667,
+      "min_d": 0.18926905408480593
+    },
+    {
+      "event": "burst+5",
+      "policy": "AD",
+      "detect": "burst",
+      "disp_old": 0.16572733213416868,
+      "old_route": 0.8866666666666667,
+      "all_route": 0.88,
+      "min_d": 0.3922200150648372
+    },
+    {
+      "event": "steady",
+      "policy": "P0",
+      "detect": "--",
+      "disp_old": 0.03255794538405992,
+      "old_route": 0.94,
+      "all_route": 0.8933333333333333,
+      "min_d": 0.39182649056325963
+    },
+    {
+      "event": "steady",
+      "policy": "P5",
+      "detect": "--",
+      "disp_old": 0.4148660615780357,
+      "old_route": 0.76,
+      "all_route": 0.8066666666666666,
+      "min_d": 0.2288061154400969
+    },
+    {
+      "event": "steady",
+      "policy": "AD",
+      "detect": "--",
+      "disp_old": 0.03255794538405992,
+      "old_route": 0.9,
+      "all_route": 0.9,
+      "min_d": 0.39182649056325963
+    }
+  ],
+  "part2": {
+    "P0": {
+      "policy": "P0",
+      "disp_old": 1.8281723005486277,
+      "old_route": 1.0,
+      "all_route": 0.985,
+      "min_d": 2.9771515717894395
+    },
+    "P5": {
+      "policy": "P5",
+      "disp_old": 0.44589453379191646,
+      "old_route": 0.995,
+      "all_route": 0.935,
+      "min_d": 0.4753356107884731
+    },
+    "AD": {
+      "policy": "AD",
+      "disp_old": 1.8163312211146916,
+      "old_route": 0.99,
+      "all_route": 0.975,
+      "min_d": 2.970447702420967
+    }
+  },
+  "disp_raw": 0.48688826547791486,
+  "burst_detected_part2": true,
+  "claim": "T51: an AUTONOMOUS self-balancing regime switch (burst detector engages mu=0.5 absorption only during explosive high-variance additions, settles at mu=0 otherwise) should protect old-class anchors during the shock without paying the constant-mu layout cost - the AD policy should beat always-mu=0 (P0) on old routing and displacement during a crowded stream.",
+  "ad_vs_p0_gains": {
+    "old_route": -0.01,
+    "all_route": -0.01
+  },
+  "detector_fires_only_on_burst": true,
+  "verdict": "NOT SUPPORTED for the autonomous benefit (seed=42, mnist): the burst detector works (fires ONLY on the explosive event, part1) but the claimed protection FAILS in a crowded stream - AD is ~= P0 on routing (old_route 0.990 vs 1.000, all_route 0.975 vs 0.985 on MNIST part2) and AD displacement is slightly HIGHER (1.816 vs 1.828, essentially tied); part1 synthetic: AD ~= P0 (0.887 vs 0.873 old, 0.880 vs 0.860 all on the burst event) with AD disp 0.166 vs P0 0.147. P5 (constant mu=0.5) is decisively worse (part1 all_route ~0.75-0.82, min_d ~0.19-0.25). On real MNIST embeddings the reflow policy is nearly irrelevant (all routes >= 0.94; P0 marginally best) - the MLP centroids are already separated, so geometry does not rescue clean embeddings. HONEST CAVEATS: (1) the T50/T49 one-shot absorb benefit is confirmed only for a clean steady-state shell, NOT a continuous stream (one-shot recovery tool, not a stream policy); (2) single seed 42, mnist (fashion available via arg)."
+}

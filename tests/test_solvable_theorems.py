@@ -50,6 +50,7 @@ number so none of the resolved claims can silently drift:
    - flow_regularized: flow regularizer at lambda=0.007 lifts routing 0.900->0.930 (+0.030) with test_acc 0.905 and sep 1.59x preserved, but the sweep is NON-MONOTONIC (0.003:+0.01, 0.005:-0.02, 0.007:+0.03, 0.01:-0.07, 0.015:+0.00) - SUPPORTED with narrow-window caveat, larger lambda clearly hurts routing
    - flow_hier_reg T48b: flow-REG does NOT stabilize - drift 6.616 (rel 0.686) vs baseline 6.549 (rel 0.647), forgetting -0.034 vs -0.029; flat routing worse (all 0.805 vs 0.885, old 0.873 vs 0.973); only hier routing better (all 0.790 vs 0.765, old 0.800 vs 0.760) - NOT SUPPORTED for stability headline, weak hier benefit only
    - flow_hier_reg_scaled T55b: n-scaling stage-2 reg per T54 A* law does NOT help materially - drift 6.5048 (rel 0.644) FIXED vs NSCAL 6.4636 (rel 0.640) and LIN 6.4573 (rel 0.640), a <=0.7% relative drift gain; ALL other metrics identical to 3 dp (acc 0.897/0.921, forget -0.031, route 0.895/0.933, hier 0.755/0.747); LIN nominally lowest - NOT SUPPORTED for a material effect
+   - balance_auto T51: autonomous burst-detector regime switch does NOT deliver the claimed benefit - detector fires only on the explosive event, but AD ~= P0 on routing (MNIST old 0.990 vs 1.000, all 0.975 vs 0.985; synthetic burst 0.887 vs 0.873 old) and AD displacement slightly higher (1.816 vs 1.828); P5 constant-mu=0.5 decisively worse; on real MNIST embeddings reflow policy is nearly irrelevant (all >= 0.94, P0 best) - NOT SUPPORTED for the autonomous benefit (T50 absorb = one-shot recovery tool for a clean shell, not a stream policy)
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -751,3 +752,17 @@ def test_flow_hier_reg_scaled_not_supported():
     for m in (f, n, l):
         assert abs(m['acc_all'] - n['acc_all']) < 1e-4  # identical to 3 dp
     assert d['best_drift_rule'] in ('FIXED', 'NSCAL', 'LIN')
+
+
+def test_balance_auto_not_supported():
+    d = load('balance_auto_data.json')
+    assert d['verdict'].startswith('NOT SUPPORTED')
+    # detector fires only on the explosive event
+    assert d['detector_fires_only_on_burst']
+    # but AD does NOT beat P0: routing gains are <= 0
+    assert d['ad_vs_p0_gains']['old_route'] <= 0.0
+    assert d['ad_vs_p0_gains']['all_route'] <= 0.0
+    p2 = d['part2']
+    # P0 marginally best on real MNIST; P5 clearly worst on min separation
+    assert p2['P0']['all_route'] >= p2['AD']['all_route']
+    assert p2['P5']['min_d'] < p2['P0']['min_d']

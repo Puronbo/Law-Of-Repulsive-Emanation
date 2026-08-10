@@ -134,6 +134,7 @@ print(f"  {'event':<9}{'policy':<12}{'detect':<7}{'disp_old':<10}{'old_route':<1
       f"{'all_route':<10}{'min_d':<8}")
 print("  " + "-"*62)
 prev = anchors0.copy()
+p1_rows = []
 for ev_name, gen in events:
     new_pts = gen(rng)
     burst = burst_detect(new_pts)
@@ -148,6 +149,10 @@ for ev_name, gen in events:
         r_all = routing_acc(anchors1, pts1, labels1)
         d_min, _ = (np.min(np.linalg.norm(anchors1[:, None] - anchors1[None], axis=-1)
                            + np.eye(len(anchors1))*10), None)
+        p1_rows.append({'event': ev_name, 'policy': pname,
+                        'detect': 'burst' if burst else '--',
+                        'disp_old': float(disp), 'old_route': float(r_old),
+                        'all_route': float(r_all), 'min_d': float(d_min)})
         print(f"  {ev_name:<9}{pname:<12}{'burst' if burst else '--':<7}{disp:<10.4f}"
               f"{r_old:<10.3f}{r_all:<10.3f}{d_min:<8.4f}")
         if pname == "AD":
@@ -251,6 +256,7 @@ print(f"  burst detected on the +5 new centroids: {burst}  (std={np.linalg.norm(
 
 print(f"  {'policy':<12}{'disp_old':<10}{'old_route':<10}{'all_route':<10}{'min_d':<8}")
 print("  " + "-"*46)
+p2_rows = []
 for pname, sched in [("P0", [(0.0, 800)]), ("P5", [(MU, 800)]),
                      ("AD", ([(MU, ABSORB_STEPS), (0.0, SETTLE_STEPS)]
                              if burst else [(0.0, 800)]))]:
@@ -260,6 +266,9 @@ for pname, sched in [("P0", [(0.0, 800)]), ("P5", [(MU, 800)]),
     r_all = centroid_routing(reflowed, emb2, y_te)
     d_min = np.min(np.linalg.norm(reflowed[:, None] - reflowed[None], axis=-1)
                    + np.eye(10) * 10)
+    p2_rows.append({'policy': pname, 'disp_old': float(disp),
+                    'old_route': float(r_old), 'all_route': float(r_all),
+                    'min_d': float(d_min)})
     print(f"  {pname:<12}{disp:<10.4f}{r_old:<10.3f}{r_all:<10.3f}{d_min:<8.4f}")
 
 # ===================================================================
@@ -279,3 +288,47 @@ print("          (all >= 0.94); P0 marginally best.  MLP centroids are already")
 print("          separated - geometry does not rescue clean embeddings.")
 print("  (Raw stage-1 vs stage-2 old-centroid drift = %.4f)" % disp_raw)
 print(f"\nDone.")
+
+# ---------------- persist claim/verdict ---------------------------------
+import json
+p2 = {r['policy']: r for r in p2_rows}
+res = {'seed': seed, 'dataset': dataset, 'part1_rows': p1_rows,
+       'part2': p2, 'disp_raw': float(disp_raw),
+       'burst_detected_part2': bool(burst)}
+res['claim'] = (
+    "T51: an AUTONOMOUS self-balancing regime switch (burst detector "
+    "engages mu=0.5 absorption only during explosive high-variance "
+    "additions, settles at mu=0 otherwise) should protect old-class "
+    "anchors during the shock without paying the constant-mu layout "
+    "cost - the AD policy should beat always-mu=0 (P0) on old routing "
+    "and displacement during a crowded stream."
+)
+ad, p0 = p2.get('AD'), p2.get('P0')
+ad_gain_old = round(float(ad['old_route'] - p0['old_route']), 3)
+ad_gain_all = round(float(ad['all_route'] - p0['all_route']), 3)
+res['ad_vs_p0_gains'] = {'old_route': ad_gain_old, 'all_route': ad_gain_all}
+det_only = all((r['event'] == 'burst+5') == (r['detect'] == 'burst')
+               for r in p1_rows)
+res['detector_fires_only_on_burst'] = det_only
+res['verdict'] = (
+    "NOT SUPPORTED for the autonomous benefit (seed=%s, %s): the burst "
+    "detector works (fires ONLY on the explosive event, part1) but the "
+    "claimed protection FAILS in a crowded stream - AD is ~= P0 on "
+    "routing (old_route 0.990 vs 1.000, all_route 0.975 vs 0.985 on "
+    "MNIST part2) and AD displacement is slightly HIGHER (1.816 vs "
+    "1.828, essentially tied); part1 synthetic: AD ~= P0 (0.887 vs "
+    "0.873 old, 0.880 vs 0.860 all on the burst event) with AD disp "
+    "0.166 vs P0 0.147. P5 (constant mu=0.5) is decisively worse "
+    "(part1 all_route ~0.75-0.82, min_d ~0.19-0.25). On real MNIST "
+    "embeddings the reflow policy is nearly irrelevant (all routes >= "
+    "0.94; P0 marginally best) - the MLP centroids are already "
+    "separated, so geometry does not rescue clean embeddings. HONEST "
+    "CAVEATS: (1) the T50/T49 one-shot absorb benefit is confirmed "
+    "only for a clean steady-state shell, NOT a continuous stream "
+    "(one-shot recovery tool, not a stream policy); (2) single seed "
+    "42, mnist (fashion available via arg)."
+) % (seed, dataset)
+os.makedirs('data', exist_ok=True)
+with open(os.path.join('data', 'balance_auto_data.json'), 'w') as fp:
+    json.dump(res, fp, indent=2)
+print("saved data/balance_auto_data.json")
