@@ -146,6 +146,26 @@ def main():
            'chance': float(chance), 'n_domains': int(N),
            'note': 'rotation = structure-preserving re-encoding (JL); '
                    'abs() = nonlinear relabeling (structure-breaking)'}
+    res['claim'] = (
+        "T61: the net's law is its relative geometry - an orthogonal "
+        "rotation (benign relabeling) preserves neighbor structure exactly, "
+        "while a nonlinear relabeling (per-coordinate abs) collapses "
+        "neighbor structure toward chance"
+    )
+    res['verdict'] = (
+        "SUPPORTED (J1, J2) WITH ONE HONEST CORRECTION (J3): the orthogonal "
+        "rotation preserves the top-8 neighbor structure EXACTLY (overlap "
+        "1.0000, similarity correlation 1.0000) even though every "
+        "coordinate changes (max |Qx-x| = 0.745) - the rotation-invariance "
+        "of the JL embedding is confirmed. CORRECTION: the abs() relabeling "
+        "drops neighbor overlap from 1.000 to 0.426, a real disruption, but "
+        "0.426 is 6.5x ABOVE chance (0.065), so it does NOT 'collapse "
+        "toward chance' as the J3 wording claims - abs() is a sign-fold "
+        "(magnitude rankings partially survive), not a fully "
+        "structure-breaking relabeling. J4's recommendation (consume "
+        "rotation-invariant structure, validate against benign relabelings) "
+        "stands."
+    )
     os.makedirs('data', exist_ok=True)
     with open(os.path.join('data', 'rotation_test_data.json'), 'w') as fp:
         json.dump(res, fp, indent=2)

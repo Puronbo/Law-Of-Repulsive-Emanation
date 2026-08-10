@@ -39,6 +39,7 @@ number so none of the resolved claims can silently drift:
    - fibonacci spiral on disk: neither projection turns at golden angle (42.14 / 29.23 deg vs 137.51) and pseudo-energy not conserved (drift 1.00 / 11.81) - REFUTED, golden angle is a cusp-metric property
    - prime count from scratch T62: Lucy_Hedgehog pi exact at all chain points (pi(943901200001)=35575526191), endpoint prime, next gap 8 - SUPPORTED with corrections: 'gap 1 below' is wrong (measured 24), window max gap 176 exceeds own 40-100 note
    - fibonacci squares on disk: 90-deg turning is a square-construction artifact; pseudo-energy NOT conserved (drift 0.96, decay -0.357/step), escapes disk (r 1.117), T-sym fails (0.99 vs C0 6e-09) - REFUTED frictionless claim
+   - rotation test T61: rotation preserves neighbor structure EXACTLY (overlap 1.0, sim corr 1.0, coords change 0.745); abs() drops overlap 1.0->0.426 but that is 6.5x chance, so 'collapse toward chance' overstated - SUPPORTED J1/J2 with J3 correction
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -581,3 +582,16 @@ def test_fibonacci_squares_disk_refuted():
     assert not m['fib_tsym_ok']
     assert m['fib_tsym_error'] > 0.5
     assert m['c0_geodesic_tsym_error'] < 1e-6
+
+
+def test_rotation_test_supported_with_correction():
+    d = load('rotation_test_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    # J1: rotation preserves structure exactly
+    assert d['overlap_rotation'] > 0.999
+    assert d['sim_corr'] > 0.999
+    # J2: coordinates all change
+    assert d['coord_max'] > 0.5
+    # J3 correction: abs() disrupts but does NOT collapse to chance
+    assert d['overlap_abs'] < d['overlap_rotation']
+    assert d['overlap_abs'] > 5 * d['chance']
