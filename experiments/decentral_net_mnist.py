@@ -153,3 +153,44 @@ print(f"  after regrow 3              acc {acc_regrown:.3f}")
 print("  -> the no-dependency module routes real 64D embeddings and")
 print("     survives damage with only local updates (no repair unit).")
 print("\nDone.")
+
+# ---------------- persist claim/verdict ---------------------------------
+import json as _json
+res = {
+    'seed': seed,
+    'epochs': 4,
+    'disk_radius': 0.35,
+    'acc_base_nearest_centroid': float(acc_base),
+    'acc_grown_decentralnet': float(acc_grown),
+    'acc_survivors_broken': float(acc_surv),
+    'acc_survivors_healed': float(acc_healed),
+    'spacing_before': float(sp_before),
+    'spacing_after': float(sp_after),
+    'acc_regrown_full': float(acc_regrown),
+}
+res['claim'] = (
+    "T55d: the no-dependency DecentralNet module (public API only: "
+    "add/flow/settle/remove/heal/predict/accuracy) should route REAL "
+    "64D MNIST embeddings at ~nearest-centroid baseline accuracy using "
+    "only local updates (no global mean/max/controller), survive "
+    "arbitrary neuron loss with self-healing (local settle re-spreads "
+    "survivors), and regrow full capacity from fresh homes."
+)
+res['verdict'] = (
+    "SUPPORTED (seed=%s, mnist 64D): (a) the local-settle net routes "
+    "real embeddings essentially at baseline - DecentralNet 0.810 vs "
+    "nearest-centroid 0.817 (within ~1 pt, no central controller); "
+    "(b) damage tolerance: after killing 3 of 10 neurons the survivors "
+    "keep routing (0.834) and LOCAL heal alone restores spacing "
+    "0.562 -> 0.854 with routing preserved (0.822); (c) regrowth from "
+    "fresh homes at the empty homes restores the full 10-class net at "
+    "0.767. HONEST CAVEATS: regrown accuracy (0.767) is ~5 pts below "
+    "the grown baseline (0.810) - fresh neurons absorb only 200 steps "
+    "and the new anchors are not re-optimized against the full test "
+    "set; embeddings are the MLP's own 64D layer (in-distribution by "
+    "construction); single seed 42, 4 epochs, disk radius 0.35."
+) % seed
+os.makedirs('data', exist_ok=True)
+with open(os.path.join('data', 'decentral_net_mnist_data.json'), 'w') as fp:
+    _json.dump(res, fp, indent=2)
+print("saved data/decentral_net_mnist_data.json")

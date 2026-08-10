@@ -55,6 +55,7 @@ number so none of the resolved claims can silently drift:
    - polysphere_mnist: PolysphereRouter generalizes to REAL MNIST embeddings - mixed-batch routing 0.890 vs chance 0.100; anomaly gap 0.663 (in-dist 0.877 vs OOD 0.214); hierarchical end-to-end 0.753 vs combined chance ~0.111 (branching 10 -> 4); active learning flags unknowns 60% and routes 10/10 = 1.000 after faces added - SUPPORTED (embeddings are the MLP's own 2D bottleneck, single seed, hier below flat 0.890, threshold-dependent)
    - polysphere_nnflow_viz: three-extension probe - (1) learnable NN truths SUPPORTED: routing 0.880 (176/200) vs chance 0.100 on MLP embeddings (test_acc 0.885); (2) S^2 Hamiltonian flow NOT SUPPORTED: silhouette ~0.0 (intra ~= inter, no separation), only 3-4/6 faces self-route at low conf 0.24-0.56, repulsion destroys centroid structure (run-to-run variance: sil -0.016..0.022, 3-4 self-routed, part 2 draw not fully rng-seeded - verdict robust); (3) viz routing distribution tracks true per-class fractions within ~1-3 pts - PARTIAL
    - decentral_net T55c: fully local net (private home trap + k-NN repulsion + per-neuron steps, NO global mean/max/controller) SUPPORTED - decentralization ~free or better on old-routing (banner multi-seed: ABS-SC final_old 0.913 vs centralized 0.870; final_all 0.843 vs 0.853); shell EMERGES from local rules but needs the always-on home tether (without it collapses to rim 0.57 all-route -> 0.85 at mu0=0.12); self-heals with no repair unit (50% loss: spacing spread 0.16->0.11, regrown routing >= pre-damage 0.917 vs 0.877); MNIST part4 no collapse, ABS-SC final-all 0.813 > FIB 0.647; caveats: spacing gate never fired on clean stream (GATE ~ ABS-SC), k=4 worse than k=8, part4 single-seed
+   - decentral_net_mnist T55d: no-dependency DecentralNet on real 64D MNIST embeddings SUPPORTED - local-settle routes at 0.810 vs nearest-centroid baseline 0.817 (within ~1 pt, no central controller); after killing 3/10 neurons survivors keep routing (0.834) and LOCAL heal alone restores spacing 0.562 -> 0.854 with routing preserved (0.822); regrow from fresh homes restores full 10-class net at 0.767 (~5 pts below grown 0.810); caveats: embeddings are the MLP's own 64D layer, single seed 42/4 epochs/disk radius 0.35
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -830,3 +831,17 @@ def test_decentral_net_supported():
     assert p4['FIB']['old_route'] >= 0.8
     # banner discloses multi-seed means for parts 0-3
     assert 'seeds 42/11/7' in d['multi_seed_banner_parts_0_3']
+
+
+def test_decentral_net_mnist_supported():
+    d = load('decentral_net_mnist_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    # local-settle routes ~ at nearest-centroid baseline
+    assert d['acc_grown_decentralnet'] >= d['acc_base_nearest_centroid'] - 0.03
+    # local heal restores spacing
+    assert d['spacing_after'] > d['spacing_before']
+    # survivors keep routing after killing 3 neurons
+    assert d['acc_survivors_broken'] >= 0.8
+    assert d['acc_survivors_healed'] >= 0.8
+    # regrow restores full 10-class net (above chance)
+    assert d['acc_regrown_full'] > 0.7

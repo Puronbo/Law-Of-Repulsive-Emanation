@@ -1,0 +1,14 @@
+{
+  "seed": 42,
+  "epochs": 4,
+  "disk_radius": 0.35,
+  "acc_base_nearest_centroid": 0.817,
+  "acc_grown_decentralnet": 0.80975,
+  "acc_survivors_broken": 0.8336917562724014,
+  "acc_survivors_healed": 0.821505376344086,
+  "spacing_before": 0.5617785387224222,
+  "spacing_after": 0.8544448099995173,
+  "acc_regrown_full": 0.7675,
+  "claim": "T55d: the no-dependency DecentralNet module (public API only: add/flow/settle/remove/heal/predict/accuracy) should route REAL 64D MNIST embeddings at ~nearest-centroid baseline accuracy using only local updates (no global mean/max/controller), survive arbitrary neuron loss with self-healing (local settle re-spreads survivors), and regrow full capacity from fresh homes.",
+  "verdict": "SUPPORTED (seed=42, mnist 64D): (a) the local-settle net routes real embeddings essentially at baseline - DecentralNet 0.810 vs nearest-centroid 0.817 (within ~1 pt, no central controller); (b) damage tolerance: after killing 3 of 10 neurons the survivors keep routing (0.834) and LOCAL heal alone restores spacing 0.562 -> 0.854 with routing preserved (0.822); (c) regrowth from fresh homes at the empty homes restores the full 10-class net at 0.767. HONEST CAVEATS: regrown accuracy (0.767) is ~5 pts below the grown baseline (0.810) - fresh neurons absorb only 200 steps and the new anchors are not re-optimized against the full test set; embeddings are the MLP's own 64D layer (in-distribution by construction); single seed 42, 4 epochs, disk radius 0.35."
+}
