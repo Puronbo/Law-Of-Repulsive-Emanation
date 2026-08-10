@@ -1,0 +1,30 @@
+{
+  "baseline": {
+    "stage1_test_acc": 0.952,
+    "stage1_routing_old": 0.973,
+    "stage2_test_all": 0.9,
+    "stage2_test_old": 0.923,
+    "forget": -0.029,
+    "routing_all": 0.885,
+    "routing_old": 0.973,
+    "hier_all": 0.765,
+    "hier_old": 0.76,
+    "drift": 6.549,
+    "drift_rel": 0.647
+  },
+  "flow-REG": {
+    "stage1_test_acc": 0.95,
+    "stage1_routing_old": 0.887,
+    "stage2_test_all": 0.896,
+    "stage2_test_old": 0.916,
+    "forget": -0.034,
+    "routing_all": 0.805,
+    "routing_old": 0.873,
+    "hier_all": 0.79,
+    "hier_old": 0.8,
+    "drift": 6.616,
+    "drift_rel": 0.686
+  },
+  "claim": "T48b: flow-regularized continual learning with hierarchical anchors. Adding the C0 potential on 64D class centroids during MLP training (lambda = 5e-3) should stabilize old-class anchors as new classes accumulate (less centroid drift, less forgetting) and preserve accuracy while improving hierarchical routing at stage 2.",
+  "verdict": "NOT SUPPORTED for the stability headline (seed=42, dataset=mnist, lambda=5e-3): flow-REG does NOT reduce old-class drift - drift 6.616 (rel 0.686) vs baseline 6.549 (rel 0.647), i.e. slightly WORSE with flow; forgetting is also marginally worse (-0.034 vs -0.029). Routing is clearly WORSE under flow at stage 2: all 0.805 vs 0.885, old 0.873 vs 0.973; stage-1 routing is also worse (0.887 vs 0.973). The one metric where flow-REG is better is hier all-routing: 0.790 vs 0.765 (+0.025) and hier old 0.800 vs 0.760 (+0.040) - the hierarchical group separation does survive and slightly helps the coarse-then-fine router. Test accuracy is essentially preserved (0.896 vs 0.900 all, 0.916 vs 0.923 old). Net verdict: the stabilization claim is REFUTED (flow makes drift and flat routing worse); only the hierarchical routing benefit is weakly present. HONEST CAVEATS: single seed 42 / mnist (Fashion-MNIST not run here); routing uses logit-truth PolysphereRouter on the model's own embeddings (in-distribution)."
+}

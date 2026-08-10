@@ -198,8 +198,9 @@ print("T48b: FLOW-REGULARIZED CONTINUAL LEARNING (hierarchical anchors)")
 print(f"seed={seed}  dataset={dataset}  lambda={FLOW_LAMBDA}")
 print("=" * 62)
 
+res = {}
 for flow in [0.0, FLOW_LAMBDA]:
-    tag = "flow-REG" if flow > 0 else "baseline "
+    tag = "flow-REG" if flow > 0 else "baseline"
     print(f"\n--- Stage 1 ({tag}): classes 0-4 ---")
     net = MLP([784, 256, 64, 10], lr=0.01)
     train(net, X1, y1, flow, EPOCHS_S1)
@@ -225,6 +226,48 @@ for flow in [0.0, FLOW_LAMBDA]:
     print(f"  routing  all={r_all:.3f}  old={r_old:.3f}")
     print(f"  hier     all={h_all:.3f}  old={h_old:.3f}")
     print(f"  old-class centroid drift = {disp:.4f}  (rel {disp_rel:.3f})")
+    res[tag] = {'stage1_test_acc': round(float(a1), 3),
+                'stage1_routing_old': round(float(r1), 3),
+                'stage2_test_all': round(float(a2), 3),
+                'stage2_test_old': round(float(a_old), 3),
+                'forget': round(float(a_old - a1), 3),
+                'routing_all': round(float(r_all), 3),
+                'routing_old': round(float(r_old), 3),
+                'hier_all': round(float(h_all), 3),
+                'hier_old': round(float(h_old), 3),
+                'drift': round(float(disp), 3),
+                'drift_rel': round(float(disp_rel), 3)}
+
+res['claim'] = (
+    "T48b: flow-regularized continual learning with hierarchical anchors. "
+    "Adding the C0 potential on 64D class centroids during MLP training "
+    "(lambda = 5e-3) should stabilize old-class anchors as new classes "
+    "accumulate (less centroid drift, less forgetting) and preserve "
+    "accuracy while improving hierarchical routing at stage 2."
+)
+res['verdict'] = (
+    "NOT SUPPORTED for the stability headline (seed=%s, dataset=%s, "
+    "lambda=5e-3): flow-REG does NOT reduce old-class drift - drift 6.616 "
+    "(rel 0.686) vs baseline 6.549 (rel 0.647), i.e. slightly WORSE with "
+    "flow; forgetting is also marginally worse (-0.034 vs -0.029). "
+    "Routing is clearly WORSE under flow at stage 2: all 0.805 vs 0.885, "
+    "old 0.873 vs 0.973; stage-1 routing is also worse (0.887 vs 0.973). "
+    "The one metric where flow-REG is better is hier all-routing: 0.790 "
+    "vs 0.765 (+0.025) and hier old 0.800 vs 0.760 (+0.040) - the "
+    "hierarchical group separation does survive and slightly helps the "
+    "coarse-then-fine router. Test accuracy is essentially preserved "
+    "(0.896 vs 0.900 all, 0.916 vs 0.923 old). Net verdict: the "
+    "stabilization claim is REFUTED (flow makes drift and flat routing "
+    "worse); only the hierarchical routing benefit is weakly present. "
+    "HONEST CAVEATS: single seed 42 / mnist (Fashion-MNIST not run here); "
+    "routing uses logit-truth PolysphereRouter on the model's own "
+    "embeddings (in-distribution)."
+) % (seed, dataset)
+os.makedirs('data', exist_ok=True)
+import json
+with open(os.path.join('data', 'flow_hier_reg_data.json'), 'w') as fp:
+    json.dump(res, fp, indent=2)
+print("saved data/flow_hier_reg_data.json")
 
 print("\n" + "="*62)
 print("SUMMARY")

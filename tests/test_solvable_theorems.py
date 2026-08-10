@@ -48,6 +48,7 @@ number so none of the resolved claims can silently drift:
    - t65 four-pack: P1 REFUTED (tau=1.4272 identical across all curiosity_drive, corr nan - knob has no effect); P2 REFUTED (ascent err 1.79-1.82, does not recover seed); P3 PARTIAL (2D proj MI 0.034 vs null 0.009 retains signal, but single coord already = 1.0, holography trivial); P4 REFUTED (converged fraction 0.00, max dist from final 0.45) - MIXED, mostly REFUTED
    - phi scheduler T53: FIB batching most robust on disk layouts (stream-old 0.912 best, final-old 0.910 at ~2.25 buffer); FIB+ABS buys final_all (+0.013) at old-routing cost (-0.063); P5 fixed mu=0.5 never usable (0.872); on MNIST scheduling NOT needed (NAIVE 0.953 > FIB 0.907 > FIB+ABS 0.887) - SUPPORTED with scope caveat (geometry-regime tool)
    - flow_regularized: flow regularizer at lambda=0.007 lifts routing 0.900->0.930 (+0.030) with test_acc 0.905 and sep 1.59x preserved, but the sweep is NON-MONOTONIC (0.003:+0.01, 0.005:-0.02, 0.007:+0.03, 0.01:-0.07, 0.015:+0.00) - SUPPORTED with narrow-window caveat, larger lambda clearly hurts routing
+   - flow_hier_reg T48b: flow-REG does NOT stabilize - drift 6.616 (rel 0.686) vs baseline 6.549 (rel 0.647), forgetting -0.034 vs -0.029; flat routing worse (all 0.805 vs 0.885, old 0.873 vs 0.973); only hier routing better (all 0.790 vs 0.765, old 0.800 vs 0.760) - NOT SUPPORTED for stability headline, weak hier benefit only
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -720,3 +721,19 @@ def test_flow_regularized_supported_narrow_window():
     # stronger flow (lambda=0.01) clearly hurts routing
     row = next(r for r in d['sweep'] if r['lambda'] == 0.01)
     assert row['routing_delta'] < -0.05
+
+
+def test_flow_hier_reg_not_supported():
+    d = load('flow_hier_reg_data.json')
+    assert d['verdict'].startswith('NOT SUPPORTED')
+    b, f = d['baseline'], d['flow-REG']
+    # flow does NOT reduce drift (it is slightly worse)
+    assert f['drift'] > b['drift']
+    # flow is clearly worse on flat routing at stage 2
+    assert f['routing_all'] < b['routing_all']
+    assert f['routing_old'] < b['routing_old']
+    # accuracy essentially preserved
+    assert f['stage2_test_all'] >= b['stage2_test_all'] - 0.01
+    # the one flow benefit: hierarchical routing is better
+    assert f['hier_all'] > b['hier_all']
+    assert f['hier_old'] > b['hier_old']
