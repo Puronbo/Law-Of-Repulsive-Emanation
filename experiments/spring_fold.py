@@ -175,6 +175,33 @@ out['C'] = {'h0': h0, 'r_end': r_endC, 'z_end': z_endC,
             'clearance': above, 'overlap_frac': overlap}
 
 # ---------------- save -------------------------------------------------
+out['claim'] = (
+    "T58: the spring that folds up on itself. Development (r = a*theta, "
+    "dr/dtheta = +a, matter grows from 0) is the derivative; the fold "
+    "(dr/dtheta = -a) is the integral; the loop returns toward C0. A mirror "
+    "fold sweeps its own coil twice (area = 2*a^2*TH^3/6, soft crease "
+    "2 arctan(1/TH)) and self-crosses a half-turn before the apex; a retrace "
+    "fold encloses nothing and closes EXACTLY to C0 (crease pi); the golden "
+    "fold cuts at length ratio phi; the 3D overcoil fold (C) tucks its end "
+    "under its start, locking both ends into a closed ring."
+)
+out['verdict'] = (
+    "SUPPORTED (by construction, deterministic, no RNG): Model A net area "
+    "2666.7 matches the analytic 2*a^2*TH^3/6 EXACTLY, crease 0.0329*pi vs "
+    "analytic 2 arctan(1/TH) 0.0318*pi, self-crossing at theta' = TH - pi "
+    "exactly. Model A1 retrace fold: net area +3.1e-09 (~0), closure to C0 "
+    "0.00e+00 EXACT, crease 1.0000*pi EXACT - the fold-as-integral statement "
+    "holds identically. Model A2 golden fold: length ratio 1.618034 = phi "
+    "EXACT, but the fold closes to r = 0.6138*apex (golden remainder), NOT "
+    "to C0 (closure error 12.3) - the golden fold does not return the spring "
+    "to the origin. Model B helix z returns 3.3e-03 (~0). Model C overcoil: "
+    "end lands r = 0.253 inside the first coil at z = -1.85 (under it), "
+    "tucked on the start, both ends locked. HONEST CAVEAT: the "
+    "unfolding/folding = derivative/integral law is BUILT IN by choosing "
+    "dr/dtheta = +-a, so this confirms the correspondence by construction, "
+    "not by discovery; and the strongest lock (C) is 3D geometry, not a "
+    "C0-metric property."
+)
 os.makedirs('data', exist_ok=True)
 with open(os.path.join('data', 'spring_fold_data.json'), 'w') as fp:
     json.dump(out, fp, indent=2)

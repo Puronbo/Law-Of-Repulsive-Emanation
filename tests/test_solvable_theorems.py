@@ -41,6 +41,7 @@ number so none of the resolved claims can silently drift:
    - fibonacci squares on disk: 90-deg turning is a square-construction artifact; pseudo-energy NOT conserved (drift 0.96, decay -0.357/step), escapes disk (r 1.117), T-sym fails (0.99 vs C0 6e-09) - REFUTED frictionless claim
    - rotation test T61: rotation preserves neighbor structure EXACTLY (overlap 1.0, sim corr 1.0, coords change 0.745); abs() drops overlap 1.0->0.426 but that is 6.5x chance, so 'collapse toward chance' overstated - SUPPORTED J1/J2 with J3 correction
    - clock test T59: calendar features nail the law at e0 (1.0000) but break at e0+15 (0.4167, BELOW chance -> anti-correlation), intrinsic mod-2/3/5/7 features survive both (1.0000) - SUPPORTED, convention carries then breaks
+   - spring fold T58: mirror-fold area = 2*a^2*TH^3/6 EXACT, self-crosses at TH-pi; retrace fold closes EXACTLY to C0 (closure 0.00e+00, crease pi); golden fold ratio = phi EXACT but does NOT close to C0 (error 12.3); overcoil tucks end under start - SUPPORTED (by construction, deterministic)
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -607,3 +608,18 @@ def test_clock_test_supported():
     assert d['f2'] < 0.5
     # F3: intrinsic features survive both epochs
     assert d['f3a'] > 0.999 and d['f3b'] > 0.999
+
+
+def test_spring_fold_supported():
+    d = load('spring_fold_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    # A: mirror fold sweeps growth twice exactly (analytic area)
+    assert abs(d['A']['area'] - d['A']['area_pred']) / d['A']['area_pred'] < 1e-6
+    # A1: retrace fold closes EXACTLY to C0 and crease is exactly pi
+    assert d['A1']['closure'] == 0.0
+    assert abs(d['A1']['crease_pi'] - 1.0) < 1e-3
+    # A2: golden fold ratio is phi exactly, but does NOT close to C0
+    assert abs(d['A2']['ratio'] - 1.618033988749895) < 1e-9
+    assert d['A2']['closure'] > 1.0
+    # C: overcoil lock tucks the end under the start (closed ring)
+    assert d['C']['tuck_on_start'] is True
