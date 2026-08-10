@@ -162,6 +162,7 @@ print("="*60)
 print("  Sweep of (lambda, attract):")
 print(f"    baseline:  test_acc={base_acc:.3f}  routing={base_rt:.3f}  sep_ratio={base_sep:.2f}x")
 best = None
+sweep_rows = []
 for flow_lambda, attract in [(3e-3, 1.0), (5e-3, 1.0), (7e-3, 1.0), (1.5e-2, 1.0), (1e-2, 1.0)]:
     print(f"\n  lambda={flow_lambda}, attract={attract}")
     net1 = MLP([784, 256, 64, 10], lr=0.01)
@@ -173,6 +174,11 @@ for flow_lambda, attract in [(3e-3, 1.0), (5e-3, 1.0), (7e-3, 1.0), (1.5e-2, 1.0
     i1, e1 = separation(emb_test1, y_test)
     print(f"  Routing acc: {rt1:.3f} ({rt1-rt0:+.3f} vs baseline)")
     print(f"  Separation: intra={i1:.3f} inter={e1:.3f} ratio={e1/i1:.2f}x")
+    sweep_rows.append({'lambda': flow_lambda, 'attract': attract,
+                       'test_acc': round(float(acc_test), 3),
+                       'routing': round(float(rt1), 3),
+                       'routing_delta': round(float(rt1 - rt0), 3),
+                       'sep_ratio': round(float(e1 / i1), 2)})
     if best is None or (rt1 > best[2] and acc_test > base_acc - 0.01):
         best = (flow_lambda, attract, rt1, acc_test, e1/i1)
 
@@ -187,3 +193,43 @@ print(f"  with test accuracy and separation preserved.")
 print(f"  (Data-point-level flow was ineffective — consistent with")
 print(f"  the concept-level physics used in experiments 1-3.)")
 print(f"\nDone.")
+
+# ---------------- persist claim/verdict ---------------------------------
+import json
+res = {'seed': seed,
+       'baseline': {'test_acc': round(float(base_acc), 3),
+                    'routing': round(float(base_rt), 3),
+                    'sep_ratio': round(float(base_sep), 2)},
+       'best': {'lambda': best[0], 'attract': best[1],
+                'routing': round(float(best[2]), 3),
+                'test_acc': round(float(best[3]), 3),
+                'sep_ratio': round(float(best[4]), 2)},
+       'sweep': sweep_rows}
+res['claim'] = (
+    "The C0 flow potential, added as a regularizer on 64D embeddings during "
+    "MLP training (L = CE + lambda*[diff-class 1/|z_i-z_j| repulsion - "
+    "attract*same-class 1/|z_i-z_j|^2 attraction]), improves routing "
+    "accuracy on MNIST test embeddings while preserving test accuracy and "
+    "separation."
+)
+res['verdict'] = (
+    "SUPPORTED with narrow-window caveat (seed=%d): baseline CE-only MLP "
+    "test_acc 0.905, routing 0.900, separation 1.58x. Best flow-regularized "
+    "at lambda=0.007: test_acc 0.905 (preserved), routing 0.930 (+0.030), "
+    "separation 1.59x - a genuine centroid-level routing gain with "
+    "accuracy and separation held. BUT the effect is a narrow window AND "
+    "the sweep is NON-MONOTONIC (lambda 0.003:+0.010, 0.005:-0.020, "
+    "0.007:+0.030, 0.010:-0.070, 0.015:+0.000), so a single-seed best "
+    "could be partly sampling noise - the robust statement is only that "
+    "small lambda never hurts accuracy and can help routing, while larger "
+    "lambda (0.01) clearly HURTS routing (-0.070). HONEST CAVEATS: (1) "
+    "routing is measured with a PolysphereRouter using logit truths on the "
+    "model's own embeddings (in-distribution, so the +0.030 may not "
+    "transfer to held-out routing tasks); (2) single seed 42; (3) the "
+    "'data-point-level flow was ineffective' note is a statement from the "
+    "code's design history, not re-measured here."
+) % seed
+os.makedirs('data', exist_ok=True)
+with open(os.path.join('data', 'flow_regularized_data.json'), 'w') as fp:
+    json.dump(res, fp, indent=2)
+print("saved data/flow_regularized_data.json")

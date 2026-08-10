@@ -13,7 +13,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
-| Regression suite | **54/54 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
+| Regression suite | **55/55 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
 | L.O.R.E. | C0 = V(q0) = H(q0,0), 109 tests; T-symmetry error 0.003 |
 | Fold theorem (T63/T64) | crease = **unique viscosity solution of |r′| = a**; retrace = cut locus; eikonal err 3.3e-13; measured crease 0.0350π vs derived 0.0318π; area 2666.6665 vs 2666.6666… |
 | Clock-test canon (T59/T61) | law-ness 1.000 → 0.417 under calendar re-index → 1.000 under rotation; rotation overlap/sim 1.000 |
@@ -162,6 +162,7 @@ The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.j
 | Fold optimizer T60 (`fold_optimizer.py`) | SUPPORTED (deterministic): Hamiltonian spring (retrace fold) conserves — energy drift 3.9e-3 bounded (symplectic Euler, 0.26% of E0), phase area 0.9921, Poincaré recurrence to start EXACT (3.3e-5) and never locks; damped spring (mirror fold) collapses — energy 0.00e+00 above min, area ratio ~0, locks at x=+1 EXACT and stays 2000 steps. Caveats: "cannot escape" is topological (shown by staying, not proved); mirror-fold = dissipation is interpretive |
 | T65 four-pack (`t65_fourpack.py`) | MIXED, mostly REFUTED: P1 REFUTED — mean τ = 1.4272 identical across all curiosity_drive (corr NaN; the knob has no effect); P2 REFUTED — gradient ascent lands 1.79/1.82/1.81 hyperbolic distance from the seed, T-symmetry of the loss landscape does NOT hold; P3 PARTIAL — 2D projection MI 0.0344 vs null 0.0088 (~3.9×, clears chance) but a single raw 1536-dim coordinate already carries MI 1.0000, so the compression is NOT holographic (latent lives in one coordinate); P4 REFUTED — dream/remix converged fraction 0.00, mean last step 0.0024, max dist from final 0.45, no fixed point |
 | Phi-jump scheduler T53 (`phi_scheduler.py`) | SUPPORTED with scope caveat: FIB batching is the most robust on disk layouts (multi-seed: stream-old 0.912, final-old 0.910, ~2.25 buffer); FIB+ABS buys final whole-layout integrity (+0.013) at old-routing cost (−0.063) — both trade-offs hold per-seed; P5 fixed mu=0.5 is NEVER usable (worst stream 0.872, all 3 seeds); Part 3 MNIST: scheduling NOT needed on real embeddings (NAIVE 0.953 > FIB 0.907 > FIB+ABS 0.887) — a geometry-regime tool, consistent with T51/T52. Caveats: multi-seed banner is hardcoded from a prior 42/11/7 run (artifact persists current-seed rows); Part 3 reflow is known-weak |
+| Flow-regularized training (`flow_regularized.py`) | SUPPORTED with narrow-window caveat: C0 flow regularizer at λ=0.007 lifts routing 0.900→0.930 (+0.030) with test acc 0.905 and separation 1.59x preserved; but the λ-sweep is NON-MONOTONIC (0.003:+0.01, 0.005:−0.02, 0.007:+0.03, 0.01:−0.07, 0.015:+0.00), so the best is partly sampling noise; larger λ clearly hurts routing (−0.070). Routing uses logit-truth PolysphereRouter on the model's own embeddings (in-distribution), single seed 42 |
 
 ## Internet-Scale Flow (T67, T72)
 
@@ -238,6 +239,7 @@ python experiments/retrace_boundary.py            # T64 retrace-derived verdict 
 python experiments/fold_optimizer.py              # T60 fold-as-optimizer verdict (SUPPORTED)
 python experiments/t65_fourpack.py                # T65 four-pack verdict (MIXED, mostly REFUTED)
 python experiments/phi_scheduler.py               # T53 phi-jump scheduler verdict (SUPPORTED w/ caveat)
+python experiments/flow_regularized.py            # flow-regularized training verdict (SUPPORTED w/ caveat)
 python Universals/serve_dashboard.py   # L.O.R.E. dashboard -> http://localhost:8080/docs/
 ```
 

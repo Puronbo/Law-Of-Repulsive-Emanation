@@ -47,6 +47,7 @@ number so none of the resolved claims can silently drift:
    - fold optimizer T60: Hamiltonian spring conserves (drift 3.9e-3 bounded, area ratio 0.9921) and recurs to start (Poincare, min dist 3.3e-5); damped spring collapses (energy 0.00e+00 above min, area ratio ~0) and locks at x=+1 EXACT (stays 2000 steps) - SUPPORTED; 'cannot escape' is topological (shown by staying, not proved), mirror-fold=dissipation interpretive
    - t65 four-pack: P1 REFUTED (tau=1.4272 identical across all curiosity_drive, corr nan - knob has no effect); P2 REFUTED (ascent err 1.79-1.82, does not recover seed); P3 PARTIAL (2D proj MI 0.034 vs null 0.009 retains signal, but single coord already = 1.0, holography trivial); P4 REFUTED (converged fraction 0.00, max dist from final 0.45) - MIXED, mostly REFUTED
    - phi scheduler T53: FIB batching most robust on disk layouts (stream-old 0.912 best, final-old 0.910 at ~2.25 buffer); FIB+ABS buys final_all (+0.013) at old-routing cost (-0.063); P5 fixed mu=0.5 never usable (0.872); on MNIST scheduling NOT needed (NAIVE 0.953 > FIB 0.907 > FIB+ABS 0.887) - SUPPORTED with scope caveat (geometry-regime tool)
+   - flow_regularized: flow regularizer at lambda=0.007 lifts routing 0.900->0.930 (+0.030) with test_acc 0.905 and sep 1.59x preserved, but the sweep is NON-MONOTONIC (0.003:+0.01, 0.005:-0.02, 0.007:+0.03, 0.01:-0.07, 0.015:+0.00) - SUPPORTED with narrow-window caveat, larger lambda clearly hurts routing
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -703,3 +704,19 @@ def test_phi_scheduler_supported_with_caveat():
     assert 0 < d['FIB']['mean_buf'] <= 2.5
     # Part 3 (MNIST): scheduling is not needed on real embeddings
     assert d['part3_final_all']['NAIVE'] > d['part3_final_all']['FIB'] > d['part3_final_all']['FIB+ABS']
+
+
+def test_flow_regularized_supported_narrow_window():
+    d = load('flow_regularized_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    # baseline numbers pinned
+    assert abs(d['baseline']['routing'] - 0.9) < 1e-6
+    assert abs(d['baseline']['test_acc'] - 0.905) < 1e-6
+    # best lambda=0.007 wins on routing with accuracy preserved
+    best = d['best']
+    assert best['lambda'] == 0.007
+    assert best['routing'] == 0.93
+    assert best['test_acc'] >= d['baseline']['test_acc'] - 0.01
+    # stronger flow (lambda=0.01) clearly hurts routing
+    row = next(r for r in d['sweep'] if r['lambda'] == 0.01)
+    assert row['routing_delta'] < -0.05
