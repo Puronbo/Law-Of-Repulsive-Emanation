@@ -13,7 +13,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
-| Regression suite | **61/61 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
+| Regression suite | **62/62 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
 | L.O.R.E. | C0 = V(q0) = H(q0,0), 109 tests; T-symmetry error 0.003 |
 | Fold theorem (T63/T64) | crease = **unique viscosity solution of |r′| = a**; retrace = cut locus; eikonal err 3.3e-13; measured crease 0.0350π vs derived 0.0318π; area 2666.6665 vs 2666.6666… |
 | Clock-test canon (T59/T61) | law-ness 1.000 → 0.417 under calendar re-index → 1.000 under rotation; rotation overlap/sim 1.000 |
@@ -169,6 +169,7 @@ The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.j
 | Self-balancing router T55a (`self_balancing.py`) | SUPPORTED in the geometry regime (with disclosure that banner numbers are multi-seed 42/11/7 means; artifact holds seed-42 rows): the coherence gate FIRES as designed — in a trapped crowded core COH skips the absorb and lands exactly on P0 (old 0.900 ~ 0.900, all 0.860 = 0.860, disp 0.513 ~ 0.513) while ABS/ABS-SC pay the penalty (old 0.890, all 0.820–0.830); on the clean fib stream the T53 all-routing gain survives (COH final_all 0.850 vs P0 0.770 seed-42; banner 0.880 vs 0.820) BUT seed-42 COH final_old 0.810 < ABS-SC 0.930 (the banner's 0.870/0.870 old-routing tie holds on average, not per-seed); Part 4 MNIST adds nothing (COH final_all 0.873 < FIB 0.940). Caveat: coherence = mean(r)/std(r) is a shell-THICKNESS signal, not a general crowding detector (heavy trap reads HIGH while collapsed) |
 | Polysphere on real MNIST (`polysphere_mnist.py`) | SUPPORTED (seed 42): PolysphereRouter generalizes from the synthetic disk to real MLP embeddings — mixed-batch routing 0.890 vs chance 0.100 (178/200); anomaly gap 0.663 (in-dist conf 0.877 vs OOD 0.214); hierarchical end-to-end 0.753 vs combined chance ~0.111 (branching 10 → max(3,4)=4); active learning flags 3/5 = 60% of unknown digits (conf < 0.5) and routes 10/10 = 1.000 after new faces are added. Caveats: embeddings are the MLP's own 2D bottleneck (in-dist by construction), single seed, hier 0.753 below flat 0.890 (coarsening costs accuracy), threshold-dependent flagging |
 | NN-truths / S²-flow / viz probe (`polysphere_nnflow_viz.py`) | PARTIAL (seed 42): (1) learnable NN truth functions SUPPORTED — routing 0.880 (176/200) vs chance 0.100 on MLP embeddings (test_acc 0.885); (2) S² Hamiltonian flow NOT SUPPORTED — silhouette ~0.0 (intra ≈ inter, no separation), only 3–4/6 faces self-route at low confidence (0.24–0.56), repulsion spreads points but destroys the centroid-truth structure the router needs (run-to-run variance: sil −0.016..0.022, 3–4 self-routed, the part-2 draw is not fully rng-seeded — verdict robust); (3) viz routing distribution tracks true per-class fractions within ~1–3 pts (SUPPORTED sanity). Confirms the polysphere_extensions finding that S² repulsion collapses separation |
+| Decentralized local net T55c (`decentral_net.py`) | SUPPORTED (banner = multi-seed 42/11/7 means for Parts 0–3; Part 4 = seed 42): a fully local net (private home trap + k-NN C0 repulsion + per-neuron norm steps, NO global mean/max/controller) is ~free or better on old-routing (banner final_old ABS-SC 0.913 vs centralized 0.870; final_all 0.843 vs 0.853) and the shell EMERGES from local rules alone — but requires the always-on private home tether (without it pure local expansion collapses to the rim: all-route 0.57 → 0.85 at mu0=0.12) and k-NN truncation packs lumpier than all-pairs C0 (k=4 worse than k=8). Self-healing with NO repair unit: after 50% neuron loss local settle re-uniformizes survivors (spacing spread 0.16 → 0.11), regrowth restores routing ≥ pre-damage (0.917 vs 0.877 at 50%). MNIST Part 4: no centroid collapse, ABS-SC final-all 0.813 > FIB 0.647. Caveats: spacing gate never fired on the clean stream (GATE ≈ ABS-SC), Part 4 single-seed |
 
 ## Internet-Scale Flow (T67, T72)
 
@@ -252,6 +253,7 @@ python experiments/balance_auto.py                # autonomous self-balancing T5
 python experiments/self_balancing.py              # self-balancing router T55a verdict (SUPPORTED w/ caveats)
 python experiments/polysphere_mnist.py            # Polysphere on real MNIST verdict (SUPPORTED)
 python experiments/polysphere_nnflow_viz.py       # NN-truths / S2-flow / viz probe verdict (PARTIAL)
+python experiments/decentral_net.py               # decentralized local net T55c verdict (SUPPORTED)
 python Universals/serve_dashboard.py   # L.O.R.E. dashboard -> http://localhost:8080/docs/
 ```
 

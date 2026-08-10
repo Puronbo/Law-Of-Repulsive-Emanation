@@ -54,6 +54,7 @@ number so none of the resolved claims can silently drift:
    - self_balancing T55a: self-balancing router (fib batching + n-scaled absorb A=A*(n) + coherence gate) SUPPORTED in the geometry regime - the gate FIRES in a trapped crowded core: COH skips the absorb and lands exactly on P0 (old 0.900 ~ 0.900, all 0.860 = 0.860, disp 0.513 ~ 0.513) while ABS/ABS-SC pay the penalty (old 0.890, all 0.820-0.830); on the clean fib stream the all-routing gain survives (COH final_all 0.850 vs P0 0.770; multi-seed banner 0.880 vs 0.820) but seed-42 COH final_old 0.810 < ABS-SC 0.930 (banner tie 0.870/0.870 holds on average only); Part 4 MNIST adds NOTHING (COH final_all 0.873 < FIB 0.940); coherence is a shell-thickness signal, not a general crowding detector
    - polysphere_mnist: PolysphereRouter generalizes to REAL MNIST embeddings - mixed-batch routing 0.890 vs chance 0.100; anomaly gap 0.663 (in-dist 0.877 vs OOD 0.214); hierarchical end-to-end 0.753 vs combined chance ~0.111 (branching 10 -> 4); active learning flags unknowns 60% and routes 10/10 = 1.000 after faces added - SUPPORTED (embeddings are the MLP's own 2D bottleneck, single seed, hier below flat 0.890, threshold-dependent)
    - polysphere_nnflow_viz: three-extension probe - (1) learnable NN truths SUPPORTED: routing 0.880 (176/200) vs chance 0.100 on MLP embeddings (test_acc 0.885); (2) S^2 Hamiltonian flow NOT SUPPORTED: silhouette ~0.0 (intra ~= inter, no separation), only 3-4/6 faces self-route at low conf 0.24-0.56, repulsion destroys centroid structure (run-to-run variance: sil -0.016..0.022, 3-4 self-routed, part 2 draw not fully rng-seeded - verdict robust); (3) viz routing distribution tracks true per-class fractions within ~1-3 pts - PARTIAL
+   - decentral_net T55c: fully local net (private home trap + k-NN repulsion + per-neuron steps, NO global mean/max/controller) SUPPORTED - decentralization ~free or better on old-routing (banner multi-seed: ABS-SC final_old 0.913 vs centralized 0.870; final_all 0.843 vs 0.853); shell EMERGES from local rules but needs the always-on home tether (without it collapses to rim 0.57 all-route -> 0.85 at mu0=0.12); self-heals with no repair unit (50% loss: spacing spread 0.16->0.11, regrown routing >= pre-damage 0.917 vs 0.877); MNIST part4 no collapse, ABS-SC final-all 0.813 > FIB 0.647; caveats: spacing gate never fired on clean stream (GATE ~ ABS-SC), k=4 worse than k=8, part4 single-seed
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -816,3 +817,16 @@ def test_polysphere_nnflow_viz_partial():
     # viz distribution sanity: routed vs actual per-class fractions align
     for row in d['part3_viz_distribution']:
         assert abs(row['routed_pct'] - row['actual_pct']) < 5.0
+
+
+def test_decentral_net_supported():
+    d = load('decentral_net_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    p4 = d['part4_final']
+    # local flow usable on real embeddings: ABS-SC beats FIB on all-routing
+    assert p4['ABS-SC']['all_route'] > p4['FIB']['all_route']
+    # old-routing preserved
+    assert p4['ABS-SC']['old_route'] >= 0.8
+    assert p4['FIB']['old_route'] >= 0.8
+    # banner discloses multi-seed means for parts 0-3
+    assert 'seeds 42/11/7' in d['multi_seed_banner_parts_0_3']

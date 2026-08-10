@@ -1,0 +1,94 @@
+{
+  "seed": 42,
+  "part4": [
+    {
+      "policy": "FIB",
+      "release": 1,
+      "old_route": 0.8466666666666667,
+      "all_route": 0.7466666666666667
+    },
+    {
+      "policy": "FIB",
+      "release": 1,
+      "old_route": 0.9066666666666666,
+      "all_route": 0.84
+    },
+    {
+      "policy": "FIB",
+      "release": 2,
+      "old_route": 0.8466666666666667,
+      "all_route": 0.7133333333333334
+    },
+    {
+      "policy": "FIB",
+      "release": 3,
+      "old_route": 0.8533333333333334,
+      "all_route": 0.6466666666666666
+    },
+    {
+      "policy": "ABS-SC",
+      "release": 1,
+      "old_route": 0.9,
+      "all_route": 0.7866666666666666
+    },
+    {
+      "policy": "ABS-SC",
+      "release": 1,
+      "old_route": 0.8733333333333333,
+      "all_route": 0.78
+    },
+    {
+      "policy": "ABS-SC",
+      "release": 2,
+      "old_route": 0.84,
+      "all_route": 0.8333333333333334
+    },
+    {
+      "policy": "ABS-SC",
+      "release": 3,
+      "old_route": 0.8533333333333334,
+      "all_route": 0.8133333333333334
+    },
+    {
+      "policy": "GATE",
+      "release": 1,
+      "old_route": 0.88,
+      "all_route": 0.8533333333333334
+    },
+    {
+      "policy": "GATE",
+      "release": 1,
+      "old_route": 0.8266666666666667,
+      "all_route": 0.84
+    },
+    {
+      "policy": "GATE",
+      "release": 2,
+      "old_route": 0.8666666666666667,
+      "all_route": 0.8666666666666667
+    },
+    {
+      "policy": "GATE",
+      "release": 3,
+      "old_route": 0.88,
+      "all_route": 0.74
+    }
+  ],
+  "part4_final": {
+    "FIB": {
+      "old_route": 0.8533333333333334,
+      "all_route": 0.6466666666666666
+    },
+    "ABS-SC": {
+      "old_route": 0.8533333333333334,
+      "all_route": 0.8133333333333334
+    },
+    "GATE": {
+      "old_route": 0.88,
+      "all_route": 0.74
+    }
+  },
+  "multi_seed_banner_parts_0_3": "means over seeds 42/11/7 (prior run, hardcoded in the SUMMARY): Part 2 final_old >= centralized in every policy (P0 0.903 vs 0.893, ABS 0.897 vs 0.883, ABS-SC 0.913 vs 0.870), final_all slightly below (P0 0.803 vs 0.820, ABS 0.820 vs 0.887, ABS-SC 0.843 vs 0.853); best decentralized ABS-SC (0.913/0.843), P0 best stream_old 0.920; Part 3 self-healing after 50% loss: spacing spread 0.16 -> 0.11, regrown routing >= pre-damage (0.873 vs 0.850 at 25%, 0.917 vs 0.877 at 50%); calibration: no home tether collapses to the rim (mean_r 0.75, all-route 0.57 -> 0.65/0.85 with mu0=0.12); k-NN k=4 worse than k=8",
+  "claim": "T55c: a fully DECENTRALIZED local net (private home trap + k-NN C0 repulsion + per-neuron norm steps; no global mean/max/controller) should match or beat the centralized T55a router on old-class routing at ~zero cost, self-heal after arbitrary neuron loss, and be usable on real MNIST embeddings - a shell and routing should EMERGE from local rules alone.",
+  "verdict": "SUPPORTED (seed=42; banner Parts 0-3 = multi-seed means): (a) decentralization is ~free or better on old-routing - banner final_old >= centralized in every policy (ABS-SC 0.913 vs 0.870), final_all slightly below (ABS-SC 0.843 vs 0.853); (b) the shell EMERGES from local rules but REQUIRES the always-on private home tether (without it pure local expansion collapses to the disk rim: mean_r 0.75, all-route 0.57 -> 0.65/0.85 with mu0=0.12) and k-NN truncation packs lumpier than all-pairs C0 (k=4 worse than k=8); (c) self-healing works with NO repair unit: after 50% neuron loss local settle re-uniformizes survivors (spacing spread 0.16 -> 0.11) and regrowth via fresh homes restores routing >= pre-damage (0.873 vs 0.850 at 25%, 0.917 vs 0.877 at 50%); (d) Part 4 MNIST (seed 42): no centroid collapse, final-all ABS-SC 0.813 > FIB 0.647 - the local flow is usable on real embeddings, though simultaneous 3-class release hits all-routing harder than the centralized router. HONEST CAVEAT: the spacing gate never discriminated on the clean stream (spacing stayed > 0.70), so GATE ~ ABS-SC - spacing gates need a genuinely crowded regime (T55a caveat confirmed); Part 4 is single-seed."
+}
