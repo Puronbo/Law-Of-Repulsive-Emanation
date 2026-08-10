@@ -209,7 +209,7 @@ For each claim: **Status** (measured/derived), **the claim**, **evidence**
 | Arithmetic Bekenstein shift (+3.9%, p=0.002) | **Withdrawn** | Contradicted by its own persisted data: control p=0.789 (+2.5%), dissipative p=0.938 (−0.1%). PAPER §8.7 + conclusion now report the null. `data/bekenstein_shift_data.json` |
 | Partition-function match L(2)=40.14 ≈ C0·π²/6=40.19 | **Tautology** | Holds for *any* C0; `L(s)=C0·ζ(s)` flagged tautological in code. |
 | Selberg unification (30 eigenvalues ↔ 196 geodesics, ε(2)=0.000265) | **Tautological** | ε(2) is real but is the code's own construction; spectral-vs-zeros match is poor (min |t_n − t_zeta| ~ 2.5–9.0). |
-| T65 four-pack (PUM §10.1) | **0.5/4 confirmed** | P1 tautology (τ := exp(entropy)); P2 refuted (recon err ≈ 1.8); P4 refuted (converged fraction 0.0); P3 weakly positive (MI 0.034 vs null 0.009) but synthetic. `data/t65_fourpack_results.json` |
+| T65 four-pack (PUM §10.1) | **0.5/4 confirmed — re-verified 2026-08-08, MIXED mostly REFUTED** | P1 REFUTED (now sharper): mean τ = 1.4272 IDENTICAL and entropy 0.9183 identical across all curiosity_drive ∈ [0,1] — corr NaN, the knob has no effect (a sensitivity defect, not evidence against a general scaling law). P2 refuted (recon err ≈ 1.8, ascent does not recover the probe). P3 weakly positive (MI 0.034 vs null 0.009, ~3.9×) but NOT holographic: a single raw 1536-dim coordinate already carries MI = 1.0000, so the latent lives in one coordinate. P4 refuted (converged fraction 0.0, max dist from final 0.45). Verdict JSON with claim/verdict now ships in `data/t65_fourpack_results.json` (strict JSON — NaN sanitized). `experiments/t65_fourpack.py` |
 | Kawasaki angle constraint | **Measured failure** | Mean deviation **0.49** from target 0 — genuinely open. `docs/PHYSICAL_UNIVERSAL_MAP.md` §10.2 |
 | Kawasaki flat-foldability (ReLU vertices) | **Resolved — artifact, not near-miss** | 2026-08-08: the 0.4866/72.4% reproduce exactly but are a ~700-ray point-cloud sampling scatter (uniform control 0.835/52.0%); the exact 2-line fold-vertex criterion |4α−2π| fails generically (mean 3.21, 9.5% within ε=0.5 ≈ 8% uniform null). ReLU fold vertices are NOT flat-foldable (codimension-1). `experiments/kawasaki_null.py`, `data/kawasaki_null_data.json` |
 | Golden-ratio closure (T58 r=apex·0.6138) | **Measured → derived** | 2026-08-08: r_ret/apex = θ*/Θ solving s(θ*)/s(Θ)=1/φ² on the Archimedean spiral, delta 0.0 at Θ=20, → 1/φ as Θ→∞. `experiments/fold_golden_closure.py`, `data/fold_golden_closure_data.json` |
@@ -293,6 +293,7 @@ python experiments/spring_fold.py                          # T58 spring-fold ver
 python experiments/eikonal_fold.py                         # T63 eikonal-fold verdict (SUPPORTED, derived)
 python experiments/retrace_boundary.py                     # T64 retrace-derived verdict (SUPPORTED)
 python experiments/fold_optimizer.py                       # T60 fold-as-optimizer verdict (SUPPORTED)
+python experiments/t65_fourpack.py                         # T65 four-pack verdict (MIXED, mostly REFUTED)
 ```
 
 ---

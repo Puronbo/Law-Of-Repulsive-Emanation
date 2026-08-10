@@ -45,6 +45,7 @@ number so none of the resolved claims can silently drift:
    - eikonal fold T63: upwind viscosity solution of |r'|=a with C0 at both ends converges to the exact tent (err 3.3e-13); cut locus EXACT (0.00e+00); crease 0.0350*pi vs analytic 0.0318*pi (finite-diff approx); mirror area 2*a^2*TH^3/6 EXACT, retrace net area ~0 - SUPPORTED (deterministic; fold-as-integral semantics interpretive)
    - retrace boundary T64: equation + two pins admits infinitely many weak solutions (zig-zags all pass |r'|=a, r(0)=r(2TH)=0); viscosity selects the tent (all zig-zags fail at down-up corner); upwind from zig-zag converges to tent (err 5e-13); cut locus EXACT; reflection conserves |r'| to 3.6e-13 - SUPPORTED, retrace derived not assumed
    - fold optimizer T60: Hamiltonian spring conserves (drift 3.9e-3 bounded, area ratio 0.9921) and recurs to start (Poincare, min dist 3.3e-5); damped spring collapses (energy 0.00e+00 above min, area ratio ~0) and locks at x=+1 EXACT (stays 2000 steps) - SUPPORTED; 'cannot escape' is topological (shown by staying, not proved), mirror-fold=dissipation interpretive
+   - t65 four-pack: P1 REFUTED (tau=1.4272 identical across all curiosity_drive, corr nan - knob has no effect); P2 REFUTED (ascent err 1.79-1.82, does not recover seed); P3 PARTIAL (2D proj MI 0.034 vs null 0.009 retains signal, but single coord already = 1.0, holography trivial); P4 REFUTED (converged fraction 0.00, max dist from final 0.45) - MIXED, mostly REFUTED
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -670,3 +671,19 @@ def test_fold_optimizer_supported():
     # G4: locks at the minimum and stays
     assert d['lock_err'] < 1e-3
     assert d['stays'] is True
+
+
+def test_t65_fourpack_mixed_refuted():
+    d = load('t65_fourpack_results.json')
+    assert d['verdict'].startswith('MIXED')
+    # P1: tau is identical across curiosity_drive (degenerate -> corr nan)
+    assert d['P1']['tau_constant'] is True
+    assert d['P1']['corr_cd_tau'] == 'nan'
+    assert len(set(d['P1']['mean_tau'])) == 1
+    # P2: ascent does NOT recover the seed (far above near-zero)
+    assert all(e > 1.0 for e in [p['hyperbolic_err_to_seed'] for p in d['P2']])
+    # P3: projection retains signal above null, but a single coord already full
+    assert d['P3']['mi_projection'] > 1.5 * d['P3']['mi_null']
+    assert d['P3']['mi_single_coord'] > 0.99
+    # P4: no fixed-point convergence under dream/remix
+    assert d['P4']['converged_fraction'] == 0.0

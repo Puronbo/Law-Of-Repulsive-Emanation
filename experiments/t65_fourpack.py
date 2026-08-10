@@ -185,8 +185,46 @@ print()
 print("=" * 66)
 print("T65 VERDICT")
 print("=" * 66)
-print(json.dumps(OUT, indent=2))
 
+# sanitize the NaN corr (strict-JSON): record it as a string, not a literal
+if not math.isfinite(OUT["P1"]["corr_cd_tau"]):
+    OUT["P1"]["corr_cd_tau"] = "nan"
+    OUT["P1"]["tau_constant"] = True
+else:
+    OUT["P1"]["tau_constant"] = False
+
+OUT["claim"] = (
+    "T65 four-pack (PHYSICAL_UNIVERSAL_MAP Sec 10.1): P1 recurrence time "
+    "scales with entropy; P2 T-symmetry of the loss landscape (ascent from "
+    "the forward endpoint recovers the initial probe); P3 holographic "
+    "compression 1536 -> 2D preserves bounded mutual information; P4 CTC "
+    "self_chain converges to a fixed point under dream/remix cycles."
+)
+OUT["verdict"] = (
+    "MIXED, mostly REFUTED. P1 REFUTED: mean tau = 1.4272 IDENTICAL for "
+    "every curiosity_drive in [0.0, 1.0] and entropy 0.9183 identical "
+    "across all six settings - the engine's recurrence output does not "
+    "respond to curiosity_drive at all, so corr(curiosity_drive, tau) is "
+    "NaN (degenerate, zero variance). The entropy-scaling claim is not "
+    "exercised; the engine is fully deterministic w.r.t. that knob. P2 "
+    "REFUTED: gradient ascent from the forward endpoint lands at "
+    "hyperbolic distance 1.789/1.816/1.811 from the true seed (near the "
+    "origin); the T-symmetry of the loss landscape does NOT hold at these "
+    "settings - reconstruction does not return to the probe. P3 PARTIAL: "
+    "the 2D projection retains MI above null (0.0344 vs 0.0088, ~3.9x), "
+    "so 'bounded MI is preserved' clears chance - but a SINGLE raw 1536-dim "
+    "coordinate already carries MI = 1.0000, so the compression is not "
+    "holographic: the latent lives in one coordinate, the projection adds "
+    "nothing beyond it. P4 REFUTED: dream/remix chain does NOT converge to "
+    "a fixed point - converged fraction (step < 1e-3) = 0.00, mean last "
+    "step 0.00240, max distance from final thought over history 0.4499. "
+    "The chain wanders; only the last-pair step is small, and that is a "
+    "local, not global, proximity. Honest note: P1's failure is a "
+    "sensitivity defect (the knob has no effect), not evidence against a "
+    "recurrence-entropy scaling law in general."
+)
+
+os.makedirs(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data"), exist_ok=True)
 with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "t65_fourpack_results.json"), "w") as f:
     json.dump(OUT, f, indent=2)
-print("\nwrote data/t65_fourpack_results.json")
+print("wrote data/t65_fourpack_results.json")

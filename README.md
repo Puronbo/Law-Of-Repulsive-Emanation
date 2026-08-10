@@ -13,7 +13,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
-| Regression suite | **52/52 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
+| Regression suite | **53/53 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
 | L.O.R.E. | C0 = V(q0) = H(q0,0), 109 tests; T-symmetry error 0.003 |
 | Fold theorem (T63/T64) | crease = **unique viscosity solution of |r′| = a**; retrace = cut locus; eikonal err 3.3e-13; measured crease 0.0350π vs derived 0.0318π; area 2666.6665 vs 2666.6666… |
 | Clock-test canon (T59/T61) | law-ness 1.000 → 0.417 under calendar re-index → 1.000 under rotation; rotation overlap/sim 1.000 |
@@ -160,6 +160,7 @@ The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.j
 | Eikonal fold T63 (`eikonal_fold.py`) | SUPPORTED (deterministic): the mirror fold is DERIVED — unique viscosity solution of \|r′\| = a with C0 at both ends converges to the exact tent (err 3.3e-13); crease is the cut locus EXACTLY (equal arrival times 0.00e+00); crease angle 0.0350π vs analytic 2 arctan(1/TH) 0.0318π (finite-diff approx); mirror area 2a²TH³/6 EXACT, retrace net area ~0 |
 | Retrace boundary T64 (`retrace_boundary.py`) | SUPPORTED (deterministic): retrace is NOT assumed — \|r′\| = a with C0 at both ends admits infinitely many weak solutions (zig-zags all pass slope + endpoints), viscosity selects the tent uniquely (every zig-zag fails at its down-up corner); upwind from a zig-zag seed converges to the tent (err 5e-13); selected switch point = cut locus EXACTLY; reflection conserves \|r′\| to 3.6e-13. (One cosmetic slip: E3 erosion raises corner to 0.020 = 2·a·H, not printed a·H) |
 | Fold optimizer T60 (`fold_optimizer.py`) | SUPPORTED (deterministic): Hamiltonian spring (retrace fold) conserves — energy drift 3.9e-3 bounded (symplectic Euler, 0.26% of E0), phase area 0.9921, Poincaré recurrence to start EXACT (3.3e-5) and never locks; damped spring (mirror fold) collapses — energy 0.00e+00 above min, area ratio ~0, locks at x=+1 EXACT and stays 2000 steps. Caveats: "cannot escape" is topological (shown by staying, not proved); mirror-fold = dissipation is interpretive |
+| T65 four-pack (`t65_fourpack.py`) | MIXED, mostly REFUTED: P1 REFUTED — mean τ = 1.4272 identical across all curiosity_drive (corr NaN; the knob has no effect); P2 REFUTED — gradient ascent lands 1.79/1.82/1.81 hyperbolic distance from the seed, T-symmetry of the loss landscape does NOT hold; P3 PARTIAL — 2D projection MI 0.0344 vs null 0.0088 (~3.9×, clears chance) but a single raw 1536-dim coordinate already carries MI 1.0000, so the compression is NOT holographic (latent lives in one coordinate); P4 REFUTED — dream/remix converged fraction 0.00, mean last step 0.0024, max dist from final 0.45, no fixed point |
 
 ## Internet-Scale Flow (T67, T72)
 
@@ -234,6 +235,7 @@ python experiments/spring_fold.py                 # T58 spring-fold verdict (SUP
 python experiments/eikonal_fold.py                # T63 eikonal-fold verdict (SUPPORTED, derived)
 python experiments/retrace_boundary.py            # T64 retrace-derived verdict (SUPPORTED)
 python experiments/fold_optimizer.py              # T60 fold-as-optimizer verdict (SUPPORTED)
+python experiments/t65_fourpack.py                # T65 four-pack verdict (MIXED, mostly REFUTED)
 python Universals/serve_dashboard.py   # L.O.R.E. dashboard -> http://localhost:8080/docs/
 ```
 
