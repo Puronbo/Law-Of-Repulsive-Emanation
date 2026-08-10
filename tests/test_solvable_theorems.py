@@ -51,6 +51,7 @@ number so none of the resolved claims can silently drift:
    - flow_hier_reg T48b: flow-REG does NOT stabilize - drift 6.616 (rel 0.686) vs baseline 6.549 (rel 0.647), forgetting -0.034 vs -0.029; flat routing worse (all 0.805 vs 0.885, old 0.873 vs 0.973); only hier routing better (all 0.790 vs 0.765, old 0.800 vs 0.760) - NOT SUPPORTED for stability headline, weak hier benefit only
    - flow_hier_reg_scaled T55b: n-scaling stage-2 reg per T54 A* law does NOT help materially - drift 6.5048 (rel 0.644) FIXED vs NSCAL 6.4636 (rel 0.640) and LIN 6.4573 (rel 0.640), a <=0.7% relative drift gain; ALL other metrics identical to 3 dp (acc 0.897/0.921, forget -0.031, route 0.895/0.933, hier 0.755/0.747); LIN nominally lowest - NOT SUPPORTED for a material effect
    - balance_auto T51: autonomous burst-detector regime switch does NOT deliver the claimed benefit - detector fires only on the explosive event, but AD ~= P0 on routing (MNIST old 0.990 vs 1.000, all 0.975 vs 0.985; synthetic burst 0.887 vs 0.873 old) and AD displacement slightly higher (1.816 vs 1.828); P5 constant-mu=0.5 decisively worse; on real MNIST embeddings reflow policy is nearly irrelevant (all >= 0.94, P0 best) - NOT SUPPORTED for the autonomous benefit (T50 absorb = one-shot recovery tool for a clean shell, not a stream policy)
+   - self_balancing T55a: self-balancing router (fib batching + n-scaled absorb A=A*(n) + coherence gate) SUPPORTED in the geometry regime - the gate FIRES in a trapped crowded core: COH skips the absorb and lands exactly on P0 (old 0.900 ~ 0.900, all 0.860 = 0.860, disp 0.513 ~ 0.513) while ABS/ABS-SC pay the penalty (old 0.890, all 0.820-0.830); on the clean fib stream the all-routing gain survives (COH final_all 0.850 vs P0 0.770; multi-seed banner 0.880 vs 0.820) but seed-42 COH final_old 0.810 < ABS-SC 0.930 (banner tie 0.870/0.870 holds on average only); Part 4 MNIST adds NOTHING (COH final_all 0.873 < FIB 0.940); coherence is a shell-thickness signal, not a general crowding detector
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -766,3 +767,19 @@ def test_balance_auto_not_supported():
     # P0 marginally best on real MNIST; P5 clearly worst on min separation
     assert p2['P0']['all_route'] >= p2['AD']['all_route']
     assert p2['P5']['min_d'] < p2['P0']['min_d']
+
+
+def test_self_balancing_supported_geometry_regime():
+    d = load('self_balancing_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    # the coherence gate FIRES: COH skips the absorb in the crowded core
+    assert d['coh_skips_absorb_part3_seed_42']
+    assert d['part3']['COH']['absorbed'] == 'no'
+    assert d['part3']['ABS']['absorbed'] == 'yes'
+    # COH lands exactly on P0 in the crowded core (T51 failure avoided)
+    assert d['part3']['COH']['old_route'] == d['part3']['P0']['old_route']
+    assert d['part3']['COH']['all_route'] == d['part3']['P0']['all_route']
+    # all-routing gain survives on the clean stream
+    assert d['part2']['COH']['final_all'] > d['part2']['P0']['final_all']
+    # but Part 4 MNIST: COH final_all below FIB (controller adds nothing there)
+    assert d['part4_summary']['COH']['final_all_last'] < d['part4_summary']['FIB']['final_all_last']

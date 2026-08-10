@@ -13,7 +13,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
-| Regression suite | **58/58 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
+| Regression suite | **59/59 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
 | L.O.R.E. | C0 = V(q0) = H(q0,0), 109 tests; T-symmetry error 0.003 |
 | Fold theorem (T63/T64) | crease = **unique viscosity solution of |r′| = a**; retrace = cut locus; eikonal err 3.3e-13; measured crease 0.0350π vs derived 0.0318π; area 2666.6665 vs 2666.6666… |
 | Clock-test canon (T59/T61) | law-ness 1.000 → 0.417 under calendar re-index → 1.000 under rotation; rotation overlap/sim 1.000 |
@@ -166,6 +166,7 @@ The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.j
 | Flow-reg continual T48b (`flow_hier_reg.py`) | NOT SUPPORTED for the stability headline: flow-REG does NOT reduce old-class drift — drift 6.616 (rel 0.686) vs baseline 6.549 (rel 0.647), forgetting −0.034 vs −0.029 (both marginally worse); flat routing clearly worse at stage 2 (all 0.805 vs 0.885, old 0.873 vs 0.973); accuracy preserved (0.896 vs 0.900). Only the hierarchical routing metric is better (all 0.790 vs 0.765, old 0.800 vs 0.760) — the coarse-then-fine router benefits slightly from the flow-shaped lattice. Single seed 42/mnist |
 | N-scaled flow-reg retest T55b (`flow_hier_reg_scaled.py`) | NOT SUPPORTED for a material effect (seed 42): scaling stage-2 reg strength by the T54 A* law (A*10/A*5 = 1.874) reduces old-class drift only marginally — FIXED 6.5048 (rel 0.644) → NSCAL 6.4636 (rel 0.640) → LIN 6.4573 (rel 0.640), a ≤0.7% relative drift gain and within run scatter; ALL other metrics identical to 3 dp (acc 0.897/0.921, forget −0.031, route 0.895/0.933, hier 0.755/0.747). The A* law does NOT rescue the T48b result — reg remains a weak perturbation on fine-tune |
 | Autonomous self-balancing T51 (`balance_auto.py`) | NOT SUPPORTED for the autonomous benefit (seed 42, mnist): the burst detector works (fires ONLY on the explosive event) but AD ≈ P0 on routing (MNIST old 0.990 vs 1.000, all 0.975 vs 0.985; synthetic burst old 0.887 vs 0.873) with AD displacement slightly HIGHER (1.816 vs 1.828); constant mu=0.5 (P5) is decisively worse (part1 all_route ~0.75–0.82, min_d ~0.19–0.25). On real MNIST embeddings reflow policy is nearly irrelevant (all routes ≥ 0.94, P0 marginally best) — MLP centroids are already separated. T50 absorb = a ONE-SHOT recovery tool for a clean steady-state shell, not a continuous stream policy |
+| Self-balancing router T55a (`self_balancing.py`) | SUPPORTED in the geometry regime (with disclosure that banner numbers are multi-seed 42/11/7 means; artifact holds seed-42 rows): the coherence gate FIRES as designed — in a trapped crowded core COH skips the absorb and lands exactly on P0 (old 0.900 ~ 0.900, all 0.860 = 0.860, disp 0.513 ~ 0.513) while ABS/ABS-SC pay the penalty (old 0.890, all 0.820–0.830); on the clean fib stream the T53 all-routing gain survives (COH final_all 0.850 vs P0 0.770 seed-42; banner 0.880 vs 0.820) BUT seed-42 COH final_old 0.810 < ABS-SC 0.930 (the banner's 0.870/0.870 old-routing tie holds on average, not per-seed); Part 4 MNIST adds nothing (COH final_all 0.873 < FIB 0.940). Caveat: coherence = mean(r)/std(r) is a shell-THICKNESS signal, not a general crowding detector (heavy trap reads HIGH while collapsed) |
 
 ## Internet-Scale Flow (T67, T72)
 
@@ -246,6 +247,7 @@ python experiments/flow_regularized.py            # flow-regularized training ve
 python experiments/flow_hier_reg.py               # flow-reg continual T48b verdict (NOT SUPPORTED headline)
 python experiments/flow_hier_reg_scaled.py        # n-scaled flow-reg T55b verdict (NOT SUPPORTED material)
 python experiments/balance_auto.py                # autonomous self-balancing T51 verdict (NOT SUPPORTED)
+python experiments/self_balancing.py              # self-balancing router T55a verdict (SUPPORTED w/ caveats)
 python Universals/serve_dashboard.py   # L.O.R.E. dashboard -> http://localhost:8080/docs/
 ```
 
