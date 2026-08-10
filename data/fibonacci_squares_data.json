@@ -1,0 +1,17 @@
+{
+  "claim": "The Fibonacci square-figure spiral is a frictionless trajectory on the Poincare disk: constant 90-deg cornering with bounded pseudo-energy ('turning without friction'), suggesting a golden metric whose geodesic is a logarithmic spiral",
+  "measurements": {
+    "n_corners": 30,
+    "mean_turn_deg": 90.0,
+    "std_turn_deg": 0.0,
+    "final_r": 1.1167922086366655,
+    "escaped": true,
+    "pseudo_energy_drift": 0.9647301379980748,
+    "energy_linear_trend_per_step": -0.3573418787110185,
+    "fib_tsym_error": 0.9899991704548023,
+    "fib_tsym_ok": false,
+    "c0_geodesic_tsym_error": 5.9994344423047015e-09,
+    "c0_geodesic_drift": 1.4482157545605932e-06
+  },
+  "verdict": "REFUTED as a 'frictionless trajectory' claim: the constant 90-deg turning is a trivial artifact of the square construction, not a dynamical property. Pseudo-energy is bounded but clearly NOT conserved: drift 0.9647 with a monotone linear decay of -0.357 per step. The spiral ESCAPES the disk (final r = 1.117 > 1). T-symmetry FAILS for the spiral treated as a trajectory (error 0.9900 vs 5.9994e-09 for a true C0 geodesic from the same start), so it is NOT a time-reversible frictionless flow. The hypothesized 'golden metric' whose geodesic is a logarithmic spiral is unsubstantiated by these data (compare t39_cusp_flow: the cusp metric, not a disk metric, makes the Fibonacci spiral an exact geodesic)."
+}

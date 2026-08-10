@@ -38,6 +38,7 @@ number so none of the resolved claims can silently drift:
    - reverse pair gaps T57: NOT a reversal pair (reverse(10262)=26201 != 26102); 80-multiple + 11-sums hold but are plain arithmetic - REFUTED headline, census is ordinary
    - fibonacci spiral on disk: neither projection turns at golden angle (42.14 / 29.23 deg vs 137.51) and pseudo-energy not conserved (drift 1.00 / 11.81) - REFUTED, golden angle is a cusp-metric property
    - prime count from scratch T62: Lucy_Hedgehog pi exact at all chain points (pi(943901200001)=35575526191), endpoint prime, next gap 8 - SUPPORTED with corrections: 'gap 1 below' is wrong (measured 24), window max gap 176 exceeds own 40-100 note
+   - fibonacci squares on disk: 90-deg turning is a square-construction artifact; pseudo-energy NOT conserved (drift 0.96, decay -0.357/step), escapes disk (r 1.117), T-sym fails (0.99 vs C0 6e-09) - REFUTED frictionless claim
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -566,3 +567,17 @@ def test_prime_count_engine_supported_with_corrections():
     assert d['max_gap_window'] < d['cramer_ln2']
     # PNT: mean gap near ln N
     assert d['mean_gap'] > 25
+
+
+def test_fibonacci_squares_disk_refuted():
+    d = load('fibonacci_squares_data.json')
+    assert d['verdict'].startswith('REFUTED')
+    m = d['measurements']
+    # 90-deg turning is a construction artifact, but pseudo-energy not conserved
+    assert m['mean_turn_deg'] == 90.0
+    assert m['pseudo_energy_drift'] > 0.5
+    assert m['energy_linear_trend_per_step'] < 0  # decaying
+    assert m['escaped'] is True
+    assert not m['fib_tsym_ok']
+    assert m['fib_tsym_error'] > 0.5
+    assert m['c0_geodesic_tsym_error'] < 1e-6

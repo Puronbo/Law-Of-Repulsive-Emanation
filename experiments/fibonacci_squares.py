@@ -187,3 +187,50 @@ print(f"  It has constant 90 deg cornering (the 'square figure turning')")
 print(f"  and bounded pseudo-energy ('without friction').")
 print(f"  This suggests a 'golden metric' where the logarithmic spiral")
 print(f"  r ~ tanh(phi * theta / 2) is the geodesic.")
+
+# ---- persist a claim/verdict artifact (AUDIT 5.8 norm) ----
+import json
+_steps = np.array([float(np.linalg.norm(pts[i+1] - pts[i])) for i in range(len(pts) - 1)])
+_Vs = np.array([repulsion_loss(q, CONTEXT) for q in pts])
+_results = {
+    "claim": (
+        "The Fibonacci square-figure spiral is a frictionless trajectory on "
+        "the Poincare disk: constant 90-deg cornering with bounded "
+        "pseudo-energy ('turning without friction'), suggesting a golden "
+        "metric whose geodesic is a logarithmic spiral"
+    ),
+    "measurements": {
+        "n_corners": res["n_corners"],
+        "mean_turn_deg": res["mean_turn"],
+        "std_turn_deg": res["std_turn"],
+        "final_r": float(np.linalg.norm(pts[-1])),
+        "escaped": bool(float(np.linalg.norm(pts[-1])) > 0.98),
+        "pseudo_energy_drift": res["drift"],
+        "energy_linear_trend_per_step": float(np.polyfit(
+            range(len(_Vs) - 1), _Vs[1:] + 0.5 * _steps ** 2, 1)[0]),
+        "fib_tsym_error": float(ts_error),
+        "fib_tsym_ok": bool(ts_error < 0.5),
+        "c0_geodesic_tsym_error": float(c0_ts_error),
+        "c0_geodesic_drift": float(h_drift),
+    },
+    "verdict": (
+        "REFUTED as a 'frictionless trajectory' claim: the constant 90-deg "
+        "turning is a trivial artifact of the square construction, not a "
+        "dynamical property. Pseudo-energy is bounded but clearly NOT "
+        "conserved: drift 0.9647 with a monotone linear decay of -0.357 per "
+        "step. The spiral ESCAPES the disk (final r = 1.117 > 1). "
+        "T-symmetry FAILS for the spiral treated as a trajectory (error "
+        "0.9900 vs 5.9994e-09 for a true C0 geodesic from the same start), "
+        "so it is NOT a time-reversible frictionless flow. The hypothesized "
+        "'golden metric' whose geodesic is a logarithmic spiral is "
+        "unsubstantiated by these data (compare t39_cusp_flow: the cusp "
+        "metric, not a disk metric, makes the Fibonacci spiral an exact "
+        "geodesic)."
+    ),
+}
+out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "..", "data", "fibonacci_squares_data.json")
+with open(out_path, "w") as f:
+    json.dump(_results, f, indent=2)
+print("\nverdict:", _results["verdict"][:150], "...")
+print("wrote data/fibonacci_squares_data.json")
