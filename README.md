@@ -13,7 +13,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
-| Regression suite | **59/59 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
+| Regression suite | **60/60 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
 | L.O.R.E. | C0 = V(q0) = H(q0,0), 109 tests; T-symmetry error 0.003 |
 | Fold theorem (T63/T64) | crease = **unique viscosity solution of |r′| = a**; retrace = cut locus; eikonal err 3.3e-13; measured crease 0.0350π vs derived 0.0318π; area 2666.6665 vs 2666.6666… |
 | Clock-test canon (T59/T61) | law-ness 1.000 → 0.417 under calendar re-index → 1.000 under rotation; rotation overlap/sim 1.000 |
@@ -167,6 +167,7 @@ The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.j
 | N-scaled flow-reg retest T55b (`flow_hier_reg_scaled.py`) | NOT SUPPORTED for a material effect (seed 42): scaling stage-2 reg strength by the T54 A* law (A*10/A*5 = 1.874) reduces old-class drift only marginally — FIXED 6.5048 (rel 0.644) → NSCAL 6.4636 (rel 0.640) → LIN 6.4573 (rel 0.640), a ≤0.7% relative drift gain and within run scatter; ALL other metrics identical to 3 dp (acc 0.897/0.921, forget −0.031, route 0.895/0.933, hier 0.755/0.747). The A* law does NOT rescue the T48b result — reg remains a weak perturbation on fine-tune |
 | Autonomous self-balancing T51 (`balance_auto.py`) | NOT SUPPORTED for the autonomous benefit (seed 42, mnist): the burst detector works (fires ONLY on the explosive event) but AD ≈ P0 on routing (MNIST old 0.990 vs 1.000, all 0.975 vs 0.985; synthetic burst old 0.887 vs 0.873) with AD displacement slightly HIGHER (1.816 vs 1.828); constant mu=0.5 (P5) is decisively worse (part1 all_route ~0.75–0.82, min_d ~0.19–0.25). On real MNIST embeddings reflow policy is nearly irrelevant (all routes ≥ 0.94, P0 marginally best) — MLP centroids are already separated. T50 absorb = a ONE-SHOT recovery tool for a clean steady-state shell, not a continuous stream policy |
 | Self-balancing router T55a (`self_balancing.py`) | SUPPORTED in the geometry regime (with disclosure that banner numbers are multi-seed 42/11/7 means; artifact holds seed-42 rows): the coherence gate FIRES as designed — in a trapped crowded core COH skips the absorb and lands exactly on P0 (old 0.900 ~ 0.900, all 0.860 = 0.860, disp 0.513 ~ 0.513) while ABS/ABS-SC pay the penalty (old 0.890, all 0.820–0.830); on the clean fib stream the T53 all-routing gain survives (COH final_all 0.850 vs P0 0.770 seed-42; banner 0.880 vs 0.820) BUT seed-42 COH final_old 0.810 < ABS-SC 0.930 (the banner's 0.870/0.870 old-routing tie holds on average, not per-seed); Part 4 MNIST adds nothing (COH final_all 0.873 < FIB 0.940). Caveat: coherence = mean(r)/std(r) is a shell-THICKNESS signal, not a general crowding detector (heavy trap reads HIGH while collapsed) |
+| Polysphere on real MNIST (`polysphere_mnist.py`) | SUPPORTED (seed 42): PolysphereRouter generalizes from the synthetic disk to real MLP embeddings — mixed-batch routing 0.890 vs chance 0.100 (178/200); anomaly gap 0.663 (in-dist conf 0.877 vs OOD 0.214); hierarchical end-to-end 0.753 vs combined chance ~0.111 (branching 10 → max(3,4)=4); active learning flags 3/5 = 60% of unknown digits (conf < 0.5) and routes 10/10 = 1.000 after new faces are added. Caveats: embeddings are the MLP's own 2D bottleneck (in-dist by construction), single seed, hier 0.753 below flat 0.890 (coarsening costs accuracy), threshold-dependent flagging |
 
 ## Internet-Scale Flow (T67, T72)
 
@@ -248,6 +249,7 @@ python experiments/flow_hier_reg.py               # flow-reg continual T48b verd
 python experiments/flow_hier_reg_scaled.py        # n-scaled flow-reg T55b verdict (NOT SUPPORTED material)
 python experiments/balance_auto.py                # autonomous self-balancing T51 verdict (NOT SUPPORTED)
 python experiments/self_balancing.py              # self-balancing router T55a verdict (SUPPORTED w/ caveats)
+python experiments/polysphere_mnist.py            # Polysphere on real MNIST verdict (SUPPORTED)
 python Universals/serve_dashboard.py   # L.O.R.E. dashboard -> http://localhost:8080/docs/
 ```
 

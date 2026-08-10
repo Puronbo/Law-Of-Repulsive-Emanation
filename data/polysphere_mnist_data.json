@@ -1,0 +1,31 @@
+{
+  "seed": 42,
+  "mlp_test_acc": 0.8973,
+  "part1": {
+    "batch_routing": {
+      "correct": 178,
+      "total": 200,
+      "acc": 0.89,
+      "chance": 0.1
+    },
+    "conf_in": 0.8766078336979994,
+    "conf_ood": 0.21370770563635605,
+    "anomaly_gap": 0.6629001280616433
+  },
+  "part2": {
+    "hier_acc": 0.7533333333333333,
+    "chance_combined": 0.111
+  },
+  "part3": {
+    "initial_5_acc": 1.0,
+    "unknown_flagged": {
+      "detected": 3,
+      "total": 5,
+      "rate": 0.6
+    },
+    "faces_after_all": 10,
+    "final_10_acc": 1.0
+  },
+  "claim": "PolysphereRouter generalizes from the synthetic disk to REAL MNIST embeddings: (1) centroid-truth batch routing should beat chance massively; (2) the confidence gap between in-distribution and OOD batches should be wide (usable anomaly signal); (3) the coarse-to-fine hierarchical polysphere should route end-to-end far above combined chance; (4) active learning should flag unknown classes as anomalies and route perfectly after the new faces are added.",
+  "verdict": "SUPPORTED (seed 42, mnist, fixed script): (1) mixed-batch routing 0.890 vs chance 0.100 (178/200) on MLP 2D embeddings (test_acc 0.897) - the router works on real data; (2) anomaly gap 0.663 (in-dist conf 0.877 vs OOD 0.214) - a wide, usable confidence gap; (3) hierarchical end-to-end 0.753 (113/150) vs combined chance ~0.111, branching factor 10 -> max(3,4)=4 - the coarse-to-fine decomposition preserves routing; (4) active learning: unknown digits flagged 3/5 = 60% (conf < 0.5) and final routing 10/10 = 1.000 after faces added. HONEST CAVEATS: embeddings are the MLP's own 2D bottleneck (in-distribution by construction); single seed; hierarchical 0.753 is well above chance but well below flat routing's 0.890 (the coarsening costs accuracy); anomaly flagging is threshold-dependent (0.5)."
+}

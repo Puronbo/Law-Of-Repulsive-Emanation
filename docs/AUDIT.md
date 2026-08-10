@@ -414,10 +414,11 @@ given so it can be re-run).
      `retrace_boundary`, `fold_optimizer`, `t65_fourpack`,
      `phi_scheduler`, `flow_regularized`, `flow_hier_reg`,
      `flow_hier_reg_scaled`, `balance_auto`, `self_balancing`,
+     `polysphere_mnist`,
      plus the five
      earlier probes)
      each ship a claim/verdict JSON and are pinned by
-     `tests/test_solvable_theorems.py` (49 tests; full suite 239).  The
+     `tests/test_solvable_theorems.py` (50 tests; full suite 240).  The
     broad `experiments/` scripts (remaining flow, balance, polysphere,
     decentral) still
     print without persisted verdicts — extending the JSON verdict norm to

@@ -52,6 +52,7 @@ number so none of the resolved claims can silently drift:
    - flow_hier_reg_scaled T55b: n-scaling stage-2 reg per T54 A* law does NOT help materially - drift 6.5048 (rel 0.644) FIXED vs NSCAL 6.4636 (rel 0.640) and LIN 6.4573 (rel 0.640), a <=0.7% relative drift gain; ALL other metrics identical to 3 dp (acc 0.897/0.921, forget -0.031, route 0.895/0.933, hier 0.755/0.747); LIN nominally lowest - NOT SUPPORTED for a material effect
    - balance_auto T51: autonomous burst-detector regime switch does NOT deliver the claimed benefit - detector fires only on the explosive event, but AD ~= P0 on routing (MNIST old 0.990 vs 1.000, all 0.975 vs 0.985; synthetic burst 0.887 vs 0.873 old) and AD displacement slightly higher (1.816 vs 1.828); P5 constant-mu=0.5 decisively worse; on real MNIST embeddings reflow policy is nearly irrelevant (all >= 0.94, P0 best) - NOT SUPPORTED for the autonomous benefit (T50 absorb = one-shot recovery tool for a clean shell, not a stream policy)
    - self_balancing T55a: self-balancing router (fib batching + n-scaled absorb A=A*(n) + coherence gate) SUPPORTED in the geometry regime - the gate FIRES in a trapped crowded core: COH skips the absorb and lands exactly on P0 (old 0.900 ~ 0.900, all 0.860 = 0.860, disp 0.513 ~ 0.513) while ABS/ABS-SC pay the penalty (old 0.890, all 0.820-0.830); on the clean fib stream the all-routing gain survives (COH final_all 0.850 vs P0 0.770; multi-seed banner 0.880 vs 0.820) but seed-42 COH final_old 0.810 < ABS-SC 0.930 (banner tie 0.870/0.870 holds on average only); Part 4 MNIST adds NOTHING (COH final_all 0.873 < FIB 0.940); coherence is a shell-thickness signal, not a general crowding detector
+   - polysphere_mnist: PolysphereRouter generalizes to REAL MNIST embeddings - mixed-batch routing 0.890 vs chance 0.100; anomaly gap 0.663 (in-dist 0.877 vs OOD 0.214); hierarchical end-to-end 0.753 vs combined chance ~0.111 (branching 10 -> 4); active learning flags unknowns 60% and routes 10/10 = 1.000 after faces added - SUPPORTED (embeddings are the MLP's own 2D bottleneck, single seed, hier below flat 0.890, threshold-dependent)
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -783,3 +784,20 @@ def test_self_balancing_supported_geometry_regime():
     assert d['part2']['COH']['final_all'] > d['part2']['P0']['final_all']
     # but Part 4 MNIST: COH final_all below FIB (controller adds nothing there)
     assert d['part4_summary']['COH']['final_all_last'] < d['part4_summary']['FIB']['final_all_last']
+
+
+def test_polysphere_mnist_supported():
+    d = load('polysphere_mnist_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    p1 = d['part1']
+    # batch routing far above chance
+    assert p1['batch_routing']['acc'] > 0.8
+    # wide anomaly gap
+    assert p1['anomaly_gap'] > 0.4
+    assert p1['conf_in'] > p1['conf_ood'] + 0.4
+    # hierarchical well above combined chance but below flat
+    assert d['part2']['hier_acc'] > 0.5
+    assert d['part2']['hier_acc'] < p1['batch_routing']['acc']
+    # active learning reaches perfect routing after faces added
+    assert d['part3']['final_10_acc'] == 1.0
+    assert d['part3']['unknown_flagged']['rate'] > 0.4
