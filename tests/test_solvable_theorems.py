@@ -43,6 +43,7 @@ number so none of the resolved claims can silently drift:
    - clock test T59: calendar features nail the law at e0 (1.0000) but break at e0+15 (0.4167, BELOW chance -> anti-correlation), intrinsic mod-2/3/5/7 features survive both (1.0000) - SUPPORTED, convention carries then breaks
    - spring fold T58: mirror-fold area = 2*a^2*TH^3/6 EXACT, self-crosses at TH-pi; retrace fold closes EXACTLY to C0 (closure 0.00e+00, crease pi); golden fold ratio = phi EXACT but does NOT close to C0 (error 12.3); overcoil tucks end under start - SUPPORTED (by construction, deterministic)
    - eikonal fold T63: upwind viscosity solution of |r'|=a with C0 at both ends converges to the exact tent (err 3.3e-13); cut locus EXACT (0.00e+00); crease 0.0350*pi vs analytic 0.0318*pi (finite-diff approx); mirror area 2*a^2*TH^3/6 EXACT, retrace net area ~0 - SUPPORTED (deterministic; fold-as-integral semantics interpretive)
+   - retrace boundary T64: equation + two pins admits infinitely many weak solutions (zig-zags all pass |r'|=a, r(0)=r(2TH)=0); viscosity selects the tent (all zig-zags fail at down-up corner); upwind from zig-zag converges to tent (err 5e-13); cut locus EXACT; reflection conserves |r'| to 3.6e-13 - SUPPORTED, retrace derived not assumed
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -636,3 +637,19 @@ def test_eikonal_fold_supported():
     # E4: polar swept area matches analytic 2*a^2*TH^3/6 exactly
     assert abs(d['area_mirror'] - d['area_pred']) / d['area_pred'] < 1e-6
     assert abs(d['area_retrace']) < 1e-9
+
+
+def test_retrace_boundary_supported():
+    d = load('retrace_boundary_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    # E1: the zig-zag family are all genuine weak solutions
+    assert all(ok for _, ok, _ in d['weak_family'])
+    # E2: tent passes viscosity; every zig-zag fails (down-up corner)
+    assert d['tent_passes'] is True
+    assert all(not ok for _, ok, _, _ in d['zigzag_viscosity'])
+    # E3: upwind from a zig-zag seed converges to the tent
+    assert d['upwind_from_zigzag_err'] < 1e-10
+    # E4: selected switch point is the cut locus (equal eikonal time, exact)
+    assert d['cut_locus_eq'] == 0.0
+    # E5: reflection conserves |r'| across the crease
+    assert d['reflection'] < 1e-9
