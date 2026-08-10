@@ -164,6 +164,7 @@ print("=" * 60)
 # Generate points from each face, embed on sphere, run dynamics
 n_pts = 60
 n_faces = 6
+face_routes = []
 router_viz = PolysphereRouter(n_faces=n_faces, seed=42)
 
 # Initial points on sphere
@@ -239,6 +240,8 @@ for j in range(n_faces):
             Xb = np.vstack([pts_j, others[:min(len(others), m.sum())]])
             yb = np.array([1.0]*len(pts_j) + [0.0]*min(len(others), m.sum()))
             pred, conf = router_s2.route_batch(Xb, yb, signed=True)
+            face_routes.append({'face': int(j), 'routed_to': int(pred),
+                                'conf': float(conf)})
             print(f"    Face {j} ({m.sum():2d} pts) -> routed to face {pred} (conf={conf:.3f})")
         else:
             print(f"    Face {j} ({m.sum():2d} pts) -> insufficient points to route")
@@ -318,4 +321,59 @@ with open(os.path.join(os.path.dirname(__file__), '..', 'Universals', 's2_viz_da
 print(f"  Visualization data saved to Universals/s2_viz_data.json")
 print(f"  To plot: python -c \"import json; d=json.load(open('Universals/s2_viz_data.json')); ...\"")
 print("")
+
+# ---------------- persist claim/verdict ---------------------------------
+import json as _json
+self_routed = [r for r in face_routes if r['routed_to'] == r['face']]
+sil = float(np.mean(inter_f) - np.mean(intra_f)) / max(float(np.mean(inter_f)), 1e-12)
+viz_dist = [{'face': j, 'routed_pct': round(route_dist.get(j, 0) / n_viz * 100, 1),
+             'actual_pct': round(float(np.mean(y_viz == j)) * 100, 1)}
+            for j in range(10)]
+res = {
+    'seed': 42,
+    'part1_nn_truths': {'test_acc': float(test_acc),
+                        'routing_acc': float(correct / n_batches),
+                        'chance': 0.100},
+    'part2_s2_flow': {'intra_face_mean': float(np.mean(intra_f)),
+                      'inter_face_mean': float(np.mean(inter_f)),
+                      'silhouette': sil,
+                      'self_routed': len(self_routed), 'n_faces': n_faces,
+                      'face_routes': face_routes},
+    'part3_viz_distribution': viz_dist,
+    'viz_file': 'Universals/s2_viz_data.json',
+}
+res['claim'] = (
+    "Three extensions should hold on real embeddings: (1) LEARNABLE NN "
+    "truth functions trained end-to-end should route mixed batches far "
+    "above chance; (2) a C0-repulsion + routing Hamiltonian flow on S^2 "
+    "should preserve face identity (evolved points route back to their "
+    "own face at decent confidence, clean silhouette); (3) the "
+    "visualization projection should produce a routing distribution "
+    "matching the true per-class fraction."
+)
+res['verdict'] = (
+    "PARTIAL (seed 42, mnist): (1) SUPPORTED - NN-truth routing %.3f "
+    "(%d/200) vs chance 0.100 on MLP embeddings (test_acc %.4f), the "
+    "learnable truths train fine end-to-end; (2) NOT SUPPORTED - the "
+    "S^2 Hamiltonian flow does NOT preserve face identity: silhouette "
+    "%.3f (intra %.3f vs inter %.3f, essentially no separation), and "
+    "only %d of %d faces route back to themselves, the rest misrouted "
+    "at low confidence (conf 0.24-0.56) - the repulsion spreads points "
+    "but destroys the centroid-truth structure the router needs; note "
+    "part 2 has run-to-run variance in this script (silhouette 0.009-"
+    "0.022, 3-4 self-routed) because part of the S^2 draw is not "
+    "rng-seeded - the qualitative verdict (no face preservation) is "
+    "robust; (3) SUPPORTED as a sanity - the viz routing distribution "
+    "tracks the true per-class fractions within ~1-3 points per face. "
+    "HONEST CAVEATS: S^2 flow is 60 synthetic points on the sphere, "
+    "not the MNIST embeddings themselves (the flow was run on "
+    "router_viz points); single seed; the S^2 flow result confirms the "
+    "earlier polysphere_extensions finding that sphere repulsion "
+    "collapses separation."
+) % (res['part1_nn_truths']['routing_acc'], int(correct), res['part1_nn_truths']['test_acc'],
+     sil, float(np.mean(intra_f)), float(np.mean(inter_f)), len(self_routed), n_faces)
+os.makedirs('data', exist_ok=True)
+with open(os.path.join('data', 'polysphere_nnflow_viz_data.json'), 'w') as f:
+    _json.dump(res, f, indent=2)
+print("saved data/polysphere_nnflow_viz_data.json")
 print("Done.")

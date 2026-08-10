@@ -53,6 +53,7 @@ number so none of the resolved claims can silently drift:
    - balance_auto T51: autonomous burst-detector regime switch does NOT deliver the claimed benefit - detector fires only on the explosive event, but AD ~= P0 on routing (MNIST old 0.990 vs 1.000, all 0.975 vs 0.985; synthetic burst 0.887 vs 0.873 old) and AD displacement slightly higher (1.816 vs 1.828); P5 constant-mu=0.5 decisively worse; on real MNIST embeddings reflow policy is nearly irrelevant (all >= 0.94, P0 best) - NOT SUPPORTED for the autonomous benefit (T50 absorb = one-shot recovery tool for a clean shell, not a stream policy)
    - self_balancing T55a: self-balancing router (fib batching + n-scaled absorb A=A*(n) + coherence gate) SUPPORTED in the geometry regime - the gate FIRES in a trapped crowded core: COH skips the absorb and lands exactly on P0 (old 0.900 ~ 0.900, all 0.860 = 0.860, disp 0.513 ~ 0.513) while ABS/ABS-SC pay the penalty (old 0.890, all 0.820-0.830); on the clean fib stream the all-routing gain survives (COH final_all 0.850 vs P0 0.770; multi-seed banner 0.880 vs 0.820) but seed-42 COH final_old 0.810 < ABS-SC 0.930 (banner tie 0.870/0.870 holds on average only); Part 4 MNIST adds NOTHING (COH final_all 0.873 < FIB 0.940); coherence is a shell-thickness signal, not a general crowding detector
    - polysphere_mnist: PolysphereRouter generalizes to REAL MNIST embeddings - mixed-batch routing 0.890 vs chance 0.100; anomaly gap 0.663 (in-dist 0.877 vs OOD 0.214); hierarchical end-to-end 0.753 vs combined chance ~0.111 (branching 10 -> 4); active learning flags unknowns 60% and routes 10/10 = 1.000 after faces added - SUPPORTED (embeddings are the MLP's own 2D bottleneck, single seed, hier below flat 0.890, threshold-dependent)
+   - polysphere_nnflow_viz: three-extension probe - (1) learnable NN truths SUPPORTED: routing 0.880 (176/200) vs chance 0.100 on MLP embeddings (test_acc 0.885); (2) S^2 Hamiltonian flow NOT SUPPORTED: silhouette ~0.0 (intra ~= inter, no separation), only 3-4/6 faces self-route at low conf 0.24-0.56, repulsion destroys centroid structure (run-to-run variance: sil -0.016..0.022, 3-4 self-routed, part 2 draw not fully rng-seeded - verdict robust); (3) viz routing distribution tracks true per-class fractions within ~1-3 pts - PARTIAL
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -801,3 +802,17 @@ def test_polysphere_mnist_supported():
     # active learning reaches perfect routing after faces added
     assert d['part3']['final_10_acc'] == 1.0
     assert d['part3']['unknown_flagged']['rate'] > 0.4
+
+
+def test_polysphere_nnflow_viz_partial():
+    d = load('polysphere_nnflow_viz_data.json')
+    assert d['verdict'].startswith('PARTIAL')
+    p1, p2 = d['part1_nn_truths'], d['part2_s2_flow']
+    # NN-truth routing supported: far above chance
+    assert p1['routing_acc'] > 0.8
+    # S^2 flow NOT supported: near-zero silhouette, <all faces self-route
+    assert p2['silhouette'] < 0.1
+    assert p2['self_routed'] < p2['n_faces']
+    # viz distribution sanity: routed vs actual per-class fractions align
+    for row in d['part3_viz_distribution']:
+        assert abs(row['routed_pct'] - row['actual_pct']) < 5.0

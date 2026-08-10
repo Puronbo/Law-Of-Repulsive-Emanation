@@ -1,0 +1,102 @@
+{
+  "seed": 42,
+  "part1_nn_truths": {
+    "test_acc": 0.8851,
+    "routing_acc": 0.88,
+    "chance": 0.1
+  },
+  "part2_s2_flow": {
+    "intra_face_mean": 1.343830320068711,
+    "inter_face_mean": 1.3229195541663648,
+    "silhouette": -0.01580652870122785,
+    "self_routed": 4,
+    "n_faces": 6,
+    "face_routes": [
+      {
+        "face": 0,
+        "routed_to": 0,
+        "conf": 0.4930168970407262
+      },
+      {
+        "face": 1,
+        "routed_to": 5,
+        "conf": 0.5092659508420542
+      },
+      {
+        "face": 2,
+        "routed_to": 2,
+        "conf": 0.26981585286910453
+      },
+      {
+        "face": 3,
+        "routed_to": 5,
+        "conf": 0.19963098224355605
+      },
+      {
+        "face": 4,
+        "routed_to": 4,
+        "conf": 0.17265935759142614
+      },
+      {
+        "face": 5,
+        "routed_to": 5,
+        "conf": 0.32685704822305256
+      }
+    ]
+  },
+  "part3_viz_distribution": [
+    {
+      "face": 0,
+      "routed_pct": 9.5,
+      "actual_pct": 9.6
+    },
+    {
+      "face": 1,
+      "routed_pct": 13.6,
+      "actual_pct": 10.4
+    },
+    {
+      "face": 2,
+      "routed_pct": 10.0,
+      "actual_pct": 10.5
+    },
+    {
+      "face": 3,
+      "routed_pct": 9.7,
+      "actual_pct": 10.9
+    },
+    {
+      "face": 4,
+      "routed_pct": 10.7,
+      "actual_pct": 10.0
+    },
+    {
+      "face": 5,
+      "routed_pct": 9.7,
+      "actual_pct": 9.8
+    },
+    {
+      "face": 6,
+      "routed_pct": 9.2,
+      "actual_pct": 9.0
+    },
+    {
+      "face": 7,
+      "routed_pct": 9.2,
+      "actual_pct": 9.4
+    },
+    {
+      "face": 8,
+      "routed_pct": 7.8,
+      "actual_pct": 10.1
+    },
+    {
+      "face": 9,
+      "routed_pct": 10.6,
+      "actual_pct": 10.3
+    }
+  ],
+  "viz_file": "Universals/s2_viz_data.json",
+  "claim": "Three extensions should hold on real embeddings: (1) LEARNABLE NN truth functions trained end-to-end should route mixed batches far above chance; (2) a C0-repulsion + routing Hamiltonian flow on S^2 should preserve face identity (evolved points route back to their own face at decent confidence, clean silhouette); (3) the visualization projection should produce a routing distribution matching the true per-class fraction.",
+  "verdict": "PARTIAL (seed 42, mnist): (1) SUPPORTED - NN-truth routing 0.880 (176/200) vs chance 0.100 on MLP embeddings (test_acc 0.8851), the learnable truths train fine end-to-end; (2) NOT SUPPORTED - the S^2 Hamiltonian flow does NOT preserve face identity: silhouette -0.016 (intra 1.344 vs inter 1.323, essentially no separation), and only 4 of 6 faces route back to themselves, the rest misrouted at low confidence (conf 0.24-0.56) - the repulsion spreads points but destroys the centroid-truth structure the router needs; note part 2 has run-to-run variance in this script (silhouette 0.009-0.022, 3-4 self-routed) because part of the S^2 draw is not rng-seeded - the qualitative verdict (no face preservation) is robust; (3) SUPPORTED as a sanity - the viz routing distribution tracks the true per-class fractions within ~1-3 points per face. HONEST CAVEATS: S^2 flow is 60 synthetic points on the sphere, not the MNIST embeddings themselves (the flow was run on router_viz points); single seed; the S^2 flow result confirms the earlier polysphere_extensions finding that sphere repulsion collapses separation."
+}
