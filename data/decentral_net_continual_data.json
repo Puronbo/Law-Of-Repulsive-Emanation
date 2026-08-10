@@ -1,0 +1,81 @@
+{
+  "seeds": [
+    42
+  ],
+  "base": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "stream": [
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "settle": 300,
+  "part1": {
+    "CONTROL": {
+      "old_route": 0.8626940410615924,
+      "all_route": 0.6715,
+      "drift": 0.0,
+      "center_drift": 0.0
+    },
+    "ADD": {
+      "old_route": 0.8053079619429143,
+      "all_route": 0.64665,
+      "drift": 0.45323361784574623,
+      "center_drift": 0.12255254978515966
+    },
+    "MIX": {
+      "old_route": 0.060891337005508264,
+      "all_route": 0.305,
+      "drift": 0.3337849697915335,
+      "center_drift": 0.013964072216750176
+    }
+  },
+  "add_vs_control_old_delta": -0.0573860791186781,
+  "part2": {
+    "control": {
+      "old_route": 0.9168753129694541,
+      "all_route": 0.817
+    },
+    "mu0_sweep": [
+      {
+        "mu0": 0.12,
+        "old_route": 0.7761642463695543,
+        "all_route": 0.78625,
+        "drift": 0.4923538981014645
+      },
+      {
+        "mu0": 0.5,
+        "old_route": 0.757135703555333,
+        "all_route": 0.783,
+        "drift": 0.2746544331121809
+      },
+      {
+        "mu0": 1.0,
+        "old_route": 0.7781672508763144,
+        "all_route": 0.78825,
+        "drift": 0.20857943675210708
+      },
+      {
+        "mu0": 2.0,
+        "old_route": 0.7220831246870305,
+        "all_route": 0.74875,
+        "drift": 0.14764328160771134
+      },
+      {
+        "mu0": 4.0,
+        "old_route": 0.8037055583375062,
+        "all_route": 0.8125,
+        "drift": 0.10852897756153748
+      }
+    ]
+  },
+  "claim": "T55e: the DecentralNet's class-incremental LOCAL reflow (home trap + k-NN repulsion) should let old-class anchors keep routing when new classes are appended to real 64D MNIST embeddings - at least matching raw nearest-centroid (CONTROL), never mixing frames, and with the 2D-calibrated tether (mu0=0.12) dimension-independent.",
+  "verdict": "NOT SUPPORTED for the routing benefit claim (seeds=[42]): local reflow LOSES to raw centroids on MNIST 64D - ADD old 0.805 vs CONTROL 0.863 (delta -0.057), all 0.647 vs 0.671; on real embeddings the homes ARE the data centroids, so reflowing them cannot help nearest-centroid routing (drift 0.4532, center-drift 0.1226). MIX (no reflow on appended neurons) COLLAPSES as predicted by the gauge freedom: old 0.061, all 0.305 - never mix frames, always reflow appended neurons. Part 2: the tether is NOT dimension-independent - mu0=0.12 tuned on the 2D disk over-drifts in 64D (drift 0.4924), and mu0>=1 cuts drift to 0.11-0.21 but routing never beats CONTROL (best all 0.812 at mu0=4.0 vs CONTROL 0.817). Net: the module handles continual growth without collapse ONLY when every appended neuron is reflowed (ADD), but the local geometry adds nothing over simply keeping raw centroids on real embeddings. HONEST CAVEATS: single seed 42 for Part 2; 300-step settle; k=8, A=120, max_r=0.9."
+}

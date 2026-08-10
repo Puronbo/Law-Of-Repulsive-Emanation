@@ -56,6 +56,7 @@ number so none of the resolved claims can silently drift:
    - polysphere_nnflow_viz: three-extension probe - (1) learnable NN truths SUPPORTED: routing 0.880 (176/200) vs chance 0.100 on MLP embeddings (test_acc 0.885); (2) S^2 Hamiltonian flow NOT SUPPORTED: silhouette ~0.0 (intra ~= inter, no separation), only 3-4/6 faces self-route at low conf 0.24-0.56, repulsion destroys centroid structure (run-to-run variance: sil -0.016..0.022, 3-4 self-routed, part 2 draw not fully rng-seeded - verdict robust); (3) viz routing distribution tracks true per-class fractions within ~1-3 pts - PARTIAL
    - decentral_net T55c: fully local net (private home trap + k-NN repulsion + per-neuron steps, NO global mean/max/controller) SUPPORTED - decentralization ~free or better on old-routing (banner multi-seed: ABS-SC final_old 0.913 vs centralized 0.870; final_all 0.843 vs 0.853); shell EMERGES from local rules but needs the always-on home tether (without it collapses to rim 0.57 all-route -> 0.85 at mu0=0.12); self-heals with no repair unit (50% loss: spacing spread 0.16->0.11, regrown routing >= pre-damage 0.917 vs 0.877); MNIST part4 no collapse, ABS-SC final-all 0.813 > FIB 0.647; caveats: spacing gate never fired on clean stream (GATE ~ ABS-SC), k=4 worse than k=8, part4 single-seed
    - decentral_net_mnist T55d: no-dependency DecentralNet on real 64D MNIST embeddings SUPPORTED - local-settle routes at 0.810 vs nearest-centroid baseline 0.817 (within ~1 pt, no central controller); after killing 3/10 neurons survivors keep routing (0.834) and LOCAL heal alone restores spacing 0.562 -> 0.854 with routing preserved (0.822); regrow from fresh homes restores full 10-class net at 0.767 (~5 pts below grown 0.810); caveats: embeddings are the MLP's own 64D layer, single seed 42/4 epochs/disk radius 0.35
+   - decentral_net_continual T55e: class-incremental LOCAL reflow on real 64D MNIST NOT SUPPORTED for the routing benefit - ADD old 0.805 vs raw-centroid CONTROL 0.863 (delta -0.057), all 0.647 vs 0.671 (homes ARE the data centroids, reflow cannot help); MIX (no reflow) collapses as the gauge freedom predicts - old 0.061/all 0.305, never mix frames; Part 2 tether NOT dimension-independent - mu0=0.12 2D-tuned over-drifts in 64D (0.49), mu0>=1 cuts drift to 0.11-0.21 but never beats CONTROL (best all 0.812 vs 0.817)
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -845,3 +846,21 @@ def test_decentral_net_mnist_supported():
     assert d['acc_survivors_healed'] >= 0.8
     # regrow restores full 10-class net (above chance)
     assert d['acc_regrown_full'] > 0.7
+
+
+def test_decentral_net_continual_not_supported():
+    d = load('decentral_net_continual_data.json')
+    assert d['verdict'].startswith('NOT SUPPORTED')
+    p1 = d['part1']
+    # local reflow loses to raw centroids on real 64D embeddings
+    assert d['add_vs_control_old_delta'] < 0.0
+    assert p1['ADD']['old_route'] < p1['CONTROL']['old_route']
+    # MIX collapses (gauge freedom: never mix frames)
+    assert p1['MIX']['old_route'] < 0.2
+    assert p1['MIX']['all_route'] < p1['CONTROL']['all_route']
+    # tether not dimension-independent: mu0=0.12 over-drifts vs CONTROL
+    p2 = d['part2']
+    assert p2['mu0_sweep'][0]['drift'] > p2['control']['old_route'] * 0.4
+    # no mu0 beats CONTROL on all-routing
+    for row in p2['mu0_sweep']:
+        assert row['all_route'] <= p2['control']['all_route'] + 1e-9

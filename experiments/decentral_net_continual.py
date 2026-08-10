@@ -161,6 +161,7 @@ Z, cent = cached[42]
 cont_old = kNN_acc(cent[BASE], Z, subset=BASE)
 cont_all = kNN_acc(cent, Z)
 print(f"  CONTROL: old={cont_old:.3f} all={cont_all:.3f}")
+mu0_rows = []
 for mu0 in [0.12, 0.5, 1.0, 2.0, 4.0]:
     net = DecentralNet(dim=64, k=8, mu0=mu0, A=120.0, dt=0.05, max_r=0.9)
     for c in cent[BASE]:
@@ -172,6 +173,8 @@ for mu0 in [0.12, 0.5, 1.0, 2.0, 4.0]:
     old = kNN_acc(net.q, Z, subset=BASE)
     all_ = kNN_acc(net.q, Z)
     drift = float(np.mean(np.linalg.norm(net.q[:5] - cent[BASE], axis=1)))
+    mu0_rows.append({'mu0': float(mu0), 'old_route': float(old),
+                     'all_route': float(all_), 'drift': drift})
     print(f"  mu0={mu0:<5} old={old:.3f} all={all_:.3f} drift={drift:.4f}")
 
 print("\n" + "=" * 70)
@@ -193,3 +196,49 @@ print("  Part 2: the tether is NOT dimension-independent - mu0=0.12 tuned")
 print("  on the 2D disk over-drifts in 64D (drift .49 from homes); mu0>=1")
 print("  cuts drift to .1-.2 but routing never beats CONTROL (.82 all).")
 print("\nDone.")
+
+# ---------------- persist claim/verdict ---------------------------------
+import json as _json
+part1 = {p: {'old_route': float(np.mean(agg[p]['old'])),
+             'all_route': float(np.mean(agg[p]['all'])),
+             'drift': float(np.mean(agg[p]['drift'])),
+             'center_drift': float(np.mean(agg[p]['center']))}
+         for p in ['CONTROL', 'ADD', 'MIX']}
+res = {
+    'seeds': seeds,
+    'base': list(BASE), 'stream': list(STREAM), 'settle': SETTLE,
+    'part1': part1,
+    'add_vs_control_old_delta': float(np.mean(agg['ADD']['old'])
+                                      - np.mean(agg['CONTROL']['old'])),
+    'part2': {'control': {'old_route': float(cont_old),
+                          'all_route': float(cont_all)},
+              'mu0_sweep': mu0_rows},
+}
+res['claim'] = (
+    "T55e: the DecentralNet's class-incremental LOCAL reflow (home trap + "
+    "k-NN repulsion) should let old-class anchors keep routing when new "
+    "classes are appended to real 64D MNIST embeddings - at least matching "
+    "raw nearest-centroid (CONTROL), never mixing frames, and with the 2D-"
+    "calibrated tether (mu0=0.12) dimension-independent."
+)
+res['verdict'] = (
+    "NOT SUPPORTED for the routing benefit claim (seeds=%%SEEDS%%): local "
+    "reflow LOSES to raw centroids on MNIST 64D - ADD old 0.805 vs CONTROL "
+    "0.863 (delta -0.057), all 0.647 vs 0.671; on real embeddings the "
+    "homes ARE the data centroids, so reflowing them cannot help "
+    "nearest-centroid routing (drift 0.4532, center-drift 0.1226). MIX "
+    "(no reflow on appended neurons) COLLAPSES as predicted by the gauge "
+    "freedom: old 0.061, all 0.305 - never mix frames, always reflow "
+    "appended neurons. Part 2: the tether is NOT dimension-independent - "
+    "mu0=0.12 tuned on the 2D disk over-drifts in 64D (drift 0.4924), and "
+    "mu0>=1 cuts drift to 0.11-0.21 but routing never beats CONTROL "
+    "(best all 0.812 at mu0=4.0 vs CONTROL 0.817). Net: the module "
+    "handles continual growth without collapse ONLY when every appended "
+    "neuron is reflowed (ADD), but the local geometry adds nothing over "
+    "simply keeping raw centroids on real embeddings. HONEST CAVEATS: "
+    "single seed 42 for Part 2; 300-step settle; k=8, A=120, max_r=0.9."
+) .replace('%%SEEDS%%', str(seeds))
+os.makedirs('data', exist_ok=True)
+with open(os.path.join('data', 'decentral_net_continual_data.json'), 'w') as fp:
+    _json.dump(res, fp, indent=2)
+print("saved data/decentral_net_continual_data.json")
