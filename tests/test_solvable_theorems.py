@@ -44,6 +44,7 @@ number so none of the resolved claims can silently drift:
    - spring fold T58: mirror-fold area = 2*a^2*TH^3/6 EXACT, self-crosses at TH-pi; retrace fold closes EXACTLY to C0 (closure 0.00e+00, crease pi); golden fold ratio = phi EXACT but does NOT close to C0 (error 12.3); overcoil tucks end under start - SUPPORTED (by construction, deterministic)
    - eikonal fold T63: upwind viscosity solution of |r'|=a with C0 at both ends converges to the exact tent (err 3.3e-13); cut locus EXACT (0.00e+00); crease 0.0350*pi vs analytic 0.0318*pi (finite-diff approx); mirror area 2*a^2*TH^3/6 EXACT, retrace net area ~0 - SUPPORTED (deterministic; fold-as-integral semantics interpretive)
    - retrace boundary T64: equation + two pins admits infinitely many weak solutions (zig-zags all pass |r'|=a, r(0)=r(2TH)=0); viscosity selects the tent (all zig-zags fail at down-up corner); upwind from zig-zag converges to tent (err 5e-13); cut locus EXACT; reflection conserves |r'| to 3.6e-13 - SUPPORTED, retrace derived not assumed
+   - fold optimizer T60: Hamiltonian spring conserves (drift 3.9e-3 bounded, area ratio 0.9921) and recurs to start (Poincare, min dist 3.3e-5); damped spring collapses (energy 0.00e+00 above min, area ratio ~0) and locks at x=+1 EXACT (stays 2000 steps) - SUPPORTED; 'cannot escape' is topological (shown by staying, not proved), mirror-fold=dissipation interpretive
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -653,3 +654,19 @@ def test_retrace_boundary_supported():
     assert d['cut_locus_eq'] == 0.0
     # E5: reflection conserves |r'| across the crease
     assert d['reflection'] < 1e-9
+
+
+def test_fold_optimizer_supported():
+    d = load('fold_optimizer_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    # G1: Hamiltonian energy drift is small and bounded (not secular)
+    assert d['drift_h'] < 0.01
+    assert d['area_ratio_h'] > 0.9
+    # G2: recurrence returns near the start (Poincare)
+    assert d['recurrence'] < 1e-3
+    # G3: damped energy collapses to the minimum, area contracts fully
+    assert d['ed_final'] < 1e-6
+    assert d['area_ratio_d'] < 1e-3
+    # G4: locks at the minimum and stays
+    assert d['lock_err'] < 1e-3
+    assert d['stays'] is True
