@@ -1,0 +1,39 @@
+{
+  "NAIVE": {
+    "final_old": 0.94,
+    "final_all": 0.78,
+    "stream_old": 0.908,
+    "mean_buf": 0.0
+  },
+  "EQ5": {
+    "final_old": 0.89,
+    "final_all": 0.86,
+    "stream_old": 0.926,
+    "mean_buf": 2.0
+  },
+  "FIB": {
+    "final_old": 0.92,
+    "final_all": 0.88,
+    "stream_old": 0.912,
+    "mean_buf": 2.25
+  },
+  "FIB+ABS": {
+    "final_old": 0.82,
+    "final_all": 0.9,
+    "stream_old": 0.904,
+    "mean_buf": 2.25
+  },
+  "P5": {
+    "final_old": 0.89,
+    "final_all": 0.88,
+    "stream_old": 0.879,
+    "mean_buf": 0.0
+  },
+  "part3_final_all": {
+    "NAIVE": 0.953,
+    "FIB": 0.907,
+    "FIB+ABS": 0.887
+  },
+  "claim": "T53: the phi-jump scheduler (Fibonacci batches 1,1,2,3,5,8 + absorb mu=0.5 on large terms) operationalizes the T52 recommendation. Claim: Fibonacci batching improves continual old-class routing with bounded latency; absorbing during large terms adds whole-layout integrity; fixed mu=0.5 is harmful; on real (MNIST) embeddings scheduling is unnecessary.",
+  "verdict": "SUPPORTED with scope caveat (seed=42): Part 1 (synthetic, 20 arrivals) - multi-seed means (banner): FIB is the most robust scheduler (stream-old 0.912 best, final-old 0.910 best/equal at ~2.25 buffer); FIB+ABS buys final_all (+0.013 mean) at old-routing cost (-0.063 mean); NAIVE is best only for zero-latency old retention (final_old 0.900) but worst final_all (0.817); P5 fixed mu=0.5 is NEVER usable (worst stream routing 0.872 in all 3 seeds). P5-worst and the FIB+ABS all-vs-old trade-off ALSO hold per-seed in this artifact's single-seed rows (this seed: P5 stream-old 0.879 = min; FIB+ABS final_all 0.90 > FIB 0.88 while FIB+ABS final_old 0.82 < FIB 0.92). Part 2: batch scale 1-2 is the sweet spot (stream 0.90-0.93, buffer 2.0-2.25); scale 3 adds buffer without benefit. Part 3 (MNIST, seed 42): scheduling is NOT needed on real embeddings - NAIVE final_all 0.953 > FIB 0.907 > FIB+ABS 0.887 - the phi-jump scheduler is a geometry-regime (disk-layout) tool, consistent with T51/T52 real-data findings. HONEST CAVEATS: (1) the multi-seed summary in the banner is hardcoded from a prior 42/11/7 run; this artifact persists the current seed's Part 1 rows, so FIB-vs-NAIVE/EQ5 stream-old ranking is NOT per-seed stable; (2) Part 3 reflow is known-weak (real-data finding), and routing uses centroid-anchored PolysphereRouter which favors simple embeddings."
+}

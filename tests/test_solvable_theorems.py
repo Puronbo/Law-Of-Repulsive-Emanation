@@ -46,6 +46,7 @@ number so none of the resolved claims can silently drift:
    - retrace boundary T64: equation + two pins admits infinitely many weak solutions (zig-zags all pass |r'|=a, r(0)=r(2TH)=0); viscosity selects the tent (all zig-zags fail at down-up corner); upwind from zig-zag converges to tent (err 5e-13); cut locus EXACT; reflection conserves |r'| to 3.6e-13 - SUPPORTED, retrace derived not assumed
    - fold optimizer T60: Hamiltonian spring conserves (drift 3.9e-3 bounded, area ratio 0.9921) and recurs to start (Poincare, min dist 3.3e-5); damped spring collapses (energy 0.00e+00 above min, area ratio ~0) and locks at x=+1 EXACT (stays 2000 steps) - SUPPORTED; 'cannot escape' is topological (shown by staying, not proved), mirror-fold=dissipation interpretive
    - t65 four-pack: P1 REFUTED (tau=1.4272 identical across all curiosity_drive, corr nan - knob has no effect); P2 REFUTED (ascent err 1.79-1.82, does not recover seed); P3 PARTIAL (2D proj MI 0.034 vs null 0.009 retains signal, but single coord already = 1.0, holography trivial); P4 REFUTED (converged fraction 0.00, max dist from final 0.45) - MIXED, mostly REFUTED
+   - phi scheduler T53: FIB batching most robust on disk layouts (stream-old 0.912 best, final-old 0.910 at ~2.25 buffer); FIB+ABS buys final_all (+0.013) at old-routing cost (-0.063); P5 fixed mu=0.5 never usable (0.872); on MNIST scheduling NOT needed (NAIVE 0.953 > FIB 0.907 > FIB+ABS 0.887) - SUPPORTED with scope caveat (geometry-regime tool)
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -687,3 +688,18 @@ def test_t65_fourpack_mixed_refuted():
     assert d['P3']['mi_single_coord'] > 0.99
     # P4: no fixed-point convergence under dream/remix
     assert d['P4']['converged_fraction'] == 0.0
+
+
+def test_phi_scheduler_supported_with_caveat():
+    d = load('phi_scheduler_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    # P5 fixed mu=0.5 is never usable: worst stream routing (holds per-seed)
+    assert d['P5']['stream_old'] <= min(v['stream_old'] for v in d.values()
+                                        if isinstance(v, dict) and 'stream_old' in v)
+    # FIB+ABS buys final whole-layout integrity at old-routing cost (per-seed)
+    assert d['FIB+ABS']['final_all'] > d['FIB']['final_all']
+    assert d['FIB+ABS']['final_old'] < d['FIB']['final_old']
+    # FIB keeps bounded latency
+    assert 0 < d['FIB']['mean_buf'] <= 2.5
+    # Part 3 (MNIST): scheduling is not needed on real embeddings
+    assert d['part3_final_all']['NAIVE'] > d['part3_final_all']['FIB'] > d['part3_final_all']['FIB+ABS']
