@@ -49,6 +49,7 @@ number so none of the resolved claims can silently drift:
    - phi scheduler T53: FIB batching most robust on disk layouts (stream-old 0.912 best, final-old 0.910 at ~2.25 buffer); FIB+ABS buys final_all (+0.013) at old-routing cost (-0.063); P5 fixed mu=0.5 never usable (0.872); on MNIST scheduling NOT needed (NAIVE 0.953 > FIB 0.907 > FIB+ABS 0.887) - SUPPORTED with scope caveat (geometry-regime tool)
    - flow_regularized: flow regularizer at lambda=0.007 lifts routing 0.900->0.930 (+0.030) with test_acc 0.905 and sep 1.59x preserved, but the sweep is NON-MONOTONIC (0.003:+0.01, 0.005:-0.02, 0.007:+0.03, 0.01:-0.07, 0.015:+0.00) - SUPPORTED with narrow-window caveat, larger lambda clearly hurts routing
    - flow_hier_reg T48b: flow-REG does NOT stabilize - drift 6.616 (rel 0.686) vs baseline 6.549 (rel 0.647), forgetting -0.034 vs -0.029; flat routing worse (all 0.805 vs 0.885, old 0.873 vs 0.973); only hier routing better (all 0.790 vs 0.765, old 0.800 vs 0.760) - NOT SUPPORTED for stability headline, weak hier benefit only
+   - flow_hier_reg_scaled T55b: n-scaling stage-2 reg per T54 A* law does NOT help materially - drift 6.5048 (rel 0.644) FIXED vs NSCAL 6.4636 (rel 0.640) and LIN 6.4573 (rel 0.640), a <=0.7% relative drift gain; ALL other metrics identical to 3 dp (acc 0.897/0.921, forget -0.031, route 0.895/0.933, hier 0.755/0.747); LIN nominally lowest - NOT SUPPORTED for a material effect
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -737,3 +738,16 @@ def test_flow_hier_reg_not_supported():
     # the one flow benefit: hierarchical routing is better
     assert f['hier_all'] > b['hier_all']
     assert f['hier_old'] > b['hier_old']
+
+
+def test_flow_hier_reg_scaled_not_supported():
+    d = load('flow_hier_reg_scaled_data.json')
+    assert d['verdict'].startswith('NOT SUPPORTED')
+    f, n, l = d['means']['FIXED'], d['means']['NSCAL'], d['means']['LIN']
+    # n-scaling gain is marginal (<1% relative drift), everything else identical
+    assert f['drift_rel'] - n['drift_rel'] < 0.01
+    assert f['drift_rel'] - l['drift_rel'] < 0.01
+    assert f['drift_rel'] == n['drift_rel'] or f['drift_rel'] - n['drift_rel'] > 0
+    for m in (f, n, l):
+        assert abs(m['acc_all'] - n['acc_all']) < 1e-4  # identical to 3 dp
+    assert d['best_drift_rule'] in ('FIXED', 'NSCAL', 'LIN')

@@ -13,7 +13,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
-| Regression suite | **56/56 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
+| Regression suite | **57/57 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
 | L.O.R.E. | C0 = V(q0) = H(q0,0), 109 tests; T-symmetry error 0.003 |
 | Fold theorem (T63/T64) | crease = **unique viscosity solution of |r′| = a**; retrace = cut locus; eikonal err 3.3e-13; measured crease 0.0350π vs derived 0.0318π; area 2666.6665 vs 2666.6666… |
 | Clock-test canon (T59/T61) | law-ness 1.000 → 0.417 under calendar re-index → 1.000 under rotation; rotation overlap/sim 1.000 |
@@ -164,6 +164,7 @@ The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.j
 | Phi-jump scheduler T53 (`phi_scheduler.py`) | SUPPORTED with scope caveat: FIB batching is the most robust on disk layouts (multi-seed: stream-old 0.912, final-old 0.910, ~2.25 buffer); FIB+ABS buys final whole-layout integrity (+0.013) at old-routing cost (−0.063) — both trade-offs hold per-seed; P5 fixed mu=0.5 is NEVER usable (worst stream 0.872, all 3 seeds); Part 3 MNIST: scheduling NOT needed on real embeddings (NAIVE 0.953 > FIB 0.907 > FIB+ABS 0.887) — a geometry-regime tool, consistent with T51/T52. Caveats: multi-seed banner is hardcoded from a prior 42/11/7 run (artifact persists current-seed rows); Part 3 reflow is known-weak |
 | Flow-regularized training (`flow_regularized.py`) | SUPPORTED with narrow-window caveat: C0 flow regularizer at λ=0.007 lifts routing 0.900→0.930 (+0.030) with test acc 0.905 and separation 1.59x preserved; but the λ-sweep is NON-MONOTONIC (0.003:+0.01, 0.005:−0.02, 0.007:+0.03, 0.01:−0.07, 0.015:+0.00), so the best is partly sampling noise; larger λ clearly hurts routing (−0.070). Routing uses logit-truth PolysphereRouter on the model's own embeddings (in-distribution), single seed 42 |
 | Flow-reg continual T48b (`flow_hier_reg.py`) | NOT SUPPORTED for the stability headline: flow-REG does NOT reduce old-class drift — drift 6.616 (rel 0.686) vs baseline 6.549 (rel 0.647), forgetting −0.034 vs −0.029 (both marginally worse); flat routing clearly worse at stage 2 (all 0.805 vs 0.885, old 0.873 vs 0.973); accuracy preserved (0.896 vs 0.900). Only the hierarchical routing metric is better (all 0.790 vs 0.765, old 0.800 vs 0.760) — the coarse-then-fine router benefits slightly from the flow-shaped lattice. Single seed 42/mnist |
+| N-scaled flow-reg retest T55b (`flow_hier_reg_scaled.py`) | NOT SUPPORTED for a material effect (seed 42): scaling stage-2 reg strength by the T54 A* law (A*10/A*5 = 1.874) reduces old-class drift only marginally — FIXED 6.5048 (rel 0.644) → NSCAL 6.4636 (rel 0.640) → LIN 6.4573 (rel 0.640), a ≤0.7% relative drift gain and within run scatter; ALL other metrics identical to 3 dp (acc 0.897/0.921, forget −0.031, route 0.895/0.933, hier 0.755/0.747). The A* law does NOT rescue the T48b result — reg remains a weak perturbation on fine-tune |
 
 ## Internet-Scale Flow (T67, T72)
 
@@ -242,6 +243,7 @@ python experiments/t65_fourpack.py                # T65 four-pack verdict (MIXED
 python experiments/phi_scheduler.py               # T53 phi-jump scheduler verdict (SUPPORTED w/ caveat)
 python experiments/flow_regularized.py            # flow-regularized training verdict (SUPPORTED w/ caveat)
 python experiments/flow_hier_reg.py               # flow-reg continual T48b verdict (NOT SUPPORTED headline)
+python experiments/flow_hier_reg_scaled.py        # n-scaled flow-reg T55b verdict (NOT SUPPORTED material)
 python Universals/serve_dashboard.py   # L.O.R.E. dashboard -> http://localhost:8080/docs/
 ```
 

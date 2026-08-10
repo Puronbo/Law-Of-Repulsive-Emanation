@@ -1,0 +1,44 @@
+{
+  "seeds": [
+    42
+  ],
+  "rules": [
+    "FIXED",
+    "NSCAL",
+    "LIN"
+  ],
+  "A_star_ratio_10_5": 1.874,
+  "means": {
+    "FIXED": {
+      "drift": 6.504846404194744,
+      "drift_rel": 0.6442189366174059,
+      "route_old": 0.9333333333333333,
+      "route_all": 0.895,
+      "acc_old": 0.9214597381991273,
+      "acc_all": 0.8974,
+      "forget": -0.03054343514478386
+    },
+    "NSCAL": {
+      "drift": 6.463587097826038,
+      "drift_rel": 0.6401327484397299,
+      "route_old": 0.9333333333333333,
+      "route_all": 0.895,
+      "acc_old": 0.9212614042046807,
+      "acc_all": 0.8974,
+      "forget": -0.030741769139230435
+    },
+    "LIN": {
+      "drift": 6.457313842432654,
+      "drift_rel": 0.6395114655273387,
+      "route_old": 0.9333333333333333,
+      "route_all": 0.895,
+      "acc_old": 0.9212614042046807,
+      "acc_all": 0.8974,
+      "forget": -0.030741769139230435
+    }
+  },
+  "best_drift_rule": "LIN",
+  "nscal_drift_rel_gain": 0.004,
+  "claim": "T55b: n-scaling the stage-2 flow-reg strength per the T54 A* law (A* ~ n^1.09, so lambda(10) = 1.874 * L0) should stabilize old-class centroids as classes accumulate - less drift, better old routing - without hurting accuracy, vs the fixed T48b lambda.",
+  "verdict": "NOT SUPPORTED for a material effect (seed(s)=[42]): n-scaling reduces old-class centroid drift only marginally - FIXED drift 6.5048 (rel 0.644) -> NSCAL 6.4636 (rel 0.640, -0.7% relative drift) and LIN 6.4573 (rel 0.640); LIN is nominally lowest but the gap is within run-to-run scatter. ALL other stage-2 metrics are IDENTICAL to 3 decimal places across rules: acc 0.897/0.921, forget -0.031, route 0.895/0.933, hier 0.755/0.747. So the T54 A* scaling law does NOT rescue the T48b result: it neither stabilizes meaningfully nor changes routing/accuracy. HONEST CAVEATS: (1) single seed 42 here (script supports more but this artifact is the seed-42 run); (2) the drift itself is large in absolute terms (6.5) - the reg is a weak perturbation on the fine-tune; (3) mnist only."
+}

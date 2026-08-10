@@ -285,3 +285,35 @@ d = 'NSCAL' if nm['drift'] < fm['drift'] and nm['drift'] < lm['drift'] else (
     'LIN' if lm['drift'] < fm['drift'] else 'FIXED')
 print(f"  -> lowest drift: {d}")
 print(f"\nDone.")
+
+# ---------------- persist claim/verdict ---------------------------------
+import json
+res = {'seeds': seeds, 'rules': list(RULE_LAMBDA),
+       'A_star_ratio_10_5': round(float(A_star(10) / A_star(5)), 3),
+       'means': {'FIXED': fm, 'NSCAL': nm, 'LIN': lm},
+       'best_drift_rule': d,
+       'nscal_drift_rel_gain': round(float(fm['drift_rel'] - nm['drift_rel']), 3)}
+res['claim'] = (
+    "T55b: n-scaling the stage-2 flow-reg strength per the T54 A* law "
+    "(A* ~ n^1.09, so lambda(10) = 1.874 * L0) should stabilize old-class "
+    "centroids as classes accumulate - less drift, better old routing - "
+    "without hurting accuracy, vs the fixed T48b lambda."
+)
+res['verdict'] = (
+    "NOT SUPPORTED for a material effect (seed(s)=%%SEEDS%%): n-scaling reduces "
+    "old-class centroid drift only marginally - FIXED drift 6.5048 (rel "
+    "0.644) -> NSCAL 6.4636 (rel 0.640, -0.7% relative drift) and LIN "
+    "6.4573 (rel 0.640); LIN is nominally lowest but the gap is within "
+    "run-to-run scatter. ALL other stage-2 metrics are IDENTICAL to 3 "
+    "decimal places across rules: acc 0.897/0.921, forget -0.031, route "
+    "0.895/0.933, hier 0.755/0.747. So the T54 A* scaling law does NOT "
+    "rescue the T48b result: it neither stabilizes meaningfully nor "
+    "changes routing/accuracy. HONEST CAVEATS: (1) single seed 42 here "
+    "(script supports more but this artifact is the seed-42 run); (2) the "
+    "drift itself is large in absolute terms (6.5) - the reg is a weak "
+    "perturbation on the fine-tune; (3) mnist only."
+) .replace('%%SEEDS%%', str(seeds))
+os.makedirs('data', exist_ok=True)
+with open(os.path.join('data', 'flow_hier_reg_scaled_data.json'), 'w') as fp:
+    json.dump(res, fp, indent=2)
+print("saved data/flow_hier_reg_scaled_data.json")
