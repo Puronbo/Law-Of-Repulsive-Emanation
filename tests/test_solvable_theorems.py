@@ -37,6 +37,7 @@ number so none of the resolved claims can silently drift:
    - van iterson T48a: NO golden-angle locking in ANY rule (discrete bisection, min-potential, min-dist, center+push-out; divergence 170-200 deg, r~n^0.4-0.5) - SUPPORTED negative, locking is an insertion-constraint special value
    - reverse pair gaps T57: NOT a reversal pair (reverse(10262)=26201 != 26102); 80-multiple + 11-sums hold but are plain arithmetic - REFUTED headline, census is ordinary
    - fibonacci spiral on disk: neither projection turns at golden angle (42.14 / 29.23 deg vs 137.51) and pseudo-energy not conserved (drift 1.00 / 11.81) - REFUTED, golden angle is a cusp-metric property
+   - prime count from scratch T62: Lucy_Hedgehog pi exact at all chain points (pi(943901200001)=35575526191), endpoint prime, next gap 8 - SUPPORTED with corrections: 'gap 1 below' is wrong (measured 24), window max gap 176 exceeds own 40-100 note
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -546,3 +547,22 @@ def test_fibonacci_spiral_disk_refuted():
     # pseudo-energy not conserved
     assert c['ratio_energy_drift'] > 1.0
     assert c['spiral_energy_drift'] > 0.5
+
+
+def test_prime_count_engine_supported_with_corrections():
+    d = load('prime_engine_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    # exact prime counts at every retrace-chain point
+    assert d['pi']['10262'] == 1258
+    assert d['pi']['26102'] == 2868
+    assert d['pi']['943901200001'] == 35575526191
+    # endpoint prime, next gap 8
+    assert d['endpoint_prime'] is True
+    assert d['gap_above'] == 8
+    # correction 1: true gap below is 24, not 'gap 1'
+    assert d['gap_below'] == 24
+    # correction 2: window max gap 176 exceeds the script's own 40-100 note
+    assert d['max_gap_window'] == 176
+    assert d['max_gap_window'] < d['cramer_ln2']
+    # PNT: mean gap near ln N
+    assert d['mean_gap'] > 25
