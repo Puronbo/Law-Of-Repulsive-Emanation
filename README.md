@@ -13,7 +13,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
-| Regression suite | **47/47 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
+| Regression suite | **48/48 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
 | L.O.R.E. | C0 = V(q0) = H(q0,0), 109 tests; T-symmetry error 0.003 |
 | Fold theorem (T63/T64) | crease = **unique viscosity solution of |r′| = a**; retrace = cut locus; eikonal err 3.3e-13; measured crease 0.0350π vs derived 0.0318π; area 2666.6665 vs 2666.6666… |
 | Clock-test canon (T59/T61) | law-ness 1.000 → 0.417 under calendar re-index → 1.000 under rotation; rotation overlap/sim 1.000 |
@@ -155,6 +155,7 @@ The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.j
 | Prime-count from scratch T62 (`prime_count_from_scratch.py`) | SUPPORTED with 2 honest corrections: Lucy_Hedgehog pi exact at all chain points (pi(943901200001)=35,575,526,191), endpoint prime, next gap 8; but "gap 1 below" is wrong (measured 24, prev 943901199977) and window max gap 176 exceeds the script's own 40–100 note (still < Cramer ln²N=760; mean gap 29.17 ≈ ln N) |
 | Fibonacci squares on disk (`fibonacci_squares.py`) | REFUTED (frictionless claim): the 90° turning is a trivial square-construction artifact; pseudo-energy NOT conserved (drift 0.96, monotone decay −0.357/step), spiral escapes the disk (final r 1.117), T-sym FAILS (0.99 vs C0 geodesic 6e-09) — the "golden metric" geodesic hypothesis is unsubstantiated |
 | Rotation test T61 (`rotation_test.py`) | SUPPORTED J1/J2 with J3 correction: orthogonal rotation preserves top-8 neighbor structure EXACTLY (overlap 1.0000, sim corr 1.0000, yet every coordinate changes, max \|Qx−x\| 0.745); abs() relabeling drops overlap 1.000→0.426 — real disruption but 6.5× chance (0.065), so "collapse toward chance" is overstated |
+| Clock test T59 (`clock_test.py`) | SUPPORTED: calendar features nail the law at e0 (balanced acc 1.0000) but break at e0+15 (0.4167 — BELOW chance, so the shift anti-correlates weekday with N mod 7); intrinsic mod-2/3/5/7 features survive both epochs (1.0000/1.0000) |
 
 ## Internet-Scale Flow (T67, T72)
 
@@ -224,6 +225,7 @@ python experiments/fibonacci_spiral.py            # fib-on-disk verdict (REFUTED
 python experiments/prime_count_from_scratch.py    # T62 prime-count verdict (SUPPORTED + corrections)
 python experiments/fibonacci_squares.py           # fib-squares verdict (REFUTED frictionless)
 python experiments/rotation_test.py               # T61 rotation verdict (SUPPORTED + J3 correction)
+python experiments/clock_test.py                  # T59 clock verdict (SUPPORTED)
 python Universals/serve_dashboard.py   # L.O.R.E. dashboard -> http://localhost:8080/docs/
 ```
 

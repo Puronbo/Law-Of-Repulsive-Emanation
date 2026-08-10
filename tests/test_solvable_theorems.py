@@ -40,6 +40,7 @@ number so none of the resolved claims can silently drift:
    - prime count from scratch T62: Lucy_Hedgehog pi exact at all chain points (pi(943901200001)=35575526191), endpoint prime, next gap 8 - SUPPORTED with corrections: 'gap 1 below' is wrong (measured 24), window max gap 176 exceeds own 40-100 note
    - fibonacci squares on disk: 90-deg turning is a square-construction artifact; pseudo-energy NOT conserved (drift 0.96, decay -0.357/step), escapes disk (r 1.117), T-sym fails (0.99 vs C0 6e-09) - REFUTED frictionless claim
    - rotation test T61: rotation preserves neighbor structure EXACTLY (overlap 1.0, sim corr 1.0, coords change 0.745); abs() drops overlap 1.0->0.426 but that is 6.5x chance, so 'collapse toward chance' overstated - SUPPORTED J1/J2 with J3 correction
+   - clock test T59: calendar features nail the law at e0 (1.0000) but break at e0+15 (0.4167, BELOW chance -> anti-correlation), intrinsic mod-2/3/5/7 features survive both (1.0000) - SUPPORTED, convention carries then breaks
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -595,3 +596,14 @@ def test_rotation_test_supported_with_correction():
     # J3 correction: abs() disrupts but does NOT collapse to chance
     assert d['overlap_abs'] < d['overlap_rotation']
     assert d['overlap_abs'] > 5 * d['chance']
+
+
+def test_clock_test_supported():
+    d = load('clock_test_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    # F1: calendar convention carries the law exactly at e0
+    assert d['f1'] > 0.999
+    # F2: the +15 re-index breaks it (and even dips below chance)
+    assert d['f2'] < 0.5
+    # F3: intrinsic features survive both epochs
+    assert d['f3a'] > 0.999 and d['f3b'] > 0.999
