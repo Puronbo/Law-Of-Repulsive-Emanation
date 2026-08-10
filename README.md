@@ -13,7 +13,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
-| Regression suite | **49/49 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
+| Regression suite | **50/50 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
 | L.O.R.E. | C0 = V(q0) = H(q0,0), 109 tests; T-symmetry error 0.003 |
 | Fold theorem (T63/T64) | crease = **unique viscosity solution of |r′| = a**; retrace = cut locus; eikonal err 3.3e-13; measured crease 0.0350π vs derived 0.0318π; area 2666.6665 vs 2666.6666… |
 | Clock-test canon (T59/T61) | law-ness 1.000 → 0.417 under calendar re-index → 1.000 under rotation; rotation overlap/sim 1.000 |
@@ -157,6 +157,7 @@ The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.j
 | Rotation test T61 (`rotation_test.py`) | SUPPORTED J1/J2 with J3 correction: orthogonal rotation preserves top-8 neighbor structure EXACTLY (overlap 1.0000, sim corr 1.0000, yet every coordinate changes, max \|Qx−x\| 0.745); abs() relabeling drops overlap 1.000→0.426 — real disruption but 6.5× chance (0.065), so "collapse toward chance" is overstated |
 | Clock test T59 (`clock_test.py`) | SUPPORTED: calendar features nail the law at e0 (balanced acc 1.0000) but break at e0+15 (0.4167 — BELOW chance, so the shift anti-correlates weekday with N mod 7); intrinsic mod-2/3/5/7 features survive both epochs (1.0000/1.0000) |
 | Spring fold T58 (`spring_fold.py`) | SUPPORTED (by construction, deterministic): mirror fold sweeps growth twice (area = 2a²TH³/6 EXACT), self-crosses at TH−π; retrace fold closes EXACTLY to C0 (closure 0.00e+00, crease π); golden fold ratio = φ EXACT but does NOT close to C0 (error 12.3 — closes to the golden remainder 0.614·apex); overcoil fold tucks end under start (closed ring, both ends locked) |
+| Eikonal fold T63 (`eikonal_fold.py`) | SUPPORTED (deterministic): the mirror fold is DERIVED — unique viscosity solution of \|r′\| = a with C0 at both ends converges to the exact tent (err 3.3e-13); crease is the cut locus EXACTLY (equal arrival times 0.00e+00); crease angle 0.0350π vs analytic 2 arctan(1/TH) 0.0318π (finite-diff approx); mirror area 2a²TH³/6 EXACT, retrace net area ~0 |
 
 ## Internet-Scale Flow (T67, T72)
 
@@ -228,6 +229,7 @@ python experiments/fibonacci_squares.py           # fib-squares verdict (REFUTED
 python experiments/rotation_test.py               # T61 rotation verdict (SUPPORTED + J3 correction)
 python experiments/clock_test.py                  # T59 clock verdict (SUPPORTED)
 python experiments/spring_fold.py                 # T58 spring-fold verdict (SUPPORTED by construction)
+python experiments/eikonal_fold.py                # T63 eikonal-fold verdict (SUPPORTED, derived)
 python Universals/serve_dashboard.py   # L.O.R.E. dashboard -> http://localhost:8080/docs/
 ```
 

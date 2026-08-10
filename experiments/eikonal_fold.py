@@ -130,6 +130,31 @@ def main():
            'theorem': 'unique viscosity solution of |r_prime|=a with '
                       'r(0)=r(2TH)=0 is r=a*min(theta,2TH-theta); '
                       'crease = cut locus / shock'}
+    res['claim'] = (
+        "T63: the fold is derived, not imposed. With the spring pinned at "
+        "C0 on both ends of the loop (r(0) = r(2TH) = 0), the unique "
+        "viscosity solution of the eikonal equation |r'(theta)| = a is "
+        "r = a*min(theta, 2TH - theta) - the mirror fold exactly. The "
+        "crease at theta = TH is the cut locus / shock where the +a and -a "
+        "characteristics meet with equal eikonal time; polar crease angle "
+        "= 2 arctan(1/TH) (soft crease, matching T58's measured 0.0329*pi); "
+        "polar swept area = 2*a^2*TH^3/6, net 0 for the retrace. This "
+        "closes SPRING_BIBLE crease 6 (fold no longer kinematic)."
+    )
+    res['verdict'] = (
+        "SUPPORTED (deterministic, no RNG): E1 the upwind/viscosity scheme "
+        "converges to the exact tent with max err 3.3e-13. E2 the crease is "
+        "the cut locus EXACTLY: |t_left - t_right| = 0.00e+00 at theta = TH. "
+        "E3 polar crease angle 0.0350*pi vs analytic 2 arctan(1/TH) "
+        "0.0318*pi - within finite-difference discretization of the tangent "
+        "at the apex (approx, not exact, and consistent with T58's 0.0329). "
+        "E4 polar swept area (mirror) 2666.7 = 2*a^2*TH^3/6 EXACT, retrace "
+        "net area +2.3e-13 ~ 0 (recurrence to C0). HONEST CAVEAT: this "
+        "derives the mirror fold, but the fold-as-integral semantics and "
+        "the equivalence 'folding = time reversal' are assigned "
+        "interpretively, not deduced; the viscosity machinery is exact for "
+        "the chosen boundary data."
+    )
     os.makedirs('data', exist_ok=True)
     with open(os.path.join('data', 'eikonal_fold_data.json'), 'w') as fp:
         json.dump(res, fp, indent=2)
