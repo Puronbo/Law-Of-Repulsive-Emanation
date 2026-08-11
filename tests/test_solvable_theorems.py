@@ -59,7 +59,7 @@ number so none of the resolved claims can silently drift:
    - decentral_net_continual T55e: class-incremental LOCAL reflow on real 64D MNIST NOT SUPPORTED for the routing benefit - ADD old 0.805 vs raw-centroid CONTROL 0.863 (delta -0.057), all 0.647 vs 0.671 (homes ARE the data centroids, reflow cannot help); MIX (no reflow) collapses as the gauge freedom predicts - old 0.061/all 0.305, never mix frames; Part 2 tether NOT dimension-independent - mu0=0.12 2D-tuned over-drifts in 64D (0.49), mu0>=1 cuts drift to 0.11-0.21 but never beats CONTROL (best all 0.812 vs 0.817)
    - decentral_net_ceiling T55h: all-pairs kNN flow ceiling measured ~2*10^4 on this 31.7 GB box (dim=2, k=8) SUPPORTED - ms/step n^1.76 up to 5000 then exponent ~2.06 (D leaves cache); 66/1230/25422 ms/step at n=1k/5k/20k; peak WS 22.6 GB at n=20k vs D=3.2 GB (kNN sort temporaries blow past the estimate); n=40k would peak ~90 GB, not run - scaling beyond ~2*10^4 needs O(1) spatial search (T67)
    - decentral_net_t67: O(1)-per-neuron spatial search (uniform grid <=3D, scipy cKDTree >=4D) SUPPORTED - indexed flow BIT-IDENTICAL to exact all-pairs (grid 2D n=2000, tree 64D n=500) with spacing/predict equal and grid kNN == brute force on 3 seeds x 1D/2D/3D; 2D scaling exponent 1.11 (indexed) vs 1.92 (exact) - flow is now ~linear, and n=100k flows at 10.35 s/step where the all-pairs D would need 160 GB (10k real top-1M domains x 128D at 4.12 s/step, 102 GB) - the n^2 wall is gone for low-dim flow
-   - bazaar_hybrid: the best-possible 4chan+reddit design (anonymity+bump-order honesty x reddit memory+curation, minus both status economies and central algorithms) verified as 5 structural claims on the repo's OWN machinery - C1 reason-tagged downvotes raise the brigade size to hide a good post 2.5x (reddit S50=8 free downvotes vs hybrid S50=20 pending-quorum-review; even then only HIDDEN, removal needs the quorum); C2 karma-free + tag-to-remove drops top-K spam frac 0.75->0.00 (reddit bot collusion saturates); C3 emergent DecentralNet mesh feed routes minority users 1.00 of their own community vs 0.30 on the global hot feed (overlap 1.0 -> local explicit clustering); C4 content-addressed ledger archive survives 50% node loss with retrieval 1.00 and tamper-evidence (verify() fails at seq 3); C5 9-guardian quorum collapses wrong-removal 0.20 -> 0.0031 at corruption p=0.20 - all SUPPORTED as MECHANISM claims (agent-based, no real users)
+   - bazaar_hybrid: the best-possible 4chan+reddit design (anonymity+bump-order honesty x reddit memory+curation, minus both status economies and central algorithms) verified as 6 structural claims on the repo's OWN machinery - C1 reason-tagged downvotes raise the brigade size to hide a good post 2.5x (reddit S50=8 free downvotes vs hybrid S50=20 pending-quorum-review; even then only HIDDEN, removal needs the quorum); C2 karma-free + tag-to-remove drops top-K spam frac 0.75->0.00 (reddit bot collusion saturates); C3 emergent DecentralNet mesh feed routes minority users 1.00 of their own community vs 0.30 on the global hot feed (overlap 1.0 -> local explicit clustering); C4 content-addressed ledger archive survives 50% node loss with retrieval 1.00 and tamper-evidence (verify() fails at seq 3); C5 9-guardian quorum collapses wrong-removal 0.20 -> 0.0031 at corruption p=0.20; C6 verified-vote-only membership (anonymity for cheap votes, EARNED mesh standing for the removal path) raises the brigade to suspend a good post 32x (S50 20 -> 640, sockpuppet standing 0.05 contributes ~nothing) and collapses quorum wrong-removal to 1e-08 (corrupt identity must ALSO hold guardian standing, 10% of population - a sockpuppet factory cannot mint guardians) at the honest cost of a removal-vote privacy leak - all SUPPORTED as MECHANISM claims (agent-based, no real users)
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -909,7 +909,7 @@ def test_bazaar_hybrid_supported():
     d = load('bazaar_hybrid_data.json')
     assert d['verdict'].startswith('SUPPORTED')
     claims = {c['id']: c for c in d['claims']}
-    assert set(claims) == {'C1', 'C2', 'C3', 'C4', 'C5'}
+    assert set(claims) == {'C1', 'C2', 'C3', 'C4', 'C5', 'C6'}
     assert all(c['verdict'] == 'SUPPORTED' for c in claims.values())
     # C1: hybrid burial threshold strictly above reddit's (seed 42)
     c1 = d['C1_brigade']['42']
@@ -929,3 +929,10 @@ def test_bazaar_hybrid_supported():
     # C5: quorum wrong-removal collapses below central at p=0.20
     c5 = d['C5_moderation']['rows'][2]
     assert c5['quorum_wrong_removal'] < c5['central_wrong_removal'] / 50.0
+    # C6: verified-vote-only raises the suspension threshold and collapses
+    # quorum corruption far below the anonymous-hybrid baseline
+    for s in d['seeds']:
+        c6 = d['C6_verified_vote'][str(s)]
+        assert c6['verified_S50'] > c6['anon_S50'] * 10
+        assert c6['quorum_wrong_removal_verified_at_p020'] < \
+            c6['quorum_wrong_removal_anon_at_p020'] / 100.0

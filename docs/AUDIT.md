@@ -421,6 +421,9 @@ given so it can be re-run).
      earlier probes)
      each ship a claim/verdict JSON and are pinned by
      `tests/test_solvable_theorems.py` (57 tests; full suite 247).  The
+     bazaar_hybrid verdict now covers six structural claims (C1 brigade
+     threshold, C2 spam, C3 feed, C4 archive, C5 quorum, C6 verified-vote-only
+     membership).  The
     broad `experiments/` scripts (remaining flow, balance, polysphere,
     decentral) still
     print without persisted verdicts — extending the JSON verdict norm to

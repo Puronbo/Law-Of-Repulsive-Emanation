@@ -189,6 +189,101 @@
     "audit_chain_verifies": true,
     "verdict": "one central mod is wrong with probability p itself (0.2 at p=0.20); a 9-guardian quorum needs 2/3 consensus so wrong removal collapses to 0.003066 at the same corruption level (0.02 below central) while correct spam removal stays 0.9144 - corruption must capture the quorum, not one account, and every action is on the ledger"
   },
+  "C6_verified_vote": {
+    "42": {
+      "standing": {
+        "sockpuppet": 0.05,
+        "veteran": 0.8,
+        "fraction_verified_guardians": 0.1
+      },
+      "anon_p_suspend": {
+        "10": 0.0,
+        "20": 1.0,
+        "40": 1.0,
+        "80": 1.0,
+        "160": 1.0,
+        "320": 1.0,
+        "640": 1.0
+      },
+      "verified_p_suspend": {
+        "10": 0.0,
+        "20": 0.0,
+        "40": 0.0,
+        "80": 0.0,
+        "160": 0.0,
+        "320": 0.0,
+        "640": 1.0
+      },
+      "anon_S50": 20,
+      "verified_S50": 640,
+      "threshold_ratio": 32.0,
+      "quorum_wrong_removal_anon_at_p020": 0.003066,
+      "quorum_wrong_removal_verified_at_p020": 1e-08,
+      "verdict": "gating the REMOVAL path on earned, non-transferable mesh standing (cheap votes stay anonymous) raises the brigade to suspend a good post from S20 (anonymous flags) to S640 - a 32.0x threshold - because a fresh sockpuppet at standing 0.05 contributes ~nothing; and quorum corruption at p=0.20 collapses from 0.003066 to 1e-08 since a corrupt identity must ALSO hold guardian-level standing (0.1 of the population), which a sockpuppet factory cannot mint. Honest cost: the removal-vote history is linkable to the verifying identity (privacy leak on exactly the actions that matter)"
+    },
+    "11": {
+      "standing": {
+        "sockpuppet": 0.05,
+        "veteran": 0.8,
+        "fraction_verified_guardians": 0.1
+      },
+      "anon_p_suspend": {
+        "10": 0.0,
+        "20": 1.0,
+        "40": 1.0,
+        "80": 1.0,
+        "160": 1.0,
+        "320": 1.0,
+        "640": 1.0
+      },
+      "verified_p_suspend": {
+        "10": 0.0,
+        "20": 0.0,
+        "40": 0.0,
+        "80": 0.0,
+        "160": 0.0,
+        "320": 0.0,
+        "640": 1.0
+      },
+      "anon_S50": 20,
+      "verified_S50": 640,
+      "threshold_ratio": 32.0,
+      "quorum_wrong_removal_anon_at_p020": 0.003066,
+      "quorum_wrong_removal_verified_at_p020": 1e-08,
+      "verdict": "gating the REMOVAL path on earned, non-transferable mesh standing (cheap votes stay anonymous) raises the brigade to suspend a good post from S20 (anonymous flags) to S640 - a 32.0x threshold - because a fresh sockpuppet at standing 0.05 contributes ~nothing; and quorum corruption at p=0.20 collapses from 0.003066 to 1e-08 since a corrupt identity must ALSO hold guardian-level standing (0.1 of the population), which a sockpuppet factory cannot mint. Honest cost: the removal-vote history is linkable to the verifying identity (privacy leak on exactly the actions that matter)"
+    },
+    "7": {
+      "standing": {
+        "sockpuppet": 0.05,
+        "veteran": 0.8,
+        "fraction_verified_guardians": 0.1
+      },
+      "anon_p_suspend": {
+        "10": 0.0,
+        "20": 1.0,
+        "40": 1.0,
+        "80": 1.0,
+        "160": 1.0,
+        "320": 1.0,
+        "640": 1.0
+      },
+      "verified_p_suspend": {
+        "10": 0.0,
+        "20": 0.0,
+        "40": 0.0,
+        "80": 0.0,
+        "160": 0.0,
+        "320": 0.0,
+        "640": 1.0
+      },
+      "anon_S50": 20,
+      "verified_S50": 640,
+      "threshold_ratio": 32.0,
+      "quorum_wrong_removal_anon_at_p020": 0.003066,
+      "quorum_wrong_removal_verified_at_p020": 1e-08,
+      "verdict": "gating the REMOVAL path on earned, non-transferable mesh standing (cheap votes stay anonymous) raises the brigade to suspend a good post from S20 (anonymous flags) to S640 - a 32.0x threshold - because a fresh sockpuppet at standing 0.05 contributes ~nothing; and quorum corruption at p=0.20 collapses from 0.003066 to 1e-08 since a corrupt identity must ALSO hold guardian-level standing (0.1 of the population), which a sockpuppet factory cannot mint. Honest cost: the removal-vote history is linkable to the verifying identity (privacy leak on exactly the actions that matter)"
+    }
+  },
   "claims": [
     {
       "id": "C1",
@@ -219,7 +314,13 @@
       "claim": "guardian quorum + ledger resists moderation corruption",
       "verdict": "SUPPORTED",
       "seed_42": "one central mod is wrong with probability p itself (0.2 at p=0.20); a 9-guardian quorum needs 2/3 consensus so wrong removal collapses to 0.003066 at the same corruption level (0.02 below central) while correct spam removal stays 0.9144 - corruption must capture the quorum, not one account, and every action is on the ledger"
+    },
+    {
+      "id": "C6",
+      "claim": "verified-vote-only (standing for removal, anonymity for cheap votes) resists Sybil without a name registry",
+      "verdict": "SUPPORTED",
+      "seed_42": "gating the REMOVAL path on earned, non-transferable mesh standing (cheap votes stay anonymous) raises the brigade to suspend a good post from S20 (anonymous flags) to S640 - a 32.0x threshold - because a fresh sockpuppet at standing 0.05 contributes ~nothing; and quorum corruption at p=0.20 collapses from 0.003066 to 1e-08 since a corrupt identity must ALSO hold guardian-level standing (0.1 of the population), which a sockpuppet factory cannot mint. Honest cost: the removal-vote history is linkable to the verifying identity (privacy leak on exactly the actions that matter)"
     }
   ],
-  "verdict": "SUPPORTED (structural, agent-based): the hybrid raises the brigade threshold, removes bot spam from the top-K, routes minority content to minority users, archives threads across nodes with tamper-evidence, and collapses wrong moderation - all as MECHANISM claims about the design, not predictions about real users"
+  "verdict": "SUPPORTED (structural, agent-based): the hybrid raises the brigade threshold, removes bot spam from the top-K, routes minority content to minority users, archives threads across nodes with tamper-evidence, collapses wrong moderation, and - with verified-vote-only membership - gates the removal path on earned standing so a fresh sockpuppet contributes ~nothing to a brigade and cannot be minted into the quorum - all as MECHANISM claims about the design, not predictions about real users"
 }
