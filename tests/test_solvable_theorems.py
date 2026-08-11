@@ -1073,3 +1073,47 @@ def test_decentral_net_union_supported():
     assert d['survivors'] >= 0.75 * d['loaded_n']
     # U5: the persisted checkpoint reloads bit-identically
     assert d['q_identical_on_reload'] is True
+
+
+def test_decentral_web_supported():
+    d = load('decentral_web_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    claims = {c['id']: c for c in d['claims']}
+    assert set(claims) == {'W1', 'W2', 'W3', 'W4'}
+    assert all(c['verdict'] == 'SUPPORTED' for c in claims.values())
+    for s in d['seeds']:
+        p = d['per_seed'][str(s)]
+        # W1: one chain head + one length across all nodes; every archive
+        # verifies; all name sets agree; a page publishes on one node and is
+        # served (with integrity) from every other node
+        assert p['heads_set_size'] == 1
+        assert len(p['lengths']) == 1
+        assert p['verify_all'] is True
+        assert p['names_agree'] is True
+        assert p['served_everywhere'] is True
+        # W2: identical content dedups to one address (3 publishes, 2 addrs);
+        # a GET by address is served directly from the content store
+        assert p['dedup_ok'] is True
+        assert p['n_addrs'] < 3
+        assert p['addr_lookup_ok'] is True
+        # W4: a near-miss query resolves to the intended page by n-gram
+        # embedding (google.com -> gooogle.com pattern)
+        assert p['near_resolves'] is True
+        assert p['near_hit'][0]['name'] == 'home'
+        assert p['maps_hit'][0]['name'] == 'maps'
+        # W3: a crashed node's pages stay served by survivors; a stateless
+        # restart resyncs to a bit-identical verifying archive
+        assert p['survived_ok'] is True
+        assert p['resynced'] is True
+        assert p['resynced_equal'] is True
+        assert p['resynced_names'] is True
+        assert p['snap3_verify'] is True
+    # TLS run must pass the same structural gates
+    assert d['tls_run']['dedup_ok'] is True
+    assert d['tls_run']['resynced_equal'] is True
+    assert d['tls_run']['verify_all'] is True
+    # tamper-evidence: flipping one byte of a page's content breaks its
+    # content-address while the other node's archive stays valid
+    assert d['tamper']['tamper_flip_detected'] is True
+    assert d['tamper']['other_node_still_valid'] is True
+

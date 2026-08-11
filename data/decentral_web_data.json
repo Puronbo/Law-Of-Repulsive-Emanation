@@ -1,0 +1,191 @@
+{
+ "claims": [
+  {
+   "claim": "content replicates: one chain head + one length across all nodes, every archive verifies, all name sets agree, and a page published on one node is served from every other node with verified integrity",
+   "id": "W1",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "content addressing: identical content maps to ONE address (dedup across publishes) and a GET by address is served directly from the content store",
+   "id": "W2",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "the net survives node death: a crashed node's pages are still served by survivors, and a stateless restart resyncs to a bit-identical, verifying archive",
+   "id": "W3",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "name resolution: a near-miss query resolves to the page whose name embedding is nearest (the google.com -> gooogle.com routing pattern over the wire)",
+   "id": "W4",
+   "verdict": "SUPPORTED"
+  }
+ ],
+ "date": "2026-08-11",
+ "experiment": "decentral_web (content-addressed P2P web prototype)",
+ "n_nodes": 4,
+ "per_seed": {
+  "11": {
+   "addr_lookup_ok": true,
+   "dedup_ok": true,
+   "heads_set_size": 1,
+   "lengths": [
+    3
+   ],
+   "maps_hit": [
+    {
+     "dist": 0.5176,
+     "name": "maps"
+    },
+    {
+     "dist": 1.4894,
+     "name": "home"
+    }
+   ],
+   "n_addrs": 2,
+   "names_agree": true,
+   "near_hit": [
+    {
+     "dist": 0.5391,
+     "name": "home"
+    },
+    {
+     "dist": 1.4142,
+     "name": "maps"
+    }
+   ],
+   "near_resolves": true,
+   "resynced": true,
+   "resynced_equal": true,
+   "resynced_names": true,
+   "served_everywhere": true,
+   "snap3_verify": true,
+   "survived_ok": true,
+   "verify_all": true
+  },
+  "42": {
+   "addr_lookup_ok": true,
+   "dedup_ok": true,
+   "heads_set_size": 1,
+   "lengths": [
+    3
+   ],
+   "maps_hit": [
+    {
+     "dist": 0.5176,
+     "name": "maps"
+    },
+    {
+     "dist": 1.4894,
+     "name": "home"
+    }
+   ],
+   "n_addrs": 2,
+   "names_agree": true,
+   "near_hit": [
+    {
+     "dist": 0.5391,
+     "name": "home"
+    },
+    {
+     "dist": 1.4142,
+     "name": "maps"
+    }
+   ],
+   "near_resolves": true,
+   "resynced": true,
+   "resynced_equal": true,
+   "resynced_names": true,
+   "served_everywhere": true,
+   "snap3_verify": true,
+   "survived_ok": true,
+   "verify_all": true
+  },
+  "7": {
+   "addr_lookup_ok": true,
+   "dedup_ok": true,
+   "heads_set_size": 1,
+   "lengths": [
+    3
+   ],
+   "maps_hit": [
+    {
+     "dist": 0.5176,
+     "name": "maps"
+    },
+    {
+     "dist": 1.4894,
+     "name": "home"
+    }
+   ],
+   "n_addrs": 2,
+   "names_agree": true,
+   "near_hit": [
+    {
+     "dist": 0.5391,
+     "name": "home"
+    },
+    {
+     "dist": 1.4142,
+     "name": "maps"
+    }
+   ],
+   "near_resolves": true,
+   "resynced": true,
+   "resynced_equal": true,
+   "resynced_names": true,
+   "served_everywhere": true,
+   "snap3_verify": true,
+   "survived_ok": true,
+   "verify_all": true
+  }
+ },
+ "seeds": [
+  42,
+  11,
+  7
+ ],
+ "tamper": {
+  "other_node_still_valid": true,
+  "tamper_flip_detected": true
+ },
+ "tls_run": {
+  "addr_lookup_ok": true,
+  "dedup_ok": true,
+  "heads_set_size": 1,
+  "lengths": [
+   3
+  ],
+  "maps_hit": [
+   {
+    "dist": 0.5176,
+    "name": "maps"
+   },
+   {
+    "dist": 1.4894,
+    "name": "home"
+   }
+  ],
+  "n_addrs": 2,
+  "names_agree": true,
+  "near_hit": [
+   {
+    "dist": 0.5391,
+    "name": "home"
+   },
+   {
+    "dist": 1.4142,
+    "name": "maps"
+   }
+  ],
+  "near_resolves": true,
+  "resynced": true,
+  "resynced_equal": true,
+  "resynced_names": true,
+  "served_everywhere": true,
+  "snap3_verify": true,
+  "survived_ok": true,
+  "verify_all": true
+ },
+ "verdict": "SUPPORTED (structural, over real TCP processes): pages publish once and replicate to a single verifying content-addressed archive across all nodes (W1); identical content dedups to one address with O(1) GET by address (W2); a crashed node's pages stay served by survivors and a stateless restart resyncs bit-identical (W3); and near-miss names resolve to the intended page by char-ngram embedding routing (W4) - on the repo's own T70 socket transport, LedgerChain archive, and T55i name-embedding pattern, with mutual TLS optional"
+}

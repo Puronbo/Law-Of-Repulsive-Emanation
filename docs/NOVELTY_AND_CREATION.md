@@ -66,6 +66,7 @@ The corpus claims novelty in eight groups. Group-level verdicts:
 | **F. Decentral Bank (T68–T71, T16–T20)** | routing-as-ownership ledger; quorum; sockets; TLS; WAL | **[measured]** new value layer |
 | **G. Internet-scale flow (T67/T72)** | O(1)-per-neuron search; 1.9M-site flow | **[measured]** |
 | **H. Patent mapping (US7284987B2)** | 7-claim patent mapped onto engine structures | **[exploratory]** correspondence, not a physics citation |
+| **I. Decentral Web (T73)** | content-addressed P2P web on verified machinery (replication, dedup, survival, embedding-DNS) | **[measured]** structural, over real TCP processes |
 
 The single strongest *novel mathematical* result in the corpus is the fold
 theorem of T63/T64: the crease is derived as the **unique viscosity solution
@@ -206,6 +207,34 @@ For each claim: **Status** (measured/derived), **the claim**, **evidence**
 - **References:** `docs/US7284987B2_ANALYSIS.md`; `docs/PHYSICAL_UNIVERSAL_MAP.md`
   §11; `docs/AUDIT.md` §1.9.
 
+### 3.I Decentral Web (T73) — the WWW's functions on verified machinery
+
+- **Status:** `[measured]` — structural, over real TCP processes; seeds
+  42/11/7, plain + mutual-TLS sockets (2026-08-11).
+- **Claim:** The World Wide Web's three functions — DNS/search, content
+  addressing/caching, replication/CDN — rebuilt as a working mini-web by
+  assembling machinery this repo already verified: T70's SocketTransport, the
+  LedgerChain content-addressed archive, and the T55i char-ngram name-embedding
+  pattern.  W1: a page published on one node is served from EVERY node, all
+  archives converging to one verifying chain.  W2: identical content dedups to
+  one SHA-256 address (3 publishes, 2 distinct contents → 2 addresses) and a
+  GET by address is an O(1) store lookup.  W3: a crashed node's pages stay
+  served by survivors; a stateless restart resyncs bit-identical.  W4: a
+  near-miss name ("homee") resolves to the intended page ("home") by
+  nearest-embedding routing — the google.com→gooogle.com pattern that held on
+  1.9M real domains, now over the wire.
+- **Evidence:** `data/decentral_web_data.json` (per-seed + TLS snapshots:
+  heads_set_size 1, lengths [3], dedup 2 addrs, survived_ok/resynced/resynced_
+  names all true, near_hit "home"; tamper flip breaks the content address while
+  the other node stays valid).  Pinned by `test_decentral_web_supported`.
+- **References:** `experiments/decentral_web.py`; `docs/DECENTRAL_WEB.md`
+  (the design doc mapping each WWW function to repo machinery).
+- **Honest walls (crease-worthy):** event ordering is driver-sequenced (a
+  distributed total-order primitive is the unbuilt layer — the T14c/bazaar
+  wall); the name hasher is a small toy over a few pages, not the 1.9M-site
+  geometry; still one machine (the transport is IP-parametric); no
+  incentives/consensus beyond channel TLS.
+
 ---
 
 ## 4. Withdrawn, Refuted, and Open Claims (recorded for honesty)
@@ -334,6 +363,7 @@ python experiments/decentral_net_t67.py                    # O(1) spatial search
 python experiments/bazaar_hybrid.py                        # best-possible 4chan+reddit verdict (SUPPORTED, structural)
 python experiments/decentral_net_live.py --verdict data/decentral_net_live_data.json  # T55f live daemon verdict (SUPPORTED, bounded run)
 python experiments/bazaar_net.py --verdict                 # bazaar as a real TCP-process network verdict (SUPPORTED, structural)
+python experiments/decentral_web.py --verdict              # content-addressed P2P web verdict (SUPPORTED, structural)
 ```
 
 ---

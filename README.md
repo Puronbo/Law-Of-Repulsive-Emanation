@@ -180,6 +180,8 @@ The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.j
 | Bazaar hybrid (`bazaar_hybrid.py`) | SUPPORTED (structural, agent-based; seeds 42/11/7): the best-possible 4chan+reddit synthesis — 4chan's anonymity + bump-order honesty × reddit's memory + curation, minus both status economies and central algorithms — verified as 6 structural claims on the repo's own machinery. C1: reason-tagged downvotes raise the brigade size to hide a good post 2.5× (reddit S₅₀=8 free downvotes vs hybrid S₅₀=20 pending-quorum-review; even then only HIDDEN, permanent removal needs the quorum). C2: karma-free + tag-to-remove drops top-K bot-spam fraction 0.75 → 0.00 (reddit free-account collusion saturates). C3: emergent DecentralNet mesh feed routes minority users ~1.00 of their own community vs 0.30 on the global hot feed (overlap 1.0 → explicit local clustering, a chosen community not an algorithmic bubble). C4: content-addressed ledger archive survives 50% node loss with retrieval 1.00 and tamper-evidence (verify() fails at the tampered seq) — reddit persistence with no central server. C5: a 9-guardian quorum collapses wrong-removal 0.20 → 0.003 at corruption p=0.20 while correct spam removal stays 0.91. C6: verified-vote-only membership — anonymity for cheap votes, EARNED non-transferable mesh standing for the removal path — raises the brigade to suspend a good post 32× (S₅₀ 20 → 640, a fresh sockpuppet at standing 0.05 contributes ~nothing) and collapses quorum wrong-removal to 1e-08 at p=0.20 (a corrupt identity must ALSO hold guardian standing, 10% of population — a sockpuppet factory cannot mint guardians). Honest costs: removal-vote history links to the verifying identity (privacy leak on exactly the actions that matter); all verdicts are MECHANISM claims about the design, not predictions about real users |
 | DecentralNet live daemon (`decentral_net_live.py`) | SUPPORTED (structural, bounded run; seeds 42/11/7): the T55f perpetual net's claims pinned — population never exceeds CAP (30) through arrivals + damage + pruning (bounded O(CAP²) cost); after each random neuron death the local k-NN re-spread heals the survivors back into the healthy spacing band with NO repair unit (post-damage spacing within 0.5–2.0× of pre — removing a neuron legitimately enlarges mean k-NN distance; recovery ~1.4, no clump, no rim blow-up); the self-consistent routing probe stays 1.00 accurate through 3000-tick churn; and a checkpoint saved at tick 1500, reloaded, reproduces the uninterrupted trajectory bit-for-bit (positions identical, born/pruned/killed counters match, RNG stream carries on — the cycle is continuous). All numpy-only DecentralNet with bounded ring memory |
 | Bazaar network (`bazaar_net.py`) | SUPPORTED (structural, over real TCP processes; seeds 42/11/7): the bazaar hybrid now WORKS AS A NETWORK — 4 node processes (real sockets on the repo's own T70 transport, optional mutual TLS) replicate every action into bit-identical content-addressed LedgerChain archives (one chain head, one length, all 9 × 3 = 27 archives verify). N1: content replicates — a post submitted on one node is searchable from another, cross-node. N2: the emergent mesh feed works over real homes — the minority reader's feed is 1.00 of its own community's authors. N3: removal is standing-gated + quorum-confirmed — a fresh sockpuppet (standing 0.00) contributes nothing, a 3-flag spam post is removed through the 9-guardian 2/3 quorum, and a fabricated 3-downvote brigade on a standing author's post is REJECTED (where a central 3-flag rule would remove it). N4: the archive is tamper-evident — a flipped payload breaks verify() at its sequence while the other nodes stay valid. N5: the network survives node death — content is served by survivors and a stateless restart resyncs to a bit-identical, verifying chain. Honest caveats: ordering is driver-sequenced (a real network needs a distributed total-order primitive; partition-equivocation is detected, not prevented); majority-honesty quorum, not BFT; one machine |
+| Decentral Web (T73, `decentral_web.py`) | SUPPORTED (structural, over real TCP processes; seeds 42/11/7, plain + mutual-TLS sockets): the WWW's three functions rebuilt on the repo's own verified machinery — a working content-addressed P2P "web". W1: content replicates — a page published on one node is served (with verified content-address integrity) from EVERY other node, all archives converging to one chain head + one length that verifies. W2: content addressing — 3 publishes of 2 distinct contents collapse to 2 addresses (SHA-256 dedup, the WWW's cache key made local), and a GET by address is a direct O(1) store lookup. W3: the net survives node death — a crashed node's pages are still served by survivors, and a stateless restart resyncs to a bit-identical, verifying archive. W4: name resolution — a near-miss query ("homee") resolves to the intended page ("home") by char-ngram embedding routing, the google.com→gooogle.com pattern from the real top-1M net, now over the wire. Re-uses T70's SocketTransport, LedgerChain, and the T55i name-embedding pattern. Honest walls: event ordering is driver-sequenced (a distributed total-order primitive is the unbuilt layer — the T14c/bazaar wall); the name hasher is a small toy over a few pages, not the 1.9M-site geometry; still one machine; no incentives/crypto identity beyond channel TLS. See `docs/DECENTRAL_WEB.md` |
+
 
 ## Internet-Scale Flow (T67, T72)
 
@@ -199,6 +201,25 @@ A value-carrying fragment bank where **routing is ownership**: hashed double-ent
 - T19/T20: mutual TLS (CERT_REQUIRED both sides), then over this machine's real LAN NIC — 14/14 commit, replicas bit-identical.
 
 See `data/decentral_bank_data.json`, `data/decentral_bank_bridge_data.json`, `data/decentral_bank_net_data.json`.
+
+## Decentral Web (T73)
+
+A working content-addressed P2P "web": pages publish once and replicate to a
+single verifying archive shared by every node; a node can die and its pages are
+still served by survivors; a stateless restart resyncs bit-identical; and a
+near-miss name resolves to the intended page the way google.com resolved to
+gooogle.com on the real top-1M net.  It is the WWW's three functions (DNS /
+search, content addressing / caching, replication / CDN) rebuilt on machinery
+this repo already verified — the T70 socket transport, LedgerChain, and the
+T55i name-embedding pattern — so it is assembly, not invention.  W1–W4 all
+SUPPORTED over real TCP processes (seeds 42/11/7, plain + mutual TLS), pinned
+by `test_decentral_web_supported`.  See `docs/DECENTRAL_WEB.md`.
+
+Everything is also browsable through the plug-and-play UI: `puno-plug` opens a
+single page that auto-discovers every decorated plugin in `plugins/` and every
+experiment in `experiments/`, generates a form from each function's declared
+(or introspected) parameters, runs functions in-process and experiments as
+their subprocess verdicts, and renders the JSON — any function, zero code.
 
 ## Quick Start
 
@@ -273,6 +294,8 @@ python experiments/decentral_net_t67.py           # O(1) spatial search T67 verd
 python experiments/bazaar_hybrid.py               # best-possible 4chan+reddit design verdict (SUPPORTED, structural)
 python experiments/decentral_net_live.py --verdict data/decentral_net_live_data.json  # T55f live daemon verdict (SUPPORTED, bounded run)
 python experiments/bazaar_net.py --verdict     # bazaar as a real TCP-process network verdict (SUPPORTED, structural)
+python experiments/decentral_web.py --verdict  # content-addressed P2P web verdict (SUPPORTED, structural)
+puno-plug [--host 127.0.0.1] [--port 8767]     # plug-and-play UI: any function, auto-discovered forms
 python Universals/serve_dashboard.py   # L.O.R.E. dashboard -> http://localhost:8080/docs/
 ```
 

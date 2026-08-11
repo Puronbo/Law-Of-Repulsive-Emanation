@@ -336,9 +336,10 @@ given so it can be re-run).
 | **Decentral Bank hardened (T68 Ph.1) + bridge (T69)** | Ed25519 account signatures verified at append & re-validation; WAL persistence + replay; on/off-ramp against a centralized bank via a custody-holding gateway | **New, measured.** T7: tampered block, wrong-key signature, and address-spoof all rejected, legit tx still commits. T8: save/load reproduces bit-identical heads + conserved balances. T69: on-ramp credits DCN 1:1, off-ramp pays fiat 1:1; ref replays settle nothing twice; backing invariant `custody + reserve_DCN == initial` holds to diff 0.0 under 300 randomized ops with 170 ref replays and forged over-withdrawals rejected. Honest walls: single-key custody (no threshold/HSM), mock bank (no network/TLS/KYC/AML), caller-supplied refs, no compensation path (crease #17). See `data/decentral_bank_bridge_data.json` |
 | **Decentral Bank network (T70) + crash (T71) + sockets (T16/T17) + total-loss WAL (T18)** | every fragment a real OS process; PROPOSE→VOTE→COMMIT→NOTIFY first over a controllable relay, then over real TCP loopback sockets; replicas + SYNC/RESYNC; partition/equivocation/forgery/crash tests; per-node append+fsync WAL | **New, measured.** T12: 23 txs commit over real messages, all nodes' replicas bit-identical, replay conserves. T13: ring cut in two — 12–14/16 commit within halves, post-rejoin RESYNC converges to identical ledgers. T14a: forged block rejected at rate 1.0. T14b: scattered corruption collapses honest commits along the majority-honesty prediction P(f)=(1−f)⁴+4f(1−f)³ (four runs spanned {0.95–1.0, 0.56–0.63, 0.20–0.40, 0.0–0.13} at f={0,0.3,0.5,0.7}, theory {1.0, 0.65, 0.31, 0.08}; fluctuates run-to-run with relay timing but tracks theory) — crease #16 reproduced across processes — while *contiguous* corruption at f=0.7 keeps 0.25–0.67 (crease #18: corruption geometry, not just quantity, decides the quorum). T14c: partition equivocation creates a double-spend window; the fork is detected after rejoin, not healed. T15: a killed node's own accounts cannot transact while it is down (0/3) yet 8/8 live-owner commits survive; a STATELESS restart recovers every fragment — own included — from peers' replicas, re-converges, and commits a fresh tx. T16a/T16b: the same guarantees over REAL TCP sockets (no relay) — 14/14 commit, bit-identical replicas, partition re-converges. T17: a socket-killed node freezes its own accounts (0 commits) while live owners keep committing (k−1 > half witnesses), and a stateless socket restart rebuilds every fragment and commits again (crease #20: readiness must be quorum-attainable, not fabric-complete). T18: TOTAL simultaneous kill — every replica gone from memory, only each node's OWN chain survives on its fsync'd WAL; restarting WAL-loads the own chains and the ring reassembles every fragment from its owners; post-rebuild heads/block-counts match pre-crash exactly, converged, valid, conserved, fresh tx commits (crease #21: replicas are caches; the own WAL is the durability floor for total loss). T19: the whole socket layer wrapped in MUTUAL TLS (shared self-signed identity, CERT_REQUIRED both ways) — a client without the identity is rejected at the handshake and can exchange no bytes, yet 14/14 commit, replicas bit-identical, and a crash+restart re-establishes the encrypted fabric and re-converges. T20: host parameterized and the same consensus + TLS run over the machine's real LAN NIC (192.168.100.241) — 14/14 commit, bit-identical replicas, crash+restart re-converges over the NIC; transport proven beyond loopback. Still majority-honesty, not BFT; real mutual-TLS over a LAN NIC but one machine — no true two-host transport, one shared test identity (no per-node PKI); an OS crash mid-commit could tear the log. See `data/decentral_bank_net_data.json` |
 
----
+| **Decentral Web (T73)** | content-addressed P2P "web" over real TCP processes: pages publish once and replicate to one verifying archive; nodes die/survive; near-miss names resolve by embedding; plus the plug-and-play UI that runs any function/experiment from auto-discovered forms | **New, measured (structural, seeds 42/11/7 + mutual TLS).** W1: a page published on one node is served (with verified content-address integrity) from EVERY node — one chain head, one length, all archives verify, all name sets agree. W2: 3 publishes of 2 distinct contents dedup to 2 SHA-256 addresses; GET by address is an O(1) store lookup. W3: a killed node's pages stay served by survivors; a stateless restart resyncs bit-identical (head + length + names equal, verify True). W4: "homee" resolves to "home" by nearest char-ngram embedding — the google.com→gooogle.com routing pattern from the real top-1M net, over the wire. Tamper: a flipped content byte breaks the content address while the other node stays valid. Honest walls: driver-sequenced ordering (a distributed total-order primitive is unbuilt — the T14c/bazaar wall), toy embedding over a few pages, one machine (transport is IP-parametric), no incentives/crypto identity beyond channel TLS. Assembly of already-verified machinery (T70 sockets, LedgerChain, T55i embeddings), not new physics — its novelty is the *reuse surface*. See `experiments/decentral_web.py`, `data/decentral_web_data.json`, `docs/DECENTRAL_WEB.md` |
+| **Plug-and-play UI (puno-plug)** | one HTTP server, zero per-function code: every decorated plugin in `plugins/` and every experiment in `experiments/` is auto-discovered; forms are generated from declared or introspected params; functions run in-process, experiments as subprocess verdicts; results render as JSON | **New, structural (19 tests).** API: `GET /`, `/api/catalog`, `/api/plugin/<name>`, `/api/verdict/<name>`; `POST /api/run/<name>`, `/api/experiment/<name>`. Catalog auto-includes ~70 experiment verdicts + the plugin functions; a subprocess experiment run reproduces the pinned verdict bit-for-bit. See `puno_flow/plugin.py`, `puno_app/plugin_ui.py`, `tests/test_plugin_ui.py` |
 
-## 5. RECOMMENDED NEXT MOVES (ranked effort→value)
+---
 
 1. **Fix the five verified inconsistencies** (PAPER 88/109 + E₀, pkl size, README
    paths) — minutes, removes noise from every future reading.
@@ -417,10 +418,10 @@ given so it can be re-run).
      `polysphere_mnist`, `polysphere_nnflow_viz`, `decentral_net`,
      `decentral_net_mnist`, `decentral_net_continual`,
      `decentral_net_ceiling`, `decentral_net_t67`, `decentral_net_live`,
-     `bazaar_hybrid`, `bazaar_net`, plus the five
+     `bazaar_hybrid`, `bazaar_net`, `decentral_web`, plus the five
      earlier probes)
      each ship a claim/verdict JSON and are pinned by
-     `tests/test_solvable_theorems.py` (63 tests; full suite 253).  The
+     `tests/test_solvable_theorems.py` (64 tests; full suite 273).  The
      bazaar_hybrid verdict now covers six structural claims (C1 brigade
      threshold, C2 spam, C3 feed, C4 archive, C5 quorum, C6 verified-vote-only
      membership).  The
@@ -436,6 +437,15 @@ given so it can be re-run).
      restart resync to a bit-identical chain (honest walls: driver-sequenced
      ordering needs a distributed total-order primitive in a real network;
      majority-honesty quorum, not BFT).  The
+     decentral_web verdict (2026-08-11, T73) then rebuilds the WWW's functions
+     on the same verified machinery — W1 a page published on one node serves
+     from every node into one verifying content-addressed archive, W2 identical
+     content dedups to one SHA-256 address with O(1) GET by address, W3 a
+     crashed node's pages stay served by survivors with stateless-restart
+     bit-identical resync, W4 a near-miss name resolves by char-ngram embedding
+     routing (the google.com→gooogle.com pattern over the wire; honest walls:
+     driver-sequenced ordering, toy embedding over a few pages, one machine,
+     no incentives beyond channel TLS).  The
      internet-scale probes (2026-08-11) are now claim/verdict JSONs too:
      `decentral_net_internet` (I1–I4 all SUPPORTED — bulk-load 1,000,000 real
      top-1M sites, nearest-centroid routing over real geometry, 20% outage with

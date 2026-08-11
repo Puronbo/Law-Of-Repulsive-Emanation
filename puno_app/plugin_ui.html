@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Puno Plug - plug-and-play UI</title>
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+        background: #0a0e1a; color: #c8d6e5; padding: 20px;
+    }
+    .header {
+        text-align: center; margin-bottom: 24px;
+        border-bottom: 1px solid #1e3a5f; padding-bottom: 18px;
+    }
+    .header h1 {
+        font-size: 1.8em; color: #38bdf8; letter-spacing: 2px;
+        margin-bottom: 6px;
+    }
+    .header .subtitle { color: #64748b; font-size: 0.85em; }
+    .tabs { text-align: center; margin-bottom: 20px; }
+    .tab {
+        background: #111827; border: 1px solid #1e3a5f; color: #94a3b8;
+        padding: 8px 18px; cursor: pointer; border-radius: 6px;
+        margin: 0 4px; font-size: 0.9em;
+    }
+    .tab.active { background: #1e3a5f; color: #38bdf8; }
+    .grid {
+        display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 14px; max-width: 1700px; margin: 0 auto;
+    }
+    .card {
+        background: #111827; border: 1px solid #1e3a5f; border-radius: 8px;
+        padding: 16px; cursor: pointer; transition: border-color .15s;
+    }
+    .card:hover { border-color: #38bdf8; }
+    .card h3 { color: #38bdf8; font-size: 0.95em; margin-bottom: 6px; }
+    .card .desc { color: #94a3b8; font-size: 0.82em; line-height: 1.4; }
+    .card .meta {
+        margin-top: 10px; font-size: 0.75em; color: #64748b;
+    }
+    .badge {
+        display: inline-block; padding: 2px 8px; border-radius: 10px;
+        font-size: 0.7em; margin-right: 6px;
+    }
+    .badge.fn { background: #0f3d3e; color: #5eead4; }
+    .badge.exp { background: #312e81; color: #a5b4fc; }
+    .panel {
+        max-width: 1100px; margin: 0 auto; background: #111827;
+        border: 1px solid #1e3a5f; border-radius: 8px; padding: 22px;
+        display: none;
+    }
+    .panel h2 { color: #38bdf8; font-size: 1.1em; margin-bottom: 4px; }
+    .panel .desc { color: #94a3b8; margin-bottom: 16px; font-size: 0.9em; }
+    .field { margin-bottom: 14px; }
+    .field label {
+        display: block; color: #94a3b8; font-size: 0.8em; margin-bottom: 4px;
+    }
+    .field input, .field select, .field textarea {
+        width: 100%; background: #0a0e1a; color: #c8d6e5;
+        border: 1px solid #1e3a5f; border-radius: 6px; padding: 8px;
+        font-family: inherit; font-size: 0.9em;
+    }
+    .field textarea { min-height: 70px; }
+    .field .hint { color: #64748b; font-size: 0.75em; margin-top: 3px; }
+    button.run {
+        background: #0ea5e9; color: #062033; border: none; border-radius: 6px;
+        padding: 10px 22px; font-family: inherit; font-size: 0.95em;
+        cursor: pointer; font-weight: bold;
+    }
+    button.back {
+        background: #111827; color: #94a3b8; border: 1px solid #1e3a5f;
+        border-radius: 6px; padding: 8px 16px; font-family: inherit;
+        cursor: pointer; margin-right: 10px; font-size: 0.85em;
+    }
+    pre {
+        background: #0a0e1a; border: 1px solid #1e3a5f; border-radius: 6px;
+        padding: 12px; overflow: auto; margin-top: 14px; font-size: 0.8em;
+        line-height: 1.45; max-height: 520px; white-space: pre-wrap;
+        word-break: break-word;
+    }
+    .verdict {
+        margin-top: 14px; padding: 10px 14px; border-radius: 6px;
+        font-weight: bold; font-size: 0.95em;
+    }
+    .verdict.supported { background: #0f3d3e; color: #5eead4; }
+    .verdict.failed { background: #4c1d22; color: #fda4af; }
+    .claim {
+        margin-top: 10px; background: #0a0e1a; border: 1px solid #1e3a5f;
+        border-radius: 6px; padding: 10px 12px; font-size: 0.82em;
+    }
+    .claim .cid { color: #38bdf8; font-weight: bold; margin-right: 8px; }
+    .claim .v { float: right; font-weight: bold; }
+    .claim .v.SUPPORTED { color: #5eead4; }
+    .claim .v.FAILED { color: #fda4af; }
+    .claim .v.MEASURED { color: #fbbf24; }
+    .spin {
+        display: inline-block; width: 14px; height: 14px;
+        border: 2px solid #1e3a5f; border-top-color: #38bdf8;
+        border-radius: 50%; animation: rot .8s linear infinite;
+        vertical-align: middle; margin-right: 8px;
+    }
+    @keyframes rot { to { transform: rotate(360deg); } }
+    .empty { color: #64748b; text-align: center; padding: 40px; }
+    .error { color: #fda4af; margin-top: 10px; font-size: 0.85em; }
+    .count { color: #64748b; font-size: 0.8em; text-align: center; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+<div class="header">
+    <h1>PUNO PLUG</h1>
+    <div class="subtitle">plug-and-play: drop a function in <code>plugins/</code>,
+        or run any experiment in <code>experiments/</code> - the form builds itself</div>
+</div>
+
+<div id="catalogView">
+    <div class="tabs">
+        <button class="tab active" data-tab="all" onclick="filterTab('all')">All</button>
+        <button class="tab" data-tab="function" onclick="filterTab('function')">Functions</button>
+        <button class="tab" data-tab="experiment" onclick="filterTab('experiment')">Experiments</button>
+    </div>
+    <div class="count" id="count"></div>
+    <div class="grid" id="grid"></div>
+</div>
+
+<div class="panel" id="pluginView">
+    <div>
+        <button class="back" onclick="showCatalog()">&larr; catalog</button>
+        <button class="run" onclick="runPlugin()" id="runBtn">Run</button>
+    </div>
+    <h2 id="pTitle"></h2>
+    <div class="desc" id="pDesc"></div>
+    <div id="pMeta" style="color:#64748b;font-size:.78em;margin-bottom:14px"></div>
+    <div id="pForm"></div>
+    <div id="pResult"></div>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+let CATALOG = [];
+let current = null;
+
+async function getJSON(url, method, body) {
+    const opts = { method: method || "GET", headers: {} };
+    if (body !== undefined) {
+        opts.headers["Content-Type"] = "application/json";
+        opts.body = JSON.stringify(body);
+    }
+    const r = await fetch(url, opts);
+    return { status: r.status, data: await r.json() };
+}
+
+async function loadCatalog() {
+    const { data } = await getJSON("/api/catalog");
+    CATALOG = data.catalog;
+    $("count").textContent = data.count + " functions + experiments";
+    renderGrid();
+}
+
+function filterTab(kind) {
+    document.querySelectorAll(".tab").forEach((t) =>
+        t.classList.toggle("active", t.dataset.tab === kind));
+    renderGrid();
+}
+
+function renderGrid() {
+    const active = document.querySelector(".tab.active").dataset.tab;
+    const grid = $("grid");
+    grid.innerHTML = "";
+    const items = CATALOG.filter((p) =>
+        active === "all" || p.kind === active);
+    if (!items.length) {
+        grid.innerHTML = '<div class="empty">nothing here yet</div>';
+        return;
+    }
+    for (const p of items) {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.onclick = () => openPlugin(p.name);
+        const kindBadge = p.kind === "function"
+            ? '<span class="badge fn">function</span>'
+            : '<span class="badge exp">experiment</span>';
+        card.innerHTML =
+            "<h3>" + esc(p.title) + "</h3>" +
+            '<div class="desc">' + esc(p.description || "(no description)") +
+            "</div>" +
+            '<div class="meta">' + kindBadge + esc(p.source) +
+            (p.params && p.params.length
+                ? " &middot; " + p.params.length + " params" : "") +
+            (p.data_json ? " &middot; " + esc(p.data_json) : "") +
+            "</div>";
+        grid.appendChild(card);
+    }
+}
+
+function openPlugin(name) {
+    const p = CATALOG.find((x) => x.name === name);
+    if (!p) return;
+    current = p;
+    $("catalogView").style.display = "none";
+    $("pluginView").style.display = "block";
+    $("pTitle").textContent = p.title;
+    $("pDesc").textContent = p.description || "";
+    $("pMeta").textContent =
+        p.kind + " &middot; " + p.source +
+        (p.data_json ? " &middot; " + p.data_json : "") +
+        (p.script ? "" : "");
+    $("pResult").innerHTML = "";
+    $("runBtn").textContent = p.kind === "experiment" ? "Run verdict" : "Run";
+    buildForm(p);
+}
+
+function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;",
+    })[c]);
+}
+
+function buildForm(p) {
+    const form = $("pForm");
+    form.innerHTML = "";
+    if (!p.params || !p.params.length) {
+        if (p.kind === "experiment") {
+            form.innerHTML =
+                '<div style="color:#94a3b8;font-size:.85em">No parameters - ' +
+                "this experiment runs its scripted verdict (this may take a while)." +
+                "</div>";
+        } else {
+            form.innerHTML =
+                '<div style="color:#94a3b8;font-size:.85em">No parameters.</div>';
+        }
+        return;
+    }
+    for (const pa of p.params) {
+        const field = document.createElement("div");
+        field.className = "field";
+        const req = pa.required ? " *" : "";
+        let control = "";
+        const dflt = pa.default === undefined || pa.default === null
+            ? "" : pa.default;
+        if (pa.choices && pa.choices.length) {
+            control = '<select id="p_' + pa.name + '">' +
+                pa.choices.map((c) =>
+                    '<option value="' + esc(c) + '"' +
+                    (String(c) === String(dflt) ? " selected" : "") + ">" +
+                    esc(c) + "</option>").join("") + "</select>";
+        } else if (pa.type === "bool") {
+            control = '<input type="checkbox" id="p_' + pa.name + '"' +
+                (dflt ? " checked" : "") + ">";
+        } else if (pa.type === "int") {
+            control = '<input type="number" id="p_' + pa.name + '" step="1"' +
+                ' value="' + esc(dflt) + '">';
+        } else if (pa.type === "float") {
+            control = '<input type="number" id="p_' + pa.name + '" step="any"' +
+                ' value="' + esc(dflt) + '">';
+        } else {
+            control = '<textarea id="p_' + pa.name + '">' +
+                esc(dflt) + "</textarea>";
+        }
+        field.innerHTML =
+            "<label>" + esc(pa.name) + " (" + esc(pa.type) + ")" + req +
+            "</label>" + control +
+            (pa.description
+                ? '<div class="hint">' + esc(pa.description) + "</div>" : "");
+        form.appendChild(field);
+    }
+}
+
+function collectValues() {
+    const values = {};
+    for (const pa of current.params) {
+        const el = $("p_" + pa.name);
+        if (!el) continue;
+        if (pa.type === "bool") {
+            values[pa.name] = el.checked;
+        } else if (pa.type === "int") {
+            values[pa.name] = el.value === "" ? null : parseInt(el.value, 10);
+        } else if (pa.type === "float") {
+            values[pa.name] = el.value === "" ? null : parseFloat(el.value);
+        } else {
+            values[pa.name] = el.value;
+        }
+    }
+    return values;
+}
+
+async function runPlugin() {
+    const res = $("pResult");
+    res.innerHTML = '<div><span class="spin"></span>running...</div>';
+    $("runBtn").disabled = true;
+    try {
+        if (current.kind === "experiment") {
+            const r = await getJSON("/api/experiment/" + current.name, "POST", {});
+            renderExperiment(r);
+        } else {
+            const r = await getJSON("/api/run/" + current.name, "POST",
+                                    { values: collectValues() });
+            renderFunction(r);
+        }
+    } catch (e) {
+        res.innerHTML = '<div class="error">request failed: ' + esc(e) + "</div>";
+    } finally {
+        $("runBtn").disabled = false;
+    }
+}
+
+function renderFunction(r) {
+    const res = $("pResult");
+    if (!r.data.ok) {
+        res.innerHTML = '<div class="error">error: ' + esc(r.data.error) + "</div>";
+        return;
+    }
+    res.innerHTML = '<pre>' + esc(JSON.stringify(r.data.result, null, 2)) +
+        "</pre>" +
+        '<div style="color:#64748b;font-size:.75em;margin-top:6px">' +
+        r.data.elapsed_ms + " ms</div>";
+}
+
+function renderExperiment(r) {
+    const res = $("pResult");
+    if (!r.data.ok) {
+        res.innerHTML = '<div class="error">error: ' + esc(r.data.error) + "</div>";
+        return;
+    }
+    const d = r.data;
+    let html = "";
+    if (d.verdict) {
+        const v = d.verdict;
+        const verdictText = String(v.verdict || "?").toUpperCase();
+        const cls = verdictText.indexOf("SUPPORTED") === 0 ? "supported"
+            : verdictText.indexOf("FAILED") === 0 ? "failed" : "supported";
+        html += '<div class="verdict ' + cls + '">' +
+            esc(verdictText.slice(0, 12)) + " &mdash; " +
+            esc(String(v.verdict || "").slice(0, 220)) + "</div>";
+        if (Array.isArray(v.claims)) {
+            for (const c of v.claims) {
+                html += '<div class="claim"><span class="v ' + esc(c.verdict) +
+                    '">' + esc(c.verdict) + "</span>" +
+                    '<span class="cid">' + esc(c.id) + "</span>" +
+                    esc(String(c.claim || "")) + "</div>";
+            }
+        }
+        html += '<pre>' + esc(JSON.stringify(d.verdict, null, 2)) + "</pre>";
+    } else {
+        html += '<div class="verdict failed">no verdict JSON written</div>';
+    }
+    html += '<div style="color:#64748b;font-size:.78em;margin-top:8px">exit ' +
+        d.exit_code + " &middot; " + d.elapsed_s + " s</div>";
+    if (d.output) {
+        html += "<pre>" + esc(d.output) + "</pre>";
+    }
+    if (d.stderr) {
+        html += '<pre style="color:#fda4af">' + esc(d.stderr) + "</pre>";
+    }
+    res.innerHTML = html;
+}
+
+function showCatalog() {
+    $("pluginView").style.display = "none";
+    $("catalogView").style.display = "block";
+    current = null;
+}
+
+loadCatalog();
+</script>
+</body>
+</html>
