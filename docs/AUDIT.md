@@ -399,7 +399,7 @@ given so it can be re-run).
  8. **Regression coverage for the T55 series + library** — the experiments print
     results but nothing pins them.  (T65 was the first probe to ship a JSON
     verdict; make that the norm.)  **PROGRESS 2026-08-08** — the
-     solvable-theorem pattern is now the norm: 59 verdict experiments
+     solvable-theorem pattern is now the norm: 63 verdict experiments
      (`prime_time`, `time_reversal_convergence`, `bekenstein_rerun`,
      `wheeler_dewitt_selection`, `fold_unitary`, `kawasaki_ctc`,
      `bridge_extension`, `selberg_paradigm`, `fold_ladder_phi`,
@@ -420,7 +420,7 @@ given so it can be re-run).
      `bazaar_hybrid`, `bazaar_net`, plus the five
      earlier probes)
      each ship a claim/verdict JSON and are pinned by
-     `tests/test_solvable_theorems.py` (59 tests; full suite 249).  The
+     `tests/test_solvable_theorems.py` (63 tests; full suite 253).  The
      bazaar_hybrid verdict now covers six structural claims (C1 brigade
      threshold, C2 spam, C3 feed, C4 archive, C5 quorum, C6 verified-vote-only
      membership).  The
@@ -436,6 +436,20 @@ given so it can be re-run).
      restart resync to a bit-identical chain (honest walls: driver-sequenced
      ordering needs a distributed total-order primitive in a real network;
      majority-honesty quorum, not BFT).  The
+     internet-scale probes (2026-08-11) are now claim/verdict JSONs too:
+     `decentral_net_internet` (I1–I4 all SUPPORTED — bulk-load 1,000,000 real
+     top-1M sites, nearest-centroid routing over real geometry, 20% outage with
+     no repair unit, 1000-site flow at ~862 ms/step), `decentral_net_union`
+     (U1–U5 all SUPPORTED — 1,914,915 unique widely-used sites from two merged
+     top-1M lists, ~2 KB/site holding, routed, outage-survived, checkpoint
+     reloads bit-identically), `decentral_net_anomaly` (A1–A3 all SUPPORTED —
+     name-space geometry as anomaly detector: 90% of DGA-shape random strings
+     and 32% of known-bad below the legit p5 threshold, 18% of known-bad above
+     the legit median as near-miss impersonation, but blocklist overlap makes
+     geometry necessary-not-sufficient), and `decentral_net_t72` (T1–T3 all
+     SUPPORTED — the real 1.9M-site internet flowed at 448,659 ms/step vs an
+     all-pairs D of 58,670 GB, +7.8% spacing recovery after a 20% kill + heal,
+     128-D wall measured at 19,076 ms/step on 10k real sites).  The
     broad `experiments/` scripts (remaining flow, balance, polysphere,
     decentral) still
     print without persisted verdicts — extending the JSON verdict norm to

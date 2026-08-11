@@ -143,7 +143,8 @@ bad_novel = (SB < thr).mean()                # bad below threshold
 print(f"  NOVELTY axis WORKS: {100*sep:.0f}% of DGA-shape random strings fall")
 print(f"  below the legit p5 threshold vs only 5% of legit sites; {100*bad_novel:.0f}%")
 print(f"  of known-bad are novel in name-space (DGA-style).")
-print(f"  IMPERSONATION axis: {100*(SB > med(L2)).mean():.0f}% of known-bad sit")
+imp = (SB > med(L2)).mean()                  # bad above legit median
+print(f"  IMPERSONATION axis: {100*imp:.0f}% of known-bad sit")
 print(f"  above the legit median (near-miss of a real site).")
 print(f"  BUT the populations OVERLAP: blocklist domains are mostly legit-")
 print(f"  looking tracking/telemetry subdomains of real brands (sim 1.000 to")
@@ -151,3 +152,66 @@ print(f"  us-east-1.event.prod.bidr.io, metrics.barclaycardus.com), so names")
 print(f"  alone are NECESSARY but NOT SUFFICIENT to separate bad from legit.")
 print(f"  => confirms the gap: differentiate anomalies needs the multivariate")
 print(f"  observation bank (ASN, TLS age, WHOIS, content), not geometry only.")
+
+# ---- verdict JSON (the claim/verdict norm) ------------------------------ #
+import json as _json
+import datetime as _dt
+import os as _os
+
+def pct(a, x):
+    return float(np.percentile(a, x))
+
+p5_L, med_L = pct(L2, 5), med(L2)
+a1 = bool(sep >= 0.7 and bad_novel >= 0.2)
+a2 = bool(imp >= 0.05)
+a3 = bool((SB >= p5_L).mean() >= 0.2)        # a large overlap exists
+claims = [
+    {"id": "A1",
+     "claim": "the NOVELTY axis works: %.0f%% of DGA-shape random strings and "
+              "%.0f%% of known-bad fall below the legit p5 threshold (vs 5%% of "
+              "legit) - geometry alone flags genuinely novel names"
+              % (100 * sep, 100 * bad_novel),
+     "verdict": "SUPPORTED" if a1 else "FAILED"},
+    {"id": "A2",
+     "claim": "the IMPERSONATION axis works: %.0f%% of known-bad sit above the "
+              "legit median similarity (near-miss of a real site)" % (100 * imp),
+     "verdict": "SUPPORTED" if a2 else "FAILED"},
+    {"id": "A3",
+     "claim": "the honest wall is real: %.0f%% of known-bad still fall inside "
+              "the legit range (tracking/telemetry subdomains of real brands) - "
+              "name geometry is NECESSARY but NOT SUFFICIENT; separating bad "
+              "from legit needs the multivariate observation bank (ASN, TLS "
+              "age, WHOIS, content)" % (100 * (SB >= p5_L).mean()),
+     "verdict": "SUPPORTED" if a3 else "FAILED"},
+]
+overall = "SUPPORTED" if all(c["verdict"] == "SUPPORTED"
+                             for c in claims) else "FAILED"
+verdict_data = {
+    "experiment": "decentral_net_anomaly (T55j)",
+    "date": _dt.date.today().isoformat(),
+    "n_sample": N_SAMPLE,
+    "pkl": _os.path.basename(PKL),
+    "legit_n": int(m), "bad_sampled": len(bad),
+    "threshold_legit_p5": float(thr),
+    "pop_legit_2nd_p25_p50_p75": [pct(L2, 25), pct(L2, 50), pct(L2, 75)],
+    "pop_bad_p25_p50_p75": [pct(SB, 25), pct(SB, 50), pct(SB, 75)],
+    "pop_random_p25_p50_p75": [pct(SR, 25), pct(SR, 50), pct(SR, 75)],
+    "novel_share_random": round(float(sep), 3),
+    "novel_share_bad": round(float(bad_novel), 3),
+    "impersonation_share_bad": round(float(imp), 3),
+    "verdict": ("%s (measured, data-driven): the net's name-space geometry "
+                "separates DGA-style novelty and near-miss impersonation "
+                "against the real legit internet population, but the "
+                "blocklist overlap proves name geometry alone is necessary-"
+                "not-sufficient - the multivariate observation bank is the "
+                "unbuilt next layer" % overall),
+    "claims": claims,
+}
+out = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                   "..", "data", "decentral_net_anomaly_data.json")
+os.makedirs(os.path.dirname(out), exist_ok=True)
+with open(out, "w") as f:
+    _json.dump(verdict_data, f, indent=1, sort_keys=True)
+print("  verdict JSON -> %s" % out)
+for c in claims:
+    print("  %s: %s" % (c["id"], c["verdict"]))

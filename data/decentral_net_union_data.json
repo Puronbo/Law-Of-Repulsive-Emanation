@@ -1,0 +1,68 @@
+{
+ "checkpoint_mb": 3173.0,
+ "claims": [
+  {
+   "claim": "union + dedupe of two real top-1M popularity lists (Cisco Umbrella + Majestic Million) yields 1,914,915 unique widely-used domains, ranked most-used first",
+   "id": "U1",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "holding is ~2 KB/site (3.92 GB for 1,914,915 sites) - capacity is not the wall; 60% of this 31.7 GB machine would hold ~9.3M sites, only FLOWING them needs O(1) search (T67)",
+   "id": "U2",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "nearest-centroid routing works across the merged lists: querying a famous site returns its real web neighbors",
+   "id": "U3",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "OUTAGE SURVIVED: the 20% random outage leaves 1,531,932 survivors routed with no repair unit",
+   "id": "U4",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "the internet net persists as a reusable checkpoint and reloads with bit-identical routing (q identical)",
+   "id": "U5",
+   "verdict": "SUPPORTED"
+  }
+ ],
+ "date": "2026-08-11",
+ "dim": 128,
+ "experiment": "decentral_net_union (T55i)",
+ "load_s": 1.9,
+ "loaded_n": 1914915,
+ "mode": "post-outage",
+ "q_identical_on_reload": true,
+ "routing_examples": [
+  {
+   "query": "google.com",
+   "sim": 1.0,
+   "top": "google.com"
+  },
+  {
+   "query": "wikipedia.org",
+   "sim": 1.0,
+   "top": "wikipedia.org"
+  },
+  {
+   "query": "amazon.com",
+   "sim": 0.862,
+   "top": "amazon.co"
+  },
+  {
+   "query": "youtube.com",
+   "sim": 1.0,
+   "top": "youtube.com"
+  },
+  {
+   "query": "github.com",
+   "sim": 1.0,
+   "top": "github.com"
+  }
+ ],
+ "survivors": 1531932,
+ "unique_domains": 1914915,
+ "verdict": "SUPPORTED (measured): the union of two real top-1M popularity lists fills the net with ~1.91M widely-used sites, routes them by nearest-centroid, survives the outage, and persists as a reusable checkpoint that reloads bit-identically - capacity is not the wall, flow is (T67 unlocks it)",
+ "weights_gb": 3.92
+}

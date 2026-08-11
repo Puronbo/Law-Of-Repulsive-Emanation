@@ -1,0 +1,45 @@
+{
+ "bad_sampled": 5000,
+ "claims": [
+  {
+   "claim": "the NOVELTY axis works: 90% of DGA-shape random strings and 32% of known-bad fall below the legit p5 threshold (vs 5% of legit) - geometry alone flags genuinely novel names",
+   "id": "A1",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "the IMPERSONATION axis works: 18% of known-bad sit above the legit median similarity (near-miss of a real site)",
+   "id": "A2",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "the honest wall is real: 68% of known-bad still fall inside the legit range (tracking/telemetry subdomains of real brands) - name geometry is NECESSARY but NOT SUFFICIENT; separating bad from legit needs the multivariate observation bank (ASN, TLS age, WHOIS, content)",
+   "id": "A3",
+   "verdict": "SUPPORTED"
+  }
+ ],
+ "date": "2026-08-11",
+ "experiment": "decentral_net_anomaly (T55j)",
+ "impersonation_share_bad": 0.178,
+ "legit_n": 1531932,
+ "n_sample": 5000,
+ "novel_share_bad": 0.319,
+ "novel_share_random": 0.903,
+ "pkl": "internet_net.pkl",
+ "pop_bad_p25_p50_p75": [
+  0.5657936930656433,
+  0.6519243717193604,
+  0.7442284226417542
+ ],
+ "pop_legit_2nd_p25_p50_p75": [
+  0.7033326625823975,
+  0.781631588935852,
+  0.8677259683609009
+ ],
+ "pop_random_p25_p50_p75": [
+  0.4537426233291626,
+  0.4907897710800171,
+  0.5371585488319397
+ ],
+ "threshold_legit_p5": 0.5881121158599854,
+ "verdict": "SUPPORTED (measured, data-driven): the net's name-space geometry separates DGA-style novelty and near-miss impersonation against the real legit internet population, but the blocklist overlap proves name geometry alone is necessary-not-sufficient - the multivariate observation bank is the unbuilt next layer"
+}

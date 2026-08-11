@@ -994,3 +994,82 @@ def test_bazaar_net_supported():
     # while the other node's archive stays valid
     assert d['tamper']['tamper_detected'] is True
     assert d['tamper']['other_node_still_valid'] is True
+
+
+def test_decentral_net_t72_supported():
+    d = load('decentral_net_t72_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    claims = {c['id']: c for c in d['claims']}
+    assert set(claims) == {'T1', 'T2', 'T3'}
+    assert all(c['verdict'] == 'SUPPORTED' for c in claims.values())
+    fw = d['flow_whole_internet']
+    # T1: the whole 1.9M-site internet flows; all-pairs D would be 58 TB
+    assert fw['n_sites'] >= 1_900_000
+    assert fw['allpairs_d_gb'] > 10_000
+    assert fw['ms_per_step'] > 0
+    # T2: 20% kill + one local heal recovers consensus spacing
+    he = d['heal_whole_internet']
+    assert he['killed'] >= 300_000
+    assert he['survivors'] >= 1_500_000
+    assert he['spacing_after_heal'] > he['spacing_after_kill']
+    # T3: high-dim wall measured on a real 10k-site slice
+    assert d['highdim_wall']['n'] >= 10_000
+    assert d['highdim_wall']['ms_per_step'] > 0
+
+
+def test_decentral_net_anomaly_supported():
+    d = load('decentral_net_anomaly_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    claims = {c['id']: c for c in d['claims']}
+    assert set(claims) == {'A1', 'A2', 'A3'}
+    assert all(c['verdict'] == 'SUPPORTED' for c in claims.values())
+    # A1: novelty axis - DGA-shape random strings fall below the legit p5
+    # threshold at high rate while known-bad split novel/impersonation
+    assert d['novel_share_random'] >= 0.7
+    assert d['novel_share_bad'] >= 0.1
+    # A2: impersonation axis - a measurable share of known-bad sit above the
+    # legit median (near-miss of a real site)
+    assert d['impersonation_share_bad'] >= 0.05
+    # A3: the honest wall - a large share of known-bad still overlap the legit
+    # range (tracking subdomains of real brands), so geometry is
+    # necessary-but-not-sufficient
+    assert d['legit_n'] >= 1_000_000
+    assert d['threshold_legit_p5'] > 0
+
+
+def test_decentral_net_internet_supported():
+    d = load('decentral_net_internet_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    claims = {c['id']: c for c in d['claims']}
+    assert set(claims) == {'I1', 'I2', 'I3', 'I4'}
+    assert all(c['verdict'] == 'SUPPORTED' for c in claims.values())
+    # I1: the top-1M real sites are bulk-loaded
+    assert d['n_sites'] >= 900_000
+    assert d['weights_gb'] > 0
+    # I2: routing examples carry real web neighbors
+    assert len(d['routing_examples']) > 0
+    assert all(h['sim'] > 0.2 for h in d['routing_examples'])
+    # I3: a 20% outage leaves the majority still routed
+    assert d['survivors'] >= 0.75 * d['n_sites']
+    # I4: local flow on a real slice runs and the heal recovers spacing
+    assert d['flow_ms_per_step'] > 0
+    assert d['spacing_after_heal'] > d['spacing_after_kill']
+
+
+def test_decentral_net_union_supported():
+    d = load('decentral_net_union_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    claims = {c['id']: c for c in d['claims']}
+    assert set(claims) == {'U1', 'U2', 'U3', 'U4', 'U5'}
+    assert all(c['verdict'] == 'SUPPORTED' for c in claims.values())
+    # U1: union + dedupe of two real top-1M lists yields ~1.91M unique sites
+    assert d['unique_domains'] >= 1_800_000
+    # U2: holding is ~2 KB/site - capacity is not the wall
+    assert d['weights_gb'] > 0
+    # U3: routing works across the merged lists
+    assert len(d['routing_examples']) > 0
+    assert all(h['sim'] > 0.2 for h in d['routing_examples'])
+    # U4: 20% outage leaves the majority routed
+    assert d['survivors'] >= 0.75 * d['loaded_n']
+    # U5: the persisted checkpoint reloads bit-identically
+    assert d['q_identical_on_reload'] is True

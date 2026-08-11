@@ -43,7 +43,10 @@ All figures below are counts of the repository as of commit `HEAD`
 | Prime count verified from scratch | **π(943,901,200,001) = 35,575,526,191** | `experiments/prime_count_from_scratch.py` (re-run, matches README; 943,901,200,001 is prime) |
 | Googol prime census | **186 primes** across k-families under 10^100, n_max = 332 | `data/googol_census_all_k_c7.json` |
 | Internet artifact | `internet_net_full.pkl` 1,912 MB (1.9M sites); `internet_net.pkl` 3,026 MB | `%LOCALAPPDATA%\Temp\opencode\top1m\` |
-| T72 whole-internet flow | settle(1) at n=1,914,915 = **277,218 ms/step**; all-pairs distance D = 58,670 GB | `data/decentral_net_t72_data.json` |
+| T72 whole-internet flow | settle(1) at n=1,914,915 = **448,659 ms/step**; all-pairs distance D = 58,670 GB; +7.8% spacing recovery after 20% kill + heal; 128-D wall 19,076 ms/step at n=10,000 (D=102 GB). Claims T1–T3 pinned | `data/decentral_net_t72_data.json` |
+| T55i internet net | 1,000,000 real top-1M sites bulk-loaded (I1) and routed by nearest-centroid over real geometry (I2); 20% outage with no repair unit (I3); 1000-site slice flows at ~862 ms/step with spacing recovery (I4) | `experiments/decentral_net_internet.py`, `data/decentral_net_internet_data.json` |
+| T55j internet union | two independent top-1M lists merged + deduped to **1,914,915 unique widely-used sites** (U1); holding ~2 KB/site so capacity is not the wall (U2); routed across merged lists (U3); outage-survived (U4); checkpoint reloads bit-identical (U5) | `experiments/decentral_net_union.py`, `data/decentral_net_union_data.json` |
+| T55g name-space anomaly | geometry as anomaly detector vs the real legit population: DGA-shape novelty 90% below legit p5 (A1), near-miss impersonation 18% above legit median (A2), blocklist overlap proves necessary-not-sufficient (A3) | `experiments/decentral_net_anomaly.py`, `data/decentral_net_anomaly_data.json` |
 | T67 indexed flow | 2D exponent **1.106** vs exact 1.925; n=100k 2D at 10.35 s/step (all-pairs D=160 GB); 10k×128-D real top-1M domains at 4.12 s/step (D=102 GB), **bit-identical to all-pairs** | `experiments/decentral_net_t67.py`, `data/decentral_net_t67_data.json` |
 | Ground states (`spectral_data.json` / `thermo_data.json`) | quantum E0 = **5.843778304934855**; classical conservative 24.43287332978949; dissipative 10.003670314370352; 30 eigenvalues | `data/` |
 
@@ -69,7 +72,7 @@ theorem of T63/T64: the crease is derived as the **unique viscosity solution
 of the eikonal equation |r'| = a** on a pinned interval, with retrace as the
 **cut locus** — closed by a 10-test regression suite. The single strongest
 *novel engineering* result is T72: the 1.9M-site internet network flowed at
-277,218 ms/step with a proven-exact spatial index (T67) that is bit-identical
+448,659 ms/step with a proven-exact spatial index (T67) that is bit-identical
 to all-pairs flow.
 
 ---
@@ -181,11 +184,14 @@ For each claim: **Status** (measured/derived), **the claim**, **evidence**
   cKDTree (dim ≥ 4) replaces all-pairs flow; results are **bit-identical** to
   all-pairs, only the expected work is O(1) per neuron. (ii) The 1.9M-site
   internet network (union of Cisco Umbrella + Majestic Million, 1,914,915
-  entities) was flowed: settle(1) at n = 1,914,915 measured **277,218 ms/step**
+  entities) was flowed: settle(1) at n = 1,914,915 measured **448,659 ms/step**
   with all-pairs D = 58,670 GB; heal(1) after a 20% kill recovered +7.8%.
+  Claims T1–T3 pinned by `test_decentral_net_t72_supported`.
 - **Evidence:** `data/decentral_net_t67_data.json` (grid kNN == brute force
   across 3 seeds × 1D/2D/3D; 2D exponents exact 1.88 vs indexed 1.02);
-  `data/decentral_net_t72_data.json` (n, ms/step, D, heal deltas).
+  `data/decentral_net_t72_data.json` (n, ms/step, D, heal deltas);
+  `data/decentral_net_internet_data.json` (I1–I4), `data/decentral_net_union_data.json`
+  (U1–U5), `data/decentral_net_anomaly_data.json` (A1–A3).
 - **References:** `experiments/decentral_net_t67.py`,
   `experiments/decentral_net_t72.py`; `docs/WEAVERS_SCRIBE.md` Ch. 5.14.
 
@@ -273,7 +279,10 @@ python docs/math_validation.py                         # 192 checks, 0 failed
 python experiments/prime_count_from_scratch.py         # pi(943901200001) = 35575526191
 python experiments/spring_bible.py                     # T58–T64 fold suite
 python experiments/decentral_net_t67.py                # O(1)-index bit-identity + exponents
-python experiments/decentral_net_t72.py                # whole-internet flow (heavy; ~28 h)
+python experiments/decentral_net_t72.py                # whole-internet flow (heavy; ~50 min)
+python experiments/decentral_net_internet.py           # 1M-site top-1M routing verdict (I1–I4)
+python experiments/decentral_net_union.py              # top-1M union to 1,914,915 sites (U1–U5)
+python experiments/decentral_net_anomaly.py            # name-space anomaly geometry (A1–A3)
 python experiments/continuum_limit.py                  # drift → 0 at first order
 python experiments/spectral_extended.py                # C1/C3/C4 at 100 modes
 python experiments/kawasaki_null.py                    # Kawasaki artifact attribution
