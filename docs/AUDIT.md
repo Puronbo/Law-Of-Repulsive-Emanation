@@ -399,7 +399,7 @@ given so it can be re-run).
  8. **Regression coverage for the T55 series + library** — the experiments print
     results but nothing pins them.  (T65 was the first probe to ship a JSON
     verdict; make that the norm.)  **PROGRESS 2026-08-08** — the
-     solvable-theorem pattern is now the norm: 55 verdict experiments
+     solvable-theorem pattern is now the norm: 57 verdict experiments
      (`prime_time`, `time_reversal_convergence`, `bekenstein_rerun`,
      `wheeler_dewitt_selection`, `fold_unitary`, `kawasaki_ctc`,
      `bridge_extension`, `selberg_paradigm`, `fold_ladder_phi`,
@@ -416,11 +416,11 @@ given so it can be re-run).
      `flow_hier_reg_scaled`, `balance_auto`, `self_balancing`,
      `polysphere_mnist`, `polysphere_nnflow_viz`, `decentral_net`,
      `decentral_net_mnist`, `decentral_net_continual`,
-     `decentral_net_ceiling`,
+     `decentral_net_ceiling`, `decentral_net_t67`, `bazaar_hybrid`,
      plus the five
      earlier probes)
      each ship a claim/verdict JSON and are pinned by
-     `tests/test_solvable_theorems.py` (55 tests; full suite 245).  The
+     `tests/test_solvable_theorems.py` (57 tests; full suite 247).  The
     broad `experiments/` scripts (remaining flow, balance, polysphere,
     decentral) still
     print without persisted verdicts — extending the JSON verdict norm to

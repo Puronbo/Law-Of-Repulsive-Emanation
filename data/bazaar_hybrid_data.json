@@ -1,0 +1,225 @@
+{
+  "seeds": [
+    42,
+    11,
+    7
+  ],
+  "C1_brigade": {
+    "42": {
+      "reddit_p_bury": {
+        "2": 0.0,
+        "4": 0.0,
+        "6": 0.46,
+        "8": 1.0,
+        "10": 1.0,
+        "20": 1.0,
+        "40": 1.0,
+        "60": 1.0,
+        "80": 1.0
+      },
+      "hybrid_p_bury": {
+        "2": 0.0,
+        "4": 0.0,
+        "6": 0.0,
+        "8": 0.0,
+        "10": 0.0,
+        "20": 1.0,
+        "40": 1.0,
+        "60": 1.0,
+        "80": 1.0
+      },
+      "reddit_S50": 8,
+      "hybrid_S50": 20,
+      "ratio_S50": 2.5,
+      "verdict": "reason-tagged downvotes raise the brigade size needed to hide a good post (P>=0.5) from S~8 (free downvotes) to S~20 (suspension pending quorum review), a 2.5x threshold; even then the good post is only HIDDEN pending review, and a rejected review clears the flags - permanent removal needs the quorum itself (C5)"
+    },
+    "11": {
+      "reddit_p_bury": {
+        "2": 0.0,
+        "4": 0.0,
+        "6": 0.44,
+        "8": 1.0,
+        "10": 1.0,
+        "20": 1.0,
+        "40": 1.0,
+        "60": 1.0,
+        "80": 1.0
+      },
+      "hybrid_p_bury": {
+        "2": 0.0,
+        "4": 0.0,
+        "6": 0.0,
+        "8": 0.0,
+        "10": 0.0,
+        "20": 1.0,
+        "40": 1.0,
+        "60": 1.0,
+        "80": 1.0
+      },
+      "reddit_S50": 8,
+      "hybrid_S50": 20,
+      "ratio_S50": 2.5,
+      "verdict": "reason-tagged downvotes raise the brigade size needed to hide a good post (P>=0.5) from S~8 (free downvotes) to S~20 (suspension pending quorum review), a 2.5x threshold; even then the good post is only HIDDEN pending review, and a rejected review clears the flags - permanent removal needs the quorum itself (C5)"
+    },
+    "7": {
+      "reddit_p_bury": {
+        "2": 0.0,
+        "4": 0.0,
+        "6": 0.5267,
+        "8": 1.0,
+        "10": 1.0,
+        "20": 1.0,
+        "40": 1.0,
+        "60": 1.0,
+        "80": 1.0
+      },
+      "hybrid_p_bury": {
+        "2": 0.0,
+        "4": 0.0,
+        "6": 0.0,
+        "8": 0.0,
+        "10": 0.0,
+        "20": 1.0,
+        "40": 1.0,
+        "60": 1.0,
+        "80": 1.0
+      },
+      "reddit_S50": 6,
+      "hybrid_S50": 20,
+      "ratio_S50": 3.3,
+      "verdict": "reason-tagged downvotes raise the brigade size needed to hide a good post (P>=0.5) from S~6 (free downvotes) to S~20 (suspension pending quorum review), a 3.3x threshold; even then the good post is only HIDDEN pending review, and a rejected review clears the flags - permanent removal needs the quorum itself (C5)"
+    }
+  },
+  "C2_spam": {
+    "42": {
+      "reddit_topk_spam_frac": 0.75,
+      "hybrid_topk_spam_frac": 0.0,
+      "spam_reduction": 1.0,
+      "verdict": "free accounts + karma collusion saturate the visible top-K with bot spam (frac 0.75); the karma-free hybrid with tag-to-remove drops it to 0.0 (1.0 reduction) - bots have nothing to farm and flagged spam is removed by quorum consensus, not outvoted"
+    },
+    "11": {
+      "reddit_topk_spam_frac": 0.7,
+      "hybrid_topk_spam_frac": 0.0,
+      "spam_reduction": 1.0,
+      "verdict": "free accounts + karma collusion saturate the visible top-K with bot spam (frac 0.7); the karma-free hybrid with tag-to-remove drops it to 0.0 (1.0 reduction) - bots have nothing to farm and flagged spam is removed by quorum consensus, not outvoted"
+    },
+    "7": {
+      "reddit_topk_spam_frac": 0.75,
+      "hybrid_topk_spam_frac": 0.0,
+      "spam_reduction": 1.0,
+      "verdict": "free accounts + karma collusion saturate the visible top-K with bot spam (frac 0.75); the karma-free hybrid with tag-to-remove drops it to 0.0 (1.0 reduction) - bots have nothing to farm and flagged spam is removed by quorum consensus, not outvoted"
+    }
+  },
+  "C3_feed": {
+    "42": {
+      "reddit_minority_share_in_minority_feed": 0.0,
+      "hybrid_minority_share_in_minority_feed": 1.0,
+      "reddit_feed_overlap_across_users": 1.0,
+      "hybrid_feed_overlap_across_users": 0.019,
+      "verdict": "the global hot feed hands minority users a front page that is ~0.0 their own content and identical to everyone else's (overlap 1.0); the emergent DecentralNet mesh feed routes a minority user 1.0 of their own community (overlap 0.019) - minority representation up, at the honest cost of explicit local clustering (a chosen community, not an algorithmic bubble)"
+    },
+    "11": {
+      "reddit_minority_share_in_minority_feed": 0.0,
+      "hybrid_minority_share_in_minority_feed": 1.0,
+      "reddit_feed_overlap_across_users": 1.0,
+      "hybrid_feed_overlap_across_users": 0.019,
+      "verdict": "the global hot feed hands minority users a front page that is ~0.0 their own content and identical to everyone else's (overlap 1.0); the emergent DecentralNet mesh feed routes a minority user 1.0 of their own community (overlap 0.019) - minority representation up, at the honest cost of explicit local clustering (a chosen community, not an algorithmic bubble)"
+    },
+    "7": {
+      "reddit_minority_share_in_minority_feed": 0.0,
+      "hybrid_minority_share_in_minority_feed": 1.0,
+      "reddit_feed_overlap_across_users": 1.0,
+      "hybrid_feed_overlap_across_users": 0.016,
+      "verdict": "the global hot feed hands minority users a front page that is ~0.0 their own content and identical to everyone else's (overlap 1.0); the emergent DecentralNet mesh feed routes a minority user 1.0 of their own community (overlap 0.016) - minority representation up, at the honest cost of explicit local clustering (a chosen community, not an algorithmic bubble)"
+    }
+  },
+  "C4_archive": {
+    "42": {
+      "chain_verifies": true,
+      "archive_nodes": 6,
+      "nodes_killed": 3,
+      "retrieval_after_50pct_loss": 1.0,
+      "tamper_detected": true,
+      "tamper_bad_seq": 3,
+      "verdict": "4chan loses dead threads (retrieval 0); reddit keeps them on one central server; the hybrid content-addresses every thread into a hash-chained archive replicated across 6 nodes, so after killing 3 of them retrieval is 1.0 and any tampered payload breaks verify() at seq 3 - reddit persistence with no central authority, tamper-evident"
+    },
+    "11": {
+      "chain_verifies": true,
+      "archive_nodes": 6,
+      "nodes_killed": 3,
+      "retrieval_after_50pct_loss": 1.0,
+      "tamper_detected": true,
+      "tamper_bad_seq": 3,
+      "verdict": "4chan loses dead threads (retrieval 0); reddit keeps them on one central server; the hybrid content-addresses every thread into a hash-chained archive replicated across 6 nodes, so after killing 3 of them retrieval is 1.0 and any tampered payload breaks verify() at seq 3 - reddit persistence with no central authority, tamper-evident"
+    },
+    "7": {
+      "chain_verifies": true,
+      "archive_nodes": 6,
+      "nodes_killed": 3,
+      "retrieval_after_50pct_loss": 1.0,
+      "tamper_detected": true,
+      "tamper_bad_seq": 3,
+      "verdict": "4chan loses dead threads (retrieval 0); reddit keeps them on one central server; the hybrid content-addresses every thread into a hash-chained archive replicated across 6 nodes, so after killing 3 of them retrieval is 1.0 and any tampered payload breaks verify() at seq 3 - reddit persistence with no central authority, tamper-evident"
+    }
+  },
+  "C5_moderation": {
+    "rows": [
+      {
+        "corruption_p": 0.05,
+        "central_wrong_removal": 0.05,
+        "central_correct_spam_removal": 0.95,
+        "quorum_wrong_removal": 1e-06,
+        "quorum_correct_spam_removal": 0.9994
+      },
+      {
+        "corruption_p": 0.1,
+        "central_wrong_removal": 0.1,
+        "central_correct_spam_removal": 0.9,
+        "quorum_wrong_removal": 6.4e-05,
+        "quorum_correct_spam_removal": 0.9917
+      },
+      {
+        "corruption_p": 0.2,
+        "central_wrong_removal": 0.2,
+        "central_correct_spam_removal": 0.8,
+        "quorum_wrong_removal": 0.003066,
+        "quorum_correct_spam_removal": 0.9144
+      }
+    ],
+    "audit_chain_verifies": true,
+    "verdict": "one central mod is wrong with probability p itself (0.2 at p=0.20); a 9-guardian quorum needs 2/3 consensus so wrong removal collapses to 0.003066 at the same corruption level (0.02 below central) while correct spam removal stays 0.9144 - corruption must capture the quorum, not one account, and every action is on the ledger"
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "reason-tagged downvotes resist brigades",
+      "verdict": "SUPPORTED",
+      "seed_42": "reason-tagged downvotes raise the brigade size needed to hide a good post (P>=0.5) from S~8 (free downvotes) to S~20 (suspension pending quorum review), a 2.5x threshold; even then the good post is only HIDDEN pending review, and a rejected review clears the flags - permanent removal needs the quorum itself (C5)"
+    },
+    {
+      "id": "C2",
+      "claim": "karma-free + tag-to-remove resists bot spam",
+      "verdict": "SUPPORTED",
+      "seed_42": "free accounts + karma collusion saturate the visible top-K with bot spam (frac 0.75); the karma-free hybrid with tag-to-remove drops it to 0.0 (1.0 reduction) - bots have nothing to farm and flagged spam is removed by quorum consensus, not outvoted"
+    },
+    {
+      "id": "C3",
+      "claim": "emergent mesh feed raises minority representation (explicit local clustering)",
+      "verdict": "SUPPORTED",
+      "seed_42": "the global hot feed hands minority users a front page that is ~0.0 their own content and identical to everyone else's (overlap 1.0); the emergent DecentralNet mesh feed routes a minority user 1.0 of their own community (overlap 0.019) - minority representation up, at the honest cost of explicit local clustering (a chosen community, not an algorithmic bubble)"
+    },
+    {
+      "id": "C4",
+      "claim": "ephemeral-first + content-addressed archive = persistence with no central server",
+      "verdict": "SUPPORTED",
+      "seed_42": "4chan loses dead threads (retrieval 0); reddit keeps them on one central server; the hybrid content-addresses every thread into a hash-chained archive replicated across 6 nodes, so after killing 3 of them retrieval is 1.0 and any tampered payload breaks verify() at seq 3 - reddit persistence with no central authority, tamper-evident"
+    },
+    {
+      "id": "C5",
+      "claim": "guardian quorum + ledger resists moderation corruption",
+      "verdict": "SUPPORTED",
+      "seed_42": "one central mod is wrong with probability p itself (0.2 at p=0.20); a 9-guardian quorum needs 2/3 consensus so wrong removal collapses to 0.003066 at the same corruption level (0.02 below central) while correct spam removal stays 0.9144 - corruption must capture the quorum, not one account, and every action is on the ledger"
+    }
+  ],
+  "verdict": "SUPPORTED (structural, agent-based): the hybrid raises the brigade threshold, removes bot spam from the top-K, routes minority content to minority users, archives threads across nodes with tamper-evidence, and collapses wrong moderation - all as MECHANISM claims about the design, not predictions about real users"
+}

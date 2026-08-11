@@ -58,6 +58,8 @@ number so none of the resolved claims can silently drift:
    - decentral_net_mnist T55d: no-dependency DecentralNet on real 64D MNIST embeddings SUPPORTED - local-settle routes at 0.810 vs nearest-centroid baseline 0.817 (within ~1 pt, no central controller); after killing 3/10 neurons survivors keep routing (0.834) and LOCAL heal alone restores spacing 0.562 -> 0.854 with routing preserved (0.822); regrow from fresh homes restores full 10-class net at 0.767 (~5 pts below grown 0.810); caveats: embeddings are the MLP's own 64D layer, single seed 42/4 epochs/disk radius 0.35
    - decentral_net_continual T55e: class-incremental LOCAL reflow on real 64D MNIST NOT SUPPORTED for the routing benefit - ADD old 0.805 vs raw-centroid CONTROL 0.863 (delta -0.057), all 0.647 vs 0.671 (homes ARE the data centroids, reflow cannot help); MIX (no reflow) collapses as the gauge freedom predicts - old 0.061/all 0.305, never mix frames; Part 2 tether NOT dimension-independent - mu0=0.12 2D-tuned over-drifts in 64D (0.49), mu0>=1 cuts drift to 0.11-0.21 but never beats CONTROL (best all 0.812 vs 0.817)
    - decentral_net_ceiling T55h: all-pairs kNN flow ceiling measured ~2*10^4 on this 31.7 GB box (dim=2, k=8) SUPPORTED - ms/step n^1.76 up to 5000 then exponent ~2.06 (D leaves cache); 66/1230/25422 ms/step at n=1k/5k/20k; peak WS 22.6 GB at n=20k vs D=3.2 GB (kNN sort temporaries blow past the estimate); n=40k would peak ~90 GB, not run - scaling beyond ~2*10^4 needs O(1) spatial search (T67)
+   - decentral_net_t67: O(1)-per-neuron spatial search (uniform grid <=3D, scipy cKDTree >=4D) SUPPORTED - indexed flow BIT-IDENTICAL to exact all-pairs (grid 2D n=2000, tree 64D n=500) with spacing/predict equal and grid kNN == brute force on 3 seeds x 1D/2D/3D; 2D scaling exponent 1.11 (indexed) vs 1.92 (exact) - flow is now ~linear, and n=100k flows at 10.35 s/step where the all-pairs D would need 160 GB (10k real top-1M domains x 128D at 4.12 s/step, 102 GB) - the n^2 wall is gone for low-dim flow
+   - bazaar_hybrid: the best-possible 4chan+reddit design (anonymity+bump-order honesty x reddit memory+curation, minus both status economies and central algorithms) verified as 5 structural claims on the repo's OWN machinery - C1 reason-tagged downvotes raise the brigade size to hide a good post 2.5x (reddit S50=8 free downvotes vs hybrid S50=20 pending-quorum-review; even then only HIDDEN, removal needs the quorum); C2 karma-free + tag-to-remove drops top-K spam frac 0.75->0.00 (reddit bot collusion saturates); C3 emergent DecentralNet mesh feed routes minority users 1.00 of their own community vs 0.30 on the global hot feed (overlap 1.0 -> local explicit clustering); C4 content-addressed ledger archive survives 50% node loss with retrieval 1.00 and tamper-evidence (verify() fails at seq 3); C5 9-guardian quorum collapses wrong-removal 0.20 -> 0.0031 at corruption p=0.20 - all SUPPORTED as MECHANISM claims (agent-based, no real users)
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -879,3 +881,51 @@ def test_decentral_net_ceiling_supported():
     # measured ceiling 20k, RAM wall confirmed
     assert d['measured_ceiling_n'] == 20000
     assert d['peak_ws_at_20000_gb'] > 15.0
+
+
+def test_decentral_net_t67_supported():
+    d = load('decentral_net_t67_data.json')
+    c = d['correctness']
+    assert c['verdict'] == 'PASS'
+    assert all(c[k] for k in ('grid2d_flow_bit_identical',
+                              'tree64d_flow_bit_identical', 'spacing_equal',
+                              'predict_equal', 'grid_knn_equals_bruteforce'))
+    s = d['scaling']
+    # indexed flow is ~linear where exact is ~n^2
+    assert s['indexed_exponent'] < 1.4
+    assert s['exact_exponent'] > 1.7
+    # indexed wins decisively at n=8000
+    assert s['indexed_ms_per_step']['8000'] < \
+        s['exact_ms_per_step']['8000'] * 0.3
+    i = d['internet_scale']
+    # n=100k 2D grid flows; the all-pairs D would need 160 GB
+    assert i['grid2d_n100k_ms_per_step'] > 0
+    assert i['grid2d_allpairs_d_gb'] > 100
+    assert i['highdim_real_top1m'] is True
+    assert i['highdim_n10k_ms_per_step'] > 0
+
+
+def test_bazaar_hybrid_supported():
+    d = load('bazaar_hybrid_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    claims = {c['id']: c for c in d['claims']}
+    assert set(claims) == {'C1', 'C2', 'C3', 'C4', 'C5'}
+    assert all(c['verdict'] == 'SUPPORTED' for c in claims.values())
+    # C1: hybrid burial threshold strictly above reddit's (seed 42)
+    c1 = d['C1_brigade']['42']
+    assert c1['hybrid_S50'] > c1['reddit_S50']
+    # C2: hybrid top-K spam fraction well below reddit's on every seed
+    for s in d['seeds']:
+        assert d['C2_spam'][str(s)]['hybrid_topk_spam_frac'] < 0.1
+        assert d['C2_spam'][str(s)]['reddit_topk_spam_frac'] > 0.3
+    # C3: minority users see mostly their own community on the mesh feed
+    for s in d['seeds']:
+        assert d['C3_feed'][str(s)][
+            'hybrid_minority_share_in_minority_feed'] > 0.8
+    # C4: archive survives 50% node loss, tamper detected
+    for s in d['seeds']:
+        assert d['C4_archive'][str(s)]['retrieval_after_50pct_loss'] > 0.99
+        assert d['C4_archive'][str(s)]['tamper_detected'] is True
+    # C5: quorum wrong-removal collapses below central at p=0.20
+    c5 = d['C5_moderation']['rows'][2]
+    assert c5['quorum_wrong_removal'] < c5['central_wrong_removal'] / 50.0

@@ -9,31 +9,31 @@
   },
   "scaling": {
     "exact_ms_per_step": {
-      "1000": 50.95,
-      "2000": 271.74,
-      "4000": 863.29,
-      "8000": 2791.51
+      "1000": 65.51,
+      "2000": 220.31,
+      "4000": 917.02,
+      "8000": 3475.87
     },
     "indexed_ms_per_step": {
-      "1000": 37.37,
-      "2000": 76.35,
-      "4000": 154.22,
-      "8000": 316.54,
-      "16000": 725.63,
-      "32000": 1407.16,
-      "64000": 2900.21,
-      "100000": 4998.94
+      "1000": 51.99,
+      "2000": 107.63,
+      "4000": 224.64,
+      "8000": 486.44,
+      "16000": 1097.03,
+      "32000": 2382.14,
+      "64000": 5261.11,
+      "100000": 7819.88
     },
-    "exact_exponent": 1.9,
-    "indexed_exponent": 1.06,
+    "exact_exponent": 1.925,
+    "indexed_exponent": 1.106,
     "verdict": "MEASURED"
   },
   "internet_scale": {
-    "grid2d_n100k_ms_per_step": 6126.17,
+    "grid2d_n100k_ms_per_step": 10352.92,
     "grid2d_n100k_spacing": 0.005743978066757829,
     "grid2d_allpairs_d_gb": 160.0,
     "highdim_real_top1m": true,
-    "highdim_n10k_ms_per_step": 2076.17,
+    "highdim_n10k_ms_per_step": 4119.68,
     "verdict": "MEASURED"
   },
   "limits": {
