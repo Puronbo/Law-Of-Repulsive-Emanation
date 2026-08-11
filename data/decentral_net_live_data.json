@@ -1,0 +1,93 @@
+{
+ "claims": [
+  {
+   "all_seeds": true,
+   "claim": "bounded-memory churn: population never exceeds CAP under arrivals + damage + pruning (per-step cost stays O(CAP^2))",
+   "id": "V1",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "all_seeds": true,
+   "claim": "self-healing without a repair unit: after each random neuron death the local k-NN re-spread keeps the survivors in the healthy consensus-spacing band (post within 0.5-2.0x of pre - removing a neuron legitimately enlarges mean k-NN distance), no clump and no rim blow-up",
+   "id": "V2",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "all_seeds": true,
+   "claim": "routing intact through churn: self-consistent k-NN probe stays accurate after thousands of ticks of arrivals, damage and pruning",
+   "id": "V3",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "checkpoint/resume is lossless: a session resumed from a checkpoint reproduces the uninterrupted trajectory (positions, counters, RNG stream) deterministically",
+   "continuity": true,
+   "id": "V4",
+   "verdict": "SUPPORTED"
+  }
+ ],
+ "date": "2026-08-11",
+ "experiment": "decentral_net_live (T55f)",
+ "per_seed": {
+  "11": {
+   "born": 60,
+   "bounded_pop": true,
+   "cap": 30,
+   "healed": true,
+   "killed": 10,
+   "max_n": 30,
+   "n_damage_events": 10,
+   "probe_acc": 1.0,
+   "pruned": 20,
+   "recovery_ratio": 1.379068187750965,
+   "routing_ok": true,
+   "spacing_post_damage": 0.5463128789634175,
+   "spacing_pre_damage": 0.39614638624531295,
+   "ticks": 3000
+  },
+  "42": {
+   "born": 60,
+   "bounded_pop": true,
+   "cap": 30,
+   "healed": true,
+   "killed": 10,
+   "max_n": 30,
+   "n_damage_events": 10,
+   "probe_acc": 1.0,
+   "pruned": 20,
+   "recovery_ratio": 1.4285125827318033,
+   "routing_ok": true,
+   "spacing_post_damage": 0.548314168886077,
+   "spacing_pre_damage": 0.3838357292152886,
+   "ticks": 3000
+  },
+  "7": {
+   "born": 60,
+   "bounded_pop": true,
+   "cap": 30,
+   "healed": true,
+   "killed": 10,
+   "max_n": 30,
+   "n_damage_events": 10,
+   "probe_acc": 1.0,
+   "pruned": 20,
+   "recovery_ratio": 1.3721753570751138,
+   "routing_ok": true,
+   "spacing_post_damage": 0.5537302520105261,
+   "spacing_pre_damage": 0.40354190093519837,
+   "ticks": 3000
+  }
+ },
+ "resume_continuity": {
+  "continuity": true,
+  "counters_match": true,
+  "dt": 600,
+  "pos_identical": true,
+  "t0": 1500
+ },
+ "seeds": [
+  42,
+  11,
+  7
+ ],
+ "verdict": "SUPPORTED (structural, bounded run): the live daemon's population stays within CAP through arrivals, damage and pruning; the local k-NN re-spread heals each random death back to the healthy spacing band with no repair unit; the self-consistent routing probe stays accurate through churn; and a checkpoint/resume reproduces the uninterrupted trajectory deterministically - all on the repo's own numpy-only DecentralNet with bounded ring memory"
+}

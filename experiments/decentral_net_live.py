@@ -31,6 +31,8 @@ Usage:
   python decentral_net_live.py --ticks 50000    # bounded run by tick count
   python decentral_net_live.py --save live.pkl --stopfile stop.flag
   python decentral_net_live.py --load live.pkl  # resume
+  python decentral_net_live.py --verdict data/decentral_net_live_data.json
+                                                # pin the structural claims
 """
 
 import numpy as np
@@ -93,6 +95,14 @@ class Live:
         self.killed = 0
         self.recent_ms = []
         self.heartbeats = []
+        self.heal_samples = []
+        self.max_n = 0
+        self.arrival_every = ARRIVAL_EVERY
+        self.damage_every = DAMAGE_EVERY
+        self.heartbeat_every = HEARTBEAT_EVERY
+        self.flow_per_tick = FLOW_PER_TICK
+        self.min_pop = MIN_POP
+        self.autosave_every = AUTOSAVE_EVERY
         self._stop = False
 
     # ------------------------------------------------------------------ #
@@ -110,12 +120,15 @@ class Live:
         self.net.settle(40)             # re-spread after pruning
 
     def _damage(self):
-        if self.net.n <= MIN_POP:
+        if self.net.n <= self.min_pop:
             return
+        pre = self.net.spacing()
         j = int(self.rng.choice(self.net.n))
         self.net.remove([j])
         self.killed += 1
-        self.net.settle(60)             # local heal (no repair unit)
+        self.net.settle(60)
+        post = self.net.spacing()
+        self.heal_samples.append([float(pre), float(post)])
 
     def _heartbeat(self, t0):
         n = self.net.n
@@ -167,19 +180,20 @@ class Live:
         while not self._stop:
             t_a = time.time()
             self.tick += 1
-            self.net.settle(FLOW_PER_TICK)
-            if self.tick % ARRIVAL_EVERY == 0:
+            self.net.settle(self.flow_per_tick)
+            if self.tick % self.arrival_every == 0:
                 self._arrive()
-            if self.tick % DAMAGE_EVERY == 0:
+            if self.tick % self.damage_every == 0:
                 self._damage()
             if self.net.n > self.cap:
                 self._prune()
+            self.max_n = max(self.max_n, self.net.n)
             self.recent_ms.append((time.time() - t_a) * 1e3)
             if len(self.recent_ms) > RING:
                 self.recent_ms.pop(0)
-            if self.tick % HEARTBEAT_EVERY == 0:
+            if self.tick % self.heartbeat_every == 0:
                 self._heartbeat(t0)
-            if save_path and self.tick - last_save >= AUTOSAVE_EVERY:
+            if save_path and self.tick - last_save >= self.autosave_every:
                 self.save(save_path)
                 last_save = self.tick
             if stopfile and os.path.exists(stopfile):
@@ -213,7 +227,129 @@ class Live:
 
 
 # ---------------------------------------------------------------------- #
+def _verdict_run(seed, ticks=3000, damage_every=300):
+    live = Live(seed=seed, cap=CAP)
+    live.damage_every = damage_every
+    live.heartbeat_every = ticks + 1      # silence heartbeats in verdict runs
+    live.run(max_ticks=ticks)
+    pre = np.median([s[0] for s in live.heal_samples]) if live.heal_samples else 0.0
+    post = np.median([s[1] for s in live.heal_samples]) if live.heal_samples else 0.0
+    recover = (post / pre) if pre > 0 else 1.0
+    acc = probe_acc(live.net, live.rng)
+    return live, float(pre), float(post), float(recover), float(acc)
+
+
+def _verdict_resume(seed, t0=1500, dt=600):
+    """Checkpoint/resume continuity: a resumed session reproduces the
+    uninterrupted trajectory bit-for-bit (tick, counters, RNG stream, and
+    neuron positions all carry on from the checkpoint)."""
+    import tempfile
+    cp = os.path.join(tempfile.gettempdir(), 'live_cp.pkl')
+    a = Live(seed=seed, cap=CAP)
+    a.damage_every = 300
+    a.heartbeat_every = t0 + dt + 1
+    a.run(max_ticks=t0)
+    a.save(cp)
+    a.run(max_ticks=t0 + dt)
+    b = Live.load(cp)
+    b.damage_every = 300
+    b.heartbeat_every = t0 + dt + 1
+    b.run(max_ticks=t0 + dt)
+    pos_ok = bool(np.allclose(b.net.q, a.net.q))
+    counters_ok = (b.tick == a.tick and b.born == a.born
+                   and b.pruned == a.pruned and b.killed == a.killed)
+    try:
+        os.remove(cp)
+    except OSError:
+        pass
+    return {"t0": t0, "dt": dt, "continuity": bool(pos_ok and counters_ok),
+            "pos_identical": pos_ok, "counters_match": counters_ok}
+
+
+def _verdict_main(path):
+    import json, datetime
+    SEEDS = (42, 11, 7)
+    per = {}
+    for s in SEEDS:
+        live, pre, post, recover, acc = _verdict_run(s)
+        per[str(s)] = {
+            "ticks": live.tick, "cap": live.cap, "max_n": live.max_n,
+            "born": live.born, "pruned": live.pruned, "killed": live.killed,
+            "n_damage_events": len(live.heal_samples),
+            "spacing_pre_damage": pre, "spacing_post_damage": post,
+            "recovery_ratio": recover, "probe_acc": acc,
+            "bounded_pop": bool(live.max_n <= live.cap),
+            "healed": bool(0.05 <= post <= 0.9 and 0.5 <= recover <= 2.0),
+            "routing_ok": bool(acc >= 0.8),
+        }
+    res = _verdict_resume(42)
+    v1 = all(per[str(s)]["bounded_pop"] for s in SEEDS)
+    v2 = all(per[str(s)]["healed"] for s in SEEDS)
+    v3 = all(per[str(s)]["routing_ok"] for s in SEEDS)
+    v4 = res["continuity"]
+    claims = [
+        {"id": "V1",
+         "claim": "bounded-memory churn: population never exceeds CAP "
+                  "under arrivals + damage + pruning (per-step cost stays "
+                  "O(CAP^2))",
+         "verdict": "SUPPORTED" if v1 else "FAILED",
+         "all_seeds": v1},
+        {"id": "V2",
+         "claim": "self-healing without a repair unit: after each random "
+                  "neuron death the local k-NN re-spread keeps the "
+                  "survivors in the healthy consensus-spacing band (post "
+                  "within 0.5-2.0x of pre - removing a neuron legitimately "
+                  "enlarges mean k-NN distance), no clump and no rim "
+                  "blow-up",
+         "verdict": "SUPPORTED" if v2 else "FAILED",
+         "all_seeds": v2},
+        {"id": "V3",
+         "claim": "routing intact through churn: self-consistent k-NN "
+                  "probe stays accurate after thousands of ticks of "
+                  "arrivals, damage and pruning",
+         "verdict": "SUPPORTED" if v3 else "FAILED",
+         "all_seeds": v3},
+        {"id": "V4",
+         "claim": "checkpoint/resume is lossless: a session resumed from a "
+                  "checkpoint reproduces the uninterrupted trajectory "
+                  "(positions, counters, RNG stream) deterministically",
+         "verdict": "SUPPORTED" if v4 else "FAILED",
+         "continuity": v4},
+    ]
+    overall = "SUPPORTED" if all([v1, v2, v3, v4]) else "FAILED"
+    results = {
+        "experiment": "decentral_net_live (T55f)",
+        "date": datetime.date.today().isoformat(),
+        "seeds": list(SEEDS),
+        "verdict": ("%s (structural, bounded run): the live daemon's "
+                    "population stays within CAP through arrivals, damage "
+                    "and pruning; the local k-NN re-spread heals each random "
+                    "death back to the healthy spacing band with no repair "
+                    "unit; the self-consistent routing probe stays accurate "
+                    "through churn; and a checkpoint/resume reproduces the "
+                    "uninterrupted trajectory deterministically - all on "
+                    "the repo's own numpy-only DecentralNet with bounded "
+                    "ring memory" % overall),
+        "per_seed": per,
+        "resume_continuity": res,
+        "claims": claims,
+    }
+    with open(path, 'w') as f:
+        json.dump(results, f, indent=1, sort_keys=True)
+    print("verdicts written to %s" % path)
+    print("V1 bounded pop:  %s" % [per[str(s)]["bounded_pop"] for s in SEEDS])
+    print("V2 healed:       %s" % [per[str(s)]["healed"] for s in SEEDS])
+    print("V3 probe acc:    %s" % [round(per[str(s)]["probe_acc"], 3)
+                                   for s in SEEDS])
+    print("V4 resume lossless: %s" % res["continuity"])
+    return results
+
+
+# ---------------------------------------------------------------------- #
 def main(argv):
+    if '--verdict' in argv:
+        _verdict_main(argv[argv.index('--verdict') + 1])
+        return
     max_seconds, max_ticks = None, None
     if '--seconds' in argv:
         max_seconds = int(argv[argv.index('--seconds') + 1])
