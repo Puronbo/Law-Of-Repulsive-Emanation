@@ -399,7 +399,7 @@ given so it can be re-run).
  8. **Regression coverage for the T55 series + library** — the experiments print
     results but nothing pins them.  (T65 was the first probe to ship a JSON
     verdict; make that the norm.)  **PROGRESS 2026-08-08** — the
-     solvable-theorem pattern is now the norm: 58 verdict experiments
+     solvable-theorem pattern is now the norm: 59 verdict experiments
      (`prime_time`, `time_reversal_convergence`, `bekenstein_rerun`,
      `wheeler_dewitt_selection`, `fold_unitary`, `kawasaki_ctc`,
      `bridge_extension`, `selberg_paradigm`, `fold_ladder_phi`,
@@ -417,13 +417,25 @@ given so it can be re-run).
      `polysphere_mnist`, `polysphere_nnflow_viz`, `decentral_net`,
      `decentral_net_mnist`, `decentral_net_continual`,
      `decentral_net_ceiling`, `decentral_net_t67`, `decentral_net_live`,
-     `bazaar_hybrid`, plus the five
+     `bazaar_hybrid`, `bazaar_net`, plus the five
      earlier probes)
      each ship a claim/verdict JSON and are pinned by
-     `tests/test_solvable_theorems.py` (58 tests; full suite 248).  The
+     `tests/test_solvable_theorems.py` (59 tests; full suite 249).  The
      bazaar_hybrid verdict now covers six structural claims (C1 brigade
      threshold, C2 spam, C3 feed, C4 archive, C5 quorum, C6 verified-vote-only
      membership).  The
+     bazaar_net verdict (2026-08-11) then runs the bazaar as a REAL network —
+     4 node processes on the T70 socket transport (optional mutual TLS)
+     replicate every action into bit-identical content-addressed LedgerChain
+     archives; N1 content replicates across nodes, N2 the emergent mesh feed
+     routes the minority user to its own community, N3 removal is
+     standing-gated and quorum-confirmed (sockpuppet standing 0.00 contributes
+     nothing, a fabricated brigade on a standing author is rejected where a
+     central 3-flag rule removes), N4 the archive is tamper-evident at the
+     flipped sequence, N5 the network survives node death with stateless
+     restart resync to a bit-identical chain (honest walls: driver-sequenced
+     ordering needs a distributed total-order primitive in a real network;
+     majority-honesty quorum, not BFT).  The
     broad `experiments/` scripts (remaining flow, balance, polysphere,
     decentral) still
     print without persisted verdicts — extending the JSON verdict norm to

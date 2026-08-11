@@ -959,3 +959,38 @@ def test_bazaar_hybrid_supported():
         assert c6['verified_S50'] > c6['anon_S50'] * 10
         assert c6['quorum_wrong_removal_verified_at_p020'] < \
             c6['quorum_wrong_removal_anon_at_p020'] / 100.0
+
+
+def test_bazaar_net_supported():
+    d = load('bazaar_net_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    claims = {c['id']: c for c in d['claims']}
+    assert set(claims) == {'N1', 'N2', 'N3a', 'N3b', 'N3c', 'N4', 'N5'}
+    assert all(c['verdict'] == 'SUPPORTED' for c in claims.values())
+    for s in d['seeds']:
+        p = d['per_seed'][str(s)]
+        # N1: one chain head, one length, every archive verifies, cross-node
+        # search finds the content
+        assert p['heads_set_size'] == 1
+        assert len(p['lengths']) == 1
+        assert p['verify_all'] is True
+        assert p['search_hits'] > 0
+        # N2: emergent mesh feed dominated by the minority's own authors
+        assert p['minor_share'] >= 0.6
+        # N3a: sockpuppet below the standing gate; good post NOT removed
+        assert p['sock_standing'] < 0.5
+        assert p['good_removed'] is False
+        # N3b: spam removed through the guardian quorum
+        assert p['spam_removed'] is True
+        # N3c: fabricated brigade on a standing author's post rejected
+        assert p['g3_standing'] >= 0.7
+        # N5: content survives a node kill; stateless restart resyncs to a
+        # bit-identical verifying chain
+        assert p['survived_search_count'] > 0
+        assert p['resynced'] is True
+        assert p['resynced_equal'] is True
+        assert p['snap3_verify'] is True
+    # N4: tamper-evidence - flipped payload breaks verify at its sequence
+    # while the other node's archive stays valid
+    assert d['tamper']['tamper_detected'] is True
+    assert d['tamper']['other_node_still_valid'] is True

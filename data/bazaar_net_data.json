@@ -1,0 +1,145 @@
+{
+ "claims": [
+  {
+   "claim": "content replicates: one chain head + one length across all nodes, every archive verifies, and a post submitted on one node is searchable from another over real sockets",
+   "id": "N1",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "the emergent mesh feed works: a minority user's feed is dominated by their own community's authors (local clustering over real homes)",
+   "id": "N2",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "a fresh sockpuppet (standing below the gate) contributes nothing to a removal",
+   "id": "N3a",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "a spam post flagged by 3 standing users is removed through the 9-guardian 2/3 quorum",
+   "id": "N3b",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "a fabricated brigade on a good post is REJECTED by the quorum (guardians trust earned standing), where a central 3-flag rule would have removed it",
+   "id": "N3c",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "the archive is tamper-evident: a flipped payload breaks verify() at its sequence while the other nodes stay valid",
+   "id": "N4",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "the network survives node death: content is served by survivors and a stateless restart resyncs to a bit-identical, verifying archive",
+   "id": "N5",
+   "verdict": "SUPPORTED"
+  }
+ ],
+ "date": "2026-08-11",
+ "experiment": "bazaar_net (working P2P social media network)",
+ "guardians": 9,
+ "n_nodes": 4,
+ "need": 6,
+ "per_seed": {
+  "11": {
+   "feed": [
+    "m2",
+    "m1",
+    "m0"
+   ],
+   "g3_standing": 1.0,
+   "good_removed": false,
+   "heads_set_size": 1,
+   "lengths": [
+    111
+   ],
+   "minor_share": 1.0,
+   "resynced": true,
+   "resynced_equal": true,
+   "search_hits": 8,
+   "snap3_verify": true,
+   "sock_standing": 0.0,
+   "spam_removed": true,
+   "survived_search_count": 8,
+   "verify_all": true
+  },
+  "42": {
+   "feed": [
+    "m2",
+    "m1",
+    "m0"
+   ],
+   "g3_standing": 1.0,
+   "good_removed": false,
+   "heads_set_size": 1,
+   "lengths": [
+    111
+   ],
+   "minor_share": 1.0,
+   "resynced": true,
+   "resynced_equal": true,
+   "search_hits": 8,
+   "snap3_verify": true,
+   "sock_standing": 0.0,
+   "spam_removed": true,
+   "survived_search_count": 8,
+   "verify_all": true
+  },
+  "7": {
+   "feed": [
+    "m2",
+    "m1",
+    "m0"
+   ],
+   "g3_standing": 1.0,
+   "good_removed": false,
+   "heads_set_size": 1,
+   "lengths": [
+    111
+   ],
+   "minor_share": 1.0,
+   "resynced": true,
+   "resynced_equal": true,
+   "search_hits": 8,
+   "snap3_verify": true,
+   "sock_standing": 0.0,
+   "spam_removed": true,
+   "survived_search_count": 8,
+   "verify_all": true
+  }
+ },
+ "seeds": [
+  42,
+  11,
+  7
+ ],
+ "tamper": {
+  "bad_seq": 2,
+  "other_node_still_valid": true,
+  "tamper_detected": true
+ },
+ "tls_run": {
+  "feed": [
+   "m2",
+   "m1",
+   "m0"
+  ],
+  "g3_standing": 1.0,
+  "good_removed": false,
+  "heads_set_size": 1,
+  "lengths": [
+   111
+  ],
+  "minor_share": 1.0,
+  "resynced": true,
+  "resynced_equal": true,
+  "search_hits": 8,
+  "snap3_verify": true,
+  "sock_standing": 0.0,
+  "spam_removed": true,
+  "survived_search_count": 8,
+  "verify_all": true
+ },
+ "verdict": "SUPPORTED (structural, over real TCP processes): the bazaar works as a network - posts replicate to a single verifying archive across all nodes, the emergent mesh feed routes minority users to their own community, removal is standing-gated and quorum-confirmed (sockpuppets contribute nothing, fabricated brigades are rejected where a central rule would remove), the archive is tamper-evident, and a crashed node's content is served by survivors while a stateless restart resyncs to a bit-identical chain - on the repo's own T70 socket transport, LedgerChain archive, and DecentralNet feed routing, with mutual TLS optional"
+}
