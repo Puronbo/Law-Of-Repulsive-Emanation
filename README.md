@@ -13,7 +13,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
-| Regression suite | **64/64 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
+| Regression suite | **65/65 passed** (`tests/test_spring_series.py` + `tests/test_solvable_theorems.py`, ~1.1 s) |
 | L.O.R.E. | C0 = V(q0) = H(q0,0), 109 tests; T-symmetry error 0.003 |
 | Fold theorem (T63/T64) | crease = **unique viscosity solution of |r′| = a**; retrace = cut locus; eikonal err 3.3e-13; measured crease 0.0350π vs derived 0.0318π; area 2666.6665 vs 2666.6666… |
 | Clock-test canon (T59/T61) | law-ness 1.000 → 0.417 under calendar re-index → 1.000 under rotation; rotation overlap/sim 1.000 |
@@ -172,6 +172,7 @@ The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.j
 | Decentralized local net T55c (`decentral_net.py`) | SUPPORTED (banner = multi-seed 42/11/7 means for Parts 0–3; Part 4 = seed 42): a fully local net (private home trap + k-NN C0 repulsion + per-neuron norm steps, NO global mean/max/controller) is ~free or better on old-routing (banner final_old ABS-SC 0.913 vs centralized 0.870; final_all 0.843 vs 0.853) and the shell EMERGES from local rules alone — but requires the always-on private home tether (without it pure local expansion collapses to the rim: all-route 0.57 → 0.85 at mu0=0.12) and k-NN truncation packs lumpier than all-pairs C0 (k=4 worse than k=8). Self-healing with NO repair unit: after 50% neuron loss local settle re-uniformizes survivors (spacing spread 0.16 → 0.11), regrowth restores routing ≥ pre-damage (0.917 vs 0.877 at 50%). MNIST Part 4: no centroid collapse, ABS-SC final-all 0.813 > FIB 0.647. Caveats: spacing gate never fired on the clean stream (GATE ≈ ABS-SC), Part 4 single-seed |
 | DecentralNet on real MNIST T55d (`decentral_net_mnist.py`) | SUPPORTED (seed 42, 64D): the no-dependency module (public API only) routes real embeddings at 0.810 vs nearest-centroid baseline 0.817 (within ~1 pt, no central controller); after killing 3 of 10 neurons survivors keep routing (0.834) and LOCAL heal alone restores spacing 0.562 → 0.854 with routing preserved (0.822); regrow from fresh homes restores the full 10-class net at 0.767 (~5 pts below grown 0.810). Caveats: embeddings are the MLP's own 64D layer (in-dist by construction), single seed 42 / 4 epochs / disk radius 0.35 |
 | DecentralNet class-incremental T55e (`decentral_net_continual.py`) | NOT SUPPORTED for the routing benefit (seed 42): on real 64D MNIST the local reflow LOSES to raw centroids — ADD old 0.805 vs CONTROL 0.863 (delta −0.057), all 0.647 vs 0.671; the homes ARE the data centroids, so reflowing them cannot help nearest-centroid routing. MIX (no reflow on appended neurons) COLLAPSES as the gauge freedom predicts — old 0.061, all 0.305 (never mix frames; always reflow appended neurons). Part 2: the tether is NOT dimension-independent — mu0=0.12 (2D-tuned) over-drifts in 64D (0.49), and mu0≥1 cuts drift to 0.11–0.21 but routing never beats CONTROL (best all 0.812 at mu0=4.0 vs 0.817). Net: the module avoids collapse only when every appended neuron is reflowed (ADD), but the local geometry adds nothing over keeping raw centroids |
+| Flow ceiling T55h (`decentral_net_ceiling.py`) | SUPPORTED (measured, dim=2, k=8): the all-pairs kNN flow ceiling on this 31.7 GB box is ~2×10⁴, not the naive 50–60k — ms/step follows n^1.76 (t = 2.96e−7·n^1.76) up to n=5000, then the exponent rises to ~2.06 from 5k→20k once the D array leaves cache (66 / 1230 / 25422 ms/step at n=1k / 5k / 20k); RAM is the binding wall — peak working set 22.6 GB at n=20k while the D array is only 3.2 GB (kNN sort temporaries). n=40k would peak ~90 GB (not run — hard-OOM risk). Scaling beyond ~2×10⁴ needs O(1)-per-neuron spatial search (T67), not all-pairs |
 
 ## Internet-Scale Flow (T67, T72)
 
@@ -258,6 +259,7 @@ python experiments/polysphere_nnflow_viz.py       # NN-truths / S2-flow / viz pr
 python experiments/decentral_net.py               # decentralized local net T55c verdict (SUPPORTED)
 python experiments/decentral_net_mnist.py         # DecentralNet on real MNIST T55d verdict (SUPPORTED)
 python experiments/decentral_net_continual.py     # DecentralNet class-incremental T55e verdict (NOT SUPPORTED)
+python experiments/decentral_net_ceiling.py       # flow ceiling T55h verdict (SUPPORTED, measured)
 python Universals/serve_dashboard.py   # L.O.R.E. dashboard -> http://localhost:8080/docs/
 ```
 

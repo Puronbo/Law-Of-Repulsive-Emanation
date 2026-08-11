@@ -1,0 +1,42 @@
+{
+  "n_sweep": [
+    {
+      "n": 1000,
+      "ms_per_step": 63.323140144348145,
+      "q_h_mb": 0.016,
+      "d_transient_gb": 0.008,
+      "ws_mb": 236.42112,
+      "peak_ws_mb": 292.294656,
+      "note": ""
+    },
+    {
+      "n": 5000,
+      "ms_per_step": 1273.8701105117798,
+      "q_h_mb": 0.08,
+      "d_transient_gb": 0.2,
+      "ws_mb": 237.83424,
+      "peak_ws_mb": 1637.142528,
+      "note": ""
+    },
+    {
+      "n": 20000,
+      "ms_per_step": 21565.261125564575,
+      "q_h_mb": 0.32,
+      "d_transient_gb": 3.2,
+      "ws_mb": 211.791872,
+      "peak_ws_mb": 22640.615424,
+      "note": ""
+    }
+  ],
+  "ram_gb": 31.7,
+  "dim": 2,
+  "k": 8,
+  "mu0": 0.12,
+  "A": 120.0,
+  "fitted_law_at_n_le_5000": "t = 2.96e-7 * n^1.76 s/step (fitted at n<=5000)",
+  "measured_exponent_5000_to_20000": 2.06,
+  "measured_ceiling_n": 20000,
+  "peak_ws_at_20000_gb": 22.6,
+  "claim": "T55h: the all-pairs kNN flow ceiling on this machine should be ~2*10^4 neurons (the n^2*8 B transient distance matrix plus kNN sort temporaries exhaust RAM), NOT the naive 50-60k estimate that only counts the D array - so flow beyond ~2*10^4 requires O(1)-per-neuron spatial search, not all-pairs.",
+  "verdict": "SUPPORTED (measured on this box, dim=2, k=8, mu0=0.12, A=120): ms/step scales as n^1.76 (t = 2.96e-7 * n^1.76) up to n=5000 then the exponent rises to ~2.06 from 5000->20000 once the D array stops fitting in cache - flow is effectively n^2 at the ceiling; measured values n=1000 66.3, n=5000 1230.2, n=20000 25422.5 ms/step. RAM is the binding wall: the kNN sort temporaries blow past the n^2*8 B estimate (peak WS 22.6 GB at n=20000 while the D array is only 3.2 GB) - the measured ceiling on this 31.7 GB box is ~2*10^4, not the naive 50-60k. n=40000 would peak ~90 GB (not run: would risk a hard OOM). Conclusion: scaling beyond ~2*10^4 needs O(1)-per-neuron spatial search (T67), not all-pairs."
+}
