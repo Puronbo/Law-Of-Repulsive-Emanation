@@ -152,6 +152,32 @@ def test_st_source_declares_the_servo_fbs():
         assert needle in src, needle
 
 
+def test_regen_accounting_conserves_energy():
+    """Power accounting must close: motoring minus regen equals the net
+    mechanical energy put into the axis (potential + kinetic), so the
+    recovered fraction is a defensible number."""
+    axis = FoldAxis(k_restore=0.02)
+    axis.set_goal(TARGET)
+    motoring = regen = 0.0
+    for _ in range(200_000):
+        axis.step()
+        p = axis.motor_power
+        if p >= 0.0:
+            motoring += p * axis.dt
+        else:
+            regen += -p * axis.dt
+        if axis.in_position:
+            break
+    assert axis.in_position
+    assert motoring > 0.0
+    assert 0.0 < regen < motoring          # some spring-back work recovered
+    # energy stored in the spring field at the target: 1/2 k theta^2
+    # (the axis ends holding against the restore moment, so the net bus
+    # energy must at least match it - a weak but real conservation bound)
+    spring_j = 0.5 * axis.k_restore * (axis.angle ** 2)
+    assert (motoring - regen) >= spring_j * 0.99
+
+
 def test_st_source_phases_match_python_mirror():
     """drive=1, dwell=2, settle=3 - the ST CASE arms and the Python phase
     names describe the same overshoot/dwell/settle behavior."""

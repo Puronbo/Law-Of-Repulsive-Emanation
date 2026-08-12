@@ -126,6 +126,24 @@ access), never as the daily energy source. The §3.36 feasibility hinges
 exactly on its own measured gap: green H₂ at **$5–7/kg actual vs $2/$1
 targets**. At $1–2/kg it becomes competitive; at today's prices it is not.
 
+### 2.4 Waste-energy recovery — small on the electrical side
+
+The line's waste-recovery streams (detailed in `AUTO_PACKAGING_SYSTEM.md`
+§9) reduce electrical demand only modestly, so they do **not** change the
+solar sizing materially:
+
+| Stream | Effect on the 120 kWh/day electrical demand |
+|---|---|
+| Servo regenerative braking (`experiments/servo_regen.py`, `[measured]` sim) | ~1.6 kWh/day (24/7) returned to the shared DC bus → **~1.3%** demand cut |
+| Compressed-air heat recovery | **displaces heating energy** (~10–12 kWh/day seasonal), not electrical draw |
+| Vacuum/blow-off timing, glue-pot, cabinet heat | <1 kWh/day, minor |
+
+Verdict: recovery is architecturally worthwhile (DC-bus crosstalk + battery
+recapture, less brake-resistor heat) but the honest number is that waste
+recovery moves the demand by ~1–3%; the dominant saving on this line is
+*demand-side* (right-sizing the air system), which is why the corrected PV
+sizing in §1 still stands.
+
 ---
 
 ## 3. Cost of building the line (hardware, 2026 market)

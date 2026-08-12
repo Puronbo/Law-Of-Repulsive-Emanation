@@ -236,7 +236,46 @@ backup is resilience-only at 2026 hydrogen prices.
 
 ---
 
-## 9. Honest walls
+## 9. Waste energy reuse — capabilities and possibilities
+
+Energy-recovery streams on the line, ranked by recoverable size and ease of
+capture. The quantified servo-regen figure comes from
+`experiments/servo_regen.py`; the heat figures are engineering estimates from
+component ratings. `[hypothesis]` unless tagged `[measured]`.
+
+| Stream | Source | Recoverable | Daily (one 8 h shift) | Capture method | Priority |
+|---|---|---|---|---|---|
+| Compressed-air waste heat | air compressor (~2 kW input, ~75–85% rejected as heat) | ~1.5 kW | ~10–12 kWh as heat | heat exchanger on compressor outlet → washdown hot water / winter shop heat | **HIGH** |
+| Servo regenerative braking `[measured]` | fold axes' settle phase (spring-back does work on the motor) | ~8% of fold motoring, ~196 J/axis-cycle | ~0.5 kWh returned to bus | shared EtherCAT DC bus + battery recapture (§3.36 PV+battery); brake resistors only as fault backstop | **MEDIUM** |
+| Vacuum/blow-off demand | Bernoulli grippers, reject gate | small, low-grade | ~0.5–1 kWh equivalent | timing/sequencing (air only while gripping) rather than recovery | LOW |
+| Hot-melt/tape-head heat | glue-pot heater ~0.5 kW | minimal | — | insulate the pot, duty-cycle the heater | LOW |
+| Control-cabinet cooling | servo drives + PLC reject heat | 0.1–0.3 kW, seasonal | ~1–2 kWh winter | passive ducting to preheat the shop in winter | LOW |
+| H₂ fuel-cell CHP | FC exhaust (if H₂ backup installed) | ~40–50% of fuel LHV as heat | ~15–25 kWh | heat exchanger to a buffer tank | IF H₂ used |
+
+**Architectural points:**
+- **Shared DC-bus crosstalk** — when one axis is regenerating and another is
+  motoring simultaneously (the 4 fold axes rarely all brake at once), the
+  regen is used directly by the motoring axis with zero conversion loss. This
+  is the same "flow the small core" idea (T67) applied to power, and it needs
+  no extra hardware beyond a common DC bus.
+- **Battery recapture** — DC-coupling the servo bus to the §3.36 PV battery
+  lets regen surplus charge the battery instead of heating a brake resistor;
+  the battery smooths the fold-to-fold power peaks that would otherwise
+  ripple the AC draw.
+- **Demand-side beats recovery** — the largest single "waste" saving on this
+  line is *not building the waste*: right-sizing the air system (low-pressure
+  vacuum blowers for destacking instead of central compressed air) cuts the
+  1–2 kW compressed-air load at the source, which is worth more than
+  recovering its waste heat.
+
+**Honest wall:** servo regen is numerically small on this line (~0.5 kWh per
+8 h shift — architectural value, not energy value); compressed-air heat
+recovery displaces *heating* energy (seasonal) rather than the line's
+electrical draw; every figure here is schematic-level, not metered.
+
+---
+
+## 10. Honest walls
 
 - The fold/crease/emanation mappings are **analogies over real mechatronics**;
   the physical laws here are classical (elasticity, friction, servo control),

@@ -85,6 +85,7 @@ class FoldAxis:
         self._target = 0.0
         self._dwell_left = 0.0
         self.in_position = False
+        self._torque = 0.0
 
     def set_goal(self, target_deg, overshoot_deg=3.0, dwell_s=1.0):
         self._target = target_deg
@@ -98,6 +99,16 @@ class FoldAxis:
     @property
     def phase(self):
         return self._phase
+
+    @property
+    def motor_power(self):
+        """Mechanical power at the motor shaft in W (tau*omega).
+
+        Positive: the motor draws from the DC bus (motoring). Negative: the
+        load drives the motor (regenerative braking) - energy that a shared
+        DC bus or battery can recapture instead of a brake resistor.
+        """
+        return self._torque * self.omega
 
     def step(self):
         if self._phase == "idle":
@@ -126,6 +137,7 @@ class FoldAxis:
         self._integrate(torque)
 
     def _integrate(self, torque):
+        self._torque = torque
         acc = (torque - self.k_restore * self.angle
                - self.damping * self.omega) / self.inertia
         self.omega += acc * self.dt
