@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T74 Human Trial — Learning &amp; Creativity</title>
+<style>
+  :root {
+    --ink:#16203a; --muted:#5b6b8c; --line:#d7deeb; --bg:#f6f8fc;
+    --good:#1a8f4e; --bad:#c0392b;
+  }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; font:15px/1.45 "Segoe UI", system-ui, sans-serif; color:var(--ink);
+    background:var(--bg); display:flex; gap:20px; padding:20px; align-items:flex-start;
+  }
+  aside { width:300px; flex:0 0 300px; }
+  main { flex:1; max-width:760px; }
+  h1 { font-size:20px; margin:0 0 4px; }
+  h2 { font-size:16px; margin:0 0 8px; }
+  .sub { color:var(--muted); margin-bottom:14px; font-size:13px; }
+  .card {
+    background:#fff; border:1px solid var(--line); border-radius:10px;
+    padding:16px; box-shadow:0 1px 3px rgba(22,32,58,.06);
+  }
+  .legend { display:grid; grid-template-columns:1fr 1fr; gap:6px 12px; margin-top:8px; font-size:13px; }
+  .sw { display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:6px; vertical-align:-1px; }
+  .bar { height:8px; background:var(--line); border-radius:4px; overflow:hidden; margin:10px 0; }
+  .bar > div { height:100%; background:var(--good); width:0; transition:width .2s; }
+  .btn {
+    border:1px solid var(--line); background:#fff; color:var(--ink);
+    border-radius:8px; padding:8px 12px; cursor:pointer; font:inherit;
+    transition:background .12s; margin:3px 4px 3px 0;
+  }
+  .btn:hover { background:#eef2fb; }
+  .btn:disabled { opacity:.45; cursor:default; }
+  .btn.species { min-width:104px; text-align:left; }
+  .btn.primary { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .btn.primary:hover { background:#26335a; }
+  .btn.primary:disabled { background:#9aa6c0; border-color:#9aa6c0; }
+  canvas {
+    background:#fff; border:1px solid var(--line); border-radius:10px;
+    display:block; touch-action:none; cursor:crosshair; max-width:100%;
+  }
+  .prompt { margin:10px 0; min-height:22px; }
+  .pill { display:inline-block; background:#eef2fb; border-radius:20px; padding:2px 10px; font-size:12px; margin-right:6px; }
+  .hint { color:var(--muted); font-size:13px; }
+  textarea { width:100%; height:200px; font:12px Consolas, monospace; border:1px solid var(--line); border-radius:8px; padding:10px; }
+  .verdict { margin:12px 0; }
+  .verdict table { border-collapse:collapse; width:100%; font-size:13px; }
+  .verdict td, .verdict th { border:1px solid var(--line); padding:5px 8px; text-align:left; }
+  .ok { color:var(--good); font-weight:600; }
+  .no { color:var(--bad); font-weight:600; }
+  .hidden { display:none; }
+  #status { margin-top:8px; font-size:13px; color:var(--muted); }
+  code { background:#eef2fb; border-radius:4px; padding:1px 5px; }
+</style>
+</head>
+<body>
+<aside>
+  <div class="card">
+    <h1>Learning &amp; Creativity Test</h1>
+    <div class="sub">T74 human protocol — the same rubric and bars as the engine
+      (<code>experiments/learn_creativity_test.py</code>). A produced item counts
+      as creative only if it is <b>NOVEL</b> (outside the taught core) <b>and</b>
+      <b>VALID</b> (inside the learned manifold, routed to the claimed species),
+      judged by pre-registered thresholds.</div>
+    <div class="legend" id="legend"></div>
+    <div class="bar"><div id="progress"></div></div>
+    <div class="hint" id="phasehint">Learn the species first.</div>
+    <div id="status"></div>
+  </div>
+</aside>
+<main>
+  <div class="card">
+
+    <div id="screen-learn">
+      <h2>Phase 1 — Learn the 8 species</h2>
+      <p class="hint">Each species is a cluster of points in this space. Study
+        them one at a time; you will later be tested on points you never saw.</p>
+      <div id="learn-buttons"></div>
+      <p id="learn-msg" class="hint">Click a species button to study its examples.</p>
+      <canvas id="c-learn" width="520" height="520"></canvas>
+      <p><button id="to-l1" class="btn primary" disabled>I've studied all 8 — start the probe round</button></p>
+    </div>
+
+    <div id="screen-l1" class="hidden">
+      <h2>Phase 2 — Route held-out probes <span class="pill" id="l1-count"></span></h2>
+      <p class="hint">These points were <b>never shown</b>. Which species does
+        each one belong to? Taught examples stay visible, dimmed, as reference.</p>
+      <canvas id="c-l1" width="520" height="520"></canvas>
+      <p id="l1-question" class="prompt"></p>
+      <div id="l1-buttons"></div>
+    </div>
+
+    <div id="screen-recheck" class="hidden">
+      <h2>Phase 3 — No-forgetting re-check <span class="pill" id="rc-count"></span></h2>
+      <p class="hint">Species A and B were taught <b>first</b>. Now that you have
+        seen the whole curriculum, route these again — does the first learning persist?</p>
+      <canvas id="c-rc" width="520" height="520"></canvas>
+      <p id="rc-question" class="prompt"></p>
+      <div id="rc-buttons"></div>
+    </div>
+
+    <div id="screen-creative" class="hidden">
+      <h2>Phase 4 — Produce new items <span class="pill" id="cr-count"></span></h2>
+      <p class="hint" id="cr-level"></p>
+      <p id="cr-question" class="prompt"></p>
+      <canvas id="c-cr" width="520" height="520"></canvas>
+      <p><button id="cr-undo" class="btn">Undo last placement</button>
+         <button id="cr-next" class="btn primary" disabled>Next item →</button></p>
+      <p class="hint">This item claims to be:</p>
+      <div id="cr-claim"></div>
+    </div>
+
+    <div id="screen-done" class="hidden">
+      <h2>Finished — graded on the engine's bars</h2>
+      <p class="hint">Your answers were graded with <code>score_participant()</code> —
+        the same code that grades the machine. The verdict is below; the JSON is
+        your full answer sheet (save it).</p>
+      <div class="verdict" id="verdict"></div>
+      <p><button id="dl" class="btn primary">Download answers.json</button>
+         <button id="copy" class="btn">Copy JSON</button>
+         <button id="again" class="btn">Start a new session</button></p>
+      <textarea id="jsonout" readonly></textarea>
+    </div>
+
+  </div>
+</main>
+
+<script>
+"use strict";
+const COLORS = ["#e6194b","#3cb44b","#4363d8","#f58231","#911eb4",
+                "#42d4f4","#f032e6","#bfef45"];
+const R = 250, CX = 260, CY = 260, DISC = 0.9;
+const toPx = p => [CX + p[0]*R/DISC, CY - p[1]*R/DISC];
+const toCs = (px,py) => {
+  let x = (px-CX)*DISC/R, y = -(py-CY)*DISC/R;
+  let r = Math.hypot(x,y);
+  if (r > DISC) { x *= DISC/r; y *= DISC/r; }
+  return [x, y];
+};
+let S = null;
+
+function setCanvas(c) {
+  const ctx = c.getContext("2d");
+  ctx.clearRect(0,0,c.width,c.width);
+  ctx.strokeStyle = "#c3cee0"; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(CX,CY,R,0,2*Math.PI); ctx.stroke();
+  ctx.fillStyle = "#eef1f8";
+  ctx.beginPath(); ctx.arc(CX,CY,R*0.28,0,2*Math.PI); ctx.fill();
+  return ctx;
+}
+function dot(ctx, x, y, color, r) {
+  ctx.beginPath(); ctx.arc(x,y,r,0,2*Math.PI); ctx.fillStyle = color; ctx.fill();
+}
+function drawExemplars(c, only) {
+  const ctx = setCanvas(c);
+  S.meta.concepts.forEach((name,i) => {
+    ctx.globalAlpha = (only && only !== name) ? 0.10 : 0.65;
+    S.teaching[name].forEach(p => dot(ctx, ...toPx(p), COLORS[i], 3));
+  });
+  ctx.globalAlpha = 1;
+  return ctx;
+}
+function drawProbe(c, x, y) {
+  const ctx = drawExemplars(c);
+  const [px,py] = toPx([x,y]);
+  ctx.fillStyle = "#111";
+  ctx.beginPath(); ctx.arc(px,py,3,0,2*Math.PI); ctx.fill();
+  ctx.strokeStyle = "#fff"; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.arc(px,py,9,0,2*Math.PI); ctx.stroke();
+}
+function makeSpeciesButtons(elId, handler) {
+  const el = document.getElementById(elId);
+  el.innerHTML = "";
+  S.meta.concepts.forEach((name,i) => {
+    const b = document.createElement("button");
+    b.className = "btn species";
+    b.innerHTML = `<span class="sw" style="background:${COLORS[i]}"></span>${name}`;
+    b.onclick = () => handler(i);
+    el.appendChild(b);
+  });
+}
+function setProgress(f) { document.getElementById("progress").style.width = (f*100).toFixed(1)+"%"; }
+function setStatus(m) { document.getElementById("status").textContent = m; }
+function show(id) {
+  ["learn","l1","recheck","creative","done"].forEach(s =>
+    document.getElementById("screen-"+s).classList.toggle("hidden", s !== id));
+  const hint = { learn:"Learn the species first.", l1:"Route held-out probes.",
+                 recheck:"No-forgetting re-check.", creative:"Produce new items.",
+                 done:"Graded." };
+  document.getElementById("phasehint").textContent = hint[id];
+}
+
+/* ---------------- Phase 1: learn ---------------- */
+function initLearn() {
+  const wrap = document.getElementById("learn-buttons");
+  wrap.innerHTML = "";
+  const studied = new Set();
+  S.meta.concepts.forEach((name,i) => {
+    const b = document.createElement("button");
+    b.className = "btn species";
+    b.innerHTML = `<span class="sw" style="background:${COLORS[i]}"></span>Study ${name}`;
+    b.onclick = () => {
+      studied.add(name);
+      drawExemplars(document.getElementById("c-learn"), name);
+      document.getElementById("learn-msg").textContent =
+        `These are all the examples of ${name}. Study them, then study the next ` +
+        `species (${studied.size}/${S.meta.concepts.length} studied).`;
+      document.getElementById("to-l1").disabled = studied.size < S.meta.concepts.length;
+    };
+    wrap.appendChild(b);
+  });
+  document.getElementById("to-l1").onclick = () => { show("l1"); startRoute("l1"); };
+}
+
+/* ---------------- Phases 2 & 3: routing ---------------- */
+let L1_ANSWERS = null, RC_ANSWERS = null, routeI = 0;
+function routeList() {
+  const list = [];
+  S.meta.concepts.forEach((c,name) => {
+    const probes = S.l1.probes[name];
+    probes.forEach(p => list.push({concept: c, name, x:p[0], y:p[1]}));
+  });
+  return list;
+}
+function rcList() {
+  const list = [];
+  S.recheck.concepts.forEach(name => {
+    S.recheck.probes[name].forEach(p =>
+      list.push({concept: S.meta.concepts.indexOf(name), name, x:p[0], y:p[1]}));
+  });
+  return list;
+}
+function startRoute(kind) {
+  routeI = 0;
+  makeSpeciesButtons(kind === "l1" ? "l1-buttons" : "rc-buttons", i => {
+    if (kind === "l1") L1_ANSWERS[routeList()[routeI].name].push(i);
+    else RC_ANSWERS[rcList()[routeI].name].push(i);
+    routeI++;
+    renderRoute(kind);
+  });
+  if (kind === "l1") {
+    L1_ANSWERS = {};
+    S.meta.concepts.forEach(n => L1_ANSWERS[n] = []);
+    RC_ANSWERS = {};
+  }
+  renderRoute(kind);
+}
+function renderRoute(kind) {
+  const list = kind === "l1" ? routeList() : rcList();
+  const cnv = document.getElementById(kind === "l1" ? "c-l1" : "c-rc");
+  const q = document.getElementById(kind === "l1" ? "l1-question" : "rc-question");
+  const cnt = document.getElementById(kind === "l1" ? "l1-count" : "rc-count");
+  if (routeI >= list.length) {
+    if (kind === "l1") { show("recheck"); startRoute("rc"); }
+    else { show("creative"); startCreative(); }
+    return;
+  }
+  const it = list[routeI];
+  cnt.textContent = `${routeI+1}/${list.length}`;
+  q.textContent = "Which species is this point?";
+  drawProbe(cnv, it.x, it.y);
+  setProgress((kind === "l1" ? routeI : routeList().length + routeI) /
+              (routeList().length + rcList().length));
+  setStatus(`Routing — ${routeI+1}/${list.length}`);
+}
+
+/* ---------------- Phase 4: creative ---------------- */
+let cr = null;
+function startCreative() {
+  cr = { i: 0, placed: null, claim: 0, claimDefault: true, items: [] };
+  makeSpeciesButtons("cr-claim", i => {
+    cr.claim = i;
+    cr.claimDefault = false;
+    [...document.getElementById("cr-claim").children].forEach((b,k) =>
+      b.style.outline = k === i ? "2px solid #16203a" : "none");
+  });
+  document.getElementById("cr-undo").onclick = () => {
+    if (cr.i > 0) {
+      cr.items.pop();
+      cr.placed = null;
+      cr.i--;
+      drawCreativeItem();
+    }
+  };
+  document.getElementById("cr-next").onclick = () => {
+    if (cr.placed) {
+      cr.items.push({level: S.creativity[cr.i].level,
+                     concept: S.meta.concepts[cr.claim],
+                     x: cr.placed.x, y: cr.placed.y});
+      cr.i++; cr.placed = null;
+      drawCreativeItem();
+    }
+  };
+  drawCreativeItem();
+}
+function drawCreativeItem() {
+  if (cr.i >= S.creativity.length) { finishCreative(); return; }
+  const it = S.creativity[cr.i];
+  document.getElementById("cr-count").textContent = `${cr.i+1}/${S.creativity.length}`;
+  const lvlTxt = {
+    trivial: "EFFORT: trivial — a tiny tweak of a shown example, barely different.",
+    mid: "EFFORT: mid — genuinely NEW but unmistakably the species.",
+    wild: "EFFORT: wild — invent something far outside any example you were shown." };
+  document.getElementById("cr-level").textContent = lvlTxt[it.level];
+  document.getElementById("cr-question").textContent = it.prompt;
+  const cnv = document.getElementById("c-cr");
+  const ctx = drawExemplars(cnv, it.concept);
+  if (cr.claimDefault) {
+    cr.claim = S.meta.concepts.indexOf(it.concept);
+    cr.claimDefault = false;
+  }
+  [...document.getElementById("cr-claim").children].forEach((b,k) =>
+    b.style.outline = k === cr.claim ? "2px solid #16203a" : "none");
+  if (cr.placed) {
+    const [px,py] = toPx([cr.placed.x, cr.placed.y]);
+    ctx.fillStyle = "#000";
+    ctx.beginPath(); ctx.arc(px,py,8,0,2*Math.PI); ctx.fill();
+    ctx.strokeStyle = "#fff"; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.arc(px,py,8,0,2*Math.PI); ctx.stroke();
+  }
+  cnv.onclick = ev => {
+    const r = cnv.getBoundingClientRect();
+    const [x,y] = toCs((ev.clientX-r.left)*(520/r.width), (ev.clientY-r.top)*(520/r.height));
+    cr.placed = {x: Math.round(x*1000)/1000, y: Math.round(y*1000)/1000};
+    drawCreativeItem();
+    document.getElementById("cr-next").disabled = false;
+  };
+  document.getElementById("cr-next").disabled = !cr.placed;
+  setProgress((routeList().length + rcList().length + cr.i) /
+              (routeList().length + rcList().length + S.creativity.length));
+  setStatus(`Creative — ${cr.i+1}/${S.creativity.length}`);
+}
+
+/* ---------------- Phase 5: done + score ---------------- */
+function answersJson() {
+  const seq = {};
+  for (let stage = 1; stage <= S.meta.concepts.length; stage++) {
+    seq[String(stage)] = {};
+    S.meta.concepts.forEach((name, c) => {
+      seq[String(stage)][name] =
+        (S.recheck.concepts.includes(name) && c < stage) ? RC_ANSWERS[name] : [];
+    });
+  }
+  const creative = { trivial: [], mid: [], wild: [] };
+  cr.items.forEach(it => creative[it.level].push({concept: it.concept, x: it.x, y: it.y}));
+  return {
+    probe_labels: L1_ANSWERS,
+    sequential: seq,
+    creative_items: creative
+  };
+}
+function finishCreative() {
+  show("done");
+  const ans = answersJson();
+  const out = document.getElementById("jsonout");
+  out.value = JSON.stringify(ans, null, 1);
+  document.getElementById("dl").onclick = () => {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([out.value], {type:"application/json"}));
+    a.download = "answers.json";
+    a.click();
+  };
+  document.getElementById("copy").onclick = () => {
+    out.select();
+    navigator.clipboard ? navigator.clipboard.writeText(out.value) : document.execCommand("copy");
+  };
+  document.getElementById("again").onclick = () => location.reload();
+  setProgress(1);
+  setStatus("Scoring…");
+  fetch("/api/score", {method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body: out.value})
+    .then(r => r.json())
+    .then(res => renderVerdict(res, ans))
+    .catch(e => { setStatus("Score failed: " + e); });
+}
+function renderVerdict(res) {
+  const rows = [];
+  const bar = (name, got, pass) =>
+    `<tr><td>${name}</td><td>${got.toFixed(3)}</td><td class="${pass?"ok":"no"}">${pass?"PASS":"FAIL"}</td></tr>`;
+  if (res.l1_ok !== undefined) {
+    rows.push(bar("L1 ceiling (bar ≥0.90)", res.l1_ceiling, res.l1_ok));
+    if (res.l2_ok !== null) rows.push(bar("L2 no-forgetting (bar ≥0.85)", res.l2_min, res.l2_ok));
+    const y = res.yield;
+    rows.push(bar("C1 mid creative (bar ≥0.15)", y.mid.creative, res.c1_ok));
+    rows.push(bar("C3 mid &gt; trivial", y.mid.creative - y.trivial.creative, res.c3_ok));
+    rows.push(`<tr><td>Yields (trivial/mid/wild)</td><td colspan="2">` +
+      [y.trivial.creative, y.mid.creative, y.wild.creative].map(v=>v.toFixed(3)).join(" / ") + `</td></tr>`);
+    rows.push(`<tr><td>C2 audit (novel/creative of random far items)</td><td colspan="2">` +
+      `${res.null.novel.toFixed(3)} / ${res.null.creative.toFixed(3)}</td></tr>`);
+  } else {
+    rows.push(`<tr><td colspan="3">${res.error || JSON.stringify(res)}</td></tr>`);
+  }
+  document.getElementById("verdict").innerHTML =
+    "<table><tr><th>Bar</th><th>Score</th><th>Verdict</th></tr>" + rows.join("") + "</table>";
+  setStatus("Done — download answers.json to keep your sheet.");
+}
+
+/* ---------------- boot ---------------- */
+function boot(data) {
+  S = data;
+  const lg = document.getElementById("legend");
+  lg.innerHTML = "";
+  S.meta.concepts.forEach((name,i) => {
+    lg.innerHTML += `<div><span class="sw" style="background:${COLORS[i]}"></span>${name}</div>`;
+  });
+  show("learn");
+  initLearn();
+  drawExemplars(document.getElementById("c-learn"));
+}
+fetch("/api/session").then(r => r.json()).then(boot)
+  .catch(e => { document.getElementById("status").textContent = "Cannot load session: " + e; });
+</script>
+</body>
+</html>

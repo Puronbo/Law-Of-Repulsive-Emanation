@@ -426,7 +426,8 @@ given so it can be re-run).
      plus the five
      earlier probes)
      each ship a claim/verdict JSON and are pinned by
-     `tests/test_solvable_theorems.py` (67 tests; full suite 276).  The
+     `tests/test_solvable_theorems.py` (67 tests; full suite 287, incl.
+     `tests/test_human_trial.py`).  The
      bazaar_hybrid verdict now covers six structural claims (C1 brigade
      threshold, C2 spam, C3 feed, C4 archive, C5 quorum, C6 verified-vote-only
      membership).  The
@@ -483,6 +484,12 @@ given so it can be re-run).
       pure copycat at exactly zero (P3), and random far items are novel but
       never creative under the pre-registered thresholds (P4) — simulated
       archetypes validate the instrument, not human behavior.  The
+      protocol is then RUNNABLE in a browser (`puno_app/human_trial_ui.py` +
+      `puno_app/human_trial.html`, stdlib ThreadingHTTPServer):
+      `python -m puno_app.human_trial_ui` walks a human through learn → route
+      → re-check → produce and grades their downloaded answer sheet with the
+      same score_participant() (POST /api/score), returning the same
+      L1/L2/C1/C2/C3 verdict flags (pinned by tests/test_human_trial.py).  The
       internet-scale probes (2026-08-11) are now claim/verdict JSONs too:
      `decentral_net_internet` (I1–I4 all SUPPORTED — bulk-load 1,000,000 real
      top-1M sites, nearest-centroid routing over real geometry, 20% outage with

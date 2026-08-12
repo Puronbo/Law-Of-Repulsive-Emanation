@@ -88,6 +88,9 @@ archetypal simulated participants on the same space.  This validates the
 | Pilot + scorer + package generator | `experiments/human_trial_pilot.py` |
 | Pilot verdict artifact | `data/human_trial_pilot_data.json` (gitignored, `git add -f`) |
 | Trial package (the materials) | `data/human_trial_package.json` |
+| Runnable session + scoring glue | `puno_app/human_trial.py` |
+| Browser app (stdlib server + single page) | `puno_app/human_trial_ui.py`, `puno_app/human_trial.html` |
+| UI/session/scoring tests | `tests/test_human_trial.py` |
 | Design doc (protocol) | `docs/LEARNING_CREATIVITY_TEST.md` |
 | Pinned verdict test | `tests/test_solvable_theorems.py::test_human_trial_pilot_supported` |
 
@@ -95,3 +98,19 @@ archetypal simulated participants on the same space.  This validates the
 
     python experiments/human_trial_pilot.py               # seed 42, print pilot verdict
     python experiments/human_trial_pilot.py --verdict     # write data/ JSON verdict + trial package
+
+Run the actual trial in a browser:
+
+    python -m puno_app.human_trial_ui [--host 127.0.0.1] [--port 8790]
+
+Open the printed URL, learn the 8 species, route the held-out probes, re-check
+Species A/B, place trivial/mid/wild creative items on the disk, then download
+`answers.json`.  POST it to `/api/score` (or feed it to
+`score_participant()` directly) — the same code that grades the machine grades
+the human, on the pre-registered thresholds and bars.  A session is a
+deterministic plan (seed `--session-seed`, default 20260812): 8 L1 probes per
+concept, 4 re-check probes of the first-taught Species A/B, and 2 creativity
+prompts per effort level per concept.  The re-check answers are mapped onto
+every curriculum stage that includes Species A/B (stages 1–8) so
+`score_participant()`'s L2 no-forgetting min is exactly the human's single
+post-curriculum re-check.

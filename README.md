@@ -263,6 +263,16 @@ thresholds (P4) — all SUPPORTED on seeds 42/11/7, pinned by
 validate the instrument; a real trial hands the package to a human and scores
 with the same code.  See `docs/HUMAN_TRIAL_INSTRUMENT.md`.
 
+The protocol is also *runnable in a browser*: `python -m puno_app.human_trial_ui`
+serves a single-page app (stdlib `ThreadingHTTPServer`, port 8790) that walks a
+human through the trial — learn the 8 species, route held-out probes, re-check
+Species A/B, then place trivial/mid/wild creative items — and grades their
+recorded answers with the same `score_participant()` (POST `/api/score`).  The
+answer sheet downloads as JSON and reproduces the machine's verdict flags
+(L1 ceiling, L2 no-forgetting, C1/C2/C3 creativity bars).  Session plan,
+builder, and HTTP app are `puno_app/human_trial*.py`, pinned by
+`test_human_trial.py`.
+
 Everything is also browsable through the plug-and-play UI: `puno-plug` opens a
 single page that auto-discovers every decorated plugin in `plugins/` and every
 experiment in `experiments/`, generates a form from each function's declared
@@ -288,6 +298,9 @@ python -m puno_flow.apps.search_service
 
 # the browser lab: open the printed URL
 puno-lab [--host 127.0.0.1] [--port 8765]      # or: python -m puno_app.canned_ui
+
+# the T74 human trial: open the printed URL and run the protocol in a browser
+python -m puno_app.human_trial_ui [--host 127.0.0.1] [--port 8790]
 
 # classic quick start from a checkout
 cd Universals
