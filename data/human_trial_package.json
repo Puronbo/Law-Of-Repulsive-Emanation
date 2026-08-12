@@ -1,0 +1,5519 @@
+{
+ "creativity_prompts": {
+  "mid": [
+   {
+    "concept": "Species A",
+    "prompt": "Produce a genuinely NEW item of Species A - clearly different from any example you were shown, but unmistakably Species A.",
+    "x": 0.31,
+    "y": 0.097
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce a genuinely NEW item of Species A - clearly different from any example you were shown, but unmistakably Species A.",
+    "x": 0.329,
+    "y": 0.054
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce a genuinely NEW item of Species A - clearly different from any example you were shown, but unmistakably Species A.",
+    "x": 0.399,
+    "y": 0.07
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce a genuinely NEW item of Species A - clearly different from any example you were shown, but unmistakably Species A.",
+    "x": 0.329,
+    "y": 0.035
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce a genuinely NEW item of Species A - clearly different from any example you were shown, but unmistakably Species A.",
+    "x": 0.408,
+    "y": -0.044
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce a genuinely NEW item of Species A - clearly different from any example you were shown, but unmistakably Species A.",
+    "x": 0.405,
+    "y": 0.02
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce a genuinely NEW item of Species A - clearly different from any example you were shown, but unmistakably Species A.",
+    "x": 0.376,
+    "y": -0.02
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce a genuinely NEW item of Species A - clearly different from any example you were shown, but unmistakably Species A.",
+    "x": 0.346,
+    "y": -0.043
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce a genuinely NEW item of Species A - clearly different from any example you were shown, but unmistakably Species A.",
+    "x": 0.396,
+    "y": 0.027
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce a genuinely NEW item of Species A - clearly different from any example you were shown, but unmistakably Species A.",
+    "x": 0.335,
+    "y": -0.007
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce a genuinely NEW item of Species A - clearly different from any example you were shown, but unmistakably Species A.",
+    "x": 0.385,
+    "y": -0.078
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce a genuinely NEW item of Species A - clearly different from any example you were shown, but unmistakably Species A.",
+    "x": 0.408,
+    "y": -0.044
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce a genuinely NEW item of Species A - clearly different from any example you were shown, but unmistakably Species A.",
+    "x": 0.297,
+    "y": -0.018
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce a genuinely NEW item of Species A - clearly different from any example you were shown, but unmistakably Species A.",
+    "x": 0.375,
+    "y": 0.027
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce a genuinely NEW item of Species A - clearly different from any example you were shown, but unmistakably Species A.",
+    "x": 0.414,
+    "y": 0.007
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce a genuinely NEW item of Species A - clearly different from any example you were shown, but unmistakably Species A.",
+    "x": 0.356,
+    "y": 0.078
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce a genuinely NEW item of Species A - clearly different from any example you were shown, but unmistakably Species A.",
+    "x": 0.394,
+    "y": 0.095
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce a genuinely NEW item of Species A - clearly different from any example you were shown, but unmistakably Species A.",
+    "x": 0.375,
+    "y": 0.012
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce a genuinely NEW item of Species A - clearly different from any example you were shown, but unmistakably Species A.",
+    "x": 0.405,
+    "y": 0.046
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce a genuinely NEW item of Species A - clearly different from any example you were shown, but unmistakably Species A.",
+    "x": 0.388,
+    "y": -0.058
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce a genuinely NEW item of Species B - clearly different from any example you were shown, but unmistakably Species B.",
+    "x": 0.25,
+    "y": 0.291
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce a genuinely NEW item of Species B - clearly different from any example you were shown, but unmistakably Species B.",
+    "x": 0.232,
+    "y": 0.207
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce a genuinely NEW item of Species B - clearly different from any example you were shown, but unmistakably Species B.",
+    "x": 0.28,
+    "y": 0.3
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce a genuinely NEW item of Species B - clearly different from any example you were shown, but unmistakably Species B.",
+    "x": 0.221,
+    "y": 0.376
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce a genuinely NEW item of Species B - clearly different from any example you were shown, but unmistakably Species B.",
+    "x": 0.308,
+    "y": 0.233
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce a genuinely NEW item of Species B - clearly different from any example you were shown, but unmistakably Species B.",
+    "x": 0.25,
+    "y": 0.246
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce a genuinely NEW item of Species B - clearly different from any example you were shown, but unmistakably Species B.",
+    "x": 0.247,
+    "y": 0.295
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce a genuinely NEW item of Species B - clearly different from any example you were shown, but unmistakably Species B.",
+    "x": 0.263,
+    "y": 0.29
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce a genuinely NEW item of Species B - clearly different from any example you were shown, but unmistakably Species B.",
+    "x": 0.165,
+    "y": 0.299
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce a genuinely NEW item of Species B - clearly different from any example you were shown, but unmistakably Species B.",
+    "x": 0.317,
+    "y": 0.264
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce a genuinely NEW item of Species B - clearly different from any example you were shown, but unmistakably Species B.",
+    "x": 0.245,
+    "y": 0.255
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce a genuinely NEW item of Species B - clearly different from any example you were shown, but unmistakably Species B.",
+    "x": 0.224,
+    "y": 0.234
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce a genuinely NEW item of Species B - clearly different from any example you were shown, but unmistakably Species B.",
+    "x": 0.253,
+    "y": 0.307
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce a genuinely NEW item of Species B - clearly different from any example you were shown, but unmistakably Species B.",
+    "x": 0.293,
+    "y": 0.283
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce a genuinely NEW item of Species B - clearly different from any example you were shown, but unmistakably Species B.",
+    "x": 0.37,
+    "y": 0.124
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce a genuinely NEW item of Species B - clearly different from any example you were shown, but unmistakably Species B.",
+    "x": 0.27,
+    "y": 0.203
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce a genuinely NEW item of Species B - clearly different from any example you were shown, but unmistakably Species B.",
+    "x": 0.283,
+    "y": 0.26
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce a genuinely NEW item of Species B - clearly different from any example you were shown, but unmistakably Species B.",
+    "x": 0.366,
+    "y": 0.215
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce a genuinely NEW item of Species B - clearly different from any example you were shown, but unmistakably Species B.",
+    "x": 0.308,
+    "y": 0.171
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce a genuinely NEW item of Species B - clearly different from any example you were shown, but unmistakably Species B.",
+    "x": 0.214,
+    "y": 0.204
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce a genuinely NEW item of Species C - clearly different from any example you were shown, but unmistakably Species C.",
+    "x": 0.017,
+    "y": 0.382
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce a genuinely NEW item of Species C - clearly different from any example you were shown, but unmistakably Species C.",
+    "x": 0.017,
+    "y": 0.385
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce a genuinely NEW item of Species C - clearly different from any example you were shown, but unmistakably Species C.",
+    "x": -0.028,
+    "y": 0.31
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce a genuinely NEW item of Species C - clearly different from any example you were shown, but unmistakably Species C.",
+    "x": -0.017,
+    "y": 0.313
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce a genuinely NEW item of Species C - clearly different from any example you were shown, but unmistakably Species C.",
+    "x": -0.069,
+    "y": 0.351
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce a genuinely NEW item of Species C - clearly different from any example you were shown, but unmistakably Species C.",
+    "x": -0.047,
+    "y": 0.44
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce a genuinely NEW item of Species C - clearly different from any example you were shown, but unmistakably Species C.",
+    "x": -0.029,
+    "y": 0.419
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce a genuinely NEW item of Species C - clearly different from any example you were shown, but unmistakably Species C.",
+    "x": 0.086,
+    "y": 0.421
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce a genuinely NEW item of Species C - clearly different from any example you were shown, but unmistakably Species C.",
+    "x": -0.048,
+    "y": 0.356
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce a genuinely NEW item of Species C - clearly different from any example you were shown, but unmistakably Species C.",
+    "x": -0.111,
+    "y": 0.362
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce a genuinely NEW item of Species C - clearly different from any example you were shown, but unmistakably Species C.",
+    "x": -0.003,
+    "y": 0.346
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce a genuinely NEW item of Species C - clearly different from any example you were shown, but unmistakably Species C.",
+    "x": 0.064,
+    "y": 0.302
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce a genuinely NEW item of Species C - clearly different from any example you were shown, but unmistakably Species C.",
+    "x": -0.108,
+    "y": 0.367
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce a genuinely NEW item of Species C - clearly different from any example you were shown, but unmistakably Species C.",
+    "x": -0.028,
+    "y": 0.31
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce a genuinely NEW item of Species C - clearly different from any example you were shown, but unmistakably Species C.",
+    "x": -0.037,
+    "y": 0.356
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce a genuinely NEW item of Species C - clearly different from any example you were shown, but unmistakably Species C.",
+    "x": -0.02,
+    "y": 0.335
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce a genuinely NEW item of Species C - clearly different from any example you were shown, but unmistakably Species C.",
+    "x": -0.04,
+    "y": 0.392
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce a genuinely NEW item of Species C - clearly different from any example you were shown, but unmistakably Species C.",
+    "x": 0.001,
+    "y": 0.429
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce a genuinely NEW item of Species C - clearly different from any example you were shown, but unmistakably Species C.",
+    "x": -0.012,
+    "y": 0.427
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce a genuinely NEW item of Species C - clearly different from any example you were shown, but unmistakably Species C.",
+    "x": -0.01,
+    "y": 0.335
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce a genuinely NEW item of Species D - clearly different from any example you were shown, but unmistakably Species D.",
+    "x": -0.318,
+    "y": 0.242
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce a genuinely NEW item of Species D - clearly different from any example you were shown, but unmistakably Species D.",
+    "x": -0.272,
+    "y": 0.271
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce a genuinely NEW item of Species D - clearly different from any example you were shown, but unmistakably Species D.",
+    "x": -0.056,
+    "y": 0.236
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce a genuinely NEW item of Species D - clearly different from any example you were shown, but unmistakably Species D.",
+    "x": -0.232,
+    "y": 0.25
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce a genuinely NEW item of Species D - clearly different from any example you were shown, but unmistakably Species D.",
+    "x": -0.254,
+    "y": 0.205
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce a genuinely NEW item of Species D - clearly different from any example you were shown, but unmistakably Species D.",
+    "x": -0.239,
+    "y": 0.244
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce a genuinely NEW item of Species D - clearly different from any example you were shown, but unmistakably Species D.",
+    "x": -0.239,
+    "y": 0.162
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce a genuinely NEW item of Species D - clearly different from any example you were shown, but unmistakably Species D.",
+    "x": -0.249,
+    "y": 0.264
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce a genuinely NEW item of Species D - clearly different from any example you were shown, but unmistakably Species D.",
+    "x": -0.157,
+    "y": 0.383
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce a genuinely NEW item of Species D - clearly different from any example you were shown, but unmistakably Species D.",
+    "x": -0.268,
+    "y": 0.299
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce a genuinely NEW item of Species D - clearly different from any example you were shown, but unmistakably Species D.",
+    "x": -0.274,
+    "y": 0.198
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce a genuinely NEW item of Species D - clearly different from any example you were shown, but unmistakably Species D.",
+    "x": -0.253,
+    "y": 0.264
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce a genuinely NEW item of Species D - clearly different from any example you were shown, but unmistakably Species D.",
+    "x": -0.233,
+    "y": 0.297
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce a genuinely NEW item of Species D - clearly different from any example you were shown, but unmistakably Species D.",
+    "x": -0.214,
+    "y": 0.363
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce a genuinely NEW item of Species D - clearly different from any example you were shown, but unmistakably Species D.",
+    "x": -0.133,
+    "y": 0.311
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce a genuinely NEW item of Species D - clearly different from any example you were shown, but unmistakably Species D.",
+    "x": -0.279,
+    "y": 0.265
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce a genuinely NEW item of Species D - clearly different from any example you were shown, but unmistakably Species D.",
+    "x": -0.266,
+    "y": 0.218
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce a genuinely NEW item of Species D - clearly different from any example you were shown, but unmistakably Species D.",
+    "x": -0.143,
+    "y": 0.208
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce a genuinely NEW item of Species D - clearly different from any example you were shown, but unmistakably Species D.",
+    "x": -0.324,
+    "y": 0.237
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce a genuinely NEW item of Species D - clearly different from any example you were shown, but unmistakably Species D.",
+    "x": -0.331,
+    "y": 0.293
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce a genuinely NEW item of Species E - clearly different from any example you were shown, but unmistakably Species E.",
+    "x": -0.352,
+    "y": -0.177
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce a genuinely NEW item of Species E - clearly different from any example you were shown, but unmistakably Species E.",
+    "x": -0.393,
+    "y": 0.07
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce a genuinely NEW item of Species E - clearly different from any example you were shown, but unmistakably Species E.",
+    "x": -0.433,
+    "y": -0.125
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce a genuinely NEW item of Species E - clearly different from any example you were shown, but unmistakably Species E.",
+    "x": -0.358,
+    "y": -0.109
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce a genuinely NEW item of Species E - clearly different from any example you were shown, but unmistakably Species E.",
+    "x": -0.352,
+    "y": -0.025
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce a genuinely NEW item of Species E - clearly different from any example you were shown, but unmistakably Species E.",
+    "x": -0.449,
+    "y": 0.065
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce a genuinely NEW item of Species E - clearly different from any example you were shown, but unmistakably Species E.",
+    "x": -0.369,
+    "y": 0.065
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce a genuinely NEW item of Species E - clearly different from any example you were shown, but unmistakably Species E.",
+    "x": -0.374,
+    "y": 0.098
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce a genuinely NEW item of Species E - clearly different from any example you were shown, but unmistakably Species E.",
+    "x": -0.362,
+    "y": 0.052
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce a genuinely NEW item of Species E - clearly different from any example you were shown, but unmistakably Species E.",
+    "x": -0.404,
+    "y": -0.069
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce a genuinely NEW item of Species E - clearly different from any example you were shown, but unmistakably Species E.",
+    "x": -0.365,
+    "y": 0.006
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce a genuinely NEW item of Species E - clearly different from any example you were shown, but unmistakably Species E.",
+    "x": -0.325,
+    "y": -0.046
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce a genuinely NEW item of Species E - clearly different from any example you were shown, but unmistakably Species E.",
+    "x": -0.45,
+    "y": -0.064
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce a genuinely NEW item of Species E - clearly different from any example you were shown, but unmistakably Species E.",
+    "x": -0.368,
+    "y": -0.06
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce a genuinely NEW item of Species E - clearly different from any example you were shown, but unmistakably Species E.",
+    "x": -0.29,
+    "y": -0.022
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce a genuinely NEW item of Species E - clearly different from any example you were shown, but unmistakably Species E.",
+    "x": -0.308,
+    "y": 0.068
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce a genuinely NEW item of Species E - clearly different from any example you were shown, but unmistakably Species E.",
+    "x": -0.392,
+    "y": 0.001
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce a genuinely NEW item of Species E - clearly different from any example you were shown, but unmistakably Species E.",
+    "x": -0.446,
+    "y": -0.093
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce a genuinely NEW item of Species E - clearly different from any example you were shown, but unmistakably Species E.",
+    "x": -0.36,
+    "y": 0.037
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce a genuinely NEW item of Species E - clearly different from any example you were shown, but unmistakably Species E.",
+    "x": -0.296,
+    "y": 0.091
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce a genuinely NEW item of Species F - clearly different from any example you were shown, but unmistakably Species F.",
+    "x": -0.209,
+    "y": -0.239
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce a genuinely NEW item of Species F - clearly different from any example you were shown, but unmistakably Species F.",
+    "x": -0.186,
+    "y": -0.336
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce a genuinely NEW item of Species F - clearly different from any example you were shown, but unmistakably Species F.",
+    "x": -0.196,
+    "y": -0.319
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce a genuinely NEW item of Species F - clearly different from any example you were shown, but unmistakably Species F.",
+    "x": -0.249,
+    "y": -0.363
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce a genuinely NEW item of Species F - clearly different from any example you were shown, but unmistakably Species F.",
+    "x": -0.242,
+    "y": -0.264
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce a genuinely NEW item of Species F - clearly different from any example you were shown, but unmistakably Species F.",
+    "x": -0.278,
+    "y": -0.275
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce a genuinely NEW item of Species F - clearly different from any example you were shown, but unmistakably Species F.",
+    "x": -0.146,
+    "y": -0.352
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce a genuinely NEW item of Species F - clearly different from any example you were shown, but unmistakably Species F.",
+    "x": -0.295,
+    "y": -0.068
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce a genuinely NEW item of Species F - clearly different from any example you were shown, but unmistakably Species F.",
+    "x": -0.248,
+    "y": -0.273
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce a genuinely NEW item of Species F - clearly different from any example you were shown, but unmistakably Species F.",
+    "x": -0.282,
+    "y": -0.158
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce a genuinely NEW item of Species F - clearly different from any example you were shown, but unmistakably Species F.",
+    "x": -0.217,
+    "y": -0.309
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce a genuinely NEW item of Species F - clearly different from any example you were shown, but unmistakably Species F.",
+    "x": -0.285,
+    "y": -0.242
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce a genuinely NEW item of Species F - clearly different from any example you were shown, but unmistakably Species F.",
+    "x": -0.196,
+    "y": -0.251
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce a genuinely NEW item of Species F - clearly different from any example you were shown, but unmistakably Species F.",
+    "x": -0.294,
+    "y": -0.069
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce a genuinely NEW item of Species F - clearly different from any example you were shown, but unmistakably Species F.",
+    "x": -0.194,
+    "y": -0.301
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce a genuinely NEW item of Species F - clearly different from any example you were shown, but unmistakably Species F.",
+    "x": -0.302,
+    "y": -0.248
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce a genuinely NEW item of Species F - clearly different from any example you were shown, but unmistakably Species F.",
+    "x": -0.336,
+    "y": -0.23
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce a genuinely NEW item of Species F - clearly different from any example you were shown, but unmistakably Species F.",
+    "x": -0.306,
+    "y": -0.115
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce a genuinely NEW item of Species F - clearly different from any example you were shown, but unmistakably Species F.",
+    "x": -0.294,
+    "y": -0.333
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce a genuinely NEW item of Species F - clearly different from any example you were shown, but unmistakably Species F.",
+    "x": -0.232,
+    "y": -0.268
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce a genuinely NEW item of Species G - clearly different from any example you were shown, but unmistakably Species G.",
+    "x": 0.05,
+    "y": -0.338
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce a genuinely NEW item of Species G - clearly different from any example you were shown, but unmistakably Species G.",
+    "x": 0.06,
+    "y": -0.352
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce a genuinely NEW item of Species G - clearly different from any example you were shown, but unmistakably Species G.",
+    "x": 0.005,
+    "y": -0.385
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce a genuinely NEW item of Species G - clearly different from any example you were shown, but unmistakably Species G.",
+    "x": -0.209,
+    "y": -0.381
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce a genuinely NEW item of Species G - clearly different from any example you were shown, but unmistakably Species G.",
+    "x": -0.061,
+    "y": -0.409
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce a genuinely NEW item of Species G - clearly different from any example you were shown, but unmistakably Species G.",
+    "x": -0.171,
+    "y": -0.357
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce a genuinely NEW item of Species G - clearly different from any example you were shown, but unmistakably Species G.",
+    "x": -0.131,
+    "y": -0.38
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce a genuinely NEW item of Species G - clearly different from any example you were shown, but unmistakably Species G.",
+    "x": -0.052,
+    "y": -0.421
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce a genuinely NEW item of Species G - clearly different from any example you were shown, but unmistakably Species G.",
+    "x": 0.07,
+    "y": -0.399
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce a genuinely NEW item of Species G - clearly different from any example you were shown, but unmistakably Species G.",
+    "x": -0.019,
+    "y": -0.411
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce a genuinely NEW item of Species G - clearly different from any example you were shown, but unmistakably Species G.",
+    "x": -0.068,
+    "y": -0.364
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce a genuinely NEW item of Species G - clearly different from any example you were shown, but unmistakably Species G.",
+    "x": -0.131,
+    "y": -0.44
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce a genuinely NEW item of Species G - clearly different from any example you were shown, but unmistakably Species G.",
+    "x": 0.171,
+    "y": -0.337
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce a genuinely NEW item of Species G - clearly different from any example you were shown, but unmistakably Species G.",
+    "x": -0.068,
+    "y": -0.305
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce a genuinely NEW item of Species G - clearly different from any example you were shown, but unmistakably Species G.",
+    "x": 0.004,
+    "y": -0.346
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce a genuinely NEW item of Species G - clearly different from any example you were shown, but unmistakably Species G.",
+    "x": 0.092,
+    "y": -0.377
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce a genuinely NEW item of Species G - clearly different from any example you were shown, but unmistakably Species G.",
+    "x": 0.065,
+    "y": -0.333
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce a genuinely NEW item of Species G - clearly different from any example you were shown, but unmistakably Species G.",
+    "x": -0.051,
+    "y": -0.421
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce a genuinely NEW item of Species G - clearly different from any example you were shown, but unmistakably Species G.",
+    "x": -0.161,
+    "y": -0.402
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce a genuinely NEW item of Species G - clearly different from any example you were shown, but unmistakably Species G.",
+    "x": -0.099,
+    "y": -0.332
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce a genuinely NEW item of Species H - clearly different from any example you were shown, but unmistakably Species H.",
+    "x": 0.19,
+    "y": -0.264
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce a genuinely NEW item of Species H - clearly different from any example you were shown, but unmistakably Species H.",
+    "x": 0.338,
+    "y": -0.169
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce a genuinely NEW item of Species H - clearly different from any example you were shown, but unmistakably Species H.",
+    "x": 0.223,
+    "y": -0.316
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce a genuinely NEW item of Species H - clearly different from any example you were shown, but unmistakably Species H.",
+    "x": 0.235,
+    "y": -0.376
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce a genuinely NEW item of Species H - clearly different from any example you were shown, but unmistakably Species H.",
+    "x": 0.217,
+    "y": -0.212
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce a genuinely NEW item of Species H - clearly different from any example you were shown, but unmistakably Species H.",
+    "x": 0.315,
+    "y": -0.227
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce a genuinely NEW item of Species H - clearly different from any example you were shown, but unmistakably Species H.",
+    "x": 0.332,
+    "y": -0.074
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce a genuinely NEW item of Species H - clearly different from any example you were shown, but unmistakably Species H.",
+    "x": 0.194,
+    "y": -0.287
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce a genuinely NEW item of Species H - clearly different from any example you were shown, but unmistakably Species H.",
+    "x": 0.099,
+    "y": -0.347
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce a genuinely NEW item of Species H - clearly different from any example you were shown, but unmistakably Species H.",
+    "x": 0.149,
+    "y": -0.279
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce a genuinely NEW item of Species H - clearly different from any example you were shown, but unmistakably Species H.",
+    "x": 0.335,
+    "y": -0.18
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce a genuinely NEW item of Species H - clearly different from any example you were shown, but unmistakably Species H.",
+    "x": 0.329,
+    "y": -0.194
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce a genuinely NEW item of Species H - clearly different from any example you were shown, but unmistakably Species H.",
+    "x": 0.253,
+    "y": -0.317
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce a genuinely NEW item of Species H - clearly different from any example you were shown, but unmistakably Species H.",
+    "x": 0.206,
+    "y": -0.3
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce a genuinely NEW item of Species H - clearly different from any example you were shown, but unmistakably Species H.",
+    "x": 0.174,
+    "y": -0.325
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce a genuinely NEW item of Species H - clearly different from any example you were shown, but unmistakably Species H.",
+    "x": 0.329,
+    "y": -0.199
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce a genuinely NEW item of Species H - clearly different from any example you were shown, but unmistakably Species H.",
+    "x": 0.314,
+    "y": -0.303
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce a genuinely NEW item of Species H - clearly different from any example you were shown, but unmistakably Species H.",
+    "x": 0.235,
+    "y": -0.325
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce a genuinely NEW item of Species H - clearly different from any example you were shown, but unmistakably Species H.",
+    "x": 0.302,
+    "y": -0.157
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce a genuinely NEW item of Species H - clearly different from any example you were shown, but unmistakably Species H.",
+    "x": 0.27,
+    "y": -0.301
+   }
+  ],
+  "trivial": [
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species A - barely different.",
+    "x": 0.335,
+    "y": 0.012
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species A - barely different.",
+    "x": 0.221,
+    "y": -0.04
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species A - barely different.",
+    "x": 0.361,
+    "y": -0.005
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species A - barely different.",
+    "x": 0.28,
+    "y": -0.04
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species A - barely different.",
+    "x": 0.28,
+    "y": -0.038
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species A - barely different.",
+    "x": 0.215,
+    "y": -0.025
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species A - barely different.",
+    "x": 0.308,
+    "y": 0.056
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species A - barely different.",
+    "x": 0.294,
+    "y": -0.033
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species A - barely different.",
+    "x": 0.32,
+    "y": -0.06
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species A - barely different.",
+    "x": 0.361,
+    "y": -0.012
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species A - barely different.",
+    "x": 0.291,
+    "y": -0.059
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species A - barely different.",
+    "x": 0.314,
+    "y": -0.042
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species A - barely different.",
+    "x": 0.315,
+    "y": -0.06
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species A - barely different.",
+    "x": 0.282,
+    "y": -0.029
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species A - barely different.",
+    "x": 0.334,
+    "y": 0.051
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species A - barely different.",
+    "x": 0.301,
+    "y": 0.059
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species A - barely different.",
+    "x": 0.305,
+    "y": 0.021
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species A - barely different.",
+    "x": 0.328,
+    "y": -0.034
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species A - barely different.",
+    "x": 0.34,
+    "y": -0.027
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species A - barely different.",
+    "x": 0.214,
+    "y": -0.029
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species B - barely different.",
+    "x": 0.177,
+    "y": 0.209
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species B - barely different.",
+    "x": 0.174,
+    "y": 0.191
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species B - barely different.",
+    "x": 0.133,
+    "y": 0.166
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species B - barely different.",
+    "x": 0.234,
+    "y": 0.198
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species B - barely different.",
+    "x": 0.153,
+    "y": 0.227
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species B - barely different.",
+    "x": 0.167,
+    "y": 0.193
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species B - barely different.",
+    "x": 0.258,
+    "y": 0.225
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species B - barely different.",
+    "x": 0.195,
+    "y": 0.117
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species B - barely different.",
+    "x": 0.147,
+    "y": 0.151
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species B - barely different.",
+    "x": 0.294,
+    "y": 0.142
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species B - barely different.",
+    "x": 0.168,
+    "y": 0.195
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species B - barely different.",
+    "x": 0.173,
+    "y": 0.223
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species B - barely different.",
+    "x": 0.246,
+    "y": 0.143
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species B - barely different.",
+    "x": 0.195,
+    "y": 0.249
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species B - barely different.",
+    "x": 0.14,
+    "y": 0.168
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species B - barely different.",
+    "x": 0.195,
+    "y": 0.12
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species B - barely different.",
+    "x": 0.188,
+    "y": 0.147
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species B - barely different.",
+    "x": 0.241,
+    "y": 0.171
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species B - barely different.",
+    "x": 0.26,
+    "y": 0.225
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species B - barely different.",
+    "x": 0.247,
+    "y": 0.236
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species C - barely different.",
+    "x": -0.031,
+    "y": 0.322
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species C - barely different.",
+    "x": -0.038,
+    "y": 0.285
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species C - barely different.",
+    "x": -0.024,
+    "y": 0.239
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species C - barely different.",
+    "x": -0.064,
+    "y": 0.261
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species C - barely different.",
+    "x": -0.029,
+    "y": 0.309
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species C - barely different.",
+    "x": -0.134,
+    "y": 0.286
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species C - barely different.",
+    "x": -0.003,
+    "y": 0.348
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species C - barely different.",
+    "x": -0.0,
+    "y": 0.292
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species C - barely different.",
+    "x": -0.011,
+    "y": 0.309
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species C - barely different.",
+    "x": 0.011,
+    "y": 0.36
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species C - barely different.",
+    "x": 0.025,
+    "y": 0.28
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species C - barely different.",
+    "x": -0.006,
+    "y": 0.275
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species C - barely different.",
+    "x": -0.018,
+    "y": 0.373
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species C - barely different.",
+    "x": -0.049,
+    "y": 0.283
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species C - barely different.",
+    "x": -0.08,
+    "y": 0.266
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species C - barely different.",
+    "x": -0.006,
+    "y": 0.291
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species C - barely different.",
+    "x": -0.045,
+    "y": 0.267
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species C - barely different.",
+    "x": 0.142,
+    "y": 0.391
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species C - barely different.",
+    "x": -0.003,
+    "y": 0.332
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species C - barely different.",
+    "x": -0.007,
+    "y": 0.349
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species D - barely different.",
+    "x": -0.193,
+    "y": 0.19
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species D - barely different.",
+    "x": -0.172,
+    "y": 0.196
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species D - barely different.",
+    "x": -0.218,
+    "y": 0.225
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species D - barely different.",
+    "x": -0.221,
+    "y": 0.195
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species D - barely different.",
+    "x": -0.22,
+    "y": 0.203
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species D - barely different.",
+    "x": -0.23,
+    "y": 0.213
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species D - barely different.",
+    "x": -0.193,
+    "y": 0.12
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species D - barely different.",
+    "x": -0.135,
+    "y": 0.122
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species D - barely different.",
+    "x": -0.157,
+    "y": 0.204
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species D - barely different.",
+    "x": -0.218,
+    "y": 0.165
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species D - barely different.",
+    "x": -0.199,
+    "y": 0.22
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species D - barely different.",
+    "x": -0.197,
+    "y": 0.184
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species D - barely different.",
+    "x": -0.221,
+    "y": 0.153
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species D - barely different.",
+    "x": -0.161,
+    "y": 0.205
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species D - barely different.",
+    "x": -0.304,
+    "y": 0.224
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species D - barely different.",
+    "x": -0.206,
+    "y": 0.178
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species D - barely different.",
+    "x": -0.127,
+    "y": 0.161
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species D - barely different.",
+    "x": -0.124,
+    "y": 0.235
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species D - barely different.",
+    "x": -0.303,
+    "y": 0.225
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species D - barely different.",
+    "x": -0.136,
+    "y": 0.121
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species E - barely different.",
+    "x": -0.304,
+    "y": 0.09
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species E - barely different.",
+    "x": -0.29,
+    "y": 0.043
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species E - barely different.",
+    "x": -0.334,
+    "y": -0.062
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species E - barely different.",
+    "x": -0.293,
+    "y": 0.079
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species E - barely different.",
+    "x": -0.297,
+    "y": -0.073
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species E - barely different.",
+    "x": -0.324,
+    "y": 0.025
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species E - barely different.",
+    "x": -0.321,
+    "y": 0.007
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species E - barely different.",
+    "x": -0.265,
+    "y": 0.002
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species E - barely different.",
+    "x": -0.38,
+    "y": -0.056
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species E - barely different.",
+    "x": -0.242,
+    "y": 0.032
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species E - barely different.",
+    "x": -0.286,
+    "y": -0.064
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species E - barely different.",
+    "x": -0.202,
+    "y": -0.141
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species E - barely different.",
+    "x": -0.373,
+    "y": 0.099
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species E - barely different.",
+    "x": -0.333,
+    "y": 0.019
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species E - barely different.",
+    "x": -0.258,
+    "y": 0.008
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species E - barely different.",
+    "x": -0.291,
+    "y": 0.094
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species E - barely different.",
+    "x": -0.343,
+    "y": -0.013
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species E - barely different.",
+    "x": -0.259,
+    "y": -0.004
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species E - barely different.",
+    "x": -0.257,
+    "y": 0.039
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species E - barely different.",
+    "x": -0.33,
+    "y": 0.033
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species F - barely different.",
+    "x": -0.18,
+    "y": -0.243
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species F - barely different.",
+    "x": -0.162,
+    "y": -0.187
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species F - barely different.",
+    "x": -0.142,
+    "y": -0.265
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species F - barely different.",
+    "x": -0.223,
+    "y": -0.164
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species F - barely different.",
+    "x": -0.283,
+    "y": -0.191
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species F - barely different.",
+    "x": -0.189,
+    "y": -0.15
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species F - barely different.",
+    "x": -0.278,
+    "y": -0.325
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species F - barely different.",
+    "x": -0.205,
+    "y": -0.205
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species F - barely different.",
+    "x": -0.232,
+    "y": -0.196
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species F - barely different.",
+    "x": -0.226,
+    "y": -0.049
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species F - barely different.",
+    "x": -0.164,
+    "y": -0.138
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species F - barely different.",
+    "x": -0.133,
+    "y": -0.274
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species F - barely different.",
+    "x": -0.159,
+    "y": -0.254
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species F - barely different.",
+    "x": -0.161,
+    "y": -0.142
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species F - barely different.",
+    "x": -0.238,
+    "y": -0.185
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species F - barely different.",
+    "x": -0.256,
+    "y": -0.195
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species F - barely different.",
+    "x": -0.259,
+    "y": -0.152
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species F - barely different.",
+    "x": -0.265,
+    "y": -0.219
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species F - barely different.",
+    "x": -0.209,
+    "y": -0.311
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species F - barely different.",
+    "x": -0.171,
+    "y": -0.236
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species G - barely different.",
+    "x": 0.01,
+    "y": -0.228
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species G - barely different.",
+    "x": -0.015,
+    "y": -0.277
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species G - barely different.",
+    "x": -0.092,
+    "y": -0.335
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species G - barely different.",
+    "x": 0.002,
+    "y": -0.304
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species G - barely different.",
+    "x": 0.008,
+    "y": -0.271
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species G - barely different.",
+    "x": -0.067,
+    "y": -0.26
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species G - barely different.",
+    "x": 0.072,
+    "y": -0.309
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species G - barely different.",
+    "x": -0.038,
+    "y": -0.375
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species G - barely different.",
+    "x": -0.088,
+    "y": -0.314
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species G - barely different.",
+    "x": 0.01,
+    "y": -0.313
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species G - barely different.",
+    "x": 0.013,
+    "y": -0.35
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species G - barely different.",
+    "x": -0.089,
+    "y": -0.337
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species G - barely different.",
+    "x": -0.124,
+    "y": -0.339
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species G - barely different.",
+    "x": 0.011,
+    "y": -0.27
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species G - barely different.",
+    "x": 0.153,
+    "y": -0.267
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species G - barely different.",
+    "x": 0.036,
+    "y": -0.218
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species G - barely different.",
+    "x": 0.033,
+    "y": -0.27
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species G - barely different.",
+    "x": 0.045,
+    "y": -0.266
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species G - barely different.",
+    "x": 0.052,
+    "y": -0.281
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species G - barely different.",
+    "x": -0.097,
+    "y": -0.264
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species H - barely different.",
+    "x": 0.249,
+    "y": -0.182
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species H - barely different.",
+    "x": 0.223,
+    "y": -0.302
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species H - barely different.",
+    "x": 0.25,
+    "y": -0.198
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species H - barely different.",
+    "x": 0.235,
+    "y": -0.191
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species H - barely different.",
+    "x": 0.198,
+    "y": -0.25
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species H - barely different.",
+    "x": 0.143,
+    "y": -0.212
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species H - barely different.",
+    "x": 0.129,
+    "y": -0.347
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species H - barely different.",
+    "x": 0.196,
+    "y": -0.158
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species H - barely different.",
+    "x": 0.219,
+    "y": -0.246
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species H - barely different.",
+    "x": 0.203,
+    "y": -0.313
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species H - barely different.",
+    "x": 0.218,
+    "y": -0.181
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species H - barely different.",
+    "x": 0.198,
+    "y": -0.25
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species H - barely different.",
+    "x": 0.175,
+    "y": -0.279
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species H - barely different.",
+    "x": 0.215,
+    "y": -0.251
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species H - barely different.",
+    "x": 0.126,
+    "y": -0.268
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species H - barely different.",
+    "x": 0.183,
+    "y": -0.316
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species H - barely different.",
+    "x": 0.059,
+    "y": -0.284
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species H - barely different.",
+    "x": 0.173,
+    "y": -0.279
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species H - barely different.",
+    "x": 0.299,
+    "y": -0.077
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item that is a tiny tweak of a shown example of Species H - barely different.",
+    "x": 0.155,
+    "y": -0.287
+   }
+  ],
+  "wild": [
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species A.",
+    "x": 0.573,
+    "y": -0.146
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species A.",
+    "x": 0.573,
+    "y": -0.061
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species A.",
+    "x": 0.59,
+    "y": 0.067
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species A.",
+    "x": 0.557,
+    "y": -0.083
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species A.",
+    "x": 0.584,
+    "y": -0.102
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species A.",
+    "x": 0.625,
+    "y": -0.069
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species A.",
+    "x": 0.568,
+    "y": -0.003
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species A.",
+    "x": 0.596,
+    "y": 0.116
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species A.",
+    "x": 0.523,
+    "y": 0.099
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species A.",
+    "x": 0.58,
+    "y": -0.108
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species A.",
+    "x": 0.506,
+    "y": -0.069
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species A.",
+    "x": 0.562,
+    "y": -0.112
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species A.",
+    "x": 0.572,
+    "y": -0.037
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species A.",
+    "x": 0.577,
+    "y": 0.059
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species A.",
+    "x": 0.524,
+    "y": 0.214
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species A.",
+    "x": 0.609,
+    "y": -0.015
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species A.",
+    "x": 0.609,
+    "y": 0.066
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species A.",
+    "x": 0.576,
+    "y": 0.002
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species A.",
+    "x": 0.533,
+    "y": 0.059
+   },
+   {
+    "concept": "Species A",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species A.",
+    "x": 0.55,
+    "y": 0.019
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species B.",
+    "x": 0.452,
+    "y": 0.228
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species B.",
+    "x": 0.418,
+    "y": 0.356
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species B.",
+    "x": 0.394,
+    "y": 0.442
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species B.",
+    "x": 0.451,
+    "y": 0.31
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species B.",
+    "x": 0.203,
+    "y": 0.478
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species B.",
+    "x": 0.371,
+    "y": 0.346
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species B.",
+    "x": 0.293,
+    "y": 0.42
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species B.",
+    "x": 0.329,
+    "y": 0.368
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species B.",
+    "x": 0.413,
+    "y": 0.347
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species B.",
+    "x": 0.543,
+    "y": 0.5
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species B.",
+    "x": 0.524,
+    "y": 0.526
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species B.",
+    "x": 0.414,
+    "y": 0.281
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species B.",
+    "x": 0.372,
+    "y": 0.372
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species B.",
+    "x": 0.494,
+    "y": 0.247
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species B.",
+    "x": 0.378,
+    "y": 0.48
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species B.",
+    "x": 0.492,
+    "y": 0.324
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species B.",
+    "x": 0.377,
+    "y": 0.363
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species B.",
+    "x": 0.503,
+    "y": 0.3
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species B.",
+    "x": 0.376,
+    "y": 0.405
+   },
+   {
+    "concept": "Species B",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species B.",
+    "x": 0.359,
+    "y": 0.318
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species C.",
+    "x": -0.257,
+    "y": 0.483
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species C.",
+    "x": -0.248,
+    "y": 0.53
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species C.",
+    "x": -0.107,
+    "y": 0.568
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species C.",
+    "x": 0.099,
+    "y": 0.503
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species C.",
+    "x": 0.03,
+    "y": 0.637
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species C.",
+    "x": 0.136,
+    "y": 0.489
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species C.",
+    "x": 0.035,
+    "y": 0.525
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species C.",
+    "x": 0.153,
+    "y": 0.571
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species C.",
+    "x": -0.178,
+    "y": 0.518
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species C.",
+    "x": -0.209,
+    "y": 0.509
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species C.",
+    "x": -0.219,
+    "y": 0.501
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species C.",
+    "x": 0.141,
+    "y": 0.572
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species C.",
+    "x": -0.102,
+    "y": 0.576
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species C.",
+    "x": -0.029,
+    "y": 0.62
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species C.",
+    "x": -0.038,
+    "y": 0.543
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species C.",
+    "x": 0.104,
+    "y": 0.586
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species C.",
+    "x": -0.053,
+    "y": 0.541
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species C.",
+    "x": 0.09,
+    "y": 0.549
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species C.",
+    "x": 0.053,
+    "y": 0.581
+   },
+   {
+    "concept": "Species C",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species C.",
+    "x": 0.154,
+    "y": 0.505
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species D.",
+    "x": -0.377,
+    "y": 0.389
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species D.",
+    "x": -0.5,
+    "y": 0.158
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species D.",
+    "x": -0.465,
+    "y": 0.261
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species D.",
+    "x": -0.468,
+    "y": 0.341
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species D.",
+    "x": -0.172,
+    "y": 0.437
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species D.",
+    "x": -0.203,
+    "y": 0.579
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species D.",
+    "x": -0.293,
+    "y": 0.45
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species D.",
+    "x": -0.287,
+    "y": 0.451
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species D.",
+    "x": -0.374,
+    "y": 0.459
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species D.",
+    "x": -0.292,
+    "y": 0.476
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species D.",
+    "x": -0.301,
+    "y": 0.439
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species D.",
+    "x": -0.394,
+    "y": 0.374
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species D.",
+    "x": -0.404,
+    "y": 0.391
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species D.",
+    "x": -0.431,
+    "y": 0.248
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species D.",
+    "x": -0.455,
+    "y": 0.498
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species D.",
+    "x": -0.415,
+    "y": 0.388
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species D.",
+    "x": -0.444,
+    "y": 0.459
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species D.",
+    "x": -0.28,
+    "y": 0.459
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species D.",
+    "x": -0.202,
+    "y": 0.499
+   },
+   {
+    "concept": "Species D",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species D.",
+    "x": -0.421,
+    "y": 0.467
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species E.",
+    "x": -0.645,
+    "y": -0.12
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species E.",
+    "x": -0.551,
+    "y": 0.062
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species E.",
+    "x": -0.526,
+    "y": 0.075
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species E.",
+    "x": -0.604,
+    "y": 0.017
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species E.",
+    "x": -0.533,
+    "y": 0.122
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species E.",
+    "x": -0.489,
+    "y": -0.046
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species E.",
+    "x": -0.65,
+    "y": -0.027
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species E.",
+    "x": -0.5,
+    "y": 0.117
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species E.",
+    "x": -0.554,
+    "y": -0.036
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species E.",
+    "x": -0.553,
+    "y": 0.071
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species E.",
+    "x": -0.65,
+    "y": -0.024
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species E.",
+    "x": -0.613,
+    "y": -0.212
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species E.",
+    "x": -0.598,
+    "y": 0.0
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species E.",
+    "x": -0.383,
+    "y": -0.341
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species E.",
+    "x": -0.513,
+    "y": -0.11
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species E.",
+    "x": -0.628,
+    "y": -0.179
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species E.",
+    "x": -0.568,
+    "y": -0.054
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species E.",
+    "x": -0.657,
+    "y": -0.13
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species E.",
+    "x": -0.58,
+    "y": -0.117
+   },
+   {
+    "concept": "Species E",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species E.",
+    "x": -0.685,
+    "y": 0.006
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species F.",
+    "x": -0.443,
+    "y": -0.359
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species F.",
+    "x": -0.378,
+    "y": -0.186
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species F.",
+    "x": -0.466,
+    "y": -0.254
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species F.",
+    "x": -0.472,
+    "y": -0.409
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species F.",
+    "x": -0.254,
+    "y": -0.341
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species F.",
+    "x": -0.28,
+    "y": -0.573
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species F.",
+    "x": -0.405,
+    "y": -0.499
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species F.",
+    "x": -0.493,
+    "y": -0.001
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species F.",
+    "x": -0.246,
+    "y": -0.52
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species F.",
+    "x": -0.459,
+    "y": -0.312
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species F.",
+    "x": -0.338,
+    "y": -0.45
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species F.",
+    "x": -0.325,
+    "y": -0.278
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species F.",
+    "x": -0.445,
+    "y": -0.372
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species F.",
+    "x": -0.489,
+    "y": -0.37
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species F.",
+    "x": -0.189,
+    "y": -0.547
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species F.",
+    "x": -0.578,
+    "y": -0.348
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species F.",
+    "x": -0.407,
+    "y": -0.4
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species F.",
+    "x": -0.381,
+    "y": -0.425
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species F.",
+    "x": -0.489,
+    "y": -0.263
+   },
+   {
+    "concept": "Species F",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species F.",
+    "x": -0.443,
+    "y": -0.346
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species G.",
+    "x": 0.136,
+    "y": -0.444
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species G.",
+    "x": -0.047,
+    "y": -0.486
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species G.",
+    "x": 0.236,
+    "y": -0.527
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species G.",
+    "x": 0.117,
+    "y": -0.451
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species G.",
+    "x": -0.063,
+    "y": -0.544
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species G.",
+    "x": -0.008,
+    "y": -0.535
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species G.",
+    "x": 0.002,
+    "y": -0.643
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species G.",
+    "x": -0.225,
+    "y": -0.562
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species G.",
+    "x": -0.203,
+    "y": -0.494
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species G.",
+    "x": -0.039,
+    "y": -0.537
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species G.",
+    "x": 0.089,
+    "y": -0.535
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species G.",
+    "x": 0.02,
+    "y": -0.537
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species G.",
+    "x": 0.088,
+    "y": -0.563
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species G.",
+    "x": 0.093,
+    "y": -0.562
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species G.",
+    "x": 0.065,
+    "y": -0.533
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species G.",
+    "x": 0.104,
+    "y": -0.483
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species G.",
+    "x": 0.054,
+    "y": -0.502
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species G.",
+    "x": -0.104,
+    "y": -0.584
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species G.",
+    "x": -0.083,
+    "y": -0.613
+   },
+   {
+    "concept": "Species G",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species G.",
+    "x": -0.274,
+    "y": -0.593
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species H.",
+    "x": 0.43,
+    "y": -0.379
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species H.",
+    "x": 0.403,
+    "y": -0.333
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species H.",
+    "x": 0.524,
+    "y": -0.149
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species H.",
+    "x": 0.428,
+    "y": -0.435
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species H.",
+    "x": 0.176,
+    "y": -0.492
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species H.",
+    "x": 0.309,
+    "y": -0.386
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species H.",
+    "x": 0.161,
+    "y": -0.514
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species H.",
+    "x": 0.444,
+    "y": -0.417
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species H.",
+    "x": 0.439,
+    "y": -0.296
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species H.",
+    "x": 0.434,
+    "y": -0.245
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species H.",
+    "x": 0.57,
+    "y": -0.115
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species H.",
+    "x": 0.452,
+    "y": -0.289
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species H.",
+    "x": 0.36,
+    "y": -0.42
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species H.",
+    "x": 0.255,
+    "y": -0.426
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species H.",
+    "x": 0.511,
+    "y": -0.289
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species H.",
+    "x": 0.439,
+    "y": -0.402
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species H.",
+    "x": 0.378,
+    "y": -0.406
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species H.",
+    "x": 0.515,
+    "y": -0.233
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species H.",
+    "x": 0.419,
+    "y": -0.427
+   },
+   {
+    "concept": "Species H",
+    "prompt": "Produce an item you would never have seen, inventing something far outside the examples of Species H.",
+    "x": 0.467,
+    "y": -0.386
+   }
+  ]
+ },
+ "meta": {
+  "bars": {
+   "C1_mid_creative": 0.15,
+   "C2_creative_max": 0.05,
+   "C2_novel_min": 0.9,
+   "L1_ceiling": 0.9,
+   "L2_no_forgetting": 0.85
+  },
+  "concepts": [
+   "Species A",
+   "Species B",
+   "Species C",
+   "Species D",
+   "Species E",
+   "Species F",
+   "Species G",
+   "Species H"
+  ],
+  "rule": "an item is CREATIVE iff NOVEL (outside the taught core) AND VALID (inside the learned manifold, routed to the claimed concept); novelty alone is not creativity.",
+  "seed": 42,
+  "space": "bounded 2D concept disk, homes on a ring of radius 0.25",
+  "test": "T74 human protocol (docs/LEARNING_CREATIVITY_TEST.md)",
+  "thresholds": {
+   "accept_r": 0.0608,
+   "novelty_thr": 0.029,
+   "spacing_mean": 0.0162,
+   "spacing_std": 0.0127
+  }
+ },
+ "probes": {
+  "items": {
+   "Species A": [
+    [
+     0.175,
+     0.035
+    ],
+    [
+     0.353,
+     0.009
+    ],
+    [
+     0.233,
+     -0.007
+    ],
+    [
+     0.281,
+     -0.087
+    ],
+    [
+     0.258,
+     -0.02
+    ],
+    [
+     0.342,
+     -0.009
+    ],
+    [
+     0.333,
+     -0.055
+    ],
+    [
+     0.279,
+     0.016
+    ],
+    [
+     0.207,
+     0.009
+    ],
+    [
+     0.311,
+     -0.016
+    ],
+    [
+     0.165,
+     -0.001
+    ],
+    [
+     0.205,
+     -0.017
+    ],
+    [
+     0.246,
+     -0.085
+    ],
+    [
+     0.169,
+     0.024
+    ],
+    [
+     0.224,
+     -0.128
+    ],
+    [
+     0.289,
+     0.014
+    ],
+    [
+     0.214,
+     -0.066
+    ],
+    [
+     0.292,
+     0.017
+    ],
+    [
+     0.369,
+     0.021
+    ],
+    [
+     0.269,
+     -0.008
+    ],
+    [
+     0.291,
+     0.031
+    ],
+    [
+     0.313,
+     -0.026
+    ],
+    [
+     0.228,
+     -0.024
+    ],
+    [
+     0.29,
+     0.075
+    ],
+    [
+     0.227,
+     -0.021
+    ],
+    [
+     0.266,
+     -0.012
+    ],
+    [
+     0.298,
+     -0.113
+    ],
+    [
+     0.209,
+     -0.039
+    ],
+    [
+     0.134,
+     -0.048
+    ],
+    [
+     0.204,
+     -0.01
+    ],
+    [
+     0.306,
+     -0.012
+    ],
+    [
+     0.198,
+     -0.003
+    ],
+    [
+     0.302,
+     -0.049
+    ],
+    [
+     0.204,
+     0.028
+    ],
+    [
+     0.239,
+     0.032
+    ],
+    [
+     0.249,
+     0.035
+    ],
+    [
+     0.198,
+     -0.001
+    ],
+    [
+     0.239,
+     -0.061
+    ],
+    [
+     0.172,
+     0.034
+    ],
+    [
+     0.232,
+     -0.051
+    ]
+   ],
+   "Species B": [
+    [
+     0.172,
+     0.233
+    ],
+    [
+     0.063,
+     0.102
+    ],
+    [
+     0.131,
+     0.25
+    ],
+    [
+     0.191,
+     0.215
+    ],
+    [
+     0.12,
+     0.121
+    ],
+    [
+     0.199,
+     0.18
+    ],
+    [
+     0.204,
+     0.167
+    ],
+    [
+     0.191,
+     0.185
+    ],
+    [
+     0.216,
+     0.217
+    ],
+    [
+     0.096,
+     0.064
+    ],
+    [
+     0.227,
+     0.236
+    ],
+    [
+     0.126,
+     0.084
+    ],
+    [
+     0.182,
+     0.223
+    ],
+    [
+     0.267,
+     0.203
+    ],
+    [
+     0.158,
+     0.132
+    ],
+    [
+     0.177,
+     0.162
+    ],
+    [
+     0.126,
+     0.279
+    ],
+    [
+     0.266,
+     0.234
+    ],
+    [
+     0.131,
+     0.22
+    ],
+    [
+     0.209,
+     0.199
+    ],
+    [
+     0.239,
+     0.209
+    ],
+    [
+     0.214,
+     0.209
+    ],
+    [
+     0.194,
+     0.088
+    ],
+    [
+     0.181,
+     0.149
+    ],
+    [
+     0.113,
+     0.261
+    ],
+    [
+     0.263,
+     0.245
+    ],
+    [
+     0.19,
+     0.244
+    ],
+    [
+     0.177,
+     0.187
+    ],
+    [
+     0.122,
+     0.197
+    ],
+    [
+     0.18,
+     0.112
+    ],
+    [
+     0.174,
+     0.173
+    ],
+    [
+     0.267,
+     0.221
+    ],
+    [
+     0.177,
+     0.189
+    ],
+    [
+     0.179,
+     0.167
+    ],
+    [
+     0.123,
+     0.169
+    ],
+    [
+     0.139,
+     0.114
+    ],
+    [
+     0.202,
+     0.196
+    ],
+    [
+     0.087,
+     0.171
+    ],
+    [
+     0.227,
+     0.23
+    ],
+    [
+     0.228,
+     0.179
+    ]
+   ],
+   "Species C": [
+    [
+     -0.042,
+     0.196
+    ],
+    [
+     0.017,
+     0.269
+    ],
+    [
+     0.064,
+     0.305
+    ],
+    [
+     -0.007,
+     0.188
+    ],
+    [
+     -0.016,
+     0.261
+    ],
+    [
+     -0.01,
+     0.221
+    ],
+    [
+     0.013,
+     0.225
+    ],
+    [
+     -0.031,
+     0.266
+    ],
+    [
+     -0.02,
+     0.262
+    ],
+    [
+     0.014,
+     0.193
+    ],
+    [
+     -0.024,
+     0.322
+    ],
+    [
+     -0.058,
+     0.144
+    ],
+    [
+     -0.093,
+     0.251
+    ],
+    [
+     0.002,
+     0.244
+    ],
+    [
+     0.061,
+     0.116
+    ],
+    [
+     0.02,
+     0.328
+    ],
+    [
+     -0.056,
+     0.231
+    ],
+    [
+     -0.038,
+     0.205
+    ],
+    [
+     -0.016,
+     0.321
+    ],
+    [
+     0.092,
+     0.233
+    ],
+    [
+     0.095,
+     0.252
+    ],
+    [
+     0.088,
+     0.245
+    ],
+    [
+     0.007,
+     0.268
+    ],
+    [
+     0.159,
+     0.293
+    ],
+    [
+     -0.035,
+     0.298
+    ],
+    [
+     -0.018,
+     0.226
+    ],
+    [
+     0.045,
+     0.252
+    ],
+    [
+     0.014,
+     0.251
+    ],
+    [
+     0.017,
+     0.271
+    ],
+    [
+     -0.097,
+     0.283
+    ],
+    [
+     -0.049,
+     0.178
+    ],
+    [
+     -0.003,
+     0.254
+    ],
+    [
+     -0.035,
+     0.292
+    ],
+    [
+     -0.067,
+     0.23
+    ],
+    [
+     -0.029,
+     0.248
+    ],
+    [
+     0.014,
+     0.2
+    ],
+    [
+     0.036,
+     0.253
+    ],
+    [
+     -0.095,
+     0.152
+    ],
+    [
+     -0.001,
+     0.239
+    ],
+    [
+     -0.005,
+     0.249
+    ]
+   ],
+   "Species D": [
+    [
+     -0.165,
+     0.224
+    ],
+    [
+     -0.232,
+     0.118
+    ],
+    [
+     -0.231,
+     0.191
+    ],
+    [
+     -0.115,
+     0.155
+    ],
+    [
+     -0.302,
+     0.092
+    ],
+    [
+     -0.218,
+     0.149
+    ],
+    [
+     -0.197,
+     0.179
+    ],
+    [
+     -0.192,
+     0.229
+    ],
+    [
+     -0.211,
+     0.134
+    ],
+    [
+     -0.153,
+     0.1
+    ],
+    [
+     -0.157,
+     0.182
+    ],
+    [
+     -0.184,
+     0.256
+    ],
+    [
+     -0.208,
+     0.28
+    ],
+    [
+     -0.188,
+     0.113
+    ],
+    [
+     -0.173,
+     0.123
+    ],
+    [
+     -0.214,
+     0.197
+    ],
+    [
+     -0.149,
+     0.146
+    ],
+    [
+     -0.127,
+     0.235
+    ],
+    [
+     -0.105,
+     0.203
+    ],
+    [
+     -0.109,
+     0.083
+    ],
+    [
+     -0.193,
+     0.133
+    ],
+    [
+     -0.171,
+     0.148
+    ],
+    [
+     -0.185,
+     0.271
+    ],
+    [
+     -0.185,
+     0.197
+    ],
+    [
+     -0.188,
+     0.181
+    ],
+    [
+     -0.176,
+     0.199
+    ],
+    [
+     -0.119,
+     0.259
+    ],
+    [
+     -0.161,
+     0.206
+    ],
+    [
+     -0.234,
+     0.172
+    ],
+    [
+     -0.13,
+     0.22
+    ],
+    [
+     -0.166,
+     0.221
+    ],
+    [
+     -0.152,
+     0.237
+    ],
+    [
+     -0.162,
+     0.159
+    ],
+    [
+     -0.16,
+     0.03
+    ],
+    [
+     -0.158,
+     -0.006
+    ],
+    [
+     -0.263,
+     0.199
+    ],
+    [
+     -0.153,
+     0.119
+    ],
+    [
+     -0.212,
+     0.245
+    ],
+    [
+     -0.201,
+     0.289
+    ],
+    [
+     -0.177,
+     0.197
+    ]
+   ],
+   "Species E": [
+    [
+     -0.169,
+     0.007
+    ],
+    [
+     -0.3,
+     -0.005
+    ],
+    [
+     -0.252,
+     -0.068
+    ],
+    [
+     -0.263,
+     -0.037
+    ],
+    [
+     -0.204,
+     0.002
+    ],
+    [
+     -0.264,
+     -0.005
+    ],
+    [
+     -0.239,
+     0.031
+    ],
+    [
+     -0.3,
+     -0.052
+    ],
+    [
+     -0.195,
+     -0.021
+    ],
+    [
+     -0.321,
+     0.022
+    ],
+    [
+     -0.227,
+     -0.077
+    ],
+    [
+     -0.239,
+     0.037
+    ],
+    [
+     -0.231,
+     0.032
+    ],
+    [
+     -0.32,
+     0.017
+    ],
+    [
+     -0.265,
+     -0.024
+    ],
+    [
+     -0.206,
+     0.074
+    ],
+    [
+     -0.16,
+     0.066
+    ],
+    [
+     -0.255,
+     0.018
+    ],
+    [
+     -0.212,
+     0.006
+    ],
+    [
+     -0.243,
+     0.041
+    ],
+    [
+     -0.253,
+     -0.036
+    ],
+    [
+     -0.271,
+     0.032
+    ],
+    [
+     -0.25,
+     0.017
+    ],
+    [
+     -0.216,
+     -0.019
+    ],
+    [
+     -0.212,
+     0.019
+    ],
+    [
+     -0.312,
+     0.072
+    ],
+    [
+     -0.275,
+     -0.083
+    ],
+    [
+     -0.302,
+     -0.051
+    ],
+    [
+     -0.247,
+     -0.014
+    ],
+    [
+     -0.267,
+     0.031
+    ],
+    [
+     -0.233,
+     0.016
+    ],
+    [
+     -0.23,
+     0.031
+    ],
+    [
+     -0.355,
+     -0.018
+    ],
+    [
+     -0.359,
+     0.002
+    ],
+    [
+     -0.25,
+     0.052
+    ],
+    [
+     -0.191,
+     0.01
+    ],
+    [
+     -0.275,
+     0.024
+    ],
+    [
+     -0.276,
+     -0.0
+    ],
+    [
+     -0.201,
+     -0.028
+    ],
+    [
+     -0.21,
+     0.034
+    ]
+   ],
+   "Species F": [
+    [
+     -0.225,
+     -0.128
+    ],
+    [
+     -0.142,
+     -0.172
+    ],
+    [
+     -0.215,
+     -0.22
+    ],
+    [
+     -0.204,
+     -0.15
+    ],
+    [
+     -0.225,
+     -0.155
+    ],
+    [
+     -0.239,
+     -0.187
+    ],
+    [
+     -0.171,
+     -0.055
+    ],
+    [
+     -0.246,
+     -0.103
+    ],
+    [
+     -0.169,
+     -0.156
+    ],
+    [
+     -0.171,
+     -0.155
+    ],
+    [
+     -0.184,
+     -0.104
+    ],
+    [
+     -0.2,
+     -0.12
+    ],
+    [
+     -0.209,
+     -0.18
+    ],
+    [
+     -0.23,
+     -0.154
+    ],
+    [
+     -0.105,
+     -0.181
+    ],
+    [
+     -0.187,
+     -0.233
+    ],
+    [
+     -0.188,
+     -0.256
+    ],
+    [
+     -0.222,
+     -0.165
+    ],
+    [
+     -0.111,
+     -0.036
+    ],
+    [
+     -0.206,
+     -0.105
+    ],
+    [
+     -0.165,
+     -0.184
+    ],
+    [
+     -0.155,
+     -0.174
+    ],
+    [
+     -0.171,
+     -0.197
+    ],
+    [
+     -0.247,
+     -0.254
+    ],
+    [
+     -0.144,
+     -0.191
+    ],
+    [
+     -0.207,
+     -0.176
+    ],
+    [
+     -0.137,
+     -0.168
+    ],
+    [
+     -0.21,
+     -0.115
+    ],
+    [
+     -0.098,
+     -0.152
+    ],
+    [
+     -0.128,
+     -0.115
+    ],
+    [
+     -0.12,
+     -0.146
+    ],
+    [
+     -0.147,
+     -0.151
+    ],
+    [
+     -0.232,
+     -0.142
+    ],
+    [
+     -0.245,
+     -0.217
+    ],
+    [
+     -0.112,
+     -0.135
+    ],
+    [
+     -0.102,
+     -0.19
+    ],
+    [
+     -0.234,
+     -0.189
+    ],
+    [
+     -0.172,
+     -0.173
+    ],
+    [
+     -0.12,
+     -0.195
+    ],
+    [
+     -0.159,
+     -0.226
+    ]
+   ],
+   "Species G": [
+    [
+     0.023,
+     -0.25
+    ],
+    [
+     -0.037,
+     -0.262
+    ],
+    [
+     -0.009,
+     -0.264
+    ],
+    [
+     0.089,
+     -0.255
+    ],
+    [
+     -0.012,
+     -0.355
+    ],
+    [
+     -0.045,
+     -0.263
+    ],
+    [
+     -0.034,
+     -0.181
+    ],
+    [
+     -0.008,
+     -0.186
+    ],
+    [
+     0.003,
+     -0.248
+    ],
+    [
+     -0.004,
+     -0.25
+    ],
+    [
+     0.086,
+     -0.366
+    ],
+    [
+     -0.1,
+     -0.277
+    ],
+    [
+     0.001,
+     -0.215
+    ],
+    [
+     0.024,
+     -0.269
+    ],
+    [
+     0.051,
+     -0.198
+    ],
+    [
+     0.009,
+     -0.202
+    ],
+    [
+     0.014,
+     -0.278
+    ],
+    [
+     0.035,
+     -0.244
+    ],
+    [
+     0.0,
+     -0.176
+    ],
+    [
+     -0.123,
+     -0.321
+    ],
+    [
+     -0.059,
+     -0.268
+    ],
+    [
+     -0.013,
+     -0.325
+    ],
+    [
+     -0.049,
+     -0.293
+    ],
+    [
+     0.123,
+     -0.16
+    ],
+    [
+     -0.021,
+     -0.268
+    ],
+    [
+     -0.057,
+     -0.345
+    ],
+    [
+     -0.006,
+     -0.3
+    ],
+    [
+     -0.004,
+     -0.33
+    ],
+    [
+     -0.038,
+     -0.243
+    ],
+    [
+     0.018,
+     -0.229
+    ],
+    [
+     -0.066,
+     -0.207
+    ],
+    [
+     -0.04,
+     -0.218
+    ],
+    [
+     -0.001,
+     -0.319
+    ],
+    [
+     -0.016,
+     -0.232
+    ],
+    [
+     0.031,
+     -0.257
+    ],
+    [
+     0.077,
+     -0.2
+    ],
+    [
+     -0.013,
+     -0.212
+    ],
+    [
+     0.097,
+     -0.152
+    ],
+    [
+     -0.061,
+     -0.296
+    ],
+    [
+     0.074,
+     -0.303
+    ]
+   ],
+   "Species H": [
+    [
+     0.111,
+     -0.201
+    ],
+    [
+     0.198,
+     -0.182
+    ],
+    [
+     0.144,
+     -0.21
+    ],
+    [
+     0.141,
+     -0.221
+    ],
+    [
+     0.291,
+     -0.162
+    ],
+    [
+     0.221,
+     -0.201
+    ],
+    [
+     0.167,
+     -0.212
+    ],
+    [
+     0.044,
+     -0.246
+    ],
+    [
+     0.086,
+     -0.289
+    ],
+    [
+     0.117,
+     -0.111
+    ],
+    [
+     0.175,
+     -0.112
+    ],
+    [
+     0.197,
+     -0.138
+    ],
+    [
+     0.132,
+     -0.151
+    ],
+    [
+     0.213,
+     -0.206
+    ],
+    [
+     0.205,
+     -0.148
+    ],
+    [
+     0.149,
+     -0.233
+    ],
+    [
+     0.118,
+     -0.172
+    ],
+    [
+     0.193,
+     -0.216
+    ],
+    [
+     0.178,
+     -0.148
+    ],
+    [
+     0.208,
+     -0.099
+    ],
+    [
+     0.241,
+     -0.227
+    ],
+    [
+     0.261,
+     -0.203
+    ],
+    [
+     0.229,
+     -0.173
+    ],
+    [
+     0.156,
+     -0.267
+    ],
+    [
+     0.168,
+     -0.255
+    ],
+    [
+     0.225,
+     -0.101
+    ],
+    [
+     0.137,
+     -0.162
+    ],
+    [
+     0.141,
+     -0.208
+    ],
+    [
+     0.216,
+     -0.179
+    ],
+    [
+     0.264,
+     -0.201
+    ],
+    [
+     0.227,
+     -0.172
+    ],
+    [
+     0.217,
+     -0.199
+    ],
+    [
+     0.174,
+     -0.183
+    ],
+    [
+     0.135,
+     -0.144
+    ],
+    [
+     0.209,
+     -0.147
+    ],
+    [
+     0.254,
+     -0.104
+    ],
+    [
+     0.158,
+     -0.158
+    ],
+    [
+     0.146,
+     -0.176
+    ],
+    [
+     0.147,
+     -0.096
+    ],
+    [
+     0.195,
+     -0.188
+    ]
+   ]
+  }
+ },
+ "teaching": {
+  "exemplars": {
+   "Species A": [
+    [
+     0.265,
+     -0.052
+    ],
+    [
+     0.288,
+     0.047
+    ],
+    [
+     0.152,
+     -0.065
+    ],
+    [
+     0.256,
+     -0.016
+    ],
+    [
+     0.249,
+     -0.043
+    ],
+    [
+     0.294,
+     0.039
+    ],
+    [
+     0.253,
+     0.056
+    ],
+    [
+     0.273,
+     -0.043
+    ],
+    [
+     0.268,
+     -0.048
+    ],
+    [
+     0.294,
+     -0.002
+    ],
+    [
+     0.241,
+     -0.034
+    ],
+    [
+     0.311,
+     -0.008
+    ],
+    [
+     0.229,
+     -0.018
+    ],
+    [
+     0.277,
+     0.018
+    ],
+    [
+     0.271,
+     0.022
+    ],
+    [
+     0.357,
+     -0.02
+    ],
+    [
+     0.224,
+     -0.041
+    ],
+    [
+     0.281,
+     0.056
+    ],
+    [
+     0.244,
+     -0.042
+    ],
+    [
+     0.209,
+     0.033
+    ],
+    [
+     0.287,
+     0.027
+    ],
+    [
+     0.217,
+     0.012
+    ],
+    [
+     0.256,
+     0.011
+    ],
+    [
+     0.294,
+     0.011
+    ],
+    [
+     0.284,
+     0.003
+    ],
+    [
+     0.264,
+     0.032
+    ],
+    [
+     0.177,
+     -0.016
+    ],
+    [
+     0.226,
+     -0.032
+    ],
+    [
+     0.236,
+     0.075
+    ],
+    [
+     0.207,
+     0.048
+    ],
+    [
+     0.166,
+     -0.017
+    ],
+    [
+     0.258,
+     0.029
+    ],
+    [
+     0.286,
+     0.04
+    ],
+    [
+     0.233,
+     -0.023
+    ],
+    [
+     0.293,
+     -0.01
+    ],
+    [
+     0.186,
+     -0.057
+    ],
+    [
+     0.204,
+     0.025
+    ],
+    [
+     0.257,
+     0.035
+    ],
+    [
+     0.229,
+     0.008
+    ],
+    [
+     0.281,
+     -0.015
+    ]
+   ],
+   "Species B": [
+    [
+     0.2,
+     0.144
+    ],
+    [
+     0.159,
+     0.158
+    ],
+    [
+     0.117,
+     0.201
+    ],
+    [
+     0.153,
+     0.177
+    ],
+    [
+     0.201,
+     0.199
+    ],
+    [
+     0.21,
+     0.172
+    ],
+    [
+     0.156,
+     0.173
+    ],
+    [
+     0.092,
+     0.104
+    ],
+    [
+     0.111,
+     0.127
+    ],
+    [
+     0.197,
+     0.132
+    ],
+    [
+     0.158,
+     0.242
+    ],
+    [
+     0.159,
+     0.214
+    ],
+    [
+     0.13,
+     0.167
+    ],
+    [
+     0.129,
+     0.16
+    ],
+    [
+     0.219,
+     0.09
+    ],
+    [
+     0.198,
+     0.189
+    ],
+    [
+     0.147,
+     0.104
+    ],
+    [
+     0.18,
+     0.15
+    ],
+    [
+     0.188,
+     0.178
+    ],
+    [
+     0.257,
+     0.165
+    ],
+    [
+     0.126,
+     0.186
+    ],
+    [
+     0.188,
+     0.245
+    ],
+    [
+     0.219,
+     0.195
+    ],
+    [
+     0.25,
+     0.117
+    ],
+    [
+     0.145,
+     0.13
+    ],
+    [
+     0.157,
+     0.108
+    ],
+    [
+     0.209,
+     0.166
+    ],
+    [
+     0.103,
+     0.126
+    ],
+    [
+     0.192,
+     0.219
+    ],
+    [
+     0.277,
+     0.322
+    ],
+    [
+     0.197,
+     0.127
+    ],
+    [
+     0.07,
+     0.19
+    ],
+    [
+     0.136,
+     0.156
+    ],
+    [
+     0.146,
+     0.17
+    ],
+    [
+     0.23,
+     0.185
+    ],
+    [
+     0.169,
+     0.125
+    ],
+    [
+     0.093,
+     0.152
+    ],
+    [
+     0.174,
+     0.265
+    ],
+    [
+     0.183,
+     0.226
+    ],
+    [
+     0.152,
+     0.118
+    ]
+   ],
+   "Species C": [
+    [
+     -0.048,
+     0.214
+    ],
+    [
+     0.106,
+     0.209
+    ],
+    [
+     0.042,
+     0.205
+    ],
+    [
+     0.047,
+     0.269
+    ],
+    [
+     -0.008,
+     0.248
+    ],
+    [
+     -0.033,
+     0.272
+    ],
+    [
+     -0.023,
+     0.189
+    ],
+    [
+     -0.064,
+     0.259
+    ],
+    [
+     0.079,
+     0.258
+    ],
+    [
+     -0.006,
+     0.264
+    ],
+    [
+     0.065,
+     0.261
+    ],
+    [
+     -0.021,
+     0.305
+    ],
+    [
+     0.021,
+     0.327
+    ],
+    [
+     0.009,
+     0.189
+    ],
+    [
+     -0.068,
+     0.333
+    ],
+    [
+     0.086,
+     0.241
+    ],
+    [
+     -0.019,
+     0.323
+    ],
+    [
+     -0.055,
+     0.205
+    ],
+    [
+     0.032,
+     0.23
+    ],
+    [
+     -0.0,
+     0.242
+    ],
+    [
+     0.017,
+     0.32
+    ],
+    [
+     0.005,
+     0.282
+    ],
+    [
+     -0.103,
+     0.248
+    ],
+    [
+     -0.042,
+     0.189
+    ],
+    [
+     -0.044,
+     0.233
+    ],
+    [
+     0.046,
+     0.184
+    ],
+    [
+     0.002,
+     0.226
+    ],
+    [
+     -0.016,
+     0.3
+    ],
+    [
+     0.027,
+     0.317
+    ],
+    [
+     -0.008,
+     0.215
+    ],
+    [
+     -0.011,
+     0.262
+    ],
+    [
+     0.009,
+     0.196
+    ],
+    [
+     0.005,
+     0.261
+    ],
+    [
+     0.126,
+     0.344
+    ],
+    [
+     -0.043,
+     0.236
+    ],
+    [
+     -0.073,
+     0.22
+    ],
+    [
+     0.016,
+     0.31
+    ],
+    [
+     -0.036,
+     0.217
+    ],
+    [
+     -0.107,
+     0.242
+    ],
+    [
+     -0.053,
+     0.224
+    ]
+   ],
+   "Species D": [
+    [
+     -0.221,
+     0.172
+    ],
+    [
+     -0.265,
+     0.103
+    ],
+    [
+     -0.07,
+     0.112
+    ],
+    [
+     -0.232,
+     0.269
+    ],
+    [
+     -0.032,
+     0.118
+    ],
+    [
+     -0.195,
+     0.194
+    ],
+    [
+     -0.09,
+     0.127
+    ],
+    [
+     -0.189,
+     0.216
+    ],
+    [
+     -0.155,
+     0.158
+    ],
+    [
+     -0.183,
+     0.108
+    ],
+    [
+     -0.189,
+     0.163
+    ],
+    [
+     -0.165,
+     0.149
+    ],
+    [
+     -0.153,
+     0.227
+    ],
+    [
+     -0.169,
+     0.194
+    ],
+    [
+     -0.174,
+     0.177
+    ],
+    [
+     -0.213,
+     0.193
+    ],
+    [
+     -0.182,
+     0.281
+    ],
+    [
+     -0.098,
+     0.196
+    ],
+    [
+     -0.215,
+     0.121
+    ],
+    [
+     -0.117,
+     0.19
+    ],
+    [
+     -0.153,
+     0.09
+    ],
+    [
+     -0.13,
+     0.199
+    ],
+    [
+     -0.232,
+     0.153
+    ],
+    [
+     -0.164,
+     0.179
+    ],
+    [
+     -0.191,
+     0.172
+    ],
+    [
+     -0.189,
+     0.184
+    ],
+    [
+     -0.103,
+     0.048
+    ],
+    [
+     -0.189,
+     0.186
+    ],
+    [
+     -0.162,
+     0.158
+    ],
+    [
+     -0.265,
+     0.193
+    ],
+    [
+     -0.09,
+     0.1
+    ],
+    [
+     -0.134,
+     0.16
+    ],
+    [
+     -0.18,
+     0.124
+    ],
+    [
+     -0.193,
+     0.242
+    ],
+    [
+     -0.148,
+     0.263
+    ],
+    [
+     -0.118,
+     0.199
+    ],
+    [
+     -0.09,
+     0.199
+    ],
+    [
+     -0.135,
+     0.162
+    ],
+    [
+     -0.173,
+     0.142
+    ],
+    [
+     -0.127,
+     0.118
+    ]
+   ],
+   "Species E": [
+    [
+     -0.211,
+     -0.01
+    ],
+    [
+     -0.191,
+     0.038
+    ],
+    [
+     -0.159,
+     0.037
+    ],
+    [
+     -0.329,
+     -0.003
+    ],
+    [
+     -0.309,
+     -0.026
+    ],
+    [
+     -0.174,
+     0.032
+    ],
+    [
+     -0.285,
+     -0.051
+    ],
+    [
+     -0.248,
+     -0.061
+    ],
+    [
+     -0.284,
+     0.016
+    ],
+    [
+     -0.192,
+     0.03
+    ],
+    [
+     -0.365,
+     0.015
+    ],
+    [
+     -0.246,
+     0.021
+    ],
+    [
+     -0.169,
+     -0.103
+    ],
+    [
+     -0.28,
+     0.03
+    ],
+    [
+     -0.329,
+     0.074
+    ],
+    [
+     -0.232,
+     0.042
+    ],
+    [
+     -0.279,
+     0.041
+    ],
+    [
+     -0.197,
+     0.012
+    ],
+    [
+     -0.238,
+     0.014
+    ],
+    [
+     -0.293,
+     -0.007
+    ],
+    [
+     -0.258,
+     0.019
+    ],
+    [
+     -0.2,
+     -0.053
+    ],
+    [
+     -0.256,
+     0.074
+    ],
+    [
+     -0.287,
+     -0.041
+    ],
+    [
+     -0.24,
+     0.042
+    ],
+    [
+     -0.249,
+     0.066
+    ],
+    [
+     -0.207,
+     0.042
+    ],
+    [
+     -0.222,
+     0.116
+    ],
+    [
+     -0.26,
+     -0.1
+    ],
+    [
+     -0.17,
+     -0.023
+    ],
+    [
+     -0.245,
+     0.065
+    ],
+    [
+     -0.33,
+     -0.063
+    ],
+    [
+     -0.33,
+     -0.04
+    ],
+    [
+     -0.228,
+     0.026
+    ],
+    [
+     -0.236,
+     -0.071
+    ],
+    [
+     -0.366,
+     0.003
+    ],
+    [
+     -0.274,
+     0.023
+    ],
+    [
+     -0.215,
+     0.007
+    ],
+    [
+     -0.212,
+     0.011
+    ],
+    [
+     -0.223,
+     -0.035
+    ]
+   ],
+   "Species F": [
+    [
+     -0.186,
+     -0.167
+    ],
+    [
+     -0.136,
+     -0.196
+    ],
+    [
+     -0.151,
+     -0.19
+    ],
+    [
+     -0.183,
+     -0.135
+    ],
+    [
+     -0.276,
+     -0.242
+    ],
+    [
+     -0.251,
+     -0.293
+    ],
+    [
+     -0.211,
+     -0.139
+    ],
+    [
+     -0.191,
+     -0.167
+    ],
+    [
+     -0.122,
+     -0.11
+    ],
+    [
+     -0.18,
+     -0.109
+    ],
+    [
+     -0.172,
+     -0.219
+    ],
+    [
+     -0.206,
+     -0.251
+    ],
+    [
+     -0.221,
+     -0.195
+    ],
+    [
+     -0.137,
+     -0.091
+    ],
+    [
+     -0.246,
+     -0.157
+    ],
+    [
+     -0.229,
+     -0.153
+    ],
+    [
+     -0.183,
+     -0.268
+    ],
+    [
+     -0.13,
+     -0.207
+    ],
+    [
+     -0.203,
+     -0.23
+    ],
+    [
+     -0.209,
+     -0.155
+    ],
+    [
+     -0.186,
+     -0.16
+    ],
+    [
+     -0.159,
+     -0.111
+    ],
+    [
+     -0.194,
+     -0.251
+    ],
+    [
+     -0.123,
+     -0.193
+    ],
+    [
+     -0.121,
+     -0.158
+    ],
+    [
+     -0.183,
+     -0.159
+    ],
+    [
+     -0.079,
+     -0.073
+    ],
+    [
+     -0.173,
+     -0.169
+    ],
+    [
+     -0.123,
+     -0.219
+    ],
+    [
+     -0.16,
+     -0.178
+    ],
+    [
+     -0.161,
+     -0.218
+    ],
+    [
+     -0.256,
+     -0.28
+    ],
+    [
+     -0.233,
+     -0.2
+    ],
+    [
+     -0.191,
+     -0.08
+    ],
+    [
+     -0.121,
+     -0.225
+    ],
+    [
+     -0.159,
+     -0.197
+    ],
+    [
+     -0.191,
+     -0.168
+    ],
+    [
+     -0.146,
+     -0.194
+    ],
+    [
+     -0.124,
+     -0.234
+    ],
+    [
+     -0.176,
+     -0.047
+    ]
+   ],
+   "Species G": [
+    [
+     0.011,
+     -0.178
+    ],
+    [
+     0.005,
+     -0.221
+    ],
+    [
+     -0.003,
+     -0.259
+    ],
+    [
+     -0.039,
+     -0.228
+    ],
+    [
+     -0.043,
+     -0.217
+    ],
+    [
+     0.054,
+     -0.232
+    ],
+    [
+     -0.014,
+     -0.227
+    ],
+    [
+     -0.015,
+     -0.203
+    ],
+    [
+     -0.092,
+     -0.267
+    ],
+    [
+     -0.1,
+     -0.325
+    ],
+    [
+     0.068,
+     -0.205
+    ],
+    [
+     -0.036,
+     -0.325
+    ],
+    [
+     -0.148,
+     -0.277
+    ],
+    [
+     0.121,
+     -0.228
+    ],
+    [
+     -0.028,
+     -0.227
+    ],
+    [
+     -0.078,
+     -0.265
+    ],
+    [
+     0.005,
+     -0.254
+    ],
+    [
+     0.04,
+     -0.233
+    ],
+    [
+     0.033,
+     -0.284
+    ],
+    [
+     0.045,
+     -0.169
+    ],
+    [
+     -0.049,
+     -0.294
+    ],
+    [
+     0.067,
+     -0.26
+    ],
+    [
+     0.07,
+     -0.272
+    ],
+    [
+     0.073,
+     -0.243
+    ],
+    [
+     0.013,
+     -0.172
+    ],
+    [
+     -0.018,
+     -0.297
+    ],
+    [
+     -0.022,
+     -0.227
+    ],
+    [
+     -0.078,
+     -0.218
+    ],
+    [
+     -0.027,
+     -0.193
+    ],
+    [
+     -0.12,
+     -0.289
+    ],
+    [
+     -0.084,
+     -0.291
+    ],
+    [
+     0.012,
+     -0.259
+    ],
+    [
+     -0.013,
+     -0.258
+    ],
+    [
+     0.01,
+     -0.3
+    ],
+    [
+     0.035,
+     -0.217
+    ],
+    [
+     0.019,
+     -0.222
+    ],
+    [
+     0.015,
+     -0.148
+    ],
+    [
+     -0.004,
+     -0.265
+    ],
+    [
+     -0.038,
+     -0.302
+    ],
+    [
+     -0.062,
+     -0.294
+    ]
+   ],
+   "Species H": [
+    [
+     0.173,
+     -0.16
+    ],
+    [
+     0.179,
+     -0.215
+    ],
+    [
+     0.222,
+     -0.14
+    ],
+    [
+     0.169,
+     -0.209
+    ],
+    [
+     0.204,
+     -0.167
+    ],
+    [
+     0.104,
+     -0.18
+    ],
+    [
+     0.19,
+     -0.222
+    ],
+    [
+     0.186,
+     -0.25
+    ],
+    [
+     0.244,
+     -0.114
+    ],
+    [
+     0.164,
+     -0.159
+    ],
+    [
+     0.056,
+     -0.235
+    ],
+    [
+     0.162,
+     -0.23
+    ],
+    [
+     0.212,
+     -0.077
+    ],
+    [
+     0.118,
+     -0.219
+    ],
+    [
+     0.189,
+     -0.096
+    ],
+    [
+     0.116,
+     -0.164
+    ],
+    [
+     0.268,
+     -0.259
+    ],
+    [
+     0.113,
+     -0.198
+    ],
+    [
+     0.151,
+     -0.136
+    ],
+    [
+     0.189,
+     -0.266
+    ],
+    [
+     0.203,
+     -0.206
+    ],
+    [
+     0.24,
+     -0.208
+    ],
+    [
+     0.145,
+     -0.15
+    ],
+    [
+     0.215,
+     -0.154
+    ],
+    [
+     0.092,
+     -0.15
+    ],
+    [
+     0.125,
+     -0.165
+    ],
+    [
+     0.106,
+     -0.154
+    ],
+    [
+     0.136,
+     -0.241
+    ],
+    [
+     0.212,
+     -0.165
+    ],
+    [
+     0.146,
+     -0.104
+    ],
+    [
+     0.155,
+     -0.175
+    ],
+    [
+     0.19,
+     -0.208
+    ],
+    [
+     0.2,
+     -0.203
+    ],
+    [
+     0.156,
+     -0.109
+    ],
+    [
+     0.125,
+     -0.297
+    ],
+    [
+     0.257,
+     -0.049
+    ],
+    [
+     0.157,
+     -0.274
+    ],
+    [
+     0.161,
+     -0.191
+    ],
+    [
+     0.167,
+     -0.232
+    ],
+    [
+     0.206,
+     -0.151
+    ]
+   ]
+  }
+ }
+}

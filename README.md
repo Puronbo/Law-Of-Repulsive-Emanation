@@ -182,6 +182,8 @@ The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.j
 | Bazaar network (`bazaar_net.py`) | SUPPORTED (structural, over real TCP processes; seeds 42/11/7): the bazaar hybrid now WORKS AS A NETWORK — 4 node processes (real sockets on the repo's own T70 transport, optional mutual TLS) replicate every action into bit-identical content-addressed LedgerChain archives (one chain head, one length, all 9 × 3 = 27 archives verify). N1: content replicates — a post submitted on one node is searchable from another, cross-node. N2: the emergent mesh feed works over real homes — the minority reader's feed is 1.00 of its own community's authors. N3: removal is standing-gated + quorum-confirmed — a fresh sockpuppet (standing 0.00) contributes nothing, a 3-flag spam post is removed through the 9-guardian 2/3 quorum, and a fabricated 3-downvote brigade on a standing author's post is REJECTED (where a central 3-flag rule would remove it). N4: the archive is tamper-evident — a flipped payload breaks verify() at its sequence while the other nodes stay valid. N5: the network survives node death — content is served by survivors and a stateless restart resyncs to a bit-identical, verifying chain. Honest caveats: ordering is driver-sequenced (a real network needs a distributed total-order primitive; partition-equivocation is detected, not prevented); majority-honesty quorum, not BFT; one machine |
 | Decentral Web (T73, `decentral_web.py`) | SUPPORTED (structural, over real TCP processes; seeds 42/11/7, plain + mutual-TLS sockets): the WWW's three functions rebuilt on the repo's own verified machinery — a working content-addressed P2P "web". W1: content replicates — a page published on one node is served (with verified content-address integrity) from EVERY other node, all archives converging to one chain head + one length that verifies. W2: content addressing — 3 publishes of 2 distinct contents collapse to 2 addresses (SHA-256 dedup, the WWW's cache key made local), and a GET by address is a direct O(1) store lookup. W3: the net survives node death — a crashed node's pages are still served by survivors, and a stateless restart resyncs to a bit-identical, verifying archive. W4: name resolution — a near-miss query ("homee") resolves to the intended page ("home") by char-ngram embedding routing, the google.com→gooogle.com pattern from the real top-1M net, now over the wire. Re-uses T70's SocketTransport, LedgerChain, and the T55i name-embedding pattern. Honest walls: event ordering is driver-sequenced (a distributed total-order primitive is the unbuilt layer — the T14c/bazaar wall); the name hasher is a small toy over a few pages, not the 1.9M-site geometry; still one machine; no incentives/crypto identity beyond channel TLS. See `docs/DECENTRAL_WEB.md` |
 | Learning & Creativity Test (T74, `learn_creativity_test.py`) | SUPPORTED (structural, synthetic concept space; seeds 42/11/7): a test ascertaining what a learner LEARNED in a learning environment and whether it CREATES novel-but-valid content — one rubric (recognition/transfer for learned; novelty × appropriateness for creativity) that the human-assessment protocol in `docs/LEARNING_CREATIVITY_TEST.md` reuses with the same thresholds. L1: held-out probe accuracy climbs from near-chance 0.125 to ≥0.90 as exemplar exposure grows 1→40/concept (a stored-memory k-NN router — majority over its 5 nearest stored exemplars, the repo's own k-NN primitive — routes at chance while the memory is sparse because the neighborhood is dominated by OTHER concepts, and at ≥0.92 once the true concept's exemplars dominate). L2: no forgetting — first-taught concepts keep ≥0.92 after every later concept is added (additive memory does not destabilize). C1: a measurable share of mid-size near-miss variations are simultaneously NOVEL (outside the taught core) and VALID (inside the learned manifold, routed to the intended concept) — never-presented new-but-right items, ≥0.24 yield. C2: random far nulls are ~100% novel but 0% creative — novelty alone is not creativity, the joint novelty × validity criterion is necessary. C3: creative yield is interior-peaked over mutation size (too-close valid-but-not-novel, too-far novel-but-not-valid). Honest walls: stored-memory k-NN over gaussian exemplars in a synthetic 2D space — MECHANISM claims about the test, not transfer or open-domain invention. See `docs/LEARNING_CREATIVITY_TEST.md` |
+| Learning-Curve Scaling (T75, `learn_curve_scale.py`) | SUPPORTED (structural, synthetic concept space; seeds 42/11/7): the T74 acquisition curve is a density effect, not an artifact of its one operating point (C=8, SIGMA=0.05). S1: the sparse floor is chance — at one exemplar/concept held-out accuracy tracks 1/C and strictly decreases with curriculum size (0.50 → 0.25 → 0.125 → ~0.07 for C=2,4,8,16; a bigger curriculum is a denser confusion field). S2: the acquisition curve exists at every scale — the full-exposure ceiling holds ≥0.90 for every C∈{2,4,8}, so the dynamic range (ceiling − floor) grows with C (0.50 at C=2 → 0.82 at C=8). S3: capacity saturation — beyond the well-separated regime the ceiling collapses once adjacent home separation reaches a few exemplar-sigma (0.94 at C=8 → 0.61 → 0.42 → 0.30 at C=16,24,32), locating a real memory capacity C*≈π·HOME_R/(2·SIGMA)≈8 (where T74's operating point sits; the collapse tracks separation/σ — SIGMA=0.03 holds 0.89 at C=16, SIGMA=0.10 collapses to 0.59 at C=8). Honest walls: synthetic 2D space + stored-memory k-NN — MECHANISM claims about the learning environment. See `docs/LEARNING_CURVE_SCALE.md` |
+| Human-Trial Instrument (T74 protocol, `human_trial_pilot.py`) | SUPPORTED (structural, simulated-participant pilot; seeds 42/11/7): the T74 human protocol made concrete and validated — a trial package (teaching set, held-out probes, three-effort creativity prompts, pre-registered spacing thresholds + bars in `data/human_trial_package.json`) and `score_participant()`, the SAME code that grades the machine, grading a human's recorded answers on the engine's bars. The pilot with archetypal simulations proves the instrument works: P1 a perfect participant attains every engine bar (L1 ceiling 1.0, L2 1.0, C1 mid creative ~0.24–0.36 ≥0.15, C2/C3 hold); P2 a random non-learner fails L1 (ceiling ≈ 1/C) and C1 (yield ≈ 0) — not passable by chance; P3 the joint criterion binds on both sides (trivial items valid-but-not-novel, wild items novel-but-not-valid, mid the only positive yield; a pure copycat scores exactly 0); P4 random far items grade ~100% novel but ~0% creative. Honest walls: simulated archetypes validate the instrument, not human behavior; a real trial hands the package to a human and scores with the same code. See `docs/HUMAN_TRIAL_INSTRUMENT.md` |
 
 
 ## Internet-Scale Flow (T67, T72)
@@ -232,6 +234,34 @@ near-miss variations), C2 novelty ≠ creativity (random far nulls are novel but
 invalid), C3 an interior-peaked creativity landscape.  All SUPPORTED on seeds
 42/11/7, pinned by `test_learn_creativity_supported`.  See
 `docs/LEARNING_CREATIVITY_TEST.md`.
+
+## Learning-Curve Scaling (T75)
+
+T74's acquisition curve was measured at a single operating point.  T75 sweeps
+the curriculum size C over the same space and router and shows the curve is a
+**density effect**, not an artifact: the sparse floor tracks 1/C (chance) and
+drops as C grows (S1), the full-exposure ceiling holds ≥0.90 while concepts
+stay separated so the curve's dynamic range grows with C (S2), and beyond the
+well-separated regime the memory saturates the space and the ceiling collapses
+at a critical curriculum size C*≈π·HOME_R/(2·SIGMA)≈8 (S3) — the same scale
+T74's operating point sits at.  All SUPPORTED on seeds 42/11/7, pinned by
+`test_learn_curve_scale_supported`.  See `docs/LEARNING_CURVE_SCALE.md`.
+
+## Human-Trial Instrument (the T74 protocol, runnable)
+
+The design doc's human protocol is now concrete and runnable: a trial package
+(`data/human_trial_package.json` — labeled teaching set, held-out probes,
+three-effort creativity prompts, pre-registered thresholds and bars) plus
+`score_participant()`, the **same code that grades the machine**, grading a
+human's recorded answers on the engine's bars.  The pilot with simulated
+archetypes shows the instrument works — a perfect participant attains every
+bar (P1), a random non-learner fails (P2), the joint novelty × validity
+criterion binds on both sides with a pure copycat at exactly zero (P3), and
+random far items are novel but never creative under the pre-registered
+thresholds (P4) — all SUPPORTED on seeds 42/11/7, pinned by
+`test_human_trial_pilot_supported`.  Honest wall: simulated archetypes
+validate the instrument; a real trial hands the package to a human and scores
+with the same code.  See `docs/HUMAN_TRIAL_INSTRUMENT.md`.
 
 Everything is also browsable through the plug-and-play UI: `puno-plug` opens a
 single page that auto-discovers every decorated plugin in `plugins/` and every
@@ -314,6 +344,8 @@ python experiments/decentral_net_live.py --verdict data/decentral_net_live_data.
 python experiments/bazaar_net.py --verdict     # bazaar as a real TCP-process network verdict (SUPPORTED, structural)
 python experiments/decentral_web.py --verdict  # content-addressed P2P web verdict (SUPPORTED, structural)
 python experiments/learn_creativity_test.py --verdict  # learned + creativity test T74 verdict (SUPPORTED)
+python experiments/learn_curve_scale.py --verdict       # learning-curve scaling T75 verdict (SUPPORTED)
+python experiments/human_trial_pilot.py --verdict       # T74 human-protocol instrument pilot verdict (SUPPORTED) + trial package
 puno-plug [--host 127.0.0.1] [--port 8767]     # plug-and-play UI: any function, auto-discovered forms
 python Universals/serve_dashboard.py   # L.O.R.E. dashboard -> http://localhost:8080/docs/
 ```

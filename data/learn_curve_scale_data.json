@@ -1,0 +1,119 @@
+{
+ "claims": [
+  {
+   "claim": "the sparse floor is chance: at one exemplar per concept held-out accuracy sits at 1/C and strictly decreases with curriculum size over the well-separated regime (floor 0.50 -> 0.25 -> 0.125 -> ~0.07 for C = 2,4,8,16) - a bigger curriculum is a denser confusion field",
+   "id": "S1",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "the acquisition curve exists at every scale: the full-exposure ceiling holds >=0.90 for every C in {2,4,8}, so the curve's dynamic range (ceiling - floor) grows with C (0.50 at C=2 to 0.82 at C=8) - a bigger curriculum is harder to start from but still fully acquired",
+   "id": "S2",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "capacity saturation: beyond the well-separated regime the full-exposure ceiling collapses once adjacent home separation reaches a few exemplar-sigma (0.94 at C=8 -> 0.61 -> 0.42 -> 0.30 at C=16,24,32), locating a real memory capacity C* ~= pi*HOME_R/(2*SIGMA) ~= 8",
+   "id": "S3",
+   "verdict": "SUPPORTED"
+  }
+ ],
+ "date": "2026-08-12",
+ "experiment": "learn_curve_scale (T75): the T74 acquisition curve is a density effect - the sparse floor tracks 1/C, the ceiling holds >=0.90 while concepts stay separated, and collapses at a critical curriculum size",
+ "per_seed": {
+  "11": {
+   "ceiling": {
+    "16": 0.578125,
+    "2": 1.0,
+    "24": 0.4395833333333333,
+    "32": 0.32421875,
+    "4": 1.0,
+    "8": 0.921875
+   },
+   "critical_scale": 7.85,
+   "floor": {
+    "16": 0.0703125,
+    "2": 0.5,
+    "24": 0.07916666666666666,
+    "32": 0.06328125,
+    "4": 0.25,
+    "8": 0.125
+   },
+   "s1_ok": true,
+   "s2_ok": true,
+   "s3_ok": true,
+   "separation_sigma": {
+    "16": 1.95,
+    "2": 10.0,
+    "24": 1.31,
+    "32": 0.98,
+    "4": 7.07,
+    "8": 3.83
+   }
+  },
+  "42": {
+   "ceiling": {
+    "16": 0.6109375,
+    "2": 1.0,
+    "24": 0.41875,
+    "32": 0.2953125,
+    "4": 1.0,
+    "8": 0.940625
+   },
+   "critical_scale": 7.85,
+   "floor": {
+    "16": 0.08125,
+    "2": 0.5,
+    "24": 0.06979166666666667,
+    "32": 0.07265625,
+    "4": 0.25,
+    "8": 0.125
+   },
+   "s1_ok": true,
+   "s2_ok": true,
+   "s3_ok": true,
+   "separation_sigma": {
+    "16": 1.95,
+    "2": 10.0,
+    "24": 1.31,
+    "32": 0.98,
+    "4": 7.07,
+    "8": 3.83
+   }
+  },
+  "7": {
+   "ceiling": {
+    "16": 0.653125,
+    "2": 1.0,
+    "24": 0.41875,
+    "32": 0.28984375,
+    "4": 1.0,
+    "8": 0.925
+   },
+   "critical_scale": 7.85,
+   "floor": {
+    "16": 0.0640625,
+    "2": 0.5,
+    "24": 0.08541666666666667,
+    "32": 0.08828125,
+    "4": 0.25,
+    "8": 0.125
+   },
+   "s1_ok": true,
+   "s2_ok": true,
+   "s3_ok": true,
+   "separation_sigma": {
+    "16": 1.95,
+    "2": 10.0,
+    "24": 1.31,
+    "32": 0.98,
+    "4": 7.07,
+    "8": 3.83
+   }
+  }
+ },
+ "seeds": [
+  42,
+  11,
+  7
+ ],
+ "verdict": "SUPPORTED (structural, synthetic concept space; 3 seeds): sparse floor 0.50 -> 0.08 as C grows 2 -> 16, tracking 1/C (S1); full-exposure ceiling 1.00 -> 1.00 -> 0.94 at C = 2,4,8, the acquisition curve holds at every scale and its dynamic range grows (S2); the ceiling collapses 0.94 -> 0.61 -> 0.30 at C = 16,24,32 once adjacent homes reach a few exemplar-sigma (S3, C* ~= 8)"
+}

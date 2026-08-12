@@ -1,0 +1,328 @@
+{
+ "claims": [
+  {
+   "claim": "the human protocol's bars are attainable: a perfect participant (exact held-out routing, mid-effort novel variations) attains every engine bar - L1 ceiling >=0.90, L2 no-forgetting >=0.85, C1 mid creative >=0.15, C2 and C3 hold",
+   "id": "P1",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "the bars discriminate: a non-learner (uniform random routing, random generation) fails L1 (ceiling ~= 1/C) and C1 (creative yield ~= 0) - the protocol is not passable by chance",
+   "id": "P2",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "the joint criterion binds on both sides (human C3): within the perfect participant trivial-effort items are valid-but-not-novel (valid > novel), wild-effort items novel-but-not-valid (novel > valid), mid-effort is the only positive creative yield (interior-peaked like the engine), and a pure copycat's yield is exactly 0",
+   "id": "P3",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "the C2 constraint holds on the human scale: random far items grade ~100% novel but ~0% creative under the pre-registered thresholds, so a facilitator using the rule cannot count novelty alone as creativity",
+   "id": "P4",
+   "verdict": "SUPPORTED"
+  }
+ ],
+ "date": "2026-08-12",
+ "experiment": "human_trial_pilot: the T74 human protocol instrument - trial package + participant scorer + archetypal pilot showing the bars are attainable (perfect) and discriminating (random/copycat fail)",
+ "per_seed": {
+  "11": {
+   "p1_ok": true,
+   "p2_ok": true,
+   "p3_ok": true,
+   "p4_ok": true,
+   "per_archetype": {
+    "copycat": {
+     "c1_ok": false,
+     "c2_ok": true,
+     "c3_ok": false,
+     "l1_ceiling": 0.159375,
+     "l1_ok": false,
+     "l2_min": null,
+     "l2_ok": null,
+     "null": {
+      "creative": 0.0,
+      "novel": 1.0
+     },
+     "yield": {
+      "mid": {
+       "creative": 0.0,
+       "novel": 0.0,
+       "valid": 0.975
+      },
+      "trivial": {
+       "creative": 0.0,
+       "novel": 0.0,
+       "valid": 0.9875
+      },
+      "wild": {
+       "creative": 0.0,
+       "novel": 0.0,
+       "valid": 0.9625
+      }
+     }
+    },
+    "perfect": {
+     "c1_ok": true,
+     "c2_ok": true,
+     "c3_ok": true,
+     "l1_ceiling": 1.0,
+     "l1_ok": true,
+     "l2_min": 1.0,
+     "l2_ok": true,
+     "null": {
+      "creative": 0.0,
+      "novel": 1.0
+     },
+     "yield": {
+      "mid": {
+       "creative": 0.24375,
+       "novel": 0.64375,
+       "valid": 0.58125
+      },
+      "trivial": {
+       "creative": 0.225,
+       "novel": 0.23125,
+       "valid": 0.96875
+      },
+      "wild": {
+       "creative": 0.0,
+       "novel": 1.0,
+       "valid": 0.0
+      }
+     }
+    },
+    "random": {
+     "c1_ok": false,
+     "c2_ok": true,
+     "c3_ok": false,
+     "l1_ceiling": 0.11875,
+     "l1_ok": false,
+     "l2_min": null,
+     "l2_ok": null,
+     "null": {
+      "creative": 0.0,
+      "novel": 1.0
+     },
+     "yield": {
+      "mid": {
+       "creative": 0.01875,
+       "novel": 0.75,
+       "valid": 0.05
+      },
+      "trivial": {
+       "creative": 0.025,
+       "novel": 0.73125,
+       "valid": 0.04375
+      },
+      "wild": {
+       "creative": 0.00625,
+       "novel": 0.7875,
+       "valid": 0.01875
+      }
+     }
+    }
+   }
+  },
+  "42": {
+   "p1_ok": true,
+   "p2_ok": true,
+   "p3_ok": true,
+   "p4_ok": true,
+   "per_archetype": {
+    "copycat": {
+     "c1_ok": false,
+     "c2_ok": true,
+     "c3_ok": false,
+     "l1_ceiling": 0.15625,
+     "l1_ok": false,
+     "l2_min": null,
+     "l2_ok": null,
+     "null": {
+      "creative": 0.0,
+      "novel": 1.0
+     },
+     "yield": {
+      "mid": {
+       "creative": 0.0,
+       "novel": 0.0,
+       "valid": 0.9625
+      },
+      "trivial": {
+       "creative": 0.0,
+       "novel": 0.0,
+       "valid": 0.96875
+      },
+      "wild": {
+       "creative": 0.0,
+       "novel": 0.0,
+       "valid": 0.96875
+      }
+     }
+    },
+    "perfect": {
+     "c1_ok": true,
+     "c2_ok": true,
+     "c3_ok": true,
+     "l1_ceiling": 1.0,
+     "l1_ok": true,
+     "l2_min": 1.0,
+     "l2_ok": true,
+     "null": {
+      "creative": 0.0,
+      "novel": 1.0
+     },
+     "yield": {
+      "mid": {
+       "creative": 0.35625,
+       "novel": 0.6875,
+       "valid": 0.65
+      },
+      "trivial": {
+       "creative": 0.2625,
+       "novel": 0.28125,
+       "valid": 0.95
+      },
+      "wild": {
+       "creative": 0.00625,
+       "novel": 1.0,
+       "valid": 0.00625
+      }
+     }
+    },
+    "random": {
+     "c1_ok": false,
+     "c2_ok": true,
+     "c3_ok": false,
+     "l1_ceiling": 0.14375,
+     "l1_ok": false,
+     "l2_min": null,
+     "l2_ok": null,
+     "null": {
+      "creative": 0.0,
+      "novel": 1.0
+     },
+     "yield": {
+      "mid": {
+       "creative": 0.00625,
+       "novel": 0.85,
+       "valid": 0.03125
+      },
+      "trivial": {
+       "creative": 0.0375,
+       "novel": 0.75,
+       "valid": 0.075
+      },
+      "wild": {
+       "creative": 0.0125,
+       "novel": 0.8,
+       "valid": 0.0375
+      }
+     }
+    }
+   }
+  },
+  "7": {
+   "p1_ok": true,
+   "p2_ok": true,
+   "p3_ok": true,
+   "p4_ok": true,
+   "per_archetype": {
+    "copycat": {
+     "c1_ok": false,
+     "c2_ok": true,
+     "c3_ok": false,
+     "l1_ceiling": 0.09375,
+     "l1_ok": false,
+     "l2_min": null,
+     "l2_ok": null,
+     "null": {
+      "creative": 0.0,
+      "novel": 1.0
+     },
+     "yield": {
+      "mid": {
+       "creative": 0.0,
+       "novel": 0.0,
+       "valid": 0.98125
+      },
+      "trivial": {
+       "creative": 0.0,
+       "novel": 0.0,
+       "valid": 0.99375
+      },
+      "wild": {
+       "creative": 0.0,
+       "novel": 0.0,
+       "valid": 0.9875
+      }
+     }
+    },
+    "perfect": {
+     "c1_ok": true,
+     "c2_ok": true,
+     "c3_ok": true,
+     "l1_ceiling": 1.0,
+     "l1_ok": true,
+     "l2_min": 1.0,
+     "l2_ok": true,
+     "null": {
+      "creative": 0.0,
+      "novel": 1.0
+     },
+     "yield": {
+      "mid": {
+       "creative": 0.3125,
+       "novel": 0.73125,
+       "valid": 0.56875
+      },
+      "trivial": {
+       "creative": 0.23125,
+       "novel": 0.23125,
+       "valid": 0.93125
+      },
+      "wild": {
+       "creative": 0.0,
+       "novel": 1.0,
+       "valid": 0.0
+      }
+     }
+    },
+    "random": {
+     "c1_ok": false,
+     "c2_ok": true,
+     "c3_ok": false,
+     "l1_ceiling": 0.15,
+     "l1_ok": false,
+     "l2_min": null,
+     "l2_ok": null,
+     "null": {
+      "creative": 0.0,
+      "novel": 1.0
+     },
+     "yield": {
+      "mid": {
+       "creative": 0.0,
+       "novel": 0.83125,
+       "valid": 0.03125
+      },
+      "trivial": {
+       "creative": 0.0125,
+       "novel": 0.8,
+       "valid": 0.05
+      },
+      "wild": {
+       "creative": 0.00625,
+       "novel": 0.79375,
+       "valid": 0.04375
+      }
+     }
+    }
+   }
+  }
+ },
+ "seeds": [
+  42,
+  11,
+  7
+ ],
+ "verdict": "SUPPORTED (structural, simulated-participant pilot; 3 seeds): a perfect participant attains L1 >=0.90, L2 >=0.85, C1 >=0.15 (mid-effort creative yield 0.36) and C2/C3 hold (P1); a random non-learner's L1 ceiling ~= 1/C and C1 ~= 0 fail the bars (P2); trivial items are valid-but-not-novel, wild items novel-but-not-valid, mid is the only positive yield (P3); random far items are ~100% novel but ~0% creative (P4)"
+}

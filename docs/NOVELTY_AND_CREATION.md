@@ -268,6 +268,61 @@ For each claim: **Status** (measured/derived), **the claim**, **evidence**
   invention; "creativity" is the operational novelty × validity quadrant, not
   human-like intent, surprise, or cultural value.
 
+### 3.x+1  Learning-Curve Scaling (T75) — the acquisition curve is a density effect
+
+- **Claim:** The T74 acquisition curve is a density effect, not an artifact of
+  its single operating point (C=8, SIGMA=0.05).  Same router, same bounded
+  disk, curriculum size C swept 2→32.  S1: the sparse floor is chance — at one
+  exemplar/concept held-out accuracy tracks 1/C and strictly decreases with C
+  over the well-separated regime (0.50 → 0.25 → 0.125 → ~0.07 for C=2,4,8,16):
+  a bigger curriculum is a denser confusion field.  S2: the acquisition curve
+  exists at every scale — the full-exposure ceiling holds ≥0.90 for every
+  C∈{2,4,8}, so the curve's dynamic range (ceiling − floor) grows with C (0.50
+  at C=2 → 0.82 at C=8).  S3: capacity saturation — beyond the well-separated
+  regime the ceiling collapses once adjacent home separation 2·HOME_R·sin(π/C)
+  reaches a few exemplar-sigma (0.94 at C=8 → 0.61 → 0.42 → 0.30 at
+  C=16,24,32), locating a real memory capacity C*≈π·HOME_R/(2·SIGMA)≈8 where
+  T74's operating point sits; the collapse tracks separation/σ (SIGMA=0.03
+  holds 0.89 at C=16; SIGMA=0.10 collapses to 0.59 at C=8), so it is a scale
+  law, not a magic C.
+- **Evidence:** `data/learn_curve_scale_data.json` (per-seed floors
+  [0.50, 0.25, 0.125, ~0.07] over C∈{2,4,8,16}; ceilings [1.0, 1.0, 0.92–0.94]
+  over C∈{2,4,8}; collapsing ceilings [0.92–0.94 → 0.58–0.65 → 0.42–0.44 →
+  0.29–0.32] over C∈{8,16,24,32}; critical_scale ≈ 7.85).  Pinned by
+  `test_learn_curve_scale_supported`.
+- **References:** `experiments/learn_curve_scale.py`; `docs/LEARNING_CURVE_SCALE.md`.
+- **Honest walls (crease-worthy):** synthetic 2D concept space + stored-memory
+  k-NN router — MECHANISM claims about the learning environment, not natural
+  curricula or real learners; the saturation prediction is structural (it says
+  where the well-separated regime ends, given HOME_R and SIGMA).
+
+### 3.x+2  Human-Trial Instrument — the T74 protocol, concrete and validated
+
+- **Claim:** The T74 human protocol is runnable: a trial package (labeled
+  teaching set, held-out probes, three-effort creativity prompts,
+  pre-registered spacing thresholds and bars) plus `score_participant()`, the
+  SAME code that grades the machine, grading a human's recorded answers on the
+  engine's bars — with the learner graded on the same exemplars they were
+  shown and thresholds pre-registered on those exemplars.  The pilot with
+  simulated archetypes shows the instrument works: P1 a perfect participant
+  attains every engine bar (L1 ceiling 1.0, L2 1.0, C1 mid creative
+  ~0.24–0.36 ≥ 0.15, C2/C3 hold); P2 a random non-learner fails L1 (ceiling ≈
+  1/C) and C1 (yield ≈ 0) — not passable by chance; P3 the joint novelty ×
+  validity criterion binds on both sides (trivial items valid-but-not-novel,
+  wild items novel-but-not-valid, mid the only positive yield, a pure copycat
+  exactly 0); P4 random far items grade ~100% novel but ~0% creative under the
+  pre-registered thresholds.
+- **Evidence:** `data/human_trial_pilot_data.json` (per-seed P1–P4 all True;
+  perfect yields interior-peaked [~0.23, ~0.24–0.36, ~0.0]; random ceiling
+  ~0.13–0.14; copycat creative 0.0); the materials themselves in
+  `data/human_trial_package.json`.  Pinned by `test_human_trial_pilot_supported`.
+- **References:** `experiments/human_trial_pilot.py`; `docs/HUMAN_TRIAL_INSTRUMENT.md`;
+  `docs/LEARNING_CREATIVITY_TEST.md` (the protocol being operationalized).
+- **Honest walls (crease-worthy):** the pilot participants are SIMULATED
+  archetypes, so the pilot validates the instrument (bars attainable +
+  discriminating + rule consistent), not human behavior; a real trial hands
+  the package to a human and scores with the same code.
+
 ---
 
 ## 4. Withdrawn, Refuted, and Open Claims (recorded for honesty)
@@ -315,6 +370,8 @@ For each claim: **Status** (measured/derived), **the claim**, **evidence**
 | DecentralNet live daemon (T55f) | **Supported (structural, bounded run) 2026-08-11** | seeds 42/11/7, 3000 ticks/seed + checkpoint/resume probe. V1 population never exceeds CAP (30) through arrivals + damage + pruning — bounded O(CAP²) cost. V2 self-healing with NO repair unit: after each random neuron death the local k-NN re-spread lands the survivors in the healthy spacing band (post-damage spacing 0.5–2.0× of pre — removing a neuron legitimately enlarges mean k-NN distance; recovery ~1.4, no clump, no rim blow-up). V3 the self-consistent routing probe stays 1.00 accurate through churn. V4 a checkpoint saved at tick 1500 and reloaded reproduces the uninterrupted trajectory bit-for-bit (positions identical, born/pruned/killed counters match, RNG stream carries on — the cycle is continuous with no damage). All numpy-only DecentralNet, bounded ring memory, MECHANISM claims about the daemon. `experiments/decentral_net_live.py`, `data/decentral_net_live_data.json` |
 | Bazaar network (bazaar as real processes) | **Supported (structural, over real TCP processes) 2026-08-11** | the bazaar hybrid now WORKS AS A NETWORK — 4 node processes on the repo's own T70 socket transport (optional mutual TLS) replicate every action into bit-identical content-addressed LedgerChain archives: one chain head, one length, every one of the 3-seed × 3-node snapshots verifies. N1 content replicates — a post submitted on one node is searchable from another (cross-node search, 8 hits), cross-node. N2 the emergent mesh feed works over real homes — the minority reader's feed is 1.00 of its own community's authors. N3 removal is standing-gated AND quorum-confirmed — a fresh sockpuppet (standing 0.00) contributes nothing (good post NOT removed), a 3-flag spam post is removed through the 9-guardian 2/3 quorum, and a fabricated 3-downvote brigade on a standing author's post is REJECTED (good post survives where a central 3-flag rule would remove it). N4 the archive is tamper-evident — a flipped payload breaks verify() at its sequence (bad_seq = 2) while the other nodes stay valid. N5 the network survives node death — content is served by survivors (cross-node search after a kill) and a stateless restart resyncs to a bit-identical, verifying chain (head and length equal, verify True). Honest caveats: ordering is driver-sequenced (a real network needs a distributed total-order primitive; partition-equivocation is detected, not prevented); majority-honesty quorum, not BFT; one machine. `experiments/bazaar_net.py`, `data/bazaar_net_data.json` |
 | Learning & Creativity Test (T74) | **Supported (structural, synthetic concept space) 2026-08-12** | seeds 42/11/7. A test ascertaining LEARNED and CREATIVITY in a learning environment, one rubric reused by the human protocol: L1 the acquisition curve — held-out probe accuracy climbs from near-chance 0.125 to ≥0.90 as exemplar exposure grows 1..40/concept for a stored-memory k-NN router (majority over the 5 nearest stored exemplars; a sparse memory's neighborhood is dominated by other concepts, a full one by the true concept). L2 no forgetting — first-taught concepts keep ≥0.92 after every later concept is added (additive memory does not destabilize). C1 creativity — ≥0.24 of mid-size near-miss variations are simultaneously NOVEL (outside the taught core, threshold from the taught exemplars' own spacings — the T55i/A1 doctrine) and VALID (inside the learned manifold, routed to the intended concept): never-presented new-but-right items. C2 novelty ≠ creativity — random far nulls are ~100% novel but 0% creative, so the joint novelty × validity criterion is necessary. C3 interior-peaked landscape — creative yield peaks at a middle mutation size (too-close valid-but-not-novel, too-far novel-but-not-valid). Honest walls: stored-memory k-NN over gaussian exemplars in a synthetic 2D space — MECHANISM claims about the test, not transfer or open-domain invention. `experiments/learn_creativity_test.py`, `data/learn_creativity_test_data.json` |
+| Learning-Curve Scaling (T75) | **Supported (structural, synthetic concept space) 2026-08-12** | seeds 42/11/7. The T74 acquisition curve is a density effect, not an artifact of its one operating point: S1 the sparse floor is chance — at one exemplar/concept held-out accuracy tracks 1/C and strictly decreases with curriculum size over C∈{2,4,8,16} (0.50 → 0.25 → 0.125 → ~0.07; a bigger curriculum is a denser confusion field). S2 the acquisition curve exists at every scale — the full-exposure ceiling holds ≥0.90 for every C∈{2,4,8}, so the dynamic range (ceiling − floor) grows with C (0.50 at C=2 → 0.82 at C=8). S3 capacity saturation — beyond the well-separated regime the ceiling collapses once adjacent home separation reaches a few exemplar-sigma (0.94 at C=8 → 0.61 → 0.42 → 0.30 at C=16,24,32), locating a real memory capacity C*≈π·HOME_R/(2·SIGMA)≈8 where T74 sits; the collapse tracks separation/σ (SIGMA=0.03 holds 0.89 at C=16, SIGMA=0.10 collapses to 0.59 at C=8). Honest walls: synthetic 2D space + stored-memory k-NN — MECHANISM claims about the learning environment, not natural curricula or real learners. `experiments/learn_curve_scale.py`, `data/learn_curve_scale_data.json` |
+| Human-Trial Instrument (T74 protocol) | **Supported (structural, simulated-participant pilot) 2026-08-12** | seeds 42/11/7. The T74 human protocol made concrete and validated: a trial package (labeled teaching set, held-out probes, three-effort creativity prompts, pre-registered spacing thresholds + bars) plus `score_participant()`, the SAME code that grades the machine, grading a human's answers on the engine's bars. Pilot with simulated archetypes: P1 a perfect participant attains every bar (L1 1.0, L2 1.0, C1 mid creative ~0.24–0.36 ≥0.15, C2/C3 hold); P2 a random non-learner fails L1 (~1/C) and C1 (~0) — not passable by chance; P3 the joint criterion binds on both sides (trivial valid-but-not-novel, wild novel-but-not-valid, mid the only positive yield, a pure copycat exactly 0); P4 random far items ~100% novel but ~0% creative. Honest walls: simulated archetypes validate the instrument, not human behavior; a real trial hands the package to a human and scores with the same code. `experiments/human_trial_pilot.py`, `data/human_trial_pilot_data.json`, `data/human_trial_package.json` |
 | C0 Hamiltonian flow as centroid init | **Supported 2026-08-08** | flowing the crowded init centroids on the Poincaré disk separates them (mean pair dist 0.1803 → 1.1433), routing accuracy jumps 0.420 → 0.765 (+0.345, +0.505 over the best random draw), and nearest-centroid classification 0.537 → 0.909 reaches the true-cluster oracle 0.911. Honest walls: the min pair distance barely moves (0.0326 → 0.0328) because the flow clamps all points to the boundary (mean r 0.850 = max_r) — the gain is mean, not worst-case — and routing 0.765 stays below the true-centroid ceiling 0.830, so the flow is a good initialization, not the ceiling. `experiments/hamiltonian_routing.py`, `data/hamiltonian_routing_data.json` |
 | C0 geodesic metric comparison (Poincaré vs cusp) | **Refuted at the configured settings 2026-08-08** | the "stable start" (x0=0.05, p0=0.01/0.02, dt=0.005, 2000 steps) is NOT numerically stable in either metric: the Poincaré trajectory contains NaN states (integrator overflow), the cusp escapes to ~2e13, energy drift is 1.57e25, T-symmetry fails in both (cusp err 4.64e4), and the C0 law is broken in both (max |V−C0| = 24.43). The intended Poincaré-vs-cusp geodesic comparison cannot be made at these settings; the honest negative is that the naive integrator is numerically unstable from this start in both metrics. `experiments/metric_comparison.py`, `data/metric_comparison_data.json` |
 | T-symmetry across the C0 origin (q=0) | **Pass-with-caveat 2026-08-08** | all four runs (positive/negative/large/perpendicular offsets) reconstruct within 0.066–0.226 under exact time reversal (threshold 0.5), so the symplectic integrator is time-reversible in these regimes. Honest caveat: the crossing premise never occurred — in every run the closest approach to the origin is the STARTING distance (idx 0), i.e. trajectories monotonically recede from q=0; A/B/C have zero q1-axis crossings and only D crosses once while staying at min dist 0.05. A trajectory passing THROUGH the C0 critical point was never exercised, so the crossing-C0 regime claim is unconfirmed. `experiments/c0_crossing_tsym.py`, `data/c0_crossing_tsym_data.json` |
@@ -399,6 +456,8 @@ python experiments/decentral_net_live.py --verdict data/decentral_net_live_data.
 python experiments/bazaar_net.py --verdict                 # bazaar as a real TCP-process network verdict (SUPPORTED, structural)
 python experiments/decentral_web.py --verdict              # content-addressed P2P web verdict (SUPPORTED, structural)
 python experiments/learn_creativity_test.py --verdict     # learned + creativity test T74 verdict (SUPPORTED)
+python experiments/learn_curve_scale.py --verdict          # learning-curve scaling T75 verdict (SUPPORTED)
+python experiments/human_trial_pilot.py --verdict          # T74 human-protocol instrument verdict (SUPPORTED) + trial package
 ```
 
 ---

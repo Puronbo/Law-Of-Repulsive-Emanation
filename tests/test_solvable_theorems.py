@@ -62,6 +62,8 @@ number so none of the resolved claims can silently drift:
    - decentral_net_live: the T55f live daemon's structural claims pinned by a bounded run - V1 population never exceeds CAP (30) through arrivals + damage + pruning (bounded O(CAP^2) cost); V2 after each random neuron death the local k-NN re-spread heals the survivors back into the healthy spacing band with NO repair unit (post-damage spacing within 0.5-2.0x of pre - removing a neuron legitimately enlarges mean k-NN distance, no clump, no rim blow-up; recovery ratio ~1.4); V3 the self-consistent routing probe stays 1.00 accurate through 3000-tick churn; V4 a checkpoint saved at tick 1500 and reloaded reproduces the uninterrupted trajectory bit-for-bit (positions identical, counters born/pruned/killed match, RNG stream carries on - the cycle is continuous with no damage) - all SUPPORTED on seeds 42/11/7, numpy-only DecentralNet, bounded ring memory, all as MECHANISM claims about the daemon design
     - bazaar_hybrid: the best-possible 4chan+reddit design (anonymity+bump-order honesty x reddit memory+curation, minus both status economies and central algorithms) verified as 6 structural claims on the repo's OWN machinery - C1 reason-tagged downvotes raise the brigade size to hide a good post 2.5x (reddit S50=8 free downvotes vs hybrid S50=20 pending-quorum-review; even then only HIDDEN, removal needs the quorum); C2 karma-free + tag-to-remove drops top-K spam frac 0.75->0.00 (reddit bot collusion saturates); C3 emergent DecentralNet mesh feed routes minority users 1.00 of their own community vs 0.30 on the global hot feed (overlap 1.0 -> local explicit clustering); C4 content-addressed ledger archive survives 50% node loss with retrieval 1.00 and tamper-evidence (verify() fails at seq 3); C5 9-guardian quorum collapses wrong-removal 0.20 -> 0.0031 at corruption p=0.20; C6 verified-vote-only membership (anonymity for cheap votes, EARNED mesh standing for the removal path) raises the brigade to suspend a good post 32x (S50 20 -> 640, sockpuppet standing 0.05 contributes ~nothing) and collapses quorum wrong-removal to 1e-08 (corrupt identity must ALSO hold guardian standing, 10% of population - a sockpuppet factory cannot mint guardians) at the honest cost of a removal-vote privacy leak - all SUPPORTED as MECHANISM claims (agent-based, no real users)
     - learn_creativity_test (T74): a test ascertaining LEARNED and CREATIVITY in a learning environment, one rubric (recognition/transfer for learned; novelty x appropriateness for creativity) re-used by a human protocol - L1 held-out probe accuracy climbs from near-chance 0.125 to >=0.90 as exemplar exposure grows 1..40/concept (a sparse stored-memory k-NN neighborhood is dominated by other concepts, a full one by the true concept); L2 first-taught concepts keep >=0.92 after every later concept is added (no forgetting under additive memory); C1 a measurable share of mid-size near-miss variations are simultaneously NOVEL and VALID (>=24% yield of never-presented new-but-right items); C2 random far nulls are ~100% novel but 0% creative (novelty alone is not creativity); C3 creative yield is interior-peaked over mutation size (too-close valid-but-not-novel, too-far novel-but-not-valid) - all SUPPORTED on seeds 42/11/7 as MECHANISM claims (stored-memory k-NN router over gaussian exemplars in a synthetic concept space)
+    - learn_curve_scale (T75): the T74 acquisition curve is a density effect, not an artifact of its single operating point - S1 the sparse floor is chance: at one exemplar/concept held-out accuracy tracks 1/C and strictly decreases with curriculum size (0.50 -> 0.25 -> 0.125 -> ~0.07 for C = 2,4,8,16; a bigger curriculum is a denser confusion field); S2 the acquisition curve exists at every scale: the full-exposure ceiling holds >=0.90 for every C in {2,4,8}, so the dynamic range (ceiling - floor) grows with C (0.50 at C=2 -> 0.82 at C=8); S3 capacity saturation: beyond the well-separated regime the ceiling collapses once adjacent home separation reaches a few exemplar-sigma (0.94 at C=8 -> 0.61 -> 0.42 -> 0.30 at C=16,24,32), locating a real memory capacity C* ~= pi*HOME_R/(2*SIGMA) ~= 8 - all SUPPORTED on seeds 42/11/7 as MECHANISM claims, and the collapse tracks separation/sigma, not a magic C (SIGMA=0.03 holds 0.89 at C=16; SIGMA=0.10 collapses to 0.59 already at C=8)
+    - human_trial_pilot: the T74 human protocol made concrete and validated - a trial package (teaching set, held-out probes, three-effort creativity prompts, pre-registered spacing thresholds and bars in data/human_trial_package.json) plus score_participant(), the SAME code that grades the machine, grading a human's recorded answers on the engine's bars; the pilot with simulated archetypes proves the instrument works: P1 a perfect participant attains every engine bar (L1 ceiling 1.0, L2 1.0, C1 mid creative ~0.24-0.36 >= 0.15, C2/C3 hold); P2 a random non-learner fails L1 (ceiling ~= 1/C) and C1 (yield ~= 0) - the bars are not passable by chance; P3 the joint criterion binds on both sides (trivial items valid-but-not-novel, wild items novel-but-not-valid, mid the only positive yield; a pure copycat scores exactly 0); P4 random far items grade ~100% novel but ~0% creative under the pre-registered thresholds - all SUPPORTED on seeds 42/11/7 as MECHANISM claims (simulated participants validate the instrument, not human behavior; a real trial hands the package to a human and scores with the same code)
 
 Run:  python -m pytest tests/test_solvable_theorems.py -q
 """
@@ -1148,4 +1150,61 @@ def test_learn_creativity_supported():
         assert len(sizes) == 4
         ys = [p['creative'][k]['creative'] for k in sizes]
         assert ys[1] > ys[0] and ys[1] > ys[2] and ys[1] > ys[3]
+
+
+def test_learn_curve_scale_supported():
+    d = load('learn_curve_scale_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    claims = {c['id']: c for c in d['claims']}
+    assert set(claims) == {'S1', 'S2', 'S3'}
+    assert all(c['verdict'] == 'SUPPORTED' for c in claims.values())
+    for s in d['seeds']:
+        p = d['per_seed'][str(s)]
+        # S1: the sparse floor is chance and strictly decreases with C over
+        # the well-separated regime C in {2,4,8,16}
+        f = [p['floor'][str(c)] for c in (2, 4, 8, 16)]
+        assert f[0] >= 0.45 and f[-1] <= 0.12
+        assert all(f[i] > f[i + 1] for i in range(len(f) - 1))
+        # S2: the acquisition curve exists at every scale - the full-exposure
+        # ceiling holds >=0.90 for C in {2,4,8} and the dynamic range grows
+        assert min(p['ceiling'][str(c)] for c in (2, 4, 8)) >= 0.90
+        assert (p['ceiling']['8'] - p['floor']['8']) - \
+            (p['ceiling']['2'] - p['floor']['2']) >= 0.25
+        # S3: capacity saturation - the ceiling collapses monotonically once
+        # adjacent homes reach a few exemplar-sigma
+        cs = [p['ceiling'][str(c)] for c in (8, 16, 24, 32)]
+        assert cs[1] < cs[0] - 0.15 and cs[-1] <= 0.50
+        assert all(cs[i] > cs[i + 1] for i in range(len(cs) - 1))
+        assert p['critical_scale'] <= 10
+
+
+def test_human_trial_pilot_supported():
+    d = load('human_trial_pilot_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    claims = {c['id']: c for c in d['claims']}
+    assert set(claims) == {'P1', 'P2', 'P3', 'P4'}
+    assert all(c['verdict'] == 'SUPPORTED' for c in claims.values())
+    for s in d['seeds']:
+        p = d['per_seed'][str(s)]
+        perf = p['per_archetype']['perfect']
+        # P1: a perfect participant attains every engine bar
+        assert perf['l1_ok'] is True and perf['l2_ok'] is True
+        assert perf['c1_ok'] is True and perf['c2_ok'] is True
+        assert perf['c3_ok'] is True
+        # P2: a random non-learner fails L1 and C1
+        rand = p['per_archetype']['random']
+        assert rand['l1_ok'] is False and rand['c1_ok'] is False
+        assert rand['l1_ceiling'] <= 0.30
+        assert rand['yield']['mid']['creative'] <= 0.06
+        # P3: the joint criterion binds on both sides (the human C3)
+        y = perf['yield']
+        assert y['mid']['creative'] >= 0.15
+        assert y['mid']['creative'] > y['trivial']['creative']
+        assert y['mid']['creative'] > y['wild']['creative']
+        assert y['trivial']['valid'] > y['trivial']['novel']
+        assert y['wild']['novel'] > y['wild']['valid']
+        assert p['per_archetype']['copycat']['yield']['mid']['creative'] == 0.0
+        # P4: the C2 constraint holds on the human scale
+        assert p['per_archetype']['perfect']['null']['novel'] >= 0.90
+        assert p['per_archetype']['perfect']['null']['creative'] <= 0.05
 
