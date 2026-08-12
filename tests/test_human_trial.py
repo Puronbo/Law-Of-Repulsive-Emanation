@@ -115,6 +115,28 @@ class TestScoring:
         assert r["l1_ok"] is False and r["c1_ok"] is False
         assert r["l1_ceiling"] <= 0.30
 
+    def test_archived_real_run_reproduces_verdict(self):
+        """Re-grade the first real human run (HT-RUN-001) with the current
+        scorer: learning passes, creativity fails because every mid item was
+        inside the taught core (valid but not novel)."""
+        from pathlib import Path
+        path = Path(__file__).resolve().parents[1] / "data" / \
+            "human_trial_runs" / "HT-RUN-001.json"
+        if not path.exists():
+            pytest.skip("real run artifact not present")
+        run = json.loads(path.read_text(encoding="utf-8"))
+        s = build_session()
+        r = grade(s, run["answers"])
+        arch = run["verdict"]
+        for k in ("l1_ceiling", "l2_min", "l1_ok", "l2_ok", "c1_ok",
+                  "c2_ok", "c3_ok"):
+            assert r[k] == arch[k], k
+        # the discriminating signature: mid items valid but never novel
+        assert r["l1_ok"] is True and r["l2_ok"] is True
+        assert r["c1_ok"] is False and r["c3_ok"] is False
+        assert r["yield"]["mid"]["novel"] == 0.0
+        assert r["yield"]["mid"]["valid"] == 1.0
+
 
 # ---------------------------------------------------------------------- #
 # HTTP app

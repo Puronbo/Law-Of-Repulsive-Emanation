@@ -273,6 +273,12 @@ answer sheet downloads as JSON and reproduces the machine's verdict flags
 builder, and HTTP app are `puno_app/human_trial*.py`, pinned by
 `test_human_trial.py`.
 
+The first real human run (HT-RUN-001, 2026-08-12, developer) is archived in
+`data/human_trial_runs/`: learning and no-forgetting passed a real learner
+(L1 0.953, L2 1.0), while C1/C3 correctly failed because every *mid* item was
+placed inside the taught core (valid 100% but novel 0%) — the mid effort level
+must land beyond ~1 spacing-σ of the exemplars to be novel *and* valid.
+
 Everything is also browsable through the plug-and-play UI: `puno-plug` opens a
 single page that auto-discovers every decorated plugin in `plugins/` and every
 experiment in `experiments/`, generates a form from each function's declared

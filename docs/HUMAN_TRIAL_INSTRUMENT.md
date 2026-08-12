@@ -90,6 +90,8 @@ archetypal simulated participants on the same space.  This validates the
 | Trial package (the materials) | `data/human_trial_package.json` |
 | Runnable session + scoring glue | `puno_app/human_trial.py` |
 | Browser app (stdlib server + single page) | `puno_app/human_trial_ui.py`, `puno_app/human_trial.html` |
+| Real participant runs | `data/human_trial_runs/HT-RUN-001.json` (gitignored, `git add -f`) |
+| Browser app (stdlib server + single page) | `puno_app/human_trial_ui.py`, `puno_app/human_trial.html` |
 | UI/session/scoring tests | `tests/test_human_trial.py` |
 | Design doc (protocol) | `docs/LEARNING_CREATIVITY_TEST.md` |
 | Pinned verdict test | `tests/test_solvable_theorems.py::test_human_trial_pilot_supported` |
@@ -114,3 +116,37 @@ prompts per effort level per concept.  The re-check answers are mapped onto
 every curriculum stage that includes Species A/B (stages 1–8) so
 `score_participant()`'s L2 no-forgetting min is exactly the human's single
 post-curriculum re-check.
+
+## First real human run (HT-RUN-001, 2026-08-12)
+
+The protocol has now been run by an actual human (the developer, via
+`puno_app.human_trial_ui`), and the recorded sheet was graded with the same
+`score_participant()`.  Artifact: `data/human_trial_runs/HT-RUN-001.json`
+(answers + graded verdict).
+
+| Bar | Score | Verdict |
+|---|---|---|
+| L1 ceiling (≥0.90) | 0.953 (61/64) | PASS |
+| L2 no-forgetting (≥0.85) | 1.0 (8/8) | PASS |
+| C1 mid creative (≥0.15) | 0.0 | FAIL |
+| C3 mid > trivial/wild | mid 0.0 ≤ wild 0.56 | FAIL |
+| C2 audit (novel/creative) | 1.0 / 0.0 | PASS |
+
+What the run shows:
+
+- The **learning axes worked for a real human**: held-out recognition at
+  0.95 and no-forgetting at 1.0 both clear their bars — a real learner
+  separates the 8 clusters and retains the first-taught ones.
+- The **creativity bars correctly rejected the profile**: every *mid* item
+  was placed *inside* the taught exemplar cloud — valid (100%) but **not
+  novel (0%)** under the pre-registered spacing threshold — so C1 and C3
+  fail.  The participant's *wild* items were genuinely novel (100%) and 9/16
+  still routed to the claimed species (56% creative), so the novel-AND-valid
+  window is real and reachable; the failure is precisely that the *mid*
+  effort level was not placed far enough to enter it.
+- This is exactly what the instrument is designed to catch: passing C1/C3
+  requires the *mid*-effort items to sit beyond ~1 spacing-σ of the taught
+  core yet inside the claimed species' manifold (the pilot's perfect
+  archetype reaches ~0.24–0.36 there).  A too-close-to-taught participant
+  grades as the pilot's P3/pure-copycat side — creative yield collapses to
+  zero at the mid level.
