@@ -151,6 +151,20 @@ class TestHttp:
         assert b"Learning &amp; Creativity" in html
         assert b"/api/session" in html and b"/api/score" in html
 
+    def test_html_data_flow_pins(self, server):
+        """The page's routing/answer flow must keep the exact fixes that made
+        the L1/recheck screens render: routeList iterates concepts as (name, c)
+        (a swapped (c, name) makes S.l1.probes[name] an index -> undefined ->
+        blank probe screen), and the recheck answer dict is initialized with a
+        per-concept key (an empty dict crashes the recheck handler)."""
+        _, html = _get(server, "/")
+        text = html.decode("utf-8")
+        assert "S.meta.concepts.forEach((name, c) => {" in text
+        assert "const probes = S.l1.probes[name];" in text
+        assert "RC_ANSWERS = {};\n    S.recheck.concepts.forEach(n => RC_ANSWERS[n] = []);" in text
+        # the broken variants must not be present
+        assert "S.meta.concepts.forEach((c,name) => {" not in text
+
     def test_session_endpoint(self, server):
         code, raw = _get(server, "/api/session")
         assert code == 200
