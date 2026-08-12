@@ -12,6 +12,7 @@
 >
 > Companion docs: `AUTO_PACKAGING_PATENTS.md` (patents + standards + FTO) ·
 > `AUTO_PACKAGING_ENERGY_FEASIBILITY.md` (energy feasibility + build cost) ·
+> `AUTO_PACKAGING_RECOMMENDATIONS.md` (safety, ease of use, utilities/air) ·
 > `packaging/` (IEC 61131-3 servo code + Python mirror).
 
 ---

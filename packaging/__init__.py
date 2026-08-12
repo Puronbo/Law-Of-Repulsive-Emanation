@@ -7,5 +7,24 @@ majority-honesty quorum, and the ERECT step machine from
 """
 
 from packaging.servo import ErectorFlow, FoldAxis, PidController, QuorumVote
+from packaging.utilities import (
+    annual_energy_kwh,
+    avg_power_kw,
+    avg_real_scfm,
+    fad_scfm,
+    receiver_volume_gal,
+    vacuum_venturi_demand,
+)
 
-__all__ = ["ErectorFlow", "FoldAxis", "PidController", "QuorumVote"]
+__all__ = [
+    "ErectorFlow",
+    "FoldAxis",
+    "PidController",
+    "QuorumVote",
+    "annual_energy_kwh",
+    "avg_power_kw",
+    "avg_real_scfm",
+    "fad_scfm",
+    "receiver_volume_gal",
+    "vacuum_venturi_demand",
+]
