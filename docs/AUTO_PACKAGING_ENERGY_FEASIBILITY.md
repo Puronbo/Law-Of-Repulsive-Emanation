@@ -1,7 +1,7 @@
 # Autonomous Packaging Line — Energy Feasibility & Build Cost
 
 **Purpose:** Answer two questions for the folding-mechanics schematic
-(`docs/AUTO_PACKAGING_SYSTEM.md` §5 and its §3.36 hydrogen-photon tie-in):
+(`docs/AUTO_PACKAGING_SYSTEM.md` §7.1 and its §3.36 hydrogen-photon tie-in):
 (1) is the line's energy scheme feasible, and (2) what does building the line
 actually cost. Uses 2026 public price data; every figure carries a source and
 an honest wall.
@@ -13,7 +13,7 @@ unless stated.
 
 ## 0. The load being powered
 
-From `AUTO_PACKAGING_SYSTEM.md` §5 (a schematic-level estimate):
+From `AUTO_PACKAGING_SYSTEM.md` §7.1 (a schematic-level estimate):
 
 | Load | Power (avg) |
 |---|---|
@@ -40,7 +40,7 @@ Demand scenarios the energy system must cover:
 
 ## 1. The sizing error in the schematic (honest wall)
 
-`AUTO_PACKAGING_SYSTEM.md` §5 claims *"a 4–5 kW PV array (25–35 m² at ~20%) +
+`AUTO_PACKAGING_SYSTEM.md` §7.2 claims *"a 4–5 kW PV array (25–35 m² at ~20%) +
 battery covers the day."* **That is true only for a fraction of the stated
 demand.**
 
@@ -129,7 +129,7 @@ targets**. At $1–2/kg it becomes competitive; at today's prices it is not.
 ### 2.4 Waste-energy recovery — small on the electrical side
 
 The line's waste-recovery streams (detailed in `AUTO_PACKAGING_SYSTEM.md`
-§9) reduce electrical demand only modestly, so they do **not** change the
+§8) reduce electrical demand only modestly, so they do **not** change the
 solar sizing materially:
 
 | Stream | Effect on the 120 kWh/day electrical demand |

@@ -150,7 +150,7 @@ def main():
             "(~27-30 gal) + VFD compressor (FAD ~27 scfm, ~1.5 kW average) + "
             "a leak/repair program, NOT a bigger fixed-speed compressor "
             "idling at ~25% load. Average air energy is ~1.5 kW, matching "
-            "the 1-2 kW line in AUTO_PACKAGING_SYSTEM.md section 5; the "
+            "the 1-2 kW line in AUTO_PACKAGING_SYSTEM.md section 7.1; the "
             "single biggest air-side improvement is a low-pressure vacuum "
             "blower instead of venturi pads (~3-4x less energy for the same "
             "gripping duty)."

@@ -1,23 +1,35 @@
-# Autonomous Packaging System — Folding-Mechanics Schematic
+# Autonomous Case-Packaging Line — Complete Machine Specification
 
-> Design: an autonomous case-packaging line (blank → erected box → packed →
-> sealed → inspected) whose core operation is **score-line folding**, built
-> from the Puno Calculus machinery's verified geometry + classic mechatronics.
+> **One consolidated document.** This is the single complete spec for the
+> autonomous case-packaging line (flat blank → erected box → packed → sealed →
+> inspected). It merges what were four documents into one segment:
+>
+> | Former doc | Now consolidated into |
+> |---|---|
+> | `AUTO_PACKAGING_SYSTEM.md` (architecture, stations, control, energy) | §1–§8 |
+> | `AUTO_PACKAGING_PATENTS.md` (patents + standards + FTO) | §10 |
+> | `AUTO_PACKAGING_ENERGY_FEASIBILITY.md` (energy + build cost) | §7 |
+> | `AUTO_PACKAGING_RECOMMENDATIONS.md` (safety, ease of use, utilities) | §4, §6, §9 |
+>
+> The four files remain in `docs/` as appendices for citations and survey
+> depth; every *necessity* is stated here. Newly-added necessities that were
+> previously missing are flagged **[ADDED]**: takt/throughput budget (§1.2),
+> conveyor + accumulation buffers (§2.6), power distribution & cabinet cooling
+> (§6.3), calibration tooling (§9.2), maintenance schedule + spares (§9.3),
+> commissioning/acceptance protocol (§9.5), environmental envelope (§1.4),
+> and a master equipment list with specific better-equipment choices (§11).
 >
 > Claim tags: `[measured]` = repo-verified or physical law · `[hypothesis]` =
-> design mapping · `[honest wall]` = what this is NOT.
+> design decision · `[honest wall]` = what this is NOT.
 >
-> Scope: schematic (system architecture, station detail, control, inspection,
-> energy, BOM), not a commissioned build.
->
-> Companion docs: `AUTO_PACKAGING_PATENTS.md` (patents + standards + FTO) ·
-> `AUTO_PACKAGING_ENERGY_FEASIBILITY.md` (energy feasibility + build cost) ·
-> `AUTO_PACKAGING_RECOMMENDATIONS.md` (safety, ease of use, utilities/air) ·
-> `packaging/` (IEC 61131-3 servo code + Python mirror).
+> Control code companion: `packaging/` (IEC 61131-3:2025 ST + Python mirror,
+> 309-test suite).
 
 ---
 
-## 1. Top-level system architecture
+## 1. System architecture
+
+### 1.1 Topology
 
 ```
 FLAT BLANK ─► [1 MAGAZINE/   ] ─► [2 ERECTOR    ] ─► [3 INSERT    ] ─► [4 CLOSE+SEAL ] ─► [5 INSPECT   ] ─► PALLET
@@ -34,262 +46,558 @@ FLAT BLANK ─► [1 MAGAZINE/   ] ─► [2 ERECTOR    ] ─► [3 INSERT    ] 
 ```
 
 **Layers:**
-- **Physical layer** — stations 1–5 on a common conveyor/transfer system.
+- **Physical layer** — stations 1–5 on a common transfer conveyor.
 - **Perception plane** — every actuator's position, every check's invariant.
-- **Control layer** — one master state machine, per-station sub-machines.
-- **The "other techniques"** (§6): vacuum destacking, plough guides, servo
-  motion with torque control, vision/ML inspection, tape/glue joining,
-  compressed air, safety (light curtains / e-stop), IIoT logging.
+- **Control layer** — one master state machine, per-station sub-machines
+  (IEC 61131-3:2025, §3).
+
+**Design doctrine (from repo machinery):**
+- **Fold theorem (T63/T64)** — the crease is where stiffness is minimal, so
+  the fold happens *there*; the geometry selects the fold. Plough guides and
+  the tape-head wipe are passive, crease-selected folds.
+- **L.O.R.E. — the constant is measured, not chosen** — restoring torque is
+  calibrated per blank lot (crease depth → hold torque), never assumed.
+- **Clock test (T59/T61)** — inspection accepts on invariants only
+  (squareness, seam continuity, content), never on gauge.
+- **Fragment bank (T16–T20)** — three independent sensors per critical check;
+  <40% disagreement → continue, ≥50% → stop-and-reset (majority honesty, not
+  Byzantine).
+- **Self-healing, never mix frames (T55c)** — marginal folds corrected
+  in-loop; failed boxes diverted to scrap, never re-inserted.
+- **Spatial index (T67)** — flow the small core: fold axes at high loop rate,
+  magazine/pallet at slow rate.
+
+### 1.2 Throughput & takt budget **[ADDED]**
+
+Target: **300 cases/hour = 12 s/case** (5 cases/min, "RSC line").
+Pipeline layout — one case per station per cycle, stations overlap:
+
+| Station | Budget per case | Longest step |
+|---|---|---|
+| 1 MAG | ≤ 2 s | destack + register |
+| 2 ERECT | ≤ 6 s | fold drive (~2 s) + dwell (1 s) + settle + tape (~2 s) |
+| 3 INSERT | ≤ 3 s | place product group |
+| 4 CLOSE+SEAL | ≤ 5 s | plough + tape + compression 3–5 s (overlapped) |
+| 5 INSPECT | ≤ 2 s | 3 checks + reject decision |
+
+The erector's drive→dwell→settle profile is the longest single step and sets
+the pipeline pace; a 12 s cycle gives 100% margin over the ~6 s measured fold
+cycle. Buffers between stations absorb jitter (see §2.6).
+
+### 1.3 Layout / footprint **[ADDED]**
+
+- In-line: **~8–12 m × 1.5–2 m** machine footprint.
+- **~30–60 m² cell area** including guarding envelope, reject lane, blank
+  storage, and the compressor/blower enclosure (outside the guarded cell,
+  acoustic enclosure for < 70 dB(A)).
+- Solar (if self-sufficient): 150–175 m² (24/7) or 55–65 m² (one shift) —
+  §7.2.
+
+### 1.4 Environmental envelope **[ADDED]**
+
+- Operating: 10–40 °C, 30–80% RH non-condensing.
+- Corrugated **fiber dust** is a housekeeping + motor-sealing issue: sealed
+  IP-rated motors, filtered cabinet ventilation, dust extraction at the
+  erector/tape zones. **No ATEX** zone is expected (no flammable gas).
+- Cabinet cooling: filtered fans or air-to-air heat exchangers, not air
+  conditioning unless the ambient exceeds 40 °C (§6.3).
 
 ---
 
-## 2. Station-by-station schematic (RSC line)
+## 2. Station-by-station specification (with specific equipment)
 
-Conveyor direction →.
+Box code: **FEFCO 0201 RSC**, board single/double-wall corrugated, size
+change digital (servo) — range defined in the recipe library (§9.2).
 
-```
- [1 MAG]      [2 ERECTOR]      [3 INSERT]     [4 CLOSE+SEAL]     [5 INSPECT]
- ─────────   ──────────────   ─────────────   ────────────────   ─────────────
- blank │     side panels       product group   top flaps via     cameras +
- stack │     folded 90° by     collated and     plough guides,    squareness,
-   ────►     rotary fold       pushed into      tape head folds   seam, content
- vacuum │    arms; bottom      the box;         tape over the     checks;
- destack│    flaps (majors      presence         top+bottom        FAIL ─► reject
- 1/each │    then minors)       verified         seams, 3–5 s      lane; PASS ─►
-         │    taped to lock      before close     compression       palletizer
-         └───────────────────────────────────────────────────────────────────►
-```
+### 2.1 Station 1 — Magazine / Destacker
 
-### 2.1 The erector — the folding core (side/top view)
+- Stacked blanks, 1-at-a-time vacuum feed; double-sheet detection; register
+  (flap-present) check before release.
+- **Equipment — the better choice:**
+  - **Low-pressure regenerative blower** (e.g., Becker U-range, Busch
+    Samos) at ~0.2 bar driving Bernoulli grippers (e.g., Piab) — NOT a
+    venturi off the central air ring (~3× less energy for the same grip,
+    §6.1; removes the largest continuous air load).
+  - Double-sheet detection: **capacitive or ultrasonic sensor** (e.g.,
+    SICK, Di-Soric), not just a photoeye.
+  - Register photoeye + encoder on the feed belt; magazine hold-open tool
+    (§4.3).
 
-Flat blank (RSC), score lines dashed:
+### 2.2 Station 2 — Erector (the folding core)
 
-```
-         ┌────────────────┐
-         │   END FLAP     │
-┌────────┼────────────────┼────────┐
-│ SIDE   │   MAIN PANEL   │ SIDE   │   1) side panels folded 90° (rotary arms,
-│ PANEL  │   (bottom)     │ PANEL  │      vacuum table holds blank flat)
-└────────┼────────────────┼────────┘
-         │   END FLAP     │         2) bottom end flaps: MAJOR then MINOR
-         └────────────────┘         3) tape head locks the bottom seam
-                                     4) box raised to vertical for packing
-```
-
-Fold servo control loop (per folding axis):
+Fold sequence (per case): **GRIP → FOLD_SIDES 90° → FOLD_MAJORS → FOLD_MINORS
+→ TAPE_BOTTOM → RAISE → VERIFY square.** Fold servo control law (reference
+implementation `packaging/servo.py`, mirrored in ST):
 
 ```
 target ─►[Σ]─►[PID]─►[SERVO DRIVE]─►[MOTOR+GEAR]─►[FOLD ARM]──► BLANK (crease)
 angle     ▲                                                  │
           └──────────[ANGLE ENCODER] ◄── actual fold angle ───┘
               + feedforward: restoring-torque compensator
-              (calibrated per blank lot: the constant is measured, not chosen)
+              (calibrated per blank lot: measured, not chosen)
 ```
 
-### 2.2 Fold mechanics — why it works, in framework terms
+- PID: `kp=0.5, ki=0.5, kd=0.002`, conditional integration within ±1.0° of
+  target, integral clamp 2.0.
+- Feedforward: `k_restore=0.02` (per-lot calibrated) carries the spring-back
+  moment; drive to 90°+3° overshoot, dwell 1 s for the tape/glue lock, settle
+  to square 90°. Watchdog: step_timeout 8.0 s → FAULT.
+- **Equipment — the better choice:**
+  - **4 servo axes**, each: EtherCAT drive with **STO (SIL2 per IEC
+    61800-5-2) and regenerative shared DC bus** (e.g., Beckhoff AX5000/AX8000,
+    SEW MOVI-AXIS, Kollmorgen AKD) — the shared bus recycles spring-back
+    regen (§8) instead of heating brake resistors; brake resistors only as a
+    fault backstop.
+  - Motors: **low-inertia servos 0.4–1 kW with planetary gearheads** (or
+    direct-drive torque motors for maximum fold stiffness), **18–23-bit
+    absolute encoders** — not incremental (position survives a power cycle,
+    no re-homing on a jam).
+  - Vacuum table holds the blank flat; pressure rails hold the folded sides
+    during settle.
+  - Bottom tape head (end-fold, §10 — US10532842 license/design-around).
 
-- **The crease is the selected structure** `[hypothesis]` — the score line is
-  where stiffness is minimal, so the fold happens *there*, not at an arbitrary
-  bend. This is the fold theorem's "crease = unique viscosity solution"
-  (T63/T64) made physical: the fold is selected by the geometry, not forced by
-  the actuator.
-- **Spring-back is the repulsive emanation** `[hypothesis]` — the folded
-  panel's restoring moment fights the fold; the servo must overshoot the
-  target angle and hold for a dwell until the tape/glue lock is in place.
-  The hold torque is measured per blank lot (crease depth → restoring
-  moment calibration), the L.O.R.E. doctrine: the constant is measured, not
-  chosen.
-- **The closure is the QC invariant** `[hypothesis]` — a correctly folded
-  case closes to *squareness* (corner-to-corner ratios ≈ 1, fold angles ≈
-  90°). The golden closure (T58) is the repo's measure of a fold reaching its
-  geometry — here the invariant is squareness, not a magic ratio.
-- **Near-crease diagnostics** `[hypothesis]` — a fold that comes up short
-  (within a few degrees of the 90° threshold) is the efficient unit to fix
-  (re-apply pressure in-loop) rather than reject (PPA-002 crease
-  diagnostics).
+### 2.3 Station 3 — Insert (product)
+
+- Collate the product group; place into the erected box; verify content
+  present (load cell + photoeye) before close.
+- **Equipment — the better choice:**
+  - **Delta robot + vision** (e.g., ABB FlexPicker, Fanuc M-3iA) for
+    flexible SKU handling, or a servo pusher/collator for a single fixed
+    product. Delta is preferred: it absorbs product-arrival jitter without a
+    dedicated indexing conveyor.
+  - Load cell on the insertion station; robot cell guarded per ISO 10218
+    (§4.3).
+
+### 2.4 Station 4 — Close + Seal
+
+- Plough guides fold the top flaps (passive, crease-selected); tape head
+  seals top + bottom seams; compression section holds 3–5 s.
+- **Equipment — the better choice:**
+  - **Automatic case taper with tape end-fold** (Wexxar / 3M-Matic class) —
+    the end-fold wipes the tape around the case edges (US10532842 is
+    Active; license or design-around required, §10).
+  - **Hot-melt applicator** (e.g., Nordson) with thermocouple + PID and an
+    **insulated, guarded pot** (§4.3); cold-glue alternative for non-heat
+    applications. Never bare heating elements at the ~170 °C melt zone.
+  - Compression section: timed hold with jam sensor, guarded nip.
+
+### 2.5 Station 5 — Inspect
+
+- **Clock-test invariants** (§5): squareness (corner-to-corner ratio ≈ 1,
+  fold angles ≈ 90°), seam continuity, content present/within volume.
+- **Equipment — the better choice:**
+  - **2–3 industrial GigE Vision cameras** (e.g., Basler, Balluff) + fixed
+    machine-vision **LED bar lights (Class 1 eye-safe)**; optional defect
+    model on the blank feed.
+  - Reject gate: servo or pneumatic at ≤30 psi; PASS → palletizer, FAIL →
+    reject lane → scrap (never re-inserted, T55c).
+
+### 2.6 Transfer conveyor & buffers **[ADDED]**
+
+- **Modular belt or chain conveyor**, accumulation-capable zones between
+  stations (each holds 1–2 cases so a slow station doesn't stall the line),
+  IP54, jam sensors at every transfer.
+- Conveyor speed is slow (12 s/case); power is a minor line item (~0.3 kW,
+  included in §7.1 fixed loads).
+- Belt material compatible with corrugated board (no scuffing of the print
+  surface).
 
 ---
 
-## 3. Control architecture
+## 3. Control system
 
-```
-                    MASTER STATE MACHINE (PLC / soft-PLC)
-     ┌──────────────┬──────────────┬──────────────┬──────────────┬──────────────┐
-     │ MAG         │ ERECT        │ INSERT       │ CLOSE+SEAL   │ INSPECT      │
-     │ feed/register│ fold seq.   │ collate/place│ flap+tape    │ invariant check
-     └──────────────┴──────────────┴──────────────┴──────────────┴──────────────┘
-                 EtherCAT servo bus + IO-Link sensors + vision PLC
-```
-
-- **Flow the small core, route the large static mass** `[hypothesis]` (T67):
-  the folding heads and servo axes (small, dynamic) run at high loop rates;
-  the blank magazine, palletizer, and conveyor mass are routed slowly. The
-  architecture separates high-bandwidth motion from high-mass logistics.
-- **Self-healing, never mix frames** `[hypothesis]` (T55c): a marginal fold
-  is corrected in-loop; a failed box is diverted at the reject gate and never
-  re-inserted into the good flow. Mixing a partially folded case into the
-  sealing line is the frame-mix the repo forbids.
-- **Quorum, not single points** `[hypothesis]` (T16–T20): three independent
-  sensors on each critical check (box present, flap folded, tape applied).
-  <40% disagreement → continue (repair margin); ≥50% → line stop and reset.
-  This is the fragment-bank result: majority honesty, not Byzantine.
-- **Watchdogs**: every station times out to a safe state; the master records
-  the failure in the reject log (self-refutation discipline: refutations are
-  documented, not hidden).
-
-### 3.1 State machine
-
-```
-MAG:  feed blank → register (flap present?) ──► ERECT
-ERECT: vacuum grip → fold side panels 90° → fold bottom majors → minors →
-      tape bottom seam → raise box → verify square ──► INSERT
-INSERT: collate product group → push/robot place → (content present?) ──► CLOSE
-CLOSE: plough top flaps → tape head (top+bottom seams) → compression 3–5 s ──► INSPECT
-INSPECT: squareness ∧ seam ∧ content ── PASS: out · FAIL: reject lane → recycle/scrap
-FAULT: any station watchdog or quorum-fail ≥50% → line stop → operator reset
-```
+- **One master state machine + per-station sub-machines**, IEC 61131-3:2025
+  structured text (reference ST in `packaging/plc_61131_3.py`, Python mirror
+  `packaging/servo.py`, pinned by 309 tests).
+- Fieldbus: **EtherCAT** for servo bus + **IO-Link** for sensors; vision PLC
+  on the same network.
+- **Quorum** on every critical check (box present, flap folded, tape applied):
+  3 independent sensors; <40% disagreement → continue (repair margin), ≥50% →
+  line stop, operator reset.
+- **Watchdogs**: every station times out to a safe state; failures go to the
+  reject ledger (self-refutation discipline: refutations are documented, not
+  hidden).
+- **Equipment — the better choice:**
+  - Standard control: **soft-PLC on IEC 61131-3:2025** (e.g., Beckhoff
+    TwinCAT, B&R, Codesys-based) — the ST source ships with the machine.
+  - **Safety is a SEPARATE safety PLC/relay system** (Pilz PNOZmulti 2,
+    SICK Flexi Soft, or Siemens F-hardware), never the recipe PLC (§4).
+  - HMI: 12–15" industrial panel (e.g., Beckhoff CP-series, Siemens Comfort)
+    with the §9.1 UX.
+  - IIoT gateway: **OPC UA** push to the cloud; per-box traceability (blank
+    lot, fold torques, QC result) + reject ledger.
+  - Cybersecurity per IEC 62443-3-3 on the control + IIoT network.
 
 ---
 
-## 4. Inspection — the clock test made physical
+## 4. Safety
 
-`[hypothesis]` Acceptance keys on **invariants**, never on gauge:
+`[hypothesis]` until a risk assessment by a competent person. Design target:
+**EN 415-10** (type-C), method per **ISO 12100**, safety functions per
+**ISO 13849-1 / IEC 62061**, E-stop per **ISO 13850**, electrical per
+**IEC 60204-1**.
+
+### 4.1 Risk assessment is the starting point
+
+No table below replaces an ISO 12100 assessment per station, in every mode
+(auto, setup, jam-clear, maintenance), with iterations recorded. §4.3 is the
+target, not a certificate.
+
+### 4.2 Guarding
+
+| Access need | Guard | Equipment |
+|---|---|---|
+| No access needed during run | fixed guards (fold zone, tape knife, compression nip) | sheet-steel fixed guards, tool-removable only |
+| Regular access (loading, jam clearing) | interlocked doors + light curtains | **dual-channel light curtains** (e.g., SICK deTec), **non-contact coded interlock switches**, dropped into the safety PLC |
+| Robotic cell (INSERT) | perimeter guard per ISO 10218 | door interlock → robot STO + brake release |
+
+- Light-curtain distance per **ISO 13855**: `S = K·t + C`, with t = full stop
+  time (incl. PLC + STO) measured at commissioning — the formula goes in the
+  spec, the value is measured, not assumed. `[honest wall]`
+- Guarding drops the drives with **STO, not a coast-down**; drives stay live
+  for diagnostics.
+
+### 4.3 Target performance levels
+
+| Function | PLr / SILr | Implementation |
+|---|---|---|
+| E-stop chain | PLr d, Cat 3 | hardwired red/yellow, dual-channel, independent of PLC, reset-only restart |
+| Guard doors / light curtains | PLd / SIL2 | safety PLC, dual-channel inputs with cross-fault detection |
+| Servo STO | SIL2 (IEC 61800-5-2) | every fold servo + robot axis |
+| Reject gate, blow-off | PLCc | no person-protection role |
+| Quorum ≥50% stop | PLCc | stops motion, does not isolate energy |
+
+- **Safety function is never routed through recipe logic** (T55c applied to
+  guarding: a recipe change must never re-arm a bypass). Light-curtain muting
+  only with permissive conditions + time limit, per EN 415-10.
+
+### 4.4 Station hazard table
+
+| Station | Hazard | Control |
+|---|---|---|
+| 1 MAG | magazine spring storage; blank edges; feed nip | hold-open tool; chamfered guides; nip guards |
+| 2 ERECT | fold-arm pinch/crush (servo torque ~10–20 N·m); overshoot zone; table edges | fixed guard + STO; torque-limited profile; no reach-through |
+| 3 INSERT | robot cell crush | perimeter guard, interlock → STO, restricted teaching mode |
+| 4 CLOSE+SEAL | tape knife; hot-melt ~170 °C burns; compression nip | blade guard + interlock; insulated guarded pot; nip guard |
+| 5 INSPECT | lighting; reject-gate air | Class 1 lighting; ≤30 psi nozzle |
+| common | stored energy (air, springs, drive caps); dust; noise | LOTO w/ air exhaust + spring retainer + cap discharge; sealed motors; enclosure |
+
+### 4.5 Compressed-air safety
+
+- Blow-off nozzles **≤30 psi** exit (OSHA 29 CFR 1910.242(b)).
+- Whip restraints at every fitting; safety couplings vent on break.
+- Receiver is a pressure vessel: stamped, relief valve, auto drain, annual
+  inspection (§9.3).
+- Lock out + purge air before any air-path maintenance.
+
+### 4.6 Operational safety
+
+- **Operator reset mandatory after any FAULT** — never auto-restart (quorum
+  ≥50% is a stop; a stop needs a person).
+- Machine marking, LOTO points, access control, training, PPE.
+- Safety-related stops are logged separately in the reject ledger.
+
+---
+
+## 5. Inspection — the clock test made physical
+
+Acceptance keys on **invariants**, never on gauge:
 
 | Check | Invariant (the law) | Gauge (ignored for pass/fail) |
 |---|---|---|
-| Squareness | corner-to-corner distance ratio ≈ 1; fold angles ≈ 90° | absolute camera coordinates, lighting, scale |
+| Squareness | corner-to-corner distance ratio ≈ 1; fold angles ≈ 90° | absolute camera coords, lighting, scale |
 | Seam | tape covers the full top+bottom seam (continuity) | tape brand, head position |
 | Content | product present + within box volume (mass/vision) | conveyor speed, camera frame |
 
-This is T59/T61: a pattern that dies under re-encoding was not a law.
-Squareness survives rotation/scale/lighting re-encoding; an absolute pixel
-position does not. The line's pass/fail is therefore stable across camera
-replacement, lighting changes, and speed changes.
+Invariants survive rotation/scale/lighting re-encoding (T59/T61); absolute
+pixel position does not — so pass/fail is stable across camera replacement,
+lighting, and speed changes. Near-crease diagnostics (PPA-002): a fold within
+a few degrees of threshold is corrected in-loop, not rejected.
 
 ---
 
-## 5. Energy budget (estimate)
+## 6. Utilities
 
-~300 cases/hour erector–packer–sealer:
+### 6.1 Compressed air — the "excess air" question, answered
+
+`[measured]` figures from `experiments/air_sizing.py` (assumptions in its
+header; verdict `data/air_sizing_data.json`).
+
+**Do we need excess air? Yes — headroom, not excess capacity.** The line's air
+demand is peaky (blow-off burst ~18 scfm ≈ 3.5× the ~6 scfm average), and
+plants lose 20–30% of air to leaks. But the headroom belongs in a **receiver
+tank + VFD compressor**, not an oversized fixed-speed compressor that idles at
+~27% load forever.
+
+| Item | Value |
+|---|---|
+| Continuous (4 vacuum pads) | ~2.0 scfm |
+| Intermittent (2 blow-offs, 20% duty) | ~3.6 avg / ~18 peak scfm |
+| Cylinders/valves | ~0.3 avg scfm |
+| **Average / peak demand** | **~6 / ~21 scfm** |
+| Compressor FAD (peak + 30%) | **~27 scfm (0.77 m³/min)** |
+| Avg draw incl. 25% leak allowance | ~7.4 scfm (~27% duty) |
+| Avg power (VFD, 0.22 kW/scfm) | **~1.6 kW** (matches §7.1's 1–2 kW line) |
+| Receiver tank | ~27–30 gal (VFD rule); ~164 gal if fixed-speed |
+| Energy & cost | ~3.4 MWh / ~$405 per yr (8 h shift); ~14 MWh / ~$1.7k per yr (24/7) |
+
+**Equipment — the better choice:**
+- **VSD (variable-speed-drive) rotary screw compressor** (~27 scfm FAD, e.g.,
+  Atlas Copco GA 5–7 VSD, Kaeser BSD) — tracks average flow, no unloaded
+  idling; oil-free variant if food-adjacent packaging.
+- **ASME-stamped vertical receiver**, ~30 gal, relief valve + auto drain.
+- **Refrigerated dryer + coalescing filters → ISO 8573-1 air quality class
+  (e.g., 2/4/4)**; auto condensate drains (also in the daily PM, §9.3).
+- **FRL (filter/regulator/lubricator) at every station**, 6 bar ring,
+  blow-offs trimmed to 30 psi.
+- Quarterly leak audit (leaks are the second-largest air cost; §9.3).
+
+### 6.2 Vacuum — blower, not venturi
+
+- Destack: **regenerative blower at ~0.2 bar** (Becker/Busch) + Bernoulli
+  grippers — ~0.13 kW vs ~0.44 kW for the venturi path (~3× less), and it
+  removes the 2 scfm continuous load from the compressor.
+- Gripper sequencing: air/vacuum only while gripping (§8 demand-side).
+
+### 6.3 Power distribution & cabinet thermal management **[ADDED]**
+
+- **3-phase 208–480 V feed**, main disconnect + lockable, per-branch MCCBs,
+  RCD/GFCI, **IEC 60204-1** wiring + grounding, shielded EtherCAT cabling,
+  strain relief everywhere; cabinet IP54 (dust envelope, §1.4).
+- **Redundant 24 V PSUs** for PLC/safety; **UPS** for PLC + HMI + vision (rides
+  through a 2 s mains blip and clean shutdown on outage).
+- Cabinet cooling: filtered fans or air-to-air heat exchangers (drive reject
+  heat is ducted to preheat in winter, §8); no A/C unless >40 °C ambient.
+- Energy metering: a power meter per station (servo bus, compressor, glue
+  pot, controls) on the IIoT gateway — turns §7.1's estimates into measured
+  values in the first quarter.
+
+---
+
+## 7. Energy & cost (consolidated feasibility)
+
+### 7.1 Load & demand scenarios
 
 | Load | Power (avg) |
 |---|---|
 | Servo motion (folding, transfer) | 2–3 kW |
-| Vacuum / compressed air | 1–2 kW |
+| Vacuum / compressed air | 1–2 kW (air calc: ~1.6 kW) |
 | Tape/glue, controls, vision, HMI | 0.5–1 kW |
-| **Total** | **~5 kW → ~120 kWh/day** |
+| Conveyor + lighting | ~0.3 kW |
+| **Total** | **~5 kW → ~120 kWh/day at 24/7** |
 
-Option (ties to §3.36 hydrogen–photon energy): a 4–5 kW PV array (25–35 m²
-at ~20%) + battery covers the day; an H₂ fuel-cell module provides backup.
-Honest wall: these are estimates from component ratings, not a measured line.
-**Correction — see `AUTO_PACKAGING_ENERGY_FEASIBILITY.md`:** the 4–5 kW array
-covers only ~15% of the 24/7 demand (and ~40–45% of a one-shift day); true
-solar self-sufficiency needs 30–35 kW (24/7) or 10–12 kW (one shift), and H₂
-backup is resilience-only at 2026 hydrogen prices.
-
----
-
-## 6. The "various other techniques" (supporting subsystems)
-
-1. **Vacuum destacking** — 1-blank-at-a-time magazine feed (Bernoulli/vacuum
-   grippers, double-sheet detection by thickness/photoeye).
-2. **Plough / guide folding** — passive fold rails for the top flaps (no
-   actuator, geometry does the work: another "crease-selected" fold).
-3. **Servo motion with torque control** — fold arms with angle feedback +
-   restoring-torque feedforward (compensates spring-back per lot).
-4. **Vision/ML inspection** — 2–3 cameras; optional defect model for blank
-   damage; invariants from §4.
-5. **Tape head / hot-melt** — the taping head is itself a folding mechanism
-   (wipes the tape around the case edges); compression section holds until
-   adhesion.
-6. **Compressed air** — grippers, blow-off, reject gate.
-7. **Safety** — light curtains, interlock doors, e-stop chain, safe torque off.
-8. **IIoT logging** — per-box traceability (blank lot, fold torques, QC
-   results), reject ledger (self-refutation discipline).
-
----
-
-## 7. Representative bill of materials
-
-| Station | Components |
-|---|---|
-| 1 MAG | vacuum pump, feed belts, double-sheet sensor, photoeyes |
-| 2 ERECT | vacuum table, 4× servo fold arms + encoders, pressure rails, bottom tape head, torque sensors |
-| 3 INSERT | delta robot + vision, or collator + pusher cylinder, load cell |
-| 4 CLOSE+SEAL | plough guides, top tape head, compression section |
-| 5 INSPECT | 2–3 cameras + lighting, load cell, reject gate |
-| Control | PLC + EtherCAT servo drives, IO-Link masters, HMI, safety relay, IIoT gateway |
-
----
-
-## 8. Mapping table — repo machinery → packaging subsystem
-
-| Repo asset (verified) | Packaging subsystem | Design consequence |
+| Operation model | Energy/day | Energy/case (at 300/h) |
 |---|---|---|
-| Fold theorem T63/T64 — crease = unique viscosity solution | Score-line folding at erector | Fold along the score; the crease selects the geometry |
-| L.O.R.E. — the constant is measured, not chosen | Crease depth → hold torque | Calibrate restoring moment per blank lot; never assume it |
-| Golden closure T58 | Box squareness after lock | Closure-to-squareness is the QC invariant (not a magic ratio) |
-| Clock-test T59/T61 | Inspection | Pass/fail on invariants only (squareness, seam, content) |
-| Fragment bank T16–T20 — majority honesty | Sensor redundancy | <40% disagreement: continue; ≥50%: stop-and-reset |
-| Self-healing mesh T55c — never mix frames | Reject/recycle path | Divert failed boxes; never re-insert into good flow |
-| Spatial index T67 — flow core, route mass | Motion architecture | Fold heads at high loop rate; magazine/pallet slow |
-| Crease diagnostics PPA-002 — near-crease is the target | Marginal-fold correction | Re-apply pressure in-loop instead of immediate reject |
+| 24/7 | ~120 kWh | 16.7 Wh |
+| 1 shift × 8 h | ~40 kWh | 16.7 Wh |
+
+### 7.2 Feasibility verdict (2026 data, surveyed 2026-08-12)
+
+1. **Grid is trivially feasible** `[measured]`: ~$5.1–6.2k/yr (24/7) or
+   ~$1.7–2k/yr (shift); ~1–2% of build cost. Baseline.
+2. **Solar sizing corrected (honest wall):** a 4–5 kW array is ~3–6×
+   undersized — true self-sufficiency needs **30–35 kW / 150–175 m² / 60–80
+   kWh battery (24/7)** or **10–12 kW / 55–65 m² / 15–25 kWh (one shift)**.
+   Capex ~$67–112k (24/7) or ~$27–48k (one shift); payback vs grid ~12–20 yr;
+   **30% federal ITC expired 2026-07-04** (MACRS remains).
+3. **Hydrogen is resilience-only** `[measured→hypothesis]`: at actual $5–8/kg
+   H₂, generation is ~$0.25–0.50/kWh, 2–3× grid; module capex $25–100k.
+   Becomes competitive only at §3.36's $1–2/kg targets. Recommend battery +
+   grid; keep H₂ for worst-case outage coverage.
+4. **Waste recovery moves demand ~1–3%** (§8) — recovery is architectural,
+   not a resizing driver.
+
+### 7.3 Cost of building (2026 vendor lists)
+
+| Station / item | Low | High |
+|---|---|---|
+| 1 MAG + destacker | $5k | $15k |
+| 2 ERECTOR (servo fold arms) | $30k | $60k |
+| 3 INSERT (delta robot + vision) | $30k | $80k |
+| 4 CLOSE+SEAL (plough + tape head) | $15k | $40k |
+| 5 INSPECT (cameras + lighting + reject) | $10k | $30k |
+| Conveyors / transfer / guarding | $15k | $40k |
+| Control (PLC + drives + IO-Link + HMI + safety) | $15k | $30k |
+| Integration / engineering / commissioning (~20%) | $25k | $60k |
+| **Line subtotal** | **~$145k** | **~$355k** |
+
+**Midpoint build ≈ $250k.**
+
+| Configuration | Total |
+|---|---|
+| Grid-connected, 24/7 | **~$150–370k** |
+| Solar self-sufficient, 1 shift | ~$175–405k |
+| Solar self-sufficient, 24/7 | ~$215–470k |
+| 24/7 solar + H₂ resilience | ~$255–540k |
 
 ---
 
-## 9. Waste energy reuse — capabilities and possibilities
+## 8. Waste energy recovery
 
-Energy-recovery streams on the line, ranked by recoverable size and ease of
-capture. The quantified servo-regen figure comes from
-`experiments/servo_regen.py`; the heat figures are engineering estimates from
-component ratings. `[hypothesis]` unless tagged `[measured]`.
+Ranked recovery streams. Servo-regen figure is `[measured]` (sim, from
+`experiments/servo_regen.py`); heat figures are component-rating estimates.
 
-| Stream | Source | Recoverable | Daily (one 8 h shift) | Capture method | Priority |
+| Stream | Source | Recoverable | Daily (8 h shift) | Capture | Priority |
 |---|---|---|---|---|---|
-| Compressed-air waste heat | air compressor (~2 kW input, ~75–85% rejected as heat) | ~1.5 kW | ~10–12 kWh as heat | heat exchanger on compressor outlet → washdown hot water / winter shop heat | **HIGH** |
-| Servo regenerative braking `[measured]` | fold axes' settle phase (spring-back does work on the motor) | ~8% of fold motoring, ~196 J/axis-cycle | ~0.5 kWh returned to bus | shared EtherCAT DC bus + battery recapture (§3.36 PV+battery); brake resistors only as fault backstop | **MEDIUM** |
-| Vacuum/blow-off demand | Bernoulli grippers, reject gate | small, low-grade | ~0.5–1 kWh equivalent | timing/sequencing (air only while gripping) rather than recovery | LOW |
-| Hot-melt/tape-head heat | glue-pot heater ~0.5 kW | minimal | — | insulate the pot, duty-cycle the heater | LOW |
-| Control-cabinet cooling | servo drives + PLC reject heat | 0.1–0.3 kW, seasonal | ~1–2 kWh winter | passive ducting to preheat the shop in winter | LOW |
-| H₂ fuel-cell CHP | FC exhaust (if H₂ backup installed) | ~40–50% of fuel LHV as heat | ~15–25 kWh | heat exchanger to a buffer tank | IF H₂ used |
+| Compressed-air waste heat | compressor ~1.6 kW input, 75–85% as heat | ~1.3–1.5 kW | ~10–12 kWh as heat | heat exchanger on compressor outlet → washdown water / winter shop heat | **HIGH** |
+| Servo regen `[measured]` | fold settle phase (spring-back works on the motor) | ~8% of fold motoring, ~196 J/axis-cycle | ~0.5 kWh returned to bus | shared EtherCAT DC bus + battery recapture (§3.36 PV+battery); brake resistors only as backstop | **MEDIUM** |
+| Vacuum/blow-off | grippers, reject gate | small, low-grade | ~0.5–1 kWh equiv | sequencing (vacuum/air only while gripping) — demand-side, not recovery | LOW |
+| Hot-melt / tape-head heat | glue-pot heater ~0.5 kW | minimal | — | insulated pot, duty-cycled heater | LOW |
+| Cabinet heat | drives + PLC reject heat | 0.1–0.3 kW seasonal | ~1–2 kWh winter | passive ducting to preheat shop in winter | LOW |
+| H₂ fuel-cell CHP | FC exhaust (if H₂ installed) | ~40–50% fuel LHV as heat | ~15–25 kWh | heat exchanger to buffer tank | IF H₂ used |
 
-**Architectural points:**
-- **Shared DC-bus crosstalk** — when one axis is regenerating and another is
-  motoring simultaneously (the 4 fold axes rarely all brake at once), the
-  regen is used directly by the motoring axis with zero conversion loss. This
-  is the same "flow the small core" idea (T67) applied to power, and it needs
-  no extra hardware beyond a common DC bus.
+**Architecture:**
+- **Shared DC-bus crosstalk** — one axis regenerating while another motors
+  (the 4 fold axes rarely brake together) recycles energy with zero
+  conversion loss (T67 applied to power).
 - **Battery recapture** — DC-coupling the servo bus to the §3.36 PV battery
-  lets regen surplus charge the battery instead of heating a brake resistor;
-  the battery smooths the fold-to-fold power peaks that would otherwise
-  ripple the AC draw.
-- **Demand-side beats recovery** — the largest single "waste" saving on this
-  line is *not building the waste*: right-sizing the air system (low-pressure
-  vacuum blowers for destacking instead of central compressed air) cuts the
-  1–2 kW compressed-air load at the source, which is worth more than
-  recovering its waste heat.
+  stores regen surplus instead of heating a brake resistor.
+- **Demand-side beats recovery** — the biggest air saving is *not building the
+  waste*: blower-over-venturi (§6.2) and right-sizing the compressor (§6.1).
 
-**Honest wall:** servo regen is numerically small on this line (~0.5 kWh per
-8 h shift — architectural value, not energy value); compressed-air heat
-recovery displaces *heating* energy (seasonal) rather than the line's
-electrical draw; every figure here is schematic-level, not metered.
+**Honest wall:** regen is numerically small (~0.5 kWh/shift — architectural,
+not energy, value); air-heat recovery displaces *heating* energy (seasonal),
+not electrical draw; every figure is schematic-level, not metered.
 
 ---
 
-## 10. Honest walls
+## 9. Ease of use, maintenance & commissioning
+
+One operator runs the line; everything must be learnable in one shift and
+recoverable in under two minutes.
+
+### 9.1 HMI / UX
+
+- One screen per station + overview; every fault is a **click → guided fix**
+  (station, failed check, reset sequence), not a code lookup.
+- **Live quorum margins** (3 sensor values + disagreement %) — operators
+  intervene at ~40–45% before the line stops itself.
+- **Reject ledger visible on the HMI** (self-refutation discipline:
+  refutations shown, not buried) + the near-crease correction log (PPA-002).
+- Recipe library per box size; **changeover is recipe recall, ~1–2 min, no
+  tools** (servo positions are digital; plough guides + vacuum tooling are
+  tool-less quick-release).
+
+### 9.2 Calibration workflow & tooling **[ADDED]**
+
+Per blank lot (L.O.R.E. — measured, not chosen):
+1. Load a test blank of the new lot.
+2. **Measure crease depth with a dial/digital crease-depth gauge** and the
+   restoring moment with the fold arm's torque feedback (or a handheld torque
+   meter).
+3. Enter once → feedforward compensator uses it until the lot changes.
+4. Value stored with lot ID in the IIoT traceability log.
+
+Tooling kit in the cabinet: crease-depth gauge, box squareness caliper,
+torque meter, air pressure gauge, camera focus target.
+
+### 9.3 Maintenance schedule **[ADDED]**
+
+| Frequency | Actions |
+|---|---|
+| Daily | auto condensate drains; photoeye wipe; reject bin empty; mag hold-open check |
+| Weekly | tape head clean; vacuum filter check; guard + interlock visual check |
+| Monthly | lubricate fold-arm gearheads; verify torque calibration; air leak listen-check |
+| Quarterly | **air leak audit**; camera calibration; safety-function validation (light curtains, STO, e-stop) |
+| Annual | receiver pressure-vessel inspection; full e-stop stop-time measurement (re-affirms ISO 13855 S); FMEA review; energy-meter review vs §7.1 |
+
+PM schedule is annunciated on the HMI. **Top-5 spares** in the cabinet: tape
+blades, vacuum pads, photoeyes, air filters, encoder cables.
+
+### 9.4 Jam & fault recovery
+
+- Per-station guided recovery (which guards, what's safe, what order) — the
+  jam-clear walk is part of the ISO 12100 assessment (highest-frequency human
+  interaction).
+- A partially formed box goes to **scrap, never back into the flow** (T55c);
+  the machine knows which box was in which station.
+- Clear all faults → operator reset → invariant checks re-verified before
+  resuming (no silent auto-resume).
+
+### 9.5 Commissioning & acceptance protocol **[ADDED]**
+
+FAT/SAT checklist (before release to production):
+1. **1 h continuous run at 300 cases/h**; reject rate ≤ target; no watchdog
+   FAULTs.
+2. **Fault injection**: quorum at ≥50%, stalled axis, missing blank, tape
+   misfeed — each must produce the designed stop/verdict.
+3. **Safety validation**: every guard/curtain/e-stop trip → STO; e-stop
+   stop-time measured → ISO 13855 S confirmed.
+4. **Changeover test**: 2 box sizes, ≤2 min each, no tools.
+5. **Energy baseline**: per-station power meters logged 1 week; compare to
+   §7.1.
+6. **Documentation handover**: FMEA, O&M manual, wiring diagrams, risk
+   assessment records, spare-parts list, calibration tooling list — per
+   EN 415-10 conformity.
+
+---
+
+## 10. Patents & standards (FTO summary)
+
+**Core patents (both Active — a build needs a license or a design-around):**
+
+| Patent | Mechanism | Status |
+|---|---|---|
+| US9718570B1 (XPAK robotic carton erector) | erector flap-folding sequence | Active to 2035-11-19 |
+| US10532842 (Wexxar tape end fold) | tape applicator end-fold at the case sealer | Active |
+
+Surrounding tape-fold art is occupied (Lamus/Intertape/TREA/Flex-Line active);
+the tape head is the highest-risk FTO item. **Standards the line must be
+designed to:**
+
+| Standard | Applies to |
+|---|---|
+| EN 415-1 / -10 / -11 | packaging machinery safety / case-packers / erectors |
+| ISO 12100 | risk assessment method |
+| ISO 13849-1, IEC 62061 | safety function PLr/SILr |
+| ISO 13850 | emergency stop |
+| ISO 13855 | safety-distance calculation |
+| ISO 10218 | robot cell (INSERT) |
+| IEC 61800-5-2 | servo STO |
+| IEC 60204-1 | electrical equipment of machinery |
+| IEC 61131-3:2025 | control programming (shipped ST) |
+| IEC 62443-3-3 | control/IIoT cybersecurity |
+| ISO 8573-1 | compressed-air quality class |
+| FEFCO 0201 | box construction code (RSC) |
+
+---
+
+## 11. Master equipment list — the better equipment, itemized
+
+| Subsystem | Better choice (specific) | Avoid |
+|---|---|---|
+| Fold servos (4×) | EtherCAT drives, **STO SIL2, shared DC bus** (Beckhoff AX / SEW MOVI-AXIS / Kollmorgen AKD) | standalone AC drives with brake resistors |
+| Fold motors | 0.4–1 kW servo + planetary gearhead, **18–23-bit absolute encoder** | incremental encoders |
+| Robot (INSERT) | delta (ABB FlexPicker / Fanuc M-3iA) | fixed indexing machine (if SKU flexibility needed) |
+| Safety PLC | Pilz PNOZmulti 2 / SICK Flexi Soft / Siemens F | using the recipe PLC for safety |
+| Light curtains / interlocks | dual-channel (SICK deTec + non-contact coded switches) | single-channel reed switches |
+| Standard PLC | IEC 61131-3:2025 soft-PLC (TwinCAT / B&R / Codesys) | proprietary ladder-only |
+| Destack vacuum | **regenerative blower ~0.2 bar** (Becker / Busch) + Bernoulli pads (Piab) | venturi off the air ring |
+| Compressor | **VSD rotary screw ~27 scfm** (Atlas Copco GA VSD / Kaeser BSD), oil-free if food-adjacent | oversized fixed-speed screw |
+| Air treatment | refrigerated dryer + coalescing filters, ISO 8573-1 2/4/4, auto drains | bare shop air |
+| Receiver | ASME vertical ~30 gal, relief + auto drain | homemade tank |
+| Tape heads | automatic case taper with end-fold (Wexxar / 3M-Matic class) — §10 license | hand taping |
+| Hot-melt | PID + thermocouple applicator (Nordson), insulated pot | exposed heating elements |
+| Vision | 2–3 GigE cameras (Basler / Balluff) + Class 1 LED bars | one wide-angle camera, no lighting |
+| Blow-offs | regulated ≤30 psi nozzles, 20% duty sequencing | unrestricted nozzles |
+| Power | 3-phase + IEC 60204-1, MCCB + RCD, redundant 24 V PSU, UPS for controls | single-phase undersized feed, no UPS |
+| HMI | 12–15" panel + §9.1 UX | numeric-only display |
+| IIoT | OPC UA gateway, per-station energy meters, IEC 62443-3-3 | unauthenticated cloud port |
+
+---
+
+## 12. Honest walls
 
 - The fold/crease/emanation mappings are **analogies over real mechatronics**;
-  the physical laws here are classical (elasticity, friction, servo control),
-  and no repo parameter transfers to a crease depth or a hold torque.
+  the physical laws are classical (elasticity, friction, servo control); no
+  repo parameter transfers to a crease depth or hold torque.
 - Corrugated-board variability (moisture, flute direction, anisotropy) is the
   dominant real failure source; every blank lot needs its own calibration.
-- Throughput, energy, and BOM figures are schematic-level estimates, not a
-  commissioned build.
-- The state machine and quorum thresholds are design choices grounded in the
-  repo's results, not measured packaging outcomes.
-- The repo's geometry is not required for the machine to work — the machine
-  works by classical physics; the framework contributes discipline (crease,
-  clock-test, quorum, self-healing) to how it is controlled and inspected.
-- Patents and standards are tracked in `AUTO_PACKAGING_PATENTS.md`; both core
-  patents (US9718570B1, US10532842) are **Active** — a build needs a license
-  or a design-around, not an assumption of freedom to operate.
+- Throughput, energy, and BOM figures are schematic-level estimates; §9.5
+  turns them into measured values after commissioning.
+- §4 is a target safety architecture, not a certificate: PL/SIL, guard
+  geometry, and ISO 13855 distances need a competent-person risk assessment
+  and measured stop times.
+- Air figures are component-assumption estimates (±30% on duty/leaks).
+- Both core patents are **Active** — a build needs license or design-around,
+  not an assumed freedom to operate.

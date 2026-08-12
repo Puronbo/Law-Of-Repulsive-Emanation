@@ -1,9 +1,10 @@
 # Autonomous Packaging System — Patents, Standards & Prior Art
 
-**Purpose:** Companion to `AUTO_PACKAGING_SYSTEM.md`. Lists the U.S. patents,
-harmonized machinery-safety standards, PLC-language standard, and box-
-construction code that the folding-mechanics schematic touches, with status
-labels and an honest-wall FTO (freedom-to-operate) note.
+**Purpose:** Appendix to `AUTO_PACKAGING_SYSTEM.md` (the consolidated complete
+specification). Lists the U.S. patents, harmonized machinery-safety standards,
+PLC-language standard, and box-construction code that the folding-mechanics
+schematic touches, with status labels and an honest-wall FTO (freedom-to-
+operate) note.
 
 **Survey date:** 2026-08-12
 **Method:** Desk survey of public records (Google Patents legal-status flags,
@@ -111,7 +112,7 @@ and invariant inspection, which sit outside these claims.
 | EN ISO 13850:2015 | Emergency stop — design principles | E-stop pushbuttons and reset semantics (§3 watchdogs) |
 | EN 415-1:2014 | Safety of packaging machines — Part 1: terminology/classification | Classifies the case-erector/sealer so the right type-C standard applies |
 | EN 415-10:2014 | Part 10: general requirements for safety of packaging machines | Station-level guarding, interlocks, hazard zones |
-| EN 415-11:2014 | Part 11: efficiency and availability | OEE / availability targets for the §5 throughput and §9 estimates |
+| EN 415-11:2014 | Part 11: efficiency and availability | OEE / availability targets for the §1.2 throughput and §8 estimates |
 | EN 415-3 / -5 / -6 / -7 / -8 | FFS, wrapping, pallet wrapping, group/secondary, strapping machines | Neighboring type-C standards (reference only — this line is an erector/sealer) |
 
 ### 3.2 Control programming

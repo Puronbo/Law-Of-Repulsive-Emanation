@@ -1,7 +1,8 @@
 # Packaging Line — Design Recommendations (Safety, Ease of Use, Utilities)
 
-> Companion to `AUTO_PACKAGING_SYSTEM.md`. Where that schematic says *what the
-> line is*, this doc says *what to add before it is safe, usable, and properly
+> **Appendix to `AUTO_PACKAGING_SYSTEM.md`** (the consolidated complete
+> specification). Where that spec says *what the line is*, this appendix keeps
+> the full detail on *what to add before it is safe, usable, and properly
 > serviced*. Claim tags: `[measured]` = repo-verified or physical law ·
 > `[hypothesis]` = design recommendation · `[honest wall]` = what this is NOT.
 >
@@ -187,7 +188,7 @@ the margin in the tank and the drive, not in the iron.
 | **Average / peak demand** | **~6 scfm / ~21 scfm** |
 | Compressor FAD (peak + 30%) | ~27 scfm (0.77 m³/min) |
 | Average draw incl. 25% leak allowance | ~7.4 scfm → ~27% duty of FAD |
-| Average power (VFD, 0.22 kW/scfm) | ~1.6 kW → **matches §5's 1–2 kW line** |
+| Average power (VFD, 0.22 kW/scfm) | ~1.6 kW → **matches §7.1's 1–2 kW line** |
 | Receiver (VFD rule 1 gal/scfm / fixed 6 gal/scfm) | ~27 gal / ~164 gal |
 | Energy & cost | ~3.4 MWh (~$400/yr) 8 h shift · ~14 MWh (~$1.7k/yr) 24/7 |
 
@@ -199,8 +200,8 @@ the margin in the tank and the drive, not in the iron.
 2. **Replace venturi vacuum with a low-pressure blower** for destacking
    (~0.2 bar). Same gripping duty at ~3–4× less energy (venturi expansion
    from ~6 bar is ~1–3% efficient; a blower is ~30–50%). This is the biggest
-   single air-side saving and it lands on the §9 "demand-side beats recovery"
-   principle directly.
+    single air-side saving and it lands on the §8 "demand-side beats recovery"
+    principle directly.
 3. **Run at the lowest usable pressure**: each 1 bar reduction saves ~6–7% of
    air energy. Set the blow-offs at 30 psi (which also satisfies §1.5) and
    trim the ring pressure to the highest genuinely needed device.
@@ -209,7 +210,7 @@ the margin in the tank and the drive, not in the iron.
    cause of failed vacuum pads and sticky valves — i.e., downtime, not just
    energy.
 5. **Minimize air at all**: prefer electric actuation where possible (servos
-   already power the folds and regenerate — §9); use air only for gripping,
+   already power the folds and regenerate — §8); use air only for gripping,
    blow-off, and the reject gate. Fewer air consumers = fewer leak points and
    fewer failure modes.
 
@@ -227,7 +228,7 @@ the margin in the tank and the drive, not in the iron.
 ## 4. Other "all manner" additions (short list)
 
 - **Energy metering**: a power meter per station (servo bus, compressor, glue
-  pot, controls) feeding the same IIoT gateway — turns the §5 budget and
+  pot, controls) feeding the same IIoT gateway — turns the §7.1 budget and
   `AUTO_PACKAGING_ENERGY_FEASIBILITY.md` assumptions into measured values over
   the first quarter.
 - **Predictive maintenance**: vibration on fold motors, drive temperature,
