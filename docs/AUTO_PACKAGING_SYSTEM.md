@@ -17,6 +17,8 @@
 > conveyor + accumulation buffers (§2.6), power distribution & cabinet cooling
 > (§6.3), calibration tooling (§9.2), maintenance schedule + spares (§9.3),
 > commissioning/acceptance protocol (§9.5), environmental envelope (§1.4),
+> rainwater collection & use (§6.4, quantified by
+> `experiments/rainwater_sizing.py`),
 > and a master equipment list with specific better-equipment choices (§11).
 >
 > Claim tags: `[measured]` = repo-verified or physical law · `[hypothesis]` =
@@ -372,6 +374,50 @@ tank + VFD compressor**, not an oversized fixed-speed compressor that idles at
   pot, controls) on the IIoT gateway — turns §7.1's estimates into measured
   values in the first quarter.
 
+### 6.4 Rainwater collection & use **[ADDED]**
+
+`[measured]` sizing from `experiments/rainwater_sizing.py` (assumptions in its
+header; verdict `data/rainwater_data.json`). Non-potable uses only.
+
+**Demand it serves (line-related, ~150 L/production day → ~40 m³/yr):**
+machine + floor washdown (~90 L), glue-system + tool rinsing (~30 L),
+corrugated-dust suppression (~20 L), solar-panel washing (~10 L averaged).
+
+**Supply:** the facility roof (~300 m² metal standing seam) harvests ~184
+m³/yr at 800 mm/yr rainfall (`runoff_m3`: 0.85 roof × 0.9 first-flush/leaf/
+filter efficiency) — **~4.6× demand, so catchment is not the constraint**;
+the tank bridges dry spells. The §7.2 PV array can double as catchment
+(smooth modules, low runoff loss).
+
+**Tank sizing** (monthly water balance, smallest zero-deficit tank):
+
+| Rainfall profile | Tank |
+|---|---|
+| Uniform | ~3.5 m³ (~925 gal) |
+| Summer-dry (Jun–Aug @ 5 mm) | ~10 m³ (~2,640 gal) |
+
+**Components & cost (~$13k installed):** gutter/downspout + leaf guards +
+first-flush diverters ($2k) · above-ground poly tank 4–10 m³ ($2.5k) · pump +
+pressure tank + level control + mains make-up solenoid ($2k) · 50 µm + 5 µm
+filtration + UV ($1.5k) · install, plumbing, backflow prevention ($5k).
+
+**Integration — the real value (honest wall):**
+- **Waste-heat washdown** (§8 HIGH row): the compressor heat exchanger now
+  has a free, soft, low-mineral water supply to preheat — rainwater + waste
+  heat together make warm washdown with zero municipal water and minimal
+  heating energy.
+- **PV-protecting wash**: low-mineral rainwater washing recovers the 5–15%
+  output loss dirty modules accumulate on the $67–112k array (§7.2).
+- **Stormwater credits**: cities with stormwater utilities may credit
+  impervious-surface fees (site-dependent, potentially $0.5–2k/yr).
+- **Resilience**: independent non-potable supply during a mains outage — the
+  same resilience-only argument the H₂ backup carries (§7.2.3).
+
+**Honest wall:** on the water bill alone (~$160/yr saved) the payback is
+~80 yr. This is a systems/integration play, not a money-saver. Non-potable
+ONLY: backflow prevention, cross-connection control, labeled piping, and
+local rainwater-harvesting rules apply.
+
 ---
 
 ## 7. Energy & cost (consolidated feasibility)
@@ -439,7 +485,7 @@ Ranked recovery streams. Servo-regen figure is `[measured]` (sim, from
 
 | Stream | Source | Recoverable | Daily (8 h shift) | Capture | Priority |
 |---|---|---|---|---|---|
-| Compressed-air waste heat | compressor ~1.6 kW input, 75–85% as heat | ~1.3–1.5 kW | ~10–12 kWh as heat | heat exchanger on compressor outlet → washdown water / winter shop heat | **HIGH** |
+| Compressed-air waste heat | compressor ~1.6 kW input, 75–85% as heat | ~1.3–1.5 kW | ~10–12 kWh as heat | heat exchanger on compressor outlet → **preheat the rainwater washdown supply (§6.4)** / winter shop heat | **HIGH** |
 | Servo regen `[measured]` | fold settle phase (spring-back works on the motor) | ~8% of fold motoring, ~196 J/axis-cycle | ~0.5 kWh returned to bus | shared EtherCAT DC bus + battery recapture (§3.36 PV+battery); brake resistors only as backstop | **MEDIUM** |
 | Vacuum/blow-off | grippers, reject gate | small, low-grade | ~0.5–1 kWh equiv | sequencing (vacuum/air only while gripping) — demand-side, not recovery | LOW |
 | Hot-melt / tape-head heat | glue-pot heater ~0.5 kW | minimal | — | insulated pot, duty-cycled heater | LOW |
@@ -581,6 +627,7 @@ designed to:**
 | Vision | 2–3 GigE cameras (Basler / Balluff) + Class 1 LED bars | one wide-angle camera, no lighting |
 | Blow-offs | regulated ≤30 psi nozzles, 20% duty sequencing | unrestricted nozzles |
 | Power | 3-phase + IEC 60204-1, MCCB + RCD, redundant 24 V PSU, UPS for controls | single-phase undersized feed, no UPS |
+| Rainwater (§6.4) | ~300 m² metal-roof catchment + PV modules, first-flush diverters + leaf guards, 50 µm + 5 µm filters + UV, 4–10 m³ tank, pump + pressure tank + mains make-up, backflow prevention | potable reuse without treatment; unlabeled cross-connected piping |
 | HMI | 12–15" panel + §9.1 UX | numeric-only display |
 | IIoT | OPC UA gateway, per-station energy meters, IEC 62443-3-3 | unauthenticated cloud port |
 
@@ -599,5 +646,9 @@ designed to:**
   geometry, and ISO 13855 distances need a competent-person risk assessment
   and measured stop times.
 - Air figures are component-assumption estimates (±30% on duty/leaks).
+- Rainwater figures are climate-assumption estimates (800 mm/yr, uniform vs
+  summer-dry): real tank sizing needs the site's rainfall record and the
+  actual roof/PV catchment area; and the system is a systems/integration play
+  (~80 yr payback on water alone), not a water-bill saver.
 - Both core patents are **Active** — a build needs license or design-around,
   not an assumed freedom to operate.

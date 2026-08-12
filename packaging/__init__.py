@@ -12,8 +12,12 @@ from packaging.utilities import (
     avg_power_kw,
     avg_real_scfm,
     fad_scfm,
+    rainwater_balance_series,
     receiver_volume_gal,
+    runoff_m3,
+    tank_size_for_zero_deficit,
     vacuum_venturi_demand,
+    water_cost_per_yr,
 )
 
 __all__ = [
@@ -25,6 +29,10 @@ __all__ = [
     "avg_power_kw",
     "avg_real_scfm",
     "fad_scfm",
+    "rainwater_balance_series",
     "receiver_volume_gal",
+    "runoff_m3",
+    "tank_size_for_zero_deficit",
     "vacuum_venturi_demand",
+    "water_cost_per_yr",
 ]
