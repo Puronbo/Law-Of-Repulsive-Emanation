@@ -36,6 +36,7 @@ packages = [
     "puno_flow.apps",
     "puno_flow.examples",
     "puno_app",
+    "packaging",
     "Universals",
     "Universals.manifold",
     "data",
