@@ -181,6 +181,7 @@ The corpus's own measured datum, folded into the retrace chain (`data/epoch_0d.j
 | DecentralNet live daemon (`decentral_net_live.py`) | SUPPORTED (structural, bounded run; seeds 42/11/7): the T55f perpetual net's claims pinned — population never exceeds CAP (30) through arrivals + damage + pruning (bounded O(CAP²) cost); after each random neuron death the local k-NN re-spread heals the survivors back into the healthy spacing band with NO repair unit (post-damage spacing within 0.5–2.0× of pre — removing a neuron legitimately enlarges mean k-NN distance; recovery ~1.4, no clump, no rim blow-up); the self-consistent routing probe stays 1.00 accurate through 3000-tick churn; and a checkpoint saved at tick 1500, reloaded, reproduces the uninterrupted trajectory bit-for-bit (positions identical, born/pruned/killed counters match, RNG stream carries on — the cycle is continuous). All numpy-only DecentralNet with bounded ring memory |
 | Bazaar network (`bazaar_net.py`) | SUPPORTED (structural, over real TCP processes; seeds 42/11/7): the bazaar hybrid now WORKS AS A NETWORK — 4 node processes (real sockets on the repo's own T70 transport, optional mutual TLS) replicate every action into bit-identical content-addressed LedgerChain archives (one chain head, one length, all 9 × 3 = 27 archives verify). N1: content replicates — a post submitted on one node is searchable from another, cross-node. N2: the emergent mesh feed works over real homes — the minority reader's feed is 1.00 of its own community's authors. N3: removal is standing-gated + quorum-confirmed — a fresh sockpuppet (standing 0.00) contributes nothing, a 3-flag spam post is removed through the 9-guardian 2/3 quorum, and a fabricated 3-downvote brigade on a standing author's post is REJECTED (where a central 3-flag rule would remove it). N4: the archive is tamper-evident — a flipped payload breaks verify() at its sequence while the other nodes stay valid. N5: the network survives node death — content is served by survivors and a stateless restart resyncs to a bit-identical, verifying chain. Honest caveats: ordering is driver-sequenced (a real network needs a distributed total-order primitive; partition-equivocation is detected, not prevented); majority-honesty quorum, not BFT; one machine |
 | Decentral Web (T73, `decentral_web.py`) | SUPPORTED (structural, over real TCP processes; seeds 42/11/7, plain + mutual-TLS sockets): the WWW's three functions rebuilt on the repo's own verified machinery — a working content-addressed P2P "web". W1: content replicates — a page published on one node is served (with verified content-address integrity) from EVERY other node, all archives converging to one chain head + one length that verifies. W2: content addressing — 3 publishes of 2 distinct contents collapse to 2 addresses (SHA-256 dedup, the WWW's cache key made local), and a GET by address is a direct O(1) store lookup. W3: the net survives node death — a crashed node's pages are still served by survivors, and a stateless restart resyncs to a bit-identical, verifying archive. W4: name resolution — a near-miss query ("homee") resolves to the intended page ("home") by char-ngram embedding routing, the google.com→gooogle.com pattern from the real top-1M net, now over the wire. Re-uses T70's SocketTransport, LedgerChain, and the T55i name-embedding pattern. Honest walls: event ordering is driver-sequenced (a distributed total-order primitive is the unbuilt layer — the T14c/bazaar wall); the name hasher is a small toy over a few pages, not the 1.9M-site geometry; still one machine; no incentives/crypto identity beyond channel TLS. See `docs/DECENTRAL_WEB.md` |
+| Learning & Creativity Test (T74, `learn_creativity_test.py`) | SUPPORTED (structural, synthetic concept space; seeds 42/11/7): a test ascertaining what a learner LEARNED in a learning environment and whether it CREATES novel-but-valid content — one rubric (recognition/transfer for learned; novelty × appropriateness for creativity) that the human-assessment protocol in `docs/LEARNING_CREATIVITY_TEST.md` reuses with the same thresholds. L1: held-out probe accuracy climbs from near-chance 0.125 to ≥0.90 as exemplar exposure grows 1→40/concept (a stored-memory k-NN router — majority over its 5 nearest stored exemplars, the repo's own k-NN primitive — routes at chance while the memory is sparse because the neighborhood is dominated by OTHER concepts, and at ≥0.92 once the true concept's exemplars dominate). L2: no forgetting — first-taught concepts keep ≥0.92 after every later concept is added (additive memory does not destabilize). C1: a measurable share of mid-size near-miss variations are simultaneously NOVEL (outside the taught core) and VALID (inside the learned manifold, routed to the intended concept) — never-presented new-but-right items, ≥0.24 yield. C2: random far nulls are ~100% novel but 0% creative — novelty alone is not creativity, the joint novelty × validity criterion is necessary. C3: creative yield is interior-peaked over mutation size (too-close valid-but-not-novel, too-far novel-but-not-valid). Honest walls: stored-memory k-NN over gaussian exemplars in a synthetic 2D space — MECHANISM claims about the test, not transfer or open-domain invention. See `docs/LEARNING_CREATIVITY_TEST.md` |
 
 
 ## Internet-Scale Flow (T67, T72)
@@ -214,6 +215,23 @@ this repo already verified — the T70 socket transport, LedgerChain, and the
 T55i name-embedding pattern — so it is assembly, not invention.  W1–W4 all
 SUPPORTED over real TCP processes (seeds 42/11/7, plain + mutual TLS), pinned
 by `test_decentral_web_supported`.  See `docs/DECENTRAL_WEB.md`.
+
+## Learning & Creativity Test (T74)
+
+A test that ascertains two things of a learner in a learning environment:
+**LEARNED** (did it acquire the curriculum, and does what it learned persist?)
+and **CREATIVITY** (can it generate *new-but-right* content — simultaneously
+novel and valid?).  One rubric, two axes — recognition/transfer for learned,
+novelty × appropriateness for creativity — used by the engine experiment and
+reused by the human-assessment protocol, so an agent and a human are graded on
+the same scale.  The engine run verifies a stored-memory k-NN agent (majority
+over its 5 nearest stored exemplars) on a bounded synthetic concept space:
+L1 the acquisition curve (near-chance 0.125 → ≥0.90 as exposure grows), L2 no
+forgetting (first-taught ≥0.92), C1 novel-but-valid yield (≥0.24 of mid-size
+near-miss variations), C2 novelty ≠ creativity (random far nulls are novel but
+invalid), C3 an interior-peaked creativity landscape.  All SUPPORTED on seeds
+42/11/7, pinned by `test_learn_creativity_supported`.  See
+`docs/LEARNING_CREATIVITY_TEST.md`.
 
 Everything is also browsable through the plug-and-play UI: `puno-plug` opens a
 single page that auto-discovers every decorated plugin in `plugins/` and every
@@ -295,6 +313,7 @@ python experiments/bazaar_hybrid.py               # best-possible 4chan+reddit d
 python experiments/decentral_net_live.py --verdict data/decentral_net_live_data.json  # T55f live daemon verdict (SUPPORTED, bounded run)
 python experiments/bazaar_net.py --verdict     # bazaar as a real TCP-process network verdict (SUPPORTED, structural)
 python experiments/decentral_web.py --verdict  # content-addressed P2P web verdict (SUPPORTED, structural)
+python experiments/learn_creativity_test.py --verdict  # learned + creativity test T74 verdict (SUPPORTED)
 puno-plug [--host 127.0.0.1] [--port 8767]     # plug-and-play UI: any function, auto-discovered forms
 python Universals/serve_dashboard.py   # L.O.R.E. dashboard -> http://localhost:8080/docs/
 ```

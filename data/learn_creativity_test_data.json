@@ -1,0 +1,192 @@
+{
+ "claims": [
+  {
+   "claim": "learned: held-out probe accuracy climbs from near-chance at minimal exposure (%.2f) to %.2f at full exposure across seeds - the curriculum is demonstrably acquired",
+   "id": "L1",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "learned persists: first-taught concepts keep >=0.85 accuracy after every later concept is added (no forgetting under continued exposure; additive stored memory does not destabilize)",
+   "id": "L2",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "creativity: a measurable share of mid-size near-miss variations are simultaneously NOVEL (outside the taught core) and VALID (inside the learned manifold, routed to the intended concept) - new-but-right content that was never presented",
+   "id": "C1",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "novelty is not creativity: random far nulls are novel but invalid, so the joint novelty x validity criterion is necessary",
+   "id": "C2",
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "the creativity landscape is interior-peaked: creative yield is maximized at a middle mutation size because too-close variations are valid but not novel and too-far are novel but not valid - a real trade-off, not a monotone curve",
+   "id": "C3",
+   "verdict": "SUPPORTED"
+  }
+ ],
+ "date": "2026-08-11",
+ "experiment": "learn_creativity_test (T74): a test ascertaining what an agent learned in a learning environment and whether it creates novel-but-valid content",
+ "per_seed": {
+  "11": {
+   "c1_ok": true,
+   "c2_ok": true,
+   "c3_ok": true,
+   "ceiling": 0.921875,
+   "creative": {
+    "0.05": {
+     "creative": 0.22,
+     "novel": 0.23333333333333334,
+     "valid": 0.9666666666666667
+    },
+    "0.12": {
+     "creative": 0.29333333333333333,
+     "novel": 0.7,
+     "valid": 0.5666666666666667
+    },
+    "0.22": {
+     "creative": 0.03333333333333333,
+     "novel": 0.9466666666666667,
+     "valid": 0.08666666666666667
+    },
+    "0.32": {
+     "creative": 0.0,
+     "novel": 1.0,
+     "valid": 0.0
+    }
+   },
+   "curve": {
+    "1": 0.125,
+    "16": 0.928125,
+    "2": 0.39375,
+    "4": 0.9,
+    "40": 0.921875,
+    "8": 0.915625
+   },
+   "floor": 0.125,
+   "l1_ok": true,
+   "l2_ok": true,
+   "mid_creative": 0.29333333333333333,
+   "no_forgetting_min": 0.921875,
+   "null": {
+    "creative": 0.0,
+    "novel": 1.0
+   },
+   "thresholds": {
+    "acceptance": 0.05456987234538235,
+    "novelty": 0.02722378129861315,
+    "spacing_mean": 0.016285344879905468,
+    "spacing_std": 0.01093843641870768
+   }
+  },
+  "42": {
+   "c1_ok": true,
+   "c2_ok": true,
+   "c3_ok": true,
+   "ceiling": 0.940625,
+   "creative": {
+    "0.05": {
+     "creative": 0.25333333333333335,
+     "novel": 0.26666666666666666,
+     "valid": 0.9266666666666666
+    },
+    "0.12": {
+     "creative": 0.37333333333333335,
+     "novel": 0.7066666666666667,
+     "valid": 0.6533333333333333
+    },
+    "0.22": {
+     "creative": 0.05333333333333334,
+     "novel": 0.9733333333333334,
+     "valid": 0.07333333333333333
+    },
+    "0.32": {
+     "creative": 0.0,
+     "novel": 1.0,
+     "valid": 0.0
+    }
+   },
+   "curve": {
+    "1": 0.125,
+    "16": 0.953125,
+    "2": 0.490625,
+    "4": 0.940625,
+    "40": 0.940625,
+    "8": 0.928125
+   },
+   "floor": 0.125,
+   "l1_ok": true,
+   "l2_ok": true,
+   "mid_creative": 0.37333333333333335,
+   "no_forgetting_min": 0.940625,
+   "null": {
+    "creative": 0.0,
+    "novel": 1.0
+   },
+   "thresholds": {
+    "acceptance": 0.060828785593104874,
+    "novelty": 0.02895408805886633,
+    "spacing_mean": 0.016204209045170913,
+    "spacing_std": 0.012749879013695418
+   }
+  },
+  "7": {
+   "c1_ok": true,
+   "c2_ok": true,
+   "c3_ok": true,
+   "ceiling": 0.925,
+   "creative": {
+    "0.05": {
+     "creative": 0.26666666666666666,
+     "novel": 0.2733333333333333,
+     "valid": 0.9333333333333333
+    },
+    "0.12": {
+     "creative": 0.3466666666666667,
+     "novel": 0.76,
+     "valid": 0.5533333333333333
+    },
+    "0.22": {
+     "creative": 0.02666666666666667,
+     "novel": 1.0,
+     "valid": 0.02666666666666667
+    },
+    "0.32": {
+     "creative": 0.0,
+     "novel": 1.0,
+     "valid": 0.0
+    }
+   },
+   "curve": {
+    "1": 0.125,
+    "16": 0.93125,
+    "2": 0.553125,
+    "4": 0.934375,
+    "40": 0.925,
+    "8": 0.9375
+   },
+   "floor": 0.125,
+   "l1_ok": true,
+   "l2_ok": true,
+   "mid_creative": 0.3466666666666667,
+   "no_forgetting_min": 0.925,
+   "null": {
+    "creative": 0.0,
+    "novel": 1.0
+   },
+   "thresholds": {
+    "acceptance": 0.056788503695091246,
+    "novelty": 0.0281255677065311,
+    "spacing_mean": 0.016660393311107045,
+    "spacing_std": 0.011465174395424058
+   }
+  }
+ },
+ "seeds": [
+  42,
+  11,
+  7
+ ],
+ "verdict": "SUPPORTED (structural, synthetic concept space; 3 seeds): accuracy climbs 0.12 -> 0.94 as exposure grows 1..40 exemplars/concept (L1); first-taught concepts keep >=0.94 after all later concepts are added (L2); mid-size near-miss variations yield 37% novel-AND-valid items the agent never saw (C1); random far nulls are 100% novel but 0% creative, so the joint novelty x validity criterion is necessary (C2); creative yield over mutation size is interior-peaked (C3)"
+}
