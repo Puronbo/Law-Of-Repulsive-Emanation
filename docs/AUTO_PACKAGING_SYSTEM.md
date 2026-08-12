@@ -11,6 +11,7 @@
 > energy, BOM), not a commissioned build.
 >
 > Companion docs: `AUTO_PACKAGING_PATENTS.md` (patents + standards + FTO) ·
+> `AUTO_PACKAGING_ENERGY_FEASIBILITY.md` (energy feasibility + build cost) ·
 > `packaging/` (IEC 61131-3 servo code + Python mirror).
 
 ---
@@ -180,6 +181,10 @@ replacement, lighting changes, and speed changes.
 Option (ties to §3.36 hydrogen–photon energy): a 4–5 kW PV array (25–35 m²
 at ~20%) + battery covers the day; an H₂ fuel-cell module provides backup.
 Honest wall: these are estimates from component ratings, not a measured line.
+**Correction — see `AUTO_PACKAGING_ENERGY_FEASIBILITY.md`:** the 4–5 kW array
+covers only ~15% of the 24/7 demand (and ~40–45% of a one-shift day); true
+solar self-sufficiency needs 30–35 kW (24/7) or 10–12 kW (one shift), and H₂
+backup is resilience-only at 2026 hydrogen prices.
 
 ---
 
