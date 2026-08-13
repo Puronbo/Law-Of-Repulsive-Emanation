@@ -352,18 +352,62 @@ amendments.
    the instruments already run.
 4. **Amendment is not administration.** The distinction is the book's spine:
    the agent administers the current mandate (rules-in-code — the bazaar
-   and ledger already run them); it does not amend it. The lawgiver's law
-   is therefore the deepest residue: open texture ends where the text ends
-   (Ch. 6), and amendment begins. Who holds the pen is the constitution's
-   final gate. `[honest wall]` This is the book's own proposal, offered
-   plainly: no instrument measures consent, and amendment without consent
-   is the Book's definition of tyranny by text.
+    and ledger already run them); it does not amend it. The lawgiver's law
+    is therefore the deepest residue: open texture ends where the text ends
+    (Ch. 6), and amendment begins. Who holds the pen is the constitution's
+    final gate. `[honest wall]` This is the book's own proposal, offered
+    plainly: no instrument measures consent, and amendment without consent
+    is the Book's definition of tyranny by text.
+
+### Ch. 11  The entrenched core: rights as the unamendable
+
+The lawgiver's law (Ch. 10) asked *who* may amend. The deeper question is
+*what cannot be amended*. Constitutional theory answers with entrenchment:
+a bill of rights is the layer of the mandate that ordinary amendment cannot
+reach, because rights are claims held *against the lawgiver itself*.
+
+The Book reads rights through the canon, as it read everything else.
+`[hypothesis]` Each right maps to a measured instrument or an honest wall;
+the instruments are measured, the mapping is the hypothesis.
+
+1. **Rights are the standing layer's property, given legal form.** Ch. 5's
+   gate and BOOK VIII name three things corpora cannot erode: licensed
+   standing, open texture, consent. Rights are exactly these, made
+   constitutional. **Due process** is the gate — a credentialed human must
+   sign (Ch. 5, the B-shape). **Equal treatment** is frame discipline —
+   never mix frames, and T55e MIX collapses 0.061/0.305 when they are
+   mixed. **Freedom from retroactive punishment** is the clock-test canon —
+   a rule that re-indexes past acts is anti-correlated with itself (T59,
+   1.0000 → 0.4167 at e0+15). `[hypothesis]` Each right is a doctrine
+   (Ch. 8) about whom the encoding may not touch.
+2. **The entrenched core is the measured residue, made legal.** The book's
+   residue — tacit skill, standing, open texture, consent — is not
+   incidental to the law; it *is* the rights layer. A constitution that
+   entrenches only the administrable text protects nothing the agent cannot
+   hold; a constitution that entrenches the residue protects exactly what
+   the agent cannot administer (Ch. 17). Rights are the residue written as
+   claims. `[hypothesis]` The book's earlier wall stands: the residue is
+   measured where the repo has measured; the *choice* to entrench it is
+   consent, which is not.
+3. **Entrenchment is measurable as amendment-friction.** The Book's
+   instrument: a clause is entrenched iff its amendment demands more than
+   ordinary amendment — and the repo measures amendment: a commit, a
+   review, a signature (Ch. 10, item 1). The degree of entrenchment is the
+   number of standing-layer signatures an amendment requires; a supermajority
+   clause is a measurable requirement, not a metaphor. `[hypothesis]` A
+   proposal — the git/ledger record is measured, the entrenchment degree
+   is the Book's construction.
+4. **The honest wall.** The Book does not say *which* rights a constitution
+   should entrench — that is consent, outside the measure (BOOK VIII, wall
+   2). It says only: whatever is entrenched is a claim about the residue,
+   and the residue is measured. `[honest wall]` Rights are the one part of
+   the lawgiver's law the canon can name but cannot justify.
 
 ---
 
 ## BOOK IV — ADMINISTRATION: WHAT AN ACCURATE AGENT CAN RUN
 
-### Ch. 11  What is administrable (measured in the repo)
+### Ch. 12  What is administrable (measured in the repo)
 
 The repository already runs machine-administered rule systems, each with its
 measured results:
@@ -384,9 +428,9 @@ residue measured and declared. Any institution's text layer has the same
 shape, so the same instrument applies: **an accurate agent can administer
 the text layer of any institution, and the code layer of any system whose
 rules can be encoded.** This is the honest generalization of the Class A
-finding — and the honest limit of it is Ch. 12.
+finding — and the honest limit of it is Ch. 13.
 
-### Ch. 12  What is not administrable
+### Ch. 13  What is not administrable
 
 Two independent reasons close "everything," and the repo measured both.
 
@@ -403,7 +447,7 @@ Two independent reasons close "everything," and the repo measured both.
    honest wall is this Book's third. Legitimacy is not a text property and
    no instrument in the repo measures it.
 
-### Ch. 13  Contracts and private law
+### Ch. 14  Contracts and private law
 
 Contracts are the private-law layer: a law the parties write for themselves.
 They are the most administrable text in the legal stack — boilerplate,
@@ -429,7 +473,63 @@ Both are the administration layer working today, in this repository: rule
 not filings — none is licensed legal practice, and the gate (Ch. 5) is
 exactly what separates the two.
 
-### Ch. 14  The measurement frontier
+### Ch. 15  A dispute, administered
+
+The book's claims are abstract; the mandate book's worked mandate made its
+claims concrete, and this chapter is the worked *adjudication*: one dispute
+taken end-to-end through the repo's measured instruments, each step named
+and tagged.
+
+**The dispute.** Two parties disagree over a contract term — a delivery
+deadline misread. Party A holds a text contract (Ch. 14's private-law
+layer); the term reads "deliver within 30 days of signed acceptance."
+Party B delivered on day 44. The question: is B in breach?
+
+1. **The fact.** The signed acceptance and the delivery date are records.
+   The ledger (T70) authenticates them — tamper-evidence at the flipped
+   seq, survives 50% node loss, bit-identical resync. The dates are not in
+   dispute, because the record layer cannot be quietly edited. `[measured]`
+   This is Ch. 8's evidence doctrine, instrumented.
+2. **The rule.** The controlling clause is a bright line: 30 days.
+   Retrieval (T67) pulls the exact clause from the contract corpus at
+   n = 100k, 10.35 s/step — the governing text, not a guess. `[measured]`
+   This is stare decisis at its smallest: the nearest clause binds.
+3. **The syllogism.** Day 44 against "≤ day 30": the arithmetic decides,
+   mechanically, with no open texture. This is Class A work — the agent
+   routes and drafts the finding (Ch. 7's adjudication row, bright-line =
+   A). `[measured]` by the profession verdicts; the routing itself is the
+   Book's application.
+4. **The gate.** The finding is drafted by the agent; it is *signed* by a
+   credentialed human — the gate (Ch. 5, the B-shape: court translator and
+   compliance officer are fully text-mandatable, but a credentialed actor
+   must attest). No signature, no judgment. `[hypothesis]` The gate is
+   measured as class structure; its application here is the Book's proposal.
+5. **The review.** Either party may appeal. The appeal is a quorum review:
+   9 guardians, wrong-removal 0.20 → 0.003 while true removals stay 0.91
+   (bazaar). The agent's own draft can be overturned at the same rate the
+   quorum corrects error — error correction above the trier, instrumented.
+   `[measured]` This is Ch. 8's judicial-review row.
+6. **The consequence.** The judgment orders payment of a sum. The ledger
+   records the order; a human enforces it (Ch. 7's enforcement split:
+   authorization = B, the physical act = D). The agent administers the text
+   of the remedy; it does not grip. `[measured]` for the record layer,
+   `[hypothesis]` for the division of the physical act.
+
+**Theorem (the administered dispute is a pipeline of measured
+instruments).** Every step above is an instrument the repo already runs:
+T70 for the fact, T67 for the rule, the profession verdicts for the
+syllogism, the gate for the signature, the bazaar quorum for review, the
+ledger again for the record. What is *not* in the pipeline: the credibility
+of live witnesses (S = 0.25, the demeanor row of Ch. 8), the open-texture
+weighing ("reasonable", "due process", Ch. 6), and the parties' consent to
+be governed this way. A dispute is administrable exactly to the extent its
+facts are records, its rules are bright-line, and its parties consent.
+`[honest wall]` This is a worked illustration, not a measurement: each
+instrument's number is measured; the assembly is the Book's proposal.
+
+---
+
+### Ch. 16  The measurement frontier
 
 What else can be measured? The canon generates its own next instruments;
 all four below are implied by what the repo already runs, and each is
@@ -486,7 +586,7 @@ stated with its status.
 
 ## BOOK V — THE JOBS HUMANS WOULD PARTAKE THAT THE AGENT CANNOT
 
-### Ch. 15  The residue is the human's job
+### Ch. 17  The residue is the human's job
 
 By the axioms, the work an accurate agent cannot administer is exactly the
 complement of its mandate: **S** (tacit skill residue), the **gate**
@@ -494,7 +594,7 @@ complement of its mandate: **S** (tacit skill residue), the **gate**
 accountability, outside the measure). The jobs that remain are therefore not
 an arbitrary list — they are the measured residue, named task by task.
 
-### Ch. 16  The measured residue (the 9 of the 14 professions that are not Class A)
+### Ch. 18  The measured residue (the 9 of the 14 professions that are not Class A)
 
 | Class | K | S | Profession | Why it stays human `[measured]` |
 |---|---|---|---|---|
@@ -508,7 +608,7 @@ an arbitrary list — they are the measured residue, named task by task.
 | D | 0.380 | 0.620 | surgeon | surgical execution (s = 0.80) dominates the profession |
 | D | 0.350 | 0.650 | electrician (installation) | physical install (s = 0.95) dominates the profession |
 
-### Ch. 17  The principled residue beyond the fourteen
+### Ch. 19  The principled residue beyond the fourteen
 
 The same instrument, extended to the unmeasured professions, gives the shape
 of the human economy the agent leaves standing — `[hypothesis]` applications
@@ -544,7 +644,7 @@ they accept. The Book's claim is about the residue now, measured where the
 repo has measured, extrapolated where it has not — and the extrapolation is
 tagged.
 
-### Ch. 18  The residue is earned, not inherited
+### Ch. 20  The residue is earned, not inherited
 
 The complementarity lock has an economic mirror: as the agent takes the text
 layer (K), the residue — S, the gate, standing — becomes the binding
@@ -571,7 +671,7 @@ bit-identical after a stateless restart; an agent's decision can be rolled
 back and its corpus regenerated. The human bears consequences that cannot
 be resynced — a judgment served, a sentence carried, a lesson the classroom
 cannot rewind. This asymmetry is not skill and not standing; it is
-irreversibility. It is why the standing layer (Ch. 7, Ch. 15) is
+irreversibility. It is why the standing layer (Ch. 7, Ch. 17) is
 irreducible: the machine administers the text at zero personal cost, and
 the human, who cannot be re-run, takes the consequence. `[honest wall]`
 This is a moral claim, stated plainly, not a measured result.
@@ -580,7 +680,7 @@ This is a moral claim, stated plainly, not a measured result.
 
 ## BOOK VI — THE THIRD CLASS, AND THE OBJECTIONS ANSWERED
 
-### Ch. 19  Not everything is administration
+### Ch. 21  Not everything is administration
 
 The book's axiom (Ch. 1) defined administration as rule → facts → output.
 Two classes followed: the administrable text layer and the human residue.
@@ -607,7 +707,7 @@ itself** (outside the axis). "Everything" fails the third way: not because
 the agent is incapable, but because the question was asked about the wrong
 kind of thing.
 
-### Ch. 20  Three objections, answered
+### Ch. 22  Three objections, answered
 
 The repo's culture publishes its null first; this Book does the same. The
 three strongest objections, steelmanned, and the replies:
@@ -626,16 +726,228 @@ three strongest objections, steelmanned, and the replies:
    *measured* fourteen decompositions. The formula is a lens; the lens is
    not the discovery — the assignments are.
 3. **The moving-residue objection.** *"Corpora and simulators erode S; the
-   residue shrinks until 'human jobs' means nothing."* Reply: BOOK VII
+   residue shrinks until 'human jobs' means nothing."* Reply: BOOK VIII
    wall 5 grants the erosion — skill is not permanent. But the standing
    gate, open texture, and consent do not move with the data; and the third
-   class (Ch. 19) is not eroded at all because it is not a skill. The
+   class (Ch. 21) is not eroded at all because it is not a skill. The
    residue narrows, the standing layer persists, and the point of the
    activity never enters the axis.
 
 ---
 
-## BOOK VII — HONEST WALLS
+## BOOK VII — APPLICATIONS AND ACCOUNTABILITY
+
+### Ch. 23  Schools and commerce, answered
+
+The Book promised the generalization (Ch. 12's theorem) and the question
+that began it named two institutions: *schools? commerce?* Both are walked
+through the classes here, because both are asked every time this book is
+discussed.
+
+1. **The school.** The school's text layer is curriculum, standards,
+   grades, assessment instruments, and records — all administrable, and the
+   repo's own instruments measure the assessment end of it
+   (`experiments/learn_creativity_test.py`, `learning_curve_scale.py`: the
+   L1 ceiling, the L2 no-forgetting bar, the protocols the human trial
+   bridge runs). The classroom's non-text is rapport, motivation, live
+   troubleshooting, the judgment of a particular child's understanding —
+   the teacher's S = 0.665, Class C. The agent administers the curriculum
+   and grades the bright-line part; the human teaches, and the human holds
+   the discretion in every open-response grade (open texture, Ch. 6).
+   `[measured]` for the instrument rows, `[hypothesis]` for the assembly.
+2. **The marketplace.** Commerce's text layer is contracts (Ch. 14), title,
+   payment clearing, records (the ledger, T70), and dispute routing
+   (Ch. 15) — and the repo's bazaar is a marketplace governance instrument
+   with measured results (reason-tagged moderation raises the brigade 2.5×,
+   top-K bot-spam 0.75 → 0.00, wrong-removal 0.20 → 0.003). Commerce's
+   non-text is credit, trust, the judgment of whom to trust and guarantee —
+   the standing layer's commerce. The agent clears and records; the human
+   trusts and guarantees. `[measured]` for the bazaar and ledger,
+   `[hypothesis]` for the split of the trust layer.
+3. **The answer to "everything?"** The generalization holds for both: the
+   text layer of any school and any market is administrable, the residue is
+   human, and the third class (Ch. 21) applies — education and trade are
+   also *experiences*, whose value is the activity itself. Schools and
+   commerce are administrable in their text, human in their residue, and
+   neither in their point. `[hypothesis]` An assembly of measured parts.
+
+### Ch. 24  The responsibility layer: who answers
+
+The book has said who administers; it has not said who answers when
+administration errs. This is the responsibility layer — tort, agency,
+liability — and it is the least administrable part of the law, for a
+measured reason.
+
+1. **The machine's error is not a person's fault — but liability is a
+   person's.** The ledger records who signed (Ch. 15, step 4); liability
+   attaches to persons, not processes. When the agent misfiles or routes
+   wrongly, the record names the gate-signer. Responsibility is standing,
+   not capability. `[hypothesis]` The gate is measured as class structure
+   (Ch. 5); the attribution is the Book's construction.
+2. **Liability is the law's own open-texture core.** "Reasonable care,"
+   "foreseeability," "proximate cause" — the doctrines Ch. 8 measured are
+   exactly the ones that resist bright-line encoding (Ch. 6). The same
+   S-residue that puts physician 0.645 and teacher 0.665 in Class C puts
+   the weighing of fault in the human layer. `[hypothesis]`
+3. **The liability *text* is administrable.** Standards of care written
+   down, indemnity clauses, policy language, bright-line coverage
+   determination — the contract layer of Ch. 14 and the retrieval of T67
+   cover it, Class A. What is not: the weighing of fault. The
+   responsibility layer splits the same way every layer splits — text
+   administrable, weighing human. `[hypothesis]`
+4. **The ultimate question.** Who answers when the *law itself* errs? The
+   answer is the lawgiver (Ch. 10) — a human legislature, because amendment
+   is legislation and the agent does not self-amend. The responsibility
+   layer terminates in the standing layer. `[hypothesis]`
+
+### Ch. 25  Procedure: the law's administrable spine
+
+The book has discussed substantive law — the rules that decide. Procedural
+law is the law of the process itself: docketing, service, filing,
+deadlines, motions, jurisdiction, standing to sue. It is the most
+mechanical part of the law, and the repo's instruments are its tools by
+design.
+
+1. **Procedure is almost pure text.** Rules of court are bright-line: a
+   filing must arrive within N days, in form F, before the right court.
+   There is no open texture in a deadline. The profession verdicts give the
+   class: docketing and citation are Class A (Ch. 12). `[measured]` for the
+   verdicts, `[hypothesis]` for the mapping.
+2. **The repo's instruments are procedural tools.** The universal calendar
+   (`calendars/`, THE_DAY_BOOK) computes a statute-of-limitations date to
+   the day on an exact day axis — deadline arithmetic is the calendar's own
+   kind of problem. The ledger (T70) is the docket: filings, orders,
+   signatures, timestamped and tamper-evident. Retrieval (T67) is the
+   docket-search. Procedure is the point where the law and the repo's
+   machinery are the same thing. `[measured]` for the instruments; the
+   assembly into a procedure is the Book's construction.
+3. **Jurisdiction is the boundary, and boundaries are rules-in-code.**
+   Which court, which corpus, which mandate governs a filing is a routing
+   decision — exactly what the repo routes (T67 retrieval, and the frame
+   discipline of T55e: one governing frame, never two). Conflict of laws
+   (Ch. 8) is jurisdiction at the field's edge. `[hypothesis]`
+4. **The residue in procedure.** Service of process is a physical act
+   (Ch. 7's D-shape: a human hands the papers over); the discretionary
+   continuance rests on the open-texture word "good cause" (Ch. 6); the
+   right to appear is a standing question — a gate, not a skill. Procedure's
+   text is administrable; its acts, excuses, and appearances are residue.
+   `[hypothesis]`
+
+**Theorem (the more procedural the field, the more administrable it is).**
+Substantive law carries open texture by design (Ch. 6); procedure regulates
+the law's own machinery, and the machine runs machinery without residue. The
+measured meaning: a field's Class A fraction rises with its procedural
+content and falls with its substantive content — the axis of Ch. 12 applied
+within the law itself. `[hypothesis]` An assembly, not a measurement.
+
+### Ch. 26  Legal families on the measurement axis
+
+The repo lays every calendar of every civilization on one exact day axis
+(THE_DAY_BOOK). This chapter does the same for law's families: place the
+world's legal traditions on the text/residue axis and read what each
+administers. `[hypothesis]` Each family's characterization is a reading;
+the axis is the Book's.
+
+1. **The common law.** Precedent-bound: past decisions bind (stare decisis,
+   Ch. 8). Its instrument is retrieval — T67, exact routing of the nearest
+   case. The common law's genius and its residue are the same: the judge's
+   *distinguishing* is open texture (Ch. 6), the human layer. Text = the
+   corpus of cases; administration = retrieval and application; residue =
+   the distinguishing.
+2. **The civil law.** Code-bound: a comprehensive text mandate (Ch. 4)
+   applied by syllogism. Its instrument is the mandate itself — the most
+   text-like family, and the closest to Class A in adjudication; its residue
+   is the interpretation of the code's open texture.
+3. **Religious and customary law.** Authority-bound: legitimacy rests on
+   the office and the community — standing and consent (BOOK VIII, wall 2),
+   not on text or retrieval. Its instrument is the gate; it is the most
+   residue-heavy family, and administration stops where the authority
+   begins.
+4. **The axis, read.** Measure each family by the mandate fraction 1 − S:
+   the civil law administers most of its adjudication, the common law
+   nearly as much with a larger judgment residue in distinguishing, and
+   the authority-bound families least — not because their rules are less
+   text, but because their legitimacy is in the person and the community.
+   The families are not better or worse; they sit at different points on
+   the same measured axis, and the axis is the book's. `[honest wall]`
+   Characterizing whole traditions in four bullets is a deliberate
+   reduction — the reading is tagged as a reading.
+
+### Ch. 27  How accurate is "accurate enough"
+
+The book's premise is an *accurate* agent. Law demands a number, not a
+premise: what error rate justifies administration? The repo has the pieces.
+
+1. **The quorum's number.** The 9-guardian quorum lowers wrong-removal
+   0.20 → 0.003 while true removals stay 0.91. That is a legitimacy claim
+   in one number: an administrable decision with a 0.3% wrong-removal rate
+   is reviewable error, not arbitrary power. `[measured]` This is Ch. 8's
+   judicial-review row, stated as a standard.
+2. **The ledger's number.** Tamper-evidence at the flipped seq is binary,
+   not graded: the fact layer is either authenticated or it is not, and the
+   decision rests on records that cannot be quietly edited (Ch. 15, step 1).
+   `[measured]`
+3. **The standard of proof, as the mandate's own threshold.** Law already
+   works in thresholds — beyond a reasonable doubt, preponderance. The
+   Book's claim: an agent's routing must meet the standard the field
+   assigns. Bright-line facts meet any standard (the syllogism is exact);
+   open-texture findings meet none (Ch. 6). Accuracy is not one number; it
+   is the mandate's own standard, applied and audited. `[hypothesis]` The
+   thresholds are the Book's construction over measured error rates.
+4. **The honest wall.** The repo measures the machine's error; it does not
+   measure the human baseline — a court's own error rate is not in the
+   corpus. "Accurate enough" is measured on one side of the comparison
+   only. `[honest wall]`
+
+**Theorem (legitimacy is a measured error rate, defensible in review).**
+The 0.3% wrong-removal number is what makes the quorum's decisions
+*appealable rather than arbitrary*: the ledger authenticates the fact, the
+retrieval names the rule, the quorum corrects the routing, and every step
+leaves a record a human can sign or reject (Ch. 15). Accuracy is not a
+promise about the agent; it is a property of the pipeline, and it is
+measured. `[hypothesis]` An assembly of measured instruments.
+
+### Ch. 28  The failure modes of machine-administered law
+
+The repo's culture publishes its nulls first; this chapter is the book's
+null. These are the ways machine-administered law fails, each tied to an
+instrument or a wall.
+
+1. **The encoded bias.** The mandate is a text, and the text encodes its
+   authors' choices. The frame-mixing collapse is the instrument: a rule
+   administered under two frames at once routes at near-chance (T55e MIX,
+   0.061/0.305). Bias is not added to the machine; it is the machine's
+   reading of its corpus. `[measured]` for the instrument, `[hypothesis]`
+   for the reading.
+2. **The false precision.** The classes and the S-decompositions are
+   `[hypothesis]` inputs pinned only in logic (Ch. 5; BOOK VIII, wall 3). A
+   system that presents 0.665 as if it were measured law fails the same way
+   the corpus's own golden-rung claim failed — a number mistaken for a
+   measurement. `[honest wall]` Restated.
+3. **The rubber-stamp gate.** The gate exists so a human signs (Ch. 5); if
+   the signer signs without reading, the gate is a fiction and the B-shape
+   collapses into Class A without the review. The quorum catches the
+   machine; nothing in the repo catches the gate. `[hypothesis]` The
+   mechanism is measured; the failure is the Book's construction.
+4. **The retroactivity trap.** T59's measured collapse (1.0000 → 0.4167) is
+   what happens when a rule's encoding moves after the fact. The failure
+   mode is administrative convenience — re-indexing the rule to fit the
+   case. The canon names it; the mandate must forbid it (Ch. 10's amendment
+   test). `[measured]`
+5. **The consent deficit.** The deepest failure is not technical: an
+   accurate agent administered without consent is not a failed machine but
+   an imposed one — the Book's definition of tyranny by text (Ch. 10).
+   `[honest wall]`
+
+**Theorem (the failure modes are the canon's verdicts, read backward).**
+Every failure mode is a measured result inverted: frame-mixing collapses →
+never mix frames; re-encoding collapses → never move the calendar after the
+act; quorum error-correction holds → keep the review; the walls hold → the
+rest is standing. The nulls are the law's rules. `[hypothesis]`
+
+---
+
+## BOOK VIII — HONEST WALLS
 
 1. **Refutation is provisional.** Every REFUTED claim is a statement about
    the experiment as run; a better experiment may resurrect it, and the
@@ -646,9 +958,11 @@ three strongest objections, steelmanned, and the replies:
    measure.
 3. **The legal decomposition is an application, not a verdict.** The repo
    measures 14 professions; the legal-system and human-job extensions in
-   Ch. 6 and Ch. 17 are `[hypothesis]` applications of the same instrument,
-   tagged as such, not new measurements — and the frontier instruments of
-   Ch. 14 are proposals, not results.
+   Ch. 6 and Ch. 19 are `[hypothesis]` applications of the same instrument,
+   tagged as such, not new measurements — and so are the worked walks of
+   Ch. 15 and the application walks of Ch. 23–28, whose every instrument is
+   measured but whose assembly is the Book's construction. The frontier
+   instruments of Ch. 16 are proposals, not results.
 4. **The bands are practical, not natural.** `S ≤ 0.10`, `FULLY = 0.90`,
    `PARTIAL = 0.50` are auditable constants. The constitution's open-texture
    words guarantee residue strictly, but *how much* residue a court of an
@@ -676,6 +990,14 @@ standing, open texture, and consent — is the human job.*
 | the doctrines read by the instruments | `experiments/decentral_net_continual.py` (T55e MIX), `puno_flow/index.py` (T67), `experiments/clock_test.py` (T59), `puno_flow/ledger.py` (T70), `data/bazaar_hybrid_data.json`, `data/decentral_net_t67_data.json`, `data/decentral_net_continual_data.json` |
 | the jurists read by the canon (Hart's recognition; Fuller's eight canons) | `experiments/clock_test.py`, `rotation_test.py`, `experiments/decentral_net_continual.py` (T55e MIX), `puno_flow/ledger.py` (T70), `professions/mandate.py` |
 | the law of the lawgiver (amendment gate, the canon as amendment test) | git history of `docs/THE_MANDATE_BOOK.md`, `puno_flow/ledger.py` (T70), `experiments/clock_test.py`, `rotation_test.py` |
+| the entrenched core: rights as the unamendable (due process = gate, equal treatment = T55e, no retroactivity = T59, entrenchment = amendment-friction) | `puno_flow/ledger.py` (T70), `experiments/clock_test.py` (T59), `experiments/decentral_net_continual.py` (T55e MIX), `professions/mandate.py`, git history of `docs/THE_MANDATE_BOOK.md` |
+| a dispute, administered (worked adjudication pipeline: fact = T70, rule = T67, syllogism = Class A, gate = signature, review = bazaar quorum, consequence = ledger record + human act) | `puno_flow/ledger.py`, `puno_flow/index.py`, `experiments/bazaar_hybrid.py`, `professions/mandate.py`, `data/bazaar_hybrid_data.json`, `data/decentral_net_t67_data.json` |
+| schools and commerce (education assessment = the learning instruments; the marketplace = bazaar + ledger + contracts) | `experiments/learn_creativity_test.py`, `learning_curve_scale.py`, `experiments/bazaar_hybrid.py`, `puno_flow/ledger.py`, `professions/rubric.py`, `data/learn_creativity_test_data.json`, `data/bazaar_hybrid_data.json` |
+| the responsibility layer (liability attaches to the gate-signer; the liability text is Class A, the weighing is open texture) | `puno_flow/ledger.py`, `puno_flow/index.py` (T67), `professions/rubric.py`, `docs/THE_MANDATE_BOOK.md`, git history |
+| procedure: the law's administrable spine (deadlines = the universal calendar, docket = the ledger, docket-search = T67, jurisdiction = routing and frame discipline) | `calendars/`, `docs/THE_DAY_BOOK.md`, `puno_flow/ledger.py`, `puno_flow/index.py`, `experiments/decentral_net_continual.py` (T55e), `professions/rubric.py` |
+| legal families on the measurement axis (common law = retrieval, civil law = the mandate, authority-bound families = the gate) | `puno_flow/index.py` (T67), `docs/THE_MANDATE_BOOK.md`, `professions/mandate.py`, `professions/rubric.py` |
+| "accurate enough" (legitimacy as measured error: quorum 0.003 wrong-removal, ledger tamper-evidence, the mandate's standard of proof) | `experiments/bazaar_hybrid.py`, `puno_flow/ledger.py`, `data/bazaar_hybrid_data.json` |
+| the failure modes (encoded bias = T55e frame-mixing, false precision = the S-decomposition wall, rubber-stamp gate, retroactivity trap = T59, consent deficit) | `experiments/decentral_net_continual.py` (T55e), `experiments/clock_test.py` (T59), `professions/rubric.py`, `docs/THE_MANDATE_BOOK.md`, `docs/AUDIT.md` |
 | mandate fraction and statuses | `professions/mandate.py`, `experiments/mandate_report.py`, `data/mandate_report_data.json` |
 | machine-administered governance | `experiments/bazaar_hybrid.py`, `experiments/bazaar_net.py`, `data/bazaar_hybrid_data.json`, `data/bazaar_net_data.json` |
 | contracts and the repo's own legal-text work | `docs/US7284987B2_ANALYSIS.md`, `docs/AUTO_PACKAGING_PATENTS.md` |
