@@ -164,7 +164,7 @@ The formal theory (`PAPER.md`, `GENESIS.md`, `THE_BOOK.md`, `THE_DAY_BOOK.md`, `
 
 ### 10. Test suite (`tests/`)
 
-The regression suite that reproduces every verdict from persisted data — 372 passing tests across the SDK, theory, topology, bank, web, classify, plugin UI, live net, calendar (27), professions rubric + mandate (21), packaging servo + utilities, human trial, spring series, solvable theorems, and app servers.
+The regression suite that reproduces every verdict from persisted data — 382 passing tests across the SDK, theory, topology, bank, web, classify, plugin UI, live net, calendar (27), professions rubric + mandate (21), packaging servo + utilities, human trial, spring series, solvable theorems, and app servers.
 
 ### 11. Scripts, tools & deployment (`scripts/`, `tools/`)
 
