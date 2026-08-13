@@ -28,6 +28,7 @@ puno-bank = "puno_app.bank_server:main"
 puno-calculus = "puno_app.calculus_server:main"
 puno-constants = "puno_app.constant_explorer:main"
 puno-plug = "puno_app.plugin_ui:main"
+puno-mandates = "puno_app.mandates_server:main"
 
 [tool.setuptools]
 py-modules = ["puno_cli"]
@@ -45,7 +46,7 @@ packages = [
 
 [tool.setuptools.package-data]
 puno_app = ["ui.html", "live_net.html", "classify.html", "bank.html",
-            "calculus.html", "plugin_ui.html"]
+            "calculus.html", "plugin_ui.html", "mandates.html"]
 data = ["*.json"]
 
 [tool.pytest.ini_options]

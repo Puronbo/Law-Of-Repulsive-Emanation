@@ -136,3 +136,53 @@ python experiments/ai_performable_professions.py          # writes data/ai_perfo
 The package is registered in `pyproject.toml` (`packages` includes
 `professions`). `data/*.json` is gitignored by convention — the verdict
 artifact is regenerable, never committed.
+
+---
+
+## 4. The application: text-mandatable professions
+
+The same rubric powers a small application focused on the *mandate* reading:
+which professions can be **easily mandated through text** — a complete written
+instruction set fully determines the work, with no tacit/embodied context for
+the agent to supply. `professions/mandate.py` scores `text_mandate_fraction =
+1 − S` and the shared builder `professions/report.py` feeds all three surfaces:
+
+| Status | Rule | Meaning |
+|---|---|---|
+| `fully` | mandate ≥ 0.90, no gate | the written spec is complete (5 of 14) |
+| `fully-gated` | mandate ≥ 0.90, gate | text complete, licensed actor must act (2 of 14) |
+| `partial` | mandate ≥ 0.50 | knowledge half mandatable, live/embodied half is not (5 of 14) |
+| `not` | mandate < 0.50 | skill-dominated; demonstrated, not dictated (2 of 14) |
+
+For fully/fully-gated professions the app also **writes the mandate**: a
+template spec (tasks, bounds, gate) an agent could execute from text alone.
+
+### CLI
+
+```
+python puno_cli.py mandates                      # console table (or: puno mandates)
+python -m puno_app.mandates_server report        # same table
+python -m puno_app.mandates_server serve         # web dashboard at :8899
+python experiments/mandate_report.py             # writes data/mandate_report_data.json
+```
+
+### Web dashboard
+
+`python -m puno_app.mandates_server serve` → http://127.0.0.1:8899. One
+stdlib-only page: filter chips by status, a sortable-by-status table
+(profession, mandate %, class, K, S, gate), and expandable rows showing the
+task decomposition and the generated mandate text (or the skill residue that
+blocks a pure text hand-off). Data comes live from `GET /api/mandates`, so the
+page always reflects `professions/professions_data.py` — no stale artifact.
+
+### Where the data lives
+
+The profession dataset is extracted once into `professions/professions_data.py`
+(shared by `experiments/ai_performable_professions.py`,
+`experiments/mandate_report.py`, the CLI report, and the dashboard). Edit the
+decompositions there and every verdict, artifact, and the dashboard change
+together. The scoring logic is pinned by `tests/test_professions_rubric.py` (9)
+and `tests/test_professions_mandate.py` (12); console script `puno-mandates`
+and `mandates.html` are registered in `pyproject.toml`. `[honest wall]`
+Generated mandate texts are **templates** (the shape of a text spec), not full
+specification documents.
