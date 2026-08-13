@@ -105,6 +105,7 @@ bank / web / bazaar     decentral_bank.py  decentral_bank_bridge.py  decentral_b
 learning / human        learn_creativity_test.py  learn_curve_scale.py  human_trial_pilot.py
 facility / packaging    air_sizing.py  rainwater_sizing.py  servo_regen.py  standby_efficiency.py
 instruments             ai_performable_professions.py  mandate_report.py  calendar_universal.py
+harvest / energy        harvest_energy.py
 ```
 
 ### 4. The universal calendar (`calendars/`)
@@ -158,7 +159,7 @@ patents/PUNO-PPA-001_spatial_indexed_flow.md  PUNO-PPA-002_crease_diagnostics.md
 
 ### 9. Proofs, theory & instrument books (`docs/`)
 
-The formal theory (`PAPER.md`, `GENESIS.md`, `THE_BOOK.md`, `THE_DAY_BOOK.md`, `THE_MANDATE_BOOK.md`, `THE_LAW_BOOK.md`, plus the paper compilation `docs/papers/corrected_paper.pdf/.tex` and `corrected_paper_detailed`), the invariance proofs in `docs/papers/` (AdC quantization invariance, conformal time/light-cone invariance, critical-points damping, decentralized-protocol proofs, division-by-zero bounce, econometrics invariance, hot-hand fallacy reversal, information-theory compression finance invariance, ML quantization-embedding proofs, physics/applied-math invariance, psychometrics invariance, ReLU analog-digital systems, ReLU dying, scale-free network controversy + correction), the instrument manuals (UNIVERSAL_CALENDAR, AI_PERFORMABLE_PROFESSIONS, HUMAN_TRIAL, LEARNING_CREATIVITY_TEST, LEARNING_CURVE_SCALE), the engineering books (AUTO_PACKAGING_*, DECENTRAL_NET, DECENTRAL_WEB, PHYSICAL_UNIVERSAL_MAP, SPRING_BIBLE, CURE_CONNECTIONS, NOVELTY_AND_CREATION), the patents analysis, and the governance/audit files (AUDIT, CONTRIBUTING, MIGRATION, MIGRATION_1, US7284987B2_ANALYSIS, WEAVERS_SCRIBE).
+The formal theory (`PAPER.md`, `GENESIS.md`, `THE_BOOK.md`, `THE_DAY_BOOK.md`, `THE_MANDATE_BOOK.md`, `THE_LAW_BOOK.md`, `THE_HARVEST_BOOK.md`, plus the paper compilation `docs/papers/corrected_paper.pdf/.tex` and `corrected_paper_detailed`), the invariance proofs in `docs/papers/` (AdC quantization invariance, conformal time/light-cone invariance, critical-points damping, decentralized-protocol proofs, division-by-zero bounce, econometrics invariance, hot-hand fallacy reversal, information-theory compression finance invariance, ML quantization-embedding proofs, physics/applied-math invariance, psychometrics invariance, ReLU analog-digital systems, ReLU dying, scale-free network controversy + correction), the instrument manuals (UNIVERSAL_CALENDAR, AI_PERFORMABLE_PROFESSIONS, HUMAN_TRIAL, LEARNING_CREATIVITY_TEST, LEARNING_CURVE_SCALE), the engineering books (AUTO_PACKAGING_*, DECENTRAL_NET, DECENTRAL_WEB, PHYSICAL_UNIVERSAL_MAP, SPRING_BIBLE, CURE_CONNECTIONS, NOVELTY_AND_CREATION), the patents analysis, and the governance/audit files (AUDIT, CONTRIBUTING, MIGRATION, MIGRATION_1, US7284987B2_ANALYSIS, WEAVERS_SCRIBE).
 
 ### 10. Test suite (`tests/`)
 

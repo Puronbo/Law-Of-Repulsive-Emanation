@@ -1208,3 +1208,73 @@ def test_human_trial_pilot_supported():
         assert p['per_archetype']['perfect']['null']['novel'] >= 0.90
         assert p['per_archetype']['perfect']['null']['creative'] <= 0.05
 
+
+def test_harvest_energy_slingshot_survivability():
+    d = load('harvest_energy_data.json')['slingshot']
+    assert d['verdict'].startswith('ANALYTIC')
+    # gravity assist is inertial: 0 g by definition
+    assert d['G_gravity_assist_g'] == 0.0
+    # a = v^2 / r corners at the stated crew tolerances
+    assert 62.5 <= d['v_ms_at_4g_vs_arm']['v_ms_at_4g_r100m'] <= 62.7
+    assert 1592 <= d['r_km_at_LEO_vs_crew_g']['r_km_at_4g_for_LEO'] <= 1594
+    assert 707 <= d['r_km_at_LEO_vs_crew_g']['r_km_at_9g_for_LEO'] <= 709
+    # payload-only slingshot clears 3 km/s at 10^4 g on a 100 m arm
+    assert d['v_ms_at_1e4g_r100m_payload'] >= 3100
+
+
+def test_harvest_energy_terraform_budget_and_sustain_wall():
+    d = load('harvest_energy_data.json')['terraform']
+    assert d['verdict'].startswith('ANALYTIC')
+    # Q = m c_p dT + M L + rho d A c_s dT
+    assert 2.4e22 <= d['q_total_J'] <= 2.5e22
+    assert 40.5 <= d['earth_annual_equivalents'] <= 41.0
+    # P = sigma (T^4 - T0^4) A: the sustaining wall, not the one-time warm
+    assert 40.4 <= d['p_sustain_PW'] <= 40.6
+    assert 279 <= d['f_req_W_m2'] <= 281
+
+
+def test_harvest_energy_disaster_capture_is_duty_cycle_bound():
+    d = load('harvest_energy_data.json')['disasters']
+    assert d['verdict'].startswith('ANALYTIC')
+    # log10 E = 1.5 M_w + 4.8
+    assert 1.9e18 <= d['quake_E_J_GR']['M9.0'] <= 2.1e18
+    # Betz wind and tsunami closed forms
+    assert 7.9e8 <= d['turbine_W_at_50ms'] <= 8.1e8
+    assert 1.0e15 <= d['tsunami_E_J_H1m'] <= 1.1e15
+    # an M7's 1% capture, once per 50 years: kilowatts, not a grid
+    assert 12000 <= d['m7_capture1pc_annualized_W'] <= 13000
+
+
+def test_harvest_energy_vibration_feeds_sensors_not_grids():
+    d = load('harvest_energy_data.json')['vibration']
+    assert d['verdict'].startswith('ANALYTIC')
+    # P = m w^3 Y^2 / (4 zeta)
+    assert 3.0e-6 <= d['P_ambient_W'] <= 3.2e-6
+    assert 65000 <= d['P_TMD_660t_W'] <= 66000
+    assert 1.8 <= d['E_TMD_per_event_kWh'] <= 1.9
+    assert 0.012 <= d['P_strong_ground_W'] <= 0.013
+
+
+def test_harvest_energy_forest_wall_and_fire_path():
+    d = load('harvest_energy_data.json')['forest']
+    assert d['verdict'].startswith('ANALYTIC')
+    # a hectare at 150 W/m^2 mean: ~1.5 MW in, ~0.6% stored
+    assert d['solar_W_per_ha'] == 1.5e6
+    assert d['NPP_J_per_ha_yr'] == 2.7e11
+    assert 0.005 < d['photosynthesis_efficiency'] < 0.006
+    # 100 km^2 crown fire at 10 kg/m^2 and 18 MJ/kg
+    assert d['fire_J_100km2'] == 1.8e16
+    assert 4.2 <= d['fire_Mt_TNT'] <= 4.4
+
+
+def test_harvest_energy_clouds_are_a_store_not_a_tap():
+    d = load('harvest_energy_data.json')['clouds']
+    assert d['verdict'].startswith('ANALYTIC')
+    # M = LWC V
+    assert d['cloud_tonnes_10km3'] == 10000.0
+    assert d['cloud_tonnes_100km3'] == 100000.0
+    # Q = eta A v LWC at the ground; seeding rearranges, it does not create
+    assert 15.4 <= d['fog_L_per_m2_day'] <= 15.7
+    assert 620 <= d['fog_L_per_day_40m2'] <= 624
+    assert d['seed_rain_m3_per_km2'] == 1.0e3
+
