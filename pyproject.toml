@@ -29,6 +29,7 @@ puno-calculus = "puno_app.calculus_server:main"
 puno-constants = "puno_app.constant_explorer:main"
 puno-plug = "puno_app.plugin_ui:main"
 puno-mandates = "puno_app.mandates_server:main"
+puno-calendar = "calendars.cli:main"
 
 [tool.setuptools]
 py-modules = ["puno_cli"]
@@ -39,6 +40,7 @@ packages = [
     "puno_app",
     "packaging",
     "professions",
+    "calendars",
     "Universals",
     "Universals.manifold",
     "data",
