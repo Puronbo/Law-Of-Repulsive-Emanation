@@ -1285,3 +1285,41 @@ def test_harvest_energy_clouds_are_a_store_not_a_tap():
     assert 620 <= d['fog_L_per_day_40m2'] <= 624
     assert d['seed_rain_m3_per_km2'] == 1.0e3
 
+
+def test_space_spin_reaction_wheel_momentum_exchange():
+    d = load('space_spin_data.json')['momentum_exchange']
+    assert d['verdict'].startswith('ANALYTIC')
+    # H_w = I_w omega_w;  I_s Omega_s = H_w
+    assert d['H_cap_total_Nms'] == 500.0
+    assert 124 <= d['H_per_wheel_Nms'] <= 126
+    assert 125.0 <= d['H_used_published_90deg_Nms'] <= 140.0
+    assert 0.25 <= d['H_used_frac_of_capacity'] <= 0.30
+    # wheel sizing: (1/2) m r^2 disk at ~850 rpm
+    assert 840 <= d['wheel_spin_rpm'] <= 860
+
+
+def test_space_spin_cmg_torque_amplifier_matches_hardware():
+    d = load('space_spin_data.json')['cmg']
+    assert d['verdict'].startswith('ANALYTIC')
+    # tau = h omega_g reproduces the published testbed rating: 768 mNm
+    assert d['cmg_testbed']['match_mNm'] == 768
+    # 4-unit pyramid of testbed modules on a 33.3 kg m^2 small sat
+    p = d['small_sat_pyramid']
+    assert 53.5 <= p['skew_deg'] <= 55.0          # arcsin(sqrt(2/3)) = 54.73
+    assert 11.5 <= p['omega_s_max_deg_s'] <= 12.5
+    # ISS CMG momentum capacity
+    assert d['iss_cmg']['h_each_Nms'] == 4760.0
+
+
+def test_space_spin_tennis_racket_intermediate_axis_flips():
+    d = load('space_spin_data.json')['spin_stability']
+    assert d['verdict'].startswith('ANALYTIC')
+    # (I_k - I_i)(I_k - I_j): positive on minor/major, negative on intermediate
+    st = d['stability']
+    assert st['x(minor)']['stable'] is True
+    assert st['y(major)']['stable'] is True
+    assert st['z(intermediate)']['stable'] is False
+    assert d['example_flip_axis'] == 'z(intermediate)'
+    # order: minor < intermediate < major
+    assert d['ranked_axes'] == ['x(minor)', 'z(intermediate)', 'y(major)']
+
