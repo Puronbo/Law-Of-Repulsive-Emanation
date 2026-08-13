@@ -224,26 +224,69 @@ def spin_stability():
 
 
 # ---------------------------------------------------------------------- #
-# 4. three-axis coverage - why 3, why 4, why no propellant                 #
+# 4. three-axis coverage - the momentum envelope, derived                  #
 # ---------------------------------------------------------------------- #
 def three_axis():
+    # Reaction-wheel momentum envelope, closed form. Wheel axes a_i (unit),
+    # per-wheel momentum p_i in [-h, h]:  net H = sum p_i a_i. The maximum
+    # projection of H on any unit direction u is achieved with every wheel
+    # saturated, p_i = h sign(u.a_i):
+    #       max_u |H| = h * sum_i |u . a_i|
+    # The worst direction for a configuration is the u minimizing that sum.
+    #
+    # 3 orthogonal wheels (axes x, y, z): worst direction is the body
+    # diagonal u = (1,1,1)/sqrt(3):
+    #       min |H| = h * (1+1+1)/sqrt(3) = sqrt(3) h
+    #
+    # 4-wheel pyramid (azimuths 0/90/180/270, elevation eta from the
+    # equatorial plane): vertical worst = 4 h sin(eta); in-plane worst
+    # (u aligned with a wheel axis) = 2 h cos(eta). The envelope's minimum
+    # radius is the min of those two, maximized at
+    #       4 sin(eta) = 2 cos(eta)  =>  eta = atan(1/2) = 26.565 deg
+    #       min |H| = 4 h / sqrt(5) = 1.789 h
+    # a +3.3% gain over the 3-orthogonal sqrt(3) h = 1.732 h - the 4th
+    # wheel's real function is failure tolerance, not envelope growth.
+    h_unit = 1.0
+    three_worst = math.sqrt(3.0) * h_unit
+    eta_opt = math.atan(0.5)
+    four_worst = 4.0 / math.sqrt(5.0) * h_unit
     out = {
-        "note": "3 non-coplanar wheel/CMG axes span torque space; the 4th "
-                "buys failure tolerance and singularity escape; momentum "
-                "conservation makes reorientation propellant-free",
+        "note": "max|H| in direction u = h * sum|u.a_i| (wheels saturated); "
+                "the worst direction minimizes the sum",
+        "three_orthogonal": {
+            "axes": "x, y, z",
+            "worst_direction": "body diagonal (1,1,1)/sqrt(3)",
+            "worst_momentum_x_h": round(three_worst, 4),
+        },
+        "four_wheel_pyramid": {
+            "azimuths_deg": [0, 90, 180, 270],
+            "optimum_elevation_deg": round(math.degrees(eta_opt), 3),
+            "optimum_condition": "4 sin(eta) = 2 cos(eta)  =>  tan(eta) = 1/2",
+            "worst_momentum_x_h": round(four_worst, 4),
+        },
+        "gain_vs_three": round(four_worst / three_worst, 4),
         "span_condition": "no three spin axes coplanar (non-defective "
                           "configuration)",
-        "reaction_wheels": "4 wheels, pyramid or orthogonal + 1 spare, "
-                           "provide 3-axis control after any single failure",
-        "cmg_cluster": ">= 3 single-gimbal units for 3-axis control; the "
-                       "standard pyramid of 4 at 54.73 deg for redundancy "
-                       "and singularity escape",
-        "zero_propellant": "total angular momentum conserved: I_s Omega_s + "
-                           "H_wheels = const, so internal wheels reorient "
-                           "the spacecraft to any attitude without fuel; "
-                           "only desaturation consumes external torque",
+        "redundancy": "any 3 of the 4 non-coplanar axes still span R^3, so "
+                      "a single wheel failure keeps 3-axis control",
+        "zero_propellant": "total angular momentum conserved: "
+                           "I_s Omega_s + H_wheels = const, so internal "
+                           "wheels reorient the spacecraft to any attitude "
+                           "without fuel; only desaturation consumes "
+                           "external torque",
     }
-    out["verdict"] = "ANALYTIC: 3 axes span R^3, the 4th covers failure."
+    out["verdict"] = ("ANALYTIC: max|H| = h*sum|u.a_i| gives the worst-"
+                      "direction momentum in closed form - sqrt(3) h for 3 "
+                      "orthogonal wheels (body diagonal), and for the "
+                      "4-wheel pyramid the minimum radius is maximized at "
+                      "elevation atan(1/2) = 26.565 deg where "
+                      "4 sin(eta) = 2 cos(eta), giving 4/sqrt(5) h = 1.789 h "
+                      "(+3.3%). The 4th wheel's function is failure "
+                      "tolerance: any 3 of its 4 non-coplanar axes still "
+                      "span R^3, so 3-axis control survives a single "
+                      "failure, and the conserved momentum "
+                      "I_s Omega_s + H_wheels = const reorients to any "
+                      "attitude without propellant.")
     return out
 
 

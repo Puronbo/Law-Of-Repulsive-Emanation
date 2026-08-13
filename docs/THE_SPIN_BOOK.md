@@ -171,12 +171,53 @@ angular momentum is conserved,
     I_s * Omega_s + H_wheels = constant
 
 a wheel or CMG set reorients the spacecraft to **any attitude without
-expending propellant**; only desaturation consumes external torque. That
-is the three-dimensional movement this Book is about: a spinning
-mechanism — wheels, gimbals, or the vehicle itself — that moves the
-spacecraft in all three axes for free, with the reaction wheel as the
-precise-but-slow actuator, the CMG as the agile torque amplifier, and spin
-stability as the free-rider rule for what the vehicle can be spun about.
+expending propellant**; only desaturation consumes external torque.
+
+### The momentum envelope, closed
+
+With identical wheels of per-wheel momentum `h`, the maximum momentum the
+cluster can hold in any unit direction `u` is the saturated sum
+
+    max |H| = h * (|u.a_1| + |u.a_2| + ... + |u.a_n|)
+
+and the *worst* direction is the `u` minimizing that sum. The two
+closed-form cases:
+
+- **3 orthogonal wheels** (axes x, y, z): the worst direction is the body
+  diagonal `(1,1,1)/sqrt(3)`, giving
+
+        min |H| = h * 3 / sqrt(3) = sqrt(3) h = 1.732 h
+
+- **4-wheel pyramid** (azimuths 0/90/180/270 at elevation `eta` from the
+  equatorial plane): the worst direction is vertical (every axis
+  contributes `sin(eta)`) or in-plane along a wheel axis (two axes
+  contribute `cos(eta)`), so the envelope's minimum radius is
+  `min(4 h sin(eta), 2 h cos(eta))`, maximized when the two are equal:
+
+        4 sin(eta) = 2 cos(eta)  =>  eta = atan(1/2) = 26.565 deg
+        min |H| = 4 h / sqrt(5) = 1.789 h
+
+That is a `+3.3%` gain over the 3-orthogonal `sqrt(3) h` — the 4th wheel's
+real function is **failure tolerance**, not envelope growth: any 3 of its
+4 non-coplanar axes still span R³, so 3-axis control survives a single
+wheel failure (this is the known reconfigurability of a rank-3 sub-
+cluster, `A A^T` nonsingular after dropping any one unit).
+
+### The synthesis: spin for rotation, spin for translation
+
+The spinning mechanism answers **3D movement twice**. In this Book the
+wheels and CMGs produce three-dimensional *attitude*: `I_s Omega_s =
+H_wheels` rotates the vehicle about any axis, `|tau| = h omega_g` does it
+agilely, and the momentum-envelope rule sizes the cluster so no demanded
+direction runs out of momentum. In THE_HARVEST_BOOK the same physics
+produces three-dimensional *position*: the centrifuge launcher spins a
+passenger to `v = sqrt(G g r)` and releases it at a chosen point of the
+circle, so the release velocity can point **anywhere within the spin
+plane**; orienting the spin plane in 3D (the launcher gimbal is itself a
+spinning mechanism) plus choosing the release phase covers every launch
+direction. Rotation by reaction wheels, translation by release timing:
+one conservation law, two degrees of movement, zero propellant for the
+free parts of either.
 
 ---
 
@@ -225,7 +266,10 @@ axis, and the stored momentum is eventually dumped.*
 | spin stability | (I_k − I_i)(I_k − I_j) | + on minor/major, − on intermediate | `data/space_spin_data.json` |
 | cuboid flip | Euler equations | z (intermediate) flips | `data/space_spin_data.json` |
 | dissipation | energy relaxation | Explorer 1, SOHO tumble to major axis | `data/space_spin_data.json` |
+| envelope, 3 wheels | max\|H\| = h Σ\|u·a_i\| | √3 h = 1.732 h (body diagonal) | `data/space_spin_data.json` |
+| envelope, 4 wheels | min(4h sin η, 2h cos η) | η = atan(1/2) = 26.565°, 4/√5 h = 1.789 h, +3.3% | `data/space_spin_data.json` |
 | 3D coverage | rank-3 span, 4th redundant | any attitude, no propellant | `data/space_spin_data.json` |
+| 3D synthesis | v = √(G g r) release + wheel slew | slingshot = translation, wheels = rotation | `data/space_spin_data.json`, `data/harvest_energy_data.json` |
 
 **Existing research this Book stands on** (all retrieved live, August
 2026):

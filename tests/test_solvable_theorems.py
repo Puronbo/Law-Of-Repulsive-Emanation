@@ -1323,3 +1323,17 @@ def test_space_spin_tennis_racket_intermediate_axis_flips():
     # order: minor < intermediate < major
     assert d['ranked_axes'] == ['x(minor)', 'z(intermediate)', 'y(major)']
 
+
+def test_space_spin_momentum_envelope_worst_direction():
+    d = load('space_spin_data.json')['three_axis']
+    assert d['verdict'].startswith('ANALYTIC')
+    # max|H| = h * sum|u.a_i|: worst direction for 3 orthogonal is the body
+    # diagonal sqrt(3) h; 4-wheel pyramid min radius maximized at
+    # 4 sin(eta) = 2 cos(eta), eta = atan(1/2) = 26.565 deg, giving 4/sqrt(5) h.
+    assert 1.72 <= d['three_orthogonal']['worst_momentum_x_h'] <= 1.74
+    assert 26.0 <= d['four_wheel_pyramid']['optimum_elevation_deg'] <= 27.0
+    assert 1.78 <= d['four_wheel_pyramid']['worst_momentum_x_h'] <= 1.80
+    # 4th wheel's function is redundancy: +3.3% envelope, rank-3 survival
+    assert 1.02 <= d['gain_vs_three'] <= 1.04
+    assert 'failure' in d['redundancy'].lower()
+
