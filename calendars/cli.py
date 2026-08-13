@@ -32,6 +32,10 @@ def _date_to_day(text):
 
 
 def main(argv=None):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except (AttributeError, ValueError):
+        pass
     p = argparse.ArgumentParser(prog="puno-calendar",
                                 description="the universal calendar")
     sub = p.add_subparsers(dest="command")

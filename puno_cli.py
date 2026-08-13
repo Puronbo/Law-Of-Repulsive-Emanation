@@ -1,15 +1,19 @@
 """
 Puno Calculus CLI: dispatch any experiment in experiments/ by name, list
-the catalog, or run the regression suite.
+the catalog, run the regression suite, print the text-mandate report, or
+forward to the universal calendar (which also has its own `puno-calendar`
+console script).
 
 Run directly:
     python puno_cli.py list
     python puno_cli.py run spring_fold
     python puno_cli.py test
+    python puno_cli.py mandates
+    python puno_cli.py calendar today
 
 Or install once and use the console script:
     pip install -e .
-    puno list | puno run <name> | puno test
+    puno list | puno run <name> | puno test | puno mandates | puno calendar today
 """
 
 import os, sys, argparse, subprocess
@@ -40,13 +44,16 @@ def _need_checkout():
 def main(argv=None):
     p = argparse.ArgumentParser(
         prog='puno',
-        description='Puno Calculus experiment runner')
-    sub = p.add_subparsers(dest='cmd', metavar='{list,run,test,mandates}')
+        description='Puno Calculus: experiment runner + text-mandate report + calendar')
+    sub = p.add_subparsers(dest='cmd', metavar='{list,run,test,mandates,calendar}')
     sub.add_parser('list', help='list available experiments')
     run = sub.add_parser('run', help='run an experiment by name')
     run.add_argument('name', help='experiment module name (see: puno list)')
     sub.add_parser('test', help='run the regression suite (pytest)')
     sub.add_parser('mandates', help='report which professions are text-mandatable')
+    cal = sub.add_parser('calendar', help='the universal calendar (forwards to puno-calendar)')
+    cal.add_argument('rest', nargs=argparse.REMAINDER,
+                     help='today | date "YYYY-MM-DD HH:MM:SS" | deep | layers')
     args = p.parse_args(argv)
 
     if args.cmd == 'list':
@@ -77,6 +84,9 @@ def main(argv=None):
             return 2
         return subprocess.call(
             [sys.executable, os.path.join(EXPERIMENTS, args.name + '.py')])
+    if args.cmd == 'calendar':
+        from calendars.cli import main as calendar_main
+        return calendar_main(args.rest)
     p.print_help()
     return 0
 

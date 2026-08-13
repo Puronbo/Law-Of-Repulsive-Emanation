@@ -2,7 +2,7 @@
 
 The Law of Repulsive Emanation (L.O.R.E.): *C0 is measured, not chosen.*
 
-A hyperbolic novelty engine: Hamiltonian flow on the Poincare disk, a formal proof hierarchy (27 items: axioms → lemmas → theorems → corollaries → extended), a derived fold theorem, a decentralized consensus flow that has been run on the whole 1.9M-site internet, and a from-scratch prime count verified exact.
+A measured-physics laboratory and instrument suite: Hamiltonian flow on the Poincaré disk under the Law of Repulsive Emanation (*C0 is measured, not chosen*), a formal proof hierarchy (27 items: axioms → lemmas → theorems → corollaries → extended), a derived fold theorem, a decentralized consensus flow that has been run on the whole 1.9M-site internet, and a from-scratch prime count verified exact. Built from that corpus: the **universal calendar** (every civilization's calendar on one exact, untruncated day axis), the **AI-performable-professions & text-mandate instrument**, **packaging-line systems**, and a browser lab. The repo ships the exact numpy-only balance-flow SDK (`puno_flow`), a verdict experiment catalog, and the full proof/theory books.
 
 ## Verified Findings (2026-08-04)
 
@@ -41,6 +41,148 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Kawasaki-as-CTC (PUM §10.5.3) | the Novikov antecedent is false: angle-sum criterion satisfied by 9.5% of vertices ≈ 8% uniform null, so (0.095)^V collapses as fast as the null — constrains no causal loop (`data/kawasaki_ctc_data.json`) |
 
 **Honest walls (recorded, not hidden):** Bekenstein shift **withdrawn** (its own persisted data shows the null: p=0.789/0.938); Selberg unification and partition-function match are **tautologies** by the code's own construction; T65 four-pack scored **0.5/4** (P2, P4 refuted); PUM cosmological mapping is not citable as verified physics (`docs/AUDIT.md` §3–§4).
+
+## Repository Map — what the categories are, in order
+
+The repository top to bottom: the **measured physics** (foundation) → the **exact engine** (SDK) → the **verdict experiments** (every claim verified and persisted) → the **instruments built from the corpus** (calendar, professions, packaging) → the **browser lab & web surfaces** → the **proofs/theory books** → the **test suite** → the **operational scaffolding**. Each category below states exactly what it is and lists every file in it.
+
+### 1. Foundation — the L.O.R.E. core (`Universals/`)
+
+The measured physics: `C0 = V(q0) = H(q0, 0)`, the 27-item proof hierarchy (axioms → lemmas → theorems → corollaries → extended), the 192-check math-validation suite, the Hamiltonian/geodesic machinery, spectral and prime-number analysis, and the crease/fold theory. `engine.py` is the reference flow; `manifold/` holds the C0 flow, DecentralNet, Poincaré ball, and Polysphere.
+
+```
+Universals/engine.py  proofs.py  math_validation.py  puno_utils.py  inverse_solver.py
+          hamiltonian_flow.py  flow_chaos.py  noether_analysis.py  duality.py
+          effective_t_mapping.py  energy_landscape.py  composite_analyzer.py
+          thermodynamics.py  prime_analysis.py  mersenne_congruence.py  mersenne_gaps.py
+          mersenne_taxonomy.py  modular_forms.py  selberg_unification.py  divisor_chaos.py
+          divisor_deep.py  continuous_spectrum.py  spectral_analysis.py  spectrum_analysis.py
+          spectrum_extended.py  chaos_order_benchmark.py  segmented_sieve_benchmark.py
+          crease_metrics.py  fold_visual.py  demo_ood.py  serve_dashboard.py
+          exp1_crease_subgradient.py  exp1b_crease_subgradient.py  exp2_crease_density.py
+          exp3_early_stop.py  exp_pruning.py
+          manifold/c0_flow.py  manifold/decentral_net.py  manifold/poincare.py  manifold/polysphere.py
+```
+
+### 2. Exact balance-flow SDK (`puno_flow/`)
+
+The exact, numpy-only library that makes every flow claim reproducible to the last bit: each agent holds one integer in `[0, B)`; balance moves are exact modular-add arithmetic (`balance`); flux is a directed edge buffer drained exactly (`ledger`); consensus never splits flow (`index`); plugins are decorated and auto-discovered (`plugin`). Ships its own verified `README.md` and the toy-network/scale-free examples.
+
+```
+puno_flow/engine.py  index.py  ledger.py  plugin.py  topology.py  verify.py  __init__.py  README.md
+          apps/guard_mesh.py  apps/router.py  apps/search_service.py
+          examples/benchmark_card.py  examples/scale_free.py  examples/toy_network.py
+```
+
+### 3. Verdict experiments (`experiments/`)
+
+Every experiment is a runner that writes a verdict JSON to `data/` (gitignored) and is reproduced from the tests; the Experiments table below maps each verdict (T-number) to its file. Grouped by what they verify:
+
+```
+fold / crease physics   spring_fold.py  eikonal_fold.py  retrace_boundary.py  fold_optimizer.py
+                        fold_unitary.py  fold_golden_closure.py  golden_closure_constant.py
+                        fold_ladder_phi.py  t65_fourpack.py  kawasaki_null.py  kawasaki_ctc.py
+                        rotation_test.py  clock_test.py  fibonacci_spiral.py  fibonacci_squares.py
+                        van_iterson.py  reverse_pair_gaps.py  golden_survey.py  photon_rubber_ball.py
+prime theory            prime_count_from_scratch.py  prime_gap_bridge.py  prime_time.py
+                        pgt_finite_l.py  bridge_extension.py  selberg_paradigm.py  spectral_extended.py
+                        bekenstein_rerun.py  wheeler_dewitt_selection.py  complex_constant_test.py
+                        euler_number_test.py  time_reversal_convergence.py
+C0 / geodesics           metric_comparison.py  c0_crossing_tsym.py  c0_cusp_flow.py  t39_cusp_flow.py
+                        continuum_limit.py  hamiltonian_routing.py
+balance / continual     balance_survey.py  balance_scale.py  balance_continual.py  balance_auto.py
+routing flow            self_balancing.py  phi_scheduler.py  fib_stream.py  flow_hierarchical.py
+                        flow_active_learning.py  flow_incremental.py  flow_hier_incremental.py
+                        flow_regularized.py  flow_hier_reg.py  flow_hier_reg_scaled.py
+polysphere              polysphere_extensions.py  polysphere_routing.py  polysphere_use_cases.py
+                        polysphere_mnist.py  polysphere_nnflow_viz.py
+decentralnet /          decentral_net.py  decentral_net_mnist.py  decentral_net_continual.py
+internet-scale          decentral_net_ceiling.py  decentral_net_t67.py  decentral_net_t72.py
+                        decentral_net_live.py  decentral_net_internet.py  decentral_net_union.py
+                        decentral_net_anomaly.py
+bank / web / bazaar     decentral_bank.py  decentral_bank_bridge.py  decentral_bank_net.py
+                        decentral_web.py  bazaar_hybrid.py  bazaar_net.py
+learning / human        learn_creativity_test.py  learn_curve_scale.py  human_trial_pilot.py
+facility / packaging    air_sizing.py  rainwater_sizing.py  servo_regen.py  standby_efficiency.py
+instruments             ai_performable_professions.py  mandate_report.py  calendar_universal.py
+```
+
+### 4. The universal calendar (`calendars/`)
+
+Every known calendar from the other civilizations on one exact, continuous, untruncated day axis anchored at the corpus datum epoch_0d (2000-10-26 10:26:20.00), extended proleptically to the prime giant 943,901,200,001 (≈ 2.585×10⁹ years before the epoch, rendered Gregorian −2584311709-06-08). Exact rational arithmetic; 14 layers (Gregorian, Julian, tropical, Egyptian, Babylonian, Maya Long Count, Tzolkin, Haab, Chinese sexagenary, Hebrew Metonic, Hijri tabular, Persian, Vedic-Jovian, Puno tick); C0 = 24.434792 (`data/c0_law_data.json`) is the calendar's own unit so C_current = D/C0 is the exact emanation reading.
+
+```
+calendars/axis.py  layers.py  c0.py  deeptime.py  report.py  cli.py  __init__.py
+```
+
+CLI `puno-calendar today|date|deep|layers`; experiment `experiments/calendar_universal.py`; 27 tests; see `docs/UNIVERSAL_CALENDAR.md`.
+
+### 5. AI-performable professions & text-mandates (`professions/`)
+
+An auditable test instrument answering which professions need zero skill-based knowledge (k+s≤1 per task, classes A/B/C/D) and which are fully text-mandatable (mandate fraction = 1 − S). The 14-profession verdict: 5 Class A with zero skill-based knowledge, 2 fully-gated, 5 partial, 2 not.
+
+```
+professions/rubric.py  professions_data.py  mandate.py  report.py  __init__.py
+```
+
+CLI `puno mandates` / `puno-mandates`; web dashboard `puno_app/mandates_server.py` + `mandates.html`; experiments `ai_performable_professions.py` + `mandate_report.py`; 21 tests; see `docs/AI_PERFORMABLE_PROFESSIONS.md`.
+
+### 6. Packaging-line systems (`packaging/`)
+
+Complete, quantified machine specifications and physics for the packaging line: PLC IEC 61131-3 utilities, servo control, facility air sizing, rainwater collection & use, standby efficiency, and servo regenerative energy. Consolidated in `docs/AUTO_PACKAGING_SYSTEM.md` (+ energy feasibility, recommendations, and patent analyses).
+
+```
+packaging/plc_61131_3.py  servo.py  utilities.py  __init__.py
+experiments/air_sizing.py  rainwater_sizing.py  servo_regen.py  standby_efficiency.py
+```
+
+### 7. Browser lab & web surfaces (`puno_app/`)
+
+Self-contained servers and pages: the Poincaré-disk calculus, the C0 constant explorer, the internet-scale decentralized net, the bank, the learning-creativity test, the human-trial instrument, the plugin UI, the classify sandbox, and the mandates dashboard.
+
+```
+puno_app/calculus.py  calculus_server.py  calculus.html  bank_service.py  bank_server.py
+         bank.html  constant_explorer.py  classify.py  classify.html  live_net.py  live_net.html
+         human_trial.py  human_trial_ui.py  human_trial.html  mandates_server.py  mandates.html
+         plugin_ui.py  plugin_ui.html  canned_ui.py  ui.html  app_state.py  simple_server.py
+```
+
+### 8. Patents (`patents/`)
+
+Provisional/analysis drafts (not filed advice): the spatial-indexed-flow PPA, the crease-diagnostics PPA, the fragment-bank PPA, and the expired-patent survey.
+
+```
+patents/PUNO-PPA-001_spatial_indexed_flow.md  PUNO-PPA-002_crease_diagnostics.md
+        PUNO-PPA-003_fragment_bank.md  EXPIRED_PATENTS.md
+```
+
+### 9. Proofs, theory & instrument books (`docs/`)
+
+The formal theory (`PAPER.md`, `GENESIS.md`, `THE_BOOK.md`, `THE_DAY_BOOK.md`, `THE_MANDATE_BOOK.md`, plus the paper compilation `docs/papers/corrected_paper.pdf/.tex` and `corrected_paper_detailed`), the invariance proofs in `docs/papers/` (AdC quantization invariance, conformal time/light-cone invariance, critical-points damping, decentralized-protocol proofs, division-by-zero bounce, econometrics invariance, hot-hand fallacy reversal, information-theory compression finance invariance, ML quantization-embedding proofs, physics/applied-math invariance, psychometrics invariance, ReLU analog-digital systems, ReLU dying, scale-free network controversy + correction), the instrument manuals (UNIVERSAL_CALENDAR, AI_PERFORMABLE_PROFESSIONS, HUMAN_TRIAL, LEARNING_CREATIVITY_TEST, LEARNING_CURVE_SCALE), the engineering books (AUTO_PACKAGING_*, DECENTRAL_NET, DECENTRAL_WEB, PHYSICAL_UNIVERSAL_MAP, SPRING_BIBLE, CURE_CONNECTIONS, NOVELTY_AND_CREATION), the patents analysis, and the governance/audit files (AUDIT, CONTRIBUTING, MIGRATION, MIGRATION_1, US7284987B2_ANALYSIS, WEAVERS_SCRIBE).
+
+### 10. Test suite (`tests/`)
+
+The regression suite that reproduces every verdict from persisted data — 372 passing tests across the SDK, theory, topology, bank, web, classify, plugin UI, live net, calendar (27), professions rubric + mandate (21), packaging servo + utilities, human trial, spring series, solvable theorems, and app servers.
+
+### 11. Scripts, tools & deployment (`scripts/`, `tools/`)
+
+Operational scaffolding: net nodes (`canary.py`, `controller.py`, `node.py`, `gossip.py` + `config.json`/`config.yaml`), the googol census and genesis/sieve tools (`googol_census.py`, `genesis_prime.py`, `deep_sieve.py`, `next_k3_sieve.py`, `Cost weighted crease.py`), `epoch.py` (the datum generator), the pipeline (manifest/telemetry/test_runner/verify_deployment/version), `start.ps1`, and the net service installers in `tools/`.
+
+### 12. Plugin registry (`plugins/`)
+
+`example_functions.py` — the decorated functions auto-discovered by `puno-plug` and the plugin UI.
+
+### 13. Data artifacts (`data/`)
+
+Regenerable verdict JSONs (gitignored) — one per experiment, persisted so tests can reproduce every number in the tables below — plus the measured anchors that are *inputs*: `epoch_0d.json` (the datum, its clock frame is UTC+8 = 28800 s), `c0_law_data.json` (C0 = 24.434792), `googol_census_*.json`, `human_trial_package.json`, and the archived real human run in `data/human_trial_runs/`. Never commit regenerated verdicts; only measured anchors.
+
+### 14. CLI & console scripts (`puno_cli.py`, `pyproject.toml`)
+
+`puno_cli.py` dispatches any experiment in `experiments/` by name, lists the catalog, runs the regression suite, prints the text-mandate report, and forwards to the calendar. Console scripts: `puno`, `puno-lab`, `puno-net`, `puno-classify`, `puno-bank`, `puno-calculus`, `puno-constants`, `puno-plug`, `puno-mandates`, `puno-calendar`.
+
+### 15. Legacy / archived (`archive/`, `build/`, `dist/`, `bobo_chain/`)
+
+Superseded or inert — `archive/` holds old venvs and scratch; not part of the categories above.
 
 ## Core Idea
 
@@ -279,6 +421,44 @@ The first real human run (HT-RUN-001, 2026-08-12, developer) is archived in
 placed inside the taught core (valid 100% but novel 0%) — the mid effort level
 must land beyond ~1 spacing-σ of the exemplars to be novel *and* valid.
 
+## The Universal Calendar
+
+All known calendars laid over one exact, continuous, untruncated day axis
+anchored at the corpus datum epoch_0d (2000-10-26 10:26:20.00, unix
+972527180), extended proleptically before human civilization to the prime
+giant 943,901,200,001 (≈ 2.585×10⁹ years — before the stars). Nothing is
+truncated: the axis is exact rational arithmetic and every layer renders at
+any magnitude (the giant era reads as Gregorian −2584311709-06-08). C0 stays
+the measured 24.434792 (`data/c0_law_data.json`) and is the calendar's own
+unit, so C_current = D/C0 is the exact emanation reading. Package `calendars/`
+(axis, layers, c0, deeptime, report, cli); CLI `puno-calendar`; experiment
+`experiments/calendar_universal.py`; 27 tests; see
+`docs/UNIVERSAL_CALENDAR.md`.
+
+## AI-Performable Professions & Text-Mandates
+
+An auditable test instrument answering which professions can be done without
+any skill-based knowledge (the rubric splits each task into articulated
+knowledge K and tacit skill S, k+s≤1, and classes professions A/B/C/D), and
+which can be fully mandated through text (mandate fraction = 1 − S). The
+14-profession verdict: 5 Class A with zero skill-based knowledge (copyeditor,
+non-certified translator, technical writer, reporting analyst, async tier-1
+text support), 2 fully-gated, 5 partial, 2 not. Package `professions/`
+(rubric, professions_data, mandate, report); CLI `puno mandates`; web
+dashboard `puno_app/mandates_server.py` + `mandates.html`; experiments
+`ai_performable_professions.py` + `mandate_report.py`; 21 tests; see
+`docs/AI_PERFORMABLE_PROFESSIONS.md`.
+
+## Packaging-Line Systems
+
+Complete, quantified machine specifications and physics for the packaging
+line: PLC IEC 61131-3 utilities, servo control, facility air sizing,
+rainwater collection & use, standby efficiency, and servo regenerative energy
+(package `packaging/`; experiments `air_sizing.py`, `rainwater_sizing.py`,
+`servo_regen.py`, `standby_efficiency.py`), consolidated in
+`docs/AUTO_PACKAGING_SYSTEM.md` (+ energy feasibility, recommendations, and
+patent analyses).
+
 Everything is also browsable through the plug-and-play UI: `puno-plug` opens a
 single page that auto-discovers every decorated plugin in `plugins/` and every
 experiment in `experiments/`, generates a form from each function's declared
@@ -307,6 +487,21 @@ puno-lab [--host 127.0.0.1] [--port 8765]      # or: python -m puno_app.canned_u
 
 # the T74 human trial: open the printed URL and run the protocol in a browser
 python -m puno_app.human_trial_ui [--host 127.0.0.1] [--port 8790]
+
+# the universal calendar: every civilization's calendar on one exact axis
+puno-calendar today                          # this instant, all 14 layers + C0/C_current
+puno-calendar date 2000-10-26 10:26:20       # the datum -> day 0 exactly, clock 10:26:20
+puno-calendar deep                           # the giant eon, 2.585e9 years before the epoch
+python experiments/calendar_universal.py     # exact p/q anchors -> data/calendar_universal_data.json
+
+# professions: which work needs zero skill-based knowledge, which is text-mandatable
+puno mandates                                # text-mandate report (14 professions)
+python -m puno_app.mandates_server serve     # web dashboard (port 8899)
+python experiments/ai_performable_professions.py  # A/B/C/D verdict
+
+# packaging-line physics
+python experiments/air_sizing.py             # facility air sizing
+pytest tests/test_packaging_servo.py tests/test_packaging_utilities.py
 
 # classic quick start from a checkout
 cd Universals

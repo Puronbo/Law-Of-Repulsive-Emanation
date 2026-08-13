@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "puno-calculus"
 version = "1.0.0"
-description = "The Puno Calculus: folding, unfolding, creases, the Universal Map, and the epoch_0d datum (2000-10-26: 80-divisor pair, prime-pairing rule, 1,914,467 chain fold, gcd triangle 2000/31/1); ships puno_flow, the exact, numpy-only toy network"
+description = "The Puno Calculus: the Law of Repulsive Emanation (C0 measured, not chosen) — Hamiltonian flow on the Poincare disk, the 27-item proof hierarchy, the derived fold theorem, the exact numpy-only balance-flow SDK (puno_flow), a from-scratch verified prime count, the universal calendar (every civilization's calendar on one exact untruncated day axis, epoch_0d datum 2000-10-26 10:26:20), the AI-performable-professions & text-mandate instrument, and packaging-line systems"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
