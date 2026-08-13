@@ -96,3 +96,21 @@ def tank_size_for_zero_deficit(inflows_m3, demands_m3,
 def water_cost_per_yr(demand_m3, price_per_m3):
     """Municipal water cost for the non-potable demand being offset."""
     return demand_m3 * price_per_m3
+
+
+def standby_savings_kwh_yr(idle_h_per_day, power_run_kw, power_idle_kw,
+                           days_per_yr=260.0):
+    """Energy saved per year by dropping the line to a low-power idle state
+    during non-production hours, relative to leaving it near-running load."""
+    return (power_run_kw - power_idle_kw) * idle_h_per_day * days_per_yr
+
+
+def scfm_saved_power_kw(scfm_saved, specific_power=0.22):
+    """Compressor power avoided when a permanent air-flow reduction of
+    `scfm_saved` is achieved (leak repairs, amplifier nozzles, etc.)."""
+    return scfm_saved * specific_power
+
+
+def annual_cost_usd(kwh_per_yr, price_per_kwh):
+    """Cost of an annual energy quantity at a given blended rate."""
+    return kwh_per_yr * price_per_kwh

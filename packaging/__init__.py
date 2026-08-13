@@ -8,6 +8,7 @@ majority-honesty quorum, and the ERECT step machine from
 
 from packaging.servo import ErectorFlow, FoldAxis, PidController, QuorumVote
 from packaging.utilities import (
+    annual_cost_usd,
     annual_energy_kwh,
     avg_power_kw,
     avg_real_scfm,
@@ -15,6 +16,8 @@ from packaging.utilities import (
     rainwater_balance_series,
     receiver_volume_gal,
     runoff_m3,
+    scfm_saved_power_kw,
+    standby_savings_kwh_yr,
     tank_size_for_zero_deficit,
     vacuum_venturi_demand,
     water_cost_per_yr,
@@ -25,6 +28,7 @@ __all__ = [
     "FoldAxis",
     "PidController",
     "QuorumVote",
+    "annual_cost_usd",
     "annual_energy_kwh",
     "avg_power_kw",
     "avg_real_scfm",
@@ -32,6 +36,8 @@ __all__ = [
     "rainwater_balance_series",
     "receiver_volume_gal",
     "runoff_m3",
+    "scfm_saved_power_kw",
+    "standby_savings_kwh_yr",
     "tank_size_for_zero_deficit",
     "vacuum_venturi_demand",
     "water_cost_per_yr",

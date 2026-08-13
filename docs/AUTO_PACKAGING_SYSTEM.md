@@ -18,7 +18,11 @@
 > (§6.3), calibration tooling (§9.2), maintenance schedule + spares (§9.3),
 > commissioning/acceptance protocol (§9.5), environmental envelope (§1.4),
 > rainwater collection & use (§6.4, quantified by
-> `experiments/rainwater_sizing.py`),
+> `experiments/rainwater_sizing.py`), efficiency systems — standby/sleep,
+> air-leak monitoring, amplifier nozzles, dust extraction, scrap handling,
+> hot-water buffer (§6.5, quantified by `experiments/standby_efficiency.py`),
+> accessibility systems — OEE dashboard, human-factors accessibility, remote
+> service access, QR asset documentation (§6.6),
 > and a master equipment list with specific better-equipment choices (§11).
 >
 > Claim tags: `[measured]` = repo-verified or physical law · `[hypothesis]` =
@@ -418,6 +422,132 @@ filtration + UV ($1.5k) · install, plumbing, backflow prevention ($5k).
 ONLY: backflow prevention, cross-connection control, labeled piping, and
 local rainwater-harvesting rules apply.
 
+### 6.5 Efficiency systems **[ADDED]**
+
+`[measured]` figures from `experiments/standby_efficiency.py` (assumptions in
+its header; verdict `data/standby_efficiency_data.json`). These are the
+demand-side systems missing from the §7.1 budget: the ~5 kW / ~120 kWh/day
+figure assumes flat 24/7 running, but realistic duty (16 h production + 8 h
+idle) keeps fixed loads drawing unless they are deliberately dropped.
+
+**1. Standby / idle management (AUTO → IDLE → SLEEP)** — the cheapest
+kWh-per-dollar on the line, mostly software:
+- **AUTO** (running): full ~5 kW.
+- **IDLE** (no blank fed for 2 min): conveyor off, fold drives to **STO
+  standby** (SIL2, §4), vacuum blower to idle, compressor VFD trims to
+  leakage-only.
+- **SLEEP** (no blank for 30 min): IDLE + cabinet lights off, HMI dimmed.
+- Effect: idle drops from ~2.3 kW (near-running, no sleep) to **~0.9 kW** —
+  an **11.2 kWh/day** cut on a 16+8 day (**~120 → ~87 kWh/day**), ~6,440
+  kWh/yr (~$773/yr at $0.12). Capex ~$3k (PLC state logic + drive standby
+  enable) → **~4 yr payback**, ~2–3 yr if the line idles more.
+- Honest wall: on a *true* 24/7-continuous line the standby savings vanish;
+  build the states anyway — they only earn where production actually stops.
+
+**2. Air-flow monitoring & leak detection** — a flow meter per air branch on
+the IIoT gateway with a baseline trend; leaks grow quietly toward the 20–30%
+allowance, and a ~1 scfm leak is invisible to a quarterly audit. Catching and
+repairing ~1 scfm saves ~0.22 kW → ~915 kWh/yr (~$110/yr); the meter pays for
+itself by catching one leak.
+
+**3. Amplifier blow-off nozzles** — engineered nozzles (air-amplifier /
+coanda) deliver the same 30 psi force at ~30–50% of an open pipe's flow.
+Conservative ~1 scfm of the ~3.6 scfm blow-off average saved → another ~915
+kWh/yr (~$110/yr).
+
+> Air systems 2+3 combined: ~1,830 kWh/yr (~$220/yr), capex ~$2k (meter +
+> nozzle kit) → ~9 yr payback on kWh alone; the real return is that leaks
+> also cause pressure loss → higher FAD sizing and nozzle wear.
+
+**4. Dust collection & extraction** — a small cartridge dust collector
+(~$5k) at the erector scoring + tape-knife zones. Corrugated fines are the
+#1 sensor/camera-killer on a case line (§1.4); extraction keeps photoeyes,
+quorum sensors, and inspection cameras clean — this is a *reliability* system
+whose payback is downtime-avoidance, not kWh.
+
+**5. Waste & scrap handling** — the reject lane and blank-trim scrap goes to a
+**compactor/baler** (~$8k, or shared plant unit) with return-flow accounting
+fed by the reject ledger (T55c, never mix frames). Baled corrugated has
+recycling value / avoids disposal cost; the ledger makes the reject rate a
+measured OEE-quality input (§6.6.1).
+
+**6. Hot-water buffer tank** — a small insulated buffer (~200–500 L) makes the
+§8 compressor-waste-heat washdown actually usable: the heat exchanger charges
+the buffer, the buffer preheats the §6.4 rainwater washdown supply on demand
+instead of dumping heat when nobody is washing.
+
+**7. Equipment-class efficiency** — IE4/IE5 premium-efficiency motors on the
+conveyor/fans (all on VFDs), LED high-bay lighting with presence control,
+and the already-specified VSD compressor + blower (§6.1–6.2).
+
+**8. Condition monitoring (predictive maintenance)** — the EtherCAT bus and
+IIoT gateway already collect the signals, so add trend baselines for: fold-
+motor vibration + drive temperature (bearing/load drift), air pressure
+trends per branch (leaks and filter loading), vacuum-pad flow (wear), and
+glue-pot heater duty. Deviations push a PM suggestion on the §6.6.1
+dashboard instead of waiting for the next §9.3 maintenance interval — this is
+the efficiency side of uptime (unplanned stops are the line's biggest hidden
+cost) and it reuses data already on the bus at near-zero capex.
+
+**Efficiency verdict + honest wall:** sleep + air systems ≈ **~8.3 MWh/yr
+(~$1k/yr)** for ~$5k capex — the best kWh-per-dollar on the line; dust/scrap/
+buffer/condition-monitoring are reliability and integration systems whose
+value the energy figures do not count. All figures are duty-assumption
+estimates; the §9.5 energy baseline turns them into measured values.
+
+### 6.6 Accessibility systems **[ADDED]**
+
+Accessibility here means three things: **data accessibility** (every operator
+and service engineer can see and act on the line's state), **human-factors
+accessibility** (the machine is operable by people of different reach,
+strength, vision, hearing, and language), and **service accessibility**
+(maintenance reaches the parts, and the docs reach the maintainer).
+
+**1. OEE & production dashboard** — Availability / Performance / Quality live
+on the HMI (and reported via the §3 IIoT gateway), fed by data the control
+layer already collects: **availability** from watchdog stops and quorum
+resets, **performance** from rate vs the §1.2 takt, **quality** from the
+reject ledger (§9.1). This is the operational face of EN 415-11 (availability
+standard, §10) and turns the reject ledger from a log into a decision tool.
+
+**2. Operator / human-factors accessibility** —
+- Controls and HMI within **reach zones** (0.8–1.2 m, no reach >50 cm into
+  hazard zones).
+- **Ergonomics**: blank loading at 0.8–1.2 m, reject bin and scrap at waist
+  height on a chute; **noise < 70 dB(A)** at the operator position (acoustic
+  compressor/blower enclosure, muffled blow-offs); **500 lux** task lighting
+  at inspection/loading points (camera lighting is separate, Class 1, §4.4).
+- **Low-force, low-precision controls** (large buttons, no tight grasping) so
+  the machine is operable with gloves and by operators of varied hand
+  strength.
+- **Adjustable HMI**: font size, high-contrast theme, and a **multilingual
+  operator layer** (e.g., English/Spanish) — one recipe, switchable display
+  text.
+- **Dual-modality alarms**: every alarm is **audible AND visual (strobe)**, so
+  it works for hearing- and sight-impaired operators alike; the guided-fix
+  (§9.1) is shown as text and as icon-step sequences.
+- **Slow / jog-assisted mode** for setup and assisted work: full speed is
+  locked out, guarding stays active — accessibility without removing safety.
+- E-stop reachable from every operator position (ISO 13850, §4).
+
+**3. Remote service accessibility** — secure **VPN / OPC UA remote
+diagnostics** (§3, IEC 62443-3-3) so the integrator can view the same HMI
+screens and fault stack the operator sees; a versioned software-update path;
+and remote-guided fixes for the top HMI "click → fix" flows. Accessibility of
+the machine to its service network, not just to its operator.
+
+**4. QR asset tags + digital documentation** — every major component carries a
+**QR/asset tag** linking to its datasheet, wiring reference, PM record, and
+spare-part number. The §9.3 maintenance schedule and the spare-parts list
+become machine-accessible at the component; MTTR drops because the part is
+found, its replacement procedure is shown, and the record is updated in
+place.
+
+**Accessibility honest wall:** the human-factors items follow general
+accessibility and ergonomics guidance (reach, force, contrast, multimodal
+alarm), not a machinery-specific ADA certification — they are design intent
+to be validated with the actual operators in §9.5, not a compliance claim.
+
 ---
 
 ## 7. Energy & cost (consolidated feasibility)
@@ -628,6 +758,18 @@ designed to:**
 | Blow-offs | regulated ≤30 psi nozzles, 20% duty sequencing | unrestricted nozzles |
 | Power | 3-phase + IEC 60204-1, MCCB + RCD, redundant 24 V PSU, UPS for controls | single-phase undersized feed, no UPS |
 | Rainwater (§6.4) | ~300 m² metal-roof catchment + PV modules, first-flush diverters + leaf guards, 50 µm + 5 µm filters + UV, 4–10 m³ tank, pump + pressure tank + mains make-up, backflow prevention | potable reuse without treatment; unlabeled cross-connected piping |
+| Idle/sleep control (§6.5) | AUTO/IDLE/SLEEP states: drive STO standby, blower idle, compressor trim | leaving fixed loads on during idle |
+| Air monitoring (§6.5) | flow meter per air branch on the IIoT gateway + baseline trend | quarterly audit only |
+| Condition monitoring (§6.5) | vibration/temperature/pressure trend baselines on the bus → PM suggestions | waiting for the next scheduled maintenance |
+| Blow-offs (§6.5) | amplifier/coanda nozzles at ≤30 psi | open pipes; unrestricted nozzles |
+| Dust extraction (§6.5) | small cartridge collector at scoring + tape-knife zones | letting fines coat sensors/cameras |
+| Scrap handling (§6.5) | compactor/baler fed by the reject ledger | dumping reject scrap unmeasured |
+| Hot-water buffer (§6.5) | 200–500 L insulated buffer charging from compressor waste heat | dumping §8 heat when nobody washes |
+| Motors & lighting (§6.5) | IE4/IE5 motors on VFDs; LED high-bay with presence control | IE2/IE3 fixed-speed; always-on lighting |
+| OEE dashboard (§6.6) | availability/performance/quality live on HMI (EN 415-11) | a reject log nobody reads |
+| HMI accessibility (§6.6) | adjustable font/contrast, multilingual layer, dual-modality alarms, slow/jog mode | fixed small text, single language, audio-only alarms |
+| Remote access (§6.6) | secure VPN/OPC UA remote diagnostics (IEC 62443-3-3), versioned updates | unauthenticated cloud port |
+| Asset documentation (§6.6) | QR/asset tag on every component → datasheet, wiring, PM record, spare part | paper manuals locked in an office |
 | HMI | 12–15" panel + §9.1 UX | numeric-only display |
 | IIoT | OPC UA gateway, per-station energy meters, IEC 62443-3-3 | unauthenticated cloud port |
 
@@ -650,5 +792,12 @@ designed to:**
   summer-dry): real tank sizing needs the site's rainfall record and the
   actual roof/PV catchment area; and the system is a systems/integration play
   (~80 yr payback on water alone), not a water-bill saver.
+- Efficiency figures (standby, leak monitoring, nozzles) are duty-assumption
+  estimates: the standby savings exist only where the line actually idles,
+  and the air savings depend on the leak rate; §9.5's energy baseline turns
+  them into measured values.
+- Accessibility items follow general ergonomics/accessibility guidance, not a
+  machinery-specific certification; the human-factors targets need operator
+  validation (§9.5), not just design intent.
 - Both core patents are **Active** — a build needs license or design-around,
   not an assumed freedom to operate.

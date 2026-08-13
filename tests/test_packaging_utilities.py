@@ -3,6 +3,7 @@
 import pytest
 
 from packaging.utilities import (
+    annual_cost_usd,
     annual_energy_kwh,
     avg_power_kw,
     avg_real_scfm,
@@ -10,6 +11,8 @@ from packaging.utilities import (
     rainwater_balance_series,
     receiver_volume_gal,
     runoff_m3,
+    scfm_saved_power_kw,
+    standby_savings_kwh_yr,
     tank_size_for_zero_deficit,
     vacuum_venturi_demand,
     water_cost_per_yr,
@@ -113,3 +116,29 @@ def test_tank_size_returns_none_when_insufficient():
 def test_water_cost_linear():
     assert water_cost_per_yr(39.6, 4.0) == pytest.approx(158.4)
     assert water_cost_per_yr(0.0, 4.0) == pytest.approx(0.0)
+
+
+def test_standby_savings_math():
+    # 8 h/day at 1.4 kW dropped load, 260 days -> 2912 kWh/yr
+    assert standby_savings_kwh_yr(8.0, 2.3, 0.9, 260.0) == pytest.approx(2912.0)
+
+
+def test_standby_savings_zero_when_no_idle():
+    assert standby_savings_kwh_yr(0.0, 2.3, 0.9, 260.0) == pytest.approx(0.0)
+
+
+def test_standby_savings_scales_with_days():
+    assert standby_savings_kwh_yr(8.0, 2.3, 0.9, 130.0) == pytest.approx(1456.0)
+
+
+def test_scfm_saved_power_math():
+    assert scfm_saved_power_kw(1.5, specific_power=0.22) == pytest.approx(0.33)
+
+
+def test_scfm_saved_power_default_specific_power():
+    assert scfm_saved_power_kw(2.0) == pytest.approx(0.44)
+
+
+def test_annual_cost_linear():
+    assert annual_cost_usd(2912.0, 0.12) == pytest.approx(349.44)
+    assert annual_cost_usd(0.0, 0.12) == pytest.approx(0.0)
