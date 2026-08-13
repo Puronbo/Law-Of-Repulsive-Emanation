@@ -29,7 +29,32 @@ zero:
 
 Survivability is not the question; weightlessness is the experience. Every
 interplanetary probe and every Moon-return trajectory is this slingshot,
-and no crew has ever felt it as an acceleration.
+and no crew has ever felt it as an acceleration. But the assist is a real
+machine, and its mechanics are closed form. A hyperbolic flyby at
+periapsis radius r_p past a body of gravitational parameter mu, arriving
+with excess speed v_inf, bends the incoming velocity vector by delta and
+hands the spacecraft a velocity-vector turn of dv:
+
+    sin(delta/2) = 1 / (1 + r_p v_inf^2 / mu)     (bend half-angle)
+    dv = 2 v_inf sin(delta/2)                     (velocity-vector turn)
+    a_p = mu / r_p^2                              (periapsis gravity: the load)
+
+The bend is set by the periapsis radius alone once v_inf and mu are given —
+a "free" boost whose reaction body is the whole planet. The passenger load
+is a_p: at closest approach the free-fall trajectory curves at exactly the
+planet's gravity at that radius. The numbers (`harvest_energy.py`, flyby
+rows; v_inf = 5 km/s):
+
+| Flyby | r_p | bend delta | dv | a_p (passenger load) |
+|---|---|---|---|---|
+| Earth, 620 km periapsis | 7.0e6 m | 88° | 6.9 km/s | 0.83 g |
+| Jupiter, cloud tops | 7.1e7 m | 161° | 9.9 km/s | 2.56 g |
+
+The strongest gravity assist in the Solar System loads its passenger at
+**2.6 g for a few minutes**; an Earth assist is **under 1 g**. The true
+slingshot is the most survivable launch you can take — the assist's
+acceleration is never more than the planet's own surface gravity, and the
+boost is free.
 
 **The centrifuge slingshot** is a true sling: a capsule is spun at the end
 of a long arm and released. The passenger feels the centripetal force that
@@ -68,14 +93,19 @@ The numbers (`experiments/harvest_energy.py`, slingshot section):
 | LEO 7905 m/s at 3 g | r = v^2/(3 g) | arm = 2124 km |
 
 **The finding, plainly.** A passenger-rated "slingshot space shuttle" is
-either a gravity assist — 0 g, but it is an orbit change, not a launch — or
+either a gravity assist — 0 g plus a boost of up to 2 v_inf sin(delta/2)
+for free, but it is an orbit change, not a launch — or
 a centrifuge, and a centrifuge that reaches orbit at crew limits needs an
 arm of a thousand-plus kilometers. At any arm a builder can actually erect
 (tens to hundreds of meters), the survivable release is suborbital by an
 order of magnitude. The 10^4 g spin launch that industry is testing is a
 payload machine, not a passenger machine. `[honest wall]` The walls are the
 arithmetic, not the materials: no arm material changes a crew limit of ~4 g
-sustained, and 46 g is survivable only for about a tenth of a second.
+sustained, and 46 g is survivable only for about a tenth of a second. The
+assist's wall is the same arithmetic: its passenger load is a_p = mu/r_p^2,
+and r_p can only approach the planet's own surface — so the ride is capped
+at the planet's surface gravity (0.83 g at Earth, 2.56 g at Jupiter), the
+gentlest acceleration in spaceflight.
 
 ---
 
@@ -344,6 +374,8 @@ cloud is a store, not a tap.*
 | Book claim | Equation | Number | Asset |
 |---|---|---|---|
 | gravity assist passenger load | G = 0 | 0 g | `experiments/harvest_energy.py` |
+| flyby bend and boost | sin(delta/2) = 1/(1 + r_p v_inf^2/mu); dv = 2 v_inf sin(delta/2) | Earth 88°, 6.9 km/s; Jupiter 161°, 9.9 km/s | `data/harvest_energy_data.json` |
+| flyby passenger load | a_p = mu/r_p^2 | 0.83 g Earth; 2.56 g Jupiter | `data/harvest_energy_data.json` |
 | centrifuge acceleration | a = v^2/r, G = v^2/(r g) | 63 m/s at 4 g, 100 m | `data/harvest_energy_data.json` |
 | orbital arm corners | r = v^2/(G g) | 708 km at 9 g; 1593 km at 4 g | `data/harvest_energy_data.json` |
 | payload spin launch | v = sqrt(G g r) | 3132 m/s at 10^4 g, 100 m | `data/harvest_energy_data.json` |

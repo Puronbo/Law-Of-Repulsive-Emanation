@@ -12,6 +12,9 @@ The six questions, and their closed forms:
 
  1. SLINGSHOT g-force on passengers. Two slingshots exist:
       gravity assist  - inertial coasting; passengers feel ~0 g
+                       flyby mechanics: bend sin(delta/2) = 1/(1 + r_p v_inf^2/mu)
+                       boost dv = 2 v_inf sin(delta/2); periapsis gravity
+                       a_p = mu / r_p^2  (the passenger load, ~<1-2.6 g)
       centrifuge     - spin a capsule on an arm, release; centripetal
                        acceleration  a = v^2 / r,  G = v^2 / (r g)
       survival corners:  v_max(G, r) = sqrt(G g r)      (max release speed)
@@ -101,13 +104,39 @@ def slingshot():
     out["v_ms_at_46g_r100m"] = math.sqrt(46.0 * G * 100.0)
     out["v_ms_at_1e4g_r100m_payload"] = math.sqrt(1e4 * G * 100.0)
     out["t_s_at_4g_to_LEO"] = v_orb / (4.0 * G)
+    # the true astronautical slingshot: the powered flyby. The planet bends
+    # the hyperbolic excess-velocity vector by delta, periapsis radius r_p,
+    # gravitational parameter mu, excess speed v_inf:
+    #   sin(delta/2) = 1 / (1 + r_p v_inf^2 / mu)
+    #   dv = 2 v_inf sin(delta/2)          (velocity-vector turn magnitude)
+    #   a_p = mu / r_p^2                   (periapsis gravity - the load)
+    flybys = {}
+    for name, mu, r_p, v_inf in (
+            ("earth_low", 3.986004418e14, 7.0e6, 5e3),
+            ("jupiter_cloudtops", 1.26686534e17, 7.1e7, 5e3)):
+        s_half = 1.0 / (1.0 + r_p * v_inf * v_inf / mu)
+        delta_deg = 2.0 * math.degrees(math.asin(s_half))
+        flybys[name] = {
+            "bend_deg": round(delta_deg, 1),
+            "dv_ms": round(2.0 * v_inf * s_half, 0),
+            "a_periapsis_g": round((mu / (r_p * r_p)) / G, 2),
+        }
+    out["flyby_mechanics"] = flybys
     out["verdict"] = ("ANALYTIC: gravity assist = 0 g (inertial). A "
                       "centrifuge launch at 4 g reaches only 63 m/s on a "
                       "100 m arm; LEO at 4 g needs a ~1593 km arm and ~202 s "
                       "of sustained 4 g (crew-survivable, but a machine of "
                       "planetary scale). Human-rated spin launch to orbit is "
                       "arithmetically closed at realistic arm sizes; 10^4 g "
-                      "payload slingshots reach ~3.1 km/s on a 100 m arm.")
+                      "payload slingshots reach ~3.1 km/s on a 100 m arm. The "
+                      "true slingshot - the gravity-assist flyby - turns the "
+                      "excess-velocity vector for free (Earth at v_inf=5 km/s "
+                      "and 620 km periapsis bends 88 deg for dv ~6.9 km/s; "
+                      "Jupiter bends ~161 deg for ~9.9 km/s) while the "
+                      "passenger load at periapsis is a_p = mu/r_p^2, under "
+                      "1 g at Earth and ~2.6 g at Jupiter: a passenger-rated "
+                      "slingshot rides the assist at launch-pad gravity, not "
+                      "launch gravity.")
     return out
 
 

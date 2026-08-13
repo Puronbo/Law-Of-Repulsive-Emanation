@@ -1220,6 +1220,13 @@ def test_harvest_energy_slingshot_survivability():
     assert 707 <= d['r_km_at_LEO_vs_crew_g']['r_km_at_9g_for_LEO'] <= 709
     # payload-only slingshot clears 3 km/s at 10^4 g on a 100 m arm
     assert d['v_ms_at_1e4g_r100m_payload'] >= 3100
+    # the true slingshot: flyby bend/boost, and the passenger load a_p = mu/r_p^2
+    fb = d['flyby_mechanics']
+    assert 87 <= fb['earth_low']['bend_deg'] <= 89
+    assert 6800 <= fb['earth_low']['dv_ms'] <= 7100
+    assert 0.80 <= fb['earth_low']['a_periapsis_g'] <= 0.85
+    assert fb['jupiter_cloudtops']['a_periapsis_g'] <= 2.6
+    assert fb['jupiter_cloudtops']['dv_ms'] >= 9500
 
 
 def test_harvest_energy_terraform_budget_and_sustain_wall():
