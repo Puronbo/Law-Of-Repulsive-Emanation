@@ -1,0 +1,64 @@
+{
+  "claim": "AUDIT section 2 item 2 sequel: is there a scale-free (decimal) correspondence between the Riemann zeros and the finite-disk spectrum, once the growing magnitudes are normalized into [0,1] decimals?",
+  "setup": {
+    "n_zeros": 100,
+    "n_modes": 100,
+    "zeros_source": "mpmath.zetazero 1..100 (matches the 15 in Universals/spectral_analysis.py RIEMANN_ZEROS to ~1e-7)",
+    "zeros_t_range": [
+      14.1347,
+      236.5242
+    ],
+    "disk_E_range": [
+      5.9108,
+      49.7252
+    ],
+    "decimalization_zeros": "Riemann-von Mangoldt N(t)=(t/2pi)(log(t/2pi)-1)+7/8",
+    "decimalization_disk": "least-squares Weyl line aE+b",
+    "n_null_samples": 10000,
+    "n_gue_reference_spacings": 9580
+  },
+  "zeros_decimalized": {
+    "first_zero_t": 14.134725,
+    "first_zero_decimal": 0.0045,
+    "last_zero_t": 236.5242,
+    "r_mean": 0.6108,
+    "r_std": 0.1913,
+    "se": 0.0193,
+    "gue_0.5996": 0.5996,
+    "goe_0.5307": 0.5307,
+    "poisson_0.3863": 0.3863,
+    "z_vs_gue": 0.58,
+    "z_vs_goe": 4.14,
+    "ks_vs_exact_gue_p": 0.6842,
+    "ks_vs_poisson_p": 0.0,
+    "note": "the zeros are a GUE (beta=2) system, so GOE 0.5307 is the wrong ensemble reference; this is why the earlier re-test only ever quoted the disk against GOE"
+  },
+  "disk_decimalized": {
+    "r_mean": 0.3738,
+    "r_std": 0.2895,
+    "se": 0.0292,
+    "z_vs_poisson": -0.43,
+    "ks_vs_poisson_p": 0.6706,
+    "ks_vs_exact_gue_p": 0.0
+  },
+  "two_sample_ks": {
+    "stat": 0.3939,
+    "p": 3.0261838062638694e-07
+  },
+  "decimal_rigidity": {
+    "zeros_residual_std": 0.225,
+    "disk_residual_std": 1.997,
+    "uniform_null_mean": 2.728,
+    "uniform_null_std": 0.832,
+    "zeros_z_vs_null": -3.01,
+    "disk_z_vs_null": -0.88,
+    "rigidity_ratio_zeros_over_disk": 0.113
+  },
+  "rvm_residual": {
+    "max": 0.9979,
+    "mean": 0.5,
+    "bound_logt_over_pi_at_t100": 1.74,
+    "note": "the decimal residual of the Riemann-von Mangoldt law (the S-term) stays < 1 over the first 100 zeros; consistent with the known |S(t)|=O(log t) bound but NOT a test of RH"
+  },
+  "verdict": "DECIMAL PERSPECTIVE, NO SHARED SPECTRUM: (a) ensemble placement on the decimal axis: zeros are GUE (<r>=0.6108 ~ 0.5996, z=+0.58; GOE excluded at +4.14 sigma), the disk is Poisson (<r>=0.3738 ~ 0.3863, z=-0.43); (b) the two normalized spectra are NOT the same: KS p=3.0e-07; (c) the zeros' decimals are rigid (residual std 0.225, -3.01 sigma below random decimals), the disk's are at the random level (1.997, -0.88 sigma) - the zeros sit ~8.9x closer to the ideal grid than the disk (ratio 0.113); the Riemann-von Mangoldt residual over the first 100 zeros (max 0.9979 < 1) stays within its O(log t) bound - consistent with the known S-term bounds, NOT a test of RH (100 zeros cannot probe RH)."
+}

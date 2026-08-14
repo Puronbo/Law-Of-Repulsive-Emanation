@@ -1236,6 +1236,42 @@ Overall: not a concrete Selberg instance.  The ε(2)=0.000265 "unification"
 was the code's own construction, never a measured spectral-geometric match.
 This retires the last **[claimed]** item in AUDIT §2 (the Selberg paradigm).
 
+### Ch. 5.21b  The Riemann zeros and the disk on the decimal axis (2026-08-14)
+
+Because the absolute scales can never meet (disk t ∈ [2.38, 7.03] vs zeros
+t ∈ [14.13, 236.5]), `experiments/riemann_decimal_perspective.py`
+(`data/riemann_decimal_perspective_data.json`) answers the correspondence
+question a different way: it *diminishes* both spectra into decimals on
+[0,1] with each spectrum's own counting law — the Riemann-von Mangoldt law
+N(t) = (t/2π)(log(t/2π) − 1) + 7/8 for the 100 zeros (mpmath.zetazero; the
+first 100, matching the 15 in-repo zeros to ~1e−7), and the measured Weyl
+line for the 100 disk modes.  First zero t₁ = 14.1347 becomes the decimal
+0.00450 (the 0.45% mark of the first-100 spectrum).  The tests:
+
+* **Ensemble placement.**  ⟨r⟩ on the zeros' normalized spacings is 0.611 —
+  **GUE** (0.5996, z = +0.6); GOE 0.5307 is excluded at +4.1σ.  This
+  corrects the earlier reference choice: the COMPLEX zeros are a β = 2
+  (GUE) system, so the GOE constant was the wrong ensemble for them.  The
+  disk's ⟨r⟩ = 0.374 is **Poisson** (0.3863, z = −0.4).  KS confirms: zeros
+  consistent with an exact finite-n GUE bulk spectrum (p = 0.68), disk
+  consistent with Poisson (p = 0.67), each rejecting the other's ensemble.
+* **Mutual exclusion.**  Two-sample KS between the two normalized spacing
+  sets: p = 3.0 × 10⁻⁷ — on the decimal axis the two spectra are not the
+  same.
+* **Rigidity.**  The decimal residual (u_j − (j−½)/n in mean-spacing units)
+  measures how far each point set sits from the perfect grid.  The zeros'
+  residual is 0.225 — 3σ below random decimals (rigid, the famous GUE
+  self-correction) — while the disk's is 1.997, at the random level (z =
+  −0.9).  The zeros sit ~9× closer to the ideal grid than the disk.
+* **The Riemann-von Mangoldt residual (S-term).**  Over the first 100 zeros
+  the count residual stays ≤ 0.998 < 1, within its O(log t) bound
+  (log(t₁₀₀)/π ≈ 1.74) — consistent with the known S-term bounds.  100
+  zeros cannot probe RH; this is a measurement of the residual quantity,
+  not a claim about the hypothesis.
+
+Same conclusion as Ch. 5.21 (no shared spectrum), now obtained without ever
+comparing the growing magnitudes.
+
 ### Ch. 5.22  The golden fold is not a chain law (C2, decided)
 
 C2 (SPRING_BIBLE Ch. 14 / epoch_0d.json "conjectures.C2") claimed: "further

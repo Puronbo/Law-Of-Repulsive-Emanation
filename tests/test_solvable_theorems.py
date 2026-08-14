@@ -16,6 +16,7 @@ number so none of the resolved claims can silently drift:
   - Kawasaki is not a CTC/Novikov constraint (antecedent false)
   - C7 bridge extends to all primes trivially (no 2^n-k-special resonance)
    - Selberg paradigm not a concrete instance (Poisson, z(GOE)=-5.5/KS p=0.003; no zero overlap; no trace peaks vs matched null)
+   - Riemann decimal perspective: 100 zeros (GUE, <r>=0.61) vs 100 disk modes (Poisson, <r>=0.37) on the unit interval - no shared spectrum (KS p=3e-7), zeros' decimals rigid ~9x, disk's random
    - C2 golden fold: retrace chain is not a phi/phi^2 ladder (1/4 rungs)
    - hierarchical C0 flow: SUPPORTED (NC parity with flat flow, router gain, 6 not 30 comps)
    - flow-guided active learning: margin-AL reaches targets with fewer labels than random; raw force-cancellation score is not the winner
@@ -243,6 +244,28 @@ def test_selberg_paradigm_not_a_concrete_instance():
     assert d['c_form_factor']['mersenne_mean_abs_pctile'] < 95.0
     assert 40.0 < d['c_form_factor']['local_percentile_mean'] < 60.0
     assert d['verdict'].startswith('SELBERG PARADIGM NOT SUPPORTED')
+
+
+def test_riemann_decimal_perspective_no_shared_spectrum():
+    d = load('riemann_decimal_perspective_data.json')
+    # 100 zeros (GUE, beta=2) on the decimal axis, not GOE
+    z = d['zeros_decimalized']
+    assert 0.55 < z['r_mean'] < 0.67
+    assert z['z_vs_gue'] < 3.0
+    assert z['z_vs_goe'] > 3.0
+    assert z['ks_vs_exact_gue_p'] > 0.05
+    # disk (real symmetric) is Poisson on the decimal axis
+    dz = d['disk_decimalized']
+    assert 0.30 < dz['r_mean'] < 0.45
+    assert abs(dz['z_vs_poisson']) < 3.0
+    assert dz['ks_vs_poisson_p'] > 0.05
+    # the two normalized spectra are mutually excluded
+    assert d['two_sample_ks']['p'] < 0.01
+    # rigidity: the zeros' decimals are far closer to the ideal grid
+    rg = d['decimal_rigidity']
+    assert rg['zeros_residual_std'] < rg['disk_residual_std']
+    assert rg['zeros_z_vs_null'] < -2.0
+    assert d['verdict'].startswith('DECIMAL PERSPECTIVE')
 
 
 def test_golden_fold_not_a_chain_law():

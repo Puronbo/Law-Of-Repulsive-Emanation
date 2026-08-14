@@ -156,9 +156,30 @@ given so it can be re-run).
    finds **no trace-formula signature**: mean |C| at the 51.7th percentile of
    matched random length-sets, local percentiles averaging 49.4 (50=chance),
    51/173 above the 70% local mark (~52 expected).  Overall: the paradigm is
-   **not supported as a concrete instance**; the earlier ε(2)=0.000265
-   "unification" was the code's own construction (`L(s)=C₀·ζ(s)` tautological),
-   not a measured spectral-geometric match.
+    **not supported as a concrete instance**; the earlier ε(2)=0.000265
+    "unification" was the code's own construction (`L(s)=C₀·ζ(s)` tautological),
+    not a measured spectral-geometric match.
+    **Sequel 2026-08-14 — decimal (scale-free) perspective**
+    (`experiments/riemann_decimal_perspective.py`,
+    `data/riemann_decimal_perspective_data.json`): because the absolute scales
+    can never meet (disk t∈[2.38,7.03] vs zeros t∈[14.13,236.5]), both spectra
+    are "diminished" into decimals on [0,1] via their own counting laws — the
+    Riemann-von Mangoldt law N(t)=(t/2π)(log(t/2π)−1)+7/8 for the 100 zeros
+    (mpmath.zetazero, matching the 15 in-repo zeros to ~1e−7, so the old
+    "first 100 zeros" doc claim is now real), and the measured Weyl line for
+    the 100 disk modes.  On the decimal axis the verdict is decisive and
+    scale-free: (a) ⟨r⟩=0.611 on the zeros' normalized spacings is **GUE**
+    (0.5996, z=+0.6; GOE 0.5307 excluded at +4.1σ — the zeros are a β=2
+    system, so the earlier GOE reference was the wrong ensemble for them),
+    while ⟨r⟩=0.374 on the disk's is **Poisson** (0.3863, z=−0.4); (b) the two
+    normalized spacing sets are mutually excluded (KS p=3.0×10⁻⁷); (c) the
+    zeros' decimals are **rigid** — their residual off the ideal grid is 0.225
+    mean spacings, 3σ below random decimals — while the disk's (2.00) sit at
+    the random level, a ~9× rigidity gap; and the Riemann-von Mangoldt
+    residual (the S-term) over the first 100 zeros stays ≤0.998 < 1, within
+    its O(log t) bound — consistent with known bounds, but 100 zeros cannot
+    test RH.  Same overall conclusion (no shared spectrum), now independent
+    of the growing magnitudes.
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**
