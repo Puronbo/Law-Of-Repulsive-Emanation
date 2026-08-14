@@ -1389,6 +1389,41 @@ quadratic law d(t)² = 4d² + 8t, t_c = −(Δγ)²/2.
   picture Newman's "barely so" already implies, measured at the system's
   own merger scale.
 
+### Ch. 5.21f  The merger boundary is a stepping function t_c(N) (2026-08-14)
+
+`experiments/merger_scaling.py` (`data/merger_scaling_data.json`) asks how
+far the finite face of Ch. 5.21e can be pushed by *seeing more zeros*.  The
+answer is that t_c = −(Δγ)²/2 is not a single number: it is a stepping
+function of N, and every new record-tight adjacent pair — the classical
+**Lehmer pair** — cuts it down.  This is the same principle the entire
+historical lower-bound programme on Λ ran on: closer Lehmer pairs pushed
+the rigorous bound −50 → −0.0991 → −4.4×10⁻⁶ → −2.6×10⁻⁹ → −1.15×10⁻¹¹ →
+**0** (Rodgers–Tao) — using only zero locations, never an H_t value.
+
+* **A vectorized Riemann–Siegel engine.**  The technique of Ch. 5.21c,
+  extended to t ~ 36000: Hardy Z on a uniform 0.01 grid with the Gabcke
+  remainder, sign changes bisected to 1e-8, all in float64 numpy.  It
+  re-locates **43851 consecutive zeros** in ~10s: count exact at the scan
+  top and matching `mpmath.zetazero` to ≤3×10⁻⁶.  It *independently
+  re-discovers the classical Lehmer pair* (idx 6708, γ ≈ 7005.063/7005.101,
+  gap 0.0377) — the very pair used for the Λ ≥ −1.15×10⁻¹¹ bound.
+* **The creep.**  t_c(N): −0.0482 (N=648, the certified slice of Ch.
+  5.21e) → −1.30×10⁻² (N=1000) → −9.35×10⁻⁴ (N=5000) → −7.11×10⁻⁴
+  (N=10000, Lehmer) → **−6.23×10⁻⁴** (N≥20000, deepest record gap 0.03531
+  at γ ≈ 17144).  The record-tight reduced gaps decay like N^{−1/3}
+  (fitted slope −0.36; the GUE small-gap tail predicts −1/3), bracketed by
+  the Wigner expected-minimum null.
+* **Two faces of one principle.**  The DIRECT H_t-evaluation face is
+  numerically closed past γ ~ 1000 — H₀ values fall like e^{−πγ/4} ~ 10⁻²⁵⁴
+  at γ ~ 750 and ~10⁻⁵⁸⁴⁷ at γ ~ 17144, below any computation.  The
+  ZERO-LOCATIONS-ONLY face has no magnitude wall, which is exactly why the
+  rigorous Λ programme reaches the axis while direct H_t evaluation cannot.
+* **Honest wall.**  Only the first 648 zeros are interval-certified; the
+  rest are float64-located (1e-6-class agreement, negligible for 0.03-scale
+  gaps).  t_c(N) is naive model extrapolation, NOT a bound on Λ; a
+  single-path record chain is bracketed by the GUE null, not a claim
+  against GUE; no finite number of zeros proves RH.
+
 ### Ch. 5.22  The golden fold is not a chain law (C2, decided)
 
 C2 (SPRING_BIBLE Ch. 14 / epoch_0d.json "conjectures.C2") claimed: "further

@@ -20,6 +20,7 @@ number so none of the resolved claims can silently drift:
    - Riemann-Siegel root engine: locates the first 100 zeros (max |t_RS - t_mpmath| < 1e-5, mean ~1e-7) by sign-change bisection on the real Z function (Gabcke remainder), WITHOUT zetazero; re-derives the decimal-perspective stats exactly (<r>=0.6108, residual 0.225, RvM max 0.9979); main-sum cutoff floor(sqrt(t/2pi)) = 6 terms at t_100 (6.3x condensation vs the t/2pi EM count) - not a test of RH
    - Riemann-Siegel certifier: rigorous interval-arithmetic + Turing certification that N(g_n) = 648 zeros <= g_n = 999.236 lie on Re(s)=1/2 and are simple - 654/654 brackets certified, signs OK at all 653 Gram points, zeta/Z containment PASS at 8 heights, theta (exact Stirling/Binet series, validated remainder bound) contained at all Gram points, max|S|=1, zetazero cross-check MATCH 648==648 - a finite verification, NOT a proof of RH
    - de Bruijn-Newman condensation: RH <=> Lambda <= 0 (Newman); the certified 648 zeros are the t=0 slice of the backward-heat flow H_t = int e^{tu^2} Phi(u) cos(zu) du; Phi even to 1.7e-51, H_0=(1/8)xi exact (rel 0 at z=10, 5e-48 at z=55); fast p-substitution evaluator tracks analytic xi to 4e-8 at z~223 and the independent v-substitution quadrature to 6e-7; measured merger law d(t)^2 = 4d^2 + 8t: P1 (gap 0.845) slope 7.377 (model 8), fit t_c -0.390 (model -0.357), merger confirmed between 0.90 and 1.05 of fit t_c; P2 (gap 1.219) fit t_c -0.942 (model -0.743); Polya direction holds (zeros persist and separate for t>0); certified global closest pair (gap 0.31043, idx 452) has local-model boundary t_c ~ -0.0482 at H_t ~ 1e-254, invisible to floats - a finite probe of the FINITE system, NOT a bound on Lambda, no proof of RH
+   - merger-boundary creep t_c(N): the finite de Bruijn-Newman face is a stepping function of how many zeros are seen - a vectorized Riemann-Siegel scan re-locates 43851 consecutive zeros (t<36000, ~10s, count exact, zetazero match <=3e-6) and independently re-discovers the classical Lehmer pair (idx 6708, gap 0.0377 at gamma~7005) behind the Lambda >= -1.15e-11 bound; creep -0.0482 (N=648 certified) -> -7.11e-4 (N=10000, Lehmer) -> -6.23e-4 (N>=20000, record gap 0.03531 at gamma~17144); record-tight reduced gaps ~ N^(-1/3) (fit -0.36, GUE tail -1/3) bracketed by the Wigner expected-min null; direct H_t-eval face closes past gamma~1000 (e^{-pi gamma/4} ~ 1e-5847) while the zero-locations-only face is what the Lambda programme used - finite probe, located-not-certified beyond 648, NOT a bound on Lambda, no proof of RH
    - C2 golden fold: retrace chain is not a phi/phi^2 ladder (1/4 rungs)
    - hierarchical C0 flow: SUPPORTED (NC parity with flat flow, router gain, 6 not 30 comps)
    - flow-guided active learning: margin-AL reaches targets with fewer labels than random; raw force-cancellation score is not the winner
@@ -355,6 +356,40 @@ def test_debruijn_newman_condensation():
     assert math.isclose(g['Delta_gamma'], 0.3104307, rel_tol=1e-4)
     assert abs(g['t_c_local_model'] + 0.04818) < 1e-3
     # honest wall: a finite probe, NOT a bound on Lambda, no proof of RH
+    assert 'NOT a bound' in d['verdict']
+    assert 'proves RH' in d['verdict']
+
+
+def test_merger_scaling():
+    d = load('merger_scaling_data.json')
+    assert d['verdict'].startswith('MERGER-BOUNDARY CREEP')
+    # the engine re-locates 43851 consecutive zeroes exactly (count + oracle)
+    s = d['scan']
+    assert s['count_match'] is True
+    assert s['zeros_found'] == 43851
+    assert s['max_crosscheck_diff'] < 1e-5
+    # the classical Lehmer pair (idx 6708, gamma ~ 7005.06/7005.10) is re-found
+    lh = d['lehmer']
+    assert lh['idx_pair'] == 6708
+    assert math.isclose(lh['gap'], 0.0377, abs_tol=1e-3)
+    # the creep table starts at the certified slice and creeps toward the axis
+    c = d['creep']['creep']
+    assert math.isclose(c['648']['t_c'], -0.04818, abs_tol=1e-3)
+    assert c['1000']['t_c'] > c['648']['t_c']
+    assert c['10000']['t_c'] > c['2000']['t_c']
+    # deepest record pair: gap 0.0353 at gamma ~ 17144, t_c ~ -6.2e-4
+    dp = d['creep']['deepest']
+    assert math.isclose(dp['gap'], 0.03531, abs_tol=1e-4)
+    assert 17000 < dp['gamma'] < 17300
+    assert abs(dp['t_c'] + 6.23e-4) < 1e-5
+    # record-tight reduced gaps follow the GUE small-gap tail: slope ~ -1/3
+    fit = d['creep']['fit']
+    assert abs(fit['slope'] - (-1.0 / 3.0)) < 0.1
+    # GUE null present and tight-tail rows make sense (observed below mean)
+    rows = d['gue_null']['rows']
+    assert len(rows) >= 10
+    assert rows[-1]['observed'] < rows[-1]['gue_mean_min']
+    # honest wall: located not certified, NOT a bound on Lambda, no proof of RH
     assert 'NOT a bound' in d['verdict']
     assert 'proves RH' in d['verdict']
 

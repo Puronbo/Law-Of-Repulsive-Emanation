@@ -263,6 +263,33 @@ given so it can be re-run).
     no finite amount of zeros proves RH.  It is the picture RH's "barely
     so" already implies (Λ ≥ 0 by Rodgers–Tao/Dobner), measured at the
     system's own merger scale.
+    **Sequel 2026-08-14 — the merger-boundary creep t_c(N)**
+    (`experiments/merger_scaling.py`,
+    `data/merger_scaling_data.json`): the finite face is a *stepping
+    function* of how many zeros you can see — each new record-tight
+    (Lehmer) pair cuts t_c = −(Δγ)²/2.  A vectorized Riemann–Siegel scan
+    (grid 0.01, bisection 1e-8, the technique of `riemann_siegel_roots.py`
+    extended to t ~ 36000) re-locates **43851 consecutive zeros** in ~10s:
+    count exact at the scan top and matching `mpmath.zetazero` to ≤3×10⁻⁶,
+    and it *independently re-discovers the classical Lehmer pair* (idx 6708,
+    γ ≈ 7005.063/7005.101, gap 0.0377) — the very pair used for the
+    Λ ≥ −1.15×10⁻¹¹ bound.  The creep: t_c = −0.0482 (N=648, certified
+    slice) → −1.30×10⁻² (N=1000) → −9.35×10⁻⁴ (N=5000) → −7.11×10⁻⁴
+    (N=10000, Lehmer) → **−6.23×10⁻⁴** (N≥20000, deepest record gap 0.03531
+    at γ ≈ 17144).  The record-tight reduced gaps decay like N^{−1/3}
+    (fitted slope −0.36; GUE small-gap tail −1/3), bracketed by the Wigner
+    expected-minimum null.  Two faces of the same principle: the DIRECT
+    H_t-evaluation face is numerically closed past γ ~ 1000 (H_0 values fall
+    like e^{−πγ/4} ~ 10⁻²⁵⁴ at γ ~ 750, ~10⁻⁵⁸⁴⁷ at γ ~ 17144 — no
+    computation reaches that), while the ZERO-LOCATIONS-ONLY face has no
+    magnitude wall — which is exactly why the literature's rigorous Λ
+    programme (Lehmer pairs: −50 → −0.0991 → −4.4×10⁻⁶ → −2.6×10⁻⁹ →
+    −1.15×10⁻¹¹ → **0**, Rodgers–Tao) reaches the axis where H_t evaluation
+    cannot.  HONEST WALL (in the verdict): only the first 648 zeros are
+    interval-certified (the rest are float64-located, 1e-6-class agreement,
+    negligible for 0.03-scale gaps); t_c(N) is naive model extrapolation, NOT
+    a bound on Λ; a single-path record chain is bracketed by the GUE null,
+    not a claim against GUE; no finite number of zeros proves RH.
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**

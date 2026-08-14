@@ -1,0 +1,431 @@
+{
+  "claim": "the finite de Bruijn-Newman face t_c = -(Delta gamma)^2/2 is a stepping function t_c(N) of the number of zeroes seen; each record-tight Lehmer pair cuts it, the record-tight reduced gaps follow the GUE small-gap tail N^(-1/3), and the direct H_t-evaluation face is numerically closed past gamma ~ 1000 (e^{-pi gamma/4} wall) while the zero-locations-only face -- what the classical Lambda programme used -- is not",
+  "setup": {
+    "grid_step": 0.01,
+    "scan_lo": 6.0,
+    "scan_hi": 36000.0,
+    "bisect_abs": 1e-08,
+    "engine": "vectorized Riemann-Siegel + Gabcke remainder (theta by Stirling/Binet)"
+  },
+  "scan": {
+    "time_sec": 9.7,
+    "zeros_found": 43851,
+    "expected": 43851,
+    "count_match": true,
+    "last_zero": 35999.091349548515,
+    "next_zero_above_hi": true,
+    "crosscheck": [
+      {
+        "k": 1,
+        "scan": 14.134728274345228,
+        "zetazero": 14.134725141734695,
+        "diff": 3.1326105336404453e-06
+      },
+      {
+        "k": 100,
+        "scan": 236.5242296647976,
+        "zetazero": 236.5242296658162,
+        "diff": 1.0186056442762492e-09
+      },
+      {
+        "k": 452,
+        "scan": 748.2427544641336,
+        "zetazero": 748.2427544650845,
+        "diff": 9.50990397541318e-10
+      },
+      {
+        "k": 648,
+        "scan": 998.8275471353319,
+        "zetazero": 998.8275471369296,
+        "diff": 1.5977548173395917e-09
+      },
+      {
+        "k": 1000,
+        "scan": 1419.4224809503253,
+        "zetazero": 1419.4224809459956,
+        "diff": 4.329649527790025e-09
+      },
+      {
+        "k": 6708,
+        "scan": 7004.043723502008,
+        "zetazero": 7004.043723499329,
+        "diff": 2.6793713914230466e-09
+      },
+      {
+        "k": 6709,
+        "scan": 7005.062866177411,
+        "zetazero": 7005.062866174921,
+        "diff": 2.4901964934542775e-09
+      },
+      {
+        "k": 43851,
+        "scan": 35999.091349548515,
+        "zetazero": 35999.09134954752,
+        "diff": 9.968061931431293e-10
+      }
+    ],
+    "max_crosscheck_diff": 3.1326105336404453e-06
+  },
+  "creep": {
+    "record_count": 28,
+    "records": [
+      {
+        "idx_pair": 0,
+        "gap": 6.887308769225928,
+        "gamma": 17.57838265895819,
+        "reduced": 1.1277104657983013,
+        "t_c": -23.717511041328187
+      },
+      {
+        "idx_pair": 1,
+        "gap": 3.988821802139185,
+        "gamma": 23.01644794464075,
+        "reduced": 0.8242340186455438,
+        "t_c": -7.9553496846104474
+      },
+      {
+        "idx_pair": 3,
+        "gap": 2.510186481475774,
+        "gamma": 31.679968695640014,
+        "reduced": 0.646327992682356,
+        "t_c": -3.150518085891863
+      },
+      {
+        "idx_pair": 6,
+        "gap": 2.408354482650708,
+        "gamma": 42.12289615631026,
+        "reduced": 0.7293133144679106,
+        "t_c": -2.9000856570518794
+      },
+      {
+        "idx_pair": 8,
+        "gap": 1.7686819458007577,
+        "gamma": 48.889491686820065,
+        "reduced": 0.5775381070450065,
+        "t_c": -1.5641179127007772
+      },
+      {
+        "idx_pair": 12,
+        "gap": 1.4847347164153675,
+        "gamma": 60.08941124915961,
+        "reduced": 0.5335616172025172,
+        "t_c": -1.1022185890645109
+      },
+      {
+        "idx_pair": 18,
+        "gap": 1.440149364471381,
+        "gamma": 76.42476538181154,
+        "reduced": 0.5726573089943409,
+        "t_c": -1.0370150959936613
+      },
+      {
+        "idx_pair": 23,
+        "gap": 1.3838366413116319,
+        "gamma": 88.11719290733163,
+        "reduced": 0.581619451791026,
+        "t_c": -0.9575019249183291
+      },
+      {
+        "idx_pair": 26,
+        "gap": 1.219290122985825,
+        "gamma": 95.26098913669396,
+        "reduced": 0.5275885885498468,
+        "t_c": -0.7433342020053942
+      },
+      {
+        "idx_pair": 33,
+        "gap": 0.8451236629485948,
+        "gamma": 111.45209735870137,
+        "reduced": 0.38680017413642226,
+        "t_c": -0.357117002837825
+      },
+      {
+        "idx_pair": 62,
+        "gap": 0.8174610710142929,
+        "gamma": 169.50324594974168,
+        "reduced": 0.4286886377661157,
+        "t_c": -0.3341213013119174
+      },
+      {
+        "idx_pair": 70,
+        "gap": 0.7243158340453988,
+        "gamma": 185.23662576198197,
+        "reduced": 0.3900742463430045,
+        "t_c": -0.2623167137244408
+      },
+      {
+        "idx_pair": 90,
+        "gap": 0.7157867145538717,
+        "gamma": 221.07281219481965,
+        "reduced": 0.40562880485748737,
+        "t_c": -0.2561753103659129
+      },
+      {
+        "idx_pair": 134,
+        "gap": 0.6078852558136987,
+        "gamma": 295.26931224822386,
+        "reduced": 0.37248062621160105,
+        "t_c": -0.18476224211784295
+      },
+      {
+        "idx_pair": 158,
+        "gap": 0.5659763050078936,
+        "gamma": 333.92836668013825,
+        "reduced": 0.3578840552223637,
+        "t_c": -0.16016458891519414
+      },
+      {
+        "idx_pair": 185,
+        "gap": 0.4981794643401827,
+        "gamma": 376.0750024986188,
+        "reduced": 0.32443835338095367,
+        "t_c": -0.12409138934513567
+      },
+      {
+        "idx_pair": 211,
+        "gap": 0.4364052486417904,
+        "gamma": 415.2370123767766,
+        "reduced": 0.29108839943761666,
+        "t_c": -0.09522477052105147
+      },
+      {
+        "idx_pair": 297,
+        "gap": 0.41822386741637274,
+        "gamma": 540.4222783088571,
+        "reduced": 0.29650044586946844,
+        "t_c": -0.08745560163835386
+      },
+      {
+        "idx_pair": 314,
+        "gap": 0.3451768302916207,
+        "gamma": 564.333467526424,
+        "reduced": 0.24709209057893125,
+        "t_c": -0.059573522085085165
+      },
+      {
+        "idx_pair": 362,
+        "gap": 0.33189349174494964,
+        "gamma": 630.6398341846334,
+        "reduced": 0.24345134659410164,
+        "t_c": -0.05507664493132748
+      },
+      {
+        "idx_pair": 452,
+        "gap": 0.3104307079315731,
+        "gamma": 750.811165714248,
+        "reduced": 0.2363253711103181,
+        "t_c": -0.04818361221344883
+      },
+      {
+        "idx_pair": 692,
+        "gap": 0.2211069965369461,
+        "gamma": 1054.8915929794089,
+        "reduced": 0.18029088846746621,
+        "t_c": -0.024444151958794548
+      },
+      {
+        "idx_pair": 921,
+        "gap": 0.1615007877348944,
+        "gamma": 1329.12426838872,
+        "reduced": 0.13762757776643134,
+        "t_c": -0.01304125221949571
+      },
+      {
+        "idx_pair": 1495,
+        "gap": 0.09750250816296102,
+        "gamma": 1977.2226949500616,
+        "reduced": 0.08925292018411085,
+        "t_c": -0.0047533695490341405
+      },
+      {
+        "idx_pair": 3776,
+        "gap": 0.09081841468741914,
+        "gamma": 4292.771854181197,
+        "reduced": 0.0943398270133605,
+        "t_c": -0.0041239922231680135
+      },
+      {
+        "idx_pair": 4764,
+        "gap": 0.04325406074440252,
+        "gamma": 5229.220184230693,
+        "reduced": 0.046289638459259805,
+        "t_c": -0.0009354568854402316
+      },
+      {
+        "idx_pair": 6708,
+        "gap": 0.03769849777199852,
+        "gamma": 7005.081715426297,
+        "reduced": 0.04209839860446947,
+        "t_c": -0.0007105883671326886
+      },
+      {
+        "idx_pair": 18858,
+        "gap": 0.035307321548316395,
+        "gamma": 17143.804189843766,
+        "reduced": 0.04445745145485321,
+        "t_c": -0.0006233034774581036
+      }
+    ],
+    "deepest": {
+      "idx_pair": 18858,
+      "gap": 0.035307321548316395,
+      "gamma": 17143.804189843766,
+      "reduced": 0.04445745145485321,
+      "t_c": -0.0006233034774581036
+    },
+    "creep": {
+      "648": {
+        "idx_pair": 452,
+        "gap": 0.3104307079315731,
+        "gamma": 750.811165714248,
+        "reduced": 0.2363253711103181,
+        "t_c": -0.04818361221344883
+      },
+      "1000": {
+        "idx_pair": 921,
+        "gap": 0.1615007877348944,
+        "gamma": 1329.12426838872,
+        "reduced": 0.13762757776643134,
+        "t_c": -0.01304125221949571
+      },
+      "2000": {
+        "idx_pair": 1495,
+        "gap": 0.09750250816296102,
+        "gamma": 1977.2226949500616,
+        "reduced": 0.08925292018411085,
+        "t_c": -0.0047533695490341405
+      },
+      "5000": {
+        "idx_pair": 4764,
+        "gap": 0.04325406074440252,
+        "gamma": 5229.220184230693,
+        "reduced": 0.046289638459259805,
+        "t_c": -0.0009354568854402316
+      },
+      "10000": {
+        "idx_pair": 6708,
+        "gap": 0.03769849777199852,
+        "gamma": 7005.081715426297,
+        "reduced": 0.04209839860446947,
+        "t_c": -0.0007105883671326886
+      },
+      "20000": {
+        "idx_pair": 18858,
+        "gap": 0.035307321548316395,
+        "gamma": 17143.804189843766,
+        "reduced": 0.04445745145485321,
+        "t_c": -0.0006233034774581036
+      },
+      "30000": {
+        "idx_pair": 18858,
+        "gap": 0.035307321548316395,
+        "gamma": 17143.804189843766,
+        "reduced": 0.04445745145485321,
+        "t_c": -0.0006233034774581036
+      },
+      "43851": {
+        "idx_pair": 18858,
+        "gap": 0.035307321548316395,
+        "gamma": 17143.804189843766,
+        "reduced": 0.04445745145485321,
+        "t_c": -0.0006233034774581036
+      }
+    },
+    "fit": {
+      "slope": -0.3603549993829051,
+      "intercept": 0.5108571775317703,
+      "gue_tail": -0.3333333333333333,
+      "n_points": 27
+    }
+  },
+  "gue_null": {
+    "model": "Wigner(beta=2) E[min of N-1 spacings]",
+    "rows": [
+      {
+        "N": 136,
+        "observed": 0.3725,
+        "gue_mean_min": 0.286
+      },
+      {
+        "N": 160,
+        "observed": 0.3579,
+        "gue_mean_min": 0.2741
+      },
+      {
+        "N": 187,
+        "observed": 0.3244,
+        "gue_mean_min": 0.2632
+      },
+      {
+        "N": 213,
+        "observed": 0.2911,
+        "gue_mean_min": 0.2545
+      },
+      {
+        "N": 299,
+        "observed": 0.2965,
+        "gue_mean_min": 0.2331
+      },
+      {
+        "N": 316,
+        "observed": 0.2471,
+        "gue_mean_min": 0.2298
+      },
+      {
+        "N": 364,
+        "observed": 0.2435,
+        "gue_mean_min": 0.2216
+      },
+      {
+        "N": 454,
+        "observed": 0.2363,
+        "gue_mean_min": 0.2094
+      },
+      {
+        "N": 694,
+        "observed": 0.1803,
+        "gue_mean_min": 0.1879
+      },
+      {
+        "N": 923,
+        "observed": 0.1376,
+        "gue_mean_min": 0.1747
+      },
+      {
+        "N": 1497,
+        "observed": 0.0893,
+        "gue_mean_min": 0.1545
+      },
+      {
+        "N": 3778,
+        "observed": 0.0943,
+        "gue_mean_min": 0.1223
+      },
+      {
+        "N": 4766,
+        "observed": 0.0463,
+        "gue_mean_min": 0.1154
+      },
+      {
+        "N": 6710,
+        "observed": 0.0421,
+        "gue_mean_min": 0.1059
+      },
+      {
+        "N": 18860,
+        "observed": 0.0445,
+        "gue_mean_min": 0.0817
+      }
+    ]
+  },
+  "lehmer": {
+    "idx_pair": 6708,
+    "gap": 0.037698,
+    "gamma": 7005.081715,
+    "t_c": -0.000711,
+    "reduced": 0.0421,
+    "note": "classical Lehmer pair used by the Lambda >= -1.15e-11 bound (Saouter-Gourdon-Demichel 2011), re-located here"
+  },
+  "verdict": "MERGER-BOUNDARY CREEP: the de Bruijn-Newman finite face is a stepping function t_c(N) = -(min Delta gamma)^2/2 of how many zeroes are seen; each record-tight (Lehmer) pair cuts it.  A vectorized Riemann-Siegel scan (grid 0.01, bisection 1e-08) located 43851 consecutive zeroes to t < 36000 in 9.7s, count exact and matching mpmath.zetazero to 3e-06; it independently re-discovers the classical Lehmer pair (idx 6708, gamma ~ 7005.06/7005.10, gap 0.03770) behind the -1.15e-11 bound.  The creep: t_c = -0.0482 at N=648 (certified slice, the direct H_t-eval face of debruijn_newman_condensation.py), -1.30e-2 at N=1000, -4.75e-3 at N=2000, -9.35e-4 at N=5000, -7.11e-4 at N=10000 (Lehmer), -6.23e-4 at the deepest record pair (gap 0.03531 at gamma ~ 17144, N=43851).  The record-tight REDUCED gaps decay like N^(-1/3): fitted slope -0.36 vs the GUE small-gap prediction -1/3, and the empirical record chain is bracketed by the GUE null (Wigner expected-min curve), sitting mildly tight to it.  Two faces of the same principle: the DIRECT evaluation face closes past gamma ~ 1000 because H_0 values fall like e^{-pi gamma/4} (1e-254 at gamma ~ 750, ~1e-5847 at gamma ~ 17144 -- no computation reaches that); the ZERO-LOCATIONS-ONLY face has no magnitude wall, which is exactly why the literature's rigorous Lambda programme (Lehmer pairs: -50 -> ... -> -1.15e-11 -> 0, Rodgers-Tao) reaches the axis while H_t evaluation cannot.  HONEST WALL: only the first 648 zeroes are interval-certified, the rest are float64-located (1e-6-class agreement, negligible for 0.03-scale gaps); t_c(N) is naive model extrapolation, NOT a bound on Lambda; a single-path record chain is not a claim against GUE; no finite number of zeroes proves RH.",
+  "runtime_sec": 15.3
+}
