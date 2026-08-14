@@ -131,18 +131,32 @@ given so it can be re-run).
    "suggests" a concrete instance of Selberg's framework; the eigenvalues ↔
    Riemann-zero correspondence is "conjectured" — and explicitly undecidable at
    30 eigenvalues (GUE/Poisson discrimination impossible).
-   **RESOLVED 2026-08-08** (`experiments/selberg_paradigm.py`,
-   `data/selberg_paradigm_data.json`): now decidable at 100 modes.  (a)
-   GUE/Poisson discrimination is **DECIDED toward Poisson**: ⟨r⟩=0.374 ± 0.029
-   (se), z(Poisson)=−0.42, z(GOE)=−5.55 — the 30-mode "intermediate 0.460"
-   was a small-sample fluctuation; a chaotic (GOE) surface signature is
-   excluded at 5.6σ.  (b) Eigenvalues ↔ Riemann zeros: min distance 7.10,
-   0 of 100 within 0.5 — **no correspondence**.  (c) Selberg trace-formula
-   length spectrum: the spectral form factor C(ℓ)=Σ cos(t_j·ℓ) at the 186
-   Mersenne census lengths is inside the random-length null (mean percentile
-   18.8, 0/186 above the 95th-pct null max) — the 196 Mersenne "geodesic
-   lengths" produce **no trace-formula oscillation**.  Overall: the paradigm
-   is **not supported as a concrete instance**; the earlier ε(2)=0.000265
+   **RESOLVED 2026-08-08, CORRECTED 2026-08-14** (`experiments/selberg_paradigm.py`,
+   `data/selberg_paradigm_data.json`): the first 100-mode re-run made three
+   statistical errors, fixed here.  (a) GUE/Poisson is **DECIDED toward
+   Poisson** with the canonical GOE constant 0.5307 (Atas et al. 2013, not the
+   0.536 used before): ⟨r⟩=0.372 ± 0.029 (se), z(Poisson)=−0.50, z(GOE)=−5.50;
+   and a KS test of the unfolded spacing distribution now excludes the GOE
+   Wigner surmise P(s)=(π/2)s·e^(−πs²/4) at p=0.0034 while being fully
+   consistent with Poisson (p=0.744) — the correct ensemble for this real
+   symmetric operator (the earlier run's level_spacing_stats tested GUE, β=2).
+   (b) The old "min distance 7.10, 0 of 100 within 0.5" was **vacuous**: the
+   100 disk modes have t=√(E−¼)∈[2.38, 7.03], entirely below the first zero
+   t₁=14.13 (the old code also claimed "first 100 zeros" but only ever used
+   the 15 in RIEMANN_ZEROS).  The corrected verdict is: **not testable at this
+   scale**, and structural — the capped disk's measured Weyl density is 2.35
+   levels per unit E vs the zeros' 0.00456 per unit E at t₁, a factor ≈516, so
+   no number of disk modes can reproduce the zeros' spectrum (reaching t₁
+   alone needs ≈471 modes, reaching t₁₅≈65 needs ≈9980).  (c) The old
+   form-factor test used a **degenerate permutation null** (permuting the same
+   186 lengths gives a constant null mean, so "mean pct 18.8" was rounding
+   noise and "0/186 strong" was forced) and included the tiny artifact length
+   ln(32/29)=0.098 at the C(ℓ)→n_t edge.  The corrected test (matched-bootstrap
+   null over the 173 clean lengths ℓ≥1, plus a local-percentile peak test)
+   finds **no trace-formula signature**: mean |C| at the 51.7th percentile of
+   matched random length-sets, local percentiles averaging 49.4 (50=chance),
+   51/173 above the 70% local mark (~52 expected).  Overall: the paradigm is
+   **not supported as a concrete instance**; the earlier ε(2)=0.000265
    "unification" was the code's own construction (`L(s)=C₀·ζ(s)` tautological),
    not a measured spectral-geometric match.
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
@@ -188,8 +202,8 @@ given so it can be re-run).
    ln 12 = 2.4849, 0.53%) and k=26 (0.96%) but misses at k=10 (3.3%) and k=2000
    (7.5%); **C3a NOT SUPPORTED** (no mode near λ(7)=4.574 below the floor —
    nearest is E0, Δ=1.34); **C3b SUPPORTED** (mode 12.2416 vs λ(31)=12.261,
-   Δ=0.0197); **C4 decided toward Poisson** — ⟨r⟩=0.372 at 100 modes vs Poisson
-   0.386 / GOE 0.536, so the T19 "consistent chaos" spectral signature is
+   Δ=0.0197);    **C4 decided toward Poisson** — ⟨r⟩=0.372 at 100 modes vs Poisson
+   0.3863 / GOE 0.5307, so the T19 "consistent chaos" spectral signature is
    refuted at level-spacing level (for this finite-disk analog).  The WEAVERS
    eig[5]=12.060 claim is NOT reproducible from `data/spectral_data.json` (which
    holds 8.5406).
@@ -326,7 +340,7 @@ given so it can be re-run).
 | **Clock-test canon** (T59/T61) | laws live in invariants, not conventions | Measured 1.000→0.417→1.000 |
 | **Anomaly doctrine** (T55j) | novelty works; impersonation partial; observation bank required | Measured, incomplete by its own verdict |
 | **Arithmetic Bekenstein shift** (PAPER) | η_prime=0.1336 vs η_random=0.1285, Δη +3.9%, p=0.002 | **REFUTED by the persisted data file, and withdrawn from the PAPER (2026-08-04).** `data/bekenstein_shift_data.json` (30 trajectories) shows no systematic difference: control p=0.789 (+2.5%), dissipative p=0.938 (−0.1%); the file's own interpretation is "no systematic difference"; the claimed numbers 0.1336/0.1285/p=0.002 appeared nowhere in it. PAPER §8.7 + conclusion now report the null. **n=100 pre-registered re-run (2026-08-08, `data/bekenstein_rerun_data.json`) settles it:** the raw frictionless shift becomes significant at power (+3.39%, p≈0) but an index-matched control on the same trajectories erases it (+0.14%, p=0.34), i.e. the effect is positional (prime indices cluster early), not primality. The claim stays dead; the null is now causal, not just underpowered. |
-| **Selberg unification** (PAPER) | 30 eigenvalues ↔ 196 Mersenne geodesics, ε(2)=0.000265 | ε(2)=0.000265 is real **but it is algebra**: `L_total = L_traj + Σ L_k` is the code's own construction (`L(s)=C₀·ζ(s)` is flagged tautological in the code). Spectral-vs-zeros match is poor (code: min |t_n − t_zeta| ~ 2.5–9.0 "not a match by any standard"). **Closed 2026-08-08** (`data/selberg_paradigm_data.json`): at 100 modes the spectrum is **Poisson** (⟨r⟩=0.374, GOE excluded at 5.6σ), zero-correspondence absent (min dist 7.10, 0 within 0.5), and the 186 Mersenne lengths show no spectral-form-factor peaks — not a concrete Selberg instance. |
+| **Selberg unification** (PAPER) | 30 eigenvalues ↔ 196 Mersenne geodesics, ε(2)=0.000265 | ε(2)=0.000265 is real **but it is algebra**: `L_total = L_traj + Σ L_k` is the code's own construction (`L(s)=C₀·ζ(s)` is flagged tautological in the code). Spectral-vs-zeros match is poor (code: min |t_n − t_zeta| ~ 2.5–9.0 "not a match by any standard"). **Closed 2026-08-08, corrected 2026-08-14** (`data/selberg_paradigm_data.json`): at 100 modes the spectrum is **Poisson** (⟨r⟩=0.372, GOE 0.5307 excluded at 5.5σ, KS p=0.0034 vs GOE Wigner / p=0.744 vs Poisson), the zero correspondence is untestable at this scale and structurally impossible (disk Weyl density ≈516× the zeros' density), and the 173 clean Mersenne lengths show no spectral-form-factor peaks (mean pct 51.7 vs matched null) — not a concrete Selberg instance. |
 | **Partition function match** (PAPER) | L(2)=40.14 vs C₀·π²/6=40.19 (<0.2%) | **Tautology.** C₀·π²/6 = 40.1936 holds for *any* C₀; the code flags `L(s)=C0*zeta(s)` as a tautology "for ANY constant C0." A match by construction is not a test. |
 | **Thermodynamics/entropy** | ln-thinning ↔ entropy; second law as folding | Analogical, not falsifiable as stated |
 | **Prime geodesic spectrum** (PAPER §8.4, 2026-08-08) | prime-indexed states define a geodesic spectrum mirroring the arithmetic of primes; recurrence times factor into primes | **Not supported.** C0-at-primes = uniform energy conservation (ratio 0.999); the spectrum is a transient of the first N≈50 states (μ=0.027, not 0.065) and diverges by N=214; the frictionless flow has **zero** near-recurrences before escaping the bounded disk, so the recurrence claim is unmeasurable. `data/prime_time_data.json` |

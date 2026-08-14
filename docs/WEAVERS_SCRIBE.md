@@ -333,7 +333,7 @@ Cross-checking the three numbers, the retrace chain, and the toy's own
   (predicts a sub-floor mode); 31 = 2⁵−1 gives λ = 12.261, within 0.20 of
   eig[5] = 12.060. The two Mersenne primes straddle the low spectrum.
 * **Level-spacing statistics (first time computed).** The 30 eigenvalues give
-  ⟨r⟩ = 0.460 (intermediate: Poisson 0.386, GOE 0.536), gap CV 0.69. Small-n,
+  ⟨r⟩ = 0.460 (intermediate: Poisson 0.3863, GOE 0.5307), gap CV 0.69. Small-n,
   so the spectrum cannot yet decide the T19 "chaos is consistent" claim —
   a genuine open measurement, not a settled one.
 
@@ -389,8 +389,8 @@ artifacts already falsified.
 * **C4 (intermediate statistics):** ⟨r⟩ = 0.46 ± finite-n is neither Poisson
   nor GOE; the "chaos is consistent" capstone (T19) needs more modes to be
   measured, not asserted.
-  **TESTED 2026-08-08** (100 modes): ⟨r⟩ = 0.372 vs Poisson 0.386 / GOE
-  0.536 — the spectrum resolves toward **Poisson**, so the T19 "consistent
+  **TESTED 2026-08-08** (100 modes): ⟨r⟩ = 0.372 vs Poisson 0.3863 / GOE
+  0.5307 — the spectrum resolves toward **Poisson**, so the T19 "consistent
   chaos" claim is refuted at level-spacing level (for this finite-disk
   analog).
 
@@ -1195,27 +1195,42 @@ Verdict: the framework extends trivially but carries no distinctive 2ⁿ−k
 content — the near-integer eigenvalues were never evidence of a special
 Mersenne-gap structure.
 
-### Ch. 5.21  The Selberg paradigm at 100 modes — decided (AUDIT §2 item 2)
+### Ch. 5.21  The Selberg paradigm at 100 modes — decided, then corrected (AUDIT §2 item 2)
 
 The PAPER "suggested" the finite-disk spectrum is a concrete instance of
 Selberg's framework, with eigenvalues ↔ Riemann zeros "conjectured" and
 GUE/Poisson discrimination declared "impossible at 30 eigenvalues".
 `experiments/selberg_paradigm.py` (`data/selberg_paradigm_data.json`) closes
-all three at 100 modes:
+all three at 100 modes.  The first 100-mode run made three statistical
+errors (wrong GOE constant, vacuous zero-distance, degenerate permutation
+null) — this is the corrected 2026-08-14 re-test:
 
-* **GUE/Poisson is now decidable and decided**: ⟨r⟩ = 0.374 ± 0.029 (se),
-  z(Poisson) = −0.42, z(GOE) = −5.55.  The 30-mode "intermediate 0.460"
-  (WEAVERS Ch. 5.1) was a small-sample fluctuation; a chaotic surface (GOE)
-  signature is excluded at 5.6σ — the spectrum is **Poisson**, i.e. the
-  eigenvalues behave like random uncorrelated numbers, the opposite of a
-  Selberg/quantum-chaos expectation.
-* **Eigenvalues ↔ Riemann zeros**: min |t_n − t_ζ| = 7.10, 0 of 100 within
-  0.5.  No correspondence by any standard.
+* **GUE/Poisson is decided**: ⟨r⟩ = 0.372 ± 0.029 (se) vs Poisson 0.3863 /
+  GOE 0.5307 (Atas et al. 2013); z(Poisson) = −0.50, z(GOE) = −5.50.  The
+  30-mode "intermediate 0.460" (WEAVERS Ch. 5.1) was a small-sample
+  fluctuation.  We also test the spacing *distribution*: KS excludes the
+  GOE Wigner surmise P(s) = (π/2)s·e^(−πs²/4) at p = 0.0034 while Poisson
+  is fully consistent (p = 0.744).  (The earlier run's level_spacing_stats
+  tested GUE, β = 2, the wrong ensemble for this real symmetric operator.)
+  The spectrum is **Poisson** — eigenvalues behave like random uncorrelated
+  numbers, the opposite of the Selberg/quantum-chaos expectation.
+* **Eigenvalues ↔ Riemann zeros**: the old "min |t_n − t_ζ| = 7.10, 0 of
+  100 within 0.5" was vacuous — the disk t = √(E−¼) ∈ [2.38, 7.03] never
+  reaches the first zero t₁ = 14.13.  The honest verdict is: **not testable
+  at this scale**, and structural.  The capped disk's measured Weyl density
+  is 2.35 levels per unit E vs the zeros' Riemann-von Mangoldt density
+  0.00456 per unit E at t₁ — a factor ≈516 — so no number of disk modes can
+  reproduce the zeros' spectrum (reaching t₁ alone needs ≈471 modes;
+  reaching t₁₅ ≈ 65.1 needs ≈9980).
 * **Trace formula length spectrum**: the spectral form factor
-  C(ℓ) = Σ cos(t_j·ℓ) evaluated at the 186 Mersenne census lengths is inside
-  the matched random-length null (mean percentile 18.8; 0/186 above the
-  95th-pct null max).  The 196 "Mersenne gap geodesic lengths" leave **no
-  trace-formula oscillation** in the spectrum.
+  C(ℓ) = Σ cos(t_j·ℓ) at the 173 clean Mersenne census lengths (ℓ ≥ 1; 13
+  tiny/degenerate lengths such as ln(32/29)=0.098 excluded) is inside the
+  **matched-bootstrap** null (resampling the length set with replacement to
+  preserve the ℓ-distribution): mean |C| at the 51.7th percentile, local
+  percentiles averaging 49.4 (50 = chance), 51/173 above the 70% local mark
+  (~52 expected by chance).  The old "mean percentile 18.8; 0/186 above the
+  95th-pct null max" was invalid: a permutation null over the same multiset
+  is constant, so 18.8 was floating-point noise and the 0-strong was forced.
 
 Overall: not a concrete Selberg instance.  The ε(2)=0.000265 "unification"
 was the code's own construction, never a measured spectral-geometric match.

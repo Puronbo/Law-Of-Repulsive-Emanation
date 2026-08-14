@@ -15,7 +15,7 @@ number so none of the resolved claims can silently drift:
   - fold-and-cut is not a unitary gate (non-injective, not norm-preserving)
   - Kawasaki is not a CTC/Novikov constraint (antecedent false)
   - C7 bridge extends to all primes trivially (no 2^n-k-special resonance)
-   - Selberg paradigm not a concrete instance (Poisson, no zeros, no trace peaks)
+   - Selberg paradigm not a concrete instance (Poisson, z(GOE)=-5.5/KS p=0.003; no zero overlap; no trace peaks vs matched null)
    - C2 golden fold: retrace chain is not a phi/phi^2 ladder (1/4 rungs)
    - hierarchical C0 flow: SUPPORTED (NC parity with flat flow, router gain, 6 not 30 comps)
    - flow-guided active learning: margin-AL reaches targets with fewer labels than random; raw force-cancellation score is not the winner
@@ -229,14 +229,19 @@ def test_bridge_extends_to_all_primes_trivially():
 def test_selberg_paradigm_not_a_concrete_instance():
     d = load('selberg_paradigm_data.json')
     assert d['a_level_stats']['verdict'].startswith('POISSON')
-    # GOE excluded at >5 sigma at 100 modes
+    # GOE excluded at >5 sigma at 100 modes, canonical constant 0.5307
     assert d['a_level_stats']['z_goe'] < -5.0
-    # no Riemann-zero correspondence
-    assert d['b_zeros']['within_0.5'] == 0
-    assert d['b_zeros']['min_dist'] > 5.0
-    # Mersenne lengths produce no trace-formula peaks
-    assert d['c_form_factor']['n_strong_vs_null_95'] == 0
-    assert d['c_form_factor']['null_mean_pctile'] < 50.0
+    assert d['a_level_stats']['ks_goe_p'] < 0.05
+    assert d['a_level_stats']['ks_poisson_p'] > 0.05
+    # no Riemann-zero correspondence is testable at this scale: the disk
+    # t-range never reaches the first zero, and the Weyl densities differ
+    assert d['b_zeros']['spectra_overlap'] is False
+    assert d['b_zeros']['reach_gap'] > 5.0
+    assert d['b_zeros']['density_ratio'] > 100
+    assert d['b_zeros']['modes_needed_to_reach_t1'] > 100
+    # Mersenne lengths produce no trace-formula signal vs a matched null
+    assert d['c_form_factor']['mersenne_mean_abs_pctile'] < 95.0
+    assert 40.0 < d['c_form_factor']['local_percentile_mean'] < 60.0
     assert d['verdict'].startswith('SELBERG PARADIGM NOT SUPPORTED')
 
 
@@ -1227,6 +1232,24 @@ def test_harvest_energy_slingshot_survivability():
     assert 0.80 <= fb['earth_low']['a_periapsis_g'] <= 0.85
     assert fb['jupiter_cloudtops']['a_periapsis_g'] <= 2.6
     assert fb['jupiter_cloudtops']['dv_ms'] >= 9500
+
+
+def test_harvest_energy_release_coverage_covers_the_3d_ball():
+    d = load('harvest_energy_data.json')['release_coverage']
+    assert d['verdict'].startswith('ANALYTIC')
+    # v_max = sqrt(G g r): 4 g, 100 m arm
+    assert 62.5 <= d['v_max_ms'] <= 62.8
+    # speed knob: release earlier at radius r' < r gives v' = v_max * r'/r
+    assert 31.2 <= d['speed_knob_examples_ms']['r50m'] <= 31.4
+    # direction: plane normal (2 DOF) + release phase (1 DOF) = 3, against a
+    # 2-DOF target sphere -> every direction reachable, 1 redundant DOF
+    assert d['mechanism_degrees_of_freedom'] == 3
+    assert d['target_set_degrees_of_freedom'] == 2
+    assert d['redundancy_degrees'] == 1
+    # every sample target lies in its chosen release plane
+    for s in d['sample_targets']:
+        assert s['in_plane'] is True
+    assert d['cadence_bound']['period_s_per_rev'] >= 10.0
 
 
 def test_harvest_energy_terraform_budget_and_sustain_wall():

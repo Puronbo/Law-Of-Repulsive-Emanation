@@ -2,37 +2,58 @@
   "claim": "AUDIT \u00a72 item 2: PAPER 'suggests a concrete instance of Selberg's framework'; eigenvalues<->Riemann zeros 'conjectured'; GUE/Poisson 'impossible at 30'",
   "setup": {
     "n_modes": 100,
-    "n_census_lengths": 186,
-    "n_null_samples": 5000,
+    "n_all_census_lengths": 186,
+    "n_clean_lengths": 173,
+    "n_excluded_tiny_lengths": 13,
+    "n_null_samples": 10000,
     "length_range": [
-      0.098,
+      1.023,
       221.444
     ]
   },
   "a_level_stats": {
-    "r_mean": 0.3738,
-    "r_median": 0.2776,
-    "r_std": 0.2895,
-    "se": 0.0292,
-    "poisson_0.386": 0.386,
-    "goe_0.536": 0.536,
-    "z_poisson": -0.42,
-    "z_goe": -5.55,
-    "verdict": "POISSON (consistent with 0.386 at z=-0.42, excludes GOE 0.536 at z=-5.55)"
+    "r_mean": 0.3719,
+    "r_median": 0.2796,
+    "r_std": 0.2859,
+    "se": 0.0289,
+    "poisson_0.3863": 0.38629,
+    "goe_0.5307": 0.5307,
+    "z_poisson": -0.5,
+    "z_goe": -5.5,
+    "ks_goe_stat": 0.179,
+    "ks_goe_p": 0.0034,
+    "ks_poisson_stat": 0.0674,
+    "ks_poisson_p": 0.7436,
+    "n_spacings": 99,
+    "note": "GOE is the correct ensemble for this real symmetric operator; Universals/spectral_analysis.py level_spacing_stats tested GUE (beta=2) instead",
+    "verdict": "POISSON (ratio z(GOE)=-5.50 excludes GOE 0.5307; KS p=0.0034 vs GOE Wigner, p=0.7436 vs Poisson)"
   },
   "b_zeros": {
-    "min_dist": 7.1009,
-    "median_dist": 8.7202,
-    "within_0.5": 0,
-    "verdict": false
+    "t_range": [
+      2.379,
+      7.034
+    ],
+    "t1": 14.134725,
+    "spectra_overlap": false,
+    "reach_gap": 7.101,
+    "min_dist_old": 7.1009,
+    "within_0.5_old": 0,
+    "note_old": "the old min-dist/within-0.5 were computed against only the 15 zeros in RIEMANN_ZEROS (docstrings claimed 100) and are vacuous: the disk t-range never reaches the first zero",
+    "disk_density_per_E": 2.353,
+    "zero_density_per_E_at_t1": 0.004565,
+    "density_ratio": 516.0,
+    "modes_needed_to_reach_t1": 471.0,
+    "modes_needed_to_reach_t15": 9978.0,
+    "verdict": "NOT TESTABLE AT 100 MODES - the disk t-range [2.38, 7.03] never reaches the first zero t1=14.13 (gap 7.10), so 'min dist 7.10, 0 within 0.5' is a scale mismatch, not a measured absence. And the mismatch is structural: the capped disk's measured Weyl density is 2.35 levels per unit E vs the zeros' 0.00456 per unit E at t1 - a factor 516 - so no number of disk modes can reproduce the zeros' spectrum (reaching t1 alone needs ~471 modes, reaching t15 needs ~9978)."
   },
   "c_form_factor": {
-    "mersenne_mean": 0.81634,
-    "mersenne_max_abs": 90.47645,
-    "null_mean_pctile": 18.8,
-    "null_max_pctile": 100.0,
-    "n_strong_vs_null_95": 0,
-    "verdict": "PEAKS ABSENT: the 186 Mersenne lengths sit inside the null distribution of the spectral form factor (mean pct=18.8, max pct=100.0, 0 strong) \u2014 the trace-formula oscillation prediction is not detected at 100 modes."
+    "mersenne_mean_abs_pctile": 51.7,
+    "mersenne_max_abs_pctile": 100.0,
+    "local_percentile_mean": 49.4,
+    "n_strong_gt_70pct_local": 51,
+    "expected_gt_70pct": 52,
+    "note": "matched-bootstrap null (resample the length set with replacement, preserving the ell-distribution); the old permutation null was degenerate (constant mean) and the old 18.8 was floating-point noise",
+    "verdict": "NO TRACE-FORMULA SIGNATURE: the Mersenne lengths' mean |C| sits at the 52th percentile of matched random length-sets (null), their local percentiles average 49.4 (50 = chance), and 51/173 exceed the 70% local mark (~52 expected by chance). The old 'mean pct 18.8 / max pct 100.0 / 0 strong' statistics were invalid (degenerate permutation null + the ln(32/29)=0.098 edge artifact)."
   },
-  "verdict": "SELBERG PARADIGM NOT SUPPORTED as a concrete instance: (a) GUE/Poisson discrimination now DECIDED at 100 modes (impossible at 30): POISSON (consistent with 0.386 at z=-0.42, excludes GOE 0.536 at z=-5.55); (b) eigenvalues<->Riemann zeros: min dist=7.1009, 0 within 0.5 -> NO correspondence; (c) trace-formula length spectrum: PEAKS ABSENT: the 186 Mersenne lengths sit inside the null distribution of the spectral form factor (mean pct=18.8, max pct=100.0, 0 strong) \u2014 the trace-formula oscillation prediction is not detected at 100 modes."
+  "verdict": "SELBERG PARADIGM NOT SUPPORTED as a concrete instance: (a) level statistics, corrected ensemble: POISSON (ratio z(GOE)=-5.50 excludes GOE 0.5307; KS p=0.0034 vs GOE Wigner, p=0.7436 vs Poisson); (b) eigenvalue<->zero correspondence: NOT TESTABLE AT 100 MODES - the disk t-range [2.38, 7.03] never reaches the first zero t1=14.13 (gap 7.10), so 'min dist 7.10, 0 within 0.5' is a scale mismatch, not a measured absence. And the mismatch is structural: the capped disk's measured Weyl density is 2.35 levels per unit E vs the zeros' 0.00456 per unit E at t1 - a factor 516 - so no number of disk modes can reproduce the zeros' spectrum (reaching t1 alone needs ~471 modes, reaching t15 needs ~9978).; (c) trace-formula length spectrum: NO TRACE-FORMULA SIGNATURE: the Mersenne lengths' mean |C| sits at the 52th percentile of matched random length-sets (null), their local percentiles average 49.4 (50 = chance), and 51/173 exceed the 70% local mark (~52 expected by chance). The old 'mean pct 18.8 / max pct 100.0 / 0 strong' statistics were invalid (degenerate permutation null + the ln(32/29)=0.098 edge artifact)."
 }

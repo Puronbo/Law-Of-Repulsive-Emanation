@@ -12,9 +12,9 @@ C3 (Mersenne-lambda): a mode exists near lambda(7)  = 1/4 + (3 ln2)^2 ~ 4.574
                    (below the current floor) and lambda(31) = 1/4 + (5 ln2)^2
                    ~ 12.261 fills the old gap [12.06, 12.85].
 C4 (intermediate stats): <r> (ratio of consecutive unfolded spacings) sits
-                   between Poisson 0.386 and GOE 0.536 at 30 modes; more modes
-                   decide whether the "chaos is consistent" (T19) claim is
-                   measurable.
+                   between Poisson 0.3863 and GOE 0.5307 (Atas et al. 2013)
+                   at 30 modes; more modes decide whether the "chaos is
+                   consistent" (T19) claim is measurable.
 Bonus:  min |t_n - t_zeta| over all modes updates the "not a match by any
                    standard" verdict (2.5-9.0 at 30 modes).
 
@@ -38,8 +38,8 @@ LN2 = math.log(2.0)
 LAM7 = 0.25 + (3 * LN2) ** 2      # Mersenne prime 7  = 2^3 - 1
 LAM31 = 0.25 + (5 * LN2) ** 2     # Mersenne prime 31 = 2^5 - 1
 C1_K = [10, 12, 26, 2000]
-POISSON_R = 0.386
-GOE_R = 0.536
+POISSON_R = 0.3863
+GOE_R = 0.5307
 
 
 def solve(nx=120, ny=120, r_max=0.85, n_eigs=100):
@@ -142,9 +142,9 @@ def main():
     r_mean, r_med, r_std = ratio_stat(eigs)
     c4 = {
         "r_mean": round(r_mean, 4), "r_median": round(r_med, 4), "r_std": round(r_std, 4),
-        "poisson_0.386": POISSON_R, "goe_0.536": GOE_R,
+        "poisson_0.3863": POISSON_R, "goe_0.5307": GOE_R,
         "position": "poisson" if r_mean < 0.45 else ("goe" if r_mean > 0.49 else "intermediate"),
-        "note": "Poisson 0.386 / GOE 0.536 (ratio statistic); 0.460 measured at 30 modes (WEAVERS 5.1)",
+        "note": "Poisson 0.3863 / GOE 0.5307 (ratio statistic); 0.460 measured at 30 modes (WEAVERS 5.1)",
     }
 
     # --- Bonus: Selberg <-> Riemann zeros ---

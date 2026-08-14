@@ -192,10 +192,10 @@
     "r_mean": 0.3719,
     "r_median": 0.2796,
     "r_std": 0.2859,
-    "poisson_0.386": 0.386,
-    "goe_0.536": 0.536,
+    "poisson_0.3863": 0.3863,
+    "goe_0.5307": 0.5307,
     "position": "poisson",
-    "note": "Poisson 0.386 / GOE 0.536 (ratio statistic); 0.460 measured at 30 modes (WEAVERS 5.1)"
+    "note": "Poisson 0.3863 / GOE 0.5307 (ratio statistic); 0.460 measured at 30 modes (WEAVERS 5.1)"
   },
   "selberg_zeros": {
     "n_modes_compared": 100,
