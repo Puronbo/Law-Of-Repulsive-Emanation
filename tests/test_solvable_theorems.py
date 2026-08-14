@@ -19,6 +19,7 @@ number so none of the resolved claims can silently drift:
    - Riemann decimal perspective: 100 zeros (GUE, <r>=0.61) vs 100 disk modes (Poisson, <r>=0.37) on the unit interval - no shared spectrum (KS p=3e-7), zeros' decimals rigid ~9x, disk's random
    - Riemann-Siegel root engine: locates the first 100 zeros (max |t_RS - t_mpmath| < 1e-5, mean ~1e-7) by sign-change bisection on the real Z function (Gabcke remainder), WITHOUT zetazero; re-derives the decimal-perspective stats exactly (<r>=0.6108, residual 0.225, RvM max 0.9979); main-sum cutoff floor(sqrt(t/2pi)) = 6 terms at t_100 (6.3x condensation vs the t/2pi EM count) - not a test of RH
    - Riemann-Siegel certifier: rigorous interval-arithmetic + Turing certification that N(g_n) = 648 zeros <= g_n = 999.236 lie on Re(s)=1/2 and are simple - 654/654 brackets certified, signs OK at all 653 Gram points, zeta/Z containment PASS at 8 heights, theta (exact Stirling/Binet series, validated remainder bound) contained at all Gram points, max|S|=1, zetazero cross-check MATCH 648==648 - a finite verification, NOT a proof of RH
+   - de Bruijn-Newman condensation: RH <=> Lambda <= 0 (Newman); the certified 648 zeros are the t=0 slice of the backward-heat flow H_t = int e^{tu^2} Phi(u) cos(zu) du; Phi even to 1.7e-51, H_0=(1/8)xi exact (rel 0 at z=10, 5e-48 at z=55); fast p-substitution evaluator tracks analytic xi to 4e-8 at z~223 and the independent v-substitution quadrature to 6e-7; measured merger law d(t)^2 = 4d^2 + 8t: P1 (gap 0.845) slope 7.377 (model 8), fit t_c -0.390 (model -0.357), merger confirmed between 0.90 and 1.05 of fit t_c; P2 (gap 1.219) fit t_c -0.942 (model -0.743); Polya direction holds (zeros persist and separate for t>0); certified global closest pair (gap 0.31043, idx 452) has local-model boundary t_c ~ -0.0482 at H_t ~ 1e-254, invisible to floats - a finite probe of the FINITE system, NOT a bound on Lambda, no proof of RH
    - C2 golden fold: retrace chain is not a phi/phi^2 ladder (1/4 rungs)
    - hierarchical C0 flow: SUPPORTED (NC parity with flat flow, router gain, 6 not 30 comps)
    - flow-guided active learning: margin-AL reaches targets with fewer labels than random; raw force-cancellation score is not the winner
@@ -319,6 +320,43 @@ def test_riemann_siegel_certifier_turing_height_999():
     assert all(b['rosser'] for b in d['turing']['blocks'])
     # honest wall: a finite verification, NOT a proof of RH
     assert 'does NOT prove' in d['verdict']
+
+
+def test_debruijn_newman_condensation():
+    d = load('debruijn_newman_condensation_data.json')
+    assert d['verdict'].startswith('DE BRUIJN-NEWMAN CONDENSATION')
+    # Phi(u) is even (Poisson): worst |Phi(u)-Phi(-u)| at dps 50 < 1e-50
+    assert d['evenness']['worst'] < 1e-50
+    # H_0(z) = (1/8)xi(1/2+iz/2): exact at z=10, 1e-48 at z=55
+    assert d['identity']['10']['rel'] < 1e-40
+    assert d['identity']['55']['rel'] < 1e-45
+    # fast evaluator: t=0 slice tracks analytic xi to 4e-8 at the z~223 worst case
+    val = d['vmethod_validation']
+    assert val['rel_vs_xi'] < 1e-6
+    assert val['rel_vs_v_ref'] < 1e-5
+    # P1 (first-40 closest pair, gap 0.845): measured merger law vs local model
+    p1 = d['heatflow']['P1']
+    assert math.isclose(p1['Delta_gamma'], 0.8451236, rel_tol=1e-4)
+    assert abs(p1['fit_slope'] - p1['model_slope']) < 2.0     # model slope 8
+    assert abs(p1['fit_t_c'] - p1['model_t_c']) < 0.1         # model t_c -0.3571
+    # merger confirmed: real separation at 0.90*t_c, merged (d null) at 1.05*t_c
+    assert p1['t_c_confirm'][0]['d'] is not None
+    assert p1['t_c_confirm'][1]['d'] is None
+    # Polya direction: zeros persist and SEPARATE for t > 0
+    assert p1['polya_plus'][0]['real_persists'] is True
+    assert p1['polya_plus'][0]['d'] > p1['separations'][0]['d']
+    # P2 (gap 1.219): deeper predicted boundary, still negative fit
+    p2 = d['heatflow']['P2']
+    assert p2['fit_t_c'] < 0
+    assert p2['polya_plus'][0]['real_persists'] is True
+    # certified global closest pair: local-model boundary 0.048 below the axis
+    g = d['heatflow']['global_closest_pair']
+    assert g['idx'] == 452
+    assert math.isclose(g['Delta_gamma'], 0.3104307, rel_tol=1e-4)
+    assert abs(g['t_c_local_model'] + 0.04818) < 1e-3
+    # honest wall: a finite probe, NOT a bound on Lambda, no proof of RH
+    assert 'NOT a bound' in d['verdict']
+    assert 'proves RH' in d['verdict']
 
 
 def test_golden_fold_not_a_chain_law():

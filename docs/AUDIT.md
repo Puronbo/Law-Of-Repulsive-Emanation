@@ -231,6 +231,38 @@ given so it can be re-run).
     The honest wall is explicit in the verdict: this certifies the finite
     range γ ≤ 999.236, it is NOT a proof of RH (open; rigorous verification
     extends to |t| ≤ 3×10¹², Platt–Trudgian).
+    **Sequel 2026-08-14 — the de Bruijn–Newman heat-flow face**
+    (`experiments/debruijn_newman_condensation.py`,
+    `data/debruijn_newman_condensation_data.json`): RH is equivalent to
+    Λ ≤ 0 for the de Bruijn–Newman constant, and the certified 648 zeros
+    are the t=0 slice of the backward-heat flow H_t(z) = ∫₀^∞ Φ(u)
+    e^{tu²}cos(zu)du.  The instrument exposes the *finite* face of Newman's
+    "barely so": the closest certified pair's boundary under the local
+    quadratic law d(t)² = 4d² + 8t is t_c = −(Δγ)²/2.  Validated first:
+    Φ is even (Poisson) to 1.7×10⁻⁵¹ (dps 50); H₀(z) = (1/8)ξ(½+iz/2)
+    exactly (rel 0 at z=10, 5×10⁻⁴⁸ at z=55); the fast p-substitution
+    evaluator (one Gauss–Legendre grid over the z-independent cos-phase
+    breakpoints, valid for all z ≤ 225) tracks the analytic ξ at t=0 to
+    4.1×10⁻⁸ at the z≈223 worst case and the independent v-substitution
+    split quadrature to 6×10⁻⁷ (both cancellation-limited at values
+    ~10⁻³⁶; the analytic-ξ check is the rigorous anchor).  Measured merger
+    law, first-40 closest pair (γ-gap 0.845124): d(t)² slope 7.377 vs
+    model 8, fit d²(0) 2.8749 vs 2.8569, fit t_c = −0.3897 vs model
+    −0.3571, and the merger is CONFIRMED between 0.90 and 1.05 of the fit
+    t_c (real separation 0.5186 at t = −0.3507; merged, no real roots, at
+    t = −0.4092).  P2 (γ-gap 1.219290): fit t_c = −0.9419 vs model −0.7433
+    — the quadratic model under-predicts the depth for wider pairs, an
+    honest calibration of the extrapolation.  Pólya's direction holds for
+    both pairs (t>0: zeros persist and separate).  The certified global
+    closest pair (γ-gap 0.310431 at idx 452, γ ≈ 750.656) has local-model
+    boundary t_c ≈ **−0.0482**, four-hundredths of a heat-unit below the
+    axis, at magnitudes ~e^{−πγ/4} ~ 10⁻²⁵⁴ that are invisible to floats
+    and default mpmath.  HONEST WALL (in the verdict): a numerical probe
+    of the FINITE 648-zero system — the global-pair number is a
+    validated-model extrapolation, NOT a certification, NOT a bound on Λ;
+    no finite amount of zeros proves RH.  It is the picture RH's "barely
+    so" already implies (Λ ≥ 0 by Rodgers–Tao/Dobner), measured at the
+    system's own merger scale.
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**

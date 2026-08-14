@@ -1351,6 +1351,44 @@ their signs, distinctness, and count).
   hypothesis (open; rigorous verification extends to |t| ≤ 3×10¹²,
   Platt–Trudgian).
 
+### Ch. 5.21e  The de Bruijn–Newman heat-flow face (2026-08-14)
+
+`experiments/debruijn_newman_condensation.py`
+(`data/debruijn_newman_condensation_data.json`) turns the certified 648-zero
+slice of Ch. 5.21d into the t=0 section of a heat flow: RH ⟺ Λ ≤ 0
+(de Bruijn–Newman), H_t(z) = ∫₀^∞ Φ(u) e^{tu²} cos(zu) du solves
+∂_t H_t = −∂_zz H_t backward from H₀ = (1/8)ξ(½+iz/2), real zeros persist
+as t grows (Pólya), and all zeros are real iff t ≥ Λ (Newman; Λ ≥ 0 by
+Rodgers–Tao/Dobner — RH is "barely so").  The instrument measures the
+finite face: the closest certified pair's merger time under the local
+quadratic law d(t)² = 4d² + 8t, t_c = −(Δγ)²/2.
+
+* **Validated numerics first.**  Φ(u) even by Poisson — worst
+  |Φ(u)−Φ(−u)| = 1.7×10⁻⁵¹ (dps 50); H₀(z) = (1/8)ξ(½+iz/2) — rel 0 at
+  z=10, 5×10⁻⁴⁸ at z=55.  The fast evaluator (p = (z/4)ln v substitution;
+  one Gauss–Legendre grid over the z-independent cos-phase breakpoints,
+  all z ≤ 225) tracks the analytic ξ at t=0 to **4.1×10⁻⁸** at the z≈223
+  worst case, and the independent v-substitution split quadrature to
+  6×10⁻⁷ — both cancellation-limited at magnitudes ~10⁻³⁶ (the raw H_t
+  values at the zero heights are invisible to floats).
+* **Measured merger law (first-40 closest pair, γ-gap 0.845124).**
+  d(0)=1.6902, d(−0.1)=1.4680, d(−0.25)=1.0241, d(−0.35)=0.5241;
+  d² slope vs t = 7.377 (model 8), fit d²(0) = 2.8749 (model 2.8569),
+  fit t_c = **−0.3897** (model −0.3571).  The merger is CONFIRMED:
+  real separation 0.5186 at t = −0.3507 (0.90·fit t_c), merged (no real
+  roots) at t = −0.4092 (1.05·fit t_c).  P2 (γ-gap 1.219290): fit
+  t_c = −0.9419 vs model −0.7433 — the quadratic model under-predicts
+  depth for wider pairs (honest calibration).  Pólya direction holds for
+  both: t=+0.05 widens to 1.7882 and 2.4953.
+* **The global closest pair.**  Certified γ-gap 0.310431 (idx 452, γ ≈
+  750.656) has local-model boundary t_c ≈ **−0.0482**, four-hundredths
+  of a heat-unit below the axis, at magnitudes ~e^{−πγ/4} ~ 10⁻²⁵⁴.
+* **Honest wall.**  A numerical probe of the FINITE 648-zero system, NOT
+  a bound on Λ; the global-pair number is a validated-model extrapolation,
+  not a certification; no finite amount of zeros proves RH.  It is the
+  picture Newman's "barely so" already implies, measured at the system's
+  own merger scale.
+
 ### Ch. 5.22  The golden fold is not a chain law (C2, decided)
 
 C2 (SPRING_BIBLE Ch. 14 / epoch_0d.json "conjectures.C2") claimed: "further

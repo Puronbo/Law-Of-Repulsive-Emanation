@@ -1,0 +1,146 @@
+{
+ "claim": "RH condenses to the sign of one real constant, the de Bruijn-Newman Lambda (RH <=> Lambda <= 0); the certified 648 zeros are the t=0 slice of the backward-heat flow H_t, and the finite face of Newman's 'barely so' boundary is the closest certified pair's merger time t_c = -(Delta gamma)^2/2 under the validated local quadratic law.",
+ "setup": {
+  "dps_identity": 50,
+  "dps_heat": 45,
+  "vmax": 32.0,
+  "nmax_v": 6,
+  "deg": 24
+ },
+ "evenness": {
+  "0.2": 1.50343014942686e-51,
+  "0.5": 1.6825599528616508e-51,
+  "0.9": 1.149323726179411e-51,
+  "worst": 1.6825599528616508e-51
+ },
+ "identity": {
+  "10": {
+   "H0": 0.034443749668025526,
+   "xi8": 0.034443749668025526,
+   "rel": 0.0
+  },
+  "55": {
+   "H0": -5.427757068702784e-08,
+   "xi8": -5.427757068702784e-08,
+   "rel": 4.867835647708226e-48
+  }
+ },
+ "vmethod_validation": {
+  "v_ref": 1.4347950859365174e-36,
+  "vmethod": 1.4347959433321284e-36,
+  "rel_vs_v_ref": 5.975735625696667e-07,
+  "t0": 1.6611443254251436e-36,
+  "xi8_at_t0": 1.6611443929715477e-36,
+  "rel_vs_xi": 4.066257236504906e-08
+ },
+ "heatflow": {
+  "P1": {
+   "gamma": [
+    111.02953554316967,
+    111.87465917699264
+   ],
+   "Delta_gamma": 0.8451236338229625,
+   "z": [
+    222.05907108633934,
+    223.74931835398527
+   ],
+   "t_c_model": -0.35711697822306443,
+   "separations": [
+    {
+     "t": 0.0,
+     "d": 1.6902471631765366
+    },
+    {
+     "t": -0.1,
+     "d": 1.4679600596427917
+    },
+    {
+     "t": -0.25,
+     "d": 1.0241273134946824
+    },
+    {
+     "t": -0.35,
+     "d": 0.5240646898746489
+    }
+   ],
+   "fit_slope": 7.377328159155972,
+   "fit_d2_at_0": 2.8748631185403064,
+   "fit_t_c": -0.3896889302629605,
+   "model_slope": 8.0,
+   "model_d2_at_0": 2.8569358257845154,
+   "model_t_c": -0.35711697822306443,
+   "polya_plus": [
+    {
+     "t": 0.05,
+     "d": 1.788214486837387,
+     "real_persists": true
+    }
+   ],
+   "t_c_confirm": [
+    {
+     "t": -0.35072003723666445,
+     "d": 0.518612989783287
+    },
+    {
+     "t": -0.4091733767761085,
+     "d": null
+    }
+   ]
+  },
+  "P2": {
+   "gamma": [
+    94.65134404051989,
+    95.87063422824531
+   ],
+   "Delta_gamma": 1.2192901877254227,
+   "z": [
+    189.30268808103978,
+    191.74126845649062
+   ],
+   "t_c_model": -0.7433342809417484,
+   "separations": [
+    {
+     "t": 0.0,
+     "d": 2.4385803759098055
+    },
+    {
+     "t": -0.2,
+     "d": 2.184280627965927
+    },
+    {
+     "t": -0.4,
+     "d": 1.8709676504135133
+    },
+    {
+     "t": -0.6,
+     "d": 1.4581351041793824
+    }
+   ],
+   "fit_slope": 6.3660553580049655,
+   "fit_d2_at_0": 5.995925118004918,
+   "fit_t_c": -0.9418587776597592,
+   "model_slope": 8.0,
+   "model_d2_at_0": 5.946674247533987,
+   "model_t_c": -0.7433342809417484,
+   "polya_plus": [
+    {
+     "t": 0.05,
+     "d": 2.4953313350677493,
+     "real_persists": true
+    }
+   ]
+  },
+  "global_closest_pair": {
+   "idx": 452,
+   "gamma": [
+    750.6559503621243,
+    750.9663810666508
+   ],
+   "Delta_gamma": 0.3104307045265374,
+   "t_c_local_model": -0.04818361115642118,
+   "note": "model extrapolation; direct H_t evaluation at z ~ 1501 needs ~1e-254 resolution, beyond floats and default mpmath"
+  }
+ },
+ "verdict": "DE BRUIJN-NEWMAN CONDENSATION: RH <=> Lambda <= 0. Hidden object: Phi(u) even by Poisson (worst |Phi(u)-Phi(-u)| = 1.7e-51 at dps 50), H_0(z) = (1/8)xi(1/2+iz/2) = int Phi(u) cos(zu) du (rel 0.0e+00 at z=10), backward-heat flow H_t = int e^{tu^2} Phi(u) cos(zu) du with d_t H_t = -d_zz H_t; real zeroes persist as t grows (Polya), all real iff t >= Lambda (Newman), Lambda >= 0 known (Rodgers-Tao/Dobner), so RH is barely so.  The certified 648 zeroes (t=0 slice, z = 2 gamma <= 1998.47) have finite face t_c = -(Delta gamma)^2/2: measured slope of d(t)^2 vs t = 7.377 (model 8) and t_c = -0.3897 (model -0.3571) for the closest first-40 pair; the certified global closest pair (gamma-gap 0.3104 at gamma ~ 750.656) has local-model boundary t_c ~ -0.0482, four-hundredths of a heat-unit below the axis, at values ~ e^{-pi gamma/4} ~ 1e-254 invisible to floating point.  HONEST WALL: a numerical probe of the FINITE system, NOT a bound on Lambda; the global-pair value is a validated-model extrapolation, not a certification; no finite amount of zeroes proves RH.",
+ "runtime_sec": 1015.1
+}
