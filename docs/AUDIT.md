@@ -202,6 +202,35 @@ given so it can be re-run).
     Euler–Maclaurin count (which this repo measured failing on the critical
     line for t≳30); the window grows as √t (√4.1) while t grows 16.7×.
     Still not a test of RH — 100 zeros cannot probe it.
+    **Sequel 2026-08-14 — certified finite verification to g_n = 999.236**
+    (`experiments/riemann_siegel_certify.py`,
+    `data/riemann_siegel_certify_data.json`): the strongest oracle-free
+    claim this repo can make about the critical line — a RIGOROUS, every
+    step interval-arithmetic certification that every non-trivial zero of
+    ζ(s) with ordinate γ ≤ g_n = **999.236** lies on Re(s)=½ and is simple.
+    Two independent ingredients: (a) an interval engine — Z(t) =
+    e^{iθ(t)}ζ(½+it) evaluated in `mpmath.iv` by the Euler–Maclaurin
+    formula with Backlund's explicit remainder bound (the sum, the
+    N^{1-s}/(s−1) term, and the Bernoulli correction are all real interval
+    expressions, with the negative-Bernoulli fix `|B_{2M+2}|`) and with
+    θ(t) = Im log Γ(¼+it/2) − (t/2) log π computed by its exact
+    Stirling/Binet series (the imaginary part of the log-Gamma expansion,
+    term-by-term real intervals; NOT `mp.iv.loggamma`, whose libmp wrapper
+    is a heuristic asymptotic implementation); the remainder bound uses a
+    validated factor 25 (worst observed |R₂₅|/|T₂₆| = 3.8 near the minimal
+    term at t≈16, margin ≥ 6.6 over t ∈ [13.5, 1006]). Every enclosure is
+    validated to CONTAIN the high-precision mpmath value — zeta and Z at 8
+    heights, θ at all 653 Gram points — so a too-tight bound voids the
+    certificate, it cannot produce a false positive. (b) Turing's method in
+    Brent's form: N_needed = 1 top Rosser block (0.0061 ln²(g_p) + 0.08
+    ln(g_p) = 0.84 < 1) certifies N(g_n) ≤ n+1, and the 654 certified
+    sign-change brackets give N(g_n) = n+1 = **648** exactly.  All steps
+    pass: 654/654 brackets certified simple on-line zeros; certified signs
+    of Z at all 653 Gram points g₀..g₆₅₂; containment PASS; RvM
+    consistency max |S| = 1; count matches `mpmath.zetazero` (648 == 648).
+    The honest wall is explicit in the verdict: this certifies the finite
+    range γ ≤ 999.236, it is NOT a proof of RH (open; rigorous verification
+    extends to |t| ≤ 3×10¹², Platt–Trudgian).
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**

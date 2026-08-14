@@ -18,6 +18,7 @@ number so none of the resolved claims can silently drift:
    - Selberg paradigm not a concrete instance (Poisson, z(GOE)=-5.5/KS p=0.003; no zero overlap; no trace peaks vs matched null)
    - Riemann decimal perspective: 100 zeros (GUE, <r>=0.61) vs 100 disk modes (Poisson, <r>=0.37) on the unit interval - no shared spectrum (KS p=3e-7), zeros' decimals rigid ~9x, disk's random
    - Riemann-Siegel root engine: locates the first 100 zeros (max |t_RS - t_mpmath| < 1e-5, mean ~1e-7) by sign-change bisection on the real Z function (Gabcke remainder), WITHOUT zetazero; re-derives the decimal-perspective stats exactly (<r>=0.6108, residual 0.225, RvM max 0.9979); main-sum cutoff floor(sqrt(t/2pi)) = 6 terms at t_100 (6.3x condensation vs the t/2pi EM count) - not a test of RH
+   - Riemann-Siegel certifier: rigorous interval-arithmetic + Turing certification that N(g_n) = 648 zeros <= g_n = 999.236 lie on Re(s)=1/2 and are simple - 654/654 brackets certified, signs OK at all 653 Gram points, zeta/Z containment PASS at 8 heights, theta (exact Stirling/Binet series, validated remainder bound) contained at all Gram points, max|S|=1, zetazero cross-check MATCH 648==648 - a finite verification, NOT a proof of RH
    - C2 golden fold: retrace chain is not a phi/phi^2 ladder (1/4 rungs)
    - hierarchical C0 flow: SUPPORTED (NC parity with flat flow, router gain, 6 not 30 comps)
    - flow-guided active learning: margin-AL reaches targets with fewer labels than random; raw force-cancellation score is not the winner
@@ -291,6 +292,33 @@ def test_riemann_siegel_root_engine_reproduces_decimal_perspective():
     assert c['cutoff_at_100th_zero'] == 6
     assert c['per_evaluation_condensation_factor_at_t100'] > 5.0
     assert d['verdict'].startswith('RIEMANN-SIEGEL ROOT ENGINE VALIDATED')
+
+
+def test_riemann_siegel_certifier_turing_height_999():
+    d = load('riemann_siegel_certify_data.json')
+    # interval-arithmetic certification + Turing's method close with a clean verdict
+    assert d['verdict'].startswith('RIEMANN-SIEGEL CERTIFIED')
+    # every enclosure must contain the high-precision mpmath value
+    assert d['validation']['pass'] is True
+    assert all(p['contained'] for p in d['validation']['points'])
+    assert d['validation']['theta_contained_at_all_gram_points'] is True
+    # 653 Gram points, all certified signs; 654 simple on-line zero brackets
+    assert d['gram_points']['count'] == 653
+    assert d['gram_points']['certified_signs_ok'] is True
+    assert d['zeros']['located'] == 654
+    assert d['zeros']['certified_brackets_ok'] is True
+    # Turing/Brent: N(g_n) = n+1 = 648 zeros below g_n = 999.236, on the line
+    c = d['count']
+    assert c['n'] == 647
+    assert abs(c['g_n'] - 999.2362) < 1e-3
+    assert c['N_gn'] == 648
+    assert c['zetazero_crosscheck_match'] is True
+    assert c['max_abs_S'] <= 1.0
+    assert d['turing']['n_needed'] == 1
+    assert d['turing']['blocks_ok'] is True
+    assert all(b['rosser'] for b in d['turing']['blocks'])
+    # honest wall: a finite verification, NOT a proof of RH
+    assert 'does NOT prove' in d['verdict']
 
 
 def test_golden_fold_not_a_chain_law():

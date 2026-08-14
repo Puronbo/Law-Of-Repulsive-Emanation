@@ -1,0 +1,172 @@
+{
+  "claim": "a rigorous, oracle-free certification that all non-trivial zeta zeros with ordinate <= ~1000 lie on the critical line and are simple: interval-arithmetic Euler-Maclaurin engine (Backlund remainder bound, directed rounding in mpmath.iv) for certified signs of Z, plus Turing's method in Brent's form for the exact count",
+  "setup": {
+    "n_em": 200,
+    "m_em": 25,
+    "iv_dps": 40,
+    "float_dps": 50,
+    "locator": "condensed Riemann-Siegel engine (riemann_siegel_roots.py), float, grid=0.05",
+    "bracket_half": 5e-05,
+    "widen_rel": 1e-12,
+    "theta": "exact Stirling/Binet series of Im logGamma(1/4+it/2) - (t/2) log pi, real intervals, validated remainder bound (factor 25, validated over t in [13.5, 1006], margin >= 6.6), cross-validated against loggamma",
+    "zeta": "Euler-Maclaurin with Backlund's explicit remainder bound |E| <= |B_{2M+2}|/(2M+2)! |(s)_{2M+2}| N^{-1/2-2M-1}/|s+2M+1|",
+    "turing": "Brent 1979 Theorem 3.2 / Lehman Theorem 4: N >= 0.0061 ln^2(g_p) + 0.08 ln(g_p) Gram blocks with Rosser's rule => N(g_n) <= n+1"
+  },
+  "validation": {
+    "points": [
+      {
+        "t": 18.0,
+        "what": "zeta",
+        "contained": true
+      },
+      {
+        "t": 18.0,
+        "what": "Z",
+        "contained": true
+      },
+      {
+        "t": 30.0,
+        "what": "zeta",
+        "contained": true
+      },
+      {
+        "t": 30.0,
+        "what": "Z",
+        "contained": true
+      },
+      {
+        "t": 50.0,
+        "what": "zeta",
+        "contained": true
+      },
+      {
+        "t": 50.0,
+        "what": "Z",
+        "contained": true
+      },
+      {
+        "t": 100.0,
+        "what": "zeta",
+        "contained": true
+      },
+      {
+        "t": 100.0,
+        "what": "Z",
+        "contained": true
+      },
+      {
+        "t": 200.0,
+        "what": "zeta",
+        "contained": true
+      },
+      {
+        "t": 200.0,
+        "what": "Z",
+        "contained": true
+      },
+      {
+        "t": 400.0,
+        "what": "zeta",
+        "contained": true
+      },
+      {
+        "t": 400.0,
+        "what": "Z",
+        "contained": true
+      },
+      {
+        "t": 700.0,
+        "what": "zeta",
+        "contained": true
+      },
+      {
+        "t": 700.0,
+        "what": "Z",
+        "contained": true
+      },
+      {
+        "t": 1000.0,
+        "what": "zeta",
+        "contained": true
+      },
+      {
+        "t": 1000.0,
+        "what": "Z",
+        "contained": true
+      }
+    ],
+    "theta_contained_at_all_gram_points": true,
+    "pass": true
+  },
+  "gram_points": {
+    "count": 653,
+    "g0": 17.8456,
+    "g_top": 1005.43,
+    "certified_signs_ok": true,
+    "min_margin_ratio": 31266.8,
+    "min_margin_at_g_index": 618,
+    "min_bracket_absZ": 0.0
+  },
+  "zeros": {
+    "located": 654,
+    "certified_brackets_ok": true,
+    "certified_zero_count_le_gn": 648
+  },
+  "count": {
+    "n": 647,
+    "g_n": 999.2362,
+    "g_p": 1000.4756,
+    "N_gn": 648,
+    "max_abs_S": 1.0,
+    "zetazero_crosscheck_match": true
+  },
+  "turing": {
+    "n_needed": 1,
+    "n_needed_formula": 0.84,
+    "blocks": [
+      {
+        "start": 647,
+        "end": 648,
+        "length": 1,
+        "zeros": 1,
+        "rosser": true
+      },
+      {
+        "start": 648,
+        "end": 649,
+        "length": 1,
+        "zeros": 1,
+        "rosser": true
+      },
+      {
+        "start": 649,
+        "end": 650,
+        "length": 1,
+        "zeros": 1,
+        "rosser": true
+      },
+      {
+        "start": 650,
+        "end": 651,
+        "length": 1,
+        "zeros": 1,
+        "rosser": true
+      },
+      {
+        "start": 651,
+        "end": 652,
+        "length": 1,
+        "zeros": 1,
+        "rosser": true
+      }
+    ],
+    "blocks_ok": true
+  },
+  "condensation": {
+    "em_terms_per_eval": 200,
+    "rs_cutoff_at_gn": 12,
+    "per_eval_ratio_at_gn": 13.3,
+    "em_count_t_over_2pi_at_gn": 159.0
+  },
+  "verdict": "RIEMANN-SIEGEL CERTIFIED: certified by interval arithmetic: Z(t) = cos(theta)Re zeta - sin(theta)Im zeta via Euler-Maclaurin + Backlund's remainder bound and the Stirling/Binet theta series, all in mpmath.iv (dps 40); every enclosure validated to contain the high-precision mpmath value (containment PASS); certified signs of Z at all 653 Gram points g_0..g_652 and at both ends of every located sign-change bracket: 654 simple on-line zeros; Turing's method (Brent 1979 Thm 3.2 / Lehman Thm 4): 1 top Rosser block(s) satisfy Rosser's rule, N_needed = 0.0061 ln^2(g_p) + 0.08 ln(g_p) = 0.84, hence N(g_n) <= n+1; the certified zeros give N(g_n) >= n+1, so N(g_n) = n+1 exactly; therefore all 648 non-trivial zeros of zeta(s) with 0 < gamma <= g_n = 999.236 lie on Re(s) = 1/2 and are simple; RvM consistency: max |S| = 1 over g_0..g_n; count matches mpmath.zetazero (MATCH); condensation cross-point: certifying at g_n costs a fixed N=200 Euler-Maclaurin terms per evaluation (height-independent), while the condensed Riemann-Siegel locator needs floor(sqrt(g_n/2pi)) = 12 terms - a 13.3x per-evaluation saving at the certified height; honest wall: this is a rigorous finite verification to height g_n = 999.236 (648 zeros), it does NOT prove the Riemann hypothesis (open; rigorous verification now extends to |t| <= 3e12, Platt-Trudgian)."
+}

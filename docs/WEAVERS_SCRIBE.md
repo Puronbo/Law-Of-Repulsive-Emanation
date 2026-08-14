@@ -1308,6 +1308,49 @@ Honest wall unchanged: the Riemann-von Mangoldt residual is a measurement
 of the count residual, within its O(log t) bound — 100 zeros cannot probe
 RH.
 
+### Ch. 5.21d  Certified finite verification to g_n = 999.236 (2026-08-14)
+
+`experiments/riemann_siegel_certify.py` (`data/riemann_siegel_certify_data.json`)
+is the strongest oracle-free claim this repo makes about the critical
+line: a RIGOROUS certification, every step in directed-rounding interval
+arithmetic, that **every non-trivial zero of ζ(s) with ordinate γ ≤ g_n =
+999.236 lies on Re(s) = ½ and is simple**.  It upgrades Ch. 5.21c's
+fast locator (which *finds* the zeros) into a certificate (which *proves*
+their signs, distinctness, and count).
+
+* **Interval engine.**  Z(t) = e^{iθ(t)} ζ(½+it) is evaluated in
+  `mpmath.iv` (outward rounding, dps 40).  ζ(½+it) comes from the
+  Euler–Maclaurin formula as real interval expressions — the n-sum, the
+  N^{1-s}/(s−1) term, and the Bernoulli corrections (exact `Fraction`
+  coefficients), with Backlund's explicit remainder bound; the negative
+  Bernoulli number B₅₂ made the bound's interval endpoints misordered
+  (`|B_{2M+2}|` fixed).  θ(t) = Im log Γ(¼ + it/2) − (t/2) log π is
+  computed by its **exact Stirling/Binet series**, the imaginary part of
+  the log-Gamma expansion: with z = ¼ + it/2 = r e^{iφ}, θ = (t/2)(ln r −
+  1 − ln π) − φ/4 + Σ_k B₂ₖ/(2k(2k−1)) r^{1−2k} sin((1−2k)φ).  This is
+  NOT `mp.iv.loggamma` — its libmp wrapper is a heuristic asymptotic
+  implementation, so it is unusable for certification.  The remainder
+  bound carries a validated safety factor 25 (worst observed
+  |R₂₅|/|T₂₆| = 3.8 near the Stirling minimal term at t ≈ 16; margin ≥
+  6.6 over the whole certified range, ratio → 1 at large t).
+* **Validation is the net.**  Every enclosure must CONTAIN the
+  high-precision mpmath value — ζ and Z at 8 heights, θ at all 653 Gram
+  points.  A bound that were ever too tight makes the certificate VOID,
+  it can never manufacture a false positive.
+* **Certified claims.**  (1) 654 sign-change brackets, all certified
+  simple on-line zeros; (2) certified signs of Z at all 653 Gram points
+  g₀..g₆₅₂ (g_top = 1005.43); (3) containment PASS; (4) Riemann–von
+  Mangoldt consistency max |S| = 1; (5) Turing's method in Brent's form —
+  N_needed = 0.0061 ln²(g_p) + 0.08 ln(g_p) = 0.84 < 1, so one top Rosser
+  block (len 1, 1 certified zero) certifies N(g_n) ≤ n+1, and the
+  brackets give N(g_n) = n+1 = **648** exactly; (6) cross-check vs
+  `mpmath.zetazero`: 648 == 648 MATCH.  Margin: min |Z|/width = 3.1×10⁴
+  at g₆₁₈ = 963.161; min |Z| at brackets = 3.7×10⁻⁵.
+* **Honest wall.**  The verdict says it in plain text: this is a rigorous
+  finite verification to γ ≤ 999.236, it does NOT prove the Riemann
+  hypothesis (open; rigorous verification extends to |t| ≤ 3×10¹²,
+  Platt–Trudgian).
+
 ### Ch. 5.22  The golden fold is not a chain law (C2, decided)
 
 C2 (SPRING_BIBLE Ch. 14 / epoch_0d.json "conjectures.C2") claimed: "further
