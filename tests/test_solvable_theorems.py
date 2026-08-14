@@ -17,6 +17,7 @@ number so none of the resolved claims can silently drift:
   - C7 bridge extends to all primes trivially (no 2^n-k-special resonance)
    - Selberg paradigm not a concrete instance (Poisson, z(GOE)=-5.5/KS p=0.003; no zero overlap; no trace peaks vs matched null)
    - Riemann decimal perspective: 100 zeros (GUE, <r>=0.61) vs 100 disk modes (Poisson, <r>=0.37) on the unit interval - no shared spectrum (KS p=3e-7), zeros' decimals rigid ~9x, disk's random
+   - Riemann-Siegel root engine: locates the first 100 zeros (max |t_RS - t_mpmath| < 1e-5, mean ~1e-7) by sign-change bisection on the real Z function (Gabcke remainder), WITHOUT zetazero; re-derives the decimal-perspective stats exactly (<r>=0.6108, residual 0.225, RvM max 0.9979); main-sum cutoff floor(sqrt(t/2pi)) = 6 terms at t_100 (6.3x condensation vs the t/2pi EM count) - not a test of RH
    - C2 golden fold: retrace chain is not a phi/phi^2 ladder (1/4 rungs)
    - hierarchical C0 flow: SUPPORTED (NC parity with flat flow, router gain, 6 not 30 comps)
    - flow-guided active learning: margin-AL reaches targets with fewer labels than random; raw force-cancellation score is not the winner
@@ -266,6 +267,30 @@ def test_riemann_decimal_perspective_no_shared_spectrum():
     assert rg['zeros_residual_std'] < rg['disk_residual_std']
     assert rg['zeros_z_vs_null'] < -2.0
     assert d['verdict'].startswith('DECIMAL PERSPECTIVE')
+
+
+def test_riemann_siegel_root_engine_reproduces_decimal_perspective():
+    d = load('riemann_siegel_roots_data.json')
+    # the engine locates the first 100 zeros on the real Z function alone
+    zf = d['zeros_found']
+    assert zf['n'] == 100
+    assert zf['max_abs_error_vs_zetazero'] < 1e-5
+    assert zf['mean_abs_error_vs_zetazero'] < 1e-6
+    # the engine matches |zeta(1/2+it)| on the critical line
+    assert d['engine_validation']['max_rel_error'] < 1e-3
+    # the decimal-perspective verdict is reproduced from the RS-found roots
+    ds = d['decimal_perspective_reproduced']
+    assert 0.55 < ds['r_mean'] < 0.67
+    assert abs(ds['r_mean'] - ds['prior_artifact_r_mean']) < 0.01
+    assert abs(ds['residual_std'] - ds['prior_artifact_residual_std']) < 0.05
+    assert ds['rvm_s_residual_max'] < 1.0
+    assert ds['z_vs_uniform'] < -2.0
+    # condensation: the main-sum cutoff stays at floor(sqrt(t/2pi)) = 6
+    c = d['condensation']
+    assert c['cutoff_at_first_zero'] == 1
+    assert c['cutoff_at_100th_zero'] == 6
+    assert c['per_evaluation_condensation_factor_at_t100'] > 5.0
+    assert d['verdict'].startswith('RIEMANN-SIEGEL ROOT ENGINE VALIDATED')
 
 
 def test_golden_fold_not_a_chain_law():

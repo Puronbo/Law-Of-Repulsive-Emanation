@@ -180,6 +180,28 @@ given so it can be re-run).
     its O(log t) bound — consistent with known bounds, but 100 zeros cannot
     test RH.  Same overall conclusion (no shared spectrum), now independent
     of the growing magnitudes.
+    **Sequel 2026-08-14 — a condensed technique that locates the zeros**
+    (`experiments/riemann_siegel_roots.py`,
+    `data/riemann_siegel_roots_data.json`): the decimal-perspective verdict
+    no longer needs `mpmath.zetazero` at all.  The instrument evaluates the
+    real Hardy Z function, Z(t)=e^{iθ(t)}ζ(½+it), by the Riemann–Siegel
+    formula with Gabcke's power-series remainder (C₀…C₄, 5×44 coefficients
+    to 50 decimals, transcribed from terry98004/libHGT, MIT) and the exact
+    theta via log Γ, then LOCATES the first 100 zeros as sign-changes of Z
+    (bisection to 1e−10).  The engine matches |ζ(½+it)| to rel ≤5×10⁻⁵ on
+    the critical line, and the found roots agree with `mpmath.zetazero` to
+    max 3.1×10⁻⁶ (mean 9.5×10⁻⁸) — 100 zeros reproduced without the oracle.
+    Re-running the decimal statistics on the roots the engine found gives
+    the SAME numbers as the prior artifact: ⟨r⟩=0.6108 (GUE, z=+0.6), KS
+    vs exact-GUE p=0.68, decimal residual 0.225 (−3.0σ below random
+    decimals), RvM S-residual max 0.9979 — the decimal-perspective verdict
+    is a property of the zeros, not of the lookup.  The technique is the
+    **condensation** the previous entry promised: the main sum needs only
+    floor(√(t/2π)) terms, never more than 6 anywhere in the first-100-zero
+    search (t₁₀₀≈236.5), a per-evaluation 6.3× reduction vs the t/2π
+    Euler–Maclaurin count (which this repo measured failing on the critical
+    line for t≳30); the window grows as √t (√4.1) while t grows 16.7×.
+    Still not a test of RH — 100 zeros cannot probe it.
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**

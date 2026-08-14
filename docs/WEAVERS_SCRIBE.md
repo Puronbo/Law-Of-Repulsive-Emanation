@@ -1272,6 +1272,42 @@ line for the 100 disk modes.  First zero t₁ = 14.1347 becomes the decimal
 Same conclusion as Ch. 5.21 (no shared spectrum), now obtained without ever
 comparing the growing magnitudes.
 
+### Ch. 5.21c  A condensed technique that locates the zeros (2026-08-14)
+
+The decimal-perspective verdict in Ch. 5.21b still depended on
+`mpmath.zetazero` to supply the 100 zeros.  `experiments/riemann_siegel_roots.py`
+(`data/riemann_siegel_roots_data.json`) removes that dependency: it evaluates
+the real Hardy Z function, Z(t) = e^{iθ(t)} ζ(½+it), directly by the
+Riemann–Siegel formula with the Gabcke power-series remainder (C₀…C₄, 5 × 44
+coefficients to 50 decimals, transcribed from terry98004/libHGT, MIT; θ(t) =
+Im log Γ(¼ + it/2) − (t/2) log π computed exactly from log Gamma), and then
+LOCATES the zeros as sign-changes of Z on a fine grid, bisecting each
+bracket to 1e−10.  No `zetazero` anywhere — the instrument is a pure
+root-finder on a real oscillating function.
+
+* **The engine is honest.**  Z² matches |ζ(½+it)|² to relative error ≤5×10⁻⁵
+  on the critical line (7 test points, t = 15…236); the residual is the
+  Gabcke C₅-truncation of the remainder, vanishing as t grows.
+* **The roots agree.**  The first 100 zeros come out within max 3.1×10⁻⁶
+  (mean 9.5×10⁻⁸) of `mpmath.zetazero` — the first zero 14.134728 vs
+  14.134725, and the accuracy improves monotonically with t.
+* **The decimal verdict is reproduced from those roots.**  ⟨r⟩ = 0.6108
+  (GUE, z = +0.6, KS vs exact-GUE p = 0.68), decimal residual 0.225 (−3.0σ
+  below random decimals), RvM S-residual max 0.9979 < 1 — every headline
+  number of Ch. 5.21b is unchanged when the zeros come from the engine
+  instead of the oracle.  The result is a property of the zeros.
+* **The condensation.**  The main sum needs floor(√(t/2π)) terms — never
+  more than 6 anywhere in the first-100-zero search (t₁₀₀ ≈ 236.5).  The
+  window grows as √t (√4.1) while t grows 16.7×, and at t₁₀₀ that is a
+  6.3× per-evaluation reduction vs the t/2π Euler–Maclaurin term count —
+  the route this repo already measured FAILING on the critical line for
+  t ≳ 30 (`riemann_decimal_perspective` notes).  This is the promised
+  "new technique": all 100 zeros live in a 6-term window.
+
+Honest wall unchanged: the Riemann-von Mangoldt residual is a measurement
+of the count residual, within its O(log t) bound — 100 zeros cannot probe
+RH.
+
 ### Ch. 5.22  The golden fold is not a chain law (C2, decided)
 
 C2 (SPRING_BIBLE Ch. 14 / epoch_0d.json "conjectures.C2") claimed: "further
