@@ -346,11 +346,35 @@ given so it can be re-run).
     0.05); the genuine origin is adaptive (Weyl residuals mean 0.50/max
     0.88; Gram points 1/49 violations); the anchors score inside the
     random-origin spread (uniform median 0.612, 2/200 random origins beat
-    the best anchor — selection noise).  HONEST WALL (in the verdicts): the
+    the best anchor — selection noise).      HONEST WALL (in the verdicts): the
     provable content is negative classification — the letter's rank-one
     construction is impossible and no fixed lattice or anchor origin tracks
     the ordinates; RH remains open, and no project constant (C₀ = V(q0) =
     H(q0,0)) enters any of it.
+
+    **Sequel 2026-08-15 — The headline tested head-on, at every N, over the
+    whole orbit** (`experiments/zeta_direct_probe.py`,
+    `data/zeta_direct_probe_data.json`): the three earlier measurements
+    were indirect (lattice offsets, matching counts, origin residues); the
+    probe computes the decisive things directly.  (1) AT the ordinates,
+    mpmath dps 60: |f̂(γ₁)| = 2.65e-3 where a true zero gives exactly 0 and
+    the claim is 2.6e-55; the nearest zero of f̂ to γ₁ is 1.02 away (median
+    0.73 over n=1..50), |γ₁ − r₁| = 13.09, and the closest any ordinate
+    comes to a zero is |f̂| = 2.95e-5 at γ₆ = 37.586 (the tight match the
+    statistics had flagged); the identity f̂ = 4z·sin(zL/2)·R(z) re-verifies
+    on all 50 ordinates to the double-precision coefficient floor (5.4e-12).
+    (2) The interlacing theorem holds at EVERY N in {50,100,150,200,300} —
+    one root per pole gap, r₁ ∈ (0, 2.45] (1.0170/1.0258/1.0496/1.0612/
+    1.0644 as N grows), γ₁ = 5.77 w₁ for every N, min gap margin ≥ 5e-3;
+    N=100 cross-checks the persisted Dirac verdict to 8e-15.  (3) The
+    WHOLE 840-point orbit, not just the four anchors, is census-tested as
+    origins on the 2π/L lattice: the best has q = 0.3734, exactly the
+    expected extreme-value minimum of 840 random origins (mean 0.3734,
+    min 0.3734; random matches or beats it in 100% of trials) — the orbit
+    is a typical set of 840 candidates and no known point is a special
+    origin.  HONEST WALL: the direct numbers confirm the impossibility and
+    the indifference; RH is open; the provable content remains negative
+    classification, and C₀ = V(q0) = H(q0,0) does not enter.
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**

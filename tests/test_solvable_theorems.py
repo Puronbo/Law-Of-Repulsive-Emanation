@@ -24,6 +24,7 @@ number so none of the resolved claims can silently drift:
     - Connes footnote-14 Dirac reconstruction (the letter's claimed rank-one perturbation of the periodic Dirac operator with the Dirichlet kernel): reconstructed EXACTLY - fhat(z) = 4 z sin(zL/2) R(z) with R the rank-one secular function (verified to 5e-12), so the zeros are exactly {2 pi m/L : |m| > N} union {roots of R}, each root interlaced in its own pole gap; interlacing pins the FIRST eigenvalue into (0, 2.45] while gamma_1 = 14.1347 is 5.77 spacings up, so the claimed 2.6e-55 first-zero match is categorically impossible; the lattice part is exact at N=50 (m>N: 11 zeros at 2 pi m/L, |fhat| < 5e-15); the remaining roots miss the ordinates (median 0.82, 13/50 within 0.5); C_0 = V(q0) = H(q0,0) plays no role (scalar of an unrelated system, no trace formula); HONEST WALL: reproducing the structure is not the numbers, and neither direction speaks to RH
     - four-point coordinate lattice of 10262000 -> {10262000, 20001026, 20002610, 26102000}: exact finite arithmetic - gcd = 2 (the four span 2Z, Bezout 2 = -2238620*10262000 + 1148577*20001026); block structure 1026|2000, 2000|1026, 2000|2610, 2610|2000 closing the 4-cycle with step 1584 = 2^4*3^2*11; the full orbit of the digit multiset {0,0,0,0,1,2,2,6} is 840 points in three leading-digit clusters (1:210, 2:420, 6:210), none divisible by 3 (digit sum 11), 39 primes, anchors at ranks 470/532/543/729; the permutohedron has diameter 16, an EMPTY shell at distance 14, and (by S_8 transitivity) identical shells from every anchor; HONEST WALL: finite arithmetic, chance-level 2 pi/L proximity, no mechanism to zeta or RH
     - zeta-lattice alignment with an origin (the rigorous form of 'align the lattice with RH'): the ONLY honest spectral test is index-matched |gamma_k - (o + k s)| and the best FIXED lattice scores median error 10.5, 1/50 within 0.5, 0 within 0.05 (nearest-point metrics are trivially small at fine spacing and were rejected); the real 'origin' is adaptive - Weyl law residuals (mean 0.50, max 0.88) and Gram points (1/49 violations, offsets median 0.86, max 9.04 at gamma_1); the four anchors as origins on the 2 pi/L lattice sit inside the random-origin spread (uniform median 0.612, random 0.618, anchors 0.375..0.681; only 2/200 random origins beat the best anchor - selection noise, the expected number); any anchor rescaled to 61 points in [0,150] collapses to spacing 2.459 whatever its digits; PROVABLE negative theorem: interlacing pins the first rank-one eigenvalue to (0, 2.45], unreachable by gamma_1; HONEST WALL: RH is open, the provable content is negative classification, a positive proof needs mathematics outside this repository
+    - zeta direct probe (the headline number tested head-on): at N=150 the letter's fhat is evaluated AT the ordinates at mpmath dps 60 - |fhat(gamma_1)| = 2.65e-3 while a true zero gives exactly 0 (claim 2.6e-55), the nearest zero to gamma_1 is 1.02 away (median 0.73 over n=1..50), |gamma_1 - r_1| = 13.09, and the closest any ordinate comes to a zero is |fhat| = 2.95e-5 at gamma_6 = 37.586 (the tight-match known from the matching stats); the identity fhat = 4 z sin(zL/2) R(z) holds on all 50 ordinates to the double-precision coefficient floor (5.4e-12); the interlacing theorem is verified at EVERY N in {50,100,150,200,300} - one root per pole gap, r_1 in (0, 2.45] (1.017..1.064 as N grows), gamma_1 = 5.77 w_1 for every N, min gap margin >= 5e-3, and N=100 cross-checks the persisted connes_dirac verdict to 8e-15; the WHOLE 840-point orbit is tested as origins - the best has q = 0.3734, exactly the expected extreme-value minimum of 840 random origins (min_mean 0.3734; random matches or beats it in 100% of trials), so no known point is a special origin; HONEST WALL: direct numbers confirm the impossibility, RH is open, negative classification only
     - C2 golden fold: retrace chain is not a phi/phi^2 ladder (1/4 rungs)
     - hierarchical C0 flow: SUPPORTED (NC parity with flat flow, router gain, 6 not 30 comps)
    - flow-guided active learning: margin-AL reaches targets with fewer labels than random; raw force-cancellation score is not the winner
@@ -1671,5 +1672,74 @@ def test_zeta_lattice_alignment():
     # honest wall
     assert 'HONEST WALL' in v
     assert 'not a proof or disproof of RH' in v or 'RH is open' in v
+
+
+def test_zeta_direct_probe():
+    d = load('zeta_direct_probe_data.json')
+    v = d['verdict']
+    a1 = d['direct_ordinate_probe']
+    a2 = d['all_N_interlacing']
+    a3 = d['orbit_origin_census']
+
+    # A1: head-on, high-precision values of the letter's fhat AT the ordinates
+    assert a1['N'] == 150
+    assert a1['method'].startswith('mpmath')
+    r1 = a1['r1']
+    assert 0.5 < r1 < 2.5                    # first rank-one eigenvalue
+    assert a1['r1_zero_value_abs_fhat'] < 1e-30   # r_1 IS a zero, exactly
+    assert 12.0 < a1['positional_error_gamma1_minus_r1'] < 14.0
+    # no ordinate is a zero: |fhat(gamma_n)| far above the claimed 2.6e-55
+    assert a1['rows'][0]['abs_fhat'] > 1e-4
+    assert a1['abs_fhat']['min'] < 1e-3      # but some ordinates come close
+    assert a1['abs_fhat']['min'] > 1e-8      # ... never to 1e-7 let alone 1e-55
+    assert a1['newton_distance_delta']['median'] > 0.5
+    # exact nearest-root distances (the reliable measure)
+    exn = a1['exact_nearest_root_distance']
+    assert 0.5 < exn['median'] < 1.0
+    assert 0.5 < exn['gamma_1_to_root'] < 1.5
+    # identity fhat = 4 z sin(zL/2) R(z) holds on all ordinates to the
+    # floor set by the double-precision eigenvector coefficients
+    assert a1['max_rel_identity_err'] < 1e-10
+    # closest ordinate to a zero is gamma_6 (37.586), the tight-match known
+    # from the matching statistics
+    amin = min(a1['rows'], key=lambda r: r['abs_fhat'])
+    assert amin['abs_fhat'] < 1e-4
+
+    # A2: the interlacing theorem at every N in the sweep
+    sweep = a2['sweep']
+    assert [r['N'] for r in sweep if 'error' not in r] == [50, 100, 150,
+                                                           200, 300]
+    for r in sweep:
+        assert 'error' not in r
+        assert r['interlacing_ok'] is True
+        assert r['in_own_gap'] == r['n_roots_in_scan']
+        assert r['r1_in_omega1_interval'] is True
+        assert r['first_root_r1'] < 2.5      # gamma_1 unreachable
+        assert r['gamma_1_over_omega_1'] > 5.0
+        assert r['min_gap_margin_frac'] > 1e-4
+    # N=100 cross-checks the persisted connes_dirac verdict to 1e-14
+    cc = a2['cross_check_vs_connes_dirac']
+    assert abs(cc['diff']) < 1e-14
+    assert cc['connes_dirac_n_roots'] == cc['this_n_roots'] == 62
+
+    # A3: the whole 840-point orbit as origins vs the random extreme value
+    assert a3['n_orbit_points'] == 840
+    assert 0.3 < a3['best_q'] < 0.5
+    assert 0.5 < a3['median_q_over_orbit'] < 0.7
+    # the orbit's best origin is exactly the expected extreme-value minimum
+    # of 840 random origins: random matches or beats it essentially always
+    rex = a3['random_extreme']
+    assert abs(rex['min_mean'] - a3['best_q']) < 0.01
+    assert rex['frac_random_extreme_leq_orbit_best'] >= 0.9
+    # anchors agree with the four-anchor measurement to 4 decimals
+    assert abs(a3['anchors_q']['10262000'] - 0.3747) < 1e-3
+
+    # provable negative + honest wall
+    pr = d['provable']
+    assert pr['does_not_bear_on_RH'] is True
+    assert 'impossible' in pr['corollary'].lower()
+    assert 'HONEST WALL' in v
+    assert 'RH is open' in v
+
 
 

@@ -1588,6 +1588,37 @@ origin+spacing models against the first 50 ordinates.
   negative classifications; RH remains open, and a positive proof needs
   mathematics outside this repository.
 
+### Ch. 5.21k  The headline number, tested head-on (2026-08-15)
+
+The whole thread had been measuring the letter's claims indirectly —
+lattice offsets, matching counts, origin residues.  `zeta_direct_probe.py`
+(`data/zeta_direct_probe_data.json`) finally evaluates the decisive things
+directly.
+
+* **At the ordinates (mpmath dps 60).**  For N=150 the letter's f̂ is not
+  zero anywhere near the first 50 ordinates: |f̂(γ₁)| = 2.65e-3 while a
+  true zero gives exactly 0 and the claim is 2.6e-55.  The nearest zero of
+  f̂ to γ₁ is 1.02 away (median 0.73 over n=1..50), |γ₁ − r₁| = 13.09, and
+  the closest any ordinate comes to a zero is |f̂| = 2.95e-5 at γ₆ =
+  37.586 — exactly the tight match the matching statistics had flagged
+  (2/50 within 0.05).  The identity f̂ = 4z·sin(zL/2)·R(z) re-verifies on
+  all 50 ordinates to the double-precision coefficient floor (5.4e-12).
+* **At every N.**  The interlacing theorem — one root per pole gap, r₁ ∈
+  (0, 2.45] — holds for every N in {50, 100, 150, 200, 300}: r₁ =
+  1.0170/1.0258/1.0496/1.0612/1.0644 as N grows, always below ω₁ = 2.4496,
+  γ₁ = 5.77 ω₁'s away at every N, min gap margin ≥ 5e-3.  N=100
+  cross-checks the persisted Dirac verdict to 8e-15: the impossible-first-
+  zero statement is a theorem over the whole range, not one slice.
+* **At every known point.**  All 840 orbit points, not just the four
+  anchors, are tested as origins on the 2π/L lattice.  The best has
+  q = 0.3734 — exactly the expected extreme-value minimum of 840 random
+  origins (mean 0.3734, min 0.3734 over 100 trials; random matches or
+  beats it in 100% of trials).  The orbit is a typical set of 840
+  candidates: the "coincidences" were extreme-value noise all along.
+* **Honest wall.**  The direct numbers confirm the impossibility and the
+  indifference; RH is open; the provable content is negative classification
+  — and C₀ = V(q0) = H(q0,0) still does not enter any of it.
+
 ---
 
 ## Ch. 6  Creases (never forget these)

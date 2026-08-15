@@ -1,0 +1,498 @@
+{
+  "claim_under_test": "Connes 2026 'Letter to Riemann': the ground state of the finite-prime Weil form on [1,13] has Fourier-transform zeros matching the first 50 zeta ordinates with errors 2.6e-55 (first) .. 1e-2 (50th), via the footnote-14 rank-one Dirac construction.",
+  "direct_ordinate_probe": {
+    "method": "mpmath dps 60; fhat(z) = 4 z sin(zL/2) R(z), R(z) = sum_k c_k (-1)^k/(z^2 - w_k^2); ordinates are zeros of fhat iff |fhat(gamma_n)| = 0 within [0,150] (the only other zeros there are the R-roots)",
+    "N": 150,
+    "claimed_precision": "2.6e-55 (first) .. 1e-2 (50th)",
+    "r1": 1.0496021065724586,
+    "r1_zero_value_abs_fhat": 8.310074006523188e-65,
+    "gamma_1": 14.134725141734695,
+    "positional_error_gamma1_minus_r1": 13.085123035162235,
+    "abs_fhat": {
+      "median": 0.002974032315129007,
+      "min": 2.950540452964617e-05,
+      "max": 0.006782831522405377,
+      "n_below_1e-3": 9,
+      "n_below_1e-2": 50
+    },
+    "newton_distance_delta": {
+      "median": 0.9839336512952981,
+      "min": 0.00908647856862142,
+      "max": 25.284057769406324,
+      "delta_1": 2.0868203013600475
+    },
+    "exact_nearest_root_distance": {
+      "median": 0.7320074313495468,
+      "min": 0.009082178180168763,
+      "max": 1.2918972351978695,
+      "gamma_1_to_root": 1.0204498085565072
+    },
+    "newton_vs_exact": {
+      "max_abs_diff": 24.04587612980802,
+      "median_abs_diff": 0.2738733274745411,
+      "note": "Newton distance |fhat|/|fhat'| is the first-order distance from each ordinate to the nearest zero; where |fhat| and |fhat'| are both small the linearization breaks, so the EXACT nearest-root distances are the reliable measure."
+    },
+    "max_rel_identity_err": 5.412591464268335e-12,
+    "identity_note": "identity fhat = 4 z sin(zL/2) R(z) verified at dps 60 on all 50 ordinates; the floor is the double-precision eigenvector coefficients c_k.",
+    "rows": [
+      {
+        "n": 1,
+        "gamma": 14.134725141734695,
+        "abs_fhat": 0.0026454330190856155,
+        "newton_distance_delta": 2.0868203013600475,
+        "rel_identity_err": 9.848992591144036e-14
+      },
+      {
+        "n": 2,
+        "gamma": 21.022039638771556,
+        "abs_fhat": 0.001672824215860623,
+        "newton_distance_delta": 0.6358326380654543,
+        "rel_identity_err": 5.244521468004928e-14
+      },
+      {
+        "n": 3,
+        "gamma": 25.01085758014569,
+        "abs_fhat": 0.001999800433874805,
+        "newton_distance_delta": 0.7111083297828242,
+        "rel_identity_err": 1.3330529390408667e-13
+      },
+      {
+        "n": 4,
+        "gamma": 30.424876125859512,
+        "abs_fhat": 0.00032189065968518454,
+        "newton_distance_delta": 0.10379124991492827,
+        "rel_identity_err": 2.5767033533707446e-13
+      },
+      {
+        "n": 5,
+        "gamma": 32.93506158773919,
+        "abs_fhat": 0.0007157758426085264,
+        "newton_distance_delta": 0.24105867924868757,
+        "rel_identity_err": 8.3746037280567e-14
+      },
+      {
+        "n": 6,
+        "gamma": 37.586178158825675,
+        "abs_fhat": 2.950540452964617e-05,
+        "newton_distance_delta": 0.00908647856862142,
+        "rel_identity_err": 5.412591464268335e-12
+      },
+      {
+        "n": 7,
+        "gamma": 40.9187190121475,
+        "abs_fhat": 0.0028902609794223496,
+        "newton_distance_delta": 3.360387074930488,
+        "rel_identity_err": 6.861846091091603e-14
+      },
+      {
+        "n": 8,
+        "gamma": 43.327073280915,
+        "abs_fhat": 0.003032523793140207,
+        "newton_distance_delta": 2.2667577231325198,
+        "rel_identity_err": 6.664220441541112e-14
+      },
+      {
+        "n": 9,
+        "gamma": 48.00515088116716,
+        "abs_fhat": 0.002915540837117807,
+        "newton_distance_delta": 1.223486500035792,
+        "rel_identity_err": 3.641498225163553e-14
+      },
+      {
+        "n": 10,
+        "gamma": 49.7738324776723,
+        "abs_fhat": 0.000180886150551184,
+        "newton_distance_delta": 0.04544949054461927,
+        "rel_identity_err": 1.0035489095332619e-12
+      },
+      {
+        "n": 11,
+        "gamma": 52.970321477714464,
+        "abs_fhat": 0.0031927058975406634,
+        "newton_distance_delta": 1.8901539989870524,
+        "rel_identity_err": 4.5528085124873596e-14
+      },
+      {
+        "n": 12,
+        "gamma": 56.44624769706339,
+        "abs_fhat": 0.0034946000500642458,
+        "newton_distance_delta": 1.079898190210819,
+        "rel_identity_err": 5.892419435017781e-14
+      },
+      {
+        "n": 13,
+        "gamma": 59.34704400260235,
+        "abs_fhat": 0.0008493500380920168,
+        "newton_distance_delta": 0.20910019535901853,
+        "rel_identity_err": 2.8565110901272986e-13
+      },
+      {
+        "n": 14,
+        "gamma": 60.83177852460981,
+        "abs_fhat": 0.0033553992591342924,
+        "newton_distance_delta": 14.859245100919109,
+        "rel_identity_err": 8.297640459535073e-14
+      },
+      {
+        "n": 15,
+        "gamma": 65.1125440480816,
+        "abs_fhat": 0.002879302475453507,
+        "newton_distance_delta": 1.2202394663682012,
+        "rel_identity_err": 3.245054598874907e-14
+      },
+      {
+        "n": 16,
+        "gamma": 67.07981052949417,
+        "abs_fhat": 0.0008872219499623253,
+        "newton_distance_delta": 0.22691647881302515,
+        "rel_identity_err": 1.4271197248295877e-13
+      },
+      {
+        "n": 17,
+        "gamma": 69.54640171117398,
+        "abs_fhat": 0.0012993294608737395,
+        "newton_distance_delta": 0.35846689174479723,
+        "rel_identity_err": 9.17134697883552e-14
+      },
+      {
+        "n": 18,
+        "gamma": 72.0671576744819,
+        "abs_fhat": 0.0019486613341803808,
+        "newton_distance_delta": 0.5754834340532912,
+        "rel_identity_err": 4.560737863834083e-14
+      },
+      {
+        "n": 19,
+        "gamma": 75.70469069908393,
+        "abs_fhat": 0.003946192195702184,
+        "newton_distance_delta": 1.5569453906568531,
+        "rel_identity_err": 1.031487361462514e-13
+      },
+      {
+        "n": 20,
+        "gamma": 77.1448400688748,
+        "abs_fhat": 0.0021559611296703748,
+        "newton_distance_delta": 0.6253504154650321,
+        "rel_identity_err": 3.904713164332249e-15
+      },
+      {
+        "n": 21,
+        "gamma": 79.33737502024937,
+        "abs_fhat": 0.0017559073622871915,
+        "newton_distance_delta": 0.4604569953307758,
+        "rel_identity_err": 6.847932235236334e-14
+      },
+      {
+        "n": 22,
+        "gamma": 82.91038085408603,
+        "abs_fhat": 0.004038684391897674,
+        "newton_distance_delta": 1.649235175705233,
+        "rel_identity_err": 6.62646110416444e-14
+      },
+      {
+        "n": 23,
+        "gamma": 84.73549298051705,
+        "abs_fhat": 0.0038024151013419066,
+        "newton_distance_delta": 2.086049988964782,
+        "rel_identity_err": 2.9584199159367636e-14
+      },
+      {
+        "n": 24,
+        "gamma": 87.42527461312523,
+        "abs_fhat": 0.005523657870130184,
+        "newton_distance_delta": 7.910608134523205,
+        "rel_identity_err": 4.069283056672616e-14
+      },
+      {
+        "n": 25,
+        "gamma": 88.80911120763446,
+        "abs_fhat": 0.0006830431406304705,
+        "newton_distance_delta": 0.1193091108487709,
+        "rel_identity_err": 3.496853253540958e-13
+      },
+      {
+        "n": 26,
+        "gamma": 92.49189927055849,
+        "abs_fhat": 0.004984208440998939,
+        "newton_distance_delta": 3.5051058137096587,
+        "rel_identity_err": 5.837678707858364e-14
+      },
+      {
+        "n": 27,
+        "gamma": 94.65134404051989,
+        "abs_fhat": 0.006782831522405377,
+        "newton_distance_delta": 2.3396068002095713,
+        "rel_identity_err": 2.518669337045382e-14
+      },
+      {
+        "n": 28,
+        "gamma": 95.87063422824531,
+        "abs_fhat": 0.004514407237636446,
+        "newton_distance_delta": 0.790297312225942,
+        "rel_identity_err": 5.1270475962342874e-14
+      },
+      {
+        "n": 29,
+        "gamma": 98.83119421819369,
+        "abs_fhat": 0.0008118350840426474,
+        "newton_distance_delta": 0.18540526243832114,
+        "rel_identity_err": 1.9966668518323838e-13
+      },
+      {
+        "n": 30,
+        "gamma": 101.31785100573138,
+        "abs_fhat": 0.0016927932176688033,
+        "newton_distance_delta": 0.40051957934485094,
+        "rel_identity_err": 8.639074773039423e-14
+      },
+      {
+        "n": 31,
+        "gamma": 103.72553804047834,
+        "abs_fhat": 0.0021068147268830336,
+        "newton_distance_delta": 0.4544121170401617,
+        "rel_identity_err": 9.049130107971953e-14
+      },
+      {
+        "n": 32,
+        "gamma": 105.44662305232609,
+        "abs_fhat": 0.001909681701103721,
+        "newton_distance_delta": 0.3881179675621349,
+        "rel_identity_err": 1.2717726482306872e-13
+      },
+      {
+        "n": 33,
+        "gamma": 107.1686111842764,
+        "abs_fhat": 0.004199839426557771,
+        "newton_distance_delta": 4.211911270227579,
+        "rel_identity_err": 7.601347091522721e-14
+      },
+      {
+        "n": 34,
+        "gamma": 111.02953554316967,
+        "abs_fhat": 0.0021582863744438762,
+        "newton_distance_delta": 0.44073795090749157,
+        "rel_identity_err": 8.4244457633052e-14
+      },
+      {
+        "n": 35,
+        "gamma": 111.87465917699264,
+        "abs_fhat": 0.004361630973133119,
+        "newton_distance_delta": 16.723024497190604,
+        "rel_identity_err": 4.331577182102853e-14
+      },
+      {
+        "n": 36,
+        "gamma": 114.32022091545271,
+        "abs_fhat": 0.005037499144646155,
+        "newton_distance_delta": 25.284057769406324,
+        "rel_identity_err": 3.474558717023953e-14
+      },
+      {
+        "n": 37,
+        "gamma": 116.22668032085755,
+        "abs_fhat": 0.0035383142666417762,
+        "newton_distance_delta": 0.9412021971468577,
+        "rel_identity_err": 1.8950675562607067e-14
+      },
+      {
+        "n": 38,
+        "gamma": 118.79078286597621,
+        "abs_fhat": 0.00456249058887614,
+        "newton_distance_delta": 1.6780782536721328,
+        "rel_identity_err": 1.7712838634755341e-15
+      },
+      {
+        "n": 39,
+        "gamma": 121.37012500242065,
+        "abs_fhat": 0.005737600404272503,
+        "newton_distance_delta": 2.7782779860870126,
+        "rel_identity_err": 9.238537782832912e-15
+      },
+      {
+        "n": 40,
+        "gamma": 122.94682929355258,
+        "abs_fhat": 0.0005621780197294099,
+        "newton_distance_delta": 0.07718635534460302,
+        "rel_identity_err": 6.359926700926475e-13
+      },
+      {
+        "n": 41,
+        "gamma": 124.25681855434577,
+        "abs_fhat": 0.005402540336176365,
+        "newton_distance_delta": 3.070297794773706,
+        "rel_identity_err": 5.152224366854654e-14
+      },
+      {
+        "n": 42,
+        "gamma": 127.5166838795965,
+        "abs_fhat": 0.002490027814118344,
+        "newton_distance_delta": 0.3400421672849307,
+        "rel_identity_err": 2.2133017929948644e-13
+      },
+      {
+        "n": 43,
+        "gamma": 129.57870419995606,
+        "abs_fhat": 0.00469029660725005,
+        "newton_distance_delta": 1.0266651054437383,
+        "rel_identity_err": 1.0843597906762693e-13
+      },
+      {
+        "n": 44,
+        "gamma": 131.08768853093267,
+        "abs_fhat": 0.004420244868695707,
+        "newton_distance_delta": 1.3463607477780961,
+        "rel_identity_err": 3.8659468947437285e-15
+      },
+      {
+        "n": 45,
+        "gamma": 133.4977372029976,
+        "abs_fhat": 0.006138837314722243,
+        "newton_distance_delta": 1.565548128057752,
+        "rel_identity_err": 6.476911166958565e-16
+      },
+      {
+        "n": 46,
+        "gamma": 134.75650975337388,
+        "abs_fhat": 0.0039202541686981516,
+        "newton_distance_delta": 0.5910780964808192,
+        "rel_identity_err": 2.4393593984172933e-13
+      },
+      {
+        "n": 47,
+        "gamma": 138.11604205453344,
+        "abs_fhat": 0.0040945274052030314,
+        "newton_distance_delta": 0.7603759358942174,
+        "rel_identity_err": 3.5503269399553857e-14
+      },
+      {
+        "n": 48,
+        "gamma": 139.7362089521214,
+        "abs_fhat": 0.002065533139417594,
+        "newton_distance_delta": 0.29497632649494965,
+        "rel_identity_err": 8.183008161501305e-14
+      },
+      {
+        "n": 49,
+        "gamma": 141.12370740402113,
+        "abs_fhat": 0.005444474003716116,
+        "newton_distance_delta": 7.427155230266072,
+        "rel_identity_err": 2.603882321324869e-14
+      },
+      {
+        "n": 50,
+        "gamma": 143.11184580762063,
+        "abs_fhat": 0.004677079642661702,
+        "newton_distance_delta": 1.0709948446504411,
+        "rel_identity_err": 2.1129468644243098e-14
+      }
+    ]
+  },
+  "all_N_interlacing": {
+    "sweep": [
+      {
+        "N": 50,
+        "lambda_min": -15.238382560075872,
+        "n_poles": 51,
+        "n_roots_in_scan": 50,
+        "in_own_gap": 50,
+        "interlacing_ok": true,
+        "first_root_r1": 1.017000680641679,
+        "r1_in_omega1_interval": true,
+        "gamma_1_over_omega_1": 5.77,
+        "min_gap_margin_frac": 0.005256526645999366
+      },
+      {
+        "N": 100,
+        "lambda_min": -15.414696425240972,
+        "n_poles": 101,
+        "n_roots_in_scan": 62,
+        "in_own_gap": 62,
+        "interlacing_ok": true,
+        "first_root_r1": 1.0258470804249211,
+        "r1_in_omega1_interval": true,
+        "gamma_1_over_omega_1": 5.77,
+        "min_gap_margin_frac": 0.038694766147351456
+      },
+      {
+        "N": 150,
+        "lambda_min": -18.809419112368648,
+        "n_poles": 151,
+        "n_roots_in_scan": 62,
+        "in_own_gap": 62,
+        "interlacing_ok": true,
+        "first_root_r1": 1.0496021065724586,
+        "r1_in_omega1_interval": true,
+        "gamma_1_over_omega_1": 5.77,
+        "min_gap_margin_frac": 0.08389872879387365
+      },
+      {
+        "N": 200,
+        "lambda_min": -21.147013388581602,
+        "n_poles": 201,
+        "n_roots_in_scan": 62,
+        "in_own_gap": 62,
+        "interlacing_ok": true,
+        "first_root_r1": 1.0612079637639846,
+        "r1_in_omega1_interval": true,
+        "gamma_1_over_omega_1": 5.77,
+        "min_gap_margin_frac": 0.08792019195134614
+      },
+      {
+        "N": 300,
+        "lambda_min": -22.142915152799933,
+        "n_poles": 301,
+        "n_roots_in_scan": 62,
+        "in_own_gap": 62,
+        "interlacing_ok": true,
+        "first_root_r1": 1.064350282195832,
+        "r1_in_omega1_interval": true,
+        "gamma_1_over_omega_1": 5.77,
+        "min_gap_margin_frac": 0.07289320765629076
+      }
+    ],
+    "cross_check_vs_connes_dirac": {
+      "connes_dirac_first_r1": 1.0258470804249293,
+      "this_first_r1": 1.0258470804249211,
+      "diff": 8.215650382226158e-15,
+      "connes_dirac_n_roots": 62,
+      "this_n_roots": 62
+    },
+    "wall": "r_1 in (0, 2.45] for every N while gamma_1 = 14.1347 is 5.77 w_1's away: the first-zero match is categorically impossible for every truncation in the sweep."
+  },
+  "orbit_origin_census": {
+    "spacing": 2.449633279854652,
+    "n_orbit_points": 840,
+    "best_origin": 22016,
+    "best_q": 0.3734278600937557,
+    "median_q_over_orbit": 0.6236461587332727,
+    "anchors_q": {
+      "10262000": 0.3747,
+      "20001026": 0.6145,
+      "20002610": 0.6812,
+      "26102000": 0.3846
+    },
+    "anchors_rank_in_orbit": {
+      "10262000": 5,
+      "20001026": 414,
+      "20002610": 570,
+      "26102000": 14
+    },
+    "random_extreme": {
+      "trials": 100,
+      "origins_per_trial": 840,
+      "min_mean": 0.3734278600937557,
+      "min_median": 0.3734278600937557,
+      "min_min": 0.3734278600937557,
+      "frac_random_extreme_leq_orbit_best": 1.0
+    },
+    "verdict": "The best of all 840 known points as an origin is q = 0.373, which is exactly the expected extreme-value minimum of 840 random origins (mean 0.373): in 100% of trials a random 840-set matches or beats the orbit best, so the orbit is a typical set of 840 candidates and no known point is a special origin."
+  },
+  "provable": {
+    "lemma": "Cauchy interlacing for the rank-one secular function R(z) = sum_k c_k (-1)^k/(z^2 - w_k^2): exactly one root in (0, w_1), one in (w_k, w_{k+1}), none elsewhere.",
+    "corollary": "The first rank-one eigenvalue lies in (0, 2.45]; gamma_1 = 14.1347 is 5.77 w_1's away, so the letter's claimed eigenvalue at gamma_1 (2.6e-55 precision) is impossible.",
+    "verified": "r_1 in (0, 2.45] for every N while gamma_1 = 14.1347 is 5.77 w_1's away: the first-zero match is categorically impossible for every truncation in the sweep.",
+    "does_not_bear_on_RH": true
+  },
+  "verdict": "DIRECT PROBE: THE HEADLINE NUMBER IS UNREACHABLE, AND THE WHOLE ORBIT IS INDIFFERENT AS ORIGINS.  (A1) at N=150 the letter's fhat is NOT zero at any ordinate: |fhat(gamma_1)| = 0.00265, while a true zero gives exactly 0 and the claim is 2.6e-55; the nearest zero of fhat to gamma_1 is 1.020 away (median over n=1..50: 0.732), |gamma_1 - r_1| = 13.085, and the closest any ordinate comes to a zero is |fhat| = 2.95e-05 at gamma_6 = 37.586; the identity fhat = 4 z sin(zL/2) R(z) holds on all 50 ordinates (max rel 5.4e-12, floor = the double-precision coefficients).  (A2) interlacing holds at every N in (50, 100, 150, 200, 300): N=50 r_1=1.0170; N=100 r_1=1.0258; N=150 r_1=1.0496; N=200 r_1=1.0612; N=300 r_1=1.0644.  (A3) the best of all 840 orbit origins has q = 0.373, exactly the expected extreme-value minimum of 840 random origins (mean 0.373; random matches or beats it in 100% of trials): no known point is a special origin.  HONEST WALL: RH is open; the direct numbers are negative classifications; a positive proof needs mathematics outside this repository.",
+  "runtime_sec": 12.2
+}
