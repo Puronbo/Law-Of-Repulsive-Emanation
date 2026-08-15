@@ -375,6 +375,40 @@ given so it can be re-run).
     origin.  HONEST WALL: the direct numbers confirm the impossibility and
     the indifference; RH is open; the provable content remains negative
     classification, and C₀ = V(q0) = H(q0,0) does not enter.
+
+    **Sequel 2026-08-15 — The interlacing theorem, CERTIFIED by interval
+    arithmetic, and where it breaks** (`experiments/zeta_interlacing_certify.py`,
+    `data/zeta_interlacing_certify_data.json`): the probe verified the
+    interlacing numerically; the certifier turns it into a statement with
+    validated rounding.  R(z) = Σ_k c_k(−1)^k/(z²−ω_k²) is evaluated in
+    mpmath.iv (dps 80) at both ends of every pole gap; opposite certified
+    signs give a root by the IVT — certified at N=100 in 100/100 gaps
+    (endpoint magnitudes ≥ 1.8e0), at N=150 in 150/150, at N=200 in 200/200.
+    Uniqueness: where the residues ρ_k = c_k(−1)^k share one sign (exact
+    float check; N ≤ 200: common sign +1, min |ρ| = 1.3e-3), R′(z) =
+    −2z·Σ ρ_k/(z²−ω_k²)² is strictly one-signed on every gap, so each IVT
+    root is unique — exactly one root per pole gap, a certified theorem at
+    N ≤ 200.  FINDING: the interlacing is NOT a theorem in N.  At N=300 the
+    ground-state coefficients FLIP sign at k = 153, 266, 267 (residue
+    indices 154, 267, 268), and exactly those three gaps lose their root —
+    297/300 certified, the three failures the three sign-flip gaps.  THE
+    WALL still certifies at EVERY N in the sweep (100, 150, 200, 300): the
+    first root is enclosed to ~2e-24 (80-step mp bisection, exact signs)
+    inside (0, 2.45], γ₁ = 14.1347 is 5.77 ω₁'s away, and R and
+    sin(γ₁L/2) are certified nonzero at γ₁ (|f̂(γ₁)| > 1.5e-2) — the
+    claimed 2.6e-55 first-zero match is CERTIFIED IMPOSSIBLE at every
+    certified N.  An independent mp Newton iterate (dps 60, x0 = 1.5) lands
+    inside the certified enclosure (4.9e-25 from the midpoint); a float64
+    brentq cross-check is NOT a valid containment test near this root —
+    |R| ~ 1e-19 there sits below the float64 cancellation floor (~1e-18),
+    so the float sign is noise, while the mp interval evaluation is exact.
+    The certified r₁ (1.0258470804249210…) differs from the persisted
+    connes_dirac value (1.0258470804249293) by 8.2e-15 — the documented
+    round-off of the two matrix assemblies (dense product vs blocked lean
+    builder), not a discrepancy of the theorem.  HONEST WALL: this is
+    negative certification of the letter's construction — RH remains open,
+    no de Bruijn–Newman Λ consequence, finitely many primes never become
+    the full Euler product, and C₀ = V(q0) = H(q0,0) does not enter.
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**

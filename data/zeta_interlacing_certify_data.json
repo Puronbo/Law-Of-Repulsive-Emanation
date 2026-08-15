@@ -1,0 +1,201 @@
+{
+  "claim_under_test": "Connes 2026 'Letter to Riemann' footnote 14: the roots of the secular function R(z) of the rank-one Dirac construction interlace the poles w_k = 2 pi k/L with first eigenvalue in (0, w_1], while the claimed first zeta zero match is 2.6e-55 at gamma_1 = 14.1347.",
+  "method": "mpmath interval arithmetic (iv.dps = 80): R evaluated with validated rounding at both ends of every pole gap; opposite certified signs give a root by the IVT; the residues rho_k = c_k (-1)^k are checked (exact floats) for one common sign, which makes R'(z) = -2z sum rho_k/(z^2 - w_k^2)^2 strictly one-signed on every gap -> exactly one root per gap where that holds; the first root is enclosed by interval-aware point bisection; the wall is certified at every N (gap-0 root in (0, 2.45], R and sin nonzero at gamma_1).",
+  "N_main": 100,
+  "certified": {
+    "N": 100,
+    "lambda_min": -15.414696425240972,
+    "residues": {
+      "common_sign": 1.0,
+      "all_same_sign": true,
+      "min_abs_residue": 0.0013242153663010087,
+      "n_zero": 0,
+      "sign_flips_at_k": []
+    },
+    "gap_existence": {
+      "n_gaps": 100,
+      "n_certified": 100,
+      "failing_gaps": [],
+      "min_endpoint_magnitude": 1.8303245453135846,
+      "delta_frac": 1e-06
+    },
+    "first_root": {
+      "enclosure_lo": 1.0258470804249211,
+      "enclosure_hi": 1.0258470804249211,
+      "width": 2.0262851043821394e-24,
+      "in_omega1_interval": true,
+      "newton_mp60_inside_enclosure": true,
+      "newton_diff_from_midpoint": 4.867886572233007e-25
+    },
+    "wall": {
+      "gamma_1_over_omega_1": 5.770139252261209,
+      "sin_at_gamma1_sign_definite": true,
+      "R_at_gamma1_sign_definite": true,
+      "abs_R_at_gamma1_lower": 0.00038994621529695264,
+      "abs_fhat_gamma1_lower": 0.014572792610216519,
+      "certified_impossible_first_zero": true
+    }
+  },
+  "uniqueness": {
+    "argument": "R' has the strict sign -sign(rho_k) on every gap (z > 0), so once all residues share a sign R is strictly monotone on every gap: the IVT root is unique.",
+    "where_it_holds": "N = 100, 150, 200 (residues all one sign)",
+    "where_it_fails": "N = 300: sign flips at k = 153, 266, 267; those three gaps have no certified root (same-sign endpoints)"
+  },
+  "sweep": [
+    {
+      "N": 100,
+      "lambda_min": -15.414696425240972,
+      "residues": {
+        "common_sign": 1.0,
+        "all_same_sign": true,
+        "min_abs_residue": 0.0013242153663010087,
+        "n_zero": 0,
+        "sign_flips_at_k": []
+      },
+      "gap_existence": {
+        "n_gaps": 100,
+        "n_certified": 100,
+        "failing_gaps": [],
+        "min_endpoint_magnitude": 1.8303245453135846,
+        "delta_frac": 1e-06
+      },
+      "first_root": {
+        "enclosure_lo": 1.0258470804249211,
+        "enclosure_hi": 1.0258470804249211,
+        "width": 2.0262851043821394e-24,
+        "in_omega1_interval": true,
+        "newton_mp60_inside_enclosure": true,
+        "newton_diff_from_midpoint": 4.867886572233007e-25
+      },
+      "wall": {
+        "gamma_1_over_omega_1": 5.770139252261209,
+        "sin_at_gamma1_sign_definite": true,
+        "R_at_gamma1_sign_definite": true,
+        "abs_R_at_gamma1_lower": 0.00038994621529695264,
+        "abs_fhat_gamma1_lower": 0.014572792610216519,
+        "certified_impossible_first_zero": true
+      }
+    },
+    {
+      "N": 150,
+      "lambda_min": -18.809419112368648,
+      "residues": {
+        "common_sign": -1.0,
+        "all_same_sign": true,
+        "min_abs_residue": 0.0002816642365531253,
+        "n_zero": 0,
+        "sign_flips_at_k": []
+      },
+      "gap_existence": {
+        "n_gaps": 150,
+        "n_certified": 150,
+        "failing_gaps": [],
+        "min_endpoint_magnitude": 0.20377549824344998,
+        "delta_frac": 1e-06
+      },
+      "first_root": {
+        "enclosure_lo": 1.0496021065724586,
+        "enclosure_hi": 1.0496021065724586,
+        "width": 2.0262851043821394e-24,
+        "in_omega1_interval": true,
+        "newton_mp60_inside_enclosure": true,
+        "newton_diff_from_midpoint": 3.682815908793072e-25
+      },
+      "wall": {
+        "gamma_1_over_omega_1": 5.770139252261209,
+        "sin_at_gamma1_sign_definite": true,
+        "R_at_gamma1_sign_definite": true,
+        "abs_R_at_gamma1_lower": 7.078784562479292e-05,
+        "abs_fhat_gamma1_lower": 0.0026454330190858804,
+        "certified_impossible_first_zero": true
+      }
+    },
+    {
+      "N": 200,
+      "lambda_min": -21.147013388581602,
+      "residues": {
+        "common_sign": -1.0,
+        "all_same_sign": true,
+        "min_abs_residue": 6.705468068923628e-05,
+        "n_zero": 0,
+        "sign_flips_at_k": []
+      },
+      "gap_existence": {
+        "n_gaps": 200,
+        "n_certified": 200,
+        "failing_gaps": [],
+        "min_endpoint_magnitude": 0.028486028829004965,
+        "delta_frac": 1e-06
+      },
+      "first_root": {
+        "enclosure_lo": 1.0612079637639844,
+        "enclosure_hi": 1.0612079637639844,
+        "width": 2.0262851043821394e-24,
+        "in_omega1_interval": true,
+        "newton_mp60_inside_enclosure": true,
+        "newton_diff_from_midpoint": 2.7125512178276293e-25
+      },
+      "wall": {
+        "gamma_1_over_omega_1": 5.770139252261209,
+        "sin_at_gamma1_sign_definite": true,
+        "R_at_gamma1_sign_definite": true,
+        "abs_R_at_gamma1_lower": 3.3572282035233e-05,
+        "abs_fhat_gamma1_lower": 0.0012546394460543227,
+        "certified_impossible_first_zero": true
+      }
+    },
+    {
+      "N": 300,
+      "lambda_min": -22.142915152799933,
+      "residues": {
+        "common_sign": 0.0,
+        "all_same_sign": false,
+        "min_abs_residue": 3.7670882193827994e-07,
+        "n_zero": 0,
+        "sign_flips_at_k": [
+          154,
+          267,
+          268
+        ]
+      },
+      "gap_existence": {
+        "n_gaps": 300,
+        "n_certified": 297,
+        "failing_gaps": [
+          153,
+          266,
+          267
+        ],
+        "min_endpoint_magnitude": 0.00020102187802039962,
+        "delta_frac": 1e-06
+      },
+      "first_root": {
+        "enclosure_lo": 1.064350282195832,
+        "enclosure_hi": 1.064350282195832,
+        "width": 2.0262851043821394e-24,
+        "in_omega1_interval": true,
+        "newton_mp60_inside_enclosure": true,
+        "newton_diff_from_midpoint": 9.074855394419077e-25
+      },
+      "wall": {
+        "gamma_1_over_omega_1": 5.770139252261209,
+        "sin_at_gamma1_sign_definite": true,
+        "R_at_gamma1_sign_definite": true,
+        "abs_R_at_gamma1_lower": 1.1618923031638232e-05,
+        "abs_fhat_gamma1_lower": 0.0004342141276206287,
+        "certified_impossible_first_zero": true
+      }
+    }
+  ],
+  "cross_check": {
+    "connes_dirac_r1": 1.0258470804249293,
+    "diff_certified_root_vs_connes_dirac_r1": 8.215650382226158e-15,
+    "note": "connes_dirac builds the archimedean matrix as a full dense product; the lean builder accumulates it in blocks -- the coefficients differ at the ~1e-15 round-off level, so the roots differ by ~8e-15 (both constructions are the letter's at float precision).  The CERTIFIED object is the construction AS COMPUTED by the lean builder: the root is enclosed to 2e-24 by mp bisection with exact interval signs, and an independent mp Newton iterate (dps 60, from x0=1.5) lands inside the enclosure.  Float root-finders (brentq) disagree at the ~1e-16 level because |R| ~ 1e-19 there is below the float64 cancellation floor -- the float sign is noise.",
+    "newton_mp60_inside_enclosure": true,
+    "newton_diff_from_midpoint": 4.867886572233007e-25
+  },
+  "gamma_1": 14.134725141734695,
+  "omega_1": 2.449633279854652,
+  "verdict": "CERTIFIED BY INTERVAL ARITHMETIC: at N=100 the letter's rank-one construction has EXACTLY ONE root per pole gap (all 100 gaps; IVT with validated rounding at both ends of every gap, endpoint magnitudes >= 1.8e+00; uniqueness by the certified common sign of the residues rho_k = c_k (-1)^k, which makes R' strictly one-signed on every gap).  FINDING: the one-root-per-gap interlacing is NOT a theorem in N -- at N=300 the coefficients flip sign at k = 153, 266, 267 and exactly those three gaps lose their root (297/300); it is certified in every gap at N = 100, 150, 200.  THE WALL holds at EVERY N in the sweep: the first root is certified inside (0, 2.4496] (N=100: enclosure [1.0258470804, 1.0258470804], width 2.0e-24) while gamma_1 = 14.1347 is 5.77 w_1's away, and R and sin(gamma_1 L/2) are certified nonzero at gamma_1 (|fhat(gamma_1)| > 1.46e-02) -- the letter's claimed 2.6e-55 first-zero match is CERTIFIED IMPOSSIBLE at every certified N.  HONEST WALL: this certifies negative statements about the letter's construction, not anything about RH -- RH is open; no de Bruijn-Newman Lambda consequence; finitely many primes never become the full Euler product; C_0 = V(q0) = H(q0,0) does not enter.",
+  "runtime_sec": 15.4
+}

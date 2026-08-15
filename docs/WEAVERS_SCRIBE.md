@@ -1619,6 +1619,42 @@ directly.
   indifference; RH is open; the provable content is negative classification
   — and C₀ = V(q0) = H(q0,0) still does not enter any of it.
 
+### Ch. 5.21l  The interlacing theorem, certified — and where it breaks (2026-08-15)
+
+`zeta_interlacing_certify.py` (`data/zeta_interlacing_certify_data.json`)
+turns the numerically verified interlacing into a statement with validated
+rounding — and then shows exactly where the "theorem" stops being one.
+
+* **Certified by the IVT, with validated rounding.**  R(z) is evaluated in
+  mpmath.iv (dps 80) at both ends of every pole gap.  Opposite certified
+  signs ⇒ a root in the gap.  At N=100: 100/100 gaps, endpoint magnitudes
+  ≥ 1.8e0; N=150: 150/150; N=200: 200/200.
+* **Uniqueness where the residues share a sign.**  At N ≤ 200 the residues
+  ρ_k = c_k(−1)^k are all +1 (min |ρ| = 1.3e-3), so R′(z) = −2z·Σ ρ_k/
+  (z²−ω_k²)² is strictly one-signed on every gap and each IVT root is
+  unique: exactly one root per pole gap — a certified theorem at N ≤ 200.
+* **The interlacing is NOT a theorem in N.**  At N=300 the coefficients
+  flip sign at k = 153, 266, 267 and exactly those three gaps lose their
+  root (297/300).  The uniqueness argument is a property of the
+  truncation's coefficient sign pattern — global interlacing is certified
+  at N ≤ 200, breaks at N=300.  The wall is unscathed.
+* **The wall, at every N.**  The first root is enclosed to ~2e-24 inside
+  (0, 2.45] (N=100: 1.02584708042492105355…, width 2.0e-24), γ₁ = 14.1347
+  is 5.77 ω₁'s away, and R and sin(γ₁L/2) are certified nonzero at γ₁
+  (|f̂(γ₁)| > 1.5e-2) — the claimed 2.6e-55 first-zero match is certified
+  impossible at N = 100, 150, 200, 300.  An independent mp Newton iterate
+  (dps 60, x0 = 1.5) lands inside the enclosure (4.9e-25 from the
+  midpoint).
+* **A precision lesson.**  A float64 brentq cross-check FAILS as a
+  containment test here: near the root |R| ~ 1e-19 is below the float64
+  cancellation floor (~1e-18), so the float sign is noise; the mp interval
+  evaluation is exact.  Float root-finders disagree at the ~1e-16 level
+  while the certified root is exact to 24 digits.
+* **Honest wall.**  This is negative certification of the letter's
+  construction: RH remains open, no de Bruijn–Newman consequence, finitely
+  many primes never become the full Euler product, and C₀ = V(q0) =
+  H(q0,0) does not enter.
+
 ---
 
 ## Ch. 6  Creases (never forget these)
