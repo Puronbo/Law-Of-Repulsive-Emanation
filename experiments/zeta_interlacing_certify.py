@@ -17,11 +17,15 @@ precise point where it is NOT:
     R'(z) = -2z sum_k rho_k/(z^2 - w_k^2)^2 is then strictly one-signed on
     every gap (z > 0), so the IVT root is unique: exactly one per gap.
     The common-sign condition is an EXACT float check, and it FAILS at
-    N = 300: the coefficients flip sign at k = 153, 266, 267, and exactly
-    those three gaps lose their root (297/300 certified) -- the
-    one-root-per-gap interlacing is a property of the truncation's sign
-    pattern, not a theorem in N.  At N = 100, 150, 200 it is certified in
-    EVERY gap.
+    N = 300: the residues flip sign between k = 153/154, 266/267, 267/268.
+    The affected gaps break the one-root rule PRECISELY (characterized by
+    a numeric float scan): gap 153 KEEPS TWO roots in thin ~1e-4 layers
+    hugging the poles (its residues are tiny, ~4e-7), gaps 266 and 267
+    hold NONE, and every one of the other 297 gaps holds exactly one
+    (histogram {0: 2, 1: 297, 2: 1}, total 299) -- the one-root-per-gap
+    interlacing fails exactly where the adjacent residues have opposite
+    signs, a property of the truncation's sign pattern, not a theorem in
+    N.  At N = 100, 150, 200 it is certified in EVERY gap.
   * THE WALL (certified at EVERY N in the sweep): the first root r_1 is
     tightly enclosed by interval bisection inside (0, w_1], w_1 = 2 pi/L
     ~ 2.4496 < gamma_1 = 14.1347... (5.77 w_1's away), and R and
@@ -154,6 +158,54 @@ def tight_root(c, om, k, iters=80):
     return lo, hi, hi - lo
 
 
+def gap_multiplicities(c, om, ngrid=20001):
+    """Vectorized float64 scan of the interior root multiplicity in every
+    gap: a single fine uniform grid over (w_k + 1e-7, w_{k+1} - 1e-7),
+    counting sign changes between consecutive interior points.  Roots that
+    hug a weak pole (gap 153 at N=300: layers ~2e-4 wide) lie inside this
+    grid and are counted; the extreme points are excluded so the pole
+    blowup itself is not counted.  Numeric, not certified -- it
+    characterizes WHAT the certified IVT gaps (and the few gaps the IVT
+    rejects) actually contain."""
+    N = len(om) - 1
+    ks = np.arange(N + 1)
+    sgn = (-1.0) ** ks
+    cw = (c * sgn)
+    counts = {}
+    for k in range(N):
+        lo, hi = float(om[k]), float(om[k + 1])
+        z = np.linspace(lo + 1e-7, hi - 1e-7, ngrid)
+        z2 = (z[:, None] ** 2) - (om ** 2)[None, :]
+        R = np.sum(cw[None, :] / z2, axis=1)
+        s = np.sign(R[1:-1])
+        counts[k] = int(np.sum(np.abs(np.diff(s)) > 0))
+    return counts
+
+
+def root_positions(c, om, gap, tol=1e-12):
+    """Bisection over a fine grid: every interior root in `gap`, returned
+    as (position, distance_below_top_pole_or_above_bottom)."""
+    lo, hi = float(om[gap]), float(om[gap + 1])
+    z = np.linspace(lo + 1e-7, hi - 1e-7, 40001)
+    z2 = (z[:, None] ** 2) - (om ** 2)[None, :]
+    R = np.sum((c * (-1.0) ** np.arange(len(om)))[None, :] / z2, axis=1)
+    idx = np.nonzero(np.abs(np.diff(np.sign(R))) > 0)[0]
+    out = []
+    for i in idx:
+        a, b, fa = z[i], z[i + 1], R[i]
+        for _ in range(60):
+            m = 0.5 * (a + b)
+            fm = float(np.sum(c * (-1.0) ** np.arange(len(om))
+                              / (m * m - om ** 2)))
+            if fa * fm > 0:
+                a, fa = m, fm
+            else:
+                b = m
+        r = 0.5 * (a + b)
+        out.append((r, min(r - lo, hi - r)))
+    return out
+
+
 GAMMA1 = mp.mpf("14.13472514173469379045725198356247027078425711569924")
 
 
@@ -177,6 +229,19 @@ def certify(N):
     r_lo, r_hi, r_w = tight_root(c, om, 0)
     om1 = mp.mpf(om[1])
     in_omega1 = r_lo > 0 and r_hi < om1
+
+    # what the gaps actually contain (numeric scan; complements the IVT)
+    mults = gap_multiplicities(c, om)
+    flip_gap_mults = {k: mults[k] for k in fail_gaps}
+    mult_hist = {}
+    for m in mults.values():
+        mult_hist[m] = mult_hist.get(m, 0) + 1
+    extra_gaps = [k for k in mults if k not in fail_gaps and mults[k] != 1]
+    flip_gap_roots = {
+        k: [{"z": round(pos, 8), "dist_to_pole": round(d, 8)}
+            for pos, d in root_positions(c, om, k)]
+        for k in fail_gaps
+    }
 
     # independent high-precision cross-check: Newton from x0 = 1.5 (far
     # from the bracket), mp dps 60.  (brentq in float64 is NOT a valid
@@ -232,6 +297,18 @@ def certify(N):
             "min_endpoint_magnitude":
                 None if min_mag is None else float(min_mag),
             "delta_frac": DELTA_FRAC,
+            "interior_scan": {
+                "multiplicity_histogram": mult_hist,
+                "flip_gap_multiplicities": flip_gap_mults,
+                "flip_gap_roots": flip_gap_roots,
+                "total_interior_roots": int(sum(mults.values())),
+                "non_flip_gaps_with_mult_not_one": extra_gaps,
+                "note": ("numeric float64 scan (grid 20001 per gap); the "
+                         "flip gaps at N=300 hold 2/0/0 roots and every "
+                         "other gap holds exactly 1 -- the one-root-per-gap "
+                         "rule fails exactly where the adjacent residues "
+                         "have opposite signs"),
+            },
         },
         "first_root": {
             "enclosure_lo": float(r_lo),
@@ -302,10 +379,16 @@ def main():
         "magnitudes >= %.1e; uniqueness by the certified common sign of "
         "the residues rho_k = c_k (-1)^k, which makes R' strictly "
         "one-signed on every gap).  FINDING: the one-root-per-gap "
-        "interlacing is NOT a theorem in N -- at N=300 the coefficients "
-        "flip sign at k = 153, 266, 267 and exactly those three gaps lose "
-        "their root (297/300); it is certified in every gap at N = 100, "
-        "150, 200.  THE WALL holds at EVERY N in the sweep: the first "
+        "interlacing is NOT a theorem in N -- at N=300 the residues flip "
+        "sign between k = 153/154, 266/267, 267/268 and the three affected "
+        "gaps break the rule precisely: gap 153 KEEPS TWO roots (in thin "
+        "~1e-4 layers hugging the poles, because its residues are tiny, "
+        "~4e-7), gaps 266 and 267 hold NONE; the other 297 gaps each hold "
+        "exactly one root (float scan: histogram {0:2, 1:297, 2:1}, total "
+        "299) -- the one-root-per-gap rule fails exactly where the "
+        "adjacent residues have opposite signs, and it is certified in "
+        "every gap at N = 100, 150, 200.  THE WALL holds at EVERY N in "
+        "the sweep: the first "
         "root is certified inside (0, 2.4496] (N=%d: enclosure [%.10f, "
         "%.10f], width %.1e) while gamma_1 = 14.1347 is 5.77 w_1's away, "
         "and R and sin(gamma_1 L/2) are certified nonzero at gamma_1 "
@@ -348,9 +431,11 @@ def main():
                          "strictly monotone on every gap: the IVT root is "
                          "unique."),
             "where_it_holds": "N = 100, 150, 200 (residues all one sign)",
-            "where_it_fails": ("N = 300: sign flips at k = 153, 266, 267; "
-                               "those three gaps have no certified root "
-                               "(same-sign endpoints)"),
+            "where_it_fails": ("N = 300: residues flip sign between "
+                               "k = 153/154, 266/267, 267/268; gap 153 "
+                               "keeps TWO roots (hugging the poles), "
+                               "gaps 266 and 267 have NONE, the other "
+                               "297 gaps hold exactly one"),
         },
         "sweep": sweep,
         "cross_check": cross,
@@ -365,12 +450,14 @@ def main():
     print(verdict)
     print()
     for s in sweep:
-        print("N=%-3d gaps %d/%d  flips=%s  failing=%s  r1=[%.10f,%.10f] "
-              "in(0,2.45]=%s  wall=%s"
+        mh = s["gap_existence"]["interior_scan"]["multiplicity_histogram"]
+        print("N=%-3d gaps %d/%d  flips=%s  failing=%s  mult-hist=%s  "
+              "r1=[%.10f,%.10f] in(0,2.45]=%s  wall=%s"
               % (s["N"], s["gap_existence"]["n_certified"],
                  s["gap_existence"]["n_gaps"],
                  s["residues"]["sign_flips_at_k"] or [],
                  s["gap_existence"]["failing_gaps"] or [],
+                 {m: c for m, c in sorted(mh.items())},
                  s["first_root"]["enclosure_lo"],
                  s["first_root"]["enclosure_hi"],
                  s["first_root"]["in_omega1_interval"],

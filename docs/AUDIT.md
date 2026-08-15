@@ -389,9 +389,17 @@ given so it can be re-run).
     −2z·Σ ρ_k/(z²−ω_k²)² is strictly one-signed on every gap, so each IVT
     root is unique — exactly one root per pole gap, a certified theorem at
     N ≤ 200.  FINDING: the interlacing is NOT a theorem in N.  At N=300 the
-    ground-state coefficients FLIP sign at k = 153, 266, 267 (residue
-    indices 154, 267, 268), and exactly those three gaps lose their root —
-    297/300 certified, the three failures the three sign-flip gaps.  THE
+    ground-state residues FLIP sign between k = 153/154, 266/267, 267/268
+    (residue indices 154, 267, 268), and the three affected gaps break the
+    one-root rule PRECISELY, as a numeric float scan (20001-point grid per
+    gap, plus bisection) characterizes: gap 153 KEEPS TWO roots hugging the
+    poles (distances 3.2e-4 and 1.8e-4 — its residues are tiny, ~4e-7, so
+    the far field penetrates the pole layers), gaps 266 and 267 hold NONE,
+    and every one of the other 297 gaps holds exactly one root (histogram
+    {0: 2, 1: 297, 2: 1}, total 299) — the one-root-per-gap rule fails
+    exactly where the adjacent residues have opposite signs, and the sign
+    pattern itself is robust (identical across np.linalg.eigh and scipy
+    eigh evr/evd/evx, standard and generalized forms).  THE
     WALL still certifies at EVERY N in the sweep (100, 150, 200, 300): the
     first root is enclosed to ~2e-24 (80-step mp bisection, exact signs)
     inside (0, 2.45], γ₁ = 14.1347 is 5.77 ω₁'s away, and R and

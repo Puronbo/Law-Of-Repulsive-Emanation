@@ -1633,11 +1633,18 @@ rounding — and then shows exactly where the "theorem" stops being one.
   ρ_k = c_k(−1)^k are all +1 (min |ρ| = 1.3e-3), so R′(z) = −2z·Σ ρ_k/
   (z²−ω_k²)² is strictly one-signed on every gap and each IVT root is
   unique: exactly one root per pole gap — a certified theorem at N ≤ 200.
-* **The interlacing is NOT a theorem in N.**  At N=300 the coefficients
-  flip sign at k = 153, 266, 267 and exactly those three gaps lose their
-  root (297/300).  The uniqueness argument is a property of the
-  truncation's coefficient sign pattern — global interlacing is certified
-  at N ≤ 200, breaks at N=300.  The wall is unscathed.
+* **The interlacing is NOT a theorem in N.**  At N=300 the residues flip
+  sign between k = 153/154, 266/267, 267/268 — and the three affected gaps
+  break the one-root rule precisely.  A numeric scan (20001-point grid per
+  gap + bisection) characterizes the break: gap 153 keeps TWO roots hugging
+  the poles (distances 3.2e-4 and 1.8e-4 — its residues are tiny, ~4e-7,
+  so the far field penetrates the pole layers), gaps 266 and 267 hold
+  NONE, and every one of the other 297 gaps holds exactly one root
+  (histogram {0: 2, 1: 297, 2: 1}, total 299).  The rule fails exactly
+  where the adjacent residues have opposite signs.  The sign pattern is
+  robust: identical across five eigensolvers (np.linalg.eigh and scipy
+  eigh evr/evd/evx, standard and generalized).  Global interlacing is
+  certified at N ≤ 200, breaks at N=300.  The wall is unscathed.
 * **The wall, at every N.**  The first root is enclosed to ~2e-24 inside
   (0, 2.45] (N=100: 1.02584708042492105355…, width 2.0e-24), γ₁ = 14.1347
   is 5.77 ω₁'s away, and R and sin(γ₁L/2) are certified nonzero at γ₁

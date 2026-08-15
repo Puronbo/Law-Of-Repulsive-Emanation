@@ -17,7 +17,17 @@
       "n_certified": 100,
       "failing_gaps": [],
       "min_endpoint_magnitude": 1.8303245453135846,
-      "delta_frac": 1e-06
+      "delta_frac": 1e-06,
+      "interior_scan": {
+        "multiplicity_histogram": {
+          "1": 100
+        },
+        "flip_gap_multiplicities": {},
+        "flip_gap_roots": {},
+        "total_interior_roots": 100,
+        "non_flip_gaps_with_mult_not_one": [],
+        "note": "numeric float64 scan (grid 20001 per gap); the flip gaps at N=300 hold 2/0/0 roots and every other gap holds exactly 1 -- the one-root-per-gap rule fails exactly where the adjacent residues have opposite signs"
+      }
     },
     "first_root": {
       "enclosure_lo": 1.0258470804249211,
@@ -39,7 +49,7 @@
   "uniqueness": {
     "argument": "R' has the strict sign -sign(rho_k) on every gap (z > 0), so once all residues share a sign R is strictly monotone on every gap: the IVT root is unique.",
     "where_it_holds": "N = 100, 150, 200 (residues all one sign)",
-    "where_it_fails": "N = 300: sign flips at k = 153, 266, 267; those three gaps have no certified root (same-sign endpoints)"
+    "where_it_fails": "N = 300: residues flip sign between k = 153/154, 266/267, 267/268; gap 153 keeps TWO roots (hugging the poles), gaps 266 and 267 have NONE, the other 297 gaps hold exactly one"
   },
   "sweep": [
     {
@@ -57,7 +67,17 @@
         "n_certified": 100,
         "failing_gaps": [],
         "min_endpoint_magnitude": 1.8303245453135846,
-        "delta_frac": 1e-06
+        "delta_frac": 1e-06,
+        "interior_scan": {
+          "multiplicity_histogram": {
+            "1": 100
+          },
+          "flip_gap_multiplicities": {},
+          "flip_gap_roots": {},
+          "total_interior_roots": 100,
+          "non_flip_gaps_with_mult_not_one": [],
+          "note": "numeric float64 scan (grid 20001 per gap); the flip gaps at N=300 hold 2/0/0 roots and every other gap holds exactly 1 -- the one-root-per-gap rule fails exactly where the adjacent residues have opposite signs"
+        }
       },
       "first_root": {
         "enclosure_lo": 1.0258470804249211,
@@ -91,7 +111,17 @@
         "n_certified": 150,
         "failing_gaps": [],
         "min_endpoint_magnitude": 0.20377549824344998,
-        "delta_frac": 1e-06
+        "delta_frac": 1e-06,
+        "interior_scan": {
+          "multiplicity_histogram": {
+            "1": 150
+          },
+          "flip_gap_multiplicities": {},
+          "flip_gap_roots": {},
+          "total_interior_roots": 150,
+          "non_flip_gaps_with_mult_not_one": [],
+          "note": "numeric float64 scan (grid 20001 per gap); the flip gaps at N=300 hold 2/0/0 roots and every other gap holds exactly 1 -- the one-root-per-gap rule fails exactly where the adjacent residues have opposite signs"
+        }
       },
       "first_root": {
         "enclosure_lo": 1.0496021065724586,
@@ -125,7 +155,17 @@
         "n_certified": 200,
         "failing_gaps": [],
         "min_endpoint_magnitude": 0.028486028829004965,
-        "delta_frac": 1e-06
+        "delta_frac": 1e-06,
+        "interior_scan": {
+          "multiplicity_histogram": {
+            "1": 200
+          },
+          "flip_gap_multiplicities": {},
+          "flip_gap_roots": {},
+          "total_interior_roots": 200,
+          "non_flip_gaps_with_mult_not_one": [],
+          "note": "numeric float64 scan (grid 20001 per gap); the flip gaps at N=300 hold 2/0/0 roots and every other gap holds exactly 1 -- the one-root-per-gap rule fails exactly where the adjacent residues have opposite signs"
+        }
       },
       "first_root": {
         "enclosure_lo": 1.0612079637639844,
@@ -167,7 +207,36 @@
           267
         ],
         "min_endpoint_magnitude": 0.00020102187802039962,
-        "delta_frac": 1e-06
+        "delta_frac": 1e-06,
+        "interior_scan": {
+          "multiplicity_histogram": {
+            "1": 297,
+            "2": 1,
+            "0": 2
+          },
+          "flip_gap_multiplicities": {
+            "153": 2,
+            "266": 0,
+            "267": 0
+          },
+          "flip_gap_roots": {
+            "153": [
+              {
+                "z": 374.79421138,
+                "dist_to_pole": 0.00031956
+              },
+              {
+                "z": 377.24334684,
+                "dist_to_pole": 0.00017825
+              }
+            ],
+            "266": [],
+            "267": []
+          },
+          "total_interior_roots": 299,
+          "non_flip_gaps_with_mult_not_one": [],
+          "note": "numeric float64 scan (grid 20001 per gap); the flip gaps at N=300 hold 2/0/0 roots and every other gap holds exactly 1 -- the one-root-per-gap rule fails exactly where the adjacent residues have opposite signs"
+        }
       },
       "first_root": {
         "enclosure_lo": 1.064350282195832,
@@ -196,6 +265,6 @@
   },
   "gamma_1": 14.134725141734695,
   "omega_1": 2.449633279854652,
-  "verdict": "CERTIFIED BY INTERVAL ARITHMETIC: at N=100 the letter's rank-one construction has EXACTLY ONE root per pole gap (all 100 gaps; IVT with validated rounding at both ends of every gap, endpoint magnitudes >= 1.8e+00; uniqueness by the certified common sign of the residues rho_k = c_k (-1)^k, which makes R' strictly one-signed on every gap).  FINDING: the one-root-per-gap interlacing is NOT a theorem in N -- at N=300 the coefficients flip sign at k = 153, 266, 267 and exactly those three gaps lose their root (297/300); it is certified in every gap at N = 100, 150, 200.  THE WALL holds at EVERY N in the sweep: the first root is certified inside (0, 2.4496] (N=100: enclosure [1.0258470804, 1.0258470804], width 2.0e-24) while gamma_1 = 14.1347 is 5.77 w_1's away, and R and sin(gamma_1 L/2) are certified nonzero at gamma_1 (|fhat(gamma_1)| > 1.46e-02) -- the letter's claimed 2.6e-55 first-zero match is CERTIFIED IMPOSSIBLE at every certified N.  HONEST WALL: this certifies negative statements about the letter's construction, not anything about RH -- RH is open; no de Bruijn-Newman Lambda consequence; finitely many primes never become the full Euler product; C_0 = V(q0) = H(q0,0) does not enter.",
-  "runtime_sec": 15.4
+  "verdict": "CERTIFIED BY INTERVAL ARITHMETIC: at N=100 the letter's rank-one construction has EXACTLY ONE root per pole gap (all 100 gaps; IVT with validated rounding at both ends of every gap, endpoint magnitudes >= 1.8e+00; uniqueness by the certified common sign of the residues rho_k = c_k (-1)^k, which makes R' strictly one-signed on every gap).  FINDING: the one-root-per-gap interlacing is NOT a theorem in N -- at N=300 the residues flip sign between k = 153/154, 266/267, 267/268 and the three affected gaps break the rule precisely: gap 153 KEEPS TWO roots (in thin ~1e-4 layers hugging the poles, because its residues are tiny, ~4e-7), gaps 266 and 267 hold NONE; the other 297 gaps each hold exactly one root (float scan: histogram {0:2, 1:297, 2:1}, total 299) -- the one-root-per-gap rule fails exactly where the adjacent residues have opposite signs, and it is certified in every gap at N = 100, 150, 200.  THE WALL holds at EVERY N in the sweep: the first root is certified inside (0, 2.4496] (N=100: enclosure [1.0258470804, 1.0258470804], width 2.0e-24) while gamma_1 = 14.1347 is 5.77 w_1's away, and R and sin(gamma_1 L/2) are certified nonzero at gamma_1 (|fhat(gamma_1)| > 1.46e-02) -- the letter's claimed 2.6e-55 first-zero match is CERTIFIED IMPOSSIBLE at every certified N.  HONEST WALL: this certifies negative statements about the letter's construction, not anything about RH -- RH is open; no de Bruijn-Newman Lambda consequence; finitely many primes never become the full Euler product; C_0 = V(q0) = H(q0,0) does not enter.",
+  "runtime_sec": 30.9
 }
