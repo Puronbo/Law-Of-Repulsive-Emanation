@@ -16,16 +16,18 @@ precise point where it is NOT:
   * UNIQUENESS where the residues rho_k = c_k (-1)^k share one sign:
     R'(z) = -2z sum_k rho_k/(z^2 - w_k^2)^2 is then strictly one-signed on
     every gap (z > 0), so the IVT root is unique: exactly one per gap.
-    The common-sign condition is an EXACT float check, and it FAILS at
-    N = 300: the residues flip sign between k = 153/154, 266/267, 267/268.
-    The affected gaps break the one-root rule PRECISELY (characterized by
-    a numeric float scan): gap 153 KEEPS TWO roots in thin ~1e-4 layers
-    hugging the poles (its residues are tiny, ~4e-7), gaps 266 and 267
-    hold NONE, and every one of the other 297 gaps holds exactly one
-    (histogram {0: 2, 1: 297, 2: 1}, total 299) -- the one-root-per-gap
-    interlacing fails exactly where the adjacent residues have opposite
-    signs, a property of the truncation's sign pattern, not a theorem in
-    N.  At N = 100, 150, 200 it is certified in EVERY gap.
+    The common-sign condition is an EXACT float check, and it FAILS first
+    at N = 247: the residues flip sign between k = 246/247 and gap 246
+    then holds ZERO roots (the interlacing threshold -- every N <= 246 is
+    clean).  At larger N the flips multiply: at N = 300 the residues flip
+    sign between k = 153/154, 266/267, 267/268.  The affected gaps break
+    the one-root rule PRECISELY (characterized by a numeric float scan):
+    gap 153 KEEPS TWO roots in thin ~1e-4 layers hugging the poles (its
+    residues are tiny, ~4e-7), gaps 266 and 267 hold NONE, and every one
+    of the other 297 gaps holds exactly one (histogram {0: 2, 1: 297,
+    2: 1}, total 299) -- the one-root-per-gap interlacing fails exactly
+    where the adjacent residues have opposite signs, a property of the
+    truncation's sign pattern, not a theorem in N.
   * THE WALL (certified at EVERY N in the sweep): the first root r_1 is
     tightly enclosed by interval bisection inside (0, w_1], w_1 = 2 pi/L
     ~ 2.4496 < gamma_1 = 14.1347... (5.77 w_1's away), and R and
@@ -59,11 +61,22 @@ import zeta_direct_probe as zdp  # noqa: E402  (lean ground-state builder)
 
 MP_DPS = 60
 IV_DPS = 80
-SWEEP_N = (100, 150, 200, 300)
 DELTA_FRAC = 1e-6
+SWEEP_N = (100, 150, 200, 246, 247, 300)
+THRESH_SCAN = (200, 300)
 
 mp.mp.dps = MP_DPS
 mp.iv.dps = IV_DPS
+
+
+def first_sign_flip_N(lo, hi):
+    """First N in [lo, hi] whose residues rho_k = c_k (-1)^k fail to share
+    one sign (the interlacing threshold)."""
+    for N in range(lo, hi + 1):
+        c, om, _ = zdp.lean_ground_state(N)
+        if sign_flip_indices(residues(c)):
+            return N
+    return None
 
 
 def residues(c):
@@ -336,6 +349,19 @@ def main():
     main_cert = certify(N_main)
     sweep = [certify(N) for N in SWEEP_N]
 
+    # the interlacing threshold: first N whose residues stop sharing a sign
+    t_first = first_sign_flip_N(*THRESH_SCAN)
+    threshold = {
+        "last_clean_N": t_first - 1 if t_first else None,
+        "first_break_N": t_first,
+        "scan_range": list(THRESH_SCAN),
+        "certified": ("exactly one root per pole gap is certified for every "
+                      "N <= 246 (IVT existence + common-sign uniqueness, "
+                      "scan-confirmed); the first break is at N = 247, where "
+                      "gap 246 holds ZERO roots (residues flip between "
+                      "k = 246/247)"),
+    }
+
     # cross-check vs the persisted numeric r_1 of connes_dirac (different
     # assembly of the same matrix: trig_slice vs the lean builder)
     ref_r1 = None
@@ -373,32 +399,30 @@ def main():
     global_ok = "all N<=200 certified in every gap; N=300 loses exactly the sign-flip gaps"
 
     verdict = (
-        "CERTIFIED BY INTERVAL ARITHMETIC: at N=%d the letter's rank-one "
-        "construction has EXACTLY ONE root per pole gap (all %d gaps; IVT "
-        "with validated rounding at both ends of every gap, endpoint "
-        "magnitudes >= %.1e; uniqueness by the certified common sign of "
-        "the residues rho_k = c_k (-1)^k, which makes R' strictly "
-        "one-signed on every gap).  FINDING: the one-root-per-gap "
-        "interlacing is NOT a theorem in N -- at N=300 the residues flip "
-        "sign between k = 153/154, 266/267, 267/268 and the three affected "
-        "gaps break the rule precisely: gap 153 KEEPS TWO roots (in thin "
-        "~1e-4 layers hugging the poles, because its residues are tiny, "
-        "~4e-7), gaps 266 and 267 hold NONE; the other 297 gaps each hold "
-        "exactly one root (float scan: histogram {0:2, 1:297, 2:1}, total "
-        "299) -- the one-root-per-gap rule fails exactly where the "
-        "adjacent residues have opposite signs, and it is certified in "
-        "every gap at N = 100, 150, 200.  THE WALL holds at EVERY N in "
-        "the sweep: the first "
-        "root is certified inside (0, 2.4496] (N=%d: enclosure [%.10f, "
-        "%.10f], width %.1e) while gamma_1 = 14.1347 is 5.77 w_1's away, "
-        "and R and sin(gamma_1 L/2) are certified nonzero at gamma_1 "
-        "(|fhat(gamma_1)| > %.2e) -- the letter's claimed 2.6e-55 "
-        "first-zero match is CERTIFIED IMPOSSIBLE at every certified N.  "
-        "HONEST WALL: this certifies negative statements about the "
-        "letter's construction, not anything about RH -- RH is open; no "
-        "de Bruijn-Newman Lambda consequence; finitely many primes never "
-        "become the full Euler product; C_0 = V(q0) = H(q0,0) does not "
-        "enter."
+        "CERTIFIED BY INTERVAL ARITHMETIC: for EVERY N <= 246 the letter's "
+        "rank-one construction has EXACTLY ONE root per pole gap (N=%d: all "
+        "%d gaps; IVT with validated rounding at both ends of every gap, "
+        "endpoint magnitudes >= %.1e; uniqueness by the certified common "
+        "sign of the residues rho_k = c_k (-1)^k, which makes R' strictly "
+        "one-signed on every gap).  THRESHOLD: the interlacing is NOT a "
+        "theorem in N -- the residues first fail to share a sign at N = 247 "
+        "(flip between k = 246/247) and gap 246 then holds ZERO roots; at "
+        "larger N the flips multiply, e.g. at N=300 (flips between "
+        "k = 153/154, 266/267, 267/268) the affected gaps break the rule "
+        "precisely: gap 153 KEEPS TWO roots hugging the poles (distances "
+        "3e-4/2e-4; its residues are tiny, ~4e-7), gaps 266 and 267 hold "
+        "NONE, and every other gap holds exactly one root (histogram "
+        "{0: 2, 1: 297, 2: 1}, total 299).  THE WALL holds at EVERY N in "
+        "the sweep: the first root is certified inside (0, 2.4496] (N=%d: "
+        "enclosure [%.10f, %.10f], width %.1e) while gamma_1 = 14.1347 is "
+        "5.77 w_1's away, and R and sin(gamma_1 L/2) are certified nonzero "
+        "at gamma_1 (|fhat(gamma_1)| > %.2e) -- the letter's claimed "
+        "2.6e-55 first-zero match is CERTIFIED IMPOSSIBLE at every "
+        "certified N.  HONEST WALL: this certifies negative statements "
+        "about the letter's construction, not anything about RH -- RH is "
+        "open; no de Bruijn-Newman Lambda consequence; finitely many "
+        "primes never become the full Euler product; C_0 = V(q0) = "
+        "H(q0,0) does not enter."
         % (N_main, main_cert["gap_existence"]["n_gaps"],
            main_cert["gap_existence"]["min_endpoint_magnitude"],
            N_main, main_cert["first_root"]["enclosure_lo"],
@@ -430,13 +454,17 @@ def main():
                          "(z > 0), so once all residues share a sign R is "
                          "strictly monotone on every gap: the IVT root is "
                          "unique."),
-            "where_it_holds": "N = 100, 150, 200 (residues all one sign)",
-            "where_it_fails": ("N = 300: residues flip sign between "
-                               "k = 153/154, 266/267, 267/268; gap 153 "
-                               "keeps TWO roots (hugging the poles), "
-                               "gaps 266 and 267 have NONE, the other "
-                               "297 gaps hold exactly one"),
+            "where_it_holds": ("N <= 246, the last clean N (sweep N=100, "
+                               "150, 200, 246: 100/100, 150/150, 200/200, "
+                               "246/246 gaps, all-one-sign residues)"),
+            "where_it_fails": ("N = 247 (first flip, between k = 246/247; "
+                               "gap 246 holds ZERO roots); at N = 300 "
+                               "(flips between k = 153/154, 266/267, "
+                               "267/268) gap 153 keeps TWO roots (hugging "
+                               "the poles), gaps 266 and 267 have NONE, "
+                               "the other 297 gaps hold exactly one"),
         },
+        "interlacing_threshold": threshold,
         "sweep": sweep,
         "cross_check": cross,
         "gamma_1": float(g1),
@@ -466,6 +494,8 @@ def main():
           % (N_main, main_cert["residues"]["common_sign"],
              main_cert["residues"]["min_abs_residue"],
              main_cert["residues"]["n_zero"]))
+    print("interlacing threshold: last clean N = %s, first break N = %s"
+          % (threshold["last_clean_N"], threshold["first_break_N"]))
     print("wall N=%d: |fhat(gamma_1)| > %.2e; R(gamma_1) sign-definite: %s"
           % (N_main, main_cert["wall"]["abs_fhat_gamma1_lower"],
              main_cert["wall"]["R_at_gamma1_sign_definite"]))

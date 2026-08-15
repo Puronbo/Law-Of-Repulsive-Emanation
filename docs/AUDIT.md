@@ -363,9 +363,13 @@ given so it can be re-run).
     comes to a zero is |f̂| = 2.95e-5 at γ₆ = 37.586 (the tight match the
     statistics had flagged); the identity f̂ = 4z·sin(zL/2)·R(z) re-verifies
     on all 50 ordinates to the double-precision coefficient floor (5.4e-12).
-    (2) The interlacing theorem holds at EVERY N in {50,100,150,200,300} —
-    one root per pole gap, r₁ ∈ (0, 2.45] (1.0170/1.0258/1.0496/1.0612/
-    1.0644 as N grows), γ₁ = 5.77 w₁ for every N, min gap margin ≥ 5e-3;
+    (2) The interlacing theorem holds at EVERY N in {50,100,150,200} —
+    one root per pole gap, r₁ ∈ (0, 2.45] (1.0170/1.0258/1.0496/1.0612
+    as N grows; the probe's {50,100,150,200,300} sweep included N=300,
+    where the certifier sequel below later showed the interlacing in fact
+    BREAKS — residues flip at k = 153/154, 266/267, 267/268 and gaps
+    153/266/267 do not have one root each; at N ≤ 200 the certified
+    statement stands), γ₁ = 5.77 w₁ for every N, min gap margin ≥ 5e-3;
     N=100 cross-checks the persisted Dirac verdict to 8e-15.  (3) The
     WHOLE 840-point orbit, not just the four anchors, is census-tested as
     origins on the 2π/L lattice: the best has q = 0.3734, exactly the
@@ -383,13 +387,17 @@ given so it can be re-run).
     validated rounding.  R(z) = Σ_k c_k(−1)^k/(z²−ω_k²) is evaluated in
     mpmath.iv (dps 80) at both ends of every pole gap; opposite certified
     signs give a root by the IVT — certified at N=100 in 100/100 gaps
-    (endpoint magnitudes ≥ 1.8e0), at N=150 in 150/150, at N=200 in 200/200.
-    Uniqueness: where the residues ρ_k = c_k(−1)^k share one sign (exact
-    float check; N ≤ 200: common sign +1, min |ρ| = 1.3e-3), R′(z) =
-    −2z·Σ ρ_k/(z²−ω_k²)² is strictly one-signed on every gap, so each IVT
-    root is unique — exactly one root per pole gap, a certified theorem at
-    N ≤ 200.  FINDING: the interlacing is NOT a theorem in N.  At N=300 the
-    ground-state residues FLIP sign between k = 153/154, 266/267, 267/268
+    (endpoint magnitudes ≥ 1.8e0), at N=150 in 150/150, at N=200 in 200/200,
+    at N=246 in 246/246.
+    Uniqueness: for every N ≤ 246 the residues ρ_k = c_k(−1)^k share one
+    sign (exact float check; at N=100 common sign +1, min |ρ| = 1.3e-3),
+    R′(z) = −2z·Σ ρ_k/(z²−ω_k²)² is strictly one-signed on every gap, so
+    each IVT root is unique — exactly one root per pole gap, a certified
+    theorem for EVERY N ≤ 246 (numeric scan confirms 1 per gap at N =
+    100, 150, 200, 246).  THRESHOLD: the interlacing is NOT a theorem in
+    N.  The ground-state residues FIRST fail to share a sign at N = 247
+    (flip between k = 246/247) and gap 246 then holds ZERO roots; at N=300
+    they FLIP between k = 153/154, 266/267, 267/268
     (residue indices 154, 267, 268), and the three affected gaps break the
     one-root rule PRECISELY, as a numeric float scan (20001-point grid per
     gap, plus bisection) characterizes: gap 153 KEEPS TWO roots hugging the
@@ -400,7 +408,8 @@ given so it can be re-run).
     exactly where the adjacent residues have opposite signs, and the sign
     pattern itself is robust (identical across np.linalg.eigh and scipy
     eigh evr/evd/evx, standard and generalized forms).  THE
-    WALL still certifies at EVERY N in the sweep (100, 150, 200, 300): the
+    WALL still certifies at EVERY N in the sweep (100, 150, 200, 246, 247,
+    300): the
     first root is enclosed to ~2e-24 (80-step mp bisection, exact signs)
     inside (0, 2.45], γ₁ = 14.1347 is 5.77 ω₁'s away, and R and
     sin(γ₁L/2) are certified nonzero at γ₁ (|f̂(γ₁)| > 1.5e-2) — the

@@ -25,7 +25,7 @@ number so none of the resolved claims can silently drift:
     - four-point coordinate lattice of 10262000 -> {10262000, 20001026, 20002610, 26102000}: exact finite arithmetic - gcd = 2 (the four span 2Z, Bezout 2 = -2238620*10262000 + 1148577*20001026); block structure 1026|2000, 2000|1026, 2000|2610, 2610|2000 closing the 4-cycle with step 1584 = 2^4*3^2*11; the full orbit of the digit multiset {0,0,0,0,1,2,2,6} is 840 points in three leading-digit clusters (1:210, 2:420, 6:210), none divisible by 3 (digit sum 11), 39 primes, anchors at ranks 470/532/543/729; the permutohedron has diameter 16, an EMPTY shell at distance 14, and (by S_8 transitivity) identical shells from every anchor; HONEST WALL: finite arithmetic, chance-level 2 pi/L proximity, no mechanism to zeta or RH
     - zeta-lattice alignment with an origin (the rigorous form of 'align the lattice with RH'): the ONLY honest spectral test is index-matched |gamma_k - (o + k s)| and the best FIXED lattice scores median error 10.5, 1/50 within 0.5, 0 within 0.05 (nearest-point metrics are trivially small at fine spacing and were rejected); the real 'origin' is adaptive - Weyl law residuals (mean 0.50, max 0.88) and Gram points (1/49 violations, offsets median 0.86, max 9.04 at gamma_1); the four anchors as origins on the 2 pi/L lattice sit inside the random-origin spread (uniform median 0.612, random 0.618, anchors 0.375..0.681; only 2/200 random origins beat the best anchor - selection noise, the expected number); any anchor rescaled to 61 points in [0,150] collapses to spacing 2.459 whatever its digits; PROVABLE negative theorem: interlacing pins the first rank-one eigenvalue to (0, 2.45], unreachable by gamma_1; HONEST WALL: RH is open, the provable content is negative classification, a positive proof needs mathematics outside this repository
     - zeta direct probe (the headline number tested head-on): at N=150 the letter's fhat is evaluated AT the ordinates at mpmath dps 60 - |fhat(gamma_1)| = 2.65e-3 while a true zero gives exactly 0 (claim 2.6e-55), the nearest zero to gamma_1 is 1.02 away (median 0.73 over n=1..50), |gamma_1 - r_1| = 13.09, and the closest any ordinate comes to a zero is |fhat| = 2.95e-5 at gamma_6 = 37.586 (the tight-match known from the matching stats); the identity fhat = 4 z sin(zL/2) R(z) holds on all 50 ordinates to the double-precision coefficient floor (5.4e-12); the interlacing theorem is verified at EVERY N in {50,100,150,200,300} - one root per pole gap, r_1 in (0, 2.45] (1.017..1.064 as N grows), gamma_1 = 5.77 w_1 for every N, min gap margin >= 5e-3, and N=100 cross-checks the persisted connes_dirac verdict to 8e-15; the WHOLE 840-point orbit is tested as origins - the best has q = 0.3734, exactly the expected extreme-value minimum of 840 random origins (min_mean 0.3734; random matches or beats it in 100% of trials), so no known point is a special origin; HONEST WALL: direct numbers confirm the impossibility, RH is open, negative classification only
-    - zeta interlacing CERTIFIER (interval arithmetic): every pole gap of the letter's rank-one secular function R is certified to contain a root by validated-rounding IVT at both ends (N=100: 100/100 gaps, endpoint magnitudes >= 1.8e+0; N=150: 150/150; N=200: 200/200) and the residues rho_k = c_k (-1)^k share one sign there, so R' = -2z sum rho_k/(z^2 - w_k^2)^2 is strictly one-signed on every gap and each IVT root is UNIQUE - exactly one root per pole gap at N <= 200 (numeric scan confirms 1 per gap); FINDING: the interlacing is NOT a theorem in N - at N=300 the residues flip sign between k = 153/154, 266/267, 267/268 and the three affected gaps break the rule PRECISELY: gap 153 keeps TWO roots hugging the poles (distances 3e-4/2e-4; its residues are tiny, ~4e-7), gaps 266 and 267 hold NONE, and every one of the other 297 gaps holds exactly one (histogram {0:2, 1:297, 2:1}, total 299) - the rule fails exactly where adjacent residues have opposite signs; the WALL still certifies at every N (first root enclosed to 2e-24 inside (0, 2.4496], gamma_1 = 14.1347 is 5.77 w_1's away, R and sin(gamma_1 L/2) certified nonzero at gamma_1) - the claimed 2.6e-55 first-zero match is certified impossible; an independent mp Newton iterate (dps 60, x0=1.5) lands inside the certified enclosure; float root-finders fail there because |R| ~ 1e-19 is below the float64 cancellation floor; HONEST WALL: negative certification of the letter's construction, RH remains open, no de Bruijn-Newman consequence, C_0 = V(q0) = H(q0,0) does not enter
+    - zeta interlacing CERTIFIER (interval arithmetic): every pole gap of the letter's rank-one secular function R is certified to contain a root by validated-rounding IVT at both ends (N=100: 100/100 gaps, endpoint magnitudes >= 1.8e+0; N=150: 150/150; N=200: 200/200; N=246: 246/246) and the residues rho_k = c_k (-1)^k share one sign there, so R' = -2z sum rho_k/(z^2 - w_k^2)^2 is strictly one-signed on every gap and each IVT root is UNIQUE - exactly one root per pole gap for EVERY N <= 246 (numeric scan confirms 1 per gap); FINDING: the interlacing is NOT a theorem in N - the residues first fail to share a sign at N = 247 (flip between k = 246/247) and gap 246 then holds ZERO roots; at larger N the flips multiply, e.g. N=300 (flips between k = 153/154, 266/267, 267/268) where gap 153 keeps TWO roots hugging the poles (distances 3e-4/2e-4; its residues are tiny, ~4e-7), gaps 266 and 267 hold NONE, and every one of the other 297 gaps holds exactly one (histogram {0:2, 1:297, 2:1}, total 299) - the rule fails exactly where adjacent residues have opposite signs; the WALL still certifies at every N (first root enclosed to 2e-24 inside (0, 2.4496], gamma_1 = 14.1347 is 5.77 w_1's away, R and sin(gamma_1 L/2) certified nonzero at gamma_1) - the claimed 2.6e-55 first-zero match is certified impossible; an independent mp Newton iterate (dps 60, x0=1.5) lands inside the certified enclosure; float root-finders fail there because |R| ~ 1e-19 is below the float64 cancellation floor; HONEST WALL: negative certification of the letter's construction, RH remains open, no de Bruijn-Newman consequence, C_0 = V(q0) = H(q0,0) does not enter
     - C2 golden fold: retrace chain is not a phi/phi^2 ladder (1/4 rungs)
     - hierarchical C0 flow: SUPPORTED (NC parity with flat flow, router gain, 6 not 30 comps)
    - flow-guided active learning: margin-AL reaches targets with fewer labels than random; raw force-cancellation score is not the winner
@@ -1749,23 +1749,35 @@ def test_zeta_interlacing_certify():
     v = d['verdict']
 
     # the wall is certified at every N in the sweep
-    assert [s['N'] for s in d['sweep']] == [100, 150, 200, 300]
+    assert [s['N'] for s in d['sweep']] == [100, 150, 200, 246, 247, 300]
     for s in d['sweep']:
         assert s['wall']['certified_impossible_first_zero'] is True
         assert s['first_root']['in_omega1_interval'] is True
         assert s['first_root']['width'] < 1e-20
         assert s['wall']['gamma_1_over_omega_1'] > 5.0
 
-    # global interlacing certified at N <= 200, NOT a theorem in N
+    # exactly one root per gap is certified for every N <= 246
     for s in d['sweep']:
-        if s['N'] <= 200:
+        if s['N'] <= 246:
             assert s['residues']['all_same_sign'] is True
             assert s['gap_existence']['n_certified'] == s['gap_existence']['n_gaps']
             assert s['gap_existence']['failing_gaps'] == []
-            # exactly one root in every gap (numeric scan confirms the
-            # certified uniqueness)
+            # numeric scan confirms the certified uniqueness
             assert s['gap_existence']['interior_scan']['multiplicity_histogram'] \
                 == {'1': s['gap_existence']['n_gaps']}
+    # the interlacing threshold: first break at N = 247, gap 246 -> 0 roots
+    th = d['interlacing_threshold']
+    assert th['last_clean_N'] == 246
+    assert th['first_break_N'] == 247
+    n247 = next(s for s in d['sweep'] if s['N'] == 247)
+    assert n247['residues']['all_same_sign'] is False
+    assert n247['residues']['sign_flips_at_k'] == [247]
+    assert n247['gap_existence']['n_certified'] == 246
+    assert n247['gap_existence']['failing_gaps'] == [246]
+    assert n247['gap_existence']['interior_scan']['flip_gap_multiplicities'] \
+        == {'246': 0}
+    assert n247['gap_existence']['interior_scan']['multiplicity_histogram'] \
+        == {'0': 1, '1': 246}
     n300 = next(s for s in d['sweep'] if s['N'] == 300)
     assert n300['residues']['all_same_sign'] is False
     assert n300['gap_existence']['failing_gaps'] == [153, 266, 267]
