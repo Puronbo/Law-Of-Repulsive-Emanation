@@ -1460,6 +1460,52 @@ refuted.  This closes the last open claim in AUDIT §2 item 5.
 
 ---
 
+### Ch. 5.21g  Connes' "Letter to Riemann" — not reproduced (2026-08-15)
+
+The 2026 "Letter to Riemann" claims that on functions supported in [1,13]
+the Weil quadratic form assembled from the explicit formula — with only the
+primes 2, 3, 5, 7, 11, 13 and their powers ≤ 13 — has a ground state whose
+Mellin-transform zeros are real and approximate the first ~50 zeta zeros
+with errors from 2.6e-55 (first zero) down to 1e-2.  `experiments/connes_letter.py`
+(`data/connes_letter_data.json`) tests this from scratch.
+
+* **Convention finding (documented, and it matters).**  The explicit-formula
+  identity f̂(i/2) − Σ_{1/2+is∈Z} f̂(s) + f̂(−i/2) = Σ_v W_v(f) with
+  f̂(s) = ∫f(x)x^{−is}d*x closes to machine precision ONLY with eq(10) for
+  W_p (weights 2 log p · p^{−m/2} at the prime powers) plus the digamma
+  archimedean form W_R(f) = (1/2π)∫φ(t)(log π − Re ψ(1/4 + it/2))dt.  The
+  paper's printed eq(11) is NOT identity-consistent: on the test functions it
+  leaves a defect of 0.57 (at w = L/2) and 0.15 (at w = L), while the
+  digamma form's residual is ~1e-9..1e-10.  This is a genuine kernel error in
+  the letter's archimedean term, reproduced independently.
+* **Independent Chebyshev discretization (M = 10..30, full and even).**
+  The bottom eigenvector of Q = W_p + W_R (the letter's quadratic form, in
+  its unconstrained form) has **no real Mellin-transform zeros** anywhere on
+  [1, 150], and |f̂(γ_n)| at the zeta ordinates does not converge to zero as
+  M grows (min ~0.05 → 1e-2 over M = 6..110 in earlier slices; never zero).
+  The admissible class (the §6-7 constraint f̂(±i/2) = 0) changes nothing.
+* **The letter's own trigonometric truncation (footnote 14; N = 50, 100,
+  150).**  This reproduces the *structure* of the claim, not its content: the
+  ground state is exactly even (even_weight = 1.0 to machine precision, the
+  evenness footnote 12), and its F.T. has ~60 real zeros in [1,150] — but
+  they lie on a quasi-periodic lattice of spacing 2π/L ≈ 2.45.  That lattice
+  has the same *density* as the first 50 zeta ordinates but not their
+  *positions*: median offset ~0.73, only 18/50 within 0.5 and 2/50 within
+  0.05 at N=150.  The on-lattice zero structure is a structural artifact of
+  the trig truncation itself: every basis function's F.T. (a sum of sincs
+  centred on the mode frequencies ω_k) has zeros pinned to the ω_k + 2πn/L
+  lattice, and the rank-one Dirac/Dirichlet-kernel construction of footnote 14
+  is what would push the zeros off that lattice — extra structure the letter
+  does not specify.
+* **What this means.**  The reported 2.6e-55..1e-2 precision is NOT
+  reproducible from the letter's described computation; the phenomenon it
+  points at lives in the footnote-14 Dirac-operator construction, not in the
+  plain variational problem.  HONEST WALL: non-reproduction of a numerical
+  claim is not a disproof of RH and bounds nothing (no Λ consequence; finitely
+  many primes never become the full Euler product).
+
+---
+
 ## Ch. 6  Creases (never forget these)
 
 1. **The pattern is scale-dependent.** τ-equality under MM/DD swap oscillates

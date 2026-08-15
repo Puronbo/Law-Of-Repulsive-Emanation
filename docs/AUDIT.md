@@ -285,11 +285,40 @@ given so it can be re-run).
     magnitude wall — which is exactly why the literature's rigorous Λ
     programme (Lehmer pairs: −50 → −0.0991 → −4.4×10⁻⁶ → −2.6×10⁻⁹ →
     −1.15×10⁻¹¹ → **0**, Rodgers–Tao) reaches the axis where H_t evaluation
-    cannot.  HONEST WALL (in the verdict): only the first 648 zeros are
+    cannot.      HONEST WALL (in the verdict): only the first 648 zeros are
     interval-certified (the rest are float64-located, 1e-6-class agreement,
     negligible for 0.03-scale gaps); t_c(N) is naive model extrapolation, NOT
     a bound on Λ; a single-path record chain is bracketed by the GUE null,
     not a claim against GUE; no finite number of zeros proves RH.
+    **Sequel 2026-08-15 — Connes "Letter to Riemann", NOT reproduced**
+    (`experiments/connes_letter.py`, `data/connes_letter_data.json`): the
+    letter's claim is that the Weil quadratic form on functions supported in
+    [1,13] (primes 2,3,5,7,11,13 and their powers ≤13 only) has a ground
+    state whose Mellin-transform zeros are real and approximate the first 50
+    zeta zeros to 2.6e-55..1e-2.  We found, first, a *convention error in the
+    letter's own archimedean term*: the explicit-formula identity
+    f̂(i/2) − Σ_{1/2+is∈Z} f̂(s) + f̂(−i/2) = Σ_v W_v(f) closes to machine
+    precision ONLY with eq(10) (W_p) plus the digamma archimedean form
+    W_R(f) = (1/2π)∫φ(t)(log π − Re ψ(1/4+it/2))dt, while the paper's printed
+    eq(11) leaves a function-dependent defect of 0.57/0.15 on the test
+    functions (documented in `local_term_check`).  With the
+    identity-consistent local terms, an independent Chebyshev discretization
+    (M=10..30, full and even subspaces) finds **no real zeros** of the
+    ground state's Mellin transform on [1,150], and |f̂(γ_n)| does not
+    converge to zero with M.  The letter's OWN trigonometric truncation
+    (N=50..150; footnote 14) does give the even ground state (Thm 6.1's
+    evenness, exactly) with all F.T. zeros real — but they sit on a
+    quasi-periodic lattice of spacing 2π/L = 2.45: matching the zeta-zero
+    *density* (60+ zeros in [1,150] vs 50 zeta ordinates) yet NOT their
+    positions (median offset ~0.73, 18/50 within 0.5, 2/50 within 0.05 at
+    N=150; the exact-on-lattice zeros are a structural artifact of the trig
+    truncation's periodic-Dirac spectrum).  The claimed 2.6e-55..1e-2
+    precision is therefore tied to the footnote-14 rank-one-perturbation of
+    a periodic Dirac operator with the Dirichlet kernel — extra structure
+    not derivable from the letter's text.  HONEST WALL (in the verdict):
+    non-reproduction of a numerical claim is NOT a disproof of RH and bounds
+    nothing (no de Bruijn–Newman Λ consequence; finitely many primes never
+    become the full Euler product).
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**

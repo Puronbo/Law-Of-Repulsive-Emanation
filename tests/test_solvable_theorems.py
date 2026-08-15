@@ -1509,3 +1509,45 @@ def test_space_spin_momentum_envelope_worst_direction():
     assert 1.02 <= d['gain_vs_three'] <= 1.04
     assert 'failure' in d['redundancy'].lower()
 
+
+def test_connes_letter():
+    d = load('connes_letter_data.json')
+    assert d['verdict'].startswith('CONNES LETTER NOT REPRODUCED')
+    # convention finding: the identity closes with the digamma archimedean
+    # term (machine precision) but NOT with the paper's printed eq(11)
+    wh = d['local_term_check']['w_half']
+    assert wh['residual_digamma'] < 1e-6
+    assert wh['residual_paper11'] > 0.1
+    assert math.isclose(wh['lhs'], 2.63333124, abs_tol=1e-5)
+    assert math.isclose(wh['W_R_digamma'], 2.14210523, abs_tol=1e-4)
+    assert math.isclose(wh['W_R_paper11'], 2.71172333, abs_tol=1e-4)
+    # corrected form is NOT diagonal in the trig basis (W_p is, W_R is not)
+    td = d['trig_diagonality']
+    assert td['max_offdiag_ratio'] > 0.01
+    assert td['Wp_offdiag_max'] < 1e-12
+    assert td['WR_offdiag_max'] > 0.1
+    # independent Chebyshev slices find no real zeros at all
+    for key in ('M10', 'M10e', 'M20', 'M20e', 'M30', 'M30e'):
+        assert d['slices'][key]['n_found'] == 0
+    # the letter's own trig truncation: even ground state, all zeros real
+    ts = d['trig_slices']['N100']
+    assert ts['even_weight'] > 0.999
+    assert ts['n_zeros'] >= 60
+    assert ts['n_zeta_zeros_checked'] == 50
+    # ...but the zeros lie on a 2*pi/L quasi-lattice, NOT at the zeta
+    # ordinates: only a handful match, and never near the claimed precision
+    assert ts['n_matched_tight'] < 5
+    assert ts['med_err'] > 0.5
+    tb = d['trig_best']
+    assert tb['N'] == 150
+    assert tb['n_matched'] > 5
+    assert tb['med_err'] > 0.5
+    # explicit formula: identity closes on smooth tests (local check above);
+    # ground-state zero sums converge slowly in K (tail of |fhat|^2)
+    cheb_res = d['explicit_formula']['residual_cheb_vs_K']
+    assert cheb_res[-1][1] < cheb_res[0][1]
+    # honest wall: numerical non-reproduction is NOT a disproof of RH
+    assert 'proves RH' not in d['verdict'] or 'does not disprove' in d['verdict']
+    assert 'de Bruijn-Newman' in d['verdict']
+
+
