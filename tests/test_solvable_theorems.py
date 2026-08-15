@@ -21,8 +21,11 @@ number so none of the resolved claims can silently drift:
    - Riemann-Siegel certifier: rigorous interval-arithmetic + Turing certification that N(g_n) = 648 zeros <= g_n = 999.236 lie on Re(s)=1/2 and are simple - 654/654 brackets certified, signs OK at all 653 Gram points, zeta/Z containment PASS at 8 heights, theta (exact Stirling/Binet series, validated remainder bound) contained at all Gram points, max|S|=1, zetazero cross-check MATCH 648==648 - a finite verification, NOT a proof of RH
    - de Bruijn-Newman condensation: RH <=> Lambda <= 0 (Newman); the certified 648 zeros are the t=0 slice of the backward-heat flow H_t = int e^{tu^2} Phi(u) cos(zu) du; Phi even to 1.7e-51, H_0=(1/8)xi exact (rel 0 at z=10, 5e-48 at z=55); fast p-substitution evaluator tracks analytic xi to 4e-8 at z~223 and the independent v-substitution quadrature to 6e-7; measured merger law d(t)^2 = 4d^2 + 8t: P1 (gap 0.845) slope 7.377 (model 8), fit t_c -0.390 (model -0.357), merger confirmed between 0.90 and 1.05 of fit t_c; P2 (gap 1.219) fit t_c -0.942 (model -0.743); Polya direction holds (zeros persist and separate for t>0); certified global closest pair (gap 0.31043, idx 452) has local-model boundary t_c ~ -0.0482 at H_t ~ 1e-254, invisible to floats - a finite probe of the FINITE system, NOT a bound on Lambda, no proof of RH
    - merger-boundary creep t_c(N): the finite de Bruijn-Newman face is a stepping function of how many zeros are seen - a vectorized Riemann-Siegel scan re-locates 43851 consecutive zeros (t<36000, ~10s, count exact, zetazero match <=3e-6) and independently re-discovers the classical Lehmer pair (idx 6708, gap 0.0377 at gamma~7005) behind the Lambda >= -1.15e-11 bound; creep -0.0482 (N=648 certified) -> -7.11e-4 (N=10000, Lehmer) -> -6.23e-4 (N>=20000, record gap 0.03531 at gamma~17144); record-tight reduced gaps ~ N^(-1/3) (fit -0.36, GUE tail -1/3) bracketed by the Wigner expected-min null; direct H_t-eval face closes past gamma~1000 (e^{-pi gamma/4} ~ 1e-5847) while the zero-locations-only face is what the Lambda programme used - finite probe, located-not-certified beyond 648, NOT a bound on Lambda, no proof of RH
-   - C2 golden fold: retrace chain is not a phi/phi^2 ladder (1/4 rungs)
-   - hierarchical C0 flow: SUPPORTED (NC parity with flat flow, router gain, 6 not 30 comps)
+    - Connes footnote-14 Dirac reconstruction (the letter's claimed rank-one perturbation of the periodic Dirac operator with the Dirichlet kernel): reconstructed EXACTLY - fhat(z) = 4 z sin(zL/2) R(z) with R the rank-one secular function (verified to 5e-12), so the zeros are exactly {2 pi m/L : |m| > N} union {roots of R}, each root interlaced in its own pole gap; interlacing pins the FIRST eigenvalue into (0, 2.45] while gamma_1 = 14.1347 is 5.77 spacings up, so the claimed 2.6e-55 first-zero match is categorically impossible; the lattice part is exact at N=50 (m>N: 11 zeros at 2 pi m/L, |fhat| < 5e-15); the remaining roots miss the ordinates (median 0.82, 13/50 within 0.5); C_0 = V(q0) = H(q0,0) plays no role (scalar of an unrelated system, no trace formula); HONEST WALL: reproducing the structure is not the numbers, and neither direction speaks to RH
+    - four-point coordinate lattice of 10262000 -> {10262000, 20001026, 20002610, 26102000}: exact finite arithmetic - gcd = 2 (the four span 2Z, Bezout 2 = -2238620*10262000 + 1148577*20001026); block structure 1026|2000, 2000|1026, 2000|2610, 2610|2000 closing the 4-cycle with step 1584 = 2^4*3^2*11; the full orbit of the digit multiset {0,0,0,0,1,2,2,6} is 840 points in three leading-digit clusters (1:210, 2:420, 6:210), none divisible by 3 (digit sum 11), 39 primes, anchors at ranks 470/532/543/729; the permutohedron has diameter 16, an EMPTY shell at distance 14, and (by S_8 transitivity) identical shells from every anchor; HONEST WALL: finite arithmetic, chance-level 2 pi/L proximity, no mechanism to zeta or RH
+    - zeta-lattice alignment with an origin (the rigorous form of 'align the lattice with RH'): the ONLY honest spectral test is index-matched |gamma_k - (o + k s)| and the best FIXED lattice scores median error 10.5, 1/50 within 0.5, 0 within 0.05 (nearest-point metrics are trivially small at fine spacing and were rejected); the real 'origin' is adaptive - Weyl law residuals (mean 0.50, max 0.88) and Gram points (1/49 violations, offsets median 0.86, max 9.04 at gamma_1); the four anchors as origins on the 2 pi/L lattice sit inside the random-origin spread (uniform median 0.612, random 0.618, anchors 0.375..0.681; only 2/200 random origins beat the best anchor - selection noise, the expected number); any anchor rescaled to 61 points in [0,150] collapses to spacing 2.459 whatever its digits; PROVABLE negative theorem: interlacing pins the first rank-one eigenvalue to (0, 2.45], unreachable by gamma_1; HONEST WALL: RH is open, the provable content is negative classification, a positive proof needs mathematics outside this repository
+    - C2 golden fold: retrace chain is not a phi/phi^2 ladder (1/4 rungs)
+    - hierarchical C0 flow: SUPPORTED (NC parity with flat flow, router gain, 6 not 30 comps)
    - flow-guided active learning: margin-AL reaches targets with fewer labels than random; raw force-cancellation score is not the winner
    - balance survey: 50/50 is best shock absorber but NOT the layout optimum (PARTIAL)
    - balance scale (T54): scaling is a real confound (A* ~ n^1.086) but NOT the problem; dimension-independent shell
@@ -1549,5 +1552,124 @@ def test_connes_letter():
     # honest wall: numerical non-reproduction is NOT a disproof of RH
     assert 'proves RH' not in d['verdict'] or 'does not disprove' in d['verdict']
     assert 'de Bruijn-Newman' in d['verdict']
+
+
+def test_connes_dirac():
+    d = load('connes_dirac_data.json')
+    v = d['verdict']
+    assert v.startswith('FOOTNOTE-14 STRUCTURE CONFIRMED, CLAIM IMPOSSIBLE')
+    # the exact decomposition fhat(z) = 4 z sin(zL/2) R(z) is verified to
+    # machine precision: the zeros are exactly {2 pi m/L : |m| > N} union
+    # {roots of R}, where R is the rank-one secular function
+    assert d['construction']['decomposition_verified_rel'] < 1e-9
+    assert d['construction']['N_letter'] == 100
+    # the interlacing pins the FIRST eigenvalue into (0, w_1] = (0, 2.45]:
+    # gamma_1 = 14.1347 is 5.77 w_1 away, so the letter's first-zero match
+    # is categorically impossible
+    rs = d['rank_one_spectrum']
+    assert math.isclose(rs['first_eigenvalue_r1'], 1.025847, abs_tol=1e-4)
+    assert math.isclose(rs['gamma_1'], 14.134725, abs_tol=1e-5)
+    assert rs['gamma_1_in_lattice_units'] > 5.0
+    assert rs['impossible_first_zero'] is True
+    inter = rs['interlacing']
+    assert inter['n_roots'] >= 60
+    assert inter['in_own_gap'] == inter['n_roots']
+    assert inter['gaps_with_one_root'] >= 60
+    # elsewhere the rank-one roots miss the ordinates (as the direct trig
+    # computation already showed): median offset > 0.5, few tight hits
+    m = d['matching']
+    assert m['med_err'] > 0.5
+    assert m['n_matched'] < 20
+    assert m['n_matched_tight'] < 5
+    # the lattice part of the zero set is EXACT at N=50: 2 pi m/L with m > N
+    lc = d['lattice_check_N50']
+    assert lc['first_lattice_index_m'] == 51
+    assert math.isclose(lc['first_lattice_position'], 124.9313, abs_tol=1e-3)
+    assert lc['n_lattice_zeros'] >= 10
+    assert lc['max_fhat_on_lattice'] < 1e-12
+    # C_0 cannot participate: scalar of an unrelated system, no trace formula
+    assert d['C0_asset']['role'] == 'none'
+    # honest wall
+    assert 'HONEST WALL' in v
+    assert 'speaks to RH' in v or 'C_0' in d['C0_asset']['reason']
+
+
+def test_four_point_lattice():
+    d = load('four_point_lattice_data.json')
+    assert d['digit_multiset'] == '0,0,0,0,1,2,2,6'
+    assert d['anchors'] == [10262000, 20001026, 20002610, 26102000]
+    # arithmetic: gcd = 2, so the four anchors span the full even lattice 2Z
+    assert d['arithmetic']['gcd_of_all_four'] == 2
+    assert d['arithmetic']['lattice_spanned'].startswith('2*Z')
+    # block structure: 1026|2000, 2000|1026, 2000|2610, 2610|2000; the
+    # 1584 step closes the 4-point cycle (2610 - 1026 = 20002610 - 20001026)
+    bs = d['block_structure']
+    assert bs['blocks'] == ['1026', '2000', '2610']
+    assert bs['splits']['10262000'] == ['1026', '2000']
+    assert bs['splits']['26102000'] == ['2610', '2000']
+    assert bs['step_1584']['2610_minus_1026'] == 1584
+    assert bs['step_1584']['gap_20002610_minus_20001026'] == 1584
+    # full orbit: 840 points, none divisible by 3 (digit sum 11), clusters
+    o = d['full_orbit']
+    assert o['n'] == 840
+    assert o['min'] == 1226
+    assert o['max'] == 62210000
+    assert o['count_divisible_by_3'] == 0
+    assert o['leading_digit_clusters']['1']['count'] == 210
+    assert o['leading_digit_clusters']['2']['count'] == 420
+    assert o['leading_digit_clusters']['6']['count'] == 210
+    assert o['anchors_rank'] == {'10262000': 470, '20001026': 532,
+                                 '20002610': 543, '26102000': 729}
+    # permutohedron: diameter 16, empty shell at distance 14, and the
+    # vertex-transitive shells are identical from every anchor
+    p = d['permutohedron']
+    assert p['diameter'] == 16
+    assert '14' not in p['spheres']['10262000']['sphere_sizes']
+    sizes0 = p['spheres']['10262000']['sphere_sizes']
+    for a in ('20001026', '20002610', '26102000'):
+        assert p['spheres'][a]['sphere_sizes'] == sizes0
+    assert p['spheres']['10262000']['cumulative_circles']['16'] == 840
+    # honest wall: finite arithmetic, no mechanism to zeta/RH
+    assert 'mechanism' in d['honest_wall'].lower()
+    assert 'proof' in d['honest_wall']
+
+
+def test_zeta_lattice_alignment():
+    d = load('zeta_lattice_alignment_data.json')
+    v = d['verdict']
+    assert v.startswith('NO ALIGNMENT EXISTS')
+    # the ONLY honest spectral test is index-matched: |gamma_k - (o + k s)|;
+    # a fixed lattice cannot track the logarithmically-thinning ordinates
+    b = d['fixed_lattice_best_fit']
+    assert b['med_err'] > 5.0
+    assert b['n_matched_tight'] == 0
+    assert b['note'].startswith('index-matched')
+    # the genuine alignment that exists is the adaptive Weyl/Gram one
+    assert d['adaptive_weyl']['residual_mean'] < 1.0
+    assert abs(d['adaptive_weyl']['local_vs_adaptive_ratio_mean'] - 1.0) < 0.1
+    assert d['gram']['gram_violations'] >= 1
+    # the four anchors are inside the random-origin spread: their residues
+    # on the 2 pi/L lattice are chance (uniform median = spacing/4 = 0.612)
+    ao = d['anchor_origins']
+    assert math.isclose(ao['uniform_origin_median_expected'], 0.612,
+                        abs_tol=1e-3)
+    assert math.isclose(ao['random_origins_median_q'],
+                        ao['uniform_origin_median_expected'], abs_tol=0.05)
+    for q in ao['anchors_q'].values():
+        assert 0.2 < q < 0.8
+    # the "99th percentile" anchor is selection noise: only ~2 of 200
+    # random origins beat the best anchor -- the expected number
+    assert ao['random_origins_n_better_than_best_anchor'] <= 4
+    # rescaled anchors collapse to the same spacing regardless of digits
+    assert d['rescaled_anchor_spacings']['count_forced_by_density'] == 61
+    # the provable negative theorem: interlacing pins the first rank-one
+    # eigenvalue into (0, 2.45], so gamma_1 = 14.13 is unreachable
+    pr = d['provable']
+    assert pr['empirical_check']['first_root_r1'] < 2.0
+    assert pr['empirical_check']['gamma_1_over_omega_1'] > 5.0
+    assert pr['does_not_bear_on_RH'] is True
+    # honest wall
+    assert 'HONEST WALL' in v
+    assert 'not a proof or disproof of RH' in v or 'RH is open' in v
 
 

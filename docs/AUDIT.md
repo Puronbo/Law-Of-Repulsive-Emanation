@@ -319,6 +319,38 @@ given so it can be re-run).
     non-reproduction of a numerical claim is NOT a disproof of RH and bounds
     nothing (no de Bruijn–Newman Λ consequence; finitely many primes never
     become the full Euler product).
+
+    **Sequel 2026-08-15 — Footnote-14 Dirac construction, provably
+    impossible at the first zero; the four-point lattice; the origin
+    calibration** (`experiments/connes_dirac.py` + `four_point_lattice.py` +
+    `zeta_lattice_alignment.py`, `data/connes_dirac_data.json` +
+    `four_point_lattice_data.json` + `zeta_lattice_alignment_data.json`):
+    the footnote-14 mechanism the letter's 2.6e-55 precision depends on is
+    reconstructed EXACTLY from the trig ground state: f̂(z) = 4z·sin(zL/2)·R(z)
+    with R(z) = Σ_k c_k(−1)^k/(z²−ω_k²) the secular function of a rank-one
+    perturbation of diag(ω_k), ω_k = 2πk/L (verified to 5e-12), so the zeros
+    are exactly {2πm/L : |m|>N} ∪ {roots of R}.  The provable statement:
+    Cauchy interlacing pins each root in its own pole gap, and the FIRST
+    rank-one eigenvalue lies in (0, ω₁] = (0, 2.45] — while γ₁ = 14.1347 is
+    5.77 ω₁'s away, so the letter's claimed eigenvalue at γ₁ (2.6e-55) is
+    categorically impossible (verified: 62 roots, all in own gap, first at
+    1.0258; lattice part exact at N=50, |f̂| < 5e-15 on the 11 lattice zeros
+    with m > 51).  The four-point coordinate lattice of the epoch anchor
+    {10262000, 20001026, 20002610, 26102000} is exact finite arithmetic —
+    gcd 2 (they span 2ℤ), the 4-block cross 1026|2000…2610|2000 closing at
+    step 1584 = 2⁴·3²·11, an 840-point digit orbit with three leading-digit
+    clusters and a permutohedron of diameter 16 with an empty shell at
+    distance 14 — but its 2π/L proximity is at chance, so no origin derived
+    from it aligns with the zeros: the honest index-matched test |γ_k −
+    (o + k·s)| gives the best fixed lattice a median error 10.5 (0/50 within
+    0.05); the genuine origin is adaptive (Weyl residuals mean 0.50/max
+    0.88; Gram points 1/49 violations); the anchors score inside the
+    random-origin spread (uniform median 0.612, 2/200 random origins beat
+    the best anchor — selection noise).  HONEST WALL (in the verdicts): the
+    provable content is negative classification — the letter's rank-one
+    construction is impossible and no fixed lattice or anchor origin tracks
+    the ordinates; RH remains open, and no project constant (C₀ = V(q0) =
+    H(q0,0)) enters any of it.
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**

@@ -1,0 +1,71 @@
+{
+  "claim": "Connes 2026 'Letter to Riemann' footnote 14: the zeros of the ground state's Fourier transform are approximated by the spectrum of a rank-one perturbation of the periodic Dirac operator obtained using the Dirichlet kernel, with the first zeta zero matched to 2.6e-55.",
+  "construction": {
+    "operator": "truncated momentum D_N = diag(w_k), w_k = 2 pi k/L (periodic Dirac operator restricted by the Dirichlet kernel to |k| <= N)",
+    "perturbation": "rank-one (Krein-space) term with coefficients c_k (-1)^k, c_k = cos coefficients of the even ground state of Q = W_p + W_R (identity-consistent local terms)",
+    "secular_function": "R(z) = sum_k c_k (-1)^k/(z^2 - w_k^2)",
+    "exact_zero_structure": "fhat(z) = 4 z sin(zL/2) R(z): zeros = {2 pi m/L : |m| > N} union {roots of R}",
+    "decomposition_verified_rel": 5.262292345966659e-12,
+    "N_letter": 100
+  },
+  "rank_one_spectrum": {
+    "first_eigenvalue_r1": 1.0258470804249293,
+    "gamma_1": 14.134725141734695,
+    "gamma_1_in_lattice_units": 5.77013925226121,
+    "impossible_first_zero": true,
+    "interlacing": {
+      "n_roots": 62,
+      "in_own_gap": 62,
+      "gaps_with_one_root": 62,
+      "n_gaps_checked": 100,
+      "mean_spacing": 2.434881610344915,
+      "spacing_2pi_L": 2.449633279854652
+    }
+  },
+  "matching": {
+    "n_checked": 50,
+    "n_matched": 13,
+    "n_matched_tight": 2,
+    "med_err": 0.8220695314303903,
+    "max_err": 2.0079169495118805
+  },
+  "bottom_ordinates": {
+    "gamma_1": 14.134725141734695,
+    "first_five": [
+      14.134725141734695,
+      21.022039638771556,
+      25.01085758014569,
+      30.424876125859512,
+      32.93506158773919
+    ],
+    "spacings_first_five": [
+      6.887,
+      3.989,
+      5.414,
+      2.51
+    ],
+    "lattice_spacing": 2.449633279854652,
+    "gamma_1_in_lattice_units": 5.77013925226121
+  },
+  "lattice_check_N50": {
+    "n_lattice_zeros": 11,
+    "first_lattice_zeros": [
+      124.9313,
+      127.3809,
+      129.8306,
+      132.2802,
+      134.7298
+    ],
+    "first_lattice_index_m": 51,
+    "first_lattice_position": 124.9313,
+    "lattice_points_in_scan_with_m_gt_N": 11,
+    "max_fhat_on_lattice": 4.97863125092222e-15,
+    "min_R_on_lattice": 8.056182700261045e-05
+  },
+  "C0_asset": {
+    "role": "none",
+    "reason": "C_0 = V(q0) = H(q0, 0) from the L.O.R.E. engine is a scalar of an unrelated Hamiltonian system; the zeta-zero problem requires a Hilbert space with a trace formula (here the truncated momentum operator and its secular function), which C_0 does not provide.  No project constant enters this experiment."
+  },
+  "verdict": "FOOTNOTE-14 STRUCTURE CONFIRMED, CLAIM IMPOSSIBLE: the letter's construction is reconstructed EXACTLY -- the Fourier transform of the even ground state decomposes as fhat(z) = 4 z sin(zL/2) R(z) with R(z) = sum_k c_k (-1)^k/(z^2 - w_k^2) (verified to 5.3e-12), so the zeros are exactly the lattice 2*pi*m/L (|m| > N) plus the roots of R, which interlace the poles w_k (the spectrum of a rank-one perturbation of the Dirichlet-truncated periodic Dirac operator; 62/100 gaps hold one root).  BUT the interlacing pins the FIRST rank-one eigenvalue to r_1 = 1.025847 while gamma_1 = 14.134725 (5.8 lattice spacings up): a bounded rank-one perturbation cannot reach it, so the claimed 2.6e-55 match at gamma_1 is categorically impossible, and below gamma_1 there is 1 eigenvalue but 0 zeta zeros.  Elsewhere the roots miss the ordinates (median offset 0.822, 13/50 within 0.50, 2 within 0.05).  HONEST WALL: the structure is real but the numbers are not reproducible, and neither direction speaks to RH; no de Bruijn-Newman Lambda consequence; finitely many primes never become the full Euler product.",
+  "runtime_sec": 5.6
+}

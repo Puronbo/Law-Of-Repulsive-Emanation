@@ -1504,6 +1504,90 @@ with errors from 2.6e-55 (first zero) down to 1e-2.  `experiments/connes_letter.
   claim is not a disproof of RH and bounds nothing (no Λ consequence; finitely
   many primes never become the full Euler product).
 
+### Ch. 5.21h  The footnote-14 Dirac construction, provably impossible (2026-08-15)
+
+The letter's claimed 2.6e-55..1e-2 precision is tied to its footnote 14: the
+zeros of the ground state's Fourier transform are the spectrum of a *rank
+one perturbation of the periodic Dirac operator* obtained with the Dirichlet
+kernel.  `experiments/connes_dirac.py` (`data/connes_dirac_data.json`)
+reconstructs that construction exactly.
+
+* **The exact decomposition (verified to 5e-12).**  For the even trig ground
+  state η(x) = Σ_k c_k cos(ω_k x), ω_k = 2πk/L,
+  η̂(z) = 4z·sin(zL/2)·R(z),  R(z) = Σ_k c_k(−1)^k/(z²−ω_k²),
+  so the zeros of η̂ are EXACTLY the lattice points 2πm/L with |m| > N,
+  plus the roots of R.  R is the secular function of a rank-one perturbation
+  of diag(ω_k) — the Dirichlet-truncated momentum operator — and its roots
+  interlace the poles ω_k (62 roots, every one in its own gap).
+* **The provable statement.**  Cauchy interlacing pins the FIRST rank-one
+  eigenvalue into (0, ω₁] = (0, 2.45], while γ₁ = 14.1347 is 5.77 spacings
+  up.  The letter's claimed eigenvalue at γ₁ cannot exist — the first-zero
+  match is categorically impossible, and below γ₁ there is 1 eigenvalue but
+  0 zeta zeros.  This is a theorem about the letter's own mechanism.
+* **The lattice part is exact.**  At N=50 the 11 zeros with m = 51..61 are
+  exactly at 2πm/L (|η̂| < 5e-15, R finite there); the other roots miss the
+  ordinates (median 0.82, 13/50 within 0.5, 2/50 within 0.05).
+* **C₀ does not enter.**  C₀ = V(q0) = H(q0,0) is a scalar of an unrelated
+  Hamiltonian system; the zeta-zero problem needs a Hilbert space and a
+  trace formula, which this construction provides and C₀ does not.  HONEST
+  WALL: reproducing the structure is not reproducing the numbers, and
+  neither direction speaks to RH.
+
+### Ch. 5.21i  The four-point coordinate lattice of the epoch anchor (2026-08-15)
+
+`experiments/four_point_lattice.py` (`data/four_point_lattice_data.json`)
+expands 10262000 to the four-point coordinate {10262000, 20001026,
+20002610, 26102000} and generates the structure of all known points.
+
+* **Arithmetic.**  gcd of the four = 2, so they span the full even lattice
+  2ℤ (Bezout: 2 = −2238620·10262000 + 1148577·20001026).  Factorisations
+  are pairwise distinct (733, 383·26111, 5·2000261, 31·421 are all
+  unrelated primes).
+* **The four are a closed 2×2 block-cross.**  Split 4+4 they are
+  1026|2000, 2000|1026, 2000|2610, 2610|2000 — a 4-cycle in block space
+  closed by the step 1584 = 2⁴·3²·11 = 2610 − 1026 = 20002610 − 20001026.
+* **The full orbit.**  All 840 numbers whose digits permute
+  {0,0,0,0,1,2,2,6}, in three leading-digit clusters (1:210, 2:420, 6:210);
+  none divisible by 3 (digit sum 11); 39 primes; the anchors at ranks
+  470/532/543/729.
+* **The circles.**  The multiset permutohedron has diameter 16, an EMPTY
+  shell at distance 14, and — by S₈ transitivity — identical shells from
+  every anchor: the circle sizes do not depend on the known point.
+* **Honest wall.**  This is complete, exact finite arithmetic; the 2π/L
+  lattice proximity is at chance (residues 0.95/0.44/0.31/0.96 against a
+  uniform [0,1] baseline), and there is no mechanism from these numbers to
+  the zeros of ζ or to RH.
+
+### Ch. 5.21j  Aligning a lattice with RH: the origin calibration (2026-08-15)
+
+"Indicate an origin and align the lattice" has exactly one rigorous form —
+`experiments/zeta_lattice_alignment.py`
+(`data/zeta_lattice_alignment_data.json`) — calibrating candidate
+origin+spacing models against the first 50 ordinates.
+
+* **The honest spectral test is index-matched**: |γ_k − (o + k·s)|.  The
+  best FIXED lattice over the (o, s) grid scores a median error 10.5, with
+  1/50 within 0.5 and 0 within 0.05.  (Nearest-point distance is rejected:
+  at fine spacing it is trivially small — the "0.256" such a metric returns
+  packs 84 eigenvalues into a 50-zero window.)
+* **The only genuine origin is adaptive.**  The Weyl law with spacing
+  s(T) = 2π/log(T/2π) tracks on average (local/adaptive ratio 0.98 ± 0.33),
+  and Gram points give 1 violation in 49 intervals with offsets median 0.86,
+  max 9.04 (that max is γ₁ itself, 9.0 from the first Gram point at 23.17 —
+  the bottom of the line is irregular).  Statistical structure, not a
+  spectrum.
+* **The anchors are inside the random spread.**  On the 2π/L lattice the
+  four anchors give q = 0.375/0.615/0.681/0.385 against a random-origin
+  median 0.618 (uniform median s/4 = 0.612).  The two "99th-percentile"
+  anchors are selection noise: only 2 of 200 random origins beat the best
+  anchor — the expected number of lucky draws.  And any anchor rescaled to
+  put 61 points in [0,150] collapses to spacing 2.459 whatever its digits:
+  the digits never enter.
+* **Provable content.**  Interlacing pins the first rank-one eigenvalue to
+  (0, 2.45], unreachable by γ₁.  HONEST WALL: the provable statements are
+  negative classifications; RH remains open, and a positive proof needs
+  mathematics outside this repository.
+
 ---
 
 ## Ch. 6  Creases (never forget these)

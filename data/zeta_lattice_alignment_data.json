@@ -1,0 +1,137 @@
+{
+  "claim_under_test": "Connes 2026 letter footnote 14: rank-one Dirac construction matches the first zeta zero to 2.6e-55; and the four-point lattice of 10262000 as an origin for the ordinates.",
+  "first_N_zeros": [
+    14.134725141734695,
+    21.022039638771556,
+    25.01085758014569,
+    30.424876125859512,
+    32.93506158773919,
+    37.586178158825675,
+    40.9187190121475,
+    43.327073280915,
+    48.00515088116716,
+    49.7738324776723,
+    52.970321477714464,
+    56.44624769706339,
+    59.34704400260235,
+    60.83177852460981,
+    65.1125440480816,
+    67.07981052949417,
+    69.54640171117398,
+    72.0671576744819,
+    75.70469069908393,
+    77.1448400688748,
+    79.33737502024937,
+    82.91038085408603,
+    84.73549298051705,
+    87.42527461312523,
+    88.80911120763446,
+    92.49189927055849,
+    94.65134404051989,
+    95.87063422824531,
+    98.83119421819369,
+    101.31785100573138,
+    103.72553804047834,
+    105.44662305232609,
+    107.1686111842764,
+    111.02953554316967,
+    111.87465917699264,
+    114.32022091545271,
+    116.22668032085755,
+    118.79078286597621,
+    121.37012500242065,
+    122.94682929355258,
+    124.25681855434577,
+    127.5166838795965,
+    129.57870419995606,
+    131.08768853093267,
+    133.4977372029976,
+    134.75650975337388,
+    138.11604205453344,
+    139.7362089521214,
+    141.12370740402113,
+    143.11184580762063
+  ],
+  "fixed_lattice_best_fit": {
+    "med_err": 10.48800523909646,
+    "origin": 3.0250000000000004,
+    "spacing": 3.0250000000000004,
+    "n_matched": 1,
+    "n_matched_tight": 0,
+    "note": "index-matched: |gamma_k - (o + k s)|.  Any nearest-point match with s much below the mean ordinate spacing is trivially good and says nothing about a spectrum."
+  },
+  "adaptive_weyl": {
+    "residual_mean": 0.5043195174918859,
+    "residual_std": 0.196741737588278,
+    "residual_max": 0.8798801405348513,
+    "local_vs_adaptive_ratio_mean": 0.981486149376587,
+    "local_vs_adaptive_ratio_std": 0.32776737510088905
+  },
+  "gram": {
+    "n_intervals": 51,
+    "zeros_per_interval_counts": {
+      "0": 2
+    },
+    "gram_violations": 1,
+    "offset_mean": 1.0311297932802166,
+    "offset_median": 0.8567904131743944,
+    "offset_max": 9.035557559511588,
+    "offset_std": 1.2047183819664453
+  },
+  "anchor_origins": {
+    "spacing": 2.449633279854652,
+    "uniform_origin_median_expected": 0.612408319963663,
+    "random_origins_median_q": 0.6178457253881859,
+    "random_origins_min": 0.3734278600937557,
+    "random_origins_max": 0.8513887798335702,
+    "random_origins_n_better_than_best_anchor": 2,
+    "anchors_residues": {
+      "10262000": 1.1633,
+      "20001026": 0.5355,
+      "20002610": 2.0724,
+      "26102000": 1.1762
+    },
+    "anchors_q": {
+      "10262000": 0.3747,
+      "20001026": 0.6145,
+      "20002610": 0.6812,
+      "26102000": 0.3846
+    },
+    "anchor_pct_better_than_random": {
+      "10262000": 99.0,
+      "20001026": 50.5,
+      "20002610": 30.0,
+      "26102000": 97.0
+    }
+  },
+  "rescaled_anchor_spacings": {
+    "count_forced_by_density": 61,
+    "anchors": [
+      10262000,
+      20001026,
+      20002610,
+      26102000
+    ],
+    "rescaled_spacings": [
+      2.459,
+      2.459,
+      2.459,
+      2.459
+    ],
+    "note": "spacing fixed by 150/61 ~ 2.459; the digits of the anchors never enter -- rescaling 10262000 or 26102000 to hit ~61 points in [0,150] gives the same spacing."
+  },
+  "provable": {
+    "lemma": "Cauchy interlacing: the roots of the secular function R(z) = sum_k c_k (-1)^k/(z^2 - w_k^2) of a rank-one perturbation of diag(w_k) interlace the poles w_k: exactly one root in (0, w_1), one in (w_k, w_{k+1}), k = 1..N-1, none elsewhere.",
+    "corollary": "The first rank-one eigenvalue lies in (0, w_1] with w_1 = 2 pi/L ~ 2.4496.  gamma_1 = 14.1347 is 5.77 w_1's away, so the letter's claimed eigenvalue at gamma_1 (2.6e-55 precision) is impossible.",
+    "empirical_check": {
+      "first_root_r1": 1.0258,
+      "omega_1": 2.4496,
+      "roots_observed": 62,
+      "roots_in_own_gap": 62,
+      "gamma_1_over_omega_1": 5.77
+    },
+    "does_not_bear_on_RH": true
+  },
+  "verdict": "NO ALIGNMENT EXISTS FOR ANY FIXED LATTICE OR ANCHOR ORIGIN, AND THE ONE PROVABLE STATEMENT KILLS THE LETTER'S CONSTRUCTION.  Best fixed lattice (index-matched, spectral): median error 10.488, 1/50 within 0.5, 0 within 0.05.  Weyl/Gram track on average only (Gram violations: 1/49 intervals; offsets median 0.857, max 9.036).  The four anchors sit inside the random-origin spread (uniform median 0.612, random median 0.618, random min 0.373; best anchor 0.375, and only 2 of 200 random origins do better -- the expected number of such lucky origins, so the '99th percentile' of the anchors is selection noise, not signal).  PROOF (interlacing): first rank-one eigenvalue in (0, 2.45], so the 2.6e-55 match at gamma_1 is impossible.  HONEST WALL: RH is open; the provable content here is negative classification; a positive proof of RH needs mathematics outside this repository.",
+  "runtime_sec": 1.7
+}
