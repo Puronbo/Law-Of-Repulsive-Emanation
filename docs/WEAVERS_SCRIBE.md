@@ -1824,6 +1824,36 @@ A084237 exactly.
 
 ---
 
+### Ch. 5.21q  Mertens sublinear census, part 2: the table completed (2026-08-16)
+
+The same experiment, one order higher.  The shared quotient-set memo now
+reaches M(10¹⁴) = −875575, so **every M(10ⁿ) for n = 1..14 matches OEIS
+A084237 — the published table is complete** (M(10^k) = −1, 1, 2, −23,
+−48, 212, 1037, 1928, −222, −33722, −87856, 62366, 599582, −875575).
+The 10¹⁴ recursion ran in a few thousand seconds on the same memo as
+10¹¹..10¹³, confirming the O(N^{2/3}) scaling.  And a **free scan** of
+that memo — 11,106 EXACT values x = ⌊N/i⌋ > 10¹⁰, sampled, not a census —
+finds the forbidden ratio again: two further |M(x)|/√x > 0.5 crossings at
+height, the first at **x = 108,813,928,182 (M = 169,281, ratio 0.5132)**,
+max sampled 0.5132.
+
+* **The ratio recurs, the record stands.**  The 0.5 crossing at 7.7e9 was
+  no fluke: sampled heights around 1.09e11 cross again.  But the sampled
+  max 0.5132 stays BELOW the exact record 0.5706 at x = 7,766,842,813 —
+  and nothing sampled is anywhere near 1 (a real counterexample to
+  M(x) < √x needs |M(x)| > √x, ratio above 1, promised only below
+  exp(1.59e40)).
+* **Resolution limit.**  RH requires M(x) = O(x^{1/2+ε}) (Littlewood 1912)
+  as a supremum over ALL x — no finite census (exact to 10¹⁰, sampled to
+  10¹⁴) decides a global statement, and the Mertens-conjecture theorem
+  shows the ratio can behave adversarially far beyond any computation.
+* **Honest wall.**  Completing the published table and finding the ratio
+  again near 10¹¹ is a counterexample search, not a proof.  RH remains
+  open; the proof (if it exists) is not a computation.  C₀ = V(q0) =
+  H(q0,0) does not enter.
+
+---
+
 ## Ch. 6  Creases (never forget these)
 
 1. **The pattern is scale-dependent.** τ-equality under MM/DD swap oscillates

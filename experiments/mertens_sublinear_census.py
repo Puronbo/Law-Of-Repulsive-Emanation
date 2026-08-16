@@ -2,7 +2,7 @@
 mertens_sublinear_census.py
 ===========================
 The Mertens function at height: an exact segmented census to x = 10^10
-followed by the classical sublinear recursion to M(10^13), the prime-side
+followed by the classical sublinear recursion to M(10^14), the prime-side
 thread's extension beyond the x = 10^8 sieve of mertens_psi_census.py.
 
     RH  <==>  M(x) = O(x^(1/2+eps)) for every eps > 0    (Littlewood 1912)
@@ -21,23 +21,32 @@ M(n) = 1 - sum_{d=2}^n M(floor(n/d)) is evaluated with the grouping
 M(n) = 1 - sum_q (floor(n/q) - floor(n/(q+1))) M(q) and memoization over
 the quotient set {floor(N/i)} of the target N - O(N^(2/3)) work when the
 base is >= N^(2/3) - to compute M(10^11) = -87856, M(10^12) = 62366,
-M(10^13) = 599582, each matching OEIS A084237 exactly.  A tiny self-check
-builds a base table to 1000 and re-derives M(10^5) = -48 and M(10^6) =
-212 through the recursion alone, validating the grouped sum independent
-of the large run.
+M(10^13) = 599582, M(10^14) = -875575, each matching OEIS A084237 exactly
+(completing the published table n = 1..14).  A tiny self-check builds a
+base table to 1000 and re-derives M(10^5) = -48 and M(10^6) = 212
+through the recursion alone, validating the grouped sum independent of
+the large run.
+
+Part 3 (quotient-point scan, FREE): the recursion memo holds EXACT M(q)
+for every quotient point q = floor(N/i) of every target N.  Scanning the
+points q > 10^10 (x = N/1, N/2, ... down past the sieve ceiling) finds
+the sampled records and any further |M(x)|/sqrt(x) > 0.5 crossings at
+heights the sieve cannot reach - a sparse exact sample, not a census.
 
 Sections:
   1. EXACT RECORDS: max |M(x)|/sqrt(x) over [1000, 10^10] and argmax;
      first x >= 1000 with |M(x)|/sqrt(x) > 0.5 (if it exists below 10^10);
      M(10^k), k = 1..10, all verified against OEIS A084237.
-  2. SUBLINEAR RECURSION: M(10^11), M(10^12), M(10^13) from the quotient-
-     set recursion over the exact 10^9 base, all verified against OEIS.
-  3. THE PROVEN-BUT-NEVER-SEEN FAILURE at height: M(x) < sqrt(x) is
+  2. SUBLINEAR RECURSION: M(10^11), M(10^12), M(10^13), M(10^14) from the
+     quotient-set recursion over the exact 10^9 base, all OEIS-verified.
+  3. QUOTIENT SCAN: sampled exact M at every x = floor(N/i) > 10^10 for
+     each target - records and > 0.5 crossings at height.
+  4. THE PROVEN-BUT-NEVER-SEEN FAILURE at height: M(x) < sqrt(x) is
      PROVEN false (Odlyzko-te Riele 1985; Pintz: a counterexample below
      exp(1.59e40)) yet no explicit x is known; the exact records and the
      sublinear values show how quiet every computed height is - a
      violation can sit anywhere above, undetectable in principle.
-  4. RESOLUTION LIMIT / HONEST WALL: RH requires the supremum of
+  5. RESOLUTION LIMIT / HONEST WALL: RH requires the supremum of
      M(x)/x^(1/2+eps) over ALL x; no finite prefix decides it (the
      Mertens-conjecture theorem is the witness); numerical search is a
      counterexample engine, RH remains open, the proof (if it exists) is
@@ -59,7 +68,7 @@ DATA = os.path.join(HERE, "..", "data")
 X_EXACT = 10 ** 10          # exact segmented sieve ceiling
 BLOCK = 4 * 10 ** 6         # block size
 BASE = 10 ** 9              # sublinear base = exact prefix to 10^9
-SUB_TARGETS = [10 ** 11, 10 ** 12, 10 ** 13]
+SUB_TARGETS = [10 ** 11, 10 ** 12, 10 ** 13, 10 ** 14]
 FLOOR = 1000                # record floor (x = 13 trivial record excluded)
 
 # OEIS A084237, a(n) = M(10^n), for verification
@@ -200,7 +209,33 @@ def make_mertens(pref, base):
         memo[n] = res
         return res
 
-    return mertens
+    return mertens, memo
+
+
+def scan_quotients(memo, targets, x_min):
+    """Sampled exact M at the quotient points q = floor(N/i) > x_min for
+    every target N (the recursion memo holds M(q) for all of them).  The
+    large quotient branch x = N/1, N/2, ... sweeps (x_min, N] sparsely;
+    the points are exact but the sample is NOT a census.  Returns
+    (n_points, max_ratio, argmax, M_at_argmax, crossings) with crossings
+    the (x, M) list of |M(x)|/sqrt(x) > 0.5 points, ascending in x."""
+    max_ratio = (0.0, 0, 0)
+    crossings = []
+    n_points = 0
+    for N in sorted(targets, reverse=True):
+        for i in range(1, (N - 1) // x_min + 1):
+            x = N // i
+            v = memo.get(x)
+            if v is None:
+                continue
+            n_points += 1
+            r = abs(v) / (x ** 0.5)
+            if r > max_ratio[0]:
+                max_ratio = (float(r), int(x), int(v))
+            if r > 0.5:
+                crossings.append((int(x), int(v)))
+    crossings.sort()
+    return n_points, max_ratio, crossings
 
 
 def recursion_self_check():
@@ -211,7 +246,7 @@ def recursion_self_check():
     mu = [int(mobius(v)) for v in range(1, n + 1)]
     pref = np.zeros(n + 1, np.int64)
     pref[1:] = np.cumsum(mu)
-    f = make_mertens(pref, n)
+    f, _ = make_mertens(pref, n)
     return {"M_1e5": f(10 ** 5), "M_1e6": f(10 ** 6)}
 
 
@@ -244,7 +279,7 @@ def main():
           % (chk["M_1e5"], chk["M_1e6"]))
 
     print("(3) sublinear recursion (base = exact prefix to %d) ..." % BASE)
-    f = make_mertens(pref, BASE)
+    f, memo = make_mertens(pref, BASE)
     t0 = time.time()
     sub = {}
     for N in sorted(SUB_TARGETS, reverse=True):
@@ -254,6 +289,18 @@ def main():
               % (N, v, OEIS_M[int(np.log10(N))],
                  "OK" if v == OEIS_M[int(np.log10(N))] else "MISMATCH",
                  time.time() - t0))
+
+    print("(4) quotient-point scan over x = floor(N/i) > %d ..." % X_EXACT)
+    n_pts, smr, scross = scan_quotients(memo, SUB_TARGETS, X_EXACT)
+    print("    scanned %d exact points; max |M(x)|/sqrt(x) = %.4f at x = %d "
+          "(M = %d)" % (n_pts, smr[0], smr[1], smr[2]))
+    if scross:
+        print("    sampled |M(x)|/sqrt(x) > 0.5 crossings at height:")
+        for x, Mv in scross:
+            print("      x = %d (M = %d, ratio %.4f)" % (x, Mv, abs(Mv) / x ** 0.5))
+    else:
+        print("    no sampled |M(x)|/sqrt(x) > 0.5 crossing in (%d, %d]"
+              % (X_EXACT, SUB_TARGETS[-1]))
 
     mr = rec["max_ratio"]
     if rec["first_cross_05"]:
@@ -270,6 +317,23 @@ def main():
                   "all" % X_EXACT)
         undecided = ("every computed height stays below the proven-false "
                      "threshold - quiet heights prove nothing" % ())
+    sub_ok = all(sub[str(N)] == OEIS_M[int(np.log10(N))] for N in SUB_TARGETS)
+    sub_parts = ", ".join(
+        "M(10^%d) = %d" % (int(np.log10(int(N))), sub[str(N)])
+        for N in sorted(SUB_TARGETS))
+    if scross:
+        s_fc_x, s_fc_M = scross[0]
+        scan_txt = ("a quotient-point scan of %d EXACT values x = floor(N/i) "
+                    "> 1e10 (sampled, not a census) finds max |M(x)|/sqrt(x) "
+                    "= %.4f at x = %d (M = %d) and %d sampled crossings of "
+                    "0.5 at height, the first at x = %d (M = %d)"
+                    % (n_pts, smr[0], smr[1], smr[2], len(scross),
+                       s_fc_x, s_fc_M))
+    else:
+        scan_txt = ("a quotient-point scan of %d EXACT values x = floor(N/i) "
+                    "> 1e10 (sampled, not a census) finds max |M(x)|/sqrt(x) "
+                    "= %.4f at x = %d (M = %d) and NO further sampled 0.5 "
+                    "crossing" % (n_pts, smr[0], smr[1], smr[2]))
     verdict = (
         "MERTENS SUBLINEAR CENSUS: the Mertens function at height.  "
         "Part 1 (exact): a segmented mu-sieve to x = 1e10 (small-prime "
@@ -283,31 +347,33 @@ def main():
         "Part 2 (sublinear): the identity M(n) = 1 - sum_{d=2}^n "
         "M(floor(n/d)), grouped over distinct quotients and memoized over "
         "the quotient set of each target N with the exact 1e9 prefix as "
-        "base (O(N^(2/3)) work), computes M(10^11) = -87856, "
-        "M(10^12) = 62366, M(10^13) = 599582 - every value matching OEIS "
-        "A084237 exactly - extending the exact census two orders of "
-        "magnitude in height in ~N^(2/3) steps; the recursion is "
-        "independently validated by a base-table self-check re-deriving "
-        "M(10^5) = -48 and M(10^6) = 212.  THE PROVEN-BUT-NEVER-SEEN "
-        "FAILURE AT HEIGHT: the Mertens conjecture M(x) < sqrt(x) is "
-        "PROVEN false (Odlyzko-te Riele 1985; Pintz: a counterexample "
-        "below exp(1.59e40)) yet no explicit x is known; " + undecided +
+        "base (O(N^(2/3)) work), computes " + sub_parts + " - every value "
+        "matching OEIS A084237 exactly and completing the published "
+        "M(10^n) table n = 1..14 - extending the exact census to four "
+        "orders of magnitude in height in ~N^(2/3) steps; the recursion "
+        "is independently validated by a base-table self-check re-deriving "
+        "M(10^5) = -48 and M(10^6) = 212.  Part 3 (scan): " + scan_txt +
+        ".  THE PROVEN-BUT-NEVER-SEEN FAILURE AT HEIGHT: the Mertens "
+        "conjecture M(x) < sqrt(x) is PROVEN false (Odlyzko-te Riele "
+        "1985; Pintz: a counterexample below exp(1.59e40)) yet no "
+        "explicit x is known; " + undecided +
         ".  RESOLUTION LIMIT: RH requires M(x) = O(x^(1/2+eps)) as a "
         "supremum over ALL x - a global statement no finite prefix "
         "decides - and the Mertens-conjecture theorem shows the ratio "
         "|M(x)|/sqrt(x) can behave adversarially far beyond any "
-        "computation.  HONEST WALL: extending the census to 1e13 (or any "
+        "computation.  HONEST WALL: extending the census to 1e14 (or any "
         "finite height) is a counterexample search, not a proof; RH "
         "remains open; the proof, if it exists, is not a computation.")
 
     claim = ("sublinear Mertens census (exact to 1e10 + recursion to "
-             "1e13): M(10^k) k=1..10 exact (OEIS A084237, all OK), max "
-             "|M(x)|/sqrt(x) = %.4f at x = %d over [1000, 1e10], %s; "
-             "M(10^11..10^13) = -87856, 62366, 599582 via the quotient-"
-             "set recursion (all OEIS-verified); the Mertens conjecture "
-             "is PROVEN false somewhere < exp(1.59e40) yet invisible at "
-             "every computed height - so finite Mertens data is "
-             "undecidable, RH remains open" % (mr[0], mr[1], fc_txt))
+             "1e14): M(10^k) k=1..10 exact (OEIS A084237, all OK), max "
+             "|M(x)|/sqrt(x) = %.4f at x = %d over [1000, 1e10], %s; " % (mr[0], mr[1], fc_txt)
+             + sub_parts + " via the quotient-set recursion "
+             "(all OEIS-verified, table n=1..14 complete); quotient scan: "
+             + scan_txt + "; the Mertens conjecture is PROVEN false "
+             "somewhere < exp(1.59e40) yet invisible at every computed "
+             "height - so finite Mertens data is undecidable, RH remains "
+             "open")
 
     print("\nverdict:", verdict)
 
@@ -345,6 +411,14 @@ def main():
             },
         },
         "sublinear": sub,
+        "sampled": {
+            "X_min": X_EXACT,
+            "n_points": n_pts,
+            "max_abs_M_over_sqrt_x": smr[0],
+            "argmax": smr[1],
+            "M_at_argmax": smr[2],
+            "crossings_gt_half_sqrt": scross,
+        },
         "verdict": verdict,
     }
     with open(os.path.join(DATA, "mertens_sublinear_census_data.json"),

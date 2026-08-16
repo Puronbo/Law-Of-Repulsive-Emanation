@@ -568,6 +568,33 @@ given so it can be re-run).
     HONEST WALL: extending the census to 10¹³ (or any finite height) is a
     counterexample search, not a proof; RH remains open; the proof (if it
     exists) is not a computation.
+
+    **Sequel 2026-08-16 — Mertens sublinear census, extended to M(10¹⁴):
+    the published table completed, and the forbidden ratio still winning**
+    (`experiments/mertens_sublinear_census.py`,
+    `data/mertens_sublinear_census_data.json`): the previous sequel
+    stopped the recursion at M(10¹³).  This sequel pushes the shared
+    quotient-set memo one more order of magnitude and computes M(10¹⁴) =
+    −875575 — every M(10ⁿ) for n = 1..14 now matches OEIS A084237, the
+    complete published table.  The recursion cost for 10¹⁴ (~10^{2/3} ×
+    the 10¹³ cost) stayed a few thousand seconds in a single shared memo,
+    confirming the O(N^{2/3}) scaling in practice.  Part 3 adds a free
+    scan of the recursion memo: every quotient point x = ⌊N/i⌋ > 10¹⁰ of
+    each target is an EXACT value of M(x), and 11,106 such points were
+    inspected (a sparse sample, not a census).  The scan finds two
+    further |M(x)|/√x > 0.5 crossings at height — first at x =
+    108,813,928,182 (M = 169,281, ratio 0.5132), max sampled ratio 0.5132
+    at the same x — so the forbidden ratio is not a fluke of the 7.7e9
+    region, but recurs around 1.09e11.  Yet the sampled max 0.5132 stays
+    BELOW the exact record 0.5706 at x = 7.77e9: the census record stands,
+    and every sampled height still sits far under 1 (an actual
+    counterexample to M(x) < √x needs |M(x)| > √x).  RESOLUTION LIMIT
+    unchanged: RH requires M(x) = O(x^{1/2+ε}) as a supremum over ALL x —
+    a global statement no finite census decides — and the
+    Mertens-conjecture theorem shows the ratio can behave adversarially
+    far beyond any computation.  HONEST WALL: extending the census to
+    10¹⁴ (or any finite height) is a counterexample search, not a proof;
+    RH remains open; the proof (if it exists) is not a computation.
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**
