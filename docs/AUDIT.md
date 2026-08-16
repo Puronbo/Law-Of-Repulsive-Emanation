@@ -531,9 +531,43 @@ given so it can be re-run).
     any finite prefix only samples a continuum of nearby violations, and
     the best unconditional state is Korobov–Vinogradov ψ(x) = x + O(x·exp
     (−c (log x)^{3/5}/(log log x)^{1/5})) — an exponential-in-log-distance
-    gap from the RH exponent.  HONEST WALL: the arithmetic side confirms
+    gap from the RH exponent.      HONEST WALL: the arithmetic side confirms
     the S-side conclusion — numerical search is a counterexample engine,
     RH remains open, and the proof (if it exists) is not a computation.
+
+    **Sequel 2026-08-16 — Mertens sublinear census, the Mertens function at
+    height** (`experiments/mertens_sublinear_census.py`,
+    `data/mertens_sublinear_census_data.json`): the Mertens–ψ census
+    stopped at x = 10⁸ with max |M(x)|/√x = 0.4722, under the
+    proven-false conjecture's forbidden 0.5.  This sequel pushes the exact
+    sieve to x = 10¹⁰ (small-prime flips/zeroing plus a vectorized
+    large-cofactor step n = m·q with m squarefree ≤ √x and q prime > √x,
+    indices provably unique; machinery verified against sympy mobius for
+    n ≤ 10⁶, zero mismatches) and reproduces M(10^k) = −1, 1, 2, −23, −48,
+    212, 1037, 1928, −222, −33722 for k = 1..10 (OEIS A084237; M(10¹⁰) =
+    −33722).  THE FINDING: the first |M(x)|/√x > 0.5 excursion at height
+    appears at x = 7,725,038,629 (M = 43,947), with max ratio 0.5706 at
+    x = 7,766,842,813 (M = 50,286) — the first re-crossing since the
+    trivial x = 13.  This is exactly the regime the theorem promises: the
+    Mertens conjecture M(x) < √x is PROVEN false (Odlyzko–te Riele 1985;
+    Pintz: a counterexample below exp(1.59e40)), and the ratio crossing at
+    7.7e9 is a genuine instance of the forbidden behavior — yet it is not
+    an explicit counterexample to the conjecture (|M(x)| > √x with ratio
+    merely above 1/2, not above 1), and reaching x with |M(x)|/√x > 1 is
+    still out of reach of direct sieving.  Part 2 uses the O(N^{2/3})
+    quotient-set recursion M(n) = 1 − Σ_d M(⌊n/d⌋) (grouped over distinct
+    quotients, memoized over {⌊N/i⌋}, base = exact 10⁹ prefix; validated
+    by a base-table self-check re-deriving M(10⁵) = −48 and M(10⁶) = 212)
+    to compute M(10¹¹) = −87856, M(10¹²) = 62366, M(10¹³) = 599582 — every
+    value matching OEIS A084237 exactly, two orders of magnitude in height
+    beyond the sieve.  RESOLUTION LIMIT: RH requires M(x) = O(x^{1/2+ε})
+    (Littlewood 1912) as a supremum over ALL x — a global statement no
+    finite census decides — and the Mertens-conjecture theorem shows the
+    ratio can behave adversarially far beyond any computation; moreover
+    every computed |M(x)| < √x at x ≤ 10¹⁶ despite the proven failure.
+    HONEST WALL: extending the census to 10¹³ (or any finite height) is a
+    counterexample search, not a proof; RH remains open; the proof (if it
+    exists) is not a computation.
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**

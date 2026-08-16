@@ -1,0 +1,52 @@
+{
+  "claim": "sublinear Mertens census (exact to 1e10 + recursion to 1e13): M(10^k) k=1..10 exact (OEIS A084237, all OK), max |M(x)|/sqrt(x) = 0.5706 at x = 7766842813 over [1000, 1e10], and the first x >= 1000 with |M(x)|/sqrt(x) > 0.5 is x = 7725038629 (M = 43947) - the first re-crossing since the trivial x = 13 (|M(13)|/sqrt(13) = 0.832); M(10^11..10^13) = -87856, 62366, 599582 via the quotient-set recursion (all OEIS-verified); the Mertens conjecture is PROVEN false somewhere < exp(1.59e40) yet invisible at every computed height - so finite Mertens data is undecidable, RH remains open",
+  "setup": {
+    "X_exact": 10000000000,
+    "block": 4000000,
+    "base": 1000000000,
+    "sublinear_targets": [
+      100000000000,
+      1000000000000,
+      10000000000000
+    ],
+    "sieve": "segmented exact: mu by small-prime flips/zeroing + vectorized large-cofactor step (verified vs sympy mobius, n <= 1e6, zero mismatches)",
+    "recursion": "M(n) = 1 - sum_{d=2}^n M(floor(n/d)), grouped over distinct quotients, memoized over the quotient set of N, base = exact prefix to 1e9",
+    "oeis": "A084237 (M(10^n))",
+    "self_check": {
+      "M_1e5": -48,
+      "M_1e6": 212
+    },
+    "proven_never_seen": "Mertens conjecture M(x) < sqrt(x) is PROVEN false (Odlyzko-te Riele 1985; Pintz: counterexample < exp(1.59e40)); |M(x)| < sqrt(x) holds at every computed x <= 1e16",
+    "equivalence": "RH <==> M(x) = O(x^(1/2+eps)) for every eps > 0 (Littlewood 1912)"
+  },
+  "exact": {
+    "M_X": -33722,
+    "M_powers": {
+      "1": -1,
+      "2": 1,
+      "3": 2,
+      "4": -23,
+      "5": -48,
+      "6": 212,
+      "7": 1037,
+      "8": 1928,
+      "9": -222,
+      "10": -33722
+    },
+    "records": {
+      "max_abs_M_over_sqrt_x": 0.5705908894968832,
+      "argmax": 7766842813,
+      "M_at_argmax": 50286,
+      "first_x_absM_gt_half_sqrt": [
+        7725038629,
+        43947
+      ]
+    }
+  },
+  "sublinear": {
+    "10000000000000": 599582,
+    "1000000000000": 62366,
+    "100000000000": -87856
+  },
+  "verdict": "MERTENS SUBLINEAR CENSUS: the Mertens function at height.  Part 1 (exact): a segmented mu-sieve to x = 1e10 (small-prime flips/zeroing + a vectorized large-cofactor step; the machinery verified against sympy mobius for n <= 1e6 with zero mismatches in mertens_psi_census) reproduces M(10^k) = -1, 1, 2, -23, -48, 212, 1037, 1928, -222, -33722 for k = 1..10 (OEIS A084237) and finds the records over [1000, 1e10]: max |M(x)|/sqrt(x) = 0.5706 at x = 7766842813 (M = 50286), and the first x >= 1000 with |M(x)|/sqrt(x) > 0.5 is x = 7725038629 (M = 43947) - the first re-crossing since the trivial x = 13 (|M(13)|/sqrt(13) = 0.832).  Part 2 (sublinear): the identity M(n) = 1 - sum_{d=2}^n M(floor(n/d)), grouped over distinct quotients and memoized over the quotient set of each target N with the exact 1e9 prefix as base (O(N^(2/3)) work), computes M(10^11) = -87856, M(10^12) = 62366, M(10^13) = 599582 - every value matching OEIS A084237 exactly - extending the exact census two orders of magnitude in height in ~N^(2/3) steps; the recursion is independently validated by a base-table self-check re-deriving M(10^5) = -48 and M(10^6) = 212.  THE PROVEN-BUT-NEVER-SEEN FAILURE AT HEIGHT: the Mertens conjecture M(x) < sqrt(x) is PROVEN false (Odlyzko-te Riele 1985; Pintz: a counterexample below exp(1.59e40)) yet no explicit x is known; the first |M(x)|/sqrt(x) > 0.5 excursion at x = 7725038629 sits squarely inside the regime the theorem says is the WRONG way - quiet heights prove nothing.  RESOLUTION LIMIT: RH requires M(x) = O(x^(1/2+eps)) as a supremum over ALL x - a global statement no finite prefix decides - and the Mertens-conjecture theorem shows the ratio |M(x)|/sqrt(x) can behave adversarially far beyond any computation.  HONEST WALL: extending the census to 1e13 (or any finite height) is a counterexample search, not a proof; RH remains open; the proof, if it exists, is not a computation."
+}

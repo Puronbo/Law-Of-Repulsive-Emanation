@@ -1785,6 +1785,45 @@ equivalences **RH ⟺ M(x) = O(x^{1/2+ε}) ⟺ ψ(x) = x + O(x^{1/2} log²x)
 
 ---
 
+### Ch. 5.21p  Mertens sublinear census: the forbidden ratio, crossed (2026-08-16)
+
+`mertens_sublinear_census.py` (`data/mertens_sublinear_census_data.json`)
+pushes the Mertens census two orders of magnitude past Ch. 5.21o.  An
+exact segmented μ-sieve to x = 10¹⁰ (small-prime flips/zeroing + a
+vectorized large-cofactor step n = m·q with m squarefree ≤ √x and q prime
+> √x, indices provably unique; machinery verified against sympy mobius
+for n ≤ 10⁶, zero mismatches) reproduces **M(10^k) = −1, 1, 2, −23, −48,
+212, 1037, 1928, −222, −33722 for k = 1..10** (OEIS A084237; M(10¹⁰) =
+−33722).  A **O(N^{2/3}) quotient-set recursion** M(n) = 1 − Σ_d
+M(⌊n/d⌋) (grouped over distinct quotients, memoized over {⌊N/i⌋}, base =
+the exact 10⁹ prefix; independently validated by a base-table self-check
+re-deriving M(10⁵) = −48 and M(10⁶) = 212) then computes **M(10¹¹) =
+−87856, M(10¹²) = 62366, M(10¹³) = 599582** — every value matching OEIS
+A084237 exactly.
+
+* **The forbidden ratio, crossed.**  The 5.21o census ended at max
+  |M(x)|/√x = 0.4722 < 0.5.  Here, at **x = 7,725,038,629 (M = 43,947)**,
+  |M(x)|/√x finally exceeds 1/2, and it peaks at **0.5706 at x =
+  7,766,842,813 (M = 50,286)** — the first re-crossing of 0.5 since the
+  trivial x = 13.  The Mertens conjecture's forbidden regime is real and
+  nearby, exactly as the theorem (Odlyzko–te Riele 1985; Pintz: a
+  counterexample below exp(1.59e40)) promised somewhere far away — yet
+  this is not a counterexample to the conjecture itself (that needs
+  |M(x)| > √x, ratio above 1) and the known |M(x)| < √x at x ≤ 10¹⁶
+  persists.
+* **Height without the sieve.**  The recursion reproduces OEIS to 10¹³ in
+  ~N^{2/3} work — the same conclusion, quieter and cheaper: the ratio
+  stays bounded, the failures stay invisible.
+* **Resolution limit.**  RH requires M(x) = O(x^{1/2+ε}) (Littlewood 1912)
+  as a supremum over ALL x — no finite census decides a global statement,
+  and the Mertens-conjecture theorem shows the ratio can behave
+  adversarially far beyond any computation.
+* **Honest wall.**  Extending the census to 10¹³ (or any finite height) is
+  a counterexample search, not a proof.  RH remains open; the proof (if
+  it exists) is not a computation.  C₀ = V(q0) = H(q0,0) does not enter.
+
+---
+
 ## Ch. 6  Creases (never forget these)
 
 1. **The pattern is scale-dependent.** τ-equality under MM/DD swap oscillates
