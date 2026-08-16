@@ -1888,6 +1888,50 @@ reproducibility), checked against the exact M(x) of Ch. 5.21p/5.21q.
   approximation with an unquantifiable conditional-convergence tail — not
   a proof of RH, which remains open.  C₀ = V(q0) = H(q0,0) does not enter.
 
+### Ch. 5.21s  Chebyshev ψ explicit formula at height: ψ truncates worse than M (2026-08-16)
+
+Ch. 5.21r measured the price of height for **M**.  Ch. 5.21s asks the
+twin question for **ψ** — the prime-side function that the explicit
+formula is classically built around — and finds the answer the theory
+predicts but nobody likes: at every height the ψ truncation is *worse*
+than M's, because ψ's terms ~ √x/γ have a divergent Σ 1/γ and therefore
+**no tail bound at all**, while M's paired series is absolutely
+convergent.  `mertens_psi_height.py` evaluates ψ₀(x) = x − Σ_{γ≤T}
+2Re[x^{1/2+iγ}/(½+iγ)] − log 2π − ½log(1−x⁻²) (symmetric,
+conjugate-paired cutoff) with the repo's own Riemann–Siegel zeros
+(**22,491 to t = 20000**, sliced 653/4520/10142/22491) against **exact
+ψ(x)** from a NEW quotient-set identity:
+
+* **The identity.**  ψ(x) = Σ_{k≤V} log k·M(⌊x/k⌋) + Σ_{w≤W} μ(w)·L(⌊x/w⌋)
+  − M(W)·L(V), with V = ⌊√x⌋, W = ⌊x/(V+1)⌋, L(n) = log n!.  M is exact
+  at every quotient point (segmented 10⁹ sieve + the memoized quotient-set
+  recursion of Ch. 5.21q; M(10¹¹..10¹⁴) OEIS-verified), L via mpmath
+  loggamma (w < 2000) and vectorized scipy gammaln (total rounding ~0.1
+  absolute).  Validated at ψ(100) = 94.0453, ψ(1000) = 996.6809,
+  ψ(10⁶) = 999586.5975, ψ(10⁸) = 99998242.7966.  (The first draft's
+  boundary W = V−1 fails at x = 1000 — the correct split is W = ⌊x/(V+1)⌋,
+  which is V or V−1.)
+* **Exact truth at height.**  ψ(10¹¹..10¹⁴) = 100000058456.4 /
+  1000000040136.8 / 10000000171998.7 / 100000000618672.4 — ψ(x)−x =
+  +58456 / +40137 / +171999 / +618672, small fractions of √x, as RH
+  would demand.
+* **ψ truncates WORSE than M at every height.**  At T = 20000 the ψ
+  residuals are −3645 / −19476 / +28854 / −88932 vs M's +989 / +1850 /
+  −13563 / +15423 (factors ~3.7 / 10.5 / 2.1 / 5.8).  The located-tail
+  magnitude Σ_{T<γ≤20000} 2√x/γ = 6.3e7 at x = 10¹⁴ is ~700× the observed
+  residual — the tail cancels; it is context, not a bound, and it has no
+  finite total as the horizon grows.
+* **Both walks non-monotone in T.**  At x = 10¹⁴ ψ's best is T = 10000's
+  −80364 vs T = 20000's −88932; M's T = 5000 is 30× worse than its
+  T = 1005.43.  Hard cutoffs are not ordered for either function; at
+  x = 100/1000 the ψ truncation is essentially exact (−0.006 / +0.034).
+* **Resolution limit.**  No finite T certifies ψ(10¹⁶); the census truth
+  stops at 10¹⁴; the tail past t = 20000 is not located — and for ψ the
+  truncation error is an unquantifiable oscillation with no tail bound.
+* **Honest wall.**  A measured approximation (worse than M's, as the
+  conditional convergence demands), not a proof of RH, which remains open.
+  C₀ = V(q0) = H(q0,0) does not enter.
+
 ---
 
 ## Ch. 6  Creases (never forget these)

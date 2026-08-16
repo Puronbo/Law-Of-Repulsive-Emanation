@@ -629,6 +629,46 @@ given so it can be re-run).
     (98% of the value recovered), but 'the zeros reproduce M' is a
     percent-level approximation with an unquantifiable
     conditional-convergence tail — not a proof of RH, which remains open.
+
+    **Sequel 2026-08-16 — Chebyshev ψ explicit formula at height: the
+    truncation is measurably WORSE than M's at every height — conditional
+    convergence bites** (`experiments/mertens_psi_height.py`,
+    `data/mertens_psi_height_data.json`): the twin of the Mertens-at-height
+    sequel, asking how well the SAME located zeros count ψ (the prime-side
+    function) at 10¹¹..10¹⁴.  The formula ψ₀(x) = x − Σ_{γ≤T} 2Re[x^{1/2+iγ}/
+    (½+iγ)] − log 2π − ½log(1−x⁻²) (symmetric, conjugate-paired cutoff) is
+    evaluated with the repo's OWN Riemann–Siegel located zeros (22,491 to
+    t = 20000, sliced 653/4520/10142/22491) against EXACT ψ(x) obtained
+    from a NEW quotient-set identity ψ(x) = Σ_{k≤V} log k·M(⌊x/k⌋) +
+    Σ_{w≤W} μ(w)·L(⌊x/w⌋) − M(W)·L(V), V = ⌊√x⌋, W = ⌊x/(V+1)⌋, L(n) =
+    log n! — M exact at every quotient point via the segmented 10⁹ sieve +
+    memoized quotient-set recursion (M(10¹¹..10¹⁴) OEIS-verified), L via
+    mpmath loggamma (w < 2000) + vectorized scipy gammaln (total rounding
+    ~0.1 absolute); the identity is validated at ψ(100) = 94.0453,
+    ψ(1000) = 996.6809, ψ(10⁶) = 999586.5975, ψ(10⁸) = 99998242.7966.
+    THE FINDING: exact ψ(10¹¹..10¹⁴) = 100000058456.4 / 1000000040136.8 /
+    10000000171998.7 / 100000000618672.4 (ψ(x)−x = +58456 / +40137 /
+    +171999 / +618672 — small fractions of √x, as RH would demand), and at
+    T = 20000 the formula residuals are −3645 / −19476 / +28854 / −88932 —
+    at EVERY height LARGER than the Mertens formula's at the same
+    truncation (+989 / +1850 / −13563 / +15423, factors ~3.7 / 10.5 / 2.1 /
+    5.8).  This is exactly what the convergence theory predicts: ψ's terms
+    ~ √x/γ with Σ 1/γ divergent, so NO tail bound exists (the located-tail
+    magnitude Σ_{T<γ≤20000} 2√x/γ = 6.3e7 at x = 10¹⁴ is ~700× the observed
+    residual — the tail cancels, it is context NOT a bound, and it has no
+    finite total as the horizon grows), while M's paired series is
+    absolutely convergent (Titchmarsh) and truncates better in practice.
+    BOTH walks are NON-monotone in T (at x = 10¹⁴ ψ's best is T = 10000's
+    −80364 vs T = 20000's −88932; M's T = 5000 is 30× worse than its
+    T = 1005.43) — hard cutoffs are not ordered for either function, and at
+    x = 100/1000 the ψ truncation is essentially exact (−0.006 / +0.034).
+    RESOLUTION LIMIT: no finite T certifies ψ(10¹⁶); the census truth stops
+    at 10¹⁴; the tail beyond t = 20000 is not located; and for ψ the
+    truncation error is an unquantifiable oscillation with no tail bound at
+    all.  HONEST WALL: the located zeros influence the primes at 10¹⁴ and
+    the identity holds only in the T → ∞ limit — a measured approximation
+    (worse than M's, as the conditional convergence demands), NOT a proof of
+    RH, which remains open.
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**

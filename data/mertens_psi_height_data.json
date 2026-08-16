@@ -1,0 +1,209 @@
+{
+  "claim": "psi explicit formula at height: with T = 20000 located zeros (22491, symmetric cutoff) and exact psi from the quotient-set identity, the residual at 1e11..1e14 is -3645 / -19476 / +28854 / -88932 - at every height LARGER than the Mertens formula's at the same truncation (factors 3.7 / 10.5 / 2.1 / 5.8), the walk in T is NON-monotone in T (conditional convergence), psi's series is conditionally (not absolutely) convergent so no tail bound exists (the located-tail magnitude is ~700x the observed residual and has no finite total), and no finite T certifies psi(1e16): the zeros influence the primes at 1e14 but this is an approximation - worse than M's, as theory demands - not a proof of RH (open)",
+  "setup": {
+    "formula": "psi_0(x) = x - sum_{gamma<=T} 2 Re[x^(1/2+igamma)/(1/2+igamma)] - log(2 pi) - 0.5 log(1-x^-2)",
+    "truth_identity": "psi(x) = sum_{k=1}^{V} log k * M(floor(x/k)) + sum_{w=1}^{W} mu(w) * L(floor(x/w)) - M(W)*L(V), V = isqrt(x), W = x//(V+1), L(n) = log(n!); M exact at every quotient point (segmented sieve to 1e9 + memoized quotient-set recursion, OEIS-verified)",
+    "precision": "L via mpmath loggamma dps 30 for w < 2000 and scipy gammaln vectorized for the rest; identity validated at psi(100), psi(1000), psi(1e6), psi(1e8); total rounding ~0.1 absolute",
+    "zeros": "repo Riemann-Siegel located zeros to t = 20000 (from the 5.21r cache), sliced per truncation",
+    "truncations": {
+      "1005.43": 653,
+      "5000": 4520,
+      "10000": 10142,
+      "20000": 22491
+    },
+    "truth_src": "identity via recursion for 1e11..1e14; census anchor / direct sieve for 100, 1000, 1e6, 1e8"
+  },
+  "sublinear": {
+    "100000000000000": -875575,
+    "10000000000000": 599582,
+    "1000000000000": 62366,
+    "100000000000": -87856
+  },
+  "truth_checks": [
+    {
+      "x": 100,
+      "psi_identity": 94.045311,
+      "expected": 94.045311
+    },
+    {
+      "x": 1000,
+      "psi_identity": 996.680912,
+      "expected": 996.680912
+    },
+    {
+      "x": 1000000,
+      "psi_identity": 999586.597496,
+      "expected": 999586.597496
+    },
+    {
+      "x": 100000000,
+      "psi_identity": 99998242.796624,
+      "expected": 99998242.7966
+    }
+  ],
+  "rows": [
+    {
+      "x": 100,
+      "truth_src": "census anchor / direct sieve",
+      "truth": 94.0453,
+      "1005.43": 93.876,
+      "res_1005.43": -0.1693,
+      "tailmag_1005.43": 62.5403,
+      "5000": 94.0627,
+      "res_5000": 0.0174,
+      "tailmag_5000": 32.5335,
+      "10000": 94.0632,
+      "res_10000": 0.0179,
+      "tailmag_10000": 17.0325,
+      "20000": 94.0396,
+      "res_20000": -0.0057,
+      "tailmag_20000": 0.0
+    },
+    {
+      "x": 1000,
+      "truth_src": "census anchor / direct sieve",
+      "truth": 996.6809,
+      "1005.43": 997.7921,
+      "res_1005.43": 1.1112,
+      "tailmag_1005.43": 197.7697,
+      "5000": 996.8583,
+      "res_5000": 0.1774,
+      "tailmag_5000": 102.8799,
+      "10000": 996.6973,
+      "res_10000": 0.0164,
+      "tailmag_10000": 53.8614,
+      "20000": 996.7154,
+      "res_20000": 0.0345,
+      "tailmag_20000": 0.0
+    },
+    {
+      "x": 1000000,
+      "truth_src": "census anchor / direct sieve",
+      "truth": 999586.5975,
+      "1005.43": 999653.749,
+      "res_1005.43": 67.1515,
+      "tailmag_1005.43": 6254.0266,
+      "5000": 999604.9422,
+      "res_5000": 18.3447,
+      "tailmag_5000": 3253.3471,
+      "10000": 999579.2015,
+      "res_10000": -7.396,
+      "tailmag_10000": 1703.2462,
+      "20000": 999578.1411,
+      "res_20000": -8.4564,
+      "tailmag_20000": 0.0
+    },
+    {
+      "x": 100000000,
+      "truth_src": "census anchor / direct sieve",
+      "truth": 99998242.7966,
+      "1005.43": 99998141.6448,
+      "res_1005.43": -101.1518,
+      "tailmag_1005.43": 62540.2659,
+      "5000": 99998284.0092,
+      "res_5000": 41.2126,
+      "tailmag_5000": 32533.4705,
+      "10000": 99998387.9797,
+      "res_10000": 145.1831,
+      "tailmag_10000": 17032.4624,
+      "20000": 99998391.1209,
+      "res_20000": 148.3243,
+      "tailmag_20000": 0.0
+    },
+    {
+      "x": 100000000000,
+      "truth_src": "identity (recursion)",
+      "truth": 100000058456.4277,
+      "1005.43": 100000047861.1932,
+      "res_1005.43": -10595.2346,
+      "tailmag_1005.43": 1977696.8583,
+      "5000": 100000051610.8675,
+      "res_5000": -6845.5603,
+      "tailmag_5000": 1028798.671,
+      "10000": 100000055615.0768,
+      "res_10000": -2841.351,
+      "tailmag_10000": 538613.7536,
+      "20000": 100000054811.0941,
+      "res_20000": -3645.3337,
+      "tailmag_20000": 0.0
+    },
+    {
+      "x": 1000000000000,
+      "truth_src": "identity (recursion)",
+      "truth": 1000000040136.8108,
+      "1005.43": 1000000052433.2142,
+      "res_1005.43": 12296.4033,
+      "tailmag_1005.43": 6254026.5937,
+      "5000": 1000000023992.5488,
+      "res_5000": -16144.262,
+      "tailmag_5000": 3253347.0542,
+      "10000": 1000000011975.546,
+      "res_10000": -28161.2648,
+      "tailmag_10000": 1703246.2406,
+      "20000": 1000000020660.461,
+      "res_20000": -19476.3499,
+      "tailmag_20000": 0.0
+    },
+    {
+      "x": 10000000000000,
+      "truth_src": "identity (recursion)",
+      "truth": 10000000171998.715,
+      "1005.43": 10000000268400.97,
+      "res_1005.43": 96402.2559,
+      "tailmag_1005.43": 19776968.5835,
+      "5000": 10000000187564.275,
+      "res_5000": 15565.5605,
+      "tailmag_5000": 10287986.7101,
+      "10000": 10000000186368.916,
+      "res_10000": 14370.2012,
+      "tailmag_10000": 5386137.5363,
+      "20000": 10000000200852.365,
+      "res_20000": 28853.6504,
+      "tailmag_20000": 0.0
+    },
+    {
+      "x": 100000000000000,
+      "truth_src": "identity (recursion)",
+      "truth": 100000000618672.38,
+      "1005.43": 100000001331665.72,
+      "res_1005.43": 712993.3438,
+      "tailmag_1005.43": 62540265.9374,
+      "5000": 100000000469498.33,
+      "res_5000": -149174.0469,
+      "tailmag_5000": 32533470.5415,
+      "10000": 100000000538308.33,
+      "res_10000": -80364.0469,
+      "tailmag_10000": 17032462.4055,
+      "20000": 100000000529740.05,
+      "res_20000": -88932.3281,
+      "tailmag_20000": 0.0
+    }
+  ],
+  "m_formula_contrast": {
+    "100000000000": {
+      "1005.43": 4692.0777,
+      "5000": 3997.1513,
+      "10000": 1476.5085,
+      "20000": 988.9259
+    },
+    "1000000000000": {
+      "1005.43": 3610.9912,
+      "5000": -1821.2645,
+      "10000": -60.9352,
+      "20000": 1849.6138
+    },
+    "10000000000000": {
+      "1005.43": -90469.1178,
+      "5000": -20739.9324,
+      "10000": -18799.3181,
+      "20000": -13562.5779
+    },
+    "100000000000000": {
+      "1005.43": -3982.1957,
+      "5000": 122572.5903,
+      "10000": 55956.6886,
+      "20000": 15422.5651
+    }
+  },
+  "verdict": "CHEBYSHEV EXPLICIT FORMULA AT HEIGHT: how well do the located zeros count psi at 1e14?  psi_0(x) = x - sum_{gamma<=T} 2 Re[x^(1/2+igamma)/(1/2+igamma)] - log(2 pi) - 0.5 log(1-x^-2) is evaluated with the repo's own Riemann-Siegel located zeros against EXACT psi(x) of the quotient-set identity (psi(x) = sum_{k<=V} log k * M(floor(x/k)) + sum_{w<=W} mu(w) * L(floor(x/w)) - M(W)*L(V), M exact at every quotient point, L via mpmath/scipy, total rounding ~0.1; the identity is validated at psi(100) = 94.0453, psi(1000) = 996.6809, psi(1e6) = 999586.5975, psi(1e8) = 99998242.7966).  At T = 20000 (22491 located zeros) the formula value at x = 1e11 sits residual -3645 of the exact psi, at x = 1e14 residual -88932 - versus the Mertens formula of 5.21r at the same truncation: +989 (x = 1e11) and +15423 (x = 1e14) with exact M as the truth.  THE MEASUREMENT: at every height 1e11..1e14 the psi residual is LARGER than the M residual (factors ~3.7 / 10.5 / 2.1 / 5.8 at 1e11..1e14 at T = 20000; at T = 1005.43 psi's 1e14 residual +712993 dwarfs M's -3982) - the conditional convergence bites, exactly as the theory predicts: psi's terms ~ sqrt(x)/gamma with no zeta'(rho) denominator, sum 1/gamma diverges, and there is NO tail bound, while M's absolutely-convergent paired series (Titchmarsh) truncates better in practice.  Still both residuals are a small fraction of sqrt(x) at every height (at 1e14 psi's 88932 = 0.89% of sqrt(x) = 1e7, M's 15423 = 0.15%), and the walk in T is NON-monotone in T (conditional convergence) (at x = 1e14 psi's best is T = 10000's -80364, worse than T = 20000's -88932 by 11%; M's T = 5000 is 30x worse than its T = 1005.43) - hard cutoffs are not ordered for either function.  The located-tail magnitude sum_{T<gamma<=20000} 2 sqrt(x)/gamma is 6.3e7 at x = 1e14, ~700x the observed residual: the tail cancels, it is context, NOT a bound - and unlike M's absolutely-convergent E_T it has no finite total: the |term| sum diverges as the horizon grows (the series is genuinely not absolutely convergent).  RESOLUTION LIMIT: no finite T certifies psi(1e16) (the census truth stops at 1e14 and the tail beyond t = 20000 is not located), and for psi the truncation error is an unquantifiable oscillation with no tail bound at all.  HONEST WALL: the located zeros influence the primes at 1e14 and the explicit formula is an exact identity only in the T -> infinity limit; this is a measured approximation (worse than M's for psi, as the conditional convergence demands), NOT a proof of RH (open)."
+}
