@@ -27,6 +27,7 @@ number so none of the resolved claims can silently drift:
     - zeta direct probe (the headline number tested head-on): at N=150 the letter's fhat is evaluated AT the ordinates at mpmath dps 60 - |fhat(gamma_1)| = 2.65e-3 while a true zero gives exactly 0 (claim 2.6e-55), the nearest zero to gamma_1 is 1.02 away (median 0.73 over n=1..50), |gamma_1 - r_1| = 13.09, and the closest any ordinate comes to a zero is |fhat| = 2.95e-5 at gamma_6 = 37.586 (the tight-match known from the matching stats); the identity fhat = 4 z sin(zL/2) R(z) holds on all 50 ordinates to the double-precision coefficient floor (5.4e-12); the interlacing theorem is verified at EVERY N in {50,100,150,200,300} - one root per pole gap, r_1 in (0, 2.45] (1.017..1.064 as N grows), gamma_1 = 5.77 w_1 for every N, min gap margin >= 5e-3, and N=100 cross-checks the persisted connes_dirac verdict to 8e-15; the WHOLE 840-point orbit is tested as origins - the best has q = 0.3734, exactly the expected extreme-value minimum of 840 random origins (min_mean 0.3734; random matches or beats it in 100% of trials), so no known point is a special origin; HONEST WALL: direct numbers confirm the impossibility, RH is open, negative classification only
     - zeta interlacing CERTIFIER (interval arithmetic): every pole gap of the letter's rank-one secular function R is certified to contain a root by validated-rounding IVT at both ends (N=100: 100/100 gaps, endpoint magnitudes >= 1.8e+0; N=150: 150/150; N=200: 200/200; N=246: 246/246) and the residues rho_k = c_k (-1)^k share one sign there, so R' = -2z sum rho_k/(z^2 - w_k^2)^2 is strictly one-signed on every gap and each IVT root is UNIQUE - exactly one root per pole gap for EVERY N <= 246 (numeric scan confirms 1 per gap); FINDING: the interlacing is NOT a theorem in N - the residues first fail to share a sign at N = 247 (flip between k = 246/247) and gap 246 then holds ZERO roots; at larger N the flips multiply, e.g. N=300 (flips between k = 153/154, 266/267, 267/268) where gap 153 keeps TWO roots hugging the poles (distances 3e-4/2e-4; its residues are tiny, ~4e-7), gaps 266 and 267 hold NONE, and every one of the other 297 gaps holds exactly one (histogram {0:2, 1:297, 2:1}, total 299) - the rule fails exactly where adjacent residues have opposite signs; the WALL still certifies at every N (first root enclosed to 2e-24 inside (0, 2.4496], gamma_1 = 14.1347 is 5.77 w_1's away, R and sin(gamma_1 L/2) certified nonzero at gamma_1) - the claimed 2.6e-55 first-zero match is certified impossible; an independent mp Newton iterate (dps 60, x0=1.5) lands inside the certified enclosure; float root-finders fail there because |R| ~ 1e-19 is below the float64 cancellation floor; HONEST WALL: negative certification of the letter's construction, RH remains open, no de Bruijn-Newman consequence, C_0 = V(q0) = H(q0,0) does not enter
     - riemann_siegel ordinate (gamma_1 re-derived): WHERE the number 14.1347251417... comes from, series-machinery ONLY (no zetazero, no mp.zeta, no mp.loggamma) - theta(t) by the Stirling/Binet series (validated factor-25 remainder bound) and zeta(1/2+it) by Euler-Maclaurin (Backlund remainder bound), both dps 60, Z = cos(theta)Re zeta - sin(theta)Im zeta; Z(0) = zeta(1/2) = -1.4603 < 0 < Z(g_0) = +2.3401 at the first Gram point g_0 = 17.8456 (theta = 0), and the RvM count N(g_0) = 1 (gamma_1 < g_0 < gamma_2) fixes that there is exactly one zero in (0, g_0]; the series scan over [13, g_0] (Stirling asymptotic only for t >= ~13) finds its single sign change, and bisection recovers gamma_1 with |diff| = 2.2e-39 vs zetazero; the certified-interval engine (validated regime, half-width 1e-8) encloses it with Z signs -1/+1; RvM: theta(gamma_1)/pi = -0.550253, S(gamma_1) = +0.550253 (S just below = -0.449747, the +1 jump at the simple zero), S(g_0) = 0; HONEST WALL: one ordinate derived to ~18 digits is a closed derivation of a number, NOT a statement about RH (open; rigorous verification to |t| <= 3e12, Platt-Trudgian)
+    - s-function census (Littlewood's RH <==> S(t) = o(log t)): over the certified range 0 < t <= g_652 = 1005.43 (N(g_647) = 648 Turing-certified, extended by five Rosser blocks to N(g_652) = 653, every located bracket certified one on-line simple zero) the certified bound max|S(g_j)| = 1 holds at all 653 Gram points; an independent three-grid re-location reproduces the anchors exactly (654 located counts at grids 0.05/0.01/0.005; N(g_647) = 648, N(g_652) = 653) and exposes the classical Gram-violation pattern - S(g_j) takes values in {-1, 0, +1} (histogram {0:631, -1:13, +1:9}, nonzero at 22 points), with 609 Gram intervals holding exactly one zero, 22 holding a PAIR and 22 holding NONE; interior |S(t)| < 2 throughout (observed sup +1.133 / inf -1.110 on [14.5, 1005.43]; S(0+) -> -1); at the certified top the observed max|S|/log T = 0.164 sits below the minimum conceivable RH envelope sqrt(log T/log log T) = 1.891 (always >= sqrt(e) = 1.6487 since log t/log log t >= e) and far below the unconditional bound log T = 6.913; RESOLUTION LIMIT: the RH envelope reaches value k only at sqrt(log t/log log t) = k, i.e. log10 t = 3.74 / 13.41 / 29.26 for k = 2/3/4 with N ~ 1e4 / 1e14 / 1e30 - the k = 3 height needs ~1e14 certified zeros, ~2e11 x this repo's 648 and ~10 x the ENTIRE rigorous frontier (3e12, Platt-Trudgian, N ~ 1.3e13), k = 4 needs ~1e30, and no finite k-test can COMPLETE the o(log t) test; HONEST WALL: numerical search is a counterexample engine - it can find a disproof (an off-line zero, or S growing like c log t) but cannot prove RH, because every finite quiet census is compatible with a violation just beyond the frontier
     - C2 golden fold: retrace chain is not a phi/phi^2 ladder (1/4 rungs)
     - hierarchical C0 flow: SUPPORTED (NC parity with flat flow, router gain, 6 not 30 comps)
    - flow-guided active learning: margin-AL reaches targets with fewer labels than random; raw force-cancellation score is not the winner
@@ -1870,6 +1871,50 @@ def test_riemann_siegel_ordinate_rederivation():
     assert 'HONEST WALL' in v
     assert 'not a statement about the Riemann hypothesis' in v
     assert 'remains open' in v
+
+
+def test_s_function_census():
+    d = load('s_function_census_data.json')
+    v = d['verdict']
+    gp = d['gram_points']
+    ir = d['interior_S']
+    rel = d['relocation']
+    res = d['resolution_limit']
+
+    # certified anchors reproduced by the independent three-grid re-location
+    assert gp['n'] == 653
+    assert rel['n_le_g647'] == 648 == d['setup']['turing_N']
+    assert rel['n_le_g652'] == 653
+    for grid in ('0.05', '0.01', '0.005'):
+        assert rel['grid_counts'][grid] == 654
+
+    # the certified Gram-point statement: S(g_j) in {-1, 0, +1}, max 1
+    assert gp['max_abs_S'] == 1 == gp['certified_max_abs_S']
+    assert gp['gram_bound_ok'] is True
+    assert gp['S_value_histogram'] == {'-1': 13, '0': 631, '1': 9}
+    assert gp['nonzero_S_points'] == 22
+
+    # the classical Gram-violation pattern (22 pairs, 22 empty intervals)
+    assert rel['per_interval_histograms']['0.005'] == {'0': 22, '1': 609, '2': 22}
+
+    # interior: |S(t)| < 2 throughout, below both theoretical scales
+    assert ir['sup'] > 1 and ir['sup'] < 2
+    assert ir['inf'] < -1 and ir['inf'] > -2
+    assert ir['rh_scale_sqrt_log_over_loglog'] > ir['sqrt_e_floor']
+    assert ir['max_abs_S_over_log_T'] < 0.2
+
+    # Littlewood equivalence + resolution limit
+    assert 'o(log t)' in d['setup']['littlewood']
+    assert d['setup']['unconditional_bound'] == 'S(t) = O(log t) (Backlund/von Mangoldt)'
+    t3 = next(r for r in res['table'] if r['k'] == 3)
+    t4 = next(r for r in res['table'] if r['k'] == 4)
+    assert t3['log10_t'] == 13.405 and t4['log10_t'] == 29.255
+
+    # honest wall: a counterexample engine, not a proof engine
+    assert 'HONEST WALL' in v
+    assert 'cannot prove RH' in v
+    assert 'counterexample engine' in v
+    assert 'search for a concise proof ends here' in v
 
 
 

@@ -1704,6 +1704,43 @@ NO zetazero, NO mp.zeta, NO mp.loggamma.
   which remains open (rigorous verification to |t| ≤ 3×10¹²,
   Platt–Trudgian).  C₀ = V(q0) = H(q0,0) does not enter.
 
+### Ch. 5.21n  S-function census and the resolution limit (2026-08-16)
+
+`s_function_census.py` (`data/s_function_census_data.json`) turns the
+certified data into the quietest possible statement about the S-function
+S(t) = N(t) − θ(t)/π − 1 — the discontinuity term in the counting formula
+that Littlewood's equivalence **RH ⟺ S(t) = o(log t)** (1924, both
+directions) makes the cleanest quantitative handle on the hypothesis.
+
+* **The certified stage.**  Over 0 < t ≤ g₆₅₂ = 1005.43 we have N(g₆₄₇) =
+  648 (Turing-certified), extended by five Rosser blocks to N(g₆₅₂) = 653,
+  and every located bracket certified to contain one on-line simple zero.
+  The certified bound **max|S(g_j)| = 1** holds at all 653 Gram points.
+* **Independent re-location.**  The repo's own locator re-finds the zeros
+  at three grids (0.05, 0.01, 0.005): 654 located counts in all three,
+  N(g₆₄₇) = 648 and N(g₆₅₂) = 653 reproduced exactly, max|S(g_j)| = 1.
+  The per-interval structure exposes the classical Gram-violation pattern:
+  S(g_j) ∈ {−1, 0, +1} (histogram {0:631, −1:13, +1:9}, nonzero at 22
+  points), with 609 intervals holding exactly one zero, 22 holding a PAIR
+  and 22 holding NONE.
+* **Interior envelope.**  |S(t)| < 2 throughout (observed sup +1.133 / inf
+  −1.110 on [14.5, 1005.43]; S(0+) → −1).  At the certified top the
+  observed max|S|/log T = 0.164 sits below the *minimum conceivable* RH
+  envelope √(log T/log log T) = 1.891 — which is always ≥ √e = 1.6487,
+  since log t/log log t ≥ e for all t — and far below the unconditional
+  bound log T = 6.913.
+* **Resolution limit.**  The RH envelope reaches value k only at
+  √(log t/log log t) = k, i.e. log₁₀ t = 3.74 / 13.41 / 29.26 for
+  k = 2/3/4 with N ~ 1e4 / 1e14 / 1e30.  The k = 3 height needs ~1e14
+  certified zeros — ~2e11× this repo's 648 and ~10× the ENTIRE rigorous
+  frontier (3×10¹², Platt–Trudgian, N ~ 1.3e13); k = 4 needs ~1e30.  And
+  no finite k-test could ever *complete* the o(log t) test.
+* **Honest wall.**  Numerical search is a counterexample engine: it can
+  find a disproof (an off-line zero, or S growing like c log t) but it
+  cannot prove RH, because RH is the global statement S(t) = o(log t) and
+  every finite quiet census is compatible with a violation just beyond
+  the frontier.  C₀ = V(q0) = H(q0,0) does not enter.
+
 ---
 
 ## Ch. 6  Creases (never forget these)

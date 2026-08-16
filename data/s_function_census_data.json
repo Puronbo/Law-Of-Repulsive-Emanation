@@ -1,0 +1,106 @@
+{
+  "claim": "S(t) = N(t) - theta(t)/pi - 1 census over the certified range 0 < t <= g_652 = 1005.43 (648 Turing-certified zeros at g_647, 653 by Rosser blocks): certified max|S| = 1 at Gram points, S(g_j) in {-1,0,+1}, interior |S| < 2; the classical Gram-violation pattern (22 double / 22 empty intervals) reproduced by a 3-grid re-location; Littlewood's RH <==> S(t) = o(log t) is provably uncompletable by finite search - the discriminating heights are super-exponential in the target envelope value, and any finite quiet census is compatible with a violation just beyond",
+  "setup": {
+    "turing_top_g_647": 999.2362,
+    "turing_N": 648,
+    "block_top_g_652": 1005.43,
+    "block_N": 652,
+    "certified_gram_points": 653,
+    "certified_max_abs_S_at_grams": 1.0,
+    "locator": "self-contained float Riemann-Siegel locator (z_rs), three grids 0.05/0.01/0.005",
+    "theta": "certifier's loggamma theta (Stirling/Binet series validated against it to 1e-16 in riemann_siegel_ordinate)",
+    "littlewood": "RH <==> S(t) = o(log t) (Littlewood 1924, both directions)",
+    "unconditional_bound": "S(t) = O(log t) (Backlund/von Mangoldt)",
+    "rh_envelope": "under RH, S(t) = Omega(sqrt(log t/log log t)) (Montgomery)"
+  },
+  "relocation": {
+    "grid_counts": {
+      "0.05": 654,
+      "0.01": 654,
+      "0.005": 654
+    },
+    "per_interval_histograms": {
+      "0.05": {
+        "0": 24,
+        "1": 605,
+        "2": 24
+      },
+      "0.01": {
+        "0": 22,
+        "1": 609,
+        "2": 22
+      },
+      "0.005": {
+        "0": 22,
+        "1": 609,
+        "2": 22
+      }
+    },
+    "max_abs_S_by_grid": {
+      "0.05": 1,
+      "0.01": 1,
+      "0.005": 1
+    },
+    "n_le_g647": 648,
+    "n_le_g652": 653
+  },
+  "gram_points": {
+    "n": 653,
+    "S_value_histogram": {
+      "-1": 13,
+      "0": 631,
+      "1": 9
+    },
+    "nonzero_S_points": 22,
+    "max_abs_S": 1,
+    "certified_max_abs_S": 1.0,
+    "gram_bound_ok": true
+  },
+  "interior_S": {
+    "sup": 1.133224,
+    "inf": -1.11022,
+    "log_T": 6.9132,
+    "rh_scale_sqrt_log_over_loglog": 1.8909,
+    "sqrt_e_floor": 1.6487,
+    "max_abs_S_over_log_T": 0.1639
+  },
+  "resolution_limit": {
+    "table": [
+      {
+        "k": 2,
+        "log10_t": 3.741,
+        "log10_N": 3.773
+      },
+      {
+        "k": 3,
+        "log10_t": 13.405,
+        "log10_N": 14.07
+      },
+      {
+        "k": 4,
+        "log10_t": 29.255,
+        "log10_N": 30.273
+      },
+      {
+        "k": 5,
+        "log10_t": 51.944,
+        "log10_N": 53.217
+      },
+      {
+        "k": 6,
+        "log10_t": 81.922,
+        "log10_N": 83.395
+      },
+      {
+        "k": 8,
+        "log10_t": 165.121,
+        "log10_N": 166.901
+      }
+    ],
+    "frontier_t_platt_trudgian": 3000000000000.0,
+    "frontier_log10_N": 13.109,
+    "repo_t": 1005.43,
+    "repo_N": 648
+  },
+  "verdict": "S-FUNCTION CENSUS: over the certified range (653 Gram points, N(g_647) = 648 Turing-certified, N(g_652) = 653 by Rosser blocks, every located bracket certified one on-line simple zero) the certified bound max|S(g_j)| = 1.0 holds at all Gram points and this census's independent three-grid re-location reproduces it exactly: S(g_j) takes values in {-1, 0, +1} (value histogram {0: 631, -1: 13, 1: 9}), nonzero at 22 of 653 Gram points - the classical Gram-violation pattern (609 intervals with exactly one zero, 22 with a PAIR, 22 with NONE).  Interior |S(t)| < 2 throughout (observed sup +1.13 / inf -1.11; S(0+) -> -1), and at the certified top T = 1005.43 the observed max|S| = 1.13 sits below the minimum conceivable RH envelope sqrt(log T/log log T) = 1.891 (always >= sqrt(e) = 1.6487, since log t/log log t >= e) and far below the unconditional bound log T = 6.913.  Littlewood's equivalence RH <==> S(t) = o(log t) makes this a PERFECTLY RH-consistent census - and simultaneously a perfectly NON-RH-consistent census, since any world whose first off-line zero sits above 1005.43 gives identical S-data here.  RESOLUTION LIMIT: the RH envelope reaches value k only at sqrt(log t/log log t) = k, i.e. log10 t = 3.741 / 13.405 / 29.255 for k = 2/3/4 with N ~ 1e4 / 1e14 / 1e30 - the k = 3 height needs ~1e14 certified zeros, ~2e11 x this repo's 648 and ~10 x the ENTIRE rigorous frontier (3e12, Platt-Trudgian, N ~ 1.3e13); k = 4 needs ~1e30, absurd.  And no finite k-test could ever COMPLETE the o(log t) test.  HONEST WALL: numerical search is a counterexample engine - it can find a disproof (an off-line zero, or S growing like c log t) but it cannot prove RH, because RH is the global statement S(t) = o(log t) and every finite quiet census is compatible with a violation just beyond the frontier.  The certified S-data above is the strongest quiet-side statement this repository can make; the search for a concise proof ends here, at a structural (not empirical) limit."
+}
