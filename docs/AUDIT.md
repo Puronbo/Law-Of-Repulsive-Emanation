@@ -493,6 +493,47 @@ given so it can be re-run).
     (an off-line zero, or S growing like c log t) but it cannot prove RH,
     because RH is the global statement S(t) = o(log t) and every finite
     quiet census is compatible with a violation just beyond the frontier.
+
+    **Sequel 2026-08-16 — Mertens–ψ census, the prime side of the
+    Littlewood/von Koch equivalences** (`experiments/mertens_psi_census.py`,
+    `data/mertens_psi_census_data.json`): the S-side sequels interrogated
+    the zeros directly; this sequel crosses to the arithmetic side and asks
+    whether the SAME hypothesis is visible in the primes.  An exact
+    segmented sieve computes M(x), ψ(x), π(x) for every x ≤ 10⁸ (μ by
+    small-prime flips + large-cofactor adjustment, verified against sympy
+    mobius for n ≤ 10⁶ with zero mismatches; the classical Mertens table
+    M(10^k) = −1, 1, 2, −23, −48, 212, 1037, 1928 reproduced exactly, OEIS
+    A084237 — note the published sign at k = 8 is +1928, not the −1928 of
+    folklore), behind Littlewood's and von Koch's equivalences RH ⟺ M(x) =
+    O(x^{1/2+ε}) ⟺ ψ(x) = x + O(x^{1/2} log²x) ⟺ π(x) = Li(x) + O(x^{1/2}
+    log x).  Records over x ∈ [1000, 10⁸]: max |M(x)|/√x = 0.4722 at x =
+    2803, and it never even reaches 0.5 anywhere in the range (the points
+    above 0.5 are only tiny x < 1000, e.g. x = 13 — a reminder that small-x
+    fluctuations dominate the ratio); max |ψ(x)−x|/√x = 0.7770 at x = 1422;
+    the RH-normalized max |ψ(x)−x|/(√x log²x) = 0.0147 at x = 1422 (O(1)
+    under RH); and π(10^k) − Li(10^k) < 0 for every k = 1..8.  The
+    explicit formula ψ₀(x) = x − Σ_ρ x^ρ/ρ − log 2π − ½log(1−x⁻²),
+    evaluated with the repo's OWN located zeros (653 / 4520 / 10142 / 22491
+    for T = 1005.43 / 5000 / 10000 / 20000 — the 653 at T = g₆₅₂ matching
+    the certified N(g₆₅₂)), reproduces the sieve's exact ψ(x) with residuals
+    that shrink as T grows (at x = 100, −0.169 for T = 1005.43 vs −0.006
+    for T = 20000): the located zeros really DO count the primes, and the
+    count converges as T → ∞ exactly as the zeta side is completed.  THE
+    TWO PROVEN-BUT-NEVER-SEEN FAILURES — the sharpest known witnesses that
+    "quiet so far" proves nothing: (a) the Mertens conjecture M(x) < √x is
+    PROVEN false (Odlyzko–te Riele 1985; Pintz: a counterexample below
+    exp(1.59e40)) yet no explicit x is ever exhibited and |M(x)| < √x holds
+    for every x ≤ 10¹⁶ computed; (b) π(x) > Li(x) is PROVEN to occur
+    (Skewes 1933/1955; first crossing below ~1.4e316 under RH by
+    Bays–Hudson 2000) although π(x) < Li(x) at every computable height.
+    Both are finite-failure theorems whose empirical evidence points the
+    WRONG way.  RESOLUTION LIMIT: RH needs the supremum over ALL x while
+    any finite prefix only samples a continuum of nearby violations, and
+    the best unconditional state is Korobov–Vinogradov ψ(x) = x + O(x·exp
+    (−c (log x)^{3/5}/(log log x)^{1/5})) — an exponential-in-log-distance
+    gap from the RH exponent.  HONEST WALL: the arithmetic side confirms
+    the S-side conclusion — numerical search is a counterexample engine,
+    RH remains open, and the proof (if it exists) is not a computation.
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**

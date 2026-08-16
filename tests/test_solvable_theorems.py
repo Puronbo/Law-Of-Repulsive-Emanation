@@ -28,6 +28,7 @@ number so none of the resolved claims can silently drift:
     - zeta interlacing CERTIFIER (interval arithmetic): every pole gap of the letter's rank-one secular function R is certified to contain a root by validated-rounding IVT at both ends (N=100: 100/100 gaps, endpoint magnitudes >= 1.8e+0; N=150: 150/150; N=200: 200/200; N=246: 246/246) and the residues rho_k = c_k (-1)^k share one sign there, so R' = -2z sum rho_k/(z^2 - w_k^2)^2 is strictly one-signed on every gap and each IVT root is UNIQUE - exactly one root per pole gap for EVERY N <= 246 (numeric scan confirms 1 per gap); FINDING: the interlacing is NOT a theorem in N - the residues first fail to share a sign at N = 247 (flip between k = 246/247) and gap 246 then holds ZERO roots; at larger N the flips multiply, e.g. N=300 (flips between k = 153/154, 266/267, 267/268) where gap 153 keeps TWO roots hugging the poles (distances 3e-4/2e-4; its residues are tiny, ~4e-7), gaps 266 and 267 hold NONE, and every one of the other 297 gaps holds exactly one (histogram {0:2, 1:297, 2:1}, total 299) - the rule fails exactly where adjacent residues have opposite signs; the WALL still certifies at every N (first root enclosed to 2e-24 inside (0, 2.4496], gamma_1 = 14.1347 is 5.77 w_1's away, R and sin(gamma_1 L/2) certified nonzero at gamma_1) - the claimed 2.6e-55 first-zero match is certified impossible; an independent mp Newton iterate (dps 60, x0=1.5) lands inside the certified enclosure; float root-finders fail there because |R| ~ 1e-19 is below the float64 cancellation floor; HONEST WALL: negative certification of the letter's construction, RH remains open, no de Bruijn-Newman consequence, C_0 = V(q0) = H(q0,0) does not enter
     - riemann_siegel ordinate (gamma_1 re-derived): WHERE the number 14.1347251417... comes from, series-machinery ONLY (no zetazero, no mp.zeta, no mp.loggamma) - theta(t) by the Stirling/Binet series (validated factor-25 remainder bound) and zeta(1/2+it) by Euler-Maclaurin (Backlund remainder bound), both dps 60, Z = cos(theta)Re zeta - sin(theta)Im zeta; Z(0) = zeta(1/2) = -1.4603 < 0 < Z(g_0) = +2.3401 at the first Gram point g_0 = 17.8456 (theta = 0), and the RvM count N(g_0) = 1 (gamma_1 < g_0 < gamma_2) fixes that there is exactly one zero in (0, g_0]; the series scan over [13, g_0] (Stirling asymptotic only for t >= ~13) finds its single sign change, and bisection recovers gamma_1 with |diff| = 2.2e-39 vs zetazero; the certified-interval engine (validated regime, half-width 1e-8) encloses it with Z signs -1/+1; RvM: theta(gamma_1)/pi = -0.550253, S(gamma_1) = +0.550253 (S just below = -0.449747, the +1 jump at the simple zero), S(g_0) = 0; HONEST WALL: one ordinate derived to ~18 digits is a closed derivation of a number, NOT a statement about RH (open; rigorous verification to |t| <= 3e12, Platt-Trudgian)
     - s-function census (Littlewood's RH <==> S(t) = o(log t)): over the certified range 0 < t <= g_652 = 1005.43 (N(g_647) = 648 Turing-certified, extended by five Rosser blocks to N(g_652) = 653, every located bracket certified one on-line simple zero) the certified bound max|S(g_j)| = 1 holds at all 653 Gram points; an independent three-grid re-location reproduces the anchors exactly (654 located counts at grids 0.05/0.01/0.005; N(g_647) = 648, N(g_652) = 653) and exposes the classical Gram-violation pattern - S(g_j) takes values in {-1, 0, +1} (histogram {0:631, -1:13, +1:9}, nonzero at 22 points), with 609 Gram intervals holding exactly one zero, 22 holding a PAIR and 22 holding NONE; interior |S(t)| < 2 throughout (observed sup +1.133 / inf -1.110 on [14.5, 1005.43]; S(0+) -> -1); at the certified top the observed max|S|/log T = 0.164 sits below the minimum conceivable RH envelope sqrt(log T/log log T) = 1.891 (always >= sqrt(e) = 1.6487 since log t/log log t >= e) and far below the unconditional bound log T = 6.913; RESOLUTION LIMIT: the RH envelope reaches value k only at sqrt(log t/log log t) = k, i.e. log10 t = 3.74 / 13.41 / 29.26 for k = 2/3/4 with N ~ 1e4 / 1e14 / 1e30 - the k = 3 height needs ~1e14 certified zeros, ~2e11 x this repo's 648 and ~10 x the ENTIRE rigorous frontier (3e12, Platt-Trudgian, N ~ 1.3e13), k = 4 needs ~1e30, and no finite k-test can COMPLETE the o(log t) test; HONEST WALL: numerical search is a counterexample engine - it can find a disproof (an off-line zero, or S growing like c log t) but cannot prove RH, because every finite quiet census is compatible with a violation just beyond the frontier
+    - mertens-psi census (Littlewood/von Koch prime-side equivalences): exact segmented sieve to x = 10^8 computes M(x), psi(x), pi(x) (mu verified against sympy mobius for n <= 10^6, zero mismatches; the classical Mertens table M(10^k) = -1, 1, 2, -23, -48, 212, 1037, 1928 reproduced exactly, OEIS A084237) - over x in [1000, 1e8] the Mertens-like ratio |M(x)|/sqrt(x) maxes at 0.4722 at x = 2803 and NEVER reaches 0.5 (only tiny x < 1000, e.g. x = 13, exceed it), max |psi(x)-x|/sqrt(x) = 0.7770 at x = 1422, RH-normalized max |psi(x)-x|/(sqrt(x) log^2 x) = 0.0147 at x = 1422, and pi(10^k) - Li(10^k) < 0 for every k = 1..8 (pi lags Li at every computable height); the EXPLICIT FORMULA psi_0(x) = x - sum_rho x^rho/rho - log(2 pi) - (1/2) log(1 - x^-2) evaluated with the repo's OWN located zeros (653/4520/10142/22491 for T = 1005.43/5k/10k/20k; 653 matches the certified N(g_652)) reproduces the sieve's exact psi(x) with residuals that shrink as T grows (at x = 100, -0.169 for T = 1005.43 vs -0.006 for T = 20000) - the zeros really DO count the primes; THE TWO PROVEN-BUT-NEVER-SEEN FAILURES: (a) the Mertens conjecture M(x) < sqrt(x) is PROVEN false (Odlyzko-te Riele 1985; Pintz: counterexample < exp(1.59e40)) yet no explicit x is known and |M(x)| < sqrt(x) holds for every x <= 1e16 computed, (b) pi(x) > Li(x) is PROVEN to occur (Skewes 1933/1955; first crossing < ~1.4e316 under RH, Bays-Hudson 2000) though pi(x) < Li(x) at every computable height - both finite-failure theorems whose empirical evidence points the WRONG way; RESOLUTION LIMIT: RH needs the supremum over ALL x (M(x) = O(x^(1/2+eps)), psi(x) = x + O(x^(1/2) log^2 x)) and the best unconditional state is Korobov-Vinogradov psi(x) = x + O(x exp(-c (log x)^(3/5)/(log log x)^(1/5))) - an exponential-in-log-distance gap from the RH exponent; HONEST WALL: the arithmetic side confirms the S-side conclusion - numerical search is a counterexample engine, RH remains open, the proof (if it exists) is not a computation
     - C2 golden fold: retrace chain is not a phi/phi^2 ladder (1/4 rungs)
     - hierarchical C0 flow: SUPPORTED (NC parity with flat flow, router gain, 6 not 30 comps)
    - flow-guided active learning: margin-AL reaches targets with fewer labels than random; raw force-cancellation score is not the winner
@@ -1915,6 +1916,55 @@ def test_s_function_census():
     assert 'cannot prove RH' in v
     assert 'counterexample engine' in v
     assert 'search for a concise proof ends here' in v
+
+
+def test_mertens_psi_census():
+    d = load('mertens_psi_census_data.json')
+    v = d['verdict']
+    r = d['records']
+    ef = d['explicit_formula']
+
+    # exact sieve: classical Mertens table (OEIS A084237) reproduced
+    classic = {1: -1, 2: 1, 3: 2, 4: -23, 5: -48, 6: 212, 7: 1037, 8: 1928}
+    for k in range(1, 9):
+        row = next(x for x in d['li_vs_pi'] if x['x'] == 10 ** k)
+        assert row['M'] == classic[k]
+    assert r['M_X'] == classic[8]
+    assert r['pi_X'] == 5761455
+    assert r['psi_X_minus_X'] < 0
+    assert d['setup']['classical_table'].endswith('1928')
+    assert d['setup']['mobius_check'].startswith('sympy mobius')
+
+    # pi < Li at every height 1e1..1e8
+    for row in d['li_vs_pi']:
+        assert row['pi_minus_Li'] < 0
+
+    # records over [1000, 1e8]: ratio never reaches 0.5, RH-normalized O(1)
+    assert r['max_abs_M_over_sqrt_x'] < 0.5
+    assert r['max_abs_M_over_sqrt_x'] > 0.4
+    assert r['argmax'] > 1000
+    assert r['first_x_absM_gt_half_sqrt'] is None
+    assert r['max_abs_psi_minus_x_over_sqrt_x'] < 1.0
+    assert r['max_abs_psi_minus_x_over_sqrt_x_log2x'] < 0.05
+
+    # explicit formula: located-zero counts match the certified anchors
+    assert ef['zeros_count']['1005.43'] == 653
+    assert ef['zeros_count']['20000'] > 20000
+
+    # residuals shrink as T grows at x = 100
+    x100 = next(row for row in ef['rows'] if row['x'] == 100)
+    assert abs(x100['1005.43']) > abs(x100['20000'])
+
+    # the two proven-but-never-seen failures + honest wall
+    assert 'PROVEN false' in v
+    assert 'Odlyzko-te Riele' in v
+    assert 'Skewes' in v
+    assert 'Bays-Hudson' in v
+    assert 'Korobov' in v and 'Vinogradov' in v
+    assert 'HONEST WALL' in v
+    assert 'remains open' in v
+    assert 'counterexample engine' in v
+    assert 'proof, if it exists, is not a computation' in v
 
 
 

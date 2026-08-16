@@ -1741,6 +1741,48 @@ directions) makes the cleanest quantitative handle on the hypothesis.
   every finite quiet census is compatible with a violation just beyond
   the frontier.  C₀ = V(q0) = H(q0,0) does not enter.
 
+### Ch. 5.21o  Mertens–ψ census: the prime side of the equivalences (2026-08-16)
+
+`mertens_psi_census.py` (`data/mertens_psi_census_data.json`) crosses from
+the zeros to the primes.  An exact segmented sieve computes M(x), ψ(x),
+π(x) for every x ≤ 10⁸ (μ by small-prime flips + a large-cofactor
+adjustment, verified against sympy's mobius for n ≤ 10⁶ with zero
+mismatches; the classical Mertens table **M(10^k) = −1, 1, 2, −23, −48,
+212, 1037, 1928** reproduced exactly, OEIS A084237), behind the
+equivalences **RH ⟺ M(x) = O(x^{1/2+ε}) ⟺ ψ(x) = x + O(x^{1/2} log²x)
+⟺ π(x) = Li(x) + O(x^{1/2} log x)** (Littlewood 1912; von Koch 1901).
+
+* **The quiet arithmetic.**  Over x ∈ [1000, 10⁸], max |M(x)|/√x = 0.4722
+  at x = 2803 — it **never even reaches 0.5** (the points above 0.5 are
+  only tiny x < 1000, e.g. x = 13).  max |ψ(x)−x|/√x = 0.7770 at x = 1422;
+  the RH-normalized max |ψ(x)−x|/(√x log²x) = 0.0147 at x = 1422 (O(1)
+  under RH).  And **π(10^k) − Li(10^k) < 0 for every k = 1..8** — π lags Li
+  at every height we can compute.
+* **The zeros count the primes.**  The explicit formula ψ₀(x) = x − Σ_ρ
+  x^ρ/ρ − log 2π − ½log(1−x⁻²), evaluated with the repo's OWN located
+  zeros (653 / 4520 / 10142 / 22491 for T = 1005.43 / 5000 / 10000 /
+  20000 — the 653 at T = g₆₅₂ matching the certified N(g₆₅₂)),
+  reproduces the sieve's exact ψ(x): residuals shrink as T grows (at x =
+  100, −0.169 for T = 1005.43 vs −0.006 for T = 20000), exactly as the
+  zeta side is completed.
+* **The two proven-but-never-seen failures.**  (a) The Mertens conjecture
+  M(x) < √x is **PROVEN false** (Odlyzko–te Riele 1985; Pintz: a
+  counterexample below exp(1.59e40)) yet no explicit x is known and
+  |M(x)| < √x holds for every x ≤ 10¹⁶ ever computed.  (b) **π(x) > Li(x)
+  is PROVEN to occur** (Skewes 1933/1955; first crossing below ~1.4e316
+  under RH, Bays–Hudson 2000) although π(x) < Li(x) at every computable
+  height.  Both are finite-failure theorems whose empirical evidence
+  points the WRONG way — the sharpest known witness that "quiet so far"
+  proves nothing.
+* **Resolution limit.**  RH needs the supremum over ALL x — a global
+  statement no finite prefix decides — while the best unconditional state
+  is Korobov–Vinogradov ψ(x) = x + O(x·exp(−c (log x)^{3/5}/(log log
+  x)^{1/5})), an exponential-in-log-distance gap from the RH exponent.
+* **Honest wall.**  The arithmetic side confirms the S-side conclusion:
+  numerical search is a counterexample engine, RH remains open, and the
+  proof (if it exists) is not a computation.  C₀ = V(q0) = H(q0,0) does
+  not enter.
+
 ---
 
 ## Ch. 6  Creases (never forget these)
