@@ -595,6 +595,40 @@ given so it can be re-run).
     far beyond any computation.  HONEST WALL: extending the census to
     10¹⁴ (or any finite height) is a counterexample search, not a proof;
     RH remains open; the proof (if it exists) is not a computation.
+
+    **Sequel 2026-08-16 — Mertens explicit formula at height: 22,491
+    located zeros carry ~98% of M(10¹⁴), and the price of height is the
+    residual's non-monotone walk** (`experiments/mertens_explicit_height.py`,
+    `data/mertens_explicit_height_data.json`): the Mertens–ψ census showed
+    the explicit formula for ψ with the repo's located zeros shrinks onto
+    the exact sieve as T grows (residual −0.006 at x = 100, T = 20000).
+    This sequel asks how far that extends at height, evaluating the
+    Mertens explicit formula M₀(x) = −2 + Σ_{γ≤T} 2Re[x^{1/2+iγ}/(ρζ′(ρ))]
+    + trivial terms (constant −2 = residue of x^s/(sζ(s)) at s = 0,
+    pinned against the classical table M(100) = 1, M(1000) = 2) with the
+    repo's OWN Riemann–Siegel located zeros located ONCE to t = 20000
+    (22,491 zeros; sliced 653/4520/10142/22491 for T = 1005.43/5k/10k/20k,
+    counts matching the census exactly) and mpmath ζ′(ρ) at every zero —
+    a ~36-minute single pass, cached for reproducibility.  THE FINDING: at
+    x = 10¹¹ the T = 20000 value −86867 is off by +989 (1.13%); at
+    x = 10¹⁴ it is −860152 vs the exact −875575 (residual +15423, 1.76%);
+    at x = 100/1000 the truncation is essentially exact (residual
+    3e-4 / 1.6e-3).  THE REAL FACE OF THE HEIGHT: the Mertens explicit
+    formula is only CONDITIONALLY convergent (pairing conjugate zeros)
+    and the residuals are NON-monotone in T — at x = 10¹² the T = 20000
+    residual +1850 is WORSE than T = 10000's −61, and at x = 10¹⁴
+    T = 5000 is worse than T = 1005.43 — so a hard cutoff at T does not
+    guarantee a better value as T grows; the empirical tail bound
+    E_T(x) = Σ_{T<γ≤20000} 2√x/(|ρ||ζ′(ρ)|) grossly overestimates the
+    observed residual (at x = 10¹², E = 1.5e6 vs a residual ~10³, a
+    measured 1000× gap) because the terms cancel — the worst-case bound
+    is not a predictor.  RESOLUTION LIMIT: the identity holds only in the
+    T → ∞ limit with the correct smooth/paired summation; no finite T
+    certifies M(10¹⁶) or beyond, and the tail past t = 20000 is not
+    located.  HONEST WALL: the zeros REALLY influence the primes at 10¹⁴
+    (98% of the value recovered), but 'the zeros reproduce M' is a
+    percent-level approximation with an unquantifiable
+    conditional-convergence tail — not a proof of RH, which remains open.
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**

@@ -1854,6 +1854,42 @@ max sampled 0.5132.
 
 ---
 
+### Ch. 5.21r  Mertens explicit formula at height: the zeros carry 98% (2026-08-16)
+
+The 5.21o census showed the explicit formula for ψ with the repo's
+located zeros shrinking onto the exact sieve as T grows.  Ch. 5.21r asks
+how far that extends for **M** at height: evaluate the Mertens explicit
+formula M₀(x) = −2 + Σ_{γ≤T} 2Re[x^{1/2+iγ}/(ρζ′(ρ))] + trivial terms
+(the constant −2 is the residue of x^s/(sζ(s)) at s = 0; constants pinned
+against the classical table M(100) = 1, M(1000) = 2) with the repo's own
+Riemann–Siegel zeros located once to t = 20000 — **22,491 zeros**,
+sliced 653/4520/10142/22491 for T = 1005.43/5k/10k/20k — and mpmath
+ζ′(ρ) at every zero, a ~36-minute single pass (cached in an npz for
+reproducibility), checked against the exact M(x) of Ch. 5.21p/5.21q.
+
+* **~98% of M(10¹⁴), for real.**  At x = 10¹¹ the T = 20000 value −86867
+  is off by +989 (1.13%); at x = 10¹⁴ it is −860152 vs the exact −875575
+  (residual +15423, 1.76%); at x = 100/1000 the truncation is essentially
+  exact (residual 3e-4 / 1.6e-3).  The zeros that nail ψ at 10⁸ carry
+  98% of M at 10¹⁴ — the zeros really do influence the primes there.
+* **The price of height: conditional convergence.**  The residuals are
+  NON-monotone in T — at x = 10¹² the T = 20000 residual +1850 is WORSE
+  than T = 10000's −61, and at x = 10¹⁴ T = 5000 is worse than
+  T = 1005.43.  A hard cutoff at T does not guarantee a better value: the
+  Mertens explicit formula is only conditionally convergent (pairing
+  conjugate zeros).  And the empirical tail bound E_T(x) = Σ_{T<γ≤20000}
+  2√x/(|ρ||ζ′(ρ)|) overestimates the observed residual by a measured
+  1000× (at x = 10¹², E = 1.5e6 vs a residual ~10³): the terms cancel, so
+  the worst-case bound is not a predictor.
+* **Resolution limit.**  The identity holds only in the T → ∞ limit with
+  the correct smooth/paired summation; no finite T certifies M(10¹⁶) or
+  beyond, and the tail past t = 20000 is not located.
+* **Honest wall.**  'The located zeros reproduce M' is a percent-level
+  approximation with an unquantifiable conditional-convergence tail — not
+  a proof of RH, which remains open.  C₀ = V(q0) = H(q0,0) does not enter.
+
+---
+
 ## Ch. 6  Creases (never forget these)
 
 1. **The pattern is scale-dependent.** τ-equality under MM/DD swap oscillates

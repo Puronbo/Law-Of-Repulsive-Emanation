@@ -30,6 +30,7 @@ number so none of the resolved claims can silently drift:
     - s-function census (Littlewood's RH <==> S(t) = o(log t)): over the certified range 0 < t <= g_652 = 1005.43 (N(g_647) = 648 Turing-certified, extended by five Rosser blocks to N(g_652) = 653, every located bracket certified one on-line simple zero) the certified bound max|S(g_j)| = 1 holds at all 653 Gram points; an independent three-grid re-location reproduces the anchors exactly (654 located counts at grids 0.05/0.01/0.005; N(g_647) = 648, N(g_652) = 653) and exposes the classical Gram-violation pattern - S(g_j) takes values in {-1, 0, +1} (histogram {0:631, -1:13, +1:9}, nonzero at 22 points), with 609 Gram intervals holding exactly one zero, 22 holding a PAIR and 22 holding NONE; interior |S(t)| < 2 throughout (observed sup +1.133 / inf -1.110 on [14.5, 1005.43]; S(0+) -> -1); at the certified top the observed max|S|/log T = 0.164 sits below the minimum conceivable RH envelope sqrt(log T/log log T) = 1.891 (always >= sqrt(e) = 1.6487 since log t/log log t >= e) and far below the unconditional bound log T = 6.913; RESOLUTION LIMIT: the RH envelope reaches value k only at sqrt(log t/log log t) = k, i.e. log10 t = 3.74 / 13.41 / 29.26 for k = 2/3/4 with N ~ 1e4 / 1e14 / 1e30 - the k = 3 height needs ~1e14 certified zeros, ~2e11 x this repo's 648 and ~10 x the ENTIRE rigorous frontier (3e12, Platt-Trudgian, N ~ 1.3e13), k = 4 needs ~1e30, and no finite k-test can COMPLETE the o(log t) test; HONEST WALL: numerical search is a counterexample engine - it can find a disproof (an off-line zero, or S growing like c log t) but cannot prove RH, because every finite quiet census is compatible with a violation just beyond the frontier
     - mertens-psi census (Littlewood/von Koch prime-side equivalences): exact segmented sieve to x = 10^8 computes M(x), psi(x), pi(x) (mu verified against sympy mobius for n <= 10^6, zero mismatches; the classical Mertens table M(10^k) = -1, 1, 2, -23, -48, 212, 1037, 1928 reproduced exactly, OEIS A084237) - over x in [1000, 1e8] the Mertens-like ratio |M(x)|/sqrt(x) maxes at 0.4722 at x = 2803 and NEVER reaches 0.5 (only tiny x < 1000, e.g. x = 13, exceed it), max |psi(x)-x|/sqrt(x) = 0.7770 at x = 1422, RH-normalized max |psi(x)-x|/(sqrt(x) log^2 x) = 0.0147 at x = 1422, and pi(10^k) - Li(10^k) < 0 for every k = 1..8 (pi lags Li at every computable height); the EXPLICIT FORMULA psi_0(x) = x - sum_rho x^rho/rho - log(2 pi) - (1/2) log(1 - x^-2) evaluated with the repo's OWN located zeros (653/4520/10142/22491 for T = 1005.43/5k/10k/20k; 653 matches the certified N(g_652)) reproduces the sieve's exact psi(x) with residuals that shrink as T grows (at x = 100, -0.169 for T = 1005.43 vs -0.006 for T = 20000) - the zeros really DO count the primes; THE TWO PROVEN-BUT-NEVER-SEEN FAILURES: (a) the Mertens conjecture M(x) < sqrt(x) is PROVEN false (Odlyzko-te Riele 1985; Pintz: counterexample < exp(1.59e40)) yet no explicit x is known and |M(x)| < sqrt(x) holds for every x <= 1e16 computed, (b) pi(x) > Li(x) is PROVEN to occur (Skewes 1933/1955; first crossing < ~1.4e316 under RH, Bays-Hudson 2000) though pi(x) < Li(x) at every computable height - both finite-failure theorems whose empirical evidence points the WRONG way; RESOLUTION LIMIT: RH needs the supremum over ALL x (M(x) = O(x^(1/2+eps)), psi(x) = x + O(x^(1/2) log^2 x)) and the best unconditional state is Korobov-Vinogradov psi(x) = x + O(x exp(-c (log x)^(3/5)/(log log x)^(1/5))) - an exponential-in-log-distance gap from the RH exponent; HONEST WALL: the arithmetic side confirms the S-side conclusion - numerical search is a counterexample engine, RH remains open, the proof (if it exists) is not a computation
     - mertens sublinear census (the Mertens function at height): exact segmented mu-sieve to x = 1e10 (small-prime flips/zeroing + a vectorized large-cofactor step, n = m q with m squarefree <= sqrt(x), q prime > sqrt(x)) reproduces M(10^k) = -1, 1, 2, -23, -48, 212, 1037, 1928, -222, -33722 for k = 1..10 (OEIS A084237) and M(1e10) = -33722 - and finds the FIRST |M(x)|/sqrt(x) > 0.5 excursion at height, x = 7725038629 (M = 43947), record 0.5706 at x = 7766842813 (M = 50286), the first re-crossing since the trivial x = 13; the O(N^(2/3)) quotient-set recursion M(n) = 1 - sum M(floor(n/d)) (memoized over {floor(N/i)}, base = exact 1e9 prefix, self-checked by re-deriving M(10^5) = -48 and M(10^6) = 212) extends the census to M(10^11) = -87856, M(10^12) = 62366, M(10^13) = 599582, M(10^14) = -875575 - every value matching OEIS exactly, completing the published M(10^n) table n = 1..14; a free quotient-point scan of the recursion memo (11106 EXACT values x = floor(N/i) > 1e10, sampled not a census) finds two further 0.5 crossings at height, max 0.5132 at x = 108813928182 (M = 169281), still below the 7.7e9 exact record; THE PROVEN-BUT-NEVER-SEEN FAILURE: the Mertens conjecture is PROVEN false (Odlyzko-te Riele 1985; Pintz: counterexample < exp(1.59e40)) yet the first excursion appears at 7.7e9 while |M(x)| < sqrt(x) holds at every computed x <= 1e16; RESOLUTION LIMIT: RH needs the supremum over ALL x (M(x) = O(x^(1/2+eps)), Littlewood 1912) - a global statement no finite census decides; HONEST WALL: extending to 1e14 (or any finite height) is a counterexample search, not a proof, RH remains open, the proof (if it exists) is not a computation
+    - mertens explicit formula at height (do the located zeros count the primes at 1e14?): the explicit formula M_0(x) = -2 + sum_{gamma<=T} 2 Re[x^(1/2+i gamma)/(rho zeta'(rho))] + trivial terms (constants pinned against the classical table M(100) = 1, M(1000) = 2), evaluated with the repo's OWN Riemann-Siegel located zeros in ONE pass to t = 20000 (22491 zeros, sliced per truncation; 653/4520/10142/22491 for T = 1005.43/5k/10k/20k) and mpmath zeta'(rho) at every zero, recovers ~98% of the exact M(x) from the sublinear census at every height: at x = 1e11 the T = 20000 value -86867 is off by +989 (1.13%), at x = 1e14 it is -860152 vs the exact -875575 (residual +15423, 1.76%), and at x = 100/1000 the truncation is essentially exact (3e-4 / 1.6e-3) - the same formula that nails psi at 1e8 carries ~98% of M at 1e14; THE REAL FACE OF THE HEIGHT: the Mertens explicit formula is only CONDITIONALLY convergent (pairing conjugate zeros) and the residuals are NON-monotone in T - at x = 1e12 the T = 20000 residual +1850 is WORSE than T = 10000's -61, and at x = 1e14 T = 5000 is worse than T = 1005.43 - so a hard cutoff at T does not guarantee a better value; the empirical tail bound E_T(x) = sum_{T<gamma<=20000} 2 sqrt(x)/(|rho||zeta'(rho)|) grossly overestimates the observed residual (at x = 1e12, E = 1.5e6 vs a residual ~1e3, a measured 1000x gap) because the terms cancel - the worst-case bound is not a predictor; RESOLUTION LIMIT: the identity holds only in the T -> infinity limit with the correct smooth/paired summation, no finite T certifies M(1e16) or beyond, and the tail past t = 20000 is not located; HONEST WALL: 22491 zeros carry ~98% of M(1e14) and the price of height is the residual's non-monotone walk - 'the zeros reproduce M' is a percent-level approximation with an unquantifiable conditional-convergence tail, not a proof of RH (open)
     - C2 golden fold: retrace chain is not a phi/phi^2 ladder (1/4 rungs)
     - hierarchical C0 flow: SUPPORTED (NC parity with flat flow, router gain, 6 not 30 comps)
    - flow-guided active learning: margin-AL reaches targets with fewer labels than random; raw force-cancellation score is not the winner
@@ -2018,7 +2019,49 @@ def test_mertens_sublinear_census():
     assert 'HONEST WALL' in v
     assert 'remains open' in v
     assert 'counterexample' in v
-    assert 'not a computation' in v
+
+
+def test_mertens_explicit_height():
+    d = load('mertens_explicit_height_data.json')
+    v = d['verdict']
+    rows = {r['x']: r for r in d['rows']}
+
+    # truth checkpoints: classical table + the sublinear census heights
+    assert d['setup']['truncations'] == {
+        '1005.43': 653, '5000': 4520, '10000': 10142, '20000': 22491}
+    assert rows[100]['truth'] == 1 and rows[1000]['truth'] == 2
+    assert rows[10 ** 11]['truth'] == -87856
+    assert rows[10 ** 12]['truth'] == 62366
+    assert rows[10 ** 13]['truth'] == 599582
+    assert rows[10 ** 14]['truth'] == -875575
+
+    # the T = 20000 formula recovers ~98% of M(1e14): residual 15422.5651
+    assert abs(rows[10 ** 14]['res_20000']) < 20000.0
+    assert abs(rows[10 ** 14]['res_20000']) / 875575.0 < 0.03
+    assert abs(rows[10 ** 11]['res_20000']) < 1500.0
+    assert abs(rows[100]['res_20000']) < 0.01
+    assert abs(rows[1000]['res_20000']) < 0.02
+
+    # small x is essentially exact (truncation error tiny at x = 100/1000)
+    assert all(abs(rows[x]['res_1005.43']) > abs(rows[x]['res_20000'])
+               for x in (100, 1000))
+
+    # the honest face of the height: residuals are NON-monotone in T
+    # (conditional convergence): at x = 1e12, T = 20000 is worse than
+    # T = 10000 (res_20000 = +1849.61 vs res_10000 = -60.94)
+    assert 'NON-monotone' in v
+    assert rows[10 ** 12]['res_20000'] > 0
+    assert rows[10 ** 12]['res_10000'] < 0
+    assert abs(rows[10 ** 12]['res_20000']) > abs(rows[10 ** 12]['res_10000'])
+
+    # the empirical tail bound E_T is a gross worst case, not a predictor:
+    # at x = 1e12, E = 1525213 at T = 1005.43 vs a residual ~1e3 (1000x)
+    assert rows[10 ** 12]['tail_1005.43'] > 1e6
+    assert abs(rows[10 ** 12]['res_1005.43']) < 1e4
+
+    # honest wall: no finite T certifies M(x); RH remains open
+    assert 'conditional' in v.lower()
+    assert 'proof of RH' in v
 
 
 

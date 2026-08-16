@@ -13,6 +13,7 @@ venv/
 # Generated data artifacts (both canonical data/ and legacy Universals/ locations)
 data/*.json
 data/*.dot
+data/*.npz
 !data/mersenne_prime_5630.json
 !data/mersenne_m52_bridge.json
 !data/googol_census.json
