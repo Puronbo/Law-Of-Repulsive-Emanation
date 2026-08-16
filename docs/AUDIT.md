@@ -669,6 +669,63 @@ given so it can be re-run).
     the identity holds only in the T → ∞ limit — a measured approximation
     (worse than M's, as the conditional convergence demands), NOT a proof of
     RH, which remains open.
+
+    **Sequel 2026-08-16 — Body fold symmetry: the fold is EXACT, the
+    breaking is measured, and the tree mirror fails by a factor of 2**
+    (`experiments/body_fold_symmetry.py`,
+    `data/body_fold_symmetry_data.json`): tests the turned-then-folded
+    symmetry numerically.  The cartesian field {(a,b) : a·b ≤ x}, cells =
+    divisor pairs τ(n), growth D(x) = Σ_{n≤x} τ(n); the fold at the
+    diagonal a = b (the "turning point" √x) is an EXACT identity — D = U + L
+    with L = U − d², commutativity of multiplication — verified by exact
+    integer arithmetic at every x = 10..10¹⁴.  THE BREAKING: Δ(x) =
+    D(x) − (x log x + (2γ−1)x) certifiably satisfies the PROVEN Voronoi
+    bound O(x^{1/3} log x) (|Δ|/(x^{1/3} log x) falls 0.49 → 0.006 from
+    x = 10 to 10¹⁴) but the conjectured x^{1/4} — the fold of the critical
+    exponent 1/2, since τ = 1⋆1 squares ζ → ζ² — is NOT certified at any
+    finite height (the local growth exponent of |Δ| wanders −0.15 → +0.81,
+    non-monotone like the M/ψ walks).  THE TREE: the Calkin–Wilf regular
+    tree's upper/lower mirror is a TAUTOLOGY of regularity (every node at a
+    given depth has identical subtree size), while the integer divisibility
+    tree (parent m → m/spf(m), every integer ≤ 10⁶ once) is a directed
+    growth whose depth-reversal mirror FAILS — median subtree sizes at depth
+    k vs 8−k give ratios 2.0 / 2.0 / 2.0 / 1.0 / 0.5 — and branch growth is
+    linear, not golden (τ(2^k) = k+1; τ(2^19)/φ^19 = 2.1e-3).  WHAT
+    CONNECTS: the three convolution folds of the one field — 1⋆1 = τ,
+    1⋆μ = δ (Σ_{d≤x} μ(d)⌊x/d⌋ = 1, verified exactly), μ⋆log = Λ (the
+    5.21s exact-ψ fold) — with three measured breakings at the same heights
+    (|Δ|/x^{1/4} ≤ 3.6; |M|/√x ≤ 0.34 measured, census record 0.57;
+    |ψ−x|/√x ≤ 0.69 measured, census record 0.777).  HONEST WALL: the exact
+    fold and the measured breaking are arithmetic facts; the upper/lower
+    body mirror (brain = origin, torso = fold axis, limbs mirrored) is a
+    mapping the numbers do not commit to — the regular-tree mirror is a
+    tautology and the integer tree's mirror FAILS, the opposite of a
+    body-like symmetry; the divisor problem's 1/4 is as open as the critical
+    line's 1/2, and RH remains open.
+
+    **Sequel 2026-08-16 — Zeta zero spectral match: the 22,491 located zeros
+    are GUE, and the repo's own spectra are not**
+    (`experiments/zeta_zero_spectral_match.py`,
+    `data/zeta_zero_spectral_match_data.json`): which spectra resemble the
+    located zeros?  Nearest-neighbour spacing statistics on the 22,491 zeros
+    to t = 20000 (normalized s_n = (γ_{n+1}−γ_n)·(1/2π)log(γ_n/2π)): the
+    zeros fit the GUE Wigner surmise — KS 0.037 (vs Poisson 0.286, GOE
+    0.072, a simulated 10×400 GUE ensemble 0.037), level repulsion
+    β = 1.64 (GUE 2 / GOE 1 / Poisson 0), number variance Σ²(L) = 0.27–0.43
+    tracking the GUE ensemble (0.28–0.64) and far below Poisson's linear
+    growth — the Montgomery–Odlyzko law.  THE TIME READING: u = log x is
+    the natural time coordinate (the explicit formula is a Fourier sum in u
+    with frequencies γ, amplitudes 1/(½+iγ)), and the zero stream is a
+    DETERMINANTAL process in log-time, not white noise — normalized gaps
+    have lag-1 autocorrelation −0.364 vs GUE −0.323 vs Poisson ~0; the
+    S-walk max|S|/log t = 0.146 reproduces the persisted S-census scale
+    (0.164).  THE REPO'S OWN SPECTRA DO NOT RESEMBLE THE ZEROS:
+    spectral_extended (100 eigenvalues) is Poisson (KS 0.074 to Poisson vs
+    0.354 to GUE — integrable, the opposite family); spectral_data (30
+    eigenvalues) sat ~10 units from any zero (zeta_match_distances) and is
+    too small to classify.  HONEST WALL: GUE resemblance at 22,491 low
+    zeros is the CONJECTURED Montgomery correlation law supported
+    numerically — a resemblance, not a proof of RH, which remains open.
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**

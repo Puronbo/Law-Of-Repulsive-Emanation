@@ -1934,6 +1934,113 @@ conjugate-paired cutoff) with the repo's own Riemann–Siegel zeros
 
 ---
 
+### Ch. 5.21t  Body fold symmetry: the fold is exact, the breaking is measured, the tree mirror fails (2026-08-16)
+
+Ch. 5.21s turned the prism and Ch. 5.21q folded the exponent.  Ch. 5.21t
+tests the combined motion — turning the field of cells and folding it along
+the diagonal — and separates it into the part that is a **theorem** and the
+part that is still the **open problem wearing the same shape**.
+`body_fold_symmetry.py`:
+
+* **The field and its cells.**  The cartesian lattice {(a,b) : a·b ≤ x};
+  each cell is a divisor pair; counting the cells at layer n is τ(n), so
+  the growth is D(x) = Σ_{n≤x} τ(n).  τ = 1⋆1, so D is the fold that
+  squares ζ → ζ² — the divisor problem is the ζ²-sibling of RH.
+* **The fold is EXACT.**  Folding D(x) along the diagonal a = b: upper arm
+  U = Σ_{a<b} ⌊x/a⌋, lower arm L = Σ_{a>b} ⌊x/a⌋, spine d = ⌊√x⌋ cells on
+  the diagonal.  Multiplication is commutative, so the count is symmetric —
+  **D = U + L + d, and exactly U − L = d²** (the two arms differ by exactly
+  the square of the fold axis; L = U − d²).  Verified by exact integer
+  arithmetic at every x = 10..10¹⁴ (e.g. x = 10¹⁴: U = 1.6663e15,
+  L = 1.5736e15, arm ratio L/U = 0.9401 — the lower arm is exactly
+  d² = 10⁷ cells shorter).  The turning point of the fold is a = b = √x.
+* **The breaking is measured, not certified.**  Δ(x) = D − (x log x +
+  (2γ−1)x) is the deviation from the smooth main term.  The PROVEN Voronoi
+  bound O(x^{1/3} log x) is satisfied with huge room: |Δ|/(x^{1/3} log x)
+  falls 0.49 → 0.006 from x = 10 to 10¹⁴.  But the CONJECTURED x^{1/4} —
+  the fold of the critical exponent 1/2 — is not certified at any finite
+  height: |Δ|/x^{1/4} wanders 0.8 → 3.6, and the local growth exponent
+  of |Δ| wanders −0.15 → +0.81, non-monotone like the M/ψ walks of
+  Ch. 5.21r/s.  At x = 10¹⁴, |Δ| = 9084 with sign + (an *above* the mean
+  count); the x^{1/4} curve is the same kind of open target as the
+  critical line.
+* **The tree: a regular mirror is a tautology; the integer tree fails.**
+  Growing the field like a tree: the Calkin–Wilf regular tree (the
+  Stern–Brocot/divisor-tree generation that visits every positive integer)
+  has a mirror-symmetric profile — subtree sizes at depth k equal those at
+  every other depth, an exact reflection — but that is a *tautology of
+  regularity*, true of every regular tree.  The integer divisibility tree
+  (parent m → m/spf(m), built from the exact μ-sieve, every integer ≤ 10⁶
+  once) is a directed growth whose depth-reversal mirror **fails**: median
+  subtree sizes at depths 1..4 vs 7..4 give ratios 2.0 / 2.0 / 2.0 / 1.0 /
+  0.5 — the lower tree is systematically twice as dense near the leaves
+  and the reversal is *not* symmetric.  Branch growth is linear, not
+  golden: τ(2^k) = k+1 (the 2^k rung), τ(2^19)/φ^19 = 2.1e-3 — Ch. 5.21c's
+  golden 1/4 rungs are not here either.
+* **What connects — the three folds of the one field.**  The convolution
+  turns join all three sums: 1⋆1 = τ, 1⋆μ = δ (Σ_{d≤x} μ(d)⌊x/d⌋ = 1,
+  verified exactly — the same inversion that M(⌊x/d⌋) recursion rests on),
+  μ⋆log = Λ (the exact-ψ identity of Ch. 5.21s).  Three measured breakings
+  at the same heights: |Δ|/x^{1/4} ≤ 3.6, |M|/√x ≤ 0.34 measured (census
+  record 0.57), |ψ−x|/√x ≤ 0.69 measured (census record 0.777) — the
+  three functions break with the *same* magnitude shape, none at the scale
+  its conjectured curve demands.
+* **Honest wall.**  The exact fold and the measured breaking are arithmetic
+  facts (persisted, full precision).  The upper/lower *body* mapping —
+  brain = origin of the count, torso = the fold axis, limbs mirrored at the
+  arms — is a mapping the numbers do not commit to: the regular-tree mirror
+  is a tautology and the integer tree's mirror *fails*, the opposite of a
+  body-like symmetry.  The divisor problem's 1/4 is as open as the critical
+  line's 1/2; the fold connects the two problems, not the proof.  C₀ =
+  V(q0) = H(q0,0) does not enter.  RH remains open.
+
+---
+
+### Ch. 5.21u  Zeta zero spectral match: the located zeros are GUE, and the repo's own spectra are not (2026-08-16)
+
+Ch. 5.21r/s fed the located zeros into explicit formulas; Ch. 5.21u turns
+the direction around — it treats the zeros as the data and asks which
+spectra they resemble, and what kind of time the argument of the formula
+runs in.  `zeta_zero_spectral_match.py`:
+
+* **The resemblance is GUE.**  Nearest-neighbour spacings of the 22,491
+  located zeros (t ≤ 20000), normalized to local density
+  s_n = (γ_{n+1}−γ_n)·(1/2π)log(γ_n/2π): the empirical histogram fits the
+  GUE Wigner surmise p(s) = (πs/2)exp(−πs²/4) — KS distance **0.037** vs
+  the Poisson exponential 0.286, GOE 0.072, and a simulated 10×400 GUE
+  ensemble 0.037.  Level repulsion β = 1.64 (GUE 2, GOE 1, Poisson 0 — the
+  zeros push spacings apart like fermions, not like random integers).
+  Number variance Σ²(L) = 0.27–0.43 (L = 1..20) tracks the simulated GUE
+  ensemble (0.28–0.64) and is far below Poisson's linear growth — the
+  zeros are a **rigid**, determinantal process.  This is the
+  Montgomery–Odlyzko law at 22,491 low zeros.
+* **The time reading.**  The explicit formula Σ_γ c_γ x^{1/2+iγ} is a
+  Fourier sum in **u = log x** with frequencies γ and amplitudes 1/(½+iγ):
+  u is the natural time coordinate of the prime side, γ the frequencies.
+  In that time the zero stream is *not white noise* — normalized gaps have
+  lag-1 autocorrelation **−0.364** (GUE simulation −0.323; Poisson ~0;
+  white noise would be ~0).  The S-walk (the phase of ζ on the critical
+  line, γ_n = n−1−θ_n/π) is quiet: max|S| = 1.4, max|S|/log t = 0.146,
+  reproducing the persisted S-census scale 0.164 — the log-time walk is
+  consistent with S(t) = o(log t), the RH-equivalent.
+* **The repo's own spectra do NOT resemble the zeros.**  The letter's
+  spectral constructions were certified negative in Ch. 3/4; measured
+  here as random-matrix data they are the *opposite* family: spectral_extended
+  (100 eigenvalues) is Poisson — KS 0.074 to Poisson vs 0.354 to GUE —
+  i.e. **integrable**, uncorrelated levels, not a zeta-like spectrum;
+  spectral_data (30 eigenvalues) sits ~10 units from any zero in
+  cumulative-distance and is too small to classify.  None of the repo's
+  spectra, measured, matches the zeros — the GUE signature is a *datum
+  about ζ*, not a house pattern.
+* **Honest wall.**  Resemblance at 22,491 low zeros is the conjectured
+  Montgomery correlation law supported numerically — the strongest spectral
+  evidence known, and still not a proof: GUE statistics neither force
+  Re = ½ nor follow from it (they are compatible with the von Koch
+  bound being just barely true).  RH remains open; C₀ = V(q0) = H(q0,0)
+  does not enter.
+
+---
+
 ## Ch. 6  Creases (never forget these)
 
 1. **The pattern is scale-dependent.** τ-equality under MM/DD swap oscillates

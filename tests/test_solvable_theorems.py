@@ -32,6 +32,35 @@ number so none of the resolved claims can silently drift:
     - mertens sublinear census (the Mertens function at height): exact segmented mu-sieve to x = 1e10 (small-prime flips/zeroing + a vectorized large-cofactor step, n = m q with m squarefree <= sqrt(x), q prime > sqrt(x)) reproduces M(10^k) = -1, 1, 2, -23, -48, 212, 1037, 1928, -222, -33722 for k = 1..10 (OEIS A084237) and M(1e10) = -33722 - and finds the FIRST |M(x)|/sqrt(x) > 0.5 excursion at height, x = 7725038629 (M = 43947), record 0.5706 at x = 7766842813 (M = 50286), the first re-crossing since the trivial x = 13; the O(N^(2/3)) quotient-set recursion M(n) = 1 - sum M(floor(n/d)) (memoized over {floor(N/i)}, base = exact 1e9 prefix, self-checked by re-deriving M(10^5) = -48 and M(10^6) = 212) extends the census to M(10^11) = -87856, M(10^12) = 62366, M(10^13) = 599582, M(10^14) = -875575 - every value matching OEIS exactly, completing the published M(10^n) table n = 1..14; a free quotient-point scan of the recursion memo (11106 EXACT values x = floor(N/i) > 1e10, sampled not a census) finds two further 0.5 crossings at height, max 0.5132 at x = 108813928182 (M = 169281), still below the 7.7e9 exact record; THE PROVEN-BUT-NEVER-SEEN FAILURE: the Mertens conjecture is PROVEN false (Odlyzko-te Riele 1985; Pintz: counterexample < exp(1.59e40)) yet the first excursion appears at 7.7e9 while |M(x)| < sqrt(x) holds at every computed x <= 1e16; RESOLUTION LIMIT: RH needs the supremum over ALL x (M(x) = O(x^(1/2+eps)), Littlewood 1912) - a global statement no finite census decides; HONEST WALL: extending to 1e14 (or any finite height) is a counterexample search, not a proof, RH remains open, the proof (if it exists) is not a computation
     - mertens explicit formula at height (do the located zeros count the primes at 1e14?): the explicit formula M_0(x) = -2 + sum_{gamma<=T} 2 Re[x^(1/2+i gamma)/(rho zeta'(rho))] + trivial terms (constants pinned against the classical table M(100) = 1, M(1000) = 2), evaluated with the repo's OWN Riemann-Siegel located zeros in ONE pass to t = 20000 (22491 zeros, sliced per truncation; 653/4520/10142/22491 for T = 1005.43/5k/10k/20k) and mpmath zeta'(rho) at every zero, recovers ~98% of the exact M(x) from the sublinear census at every height: at x = 1e11 the T = 20000 value -86867 is off by +989 (1.13%), at x = 1e14 it is -860152 vs the exact -875575 (residual +15423, 1.76%), and at x = 100/1000 the truncation is essentially exact (3e-4 / 1.6e-3) - the same formula that nails psi at 1e8 carries ~98% of M at 1e14; THE REAL FACE OF THE HEIGHT: the Mertens explicit formula is only CONDITIONALLY convergent (pairing conjugate zeros) and the residuals are NON-monotone in T - at x = 1e12 the T = 20000 residual +1850 is WORSE than T = 10000's -61, and at x = 1e14 T = 5000 is worse than T = 1005.43 - so a hard cutoff at T does not guarantee a better value; the empirical tail bound E_T(x) = sum_{T<gamma<=20000} 2 sqrt(x)/(|rho||zeta'(rho)|) grossly overestimates the observed residual (at x = 1e12, E = 1.5e6 vs a residual ~1e3, a measured 1000x gap) because the terms cancel - the worst-case bound is not a predictor; RESOLUTION LIMIT: the identity holds only in the T -> infinity limit with the correct smooth/paired summation, no finite T certifies M(1e16) or beyond, and the tail past t = 20000 is not located; HONEST WALL: 22491 zeros carry ~98% of M(1e14) and the price of height is the residual's non-monotone walk - 'the zeros reproduce M' is a percent-level approximation with an unquantifiable conditional-convergence tail, not a proof of RH (open)
     - chebyshev psi explicit formula at height (the prime-side twin of the Mertens-at-height measurement): psi_0(x) = x - sum_{gamma<=T} 2 Re[x^(1/2+i gamma)/(1/2+i gamma)] - log(2 pi) - (1/2) log(1 - x^-2) evaluated with the repo's OWN Riemann-Siegel located zeros (22491 to t = 20000, sliced 653/4520/10142/22491) against EXACT psi(x) from a new quotient-set identity psi(x) = sum_{k<=V} log k * M(floor(x/k)) + sum_{w<=W} mu(w) * L(floor(x/w)) - M(W)*L(V) (V = isqrt(x), W = x//(V+1), L(n) = log(n!); M exact at every quotient point from the segmented 1e9 sieve + memoized quotient-set recursion, OEIS-verified; validated at psi(100) = 94.0453, psi(1000) = 996.6809, psi(1e6) = 999586.5975, psi(1e8) = 99998242.7966; mpmath loggamma for w < 2000, scipy gammaln vectorized for the rest, total rounding ~0.1 absolute): the exact psi(1e11..1e14) values are 100000058456.4 / 1000000040136.8 / 10000000171998.7 / 100000000618672.4 (psi(x) - x = +58456 / +40137 / +171999 / +618672, small fractions of sqrt(x) as RH would demand); at T = 20000 the formula residuals are -3645 / -19476 / +28854 / -88932 - at EVERY height LARGER than the Mertens formula's at the same truncation (+989 / +1850 / -13563 / +15423, factors ~3.7 / 10.5 / 2.1 / 5.8), exactly as the conditional-vs-absolute convergence theory predicts: psi's terms ~ sqrt(x)/gamma with sum 1/gamma divergent so NO tail bound exists (the located-tail magnitude sum_{T<gamma<=20000} 2 sqrt(x)/gamma = 6.3e7 at x = 1e14 is ~700x the observed residual - the tail cancels, it is context, NOT a bound, and it has no finite total as the horizon grows) while M's paired series is absolutely convergent (Titchmarsh); BOTH walks are NON-monotone in T (at x = 1e14 psi's best is T = 10000's -80364 vs T = 20000's -88932; M's T = 5000 is 30x worse than its T = 1005.43) - hard cutoffs are not ordered for either function; RESOLUTION LIMIT: no finite T certifies psi(1e16), the census truth stops at 1e14, the tail beyond t = 20000 is not located, and psi's truncation error is an unquantifiable oscillation with no tail bound at all; HONEST WALL: the located zeros influence the primes at 1e14 and the identity holds only as T -> infinity - a measured approximation (worse than M's, as the conditional convergence demands), NOT a proof of RH (open)
+    - body fold symmetry (turning and folding the divisor hyperbola): the fold
+      of the cartesian lattice {(a,b): a*b <= x} at the diagonal sqrt(x) is
+      EXACT (D = U + L, L = U - d^2, commutativity) verified to x = 1e14; the
+      breaking Delta(x) = D - (x log x + (2g-1)x) certifiably satisfies the
+      proven Voronoi O(x^(1/3) log x) bound (ratio <= 0.006 at 1e14) but the
+      conjectured x^(1/4) (half the critical 1/2 - the fold of the exponent) is
+      not certified at any finite height (local exponent wanders -0.15..+0.81);
+      the three convolution folds connect the field (1*1 = tau, 1*mu = delta
+      with sum mu(d) floor(x/d) = 1 exact, mu*log = Lambda); tree growth: a
+      regular tree (Calkin-Wilf) mirror is a tautology of regularity while the
+      integer divisibility tree's depth-reversal mirror FAILS (median subtree
+      ratios 2.0/2.0/2.0/1.0/0.5) and branch growth is linear tau(2^k) = k+1,
+      not golden (tau(2^19)/phi^19 = 2.1e-3); HONEST WALL: arithmetic facts
+      only; the body mapping is not committed; the divisor 1/4 is as open as
+      RH (data/body_fold_symmetry_data.json)
+    - zeta zero spectral match (which spectra resemble the zeros, and the time
+      reading): the 22,491 located zeros (t <= 20000) are GUE-like - NNSD KS
+      0.037 to the Wigner surmise vs 0.286 to Poisson, level repulsion beta
+      1.64 (GUE 2 / GOE 1 / Poisson 0), number variance Sigma^2(L) 0.27-0.43
+      tracking a simulated GUE ensemble and far below Poisson; the zeros are a
+      determinantal process in log-time u = log x (the explicit formula is a
+      Fourier sum in u with frequencies gamma; normalized gaps have lag-1
+      autocorrelation -0.364 vs GUE -0.323 vs Poisson ~0); the S-walk
+      max|S|/log t = 0.146 matches the persisted S-census (0.164); the repo's
+      OWN spectra do NOT resemble the zeros (spectral_extended is Poisson,
+      KS 0.074 to Poisson vs 0.354 to GUE; spectral_data sat ~10 units away);
+      HONEST WALL: GUE resemblance is the conjectured Montgomery-Odlyzko law
+      supported numerically, not a proof of RH, which remains open
+      (data/zeta_zero_spectral_match_data.json)
     - C2 golden fold: retrace chain is not a phi/phi^2 ladder (1/4 rungs)
     - hierarchical C0 flow: SUPPORTED (NC parity with flat flow, router gain, 6 not 30 comps)
    - flow-guided active learning: margin-AL reaches targets with fewer labels than random; raw force-cancellation score is not the winner
@@ -2116,6 +2145,73 @@ def test_mertens_psi_height():
     # honest wall: psi series only conditionally convergent; RH open
     assert 'conditional' in v.lower()
     assert 'proof of RH' in v
+
+
+def test_body_fold_symmetry():
+    d = load('body_fold_symmetry_data.json')
+    v = d['verdict']
+
+    # the fold is EXACT: D(x) = U + L with L = U - d^2 (commutativity),
+    # verified by the persisted identity at every height up to 10^14
+    for row in d['fold']:
+        assert row['D'] == row['U'] + row['L']
+        assert row['L'] == row['U'] - row['diag'] ** 2
+        assert 0.0 < row['arm_ratio_L_over_U'] < 1.0
+        # certifiably satisfies the proven Voronoi O(x^(1/3) log x) bound
+        assert row['Delta_over_x13_logx'] < 1.0
+
+    # the breaking Delta(x) = D - (x log x + (2g-1)x) is tiny vs D once the
+    # main term dominates (x >= 1e8) and never certified at x^(1/4)
+    for row in d['fold']:
+        if row['x'] >= 10 ** 8:
+            assert abs(row['Delta_over_D']) < 1e-6
+        assert abs(row['Delta_over_x14']) < 10.0
+
+    # mu * 1 = delta fold identity: sum mu(d) floor(x/d) = 1, exact
+    assert d['identities']['mu_conv_delta_sum'] == 1
+
+    # branch growth is LINEAR, not golden: tau(2^k) = k + 1
+    assert d['cells']['branch_growth_tau2k_linear_not_golden']['tau(2^19)'] == 20
+    assert d['cells']['max_tau'] == 240 and d['cells']['argmax_tau'] == 720720
+
+    # regular tree mirror is a tautology; integer tree mirror BREAKS (the
+    # measured upper/lower asymmetry is the breaking, ratios not all 1)
+    mm = d['tree']['mirror_medians']
+    assert len(set(mm.values())) > 1
+
+    # honest wall: nothing here touches RH; the body mapping is not committed
+    assert 'proof of RH' not in v or 'does not commit' in v['claim'].lower()
+
+
+def test_zeta_zero_spectral_match():
+    d = load('zeta_zero_spectral_match_data.json')
+    v = d['verdict']
+
+    # the 22,491 located zeros are GUE-like at the spacing-statistics level
+    nnsd = d['nnsd']
+    assert nnsd['ks_to_GUE'] < 0.05
+    assert nnsd['ks_to_GUE_simulated'] < 0.05
+    assert nnsd['ks_to_Poisson'] > 0.20
+    assert nnsd['ks_to_GOE'] > nnsd['ks_to_GUE']
+    assert 1.0 < nnsd['level_repulsion_beta'] < 2.0
+
+    # determinantal (not white-noise) process in log-time: anticorrelated gaps
+    assert d['time_reading']['normalized_gap_lag1_autocorr'] < -0.2
+    assert d['references']['Poisson_sim']['lag1_autocorr'] > -0.1
+
+    # number variance far below Poisson (rigid), close to the GUE ensemble
+    nv = d['number_variance']['L=1.0']
+    assert nv < 0.6
+    assert nv < d['number_variance_Poisson_simulated']['L=1.0'] / 2
+
+    # the repo's own spectra do NOT resemble the zeros: spectral_extended is
+    # Poisson (integrable), its KS-to-GUE > KS-to-Poisson
+    se = d['repo_spectra']['spectral_extended_eigenvalues']['spacing_stats']
+    assert se['ks_to_GUE'] > se['ks_to_Poisson']
+
+    # honest wall: GUE resemblance is conjectural (Montgomery), RH open
+    assert 'proof of RH' in v['honest_wall']
+    assert 'remains open' in v['honest_wall']
 
 
 
