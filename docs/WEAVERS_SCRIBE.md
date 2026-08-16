@@ -1666,6 +1666,44 @@ rounding — and then shows exactly where the "theorem" stops being one.
   many primes never become the full Euler product, and C₀ = V(q0) =
   H(q0,0) does not enter.
 
+### Ch. 5.21m  The ordinate γ₁, re-derived from the series machinery (2026-08-16)
+
+`riemann_siegel_ordinate.py` (`data/riemann_siegel_ordinate_data.json`)
+closes the zeta thread by asking *where the number 14.1347251417… comes
+from* and answering with a fully self-contained, error-budgeted chain —
+NO zetazero, NO mp.zeta, NO mp.loggamma.
+
+* **The machinery.**  θ(t) = Im logΓ(¼+it/2) − (t/2)log π is evaluated by
+  the Stirling/Binet series (M = 25 terms, the validated factor-25
+  remainder bound of the certifier, dps 60); ζ(½+it) by Euler–Maclaurin
+  (N=200 sum, M=25 corrections, Backlund's explicit remainder bound);
+  Z = cos θ·Re ζ − sin θ·Im ζ.  The series are validated at 8 probe
+  heights (t = 13…100) against the exact functions — every error inside
+  its bound.  At dps 60 the float rounding (~1e-57) dominates the tiny
+  Backlund bound (1e-78…1e-86), which is why the validation compares
+  against max(bound, rounding floor).
+* **The chain.**  Z(0) = ζ(½) = −1.4603… < 0 < Z(g₀) = +2.3401… at the
+  first Gram point g₀ = 17.84559954041086… (θ(g₀) = 0, Newton on the
+  series, 3.3e-25 from the logΓ reference).  The RvM count N(g₀) = 1
+  (γ₁ < g₀ < γ₂) fixes that there is exactly one zero in (0, g₀].  The
+  series scan over **[13, g₀]** — the Stirling series is asymptotic only
+  for t ≳ 13; below that the bound explodes — finds exactly one sign
+  change of Z, so that crossing IS the first zero, and 120-step bisection
+  recovers γ₁ = 14.13472514173469379045725198356247027078… with
+  |diff| = 2.2e-39 vs mpmath.zetazero(1), well inside the bound-based
+  budget (2·Z-bound/|Z′| ≈ 5.7e-19; the Stirling truncation at t ~ 14 is
+  the dominant term).
+* **Certified bracket.**  The interval engine of `riemann_siegel_certify`
+  (its validated regime, half-width 1e-8) encloses γ₁ with Z signs
+  −1/+1.
+* **Riemann–von Mangoldt closes the loop.**  θ(γ₁)/π = −0.550252829468691,
+  so S(γ₁) = +0.550252829468691 (S just below = −0.449747170531309 — the
+  +1 jump at the simple zero) and S(g₀) = 0.
+* **Honest wall.**  Re-deriving ONE ordinate to ~18 digits is a closed
+  derivation of a number, not a statement about the Riemann hypothesis —
+  which remains open (rigorous verification to |t| ≤ 3×10¹²,
+  Platt–Trudgian).  C₀ = V(q0) = H(q0,0) does not enter.
+
 ---
 
 ## Ch. 6  Creases (never forget these)

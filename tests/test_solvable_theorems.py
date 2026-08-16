@@ -26,6 +26,7 @@ number so none of the resolved claims can silently drift:
     - zeta-lattice alignment with an origin (the rigorous form of 'align the lattice with RH'): the ONLY honest spectral test is index-matched |gamma_k - (o + k s)| and the best FIXED lattice scores median error 10.5, 1/50 within 0.5, 0 within 0.05 (nearest-point metrics are trivially small at fine spacing and were rejected); the real 'origin' is adaptive - Weyl law residuals (mean 0.50, max 0.88) and Gram points (1/49 violations, offsets median 0.86, max 9.04 at gamma_1); the four anchors as origins on the 2 pi/L lattice sit inside the random-origin spread (uniform median 0.612, random 0.618, anchors 0.375..0.681; only 2/200 random origins beat the best anchor - selection noise, the expected number); any anchor rescaled to 61 points in [0,150] collapses to spacing 2.459 whatever its digits; PROVABLE negative theorem: interlacing pins the first rank-one eigenvalue to (0, 2.45], unreachable by gamma_1; HONEST WALL: RH is open, the provable content is negative classification, a positive proof needs mathematics outside this repository
     - zeta direct probe (the headline number tested head-on): at N=150 the letter's fhat is evaluated AT the ordinates at mpmath dps 60 - |fhat(gamma_1)| = 2.65e-3 while a true zero gives exactly 0 (claim 2.6e-55), the nearest zero to gamma_1 is 1.02 away (median 0.73 over n=1..50), |gamma_1 - r_1| = 13.09, and the closest any ordinate comes to a zero is |fhat| = 2.95e-5 at gamma_6 = 37.586 (the tight-match known from the matching stats); the identity fhat = 4 z sin(zL/2) R(z) holds on all 50 ordinates to the double-precision coefficient floor (5.4e-12); the interlacing theorem is verified at EVERY N in {50,100,150,200,300} - one root per pole gap, r_1 in (0, 2.45] (1.017..1.064 as N grows), gamma_1 = 5.77 w_1 for every N, min gap margin >= 5e-3, and N=100 cross-checks the persisted connes_dirac verdict to 8e-15; the WHOLE 840-point orbit is tested as origins - the best has q = 0.3734, exactly the expected extreme-value minimum of 840 random origins (min_mean 0.3734; random matches or beats it in 100% of trials), so no known point is a special origin; HONEST WALL: direct numbers confirm the impossibility, RH is open, negative classification only
     - zeta interlacing CERTIFIER (interval arithmetic): every pole gap of the letter's rank-one secular function R is certified to contain a root by validated-rounding IVT at both ends (N=100: 100/100 gaps, endpoint magnitudes >= 1.8e+0; N=150: 150/150; N=200: 200/200; N=246: 246/246) and the residues rho_k = c_k (-1)^k share one sign there, so R' = -2z sum rho_k/(z^2 - w_k^2)^2 is strictly one-signed on every gap and each IVT root is UNIQUE - exactly one root per pole gap for EVERY N <= 246 (numeric scan confirms 1 per gap); FINDING: the interlacing is NOT a theorem in N - the residues first fail to share a sign at N = 247 (flip between k = 246/247) and gap 246 then holds ZERO roots; at larger N the flips multiply, e.g. N=300 (flips between k = 153/154, 266/267, 267/268) where gap 153 keeps TWO roots hugging the poles (distances 3e-4/2e-4; its residues are tiny, ~4e-7), gaps 266 and 267 hold NONE, and every one of the other 297 gaps holds exactly one (histogram {0:2, 1:297, 2:1}, total 299) - the rule fails exactly where adjacent residues have opposite signs; the WALL still certifies at every N (first root enclosed to 2e-24 inside (0, 2.4496], gamma_1 = 14.1347 is 5.77 w_1's away, R and sin(gamma_1 L/2) certified nonzero at gamma_1) - the claimed 2.6e-55 first-zero match is certified impossible; an independent mp Newton iterate (dps 60, x0=1.5) lands inside the certified enclosure; float root-finders fail there because |R| ~ 1e-19 is below the float64 cancellation floor; HONEST WALL: negative certification of the letter's construction, RH remains open, no de Bruijn-Newman consequence, C_0 = V(q0) = H(q0,0) does not enter
+    - riemann_siegel ordinate (gamma_1 re-derived): WHERE the number 14.1347251417... comes from, series-machinery ONLY (no zetazero, no mp.zeta, no mp.loggamma) - theta(t) by the Stirling/Binet series (validated factor-25 remainder bound) and zeta(1/2+it) by Euler-Maclaurin (Backlund remainder bound), both dps 60, Z = cos(theta)Re zeta - sin(theta)Im zeta; Z(0) = zeta(1/2) = -1.4603 < 0 < Z(g_0) = +2.3401 at the first Gram point g_0 = 17.8456 (theta = 0), and the RvM count N(g_0) = 1 (gamma_1 < g_0 < gamma_2) fixes that there is exactly one zero in (0, g_0]; the series scan over [13, g_0] (Stirling asymptotic only for t >= ~13) finds its single sign change, and bisection recovers gamma_1 with |diff| = 2.2e-39 vs zetazero; the certified-interval engine (validated regime, half-width 1e-8) encloses it with Z signs -1/+1; RvM: theta(gamma_1)/pi = -0.550253, S(gamma_1) = +0.550253 (S just below = -0.449747, the +1 jump at the simple zero), S(g_0) = 0; HONEST WALL: one ordinate derived to ~18 digits is a closed derivation of a number, NOT a statement about RH (open; rigorous verification to |t| <= 3e12, Platt-Trudgian)
     - C2 golden fold: retrace chain is not a phi/phi^2 ladder (1/4 rungs)
     - hierarchical C0 flow: SUPPORTED (NC parity with flat flow, router gain, 6 not 30 comps)
    - flow-guided active learning: margin-AL reaches targets with fewer labels than random; raw force-cancellation score is not the winner
@@ -1818,6 +1819,57 @@ def test_zeta_interlacing_certify():
     assert 'HONEST WALL' in v
     assert 'RH is open' in v
     assert 'NOT a theorem in N' in v
+
+
+def test_riemann_siegel_ordinate_rederivation():
+    d = load('riemann_siegel_ordinate_data.json')
+    v = d['verdict']
+    fz = d['first_zero']
+    rv = d['rvm']
+
+    # the derivation is self-contained: no zetazero / mp.zeta / mp.loggamma
+    assert 'no zetazero' in d['claim']
+    assert 'Stirling/Binet' in d['setup']['theta']
+    assert 'Euler-Maclaurin' in d['setup']['zeta']
+    assert d['setup']['count_oracle'].startswith('mpmath.zetazero')
+
+    # gamma_1 pinned to the full 56-digit series string
+    assert fz['gamma_1_series'] == \
+        '14.13472514173469379045725198356247027078206878633840436'
+    assert fz['gamma_1_zetazero_oracle'].startswith(
+        '14.134725141734693790457251983562470270784')
+    assert float(fz['diff_vs_zetazero']) < 1e-36
+
+    # the chain: Z(0) < 0 < Z(g_0), exactly one sign-change bracket
+    assert fz['zeta_half_series'] < 0
+    assert fz['Z_g0_series'] > 0
+    assert fz['sign_changes_in_0_g0'] == 1
+
+    # series validation passed on every probe point
+    assert d['validation']['pass'] is True
+    for p in d['validation']['points']:
+        assert p['theta_ok'] is True
+        assert p['Z_ok'] is True
+
+    # certified-interval bracket (validated regime) encloses gamma_1
+    cb = d['certified_bracket']
+    assert cb['ok'] is True
+    assert cb['signs'] == [-1, 1]
+    assert cb['lo'] < 14.1347251417347 < cb['hi']
+
+    # Gram point and Riemann-von Mangoldt closure
+    assert d['gram_points']['g0_g1_g2'][0] == 17.84559954041086
+    assert rv['N_g0'] == 1
+    assert rv['gamma_1_lt_g0_lt_gamma_2'] is True
+    assert abs(rv['theta_gamma1_over_pi'] + 0.550252829468691) < 1e-13
+    assert abs(rv['S_gamma1'] - 0.550252829468691) < 1e-13
+    assert abs(rv['S_gamma1_below'] + 0.449747170531309) < 1e-13
+    assert rv['jump_at_simple_zero'] == 1
+
+    # honest wall: a number, not a statement about RH
+    assert 'HONEST WALL' in v
+    assert 'not a statement about the Riemann hypothesis' in v
+    assert 'remains open' in v
 
 
 

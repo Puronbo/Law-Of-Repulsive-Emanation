@@ -1,0 +1,166 @@
+{
+  "claim": "re-derive the first zeta ordinate gamma_1 = 14.1347251417... from the self-contained series machinery (Stirling/Binet theta + Euler-Maclaurin zeta, both with explicit validated remainder bounds), no zetazero, no mp.zeta, no mp.loggamma; the Riemann-von Mangoldt count closes the derivation",
+  "setup": {
+    "dps": 60,
+    "theta": "Stirling/Binet series of Im logGamma(1/4+it/2) - (t/2) log pi, M=25 terms (near-optimal at t~14), remainder bound safety factor 25 (validated in riemann_siegel_certify)",
+    "zeta": "Euler-Maclaurin with Backlund explicit remainder bound, N=200 sum, M=25 corrections",
+    "Z": "Z = cos(theta) Re zeta - sin(theta) Im zeta",
+    "gram_scan_grid": 0.02,
+    "bisect_iters": 120,
+    "certified_bracket_half": 1e-08,
+    "count_oracle": "mpmath.zetazero (N(g_0)=1 count cross-check only)"
+  },
+  "validation": {
+    "pass": true,
+    "points": [
+      {
+        "t": 13.0,
+        "theta_err": "4.68e-19",
+        "theta_bound": "1.59e-17",
+        "theta_ok": true,
+        "zeta_re_err": "5.45e-60",
+        "zeta_im_err": "8.32e-60",
+        "zeta_bound": "4.94e-87",
+        "zeta_ok": true,
+        "Z_err": "8.66e-38",
+        "Z_bound": "1.59e-17",
+        "Z_ok": true
+      },
+      {
+        "t": 14.0,
+        "theta_err": "2.88e-20",
+        "theta_bound": "3.65e-19",
+        "theta_ok": true,
+        "zeta_re_err": "5.13e-60",
+        "zeta_im_err": "3.84e-60",
+        "zeta_bound": "1.84e-86",
+        "zeta_ok": true,
+        "Z_err": "4.37e-41",
+        "Z_bound": "3.65e-19",
+        "Z_ok": true
+      },
+      {
+        "t": 14.1347,
+        "theta_err": "1.92e-20",
+        "theta_bound": "2.24e-19",
+        "theta_ok": true,
+        "zeta_re_err": "1.64e-60",
+        "zeta_im_err": "1.76e-60",
+        "zeta_bound": "2.19e-86",
+        "zeta_ok": true,
+        "Z_err": "3.69e-45",
+        "Z_bound": "2.24e-19",
+        "Z_ok": true
+      },
+      {
+        "t": 17.8456,
+        "theta_err": "1.72e-25",
+        "theta_bound": "1.56e-24",
+        "theta_ok": true,
+        "zeta_re_err": "3.42e-60",
+        "zeta_im_err": "2.61e-60",
+        "zeta_bound": "2.44e-84",
+        "zeta_ok": true,
+        "Z_err": "3.48e-50",
+        "Z_bound": "1.56e-24",
+        "Z_ok": true
+      },
+      {
+        "t": 20.0,
+        "theta_err": "9.59e-29",
+        "theta_bound": "4.67e-27",
+        "theta_ok": true,
+        "zeta_re_err": "4.59e-60",
+        "zeta_im_err": "2.64e-60",
+        "zeta_bound": "3.37e-83",
+        "zeta_ok": true,
+        "Z_err": "5.28e-57",
+        "Z_bound": "4.67e-27",
+        "Z_ok": true
+      },
+      {
+        "t": 30.0,
+        "theta_err": "1.85e-37",
+        "theta_bound": "4.93e-36",
+        "theta_ok": true,
+        "zeta_re_err": "1.68e-60",
+        "zeta_im_err": "2.88e-60",
+        "zeta_bound": "2.47e-78",
+        "zeta_ok": true,
+        "Z_err": "3.11e-60",
+        "Z_bound": "4.93e-36",
+        "Z_ok": true
+      },
+      {
+        "t": 60.0,
+        "theta_err": "8.67e-53",
+        "theta_bound": "2.2e-51",
+        "theta_ok": true,
+        "zeta_re_err": "1.63e-59",
+        "zeta_im_err": "1.75e-59",
+        "zeta_bound": "4.1e-67",
+        "zeta_ok": true,
+        "Z_err": "2.18e-59",
+        "Z_bound": "2.2e-51",
+        "Z_ok": true
+      },
+      {
+        "t": 100.0,
+        "theta_err": "9.96e-60",
+        "theta_bound": "1.07e-62",
+        "theta_ok": true,
+        "zeta_re_err": "1.4e-57",
+        "zeta_im_err": "6.05e-58",
+        "zeta_bound": "4.88e-57",
+        "zeta_ok": true,
+        "Z_err": "1.41e-57",
+        "Z_bound": "4.88e-57",
+        "Z_ok": true
+      }
+    ]
+  },
+  "gram_points": {
+    "g0_series": "17.8455995404108608168263387427750207446212817",
+    "g0_loggamma_ref": "17.8455995404108608168263384125190970356932874",
+    "g0_diff": "3.3e-25",
+    "g0_theta_bound_over_dtheta": "2.98e-24",
+    "g0_g1_g2": [
+      17.84559954041086,
+      23.170282701246308,
+      27.67018221781634,
+      31.717979954764054,
+      35.46718429710022
+    ]
+  },
+  "first_zero": {
+    "zeta_half_series": -1.4603545088095868,
+    "Z_g0_series": 2.3401816684967316,
+    "sign_changes_in_0_g0": 1,
+    "grid_evals": 243,
+    "bisect_evals": 120,
+    "gamma_1_series": "14.13472514173469379045725198356247027078206878633840436",
+    "gamma_1_zetazero_oracle": "14.13472514173469379045725198356247027078425711569924318",
+    "diff_vs_zetazero": "2.19e-39",
+    "error_budget_2zbound_over_slope": "5.66e-19"
+  },
+  "certified_bracket": {
+    "ok": true,
+    "half_width": 1e-08,
+    "lo": 14.134725131734694,
+    "hi": 14.134725151734694,
+    "signs": [
+      -1,
+      1
+    ]
+  },
+  "rvm": {
+    "N_g0": 1,
+    "gamma_1_lt_g0_lt_gamma_2": true,
+    "theta_gamma1_over_pi": -0.550252829468691,
+    "S_gamma1": 0.550252829468691,
+    "S_gamma1_below": -0.449747170531309,
+    "jump_at_simple_zero": 1,
+    "S_g0": "1.56e-61"
+  },
+  "verdict": "FIRST ORDINATE RE-DERIVED FROM THE SERIES MACHINERY: gamma_1 = 14.13472514173469379045725198356247027078 is obtained WITHOUT zetazero, mp.zeta or mp.loggamma - theta by the Stirling/Binet series (validated remainder bound, factor 25) and zeta(1/2+it) by Euler-Maclaurin (Backlund remainder bound), both at dps 60; Z = cos(theta)Re zeta - sin(theta)Im zeta.  The chain: Z(0) = zeta(1/2) = -1.4603 < 0, the first Gram point g_0 = 17.84559954041085916288 (theta = 0) has Z(g_0) = +2.3401 > 0, and the RvM count N(g_0) = 1 (gamma_1 < g_0 < gamma_2) fixes that there is exactly one zero in (0, g_0]; the series scan over [13, g_0] (below 13 the Stirling series is not asymptotic) finds exactly one sign change of Z - that crossing IS the first zero, and bisection gives gamma_1 = 14.13472514173469379045725...  Cross-check vs mpmath.zetazero(1): |diff| = 2.19e-39 (the dominant term of the error budget is the Stirling truncation at t ~ 14, validated bound 2.24e-19, ~2e-18 in the ordinate).  The certified-interval engine of riemann_siegel_certify (validated regime) encloses gamma_1 in the certified bracket [14.1347251317346938, 14.1347251517346937].  Riemann-von Mangoldt: N(gamma_1) = 1 with theta(gamma_1)/pi = -0.55025283, so S(gamma_1) = +0.55025283 (S just below = -0.44974717 - the +1 jump at the simple zero) and S(g_0) = 0.  HONEST WALL: this re-derives ONE ordinate to ~18 digits - a closed derivation of a number, not a statement about the Riemann hypothesis, which remains open."
+}

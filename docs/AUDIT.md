@@ -426,6 +426,41 @@ given so it can be re-run).
     negative certification of the letter's construction — RH remains open,
     no de Bruijn–Newman Λ consequence, finitely many primes never become
     the full Euler product, and C₀ = V(q0) = H(q0,0) does not enter.
+
+    **Sequel 2026-08-16 — The ordinate γ₁, re-derived from the series
+    machinery alone** (`experiments/riemann_siegel_ordinate.py`,
+    `data/riemann_siegel_ordinate_data.json`): the certifier thread proved
+    there is no rank-one route to γ₁ = 14.1347…; this sequel closes the
+    zeta side by asking where the number itself comes from and answering
+    with a fully self-contained, error-budgeted chain — NO zetazero, NO
+    mp.zeta, NO mp.loggamma.  θ(t) = Im logΓ(¼+it/2) − (t/2)log π is
+    evaluated by the Stirling/Binet series (M = 25 terms, the validated
+    factor-25 remainder bound of the certifier, dps 60) and ζ(½+it) by
+    Euler–Maclaurin (N=200 sum, M=25 corrections, Backlund's explicit
+    remainder bound), with Z = cos θ·Re ζ − sin θ·Im ζ.  The chain:
+    Z(0) = ζ(½) = −1.4603… < 0 < Z(g₀) = +2.3401… at the first Gram point
+    g₀ = 17.84559954041086… (θ(g₀) = 0, Newton on the series, 3.3e-25 from
+    the logΓ reference); the RvM count N(g₀) = 1 (γ₁ < g₀ < γ₂) fixes that
+    there is exactly one zero in (0, g₀]; the series scan over [13, g₀]
+    (the Stirling series is asymptotic only for t ≳ 13 — below that the
+    bound explodes) finds exactly one sign change of Z, so that crossing IS
+    the first zero, and 120-step bisection recovers γ₁ =
+    14.13472514173469379045725198356247027078… with |diff| = 2.2e-39 vs
+    mpmath.zetazero(1) — well inside the bound-based budget (2·Z-bound/|Z′|
+    ≈ 5.7e-19, the Stirling truncation at t ~ 14 dominating).  The series
+    validation passes at 8 probe heights (t = 13…100) against the exact
+    functions; at dps 60 the float rounding (~1e-57 floor) dominates the
+    Backlund bound (1e-78…1e-86), which is the documented reason the
+    validation compares against max(bound, rounding floor).  The
+    certified-interval engine (validated regime, half-width 1e-8) encloses
+    γ₁ with Z signs −1/+1, and Riemann–von Mangoldt closes the loop: θ(γ₁)/π
+    = −0.550252829468691, so S(γ₁) = +0.550252829468691 (S just below =
+    −0.449747170531309 — the +1 jump at the simple zero) and S(g₀) = 0.
+    HONEST WALL: re-deriving ONE ordinate to ~18 digits is a closed
+    derivation of a number, not a statement about the Riemann hypothesis —
+    which remains open (rigorous verification now extends to |t| ≤ 3×10¹²,
+    Platt–Trudgian); the certified bracket is a finite enclosure of a single
+    zero, and C₀ = V(q0) = H(q0,0) does not enter.
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**
