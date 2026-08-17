@@ -2499,4 +2499,24 @@ def test_fermat_little_0_over_0():
     assert d['summary']['all_geometric_identity']
 
 
+def test_fta_0_over_0():
+    d = load('fta_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['max_error'] < 1e-6
+
+
+def test_pythagorean_0_over_0():
+    d = load('pythagorean_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['max_triple_error'] < 1e-10
+    assert d['summary']['max_continuous_error'] < 1e-10
+    assert d['summary']['all_non_pythagorean_distinct']
+
+
+def test_taylor_remainder_0_over_0():
+    d = load('taylor_remainder_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['max_error'] < 1e-6
+
+
 

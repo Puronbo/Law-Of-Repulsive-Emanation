@@ -2475,6 +2475,48 @@ sum 1 + a + a^2 + ... + a^{p-2}.
 Verified for primes 2..47: removable = p-1, Q(a) mod p = 0 for
 gcd(a,p)=1, geometric identity holds.
 
+### Ch. 5.21ax  Fundamental theorem of algebra via 0/0 (2026-08-17)
+
+The FTA: every non-constant polynomial has a root in C.
+
+At a root z_0 of multiplicity k: f(z)/(z-z_0)^k at z=z_0 is 0/0.
+Removable value = g(z_0) = f^{(k)}(z_0)/k!, where f(z) = (z-z_0)^k g(z).
+
+Verified via mpmath 80-digit precision:
+- Simple roots: z^2-1 at z=1 (removable=2), z=-1 (removable=-2)
+- Double root: (z-3)^2(z-5) at z=3 (removable=-2)
+- Triple root: (z-2)^3 at z=2 (removable=1)
+- Complex root: z^2+1 at z=i (removable=2i)
+- Quartic: z^4-1 at z=1 (removable=4)
+Max error: 6e-12.
+
+### Ch. 5.21ay  Pythagorean theorem via 0/0 (2026-08-17)
+
+The Pythagorean theorem: a^2 + b^2 = c^2.
+
+Normalized: (a/c)^2 + (b/c)^2 = 1. At c=0 (degenerate triangle):
+both a,b=0, so the ratio is 0/0. Removable value = 1 (the unit circle).
+
+Verified on 16 Pythagorean triples (3-4-5 through 65-72-97), continuous
+parameterization a=cos(t), b=sin(t), and degenerate limit c->0. All
+ratios = 1.0 to machine precision. Non-Pythagorean triples give ratio != 1.
+
+### Ch. 5.21az  Taylor's theorem via 0/0 (2026-08-17)
+
+Taylor's theorem with remainder: f(x) = T_n(x) + R_n(x).
+
+The 0/0: R_n(x)/(x-a)^{n+1} at x=a is 0/0. Removable value =
+f^{(n+1)}(a)/(n+1)!, the first neglected Taylor coefficient.
+
+Verified via mpmath 80-digit precision:
+- e^x at a=0, n=2: removable = 1/6 (error 4e-14)
+- sin(x) at a=0, n=1: removable = -1/6 (error 0)
+- cos(x) at a=0, n=2: removable = 1/24 (error 0)
+- e^x at a=1, n=3: removable = e/24 (error 2e-14)
+- sin(x) at a=pi/4, n=2: removable = -sqrt(2)/12 (error 3e-14)
+- ln(1+x) at a=0, n=3: removable = -1/4 (error 2e-13)
+Max error: 2e-13.
+
 ---
 
 ## Ch. 6  Creases (never forget these)

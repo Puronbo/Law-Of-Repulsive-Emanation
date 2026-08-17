@@ -924,6 +924,79 @@ given so it can be re-run).
     linear T(x)=0.5x+1 all converge.  0/0: (T(x)-x)/(x-x*) at x=x*;
     removable value = T'(x*)-1.  Cos: -1.6736, Newton: -1.0, linear: -0.5.
 
+    **Sequel 2026-08-17 — Poisson summation via 0/0: xi(0) = 1/2**
+    (`experiments/poisson_summation_0_over_0.py`,
+    `data/poisson_summation_0_over_0_data.json`): xi(s) functional equation
+    verified, theta functional equation verified.  0/0: xi(s)/cos(pi s/2) at
+    s=0 is 0/0; removable = 1/2.  Converges from both sides.
+
+    **Sequel 2026-08-17 — Rayleigh quotient via 0/0: x^T A x / x^T x at x=0**
+    (`experiments/rayleigh_quotient_0_over_0.py`,
+    `data/rayleigh_quotient_0_over_0_data.json`): 2D and 3D symmetric
+    matrices, random 5D.  All removable values match eigenvalues exactly
+    (error < 1e-10).  Min/max bounds hold.
+
+    **Sequel 2026-08-17 — Cauchy integral formula via 0/0: f(z)/(z-a) at z=a**
+    (`experiments/cauchy_integral_0_over_0.py`,
+    `data/cauchy_integral_0_over_0_data.json`): residue = removable value.
+    f(z)=z^2, a=1: residue=2.  f(z)=1/z, a=2i: residue=-i/4.
+    f(z)=sin(z)/z, a=0: residue=1.  All converge to removable via h->0.
+
+    **Sequel 2026-08-17 — Noether/Landau mean-field Ising via 0/0: M(T_c)=0/0**
+    (`experiments/noether_landau_0_over_0.py`,
+    `data/noether_landau_0_over_0_data.json`): Landau free energy
+    F = a(T-T_c)M^2 + bM^4, M = sqrt((T_c-T)/(2b)) below T_c.
+    0/0: M/(T_c-T)^{1/2} at T=T_c is 0/0; removable = 1/sqrt(2b).
+    Amplitude ratio: sqrt(2)*M*sqrt(b) = sqrt(T_c-T).  Above T_c: all M=0.
+    Free energy has minima at M=0 (T>=T_c) and M=+-M_0 (T<T_c).
+
+    **Sequel 2026-08-17 — Euler-Maclaurin via 0/0: x/(e^x-1) at x=0**
+    (`experiments/euler_maclaurin_0_over_0.py`,
+    `data/euler_maclaurin_0_over_0_data.json`): B(x) = x/(e^x-1) -> 1
+    as x->0 (error 5e-14).  Taylor coefficients match Bernoulli numbers.
+    Sum-integral correction for f(x)=x^2: EM correction matches exact.
+
+    **Sequel 2026-08-17 — Laplace method via 0/0: I(n)*sqrt(n) at n=0**
+    (`experiments/laplace_method_0_over_0.py`,
+    `data/laplace_method_0_over_0_data.json`): Gaussian integral
+    I(n)*sqrt(n)->sqrt(pi) (error 0).  Quartic: I(n)*n^{1/4}->Gamma(1/4)/2
+    (error 4.44e-16).  Both are 0/0 at n=0 with removable values.
+
+    **Sequel 2026-08-17 — Wallis product via 0/0: 1^inf product -> pi/2**
+    (`experiments/wallis_product_0_over_0.py`,
+    `data/wallis_product_0_over_0_data.json`): prod (2n)^2/((2n-1)(2n+1))
+    converges to pi/2 (error 3.93e-08 at N=10^7).  Each factor -> 1 (the
+    1^inf indeterminate form).
+
+    **Sequel 2026-08-17 — Cesaro summation via 0/0: Grandi 1-1+1... -> 1/2**
+    (`experiments/cesaro_summation_0_over_0.py`,
+    `data/cesaro_summation_0_over_0_data.json`): Cesaro mean of Grandi
+    series -> 0.5 (error 0).  Geometric formula (1-r^{N+1})/(1-r) at r=1
+    is 0/0, removable=N+1.
+
+    **Sequel 2026-08-17 — Fermat's little theorem via 0/0: (a^{p-1}-1)/(a-1)**
+    (`experiments/fermat_little_0_over_0.py`,
+    `data/fermat_little_0_over_0_data.json`): 0/0 at a=1, removable=p-1.
+    Verified for all primes 2..47.  Q(a) mod p=0 for gcd(a,p)=1.
+
+    **Sequel 2026-08-17 — FTA via 0/0: f(z)/(z-z0)^k at root z0**
+    (`experiments/fta_0_over_0.py`,
+    `data/fta_0_over_0_data.json`): mpmath 80-digit precision.
+    Simple/double/triple/complex roots all converge to removable value.
+    Max error 6e-12.  Removable = g(z0) = f^{(k)}(z0)/k!.
+
+    **Sequel 2026-08-17 — Pythagorean theorem via 0/0: (a/c)^2+(b/c)^2=1**
+    (`experiments/pythagorean_0_over_0.py`,
+    `data/pythagorean_0_over_0_data.json`): 16 Pythagorean triples,
+    continuous parameterization, degenerate limit.  All ratios = 1.0.
+    0/0 at c=0, removable=1 (the unit circle).
+
+    **Sequel 2026-08-17 — Taylor remainder via 0/0: R_n/(x-a)^{n+1}**
+    (`experiments/taylor_remainder_0_over_0.py`,
+    `data/taylor_remainder_0_over_0_data.json`): mpmath 80-digit.
+    Tests e^x, sin, cos, ln at various expansion points and orders.
+    Max error 2e-13.  Removable = f^{(n+1)}(a)/(n+1)!.
+
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**
