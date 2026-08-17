@@ -726,6 +726,32 @@ given so it can be re-run).
     too small to classify.  HONEST WALL: GUE resemblance at 22,491 low
     zeros is the CONJECTURED Montgomery correlation law supported
     numerically — a resemblance, not a proof of RH, which remains open.
+
+    **Sequel 2026-08-16 — What a proof of RH needs to be: a single uniform
+    global bound, and no computation can enter it**
+    (`docs/RH_PROOF_REQUIREMENTS.md`): maps the five candidate proof routes
+    (A–E) from the repo's measured position.  The exact statement: ζ(s) has
+    no zeros with Re > 1/2.  The equivalences (von Koch ψ, Littlewood M,
+    π = Li, S(t) = o(log t), Λ ≤ 0) are four phenotypes of one organism;
+    the repo measured all of them to 10^14 / 22,491 zeros and they behave
+    as RH predicts — but each is a supremum over the infinite, and no finite
+    computation has logical force.  The two proven-false-but-never-seen
+    theorems (Mertens: proven false, never seen; π > Li: proven to occur,
+    never seen) warn that the computable range can look exactly RH-correct
+    while the truth beyond is different.  Five routes, five missing theorems:
+    (A) von Koch/Littlewood uniform bound (circular without a structure
+    theorem); (B) S(t) = o(log t) globally; (C) Hilbert–Pólya self-adjoint
+    operator; (D) de Bruijn–Newman Λ ≤ 0 (Λ ≥ 0 already proven by
+    Rodgers–Tao 2018, so Λ = 0 follows in one line — the single most
+    self-contained target); (E) structural identity.  The removable-
+    singularity argument: f(x) = |(x−1)/(1−x)| = 1 everywhere defined,
+    0/0 at x = 1; proving the singularity removable = proving f ≡ 1 =
+    proving RH.  The repo's GUE measurement is the cell's genome being
+    rigid; the fold arithmetic is the algebraic skeleton.  HONEST WALL:
+    the proof needed is a structure theorem, not a computation; the answer
+    to 'can you prove 0/0 = 1?' is 'that is the proof of RH' — the function
+    is already constant where defined; showing the singularity is removable
+    by a criterion other than evaluating the limit is the open problem.
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**

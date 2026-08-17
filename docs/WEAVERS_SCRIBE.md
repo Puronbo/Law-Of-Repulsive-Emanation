@@ -2041,6 +2041,54 @@ runs in.  `zeta_zero_spectral_match.py`:
 
 ---
 
+### Ch. 5.21v  What a proof of RH needs to be: one uniform global bound (2026-08-16)
+
+The first five 5.21 chapters (q/s/r/t/u) measured arithmetic — exact
+values, located zeros, spectral statistics, fold identities, tree mirrors.
+Ch. 5.21v steps back and asks: what would a proof actually look like, and
+what does the repo's data say about each candidate shape?
+
+* **The five routes.**  (A) Von Koch/Littlewood: prove
+  |ψ(x) − x| ≤ C √x log²x for all x (or M(x) = O(x^{1/2+ε})).  The
+  explicit formula IS that identity, but it converges only conditionally
+  and the partial sums are non-monotone in T (Ch. 5.21r/s) — proving the
+  bound requires bounding the tail, which requires knowing all zeros have
+  β = 1/2, which is RH.  Circular without a new input.  (B) Argument/
+  zero-density: prove S(t) = o(log t).  The S-walk is quiet (max|S|/log t
+  = 0.146), but the bound must hold for ALL t, not the computed range.
+  (C) Hilbert–Pólya: find a self-adjoint operator whose spectrum is {γ_n}.
+  Self-adjointness gives real spectrum, and the functional equation moves
+  it to Re = ½.  The repo's own spectra are Poisson (Ch. 5.21u) — not a
+  candidate.  (D) de Bruijn–Newman: prove Λ ≤ 0.  Λ ≥ 0 is already a
+  theorem (Rodgers–Tao 2018), so Λ = 0 would follow in one line.  This is
+  the single most self-contained target: prove the entire function H_t has
+  only real zeros for every t > 0.  (E) Structural identity: a new
+  positivity or functional equation that forces ζ ≠ 0 off the line.
+* **The removable singularity argument.**  f(x) = |(x−1)/(1−x)| equals 1
+  everywhere it is defined (x ≠ 1); at x = 1, f = |0/0|, undefined.  But
+  the limit exists and equals 1, so the singularity is removable by
+  Riemann's theorem (the function is bounded near x = 1).  The parallel:
+  the explicit formula gives the right answer at every computable height
+  (f = 1 at every x ≠ 1); the 0/0 is the T → ∞ limit (all zeros included);
+  proving the singularity is removable = proving RH.  The function is already
+  constant where defined; showing the singularity is removable by a
+  criterion OTHER than evaluating the limit (continuity, self-adjointness,
+  positivity of H_t) is the open problem.
+* **The two warnings.**  The Mertens conjecture is PROVEN false (Odlyzko–
+  te Riele 1985) yet |M(x)| < √x at every x ≤ 10^16.  π(x) > Li(x) is
+  PROVEN to occur, though π(x) < Li(x) at every computable height.  Both
+  prove the computable range can look exactly RH-correct while the truth
+  beyond is different.  No finite computation has logical force.
+* **The single sentence.**  A proof of RH is a structure theorem — a single
+  object (operator, entire function, global bound) that is rigid enough to
+  force all zeros onto the line without computing them individually.  The
+  genome is constant at every observed locus; proving it is constant at the
+  one unobserved locus is the whole thing.  RH remains open.
+* **Honest wall.**  This chapter is a map, not a proof.  C₀ = V(q0) =
+  H(q0,0) does not enter.
+
+---
+
 ## Ch. 6  Creases (never forget these)
 
 1. **The pattern is scale-dependent.** τ-equality under MM/DD swap oscillates
