@@ -2634,4 +2634,42 @@ def test_schanuel_0_over_0():
     assert d['summary']['transcendence_degrees_correct']
 
 
+def test_shannon_entropy_0_over_0():
+    d = load('shannon_entropy_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['zero_log_zero_removable']
+    assert d['summary']['uniform_maximum']
+    assert d['summary']['deterministic_zero']
+    assert d['summary']['mi_0_over_0']
+    assert d['summary']['kl_0_over_0']
+
+
+def test_bayes_theorem_0_over_0():
+    d = load('bayes_theorem_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['posterior_converges_to_prior']
+    assert d['summary']['likelihood_ratio_removable']
+    assert d['summary']['mixture_posterior_valid']
+    assert d['summary']['map_matches_prior']
+
+
+def test_lorenz_attractor_0_over_0():
+    d = load('lorenz_attractor_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['lyapunov_positive']
+    assert d['summary']['sum_of_exponents']
+    assert d['summary']['hopf_bifurcation_detected']
+    assert d['summary']['fixed_points_correct']
+
+
+def test_boltzmann_entropy_0_over_0():
+    d = load('boltzmann_entropy_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['boltzmann_ratio_one']
+    assert d['summary']['zero_ln_zero_removable']
+    assert d['summary']['mixing_max_at_half']
+    assert d['summary']['gibbs_pure_zero']
+    assert d['summary']['gibbs_uniform_correct']
+
+
 

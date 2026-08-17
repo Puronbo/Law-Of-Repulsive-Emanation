@@ -1,0 +1,296 @@
+{
+  "tests": [],
+  "summary": {
+    "supported": true,
+    "lyapunov_positive": true,
+    "sum_of_exponents": true,
+    "hopf_bifurcation_detected": true,
+    "fixed_points_correct": true,
+    "rho_H": 24.736842105263154,
+    "honest_wall": "numerical integration; Lyapunov exponents by finite differences"
+  },
+  "lyapunov": {
+    "note": "Largest Lyapunov exponent ~ 0.9056 (positive = chaos)",
+    "tests": [
+      {
+        "T": 100,
+        "lambda_1": 0.7954505531514829,
+        "is_positive": true,
+        "close_to_0.9056": true
+      },
+      {
+        "T": 500,
+        "lambda_1": 0.885326456632769,
+        "is_positive": true,
+        "close_to_0.9056": true
+      },
+      {
+        "T": 1000,
+        "lambda_1": 0.8903198968455189,
+        "is_positive": true,
+        "close_to_0.9056": true
+      },
+      {
+        "T": 2000,
+        "lambda_1": 0.9022225681869791,
+        "is_positive": true,
+        "close_to_0.9056": true
+      }
+    ]
+  },
+  "lyapunov_0_over_0": {
+    "note": "log(1)/0 = 0/0 at t=0; removable value = lambda_1 ~ 0.9056",
+    "tests": [
+      {
+        "t": 0.01,
+        "log_ratio_over_t": -4.8352572825873725,
+        "note": "should approach lambda_1 as t -> inf"
+      },
+      {
+        "t": 0.1,
+        "log_ratio_over_t": 10.042964509204811,
+        "note": "should approach lambda_1 as t -> inf"
+      },
+      {
+        "t": 0.5,
+        "log_ratio_over_t": 3.7938120906230943,
+        "note": "should approach lambda_1 as t -> inf"
+      },
+      {
+        "t": 1.0,
+        "log_ratio_over_t": 0.10981687532222416,
+        "note": "should approach lambda_1 as t -> inf"
+      },
+      {
+        "t": 5.0,
+        "log_ratio_over_t": 0.0439123490449208,
+        "note": "should approach lambda_1 as t -> inf"
+      }
+    ]
+  },
+  "fixed_points": {
+    "note": "Fixed points and their stability for various rho",
+    "tests": [
+      {
+        "rho": 10.0,
+        "fp_index": 0,
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_real_eigenvalue": 5.465856099730654,
+        "stable": false,
+        "unstable": true
+      },
+      {
+        "rho": 10.0,
+        "fp_index": 1,
+        "position": [
+          4.898979485566356,
+          4.898979485566356,
+          9.0
+        ],
+        "max_real_eigenvalue": -0.5954970954952522,
+        "stable": true,
+        "unstable": false
+      },
+      {
+        "rho": 10.0,
+        "fp_index": 2,
+        "position": [
+          -4.898979485566356,
+          -4.898979485566356,
+          9.0
+        ],
+        "max_real_eigenvalue": -0.5954970954952522,
+        "stable": true,
+        "unstable": false
+      },
+      {
+        "rho": 24.0,
+        "fp_index": 0,
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_real_eigenvalue": 10.632265804901678,
+        "stable": false,
+        "unstable": true
+      },
+      {
+        "rho": 24.0,
+        "fp_index": 1,
+        "position": [
+          7.831560082980487,
+          7.831560082980487,
+          23.0
+        ],
+        "max_real_eigenvalue": -0.02252673437111863,
+        "stable": true,
+        "unstable": false
+      },
+      {
+        "rho": 24.0,
+        "fp_index": 2,
+        "position": [
+          -7.831560082980487,
+          -7.831560082980487,
+          23.0
+        ],
+        "max_real_eigenvalue": -0.02252673437111863,
+        "stable": true,
+        "unstable": false
+      },
+      {
+        "rho": 28.0,
+        "fp_index": 0,
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_real_eigenvalue": 11.827723451163456,
+        "stable": false,
+        "unstable": true
+      },
+      {
+        "rho": 28.0,
+        "fp_index": 1,
+        "position": [
+          8.48528137423857,
+          8.48528137423857,
+          27.0
+        ],
+        "max_real_eigenvalue": 0.09395562396468593,
+        "stable": false,
+        "unstable": true
+      },
+      {
+        "rho": 28.0,
+        "fp_index": 2,
+        "position": [
+          -8.48528137423857,
+          -8.48528137423857,
+          27.0
+        ],
+        "max_real_eigenvalue": 0.09395562396468593,
+        "stable": false,
+        "unstable": true
+      },
+      {
+        "rho": 30.0,
+        "fp_index": 0,
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_real_eigenvalue": 12.39553016817328,
+        "stable": false,
+        "unstable": true
+      },
+      {
+        "rho": 30.0,
+        "fp_index": 1,
+        "position": [
+          8.793937305515279,
+          8.793937305515279,
+          29.0
+        ],
+        "max_real_eigenvalue": 0.14736834826958778,
+        "stable": false,
+        "unstable": true
+      },
+      {
+        "rho": 30.0,
+        "fp_index": 2,
+        "position": [
+          -8.793937305515279,
+          -8.793937305515279,
+          29.0
+        ],
+        "max_real_eigenvalue": 0.14736834826958778,
+        "stable": false,
+        "unstable": true
+      }
+    ]
+  },
+  "lyapunov_sum": {
+    "note": "sum of Lyapunov exponents = -(sigma+1+beta) = -13.6667",
+    "tests": [
+      {
+        "T": 500,
+        "lambda_1": 0.885326456632769,
+        "lambda_2": 0.0,
+        "lambda_3_estimated": -14.551993123299436,
+        "sum": -13.666666666666668,
+        "expected_sum": -13.666666666666666
+      },
+      {
+        "T": 1000,
+        "lambda_1": 0.8903198968455189,
+        "lambda_2": 0.0,
+        "lambda_3_estimated": -14.556986563512185,
+        "sum": -13.666666666666666,
+        "expected_sum": -13.666666666666666
+      },
+      {
+        "T": 2000,
+        "lambda_1": 0.9022225681869791,
+        "lambda_2": 0.0,
+        "lambda_3_estimated": -14.568889234853645,
+        "sum": -13.666666666666666,
+        "expected_sum": -13.666666666666666
+      }
+    ]
+  },
+  "hopf_bifurcation": {
+    "note": "rho_H ~ 24.7368; eigenvalue real part changes sign",
+    "tests": [
+      {
+        "rho": 22.736842105263154,
+        "rho_H": 24.736842105263154,
+        "max_real_eigenvalue": -0.062394134046552585,
+        "sign_change": true
+      },
+      {
+        "rho": 24.236842105263154,
+        "rho_H": 24.736842105263154,
+        "max_real_eigenvalue": -0.015229241525515358,
+        "sign_change": true
+      },
+      {
+        "rho": 24.636842105263153,
+        "rho_H": 24.736842105263154,
+        "max_real_eigenvalue": -0.0030269293665128316,
+        "sign_change": true
+      },
+      {
+        "rho": 24.736842105263154,
+        "rho_H": 24.736842105263154,
+        "max_real_eigenvalue": -4.440892098500626e-16,
+        "sign_change": true
+      },
+      {
+        "rho": 24.836842105263155,
+        "rho_H": 24.736842105263154,
+        "max_real_eigenvalue": 0.0030175863453347773,
+        "sign_change": true
+      },
+      {
+        "rho": 25.236842105263154,
+        "rho_H": 24.736842105263154,
+        "max_real_eigenvalue": 0.01499563847939367,
+        "sign_change": true
+      },
+      {
+        "rho": 26.736842105263154,
+        "rho_H": 24.736842105263154,
+        "max_real_eigenvalue": 0.058649586205656856,
+        "sign_change": true
+      }
+    ]
+  }
+}

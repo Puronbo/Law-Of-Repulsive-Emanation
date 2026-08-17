@@ -1,0 +1,209 @@
+{
+  "tests": [],
+  "summary": {
+    "supported": true,
+    "posterior_converges_to_prior": true,
+    "likelihood_ratio_removable": true,
+    "mixture_posterior_valid": true,
+    "map_matches_prior": true,
+    "honest_wall": "numerical verification of Bayesian 0/0 limits"
+  },
+  "posterior_0_over_0": {
+    "note": "As P(D)->0, posterior -> prior (removable value = prior)",
+    "tests": [
+      {
+        "scenario": "eps=0.5000, P(D|H)=P(D|~H)=eps",
+        "P_D": 0.5,
+        "posterior": 0.5,
+        "prior": 0.5,
+        "approaches_prior": true
+      },
+      {
+        "scenario": "eps=0.1000, P(D|H)=P(D|~H)=eps",
+        "P_D": 0.1,
+        "posterior": 0.5,
+        "prior": 0.5,
+        "approaches_prior": true
+      },
+      {
+        "scenario": "eps=0.0100, P(D|H)=P(D|~H)=eps",
+        "P_D": 0.01,
+        "posterior": 0.5,
+        "prior": 0.5,
+        "approaches_prior": true
+      },
+      {
+        "scenario": "eps=0.0010, P(D|H)=P(D|~H)=eps",
+        "P_D": 0.001,
+        "posterior": 0.5,
+        "prior": 0.5,
+        "approaches_prior": true
+      },
+      {
+        "scenario": "eps=0.0001, P(D|H)=P(D|~H)=eps",
+        "P_D": 0.0001,
+        "posterior": 0.5,
+        "prior": 0.5,
+        "approaches_prior": true
+      }
+    ]
+  },
+  "bayes_factor_0_over_0": {
+    "note": "BF = f_H(x)/f_~H(x): both 0/0 at points far from both means",
+    "tests": [
+      {
+        "x": -10,
+        "f_H": 7.69459862670642e-23,
+        "f_notH": 7.998827757006813e-38,
+        "BF": "inf",
+        "note": "both densities -> 0, BF diverges (informative in limit)"
+      },
+      {
+        "x": -20,
+        "f_H": 5.520948362159764e-88,
+        "f_notH": 5.370560365020593e-116,
+        "BF": "inf",
+        "note": "both densities -> 0, BF diverges (informative in limit)"
+      },
+      {
+        "x": -30,
+        "f_H": 1.4736461348785476e-196,
+        "f_notH": 1.3414196673494362e-237,
+        "BF": "inf",
+        "note": "both densities -> 0, BF diverges (informative in limit)"
+      },
+      {
+        "x": -50,
+        "f_H": 0.0,
+        "f_notH": 0.0,
+        "BF": 0.0,
+        "note": "both densities -> 0, BF diverges (informative in limit)"
+      }
+    ]
+  },
+  "likelihood_ratio_limit": {
+    "note": "As theta -> 0, LR -> 1: 0/0 at theta=0, removable value = 1",
+    "tests": [
+      {
+        "theta": 1.0,
+        "f_H": 0.3989422804014327,
+        "f_notH": 0.24197072451914337,
+        "LR": 1.6487212707001282,
+        "approaches_one": false
+      },
+      {
+        "theta": 0.5,
+        "f_H": 0.3989422804014327,
+        "f_notH": 0.3520653267642995,
+        "LR": 1.1331484530668263,
+        "approaches_one": false
+      },
+      {
+        "theta": 0.1,
+        "f_H": 0.3989422804014327,
+        "f_notH": 0.3969525474770118,
+        "LR": 1.005012520859401,
+        "approaches_one": true
+      },
+      {
+        "theta": 0.01,
+        "f_H": 0.3989422804014327,
+        "f_notH": 0.39892233378608216,
+        "LR": 1.0000500012500209,
+        "approaches_one": true
+      },
+      {
+        "theta": 0.001,
+        "f_H": 0.3989422804014327,
+        "f_notH": 0.3989420809303424,
+        "LR": 1.0000005000001249,
+        "approaches_one": true
+      },
+      {
+        "theta": 0.0,
+        "f_H": 0.3989422804014327,
+        "f_notH": 0.3989422804014327,
+        "LR": 1.0,
+        "approaches_one": true
+      }
+    ]
+  },
+  "map_vs_prior": {
+    "note": "With uninformative data, MAP prediction matches prior",
+    "tests": [
+      {
+        "n_data": 1,
+        "posterior": [
+          0.4595489884725427,
+          0.5404510115274572
+        ],
+        "MAP_matches_prior": true
+      },
+      {
+        "n_data": 5,
+        "posterior": [
+          0.3542782233457965,
+          0.6457217766542035
+        ],
+        "MAP_matches_prior": true
+      },
+      {
+        "n_data": 10,
+        "posterior": [
+          0.33880609252626104,
+          0.661193907473739
+        ],
+        "MAP_matches_prior": true
+      },
+      {
+        "n_data": 50,
+        "posterior": [
+          0.19996427809861714,
+          0.800035721901383
+        ],
+        "MAP_matches_prior": true
+      }
+    ]
+  },
+  "continuous_posterior": {
+    "note": "Mixture posterior sums to 1; at p(x)=0, removable value = prior",
+    "tests": [
+      {
+        "x": 1.0,
+        "f1": 0.10798193302637613,
+        "f2": 0.00026766045152977074,
+        "p_x": 0.04335336948146832,
+        "posterior_H1": 0.9962956450020221,
+        "posterior_H2": 0.0037043549979779624,
+        "sum_to_one": true
+      },
+      {
+        "x": 1.2,
+        "f1": 0.0447890605896858,
+        "f2": 0.0012238038602275438,
+        "p_x": 0.018649906552010848,
+        "posterior_H1": 0.9606280967634471,
+        "posterior_H2": 0.03937190323655297,
+        "sum_to_one": true
+      },
+      {
+        "x": 1.4,
+        "f1": 0.015830903165959937,
+        "f2": 0.004768176402929681,
+        "p_x": 0.009193267108141783,
+        "posterior_H1": 0.6888042294317632,
+        "posterior_H2": 0.31119577056823683,
+        "sum_to_one": true
+      },
+      {
+        "x": 1.5,
+        "f1": 0.008863696823876015,
+        "f2": 0.008863696823876015,
+        "p_x": 0.008863696823876015,
+        "posterior_H1": 0.4,
+        "posterior_H2": 0.6,
+        "sum_to_one": true
+      }
+    ]
+  }
+}

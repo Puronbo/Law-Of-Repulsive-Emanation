@@ -213,6 +213,10 @@ Usage: `grep -i "basketball" KEYWORDS.md` or just search this file.
 - **Ising model / phase transition / Monte Carlo / magnetization / susceptibility / T_c** — `ising_model_0_over_0.py` (2D Ising Metropolis MC, order parameter, energy at T_c, susceptibility peak, finite-size) → `data/ising_model_0_over_0_data.json`
 - **Khintchine / Diophantine approximation / continued fractions / golden ratio / Farey / Dirichlet** — `khintchine_0_over_0.py` (Dirichlet bound, golden ratio q^2*error -> 1/sqrt(5), Farey approximation) → `data/khintchine_0_over_0_data.json`
 - **Schanuel conjecture / algebraic independence / Lindemann-Weierstrass / transcendence degree / exponential identity** — `schanuel_0_over_0.py` (exp identity 0/0, LW verification, exp derivative 0/0, transcendence heuristics) → `data/schanuel_0_over_0_data.json`
+- **Shannon entropy / information theory / mutual information / KL divergence / 0*log(0)** — `shannon_entropy_0_over_0.py` (0*log(0) removable, uniform max, MI 0/0, KL 0/0) → `data/shannon_entropy_0_over_0_data.json`
+- **Bayes theorem / posterior / likelihood ratio / MAP / mixture model** — `bayes_theorem_0_over_0.py` (posterior 0/0 -> prior, LR removable, MAP matches prior) → `data/bayes_theorem_0_over_0_data.json`
+- **Lorenz attractor / chaos / Lyapunov exponent / Hopf bifurcation / fixed points** — `lorenz_attractor_0_over_0.py` (Lyapunov ~0.91, sum of exponents, Hopf at rho_H, fixed points) → `data/lorenz_attractor_0_over_0_data.json`
+- **Boltzmann entropy / Gibbs entropy / entropy of mixing / microstates / partition function** — `boltzmann_entropy_0_over_0.py` (S/ln(W)=1, 0*ln(0)=0, mixing, Gibbs pure/uniform) → `data/boltzmann_entropy_0_over_0_data.json`
 
 ## Code map
 

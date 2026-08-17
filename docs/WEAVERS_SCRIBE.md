@@ -2755,3 +2755,7 @@ content ranking.
 * **Ch. 5.34** Ising model 0/0 — Phase transition at T_c, magnetization drops, energy = -2*sqrt(2), susceptibility peaks (`ising_model_0_over_0.py`).
 * **Ch. 5.35** Khintchine 0/0 — Dirichlet bound, golden ratio q^2*error -> 1/sqrt(5), Farey bound, continued fractions (`khintchine_0_over_0.py`).
 * **Ch. 5.36** Schanuel conjecture 0/0 — exp identity 0/0 removable, Lindemann-Weierstrass, exp derivative 0/0, transcendence degree (`schanuel_0_over_0.py`).
+* **Ch. 5.37** Shannon entropy 0/0 — 0*log(0) removable=0, uniform max H=ln(n), MI 0/0, KL 0/0 (`shannon_entropy_0_over_0.py`).
+* **Ch. 5.38** Bayes theorem 0/0 — posterior 0/0 removable=prior, likelihood ratio 0/0 removable=1, mixture posterior (`bayes_theorem_0_over_0.py`).
+* **Ch. 5.39** Lorenz attractor 0/0 — Lyapunov log(1)/0 = 0/0 removable~0.91, sum of exponents, Hopf bifurcation (`lorenz_attractor_0_over_0.py`).
+* **Ch. 5.40** Boltzmann entropy 0/0 — S/ln(W)=1 at W=1 (0/0 removable=1), 0*ln(0)=0, mixing, Gibbs pure=0 (`boltzmann_entropy_0_over_0.py`).
