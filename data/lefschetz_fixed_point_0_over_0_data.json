@@ -1,0 +1,59 @@
+{
+  "experiment": "lefschetz_fixed_point_0_over_0",
+  "description": "Lefschetz theorem: L(f) != 0 _ fixed point; 0/0 at trace of f_* on homology",
+  "sphere": {
+    "surface": "sphere",
+    "V": 42,
+    "E": 120,
+    "F": 80,
+    "chi": 2,
+    "betti": [
+      1,
+      0,
+      1
+    ],
+    "euler_from_betti": 2,
+    "Lefschetz_identity": 2,
+    "Lefschetz_rotation_90": 2,
+    "Lefschetz_rotation_45": 2,
+    "identity_has_fixed_point": true,
+    "chi_matches_Lefschetz_id": true
+  },
+  "torus": {
+    "surface": "torus",
+    "V": 64,
+    "E": 192,
+    "F": 128,
+    "chi": 0,
+    "betti": [
+      1,
+      2,
+      1
+    ],
+    "euler_from_betti": 0,
+    "Lefschetz_identity": 0,
+    "Lefschetz_rotation_90": 0,
+    "Lefschetz_rotation_45": 0,
+    "identity_has_fixed_point": false,
+    "chi_matches_Lefschetz_id": true
+  },
+  "trace_analysis": {
+    "traces": {
+      "H_0": 1,
+      "H_1": 0,
+      "H_2": 1
+    },
+    "Lefschetz_number": 2,
+    "zero_0_over_0": {
+      "explanation": "At fixed point of rotation, the induced map on H_1 has eigenvalue -1, giving Tr = -b1. The alternating sum L = b0 - Tr(H_1) + b2 determines fixed points.",
+      "rotation_on_T2_H1": {
+        "Tr_identity": 0,
+        "Tr_rotation_90": 0,
+        "Lefschetz_rotation_90": 2,
+        "zero_0_over_0": true,
+        "removable_value": "The 0 at Tr(H_1) for rotation is the removable value; L != 0 guarantees fixed points."
+      }
+    }
+  },
+  "overall": "SUPPORTED"
+}

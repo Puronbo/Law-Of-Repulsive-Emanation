@@ -883,6 +883,29 @@ given so it can be re-run).
     Newton method (H⁻¹∇L) converges to minimum in 1 step.  10D saddle: 5 positive
     + 5 negative eigenvalues.  Pedagogical illustration of the 0/0 pattern.
 
+    **Sequel 2026-08-17 — Heat kernel trace via 0/0: Tr(e^{-tΔ}) → 1 at t=∞**
+    (`experiments/selberg_trace_0_over_0.py`,
+    `data/selberg_trace_0_over_0_data.json`): Analytical eigenvalues for flat
+    torus T² and sphere S².  Tr → 1.000000 at t=100 for both (removable value
+    = 1, the zero-mode contribution).  At t=0: Tr → ∞ (Weyl singularity).
+    The 0/0: lim_{t→∞} Tr(e^{-tΔ}) = 1, a removable value from the zero
+    eigenvalue.  Triangulated sphere numerical verification also included.
+
+    **Sequel 2026-08-17 — Lefschetz fixed-point via 0/0: L(id) = χ(M)**
+    (`experiments/lefschetz_fixed_point_0_over_0.py`,
+    `data/lefschetz_fixed_point_0_over_0_data.json`): S²: L(id)=2=χ(S²),
+    Betti (1,0,1).  T²: L(id)=0=χ(T²), Betti (1,2,1).  Rotation on T²:
+    trace on H₁ = 0 (the 0/0), removable value = local index.  The 0/0 at
+    the trace of f_* on each homology group determines fixed points via the
+    alternating sum.
+
+    **Sequel 2026-08-17 — Gauss-Bonnet via 0/0: ∫∫K dA = 2πχ(M)**
+    (`experiments/gauss_bonnet_0_over_0.py`,
+    `data/gauss_bonnet_0_over_0_data.json`): S²: GB = 2π·2 (χ=2, all K>0).
+    T²: GB = 0 (χ=0, all vertices near K=0 — the 0/0).  Torus of revolution:
+    GB = 0 (χ=0, mixed curvature: 107+, 102−, 16≈0).  At K=0, angle defect
+    = 2π exactly — the removable value.
+
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**

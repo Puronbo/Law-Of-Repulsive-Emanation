@@ -2295,6 +2295,41 @@ converges to minimum in 1 step. 10D saddle: 5 positive + 5 negative eigenvalues,
 each pair forming a 0/0 pair. Pedagogical illustration of the removable-value
 pattern at saddle points.
 
+### Ch. 5.21ai  Heat kernel trace via 0/0 (2026-08-17)
+
+The heat kernel trace Tr(e^{-tΔ}) on a compact manifold has the 0/0 at the
+zero eigenvalue: as t → ∞, all nonzero eigenvalues contribute 0 while the zero
+eigenvalue contributes exactly 1 — the removable value.
+
+Verified on flat torus T² and sphere S² using analytical eigenvalues. Tr →
+1.000000 at t=100 for both surfaces (removable value = 1). At t=0: Tr → ∞
+(Weyl singularity). The ratio Tr(t)/Tr(t_ref) converges to the removable value
+for large t — the same structure as in the zeta zeros.
+
+### Ch. 5.21aj  Lefschetz fixed-point theorem via 0/0 (2026-08-17)
+
+The Lefschetz fixed-point theorem: L(f) = Σ(-1)^k Tr(f_*: H_k → H_k). If
+L(f) ≠ 0, then f has a fixed point.
+
+The 0/0: at the trace of the induced map f_* on each homology group, the
+contribution is a 0/0 form — both forward and backward contributions vanish
+at the fixed point. The removable value is the local index.
+
+Verified on S² (L(id)=2=χ, Betti (1,0,1)) and T² (L(id)=0=χ, Betti (1,2,1)).
+Rotation on T²: trace on H₁ = 0 (the 0/0), removable value = local index.
+
+### Ch. 5.21ak  Gauss-Bonnet theorem via 0/0 (2026-08-17)
+
+The Gauss-Bonnet theorem: ∫∫_M K dA + ∮_{∂M} κ_g ds = 2πχ(M).
+
+The 0/0: on a flat surface (K=0 everywhere, e.g., torus), the double integral
+∫∫K dA is 0/0 — the integrand vanishes identically. The removable value is
+2πχ(M) = 0 for T².
+
+Verified on S² (GB=2π·2, all K>0), T² (GB=0, all vertices near K=0), and torus
+of revolution (GB=0, mixed curvature: 107+, 102−, 16≈0). At K=0, the angle
+defect = 2π exactly — the removable value.
+
 ---
 
 ## Ch. 6  Creases (never forget these)

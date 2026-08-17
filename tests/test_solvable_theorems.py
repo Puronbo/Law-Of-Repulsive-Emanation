@@ -2342,4 +2342,51 @@ def test_gradient_descent_0_over_0():
     assert r['high_dim_saddle']['n_negative_eigenvalues'] == 5
 
 
+def test_selberg_trace_0_over_0():
+    d = load('selberg_trace_0_over_0_data.json')
+    assert d['overall'] == 'SUPPORTED'
+    # Analytical torus: zero mode = 1, Tr -> 1 at large t
+    t = d['torus']['zero_mode_0_over_0']
+    assert t['n_zero_modes_numerical'] == 1
+    assert t['removable_value_is_one']
+    # Analytical sphere: zero mode = 1, Tr -> 1 at large t
+    s = d['sphere_analytical']['zero_mode_0_over_0']
+    assert s['n_zero_modes_numerical'] == 1
+    assert s['removable_value_is_one']
+
+
+def test_lefschetz_fixed_point_0_over_0():
+    d = load('lefschetz_fixed_point_0_over_0_data.json')
+    assert d['overall'] == 'SUPPORTED'
+    # S2: L(id) = chi = 2, has fixed point
+    assert d['sphere']['chi_matches_Lefschetz_id']
+    assert d['sphere']['identity_has_fixed_point']
+    assert d['sphere']['Lefschetz_identity'] == 2
+    # T2: L(id) = chi = 0
+    assert d['torus']['chi_matches_Lefschetz_id']
+    assert d['torus']['Lefschetz_identity'] == 0
+    # Betti numbers correct
+    assert d['sphere']['betti'] == [1, 0, 1]
+    assert d['torus']['betti'] == [1, 2, 1]
+    # 0/0 at rotation trace
+    assert d['trace_analysis']['zero_0_over_0']['rotation_on_T2_H1']['zero_0_over_0']
+
+
+def test_gauss_bonnet_0_over_0():
+    d = load('gauss_bonnet_0_over_0_data.json')
+    assert d['overall'] == 'SUPPORTED'
+    # S2: chi = 2
+    assert d['sphere']['gauss_bonnet_matches_euler']
+    assert d['sphere']['chi_euler'] == 2
+    assert abs(d['sphere']['chi_gauss_bonnet'] - 2.0) < 0.5
+    # T2: chi = 0
+    assert abs(d['torus']['chi_gauss_bonnet']) < 0.5
+    assert d['torus']['chi_euler'] == 0
+    # Torus revolution: chi = 0
+    assert abs(d['torus_revolution']['chi_gauss_bonnet']) < 1.0
+    assert d['torus_revolution']['chi_euler'] == 0
+    # T2 flat: 0/0 at K=0
+    assert d['torus_0_over_0']['is_0_over_0']
+
+
 
