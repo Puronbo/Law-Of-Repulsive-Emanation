@@ -2328,7 +2328,45 @@ The 0/0: on a flat surface (K=0 everywhere, e.g., torus), the double integral
 
 Verified on S² (GB=2π·2, all K>0), T² (GB=0, all vertices near K=0), and torus
 of revolution (GB=0, mixed curvature: 107+, 102−, 16≈0). At K=0, the angle
-defect = 2π exactly — the removable value.
+defect = 2pi exactly -- the removable value.
+
+### Ch. 5.21al  Weyl's law via 0/0 (2026-08-17)
+
+Weyl's law: N(lambda) ~ C_weyl * lambda^{d/2} for the eigenvalue counting
+function on a compact manifold.
+
+The 0/0: N(lambda)/lambda^{d/2} diverges at lambda=0 (both are 0), but
+converges to C_weyl = Vol(M) * omega_d / (2*pi)^d as lambda -> inf.
+The removable value is C_weyl, the Weyl constant.
+
+Verified on flat torus T2 (C_weyl = pi, error 0.07%) and unit sphere S2
+(C_weyl = 1, error 0.78%). The 0/0 at lambda=0 is the dual of the heat
+kernel 0/0: there the zero eigenvalue contributed 1, here the zero-count
+contributes 0/0.
+
+### Ch. 5.21am  Central limit theorem via 0/0 (2026-08-17)
+
+The CLT: the characteristic function phi_{Z_n}(t) -> e^{-t^2/2} for the
+standardized sum of iid variables.
+
+The 0/0: at t=0, (phi(t) - 1) / t^2 = 0/0. By L'Hopital, the removable
+value is -1/2, the variance of the limiting Gaussian. This encodes the
+entire distribution in a single removable value.
+
+Verified for uniform, exponential, and Bernoulli. All ratios converge to
+-0.499x (target -0.5). Convergence errors at n=500: 0.000061, 0.009, 0.004.
+
+### Ch. 5.21an  Banach fixed-point theorem via 0/0 (2026-08-17)
+
+Banach: a contraction T has a unique fixed point x*, with T^n(x0) -> x*.
+
+The 0/0: (T(x) - x) / (x - x*) at x = x* is 0/0 (both vanish). By
+L'Hopital, the removable value is T'(x*) - 1. This determines the
+convergence rate: the removable value = q - 1 where q = |T'(x*)|.
+
+Verified on cos(x) (removable = -1.6736), Newton sqrt(2) (removable = -1.0),
+and linear T(x)=0.5x+1 (removable = -0.5). All converge to fixed points
+with correct rates.
 
 ---
 

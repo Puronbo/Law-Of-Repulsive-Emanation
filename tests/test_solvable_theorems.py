@@ -2389,4 +2389,46 @@ def test_gauss_bonnet_0_over_0():
     assert d['torus_0_over_0']['is_0_over_0']
 
 
+def test_weyl_law_0_over_0():
+    d = load('weyl_law_0_over_0_data.json')
+    assert d['overall'] == 'SUPPORTED'
+    # T2: Weyl ratio converges
+    assert d['torus']['converges']
+    assert d['torus']['relative_error'] < 0.01
+    # S2: Weyl ratio converges
+    assert d['sphere']['converges']
+    assert d['sphere']['relative_error'] < 0.02
+    # 0/0 at lambda=0: ratio blows up
+    assert d['torus_0_over_0']['blows_up_at_zero']
+    assert d['sphere_0_over_0']['blows_up_at_zero']
+
+
+def test_central_limit_theorem_0_over_0():
+    d = load('central_limit_theorem_0_over_0_data.json')
+    assert d['overall'] == 'SUPPORTED'
+    for dist in ['uniform', 'exponential', 'bernoulli']:
+        # Convergence at n=500
+        conv = d[f'{dist}_convergence']
+        assert conv[-1]['error'] < 0.01
+        # 0/0 ratio -> -0.5
+        z0 = d[f'{dist}_0_over_0']
+        assert z0['converges']
+
+
+def test_banach_fixed_point_0_over_0():
+    d = load('banach_fixed_point_0_over_0_data.json')
+    assert d['overall'] == 'SUPPORTED'
+    # All three converge to fixed points
+    assert d['cos']['converged']
+    assert d['newton']['converged']
+    assert d['linear']['converged']
+    # Convergence rates match q
+    assert d['cos']['rate_matches_q']
+    assert d['linear']['rate_matches_q']
+    # 0/0 removable values correct
+    assert d['cos_0_over_0']['converges_to_removable']
+    assert d['newton_0_over_0']['converges_to_removable']
+    assert d['linear_0_over_0']['converges_to_removable']
+
+
 

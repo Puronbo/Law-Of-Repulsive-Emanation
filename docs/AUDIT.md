@@ -906,6 +906,24 @@ given so it can be re-run).
     GB = 0 (χ=0, mixed curvature: 107+, 102−, 16≈0).  At K=0, angle defect
     = 2π exactly — the removable value.
 
+    **Sequel 2026-08-17 — Weyl’s law via 0/0: eigenvalue counting converges**
+    (`experiments/weyl_law_0_over_0.py`,
+    `data/weyl_law_0_over_0_data.json`): N(λ)/λ^{d/2} converges to
+    C_weyl on T² (error 0.07%) and S² (error 0.78%).  0/0: ratio diverges at
+    λ=0 (N=0, denominator=0), removable value = C_weyl from large-λ limit.
+
+    **Sequel 2026-08-17 — Central limit theorem via 0/0: phi(t) → Gaussian**
+    (`experiments/central_limit_theorem_0_over_0.py`,
+    `data/central_limit_theorem_0_over_0_data.json`): CLT verified for uniform,
+    exponential, Bernoulli.  0/0: (phi(t)-1)/t^2 at t=0 is 0/0; removable
+    value = -1/2 (variance).  All ratios converge to -0.499x.
+
+    **Sequel 2026-08-17 — Banach fixed-point via 0/0: contraction → unique x***
+    (`experiments/banach_fixed_point_0_over_0.py`,
+    `data/banach_fixed_point_0_over_0_data.json`): cos(x), Newton sqrt(2),
+    linear T(x)=0.5x+1 all converge.  0/0: (T(x)-x)/(x-x*) at x=x*;
+    removable value = T'(x*)-1.  Cos: -1.6736, Newton: -1.0, linear: -0.5.
+
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**
