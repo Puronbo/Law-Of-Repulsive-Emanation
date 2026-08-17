@@ -4,21 +4,49 @@ A peer-to-peer social app. Reddit + 4chan in the browser. No server stores your 
 
 ## Quick Start
 
-**With signaling server** (recommended):
-```bash
-# Start the relay (optional, improves UX)
-node bazaar/server.js
+### Option 1: Local (no server)
+1. Open `index.html` in your browser
+2. Click "Create Room" → copy the room code
+3. Send the code to a friend → they paste it and send back an answer
+4. Connected — no server needed
 
-# Open the app
-open bazaar/index.html
+### Option 2: With signaling server (better UX)
+```bash
+npm install ws          # one-time
+node server.js          # starts on port 8080
+```
+Open `index.html` on two devices. Click "Create Room" — the relay handles signaling automatically.
+
+### Option 3: Deploy to the internet
+
+#### Step 1: Deploy the relay server
+Deploy `server.js` to any VPS (DigitalOcean, Linode, Railway, etc.):
+```bash
+npm install ws
+PORT=8080 node server.js
 ```
 
-**Without any server**:
-1. Open `bazaar/index.html` on two devices
-2. One person clicks "Create Room"
-3. Copy the room code, send it to the other person
-4. The other person pastes it and sends back an answer
-5. Connected — no server needed
+For HTTPS (required for mic/camera access on some browsers):
+```bash
+SSL_KEY=/path/to/key.pem SSL_CERT=/path/to/cert.pem PORT=8080 node server.js
+```
+
+#### Step 2: Deploy the web app (GitHub Pages)
+```bash
+# From the repo root:
+bash bazaar/deploy.sh
+```
+Then go to your repo Settings > Pages > Source: `gh-pages` branch.
+
+Your app is now at `https://yourusername.github.io/repo-name/`
+
+#### Step 3: Connect them
+In the Bazaar app, go to **Settings** and set the relay URL to your VPS:
+```
+wss://your-vps-domain.com:8080
+```
+
+Or use the manual SDP mode (no relay needed, but copy-paste required).
 
 ## How It Works
 
@@ -56,27 +84,27 @@ As peers vote, the quality converges to a removable value:
 ```
 bazaar/
   index.html   — Self-contained web app (no build step)
-  server.js    — Optional WebSocket signaling relay (~70 lines)
+  server.js    — WebSocket signaling relay (~150 lines, production-ready)
+  deploy.sh    — GitHub Pages deploy script
+  deploy.bat   — Windows deploy script
   README.md    — This file
 ```
 
-### Protocol
-1. Host creates room → gets room code
-2. Joiner enters code → WebRTC signaling exchange
-3. DataChannel opens → peers exchange identity + sync posts
-4. All subsequent messages: posts, votes, flags, comments
-5. Content is hash-addressed (CID = SHA-256 of content)
+### Server Environment Variables
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `PORT` | 8080 | Listening port |
+| `HOST` | 0.0.0.0 | Bind address |
+| `SSL_KEY` | (none) | Path to TLS key file |
+| `SSL_CERT` | (none) | Path to TLS cert file |
+| `MAX_ROOMS` | 1000 | Maximum concurrent rooms |
+| `ROOM_TTL_MS` | 3600000 | Room timeout (1 hour) |
 
-## No Server = No Problem
-
-The app works in two modes:
-
-| Mode | Requires | UX |
-|------|----------|-----|
-| Relay | Node.js server | One-click room creation |
-| Manual | Nothing | Copy-paste SDP exchange |
-
-Both modes are fully peer-to-peer. The relay only helps with signaling (SDP exchange) — no content is stored or relayed.
+### Health Check
+```
+GET /health
+→ {"status":"ok","rooms":3,"connections":7,"uptime":42}
+```
 
 ## The 0/0 Connection
 

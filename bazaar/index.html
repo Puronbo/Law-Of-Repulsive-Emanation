@@ -244,7 +244,14 @@ const P2P = {
   pending: null,
   signalWs: null,
 
-  get relayUrl() { return localStorage.getItem('bazaar_relay') || 'ws://localhost:8080' },
+  get relayUrl() {
+    const saved = localStorage.getItem('bazaar_relay');
+    if (saved) return saved;
+    // Default: same hostname, port 8080 (or wss on 443)
+    const loc = window.location;
+    const proto = loc.protocol === 'https:' ? 'wss:' : 'ws:';
+    return proto + '//' + loc.hostname + ':8080';
+  },
 
   createOffer() {
     const pc = new RTCPeerConnection({iceServers:[{urls:'stun:stun.l.google.com:19302'}]});
