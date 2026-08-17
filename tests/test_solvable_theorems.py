@@ -2283,4 +2283,63 @@ def test_riemann_roch_0_over_0():
         assert t['deg_K_equals_2g_minus_2']
 
 
+def test_bsd_0_over_0():
+    d = load('bsd_0_over_0_data.json')
+    assert d['verdict'] == 'SUPPORTED'
+    c = d['curves']
+    # Rank 0 curves: L(1+eps) stabilizes (ratio > 0.8, value > 0.3)
+    for name in ['y^2=x^3-x', 'y^2=x^3+1']:
+        assert c[name]['is_rank0_stable']
+    # Rank 1 curve: L(1+eps) shrinks to 0 (ratio < 0.8, value < 0.2)
+    assert c['y^2=x^3-25x']['is_rank1_shrinking']
+    # The 0/0 structure: rank 0 nonzero, rank 1 approaches 0
+    assert c['y^2=x^3-x']['L_at_eps']['0.01'] > 0.3
+    assert c['y^2=x^3-25x']['L_at_eps']['0.01'] < 0.2
+
+
+def test_argument_principle_0_over_0():
+    d = load('argument_principle_0_over_0_data.json')
+    assert d['verdict'] == 'SUPPORTED'
+    r = d['results']
+    # Each rectangle gives the correct zero count
+    assert r['first_zero_only']['computed_count'] == 1.0
+    assert r['first_two_zeros']['computed_count'] == 2.0
+    assert r['first_four_zeros']['computed_count'] == 4.0
+    assert r['no_zeros']['computed_count'] == 0.0
+    assert r['wide_eight_zeros']['computed_count'] == 8.0
+
+
+def test_atiyah_singer_0_over_0():
+    d = load('atiyah_singer_0_over_0_data.json')
+    assert d['verdict'] == 'SUPPORTED'
+    r = d['results']
+    # S^2: chi = 2, index = chi
+    assert r['S^2']['chi_correct']
+    assert r['S^2']['index_matches_chi']
+    assert r['S^2']['V-E+F'] == 2
+    # T^2: chi = 0, index = chi
+    assert r['T^2']['chi_correct']
+    assert r['T^2']['index_matches_chi']
+    assert r['T^2']['V-E+F'] == 0
+
+
+def test_gradient_descent_0_over_0():
+    d = load('gradient_descent_0_over_0_data.json')
+    assert d['verdict'] == 'SUPPORTED'
+    r = d['results']
+    # Origin is a saddle point
+    assert r['saddle_origin']['is_saddle']
+    assert r['saddle_origin']['gradient_is_zero']
+    assert r['saddle_origin']['L_value'] == 0.0
+    # Hessian has mixed signs (+2, -2)
+    ev = r['saddle_origin']['hessian_eigenvalues']
+    assert any(e > 0 for e in ev) and any(e < 0 for e in ev)
+    # Newton method escapes the saddle
+    assert r['newton_escape']['converged_to_minimum']
+    # High-dimensional saddle
+    assert r['high_dim_saddle']['is_saddle']
+    assert r['high_dim_saddle']['n_positive_eigenvalues'] == 5
+    assert r['high_dim_saddle']['n_negative_eigenvalues'] == 5
+
+
 

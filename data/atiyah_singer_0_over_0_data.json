@@ -1,0 +1,35 @@
+{
+  "experiment": "atiyah_singer_0_over_0",
+  "claim": "ind(D) = b_0 - b_1 + b_2 = chi(M); the Laplacian's zero eigenvalues (harmonic forms) are the 0/0: Dpsi = 0 resolves to the kernel dimension = Betti number.",
+  "results": {
+    "S^2": {
+      "V": 162,
+      "E": 480,
+      "F": 320,
+      "V-E+F": 2,
+      "chi_expected": 2,
+      "chi_correct": true,
+      "b0": 1,
+      "b1": 0,
+      "b2": 1,
+      "b0_minus_b1_plus_b2": 2,
+      "index_matches_chi": true
+    },
+    "T^2": {
+      "V": 100,
+      "E": 300,
+      "F": 200,
+      "V-E+F": 0,
+      "chi_expected": 0,
+      "chi_correct": true,
+      "b0": 1,
+      "b1": 2,
+      "b2": 1,
+      "b0_minus_b1_plus_b2": 0,
+      "index_matches_chi": true
+    }
+  },
+  "verdict": "SUPPORTED",
+  "honest_wall": "The Atiyah-Singer index theorem is a proven theorem (Atiyah-Singer 1963). This is a combinatorial verification: triangulate the surface, compute V-E+F, and verify it equals the alternating sum of Betti numbers from the Laplacian spectrum. The 0/0 framing: the Laplacian eigenvalue 0 has multiplicity b_k; the index theorem says the alternating sum equals chi.",
+  "time_total": 0.0
+}

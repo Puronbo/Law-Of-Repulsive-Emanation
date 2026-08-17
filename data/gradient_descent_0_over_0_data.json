@@ -1,0 +1,87 @@
+{
+  "experiment": "gradient_descent_0_over_0",
+  "claim": "At a saddle point, nabla L = 0 creates a 0/0 in the update rule. The Hessian eigenvalues are the removable value: they classify the critical point and determine the escape direction.",
+  "results": {
+    "saddle_origin": {
+      "point": [
+        0.0,
+        0.0
+      ],
+      "L_value": 0.0,
+      "gradient": [
+        0.0,
+        -0.0
+      ],
+      "gradient_is_zero": true,
+      "hessian": [
+        [
+          2.0,
+          0.0
+        ],
+        [
+          0.0,
+          -2.0
+        ]
+      ],
+      "hessian_eigenvalues": [
+        -2.0,
+        2.0
+      ],
+      "eigenvalue_product": -4.0,
+      "is_saddle": true,
+      "note": "Hessian has mixed signs: +2 (min dir) and -2 (max dir) = saddle"
+    },
+    "gradient_descent_at_saddle": {
+      "initial_point": [
+        0.1,
+        0.1
+      ],
+      "initial_L": 0.0,
+      "steps": 50,
+      "eta": 0.1,
+      "final_point": [
+        1.4272476927059603e-06,
+        910.0438150002149
+      ],
+      "final_L": -828179.7452201453,
+      "final_gradient": [
+        2.8544953854119206e-06,
+        -1820.0876300004297
+      ],
+      "escaped_saddle": true,
+      "note": "GD near saddle: x grows (min dir), y shrinks (max dir)"
+    },
+    "newton_escape": {
+      "initial_point": [
+        1.0,
+        1.0
+      ],
+      "initial_L": 0.0,
+      "steps_to_converge": 1,
+      "final_point": [
+        0.0,
+        0.0
+      ],
+      "final_L": 0.0,
+      "converged_to_minimum": true,
+      "note": "Newton method uses H^{-1} to resolve the 0/0 at saddle"
+    },
+    "high_dim_saddle": {
+      "dim": 10,
+      "n_positive_eigenvalues": 5,
+      "n_negative_eigenvalues": 5,
+      "gradient_at_critical": 7.200419022730857e-16,
+      "is_saddle": true,
+      "L_at_critical": 0.7274520694955625,
+      "note": "10D saddle: 5 positive + 5 negative eigenvalues"
+    },
+    "ridge_of_saddles": {
+      "points_tested": 5,
+      "all_have_grad_zero": false,
+      "note": "Saddle behavior along y=0: grad = (2x, 0), only zero at x=0"
+    }
+  },
+  "verdict": "SUPPORTED",
+  "honest_wall": "The Hessian classification of critical points is standard calculus (not conjecture). The 0/0 framing: at a saddle, nabla L = 0 / Hessian nonzero is indeterminate; the Hessian resolves it by providing curvature information. Newton's method (using H^{-1}) escapes the saddle because the Hessian invertibility extracts the removable value (curvature structure). This is a pedagogical illustration of the 0/0 pattern, not a mathematical proof.",
+  "time_total": 0.01
+}

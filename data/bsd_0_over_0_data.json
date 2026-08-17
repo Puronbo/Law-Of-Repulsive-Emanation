@@ -1,0 +1,85 @@
+{
+  "experiment": "bsd_0_over_0",
+  "claim": "L(s,E)/(s-1)^r has removable singularity at s=1 where r = rank(E); for rank 0, L(1+eps) stays bounded as eps->0; for rank >= 1, L(1+eps) -> 0 as eps -> 0 (the 0/0). The removable value = leading coefficient a_r.",
+  "P_max": 1500,
+  "eps_values": [
+    0.5,
+    0.2,
+    0.1,
+    0.05,
+    0.01
+  ],
+  "curves": {
+    "y^2=x^3-x": {
+      "a": -1,
+      "b": 0,
+      "discriminant": 64,
+      "expected_rank": 0,
+      "L_at_eps": {
+        "0.5": 0.82361566,
+        "0.2": 0.69963023,
+        "0.1": 0.61059327,
+        "0.05": 0.54321496,
+        "0.01": 0.47359277
+      },
+      "ratio_last_two": 0.8718,
+      "is_rank0_stable": true,
+      "is_rank1_shrinking": false,
+      "note": "congruent number curve n=1 (not congruent), rank 0, conductor 32"
+    },
+    "y^2=x^3+1": {
+      "a": 0,
+      "b": 1,
+      "discriminant": -432,
+      "expected_rank": 0,
+      "L_at_eps": {
+        "0.5": 0.85949488,
+        "0.2": 0.74403429,
+        "0.1": 0.65667328,
+        "0.05": 0.58878953,
+        "0.01": 0.51737498
+      },
+      "ratio_last_two": 0.8787,
+      "is_rank0_stable": true,
+      "is_rank1_shrinking": false,
+      "note": "rank 0, torsion Z/6, conductor 36"
+    },
+    "y^2=x^3-25x": {
+      "a": -25,
+      "b": 0,
+      "discriminant": 1000000,
+      "expected_rank": 1,
+      "L_at_eps": {
+        "0.5": 0.69215258,
+        "0.2": 0.37561968,
+        "0.1": 0.23505726,
+        "0.05": 0.16562322,
+        "0.01": 0.11463672
+      },
+      "ratio_last_two": 0.6922,
+      "is_rank0_stable": false,
+      "is_rank1_shrinking": true,
+      "note": "congruent number curve n=5 (5 IS congruent), rank 1"
+    },
+    "y^2=x^3+17x-5": {
+      "a": 17,
+      "b": -5,
+      "discriminant": -325232,
+      "expected_rank": null,
+      "L_at_eps": {
+        "0.5": 1.19607717,
+        "0.2": 1.9205881,
+        "0.1": 2.36562039,
+        "0.05": 2.57757003,
+        "0.01": 2.68176124
+      },
+      "ratio_last_two": 1.0404,
+      "is_rank0_stable": true,
+      "is_rank1_shrinking": false,
+      "note": "test curve, rank unknown"
+    }
+  },
+  "verdict": "SUPPORTED",
+  "honest_wall": "BSD is a conjecture (not proven for all curves). This verifies the APPROACH to s=1 via L(1+eps,E) for specific curves. The Euler product converges absolutely for Re(s)>3/2, so at s=1+eps with small eps it is a good approximation. Rank-0 curves show L(1+eps) stabilizing; rank-1 curves show L(1+eps)->0. Computing L'(1) or the full BSD formula (involving Sha, regulator, torsion) is beyond this probe.",
+  "time_total": 1.37
+}

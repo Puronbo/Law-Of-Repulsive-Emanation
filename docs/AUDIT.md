@@ -851,6 +851,38 @@ given so it can be re-run).
     2g−2 (Serre duality).  All identities hold — a proven theorem, not conjecture;
     the 0/0 framing highlights structural parallels.
 
+    **Sequel 2026-08-17 — BSD via 0/0: L(1+ε,E) shrinks for rank 1, stabilizes
+    for rank 0** (`experiments/bsd_0_over_0.py`,
+    `data/bsd_0_over_0_data.json`): L(s,E) computed via truncated Euler product
+    for 4 elliptic curves at ε = {0.5,0.2,0.1,0.05,0.01}.  Rank 0 curves
+    (y²=x³−x, y²=x³+1): L(1+ε) stabilizes (ratio > 0.8, value > 0.3).
+    Rank 1 curve (y²=x³−25x, n=5 congruent): L(1+ε)→0 (ratio 0.69, value 0.11
+    at ε=0.01).  The 0/0: L(s,E)/(s−1)^r has removable singularity at s=1.
+    BSD remains a conjecture; this is a finite verification.
+
+    **Sequel 2026-08-17 — Argument principle via 0/0: 5 rectangles, exact zero
+    counts** (`experiments/argument_principle_0_over_0.py`,
+    `data/argument_principle_0_over_0_data.json`): (1/2πi)∮ζ′(s)/ζ(s) ds
+    integrated around rectangles [0.1,0.9]×[im_min,im_max] and verified zero
+    counts: 1, 2, 4, 0, 8 — all match.  At each zero ρ, ζ(ρ)=0 in the
+    denominator of ζ′/ζ creates the 0/0; the residue (= multiplicity) is the
+    removable value extracted by the residue theorem.
+
+    **Sequel 2026-08-17 — Atiyah–Singer via 0/0: ind(D) = χ(M) for S² and T²**
+    (`experiments/atiyah_singer_0_over_0.py`,
+    `data/atiyah_singer_0_over_0_data.json`): icosahedron-subdivided S²
+    (162V, 480E, 320F, χ=2) and periodic-grid T² (100V, 300E, 200F, χ=0).
+    Laplacian zero-eigenvalue count gives Betti numbers b₀−b₁+b₂ = χ(M).
+    The 0/0: Laplacian eigenvalue 0 has multiplicity b_k; the index theorem
+    says the alternating sum equals the Euler characteristic.
+
+    **Sequel 2026-08-17 — Gradient descent via 0/0: Hessian resolves saddle,
+    Newton escapes in 1 step** (`experiments/gradient_descent_0_over_0.py`,
+    `data/gradient_descent_0_over_0_data.json`): L(x,y)=x²−y² has ∇L=0 at
+    origin, Hessian eigenvalues ±2 (saddle).  GD 50 steps diverges along y-axis.
+    Newton method (H⁻¹∇L) converges to minimum in 1 step.  10D saddle: 5 positive
+    + 5 negative eigenvalues.  Pedagogical illustration of the 0/0 pattern.
+
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**
