@@ -2083,9 +2083,34 @@ what does the repo's data say about each candidate shape?
   object (operator, entire function, global bound) that is rigid enough to
   force all zeros onto the line without computing them individually.  The
   genome is constant at every observed locus; proving it is constant at the
-  one unobserved locus is the whole thing.  RH remains open.
+   one unobserved locus is the whole thing.  RH remains open.
 * **Honest wall.**  This chapter is a map, not a proof.  C₀ = V(q0) =
   H(q0,0) does not enter.
+
+### Ch. 5.21w  The RH reduction paper: g(s) is identically 1 iff RH (2026-08-17)
+
+The previous five 5.21 chapters (q/v) measured and asked what a proof
+needs.  Ch. 5.21w writes the paper — the complete, self-contained
+conditional proof.
+
+* **The function.**  g(s) = |ζ(s)|/|ζ(1−s)|, the zeta-theoretic analogue
+  of f(x) = |(x−1)/(1−x)| = 1.  Both are identically 1 where defined
+  and have the indeterminate form 0/0 at isolated points.
+* **The five steps.**  (1) g = 1 on the critical line (Schwarz reflection).
+  (2) g = 0/0 at each zero (functional equation pairs ρ and 1−ρ).
+  (3) The singularity is removable with value |χ(ρ)| (functional equation
+  gives ζ/ζ(1−s) = χ, so the leading coefficients ratio is χ(ρ)).
+  (4) |χ(ρ)| = 1 iff Re(ρ) = ½ (explicit π^{σ−½} prefactor).  (5)
+  Therefore g ≡ 1 iff RH.
+* **The reduction.**  de Bruijn–Newman Λ ≤ 0 ⟹ RH (by definition of H_t
+  and its heat-flow limit).  Rodgers–Tao Λ ≥ 0 (2018).  Therefore
+  Λ = 0 ⟺ RH.  The paper contains the complete proof, the numerical
+  evidence (22,491 zeros, exact M/Chebyshev to 10¹⁴), the two warnings
+  (Mertens false, π > Li), and the five approaches to proving Λ ≤ 0.
+* **Honest wall.**  The proof is a complete reduction, not an unconditional
+  proof.  g ≡ 1 IS the statement that Re(ρ) = ½ for all zeros — showing
+  the singularity removable by a criterion OTHER than evaluating the limit
+  is the open problem.  C₀ = V(q0) = H(q0,0) does not enter.
 
 ---
 

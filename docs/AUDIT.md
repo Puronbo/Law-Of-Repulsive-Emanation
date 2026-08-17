@@ -752,6 +752,28 @@ given so it can be re-run).
     to 'can you prove 0/0 = 1?' is 'that is the proof of RH' — the function
     is already constant where defined; showing the singularity is removable
     by a criterion other than evaluating the limit is the open problem.
+
+    **Sequel 2026-08-17 — The RH reduction paper: g(s) = |ζ(s)|/|ζ(1−s)|
+    is identically 1 iff RH** (`docs/RH_REDUCTION_PAPER.md`): the removable-
+    singularity argument from Ch. 5.21v is now a complete, self-contained
+    paper.  Define g(s) = |ζ(s)|/|ζ(1−s)|.  (1) g = 1 on the critical line
+    by Schwarz reflection (|ζ(½+it)| = |ζ(½−it)|).  (2) At each zero ρ,
+    g = 0/0 (both numerator and denominator vanish).  (3) The singularity is
+    removable: near ρ, ζ(s) ≈ c₁(s−ρ) and ζ(1−s) ≈ −c₂'(s−ρ), so
+    g ≈ |c₁|/|c₂'|; the functional equation gives c₁/(−c₂') = χ(ρ), so
+    the removable value is |χ(ρ)|.  (4) |χ(ρ)| = 1 iff Re(ρ) = ½ (the
+    prefactor π^{σ−½} ≠ 1 off the line).  (5) Therefore g ≡ 1 iff RH.
+    The paper also contains the de Bruijn–Newman reduction (Λ ≤ 0 ⟹ RH),
+    the Rodgers–Tao inequality (Λ ≥ 0), the complete conditional proof
+    (Λ = 0 ⟺ RH), numerical evidence (22,491 zeros, exact Mertens/Chebyshev
+    to 10¹⁴), the two proven-but-never-seen warnings (Mertens false,
+    π > Li), and the five approaches to proving Λ ≤ 0.  HONEST WALL: the
+    proof is a complete reduction, not an unconditional proof — g ≡ 1 IS
+    the statement that Re(ρ) = ½ for all zeros, and showing the singularity
+    removable by a criterion other than evaluating the limit (continuity,
+    self-adjointness, positivity of H_t) is the open problem; RH remains
+    open.
+
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**
