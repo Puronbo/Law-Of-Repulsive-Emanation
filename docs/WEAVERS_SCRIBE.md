@@ -2517,6 +2517,37 @@ Verified via mpmath 80-digit precision:
 - ln(1+x) at a=0, n=3: removable = -1/4 (error 2e-13)
 Max error: 2e-13.
 
+### Ch. 5.21ba  Bazaar P2P social platform: 0/0 quality scoring in the browser (2026-08-17)
+
+Ch. 5.21az proved Taylor's remainder; Ch. 5.21ba builds the bazaar — a
+browser-native P2P social platform that applies the 0/0 framework to
+content ranking.
+
+* **The 0/0.** Every post starts at score=0, count=0 — a 0/0 form. The
+  quality is indeterminate: neither good nor bad, just absent of community
+  judgment.
+* **The removable value.** As peers vote (upvote=+1, downvote=-1), the score
+  moves and the count increases. Quality = score/count, the removable value
+  of the 0/0. This is the running average — the community's collective
+  judgment as a removable singularity.
+* **Convergence.** Posts are sorted by their removable value. The 0/0 state
+  (no votes) is treated as neutral (quality=0). As votes accumulate, the
+  removable value stabilizes — exactly the pattern of Ch. 5.21y's ten
+  mathematical instances: the 0/0 tests whether two things are the same
+  (community consensus) at a point where they both vanish (no votes yet).
+* **The architecture.** Self-contained single HTML file (no build step).
+  WebRTC DataChannels for P2P mesh. Content-addressed posts via SHA-256.
+  ECDSA P-256 keypairs for identity. Optional WebSocket signaling relay
+  (~70 lines Node.js) or fully manual SDP exchange (no server needed).
+  Star topology for rooms. Threading, commenting, flagging, quorum-based
+  moderation.
+* **Connection.** The bazaar is the 0/0 framework's first social application.
+  The same removable-value pattern that resolves g(rho)=0/0 in the zeta
+  argument (Ch. 5.21p) and C0=0/0 in the L.O.R.E. framework (Ch. 5.21z)
+  now resolves post quality in a decentralized social network. The community's
+  vote IS the path of approach; the removable value IS the post's quality.
+  See `bazaar/index.html`, `bazaar/server.js`, `bazaar/README.md`.
+
 ---
 
 ## Ch. 6  Creases (never forget these)

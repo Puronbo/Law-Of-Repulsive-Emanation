@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bazaar — Decentralized Social</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0d1117;--card:#161b22;--border:#30363d;--accent:#58a6ff;--red:#f85149;--green:#3fb950;--yellow:#d29922;--text:#e6edf3;--muted:#8b949e;--hover:#1f2937}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh}
+a{color:var(--accent);text-decoration:none}
+.hidden{display:none!important}
+.landing{max-width:600px;margin:80px auto;padding:20px;text-align:center}
+.landing h1{font-size:2.5em;margin-bottom:8px}
+.landing .subtitle{color:var(--muted);margin-bottom:40px;font-size:1.1em}
+.landing .or{color:var(--muted);margin:20px 0;font-size:0.9em}
+.btn{padding:10px 24px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--text);cursor:pointer;font-size:1em;transition:background 0.15s}
+.btn:hover{background:var(--hover)}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn.primary:hover{background:#4090e0}
+.btn.danger{background:var(--red);color:#fff;border-color:var(--red)}
+.btn.small{padding:4px 12px;font-size:0.85em}
+.input{padding:10px 14px;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);font-size:1em;width:100%}
+.input:focus{outline:none;border-color:var(--accent)}
+.row{display:flex;gap:8px;align-items:center}
+.row .input{flex:1}
+textarea.input{min-height:80px;resize:vertical;font-family:inherit}
+.room-header{position:sticky;top:0;z-index:100;background:var(--card);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+.room-header .room-id{font-family:monospace;color:var(--accent);cursor:pointer;font-size:0.9em}
+.room-header .peers{color:var(--muted);font-size:0.85em}
+.feed{max-width:720px;margin:0 auto;padding:16px}
+.post-box{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px;margin-bottom:16px}
+.post-box textarea{width:100%;min-height:60px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:10px;font-family:inherit;resize:vertical}
+.post-box .actions{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.post{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px;margin-bottom:12px;transition:border-color 0.15s}
+.post:hover{border-color:#484f58}
+.post .meta{font-size:0.8em;color:var(--muted);margin-bottom:8px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.post .meta .author{color:var(--accent);font-weight:600}
+.post .meta .cid{font-family:monospace;font-size:0.75em;color:#484f58}
+.post .body{white-space:pre-wrap;word-break:break-word;margin-bottom:8px}
+.post .body img{max-width:100%;border-radius:6px;margin-top:8px}
+.post .vote{display:flex;gap:4px;align-items:center}
+.post .vote button{background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.1em;padding:2px 6px;border-radius:4px}
+.post .vote button:hover{background:var(--hover);color:var(--text)}
+.post .vote .score{font-size:0.85em;min-width:24px;text-align:center;color:var(--muted)}
+.post .vote .score.pos{color:var(--green)}
+.post .vote .score.neg{color:var(--red)}
+.post .vote .score.zero{color:var(--yellow)}
+.comment-toggle{color:var(--muted);font-size:0.85em;cursor:pointer;background:none;border:none;padding:4px 0}
+.comment-toggle:hover{color:var(--text)}
+.comments{margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
+.comment{padding:8px 0 8px 12px;border-left:2px solid var(--border);margin-bottom:4px;font-size:0.9em}
+.comment .meta{font-size:0.75em;color:var(--muted);margin-bottom:4px}
+.comment .body{white-space:pre-wrap}
+.comment-form{display:flex;gap:6px;margin-top:6px}
+.comment-form .input{flex:1;padding:6px 10px;font-size:0.85em}
+.flag{color:var(--yellow);cursor:pointer;font-size:0.8em}
+.flag:hover{color:var(--red)}
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:200;display:flex;align-items:center;justify-content:center}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto}
+.modal h2{margin-bottom:16px;font-size:1.3em}
+.modal .close{position:absolute;top:12px;right:16px;background:none;border:none;color:var(--muted);font-size:1.5em;cursor:pointer}
+.modal pre{background:var(--bg);padding:12px;border-radius:6px;overflow-x:auto;font-size:0.8em;word-break:break-all;white-space:pre-wrap;max-height:200px;overflow-y:auto;margin:8px 0}
+.toast{position:fixed;bottom:20px;right:20px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 20px;z-index:300;animation:fadeIn 0.2s}
+.toast.error{border-color:var(--red)}
+.toast.success{border-color:var(--green)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.settings-row{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.settings-row label{min-width:100px;color:var(--muted);font-size:0.9em}
+.identity-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:20px;background:var(--bg);font-size:0.8em;font-family:monospace}
+.identity-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+@media(max-width:600px){.landing{margin:40px auto;padding:12px}.feed{padding:8px}.post{padding:12px}}
+</style>
+</head>
+<body>
+
+<div id="app-landing" class="landing">
+  <h1>&#9670; Bazaar</h1>
+  <p class="subtitle">Decentralized social. No servers. Just peers.<br>Post anything. Stay alive by using.</p>
+
+  <div class="row" style="justify-content:center;margin-bottom:16px">
+    <div class="identity-badge"><span class="dot"></span><span id="my-id-short">...</span></div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px;max-width:360px;margin:0 auto">
+    <button class="btn primary" onclick="App.createRoom()">Create Room</button>
+    <div class="or">— or join —</div>
+    <div class="row">
+      <input class="input" id="join-code" placeholder="Paste room code" autocomplete="off">
+      <button class="btn" onclick="App.joinRoom()">Join</button>
+    </div>
+    <button class="btn" onclick="App.openSettings()" style="font-size:0.85em;color:var(--muted)">Settings</button>
+  </div>
+</div>
+
+<div id="app-room" class="hidden">
+  <div class="room-header">
+    <div>
+      <span style="font-weight:600">Bazaar</span>
+      <span class="room-id" id="room-id-display" onclick="App.showRoomCode()" title="Click to copy room code"></span>
+    </div>
+    <div class="row">
+      <span class="peers" id="peer-count">0 peers</span>
+      <button class="btn small" onclick="App.openSettings()">Settings</button>
+      <button class="btn small danger" onclick="App.leaveRoom()">Leave</button>
+    </div>
+  </div>
+
+  <div class="feed">
+    <div class="post-box">
+      <textarea id="post-text" placeholder="Post something..." rows="3"></textarea>
+      <div class="actions">
+        <div class="row">
+          <label class="btn small" style="cursor:pointer">
+            Image <input type="file" id="post-image" accept="image/*" style="display:none" onchange="App.previewImage()">
+          </label>
+          <span id="image-name" style="font-size:0.8em;color:var(--muted)"></span>
+          <img id="image-preview" style="display:none;max-height:60px;border-radius:4px">
+        </div>
+        <button class="btn primary" onclick="App.submitPost()">Post</button>
+      </div>
+    </div>
+    <div id="feed-posts"></div>
+  </div>
+</div>
+
+<div id="modal-manual" class="modal-overlay hidden" onclick="if(event.target===this)App.closeModal()">
+  <div class="modal" style="position:relative">
+    <button class="close" onclick="App.closeModal()">&times;</button>
+    <h2 id="manual-title">Connect</h2>
+    <p id="manual-desc" style="color:var(--muted);margin-bottom:12px;font-size:0.9em"></p>
+    <div id="manual-step1">
+      <p style="font-size:0.85em;color:var(--muted);margin-bottom:4px">1. Copy this code and send it to the peer:</p>
+      <pre id="manual-offer"></pre>
+      <button class="btn small" onclick="App.copyManual('manual-offer')">Copy</button>
+    </div>
+    <div id="manual-step2" class="hidden">
+      <p style="font-size:0.85em;color:var(--muted);margin-bottom:4px">2. Paste their answer below:</p>
+      <textarea class="input" id="manual-answer-input" rows="3" placeholder="Paste answer code..."></textarea>
+      <button class="btn primary" style="margin-top:8px" onclick="App.submitAnswer()">Submit Answer</button>
+    </div>
+    <div id="manual-step3" class="hidden">
+      <p style="font-size:0.85em;color:var(--muted);margin-bottom:4px">3. Copy this answer and paste it back:</p>
+      <pre id="manual-answer"></pre>
+      <button class="btn small" onclick="App.copyManual('manual-answer')">Copy</button>
+      <p style="font-size:0.85em;color:var(--green);margin-top:12px">Connection established! You can close this.</p>
+    </div>
+  </div>
+</div>
+
+<div id="modal-settings" class="modal-overlay hidden" onclick="if(event.target===this)App.closeSettings()">
+  <div class="modal" style="position:relative">
+    <button class="close" onclick="App.closeSettings()">&times;</button>
+    <h2>Settings</h2>
+    <div class="settings-row">
+      <label>Display name</label>
+      <input class="input" id="setting-name" placeholder="Anonymous" maxlength="30">
+    </div>
+    <div class="settings-row">
+      <label>Your ID</label>
+      <div class="identity-badge" style="flex:1"><span class="dot"></span><span id="setting-id">...</span></div>
+    </div>
+    <div class="settings-row">
+      <label>Relay server</label>
+      <input class="input" id="setting-relay" placeholder="ws://localhost:8080">
+    </div>
+    <div style="margin-top:16px;display:flex;gap:8px">
+      <button class="btn primary" onclick="App.saveSettings()">Save</button>
+      <button class="btn" onclick="App.closeSettings()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+"use strict";
+
+// ============================================================
+//  CRYPTO — identity + content hashing
+// ============================================================
+const Crypto = {
+  async init() {
+    const stored = localStorage.getItem('bazaar_keypair');
+    if (stored) {
+      const {pub, priv} = JSON.parse(stored);
+      this.pub = pub;
+      this.id = await this.fingerprint(pub);
+      return;
+    }
+    const kp = await crypto.subtle.generateKey(
+      {name:'ECDSA', namedCurve:'P-256'}, true, ['sign','verify']
+    );
+    const pubBuf = await crypto.subtle.exportKey('raw', kp.publicKey);
+    const privBuf = await crypto.subtle.exportKey('pkcs8', kp.privateKey);
+    const pub = this.buf2hex(pubBuf);
+    const priv = this.buf2hex(privBuf);
+    localStorage.setItem('bazaar_keypair', JSON.stringify({pub, priv}));
+    this.pub = pub;
+    this.id = await this.fingerprint(pub);
+  },
+
+  async fingerprint(hexPub) {
+    const buf = this.hex2buf(hexPub);
+    const hash = await crypto.subtle.digest('SHA-256', buf);
+    return this.buf2hex(hash).slice(0, 16);
+  },
+
+  async sign(data) {
+    const stored = JSON.parse(localStorage.getItem('bazaar_keypair'));
+    const privKey = await crypto.subtle.importKey(
+      'pkcs8', this.hex2buf(stored.priv),
+      {name:'ECDSA', namedCurve:'P-256'}, false, ['sign']
+    );
+    const sig = await crypto.subtle.sign(
+      {name:'ECDSA', hash:'SHA-256'}, privKey, this.str2buf(data)
+    );
+    return this.buf2hex(sig);
+  },
+
+  async verify(hexSig, data, hexPub) {
+    const pubKey = await crypto.subtle.importKey(
+      'raw', this.hex2buf(hexPub),
+      {name:'ECDSA', namedCurve:'P-256'}, false, ['verify']
+    );
+    return crypto.subtle.verify(
+      {name:'ECDSA', hash:'SHA-256'}, pubKey, this.hex2buf(hexSig), this.str2buf(data)
+    );
+  },
+
+  async sha256(data) {
+    const hash = await crypto.subtle.digest('SHA-256', this.str2buf(data));
+    return this.buf2hex(hash).slice(0, 20);
+  },
+
+  buf2hex(buf) { return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('') },
+  hex2buf(hex) { const b=new Uint8Array(hex.length/2); for(let i=0;i<hex.length;i+=2) b[i/2]=parseInt(hex.substr(i,2),16); return b },
+  str2buf(s) { return new TextEncoder().encode(s) },
+};
+
+// ============================================================
+//  P2P — WebRTC mesh with optional WebSocket signaling
+// ============================================================
+const P2P = {
+  peers: new Map(),
+  pending: null,
+  signalWs: null,
+
+  get relayUrl() { return localStorage.getItem('bazaar_relay') || 'ws://localhost:8080' },
+
+  createOffer() {
+    const pc = new RTCPeerConnection({iceServers:[{urls:'stun:stun.l.google.com:19302'}]});
+    const dc = pc.createDataChannel('bazaar', {ordered:true});
+    const peerId = 'host';
+    const state = {pc, dc, id:peerId, ready:false};
+    this.pending = state;
+
+    pc.onicecandidate = e => {
+      if (e.candidate) return;
+      this.pending.localSdp = btoa(JSON.stringify(pc.localDescription));
+    };
+    pc.oniceconnectionstatechange = () => {
+      if (pc.iceConnectionState === 'failed' || pc.iceConnectionState === 'disconnected') {
+        console.log('Connection failed for', peerId);
+      }
+    };
+    dc.onopen = () => { this.onPeerReady(state) };
+    dc.onmessage = e => { this.onMessage(state, e.data) };
+
+    pc.createOffer().then(offer => pc.setLocalDescription(offer));
+  },
+
+  async handleOffer(sdpB64) {
+    const offer = JSON.parse(atob(sdpB64));
+    const pc = new RTCPeerConnection({iceServers:[{urls:'stun:stun.l.google.com:19302'}]});
+    const state = {pc, id:null, ready:false};
+    this.pending = state;
+
+    pc.ondatachannel = e => {
+      state.dc = e.channel;
+      state.dc.onopen = () => { this.onPeerReady(state) };
+      state.dc.onmessage = ev => { this.onMessage(state, ev.data) };
+    };
+    pc.onicecandidate = e => {
+      if (e.candidate) return;
+      this.pending.localSdp = btoa(JSON.stringify(pc.localDescription));
+    };
+
+    await pc.setRemoteDescription(new RTCSessionDescription(offer));
+    const answer = await pc.createAnswer();
+    await pc.setLocalDescription(answer);
+    return true;
+  },
+
+  onPeerReady(state) {
+    state.ready = true;
+    const id = state.id || state.pubKey || 'peer_' + Math.random().toString(36).slice(2,6);
+    this.peers.set(id, state);
+    App.onPeerJoin(id);
+  },
+
+  onMessage(state, raw) {
+    try {
+      const msg = JSON.parse(raw);
+      App.handleMessage(msg, state);
+    } catch(e) { console.error('Bad message', e) }
+  },
+
+  broadcast(msg) {
+    const data = JSON.stringify(msg);
+    for (const [id, peer] of this.peers) {
+      if (peer.ready && peer.dc && peer.dc.readyState === 'open') {
+        peer.dc.send(data);
+      }
+    }
+  },
+
+  sendTo(peerId, msg) {
+    const peer = this.peers.get(peerId);
+    if (peer && peer.ready && peer.dc && peer.dc.readyState === 'open') {
+      peer.dc.send(JSON.stringify(msg));
+    }
+  },
+
+  removePeer(id) {
+    const peer = this.peers.get(id);
+    if (peer) {
+      peer.pc.close();
+      this.peers.delete(id);
+      App.onPeerLeave(id);
+    }
+  },
+
+  disconnect() {
+    for (const [id, peer] of this.peers) { peer.pc.close() }
+    this.peers.clear();
+    if (this.signalWs) { this.signalWs.close(); this.signalWs = null }
+  },
+
+  // --- WebSocket signaling ---
+  connectSignal() {
+    return new Promise((resolve, reject) => {
+      try {
+        const ws = new WebSocket(this.relayUrl);
+        this.signalWs = ws;
+        ws.onopen = () => resolve(ws);
+        ws.onerror = () => reject(new Error('Cannot reach signaling server'));
+        ws.onclose = () => { this.signalWs = null };
+        ws.onmessage = e => { this.handleSignal(JSON.parse(e.data)) };
+      } catch(e) { reject(e) }
+    });
+  },
+
+  handleSignal(msg) {
+    if (msg.type === 'created') {
+      App.onRoomCreated(msg.roomId, true);
+    } else if (msg.type === 'joined') {
+      App.onRoomJoined(msg.roomId, true);
+    } else if (msg.type === 'peerJoined') {
+      this.createOffer();
+    } else if (msg.type === 'offer') {
+      this.handleOffer(msg.sdp).then(() => {
+        this.sendSignal({type:'answer', sdp: this.pending.localSdp, roomId: msg.roomId});
+      });
+    } else if (msg.type === 'answer') {
+      if (this.pending && this.pending.pc) {
+        this.pending.pc.setRemoteDescription(new RTCSessionDescription(JSON.parse(atob(msg.sdp))));
+      }
+    }
+  },
+
+  sendSignal(msg) {
+    if (this.signalWs && this.signalWs.readyState === WebSocket.OPEN) {
+      this.signalWs.send(JSON.stringify(msg));
+    }
+  },
+
+  signalCreate() { this.sendSignal({type:'create'}) },
+  signalJoin(roomId) { this.sendSignal({type:'join', roomId}) },
+};
+
+// ============================================================
+//  STORAGE — in-memory + IndexedDB for persistence
+// ============================================================
+const Store = {
+  posts: new Map(),
+  db: null,
+
+  async init() {
+    return new Promise((resolve, reject) => {
+      const req = indexedDB.open('bazaar', 1);
+      req.onupgradeneeded = e => {
+        const db = e.target.result;
+        if (!db.objectStoreNames.contains('posts')) db.createObjectStore('posts', {keyPath:'cid'});
+      };
+      req.onsuccess = e => { this.db = e.target.result; resolve() };
+      req.onerror = () => resolve();
+    });
+  },
+
+  async addPost(post) {
+    this.posts.set(post.cid, post);
+    if (this.db) {
+      const tx = this.db.transaction('posts', 'readwrite');
+      tx.objectStore('posts').put(post);
+    }
+  },
+
+  getPost(cid) { return this.posts.get(cid) },
+
+  getAllPosts() {
+    return [...this.posts.values()]
+      .filter(p => !p.parent && !p.deleted)
+      .sort((a,b) => (b.score||0) - (a.score||0));
+  },
+
+  getComments(parentCid) {
+    return [...this.posts.values()]
+      .filter(p => p.parent === parentCid && !p.deleted)
+      .sort((a,b) => (a.ts||0) - (b.ts||0));
+  },
+
+  async loadAll() {
+    if (!this.db) return;
+    return new Promise(resolve => {
+      const tx = this.db.transaction('posts', 'readonly');
+      const req = tx.objectStore('posts').getAll();
+      req.onsuccess = () => {
+        for (const p of req.result) this.posts.set(p.cid, p);
+        resolve();
+      };
+      req.onerror = () => resolve();
+    });
+  }
+};
+
+// ============================================================
+//  QUALITY — 0/0 scoring
+// ============================================================
+const Quality = {
+  vote(cid, voterId, value) {
+    const post = Store.getPost(cid);
+    if (!post) return;
+    if (!post.votes) post.votes = {};
+    if (post.votes[voterId] === value) return;
+    post.votes[voterId] = value;
+    const vals = Object.values(post.votes);
+    post.score = vals.reduce((s,v) => s+v, 0);
+    post.scoreCount = vals.length;
+    post.quality = post.scoreCount > 0
+      ? post.score / post.scoreCount
+      : 0;
+    Store.addPost(post);
+  },
+
+  flag(cid, voterId) {
+    const post = Store.getPost(cid);
+    if (!post) return;
+    if (!post.flags) post.flags = {};
+    post.flags[voterId] = true;
+    post.flagCount = Object.keys(post.flags).length;
+    if (post.flagCount >= Math.ceil(Store.getAllPosts().length / 2) + 1) {
+      post.deleted = true;
+    }
+    Store.addPost(post);
+  },
+};
+
+// ============================================================
+//  APP — main application logic
+// ============================================================
+const App = {
+  roomId: null,
+  isHost: false,
+  displayName: '',
+  pendingAnswerSdp: null,
+
+  async init() {
+    await Crypto.init();
+    await Store.loadAll();
+    document.getElementById('my-id-short').textContent = Crypto.id.slice(0,8) + '...';
+    this.loadSettings();
+    this.renderFeed();
+  },
+
+  loadSettings() {
+    this.displayName = localStorage.getItem('bazaar_name') || '';
+    const nameInput = document.getElementById('setting-name');
+    if (nameInput) nameInput.value = this.displayName;
+    const relayInput = document.getElementById('setting-relay');
+    if (relayInput) relayInput.value = P2P.relayUrl;
+    const idEl = document.getElementById('setting-id');
+    if (idEl) idEl.textContent = Crypto.id;
+  },
+
+  openSettings() {
+    document.getElementById('setting-name').value = this.displayName;
+    document.getElementById('setting-relay').value = P2P.relayUrl;
+    document.getElementById('setting-id').textContent = Crypto.id;
+    document.getElementById('modal-settings').classList.remove('hidden');
+  },
+
+  closeSettings() {
+    document.getElementById('modal-settings').classList.add('hidden');
+  },
+
+  saveSettings() {
+    this.displayName = document.getElementById('setting-name').value.trim();
+    localStorage.setItem('bazaar_name', this.displayName);
+    const relay = document.getElementById('setting-relay').value.trim();
+    if (relay) localStorage.setItem('bazaar_relay', relay);
+    this.closeSettings();
+    this.toast('Settings saved', 'success');
+  },
+
+  async createRoom() {
+    try {
+      const ws = await P2P.connectSignal();
+      P2P.signalCreate();
+    } catch(e) {
+      this.toast('No relay server — using manual connect', 'error');
+      this.createRoomManual();
+    }
+  },
+
+  createRoomManual() {
+    this.isHost = true;
+    this.roomId = Math.random().toString(36).slice(2,8).toUpperCase();
+    P2P.createOffer();
+    setTimeout(() => {
+      if (P2P.pending && P2P.pending.localSdp) {
+        this.showManualConnect('host');
+      }
+    }, 1000);
+  },
+
+  async joinRoom() {
+    const code = document.getElementById('join-code').value.trim();
+    if (!code) { this.toast('Enter a room code', 'error'); return }
+    if (code.length > 100) {
+      this.joinRoomManual(code);
+      return;
+    }
+    try {
+      const ws = await P2P.connectSignal();
+      P2P.signalJoin(code);
+    } catch(e) {
+      this.toast('No relay server — use manual connect', 'error');
+    }
+  },
+
+  joinRoomManual(sdpB64) {
+    this.isHost = false;
+    this.roomId = 'manual';
+    P2P.handleOffer(sdpB64).then(() => {
+      setTimeout(() => {
+        if (P2P.pending && P2P.pending.localSdp) {
+          this.showManualConnect('joiner');
+        }
+      }, 500);
+    });
+  },
+
+  showManualConnect(role) {
+    document.getElementById('manual-title').textContent =
+      role === 'host' ? 'Share Room Code' : 'Paste Answer';
+    document.getElementById('manual-desc').textContent =
+      role === 'host'
+        ? 'Send this code to your peer. They paste it and send back an answer.'
+        : 'Copy this answer and paste it back to the host.';
+    document.getElementById('manual-step1').classList.toggle('hidden', role==='joiner');
+    document.getElementById('manual-step2').classList.toggle('hidden', role==='host');
+    document.getElementById('manual-step3').classList.toggle('hidden', role==='host');
+
+    if (role === 'host') {
+      document.getElementById('manual-offer').textContent = P2P.pending.localSdp;
+      document.getElementById('modal-manual').classList.remove('hidden');
+    } else {
+      document.getElementById('manual-answer').textContent = P2P.pending.localSdp;
+      document.getElementById('modal-manual').classList.remove('hidden');
+    }
+  },
+
+  async submitAnswer() {
+    const ans = document.getElementById('manual-answer-input').value.trim();
+    if (!ans) { this.toast('Paste the answer code', 'error'); return }
+    if (P2P.pending && P2P.pending.pc) {
+      P2P.pending.pc.setRemoteDescription(
+        new RTCSessionDescription(JSON.parse(atob(ans)))
+      );
+      document.getElementById('manual-step2').classList.add('hidden');
+      document.getElementById('manual-step3').classList.remove('hidden');
+      document.getElementById('manual-answer').textContent = P2P.pending.localSdp;
+    }
+  },
+
+  showRoomCode() {
+    const code = P2P.pending && P2P.pending.localSdp
+      ? P2P.pending.localSdp
+      : this.roomId;
+    navigator.clipboard.writeText(code).then(
+      () => this.toast('Room code copied!', 'success'),
+      () => {
+        prompt('Copy this room code:', code);
+      }
+    );
+  },
+
+  onRoomCreated(roomId, viaRelay) {
+    this.isHost = true;
+    this.roomId = roomId;
+    this.enterRoom();
+    if (!viaRelay) {
+      this.toast('Room created — waiting for peer', 'success');
+    }
+  },
+
+  onRoomJoined(roomId, viaRelay) {
+    this.isHost = false;
+    this.roomId = roomId;
+    this.enterRoom();
+  },
+
+  enterRoom() {
+    document.getElementById('app-landing').classList.add('hidden');
+    document.getElementById('app-room').classList.remove('hidden');
+    document.getElementById('room-id-display').textContent = '#' + this.roomId;
+    this.updatePeerCount();
+    this.renderFeed();
+  },
+
+  leaveRoom() {
+    P2P.disconnect();
+    this.roomId = null;
+    this.isHost = false;
+    document.getElementById('app-room').classList.add('hidden');
+    document.getElementById('app-landing').classList.remove('hidden');
+  },
+
+  onPeerJoin(id) {
+    this.updatePeerCount();
+    this.toast('Peer connected: ' + id.slice(0,8), 'success');
+    const sync = [...Store.posts.values()].filter(p=>!p.deleted);
+    if (sync.length > 0) {
+      P2P.broadcast({type:'sync', posts: sync});
+    }
+  },
+
+  onPeerLeave(id) {
+    this.updatePeerCount();
+    this.toast('Peer disconnected: ' + id.slice(0,8));
+  },
+
+  updatePeerCount() {
+    const n = P2P.peers.size;
+    document.getElementById('peer-count').textContent = n + ' peer' + (n!==1?'s':'');
+  },
+
+  // --- messaging ---
+  handleMessage(msg, state) {
+    if (msg.type === 'post') {
+      this.receivePost(msg.post);
+    } else if (msg.type === 'comment') {
+      this.receivePost(msg.post);
+    } else if (msg.type === 'vote') {
+      Quality.vote(msg.cid, msg.voterId, msg.value);
+      this.renderFeed();
+    } else if (msg.type === 'flag') {
+      Quality.flag(msg.cid, msg.voterId);
+      this.renderFeed();
+    } else if (msg.type === 'sync') {
+      for (const p of msg.posts) {
+        if (!Store.getPost(p.cid)) {
+          Store.addPost(p);
+        }
+      }
+      this.renderFeed();
+    } else if (msg.type === 'delete') {
+      const p = Store.getPost(msg.cid);
+      if (p) { p.deleted = true; Store.addPost(p); this.renderFeed(); }
+    } else if (msg.type === 'identity') {
+      state.pubKey = msg.pubKey;
+      state.id = msg.id;
+      state.displayName = msg.displayName;
+    }
+  },
+
+  async receivePost(post) {
+    const dataStr = JSON.stringify({author:post.author, name:post.name, body:post.body, parent:post.parent||null, ts:post.ts, img:post.img||null});
+    const cid = await Crypto.sha256(dataStr + post.author);
+    post.cid = cid;
+    if (!post.votes) post.votes = {};
+    if (!post.score) post.score = 0;
+    if (!post.quality) post.quality = 0;
+    await Store.addPost(post);
+    this.renderFeed();
+  },
+
+  // --- posting ---
+  async submitPost() {
+    const body = document.getElementById('post-text').value.trim();
+    const imgInput = document.getElementById('post-image');
+    const img = imgInput.files[0] || null;
+
+    if (!body && !img) { this.toast('Write something or add an image', 'error'); return }
+
+    let imgData = null;
+    if (img) {
+      imgData = await new Promise(resolve => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.readAsDataURL(img);
+      });
+    }
+
+    const post = {
+      author: Crypto.pub,
+      authorId: Crypto.id,
+      name: this.displayName || 'Anonymous',
+      body: body,
+      img: imgData,
+      parent: null,
+      ts: Date.now(),
+      score: 0,
+      quality: 0,
+      votes: {},
+      flags: {},
+      flagCount: 0,
+      deleted: false,
+    };
+
+    const dataStr = JSON.stringify({author:post.author, name:post.name, body:post.body, parent:null, ts:post.ts, img:post.img});
+    post.cid = await Crypto.sha256(dataStr + post.author);
+
+    await Store.addPost(post);
+    P2P.broadcast({type:'post', post});
+
+    document.getElementById('post-text').value = '';
+    imgInput.value = '';
+    document.getElementById('image-preview').style.display = 'none';
+    document.getElementById('image-name').textContent = '';
+    this.renderFeed();
+  },
+
+  previewImage() {
+    const file = document.getElementById('post-image').files[0];
+    if (file) {
+      document.getElementById('image-name').textContent = file.name;
+      const reader = new FileReader();
+      reader.onload = e => {
+        const img = document.getElementById('image-preview');
+        img.src = e.target.result;
+        img.style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    }
+  },
+
+  async submitComment(parentCid) {
+    const input = document.getElementById('comment-input-' + parentCid);
+    const body = input.value.trim();
+    if (!body) return;
+
+    const post = {
+      author: Crypto.pub,
+      authorId: Crypto.id,
+      name: this.displayName || 'Anonymous',
+      body: body,
+      parent: parentCid,
+      ts: Date.now(),
+      score: 0,
+      quality: 0,
+      votes: {},
+      flags: {},
+      flagCount: 0,
+      deleted: false,
+    };
+    const dataStr = JSON.stringify({author:post.author, name:post.name, body:post.body, parent:parentCid, ts:post.ts, img:null});
+    post.cid = await Crypto.sha256(dataStr + post.author);
+
+    await Store.addPost(post);
+    P2P.broadcast({type:'comment', post});
+    input.value = '';
+    this.renderFeed();
+  },
+
+  vote(cid, value) {
+    Quality.vote(cid, Crypto.id, value);
+    P2P.broadcast({type:'vote', cid, voterId: Crypto.id, value});
+    this.renderFeed();
+  },
+
+  flagPost(cid) {
+    if (!confirm('Flag this post for review?')) return;
+    Quality.flag(cid, Crypto.id);
+    P2P.broadcast({type:'flag', cid, voterId: Crypto.id});
+    this.toast('Post flagged', 'success');
+    this.renderFeed();
+  },
+
+  deletePost(cid) {
+    const p = Store.getPost(cid);
+    if (p && p.author === Crypto.pub) {
+      p.deleted = true;
+      Store.addPost(p);
+      P2P.broadcast({type:'delete', cid});
+      this.renderFeed();
+    }
+  },
+
+  // --- rendering ---
+  renderFeed() {
+    const container = document.getElementById('feed-posts');
+    if (!container) return;
+    const posts = Store.getAllPosts();
+    container.innerHTML = posts.map(p => this.renderPost(p)).join('');
+  },
+
+  renderPost(p) {
+    const name = this.esc(p.name || 'Anonymous');
+    const time = this.timeAgo(p.ts);
+    const body = this.esc(p.body || '');
+    const isOwner = p.author === Crypto.pub;
+    const score = p.score || 0;
+    const scoreClass = score > 0 ? 'pos' : score < 0 ? 'neg' : 'zero';
+    const sc = P2P.peers.size + 1;
+    const qLabel = p.scoreCount > 0
+      ? `score ${score}/${p.scoreCount} (q=${(p.quality||0).toFixed(2)})`
+      : '0/0 — no votes yet';
+
+    let imgHtml = '';
+    if (p.img) {
+      imgHtml = `<img src="${p.img}" alt="post image" loading="lazy">`;
+    }
+
+    const comments = Store.getComments(p.cid);
+    const commentHtml = comments.map(c => this.renderComment(c)).join('');
+
+    return `
+      <div class="post" id="post-${p.cid}">
+        <div class="meta">
+          <span class="author">${name}</span>
+          <span>${time}</span>
+          <span class="cid" title="${p.cid}">${p.cid.slice(0,10)}</span>
+          <span style="color:var(--yellow);font-size:0.75em" title="${qLabel}">${qLabel}</span>
+          ${isOwner ? `<button class="btn small danger" onclick="App.deletePost('${p.cid}')" style="margin-left:auto;padding:2px 8px">delete</button>` : ''}
+        </div>
+        <div class="body">${body}${imgHtml}</div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="vote">
+            <button onclick="App.vote('${p.cid}',1)" title="upvote">&#9650;</button>
+            <span class="score ${scoreClass}">${score}</span>
+            <button onclick="App.vote('${p.cid}',-1)" title="downvote">&#9660;</button>
+          </div>
+          <button class="comment-toggle" onclick="this.nextElementSibling.classList.toggle('hidden')">
+            ${comments.length} comment${comments.length!==1?'s':''}
+          </button>
+          <span class="flag" onclick="App.flagPost('${p.cid}')" title="flag">&#9873;</span>
+        </div>
+        <div class="comments hidden">
+          ${commentHtml}
+          <div class="comment-form">
+            <input class="input" id="comment-input-${p.cid}" placeholder="Reply..." onkeydown="if(event.key==='Enter')App.submitComment('${p.cid}')">
+            <button class="btn small" onclick="App.submitComment('${p.cid}')">Reply</button>
+          </div>
+        </div>
+      </div>`;
+  },
+
+  renderComment(c) {
+    const name = this.esc(c.name || 'Anonymous');
+    const time = this.timeAgo(c.ts);
+    const body = this.esc(c.body || '');
+    return `<div class="comment">
+      <div class="meta"><span class="author">${name}</span> <span>${time}</span></div>
+      <div class="body">${body}</div>
+    </div>`;
+  },
+
+  esc(s) { const d=document.createElement('div'); d.textContent=s; return d.innerHTML },
+  timeAgo(ts) {
+    const s = Math.floor((Date.now() - ts) / 1000);
+    if (s < 60) return s + 's ago';
+    if (s < 3600) return Math.floor(s/60) + 'm ago';
+    if (s < 86400) return Math.floor(s/3600) + 'h ago';
+    return Math.floor(s/86400) + 'd ago';
+  },
+
+  closeModal() { document.getElementById('modal-manual').classList.add('hidden') },
+  openModal(id) { document.getElementById(id).classList.remove('hidden') },
+
+  toast(msg, type) {
+    const el = document.createElement('div');
+    el.className = 'toast ' + (type||'');
+    el.textContent = msg;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 3000);
+  },
+
+  copyManual(id) {
+    const text = document.getElementById(id).textContent;
+    navigator.clipboard.writeText(text).then(
+      () => this.toast('Copied!', 'success'),
+      () => prompt('Copy this:', text)
+    );
+  },
+};
+
+// Boot
+App.init();
+</script>
+</body>
+</html>

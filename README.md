@@ -174,6 +174,7 @@ internet-scale          decentral_net_ceiling.py  decentral_net_t67.py  decentra
                         decentral_net_anomaly.py
 bank / web / bazaar     decentral_bank.py  decentral_bank_bridge.py  decentral_bank_net.py
                         decentral_web.py  bazaar_hybrid.py  bazaar_net.py
+bazaar (P2P social)    bazaar/index.html  bazaar/server.js  bazaar/README.md
 learning / human        learn_creativity_test.py  learn_curve_scale.py  human_trial_pilot.py
 facility / packaging    air_sizing.py  rainwater_sizing.py  servo_regen.py  standby_efficiency.py
 instruments             ai_performable_professions.py  mandate_report.py  calendar_universal.py
@@ -212,13 +213,23 @@ experiments/air_sizing.py  rainwater_sizing.py  servo_regen.py  standby_efficien
 
 ### 7. Browser lab & web surfaces (`puno_app/`)
 
-Self-contained servers and pages: the Poincaré-disk calculus, the C0 constant explorer, the internet-scale decentralized net, the bank, the learning-creativity test, the human-trial instrument, the plugin UI, the classify sandbox, and the mandates dashboard.
+Self-contained servers and pages: the Poincaré-disk calculus, the C0 constant explorer, the internet-scale decentralized net, the bank, the learning-creativity test, the human-trial instrument, the plugin UI, the classify sandbox, the mandates dashboard, and the **Bazaar** P2P social platform.
 
 ```
 puno_app/calculus.py  calculus_server.py  calculus.html  bank_service.py  bank_server.py
          bank.html  constant_explorer.py  classify.py  classify.html  live_net.py  live_net.html
          human_trial.py  human_trial_ui.py  human_trial.html  mandates_server.py  mandates.html
          plugin_ui.py  plugin_ui.html  canned_ui.py  ui.html  app_state.py  simple_server.py
+```
+
+### 7a. Bazaar — P2P social platform (`bazaar/`)
+
+Reddit + 4chan in the browser. No server stores your data. WebRTC DataChannels for peer-to-peer mesh. Content-addressed via SHA-256. ECDSA P-256 identity. 0/0 quality scoring (posts start at 0/0, converge to a removable value as peers vote). Anonymous or identified. Optional WebSocket signaling relay (`server.js`) or fully manual SDP exchange (no server needed).
+
+```
+bazaar/index.html     — self-contained web app (no build step)
+bazaar/server.js      — optional WebSocket signaling relay (~70 lines Node.js)
+bazaar/README.md      — usage instructions
 ```
 
 ### 8. Patents (`patents/`)
@@ -631,6 +642,8 @@ python experiments/bazaar_hybrid.py               # best-possible 4chan+reddit d
 python experiments/decentral_net_live.py --verdict data/decentral_net_live_data.json  # T55f live daemon verdict (SUPPORTED, bounded run)
 python experiments/bazaar_net.py --verdict     # bazaar as a real TCP-process network verdict (SUPPORTED, structural)
 python experiments/decentral_web.py --verdict  # content-addressed P2P web verdict (SUPPORTED, structural)
+node bazaar/server.js                          # optional Bazaar signaling relay (port 8080)
+# open bazaar/index.html in browser             # Bazaar P2P social platform (no build step)
 python experiments/learn_creativity_test.py --verdict  # learned + creativity test T74 verdict (SUPPORTED)
 python experiments/learn_curve_scale.py --verdict       # learning-curve scaling T75 verdict (SUPPORTED)
 python experiments/human_trial_pilot.py --verdict       # T74 human-protocol instrument pilot verdict (SUPPORTED) + trial package

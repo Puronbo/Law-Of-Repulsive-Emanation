@@ -991,11 +991,23 @@ given so it can be re-run).
     continuous parameterization, degenerate limit.  All ratios = 1.0.
     0/0 at c=0, removable=1 (the unit circle).
 
-    **Sequel 2026-08-17 — Taylor remainder via 0/0: R_n/(x-a)^{n+1}**
-    (`experiments/taylor_remainder_0_over_0.py`,
-    `data/taylor_remainder_0_over_0_data.json`): mpmath 80-digit.
-    Tests e^x, sin, cos, ln at various expansion points and orders.
-    Max error 2e-13.  Removable = f^{(n+1)}(a)/(n+1)!.
+     **Sequel 2026-08-17 — Taylor remainder via 0/0: R_n/(x-a)^{n+1}**
+     (`experiments/taylor_remainder_0_over_0.py`,
+     `data/taylor_remainder_0_over_0_data.json`): mpmath 80-digit.
+     Tests e^x, sin, cos, ln at various expansion points and orders.
+     Max error 2e-13.  Removable = f^{(n+1)}(a)/(n+1)!.
+
+     **Sequel 2026-08-17 — Bazaar P2P social platform**
+     (`bazaar/index.html`, `bazaar/server.js`,
+     `bazaar/README.md`): browser-native P2P social platform (Reddit+4chan
+     hybrid).  WebRTC DataChannels for peer-to-peer mesh; content-addressed
+     posts via SHA-256; ECDSA P-256 identity; threaded comments; upvote/
+     downvote; flag-and-moderate; anonymous or identified.  0/0 quality
+     scoring: posts start at 0/0 (score=0, count=0, indeterminate); community
+     votes converge to a removable value (the running average).  Optional
+     WebSocket signaling relay (Node.js, ~70 lines) or fully manual SDP
+     exchange (no server needed).  Self-contained single HTML file with
+     inline CSS/JS, no build step.
 
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
