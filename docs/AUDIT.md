@@ -1463,3 +1463,7 @@ corrected to a null in the PAPER itself.
 * **60. Stokes/de Rham 0/0 (2026-08-17)** — Stokes/Green's theorem verified for explicit forms on disk/rectangle; d^2=0 confirmed; angle form detects H^1(S^1). `data/stokes_de_rham_0_over_0_data.json`.
 * **61. Sard's theorem 0/0 (2026-08-17)** — Critical values form measure-zero sets in all test cases; image/domain ratio vanishes. `data/sard_theorem_0_over_0_data.json`.
 * **62. KKT conditions 0/0 (2026-08-17)** — Complementary slackness verified for QP; barrier path mu_t*g_t -> 0; equality constraint shadow price = lambda. `data/kkt_conditions_0_over_0_data.json`.
+* **63. Euler product 0/0 (2026-08-17)** — Euler product converges to zeta(s); local factor ratios -> ln(q)/ln(p); ratio P_N/zeta -> 1. `data/euler_product_0_over_0_data.json`.
+* **64. Picard little theorem 0/0 (2026-08-17)** — Removable values at zeros of entire functions; e^z omits only 0; cosh takes all values. `data/picard_little_0_over_0_data.json`.
+* **65. Weil explicit formula 0/0 (2026-08-17)** — Logarithmic derivative identity -zeta'/zeta = sum log(p)/(p^s-1); explicit formula improves with zeros; prime counting corrected. `data/weil_explicit_0_over_0_data.json`.
+* **66. Poincare recurrence 0/0 (2026-08-17)** — eps*tau(eps) constant for irrational rotations; recurrence rate 0/0; equidistribution converges; periodic exact. `data/poincare_recurrence_0_over_0_data.json`.

@@ -1,0 +1,468 @@
+{
+  "tests": [],
+  "summary": {
+    "supported": true,
+    "log_deriv_identity_holds": true,
+    "explicit_formula_improves": true,
+    "prime_count_correction_helps": true,
+    "honest_wall": "numerical verification of Weil explicit formula and its 0/0 structure, not a proof"
+  },
+  "logarithmic_derivative": {
+    "note": "-zeta'/zeta(s) = sum_p log(p)/(p^s-1): the prime-zero duality",
+    "tests": [
+      {
+        "s": 1.5,
+        "log_deriv_numerical": 1.4065985062598412,
+        "sum_over_primes": 1.47194504097055,
+        "error": 0.06534653471070873
+      },
+      {
+        "s": 2.0,
+        "log_deriv_numerical": 0.5688731044219767,
+        "sum_over_primes": 0.5696830123531696,
+        "error": 0.0008099079311929547
+      },
+      {
+        "s": 3.0,
+        "log_deriv_numerical": 0.16482253460551188,
+        "sum_over_primes": 0.16482264330234614,
+        "error": 1.0869683425562826e-07
+      }
+    ]
+  },
+  "explicit_formula_psi": {
+    "note": "explicit formula psi(x) ~ x - sum x^rho/rho - log(2pi)",
+    "tests": [
+      {
+        "x": 2,
+        "n_zeros": 1,
+        "psi_exact": 0.6931471805599453,
+        "psi_explicit_formula": 0.24147453194262325,
+        "error": 0.45167264861732204,
+        "relative_error": 0.6516258902653939
+      },
+      {
+        "x": 2,
+        "n_zeros": 5,
+        "psi_exact": 0.6931471805599453,
+        "psi_explicit_formula": 0.22624548656706542,
+        "error": 0.46690169399287984,
+        "relative_error": 0.6735967585061841
+      },
+      {
+        "x": 2,
+        "n_zeros": 10,
+        "psi_exact": 0.6931471805599453,
+        "psi_explicit_formula": 0.17773749814484832,
+        "error": 0.515409682415097,
+        "relative_error": 0.743578992846416
+      },
+      {
+        "x": 2,
+        "n_zeros": 20,
+        "psi_exact": 0.6931471805599453,
+        "psi_explicit_formula": 0.18801720272871067,
+        "error": 0.5051299778312346,
+        "relative_error": 0.7287485140214742
+      },
+      {
+        "x": 2,
+        "n_zeros": 30,
+        "psi_exact": 0.6931471805599453,
+        "psi_explicit_formula": 0.19029138984290042,
+        "error": 0.5028557907170449,
+        "relative_error": 0.7254675555497792
+      },
+      {
+        "x": 5,
+        "n_zeros": 1,
+        "psi_exact": 4.0943445622221,
+        "psi_explicit_formula": 3.3874386450132374,
+        "error": 0.706905917208863,
+        "relative_error": 0.1726542323114125
+      },
+      {
+        "x": 5,
+        "n_zeros": 5,
+        "psi_exact": 4.0943445622221,
+        "psi_explicit_formula": 3.244257334100437,
+        "error": 0.8500872281216636,
+        "relative_error": 0.20762474071315107
+      },
+      {
+        "x": 5,
+        "n_zeros": 10,
+        "psi_exact": 4.0943445622221,
+        "psi_explicit_formula": 3.259649783802015,
+        "error": 0.8346947784200855,
+        "relative_error": 0.20386529900821937
+      },
+      {
+        "x": 5,
+        "n_zeros": 20,
+        "psi_exact": 4.0943445622221,
+        "psi_explicit_formula": 3.3065856662294557,
+        "error": 0.7877588959926447,
+        "relative_error": 0.1924017102178398
+      },
+      {
+        "x": 5,
+        "n_zeros": 30,
+        "psi_exact": 4.0943445622221,
+        "psi_explicit_formula": 3.2580861334214397,
+        "error": 0.8362584288006607,
+        "relative_error": 0.20424720393996418
+      },
+      {
+        "x": 10,
+        "n_zeros": 1,
+        "psi_exact": 7.832014180505469,
+        "psi_explicit_formula": 7.75112176922493,
+        "error": 0.08089241128053892,
+        "relative_error": 0.010328430135109666
+      },
+      {
+        "x": 10,
+        "n_zeros": 5,
+        "psi_exact": 7.832014180505469,
+        "psi_explicit_formula": 7.56672535527691,
+        "error": 0.26528882522855923,
+        "relative_error": 0.03387236272999672
+      },
+      {
+        "x": 10,
+        "n_zeros": 10,
+        "psi_exact": 7.832014180505469,
+        "psi_explicit_formula": 7.781784473592028,
+        "error": 0.05022970691344142,
+        "relative_error": 0.006413383039891234
+      },
+      {
+        "x": 10,
+        "n_zeros": 20,
+        "psi_exact": 7.832014180505469,
+        "psi_explicit_formula": 7.899953990329329,
+        "error": 0.0679398098238595,
+        "relative_error": 0.008674628040506784
+      },
+      {
+        "x": 10,
+        "n_zeros": 30,
+        "psi_exact": 7.832014180505469,
+        "psi_explicit_formula": 7.736590032190374,
+        "error": 0.09542414831509571,
+        "relative_error": 0.012183857959886527
+      },
+      {
+        "x": 20,
+        "n_zeros": 1,
+        "psi_exact": 19.265658314547977,
+        "psi_explicit_formula": 18.794184869364422,
+        "error": 0.4714734451835554,
+        "relative_error": 0.024472220854635116
+      },
+      {
+        "x": 20,
+        "n_zeros": 5,
+        "psi_exact": 19.265658314547977,
+        "psi_explicit_formula": 19.156321081102778,
+        "error": 0.10933723344519919,
+        "relative_error": 0.0056752399352289935
+      },
+      {
+        "x": 20,
+        "n_zeros": 10,
+        "psi_exact": 19.265658314547977,
+        "psi_explicit_formula": 19.754658626060966,
+        "error": 0.4890003115129886,
+        "relative_error": 0.025381967412124833
+      },
+      {
+        "x": 20,
+        "n_zeros": 20,
+        "psi_exact": 19.265658314547977,
+        "psi_explicit_formula": 19.336159648586804,
+        "error": 0.07050133403882697,
+        "relative_error": 0.0036594303131385684
+      },
+      {
+        "x": 20,
+        "n_zeros": 30,
+        "psi_exact": 19.265658314547977,
+        "psi_explicit_formula": 19.22539640812637,
+        "error": 0.04026190642160543,
+        "relative_error": 0.0020898277008890302
+      },
+      {
+        "x": 50,
+        "n_zeros": 1,
+        "psi_exact": 49.48538079241837,
+        "psi_explicit_formula": 49.10041724880966,
+        "error": 0.38496354360870555,
+        "relative_error": 0.007779338815711117
+      },
+      {
+        "x": 50,
+        "n_zeros": 5,
+        "psi_exact": 49.48538079241837,
+        "psi_explicit_formula": 49.16724400300157,
+        "error": 0.3181367894167977,
+        "relative_error": 0.006428904543572579
+      },
+      {
+        "x": 50,
+        "n_zeros": 10,
+        "psi_exact": 49.48538079241837,
+        "psi_explicit_formula": 49.15429844248705,
+        "error": 0.3310823499313216,
+        "relative_error": 0.006690508280014015
+      },
+      {
+        "x": 50,
+        "n_zeros": 20,
+        "psi_exact": 49.48538079241837,
+        "psi_explicit_formula": 49.25650507281931,
+        "error": 0.22887571959905983,
+        "relative_error": 0.004625117881969007
+      },
+      {
+        "x": 50,
+        "n_zeros": 30,
+        "psi_exact": 49.48538079241837,
+        "psi_explicit_formula": 49.45748123790029,
+        "error": 0.027899554518079128,
+        "relative_error": 0.0005637938734898774
+      },
+      {
+        "x": 100,
+        "n_zeros": 1,
+        "psi_exact": 94.0453112293574,
+        "psi_explicit_formula": 97.10418333809928,
+        "error": 3.0588721087418804,
+        "relative_error": 0.03252551423092123
+      },
+      {
+        "x": 100,
+        "n_zeros": 5,
+        "psi_exact": 94.0453112293574,
+        "psi_explicit_formula": 94.81890369525676,
+        "error": 0.7735924658993696,
+        "relative_error": 0.008225741993800571
+      },
+      {
+        "x": 100,
+        "n_zeros": 10,
+        "psi_exact": 94.0453112293574,
+        "psi_explicit_formula": 95.04029057468333,
+        "error": 0.9949793453259304,
+        "relative_error": 0.010579786831683485
+      },
+      {
+        "x": 100,
+        "n_zeros": 20,
+        "psi_exact": 94.0453112293574,
+        "psi_explicit_formula": 95.68197110810385,
+        "error": 1.6366598787464568,
+        "relative_error": 0.017402886516638516
+      },
+      {
+        "x": 100,
+        "n_zeros": 30,
+        "psi_exact": 94.0453112293574,
+        "psi_explicit_formula": 94.91707289976002,
+        "error": 0.8717616704026199,
+        "relative_error": 0.009269592061602841
+      },
+      {
+        "x": 200,
+        "n_zeros": 1,
+        "psi_exact": 206.14585682505478,
+        "psi_explicit_formula": 199.07244653885445,
+        "error": 7.073410286200328,
+        "relative_error": 0.03431264831193363
+      },
+      {
+        "x": 200,
+        "n_zeros": 5,
+        "psi_exact": 206.14585682505478,
+        "psi_explicit_formula": 201.40811513694638,
+        "error": 4.7377416881084,
+        "relative_error": 0.022982473482981877
+      },
+      {
+        "x": 200,
+        "n_zeros": 10,
+        "psi_exact": 206.14585682505478,
+        "psi_explicit_formula": 202.32904194877247,
+        "error": 3.816814876282308,
+        "relative_error": 0.01851511805799444
+      },
+      {
+        "x": 200,
+        "n_zeros": 20,
+        "psi_exact": 206.14585682505478,
+        "psi_explicit_formula": 203.82623732098654,
+        "error": 2.3196195040682426,
+        "relative_error": 0.011252321728865899
+      },
+      {
+        "x": 200,
+        "n_zeros": 30,
+        "psi_exact": 206.14585682505478,
+        "psi_explicit_formula": 204.81245737994675,
+        "error": 1.3333994451080287,
+        "relative_error": 0.006468233054228274
+      },
+      {
+        "x": 500,
+        "n_zeros": 1,
+        "psi_exact": 501.6521166497476,
+        "psi_explicit_formula": 498.438311299161,
+        "error": 3.213805350586597,
+        "relative_error": 0.006406442321124439
+      },
+      {
+        "x": 500,
+        "n_zeros": 5,
+        "psi_exact": 501.6521166497476,
+        "psi_explicit_formula": 502.0701468855999,
+        "error": 0.4180302358523136,
+        "relative_error": 0.0008333070308645411
+      },
+      {
+        "x": 500,
+        "n_zeros": 10,
+        "psi_exact": 501.6521166497476,
+        "psi_explicit_formula": 500.641072242759,
+        "error": 1.011044406988617,
+        "relative_error": 0.002015429365156105
+      },
+      {
+        "x": 500,
+        "n_zeros": 20,
+        "psi_exact": 501.6521166497476,
+        "psi_explicit_formula": 499.82399228397026,
+        "error": 1.8281243657773416,
+        "relative_error": 0.003644207420047096
+      },
+      {
+        "x": 500,
+        "n_zeros": 30,
+        "psi_exact": 501.6521166497476,
+        "psi_explicit_formula": 501.2375959657831,
+        "error": 0.41452068396449704,
+        "relative_error": 0.0008263110434634415
+      }
+    ]
+  },
+  "zero_at_x1": {
+    "note": "psi_N(1) -> 0 as N -> inf: explicit formula converges at x=1",
+    "tests": [
+      {
+        "n_zeros": 1,
+        "psi_N_at_1": -0.842876055343197,
+        "note": "should converge to 0 = psi(1)"
+      },
+      {
+        "n_zeros": 5,
+        "psi_N_at_1": -0.8487372590842821,
+        "note": "should converge to 0 = psi(1)"
+      },
+      {
+        "n_zeros": 10,
+        "psi_N_at_1": -0.8514122659271025,
+        "note": "should converge to 0 = psi(1)"
+      },
+      {
+        "n_zeros": 20,
+        "psi_N_at_1": -0.8538364341224893,
+        "note": "should converge to 0 = psi(1)"
+      },
+      {
+        "n_zeros": 30,
+        "psi_N_at_1": -0.8550747480293182,
+        "note": "should converge to 0 = psi(1)"
+      }
+    ]
+  },
+  "ratio_at_critical_x": {
+    "note": "0/0 at x=log(2pi)~1.8379: psi=0, psi_0=0",
+    "tests": [
+      {
+        "n_zeros": 1,
+        "psi_N": -0.13575368291208176,
+        "psi_exact": 0.0,
+        "ratio": NaN
+      },
+      {
+        "n_zeros": 5,
+        "psi_N": -0.2658842351617222,
+        "psi_exact": 0.0,
+        "ratio": NaN
+      },
+      {
+        "n_zeros": 10,
+        "psi_N": -0.15969336663422257,
+        "psi_exact": 0.0,
+        "ratio": NaN
+      },
+      {
+        "n_zeros": 20,
+        "psi_N": -0.16631086044771978,
+        "psi_exact": 0.0,
+        "ratio": NaN
+      },
+      {
+        "n_zeros": 30,
+        "psi_N": -0.1682022121881837,
+        "psi_exact": 0.0,
+        "ratio": NaN
+      }
+    ]
+  },
+  "prime_counting": {
+    "note": "pi(x) via Li(x) - sum Li(x^rho): zeros correct the prime count",
+    "tests": [
+      {
+        "x": 10,
+        "pi_exact": 4,
+        "li_approx": 6.137938133620551,
+        "with_correction": 5.757599673621922,
+        "error_raw": 2.137938133620551,
+        "error_corrected": 1.7575996736219217
+      },
+      {
+        "x": 50,
+        "pi_exact": 15,
+        "li_approx": 18.353160229551545,
+        "with_correction": 19.345335738447947,
+        "error_raw": 3.353160229551545,
+        "error_corrected": 4.345335738447947
+      },
+      {
+        "x": 100,
+        "pi_exact": 25,
+        "li_approx": 29.991437567795746,
+        "with_correction": 26.86960520888841,
+        "error_raw": 4.991437567795746,
+        "error_corrected": 1.8696052088884088
+      },
+      {
+        "x": 500,
+        "pi_exact": 95,
+        "li_approx": 101.63108542658163,
+        "with_correction": 104.11003473574992,
+        "error_raw": 6.631085426581635,
+        "error_corrected": 9.11003473574992
+      },
+      {
+        "x": 1000,
+        "pi_exact": 168,
+        "li_approx": 177.4388003145073,
+        "with_correction": 176.4827524452554,
+        "error_raw": 9.43880031450729,
+        "error_corrected": 8.482752445255386
+      }
+    ]
+  }
+}

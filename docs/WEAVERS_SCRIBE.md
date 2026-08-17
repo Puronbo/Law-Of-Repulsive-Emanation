@@ -2747,3 +2747,7 @@ content ranking.
 * **Ch. 5.26** Stokes/de Rham 0/0 — Stokes/Green on disk/rectangle, d^2=0, angle form detects H^1(S^1) (`stokes_de_rham_0_over_0.py`).
 * **Ch. 5.27** Sard's theorem 0/0 — Critical values measure zero, image/domain ratio vanishes (`sard_theorem_0_over_0.py`).
 * **Ch. 5.28** KKT conditions 0/0 — Complementary slackness, barrier path -> 0, shadow price = lambda (`kkt_conditions_0_over_0.py`).
+* **Ch. 5.29** Euler product 0/0 — Euler product converges to zeta, local factor ratios -> ln(q)/ln(p) (`euler_product_0_over_0.py`).
+* **Ch. 5.30** Picard little theorem 0/0 — Removable values at entire function zeros, e^z omits 0, cosh takes all (`picard_little_0_over_0.py`).
+* **Ch. 5.31** Weil explicit formula 0/0 — Log derivative identity, zeros count primes, explicit formula psi(x) (`weil_explicit_0_over_0.py`).
+* **Ch. 5.32** Poincare recurrence 0/0 — eps*tau constant, recurrence rate 0/0, equidistribution (`poincare_recurrence_0_over_0.py`).

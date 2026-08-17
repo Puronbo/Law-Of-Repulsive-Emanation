@@ -1,0 +1,423 @@
+{
+  "tests": [],
+  "summary": {
+    "supported": true,
+    "euler_product_converges": true,
+    "ratio_converges_to_one": true,
+    "local_factor_ratios_converge": true,
+    "best_relative_error_at_s2": 0.0002671136954020629,
+    "honest_wall": "numerical verification of Euler product convergence and 0/0 local factor ratios, not a proof of the Euler product"
+  },
+  "convergence": [
+    {
+      "s": 1.5,
+      "n_primes": 10,
+      "euler_product": 2.4366589119067834,
+      "zeta_dirichlet": 2.6060508091764736,
+      "relative_error": 0.06499946074467326
+    },
+    {
+      "s": 1.5,
+      "n_primes": 25,
+      "euler_product": 2.530367118757168,
+      "zeta_dirichlet": 2.6060508091764736,
+      "relative_error": 0.02904152526604879
+    },
+    {
+      "s": 1.5,
+      "n_primes": 50,
+      "euler_product": 2.565133689782772,
+      "zeta_dirichlet": 2.6060508091764736,
+      "relative_error": 0.015700814139779376
+    },
+    {
+      "s": 1.5,
+      "n_primes": 100,
+      "euler_product": 2.5834075406944725,
+      "zeta_dirichlet": 2.6060508091764736,
+      "relative_error": 0.00868872870869177
+    },
+    {
+      "s": 1.5,
+      "n_primes": 200,
+      "euler_product": 2.5834075406944725,
+      "zeta_dirichlet": 2.6060508091764736,
+      "relative_error": 0.00868872870869177
+    },
+    {
+      "s": 2.0,
+      "n_primes": 10,
+      "euler_product": 1.6330704904957396,
+      "zeta_dirichlet": 1.6449240668982423,
+      "relative_error": 0.0072061541569237745
+    },
+    {
+      "s": 2.0,
+      "n_primes": 25,
+      "euler_product": 1.6419451966211163,
+      "zeta_dirichlet": 1.6449240668982423,
+      "relative_error": 0.0018109469835548004
+    },
+    {
+      "s": 2.0,
+      "n_primes": 50,
+      "euler_product": 1.6438376298480515,
+      "zeta_dirichlet": 1.6449240668982423,
+      "relative_error": 0.0006604785424773385
+    },
+    {
+      "s": 2.0,
+      "n_primes": 100,
+      "euler_product": 1.6444846851520774,
+      "zeta_dirichlet": 1.6449240668982423,
+      "relative_error": 0.0002671136954020629
+    },
+    {
+      "s": 2.0,
+      "n_primes": 200,
+      "euler_product": 1.6444846851520774,
+      "zeta_dirichlet": 1.6449240668982423,
+      "relative_error": 0.0002671136954020629
+    },
+    {
+      "s": 3.0,
+      "n_primes": 10,
+      "euler_product": 1.2018992716758672,
+      "zeta_dirichlet": 1.2020569031097323,
+      "relative_error": 0.0001311347519883322
+    },
+    {
+      "s": 3.0,
+      "n_primes": 25,
+      "euler_product": 1.2020447120724258,
+      "zeta_dirichlet": 1.2020569031097323,
+      "relative_error": 1.0141813815138991e-05
+    },
+    {
+      "s": 3.0,
+      "n_primes": 50,
+      "euler_product": 1.2020550498634466,
+      "zeta_dirichlet": 1.2020569031097323,
+      "relative_error": 1.54172924840022e-06
+    },
+    {
+      "s": 3.0,
+      "n_primes": 100,
+      "euler_product": 1.2020565591246068,
+      "zeta_dirichlet": 1.2020569031097323,
+      "relative_error": 2.861637619692097e-07
+    },
+    {
+      "s": 3.0,
+      "n_primes": 200,
+      "euler_product": 1.2020565591246068,
+      "zeta_dirichlet": 1.2020569031097323,
+      "relative_error": 2.861637619692097e-07
+    },
+    {
+      "s": 4.0,
+      "n_primes": 10,
+      "euler_product": 1.082319965338454,
+      "zeta_dirichlet": 1.082323233710861,
+      "relative_error": 3.019774781821296e-06
+    },
+    {
+      "s": 4.0,
+      "n_primes": 25,
+      "euler_product": 1.08232315532803,
+      "zeta_dirichlet": 1.082323233710861,
+      "relative_error": 7.24209077965236e-08
+    },
+    {
+      "s": 4.0,
+      "n_primes": 50,
+      "euler_product": 1.0823232287568854,
+      "zeta_dirichlet": 1.082323233710861,
+      "relative_error": 4.577168372466304e-09
+    },
+    {
+      "s": 4.0,
+      "n_primes": 100,
+      "euler_product": 1.0823232332943744,
+      "zeta_dirichlet": 1.082323233710861,
+      "relative_error": 3.848079852626448e-10
+    },
+    {
+      "s": 4.0,
+      "n_primes": 200,
+      "euler_product": 1.0823232332943744,
+      "zeta_dirichlet": 1.082323233710861,
+      "relative_error": 3.848079852626448e-10
+    },
+    {
+      "s": 5.0,
+      "n_primes": 10,
+      "euler_product": 1.0369276749420064,
+      "zeta_dirichlet": 1.036927755143338,
+      "relative_error": 7.734514885740409e-08
+    },
+    {
+      "s": 5.0,
+      "n_primes": 25,
+      "euler_product": 1.0369277545468691,
+      "zeta_dirichlet": 1.036927755143338,
+      "relative_error": 5.75227031327412e-10
+    },
+    {
+      "s": 5.0,
+      "n_primes": 50,
+      "euler_product": 1.0369277551276737,
+      "zeta_dirichlet": 1.036927755143338,
+      "relative_error": 1.5106509225298845e-11
+    },
+    {
+      "s": 5.0,
+      "n_primes": 100,
+      "euler_product": 1.0369277551427707,
+      "zeta_dirichlet": 1.036927755143338,
+      "relative_error": 5.471200503308274e-13
+    },
+    {
+      "s": 5.0,
+      "n_primes": 200,
+      "euler_product": 1.0369277551427707,
+      "zeta_dirichlet": 1.036927755143338,
+      "relative_error": 5.471200503308274e-13
+    }
+  ],
+  "ratio_0_over_0": {
+    "note": "P_N(s)/zeta(s) -> 1 as N -> inf; at s=0 this is 0/0",
+    "tests": [
+      {
+        "s": 1.5,
+        "ratios": [
+          {
+            "n_primes": 10,
+            "ratio": 0.9350005392553268,
+            "deviation_from_one": 0.06499946074467322
+          },
+          {
+            "n_primes": 25,
+            "ratio": 0.9709584747339512,
+            "deviation_from_one": 0.02904152526604875
+          },
+          {
+            "n_primes": 50,
+            "ratio": 0.9842991858602206,
+            "deviation_from_one": 0.015700814139779418
+          },
+          {
+            "n_primes": 100,
+            "ratio": 0.9913112712913082,
+            "deviation_from_one": 0.00868872870869175
+          },
+          {
+            "n_primes": 200,
+            "ratio": 0.9913112712913082,
+            "deviation_from_one": 0.00868872870869175
+          }
+        ],
+        "converges_to_one": true
+      },
+      {
+        "s": 2.0,
+        "ratios": [
+          {
+            "n_primes": 10,
+            "ratio": 0.9927938458430762,
+            "deviation_from_one": 0.0072061541569238274
+          },
+          {
+            "n_primes": 25,
+            "ratio": 0.9981890530164452,
+            "deviation_from_one": 0.0018109469835547731
+          },
+          {
+            "n_primes": 50,
+            "ratio": 0.9993395214575227,
+            "deviation_from_one": 0.0006604785424773052
+          },
+          {
+            "n_primes": 100,
+            "ratio": 0.9997328863045979,
+            "deviation_from_one": 0.0002671136954021103
+          },
+          {
+            "n_primes": 200,
+            "ratio": 0.9997328863045979,
+            "deviation_from_one": 0.0002671136954021103
+          }
+        ],
+        "converges_to_one": true
+      },
+      {
+        "s": 3.0,
+        "ratios": [
+          {
+            "n_primes": 10,
+            "ratio": 0.9998688652480117,
+            "deviation_from_one": 0.00013113475198833768
+          },
+          {
+            "n_primes": 25,
+            "ratio": 0.9999898581861849,
+            "deviation_from_one": 1.014181381508994e-05
+          },
+          {
+            "n_primes": 50,
+            "ratio": 0.9999984582707516,
+            "deviation_from_one": 1.541729248377699e-06
+          },
+          {
+            "n_primes": 100,
+            "ratio": 0.999999713836238,
+            "deviation_from_one": 2.861637620199531e-07
+          },
+          {
+            "n_primes": 200,
+            "ratio": 0.999999713836238,
+            "deviation_from_one": 2.861637620199531e-07
+          }
+        ],
+        "converges_to_one": true
+      }
+    ]
+  },
+  "pole_cancelation": {
+    "note": "ratio stays near 1 even as s -> 1+ (both diverge at s=1)",
+    "tests": [
+      {
+        "s": 1.01,
+        "zeta": 11.45285398136958,
+        "euler_product": 10.551602324859358,
+        "ratio": 0.9213076794678171,
+        "ratio_deviation": 0.07869232053218289
+      },
+      {
+        "s": 1.05,
+        "zeta": 9.334020609931864,
+        "euler_product": 8.586891248893496,
+        "ratio": 0.9199563197617772,
+        "ratio_deviation": 0.08004368023822284
+      },
+      {
+        "s": 1.1,
+        "zeta": 7.4221723859184845,
+        "euler_product": 6.875879525855959,
+        "ratio": 0.9263971743503338,
+        "ratio_deviation": 0.07360282564966625
+      },
+      {
+        "s": 1.2,
+        "zeta": 5.091582941176778,
+        "euler_product": 4.831392219300424,
+        "ratio": 0.9488978722565564,
+        "ratio_deviation": 0.05110212774344358
+      },
+      {
+        "s": 1.5,
+        "zeta": 2.6060508091764736,
+        "euler_product": 2.5834075406944725,
+        "ratio": 0.9913112712913082,
+        "ratio_deviation": 0.00868872870869175
+      },
+      {
+        "s": 2.0,
+        "zeta": 1.6449240668982423,
+        "euler_product": 1.6444846851520774,
+        "ratio": 0.9997328863045979,
+        "ratio_deviation": 0.0002671136954021103
+      }
+    ]
+  },
+  "zeros_analysis": {
+    "note": "Euler product diverges (partial product grows) near non-trivial zeros",
+    "tests": [
+      {
+        "t_zero": 14.1347,
+        "s": [
+          0.5,
+          14.1347
+        ],
+        "zeta_magnitude": 4.99974772168857,
+        "partial_product_magnitude": 0.07444066758793658,
+        "zeta_near_zero": false
+      },
+      {
+        "t_zero": 21.022,
+        "s": [
+          0.5,
+          21.022
+        ],
+        "zeta_magnitude": 3.3629149200320607,
+        "partial_product_magnitude": 0.09184057843808235,
+        "zeta_near_zero": false
+      },
+      {
+        "t_zero": 25.0109,
+        "s": [
+          0.5,
+          25.0109
+        ],
+        "zeta_magnitude": 2.826830362171352,
+        "partial_product_magnitude": 0.11099696612669267,
+        "zeta_near_zero": false
+      }
+    ]
+  },
+  "local_factor_0_over_0": {
+    "note": "(1-p^{-s})^{-1} / (1-q^{-s})^{-1} -> ln(q)/ln(p) as s -> 0: 0/0 removable",
+    "tests": [
+      {
+        "primes": [
+          2,
+          3
+        ],
+        "ratio_limit": 1.5849621794782711,
+        "expected_ln_ratio": 1.5849625007211563,
+        "error": 3.212428851817606e-07,
+        "converges": true
+      },
+      {
+        "primes": [
+          2,
+          5
+        ],
+        "ratio_limit": 2.321927031286611,
+        "expected_ln_ratio": 2.321928094887362,
+        "error": 1.063600751027849e-06,
+        "converges": true
+      },
+      {
+        "primes": [
+          3,
+          7
+        ],
+        "ratio_limit": 1.7712429987792793,
+        "expected_ln_ratio": 1.7712437491614221,
+        "error": 7.503821428667123e-07,
+        "converges": true
+      },
+      {
+        "primes": [
+          5,
+          11
+        ],
+        "ratio_limit": 1.4898955150348776,
+        "expected_ln_ratio": 1.4898961024049782,
+        "error": 5.873701005576493e-07,
+        "converges": true
+      },
+      {
+        "primes": [
+          2,
+          101
+        ],
+        "ratio_limit": 6.658198426483917,
+        "expected_ln_ratio": 6.6582114827517955,
+        "error": 1.305626787839742e-05,
+        "converges": true
+      }
+    ]
+  }
+}

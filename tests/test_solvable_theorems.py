@@ -2567,4 +2567,36 @@ def test_kkt_conditions_0_over_0():
     assert d['summary']['barrier_path_converges']
 
 
+def test_euler_product_0_over_0():
+    d = load('euler_product_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['euler_product_converges']
+    assert d['summary']['ratio_converges_to_one']
+    assert d['summary']['local_factor_ratios_converge']
+
+
+def test_picard_little_0_over_0():
+    d = load('picard_little_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['sin_removable_values_correct']
+    assert d['summary']['exp_omits_zero']
+    assert d['summary']['sinz_over_z_converges']
+
+
+def test_weil_explicit_0_over_0():
+    d = load('weil_explicit_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['log_deriv_identity_holds']
+    assert d['summary']['explicit_formula_improves']
+    assert d['summary']['prime_count_correction_helps']
+
+
+def test_poincare_recurrence_0_over_0():
+    d = load('poincare_recurrence_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['golden_ratio_recurs']
+    assert d['summary']['periodic_rotations_exact']
+    assert d['summary']['equidistribution_converges']
+
+
 
