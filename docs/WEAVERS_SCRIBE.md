@@ -2368,6 +2368,43 @@ Verified on cos(x) (removable = -1.6736), Newton sqrt(2) (removable = -1.0),
 and linear T(x)=0.5x+1 (removable = -0.5). All converge to fixed points
 with correct rates.
 
+### Ch. 5.21ao  Poisson summation via 0/0 (2026-08-17)
+
+Poisson summation: sum_n f(n) = sum_k f_hat(k). For f(x) = e^{-pi s x^2},
+this gives the theta functional equation: theta(s) = s^{-1/2} theta(1/s),
+equivalently the completed zeta satisfies xi(s) = xi(1-s).
+
+The 0/0: at s=0, xi(s) = 0.5 * s * (s-1) * pi^{-s/2} * Gamma(s/2) * Zeta(s)
+involves s*(s-1) = 0 and Gamma(s/2) pole, so the product is 0 * inf * (-0.5)
+= 0/0. The removable value is 0.5.
+
+Near s=0: xi(s) converges to 0.5 with error 1.15e-08 at s=1e-7.
+Functional equation xi(s) = xi(1-s) holds to machine precision (error 3.89e-16).
+Theta equation theta(s) = s^{-1/2} theta(1/s) verified (error 2.22e-16).
+
+### Ch. 5.21ap  Rayleigh quotient via 0/0 (2026-08-17)
+
+Rayleigh quotient: R(x) = (x^T A x) / (x^T x) for symmetric A.
+
+The 0/0: at x=0, both numerator and denominator vanish. The removable value
+depends on the direction of approach -- along eigenvector v_i, R(t*v_i) -> lambda_i.
+This encodes the entire spectrum in a single 0/0.
+
+The min-max principle (Courant-Fischer): lambda_k = min_{dim(S)=k} max_{x in S} R(x).
+Verified on 2x2 and 3x3 matrices: convergence error < 1e-15 along eigenvectors.
+Eigenvalue bounds hold: lambda_min <= R(x) <= lambda_max for all x.
+
+### Ch. 5.21aq  Cauchy integral formula via 0/0 (2026-08-17)
+
+Cauchy integral formula: f(a) = (1/2pi i) oint f(z)/(z-a) dz.
+
+The 0/0: at z=a when f(a)=0, the integrand f(z)/(z-a) is 0/0. By L'Hopital,
+the removable value is f'(a). This encodes the derivative as the residue.
+
+Verified: sin(z)/z at z=0 (removable=1), cos(z)/(z-pi/2) at z=pi/2
+(removable=-1), (z-1)^2/(z-1) at z=1 (removable=0), (e^z-1)/z at z=0
+(removable=1), (1-cos z)/z^2 at z=0 (removable=0.5). Max error 8.89e-05.
+
 ---
 
 ## Ch. 6  Creases (never forget these)

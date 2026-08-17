@@ -2431,4 +2431,28 @@ def test_banach_fixed_point_0_over_0():
     assert d['linear_0_over_0']['converges_to_removable']
 
 
+def test_poisson_summation_0_over_0():
+    d = load('poisson_summation_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['removable_value_near_0_error'] < 1e-3
+    assert d['summary']['removable_value_near_1_error'] < 1e-3
+    assert d['summary']['functional_equation_max_error'] < 1e-6
+    assert d['summary']['theta_equation_max_error'] < 1e-6
+
+
+def test_rayleigh_quotient_0_over_0():
+    d = load('rayleigh_quotient_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['max_error_2d'] < 1e-6
+    assert d['summary']['max_error_3d'] < 1e-6
+    assert d['summary']['max_error_random'] < 1e-6
+    assert d['summary']['bounds_hold']
+
+
+def test_cauchy_integral_0_over_0():
+    d = load('cauchy_integral_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['max_limit_error'] < 1e-4
+
+
 
