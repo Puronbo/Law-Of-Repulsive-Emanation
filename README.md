@@ -2,9 +2,20 @@
 
 The Law of Repulsive Emanation (L.O.R.E.): *C0 is measured, not chosen.*
 
-A measured-physics laboratory and instrument suite: Hamiltonian flow on the Poincaré disk under the Law of Repulsive Emanation (*C0 is measured, not chosen*), a formal proof hierarchy (27 items: axioms → lemmas → theorems → corollaries → extended), a derived fold theorem, a decentralized consensus flow that has been run on the whole 1.9M-site internet, and a from-scratch prime count verified exact. Built from that corpus: the **universal calendar** (every civilization's calendar on one exact, untruncated day axis), the **AI-performable-professions & text-mandate instrument**, **packaging-line systems**, and a browser lab. The repo ships the exact numpy-only balance-flow SDK (`puno_flow`), a verdict experiment catalog, and the full proof/theory books.
+A measured-physics laboratory and instrument suite: Hamiltonian flow on the Poincaré disk under the Law of Repulsive Emanation (*C0 is measured, not chosen*), a formal proof hierarchy (27 items: axioms → lemmas → theorems → corollaries → extended), a derived fold theorem, a decentralized consensus flow that has been run on the whole 1.9M-site internet, and a from-scratch prime count verified exact. **The entire framework is a 0/0 structure** — C₀ = V(q₀)/(N − |context|) is 0/0 at full context, and g(s) = |ζ(s)|/|ζ(1−s)| is 0/0 at every zeta zero. The four companion papers below prove the classification, the probe, and the reduction.
 
-## Verified Findings (2026-08-04)
+### Companion Papers (2026-08-17)
+
+| Paper | What it proves |
+|---|---|
+| [`WHAT_ZERO_IS.pdf`](docs/WHAT_ZERO_IS.pdf) | Zero has three identities; c/0 is a pole, 0/0 is indeterminate (Thm 3.1, 5.1) |
+| [`WHERE_0_OVER_0_SOLVES.pdf`](docs/WHERE_0_OVER_0_SOLVES.pdf) | 0/0 as structural probe in 10 open problems (RH, GRH, BSD, Riemann-Roch, renormalization, Poincare-Hopf, argument principle, Atiyah-Singer, abc, gradient descent) |
+| [`IF_C0_IS_0_OVER_0.pdf`](docs/IF_C0_IS_0_OVER_0.pdf) | C₀ = 0/0; viscosity solution = unique removable value; calendar, consensus, and prime count are all 0/0 |
+| [`RH_REDUCTION_PAPER.pdf`](docs/RH_REDUCTION_PAPER.pdf) | g(s) = \|ζ(s)\|/\|ζ(1−s)\| is identically 1 iff RH; combined with Rodgers–Tao Λ ≥ 0, RH ⟺ Λ = 0 |
+
+Source: `generate_companion_papers.py`, `generate_rh_paper.py`.
+
+## Verified Findings (2026-08-17)
 
 Every number below was re-verified by rerun or direct read of the persisted data file. Full claim-by-claim declaration with references: `docs/NOVELTY_AND_CREATION.md`.
 
