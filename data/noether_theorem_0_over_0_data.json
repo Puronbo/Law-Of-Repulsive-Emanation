@@ -1,0 +1,121 @@
+{
+  "tests": [],
+  "summary": {
+    "supported": true,
+    "free_particle_conserved": true,
+    "harmonic_energy_conserved": true,
+    "pendulum_energy_conserved": true,
+    "symmetry_check_correct": true,
+    "honest_wall": "numerical Euler-Lagrange integration; drift is numerical"
+  },
+  "free_particle": {
+    "note": "Free particle: p = q_dot conserved (translational symmetry)",
+    "tests": [
+      {
+        "initial_p": 3.0,
+        "final_p": 2.9999999950902634,
+        "max_drift": 4.909736617264571e-09,
+        "conserved": true
+      }
+    ]
+  },
+  "harmonic_oscillator": {
+    "note": "Harmonic oscillator: E = (1/2)q_dot^2 + (1/2)q^2 conserved",
+    "tests": [
+      {
+        "E_initial": 0.5,
+        "E_final": 0.5023915882464116,
+        "E_mean": 0.5012485468630419,
+        "E_std": 0.0007428035430628693,
+        "relative_drift": 0.004769923285214306,
+        "conserved": true
+      }
+    ]
+  },
+  "symmetry_check": {
+    "note": "Translation dL/dq = 0 for free (symmetric), != 0 for harmonic",
+    "tests": [
+      {
+        "eps": 0.1,
+        "dL_free_dq": 0.0,
+        "dL_harmonic_dq": -1.0499999999999998,
+        "free_is_symmetric": true,
+        "harmonic_not_symmetric": true
+      },
+      {
+        "eps": 0.01,
+        "dL_free_dq": 0.0,
+        "dL_harmonic_dq": -1.0050000000000114,
+        "free_is_symmetric": true,
+        "harmonic_not_symmetric": true
+      },
+      {
+        "eps": 0.001,
+        "dL_free_dq": 0.0,
+        "dL_harmonic_dq": -1.0004999999999598,
+        "free_is_symmetric": true,
+        "harmonic_not_symmetric": true
+      },
+      {
+        "eps": 0.0001,
+        "dL_free_dq": 0.0,
+        "dL_harmonic_dq": -1.000049999999586,
+        "free_is_symmetric": true,
+        "harmonic_not_symmetric": true
+      }
+    ]
+  },
+  "pendulum": {
+    "note": "Pendulum: E conserved (rotational symmetry around pivot)",
+    "tests": [
+      {
+        "E_initial": -8.609084932144556,
+        "E_final": -8.550231468455117,
+        "E_std": 0.01677705687776793,
+        "relative_drift": 0.006809540245200792,
+        "conserved": true
+      }
+    ]
+  },
+  "momentum_0_over_0": {
+    "note": "p/q_dot = m = 1; at q_dot=0: 0/0 removable = 1 (mass)",
+    "tests": [
+      {
+        "q_dot": 1.0,
+        "momentum": 1.0,
+        "ratio_p_over_qdot": 1.0,
+        "is_one": true
+      },
+      {
+        "q_dot": 0.5,
+        "momentum": 0.5,
+        "ratio_p_over_qdot": 1.0,
+        "is_one": true
+      },
+      {
+        "q_dot": 0.1,
+        "momentum": 0.1,
+        "ratio_p_over_qdot": 1.0,
+        "is_one": true
+      },
+      {
+        "q_dot": 0.01,
+        "momentum": 0.01,
+        "ratio_p_over_qdot": 1.0,
+        "is_one": true
+      },
+      {
+        "q_dot": 0.001,
+        "momentum": 0.001,
+        "ratio_p_over_qdot": 1.0,
+        "is_one": true
+      },
+      {
+        "q_dot": 0,
+        "momentum": 0,
+        "ratio_p_over_qdot": "0/0",
+        "removable_value": 1.0
+      }
+    ]
+  }
+}

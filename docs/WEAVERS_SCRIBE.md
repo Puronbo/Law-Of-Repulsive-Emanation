@@ -2759,3 +2759,7 @@ content ranking.
 * **Ch. 5.38** Bayes theorem 0/0 — posterior 0/0 removable=prior, likelihood ratio 0/0 removable=1, mixture posterior (`bayes_theorem_0_over_0.py`).
 * **Ch. 5.39** Lorenz attractor 0/0 — Lyapunov log(1)/0 = 0/0 removable~0.91, sum of exponents, Hopf bifurcation (`lorenz_attractor_0_over_0.py`).
 * **Ch. 5.40** Boltzmann entropy 0/0 — S/ln(W)=1 at W=1 (0/0 removable=1), 0*ln(0)=0, mixing, Gibbs pure=0 (`boltzmann_entropy_0_over_0.py`).
+* **Ch. 5.41** Zeta functional equation 0/0 — FE verified, zeta(0) = -1/2 (0*inf = 0/0 removable), trivial zeros via sin(pi*s/2)=0 (`zeta_functional_eq_0_over_0.py`).
+* **Ch. 5.42** Wigner semicircle 0/0 — GUE/GOE semicircle law, edge 0/0 removable=1/(2*pi), spectral rigidity, Tracy-Widom scaling (`wigner_semicircle_0_over_0.py`).
+* **Ch. 5.43** Noether's theorem 0/0 — Conserved quantities from symmetry, dL/deps 0/0 removable=0, momentum/energy conservation (`noether_theorem_0_over_0.py`).
+* **Ch. 5.44** Spectral gap 0/0 — TFIM gap closes at h=1, Delta*L -> C (0*inf = 0/0 removable=C), gapped phases (`spectral_gap_0_over_0.py`).

@@ -2672,4 +2672,37 @@ def test_boltzmann_entropy_0_over_0():
     assert d['summary']['gibbs_uniform_correct']
 
 
+def test_zeta_functional_eq_0_over_0():
+    d = load('zeta_functional_eq_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['functional_equation_holds']
+    assert d['summary']['zeta_zero_removable']
+    assert d['summary']['trivial_zeros_correct']
+
+
+def test_wigner_semicircle_0_over_0():
+    d = load('wigner_semicircle_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['semicircle_fits']
+    assert d['summary']['edge_0_over_0_removable']
+    assert d['summary']['rigidity_converges']
+    assert d['summary']['goe_fits']
+
+
+def test_noether_theorem_0_over_0():
+    d = load('noether_theorem_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['free_particle_conserved']
+    assert d['summary']['harmonic_energy_conserved']
+    assert d['summary']['pendulum_energy_conserved']
+    assert d['summary']['symmetry_check_correct']
+
+
+def test_spectral_gap_0_over_0():
+    d = load('spectral_gap_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['critical_scaling_converges']
+    assert d['summary']['away_from_criticality_grows']
+
+
 

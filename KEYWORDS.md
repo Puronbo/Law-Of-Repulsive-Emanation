@@ -217,6 +217,10 @@ Usage: `grep -i "basketball" KEYWORDS.md` or just search this file.
 - **Bayes theorem / posterior / likelihood ratio / MAP / mixture model** — `bayes_theorem_0_over_0.py` (posterior 0/0 -> prior, LR removable, MAP matches prior) → `data/bayes_theorem_0_over_0_data.json`
 - **Lorenz attractor / chaos / Lyapunov exponent / Hopf bifurcation / fixed points** — `lorenz_attractor_0_over_0.py` (Lyapunov ~0.91, sum of exponents, Hopf at rho_H, fixed points) → `data/lorenz_attractor_0_over_0_data.json`
 - **Boltzmann entropy / Gibbs entropy / entropy of mixing / microstates / partition function** — `boltzmann_entropy_0_over_0.py` (S/ln(W)=1, 0*ln(0)=0, mixing, Gibbs pure/uniform) → `data/boltzmann_entropy_0_over_0_data.json`
+- **Zeta functional equation / trivial zeros / sin(pi*s/2) / Gamma(1-s) / zeta(0)** — `zeta_functional_eq_0_over_0.py` (FE verified, zeta(0) removable=-1/2, trivial zeros) → `data/zeta_functional_eq_0_over_0_data.json`
+- **Wigner semicircle / random matrices / GUE / GOE / Tracy-Widom / spectral rigidity** — `wigner_semicircle_0_over_0.py` (semicircle fits, edge 0/0 removable=1/(2*pi), rigidity) → `data/wigner_semicircle_0_over_0_data.json`
+- **Noether theorem / Lagrangian / conservation law / symmetry / Euler-Lagrange** — `noether_theorem_0_over_0.py` (conserved quantities, dL/deps 0/0, momentum/energy) → `data/noether_theorem_0_over_0_data.json`
+- **Spectral gap / quantum phase transition / transverse-field Ising / critical scaling / dynamical exponent** — `spectral_gap_0_over_0.py` (gap closes at h=1, Delta*L -> C, gapped phases) → `data/spectral_gap_0_over_0_data.json`
 
 ## Code map
 

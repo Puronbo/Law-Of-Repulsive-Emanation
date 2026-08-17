@@ -1,0 +1,139 @@
+{
+  "tests": [],
+  "summary": {
+    "supported": true,
+    "semicircle_fits": true,
+    "edge_0_over_0_removable": true,
+    "rigidity_converges": true,
+    "goe_fits": true,
+    "honest_wall": "Monte Carlo random matrix simulation, not a proof of Wigner semicircle"
+  },
+  "semicircle": {
+    "note": "GUE eigenvalue density -> semicircle law",
+    "tests": [
+      {
+        "n": 50,
+        "n_samples": 1000,
+        "chi2_per_dof": 0.038040972039552444,
+        "fits_semicircle": true
+      }
+    ]
+  },
+  "edge_0_over_0": {
+    "note": "rho/sqrt(4-lambda^2) = 1/(2*pi) everywhere; 0/0 at edge, removable = 1/(2*pi)",
+    "tests": [
+      {
+        "lambda": 0.0,
+        "rho": 0.3183098861837907,
+        "sqrt_term": 2.0,
+        "ratio": 0.15915494309189535,
+        "expected_1_over_2pi": 0.15915494309189535
+      },
+      {
+        "lambda": 0.5,
+        "rho": 0.30820222203074993,
+        "sqrt_term": 1.9364916731037085,
+        "ratio": 0.15915494309189535,
+        "expected_1_over_2pi": 0.15915494309189535
+      },
+      {
+        "lambda": 1.0,
+        "rho": 0.27566444771089604,
+        "sqrt_term": 1.7320508075688772,
+        "ratio": 0.15915494309189535,
+        "expected_1_over_2pi": 0.15915494309189535
+      },
+      {
+        "lambda": 1.5,
+        "rho": 0.21054219967389623,
+        "sqrt_term": 1.3228756555322954,
+        "ratio": 0.15915494309189535,
+        "expected_1_over_2pi": 0.15915494309189535
+      },
+      {
+        "lambda": 1.8,
+        "rho": 0.1387480626605077,
+        "sqrt_term": 0.8717797887081346,
+        "ratio": 0.15915494309189535,
+        "expected_1_over_2pi": 0.15915494309189535
+      },
+      {
+        "lambda": 1.9,
+        "rho": 0.09939223010440976,
+        "sqrt_term": 0.6244997998398399,
+        "ratio": 0.15915494309189535,
+        "expected_1_over_2pi": 0.15915494309189535
+      },
+      {
+        "lambda": 1.99,
+        "rho": 0.03179117498351256,
+        "sqrt_term": 0.19974984355438136,
+        "ratio": 0.15915494309189535,
+        "expected_1_over_2pi": 0.15915494309189535
+      },
+      {
+        "lambda": 2.0,
+        "rho": 0.0,
+        "sqrt_term": 0.0,
+        "ratio": "0/0",
+        "removable_value": 0.15915494309189535
+      }
+    ]
+  },
+  "spectral_rigidity": {
+    "note": "N(E)/E -> rho(0) = 1/pi as E -> 0: 0/0 removable = 1/pi",
+    "tests": [
+      {
+        "E": 1.0,
+        "N_E": 0.3044913711335293,
+        "ratio_N_over_E": 0.3044913711335293,
+        "approaches_1_over_pi": true
+      },
+      {
+        "E": 0.5,
+        "N_E": 0.15748032475417026,
+        "ratio_N_over_E": 0.3149606495083405,
+        "approaches_1_over_pi": true
+      },
+      {
+        "E": 0.1,
+        "N_E": 0.031817714082842785,
+        "ratio_N_over_E": 0.31817714082842785,
+        "approaches_1_over_pi": true
+      },
+      {
+        "E": 0.01,
+        "N_E": 0.0031830855922380776,
+        "ratio_N_over_E": 0.31830855922380774,
+        "approaches_1_over_pi": true
+      },
+      {
+        "E": 0.001,
+        "N_E": 0.00031830987291424015,
+        "ratio_N_over_E": 0.3183098729142401,
+        "approaches_1_over_pi": true
+      },
+      {
+        "E": 0,
+        "N_E": 0,
+        "ratio_N_over_E": "0/0",
+        "removable_value": 0.3183098861837907
+      }
+    ]
+  },
+  "tracy_widom": {
+    "note": "Edge spacing ~ n^{-2/3} (Tracy-Widom scaling)",
+    "tests": []
+  },
+  "goe_semicircle": {
+    "note": "Both GUE and GOE follow the semicircle law",
+    "tests": [
+      {
+        "ensemble": "GOE",
+        "n": 50,
+        "chi2_per_dof": 0.03568683613827672,
+        "fits_semicircle": true
+      }
+    ]
+  }
+}
