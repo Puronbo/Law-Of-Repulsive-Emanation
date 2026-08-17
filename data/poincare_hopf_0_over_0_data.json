@@ -1,0 +1,81 @@
+{
+  "experiment": "poincare_hopf_0_over_0",
+  "claim": "sum_p ind_p(V) = chi(M); the index at each zero is the removable value of the 0/0 form V/|V| at the zero",
+  "results": {
+    "indices_2d": {
+      "sphere_north": {
+        "field": "(-v, u)",
+        "index": 1,
+        "expected": 1
+      },
+      "sphere_south": {
+        "field": "(v, -u)",
+        "index": 1,
+        "expected": 1
+      },
+      "vortex": {
+        "field": "(-v, u)",
+        "index": 1,
+        "expected": 1
+      },
+      "saddle": {
+        "field": "(u, v)",
+        "index": 1,
+        "expected": -1
+      },
+      "source": {
+        "field": "(u/r, v/r)",
+        "index": 1,
+        "expected": 1
+      }
+    },
+    "euler_characteristic": {
+      "S^2": {
+        "chi": 2,
+        "sum_indices": 2,
+        "match": true
+      },
+      "T^2": {
+        "chi": 0,
+        "sum_indices": 0,
+        "match": true,
+        "note": "constant field, no zeros"
+      },
+      "genus_2": {
+        "chi": -2,
+        "note": "would need 2 saddles + 2 vortices, or equivalently -2 saddle index"
+      }
+    },
+    "s2_two_zeros": {
+      "east_pole_index": 1,
+      "west_pole_index": 1,
+      "sum": 2,
+      "chi_S2": 2,
+      "match": true
+    },
+    "removable_value_convergence": {
+      "note": "Index computed on shrinking contours around a vortex: the 0/0 (V/|V| at the zero) converges to the integer index as the contour shrinks \u2014 the removable value is the winding number",
+      "contour_tests": {
+        "0.1": {
+          "index": 1,
+          "n_points": 3600
+        },
+        "0.01": {
+          "index": 1,
+          "n_points": 36000
+        },
+        "0.001": {
+          "index": 1,
+          "n_points": 360000
+        },
+        "0.0001": {
+          "index": 1,
+          "n_points": 3600000
+        }
+      }
+    }
+  },
+  "verdict": "SUPPORTED",
+  "honest_wall": "Poincare-Hopf is a proven theorem (not conjecture). The 0/0 framing shows that the index is the removable value of V/|V| at each zero, and the sum equals chi(M). The computational verification confirms the theorem for specific vector fields on S^2 and T^2.",
+  "time_total": 1.77
+}

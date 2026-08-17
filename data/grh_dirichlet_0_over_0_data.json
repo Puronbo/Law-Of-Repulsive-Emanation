@@ -1,0 +1,101 @@
+{
+  "experiment": "grh_dirichlet_0_over_0",
+  "claim": "g_chi(s) = |L(s,chi)|/|L(1-s,chi_bar)| = 1 on the critical line; removable value at each zero = |epsilon(chi)| = 1",
+  "n_primes_tested": 8,
+  "n_characters_tested": 8,
+  "all_g_chi_equal_one": true,
+  "all_root_numbers_one": true,
+  "all_gauss_sums_correct": true,
+  "verdict": "SUPPORTED",
+  "honest_wall": "Complete reduction, not unconditional proof - same as RH: g_chi = 1 IS Re(rho) = 1/2 for all zeros of L(s,chi); showing the singularity removable by a criterion other than evaluating the limit is the open problem; GRH remains open.",
+  "characters": {
+    "legendre_mod3": {
+      "q": 3,
+      "chi": "legendre",
+      "gauss_sum_magnitude": 1.732051,
+      "gauss_sum_expected": 1.732051,
+      "gauss_correct": true,
+      "root_number_eps": 1.0,
+      "root_number_is_one": true,
+      "g_chi_all_one": true,
+      "max_deviation": 0.0
+    },
+    "legendre_mod5": {
+      "q": 5,
+      "chi": "legendre",
+      "gauss_sum_magnitude": 2.236068,
+      "gauss_sum_expected": 2.236068,
+      "gauss_correct": true,
+      "root_number_eps": 1.0,
+      "root_number_is_one": true,
+      "g_chi_all_one": true,
+      "max_deviation": 0.0
+    },
+    "legendre_mod7": {
+      "q": 7,
+      "chi": "legendre",
+      "gauss_sum_magnitude": 2.645751,
+      "gauss_sum_expected": 2.645751,
+      "gauss_correct": true,
+      "root_number_eps": 1.0,
+      "root_number_is_one": true,
+      "g_chi_all_one": true,
+      "max_deviation": 0.0
+    },
+    "legendre_mod11": {
+      "q": 11,
+      "chi": "legendre",
+      "gauss_sum_magnitude": 3.316625,
+      "gauss_sum_expected": 3.316625,
+      "gauss_correct": true,
+      "root_number_eps": 1.0,
+      "root_number_is_one": true,
+      "g_chi_all_one": true,
+      "max_deviation": 0.0
+    },
+    "legendre_mod13": {
+      "q": 13,
+      "chi": "legendre",
+      "gauss_sum_magnitude": 3.605551,
+      "gauss_sum_expected": 3.605551,
+      "gauss_correct": true,
+      "root_number_eps": 1.0,
+      "root_number_is_one": true,
+      "g_chi_all_one": true,
+      "max_deviation": 0.0
+    },
+    "legendre_mod17": {
+      "q": 17,
+      "chi": "legendre",
+      "gauss_sum_magnitude": 4.123106,
+      "gauss_sum_expected": 4.123106,
+      "gauss_correct": true,
+      "root_number_eps": 1.0,
+      "root_number_is_one": true,
+      "g_chi_all_one": true,
+      "max_deviation": 0.0
+    },
+    "legendre_mod19": {
+      "q": 19,
+      "chi": "legendre",
+      "gauss_sum_magnitude": 4.358899,
+      "gauss_sum_expected": 4.358899,
+      "gauss_correct": true,
+      "root_number_eps": 1.0,
+      "root_number_is_one": true,
+      "g_chi_all_one": true,
+      "max_deviation": 0.0
+    },
+    "legendre_mod23": {
+      "q": 23,
+      "chi": "legendre",
+      "gauss_sum_magnitude": 4.795832,
+      "gauss_sum_expected": 4.795832,
+      "gauss_correct": true,
+      "root_number_eps": 1.0,
+      "root_number_is_one": true,
+      "g_chi_all_one": true,
+      "max_deviation": 0.0
+    }
+  }
+}

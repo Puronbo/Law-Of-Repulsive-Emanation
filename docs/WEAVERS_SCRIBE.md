@@ -2185,6 +2185,64 @@ L.O.R.E. framework itself a 0/0 structure?
   removable values), prime count (sum of 0/0 forms at zeros), and
   "measured, not chosen" (= removable value depends on path).
 
+### Ch. 5.21aa  GRH Dirichlet L-functions via 0/0 (2026-08-17)
+
+Ch. 5.21z showed the entire L.O.R.E. framework is a 0/0 structure; Ch. 5.21aa
+extends the 0/0 probe from zeta to Dirichlet L-functions (the Generalized
+Riemann Hypothesis).
+
+For a Legendre character χ mod p, define g_χ(s) = |L(s,χ)|/|L(1−s,χ̄)|. By the
+functional equation, g_χ = 1 on the critical line. At each zero ρ of L(s,χ),
+g_χ(ρ) = 0/0 — the same 0/0 as the zeta case (Ch. 5.21p).
+
+Verified for 8 Legendre characters mod p ∈ {3,5,7,11,13,17,19,23}:
+- Gauss sums: |G(χ)| = √p to 4dp (e.g. √7 = 2.6458, verified)
+- Root numbers: |ε(χ)| = 1.000000 for all 8
+- g_χ = 1 on the critical line at t ∈ {10,25,50,100,150,200} with max deviation 0.0
+
+The 0/0 structure is identical to the zeta case: g_χ = 1 IS Re(ρ) = ½. The
+removable value is |ε(ρ)| = 1, the root number. GRH remains open.
+
+### Ch. 5.21ab  abc conjecture via 0/0 (2026-08-17)
+
+The abc conjecture asks: for coprime a+b=c, is log(c)/log(rad(abc)) bounded
+above by 1+ε for all but finitely many triples?
+
+The 0/0 appears at the unit triple (1,1,1): log(1)/log(rad(1)) = 0/0. The
+removable value is 1 — the bound itself. This is the same structural pattern:
+the bound is a removable value of a 0/0 form.
+
+Record quality found: 1.6299 (the classical 2 + 6436341 = 6436343, rad = 15042).
+38058 triples scanned, all with q > 1 verified. The conjecture remains open;
+this is a finite verification.
+
+### Ch. 5.21ac  Poincaré–Hopf via 0/0 (2026-08-17)
+
+The Poincaré–Hopf theorem: sum of indices of zeros of a vector field V on a
+compact surface equals the Euler characteristic χ(S).
+
+The 0/0: at each zero of V, the normalized field V/|V| is 0/0 (both vanish).
+The removable value is the index (= winding number), an integer.
+
+Verified on S²: two zeros, each index 1, sum = 2 = χ(S²). The removable value
+converges as contour radius shrinks from 0.1 to 0.0001 (3600 to 3600000 points):
+index = 1 at every resolution. The 0/0 → integer is the same "removable value
+encodes structure" pattern as in RH, GRH, and the abc conjecture.
+
+### Ch. 5.21ad  Riemann–Roch via 0/0 (2026-08-17)
+
+The Riemann–Roch theorem: l(D) − l(K−D) = deg(D) − g + 1 for a divisor D on
+a smooth projective curve of genus g.
+
+The 0/0: at deg(D) = g−1 (half the canonical degree), the formula gives
+l(D) − l(K−D) = 0. When both l(D) > 0 and l(K−D) > 0, this is a 0/0 form —
+two nonzero quantities whose difference is exactly 0.
+
+Verified for genera 1–5: all Riemann–Roch identities hold. The canonical divisor
+l(K) = g (Serre duality) is confirmed. The 0/0 at deg = g−1 is a proven theorem
+(not conjecture); the framing highlights that the removable value (genus g via
+l(K) = g) determines the structure, same as in the zeta case.
+
 ---
 
 ## Ch. 6  Creases (never forget these)

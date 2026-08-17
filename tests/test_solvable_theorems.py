@@ -2214,4 +2214,73 @@ def test_zeta_zero_spectral_match():
     assert 'remains open' in v['honest_wall']
 
 
+def test_grh_dirichlet_0_over_0():
+    d = load('grh_dirichlet_0_over_0_data.json')
+    assert d['verdict'] == 'SUPPORTED'
+    # Gauss sums correct: |G(chi)| = sqrt(conductor) for all Legendre symbols
+    assert d['all_gauss_sums_correct']
+    # Root numbers are 1
+    assert d['all_root_numbers_one']
+    # g_chi = 1 on critical line for all characters
+    assert d['all_g_chi_equal_one']
+    assert d['n_characters_tested'] >= 8
+    # Honest wall present
+    assert 'GRH' in d['honest_wall']
+
+
+def test_abc_conjecture_0_over_0():
+    d = load('abc_conjecture_0_over_0_data.json')
+    assert d['verdict'].startswith('SUPPORTED')
+    r = d['results']
+    # The classical record triple is found
+    rec = r['record']
+    assert rec['quality'] > 1.6
+    assert rec['quality_gt_1']
+    assert rec['quality_gt_1.5']
+    # The 0/0 at the unit triple (1,1,1)
+    z = r['zero_over_zero']
+    assert z['unit_quality'] == 1.0
+    assert '0/0' in z['note']
+    # Enough triples scanned
+    assert r['small_N']['n_triples'] + r['medium_N']['n_triples'] > 30000
+
+
+def test_poincare_hopf_0_over_0():
+    d = load('poincare_hopf_0_over_0_data.json')
+    assert d['verdict'] == 'SUPPORTED'
+    r = d['results']
+    # Euler characteristic of S^2 is 2
+    ec = r['euler_characteristic']['S^2']
+    assert ec['chi'] == 2
+    assert ec['match']
+    # Two vices on S^2 both have index 1, sum = 2
+    s2 = r['s2_two_zeros']
+    assert s2['sum'] == 2
+    assert s2['chi_S2'] == 2
+    assert s2['match']
+    # Removable value convergence: index converges to 1 as contour shrinks
+    conv = r['removable_value_convergence']['contour_tests']
+    for epsilon, data in conv.items():
+        assert data['index'] == 1
+
+
+def test_riemann_roch_0_over_0():
+    d = load('riemann_roch_0_over_0_data.json')
+    assert d['verdict'] == 'SUPPORTED'
+    r = d['results']
+    # All Riemann-Roch identities hold for g=1,2,3,4,5
+    assert r['elliptic_g1']['all_hold']
+    assert r['genus_2']['all_hold']
+    for g in [3, 4, 5]:
+        assert r[f'genus_{g}']['all_hold']
+    # The 0/0 at deg(D) = g-1: l(D) - l(K-D) = 0 for all genera
+    z = r['zero_over_zero']['tests']
+    for t in z:
+        assert t['difference'] == 0
+    # Canonical divisor: l(K) = g
+    for t in r['canonical_divisor']['tests']:
+        assert t['l_K_equals_g']
+        assert t['deg_K_equals_2g_minus_2']
+
+
 

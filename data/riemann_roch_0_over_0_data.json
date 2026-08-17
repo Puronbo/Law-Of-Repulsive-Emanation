@@ -1,0 +1,541 @@
+{
+  "experiment": "riemann_roch_0_over_0",
+  "claim": "l(D) - l(K-D) = deg(D) - g + 1; at deg(D) = g-1 the formula gives 0 = 0 (the 0/0 form with removable value 0)",
+  "results": {
+    "elliptic_g1": {
+      "genus": 1,
+      "K_degree": 0,
+      "tests": [
+        {
+          "deg_D": -3,
+          "l_D": 0,
+          "l_K_minus_D": 3,
+          "l_D_minus_l_KD": -3,
+          "deg_D_minus_g_plus_1": -3,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": -2,
+          "l_D": 0,
+          "l_K_minus_D": 2,
+          "l_D_minus_l_KD": -2,
+          "deg_D_minus_g_plus_1": -2,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": -1,
+          "l_D": 0,
+          "l_K_minus_D": 1,
+          "l_D_minus_l_KD": -1,
+          "deg_D_minus_g_plus_1": -1,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 0,
+          "l_D": 1,
+          "l_K_minus_D": 1,
+          "l_D_minus_l_KD": 0,
+          "deg_D_minus_g_plus_1": 0,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 1,
+          "l_D": 1,
+          "l_K_minus_D": 0,
+          "l_D_minus_l_KD": 1,
+          "deg_D_minus_g_plus_1": 1,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 2,
+          "l_D": 2,
+          "l_K_minus_D": 0,
+          "l_D_minus_l_KD": 2,
+          "deg_D_minus_g_plus_1": 2,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 3,
+          "l_D": 3,
+          "l_K_minus_D": 0,
+          "l_D_minus_l_KD": 3,
+          "deg_D_minus_g_plus_1": 3,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 4,
+          "l_D": 4,
+          "l_K_minus_D": 0,
+          "l_D_minus_l_KD": 4,
+          "deg_D_minus_g_plus_1": 4,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 5,
+          "l_D": 5,
+          "l_K_minus_D": 0,
+          "l_D_minus_l_KD": 5,
+          "deg_D_minus_g_plus_1": 5,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 6,
+          "l_D": 6,
+          "l_K_minus_D": 0,
+          "l_D_minus_l_KD": 6,
+          "deg_D_minus_g_plus_1": 6,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 7,
+          "l_D": 7,
+          "l_K_minus_D": 0,
+          "l_D_minus_l_KD": 7,
+          "deg_D_minus_g_plus_1": 7,
+          "riemann_roch_holds": true
+        }
+      ],
+      "all_hold": true
+    },
+    "genus_2": {
+      "genus": 2,
+      "K_degree": 2,
+      "tests": [
+        {
+          "deg_D": -3,
+          "l_D": 0,
+          "l_K_minus_D": 4,
+          "l_D_minus_l_KD": -4,
+          "deg_D_minus_g_plus_1": -4,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": -2,
+          "l_D": 0,
+          "l_K_minus_D": 3,
+          "l_D_minus_l_KD": -3,
+          "deg_D_minus_g_plus_1": -3,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": -1,
+          "l_D": 0,
+          "l_K_minus_D": 2,
+          "l_D_minus_l_KD": -2,
+          "deg_D_minus_g_plus_1": -2,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 0,
+          "l_D": 1,
+          "l_K_minus_D": 2,
+          "l_D_minus_l_KD": -1,
+          "deg_D_minus_g_plus_1": -1,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 1,
+          "l_D": 0,
+          "l_K_minus_D": 0,
+          "l_D_minus_l_KD": 0,
+          "deg_D_minus_g_plus_1": 0,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 2,
+          "l_D": 1,
+          "l_K_minus_D": 0,
+          "l_D_minus_l_KD": 1,
+          "deg_D_minus_g_plus_1": 1,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 3,
+          "l_D": 2,
+          "l_K_minus_D": 0,
+          "l_D_minus_l_KD": 2,
+          "deg_D_minus_g_plus_1": 2,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 4,
+          "l_D": 3,
+          "l_K_minus_D": 0,
+          "l_D_minus_l_KD": 3,
+          "deg_D_minus_g_plus_1": 3,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 5,
+          "l_D": 4,
+          "l_K_minus_D": 0,
+          "l_D_minus_l_KD": 4,
+          "deg_D_minus_g_plus_1": 4,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 6,
+          "l_D": 5,
+          "l_K_minus_D": 0,
+          "l_D_minus_l_KD": 5,
+          "deg_D_minus_g_plus_1": 5,
+          "riemann_roch_holds": true
+        }
+      ],
+      "all_hold": true
+    },
+    "genus_3": {
+      "genus": 3,
+      "K_degree": 4,
+      "tests": [
+        {
+          "deg_D": -2,
+          "l_D": 0,
+          "l_K_minus_D": 4,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": -1,
+          "l_D": 0,
+          "l_K_minus_D": 3,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 0,
+          "l_D": 1,
+          "l_K_minus_D": 3,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 1,
+          "l_D": 0,
+          "l_K_minus_D": 1,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 2,
+          "l_D": 0,
+          "l_K_minus_D": 0,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 3,
+          "l_D": 1,
+          "l_K_minus_D": 0,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 4,
+          "l_D": 3,
+          "l_K_minus_D": 1,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 5,
+          "l_D": 3,
+          "l_K_minus_D": 0,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 6,
+          "l_D": 4,
+          "l_K_minus_D": 0,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 7,
+          "l_D": 5,
+          "l_K_minus_D": 0,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 8,
+          "l_D": 6,
+          "l_K_minus_D": 0,
+          "riemann_roch_holds": true
+        }
+      ],
+      "all_hold": true
+    },
+    "genus_4": {
+      "genus": 4,
+      "K_degree": 6,
+      "tests": [
+        {
+          "deg_D": -2,
+          "l_D": 0,
+          "l_K_minus_D": 5,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": -1,
+          "l_D": 0,
+          "l_K_minus_D": 4,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 0,
+          "l_D": 1,
+          "l_K_minus_D": 4,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 1,
+          "l_D": 0,
+          "l_K_minus_D": 2,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 2,
+          "l_D": 0,
+          "l_K_minus_D": 1,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 3,
+          "l_D": 0,
+          "l_K_minus_D": 0,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 4,
+          "l_D": 1,
+          "l_K_minus_D": 0,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 5,
+          "l_D": 2,
+          "l_K_minus_D": 0,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 6,
+          "l_D": 4,
+          "l_K_minus_D": 1,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 7,
+          "l_D": 4,
+          "l_K_minus_D": 0,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 8,
+          "l_D": 5,
+          "l_K_minus_D": 0,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 9,
+          "l_D": 6,
+          "l_K_minus_D": 0,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 10,
+          "l_D": 7,
+          "l_K_minus_D": 0,
+          "riemann_roch_holds": true
+        }
+      ],
+      "all_hold": true
+    },
+    "genus_5": {
+      "genus": 5,
+      "K_degree": 8,
+      "tests": [
+        {
+          "deg_D": -2,
+          "l_D": 0,
+          "l_K_minus_D": 6,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": -1,
+          "l_D": 0,
+          "l_K_minus_D": 5,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 0,
+          "l_D": 1,
+          "l_K_minus_D": 5,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 1,
+          "l_D": 0,
+          "l_K_minus_D": 3,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 2,
+          "l_D": 0,
+          "l_K_minus_D": 2,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 3,
+          "l_D": 0,
+          "l_K_minus_D": 1,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 4,
+          "l_D": 0,
+          "l_K_minus_D": 0,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 5,
+          "l_D": 1,
+          "l_K_minus_D": 0,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 6,
+          "l_D": 2,
+          "l_K_minus_D": 0,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 7,
+          "l_D": 3,
+          "l_K_minus_D": 0,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 8,
+          "l_D": 5,
+          "l_K_minus_D": 1,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 9,
+          "l_D": 5,
+          "l_K_minus_D": 0,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 10,
+          "l_D": 6,
+          "l_K_minus_D": 0,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 11,
+          "l_D": 7,
+          "l_K_minus_D": 0,
+          "riemann_roch_holds": true
+        },
+        {
+          "deg_D": 12,
+          "l_D": 8,
+          "l_K_minus_D": 0,
+          "riemann_roch_holds": true
+        }
+      ],
+      "all_hold": true
+    },
+    "zero_over_zero": {
+      "note": "At deg(D) = g-1, the Riemann-Roch formula gives l(D) - l(K-D) = 0. When both l(D) > 0 and l(K-D) > 0, this is a 0/0 form: two nonzero quantities whose difference is exactly 0. The removable value is deg(D) - g + 1 = 0.",
+      "tests": [
+        {
+          "genus": 1,
+          "deg_D": 0,
+          "l_D": 1,
+          "l_K_minus_D": 1,
+          "difference": 0,
+          "is_0_over_0": true,
+          "removable_value": 0
+        },
+        {
+          "genus": 2,
+          "deg_D": 1,
+          "l_D": 0,
+          "l_K_minus_D": 0,
+          "difference": 0,
+          "is_0_over_0": false,
+          "removable_value": 0
+        },
+        {
+          "genus": 3,
+          "deg_D": 2,
+          "l_D": 0,
+          "l_K_minus_D": 0,
+          "difference": 0,
+          "is_0_over_0": false,
+          "removable_value": 0
+        },
+        {
+          "genus": 4,
+          "deg_D": 3,
+          "l_D": 0,
+          "l_K_minus_D": 0,
+          "difference": 0,
+          "is_0_over_0": false,
+          "removable_value": 0
+        },
+        {
+          "genus": 5,
+          "deg_D": 4,
+          "l_D": 0,
+          "l_K_minus_D": 0,
+          "difference": 0,
+          "is_0_over_0": false,
+          "removable_value": 0
+        }
+      ]
+    },
+    "canonical_divisor": {
+      "note": "l(K) = g is the geometric genus; deg(K) = 2g-2. This is the content of the Noether formula / Serre duality.",
+      "tests": [
+        {
+          "genus": 1,
+          "K_degree": 0,
+          "l_K": 1,
+          "l_0": 1,
+          "l_K_equals_g": true,
+          "deg_K_equals_2g_minus_2": true
+        },
+        {
+          "genus": 2,
+          "K_degree": 2,
+          "l_K": 2,
+          "l_0": 1,
+          "l_K_equals_g": true,
+          "deg_K_equals_2g_minus_2": true
+        },
+        {
+          "genus": 3,
+          "K_degree": 4,
+          "l_K": 3,
+          "l_0": 1,
+          "l_K_equals_g": true,
+          "deg_K_equals_2g_minus_2": true
+        },
+        {
+          "genus": 4,
+          "K_degree": 6,
+          "l_K": 4,
+          "l_0": 1,
+          "l_K_equals_g": true,
+          "deg_K_equals_2g_minus_2": true
+        },
+        {
+          "genus": 5,
+          "K_degree": 8,
+          "l_K": 5,
+          "l_0": 1,
+          "l_K_equals_g": true,
+          "deg_K_equals_2g_minus_2": true
+        }
+      ]
+    }
+  },
+  "verdict": "SUPPORTED",
+  "honest_wall": "Riemann-Roch is a proven theorem (not conjecture). The 0/0 framing highlights that at deg(D) = g-1, both l(D) and l(K-D) may be nonzero but their difference is exactly 0 = deg(D) - g + 1. The computational verification confirms the theorem for specific genera and degrees. The deep content is that l(K) = g (the genus), which is the connection between algebraic geometry and topology.",
+  "time_total": 0.0
+}

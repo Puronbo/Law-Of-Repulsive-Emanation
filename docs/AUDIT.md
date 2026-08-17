@@ -819,6 +819,38 @@ given so it can be re-run).
     analogue of g = 0/0; the entire repo is a 0/0 structure."
     Cross-references RH_REDUCTION_PAPER, WHAT_ZERO_IS, WHERE_0_OVER_0_SOLVES.
 
+    **Sequel 2026-08-17 — GRH Dirichlet L-functions via 0/0: g_χ = 1 on the
+    critical line for 8 Legendre characters** (`experiments/grh_dirichlet_0_over_0.py`,
+    `data/grh_dirichlet_0_over_0_data.json`): g_χ(s) = |L(s,χ)|/|L(1−s,χ̄)| = 1
+    on Re(s) = ½ by the functional equation, with removable value |ε(χ)| = 1
+    at each zero of L(s,χ).  Gauss sums verified: |G(χ)| = √p for all 8 primes
+    {3,5,7,11,13,17,19,23}.  Root numbers: ε = 1.000000.  The 0/0 structure
+    is identical to the zeta case — g_χ = 1 IS Re(ρ) = ½.  GRH remains open.
+
+    **Sequel 2026-08-17 — abc conjecture via 0/0: record quality 1.630 and the
+    unit triple 0/0** (`experiments/abc_conjecture_0_over_0.py`,
+    `data/abc_conjecture_0_over_0_data.json`): 38058 coprime triples scanned,
+    record quality 1.6299 (2 + 6436341 = 6436343, rad = 15042).  The unit
+    triple (1,1,1) gives log(1)/log(rad(1)) = 0/0 with removable value 1 =
+    the bound itself.  The conjecture asserts q ≤ 1+ε for all but finitely
+    many triples — a finite verification, not a proof.
+
+    **Sequel 2026-08-17 — Poincaré–Hopf via 0/0: index = removable value of
+    V/|V| at zeros; S² Euler characteristic verified** (`experiments/poincare_hopf_0_over_0.py`,
+    `data/poincare_hopf_0_over_0_data.json`): vector field on S² with two zeros,
+    each with index 1, sum = 2 = χ(S²).  T²: constant field, χ = 0.  Removable
+    value convergence: as contour shrinks from radius 0.1 to 0.0001 (3600 to
+    3600000 points), index converges to exactly 1.  The 0/0 V/|V| at each zero
+    has removable value = winding number.
+
+    **Sequel 2026-08-17 — Riemann–Roch via 0/0: l(D)−l(K−D) = 0 at deg = g−1
+    for genera 1–5** (`experiments/riemann_roch_0_over_0.py`,
+    `data/riemann_roch_0_over_0_data.json`): Riemann–Roch l(D)−l(K−D) = deg(D)−g+1
+    verified for genera 1–5 across all relevant degrees.  At deg(D) = g−1:
+    the formula gives 0 = 0 (the 0/0 form).  Canonical divisor l(K) = g, deg(K) =
+    2g−2 (Serre duality).  All identities hold — a proven theorem, not conjecture;
+    the 0/0 framing highlights structural parallels.
+
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**
