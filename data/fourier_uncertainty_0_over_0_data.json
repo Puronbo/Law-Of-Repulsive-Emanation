@@ -1,0 +1,209 @@
+{
+  "tests": [],
+  "summary": {
+    "supported": true,
+    "all_gaussians_achieve_bound": true,
+    "all_boxcars_exceed_bound": true,
+    "all_scaling_ratios_constant": true,
+    "all_a_limit_ratios_equal_one": true,
+    "bound": 0.07957747154594767,
+    "honest_wall": "numerical verification of the uncertainty principle lower bound and Gaussian optimality, not a proof"
+  },
+  "gaussian_tests": [
+    {
+      "a": 0.1,
+      "sigma_x": 1.5811388300841895,
+      "sigma_xi": 0.050329212104487035,
+      "product": 0.07957747154594766,
+      "ratio_R": 0.9999999999999998,
+      "achieves_bound": true
+    },
+    {
+      "a": 0.5,
+      "sigma_x": 0.7071067811865475,
+      "sigma_xi": 0.11253953951963827,
+      "product": 0.07957747154594767,
+      "ratio_R": 1.0,
+      "achieves_bound": true
+    },
+    {
+      "a": 1.0,
+      "sigma_x": 0.5,
+      "sigma_xi": 0.15915494309189535,
+      "product": 0.07957747154594767,
+      "ratio_R": 1.0,
+      "achieves_bound": true
+    },
+    {
+      "a": 3.141592653589793,
+      "sigma_x": 0.28209479177387814,
+      "sigma_xi": 0.28209479177387814,
+      "product": 0.07957747154594766,
+      "ratio_R": 0.9999999999999998,
+      "achieves_bound": true
+    },
+    {
+      "a": 2.0,
+      "sigma_x": 0.35355339059327373,
+      "sigma_xi": 0.22507907903927654,
+      "product": 0.07957747154594767,
+      "ratio_R": 1.0,
+      "achieves_bound": true
+    },
+    {
+      "a": 5.0,
+      "sigma_x": 0.22360679774997896,
+      "sigma_xi": 0.3558812717085886,
+      "product": 0.07957747154594767,
+      "ratio_R": 1.0,
+      "achieves_bound": true
+    },
+    {
+      "a": 10.0,
+      "sigma_x": 0.15811388300841897,
+      "sigma_xi": 0.5032921210448704,
+      "product": 0.07957747154594769,
+      "ratio_R": 1.0000000000000002,
+      "achieves_bound": true
+    },
+    {
+      "a": 50.0,
+      "sigma_x": 0.07071067811865475,
+      "sigma_xi": 1.1253953951963827,
+      "product": 0.07957747154594767,
+      "ratio_R": 1.0,
+      "achieves_bound": true
+    }
+  ],
+  "boxcar_tests": [
+    {
+      "width": 0.5,
+      "sigma_x": 0.1444355415795805,
+      "sigma_xi": 3.3908409957754433,
+      "product": 0.4897579556350702,
+      "ratio_R": 6.1544799818411695,
+      "exceeds_bound": true
+    },
+    {
+      "width": 1.0,
+      "sigma_x": 0.2854114244262725,
+      "sigma_xi": 2.41224954825933,
+      "product": 0.6884835796403277,
+      "ratio_R": 8.651739823661027,
+      "exceeds_bound": true
+    },
+    {
+      "width": 2.0,
+      "sigma_x": 0.5743794119149703,
+      "sigma_xi": 1.7004425139254549,
+      "product": 0.9766991711437165,
+      "ratio_R": 12.27356376332936,
+      "exceeds_bound": true
+    },
+    {
+      "width": 5.0,
+      "sigma_x": 1.4412570452290467,
+      "sigma_xi": 1.0734742304635827,
+      "product": 1.5471522975274679,
+      "ratio_R": 19.44208916758745,
+      "exceeds_bound": true
+    },
+    {
+      "width": 10.0,
+      "sigma_x": 2.886044421346926,
+      "sigma_xi": 0.7585967453578617,
+      "product": 2.189343904991991,
+      "ratio_R": 27.512106912417718,
+      "exceeds_bound": true
+    }
+  ],
+  "scaling_0_over_0": {
+    "note": "f -> 0: uncertainties constant, R constant = removable value",
+    "removable_value_R": 1.0,
+    "eps_tests": [
+      {
+        "eps": 0.1,
+        "sigma_x": 0.35355339059327373,
+        "sigma_xi": 0.22507907903927654,
+        "product": 0.07957747154594767,
+        "ratio_R": 1.0
+      },
+      {
+        "eps": 0.001,
+        "sigma_x": 0.35355339059327373,
+        "sigma_xi": 0.22507907903927654,
+        "product": 0.07957747154594767,
+        "ratio_R": 1.0
+      },
+      {
+        "eps": 1e-06,
+        "sigma_x": 0.35355339059327373,
+        "sigma_xi": 0.22507907903927654,
+        "product": 0.07957747154594767,
+        "ratio_R": 1.0
+      },
+      {
+        "eps": 1e-10,
+        "sigma_x": 0.35355339059327373,
+        "sigma_xi": 0.22507907903927654,
+        "product": 0.07957747154594767,
+        "ratio_R": 1.0
+      },
+      {
+        "eps": 1e-15,
+        "sigma_x": 0.35355339059327373,
+        "sigma_xi": 0.22507907903927654,
+        "product": 0.07957747154594767,
+        "ratio_R": 1.0
+      }
+    ]
+  },
+  "gaussian_limit_0_over_0": {
+    "note": "a -> 0: sigma_x -> inf, sigma_xi -> 0, product = 1/(4pi) constant",
+    "removable_product": 0.07957747154594767,
+    "tests": [
+      {
+        "a": 1e-15,
+        "sigma_x": 15811388.300841898,
+        "sigma_xi": 5.032921210448703e-09,
+        "product": 0.07957747154594767,
+        "ratio_R": 1.0
+      },
+      {
+        "a": 1e-10,
+        "sigma_x": 49999.99999999999,
+        "sigma_xi": 1.5915494309189535e-06,
+        "product": 0.07957747154594766,
+        "ratio_R": 0.9999999999999998
+      },
+      {
+        "a": 1e-05,
+        "sigma_x": 158.11388300841895,
+        "sigma_xi": 0.0005032921210448703,
+        "product": 0.07957747154594766,
+        "ratio_R": 0.9999999999999998
+      },
+      {
+        "a": 0.01,
+        "sigma_x": 5.0,
+        "sigma_xi": 0.015915494309189534,
+        "product": 0.07957747154594767,
+        "ratio_R": 1.0
+      },
+      {
+        "a": 0.1,
+        "sigma_x": 1.5811388300841895,
+        "sigma_xi": 0.050329212104487035,
+        "product": 0.07957747154594766,
+        "ratio_R": 0.9999999999999998
+      },
+      {
+        "a": 1.0,
+        "sigma_x": 0.5,
+        "sigma_xi": 0.15915494309189535,
+        "product": 0.07957747154594767,
+        "ratio_R": 1.0
+      }
+    ]
+  }
+}

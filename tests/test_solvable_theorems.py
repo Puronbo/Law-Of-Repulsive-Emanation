@@ -2519,4 +2519,52 @@ def test_taylor_remainder_0_over_0():
     assert d['summary']['max_error'] < 1e-6
 
 
+def test_fourier_uncertainty_0_over_0():
+    d = load('fourier_uncertainty_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['all_gaussians_achieve_bound']
+    assert d['summary']['all_boxcars_exceed_bound']
+    assert d['summary']['all_scaling_ratios_constant']
+
+
+def test_morse_theory_0_over_0():
+    d = load('morse_theory_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['hessian_all_correct']
+    assert d['summary']['euler_char_all_correct']
+    assert d['summary']['min_max_removable_saddle_not']
+
+
+def test_brouwer_fixed_point_0_over_0():
+    d = load('brouwer_fixed_point_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['all_contraction_have_fixed_points']
+    assert d['summary']['displacements_zero']
+    assert d['summary']['displacement_ratios_converge']
+
+
+def test_stokes_de_rham_0_over_0():
+    d = load('stokes_de_rham_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['stokes_all_hold']
+    assert d['summary']['d_squared_zero']
+    assert d['summary']['cohomology_detected']
+
+
+def test_sard_theorem_0_over_0():
+    d = load('sard_theorem_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['all_1d_measure_zero']
+    assert d['summary']['all_2d_measure_zero']
+    assert d['summary']['measure_ratios_vanish']
+
+
+def test_kkt_conditions_0_over_0():
+    d = load('kkt_conditions_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['qp_inequality_kkt']
+    assert d['summary']['equality_kkt']
+    assert d['summary']['barrier_path_converges']
+
+
 

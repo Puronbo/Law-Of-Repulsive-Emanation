@@ -1,0 +1,189 @@
+{
+  "tests": [],
+  "summary": {
+    "supported": true,
+    "all_1d_measure_zero": true,
+    "all_2d_measure_zero": true,
+    "measure_ratios_vanish": true,
+    "honest_wall": "numerical verification that critical values form a measure-zero set for specific smooth maps, not a proof of Sard's theorem"
+  },
+  "sard_1d": [
+    {
+      "function": "f(x) = x^2",
+      "num_critical_points": 1,
+      "critical_points": [
+        -4.440892098500626e-16
+      ],
+      "critical_values": [
+        1.9721522630525295e-31
+      ],
+      "num_distinct_critical_values": 1,
+      "measure_of_critical_values": 0.0,
+      "is_measure_zero": true,
+      "ratio_analysis": [
+        {
+          "critical_point": -4.440892098500626e-16,
+          "critical_value": 1.9721522630525295e-31,
+          "ratio_converges": true,
+          "removable_value_approx": 1.6834999997779557e-06
+        }
+      ]
+    },
+    {
+      "function": "f(x) = x^3 - 3x",
+      "num_critical_points": 2,
+      "critical_points": [
+        -0.9999998799879988,
+        0.9999998799879988
+      ],
+      "critical_values": [
+        1.999999999999957,
+        -1.999999999999957
+      ],
+      "num_distinct_critical_values": 2,
+      "measure_of_critical_values": 0.0,
+      "is_measure_zero": true,
+      "ratio_analysis": [
+        {
+          "critical_point": -0.9999998799879988,
+          "critical_value": 1.999999999999957,
+          "ratio_converges": false,
+          "removable_value_approx": -1434185.044978909
+        },
+        {
+          "critical_point": 0.9999998799879988,
+          "critical_value": -1.999999999999957,
+          "ratio_converges": false,
+          "removable_value_approx": 6474590.611571669
+        }
+      ]
+    },
+    {
+      "function": "f(x) = sin(x)",
+      "num_critical_points": 4,
+      "critical_points": [
+        -4.712388980391362,
+        -1.5707963268093144,
+        1.5707963268093137,
+        4.712388980391362
+      ],
+      "critical_values": [
+        1.0,
+        -1.0,
+        1.0,
+        -1.0
+      ],
+      "num_distinct_critical_values": 2,
+      "measure_of_critical_values": 0.0,
+      "is_measure_zero": true,
+      "ratio_analysis": [
+        {
+          "critical_point": -4.712388980391362,
+          "critical_value": 1.0,
+          "ratio_converges": false,
+          "removable_value_approx": -338939069.35385925
+        },
+        {
+          "critical_point": -1.5707963268093144,
+          "critical_value": -1.0,
+          "ratio_converges": false,
+          "removable_value_approx": -341576669.35688883
+        },
+        {
+          "critical_point": 1.5707963268093137,
+          "critical_value": 1.0,
+          "ratio_converges": false,
+          "removable_value_approx": -331962100.9957267
+        },
+        {
+          "critical_point": 4.712388980391362,
+          "critical_value": -1.0,
+          "ratio_converges": false,
+          "removable_value_approx": -334490552.1993533
+        }
+      ]
+    },
+    {
+      "function": "f(x) = exp(-x^2)",
+      "num_critical_points": 1,
+      "critical_points": [
+        -4.440892098500626e-16
+      ],
+      "critical_values": [
+        1.0
+      ],
+      "num_distinct_critical_values": 1,
+      "measure_of_critical_values": 0.0,
+      "is_measure_zero": true,
+      "ratio_analysis": [
+        {
+          "critical_point": -4.440892098500626e-16,
+          "critical_value": 1.0,
+          "ratio_converges": false,
+          "removable_value_approx": -168350074.02230337
+        }
+      ]
+    }
+  ],
+  "sard_2d": [
+    {
+      "function": "F(x,y) = (x^2-y^2, 2xy) (complex z^2)",
+      "num_critical_value_samples": 0,
+      "measure_estimates": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "is_measure_zero": true
+    },
+    {
+      "function": "F(x,y) = (x^3-3xy^2, 3x^2y-y^3) (complex z^3)",
+      "num_critical_value_samples": 0,
+      "measure_estimates": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "is_measure_zero": true
+    },
+    {
+      "function": "F(x,y) = (sin(x), cos(y))",
+      "num_critical_value_samples": 1195,
+      "note": "critical set is union of curves; image is 1D -> measure zero in R^2",
+      "is_measure_zero": true
+    }
+  ],
+  "measure_zero_0_over_0": {
+    "note": "image/domain ratio -> 0 as domain shrinks to critical point",
+    "tests": [
+      {
+        "epsilon": 0.1,
+        "image_measure": 0.010000000000000002,
+        "domain_measure": 0.2,
+        "ratio": 0.05000000000000001,
+        "ratio_goes_to_zero": true
+      },
+      {
+        "epsilon": 0.01,
+        "image_measure": 0.0001,
+        "domain_measure": 0.02,
+        "ratio": 0.005,
+        "ratio_goes_to_zero": true
+      },
+      {
+        "epsilon": 0.001,
+        "image_measure": 1e-06,
+        "domain_measure": 0.002,
+        "ratio": 0.0005,
+        "ratio_goes_to_zero": true
+      },
+      {
+        "epsilon": 0.0001,
+        "image_measure": 1e-08,
+        "domain_measure": 0.0002,
+        "ratio": 4.9999999999999996e-05,
+        "ratio_goes_to_zero": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "tests": [],
+  "summary": {
+    "supported": true,
+    "qp_inequality_kkt": true,
+    "qp_active_inactive_kkt": true,
+    "equality_kkt": true,
+    "barrier_path_converges": true,
+    "multiple_constraints_correct": true,
+    "honest_wall": "numerical verification of KKT conditions for specific optimization problems, not a proof of KKT theory"
+  },
+  "qp_inequality": {
+    "x_star": [
+      0.5,
+      0.5
+    ],
+    "optimal_value": 0.5,
+    "expected_x_star": [
+      0.5,
+      0.5
+    ],
+    "constraint_value": 0.0,
+    "multiplier": 1.0,
+    "complementary_slackness": 0.0,
+    "kkt_satisfied": true
+  },
+  "qp_active_inactive": {
+    "x_star": [
+      1.4999999999999971,
+      1.4999999999999967
+    ],
+    "optimal_value": 4.499999999999981,
+    "expected_x_star": [
+      1.5,
+      1.5
+    ],
+    "constraint_value": -6.217248937900877e-15,
+    "multiplier": 3.0,
+    "complementary_slackness": 0.0,
+    "kkt_satisfied": true
+  },
+  "equality_constraint": {
+    "x_star": [
+      0.5,
+      0.5
+    ],
+    "optimal_value": 0.5,
+    "expected_x_star": [
+      0.5,
+      0.5
+    ],
+    "equality_violation": 0.0,
+    "multiplier": -1.0,
+    "shadow_price_0_over_0": {
+      "note": "lambda/h(x) at feasibility: 0/0, removable value = lambda",
+      "removable_value": -1.0
+    },
+    "kkt_satisfied": true
+  },
+  "barrier_path": {
+    "note": "barrier path: mu_t*g_t -> 0 as t -> 0. At t=0: 0/0, removable=0",
+    "tests": [
+      {
+        "t": 1.0,
+        "x_t": 0.7071067811865476,
+        "mu_t": 1.4142135623730951,
+        "g_t": -0.7071067811865476,
+        "complementary_product": -1.0000000000000002,
+        "ratio_mu_over_inv_g": 1.0000000000000002,
+        "product_approaches_zero": false
+      },
+      {
+        "t": 0.1,
+        "x_t": 0.22360679774997896,
+        "mu_t": 0.4472135954999579,
+        "g_t": -0.22360679774997896,
+        "complementary_product": -0.09999999999999999,
+        "ratio_mu_over_inv_g": 0.09999999999999999,
+        "product_approaches_zero": true
+      },
+      {
+        "t": 0.01,
+        "x_t": 0.07071067811865475,
+        "mu_t": 0.1414213562373095,
+        "g_t": -0.07071067811865475,
+        "complementary_product": -0.01,
+        "ratio_mu_over_inv_g": 0.01,
+        "product_approaches_zero": true
+      },
+      {
+        "t": 0.001,
+        "x_t": 0.022360679774997897,
+        "mu_t": 0.044721359549995794,
+        "g_t": -0.022360679774997897,
+        "complementary_product": -0.001,
+        "ratio_mu_over_inv_g": 0.001,
+        "product_approaches_zero": true
+      },
+      {
+        "t": 0.0001,
+        "x_t": 0.007071067811865475,
+        "mu_t": 0.01414213562373095,
+        "g_t": -0.007071067811865475,
+        "complementary_product": -0.0001,
+        "ratio_mu_over_inv_g": 0.0001,
+        "product_approaches_zero": true
+      }
+    ],
+    "removable_value": 0.0
+  },
+  "multiple_constraints": {
+    "x_star": [
+      0.5,
+      0.5
+    ],
+    "optimal_value": 0.5,
+    "expected_x_star": [
+      0.5,
+      0.5
+    ],
+    "constraint_values": [
+      0.5,
+      0.5,
+      0.0
+    ],
+    "note": "constraints 1,2 inactive (0/0 with mu=0 not applicable); constraint 3 active (0/0 ratio removable)"
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "tests": [
+    {
+      "function": "antipodal (-x,-y)",
+      "fixed_points_found": 1,
+      "note": "unique fixed point at origin (contraction with factor -1)"
+    },
+    {
+      "function": "reflection_y (x,-y)",
+      "fixed_points_found": 39,
+      "note": "entire x-axis segment is fixed (infinite fixed points)"
+    }
+  ],
+  "summary": {
+    "supported": true,
+    "all_contraction_have_fixed_points": true,
+    "displacements_zero": true,
+    "displacement_ratios_converge": true,
+    "spectral_radius_below_one": true,
+    "honest_wall": "numerical search for fixed points and verification of the displacement 0/0, not a topological proof"
+  },
+  "contraction_tests": [
+    {
+      "function": "0.3x+0.1, 0.3y-0.05",
+      "fixed_points_found": 1,
+      "expected_fixed_point": [
+        0.14285714285714288,
+        -0.07142857142857144
+      ],
+      "displacement_at_expected": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "function": "-0.5y+0.2, 0.5x-0.1",
+      "fixed_points_found": 1,
+      "expected_fixed_point": [
+        0.2,
+        0.0
+      ],
+      "displacement_at_expected": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "displacement_0_over_0": {
+    "note": "g(x)/(x-x*) -> Df(x*) - I = -0.7 as x -> x*",
+    "expected_removable_value": -0.7,
+    "tests": [
+      {
+        "direction": [
+          1,
+          0
+        ],
+        "removable_value_x": -0.7000000137486009,
+        "std": 4.0561066440676385e-08,
+        "converges": true
+      },
+      {
+        "direction": [
+          1,
+          1
+        ],
+        "removable_value_x": -0.7000000137486009,
+        "std": 4.0561066440676385e-08,
+        "converges": true
+      },
+      {
+        "direction": [
+          1,
+          -1
+        ],
+        "removable_value_x": -0.7000000137486009,
+        "std": 4.0561066440676385e-08,
+        "converges": true
+      }
+    ]
+  },
+  "zero_displacement": {
+    "all_displacements_zero": true,
+    "max_displacement": 0.0
+  },
+  "jacobian_analysis": {
+    "contraction1": {
+      "eigenvalues": [
+        0.2999999999808711,
+        0.2999999999808711
+      ],
+      "spectral_radius": 0.2999999999808711,
+      "is_contraction": true,
+      "removable_value_Df_minus_I": [
+        -0.7000000000191289,
+        -0.7000000000191289
+      ]
+    }
+  }
+}

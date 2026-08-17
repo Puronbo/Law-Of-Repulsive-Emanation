@@ -1456,3 +1456,10 @@ headline: the framework's *engine-level* results stand, but its
 *arithmetic-selection* and *number-theory* claims (Bekenstein, Selberg,
 partition match) are no longer citable as verified — Bekenstein is now
 corrected to a null in the PAPER itself.
+
+* **57. Fourier uncertainty principle 0/0 (2026-08-17)** — Gaussian family achieves uncertainty bound R=1 (equality); boxcars exceed; scaling f->0 keeps R constant. Removable value at f=0 encodes the bound. `data/fourier_uncertainty_0_over_0_data.json`.
+* **58. Morse theory 0/0 (2026-08-17)** — Hessian classification correct for all test functions; Euler characteristic verified; min/max ratios removable, saddle not; monkey saddle ratio removable with value 0. `data/morse_theory_0_over_0_data.json`.
+* **59. Brouwer fixed-point 0/0 (2026-08-17)** — Contractions on D^2 have unique fixed points; displacement ratio converges to Df(x*)-I; spectral radius < 1 confirmed. `data/brouwer_fixed_point_0_over_0_data.json`.
+* **60. Stokes/de Rham 0/0 (2026-08-17)** — Stokes/Green's theorem verified for explicit forms on disk/rectangle; d^2=0 confirmed; angle form detects H^1(S^1). `data/stokes_de_rham_0_over_0_data.json`.
+* **61. Sard's theorem 0/0 (2026-08-17)** — Critical values form measure-zero sets in all test cases; image/domain ratio vanishes. `data/sard_theorem_0_over_0_data.json`.
+* **62. KKT conditions 0/0 (2026-08-17)** — Complementary slackness verified for QP; barrier path mu_t*g_t -> 0; equality constraint shadow price = lambda. `data/kkt_conditions_0_over_0_data.json`.

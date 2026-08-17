@@ -1,0 +1,179 @@
+{
+  "tests": [
+    {
+      "function": "f(x,y) = x^2 + y^2 (min)",
+      "removable_0_over_0": true,
+      "mean_ratio": 1.0,
+      "std_ratio": 0.0,
+      "note": "constant ratio = removable value at 0/0"
+    },
+    {
+      "function": "f(x,y) = -(x^2 + y^2) (max)",
+      "removable_0_over_0": true,
+      "mean_ratio": -1.0,
+      "std_ratio": 0.0,
+      "note": "constant ratio = removable value at 0/0"
+    },
+    {
+      "function": "f(x,y) = x^2 - y^2 (saddle)",
+      "removable_0_over_0": false,
+      "mean_ratio": 4.4408920985006264e-17,
+      "std_ratio": 0.7071067811865476,
+      "note": "direction-dependent = NOT removable"
+    },
+    {
+      "function": "f(x,y) = x^2 (degenerate)",
+      "removable_0_over_0": false,
+      "mean_ratio": 0.5,
+      "std_ratio": 0.3535533905932738,
+      "note": "direction-dependent = NOT removable"
+    }
+  ],
+  "summary": {
+    "supported": true,
+    "hessian_all_correct": true,
+    "euler_char_all_correct": true,
+    "min_max_removable_saddle_not": true,
+    "degenerate_removable_with_zero": true,
+    "honest_wall": "numerical verification of Morse lemma and Euler characteristic computations, not a proof of Morse theory"
+  },
+  "hessian_classification": [
+    {
+      "function": "x^2+y^2",
+      "Hessian_det": 4.0,
+      "eigenvalues": [
+        2.0,
+        2.0
+      ],
+      "classified_as": "minimum",
+      "expected": "minimum",
+      "correct": true,
+      "degenerate": false
+    },
+    {
+      "function": "-(x^2+y^2)",
+      "Hessian_det": 4.0,
+      "eigenvalues": [
+        -2.0,
+        -2.0
+      ],
+      "classified_as": "maximum",
+      "expected": "maximum",
+      "correct": true,
+      "degenerate": false
+    },
+    {
+      "function": "x^2-y^2",
+      "Hessian_det": -4.0,
+      "eigenvalues": [
+        -2.0,
+        2.0
+      ],
+      "classified_as": "saddle",
+      "expected": "saddle",
+      "correct": true,
+      "degenerate": false
+    },
+    {
+      "function": "x^2",
+      "Hessian_det": 0.0,
+      "eigenvalues": [
+        0.0,
+        2.0
+      ],
+      "classified_as": "degenerate",
+      "expected": "degenerate",
+      "correct": true,
+      "degenerate": true
+    },
+    {
+      "function": "x^2+3y^2+2xy",
+      "Hessian_det": 7.999999999999998,
+      "eigenvalues": [
+        1.1715728752538102,
+        6.82842712474619
+      ],
+      "classified_as": "minimum",
+      "expected": "minimum",
+      "correct": true,
+      "degenerate": false
+    },
+    {
+      "function": "x^3-3xy^2",
+      "Hessian_det": 0.0,
+      "eigenvalues": [
+        0.0,
+        0.0
+      ],
+      "classified_as": "degenerate",
+      "expected": "degenerate",
+      "correct": true,
+      "degenerate": true
+    }
+  ],
+  "euler_characteristic": [
+    {
+      "manifold": "R^2 with f=x^2+y^2",
+      "expected_chi": 1,
+      "critical_points": [
+        {
+          "type": "minimum",
+          "index": 0,
+          "sign": 1
+        }
+      ],
+      "computed_chi": 1,
+      "verified": true
+    },
+    {
+      "manifold": "R^2 with f=x^2-y^2",
+      "expected_chi": -1,
+      "critical_points": [
+        {
+          "type": "saddle",
+          "index": 1,
+          "sign": -1
+        }
+      ],
+      "computed_chi": -1,
+      "note": "f not proper on R^2; index sum = -1, not chi(R^2)",
+      "verified": true
+    },
+    {
+      "manifold": "Torus (height function)",
+      "expected_chi": 0,
+      "critical_points": [
+        {
+          "type": "minimum",
+          "index": 0,
+          "sign": 1
+        },
+        {
+          "type": "saddle",
+          "index": 1,
+          "sign": -1
+        },
+        {
+          "type": "saddle",
+          "index": 1,
+          "sign": -1
+        },
+        {
+          "type": "maximum",
+          "index": 2,
+          "sign": 1
+        }
+      ],
+      "computed_chi": 0,
+      "verified": true
+    }
+  ],
+  "degenerate_0_over_0": {
+    "function": "x^3 - 3xy^2 (monkey saddle)",
+    "ratio_std": 0.005024937810560445,
+    "ratio_mean": 4.553649124439119e-19,
+    "is_removable": true,
+    "removable_value": 0.0,
+    "note": "degenerate: ratio -> 0 (removable but value=0, not +/-1)"
+  }
+}

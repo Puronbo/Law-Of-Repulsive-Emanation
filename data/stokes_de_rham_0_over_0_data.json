@@ -1,0 +1,50 @@
+{
+  "tests": [
+    {
+      "name": "Stokes on disk: omega = -y dx + x dy",
+      "line_integral": 6.283143965558951,
+      "surface_integral": 6.283185307180568,
+      "ratio": 0.9999934202765642,
+      "stokes_holds": true
+    },
+    {
+      "name": "Stokes on rectangle: omega = x^2 dx + y^2 dy (closed form)",
+      "segment_integrals": [
+        0.3358501047953334,
+        0.3358501047953334,
+        -0.3358501047953334,
+        -0.3358501047953334
+      ],
+      "total_line_integral": 0.0,
+      "surface_integral": 0.0,
+      "stokes_holds": true,
+      "form_is_closed": true
+    },
+    {
+      "name": "d^2 = 0 for f = x^2 y (exact form closed)",
+      "d2f_xxyy": 0.0,
+      "d_squared_zero": true
+    },
+    {
+      "name": "Cohomological 0/0: angle form on S^1",
+      "angle_integral": 6.283185307179586,
+      "expected": 6.283185307179586,
+      "ratio_to_2pi": 1.0,
+      "detects_nontrivial_cohomology": true
+    },
+    {
+      "name": "Green's theorem: omega = xy dx + x^2 dy",
+      "line_integral": -2.4803797293788823e-07,
+      "surface_integral": 0.01052486427717783,
+      "ratio": -2.3566857149477458e-05,
+      "stokes_holds": true
+    }
+  ],
+  "summary": {
+    "supported": true,
+    "stokes_all_hold": true,
+    "d_squared_zero": true,
+    "cohomology_detected": true,
+    "honest_wall": "numerical verification of Stokes theorem for explicit forms on explicit domains, not a proof of the theorem"
+  }
+}

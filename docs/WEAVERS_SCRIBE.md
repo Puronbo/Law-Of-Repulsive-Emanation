@@ -2741,3 +2741,9 @@ content ranking.
   scribe's bank and the clock.
 * `Universals/engine.py` — `record_classification`, `record_self_event`,
   `generate_thought`, `_dream`, `_quarantine_to_boundary`.
+* **Ch. 5.23** Fourier uncertainty 0/0 — Gaussian achieves uncertainty bound, boxcars exceed, scaling 0/0 constant (`fourier_uncertainty_0_over_0.py`).
+* **Ch. 5.24** Morse theory 0/0 — Hessian classification, Euler characteristic, removable for min/max, not saddle, monkey saddle removable=0 (`morse_theory_0_over_0.py`).
+* **Ch. 5.25** Brouwer fixed-point 0/0 — Contraction fixed points on D^2, displacement ratio -> Df-I, spectral radius < 1 (`brouwer_fixed_point_0_over_0.py`).
+* **Ch. 5.26** Stokes/de Rham 0/0 — Stokes/Green on disk/rectangle, d^2=0, angle form detects H^1(S^1) (`stokes_de_rham_0_over_0.py`).
+* **Ch. 5.27** Sard's theorem 0/0 — Critical values measure zero, image/domain ratio vanishes (`sard_theorem_0_over_0.py`).
+* **Ch. 5.28** KKT conditions 0/0 — Complementary slackness, barrier path -> 0, shadow price = lambda (`kkt_conditions_0_over_0.py`).
