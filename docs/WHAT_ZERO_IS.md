@@ -79,12 +79,12 @@ g(s) = |ζ(s)| / |ζ(1−s)|
 
 At a zero ρ: both |ζ(ρ)| = 0 and |ζ(1−ρ)| = 0. Near ρ:
 
-ζ(s) ≈ c₁(s − ρ)       (linear vanishing)
-ζ(1−s) ≈ c₂'(s − ρ)    (linear vanishing, same rate)
+ζ(s) ≈ c₁(s − ρ)^k       (vanishing of order k)
+ζ(1−s) ≈ c₂'(s − ρ)^k    (same order, by the functional equation)
 
-g(s) ≈ |c₁(s − ρ)| / |c₂'(s − ρ)| = |c₁| / |c₂'|
+g(s) ≈ |c₁(s − ρ)^k| / |c₂'(s − ρ)^k| = |c₁| / |c₂'|
 
-The (s − ρ) cancels. The limit is |c₁|/|c₂'|, which is **finite and well-defined**. That is the removable value |χ(ρ)|.
+The (s − ρ)^k cancels. The limit is |c₁|/|c₂'|, which is **finite and well-defined**. That is the removable value |χ(ρ)|. (The simple case k = 1 is the generic expectation; the argument works for any k ≥ 1.)
 
 For a pole (1/0, 2/0, 3/0): the denominator vanishes but the numerator does not. No cancellation is possible. The limit is infinite.
 

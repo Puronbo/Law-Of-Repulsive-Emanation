@@ -89,7 +89,7 @@ This is the quorum: majority honesty (~40/50%). If fewer than 40% of sites are h
 
 π(x) − Li(x) = Σ_ρ Li(x^ρ) + ...
 
-is a sum over zeros of zeta. At each zero ρ, the term Li(x^ρ) is a 0/0 form: x^ρ = 0 when Re(ρ) < 0 (convergent) and ∞ when Re(ρ) > 0 (divergent). On the critical line (Re(ρ) = 1/2), x^ρ oscillates and the sum converges conditionally.
+is a sum over zeros of zeta. At each zero ρ, the term x^ρ = e^{ρ ln x} is always finite and nonzero for x > 0, with magnitude x^{Re(ρ)}. The 0/0 structure is in the SUM: under RH (all Re(ρ) = 1/2), the terms x^ρ/ρ oscillate with bounded amplitude and the sum converges conditionally; off the critical line, the terms grow exponentially and the sum diverges. On the critical line (Re(ρ) = 1/2), x^ρ oscillates and the sum converges conditionally.
 
 The 0/0 form at each zero determines the error term. If Re(ρ) = 1/2, the error is O(√x log x). If Re(ρ) ≠ 1/2, the error is larger. This is RH: all zeros on the line means the smallest error.
 

@@ -81,11 +81,11 @@ where K is the canonical divisor and g is the genus.
 
 **Setting:** quantum field theory with divergent integrals
 
-**The 0/0:** the bare mass m_bare is infinite. The counterterm δm is infinite. The renormalized mass is:
+**The 0/0:** the bare mass m_bare and the counterterm δm are individually divergent in the unregularized theory. Their difference is the indeterminate form ∞ − ∞: in dimensional regularization, both are regulated to finite values that depend on the regularization scale, and their difference is finite and scheme-dependent:
 
-m_ren = m_bare − δm = ∞ − ∞
+m_ren = lim_{Λ→∞} [m_bare(Λ) − δm(Λ)] = finite
 
-This is a 0/0 form. The finite part depends on the renormalization scheme (how you subtract the infinities).
+This is an indeterminate form (two divergent quantities whose difference is finite), structurally analogous to 0/0 in that the individual terms carry no information — only the combined limit does.
 
 **What it solves:** the physical predictions of quantum field theory. The renormalized mass, charge, and coupling constants are finite and measurable. The 0/0 form extracts the finite physics from the divergent formalism.
 
@@ -181,7 +181,7 @@ For every ε > 0, there are only finitely many triples with c > rad(abc)^{1+ε}
 
 **Setting:** training a neural network with loss function L(θ)
 
-**The 0/0:** at a saddle point, ∇L = 0. The update rule θ ← θ − η ∇L gives 0/0 (no movement). The second-order behavior is determined by the Hessian H:
+**The 0/0:** at a saddle point, ∇L = 0 and ∇²L has mixed signs. The "update" θ ← θ − η∇L gives no movement (θ unchanged), which is the gradient descent analogue of the indeterminate form — the update rule provides no information about which direction to move. The second-order behavior is determined by the Hessian H:
 
 ∇²L(θ) = H
 
