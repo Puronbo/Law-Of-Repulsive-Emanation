@@ -1,0 +1,259 @@
+{
+  "tests": [],
+  "summary": {
+    "supported": true,
+    "magnetization_correct": true,
+    "energy_at_Tc_correct": true,
+    "susceptibility_peaks_near_Tc": true,
+    "Tc_exact": 2.269185314213022,
+    "honest_wall": "Monte Carlo simulation with finite-size effects, not a proof of critical phenomena"
+  },
+  "magnetization": {
+    "note": "T_c = 2.269185 (exact); M > 0 below T_c, M ~ 0 above T_c",
+    "L": 30,
+    "tests": [
+      {
+        "T": 1.5,
+        "T_over_Tc": 0.6610301902646573,
+        "magnetization": 0.9862466666666755,
+        "energy_per_spin": -3.90064888888892,
+        "susceptibility": 0.02915341925122661,
+        "below_Tc": true,
+        "above_Tc": false,
+        "has_magnetization": true
+      },
+      {
+        "T": 1.8,
+        "T_over_Tc": 0.7932362283175887,
+        "magnetization": 0.9575822222222194,
+        "energy_per_spin": -3.7238266666666497,
+        "susceptibility": 0.1156524839469042,
+        "below_Tc": true,
+        "above_Tc": false,
+        "has_magnetization": true
+      },
+      {
+        "T": 2.0,
+        "T_over_Tc": 0.8813735870195429,
+        "magnetization": 0.9117777777777758,
+        "energy_per_spin": -3.4930444444444437,
+        "susceptibility": 0.3835555555540715,
+        "below_Tc": true,
+        "above_Tc": false,
+        "has_magnetization": true
+      },
+      {
+        "T": 2.169185314213022,
+        "T_over_Tc": 0.9559313206490229,
+        "magnetization": 0.8412977777777771,
+        "energy_per_spin": -3.2067333333333443,
+        "susceptibility": 0.7923588054855019,
+        "below_Tc": true,
+        "above_Tc": false,
+        "has_magnetization": true
+      },
+      {
+        "T": 2.269185314213022,
+        "T_over_Tc": 1.0,
+        "magnetization": 0.7422299999999994,
+        "energy_per_spin": -2.934862222222225,
+        "susceptibility": 2.679905484002665,
+        "below_Tc": false,
+        "above_Tc": false,
+        "has_magnetization": true
+      },
+      {
+        "T": 2.369185314213022,
+        "T_over_Tc": 1.0440686793509772,
+        "magnetization": 0.5240411111111097,
+        "energy_per_spin": -2.5927377777777707,
+        "susceptibility": 11.393340846024445,
+        "below_Tc": false,
+        "above_Tc": false,
+        "has_magnetization": true
+      },
+      {
+        "T": 2.5,
+        "T_over_Tc": 1.1017169837744287,
+        "magnetization": 0.23242555555555525,
+        "energy_per_spin": -2.2474977777777743,
+        "susceptibility": 9.600008227111182,
+        "below_Tc": false,
+        "above_Tc": true,
+        "has_magnetization": true
+      },
+      {
+        "T": 3.0,
+        "T_over_Tc": 1.3220603805293145,
+        "magnetization": 0.08336888888888874,
+        "energy_per_spin": -1.6288177777777846,
+        "susceptibility": 1.186319620740741,
+        "below_Tc": false,
+        "above_Tc": true,
+        "has_magnetization": false
+      },
+      {
+        "T": 4.0,
+        "T_over_Tc": 1.7627471740390859,
+        "magnetization": 0.05682555555555546,
+        "energy_per_spin": -1.1111555555555532,
+        "susceptibility": 0.4168176530555607,
+        "below_Tc": false,
+        "above_Tc": true,
+        "has_magnetization": false
+      }
+    ]
+  },
+  "phase_transition": {
+    "note": "M is high at low T and low at high T (phase transition)",
+    "low_T_magnetizations": [
+      0.9862466666666755
+    ],
+    "high_T_magnetizations": [
+      0.05682555555555546
+    ],
+    "ok": true
+  },
+  "order_parameter": {
+    "note": "M ~ (Tc-T)^(1/8) below Tc: effective beta -> 1/8",
+    "tests": [
+      {
+        "dT": 0.3,
+        "T": 1.969185314213022,
+        "magnetization": 0.6925077777777755,
+        "effective_beta": 0.30518613727440413,
+        "beta_exact": 0.125,
+        "deviation": 0.18018613727440413
+      },
+      {
+        "dT": 0.2,
+        "T": 2.069185314213022,
+        "magnetization": 0.8919822222222235,
+        "effective_beta": 0.07102422278098423,
+        "beta_exact": 0.125,
+        "deviation": 0.053975777219015766
+      },
+      {
+        "dT": 0.1,
+        "T": 2.169185314213022,
+        "magnetization": 0.8357355555555558,
+        "effective_beta": 0.07793112080386762,
+        "beta_exact": 0.125,
+        "deviation": 0.04706887919613238
+      },
+      {
+        "dT": 0.05,
+        "T": 2.2191853142130222,
+        "magnetization": 0.7665633333333335,
+        "effective_beta": 0.08873889024479348,
+        "beta_exact": 0.125,
+        "deviation": 0.03626110975520652
+      },
+      {
+        "dT": 0.02,
+        "T": 2.249185314213022,
+        "magnetization": 0.6445255555555559,
+        "effective_beta": 0.11227970925154956,
+        "beta_exact": 0.125,
+        "deviation": 0.012720290748450436
+      }
+    ]
+  },
+  "energy_at_Tc": {
+    "note": "E/N = -sqrt(2) at T_c (exact for 2D Ising)",
+    "tests": [
+      {
+        "L": 10,
+        "E_mean": -2.977746666666665,
+        "E_exact": -2.8284271247461903,
+        "deviation": 0.14931954192047492
+      },
+      {
+        "L": 20,
+        "E_mean": -2.9313066666666665,
+        "E_exact": -2.8284271247461903,
+        "deviation": 0.10287954192047621
+      },
+      {
+        "L": 30,
+        "E_mean": -2.8877125925925924,
+        "E_exact": -2.8284271247461903,
+        "deviation": 0.059285467846402096
+      }
+    ]
+  },
+  "susceptibility_0_over_0": {
+    "note": "chi diverges at Tc: 0/0 with removable value = C",
+    "peak_near_Tc": true,
+    "tests": [
+      {
+        "T": 1.5,
+        "chi": 0.19919084740152027,
+        "is_peak_candidate": false
+      },
+      {
+        "T": 1.8,
+        "chi": 0.10411772777324524,
+        "is_peak_candidate": false
+      },
+      {
+        "T": 2.0,
+        "chi": 0.6132614883324561,
+        "is_peak_candidate": true
+      },
+      {
+        "T": 2.2,
+        "chi": 2.3787022095960073,
+        "is_peak_candidate": true
+      },
+      {
+        "T": 2.269185314213022,
+        "chi": 2.32972147179305,
+        "is_peak_candidate": true
+      },
+      {
+        "T": 2.4,
+        "chi": 16.485684768518844,
+        "is_peak_candidate": true
+      },
+      {
+        "T": 2.6,
+        "chi": 4.457825452564109,
+        "is_peak_candidate": false
+      },
+      {
+        "T": 3.0,
+        "chi": 1.2564837037037064,
+        "is_peak_candidate": false
+      },
+      {
+        "T": 4.0,
+        "chi": 0.35700266666666947,
+        "is_peak_candidate": false
+      }
+    ]
+  },
+  "symmetry_restoration": {
+    "note": "<|M|> -> 0 as L -> inf for T > Tc (symmetry restoration)",
+    "tests": [
+      {
+        "L": 10,
+        "T": 2.769185314213022,
+        "abs_magnetization": 0.3717999999999995,
+        "should_vanish": true
+      },
+      {
+        "L": 20,
+        "T": 2.769185314213022,
+        "abs_magnetization": 0.1622724999999995,
+        "should_vanish": true
+      },
+      {
+        "L": 40,
+        "T": 2.769185314213022,
+        "abs_magnetization": 0.07940500000000006,
+        "should_vanish": true
+      }
+    ]
+  }
+}

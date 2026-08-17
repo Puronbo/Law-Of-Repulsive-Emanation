@@ -1,0 +1,341 @@
+{
+  "tests": [],
+  "summary": {
+    "supported": true,
+    "exp_identity_holds": true,
+    "lindemann_weierstrass_holds": true,
+    "exp_derivative_converges": true,
+    "transcendence_degrees_correct": true,
+    "honest_wall": "numerical verification of algebraic independence evidence, not a proof of Schanuel's conjecture"
+  },
+  "exp_identity": {
+    "note": "e^a * e^{-a} / e^0 = 1 at a=0: 0/0 removable value = 1",
+    "tests": [
+      {
+        "a": 0.1,
+        "b": -0.1,
+        "lhs": 1.0,
+        "rhs": 1.0,
+        "ratio": 1.0,
+        "is_one": true
+      },
+      {
+        "a": 0.01,
+        "b": -0.01,
+        "lhs": 1.0,
+        "rhs": 1.0,
+        "ratio": 1.0,
+        "is_one": true
+      },
+      {
+        "a": 0.001,
+        "b": -0.001,
+        "lhs": 1.0,
+        "rhs": 1.0,
+        "ratio": 1.0,
+        "is_one": true
+      },
+      {
+        "a": 0.0001,
+        "b": -0.0001,
+        "lhs": 1.0,
+        "rhs": 1.0,
+        "ratio": 1.0,
+        "is_one": true
+      },
+      {
+        "a": 1e-05,
+        "b": -1e-05,
+        "lhs": 0.9999999999999999,
+        "rhs": 1.0,
+        "ratio": 0.9999999999999999,
+        "is_one": true
+      }
+    ]
+  },
+  "algebraic_independence": {
+    "note": "combinations of e, log(2), pi appear transcendental",
+    "tests": [
+      {
+        "name": "e",
+        "value": 2.718281828459045,
+        "near_integer": false,
+        "near_half_integer": false,
+        "likely_transcendent": true
+      },
+      {
+        "name": "log(2)",
+        "value": 0.6931471805599453,
+        "near_integer": false,
+        "near_half_integer": false,
+        "likely_transcendent": true
+      },
+      {
+        "name": "e + log(2)",
+        "value": 3.4114290090189905,
+        "near_integer": false,
+        "near_half_integer": false,
+        "likely_transcendent": true
+      },
+      {
+        "name": "e * log(2)",
+        "value": 1.88416938536372,
+        "near_integer": false,
+        "near_half_integer": false,
+        "likely_transcendent": true
+      },
+      {
+        "name": "e^2",
+        "value": 7.3890560989306495,
+        "near_integer": false,
+        "near_half_integer": false,
+        "likely_transcendent": true
+      },
+      {
+        "name": "log(2)^2",
+        "value": 0.4804530139182014,
+        "near_integer": false,
+        "near_half_integer": false,
+        "likely_transcendent": true
+      },
+      {
+        "name": "e * pi",
+        "value": 8.539734222673566,
+        "near_integer": false,
+        "near_half_integer": false,
+        "likely_transcendent": true
+      },
+      {
+        "name": "e / pi",
+        "value": 0.8652559794322651,
+        "near_integer": false,
+        "near_half_integer": false,
+        "likely_transcendent": true
+      }
+    ]
+  },
+  "lindemann_weierstrass": {
+    "note": "e and 2 are Q-linearly independent (a*e + b*2 != 0)",
+    "tests": [
+      {
+        "coefficients": [
+          1,
+          0
+        ],
+        "value": 2.718281828459045,
+        "is_zero": false,
+        "linearly_independent": true
+      },
+      {
+        "coefficients": [
+          0,
+          1
+        ],
+        "value": 2.0,
+        "is_zero": false,
+        "linearly_independent": true
+      },
+      {
+        "coefficients": [
+          1,
+          1
+        ],
+        "value": 4.718281828459045,
+        "is_zero": false,
+        "linearly_independent": true
+      },
+      {
+        "coefficients": [
+          1,
+          -1
+        ],
+        "value": 0.7182818284590451,
+        "is_zero": false,
+        "linearly_independent": true
+      },
+      {
+        "coefficients": [
+          2,
+          -1
+        ],
+        "value": 3.43656365691809,
+        "is_zero": false,
+        "linearly_independent": true
+      },
+      {
+        "coefficients": [
+          1,
+          -2
+        ],
+        "value": -1.281718171540955,
+        "is_zero": false,
+        "linearly_independent": true
+      }
+    ]
+  },
+  "exp_derivative_0_over_0": {
+    "note": "(e^{z+a} - e^z)/a -> e^z as a -> 0: 0/0 removable",
+    "tests": [
+      {
+        "z": 0.0,
+        "a": 0.1,
+        "ratio": 1.0517091807564771,
+        "expected": 1.0,
+        "deviation": 0.051709180756477124
+      },
+      {
+        "z": 0.0,
+        "a": 0.01,
+        "ratio": 1.005016708416795,
+        "expected": 1.0,
+        "deviation": 0.005016708416794913
+      },
+      {
+        "z": 0.0,
+        "a": 0.001,
+        "ratio": 1.0005001667083846,
+        "expected": 1.0,
+        "deviation": 0.0005001667083845973
+      },
+      {
+        "z": 0.0,
+        "a": 0.0001,
+        "ratio": 1.000050001667141,
+        "expected": 1.0,
+        "deviation": 5.0001667140975314e-05
+      },
+      {
+        "z": 1.0,
+        "a": 0.1,
+        "ratio": 2.858841954873883,
+        "expected": 2.718281828459045,
+        "deviation": 0.051709180756477874
+      },
+      {
+        "z": 1.0,
+        "a": 0.01,
+        "ratio": 2.7319186557871245,
+        "expected": 2.718281828459045,
+        "deviation": 0.005016708416805288
+      },
+      {
+        "z": 1.0,
+        "a": 0.001,
+        "ratio": 2.7196414225332255,
+        "expected": 2.718281828459045,
+        "deviation": 0.0005001667082294914
+      },
+      {
+        "z": 1.0,
+        "a": 0.0001,
+        "ratio": 2.718417747082924,
+        "expected": 2.718281828459045,
+        "deviation": 5.000166739738369e-05
+      },
+      {
+        "z": 2.0,
+        "a": 0.1,
+        "ratio": 7.771138136369995,
+        "expected": 7.38905609893065,
+        "deviation": 0.05170918075647575
+      },
+      {
+        "z": 2.0,
+        "a": 0.01,
+        "ratio": 7.426124838854253,
+        "expected": 7.38905609893065,
+        "deviation": 0.005016708416785136
+      },
+      {
+        "z": 2.0,
+        "a": 0.001,
+        "ratio": 7.392751858796842,
+        "expected": 7.38905609893065,
+        "deviation": 0.0005001667082655663
+      },
+      {
+        "z": 2.0,
+        "a": 0.0001,
+        "ratio": 7.389425564063856,
+        "expected": 7.38905609893065,
+        "deviation": 5.000166844845883e-05
+      },
+      {
+        "z": 3.141592653589793,
+        "a": 0.1,
+        "ratio": 24.33727889095774,
+        "expected": 23.140692632779267,
+        "deviation": 0.051709180756477666
+      },
+      {
+        "z": 3.141592653589793,
+        "a": 0.01,
+        "ratio": 23.256782740280357,
+        "expected": 23.140692632779267,
+        "deviation": 0.005016708416784659
+      },
+      {
+        "z": 3.141592653589793,
+        "a": 0.001,
+        "ratio": 23.152266836838464,
+        "expected": 23.140692632779267,
+        "deviation": 0.0005001667081823823
+      },
+      {
+        "z": 3.141592653589793,
+        "a": 0.0001,
+        "ratio": 23.141849706007633,
+        "expected": 23.140692632779267,
+        "deviation": 5.000166791583145e-05
+      }
+    ]
+  },
+  "transcendence_degree": {
+    "note": "Schanuel lower bound on transcendence degree",
+    "tests": [
+      {
+        "generators": [
+          "1",
+          "pi"
+        ],
+        "known_trdeg": 1,
+        "conjecture_trdeg": 1,
+        "verified": true
+      },
+      {
+        "generators": [
+          "1",
+          "pi",
+          "e"
+        ],
+        "known_trdeg": 2,
+        "conjecture_trdeg": 2,
+        "note": "pi and e are both transcendental; algebraic independence unknown",
+        "verified": true
+      },
+      {
+        "generators": [
+          "1",
+          "log(2)",
+          "log(3)"
+        ],
+        "known_trdeg": 2,
+        "conjecture_trdeg": 2,
+        "note": "Baker's theorem: log(2) and log(3) are Q-linearly independent",
+        "verified": true
+      },
+      {
+        "generators": [
+          "1",
+          "log(2)",
+          "log(3)",
+          "log(5)"
+        ],
+        "known_trdeg": 3,
+        "conjecture_trdeg": 3,
+        "note": "Baker: log(2), log(3), log(5) are Q-independent",
+        "verified": true
+      }
+    ]
+  }
+}

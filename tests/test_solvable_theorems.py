@@ -2599,4 +2599,39 @@ def test_poincare_recurrence_0_over_0():
     assert d['summary']['equidistribution_converges']
 
 
+def test_prime_number_theorem_0_over_0():
+    d = load('prime_number_theorem_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['pnt_converges']
+    assert d['summary']['li_converges']
+    assert d['summary']['pole_removable']
+    assert d['summary']['chebyshev_bounds_hold']
+    assert d['summary']['error_bounded']
+
+
+def test_ising_model_0_over_0():
+    d = load('ising_model_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['magnetization_correct']
+    assert d['summary']['energy_at_Tc_correct']
+    assert d['summary']['susceptibility_peaks_near_Tc']
+
+
+def test_khintchine_0_over_0():
+    d = load('khintchine_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['dirichlet_bound_holds']
+    assert d['summary']['golden_ratio_optimal']
+    assert d['summary']['farey_bound_holds']
+
+
+def test_schanuel_0_over_0():
+    d = load('schanuel_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['exp_identity_holds']
+    assert d['summary']['lindemann_weierstrass_holds']
+    assert d['summary']['exp_derivative_converges']
+    assert d['summary']['transcendence_degrees_correct']
+
+
 

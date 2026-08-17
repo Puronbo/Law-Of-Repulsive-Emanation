@@ -1467,3 +1467,7 @@ corrected to a null in the PAPER itself.
 * **64. Picard little theorem 0/0 (2026-08-17)** — Removable values at zeros of entire functions; e^z omits only 0; cosh takes all values. `data/picard_little_0_over_0_data.json`.
 * **65. Weil explicit formula 0/0 (2026-08-17)** — Logarithmic derivative identity -zeta'/zeta = sum log(p)/(p^s-1); explicit formula improves with zeros; prime counting corrected. `data/weil_explicit_0_over_0_data.json`.
 * **66. Poincare recurrence 0/0 (2026-08-17)** — eps*tau(eps) constant for irrational rotations; recurrence rate 0/0; equidistribution converges; periodic exact. `data/poincare_recurrence_0_over_0_data.json`.
+* **67. Prime number theorem 0/0 (2026-08-17)** — pi(x)*log(x)/x -> 1; pi(x)/Li(x) -> 1; pole 1/log(x) at x=1 removable; Chebyshev bounds hold; error bounded. `data/prime_number_theorem_0_over_0_data.json`.
+* **68. Ising model 0/0 (2026-08-17)** — Phase transition at T_c = 2/log(1+sqrt(2)); magnetization drops, energy = -2*sqrt(2) (double-counted formula), susceptibility peaks near T_c. Monte Carlo, finite-size effects. `data/ising_model_0_over_0_data.json`.
+* **69. Khintchine 0/0 (2026-08-17)** — Dirichlet bound holds for all convergents; golden ratio q^2*|phi-p/q| -> 1/sqrt(5) (hardest to approximate); Farey bound holds. `data/khintchine_0_over_0_data.json`.
+* **70. Schanuel conjecture 0/0 (2026-08-17)** — e^a * e^b = e^{a+b} at a=-b (0/0 removable=1); Lindemann-Weierstrass verified for e and 2; exp derivative 0/0 converges; transcendence degree heuristics correct. `data/schanuel_0_over_0_data.json`.

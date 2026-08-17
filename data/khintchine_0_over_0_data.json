@@ -1,0 +1,487 @@
+{
+  "tests": [],
+  "summary": {
+    "supported": true,
+    "dirichlet_bound_holds": true,
+    "golden_ratio_optimal": true,
+    "farey_bound_holds": true,
+    "honest_wall": "numerical verification of Diophantine approximation properties, not a proof of Khintchine's theorem"
+  },
+  "continued_fractions": {
+    "sqrt(2)": {
+      "continued_fraction": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "is_periodic": true,
+      "convergents": [
+        {
+          "p": 3,
+          "q": 2,
+          "error": 0.08578643762690485,
+          "q_times_error": 0.1715728752538097
+        },
+        {
+          "p": 7,
+          "q": 5,
+          "error": 0.014213562373095234,
+          "q_times_error": 0.07106781186547617
+        },
+        {
+          "p": 17,
+          "q": 12,
+          "error": 0.002453104293571595,
+          "q_times_error": 0.029437251522859142
+        },
+        {
+          "p": 41,
+          "q": 29,
+          "error": 0.00042045892481934466,
+          "q_times_error": 0.012193308819760995
+        },
+        {
+          "p": 99,
+          "q": 70,
+          "error": 7.215191261922271e-05,
+          "q_times_error": 0.00505063388334559
+        },
+        {
+          "p": 239,
+          "q": 169,
+          "error": 1.2378941142587863e-05,
+          "q_times_error": 0.0020920410530973488
+        },
+        {
+          "p": 577,
+          "q": 408,
+          "error": 2.1239014147411694e-06,
+          "q_times_error": 0.0008665517772143971
+        },
+        {
+          "p": 1393,
+          "q": 985,
+          "error": 3.644035520000699e-07,
+          "q_times_error": 0.00035893749872006886
+        },
+        {
+          "p": 3363,
+          "q": 2378,
+          "error": 6.252177442434004e-08,
+          "q_times_error": 0.0001486767795810806
+        },
+        {
+          "p": 8119,
+          "q": 5741,
+          "error": 1.0727040367086715e-08,
+          "q_times_error": 6.158393874744483e-05
+        }
+      ]
+    },
+    "phi (golden)": {
+      "continued_fraction": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "is_periodic": false,
+      "convergents": [
+        {
+          "p": 2,
+          "q": 1,
+          "error": 0.3819660112501051,
+          "q_times_error": 0.3819660112501051
+        },
+        {
+          "p": 3,
+          "q": 2,
+          "error": 0.1180339887498949,
+          "q_times_error": 0.2360679774997898
+        },
+        {
+          "p": 5,
+          "q": 3,
+          "error": 0.04863267791677184,
+          "q_times_error": 0.14589803375031551
+        },
+        {
+          "p": 8,
+          "q": 5,
+          "error": 0.018033988749894814,
+          "q_times_error": 0.09016994374947407
+        },
+        {
+          "p": 13,
+          "q": 8,
+          "error": 0.0069660112501050975,
+          "q_times_error": 0.05572809000084078
+        },
+        {
+          "p": 21,
+          "q": 13,
+          "error": 0.0026493733652794837,
+          "q_times_error": 0.03444185374863329
+        },
+        {
+          "p": 34,
+          "q": 21,
+          "error": 0.0010136302977241662,
+          "q_times_error": 0.02128623625220749
+        },
+        {
+          "p": 55,
+          "q": 34,
+          "error": 0.00038692992636546464,
+          "q_times_error": 0.013155617496425798
+        },
+        {
+          "p": 89,
+          "q": 55,
+          "error": 0.00014782943192326314,
+          "q_times_error": 0.008130618755779473
+        },
+        {
+          "p": 144,
+          "q": 89,
+          "error": 5.6460660007306984e-05,
+          "q_times_error": 0.005024998740650322
+        }
+      ]
+    },
+    "e": {
+      "continued_fraction": [
+        2,
+        1,
+        2,
+        1,
+        1,
+        4,
+        1,
+        1,
+        6,
+        1,
+        1,
+        8,
+        1,
+        1,
+        10
+      ],
+      "is_periodic": false,
+      "convergents": [
+        {
+          "p": 3,
+          "q": 1,
+          "error": 0.2817181715409549,
+          "q_times_error": 0.2817181715409549
+        },
+        {
+          "p": 8,
+          "q": 3,
+          "error": 0.05161516179237857,
+          "q_times_error": 0.15484548537713572
+        },
+        {
+          "p": 11,
+          "q": 4,
+          "error": 0.03171817154095491,
+          "q_times_error": 0.12687268616381964
+        },
+        {
+          "p": 19,
+          "q": 7,
+          "error": 0.003996114173330678,
+          "q_times_error": 0.027972799213314747
+        },
+        {
+          "p": 87,
+          "q": 32,
+          "error": 0.0004681715409549092,
+          "q_times_error": 0.014981489310557095
+        },
+        {
+          "p": 106,
+          "q": 39,
+          "error": 0.0003331105103270282,
+          "q_times_error": 0.0129913099027541
+        },
+        {
+          "p": 193,
+          "q": 71,
+          "error": 2.8030695884417867e-05,
+          "q_times_error": 0.0019901794077936685
+        },
+        {
+          "p": 1264,
+          "q": 465,
+          "error": 2.2585665719887515e-06,
+          "q_times_error": 0.0010502334559747695
+        },
+        {
+          "p": 1457,
+          "q": 536,
+          "error": 1.7536305070287028e-06,
+          "q_times_error": 0.0009399459517673847
+        },
+        {
+          "p": 2721,
+          "q": 1001,
+          "error": 1.1017732681750658e-07,
+          "q_times_error": 0.00011028750414432409
+        }
+      ]
+    },
+    "pi": {
+      "continued_fraction": [
+        3,
+        7,
+        15,
+        1,
+        292,
+        1,
+        1,
+        1,
+        2,
+        1,
+        3,
+        1,
+        14,
+        3,
+        3
+      ],
+      "is_periodic": false,
+      "convergents": [
+        {
+          "p": 22,
+          "q": 7,
+          "error": 0.0012644892673496777,
+          "q_times_error": 0.008851424871447744
+        },
+        {
+          "p": 333,
+          "q": 106,
+          "error": 8.32196275291075e-05,
+          "q_times_error": 0.008821280518085395
+        },
+        {
+          "p": 355,
+          "q": 113,
+          "error": 2.667641894049666e-07,
+          "q_times_error": 3.0144353402761226e-05
+        },
+        {
+          "p": 103993,
+          "q": 33102,
+          "error": 5.778906242426274e-10,
+          "q_times_error": 1.912933544367945e-05
+        },
+        {
+          "p": 104348,
+          "q": 33215,
+          "error": 3.3162805834763276e-10,
+          "q_times_error": 1.1015025958016622e-05
+        },
+        {
+          "p": 208341,
+          "q": 66317,
+          "error": 1.2235634727630895e-10,
+          "q_times_error": 8.11430588232298e-06
+        },
+        {
+          "p": 312689,
+          "q": 99532,
+          "error": 2.914335439641036e-11,
+          "q_times_error": 2.900696349783516e-06
+        },
+        {
+          "p": 833719,
+          "q": 265381,
+          "error": 8.715250743307479e-12,
+          "q_times_error": 2.312861957509682e-06
+        },
+        {
+          "p": 1146408,
+          "q": 364913,
+          "error": 1.6107115641261771e-12,
+          "q_times_error": 5.877695889999757e-07
+        },
+        {
+          "p": 4272943,
+          "q": 1360120,
+          "error": 4.04121180963557e-13,
+          "q_times_error": 5.496533006521531e-07
+        }
+      ]
+    }
+  },
+  "golden_ratio": {
+    "note": "q^2*|phi-p/q| -> 1/sqrt(5) ~ 0.447214 (hardest to approximate)",
+    "convergent_qualities": [
+      {
+        "q": 1,
+        "q_squared_times_error": 0.3819660112501051
+      },
+      {
+        "q": 2,
+        "q_squared_times_error": 0.4721359549995796
+      },
+      {
+        "q": 3,
+        "q_squared_times_error": 0.43769410125094654
+      },
+      {
+        "q": 5,
+        "q_squared_times_error": 0.45084971874737034
+      },
+      {
+        "q": 8,
+        "q_squared_times_error": 0.44582472000672624
+      },
+      {
+        "q": 13,
+        "q_squared_times_error": 0.44774409873223275
+      },
+      {
+        "q": 21,
+        "q_squared_times_error": 0.4470109612963573
+      },
+      {
+        "q": 34,
+        "q_squared_times_error": 0.4472909948784771
+      },
+      {
+        "q": 55,
+        "q_squared_times_error": 0.447184031567871
+      },
+      {
+        "q": 89,
+        "q_squared_times_error": 0.4472248879178786
+      }
+    ],
+    "limit": 0.4472135954999579
+  },
+  "dirichlet_theorem": {
+    "note": "every convergent satisfies |x-p/q| < 1/q^2 (Dirichlet)",
+    "tests": [
+      {
+        "number": "sqrt(2)",
+        "n_convergents_satisfying": 29,
+        "total_convergents": 29,
+        "all_satisfy": true
+      },
+      {
+        "number": "pi",
+        "n_convergents_satisfying": 29,
+        "total_convergents": 29,
+        "all_satisfy": true
+      },
+      {
+        "number": "e",
+        "n_convergents_satisfying": 29,
+        "total_convergents": 29,
+        "all_satisfy": true
+      }
+    ]
+  },
+  "e_approximation": {
+    "note": "q*|e-p/q| -> 1/(2e) ~ 0.184",
+    "convergent_qualities": [
+      {
+        "q": 1,
+        "q_times_error": 0.2817181715409549
+      },
+      {
+        "q": 3,
+        "q_times_error": 0.15484548537713572
+      },
+      {
+        "q": 4,
+        "q_times_error": 0.12687268616381964
+      },
+      {
+        "q": 7,
+        "q_times_error": 0.027972799213314747
+      },
+      {
+        "q": 32,
+        "q_times_error": 0.014981489310557095
+      },
+      {
+        "q": 39,
+        "q_times_error": 0.0129913099027541
+      },
+      {
+        "q": 71,
+        "q_times_error": 0.0019901794077936685
+      },
+      {
+        "q": 465,
+        "q_times_error": 0.0010502334559747695
+      },
+      {
+        "q": 536,
+        "q_times_error": 0.0009399459517673847
+      },
+      {
+        "q": 1001,
+        "q_times_error": 0.00011028750414432409
+      }
+    ]
+  },
+  "farey_approximation": {
+    "note": "Farey fractions approximate irrationals to 1/(qN)",
+    "tests": [
+      {
+        "N": 10,
+        "best_fraction": "7/5",
+        "error": 0.014213562373095234,
+        "bound": 0.02,
+        "satisfies_bound": true
+      },
+      {
+        "N": 50,
+        "best_fraction": "41/29",
+        "error": 0.00042045892481934466,
+        "bound": 0.000689655172413793,
+        "satisfies_bound": true
+      },
+      {
+        "N": 100,
+        "best_fraction": "140/99",
+        "error": 7.214823168100182e-05,
+        "bound": 0.00010101010101010101,
+        "satisfies_bound": true
+      },
+      {
+        "N": 500,
+        "best_fraction": "577/408",
+        "error": 2.1239014147411694e-06,
+        "bound": 4.901960784313726e-06,
+        "satisfies_bound": true
+      }
+    ]
+  }
+}

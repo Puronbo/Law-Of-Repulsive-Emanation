@@ -2751,3 +2751,7 @@ content ranking.
 * **Ch. 5.30** Picard little theorem 0/0 — Removable values at entire function zeros, e^z omits 0, cosh takes all (`picard_little_0_over_0.py`).
 * **Ch. 5.31** Weil explicit formula 0/0 — Log derivative identity, zeros count primes, explicit formula psi(x) (`weil_explicit_0_over_0.py`).
 * **Ch. 5.32** Poincare recurrence 0/0 — eps*tau constant, recurrence rate 0/0, equidistribution (`poincare_recurrence_0_over_0.py`).
+* **Ch. 5.33** Prime number theorem 0/0 — pi(x)*log(x)/x -> 1, pi(x)/Li(x) -> 1, pole 1/log(x) at x=1 removable, Chebyshev bounds (`prime_number_theorem_0_over_0.py`).
+* **Ch. 5.34** Ising model 0/0 — Phase transition at T_c, magnetization drops, energy = -2*sqrt(2), susceptibility peaks (`ising_model_0_over_0.py`).
+* **Ch. 5.35** Khintchine 0/0 — Dirichlet bound, golden ratio q^2*error -> 1/sqrt(5), Farey bound, continued fractions (`khintchine_0_over_0.py`).
+* **Ch. 5.36** Schanuel conjecture 0/0 — exp identity 0/0 removable, Lindemann-Weierstrass, exp derivative 0/0, transcendence degree (`schanuel_0_over_0.py`).

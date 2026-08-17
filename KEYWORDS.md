@@ -209,6 +209,10 @@ Usage: `grep -i "basketball" KEYWORDS.md` or just search this file.
 - DecentralNet / Decentral Bank → `data/decentral_net*.json`, `data/decentral_bank*.json`
 - Learning & creativity test → `data/learn_creativity_test_data.json`
 - Bekenstein (withdrawn, then settled) → `data/bekenstein_shift_data.json`, `data/bekenstein_rerun_data.json`
+- **Prime number theorem / PNT / Li(x) / Chebyshev / prime counting / 1/log(x) pole** — `prime_number_theorem_0_over_0.py` (PNT convergence, Li convergence, pole at x=1 removable, Chebyshev bounds, error term bounded) → `data/prime_number_theorem_0_over_0_data.json`
+- **Ising model / phase transition / Monte Carlo / magnetization / susceptibility / T_c** — `ising_model_0_over_0.py` (2D Ising Metropolis MC, order parameter, energy at T_c, susceptibility peak, finite-size) → `data/ising_model_0_over_0_data.json`
+- **Khintchine / Diophantine approximation / continued fractions / golden ratio / Farey / Dirichlet** — `khintchine_0_over_0.py` (Dirichlet bound, golden ratio q^2*error -> 1/sqrt(5), Farey approximation) → `data/khintchine_0_over_0_data.json`
+- **Schanuel conjecture / algebraic independence / Lindemann-Weierstrass / transcendence degree / exponential identity** — `schanuel_0_over_0.py` (exp identity 0/0, LW verification, exp derivative 0/0, transcendence heuristics) → `data/schanuel_0_over_0_data.json`
 
 ## Code map
 

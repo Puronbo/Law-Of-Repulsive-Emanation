@@ -1,0 +1,273 @@
+{
+  "tests": [],
+  "summary": {
+    "supported": true,
+    "pnt_converges": true,
+    "li_converges": true,
+    "pole_removable": true,
+    "chebyshev_bounds_hold": true,
+    "error_bounded": true,
+    "honest_wall": "numerical verification of PNT asymptotic and its 0/0 structure, not a proof of the PNT"
+  },
+  "pnt_asymptotic": {
+    "note": "pi(x)*log(x)/x -> 1 as x -> infinity",
+    "tests": [
+      {
+        "x": 10,
+        "pi_x": 4,
+        "x_over_logx": 4.3429448190325175,
+        "ratio": 0.9210340371976184,
+        "deviation_from_one": 0.07896596280238155
+      },
+      {
+        "x": 50,
+        "pi_x": 15,
+        "x_over_logx": 12.781110931766573,
+        "ratio": 1.1736069016284438,
+        "deviation_from_one": 0.17360690162844383
+      },
+      {
+        "x": 100,
+        "pi_x": 25,
+        "x_over_logx": 21.71472409516259,
+        "ratio": 1.151292546497023,
+        "deviation_from_one": 0.15129254649702295
+      },
+      {
+        "x": 500,
+        "pi_x": 95,
+        "x_over_logx": 80.45559624700124,
+        "ratio": 1.1807755387002163,
+        "deviation_from_one": 0.18077553870021634
+      },
+      {
+        "x": 1000,
+        "pi_x": 168,
+        "x_over_logx": 144.76482730108395,
+        "ratio": 1.1605028868689988,
+        "deviation_from_one": 0.16050288686899883
+      },
+      {
+        "x": 5000,
+        "pi_x": 669,
+        "x_over_logx": 587.047855746548,
+        "ratio": 1.1396004490114926,
+        "deviation_from_one": 0.1396004490114926
+      },
+      {
+        "x": 10000,
+        "pi_x": 1229,
+        "x_over_logx": 1085.7362047581294,
+        "ratio": 1.131950831715873,
+        "deviation_from_one": 0.13195083171587307
+      },
+      {
+        "x": 50000,
+        "pi_x": 5133,
+        "x_over_logx": 4621.166782321471,
+        "ratio": 1.1107584386775597,
+        "deviation_from_one": 0.11075843867755975
+      },
+      {
+        "x": 100000,
+        "pi_x": 9592,
+        "x_over_logx": 8685.889638065037,
+        "ratio": 1.1043198105999443,
+        "deviation_from_one": 0.10431981059994433
+      }
+    ]
+  },
+  "pnt_li": {
+    "note": "pi(x)/Li(x) -> 1 as x -> infinity",
+    "tests": [
+      {
+        "x": 10,
+        "pi_x": 4,
+        "Li_x": 5.095534571028087,
+        "ratio": 0.7850010522434647,
+        "deviation_from_one": 0.21499894775653527,
+        "difference": -1.0955345710280868
+      },
+      {
+        "x": 50,
+        "pi_x": 15,
+        "Li_x": 17.38812615316187,
+        "ratio": 0.8626576474010909,
+        "deviation_from_one": 0.13734235259890915,
+        "difference": -2.3881261531618705
+      },
+      {
+        "x": 100,
+        "pi_x": 25,
+        "Li_x": 29.04419698078425,
+        "ratio": 0.8607571425211065,
+        "deviation_from_one": 0.13924285747889353,
+        "difference": -4.04419698078425
+      },
+      {
+        "x": 500,
+        "pi_x": 95,
+        "Li_x": 100.71082375916745,
+        "ratio": 0.9432948361853946,
+        "deviation_from_one": 0.05670516381460544,
+        "difference": -5.710823759167454
+      },
+      {
+        "x": 1000,
+        "pi_x": 168,
+        "Li_x": 176.52647126733413,
+        "ratio": 0.9516986251063643,
+        "deviation_from_one": 0.04830137489363573,
+        "difference": -8.52647126733413
+      },
+      {
+        "x": 5000,
+        "pi_x": 669,
+        "Li_x": 683.1975433018662,
+        "ratio": 0.9792189778182603,
+        "deviation_from_one": 0.020781022181739717,
+        "difference": -14.197543301866176
+      },
+      {
+        "x": 10000,
+        "pi_x": 1229,
+        "Li_x": 1244.9697158254442,
+        "ratio": 0.9871726069940137,
+        "deviation_from_one": 0.012827393005986343,
+        "difference": -15.969715825444155
+      },
+      {
+        "x": 50000,
+        "pi_x": 5133,
+        "Li_x": 5164.633664364592,
+        "ratio": 0.9938749451712595,
+        "deviation_from_one": 0.006125054828740484,
+        "difference": -31.633664364591823
+      },
+      {
+        "x": 100000,
+        "pi_x": 9592,
+        "Li_x": 9627.222552970195,
+        "ratio": 0.9963413588107685,
+        "deviation_from_one": 0.0036586411892315374,
+        "difference": -35.222552970195466
+      }
+    ]
+  },
+  "error_term": {
+    "note": "error |pi(x)-Li(x)| grows slower than x/log^2(x)",
+    "tests": [
+      {
+        "x": 100,
+        "error": 4.04419698078425,
+        "x_over_logx_squared": 4.715292425290347,
+        "error_within_bound": true
+      },
+      {
+        "x": 500,
+        "error": 5.710823759167454,
+        "x_over_logx_squared": 12.946205934920963,
+        "error_within_bound": true
+      },
+      {
+        "x": 1000,
+        "error": 8.52647126733413,
+        "x_over_logx_squared": 20.95685522351266,
+        "error_within_bound": true
+      },
+      {
+        "x": 5000,
+        "error": 14.197543301866176,
+        "x_over_logx_squared": 68.92503698732395,
+        "error_within_bound": true
+      },
+      {
+        "x": 10000,
+        "error": 15.969715825444155,
+        "x_over_logx_squared": 117.88231063225868,
+        "error_within_bound": true
+      },
+      {
+        "x": 50000,
+        "error": 31.633664364591823,
+        "x_over_logx_squared": 427.10364860062765,
+        "error_within_bound": true
+      },
+      {
+        "x": 100000,
+        "error": 35.222552970195466,
+        "x_over_logx_squared": 754.4467880464557,
+        "error_within_bound": true
+      }
+    ]
+  },
+  "pole_0_over_0": {
+    "note": "1/log(x) / (1/(x-1)) -> 1 as x -> 1+: 0/0 removable",
+    "tests": [
+      {
+        "x": 1.01,
+        "1/log(x)": 100.49917080713044,
+        "1/(x-1)": 99.99999999999991,
+        "ratio": 1.0049917080713053,
+        "deviation_from_one": 0.004991708071305334
+      },
+      {
+        "x": 1.001,
+        "1/log(x)": 1000.499916708417,
+        "1/(x-1)": 1000.0000000001102,
+        "ratio": 1.0004999167083068,
+        "deviation_from_one": 0.0004999167083068468
+      },
+      {
+        "x": 1.0001,
+        "1/log(x)": 10000.499991668185,
+        "1/(x-1)": 10000.0000000011,
+        "ratio": 1.0000499991667084,
+        "deviation_from_one": 4.999916670844762e-05
+      },
+      {
+        "x": 1.00001,
+        "1/log(x)": 100000.49999851156,
+        "1/(x-1)": 99999.99999934487,
+        "ratio": 1.000004999991667,
+        "deviation_from_one": 4.999991666920778e-06
+      },
+      {
+        "x": 1.000001,
+        "1/log(x)": 1000000.5000821833,
+        "1/(x-1)": 1000000.0000822666,
+        "ratio": 1.0000004999999166,
+        "deviation_from_one": 4.999999165811175e-07
+      }
+    ]
+  },
+  "chebyshev_bounds": {
+    "note": "Chebyshev: 0.92 < pi(x)*log(x)/x < 1.11 for large x",
+    "tests": [
+      {
+        "x": 100,
+        "pi_x": 25,
+        "ratio": 1.151292546497023,
+        "in_chebyshev_bounds": true
+      },
+      {
+        "x": 1000,
+        "pi_x": 168,
+        "ratio": 1.1605028868689988,
+        "in_chebyshev_bounds": true
+      },
+      {
+        "x": 10000,
+        "pi_x": 1229,
+        "ratio": 1.131950831715873,
+        "in_chebyshev_bounds": true
+      },
+      {
+        "x": 100000,
+        "pi_x": 9592,
+        "ratio": 1.1043198105999443,
+        "in_chebyshev_bounds": true
+      }
+    ]
+  }
+}
