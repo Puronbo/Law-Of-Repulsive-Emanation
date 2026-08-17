@@ -2478,4 +2478,25 @@ def test_laplace_method_0_over_0():
     assert d['summary']['numerical_error'] < 1e-8
 
 
+def test_wallis_product_0_over_0():
+    d = load('wallis_product_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['convergence_error'] < 1e-4
+    assert d['summary']['factor_limit_error'] < 1e-4
+
+
+def test_cesaro_summation_0_over_0():
+    d = load('cesaro_summation_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['grandi_cesaro_error'] < 1e-4
+
+
+def test_fermat_little_0_over_0():
+    d = load('fermat_little_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['all_removable_match']
+    assert d['summary']['all_fermat_mod_p']
+    assert d['summary']['all_geometric_identity']
+
+
 

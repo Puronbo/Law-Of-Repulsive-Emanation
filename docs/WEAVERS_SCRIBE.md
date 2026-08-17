@@ -2443,6 +2443,38 @@ For degenerate saddle f(x)=x^4: I(n)*n^{1/4} = Gamma(1/4)/2.
 Verified: Gaussian limit error 0. Quartic limit error 0. Numerical
 quadrature error 4.44e-16.
 
+### Ch. 5.21au  Wallis product via 0/0 (2026-08-17)
+
+Wallis product: pi/2 = prod_{n=1}^inf (2n)^2/((2n-1)(2n+1)).
+
+The 0/0: each factor 4n^2/(4n^2-1) -> 1 as n -> inf. The product of
+infinitely many factors approaching 1 is 1^inf, an indeterminate form.
+The removable value is pi/2.
+
+Verified: partial product converges to pi/2 (error 3.93e-08 at N=10^7).
+Factor -> 1 error 2.50e-09.
+
+### Ch. 5.21av  Cesaro summation via 0/0 (2026-08-17)
+
+Grandi's series: S = 1 - 1 + 1 - 1 + ... diverges (partial sums 1,0,1,0...).
+The Cesaro mean C_N = (S_1+...+S_N)/N converges to 1/2.
+
+The 0/0: at N -> inf, C_N = (sum of oscillating partial sums)/N is inf/inf.
+The removable value is 1/2.
+
+The geometric formula (1-r^{N+1})/(1-r) at r=1 is 0/0, removable = N+1.
+
+### Ch. 5.21aw  Fermat's little theorem via 0/0 (2026-08-17)
+
+Fermat: a^{p-1} = 1 (mod p) for prime p, gcd(a,p)=1.
+
+The 0/0: Q(a) = (a^{p-1}-1)/(a-1) at a=1 is 0/0. By L'Hopital,
+removable value = p-1. This encodes the number of terms in the geometric
+sum 1 + a + a^2 + ... + a^{p-2}.
+
+Verified for primes 2..47: removable = p-1, Q(a) mod p = 0 for
+gcd(a,p)=1, geometric identity holds.
+
 ---
 
 ## Ch. 6  Creases (never forget these)

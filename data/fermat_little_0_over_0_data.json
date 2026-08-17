@@ -1,0 +1,365 @@
+{
+  "removable_values": [
+    {
+      "p": 2,
+      "removable_value": 1,
+      "expected": 1,
+      "matches": true
+    },
+    {
+      "p": 3,
+      "removable_value": 2,
+      "expected": 2,
+      "matches": true
+    },
+    {
+      "p": 5,
+      "removable_value": 4,
+      "expected": 4,
+      "matches": true
+    },
+    {
+      "p": 7,
+      "removable_value": 6,
+      "expected": 6,
+      "matches": true
+    },
+    {
+      "p": 11,
+      "removable_value": 10,
+      "expected": 10,
+      "matches": true
+    },
+    {
+      "p": 13,
+      "removable_value": 12,
+      "expected": 12,
+      "matches": true
+    },
+    {
+      "p": 17,
+      "removable_value": 16,
+      "expected": 16,
+      "matches": true
+    },
+    {
+      "p": 19,
+      "removable_value": 18,
+      "expected": 18,
+      "matches": true
+    },
+    {
+      "p": 23,
+      "removable_value": 22,
+      "expected": 22,
+      "matches": true
+    },
+    {
+      "p": 29,
+      "removable_value": 28,
+      "expected": 28,
+      "matches": true
+    },
+    {
+      "p": 31,
+      "removable_value": 30,
+      "expected": 30,
+      "matches": true
+    },
+    {
+      "p": 37,
+      "removable_value": 36,
+      "expected": 36,
+      "matches": true
+    },
+    {
+      "p": 41,
+      "removable_value": 40,
+      "expected": 40,
+      "matches": true
+    },
+    {
+      "p": 43,
+      "removable_value": 42,
+      "expected": 42,
+      "matches": true
+    },
+    {
+      "p": 47,
+      "removable_value": 46,
+      "expected": 46,
+      "matches": true
+    }
+  ],
+  "fermat_mod_p": [
+    {
+      "p": 5,
+      "a": 2,
+      "Q": 15,
+      "Q_mod_p": 0,
+      "is_zero_mod_p": true
+    },
+    {
+      "p": 5,
+      "a": 3,
+      "Q": 40,
+      "Q_mod_p": 0,
+      "is_zero_mod_p": true
+    },
+    {
+      "p": 5,
+      "a": 4,
+      "Q": 85,
+      "Q_mod_p": 0,
+      "is_zero_mod_p": true
+    },
+    {
+      "p": 7,
+      "a": 2,
+      "Q": 63,
+      "Q_mod_p": 0,
+      "is_zero_mod_p": true
+    },
+    {
+      "p": 7,
+      "a": 3,
+      "Q": 364,
+      "Q_mod_p": 0,
+      "is_zero_mod_p": true
+    },
+    {
+      "p": 7,
+      "a": 4,
+      "Q": 1365,
+      "Q_mod_p": 0,
+      "is_zero_mod_p": true
+    },
+    {
+      "p": 7,
+      "a": 5,
+      "Q": 3906,
+      "Q_mod_p": 0,
+      "is_zero_mod_p": true
+    },
+    {
+      "p": 11,
+      "a": 2,
+      "Q": 1023,
+      "Q_mod_p": 0,
+      "is_zero_mod_p": true
+    },
+    {
+      "p": 11,
+      "a": 3,
+      "Q": 29524,
+      "Q_mod_p": 0,
+      "is_zero_mod_p": true
+    },
+    {
+      "p": 11,
+      "a": 4,
+      "Q": 349525,
+      "Q_mod_p": 0,
+      "is_zero_mod_p": true
+    },
+    {
+      "p": 11,
+      "a": 5,
+      "Q": 2441406,
+      "Q_mod_p": 0,
+      "is_zero_mod_p": true
+    },
+    {
+      "p": 13,
+      "a": 2,
+      "Q": 4095,
+      "Q_mod_p": 0,
+      "is_zero_mod_p": true
+    },
+    {
+      "p": 13,
+      "a": 3,
+      "Q": 265720,
+      "Q_mod_p": 0,
+      "is_zero_mod_p": true
+    },
+    {
+      "p": 13,
+      "a": 4,
+      "Q": 5592405,
+      "Q_mod_p": 0,
+      "is_zero_mod_p": true
+    },
+    {
+      "p": 13,
+      "a": 5,
+      "Q": 61035156,
+      "Q_mod_p": 0,
+      "is_zero_mod_p": true
+    }
+  ],
+  "geometric_identity": [
+    {
+      "p": 5,
+      "a": 2,
+      "Q_formula": 15,
+      "Q_sum": 15,
+      "match": true
+    },
+    {
+      "p": 5,
+      "a": 3,
+      "Q_formula": 40,
+      "Q_sum": 40,
+      "match": true
+    },
+    {
+      "p": 5,
+      "a": 5,
+      "Q_formula": 156,
+      "Q_sum": 156,
+      "match": true
+    },
+    {
+      "p": 7,
+      "a": 2,
+      "Q_formula": 63,
+      "Q_sum": 63,
+      "match": true
+    },
+    {
+      "p": 7,
+      "a": 3,
+      "Q_formula": 364,
+      "Q_sum": 364,
+      "match": true
+    },
+    {
+      "p": 7,
+      "a": 5,
+      "Q_formula": 3906,
+      "Q_sum": 3906,
+      "match": true
+    },
+    {
+      "p": 11,
+      "a": 2,
+      "Q_formula": 1023,
+      "Q_sum": 1023,
+      "match": true
+    },
+    {
+      "p": 11,
+      "a": 3,
+      "Q_formula": 29524,
+      "Q_sum": 29524,
+      "match": true
+    },
+    {
+      "p": 11,
+      "a": 5,
+      "Q_formula": 2441406,
+      "Q_sum": 2441406,
+      "match": true
+    }
+  ],
+  "term_count": [
+    {
+      "p": 2,
+      "removable": 1,
+      "num_terms": 1,
+      "matches": true
+    },
+    {
+      "p": 3,
+      "removable": 2,
+      "num_terms": 2,
+      "matches": true
+    },
+    {
+      "p": 5,
+      "removable": 4,
+      "num_terms": 4,
+      "matches": true
+    },
+    {
+      "p": 7,
+      "removable": 6,
+      "num_terms": 6,
+      "matches": true
+    },
+    {
+      "p": 11,
+      "removable": 10,
+      "num_terms": 10,
+      "matches": true
+    },
+    {
+      "p": 13,
+      "removable": 12,
+      "num_terms": 12,
+      "matches": true
+    },
+    {
+      "p": 17,
+      "removable": 16,
+      "num_terms": 16,
+      "matches": true
+    },
+    {
+      "p": 19,
+      "removable": 18,
+      "num_terms": 18,
+      "matches": true
+    },
+    {
+      "p": 23,
+      "removable": 22,
+      "num_terms": 22,
+      "matches": true
+    },
+    {
+      "p": 29,
+      "removable": 28,
+      "num_terms": 28,
+      "matches": true
+    },
+    {
+      "p": 31,
+      "removable": 30,
+      "num_terms": 30,
+      "matches": true
+    },
+    {
+      "p": 37,
+      "removable": 36,
+      "num_terms": 36,
+      "matches": true
+    },
+    {
+      "p": 41,
+      "removable": 40,
+      "num_terms": 40,
+      "matches": true
+    },
+    {
+      "p": 43,
+      "removable": 42,
+      "num_terms": 42,
+      "matches": true
+    },
+    {
+      "p": 47,
+      "removable": 46,
+      "num_terms": 46,
+      "matches": true
+    }
+  ],
+  "summary": {
+    "all_removable_match": true,
+    "all_fermat_mod_p": true,
+    "all_geometric_identity": true,
+    "all_term_count": true,
+    "supported": true
+  }
+}
