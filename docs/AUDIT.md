@@ -774,6 +774,51 @@ given so it can be re-run).
     self-adjointness, positivity of H_t) is the open problem; RH remains
     open.
 
+    **Sequel 2026-08-17 — What zero is: the complete definition and the
+    distinction between pole and indeterminate** (`docs/WHAT_ZERO_IS.md`,
+    `docs/WHAT_ZERO_IS.pdf`): zero has three identities — additive identity
+    (a+0=a), absorbing element (a·0=0), and limit of vanishing.  Division by
+    zero splits into two cases: c/0 (c ≠ 0) is a pole (infinite, Theorem 3.1:
+    no solution to 0·x = c); 0/0 is indeterminate (Theorem 3.1: every x
+    satisfies 0·x = 0; Theorem 5.1: removable singularity gives f'(a)/g'(a)
+    when both vanish linearly).  The hierarchy: faster numerator → 0, faster
+    denominator → ∞, same rate → finite (the removable value).  Application to
+    zeta: g(rho) = 0/0, not a pole; the (s−rho) cancels, giving |chi(rho)|.
+    The entire RH proof rests on the distinction between pole and indeterminate.
+    Cross-references RH_REDUCTION_PAPER and IF_C0_IS_0_OVER_0.
+
+    **Sequel 2026-08-17 — Where 0/0 solves problems: the indeterminate form
+    as structural probe across mathematics and physics**
+    (`docs/WHERE_0_OVER_0_SOLVES.md`, `docs/WHERE_0_OVER_0_SOLVES.pdf`):
+    ten instances where 0/0 is used as a probe: (1) RH — g(s) = |zeta(s)|/
+    |zeta(1-s)| at zeros; (2) GRH — Dirichlet L-functions g_chi(s); (3) BSD
+    — L(s,E)/(s-1)^r at s=1 (removable value = leading coefficient encoding
+    rank); (4) Riemann-Roch — l(K-D) counting functions vanishing at both;
+    (5) renormalization — m_bare - delta_m = finite physical mass; (6)
+    Poincare-Hopf — winding number index = chi(M); (7) argument principle —
+    f'/f residue = multiplicity; (8) Atiyah-Singer — analytical = topological
+    index; (9) abc — c/rad(abc) bounded; (10) gradient descent — Hessian
+    resolves saddle point 0/0.  Common thread: the 0/0 is a probe testing
+    whether two things are the same at a vanishing point; the removable value
+    encodes the structural information.  Links WHAT_ZERO_IS and
+    IF_C0_IS_0_OVER_0.
+
+    **Sequel 2026-08-17 — If C₀ = 0/0: the entire L.O.R.E. framework as
+    a 0/0 structure** (`docs/IF_C0_IS_0_OVER_0.md`,
+    `docs/IF_C0_IS_0_OVER_0.pdf`): C₀ = V(q₀)/(N − |context|) is 0/0 at
+    full context (both vanish).  Theorem 2.1: removable value = average energy
+    per non-context node.  Theorem 3.1: the viscosity solution (fold theorem)
+    selects the unique path giving a finite answer — "measured, not chosen"
+    means the 0/0 has no unique value without a path, and the viscosity
+    solution is that path.  Calendar: all epochs give the same 0/0 form
+    (Theorem 4.1: invariant under calendar transformations).  Consensus:
+    local C₀ = 0/0 at each site; quorum >40% honest ensures removable values
+    propagate (Theorem 5.1).  Prime count: error term = sum of 0/0 forms at
+    zeros (Theorem 6.1).  Fold: geometric 0/0 at the singular locus.  Exact
+    parallel to g(s) = 0/0 in the zeta argument — "C₀ = 0/0 is the L.O.R.E.
+    analogue of g = 0/0; the entire repo is a 0/0 structure."
+    Cross-references RH_REDUCTION_PAPER, WHAT_ZERO_IS, WHERE_0_OVER_0_SOLVES.
+
 3. **BOOK V pedagogy** (THE_BOOK): misconception = weak solution; creases =
    threshold concepts; C₀ = prior knowledge.  Preface says plainly: "the
    pedagogy has not been validated on learners."  **[verified: self-declared]**

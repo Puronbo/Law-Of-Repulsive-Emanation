@@ -2112,6 +2112,79 @@ conditional proof.
   the singularity removable by a criterion OTHER than evaluating the limit
   is the open problem.  C₀ = V(q0) = H(q0,0) does not enter.
 
+### Ch. 5.21x  What zero is: the complete definition and the pole/indeterminate distinction (2026-08-17)
+
+Ch. 5.21w wrote the RH paper; Ch. 5.21x asks what the foundation is: what
+is zero, and why is 0/0 different from 1/0?
+
+* **Three identities.** Zero is the additive identity (a+0=a), the absorbing
+  element (a·0=0, from the distributive law), and the limit of vanishing.
+* **The classification theorem (3.1).** b·x=a has: no solution if b=0, a≠0;
+  every x if b=0, a=0; unique x=a/b if b≠0. Case (i) = poles; case (ii) =
+  indeterminate.
+* **Why 1/0, 2/0, 3/0 are all the same.** The numerator stays bounded away
+  from 0; |c/g(s)| → ∞. No cancellation possible.
+* **Why 0/0 is different (Theorem 5.1).** Both vanish; f(s)/g(s) near a
+  depends on the relative rates. Taylor expansion: f(s) ≈ f'(a)(s−a),
+  g(s) ≈ g'(a)(s−a), so the (s−a) cancels and the limit is f'(a)/g'(a) —
+  finite, the removable value.
+* **The hierarchy.** Faster numerator → 0; faster denominator → ∞; same
+  rate → finite nonzero (the removable value). The RH argument lives in the
+  third sub-case.
+* **Connection.** g(rho) = 0/0, not a pole; the (s−rho) cancels. The entire
+  proof rests on this distinction. 0/0 is the one form of division by zero
+  that can produce finite structure.
+
+### Ch. 5.21y  Where 0/0 solves problems: the indeterminate form as structural probe (2026-08-17)
+
+Ch. 5.21x classified division by zero; Ch. 5.21y asks: where does the 0/0
+probe actually appear?
+
+* **The principle.** When f and g both vanish at a, f(s)/g(s) has a removable
+  singularity. The removable value tests whether f and g vanish at the same
+  rate — a structural probe.
+* **Ten instances.** (1) RH: g(s)=|zeta(s)|/|zeta(1-s)| at zeros. (2) GRH:
+  Dirichlet L-functions g_chi(s). (3) BSD: L(s,E)/(s-1)^r at s=1 (rank). (4)
+  Riemann-Roch: l(K-D). (5) Renormalization: m_bare − delta_m. (6)
+  Poincare-Hopf: index = chi(M). (7) Argument principle: f'/f. (8)
+  Atiyah-Singer: analytical = topological index. (9) abc: c/rad(abc). (10)
+  Gradient descent: Hessian at saddle points.
+* **Common thread.** In every case the 0/0 tests whether two things are the
+  same at a point where they both vanish. The removable value encodes the
+  structural information. The 0/0 is not a bug — it is the deepest feature
+  of division.
+* **Connection.** Links to Ch. 5.21x (classification), to the RH paper
+  (Ch. 5.21w), and to the L.O.R.E. structure (Ch. 5.21z).
+
+### Ch. 5.21z  If C₀ = 0/0: the entire L.O.R.E. framework as a 0/0 structure (2026-08-17)
+
+Ch. 5.21y surveyed the 0/0 across mathematics; Ch. 5.21z asks: is the
+L.O.R.E. framework itself a 0/0 structure?
+
+* **C₀ = 0/0.** V(q₀) = sum_{x not in context} max(0, alpha − d(q₀,x))².
+  As context → N (all nodes), both V(q₀) → 0 and N − |context| → 0. The
+  ratio is 0/0. Theorem 2.1: the removable value is the average energy per
+  non-context node.
+* **Viscosity solution = unique removable value (Theorem 3.1).** The fold
+  theorem says the crease is the unique viscosity solution of |r'|=a. The
+  0/0 has no unique value without a path; the viscosity solution selects the
+  path. "Measured, not chosen" = the removable value depends on the path of
+  approach, and the viscosity solution is that path.
+* **Calendar (Theorem 4.1).** All epochs are the same 0/0 form viewed from
+  different paths. The removable values are all C₀ (invariant under calendar
+  transformations). The clock-test canon (law-ness=1.000 under rotation).
+* **Consensus (Theorem 5.1).** Local C₀ = 0/0 at each of 1.9M sites. If
+  >40% honest, removable values propagate and consensus succeeds.
+* **Prime count (Theorem 6.1).** Error term = sum of 0/0 forms at zeros.
+  Removable values determine the error; RH says all are minimal.
+* **The fold.** Geometric 0/0 at the singular locus. Before/after fold:
+  smooth (energy well-defined); at fold: 0/0 (viscosity solution = crease).
+* **Exact parallel.** C₀ = 0/0 is the L.O.R.E. analogue of g = 0/0 in the
+  zeta argument. The entire repo is a 0/0 structure: the fold (viscosity
+  solution), the calendar (all epochs = same 0/0), consensus (propagation of
+  removable values), prime count (sum of 0/0 forms at zeros), and
+  "measured, not chosen" (= removable value depends on path).
+
 ---
 
 ## Ch. 6  Creases (never forget these)
