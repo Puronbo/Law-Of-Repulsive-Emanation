@@ -2455,4 +2455,27 @@ def test_cauchy_integral_0_over_0():
     assert d['summary']['max_limit_error'] < 1e-4
 
 
+def test_noether_landau_0_over_0():
+    d = load('noether_landau_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['amplitude_error'] < 1e-2
+    assert d['summary']['above_Tc_all_zero']
+    assert d['summary']['below_Tc_all_nonzero']
+    assert d['summary']['free_energy_minima']
+
+
+def test_euler_maclaurin_0_over_0():
+    d = load('euler_maclaurin_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['convergence_error'] < 1e-10
+    assert d['summary']['euler_maclaurin_error'] < 1e-8
+
+
+def test_laplace_method_0_over_0():
+    d = load('laplace_method_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['gaussian_limit_error'] < 1e-8
+    assert d['summary']['numerical_error'] < 1e-8
+
+
 

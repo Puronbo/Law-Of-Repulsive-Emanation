@@ -2405,6 +2405,44 @@ Verified: sin(z)/z at z=0 (removable=1), cos(z)/(z-pi/2) at z=pi/2
 (removable=-1), (z-1)^2/(z-1) at z=1 (removable=0), (e^z-1)/z at z=0
 (removable=1), (1-cos z)/z^2 at z=0 (removable=0.5). Max error 8.89e-05.
 
+### Ch. 5.21ar  Noether/Landau via 0/0 (2026-08-17)
+
+Noether's theorem: continuous symmetry -> conserved charge. The Z_2 spin-flip
+symmetry of the Ising model has magnetization M as its conserved charge.
+
+The 0/0: at the critical temperature T_c=1, the order parameter M(T) = 0/0.
+Above T_c: M=0 (symmetric phase). Below T_c: M>0 (broken phase). At T_c:
+both phases coexist, M=0/0.
+
+The mean-field self-consistency M = tanh(M/T) gives M ~ sqrt(3(1-T)) near
+T_c. The removable value is sqrt(3), the Landau critical amplitude.
+
+Verified: amplitude error 1.85e-07 at T=1-1e-10. Above T_c: M=0. Below:
+M>0. Free energy minimum at self-consistent M.
+
+### Ch. 5.21as  Euler-Maclaurin via 0/0 (2026-08-17)
+
+The Euler-Maclaurin formula connects sums to integrals via Bernoulli numbers.
+The Bernoulli generating function: B(x) = x/(e^x - 1).
+
+The 0/0: at x=0, both numerator and denominator vanish. By L'Hopital,
+B(0) = 1. The Taylor coefficients give the Bernoulli numbers B_n.
+
+Verified: B(x) -> 1 error 5e-14. Taylor coefficients match B_n to 5.74e-14.
+Sum-integral correction for f(x)=x^2 is exact (error 0).
+
+### Ch. 5.21at  Laplace method via 0/0 (2026-08-17)
+
+Laplace's method: I(n) = int e^{-nf(x)} dx ~ e^{-nf(x_0)} sqrt(2pi/(nf''(x_0))).
+
+The 0/0: for f(x)=x^2, I(n) = sqrt(pi/n). The ratio I(n)*sqrt(n) = sqrt(pi)
+for all n>0. At n=0: inf*0 = 0/0. Removable = sqrt(pi).
+
+For degenerate saddle f(x)=x^4: I(n)*n^{1/4} = Gamma(1/4)/2.
+
+Verified: Gaussian limit error 0. Quartic limit error 0. Numerical
+quadrature error 4.44e-16.
+
 ---
 
 ## Ch. 6  Creases (never forget these)
