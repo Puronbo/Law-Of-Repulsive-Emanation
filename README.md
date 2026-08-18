@@ -53,7 +53,7 @@ Source generators: `generate_companion_papers.py`, `generate_rh_paper.py`.
 | Mertens census | M(10^11..10^14) computed exactly, completing the published table |
 | Certified zeros | 648 zeros on Re(s)=1/2 via interval arithmetic (not a proof of RH) |
 | GUE statistics | 22,491 zeros fit GUE: KS 0.037, beta = 1.64, Montgomery-Odlyzko law |
-| Math validation | 192/192 checks pass; 155/155 regression tests pass |
+| Math validation | 192/192 checks pass; 169/169 regression tests pass |
 
 Full experiment details: [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md)
 
@@ -102,7 +102,7 @@ Universals/           # L.O.R.E. core: engine, proofs, math validation, Hamilton
 puno_flow/            # Exact balance-flow SDK: modular-add arithmetic, ledger, consensus, plugins
 experiments/          # 61 experiment scripts (batches 1-15 complete)
 data/                 # Regenerable verdict JSONs (gitignored)
-tests/                # 155 regression tests (all passing)
+tests/                # 169 regression tests (all passing)
 docs/                 # Papers, theory, instrument manuals, audit, weavers
   THE_LAW_OF_SINGULARITIES.md    # Capstone theory document
   THE_UNIVERSAL_ZERO.md          # Main 0/0 synthesis
@@ -157,7 +157,7 @@ pip install -e .
 # run the core
 cd Universals && python engine.py && python math_validation.py   # 192 checks, 0 fails
 
-# run the regression suite (155 tests, all passing)
+# run the regression suite (169 tests, all passing)
 pytest tests/test_solvable_theorems.py
 
 # run a few key experiments

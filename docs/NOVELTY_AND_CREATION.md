@@ -37,7 +37,7 @@ All figures below are counts of the repository as of commit `HEAD`
 | Library modules (`Universals/`, incl. `manifold/`) | **41** Python files | filesystem |
 | Data files (`data/*.json`) | **44**, 3.57 MB total | filesystem |
 | Regression test files | 1 (`tests/test_spring_series.py`), **10 tests, 10 passed** in 1.15 s | `pytest` run, 2026-08-04 |
-| Math-validation checks | **192 passed, 0 failed** (`docs/math_validation.py`) | verified run |
+| Math-validation checks | **192 passed, 0 failed** (`Universals/math_validation.py`) | verified run |
 | Proof-hierarchy items | A1–A5, L1–L3, T1–T10, C1–C8 + extended T19–T39 | `Universals/proofs.py`, `data/dependency_tree.dot` (27 nodes) |
 | L.O.R.E. numerical tests | **109** tests, 9 initial positions × 5 contexts × 6 radii × 2 engine runs | `docs/PAPER.md` Abstract, §9 |
 | Prime count verified from scratch | **π(943,901,200,001) = 35,575,526,191** | `experiments/prime_count_from_scratch.py` (re-run, matches README; 943,901,200,001 is prime) |
@@ -109,7 +109,8 @@ For each claim: **Status** (measured/derived), **the claim**, **evidence**
 - **Evidence:** eikonal error ≈ 3.3e-13; upwind error ≈ 1e-10; measured crease
   angle 0.0329π vs derived 0.0318π; area mirror ≈ 2666.666… = 2a²Θ³/6; all
   pinned by the 10-test regression suite.
-- **References:** `experiments/spring_bible.py` (T58–T64);
+- **References:** `experiments/spring_fold.py`, `experiments/eikonal_fold.py`,
+  `experiments/retrace_boundary.py`, `experiments/fold_optimizer.py` (T58–T64);
   `tests/test_spring_series.py` (**10 passed**); `docs/SPRING_BIBLE.md`;
   `data/dependency_tree.dot` (C8).
 
@@ -395,9 +396,9 @@ For each claim: **Status** (measured/derived), **the claim**, **evidence**
 
 ```text
 pytest tests/test_spring_series.py                     # 10 passed, ~1.15 s
-python docs/math_validation.py                         # 192 checks, 0 failed
+python Universals/math_validation.py                       # 192 checks, 0 failed
 python experiments/prime_count_from_scratch.py         # pi(943901200001) = 35575526191
-python experiments/spring_bible.py                     # T58–T64 fold suite
+python experiments/spring_fold.py                        # T58–T64 fold suite
 python experiments/decentral_net_t67.py                # O(1)-index bit-identity + exponents
 python experiments/decentral_net_t72.py                # whole-internet flow (heavy; ~50 min)
 python experiments/decentral_net_internet.py           # 1M-site top-1M routing verdict (I1–I4)

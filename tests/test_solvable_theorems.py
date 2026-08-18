@@ -2784,4 +2784,98 @@ def test_random_matrix_0_over_0():
         assert d[key]['passed'], f"{key} failed"
 
 
+def test_ai_performable_professions():
+    d = load('ai_performable_professions_data.json')
+    assert d['class_counts']['A'] == 5
+    assert d['class_counts']['D'] == 2
+    assert len(d['professions']) == 14
+
+
+def test_air_sizing():
+    d = load('air_sizing_data.json')
+    assert d['demand_scfm']['avg'] > 0
+    assert d['sizing']['fad_scfm'] >= d['demand_scfm']['avg']
+
+
+def test_calendar_universal():
+    with open(os.path.join(ROOT, 'data', 'calendar_universal_data.json'), encoding='utf-8') as fp:
+        d = json.load(fp)
+    assert len(d['layers']) >= 13
+    assert d['epoch_0d']['epoch_0d'] is not None
+    assert d['calibration']['C0'] is not None
+
+
+def test_complex_constant_test():
+    d = load('complex_constant_test_data.json')
+    assert len(d['part1_pi_census']) >= 5
+    assert abs(d['part4_euler_identity']['residual_of_e_ipi_plus_1'][0]) < 1e-10
+    assert d['part5_bridge_laws']['basel'] is not None
+
+
+def test_decentral_bank():
+    d = load('decentral_bank_data.json')
+    results = d['results']
+    pass_count = sum(1 for v in results.values() if v['verdict'] == 'PASS')
+    assert pass_count >= 5
+
+
+def test_decentral_bank_bridge():
+    d = load('decentral_bank_bridge_data.json')
+    results = d['results']
+    for name, r in results.items():
+        assert r['verdict'] == 'PASS', f"{name} failed: {r['verdict']}"
+    assert len(results) == 3
+
+
+def test_decentral_bank_net():
+    d = load('decentral_bank_net_data.json')
+    results = d['results']
+    pass_or_measured = sum(1 for v in results.values() if v['verdict'] in ('PASS', 'MEASURED'))
+    assert pass_or_measured >= 8
+
+
+def test_euler_number_test():
+    d = load('euler_number_test_data.json')
+    assert len(d['part1_prefix_census']) >= 5
+    assert d['part3_cf']['reading'] is not None
+    assert d['part4_clock_test']['reading'] is not None
+
+
+def test_golden_closure_constant():
+    d = load('golden_closure_constant_data.json')
+    assert abs(d['fit_tail']['a'] - 0.5) < 0.05
+    assert abs(d['convergence_table'][-1]['ratio'] - 0.618033988742) < 1e-6
+
+
+def test_mandate_report():
+    d = load('mandate_report_data.json')
+    assert d['class_counts']['A'] == 5
+    assert d['class_counts']['D'] == 2
+    assert len(d['professions']) == 14
+
+
+def test_photon_rubber_ball():
+    d = load('photon_rubber_ball_data.json')
+    assert d['phaseA_absolute_zero']['verdict'] == 'PASS'
+    assert d['phaseB_release_temperature']['verdict'] == 'MEASURED'
+
+
+def test_rainwater_sizing():
+    d = load('rainwater_data.json')
+    assert d['harvest_over_demand'] > 1.0
+    assert d['tank_sizing_m3']['uniform rainfall'] > 0
+
+
+def test_servo_regen():
+    d = load('servo_regen_data.json')
+    assert d['per_cycle_axis']['recovered_fraction'] > 0
+    assert isinstance(d['architecture'], str)
+
+
+def test_standby_efficiency():
+    d = load('standby_efficiency_data.json')
+    assert d['kwh_per_day_without_sleep'] > d['kwh_per_day_with_sleep']
+    assert d['payback_yr']['sleep_alone'] > 0
+
+
 
