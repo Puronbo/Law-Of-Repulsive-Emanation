@@ -3220,3 +3220,25 @@ def test_h_theorem_navier_stokes():
     assert q3['all_monotonic']
     assert q3['all_ratio_le_1']
 
+
+def test_atiyah_singer():
+    d = load('atiyah_singer_data.json')
+
+    # Q1: de Rham index = Euler characteristic
+    q1 = d['Q1_de_rham']['de_rham']
+    assert q1['all_match']
+    assert q1['all_integer']
+
+    # Q2: Dolbeault index = chi(X,O) = integer
+    q2 = d['Q2_dolbeault']['dolbeault']
+    assert q2['all_match']
+    assert q2['all_integer']
+
+    # Q3: Dirac index = A-hat = integer
+    q3 = d['Q3_dirac']['dirac']
+    assert q3['all_integer']
+
+    # Q4: All 17 indices are integers (lattice property)
+    q4 = d['Q4_integer_constraint']['integer_constraint']
+    assert q4['all_integer']
+

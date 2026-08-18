@@ -264,3 +264,7 @@ Z(s) is 0/0 at Laplacian eigenvalues: zeros at s = 1/2 + ir_n. Functional equati
 ### H-Theorem for Navier-Stokes as 0/0
 
 Energy dissipation H-theorem: dH/dt = -nu*|grad(u)|^2 <= 0. Verified via spectral Burgers equation: energy monotonically decreasing, energy balance error < 0.006, total dissipation <= H(0) for amplitudes 0.5, 1.0, 1.5. Dissipation ratio D/H starts at Poincare bound 2*nu and increases due to nonlinear energy cascade to smaller scales. Connects to Fisher information (D = nu*I(u)) and the positivity argument for RH. `experiments/h_theorem_navier_stokes_0_over_0.py`, `data/h_theorem_navier_stokes_data.json`, `docs/THE_H_THEOREM_NAVIER_STOKES_0_OVER_0.md`.
+
+### Atiyah-Singer Index Theorem as 0/0
+
+index(D) = dim(ker D) - dim(coker D) = integral ch(sigma(D)) td(TX) = INTEGER. Verified 17 indices across 3 operators (de Rham, Dolbeault, Dirac) on 7 manifolds: all are integers. The lattice of removable values: [-16, 0, 1, 2, 3, 4, 24]. The 0/0 is QUANTIZED: removable values form a lattice, not a continuum. Quantum anomalies are quantized by this theorem (anomaly = index(D) = integer). Chain: Gauss-Bonnet -> Chern -> Riemann-Roch -> Atiyah-Singer -> BSD. `experiments/atiyah_singer_0_over_0.py`, `data/atiyah_singer_data.json`, `docs/THE_ATIYAH_SINGER_INDEX_THEOREM_0_OVER_0.md`.
