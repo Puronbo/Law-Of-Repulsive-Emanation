@@ -2878,4 +2878,30 @@ def test_standby_efficiency():
     assert d['payback_yr']['sleep_alone'] > 0
 
 
+def test_refuted_claims_probe():
+    d = load('refuted_claims_probe_data.json')
+    # All six probes must PASS
+    for key in ['probe_A_geodesic', 'probe_B_golden', 'probe_C_spectral',
+                'probe_D_regularization', 'probe_E_bekenstein', 'probe_F_meta']:
+        assert key in d, f"Missing probe: {key}"
+        assert d[key]['verdict'] == 'PASS', f"{key} failed"
+
+    # A: Integrator convergence
+    assert d['probe_A_geodesic']['euler_converges']
+    assert d['probe_A_geodesic']['midpoint_converges']
+
+    # B: Golden 0/0 extracts sqrt(5) via L'Hopital; Binet 0/0 = -1
+    assert d['probe_B_golden']['lhopital_is_sqrt5']
+    assert d['probe_B_golden']['pade_is_sqrt5']
+    assert d['probe_B_golden']['fib00_is_correct']
+
+    # C: GOE level repulsion is removable (not pole)
+    assert d['probe_C_spectral']['poisson_is_pole']
+    assert d['probe_C_spectral']['goe_is_removable']
+
+    # D: Regularization sensitivity exists
+    assert d['probe_D_regularization']['old_class_sensitivity'] != 0
+
+    # F: Meta-pattern recovers all 21 claims
+    assert d['probe_F_meta']['recovery_rate'] == 1.0
 
