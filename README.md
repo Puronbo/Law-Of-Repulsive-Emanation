@@ -34,11 +34,12 @@ The entire framework turns out to be a 0/0 structure. C0 = V(q0)/(N - |context|)
 | Paper | What it proves |
 |---|---|
 | [`RH_REDUCTION_PAPER.pdf`](docs/RH_REDUCTION_PAPER.pdf) | g(s) = \|zeta(s)\|/\|zeta(1-s)\| is identically 1 iff RH; combined with Rodgers-Tao, RH <=> Lambda = 0 |
+| [`THE_WEB_OF_PROOFS.md`](docs/THE_WEB_OF_PROOFS.md) | **Synthesis:** how 61 experiments connect theories, the dependency graph of mechanisms, cross-domain bridges, and the five open problems |
 | [`WHAT_ZERO_IS.pdf`](docs/WHAT_ZERO_IS.pdf) | Zero has three identities; c/0 is a pole, 0/0 is indeterminate |
 | [`WHERE_0_OVER_0_SOLVES.pdf`](docs/WHERE_0_OVER_0_SOLVES.pdf) | 0/0 as structural probe in 10 open problems |
 | [`IF_C0_IS_0_OVER_0.pdf`](docs/IF_C0_IS_0_OVER_0.pdf) | C0 = 0/0; viscosity solution = unique removable value |
 
-Source generators: `generate_companion_papers.py`, `generate_rh_paper.py`.
+Source generators: `generate_companion_papers.py`, `generate_rh_paper.py`, `generate_suite_pdfs.py`.
 
 ## Key Results
 

@@ -177,6 +177,7 @@ Usage: `grep -i "basketball" KEYWORDS.md` or just search this file.
 | ML quantization / embeddings | `docs/papers/ml_quantization_embedding_proofs.tex` |
 | Physics / dimensional analysis / power laws | `docs/papers/physics_applied_math_invariance.tex` |
 | RH reduction / removable singularity / de Bruijn-Newman | `docs/RH_REDUCTION_PAPER.md` |
+| Web of proofs / synthesis / cross-theory connections | `docs/THE_WEB_OF_PROOFS.md` |
 | What zero is / pole vs indeterminate / 0/0 classification | `docs/WHAT_ZERO_IS.md` (+ `.pdf`) |
 | Where 0/0 solves / structural probe / ten instances | `docs/WHERE_0_OVER_0_SOLVES.md` (+ `.pdf`) |
 | If C₀ = 0/0 / L.O.R.E. as 0/0 / viscosity as unique path | `docs/IF_C0_IS_0_OVER_0.md` (+ `.pdf`) |
