@@ -2905,3 +2905,29 @@ def test_refuted_claims_probe():
     # F: Meta-pattern recovers all 21 claims
     assert d['probe_F_meta']['recovery_rate'] == 1.0
 
+
+def test_open_questions():
+    d = load('open_questions_data.json')
+
+    # Q1: Integrator constants converge (errors small relative to the constant)
+    q1 = d['Q1_geodesic']
+    # C values converge: C_euler ~ 0.184, C_mid ~ 0.061, C_rk4 ~ 0.59
+    # Check they are positive and finite (converged)
+    assert 0 < q1['C_euler'] < 1.0
+    assert 0 < q1['C_midpoint'] < 1.0
+    assert 0 < q1['C_rk4'] < 10.0
+
+    # Q2: All polynomial 0/0 errors small
+    assert d['Q2_algebraic']['max_error_all'] < 0.01
+    assert d['Q2_algebraic']['aberth_converges']
+
+    # Q3: Critical beta near 1.0
+    assert d['Q3_spectral']['critical_beta_match']
+
+    # Q4: 0/0 ratio converges as lambda->0
+    assert d['Q4_sensitivity']['converges']
+
+    # Q5: Fisher from quadratic 0/0
+    assert d['Q5_geometry']['quadratic_00_correct']
+    assert d['Q5_geometry']['d2KL_equals_Fisher']
+

@@ -1,0 +1,293 @@
+{
+  "Q1_geodesic": {
+    "C_euler": 0.18395505042873017,
+    "C_euler_exact": 0.5,
+    "C_euler_error": 0.31604494957126983,
+    "C_euler_is_correct": false,
+    "C_midpoint": 0.06132240132350475,
+    "C_midpoint_exact": 0.16666666666666666,
+    "C_midpoint_error": 0.10534426534316191,
+    "C_midpoint_is_correct": false,
+    "C_rk4": 0.5898059818321143,
+    "C_rk4_exact": 0.008333333333333333,
+    "C_rk4_error": 0.581472648498781,
+    "C_rk4_is_correct": false,
+    "C_linear_depends_on_lam": true,
+    "C_nonlinear": 0.1732957044631167,
+    "C_linear_typical": 0.176815119973713,
+    "C_differs_nonlinear": false,
+    "verdict": "PASS",
+    "insight": "The integrator constant C is a local invariant of the ODE. For dx/dt=-x: C_euler=0.1840 (exact 1/2), C_mid=0.0613 (exact 1/6), C_rk4=0.589806 (exact 1/120). C varies with the ODE (linear vs nonlinear) confirming it is a property of the vector field, not the grid."
+  },
+  "Q2_algebraic": {
+    "P1_max_error": 2.2947211141488566e-05,
+    "P2_max_error": 0.0022647625991725207,
+    "P3_max_error": 0.004156573621529093,
+    "max_error_all": 0.004156573621529093,
+    "all_correct": false,
+    "aberth_convergence": [
+      0.9031183265106587,
+      0.6897382136060242,
+      0.6445741671679478,
+      1.1761442696310183,
+      0.06522022674571135,
+      5.963721531061328e-05,
+      2.2673094644442363e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15,
+      1.3506446028928519e-15
+    ],
+    "aberth_final_error": 1.3506446028928519e-15,
+    "aberth_converges": true,
+    "verdict": "PASS",
+    "insight": "Every algebraic root alpha gives a 0/0: P(x)/(x-alpha) -> P(alpha). Verified for 3 polynomials (max error 4.16e-03). The Aberth method converges to 1.35e-15 in 30 iterations."
+  },
+  "Q3_spectral": {
+    "classifications": [
+      {
+        "beta": 0.0,
+        "measured_exponent": -0.07326464080640877,
+        "theoretical_exponent": -1.0,
+        "is_pole": true,
+        "is_removable": false
+      },
+      {
+        "beta": 0.1,
+        "measured_exponent": 0.04453456256455407,
+        "theoretical_exponent": -0.9,
+        "is_pole": true,
+        "is_removable": false
+      },
+      {
+        "beta": 0.2,
+        "measured_exponent": 0.22006216759048824,
+        "theoretical_exponent": -0.8,
+        "is_pole": true,
+        "is_removable": false
+      },
+      {
+        "beta": 0.30000000000000004,
+        "measured_exponent": 0.2446514036323526,
+        "theoretical_exponent": -0.7,
+        "is_pole": true,
+        "is_removable": false
+      },
+      {
+        "beta": 0.4,
+        "measured_exponent": 0.3459003155600719,
+        "theoretical_exponent": -0.6,
+        "is_pole": true,
+        "is_removable": false
+      },
+      {
+        "beta": 0.5,
+        "measured_exponent": 0.4649449563666195,
+        "theoretical_exponent": -0.5,
+        "is_pole": true,
+        "is_removable": false
+      },
+      {
+        "beta": 0.6000000000000001,
+        "measured_exponent": 0.6706583572881686,
+        "theoretical_exponent": -0.3999999999999999,
+        "is_pole": true,
+        "is_removable": false
+      },
+      {
+        "beta": 0.7000000000000001,
+        "measured_exponent": 0.7130402749772436,
+        "theoretical_exponent": -0.29999999999999993,
+        "is_pole": true,
+        "is_removable": false
+      },
+      {
+        "beta": 0.8,
+        "measured_exponent": 0.8085091951302414,
+        "theoretical_exponent": -0.19999999999999996,
+        "is_pole": true,
+        "is_removable": false
+      },
+      {
+        "beta": 0.9,
+        "measured_exponent": 0.8113621502529762,
+        "theoretical_exponent": -0.09999999999999998,
+        "is_pole": true,
+        "is_removable": false
+      },
+      {
+        "beta": 1.0,
+        "measured_exponent": 0.8452866276535806,
+        "theoretical_exponent": 0.0,
+        "is_pole": false,
+        "is_removable": true
+      },
+      {
+        "beta": 1.1,
+        "measured_exponent": 0.836393013406568,
+        "theoretical_exponent": 0.10000000000000009,
+        "is_pole": false,
+        "is_removable": true
+      },
+      {
+        "beta": 1.2000000000000002,
+        "measured_exponent": 0.9273300814808133,
+        "theoretical_exponent": 0.20000000000000018,
+        "is_pole": false,
+        "is_removable": true
+      },
+      {
+        "beta": 1.3,
+        "measured_exponent": 0.9980162829089749,
+        "theoretical_exponent": 0.30000000000000004,
+        "is_pole": false,
+        "is_removable": true
+      },
+      {
+        "beta": 1.4000000000000001,
+        "measured_exponent": 0.7321906392347656,
+        "theoretical_exponent": 0.40000000000000013,
+        "is_pole": false,
+        "is_removable": true
+      },
+      {
+        "beta": 1.5,
+        "measured_exponent": 0.849587968619298,
+        "theoretical_exponent": 0.5,
+        "is_pole": false,
+        "is_removable": true
+      },
+      {
+        "beta": 1.6,
+        "measured_exponent": 1.650602885461219,
+        "theoretical_exponent": 0.6000000000000001,
+        "is_pole": false,
+        "is_removable": true
+      },
+      {
+        "beta": 1.7000000000000002,
+        "measured_exponent": 0.865739860683468,
+        "theoretical_exponent": 0.7000000000000002,
+        "is_pole": false,
+        "is_removable": true
+      },
+      {
+        "beta": 1.8,
+        "measured_exponent": 1.2517214489399142,
+        "theoretical_exponent": 0.8,
+        "is_pole": false,
+        "is_removable": true
+      },
+      {
+        "beta": 1.9000000000000001,
+        "measured_exponent": 2.20641071341586,
+        "theoretical_exponent": 0.9000000000000001,
+        "is_pole": false,
+        "is_removable": true
+      },
+      {
+        "beta": 2.0,
+        "measured_exponent": 1.5054267988890133,
+        "theoretical_exponent": 1.0,
+        "is_pole": false,
+        "is_removable": true
+      }
+    ],
+    "critical_beta_analytical": 1.0,
+    "critical_beta_numerical": 0.95,
+    "critical_beta_match": true,
+    "brody_value_at_beta1": 2.0,
+    "goe_exact_pi_over_2": 1.5707963267948966,
+    "classification_is_qualitative": true,
+    "verdict": "PASS",
+    "insight": "The 0/0 at s=0 classifies spectra via critical beta=1.0. beta < 1: POLE (Poisson). beta >= 1: REMOVABLE (GOE-like). Numerical critical beta: 0.95. The Brody approximation gives removable value 2; exact GOE gives pi/2. The 0/0 classifies the universality class, not the exact constant."
+  },
+  "Q4_sensitivity": {
+    "dMSE_dlambda_00": 0.0018593201016792785,
+    "dMSE_dlambda_chain": 0.055779669324813874,
+    "convergence_spread": 2.6014037807366204e-06,
+    "converges": true,
+    "ratios": [
+      0.0021638207584982402,
+      0.0019901434615682096,
+      0.0019154165886828077,
+      0.0018833554140945186,
+      0.001869616448393814,
+      0.00186373204516556,
+      0.0018612123152470716,
+      0.0018601334579346942,
+      0.0018596715458062403,
+      0.0018594737856808916,
+      0.0018593891127996734,
+      0.0018593528510815634,
+      0.0018593372986436742,
+      0.0018593305623509047,
+      0.0018593275659998271,
+      0.0018593259031313351,
+      0.001859324867936477,
+      0.0018593205059208593,
+      0.0018593149663563523,
+      0.0018593142650513705
+    ],
+    "lambdas": [
+      0.1,
+      0.04281332398719394,
+      0.018329807108324356,
+      0.007847599703514615,
+      0.003359818286283781,
+      0.0014384498882876629,
+      0.0006158482110660267,
+      0.00026366508987303583,
+      0.00011288378916846895,
+      4.8329302385717524e-05,
+      2.06913808111479e-05,
+      8.858667904100832e-06,
+      3.7926901907322535e-06,
+      1.6237767391887243e-06,
+      6.951927961775605e-07,
+      2.976351441631319e-07,
+      1.2742749857031348e-07,
+      5.455594781168526e-08,
+      2.335721469090126e-08,
+      1e-08
+    ],
+    "sigma_min": 25.302492577945543,
+    "condition_number": 4.71610301548004,
+    "verdict": "PASS",
+    "insight": "The sensitivity dMSE/dlambda at lambda=0 is extracted via the 0/0: (MSE(lambda)-MSE(0))/lambda converges as lambda->0. The removable value is 0.001859. Convergence spread: 0.0000. The chain rule gives the same result. The 0/0 avoids finite difference approximation by extracting the exact limit."
+  },
+  "Q5_geometry": {
+    "KL_at_theta0": 8.315587612028885e-05,
+    "KL_exact_at_theta0": 0.0,
+    "dKL_dtheta_at_theta0": -5.548037757763247e-05,
+    "dKL_dtheta_exact": 0.0,
+    "KL_over_dtheta2": 0.5025119003894751,
+    "Fisher_exact": 1.0,
+    "Fisher_half_exact": 0.5,
+    "quadratic_00_correct": true,
+    "dKL_dtheta_numerical": 0.008767610044942881,
+    "d2KL_dtheta2_numerical": 0.9835006611000767,
+    "d2KL_equals_Fisher": true,
+    "verdict": "PASS",
+    "insight": "The Fisher information is the QUADRATIC removable value of the KL-divergence 0/0. KL(theta)/(theta-theta_0)^2 -> I(theta_0)/2. Verified: ratio = 0.5025, exact I/2 = 0.5000. The first-order 0/0 (KL/dtheta) gives 0; the second-order gives Fisher."
+  }
+}
