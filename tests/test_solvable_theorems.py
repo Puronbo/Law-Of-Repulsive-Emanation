@@ -3200,3 +3200,23 @@ def test_selberg_zeta():
     assert q3['all_zeta_match']
     assert q3['all_trivial_zero']
 
+
+def test_h_theorem_navier_stokes():
+    d = load('h_theorem_navier_stokes_data.json')
+
+    # Q1: Energy monotonically decreasing, total dissipation <= H(0)
+    q1 = d['Q1_energy_balance']['energy_balance']
+    assert q1['H_decreasing']
+    assert q1['energy_balance_ok']
+    assert q1['total_dissipation_le_H0']
+
+    # Q2: D/H starts at Poincare bound, increases (energy cascade)
+    q2 = d['Q2_dissipation_ratio']['dissipation_ratio']
+    assert q2['starts_at_poincare']
+    assert q2['increases_over_time']
+
+    # Q3: Total dissipation <= H(0) for all amplitudes, monotonic
+    q3 = d['Q3_total_dissipation']['total_dissipation']
+    assert q3['all_monotonic']
+    assert q3['all_ratio_le_1']
+

@@ -260,3 +260,7 @@ Spectral = geometric: the ratio of the spectral sum to the geometric sum in the 
 ### Selberg Zeta Function as 0/0
 
 Z(s) is 0/0 at Laplacian eigenvalues: zeros at s = 1/2 + ir_n. Functional equation: Z(s)/Z(1-s) = 0/0 on critical line, removable value = 1. On critical line: |Z(1/2+ir)| = |Z(1/2-ir)|, ratio = 1.0000 at 5 test points. Analogy with Riemann zeta: zeta(2)=pi^2/6, zeta(3)=Apéry, zeta(4)=pi^4/90 verified; trivial zeros at s=-2,-4,-6,-8 via sin(pi*s/2)=0. Chain closes: Selberg Trace -> Selberg Zeta -> RH. `experiments/selberg_zeta_0_over_0.py`, `data/selberg_zeta_data.json`, `docs/THE_SELBERG_ZETA_FUNCTION_0_OVER_0.md`.
+
+### H-Theorem for Navier-Stokes as 0/0
+
+Energy dissipation H-theorem: dH/dt = -nu*|grad(u)|^2 <= 0. Verified via spectral Burgers equation: energy monotonically decreasing, energy balance error < 0.006, total dissipation <= H(0) for amplitudes 0.5, 1.0, 1.5. Dissipation ratio D/H starts at Poincare bound 2*nu and increases due to nonlinear energy cascade to smaller scales. Connects to Fisher information (D = nu*I(u)) and the positivity argument for RH. `experiments/h_theorem_navier_stokes_0_over_0.py`, `data/h_theorem_navier_stokes_data.json`, `docs/THE_H_THEOREM_NAVIER_STOKES_0_OVER_0.md`.
