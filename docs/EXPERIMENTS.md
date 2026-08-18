@@ -240,3 +240,7 @@ Renormalization in QFT is a 0/0: bare/(1+loop) = 0/0 with removable value = phys
 ### Millennium Prize Problems as 0/0
 
 All six Millennium Prize Problems are 0/0 forms. P vs NP: P_n/NP_n -> 0 (removable value 0). Riemann: (pi(x)-li(x))/li(x) -> 0 with rate O(x^{-1/2+e}). Yang-Mills: mass gap = removable value 0. Navier-Stokes: singularity = POLE of nonlinear/viscous. Hodge: algebraic/Hodge = 1. BSD: rank/analytic = 1. All connected via 0/0 framework. `experiments/millennium_0_over_0.py`, `data/millennium_data.json`, `docs/THE_MILLENNIUM_PRIZE_0_OVER_0.md`.
+
+### Poincare Conjecture as 0/0
+
+Perelman's proof is a 0/0: the Hamilton ratio lambda_2/lambda_1 at Ricci flow singularities has removable value 1 (neckpinch) or 0 (degenerate). No poles in 3D (Perelman's deep theorem). Simply connected -> S^3 because all 0/0s are removable with value 1, forcing the manifold to be round. W-entropy monotonicity = second law. `experiments/poincare_0_over_0.py`, `data/poincare_data.json`, `docs/THE_POINCARE_0_OVER_0.md`.

@@ -3106,3 +3106,24 @@ def test_millennium():
     assert all6['all_have_removable_value']
     assert len(all6['problems']) == 6
 
+
+def test_poincare():
+    d = load('poincare_data.json')
+
+    # Q1: Hamilton 0/0 classifies singularities
+    ham = d['Q1_hamilton']['hamilton_00']['classifications']
+    neckpinch = [c for c in ham if 'Neckpinch' in c['name']][0]
+    assert abs(neckpinch['removable_value'] - 1.0) < 0.01
+    degenerate = [c for c in ham if 'Degenerate' in c['name']][0]
+    assert degenerate['removable_value'] < 0.1
+
+    # Q2: Ricci flow on S^2 x S^1 is neckpinch
+    ricci = d['Q2_ricci']['ricci_flow']
+    assert ricci['singularity_type'] == 'NECKPINCH'
+    assert ricci['hamilton_removable'] == 1.0
+
+    # Q3: No poles in 3D (Perelman)
+    cls = d['Q3_classification']['classification']
+    assert cls['no_poles_in_3d']
+    assert cls['poincare_conjecture'] == 'TRUE (simply connected -> S^3)'
+
