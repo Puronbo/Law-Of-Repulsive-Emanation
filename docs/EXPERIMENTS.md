@@ -280,3 +280,7 @@ Jones polynomial: V_K(1) = 1 for all 7 knots tested (unknot, trefoil, figure-eig
 ### Modular Forms as 0/0
 
 Modularity Theorem: L(E,s) = L(f,s), arithmetic = analysis. Verified 3 elliptic curves: all a_p satisfy Hasse bound |a_p| <= 2*sqrt(p). L-function: L(E,1) nonzero for rank-0 curve. Modularity: a_p (point counts) = a_p (Fourier coefficients), all ratios = 1. Sato-Tate: a_p/(2*sqrt(p)) bounded in [-1,1]. Fermat's Last Theorem: a 0/0 without removable value. Langlands: Galois <-> Automorphic = 0/0. `experiments/modular_forms_0_over_0.py`, `data/modular_forms_data.json`, `docs/THE_MODULAR_FORMS_0_OVER_0.md`.
+
+### Random Matrix Theory as 0/0
+
+Montgomery-Odlyzko Law: L-function zeros follow GUE statistics. Level repulsion: R_2(0) = 0 for all beta >= 1. GUE spacings match Wigner surmise (KS < 0.06). GOE spacings match Wigner surmise (KS < 0.06). Pair correlation matches Montgomery-Odlyzko formula R_2(x) = 1 - (sin(pi*x)/(pi*x))^2 with MSE < 0.01. Both GOE and GUE show level repulsion (fraction of tiny spacings < 0.001). Brody boundary beta = 1.0 separates POisson (beta < 1, pole) from correlated (beta >= 1, removable). Connects quantum chaos to number theory: same 0/0 structure governs quantum energy levels and zeta zeros. `experiments/random_matrix_theory_0_over_0.py`, `data/random_matrix_theory_data.json`, `docs/THE_RANDOM_MATRIX_THEORY_0_OVER_0.md`.
