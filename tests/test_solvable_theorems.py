@@ -3085,3 +3085,24 @@ def test_qft():
     assert cc['fine_tuning'] < 1e-100
     assert cc['removable_value'] == 1.0
 
+
+def test_millennium():
+    d = load('millennium_data.json')
+
+    # Q1: P vs NP ratio -> 0
+    pnp = d['Q1_p_vs_np']['p_vs_np']
+    assert pnp['removable_value'] == 0
+    last = pnp['results'][-1]
+    assert last['ratio'] < 0.01
+
+    # Q2: Riemann error -> 0
+    rh = d['Q2_riemann']['riemann']
+    assert rh['converge_to_0']
+    assert rh['removable_value'] == 0
+
+    # Q3: All six are 0/0s
+    all6 = d['Q3_all_six']
+    assert all6['all_are_zero_over_zero']
+    assert all6['all_have_removable_value']
+    assert len(all6['problems']) == 6
+
