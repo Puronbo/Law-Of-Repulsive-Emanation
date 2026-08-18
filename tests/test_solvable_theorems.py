@@ -2985,3 +2985,65 @@ def test_category_theory_0_over_0():
     assert [0, 0] in pb['pullback']
     assert pb['verdict'] == 'PASS'
 
+
+def test_brody_navier_stokes():
+    d = load('brody_navier_stokes_data.json')
+
+    # Q1: Brody boundary
+    b = d['Q1_brody_boundary']
+    assert b['critical_beta_match']
+    assert b['removable_values']['goe_exact_pi_over_2'] > 1.5
+    assert b['removable_values']['goe_exact_pi_over_2'] < 1.6
+    assert b['verdict'] == 'PASS'
+
+    # Q2: Navier-Stokes
+    ns = d['Q2_navier_stokes']
+    assert ns['euler']['nonlinear_over_pressure_ratio'] == 1.0
+    assert ns['euler']['always_removable']
+    assert ns['blowup_classification']['brody_boundary_alpha'] == 1.0
+    assert ns['burgers']['verdict'] == 'PASS'
+    assert ns['euler']['verdict'] == 'PASS'
+
+
+def test_entropy_condition():
+    d = load('entropy_condition_data.json')
+
+    # Q1: Burgers
+    b = d['Q1_burgers']['burgers_shocks']
+    assert b['verdict'] == 'PASS'
+    # Verify Brody boundary: very weak shock has h near 0
+    weak = [s for s in b['shocks'] if s['brody_boundary']][0]
+    assert abs(weak['h']) < 0.001
+    # Verify strong shock has h > 0
+    strong = [s for s in b['shocks'] if s['u_L'] == 2.0 and s['u_R'] == 0.0][0]
+    assert strong['h'] > 0
+
+    # Q3: Riemann classification
+    r = d['Q3_riemann']['riemann_classification']
+    assert r['all_match']
+    assert r['verdict'] == 'PASS'
+
+
+def test_prime_geodesic():
+    d = load('prime_geodesic_data.json')
+
+    # Q1: PGT converges toward 1
+    q1 = d['Q1_pgt']
+    ratios = [r['ratio'] for r in q1['results']]
+    # Ratios should be increasing toward 1
+    assert ratios[-1] > ratios[0], "Ratios should increase toward 1"
+    assert ratios[-1] > 0.8, f"Final ratio should be near 1, got {ratios[-1]}"
+
+    # Q2: Selberg 1/4 and RH verified
+    q2 = d['Q2_selberg']
+    assert q2['selberg_1_4_holds']
+    assert q2['all_on_critical_line']
+    assert q2['verdict'] == 'PASS'
+
+    # Q3: Both prime and prime-geodesic ratios converge toward 1
+    q3 = d['Q3_comparison']
+    prime_ratios = [c['ratio_prime'] for c in q3['comparison']]
+    gamma_ratios = [c['ratio_gamma'] for c in q3['comparison']]
+    assert prime_ratios[-1] > 0.9
+    assert gamma_ratios[-1] > 0.8
+

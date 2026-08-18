@@ -107,6 +107,36 @@ and r_p can only approach the planet's own surface — so the ride is capped
 at the planet's surface gravity (0.83 g at Earth, 2.56 g at Jupiter), the
 gentlest acceleration in spaceflight.
 
+### Ch. 2b  The 3D answer: the release ball
+
+The launch is not one speed in one direction. Releasing a capsule from a
+spinning arm at the moment the tangent points where the payload should go
+gives any in-plane direction; a 2-axis gimbal that points the spin-plane
+normal anywhere on the sphere gives the remaining directions; and releasing
+at a smaller radius gives any lower speed. Together (`experiments/
+harvest_energy.py`, release_coverage section):
+
+    v_max = sqrt(G g r)                  (top of the ball)
+    v'(r') = v_max * r' / r              (speed knob: release earlier)
+    n_hat . u = 0, phi = 0               (direction: any plane through u)
+
+The mechanism has 3 degrees of freedom — the plane normal (2) plus the
+release phase (1) — against a 2-degree-of-freedom target sphere, so **every
+3D launch velocity vector with |v| ≤ v_max is reachable**, each with a
+1-parameter family of launcher orientations. The slingshot's kinematic
+reach is the ball B³(v_max): 63 m/s at 4 g on a 100 m arm, in any
+direction, tunable to any lower speed by the release radius. `[honest
+wall]` The ball is the *release* reach: the payload is ballistic after
+release, and an orbital launch additionally needs a horizontal tangent
+release geometry at the right point on the planet — the ball is kinematic
+freedom, not orbit.
+
+This is the other half of the spinning mechanism for 3D movement (BOOK IV
+of THE_SPIN_BOOK): the slingshot moves the payload in position by release
+phase and gimballed spin plane; the reaction wheels and CMGs
+(I_s Omega_s = H_w, |tau| = h omega_g) move the vehicle in attitude. One
+conservation law — momentum exchange — two degrees of movement.
+
 ---
 
 ## BOOK II — TERRAFORMING: THE WARMING BUDGET
@@ -379,6 +409,8 @@ cloud is a store, not a tap.*
 | centrifuge acceleration | a = v^2/r, G = v^2/(r g) | 63 m/s at 4 g, 100 m | `data/harvest_energy_data.json` |
 | orbital arm corners | r = v^2/(G g) | 708 km at 9 g; 1593 km at 4 g | `data/harvest_energy_data.json` |
 | payload spin launch | v = sqrt(G g r) | 3132 m/s at 10^4 g, 100 m | `data/harvest_energy_data.json` |
+| release ball coverage | v_max = sqrt(G g r); v'(r') = v_max r'/r; n_hat . u = 0 | B³(63 m/s) at 4 g, 100 m, every direction (3 DOF vs 2-DOF target) | `data/harvest_energy_data.json` |
+| 3D movement synthesis | slingshot + wheels | translation by phase/plane, rotation by I_s Omega_s = H_w | `data/harvest_energy_data.json`, `data/space_spin_data.json` |
 | terraforming one-time budget | Q = m c_p dT + M L + rho d A c dT | 2.43e22 J (40.8 Earth annuals) | `data/harvest_energy_data.json` |
 | terraforming sustain wall | P = sigma(T^4 − T0^4) A | 40.5 PW (280 W/m^2) | `data/harvest_energy_data.json` |
 | earthquake energy | log10 E = 1.5 M_w + 4.8 | 2.0e15 J (M7); 2.0e18 J (M9) | `data/harvest_energy_data.json` |

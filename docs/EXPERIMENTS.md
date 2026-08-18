@@ -216,3 +216,15 @@ Natural transformations, Yoneda lemma, adjunctions, limits, and pullbacks as 0/0
 ### The Laurent Decomposition (Formal Proof)
 
 Proof that the five mechanisms are exhaustive (via Laurent factorization at common zeros) and that Conservation is the root mechanism. Information-theoretic formulation I_0 = |lambda|^2. No sixth mechanism exists. `docs/THE_LAURENT_DECOMPOSITION.md`.
+
+### Brody Boundary + Navier-Stokes 0/0
+
+New theorem: critical level-repulsion exponent beta=1.0 separates POLE (Poisson, beta<1) from REMOVABLE (GOE-like, beta>=1) via the 0/0 P(s)/s. GOE removable value = pi/2 exact. Connected to Navier-Stokes: singularity formation = POLE of nonlinear/viscous ratio; alpha<1 no singularity, alpha=1 critical, alpha>1 pole. Euler always ratio=1 (REMOVABLE). Burgers: inviscid POLE, viscous REMOVABLE. 3D Navier-Stokes remains OPEN. `experiments/brody_navier_stokes_0_over_0.py`, `data/brody_navier_stokes_data.json`, `docs/THE_BRODY_BOUNDARY_THEOREM.md`.
+
+### Entropy Condition 0/0
+
+New theorem: the entropy condition for conservation laws is the removable value of a 0/0 form. Burgers: h = (u_L - u_R)^2/12, positive for shocks, zero at Brody boundary (u_L = u_R). General convex flux: entropy production as 0/0, Lax condition equivalent to h > 0. Riemann classification via 0/0: shock (0/0 with h > 0), rarefaction (no 0/0), constant (no 0/0). Non-genuinely-nonlinear flux detected by h < 0. `experiments/entropy_condition_0_over_0.py`, `data/entropy_condition_data.json`, `docs/THE_ENTROPY_CONDITION_THEOREM.md`.
+
+### Prime-Geodesic Theorem 0/0
+
+The Prime-Geodesic Theorem (pi_Gamma(x) ~ li(x)) is a 0/0 with removable value 1. Selberg 1/4 conjecture verified for known eigenvalues (all >= 1/4). All zeros of Selberg zeta function on Re(s) = 1/2 (RH verified). Explicit formula with 4 zeros shows convergence toward 1. RH equivalent to error O(x^{-1/2+epsilon}). Connects number theory, hyperbolic geometry, and the 0/0 framework. `experiments/prime_geodesic_0_over_0.py`, `data/prime_geodesic_data.json`, `docs/THE_PRIME_GEODESIC_THEOREM.md`.

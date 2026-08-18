@@ -141,6 +141,99 @@ def slingshot():
 
 
 # ---------------------------------------------------------------------- #
+# 1b. slingshot 3D launch coverage - the spin book's synthesis, quantified #
+# ---------------------------------------------------------------------- #
+def release_coverage():
+    # The spinning launcher covers every 3D launch velocity up to its spin
+    # limit. Closed form:
+    #   release speed   v_max = sqrt(G g r)              (fixed by arm + g)
+    #   speed knob      v'(r') = v_max * r' / r          (release earlier)
+    #   direction       plane normal n_hat (2 DOF, a 2-axis gimbal) sets
+    #                   the spin plane; release phase phi sets the in-plane
+    #                   tangent. For any target direction u, any plane
+    #                   containing u works (n_hat . u = 0, a 1-parameter
+    #                   family), and phi = 0 aligns the tangent with u.
+    #   coverage        the ball |v| <= v_max: every 3D velocity vector up
+    #                   to the spin limit, in any direction.
+    # DOF count: target sphere S^2 has 2 DOF; the mechanism has 3
+    # (n_hat: 2, phi: 1), so each direction is reachable with 1 redundant
+    # degree of freedom (a circle of launcher orientations).
+    r_arm = 100.0
+    g_load = 4.0
+    v_max = math.sqrt(g_load * G * r_arm)
+
+    def norm(v):
+        m = math.sqrt(sum(c * c for c in v))
+        return [c / m for c in v]
+
+    def cross(a, b):
+        return [a[1] * b[2] - a[2] * b[1],
+                a[2] * b[0] - a[0] * b[2],
+                a[0] * b[1] - a[1] * b[0]]
+
+    def dot(a, b):
+        return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]
+
+    samples = []
+    for elev_deg, azim_deg in ((0.0, 0.0), (90.0, 0.0), (45.0, 30.0)):
+        th, ps = math.radians(elev_deg), math.radians(azim_deg)
+        u = [math.cos(th) * math.cos(ps),
+             math.cos(th) * math.sin(ps),
+             math.sin(th)]
+        axis = [0.0, 0.0, 1.0] if abs(u[2]) < 0.99 else [1.0, 0.0, 0.0]
+        w = norm(cross(axis, u))          # one of the 1-parameter planes
+        n = norm(cross(u, w))             # that plane's normal
+        samples.append({
+            "elevation_deg": elev_deg,
+            "azimuth_deg": azim_deg,
+            "target": [round(c, 4) for c in u],
+            "plane_normal": [round(c, 4) for c in n],
+            "in_plane": bool(abs(dot(u, n)) < 1e-9),
+            "phase_deg": 0.0,
+            "solution_family": "circle (1-parameter choice of plane)",
+        })
+
+    out = {
+        "v_max_ms": round(v_max, 2),
+        "arm_m": r_arm,
+        "g_load": g_load,
+        "release_speed_form": "v_max = sqrt(G g r)",
+        "speed_knob": "v'(r') = v_max * r' / r  (release at radius r' < r)",
+        "speed_knob_examples_ms": {
+            "r50m": round(v_max * 50.0 / r_arm, 2),
+            "r10m": round(v_max * 10.0 / r_arm, 2)},
+        "direction_knob": "2-axis gimbal sets the plane normal n_hat "
+                          "(2 DOF); release phase phi sets the in-plane "
+                          "tangent (1 DOF)",
+        "coverage": "the ball |v| <= v_max: every 3D velocity vector up to "
+                    "the spin limit, in any direction",
+        "mechanism_degrees_of_freedom": 3,
+        "target_set_degrees_of_freedom": 2,
+        "redundancy_degrees": 1,
+        "cadence_bound": {"period_s_per_rev": round(2 * math.pi * r_arm / v_max, 1),
+                          "releases_per_hour": int(3600.0 * v_max / (2 * math.pi * r_arm))},
+        "sample_targets": samples,
+        "verdict": ("ANALYTIC: the slingshot covers the whole launch ball "
+                    "|v| <= sqrt(G g r) in three dimensions. Speed is a "
+                    "continuous knob - v'(r') = v_max * r'/r - and "
+                    "direction needs 3 degrees of freedom (plane normal 2 + "
+                    "release phase 1) against a 2-DOF target sphere, so any "
+                    "direction u is reachable with a 1-parameter family of "
+                    "launcher orientations. This is the spin book's "
+                    "synthesis closed: the spinning mechanism delivers 3D "
+                    "translation by release phase and the gimballed spin "
+                    "plane, and 3D rotation by the reaction wheels/CMGs "
+                    "(I_s Omega_s = H_w, |tau| = h omega_g) - one "
+                    "conservation law, two degrees of movement. Honest "
+                    "wall: the ball is the kinematic reach of the release; "
+                    "the payload is ballistic after release, and orbital "
+                    "insertion additionally needs a horizontal tangent "
+                    "release geometry at the right point on the planet."),
+    }
+    return out
+
+
+# ---------------------------------------------------------------------- #
 # 2. terraforming                                                        #
 # ---------------------------------------------------------------------- #
 def terraform():
@@ -301,6 +394,7 @@ def clouds():
 
 def main():
     results = {"slingshot": slingshot(),
+               "release_coverage": release_coverage(),
                "terraform": terraform(),
                "disasters": disasters(),
                "vibration": vibration(),

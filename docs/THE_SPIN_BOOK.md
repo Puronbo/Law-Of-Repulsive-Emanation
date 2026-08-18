@@ -215,9 +215,14 @@ passenger to `v = sqrt(G g r)` and releases it at a chosen point of the
 circle, so the release velocity can point **anywhere within the spin
 plane**; orienting the spin plane in 3D (the launcher gimbal is itself a
 spinning mechanism) plus choosing the release phase covers every launch
-direction. Rotation by reaction wheels, translation by release timing:
-one conservation law, two degrees of movement, zero propellant for the
-free parts of either.
+direction. THE_HARVEST_BOOK quantifies the coverage (Ch. 2b,
+`release_coverage`): the mechanism has 3 degrees of freedom — plane normal
+(2) plus release phase (1) — against a 2-degree-of-freedom target sphere,
+so the reachable velocity set is the full ball |v| ≤ sqrt(G g r), each
+direction with a 1-parameter family of launcher orientations, and the
+speed knob v'(r') = v_max·r'/r tunes the radius continuously. Rotation by
+reaction wheels, translation by release timing: one conservation law, two
+degrees of movement, zero propellant for the free parts of either.
 
 ---
 
