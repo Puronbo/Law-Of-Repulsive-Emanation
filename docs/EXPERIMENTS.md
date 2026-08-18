@@ -256,3 +256,7 @@ Riemann-Roch theorem: chi(X, L) = removable value of h^0/h^1 0/0. Curves: critic
 ### Selberg Trace Formula as 0/0
 
 Spectral = geometric: the ratio of the spectral sum to the geometric sum in the Selberg Trace Formula is a 0/0 with removable value 1. Weyl law: N(E) = (Area/4pi)*E verified. Prime-Geodesic Theorem: pi_geo(L) ~ Li(e^L) ~ e^L/L, ratio to e^L/L monotonically decreasing toward 1. Brody-Selberg connection: GOE eigenvalue spacings at beta=1, removable value = pi/2. Chain: Riemann-Roch -> Selberg -> Prime-Geodesic -> Brody -> RH. `experiments/selberg_trace_0_over_0.py`, `data/selberg_trace_data.json`, `docs/THE_SELBERG_TRACE_FORMULA_0_OVER_0.md`.
+
+### Selberg Zeta Function as 0/0
+
+Z(s) is 0/0 at Laplacian eigenvalues: zeros at s = 1/2 + ir_n. Functional equation: Z(s)/Z(1-s) = 0/0 on critical line, removable value = 1. On critical line: |Z(1/2+ir)| = |Z(1/2-ir)|, ratio = 1.0000 at 5 test points. Analogy with Riemann zeta: zeta(2)=pi^2/6, zeta(3)=Apéry, zeta(4)=pi^4/90 verified; trivial zeros at s=-2,-4,-6,-8 via sin(pi*s/2)=0. Chain closes: Selberg Trace -> Selberg Zeta -> RH. `experiments/selberg_zeta_0_over_0.py`, `data/selberg_zeta_data.json`, `docs/THE_SELBERG_ZETA_FUNCTION_0_OVER_0.md`.

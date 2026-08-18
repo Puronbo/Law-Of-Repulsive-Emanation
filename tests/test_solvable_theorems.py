@@ -3180,3 +3180,23 @@ def test_selberg_trace():
     q3 = d['Q3_brody_selberg']['brody_selberg']
     assert q3['goe_verified']
 
+
+def test_selberg_zeta():
+    d = load('selberg_zeta_data.json')
+
+    # Q1: Selberg zeta zeros on critical line
+    q1 = d['Q1_selberg_zeta']['selberg_zeta_torus']
+    assert q1['all_zeros_verified']
+    assert q1['nonzero_at_2']
+
+    # Q2: Functional equation Z(s)/Z(1-s) ~ 1 on critical line
+    q2 = d['Q2_functional_equation']['functional_equation']
+    assert q2['critical_line_trivial']
+    for sr in q2['symmetry_results']:
+        assert sr['ratio_near_1']
+
+    # Q3: Riemann zeta analogy
+    q3 = d['Q3_riemann_analogy']['riemann_analogy']
+    assert q3['all_zeta_match']
+    assert q3['all_trivial_zero']
+
