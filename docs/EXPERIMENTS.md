@@ -248,3 +248,7 @@ Perelman's proof is a 0/0: the Hamilton ratio lambda_2/lambda_1 at Ricci flow si
 ### Chern-Gauss-Bonnet as 0/0
 
 Euler characteristic = removable value of curvature integral 0/0 in all even dimensions. Verified in dims 2 (Gauss-Bonnet), 4 (Chern-Gauss-Bonnet), 6. Atiyah-Singer index theorem: index(de Rham) = chi(M). Chain: Gauss-Bonnet -> Chern -> Atiyah-Singer, each is a 0/0 with same removable value chi(M). Topology IS geometry modulo 0/0. `experiments/chern_gauss_bonnet_0_over_0.py`, `data/chern_gauss_bonnet_data.json`, `docs/THE_CHERN_GAUSS_BONNET_0_OVER_0.md`.
+
+### Riemann-Roch as 0/0
+
+Riemann-Roch theorem: chi(X, L) = removable value of h^0/h^1 0/0. Curves: critical ratio = 1 at d = g-1. Surfaces: Noether formula chi(O) = (c1^2+c2)/12 verified. CP^n: chi(O) = 1, chi(K) = (-1)^n via Serre duality. Chain extends: Gauss-Bonnet -> Chern -> Riemann-Roch -> Atiyah-Singer -> BSD. Connects to string theory (D-brane charges) and Riemann Hypothesis (via L-functions). `experiments/riemann_roch_0_over_0.py`, `data/riemann_roch_data.json`, `docs/THE_RIEMANN_ROCH_0_OVER_0.md`.

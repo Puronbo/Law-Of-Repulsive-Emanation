@@ -3144,3 +3144,23 @@ def test_chern_gauss_bonnet():
     assert q3['all_ratio_1']
     assert q3['all_index_match']
 
+
+def test_riemann_roch():
+    d = load('riemann_roch_data.json')
+
+    # Q1: Curves - critical ratio = 1
+    q1 = d['Q1_curves']['curves']['curve_results']
+    for cr in q1:
+        if cr['critical_ratio'] is not None:
+            assert abs(cr['critical_ratio'] - 1.0) < 1e-10
+
+    # Q2: Surfaces - Noether formula holds
+    q2 = d['Q2_surfaces']['surfaces']['surface_results']
+    for sr in q2:
+        assert sr['chi_O_matches_noether']
+
+    # Q3: CP^n - chi(O) = 1, chi(K) = (-1)^n
+    q3 = d['Q3_cpn']['cpn']
+    assert q3['all_chi_O_match']
+    assert q3['all_chi_K_match']
+
