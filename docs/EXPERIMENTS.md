@@ -204,3 +204,15 @@ PLC IEC 61131-3 utilities, servo control, facility air sizing, rainwater collect
 ### Open Questions from the Thaumaturge's Ledger
 
 5 questions answered computationally: Q1 geodesic recovery (C is ODE-dependent invariant), Q2 algebraic universality (every root is a removable singularity), Q3 spectral classification (Brody beta=1.0 is the boundary), Q4 sensitivity bounds (0/0 converges with zero spread), Q5 information geometry (KL/(dtheta)^2 -> Fisher/2 = 0.50 exact). `experiments/open_questions_0_over_0.py`, `data/open_questions_data.json`.
+
+### Logic as 0/0
+
+Godel incompleteness, Halting problem, and consistency strength formalized as 0/0 forms. Q1: Prov(G)/Prov(~G) = 0/0 with removable value 1 (symmetric unprovability). Q2: halting probability Omega_N/Omega_{N+1} -> 1 (finite approximations converge). Q3: proof-theoretic ordinal IS the removable value of the consistency-strength 0/0. `experiments/logic_0_over_0.py`, `data/logic_0_over_0_data.json`.
+
+### Category Theory as 0/0
+
+Natural transformations, Yoneda lemma, adjunctions, limits, and pullbacks as 0/0 forms. Q1: |Nat(Id,Id)| = 132 on 5-element chain, zero transformation is 0/0 point. Q2: adjunction FG/GF = 0/0 removable = 1, currying exact (244140625 = 244140625). Q3: equalizer x^2 = x mod 5 gives 0/0 at x=0, removable = 1; pullback (0,0) is 0/0. `experiments/category_theory_0_over_0.py`, `data/category_theory_0_over_0_data.json`.
+
+### The Laurent Decomposition (Formal Proof)
+
+Proof that the five mechanisms are exhaustive (via Laurent factorization at common zeros) and that Conservation is the root mechanism. Information-theoretic formulation I_0 = |lambda|^2. No sixth mechanism exists. `docs/THE_LAURENT_DECOMPOSITION.md`.

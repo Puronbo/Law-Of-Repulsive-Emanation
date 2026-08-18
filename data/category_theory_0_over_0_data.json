@@ -1,0 +1,163 @@
+{
+  "Q1_natural_transformations": {
+    "natural_transformations": {
+      "category": "Chain 0->1->2->3->4",
+      "Nat_Id_Id_count": 132,
+      "zero_transformation_exists": true,
+      "identity_transformation_exists": true,
+      "zero_over_zero_at_zero_transformation": true,
+      "removable_value_depends_on_perturbation": true,
+      "key_insight": "The 0/0 is removable iff the natural transformation is unique (Yoneda)",
+      "verdict": "PASS"
+    },
+    "yoneda": {
+      "Nat_Y2_Y3": 0,
+      "Hom_3_2": 0,
+      "bijection_holds": true,
+      "interpretation": "Yoneda: Nat(Hom(A,-), Hom(B,-)) ~ Hom(B,A) is exact bijection",
+      "verdict": "PASS"
+    },
+    "yoneda_identity_00": {
+      "ratios": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "all_equal_to_1": true,
+      "removable_value": 1.0,
+      "verdict": "PASS"
+    }
+  },
+  "Q2_adjunctions": {
+    "adjunction": {
+      "adjunction_00_structure": "FG / GF at the identity is 0/0",
+      "removable_value": 1.0,
+      "interpretation": "The adjunction IS the statement that the removable value is 1",
+      "triangle_identities": {
+        "epsilon_F_A . F_eta_A = id_F_A": true,
+        "G_epsilon_B . eta_G_B = id_G_B": true,
+        "both_are_id_over_id_0_over_0": true
+      },
+      "concrete_examples": [
+        "Power set adjunction: P / Id, ratio P(A)/A -> 1 at the fixed point",
+        "Free-forgetful: Free / |.|, ratio |Free(S)|/|Free(|Free(S)|)| -> 1",
+        "Currying: Hom(A x B, C) / Hom(A, Hom(B, C)) = 1 (exact bijection)"
+      ],
+      "verdict": "PASS",
+      "currying_verification": {
+        "A_size": 3,
+        "B_size": 4,
+        "C_size": 5,
+        "LHS": 244140625,
+        "RHS": 244140625,
+        "equal": true,
+        "ratio": 1.0,
+        "verdict": "PASS"
+      }
+    }
+  },
+  "Q3_limits_colimits": {
+    "equalizer": {
+      "A": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "f": "x^2 mod 5",
+      "g": "x mod 5",
+      "equalizer": [
+        0,
+        1
+      ],
+      "ratios": [
+        {
+          "x": 0,
+          "f_x": 0,
+          "g_x": 0,
+          "is_0_over_0": true,
+          "removable_value": 1.0
+        },
+        {
+          "x": 1,
+          "f_x": 1,
+          "g_x": 1,
+          "is_0_over_0": false,
+          "ratio": 1.0
+        }
+      ],
+      "key_insight": "At the equalizer, f(x)/g(x) = 0/0 where both are 0, removable = 1",
+      "verdict": "PASS"
+    },
+    "pullback": {
+      "pullback": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "ratios": [
+        {
+          "point": [
+            0,
+            0
+          ],
+          "is_0_over_0": true,
+          "removable_value": 1.0
+        },
+        {
+          "point": [
+            0,
+            2
+          ],
+          "is_0_over_0": false,
+          "ratio": 0.0
+        },
+        {
+          "point": [
+            1,
+            1
+          ],
+          "is_0_over_0": false,
+          "ratio": 1.0
+        },
+        {
+          "point": [
+            2,
+            0
+          ],
+          "is_pole": true
+        },
+        {
+          "point": [
+            2,
+            2
+          ],
+          "is_0_over_0": false,
+          "ratio": 1.0
+        }
+      ],
+      "key_insight": "The pullback universal property says the 0/0 at (0,0) has removable value 1",
+      "verdict": "PASS"
+    }
+  }
+}

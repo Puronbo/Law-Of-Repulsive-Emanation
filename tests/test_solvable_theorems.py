@@ -2931,3 +2931,57 @@ def test_open_questions():
     assert d['Q5_geometry']['quadratic_00_correct']
     assert d['Q5_geometry']['d2KL_equals_Fisher']
 
+
+def test_logic_0_over_0():
+    d = load('logic_0_over_0_data.json')
+
+    # Q1: Godel incompleteness
+    g = d['Q1_godel']['godel']
+    assert g['ratio_is_0_over_0']
+    assert g['removable_value'] == 1.0
+    assert g['verdict'] == 'PASS'
+
+    # Consistency strength
+    cs = d['Q1_godel']['consistency_strength']
+    assert cs['each_level_Cannot_prove_own_consistency']
+    assert cs['verdict'] == 'PASS'
+
+    # Q2: Halting problem
+    omega = d['Q2_halting']['omega_approximation']
+    assert omega['convergence_to_1'] < 0.5
+    assert omega['verdict'] == 'PASS'
+
+    # Q3: Consistency strength
+    ct = d['Q3_consistency']['ordinal_hierarchy']
+    assert ct['verdict'] == 'PASS'
+    assert d['Q3_consistency']['conservation']['ACA_0_same_as_PA']
+
+
+def test_category_theory_0_over_0():
+    d = load('category_theory_0_over_0_data.json')
+
+    # Q1: Natural transformations
+    nt = d['Q1_natural_transformations']['natural_transformations']
+    assert nt['Nat_Id_Id_count'] > 0
+    assert nt['zero_transformation_exists']
+    assert nt['verdict'] == 'PASS'
+
+    y = d['Q1_natural_transformations']['yoneda']
+    assert y['bijection_holds']
+    assert y['verdict'] == 'PASS'
+
+    # Q2: Adjunctions
+    adj = d['Q2_adjunctions']['adjunction']
+    assert adj['removable_value'] == 1.0
+    assert adj['currying_verification']['equal']
+    assert adj['currying_verification']['verdict'] == 'PASS'
+
+    # Q3: Limits/colimits
+    eq = d['Q3_limits_colimits']['equalizer']
+    assert 0 in eq['equalizer']
+    assert eq['verdict'] == 'PASS'
+
+    pb = d['Q3_limits_colimits']['pullback']
+    assert [0, 0] in pb['pullback']
+    assert pb['verdict'] == 'PASS'
+
