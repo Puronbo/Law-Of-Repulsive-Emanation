@@ -155,6 +155,7 @@ Usage: `grep -i "basketball" KEYWORDS.md` or just search this file.
 - **T-symmetry / time reversal / energy conservation** — `experiments/c0_crossing_tsym.py`, `c0_cusp_flow.py`, `t39_cusp_flow.py`, `experiments/time_reversal_convergence.py` (PAPER's 0.003 = dt-dependent integrator bound, superconverges O(dt^6.9)), `data/time_reversal_convergence_data.json`
 - **Ternary evaluation / scoring heuristic** — `docs/papers/corrected_paper.tex` (+ `.pdf`)
 - **Thermodynamics / entropy / partition function** — `Universals/thermodynamics.py`, `data/thermo_data.json`
+- **Thaumaturge's Ledger / refuted claims / 0/0 recovery / meta-theorem** — `docs/THE_THAUMATURGES_LEDGER.md`, `docs/THE_THAUMATURGES_LEDGER.pdf` (20 refuted claims re-examined; 6 categories A-F; meta-theorem: every refutation tested the wrong 0/0 form; refutation relocates information, not destroys it; 170/170 tests green)
 - **Toy network / live network / browser UI** — `puno_app/`, `puno_flow/examples/`
 - **Wald test / econometrics / non-invariance** — `docs/papers/econometrics_invariance.tex` (+ `.pdf`)
 - **Weyl law / eigenvalue density / counting function / 0/0** — `docs/PAPER.md`, `Universals/thermodynamics.py`, `experiments/weyl_law_0_over_0.py`, `data/weyl_law_0_over_0_data.json` (N(lambda)/lambda^{d/2} -> C_weyl for T2 and S2; 0/0 at lambda=0 diverges, removable value = C_weyl from large-lambda limit)
@@ -194,6 +195,13 @@ Usage: `grep -i "basketball" KEYWORDS.md` or just search this file.
 - `docs/WHAT_ZERO_IS.pdf` — zero definition, pole vs indeterminate
 - `docs/WHERE_0_OVER_0_SOLVES.pdf` — 0/0 as structural probe across mathematics
 - `docs/IF_C0_IS_0_OVER_0.pdf` — L.O.R.E. as a 0/0 structure
+- `docs/THE_LAW_OF_SINGULARITIES.pdf` — formal theory of 0/0, five mechanisms, classification/extraction/universality theorems
+- `docs/THE_UNIVERSAL_ZERO.pdf` — 61 experiments, five mechanisms taxonomy
+- `docs/ON_THE_NATURE_OF_ZERO.pdf` — philosophical treatise, three zeros
+- `docs/THE_0_OVER_0_ATLAS.pdf` — reference atlas, 55-instance catalog
+- `docs/REMOVABLE_SINGULARITIES.pdf` — epistemology paper
+- `docs/THE_WEB_OF_PROOFS.pdf` — proof structure map, mechanism dependency graph
+- `docs/THE_THAUMATURGES_LEDGER.pdf` — refuted claims re-examined through 0/0 lens
 - `docs/papers/scale_free_update_correction.pdf` — scale-free network update
 
 ## Data map (persisted results)
