@@ -3065,3 +3065,23 @@ def test_information_conservation():
     assert q3['match_gaussian']
     assert q3['verdict'] == 'PASS'
 
+
+def test_qft():
+    d = load('qft_0_over_0_data.json')
+
+    # Q1: QED self-energy converges to physical mass
+    qed = d['Q1_qed']['qed']
+    assert qed['converge_to_physical_mass']
+    last = qed['results'][-1]
+    assert last['error'] < 1e-10
+
+    # Q2: QCD asymptotic freedom
+    qcd = d['Q2_qcd']['qcd']
+    assert qcd['asymptotic_freedom']
+    assert qcd['b_0'] == 7.0
+
+    # Q3: Cosmological constant fine-tuning
+    cc = d['Q3_cc']['cosmological_constant']
+    assert cc['fine_tuning'] < 1e-100
+    assert cc['removable_value'] == 1.0
+

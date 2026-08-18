@@ -232,3 +232,7 @@ The Prime-Geodesic Theorem (pi_Gamma(x) ~ li(x)) is a 0/0 with removable value 1
 ### Information Conservation 0/0
 
 Fundamental theorem: every 0/0 preserves exactly I_0 = |lambda|^2 bits of information. I_0 = I(f)/I(g) (ratio of Fisher informations). Information is additive across independent 0/0 forms. Five mechanisms distribute I_0 among identity, topology, analysis, universality, symmetry. Discovery Principle follows from conservation. Verified for Brody (I_0 = pi^2/4), entropy (I_0 = h^2), PGT (I_0 = 1), Gaussian (I_0 = sigma_g^2/sigma_f^2). `experiments/information_conservation_0_over_0.py`, `data/information_conservation_data.json`, `docs/THE_INFORMATION_CONSERVATION_THEOREM.md`.
+
+### QFT 0/0: Renormalization
+
+Renormalization in QFT is a 0/0: bare/(1+loop) = 0/0 with removable value = physical parameter. QED: m_0/(1+Sigma/m) -> m_e. QCD: b_0 = 7, beta < 0 (asymptotic freedom), fixed point at g=0. Cosmological constant = deviation from removable value 1, fine-tuning 10^-122. Standard Model = 14 independent 0/0s. Quantum gravity = POLE (non-renormalizable). `experiments/qft_0_over_0.py`, `data/qft_0_over_0_data.json`, `docs/THE_QFT_0_OVER_0.md`.
