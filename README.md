@@ -15,6 +15,17 @@ A measured-physics laboratory and instrument suite: Hamiltonian flow on the Poin
 
 Source: `generate_companion_papers.py`, `generate_rh_paper.py`.
 
+### The 0/0 Paper Suite (2026-08-18)
+
+Five papers synthesizing 55 experiments showing that the indeterminate form 0/0 is the deep structure of mathematics:
+
+| Paper | What it covers |
+|---|---|
+| [`THE_UNIVERSAL_ZERO.md`](docs/THE_UNIVERSAL_ZERO.md) | Main synthesis: 55 experiments, five mechanisms (Probe, Index, Vanishing Rate, Critical Phenomenon, Conservation), complete taxonomy |
+| [`ON_THE_NATURE_OF_ZERO.md`](docs/ON_THE_NATURE_OF_ZERO.md) | Philosophical treatise: what zero actually is, the three zeros, why 0/0 is the deepest expression, 20 chapters |
+| [`THE_0_OVER_0_ATLAS.md`](docs/THE_0_OVER_0_ATLAS.md) | Reference atlas: complete catalog of all 55 instances, cross-reference tables, decision tree, open problems |
+| [`REMOVABLE_SINGULARITIES.md`](docs/REMOVABLE_SINGULARITIES.md) | Epistemology: what the 0/0 form tells us about knowledge, the honest wall, the boundary of mathematics |
+
 ## Verified Findings (2026-08-17)
 
 Every number below was re-verified by rerun or direct read of the persisted data file. Full claim-by-claim declaration with references: `docs/NOVELTY_AND_CREATION.md`.
