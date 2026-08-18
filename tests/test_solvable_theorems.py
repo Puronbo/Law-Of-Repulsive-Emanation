@@ -3242,3 +3242,20 @@ def test_atiyah_singer():
     q4 = d['Q4_integer_constraint']['integer_constraint']
     assert q4['all_integer']
 
+
+def test_de_rham():
+    d = load('de_rham_data.json')
+
+    # Q1: All Betti numbers are non-negative integers
+    q1 = d['Q1_betti_numbers']['betti_numbers']
+    assert q1['all_nonneg']
+    assert q1['all_integer']
+
+    # Q2: Euler characteristic from Betti = Gauss-Bonnet = formula
+    q2 = d['Q2_euler_characteristic']['euler_characteristic']
+    assert q2['all_match']
+
+    # Q3: Integration map (Stokes) verified
+    q3 = d['Q3_integration_map']['integration_map']
+    assert q3['stokes_verified']
+

@@ -268,3 +268,7 @@ Energy dissipation H-theorem: dH/dt = -nu*|grad(u)|^2 <= 0. Verified via spectra
 ### Atiyah-Singer Index Theorem as 0/0
 
 index(D) = dim(ker D) - dim(coker D) = integral ch(sigma(D)) td(TX) = INTEGER. Verified 17 indices across 3 operators (de Rham, Dolbeault, Dirac) on 7 manifolds: all are integers. The lattice of removable values: [-16, 0, 1, 2, 3, 4, 24]. The 0/0 is QUANTIZED: removable values form a lattice, not a continuum. Quantum anomalies are quantized by this theorem (anomaly = index(D) = integer). Chain: Gauss-Bonnet -> Chern -> Riemann-Roch -> Atiyah-Singer -> BSD. `experiments/atiyah_singer_0_over_0.py`, `data/atiyah_singer_data.json`, `docs/THE_ATIYAH_SINGER_INDEX_THEOREM_0_OVER_0.md`.
+
+### de Rham Theorem as 0/0
+
+The foundation: H^k_dR(M) = H_k(M; R), Betti numbers = cohomology dimensions. Verified 16 manifolds (S^n, T^n, CP^n, Klein bottle, surfaces): all Betti numbers are non-negative integers. Euler characteristic from Betti numbers = Gauss-Bonnet = formula (all methods agree). Integration map (Stokes theorem) is the 0/0: closed/exact = nonzero/zero. The 0/0 framework IS de Rham cohomology with removable singularities. `experiments/de_rham_0_over_0.py`, `data/de_rham_data.json`, `docs/THE_DE_RHAM_THEOREM_0_OVER_0.md`.
