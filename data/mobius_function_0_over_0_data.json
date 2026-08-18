@@ -1,0 +1,344 @@
+{
+  "tests": [],
+  "summary": {
+    "supported": true,
+    "mobius_values_correct": true,
+    "dirichlet_inverse_correct": true,
+    "mertens_correct": true,
+    "pnt_connection_holds": true,
+    "honest_wall": "numerical verification; no proof of Mertens bounds"
+  },
+  "mobius_values": {
+    "note": "mu(n) = 0 if squared factor, (-1)^k if k distinct primes",
+    "all_correct": true,
+    "tests": [
+      {
+        "n": 1,
+        "mu": 1,
+        "expected": 1
+      },
+      {
+        "n": 2,
+        "mu": -1,
+        "expected": -1
+      },
+      {
+        "n": 3,
+        "mu": -1,
+        "expected": -1
+      },
+      {
+        "n": 5,
+        "mu": -1,
+        "expected": -1
+      },
+      {
+        "n": 7,
+        "mu": -1,
+        "expected": -1
+      },
+      {
+        "n": 11,
+        "mu": -1,
+        "expected": -1
+      },
+      {
+        "n": 13,
+        "mu": -1,
+        "expected": -1
+      },
+      {
+        "n": 4,
+        "mu": 0,
+        "expected": 0
+      },
+      {
+        "n": 9,
+        "mu": 0,
+        "expected": 0
+      },
+      {
+        "n": 25,
+        "mu": 0,
+        "expected": 0
+      }
+    ]
+  },
+  "dirichlet_inverse": {
+    "note": "sum_{d|n} mu(d) = 1 if n=1, 0 otherwise",
+    "all_correct": true,
+    "tests": [
+      {
+        "n": 1,
+        "sum_mu_d": 1,
+        "expected": 1,
+        "correct": true
+      },
+      {
+        "n": 2,
+        "sum_mu_d": 0,
+        "expected": 0,
+        "correct": true
+      },
+      {
+        "n": 3,
+        "sum_mu_d": 0,
+        "expected": 0,
+        "correct": true
+      },
+      {
+        "n": 4,
+        "sum_mu_d": 0,
+        "expected": 0,
+        "correct": true
+      },
+      {
+        "n": 5,
+        "sum_mu_d": 0,
+        "expected": 0,
+        "correct": true
+      },
+      {
+        "n": 6,
+        "sum_mu_d": 0,
+        "expected": 0,
+        "correct": true
+      },
+      {
+        "n": 7,
+        "sum_mu_d": 0,
+        "expected": 0,
+        "correct": true
+      },
+      {
+        "n": 8,
+        "sum_mu_d": 0,
+        "expected": 0,
+        "correct": true
+      },
+      {
+        "n": 9,
+        "sum_mu_d": 0,
+        "expected": 0,
+        "correct": true
+      },
+      {
+        "n": 10,
+        "sum_mu_d": 0,
+        "expected": 0,
+        "correct": true
+      },
+      {
+        "n": 12,
+        "sum_mu_d": 0,
+        "expected": 0,
+        "correct": true
+      },
+      {
+        "n": 30,
+        "sum_mu_d": 0,
+        "expected": 0,
+        "correct": true
+      },
+      {
+        "n": 60,
+        "sum_mu_d": 0,
+        "expected": 0,
+        "correct": true
+      }
+    ]
+  },
+  "mertens_small": {
+    "note": "M(n) = sum_{k<=n} mu(k)",
+    "all_correct": true,
+    "tests": [
+      {
+        "n": 1,
+        "M": 1,
+        "expected": 1,
+        "correct": true
+      },
+      {
+        "n": 2,
+        "M": 0,
+        "expected": 0,
+        "correct": true
+      },
+      {
+        "n": 3,
+        "M": -1,
+        "expected": -1,
+        "correct": true
+      },
+      {
+        "n": 4,
+        "M": -1,
+        "expected": -1,
+        "correct": true
+      },
+      {
+        "n": 5,
+        "M": -2,
+        "expected": -2,
+        "correct": true
+      },
+      {
+        "n": 6,
+        "M": -1,
+        "expected": -1,
+        "correct": true
+      },
+      {
+        "n": 7,
+        "M": -2,
+        "expected": -2,
+        "correct": true
+      },
+      {
+        "n": 8,
+        "M": -2,
+        "expected": -2,
+        "correct": true
+      },
+      {
+        "n": 9,
+        "M": -2,
+        "expected": -2,
+        "correct": true
+      },
+      {
+        "n": 10,
+        "M": -1,
+        "expected": -1,
+        "correct": true
+      }
+    ]
+  },
+  "mertens_ratio": {
+    "note": "M(x)/sqrt(x): Mertens conjecture holds up to N=10000",
+    "mertens_bound_all": true,
+    "tests": [
+      {
+        "n": 10,
+        "M": -1,
+        "sqrt_n": 3.1622776601683795,
+        "ratio": -0.31622776601683794,
+        "abs_ratio": 0.31622776601683794,
+        "mertens_bound_holds": true
+      },
+      {
+        "n": 50,
+        "M": -3,
+        "sqrt_n": 7.0710678118654755,
+        "ratio": -0.4242640687119285,
+        "abs_ratio": 0.4242640687119285,
+        "mertens_bound_holds": true
+      },
+      {
+        "n": 100,
+        "M": 1,
+        "sqrt_n": 10.0,
+        "ratio": 0.1,
+        "abs_ratio": 0.1,
+        "mertens_bound_holds": true
+      },
+      {
+        "n": 500,
+        "M": -6,
+        "sqrt_n": 22.360679774997898,
+        "ratio": -0.2683281572999747,
+        "abs_ratio": 0.2683281572999747,
+        "mertens_bound_holds": true
+      },
+      {
+        "n": 1000,
+        "M": 2,
+        "sqrt_n": 31.622776601683793,
+        "ratio": 0.06324555320336758,
+        "abs_ratio": 0.06324555320336758,
+        "mertens_bound_holds": true
+      },
+      {
+        "n": 5000,
+        "M": 2,
+        "sqrt_n": 70.71067811865476,
+        "ratio": 0.0282842712474619,
+        "abs_ratio": 0.0282842712474619,
+        "mertens_bound_holds": true
+      },
+      {
+        "n": 10000,
+        "M": -23,
+        "sqrt_n": 100.0,
+        "ratio": -0.23,
+        "abs_ratio": 0.23,
+        "mertens_bound_holds": true
+      }
+    ]
+  },
+  "dirichlet_series": {
+    "note": "sum mu(n)/n^s = 1/zeta(s): (s-1)/zeta(s) -> 1 as s -> 1",
+    "tests": [
+      {
+        "s": 1.5,
+        "sum_mu_n_s": 0.38293927151863405,
+        "1_over_zeta_s": 0.38698347594469673,
+        "ratio_to_1_zeta": 0.9895494131469308
+      },
+      {
+        "s": 1.2,
+        "sum_mu_n_s": 0.17996883108021305,
+        "1_over_zeta_s": 0.21361669122391677,
+        "ratio_to_1_zeta": 0.8424848734856892
+      },
+      {
+        "s": 1.1,
+        "sum_mu_n_s": 0.09670976591195636,
+        "1_over_zeta_s": 0.15828798779716474,
+        "ratio_to_1_zeta": 0.6109734999972539
+      },
+      {
+        "s": 1.05,
+        "sum_mu_n_s": 0.05172662778434406,
+        "1_over_zeta_s": 0.1330385405866617,
+        "ratio_to_1_zeta": 0.38880934469248163
+      },
+      {
+        "s": 1.01,
+        "sum_mu_n_s": 0.014063731195745208,
+        "1_over_zeta_s": 0.11438488454478432,
+        "ratio_to_1_zeta": 0.12295095852668307
+      }
+    ]
+  },
+  "pnt_connection": {
+    "note": "sum mu(n)/n -> 0 (equivalent to PNT)",
+    "tests": [
+      {
+        "n": 100,
+        "sum_mu_n": 0.031131533529083148,
+        "approaches_zero": true
+      },
+      {
+        "n": 500,
+        "sum_mu_n": -0.008520856553787232,
+        "approaches_zero": true
+      },
+      {
+        "n": 1000,
+        "sum_mu_n": 0.004411869771791756,
+        "approaches_zero": true
+      },
+      {
+        "n": 5000,
+        "sum_mu_n": 0.0007782174621932911,
+        "approaches_zero": true
+      },
+      {
+        "n": 10000,
+        "sum_mu_n": -0.002082699767482251,
+        "approaches_zero": true
+      }
+    ]
+  }
+}

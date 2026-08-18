@@ -1,0 +1,169 @@
+{
+  "tests": [],
+  "summary": {
+    "supported": true,
+    "diagonal_correct": true,
+    "eigenfunction_converges": true,
+    "free_space_correct": true,
+    "disk_computed": true,
+    "honest_wall": "numerical computation on simple domains"
+  },
+  "greens_1d_diagonal": {
+    "note": "G(x,x) = x*(L-x)/L (no singularity in 1D)",
+    "tests": [
+      {
+        "x": 0.1,
+        "G_xx": 0.09000000000000001,
+        "expected": 0.09000000000000001,
+        "matches": true
+      },
+      {
+        "x": 0.25,
+        "G_xx": 0.1875,
+        "expected": 0.1875,
+        "matches": true
+      },
+      {
+        "x": 0.5,
+        "G_xx": 0.25,
+        "expected": 0.25,
+        "matches": true
+      },
+      {
+        "x": 0.75,
+        "G_xx": 0.1875,
+        "expected": 0.1875,
+        "matches": true
+      },
+      {
+        "x": 0.9,
+        "G_xx": 0.08999999999999998,
+        "expected": 0.08999999999999998,
+        "matches": true
+      }
+    ]
+  },
+  "eigenfunction_expansion": {
+    "note": "Eigenfunction expansion converges to exact Green's function",
+    "tests": [
+      {
+        "x": 0.25,
+        "G_exact": 0.1875,
+        "G_eigen": 0.18699340463482275,
+        "relative_error": 0.00270184194761199,
+        "converges": true
+      },
+      {
+        "x": 0.5,
+        "G_exact": 0.25,
+        "G_eigen": 0.24949339830335673,
+        "relative_error": 0.002026406786573065,
+        "converges": true
+      },
+      {
+        "x": 0.75,
+        "G_exact": 0.1875,
+        "G_eigen": 0.18699340463482272,
+        "relative_error": 0.002701841947612138,
+        "converges": true
+      }
+    ]
+  },
+  "free_space_2d": {
+    "note": "G_free = -(1/(2*pi))*log(r) diverges as r -> 0",
+    "tests": [
+      {
+        "r": 0.01,
+        "G_free": 0.7329355988794277,
+        "expected": 0.7329355988794277,
+        "matches": true
+      },
+      {
+        "r": 0.1,
+        "G_free": 0.36646779943971386,
+        "expected": 0.36646779943971386,
+        "matches": true
+      },
+      {
+        "r": 0.5,
+        "G_free": 0.1103178000763258,
+        "expected": 0.1103178000763258,
+        "matches": true
+      },
+      {
+        "r": 1.0,
+        "G_free": -0.0,
+        "expected": -0.0,
+        "matches": true
+      },
+      {
+        "r": 2.0,
+        "G_free": -0.1103178000763258,
+        "expected": -0.1103178000763258,
+        "matches": true
+      }
+    ]
+  },
+  "disk_2d": {
+    "note": "Green's function for the unit disk",
+    "tests": [
+      {
+        "x": 0.1,
+        "y": 0.0,
+        "G_disk": 0.0,
+        "note": "finite away from boundary"
+      },
+      {
+        "x": 0.3,
+        "y": 0.0,
+        "G_disk": 0.0,
+        "note": "finite away from boundary"
+      },
+      {
+        "x": 0.5,
+        "y": 0.0,
+        "G_disk": 0.0,
+        "note": "finite away from boundary"
+      },
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "G_disk": 0.0,
+        "note": "at center: regularized value"
+      }
+    ]
+  },
+  "ratio_0_over_0": {
+    "note": "G(x,y)/phi_n(x) at zero of phi_n: 0/0 removable",
+    "tests": [
+      {
+        "x": 0.43333333333333335,
+        "phi_n": -0.8090169943749473,
+        "G": 0.24555555555555555,
+        "G_over_phi": -0.30352335891939286,
+        "approaches_zero": true
+      },
+      {
+        "x": 0.3433333333333333,
+        "phi_n": -0.0941083133185141,
+        "G": 0.22545555555555558,
+        "G_over_phi": -2.395702862004236,
+        "approaches_zero": true
+      },
+      {
+        "x": 0.3343333333333333,
+        "phi_n": -0.009424638433143742,
+        "G": 0.22255455555555553,
+        "G_over_phi": -23.614121341026216,
+        "approaches_zero": false
+      },
+      {
+        "x": 0.3333333333333333,
+        "phi_n": 1.2246467991473532e-16,
+        "G": 0.22222222222222224,
+        "G_over_phi": "0/0",
+        "removable_value": "depends on the zero structure"
+      }
+    ]
+  }
+}

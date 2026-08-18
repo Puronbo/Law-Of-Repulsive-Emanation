@@ -221,6 +221,10 @@ Usage: `grep -i "basketball" KEYWORDS.md` or just search this file.
 - **Wigner semicircle / random matrices / GUE / GOE / Tracy-Widom / spectral rigidity** — `wigner_semicircle_0_over_0.py` (semicircle fits, edge 0/0 removable=1/(2*pi), rigidity) → `data/wigner_semicircle_0_over_0_data.json`
 - **Noether theorem / Lagrangian / conservation law / symmetry / Euler-Lagrange** — `noether_theorem_0_over_0.py` (conserved quantities, dL/deps 0/0, momentum/energy) → `data/noether_theorem_0_over_0_data.json`
 - **Spectral gap / quantum phase transition / transverse-field Ising / critical scaling / dynamical exponent** — `spectral_gap_0_over_0.py` (gap closes at h=1, Delta*L -> C, gapped phases) → `data/spectral_gap_0_over_0_data.json`
+- **Green's function / Laplacian / Dirichlet / eigenfunction expansion / method of images** — `greens_function_0_over_0.py` (1D/2D Green's functions, eigenfunction convergence, disk) → `data/greens_function_0_over_0_data.json`
+- **Mobius function / Mertens function / Dirichlet series / 1/zeta(s) / prime counting** — `mobius_function_0_over_0.py` (mu values, Dirichlet inverse, PNT connection) → `data/mobius_function_0_over_0_data.json`
+- **Saddle point / Laplace method / steepest descent / Watson's lemma / Gaussian approximation** — `saddle_point_0_over_0.py` (Gaussian saddle, Stirling via Laplace, 0/0 removable) → `data/saddle_point_0_over_0_data.json`
+- **Stirling's approximation / factorial / Gamma function / Wallis product / correction terms** — `stirling_approx_0_over_0.py` (ratio -> 1, correction 1/(12n), Wallis) → `data/stirling_approx_0_over_0_data.json`
 
 ## Code map
 

@@ -1,0 +1,323 @@
+{
+  "tests": [],
+  "summary": {
+    "supported": true,
+    "gaussian_saddle_converges": true,
+    "stirling_correct": true,
+    "saddle_0_over_0_removable": true,
+    "watson_lemma_correct": true,
+    "honest_wall": "numerical verification of asymptotic approximations"
+  },
+  "saddle_point_gaussian": {
+    "note": "exp(lambda*(1-x^2)): Gaussian approx -> 1 as lambda -> inf",
+    "tests": [
+      {
+        "lambda": 1,
+        "I_exact_normalized": 1.7724538509055157,
+        "I_gauss_normalized": 1.7724538509055159,
+        "I_num_normalized": 1.7724538509055157,
+        "gaussian_ratio": 1.0,
+        "close_to_one": true
+      },
+      {
+        "lambda": 5,
+        "I_exact_normalized": 0.7926654595212022,
+        "I_gauss_normalized": 0.7926654595212022,
+        "I_num_normalized": 0.7926654595212022,
+        "gaussian_ratio": 1.0,
+        "close_to_one": true
+      },
+      {
+        "lambda": 10,
+        "I_exact_normalized": 0.5604991216397929,
+        "I_gauss_normalized": 0.5604991216397929,
+        "I_num_normalized": 0.5604991216397929,
+        "gaussian_ratio": 1.0,
+        "close_to_one": true
+      },
+      {
+        "lambda": 50,
+        "I_exact_normalized": 0.25066282746310004,
+        "I_gauss_normalized": 0.25066282746310004,
+        "I_num_normalized": 0.25066282746310015,
+        "gaussian_ratio": 1.0000000000000007,
+        "close_to_one": true
+      },
+      {
+        "lambda": 100,
+        "I_exact_normalized": 0.1772453850905516,
+        "I_gauss_normalized": 0.1772453850905516,
+        "I_num_normalized": 0.17724538509055188,
+        "gaussian_ratio": 1.0000000000000016,
+        "close_to_one": true
+      }
+    ]
+  },
+  "laplace_stirling": {
+    "note": "Laplace method gives Stirling: n!/Stirling -> 1",
+    "tests": [
+      {
+        "n": 5,
+        "exact": 120.0,
+        "stirling": 118.0191679575901,
+        "ratio": 1.016783985827808,
+        "close_to_one": true
+      },
+      {
+        "n": 10,
+        "exact": 3628800.0,
+        "stirling": 3598695.6187410373,
+        "ratio": 1.0083653591323998,
+        "close_to_one": true
+      },
+      {
+        "n": 20,
+        "exact": 2.43290200817664e+18,
+        "stirling": 2.422786846761135e+18,
+        "ratio": 1.0041750108677645,
+        "close_to_one": true
+      },
+      {
+        "n": 50,
+        "exact": 3.0414093201713376e+64,
+        "stirling": 3.036344593938168e+64,
+        "ratio": 1.0016680340707314,
+        "close_to_one": true
+      },
+      {
+        "n": 100,
+        "exact": 9.332621544394415e+157,
+        "stirling": 9.32484762526942e+157,
+        "ratio": 1.000833677872004,
+        "close_to_one": true
+      }
+    ]
+  },
+  "saddle_0_over_0": {
+    "note": "g'(x)/(x-x*) -> g''(x*) as x -> x*: 0/0 removable = g''(x*)",
+    "tests": [
+      {
+        "x": 0.1,
+        "dx": 0.1,
+        "g_prime": -0.2,
+        "ratio": -2.0,
+        "approaches_g_pp": true
+      },
+      {
+        "x": 0.01,
+        "dx": 0.01,
+        "g_prime": -0.02,
+        "ratio": -2.0,
+        "approaches_g_pp": true
+      },
+      {
+        "x": 0.001,
+        "dx": 0.001,
+        "g_prime": -0.002,
+        "ratio": -2.0,
+        "approaches_g_pp": true
+      },
+      {
+        "x": 0.0001,
+        "dx": 0.0001,
+        "g_prime": -0.0002,
+        "ratio": -2.0,
+        "approaches_g_pp": true
+      },
+      {
+        "x": 0.0,
+        "dx": 0,
+        "ratio": "0/0",
+        "removable_value": -2.0
+      }
+    ]
+  },
+  "higher_order_saddle": {
+    "note": "For g=x^4: g'/x -> 0, g'/x^3 -> 4 (degenerate saddle)",
+    "tests": [
+      {
+        "x": 0.1,
+        "g_prime_over_x": 0.04000000000000001,
+        "g_prime_over_x3": 4.0,
+        "removable_value": 4.0
+      },
+      {
+        "x": 0.01,
+        "g_prime_over_x": 0.0004000000000000001,
+        "g_prime_over_x3": 4.0,
+        "removable_value": 4.0
+      },
+      {
+        "x": 0.001,
+        "g_prime_over_x": 4e-06,
+        "g_prime_over_x3": 4.0,
+        "removable_value": 4.0
+      }
+    ]
+  },
+  "watson_lemma": {
+    "note": "Watson's lemma: integral x^{a-1}*exp(-lam*x^2) = Gamma(a/2)/(2*lam^{a/2})",
+    "tests": [
+      {
+        "a": 0.5,
+        "lambda": 0.1,
+        "I_exact": 3.223673724312064,
+        "I_numerical": 3.2236737243120586,
+        "ratio": 0.9999999999999983,
+        "close_to_one": true
+      },
+      {
+        "a": 0.5,
+        "lambda": 1.0,
+        "I_exact": 1.812804954110954,
+        "I_numerical": 1.8128049541109477,
+        "ratio": 0.9999999999999964,
+        "close_to_one": true
+      },
+      {
+        "a": 0.5,
+        "lambda": 10.0,
+        "I_exact": 1.019415140206384,
+        "I_numerical": 1.019415140206382,
+        "ratio": 0.999999999999998,
+        "close_to_one": true
+      },
+      {
+        "a": 0.5,
+        "lambda": 100.0,
+        "I_exact": 0.5732592608627634,
+        "I_numerical": 0.5732592608627627,
+        "ratio": 0.9999999999999989,
+        "close_to_one": true
+      },
+      {
+        "a": 1.0,
+        "lambda": 0.1,
+        "I_exact": 2.802495608198964,
+        "I_numerical": 2.802495608198964,
+        "ratio": 1.0,
+        "close_to_one": true
+      },
+      {
+        "a": 1.0,
+        "lambda": 1.0,
+        "I_exact": 0.8862269254527579,
+        "I_numerical": 0.886226925452758,
+        "ratio": 1.0000000000000002,
+        "close_to_one": true
+      },
+      {
+        "a": 1.0,
+        "lambda": 10.0,
+        "I_exact": 0.2802495608198964,
+        "I_numerical": 0.28024956081989644,
+        "ratio": 1.0000000000000002,
+        "close_to_one": true
+      },
+      {
+        "a": 1.0,
+        "lambda": 100.0,
+        "I_exact": 0.0886226925452758,
+        "I_numerical": 0.08862269254527581,
+        "ratio": 1.0000000000000002,
+        "close_to_one": true
+      },
+      {
+        "a": 1.5,
+        "lambda": 0.1,
+        "I_exact": 3.4455122618732776,
+        "I_numerical": 3.4455122618732648,
+        "ratio": 0.9999999999999962,
+        "close_to_one": true
+      },
+      {
+        "a": 1.5,
+        "lambda": 1.0,
+        "I_exact": 0.6127083512325887,
+        "I_numerical": 0.6127083512325556,
+        "ratio": 0.999999999999946,
+        "close_to_one": true
+      },
+      {
+        "a": 1.5,
+        "lambda": 10.0,
+        "I_exact": 0.1089566645355809,
+        "I_numerical": 0.10895666453557931,
+        "ratio": 0.9999999999999855,
+        "close_to_one": true
+      },
+      {
+        "a": 1.5,
+        "lambda": 100.0,
+        "I_exact": 0.019375539313014164,
+        "I_numerical": 0.019375539313014084,
+        "ratio": 0.9999999999999959,
+        "close_to_one": true
+      },
+      {
+        "a": 2.0,
+        "lambda": 0.1,
+        "I_exact": 5.0,
+        "I_numerical": 4.999999999999999,
+        "ratio": 0.9999999999999998,
+        "close_to_one": true
+      },
+      {
+        "a": 2.0,
+        "lambda": 1.0,
+        "I_exact": 0.5,
+        "I_numerical": 0.49999999999999994,
+        "ratio": 0.9999999999999999,
+        "close_to_one": true
+      },
+      {
+        "a": 2.0,
+        "lambda": 10.0,
+        "I_exact": 0.05,
+        "I_numerical": 0.05000000000000001,
+        "ratio": 1.0000000000000002,
+        "close_to_one": true
+      },
+      {
+        "a": 2.0,
+        "lambda": 100.0,
+        "I_exact": 0.005,
+        "I_numerical": 0.005,
+        "ratio": 1.0,
+        "close_to_one": true
+      },
+      {
+        "a": 3.0,
+        "lambda": 0.1,
+        "I_exact": 14.012478040994818,
+        "I_numerical": 14.01247804099482,
+        "ratio": 1.0000000000000002,
+        "close_to_one": true
+      },
+      {
+        "a": 3.0,
+        "lambda": 1.0,
+        "I_exact": 0.44311346272637897,
+        "I_numerical": 0.44311346272637897,
+        "ratio": 1.0,
+        "close_to_one": true
+      },
+      {
+        "a": 3.0,
+        "lambda": 10.0,
+        "I_exact": 0.01401247804099482,
+        "I_numerical": 0.014012478040994822,
+        "ratio": 1.0000000000000002,
+        "close_to_one": true
+      },
+      {
+        "a": 3.0,
+        "lambda": 100.0,
+        "I_exact": 0.000443113462726379,
+        "I_numerical": 0.00044311346272637905,
+        "ratio": 1.0000000000000002,
+        "close_to_one": true
+      }
+    ]
+  }
+}

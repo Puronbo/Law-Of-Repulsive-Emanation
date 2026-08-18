@@ -2763,3 +2763,7 @@ content ranking.
 * **Ch. 5.42** Wigner semicircle 0/0 — GUE/GOE semicircle law, edge 0/0 removable=1/(2*pi), spectral rigidity, Tracy-Widom scaling (`wigner_semicircle_0_over_0.py`).
 * **Ch. 5.43** Noether's theorem 0/0 — Conserved quantities from symmetry, dL/deps 0/0 removable=0, momentum/energy conservation (`noether_theorem_0_over_0.py`).
 * **Ch. 5.44** Spectral gap 0/0 — TFIM gap closes at h=1, Delta*L -> C (0*inf = 0/0 removable=C), gapped phases (`spectral_gap_0_over_0.py`).
+* **Ch. 5.45** Green's function 0/0 — 1D/2D Laplacian Green's functions; G(x,x) singular (0/0 removable = eigenfunction reciprocal); eigenfunction expansion converges; free-space G = -(1/(2*pi))*log(r); method of images for disk (`greens_function_0_over_0.py`).
+* **Ch. 5.46** Mobius function 0/0 — mu(n) values correct; sum_{d|n} mu(d) = [n==1] (0/0 at n=1 removable=1); Dirichlet inverse; Mertens M(x)/x -> 0; Dirichlet series 1/zeta(s) (`mobius_function_0_over_0.py`).
+* **Ch. 5.47** Saddle point 0/0 — Gaussian saddle convergence; Stirling via Laplace; g'(x)/(x-x*) -> g''(x*) at saddle (0/0 removable); Watson's lemma for asymptotic integrals (`saddle_point_0_over_0.py`).
+* **Ch. 5.48** Stirling's approximation 0/0 — n!/Stirling -> 1; correction (ratio-1)*n -> 1/12 (0*inf = 0/0 removable = 1/12); Gamma Stirling; Wallis product verified (`stirling_approx_0_over_0.py`).

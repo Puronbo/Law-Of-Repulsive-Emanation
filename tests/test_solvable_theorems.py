@@ -2705,4 +2705,40 @@ def test_spectral_gap_0_over_0():
     assert d['summary']['away_from_criticality_grows']
 
 
+def test_greens_function_0_over_0():
+    d = load('greens_function_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['diagonal_correct']
+    assert d['summary']['eigenfunction_converges']
+    assert d['summary']['free_space_correct']
+    assert d['summary']['disk_computed']
+
+
+def test_mobius_function_0_over_0():
+    d = load('mobius_function_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['mobius_values_correct']
+    assert d['summary']['dirichlet_inverse_correct']
+    assert d['summary']['mertens_correct']
+    assert d['summary']['pnt_connection_holds']
+
+
+def test_saddle_point_0_over_0():
+    d = load('saddle_point_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['gaussian_saddle_converges']
+    assert d['summary']['stirling_correct']
+    assert d['summary']['saddle_0_over_0_removable']
+    assert d['summary']['watson_lemma_correct']
+
+
+def test_stirling_approx_0_over_0():
+    d = load('stirling_approx_0_over_0_data.json')
+    assert d['summary']['supported']
+    assert d['summary']['ratio_converges']
+    assert d['summary']['correction_0_over_0']
+    assert d['summary']['gamma_stirling_correct']
+    assert d['summary']['wallis_correct']
+
+
 
