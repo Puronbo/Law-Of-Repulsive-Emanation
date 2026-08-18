@@ -114,8 +114,8 @@ docs/                 # Papers, theory, instrument manuals, audit, weavers
   WHERE_0_OVER_0_SOLVES.md/.pdf  # 10 open problems
   IF_C0_IS_0_OVER_0.md/.pdf     # C0 as 0/0
   EXPERIMENTS.md                 # Full experiment details (this file's companion)
-  AUDIT.md                       # Claim-by-claim audit (82 sequels)
-  WEAVERS_SCRIBE.md              # Narrative chapters (5.48)
+  AUDIT.md                       # Claim-by-claim audit (88 sequels)
+   WEAVERS_SCRIBE.md              # Narrative chapters (5.49)
   KEYWORDS.md                    # Keyword index
 bazaar/               # P2P social platform (index.html, server.js)
 calendars/            # Universal calendar (14 civilizations, exact rational arithmetic)
@@ -166,7 +166,7 @@ python experiments/eikonal_fold.py                    # fold theorem (viscosity 
 python experiments/decentral_net_t67.py               # O(1) spatial search on 100k points
 python experiments/grh_dirichlet_0_over_0.py          # GRH probe for 8 Dirichlet L-functions
 
-# run all 0/0 experiments (batches 1-14)
+# run all 0/0 experiments (batches 1-15)
 python experiments/central_limit_theorem_0_over_0.py  # CLT 0/0
 python experiments/ising_model_0_over_0.py            # Ising phase transition
 python experiments/zeta_functional_eq_0_over_0.py     # zeta functional equation
@@ -197,7 +197,7 @@ puno-plug [--host 127.0.0.1] [--port 8767]
 - Selberg unification and partition-function match are **tautologies** by construction
 - The PUM cosmological mapping is not citable as verified physics
 
-Full audit: [`docs/AUDIT.md`](docs/AUDIT.md) (82 sequels, claim-by-claim)
+Full audit: [`docs/AUDIT.md`](docs/AUDIT.md) (88 sequels, claim-by-claim)
 
 ---
 

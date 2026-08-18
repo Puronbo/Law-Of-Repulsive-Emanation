@@ -14,7 +14,7 @@
       {
         "n": 50,
         "n_samples": 1000,
-        "chi2_per_dof": 0.038040972039552444,
+        "chi2_per_dof": 0.03756047373987705,
         "fits_semicircle": true
       }
     ]
@@ -131,7 +131,7 @@
       {
         "ensemble": "GOE",
         "n": 50,
-        "chi2_per_dof": 0.03568683613827672,
+        "chi2_per_dof": 0.035664221541942716,
         "fits_semicircle": true
       }
     ]

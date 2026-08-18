@@ -40,11 +40,11 @@
     ]
   },
   "triple_root": {
-    "limit_re": 1.0000000000000238,
+    "limit_re": 1.0,
     "limit_im": 0.0,
     "expected_re": 1.0,
     "expected_im": 0,
-    "error": 2.375877272697835e-14,
+    "error": 0.0,
     "convergence": [
       0.0,
       0.0,
@@ -56,7 +56,7 @@
       0.0,
       0.0,
       0.0,
-      2.375877272697835e-14
+      0.0
     ]
   },
   "complex_root_i": {

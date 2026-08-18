@@ -88,7 +88,7 @@
         "1.0-1.2": 12,
         "1.2+": 6
       },
-      "time_gen_triples": 2.25
+      "time_gen_triples": 2.15
     },
     "record": {
       "triple": [
@@ -123,5 +123,5 @@
   },
   "verdict": "SUPPORTED (finite verification)",
   "honest_wall": "The abc conjecture is a statement about ALL triples \u2014 no finite computation can prove it. The record quality 1.6299 is finite; the conjecture bounds the EXCESS over 1. The 0/0 structure shows the bound is tight at the unit triple. Mochizuki's claimed proof (2012) is controversial and not universally accepted. The conjecture remains open.",
-  "time_total": 2.85
+  "time_total": 2.71
 }

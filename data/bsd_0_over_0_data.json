@@ -81,5 +81,5 @@
   },
   "verdict": "SUPPORTED",
   "honest_wall": "BSD is a conjecture (not proven for all curves). This verifies the APPROACH to s=1 via L(1+eps,E) for specific curves. The Euler product converges absolutely for Re(s)>3/2, so at s=1+eps with small eps it is a good approximation. Rank-0 curves show L(1+eps) stabilizing; rank-1 curves show L(1+eps)->0. Computing L'(1) or the full BSD formula (involving Sha, regulator, torsion) is beyond this probe.",
-  "time_total": 1.37
+  "time_total": 1.51
 }

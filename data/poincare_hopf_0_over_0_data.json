@@ -77,5 +77,5 @@
   },
   "verdict": "SUPPORTED",
   "honest_wall": "Poincare-Hopf is a proven theorem (not conjecture). The 0/0 framing shows that the index is the removable value of V/|V| at each zero, and the sum equals chi(M). The computational verification confirms the theorem for specific vector fields on S^2 and T^2.",
-  "time_total": 1.77
+  "time_total": 1.59
 }
