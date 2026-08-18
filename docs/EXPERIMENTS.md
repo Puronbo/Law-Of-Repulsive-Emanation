@@ -244,3 +244,7 @@ All six Millennium Prize Problems are 0/0 forms. P vs NP: P_n/NP_n -> 0 (removab
 ### Poincare Conjecture as 0/0
 
 Perelman's proof is a 0/0: the Hamilton ratio lambda_2/lambda_1 at Ricci flow singularities has removable value 1 (neckpinch) or 0 (degenerate). No poles in 3D (Perelman's deep theorem). Simply connected -> S^3 because all 0/0s are removable with value 1, forcing the manifold to be round. W-entropy monotonicity = second law. `experiments/poincare_0_over_0.py`, `data/poincare_data.json`, `docs/THE_POINCARE_0_OVER_0.md`.
+
+### Chern-Gauss-Bonnet as 0/0
+
+Euler characteristic = removable value of curvature integral 0/0 in all even dimensions. Verified in dims 2 (Gauss-Bonnet), 4 (Chern-Gauss-Bonnet), 6. Atiyah-Singer index theorem: index(de Rham) = chi(M). Chain: Gauss-Bonnet -> Chern -> Atiyah-Singer, each is a 0/0 with same removable value chi(M). Topology IS geometry modulo 0/0. `experiments/chern_gauss_bonnet_0_over_0.py`, `data/chern_gauss_bonnet_data.json`, `docs/THE_CHERN_GAUSS_BONNET_0_OVER_0.md`.

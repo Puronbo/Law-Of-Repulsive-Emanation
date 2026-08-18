@@ -3127,3 +3127,20 @@ def test_poincare():
     assert cls['no_poles_in_3d']
     assert cls['poincare_conjecture'] == 'TRUE (simply connected -> S^3)'
 
+
+def test_chern_gauss_bonnet():
+    d = load('chern_gauss_bonnet_data.json')
+
+    # Q1: 2D ratio = 1
+    q1 = d['Q1_dim2']['dimension_2']
+    assert q1['all_ratio_1']
+
+    # Q2: 4D ratio = 1
+    q2 = d['Q2_dim4']['dimension_4']
+    assert q2['all_ratio_1']
+
+    # Q3: 6D ratio = 1, index = chi
+    q3 = d['Q3_dim6']['dimension_6']
+    assert q3['all_ratio_1']
+    assert q3['all_index_match']
+
