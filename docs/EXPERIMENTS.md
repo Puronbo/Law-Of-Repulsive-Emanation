@@ -9,7 +9,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
-| Regression suite | **149/149 passed** (`tests/test_solvable_theorems.py`) |
+| Regression suite | **155/155 passed** (`tests/test_solvable_theorems.py`) |
 | L.O.R.E. | C0 = V(q0) = H(q0,0), 109 tests; T-symmetry error 0.003 |
 | Fold theorem (T63/T64) | crease = **unique viscosity solution of \|r'\| = a**; retrace = cut locus; eikonal err 3.3e-13; measured crease 0.0350pi vs derived 0.0318pi; area 2666.6665 vs 2666.6666... |
 | Clock-test canon (T59/T61) | law-ness 1.000 -> 0.417 under calendar re-index -> 1.000 under rotation; rotation overlap/sim 1.000 |
@@ -33,7 +33,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Riemann-Siegel certifier | **648 zeros certified on Re(s)=1/2** via interval arithmetic + Turing method; NOT a proof of RH |
 | de Bruijn-Newman condensation | **finite probe** -- closest certified pair merger time t_c = -0.0482; NOT a bound on Lambda |
 
-## 0/0 Experiments (Batches 1-14)
+## 0/0 Experiments (Batches 1-15)
 
 | Experiment | Result |
 |---|---|
@@ -89,6 +89,12 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Mobius function | mu(n) values correct; sum_{d\|n} mu(d) = [n==1]; Dirichlet series 1/zeta(s) at s=1 |
 | Saddle point | Gaussian saddle converges; Stirling via Laplace; g'(x)/(x-x*) -> g''(x*) (0/0 removable) |
 | Stirling's approximation | n!/Stirling -> 1; correction 1/(12n); [ratio-1]*n -> 1/12 (0*inf = 0/0) |
+| Logarithmic limits 0/0 | 6 sub-exps: log(1+x)/x->1, log product->1, Stirling log->0, H_n-ln(n)->gamma, Binet F_n/phi^n->1/sqrt(5), Euler reflection z*Gamma(z)*Gamma(1-z)->1 |
+| Combinatorics 0/0 | 6 sub-exps: S(n,k)/k^n->1/k!, Catalan n^(3/2)/4^n->1/sqrt(pi), binom(n,k)/n^k->1/k!, Motzkin->const, log(p(n))/sqrt(n)->pi*sqrt(2/3), derangement 1/e |
+| Probability ergodic 0/0 | 6 sub-exps: Weak LLN->mu, Martingale diff=0, Birkhoff ergodic int f dmu, conditional E[X|Y]=E[X], Shannon-McMillan H(X), Kolmogorov 0-1 |
+| Number theory sums 0/0 | 6 sub-exps: von Mangoldt psi(x)/x->1, totient sum->6/pi^2, Mertens->1/e^gamma, Chebyshev bias, Liouville bounded, totient sum->3/pi^2 |
+| Convex variational 0/0 | 6 sub-exps: Legendre transform f*(p), Fenchel-Moreau f**=f, Poincare, Brachistochrone, Isoperimetric->1, Euler-Lagrange=0 |
+| Random matrix 0/0 | 5 sub-exps: Circular law disk, Tracy-Widom TW_1, Wigner semicircle, Marchenko-Pastur, sample covariance mean=1 |
 
 ## Mertens/Prime Census
 

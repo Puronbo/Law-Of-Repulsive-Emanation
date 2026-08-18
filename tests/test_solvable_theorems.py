@@ -2741,4 +2741,47 @@ def test_stirling_approx_0_over_0():
     assert d['summary']['wallis_correct']
 
 
+def test_log_limits_0_over_0():
+    d = load('log_limits_0_over_0_data.json')
+    for key in ['log_removable_singularity', 'log_product_limit',
+                'log_stirling_ratio', 'log_harmonic_difference',
+                'log_binet_formula', 'log_gamma_reflection']:
+        assert d[key]['passed'], f"{key} failed"
+
+
+def test_combinatorics_0_over_0():
+    d = load('combinatorics_0_over_0_data.json')
+    for key in ['stirling_number_ratio', 'catalan_asymptotic', 'binomial_limit',
+                'motzkin_convergence', 'partition_function_hardy', 'derangement_limit']:
+        assert d[key]['passed'], f"{key} failed"
+
+
+def test_probability_0_over_0():
+    d = load('probability_0_over_0_data.json')
+    for key in ['lln_convergence', 'martingale_difference', 'birkhoff_ergodic',
+                'conditional_expectation', 'shannon_mcmillan_breiman', 'kolmogorov_zero_one']:
+        assert d[key]['passed'], f"{key} failed"
+
+
+def test_nt_sums_0_over_0():
+    d = load('nt_sums_0_over_0_data.json')
+    for key in ['von_mangoldt_sum', 'euler_totient_sum', 'mertens_product',
+                'chebyshev_bias', 'liouville_convergence', 'totient_sum_asymp']:
+        assert d[key]['passed'], f"{key} failed"
+
+
+def test_convex_variational_0_over_0():
+    d = load('convex_variational_0_over_0_data.json')
+    for key in ['legendre_transform', 'convex_conjugate_duality', 'friedrichs_sobolev',
+                'brachistochrone_0_over_0', 'isoperimetric_inequality', 'calculus_of_variations_euler']:
+        assert d[key]['passed'], f"{key} failed"
+
+
+def test_random_matrix_0_over_0():
+    d = load('random_matrix_0_over_0_data.json')
+    for key in ['circular_law', 'tracy_widom_fluctuation', 'wigner_semicircle_0_over_0',
+                'marchenko_pastur', 'sample_covariance_mean']:
+        assert d[key]['passed'], f"{key} failed"
+
+
 

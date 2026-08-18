@@ -226,6 +226,15 @@ Usage: `grep -i "basketball" KEYWORDS.md` or just search this file.
 - **Saddle point / Laplace method / steepest descent / Watson's lemma / Gaussian approximation** — `saddle_point_0_over_0.py` (Gaussian saddle, Stirling via Laplace, 0/0 removable) → `data/saddle_point_0_over_0_data.json`
 - **Stirling's approximation / factorial / Gamma function / Wallis product / correction terms** — `stirling_approx_0_over_0.py` (ratio -> 1, correction 1/(12n), Wallis) → `data/stirling_approx_0_over_0_data.json`
 
+## Batch 15 keywords (logarithmic limits, combinatorics 0/0, probability ergodic, number theory sums 0/0, convex/variational 0/0, random matrix 0/0)
+
+- **Logarithmic limits / log(1+x)/x / log product / Stirling log / harmonic / Binet / Euler reflection** — `experiments/log_limits_0_over_0.py`, `data/log_limits_0_over_0_data.json` (6 sub-experiments: log(1+x)/x removable=1, log product->1, Stirling log->0, H_n-ln(n)->gamma, Binet F_n/phi^n->1/sqrt(5), Euler reflection z*Gamma(z)*Gamma(1-z)->1)
+- **Combinatorics 0/0 / Stirling 2nd kind / Catalan / binomial / Motzkin / partition / derangement** — `experiments/combinatorics_0_over_0.py`, `data/combinatorics_0_over_0_data.json` (6 sub-experiments: S(n,k)/k^n->1/k!, Catalan C_n*n^(3/2)/4^n->1/sqrt(pi), binom(n,k)/n^k->1/k!, Motzkin M_n*n^(3/2)/3^n converges, partition log(p(n))/sqrt(n)->pi*sqrt(2/3), derangement D_n/n!->1/e)
+- **Probability ergodic / weak LLN / martingale / Birkhoff / conditional expectation / Shannon-McMillan / Kolmogorov 0-1** — `experiments/probability_0_over_0.py`, `data/probability_0_over_0_data.json` (6 sub-experiments: Weak LLN S_n/n->mu, Martingale E[X_{n+1}|F_n]-X_n=0, Birkhoff ergodic (1/N)sum f(T^nx)->int f dmu, conditional expectation E[X|Y]=E[X], Shannon-McMillan-Breiman -(1/n)log P->H(X), Kolmogorov 0-1 tail events)
+- **Number theory sums 0/0 / von Mangoldt / Euler totient / Mertens product / Chebyshev bias / Liouville / totient sum** — `experiments/number_theory_sums_0_over_0.py`, `data/number_theory_sums_0_over_0_data.json` (6 sub-experiments: von Mangoldt psi(x)/x->1, Euler totient sum phi(k)/k->6/pi^2, Mertens product ln(x)*prod(1-1/p)->1/e^gamma, Chebyshev bias pi_{4k+3}-pi_{4k+1}, Liouville L(x)/x bounded, totient sum (1/n^2)*sum phi(k)->3/pi^2)
+- **Convex variational 0/0 / Legendre transform / Fenchel-Moreau / Poincare inequality / Brachistochrone / isoperimetric / Euler-Lagrange** — `experiments/convex_variational_0_over_0.py`, `data/convex_variational_0_over_0_data.json` (6 sub-experiments: Legendre transform f*(p)=sup(px-f(x)), Fenchel-Moreau f**=f, Poincare inequality, Brachistochrone time integral, Isoperimetric 4*pi*A/L^2->1, Euler-Lagrange first variation=0)
+- **Random matrix 0/0 / Circular law / Tracy-Widom / Wigner semicircle / Marchenko-Pastur / sample covariance** — `experiments/random_matrix_0_over_0.py`, `data/random_matrix_0_over_0_data.json` (5 sub-experiments: Circular law eigenvalue disk, Tracy-Widom GUE largest eigenvalue n^{2/3}(lmax-2)->TW_1, Wigner semicircle GUE density, Marchenko-Pastur rectangular matrix, Sample covariance mean=1)
+
 ## Code map
 
 - Flow dynamics / PPA-001 → `puno_flow/engine.py`

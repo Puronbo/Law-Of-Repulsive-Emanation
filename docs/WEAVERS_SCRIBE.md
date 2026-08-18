@@ -2550,6 +2550,62 @@ content ranking.
 
 ---
 
+### Ch. 5.49  Batch 15: logarithmic limits, combinatorics, probability ergodic, number theory sums, convex/variational, and random matrix 0/0 (2026-08-18)
+
+Six new experiment files, 35 sub-experiments total (6+6+6+6+6+5), all passing.
+155 regression tests in `tests/test_solvable_theorems.py`.
+
+* **log_limits_0_over_0.py** — 6 sub-experiments on logarithmic and analytic
+  limits: log(1+x)/x -> 1 (removable=1 at x=0), the product-form log
+  converges to 1, Stirling's log(n!)/n -> 0, the harmonic-minus-log
+  converges to gamma, Binet's F_n/phi^n -> 1/sqrt(5), and Euler's reflection
+  z*Gamma(z)*Gamma(1-z) -> 1. Each is a 0/0 with a removable value encoding
+  the limit constant.
+* **combinatorics_0_over_0.py** — 6 sub-experiments on combinatorial
+  asymptotics: Stirling 2nd kind S(n,k)/k^n -> 1/k! (0/0 at n=0),
+  Catalan C_n*n^(3/2)/4^n -> 1/sqrt(pi), binomial binom(n,k)/n^k -> 1/k!,
+  Motzkin M_n*n^(3/2)/3^n converges, partition log(p(n))/sqrt(n) ->
+  pi*sqrt(2/3), and derangement D_n/n! -> 1/e. The 0/0 forms arise from
+  ratios of growing combinatorial quantities that share the same exponential
+  rate, leaving a removable algebraic or transcendental constant.
+* **probability_0_over_0.py** — 6 sub-experiments on probability ergodic
+  theorems: the Weak LLN (S_n/n -> mu), the martingale difference
+  E[X_{n+1}|F_n] - X_n = 0, Birkhoff's ergodic theorem
+  (1/N)sum f(T^nx) -> int f dmu, the conditional expectation identity
+  E[X|Y] = E[X] when X independent of Y, Shannon-McMillan-Breiman
+  -(1/n)log P -> H(X), and Kolmogorov's 0-1 law (tail events have
+  probability 0 or 1). The 0/0 is the sample average's indeterminacy at
+  finite n — the removable value is the ergodic limit.
+* **number_theory_sums_0_over_0.py** — 6 sub-experiments on number-theoretic
+  sums and products: von Mangoldt psi(x)/x -> 1 (the prime number theorem),
+  Euler totient sum phi(k)/k -> 6/pi^2, Mertens product
+  ln(x)*prod(1-1/p) -> 1/e^gamma, Chebyshev bias pi_{4k+3}-pi_{4k+1}
+  (the logarithmic integral difference), Liouville L(x)/x bounded, and the
+  totient sum (1/n^2)*sum phi(k) -> 3/pi^2. The 0/0 at x=1 or n=0 is
+  resolved by the analytic continuation of the sum's asymptotic main term.
+* **convex_variational_0_over_0.py** — 6 sub-experiments on convex and
+  variational analysis: Legendre transform f*(p) = sup(px - f(x)), the
+  Fenchel-Moreau biconjugate f** = f, the Poincare inequality
+  (variance <= C * energy), the Brachistochrone time integral (minimizing
+  descent), the isoperimetric inequality 4*pi*A/L^2 -> 1 (circle achieves
+  equality), and the Euler-Lagrange first variation = 0. The 0/0 arises at
+  critical points where the first variation vanishes and the second
+  variation determines the removable value (minimizer, saddle, or bound).
+* **random_matrix_0_over_0.py** — 5 sub-experiments on random matrix theory:
+  the Circular law (eigenvalues of random unitary matrices fill the unit
+  disk), Tracy-Widom GUE largest eigenvalue n^{2/3}(lmax - 2) -> TW_1,
+  Wigner semicircle GUE density, Marchenko-Pastur law for rectangular
+  matrices, and sample covariance eigenvalue mean = 1. The 0/0 is the
+  density's indeterminacy at the spectral edge (removable value = density
+  at the boundary from the bulk limit).
+
+All 35 sub-experiments pass; all claims are finite verifications, not proofs
+of the underlying theorems. The honest wall: each is a numerical check of a
+known result, not a new proof — the removable values encode the classical
+constants, and the 0/0 framing is the structural probe, not the mechanism.
+
+---
+
 ## Ch. 6  Creases (never forget these)
 
 1. **The pattern is scale-dependent.** τ-equality under MM/DD swap oscillates

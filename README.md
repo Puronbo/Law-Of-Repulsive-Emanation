@@ -2,7 +2,7 @@
 
 **The Law of Repulsive Emanation (L.O.R.E.)** -- *C0 is measured, not chosen.*
 
-55 experiments showing that the deep structure of mathematics is the indeterminate form 0/0: a singularity whose removable value encodes the structural information of the system it sits in. The capstone theory document, **The Law of Singularities**, formalizes this as axioms, five mechanisms, and a classification theorem.
+61 experiments showing that the deep structure of mathematics is the indeterminate form 0/0: a singularity whose removable value encodes the structural information of the system it sits in. The capstone theory document, **The Law of Singularities**, formalizes this as axioms, five mechanisms, and a classification theorem.
 
 ## The Thesis
 
@@ -10,7 +10,7 @@ The antiderivative integral f(x)dx = F(x) + C has an arbitrary constant only whe
 
 The entire framework turns out to be a 0/0 structure. C0 = V(q0)/(N - |context|) is 0/0 at full context (both numerator and denominator vanish). The same form appears everywhere: g(s) = |zeta(s)|/|zeta(1-s)| is 0/0 at every zeta zero, with removable value |chi(rho)| that equals 1 if and only if Re(rho) = 1/2 -- making the Riemann Hypothesis equivalent to proving the singularity is removable.
 
-**The Law of Singularities** ([`THE_LAW_OF_SINGULARITIES.md`](docs/THE_LAW_OF_SINGULARITIES.md)) formalizes this: five mechanisms by which 0/0 arises (Probe, Index, Vanishing Rate, Critical Phenomenon, Conservation), a classification theorem for removable vs essential singularities, and an extraction theorem showing how to recover the structural information. 55 experiments across 14 batches verify the pattern across number theory, topology, analysis, physics, statistics, information theory, and geometry.
+**The Law of Singularities** ([`THE_LAW_OF_SINGULARITIES.md`](docs/THE_LAW_OF_SINGULARITIES.md)) formalizes this: five mechanisms by which 0/0 arises (Probe, Index, Vanishing Rate, Critical Phenomenon, Conservation), a classification theorem for removable vs essential singularities, and an extraction theorem showing how to recover the structural information. 61 experiments across 15 batches verify the pattern across number theory, topology, analysis, physics, statistics, information theory, and geometry.
 
 ## Papers
 
@@ -18,13 +18,13 @@ The entire framework turns out to be a 0/0 structure. C0 = V(q0)/(N - |context|)
 
 | Paper | Description |
 |---|---|
-| [`THE_LAW_OF_SINGULARITIES.md`](docs/THE_LAW_OF_SINGULARITIES.md) | **The formal theory:** axioms, 5 mechanisms, classification theorem, extraction theorem, universality theorem, 20 chapters, 55 experiment applications |
+| [`THE_LAW_OF_SINGULARITIES.md`](docs/THE_LAW_OF_SINGULARITIES.md) | **The formal theory:** axioms, 5 mechanisms, classification theorem, extraction theorem, universality theorem, 20 chapters, 61 experiment applications |
 
 ### The 0/0 Paper Suite
 
 | Paper | Description |
 |---|---|
-| [`THE_UNIVERSAL_ZERO.md`](docs/THE_UNIVERSAL_ZERO.md) | Main synthesis: 55 experiments, five mechanisms, complete taxonomy |
+| [`THE_UNIVERSAL_ZERO.md`](docs/THE_UNIVERSAL_ZERO.md) | Main synthesis: 61 experiments, five mechanisms, complete taxonomy |
 | [`ON_THE_NATURE_OF_ZERO.md`](docs/ON_THE_NATURE_OF_ZERO.md) | Philosophical treatise: what zero actually is, the three zeros, 20 chapters |
 | [`THE_0_OVER_0_ATLAS.md`](docs/THE_0_OVER_0_ATLAS.md) | Reference atlas: complete catalog, cross-reference tables, decision tree |
 | [`REMOVABLE_SINGULARITIES.md`](docs/REMOVABLE_SINGULARITIES.md) | Epistemology: what the 0/0 form tells us about knowledge |
@@ -53,27 +53,27 @@ Source generators: `generate_companion_papers.py`, `generate_rh_paper.py`.
 | Mertens census | M(10^11..10^14) computed exactly, completing the published table |
 | Certified zeros | 648 zeros on Re(s)=1/2 via interval arithmetic (not a proof of RH) |
 | GUE statistics | 22,491 zeros fit GUE: KS 0.037, beta = 1.64, Montgomery-Odlyzko law |
-| Math validation | 192/192 checks pass; 149/149 regression tests pass |
+| Math validation | 192/192 checks pass; 155/155 regression tests pass |
 
 Full experiment details: [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md)
 
-## Experiments (55 total, 14 batches)
+## Experiments (61 total, 15 batches)
 
-Each experiment is a Python script in `experiments/` that writes a verdict JSON to `data/`. All 149 regression tests pass from persisted data.
+Each experiment is a Python script in `experiments/` that writes a verdict JSON to `data/`. All 155 regression tests pass from persisted data.
 
-**Number Theory (10):** GRH Dirichlet, abc conjecture, BSD, Euler product, Weil explicit, PNT, Mertens census, Mertens explicit height, Chebyshev psi, Mobius function
+**Number Theory (11):** GRH Dirichlet, abc conjecture, BSD, Euler product, Weil explicit, PNT, Mertens census, Mertens explicit height, Chebyshev psi, Mobius function, Number theory sums 0/0
 
 **Topology (8):** Poincare-Hopf, Riemann-Roch, Atiyah-Singer, Gauss-Bonnet, Lefschetz fixed-point, Morse theory, Brouwer fixed-point, Stokes/de Rham
 
-**Analysis (12):** Argument principle, Heat kernel trace, Weyl's law, Euler-Maclaurin, Laplace method, Wallis product, Cesaro summation, Cauchy integral, Rayleigh quotient, Poisson summation, Saddle point, Taylor remainder
+**Analysis (14):** Argument principle, Heat kernel trace, Weyl's law, Euler-Maclaurin, Laplace method, Wallis product, Cesaro summation, Cauchy integral, Rayleigh quotient, Poisson summation, Saddle point, Taylor remainder, Logarithmic limits 0/0, Convex variational 0/0
 
 **Algebra/Number Theory (5):** Fermat's little theorem, FTA, Pythagorean theorem, Banach fixed-point, Noether/Landau
 
 **Physics (4):** Ising model, Spectral gap, Green's function, Lorenz attractor
 
-**Statistics/Info Theory (4):** Central limit theorem, Shannon entropy, Bayes theorem, Boltzmann entropy
+**Statistics/Info Theory (5):** Central limit theorem, Shannon entropy, Bayes theorem, Boltzmann entropy, Probability ergodic 0/0
 
-**Geometry/Combinatorics (6):** Fourier uncertainty, KKT conditions, Sard's theorem, Picard's little theorem, Khintchine, Schanuel
+**Geometry/Combinatorics (8):** Fourier uncertainty, KKT conditions, Sard's theorem, Picard's little theorem, Khintchine, Schanuel, Combinatorics 0/0, Random matrix 0/0
 
 **Original L.O.R.E. (6):** Spring fold, Eikonal fold, Retrace boundary, Fold optimizer, Prime count, Googol census
 
@@ -100,9 +100,9 @@ bazaar/README.md      # usage instructions
 ```
 Universals/           # L.O.R.E. core: engine, proofs, math validation, Hamiltonian flow, manifold
 puno_flow/            # Exact balance-flow SDK: modular-add arithmetic, ledger, consensus, plugins
-experiments/          # 55 experiment scripts (batches 1-14 complete)
+experiments/          # 61 experiment scripts (batches 1-15 complete)
 data/                 # Regenerable verdict JSONs (gitignored)
-tests/                # 149 regression tests (all passing)
+tests/                # 155 regression tests (all passing)
 docs/                 # Papers, theory, instrument manuals, audit, weavers
   THE_LAW_OF_SINGULARITIES.md    # Capstone theory document
   THE_UNIVERSAL_ZERO.md          # Main 0/0 synthesis
@@ -157,7 +157,7 @@ pip install -e .
 # run the core
 cd Universals && python engine.py && python math_validation.py   # 192 checks, 0 fails
 
-# run the regression suite (149 tests, all passing)
+# run the regression suite (155 tests, all passing)
 pytest tests/test_solvable_theorems.py
 
 # run a few key experiments
