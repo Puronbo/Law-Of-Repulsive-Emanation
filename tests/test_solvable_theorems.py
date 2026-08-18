@@ -3047,3 +3047,21 @@ def test_prime_geodesic():
     assert prime_ratios[-1] > 0.9
     assert gamma_ratios[-1] > 0.8
 
+
+def test_information_conservation():
+    d = load('information_conservation_data.json')
+
+    # Q1: I₀ = |lambda|² for all known forms
+    q1 = d['Q1_conservation']
+    assert q1['known_0_0s']['all_satisfy_I0_equals_lambda_squared']
+
+    # Q2: Additivity
+    q2 = d['Q2_additivity']
+    assert q2['all_match']
+
+    # Q3: Fisher information interpretation
+    q3 = d['Q3_fisher']
+    assert q3['all_match_linear']
+    assert q3['match_gaussian']
+    assert q3['verdict'] == 'PASS'
+

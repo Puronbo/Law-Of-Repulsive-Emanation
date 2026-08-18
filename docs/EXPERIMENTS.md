@@ -228,3 +228,7 @@ New theorem: the entropy condition for conservation laws is the removable value 
 ### Prime-Geodesic Theorem 0/0
 
 The Prime-Geodesic Theorem (pi_Gamma(x) ~ li(x)) is a 0/0 with removable value 1. Selberg 1/4 conjecture verified for known eigenvalues (all >= 1/4). All zeros of Selberg zeta function on Re(s) = 1/2 (RH verified). Explicit formula with 4 zeros shows convergence toward 1. RH equivalent to error O(x^{-1/2+epsilon}). Connects number theory, hyperbolic geometry, and the 0/0 framework. `experiments/prime_geodesic_0_over_0.py`, `data/prime_geodesic_data.json`, `docs/THE_PRIME_GEODESIC_THEOREM.md`.
+
+### Information Conservation 0/0
+
+Fundamental theorem: every 0/0 preserves exactly I_0 = |lambda|^2 bits of information. I_0 = I(f)/I(g) (ratio of Fisher informations). Information is additive across independent 0/0 forms. Five mechanisms distribute I_0 among identity, topology, analysis, universality, symmetry. Discovery Principle follows from conservation. Verified for Brody (I_0 = pi^2/4), entropy (I_0 = h^2), PGT (I_0 = 1), Gaussian (I_0 = sigma_g^2/sigma_f^2). `experiments/information_conservation_0_over_0.py`, `data/information_conservation_data.json`, `docs/THE_INFORMATION_CONSERVATION_THEOREM.md`.
