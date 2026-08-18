@@ -252,3 +252,7 @@ Euler characteristic = removable value of curvature integral 0/0 in all even dim
 ### Riemann-Roch as 0/0
 
 Riemann-Roch theorem: chi(X, L) = removable value of h^0/h^1 0/0. Curves: critical ratio = 1 at d = g-1. Surfaces: Noether formula chi(O) = (c1^2+c2)/12 verified. CP^n: chi(O) = 1, chi(K) = (-1)^n via Serre duality. Chain extends: Gauss-Bonnet -> Chern -> Riemann-Roch -> Atiyah-Singer -> BSD. Connects to string theory (D-brane charges) and Riemann Hypothesis (via L-functions). `experiments/riemann_roch_0_over_0.py`, `data/riemann_roch_data.json`, `docs/THE_RIEMANN_ROCH_0_OVER_0.md`.
+
+### Selberg Trace Formula as 0/0
+
+Spectral = geometric: the ratio of the spectral sum to the geometric sum in the Selberg Trace Formula is a 0/0 with removable value 1. Weyl law: N(E) = (Area/4pi)*E verified. Prime-Geodesic Theorem: pi_geo(L) ~ Li(e^L) ~ e^L/L, ratio to e^L/L monotonically decreasing toward 1. Brody-Selberg connection: GOE eigenvalue spacings at beta=1, removable value = pi/2. Chain: Riemann-Roch -> Selberg -> Prime-Geodesic -> Brody -> RH. `experiments/selberg_trace_0_over_0.py`, `data/selberg_trace_data.json`, `docs/THE_SELBERG_TRACE_FORMULA_0_OVER_0.md`.

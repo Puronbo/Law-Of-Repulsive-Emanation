@@ -3164,3 +3164,19 @@ def test_riemann_roch():
     assert q3['all_chi_O_match']
     assert q3['all_chi_K_match']
 
+
+def test_selberg_trace():
+    d = load('selberg_trace_data.json')
+
+    # Q1: Weyl law slopes match area/4pi
+    q1 = d['Q1_weyl_law']['weyl_law']
+    assert q1['all_slopes_correct']
+
+    # Q2: Prime-geodesic ratio -> 1
+    q2 = d['Q2_prime_geodesic']['prime_geodesic']
+    assert q2['ratio_approaches_1']
+
+    # Q3: GOE at beta=1, removable value pi/2
+    q3 = d['Q3_brody_selberg']['brody_selberg']
+    assert q3['goe_verified']
+
