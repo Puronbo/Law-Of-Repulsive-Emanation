@@ -3293,3 +3293,29 @@ def test_modular_forms():
     assert q3['all_ratios_1']
     assert q3['sato_tate_bounded']
 
+
+def test_random_matrix_theory():
+    d = load('random_matrix_theory_data.json')
+
+    # Q1: Level repulsion - eigenvalues repel (R_2(0) -> 0)
+    q1 = d['Q1_level_repulsion']['level_repulsion']
+    assert q1['level_repulsion']
+
+    # Q2: GUE spacings match Wigner surmise (KS test)
+    q2 = d['Q2_wigner_gue']['wigner_gue']
+    assert q2['good_fit']
+    assert abs(q2['mean_spacing'] - 1.0) < 0.01
+
+    # Q3: GOE spacings match Wigner surmise (KS test)
+    q3 = d['Q3_wigner_goe']['wigner_goe']
+    assert q3['good_fit']
+    assert abs(q3['mean_spacing'] - 1.0) < 0.01
+
+    # Q4: Pair correlation matches Montgomery-Odlyzko formula
+    q4 = d['Q4_pair_correlation']['pair_correlation']
+    assert q4['good_fit']
+
+    # Q5: Both GOE and GUE show level repulsion
+    q5 = d['Q5_symmetry_classes']['symmetry_classes']
+    assert q5['both_repel']
+
