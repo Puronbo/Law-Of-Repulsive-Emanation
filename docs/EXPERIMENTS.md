@@ -276,3 +276,7 @@ The foundation: H^k_dR(M) = H_k(M; R), Betti numbers = cohomology dimensions. Ve
 ### Knot Invariants as 0/0
 
 Jones polynomial: V_K(1) = 1 for all 7 knots tested (unknot, trefoil, figure-eight, cinquefoil, 5_2, 6_1). Span(V_K) = crossing number for alternating knots. Split link: V_{UU}(1) = -2 (delta factor). Chern-Simons path integral is formally divergent (0/0), removable value = Jones polynomial. Connects knot theory to QFT (Chern-Simons) and TQFT. `experiments/knot_invariants_0_over_0.py`, `data/knot_invariants_data.json`, `docs/THE_KNOT_INVARIANTS_0_OVER_0.md`.
+
+### Modular Forms as 0/0
+
+Modularity Theorem: L(E,s) = L(f,s), arithmetic = analysis. Verified 3 elliptic curves: all a_p satisfy Hasse bound |a_p| <= 2*sqrt(p). L-function: L(E,1) nonzero for rank-0 curve. Modularity: a_p (point counts) = a_p (Fourier coefficients), all ratios = 1. Sato-Tate: a_p/(2*sqrt(p)) bounded in [-1,1]. Fermat's Last Theorem: a 0/0 without removable value. Langlands: Galois <-> Automorphic = 0/0. `experiments/modular_forms_0_over_0.py`, `data/modular_forms_data.json`, `docs/THE_MODULAR_FORMS_0_OVER_0.md`.

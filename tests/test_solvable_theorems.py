@@ -3276,3 +3276,20 @@ def test_knot_invariants():
     q3 = d['Q3_chern_simons']['chern_simons']
     assert q3['all_Z1_equal_1']
 
+
+def test_modular_forms():
+    d = load('modular_forms_data.json')
+
+    # Q1: Hasse bound satisfied for all curves
+    q1 = d['Q1_point_counts']['point_counts']
+    assert q1['all_hasse_bounds']
+
+    # Q2: L(E,1) nonzero (rank-0 curve)
+    q2 = d['Q2_L_function']['L_function']
+    assert q2['L_nonzero_at_1']
+
+    # Q3: Modularity - arithmetic = analysis, all ratios = 1
+    q3 = d['Q3_modularity']['modularity']
+    assert q3['all_ratios_1']
+    assert q3['sato_tate_bounded']
+
