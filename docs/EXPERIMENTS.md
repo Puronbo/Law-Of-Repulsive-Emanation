@@ -196,3 +196,11 @@ The 14-profession verdict: 5 Class A with zero skill-based knowledge, 2 fully-ga
 ### Packaging-Line Systems
 
 PLC IEC 61131-3 utilities, servo control, facility air sizing, rainwater collection, standby efficiency, servo regenerative energy. Consolidated in `docs/AUTO_PACKAGING_SYSTEM.md`.
+
+### Refuted Claims Probe + Thaumaturge's Ledger
+
+20 refuted claims from the corpus re-examined through the 0/0 lens. 6 categories (A-F). Every claim recovers as a removable singularity at the correct 0/0 form. The meta-theorem: "every refutation tested the wrong 0/0 form." `experiments/refuted_claims_probe.py`, `data/refuted_claims_probe_data.json`. Synthesis: `docs/THE_THAUMATURGES_LEDGER.md` + `.pdf`.
+
+### Open Questions from the Thaumaturge's Ledger
+
+5 questions answered computationally: Q1 geodesic recovery (C is ODE-dependent invariant), Q2 algebraic universality (every root is a removable singularity), Q3 spectral classification (Brody beta=1.0 is the boundary), Q4 sensitivity bounds (0/0 converges with zero spread), Q5 information geometry (KL/(dtheta)^2 -> Fisher/2 = 0.50 exact). `experiments/open_questions_0_over_0.py`, `data/open_questions_data.json`.
