@@ -3259,3 +3259,20 @@ def test_de_rham():
     q3 = d['Q3_integration_map']['integration_map']
     assert q3['stokes_verified']
 
+
+def test_knot_invariants():
+    d = load('knot_invariants_data.json')
+
+    # Q1: V_K(1) = 1 for all 7 knots, span = crossing number
+    q1 = d['Q1_jones_values']['jones_values']
+    assert q1['all_V1_equal_1']
+    assert q1['all_span_match']
+
+    # Q2: Split link delta formula
+    q2 = d['Q2_skein_relation']['split_link']
+    assert q2['matches']
+
+    # Q3: Chern-Simons Z(1) = 1
+    q3 = d['Q3_chern_simons']['chern_simons']
+    assert q3['all_Z1_equal_1']
+

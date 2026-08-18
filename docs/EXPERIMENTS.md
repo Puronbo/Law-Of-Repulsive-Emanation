@@ -272,3 +272,7 @@ index(D) = dim(ker D) - dim(coker D) = integral ch(sigma(D)) td(TX) = INTEGER. V
 ### de Rham Theorem as 0/0
 
 The foundation: H^k_dR(M) = H_k(M; R), Betti numbers = cohomology dimensions. Verified 16 manifolds (S^n, T^n, CP^n, Klein bottle, surfaces): all Betti numbers are non-negative integers. Euler characteristic from Betti numbers = Gauss-Bonnet = formula (all methods agree). Integration map (Stokes theorem) is the 0/0: closed/exact = nonzero/zero. The 0/0 framework IS de Rham cohomology with removable singularities. `experiments/de_rham_0_over_0.py`, `data/de_rham_data.json`, `docs/THE_DE_RHAM_THEOREM_0_OVER_0.md`.
+
+### Knot Invariants as 0/0
+
+Jones polynomial: V_K(1) = 1 for all 7 knots tested (unknot, trefoil, figure-eight, cinquefoil, 5_2, 6_1). Span(V_K) = crossing number for alternating knots. Split link: V_{UU}(1) = -2 (delta factor). Chern-Simons path integral is formally divergent (0/0), removable value = Jones polynomial. Connects knot theory to QFT (Chern-Simons) and TQFT. `experiments/knot_invariants_0_over_0.py`, `data/knot_invariants_data.json`, `docs/THE_KNOT_INVARIANTS_0_OVER_0.md`.
