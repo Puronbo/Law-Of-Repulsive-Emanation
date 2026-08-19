@@ -3395,3 +3395,53 @@ def test_gromov_non_squeezing():
     assert q3['all_symp_maps_invariant']
     assert q3['non_symplectic_detected']
 
+
+# -----------------------------------------------------------------------
+# Non-commutative Geometry 0/0
+# -----------------------------------------------------------------------
+
+def test_non_commutative_geometry():
+    d = load('non_commutative_geometry_data.json')
+
+    # Q1: Spectral triple axioms
+    q1 = d['Q1_spectral_triple_axioms']['spectral_triple_axioms']
+    assert q1['verdict'] == 'PASS'
+    assert q1['commutant_bounded']
+    assert q1['skew_symmetric']
+    assert q1['compact_resolvent']
+
+    # Q2: Connes distance formula
+    q2 = d['Q2_connes_distance']['connes_distance']
+    assert q2['verdict'] == 'PASS'
+    assert q2['commutative_test']['commutative_limit_holds']
+
+    # Q3: Reconstruction theorem
+    q3 = d['Q3_reconstruction']['reconstruction']
+    assert q3['verdict'] == 'PASS'
+    assert q3['S1_reconstruction']['is_skew_symmetric']
+    assert q3['S1_reconstruction']['spectrum_match']
+    assert q3['T2_reconstruction']['is_skew_symmetric']
+
+
+# -----------------------------------------------------------------------
+# Faltings' Theorem 0/0
+# -----------------------------------------------------------------------
+
+def test_faltings_theorem():
+    d = load('faltings_theorem_data.json')
+
+    # Q1: Finiteness
+    q1 = d['Q1_finiteness']['finiteness']
+    assert q1['verdict'] == 'PASS'
+
+    # Q2: Height function
+    q2 = d['Q2_height_function']['height_function']
+    assert q2['verdict'] == 'PASS'
+    assert q2['quadratic_test']['h_O_is_zero']
+    assert q2['quadratic_test']['monotone']
+
+    # Q3: Chabauty-Coleman
+    q3 = d['Q3_chabauty_coleman']['chabauty_coleman']
+    assert q3['verdict'] == 'PASS'
+    assert q3['n_working'] == 2
+

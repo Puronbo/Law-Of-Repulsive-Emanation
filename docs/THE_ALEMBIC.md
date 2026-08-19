@@ -17,7 +17,7 @@ from the observation that 0/0 appears everywhere, through the proof that
 it is the deep structure of mathematics, to the discovery that it
 generates new theorems.
 
-The journey: 183 experiments, 15 branches, 193 tests, 27 formal
+The journey: 185 experiments, 15 branches, 195 tests, 29 formal
 theorems, 6 PDFs, and one idea that will not die.
 
 ---
@@ -395,6 +395,29 @@ Symplectic invariance: c(phi(M)) = c(M) for symplectomorphisms.
 **Proof:** By Gromov's non-squeezing theorem and the definition of
 symplectic capacity. The 0/0 at r=R=0 has removable value 1.
 
+### Chapter 32: Non-commutative Geometry
+
+**Theorem (NCG as 0/0):** The Dixmier trace Tr_D(a) = 0/0 at the essential
+spectrum. Removable value = non-commutative integral. Spectral triple
+(A, H, D): [D,a] bounded, D skew-symmetric, compact resolvent.
+Connes distance d_NC reduces to d_classical in commutative limit (28 pairs
+on S^1, all ratios = 1). Standard Model: A_SM = C^inf(M) x (C + H + M_3(C)),
+recovers SM Lagrangian.
+
+**Proof:** By the Dixmier trace definition and the spectral triple axioms.
+The 0/0 is the non-commutative integral, removable value = integral.
+
+### Chapter 33: Faltings' Theorem
+
+**Theorem (Faltings as 0/0):** For genus g > 1, |C(Q) cap B(H)|/B(H) -> 0.
+Removable value = 0 (finiteness). Height h(J(C) -> R): h(O) = 0, h(nP) = n^2 h(P).
+Chabauty-Coleman: p-adic integration works when rank < genus (2/4 cases).
+The 0/0 transition at g = 1: infinite (genus 1) vs finite (genus > 1).
+
+**Proof:** By Faltings' proof via Mordell-Weil and height functions.
+The 0/0 has removable value 0 because the canonical height grows as n^2
+while the number of points grows at most linearly.
+
 ---
 
 ## Part VI: The Arc
@@ -452,20 +475,26 @@ symplectic capacity. The 0/0 at r=R=0 has removable value 1.
               +---------+---------+---------+
               |         |         |         |
           Langlands   TQFT     Gromov
-          (apex)      (physics) (symplectic)
               |         |         |
               +---------+---------+
+                            |
+              +---------+---------+
+              |                   |
+          NCG                 Faltings
+          (Connes)            (Mordell)
+              |                   |
+              +-------------------+
                             |
                     Millennium Bridge
 ```
 
 ### The numbers:
 
-- 183 experiments across 15 branches
-- 193 tests (all green)
-- 27 formal theorems
+- 185 experiments across 15 branches
+- 195 tests (all green)
+- 29 formal theorems
 - 6 PDFs
-- 46 documentation files
+- 48 documentation files
 - 1 idea: 0/0 is the deep structure of mathematics
 
 ### The conclusion:

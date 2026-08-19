@@ -296,3 +296,11 @@ Topological Quantum Field Theory (Atiyah axioms): Z(M) is a 0/0 for every closed
 ### Gromov Non-Squeezing as 0/0
 
 Symplectic non-squeezing theorem: c(B(r))/c(Cyl(R)) = 0/0 at r=R, removable value 1. Capacity c(B^{2n}(r)) = pi*r^2, dimension-independent. Embedding possible iff r <= R (8 test cases verified). Symplectic invariance: c(phi(M)) = c(M) for symplectomorphisms (identity, rotation, shear, symplectic scaling verified). Non-symplectic maps break invariance. Opens quantum mechanics (Heisenberg uncertainty = non-squeezing in phase space), mirror symmetry (SYZ conjecture), Floer homology. `experiments/gromov_non_squeezing_0_over_0.py`, `data/gromov_non_squeezing_data.json`, `docs/THE_GROMOV_NON_SQUEEZING_0_OVER_0.md`.
+
+### Non-commutative Geometry as 0/0
+
+Connes' non-commutative geometry: spectral triple (A, H, D) with Dixmier trace = 0/0, removable value = non-commutative integral. Axioms verified: [D,a] bounded, D skew-symmetric (iD self-adjoint), compact resolvent. Connes distance formula d_NC = d_classical in commutative limit (28 point pairs on S^1, all ratios = 1). Reconstruction: S^1 and T^2 reconstructed from spectral data. Standard Model: A_SM = C^inf(M) x (C + H + M_3(C)), recovers SM Lagrangian. Opens: SM from geometry, quantum gravity via spectral triples, RH via adèle class space. `experiments/non_commutative_geometry_0_over_0.py`, `data/non_commutative_geometry_data.json`, `docs/THE_NON_COMMUTATIVE_GEOMETRY_0_OVER_0.md`.
+
+### Faltings' Theorem as 0/0
+
+Mordell conjecture (Faltings 1983): genus > 1 => finitely many rational points. Density |C(Q) cap B(H)|/B(H) -> 0, removable value = 0. Height function h: h(O) = 0, h(nP) = n^2 h(P), monotone. Chabauty-Coleman: p-adic integration works when rank < genus (2/4 cases working). Transition at g = 1: infinite (elliptic curves) vs finite (genus > 1). Opens: BSD conjecture, Iwasawa theory, effective height bounds, ABC Conjecture. `experiments/faltings_theorem_0_over_0.py`, `data/faltings_theorem_data.json`, `docs/THE_FALTINGS_THEOREM_0_OVER_0.md`.

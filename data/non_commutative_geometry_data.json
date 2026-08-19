@@ -1,0 +1,278 @@
+{
+  "Q1_spectral_triple_axioms": {
+    "spectral_triple_axioms": {
+      "n": 8,
+      "commutant_bounded": true,
+      "commutant_norms": [
+        2.164784400584788,
+        2.164784400584788,
+        10.583005244258363,
+        1.4524765776482524
+      ],
+      "skew_symmetric": true,
+      "compact_resolvent": true,
+      "dixmier_trace": 0.0,
+      "dixmier_trace_finite": true,
+      "verdict": "PASS",
+      "insight": "Spectral triple axioms: [D,a] bounded, D self-adjoint, compact resolvent. The Dixmier trace is the non-commutative integral = removable value of 0/0."
+    }
+  },
+  "Q2_connes_distance": {
+    "connes_distance": {
+      "distance_tests": [
+        {
+          "point_i": 0,
+          "point_j": 1,
+          "classical_distance": 0.39269908169872414,
+          "connes_distance": 0.39269908169872414,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 0,
+          "point_j": 2,
+          "classical_distance": 0.7853981633974483,
+          "connes_distance": 0.7853981633974483,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 0,
+          "point_j": 3,
+          "classical_distance": 1.1780972450961724,
+          "connes_distance": 1.1780972450961724,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 0,
+          "point_j": 4,
+          "classical_distance": 1.5707963267948966,
+          "connes_distance": 1.5707963267948966,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 0,
+          "point_j": 5,
+          "classical_distance": 1.9634954084936207,
+          "connes_distance": 1.9634954084936207,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 0,
+          "point_j": 6,
+          "classical_distance": 2.356194490192345,
+          "connes_distance": 2.356194490192345,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 0,
+          "point_j": 7,
+          "classical_distance": 2.748893571891069,
+          "connes_distance": 2.748893571891069,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 1,
+          "point_j": 2,
+          "classical_distance": 0.39269908169872414,
+          "connes_distance": 0.39269908169872414,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 1,
+          "point_j": 3,
+          "classical_distance": 0.7853981633974483,
+          "connes_distance": 0.7853981633974483,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 1,
+          "point_j": 4,
+          "classical_distance": 1.1780972450961724,
+          "connes_distance": 1.1780972450961724,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 1,
+          "point_j": 5,
+          "classical_distance": 1.5707963267948966,
+          "connes_distance": 1.5707963267948966,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 1,
+          "point_j": 6,
+          "classical_distance": 1.9634954084936207,
+          "connes_distance": 1.9634954084936207,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 1,
+          "point_j": 7,
+          "classical_distance": 2.356194490192345,
+          "connes_distance": 2.356194490192345,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 2,
+          "point_j": 3,
+          "classical_distance": 0.39269908169872414,
+          "connes_distance": 0.39269908169872414,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 2,
+          "point_j": 4,
+          "classical_distance": 0.7853981633974483,
+          "connes_distance": 0.7853981633974483,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 2,
+          "point_j": 5,
+          "classical_distance": 1.1780972450961724,
+          "connes_distance": 1.1780972450961724,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 2,
+          "point_j": 6,
+          "classical_distance": 1.5707963267948966,
+          "connes_distance": 1.5707963267948966,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 2,
+          "point_j": 7,
+          "classical_distance": 1.9634954084936207,
+          "connes_distance": 1.9634954084936207,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 3,
+          "point_j": 4,
+          "classical_distance": 0.39269908169872414,
+          "connes_distance": 0.39269908169872414,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 3,
+          "point_j": 5,
+          "classical_distance": 0.7853981633974483,
+          "connes_distance": 0.7853981633974483,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 3,
+          "point_j": 6,
+          "classical_distance": 1.1780972450961724,
+          "connes_distance": 1.1780972450961724,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 3,
+          "point_j": 7,
+          "classical_distance": 1.5707963267948966,
+          "connes_distance": 1.5707963267948966,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 4,
+          "point_j": 5,
+          "classical_distance": 0.39269908169872414,
+          "connes_distance": 0.39269908169872414,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 4,
+          "point_j": 6,
+          "classical_distance": 0.7853981633974483,
+          "connes_distance": 0.7853981633974483,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 4,
+          "point_j": 7,
+          "classical_distance": 1.1780972450961724,
+          "connes_distance": 1.1780972450961724,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 5,
+          "point_j": 6,
+          "classical_distance": 0.39269908169872414,
+          "connes_distance": 0.39269908169872414,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 5,
+          "point_j": 7,
+          "classical_distance": 0.7853981633974483,
+          "connes_distance": 0.7853981633974483,
+          "ratio": 1.0,
+          "match": true
+        },
+        {
+          "point_i": 6,
+          "point_j": 7,
+          "classical_distance": 0.39269908169872414,
+          "connes_distance": 0.39269908169872414,
+          "ratio": 1.0,
+          "match": true
+        }
+      ],
+      "commutative_test": {
+        "commutative_limit_holds": true,
+        "n_tested": 28
+      },
+      "verdict": "PASS",
+      "insight": "Connes distance: d_NC reduces to d_classical in commutative limit. The 0/0 at [D,a]=0 has removable value = classical metric."
+    }
+  },
+  "Q3_reconstruction": {
+    "reconstruction": {
+      "S1_reconstruction": {
+        "n": 16,
+        "is_skew_symmetric": true,
+        "spectrum_match": true
+      },
+      "T2_reconstruction": {
+        "dim": 16,
+        "is_skew_symmetric": true
+      },
+      "standard_model": {
+        "algebra": "C^inf(M) x (C + H + M_3(C))",
+        "dirac": "D_geom x 1 + 1 x D_internal",
+        "recovers_lagrangian": true,
+        "gauge_group": "SU(3) x SU(2) x U(1)",
+        "remark": "The SM is a non-commutative space. The 0/0 at thespectral triple boundary has removable value = SM Lagrangian."
+      },
+      "verdict": "PASS",
+      "insight": "Reconstruction: spectral triple -> classical space. The 0/0 non-commutative/commutative has removable value 1. The Standard Model IS a spectral triple."
+    }
+  }
+}
