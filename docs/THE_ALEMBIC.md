@@ -17,7 +17,7 @@ from the observation that 0/0 appears everywhere, through the proof that
 it is the deep structure of mathematics, to the discovery that it
 generates new theorems.
 
-The journey: 193 experiments, 15 branches, 203 tests, 37 formal
+The journey: 194 experiments, 15 branches, 204 tests, 38 formal
 theorems, 6 PDFs, and one idea that will not die.
 
 ---
@@ -509,6 +509,15 @@ Heights: torsion h = 0, identity h = 0 (regulator).
 **Proof:** By Raynaud's theorem using Faltings.
 The 0/0 is the torsion count, removable = 0.
 
+### Chapter 42: Uniform Boundedness Conjecture
+
+**Theorem (Uniform Boundedness as 0/0):** B(d,n) = 0/0 at each (d,n).
+Removable = optimal constant. Mazur: all <= 16. Quadratic: over Q(i) grow
+to 8. Cyclotomic towers: growth only via CM subfield. Manin-Mumford →
+Uniform Boundedness → Mazur → Merel → Parent.
+
+**Proof:** By Mazur, Merel, and Parent. The 0/0 is B(d,n), removable = bound.
+
 ---
 
 ## Part VI: The Arc
@@ -607,15 +616,19 @@ The 0/0 is the torsion count, removable = 0.
                |
           Manin-Mumford
            (torsion)
+               |
+         Uniform
+         Boundedness
+           (bounds)
 ```
 
 ### The numbers:
 
-- 193 experiments across 15 branches
-- 203 tests (all green)
-- 37 formal theorems
+- 194 experiments across 15 branches
+- 204 tests (all green)
+- 38 formal theorems
 - 6 PDFs
-- 56 documentation files
+- 57 documentation files
 - 1 idea: 0/0 is the deep structure of mathematics
 
 ### The conclusion:

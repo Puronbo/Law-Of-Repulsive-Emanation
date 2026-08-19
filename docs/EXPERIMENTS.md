@@ -336,3 +336,7 @@ Vojta (1987): deepest unifying statement in diophantine geometry. Implies ABC, M
 ### Manin-Mumford Conjecture as 0/0
 
 Raynaud (1983): closed subvariety of abelian variety has dense torsion iff translate of abelian subvariety. 0/0 at the bound, removable value = 0 (finitely many on proper subvarieties). Torsion subgroups: 5 CM curves, all finite, Mazur bound (16) respected. CM torsion orders: 1,2,3,4,6. Heights: torsion h_NT = 0, identity h = 0 (regulator). Raynaud: product surface E1xE2, torsion 24, horizontal/vertical curves have 4-6 pts. Opens: Uniform Boundedness, Zilber-Pink, Oort. `experiments/manin_mumford_0_over_0.py`, `data/manin_mumford_data.json`, `docs/THE_MANIN_MUMFORD_0_OVER_0.md`.
+
+### Uniform Boundedness as 0/0
+
+Mazur (1977): |E(Q)_tors| <= 16 for elliptic curves over Q. 0/0 at bound, removable = 16. 5 CM curves, all below 16, all in Mazur list of 15 groups. CM torsion: {1,2,3,4,6}. Quadratic fields: over Q(i) growth to 8 (CM), others stay at 4. Cyclotomic towers: growth only via CM subfield. Merel: B(1,n) exists for all n. Opens: explicit B(d,n), effective Merel, torsion in Shimura varieties. `experiments/uniform_boundedness_0_over_0.py`, `data/uniform_boundedness_data.json`, `docs/THE_UNIFORM_BOUNDEDNESS_0_OVER_0.md`.

@@ -3646,3 +3646,30 @@ def test_manin_mumford():
     assert q3['horizontal_finite']
     assert q3['vertical_finite']
 
+
+# -----------------------------------------------------------------------
+# Uniform Boundedness Conjecture 0/0
+# -----------------------------------------------------------------------
+
+def test_uniform_boundedness():
+    d = load('uniform_boundedness_data.json')
+
+    # Q1: Mazur
+    q1 = d['Q1_mazur']['mazur']
+    assert q1['verdict'] == 'PASS'
+    assert q1['all_below_bound']
+    assert q1['all_in_mazur_list']
+    assert q1['all_cm_consistent']
+
+    # Q2: Quadratic torsion
+    q2 = d['Q2_quadratic_torsion']['quadratic_torsion']
+    assert q2['verdict'] == 'PASS'
+    assert q2['all_bounded']
+    assert q2['cm_growth']
+
+    # Q3: Torsion towers
+    q3 = d['Q3_torsion_towers']['torsion_towers']
+    assert q3['verdict'] == 'PASS'
+    assert q3['all_below_merel']
+    assert q3['growth_bounded']
+
