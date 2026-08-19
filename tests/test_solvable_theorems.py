@@ -3932,3 +3932,34 @@ def test_phragmen_lindelof_0_over_0():
     for z in zeros:
         assert z['magnitude'] < 1e-9
 
+# --- Gap analysis (Theorem 49) ---
+def test_gap_analysis_0_over_0():
+    with open('data/gap_analysis_data.json', 'r') as f:
+        d = json.load(f)
+
+    # A1: All zeros are simple (xi'(rho) != 0)
+    derivs = d['derivatives']
+    assert len(derivs) == 10
+
+    # A2: Derivative phases alternate +90, -90
+    phases = [x['xi_prime_phase_deg'] for x in derivs]
+    for i, p in enumerate(phases):
+        expected = 90.0 if i % 2 == 0 else -90.0
+        assert abs(p - expected) < 1.0
+
+    # A3: Lean ratio is exactly 1 everywhere
+    ratios = d['lean_ratios']
+    assert len(ratios) >= 30
+    for r in ratios:
+        assert r['is_one']
+
+    # A4: Gradient at line is zero (valley structure)
+    grads = d['gradient_at_line']
+    assert len(grads) >= 3
+    for g in grads:
+        assert g['flat']
+
+    # A5: Laplacian is positive (strict minimum)
+    for g in grads:
+        assert g['laplacian'] > 0
+
