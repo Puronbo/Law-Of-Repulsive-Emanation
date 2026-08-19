@@ -3520,3 +3520,28 @@ def test_schanuels_conjecture():
     assert q3['condition_satisfied']
     assert q3['transcendence_ratio'] == 1.0
 
+
+# -----------------------------------------------------------------------
+# Iwasawa Main Conjecture 0/0
+# -----------------------------------------------------------------------
+
+def test_iwasawa_main_conjecture():
+    d = load('iwasawa_main_conjecture_data.json')
+
+    # Q1: Kubota-Leopoldt interpolation
+    q1 = d['Q1_interpolation']['interpolation']
+    assert q1['verdict'] == 'PASS'
+    assert q1['all_match']
+    assert q1['n_verified'] == 6
+
+    # Q2: Bernoulli congruences
+    q2 = d['Q2_bernoulli_congruences']['bernoulli_congruences']
+    assert q2['verdict'] == 'PASS'
+    assert q2['all_vs_integral']
+
+    # Q3: BSD connection
+    q3 = d['Q3_bsd_connection']['bsd_connection']
+    assert q3['verdict'] == 'PASS'
+    assert q3['rank_0_test']['bsd_holds']
+    assert q3['iwasawa_connection']['characteristic_ideal_equals_L_function']
+
