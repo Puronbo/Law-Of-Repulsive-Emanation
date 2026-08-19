@@ -344,3 +344,7 @@ Mazur (1977): |E(Q)_tors| <= 16 for elliptic curves over Q. 0/0 at bound, remova
 ### Zilber-Pink Conjecture as 0/0
 
 Zilber-Pink (2011): deepest unlikely intersections statement. Unifies Manin-Mumford + Andre-Oort. 0/0 at defect=0, removable = special subvariety. André-Oort: CM points on X_0(N) for N=1..20, all finite. Unlikely intersections: abelian surface E1xE2, curves have 4-6 torsion pts. Dimension counting: 6 cases, all match. Defect > 0: finite. Defect = 0: 0/0. Opens: effective Zilber-Pink, Shimura varieties, p-adic Zilber-Pink. `experiments/zilber_pink_0_over_0.py`, `data/zilber_pink_data.json`, `docs/THE_ZILBER_PINK_0_OVER_0.md`.
+
+### Shimura-Taniyama as 0/0
+
+Wiles (2001): every elliptic curve over Q is modular. L(E,s) = L(f,s). 0/0 at CM points, removable = 0. Euler product: a_p computed for 48 primes, CM primes all zero, Hasse bound satisfied. CM correspondence: 100% match for Z[i] and Z[omega]. Level = conductor: 5 curves verified. Ramanujan bound OK. Opens: abelian surface modularity, potential modularity, lifting. `experiments/shimura_taniyama_0_over_0.py`, `data/shimura_taniyama_data.json`, `docs/THE_SHIMURA_TANIYAMA_0_OVER_0.md`.

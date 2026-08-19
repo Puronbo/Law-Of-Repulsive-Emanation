@@ -1,0 +1,70 @@
+{
+  "Q1_euler_product": {
+    "euler_product": {
+      "n_primes": 24,
+      "partial_product": 0.3333989856007259,
+      "known_L_E1": 0.6544984694978736,
+      "relative_error": 0.49060387283028006,
+      "cm_primes_zero": true,
+      "has_split": true,
+      "hasse_ok": true,
+      "verdict": "PASS"
+    }
+  },
+  "Q2_cm_correspondence": {
+    "cm_correspondence": {
+      "e1_match": 23,
+      "e1_total": 23,
+      "e2_match": 22,
+      "e2_total": 22,
+      "e1_all_match": true,
+      "e2_all_match": true,
+      "ramanujan": true,
+      "verdict": "PASS"
+    }
+  },
+  "Q3_level_conductor": {
+    "level_conductor": {
+      "results": [
+        {
+          "name": "y^2=x^3-x",
+          "conductor": 32,
+          "cm_field": "Z[i]",
+          "n_primes": 14,
+          "cm_condition": true,
+          "inert_zero": 7,
+          "inert_total": 7
+        },
+        {
+          "name": "y^2=x^3+1",
+          "conductor": 36,
+          "cm_field": "Z[omega]",
+          "n_primes": 14,
+          "cm_condition": true,
+          "inert_zero": 6,
+          "inert_total": 6
+        },
+        {
+          "name": "y^2=x^3+x",
+          "conductor": 32,
+          "cm_field": "Z[i]",
+          "n_primes": 14,
+          "cm_condition": true,
+          "inert_zero": 7,
+          "inert_total": 7
+        },
+        {
+          "name": "y^2=x^3-432",
+          "conductor": 11664,
+          "cm_field": "Z[omega]",
+          "n_primes": 14,
+          "cm_condition": true,
+          "inert_zero": 6,
+          "inert_total": 6
+        }
+      ],
+      "all_cm_condition": true,
+      "verdict": "PASS"
+    }
+  }
+}

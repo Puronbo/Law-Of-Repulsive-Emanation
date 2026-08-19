@@ -3698,3 +3698,30 @@ def test_zilber_pink():
     assert q3['verdict'] == 'PASS'
     assert q3['all_match']
 
+
+# -----------------------------------------------------------------------
+# Shimura-Taniyama Correspondence 0/0
+# -----------------------------------------------------------------------
+
+def test_shimura_taniyama():
+    d = load('shimura_taniyama_data.json')
+
+    # Q1: Euler product
+    q1 = d['Q1_euler_product']['euler_product']
+    assert q1['verdict'] == 'PASS'
+    assert q1['cm_primes_zero']
+    assert q1['has_split']
+    assert q1['hasse_ok']
+
+    # Q2: CM correspondence
+    q2 = d['Q2_cm_correspondence']['cm_correspondence']
+    assert q2['verdict'] == 'PASS'
+    assert q2['e1_all_match']
+    assert q2['e2_all_match']
+    assert q2['ramanujan']
+
+    # Q3: Level = conductor
+    q3 = d['Q3_level_conductor']['level_conductor']
+    assert q3['verdict'] == 'PASS'
+    assert q3['all_cm_condition']
+

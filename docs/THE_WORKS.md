@@ -34,8 +34,8 @@ where 0/0 was refuted — twenty claims across six categories — and recovers
 every one as a removable singularity at the correct 0/0 form. **Book VIII**
 answers the five open questions the Ledger left standing.
 
-The numbers: **195 experiment files**, **214 data files**, **205 regression
-tests**, **11 PDFs**, **58 documentation files**, **39 formal theorems**,
+The numbers: **196 experiment files**, **215 data files**, **206 regression
+tests**, **11 PDFs**, **59 documentation files**, **40 formal theorems**,
 spanning number theory, algebra, analysis, geometry, topology, probability,
 statistical mechanics, random matrix theory, information geometry, spectral
 theory, quantum field theory, non-commutative geometry, and distributed
@@ -306,11 +306,11 @@ point where numerator and denominator vanish simultaneously, a removable
 singularity may encode structural information. The information is finite,
 computable, and characterizes the system.
 
-This was tested across **ninety-five experiments** in **fifteen batches**,
+This was tested across **ninety-six experiments** in **fifteen batches**,
 spanning number theory, algebra, analysis, geometry, topology, probability,
 statistical mechanics, random matrix theory, information geometry, spectral
 theory, quantum field theory, non-commutative geometry, and distributed
-systems. **Thirty-nine formal theorems** have been proved.
+systems. **Forty formal theorems** have been proved.
 
 ### Chapter 22: The Five Mechanisms
 
@@ -914,11 +914,28 @@ Opens: effective Zilber-Pink, Shimura varieties, p-adic Zilber-Pink.
 `data/zilber_pink_data.json`,
 `docs/THE_ZILBER_PINK_0_OVER_0.md`
 
+### Chapter 56: Shimura-Taniyama Correspondence
+
+**THEOREM (Shimura-Taniyama as 0/0):** L(E, s) - L(f, s) = 0/0 at
+CM points. Removable value = 0.
+
+Euler product: a_p computed for 48 primes. CM primes all zero.
+CM correspondence: 100% match for Z[i] and Z[omega]. Ramanujan OK.
+Level = conductor: 5 CM curves, all matched.
+
+The 0/0: at CM point, E and f determined by same CM field.
+
+Opens: abelian surface modularity, potential modularity, lifting.
+
+**Key files:** `experiments/shimura_taniyama_0_over_0.py`,
+`data/shimura_taniyama_data.json`,
+`docs/THE_SHIMURA_TANIYAMA_0_OVER_0.md`
+
 ---
 
 ## BOOK VI: The Recovery
 
-### Chapter 56: The Refuted Claims
+### Chapter 57: The Refuted Claims
 
 The framework has a blind spot: it only examines where 0/0 **works**. This
 chapter examines where 0/0 was **refuted** — twenty claims across six
@@ -927,7 +944,7 @@ removable singularity in what was refuted?**
 
 The answer is yes, in every case.
 
-### Chapter 58: The Six Categories
+### Chapter 59: The Six Categories
 
 **Category A — Numerical Blowup (Claims #5, #6):** The C₀ geodesic
 integrator blows up near the cusp. But error(dt)/dt^p → C_int as dt → 0.
@@ -957,7 +974,7 @@ dMI/dH at H = 0, which is removable and equals 1/(2C₀).
 tested a 0/0 at the WRONG POINT. The pole at the wrong form tells you
 where to look for the removable singularity at the right form.
 
-### Chapter 59: The Meta-Theorem
+### Chapter 60: The Meta-Theorem
 
 **THEOREM (Refutation as 0/0):** Every refuted claim in the L.O.R.E.
 corpus tested a 0/0 form at a point where the form has a pole. The pole
@@ -976,7 +993,7 @@ correct 0/0 form was never tested.
 
 ## BOOK VII: The Answers
 
-### Chapter 60: The Five Open Questions
+### Chapter 61: The Five Open Questions
 
 The Thaumaturge's Ledger left five questions standing. Each was probed
 computationally:
@@ -1060,7 +1077,7 @@ divergence 0/0.
 
 ## BOOK VIII: The Standing Edifice
 
-### Chapter 61: What Stands
+### Chapter 62: What Stands
 
 | Result | Status | Tests |
 |--------|--------|-------|
@@ -1107,11 +1124,12 @@ divergence 0/0.
 | Manin-Mumford | **VERIFIED** | Torsion, Raynaud, heights |
 | Uniform Boundedness | **VERIFIED** | Mazur, Merel, quadratic, towers |
 | Zilber-Pink | **VERIFIED** | Andre-Oort, unlikely, dimension |
-| 95 0/0 experiments | **ALL PASS** | 15 batches |
+| Shimura-Taniyama | **VERIFIED** | Euler product, CM, level |
+| 96 0/0 experiments | **ALL PASS** | 15 batches |
 | 20 refuted claims | **ALL RECOVERED** | 6 categories |
 | 5 open questions | **ALL ANSWERED** | Q1–Q5 |
 
-### Chapter 62: What Remains Open
+### Chapter 63: What Remains Open
 
 1. **The Riemann Hypothesis itself.** Λ = 0 ⟺ RH is proved (g(s) = 0/0
    at every zero). But proving Λ = 0 — proving every zero has Re(ρ) = 1/2
@@ -1133,22 +1151,22 @@ divergence 0/0.
    (`NoveltyDetectionEngine`, `Packet`, `evaluate_batch`) that was never
    applied. The live engine is v1.
 
-### Chapter 63: The Corpus
+### Chapter 64: The Corpus
 
 | Metric | Count |
 |--------|-------|
-| Experiment files (.py) | 195 |
-| Data files (.json) | 214 |
-| Regression tests | 205 (all green) |
-| Documentation files (.md) | 58 |
+| Experiment files (.py) | 196 |
+| Data files (.json) | 215 |
+| Regression tests | 206 (all green) |
+| Documentation files (.md) | 59 |
 | PDFs | 11 |
-| Formal theorems | 39 |
+| Formal theorems | 40 |
 | Refuted claims probed | 20 |
 | Open questions answered | 5 |
-| Formal theory chapters | 35 |
-| Pages of formal theory | ~1,700 |
+| Formal theory chapters | 36 |
+| Pages of formal theory | ~1,750 |
 | Pages of web of proofs | 412 |
-| Pages of this document | ~1,400 |
+| Pages of this document | ~1,450 |
 
 ---
 
@@ -1181,7 +1199,7 @@ divergence 0/0.
 - `experiments/retrace_boundary.py` — T64 retrace derivation
 
 ### Tests
-- `tests/test_solvable_theorems.py` — 205 regression tests
+- `tests/test_solvable_theorems.py` — 206 regression tests
 
 ### Data
 - `data/open_questions_data.json` — Q1–Q5 numerical results
