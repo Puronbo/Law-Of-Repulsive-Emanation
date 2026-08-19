@@ -3319,3 +3319,79 @@ def test_random_matrix_theory():
     q5 = d['Q5_symmetry_classes']['symmetry_classes']
     assert q5['both_repel']
 
+
+# -----------------------------------------------------------------------
+# Langlands Program 0/0
+# -----------------------------------------------------------------------
+
+def test_langlands_program():
+    d = load('langlands_program_data.json')
+
+    # Q1: Hecke eigenvalues = Frobenius traces (Langlands GL(2)/Q)
+    q1 = d['Q1_hecke_eigenvalues']['hecke_eigenvalues']
+    assert q1['verdict'] == 'PASS'
+    for curve in q1['curves']:
+        assert curve['all_ratios_1']
+        assert curve['all_ramanujan_holds']
+        assert curve['all_hasse_bound']
+
+    # Q2: Functional equation of L(E,s)
+    q2 = d['Q2_functional_equation']['functional_equation']
+    assert q2['verdict'] == 'PASS'
+    assert q2['all_L_nonzero_at_1']
+
+    # Q3: Functoriality (Sym^2, Rankin-Selberg)
+    q3 = d['Q3_functoriality']['functoriality']
+    assert q3['verdict'] == 'PASS'
+    assert q3['all_sym2_converges']
+
+
+# -----------------------------------------------------------------------
+# TQFT 0/0
+# -----------------------------------------------------------------------
+
+def test_tqft():
+    d = load('tqft_0_over_0_data.json')
+
+    # Q1: Disjoint union axiom
+    q1 = d['Q1_disjoint_union']['disjoint_union']
+    assert q1['verdict'] == 'PASS'
+    assert q1['all_ratios_1']
+
+    # Q2: Functoriality
+    q2 = d['Q2_functoriality']['functoriality']
+    assert q2['verdict'] == 'PASS'
+    assert q2['identity']['identity_holds']
+    assert q2['poincare_duality']['duality_holds']
+
+    # Q3: Topological invariance
+    q3 = d['Q3_topological_invariance']['topological_invariance']
+    assert q3['verdict'] == 'PASS'
+    assert q3['torus_invariant']
+    assert q3['sphere_invariant']
+
+
+# -----------------------------------------------------------------------
+# Gromov Non-Squeezing 0/0
+# -----------------------------------------------------------------------
+
+def test_gromov_non_squeezing():
+    d = load('gromov_non_squeezing_data.json')
+
+    # Q1: Symplectic capacity is dimension-independent
+    q1 = d['Q1_capacity']['capacity']
+    assert q1['verdict'] == 'PASS'
+    assert q1['all_dimension_independent']
+
+    # Q2: Non-squeezing verification
+    q2 = d['Q2_non_squeezing']['non_squeezing']
+    assert q2['verdict'] == 'PASS'
+    assert q2['all_correct']
+    assert q2['degenerate_0_over_0']['is_0_over_0']
+
+    # Q3: Symplectic invariance
+    q3 = d['Q3_symplectic_invariance']['symplectic_invariance']
+    assert q3['verdict'] == 'PASS'
+    assert q3['all_symp_maps_invariant']
+    assert q3['non_symplectic_detected']
+
