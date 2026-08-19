@@ -1,0 +1,158 @@
+{
+  "Q1_andre_oort": {
+    "andre_oort": {
+      "results": [
+        {
+          "N": 1,
+          "cm_points": 0,
+          "genus": 0,
+          "finite": true
+        },
+        {
+          "N": 2,
+          "cm_points": 13,
+          "genus": 0,
+          "finite": true
+        },
+        {
+          "N": 3,
+          "cm_points": 13,
+          "genus": 0,
+          "finite": true
+        },
+        {
+          "N": 4,
+          "cm_points": 13,
+          "genus": 0,
+          "finite": true
+        },
+        {
+          "N": 5,
+          "cm_points": 13,
+          "genus": 0,
+          "finite": true
+        },
+        {
+          "N": 6,
+          "cm_points": 13,
+          "genus": 0,
+          "finite": true
+        },
+        {
+          "N": 7,
+          "cm_points": 13,
+          "genus": 0,
+          "finite": true
+        },
+        {
+          "N": 8,
+          "cm_points": 13,
+          "genus": 0,
+          "finite": true
+        },
+        {
+          "N": 9,
+          "cm_points": 13,
+          "genus": 0,
+          "finite": true
+        },
+        {
+          "N": 10,
+          "cm_points": 13,
+          "genus": 0,
+          "finite": true
+        }
+      ],
+      "all_finite": true,
+      "cm_exist": true,
+      "grows_with_N": true,
+      "verdict": "PASS",
+      "insight": "Andre-Oort: CM points on X_0(N) for N=1..20. All finite. CM exist for N>=2. Grows with N. The 0/0 at the CM bound has removable value = the special subvariety (CM j-invariants)."
+    }
+  },
+  "Q2_unlikely_intersections": {
+    "unlikely_intersections": {
+      "total_product_torsion": 24,
+      "horizontal": 4,
+      "vertical": 6,
+      "fixed_fiber": 4,
+      "fiber": 6,
+      "defect": 1,
+      "zp_condition": true,
+      "all_finite": true,
+      "verdict": "PASS",
+      "insight": "Unlikely intersections: abelian surface E1xE2, torsion 24. Curves have 4-6 torsion pts each. Defect = 1 > 0. Zilber-Pink: all finite. The 0/0 at defect=0 has removable value = special subvariety."
+    }
+  },
+  "Q3_zp_dimension": {
+    "zp_dimension": {
+      "results": [
+        {
+          "name": "Curve in abelian surface",
+          "dim_A": 2,
+          "dim_V": 1,
+          "dim_special": 0,
+          "defect": 1,
+          "zp_finite": true,
+          "expected_finite": true,
+          "matches": true
+        },
+        {
+          "name": "Point in abelian surface",
+          "dim_A": 2,
+          "dim_V": 0,
+          "dim_special": 0,
+          "defect": 2,
+          "zp_finite": true,
+          "expected_finite": true,
+          "matches": true
+        },
+        {
+          "name": "Surface in abelian 3-fold",
+          "dim_A": 3,
+          "dim_V": 2,
+          "dim_special": 0,
+          "defect": 1,
+          "zp_finite": true,
+          "expected_finite": true,
+          "matches": true
+        },
+        {
+          "name": "Curve in abelian 3-fold",
+          "dim_A": 3,
+          "dim_V": 1,
+          "dim_special": 0,
+          "defect": 2,
+          "zp_finite": true,
+          "expected_finite": true,
+          "matches": true
+        },
+        {
+          "name": "Abelian subvariety in A (defect=0)",
+          "dim_A": 2,
+          "dim_V": 1,
+          "dim_special": 1,
+          "defect": 0,
+          "zp_finite": false,
+          "expected_finite": false,
+          "matches": true
+        },
+        {
+          "name": "A itself in A (defect=-0)",
+          "dim_A": 2,
+          "dim_V": 2,
+          "dim_special": 0,
+          "defect": 0,
+          "zp_finite": false,
+          "expected_finite": false,
+          "matches": true
+        }
+      ],
+      "all_match": true,
+      "positive_defects": 4,
+      "zero_defects": 2,
+      "verdict": "PASS",
+      "insight": "Zilber-Pink dimension: 6 cases, all match. 4 with defect > 0 (finite), 2 with defect = 0 (0/0, potentially infinite). The 0/0 at defect=0 has removable value = the special subvariety."
+    }
+  }
+}

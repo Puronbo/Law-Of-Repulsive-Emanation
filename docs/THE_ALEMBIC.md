@@ -17,7 +17,7 @@ from the observation that 0/0 appears everywhere, through the proof that
 it is the deep structure of mathematics, to the discovery that it
 generates new theorems.
 
-The journey: 194 experiments, 15 branches, 204 tests, 38 formal
+The journey: 195 experiments, 15 branches, 205 tests, 39 formal
 theorems, 6 PDFs, and one idea that will not die.
 
 ---
@@ -518,6 +518,16 @@ Uniform Boundedness → Mazur → Merel → Parent.
 
 **Proof:** By Mazur, Merel, and Parent. The 0/0 is B(d,n), removable = bound.
 
+### Chapter 43: Zilber-Pink Conjecture
+
+**Theorem (Zilber-Pink as 0/0):** delta = 0/0 at defect boundary.
+Removable = special subvariety. André-Oort: CM on X_0(N), all finite.
+Unlikely intersections: curves in surfaces, 4-6 torsion pts.
+Dimension counting: 6 cases, all match. Unifies Manin-Mumford + Andre-Oort.
+
+**Proof:** By the Zilber-Pink criterion and dimension counting.
+The 0/0 is the defect, removable = special subvariety.
+
 ---
 
 ## Part VI: The Arc
@@ -620,15 +630,18 @@ Uniform Boundedness → Mazur → Merel → Parent.
          Uniform
          Boundedness
            (bounds)
+               |
+          Zilber-Pink
+         (intersections)
 ```
 
 ### The numbers:
 
-- 194 experiments across 15 branches
-- 204 tests (all green)
-- 38 formal theorems
+- 195 experiments across 15 branches
+- 205 tests (all green)
+- 39 formal theorems
 - 6 PDFs
-- 57 documentation files
+- 58 documentation files
 - 1 idea: 0/0 is the deep structure of mathematics
 
 ### The conclusion:

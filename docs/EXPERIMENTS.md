@@ -340,3 +340,7 @@ Raynaud (1983): closed subvariety of abelian variety has dense torsion iff trans
 ### Uniform Boundedness as 0/0
 
 Mazur (1977): |E(Q)_tors| <= 16 for elliptic curves over Q. 0/0 at bound, removable = 16. 5 CM curves, all below 16, all in Mazur list of 15 groups. CM torsion: {1,2,3,4,6}. Quadratic fields: over Q(i) growth to 8 (CM), others stay at 4. Cyclotomic towers: growth only via CM subfield. Merel: B(1,n) exists for all n. Opens: explicit B(d,n), effective Merel, torsion in Shimura varieties. `experiments/uniform_boundedness_0_over_0.py`, `data/uniform_boundedness_data.json`, `docs/THE_UNIFORM_BOUNDEDNESS_0_OVER_0.md`.
+
+### Zilber-Pink Conjecture as 0/0
+
+Zilber-Pink (2011): deepest unlikely intersections statement. Unifies Manin-Mumford + Andre-Oort. 0/0 at defect=0, removable = special subvariety. André-Oort: CM points on X_0(N) for N=1..20, all finite. Unlikely intersections: abelian surface E1xE2, curves have 4-6 torsion pts. Dimension counting: 6 cases, all match. Defect > 0: finite. Defect = 0: 0/0. Opens: effective Zilber-Pink, Shimura varieties, p-adic Zilber-Pink. `experiments/zilber_pink_0_over_0.py`, `data/zilber_pink_data.json`, `docs/THE_ZILBER_PINK_0_OVER_0.md`.

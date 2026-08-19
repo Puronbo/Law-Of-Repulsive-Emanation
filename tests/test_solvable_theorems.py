@@ -3673,3 +3673,28 @@ def test_uniform_boundedness():
     assert q3['all_below_merel']
     assert q3['growth_bounded']
 
+
+# -----------------------------------------------------------------------
+# Zilber-Pink Conjecture 0/0
+# -----------------------------------------------------------------------
+
+def test_zilber_pink():
+    d = load('zilber_pink_data.json')
+
+    # Q1: Andre-Oort
+    q1 = d['Q1_andre_oort']['andre_oort']
+    assert q1['verdict'] == 'PASS'
+    assert q1['all_finite']
+    assert q1['cm_exist']
+
+    # Q2: Unlikely intersections
+    q2 = d['Q2_unlikely_intersections']['unlikely_intersections']
+    assert q2['verdict'] == 'PASS'
+    assert q2['all_finite']
+    assert q2['zp_condition']
+
+    # Q3: Dimension counting
+    q3 = d['Q3_zp_dimension']['zp_dimension']
+    assert q3['verdict'] == 'PASS'
+    assert q3['all_match']
+
