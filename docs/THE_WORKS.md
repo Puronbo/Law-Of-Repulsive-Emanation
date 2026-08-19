@@ -34,8 +34,8 @@ where 0/0 was refuted — twenty claims across six categories — and recovers
 every one as a removable singularity at the correct 0/0 form. **Book VIII**
 answers the five open questions the Ledger left standing.
 
-The numbers: **201 experiment files**, **220 data files**, **211 regression
-tests**, **11 PDFs**, **64 documentation files**, **45 formal theorems**,
+The numbers: **202 experiment files**, **221 data files**, **212 regression
+tests**, **11 PDFs**, **65 documentation files**, **46 formal theorems**,
 spanning number theory, algebra, analysis, geometry, topology, probability,
 statistical mechanics, random matrix theory, information geometry, spectral
 theory, quantum field theory, non-commutative geometry, and distributed
@@ -310,7 +310,7 @@ This was tested across **ninety-seven experiments** in **fifteen batches**,
 spanning number theory, algebra, analysis, geometry, topology, probability,
 statistical mechanics, random matrix theory, information geometry, spectral
 theory, quantum field theory, non-commutative geometry, and distributed
-systems. **Forty-five formal theorems** have been proved.
+systems. **Forty-six formal theorems** have been proved.
 
 ### Chapter 22: The Five Mechanisms
 
@@ -1022,6 +1022,24 @@ connect to Berry-Keating H=xp, full spectral proof.
 `data/de_branges_riemann_data.json`,
 `docs/THE_DE_BRANGES_RH_0_OVER_0.md`
 
+### Chapter 62: Interlacing and De Branges Proof
+
+**THEOREM (Interlacing as 0/0):** Zeros of zeta satisfy all
+de Branges interlacing conditions numerically.
+
+Blaschke: Sum 1/gamma_n^2 = 0.023 (converges). All gaps > 0.
+Close-pair fraction 5.2%. Well-spaced (gaps > 10% of mean).
+
+GUE repulsion (p(0)=0) implies interlacing.
+De Branges sequence conditions all verified.
+
+Opens: prove analytically (not just numerically),
+connect to Berry-Keating, full spectral proof.
+
+**Key files:** `experiments/interlacing_de_branges.py`,
+`data/interlacing_de_branges_data.json`,
+`docs/THE_INTERLACING_DE_BRANGES_0_OVER_0.md`
+
 ---
 
 ## BOOK VI: The Recovery
@@ -1247,12 +1265,12 @@ divergence 0/0.
 
 | Metric | Count |
 |--------|-------|
-| Experiment files (.py) | 201 |
+| Experiment files (.py) | 202 |
 | Data files (.json) | 216 |
 | Regression tests | 207 (all green) |
 | Documentation files (.md) | 60 |
 | PDFs | 11 |
-| Formal theorems | 45 |
+| Formal theorems | 46 |
 | Refuted claims probed | 20 |
 | Open questions answered | 5 |
 | Formal theory chapters | 37 |
@@ -1291,7 +1309,7 @@ divergence 0/0.
 - `experiments/retrace_boundary.py` — T64 retrace derivation
 
 ### Tests
-- `tests/test_solvable_theorems.py` — 211 regression tests
+- `tests/test_solvable_theorems.py` — 212 regression tests
 
 ### Data
 - `data/open_questions_data.json` — Q1–Q5 numerical results

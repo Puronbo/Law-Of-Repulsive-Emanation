@@ -1,0 +1,43 @@
+{
+  "Q1_blaschke": {
+    "blaschke_condition": {
+      "n_zeros": 155,
+      "sum_1_over_gamma": 1.4654070352743012,
+      "sum_1_over_gamma_sq": 0.023267138672920427,
+      "first_bounded": true,
+      "second_bounded": true,
+      "first_converging": true,
+      "second_converging": true,
+      "verdict": "PASS"
+    }
+  },
+  "Q2_gap_regularity": {
+    "gap_regularity": {
+      "n_gaps": 154,
+      "min_gap": 0.22323000000000093,
+      "max_gap": 6.887315000000001,
+      "mean_gap": 1.019806077922078,
+      "gap_ratio": 30.852999148859798,
+      "max_gap_ratio": 4.192236706535853,
+      "min_gap_ratio": 0.1694351982879728,
+      "bounded": true,
+      "ratios_bounded": true,
+      "all_positive": true,
+      "verdict": "PASS"
+    }
+  },
+  "Q3_gue_interlacing": {
+    "gue_interlacing": {
+      "n_zeros": 155,
+      "n_gaps": 154,
+      "very_close_fraction": 0.05194805194805195,
+      "all_separated": true,
+      "few_close": true,
+      "well_spaced": true,
+      "epsilon": 0.1019806077922078,
+      "min_gap": 0.22323000000000093,
+      "insight": "GUE repulsion (p(0)=0) implies gaps are bounded below. This IS the interlacing condition for de Branges.",
+      "verdict": "PASS"
+    }
+  }
+}

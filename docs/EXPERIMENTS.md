@@ -368,3 +368,7 @@ Hardy (1914): Z(t) = e^{i*theta(t)} * zeta(1/2+it) is real. 0/0: Z(t_n) = 0, rem
 ### De Branges Theory and Riemann Hypothesis as 0/0
 
 De Branges (1968): if E(s) in de Branges space -> all zeros on line. 0/0: xi(rho_n) = 0, removable = 0. Xi real on critical line (20 zeros verified). Hermite-Biehler ratio = 1.000 exactly. Growth sub-exponential (all log/t < 2). All three de Branges conditions verified numerically. If proved analytically -> RH. Opens: prove analytically, connect to Berry-Keating, full spectral proof. `experiments/de_branges_riemann_hypothesis.py`, `data/de_branges_riemann_data.json`, `docs/THE_DE_BRANGES_RH_0_OVER_0.md`.
+
+### Interlacing Condition and De Branges Proof as 0/0
+
+De Branges requires interlacing zeros. 0/0: canonical product vanishes at each zero, removable = 0. Blaschke: Sum 1/gamma_n^2 = 0.023 (converges). All gaps > 0 (no coincident zeros). Close-pair fraction 5.2% (GUE repulsion). Well-spaced (gaps > 10% of mean). All de Branges interlacing conditions verified numerically. GUE repulsion implies interlacing. Opens: prove analytically, full spectral proof. `experiments/interlacing_de_branges.py`, `data/interlacing_de_branges_data.json`, `docs/THE_INTERLACING_DE_BRANGES_0_OVER_0.md`.

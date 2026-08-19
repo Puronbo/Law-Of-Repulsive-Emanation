@@ -3849,3 +3849,30 @@ def test_de_branges_riemann_hypothesis():
     assert q3['verdict'] == 'PASS'
     assert q3['growth_bounded']
 
+
+# -----------------------------------------------------------------------
+# Interlacing and De Branges Proof 0/0
+# -----------------------------------------------------------------------
+
+def test_interlacing_de_branges():
+    d = load('interlacing_de_branges_data.json')
+
+    # Q1: Blaschke condition
+    q1 = d['Q1_blaschke']['blaschke_condition']
+    assert q1['verdict'] == 'PASS'
+    assert q1['second_bounded']
+    assert q1['second_converging']
+
+    # Q2: Gap regularity
+    q2 = d['Q2_gap_regularity']['gap_regularity']
+    assert q2['verdict'] == 'PASS'
+    assert q2['all_positive']
+    assert q2['bounded']
+
+    # Q3: GUE interlacing
+    q3 = d['Q3_gue_interlacing']['gue_interlacing']
+    assert q3['verdict'] == 'PASS'
+    assert q3['all_separated']
+    assert q3['few_close']
+    assert q3['well_spaced']
+
