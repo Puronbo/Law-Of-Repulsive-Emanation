@@ -17,7 +17,7 @@ from the observation that 0/0 appears everywhere, through the proof that
 it is the deep structure of mathematics, to the discovery that it
 generates new theorems.
 
-The journey: 192 experiments, 15 branches, 202 tests, 36 formal
+The journey: 193 experiments, 15 branches, 203 tests, 37 formal
 theorems, 6 PDFs, and one idea that will not die.
 
 ---
@@ -498,6 +498,17 @@ unifying statement in diophantine geometry.
 **Proof:** By the Vojta inequality and the ABC conjecture.
 The 0/0 is the residual V(P, eps), removable = Z.
 
+### Chapter 41: Manin-Mumford Conjecture
+
+**Theorem (Manin-Mumford as 0/0):** |V intersect A_tors| = 0/0 at
+the bound. Removable = 0 (finitely many torsion on proper subvarieties).
+Torsion subgroups: 5 CM curves, all finite, Mazur bound respected.
+Raynaud: product surface torsion = 24, curves have 4-6 pts.
+Heights: torsion h = 0, identity h = 0 (regulator).
+
+**Proof:** By Raynaud's theorem using Faltings.
+The 0/0 is the torsion count, removable = 0.
+
 ---
 
 ## Part VI: The Arc
@@ -593,15 +604,18 @@ The 0/0 is the residual V(P, eps), removable = Z.
                |
             Vojta
            (bounds)
+               |
+          Manin-Mumford
+           (torsion)
 ```
 
 ### The numbers:
 
-- 192 experiments across 15 branches
-- 202 tests (all green)
-- 36 formal theorems
+- 193 experiments across 15 branches
+- 203 tests (all green)
+- 37 formal theorems
 - 6 PDFs
-- 55 documentation files
+- 56 documentation files
 - 1 idea: 0/0 is the deep structure of mathematics
 
 ### The conclusion:

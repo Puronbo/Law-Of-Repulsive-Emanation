@@ -332,3 +332,7 @@ Colmez (2008): h_Fal(A) = L-value formula + local terms for CM abelian varieties
 ### Vojta's Conjecture as 0/0
 
 Vojta (1987): deepest unifying statement in diophantine geometry. Implies ABC, Mordell, Faltings, Thue-Siegel-Roth. 0/0 at epsilon = 0, removable value = exceptional set. Height bounds: max ABC quality 1.6299 from coprime pairs. ABC distribution concentrates near 1. Mordell-Weil: torsion bounded, h(O) = 0 (regulator). Quadratic growth h(nP) ~ n^2*h(P) for rank 1. Opens: effective Vojta, function field case, Vojta+Arakelov, p-adic Vojta. `experiments/vojta_conjecture_0_over_0.py`, `data/vojta_conjecture_data.json`, `docs/THE_VOJTA_CONJECTURE_0_OVER_0.md`.
+
+### Manin-Mumford Conjecture as 0/0
+
+Raynaud (1983): closed subvariety of abelian variety has dense torsion iff translate of abelian subvariety. 0/0 at the bound, removable value = 0 (finitely many on proper subvarieties). Torsion subgroups: 5 CM curves, all finite, Mazur bound (16) respected. CM torsion orders: 1,2,3,4,6. Heights: torsion h_NT = 0, identity h = 0 (regulator). Raynaud: product surface E1xE2, torsion 24, horizontal/vertical curves have 4-6 pts. Opens: Uniform Boundedness, Zilber-Pink, Oort. `experiments/manin_mumford_0_over_0.py`, `data/manin_mumford_data.json`, `docs/THE_MANIN_MUMFORD_0_OVER_0.md`.

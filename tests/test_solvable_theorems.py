@@ -3618,3 +3618,31 @@ def test_vojta_conjecture():
     assert q3['identity_height_zero']
     assert q3['torsion_bounded']
 
+
+# -----------------------------------------------------------------------
+# Manin-Mumford Conjecture 0/0
+# -----------------------------------------------------------------------
+
+def test_manin_mumford():
+    d = load('manin_mumford_data.json')
+
+    # Q1: Torsion subgroups
+    q1 = d['Q1_torsion_subgroups']['torsion_subgroups']
+    assert q1['verdict'] == 'PASS'
+    assert q1['all_finite']
+    for r in q1['results']:
+        assert r['all_on_curve']
+        assert r['below_mazur_bound']
+
+    # Q2: Height of torsion
+    q2 = d['Q2_height_torsion']['height_torsion']
+    assert q2['verdict'] == 'PASS'
+    assert q2['all_bounded']
+    assert q2['all_rank0']
+
+    # Q3: Raynaud
+    q3 = d['Q3_raynaud']['raynaud']
+    assert q3['verdict'] == 'PASS'
+    assert q3['horizontal_finite']
+    assert q3['vertical_finite']
+

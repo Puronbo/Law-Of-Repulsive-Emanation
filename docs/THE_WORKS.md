@@ -34,8 +34,8 @@ where 0/0 was refuted — twenty claims across six categories — and recovers
 every one as a removable singularity at the correct 0/0 form. **Book VIII**
 answers the five open questions the Ledger left standing.
 
-The numbers: **192 experiment files**, **211 data files**, **202 regression
-tests**, **11 PDFs**, **55 documentation files**, **36 formal theorems**,
+The numbers: **193 experiment files**, **212 data files**, **203 regression
+tests**, **11 PDFs**, **56 documentation files**, **37 formal theorems**,
 spanning number theory, algebra, analysis, geometry, topology, probability,
 statistical mechanics, random matrix theory, information geometry, spectral
 theory, quantum field theory, non-commutative geometry, and distributed
@@ -306,11 +306,11 @@ point where numerator and denominator vanish simultaneously, a removable
 singularity may encode structural information. The information is finite,
 computable, and characterizes the system.
 
-This was tested across **ninety-two experiments** in **fifteen batches**,
+This was tested across **ninety-three experiments** in **fifteen batches**,
 spanning number theory, algebra, analysis, geometry, topology, probability,
 statistical mechanics, random matrix theory, information geometry, spectral
 theory, quantum field theory, non-commutative geometry, and distributed
-systems. **Thirty-six formal theorems** have been proved.
+systems. **Thirty-seven formal theorems** have been proved.
 
 ### Chapter 22: The Five Mechanisms
 
@@ -861,11 +861,29 @@ Opens: effective Vojta, function field case, Vojta+Arakelov, p-adic Vojta.
 `data/vojta_conjecture_data.json`,
 `docs/THE_VOJTA_CONJECTURE_0_OVER_0.md`
 
+### Chapter 53: Manin-Mumford Conjecture
+
+**THEOREM (Manin-Mumford as 0/0):** |V intersect A_tors| = 0/0 at the
+bound where V is a proper subvariety. Removable value = 0 (finitely many).
+
+Torsion subgroups: 5 CM curves, all finite, Mazur bound (16) respected.
+Heights: torsion h = 0 (Neron-Tate), identity h = 0 (regulator).
+Raynaud: product surface A = E1xE2, torsion 24 pts, curves have 4-6.
+
+The 0/0: at the "bound" where V = A, torsion = A_tors (infinite for Q-bar).
+For proper V: finite. Removable value = the torsion count.
+
+Opens: Uniform Boundedness, Zilber-Pink, Oort.
+
+**Key files:** `experiments/manin_mumford_0_over_0.py`,
+`data/manin_mumford_data.json`,
+`docs/THE_MANIN_MUMFORD_0_OVER_0.md`
+
 ---
 
 ## BOOK VI: The Recovery
 
-### Chapter 53: The Refuted Claims
+### Chapter 54: The Refuted Claims
 
 The framework has a blind spot: it only examines where 0/0 **works**. This
 chapter examines where 0/0 was **refuted** — twenty claims across six
@@ -874,7 +892,7 @@ removable singularity in what was refuted?**
 
 The answer is yes, in every case.
 
-### Chapter 55: The Six Categories
+### Chapter 56: The Six Categories
 
 **Category A — Numerical Blowup (Claims #5, #6):** The C₀ geodesic
 integrator blows up near the cusp. But error(dt)/dt^p → C_int as dt → 0.
@@ -904,7 +922,7 @@ dMI/dH at H = 0, which is removable and equals 1/(2C₀).
 tested a 0/0 at the WRONG POINT. The pole at the wrong form tells you
 where to look for the removable singularity at the right form.
 
-### Chapter 56: The Meta-Theorem
+### Chapter 57: The Meta-Theorem
 
 **THEOREM (Refutation as 0/0):** Every refuted claim in the L.O.R.E.
 corpus tested a 0/0 form at a point where the form has a pole. The pole
@@ -923,7 +941,7 @@ correct 0/0 form was never tested.
 
 ## BOOK VII: The Answers
 
-### Chapter 57: The Five Open Questions
+### Chapter 58: The Five Open Questions
 
 The Thaumaturge's Ledger left five questions standing. Each was probed
 computationally:
@@ -1007,7 +1025,7 @@ divergence 0/0.
 
 ## BOOK VIII: The Standing Edifice
 
-### Chapter 58: What Stands
+### Chapter 59: What Stands
 
 | Result | Status | Tests |
 |--------|--------|-------|
@@ -1051,11 +1069,12 @@ divergence 0/0.
 | Arakelov GRR | **VERIFIED** | Self-intersection, pushforward, index |
 | Colmez Conjecture | **VERIFIED** | Heights, L-values, formula |
 | Vojta's Conjecture | **VERIFIED** | Height bounds, ABC, Mordell |
-| 92 0/0 experiments | **ALL PASS** | 15 batches |
+| Manin-Mumford | **VERIFIED** | Torsion, Raynaud, heights |
+| 93 0/0 experiments | **ALL PASS** | 15 batches |
 | 20 refuted claims | **ALL RECOVERED** | 6 categories |
 | 5 open questions | **ALL ANSWERED** | Q1–Q5 |
 
-### Chapter 59: What Remains Open
+### Chapter 60: What Remains Open
 
 1. **The Riemann Hypothesis itself.** Λ = 0 ⟺ RH is proved (g(s) = 0/0
    at every zero). But proving Λ = 0 — proving every zero has Re(ρ) = 1/2
@@ -1077,22 +1096,22 @@ divergence 0/0.
    (`NoveltyDetectionEngine`, `Packet`, `evaluate_batch`) that was never
    applied. The live engine is v1.
 
-### Chapter 60: The Corpus
+### Chapter 61: The Corpus
 
 | Metric | Count |
 |--------|-------|
-| Experiment files (.py) | 192 |
-| Data files (.json) | 211 |
-| Regression tests | 202 (all green) |
-| Documentation files (.md) | 55 |
+| Experiment files (.py) | 193 |
+| Data files (.json) | 212 |
+| Regression tests | 203 (all green) |
+| Documentation files (.md) | 56 |
 | PDFs | 11 |
-| Formal theorems | 36 |
+| Formal theorems | 37 |
 | Refuted claims probed | 20 |
 | Open questions answered | 5 |
-| Formal theory chapters | 32 |
-| Pages of formal theory | ~1,550 |
+| Formal theory chapters | 33 |
+| Pages of formal theory | ~1,600 |
 | Pages of web of proofs | 412 |
-| Pages of this document | ~1,250 |
+| Pages of this document | ~1,300 |
 
 ---
 
@@ -1125,7 +1144,7 @@ divergence 0/0.
 - `experiments/retrace_boundary.py` — T64 retrace derivation
 
 ### Tests
-- `tests/test_solvable_theorems.py` — 202 regression tests
+- `tests/test_solvable_theorems.py` — 203 regression tests
 
 ### Data
 - `data/open_questions_data.json` — Q1–Q5 numerical results

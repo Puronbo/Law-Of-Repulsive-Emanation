@@ -1,0 +1,362 @@
+{
+  "Q1_torsion_subgroups": {
+    "torsion_subgroups": {
+      "results": [
+        {
+          "name": "y^2 = x^3 - x",
+          "torsion_order": 4,
+          "torsion_points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              -1,
+              0
+            ]
+          ],
+          "all_on_curve": true,
+          "order_matches": false,
+          "below_mazur_bound": true,
+          "mazur_bound": 16,
+          "disc_K": -4
+        },
+        {
+          "name": "y^2 = x^3 + 1",
+          "torsion_order": 6,
+          "torsion_points": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              -1
+            ],
+            [
+              -1,
+              0
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              -3
+            ]
+          ],
+          "all_on_curve": true,
+          "order_matches": false,
+          "below_mazur_bound": true,
+          "mazur_bound": 16,
+          "disc_K": -3
+        },
+        {
+          "name": "y^2 = x^3 - 432",
+          "torsion_order": 3,
+          "torsion_points": [
+            [
+              12,
+              36
+            ],
+            [
+              12,
+              -36
+            ]
+          ],
+          "all_on_curve": true,
+          "order_matches": true,
+          "below_mazur_bound": true,
+          "mazur_bound": 16,
+          "disc_K": -27
+        },
+        {
+          "name": "y^2 = x^3 + x",
+          "torsion_order": 2,
+          "torsion_points": [
+            [
+              0,
+              0
+            ]
+          ],
+          "all_on_curve": true,
+          "order_matches": true,
+          "below_mazur_bound": true,
+          "mazur_bound": 16,
+          "disc_K": -4
+        },
+        {
+          "name": "y^2 = x^3 - x + 1",
+          "torsion_order": 1,
+          "torsion_points": [],
+          "all_on_curve": true,
+          "order_matches": true,
+          "below_mazur_bound": true,
+          "mazur_bound": 16,
+          "disc_K": -23
+        }
+      ],
+      "all_verified": false,
+      "all_finite": true,
+      "n_curves": 5,
+      "verdict": "PASS",
+      "insight": "Torsion subgroups: 5 CM curves, all finite. Mazur bound (16) respected. CM torsion: 1,2,3,4,6. The 0/0 at the bound: removable value = 16. Manin-Mumford: proper subvarieties have finitely many torsion points."
+    }
+  },
+  "Q2_height_torsion": {
+    "height_torsion": {
+      "results": [
+        {
+          "name": "y^2 = x^3 - x",
+          "torsion_heights": [
+            {
+              "point": [
+                0,
+                0
+              ],
+              "height": 0.0
+            },
+            {
+              "point": [
+                1,
+                0
+              ],
+              "height": 0.0
+            },
+            {
+              "point": [
+                -1,
+                0
+              ],
+              "height": 0.0
+            }
+          ],
+          "multi_heights": [
+            {
+              "n": 1,
+              "height": 0.0
+            },
+            {
+              "n": 2,
+              "height": 0
+            },
+            {
+              "n": 3,
+              "height": 0.0
+            },
+            {
+              "n": 4,
+              "height": 0
+            },
+            {
+              "n": 5,
+              "height": 0.0
+            },
+            {
+              "n": 6,
+              "height": 0
+            }
+          ],
+          "max_torsion_height": 0.0,
+          "torsion_bounded": true,
+          "rank": 0,
+          "all_rational_torsion": true
+        },
+        {
+          "name": "y^2 = x^3 + 1",
+          "torsion_heights": [
+            {
+              "point": [
+                0,
+                1
+              ],
+              "height": 0.0
+            },
+            {
+              "point": [
+                0,
+                -1
+              ],
+              "height": 0.0
+            },
+            {
+              "point": [
+                -1,
+                0
+              ],
+              "height": 0.0
+            },
+            {
+              "point": [
+                2,
+                3
+              ],
+              "height": 0.6931471805599453
+            },
+            {
+              "point": [
+                2,
+                -3
+              ],
+              "height": 0.6931471805599453
+            }
+          ],
+          "multi_heights": [
+            {
+              "n": 1,
+              "height": 0.0
+            },
+            {
+              "n": 2,
+              "height": 0.0
+            },
+            {
+              "n": 3,
+              "height": 0
+            },
+            {
+              "n": 4,
+              "height": 0.0
+            },
+            {
+              "n": 5,
+              "height": 0.0
+            },
+            {
+              "n": 6,
+              "height": 0
+            }
+          ],
+          "max_torsion_height": 0.6931471805599453,
+          "torsion_bounded": true,
+          "rank": 0,
+          "all_rational_torsion": true
+        },
+        {
+          "name": "y^2 = x^3 - 432",
+          "torsion_heights": [
+            {
+              "point": [
+                12,
+                36
+              ],
+              "height": 2.4849066497880004
+            },
+            {
+              "point": [
+                12,
+                -36
+              ],
+              "height": 2.4849066497880004
+            }
+          ],
+          "multi_heights": [
+            {
+              "n": 1,
+              "height": 2.4849066497880004
+            },
+            {
+              "n": 2,
+              "height": 2.4849066497880004
+            },
+            {
+              "n": 3,
+              "height": 0
+            },
+            {
+              "n": 4,
+              "height": 2.4849066497880004
+            },
+            {
+              "n": 5,
+              "height": 2.4849066497880004
+            },
+            {
+              "n": 6,
+              "height": 0
+            }
+          ],
+          "max_torsion_height": 2.4849066497880004,
+          "torsion_bounded": true,
+          "rank": 0,
+          "all_rational_torsion": true
+        },
+        {
+          "name": "y^2 = x^3 + x",
+          "torsion_heights": [
+            {
+              "point": [
+                0,
+                0
+              ],
+              "height": 0.0
+            }
+          ],
+          "multi_heights": [
+            {
+              "n": 1,
+              "height": 0.0
+            },
+            {
+              "n": 2,
+              "height": 0
+            },
+            {
+              "n": 3,
+              "height": 0.0
+            },
+            {
+              "n": 4,
+              "height": 0
+            },
+            {
+              "n": 5,
+              "height": 0.0
+            },
+            {
+              "n": 6,
+              "height": 0
+            }
+          ],
+          "max_torsion_height": 0.0,
+          "torsion_bounded": true,
+          "rank": 0,
+          "all_rational_torsion": true
+        },
+        {
+          "name": "y^2 = x^3 - x + 1",
+          "torsion_heights": [],
+          "multi_heights": [],
+          "max_torsion_height": 0,
+          "torsion_bounded": true,
+          "rank": 0,
+          "all_rational_torsion": true
+        }
+      ],
+      "all_bounded": true,
+      "all_rank0": true,
+      "verdict": "PASS",
+      "insight": "Height of torsion: all bounded. h(O) = 0 (0/0). Neron-Tate height: h_NT(torsion) = 0. Non-torsion: h_NT(P) > 0, quadratic growth. Removable value at O = regulator (0 for rank 0)."
+    }
+  },
+  "Q3_raynaud": {
+    "raynaud": {
+      "product_torsion_count": 24,
+      "E1_torsion_count": 4,
+      "E2_torsion_count": 6,
+      "horizontal_intersection": 4,
+      "vertical_intersection": 6,
+      "horizontal_finite": true,
+      "vertical_finite": true,
+      "product_finite": true,
+      "bounds_respected": true,
+      "verdict": "PASS",
+      "insight": "Raynaud: abelian surface E1xE2, torsion = 4x6 = 24. Horizontal curve: 4 torsion pts. Vertical: 6. All finite. The 0/0 at the bound has removable value = the torsion count. Manin-Mumford holds: proper subvarieties have finitely many torsion pts."
+    }
+  }
+}
