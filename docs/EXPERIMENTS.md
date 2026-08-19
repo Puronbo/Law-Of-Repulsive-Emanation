@@ -9,7 +9,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Finding | Result |
 |---|---|
 | Math-validation suite | **192 passed / 0 failed** (`Universals/math_validation.py`) |
-| Regression suite | **169/169 passed** (`tests/test_solvable_theorems.py`) |
+| Regression suite | **190/190 passed** (`tests/test_solvable_theorems.py`) |
 | L.O.R.E. | C0 = V(q0) = H(q0,0), 109 tests; T-symmetry error 0.003 |
 | Fold theorem (T63/T64) | crease = **unique viscosity solution of \|r'\| = a**; retrace = cut locus; eikonal err 3.3e-13; measured crease 0.0350pi vs derived 0.0318pi; area 2666.6665 vs 2666.6666... |
 | Clock-test canon (T59/T61) | law-ness 1.000 -> 0.417 under calendar re-index -> 1.000 under rotation; rotation overlap/sim 1.000 |
