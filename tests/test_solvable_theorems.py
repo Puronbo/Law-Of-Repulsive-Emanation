@@ -3825,3 +3825,27 @@ def test_hardy_z_riemann_hypothesis():
     assert q3['verdict'] == 'PASS'
     assert q3['all_match']
 
+
+# -----------------------------------------------------------------------
+# De Branges Theory and Riemann Hypothesis 0/0
+# -----------------------------------------------------------------------
+
+def test_de_branges_riemann_hypothesis():
+    d = load('de_branges_riemann_data.json')
+
+    # Q1: xi on critical line
+    q1 = d['Q1_xi_critical_line']['xi_critical_line']
+    assert q1['verdict'] == 'PASS'
+    assert q1['all_real']
+    assert q1['all_zero']
+
+    # Q2: Hermite-Biehler
+    q2 = d['Q2_hermite_biehler']['hermite_biehler']
+    assert q2['verdict'] == 'PASS'
+    assert q2['critical_ok']
+
+    # Q3: Growth condition
+    q3 = d['Q3_growth_condition']['growth_condition']
+    assert q3['verdict'] == 'PASS'
+    assert q3['growth_bounded']
+

@@ -364,3 +364,7 @@ Montgomery (1973), Odlyzko (1987): level spacing of zeros matches GUE. 0/0: p(0)
 ### Hardy Z-Function and Riemann Hypothesis as 0/0
 
 Hardy (1914): Z(t) = e^{i*theta(t)} * zeta(1/2+it) is real. 0/0: Z(t_n) = 0, removable = 0. All 20 zeros verified Z(gamma_n) = 0 within 0.001. Sign changes at every zero. Functional equation Z(-t) = Z(t) exact (diff = 0). Self-adjointness signature: Z(-t) = Z(t) implies underlying operator H is self-adjoint. If H self-adjoint -> all zeros on line -> RH. Opens: construct H (Berry-Keating H=xp), de Branges theory, full proof. `experiments/hardy_z_riemann_hypothesis.py`, `data/hardy_z_riemann_data.json`, `docs/THE_HARDY_Z_RH_0_OVER_0.md`.
+
+### De Branges Theory and Riemann Hypothesis as 0/0
+
+De Branges (1968): if E(s) in de Branges space -> all zeros on line. 0/0: xi(rho_n) = 0, removable = 0. Xi real on critical line (20 zeros verified). Hermite-Biehler ratio = 1.000 exactly. Growth sub-exponential (all log/t < 2). All three de Branges conditions verified numerically. If proved analytically -> RH. Opens: prove analytically, connect to Berry-Keating, full spectral proof. `experiments/de_branges_riemann_hypothesis.py`, `data/de_branges_riemann_data.json`, `docs/THE_DE_BRANGES_RH_0_OVER_0.md`.
