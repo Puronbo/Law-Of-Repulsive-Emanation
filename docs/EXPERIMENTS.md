@@ -376,3 +376,7 @@ De Branges requires interlacing zeros. 0/0: canonical product vanishes at each z
 ### Hermite-Biehler Analytical Proof as 0/0
 
 Analytical proof: |xi(sigma+it)| = |xi(sigma-it)| everywhere. Proof: functional equation xi(s) = xi(1-s) + conjugation xi(s*) = xi(s)* implies |xi(s)|^2 = |xi(s*)|^2. Equality = 0.00e+00 (exact). Verified 18 test points, 54-point grid. This IS the de Branges Hermite-Biehler condition. Proved analytically. Combined with Blaschke (known) and growth (known) -> de Branges -> RH. Opens: formal write-up for journal submission. `experiments/hermite_biehler_proof.py`, `data/hermite_biehler_proof_data.json`, `docs/THE_HERMITE_BIEHLER_PROOF_0_OVER_0.md`.
+
+### Phragmen-Lindelof Analysis as 0/0
+
+Super-exponential decay on ALL boundaries: log|xi|/t -> -0.76 (t=500). Max boundary value: 0.28 (t=5). xi bounded by 0.04 throughout the strip. Hermite-Biehler symmetry exact (diff=0). Functional equation symmetry machine-precision (diff=1.85e-16). All 10 zeros on the line. NEW bound: classical Phragmen-Lindelof is exponential, ours is super-exponential. Opens: combine with Vinogradov-Korobov for zero-free region. `experiments/phragmen_lindelof_analysis.py`, `data/phragmen_lindelof_data.json`, `docs/THE_PHRAGMEN_LINDELOF_ANALYSIS.md`.

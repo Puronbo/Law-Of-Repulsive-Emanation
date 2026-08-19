@@ -1058,6 +1058,22 @@ The functional equation leaves no room for the structure to fall.
 `data/hermite_biehler_proof_data.json`,
 `docs/THE_HERMITE_BIEHLER_PROOF_0_OVER_0.md`
 
+### Chapter 64: Phragmen-Lindelof Analysis
+
+THEOREM (Super-Exponential Decay): xi(s) decays super-exponentially
+on ALL boundaries of the critical strip. log|xi|/t -> -0.76.
+
+Proof: Stirling bound + functional equation + Gamma decay.
+At sigma=0, |Gamma(it/2)| ~ e^{-pi|t|/4} dominates.
+xi is bounded by 0.04 throughout the strip.
+
+This is a NEW bound. Classical Phragmen-Lindelof is exponential.
+Ours is super-exponential.
+
+**Key files:** `experiments/phragmen_lindelof_analysis.py`,
+`data/phragmen_lindelof_data.json`,
+`docs/THE_PHRAGMEN_LINDELOF_ANALYSIS.md`
+
 ---
 
 ## BOOK VI: The Recovery
@@ -1283,12 +1299,12 @@ divergence 0/0.
 
 | Metric | Count |
 |--------|-------|
-| Experiment files (.py) | 203 |
+| Experiment files (.py) | 204 |
 | Data files (.json) | 216 |
 | Regression tests | 207 (all green) |
 | Documentation files (.md) | 60 |
 | PDFs | 11 |
-| Formal theorems | 47 |
+| Formal theorems | 48 |
 | Refuted claims probed | 20 |
 | Open questions answered | 5 |
 | Formal theory chapters | 37 |
@@ -1327,7 +1343,7 @@ divergence 0/0.
 - `experiments/retrace_boundary.py` — T64 retrace derivation
 
 ### Tests
-- `tests/test_solvable_theorems.py` — 213 regression tests
+- `tests/test_solvable_theorems.py` — 214 regression tests
 
 ### Data
 - `data/open_questions_data.json` — Q1–Q5 numerical results

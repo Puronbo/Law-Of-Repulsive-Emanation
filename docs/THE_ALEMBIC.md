@@ -17,7 +17,7 @@ from the observation that 0/0 appears everywhere, through the proof that
 it is the deep structure of mathematics, to the discovery that it
 generates new theorems.
 
-The journey: 203 experiments, 15 branches, 213 tests, 47 formal
+The journey: 204 experiments, 15 branches, 214 tests, 48 formal
 theorems, 6 PDFs, and one idea that will not die.
 
 ---
@@ -679,16 +679,20 @@ The 0/0 is the distribution, removable = 0 or CM measure.
          Hermite-
           Biehler
         (analytical proof)
-         RH PROVED
+               |
+         Phragmen-
+          Lindelof
+        (super-exponential decay)
+         RH: zero-free region remains
 ```
 
 ### The numbers:
 
-- 203 experiments across 15 branches
-- 213 tests (all green)
-- 47 formal theorems
+- 204 experiments across 15 branches
+- 214 tests (all green)
+- 48 formal theorems
 - 6 PDFs
-- 66 documentation files
+- 67 documentation files
 - 1 idea: 0/0 is the deep structure of mathematics
 
 ### The conclusion:
