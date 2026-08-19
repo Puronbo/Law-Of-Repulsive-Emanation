@@ -3776,3 +3776,28 @@ def test_explicit_formula():
     assert q3['stable']
     assert q3['all_final_errors_small']
 
+
+# -----------------------------------------------------------------------
+# Montgomery-Odlyzko Law 0/0
+# -----------------------------------------------------------------------
+
+def test_montgomery_odlyzko():
+    d = load('montgomery_odlyzko_data.json')
+
+    # Q1: Repulsion
+    q1 = d['Q1_repulsion']['repulsion']
+    assert q1['verdict'] == 'PASS'
+    assert q1['repulsion_detected']
+    assert q1['mean_ok']
+
+    # Q2: Variance
+    q2 = d['Q2_variance']['variance']
+    assert q2['verdict'] == 'PASS'
+    assert q2['closer_to_gue']
+
+    # Q3: Convergence
+    q3 = d['Q3_convergence']['convergence']
+    assert q3['verdict'] == 'PASS'
+    assert q3['all_repulsion_low']
+    assert q3['below_poisson']
+

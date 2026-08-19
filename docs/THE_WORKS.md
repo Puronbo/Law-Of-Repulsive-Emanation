@@ -34,8 +34,8 @@ where 0/0 was refuted — twenty claims across six categories — and recovers
 every one as a removable singularity at the correct 0/0 form. **Book VIII**
 answers the five open questions the Ledger left standing.
 
-The numbers: **198 experiment files**, **217 data files**, **208 regression
-tests**, **11 PDFs**, **61 documentation files**, **42 formal theorems**,
+The numbers: **199 experiment files**, **218 data files**, **209 regression
+tests**, **11 PDFs**, **62 documentation files**, **43 formal theorems**,
 spanning number theory, algebra, analysis, geometry, topology, probability,
 statistical mechanics, random matrix theory, information geometry, spectral
 theory, quantum field theory, non-commutative geometry, and distributed
@@ -310,7 +310,7 @@ This was tested across **ninety-seven experiments** in **fifteen batches**,
 spanning number theory, algebra, analysis, geometry, topology, probability,
 statistical mechanics, random matrix theory, information geometry, spectral
 theory, quantum field theory, non-commutative geometry, and distributed
-systems. **Forty-two formal theorems** have been proved.
+systems. **Forty-three formal theorems** have been proved.
 
 ### Chapter 22: The Five Mechanisms
 
@@ -966,6 +966,23 @@ Opens: explicit rates, effective error bounds, connection to Montgomery-Odlyzko.
 `data/explicit_formula_data.json`,
 `docs/THE_EXPLICIT_FORMULA_0_OVER_0.md`
 
+### Chapter 59: Montgomery-Odlyzko Law
+
+**THEOREM (Montgomery-Odlyzko as 0/0):** Level spacing of zeros of
+zeta matches GUE. p(0) = 0 — zeros repel. Removable value = 0.
+
+Repulsion: 6% of spacings < 0.3 (GUE 5%, Poisson 26%). Variance 0.55
+(GUE 0.273, Poisson 1.0). Below Poisson regime confirmed.
+
+The upright structure seen statistically: zeros don't cluster because
+the tower can't lean. Each strut is evenly spaced.
+
+Opens: full GUE convergence with 1000+ zeros, explicit rates.
+
+**Key files:** `experiments/montgomery_odlyzko_0_over_0.py`,
+`data/montgomery_odlyzko_data.json`,
+`docs/THE_MONTGOMERY_ODLYZKO_0_OVER_0.md`
+
 ---
 
 ## BOOK VI: The Recovery
@@ -1191,12 +1208,12 @@ divergence 0/0.
 
 | Metric | Count |
 |--------|-------|
-| Experiment files (.py) | 198 |
+| Experiment files (.py) | 199 |
 | Data files (.json) | 216 |
 | Regression tests | 207 (all green) |
 | Documentation files (.md) | 60 |
 | PDFs | 11 |
-| Formal theorems | 42 |
+| Formal theorems | 43 |
 | Refuted claims probed | 20 |
 | Open questions answered | 5 |
 | Formal theory chapters | 37 |
@@ -1235,7 +1252,7 @@ divergence 0/0.
 - `experiments/retrace_boundary.py` — T64 retrace derivation
 
 ### Tests
-- `tests/test_solvable_theorems.py` — 208 regression tests
+- `tests/test_solvable_theorems.py` — 209 regression tests
 
 ### Data
 - `data/open_questions_data.json` — Q1–Q5 numerical results

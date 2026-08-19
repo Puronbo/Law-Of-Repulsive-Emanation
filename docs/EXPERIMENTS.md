@@ -356,3 +356,7 @@ Barnet-Lamb et al. (2011): normalized Frobenius traces follow semicircle distrib
 ### Explicit Formula as 0/0
 
 von Mangoldt (1896), Weil (1952): psi(x) = x - Sum_rho x^rho/rho - correction. 0/0: step function = smooth + oscillations, removable = 0 (exact equality). Direct verification: errors 0.25-0.27 for x=10..100 with 20 zeros. Zero contributions oscillate (sign changes > 33%). Tower stability: 55-65% of zero additions improve approximation. Each zero is a strut in the tensegrity tower. Opens: effective error bounds, connection to Montgomery-Odlyzko, Hilbert-Polya construction. `experiments/explicit_formula_0_over_0.py`, `data/explicit_formula_data.json`, `docs/THE_EXPLICIT_FORMULA_0_OVER_0.md`.
+
+### Montgomery-Odlyzko Law as 0/0
+
+Montgomery (1973), Odlyzko (1987): level spacing of zeros matches GUE. 0/0: p(0) = 0, zeros repel, removable = 0. Repulsion: 6% of spacings < 0.3 (GUE 5%, Poisson 26%). Variance 0.55 (GUE 0.273, Poisson 1.0), below Poisson confirmed. Convergence: all batch sizes show repulsion below 15%. Opens: full GUE with 1000+ zeros, explicit rates, Hilbert-Polya construction. `experiments/montgomery_odlyzko_0_over_0.py`, `data/montgomery_odlyzko_data.json`, `docs/THE_MONTGOMERY_ODLYZKO_0_OVER_0.md`.
