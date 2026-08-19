@@ -3750,3 +3750,29 @@ def test_sato_tate():
     assert q3['verdict'] == 'PASS'
     assert q3['all_close']
 
+
+# -----------------------------------------------------------------------
+# Explicit Formula 0/0
+# -----------------------------------------------------------------------
+
+def test_explicit_formula():
+    d = load('explicit_formula_data.json')
+
+    # Q1: Direct verification
+    q1 = d['Q1_direct_verification']['direct_verification']
+    assert q1['verdict'] == 'PASS'
+    assert q1['errors_decreasing']
+    assert q1['small_final_errors']
+
+    # Q2: Zero contributions
+    q2 = d['Q2_zero_contributions']['zero_contributions']
+    assert q2['verdict'] == 'PASS'
+    assert q2['oscillating']
+    assert q2['error_decreases']
+
+    # Q3: Tower stability
+    q3 = d['Q3_tower_stability']['tower_stability']
+    assert q3['verdict'] == 'PASS'
+    assert q3['stable']
+    assert q3['all_final_errors_small']
+

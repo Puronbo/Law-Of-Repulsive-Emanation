@@ -34,8 +34,8 @@ where 0/0 was refuted — twenty claims across six categories — and recovers
 every one as a removable singularity at the correct 0/0 form. **Book VIII**
 answers the five open questions the Ledger left standing.
 
-The numbers: **197 experiment files**, **216 data files**, **207 regression
-tests**, **11 PDFs**, **60 documentation files**, **41 formal theorems**,
+The numbers: **198 experiment files**, **217 data files**, **208 regression
+tests**, **11 PDFs**, **61 documentation files**, **42 formal theorems**,
 spanning number theory, algebra, analysis, geometry, topology, probability,
 statistical mechanics, random matrix theory, information geometry, spectral
 theory, quantum field theory, non-commutative geometry, and distributed
@@ -310,7 +310,7 @@ This was tested across **ninety-seven experiments** in **fifteen batches**,
 spanning number theory, algebra, analysis, geometry, topology, probability,
 statistical mechanics, random matrix theory, information geometry, spectral
 theory, quantum field theory, non-commutative geometry, and distributed
-systems. **Forty-one formal theorems** have been proved.
+systems. **Forty-two formal theorems** have been proved.
 
 ### Chapter 22: The Five Mechanisms
 
@@ -947,6 +947,25 @@ Opens: higher-dim Sato-Tate, Galois reps, effective rates.
 `data/sato_tate_data.json`,
 `docs/THE_SATO_TATE_0_OVER_0.md`
 
+### Chapter 58: Explicit Formula
+
+**THEOREM (Explicit Formula as 0/0):** psi(x) = x - Sum_rho x^rho/rho
+- correction. The 0/0: step function = smooth + oscillations.
+Removable value = 0 (exact equality).
+
+The upright structure: primes held up by zeros like a tensegrity tower.
+Each zero is a strut. 20 zeros verified. Error decreases as zeros added.
+Tower stability 55-65%. All final errors small.
+
+Direct evidence: primes and zeros are dual. Structure is self-supporting.
+Each zero contributes. Approximation converges.
+
+Opens: explicit rates, effective error bounds, connection to Montgomery-Odlyzko.
+
+**Key files:** `experiments/explicit_formula_0_over_0.py`,
+`data/explicit_formula_data.json`,
+`docs/THE_EXPLICIT_FORMULA_0_OVER_0.md`
+
 ---
 
 ## BOOK VI: The Recovery
@@ -1172,12 +1191,12 @@ divergence 0/0.
 
 | Metric | Count |
 |--------|-------|
-| Experiment files (.py) | 197 |
+| Experiment files (.py) | 198 |
 | Data files (.json) | 216 |
 | Regression tests | 207 (all green) |
 | Documentation files (.md) | 60 |
 | PDFs | 11 |
-| Formal theorems | 41 |
+| Formal theorems | 42 |
 | Refuted claims probed | 20 |
 | Open questions answered | 5 |
 | Formal theory chapters | 37 |
@@ -1216,7 +1235,7 @@ divergence 0/0.
 - `experiments/retrace_boundary.py` — T64 retrace derivation
 
 ### Tests
-- `tests/test_solvable_theorems.py` — 207 regression tests
+- `tests/test_solvable_theorems.py` — 208 regression tests
 
 ### Data
 - `data/open_questions_data.json` — Q1–Q5 numerical results

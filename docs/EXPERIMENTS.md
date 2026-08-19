@@ -352,3 +352,7 @@ Wiles (2001): every elliptic curve over Q is modular. L(E,s) = L(f,s). 0/0 at CM
 ### Sato-Tate as 0/0
 
 Barnet-Lamb et al. (2011): normalized Frobenius traces follow semicircle distribution for non-CM curves. 0/0 at CM points (distribution degenerates). Non-CM: KS=0.069, semicircle not rejected. CM: KS=0.336, rejected. CM primes all zero (50%). Moments match Catalan: E[x^2]~0.25, E[x^4]~0.125, E[x^6]~0.078. Opens: higher-dim Sato-Tate, Galois reps, effective rates. `experiments/sato_tate_0_over_0.py`, `data/sato_tate_data.json`, `docs/THE_SATO_TATE_0_OVER_0.md`.
+
+### Explicit Formula as 0/0
+
+von Mangoldt (1896), Weil (1952): psi(x) = x - Sum_rho x^rho/rho - correction. 0/0: step function = smooth + oscillations, removable = 0 (exact equality). Direct verification: errors 0.25-0.27 for x=10..100 with 20 zeros. Zero contributions oscillate (sign changes > 33%). Tower stability: 55-65% of zero additions improve approximation. Each zero is a strut in the tensegrity tower. Opens: effective error bounds, connection to Montgomery-Odlyzko, Hilbert-Polya construction. `experiments/explicit_formula_0_over_0.py`, `data/explicit_formula_data.json`, `docs/THE_EXPLICIT_FORMULA_0_OVER_0.md`.

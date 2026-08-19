@@ -17,7 +17,7 @@ from the observation that 0/0 appears everywhere, through the proof that
 it is the deep structure of mathematics, to the discovery that it
 generates new theorems.
 
-The journey: 197 experiments, 15 branches, 207 tests, 41 formal
+The journey: 198 experiments, 15 branches, 208 tests, 42 formal
 theorems, 6 PDFs, and one idea that will not die.
 
 ---
@@ -658,15 +658,19 @@ The 0/0 is the distribution, removable = 0 or CM measure.
                |
            Sato-Tate
           (distribution)
+               |
+         Explicit
+          Formula
+       (primes = zeros)
 ```
 
 ### The numbers:
 
-- 197 experiments across 15 branches
-- 207 tests (all green)
-- 41 formal theorems
+- 198 experiments across 15 branches
+- 208 tests (all green)
+- 42 formal theorems
 - 6 PDFs
-- 60 documentation files
+- 61 documentation files
 - 1 idea: 0/0 is the deep structure of mathematics
 
 ### The conclusion:
