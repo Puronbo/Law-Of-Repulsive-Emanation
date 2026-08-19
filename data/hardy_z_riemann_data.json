@@ -1,0 +1,374 @@
+{
+  "Q1_hardy_z_zeros": {
+    "hardy_z_zeros": {
+      "n_zeros": 20,
+      "results": [
+        {
+          "zero_index": 1,
+          "gamma": 14.134725,
+          "Z_gamma": -1.1241835020461372e-07,
+          "is_zero": true
+        },
+        {
+          "zero_index": 2,
+          "gamma": 21.02204,
+          "Z_gamma": -4.106586155257058e-07,
+          "is_zero": true
+        },
+        {
+          "zero_index": 3,
+          "gamma": 25.010858,
+          "Z_gamma": 5.759231261224291e-07,
+          "is_zero": true
+        },
+        {
+          "zero_index": 4,
+          "gamma": 30.424876,
+          "Z_gamma": 1.6411337648366581e-07,
+          "is_zero": true
+        },
+        {
+          "zero_index": 5,
+          "gamma": 32.935062,
+          "Z_gamma": 5.697937857332919e-07,
+          "is_zero": true
+        },
+        {
+          "zero_index": 6,
+          "gamma": 37.586178,
+          "Z_gamma": 3.0756718863832055e-07,
+          "is_zero": true
+        },
+        {
+          "zero_index": 7,
+          "gamma": 40.918719,
+          "Z_gamma": -1.8107182679503945e-08,
+          "is_zero": true
+        },
+        {
+          "zero_index": 8,
+          "gamma": 43.327073,
+          "Z_gamma": 5.15060736908015e-07,
+          "is_zero": true
+        },
+        {
+          "zero_index": 9,
+          "gamma": 48.005151,
+          "Z_gamma": 1.8633362064916248e-07,
+          "is_zero": true
+        },
+        {
+          "zero_index": 10,
+          "gamma": 49.773832,
+          "Z_gamma": 6.77784531267905e-07,
+          "is_zero": true
+        },
+        {
+          "zero_index": 11,
+          "gamma": 52.970321,
+          "Z_gamma": -1.1592118596119686e-06,
+          "is_zero": true
+        },
+        {
+          "zero_index": 12,
+          "gamma": 56.446248,
+          "Z_gamma": -7.173341334700107e-07,
+          "is_zero": true
+        },
+        {
+          "zero_index": 13,
+          "gamma": 59.347044,
+          "Z_gamma": -3.6219740910351597e-09,
+          "is_zero": true
+        },
+        {
+          "zero_index": 14,
+          "gamma": 60.831779,
+          "Z_gamma": -7.863660515671268e-07,
+          "is_zero": true
+        },
+        {
+          "zero_index": 15,
+          "gamma": 65.112544,
+          "Z_gamma": -1.1000009325363668e-07,
+          "is_zero": true
+        },
+        {
+          "zero_index": 16,
+          "gamma": 67.079811,
+          "Z_gamma": -8.39184624985535e-07,
+          "is_zero": true
+        },
+        {
+          "zero_index": 17,
+          "gamma": 69.546402,
+          "Z_gamma": 6.314635298191334e-07,
+          "is_zero": true
+        },
+        {
+          "zero_index": 18,
+          "gamma": 72.067158,
+          "Z_gamma": -9.650095218091917e-07,
+          "is_zero": true
+        },
+        {
+          "zero_index": 19,
+          "gamma": 75.704691,
+          "Z_gamma": 5.354968875511465e-07,
+          "is_zero": true
+        },
+        {
+          "zero_index": 20,
+          "gamma": 77.14484,
+          "Z_gamma": 1.0038795709847475e-07,
+          "is_zero": true
+        }
+      ],
+      "all_zero": true,
+      "sign_changes": 19,
+      "verdict": "PASS"
+    }
+  },
+  "Q2_no_missing_zeros": {
+    "no_missing_zeros": {
+      "n_zeros": 20,
+      "results": [
+        {
+          "zero_index": 1,
+          "gamma": 14.134725,
+          "Z_before": -0.23155012618715115,
+          "Z_after": 0.24322818371878477,
+          "Z_at": -1.1241835020461372e-07,
+          "sign_change": true,
+          "near_zero": true
+        },
+        {
+          "zero_index": 2,
+          "gamma": 21.02204,
+          "Z_before": 0.3444416220538135,
+          "Z_after": -0.33361282533676856,
+          "Z_at": -4.106586155257058e-07,
+          "sign_change": true,
+          "near_zero": true
+        },
+        {
+          "zero_index": 3,
+          "gamma": 25.010858,
+          "Z_before": -0.3929124165366704,
+          "Z_after": 0.42474663190398754,
+          "Z_at": 5.759231261224291e-07,
+          "sign_change": true,
+          "near_zero": true
+        },
+        {
+          "zero_index": 4,
+          "gamma": 30.424876,
+          "Z_before": 0.4138492760757502,
+          "Z_after": -0.3606447796120652,
+          "Z_at": 1.6411337648366581e-07,
+          "sign_change": true,
+          "near_zero": true
+        },
+        {
+          "zero_index": 5,
+          "gamma": 32.935062,
+          "Z_before": -0.3775152664470263,
+          "Z_after": 0.4434842830359349,
+          "Z_at": 5.697937857332919e-07,
+          "sign_change": true,
+          "near_zero": true
+        },
+        {
+          "zero_index": 6,
+          "gamma": 37.586178,
+          "Z_before": 0.5920170772677802,
+          "Z_after": -0.5573875175487718,
+          "Z_at": 3.0756718863832055e-07,
+          "sign_change": true,
+          "near_zero": true
+        },
+        {
+          "zero_index": 7,
+          "gamma": 40.918719,
+          "Z_before": -0.4553405543815879,
+          "Z_after": 0.42466266399587826,
+          "Z_at": -1.8107182679503945e-08,
+          "sign_change": true,
+          "near_zero": true
+        },
+        {
+          "zero_index": 8,
+          "gamma": 43.327073,
+          "Z_before": 0.49525062526599856,
+          "Z_after": -0.5920562686893299,
+          "Z_at": 5.15060736908015e-07,
+          "sign_change": true,
+          "near_zero": true
+        },
+        {
+          "zero_index": 9,
+          "gamma": 48.005151,
+          "Z_before": -0.5268601947705629,
+          "Z_after": 0.4009935804926211,
+          "Z_at": 1.8633362064916248e-07,
+          "sign_change": true,
+          "near_zero": true
+        },
+        {
+          "zero_index": 10,
+          "gamma": 49.773832,
+          "Z_before": 0.3760766713428765,
+          "Z_after": -0.4583068644939868,
+          "Z_at": 6.77784531267905e-07,
+          "sign_change": true,
+          "near_zero": true
+        },
+        {
+          "zero_index": 11,
+          "gamma": 52.970321,
+          "Z_before": -0.6959234219930327,
+          "Z_after": 0.7386152327300164,
+          "Z_at": -1.1592118596119686e-06,
+          "sign_change": true,
+          "near_zero": true
+        },
+        {
+          "zero_index": 12,
+          "gamma": 56.446248,
+          "Z_before": 0.7266670953534424,
+          "Z_after": -0.6714511645216774,
+          "Z_at": -7.173341334700107e-07,
+          "sign_change": true,
+          "near_zero": true
+        },
+        {
+          "zero_index": 13,
+          "gamma": 59.347044,
+          "Z_before": -0.4524125191671506,
+          "Z_after": 0.36054631203270676,
+          "Z_at": -3.6219740910351597e-09,
+          "sign_change": true,
+          "near_zero": true
+        },
+        {
+          "zero_index": 14,
+          "gamma": 60.831779,
+          "Z_before": 0.39910163268983256,
+          "Z_after": -0.5793846812892752,
+          "Z_at": -7.863660515671268e-07,
+          "sign_change": true,
+          "near_zero": true
+        },
+        {
+          "zero_index": 15,
+          "gamma": 65.112544,
+          "Z_before": -0.7528547050538631,
+          "Z_after": 0.5976419515960565,
+          "Z_at": -1.1000009325363668e-07,
+          "sign_change": true,
+          "near_zero": true
+        },
+        {
+          "zero_index": 16,
+          "gamma": 67.079811,
+          "Z_before": 0.5051700666793657,
+          "Z_after": -0.5367025111091601,
+          "Z_at": -8.39184624985535e-07,
+          "sign_change": true,
+          "near_zero": true
+        },
+        {
+          "zero_index": 17,
+          "gamma": 69.546402,
+          "Z_before": -0.6226644399280402,
+          "Z_after": 0.659492528076148,
+          "Z_at": 6.314635298191334e-07,
+          "sign_change": true,
+          "near_zero": true
+        },
+        {
+          "zero_index": 18,
+          "gamma": 72.067158,
+          "Z_before": 0.8270406516298001,
+          "Z_after": -0.9194855019625541,
+          "Z_at": -9.650095218091917e-07,
+          "sign_change": true,
+          "near_zero": true
+        },
+        {
+          "zero_index": 19,
+          "gamma": 75.704691,
+          "Z_before": -0.6197079405665946,
+          "Z_after": 0.42815113627119383,
+          "Z_at": 5.354968875511465e-07,
+          "sign_change": true,
+          "near_zero": true
+        },
+        {
+          "zero_index": 20,
+          "gamma": 77.14484,
+          "Z_before": 0.3822593519443298,
+          "Z_after": -0.46136126725995646,
+          "Z_at": 1.0038795709847475e-07,
+          "sign_change": true,
+          "near_zero": true
+        }
+      ],
+      "all_sign_change": true,
+      "all_near_zero": true,
+      "verdict": "PASS"
+    }
+  },
+  "Q3_functional_equation": {
+    "functional_equation": {
+      "n_tests": 6,
+      "results": [
+        {
+          "t": 1.0,
+          "Z_pos": -0.7363054628673177,
+          "Z_neg": -0.7363054628673177,
+          "diff": 0.0,
+          "matches": true
+        },
+        {
+          "t": 5.0,
+          "Z_pos": -0.7388634282752647,
+          "Z_neg": -0.7388634282752647,
+          "diff": 0.0,
+          "matches": true
+        },
+        {
+          "t": 10.0,
+          "Z_pos": -1.5491945461810224,
+          "Z_neg": -1.5491945461810224,
+          "diff": 0.0,
+          "matches": true
+        },
+        {
+          "t": 14.134725,
+          "Z_pos": -1.1241835020461372e-07,
+          "Z_neg": -1.1241835020461372e-07,
+          "diff": 0.0,
+          "matches": true
+        },
+        {
+          "t": 21.02204,
+          "Z_pos": -4.106586155257058e-07,
+          "Z_neg": -4.106586155257058e-07,
+          "diff": 0.0,
+          "matches": true
+        },
+        {
+          "t": 50.0,
+          "Z_pos": -0.340735005955025,
+          "Z_neg": -0.340735005955025,
+          "diff": 0.0,
+          "matches": true
+        }
+      ],
+      "all_match": true,
+      "insight": "Z(-t) = Z(t) is the spectral signature of a self-adjoint operator. This is the self-duality that forces all zeros onto the critical line.",
+      "verdict": "PASS"
+    }
+  }
+}

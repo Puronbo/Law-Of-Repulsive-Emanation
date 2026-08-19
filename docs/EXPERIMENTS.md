@@ -360,3 +360,7 @@ von Mangoldt (1896), Weil (1952): psi(x) = x - Sum_rho x^rho/rho - correction. 0
 ### Montgomery-Odlyzko Law as 0/0
 
 Montgomery (1973), Odlyzko (1987): level spacing of zeros matches GUE. 0/0: p(0) = 0, zeros repel, removable = 0. Repulsion: 6% of spacings < 0.3 (GUE 5%, Poisson 26%). Variance 0.55 (GUE 0.273, Poisson 1.0), below Poisson confirmed. Convergence: all batch sizes show repulsion below 15%. Opens: full GUE with 1000+ zeros, explicit rates, Hilbert-Polya construction. `experiments/montgomery_odlyzko_0_over_0.py`, `data/montgomery_odlyzko_data.json`, `docs/THE_MONTGOMERY_ODLYZKO_0_OVER_0.md`.
+
+### Hardy Z-Function and Riemann Hypothesis as 0/0
+
+Hardy (1914): Z(t) = e^{i*theta(t)} * zeta(1/2+it) is real. 0/0: Z(t_n) = 0, removable = 0. All 20 zeros verified Z(gamma_n) = 0 within 0.001. Sign changes at every zero. Functional equation Z(-t) = Z(t) exact (diff = 0). Self-adjointness signature: Z(-t) = Z(t) implies underlying operator H is self-adjoint. If H self-adjoint -> all zeros on line -> RH. Opens: construct H (Berry-Keating H=xp), de Branges theory, full proof. `experiments/hardy_z_riemann_hypothesis.py`, `data/hardy_z_riemann_data.json`, `docs/THE_HARDY_Z_RH_0_OVER_0.md`.

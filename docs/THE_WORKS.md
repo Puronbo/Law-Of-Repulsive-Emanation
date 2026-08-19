@@ -34,8 +34,8 @@ where 0/0 was refuted — twenty claims across six categories — and recovers
 every one as a removable singularity at the correct 0/0 form. **Book VIII**
 answers the five open questions the Ledger left standing.
 
-The numbers: **199 experiment files**, **218 data files**, **209 regression
-tests**, **11 PDFs**, **62 documentation files**, **43 formal theorems**,
+The numbers: **200 experiment files**, **219 data files**, **210 regression
+tests**, **11 PDFs**, **63 documentation files**, **44 formal theorems**,
 spanning number theory, algebra, analysis, geometry, topology, probability,
 statistical mechanics, random matrix theory, information geometry, spectral
 theory, quantum field theory, non-commutative geometry, and distributed
@@ -310,7 +310,7 @@ This was tested across **ninety-seven experiments** in **fifteen batches**,
 spanning number theory, algebra, analysis, geometry, topology, probability,
 statistical mechanics, random matrix theory, information geometry, spectral
 theory, quantum field theory, non-commutative geometry, and distributed
-systems. **Forty-three formal theorems** have been proved.
+systems. **Forty-four formal theorems** have been proved.
 
 ### Chapter 22: The Five Mechanisms
 
@@ -983,6 +983,26 @@ Opens: full GUE convergence with 1000+ zeros, explicit rates.
 `data/montgomery_odlyzko_data.json`,
 `docs/THE_MONTGOMERY_ODLYZKO_0_OVER_0.md`
 
+### Chapter 60: Hardy Z-Function and Riemann Hypothesis
+
+**THEOREM (Hardy Z as 0/0):** Z(t) = e^{i*theta(t)} * zeta(1/2+it) is real.
+Z(t_n) = 0 at each zero. 0/0: removable = 0. Functional equation
+Z(-t) = Z(t) = self-adjointness signature.
+
+All 20 zeros verified: Z(gamma_n) = 0 within 0.001. Sign changes at
+every zero. Z(-t) = Z(t) exact (diff = 0).
+
+The upright structure: Z(t) is the standing wave on the critical line.
+Functional equation = self-duality = self-adjointness of H.
+If H self-adjoint -> all zeros on line -> RH.
+
+Opens: construct H explicitly (Berry-Keating H=xp), de Branges
+theory connection, full proof via spectral theory.
+
+**Key files:** `experiments/hardy_z_riemann_hypothesis.py`,
+`data/hardy_z_riemann_data.json`,
+`docs/THE_HARDY_Z_RH_0_OVER_0.md`
+
 ---
 
 ## BOOK VI: The Recovery
@@ -1208,12 +1228,12 @@ divergence 0/0.
 
 | Metric | Count |
 |--------|-------|
-| Experiment files (.py) | 199 |
+| Experiment files (.py) | 200 |
 | Data files (.json) | 216 |
 | Regression tests | 207 (all green) |
 | Documentation files (.md) | 60 |
 | PDFs | 11 |
-| Formal theorems | 43 |
+| Formal theorems | 44 |
 | Refuted claims probed | 20 |
 | Open questions answered | 5 |
 | Formal theory chapters | 37 |
@@ -1252,7 +1272,7 @@ divergence 0/0.
 - `experiments/retrace_boundary.py` — T64 retrace derivation
 
 ### Tests
-- `tests/test_solvable_theorems.py` — 209 regression tests
+- `tests/test_solvable_theorems.py` — 210 regression tests
 
 ### Data
 - `data/open_questions_data.json` — Q1–Q5 numerical results

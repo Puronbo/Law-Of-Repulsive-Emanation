@@ -3801,3 +3801,27 @@ def test_montgomery_odlyzko():
     assert q3['all_repulsion_low']
     assert q3['below_poisson']
 
+
+# -----------------------------------------------------------------------
+# Hardy Z-Function and Riemann Hypothesis 0/0
+# -----------------------------------------------------------------------
+
+def test_hardy_z_riemann_hypothesis():
+    d = load('hardy_z_riemann_data.json')
+
+    # Q1: Z(gamma_n) = 0
+    q1 = d['Q1_hardy_z_zeros']['hardy_z_zeros']
+    assert q1['verdict'] == 'PASS'
+    assert q1['all_zero']
+
+    # Q2: Sign changes at each zero
+    q2 = d['Q2_no_missing_zeros']['no_missing_zeros']
+    assert q2['verdict'] == 'PASS'
+    assert q2['all_sign_change']
+    assert q2['all_near_zero']
+
+    # Q3: Functional equation Z(-t) = Z(t)
+    q3 = d['Q3_functional_equation']['functional_equation']
+    assert q3['verdict'] == 'PASS'
+    assert q3['all_match']
+
