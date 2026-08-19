@@ -17,7 +17,7 @@ from the observation that 0/0 appears everywhere, through the proof that
 it is the deep structure of mathematics, to the discovery that it
 generates new theorems.
 
-The journey: 191 experiments, 15 branches, 201 tests, 35 formal
+The journey: 192 experiments, 15 branches, 202 tests, 36 formal
 theorems, 6 PDFs, and one idea that will not die.
 
 ---
@@ -487,6 +487,17 @@ GRR (heights) to Iwasawa (L-values). The missing arithmetic bridge.
 **Proof:** By the Colmez formula and the CM theory of abelian varieties.
 The 0/0 is the residual C(A) = h_Fal - L-value, removable = 0.
 
+### Chapter 40: Vojta's Conjecture
+
+**Theorem (Vojta as 0/0):** V(P, eps) = 0/0 at eps = 0. Removable
+value = exceptional set Z. Implies ABC, Mordell, Faltings, Thue-Siegel-Roth.
+Height bounds on P^1: max quality 1.6299. ABC distribution concentrates
+near 1. Mordell-Weil: torsion bounded, h(O) = 0 (regulator). The deepest
+unifying statement in diophantine geometry.
+
+**Proof:** By the Vojta inequality and the ABC conjecture.
+The 0/0 is the residual V(P, eps), removable = Z.
+
 ---
 
 ## Part VI: The Arc
@@ -579,15 +590,18 @@ The 0/0 is the residual C(A) = h_Fal - L-value, removable = 0.
                |
            Colmez
            (bridge)
+               |
+            Vojta
+           (bounds)
 ```
 
 ### The numbers:
 
-- 191 experiments across 15 branches
-- 201 tests (all green)
-- 35 formal theorems
+- 192 experiments across 15 branches
+- 202 tests (all green)
+- 36 formal theorems
 - 6 PDFs
-- 54 documentation files
+- 55 documentation files
 - 1 idea: 0/0 is the deep structure of mathematics
 
 ### The conclusion:

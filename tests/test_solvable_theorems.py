@@ -3594,3 +3594,27 @@ def test_colmez_conjecture():
     assert q3['all_match_formula']
     assert q3['l_function_significant']
 
+
+# -----------------------------------------------------------------------
+# Vojta's Conjecture 0/0
+# -----------------------------------------------------------------------
+
+def test_vojta_conjecture():
+    d = load('vojta_conjecture_data.json')
+
+    # Q1: Height bounds
+    q1 = d['Q1_height_bounds']['height_bounds']
+    assert q1['verdict'] == 'PASS'
+    assert q1['ratio_above_1']  # max ratio > 1
+
+    # Q2: ABC quality
+    q2 = d['Q2_abc_quality']['abc_quality']
+    assert q2['verdict'] == 'PASS'
+    assert q2['quality_above_1']
+
+    # Q3: Mordell-Weil
+    q3 = d['Q3_mordell_weil']['mordell_weil']
+    assert q3['verdict'] == 'PASS'
+    assert q3['identity_height_zero']
+    assert q3['torsion_bounded']
+

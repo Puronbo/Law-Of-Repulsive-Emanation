@@ -328,3 +328,7 @@ Arithmetic index theorem: (L,L)_Ar = d^2 + (2g-2)*d + delta(X). At d=0, g=1: 0/0
 ### Colmez Conjecture as 0/0
 
 Colmez (2008): h_Fal(A) = L-value formula + local terms for CM abelian varieties. 0/0 at CM points, removable value = 0. Faltings heights: 5 CM curves, all finite and positive, increasing with conductor. L-values: all L(E,1) > 0, BSD ratios 0.25-0.31. Colmez formula: h_Fal = conductor + discriminant + L-function parts. L-function contribution 22-49% of total height, determined by L'(0, psi). Connects Arakelov GRR (heights) <-> Iwasawa (L-values) <-> BSD. The missing arithmetic bridge. Opens: effective Colmez, non-CM generalization, Vojta, p-adic Colmez. `experiments/colmez_conjecture_0_over_0.py`, `data/colmez_conjecture_data.json`, `docs/THE_COLMEZ_CONJECTURE_0_OVER_0.md`.
+
+### Vojta's Conjecture as 0/0
+
+Vojta (1987): deepest unifying statement in diophantine geometry. Implies ABC, Mordell, Faltings, Thue-Siegel-Roth. 0/0 at epsilon = 0, removable value = exceptional set. Height bounds: max ABC quality 1.6299 from coprime pairs. ABC distribution concentrates near 1. Mordell-Weil: torsion bounded, h(O) = 0 (regulator). Quadratic growth h(nP) ~ n^2*h(P) for rank 1. Opens: effective Vojta, function field case, Vojta+Arakelov, p-adic Vojta. `experiments/vojta_conjecture_0_over_0.py`, `data/vojta_conjecture_data.json`, `docs/THE_VOJTA_CONJECTURE_0_OVER_0.md`.

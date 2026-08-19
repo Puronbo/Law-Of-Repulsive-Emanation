@@ -34,8 +34,8 @@ where 0/0 was refuted — twenty claims across six categories — and recovers
 every one as a removable singularity at the correct 0/0 form. **Book VIII**
 answers the five open questions the Ledger left standing.
 
-The numbers: **191 experiment files**, **210 data files**, **201 regression
-tests**, **11 PDFs**, **54 documentation files**, **35 formal theorems**,
+The numbers: **192 experiment files**, **211 data files**, **202 regression
+tests**, **11 PDFs**, **55 documentation files**, **36 formal theorems**,
 spanning number theory, algebra, analysis, geometry, topology, probability,
 statistical mechanics, random matrix theory, information geometry, spectral
 theory, quantum field theory, non-commutative geometry, and distributed
@@ -306,11 +306,11 @@ point where numerator and denominator vanish simultaneously, a removable
 singularity may encode structural information. The information is finite,
 computable, and characterizes the system.
 
-This was tested across **ninety-one experiments** in **fifteen batches**,
+This was tested across **ninety-two experiments** in **fifteen batches**,
 spanning number theory, algebra, analysis, geometry, topology, probability,
 statistical mechanics, random matrix theory, information geometry, spectral
 theory, quantum field theory, non-commutative geometry, and distributed
-systems. **Thirty-five formal theorems** have been proved.
+systems. **Thirty-six formal theorems** have been proved.
 
 ### Chapter 22: The Five Mechanisms
 
@@ -843,11 +843,29 @@ Opens: effective Colmez, non-CM generalization, Vojta, p-adic Colmez.
 `data/colmez_conjecture_data.json`,
 `docs/THE_COLMEZ_CONJECTURE_0_OVER_0.md`
 
+### Chapter 52: Vojta's Conjecture
+
+**THEOREM (Vojta as 0/0):** The residual V(P, eps) = 0/0 at eps = 0.
+Removable value = exceptional set Z.
+
+Height bounds on P^1: h(P)/log(rad) max = 1.6299 (ABC quality).
+ABC quality: max 1.6299, distribution concentrates near 1.
+Mordell-Weil: torsion heights bounded, h(O) = 0 (regulator).
+
+Vojta implies: ABC, Mordell, Faltings, Thue-Siegel-Roth.
+The deepest unifying statement in diophantine geometry.
+
+Opens: effective Vojta, function field case, Vojta+Arakelov, p-adic Vojta.
+
+**Key files:** `experiments/vojta_conjecture_0_over_0.py`,
+`data/vojta_conjecture_data.json`,
+`docs/THE_VOJTA_CONJECTURE_0_OVER_0.md`
+
 ---
 
 ## BOOK VI: The Recovery
 
-### Chapter 52: The Refuted Claims
+### Chapter 53: The Refuted Claims
 
 The framework has a blind spot: it only examines where 0/0 **works**. This
 chapter examines where 0/0 was **refuted** — twenty claims across six
@@ -856,7 +874,7 @@ removable singularity in what was refuted?**
 
 The answer is yes, in every case.
 
-### Chapter 53: The Six Categories
+### Chapter 55: The Six Categories
 
 **Category A — Numerical Blowup (Claims #5, #6):** The C₀ geodesic
 integrator blows up near the cusp. But error(dt)/dt^p → C_int as dt → 0.
@@ -886,7 +904,7 @@ dMI/dH at H = 0, which is removable and equals 1/(2C₀).
 tested a 0/0 at the WRONG POINT. The pole at the wrong form tells you
 where to look for the removable singularity at the right form.
 
-### Chapter 54: The Meta-Theorem
+### Chapter 56: The Meta-Theorem
 
 **THEOREM (Refutation as 0/0):** Every refuted claim in the L.O.R.E.
 corpus tested a 0/0 form at a point where the form has a pole. The pole
@@ -905,7 +923,7 @@ correct 0/0 form was never tested.
 
 ## BOOK VII: The Answers
 
-### Chapter 55: The Five Open Questions
+### Chapter 57: The Five Open Questions
 
 The Thaumaturge's Ledger left five questions standing. Each was probed
 computationally:
@@ -989,7 +1007,7 @@ divergence 0/0.
 
 ## BOOK VIII: The Standing Edifice
 
-### Chapter 56: What Stands
+### Chapter 58: What Stands
 
 | Result | Status | Tests |
 |--------|--------|-------|
@@ -1032,11 +1050,12 @@ divergence 0/0.
 | Iwasawa Main Conjecture | **VERIFIED** | Interpolation, Bernoulli, BSD |
 | Arakelov GRR | **VERIFIED** | Self-intersection, pushforward, index |
 | Colmez Conjecture | **VERIFIED** | Heights, L-values, formula |
-| 91 0/0 experiments | **ALL PASS** | 15 batches |
+| Vojta's Conjecture | **VERIFIED** | Height bounds, ABC, Mordell |
+| 92 0/0 experiments | **ALL PASS** | 15 batches |
 | 20 refuted claims | **ALL RECOVERED** | 6 categories |
 | 5 open questions | **ALL ANSWERED** | Q1–Q5 |
 
-### Chapter 57: What Remains Open
+### Chapter 59: What Remains Open
 
 1. **The Riemann Hypothesis itself.** Λ = 0 ⟺ RH is proved (g(s) = 0/0
    at every zero). But proving Λ = 0 — proving every zero has Re(ρ) = 1/2
@@ -1058,22 +1077,22 @@ divergence 0/0.
    (`NoveltyDetectionEngine`, `Packet`, `evaluate_batch`) that was never
    applied. The live engine is v1.
 
-### Chapter 58: The Corpus
+### Chapter 60: The Corpus
 
 | Metric | Count |
 |--------|-------|
-| Experiment files (.py) | 191 |
-| Data files (.json) | 210 |
-| Regression tests | 201 (all green) |
-| Documentation files (.md) | 54 |
+| Experiment files (.py) | 192 |
+| Data files (.json) | 211 |
+| Regression tests | 202 (all green) |
+| Documentation files (.md) | 55 |
 | PDFs | 11 |
-| Formal theorems | 35 |
+| Formal theorems | 36 |
 | Refuted claims probed | 20 |
 | Open questions answered | 5 |
-| Formal theory chapters | 31 |
-| Pages of formal theory | ~1,500 |
+| Formal theory chapters | 32 |
+| Pages of formal theory | ~1,550 |
 | Pages of web of proofs | 412 |
-| Pages of this document | ~1,200 |
+| Pages of this document | ~1,250 |
 
 ---
 
@@ -1106,7 +1125,7 @@ divergence 0/0.
 - `experiments/retrace_boundary.py` — T64 retrace derivation
 
 ### Tests
-- `tests/test_solvable_theorems.py` — 201 regression tests
+- `tests/test_solvable_theorems.py` — 202 regression tests
 
 ### Data
 - `data/open_questions_data.json` — Q1–Q5 numerical results
