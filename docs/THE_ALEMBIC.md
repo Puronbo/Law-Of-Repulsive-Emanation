@@ -17,7 +17,7 @@ from the observation that 0/0 appears everywhere, through the proof that
 it is the deep structure of mathematics, to the discovery that it
 generates new theorems.
 
-The journey: 196 experiments, 15 branches, 206 tests, 40 formal
+The journey: 197 experiments, 15 branches, 207 tests, 41 formal
 theorems, 6 PDFs, and one idea that will not die.
 
 ---
@@ -537,6 +537,15 @@ correspondence: 100% match. Level = conductor verified. 40 theorems.
 **Proof:** By Wiles, Taylor-Wiles, Breuil-Conrad-Diamond-Taylor.
 The 0/0 is the difference, removable = 0.
 
+### Chapter 45: Sato-Tate Conjecture
+
+**Theorem (Sato-Tate as 0/0):** Empirical - semicircle = 0/0, removable = 0
+for non-CM. At CM: degenerates, removable = CM measure. Semicircle KS=0.069.
+CM KS=0.336 (rejected). Moments match Catalan. 41 theorems.
+
+**Proof:** By Barnet-Lamb, Geraghty, Harris, Taylor via Shimura-Taniyama.
+The 0/0 is the distribution, removable = 0 or CM measure.
+
 ---
 
 ## Part VI: The Arc
@@ -646,15 +655,18 @@ The 0/0 is the difference, removable = 0.
          Shimura-
          Taniyama
           (modularity)
+               |
+           Sato-Tate
+          (distribution)
 ```
 
 ### The numbers:
 
-- 196 experiments across 15 branches
-- 206 tests (all green)
-- 40 formal theorems
+- 197 experiments across 15 branches
+- 207 tests (all green)
+- 41 formal theorems
 - 6 PDFs
-- 59 documentation files
+- 60 documentation files
 - 1 idea: 0/0 is the deep structure of mathematics
 
 ### The conclusion:

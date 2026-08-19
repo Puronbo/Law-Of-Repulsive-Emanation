@@ -3725,3 +3725,28 @@ def test_shimura_taniyama():
     assert q3['verdict'] == 'PASS'
     assert q3['all_cm_condition']
 
+
+# -----------------------------------------------------------------------
+# Sato-Tate Conjecture 0/0
+# -----------------------------------------------------------------------
+
+def test_sato_tate():
+    d = load('sato_tate_data.json')
+
+    # Q1: Semicircle law
+    q1 = d['Q1_semicircle']['semicircle']
+    assert q1['verdict'] == 'PASS'
+    assert q1['ks_ok']
+    assert q1['hasse_ok']
+
+    # Q2: CM degeneration
+    q2 = d['Q2_cm_degeneration']['cm_degeneration']
+    assert q2['verdict'] == 'PASS'
+    assert q2['cm_primes_zero']
+    assert q2['ks_rejects_semicircle']
+
+    # Q3: Moments
+    q3 = d['Q3_moments']['moments']
+    assert q3['verdict'] == 'PASS'
+    assert q3['all_close']
+

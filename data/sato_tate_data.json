@@ -1,0 +1,92 @@
+{
+  "Q1_semicircle": {
+    "semicircle": {
+      "n_primes": 93,
+      "ks_statistic": 0.08673158369589004,
+      "ks_ok": true,
+      "moments": {
+        "2": {
+          "empirical": 0.26830339289817473,
+          "expected": 0.25,
+          "error": 0.01830339289817473
+        },
+        "4": {
+          "empirical": 0.14446075792089436,
+          "expected": 0.125,
+          "error": 0.019460757920894356
+        },
+        "6": {
+          "empirical": 0.09374539308891845,
+          "expected": 0.078125,
+          "error": 0.015620393088918452
+        }
+      },
+      "hasse_ok": true,
+      "verdict": "PASS"
+    }
+  },
+  "Q2_cm_degeneration": {
+    "cm_degeneration": {
+      "n_primes": 94,
+      "ks_statistic": 0.2872340425531915,
+      "fraction_near_zero": 0.5425531914893617,
+      "cm_primes_zero": true,
+      "cm_primes_count": 50,
+      "fraction_split_nonzero": 0.9772727272727273,
+      "ks_rejects_semicircle": true,
+      "verdict": "PASS"
+    }
+  },
+  "Q3_moments": {
+    "moments": {
+      "results": [
+        {
+          "name": "y^2=x^3-x+1",
+          "n_primes": 93,
+          "moments": {
+            "2": {
+              "empirical": 0.26830339289817473,
+              "expected": 0.25,
+              "rel_error": 0.07321357159269892
+            },
+            "4": {
+              "empirical": 0.14446075792089436,
+              "expected": 0.125,
+              "rel_error": 0.15568606336715485
+            },
+            "6": {
+              "empirical": 0.09374539308891845,
+              "expected": 0.078125,
+              "rel_error": 0.19994103153815618
+            }
+          },
+          "all_close": true
+        },
+        {
+          "name": "y^2=x^3-2x+1",
+          "n_primes": 95,
+          "moments": {
+            "2": {
+              "empirical": 0.2515274083543177,
+              "expected": 0.25,
+              "rel_error": 0.006109633417270777
+            },
+            "4": {
+              "empirical": 0.1232323661652635,
+              "expected": 0.125,
+              "rel_error": 0.014141070677892054
+            },
+            "6": {
+              "empirical": 0.07700225386639757,
+              "expected": 0.078125,
+              "rel_error": 0.014371150510111086
+            }
+          },
+          "all_close": true
+        }
+      ],
+      "all_close": true,
+      "verdict": "PASS"
+    }
+  }
+}

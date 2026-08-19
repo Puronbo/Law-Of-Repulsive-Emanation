@@ -348,3 +348,7 @@ Zilber-Pink (2011): deepest unlikely intersections statement. Unifies Manin-Mumf
 ### Shimura-Taniyama as 0/0
 
 Wiles (2001): every elliptic curve over Q is modular. L(E,s) = L(f,s). 0/0 at CM points, removable = 0. Euler product: a_p computed for 48 primes, CM primes all zero, Hasse bound satisfied. CM correspondence: 100% match for Z[i] and Z[omega]. Level = conductor: 5 curves verified. Ramanujan bound OK. Opens: abelian surface modularity, potential modularity, lifting. `experiments/shimura_taniyama_0_over_0.py`, `data/shimura_taniyama_data.json`, `docs/THE_SHIMURA_TANIYAMA_0_OVER_0.md`.
+
+### Sato-Tate as 0/0
+
+Barnet-Lamb et al. (2011): normalized Frobenius traces follow semicircle distribution for non-CM curves. 0/0 at CM points (distribution degenerates). Non-CM: KS=0.069, semicircle not rejected. CM: KS=0.336, rejected. CM primes all zero (50%). Moments match Catalan: E[x^2]~0.25, E[x^4]~0.125, E[x^6]~0.078. Opens: higher-dim Sato-Tate, Galois reps, effective rates. `experiments/sato_tate_0_over_0.py`, `data/sato_tate_data.json`, `docs/THE_SATO_TATE_0_OVER_0.md`.
