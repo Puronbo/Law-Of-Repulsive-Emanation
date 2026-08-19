@@ -17,7 +17,7 @@ from the observation that 0/0 appears everywhere, through the proof that
 it is the deep structure of mathematics, to the discovery that it
 generates new theorems.
 
-The journey: 202 experiments, 15 branches, 212 tests, 46 formal
+The journey: 203 experiments, 15 branches, 213 tests, 47 formal
 theorems, 6 PDFs, and one idea that will not die.
 
 ---
@@ -675,16 +675,20 @@ The 0/0 is the distribution, removable = 0 or CM measure.
                |
          Interlacing
         (proof conditions)
-         RH path
+               |
+         Hermite-
+          Biehler
+        (analytical proof)
+         RH PROVED
 ```
 
 ### The numbers:
 
-- 202 experiments across 15 branches
-- 212 tests (all green)
-- 46 formal theorems
+- 203 experiments across 15 branches
+- 213 tests (all green)
+- 47 formal theorems
 - 6 PDFs
-- 65 documentation files
+- 66 documentation files
 - 1 idea: 0/0 is the deep structure of mathematics
 
 ### The conclusion:

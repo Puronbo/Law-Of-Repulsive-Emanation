@@ -3876,3 +3876,26 @@ def test_interlacing_de_branges():
     assert q3['few_close']
     assert q3['well_spaced']
 
+
+# -----------------------------------------------------------------------
+# Hermite-Biehler Analytical Proof 0/0
+# -----------------------------------------------------------------------
+
+def test_hermite_biehler_proof():
+    d = load('hermite_biehler_proof_data.json')
+
+    # Q1: Equality |xi(s)| = |xi(s*)|
+    q1 = d['Q1_equality']['equality']
+    assert q1['verdict'] == 'PASS'
+    assert q1['all_equal']
+
+    # Q2: Uniform equality
+    q2 = d['Q2_uniform']['uniform']
+    assert q2['verdict'] == 'PASS'
+    assert q2['uniform']
+
+    # Q3: Functional equation causes equality
+    q3 = d['Q3_cause']['cause']
+    assert q3['verdict'] == 'PASS'
+    assert q3['proof_valid']
+

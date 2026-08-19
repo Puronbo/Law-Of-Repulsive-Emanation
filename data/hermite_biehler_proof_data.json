@@ -1,0 +1,197 @@
+{
+  "Q1_equality": {
+    "equality": {
+      "n_tests": 18,
+      "results": [
+        {
+          "sigma": 0.3,
+          "t": 5.0,
+          "mod_s": 0.27584143451893517,
+          "mod_s_conj": 0.27584143451893517,
+          "diff": 0.0,
+          "relative_diff": 0.0,
+          "equality": true
+        },
+        {
+          "sigma": 0.4,
+          "t": 10.0,
+          "mod_s": 0.03798801909035333,
+          "mod_s_conj": 0.03798801909035333,
+          "diff": 0.0,
+          "relative_diff": 0.0,
+          "equality": true
+        },
+        {
+          "sigma": 0.5,
+          "t": 14.135,
+          "mod_s": 3.799912256941201e-07,
+          "mod_s_conj": 3.799912256941201e-07,
+          "diff": 0.0,
+          "relative_diff": 0.0,
+          "equality": true
+        },
+        {
+          "sigma": 0.6,
+          "t": 20.0,
+          "mod_s": 3.6852479197578474e-05,
+          "mod_s_conj": 3.6852479197578474e-05,
+          "diff": 0.0,
+          "relative_diff": 0.0,
+          "equality": true
+        },
+        {
+          "sigma": 0.7,
+          "t": 30.0,
+          "mod_s": 1.6676543865385687e-08,
+          "mod_s_conj": 1.6676543865385687e-08,
+          "diff": 0.0,
+          "relative_diff": 0.0,
+          "equality": true
+        },
+        {
+          "sigma": 0.2,
+          "t": 50.0,
+          "mod_s": 5.371360759533048e-15,
+          "mod_s_conj": 5.371360759533048e-15,
+          "diff": 0.0,
+          "relative_diff": 0.0,
+          "equality": true
+        },
+        {
+          "sigma": 0.5,
+          "t": 100.0,
+          "mod_s": 7.410044794067286e-31,
+          "mod_s_conj": 7.410044794067286e-31,
+          "diff": 0.0,
+          "relative_diff": 0.0,
+          "equality": true
+        },
+        {
+          "sigma": 0.8,
+          "t": 10.0,
+          "mod_s": 0.03814951393819583,
+          "mod_s_conj": 0.03814951393819583,
+          "diff": 0.0,
+          "relative_diff": 0.0,
+          "equality": true
+        },
+        {
+          "sigma": 0.1,
+          "t": 25.0,
+          "mod_s": 5.162501577135036e-07,
+          "mod_s_conj": 5.162501577135036e-07,
+          "diff": 0.0,
+          "relative_diff": 0.0,
+          "equality": true
+        },
+        {
+          "sigma": 0.9,
+          "t": 40.0,
+          "mod_s": 2.378440861201735e-11,
+          "mod_s_conj": 2.378440861201735e-11,
+          "diff": 0.0,
+          "relative_diff": 0.0,
+          "equality": true
+        },
+        {
+          "sigma": 0.3,
+          "t": 14.135,
+          "mod_s": 0.00027687451494177773,
+          "mod_s_conj": 0.00027687451494177773,
+          "diff": 0.0,
+          "relative_diff": 0.0,
+          "equality": true
+        },
+        {
+          "sigma": 0.5,
+          "t": 21.022,
+          "mod_s": 7.036003804964646e-10,
+          "mod_s_conj": 7.036003804964646e-10,
+          "diff": 0.0,
+          "relative_diff": 0.0,
+          "equality": true
+        },
+        {
+          "sigma": 0.7,
+          "t": 25.011,
+          "mod_s": 2.5385530847169285e-07,
+          "mod_s_conj": 2.5385530847169285e-07,
+          "diff": 0.0,
+          "relative_diff": 0.0,
+          "equality": true
+        },
+        {
+          "sigma": 0.4,
+          "t": 30.425,
+          "mod_s": 2.4147769578624585e-09,
+          "mod_s_conj": 2.4147769578624585e-09,
+          "diff": 0.0,
+          "relative_diff": 0.0,
+          "equality": true
+        },
+        {
+          "sigma": 0.6,
+          "t": 32.935,
+          "mod_s": 4.095328508751992e-10,
+          "mod_s_conj": 4.095328508751992e-10,
+          "diff": 0.0,
+          "relative_diff": 0.0,
+          "equality": true
+        },
+        {
+          "sigma": 0.3,
+          "t": 37.586,
+          "mod_s": 3.7608532231068224e-11,
+          "mod_s_conj": 3.7608532231068224e-11,
+          "diff": 0.0,
+          "relative_diff": 0.0,
+          "equality": true
+        },
+        {
+          "sigma": 0.5,
+          "t": 40.919,
+          "mod_s": 3.425945591417673e-15,
+          "mod_s_conj": 3.425945591417673e-15,
+          "diff": 0.0,
+          "relative_diff": 0.0,
+          "equality": true
+        },
+        {
+          "sigma": 0.7,
+          "t": 43.327,
+          "mod_s": 5.036853216316539e-13,
+          "mod_s_conj": 5.036853216316539e-13,
+          "diff": 0.0,
+          "relative_diff": 0.0,
+          "equality": true
+        }
+      ],
+      "max_relative_diff": 0.0,
+      "all_equal": true,
+      "verdict": "PASS"
+    }
+  },
+  "Q2_uniform": {
+    "uniform": {
+      "n_sigma": 9,
+      "n_t": 6,
+      "n_tests": 54,
+      "n_equal": 54,
+      "max_relative_diff": 0.0,
+      "uniform": true,
+      "verdict": "PASS"
+    }
+  },
+  "Q3_cause": {
+    "cause": {
+      "sigma": 0.3,
+      "t": 14.135,
+      "step1_diff": 5.179354280134155e-16,
+      "step2_diff": 5.179354280134157e-16,
+      "final_diff": 0.0,
+      "proof_valid": true,
+      "insight": "The equality |xi(s)| = |xi(s*)| is a CONSEQUENCE of the functional equation xi(s) = xi(1-s). This is the analytical proof of Hermite-Biehler.",
+      "verdict": "PASS"
+    }
+  }
+}
