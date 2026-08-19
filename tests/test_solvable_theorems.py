@@ -3493,3 +3493,30 @@ def test_arakelov_theory():
     assert q3['verdict'] == 'PASS'
     assert q3['grothendieck_riemann_roch']
 
+
+# -----------------------------------------------------------------------
+# Schanuel's Conjecture 0/0
+# -----------------------------------------------------------------------
+
+def test_schanuels_conjecture():
+    d = load('schanuels_conjecture_data.json')
+
+    # Q1: Baker's theorem
+    q1 = d['Q1_baker']['baker']
+    assert q1['verdict'] == 'PASS'
+    assert q1['decreasing']
+    assert q1['avg_slope'] < 0
+
+    # Q2: Lindemann-Weierstrass
+    q2 = d['Q2_lindemann_weierstrass']['lindemann_weierstrass']
+    assert q2['verdict'] == 'PASS'
+    assert q2['all_transcendental']
+    assert q2['n_verified'] == 4
+
+    # Q3: Six Exponentials
+    q3 = d['Q3_six_exponentials']['six_exponentials']
+    assert q3['verdict'] == 'PASS'
+    assert q3['all_transcendent']
+    assert q3['condition_satisfied']
+    assert q3['transcendence_ratio'] == 1.0
+

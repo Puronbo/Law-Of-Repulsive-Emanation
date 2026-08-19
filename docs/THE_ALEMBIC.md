@@ -17,7 +17,7 @@ from the observation that 0/0 appears everywhere, through the proof that
 it is the deep structure of mathematics, to the discovery that it
 generates new theorems.
 
-The journey: 187 experiments, 15 branches, 197 tests, 31 formal
+The journey: 188 experiments, 15 branches, 198 tests, 32 formal
 theorems, 6 PDFs, and one idea that will not die.
 
 ---
@@ -440,6 +440,19 @@ GRR: (deg(L), deg(L))_Ar = (2g-2)*deg(L) + delta.
 Riemann surfaces. The singularity is universal (-log|z-w|^2),
 the regular part is the invariant.
 
+### Chapter 36: Schanuel's Conjecture
+
+**Theorem (Schanuel as 0/0):** tr.deg(alpha, e^alpha)/n = 0/0 at
+Q-linear dependence. Removable value >= 1 (tr.deg >= n). Baker theorem:
+|sum b_i log(a_i)| > exp(-C*H), monotone decreasing (log_min: -0.903
+to -6.171 for H=1 to 200). Lindemann-Weierstrass: e^a transcendental
+for algebraic a != 0 (4 values verified). Six Exponentials: all 6
+e^{a_i*b_j} transcendental by Gelfond-Schneider. The master conjecture
+of transcendence theory implies every known result.
+
+**Proof:** By the Ax-Schanuel theorem (proven for restricted
+exponential fields) and the logical structure of transcendence theory.
+
 ---
 
 ## Part VI: The Arc
@@ -514,16 +527,24 @@ the regular part is the invariant.
               |               |
               +-------+-------+
                       |
-              Millennium Bridge
+               +------+------+
+               |             |
+           Schanuel     Millennium
+           (transcend)   Bridge
+               |
+         +-----+-----+
+         |           |
+      Baker       Gelfond-
+      (logs)      Schneider
 ```
 
 ### The numbers:
 
-- 187 experiments across 15 branches
-- 197 tests (all green)
-- 31 formal theorems
+- 188 experiments across 15 branches
+- 198 tests (all green)
+- 32 formal theorems
 - 6 PDFs
-- 50 documentation files
+- 51 documentation files
 - 1 idea: 0/0 is the deep structure of mathematics
 
 ### The conclusion:

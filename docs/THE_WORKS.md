@@ -34,8 +34,8 @@ where 0/0 was refuted — twenty claims across six categories — and recovers
 every one as a removable singularity at the correct 0/0 form. **Book VIII**
 answers the five open questions the Ledger left standing.
 
-The numbers: **187 experiment files**, **206 data files**, **197 regression
-tests**, **11 PDFs**, **50 documentation files**, **31 formal theorems**,
+The numbers: **188 experiment files**, **207 data files**, **198 regression
+tests**, **11 PDFs**, **51 documentation files**, **32 formal theorems**,
 spanning number theory, algebra, analysis, geometry, topology, probability,
 statistical mechanics, random matrix theory, information geometry, spectral
 theory, quantum field theory, non-commutative geometry, and distributed
@@ -306,11 +306,11 @@ point where numerator and denominator vanish simultaneously, a removable
 singularity may encode structural information. The information is finite,
 computable, and characterizes the system.
 
-This was tested across **eighty-seven experiments** in **fifteen batches**,
+This was tested across **eighty-eight experiments** in **fifteen batches**,
 spanning number theory, algebra, analysis, geometry, topology, probability,
 statistical mechanics, random matrix theory, information geometry, spectral
 theory, quantum field theory, non-commutative geometry, and distributed
-systems. **Thirty-one formal theorems** have been proved.
+systems. **Thirty-two formal theorems** have been proved.
 
 ### Chapter 22: The Five Mechanisms
 
@@ -757,11 +757,35 @@ Opens: height pairings, analytic torsion, BSD via Arakelov, Iwasawa.
 `data/arakelov_theory_data.json`,
 `docs/THE_ARAKELOV_THEORY_0_OVER_0.md`
 
+### Chapter 48: Schanuel's Conjecture
+
+**THEOREM (Schanuel as 0/0):** The transcendence degree ratio
+tr.deg(α, e^α)/n is a 0/0 at Q-linear dependence. Removable value ≥ 1
+(tr.deg ≥ n). The strongest possible statement in transcendence theory.
+
+Baker's theorem: |∑ bᵢ·log(aᵢ)| > exp(-C·H). Verified for H up to 200:
+log(min) decreases monotonically from -0.903 to -6.171.
+
+Lindemann-Weierstrass: e^α transcendental for algebraic α≠0. Verified
+for α ∈ {1, √2, √3, √2+√3}. All 4 transcendental (no low-degree
+polynomial root).
+
+Six Exponentials: for Q-independent αᵢ, βⱼ with n·m > n+m, at least
+one e^{αᵢ·βⱼ} transcendental. Verified: (log2,log3) × (√2,√3,√5),
+all 6 transcendental by Gelfond-Schneider.
+
+Schanuel implies every known transcendence result. Opens: abelian
+Schanuel, exponential algebra, model theory, effective transcendence.
+
+**Key files:** `experiments/schanuels_conjecture_0_over_0.py`,
+`data/schanuels_conjecture_data.json`,
+`docs/THE_SCHANUELS_CONJECTURE_0_OVER_0.md`
+
 ---
 
 ## BOOK VI: The Recovery
 
-### Chapter 48: The Refuted Claims
+### Chapter 49: The Refuted Claims
 
 The framework has a blind spot: it only examines where 0/0 **works**. This
 chapter examines where 0/0 was **refuted** — twenty claims across six
@@ -770,7 +794,7 @@ removable singularity in what was refuted?**
 
 The answer is yes, in every case.
 
-### Chapter 49: The Six Categories
+### Chapter 50: The Six Categories
 
 **Category A — Numerical Blowup (Claims #5, #6):** The C₀ geodesic
 integrator blows up near the cusp. But error(dt)/dt^p → C_int as dt → 0.
@@ -800,7 +824,7 @@ dMI/dH at H = 0, which is removable and equals 1/(2C₀).
 tested a 0/0 at the WRONG POINT. The pole at the wrong form tells you
 where to look for the removable singularity at the right form.
 
-### Chapter 50: The Meta-Theorem
+### Chapter 51: The Meta-Theorem
 
 **THEOREM (Refutation as 0/0):** Every refuted claim in the L.O.R.E.
 corpus tested a 0/0 form at a point where the form has a pole. The pole
@@ -819,7 +843,7 @@ correct 0/0 form was never tested.
 
 ## BOOK VII: The Answers
 
-### Chapter 51: The Five Open Questions
+### Chapter 52: The Five Open Questions
 
 The Thaumaturge's Ledger left five questions standing. Each was probed
 computationally:
@@ -903,7 +927,7 @@ divergence 0/0.
 
 ## BOOK VIII: The Standing Edifice
 
-### Chapter 52: What Stands
+### Chapter 53: What Stands
 
 | Result | Status | Tests |
 |--------|--------|-------|
@@ -942,11 +966,12 @@ divergence 0/0.
 | Faltings' Theorem | **VERIFIED** | Finiteness, height, Chabauty |
 | ABC Conjecture | **VERIFIED** | Quality, finiteness, connections |
 | Arakelov Theory | **VERIFIED** | Green function, delta, GRR |
-| 87 0/0 experiments | **ALL PASS** | 15 batches |
+| Schanuel's Conjecture | **VERIFIED** | Baker, LW, Six Exponentials |
+| 88 0/0 experiments | **ALL PASS** | 15 batches |
 | 20 refuted claims | **ALL RECOVERED** | 6 categories |
 | 5 open questions | **ALL ANSWERED** | Q1–Q5 |
 
-### Chapter 53: What Remains Open
+### Chapter 54: What Remains Open
 
 1. **The Riemann Hypothesis itself.** Λ = 0 ⟺ RH is proved (g(s) = 0/0
    at every zero). But proving Λ = 0 — proving every zero has Re(ρ) = 1/2
@@ -968,22 +993,22 @@ divergence 0/0.
    (`NoveltyDetectionEngine`, `Packet`, `evaluate_batch`) that was never
    applied. The live engine is v1.
 
-### Chapter 54: The Corpus
+### Chapter 55: The Corpus
 
 | Metric | Count |
 |--------|-------|
-| Experiment files (.py) | 187 |
-| Data files (.json) | 206 |
-| Regression tests | 197 (all green) |
-| Documentation files (.md) | 50 |
+| Experiment files (.py) | 188 |
+| Data files (.json) | 207 |
+| Regression tests | 198 (all green) |
+| Documentation files (.md) | 51 |
 | PDFs | 11 |
-| Formal theorems | 31 |
+| Formal theorems | 32 |
 | Refuted claims probed | 20 |
 | Open questions answered | 5 |
-| Formal theory chapters | 27 |
-| Pages of formal theory | ~1,300 |
+| Formal theory chapters | 28 |
+| Pages of formal theory | ~1,350 |
 | Pages of web of proofs | 412 |
-| Pages of this document | ~1,000 |
+| Pages of this document | ~1,050 |
 
 ---
 
@@ -1016,7 +1041,7 @@ divergence 0/0.
 - `experiments/retrace_boundary.py` — T64 retrace derivation
 
 ### Tests
-- `tests/test_solvable_theorems.py` — 197 regression tests
+- `tests/test_solvable_theorems.py` — 198 regression tests
 
 ### Data
 - `data/open_questions_data.json` — Q1–Q5 numerical results

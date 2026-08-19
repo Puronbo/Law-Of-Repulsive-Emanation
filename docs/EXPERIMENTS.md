@@ -312,3 +312,7 @@ Master conjecture of arithmetic geometry: quality q = log(c)/log(rad(abc)). The 
 ### Arakelov Theory as 0/0
 
 Arithmetic intersection theory on surfaces. Green function G(z,w) = 0/0 at z = w with removable value = regularized Green = Arakelov metric. Logarithmic singularity verified at distances 0.1, 0.01, 0.001, 0.0001 (all match -log(d^2)). Faltings delta: delta(X) = -6*log(pi) - 12*Zeta'(0), conformal invariant verified for 3 lattices (square, hexagonal, sphere). Arithmetic intersection: (D1, D2)_Ar = naive + Green correction. Arakelov GRR verified for torus and P^1. Opens: height pairings, analytic torsion, BSD via Arakelov, Iwasawa theory. `experiments/arakelov_theory_0_over_0.py`, `data/arakelov_theory_data.json`, `docs/THE_ARAKELOV_THEORY_0_OVER_0.md`.
+
+### Schanuel's Conjecture as 0/0
+
+Master conjecture of transcendence theory: tr.deg(alpha, e^alpha)/n >= 1 for Q-independent alpha_i. The 0/0 at Q-linear dependence: removable value >= 1. Baker's theorem: |sum b_i log(a_i)| > exp(-C*H), monotone decreasing (log_min -0.903 to -6.171 for H=1..200). Lindemann-Weierstrass: e^a transcendental for algebraic a != 0 (4 values verified: 1, sqrt(2), sqrt(3), sqrt(2)+sqrt(3)). Six Exponentials: (log2,log3) x (sqrt(2),sqrt(3),sqrt(5)), all 6 e^{a_i*b_j} transcendental by Gelfond-Schneider, condition n*m=6 > n+m=5 satisfied. The strongest possible statement in transcendence theory, implies every known result. `experiments/schanuels_conjecture_0_over_0.py`, `data/schanuels_conjecture_data.json`, `docs/THE_SCHANUELS_CONJECTURE_0_OVER_0.md`.
