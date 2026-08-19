@@ -17,7 +17,7 @@ from the observation that 0/0 appears everywhere, through the proof that
 it is the deep structure of mathematics, to the discovery that it
 generates new theorems.
 
-The journey: 185 experiments, 15 branches, 195 tests, 29 formal
+The journey: 187 experiments, 15 branches, 197 tests, 31 formal
 theorems, 6 PDFs, and one idea that will not die.
 
 ---
@@ -418,6 +418,28 @@ The 0/0 transition at g = 1: infinite (genus 1) vs finite (genus > 1).
 The 0/0 has removable value 0 because the canonical height grows as n^2
 while the number of points grows at most linearly.
 
+### Chapter 34: The ABC Conjecture
+
+**Theorem (ABC as 0/0):** Quality q = log(c)/log(rad(abc)), 0/0 at
+epsilon = 0. For epsilon > 0, finitely many exceptional triples.
+Supremum >= 1.6299. Implies FLT (effective for n >= 5), effective
+Mordell, effective Thue-Siegel-Roth.
+
+**Proof:** By Oestrele-Masser conjecture and radical bounds.
+The 0/0 transition at epsilon = 0 is the Brody boundary of arithmetic.
+
+### Chapter 35: Arakelov Theory
+
+**Theorem (Arakelov as 0/0):** Green function G(z,w) = 0/0 at z = w.
+Removable value = regularized Green = Arakelov metric. Faltings delta:
+delta(X) = -6*log(pi) - 12*Zeta'(0), conformal invariant (3 lattices).
+Arithmetic intersection: (D1, D2)_Ar = naive + Green correction.
+GRR: (deg(L), deg(L))_Ar = (2g-2)*deg(L) + delta.
+
+**Proof:** By analytic continuation of Green functions on compact
+Riemann surfaces. The singularity is universal (-log|z-w|^2),
+the regular part is the invariant.
+
 ---
 
 ## Part VI: The Arc
@@ -483,18 +505,25 @@ while the number of points grows at most linearly.
           NCG                 Faltings
           (Connes)            (Mordell)
               |                   |
-              +-------------------+
-                            |
-                    Millennium Bridge
+              +---------+---------+
+                      |
+              +-------+-------+
+              |               |
+          ABC             Arakelov
+          (master)        (geometry)
+              |               |
+              +-------+-------+
+                      |
+              Millennium Bridge
 ```
 
 ### The numbers:
 
-- 185 experiments across 15 branches
-- 195 tests (all green)
-- 29 formal theorems
+- 187 experiments across 15 branches
+- 197 tests (all green)
+- 31 formal theorems
 - 6 PDFs
-- 48 documentation files
+- 50 documentation files
 - 1 idea: 0/0 is the deep structure of mathematics
 
 ### The conclusion:

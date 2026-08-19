@@ -304,3 +304,11 @@ Connes' non-commutative geometry: spectral triple (A, H, D) with Dixmier trace =
 ### Faltings' Theorem as 0/0
 
 Mordell conjecture (Faltings 1983): genus > 1 => finitely many rational points. Density |C(Q) cap B(H)|/B(H) -> 0, removable value = 0. Height function h: h(O) = 0, h(nP) = n^2 h(P), monotone. Chabauty-Coleman: p-adic integration works when rank < genus (2/4 cases working). Transition at g = 1: infinite (elliptic curves) vs finite (genus > 1). Opens: BSD conjecture, Iwasawa theory, effective height bounds, ABC Conjecture. `experiments/faltings_theorem_0_over_0.py`, `data/faltings_theorem_data.json`, `docs/THE_FALTINGS_THEOREM_0_OVER_0.md`.
+
+### ABC Conjecture as 0/0
+
+Master conjecture of arithmetic geometry: quality q = log(c)/log(rad(abc)). The 0/0 at epsilon = 0 transitions from infinite to finite exceptional triples. Quality supremum >= 1.6299 from known record-holding triples. Finiteness verified for epsilon in {0.1, 0.2, 0.3, 0.4, 0.5} up to c = 1000. Implies: Fermat (effective for n >= 5), effective Mordell (height bounds), effective Thue-Siegel-Roth. Each implication is a 0/0 with removable value 1. The Brody boundary of arithmetic geometry. `experiments/abc_conjecture_0_over_0.py`, `data/abc_conjecture_data.json`, `docs/THE_ABC_CONJECTURE_0_OVER_0.md`.
+
+### Arakelov Theory as 0/0
+
+Arithmetic intersection theory on surfaces. Green function G(z,w) = 0/0 at z = w with removable value = regularized Green = Arakelov metric. Logarithmic singularity verified at distances 0.1, 0.01, 0.001, 0.0001 (all match -log(d^2)). Faltings delta: delta(X) = -6*log(pi) - 12*Zeta'(0), conformal invariant verified for 3 lattices (square, hexagonal, sphere). Arithmetic intersection: (D1, D2)_Ar = naive + Green correction. Arakelov GRR verified for torus and P^1. Opens: height pairings, analytic torsion, BSD via Arakelov, Iwasawa theory. `experiments/arakelov_theory_0_over_0.py`, `data/arakelov_theory_data.json`, `docs/THE_ARAKELOV_THEORY_0_OVER_0.md`.

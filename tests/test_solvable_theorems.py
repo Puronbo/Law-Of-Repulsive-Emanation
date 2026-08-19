@@ -3445,3 +3445,51 @@ def test_faltings_theorem():
     assert q3['verdict'] == 'PASS'
     assert q3['n_working'] == 2
 
+
+# -----------------------------------------------------------------------
+# ABC Conjecture 0/0
+# -----------------------------------------------------------------------
+
+def test_abc_conjecture():
+    d = load('abc_conjecture_data.json')
+
+    # Q1: Quality computation
+    q1 = d['Q1_quality']['quality']
+    assert q1['verdict'] == 'PASS'
+    assert q1['supremum_at_least'] > 1.5
+    assert q1['n_above_1'] > 0
+
+    # Q2: Finiteness
+    q2 = d['Q2_finiteness']['finiteness']
+    assert q2['verdict'] == 'PASS'
+    assert q2['all_finite_for_positive_eps']
+
+    # Q3: Connections
+    q3 = d['Q3_connections']['connections']
+    assert q3['verdict'] == 'PASS'
+    assert q3['all_effective']
+
+
+# -----------------------------------------------------------------------
+# Arakelov Theory 0/0
+# -----------------------------------------------------------------------
+
+def test_arakelov_theory():
+    d = load('arakelov_theory_data.json')
+
+    # Q1: Green function
+    q1 = d['Q1_green_function']['green_function']
+    assert q1['verdict'] == 'PASS'
+    assert q1['all_sing_match']
+    assert q1['symmetric']
+
+    # Q2: Delta invariant
+    q2 = d['Q2_delta_invariant']['delta_invariant']
+    assert q2['verdict'] == 'PASS'
+    assert q2['conformal_invariance_holds']
+
+    # Q3: Arithmetic intersection
+    q3 = d['Q3_arithmetic_intersection']['arithmetic_intersection']
+    assert q3['verdict'] == 'PASS'
+    assert q3['grothendieck_riemann_roch']
+
