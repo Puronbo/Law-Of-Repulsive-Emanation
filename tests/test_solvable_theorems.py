@@ -3899,3 +3899,36 @@ def test_hermite_biehler_proof():
     assert q3['verdict'] == 'PASS'
     assert q3['proof_valid']
 
+# --- Phragmen-Lindelof analysis (Theorem 48) ---
+def test_phragmen_lindelof_0_over_0():
+    with open('data/phragmen_lindelof_data.json', 'r') as f:
+        d = json.load(f)
+
+    # A1: log|xi|/t is bounded (exponential growth condition)
+    stirling = d['stirling']
+    assert len(stirling) >= 5
+    for r in stirling:
+        assert r['is_exponential']  # log|xi|/t < 1.0
+
+    # A2: Boundary values decay (all boundaries bounded)
+    boundary = d['boundary']
+    for key in ['sigma_zero', 'sigma_half', 'sigma_one']:
+        assert key in boundary
+        assert boundary[key]['decays']  # values decrease with t
+
+    # A3: Hermite-Biehler symmetry (exact equality)
+    hb = d['hermite_biehler']
+    assert hb['max_relative_diff'] is not None
+    assert hb['max_relative_diff'] < 1e-10
+
+    # A4: Functional equation symmetry (machine precision)
+    fe = d['functional_eq']
+    assert fe['max_relative_diff'] is not None
+    assert fe['max_relative_diff'] < 1e-10
+
+    # A5: First 10 zeros are on the line (|xi(gamma_n)| < 1e-10)
+    zeros = d['zeros']
+    assert len(zeros) == 10
+    for z in zeros:
+        assert z['magnitude'] < 1e-9
+
