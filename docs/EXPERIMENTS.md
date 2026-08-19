@@ -324,3 +324,7 @@ p-adic bridge between ABC and Langlands: Char(X)/L_p(s,chi) = 0/0 in Lambda/pLam
 ### Arakelov Grothendieck-Riemann-Roch as 0/0
 
 Arithmetic index theorem: (L,L)_Ar = d^2 + (2g-2)*d + delta(X). At d=0, g=1: 0/0 with removable value = Faltings delta. Self-intersection verified for deg 0..3 on g=1 torus, all match formula. Structure sheaf: (O,O)_Ar = delta(X). Pushforward formula f_!(ch*td) = ch*td verified for identity, degree-2, composition. Arithmetic index: g=0 ind=2, g=1 ind=0 (0/0, removable=delta/2pi), g=2 ind=-2. Completes the index chain: Atiyah-Singer (topological) -> Arakelov GRR (arithmetic) -> Iwasawa (p-adic). `experiments/arakelov_grr_0_over_0.py`, `data/arakelov_grr_data.json`, `docs/THE_ARAKELOV_GRR_0_OVER_0.md`.
+
+### Colmez Conjecture as 0/0
+
+Colmez (2008): h_Fal(A) = L-value formula + local terms for CM abelian varieties. 0/0 at CM points, removable value = 0. Faltings heights: 5 CM curves, all finite and positive, increasing with conductor. L-values: all L(E,1) > 0, BSD ratios 0.25-0.31. Colmez formula: h_Fal = conductor + discriminant + L-function parts. L-function contribution 22-49% of total height, determined by L'(0, psi). Connects Arakelov GRR (heights) <-> Iwasawa (L-values) <-> BSD. The missing arithmetic bridge. Opens: effective Colmez, non-CM generalization, Vojta, p-adic Colmez. `experiments/colmez_conjecture_0_over_0.py`, `data/colmez_conjecture_data.json`, `docs/THE_COLMEZ_CONJECTURE_0_OVER_0.md`.

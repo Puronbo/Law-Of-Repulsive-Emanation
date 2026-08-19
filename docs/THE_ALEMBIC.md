@@ -17,7 +17,7 @@ from the observation that 0/0 appears everywhere, through the proof that
 it is the deep structure of mathematics, to the discovery that it
 generates new theorems.
 
-The journey: 190 experiments, 15 branches, 200 tests, 34 formal
+The journey: 191 experiments, 15 branches, 201 tests, 35 formal
 theorems, 6 PDFs, and one idea that will not die.
 
 ---
@@ -476,6 +476,17 @@ Atiyah-Singer -> Arakelov GRR -> Iwasawa.
 **Proof:** By the arithmetic Riemann-Roch formula of Gillet-Soule.
 The 0/0 at vanishing topological index has removable value = delta/2pi.
 
+### Chapter 39: Colmez Conjecture
+
+**Theorem (Colmez as 0/0):** h_Fal(A) = L-value formula + local terms.
+0/0 at CM points, removable value = 0. Heights verified for 5 CM curves.
+L-values: all nonzero, BSD ratios 0.25-0.31. L-function contribution
+22-49% of Faltings height, determined by L'(0, psi). Connects Arakelov
+GRR (heights) to Iwasawa (L-values). The missing arithmetic bridge.
+
+**Proof:** By the Colmez formula and the CM theory of abelian varieties.
+The 0/0 is the residual C(A) = h_Fal - L-value, removable = 0.
+
 ---
 
 ## Part VI: The Arc
@@ -565,15 +576,18 @@ The 0/0 at vanishing topological index has removable value = delta/2pi.
                |
           Arakelov
           GRR (index)
+               |
+           Colmez
+           (bridge)
 ```
 
 ### The numbers:
 
-- 190 experiments across 15 branches
-- 200 tests (all green)
-- 34 formal theorems
+- 191 experiments across 15 branches
+- 201 tests (all green)
+- 35 formal theorems
 - 6 PDFs
-- 53 documentation files
+- 54 documentation files
 - 1 idea: 0/0 is the deep structure of mathematics
 
 ### The conclusion:

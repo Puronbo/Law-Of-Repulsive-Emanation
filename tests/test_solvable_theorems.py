@@ -3568,3 +3568,29 @@ def test_arakelov_grr():
     assert q3['verdict'] == 'PASS'
     assert q3['identity_test']['formula_holds']
 
+
+# -----------------------------------------------------------------------
+# Colmez Conjecture 0/0
+# -----------------------------------------------------------------------
+
+def test_colmez_conjecture():
+    d = load('colmez_conjecture_data.json')
+
+    # Q1: Faltings heights
+    q1 = d['Q1_faltings_heights']['faltings_heights']
+    assert q1['verdict'] == 'PASS'
+    assert q1['all_finite']
+    assert q1['n_curves'] == 5
+
+    # Q2: L-values
+    q2 = d['Q2_l_values']['l_values']
+    assert q2['verdict'] == 'PASS'
+    assert q2['all_L_nonzero']
+    assert q2['all_bsd_reasonable']
+
+    # Q3: Colmez formula
+    q3 = d['Q3_colmez_formula']['colmez_formula']
+    assert q3['verdict'] == 'PASS'
+    assert q3['all_match_formula']
+    assert q3['l_function_significant']
+
