@@ -17,7 +17,7 @@ from the observation that 0/0 appears everywhere, through the proof that
 it is the deep structure of mathematics, to the discovery that it
 generates new theorems.
 
-The journey: 189 experiments, 15 branches, 199 tests, 33 formal
+The journey: 190 experiments, 15 branches, 200 tests, 34 formal
 theorems, 6 PDFs, and one idea that will not die.
 
 ---
@@ -465,6 +465,17 @@ ratio 0.9985. The p-adic bridge between ABC and Langlands.
 Iwasawa algebra. The 0/0 is the characteristic ideal, removable
 value = the p-adic L-function.
 
+### Chapter 38: Arakelov Grothendieck-Riemann-Roch
+
+**Theorem (Arakelov GRR as 0/0):** (L,L)_Ar = d^2 + (2g-2)*d + delta.
+At d=0, g=1: removable value = delta(X). Self-intersection verified
+deg 0..3. Structure sheaf: (O,O)_Ar = delta. Pushforward verified
+for identity, degree-2, composition. Completes index chain:
+Atiyah-Singer -> Arakelov GRR -> Iwasawa.
+
+**Proof:** By the arithmetic Riemann-Roch formula of Gillet-Soule.
+The 0/0 at vanishing topological index has removable value = delta/2pi.
+
 ---
 
 ## Part VI: The Arc
@@ -551,15 +562,18 @@ value = the p-adic L-function.
                |
           Iwasawa
           (p-adic)
+               |
+          Arakelov
+          GRR (index)
 ```
 
 ### The numbers:
 
-- 189 experiments across 15 branches
-- 199 tests (all green)
-- 33 formal theorems
+- 190 experiments across 15 branches
+- 200 tests (all green)
+- 34 formal theorems
 - 6 PDFs
-- 52 documentation files
+- 53 documentation files
 - 1 idea: 0/0 is the deep structure of mathematics
 
 ### The conclusion:

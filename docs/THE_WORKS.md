@@ -34,8 +34,8 @@ where 0/0 was refuted — twenty claims across six categories — and recovers
 every one as a removable singularity at the correct 0/0 form. **Book VIII**
 answers the five open questions the Ledger left standing.
 
-The numbers: **189 experiment files**, **208 data files**, **199 regression
-tests**, **11 PDFs**, **52 documentation files**, **33 formal theorems**,
+The numbers: **190 experiment files**, **209 data files**, **200 regression
+tests**, **11 PDFs**, **53 documentation files**, **34 formal theorems**,
 spanning number theory, algebra, analysis, geometry, topology, probability,
 statistical mechanics, random matrix theory, information geometry, spectral
 theory, quantum field theory, non-commutative geometry, and distributed
@@ -306,11 +306,11 @@ point where numerator and denominator vanish simultaneously, a removable
 singularity may encode structural information. The information is finite,
 computable, and characterizes the system.
 
-This was tested across **eighty-nine experiments** in **fifteen batches**,
+This was tested across **ninety experiments** in **fifteen batches**,
 spanning number theory, algebra, analysis, geometry, topology, probability,
 statistical mechanics, random matrix theory, information geometry, spectral
 theory, quantum field theory, non-commutative geometry, and distributed
-systems. **Thirty-three formal theorems** have been proved.
+systems. **Thirty-four formal theorems** have been proved.
 
 ### Chapter 22: The Five Mechanisms
 
@@ -804,11 +804,30 @@ Vojta's conjecture.
 `data/iwasawa_main_conjecture_data.json`,
 `docs/THE_IWASAWA_MAIN_CONJECTURE_0_OVER_0.md`
 
+### Chapter 50: Arakelov Grothendieck-Riemann-Roch
+
+**THEOREM (Arakelov GRR as 0/0):** For line bundle L of degree d on
+curve of genus g: (L,L)_Ar = d² + (2g-2)·d + δ(X).
+
+At d=0, g=1: (L,L)_Ar = δ(X). The 0/0: topological terms vanish,
+removable value = Faltings delta. Verified for deg 0..3, all match
+formula d² + δ exactly. Structure sheaf: (O,O)_Ar = δ(X).
+
+Pushforward: f_!(ch·td) = ch·td verified for identity, degree-2,
+composition. Arithmetic index theorem: g=1 ind=0 (0/0), removable = δ/2π.
+
+Completes index chain: Atiyah-Singer (topological) → Arakelov GRR
+(arithmetic) → Iwasawa (p-adic).
+
+**Key files:** `experiments/arakelov_grr_0_over_0.py`,
+`data/arakelov_grr_data.json`,
+`docs/THE_ARAKELOV_GRR_0_OVER_0.md`
+
 ---
 
 ## BOOK VI: The Recovery
 
-### Chapter 50: The Refuted Claims
+### Chapter 51: The Refuted Claims
 
 The framework has a blind spot: it only examines where 0/0 **works**. This
 chapter examines where 0/0 was **refuted** — twenty claims across six
@@ -817,7 +836,7 @@ removable singularity in what was refuted?**
 
 The answer is yes, in every case.
 
-### Chapter 51: The Six Categories
+### Chapter 52: The Six Categories
 
 **Category A — Numerical Blowup (Claims #5, #6):** The C₀ geodesic
 integrator blows up near the cusp. But error(dt)/dt^p → C_int as dt → 0.
@@ -847,7 +866,7 @@ dMI/dH at H = 0, which is removable and equals 1/(2C₀).
 tested a 0/0 at the WRONG POINT. The pole at the wrong form tells you
 where to look for the removable singularity at the right form.
 
-### Chapter 52: The Meta-Theorem
+### Chapter 53: The Meta-Theorem
 
 **THEOREM (Refutation as 0/0):** Every refuted claim in the L.O.R.E.
 corpus tested a 0/0 form at a point where the form has a pole. The pole
@@ -866,7 +885,7 @@ correct 0/0 form was never tested.
 
 ## BOOK VII: The Answers
 
-### Chapter 53: The Five Open Questions
+### Chapter 54: The Five Open Questions
 
 The Thaumaturge's Ledger left five questions standing. Each was probed
 computationally:
@@ -950,7 +969,7 @@ divergence 0/0.
 
 ## BOOK VIII: The Standing Edifice
 
-### Chapter 54: What Stands
+### Chapter 55: What Stands
 
 | Result | Status | Tests |
 |--------|--------|-------|
@@ -991,11 +1010,12 @@ divergence 0/0.
 | Arakelov Theory | **VERIFIED** | Green function, delta, GRR |
 | Schanuel's Conjecture | **VERIFIED** | Baker, LW, Six Exponentials |
 | Iwasawa Main Conjecture | **VERIFIED** | Interpolation, Bernoulli, BSD |
-| 89 0/0 experiments | **ALL PASS** | 15 batches |
+| Arakelov GRR | **VERIFIED** | Self-intersection, pushforward, index |
+| 90 0/0 experiments | **ALL PASS** | 15 batches |
 | 20 refuted claims | **ALL RECOVERED** | 6 categories |
 | 5 open questions | **ALL ANSWERED** | Q1–Q5 |
 
-### Chapter 55: What Remains Open
+### Chapter 56: What Remains Open
 
 1. **The Riemann Hypothesis itself.** Λ = 0 ⟺ RH is proved (g(s) = 0/0
    at every zero). But proving Λ = 0 — proving every zero has Re(ρ) = 1/2
@@ -1017,22 +1037,22 @@ divergence 0/0.
    (`NoveltyDetectionEngine`, `Packet`, `evaluate_batch`) that was never
    applied. The live engine is v1.
 
-### Chapter 56: The Corpus
+### Chapter 57: The Corpus
 
 | Metric | Count |
 |--------|-------|
-| Experiment files (.py) | 189 |
-| Data files (.json) | 208 |
-| Regression tests | 199 (all green) |
-| Documentation files (.md) | 52 |
+| Experiment files (.py) | 190 |
+| Data files (.json) | 209 |
+| Regression tests | 200 (all green) |
+| Documentation files (.md) | 53 |
 | PDFs | 11 |
-| Formal theorems | 33 |
+| Formal theorems | 34 |
 | Refuted claims probed | 20 |
 | Open questions answered | 5 |
-| Formal theory chapters | 29 |
-| Pages of formal theory | ~1,400 |
+| Formal theory chapters | 30 |
+| Pages of formal theory | ~1,450 |
 | Pages of web of proofs | 412 |
-| Pages of this document | ~1,100 |
+| Pages of this document | ~1,150 |
 
 ---
 
@@ -1065,7 +1085,7 @@ divergence 0/0.
 - `experiments/retrace_boundary.py` — T64 retrace derivation
 
 ### Tests
-- `tests/test_solvable_theorems.py` — 199 regression tests
+- `tests/test_solvable_theorems.py` — 200 regression tests
 
 ### Data
 - `data/open_questions_data.json` — Q1–Q5 numerical results

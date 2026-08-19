@@ -320,3 +320,7 @@ Master conjecture of transcendence theory: tr.deg(alpha, e^alpha)/n >= 1 for Q-i
 ### Iwasawa Main Conjecture as 0/0
 
 p-adic bridge between ABC and Langlands: Char(X)/L_p(s,chi) = 0/0 in Lambda/pLambda, removable value = 1. Kubota-Leopoldt interpolation: L_p(1-n, chi) = (1-chi(p)*p^{n-1}) * L(1-n, chi), verified for p=5, n=1..6 (all 6 match exactly). Von Staudt-Clausen verified (all 10 sums integral). Kummer congruences verified for p=5. BSD connection: y^2=x^3-x, rank 0. L(E,1)/Omega = 0.2496, RHS = R*Sha*c_p/|tors|^2 = 0.25, ratio = 0.9985. Iwasawa module Char(X) = (L_p(E, 1-s)). Opens: Iwasawa for number fields, p-adic BSD, Colmez conjecture, Vojta's conjecture. `experiments/iwasawa_main_conjecture_0_over_0.py`, `data/iwasawa_main_conjecture_data.json`, `docs/THE_IWASAWA_MAIN_CONJECTURE_0_OVER_0.md`.
+
+### Arakelov Grothendieck-Riemann-Roch as 0/0
+
+Arithmetic index theorem: (L,L)_Ar = d^2 + (2g-2)*d + delta(X). At d=0, g=1: 0/0 with removable value = Faltings delta. Self-intersection verified for deg 0..3 on g=1 torus, all match formula. Structure sheaf: (O,O)_Ar = delta(X). Pushforward formula f_!(ch*td) = ch*td verified for identity, degree-2, composition. Arithmetic index: g=0 ind=2, g=1 ind=0 (0/0, removable=delta/2pi), g=2 ind=-2. Completes the index chain: Atiyah-Singer (topological) -> Arakelov GRR (arithmetic) -> Iwasawa (p-adic). `experiments/arakelov_grr_0_over_0.py`, `data/arakelov_grr_data.json`, `docs/THE_ARAKELOV_GRR_0_OVER_0.md`.

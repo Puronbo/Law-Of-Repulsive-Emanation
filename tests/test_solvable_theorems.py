@@ -3545,3 +3545,26 @@ def test_iwasawa_main_conjecture():
     assert q3['rank_0_test']['bsd_holds']
     assert q3['iwasawa_connection']['characteristic_ideal_equals_L_function']
 
+
+# -----------------------------------------------------------------------
+# Arakelov GRR 0/0
+# -----------------------------------------------------------------------
+
+def test_arakelov_grr():
+    d = load('arakelov_grr_data.json')
+
+    # Q1: Self-intersection
+    q1 = d['Q1_self_intersection']['self_intersection']
+    assert q1['verdict'] == 'PASS'
+    assert q1['removable_value_is_delta']
+    assert q1['all_match_formula']
+
+    # Q2: Structure sheaf
+    q2 = d['Q2_structure_sheaf']['structure_sheaf']
+    assert q2['verdict'] == 'PASS'
+
+    # Q3: Pushforward
+    q3 = d['Q3_pushforward']['pushforward']
+    assert q3['verdict'] == 'PASS'
+    assert q3['identity_test']['formula_holds']
+
