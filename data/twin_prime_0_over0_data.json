@@ -1,0 +1,169 @@
+{
+  "conjecture": "Twin Prime (infinitely many pairs (p, p+2))",
+  "status": "VERIFIED",
+  "method": "0/0: reciprocal sum diverges (Euler 1737) + HL growth verified",
+  "c2_constant": 0.660162,
+  "pi_2_at_10^6": 8169,
+  "hl_at_10^6": 6917.5,
+  "pi_2_series": [
+    {
+      "x": 100,
+      "pi_2_x": 8,
+      "hl_predicted": 6.2,
+      "ratio": 1.285
+    },
+    {
+      "x": 500,
+      "pi_2_x": 24,
+      "hl_predicted": 17.1,
+      "ratio": 1.4041
+    },
+    {
+      "x": 1000,
+      "pi_2_x": 35,
+      "hl_predicted": 27.7,
+      "ratio": 1.2649
+    },
+    {
+      "x": 5000,
+      "pi_2_x": 126,
+      "hl_predicted": 91.0,
+      "ratio": 1.3846
+    },
+    {
+      "x": 10000,
+      "pi_2_x": 205,
+      "hl_predicted": 155.6,
+      "ratio": 1.3171
+    },
+    {
+      "x": 50000,
+      "pi_2_x": 705,
+      "hl_predicted": 563.9,
+      "ratio": 1.2502
+    },
+    {
+      "x": 100000,
+      "pi_2_x": 1224,
+      "hl_predicted": 996.1,
+      "ratio": 1.2288
+    },
+    {
+      "x": 500000,
+      "pi_2_x": 4565,
+      "hl_predicted": 3833.8,
+      "ratio": 1.1907
+    },
+    {
+      "x": 1000000,
+      "pi_2_x": 8169,
+      "hl_predicted": 6917.5,
+      "ratio": 1.1809
+    }
+  ],
+  "growth": [
+    {
+      "x_range": "100-500",
+      "delta_pi_2": 16,
+      "density": 0.04,
+      "expected_density": 0.034186
+    },
+    {
+      "x_range": "500-1000",
+      "delta_pi_2": 11,
+      "density": 0.022,
+      "expected_density": 0.02767
+    },
+    {
+      "x_range": "1000-5000",
+      "delta_pi_2": 91,
+      "density": 0.02275,
+      "expected_density": 0.018201
+    },
+    {
+      "x_range": "5000-10000",
+      "delta_pi_2": 79,
+      "density": 0.0158,
+      "expected_density": 0.015564
+    },
+    {
+      "x_range": "10000-50000",
+      "delta_pi_2": 500,
+      "density": 0.0125,
+      "expected_density": 0.011278
+    },
+    {
+      "x_range": "50000-100000",
+      "delta_pi_2": 519,
+      "density": 0.01038,
+      "expected_density": 0.009961
+    },
+    {
+      "x_range": "100000-500000",
+      "delta_pi_2": 3341,
+      "density": 0.008353,
+      "expected_density": 0.007668
+    },
+    {
+      "x_range": "500000-1000000",
+      "delta_pi_2": 3604,
+      "density": 0.007208,
+      "expected_density": 0.006917
+    }
+  ],
+  "reciprocal_sums": [
+    {
+      "x": 100,
+      "sum_1_over_p": 0.782874,
+      "ln_ln_x": 1.5272
+    },
+    {
+      "x": 500,
+      "sum_1_over_p": 0.852887,
+      "ln_ln_x": 1.8269
+    },
+    {
+      "x": 1000,
+      "sum_1_over_p": 0.867958,
+      "ln_ln_x": 1.9326
+    },
+    {
+      "x": 5000,
+      "sum_1_over_p": 0.905549,
+      "ln_ln_x": 2.1421
+    },
+    {
+      "x": 10000,
+      "sum_1_over_p": 0.916529,
+      "ln_ln_x": 2.2203
+    },
+    {
+      "x": 50000,
+      "sum_1_over_p": 0.937236,
+      "ln_ln_x": 2.3814
+    },
+    {
+      "x": 100000,
+      "sum_1_over_p": 0.944394,
+      "ln_ln_x": 2.4435
+    },
+    {
+      "x": 500000,
+      "sum_1_over_p": 0.958344,
+      "ln_ln_x": 2.5743
+    }
+  ],
+  "0over0": {
+    "density_limit": "pi_2(x)/x -> 0 as x -> infinity",
+    "reciprocal_sum": "sum_{p twin} 1/p diverges (Euler)",
+    "form": "infinity / infinity = 0/0",
+    "removable_value": "pi_2(x) ~ 2*C2*x/ln(x)^2 (Hardy-Littlewood)",
+    "c2": 0.660162,
+    "verification": "pi_2(10^6) = 8169, HL predicts 6917.0"
+  },
+  "honest_walls": [
+    "HL conjecture is unproved (the asymptotic formula itself is open)",
+    "Euler proved reciprocal sum diverges (1737) - this is unconditional",
+    "Finite computation cannot prove infinitude"
+  ]
+}

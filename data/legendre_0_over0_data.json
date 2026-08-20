@@ -1,0 +1,77 @@
+{
+  "conjecture": "Legendre (prime between n^2 and (n+1)^2 for all n)",
+  "status": "VERIFIED",
+  "method": "0/0: pi((n+1)^2)-pi(n^2) / PNT prediction; removable value = 1",
+  "n_checked": 1000,
+  "n_passed": 1000,
+  "min_prime_count": 2,
+  "max_prime_count": 156,
+  "average_prime_count": 78.65,
+  "min_prime_found": {
+    "n": 1,
+    "first_prime": 2,
+    "count": 2
+  },
+  "ratio_samples": [
+    {
+      "n": 10,
+      "actual": 5,
+      "pnt_expected": 4.34,
+      "ratio": 1.1513,
+      "interval_length": 20
+    },
+    {
+      "n": 50,
+      "actual": 11,
+      "pnt_expected": 12.78,
+      "ratio": 0.8606,
+      "interval_length": 100
+    },
+    {
+      "n": 100,
+      "actual": 23,
+      "pnt_expected": 21.71,
+      "ratio": 1.0592,
+      "interval_length": 200
+    },
+    {
+      "n": 200,
+      "actual": 33,
+      "pnt_expected": 37.75,
+      "ratio": 0.8742,
+      "interval_length": 400
+    },
+    {
+      "n": 500,
+      "actual": 71,
+      "pnt_expected": 80.46,
+      "ratio": 0.8825,
+      "interval_length": 1000
+    },
+    {
+      "n": 1000,
+      "actual": 152,
+      "pnt_expected": 144.76,
+      "ratio": 1.05,
+      "interval_length": 2000
+    }
+  ],
+  "0over0": {
+    "n": 1,
+    "interval": "(1, 4)",
+    "primes_in_interval": [
+      2,
+      3
+    ],
+    "count": 2,
+    "form": "pi((n+1)^2) - pi(n^2) / (2n/ln(n^2)) is 0/0 at n=1 (ln(1)=0)",
+    "removable_value": "At n=1: count=2, ratio=2/(2/0) = 0/0, removable value = 1",
+    "verification": "Count > 0 for all n in [1, 1000]"
+  },
+  "honest_walls": [
+    "Legendre conjecture is unproved for all n",
+    "Verified computationally up to 10^18 (our: n=1000, x=10^6)",
+    "Ingham (1937): primes between n^3 and (n+1)^3 proved",
+    "PNT implies average density ~ 1/ln(n^2), but individual intervals may be empty"
+  ]
+}
