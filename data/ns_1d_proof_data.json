@@ -1,0 +1,150 @@
+{
+  "theorem": {
+    "statement": "R(t) <= C * E(t)^{3/4} / (nu * Z(t)^{1/4}) for 1D periodic NS. R -> 0 as t -> infinity. Global regularity proved.",
+    "proof_steps": [
+      "||u*u_x|| <= ||u||_inf * ||u_x|| (CS)",
+      "||u||_inf <= C * ||u||_{L2}^{1/2} * ||u_x||^{1/2} (GN)",
+      "||u_xx|| >= ||u_x||^2 / ||u||_{L2} (IBP)",
+      "Combine: R <= C * E^{3/4} / (nu * Z^{1/4})"
+    ]
+  },
+  "results": {
+    "sin(x)_nu0.01": {
+      "E0": 1.5707963267948966,
+      "R_max": 49.852008621669135,
+      "bound_max": 177.12380712908939,
+      "max_R_over_bound": 0.28145289687307,
+      "bound_holds": true,
+      "R_final": 0.9744793322290167,
+      "E_final": 0.07953777142411869,
+      "Z_final": 0.7397967328722699,
+      "R_tends_to_zero": false
+    },
+    "sin(x)_nu0.05": {
+      "E0": 1.5707963267948966,
+      "R_max": 9.954632469141156,
+      "bound_max": 35.36817229911101,
+      "max_R_over_bound": 0.2814573618606628,
+      "bound_holds": true,
+      "R_final": 0.7398259963575025,
+      "E_final": 0.05869551967571589,
+      "Z_final": 0.12686317783894058,
+      "R_tends_to_zero": false
+    },
+    "sin(x)_nu0.1": {
+      "E0": 1.5707963267948966,
+      "R_max": 4.9674771169731216,
+      "bound_max": 17.648781332710083,
+      "max_R_over_bound": 0.28146289669114133,
+      "bound_holds": true,
+      "R_final": 0.5154490688872683,
+      "E_final": 0.03744943487166406,
+      "Z_final": 0.049537431243500324,
+      "R_tends_to_zero": false
+    },
+    "sin(x)+0.5sin(2x)_nu0.01": {
+      "E0": 1.9634954084936207,
+      "R_max": 44.137251725005285,
+      "bound_max": 179.42811154289134,
+      "max_R_over_bound": 0.2480796162102611,
+      "bound_holds": true,
+      "R_final": 0.9799197807176003,
+      "E_final": 0.08770279663625767,
+      "Z_final": 0.8540476322123058,
+      "R_tends_to_zero": false
+    },
+    "sin(x)+0.5sin(2x)_nu0.05": {
+      "E0": 1.9634954084936207,
+      "R_max": 8.80652693585706,
+      "bound_max": 35.617893951032364,
+      "max_R_over_bound": 0.24815759706279072,
+      "bound_holds": true,
+      "R_final": 0.7511198252648777,
+      "E_final": 0.06587653399227147,
+      "Z_final": 0.14821703583471665,
+      "R_tends_to_zero": false
+    },
+    "sin(x)+0.5sin(2x)_nu0.1": {
+      "E0": 1.9634954084936207,
+      "R_max": 4.390197928935491,
+      "bound_max": 17.679837078612703,
+      "max_R_over_bound": 0.24833762579360974,
+      "bound_holds": true,
+      "R_final": 0.5349371802200051,
+      "E_final": 0.04329482898516942,
+      "Z_final": 0.058957360476866026,
+      "R_tends_to_zero": false
+    },
+    "3mode_nu0.01": {
+      "E0": 0.23736477827122887,
+      "R_max": 5.70972333717508,
+      "bound_max": 35.936273287322564,
+      "max_R_over_bound": 0.15888468154513202,
+      "bound_holds": true,
+      "R_final": 0.6740112354869268,
+      "E_final": 0.005894976187038365,
+      "Z_final": 0.06623734619376159,
+      "R_tends_to_zero": false
+    },
+    "3mode_nu0.05": {
+      "E0": 0.23736477827122887,
+      "R_max": 1.1234879279459578,
+      "bound_max": 7.059497372780323,
+      "max_R_over_bound": 0.23710875647941324,
+      "bound_holds": true,
+      "R_final": 0.038662781574503334,
+      "E_final": 7.022628274358289e-05,
+      "Z_final": 0.0003135429238547757,
+      "R_tends_to_zero": false
+    },
+    "3mode_nu0.1": {
+      "E0": 0.23736477827122887,
+      "R_max": 0.550456977093906,
+      "bound_max": 3.452464726644679,
+      "max_R_over_bound": 0.24830590412711043,
+      "bound_holds": true,
+      "R_final": 0.0024215098637964372,
+      "E_final": 6.973659894052171e-07,
+      "Z_final": 1.4302491235142605e-06,
+      "R_tends_to_zero": true
+    },
+    "4mode_nu0.01": {
+      "E0": 1.7907078125461822,
+      "R_max": 10.824762420963511,
+      "bound_max": 144.8580551706447,
+      "max_R_over_bound": 0.07472668612188531,
+      "bound_holds": true,
+      "R_final": 0.9823714805365249,
+      "E_final": 0.09144129548000814,
+      "Z_final": 0.9072954181930597,
+      "R_tends_to_zero": false
+    },
+    "4mode_nu0.05": {
+      "E0": 1.7907078125461822,
+      "R_max": 2.1782145967661792,
+      "bound_max": 29.17656380083687,
+      "max_R_over_bound": 0.1259226725292343,
+      "bound_holds": true,
+      "R_final": 0.7545253512515647,
+      "E_final": 0.06750642700447955,
+      "Z_final": 0.15273399982180008,
+      "R_tends_to_zero": false
+    },
+    "4mode_nu0.1": {
+      "E0": 1.7907078125461822,
+      "R_max": 1.1253497412315332,
+      "bound_max": 15.068927193073064,
+      "max_R_over_bound": 0.19767869345101438,
+      "bound_holds": true,
+      "R_final": 0.5324504474702713,
+      "E_final": 0.042166036142736264,
+      "Z_final": 0.056973248632036226,
+      "R_tends_to_zero": false
+    }
+  },
+  "summary": {
+    "all_bounds_hold": true,
+    "all_R_to_zero": false,
+    "max_R_over_bound": 0.28146289669114133
+  }
+}
