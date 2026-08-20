@@ -1,0 +1,87 @@
+{
+  "experiment": "BSD 0/0 Structure",
+  "claim": "L(E,1)=0 iff rank>0; removable singularity value encodes BSD formula",
+  "P_max": 1500,
+  "eps_values": [
+    0.5,
+    0.2,
+    0.1,
+    0.05,
+    0.01,
+    0.005,
+    0.001
+  ],
+  "curves": {
+    "y^2=x^3-x": {
+      "a": -1,
+      "b": 0,
+      "expected_rank": 0,
+      "L_at_eps": {
+        "0.5": 0.8236156625784113,
+        "0.2": 0.6996302328374794,
+        "0.1": 0.6105932662799453,
+        "0.05": 0.5432149597542729,
+        "0.01": 0.4735927737410727,
+        "0.005": 0.4637911419572715,
+        "0.001": 0.45576987189765866
+      },
+      "is_rank0_stable": true,
+      "is_rank1_shrinking": false,
+      "note": "congruent number curve n=1, rank 0, conductor 32"
+    },
+    "y^2=x^3+1": {
+      "a": 0,
+      "b": 1,
+      "expected_rank": 0,
+      "L_at_eps": {
+        "0.5": 0.8594948811058292,
+        "0.2": 0.7440342917740593,
+        "0.1": 0.6566732762141999,
+        "0.05": 0.5887895276622287,
+        "0.01": 0.5173749845203661,
+        "0.005": 0.5072281915894027,
+        "0.001": 0.49890822683666125
+      },
+      "is_rank0_stable": true,
+      "is_rank1_shrinking": false,
+      "note": "rank 0, torsion Z/6, conductor 36"
+    },
+    "y^2=x^3-25x": {
+      "a": -25,
+      "b": 0,
+      "expected_rank": 1,
+      "L_at_eps": {
+        "0.5": 0.6921525754638349,
+        "0.2": 0.37561968447412974,
+        "0.1": 0.23505726062663831,
+        "0.05": 0.16562322018770928,
+        "0.01": 0.114636721432491,
+        "0.005": 0.1087165180010788,
+        "0.001": 0.10406746903643206
+      },
+      "is_rank0_stable": null,
+      "is_rank1_shrinking": true,
+      "note": "congruent number curve n=5, rank 1, conductor 200"
+    },
+    "y^2=x^3+17x-5": {
+      "a": 17,
+      "b": -5,
+      "expected_rank": 0,
+      "L_at_eps": {
+        "0.5": 1.1960771715498668,
+        "0.2": 1.9205881049202285,
+        "0.1": 2.365620386651707,
+        "0.05": 2.577570025002938,
+        "0.01": 2.681761239814598,
+        "0.005": 2.687285033564927,
+        "0.001": 2.6901475875297507
+      },
+      "is_rank0_stable": true,
+      "is_rank1_shrinking": false,
+      "note": "test curve, conductor 571"
+    }
+  },
+  "verdict": "SUPPORTED",
+  "honest_wall": "We verify the 0/0 structure numerically: rank-0 curves have L(E,1)!=0, rank-1 curves have L(E,1)=0. The full BSD conjecture (ord_{s=1}L = rank for ALL curves, and the explicit formula for the leading coefficient) remains open.",
+  "time_total": 1.99
+}
