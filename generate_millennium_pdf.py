@@ -6,9 +6,29 @@ def sanitize(text):
         '\u2014': '--', '\u2013': '-', '\u2018': "'", '\u2019': "'",
         '\u201c': '"', '\u201d': '"', '\u2022': '-', '\u2026': '...',
         '\u03c0': 'pi', '\u2260': '!=', '\u2264': '<=', '\u2265': '>=',
+        '\u2192': '->', '\u2190': '<-', '\u2194': '<->',
+        '\u221a': 'sqrt', '\u221e': 'inf', '\u2202': 'd',
+        '\u00b2': '^2', '\u00b3': '^3', '\u2070': '^0',
+        '\u2081': '_1', '\u2082': '_2', '\u2083': '_3',
+        '\u2080': '_0', '\u2084': '_4', '\u2085': '_5',
+        '\u2261': '=', '\u2248': '~', '\u00d7': 'x',
+        '\u00f7': '/', '\u03b1': 'alpha', '\u03b2': 'beta',
+        '\u03b3': 'gamma', '\u03b4': 'delta', '\u03bb': 'lambda',
+        '\u03bb': 'lambda', '\u03c9': 'omega', '\u03a9': 'Omega',
+        '\u03c3': 'sigma', '\u03b6': 'zeta', '\u03bc': 'mu',
+        '\u03bd': 'nu', '\u03c0': 'pi', '\u03c1': 'rho',
+        '\u03c6': 'phi', '\u03c8': 'psi', '\u03a3': 'Sum',
+        '\u222b': 'integral', '\u2200': 'for all', '\u2203': 'exists',
+        '\u2208': 'in', '\u2286': 'subset', '\u2287': 'supset',
+        '\u2229': 'intersect', '\u222a': 'union',
+        '\u2202': 'partial', '\u2207': 'nabla', '\u0394': 'Delta',
+        '\u25a1': 'box', '\u25cf': 'circle', '\u2020': 'dag',
+        '\u00e9': 'e', '\u00e8': 'e', '\u00f4': 'o',
     }
     for k, v in replacements.items():
         text = text.replace(k, v)
+    # Catch any remaining non-latin1 characters
+    text = text.encode('latin-1', errors='replace').decode('latin-1')
     return text
 
 def safe_multi(pdf, w, h, txt, **kw):
