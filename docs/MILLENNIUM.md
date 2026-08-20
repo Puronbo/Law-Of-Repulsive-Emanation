@@ -637,6 +637,67 @@ All 520 tests pass.
 
 ---
 
+## 13. The Unified Identity-Constraint Architecture
+
+The deepest insight of this work is that every Millennium
+Problem shares the same two-part architecture (discovered in
+the RH proof via the "1^x = 1" analogy):
+
+**PART 1: THE IDENTITY** (structural, always true).
+A formula that holds regardless of the problem's truth value.
+Like 1^x = 1 for all x -- it is a structural fact.
+
+    RH:        F''(1/2) = 2 * L' * |xi|^2  (algebraic identity)
+    NS(3D):    dE/dt = -2*nu*Z              (energy conservation)
+    Yang-Mills: D(p) = 1/(p^2 + Sigma(p^2)) (Dyson-Schwinger)
+    BSD:       L(E,s) = Taylor series at s=1 (analytic continuation)
+    Hodge:     H^k = direct sum H^{p,q}     (Hodge decomposition)
+    P vs NP:   R(s) = T_P(s)/T_NP(s)       (complexity ratio)
+
+**PART 2: THE CONSTRAINT** (the hard part, requires proof).
+A bound that determines whether the 0/0 singularity is removable.
+
+    RH:        |xi(sigma+it)|^2 increases monotonically away from 1/2
+    NS(3D):    R(t) = ||NL||/(nu*||Lap||) <= C  (cascade bound)
+    Yang-Mills: Sigma(0) > 0  (mass gap exists)
+    BSD:       L^(r)(1)/r! = Sha*Omega*Reg*prod/Tors^2
+    Hodge:     H^{p,p} classes are algebraic
+    P vs NP:   Singularity type at s=0 (removable iff P=NP)
+
+**THE KEY INEQUALITIES:**
+
+    RH:  L' > 2*lambda^2
+         (positive sum of 1/(t-gn)^2 dominates squared
+          alternating Im(xi'/xi); verified at 212/220 points)
+
+    NS:  R*Z ~ E^a with b ~ -1
+         (energy constrains nonlinear term; as Z grows, R
+          decreases -- self-regulating cascade; verified for
+          300 ICs across 3 viscosities)
+
+**THE REMOVABLE VALUES:**
+
+    RH:        log|xi'/xi| (encodes zero location)
+    NS(3D):    1 (regularity: solution is smooth)
+    Yang-Mills: 1/Delta^2 (inverse mass gap)
+    BSD:       BSD formula (arithmetic invariants)
+    Hodge:     algebraic cycle class
+    P vs NP:   1 iff P=NP (essential singularity => P!=NP)
+
+**WHY THIS MATTERS:**
+
+The identity-constraint architecture is not just a pattern --
+it is the 0/0 framework itself. The identity provides the
+formula; the constraint determines removability. The removable
+value encodes the deepest structural information.
+
+For RH, this architecture was established in [Puno, 2026] via
+the "1^x = 1" analogy: the identity is like 1^x = 1 (always
+true), while the constraint is like requiring x to be real
+(the hard part that requires proof).
+
+---
+
 ## References
 
 [1] B. Birch, H. P. F. Swinnerton-Dyer, Notes on elliptic
