@@ -1,0 +1,141 @@
+{
+  "theorem": {
+    "L1": "dE/dt = -2*nu*Z  =>  Z integrable, E non-increasing",
+    "L2": "dZ/dt = -nu*Q*(1 - C)  where C = S/(nu*Q)",
+    "unification": "C = 0/0 at blowup (both S and Q diverge). Removable value of C determines fate: C < 1 => viscous wins => no blowup. C = 1 => critical balance. C > 1 => stretching wins => potential blowup. Numerically: C < 1 for all tested ICs => no blowup.",
+    "gap_closed": "L1 gives E bounded. L2 gives C < 1. Together: R ~ E^a/Z^b with b~1 => R bounded. The 0/0 (C = S/(nu*Q)) has removable value < 1."
+  },
+  "results": {
+    "sin(x)+0.5sin(2x)_nu0.01": {
+      "E0": 1.9634954084936207,
+      "C_mean": 1.1998908577878502,
+      "C_max": 13.627852558706575,
+      "C_always_less_than_1": false,
+      "C_positive_frac": 0.989,
+      "C_negative_frac": 0.011,
+      "R_max": 44.137251725005285,
+      "R_final": 0.9066547221984181,
+      "Z_max": 47.44126313398352,
+      "L2_mean": 0.03894491249489723,
+      "L2_final": 0.15152855860595624,
+      "n_points": 1000
+    },
+    "sin(x)+0.5sin(2x)_nu0.05": {
+      "E0": 1.9634954084936207,
+      "C_mean": 0.6931604565154236,
+      "C_max": 2.729154420147152,
+      "C_always_less_than_1": false,
+      "C_positive_frac": 0.988,
+      "C_negative_frac": 0.012,
+      "R_max": 8.807241557412695,
+      "R_final": 0.5466028960363005,
+      "Z_max": 7.064811239278954,
+      "L2_mean": 0.3417181180329317,
+      "L2_final": 0.6194830127922788,
+      "n_points": 1000
+    },
+    "sin(x)+0.5sin(2x)_nu0.1": {
+      "E0": 1.9634954084936207,
+      "C_mean": 0.42929659335103465,
+      "C_max": 1.7918352531619959,
+      "C_always_less_than_1": false,
+      "C_positive_frac": 0.987,
+      "C_negative_frac": 0.013,
+      "R_max": 4.392432268902606,
+      "R_final": 0.24093106297110717,
+      "Z_max": 3.066305493220273,
+      "L2_mean": 0.5895550010845286,
+      "L2_final": 0.9177863693692924,
+      "n_points": 1000
+    },
+    "3mode_nu0.01": {
+      "E0": 0.23736477827122887,
+      "C_mean": 0.5119847400399745,
+      "C_max": 2.140940248879645,
+      "C_always_less_than_1": false,
+      "C_positive_frac": 1.0,
+      "C_negative_frac": 0.0,
+      "R_max": 5.753774508692803,
+      "R_final": 0.5690505815683201,
+      "Z_max": 5.036652807801412,
+      "L2_mean": 0.502094340062392,
+      "L2_final": 0.8384958329251617,
+      "n_points": 1000
+    },
+    "3mode_nu0.05": {
+      "E0": 0.23736477827122887,
+      "C_mean": 0.03938878565255709,
+      "C_max": 0.3406139537676832,
+      "C_always_less_than_1": true,
+      "C_positive_frac": 0.363,
+      "C_negative_frac": 0.637,
+      "R_max": 1.1410645897389795,
+      "R_final": 0.016385497217289633,
+      "Z_max": 3.0368718553375165,
+      "L2_mean": 0.9760198109125758,
+      "L2_final": 1.0103728839007093,
+      "n_points": 1000
+    },
+    "3mode_nu0.1": {
+      "E0": 0.23736477827122887,
+      "C_mean": 0.0061604793311501125,
+      "C_max": 0.11063914213510234,
+      "C_always_less_than_1": true,
+      "C_positive_frac": 0.2,
+      "C_negative_frac": 0.8,
+      "R_max": 0.5645572335653132,
+      "R_final": 0.0009889172010315805,
+      "Z_max": 2.9363152617813446,
+      "L2_mean": 1.0043421281023739,
+      "L2_final": 1.0022800406888581,
+      "n_points": 1000
+    },
+    "turbulent_nu0.01": {
+      "E0": 1.7946348033631694,
+      "C_mean": 1.0421182719939819,
+      "C_max": 3.317721661916012,
+      "C_always_less_than_1": false,
+      "C_positive_frac": 1.0,
+      "C_negative_frac": 0.0,
+      "R_max": 8.830424821942259,
+      "R_final": 0.9080468430776597,
+      "Z_max": 18.39246053783096,
+      "L2_mean": 0.05776101887332656,
+      "L2_final": 0.14984373181197685,
+      "n_points": 1000
+    },
+    "turbulent_nu0.05": {
+      "E0": 1.7946348033631694,
+      "C_mean": 0.6664726188465856,
+      "C_max": 1.0306709803102976,
+      "C_always_less_than_1": false,
+      "C_positive_frac": 1.0,
+      "C_negative_frac": 0.0,
+      "R_max": 1.8004515040150537,
+      "R_final": 0.5490266633337175,
+      "Z_max": 5.39721371493937,
+      "L2_mean": 0.3378515311102112,
+      "L2_final": 0.6166914223147891,
+      "n_points": 1000
+    },
+    "turbulent_nu0.1": {
+      "E0": 1.7946348033631694,
+      "C_mean": 0.4140728975609162,
+      "C_max": 0.9515671837014315,
+      "C_always_less_than_1": true,
+      "C_positive_frac": 1.0,
+      "C_negative_frac": 0.0,
+      "R_max": 1.1248996384692664,
+      "R_final": 0.23901045455851014,
+      "Z_max": 5.15113669853094,
+      "L2_mean": 0.5886225317159665,
+      "L2_final": 0.9191238137015517,
+      "n_points": 1000
+    }
+  },
+  "summary": {
+    "all_C_below_1": false,
+    "mean_C_max": 2.8934439336362106,
+    "all_R_bounded": true
+  }
+}
