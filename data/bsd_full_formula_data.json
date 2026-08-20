@@ -1,0 +1,94 @@
+{
+  "curves": [
+    {
+      "label": "11.a2",
+      "cremona": "11a1",
+      "equation": "y^2+y=x^3-x^2-10x-20",
+      "rank": 0,
+      "conductor": 11,
+      "LHS": 0.2538418608559107,
+      "RHS_BSD": 0.25384186085591065,
+      "ratio": 1.0000000000000002,
+      "BSD_holds": true,
+      "invariants": {
+        "Omega": 1.2692093042795534,
+        "Regulator": 1.0,
+        "Sha": 1,
+        "Tamagawa": 5,
+        "Torsion": 5
+      },
+      "analytic_sha": 1.0000000000000002
+    },
+    {
+      "label": "14.a1",
+      "cremona": "14a5",
+      "equation": "y^2+xy+y=x^3-2731x-55146",
+      "rank": 0,
+      "conductor": 14,
+      "LHS": 0.33022365934448056,
+      "RHS_BSD": 0.33022365934448056,
+      "ratio": 1.0,
+      "BSD_holds": true,
+      "invariants": {
+        "Omega": 0.6604473186889611,
+        "Regulator": 1.0,
+        "Sha": 1,
+        "Tamagawa": 2,
+        "Torsion": 2
+      },
+      "analytic_sha": 1.0
+    },
+    {
+      "label": "37.a1",
+      "cremona": "37a1",
+      "equation": "y^2+y=x^3-x",
+      "rank": 1,
+      "conductor": 37,
+      "LHS": 0.3059997738340523,
+      "RHS_BSD": 0.3059997738340523,
+      "ratio": 1.0,
+      "BSD_holds": true,
+      "invariants": {
+        "Omega": 5.986917292463919,
+        "Regulator": 0.05111140823996884,
+        "Sha": 1,
+        "Tamagawa": 1,
+        "Torsion": 1
+      },
+      "analytic_sha": 1.0
+    },
+    {
+      "label": "389.a1",
+      "cremona": "389a1",
+      "equation": "y^2+y=x^3+x^2-2x",
+      "rank": 2,
+      "conductor": 389,
+      "LHS": 0.7593165002884268,
+      "RHS_BSD": 0.7593165002884268,
+      "ratio": 1.0,
+      "BSD_holds": true,
+      "invariants": {
+        "Omega": 4.98042512171011,
+        "Regulator": 0.15246017794314376,
+        "Sha": 1,
+        "Tamagawa": 1,
+        "Torsion": 1
+      },
+      "analytic_sha": 1.0
+    }
+  ],
+  "summary": {
+    "n_curves": 4,
+    "n_pass": 4,
+    "ranks_tested": [
+      0,
+      1,
+      2
+    ],
+    "conductor_range": [
+      11,
+      389
+    ],
+    "honest_assessment": "BSD verified for 4 curves (rank 0, 1, 2) using LMFDB invariants. All ratios = 1.0000 to 6+ decimal places. The0/0 structure is confirmed: for rank r, the removable value L^(r)(1)/r! equals the BSD quantity Sha*Omega*Reg*c/|tors|^2. The full BSD conjecture for all curves remains a Millennium Prize Problem."
+  }
+}
