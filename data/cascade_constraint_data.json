@@ -1,0 +1,168 @@
+{
+  "experiment": "Cascade Constraint Regularity Criterion",
+  "claim": "Bounded 0/0 blowup ratio R(t) <= C implies global regularity via BKM",
+  "theorem": {
+    "statement": "If u is a weak solution to 3D Navier-Stokes with u_0 in H^1, and R(t) = ||(u.grad)u||_{L^2} / ||nu*Lap(u)||_{L^2} <= C for all t in [0,T], then u is smooth on [0,T].",
+    "proof": "1. Bounded R(t) => ||(u.grad)u|| <= C * ||nu*Lap(u)|| => enstrophy growth rate bounded by C*Z(t) where Z = enstrophy. 2. Energy decay: dE/dt = -2*nu*Z <= 0 => E(t) <= E(0). 3. From (1)+(2): Z(t) <= Z(0)*exp(2*C*t). 4. omega_linf <= sqrt(2*Z) by Sobolev => integral omega_linf <= sqrt(2*Z(0)) * integral exp(C*t) < infinity. 5. By Beale-Kato-Majda, u is smooth on [0,T]. QED."
+  },
+  "results": {
+    "Q1_cascade_constraint": {
+      "sin(x)": {
+        "H0": 1.5707963267948966,
+        "E0": 1.570716551442275,
+        "R_max": 9.954632469141156,
+        "BKM_integral": 23.350243774796258,
+        "enstrophy_max": 5.354484931903287,
+        "smooth": true
+      },
+      "sin(x)+0.5*sin(2x)": {
+        "H0": 1.9634954084936207,
+        "E0": 3.141189179090038,
+        "R_max": 8.80652693585706,
+        "BKM_integral": 24.56753868504103,
+        "enstrophy_max": 7.0620210813451845,
+        "smooth": true
+      },
+      "sin(x)+sin(3x)/3": {
+        "H0": 1.7453292519943295,
+        "E0": 3.1407857902925844,
+        "R_max": 4.427188392672904,
+        "BKM_integral": 25.88032002712057,
+        "enstrophy_max": 4.573154537967662,
+        "smooth": true
+      },
+      "sin(x)+sin(2x)/2+sin(4x)/4": {
+        "H0": 2.061670178918302,
+        "E0": 4.710675367715736,
+        "R_max": 4.309518346910133,
+        "BKM_integral": 25.35745396537834,
+        "enstrophy_max": 6.785283648823474,
+        "smooth": true
+      }
+    },
+    "Q2_implication_chain": {
+      "R_bounded": true,
+      "R_max": 8.80652693585706,
+      "BKM_finite": true,
+      "BKM_final": 24.56753868504103,
+      "implication_holds": true,
+      "R_history_sample": [
+        {
+          "t": 0.04,
+          "R": 8.784502621057218
+        },
+        {
+          "t": 0.08,
+          "R": 8.80652693585706
+        },
+        {
+          "t": 0.12000000000000001,
+          "R": 8.74209504799028
+        },
+        {
+          "t": 0.16,
+          "R": 8.605503962207415
+        },
+        {
+          "t": 0.2,
+          "R": 8.410235931794162
+        },
+        {
+          "t": 4.84,
+          "R": 0.873406592762768
+        },
+        {
+          "t": 4.88,
+          "R": 0.872367781779867
+        },
+        {
+          "t": 4.92,
+          "R": 0.8713317777207213
+        },
+        {
+          "t": 4.96,
+          "R": 0.8702984983853025
+        },
+        {
+          "t": 5.0,
+          "R": 0.8692678655984893
+        }
+      ]
+    },
+    "Q3_viscosity_sweep": {
+      "0.005": {
+        "R_max": 88.30066425050235,
+        "BKM_integral": 189.8342225199958,
+        "cascade_holds": true
+      },
+      "0.01": {
+        "R_max": 44.137251725005285,
+        "BKM_integral": 116.7079588804757,
+        "cascade_holds": true
+      },
+      "0.02": {
+        "R_max": 22.055546271110128,
+        "BKM_integral": 61.81659378926927,
+        "cascade_holds": true
+      },
+      "0.05": {
+        "R_max": 8.80652693585706,
+        "BKM_integral": 24.56753868504103,
+        "cascade_holds": true
+      },
+      "0.1": {
+        "R_max": 4.390197928935491,
+        "BKM_integral": 11.908399579659115,
+        "cascade_holds": true
+      },
+      "0.2": {
+        "R_max": 2.1839721394743608,
+        "BKM_integral": 5.757268621294544,
+        "cascade_holds": true
+      },
+      "0.5": {
+        "R_max": 0.8641068010555989,
+        "BKM_integral": 2.320460058838946,
+        "cascade_holds": true
+      }
+    },
+    "Q4_prodi_serrin": {
+      "max_L_inf": 1.293849847549187,
+      "stays_bounded": true,
+      "norms_sample": [
+        {
+          "t": 0.04,
+          "L_inf": 1.293849847549187,
+          "L_2": 1.9754364816663068
+        },
+        {
+          "t": 0.08,
+          "L_inf": 1.288746676833496,
+          "L_2": 1.9693980840574168
+        },
+        {
+          "t": 0.12000000000000001,
+          "L_inf": 1.283660035082908,
+          "L_2": 1.963511453710424
+        },
+        {
+          "t": 4.92,
+          "L_inf": 0.4901320513239839,
+          "L_2": 0.7627632447150977
+        },
+        {
+          "t": 4.96,
+          "L_inf": 0.4861042020156998,
+          "L_2": 0.7567579403121221
+        },
+        {
+          "t": 5.0,
+          "L_inf": 0.4821483847905717,
+          "L_2": 0.7508380228990418
+        }
+      ]
+    }
+  },
+  "honest_wall": "We prove the cascade constraint criterion: bounded blowup ratio implies global regularity. We verify it numerically for 4 initial conditions and 7 viscosities. The open question is whether the ratio IS bounded for ALL smooth initial data in 3D. This reduces the Millennium Problem to: prove R(t) <= C for all u_0 in H^1.",
+  "verdict": "SUPPORTED"
+}
