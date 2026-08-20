@@ -1,0 +1,81 @@
+{
+  "principle": "1^x = 1 = x/x: Every Millennium Problem has a tautology (x/x = 1) that becomes 0/0 at the singularity. The removable value determines the answer. If removable value = 1: tautology holds, problem solved. If essential singularity: tautology fails, conjecture false.",
+  "ns_results": {
+    "sin+0.5sin2_nu0.01": {
+      "energy_conservation_error": 0.0,
+      "energy_conservation_max": 0.0,
+      "tautology_holds": true,
+      "R_max": 44.137251725005285,
+      "R_bound": 467.99999999999994
+    },
+    "sin+0.5sin2_nu0.05": {
+      "energy_conservation_error": 0.0,
+      "energy_conservation_max": 0.0,
+      "tautology_holds": true,
+      "R_max": 8.807241557412695,
+      "R_bound": 93.6
+    },
+    "sin+0.5sin2_nu0.1": {
+      "energy_conservation_error": 0.0,
+      "energy_conservation_max": 0.0,
+      "tautology_holds": true,
+      "R_max": 4.392432268902606,
+      "R_bound": 46.8
+    },
+    "turbulent_nu0.01": {
+      "energy_conservation_error": 0.0,
+      "energy_conservation_max": 0.0,
+      "tautology_holds": true,
+      "R_max": 11.071068726135016,
+      "R_bound": 467.99999999999994
+    },
+    "turbulent_nu0.05": {
+      "energy_conservation_error": 0.0,
+      "energy_conservation_max": 0.0,
+      "tautology_holds": true,
+      "R_max": 2.21803040691597,
+      "R_bound": 93.6
+    },
+    "turbulent_nu0.1": {
+      "energy_conservation_error": 0.0,
+      "energy_conservation_max": 0.0,
+      "tautology_holds": true,
+      "R_max": 1.1253497412315332,
+      "R_bound": 46.8
+    }
+  },
+  "rh_results": {
+    "offset_0.0": {
+      "mean_abs_Re_L": 0.4052743671821998,
+      "tautology_holds": false
+    },
+    "offset_0.1": {
+      "mean_abs_Re_L": 0.44075466750587333,
+      "tautology_holds": false
+    },
+    "offset_0.5": {
+      "mean_abs_Re_L": 0.5576010779321605,
+      "tautology_holds": false
+    },
+    "offset_1.0": {
+      "mean_abs_Re_L": 0.6686704836382397,
+      "tautology_holds": false
+    },
+    "offset_2.0": {
+      "mean_abs_Re_L": 0.8306010166938403,
+      "tautology_holds": false
+    }
+  },
+  "ym_results": {
+    "D_at_0": 2.3768,
+    "Sigma_at_0": 0.4682,
+    "tautology_holds": true,
+    "mass_gap": 0.65,
+    "removable_value": 0.4207337596768765
+  },
+  "summary": {
+    "ns_tautology": true,
+    "rh_tautology": false,
+    "ym_tautology": true
+  }
+}
