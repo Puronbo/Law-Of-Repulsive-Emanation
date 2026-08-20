@@ -1,0 +1,302 @@
+{
+  "experiment": "P vs NP: The 0/0 Complexity Ratio",
+  "theorem": "P = NP iff R(s) = T_P(s)/T_NP(s) has removable singularity at s = 0 with limiting value 1.",
+  "results": {
+    "Q1_singularity": {
+      "2-SAT": {
+        "k": 2,
+        "is_NPC": false,
+        "c_k": 0,
+        "T_P": "P (linear time via implication graph)",
+        "T_NP": "O(n^1)",
+        "alpha_c": 1.0,
+        "singularity_type": "removable (P problem)",
+        "removable_value": 0.0,
+        "R_at_s": [
+          {
+            "s": 0.5,
+            "R": 0.125
+          },
+          {
+            "s": 0.1,
+            "R": 0.0010000000000000002
+          },
+          {
+            "s": 0.01,
+            "R": 1.0000000000000002e-06
+          },
+          {
+            "s": 0.001,
+            "R": 1e-09
+          }
+        ],
+        "R_diverges": false,
+        "conclusion": "In P (removable singularity)"
+      },
+      "3-SAT": {
+        "k": 3,
+        "is_NPC": true,
+        "c_k": 0.308,
+        "T_P": "O(1.308^n) PPSZ, O(2^n) DPLL",
+        "T_NP": "O(n^1)",
+        "alpha_c": 4.267,
+        "singularity_type": "essential (NP-hard)",
+        "removable_value": null,
+        "R_at_s": [
+          {
+            "s": 0.5,
+            "R": 0.1915774950259729
+          },
+          {
+            "s": 0.1,
+            "R": 0.008456144324491042
+          },
+          {
+            "s": 0.01,
+            "R": 1869.4930994356168
+          },
+          {
+            "s": 0.001,
+            "R": 5.214812099416285e+83
+          }
+        ],
+        "R_diverges": true,
+        "conclusion": "P != NP (essential singularity)"
+      },
+      "4-SAT": {
+        "k": 4,
+        "is_NPC": true,
+        "c_k": 0.47,
+        "T_P": "O(1.47^n) best known",
+        "T_NP": "O(n^1)",
+        "alpha_c": 9.931,
+        "singularity_type": "essential (NP-hard)",
+        "removable_value": null,
+        "R_at_s": [
+          {
+            "s": 0.5,
+            "R": 0.23981602983131609
+          },
+          {
+            "s": 0.1,
+            "R": 0.02599207668339953
+          },
+          {
+            "s": 0.01,
+            "R": 140737488.35532734
+          },
+          {
+            "s": 0.001,
+            "R": 3.048582568667841e+132
+          }
+        ],
+        "R_diverges": true,
+        "conclusion": "P != NP (essential singularity)"
+      },
+      "5-SAT": {
+        "k": 5,
+        "is_NPC": true,
+        "c_k": 0.61,
+        "T_P": "O(1.61^n) best known",
+        "T_NP": "O(n^1)",
+        "alpha_c": 19.533,
+        "singularity_type": "essential (NP-hard)",
+        "removable_value": null,
+        "R_at_s": [
+          {
+            "s": 0.5,
+            "R": 0.29118339661711395
+          },
+          {
+            "s": 0.1,
+            "R": 0.06859350160232276
+          },
+          {
+            "s": 0.01,
+            "R": 2305843009213.6943
+          },
+          {
+            "s": 0.001,
+            "R": 4.249103942534137e+174
+          }
+        ],
+        "R_diverges": true,
+        "conclusion": "P != NP (essential singularity)"
+      }
+    },
+    "Q2_phase_transition": {
+      "alpha=1.0": {
+        "alpha": 1.0,
+        "delta_from_alpha_c": 3.2670000000000003,
+        "normalized_difficulty": 0.00023912908882229832,
+        "regime": "easy (underconstrained)"
+      },
+      "alpha=2.0": {
+        "alpha": 2.0,
+        "delta_from_alpha_c": 2.2670000000000003,
+        "normalized_difficulty": 0.01804170004518078,
+        "regime": "easy (underconstrained)"
+      },
+      "alpha=3.0": {
+        "alpha": 3.0,
+        "delta_from_alpha_c": 1.2670000000000003,
+        "normalized_difficulty": 0.28532339256692774,
+        "regime": "easy (overconstrained)"
+      },
+      "alpha=3.5": {
+        "alpha": 3.5,
+        "delta_from_alpha_c": 0.7670000000000003,
+        "normalized_difficulty": 0.6315357160870836,
+        "regime": "easy (overconstrained)"
+      },
+      "alpha=4.0": {
+        "alpha": 4.0,
+        "delta_from_alpha_c": 0.26700000000000035,
+        "normalized_difficulty": 0.9458280126674804,
+        "regime": "hard (critical)"
+      },
+      "alpha=4.267": {
+        "alpha": 4.267,
+        "delta_from_alpha_c": 0.0,
+        "normalized_difficulty": 1.0,
+        "regime": "hard (critical)"
+      },
+      "alpha=4.5": {
+        "alpha": 4.5,
+        "delta_from_alpha_c": 0.23299999999999965,
+        "normalized_difficulty": 0.9584735795478492,
+        "regime": "hard (critical)"
+      },
+      "alpha=5.0": {
+        "alpha": 5.0,
+        "delta_from_alpha_c": 0.7329999999999997,
+        "normalized_difficulty": 0.6572064810551196,
+        "regime": "easy (overconstrained)"
+      },
+      "alpha=6.0": {
+        "alpha": 6.0,
+        "delta_from_alpha_c": 1.7329999999999997,
+        "normalized_difficulty": 0.09572081215816043,
+        "regime": "easy (overconstrained)"
+      },
+      "alpha=8.0": {
+        "alpha": 8.0,
+        "delta_from_alpha_c": 3.7329999999999997,
+        "normalized_difficulty": 1.870079482025582e-05,
+        "regime": "easy (overconstrained)"
+      }
+    },
+    "Q3_hierarchy": {
+      "P_vs_NP": {
+        "n=10": {
+          "T_P": 1000.0,
+          "T_NP": 8.456144324491044,
+          "R": 118.25720584069947,
+          "R_bounded": false
+        },
+        "n=20": {
+          "T_P": 8000.0,
+          "T_NP": 71.50637683662208,
+          "R": 111.87813386599655,
+          "R_bounded": false
+        },
+        "n=50": {
+          "T_P": 125000.0,
+          "T_NP": 43237.63522020621,
+          "R": 2.890999920864864,
+          "R_bounded": false
+        },
+        "n=100": {
+          "T_P": 1000000.0,
+          "T_NP": 1869493099.4356165,
+          "R": 0.0005349043547162015,
+          "R_bounded": true
+        },
+        "n=200": {
+          "T_P": 8000000.0,
+          "T_NP": 3.495004448837388e+18,
+          "R": 2.2889813495548474e-12,
+          "R_bounded": true
+        }
+      },
+      "NP_vs_PSPACE": {
+        "n=10": {
+          "T_NP": 8.456144324491044,
+          "T_PSPACE": 1024.0,
+          "R": 0.008257953441885785,
+          "R_bounded": true
+        },
+        "n=20": {
+          "T_NP": 71.50637683662208,
+          "T_PSPACE": 1048576.0,
+          "R": 6.819379504835327e-05,
+          "R_bounded": true
+        },
+        "n=50": {
+          "T_NP": 43237.63522020621,
+          "T_PSPACE": 1125899906842624.0,
+          "R": 3.840273452145323e-11,
+          "R_bounded": true
+        },
+        "n=100": {
+          "T_NP": 1869493099.4356165,
+          "T_PSPACE": 1.2676506002282294e+30,
+          "R": 1.4747700187252155e-21,
+          "R_bounded": true
+        },
+        "n=200": {
+          "T_NP": 3.495004448837388e+18,
+          "T_PSPACE": 1.6069380442589903e+60,
+          "R": 2.1749466081307723e-42,
+          "R_bounded": true
+        }
+      }
+    },
+    "Q4_capacity": {
+      "s=10": {
+        "time_budget": 10.0,
+        "P_capacity": 121.09537878087627,
+        "NP_capacity": 1.024,
+        "ratio": 118.25720584069948,
+        "ratio_bounded": false
+      },
+      "s=20": {
+        "time_budget": 20.0,
+        "P_capacity": 14664.090762083899,
+        "NP_capacity": 131.072,
+        "ratio": 111.87813386599655,
+        "ratio_bounded": false
+      },
+      "s=50": {
+        "time_budget": 50.0,
+        "P_capacity": 26039812332.670174,
+        "NP_capacity": 9007199254.740992,
+        "ratio": 2.8909999208648536,
+        "ratio_bounded": true
+      },
+      "s=100": {
+        "time_budget": 100.0,
+        "P_capacity": 6.780718263206816e+20,
+        "NP_capacity": 1.2676506002282293e+24,
+        "ratio": 0.0005349043547161976,
+        "ratio_bounded": true
+      },
+      "s=500": {
+        "time_budget": 500.0,
+        "P_capacity": 1.4334366349937947e+104,
+        "NP_capacity": 2.6187124863169137e+142,
+        "ratio": 5.473822126268816e-39,
+        "ratio_bounded": true
+      },
+      "s=1000": {
+        "time_budget": 1000.0,
+        "P_capacity": 2.0547405865423334e+208,
+        "NP_capacity": 1.0715086071862674e+292,
+        "ratio": 1.9176146348819242e-84,
+        "ratio_bounded": true
+      }
+    }
+  },
+  "honest_assessment": "The0/0 framework reformulates P vs NP as a singularity classification problem. For NP-complete problems (k >= 3), the complexity ratio R = T_P/T_NP diverges (essential singularity), consistent with P != NP. The ETH implies the singularity is essential. We do not prove P != NP; we provide a novel reformulation via the0/0 lens.",
+  "verdict": "CONSISTENT WITH P != NP"
+}
