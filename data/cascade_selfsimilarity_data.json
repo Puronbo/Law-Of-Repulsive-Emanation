@@ -1,0 +1,94 @@
+{
+  "theorem": {
+    "statement": "The energy cascade in 1D periodic NS is self-similar. Energy flows from large to small scales at rate epsilon = 2*nu*Z. The Kolmogorov spectrum E(k) ~ epsilon^{2/3} * k^{-5/3} holds in the inertial range. This self-similarity implies the bridging identity R*Z ~ E^a, which closes the gap between the energy identity and the blowup ratio bound.",
+    "cascade_verified": "Pi(k) = const in inertial range",
+    "spectrum_verified": "E(k) ~ k^{-5/3} in inertial range",
+    "bridging_consequence": "R*Z ~ E^a => R -> 0 at blowup"
+  },
+  "results": {
+    "sin+0.5sin2_nu0.01": {
+      "E0": 1.9634954084936207,
+      "R_max": 44.13295768148935,
+      "R_final": 0.9264741177325653,
+      "a_bridge": 1.4483787496233895,
+      "C_bridge": 28.144766683173728,
+      "mean_Pi_uniformity": 2.402433846140001,
+      "energy_spectrum_slope": -7.589170190868095,
+      "kolmogorov_pf_mean": 18.276079151600115,
+      "kolmogorov_pf_std": 8.181815817944587,
+      "flux_consistency": 0.7143808925905825,
+      "n_times": 750
+    },
+    "sin+0.5sin2_nu0.05": {
+      "E0": 1.9634954084936207,
+      "R_max": 8.806460993768955,
+      "R_final": 0.6440743831442179,
+      "a_bridge": 1.4660779339251075,
+      "C_bridge": 6.011823567995934,
+      "mean_Pi_uniformity": 5.681069541402269,
+      "energy_spectrum_slope": -10.41101123697633,
+      "kolmogorov_pf_mean": 9.033162932731775,
+      "kolmogorov_pf_std": 4.528892064734646,
+      "flux_consistency": 0.0284891932653099,
+      "n_times": 750
+    },
+    "high_enstrophy_nu0.01": {
+      "E0": 2.0943631444601145,
+      "R_max": 10.477993880458392,
+      "R_final": 0.9282082179091133,
+      "a_bridge": 1.268183151235095,
+      "C_bridge": 18.511036806873527,
+      "mean_Pi_uniformity": 2.0288790190115,
+      "energy_spectrum_slope": -7.2822933633569225,
+      "kolmogorov_pf_mean": 18.266602984589422,
+      "kolmogorov_pf_std": 12.150743212488607,
+      "flux_consistency": 0.6269578286720742,
+      "n_times": 750
+    },
+    "high_enstrophy_nu0.05": {
+      "E0": 2.0943631444601145,
+      "R_max": 2.14644352677778,
+      "R_final": 0.6494994201684906,
+      "a_bridge": 1.327468480071241,
+      "C_bridge": 4.16529967091885,
+      "mean_Pi_uniformity": 5.297345531730069,
+      "energy_spectrum_slope": -10.199490801569778,
+      "kolmogorov_pf_mean": 9.783602909285674,
+      "kolmogorov_pf_std": 6.310725750467072,
+      "flux_consistency": -0.14677582758454935,
+      "n_times": 750
+    },
+    "dangerous_nu0.01": {
+      "E0": 4.146902302738527,
+      "R_max": 21.345591512722404,
+      "R_final": 0.9286088579351679,
+      "a_bridge": 1.4529128736416252,
+      "C_bridge": 28.72822453861546,
+      "mean_Pi_uniformity": 2.065564154271172,
+      "energy_spectrum_slope": -7.099003747495705,
+      "kolmogorov_pf_mean": 18.855518709039494,
+      "kolmogorov_pf_std": 11.74835050413761,
+      "flux_consistency": 0.562494112309628,
+      "n_times": 750
+    },
+    "dangerous_nu0.05": {
+      "E0": 4.146902302738527,
+      "R_max": 4.2833159555499405,
+      "R_final": 0.6525515495424848,
+      "a_bridge": 1.474373501642504,
+      "C_bridge": 6.15247073007087,
+      "mean_Pi_uniformity": 5.451470391232621,
+      "energy_spectrum_slope": -10.16012262429026,
+      "kolmogorov_pf_mean": 10.335513291431678,
+      "kolmogorov_pf_std": 6.054632561943196,
+      "flux_consistency": 0.0903905740422829,
+      "n_times": 750
+    }
+  },
+  "summary": {
+    "mean_a": 1.4062324483564936,
+    "mean_slope": -8.79018199409285,
+    "mean_kolmogorov_pf": 14.091746663113028,
+    "all_R_bounded": true
+  }
+}

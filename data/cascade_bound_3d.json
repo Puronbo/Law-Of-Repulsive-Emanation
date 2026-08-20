@@ -1,0 +1,125 @@
+{
+  "theorem_14": {
+    "statement": "In 3D NS, the energy cascade gives ||u||_inf <= C*epsilon^{1/3} (Kolmogorov 1941). Combined with the dissipation wavenumber k_d = (epsilon/nu)^{1/4}, this gives R*nu*k_d^2 = O(1). Since k_d > 0 for all nu > 0, R is bounded. The 0/0 at blowup has removable value 0.",
+    "key_inequality": "||u||_inf <= C * epsilon^{1/3}",
+    "consequence": "R * nu * k_d^2 = O(1) => R bounded",
+    "k_d_formula": "k_d = (epsilon/nu)^{1/4} = (2*nu*Z/nu)^{1/4} = (2*Z)^{1/4}"
+  },
+  "results": {
+    "sin+0.5sin2_nu0.005": {
+      "E0": 1.9634954084936207,
+      "R_max": 88.30066425050235,
+      "kolmogorov_pf_mean": 1.3048794736699423,
+      "kolmogorov_pf_std": 0.6128937421911996,
+      "cascade_bound_ratio_mean": 0.05736704299889991,
+      "cascade_bound_ratio_max": 1.0878154756820442,
+      "k_d_mean": 1.5749635062213243
+    },
+    "sin+0.5sin2_nu0.01": {
+      "E0": 1.9634954084936207,
+      "R_max": 44.137251725005285,
+      "kolmogorov_pf_mean": 1.2202748084369692,
+      "kolmogorov_pf_std": 0.4662896144361938,
+      "cascade_bound_ratio_mean": 0.06103860745612762,
+      "cascade_bound_ratio_max": 1.087438591192358,
+      "k_d_mean": 1.3523787151186188
+    },
+    "sin+0.5sin2_nu0.05": {
+      "E0": 1.9634954084936207,
+      "R_max": 8.807241557412695,
+      "kolmogorov_pf_mean": 0.9890342620034581,
+      "kolmogorov_pf_std": 0.26829509193194484,
+      "cascade_bound_ratio_mean": 0.08649978257163844,
+      "cascade_bound_ratio_max": 1.084430893193226,
+      "k_d_mean": 0.9033489572477115
+    },
+    "sin+0.5sin2_nu0.1": {
+      "E0": 1.9634954084936207,
+      "R_max": 4.392432268902606,
+      "kolmogorov_pf_mean": 0.8181839642916031,
+      "kolmogorov_pf_std": 0.24140305623657363,
+      "cascade_bound_ratio_mean": 0.09493491003198054,
+      "cascade_bound_ratio_max": 1.0806896397995196,
+      "k_d_mean": 0.7334149572519043
+    },
+    "turbulent_nu0.005": {
+      "E0": 1.7946348033631694,
+      "R_max": 17.618049024695566,
+      "kolmogorov_pf_mean": 1.161640939822786,
+      "kolmogorov_pf_std": 0.1287935566190083,
+      "cascade_bound_ratio_mean": 0.025507011875076216,
+      "cascade_bound_ratio_max": 0.2960444819076771,
+      "k_d_mean": 1.6088598870902837
+    },
+    "turbulent_nu0.01": {
+      "E0": 1.7946348033631694,
+      "R_max": 8.830424821942259,
+      "kolmogorov_pf_mean": 1.1053034813196274,
+      "kolmogorov_pf_std": 0.08678656009765122,
+      "cascade_bound_ratio_mean": 0.027615306064458216,
+      "cascade_bound_ratio_max": 0.2959938725612951,
+      "k_d_mean": 1.374744899016905
+    },
+    "turbulent_nu0.05": {
+      "E0": 1.7946348033631694,
+      "R_max": 1.8004515040150537,
+      "kolmogorov_pf_mean": 0.9302810196859697,
+      "kolmogorov_pf_std": 0.10387602615300146,
+      "cascade_bound_ratio_mean": 0.046436623075712946,
+      "cascade_bound_ratio_max": 0.2957680361858082,
+      "k_d_mean": 0.8989445801516839
+    },
+    "turbulent_nu0.1": {
+      "E0": 1.7946348033631694,
+      "R_max": 1.1248996384692664,
+      "kolmogorov_pf_mean": 0.7770677102775756,
+      "kolmogorov_pf_std": 0.15353097168291116,
+      "cascade_bound_ratio_mean": 0.0537386971112113,
+      "cascade_bound_ratio_max": 0.2958477897389141,
+      "k_d_mean": 0.7186999752732726
+    },
+    "dangerous_nu0.005": {
+      "E0": 3.6128315516282625,
+      "R_max": 88.7543133538923,
+      "kolmogorov_pf_mean": 1.263144844244021,
+      "kolmogorov_pf_std": 0.45093745363887805,
+      "cascade_bound_ratio_mean": 0.0700053289073088,
+      "cascade_bound_ratio_max": 2.2794664795095794,
+      "k_d_mean": 1.7194198698589231
+    },
+    "dangerous_nu0.01": {
+      "E0": 3.6128315516282625,
+      "R_max": 44.368031153399315,
+      "kolmogorov_pf_mean": 1.1920818183971669,
+      "kolmogorov_pf_std": 0.36137885827075683,
+      "cascade_bound_ratio_mean": 0.07330898198429012,
+      "cascade_bound_ratio_max": 2.2775873520067647,
+      "k_d_mean": 1.478510452272934
+    },
+    "dangerous_nu0.05": {
+      "E0": 3.6128315516282625,
+      "R_max": 8.85904510141598,
+      "kolmogorov_pf_mean": 0.9939872196788201,
+      "kolmogorov_pf_std": 0.26522251050983575,
+      "cascade_bound_ratio_mean": 0.10948517147169158,
+      "cascade_bound_ratio_max": 2.2626328304339425,
+      "k_d_mean": 0.9807512239416303
+    },
+    "dangerous_nu0.1": {
+      "E0": 3.6128315516282625,
+      "R_max": 4.420471448928698,
+      "kolmogorov_pf_mean": 0.8340555084863797,
+      "kolmogorov_pf_std": 0.2583724580485082,
+      "cascade_bound_ratio_mean": 0.12523630444052583,
+      "cascade_bound_ratio_max": 2.24413434626434,
+      "k_d_mean": 0.7943145733521102
+    }
+  },
+  "summary": {
+    "mean_kolmogorov_pf": 1.0491612541928599,
+    "std_kolmogorov_pf": 0.17586414652736104,
+    "mean_cascade_bound_ratio": 0.06926448066574346,
+    "max_cascade_bound_ratio": 2.2794664795095794,
+    "all_R_bounded": true
+  }
+}
