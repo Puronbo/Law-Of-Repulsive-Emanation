@@ -1,0 +1,51 @@
+{
+  "experiment": "Statistical Cascade Constraint (100 random ICs)",
+  "results": {
+    "0.01": {
+      "n_ics": 100,
+      "R_max_mean": 18.643687731742435,
+      "R_max_std": 12.973361578481295,
+      "R_max_median": 13.258041080350932,
+      "R_max_p95": 49.8520089494434,
+      "R_max_p99": 49.85426042275991,
+      "all_R_bounded": true,
+      "PS_mean": 2693.820897420199,
+      "PS_max": 8385.93679341719,
+      "all_PS_converge": true,
+      "BKM_mean": 11.631490116045118,
+      "all_BKM_finite": true,
+      "energy_retained_mean": 0.19633449002648248
+    },
+    "0.05": {
+      "n_ics": 100,
+      "R_max_mean": 3.334280578992646,
+      "R_max_std": 1.823425608425341,
+      "R_max_median": 2.858634203800291,
+      "R_max_p95": 7.392507021853217,
+      "R_max_p99": 9.304207638491766,
+      "all_R_bounded": true,
+      "PS_mean": 182.95268259557307,
+      "PS_max": 719.1802574263914,
+      "all_PS_converge": true,
+      "BKM_mean": 5.305825469001678,
+      "all_BKM_finite": true,
+      "energy_retained_mean": 0.11718635805696186
+    },
+    "0.1": {
+      "n_ics": 100,
+      "R_max_mean": 1.948301833155965,
+      "R_max_std": 1.081418582192912,
+      "R_max_median": 1.601023391090435,
+      "R_max_p95": 4.232544749607461,
+      "R_max_p99": 4.967703641307038,
+      "all_R_bounded": true,
+      "PS_mean": 61.853873931058985,
+      "PS_max": 193.89468774394476,
+      "all_PS_converge": true,
+      "BKM_mean": 3.56854447634911,
+      "all_BKM_finite": true,
+      "energy_retained_mean": 0.09563368850539096
+    }
+  },
+  "conclusion": "All 100 ICs show bounded R, convergent PS, and finite BKM across all tested viscosities. The0/0 singularity is removable for all tested cases."
+}
