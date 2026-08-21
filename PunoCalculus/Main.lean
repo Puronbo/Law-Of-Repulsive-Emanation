@@ -13,6 +13,7 @@ import PunoCalculus.Goldbach
 import PunoCalculus.MassGap
 import PunoCalculus.Collatz
 import PunoCalculus.Legendre
+import PunoCalculus.Curvature
 
 def main : IO Unit := do
   IO.println "=========================================="
@@ -61,6 +62,26 @@ def main : IO Unit := do
   IO.println "  [Legendre] All intervals n=1..100 contain primes:"
   IO.println s!"    Result: {Legendre.verifyLegendre100}"
   IO.println s!"    Min prime count: {Legendre.minPrimeCount100}"
+  IO.println ""
+
+  IO.println "  [Curvature] L' positive at non-zero points:"
+  IO.println s!"    Result: {Curvature.verifyLdashPositive}"
+  IO.println ""
+
+  IO.println "  [Curvature] L' larger near zeros than far away:"
+  IO.println s!"    Result: {Curvature.verifyLdashLargeNearZero}"
+  IO.println ""
+
+  IO.println "  [Curvature] Corrected formula ratio converges to 1:"
+  IO.println s!"    Result: {Curvature.verifyRatioConverges}"
+  IO.println ""
+
+  IO.println "  [Curvature] |xi'(rho)|^2 > 0 at all 20 zeros:"
+  IO.println s!"    Result: {Curvature.verifyCurvatureAtZeros}"
+  IO.println ""
+
+  IO.println "  [Curvature] Full check:"
+  IO.println s!"    Result: {Curvature.verifyFullCurvature}"
   IO.println ""
 
   IO.println "=========================================="
