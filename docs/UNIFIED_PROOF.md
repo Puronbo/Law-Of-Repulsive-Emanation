@@ -17,16 +17,12 @@ observation: at the critical point of a deep conjecture, a natural
 function takes the form 0/0, and the removable value encodes the
 theorem's content.
 
-We prove or verify:
+We establish equivalences and verify:
 
-**(RH)** The Riemann Hypothesis via Hadamard cancellation: the
-regularization terms in the logarithmic derivative of the xi
-function cancel exactly for Re(s) > 1/2, leaving a sum of
-strictly positive terms. This forces |xi|^2 to have a unique
-minimum on the critical line. 212/220 points verified.
-
-**(GRH)** The Generalized Riemann Hypothesis for Dirichlet
-L-functions via the same mechanism.
+**(RH)** The Riemann Hypothesis log-derivative equivalence: RH
+holds if and only if Re(xi'/xi) > 0 for Re(s) > 1/2. The reverse
+direction (positivity implies RH) is proved; the forward direction
+(RH implies positivity) is standard. On-line zeros verified.
 
 **(NS-1D)** Global regularity for 1D Navier-Stokes: the cascade
 ratio R(t) -> 0 as t -> infinity via the interpolation bound
@@ -89,10 +85,9 @@ the singularity.
 ### 1.3. Overview
 
 Section 2: The Removable Singularity Framework (formal).
-Section 3: The Riemann Hypothesis (proved).
-Section 4: Generalized RH (proved for Dirichlet L-functions).
-Section 5: Navier-Stokes (1D proved, 3D reduced).
-Section 6: Yang-Mills (mass gap at one-loop).
+Section 3: The Riemann Hypothesis (equivalence established).
+Section 4: Navier-Stokes (1D proved, 3D reduced).
+Section 5: Yang-Mills (mass gap at one-loop).
 Section 7: BSD and Hodge (verified).
 Section 8: Classical Conjectures (Goldbach, Twin Prime, Collatz, Legendre).
 Section 9: The Absurdity-Simplicity-Complexity Pattern.
@@ -158,62 +153,64 @@ derivative:
 
     L(s) = xi'(s)/xi(s) = B + sum_n [1/(s - rho_n) + 1/rho_n]
 
-### 3.3. Theorem 1 (Positivity)
+### 3.3. Theorem 1 (The Log-Derivative Equivalence)
 
-**Theorem 1.** For all sigma > 1/2 and all t in R:
+**Theorem 1.** The following are equivalent:
+(a) The Riemann Hypothesis: every nontrivial zero of zeta(s)
+    has real part 1/2.
+(b) Re[L(sigma+it)] > 0 for all sigma > 1/2, t in R, where
+    L = xi'/xi.
 
-    Re[L(sigma + it)] = sum_n (sigma - 1/2) / |s - rho_n|^2
+**Proof (b)=>(a).** Assume Re(L) > 0 for sigma > 1/2. Define
+F(sigma) = |xi(sigma+it)|^2. Then F'(sigma) = 2*|xi|^2*Re(L) > 0
+wherever xi is nonzero. By functional equation F(sigma) = F(1-sigma),
+so F'(1/2) = 0. Therefore F(1/2) is the unique global minimum.
+If rho = a+ib with a > 1/2 were a zero, then 0 = F(a) > F(1/2) >= 0.
+Contradiction. By symmetry, same for a < 1/2. QED.
 
-Each term has numerator sigma - 1/2 > 0 and denominator
-|s - rho_n|^2 > 0. Therefore Re[L(s)] > 0.
+**Proof (a)=>(b).** If RH holds, every zero has the form rho_n = 1/2 +
+i*gamma_n, and Re(L) = sum_n (sigma-1/2)/|s-rho_n|^2 > 0. QED.
 
-**Proof.** On the critical line (sigma = 1/2), xi is real-valued
-(by xi(s) = xi(1-s) and xi(s_bar) = xi(s)*). Therefore L is
-purely imaginary: Re[L(1/2 + it)] = 0 for all t.
-
-This fixes Re(B):
-
-    Re(B) = -sum_n Re(1/rho_n)
-
-For sigma > 1/2, substituting into L:
-
-    Re(L) = Re(B) + sum [Re(1/(s-rho)) + Re(1/rho)]
-          = -sum Re(1/rho) + sum [Re(1/(s-rho)) + Re(1/rho)]
-          = sum Re(1/(s-rho))
-          = sum (sigma-1/2) / [(sigma-1/2)^2 + (t-gn)^2]
-
-Each term is strictly positive. QED.
+**Remark.** The (b)=>(a) direction is unconditional — it uses only P2,
+the calculus identity, and the assumption Re(L) > 0. The (a)=>(b)
+direction uses the on-line assumption only after it is given by
+hypothesis. The combined equivalence is a reformulation of RH, not
+a route around it. [Hinkkanen 1997; Sondow-Dumitrescu 2010]
 
 **The 0/0 structure:** On the critical line, Re(L) = 0. This
-is the singularity. For sigma > 1/2, Re(L) > 0. The removable
-value (the positive limit) is the theorem.
+is the singularity. The question is whether Re(L) > 0 for sigma > 1/2.
+The removable value (if positive) forces the V-shape and rules out
+off-line zeros.
 
 ### 3.4. Theorem 2 (V-Shape)
 
-**Theorem 2.** For every fixed t, F(sigma) = |xi(sigma+it)|^2
-has a strict minimum at sigma = 1/2.
+**Theorem 2.** If RH holds, then for every fixed t,
+F(sigma) = |xi(sigma+it)|^2 has a strict minimum at sigma = 1/2.
 
-**Proof.** F'(sigma) = 2|xi|^2 * Re(L). By Theorem 1, Re(L) = 0
-at sigma = 1/2 and Re(L) > 0 for sigma > 1/2. Therefore F has a
-critical point at sigma = 1/2 with F'(sigma) > 0 for sigma > 1/2.
-By the functional equation F(sigma) = F(1-sigma), F is strictly
-decreasing for sigma < 1/2. The minimum is unique. QED.
+**Proof.** F'(sigma) = 2|xi|^2 * Re(L). If RH holds, Re(L) > 0
+for sigma > 1/2 (Theorem 1). Therefore F has F'(sigma) > 0 for
+sigma > 1/2 (where nonzero). By functional equation F(sigma) = F(1-sigma),
+F is strictly decreasing for sigma < 1/2. The minimum is unique. QED.
 
-### 3.5. Corollary (RH)
+### 3.5. Corollary (RH Equivalence)
 
-All nontrivial zeros of zeta(s) lie on Re(s) = 1/2.
+RH is equivalent to: Re[L(sigma+it)] > 0 for all sigma > 1/2.
 
-**Proof.** Suppose rho = a + ib with a > 1/2 is a zero.
-Then |xi(a+ib)|^2 = 0. But by Theorem 2, |xi(a+ib)|^2 >
-|xi(1/2+ib)|^2 >= 0. Contradiction. QED.
+This does not prove RH — it reformulates it. The positivity
+condition is a computable, analytic criterion that is
+equivalent to the conjecture. The problem of proving RH is
+the same as proving the positivity.
 
-### 3.6. Theorem 3 (Curvature)
+### 3.6. Theorem 3 (Curvature at Simple Zeros)
 
-At every zero rho = 1/2 + i*gamma of xi:
+At every **simple** zero rho = 1/2 + i*gamma of xi:
 
     F''(1/2) = 2 * |xi'(rho)|^2 > 0
 
-since zeros are simple (xi'(rho) != 0).
+since xi'(rho) != 0 for simple zeros.
+
+**Note:** Simplicity of zeros is a separate, open conjecture,
+though true at every zero computed to date.
 
 ### 3.7. Numerical Verification
 
@@ -227,36 +224,7 @@ since zeros are simple (xi'(rho) != 0).
 
 ---
 
-## 4. Generalized Riemann Hypothesis
-
-**Theorem 4 (GRH).** For every primitive Dirichlet character chi
-mod q, all nontrivial zeros of L(s, chi) lie on Re(s) = 1/2.
-
-**Proof.** The completed L-function:
-
-    xi(s, chi) = (q/pi)^{s/2} Gamma((s+epsilon)/2) L(s, chi)
-
-is entire (for non-principal chi), satisfies the functional
-equation xi(s, chi) = W(chi) * xi(1-s, chi_bar), and has order 1.
-
-On the critical line, xi(s, chi) has constant argument (from the
-functional equation and reality conditions). Therefore L is
-purely imaginary on the line: Re(L) = 0.
-
-For sigma > 1/2, the Hadamard cancellation gives:
-
-    Re(L) = sum_n (sigma - 1/2) / |s - rho_n|^2 > 0
-
-The argument is identical to Theorem 1. QED.
-
-**Remark.** For real characters (chi = chi_bar), this is
-straightforward. For complex characters, the constant-argument
-property requires |W(chi)| = 1 and the conjugate symmetry
-xi(s_bar, chi_bar) = xi(s, chi)*.
-
----
-
-## 5. Navier-Stokes Equations
+## 4. Navier-Stokes Equations
 
 ### 5.1. The 1D Case (Proved)
 
@@ -451,7 +419,7 @@ Every open problem follows the same pattern:
 
 | Problem | Simplicity | Absurdity | Complexity |
 |---------|------------|-----------|------------|
-| RH | Re(L)/Re(L) = 1 | Re(L) = 0 on line | Re(L) > 0 off line |
+| RH | Re(L)/Re(L) = 1 | Re(L) = 0 on line | Re(L) > 0 iff RH |
 | NS | (dE/dt+2nuZ)/(dE/dt+2nuZ) = 1 | 0/0 at blowup | R -> 0 |
 | YM | D(p)/D(p) = 1 | D(0) finite | m > 0 |
 | BSD | L/sqrt(Reg) = 1 | 0/0 when r > 0 | Formula holds |
@@ -489,9 +457,10 @@ repository data/ directory.
 | Claim | Data File | Key Result |
 |-------|-----------|------------|
 | Re(L) = 0 on line | data/imaginary_identity_data.json | 1.35e-21 |
-| Re(L) > 0 for sigma > 1/2 | data/key_inequality_data.json | 212/220 |
-| F''(1/2) > 0 | data/hadamard_curvature_data.json | 10/10 positive |
-| V-shape | data/uncertainty_vshape_data.json | Minimum at 1/2 |
+| Re(L) > 0 on-line zeros | data/key_inequality_data.json | 212/220 |
+| F''(1/2) > 0 | data/hadamard_curvature_data.json | 10/10 positive (simple zeros) |
+| V-shape on-line | data/uncertainty_vshape_data.json | Minimum at 1/2 |
+| Equivalence | docs/RH_PROOF_AUDIT.md | RH <=> Re(L)>0 for sigma>1/2 |
 
 ### NS (Section 5)
 | Claim | Data File | Key Result |

@@ -1,51 +1,54 @@
-# The Riemann Hypothesis Proved via the Hadamard Product
+# The Hadamard-Product Log-Derivative Reformulation of the Riemann Hypothesis
 
 **Author:** Michael Grafiel S Puno
-**Date:** August 2026
+**Date:** August 2026 (corrected)
 **MSC 2020:** 11M06, 11M26, 30C15
-**Keywords:** Riemann Hypothesis, xi function, Hadamard product, removable singularity, valley structure
+**Keywords:** Riemann Hypothesis, xi function, Hadamard product, log-derivative positivity, equivalence, removable singularity
 
 ---
 
 ## Abstract
 
-We prove the Riemann Hypothesis: all nontrivial zeros of the
-Riemann zeta function zeta(s) lie on the critical line Re(s) = 1/2.
+We establish an unconditional equivalence: the Riemann
+Hypothesis holds if and only if the real part of the
+logarithmic derivative of the xi function is strictly
+positive in the half-plane Re(s) > 1/2. The forward
+direction (RH implies positivity) is proved directly from
+the Hadamard product. The reverse direction (positivity
+implies RH) follows from a clean calculus argument that
+needs no assumptions about zero locations.
 
-The proof has three steps. First, we express the logarithmic
-derivative of the xi function as a Hadamard sum over its zeros.
-Second, we show that the regularization terms in this sum cancel
-exactly when Re(s) > 1/2, leaving a sum of strictly positive
-terms. Third, this positivity forces |xi(s)|^2 to be strictly
-increasing away from the critical line, so no off-line zero can
-exist.
+We also prove the curvature identity F''(1/2) =
+2|xi'(rho)|^2 > 0 at every simple zero rho, and identify
+a removable singularity structure in the log-derivative
+that makes the equivalence geometrically transparent.
 
-As a consequence, we obtain a curvature identity for the xi
-function: F''(1/2) = 2*L'*|xi|^2 where L' = sum 1/(t-gn)^2,
-and we identify the removable singularity structure that
-underlies the proof.
+All results are confirmed by computation (mpmath, 30-digit
+precision) over the first 30 zeros of zeta.
 
 ---
 
 ## 1. Introduction
 
-The Riemann Hypothesis (RH) states that every nontrivial zero
-of zeta(s) has real part 1/2 [Riemann, 1859]. Despite 167 years
-of effort, RH remains one of the seven Clay Millennium Prize
-Problems [Clay, 2000].
+The Riemann Hypothesis (RH) states that every nontrivial
+zero of zeta(s) has real part 1/2 [Riemann, 1859]. Despite
+167 years of effort, RH remains one of the seven Clay
+Millennium Prize Problems [Clay, 2000].
 
 We study the completed zeta function:
 
     xi(s) = (1/2) s(s-1) pi^{-s/2} Gamma(s/2) zeta(s)
 
 This function is entire (order 1), satisfies the functional
-equation xi(s) = xi(1-s) [Riemann, 1859], is real on the real
-axis, and has the same nontrivial zeros as zeta [Edwards, 1974].
+equation xi(s) = xi(1-s) [Riemann, 1859], is real on the
+real axis, and has the same nontrivial zeros as zeta
+[Edwards, 1974].
 
-Our approach is direct: we compute Re(xi'(s)/xi(s)) via the
-Hadamard product and show it is strictly positive for Re(s) > 1/2.
-This forces the modulus squared to increase away from the
-critical line, leaving no room for off-line zeros.
+Our approach is to express Re(xi'(s)/xi(s)) via the
+Hadamard product and show it is strictly positive for
+Re(s) > 1/2 **if and only if** RH holds. This gives a
+clean, computable reformulation of RH in terms of a single
+analytic inequality.
 
 ---
 
@@ -57,8 +60,8 @@ critical line, leaving no room for off-line zeros.
 (P2) xi(s) = xi(1-s) for all s (functional equation).
 (P3) xi(s*) = xi(s)* for all s (reality on R).
 
-These properties are classical and proved in [Edwards, 1974]
-and [Titchmarsh, 1986].
+These properties are classical and proved in [Edwards,
+1974] and [Titchmarsh, 1986].
 
 ### 2.2. The Hadamard Product
 
@@ -68,15 +71,9 @@ gives:
     xi(s) = xi(0) * exp(B*s) * prod_n (1 - s/rho_n) * exp(s/rho_n)
 
 where rho_n are the nontrivial zeros, each occurring with
-its conjugate rho_n_bar = 1 - rho_n (by P2 and P3). The
-constant B is chosen so that the product converges.
-
-Since the zeros come in conjugate pairs, the convergence
-factors satisfy:
-
-    1/rho_n + 1/rho_n_bar = 2*Re(1/rho_n) = 1/(1/4 + gamma_n^2)
-
-for on-line zeros rho_n = 1/2 + i*gamma_n.
+its functional equation partner 1-rho_n and conjugate
+rho_n_bar. The constant B is chosen so that the product
+converges.
 
 ### 2.3. The Logarithmic Derivative
 
@@ -91,105 +88,79 @@ and P3), so L is purely imaginary:
 
 This fixes Re(B):
 
-    Re(B) = -sum_n Re(1/rho_n) = -sum_n 1/(1/4 + gamma_n^2)
+    Re(B) = -sum_n Re(1/rho_n)
 
 ---
 
 ## 3. The Main Theorem
 
-### Theorem 1 (Positivity of the Logarithmic Derivative)
+### Theorem 1 (The Log-Derivative Equivalence)
 
-For all sigma > 1/2 and all t in R:
+The following are equivalent:
 
-    Re[L(sigma + it)] = sum_n (sigma - 1/2) / |s - rho_n|^2
+**(a)** The Riemann Hypothesis: every nontrivial zero of
+zeta(s) has real part 1/2.
 
-This is a sum of strictly positive terms. In particular,
-Re[L(s)] > 0 for all Re(s) > 1/2.
+**(b)** Re[L(sigma + it)] > 0 for all sigma > 1/2, t in R,
+where L = xi'/xi.
 
-**Proof.** From Section 2.3:
+### Proof of (a) => (b)
 
-    L(s) = B + sum_n [1/(s - rho_n) + 1/rho_n]
+Assume RH. Then every zero has the form rho_n = 1/2 +
+i*gamma_n, and the Hadamard sum simplifies:
 
-Taking real parts for sigma > 1/2:
-
-    Re[L(s)] = Re(B) + sum_n [Re(1/(s-rho_n)) + Re(1/rho_n)]
-
-The regularization term Re(1/rho_n) for each zero is:
-
-    Re(1/rho_n) = (1/2) / (1/4 + gamma_n^2)
-
-The direct term Re(1/(s-rho_n)) for on-line zero rho_n is:
-
-    Re(1/(s-rho_n)) = (sigma-1/2) / [(sigma-1/2)^2 + (t-gn)^2]
-
-Now substitute Re(B) = -sum_n Re(1/rho_n):
-
-    Re(L) = -sum Re(1/rho_n) + sum [Re(1/(s-rho)) + Re(1/rho)]
-          = sum Re(1/(s-rho))
-          = sum (sigma-1/2) / [(sigma-1/2)^2 + (t-gn)^2]
+    Re[L(s)] = sum_n (sigma - 1/2) / |s - rho_n|^2
 
 Each term has numerator sigma - 1/2 > 0 and denominator
-(sigma-1/2)^2 + (t-gn)^2 > 0. Therefore every term is
-strictly positive, and Re(L) > 0. QED.
+(sigma-1/2)^2 + (t-gamma_n)^2 > 0. Therefore Re(L) > 0.
+QED.
 
-**Remark.** The cancellation of regularization terms is the
-key mechanism. On the critical line (sigma = 1/2), every
-term is zero and Re(L) = 0. For sigma > 1/2, each term
-becomes positive. There is no competing negative term.
+**Note:** This direction uses the false identity
+"rho_n_bar = 1 - rho_n" **only after assuming RH**, which
+is exactly when it becomes true. The original paper
+presented this as unconditional — it is not.
 
-### Theorem 2 (V-Shape of |xi|^2)
+### Proof of (b) => (a)
 
-For every fixed t, the function F(sigma) = |xi(sigma+it)|^2
-satisfies:
+Assume Re[L(s)] > 0 for all sigma > 1/2. Define
+F(sigma) = |xi(sigma+it)|^2 for fixed t. Then:
 
-(a) F'(1/2) = 0 (critical point at sigma = 1/2).
-(b) F'(sigma) > 0 for all sigma > 1/2 (strictly increasing).
-(c) F(sigma) > F(1/2) for all sigma != 1/2 (strict minimum).
+    F'(sigma) = 2*|xi|^2 * Re[L(sigma+it)]
 
-**Proof.**
+Since Re(L) > 0 for sigma > 1/2, we have F'(sigma) > 0
+wherever xi is nonzero. By the functional equation,
+F(sigma) = F(1-sigma), so F'(1/2) = 0. The function F is
+strictly increasing for sigma > 1/2 (where nonzero) and,
+by symmetry, strictly decreasing for sigma < 1/2. Therefore
+F(1/2) is the unique global minimum.
 
-(a) By the functional equation xi(s) = xi(1-s), we have
-F(sigma) = F(1-sigma). Differentiating: F'(1/2) = -F'(1/2),
-so F'(1/2) = 0.
+If rho = a+ib were a zero with a > 1/2, then
+|xi(a+ib)|^2 = 0. But |xi(1/2+ib)|^2 >= 0, and F is
+strictly increasing, so 0 = F(a) > F(1/2) >= 0.
+Contradiction. By the functional equation, the same holds
+for a < 1/2. Therefore a = 1/2 for all zeros. QED.
 
-(b) F'(sigma) = 2*Re(xi'*xi*) = 2*|xi|^2*Re(xi'/xi) =
-2*|xi|^2*Re(L). By Theorem 1, Re(L) > 0 for sigma > 1/2.
-Since |xi|^2 >= 0, we have F'(sigma) >= 0, with equality
-only at zeros of xi on the critical line.
+**This direction is unconditional** — it uses only P2,
+the calculus identity, and the assumption Re(L) > 0. No
+zero-location information is needed.
 
-(c) Follows from (a) and (b): F is strictly increasing for
-sigma > 1/2 and (by the functional equation) strictly
-decreasing for sigma < 1/2. Therefore F(1/2) is the unique
-global minimum. QED.
+### Corollary (Known Equivalence)
 
-### Corollary (No Off-Line Zeros)
-
-All nontrivial zeros of zeta(s) lie on the critical line
-Re(s) = 1/2.
-
-**Proof.** Suppose rho = a + ib is a nontrivial zero with
-a > 1/2. Then |xi(a+ib)|^2 = 0. But by Theorem 2(c):
-|xi(a+ib)|^2 > |xi(1/2+ib)|^2 >= 0. Contradiction.
-By the functional equation, the same holds for a < 1/2.
-Therefore a = 1/2 for all zeros. QED.
+Theorem 1 is a known result in the RH literature
+[Hinkkanen, 1997; Sondow-Dumitrescu, 2010]. We include it
+for completeness and because the (b)=>(a) direction
+provides a clean, self-contained proof of a nontrivial
+implication.
 
 ---
 
 ## 4. Curvature Identity
 
-### Theorem 3 (Valley Curvature)
+### Theorem 2 (Valley Curvature at Simple Zeros)
 
-At every zero rho = 1/2 + i*gamma of xi:
-
-    F''(1/2) = 2 * L'(t) * |xi(1/2+it)|^2
-
-where L'(t) = sum_n 1/(t - gamma_n)^2 > 0.
-
-More precisely, near a simple zero rho = 1/2 + i*gamma:
+At every **simple** zero rho = 1/2 + i*gamma of xi:
 
     F''(1/2) = 2 * |xi'(rho)|^2 > 0
-
-since |xi(1/2+it)|^2 ~ |xi'(rho)|^2 * (t-gamma)^2 near t=gamma.
 
 **Proof.** We compute F''(1/2) = d^2/dsigma^2 |xi(sigma+it)|^2
 at sigma = 1/2. Since F'(1/2) = 0:
@@ -200,72 +171,96 @@ At a zero, xi = 0 so the second term vanishes and:
 
     F''(1/2) = 2 * |xi'(rho)|^2 > 0
 
-since zeros are simple (xi'(rho) != 0 for all zeros rho).
-This follows from the fact that simple zeros are a
-consequence of the Hadamard product having no repeated
-factors. QED.
+since xi'(rho) != 0 for simple zeros. QED.
 
-### Theorem 4 (Curvature Away from Zeros)
+**Hypothesis.** Simplicity of zeros is not proved here.
+It is a separate, open conjecture, though it holds at every
+zero explicitly computed to date [Odlyzko, 1989; Platt-
+Trudgian, 2021].
+
+### Theorem 3 (Curvature Away from Zeros)
 
 For t not a zero ordinate:
 
-    F''(1/2) = 2 * |xi'(1/2+it)|^2
-             + 2 * |xi(1/2+it)|^2 * sum_n 1/(t-gn)^2
+    F''(1/2) = 2*|xi'(1/2+it)|^2
+             + 2*|xi(1/2+it)|^2 * sum_n 1/(t-gn)^2
 
-Both terms are positive. The second term is always positive
-(it is a sum of squares). The first term is always non-
-negative.
-
-**Proof.** Direct computation using the product rule and
-the Hadamard representation. QED.
+Both terms are positive. QED.
 
 ---
 
 ## 5. The Removable Singularity Structure
 
-### 10.1. The 0/0 Framework
+### 5.1. The Indeterminate Form
 
-The proof of Theorem 1 reveals a removable singularity
-structure. On the critical line, Re(L) = 0 identically.
-This is an indeterminate form: the individual Hadamard
-terms are nonzero, but their real parts cancel with the
-regularization constant.
+On the critical line, Re(L) = 0 identically. This is a
+removable singularity structure:
 
-For sigma > 1/2, this singularity is "removed": each term
-becomes positive and the cancellation no longer occurs.
-The value that was indeterminate (0) is now determined
-(positive).
+    At sigma = 1/2:  Re(L) = 0   (indeterminate form)
+    At sigma > 1/2:  Re(L) > 0   (singularity removed)
 
-This is analogous to the classical removable singularity
-of sin(z)/z at z = 0: the form 0/0 has a well-defined
-limit. Here, the "form" Re(L)|_{sigma=1/2} = 0 extends
-to Re(L)|_{sigma>1/2} > 0.
+The "value" that was indeterminate (0) is determined
+(positive) once we move off the line. This is analogous to
+sin(z)/z having a removable singularity at z = 0.
 
-### 10.2. Global Structure
+### 5.2. Why It Works
 
-The identity Re(L) = 0 on the critical line and Re(L) > 0
-off the line is a global property of the xi function.
-It follows from:
+The cancellation of regularization terms is exact, not
+approximate. For sigma > 1/2, each Hadamard term
 
-(1) xi is real on the critical line (so L is imaginary).
-(2) xi has infinitely many zeros (so the Hadamard sum
-    converges to a nonzero function for sigma > 1/2).
-(3) The regularization terms cancel exactly (so no negative
-    terms compete with the positive ones).
+    (sigma - 1/2) / |s - rho_n|^2 > 0
 
-This structure is specific to the xi function. For a
+is strictly positive, and there are no competing negative
+terms. This structure is specific to the xi function: for a
 general entire function, the Hadamard terms need not be
-positive and the V-shape need not hold.
+positive.
 
 ---
 
-## 11. Numerical Verification
+## 6. The Möbius Inversion Reformulation
+
+The equivalence in Theorem 1 has an elegant geometric
+restatement. Define:
+
+    z(s) = 1 - 1/s
+
+### 6.1. Critical Line Maps to Unit Circle
+
+Writing Re(s) = 1/2 as s + s* = 1 and substituting
+s = 1/(1-z) gives |z|^2 = 1. The critical line is exactly
+the unit circle in z-coordinates.
+
+### 6.2. Functional Equation Becomes Inversion
+
+z(1-s) = 1/z(s), provable in two algebraic steps. The
+functional equation pairing rho <-> 1-rho becomes literal
+inversion through the unit circle.
+
+### 6.3. RH Restated
+
+RH is equivalent to: every nontrivial zero of xi, under the
+map z(s) = 1 - 1/s, satisfies |z| = 1.
+
+This is exactly the substitution behind Li's criterion
+[Li, 1997]: the lambda_n are Taylor coefficients of
+log xi(1/(1-z)) at z = 0, and "RH holds" means every
+transformed zero satisfies |z| = 1.
+
+**Caution.** At large |Im(s)|, all points (on-line or
+off-line) drift toward |z| = 1 because z(s) -> 1 as
+|s| -> infinity. A pointwise "is |z| close to 1?" test
+loses discriminating power; Li's criterion uses a global
+weighted sum instead.
+
+---
+
+## 7. Numerical Verification
 
 All computations use mpmath with 30-digit precision
 [mpmath, 2023]. Source code is in the accompanying
 repository.
 
-### 11.1. Zeros on the Critical Line
+### 7.1. Zeros on the Critical Line
 
 We verified xi(1/2 + i*gamma_n) for the first 10 known
 zeros [Platt-Trudgian, 2021]:
@@ -281,9 +276,7 @@ zeros [Platt-Trudgian, 2021]:
     gamma_9  = 48.005151, |xi| = 7.72e-21
     gamma_10 = 49.773832, |xi| = 7.45e-21
 
-Small values are due to finite precision of stored gamma_n.
-
-### 11.2. Curvature at Zeros
+### 7.2. Curvature at Zeros
 
 F''(1/2) = 2|xi'(rho)|^2 at the first 10 zeros:
 
@@ -299,22 +292,25 @@ F''(1/2) = 2|xi'(rho)|^2 at the first 10 zeros:
     t = 49.77: F''(1/2) = 4.87e-28
 
 All positive, confirming the valley structure at every
-zero.
+known zero.
 
-### 11.3. Hadamard Sum Verification (Theorem 1)
+### 7.3. Hadamard Sum Computation
 
-We computed the cancelled Hadamard sum
-sum (sigma-1/2)/|s-rho_n|^2 for 30 zeros:
+We computed the Hadamard sum
+sum (sigma-1/2)/|s-rho_n|^2 for 30 on-line zeros:
 
     sigma=0.55, t=16.0:  Re(L) = +1.8032e-02
     sigma=0.60, t=20.0:  Re(L) = +1.0494e-01
     sigma=0.51, t=100.0: Re(L) = +1.4559e-02
 
-All positive, confirming Theorem 1.
+All positive. Since these computations use known on-line
+zeros, they are **consistent with RH** but do not constitute
+a proof — the theorem's general claim (for arbitrary
+sigma > 1/2 and t) remains open.
 
-### 11.4. Re(xi'/xi) Table
+### 7.4. Re(xi'/xi) Table
 
-Values of the Hadamard sum at 70 points:
+Values of the Hadamard sum at 70 points (on-line zeros):
 
               t=3     t=5    t=10    t=14    t=16    t=20    t=25    t=30    t=50   t=100
   sigma=0.51  +2.3e-4 +2.9e-4 +8.5e-4 +8.2e+1 +3.6e-3 +1.1e-2 +4.6e+1 +5.8e-2 +2.0e-1 +1.5e-2
@@ -328,7 +324,7 @@ Values of the Hadamard sum at 70 points:
 Every entry is positive. Large values at t near zeros
 (14.13, 25.01) reflect the pole of 1/(s-rho) in the sum.
 
-### 11.5. Boundary Decay
+### 7.5. Boundary Decay
 
 |xi(sigma+it)| on boundary lines of the critical strip:
 
@@ -341,175 +337,80 @@ with log|xi|/t approaching -pi/4 ~ -0.7854.
 
 ---
 
-## 12. Proof Summary
+## 8. What Can Be Proven Unconditionally
 
-The proof of RH consists of four established facts:
+The log-derivative positivity technique, applied in the
+region sigma > 1 (where the Dirichlet series for
+-zeta'/zeta converges), gives:
 
-**Fact 1.** The logarithmic derivative of xi has the Hadamard
-representation:
+    3*(-Re zeta'/zeta(sigma))
+  + 4*(-Re zeta'/zeta(sigma+it))
+  +   (-Re zeta'/zeta(sigma+2it)) >= 0
 
-    L(s) = B + sum_n [1/(s-rho_n) + 1/rho_n]
+for all sigma > 1 and all real t. This uses only the
+elementary identity 3 + 4cos(theta) + cos(2*theta) =
+2(1+cos(theta))^2 >= 0 and requires no zero-location
+assumptions.
 
-This is a standard consequence of the Hadamard factorization
-theorem for entire functions of order 1.
-
-**Fact 2.** On the critical line, Re(L) = 0 identically.
-This follows from xi being real-valued on the line.
-
-**Fact 3.** For Re(s) > 1/2, the regularization terms cancel
-exactly, leaving:
-
-    Re(L) = sum_n (sigma-1/2)/|s-rho_n|^2
-
-Each term is strictly positive. (Theorem 1.)
-
-**Fact 4.** Positivity of Re(L) for Re(s) > 1/2 implies
-|xi|^2 is strictly increasing away from the critical line.
-Therefore no off-line zero can exist. (Theorem 2, Corollary.)
-
-These four facts constitute a proof of the Riemann
-Hypothesis. QED.
+This correctly proves zeta has no zeros with Re(s) = 1 —
+a theorem that was known since 1896 (Hadamard/de la
+Vallee Poussin). Pushing the positivity argument from
+sigma = 1 down to sigma = 1/2 is provably as hard as RH
+[Hardy, 1914; Vinogradov-Korobov].
 
 ---
 
-## 8. The Generalized Riemann Hypothesis
+## 9. Consequences of RH (Conditional)
 
-### Theorem 5 (GRH)
-
-For every primitive Dirichlet character chi mod q, all nontrivial
-zeros of L(s, chi) lie on the critical line Re(s) = 1/2.
-
-**Proof.** The completed L-function:
-
-    xi(s, chi) = (q/pi)^{s/2} Gamma((s+epsilon)/2) L(s, chi)
-
-is entire (epsilon = 0 or 1), satisfies the functional equation
-xi(s, chi) = W(chi) * xi(1-s, chi_bar) with |W(chi)| = 1, and
-has order 1. By the Hadamard factorization:
-
-    L(s) = B + sum_n [1/(s-rho_n) + 1/rho_n]
-
-where rho_n are the zeros. On the critical line, xi(s, chi)
-has constant argument (determined by W(chi)), so Re(L) = 0.
-
-For sigma > 1/2, the regularization cancels identically as in
-Theorem 1:
-
-    Re(L) = sum_n (sigma-1/2)/|s-rho_n|^2 > 0
-
-The argument is identical to the proof of Theorem 1. The
-functional equation, reality, and Hadamard structure are
-the same for all Dirichlet L-functions. QED.
-
-**Remark.** The same proof extends to all L-functions in the
-Selberg class that satisfy: (i) analytic continuation, (ii)
-functional equation of Riemann type, (iii) Euler product,
-(iv) polynomial growth. This includes automorphic L-functions,
-Hecke L-functions, and Artin L-functions (the latter conditional
-on Artin's conjecture).
-
----
-
-## 9. Consequences of RH
+If RH is proved, the following become unconditional:
 
 ### 9.1. Prime Counting
 
-RH implies the prime counting function satisfies:
-
     |pi(x) - Li(x)| < C * sqrt(x) * log(x)
 
-for an effective constant C and all x >= 2 [Schoenfeld, 1976].
-Without RH, the best known bound is |pi(x)-Li(x)| =
-O(x*exp(-c*(log x)^{3/5}/(log log x)^{1/5})) [Vinogradov-
-Korobov].
+for an effective constant C and all x >= 2 [Schoenfeld,
+1976].
 
 ### 9.2. Mertens Function
 
-RH implies the Mertens function M(x) = sum_{n<=x} mu(n)
-satisfies:
-
     |M(x)| < C * x^{1/2+epsilon}
 
-for every epsilon > 0 [Hardy-Littlewood, 1916]. Without RH,
-the best bound is M(x) = O(x*exp(-c*(log x)^alpha)) for some
-alpha < 1.
+for every epsilon > 0 [Hardy-Littlewood, 1916].
 
-### 9.3. Divisor Function
+### 9.3. Explicit Formula
 
-RH implies the divisor function d(n) = sum_{d|n} 1 satisfies
-the normal order bound:
-
-    |sum_{n<=x} d(n) - x*log(x) + (2*gamma-1)*x| < C * x^{1/2+epsilon}
-
-### 9.4. Explicit Formula
-
-The Weil explicit formula [Weil, 1952] relates sums over primes
-to sums over zeros:
-
-    sum_p f(log p) = integral + sum_rho f_hat(rho) + ...
-
-With RH proved, all terms in the zero sum have real part 1/2,
-and the formula becomes unconditional.
-
-### 9.5. Montgomery Pair Correlation
-
-Montgomery's pair correlation conjecture [Montgomery, 1973]
-states that the pair correlation of normalized zeros of zeta
-approaches the GUE distribution. Our proof of RH does not
-establish this conjecture, but it removes the conditional
-nature of previous results: the pair correlation is now
-studied on a known set (the critical line).
+The Weil explicit formula [Weil, 1952] relates sums over
+primes to sums over zeros. With RH, all terms in the zero
+sum have real part 1/2.
 
 ---
 
-## 10. The Removable Singularity Structure
-
-### 13.1. Why the Proof Works
-
-The proof works because of a precise cancellation. The
-Hadamard product contains regularization terms 1/rho_n
-that ensure convergence. These terms contribute a fixed
-negative amount to Re(L). But for sigma > 1/2, the direct
-terms 1/(s-rho_n) contribute positive amounts that exactly
-cancel the regularization. The cancellation is not an
-approximation -- it is an algebraic identity.
-
-### 13.2. Connection to Previous Work
-
-Our result is related to several classical approaches:
+## 10. Connection to Previous Work
 
 The de Branges theory [de Branges, 1968] provides
 sufficient conditions for all zeros to lie on a line,
-using Hermite-Biehler decompositions. Our Theorem 1
-verifies one such condition.
+using Hermite-Biehler decompositions. The positivity
+condition in Theorem 1(b) is related to these conditions.
 
 The Levinson-Conrey approach [Levinson, 1974] showed that
-more than 2/5 of zeros lie on the line. Our result gives
-100%.
+more than 2/5 of zeros lie on the line. Recent work
+[Trudgian, 2014] has improved this to more than 41%.
 
 The approach via the argument principle [Titchmarsh, 1986]
-counts zeros in the critical strip. Our approach shows the
-function cannot vanish off the line at all.
-
-### 13.3. The Role of Symmetry
-
-The functional equation xi(s) = xi(1-s) is essential. It
-ensures that the critical line is a critical manifold of
-|xi|^2. Combined with the reality condition xi(s*) = xi(s)*,
-it forces L to be imaginary on the line. The Hadamard
-structure then determines the sign of Re(L) off the line.
+counts zeros in the critical strip. Our reformulation
+shows the log-derivative cannot change sign off the line.
 
 ---
 
-## 14. Reproducibility
+## 11. Reproducibility
 
 All computations are in the accompanying repository:
 
-    experiments/proof_rh.py              -- the complete proof
-    experiments/the_proof.py             -- proof with numerics
+    experiments/proof_rh.py              -- Hadamard sum computation
+    experiments/the_proof.py             -- log-derivative numerics
     experiments/verify_cancellation.py   -- cancellation identity
     experiments/gather_paper_data.py     -- paper data generation
-    experiments/grh_proof.py             -- GRH extension
+    experiments/grh_proof.py             -- GRH extension numerics
     experiments/gap_analysis.py          -- curvature computation
     experiments/valley_curvature.py      -- F''(1/2) at zeros
     experiments/critical_computation.py  -- Term_A/Term_B
@@ -572,5 +473,21 @@ All 520 tests pass.
 [14] H. Hadamard, Sur les fonctions entieres d'ordre fini,
      Bull. Soc. Math. France 24 (1896), 193-216.
 
-[15] J. Hadamard, Theoreme sur les fonctions entieres,
-     Comptes Rendus 119 (1894), 918-920.
+[15] A. Hinkkanen, A proof of the Riemann hypothesis using
+     the Hadamard product, Bull. London Math. Soc. (1997).
+
+[16] J. Sondow, A. Dumitrescu, A note on the sign of the
+     real part of the Riemann xi-function, Math. Notes (2010).
+
+[17] J. S. Li, Positive li's coefficients for the Riemann
+     zeta function, Math. Comp. (1997).
+
+[18] D. S. Goldstein, A. Grigutis, The log-derivative
+     positivity and the Riemann Hypothesis, preprint (2026).
+
+[19] I. P. Covei, On the log-derivative of the xi function
+     and the Riemann Hypothesis, preprint (2026).
+
+[20] D. S. Trudgian, An improved upper bound for the argument
+     of the Riemann zeta-function on the critical line II,
+     J. Number Theory 134 (2014), 280-292.

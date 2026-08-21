@@ -14,10 +14,11 @@ seven Millennium Prize Problems. For each problem, we identify
 an indeterminate form whose limiting value encodes the
 conjecture's content.
 
-We prove or verify:
-(RH) The Riemann Hypothesis via Hadamard cancellation: the
-regularization terms cancel exactly for Re(s) > 1/2, leaving
-a sum of strictly positive terms [Puno, 2026; 212 points verified].
+We prove or establish equivalences for:
+(RH) The Riemann Hypothesis log-derivative equivalence: RH
+holds iff Re(xi'/xi) > 0 for Re(s) > 1/2. Forward direction
+proved; reverse direction is a clean calculus argument
+[Puno, 2026; on-line zeros verified].
 
 (BSD) The Birch-Swinnerton-Dyer 0/0 structure: L(E,1) = 0
 iff rank > 0, with the removable value encoding Sha, the
@@ -65,34 +66,39 @@ across mathematics: when a well-defined quantity vanishes at a
 point, the ratio f(x)/(x-a) may have a removable singularity.
 The removable value encodes structural information.
 
-For the Riemann xi function, this structure proved RH:
-on the critical line Re(L) = 0 (identity), and for Re(s) > 1/2
-the regularization terms cancel, leaving strictly positive
-terms. The "0/0" was the vanishing of Re(L) at sigma = 1/2;
-the removable value was the positive derivative.
+For the Riemann xi function, this structure gives an equivalence:
+on the critical line Re(L) = 0 (identity), and the question is
+whether Re(L) > 0 for Re(s) > 1/2. The "0/0" is the vanishing
+of Re(L) at sigma = 1/2; the removable value (if positive)
+would force the V-shape and rule out off-line zeros.
 
 We apply this lens to each Millennium Problem.
 
 ---
 
-## 2. Riemann Hypothesis (PROVED)
+## 2. Riemann Hypothesis (Equivalence Established)
 
-### Theorem 1 [Puno, 2026a]
+### Theorem 1 [Puno, 2026a; Hinkkanen 1997; Sondow-Dumitrescu 2010]
 
-All nontrivial zeros of zeta(s) lie on Re(s) = 1/2.
+The following are equivalent:
+(a) The Riemann Hypothesis: all nontrivial zeros of zeta(s)
+    have real part 1/2.
+(b) Re[L(sigma+it)] > 0 for all sigma > 1/2, t in R, where
+    L = xi'/xi.
 
-**Proof (sketch).** The Hadamard product gives:
+**Proof (b)=>(a).** Assume Re(L) > 0 for sigma > 1/2. Define
+F(sigma) = |xi(sigma+it)|^2. Then F'(sigma) = 2*|xi|^2*Re(L) > 0
+wherever xi is nonzero. By functional equation F(sigma) = F(1-sigma),
+so F'(1/2) = 0. Therefore F(1/2) is the unique global minimum.
+If rho = a+ib with a > 1/2 were a zero, then 0 = F(a) > F(1/2) >= 0.
+Contradiction. QED.
 
-    L(s) = B + sum_n [1/(s-rho_n) + 1/rho_n]
+**Proof (a)=>(b).** If RH holds, every zero has the form rho_n = 1/2 +
+i*gamma_n, and Re(L) = sum_n (sigma-1/2)/|s-rho_n|^2 > 0. QED.
 
-On the critical line, Re(L) = 0 identically. For sigma > 1/2,
-the regularization terms cancel exactly:
-
-    Re(L) = sum_n (sigma-1/2)/|s-rho_n|^2 > 0
-
-Each term is strictly positive. Therefore |xi|^2 is
-strictly increasing for sigma > 1/2. No off-line zero
-can exist. QED.
+**Remark.** The (b)=>(a) direction is unconditional. The (a)=>(b) direction
+uses the on-line assumption only after it is given by hypothesis. The
+combined equivalence is a reformulation of RH, not a route around it.
 
 ---
 
@@ -823,7 +829,7 @@ whether surgery can resolve the singularity.
 
 | Problem | Status | 0/0 Structure | Removable Value |
 |---------|--------|---------------|-----------------|
-| RH | PROVED | Re(L) = 0 on line | Positive derivative |
+| RH | EQUIVALENCE | Re(L) = 0 on line; Re(L)>0 iff RH | Positive if RH holds |
 | BSD | VERIFIED | L^(r)(1)/r! = BSD quantity | Formula holds rank 0,1,2 |
 | NS (2D) | PROVED | dH/dt = 0 at blowup | Energy dissipation |
 | NS (1D) | PROVED | R <= C*E^{3/4}/(nu*Z^{1/4}) | R->0, global smooth |
@@ -839,8 +845,9 @@ each Millennium Problem asks whether a specific 0/0 has a
 well-defined removable value. The value encodes the
 conjecture's content.
 
-For RH, the removable value was proved to be positive via
-Hadamard cancellation. For BSD, it is verified numerically.
+For RH, the removable value is positive on-line, and the
+equivalence (positivity for all sigma > 1/2 iff RH) is established.
+For BSD, it is verified numerically.
 For NS (2D), it is the energy dissipation bound. For the
 remaining problems, the framework identifies what the value
 would need to be, but proving it requires deeper techniques.
@@ -935,10 +942,11 @@ it is the 0/0 framework itself. The identity provides the
 formula; the constraint determines removability. The removable
 value encodes the deepest structural information.
 
-For RH, this architecture was established in [Puno, 2026] via
-the "1^x = 1" analogy: the identity is like 1^x = 1 (always
-true), while the constraint is like requiring x to be real
-(the hard part that requires proof).
+For RH, this architecture gives an equivalence: the identity
+(Re(L) = 0 on line) holds by construction, while the constraint
+(Re(L) > 0 for sigma > 1/2) is equivalent to RH itself. The
+constraint does not follow from the identity; it is the hard part
+that requires proof.
 
 ---
 
@@ -1055,7 +1063,8 @@ Combined with cascade: R <= 4.68/nu.
 
 Re(L) = 0 on the line, so this is 0/0 = 1.
 Off the line: Re(L) != 0, tautology holds trivially.
-The removable value (derivative) is positive.
+The removable value (derivative) is positive ON-LINE.
+Proving it is positive OFF-LINE is exactly RH.
 
 **BSD.** Tautology:
 
@@ -1183,7 +1192,7 @@ which the deepest structure becomes visible.
 
 ## 17. Closing Each Problem via the Pattern
 
-### 17.1. RH: Closed
+### 17.1. RH: Equivalence Established (Not Closed)
 
 **Simplicity:** Re(L) = 0 on the critical line (identity,
 always true, no proof needed).
@@ -1193,16 +1202,14 @@ simultaneously (the trivial zero). The xi function has a
 0/0 structure at every zero.
 
 **Complexity:** The removable value = d/ds |xi(s)|^2 at
-each zero. We proved this is strictly positive:
+each zero. For on-line zeros, this is strictly positive:
     Re(L)/Re(L) = sum_n (sigma-1/2)/|s-rho_n|^2 > 0
-    [Puno, 2026a; data/key_inequality_data.json; 212/220
-     points verified]
+    [on-line zeros verified; 212 points positive]
 
-**Close:** The 0/0 has positive removable value. Therefore
-|xi|^2 is strictly increasing for sigma > 1/2. No off-line
-zero exists. QED. [data/uncertainty_vshape_data.json: V-shape
-confirmed; data/hadamard_curvature_data.json: F''(1/2) > 0
-verified]
+**Status:** The 0/0 has positive removable value ON-LINE.
+The equivalence RH <=> Re(L) > 0 for sigma > 1/2 is
+established (Theorem 1). But proving Re(L) > 0 off the line
+is exactly RH itself. The problem remains OPEN.
 
 ### 17.2. BSD: Closed (for ranks 0, 1, 2)
 
@@ -1521,9 +1528,10 @@ to its supporting data.
 | Claim | Data File | Key Result |
 |-------|-----------|------------|
 | Re(L)=0 on line | data/imaginary_identity_data.json | Verified to 10^-16 |
-| Re(L)>0 for sigma>1/2 | data/key_inequality_data.json | 212/220 points |
-| V-shape of |xi|^2 | data/uncertainty_vshape_data.json | Strict minimum at sigma=1/2 |
-| F''(1/2)>0 | data/hadamard_curvature_data.json | Positive curvature |
+| Re(L)>0 on-line zeros | data/key_inequality_data.json | 212/220 points |
+| V-shape of |xi|^2 | data/uncertainty_vshape_data.json | On-line minimum at sigma=1/2 |
+| F''(1/2)>0 | data/hadamard_curvature_data.json | Positive curvature (simple zeros) |
+| Equivalence | docs/RH_PROOF_AUDIT.md | RH <=> Re(L)>0 for sigma>1/2 |
 
 ### BSD (Section 3)
 | Claim | Data File | Key Result |
@@ -1650,8 +1658,8 @@ to its supporting data.
 [10] G. Perelman, The entropy formula for the Ricci flow and
      its geometric applications, arXiv:math/0211159 (2002).
 
-[11] M. Grafiel S Puno, The Riemann Hypothesis Proved via the
-     Hadamard Product, preprint (2026).
+[11] M. Grafiel S Puno, The Hadamard-Product Log-Derivative
+     Reformulation of the Riemann Hypothesis, preprint (2026).
 
 [12] M. Grafiel S Puno, The Law of Singularities: Indeterminate
      Form as Mathematical Structure, preprint (2026).

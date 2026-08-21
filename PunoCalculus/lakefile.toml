@@ -1,0 +1,10 @@
+name = "PunoCalculus"
+version = "0.1.0"
+defaultTargets = ["punocalculus"]
+
+[[lean_lib]]
+name = "PunoCalculus"
+
+[[lean_exe]]
+name = "punocalculus"
+root = "Main"

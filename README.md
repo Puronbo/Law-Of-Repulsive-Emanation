@@ -27,15 +27,15 @@ This pattern unifies the 7 Millennium Prize Problems and 4 classical conjectures
 
 ## Proofs
 
-### Theorem 1 — Riemann Hypothesis
+### Theorem 1 — Riemann Hypothesis (Equivalence Established)
 
-**Statement:** Re(ξ′/ξ)(s) > 0 for all Re(s) > ½.
+**Statement:** RH holds if and only if Re(ξ′/ξ)(s) > 0 for all Re(s) > ½.
 
-**Proof:** Hadamard factorization cancellation. At any zero ρ, the real-part sum Σₙ (σ − ½)/|s − ρₙ|² is strictly positive when σ > ½, since every term is positive. At σ = ½ it vanishes exactly. This is a direct, unconditional proof.
+**Proof:** The reverse direction (positivity → RH) is a clean calculus argument: F'(σ) = 2|ξ|²·Re(L) > 0 forces F(½) to be the unique global minimum, ruling out off-line zeros. The forward direction (RH → positivity) follows from Hadamard cancellation when zeros are on-line. The combined equivalence is a reformulation, not a proof.
 
-**Evidence:** 212/220 points verified. Strict V-shape of |ξ|² confirmed. Curvature F″(½) = 2|ξ′(ρ)|² > 0 at every zero.
+**Evidence:** On-line zeros verified. Strict V-shape confirmed at known zeros. Curvature F″(½) = 2|ξ′(ρ)|² > 0 at simple zeros.
 
-📄 [`THE_SUBMISSION.md`](docs/THE_SUBMISSION.md) → `THE_SUBMISSION.pdf` (9 pages, 15 references)
+📄 [`THE_SUBMISSION.md`](docs/THE_SUBMISSION.md) → `THE_SUBMISSION.pdf` (8 pages, 20 references)
 
 ### Theorem 13 — 1D Navier-Stokes Global Regularity
 
