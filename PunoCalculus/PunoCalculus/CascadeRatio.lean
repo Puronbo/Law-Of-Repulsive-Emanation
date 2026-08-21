@@ -1,3 +1,23 @@
+/-
+  PunoCalculus.CascadeRatio
+
+  NOTE: This module uses a simplified polynomial decay model
+  (E ~ 1/(1+2nt)^2, Z ~ 1/(1+2nt)) as a proxy for the actual
+  Navier-Stokes energy/enstrophy decay. The real 1D viscous
+  Burgers equation has exponential decay E(t) = E0*exp(-2nu*t),
+  which requires Float.exp (unavailable in Lean 4 stdlib
+  without sorry).
+
+  The actual NS result (Theorem 13) is proved analytically via
+  Gagliardo-Nirenberg interpolation in the paper. This module
+  verifies the qualitative behavior (monotone cascade ratio
+  decay) on a simplified model, not the PDE itself.
+
+  The Python experiment ns_1d_proof.py does a real spectral
+  simulation (N=512 modes) and verifies the Sobolev bound
+  R(t) <= C*E^{3/4}/(nu*Z^{1/4}).
+-/
+
 def energyDecay (E0 nu t : Float) : Float :=
   if t <= 0.0 then E0
   else E0 / (1.0 + 2.0 * nu * t)^2
