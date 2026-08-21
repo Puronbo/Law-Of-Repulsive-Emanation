@@ -69,7 +69,7 @@ def run_hodge_experiment():
     genus_pairs = [(1, 1), (1, 2), (2, 2), (1, 3), (2, 3)]
     for g1, g2 in genus_pairs:
         # Hodge numbers for C_g1 x C_g2
-        h11 = 1 + g1 * g2  # h^{1,1} = 1 + g1*g2 (product formula)
+        h11 = 2 + 2 * g1 * g2  # h^{1,1} = 2 + 2*g1*g2 (product formula)
         h20 = g1 * g2      # h^{2,0} = g1*g2
         h02 = g1 * g2      # h^{0,2} = g1*g2
 
@@ -94,9 +94,10 @@ def run_hodge_experiment():
     ab_results = {}
     for rho in [1, 2, 3, 4]:
         # Neron-Severi rank rho
-        # h^{1,1} = 6 - 2*rho (for generic)
-        h11 = 6 - 2 * rho
-        h20 = rho - 1  # h^{2,0} = rho - 1
+        # h^{1,1} = 4 and h^{2,0} = 1 are topological invariants of the
+        # abelian surface (b2 = 6 = h11 + 2*h20), independent of rho
+        h11 = 4
+        h20 = 1
 
         ab_results[f"rho_{rho}"] = {
             "ns_rank": rho,

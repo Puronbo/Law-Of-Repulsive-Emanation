@@ -6,3 +6,8 @@ import PunoCalculus.MassGap
 import PunoCalculus.Collatz
 import PunoCalculus.Legendre
 import PunoCalculus.Curvature
+import PunoCalculus.BSD
+import PunoCalculus.Hodge
+import PunoCalculus.Poincare
+import PunoCalculus.PvsNP
+import PunoCalculus.TwinPrime

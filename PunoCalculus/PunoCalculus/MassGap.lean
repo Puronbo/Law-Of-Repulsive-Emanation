@@ -3,8 +3,8 @@
 
   NOTE: This module uses a rational approximation m = mu/(1+x)
   instead of the actual one-loop formula m = mu*exp(-x) where
-  x = 8*pi^2/(b0*g^2). The exponential requires Float.exp
-  which depends on the 'sorry' axiom in Lean 4 stdlib.
+  x = 8*pi^2/(b0*g^2). A rational model was chosen for simplicity;
+  Float.exp is available in Lean 4 stdlib.
 
   Both formulas give m > 0 for all g > 0, so the positivity
   conclusion is the same. But the numerical values differ:

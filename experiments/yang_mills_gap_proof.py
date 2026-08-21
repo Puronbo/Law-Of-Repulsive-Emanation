@@ -44,11 +44,11 @@ def g_from_alpha(alpha):
 def coupling_at_scale(mu, mu_ref, g_ref):
     """Running coupling at scale mu from reference (mu_ref, g_ref).
     
-    g^2(mu) = g^2(mu_ref) / [1 + b0*g^2(mu_ref)/(16pi^2) * ln(mu/mu_ref)]
+    g^2(mu) = g^2(mu_ref) / [1 + b0*g^2(mu_ref)/(8pi^2) * ln(mu/mu_ref)]
     """
     b = b0()
     g2 = g_ref**2
-    denom = 1.0 + b * g2 / (16.0 * np.pi**2) * np.log(mu / mu_ref)
+    denom = 1.0 + b * g2 / (8.0 * np.pi**2) * np.log(mu / mu_ref)
     if denom <= 0:
         return 0.0
     return np.sqrt(g2 / denom)

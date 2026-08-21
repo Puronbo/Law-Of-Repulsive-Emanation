@@ -4,9 +4,9 @@
   NOTE: This module uses a simplified polynomial decay model
   (E ~ 1/(1+2nt)^2, Z ~ 1/(1+2nt)) as a proxy for the actual
   Navier-Stokes energy/enstrophy decay. The real 1D viscous
-  Burgers equation has exponential decay E(t) = E0*exp(-2nu*t),
-  which requires Float.exp (unavailable in Lean 4 stdlib
-  without sorry).
+  Burgers equation has exponential decay E(t) = E0*exp(-2nu*t).
+  A polynomial model was chosen for simplicity of the Lean
+  formalization; Float.exp is available in Lean 4 stdlib.
 
   The actual NS result (Theorem 13) is proved analytically via
   Gagliardo-Nirenberg interpolation in the paper. This module

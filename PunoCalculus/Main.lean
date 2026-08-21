@@ -14,6 +14,11 @@ import PunoCalculus.MassGap
 import PunoCalculus.Collatz
 import PunoCalculus.Legendre
 import PunoCalculus.Curvature
+import PunoCalculus.BSD
+import PunoCalculus.Hodge
+import PunoCalculus.Poincare
+import PunoCalculus.PvsNP
+import PunoCalculus.TwinPrime
 
 def main : IO Unit := do
   IO.println "=========================================="
@@ -82,6 +87,26 @@ def main : IO Unit := do
 
   IO.println "  [Curvature] Full check:"
   IO.println s!"    Result: {Curvature.verifyFullCurvature}"
+  IO.println ""
+
+  IO.println "  [BSD] Formula verified for 4 curves (rank 0,1,2):"
+  IO.println s!"    Result: {BSD.verifyFullBSD}"
+  IO.println ""
+
+  IO.println "  [Hodge] CP^n, products, abelian, quintic:"
+  IO.println s!"    Result: {Hodge.verifyFullHodge}"
+  IO.println ""
+
+  IO.println "  [Poincare] Hamilton ratio + classification:"
+  IO.println s!"    Result: {Poincare.verifyFullPoincare}"
+  IO.println ""
+
+  IO.println "  [PvsNP] Complexity ordering + singularity structure:"
+  IO.println s!"    Result: {PvsNP.verifyFullPvsNP}"
+  IO.println ""
+
+  IO.println "  [TwinPrime] pi_2(100)=8, pi_2(1000)=35, Brun convergence:"
+  IO.println s!"    Result: {TwinPrime.verifyFullTwinPrime}"
   IO.println ""
 
   IO.println "=========================================="

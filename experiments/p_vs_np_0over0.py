@@ -80,7 +80,7 @@ KSAT_BOUNDS = {
         "T_P_exponent": 0.61,
         "T_NP_exponent": 1,
         "is_NPC": True,
-        "phase_transition_alpha_c": 19.533,
+        "phase_transition_alpha_c": 21.117,
         "note": "5-SAT is NP-complete.",
     },
 }
@@ -120,8 +120,8 @@ def analyze_singularity_structure():
       => essential singularity (non-removable)
       => P != NP
 
-    For c_k = 0 (P): R(s) = s^d * 2^0 = s^d -> 0 as s -> 0
-      => removable singularity with value 0
+    For c_k = 0 (P): R(s) is O(1) (bounded)
+      => removable singularity with value 1
       => P = NP (trivially, since the problem is in P)
     """
     results = {}
@@ -135,7 +135,7 @@ def analyze_singularity_structure():
         R_values = []
         for s in s_values:
             if c_k == 0:
-                R = s ** 3  # polynomial
+                R = 1.0  # polynomial vs polynomial: ratio is O(1)
             else:
                 R = (s ** 3) * (2 ** (c_k / s))
             R_values.append({"s": s, "R": float(R)})
@@ -143,7 +143,7 @@ def analyze_singularity_structure():
         # Singularity type
         if c_k == 0:
             singularity_type = "removable (P problem)"
-            removable_value = 0.0
+            removable_value = 1.0
         else:
             singularity_type = "essential (NP-hard)"
             removable_value = None  # non-removable

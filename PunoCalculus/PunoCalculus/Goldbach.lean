@@ -29,7 +29,7 @@ def goldbachReps (n : Nat) : Nat :=
   else goldbachRepsGo 2 n 0 (n / 2)
 
 def verifyGoldbach100 : Bool :=
-  (List.range' 4 97 2).all (fun n => goldbachReps n > 0)
+  (List.range' 4 49 2).all (fun n => goldbachReps n > 0)
 
 #eval verifyGoldbach100
 

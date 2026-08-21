@@ -4,8 +4,9 @@ TWIN PRIME CONJECTURE AS 0/0
 The Twin Prime Conjecture: there are infinitely many primes p such that p+2 is also prime.
 
 The 0/0 form: the twin prime counting function pi_2(x) = #{p <= x : p and p+2 both prime}.
-The density pi_2(x)/x -> 0 as x -> infinity, but the sum of reciprocals diverges
-(sum_{p twin} 1/p diverges). This is the 0/0: numerator -> infinity, denominator -> infinity.
+The density pi_2(x)/x -> 0 as x -> infinity. The sum of reciprocals
+converges by Brun's theorem (1919): sum_{p twin} 1/p < ∞ (Brun constant ≈ 1.9021605).
+This is the 0/0: numerator -> infinity, denominator -> infinity.
 
 Hardy-Littlewood prediction: pi_2(x) ~ 2*C2 * x / ln(x)^2
 where C2 = prod_{p>2} (1 - 1/(p-1)^2) = 0.6601...
@@ -88,7 +89,7 @@ def run():
             "expected_density": round(2.0 * C2 / (math.log(x1) ** 2), 6),
         })
 
-    # Q3: Reciprocal sum (should diverge)
+    # Q3: Reciprocal sum (Brun's theorem: converges to Brun constant ≈ 1.9021605)
     reciprocal_sums = []
     running_sum = 0.0
     checkpoints = [100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000]
@@ -110,7 +111,7 @@ def run():
     # This is the 0/0: both limits are "infinite" in different senses
     zero_over_zero = {
         "density_limit": "pi_2(x)/x -> 0 as x -> infinity",
-        "reciprocal_sum": "sum_{p twin} 1/p diverges (Euler)",
+        "reciprocal_sum": "sum_{p twin} 1/p converges (Brun 1919, Brun constant ≈ 1.9021605)",
         "form": "infinity / infinity = 0/0",
         "removable_value": "pi_2(x) ~ 2*C2*x/ln(x)^2 (Hardy-Littlewood)",
         "c2": round(C2, 6),
@@ -119,8 +120,8 @@ def run():
 
     verdict = {
         "conjecture": "Twin Prime (infinitely many pairs (p, p+2))",
-        "status": "VERIFIED",
-        "method": "0/0: reciprocal sum diverges (Euler 1737) + HL growth verified",
+        "status": "NUMERICAL_VERIFICATION",
+        "method": "0/0: Brun's theorem (1919): sum CONVERGES (Brun constant ≈ 1.9021605) + HL growth verified",
         "c2_constant": round(C2, 6),
         "pi_2_at_10^6": pi_2_at_limit,
         "hl_at_10^6": round(2 * C2 * 1000000 / (math.log(1000000) ** 2), 1),
@@ -130,7 +131,7 @@ def run():
         "0over0": zero_over_zero,
         "honest_walls": [
             "HL conjecture is unproved (the asymptotic formula itself is open)",
-            "Euler proved reciprocal sum diverges (1737) - this is unconditional",
+            "Brun's theorem (1919): reciprocal sum converges (not diverges as for all primes)",
             "Finite computation cannot prove infinitude",
         ],
     }
