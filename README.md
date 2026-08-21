@@ -2,7 +2,7 @@
 
 **The Law of Repulsive Emanation (L.O.R.E.)** — *The deep structure of mathematics is 0/0.*
 
-Three proofs (Riemann Hypothesis, Navier-Stokes 1D global regularity, Yang-Mills mass gap at one-loop), one framework (all seven Millennium Prize Problems unified via removable singularities), and 300+ numerical experiments — by Michael Grafiel S Puno.
+Two proved results (Navier-Stokes 1D global regularity, Yang-Mills mass gap at one-loop), one equivalence (Riemann Hypothesis), one framework (all seven Millennium Prize Problems analyzed via removable singularities), and 300+ numerical experiments — by Michael Grafiel S Puno.
 
 ---
 
@@ -71,7 +71,7 @@ This pattern unifies the 7 Millennium Prize Problems and 4 classical conjectures
 
 | Problem | 0/0 Form | Removable Value | Status |
 |---------|----------|-----------------|--------|
-| **Riemann Hypothesis** | g(s) = \|ζ(s)\|/\|ζ(1−s)\| | \|χ(ρ)\| = 1 iff Re(ρ) = ½ | **Proved** |
+| **Riemann Hypothesis** | g(s) = \|ζ(s)\|/\|ζ(1−s)\| | \|χ(ρ)\| = 1 iff Re(ρ) = ½ | **Equivalence established** |
 | **Navier-Stokes** | R(t) = E/(ν·Z) | 0 as t → ∞ | **1D proved; 3D reduced to Kolmogorov** |
 | **Yang-Mills** | Gap equation self-consistency | m = μ·exp(−8π²/b₀g²) > 0 | **One-loop proved** |
 | **BSD** | L(1, E)/√(Reg) | = 1 for ranks 0, 1, 2 | Verified (LMFDB) |
@@ -81,7 +81,7 @@ This pattern unifies the 7 Millennium Prize Problems and 4 classical conjectures
 | **Twin Prime** | π₂(x)/x → 0, Σ1/p diverges | HL: π₂(10⁶)=8169 | **Euler 1737 + verified** |
 | **Collatz** | σ(n)/log(n) | Finite for all n ≤ 10⁴ | **Verified** (max σ=261) |
 | **Legendre** | π((n+1)²)-π(n²) / PNT | ≥ 2 for all n ≤ 10³ | **Verified** (1000 intervals) |
-| **Millennium (all)** | x/x → 0/0 → removable | Collapse to tautology | **Closed via framework** |
+| **Millennium (all)** | x/x → 0/0 → removable | Collapse to tautology | **Structure analyzed** |
 
 📄 [`MILLENNIUM.md`](docs/MILLENNIUM.md) → `MILLENNIUM.pdf` (23 pages, 25 references)
 
@@ -113,7 +113,7 @@ The 0/0 is not a bug but the engine of mathematical complexity. Every deep truth
 
 | Result | Headline Number |
 |--------|----------------|
-| RH proof | Re(ξ′/ξ) > 0 for σ > ½; 212/220 verified |
+| RH equivalence | Re(ξ′/ξ) > 0 for σ > ½; 212/220 verified |
 | NS 1D regularity | R → 0 exponentially; 12/12 cases |
 | NS 3D reduction | R·Z ~ E^{1.50±0.10}; 168 ICs verified |
 | YM mass gap | m = 0.450 GeV at g = 3.0; 8 couplings |
@@ -132,7 +132,7 @@ The 0/0 is not a bug but the engine of mathematical complexity. Every deep truth
 
 | Paper | Pages | Description |
 |-------|-------|-------------|
-| [`THE_SUBMISSION.pdf`](docs/THE_SUBMISSION.pdf) | 9 | RH proof via Hadamard cancellation |
+| [`THE_SUBMISSION.pdf`](docs/THE_SUBMISSION.pdf) | 8 | RH equivalence via Hadamard cancellation |
 | [`MILLENNIUM.pdf`](docs/MILLENNIUM.pdf) | 23 | All 7 Millennium Problems via 0/0 |
 | [`NS_MILLENNIUM_REDUCTION.md`](docs/NS_MILLENNIUM_REDUCTION.md) | — | 3D NS → Kolmogorov reduction |
 | [`YANG_MILLS_MASS_GAP_PROOF.md`](docs/YANG_MILLS_MASS_GAP_PROOF.md) | — | YM mass gap at one-loop |
@@ -149,7 +149,7 @@ Source generators: `generate_submission_pdf.py`, `generate_millennium_pdf.py`.
 
 ```
 docs/                         # Papers and proofs
-  THE_SUBMISSION.md/.pdf      # RH proof (9 pages)
+  THE_SUBMISSION.md/.pdf      # RH equivalence (8 pages)
   MILLENNIUM.md/.pdf          # All 7 problems via 0/0 (23 pages)
   NS_MILLENNIUM_REDUCTION.md  # 3D NS reduction to Kolmogorov
   YANG_MILLS_MASS_GAP_PROOF.md  # YM mass gap proof
@@ -159,7 +159,7 @@ docs/                         # Papers and proofs
   AUDIT.md                    # Claim-by-claim audit
 
 experiments/                  # 100+ experiment scripts
-  proof_rh.py                 # RH proof computation
+  proof_rh.py                 # RH equivalence computation
   grh_proof.py                # GRH extension
   ns_1d_proof.py              # NS 1D regularity (Thm 13)
   cascade_bound_3d.py         # 3D cascade bound (Thm 14)
@@ -193,7 +193,7 @@ pip install -e .
 # Run regression tests (215 tests)
 pytest tests/test_solvable_theorems.py
 
-# Run RH proof
+# Run RH equivalence
 python experiments/proof_rh.py
 
 # Run NS 1D regularity

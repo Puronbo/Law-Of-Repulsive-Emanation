@@ -182,10 +182,20 @@ Trudgian, 2021].
 
 For t not a zero ordinate:
 
-    F''(1/2) = 2*|xi'(1/2+it)|^2
-             + 2*|xi(1/2+it)|^2 * sum_n 1/(t-gn)^2
+    F''(1/2) = 2 * |xi(1/2+it)|^2 * sum_n 1/(t-gn)^2
 
-Both terms are positive. QED.
+Both factors are positive (|xi|^2 > 0 away from zeros,
+sum is a sum of squares). QED.
+
+**Derivation.** F''(1/2) = 2*Re(xi''*conj(xi)) + 2*|xi'|^2.
+Using xi'/xi = L and xi''/xi = L' + L^2, with L = i*lambda
+(pure imaginary on critical line):
+
+    Re(xi''*conj(xi)) = |xi|^2 * Re(L' + L^2)
+                       = |xi|^2 * (L' - lambda^2)
+
+since L^2 = -lambda^2. Meanwhile |xi'|^2 = |L*xi|^2 = lambda^2*|xi|^2.
+The -lambda^2 and +lambda^2 cancel, leaving F''(1/2) = 2*|xi|^2*L'.
 
 ---
 
