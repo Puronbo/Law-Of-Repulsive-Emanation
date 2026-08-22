@@ -226,6 +226,21 @@ Across all initial conditions tested (angles 0 to 3.6 degrees):
 **The observed suppression requires 121 orders (0.12 -> 10^-122).**
 **The remaining 118 orders must come from beyond-EH physics.**
 
+### 6.3b. The critical surface and trajectory selection
+
+The f(R) truncation (n=6) has 7 couplings but only 3 relevant directions at the FP. This means the UV critical surface is 3-dimensional: any trajectory attracted to the FP in the UV must lie on a 3D subspace of the full 7D coupling space.
+
+From Codello et al (arXiv:0705.1769), the irrelevant couplings g3-g6 are explicit linear functions of the relevant couplings g0,g1,g2:
+
+    g3 =  0.00127 + 0.190*g0 + 0.607*g1 + 1.265*g2
+    g4 = -0.00646 - 0.732*g0 - 0.0156*g1 + 1.880*g2
+    g5 = -0.0155  - 1.132*g0 - 0.846*g1  + 0.276*g2
+    g6 = -0.0137  - 0.594*g0 - 0.932*g1  - 1.283*g2
+
+The FP values (g0*=0.00505, g1*=-0.0208, g2*=0.00014) satisfy these equations exactly. The product G~*xL~* = 0.116 under the mapping g1=-Z, g0=2LZ.
+
+This 3D structure is the f(R) version of trajectory selection: matching to G_N and L_obs fixes 2 of 3 parameters. The 3rd (g2, the R^2 coupling) is observationally free within the current framework. The R^2 term modifies the beta functions of G and L and could in principle provide the additional suppression beyond the EH truncation's 3 orders — but this requires the explicit beta functions, which were derived by CAS and not published in closed form.
+
 ### 6.4. What the FP does and does not predict
 
 **Verified (from Codello et al 2009):**
@@ -277,8 +292,8 @@ Across all initial conditions tested (angles 0 to 3.6 degrees):
 1. **Standard Model coupling:** No mechanism to derive alpha, m_Higgs from the gravitational FP.
 2. **Proof beyond truncation:** Asymptotic safety is not proven in the full theory.
 3. **Below 10^15 GeV:** The EH truncation cannot reach low energy; f(R) or higher truncations needed.
-4. **Trajectory selection:** The physical trajectory from the 3D critical surface is not uniquely determined by the FP alone.
-5. **The CC problem:** The running of G~ x L~ from 0.12 to 2.77 x 10^-122 is not computed.
+4. **Trajectory selection:** The physical trajectory from the 3D critical surface is not uniquely determined by the FP alone. Matching to G_N and L_obs fixes 2 of 3 parameters; the R^2 coupling g2 remains free.
+5. **The CC problem:** The running of G~ x L~ from 0.12 to 2.77 x 10^-122 is not computed. The EH truncation achieves 3/121 orders of suppression. The f(R) R^2 coupling could provide additional suppression, but requires CAS-derived beta functions.
 
 ---
 
