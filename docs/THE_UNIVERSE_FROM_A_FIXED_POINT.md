@@ -11,7 +11,7 @@
 
 ## Abstract
 
-We propose that the Big Bang is the UV fixed point of the RG flow of quantum gravity. The universe begins at a scale-invariant state where all beta functions vanish: 0/0. The RG flow is the expansion. Dimensional transmutation creates the physical constants. Using the verified Litim cutoff beta functions of Codello, Percacci, and Rahmede (2009), we compute the fixed point in the Einstein-Hilbert truncation (G*=0.7012, Lambda*=0.1715, theta=1.689 +/- 2.486i) and in the f(R) truncation up to R^8 (L*G* stabilizes at 0.11-0.12). The product Lambda*G is a scheme-independent prediction. The EH truncation breaks down below k ~ 10^15 GeV; higher-derivative terms are needed for the full flow. The 0/0 at the fixed point encodes the initial conditions. The critical exponents are the removable values. The observed suppression (Lambda*G ~ 10^-122 in Planck units) requires nonlinear effects beyond the linearized flow near the FP.
+We propose that the Big Bang is the UV fixed point of the RG flow of quantum gravity. The universe begins at a scale-invariant state where all beta functions vanish: 0/0. The RG flow is the expansion. Dimensional transmutation creates the physical constants. Using the verified Litim cutoff beta functions of Codello, Percacci, and Rahmede (2009), we compute the fixed point in the Einstein-Hilbert truncation (G*=0.7012, Lambda*=0.1715, theta=1.689 +/- 2.486i) and in the f(R) truncation up to R^8 (L*G* stabilizes at 0.11-0.12). The product Lambda*G is a scheme-independent prediction of the UV fixed point. The cosmological constant problem is restated: the dimensionless product runs from 0.12 at the UV scale to 2.77 x 10^-122 at the observed scale. The gap (4 x 10^120) requires the full beta functions beyond the EH truncation. We state the falsifiability conditions: the framework is killed if no UV fixed point exists, if the critical exponents are not complex, or if the product instability exceeds truncation uncertainty.
 
 ---
 
@@ -182,25 +182,43 @@ The trajectory:
 
 No trajectory in the EH truncation reaches the GFP. The separatrix is the one that comes closest.
 
-### 6.3. The suppression problem
+### 6.3. The cosmological constant problem restated
 
-The FP product is Lambda*G = 0.12 (in Planck units). The observed product is:
+In natural units (hbar = c = 1): G has dimensions [M^-2], Lambda has dimensions [M^2]. The product G(k) x Lambda(k) = G~(k) x L~(k) is dimensionless at any scale k.
 
-    Lambda_obs * G_N = 1.06 x 10^-52 * 6.674 x 10^-11 = 7.07 x 10^-63 m^2
+At the FP: G~* x L~* = 0.12. So G(k) x L(k) = 0.12 at the UV scale.
 
-In Planck units: Lambda_obs * G_N ~ 10^-122. The required suppression from FP to observed is 10^-120.
+But G(k) x L(k) = G~(k) x L~(k), which RUNS with k. It is only stationary at the FP (where both betas vanish). Away from the FP, the product changes.
 
-Linearized flow analysis near the FP (n=8 truncation, 3 relevant directions):
-- The complex pair (Re theta = 2.407) produces spiralling growth
-- The real mode (theta = 1.398) adds monotonic growth
-- At RG time t = -5 (roughly 5 e-folds from FP): deviation amplified by factor 10^5
+The observed product in Planck units:
 
-The product Lambda*G GROWS along the linearized flow. The relevant modes amplify deviations, not suppress them. The linearization breaks down quickly.
+    L_obs x G_N = 1.06 x 10^-52 x 6.674 x 10^-11 / (1.616 x 10^-35)^2
+                = 2.77 x 10^-122
 
-This means: the observed suppression (10^-120) CANNOT come from the linearized flow near the FP. It must arise from:
-1. Nonlinear effects far from the FP (the full trajectory through coupling space)
-2. Trajectory selection from the 3D critical surface
-3. Additional physics beyond the gravitational sector
+The FP predicts 0.12. The observed value is 2.77 x 10^-122. The gap is 4 x 10^120.
+
+This IS the cosmological constant problem restated in RG language:
+
+    The dimensionless product G~(k) x L~(k) must decrease by a factor of
+    4 x 10^120 from the UV fixed point to the IR.
+
+The FP provides the UV initial condition. The observed value is the IR boundary condition. The path between them requires the full beta functions beyond the EH truncation.
+
+### 6.4. What the FP does and does not predict
+
+**Verified (from Codello et al 2009):**
+
+1. UV FP values: G~* = 0.7012, L~* = 0.1715 (EH); G~* = 0.95-0.99, L~* = 0.12-0.13 (f(R)).
+2. Product: G~* x L~* = 0.12 (scheme-independent across f(R) truncations n=1 to n=8).
+3. Critical exponents: theta = 1.689 +/- 2.486i (EH); 2.407 +/- 2.545i + 1.398 (f(R), n=8).
+4. Relevant directions: 2 (EH), 3 (f(R) at n>=4).
+5. The 0/0 structure at the FP is real.
+
+**Not predicted:**
+
+1. The value L_obs x G_N = 2.77 x 10^-122.
+2. The running of G~ x L~ from 0.12 to 2.77 x 10^-122.
+3. The individual values of L_obs and G_N (only the product is scheme-independent).
 
 ### 6.4. Selection mechanism
 
@@ -229,8 +247,8 @@ The trajectory selection is determined by:
 3. The EH truncation breaks down at k ~ 5 x 10^15 GeV.
 4. The separatrix comes closest to GFP at distance 0.018.
 5. The f(R) product Lambda*G stabilizes at 0.11-0.12 across truncations n=1 to n=8.
-6. Linearized flow shows the product GROWS toward IR (relevant modes amplify).
-7. The required suppression (10^-120) is nonlinear and beyond linearization.
+6. The CC problem restated: G~* x L~* = 0.12 at UV, but G_obs x L_obs = 2.77 x 10^-122 at IR.
+7. The gap (4 x 10^120) is the running of the dimensionless product from UV to IR.
 
 ### 7.3. What is proposed (not proven)
 
@@ -244,10 +262,47 @@ The trajectory selection is determined by:
 2. **Proof beyond truncation:** Asymptotic safety is not proven in the full theory.
 3. **Below 10^15 GeV:** The EH truncation cannot reach low energy; f(R) or higher truncations needed.
 4. **Trajectory selection:** The physical trajectory from the 3D critical surface is not uniquely determined by the FP alone.
+5. **The CC problem:** The running of G~ x L~ from 0.12 to 2.77 x 10^-122 is not computed.
 
 ---
 
-## 8. References
+## 8. Falsifiability
+
+A scientific framework must state what would kill it. The following observations would falsify the proposal:
+
+### 8.1. Falsified by: no UV fixed point
+
+If the Reuter FP does not exist (e.g., if higher-derivative truncations destabilize it, or if it disappears when matter fields are added), the entire framework collapses.
+
+**Current status:** The FP exists in all truncations tested (EH through f(R) n=8). The product G~* x L~* is stable. Matter coupling studies (Eichhorn et al) find FP persists for modest matter content.
+
+### 8.2. Falsified by: wrong critical exponents
+
+If the critical exponents are not complex (no spiralling), the framework's prediction of oscillatory approach to the FP fails.
+
+**Current status:** Complex exponents confirmed in all truncations. Re(theta) > 0 in all cases.
+
+### 8.3. Falsified by: product instability
+
+If the product G~* x L~* changes dramatically with truncation order (beyond the n=2 outlier), the scheme-independence claim fails.
+
+**Current status:** Stable at 0.11-0.12 for n>=3. The n=2 value (0.20) is the only outlier, attributed to the marginal R^2 coupling.
+
+### 8.4. Falsified by: no trajectory to low energy
+
+If no trajectory in the full theory connects the UV FP to the observed IR (Lambda_obs, G_N), the framework makes no contact with observation.
+
+**Current status:** Unverified. The EH truncation breaks down at 10^15 GeV. f(R) truncations may avoid this, but the full flow is not computed.
+
+### 8.5. Falsified by: wrong dimensional transmutation
+
+If the dimensionless product G~* x L~* = 0.12 cannot be connected to L_obs x G_N = 2.77 x 10^-122 through any physically reasonable RG flow, the framework fails.
+
+**Current status:** The gap (factor of 4 x 10^120) is real. Whether the full beta functions can bridge it is the central open question.
+
+---
+
+## 9. References
 
 1. Morse, M. (1925). Trans. AMS, 27, 345-396.
 2. Griffith, A.A. (1921). Phil. Trans. Roy. Soc. A, 221, 163-198.
@@ -262,4 +317,6 @@ The trajectory selection is determined by:
 11. Litim, D.F. (2001). Phys. Rev. Lett., 87, 201301.
 12. Percacci, R. (2009). arXiv:0910.5167.
 13. Falls, K., Litim, D.F., Nikolakopoulos, K., Rahmede, C. (2013). arXiv:1312.0359.
-14. Puno, M.G.S. (2026). The Indeterminate Structure of Mathematical Truth.
+14. Eichhorn, A. (2018). Front. Astron. Space Sci., 5, 47. arXiv:1810.07615.
+15. Eichhorn, A. (2022). arXiv:2212.07442.
+16. Puno, M.G.S. (2026). The Indeterminate Structure of Mathematical Truth.
