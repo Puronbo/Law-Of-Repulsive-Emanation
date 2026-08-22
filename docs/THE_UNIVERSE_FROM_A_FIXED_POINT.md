@@ -242,13 +242,6 @@ Across all initial conditions tested (angles 0 to 3.6 degrees):
 2. The running of G~ x L~ from 0.12 to 2.77 x 10^-122.
 3. The individual values of L_obs and G_N (only the product is scheme-independent).
 
-### 6.4. Selection mechanism
-
-The trajectory selection is determined by:
-1. The requirement that the flow avoids the singular region
-2. The 3 relevant directions in the f(R) truncation provide the freedom to find such trajectories
-3. Matching to low-energy observations (G_N, Lambda_obs) selects the physical trajectory from the 3-parameter family
-
 ---
 
 ## 7. The Honest Assessment
