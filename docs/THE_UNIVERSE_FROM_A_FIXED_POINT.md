@@ -204,6 +204,28 @@ This IS the cosmological constant problem restated in RG language:
 
 The FP provides the UV initial condition. The observed value is the IR boundary condition. The path between them requires the full beta functions beyond the EH truncation.
 
+### 6.3a. The suppression budget (numerical)
+
+We trace G~(k) x L~(k) along the EH separatrix from the UV FP toward the IR:
+
+    t=0.0 (FP):     G~ = 0.7012, L~ = 0.1715, G~xL~ = 0.120  (factor 1)
+    t=-2.4:         G~ = 0.7575, L~ = 0.1765, G~xL~ = 0.134  (peak, factor 1.1)
+    t=-5.8:         G~ = 0.0115, L~ = 0.0131, G~xL~ = 1.5e-4 (factor 680)
+    t=-7.6:         G~ = 0.0003, L~ = 0.4614, G~xL~ = 1.5e-4 (plateau)
+    singular line:  trajectory terminates (L~ -> 0.5)
+
+The product G~xL~ drops by a factor of ~800 from FP to closest approach, then plateaus at ~1.5 x 10^-4 as the trajectory spirals toward the singular line.
+
+Across all initial conditions tested (angles 0 to 3.6 degrees):
+
+    Best suppression: factor ~800 (separatrix, angle 0.90 deg)
+    Worst suppression: factor ~20 (angle 0.00 deg)
+    Product at closest approach to GFP: 10^-5 to 10^-3
+
+**The EH truncation achieves 3 orders of magnitude of suppression (0.12 -> 10^-4).**
+**The observed suppression requires 121 orders (0.12 -> 10^-122).**
+**The remaining 118 orders must come from beyond-EH physics.**
+
 ### 6.4. What the FP does and does not predict
 
 **Verified (from Codello et al 2009):**
@@ -248,7 +270,8 @@ The trajectory selection is determined by:
 4. The separatrix comes closest to GFP at distance 0.018.
 5. The f(R) product Lambda*G stabilizes at 0.11-0.12 across truncations n=1 to n=8.
 6. The CC problem restated: G~* x L~* = 0.12 at UV, but G_obs x L_obs = 2.77 x 10^-122 at IR.
-7. The gap (4 x 10^120) is the running of the dimensionless product from UV to IR.
+7. The EH flow achieves 3 orders of suppression (0.12 -> 10^-4); 118 more orders required.
+8. The product plateaus at ~1.5 x 10^-4 near the singular line (EH truncation).
 
 ### 7.3. What is proposed (not proven)
 
