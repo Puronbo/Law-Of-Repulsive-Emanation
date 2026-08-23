@@ -240,10 +240,31 @@ Gap 1 (FILLED): The L² interpolation ||Delta u|| >= 2Z/sqrt(2E)
 eliminates the domain factor. The cascade bound R <= C E^{1/2} Z^{-1/6}
 decreases with Z. No spectral cascade argument needed.
 
-Gap 2 (OPEN): Rigorous proof of ||u||_inf <= C epsilon^{1/3} in 3D
-(Kolmogorov's 1941 theory of turbulence). This is the single remaining
-obstacle between the current result and a complete proof of 3D NS
-regularity.
+Gap 2 (THE MILLENNIUM PROBLEM): Prove ||u||_inf <= C epsilon^{1/3} for
+all smooth 3D NS solutions. This is Kolmogorov's 1941 inequality.
+Proving it immediately implies global regularity (Prodi-Serrin criterion).
+
+**The precise obstacle (supercriticality gap):** The energy inequality
+lives at L-infty L2 x L2 H1, whose scaling index is 0 (below critical).
+The Kolmogorov bound requires L3 C^{1/3} regularity (Onsager space).
+This is a half-derivative gap. Every known regularity propagation mechanism
+costs factors blowing up as nu -> 0 (Chang 2026, arXiv:2605.22006).
+
+**What would close it:** A uniform-in-nu bound on the nonlinear term
+||u.grad u|| controlled by ||nu Delta u|| at the Onsager scale.
+This is equivalent to controlling the energy cascade from low to high
+frequencies -- the content of Kolmogorov's theory.
+
+**Recent progress (2022-2026):**
+- Brue-De Lellis (2023): First dissipation anomaly for forced 3D NS
+- Brue et al (2022-24): Uniform-in-nu bounds in L3 C^{1/3-eps} with
+  anomalous dissipation -- first solutions inside the Onsager space
+- Isett (2024): Near-endpoint convex integration, intermittency theorem
+- Chang (2026): Viscosity-independent temporal K41
+- Drivas-Eyink (2026): Comprehensive survey (arXiv:2601.09619)
+
+All approach the critical surface from below but do not cross it.
+The gap remains: no proof of K41 for Leray (energy-inequality) solutions.
 
 **What we verified numerically:**
 - R is bounded for 168 diverse ICs
@@ -253,9 +274,13 @@ regularity.
 
 **The gap.** One gap remains between our reduction and a
 complete proof of the 3D NS Millennium Problem:
-Gap: Rigorous proof of ||u||_inf <= C*epsilon^{1/3} in 3D.
-The cascade bound R <= C E^{1/2} Z^{-1/6} is now proved (Gap 1 filled).
-The only remaining obstacle is Kolmogorov's inequality (Gap 2).
+Gap: Kolmogorov's inequality ||u||_inf <= C*epsilon^{1/3}.
+The cascade bound R <= C E^{1/2} Z^{-1/6} is proved (Gap 1 filled).
+Kolmogorov's inequality is equivalent to global regularity itself
+(Prodi-Serrin). The obstacle is the supercriticality gap: a
+half-derivative between L2 energy and L3 Onsager regularity.
+Recent progress (Brue-De Lellis 2023, Isett 2024, Chang 2026)
+approaches the critical surface but does not cross it.
 
 ---
 
@@ -266,9 +291,12 @@ ALL t. This requires a zero-location-independent argument (currently the
 positivity proof assumes all zeros are on the line -- circular). The
 equivalence is proved; the hard direction is proving the inequality.
 
-**Navier-Stokes (3D):** Fill three gaps: (a) L² interpolation of ||Δu||
-without |Ω|^{1/2} factor, (b) spectral cascade argument (energy transfer
-from low to high k), (c) Kolmogorov's ||u||_∞ <= Cε^{1/3} inequality.
+**Navier-Stokes (3D):** Prove ||u||_inf <= C*epsilon^{1/3} (Kolmogorov).
+Equivalent to global regularity. Obstacle: half-derivative supercriticality
+gap between L2 energy and L3 Onsager regularity. No uniform-in-nu bound
+on the nonlinear term exists. Recent: Brue et al construct solutions in
+L3 C^{1/3-eps} with anomalous dissipation (2022-24), approaching but
+not crossing the critical surface.
 
 **Yang-Mills mass gap:** Constructive QFT: lattice gauge theory with
 reflection positivity + continuum limit + OS axioms + uniform exponential
