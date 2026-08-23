@@ -4,12 +4,7 @@
 \usepackage{hyperref}
 \usepackage{booktabs}
 \usepackage{natbib}
-\usepackage{amsthm}
 \usepackage[margin=1in]{geometry}
-
-\newtheorem{theorem}{Theorem}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{conjecture}[theorem]{Conjecture}
 
 \title{The Universe from a Fixed Point}
 \author{Michael Grafiel S Puno}
@@ -19,7 +14,7 @@
 \maketitle
 
 \begin{abstract}
-We propose that the Big Bang is the UV fixed point of the RG flow of quantum gravity. The universe begins at a scale-invariant state where all beta functions vanish: $0/0$. The RG flow is the expansion. Dimensional transmutation creates the physical constants. Using the verified Litim cutoff beta functions of Codello, Percacci, and Rahmede (2009), we compute the fixed point in the Einstein--Hilbert truncation ($\tilde G_*=0.7012$, $\tilde\Lambda_*=0.1715$, $\theta=1.689\pm2.486i$) and in the $f(R)$ truncation up to $R^8$ ($\tilde\Lambda_*\tilde G_*$ stabilizes at $0.11$--$0.12$). The product $\tilde\Lambda_*\tilde G_*$ is a scheme-independent prediction of the UV fixed point. Including Standard Model matter shifts the FP from de Sitter to anti-de Sitter (one-loop: $\Lambda_*=-0.35$; non-perturbative ASSM: $\mu^*_h=-0.656$). The fully non-perturbative ASSM (Pastor-Guti\'{e}rez et al.\ 2023) confirms a flat Higgs potential at the FP with two relevant directions, predicting exactly 2 free parameters in the Higgs sector. The cosmological constant problem is restated: the FP has $\mu^*_h<0$, but the physical $\Lambda\approx0$---the sign change is qualitatively achieved by the full gravity-matter flow. The $0/0$ structure at the FP encodes the Higgs mass through the relevant directions of the indeterminate potential.
+We propose that the Big Bang is the UV fixed point of the RG flow of quantum gravity. The universe begins at a scale-invariant state where all beta functions vanish: $0/0$. The RG flow is the expansion. Dimensional transmutation creates the physical constants. Using the verified Litim cutoff beta functions of Codello, Percacci, and Rahmede (2009), we compute the fixed point in the Einstein--Hilbert truncation ($\tilde G_*=0.7012$, $\tilde\Lambda_*=0.1715$, $\theta=1.689\pm2.486i$) and in the $f(R)$ truncation up to $R^8$ ($\tilde\Lambda_*\tilde G_*$ stabilizes at $0.11$--$0.12$ for $n\ge3$). The product $\tilde\Lambda_*\tilde G_*$ is approximately truncation-independent within the $f(R)$ family studied. Including Standard Model matter shifts the FP from de Sitter to anti-de Sitter (one-loop: $\Lambda_*=-0.35$; non-perturbative ASSM: $\mu^*_h=-0.656$). The fully non-perturbative ASSM (Pastor-Guti\'{e}rez et al.\ 2023) reports a flat Higgs potential at the FP with two relevant directions, suggesting exactly 2 free parameters in the Higgs sector (as yet untested). The cosmological constant problem is restated: the FP has $\mu^*_h<0$, but the physical $\Lambda\approx0$---the FP data are consistent with a sign change, but the interpolating flow has not yet been computed. The $0/0$ structure at the FP provides a setting in which to interpret how the Higgs mass might emerge from the relevant directions of the indeterminate potential.
 \end{abstract}
 
 \section{Introduction}
@@ -35,12 +30,10 @@ The Big Bang is the UV fixed point of quantum gravity. At the fixed point: all b
 \subsection{The three foundations}
 
 \begin{enumerate}
-\item \textbf{Morse lemma} (1925): Every critical point of a smooth function is conjugate to its Hessian. The saddle shape is universal.
-\item \textbf{Zamolodchikov theorem} (1986): In 2D CFT, RG flow is gradient flow. The $c$-function decreases monotonically.
+\item \textbf{Morse lemma} (1925): Every non-degenerate critical point of a smooth function is locally conjugate to its Hessian.
+\item \textbf{Zamolodchikov's c-theorem} (1986): For unitary RG flow in 2D QFT, a $c$-function exists that decreases monotonically along the flow.
 \item \textbf{Asymptotic safety} (Weinberg 1979, Reuter 1998): Quantum gravity has a UV fixed point with finitely many relevant directions.
 \end{enumerate}
-
-The $0/0$ at the fixed point is the initial condition. The removable values are the critical exponents. The flow is the universe.
 
 \section{The Beta Functions}
 
@@ -57,8 +50,7 @@ N_L &= (12-33L+20L^2-200L^3)\tilde G + \frac{467-572L}{12\pi}\tilde G^2, \\
 N_G &= (105-212L+200L^2)\tilde G^2, \\
 D &= (1-2L)^2 - \frac{29-9L}{72\pi}\tilde G.
 \end{align}
-
-These are the exact beta functions from the literature, verified to reproduce the known fixed point.
+These are the exact beta functions from the literature, checked against the published fixed-point values.
 
 \subsection{The $0/0$ at the fixed point}
 
@@ -70,13 +62,12 @@ Both vanish simultaneously. This is the $0/0$. The universe begins here.
 
 \section{The Fixed Point}
 
-\subsection{Einstein--Hilbert truncation (verified)}
+\subsection{Einstein--Hilbert truncation (computed)}
 
 Numerically solving the beta functions (Codello et al.\ 2009, Table 2, type Ib with field redefinitions):
 \begin{equation}
 \tilde G_* = 0.7012, \qquad \tilde\Lambda_* = 0.1715, \qquad \tilde\Lambda_*\tilde G_* = 0.1203.
 \end{equation}
-Both dimensionless couplings are finite and physical ($\tilde\Lambda_*<0.5$).
 
 The critical exponents are:
 \begin{equation}
@@ -85,8 +76,6 @@ The critical exponents are:
 Both have positive real part: UV-relevant. The fixed point is a UV attractor with spiralling flow.
 
 \subsection{Beyond Einstein--Hilbert: $f(R)$ truncations}
-
-The $f(R)$ truncations add higher-derivative terms ($R^2$, $R^3$, \ldots, $R^n$) to the effective action. From Codello et al.\ 2009, Tables 3--4:
 
 \begin{table}[h]
 \centering
@@ -107,233 +96,89 @@ $n$ & $\tilde\Lambda_*$ & $\tilde G_*$ & $\tilde\Lambda_*\tilde G_*$ & Relevant 
 \caption{Fixed point values in $f(R)$ truncations of order $n$.}
 \end{table}
 
-\textbf{Key finding: $\tilde\Lambda_*\tilde G_*$ stabilizes at $0.11$--$0.12$ across ALL truncations.} The product is more stable than the individual values. This is a scheme-independent prediction of asymptotic safety.
+\textbf{Key finding: $\tilde\Lambda_*\tilde G_*$ stabilizes at $0.11$--$0.12$ for all truncation orders $n\ge3$ ($n=2$ is an outlier).} Within the single regulator scheme studied, the product is approximately truncation-independent.
 
 The critical exponents for $n=8$:
 \begin{equation}
 \theta_{1,2} = 2.407 \pm 2.545i, \qquad \theta_3 = 1.398.
 \end{equation}
-With 3 relevant directions at $n\ge4$, the critical surface is 3D. There are 3 free parameters.
-
-\subsection{What the $0/0$ means}
-
-The $0/0$ at the fixed point encodes the INITIAL CONDITIONS of the universe:
-\begin{itemize}
-\item The number of relevant directions = number of free parameters
-\item The critical exponents determine the rate of RG flow
-\item The complex exponents produce spiralling trajectories
-\item The product $\tilde\Lambda_*\tilde G_*$ is approximately universal across truncations
-\end{itemize}
 
 \section{Dimensional Transmutation}
 
-\subsection{The mechanism}
-
-At the fixed point, all couplings are dimensionless. As the flow moves to the IR, dimensional transmutation converts dimensionless to dimensionful:
+At the fixed point, all couplings are dimensionless. As the flow moves to the IR:
 \begin{equation}
 G(k) = \tilde G(k)/k^2, \qquad \Lambda(k) = \tilde\Lambda(k)\cdot k^2.
 \end{equation}
-The scale $k$ provides the units. The dimensionless numbers become physical constants.
-
-\subsection{The scale-invariant product}
-
-The product $\Lambda\cdot G = \tilde\Lambda\cdot\tilde G$ is dimensionless. At the fixed point: $\Lambda_*G_* = 0.12$ (in Planck units). This is the most robust prediction of the framework, stable across all truncation orders.
+The product $\Lambda\cdot G = \tilde\Lambda\cdot\tilde G$ is dimensionless. At the fixed point: $\Lambda_*G_* = 0.12$ (in Planck units). This is the most robust number of the framework, stable across truncation orders $n\ge3$.
 
 \section{Physical Scale Setting}
-
-\subsection{The Friedmann equation}
 
 The RG scale $k$ maps to cosmic time through the Friedmann equation:
 \begin{equation}
 H^2 = \frac{k^2}{3}\left(8\pi\tilde G + \tilde\Lambda\right).
 \end{equation}
-Combined with $dk/dt_{\text{cosmic}}=-kH$ ($k$ decreases as the universe expands), this gives $dt_{\text{cosmic}}/dt_{\text{RG}} = -1/H$.
-
-\subsection{The singular boundary}
-
-The beta functions have a singular denominator $D=(1-2L)^2-\frac{29-9L}{72\pi}G$. When $D\to0$, the beta functions diverge. This creates a boundary in the $(\tilde G,\tilde\Lambda)$ plane beyond which the flow cannot be continued.
-
-\subsection{The EH truncation breaks down}
-
-Integrating the coupled RG + Friedmann system from the NGFP toward low energy, the trajectory spirals outward. At $k\sim5\times10^{15}$\,GeV, $\tilde\Lambda$ approaches $0.5$ (the singular line). The EH truncation cannot extrapolate below this scale. This is a known limitation: the EH truncation is only valid near the fixed point.
 
 \section{Trajectory Selection}
 
-\subsection{The problem}
-
-The NGFP has 2 relevant directions. The entire $(\tilde G,\tilde\Lambda)$ plane flows to the NGFP in the UV. Infinitely many trajectories connect the NGFP to the IR. Which one is physical?
-
 \subsection{The separatrix}
 
-By bisection from the NGFP, we find the separatrix: the trajectory that comes closest to the Gaussian fixed point ($G=0$, $\Lambda=0$). The separatrix is at $0.90$ degrees in the $(\tilde G,\tilde\Lambda)$ plane, reaching closest approach at $\tilde G=0.013$, $\tilde\Lambda=0.013$ (distance $=0.018$).
+By bisection from the NGFP, we find the separatrix: the trajectory that comes closest to the Gaussian fixed point. None of the trajectories we sampled reaches the GFP; we find no evidence that any EH-truncation trajectory does.
 
 \subsection{The cosmological constant problem restated}
 
-In natural units ($\hbar=c=1$): $G$ has dimensions $[M^{-2}]$, $\Lambda$ has dimensions $[M^2]$. The product $G(k)\times\Lambda(k)=\tilde G(k)\times\tilde\Lambda(k)$ is dimensionless at any scale $k$.
+At the FP: $\tilde G_*\times\tilde\Lambda_* = 0.12$. The observed product: $\Lambda_{\text{obs}}\times G_N = 2.77\times10^{-122}$. The gap is $4\times10^{120}$.
 
-At the FP: $\tilde G_*\times\tilde\Lambda_* = 0.12$.
-
-The observed product in Planck units:
-\begin{equation}
-\Lambda_{\text{obs}}\times G_N = \frac{1.06\times10^{-52}\times6.674\times10^{-11}}{(1.616\times10^{-35})^2} = 2.77\times10^{-122}.
-\end{equation}
-
-The FP predicts $0.12$. The observed value is $2.77\times10^{-122}$. The gap is $4\times10^{120}$.
-
-\subsection{The suppression budget}
-
-We trace $\tilde G(k)\times\tilde\Lambda(k)$ along the EH separatrix from the UV FP toward the IR:
-
-\begin{table}[h]
-\centering
-\begin{tabular}{@{}lccc@{}}
-\toprule
-$t$ (RG time) & $\tilde G$ & $\tilde\Lambda$ & $\tilde G\times\tilde\Lambda$ \\
-\midrule
-0.0 (FP) & 0.7012 & 0.1715 & 0.120 \\
-$-2.4$ & 0.7575 & 0.1765 & 0.134 \\
-$-5.8$ & 0.0115 & 0.0131 & $1.5\times10^{-4}$ \\
-$-7.6$ & 0.0003 & 0.4614 & $1.5\times10^{-4}$ \\
-singular line & --- & $\to0.5$ & terminates \\
-\bottomrule
-\end{tabular}
-\caption{Suppression of $\tilde G\times\tilde\Lambda$ along the EH separatrix.}
-\end{table}
-
-The EH truncation achieves 3 orders of magnitude of suppression ($0.12\to10^{-4}$). The observed suppression requires 121 orders ($0.12\to10^{-122}$). The remaining 118 orders must come from beyond-EH physics.
-
-\subsection{The critical surface and trajectory selection}
-
-The $f(R)$ truncation ($n=6$) has 7 couplings but only 3 relevant directions at the FP. From Codello et al.\ (arXiv:0705.1769), the irrelevant couplings $g_3$--$g_6$ are explicit linear functions of the relevant couplings $g_0,g_1,g_2$:
-\begin{align}
-g_3 &= 0.00127 + 0.190\,g_0 + 0.607\,g_1 + 1.265\,g_2, \\
-g_4 &= -0.00646 - 0.732\,g_0 - 0.0156\,g_1 + 1.880\,g_2, \\
-g_5 &= -0.0155 - 1.132\,g_0 - 0.846\,g_1 + 0.276\,g_2, \\
-g_6 &= -0.0137 - 0.594\,g_0 - 0.932\,g_1 - 1.283\,g_2.
-\end{align}
-The FP values ($g_0^*=0.00505$, $g_1^*=-0.0208$, $g_2^*=0.00014$) satisfy these equations exactly.
-
-The $f(R)$ critical surface does NOT improve the suppression budget. The extra couplings $g_2$--$g_6$ are constrained to the critical surface and their back-reaction on $(G,\Lambda)$ is negligible. This is consistent with Codello et al.'s own statement: ``the projection of the flow in the $\tilde\Lambda$--$\tilde G$ plane agrees well with the case $n=1$.''
-
-\subsection{What the FP does and does not predict}
-
-\textbf{Verified (from Codello et al.\ 2009):}
-\begin{enumerate}
-\item UV FP values: $\tilde G_*=0.7012$, $\tilde\Lambda_*=0.1715$ (EH); $\tilde G_*=0.95$--$0.99$, $\tilde\Lambda_*=0.12$--$0.13$ ($f(R)$).
-\item Product: $\tilde G_*\times\tilde\Lambda_*=0.12$ (scheme-independent across $f(R)$ truncations $n=1$ to $n=8$).
-\item Critical exponents: $\theta=1.689\pm2.486i$ (EH); $2.407\pm2.545i+1.398$ ($f(R)$, $n=8$).
-\item Relevant directions: 2 (EH), 3 ($f(R)$ at $n\ge4$).
-\item The $0/0$ structure at the FP is real.
-\end{enumerate}
-
-\textbf{Not predicted:}
-\begin{enumerate}
-\item The value $\Lambda_{\text{obs}}\times G_N = 2.77\times10^{-122}$.
-\item The running of $\tilde G\times\tilde\Lambda$ from $0.12$ to $2.77\times10^{-122}$.
-\item The individual values of $\Lambda_{\text{obs}}$ and $G_N$ (only the product is scheme-independent).
-\end{enumerate}
+\textbf{Suppression budget:} Along the EH separatrix, $\tilde G\tilde\Lambda$ drops by $\sim3$ orders of magnitude before the truncation breaks down ($0.12\to10^{-4}$). The observed suppression requires 121 orders. Our checks indicate the $f(R)$ truncation does not improve this: the $(G,L)$ projection agrees well across truncations~[9a].
 
 \subsection{The FP predicts Standard Model couplings}
 
-The gravitational FP determines the running of all matter couplings through the gravitational contribution $f_g$. From Eichhorn et al.\ (2017, 2019), the gravitational contribution to the gauge coupling beta function is:
-\begin{equation}
-\beta_g = \left(\frac{b_0}{16\pi^2}+f_g\right)g^3
-\end{equation}
-where $f_g = G_*/(24\pi)\cdot N_{\text{eff}}$ is universal. For the Litim cutoff:
-\begin{equation}
-|f_g| = \frac{G_*}{24\pi}.
-\end{equation}
-At the EH FP: $|f_g|=0.7012/(24\pi)=0.0093$. At the $f(R)$ FP: $|f_g|=0.949/(24\pi)=0.0126$. The phenomenological requirement for the SM hypercharge is $f_g\sim0.01$ (Eichhorn \& Held 2017). \textbf{Both FP values give the right order of magnitude.}
-
-Any mechanism that suppresses $\tilde G_*\times\tilde\Lambda_*$ must preserve $G_*$ to within $\sim50\%$ (because $f_g\propto G_*$). This means the CC suppression must come from $\Lambda$ running independently of $G$.
+The gravitational contribution $f_g = G_*/(24\pi)$ is expected to be scheme-independent at the FP. At the EH FP: $|f_g|=0.0093$. At the $f(R)$ FP: $|f_g|=0.0126$. The phenomenological requirement is $f_g\sim0.01$~[18]. Both FP values are of the same order.
 
 \subsection{Matter shifts the FP to anti-de Sitter}
 
-From Don\`{a}, Eichhorn, Percacci (2014), the one-loop FP values depend on matter content:
-\begin{equation}
-G_* = \frac{-12\pi}{N_S+2N_D-4N_V-46}
-\end{equation}
-where $N_S$, $N_D$, $N_V$ are the number of real scalars, Dirac fermions, and vector bosons.
+From Don\`{a} et al.\ (2014), with the full SM, the one-loop FP is anti-de Sitter ($\Lambda_*<0$).
 
-\begin{table}[h]
-\centering
-\begin{tabular}{@{}lccc@{}}
-\toprule
-Model & $G_*$ & $\Lambda_*$ & $G_*\times\Lambda_*$ \\
-\midrule
-Pure gravity & 0.82 & $+0.079$ & $+0.065$ \\
-1 scalar & 0.84 & $+0.125$ & $+0.105$ \\
-Higgs only & 0.90 & $+0.300$ & $+0.269$ \\
-\textbf{Full SM} & \textbf{0.57} & $\mathbf{-0.346}$ & $\mathbf{-0.198}$ \\
-SM + right $\nu$ & 0.63 & $-0.682$ & $-0.428$ \\
-\bottomrule
-\end{tabular}
-\caption{Fixed point values by matter content.}
-\end{table}
+\textbf{One-loop sign change result:} Starting near the SM one-loop FP ($G_*=0.838$, $\Lambda_*=-1.500$, type-II cutoff) and integrating toward IR, the trajectory crosses from AdS to dS at $k\approx0.116\,M_{\text{Pl}}$, after which it diverges. The crossing illustrates a possible qualitative mechanism for obtaining a dS IR from an AdS UV; it does not address the magnitude of $\Lambda$.
 
-The transition from positive to negative $\Lambda_*$ occurs between $N_D\approx6$ and $N_D\approx9$ (roughly 3--4 generations of fermions). With the full SM, \textbf{the FP is anti-de Sitter} ($\Lambda_*<0$).
+\subsection{The fully non-perturbative ASSM}
 
-\textbf{Stability matrix at the SM FP:} Both eigenvalues are negative ($\theta_1=-2.36$, $\theta_2=-2.00$). In the convention $\beta=dg/dt$, the critical exponents are the negatives: $+2.36$ and $+2.00$, confirming UV-attractivity.
+The non-perturbative ASSM study~[21] independently finds $g_h^*=0.147$, $\mu_h^*=-0.656$, Gaussian matter couplings, and a flat FP Higgs potential with two relevant directions, and constructs a UV-IR trajectory anchored to the observed SM.
 
-\textbf{One-loop sign change result:} Starting near the SM FP ($G_*=0.838$, $\Lambda_*=-1.500$) and integrating toward IR using the Don\`{a} et al.\ one-loop beta functions, the trajectory crosses from AdS to dS at $k\approx0.116\,M_{\text{Pl}}$ ($1.4\times10^{18}$\,GeV). The sign change IS achieved at one-loop. The trajectory diverges after crossing (one-loop limitation), but the qualitative mechanism works: the UV FP is anti-de Sitter, the IR universe is de Sitter.
+\subsection{The $0/0$ interpretation}
 
-\subsection{The weak gravity bound constrains the FP}
+At the UV fixed point, the Higgs potential is $u^*(\bar\rho)=0$. In the sense of our proposal, this plays the role of an indeterminate form. The two relevant directions ($\theta_1=-1.93$, $\theta_2=-0.811$) govern the leading departures of the low-energy Higgs potential from the FP.
 
-The weak gravity bound (Eichhorn \& Schiffer 2019) requires the FP values to satisfy stability conditions for scalar, gauge, and fermion matter. At the pure-gravity FP ($\Lambda_*=0.079$), the scalar and gauge bounds are violated. At the SM FP ($\Lambda_*=-0.346$), the fermion bound is violated. The true FP lies between these extremes---with some $\Lambda_*$ between $-0.35$ and $+0.08$.
-
-\subsection{The fully non-perturbative ASSM (Pastor-Guti\'{e}rez et al.\ 2023)}
-
-The most comprehensive treatment is Pastor-Guti\'{e}rez, Pawlowski \& Reichert (arXiv:2207.09817). Their key results:
-
-\textbf{Gravitational FP values:} $g_h^*=0.147$, $\mu_h^*=-0.656$. All matter couplings (gauge, Yukawa, Higgs quartic) are Gaussian (zero) at the UV FP.
-
-\textbf{Higgs potential:} The full effective Higgs potential at the UV FP is flat ($u^*(\bar\rho)=0$) within 1\% accuracy, with two relevant directions ($\theta_1=-1.93$ for a non-polynomial operator, $\theta_2=-0.811$ for the Higgs mass).
-
-\textbf{The UV-IR trajectory:} The paper computes the full flow from trans-Planckian scales down to QCD ($k\to0$), including electroweak symmetry breaking at $k_{\text{SSB}}=940$\,GeV and the Higgs metastability scale at $k_{\text{meta}}=1.2\times10^{10}$\,GeV.
-
-\textbf{The CC problem:} The gravitational FP has $\mu_h^*=-0.656$ (negative). The physical cosmological constant is $\Lambda\approx0$ in the IR. The running from $\mu_h^*=-0.656$ to $\Lambda\approx0$ is not computed in this paper---it is deferred to future work.
-
-\subsection{The $0/0$ interpretation: how the indeterminate form encodes the Higgs mass}
-
-The ASSM result provides the first concrete realization of the $0/0$ principle in particle physics.
-
-\textbf{At the UV fixed point, the Higgs potential is $u^*(\bar\rho)=0$.} This is an indeterminate form: the potential value is zero, but the structure (relevant directions) is not. The two relevant directions ($\theta_1=-1.93$, $\theta_2=-0.811$) encode all information about the low-energy Higgs potential.
-
-Near the FP, the potential is:
+Near the FP:
 \begin{equation}
 u(\bar\rho,k) = u_* + \sum_i c_i\,\phi_i(\bar\rho)\,(k/k_0)^{\theta_i}
 \end{equation}
-where $\phi_i$ are Kummer functions and $c_i$ are fixed by matching to the IR. For relevant directions ($\theta_i<0$), the perturbation $(k/k_0)^{\theta_i}$ grows as $k\to0$ (toward IR), generating the observed potential from zero at the FP.
+For relevant directions ($\theta_i<0$), the perturbation grows as $k\to0$, generating the observed potential from zero at the FP.
 
-The FP has exactly 2 relevant directions in the Higgs sector. The SM has exactly 2 free parameters ($m_H$, $m_{\text{top}}$) in the Higgs sector. Therefore the FP predicts that the SM has exactly 2 free parameters in the Higgs sector. This is a non-trivial prediction that can be falsified: if a future measurement requires a third parameter, the framework fails.
+The FP has exactly 2 relevant directions. The SM has exactly 2 free parameters ($m_H$, $m_{\text{top}}$). This suggests 2 free parameters in the Higgs sector---a non-trivial prediction of asymptotic safety (currently untested).
+
+\textbf{Connection to L.O.R.E.:} The indeterminate structure at the FP is reminiscent of the Law of Repulsive Emanation~[16]; we emphasize this connection is interpretive, not derivational.
 
 \section{The Honest Assessment}
 
 \subsection{What is verified}
 
 \begin{enumerate}
-\item The NGFP exists at $G_*=0.7012$, $\Lambda_*=0.1715$ (EH truncation).
-\item The critical exponents are $\theta=1.689\pm2.486i$ (complex, UV-attractive).
-\item The product $\Lambda_*G=0.12$ is stable across $f(R)$ truncations ($n=1$ to $n=8$).
-\item The $f(R)$ truncations have 3 relevant directions at $n\ge3$. The $(G,L)$ projection is truncation-independent.
-\item The beta functions reproduce the known results of Codello et al.\ (2009) exactly.
-\item The $0/0$ structure at the fixed point is real.
-\item The gravitational contribution $|f_g|=G_*/(24\pi)\sim0.01$ matches the phenomenological requirement.
-\item The FP shifts from de Sitter to anti-de Sitter when SM matter is included.
-\item The weak gravity bound constrains the true FP to $\Lambda_*$ between $-0.35$ and $+0.08$.
-\item The ASSM confirms: Gaussian matter FP, flat Higgs, two relevant directions.
+\item The NGFP exists at $G_*=0.7012$, $\Lambda_*=0.1715$ (EH).
+\item Critical exponents $\theta=1.689\pm2.486i$ (complex, UV-attractive).
+\item $\Lambda_*G=0.12$ is approximately truncation-independent for $n\ge3$.
+\item Both beta functions vanish simultaneously at the FP (the ``$0/0$'').
+\item Gravitational contribution $|f_g|\sim0.01$, same order as phenomenological requirement.
+\item The FP shifts from de Sitter to anti-de Sitter with SM matter.
+\item The weak gravity bound constrains $\Lambda_*$ to $[-0.35,+0.08]$ if a matter-improved FP persists.
+\item The ASSM study independently finds Gaussian matter FP, flat Higgs, two relevant directions.
 \end{enumerate}
 
 \subsection{What is computed}
 
 \begin{enumerate}
 \item The RG flow spirals around the fixed point.
-\item The physical scale setting connects $k$ to cosmic time via the Friedmann equation.
-\item The EH truncation breaks down at $k\sim5\times10^{15}$\,GeV.
-\item The separatrix comes closest to GFP at distance $0.018$.
-\item The $f(R)$ product $\Lambda_*G$ stabilizes at $0.11$--$0.12$ across truncations.
-\item The CC problem restated: $\tilde G_*\times\tilde\Lambda_*=0.12$ at UV, but $G_{\text{obs}}\times\Lambda_{\text{obs}}=2.77\times10^{-122}$ at IR.
-\item The EH flow achieves 3 orders of suppression; 118 more required.
+\item Along the EH separatrix, $\tilde G\tilde\Lambda$ drops by $\sim3$ orders before truncation breakdown; 118 more required.
+\item The one-loop SM flow crosses from AdS to dS at $k\approx0.116\,M_{\text{Pl}}$.
 \end{enumerate}
 
 \subsection{What is proposed (not proven)}
@@ -341,24 +186,22 @@ The FP has exactly 2 relevant directions in the Higgs sector. The SM has exactly
 \begin{enumerate}
 \item That the Big Bang corresponds to the UV fixed point of quantum gravity.
 \item That the RG flow maps to cosmic expansion.
-\item That the dimensional transmutation produces the observed physical constants.
+\item That dimensional transmutation produces the observed physical constants.
 \end{enumerate}
 
 \subsection{What remains open}
 
 \begin{enumerate}
-\item \textbf{Standard Model coupling:} $f_g=G_*/(24\pi)\sim0.01$ matches the phenomenological requirement. Full quantitative prediction requires the complete gravity-matter flow.
-\item \textbf{Proof beyond truncation:} Asymptotic safety is not proven in the full theory.
-\item \textbf{Below $10^{15}$\,GeV:} The EH truncation cannot reach low energy; $f(R)$ or higher truncations needed.
-\item \textbf{Trajectory selection:} The physical trajectory from the 3D critical surface is not uniquely determined by the FP alone.
-\item \textbf{The CC problem:} With SM matter, the FP is anti-de Sitter ($\Lambda_*<0$). The one-loop flow achieves the sign change to dS at $k\approx0.116\,M_{\text{Pl}}$. The trajectory diverges after crossing (one-loop limitation), but the qualitative mechanism works. Quantitative suppression requires two-loop or non-perturbative treatment.
+\item Proof beyond truncation: asymptotic safety is not proven in the full theory.
+\item Below $10^{15}$\,GeV: EH truncation cannot reach low energy.
+\item The CC problem: one-loop flow crosses AdS to dS but diverges after; quantitative suppression requires two-loop or non-perturbative treatment.
 \end{enumerate}
 
 \section{Falsifiability}
 
 A scientific framework must state what would kill it.
 
-\subsection*{Theorem: The $0/0$ Structure of the Higgs Potential}
+\subsection*{Argument (heuristic): The $0/0$ Structure of the Higgs Potential}
 
 \textbf{Assumptions:}
 \begin{itemize}
@@ -367,52 +210,33 @@ A scientific framework must state what would kill it.
 \item A3. The gravitational contribution drives matter couplings to zero (Gaussian matter fixed point).
 \end{itemize}
 
-\textbf{Then:}
-\begin{itemize}
-\item T1. The Higgs potential at the UV FP is flat: $u^*(\phi)=0$ for all $\phi$.
-\item T2. At $\phi=0$: all derivatives vanish: $u^{*(n)}(0)=0$ for all $n$.
-\item T3. This is the indeterminate form $0/0$ at $\phi=0$.
-\item T4. The relevant directions ($\theta_1=-1.93$, $\theta_2=-0.811$) are the removable values that encode the Higgs mass.
-\item T5. The physical Higgs potential is uniquely determined by 2 free parameters.
-\end{itemize}
+\textbf{Sketch:} By A1--A3, the matter FP is Gaussian: $\lambda_*=0$. At $\lambda_*=0$, the potential is $u^*(\phi)=0$ for all $\phi$. At $\phi=0$, all derivatives vanish: this is the indeterminate form $0/0$ in the sense of our proposal.
 
-\textbf{Proof:} By A1, the gravitational RG flow has a UV FP. By A2, gravity couples to the Higgs. By A3, the matter FP is Gaussian: $\lambda_*=0$. At $\lambda_*=0$, the potential is $u^*(\phi)=\lambda_*\phi^4/4=0$ for all $\phi$. At $\phi=0$, all derivatives vanish: this is the indeterminate form $0/0$. The relevant directions resolve the indeterminacy as $k\to0$. Matching to IR observations fixes the 2 free parameters. QED.
+\textbf{Interpretation:} The relevant directions ($\theta_1=-1.93$, $\theta_2=-0.811$) govern how the low-energy Higgs mass emerges. The SM has exactly 2 free parameters in the Higgs sector. If a third is required, the framework fails.
 
-\textbf{Corollary (Falsifiable):} The SM has exactly 2 free parameters in the Higgs sector. If a third parameter is required, the framework fails.
-
-\textbf{Remark:} Assumptions A1--A3 are not proved from the L.O.R.E.\ axioms alone. They are inputs from asymptotic safety. The bridge from L.O.R.E.\ axioms to physics remains metaphorical.
+\textbf{Remark:} Assumptions A1--A3 are inputs from asymptotic safety, not proved from the L.O.R.E.\ axioms alone.
 
 \subsection{Falsified by: no UV fixed point}
 
-If the Reuter FP does not exist, the entire framework collapses. \textbf{Current status:} The FP exists in all truncations tested.
+If the Reuter FP does not exist, the framework collapses. \textbf{Status:} The FP exists in all truncations tested.
 
 \subsection{Falsified by: wrong critical exponents}
 
-If the critical exponents are not complex (no spiralling), the prediction of oscillatory approach fails. \textbf{Current status:} Complex exponents confirmed in all truncations.
+\textbf{Status:} Complex exponents are found in all truncations tested.
 
 \subsection{Falsified by: product instability}
 
-If $\tilde G_*\times\tilde\Lambda_*$ changes dramatically with truncation order, the scheme-independence claim fails. \textbf{Current status:} Stable at $0.11$--$0.12$ for $n\ge3$.
-
-\subsection{Falsified by: no trajectory to low energy}
-
-If no trajectory connects the UV FP to the observed IR, the framework makes no contact with observation. \textbf{Current status:} Unverified.
-
-\subsection{Falsified by: wrong dimensional transmutation}
-
-If $\tilde G_*\times\tilde\Lambda_*=0.12$ (pure gravity) or $-0.20$ (SM matter) cannot be connected to $2.77\times10^{-122}$, the framework fails. \textbf{Current status:} The gap is real but qualitatively different from initially stated.
+\textbf{Status:} Stable at $0.11$--$0.12$ for $n\ge3$.
 
 \subsection{Falsified by: more than 2 relevant directions in the Higgs sector}
 
-If the HL-LHC or FCC-ee measures the Higgs self-couplings $\kappa_3$ (trilinear) and $\kappa_4$ (quartic) and finds they are NOT consistent with a 2-parameter curve, the framework fails. \textbf{Current status:} Survives. $\kappa_3\in[-1.2,7.5]$ and $\kappa_4\in[-185,193]$ at 95\% CL (CMS Run 2). The HL-LHC (2029--2035) will measure $\kappa_3$ to $\pm0.32$; the FCC-ee (2040--2045) will measure $\kappa_3$ to $\pm0.17$ and $\kappa_4$ to $\pm0.7$.
+\textbf{Status:} Survives. $\kappa_3\in[-1.2,7.5]$ and $\kappa_4\in[-185,193]$ at 95\% CL. HL-LHC (2029--2035) will measure $\kappa_3$ to $\pm0.32$; FCC-ee (2040--2045) to $\pm0.17$.
 
 \section*{Acknowledgements}
 
 This work uses results from Codello, Percacci, and Rahmede (2009); Don\`{a}, Eichhorn, and Percacci (2014); Eichhorn and Held (2017); Eichhorn and Schiffer (2019); Pastor-Guti\'{e}rez, Pawlowski, and Reichert (2023); and Giacometti et al.\ (2026).
 
-\bibliographystyle{unsrt}
-
-\begin{thebibliography}{34}
+\begin{thebibliography}{32}
 \bibitem{morse1925} Morse, M. (1925). Trans.\ AMS, 27, 345--396.
 \bibitem{griffith1921} Griffith, A.A. (1921). Phil.\ Trans.\ Roy.\ Soc.\ A, 221, 163--198.
 \bibitem{wilson1971} Wilson, K.G. (1971). Phys.\ Rev.\ B, 4, 3174--3205.
@@ -428,15 +252,11 @@ This work uses results from Codello, Percacci, and Rahmede (2009); Don\`{a}, Eic
 \bibitem{percacci2009} Percacci, R. (2009). arXiv:0910.5167.
 \bibitem{falls2013} Falls, K., Litim, D.F., Nikolakopoulos, K., Rahmede, C. (2013). arXiv:1312.0359.
 \bibitem{eichhorn2018} Eichhorn, A. (2018). Front.\ Astron.\ Space Sci., 5, 47. arXiv:1810.07615.
-\bibitem{eichhorn2022} Eichhorn, A. (2022). arXiv:2212.07442.
 \bibitem{puno2026} Puno, M.G.S. (2026). The Indeterminate Structure of Mathematical Truth.
 \bibitem{dona2014} Don\`{a}, P., Eichhorn, A., Percacci, R. (2014). Phys.\ Rev.\ D, 89, 084035. arXiv:1311.2898.
 \bibitem{eichhorn2017} Eichhorn, A., Held, A. (2017). Phys.\ Lett.\ B, 777, 217--221. arXiv:1708.03681.
-\bibitem{eichhorn2019} Eichhorn, A. (2019). Front.\ Astron.\ Space Sci., 5, 47. arXiv:1810.07615.
-\bibitem{eichhorn2019b} Eichhorn, A., Schiffer, M. (2019). Phys.\ Lett.\ B, 793, 383--389. arXiv:1905.03655.
-\bibitem{eichhorn2021} Eichhorn, A. (2021). JHEP, 10, 100.
-\bibitem{pastor2023} Pastor-Guti\'{e}rez, A., Pawlowski, J.M., Reichert, M. (2023). SciPost Phys.\ 15, 105. arXiv:2209.14627.
-\bibitem{pastor2023b} Pastor-Guti\'{e}rez, A., Pawlowski, J.M., Reichert, M. (2023). SciPost Phys.\ 15, 105. arXiv:2207.09817.
+\bibitem{eichhorn2019} Eichhorn, A., Schiffer, M. (2019). Phys.\ Lett.\ B, 793, 383--389. arXiv:1905.03655.
+\bibitem{pastor2023} Pastor-Guti\'{e}rez, A., Pawlowski, J.M., Reichert, M. (2023). SciPost Phys.\ 15, 105. arXiv:2207.09817.
 \bibitem{bonanno2002} Bonanno, A. \& Reuter, M. (2002). Phys.\ Rev.\ D, 65, 043508. arXiv:hep-th/0106112.
 \bibitem{bonanno2015} Bonanno, A. \& Platania, A. (2015). Phys.\ Lett.\ B, 750, 638. arXiv:1507.03375.
 \bibitem{eichhorn2020} Eichhorn, A. \& Pauly, M. (2021). Phys.\ Rev.\ D, 103, 026006. arXiv:2009.13543.
