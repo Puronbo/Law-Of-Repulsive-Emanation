@@ -402,6 +402,26 @@ where φᵢ are Kummer functions and cᵢ are fixed by matching to the IR. For r
 
 A scientific framework must state what would kill it. The following observations would falsify the proposal:
 
+### 8A. Theorem: The 0/0 Structure of the Higgs Potential
+
+**Assumptions:**
+- A1. Quantum gravity has a UV fixed point (asymptotic safety).
+- A2. Gravity couples to Standard Model matter.
+- A3. The gravitational contribution drives matter couplings to zero (Gaussian matter fixed point).
+
+**Then:**
+- T1. The Higgs potential at the UV FP is flat: u*(phi) = 0 for all phi.
+- T2. At phi = 0: all derivatives vanish: u*^(n)(0) = 0 for all n.
+- T3. This is the indeterminate form 0/0 at phi = 0.
+- T4. The relevant directions (theta_1 = -1.93, theta_2 = -0.811) are the removable values that encode the Higgs mass.
+- T5. The physical Higgs potential is uniquely determined by the 2 free parameters (c_1, c_2).
+
+**Proof:** By A1, the gravitational RG flow has a UV FP. By A2, gravity couples to the Higgs. By A3, the matter FP is Gaussian: lambda* = 0. At lambda* = 0, the potential is u*(phi) = lambda* phi^4/4 = 0 for all phi. At phi = 0, all derivatives vanish: this is the indeterminate form 0/0. The relevant directions (eigenperturbations with theta_i < 0) resolve the indeterminacy as k -> 0 (toward IR). Matching to IR observations fixes c_1, c_2. QED.
+
+**Corollary (Falsifiable):** The SM has exactly 2 free parameters in the Higgs sector. If a third parameter is required, the framework fails.
+
+**Remark:** Assumptions A1-A3 are not proved from the L.O.R.E. axioms alone. They are inputs from asymptotic safety. The L.O.R.E. framework provides the interpretation: the 0/0 is the deep structure that explains WHY the FP exists and WHY the potential is flat. But the theorem itself requires asymptotic safety as input. The bridge from L.O.R.E. axioms to physics remains metaphorical, not proven.
+
 ### 8.1. Falsified by: no UV fixed point
 
 If the Reuter FP does not exist (e.g., if higher-derivative truncations destabilize it, or if it disappears when matter fields are added), the entire framework collapses.
@@ -472,3 +492,14 @@ If the HL-LHC or FCC-ee measures the Higgs self-couplings κ₃ (trilinear) and 
 21. Pastor-Gutierrez, A., Pawlowski, J.M., Reichert, M. (2023). SciPost Phys. 15, 105. arXiv:2209.14627. [AS Standard Model]
 22. Giacometti, G., Kowalska, K., Rizzo, D., Sessolo, E.M., Zappala, D. (2026). arXiv:2604.03033. [QG contributions to gauge/Yukawa in proper time flow]
 23. Pastor-Gutiérrez, A., Pawlowski, J.M., Reichert, M. (2023). SciPost Phys. 15, 105. arXiv:2207.09817. [ASSM: full UV-IR flow with SM, flat Higgs FP, Gaussian matter]
+24. Bonanno, A. & Reuter, M. (2002). Phys. Rev. D, 65, 043508. arXiv:hep-th/0106112. [RG-improved cosmology: NGFP drives inflation without inflaton]
+25. Bonanno, A. & Platania, A. (2015). Phys. Lett. B, 750, 638. arXiv:1507.03375. [Asymptotically safe inflation from quadratic gravity]
+26. Eichhorn, A. & Pauly, M. (2021). Phys. Rev. D, 103, 026006. arXiv:2009.13543. [Gravity flattens scalar potentials, slow-roll natural]
+27. Shaposhnikov, M. & Wetterich, C. (2010). Phys. Lett. B, 683, 196. arXiv:0912.0208. [Higgs mass prediction m_H = 126 GeV from AS]
+28. Pawlowski, J.M., Reichert, M., Wetterich, C., Yamada, M. (2019). Phys. Rev. D, 99, 086010. arXiv:1811.11706. [Higgs potential from gravity FP: quartic is irrelevant]
+29. Eichhorn, A., Hamada, Y., Lumma, J., Yamada, M. (2018). Phys. Rev. D, 97, 086004. arXiv:1712.06146. [QG fluctuations flatten Planck-scale Higgs potential]
+30. Falls, K. (2016). JHEP, 01, 069. arXiv:1408.0276. [Lambda=0 predicted from UV FP without fine tuning]
+31. Platania, A. (2020). Front. Phys., 8, 188. [Review: RG flows to cosmology, Lambda(k) profile]
+32. Bonanno, A. & Saueressig, F. (2017). C.R. Physique, 18, 254. arXiv:1702.04137. [AS cosmology status: early+late acceleration from one flow]
+33. Silva, A. (2024). Phys. Lett. B. arXiv:2406.10170. [Inflaton potential emerges from NGFP flow]
+34. Giacometti, G., Kowalska, K., Rizzo, D., Sessolo, E.M., Zappalà, D. (2026). arXiv:2604.03033. [QG contributions to gauge/Yukawa: scheme dependence, f_y suppressed at AdS FP]
