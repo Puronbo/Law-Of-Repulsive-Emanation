@@ -428,6 +428,16 @@ If the Reuter FP does not exist (e.g., if higher-derivative truncations destabil
 
 **Current status:** The FP exists in all truncations tested (EH through f(R) n=8). The product G~* x L~* is stable. Matter coupling studies (Eichhorn et al) find FP persists for modest matter content.
 
+### 8.1a. The inflation prediction
+
+The RG flow from the UV FP should produce slow-roll inflation (Bonanno & Reuter 2001). We test this by computing the slow-roll parameters from the RG-improved Friedmann equation H^2 = (k^2/3)(8pi*G~ + L~).
+
+**Result (EH truncation):** The separatrix trajectory produces only ~3 e-folds of expansion, with epsilon ~ -0.87 (not slow-roll). The EH truncation breaks down too quickly.
+
+**This is CONSISTENT with the literature:** Bonanno & Reuter (2001) need f(R) or scalar-tensor for sufficient inflation. Bonanno & Platania (2015) show Starobinsky-type R^2 from f(R) truncation gives N ~ 60. Silva (2024) shows scalar-tensor models from NGFP give slow-roll compatible with Planck. The EH truncation gives the qualitative mechanism (NGFP-driven expansion), but quantitative predictions require f(R) or matter-coupled truncations.
+
+**The 0/0 connection:** The FP encodes the initial conditions for inflation. The critical exponents (complex pair + real) determine the slow-roll parameters. The EH truncation gives the qualitative mechanism, but quantitative predictions require higher truncations.
+
 ### 8.2. Falsified by: wrong critical exponents
 
 If the critical exponents are not complex (no spiralling), the framework's prediction of oscillatory approach to the FP fails.
