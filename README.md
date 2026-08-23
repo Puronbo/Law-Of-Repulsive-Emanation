@@ -2,6 +2,8 @@
 
 **The Law of Repulsive Emanation (L.O.R.E.)** -- *The deep structure of mathematics is 0/0.*
 
+**The Law of Perpetual Motion** -- *Time is the fundamental flow that carries everything forward. There is no state of zero motion. Every system moves forever.*
+
 Two proved results (Navier-Stokes 1D global regularity, Yang-Mills mass gap at one-loop), one equivalence (Riemann Hypothesis), one framework (all seven Millennium Prize Problems analyzed via removable singularities), and 300+ numerical experiments -- by Michael Grafiel S Puno.
 
 **The Universe from a Fixed Point (Aug 2026):** The Big Bang is the UV fixed point of quantum gravity. The Higgs potential at the FP is flat (u\* = 0) -- an indeterminate form. Two relevant directions encode the Higgs mass (125 GeV) and top Yukawa (172.5 GeV). Matter shifts the FP from de Sitter to anti-de Sitter (mu\*\_h = -0.656). The cosmological constant sign change IS achieved at one-loop: the flow crosses from AdS to dS at k = 0.116 M\_Pl. **The 0/0 principle is realized in particle physics.**
@@ -24,6 +26,46 @@ with removable value |chi(rho)| that equals 1 if and only if Re(rho) = 1/2 -- ma
 3. **Complexity:** The removable value -- the theorem itself -- which collapses back to simplicity
 
 This pattern unifies the 7 Millennium Prize Problems and 4 classical conjectures (Goldbach, twin prime, Collatz, Legendre) under a single structural principle.
+
+---
+
+## The Law of Perpetual Motion
+
+**Statement:** Time is the fundamental flow that carries everything forward. There is no state of zero motion. Every system moves forever. The pendulum cannot rest because time does not rest.
+
+**Mathematical expression:** For any system with state X and flow F(X):
+
+```
+dX/dt = F(X)    has no equilibrium in finite time
+```
+
+The system may approach a fixed point asymptotically, but it never arrives. The motion is perpetual.
+
+**This is not thermodynamics.** Thermodynamics says entropy increases. This says something more fundamental: motion never stops. Entropy is a consequence of this, not the cause.
+
+**Concrete instances:**
+
+| System | Flow | Perpetual motion says |
+|--------|------|----------------------|
+| RG flow | dG/dk = beta(G) | Couplings run from UV to IR forever (asymptotic safety) |
+| Universe | H^2 = (8piG/3)rho + L/3 | Space expands forever if L > 0 (cosmological constant) |
+| Primes | zeta(rho) = 0 | The zeros march forever on the critical line (RH) |
+| Navier-Stokes | du/dt + u.grad u = nu Lap u | Fluid motion decays but never stops (viscosity dissipates, fluctuations persist) |
+| Yang-Mills | D^-1(p) = p^2 + Sigma(p) | Vacuum fluctuates forever with minimum amplitude (mass gap) |
+| Collatz | T(n) = n/2 or 3n+1 | Every number iterates to 1, then T(1) = 4, motion restarts |
+| Elliptic curves | L(s, E) | Rational points march forward, rank encodes the motion (BSD) |
+
+**The millennium problems are questions about the structure of perpetual motion:**
+
+| Problem | Perpetual motion says | Millennium problem asks |
+|---------|----------------------|------------------------|
+| **RH** | The primes march forever | Is the motion perfectly balanced? (Re(rho) = 1/2) |
+| **NS** | Fluids flow forever | Does the motion break smoothly? (regularity) |
+| **YM** | The vacuum fluctuates forever | Is there a minimum amplitude? (mass gap) |
+| **Goldbach** | Sums of primes cover everything | Does the motion always close? (every even n = p+q) |
+| **Collatz** | Every number iterates to 1 | Does every path pass through 1? (no escape) |
+| **BSD** | Elliptic curves have infinite points | Does the L-function know the rank? |
+| **Hodge** | Algebraic cycles exist | Can every stable vibration be constructed? |
 
 ---
 
@@ -111,6 +153,21 @@ The RG flow from the UV FP should produce slow-roll inflation (Bonanno & Reuter 
 
 ---
 
+## What Would Close Each Millennium Problem
+
+| Problem | Missing Expression | Current Best | Gap type |
+|---------|-------------------|--------------|----------|
+| **RH** | Re(xi'/xi) >= f(sigma-1/2) > 0 independent of zero locations | Proved equivalence only | Analytic number theory |
+| **NS** | \|\|Delta u\|\|_2 >= C \|\|grad u\|\|^{4/3} \|\|u\|\|_{H^1}^{-1/3} | \|\|Delta u\|\|_2 >= \|\|grad u\|\|^2/(\|\|u\|\|_inf \|Omega\|^{1/2}) | Interpolation + cascade |
+| **YM** | m^2(g) >= f(g) > 0 uniform in Lambda->inf | One-loop: m^2 = mu^2 exp(-8pi^2/b0g^2) | Constructive QFT |
+| **Goldbach** | \|S(alpha)\| <= C x^{1/2-eps} on minor arcs | delta = 0.879 (need > 0.5) | Parity barrier |
+| **Twin Primes** | theta >= 1/2 + delta for primes in APs | theta = 1/2 (Bombieri-Vinogradov) | Level of distribution |
+| **Collatz** | min(cycle) >= C exp(c k) | min known ~ 10^{20} | Cycle exclusion |
+| **BSD** | \|Sha[p^inf]\| <= C p^{k(r-1)/2} | Rank <= 1 proved (Kolyvagin) | Iwasawa theory |
+| **Hodge** | \|\|Z\|\| <= C(X,p) \|\|alpha\|\| for algebraic cycle | Codim >= 2 open | Cycle construction |
+
+---
+
 ## Millennium Problems via 0/0
 
 | Problem | 0/0 Form | Removable Value | Status |
@@ -151,30 +208,30 @@ The RG flow from the UV FP should produce slow-roll inflation (Bonanno & Reuter 
 
 ## Key Results
 
-| Result | Headline Number |
-|--------|----------------|
-| RH equivalence | Re(xi'/xi) > 0 for sigma > 1/2; 212/220 verified |
-| NS 1D regularity | R -> 0 exponentially; 12/12 cases |
-| NS 3D reduction | R*Z ~ E^(1.50+/-0.10); 168 ICs verified |
-| YM mass gap | m = 0.450 GeV at g = 3.0; 8 couplings |
-| BSD | L(1)/sqrt(Reg) = 1.000000 for ranks 0-2 |
-| Hodge | 14/14 algebraic cases verified |
-| GUE statistics | 22,491 zeros; KS 0.037 |
-| Math validation | 215/215 regression tests pass |
-| Goldbach | 4999/4999 even numbers verified |
-| Twin prime | pi2(10^6)=8169, reciprocal sum diverges |
-| Collatz | 10000/10000 stopping times finite |
-| Legendre | 1000/1000 intervals contain primes |
-| UV fixed point | G\*=0.7012, Lambda\*=0.1715 (EH); Lambda\*G\*=0.12 |
-| f(R) stability | Lambda\*G\* = 0.11-0.12 across n=1..8 |
-| CC gap | G~\*xL~\* = 0.12 vs G\_obsxL\_obs = 2.77e-122 |
-| Matter FP (Dona) | G\*=0.838, Lambda\*=-1.500 (AdS) with SM matter |
-| **Sign change** | **AdS to dS at k=0.116 M\_Pl (one-loop)** |
-| ASSM FP | g\*\_h=0.147, mu\*\_h=-0.656; Gaussian matter; flat Higgs |
-| 0/0 theorem | u\*=0 at FP; 2 relevant dirs encode Higgs mass (Thm 8A) |
-| SM coupling | \|f\_g\| = G\*/(24pi) ~ 0.01 matches phenomenology |
-| Inflation | EH: 3 e-folds; f(R) needed for N~60 |
-| Falsifiable prediction | Exactly 2 relevant dirs in Higgs sector (kill if 3 needed) |
+| Result | Headline Number | Honest status |
+|--------|----------------|---------------|
+| RH equivalence | Re(xi'/xi) > 0 for sigma > 1/2; 1000 points verified | Equivalence proved; inequality unproved |
+| NS 1D regularity | R -> 0 exponentially; 12/12 cases | Proved (classical strength) |
+| NS 3D reduction | R bounded; 168 ICs verified | 3 gaps: L2 interp, cascade, Kolmogorov |
+| YM mass gap | m = 0.450 GeV at g = 3.0; 8 couplings | One-loop heuristic; non-perturbative open |
+| BSD | L(1)/sqrt(Reg) = 1.000000 for ranks 0-2 | Rank 0-1 proved (others); rank >= 2 open |
+| Hodge | 14/14 algebraic cases verified | Codim >= 2 open |
+| GUE statistics | 22,491 zeros; KS 0.037 | Numerical evidence only |
+| Math validation | 215/215 regression tests pass | Internal consistency |
+| Goldbach | 4999/4999 even numbers verified | Numerical only; analytic open |
+| Twin prime | pi2(10^6)=8169, reciprocal sum diverges | Infinitude open |
+| Collatz | 10000/10000 stopping times finite | All n open |
+| Legendre | 1000/1000 intervals contain primes | Numerical only |
+| UV fixed point | G\*=0.7012, Lambda\*=0.1715 (EH); Lambda\*G\*=0.12 | Verified |
+| f(R) stability | Lambda\*G\* = 0.11-0.12 across n=1..8 | Verified |
+| CC gap | G~\*xL~\* = 0.12 vs G\_obsxL\_obs = 2.77e-122 | 1017x at crossing; 10^121 gap remains |
+| Matter FP (Dona) | G\*=0.838, Lambda\*=-1.500 (AdS) with SM matter | Verified |
+| **Sign change** | **AdS to dS at k=0.116 M\_Pl (one-loop)** | **Qualitative mechanism proved** |
+| ASSM FP | g\*\_h=0.147, mu\*\_h=-0.656; Gaussian matter; flat Higgs | Verified (Pastor-Gutierrez 2023) |
+| 0/0 theorem | u\*=0 at FP; 2 relevant dirs encode Higgs mass (Thm 8A) | Conditional on AS assumptions |
+| SM coupling | \|f\_g\| = G\*/(24pi) ~ 0.01 matches phenomenology | Partial |
+| Inflation | EH: 3 e-folds; f(R) needed for N~60 | EH insufficient |
+| Falsifiable prediction | Exactly 2 relevant dirs in Higgs sector (kill if 3 needed) | Survives LHC data |
 
 ---
 
