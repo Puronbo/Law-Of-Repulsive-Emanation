@@ -308,6 +308,8 @@ This has a profound implication: the observed positive cosmological constant is 
 - From dS FP (Λ* > 0): need to suppress from 0.12 to 10^{-122} (121 orders)
 - From AdS FP (Λ* < 0): the sign change itself provides the qualitative mechanism, and the magnitude suppression is much smaller
 
+**Figure:** The 5-point phase portrait (Fig. 3 in `docs/phase_portrait_5points.png`) shows the (G,Λ) plane with all five key features: (1) NGFP, (2) GFP, (3) separatrix, (4) singular line, (5) UV spiral trajectory. The shift from pure-gravity FP (dS) to SM FP (AdS) is shown as the purple arrow.
+
 ### 6.7. The weak gravity bound constrains the FP
 
 The weak gravity bound (Eichhorn & Schiffer 2019) requires the FP values to satisfy stability conditions for scalar, gauge, and fermion matter. At the pure-gravity FP (Λ* = 0.079), the scalar and gauge bounds are violated. At the SM FP (Λ* = -0.346), the fermion bound is violated. This suggests the true FP lies between these extremes — with some Λ* between -0.35 and +0.08 — and the matter content determines the exact location.
