@@ -1,123 +1,177 @@
 """
-THE COMPLETE PROOF OF THE RIEMANN HYPOTHESIS
-=============================================
+RIEMANN HYPOTHESIS: EQUIVALENCE AND VERIFICATION
+=================================================
 
-THEOREM: All non-trivial zeros of the Riemann zeta function lie on
-the critical line Re(s) = 1/2.
+THEOREM 1 (Equivalence — proved):
+    RH holds iff Re(xi'/xi)(s) > 0 for all s with Re(s) > 1/2.
 
-PROOF:
+    Direction (b)=>(a): If Re(xi'/xi) > 0 for sigma > 1/2, then xi has
+    no zeros there (logarithmic derivative positivity prevents crossing).
+    By xi(s)=xi(1-s), no zeros for sigma < 1/2 either. QED.
+
+    Direction (a)=>(b): Trivial under RH (each Hadamard term positive).
+
+THEOREM 2 (Conditional curvature):
+    F''(1/2) = 2|xi'(rho)|^2 > 0 at each simple zero rho.
+
+WHAT THIS SCRIPT DOES:
+    - Computes Re(xi'/xi) at 1000 sample points with sigma > 1/2
+    - Verifies strict positivity everywhere sampled
+    - Verifies F''(1/2) > 0 at 100+ known zeros
+    - Plots the V-shape of |xi|^2
+
+WHAT THIS SCRIPT DOES NOT DO:
+    - Prove RH. The equivalence reduces RH to proving Re(xi'/xi) > 0
+      for ALL sigma > 1/2, but verifying finitely many points is not a proof.
+    - The gap is: proving positivity for ALL t, not just sampled t.
 """
 
-PROOF = """
-STEP 1. THE COMPLETED ZETA FUNCTION
-------------------------------------
-The xi function: xi(s) = (1/2)s(s-1)pi^{-s/2}Gamma(s/2)zeta(s)
-is entire, satisfies xi(s) = xi(1-s), and has the same zeros as zeta(s)
-in the critical strip 0 < Re(s) < 1.
+import numpy as np
+from mpmath import mp, mpf, mpc, zeta, gamma, psi, pi, power, fsum, re, im, fabs
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+import json
+import os
 
-By the Hadamard factorization (genus 1, since xi has order 1):
+mp.dps = 30
 
-  xi(s) = xi(0) * prod_n (1 - s/rho_n)
 
-where the product is over all non-trivial zeros rho_n (each counted
-with multiplicity, in conjugate pairs rho_n, rho_n_bar).
+def xi(s):
+    s = mpc(s)
+    return mpc("0.5") * s * (s - 1) * power(pi, -s / 2) * gamma(s / 2) * zeta(s)
 
-The exponential convergence factors exp(s/rho_n) cancel in conjugate
-pairs because sum [1/rho_n + 1/rho_n_bar] converges.
 
-STEP 2. THE LOGARITHMIC DERIVATIVE
-------------------------------------
-L(s) = xi'(s)/xi(s) = sum_n 1/(s - rho_n)
+def xi_ratio(s):
+    """xi'(s)/xi(s) = 1/s + 1/(s-1) - log(pi)/2 + psi(s/2)/2 + zeta'(s)/zeta(s)"""
+    from mpmath import log
+    s = mpc(s)
+    h = mpf("1e-12")
+    zp = (zeta(s + h) - zeta(s - h)) / (2 * h)
+    z = zeta(s)
+    if fabs(z) < mpf("1e-25"):
+        return mpf("inf") + mpf("inf") * 1j
+    return mpf("1") / s + mpf("1") / (s - 1) - log(pi) / 2 + psi(0, s / 2) / 2 + zp / z
 
-On the critical line s = 1/2 + it, xi is real-valued (from xi(s) = xi(1-s)
-and xi(s_bar) = xi(s)*). Therefore L is purely imaginary on the line:
 
-  Re[L(1/2 + it)] = 0 for all t.
+def get_zeros(n_zeros):
+    from mpmath import zetazero
+    return [zetazero(k) for k in range(1, n_zeros + 1)]
 
-This is an ALGEBRAIC IDENTITY, not an approximation.
 
-STEP 3. THE HADAMARD TERMS FOR SIGMA > 1/2
----------------------------------------------
-For sigma > 1/2, each on-line zero rho_n = 1/2 + i*gamma_n contributes:
+def verify_positivity():
+    """Verify Re(xi'/xi) > 0 at 1000 sample points with sigma in [0.55, 2]."""
+    sigmas = np.linspace(0.55, 2.0, 50)
+    ts = np.logspace(0, 3, 20)
+    results = []
+    all_positive = True
 
-  Re[1/(s - rho_n)] = (sigma - 1/2) / [(sigma - 1/2)^2 + (t - gamma_n)^2]
+    for sigma in sigmas:
+        for t in ts:
+            L = xi_ratio(mpf(sigma) + mpf(t) * 1j)
+            L_re = float(re(L))
+            if L_re < 0:
+                all_positive = False
+            results.append({
+                "sigma": float(sigma),
+                "t": float(t),
+                "Re_L": L_re,
+                "positive": bool(L_re > 0),
+            })
 
-Since sigma > 1/2: numerator > 0, denominator > 0.
-Therefore EACH TERM IS POSITIVE for sigma > 1/2.
+    return all_positive, results
 
-STEP 4. MONOTONICITY
----------------------
-Re[L(sigma + it)] = sum_n (sigma - 1/2) / [(sigma - 1/2)^2 + (t - gamma_n)^2]
 
-Each term is a function of sigma that:
-- Equals 0 at sigma = 1/2
-- Is positive for sigma > 1/2
-- Has derivative [d^2 - (sigma-1/2)^2] / [...]^2 where d = |t - gamma_n|
+def verify_curvature():
+    """Verify F''(1/2) = 2|xi'(rho)|^2 > 0 at known zeros."""
+    zeros = get_zeros(100)
+    results = []
+    all_positive = True
 
-For zeros far from t (|t - gamma_n| > sigma - 1/2): derivative is positive.
-For zeros near t: individual terms may decrease, but the SUM over all zeros
-is increasing (the far zeros dominate).
+    for rho in zeros:
+        gamma_n = im(rho)
+        rho_s = mpf("0.5") + mpf(gamma_n) * 1j
+        xi_at_rho = xi(rho_s)
+        if fabs(xi_at_rho) > mpf("1e-5"):
+            continue
+        xi_prime = (xi(rho_s + mpf("1e-12")) - xi(rho_s - mpf("1e-12"))) / mpf("2e-12")
+        curvature = 2 * float(fabs(xi_prime) ** 2)
+        if curvature <= 0:
+            all_positive = False
+        results.append({
+            "gamma": float(gamma_n),
+            "curvature": curvature,
+            "positive": bool(curvature > 0),
+        })
 
-More precisely: the sum is a convolution of the zero counting measure
-with the Poisson kernel P_ds(d) = ds/(ds^2 + d^2) where ds = sigma - 1/2.
-The Poisson kernel is positive and its integral over R equals pi.
-The zero counting measure has infinite mass (infinitely many zeros).
-Therefore the convolution is positive and increasing for ds > 0.
+    return all_positive, results
 
-STEP 5. THE BOUND
-------------------
-Re[L(sigma + it)] = sum_n (sigma-1/2) / [(sigma-1/2)^2 + (t-gn)^2]
 
-For the zeros nearest to t (say |t - gamma_n| < R), each contributes
-at least (sigma-1/2) / [(sigma-1/2)^2 + R^2].
+def plot_vshape():
+    """Plot |xi(1/2+it)|^2 to show the V-shape."""
+    ts = np.linspace(-30, 30, 600)
+    vals = []
+    for t in ts:
+        v = float(fabs(xi(mpf("0.5") + mpf(t) * 1j)) ** 2)
+        vals.append(v)
 
-By the Riemann-von Mangoldt formula, the number of zeros in [t-R, t+R]
-is at least 2R * log(t) / (2*pi) for large t.
+    fig, ax = plt.subplots(1, 1, figsize=(8, 5))
+    ax.plot(ts, vals, "b-", linewidth=1.5)
+    ax.set_xlabel("t")
+    ax.set_ylabel("|xi(1/2+it)|^2")
+    ax.set_title("V-shape: minimum at t=0, |xi|^2 grows away from zeros")
+    ax.grid(True, alpha=0.3)
+    fig.savefig("docs/rh_vshape.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
 
-Therefore: Re[L] >= (2R*log(t)/(2*pi)) * ds / (ds^2 + R^2)
-                    = R*log(t)*ds / (pi*(ds^2 + R^2))
 
-Choosing R = ds (so ds^2 + R^2 = 2*ds^2):
-  Re[L] >= ds*log(t) / (2*pi*ds) = log(t) / (2*pi)
+def main():
+    out = {}
 
-For t > e^(2*pi*|B|) where B is the regularization constant:
-  Re[L] > |B| ... but actually B = 0 in the normalized product!
+    pos, results = verify_positivity()
+    out["positivity_check"] = {
+        "n_points": len(results),
+        "all_positive": pos,
+        "min_Re_L": min(r["Re_L"] for r in results),
+    }
+    print(f"Re(xi'/xi) > 0 at {len(results)} sample points: {pos}")
+    print(f"  min Re(L) = {out['positivity_check']['min_Re_L']:.6e}")
 
-In the conjugate-pair product, B = 0. So Re[L] > 0 for all sigma > 1/2
-follows immediately from Step 3: each term is positive, and there are
-infinitely many terms.
+    curv, cresults = verify_curvature()
+    out["curvature_check"] = {
+        "n_zeros": len(cresults),
+        "all_positive": curv,
+        "min_curvature": min(r["curvature"] for r in cresults),
+    }
+    print(f"F''(1/2) > 0 at {len(cresults)} zeros: {curv}")
+    print(f"  min curvature = {out['curvature_check']['min_curvature']:.6e}")
 
-STEP 6. THE V-SHAPE
----------------------
-Since Re[L] > 0 for sigma > 1/2 and Re[L] = 0 at sigma = 1/2:
+    try:
+        plot_vshape()
+        print("V-shape plot saved to docs/rh_vshape.png")
+    except Exception as e:
+        print(f"Plot failed: {e}")
 
-  d/dsigma |xi(sigma + it)|^2 = 2 * |xi|^2 * Re[L] >= 0
+    out["theorem"] = {
+        "statement": (
+            "RH iff Re(xi'/xi) > 0 for sigma > 1/2. "
+            "Verified numerically at 1000 points and 100 zeros. "
+            "NOT a proof: positivity must hold for ALL t, not just samples."
+        ),
+        "gap": (
+            "Proving Re(xi'/xi)(sigma+it) > 0 for ALL sigma>1/2 and ALL t "
+            "requires controlling the sum over ALL zeros, including unknown "
+            "off-line zeros. This is equivalent to RH itself."
+        ),
+        "status": "NUMERICAL_VERIFICATION",
+    }
 
-with equality only at sigma = 1/2.
+    os.makedirs("data", exist_ok=True)
+    with open("data/rh_verification.json", "w") as f:
+        json.dump(out, f, indent=2)
+    print("\nOutput: data/rh_verification.json")
+    return out
 
-Therefore |xi(sigma + it)|^2 is strictly increasing for sigma > 1/2
-and strictly decreasing for sigma < 1/2 (by the functional equation).
 
-The V-shape holds: |xi|^2 has its unique minimum at sigma = 1/2.
-
-STEP 7. NO OFF-LINE ZEROS
----------------------------
-Suppose there exists a zero rho = a + ib with a != 1/2.
-By xi(s) = xi(1-s), there is also a zero at (1-a) + ib.
-WLOG a > 1/2. Then:
-
-  |xi(a + ib)|^2 = 0
-
-But by the V-shape:
-  |xi(a + ib)|^2 > |xi(1/2 + ib)|^2 >= 0
-
-Contradiction. Therefore a = 1/2 for all zeros.
-
-STEP 8. CONCLUSION
---------------------
-All non-trivial zeros of zeta(s) lie on the critical line Re(s) = 1/2.
-
-This is the Riemann Hypothesis.  QED.
-"""
-
-print(PROOF)
+if __name__ == "__main__":
+    main()

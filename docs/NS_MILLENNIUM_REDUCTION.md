@@ -19,9 +19,10 @@ trivially true statement that constrains the blowup ratio R(t) =
 Gagliardo-Nirenberg interpolation. R -> 0 as t -> infinity. Global
 regularity proved.
 
-(Theorem B) In 3D periodic NS, if Kolmogorov's bound ||u||_inf <=
-C*epsilon^{1/3} holds (where epsilon = 2*nu*Z is the dissipation
-rate), then R is bounded and the singularity is removable.
+(Theorem B) In 3D periodic NS, IF Kolmogorov's bound ||u||_inf <=
+C*epsilon^{1/3} holds AND the spectral cascade is forward, THEN
+R(t) is bounded and the singularity is removable. The proof has
+two unproved steps (Gap 1: L² interpolation, Gap 2: cascade).
 
 (Theorem C) We verify Kolmogorov's bound for 168 cases (21 ICs x 4
 amplitudes x 2 viscosities) with empirical constant C_0 that depends
@@ -116,31 +117,35 @@ where epsilon = 2*nu*Z is the energy dissipation rate, then:
 where K = 2^{-1/6}. Since Z -> infinity at any blowup point,
 R -> 0. The singularity is removable.
 
-**Proof.**
+**Proof attempt (contains two unproved steps — see below).**
 
-Step 1: ||u||_inf <= C_0 * epsilon^{1/3} = C_0 * (2*nu*Z)^{1/3}.
+Step 1 (Kolmogorov bound — ASSUMED):
+    ||u||_inf <= C_0 * epsilon^{1/3} = C_0 * (2*nu*Z)^{1/3}.
 
-Step 2: ||u_xx|| >= ||u_x||^2 / ||u||_inf = 2Z / ||u||_inf.
+Step 2 (INCOMPLETE for 3D — see Gap 1):
+    The 1D result ||u_xx|| >= ||u_x||^2/||u||_inf uses
+    integration by parts: ∫u_x² = -∫u·u_xx, then CS.
+    In 3D: ∫|∇u|² = -∫u·Δu <= ||u||_∞||Δu||₁
+    gives ||Δu||₁ >= ||∇u||²/||u||_∞, but this is L¹ not L².
+    The correct L² bound requires an additional |Ω|^{1/2} factor:
+    ||Δu||₂ >= ||∇u||²/(||u||_∞·|Ω|^{1/2}).
 
-Step 3: R = ||u*u_x|| / (nu*||u_xx||)
-       <= ||u||_inf * ||u_x|| / (nu * 2Z / ||u||_inf)
-       = ||u||_inf^2 / (nu * ||u_x||)
-       = ||u||_inf^2 / (nu * sqrt(2Z))
+Step 3 (ASSUMING Step 2 corrected):
+    R = ||u·∇u||/(nu·||Δu||)
+       <= ||u||_∞·||∇u||/(nu·||Δu||)
+       <= ||u||_∞·||∇u||·||u||_∞·|Ω|^{1/2}/(nu·||∇u||²)
+       = ||u||_∞²·|Ω|^{1/2}/(nu·||∇u||)
+       = ||u||_∞²·|Ω|^{1/2}/(nu·sqrt(2Z))
 
-Step 4: ||u||_inf^2 <= C_0^2 * (2*nu*Z)^{2/3}
-       R <= C_0^2 * (2*nu*Z)^{2/3} / (nu * sqrt(2Z))
-       = C_0^2 * 2^{2/3} * nu^{2/3} * Z^{2/3} / (nu * sqrt(2) * Z^{1/2})
-       = C_0^2 * 2^{1/6} * Z^{1/6} / nu^{1/3}
+Step 4 (SUBSTITUTING Kolmogorov):
+    ||u||_∞² <= C_0²·(2nuZ)^{2/3}
+    R <= C_0²·(2nuZ)^{2/3}·|Ω|^{1/2}/(nu·sqrt(2Z))
+       = C'·|Ω|^{1/2}·Z^{1/6}/nu^{1/3}
 
-This gives R <= C' * Z^{1/6} / nu^{1/3}, which grows with Z.
-
-However, the tighter bound uses the CASCADE STRUCTURE:
-||u_xx|| is controlled by the dissipation wavenumber k_d,
-not just by ||u||_inf. The cascade gives:
-
-    R <= C_0 * K / (nu^{2/3} * Z^{1/6})
-
-which DECREASES with Z. R -> 0 at blowup. QED.
+This grows with Z as Z^{1/6}. The claimed decreasing bound
+R <= C_0·K/(nu^{2/3}·Z^{1/6}) requires an additional CASCADE
+ARGUMENT (Gap 2) controlling the spectral transfer of energy
+from low to high wavenumbers.
 
 **The remaining gap.** The rigorous proof of ||u||_inf <=
 C_0 * epsilon^{1/3} for ALL smooth solutions of 3D NS is
@@ -201,11 +206,13 @@ The logical chain:
        => global regularity
 
 Steps 1-2 are proved (energy equation).
-Step 3 is Kolmogorov's 1941 theory (open).
-Steps 4-5 follow from 1-3.
+Step 3 (Kolmogorov inequality) is open.
+Step 4 (cascade bound) requires Gap 1 + Gap 2 to be filled.
+Step 5 (Beale-Kato-Majda) follows from 1-4.
 
-The 3D NS Millennium Problem is equivalent to step 3:
-proving Kolmogorov's inequality for all smooth solutions.
+The 3D NS Millennium Problem remains open. The reduction to
+Kolmogorov's inequality (Gap 3) and spectral cascade (Gap 2)
+identifies the precise obstacles.
 
 ---
 
@@ -216,9 +223,22 @@ proving Kolmogorov's inequality for all smooth solutions.
 - 3D NS: reduction to Kolmogorov (Theorem B)
 - Empirical verification: 168 cases, all R bounded (Theorem C)
 
-**What remains open:**
-- Rigorous proof of ||u||_inf <= C*epsilon^{1/3} in 3D
-  (Kolmogorov 1941 theory, major open problem)
+**What remains open (two specific gaps):**
+
+Gap 1: The integration-by-parts inequality ||Δu||₂ >= ||∇u||²/(||u||_∞·|Ω|^{1/2})
+has an unwanted |Ω|^{1/2} factor in 3D (absent in 1D). Eliminating it
+requires either a different interpolation scheme or control of the domain
+dependence. The Caffarelli-Kohn-Nirenberg partial regularity theory
+avoids this issue via L³/L^{2,1} criteria, but does not yield full
+regularity.
+
+Gap 2: The cascade argument controlling spectral energy transfer from
+low to high wavenumbers (the claimed R <= C·Z^{-1/6} decrease) is
+not derived. This requires proving that the nonlinear term u·∇u does
+not pump energy into modes where dissipation is weak — i.e., that
+the energy cascade is forward (toward high k) rather than backward.
+This is the content of Kolmogorov's 1941 theory and is a major open
+problem in turbulence theory.
 
 **What we verified numerically:**
 - R is bounded for 168 diverse ICs
@@ -226,11 +246,46 @@ proving Kolmogorov's inequality for all smooth solutions.
 - C_0 is finite (IC-dependent, ranges 0.8 to 12.6)
 - The tautology principle holds (energy conservation exact)
 
-**The gap.** The only gap between our result and a complete
-proof of the 3D NS Millennium Problem is the rigorous proof
-of Kolmogorov's inequality. We have reduced the Millennium
-Problem to a well-studied open problem in turbulence theory,
-and we have verified the inequality numerically for 168 cases.
+**The gap.** Three gaps remain between our reduction and a
+complete proof of the 3D NS Millennium Problem:
+Gap 1: ||Δu||₂ lower bound in 3D (|Ω|^{1/2} factor).
+Gap 2: Spectral cascade argument (energy transfer control).
+Gap 3: Rigorous proof of ||u||_inf <= C*epsilon^{1/3} in 3D.
+We have reduced the Millennium Problem to three well-identified
+open problems in mathematical fluid dynamics and turbulence theory.
+
+---
+
+## 8. What Would Close Each Millennium Problem
+
+**Riemann Hypothesis:** Prove Re(xi'/xi)(σ+it) > 0 for ALL σ>1/2 and
+ALL t. This requires a zero-location-independent argument (currently the
+positivity proof assumes all zeros are on the line -- circular). The
+equivalence is proved; the hard direction is proving the inequality.
+
+**Navier-Stokes (3D):** Fill three gaps: (a) L² interpolation of ||Δu||
+without |Ω|^{1/2} factor, (b) spectral cascade argument (energy transfer
+from low to high k), (c) Kolmogorov's ||u||_∞ <= Cε^{1/3} inequality.
+
+**Yang-Mills mass gap:** Constructive QFT: lattice gauge theory with
+reflection positivity + continuum limit + OS axioms + uniform exponential
+clustering. One-loop heuristics are insufficient.
+
+**Goldbach:** Eliminate the exceptional set in the circle method (current
+bound O(x^{0.879}) must shrink to 0). Ternary is proved (Helfgott 2013);
+binary resists all known techniques.
+
+**Twin Primes:** Beat the sieve parity barrier (level of distribution
+θ > 1/2). Current record: bounded gaps <= 246 (Maynard-Tao 2013).
+
+**Collatz:** Extend Tao's almost-all theorem (2019) to all n, plus
+cycle-exclusion bound beyond 10^{20}.
+
+**BSD:** Prove SHA finiteness at rank >= 2. At rank 0-1, BSD is a theorem
+(Gross-Zagier + Kolyvagin). Rank >= 2 is open.
+
+**Hodge:** Produce rational algebraic cycles spanning Hdg^{2p}(X) for
+general varieties at codimension >= 2. No general principle exists.
 
 ---
 
