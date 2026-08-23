@@ -390,11 +390,11 @@ where φᵢ are Kummer functions and cᵢ are fixed by matching to the IR. For r
 
 ### 7.4. What remains open
 
-1. **Standard Model coupling (PARTIALLY ADDRESSED):** The gravitational contribution fg = G*/(24pi) ~ 0.01 matches the phenomenological requirement for SM gauge couplings. The predicted g_Y(Planck) ~ 0.5 is within a factor 1.5 of the observed 0.357. The Higgs mass prediction from f_lambda < 0 is qualitatively correct but quantitatively requires higher-order corrections. Full quantitative prediction requires the complete gravity-matter flow.
+1. **Standard Model coupling (PARTIALLY ADDRESSED):** The gravitational contribution fg = G*/(24pi) ~ 0.01 is of the same order as the phenomenological requirement for SM gauge couplings (Eichhorn & Held 2017). Full quantitative prediction requires the complete gravity-matter flow.
 2. **Proof beyond truncation:** Asymptotic safety is not proven in the full theory.
 3. **Below 10^15 GeV:** The EH truncation cannot reach low energy; f(R) or higher truncations needed.
-4. **Trajectory selection:** The physical trajectory from the 3D critical surface is not uniquely determined by the FP alone. Matching to G_N and L_obs fixes 2 of 3 parameters; the R^2 coupling g2 remains free.
-5. **The CC problem (SIGNIFICANTLY RESHAPED):** The pure-gravity FP has G*×Λ* = 0.12 (de Sitter). With SM matter, the FP shifts to anti-de Sitter (Λ* < 0), fundamentally changing the suppression problem. The fully non-perturbative ASSM (Pastor-Gutiérrez et al 2023) confirms μ*_h = -0.656 at the FP, with Λ ≈ 0 in the IR. The running from μ*_h = -0.656 to Λ ≈ 0 is the central open question — the sign change is qualitatively achieved but the quantitative flow is not yet computed.
+4. **Trajectory selection:** The physical trajectory from the 3D critical surface is not uniquely determined by the FP alone. Matching to G_N and L_obs fixes 2 of 3 parameters; the R^2 coupling remains free.
+5. **The CC problem (QUALITATIVE RESULT, QUANTITATIVE GAP):** The one-loop flow achieves a sign change from AdS to dS at k=0.116 M_Pl with 1017x suppression at the crossing point. The remaining 10^121 orders cannot be achieved within the one-loop fRG framework, which is exact by construction (Goroff-Sagnotti C³ decouples at two-loop). The quantitative suppression requires non-perturbative methods beyond the fRG, or the CC is explained qualitatively (sign change mechanism) rather than quantitatively.
 
 ---
 
