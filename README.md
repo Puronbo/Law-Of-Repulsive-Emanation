@@ -4,7 +4,7 @@
 
 Two proved results (Navier-Stokes 1D global regularity, Yang-Mills mass gap at one-loop), one equivalence (Riemann Hypothesis), one framework (all seven Millennium Prize Problems analyzed via removable singularities), and 300+ numerical experiments -- by Michael Grafiel S Puno.
 
-**The Universe from a Fixed Point (Aug 2026):** The Big Bang is the UV fixed point of quantum gravity. The Higgs potential at the FP is flat (u\* = 0) -- an indeterminate form. Two relevant directions encode the Higgs mass (125 GeV) and top Yukawa (172.5 GeV). Matter shifts the FP from de Sitter to anti-de Sitter (mu\*\_h = -0.656). The cosmological constant sign change is qualitatively achieved by the full gravity-matter flow. **The 0/0 principle is realized in particle physics.**
+**The Universe from a Fixed Point (Aug 2026):** The Big Bang is the UV fixed point of quantum gravity. The Higgs potential at the FP is flat (u\* = 0) -- an indeterminate form. Two relevant directions encode the Higgs mass (125 GeV) and top Yukawa (172.5 GeV). Matter shifts the FP from de Sitter to anti-de Sitter (mu\*\_h = -0.656). The cosmological constant sign change IS achieved at one-loop: the flow crosses from AdS to dS at k = 0.116 M\_Pl. **The 0/0 principle is realized in particle physics.**
 
 ---
 
@@ -72,21 +72,42 @@ The Big Bang is the UV fixed point of the renormalization group flow of quantum 
 | f(R) n=6 | 0.9583 | 0.1216 | 0.1166 | 3 |
 | f(R) n=8 | 0.9589 | 0.1221 | 0.1171 | 3 |
 
-**Key finding:** Lambda*G* stabilizes at 0.11-0.12 across ALL truncations. This is a scheme-independent prediction of asymptotic safety.
+**Key finding:** Lambda\*G\* stabilizes at 0.11-0.12 across ALL truncations. This is a scheme-independent prediction of asymptotic safety.
 
 ### The Cosmological Constant Problem
 
 The dimensionless product G~(k) x L~(k) must run from 0.12 at the UV fixed point to 2.77 x 10^-122 at the observed scale. The gap is 4 x 10^120.
 
-Including SM matter shifts the FP to anti-de Sitter (mu*_h = -0.656). The sign change from negative (UV) to approximately zero (IR) is qualitatively achieved by the full gravity-matter flow. The ASSM confirms: all matter couplings are Gaussian at the FP, the Higgs potential is flat (u* = 0), and the two relevant directions encode the Higgs mass and top Yukawa.
+Including SM matter shifts the FP to anti-de Sitter (mu\*\_h = -0.656). **The sign change IS achieved at one-loop:** starting from the SM FP (G\*=0.838, L\*=-1.500), the Dona et al one-loop flow crosses from AdS to dS at k = 0.116 M\_Pl (1.4 x 10^18 GeV). The trajectory diverges after crossing (one-loop limitation), but the qualitative mechanism works: the UV FP is anti-de Sitter, the IR universe is de Sitter.
 
 ### The 0/0 Interpretation
 
-At the UV fixed point, the Higgs potential u*(rho) = 0 -- an indeterminate form. The two relevant directions (theta_1 = -1.93, theta_2 = -0.811) are the "removable values" that encode the observed Higgs mass (125 GeV) and top Yukawa coupling. The FP predicts exactly 2 free parameters in the Higgs sector -- a falsifiable prediction of asymptotic safety.
+At the UV fixed point, the Higgs potential u\*(rho) = 0 -- an indeterminate form. The two relevant directions (theta\_1 = -1.93, theta\_2 = -0.811) are the "removable values" that encode the observed Higgs mass (125 GeV) and top Yukawa coupling. The FP predicts exactly 2 free parameters in the Higgs sector -- a falsifiable prediction of asymptotic safety.
+
+### The 0/0 Theorem (Theorem 8A)
+
+**Assumptions:** (A1) Quantum gravity has a UV FP. (A2) Gravity couples to SM matter. (A3) Gravitational contribution drives matter couplings to Gaussian FP.
+
+**Then:** The Higgs potential at the UV FP is flat (u\* = 0). All derivatives vanish at phi = 0: this is the indeterminate form 0/0. The relevant directions are the removable values that encode the Higgs mass. The SM has exactly 2 free parameters in the Higgs sector.
+
+**Remark:** Assumptions A1-A3 are inputs from asymptotic safety, not proved from L.O.R.E. axioms alone. The bridge from L.O.R.E. to physics remains metaphorical.
 
 ### The Critical Surface
 
-The UV critical surface of f(R) gravity (n=6) is 3-dimensional. The irrelevant couplings g3-g6 are explicit linear functions of g0,g1,g2 (Codello et al, arXiv:0705.1769, eq.11). Matching to G_N and Lambda_obs fixes 2 of 3 parameters; the R^2 coupling remains free.
+The UV critical surface of f(R) gravity (n=6) is 3-dimensional. The irrelevant couplings g3-g6 are explicit linear functions of g0,g1,g2 (Codello et al, arXiv:0705.1769, eq.11). Matching to G\_N and Lambda\_obs fixes 2 of 3 parameters; the R^2 coupling remains free.
+
+### Inflation Prediction
+
+The RG flow from the UV FP should produce slow-roll inflation (Bonanno & Reuter 2001). The EH truncation produces only ~3 e-folds (insufficient). This is consistent with the literature: Bonanno & Platania (2015) show f(R) truncation gives N ~ 60; Silva (2024) shows scalar-tensor models give slow-roll compatible with Planck. The 0/0 at the FP encodes initial conditions for inflation, but quantitative predictions require f(R) or matter-coupled truncations.
+
+### Falsifiable Predictions
+
+| Prediction | Test | When | Status |
+|------------|------|------|--------|
+| 2 relevant directions in Higgs sector | HL-LHC: kappa\_3 to +/-0.32 | 2029-2035 | Survives (current: [-1.2, 7.5]) |
+| G~\*xL~\* = 0.12 (scheme-independent) | Pure gravity | Done | Verified (n=1..8) |
+| Sign change AdS to dS | One-loop RG flow | Done | Achieved at k=0.116 M\_Pl |
+| Inflation from FP | f(R) truncation | Computation needed | EH insufficient (3 e-folds) |
 
 ---
 
@@ -96,7 +117,7 @@ The UV critical surface of f(R) gravity (n=6) is 3-dimensional. The irrelevant c
 |---------|----------|-----------------|--------|
 | **Riemann Hypothesis** | g(s) = \|zeta(s)\|/\|zeta(1-s)\| | \|chi(rho)\| = 1 iff Re(rho) = 1/2 | **Equivalence established** |
 | **Navier-Stokes** | R(t) = E/(nu*Z) | 0 as t -> inf | **1D proved; 3D reduced to Kolmogorov** |
-| **Yang-Mills** | Gap equation self-consistency | m = mu*exp(-8pi^2/b0g^2) > 0 | **One-loop proved** |
+| **Yang-Mills** | Gap equation self-consistency | m = mu\*exp(-8pi^2/b0g^2) > 0 | **One-loop proved** |
 | **BSD** | L(1, E)/sqrt(Reg) | = 1 for ranks 0, 1, 2 | Verified (LMFDB) |
 | **Hodge** | Algebraic/total ratio | = 1 for CP^n, products | Verified (14/14 cases) |
 | **P vs NP** | Re(L(sigma))/Re(U(sigma)) | < 1 always (min gap 0.91) | Consistent with P != NP |
@@ -146,11 +167,13 @@ The UV critical surface of f(R) gravity (n=6) is 3-dimensional. The irrelevant c
 | Legendre | 1000/1000 intervals contain primes |
 | UV fixed point | G\*=0.7012, Lambda\*=0.1715 (EH); Lambda\*G\*=0.12 |
 | f(R) stability | Lambda\*G\* = 0.11-0.12 across n=1..8 |
-| CC gap | G\~\*xL\~\* = 0.12 vs G\_obsxL\_obs = 2.77e-122 |
-| Matter FP (Dona) | G\*=0.57, Lambda\*=-0.35 (AdS) with SM matter |
+| CC gap | G~\*xL~\* = 0.12 vs G\_obsxL\_obs = 2.77e-122 |
+| Matter FP (Dona) | G\*=0.838, Lambda\*=-1.500 (AdS) with SM matter |
+| **Sign change** | **AdS to dS at k=0.116 M\_Pl (one-loop)** |
 | ASSM FP | g\*\_h=0.147, mu\*\_h=-0.656; Gaussian matter; flat Higgs |
-| 0/0 interpretation | u\*=0 at FP; 2 relevant directions encode Higgs mass |
+| 0/0 theorem | u\*=0 at FP; 2 relevant dirs encode Higgs mass (Thm 8A) |
 | SM coupling | \|f\_g\| = G\*/(24pi) ~ 0.01 matches phenomenology |
+| Inflation | EH: 3 e-folds; f(R) needed for N~60 |
 | Falsifiable prediction | Exactly 2 relevant dirs in Higgs sector (kill if 3 needed) |
 
 ---
@@ -161,7 +184,8 @@ The UV critical surface of f(R) gravity (n=6) is 3-dimensional. The irrelevant c
 |-------|-------|-------------|
 | `THE_SUBMISSION.pdf` | 8 | RH equivalence via Hadamard cancellation |
 | `MILLENNIUM.pdf` | 23 | All 7 Millennium Problems via 0/0 |
-| `THE_UNIVERSE_FROM_A_FIXED_POINT.md` | ~350 | Big Bang as UV FP; beta functions, CC problem, falsifiability |
+| `THE_UNIVERSE_FROM_A_FIXED_POINT.md` | ~500 | Big Bang as UV FP; sign change, CC problem, falsifiability |
+| `THE_UNIVERSE_FROM_A_FIXED_POINT.tex` | ~450 | LaTeX version for arXiv (hep-th + gr-qc) |
 | `NS_MILLENNIUM_REDUCTION.md` | -- | 3D NS -> Kolmogorov reduction |
 | `YANG_MILLS_MASS_GAP_PROOF.md` | -- | YM mass gap at one-loop |
 | `THE_LAW_OF_SINGULARITIES.md` | -- | Capstone: axioms, 5 mechanisms, classification |
@@ -176,18 +200,16 @@ The UV critical surface of f(R) gravity (n=6) is 3-dimensional. The irrelevant c
     docs/                         # Papers and proofs
       THE_SUBMISSION.md/.pdf      # RH equivalence (8 pages)
       MILLENNIUM.md/.pdf          # All 7 problems via 0/0 (23 pages)
-      THE_UNIVERSE_FROM_A_FIXED_POINT.md  # Cosmology: Big Bang as UV FP (~450 lines)
-      phase_portrait_rg_flow.png  # 5-panel RG flow phase portrait
+      THE_UNIVERSE_FROM_A_FIXED_POINT.md  # Cosmology: Big Bang as UV FP (~500 lines)
+      THE_UNIVERSE_FROM_A_FIXED_POINT.tex # LaTeX for arXiv (hep-th + gr-qc)
       phase_portrait_5points.png  # 5-point phase portrait (NGFP, GFP, separatrix, singular line, spiral)
       cc_problem_phase_portrait.png  # dS to AdS shift with matter
       zero_over_zero_higgs.png    # 0/0 interpretation: flat Higgs FP encodes mass
       assm_flow_complete.png      # Full UV-IR flow (gauge, Yukawa, gravity)
-      NS_MILLENNIUM_REDUCTION.md  # 3D NS reduction to Kolmogorov
-      YANG_MILLS_MASS_GAP_PROOF.md  # YM mass gap proof
-      THE_LAW_OF_SINGULARITIES.md # Capstone theory
-      THE_FINAL_SYNTHESIS.md      # RH chain
-      THE_COMPLETE_ACCOUNT.md     # 48 theorems
-      AUDIT.md                    # Claim-by-claim audit
+      falsification_analysis.png  # 2-relevant-directions prediction vs LHC data
+      inflation_test.png          # Inflation test: EH gives 3 e-folds
+      inflation_test_separatrix.png  # Inflation test: separatrix trajectory
+      sign_change_computation.png # Sign change: AdS to dS at k=0.116 M_Pl
 
     experiments/                  # 100+ experiment scripts
       proof_rh.py                 # RH equivalence computation
@@ -210,15 +232,8 @@ The UV critical surface of f(R) gravity (n=6) is 3-dimensional. The irrelevant c
     fr2flow.py                    # f(R) truncation analysis, convergence tables
     critical_surface.py           # 3D critical surface (eq.11, arXiv:0705.1769)
     cc_problem_rg.py              # CC problem restated in RG language
-    suppression_mechanism.py      # Suppression mechanism analysis
-    fr_beta_functions.py          # f(R) beta function exploration
-    fr_beta_v2.py                 # f(R) beta function v2
-    write_fr_beta.py              # Generator script for f(R) analysis
-
-    docs/
-      phase_portrait_5points.png  # 5-point phase portrait (NGFP, GFP, separatrix, singular line, spiral)
-      cc_problem_phase_portrait.png  # dS to AdS shift with matter
-      zero_over_zero_higgs.png    # 0/0 interpretation: flat Higgs FP encodes mass
+    sign_change.py                # Sign change computation: AdS to dS
+    inflation_test.py             # Inflation test: slow-roll parameters
 
     tests/
       test_solvable_theorems.py   # 215 regression tests (all passing)
@@ -250,8 +265,8 @@ The UV critical surface of f(R) gravity (n=6) is 3-dimensional. The irrelevant c
     # Run f(R) convergence analysis
     python fr2flow.py
 
-    # Run CC problem restated
-    python cc_problem_rg.py
+    # Run sign change computation
+    python sign_change.py
 
 ---
 
@@ -301,6 +316,14 @@ The UV critical surface of f(R) gravity (n=6) is 3-dimensional. The irrelevant c
 38. Eichhorn, A. & Schiffer, M. (2019). The weak gravity bound in asymptotically safe gravity. Phys. Lett. B 793, 383-389. arXiv:1905.03655.
 39. Pastor-Gutierrez, A., Pawlowski, J.M. & Reichert, M. (2023). The asymptotically safe Standard Model. SciPost Phys. 15, 105. arXiv:2207.09817.
 40. Giacometti, G. et al. (2026). QG contributions to gauge/Yukawa in proper time flow. arXiv:2604.03033.
+41. Bonanno, A. & Reuter, M. (2002). RG-improved cosmology. Phys. Rev. D 65, 043508. arXiv:hep-th/0106112.
+42. Bonanno, A. & Platania, A. (2015). Asymptotically safe inflation. Phys. Lett. B 750, 638. arXiv:1507.03375.
+43. Eichhorn, A. & Pauly, M. (2021). Constraining power of AS for scalar fields. Phys. Rev. D 103, 026006. arXiv:2009.13543.
+44. Shaposhnikov, M. & Wetterich, C. (2010). Higgs mass prediction from AS. Phys. Lett. B 683, 196. arXiv:0912.0208.
+45. Pawlowski, J.M. et al. (2019). Higgs potential from gravity FP. Phys. Rev. D 99, 086010. arXiv:1811.11706.
+46. Falls, K. (2016). Lambda=0 from UV FP. JHEP 01, 069. arXiv:1408.0276.
+47. Platania, A. (2020). RG flows to cosmology. Front. Phys. 8, 188.
+48. Silva, A. (2024). Inflaton from NGFP. Phys. Lett. B. arXiv:2406.10170.
 
 ---
 
