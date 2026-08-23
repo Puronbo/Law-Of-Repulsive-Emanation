@@ -4,7 +4,7 @@
 
 Two proved results (Navier-Stokes 1D global regularity, Yang-Mills mass gap at one-loop), one equivalence (Riemann Hypothesis), one framework (all seven Millennium Prize Problems analyzed via removable singularities), and 300+ numerical experiments -- by Michael Grafiel S Puno.
 
-**New (Aug 2026):** "The Universe from a Fixed Point" -- the Big Bang as the UV fixed point of quantum gravity. Verified Litim beta functions, RG flow, f(R) critical surface, CC problem restated in RG language. **Matter-coupled FP:** SM shifts the FP from de Sitter to anti-de Sitter (mu*_h = -0.656). The ASSM (Pastor-Gutierrez et al 2023) confirms a flat Higgs potential at the FP with two relevant directions -- the 0/0 principle realized in particle physics.
+**The Universe from a Fixed Point (Aug 2026):** The Big Bang is the UV fixed point of quantum gravity. The Higgs potential at the FP is flat (u\* = 0) -- an indeterminate form. Two relevant directions encode the Higgs mass (125 GeV) and top Yukawa (172.5 GeV). Matter shifts the FP from de Sitter to anti-de Sitter (mu\*\_h = -0.656). The cosmological constant sign change is qualitatively achieved by the full gravity-matter flow. **The 0/0 principle is realized in particle physics.**
 
 ---
 
@@ -144,13 +144,14 @@ The UV critical surface of f(R) gravity (n=6) is 3-dimensional. The irrelevant c
 | Twin prime | pi2(10^6)=8169, reciprocal sum diverges |
 | Collatz | 10000/10000 stopping times finite |
 | Legendre | 1000/1000 intervals contain primes |
-| UV fixed point | G*=0.7012, Lambda*=0.1715 (EH); Lambda*G*=0.12 |
-| f(R) stability | Lambda*G* = 0.11-0.12 across n=1..8 |
-| CC gap | G~*xL~* = 0.12 vs G_obsxL_obs = 2.77e-122 |
-| Matter FP (Dona) | G*=0.57, Lambda*=-0.35 (AdS) with SM matter |
-| ASSM FP | g*_h=0.147, mu*_h=-0.656; Gaussian matter; flat Higgs |
-| 0/0 interpretation | u*=0 at FP; 2 relevant directions encode Higgs mass |
-| SM coupling | \|f_g\| = G*/(24pi) ~ 0.01 matches phenomenology |
+| UV fixed point | G\*=0.7012, Lambda\*=0.1715 (EH); Lambda\*G\*=0.12 |
+| f(R) stability | Lambda\*G\* = 0.11-0.12 across n=1..8 |
+| CC gap | G\~\*xL\~\* = 0.12 vs G\_obsxL\_obs = 2.77e-122 |
+| Matter FP (Dona) | G\*=0.57, Lambda\*=-0.35 (AdS) with SM matter |
+| ASSM FP | g\*\_h=0.147, mu\*\_h=-0.656; Gaussian matter; flat Higgs |
+| 0/0 interpretation | u\*=0 at FP; 2 relevant directions encode Higgs mass |
+| SM coupling | \|f\_g\| = G\*/(24pi) ~ 0.01 matches phenomenology |
+| Falsifiable prediction | Exactly 2 relevant dirs in Higgs sector (kill if 3 needed) |
 
 ---
 
@@ -175,8 +176,12 @@ The UV critical surface of f(R) gravity (n=6) is 3-dimensional. The irrelevant c
     docs/                         # Papers and proofs
       THE_SUBMISSION.md/.pdf      # RH equivalence (8 pages)
       MILLENNIUM.md/.pdf          # All 7 problems via 0/0 (23 pages)
-      THE_UNIVERSE_FROM_A_FIXED_POINT.md  # Cosmology: Big Bang as UV FP
+      THE_UNIVERSE_FROM_A_FIXED_POINT.md  # Cosmology: Big Bang as UV FP (~450 lines)
       phase_portrait_rg_flow.png  # 5-panel RG flow phase portrait
+      phase_portrait_5points.png  # 5-point phase portrait (NGFP, GFP, separatrix, singular line, spiral)
+      cc_problem_phase_portrait.png  # dS to AdS shift with matter
+      zero_over_zero_higgs.png    # 0/0 interpretation: flat Higgs FP encodes mass
+      assm_flow_complete.png      # Full UV-IR flow (gauge, Yukawa, gravity)
       NS_MILLENNIUM_REDUCTION.md  # 3D NS reduction to Kolmogorov
       YANG_MILLS_MASS_GAP_PROOF.md  # YM mass gap proof
       THE_LAW_OF_SINGULARITIES.md # Capstone theory
