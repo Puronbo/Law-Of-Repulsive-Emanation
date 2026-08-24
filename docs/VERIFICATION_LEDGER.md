@@ -23,6 +23,8 @@ audit finding.
 | Step 2b: N(u) = int u.(u.grad)u dx = 0 (antisymmetry) | w1_final_verify.py (spectral) | 5 seeds, max\|N\| = 1.4e-11, relative to E^2: 10^{-15} | CONCRETE |
 | Step 1: C_GN = 3.06 (GN constant, O(1)) | w1_final_verify.py | 40 configs: ABC/TG/Beltrami/random, spectral derivatives, C_GN in [0.08, 3.06] | CONCRETE |
 | Step 1: C_Mill = 5.90 (Millennium constant, O(1)) | w1_final_verify.py | 40 configs, same batch, C_Mill in [0.67, 5.90] | CONCRETE |
+| GN(1/4,1/4) scaling-correct: C_GN=2.09 | gn14_comprehensive.py + scaling_test.py | 209 configs: k_max 2-30, n_modes 5-200, ABC/TG/single-mode. Ratio spread=1.00x under scaling. | CONCRETE |
+| GN(1/4,1/4) + Prodi-Serrin => global regularity | gn14_comprehensive.py (analytic argument) | int_0^T \|\|u\|\|_inf^2 dt <= C^2 * E_0 * T^{1/2} < inf => u in L^2(L^inf) => Prodi-Serrin satisfied | CONCRETE (framework) |
 
 ## Corrections shipped this cycle
 
