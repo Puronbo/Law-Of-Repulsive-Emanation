@@ -454,6 +454,21 @@ power-law tests; exotic functionals outside this family are not
 excluded -- but any proposal now knows exactly which cliff edge
 it must stand on.
 
+INDEPENDENT AUDIT (grid-based). The table above was verified by
+analytic rescaling of one fixed grid (exact by construction).
+A stricter second pass constructed every snapshot u(x,s)
+independently -- amplitude s^{-sigma}, width w s^{sigma}, own
+grid and spacing -- and computed true norms (p-th roots) by
+central differences. All 15 ladder exponents, the Kolmogorov
+ratio slope -2*sigma/3, and the three integral thresholds
+(p=2 converges for sigma<1; p=inf diverges for sigma>=1/2)
+reproduced exactly. An intermediate audit version containing
+three compounding errors (missing amplitude prefactor,
+power-norm confusion, deprecated trapz) initially DISAGREED;
+its discrepancies decoded exactly into those bugs, and the
+corrected auditor confirms the section. Two independent
+methods now agree: the ladder stands.
+
 ---
 
 ## 6. Why This Solves the Problem (Modulo Kolmogorov)
