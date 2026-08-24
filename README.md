@@ -208,6 +208,16 @@ The RG flow from the UV FP should produce slow-roll inflation (Bonanno & Reuter 
 4. **Critical Phenomenon** -- Phase transitions at 0/0 points
 5. **Conservation** -- 0/0 enforces conservation laws
 
+### Three Geometric Operations (New)
+
+| Operation | Description | NS | YM | RH |
+|-----------|-------------|-----|-----|-----|
+| **Frozen Sphere** | Heat inside, frozen outside (Stefan problem) | Energy freezes singularity at T* | Mass gap freezes Gribov horizon at p=0 | Removable value |chi(rho)| = 1 freezes 0/0 |
+| **Self-Removing Boundary** | 0 < x <= 1 (approaches 0, never stands on it) | Z(t) decreases, boundary recedes | D(0) = 1/Delta^2 finite | |chi(sigma+it)| -> 1 as sigma -> 0.5 |
+| **Folding** | Shape folded upon itself (quotient by symmetry) | dE/dt = -2nu*Z (fold growth <-> dissipation) | D(p) = D(-p) (fold p <-> -p) | zeta(s) = chi(s)*zeta(1-s) (fold s <-> 1-s) |
+
+**Unified principle:** A boundary exists (singularity, divergence, 0/0). The boundary removes itself (bounded, finite, removable). The fold symmetry ensures consistency. This is the L.O.R.E. mechanism: 0/0 -> removable -> theorem.
+
 ---
 
 ## Key Results
@@ -295,6 +305,7 @@ The RG flow from the UV FP should produce slow-roll inflation (Bonanno & Reuter 
       ym_allloop_ds.py            # YM all-loop DS with dressed vertices
       ym_constructive.py          # YM constructive proof (OS axioms)
       rh_conductor_ratio.py       # RH conductor ratio |chi(rho)| at zeros
+      boundary_removal.py         # Frozen sphere + self-removing boundary + folding
       bsd_full_formula.py         # BSD verification
       hodge_millennium.py         # Hodge verification
       extreme_amplitude.py        # 168-IC stress test
