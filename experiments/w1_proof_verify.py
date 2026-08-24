@@ -64,7 +64,9 @@ def random_divfree(n, n_modes=30, scale=1.0, seed=42):
     ax = np.linspace(0, 2*np.pi, n, endpoint=False)
     h = ax[1] - ax[0]
     X, Y, Z = np.meshgrid(ax, ax, ax, indexing="ij")
-    ux = uy = uz = np.zeros((n,n,n))
+    ux = np.zeros((n,n,n))
+    uy = np.zeros((n,n,n))
+    uz = np.zeros((n,n,n))
     for _ in range(n_modes):
         kx, ky, kz = rng.integers(1, 8, size=3)
         phase = rng.uniform(0, 2*np.pi)

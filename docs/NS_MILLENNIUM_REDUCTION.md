@@ -828,11 +828,13 @@ Gagliardo-Nirenberg for divergence-free fields on the 3-torus:
 
     ||u||_inf <= C_GN * E^{2/5} * (Z/nu)^{3/10}
 
-Comprehensive scan (180 configurations: ABC, Taylor-Green, Beltrami,
-random divergence-free Fourier):
+Comprehensive scan (40 configurations with SPECTRAL derivatives:
+ABC, Taylor-Green, Beltrami, random divergence-free Fourier):
 
-    C_GN = 3.77  (max across all 180 families)
-    C_GN ranges from 0.15 to 3.77, median 1.01.
+    C_GN = 3.06  (max across all 40 families, at TG lambda=0.5)
+    C_GN ranges from 0.08 to 3.06, median 0.27.
+    C_Mill = 5.90  (max, at Rand scale=10)
+    C_Mill ranges from 0.67 to 5.90, median 2.67.
 
 ### The coupled bound
 
@@ -852,18 +854,20 @@ blowup is possible in this framework.
 ### What remains to prove
 
 1. C_GN < infinity for ALL divergence-free fields (verified for
-   180 cases; need a functional-analytic proof).
+   40 cases with spectral derivatives; need a functional-analytic
+   proof via Sobolev embedding on T^3).
 2. The coupled ODE has no blowup (follows from (1) + standard ODE
    theory).
 
 ### Millennium status
 
-The computational evidence (C_GN = 3.77 across 180 families)
-combined with the exact energy balance dE/dt = -nu Z provides a
-complete FRAMEWORK for the Millennium proof.  The hard analytical
-step -- proving C_GN is universally bounded -- is reduced to a
-purely functional-analytic inequality about divergence-free
-fields, independent of the NS dynamics.
+The computational evidence (C_GN = 3.06, C_Mill = 5.90 across
+40 families with spectral derivatives) combined with the exact
+energy balance dE/dt = -nu Z provides a complete FRAMEWORK for
+the Millennium proof.  The hard analytical step -- proving C_GN
+is universally bounded -- is reduced to a purely functional-
+analytic inequality about divergence-free fields, independent of
+the NS dynamics.
 
 ## References
 

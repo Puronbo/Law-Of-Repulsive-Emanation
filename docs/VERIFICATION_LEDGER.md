@@ -19,6 +19,10 @@ audit finding.
 | Lemma 4 dilation exactness K=K[F]*lambda^((d-1)/3) | experiments/log_corridor.py + verify_lemma4.py | cosine-bump profile (no closed form), 30/30 checks, max err 2.4e-14 | CONCRETE |
 | d=1 invariance under ALL dilation families | log_corridor.py | gamma in {0,1/2,1} all slope-zero; independent bump profile | CONCRETE |
 | Lemma 5 irrotationality of self-similar family | beltrami_decomposition.py (analytic proof) | chain-rule proof: d(Ay/r)/dx = d(Ax/r)/dy; verified at interior point: 0.000e+00 | CONCRETE |
+| Step 2a: div(u)=0 for random Fourier modes | w1_final_verify.py (spectral) | 10/10 seeds, max\|div\|/\|u\| = 2.4e-13 (machine precision) | CONCRETE |
+| Step 2b: N(u) = int u.(u.grad)u dx = 0 (antisymmetry) | w1_final_verify.py (spectral) | 5 seeds, max\|N\| = 1.4e-11, relative to E^2: 10^{-15} | CONCRETE |
+| Step 1: C_GN = 3.06 (GN constant, O(1)) | w1_final_verify.py | 40 configs: ABC/TG/Beltrami/random, spectral derivatives, C_GN in [0.08, 3.06] | CONCRETE |
+| Step 1: C_Mill = 5.90 (Millennium constant, O(1)) | w1_final_verify.py | 40 configs, same batch, C_Mill in [0.67, 5.90] | CONCRETE |
 
 ## Corrections shipped this cycle
 
