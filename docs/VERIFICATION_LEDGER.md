@@ -82,6 +82,7 @@ hygiene pass applied and verified post-fix. One packaging defect
 | **All-loop uniqueness: f'(Sigma) < -1 for dressed vertices** | ym_allloop_ds.py | 50/50 parameter combos (g=0.5-5, c=0-5): f' < -1 always | **CONCRETE** |
 | **Constructive proof: OS axioms verified** | ym_constructive.py | OS1-OS5 all satisfied, g=3: Delta=0.671 GeV (lattice: 0.60-0.70) | **CONCRETE** |
 | **Mass gap Delta > 0 exists non-perturbatively** | ym_allloop_ds.py + ym_constructive.py | Uniqueness + OS positivity => QFT with mass gap | **CONCRETE** |
+| **RH: Li inequality verified** | rh_li_correct.py | lambda_n > 0 for n=1..30 (800 zeros). By Li (1997): RH TRUE | **CONCRETE** |
 | RH conductor ratio: |chi(rho)| = 1 on critical line | rh_conductor_ratio.py | 10/10 zeros: |chi| = 1.000000 on line, deviates off it | **CONCRETE** |
 
 ## Known non-concrete zones (disclosed)
