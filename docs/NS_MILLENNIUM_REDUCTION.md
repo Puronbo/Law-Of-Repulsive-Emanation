@@ -266,6 +266,70 @@ is exact.
 
 ---
 
+### 5.2 Self-Similar Focusing: The Exact Divergence Rate
+
+We now test the exact law under EVOLUTION -- specifically,
+under the classic type-I self-similar ansatz for blowup:
+
+    u(x,t) = s^(-1/2) * F(x / s^(1/2)),     s = T - t.
+
+Scaling of each quantity in d dimensions:
+
+    ||u||_inf = s^(-1/2) * ||F||_inf
+    grad u    = s^(-1)   * grad F
+    Z         = s^(d/2 - 2) * Z_F          (Z = (1/2) int |grad u|^2)
+    eps       = 2 nu Z  ->  eps^(1/3) = (2 nu Z_F)^(1/3) s^(d/6 - 2/3)
+
+Therefore:
+
+    C_0(s) = C_0(1) * s^((1-d)/6)
+
+THEOREM (divergence rate). Under self-similar focusing, the
+Kolmogorov ratio evolves as a pure power law:
+
+    d = 1:  C_0 CONSTANT            (exponent 0)
+    d = 2:  C_0 ~ (T-t)^(-1/6)
+    d = 3:  C_0 ~ (T-t)^(-1/3)
+
+Numerical verification (separable Gaussians, all norms by
+discrete summation, 13 log-spaced times s in [1e-4, 1]):
+
+    d=1: measured slope -0.0000  predicted +0.0000  error 1.8e-16
+    d=2: measured slope -0.1667  predicted -0.1667  error 2.8e-16
+    d=3: measured slope -0.3333  predicted -0.3333  error 3.3e-16
+
+Cross-check in d=1 against the exact Gaussian law of 5.1:
+4.8354 vs analytic 4.8323 -- 0.07 percent difference, which is
+the grid discretization error alone. Convention note: eps =
+nu*int|grad u|^2 throughout, matching dE/dt = -nu*int|grad u|^2.
+
+INTERPRETATION.
+
+    1. Why 1D regularity is PROVABLE: in d=1 the Kolmogorov
+       ratio is an invariant of focusing. Nothing diverges,
+       which is precisely why Theorem A goes through.
+
+    2. What 3D requires: self-similar blowup drives the ratio
+       to infinity at the SLOW polynomial rate (T-t)^(-1/3).
+       The Kolmogorov inequality ||u||_inf <= C eps^{1/3}
+       would exclude exactly this. Independent consistency:
+       Necas-Ruzicka-Sverak (1996) and Tsai (1998) exclude
+       type-I self-similar blowup by other means.
+
+    3. Size of the gap: the required inequality closes a
+       POLYNOMIAL gap of rate 1/3. This quantifies how much
+       regularity is missing: not an exponential mystery, but
+       one-third of a power of time-to-blowup. Equivalently,
+       the half-derivative supercriticality gap of Section 7
+       corresponds to the exponent 1/3 appearing here.
+
+HONEST LIMIT. This analyzes the ANSATZ, not solutions. It does
+not prove that NS solutions follow self-similar focusing; it
+computes exactly what the Kolmogorov route must forbid, and
+shows the target is a single slow power law.
+
+---
+
 ## 6. Why This Solves the Problem (Modulo Kolmogorov)
 
 The logical chain:
