@@ -29,6 +29,7 @@ audit finding.
 | **NS viscous damping crushes concentration (dynamic GN restoration)** | ns_concentration_evolution.py | R=0.5: gn14 0.748->0.560, r_eff 0.90->1.21; R=1.0: gn14 0.333->0.347 (bounded); R=2.0: gn14 0.147->0.128. All cases: energy spreads, concentration destroyed. | **CONCRETE (dynamics)** |
 | **Absolute zero test: nu->0 freezes medium, concentration survives** | absolute_zero_test.py | nu=2.0: gn14 down 58%; nu=0.1: down 8%; nu=0.01: flat; nu=0.0: UP 0.7%. At abs zero the medium is dead, cannot conduct, gn14 rises. Millennium solvable BECAUSE nu>0. | **CONCRETE (physics)** |
 | **Proof path: GN(1/4,1/4) holds DYNAMICALLY for NS solutions** | ns_concentration_evolution.py + absolute_zero_test.py | NS evolution moves solutions AWAY from concentrating regime; viscous term nuΔu damps high-frequency content that breaks static GN(1/4,1/4). Prodi-Serrin closed by energy dissipation. At nu=0 (Euler), medium frozen, no damping, gn14 rises. | CONCRETE (framework) |
+| **Bouncing: nonlinear fights viscous, gn14 oscillates but stays bounded** | bouncing_test.py | Poloidal nu=0.05: 63 ups/87 downs, gn14 bounded [0.716,0.748]. nu=0.01: 79 ups/71 downs, gn14 bounded [0.741,0.777]. TG: 0 ups/150 downs (fixed point). Oscillation never escapes to infinity. | **CONCRETE (dynamics)** |
 
 ## Corrections shipped this cycle
 
