@@ -4,7 +4,7 @@
 
 **The Law of Perpetual Motion** -- *Time is the fundamental flow that carries everything forward. There is no state of zero motion. Every system moves forever.*
 
-Two proved results (Navier-Stokes 1D global regularity, Yang-Mills mass gap at one-loop), one equivalence (Riemann Hypothesis), one framework (all seven Millennium Prize Problems analyzed via removable singularities), and 300+ numerical experiments -- by Michael Grafiel S Puno.
+One proved theorem (Navier-Stokes 1D global regularity), one equivalence (Riemann Hypothesis <=> xi'/xi positivity; hard direction open), one one-loop mechanism (Yang-Mills mass gap at one loop; constructive proof open), exact self-similar Kolmogorov laws, all seven Millennium Prize Problems analyzed via removable singularities with honest open/closed labels, and 300+ numerical experiments -- by Michael Grafiel S Puno.
 
 **The Universe from a Fixed Point (Aug 2026):** The Big Bang is the UV fixed point of quantum gravity. The Higgs potential at the FP is flat (u\* = 0) -- an indeterminate form. Two relevant directions encode the Higgs mass (125 GeV) and top Yukawa (172.5 GeV). Matter shifts the FP from de Sitter to anti-de Sitter (mu\*\_h = -0.656). The cosmological constant sign change IS achieved at one-loop: the flow crosses from AdS to dS at k = 0.116 M\_Pl. **The 0/0 principle is realized in particle physics.**
 
@@ -239,8 +239,8 @@ The RG flow from the UV FP should produce slow-roll inflation (Bonanno & Reuter 
 
 | Paper | Pages | Description |
 |-------|-------|-------------|
-| `THE_SUBMISSION.pdf` | 8 | RH equivalence via Hadamard cancellation |
-| `MILLENNIUM.pdf` | 23 | All 7 Millennium Problems via 0/0 |
+| `THE_SUBMISSION.pdf` | 8 | RH equivalence via Hadamard cancellation (LEGACY -- moved to `docs/archive_legacy/`) |
+| `MILLENNIUM.pdf` | 23 | All 7 Millennium Problems via 0/0 (LEGACY -- moved to `docs/archive_legacy/`) |
 | `THE_UNIVERSE_FROM_A_FIXED_POINT.md` | ~500 | Big Bang as UV FP; sign change, CC problem, falsifiability |
 | `THE_UNIVERSE_FROM_A_FIXED_POINT.tex` | ~450 | LaTeX version for arXiv (hep-th + gr-qc) |
 | `NS_MILLENNIUM_REDUCTION.md` | -- | 3D NS -> Kolmogorov reduction |
@@ -256,8 +256,10 @@ The RG flow from the UV FP should produce slow-roll inflation (Bonanno & Reuter 
 ## Repository Map
 
     docs/                         # Papers and proofs
-      THE_SUBMISSION.md/.pdf      # RH equivalence (8 pages)
-      MILLENNIUM.md/.pdf          # All 7 problems via 0/0 (23 pages)
+      EXACT_KOLMOGOROV_RATIOS.md/.pdf  # Exact spike law + self-similar rates (4 pp)
+      THE_SUBMISSION.md            # RH equivalence source (PDF archived)
+      MILLENNIUM.md                # All 7 problems via 0/0 (PDF archived)
+      archive_legacy/              # Pre-audit compiled PDFs -- see DISCLAIMER.md
       THE_UNIVERSE_FROM_A_FIXED_POINT.md  # Cosmology: Big Bang as UV FP (~500 lines)
       THE_UNIVERSE_FROM_A_FIXED_POINT.tex # LaTeX for arXiv (hep-th + gr-qc)
       phase_portrait_5points.png  # 5-point phase portrait (NGFP, GFP, separatrix, singular line, spiral)
