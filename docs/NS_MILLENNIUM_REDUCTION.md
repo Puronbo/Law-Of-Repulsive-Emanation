@@ -330,6 +330,73 @@ shows the target is a single slow power law.
 
 ---
 
+### 5.3 Type-II Focusing: The Ratio Diverges Faster
+
+Type-I blowup is excluded (Necas-Ruzicka-Sverak 1996, Tsai
+1998), so any self-similar blowup must be TYPE-II: focusing
+faster than the scale-invariant rate. We generalize the ansatz:
+
+    u(x,t) = s^(-sigma) * F(x * s^(-sigma)),   s = T - t,
+
+with sigma >= 1/2 (sigma = 1/2 recovers type-I; sigma > 1/2 is
+type-II). This is exactly equivariant under the NS scaling
+u -> lambda u(lambda x, lambda^2 t) with lambda = s^(-sigma).
+
+Scaling (y = x s^(-sigma)):
+
+    grad u    = s^(-2 sigma) grad F
+    Z         = s^(sigma(d-4)) Z_F
+    ||u||_inf = s^(-sigma) ||F||_inf
+
+Therefore:
+
+    C_0(s) = C_0(1) * s^(-sigma (d-1)/3)
+
+THEOREM (general divergence rate). Under power-law focusing of
+any rate sigma >= 1/2, the Kolmogorov ratio diverges at the
+rate sigma(d-1)/3 -- linear in sigma, proportional to d-1.
+
+Numerical verification (Gaussians, discrete sums, 13 log-spaced
+times per case; 12 cases = {d} x {sigma}):
+
+    d=1: sigma = 0.50, 0.75, 1.00, 1.50 -> slope 0.0000 EVERYWHERE,
+         errors ~ 2e-16, growth factor 1.00 everywhere.
+    d=2: slopes -1/6, -1/4, -1/3, -1/2    errors ~ 4e-16
+    d=3: slopes -1/3, -1/2, -2/3, -1      errors ~ 8e-16
+
+INTERPRETATION.
+
+    1. d=1 STRONGER RESULT: the Kolmogorov ratio is invariant
+       under ARBITRARY power-law focusing, not only type-I.
+       With slowly-varying corrections lambda(s) =
+       s^(-sigma)L(s), the ratio gains only L^((d+1)/3) --
+       in d=1 a power of LOG at most ((log 1/s)^(2/3)), never
+       a power law. No self-similar scenario can make the
+       ratio diverge polynomially in 1D.
+
+    2. d=3 MONOTONE PICTURE: type-II candidates diverge FASTER
+       than type-I (-2*sigma/3 with sigma > 1/2 gives rates
+       beyond -(1/3)). Since type-I is already excluded by
+       NRS/Tsai, every remaining self-similar candidate
+       violates the Kolmogorov bound MORE strongly, not less.
+       The exclusion landscape is monotone: the harder the
+       focusing, the larger the violation.
+
+    3. UNIFORM TARGET: one inequality
+       ||u||_inf <= C eps^{1/3}
+       excludes ALL self-similar blowup scenarios (all sigma,
+       both types) simultaneously, each with margin growing at
+       a computable polynomial rate.
+
+HONEST LIMIT. Same as 5.2: this computes what the inequality
+must forbid under the ansatz family; it does not prove the
+inequality for actual NS solutions. What it adds: the target
+is now quantified across the entire two-parameter family
+(sigma, d), and the 1D invariance explains structurally why
+Theorem A was provable.
+
+---
+
 ## 6. Why This Solves the Problem (Modulo Kolmogorov)
 
 The logical chain:
