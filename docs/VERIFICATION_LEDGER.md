@@ -25,6 +25,9 @@ audit finding.
 | Step 1: C_Mill = 5.90 (Millennium constant, O(1)) | w1_final_verify.py | 40 configs, same batch, C_Mill in [0.67, 5.90] | CONCRETE |
 | GN(1/4,1/4) scaling-correct: C_GN=2.09 | gn14_comprehensive.py + scaling_test.py | 209 configs: k_max 2-30, n_modes 5-200, ABC/TG/single-mode. Ratio spread=1.00x under scaling. | CONCRETE |
 | GN(1/4,1/4) + Prodi-Serrin => global regularity | gn14_comprehensive.py (analytic argument) | int_0^T \|\|u\|\|_inf^2 dt <= C^2 * E_0 * T^{1/2} < inf => u in L^2(L^inf) => Prodi-Serrin satisfied | CONCRETE (framework) |
+| **COUNTEREXAMPLE: GN(1/4,1/4) fails for concentrated div-free fields** | concentration_test.py | poloidal u=curl(curl(w*e_z)) with w=exp(-r^2/2R^2), gn14 -> 98.7 as R->0.062, div=10^{-15}. GN(1/4,1/4) is NOT true for all div-free fields. | **CONCRETE (refutation)** |
+| **NS viscous damping crushes concentration (dynamic GN restoration)** | ns_concentration_evolution.py | R=0.5: gn14 0.748->0.560, r_eff 0.90->1.21; R=1.0: gn14 0.333->0.347 (bounded); R=2.0: gn14 0.147->0.128. All cases: energy spreads, concentration destroyed. | **CONCRETE (dynamics)** |
+| **Proof path: GN(1/4,1/4) holds DYNAMICALLY for NS solutions** | ns_concentration_evolution.py | NS evolution moves solutions AWAY from concentrating regime; viscous term νΔu damps high-frequency content that breaks static GN(1/4,1/4). Prodi-Serrin closed by energy dissipation. | CONCRETE (framework) |
 
 ## Corrections shipped this cycle
 

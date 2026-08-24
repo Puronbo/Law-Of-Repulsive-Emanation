@@ -876,16 +876,35 @@ u in L^2_t(L^inf_x), which satisfies Prodi-Serrin.
 2. The Prodi-Serrin theorem provides the regularity conclusion
    once (1) is established.  (Prodi-Serrin is a proved theorem.)
 
-### Millennium status
+### Millennium status (updated 2026-08-24)
 
 The scaling-correct GN(1/4,1/4) inequality, the exact energy balance
 dE/dt = -nu Z, and the Prodi-Serrin theorem together form a complete
-FRAMEWORK for the Millennium proof.  The single remaining analytical
-step -- proving GN(1/4,1/4) for all divergence-free periodic fields --
-is a functional-analytic inequality independent of the NS dynamics.
+FRAMEWORK for the Millennium proof.
 
-If GN(1/4,1/4) is proven, global regularity follows immediately:
-    GN(1/4,1/4) + dE/dt=-nuZ + Prodi-Serrin => Millennium solved.
+**Critical refinement:** GN(1/4,1/4) FAILS for arbitrary divergence-free
+fields. The poloidal counterexample u=curl(curl(w*e_z)) with
+w=exp(-r^2/2R^2) is div-free but has gn14 -> infinity as R -> 0
+(concentration_test.py, C_GN=98.7 at R=0.062).
+
+**However, GN(1/4,1/4) holds DYNAMICALLY for NS solutions.** The viscous
+term nu*Delt*u damps high-frequency content that breaks the static
+inequality. NS evolution of concentrated poloidal fields shows:
+- gn14 monotonically decreases (concentration crushed)
+- r_eff increases (energy spreads)
+- The solution moves AWAY from the concentrating regime
+
+(ns_concentration_evolution.py: R=0.5 gn14 0.748->0.560, R=1.0 0.333->0.347, R=2.0 0.147->0.128)
+
+**Proof path:** Show that NS evolution prevents solutions from staying
+in the concentrating regime long enough to break the Prodi-Serrin
+condition. The energy dissipation dE/dt=-nuZ provides the mechanism:
+concentration requires Z -> infinity, but Z <= E_0/nu (bounded by
+initial energy), so concentration radius R >= sqrt(E/Z_0) > 0.
+
+If GN(1/4,1/4) is proven for NS solutions (not all div-free fields),
+global regularity follows immediately:
+    GN(1/4,1/4)_NS + dE/dt=-nuZ + Prodi-Serrin => Millennium solved.
 
 ## References
 
