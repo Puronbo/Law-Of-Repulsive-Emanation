@@ -227,6 +227,45 @@ Across all initial conditions tested (angles 0 to 3.6 degrees):
 **The remaining 118 orders must come from beyond-EH physics.**
 **Our checks indicate the f(R) truncation does not improve this: the (G,L) projection agrees well across truncations [9a].**
 
+#### Two-loop / truncation-variation estimate
+
+Because the EH fRG beta functions are one-loop exact, genuine two-loop physics can enter only by deforming the flow. We quantify this in two ways (experiments/two_loop_cc.py):
+
+    Part A -- multiplicative flow distortions:
+      beta -> (1+dG)*beta_G, (1+dlam)*beta_L with dG, dlam in [-0.5, +0.5].
+      These preserve the FP location exactly (zeros unchanged) and
+      test how suppression responds to threshold-function distortion.
+      25 cases: S ranges from 3.2x to 1194.9x.
+
+    Part B -- additive two-loop polynomials:
+      beta_L += eps_g2 * g^2 + eps_glam * g*lam,
+      eps in {+-0.1, +-1, +-10} (natural one-loop normalization is
+      1/(24 pi) ~ 0.013, so this spans three orders on both sides).
+      These genuinely move the FP (G* from 0.227 to 1.108) and at
+      eps = -1, -10 destroy asymptotic safety entirely (no FP).
+      Surviving cases: S ranges from 1.8x to 157.6x.
+
+Combined result over all 37 variants:
+
+    Best suppression anywhere:        1194.9x  = 10^3.08
+    Worst:                            1.8x
+    Required:                         10^121
+    GAP REMAINING after best case:    >= 10^118
+
+Two observations sharpen the conclusion:
+
+    1. Large suppression (500-1200x) appears only for fine-tuned
+       sign combinations of the distortions (e.g. dG=+0.25,
+       dlam=-0.25), never robustly -- consistent with suppression
+       being a measure-zero feature of special trajectories.
+
+    2. The two-loop terms that would most plausibly enhance
+       suppression (negative eps*g^2) are precisely the ones that
+       DESTROY the fixed point. Asymptotic safety and enhanced
+       perturbative suppression are anti-correlated in this scan.
+
+No perturbative two-loop deformation closes the gap. This makes quantitative the statement that the remaining ~118 orders require non-perturbative mechanisms, or that the AdS->dS sign-change route remains qualitative-only.
+
 ### 6.3b. The critical surface and trajectory selection
 
 The f(R) truncation (n=6) has 7 couplings but only 3 relevant directions at the FP. This means the UV critical surface is 3-dimensional: any trajectory attracted to the FP in the UV must lie on a 3D subspace of the full 7D coupling space.
@@ -452,7 +491,7 @@ If the product G~* x L~* changes dramatically with truncation order (beyond the 
 
 If the f(R) truncation (or any polynomial truncation) achieved more than 3 orders of suppression for G~ x L~, the truncation-independence claim would fail.
 
-**Current status:** NOT falsified. Codello et al explicitly state "the projection of the flow in the Λ̃-G̃ plane agrees well with the case n=1." The product G~* x L~* = 0.12 is independent of truncation order. The (G,L) sector appears effectively two-dimensional in every polynomial f(R) truncation tested (up to n = 8).
+**Current status:** NOT falsified. Codello et al explicitly state "the projection of the flow in the Λ̃-G̃ plane agrees well with the case n=1." The product G~* x L~* = 0.12 is independent of truncation order. The (G,L) sector appears effectively two-dimensional in every polynomial f(R) truncation tested (up to n = 8). The two-loop scan (section 6.3a2) extends this: across 37 flow deformations -- multiplicative shifts to +/-50% and two-loop polynomials spanning three orders of magnitude -- the best suppression achieved is 1195x, and the deformations that would most plausibly enhance it destroy the fixed point instead.
 
 ### 8.4. Falsified by: no trajectory to low energy
 
