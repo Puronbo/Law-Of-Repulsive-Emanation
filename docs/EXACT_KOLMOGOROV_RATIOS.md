@@ -64,10 +64,12 @@ blowup scenario must resemble. Three results emerge:
        millennium problem.
 
     R4 (visibility ladder). Vorticity norms scale as
-       ||omega||_p ~ s^{-sigma(2p-d)/p}: every time-integrated
-       finite-p diagnostic is blind to type-II focusing, so only
-       sup-norm (Beale-Kato-Majda type) criteria can certify
-       regularity. The missing invariant must be pointwise.
+       ||omega||_p ~ s^{-sigma(2p-d)/p}: time-integrated finite-p
+       diagnostics are blind within the band p < sigma*d/(2*sigma-1)
+       (all p at sigma = 1/2), a band that always contains
+       enstrophy exactly up to Leray's sharp bound. Only sup-norm
+       (Beale-Kato-Majda type) criteria detect throughout; the
+       missing invariant must be pointwise.
 
 Everything here is elementary dimensional analysis elevated by exact
 constants and machine-precision verification; we claim novelty only
@@ -278,6 +280,98 @@ What the computation buys: the millennium gap is now quantified as
 a single slow power law, uniform over the whole self-similar family,
 with the dimension-one case exactly critical. Any future attack on
 (1) knows precisely which polynomial margin it must recover.
+
+---
+
+## 8. Three Lemmas with Proofs
+
+The statements above are here promoted from verified computation
+to formal lemmas. Setup: F in C^1_c(R^d), F not identically zero;
+for s > 0 and sigma >= 1/2 define
+
+    u_s(x) = s^{-sigma} F(x s^{-sigma}),   omega_s = curl u_s,
+
+and the Kolmogorov functional
+
+    K[u] = ||u||_inf / ( nu * int |grad u|^2 dx )^{1/3},   nu > 0.
+
+LEMMA 1 (Exact one-dimensional invariance). In d = 1,
+K[u_s] = K[F] for every s > 0 and every sigma >= 1/2. The
+Kolmogorov ratio is an invariant of ALL power-law focusing rates
+in one dimension; no member of the family can make it diverge.
+
+Proof. In d = 1: ||u_s||_inf = s^{-sigma}||F||_inf, and by the
+change of variables y = x s^{-sigma} (dx = s^{sigma} dy),
+
+    int |u_s'|^2 dx = s^{-4 sigma} s^{sigma} int |F'|^2 dy
+                    = s^{-3 sigma} int |F'|^2 dy.
+
+Therefore K[u_s] = s^{-sigma}||F||_inf /
+(s^{-3 sigma})^{1/3}(nu int|F'|^2)^{1/3} = K[F]: the factors of
+s cancel identically -- no limit, no asymptotics. For d > 1 the
+same computation gives K[u_s] = K[F] * s^{sigma(1-d)/3}, which
+vanishes (d > 1) or is invariant (d = 1); hence one dimension is
+exactly the invariant case. QED.
+
+LEMMA 2 (Exact visibility ladder). For every 1 <= p <= inf,
+
+    ||omega_s||_p = s^{sigma(d-2p)/p} ||curl F||_p   (p < inf),
+    ||omega_s||_inf = s^{-2 sigma} ||curl F||_inf.
+
+Proof. omega_s = curl u_s = s^{-2 sigma} (curl F)(center dot
+s^{-sigma}). For p < inf substitute y = x s^{-sigma},
+dx = s^{d sigma} dy:
+
+    int |omega_s|^p dx = s^{-2p sigma} s^{d sigma}
+                         int |curl F|^p dy,
+
+and raise to 1/p. For p = inf take the pointwise supremum, which
+scales as s^{-2 sigma}. QED.
+
+COROLLARY (Integrated blindness band). Let T > 0, t = T - t
+elapsed to blowup. Then
+
+    int_0^T ||omega(t)||_p dt < inf
+        iff  sigma(2p - d)/p < 1
+        iff  p < p*(sigma) := sigma d / (2 sigma - 1)  (sigma > 1/2),
+        and for all p when sigma = 1/2.
+
+Enstrophy special case: int Z dt < inf iff sigma(4-d) < 1; for
+d = 3 this reads sigma < 1, which is exactly Leray's
+unconditional identity int Z dt <= E_0/(2 nu) valid for every
+finite-energy solution -- the band boundary is SHARP.
+
+Proof. By Lemma 2 the integrand is a pure power C s^{beta(p)}
+with beta(p) = sigma(d-2p)/p. The integral over (0,T] of a power
+converges iff its exponent exceeds -1; rearranging gives the
+stated band. The enstrophy case uses ||omega||_2^2 = 2Z and
+beta(2) = sigma(d-4)/2. QED.
+
+PROPOSITION (BKM necessity within power-law tests). Among
+criteria of the form "int_0^T ||omega||_p dt < inf certifies
+regularity", only p = inf excludes every member of the ansatz
+family {u_s}: for each finite p and any sigma with p >= p*(sigma)
+the integral diverges on members that concentrate, while for
+p < p*(sigma) it converges on members that concentrate --
+wrongly certifying regularity if such members were solutions.
+Only the endpoint p = inf, whose integral diverges precisely
+when sigma >= 1/2, flags the entire family.
+
+Proof. Immediate from the Corollary: finite-p criteria split the
+family into a detected tail (p >= p*(sigma)) and a blind band
+(p < p*(sigma)); the blind band is nonempty for every finite p
+whenever sigma > 1/2 (choose p below p*(sigma)), so no fixed
+finite p works across sigma. The endpoint has beta(inf) =
+-2 sigma <= -1 throughout sigma >= 1/2. QED.
+
+HONEST SCOPE. Lemmas 1-2 are unconditional identities about the
+family. The Corollary and Proposition inherit their meaning:
+they constrain CRITERIA relative to the family, not solutions of
+Navier-Stokes. Whether any u_s solves NS is open (type-I is
+excluded [3,4]; type-II membership is open); what the lemmas
+establish is that any successful regularity criterion must be
+supremum-sensitive, because every integral criterion provably
+misjudges part of the only concentrating family available.
 
 ---
 

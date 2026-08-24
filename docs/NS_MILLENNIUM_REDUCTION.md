@@ -425,28 +425,32 @@ machine precision.
 d=3 ladder: p=1 vanishes (+sigma); p=2 grows at sigma/2;
 p=6 at 3*sigma/2; sup at 2*sigma.
 
-THE SHARP RESULT -- integrated blindness. Although every
+THE SHARP RESULT -- integrated blindness band. Although every
 instantaneous p > d/2 norm grows, its time integral converges
-whenever sigma(2p-d)/p < 1. For sigma in [1/2, 1) this holds
-for ALL finite p >= d/2 -- including enstrophy:
+whenever sigma(2p-d)/p < 1, i.e.
 
-    int_0 Z dt ~ int_0 s^{-sigma} ds < inf      iff sigma < 1.
+    p < p*(sigma) := sigma*d / (2*sigma - 1)     (sigma > 1/2),
 
-Consistency check: this is Leray's classical identity
-int Z dt <= E_0/(2 nu), valid for every finite-energy solution.
-Type-II focusing with sigma in [1/2,1) evades it by design.
+and for ALL p when sigma = 1/2 exactly. The band SHRINKS as
+sigma grows. Enstrophy special case: int Z dt < inf iff
+sigma < 1/(4-d); in d=3 this reads sigma < 1 -- precisely
+Leray's unconditional identity int Z dt <= E_0/(2 nu),
+confirming sharpness of the band.
 
-CONSEQUENCE. Every time-integrated finite-p diagnostic of spin
-is blind to type-II focusing throughout sigma in [1/2,1).
-Among power-law criteria, Beale-Kato-Majda's p = inf gate --
-rate 2*sigma >= 1, integral divergent for all admissible
-sigma -- is the UNIQUE member that always detects. The missing
-monotone functional F[omega] of section 5.3's conclusion must
-therefore be pointwise/supremum in nature; no integral of spin
-can do the job. This explains, from within the ansatz family,
-why sixty years of integral-norm attempts (helicity signed,
-palinstrophy indefinite, higher moments non-monotone) could not
-close the problem: they were all testing blind instruments.
+CONSEQUENCE. Every time-integrated finite-p diagnostic is blind
+to type-II focusing WITHIN THE BAND p < p*(sigma); since the
+band always contains enstrophy (p=2) for sigma < 1/(4-d), and
+contains all p at sigma = 1/2, integral-norm criteria miss
+arbitrarily slow type-II candidates. Among power-law tests,
+Beale-Kato-Majda's p = inf gate -- rate 2*sigma >= 1, integral
+divergent for every admissible sigma -- is the UNIQUE member
+that detects throughout. The missing monotone functional
+F[omega] must therefore be pointwise/supremum in nature; no
+integral of spin can do the job. This explains, from within the
+ansatz family, why sixty years of integral-norm attempts
+(helicity signed, palinstrophy indefinite, higher moments
+non-monotone) could not close the problem: they were testing
+blind instruments.
 
 HONEST LIMIT. Ansatz-family statement, not a theorem about all
 solutions. It proves necessity of sup-type criteria only among
