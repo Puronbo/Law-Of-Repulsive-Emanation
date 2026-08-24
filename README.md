@@ -244,7 +244,7 @@ The RG flow from the UV FP should produce slow-roll inflation (Bonanno & Reuter 
 | `THE_UNIVERSE_FROM_A_FIXED_POINT.md` | ~500 | Big Bang as UV FP; sign change, CC problem, falsifiability |
 | `THE_UNIVERSE_FROM_A_FIXED_POINT.tex` | ~450 | LaTeX version for arXiv (hep-th + gr-qc) |
 | `NS_MILLENNIUM_REDUCTION.md` | -- | 3D NS -> Kolmogorov reduction |
-| `EXACT_KOLMOGOROV_RATIOS.md/.pdf` | 7 | Exact spike law, self-similar rates, spin visibility ladder, 4 lemmas with proofs (v0.3.0) |
+| `EXACT_KOLMOGOROV_RATIOS.md/.pdf` | 7 | Exact spike law, self-similar rates, spin visibility ladder, 5 lemmas with proofs (v0.3.0) |
 | `VERIFICATION_LEDGER.md` | -- | claim -> artifact -> audit-status map for every load-bearing result |
 | `YANG_MILLS_MASS_GAP_PROOF.md` | -- | YM mass gap at one-loop |
 | `THE_LAW_OF_SINGULARITIES.md` | -- | Capstone: axioms, 5 mechanisms, classification |

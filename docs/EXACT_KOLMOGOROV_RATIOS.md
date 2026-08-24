@@ -399,6 +399,33 @@ Verification: experiments/log_corridor.py constructs snapshots at
 gamma in {0, 1/2, 1}; all nine fitted slopes equal (d-1)/3 to five
 decimals across four decades of s.
 
+LEMMA 5 (Irrotationality of the self-similar family). Let u =
+A(r) e_r with A smooth and A(0) finite (radial velocity field).
+Then omega = curl u = 0 identically: the family is irrotational.
+
+Proof. u_x = A(r) x/r, u_y = A(r) y/r. By the chain rule:
+
+    d(u_y)/dx = A'(r)(x/r)(y/r) + A(r) d(y/r)/dx
+              = A'xy/r^2 + A(r)(-xy/r^3)
+              = xy/r^2(A' - A/r).
+
+    d(u_x)/dy = A'xy/r^2 + A(r)(-xy/r^3)
+              = xy/r^2(A' - A/r).
+
+Hence omega_z = d(u_y)/dx - d(u_x)/dy = 0 for all r > 0. At r = 0:
+u_x = u_y = 0 (removable singularity), omega = 0 by continuity. In
+3D: same argument for each curl component. QED.
+
+Corollary. The self-similar concentrating family (type-I: A(r) =
+lam F(lam r); type-II: A(r) = lam^{d-1} F(lam r)) is
+irrotational for all d >= 1 and all sigma >= 1/2.
+
+Consequence for criteria. enstrophy = int|omega|^2 dx = 0 and
+L^p(omega) = 0 for every p, for every concentrating snapshot.
+These functionals measure exactly zero. Meanwhile ||u||_inf grows
+without bound. The supremum is the unique functional that detects
+the family.
+
 ---
 
 ## References

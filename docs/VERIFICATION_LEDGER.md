@@ -18,6 +18,7 @@ audit finding.
 | Integrated blindness band p < sigma*d/(2sigma-1) | spin_blindness.py | analytic power-law integration; enstrophy case = Leray bound | CONCRETE |
 | Lemma 4 dilation exactness K=K[F]*lambda^((d-1)/3) | experiments/log_corridor.py + verify_lemma4.py | cosine-bump profile (no closed form), 30/30 checks, max err 2.4e-14 | CONCRETE |
 | d=1 invariance under ALL dilation families | log_corridor.py | gamma in {0,1/2,1} all slope-zero; independent bump profile | CONCRETE |
+| Lemma 5 irrotationality of self-similar family | beltrami_decomposition.py (analytic proof) | chain-rule proof: d(Ay/r)/dx = d(Ax/r)/dy; verified at interior point: 0.000e+00 | CONCRETE |
 
 ## Corrections shipped this cycle
 

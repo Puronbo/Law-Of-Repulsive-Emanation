@@ -598,6 +598,157 @@ general varieties at codimension >= 2. No general principle exists.
 
 ---
 
+## 8. Concrete Requirements: What Each Wall Needs
+
+### W1: Kolmogorov Uniform Bound (the NS problem itself)
+
+**Statement:** ||u||_inf <= C epsilon^{1/3} for all smooth NS solutions.
+
+**What we have:**
+- Equivalence proved (Theorem B): if Kolmogorov holds, R -> 0 at blowup.
+- Test family: self-similar family has K = K_F * lam^((d-1)/3) (Lemma 4).
+- Irrotationality: family has omega = 0 (Lemma 5), so enstrophy-based
+  criteria see nothing.  Supremum is the unique detector.
+- Anti-blowup scan (Theorem C): 168 cases, R bounded.
+
+**What's needed:**
+1. Prove the inequality for arbitrary smooth u, not just the self-similar
+   family.  The half-derivative gap (L^2 energy vs L^{3+} Onsager) is
+   the core obstruction.
+2. Candidate pathway: discrepancy theory on the self-similar boundary.
+   The GSUP ||omega||_inf controls the blowup ratio R; show the
+   logarithmic spiral boundary of the concentrating family satisfies
+   the discrepancy bound D_N <= C(log N)^{1-eps}/N.
+3. Alternative: energy方法 (Perron method) applied to the blowup ratio
+   R(t) as a supersolution of a parabolic inequality.
+
+**Verification if proved:**  run anti-blowup scan at extreme parameters
+(nu -> 0, large amplitude, non-Gaussian ICs); confirm R bounded.
+
+### W2: Riemann Hypothesis (positivity of zeta on critical line)
+
+**Statement:** zeta(1/2 + it) != 0 for all real t.
+
+**What we have:**
+- Equivalence: zeta is removable at s = 1/2 (Lemma in [6]).
+- LOR framework: zeta maps to a removable singularity; the question is
+  whether the imaginary part stays positive.
+- Hadamard product connects zeros to a Blaschke product.
+
+**What's needed:**
+1. Prove Im(zeta(1/2+it)) > 0 or < 0 for all t (never zero).
+   Current best: ~40% of the critical line verified computationally.
+2. Candidate pathway: relate zeta positivity to the GSUP of a
+   corresponding fluid flow (the "zeta fluid" interpretation).
+3. Alternative: use the explicit formula to express zeta in terms of
+   prime-counting functions and apply sieve methods.
+
+**Verification:**  Extend computational verification to 10^{13} zeros
+(unconditional) + check the GSUP condition on the zeta fluid at each
+verified zero location.
+
+### W3: Yang-Mills Mass Gap (constructive QFT)
+
+**Statement:** Constructive Yang-Mills theory on R^4 with a mass gap.
+
+**What we have:**
+- Litim FP: G* = 0.7012, lam* = 0.1715 (fRG, one-loop exact).
+- Critical surface eq.(11) verified digit-for-digit vs Codello.
+- Two-loop CC scan: best suppression 1195x, gap >= 10^118.
+
+**What's needed:**
+1. Go beyond fRG: need non-perturbative control (lattice or constructive
+   QFT).  fRG is one-loop exact by construction; Goroff-Sagnotti C^3
+   decouples at two loops.
+2. Candidate pathway: lattice gauge theory with reflection positivity,
+   continuum limit, Osterwalder-Schrader axioms, uniform exponential
+   clustering.
+3. Alternative: use the FP fixed-point data (G*, lam*) as input to a
+   lattice simulation and verify the mass gap numerically.
+
+**Verification:**  Lattice computation of the glueball spectrum;
+confirm a gap between the vacuum and the first excited state.
+
+### W4: Birch and Swinnerton-Dyer (rank >= 2)
+
+**Statement:** Sha(E) is finite for elliptic curves of rank >= 2.
+
+**What we have:**
+- BSD is a theorem at rank 0-1 (Gross-Zagier + Kolyvagin).
+- L-function L(E, s) has a zero of order r at s = 1 (rank r).
+
+**What's needed:**
+1. Prove Sha(E) is finite when r >= 2.  Current status: unknown.
+2. Candidate pathway: use the LOR framework to relate Sha to a
+   removable singularity of a corresponding zeta function.
+3. Alternative: extend Kolyvagin's Euler system to higher ranks.
+
+**Verification:**  Compute Sha for specific rank-2 curves (e.g., via
+Magma/Sage); confirm finiteness in examples.
+
+### W5: Hodge Conjecture
+
+**Statement:** Every Hodge class on a smooth projective variety is a
+rational linear combination of algebraic cycles.
+
+**What's needed:**
+1. Produce explicit algebraic cycles for general codimension >= 2.
+2. No general construction principle exists.
+3. Candidate: use the LOR removable-singularity framework to relate
+   Hodge classes to vanishing cycles of a corresponding fluid flow.
+
+### W6: Goldbach Conjecture
+
+**Statement:** Every even integer >= 4 is the sum of two primes.
+
+**What's needed:**
+1. Eliminate the exceptional set in the circle method (current bound
+   O(x^{0.879}) must shrink to 0).
+2. Ternary proved (Helfgott 2013); binary resists all known techniques.
+3. Candidate: use the LOR partition-singularity interpretation to
+   reformulate as a removable singularity of a Dirichlet series.
+
+### W7: Twin Primes
+
+**Statement:** There are infinitely many prime pairs (p, p+2).
+
+**What's needed:**
+1. Beat the sieve parity barrier: need level of distribution theta > 1/2.
+2. Current record: bounded gaps <= 246 (Maynard-Tao 2013).
+3. Candidate: use GPY sieve + a new equidistribution estimate.
+
+### W8: Collatz Conjecture
+
+**Statement:** Every positive integer eventually reaches 1 under
+n -> n/2 (even) or n -> 3n+1 (odd).
+
+**What's needed:**
+1. Extend Tao's almost-all theorem (2019) to all n.
+2. Prove no non-trivial cycles exist (current bound: none below 10^{20}).
+3. Candidate: use the LOR framework to model Collatz as a discrete
+   dynamical system with a removable singularity at n = 1.
+
+---
+
+## 9. Prioritized Next Steps
+
+**Tier 1 (concrete, computable):**
+- W1: discrepancy-theory computation on the self-similar boundary.
+  Build the GSUP test for the logarithmic spiral; verify the
+  D_N bound numerically at N = 10^3, 10^4, 10^5.
+- W3: lattice computation of the glueball spectrum using the
+  Litim FP as input.
+
+**Tier 2 (framework development):**
+- W2: zeta-fluid construction and GSUP test.
+- W4: extend Kolyvagin's Euler system to rank 2 (algebraic).
+- W8: discrete dynamical system analysis of Collatz.
+
+**Tier 3 (deep open problems):**
+- W5: general Hodge class construction.
+- W6: binary Goldbach via circle method.
+- W7: sieve parity barrier.
+
 ## References
 
 [1] J. T. Beale, T. Kato, A. Majda, Remarks on the breakdown
