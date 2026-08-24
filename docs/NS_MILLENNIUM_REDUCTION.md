@@ -199,6 +199,73 @@ singularity is removable.
 
 ---
 
+### 5.1 Outward Cascade: Exact Scaling Law (285 cases)
+
+The energy cascade admits two pictures: FORWARD (large scales
+to small scales, a one-dimensional flow in k-space) and OUTWARD
+(radial radiation from a concentration point, like ripples from
+a stone dropped in water). We verify that the outward picture
+gives the same Kolmogorov functional, with an exactly computable
+constant.
+
+Four flow families tested:
+
+    1. Radial 3D      u = A (r/r0)^a exp(-r/(3r0)) r_hat   (180 cases)
+    2. Axial 3D       dipole flow u(r,z)                    (  9 cases)
+    3. Spectral 1D    random-phase multi-mode               ( 48 cases)
+    4. Blowup scenario  Gaussian spikes, sharpness to 1000  ( 48 cases)
+
+Results: ||u||_inf <= C_0 eps^{1/3} holds with finite C_0 in
+ALL 285 cases. Gap 1 (Section 4) holds in 48/48 spectral cases.
+
+EXACT THEOREM (Gaussian spike). For u(x) = A exp(-x^2/(2w^2)):
+
+    ||u||_inf = A
+    int (u')^2 dx = A^2 sqrt(pi) / (2w)
+    eps = nu A^2 sqrt(pi) / (2w)
+
+Therefore:
+
+    C_0 = A / eps^{1/3} = (2 A w / (nu sqrt(pi)))^{1/3}
+
+    C_0 = (2/sqrt(pi))^{1/3} * (A w / nu)^{1/3}
+        = 1.04108 * (A w / nu)^{1/3}
+
+Numerical verification across all 48 blowup-scenario cases:
+the ratio C_0 / (A w / nu)^{1/3} equals
+
+    1.041 +/- 0.000   (min = max = 1.041)
+
+matching the analytic constant (2/sqrt(pi))^{1/3} = 1.04108
+to four significant figures. Spot check: A=50, w=0.5, nu=0.01
+predicts C_0 = 14.130; simulation gives 14.130.
+
+PHYSICAL INTERPRETATION. The Kolmogorov ratio depends on the
+MASS m = A*w of the spike, not its sharpness s = A/w:
+
+    - At fixed amplitude A, sharpening (w -> 0) DRIVES C_0 -> 0.
+      Sharper spikes are MORE subcritical relative to their
+      dissipation rate.
+
+    - Mechanism: concentrating velocity into width w costs
+      enstrophy ~ A^2/w, hence dissipation eps ~ nu A^2/w,
+      which outruns ||u||_inf in the ratio eps^{-1/3}.
+
+This is the outward cascade made quantitative: energy cannot
+pile up at a point because the dissipation cost of
+concentration diverges faster than the concentration itself.
+Viscosity beats focusing.
+
+HONEST LIMIT. These are static-snapshot results: for any fixed
+profile, C_0 is finite and computable. The millennium problem
+requires a uniform-in-time bound during Navier-Stokes
+EVOLUTION, where the profile changes under the nonlinear term.
+What the exact law provides is the mechanism: any attempt to
+focus energy must pay enstrophy at rate 1/w, and the payment
+is exact.
+
+---
+
 ## 6. Why This Solves the Problem (Modulo Kolmogorov)
 
 The logical chain:
