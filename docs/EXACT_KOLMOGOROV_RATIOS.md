@@ -189,15 +189,15 @@ Verification across sigma in {0.5, 0.75, 1.0, 1.5} and d in
     d=2: slopes -1/6, -1/4, -1/3, -1/2;  errors <= 4e-16.
     d=3: slopes -1/3, -1/2, -2/3, -1;    errors <= 8e-16.
 
-Logarithmic corrections. If the focusing factor carries a slowly
-varying multiplier L(s), lambda(s) = s^{-sigma} L(s), then to
-leading order in slowly-varying approximation the ratio gains a
-factor L^{(d+1)/3}. In d = 3 this permits e.g.
-(log(1/s))^{gamma(d+1)/3}-type growth; in d = 1 it permits only
-(log(1/s))^{2/3} -- logarithmic, never polynomial. The d = 1
-invariance is robust to log corrections in precisely the sense
-that matters: no self-similar scenario can make K diverge as a
-power law in one dimension.
+Logarithmic corrections (CORRECTED, see experiments/log_corridor.py).
+u(x,s) = lambda(s) F(lambda(s) x) is a pure dilation, and the exact
+identity K[u_s] = K[F] lambda(s)^((d-1)/3) holds for EVERY positive
+lambda(s): power, logarithmic, arbitrary. The rate has NO memory of
+gamma or history -- only the instantaneous scale enters. In d = 3
+logarithmic focusing gains L^{2/3}; in d = 1 NOTHING moves the
+ratio, not even logarithmically. (An earlier heuristic gain
+L^{(d+1)/3} was an algebra slip: |grad u|^2 scales as lambda^4,
+not lambda^2.)
 
 ---
 
@@ -372,6 +372,32 @@ excluded [3,4]; type-II membership is open); what the lemmas
 establish is that any successful regularity criterion must be
 supremum-sensitive, because every integral criterion provably
 misjudges part of the only concentrating family available.
+
+LEMMA 4 (Dilation exactness; the corridor has no memory). Let
+lambda: (0,T] -> (0,inf) be ANY positive function -- power,
+logarithmic, or arbitrary -- and u(x,t) = lambda(t) F(lambda(t) x).
+Then for every d >= 1 and every 1 <= p <= inf,
+
+    ||grad u||_p = lambda^{2 - d/p} ||grad F||_p,
+    K[u] = K[F] * lambda^{(d-1)/3}.
+
+In particular d = 1 is invariant under ARBITRARY dilation
+families, logarithmic included.
+
+Proof. grad u = lambda^2 (grad F)(center-dot lambda); substitute
+y = lambda x, dx = lambda^{-d} dy for p < inf; pointwise supremum
+for p = inf. Then eps = nu int|grad u|^2 = nu lambda^{4-d}
+int|grad F|^2 and ||u||_inf = lambda||F||_inf, so
+
+    K[u] = lambda||F||_inf / (lambda^{4-d})^{1/3} / (nu int)^{1/3}
+         = lambda^{(d-1)/3} K[F].
+
+No rate or history of lambda enters: only its instantaneous value.
+QED.
+
+Verification: experiments/log_corridor.py constructs snapshots at
+gamma in {0, 1/2, 1}; all nine fitted slopes equal (d-1)/3 to five
+decimals across four decades of s.
 
 ---
 

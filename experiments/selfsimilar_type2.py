@@ -25,9 +25,12 @@ Checks:
     d = 1        ->  exponent 0 for ALL sigma  (ratio invariant under
                     any power-law focusing -- strengthens 5.2)
 
-Log caveat (analytic): if lambda(s) = s^(-sigma) L(s) with L slowly
-varying, the ratio picks up a factor L^((d+1)/3); in d=1 this allows
-only logarithmic growth ((log 1/s)^(2/3)), never a power law.
+Log result (exact, see experiments/log_corridor.py): u(x,s) =
+lambda(s) F(lambda(s)x) is a pure dilation, so for EVERY positive
+lambda(s) -- power, log, arbitrary -- the exact identity is
+K[u_s] = K[F] * lambda(s)^((d-1)/3). In d=1 the ratio is invariant
+under ALL dilation families including logarithmic ones; the earlier
+heuristic gain L^((d+1)/3) was an algebra slip.
 """
 
 import numpy as np
@@ -107,9 +110,9 @@ def main():
     print("CONCLUSIONS:")
     print()
     print("1. d=1: exponent is ZERO for EVERY sigma. The Kolmogorov")
-    print("   ratio is invariant under ARBITRARY power-law focusing,")
-    print("   not just type-I. Only logarithmic growth (power <= 2/3")
-    print("   of log) is possible in 1D -- no power-law divergence.")
+    print("   ratio is invariant under ARBITRARY dilation families --")
+    print("   power, logarithmic, or otherwise (see log_corridor.py).")
+    print("   No focusing scenario of any kind can move the ratio in 1D.")
     print()
     print("2. d=3: divergence rate -2*sigma/3. Type-I (sigma=1/2)")
     print("   gives -(1/3) as in Section 5.2. Any TYPE-II candidate")

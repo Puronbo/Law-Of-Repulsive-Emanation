@@ -366,13 +366,15 @@ times per case; 12 cases = {d} x {sigma}):
 
 INTERPRETATION.
 
-    1. d=1 STRONGER RESULT: the Kolmogorov ratio is invariant
-       under ARBITRARY power-law focusing, not only type-I.
-       With slowly-varying corrections lambda(s) =
-       s^(-sigma)L(s), the ratio gains only L^((d+1)/3) --
-       in d=1 a power of LOG at most ((log 1/s)^(2/3)), never
-       a power law. No self-similar scenario can make the
-       ratio diverge polynomially in 1D.
+    1. d=1 STRONGER RESULT (corrected by log_corridor.py): the
+       Kolmogorov ratio is invariant under ARBITRARY dilation
+       families, power or logarithmic: u = lambda F(lambda x)
+       gives K = K[F] * lambda^((d-1)/3) EXACTLY for every d,
+       so in d=1 nothing -- no rate, no slowly-varying factor --
+       can move K at all. (The earlier heuristic gain
+       L^((d+1)/3) was an algebra slip; |grad u|^2 scales as
+       lambda^4.) No focusing scenario can make the ratio
+       diverge in 1D, period.
 
     2. d=3 MONOTONE PICTURE: type-II candidates diverge FASTER
        than type-I (-2*sigma/3 with sigma > 1/2 gives rates
