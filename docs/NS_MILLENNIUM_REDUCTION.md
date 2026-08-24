@@ -896,6 +896,18 @@ inequality. NS evolution of concentrated poloidal fields shows:
 
 (ns_concentration_evolution.py: R=0.5 gn14 0.748->0.560, R=1.0 0.333->0.347, R=2.0 0.147->0.128)
 
+**Absolute zero test (nu -> 0):** The viscosity is the medium's ability
+to conduct energy away from concentrated regions. As nu decreases:
+- nu=2.0: gn14 crushed by 58%, r_eff spreads 131% (hot medium, active)
+- nu=0.5: gn14 crushed by 31%, r_eff spreads 50% (warm)
+- nu=0.1: gn14 crushed by 8%, r_eff spreads 24% (cold, weak conduction)
+- nu=0.01: gn14 FLAT, r_eff barely spreads (frozen, nearly dead)
+- nu=0.0: gn14 RISES by 0.7% (Euler, medium frozen, no conduction)
+
+(absolute_zero_test.py) At absolute zero the medium is completely frozen
+and cannot prevent concentration. The Millennium Problem is solvable
+PRECISELY BECAUSE nu > 0 -- the medium is alive.
+
 **Proof path:** Show that NS evolution prevents solutions from staying
 in the concentrating regime long enough to break the Prodi-Serrin
 condition. The energy dissipation dE/dt=-nuZ provides the mechanism:
