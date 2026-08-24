@@ -32,3 +32,13 @@ Treat as historical drafts. They may be useful for provenance or to
 trace the development of ideas, but NO claim in them should be cited
 without first checking it against the current-generation documents.
 Where the two disagree, the current documents govern.
+
+## Coverage note: the matching .md sources
+
+The Markdown sources next to these PDFs (docs/THE_SUBMISSION.md,
+docs/MILLENNIUM.md, docs/UNIFIED_PROOF.md, docs/THE_WEB_OF_PROOFS.md,
+and so on -- every name paired with an archived PDF) are KEPT IN
+PLACE because generators and cross-references depend on them, but
+they carry the SAME era and the SAME caveats as their compiled PDFs.
+The disclaimer applies to them equally: verify against the
+current-generation set before citing anything from them.
