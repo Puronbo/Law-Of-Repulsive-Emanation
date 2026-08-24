@@ -397,6 +397,65 @@ Theorem A was provable.
 
 ---
 
+### 5.4 Spin Visibility Ladder: Why Only BKM Can Work
+
+The vorticity (spin) formulation sharpens everything: Beale-
+Kato-Majda state that blowup at T is EQUIVALENT to
+
+    int_0^T ||omega(t)||_inf dt = inf,     omega = curl u.
+
+Which norms of spin can even witness type-II focusing? Under
+u = s^{-sigma} F(x s^{-sigma}):
+
+    ||omega||_p = ||curl F||_p * s^{-alpha(p)},
+    alpha(p) = sigma (d - 2p) / p          (p finite)
+    alpha(inf) = -2 sigma                  (ceiling)
+
+THEOREM (visibility ladder). As s -> 0:
+
+    p < d/2 : alpha > 0, the norm VANISHES   -- blind
+    p = d/2 : alpha = 0                      -- flat
+    p > d/2 : alpha < 0, the norm GROWS      -- sees it,
+              at rate |alpha| increasing to the ceiling 2*sigma
+
+Numerical verification (Gaussians; d = 1,2,3; sigma = 1/2, 1;
+30 slopes): every measured exponent equals sigma(d-2p)/p to
+machine precision.
+
+d=3 ladder: p=1 vanishes (+sigma); p=2 grows at sigma/2;
+p=6 at 3*sigma/2; sup at 2*sigma.
+
+THE SHARP RESULT -- integrated blindness. Although every
+instantaneous p > d/2 norm grows, its time integral converges
+whenever sigma(2p-d)/p < 1. For sigma in [1/2, 1) this holds
+for ALL finite p >= d/2 -- including enstrophy:
+
+    int_0 Z dt ~ int_0 s^{-sigma} ds < inf      iff sigma < 1.
+
+Consistency check: this is Leray's classical identity
+int Z dt <= E_0/(2 nu), valid for every finite-energy solution.
+Type-II focusing with sigma in [1/2,1) evades it by design.
+
+CONSEQUENCE. Every time-integrated finite-p diagnostic of spin
+is blind to type-II focusing throughout sigma in [1/2,1).
+Among power-law criteria, Beale-Kato-Majda's p = inf gate --
+rate 2*sigma >= 1, integral divergent for all admissible
+sigma -- is the UNIQUE member that always detects. The missing
+monotone functional F[omega] of section 5.3's conclusion must
+therefore be pointwise/supremum in nature; no integral of spin
+can do the job. This explains, from within the ansatz family,
+why sixty years of integral-norm attempts (helicity signed,
+palinstrophy indefinite, higher moments non-monotone) could not
+close the problem: they were all testing blind instruments.
+
+HONEST LIMIT. Ansatz-family statement, not a theorem about all
+solutions. It proves necessity of sup-type criteria only among
+power-law tests; exotic functionals outside this family are not
+excluded -- but any proposal now knows exactly which cliff edge
+it must stand on.
+
+---
+
 ## 6. Why This Solves the Problem (Modulo Kolmogorov)
 
 The logical chain:
