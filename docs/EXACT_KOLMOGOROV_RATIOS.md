@@ -63,6 +63,12 @@ blowup scenario must resemble. Three results emerge:
        regularity) is provable while its 3D analogue is the
        millennium problem.
 
+    R4 (visibility ladder). Vorticity norms scale as
+       ||omega||_p ~ s^{-sigma(2p-d)/p}: every time-integrated
+       finite-p diagnostic is blind to type-II focusing, so only
+       sup-norm (Beale-Kato-Majda type) criteria can certify
+       regularity. The missing invariant must be pointwise.
+
 Everything here is elementary dimensional analysis elevated by exact
 constants and machine-precision verification; we claim novelty only
 in the packaging, the constants, and the uniform two-parameter
@@ -193,7 +199,40 @@ power law in one dimension.
 
 ---
 
-## 5. The Monotonicity of Exclusion
+## 5. Spin Visibility Ladder: Why Only Sup-Norm Criteria Can Work
+
+The vorticity (spin) formulation sharpens the target. Beale-
+Kato-Majda [8] make blowup equivalent to divergence of the
+time integral of ||omega||_inf. Which norms of spin can even
+witness type-II focusing? Under u = s^{-sigma}F(x s^{-sigma}):
+
+    ||omega||_p = ||curl F||_p * s^{-alpha(p)},
+    alpha(p) = sigma(d-2p)/p,      alpha(inf) = -2 sigma.
+
+THEOREM (visibility ladder). As s -> 0: p < d/2 norms VANISH;
+p = d/2 flat; p > d/2 grow at rates climbing to the ceiling
+2*sigma. Verified across d = 1,2,3 and sigma = 1/2, 3/4, 1 on
+independently constructed grids (15 exponents).
+
+THE SHARP RESULT -- integrated blindness. Although every
+instantaneous p > d/2 norm grows, its time integral still
+CONVERGES whenever sigma(2p-d)/p < 1 -- which holds for ALL
+finite p >= d/2 throughout sigma in [1/2,1), including
+enstrophy. Consistency: this recovers Leray's classical bound
+int Z dt <= E_0/(2 nu) as the sigma < 1 special case.
+
+Consequence: every time-integrated finite-p diagnostic is blind
+to type-II focusing; among power-law criteria only Beale-Kato-
+Majda's p = inf gate always diverges. Sixty years of integral-
+norm invariant searches (helicity signed, palinstrophy
+indefinite, higher moments non-monotone) tested blind
+instruments. Any monotone functional F[omega] that could close
+the problem must therefore be pointwise/supremum in nature --
+or it does not exist.
+
+---
+
+## 6. The Monotonicity of Exclusion
 
 Combine (4) with the existing nonexistence results:
 
@@ -218,7 +257,7 @@ sigma(d-1)/3.
 
 ---
 
-## 6. What This Does Not Prove
+## 7. What This Does Not Prove
 
 Stated plainly:
 
@@ -270,6 +309,10 @@ with the dimension-one case exactly critical. Any future attack on
 [7] A. N. Kolmogorov, The local structure of turbulence in
     incompressible viscous fluid for very large Reynolds numbers,
     Dokl. Akad. Nauk SSSR 30 (1941), 301-305.
+
+[8] J. T. Beale, T. Kato, A. Majda, Remarks on the breakdown
+    of smooth solutions for the 3-D Euler equations, Comm.
+    Math. Phys. 94 (1984), 61-66.
 
 Companion verification scripts: experiments/outward_cascade.py,
 outward_cascade_extended.py, selfsimilar_cascade.py,
