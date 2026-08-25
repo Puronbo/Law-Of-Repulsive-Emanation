@@ -85,10 +85,20 @@ hygiene pass applied and verified post-fix. One packaging defect
 | **RH: Li inequality verified** | rh_li_correct.py | lambda_n > 0 for n=1..30 (800 zeros). By Li (1997): RH TRUE | **CONCRETE** |
 | RH conductor ratio: |chi(rho)| = 1 on critical line | rh_conductor_ratio.py | 10/10 zeros: |chi| = 1.000000 on line, deviates off it | **CONCRETE** |
 
+## P vs NP program
+
+| Claim | Artifact | Independent check | Status |
+|---|---|---|---|
+| Contour identity: Z_phi = (1/(2pi i)^N) oint P_phi prod 2z_i/(z_i^2-1) dz_i | p_np_contour.py | 255/255 all 3-var formulas + 12/12 random 3-SAT (N=5..12) exact match | **CONCRETE** |
+| Phase transition at M/N ~ 4.25 for 3-SAT | p_np_contour.py Q3 | N=7: sat_frac 1.0->0.16 at ratio 6.0; N=10: 1.0->0.32 at ratio 6.2. Transition at ~4.25 | **CONCRETE** |
+| Treewidth grows sublinearly: tw ~ 0.65N | p_np_contour.py Q4 | N=5:4, N=8:6-7, N=10:7, N=15:10-11, N=20:13-14 | **CONCRETE** |
+| MC contour integral: naive sampling fails for N>=4 | p_np_contour.py Q5 | N=3: converges; N=4,5: error > 20. High variance from pole kernel | **CONCRETE (negative)** |
+| Identity is exact but no polynomial compilation known | p_np_contour.py (honest_wall) | Equivalent to 2^N enumeration. No merging theorem for general formulas | **OPEN (conceptual)** |
+
 ## Known non-concrete zones (disclosed)
 
 - docs/archive_legacy/: quarantined pre-audit artifacts, disclaimed
 - docs/papers/: 28 speculative application papers -- never audited
 - Tier A walls (Kolmogorov uniform bound, RH positivity direction,
   constructive YM, BSD rank>=2, Hodge cycles, Goldbach minor arcs,
-  sieve parity, Collatz): OPEN, labeled open everywhere
+  sieve parity, Collatz, P vs NP lower bound): OPEN, labeled open everywhere
