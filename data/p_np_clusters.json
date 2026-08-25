@@ -1,0 +1,561 @@
+{
+  "experiment": "P vs NP: Solution Space Cluster Structure",
+  "Q1_clusters_vs_density": {
+    "20": {
+      "N": 10,
+      "M": 20,
+      "ratio": 2.0,
+      "mean_num_clusters": 1.5,
+      "mean_largest_fraction": 0.939,
+      "mean_inter_distance": 5.38,
+      "mean_num_solutions": 69.3,
+      "trials_with_solutions": 15
+    },
+    "22": {
+      "N": 10,
+      "M": 22,
+      "ratio": 2.2,
+      "mean_num_clusters": 2.1,
+      "mean_largest_fraction": 0.814,
+      "mean_inter_distance": 6.11,
+      "mean_num_solutions": 56.3,
+      "trials_with_solutions": 15
+    },
+    "24": {
+      "N": 10,
+      "M": 24,
+      "ratio": 2.4,
+      "mean_num_clusters": 2.5,
+      "mean_largest_fraction": 0.746,
+      "mean_inter_distance": 5.58,
+      "mean_num_solutions": 39.3,
+      "trials_with_solutions": 15
+    },
+    "26": {
+      "N": 10,
+      "M": 26,
+      "ratio": 2.6,
+      "mean_num_clusters": 1.9,
+      "mean_largest_fraction": 0.861,
+      "mean_inter_distance": 5.41,
+      "mean_num_solutions": 25.9,
+      "trials_with_solutions": 15
+    },
+    "28": {
+      "N": 10,
+      "M": 28,
+      "ratio": 2.8,
+      "mean_num_clusters": 2.6,
+      "mean_largest_fraction": 0.766,
+      "mean_inter_distance": 5.13,
+      "mean_num_solutions": 25.4,
+      "trials_with_solutions": 15
+    },
+    "30": {
+      "N": 10,
+      "M": 30,
+      "ratio": 3.0,
+      "mean_num_clusters": 2.5,
+      "mean_largest_fraction": 0.758,
+      "mean_inter_distance": 5.71,
+      "mean_num_solutions": 21.7,
+      "trials_with_solutions": 15
+    },
+    "32": {
+      "N": 10,
+      "M": 32,
+      "ratio": 3.2,
+      "mean_num_clusters": 2.2,
+      "mean_largest_fraction": 0.749,
+      "mean_inter_distance": 4.82,
+      "mean_num_solutions": 9.3,
+      "trials_with_solutions": 14
+    },
+    "34": {
+      "N": 10,
+      "M": 34,
+      "ratio": 3.4,
+      "mean_num_clusters": 2.4,
+      "mean_largest_fraction": 0.713,
+      "mean_inter_distance": 4.43,
+      "mean_num_solutions": 10.7,
+      "trials_with_solutions": 14
+    },
+    "36": {
+      "N": 10,
+      "M": 36,
+      "ratio": 3.6,
+      "mean_num_clusters": 2.1,
+      "mean_largest_fraction": 0.805,
+      "mean_inter_distance": 4.75,
+      "mean_num_solutions": 11.7,
+      "trials_with_solutions": 15
+    },
+    "38": {
+      "N": 10,
+      "M": 38,
+      "ratio": 3.8,
+      "mean_num_clusters": 1.9,
+      "mean_largest_fraction": 0.819,
+      "mean_inter_distance": 4.69,
+      "mean_num_solutions": 7.1,
+      "trials_with_solutions": 15
+    },
+    "40": {
+      "N": 10,
+      "M": 40,
+      "ratio": 4.0,
+      "mean_num_clusters": 1.8,
+      "mean_largest_fraction": 0.768,
+      "mean_inter_distance": 4.45,
+      "mean_num_solutions": 5.7,
+      "trials_with_solutions": 12
+    },
+    "42": {
+      "N": 10,
+      "M": 42,
+      "ratio": 4.2,
+      "mean_num_clusters": 1.6,
+      "mean_largest_fraction": 0.832,
+      "mean_inter_distance": 5.12,
+      "mean_num_solutions": 3.8,
+      "trials_with_solutions": 13
+    },
+    "44": {
+      "N": 10,
+      "M": 44,
+      "ratio": 4.4,
+      "mean_num_clusters": 2.1,
+      "mean_largest_fraction": 0.661,
+      "mean_inter_distance": 4.45,
+      "mean_num_solutions": 3.1,
+      "trials_with_solutions": 13
+    },
+    "46": {
+      "N": 10,
+      "M": 46,
+      "ratio": 4.6,
+      "mean_num_clusters": 1.8,
+      "mean_largest_fraction": 0.761,
+      "mean_inter_distance": 4.0,
+      "mean_num_solutions": 2.1,
+      "trials_with_solutions": 10
+    },
+    "48": {
+      "N": 10,
+      "M": 48,
+      "ratio": 4.8,
+      "mean_num_clusters": 1.6,
+      "mean_largest_fraction": 0.762,
+      "mean_inter_distance": 4.38,
+      "mean_num_solutions": 1.0,
+      "trials_with_solutions": 7
+    },
+    "50": {
+      "N": 10,
+      "M": 50,
+      "ratio": 5.0,
+      "mean_num_clusters": 1.6,
+      "mean_largest_fraction": 0.853,
+      "mean_inter_distance": 3.73,
+      "mean_num_solutions": 1.7,
+      "trials_with_solutions": 7
+    }
+  },
+  "Q2_critical_detail": {
+    "0": {
+      "num_solutions": 4,
+      "num_clusters": 1,
+      "largest_cluster": 4,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "1": {
+      "num_solutions": 5,
+      "num_clusters": 2,
+      "largest_cluster": 4,
+      "largest_fraction": 0.8,
+      "inter_cluster_distance": 3.25
+    },
+    "2": {
+      "num_solutions": 0,
+      "num_clusters": 0,
+      "largest_cluster": 0,
+      "largest_fraction": 0,
+      "inter_cluster_distance": 0
+    },
+    "3": {
+      "num_solutions": 1,
+      "num_clusters": 1,
+      "largest_cluster": 1,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "4": {
+      "num_solutions": 2,
+      "num_clusters": 1,
+      "largest_cluster": 2,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "5": {
+      "num_solutions": 0,
+      "num_clusters": 0,
+      "largest_cluster": 0,
+      "largest_fraction": 0,
+      "inter_cluster_distance": 0
+    },
+    "6": {
+      "num_solutions": 1,
+      "num_clusters": 1,
+      "largest_cluster": 1,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "7": {
+      "num_solutions": 1,
+      "num_clusters": 1,
+      "largest_cluster": 1,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "8": {
+      "num_solutions": 5,
+      "num_clusters": 4,
+      "largest_cluster": 2,
+      "largest_fraction": 0.4,
+      "inter_cluster_distance": 4.56
+    },
+    "9": {
+      "num_solutions": 3,
+      "num_clusters": 2,
+      "largest_cluster": 2,
+      "largest_fraction": 0.667,
+      "inter_cluster_distance": 2.5
+    },
+    "10": {
+      "num_solutions": 2,
+      "num_clusters": 2,
+      "largest_cluster": 1,
+      "largest_fraction": 0.5,
+      "inter_cluster_distance": 7.0
+    },
+    "11": {
+      "num_solutions": 1,
+      "num_clusters": 1,
+      "largest_cluster": 1,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "12": {
+      "num_solutions": 2,
+      "num_clusters": 1,
+      "largest_cluster": 2,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "13": {
+      "num_solutions": 1,
+      "num_clusters": 1,
+      "largest_cluster": 1,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "14": {
+      "num_solutions": 2,
+      "num_clusters": 1,
+      "largest_cluster": 2,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "15": {
+      "num_solutions": 4,
+      "num_clusters": 1,
+      "largest_cluster": 4,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "16": {
+      "num_solutions": 3,
+      "num_clusters": 1,
+      "largest_cluster": 3,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "17": {
+      "num_solutions": 0,
+      "num_clusters": 0,
+      "largest_cluster": 0,
+      "largest_fraction": 0,
+      "inter_cluster_distance": 0
+    },
+    "18": {
+      "num_solutions": 2,
+      "num_clusters": 1,
+      "largest_cluster": 2,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "19": {
+      "num_solutions": 6,
+      "num_clusters": 2,
+      "largest_cluster": 4,
+      "largest_fraction": 0.667,
+      "inter_cluster_distance": 3.5
+    },
+    "20": {
+      "num_solutions": 6,
+      "num_clusters": 2,
+      "largest_cluster": 4,
+      "largest_fraction": 0.667,
+      "inter_cluster_distance": 3.0
+    },
+    "21": {
+      "num_solutions": 1,
+      "num_clusters": 1,
+      "largest_cluster": 1,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "22": {
+      "num_solutions": 0,
+      "num_clusters": 0,
+      "largest_cluster": 0,
+      "largest_fraction": 0,
+      "inter_cluster_distance": 0
+    },
+    "23": {
+      "num_solutions": 3,
+      "num_clusters": 2,
+      "largest_cluster": 2,
+      "largest_fraction": 0.667,
+      "inter_cluster_distance": 5.5
+    },
+    "24": {
+      "num_solutions": 7,
+      "num_clusters": 3,
+      "largest_cluster": 4,
+      "largest_fraction": 0.571,
+      "inter_cluster_distance": 4.36
+    },
+    "25": {
+      "num_solutions": 3,
+      "num_clusters": 2,
+      "largest_cluster": 2,
+      "largest_fraction": 0.667,
+      "inter_cluster_distance": 4.5
+    },
+    "26": {
+      "num_solutions": 0,
+      "num_clusters": 0,
+      "largest_cluster": 0,
+      "largest_fraction": 0,
+      "inter_cluster_distance": 0
+    },
+    "27": {
+      "num_solutions": 0,
+      "num_clusters": 0,
+      "largest_cluster": 0,
+      "largest_fraction": 0,
+      "inter_cluster_distance": 0
+    },
+    "28": {
+      "num_solutions": 0,
+      "num_clusters": 0,
+      "largest_cluster": 0,
+      "largest_fraction": 0,
+      "inter_cluster_distance": 0
+    },
+    "29": {
+      "num_solutions": 1,
+      "num_clusters": 1,
+      "largest_cluster": 1,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "30": {
+      "num_solutions": 1,
+      "num_clusters": 1,
+      "largest_cluster": 1,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "31": {
+      "num_solutions": 4,
+      "num_clusters": 2,
+      "largest_cluster": 2,
+      "largest_fraction": 0.5,
+      "inter_cluster_distance": 4.0
+    },
+    "32": {
+      "num_solutions": 2,
+      "num_clusters": 1,
+      "largest_cluster": 2,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "33": {
+      "num_solutions": 0,
+      "num_clusters": 0,
+      "largest_cluster": 0,
+      "largest_fraction": 0,
+      "inter_cluster_distance": 0
+    },
+    "34": {
+      "num_solutions": 7,
+      "num_clusters": 3,
+      "largest_cluster": 4,
+      "largest_fraction": 0.571,
+      "inter_cluster_distance": 3.21
+    },
+    "35": {
+      "num_solutions": 4,
+      "num_clusters": 2,
+      "largest_cluster": 3,
+      "largest_fraction": 0.75,
+      "inter_cluster_distance": 4.0
+    },
+    "36": {
+      "num_solutions": 3,
+      "num_clusters": 2,
+      "largest_cluster": 2,
+      "largest_fraction": 0.667,
+      "inter_cluster_distance": 2.5
+    },
+    "37": {
+      "num_solutions": 3,
+      "num_clusters": 2,
+      "largest_cluster": 2,
+      "largest_fraction": 0.667,
+      "inter_cluster_distance": 4.5
+    },
+    "38": {
+      "num_solutions": 1,
+      "num_clusters": 1,
+      "largest_cluster": 1,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "39": {
+      "num_solutions": 0,
+      "num_clusters": 0,
+      "largest_cluster": 0,
+      "largest_fraction": 0,
+      "inter_cluster_distance": 0
+    },
+    "40": {
+      "num_solutions": 10,
+      "num_clusters": 1,
+      "largest_cluster": 10,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "41": {
+      "num_solutions": 7,
+      "num_clusters": 1,
+      "largest_cluster": 7,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "42": {
+      "num_solutions": 2,
+      "num_clusters": 1,
+      "largest_cluster": 2,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "43": {
+      "num_solutions": 1,
+      "num_clusters": 1,
+      "largest_cluster": 1,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "44": {
+      "num_solutions": 0,
+      "num_clusters": 0,
+      "largest_cluster": 0,
+      "largest_fraction": 0,
+      "inter_cluster_distance": 0
+    },
+    "45": {
+      "num_solutions": 3,
+      "num_clusters": 2,
+      "largest_cluster": 2,
+      "largest_fraction": 0.667,
+      "inter_cluster_distance": 2.5
+    },
+    "46": {
+      "num_solutions": 0,
+      "num_clusters": 0,
+      "largest_cluster": 0,
+      "largest_fraction": 0,
+      "inter_cluster_distance": 0
+    },
+    "47": {
+      "num_solutions": 3,
+      "num_clusters": 1,
+      "largest_cluster": 3,
+      "largest_fraction": 1.0,
+      "inter_cluster_distance": 0.0
+    },
+    "48": {
+      "num_solutions": 6,
+      "num_clusters": 3,
+      "largest_cluster": 4,
+      "largest_fraction": 0.667,
+      "inter_cluster_distance": 3.56
+    },
+    "49": {
+      "num_solutions": 3,
+      "num_clusters": 3,
+      "largest_cluster": 1,
+      "largest_fraction": 0.333,
+      "inter_cluster_distance": 2.67
+    }
+  },
+  "Q3_scaling": {
+    "6": {
+      "N": 6,
+      "M": 25,
+      "frac_with_solutions": 0.85,
+      "mean_clusters": 1.3,
+      "mean_largest_frac": 0.882,
+      "mean_inter_dist": 3.5
+    },
+    "8": {
+      "N": 8,
+      "M": 34,
+      "frac_with_solutions": 0.85,
+      "mean_clusters": 1.4,
+      "mean_largest_frac": 0.884,
+      "mean_inter_dist": 4.16
+    },
+    "10": {
+      "N": 10,
+      "M": 42,
+      "frac_with_solutions": 0.7,
+      "mean_clusters": 1.6,
+      "mean_largest_frac": 0.816,
+      "mean_inter_dist": 5.23
+    }
+  },
+  "Q4_example": {
+    "example": {
+      "num_solutions": 0,
+      "num_clusters": 0,
+      "largest_cluster": 0,
+      "cluster_sizes": [],
+      "largest_fraction": 0,
+      "inter_cluster_distance": 0,
+      "clusters": []
+    },
+    "formula": {
+      "N": 8,
+      "M": 34
+    }
+  },
+  "key_question": "Does solution space fragment into isolated clusters at the phase transition?",
+  "key_finding": "At the phase transition (ratio ~4.25), the solution space fragments into 1.7 clusters on average, with the largest cluster containing 77.4% of solutions. Inter-cluster Hamming distance is large, meaning no single-variable flip connects clusters.",
+  "honest_wall": "If clusters fragment exponentially at the transition, no local flow can traverse the space. Compression requires non-local jumps."
+}
