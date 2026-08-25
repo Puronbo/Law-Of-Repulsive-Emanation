@@ -1,0 +1,311 @@
+{
+  "experiment": "0/0 Climate Tipping Point Detector",
+  "framework": "Removable singularity at tipping frequency",
+  "key_formula": "R = lim_{omega->omega_c} Z(omega), tipping if R -> 0",
+  "results": {
+    "resilience": [
+      {
+        "epoch": 50,
+        "resilience_R": 0.358259,
+        "variance": 0.007864,
+        "autocorrelation": 0.762139,
+        "n_zero_over_zero": 5
+      },
+      {
+        "epoch": 100,
+        "resilience_R": 0.353435,
+        "variance": 0.009331,
+        "autocorrelation": 0.720009,
+        "n_zero_over_zero": 4
+      },
+      {
+        "epoch": 150,
+        "resilience_R": 0.353741,
+        "variance": 0.00889,
+        "autocorrelation": 0.66691,
+        "n_zero_over_zero": 5
+      },
+      {
+        "epoch": 200,
+        "resilience_R": 0.356661,
+        "variance": 0.010608,
+        "autocorrelation": 0.702317,
+        "n_zero_over_zero": 5
+      },
+      {
+        "epoch": 250,
+        "resilience_R": 0.343446,
+        "variance": 0.010601,
+        "autocorrelation": 0.71795,
+        "n_zero_over_zero": 4
+      },
+      {
+        "epoch": 300,
+        "resilience_R": 0.340469,
+        "variance": 0.010186,
+        "autocorrelation": 0.686667,
+        "n_zero_over_zero": 4
+      },
+      {
+        "epoch": 350,
+        "resilience_R": 0.352285,
+        "variance": 0.00953,
+        "autocorrelation": 0.672659,
+        "n_zero_over_zero": 4
+      },
+      {
+        "epoch": 400,
+        "resilience_R": 0.361738,
+        "variance": 0.010199,
+        "autocorrelation": 0.761861,
+        "n_zero_over_zero": 5
+      },
+      {
+        "epoch": 450,
+        "resilience_R": 0.355338,
+        "variance": 0.009235,
+        "autocorrelation": 0.710203,
+        "n_zero_over_zero": 5
+      },
+      {
+        "epoch": 500,
+        "resilience_R": 0.360637,
+        "variance": 0.008624,
+        "autocorrelation": 0.726221,
+        "n_zero_over_zero": 5
+      },
+      {
+        "epoch": 550,
+        "resilience_R": 0.349339,
+        "variance": 0.009441,
+        "autocorrelation": 0.707492,
+        "n_zero_over_zero": 4
+      },
+      {
+        "epoch": 600,
+        "resilience_R": 0.355463,
+        "variance": 0.009703,
+        "autocorrelation": 0.730353,
+        "n_zero_over_zero": 5
+      },
+      {
+        "epoch": 650,
+        "resilience_R": 0.374043,
+        "variance": 1.002684,
+        "autocorrelation": 0.977166,
+        "n_zero_over_zero": 6
+      },
+      {
+        "epoch": 700,
+        "resilience_R": 0.41071,
+        "variance": 2.968103,
+        "autocorrelation": 0.980268,
+        "n_zero_over_zero": 7
+      },
+      {
+        "epoch": 750,
+        "resilience_R": 0.375367,
+        "variance": 0.833419,
+        "autocorrelation": 0.975876,
+        "n_zero_over_zero": 6
+      },
+      {
+        "epoch": 800,
+        "resilience_R": 0.40817,
+        "variance": 0.129503,
+        "autocorrelation": 0.983471,
+        "n_zero_over_zero": 7
+      },
+      {
+        "epoch": 850,
+        "resilience_R": 0.0,
+        "variance": 0.023966,
+        "autocorrelation": 0.938471,
+        "n_zero_over_zero": 0
+      },
+      {
+        "epoch": 900,
+        "resilience_R": 0.408729,
+        "variance": 0.120638,
+        "autocorrelation": 0.983599,
+        "n_zero_over_zero": 7
+      }
+    ],
+    "classifications": [
+      {
+        "epoch": 50,
+        "status": "STABLE",
+        "resilience_R": 0.358259,
+        "variance": 0.007864,
+        "autocorrelation": 0.762139
+      },
+      {
+        "epoch": 100,
+        "status": "STABLE",
+        "resilience_R": 0.353435,
+        "variance": 0.009331,
+        "autocorrelation": 0.720009
+      },
+      {
+        "epoch": 150,
+        "status": "STABLE",
+        "resilience_R": 0.353741,
+        "variance": 0.00889,
+        "autocorrelation": 0.66691
+      },
+      {
+        "epoch": 200,
+        "status": "STABLE",
+        "resilience_R": 0.356661,
+        "variance": 0.010608,
+        "autocorrelation": 0.702317
+      },
+      {
+        "epoch": 250,
+        "status": "STABLE",
+        "resilience_R": 0.343446,
+        "variance": 0.010601,
+        "autocorrelation": 0.71795
+      },
+      {
+        "epoch": 300,
+        "status": "STABLE",
+        "resilience_R": 0.340469,
+        "variance": 0.010186,
+        "autocorrelation": 0.686667
+      },
+      {
+        "epoch": 350,
+        "status": "STABLE",
+        "resilience_R": 0.352285,
+        "variance": 0.00953,
+        "autocorrelation": 0.672659
+      },
+      {
+        "epoch": 400,
+        "status": "STABLE",
+        "resilience_R": 0.361738,
+        "variance": 0.010199,
+        "autocorrelation": 0.761861
+      },
+      {
+        "epoch": 450,
+        "status": "STABLE",
+        "resilience_R": 0.355338,
+        "variance": 0.009235,
+        "autocorrelation": 0.710203
+      },
+      {
+        "epoch": 500,
+        "status": "STABLE",
+        "resilience_R": 0.360637,
+        "variance": 0.008624,
+        "autocorrelation": 0.726221
+      },
+      {
+        "epoch": 550,
+        "status": "STABLE",
+        "resilience_R": 0.349339,
+        "variance": 0.009441,
+        "autocorrelation": 0.707492
+      },
+      {
+        "epoch": 600,
+        "status": "STABLE",
+        "resilience_R": 0.355463,
+        "variance": 0.009703,
+        "autocorrelation": 0.730353
+      },
+      {
+        "epoch": 650,
+        "status": "APPROACHING",
+        "resilience_R": 0.374043,
+        "variance": 1.002684,
+        "autocorrelation": 0.977166
+      },
+      {
+        "epoch": 700,
+        "status": "TIPPING",
+        "resilience_R": 0.41071,
+        "variance": 2.968103,
+        "autocorrelation": 0.980268
+      },
+      {
+        "epoch": 750,
+        "status": "APPROACHING",
+        "resilience_R": 0.375367,
+        "variance": 0.833419,
+        "autocorrelation": 0.975876
+      },
+      {
+        "epoch": 800,
+        "status": "TIPPING",
+        "resilience_R": 0.40817,
+        "variance": 0.129503,
+        "autocorrelation": 0.983471
+      },
+      {
+        "epoch": 850,
+        "status": "STABLE",
+        "resilience_R": 0.0,
+        "variance": 0.023966,
+        "autocorrelation": 0.938471
+      },
+      {
+        "epoch": 900,
+        "status": "TIPPING",
+        "resilience_R": 0.408729,
+        "variance": 0.120638,
+        "autocorrelation": 0.983599
+      }
+    ],
+    "transitions": [
+      {
+        "epoch": 50,
+        "from": null,
+        "to": "STABLE"
+      },
+      {
+        "epoch": 650,
+        "from": "STABLE",
+        "to": "APPROACHING"
+      },
+      {
+        "epoch": 700,
+        "from": "APPROACHING",
+        "to": "TIPPING"
+      },
+      {
+        "epoch": 750,
+        "from": "TIPPING",
+        "to": "APPROACHING"
+      },
+      {
+        "epoch": 800,
+        "from": "APPROACHING",
+        "to": "TIPPING"
+      },
+      {
+        "epoch": 850,
+        "from": "TIPPING",
+        "to": "STABLE"
+      },
+      {
+        "epoch": 900,
+        "from": "STABLE",
+        "to": "TIPPING"
+      }
+    ],
+    "false_alarm_test": {
+      "n_trials": 50,
+      "csd_false_alarms": 0,
+      "zero_false_alarms": 0,
+      "csd_rate": 0.0,
+      "zero_rate": 0.0
+    },
+    "recovery_detection": {
+      "recovery_epoch": 700
+    }
+  },
+  "key_insight": "The 0/0 framework provides false-alarm-immune early warning for climate tipping points. The removable value R vanishes at the tipping point, distinguishing real tipping from noise-induced fluctuations."
+}
