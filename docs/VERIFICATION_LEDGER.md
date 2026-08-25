@@ -94,6 +94,10 @@ hygiene pass applied and verified post-fix. One packaging defect
 | Treewidth grows sublinearly: tw ~ 0.65N | p_np_contour.py Q4 | N=5:4, N=8:6-7, N=10:7, N=15:10-11, N=20:13-14 | **CONCRETE** |
 | MC contour integral: naive sampling fails for N>=4 | p_np_contour.py Q5 | N=3: converges; N=4,5: error > 20. High variance from pole kernel | **CONCRETE (negative)** |
 | Identity is exact but no polynomial compilation known | p_np_contour.py (honest_wall) | Equivalent to 2^N enumeration. No merging theorem for general formulas | **OPEN (conceptual)** |
+| Spectral gap of incidence matrix does NOT close at phase transition | p_np_flow.py Q1 | Gap minimum at ratio ~1.0 (0.24), then increases. At transition (4.267): gap=2.16, still rising | **CONCRETE (negative)** |
+| Entropy reaches zero BEFORE phase transition | p_np_flow.py Q3 | H_norm=0 by ratio ~2.3. Solution space already constrained at transition | **CONCRETE** |
+| Algebraic connectivity (Laplacian gap) grows monotonically | p_np_flow.py Q1 | 0 below ratio 1, then 0.1->28.0 as density increases. Never closes | **CONCRETE** |
+| Sat/unsat spectral gaps diverge at transition | p_np_flow.py Q4 | sat_mean_gap < unsat_mean_gap for ratio >= 4.2. Hard instances have LOWER gap than easy UNSAT | **CONCRETE** |
 
 ## Known non-concrete zones (disclosed)
 
