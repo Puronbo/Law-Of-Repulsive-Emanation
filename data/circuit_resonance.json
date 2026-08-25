@@ -1,0 +1,219 @@
+{
+  "experiment": "Circuit Resonance 0/0 Structure",
+  "claim": "Z(omega_0) = R exactly. Im(Z) = 0/0 at resonance. Removable value = R.",
+  "Q1": {
+    "R": 10.0,
+    "L": 0.01,
+    "C": 0.001,
+    "w0": 316.227766,
+    "Q": 0.32,
+    "Z_at_w0": {
+      "real": 10.0,
+      "imag": -0.0
+    },
+    "frequency_scan": [
+      {
+        "frac": 0.5,
+        "omega": 158.1139,
+        "Z_real": 10.0,
+        "Z_imag": -4.7434,
+        "abs_Z": 11.068
+      },
+      {
+        "frac": 0.8,
+        "omega": 252.9822,
+        "Z_real": 10.0,
+        "Z_imag": -1.423,
+        "abs_Z": 10.1007
+      },
+      {
+        "frac": 0.9,
+        "omega": 284.605,
+        "Z_real": 10.0,
+        "Z_imag": -0.6676,
+        "abs_Z": 10.0223
+      },
+      {
+        "frac": 0.95,
+        "omega": 300.4164,
+        "Z_real": 10.0,
+        "Z_imag": -0.3245,
+        "abs_Z": 10.0053
+      },
+      {
+        "frac": 0.99,
+        "omega": 313.0655,
+        "Z_real": 10.0,
+        "Z_imag": -0.0636,
+        "abs_Z": 10.0002
+      },
+      {
+        "frac": 1.0,
+        "omega": 316.2278,
+        "Z_real": 10.0,
+        "Z_imag": -0.0,
+        "abs_Z": 10.0
+      },
+      {
+        "frac": 1.01,
+        "omega": 319.39,
+        "Z_real": 10.0,
+        "Z_imag": 0.0629,
+        "abs_Z": 10.0002
+      },
+      {
+        "frac": 1.05,
+        "omega": 332.0392,
+        "Z_real": 10.0,
+        "Z_imag": 0.3087,
+        "abs_Z": 10.0048
+      },
+      {
+        "frac": 1.1,
+        "omega": 347.8505,
+        "Z_real": 10.0,
+        "Z_imag": 0.6037,
+        "abs_Z": 10.0182
+      },
+      {
+        "frac": 1.2,
+        "omega": 379.4733,
+        "Z_real": 10.0,
+        "Z_imag": 1.1595,
+        "abs_Z": 10.067
+      },
+      {
+        "frac": 2.0,
+        "omega": 632.4555,
+        "Z_real": 10.0,
+        "Z_imag": 4.7434,
+        "abs_Z": 11.068
+      }
+    ]
+  },
+  "Q2": {
+    "1.0": {
+      "R": 1.0,
+      "Z_real": 1.0,
+      "Z_imag": -0.0,
+      "matches_R": true,
+      "imag_is_zero": true
+    },
+    "5.0": {
+      "R": 5.0,
+      "Z_real": 5.0,
+      "Z_imag": -0.0,
+      "matches_R": true,
+      "imag_is_zero": true
+    },
+    "10.0": {
+      "R": 10.0,
+      "Z_real": 10.0,
+      "Z_imag": -0.0,
+      "matches_R": true,
+      "imag_is_zero": true
+    },
+    "50.0": {
+      "R": 50.0,
+      "Z_real": 50.0,
+      "Z_imag": -0.0,
+      "matches_R": true,
+      "imag_is_zero": true
+    }
+  },
+  "Q3": {
+    "0.1": {
+      "R": 0.1,
+      "Q": 31.62,
+      "Z_peak": 0.1,
+      "Z_10pct_away": 0.6119,
+      "sharpness": 0.16
+    },
+    "1.0": {
+      "R": 1.0,
+      "Q": 3.16,
+      "Z_peak": 1.0,
+      "Z_10pct_away": 1.1681,
+      "sharpness": 0.86
+    },
+    "5.0": {
+      "R": 5.0,
+      "Q": 0.63,
+      "Z_peak": 5.0,
+      "Z_10pct_away": 5.0363,
+      "sharpness": 0.99
+    },
+    "10.0": {
+      "R": 10.0,
+      "Q": 0.32,
+      "Z_peak": 10.0,
+      "Z_10pct_away": 10.0182,
+      "sharpness": 1.0
+    },
+    "50.0": {
+      "R": 50.0,
+      "Q": 0.06,
+      "Z_peak": 50.0,
+      "Z_10pct_away": 50.0036,
+      "sharpness": 1.0
+    },
+    "100.0": {
+      "R": 100.0,
+      "Q": 0.03,
+      "Z_peak": 100.0,
+      "Z_10pct_away": 100.0018,
+      "sharpness": 1.0
+    }
+  },
+  "Q4": {
+    "1.0": {
+      "R": 1.0,
+      "contour_real": -0.0005,
+      "contour_imag": 0.0002
+    },
+    "10.0": {
+      "R": 10.0,
+      "contour_real": 0.1484,
+      "contour_imag": 0.0001
+    }
+  },
+  "Q5": {
+    "0.0": {
+      "V_dc": 0,
+      "omega": 0,
+      "Z": "infinite (DC supercurrent)"
+    },
+    "0.1": {
+      "V_dc": 0.1,
+      "omega": 0.1,
+      "Z_real": 1.0,
+      "Z_imag": -9999999.9841
+    },
+    "0.5": {
+      "V_dc": 0.5,
+      "omega": 0.5,
+      "Z_real": 1.0,
+      "Z_imag": -1999999.9204
+    },
+    "1.0": {
+      "V_dc": 1.0,
+      "omega": 1.0,
+      "Z_real": 1.0,
+      "Z_imag": -999999.8408
+    },
+    "2.0": {
+      "V_dc": 2.0,
+      "omega": 2.0,
+      "Z_real": 1.0,
+      "Z_imag": -499999.6817
+    },
+    "5.0": {
+      "V_dc": 5.0,
+      "omega": 5.0,
+      "Z_real": 1.0,
+      "Z_imag": -199999.2042
+    }
+  },
+  "key_insight": "At resonance, the imaginary part of impedance vanishes (0/0). The removable value is R. Higher Q makes the singularity sharper. Same structure as Yang-Mills mass gap.",
+  "connection_to_LoRE": "Circuit resonance is a U(1) gauge theory with removable singularity. Q factor = inverse mass gap. Damping = renormalization flow."
+}
