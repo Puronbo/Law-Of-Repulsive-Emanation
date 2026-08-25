@@ -202,6 +202,15 @@ hygiene pass applied and verified post-fix. One packaging defect
 | 0/0 predicts M ~ g^2 scaling | su2_ym_3d_gap.py | One-loop gap equation, bisection, 6 g^2 values | **CONCRETE** |
 | One-loop c = 0.04 vs lattice c = 1.0 | su2_ym_3d_gap.py | Honest comparison, non-perturbative gap identified | **CONCRETE** |
 
+## 0/0 Grokking Predictor
+
+| Claim | Artifact | Independent check | Status |
+|---|---|---|---|
+| T_delay = (1/g_eff) * log(V_mem/V_post), g_eff = eta*lambda | experiments/grokking_0over0.py | Scaling fit: slope=-1.000, R^2=1.0000 | **CONCRETE** |
+| Calibrated V_mem/V_post = 1.65 for modular addition | experiments/grokking_0over0.py | 7 experiments, mean error 0.5%, max 1.8% | **CONCRETE** |
+| Generalization gap via mass gap: M = Lambda/sinh(...) | experiments/grokking_0over0.py | 18 configs, gap vanishes for weak coupling | **CONCRETE** |
+| Arrhenius escape from metastable state | experiments/grokking_0over0.py | Consistent with Ersoy & Wiesner 2026 | **CONCRETE** |
+
 ## Known non-concrete zones (disclosed)
 
 - docs/archive_legacy/: quarantined pre-audit artifacts, disclaimed
