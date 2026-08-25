@@ -1,0 +1,482 @@
+{
+  "experiment": "Thirring-GN Crossover (numerical solution)",
+  "formula_exact": "M = Lambda / sinh(2*pi / (g_eff^2 * (N-1)))",
+  "formula_asymptotic": "M ~ 2*Lambda * exp(-2*pi / (g_eff^2 * (N-1)))",
+  "max_rel_error_exact_formula": 0.0,
+  "results": [
+    {
+      "N": 4,
+      "g_eff_sq": 0.1,
+      "M_numerical": 1.6e-08,
+      "M_exact_formula": 1.6e-08,
+      "M_asymptotic": 1.6e-08,
+      "rel_err_exact": 0.0,
+      "rel_err_asymptotic": 0.0
+    },
+    {
+      "N": 4,
+      "g_eff_sq": 0.2,
+      "M_numerical": 0.0005663812,
+      "M_exact_formula": 0.0005663812,
+      "M_asymptotic": 0.0005663812,
+      "rel_err_exact": 0.0,
+      "rel_err_asymptotic": 8.02e-10
+    },
+    {
+      "N": 4,
+      "g_eff_sq": 0.5,
+      "M_numerical": 0.3033621602,
+      "M_exact_formula": 0.3033621602,
+      "M_asymptotic": 0.3032923973,
+      "rel_err_exact": 0.0,
+      "rel_err_asymptotic": 0.000229965696
+    },
+    {
+      "N": 4,
+      "g_eff_sq": 1.0,
+      "M_numerical": 2.5008181784,
+      "M_exact_formula": 2.5008181784,
+      "M_asymptotic": 2.4628942214,
+      "rel_err_exact": 0.0,
+      "rel_err_asymptotic": 0.015164619865
+    },
+    {
+      "N": 4,
+      "g_eff_sq": 2.0,
+      "M_numerical": 8.0040529289,
+      "M_exact_formula": 8.0040529289,
+      "M_asymptotic": 7.0183961436,
+      "rel_err_exact": 0.0,
+      "rel_err_asymptotic": 0.12314471107
+    },
+    {
+      "N": 4,
+      "g_eff_sq": 5.0,
+      "M_numerical": 23.189140995,
+      "M_exact_formula": 23.189140995,
+      "M_asymptotic": 13.1556753764,
+      "rel_err_exact": 0.0,
+      "rel_err_asymptotic": 0.432679486523
+    },
+    {
+      "N": 4,
+      "g_eff_sq": 10.0,
+      "M_numerical": 47.3991952216,
+      "M_exact_formula": 47.3991952216,
+      "M_asymptotic": 16.2207739497,
+      "rel_err_exact": 0.0,
+      "rel_err_asymptotic": 0.65778376882
+    }
+  ],
+  "phase_diagram": [
+    {
+      "g_vector": 0.0,
+      "g_scalar": 0.0,
+      "g_eff_sq": 0.0,
+      "M_numerical": 0.0,
+      "M_exact_formula": 0.0,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 0.0,
+      "g_scalar": 0.5,
+      "g_eff_sq": 0.083333,
+      "M_numerical": 2e-10,
+      "M_exact_formula": 2e-10,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 0.0,
+      "g_scalar": 1.0,
+      "g_eff_sq": 0.333333,
+      "M_numerical": 0.0373489849,
+      "M_exact_formula": 0.0373489849,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 0.0,
+      "g_scalar": 2.0,
+      "g_eff_sq": 1.333333,
+      "M_numerical": 4.3453720809,
+      "M_exact_formula": 4.3453720809,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 0.0,
+      "g_scalar": 5.0,
+      "g_eff_sq": 8.333333,
+      "M_numerical": 39.3729231724,
+      "M_exact_formula": 39.3729231724,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 0.5,
+      "g_scalar": 0.0,
+      "g_eff_sq": 0.25,
+      "M_numerical": 0.0045993142,
+      "M_exact_formula": 0.0045993142,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 0.5,
+      "g_scalar": 0.5,
+      "g_eff_sq": 0.333333,
+      "M_numerical": 0.0373489849,
+      "M_exact_formula": 0.0373489849,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 0.5,
+      "g_scalar": 1.0,
+      "g_eff_sq": 0.583333,
+      "M_numerical": 0.5521707398,
+      "M_exact_formula": 0.5521707398,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 0.5,
+      "g_scalar": 2.0,
+      "g_eff_sq": 1.583333,
+      "M_numerical": 5.7348785111,
+      "M_exact_formula": 5.7348785111,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 0.5,
+      "g_scalar": 5.0,
+      "g_eff_sq": 8.583333,
+      "M_numerical": 40.5785264607,
+      "M_exact_formula": 40.5785264607,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 1.0,
+      "g_scalar": 0.0,
+      "g_eff_sq": 1.0,
+      "M_numerical": 2.5008181784,
+      "M_exact_formula": 2.5008181784,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 1.0,
+      "g_scalar": 0.5,
+      "g_eff_sq": 1.083333,
+      "M_numerical": 2.9552892834,
+      "M_exact_formula": 2.9552892834,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 1.0,
+      "g_scalar": 1.0,
+      "g_eff_sq": 1.333333,
+      "M_numerical": 4.3453720809,
+      "M_exact_formula": 4.3453720809,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 1.0,
+      "g_scalar": 2.0,
+      "g_eff_sq": 2.333333,
+      "M_numerical": 9.7744327891,
+      "M_exact_formula": 9.7744327891,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 1.0,
+      "g_scalar": 5.0,
+      "g_eff_sq": 9.333333,
+      "M_numerical": 44.191570491,
+      "M_exact_formula": 44.191570491,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 2.0,
+      "g_scalar": 0.0,
+      "g_eff_sq": 4.0,
+      "M_numerical": 18.2530557469,
+      "M_exact_formula": 18.2530557469,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 2.0,
+      "g_scalar": 0.5,
+      "g_eff_sq": 4.083333,
+      "M_numerical": 18.6671544246,
+      "M_exact_formula": 18.6671544246,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 2.0,
+      "g_scalar": 1.0,
+      "g_eff_sq": 4.333333,
+      "M_numerical": 19.9060314832,
+      "M_exact_formula": 19.9060314832,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 2.0,
+      "g_scalar": 2.0,
+      "g_eff_sq": 5.333333,
+      "M_numerical": 24.8218793162,
+      "M_exact_formula": 24.8218793162,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 2.0,
+      "g_scalar": 5.0,
+      "g_eff_sq": 12.333333,
+      "M_numerical": 58.6052518959,
+      "M_exact_formula": 58.6052518959,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 5.0,
+      "g_scalar": 0.0,
+      "g_eff_sq": 25.0,
+      "M_numerical": 119.2266952219,
+      "M_exact_formula": 119.2266952219,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 5.0,
+      "g_scalar": 0.5,
+      "g_eff_sq": 25.083333,
+      "M_numerical": 119.6250453202,
+      "M_exact_formula": 119.6250453202,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 5.0,
+      "g_scalar": 1.0,
+      "g_eff_sq": 25.333333,
+      "M_numerical": 120.8200773931,
+      "M_exact_formula": 120.8200773931,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 5.0,
+      "g_scalar": 2.0,
+      "g_eff_sq": 26.333333,
+      "M_numerical": 125.5999461512,
+      "M_exact_formula": 125.5999461512,
+      "rel_err": 0.0
+    },
+    {
+      "g_vector": 5.0,
+      "g_scalar": 5.0,
+      "g_eff_sq": 33.333333,
+      "M_numerical": 159.0502715487,
+      "M_exact_formula": 159.0502715487,
+      "rel_err": 0.0
+    }
+  ],
+  "crossover": [
+    {
+      "frac_scalar": 0.0,
+      "g_vector": 2.0,
+      "g_scalar": 0.0,
+      "g_eff_sq": 4.0,
+      "M_numerical": 18.2530557469,
+      "M_exact_formula": 18.2530557469
+    },
+    {
+      "frac_scalar": 0.05,
+      "g_vector": 1.9,
+      "g_scalar": 0.1,
+      "g_eff_sq": 3.613333,
+      "M_numerical": 16.3229154639,
+      "M_exact_formula": 16.3229154639
+    },
+    {
+      "frac_scalar": 0.1,
+      "g_vector": 1.8,
+      "g_scalar": 0.2,
+      "g_eff_sq": 3.253333,
+      "M_numerical": 14.5102777241,
+      "M_exact_formula": 14.5102777241
+    },
+    {
+      "frac_scalar": 0.15,
+      "g_vector": 1.7,
+      "g_scalar": 0.3,
+      "g_eff_sq": 2.92,
+      "M_numerical": 12.814594921,
+      "M_exact_formula": 12.814594921
+    },
+    {
+      "frac_scalar": 0.2,
+      "g_vector": 1.6,
+      "g_scalar": 0.4,
+      "g_eff_sq": 2.613333,
+      "M_numerical": 11.2357656695,
+      "M_exact_formula": 11.2357656695
+    },
+    {
+      "frac_scalar": 0.25,
+      "g_vector": 1.5,
+      "g_scalar": 0.5,
+      "g_eff_sq": 2.333333,
+      "M_numerical": 9.7744327891,
+      "M_exact_formula": 9.7744327891
+    },
+    {
+      "frac_scalar": 0.3,
+      "g_vector": 1.4,
+      "g_scalar": 0.6,
+      "g_eff_sq": 2.08,
+      "M_numerical": 8.432352655,
+      "M_exact_formula": 8.432352655
+    },
+    {
+      "frac_scalar": 0.35,
+      "g_vector": 1.3,
+      "g_scalar": 0.7,
+      "g_eff_sq": 1.853333,
+      "M_numerical": 7.2127690578,
+      "M_exact_formula": 7.2127690578
+    },
+    {
+      "frac_scalar": 0.4,
+      "g_vector": 1.2,
+      "g_scalar": 0.8,
+      "g_eff_sq": 1.653333,
+      "M_numerical": 6.1206363225,
+      "M_exact_formula": 6.1206363225
+    },
+    {
+      "frac_scalar": 0.45,
+      "g_vector": 1.1,
+      "g_scalar": 0.9,
+      "g_eff_sq": 1.48,
+      "M_numerical": 5.1624419538,
+      "M_exact_formula": 5.1624419538
+    },
+    {
+      "frac_scalar": 0.5,
+      "g_vector": 1.0,
+      "g_scalar": 1.0,
+      "g_eff_sq": 1.333333,
+      "M_numerical": 4.3453720809,
+      "M_exact_formula": 4.3453720809
+    },
+    {
+      "frac_scalar": 0.55,
+      "g_vector": 0.9,
+      "g_scalar": 1.1,
+      "g_eff_sq": 1.213333,
+      "M_numerical": 3.6757882919,
+      "M_exact_formula": 3.6757882919
+    },
+    {
+      "frac_scalar": 0.6,
+      "g_vector": 0.8,
+      "g_scalar": 1.2,
+      "g_eff_sq": 1.12,
+      "M_numerical": 3.157490732,
+      "M_exact_formula": 3.157490732
+    },
+    {
+      "frac_scalar": 0.65,
+      "g_vector": 0.7,
+      "g_scalar": 1.3,
+      "g_eff_sq": 1.053333,
+      "M_numerical": 2.7907429906,
+      "M_exact_formula": 2.7907429906
+    },
+    {
+      "frac_scalar": 0.7,
+      "g_vector": 0.6,
+      "g_scalar": 1.4,
+      "g_eff_sq": 1.013333,
+      "M_numerical": 2.5729385803,
+      "M_exact_formula": 2.5729385803
+    },
+    {
+      "frac_scalar": 0.75,
+      "g_vector": 0.5,
+      "g_scalar": 1.5,
+      "g_eff_sq": 1.0,
+      "M_numerical": 2.5008181784,
+      "M_exact_formula": 2.5008181784
+    },
+    {
+      "frac_scalar": 0.8,
+      "g_vector": 0.4,
+      "g_scalar": 1.6,
+      "g_eff_sq": 1.013333,
+      "M_numerical": 2.5729385803,
+      "M_exact_formula": 2.5729385803
+    },
+    {
+      "frac_scalar": 0.85,
+      "g_vector": 0.3,
+      "g_scalar": 1.7,
+      "g_eff_sq": 1.053333,
+      "M_numerical": 2.7907429906,
+      "M_exact_formula": 2.7907429906
+    },
+    {
+      "frac_scalar": 0.9,
+      "g_vector": 0.2,
+      "g_scalar": 1.8,
+      "g_eff_sq": 1.12,
+      "M_numerical": 3.157490732,
+      "M_exact_formula": 3.157490732
+    },
+    {
+      "frac_scalar": 0.95,
+      "g_vector": 0.1,
+      "g_scalar": 1.9,
+      "g_eff_sq": 1.213333,
+      "M_numerical": 3.6757882919,
+      "M_exact_formula": 3.6757882919
+    },
+    {
+      "frac_scalar": 1.0,
+      "g_vector": 0.0,
+      "g_scalar": 2.0,
+      "g_eff_sq": 1.333333,
+      "M_numerical": 4.3453720809,
+      "M_exact_formula": 4.3453720809
+    }
+  ],
+  "n_dependence": [
+    {
+      "N": 2,
+      "g_eff_sq": 2.0,
+      "M_numerical": 0.8658953753,
+      "M_exact_formula": 0.8658953753
+    },
+    {
+      "N": 4,
+      "g_eff_sq": 1.333333,
+      "M_numerical": 4.3453720809,
+      "M_exact_formula": 4.3453720809
+    },
+    {
+      "N": 8,
+      "g_eff_sq": 1.142857,
+      "M_numerical": 11.5118387092,
+      "M_exact_formula": 11.5118387092
+    },
+    {
+      "N": 16,
+      "g_eff_sq": 1.066667,
+      "M_numerical": 24.8218793162,
+      "M_exact_formula": 24.8218793162
+    },
+    {
+      "N": 32,
+      "g_eff_sq": 1.032258,
+      "M_numerical": 50.603798518,
+      "M_exact_formula": 50.603798518
+    },
+    {
+      "N": 64,
+      "g_eff_sq": 1.015873,
+      "M_numerical": 101.6957227651,
+      "M_exact_formula": 101.6957227651
+    }
+  ],
+  "key_result": "The exact formula M = Lambda/sinh(2*pi/(g_eff^2*(N-1))) matches numerical to machine precision. The crossover is smooth."
+}
