@@ -1,4 +1,7 @@
-# Puno Calculus
+"""Generate updated README.md"""
+import os
+
+readme = r"""# Puno Calculus
 
 **The Law of Repulsive Emanation (L.O.R.E.)** -- *The deep structure of mathematics is 0/0.*
 
@@ -182,3 +185,8 @@ A removable 0/0 singularity appears in every system with a resonance or critical
 ---
 
 *Everything folds. The constant is determined. The chaos is consistent.*
+"""
+
+with open("README.md", "w", encoding="utf-8") as f:
+    f.write(readme.lstrip("\n"))
+print("README.md updated (%d bytes)" % os.path.getsize("README.md"))
