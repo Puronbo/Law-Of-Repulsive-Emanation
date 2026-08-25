@@ -1,0 +1,191 @@
+{
+  "experiment": "Circuit Resonance: Parallel and Nonlinear",
+  "claim": "0/0 structure persists in parallel RLC, diode circuits, and transistor amplifiers.",
+  "Q1": {
+    "circuit": "parallel RLC",
+    "R": 100.0,
+    "L": 0.01,
+    "C": 0.001,
+    "w0": 316.227766,
+    "Z_at_w0": {
+      "real": 100.0,
+      "imag": 0.0
+    },
+    "is_real": true,
+    "removable_value_is_R": true,
+    "scan": [
+      {
+        "frac": 0.5,
+        "abs_Z": 2.1077
+      },
+      {
+        "frac": 0.8,
+        "abs_Z": 7.01
+      },
+      {
+        "frac": 0.9,
+        "abs_Z": 14.8139
+      },
+      {
+        "frac": 0.95,
+        "abs_Z": 29.4459
+      },
+      {
+        "frac": 0.99,
+        "abs_Z": 84.3934
+      },
+      {
+        "frac": 1.0,
+        "abs_Z": 100.0
+      },
+      {
+        "frac": 1.01,
+        "abs_Z": 84.6349
+      },
+      {
+        "frac": 1.05,
+        "abs_Z": 30.8174
+      },
+      {
+        "frac": 1.1,
+        "abs_Z": 16.3416
+      },
+      {
+        "frac": 1.2,
+        "abs_Z": 8.5925
+      },
+      {
+        "frac": 2.0,
+        "abs_Z": 2.1077
+      }
+    ]
+  },
+  "Q2": {
+    "10.0": {
+      "R": 10.0,
+      "series": {
+        "real": 10.0,
+        "imag": -0.0
+      },
+      "parallel": {
+        "real": 10.0,
+        "imag": 0.0
+      },
+      "both_real": true
+    },
+    "100.0": {
+      "R": 100.0,
+      "series": {
+        "real": 100.0,
+        "imag": -0.0
+      },
+      "parallel": {
+        "real": 100.0,
+        "imag": 0.0
+      },
+      "both_real": true
+    }
+  },
+  "Q3": {
+    "0.1": {
+      "I_bias_mA": 0.1,
+      "R_d": 260.0,
+      "Z_at_w0": {
+        "real": 260.0,
+        "imag": -0.0
+      },
+      "removable_value": 260.0,
+      "matches_R_d": true
+    },
+    "1.0": {
+      "I_bias_mA": 1.0,
+      "R_d": 26.0,
+      "Z_at_w0": {
+        "real": 26.0,
+        "imag": -0.0
+      },
+      "removable_value": 26.0,
+      "matches_R_d": true
+    },
+    "10.0": {
+      "I_bias_mA": 10.0,
+      "R_d": 2.6,
+      "Z_at_w0": {
+        "real": 2.6,
+        "imag": -0.0
+      },
+      "removable_value": 2.6,
+      "matches_R_d": true
+    }
+  },
+  "Q4": {
+    "50": {
+      "beta": 50,
+      "R_in": 25.4902,
+      "Z_at_w0": {
+        "real": 25.4902,
+        "imag": -0.0
+      }
+    },
+    "100": {
+      "beta": 100,
+      "R_in": 25.7426,
+      "Z_at_w0": {
+        "real": 25.7426,
+        "imag": -0.0
+      }
+    },
+    "200": {
+      "beta": 200,
+      "R_in": 25.8706,
+      "Z_at_w0": {
+        "real": 25.8706,
+        "imag": -0.0
+      }
+    }
+  },
+  "Q5": {
+    "10.0": {
+      "R_load": 10.0,
+      "Z_at_w0": {
+        "real": 10.0,
+        "imag": 0.0
+      },
+      "abs_Z": 10.0
+    },
+    "50.0": {
+      "R_load": 50.0,
+      "Z_at_w0": {
+        "real": 50.0,
+        "imag": 0.0
+      },
+      "abs_Z": 50.0
+    },
+    "100.0": {
+      "R_load": 100.0,
+      "Z_at_w0": {
+        "real": 100.0,
+        "imag": 0.0
+      },
+      "abs_Z": 100.0
+    },
+    "500.0": {
+      "R_load": 500.0,
+      "Z_at_w0": {
+        "real": 500.0,
+        "imag": 0.0
+      },
+      "abs_Z": 500.0
+    },
+    "1000.0": {
+      "R_load": 1000.0,
+      "Z_at_w0": {
+        "real": 1000.0,
+        "imag": 0.0
+      },
+      "abs_Z": 1000.0
+    }
+  },
+  "key_insight": "The 0/0 removable singularity is universal across linear circuit topologies. Nonlinear elements (diodes, transistors) introduce a bias-dependent resistance that replaces R, but the 0/0 structure at resonance remains.",
+  "connection_to_LoRE": "Same principle as Yang-Mills: the gauge symmetry (Kirchhoff's laws) enforces a 0/0 at resonance. The removable value (R) depends on the circuit parameters, not on the frequency. This is the 'mass gap' of the electrical system."
+}

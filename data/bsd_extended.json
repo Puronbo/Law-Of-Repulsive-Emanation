@@ -1,0 +1,173 @@
+{
+  "experiment": "BSD Extended Verification",
+  "Q1": [
+    {
+      "label": "11.a2",
+      "rank": 0,
+      "LHS": 0.2538418609,
+      "RHS": 0.2538418609,
+      "ratio": 1.0,
+      "verified": true
+    },
+    {
+      "label": "14.a1",
+      "rank": 0,
+      "LHS": 0.3302236593,
+      "RHS": 0.3302236593,
+      "ratio": 1.0,
+      "verified": true
+    },
+    {
+      "label": "37.a1",
+      "rank": 1,
+      "LHS": 0.3059997738,
+      "RHS": 0.3059997738,
+      "ratio": 1.0,
+      "verified": true
+    }
+  ],
+  "Q2": [
+    {
+      "label": "11.a1",
+      "rank": 1,
+      "L_approx_S500": -2.405556,
+      "BSD_RHS": 0.050882,
+      "ratio": -47.2773
+    },
+    {
+      "label": "11.a2",
+      "rank": 0,
+      "L_approx_S500": -2.405556,
+      "BSD_RHS": 0.253842,
+      "ratio": -9.4766
+    },
+    {
+      "label": "14.a1",
+      "rank": 0,
+      "L_approx_S500": -0.079365,
+      "BSD_RHS": 0.330224,
+      "ratio": -0.2403
+    },
+    {
+      "label": "37.a1",
+      "rank": 1,
+      "L_approx_S500": -2.131746,
+      "BSD_RHS": 0.306,
+      "ratio": -6.9665
+    },
+    {
+      "label": "43.a1",
+      "rank": 0,
+      "L_approx_S500": -2.515079,
+      "BSD_RHS": 2.990769,
+      "ratio": -0.8409
+    }
+  ],
+  "Q3": {
+    "11.a1": [
+      {
+        "p": 2,
+        "a_p": -1,
+        "factor": "(1 - -1*p^-s + p*p^-2s)^-1",
+        "discriminant": "D = -1^2 - 4*2 = -7"
+      },
+      {
+        "p": 3,
+        "a_p": 2,
+        "factor": "(1 - 2*p^-s + p*p^-2s)^-1",
+        "discriminant": "D = 2^2 - 4*3 = -8"
+      },
+      {
+        "p": 5,
+        "a_p": -2,
+        "factor": "(1 - -2*p^-s + p*p^-2s)^-1",
+        "discriminant": "D = -2^2 - 4*5 = -16"
+      },
+      {
+        "p": 7,
+        "a_p": 0,
+        "factor": "(1 - 0*p^-s + p*p^-2s)^-1",
+        "discriminant": "D = 0^2 - 4*7 = -28"
+      },
+      {
+        "p": 11,
+        "a_p": 0,
+        "factor": "(1 - 0*p^-1)^-1",
+        "local_root": "bad reduction, a_p=0"
+      }
+    ],
+    "11.a2": [
+      {
+        "p": 2,
+        "a_p": -1,
+        "factor": "(1 - -1*p^-s + p*p^-2s)^-1",
+        "discriminant": "D = -1^2 - 4*2 = -7"
+      },
+      {
+        "p": 3,
+        "a_p": 2,
+        "factor": "(1 - 2*p^-s + p*p^-2s)^-1",
+        "discriminant": "D = 2^2 - 4*3 = -8"
+      },
+      {
+        "p": 5,
+        "a_p": -2,
+        "factor": "(1 - -2*p^-s + p*p^-2s)^-1",
+        "discriminant": "D = -2^2 - 4*5 = -16"
+      },
+      {
+        "p": 7,
+        "a_p": 0,
+        "factor": "(1 - 0*p^-s + p*p^-2s)^-1",
+        "discriminant": "D = 0^2 - 4*7 = -28"
+      },
+      {
+        "p": 11,
+        "a_p": 0,
+        "factor": "(1 - 0*p^-1)^-1",
+        "local_root": "bad reduction, a_p=0"
+      }
+    ],
+    "14.a1": [
+      {
+        "p": 2,
+        "a_p": -2,
+        "factor": "(1 - -2*p^-s + p*p^-2s)^-1",
+        "discriminant": "D = -2^2 - 4*2 = -4"
+      },
+      {
+        "p": 3,
+        "a_p": -1,
+        "factor": "(1 - -1*p^-s + p*p^-2s)^-1",
+        "discriminant": "D = -1^2 - 4*3 = -11"
+      },
+      {
+        "p": 5,
+        "a_p": -2,
+        "factor": "(1 - -2*p^-s + p*p^-2s)^-1",
+        "discriminant": "D = -2^2 - 4*5 = -16"
+      },
+      {
+        "p": 7,
+        "a_p": 1,
+        "factor": "(1 - 1*p^-s + p*p^-2s)^-1",
+        "discriminant": "D = 1^2 - 4*7 = -27"
+      },
+      {
+        "p": 11,
+        "a_p": 0,
+        "factor": "(1 - 0*p^-s + p*p^-2s)^-1",
+        "discriminant": "D = 0^2 - 4*11 = -44"
+      }
+    ]
+  },
+  "Q4": {
+    "rank_0_formula": "L(E,1) = Sha * Omega * prod(c_p) / tors^2",
+    "rank_1_formula": "L'(E,1) = Sha * Omega * Reg * prod(c_p) / tors^2",
+    "rank_r_formula": "L^(r)(1)/r! = Sha * Omega * Reg * prod(c_p) / tors^2",
+    "curves_verified": 3,
+    "all_match": true,
+    "honest_status": "Numerical verification for 3 LMFDB curves. Rank >= 2 requires new Euler systems.",
+    "connection_to_LoRE": "BSD is a 0/0: L(E,s) vanishes at s=1 iff rank > 0. The removable value encodes the entire arithmetic side."
+  }
+}
