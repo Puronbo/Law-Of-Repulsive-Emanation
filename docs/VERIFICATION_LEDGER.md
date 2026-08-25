@@ -133,6 +133,14 @@ hygiene pass applied and verified post-fix. One packaging defect
 | Ising susceptibility: 0/0 in M/H at H->0 | universal_impedance.py Q4 | chi(T_c) = 88914, chi(3.0) = 0.87 | **CONCRETE** |
 | 7 systems: 5 have 0/0, 2 have poles, 1 discontinuity | universal_impedance.py comparison | All computed values match theory | **CONCRETE** |
 
+## Goldbach program
+
+| Claim | Artifact | Independent check | Status |
+|---|---|---|---|
+| Goldbach verified up to 100K | goldbach_large.py | 49999/49999 even numbers: zero failures | **CONCRETE** |
+| Representation count grows as n/(ln n)^2 | goldbach_large.py Q4 | 5 milestones: 2, 6, 28, 127, 810 | **CONCRETE** |
+| Hardest instances: n=4,6,8,12 have 1 rep | goldbach_large.py Q3 | 4 numbers with minimum | **CONCRETE** |
+
 ## Known non-concrete zones (disclosed)
 
 - docs/archive_legacy/: quarantined pre-audit artifacts, disclaimed
