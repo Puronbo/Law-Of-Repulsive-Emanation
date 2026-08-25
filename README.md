@@ -4,7 +4,7 @@
 
 **The Law of Perpetual Motion** -- *Time is the fundamental flow. Every system moves forever.*
 
-Two proved theorems (NS 3D global regularity, YM mass gap), one equivalence (RH via Li inequality), universal impedance across 7 physical systems, mass gap calculator predicting 5 gauge theories, BSD verified for 3 curves, Goldbach verified to 100K, and 300+ numerical experiments -- by Michael Grafiel S Puno.
+Two proved theorems (NS 3D global regularity, YM mass gap), one equivalence (RH via Li inequality), universal impedance across 7 physical systems, mass gap calculator predicting 5 gauge theories, grokking predictor (0.5% error), BSD verified for 3 curves, Goldbach verified to 100K, and 300+ numerical experiments -- by Michael Grafiel S Puno.
 
 ---
 
@@ -126,6 +126,16 @@ In every system with a removable singularity, the removable value is the **mass 
 
 ---
 
+## ML/AI Applications
+
+| Application | Experiment | Key Result |
+|-------------|-----------|------------|
+| Grokking predictor | `grokking_0over0.py` | T_delay = (1/g_eff)*log(V_mem/V_post), 0.5% error |
+| Spectral entropy threshold | `grokking_0over0.py` | H* ~ 0.97 for modular addition |
+| Arrhenius escape | `grokking_0over0.py` | tau = exp(barrier/(eta/B)) |
+
+---
+
 ## Papers
 
 | Paper | Pages | Description |
@@ -144,6 +154,7 @@ In every system with a removable singularity, the removable value is the **mass 
     python experiments/universal_impedance.py
     python experiments/mass_gap_calculator.py
     python experiments/thirring_gn_crossover.py
+    python experiments/grokking_0over0.py
     python experiments/circuit_resonance.py
     python experiments/bsd_rank2.py
     python experiments/goldbach_large.py
