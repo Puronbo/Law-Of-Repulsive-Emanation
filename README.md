@@ -111,6 +111,7 @@ Goldbach: 49,999 evens to 100K, zero failures.
 | Ising susceptibility | `universal_impedance.py` | chi(T_c) = 88914 |
 | Climate tipping detector | `climate_tipping_0over0.py` | 50-epoch early warning, 0% false alarms |
 | Dark matter cores | `dark_matter_core.py` | sigma/m -> core size via sinh formula |
+| Muon g-2 | `muon_g2_0over0.py` | Schwinger exact, SM agrees -2.7 sigma |
 
 ---
 
