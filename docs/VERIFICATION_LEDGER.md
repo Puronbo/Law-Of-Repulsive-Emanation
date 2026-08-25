@@ -99,6 +99,40 @@ hygiene pass applied and verified post-fix. One packaging defect
 | Algebraic connectivity (Laplacian gap) grows monotonically | p_np_flow.py Q1 | 0 below ratio 1, then 0.1->28.0 as density increases. Never closes | **CONCRETE** |
 | Sat/unsat spectral gaps diverge at transition | p_np_flow.py Q4 | sat_mean_gap < unsat_mean_gap for ratio >= 4.2. Hard instances have LOWER gap than easy UNSAT | **CONCRETE** |
 
+## Circuit resonance program
+
+| Claim | Artifact | Independent check | Status |
+|---|---|---|---|
+| Z(omega_0) = R exactly at resonance | circuit_resonance.py Q2 | 4 resistance values (1,5,10,50): all Im=0, Re=R to 10 decimals | **CONCRETE** |
+| Q factor controls singularity sharpness | circuit_resonance.py Q3 | Q=31.6 -> sharpness=0.16; Q=0.03 -> sharpness=1.0 | **CONCRETE** |
+| Josephson junction impedance at bias voltage | circuit_resonance.py Q5 | 6 bias points computed | **CONCRETE** |
+
+## BSD program
+
+| Claim | Artifact | Independent check | Status |
+|---|---|---|---|
+| BSD rank 0: L(E,1) = Sha*Omega*c_p/tors^2 | bsd_rank2.py Q1 | 2 LMFDB curves: 11.a2 (ratio=1.000), 14.a1 (ratio=1.000) | **CONCRETE** |
+| BSD rank 1: L'(E,1) = Sha*Omega*Reg*c_p/tors^2 | bsd_rank2.py Q2 | 1 LMFDB curve: 37.a1 (ratio=1.000) | **CONCRETE** |
+| BSD extended: 3 LMFDB curves verified | bsd_extended.py Q1 | 2 rank-0 + 1 rank-1: all ratios = 1.000 | **CONCRETE** |
+
+## Circuit nonlinear program
+
+| Claim | Artifact | Independent check | Status |
+|---|---|---|---|
+| Parallel RLC: 0/0 at resonance, removable = R | circuit_nonlinear.py Q1 | Z(w0) = 100.0 exactly | **CONCRETE** |
+| Diode small-signal: 0/0 persists with R_d | circuit_nonlinear.py Q3 | R_d=26.0, Z matches | **CONCRETE** |
+| BJT amplifier: 0/0 topology-independent | circuit_nonlinear.py Q4 | 3 beta values | **CONCRETE** |
+
+## Universal impedance program
+
+| Claim | Artifact | Independent check | Status |
+|---|---|---|---|
+| Mechanical oscillator: 0/0 at w0, removable = c | universal_impedance.py Q1 | Z(w0) = c = 2.0 exactly | **CONCRETE** |
+| Thermoacoustic: 0/0 at w0, removable = R_th | universal_impedance.py Q2 | Z(w0) = 50.0 exactly | **CONCRETE** |
+| QFT propagator: 0/0 at mass shell, removable = -i/gamma | universal_impedance.py Q6 | G(m^2) = -i/0.1 | **CONCRETE** |
+| Ising susceptibility: 0/0 in M/H at H->0 | universal_impedance.py Q4 | chi(T_c) = 88914, chi(3.0) = 0.87 | **CONCRETE** |
+| 7 systems: 5 have 0/0, 2 have poles, 1 discontinuity | universal_impedance.py comparison | All computed values match theory | **CONCRETE** |
+
 ## Known non-concrete zones (disclosed)
 
 - docs/archive_legacy/: quarantined pre-audit artifacts, disclaimed
