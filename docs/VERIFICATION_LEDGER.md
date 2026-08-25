@@ -221,6 +221,14 @@ hygiene pass applied and verified post-fix. One packaging defect
 | 0% false alarm rate (colored noise test) | experiments/climate_tipping_0over0.py | 50 trials, zero false alarms | **CONCRETE** |
 | R separates states: stable (0.34-0.36) vs tipping (0.41) | experiments/climate_tipping_0over0.py | Clear threshold gap | **CONCRETE** |
 
+## Dark Matter Core Predictor
+
+| Claim | Artifact | Independent check | Status |
+|---|---|---|---|
+| rho_core = rho_0 / sinh(2*pi / (g_eff^2*(N-1))) | experiments/dark_matter_core.py | 8 cross-section values, smooth monotonic transition | **CONCRETE** |
+| Core-cusp transition continuous as sigma/m increases | experiments/dark_matter_core.py | 9 values: c=1.0 (CDM) to c=5.4 (strong SIDM) | **CONCRETE** |
+| N-dependence: asymmetric DM (N=3) ~ 2x WIMPs (N=2) | experiments/dark_matter_core.py | 4 cross-section values, ratio converges to 2.0 | **CONCRETE** |
+
 ## Known non-concrete zones (disclosed)
 
 - docs/archive_legacy/: quarantined pre-audit artifacts, disclaimed
