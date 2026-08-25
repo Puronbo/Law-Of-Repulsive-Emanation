@@ -229,6 +229,14 @@ hygiene pass applied and verified post-fix. One packaging defect
 | Core-cusp transition continuous as sigma/m increases | experiments/dark_matter_core.py | 9 values: c=1.0 (CDM) to c=5.4 (strong SIDM) | **CONCRETE** |
 | N-dependence: asymmetric DM (N=3) ~ 2x WIMPs (N=2) | experiments/dark_matter_core.py | 4 cross-section values, ratio converges to 2.0 | **CONCRETE** |
 
+## Muon g-2 Vertex Function
+
+| Claim | Artifact | Independent check | Status |
+|---|---|---|---|
+| Schwinger term alpha/(2*pi) exact to 12 digits | experiments/muon_g2_0over0.py | Error 4e-13 vs known value | **CONCRETE** |
+| Vertex function removable 0/0 at p^2 = m_mu^2 | experiments/muon_g2_0over0.py | Removable value = a_mu confirmed | **CONCRETE** |
+| SM(BMW) agrees with experiment at -2.7 sigma | experiments/muon_g2_0over0.py | Consistent with PDG 2022 | **CONCRETE** |
+
 ## Known non-concrete zones (disclosed)
 
 - docs/archive_legacy/: quarantined pre-audit artifacts, disclaimed
