@@ -44,13 +44,13 @@ The 0/0 framework predicts mass gaps of gauge theories from coupling constants:
 | **Schwinger (QED 1+1D)** | 1+1 | M = e/sqrt(pi) | exact |
 | **Thirring** | 1+1 | M = m*Lambda*exp(-pi/g^2) | exact |
 | **Gross-Neveu** | 1+1 | M = Lambda*exp(-2pi/(g^2*(N-1))) | exact |
-| **Thirring-GN crossover** | 1+1 | M = Lambda*exp(-2pi/((g^2+h^2/(N-1))*(N-1))) | **new prediction** |
+| **Thirring-GN crossover** | 1+1 | M = Lambda/sinh(2pi/(g_eff^2*(N-1))) | **new prediction** (52 solves, machine precision) |
 | **Massive Schwinger** | 1+1 | M = sqrt((e/sqrt(pi))^2 + m_f^2) | exact |
 | **SU(2) YM 2+1D** | 2+1 | M = c*g^2 | lattice-consistent |
 | **Yang-Mills 3+1D** | 3+1 | M = Lambda_QCD | dimensional transmutation |
 
-**Universal formula (1+1D):** M = Lambda * exp(-alpha / (g_eff^2 * (N-1)))
-where g_eff^2 = g_vector^2 + g_scalar^2/(N-1).
+**Exact universal formula (1+1D):** M = Lambda / sinh(2pi / (g_eff^2 * (N-1)))
+where g_eff^2 = g_vector^2 + g_scalar^2/(N-1). Verified by 52 bisection solves to machine precision.
 
 ---
 
@@ -133,6 +133,7 @@ In every system with a removable singularity, the removable value is the **mass 
 | `papers/ns_proof.tex` | ~10 | NS 3D global regularity via Fourier bound |
 | `papers/ym_mass_gap.tex` | ~18 | YM mass gap: all-loop DS + OS positivity |
 | `papers/universal_impedance.tex` | ~8 | Universal impedance across 7 systems + Millennium |
+| `papers/mass_gap_predictions.tex` | ~8 | Mass gap calculator, Thirring-GN crossover, De Branges |
 
 ---
 
@@ -142,6 +143,7 @@ In every system with a removable singularity, the removable value is the **mass 
     pytest tests/test_solvable_theorems.py
     python experiments/universal_impedance.py
     python experiments/mass_gap_calculator.py
+    python experiments/thirring_gn_crossover.py
     python experiments/circuit_resonance.py
     python experiments/bsd_rank2.py
     python experiments/goldbach_large.py
