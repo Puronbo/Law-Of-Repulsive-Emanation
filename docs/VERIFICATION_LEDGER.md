@@ -187,6 +187,14 @@ hygiene pass applied and verified post-fix. One packaging defect
 |---|---|---|---|
 | mass_gap_predictions.tex: 8pp synthesis of framework | papers/mass_gap_predictions.tex | Universal impedance, mass gap calculator, crossover, De Branges, Millennium | **CONCRETE** |
 
+## Thirring-GN crossover
+
+| Claim | Artifact | Independent check | Status |
+|---|---|---|---|
+| M = Lambda/sinh(2*pi/(g_eff^2*(N-1))) | thirring_gn_crossover.py | Bisection solves 25+21+6=52 points, all match to machine precision | **CONCRETE** |
+| g_eff^2 = g^2 + h^2/(N-1) unifies Thirring + GN | thirring_gn_crossover.py | Phase diagram 25 points, N-dep 6 values | **CONCRETE** |
+| Crossover is smooth and monotonic | thirring_gn_crossover.py | 21 points along g+h=2, min M=2.50, max M=18.25, no discontinuity | **CONCRETE** |
+
 ## Known non-concrete zones (disclosed)
 
 - docs/archive_legacy/: quarantined pre-audit artifacts, disclaimed
