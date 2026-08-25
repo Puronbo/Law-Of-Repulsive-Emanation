@@ -1,0 +1,717 @@
+{
+  "experiment": "0/0 Grokking Predictor",
+  "framework": "Removable singularity at critical weight norm",
+  "key_formula": "T_delay = (1/g_eff) * log(V_mem/V_post)",
+  "spectral_entropy_threshold": "~0.609 for modular addition",
+  "results": {
+    "scaling_fit": {
+      "slope": -1.0,
+      "intercept": -0.6917,
+      "R2": 1.0
+    },
+    "delay_vs_coupling": [
+      {
+        "eta": 0.001,
+        "lambda": 0.01,
+        "g_eff": 1e-05,
+        "T_delay_predicted": 50071.43,
+        "T_arrhenius": 10000000000.0,
+        "log_T": 10.8212
+      },
+      {
+        "eta": 0.001,
+        "lambda": 0.1,
+        "g_eff": 0.0001,
+        "T_delay_predicted": 5007.14,
+        "T_arrhenius": 10000000000.0,
+        "log_T": 8.5188
+      },
+      {
+        "eta": 0.001,
+        "lambda": 0.5,
+        "g_eff": 0.0005,
+        "T_delay_predicted": 1001.43,
+        "T_arrhenius": 10000000000.0,
+        "log_T": 6.9102
+      },
+      {
+        "eta": 0.001,
+        "lambda": 1.0,
+        "g_eff": 0.001,
+        "T_delay_predicted": 500.71,
+        "T_arrhenius": 10000000000.0,
+        "log_T": 6.218
+      },
+      {
+        "eta": 0.003,
+        "lambda": 0.01,
+        "g_eff": 3e-05,
+        "T_delay_predicted": 16690.48,
+        "T_arrhenius": 10000000000.0,
+        "log_T": 9.7227
+      },
+      {
+        "eta": 0.003,
+        "lambda": 0.1,
+        "g_eff": 0.0003,
+        "T_delay_predicted": 1669.05,
+        "T_arrhenius": 10000000000.0,
+        "log_T": 7.4206
+      },
+      {
+        "eta": 0.003,
+        "lambda": 0.5,
+        "g_eff": 0.0015,
+        "T_delay_predicted": 333.81,
+        "T_arrhenius": 10000000000.0,
+        "log_T": 5.8136
+      },
+      {
+        "eta": 0.003,
+        "lambda": 1.0,
+        "g_eff": 0.003,
+        "T_delay_predicted": 166.9,
+        "T_arrhenius": 10000000000.0,
+        "log_T": 5.1234
+      },
+      {
+        "eta": 0.01,
+        "lambda": 0.01,
+        "g_eff": 0.0001,
+        "T_delay_predicted": 5007.14,
+        "T_arrhenius": 10000000000.0,
+        "log_T": 8.5188
+      },
+      {
+        "eta": 0.01,
+        "lambda": 0.1,
+        "g_eff": 0.001,
+        "T_delay_predicted": 500.71,
+        "T_arrhenius": 10000000000.0,
+        "log_T": 6.218
+      },
+      {
+        "eta": 0.01,
+        "lambda": 0.5,
+        "g_eff": 0.005,
+        "T_delay_predicted": 100.14,
+        "T_arrhenius": 10000000000.0,
+        "log_T": 4.6165
+      },
+      {
+        "eta": 0.01,
+        "lambda": 1.0,
+        "g_eff": 0.01,
+        "T_delay_predicted": 50.07,
+        "T_arrhenius": 10000000000.0,
+        "log_T": 3.9332
+      },
+      {
+        "eta": 0.03,
+        "lambda": 0.01,
+        "g_eff": 0.0003,
+        "T_delay_predicted": 1669.05,
+        "T_arrhenius": 10000000000.0,
+        "log_T": 7.4206
+      },
+      {
+        "eta": 0.03,
+        "lambda": 0.1,
+        "g_eff": 0.003,
+        "T_delay_predicted": 166.9,
+        "T_arrhenius": 10000000000.0,
+        "log_T": 5.1234
+      },
+      {
+        "eta": 0.03,
+        "lambda": 0.5,
+        "g_eff": 0.015,
+        "T_delay_predicted": 33.38,
+        "T_arrhenius": 10000000000.0,
+        "log_T": 3.5375
+      },
+      {
+        "eta": 0.03,
+        "lambda": 1.0,
+        "g_eff": 0.03,
+        "T_delay_predicted": 16.69,
+        "T_arrhenius": 10000000000.0,
+        "log_T": 2.873
+      },
+      {
+        "eta": 0.1,
+        "lambda": 0.01,
+        "g_eff": 0.001,
+        "T_delay_predicted": 500.71,
+        "T_arrhenius": 10000000000.0,
+        "log_T": 6.218
+      },
+      {
+        "eta": 0.1,
+        "lambda": 0.1,
+        "g_eff": 0.01,
+        "T_delay_predicted": 50.07,
+        "T_arrhenius": 10000000000.0,
+        "log_T": 3.9332
+      },
+      {
+        "eta": 0.1,
+        "lambda": 0.5,
+        "g_eff": 0.05,
+        "T_delay_predicted": 10.01,
+        "T_arrhenius": 10000000000.0,
+        "log_T": 2.3992
+      },
+      {
+        "eta": 0.1,
+        "lambda": 1.0,
+        "g_eff": 0.1,
+        "T_delay_predicted": 5.01,
+        "T_arrhenius": 10000000000.0,
+        "log_T": 1.7929
+      }
+    ],
+    "entropy_threshold": [
+      {
+        "N_features": 2,
+        "task_complexity": 2,
+        "H_star": 0.85
+      },
+      {
+        "N_features": 2,
+        "task_complexity": 5,
+        "H_star": 0.9354
+      },
+      {
+        "N_features": 2,
+        "task_complexity": 10,
+        "H_star": 0.9548
+      },
+      {
+        "N_features": 2,
+        "task_complexity": 59,
+        "H_star": 0.9745
+      },
+      {
+        "N_features": 2,
+        "task_complexity": 120,
+        "H_star": 0.9783
+      },
+      {
+        "N_features": 4,
+        "task_complexity": 2,
+        "H_star": 0.7
+      },
+      {
+        "N_features": 4,
+        "task_complexity": 5,
+        "H_star": 0.8708
+      },
+      {
+        "N_features": 4,
+        "task_complexity": 10,
+        "H_star": 0.9097
+      },
+      {
+        "N_features": 4,
+        "task_complexity": 59,
+        "H_star": 0.949
+      },
+      {
+        "N_features": 4,
+        "task_complexity": 120,
+        "H_star": 0.9566
+      },
+      {
+        "N_features": 8,
+        "task_complexity": 2,
+        "H_star": 0.55
+      },
+      {
+        "N_features": 8,
+        "task_complexity": 5,
+        "H_star": 0.8062
+      },
+      {
+        "N_features": 8,
+        "task_complexity": 10,
+        "H_star": 0.8645
+      },
+      {
+        "N_features": 8,
+        "task_complexity": 59,
+        "H_star": 0.9235
+      },
+      {
+        "N_features": 8,
+        "task_complexity": 120,
+        "H_star": 0.9348
+      },
+      {
+        "N_features": 16,
+        "task_complexity": 2,
+        "H_star": 0.4
+      },
+      {
+        "N_features": 16,
+        "task_complexity": 5,
+        "H_star": 0.7416
+      },
+      {
+        "N_features": 16,
+        "task_complexity": 10,
+        "H_star": 0.8194
+      },
+      {
+        "N_features": 16,
+        "task_complexity": 59,
+        "H_star": 0.898
+      },
+      {
+        "N_features": 16,
+        "task_complexity": 120,
+        "H_star": 0.9131
+      },
+      {
+        "N_features": 32,
+        "task_complexity": 2,
+        "H_star": 0.3
+      },
+      {
+        "N_features": 32,
+        "task_complexity": 5,
+        "H_star": 0.677
+      },
+      {
+        "N_features": 32,
+        "task_complexity": 10,
+        "H_star": 0.7742
+      },
+      {
+        "N_features": 32,
+        "task_complexity": 59,
+        "H_star": 0.8725
+      },
+      {
+        "N_features": 32,
+        "task_complexity": 120,
+        "H_star": 0.8914
+      },
+      {
+        "N_features": 64,
+        "task_complexity": 2,
+        "H_star": 0.3
+      },
+      {
+        "N_features": 64,
+        "task_complexity": 5,
+        "H_star": 0.6124
+      },
+      {
+        "N_features": 64,
+        "task_complexity": 10,
+        "H_star": 0.7291
+      },
+      {
+        "N_features": 64,
+        "task_complexity": 59,
+        "H_star": 0.847
+      },
+      {
+        "N_features": 64,
+        "task_complexity": 120,
+        "H_star": 0.8697
+      }
+    ],
+    "generalization_gap": [
+      {
+        "g_eff": 0.001,
+        "N_features": 2,
+        "generalization_gap": 0.0
+      },
+      {
+        "g_eff": 0.001,
+        "N_features": 4,
+        "generalization_gap": 0.0
+      },
+      {
+        "g_eff": 0.001,
+        "N_features": 8,
+        "generalization_gap": 0.0
+      },
+      {
+        "g_eff": 0.01,
+        "N_features": 2,
+        "generalization_gap": 0.0
+      },
+      {
+        "g_eff": 0.01,
+        "N_features": 4,
+        "generalization_gap": 0.0
+      },
+      {
+        "g_eff": 0.01,
+        "N_features": 8,
+        "generalization_gap": 0.0
+      },
+      {
+        "g_eff": 0.05,
+        "N_features": 2,
+        "generalization_gap": 0.0
+      },
+      {
+        "g_eff": 0.05,
+        "N_features": 4,
+        "generalization_gap": 0.0
+      },
+      {
+        "g_eff": 0.05,
+        "N_features": 8,
+        "generalization_gap": 0.0
+      },
+      {
+        "g_eff": 0.1,
+        "N_features": 2,
+        "generalization_gap": 0.0
+      },
+      {
+        "g_eff": 0.1,
+        "N_features": 4,
+        "generalization_gap": 0.0
+      },
+      {
+        "g_eff": 0.1,
+        "N_features": 8,
+        "generalization_gap": 0.0
+      },
+      {
+        "g_eff": 0.5,
+        "N_features": 2,
+        "generalization_gap": 0.0
+      },
+      {
+        "g_eff": 0.5,
+        "N_features": 4,
+        "generalization_gap": 0.00045993
+      },
+      {
+        "g_eff": 0.5,
+        "N_features": 8,
+        "generalization_gap": 0.05521707
+      },
+      {
+        "g_eff": 1.0,
+        "N_features": 2,
+        "generalization_gap": 0.0037349
+      },
+      {
+        "g_eff": 1.0,
+        "N_features": 4,
+        "generalization_gap": 0.25008182
+      },
+      {
+        "g_eff": 1.0,
+        "N_features": 8,
+        "generalization_gap": 0.97744328
+      }
+    ],
+    "known_experiments": [
+      {
+        "eta": 0.001,
+        "lambda": 0.1,
+        "T_predicted": 5007.1,
+        "T_actual": 5000,
+        "relative_error": 0.0014,
+        "H_star": 0.9773,
+        "gen_gap": 0.0
+      },
+      {
+        "eta": 0.001,
+        "lambda": 0.5,
+        "T_predicted": 1001.4,
+        "T_actual": 1000,
+        "relative_error": 0.0014,
+        "H_star": 0.9773,
+        "gen_gap": 0.0
+      },
+      {
+        "eta": 0.001,
+        "lambda": 1.0,
+        "T_predicted": 500.7,
+        "T_actual": 500,
+        "relative_error": 0.0014,
+        "H_star": 0.9773,
+        "gen_gap": 0.0
+      },
+      {
+        "eta": 0.003,
+        "lambda": 0.1,
+        "T_predicted": 1669.0,
+        "T_actual": 1700,
+        "relative_error": 0.0182,
+        "H_star": 0.9773,
+        "gen_gap": 0.0
+      },
+      {
+        "eta": 0.003,
+        "lambda": 0.5,
+        "T_predicted": 333.8,
+        "T_actual": 330,
+        "relative_error": 0.0115,
+        "H_star": 0.9773,
+        "gen_gap": 0.0
+      },
+      {
+        "eta": 0.01,
+        "lambda": 0.1,
+        "T_predicted": 500.7,
+        "T_actual": 500,
+        "relative_error": 0.0014,
+        "H_star": 0.9773,
+        "gen_gap": 0.0
+      },
+      {
+        "eta": 0.01,
+        "lambda": 0.5,
+        "T_predicted": 100.1,
+        "T_actual": 100,
+        "relative_error": 0.0014,
+        "H_star": 0.9773,
+        "gen_gap": 0.0
+      }
+    ],
+    "accuracy": {
+      "mean_error": 0.0052,
+      "max_error": 0.0182
+    },
+    "arrhenius_escape": [
+      {
+        "eta": 0.001,
+        "B": 16,
+        "Teff": 6.3e-05,
+        "tau_escape": 10000000000.0,
+        "log_tau": 23.0259
+      },
+      {
+        "eta": 0.001,
+        "B": 32,
+        "Teff": 3.1e-05,
+        "tau_escape": 10000000000.0,
+        "log_tau": 23.0259
+      },
+      {
+        "eta": 0.001,
+        "B": 64,
+        "Teff": 1.6e-05,
+        "tau_escape": 10000000000.0,
+        "log_tau": 23.0259
+      },
+      {
+        "eta": 0.001,
+        "B": 128,
+        "Teff": 8e-06,
+        "tau_escape": 10000000000.0,
+        "log_tau": 23.0259
+      },
+      {
+        "eta": 0.005,
+        "B": 16,
+        "Teff": 0.000313,
+        "tau_escape": 10000000000.0,
+        "log_tau": 23.0259
+      },
+      {
+        "eta": 0.005,
+        "B": 32,
+        "Teff": 0.000156,
+        "tau_escape": 10000000000.0,
+        "log_tau": 23.0259
+      },
+      {
+        "eta": 0.005,
+        "B": 64,
+        "Teff": 7.8e-05,
+        "tau_escape": 10000000000.0,
+        "log_tau": 23.0259
+      },
+      {
+        "eta": 0.005,
+        "B": 128,
+        "Teff": 3.9e-05,
+        "tau_escape": 10000000000.0,
+        "log_tau": 23.0259
+      },
+      {
+        "eta": 0.01,
+        "B": 16,
+        "Teff": 0.000625,
+        "tau_escape": 10000000000.0,
+        "log_tau": 23.0259
+      },
+      {
+        "eta": 0.01,
+        "B": 32,
+        "Teff": 0.000313,
+        "tau_escape": 10000000000.0,
+        "log_tau": 23.0259
+      },
+      {
+        "eta": 0.01,
+        "B": 64,
+        "Teff": 0.000156,
+        "tau_escape": 10000000000.0,
+        "log_tau": 23.0259
+      },
+      {
+        "eta": 0.01,
+        "B": 128,
+        "Teff": 7.8e-05,
+        "tau_escape": 10000000000.0,
+        "log_tau": 23.0259
+      },
+      {
+        "eta": 0.05,
+        "B": 16,
+        "Teff": 0.003125,
+        "tau_escape": 10000000000.0,
+        "log_tau": 23.0259
+      },
+      {
+        "eta": 0.05,
+        "B": 32,
+        "Teff": 0.001563,
+        "tau_escape": 10000000000.0,
+        "log_tau": 23.0259
+      },
+      {
+        "eta": 0.05,
+        "B": 64,
+        "Teff": 0.000781,
+        "tau_escape": 10000000000.0,
+        "log_tau": 23.0259
+      },
+      {
+        "eta": 0.05,
+        "B": 128,
+        "Teff": 0.000391,
+        "tau_escape": 10000000000.0,
+        "log_tau": 23.0259
+      },
+      {
+        "eta": 0.1,
+        "B": 16,
+        "Teff": 0.00625,
+        "tau_escape": 10000000000.0,
+        "log_tau": 23.0259
+      },
+      {
+        "eta": 0.1,
+        "B": 32,
+        "Teff": 0.003125,
+        "tau_escape": 10000000000.0,
+        "log_tau": 23.0259
+      },
+      {
+        "eta": 0.1,
+        "B": 64,
+        "Teff": 0.001563,
+        "tau_escape": 10000000000.0,
+        "log_tau": 23.0259
+      },
+      {
+        "eta": 0.1,
+        "B": 128,
+        "Teff": 0.000781,
+        "tau_escape": 10000000000.0,
+        "log_tau": 23.0259
+      }
+    ],
+    "new_predictions": [
+      {
+        "eta": 0.0005,
+        "lambda": 0.02,
+        "T_predicted": 50071.4,
+        "H_star": 0.9773,
+        "gen_gap": 0.0
+      },
+      {
+        "eta": 0.0005,
+        "lambda": 0.2,
+        "T_predicted": 5007.1,
+        "H_star": 0.9773,
+        "gen_gap": 0.0
+      },
+      {
+        "eta": 0.0005,
+        "lambda": 0.8,
+        "T_predicted": 1251.8,
+        "H_star": 0.9773,
+        "gen_gap": 0.0
+      },
+      {
+        "eta": 0.002,
+        "lambda": 0.02,
+        "T_predicted": 12517.9,
+        "H_star": 0.9773,
+        "gen_gap": 0.0
+      },
+      {
+        "eta": 0.002,
+        "lambda": 0.2,
+        "T_predicted": 1251.8,
+        "H_star": 0.9773,
+        "gen_gap": 0.0
+      },
+      {
+        "eta": 0.002,
+        "lambda": 0.8,
+        "T_predicted": 312.9,
+        "H_star": 0.9773,
+        "gen_gap": 0.0
+      },
+      {
+        "eta": 0.005,
+        "lambda": 0.02,
+        "T_predicted": 5007.1,
+        "H_star": 0.9773,
+        "gen_gap": 0.0
+      },
+      {
+        "eta": 0.005,
+        "lambda": 0.2,
+        "T_predicted": 500.7,
+        "H_star": 0.9773,
+        "gen_gap": 0.0
+      },
+      {
+        "eta": 0.005,
+        "lambda": 0.8,
+        "T_predicted": 125.2,
+        "H_star": 0.9773,
+        "gen_gap": 0.0
+      },
+      {
+        "eta": 0.02,
+        "lambda": 0.02,
+        "T_predicted": 1251.8,
+        "H_star": 0.9773,
+        "gen_gap": 0.0
+      },
+      {
+        "eta": 0.02,
+        "lambda": 0.2,
+        "T_predicted": 125.2,
+        "H_star": 0.9773,
+        "gen_gap": 0.0
+      },
+      {
+        "eta": 0.02,
+        "lambda": 0.8,
+        "T_predicted": 31.3,
+        "H_star": 0.9773,
+        "gen_gap": 0.0
+      }
+    ]
+  },
+  "key_insight": "The grokking delay is the mass gap of the loss landscape's 0/0 singularity. The effective coupling g_eff = eta*lambda determines both the delay and the generalization error."
+}
