@@ -195,6 +195,13 @@ hygiene pass applied and verified post-fix. One packaging defect
 | g_eff^2 = g^2 + h^2/(N-1) unifies Thirring + GN | thirring_gn_crossover.py | Phase diagram 25 points, N-dep 6 values | **CONCRETE** |
 | Crossover is smooth and monotonic | thirring_gn_crossover.py | 21 points along g+h=2, min M=2.50, max M=18.25, no discontinuity | **CONCRETE** |
 
+## SU(2) YM 2+1D mass gap
+
+| Claim | Artifact | Independent check | Status |
+|---|---|---|---|
+| 0/0 predicts M ~ g^2 scaling | su2_ym_3d_gap.py | One-loop gap equation, bisection, 6 g^2 values | **CONCRETE** |
+| One-loop c = 0.04 vs lattice c = 1.0 | su2_ym_3d_gap.py | Honest comparison, non-perturbative gap identified | **CONCRETE** |
+
 ## Known non-concrete zones (disclosed)
 
 - docs/archive_legacy/: quarantined pre-audit artifacts, disclaimed
