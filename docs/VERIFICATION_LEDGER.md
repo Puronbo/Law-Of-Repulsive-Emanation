@@ -152,6 +152,16 @@ hygiene pass applied and verified post-fix. One packaging defect
 | Functional equation xi(rho)=xi(1-rho) | de_branges_extended.py Q4 | diff_re < 0.01, diff_im < 0.01 for 20 zeros | **CONCRETE** |
 | Growth: log|xi|/t bounded | de_branges_extended.py Q5 | bounded for t=10..500 | **CONCRETE** |
 
+## Schwinger model / mass gap prediction program
+
+| Claim | Artifact | Independent check | Status |
+|---|---|---|---|
+| Schwinger mass gap M = e/sqrt(pi) | schwinger_mass_gap.py Q1 | 5 coupling values, exact formula | **CONCRETE** |
+| Lattice converges to continuum | schwinger_mass_gap.py Q2 | a=0.1: ratio=1.0001 | **CONCRETE** |
+| Circuit analogy: omega_0 = M | schwinger_mass_gap.py Q3 | e=1.0: omega_0=M=0.564190 exactly | **CONCRETE** |
+| Propagator 0/0 at mass shell | schwinger_mass_gap.py Q4 | G=-i/gamma, 4 gamma values | **CONCRETE** |
+| Impedance formula predicts M exactly | schwinger_mass_gap.py Q5 | 6 couplings, all match | **CONCRETE** |
+
 ## Known non-concrete zones (disclosed)
 
 - docs/archive_legacy/: quarantined pre-audit artifacts, disclaimed
