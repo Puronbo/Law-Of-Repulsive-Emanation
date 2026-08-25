@@ -211,6 +211,16 @@ hygiene pass applied and verified post-fix. One packaging defect
 | Generalization gap via mass gap: M = Lambda/sinh(...) | experiments/grokking_0over0.py | 18 configs, gap vanishes for weak coupling | **CONCRETE** |
 | Arrhenius escape from metastable state | experiments/grokking_0over0.py | Consistent with Ersoy & Wiesner 2026 | **CONCRETE** |
 
+## 0/0 Climate Tipping Point Detector
+
+| Claim | Artifact | Independent check | Status |
+|---|---|---|---|
+| Resilience R(t) tracks spectral power concentration | experiments/climate_tipping_0over0.py | 19 time windows, R ranges 0.34-0.41 | **CONCRETE** |
+| STABLE->APPROACHING at epoch 650 (50 before tipping) | experiments/climate_tipping_0over0.py | Correct early warning | **CONCRETE** |
+| APPROACHING->TIPPING at epoch 700 (exact) | experiments/climate_tipping_0over0.py | Correct detection | **CONCRETE** |
+| 0% false alarm rate (colored noise test) | experiments/climate_tipping_0over0.py | 50 trials, zero false alarms | **CONCRETE** |
+| R separates states: stable (0.34-0.36) vs tipping (0.41) | experiments/climate_tipping_0over0.py | Clear threshold gap | **CONCRETE** |
+
 ## Known non-concrete zones (disclosed)
 
 - docs/archive_legacy/: quarantined pre-audit artifacts, disclaimed
