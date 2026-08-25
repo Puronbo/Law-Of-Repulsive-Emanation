@@ -1,0 +1,548 @@
+{
+  "experiment": "P vs NP: Contour Integral Identity for #SAT",
+  "Q1_identity": {
+    "total": 255,
+    "match": 255,
+    "mismatch": 0
+  },
+  "Q2_random_3sat": {
+    "N5_M15": {
+      "N": 5,
+      "M": 15,
+      "ratio": 3.0,
+      "Z": 3,
+      "match": true,
+      "maxdeg": 11,
+      "treewidth": 4
+    },
+    "N5_M21": {
+      "N": 5,
+      "M": 21,
+      "ratio": 4.25,
+      "Z": 2,
+      "match": true,
+      "maxdeg": 16,
+      "treewidth": 4
+    },
+    "N5_M25": {
+      "N": 5,
+      "M": 25,
+      "ratio": 5.0,
+      "Z": 0,
+      "match": true,
+      "maxdeg": 19,
+      "treewidth": 4
+    },
+    "N8_M24": {
+      "N": 8,
+      "M": 24,
+      "ratio": 3.0,
+      "Z": 1,
+      "match": true,
+      "maxdeg": 15,
+      "treewidth": 6
+    },
+    "N8_M34": {
+      "N": 8,
+      "M": 34,
+      "ratio": 4.25,
+      "Z": 0,
+      "match": true,
+      "maxdeg": 18,
+      "treewidth": 7
+    },
+    "N8_M40": {
+      "N": 8,
+      "M": 40,
+      "ratio": 5.0,
+      "Z": 0,
+      "match": true,
+      "maxdeg": 22,
+      "treewidth": 7
+    },
+    "N10_M30": {
+      "N": 10,
+      "M": 30,
+      "ratio": 3.0,
+      "Z": 2,
+      "match": true,
+      "maxdeg": 15,
+      "treewidth": 7
+    },
+    "N10_M42": {
+      "N": 10,
+      "M": 42,
+      "ratio": 4.25,
+      "Z": 0,
+      "match": true,
+      "maxdeg": 20,
+      "treewidth": 7
+    },
+    "N10_M50": {
+      "N": 10,
+      "M": 50,
+      "ratio": 5.0,
+      "Z": 0,
+      "match": true,
+      "maxdeg": 23,
+      "treewidth": 7
+    },
+    "N12_M36": {
+      "N": 12,
+      "M": 36,
+      "ratio": 3.0,
+      "Z": 6,
+      "match": true,
+      "maxdeg": 12,
+      "treewidth": 8
+    },
+    "N12_M51": {
+      "N": 12,
+      "M": 51,
+      "ratio": 4.25,
+      "Z": 1,
+      "match": true,
+      "maxdeg": 17,
+      "treewidth": 9
+    },
+    "N12_M60": {
+      "N": 12,
+      "M": 60,
+      "ratio": 5.0,
+      "Z": 0,
+      "match": true,
+      "maxdeg": 19,
+      "treewidth": 9
+    }
+  },
+  "Q3_phase_transition": {
+    "N7_M2": {
+      "N": 7,
+      "M": 2,
+      "ratio": 0.29,
+      "sat_frac": 1.0
+    },
+    "N7_M4": {
+      "N": 7,
+      "M": 4,
+      "ratio": 0.57,
+      "sat_frac": 1.0
+    },
+    "N7_M6": {
+      "N": 7,
+      "M": 6,
+      "ratio": 0.86,
+      "sat_frac": 1.0
+    },
+    "N7_M8": {
+      "N": 7,
+      "M": 8,
+      "ratio": 1.14,
+      "sat_frac": 1.0
+    },
+    "N7_M10": {
+      "N": 7,
+      "M": 10,
+      "ratio": 1.43,
+      "sat_frac": 1.0
+    },
+    "N7_M12": {
+      "N": 7,
+      "M": 12,
+      "ratio": 1.71,
+      "sat_frac": 1.0
+    },
+    "N7_M14": {
+      "N": 7,
+      "M": 14,
+      "ratio": 2.0,
+      "sat_frac": 1.0
+    },
+    "N7_M16": {
+      "N": 7,
+      "M": 16,
+      "ratio": 2.29,
+      "sat_frac": 1.0
+    },
+    "N7_M18": {
+      "N": 7,
+      "M": 18,
+      "ratio": 2.57,
+      "sat_frac": 1.0
+    },
+    "N7_M20": {
+      "N": 7,
+      "M": 20,
+      "ratio": 2.86,
+      "sat_frac": 1.0
+    },
+    "N7_M22": {
+      "N": 7,
+      "M": 22,
+      "ratio": 3.14,
+      "sat_frac": 1.0
+    },
+    "N7_M24": {
+      "N": 7,
+      "M": 24,
+      "ratio": 3.43,
+      "sat_frac": 0.96
+    },
+    "N7_M26": {
+      "N": 7,
+      "M": 26,
+      "ratio": 3.71,
+      "sat_frac": 0.88
+    },
+    "N7_M28": {
+      "N": 7,
+      "M": 28,
+      "ratio": 4.0,
+      "sat_frac": 0.92
+    },
+    "N7_M30": {
+      "N": 7,
+      "M": 30,
+      "ratio": 4.29,
+      "sat_frac": 0.92
+    },
+    "N7_M32": {
+      "N": 7,
+      "M": 32,
+      "ratio": 4.57,
+      "sat_frac": 0.76
+    },
+    "N7_M34": {
+      "N": 7,
+      "M": 34,
+      "ratio": 4.86,
+      "sat_frac": 0.48
+    },
+    "N7_M36": {
+      "N": 7,
+      "M": 36,
+      "ratio": 5.14,
+      "sat_frac": 0.48
+    },
+    "N7_M38": {
+      "N": 7,
+      "M": 38,
+      "ratio": 5.43,
+      "sat_frac": 0.52
+    },
+    "N7_M40": {
+      "N": 7,
+      "M": 40,
+      "ratio": 5.71,
+      "sat_frac": 0.48
+    },
+    "N7_M42": {
+      "N": 7,
+      "M": 42,
+      "ratio": 6.0,
+      "sat_frac": 0.28
+    },
+    "N7_M44": {
+      "N": 7,
+      "M": 44,
+      "ratio": 6.29,
+      "sat_frac": 0.16
+    },
+    "N10_M2": {
+      "N": 10,
+      "M": 2,
+      "ratio": 0.2,
+      "sat_frac": 1.0
+    },
+    "N10_M5": {
+      "N": 10,
+      "M": 5,
+      "ratio": 0.5,
+      "sat_frac": 1.0
+    },
+    "N10_M8": {
+      "N": 10,
+      "M": 8,
+      "ratio": 0.8,
+      "sat_frac": 1.0
+    },
+    "N10_M11": {
+      "N": 10,
+      "M": 11,
+      "ratio": 1.1,
+      "sat_frac": 1.0
+    },
+    "N10_M14": {
+      "N": 10,
+      "M": 14,
+      "ratio": 1.4,
+      "sat_frac": 1.0
+    },
+    "N10_M17": {
+      "N": 10,
+      "M": 17,
+      "ratio": 1.7,
+      "sat_frac": 1.0
+    },
+    "N10_M20": {
+      "N": 10,
+      "M": 20,
+      "ratio": 2.0,
+      "sat_frac": 1.0
+    },
+    "N10_M23": {
+      "N": 10,
+      "M": 23,
+      "ratio": 2.3,
+      "sat_frac": 1.0
+    },
+    "N10_M26": {
+      "N": 10,
+      "M": 26,
+      "ratio": 2.6,
+      "sat_frac": 1.0
+    },
+    "N10_M29": {
+      "N": 10,
+      "M": 29,
+      "ratio": 2.9,
+      "sat_frac": 1.0
+    },
+    "N10_M32": {
+      "N": 10,
+      "M": 32,
+      "ratio": 3.2,
+      "sat_frac": 0.92
+    },
+    "N10_M35": {
+      "N": 10,
+      "M": 35,
+      "ratio": 3.5,
+      "sat_frac": 0.88
+    },
+    "N10_M38": {
+      "N": 10,
+      "M": 38,
+      "ratio": 3.8,
+      "sat_frac": 1.0
+    },
+    "N10_M41": {
+      "N": 10,
+      "M": 41,
+      "ratio": 4.1,
+      "sat_frac": 0.76
+    },
+    "N10_M44": {
+      "N": 10,
+      "M": 44,
+      "ratio": 4.4,
+      "sat_frac": 0.8
+    },
+    "N10_M47": {
+      "N": 10,
+      "M": 47,
+      "ratio": 4.7,
+      "sat_frac": 0.68
+    },
+    "N10_M50": {
+      "N": 10,
+      "M": 50,
+      "ratio": 5.0,
+      "sat_frac": 0.44
+    },
+    "N10_M53": {
+      "N": 10,
+      "M": 53,
+      "ratio": 5.3,
+      "sat_frac": 0.4
+    },
+    "N10_M56": {
+      "N": 10,
+      "M": 56,
+      "ratio": 5.6,
+      "sat_frac": 0.36
+    },
+    "N10_M59": {
+      "N": 10,
+      "M": 59,
+      "ratio": 5.9,
+      "sat_frac": 0.32
+    },
+    "N10_M62": {
+      "N": 10,
+      "M": 62,
+      "ratio": 6.2,
+      "sat_frac": 0.32
+    }
+  },
+  "Q4_structural": {
+    "N5_r3.0": {
+      "N": 5,
+      "M": 15,
+      "treewidth": 4,
+      "maxdeg": 11,
+      "meandeg": 9.0,
+      "max_pair_ov": 7
+    },
+    "N5_r4.25": {
+      "N": 5,
+      "M": 21,
+      "treewidth": 4,
+      "maxdeg": 16,
+      "meandeg": 12.6,
+      "max_pair_ov": 10
+    },
+    "N8_r3.0": {
+      "N": 8,
+      "M": 24,
+      "treewidth": 6,
+      "maxdeg": 15,
+      "meandeg": 9.0,
+      "max_pair_ov": 8
+    },
+    "N8_r4.25": {
+      "N": 8,
+      "M": 34,
+      "treewidth": 7,
+      "maxdeg": 18,
+      "meandeg": 12.8,
+      "max_pair_ov": 9
+    },
+    "N10_r3.0": {
+      "N": 10,
+      "M": 30,
+      "treewidth": 7,
+      "maxdeg": 15,
+      "meandeg": 9.0,
+      "max_pair_ov": 6
+    },
+    "N10_r4.25": {
+      "N": 10,
+      "M": 42,
+      "treewidth": 7,
+      "maxdeg": 20,
+      "meandeg": 12.6,
+      "max_pair_ov": 9
+    },
+    "N15_r3.0": {
+      "N": 15,
+      "M": 45,
+      "treewidth": 10,
+      "maxdeg": 14,
+      "meandeg": 9.0,
+      "max_pair_ov": 5
+    },
+    "N15_r4.25": {
+      "N": 15,
+      "M": 63,
+      "treewidth": 11,
+      "maxdeg": 22,
+      "meandeg": 12.6,
+      "max_pair_ov": 7
+    },
+    "N20_r3.0": {
+      "N": 20,
+      "M": 60,
+      "treewidth": 13,
+      "maxdeg": 16,
+      "meandeg": 9.0,
+      "max_pair_ov": 5
+    },
+    "N20_r4.25": {
+      "N": 20,
+      "M": 85,
+      "treewidth": 14,
+      "maxdeg": 20,
+      "meandeg": 12.8,
+      "max_pair_ov": 7
+    }
+  },
+  "Q5_mc_convergence": {
+    "N3_s1000": {
+      "N": 3,
+      "nsamp": 1000,
+      "Z_exact": 2,
+      "Z_mc": 0.0089,
+      "error": 1.9911
+    },
+    "N3_s5000": {
+      "N": 3,
+      "nsamp": 5000,
+      "Z_exact": 2,
+      "Z_mc": 1.7156,
+      "error": 0.2844
+    },
+    "N3_s20000": {
+      "N": 3,
+      "nsamp": 20000,
+      "Z_exact": 2,
+      "Z_mc": 1.005,
+      "error": 0.995
+    },
+    "N3_s100000": {
+      "N": 3,
+      "nsamp": 100000,
+      "Z_exact": 2,
+      "Z_mc": 2.9979,
+      "error": 0.9979
+    },
+    "N4_s1000": {
+      "N": 4,
+      "nsamp": 1000,
+      "Z_exact": 4,
+      "Z_mc": -161.165,
+      "error": 165.165
+    },
+    "N4_s5000": {
+      "N": 4,
+      "nsamp": 5000,
+      "Z_exact": 4,
+      "Z_mc": -47.0074,
+      "error": 51.0074
+    },
+    "N4_s20000": {
+      "N": 4,
+      "nsamp": 20000,
+      "Z_exact": 4,
+      "Z_mc": -28.4568,
+      "error": 32.4568
+    },
+    "N4_s100000": {
+      "N": 4,
+      "nsamp": 100000,
+      "Z_exact": 4,
+      "Z_mc": 25.839,
+      "error": 21.839
+    },
+    "N5_s1000": {
+      "N": 5,
+      "nsamp": 1000,
+      "Z_exact": 3,
+      "Z_mc": -346.0542,
+      "error": 349.0542
+    },
+    "N5_s5000": {
+      "N": 5,
+      "nsamp": 5000,
+      "Z_exact": 3,
+      "Z_mc": 153.5245,
+      "error": 150.5245
+    },
+    "N5_s20000": {
+      "N": 5,
+      "nsamp": 20000,
+      "Z_exact": 3,
+      "Z_mc": -90.9366,
+      "error": 93.9366
+    },
+    "N5_s100000": {
+      "N": 5,
+      "nsamp": 100000,
+      "Z_exact": 3,
+      "Z_mc": -54.1229,
+      "error": 57.1229
+    }
+  },
+  "key_insight": "Z_phi exact contour identity costs O(K^N) quadrature or O(2^N) Boolean. P=NP iff state-space compressible to poly(N).",
+  "honest_wall": "Identity reformulates #SAT as multidimensional residue. Algorithmically equivalent to enumeration. No polynomial-size compilation theorem known for general formulas."
+}
