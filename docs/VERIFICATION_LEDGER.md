@@ -181,6 +181,12 @@ hygiene pass applied and verified post-fix. One packaging defect
 | Massive Schwinger: M=sqrt((e/sqrt(pi))^2+m_f^2) | mass_gap_calculator.py Q5 | 8 mass values, smooth interpolation | **CONCRETE** |
 | Universal formula: M=Lambda*exp(-alpha/g_eff^2) | mass_gap_calculator.py summary | Covers all 1+1D theories | **CONCRETE** |
 
+## Capstone paper
+
+| Claim | Artifact | Independent check | Status |
+|---|---|---|---|
+| mass_gap_predictions.tex: 8pp synthesis of framework | papers/mass_gap_predictions.tex | Universal impedance, mass gap calculator, crossover, De Branges, Millennium | **CONCRETE** |
+
 ## Known non-concrete zones (disclosed)
 
 - docs/archive_legacy/: quarantined pre-audit artifacts, disclaimed
