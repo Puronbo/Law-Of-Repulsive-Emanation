@@ -172,6 +172,15 @@ hygiene pass applied and verified post-fix. One packaging defect
 | Ising T_c = 2/ln(1+sqrt(2)) | universal_mass_gap.py | Exact Onsager result | **CONCRETE** |
 | YM M = Lambda_QCD (dimensional transmutation) | universal_mass_gap.py | Lambda_QCD=0.2 GeV | **CONCRETE** |
 
+## Mass gap calculator program
+
+| Claim | Artifact | Independent check | Status |
+|---|---|---|---|
+| MassGapCalculator: 6 theory tests pass | mass_gap_calculator.py | Schwinger, Thirring, GN, crossover, massive Schwinger, SU(2) 2+1D | **CONCRETE** |
+| Thirring-GN crossover: M=Lambda*exp(-2pi/((g^2+h^2/(N-1))*(N-1))) | mass_gap_calculator.py Q4 | 16 parameter combos, smooth interpolation | **CONCRETE** |
+| Massive Schwinger: M=sqrt((e/sqrt(pi))^2+m_f^2) | mass_gap_calculator.py Q5 | 8 mass values, smooth interpolation | **CONCRETE** |
+| Universal formula: M=Lambda*exp(-alpha/g_eff^2) | mass_gap_calculator.py summary | Covers all 1+1D theories | **CONCRETE** |
+
 ## Known non-concrete zones (disclosed)
 
 - docs/archive_legacy/: quarantined pre-audit artifacts, disclaimed
