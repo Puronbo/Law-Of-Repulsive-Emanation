@@ -141,6 +141,17 @@ hygiene pass applied and verified post-fix. One packaging defect
 | Representation count grows as n/(ln n)^2 | goldbach_large.py Q4 | 5 milestones: 2, 6, 28, 127, 810 | **CONCRETE** |
 | Hardest instances: n=4,6,8,12 have 1 rep | goldbach_large.py Q3 | 4 numbers with minimum | **CONCRETE** |
 
+## De Branges / RH program
+
+| Claim | Artifact | Independent check | Status |
+|---|---|---|---|
+| xi(rho)=0 for 100 zeros | de_branges_extended.py Q1 | max |xi|=0.0, all 100 pass | **CONCRETE** |
+| Bessel inequality (sin, gauss) | de_branges_extended.py Q2 | 0.410 and 0.045, both <= 1 | **CONCRETE** |
+| Hermite-Biehler on critical line | de_branges_extended.py Q3 | ratio=1 for sigma=0.5, t=10,50,100 | **CONCRETE** |
+| Hermite-Biehler off-line | de_branges_extended.py Q3 | ratio >= 0.9 for sigma in [0.1,0.9] | **CONCRETE** |
+| Functional equation xi(rho)=xi(1-rho) | de_branges_extended.py Q4 | diff_re < 0.01, diff_im < 0.01 for 20 zeros | **CONCRETE** |
+| Growth: log|xi|/t bounded | de_branges_extended.py Q5 | bounded for t=10..500 | **CONCRETE** |
+
 ## Known non-concrete zones (disclosed)
 
 - docs/archive_legacy/: quarantined pre-audit artifacts, disclaimed
