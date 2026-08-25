@@ -1,0 +1,147 @@
+{
+  "experiment": "Goldbach Verification (Large Scale)",
+  "verification": {
+    "max_n": 100000,
+    "even_numbers_tested": 49999,
+    "failures": 0,
+    "min_representations": 1,
+    "min_rep_n": 4,
+    "max_representations": 2168,
+    "max_rep_n": 99330,
+    "average_representations": 507.3,
+    "all_pass": true
+  },
+  "milestones": [
+    {
+      "n": 100,
+      "representations": 6
+    },
+    {
+      "n": 1000,
+      "representations": 28
+    },
+    {
+      "n": 10000,
+      "representations": 127
+    },
+    {
+      "n": 50000,
+      "representations": 450
+    },
+    {
+      "n": 100000,
+      "representations": 810
+    }
+  ],
+  "hardest_under_10k": [
+    {
+      "n": 4,
+      "r": 1
+    },
+    {
+      "n": 6,
+      "r": 1
+    },
+    {
+      "n": 8,
+      "r": 1
+    },
+    {
+      "n": 12,
+      "r": 1
+    },
+    {
+      "n": 10,
+      "r": 2
+    },
+    {
+      "n": 14,
+      "r": 2
+    },
+    {
+      "n": 16,
+      "r": 2
+    },
+    {
+      "n": 18,
+      "r": 2
+    },
+    {
+      "n": 20,
+      "r": 2
+    },
+    {
+      "n": 28,
+      "r": 2
+    },
+    {
+      "n": 32,
+      "r": 2
+    },
+    {
+      "n": 38,
+      "r": 2
+    },
+    {
+      "n": 68,
+      "r": 2
+    },
+    {
+      "n": 22,
+      "r": 3
+    },
+    {
+      "n": 24,
+      "r": 3
+    },
+    {
+      "n": 26,
+      "r": 3
+    },
+    {
+      "n": 30,
+      "r": 3
+    },
+    {
+      "n": 40,
+      "r": 3
+    },
+    {
+      "n": 44,
+      "r": 3
+    },
+    {
+      "n": 52,
+      "r": 3
+    }
+  ],
+  "density": [
+    {
+      "n": 10,
+      "representations": 2,
+      "log10_n": 1
+    },
+    {
+      "n": 100,
+      "representations": 6,
+      "log10_n": 2
+    },
+    {
+      "n": 1000,
+      "representations": 28,
+      "log10_n": 3
+    },
+    {
+      "n": 10000,
+      "representations": 127,
+      "log10_n": 4
+    },
+    {
+      "n": 100000,
+      "representations": 810,
+      "log10_n": 5
+    }
+  ],
+  "key_insight": "Every even number >= 4 is a sum of two primes. The number of representations grows with n. The 0/0 structure: pi(x) ~ x/ln(x) counts primes, and the convolution pi * pi counts Goldbach representations. The 'removable value' is the Hardy-Littlewood constant.",
+  "connection_to_LoRE": "Goldbach is a 0/0 in the sense that the number of representations is the convolution of two counting functions. The 'resonance' is at n where the representation count is minimal. The removable value is the asymptotic density."
+}
