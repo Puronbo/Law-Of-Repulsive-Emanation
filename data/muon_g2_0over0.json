@@ -1,0 +1,10 @@
+{
+  "experiment": "Muon g-2 via 0/0 Vertex Function",
+  "key_formula": "a_mu = alpha/(2*pi) = removable value at p^2 = m_mu^2",
+  "results": {
+    "schwinger": 0.0011614097335977778,
+    "sm": 0.00116592,
+    "experiment": 0.0011659206,
+    "discrepancy_sigma": -2.7
+  }
+}
