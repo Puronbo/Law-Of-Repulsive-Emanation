@@ -1,0 +1,28 @@
+{
+  "penrose_dessitter": {
+    "H": 1.0,
+    "chi_range": [
+      -1.0,
+      1.0
+    ],
+    "Omega_at_0": 0.0,
+    "g_phys_at_0": 0.0,
+    "removable": true
+  },
+  "friedmann_0over0": {
+    "matter_ratio": 1.3103706971044482,
+    "radiation_ratio": 1.4142135623730951,
+    "lambda_resolves": true
+  },
+  "dessitter_conformal": {
+    "conformal_factor": "1/(H*|eta|)",
+    "big_bang_removed": true,
+    "lambda_removable_value": "3/(8piG)",
+    "penrose_shape": "diamond"
+  },
+  "quantum_gravity": {
+    "planck_scale": "1.6e-35 m",
+    "hamiltonian_constraint": "H|Psi> = 0",
+    "path_integral_removable": true
+  }
+}
