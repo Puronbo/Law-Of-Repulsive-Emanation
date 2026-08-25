@@ -1,0 +1,576 @@
+{
+  "experiment": "Mass Gap Calculator + Thirring-GN Crossover",
+  "calculator_class": "MassGapCalculator",
+  "tests_passed": 6,
+  "new_prediction": "Thirring-GN crossover: M = Lambda * exp(-2pi/((g^2+h^2/(N-1))*(N-1)))",
+  "results": {
+    "schwinger": [
+      {
+        "theory": "Schwinger",
+        "dim": 1,
+        "coupling": 0.1,
+        "M_predicted": 0.05641895835477564,
+        "circuit": {
+          "L": 1.0,
+          "C": 314.15926535897927,
+          "R": 0.05641895835477564
+        },
+        "formula": "M = e / sqrt(pi)"
+      },
+      {
+        "theory": "Schwinger",
+        "dim": 1,
+        "coupling": 0.5,
+        "M_predicted": 0.28209479177387814,
+        "circuit": {
+          "L": 1.0,
+          "C": 12.566370614359172,
+          "R": 0.28209479177387814
+        },
+        "formula": "M = e / sqrt(pi)"
+      },
+      {
+        "theory": "Schwinger",
+        "dim": 1,
+        "coupling": 1.0,
+        "M_predicted": 0.5641895835477563,
+        "circuit": {
+          "L": 1.0,
+          "C": 3.141592653589793,
+          "R": 0.5641895835477563
+        },
+        "formula": "M = e / sqrt(pi)"
+      },
+      {
+        "theory": "Schwinger",
+        "dim": 1,
+        "coupling": 2.0,
+        "M_predicted": 1.1283791670955126,
+        "circuit": {
+          "L": 1.0,
+          "C": 0.7853981633974483,
+          "R": 1.1283791670955126
+        },
+        "formula": "M = e / sqrt(pi)"
+      },
+      {
+        "theory": "Schwinger",
+        "dim": 1,
+        "coupling": 5.0,
+        "M_predicted": 2.8209479177387817,
+        "circuit": {
+          "L": 1.0,
+          "C": 0.12566370614359174,
+          "R": 2.8209479177387817
+        },
+        "formula": "M = e / sqrt(pi)"
+      },
+      {
+        "theory": "Schwinger",
+        "dim": 1,
+        "coupling": 10.0,
+        "M_predicted": 5.6418958354775635,
+        "circuit": {
+          "L": 1.0,
+          "C": 0.031415926535897934,
+          "R": 5.6418958354775635
+        },
+        "formula": "M = e / sqrt(pi)"
+      }
+    ],
+    "thirring": [
+      {
+        "theory": "Thirring",
+        "dim": 1,
+        "coupling": 0.5,
+        "mass": 0.01,
+        "cutoff": 10.0,
+        "M_predicted": 3.4873423562089975e-07,
+        "formula": "M = m * Lambda * exp(-pi / g^2)"
+      },
+      {
+        "theory": "Thirring",
+        "dim": 1,
+        "coupling": 0.5,
+        "mass": 0.1,
+        "cutoff": 10.0,
+        "M_predicted": 3.4873423562089973e-06,
+        "formula": "M = m * Lambda * exp(-pi / g^2)"
+      },
+      {
+        "theory": "Thirring",
+        "dim": 1,
+        "coupling": 0.5,
+        "mass": 1.0,
+        "cutoff": 10.0,
+        "M_predicted": 3.487342356208997e-05,
+        "formula": "M = m * Lambda * exp(-pi / g^2)"
+      },
+      {
+        "theory": "Thirring",
+        "dim": 1,
+        "coupling": 1.0,
+        "mass": 0.01,
+        "cutoff": 10.0,
+        "M_predicted": 0.004321391826377226,
+        "formula": "M = m * Lambda * exp(-pi / g^2)"
+      },
+      {
+        "theory": "Thirring",
+        "dim": 1,
+        "coupling": 1.0,
+        "mass": 0.1,
+        "cutoff": 10.0,
+        "M_predicted": 0.04321391826377226,
+        "formula": "M = m * Lambda * exp(-pi / g^2)"
+      },
+      {
+        "theory": "Thirring",
+        "dim": 1,
+        "coupling": 1.0,
+        "mass": 1.0,
+        "cutoff": 10.0,
+        "M_predicted": 0.43213918263772255,
+        "formula": "M = m * Lambda * exp(-pi / g^2)"
+      },
+      {
+        "theory": "Thirring",
+        "dim": 1,
+        "coupling": 2.0,
+        "mass": 0.01,
+        "cutoff": 10.0,
+        "M_predicted": 0.04559381277659963,
+        "formula": "M = m * Lambda * exp(-pi / g^2)"
+      },
+      {
+        "theory": "Thirring",
+        "dim": 1,
+        "coupling": 2.0,
+        "mass": 0.1,
+        "cutoff": 10.0,
+        "M_predicted": 0.45593812776599624,
+        "formula": "M = m * Lambda * exp(-pi / g^2)"
+      },
+      {
+        "theory": "Thirring",
+        "dim": 1,
+        "coupling": 2.0,
+        "mass": 1.0,
+        "cutoff": 10.0,
+        "M_predicted": 4.559381277659963,
+        "formula": "M = m * Lambda * exp(-pi / g^2)"
+      }
+    ],
+    "gross_neveu": [
+      {
+        "theory": "Gross-Neveu",
+        "dim": 1,
+        "coupling": 0.5,
+        "N": 2,
+        "cutoff": 10.0,
+        "M_predicted": 1.216155670940932e-10,
+        "formula": "M = Lambda * exp(-2pi / (g^2 * (N-1)))"
+      },
+      {
+        "theory": "Gross-Neveu",
+        "dim": 1,
+        "coupling": 1.0,
+        "N": 2,
+        "cutoff": 10.0,
+        "M_predicted": 0.018674427317079894,
+        "formula": "M = Lambda * exp(-2pi / (g^2 * (N-1)))"
+      },
+      {
+        "theory": "Gross-Neveu",
+        "dim": 1,
+        "coupling": 2.0,
+        "N": 2,
+        "cutoff": 10.0,
+        "M_predicted": 2.0787957635076193,
+        "formula": "M = Lambda * exp(-2pi / (g^2 * (N-1)))"
+      },
+      {
+        "theory": "Gross-Neveu",
+        "dim": 1,
+        "coupling": 0.5,
+        "N": 4,
+        "cutoff": 10.0,
+        "M_predicted": 0.0022996569563620063,
+        "formula": "M = Lambda * exp(-2pi / (g^2 * (N-1)))"
+      },
+      {
+        "theory": "Gross-Neveu",
+        "dim": 1,
+        "coupling": 1.0,
+        "N": 4,
+        "cutoff": 10.0,
+        "M_predicted": 1.2314471107013316,
+        "formula": "M = Lambda * exp(-2pi / (g^2 * (N-1)))"
+      },
+      {
+        "theory": "Gross-Neveu",
+        "dim": 1,
+        "coupling": 2.0,
+        "N": 4,
+        "cutoff": 10.0,
+        "M_predicted": 5.92384847188389,
+        "formula": "M = Lambda * exp(-2pi / (g^2 * (N-1)))"
+      },
+      {
+        "theory": "Gross-Neveu",
+        "dim": 1,
+        "coupling": 0.5,
+        "N": 8,
+        "cutoff": 10.0,
+        "M_predicted": 0.27587524919707906,
+        "formula": "M = Lambda * exp(-2pi / (g^2 * (N-1)))"
+      },
+      {
+        "theory": "Gross-Neveu",
+        "dim": 1,
+        "coupling": 1.0,
+        "N": 8,
+        "cutoff": 10.0,
+        "M_predicted": 4.075474542126483,
+        "formula": "M = Lambda * exp(-2pi / (g^2 * (N-1)))"
+      },
+      {
+        "theory": "Gross-Neveu",
+        "dim": 1,
+        "coupling": 2.0,
+        "N": 8,
+        "cutoff": 10.0,
+        "M_predicted": 7.9899589152016235,
+        "formula": "M = Lambda * exp(-2pi / (g^2 * (N-1)))"
+      }
+    ],
+    "crossover": [
+      {
+        "theory": "Thirring-GN crossover",
+        "dim": 1,
+        "g": 0.0,
+        "h": 0.0,
+        "N": 4,
+        "M_predicted": 0.0,
+        "note": "No mass gap (pure Thirring limit)"
+      },
+      {
+        "theory": "Thirring-GN crossover",
+        "dim": 1,
+        "g": 0.0,
+        "h": 0.5,
+        "N": 4,
+        "Lambda": 10.0,
+        "g_eff_sq": 0.083333,
+        "M_predicted": 1e-10,
+        "formula": "M = Lambda * exp(-2pi / ((g^2+h^2/(N-1))*(N-1)))"
+      },
+      {
+        "theory": "Thirring-GN crossover",
+        "dim": 1,
+        "g": 0.0,
+        "h": 1.0,
+        "N": 4,
+        "Lambda": 10.0,
+        "g_eff_sq": 0.333333,
+        "M_predicted": 0.0186744273,
+        "formula": "M = Lambda * exp(-2pi / ((g^2+h^2/(N-1))*(N-1)))"
+      },
+      {
+        "theory": "Thirring-GN crossover",
+        "dim": 1,
+        "g": 0.0,
+        "h": 2.0,
+        "N": 4,
+        "Lambda": 10.0,
+        "g_eff_sq": 1.333333,
+        "M_predicted": 2.0787957635,
+        "formula": "M = Lambda * exp(-2pi / ((g^2+h^2/(N-1))*(N-1)))"
+      },
+      {
+        "theory": "Thirring-GN crossover",
+        "dim": 1,
+        "g": 0.5,
+        "h": 0.0,
+        "N": 4,
+        "Lambda": 10.0,
+        "g_eff_sq": 0.25,
+        "M_predicted": 0.002299657,
+        "formula": "M = Lambda * exp(-2pi / ((g^2+h^2/(N-1))*(N-1)))"
+      },
+      {
+        "theory": "Thirring-GN crossover",
+        "dim": 1,
+        "g": 0.5,
+        "h": 0.5,
+        "N": 4,
+        "Lambda": 10.0,
+        "g_eff_sq": 0.333333,
+        "M_predicted": 0.0186744273,
+        "formula": "M = Lambda * exp(-2pi / ((g^2+h^2/(N-1))*(N-1)))"
+      },
+      {
+        "theory": "Thirring-GN crossover",
+        "dim": 1,
+        "g": 0.5,
+        "h": 1.0,
+        "N": 4,
+        "Lambda": 10.0,
+        "g_eff_sq": 0.583333,
+        "M_predicted": 0.2758752492,
+        "formula": "M = Lambda * exp(-2pi / ((g^2+h^2/(N-1))*(N-1)))"
+      },
+      {
+        "theory": "Thirring-GN crossover",
+        "dim": 1,
+        "g": 0.5,
+        "h": 2.0,
+        "N": 4,
+        "Lambda": 10.0,
+        "g_eff_sq": 1.583333,
+        "M_predicted": 2.6639480157,
+        "formula": "M = Lambda * exp(-2pi / ((g^2+h^2/(N-1))*(N-1)))"
+      },
+      {
+        "theory": "Thirring-GN crossover",
+        "dim": 1,
+        "g": 1.0,
+        "h": 0.0,
+        "N": 4,
+        "Lambda": 10.0,
+        "g_eff_sq": 1.0,
+        "M_predicted": 1.2314471107,
+        "formula": "M = Lambda * exp(-2pi / ((g^2+h^2/(N-1))*(N-1)))"
+      },
+      {
+        "theory": "Thirring-GN crossover",
+        "dim": 1,
+        "g": 1.0,
+        "h": 0.5,
+        "N": 4,
+        "Lambda": 10.0,
+        "g_eff_sq": 1.083333,
+        "M_predicted": 1.4467176578,
+        "formula": "M = Lambda * exp(-2pi / ((g^2+h^2/(N-1))*(N-1)))"
+      },
+      {
+        "theory": "Thirring-GN crossover",
+        "dim": 1,
+        "g": 1.0,
+        "h": 1.0,
+        "N": 4,
+        "Lambda": 10.0,
+        "g_eff_sq": 1.333333,
+        "M_predicted": 2.0787957635,
+        "formula": "M = Lambda * exp(-2pi / ((g^2+h^2/(N-1))*(N-1)))"
+      },
+      {
+        "theory": "Thirring-GN crossover",
+        "dim": 1,
+        "g": 1.0,
+        "h": 2.0,
+        "N": 4,
+        "Lambda": 10.0,
+        "g_eff_sq": 2.333333,
+        "M_predicted": 4.0754745421,
+        "formula": "M = Lambda * exp(-2pi / ((g^2+h^2/(N-1))*(N-1)))"
+      },
+      {
+        "theory": "Thirring-GN crossover",
+        "dim": 1,
+        "g": 2.0,
+        "h": 0.0,
+        "N": 4,
+        "Lambda": 10.0,
+        "g_eff_sq": 4.0,
+        "M_predicted": 5.9238484719,
+        "formula": "M = Lambda * exp(-2pi / ((g^2+h^2/(N-1))*(N-1)))"
+      },
+      {
+        "theory": "Thirring-GN crossover",
+        "dim": 1,
+        "g": 2.0,
+        "h": 0.5,
+        "N": 4,
+        "Lambda": 10.0,
+        "g_eff_sq": 4.083333,
+        "M_predicted": 5.9874882882,
+        "formula": "M = Lambda * exp(-2pi / ((g^2+h^2/(N-1))*(N-1)))"
+      },
+      {
+        "theory": "Thirring-GN crossover",
+        "dim": 1,
+        "g": 2.0,
+        "h": 1.0,
+        "N": 4,
+        "Lambda": 10.0,
+        "g_eff_sq": 4.333333,
+        "M_predicted": 6.1673123682,
+        "formula": "M = Lambda * exp(-2pi / ((g^2+h^2/(N-1))*(N-1)))"
+      },
+      {
+        "theory": "Thirring-GN crossover",
+        "dim": 1,
+        "g": 2.0,
+        "h": 2.0,
+        "N": 4,
+        "Lambda": 10.0,
+        "g_eff_sq": 5.333333,
+        "M_predicted": 6.7523190666,
+        "formula": "M = Lambda * exp(-2pi / ((g^2+h^2/(N-1))*(N-1)))"
+      }
+    ],
+    "massive_schwinger": [
+      {
+        "theory": "Massive Schwinger",
+        "dim": 1,
+        "e": 1.0,
+        "m_f": 0.001,
+        "M_predicted": 0.5641904698,
+        "M_schwinger_limit": 0.5641895835,
+        "formula": "M = sqrt((e/sqrt(pi))^2 + m_f^2)"
+      },
+      {
+        "theory": "Massive Schwinger",
+        "dim": 1,
+        "e": 1.0,
+        "m_f": 0.01,
+        "M_predicted": 0.5642781993,
+        "M_schwinger_limit": 0.5641895835,
+        "formula": "M = sqrt((e/sqrt(pi))^2 + m_f^2)"
+      },
+      {
+        "theory": "Massive Schwinger",
+        "dim": 1,
+        "e": 1.0,
+        "m_f": 0.1,
+        "M_predicted": 0.572983321,
+        "M_schwinger_limit": 0.5641895835,
+        "formula": "M = sqrt((e/sqrt(pi))^2 + m_f^2)"
+      },
+      {
+        "theory": "Massive Schwinger",
+        "dim": 1,
+        "e": 1.0,
+        "m_f": 0.5,
+        "M_predicted": 0.7538633074,
+        "M_schwinger_limit": 0.5641895835,
+        "formula": "M = sqrt((e/sqrt(pi))^2 + m_f^2)"
+      },
+      {
+        "theory": "Massive Schwinger",
+        "dim": 1,
+        "e": 1.0,
+        "m_f": 1.0,
+        "M_predicted": 1.1481767661,
+        "M_schwinger_limit": 0.5641895835,
+        "formula": "M = sqrt((e/sqrt(pi))^2 + m_f^2)"
+      },
+      {
+        "theory": "Massive Schwinger",
+        "dim": 1,
+        "e": 1.0,
+        "m_f": 2.0,
+        "M_predicted": 2.0780543511,
+        "M_schwinger_limit": 0.5641895835,
+        "formula": "M = sqrt((e/sqrt(pi))^2 + m_f^2)"
+      },
+      {
+        "theory": "Massive Schwinger",
+        "dim": 1,
+        "e": 1.0,
+        "m_f": 5.0,
+        "M_predicted": 5.0317303074,
+        "M_schwinger_limit": 0.5641895835,
+        "formula": "M = sqrt((e/sqrt(pi))^2 + m_f^2)"
+      },
+      {
+        "theory": "Massive Schwinger",
+        "dim": 1,
+        "e": 1.0,
+        "m_f": 10.0,
+        "M_predicted": 10.0159028493,
+        "M_schwinger_limit": 0.5641895835,
+        "formula": "M = sqrt((e/sqrt(pi))^2 + m_f^2)"
+      }
+    ],
+    "su2_ym_3d": [
+      {
+        "theory": "SU(2) YM 2+1D",
+        "dim": 2,
+        "g": 0.5,
+        "mu": 1.0,
+        "M_predicted": 0.25,
+        "M_lattice_approx": "c * g^2, c ~ 1.0",
+        "formula": "M = c * g^2 (super-renormalizable)"
+      },
+      {
+        "theory": "SU(2) YM 2+1D",
+        "dim": 2,
+        "g": 1.0,
+        "mu": 1.0,
+        "M_predicted": 1.0,
+        "M_lattice_approx": "c * g^2, c ~ 1.0",
+        "formula": "M = c * g^2 (super-renormalizable)"
+      },
+      {
+        "theory": "SU(2) YM 2+1D",
+        "dim": 2,
+        "g": 1.5,
+        "mu": 1.0,
+        "M_predicted": 2.25,
+        "M_lattice_approx": "c * g^2, c ~ 1.0",
+        "formula": "M = c * g^2 (super-renormalizable)"
+      },
+      {
+        "theory": "SU(2) YM 2+1D",
+        "dim": 2,
+        "g": 2.0,
+        "mu": 1.0,
+        "M_predicted": 4.0,
+        "M_lattice_approx": "c * g^2, c ~ 1.0",
+        "formula": "M = c * g^2 (super-renormalizable)"
+      },
+      {
+        "theory": "SU(2) YM 2+1D",
+        "dim": 2,
+        "g": 3.0,
+        "mu": 1.0,
+        "M_predicted": 9.0,
+        "M_lattice_approx": "c * g^2, c ~ 1.0",
+        "formula": "M = c * g^2 (super-renormalizable)"
+      }
+    ],
+    "summary": {
+      "1+1D_scalar_coupling": {
+        "theories": [
+          "Schwinger",
+          "Thirring",
+          "Gross-Neveu",
+          "Thirring-GN"
+        ],
+        "formula": "M = Lambda * exp(-alpha / (g_eff^2 * (N-1)))",
+        "where": "g_eff^2 = g_vector^2 + g_scalar^2/(N-1)",
+        "alpha": "pi for Thirring, 2pi for Gross-Neveu, pi for Schwinger (with e=sqrt(pi)*M)",
+        "circuit_mapping": "L=1, C=Lambda^2/M^2, omega_0=M"
+      },
+      "3+1D_dimensionless_coupling": {
+        "theories": [
+          "Yang-Mills SU(N)"
+        ],
+        "formula": "M = Lambda_QCD = mu * exp(-8*pi^2 / (b0 * g^2))",
+        "b0": "11*N/(48*pi^2) for SU(N)",
+        "circuit_mapping": "Dimensional transmutation: coupling sets scale, scale IS mass gap"
+      },
+      "2+1D_super_renormalizable": {
+        "theories": [
+          "SU(2) YM 2+1D"
+        ],
+        "formula": "M = c * g^2",
+        "c": "~1.0 from lattice",
+        "circuit_mapping": "g^2 has mass dimension 1, directly gives mass gap"
+      }
+    }
+  },
+  "key_insight": "The universal mass gap formula M = Lambda * exp(-alpha/g_eff^2) covers all 1+1D theories. The effective coupling g_eff^2 = g_vector^2 + g_scalar^2/(N-1) unifies Thirring (vector only), Gross-Neveu (scalar only), and the crossover (both)."
+}
