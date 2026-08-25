@@ -1,0 +1,484 @@
+{
+  "experiment": "P vs NP: Flow Variables for Contour Compression",
+  "Q1_spectral_vs_density": {
+    "3": {
+      "N": 10,
+      "M": 3,
+      "ratio": 0.3,
+      "sat_frac": 1.0,
+      "mean_spectral_gap": 1.2295,
+      "std_spectral_gap": 0.1955,
+      "mean_algebraic_conn": -0.0,
+      "mean_H_norm": 0.7
+    },
+    "6": {
+      "N": 10,
+      "M": 6,
+      "ratio": 0.6,
+      "sat_frac": 1.0,
+      "mean_spectral_gap": 0.6312,
+      "std_spectral_gap": 0.2191,
+      "mean_algebraic_conn": 0.1075,
+      "mean_H_norm": 0.6333
+    },
+    "9": {
+      "N": 10,
+      "M": 9,
+      "ratio": 0.9,
+      "sat_frac": 1.0,
+      "mean_spectral_gap": 0.2353,
+      "std_spectral_gap": 0.1291,
+      "mean_algebraic_conn": 0.9809,
+      "mean_H_norm": 0.3333
+    },
+    "12": {
+      "N": 10,
+      "M": 12,
+      "ratio": 1.2,
+      "sat_frac": 1.0,
+      "mean_spectral_gap": 0.2421,
+      "std_spectral_gap": 0.1578,
+      "mean_algebraic_conn": 1.907,
+      "mean_H_norm": 0.1
+    },
+    "15": {
+      "N": 10,
+      "M": 15,
+      "ratio": 1.5,
+      "sat_frac": 1.0,
+      "mean_spectral_gap": 0.5787,
+      "std_spectral_gap": 0.1904,
+      "mean_algebraic_conn": 3.1395,
+      "mean_H_norm": 0.1
+    },
+    "18": {
+      "N": 10,
+      "M": 18,
+      "ratio": 1.8,
+      "sat_frac": 1.0,
+      "mean_spectral_gap": 0.737,
+      "std_spectral_gap": 0.2444,
+      "mean_algebraic_conn": 3.6659,
+      "mean_H_norm": 0.2
+    },
+    "21": {
+      "N": 10,
+      "M": 21,
+      "ratio": 2.1,
+      "sat_frac": 1.0,
+      "mean_spectral_gap": 1.0812,
+      "std_spectral_gap": 0.181,
+      "mean_algebraic_conn": 5.69,
+      "mean_H_norm": 0.0667
+    },
+    "24": {
+      "N": 10,
+      "M": 24,
+      "ratio": 2.4,
+      "sat_frac": 1.0,
+      "mean_spectral_gap": 1.1937,
+      "std_spectral_gap": 0.1819,
+      "mean_algebraic_conn": 6.9223,
+      "mean_H_norm": 0.0333
+    },
+    "27": {
+      "N": 10,
+      "M": 27,
+      "ratio": 2.7,
+      "sat_frac": 1.0,
+      "mean_spectral_gap": 1.3912,
+      "std_spectral_gap": 0.1551,
+      "mean_algebraic_conn": 8.8611,
+      "mean_H_norm": 0.0333
+    },
+    "30": {
+      "N": 10,
+      "M": 30,
+      "ratio": 3.0,
+      "sat_frac": 1.0,
+      "mean_spectral_gap": 1.5671,
+      "std_spectral_gap": 0.172,
+      "mean_algebraic_conn": 10.0797,
+      "mean_H_norm": 0.0333
+    },
+    "33": {
+      "N": 10,
+      "M": 33,
+      "ratio": 3.3,
+      "sat_frac": 0.933,
+      "mean_spectral_gap": 1.6695,
+      "std_spectral_gap": 0.1887,
+      "mean_algebraic_conn": 10.8294,
+      "mean_H_norm": 0.0333
+    },
+    "36": {
+      "N": 10,
+      "M": 36,
+      "ratio": 3.6,
+      "sat_frac": 0.967,
+      "mean_spectral_gap": 1.8083,
+      "std_spectral_gap": 0.2198,
+      "mean_algebraic_conn": 12.4396,
+      "mean_H_norm": 0.0333
+    },
+    "39": {
+      "N": 10,
+      "M": 39,
+      "ratio": 3.9,
+      "sat_frac": 0.933,
+      "mean_spectral_gap": 2.0059,
+      "std_spectral_gap": 0.2298,
+      "mean_algebraic_conn": 14.2095,
+      "mean_H_norm": 0.0
+    },
+    "42": {
+      "N": 10,
+      "M": 42,
+      "ratio": 4.2,
+      "sat_frac": 0.8,
+      "mean_spectral_gap": 2.1551,
+      "std_spectral_gap": 0.1799,
+      "mean_algebraic_conn": 16.0039,
+      "mean_H_norm": 0.0
+    },
+    "45": {
+      "N": 10,
+      "M": 45,
+      "ratio": 4.5,
+      "sat_frac": 0.633,
+      "mean_spectral_gap": 2.2322,
+      "std_spectral_gap": 0.2085,
+      "mean_algebraic_conn": 18.3293,
+      "mean_H_norm": 0.0
+    },
+    "48": {
+      "N": 10,
+      "M": 48,
+      "ratio": 4.8,
+      "sat_frac": 0.5,
+      "mean_spectral_gap": 2.4222,
+      "std_spectral_gap": 0.1509,
+      "mean_algebraic_conn": 19.6923,
+      "mean_H_norm": 0.0
+    },
+    "51": {
+      "N": 10,
+      "M": 51,
+      "ratio": 5.1,
+      "sat_frac": 0.4,
+      "mean_spectral_gap": 2.4896,
+      "std_spectral_gap": 0.1697,
+      "mean_algebraic_conn": 20.0595,
+      "mean_H_norm": 0.0
+    },
+    "54": {
+      "N": 10,
+      "M": 54,
+      "ratio": 5.4,
+      "sat_frac": 0.333,
+      "mean_spectral_gap": 2.6498,
+      "std_spectral_gap": 0.1942,
+      "mean_algebraic_conn": 21.8,
+      "mean_H_norm": 0.0
+    },
+    "57": {
+      "N": 10,
+      "M": 57,
+      "ratio": 5.7,
+      "sat_frac": 0.433,
+      "mean_spectral_gap": 2.7485,
+      "std_spectral_gap": 0.2252,
+      "mean_algebraic_conn": 24.1416,
+      "mean_H_norm": 0.0
+    },
+    "60": {
+      "N": 10,
+      "M": 60,
+      "ratio": 6.0,
+      "sat_frac": 0.3,
+      "mean_spectral_gap": 2.7962,
+      "std_spectral_gap": 0.2054,
+      "mean_algebraic_conn": 25.001,
+      "mean_H_norm": 0.0
+    },
+    "63": {
+      "N": 10,
+      "M": 63,
+      "ratio": 6.3,
+      "sat_frac": 0.167,
+      "mean_spectral_gap": 2.9542,
+      "std_spectral_gap": 0.2034,
+      "mean_algebraic_conn": 28.0169,
+      "mean_H_norm": 0.0
+    }
+  },
+  "Q2_scaling": {
+    "5": {
+      "N": 5,
+      "M": 21,
+      "ratio": 4.25,
+      "mean_gap": 2.4138,
+      "mean_lap": 22.8067
+    },
+    "8": {
+      "N": 8,
+      "M": 34,
+      "ratio": 4.25,
+      "mean_gap": 2.2353,
+      "mean_lap": 18.3936
+    },
+    "10": {
+      "N": 10,
+      "M": 42,
+      "ratio": 4.25,
+      "mean_gap": 2.1589,
+      "mean_lap": 16.428
+    },
+    "15": {
+      "N": 15,
+      "M": 63,
+      "ratio": 4.25,
+      "mean_gap": 2.0047,
+      "mean_lap": 13.1067
+    },
+    "20": {
+      "N": 20,
+      "M": 85,
+      "ratio": 4.25,
+      "mean_gap": 1.9325,
+      "mean_lap": 12.1293
+    }
+  },
+  "Q3_entropy": {
+    "3": {
+      "N": 10,
+      "M": 3,
+      "ratio": 0.3,
+      "mean_H_norm": 0.7,
+      "mean_logZ": 6.5352
+    },
+    "8": {
+      "N": 10,
+      "M": 8,
+      "ratio": 0.8,
+      "mean_H_norm": 0.2,
+      "mean_logZ": 5.8612
+    },
+    "13": {
+      "N": 10,
+      "M": 13,
+      "ratio": 1.3,
+      "mean_H_norm": 0.25,
+      "mean_logZ": 5.1757
+    },
+    "18": {
+      "N": 10,
+      "M": 18,
+      "ratio": 1.8,
+      "mean_H_norm": 0.25,
+      "mean_logZ": 4.5725
+    },
+    "23": {
+      "N": 10,
+      "M": 23,
+      "ratio": 2.3,
+      "mean_H_norm": 0.0,
+      "mean_logZ": 3.9121
+    },
+    "28": {
+      "N": 10,
+      "M": 28,
+      "ratio": 2.8,
+      "mean_H_norm": 0.05,
+      "mean_logZ": 2.9939
+    },
+    "33": {
+      "N": 10,
+      "M": 33,
+      "ratio": 3.3,
+      "mean_H_norm": 0.05,
+      "mean_logZ": 2.6227
+    },
+    "38": {
+      "N": 10,
+      "M": 38,
+      "ratio": 3.8,
+      "mean_H_norm": 0.0,
+      "mean_logZ": 1.8856
+    },
+    "43": {
+      "N": 10,
+      "M": 43,
+      "ratio": 4.3,
+      "mean_H_norm": 0.0,
+      "mean_logZ": 1.0786
+    },
+    "48": {
+      "N": 10,
+      "M": 48,
+      "ratio": 4.8,
+      "mean_H_norm": 0.0,
+      "mean_logZ": 0.5918
+    },
+    "53": {
+      "N": 10,
+      "M": 53,
+      "ratio": 5.3,
+      "mean_H_norm": 0.0,
+      "mean_logZ": 0.329
+    },
+    "58": {
+      "N": 10,
+      "M": 58,
+      "ratio": 5.8,
+      "mean_H_norm": 0.0,
+      "mean_logZ": 0.3087
+    },
+    "63": {
+      "N": 10,
+      "M": 63,
+      "ratio": 6.3,
+      "mean_H_norm": 0.0,
+      "mean_logZ": 0.104
+    }
+  },
+  "Q4_phase_diagram": {
+    "3": {
+      "ratio": 0.3,
+      "sat_frac": 1.0,
+      "sat_mean_gap": 1.2206,
+      "sat_mean_H": 0.7
+    },
+    "6": {
+      "ratio": 0.6,
+      "sat_frac": 1.0,
+      "sat_mean_gap": 0.6575,
+      "sat_mean_H": 0.55
+    },
+    "9": {
+      "ratio": 0.9,
+      "sat_frac": 1.0,
+      "sat_mean_gap": 0.2702,
+      "sat_mean_H": 0.35
+    },
+    "12": {
+      "ratio": 1.2,
+      "sat_frac": 1.0,
+      "sat_mean_gap": 0.2445,
+      "sat_mean_H": 0.1
+    },
+    "15": {
+      "ratio": 1.5,
+      "sat_frac": 1.0,
+      "sat_mean_gap": 0.5262,
+      "sat_mean_H": 0.15
+    },
+    "18": {
+      "ratio": 1.8,
+      "sat_frac": 1.0,
+      "sat_mean_gap": 0.7357,
+      "sat_mean_H": 0.25
+    },
+    "21": {
+      "ratio": 2.1,
+      "sat_frac": 1.0,
+      "sat_mean_gap": 1.0419,
+      "sat_mean_H": 0.05
+    },
+    "24": {
+      "ratio": 2.4,
+      "sat_frac": 1.0,
+      "sat_mean_gap": 1.1972,
+      "sat_mean_H": 0.05
+    },
+    "27": {
+      "ratio": 2.7,
+      "sat_frac": 1.0,
+      "sat_mean_gap": 1.368,
+      "sat_mean_H": 0.05
+    },
+    "30": {
+      "ratio": 3.0,
+      "sat_frac": 1.0,
+      "sat_mean_gap": 1.5047,
+      "sat_mean_H": 0.05
+    },
+    "33": {
+      "ratio": 3.3,
+      "sat_frac": 1.0,
+      "sat_mean_gap": 1.6629,
+      "sat_mean_H": 0.05
+    },
+    "36": {
+      "ratio": 3.6,
+      "sat_frac": 1.0,
+      "sat_mean_gap": 1.8067,
+      "sat_mean_H": 0.0
+    },
+    "39": {
+      "ratio": 3.9,
+      "sat_frac": 0.9,
+      "sat_mean_gap": 2.006,
+      "sat_mean_H": 0.0,
+      "unsat_mean_gap": 1.836
+    },
+    "42": {
+      "ratio": 4.2,
+      "sat_frac": 0.7,
+      "sat_mean_gap": 2.136,
+      "sat_mean_H": 0.0,
+      "unsat_mean_gap": 2.2123
+    },
+    "45": {
+      "ratio": 4.5,
+      "sat_frac": 0.6,
+      "sat_mean_gap": 2.1527,
+      "sat_mean_H": 0.0,
+      "unsat_mean_gap": 2.2901
+    },
+    "48": {
+      "ratio": 4.8,
+      "sat_frac": 0.55,
+      "sat_mean_gap": 2.3983,
+      "sat_mean_H": 0.0,
+      "unsat_mean_gap": 2.4408
+    },
+    "51": {
+      "ratio": 5.1,
+      "sat_frac": 0.45,
+      "sat_mean_gap": 2.3919,
+      "sat_mean_H": 0.0,
+      "unsat_mean_gap": 2.5025
+    },
+    "54": {
+      "ratio": 5.4,
+      "sat_frac": 0.25,
+      "sat_mean_gap": 2.5497,
+      "sat_mean_H": 0.0,
+      "unsat_mean_gap": 2.6425
+    },
+    "57": {
+      "ratio": 5.7,
+      "sat_frac": 0.35,
+      "sat_mean_gap": 2.7239,
+      "sat_mean_H": 0.0,
+      "unsat_mean_gap": 2.7688
+    },
+    "60": {
+      "ratio": 6.0,
+      "sat_frac": 0.3,
+      "sat_mean_gap": 2.8007,
+      "sat_mean_H": 0.0,
+      "unsat_mean_gap": 2.7487
+    },
+    "63": {
+      "ratio": 6.3,
+      "sat_frac": 0.15,
+      "sat_mean_gap": 2.7699,
+      "sat_mean_H": 0.0,
+      "unsat_mean_gap": 2.9403
+    }
+  },
+  "key_question": "Does the spectral gap close at the SAT/UNSAT phase transition?",
+  "honest_wall": "If spectral gap closes at M/N ~ 4.267, it identifies the entanglement that prevents compression. A compression flow would need to maintain nonzero gap."
+}
