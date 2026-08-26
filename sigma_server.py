@@ -37,9 +37,15 @@ class SigmaHandler(http.server.SimpleHTTPRequestHandler):
     
     def do_GET(self):
         # Serve sigma.html for root
-        if self.path == '/' or self.path == '':
+        if self.path == '/' or self.path == '' or self.path == '/index.html':
             self.path = '/sigma.html'
         super().do_GET()
+    
+    def end_headers(self):
+        # Add CORS and cache headers
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Cache-Control', 'no-cache')
+        super().end_headers()
     
     def log_message(self, format, *args):
         # Colorful logging
