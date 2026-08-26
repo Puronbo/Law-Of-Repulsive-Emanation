@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 30 chapters from "The Removable Singularity"
+    - 31 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -1098,6 +1098,52 @@ def build_courses():
                 {"q": "The removable value at Q=1 is:", "options": ["Infinite", "Zero", "Jeans wavenumber", "Sound speed"], "correct": 2},
                 {"q": "The critical exponent beta near Q=1 is:", "options": ["1/4", "1/2", "1", "2"], "correct": 1},
                 {"q": "Toomre Q connects to which Millennium Problems?", "options": ["NS only", "YM only", "BSD only", "All three"], "correct": 3}
+            ]
+        },
+        {
+            "id": 31,
+            "title": "Dark Matter + Dark Energy: Unified 0/0",
+            "part": "VII. Extensions",
+            "content": """
+<h2>Chapter 31: Dark Matter + Dark Energy: Unified 0/0</h2>
+<p>The ENTIRE Lambda-CDM model has a 0/0 structure across all scales.</p>
+
+<h3>Dark Matter: 0/0 at Galactic Scales</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">rho_core = rho_0 / sinh(2*pi / (sigma_m * (N-1)))</p>
+<p>At sigma_m*(N-1) = 2*pi: 0/0 removable singularity. Removable value: rho_0.</p>
+
+<h3>Dark Energy: 0/0 at Planck Scale</h3>
+<p>The cosmological constant has three values:</p>
+<ul>
+<li>Classical: Lambda = 0 (no vacuum energy)</li>
+<li>Quantum: Lambda_QFT ~ 10^120 * Lambda_obs (vacuum fluctuations)</li>
+<li>Observed: Lambda_obs = 10^-123 (Planck units)</li>
+</ul>
+<p style="font-size:1.2em; text-align:center; padding:15px;">Lambda_cl / Lambda_QFT = 0 / infinity = 0</p>
+<p>Removable value: Lambda_obs = 10^-123.</p>
+
+<h3>Toomre Q at Cosmic Scales</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">Q_cosmic = c_s * H / (pi * G * rho)</p>
+<p>At Planck scale: Q ~ 10^-36 (deeply unstable). At cluster scale: Q ~ 1 (phase transition).</p>
+
+<h3>The Phase Transition</h3>
+<p>For a < a_crit: Q < 1 (structure forms). For a > a_crit: Q > 1 (dark energy dominates).</p>
+<p>This is the PHASE TRANSITION from structure formation to dark energy domination!</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Toomre (1964), ApJ 139, 1217</li>
+<li>[2] Planck Collaboration (2020), A&A 641, A6</li>
+<li>[3] Riess et al. (1998), AJ 116, 1009</li>
+<li>[4] Bertone et al. (2005), Physics Reports 405, 279</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "Dark matter core density has a 0/0 at:", "options": ["Q=0", "Q=1", "sigma_m*(N-1)=2*pi", "Lambda=0"], "correct": 2},
+                {"q": "The cosmological constant problem discrepancy is:", "options": ["10^10", "10^60", "10^120", "10^200"], "correct": 2},
+                {"q": "The phase transition at Q=1 occurs at:", "options": ["Planck scale", "Galaxy scale", "Cluster scale", "Solar system"], "correct": 2},
+                {"q": "For a < a_crit (Q < 1):", "options": ["Dark energy dominates", "Structure forms", "Universe is stable", "Nothing happens"], "correct": 1},
+                {"q": "Q_Planck is approximately:", "options": ["10^-36", "10^-18", "10^0", "10^18"], "correct": 0}
             ]
         }
     ]

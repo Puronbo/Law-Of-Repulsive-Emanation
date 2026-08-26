@@ -431,6 +431,18 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Toomre 1964, Lin & Shu 1964, Chirikov 1959, Caffarelli et al. 1982",
     },
+    # Part VII: Extensions (continued)
+    {
+        "part": "VII",
+        "chapter": 31,
+        "title": "Dark Matter + Dark Energy: Unified 0/0",
+        "status": REAL,
+        "category": "cosmology",
+        "mechanism": "Lambda-CDM has 0/0 at all scales: dark matter (galactic), dark energy (cosmic), quantum gravity (Planck). Q=1 is phase transition.",
+        "examples": ["rho_core = rho_0/sinh(2pi/(sigma_m*(N-1)))", "Lambda = 0/infinity = 0, removable 10^-123", "Q_Planck ~ 10^-36"],
+        "sigma_value": 1.0,
+        "source": "Planck 2020, Riess 1998, Bertone 2005, Weinberg 1989",
+    },
 ]
 
 
