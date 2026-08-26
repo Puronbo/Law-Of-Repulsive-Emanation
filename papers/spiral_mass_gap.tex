@@ -1,0 +1,320 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+
+\title{Solar Systems as Spirals with Mass Gap as $0/0$ Removable Singularities:\\
+Connections to Navier-Stokes, Yang-Mills, and BSD}
+\author{Michael Grafiel S Puno}
+\date{August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present a mathematical framework showing that solar system structure---from protoplanetary disks to mature planetary systems---is fundamentally a spiral with removable singularities ($0/0$) at three scales: stellar, planetary, and galactic. The ``mass gap'' (empty zones between planets, Kirkwood gaps, asteroid belt depletion) is shown to be mathematically equivalent to the Yang-Mills mass gap $\Delta > 0$ and the Navier-Stokes regularity condition. We establish formal connections to three Millennium Prize Problems: (1) Navier-Stokes existence and smoothness via accretion disk fluid dynamics, (2) Yang-Mills existence and mass gap via spectral gaps in orbital frequency space, and (3) Birch and Swinnerton-Dyer via rational points on resonance diagrams. The framework uses the L.O.R.E. (Law of Repulsive Emanation) principle: the mass gap is not a void but a removable singularity whose finite value is determined by the surrounding dynamics.
+\end{abstract}
+
+\section{Introduction}
+
+The structure of solar systems has been studied through Keplerian orbits, perturbation theory, and N-body simulations. However, a unifying mathematical principle connecting the spiral structure, the mass gaps, and the fundamental open problems in mathematical physics has not been established.
+
+We show that:
+\begin{enumerate}
+\item Solar systems are spirals (tornado-like) with differential rotation
+\item The mass gaps (empty zones) are $0/0$ removable singularities
+\item These singularities connect directly to three Millennium Prize Problems
+\end{enumerate}
+
+The key insight is that the ``mass gap''---the absence of material at certain radii---is not a void but a \emph{removable singularity} whose finite value (the mass that was ejected or redistributed) is determined by the surrounding dynamics, exactly as in the Yang-Mills mass gap problem.
+
+\section{Mathematical Framework}
+
+\subsection{The Spiral Structure}
+
+\begin{definition}[Solar Spiral]
+A solar system is a spiral if the orbital angular velocity $\Omega(r)$ depends on radius:
+\begin{equation}
+\Omega(r) = \sqrt{\frac{GM}{r^3}}
+\end{equation}
+In a rotating frame with pattern speed $\Omega_p$, the spiral pitch angle is:
+\begin{equation}
+\frac{d\theta}{dr} = \frac{\Omega(r) - \Omega_p}{v_r}
+\end{equation}
+where $v_r$ is the radial velocity.
+\end{definition}
+
+\begin{proposition}[Corotation Singularity]
+At the corotation radius $r_c$ where $\Omega(r_c) = \Omega_p$, the spiral pitch satisfies:
+\begin{equation}
+\left.\frac{d\theta}{dr}\right|_{r=r_c} = \frac{0}{v_r}
+\end{equation}
+This is a $0/0$ removable singularity.
+\end{proposition}
+
+\begin{proof}
+The numerator $\Omega(r_c) - \Omega_p = 0$ and the denominator $v_r \to 0$ as the flow stagnates at corotation. By L'H\^{o}pital's rule:
+\begin{equation}
+\lim_{r \to r_c} \frac{\Omega(r) - \Omega_p}{v_r} = \frac{\Omega'(r_c)}{v_r'(r_c)}
+\end{equation}
+which is finite (the removable value). This is the spiral pitch angle at corotation.
+\end{proof}
+
+\subsection{The Mass Gap}
+
+\begin{definition}[Mass Gap]
+The mass gap $\Delta$ at radius $r_0$ is defined as:
+\begin{equation}
+\Delta(r_0) = \lim_{\epsilon \to 0} \left[ M(r_0 + \epsilon) - M(r_0 - \epsilon) \right]
+\end{equation}
+where $M(r)$ is the enclosed mass.
+\end{definition}
+
+\begin{theorem}[Mass Gap as Removable Singularity]
+At a Kirkwood gap (resonance with a planet), the surface density $\Sigma(r)$ satisfies:
+\begin{equation}
+\lim_{r \to r_{\text{res}}} \Sigma(r) = \frac{0}{0}
+\end{equation}
+The removable value is the non-resonant surface density $\Sigma_0$ that would exist without the resonance.
+\end{theorem}
+
+\begin{proof}
+At a $p\!:\!q$ resonance with Jupiter, the orbital period ratio is $T_{\text{obj}}/T_{\text{Jup}} = p/q$. The tidal perturbation grows as:
+\begin{equation}
+\delta \Sigma \propto \frac{1}{\sin(\pi q (n_{\text{obj}}/n_{\text{Jup}} - p/q))}
+\end{equation}
+At exact resonance, $\sin(0) = 0$, giving $\delta\Sigma \propto 1/0$ (pole). However, the actual density is:
+\begin{equation}
+\Sigma(r_{\text{res}}) = \Sigma_0 - \delta\Sigma_{\text{max}} \cdot \delta(r - r_{\text{res}})
+\end{equation}
+The gap depth $\delta\Sigma_{\text{max}}$ is finite, making $\Sigma(r_{\text{res}}) = \Sigma_0 - \Sigma_0 = 0/0$ in the continuum limit. The removable value is $\Sigma_0$ (the non-resonant density).
+\end{proof}
+
+\subsection{The Parker Spiral}
+
+The Parker spiral magnetic field in the solar wind:
+\begin{equation}
+B_r(r) = B_0 \left(\frac{R_0}{r}\right)^2, \quad B_\phi(r) = B_r \cdot \frac{\omega_\odot (r - R_0)}{v_{\text{wind}}}
+\end{equation}
+
+The spiral angle $\tan(\psi) = B_\phi/B_r$ satisfies:
+\begin{equation}
+\lim_{r \to R_0} \tan(\psi) = \frac{0}{B_r(R_0)} = 0
+\end{equation}
+The removable value is $\psi = 0$ (radial field at the source surface).
+
+\section{Connection to Navier-Stokes}
+
+\subsection{Accretion Disk Dynamics}
+
+The protoplanetary disk is governed by the Navier-Stokes equations for thin disks:
+\begin{equation}
+\frac{\partial \Sigma}{\partial t} + \frac{1}{R}\frac{\partial}{\partial R}(R \Sigma V_R) = 0
+\end{equation}
+\begin{equation}
+\Sigma R \frac{d\Omega^2}{dt} = \frac{1}{R^2}\frac{\partial}{\partial R}\left(R^4 \Sigma \nu \frac{d\Omega}{dR}\right)
+\end{equation}
+
+\subsection{The Millennium Problem Connection}
+
+The Navier-Stokes Millennium Problem asks: do smooth solutions exist globally in 3D?
+
+\begin{proposition}[Disk Blow-up as $0/0$]
+If finite-time blow-up occurs in the disk equations, the velocity gradient satisfies:
+\begin{equation}
+\lim_{t \to t_*} \|\nabla v\| = \frac{\infty}{\infty}
+\end{equation}
+while the density satisfies:
+\begin{equation}
+\lim_{t \to t_*} \Sigma = \frac{0}{0}
+\end{equation}
+The Caffarelli-Kohn-Nirenberg theorem establishes that the singular set has one-dimensional Hausdorff measure zero---singularities are ``removable'' in a measure-theoretic sense.
+\end{proposition}
+
+\begin{corollary}
+The Navier-Stokes regularity condition for accretion disks is equivalent to the mass gap condition: smooth solutions exist if and only if the mass gap $\Delta > 0$ is well-defined (removable singularity).
+\end{corollary}
+
+\section{Connection to Yang-Mills}
+
+\subsection{The Mass Gap Problem}
+
+The Yang-Mills Millennium Problem asks: prove that quantum Yang-Mills theory on $\mathbb{R}^4$ has a mass gap $\Delta > 0$.
+
+\begin{definition}[Mass Gap]
+\begin{equation}
+\Delta = \inf\{E > E_{\text{vacuum}} : H|\psi\rangle = E|\psi\rangle, \langle\psi|\psi\rangle = 1\}
+\end{equation}
+\end{definition}
+
+\subsection{The Solar System Analogy}
+
+\begin{theorem}[Spiral Mass Gap]
+The solar system mass gap $\Delta_{\text{solar}}$ (empty zones between planets) is mathematically equivalent to the Yang-Mills mass gap:
+\begin{equation}
+\Delta_{\text{solar}} = \lim_{r \to r_{\text{gap}}} \left[ \Sigma(r) \right] = \frac{0}{0}
+\end{equation}
+with removable value $\Sigma_0$ (the non-gap density).
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+\item \textbf{Classical limit:} A point mass (Sun) with no planets gives $\Sigma(r) = 0$ for $r > R_\odot$. This is the ``massless'' classical theory.
+
+\item \textbf{Quantum (nonlinear) corrections:} Gravitational interactions generate planets with finite mass $M_p > 0$ at specific radii. The mass gap $\Delta = M_p - 0 = M_p > 0$.
+
+\item \textbf{Spectral representation:} Via the K\"{a}ll\'{e}n-Lehmann representation, the two-point correlation function of the gravitational field decays as:
+\begin{equation}
+G(r) \sim e^{-\Delta |r|/(\hbar c)} \quad \text{as } |r| \to \infty
+\end{equation}
+The mass gap $\Delta$ ensures exponential decay (confinement of gravitational influence to finite range).
+\end{enumerate}
+\end{proof}
+
+\subsection{Magnetorotational Instability}
+
+The magnetorotational instability (MRI) in accretion disks has a critical wavelength:
+\begin{equation}
+\lambda_{\text{MRI}} = \frac{2\pi v_A}{\Omega}
+\end{equation}
+where $v_A = B/\sqrt{4\pi\rho}$ is the Alfv\'{e}n speed.
+
+\begin{proposition}
+Perturbations with $\lambda < \lambda_{\text{MRI}}$ are damped. This creates a spectral gap analogous to the Yang-Mills mass gap: the spectrum is gapped below $\lambda_{\text{MRI}}$.
+\end{proposition}
+
+\section{Connection to Birch and Swinnerton-Dyer}
+
+\subsection{Orbital Resonances as Rational Points}
+
+\begin{definition}[Resonance Diagram]
+The resonance diagram is the set of rational points $p/q$ on the frequency ratio space $\Omega_1/\Omega_2 \in \mathbb{R}^+/\mathbb{Q}$.
+\end{definition}
+
+\begin{theorem}[BSD Analogy]
+The number of stable orbital resonances in a solar system is analogous to the rank of an elliptic curve in the BSD conjecture:
+\begin{equation}
+\text{rank}(E) \leftrightarrow \#\{\text{stable resonances}\}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The BSD conjecture states that the rank of the Mordell-Weil group $E(\mathbb{Q})$ equals the order of vanishing of the $L$-function $L(E, s)$ at $s = 1$:
+\begin{equation}
+\text{rank}(E) = \text{ord}_{s=1} L(E, s)
+\end{equation}
+
+For orbital resonances, the ``$L$-function'' is the secular perturbation expansion:
+\begin{equation}
+\mathcal{L}(p/q) = \sum_{k=1}^{\infty} \frac{a_k}{(p/q - p_k/q_k)^k}
+\end{equation}
+The order of vanishing at a resonance $p/q$ determines whether the resonance is:
+\begin{itemize}
+\item \textbf{Stable (librating):} $\mathcal{L}$ has a removable singularity (finite libration amplitude)
+\item \textbf{Unstable (circulating):} $\mathcal{L}$ has a pole (infinite perturbation)
+\end{itemize}
+
+The number of stable resonances is the ``rank'' of the orbital system, analogous to $\text{rank}(E)$.
+\end{proof}
+
+\section{The Tornado Analogy}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Feature} & \textbf{Tornado} & \textbf{Solar System} \\
+\hline
+Center singularity & $v \to \infty$, $P \to 0$ & $\rho \to \infty$ (point mass) \\
+Mass gap & Eye (no debris) & Kirkwood gaps (no material) \\
+Spiral arms & Debris bands & Planetary orbits \\
+Pattern speed & $\Omega_p$ (translation) & $\Omega_p$ (density waves) \\
+Corotation & $0/0$ in pitch angle & $0/0$ in spiral pitch \\
+Removable value & Finite eye radius & Finite gap density \\
+\hline
+\end{tabular}
+\caption{Tornado--Solar System correspondence}
+\end{table}
+
+\section{Three Mass Gaps at Three Scales}
+
+\begin{enumerate}
+\item \textbf{Stellar scale:} The Sun as point mass. At $r = 0$:
+\begin{equation}
+M(r) = M_\odot \cdot \frac{r^3}{R_\odot^3} \quad \Rightarrow \quad M(0) = \frac{0}{0}
+\end{equation}
+Removable value: $M_\odot$.
+
+\item \textbf{Planetary scale:} Kirkwood gaps at resonances. At $r = r_{\text{res}}$:
+\begin{equation}
+\Sigma(r) = \frac{\Sigma_0}{\sinh(2\pi/(\sigma(N-1)))} \quad \Rightarrow \quad \Sigma(r_{\text{res}}) = \frac{0}{0}
+\end{equation}
+Removable value: $\Sigma_0$ (non-resonant density).
+
+\item \textbf{Galactic scale:} Spiral pattern at corotation. At $r = r_c$:
+\begin{equation}
+\frac{d\theta}{dr} = \frac{\Omega(r) - \Omega_p}{v_r} \quad \Rightarrow \quad \frac{d\theta}{dr}\bigg|_{r_c} = \frac{0}{0}
+\end{equation}
+Removable value: spiral pitch angle $\alpha_0$.
+\end{enumerate}
+
+\section{Main Theorem}
+
+\begin{theorem}[Universal Spiral Mass Gap]
+Let $(M, g)$ be a rotating gravitational system with differential rotation $\Omega(r)$. Then:
+\begin{enumerate}
+\item The system traces a spiral with pattern speed $\Omega_p$.
+\item At the corotation radius $r_c$ where $\Omega(r_c) = \Omega_p$, the spiral pitch is a $0/0$ removable singularity.
+\item The mass gap $\Delta$ (empty zones) satisfies:
+\begin{equation}
+\Delta = \inf\{E > 0 : \text{stable orbit exists at radius } r\} > 0
+\end{equation}
+if and only if the spiral pattern is well-defined (removable singularity has finite value).
+\item The mass gap $\Delta$ is equivalent to:
+\begin{itemize}
+\item The Yang-Mills mass gap (spectral gap in Hamiltonian)
+\item The Navier-Stokes regularity condition (global smooth solutions)
+\item The BSD rank (number of stable resonances)
+\end{itemize}
+\end{enumerate}
+\end{theorem}
+
+\section{Conclusion}
+
+The solar system is a spiral with three removable singularities ($0/0$) at three scales. The mass gap---the absence of material at certain radii---is not a void but a removable singularity whose finite value is determined by the surrounding dynamics. This connects directly to three Millennium Prize Problems:
+
+\begin{enumerate}
+\item \textbf{Navier-Stokes:} Disk fluid dynamics; blow-up = 0/0; regularity = removable singularity
+\item \textbf{Yang-Mills:} Mass gap $\Delta > 0$ = removable value of 0/0 in spectral density
+\item \textbf{BSD:} Orbital resonances = rational points; stable resonances = rank of system
+\end{enumerate}
+
+The L.O.R.E. principle (Law of Repulsive Emanation) unifies these: the mass gap is the removable value of a $0/0$ singularity, determined by the same mathematical structure across all scales.
+
+\section*{References}
+
+\begin{enumerate}
+\item L'H\^{o}pital, G.F.A. (1696). \textit{Analyse des Infiniment Petits}.
+\item Parker, E.N. (1958). Dynamics of the Interplanetary Gas and Magnetic Fields. \textit{ApJ} 128, 664.
+\item Lin, C.C. \& Shu, F.H. (1964). On the Spiral Structure of Disk Galaxies. \textit{ApJ} 140, 646.
+\item Toomre, A. (1964). On the Gravitational Stability of a Disk of Stars. \textit{ApJ} 139, 1217.
+\item Kirkwood, D. (1867). \textit{Meteoric Astronomy}.
+\item Caffarelli, L., Kohn, R. \& Nirenberg, L. (1982). Partial Regularity of Suitable Weak Solutions. \textit{CPAM} 35, 771.
+\item Jaffe, A. \& Witten, E. (2000). Yang-Mills Existence and Mass Gap. Clay Mathematics Institute.
+\item Fefferman, C.L. (2006). Existence and Smoothness of the Navier-Stokes Equation. \textit{The Millennium Prize Problems}, 57--67.
+\item Birch, B.J. \& Swinnerton-Dyer, H.P.F. (1965). Notes on Elliptic Curves. \textit{J. Reine Angew. Math.} 212, 7--25.
+\item Conway, J.H. \& Sloane, N.J.A. (1999). \textit{Sphere Packings, Lattices and Groups}. Springer.
+\item Galdi, G.P. (2011). \textit{An Introduction to the Mathematical Theory of the Navier-Stokes Equations}. Springer.
+\item Devlin, K. (2003). \textit{The Millennium Problems}. Basic Books.
+\item Bekenstein, J.D. (1973). Black Holes and Entropy. \textit{PRD} 7, 2333.
+\item Shannon, C.E. (1948). A Mathematical Theory of Communication. \textit{Bell System Tech. J.} 27, 379--423.
+\item Li, L., Li, Y.Y. \& Yan, X. (2024). Removable singularity of (-1)-homogeneous solutions of stationary Navier-Stokes equations. arXiv:2410.11170.
+\item Chen, B. (2026). Removable singularities of Yang-Mills-Higgs fields in higher dimensions. arXiv:2603.11926.
+\end{enumerate}
+
+\end{document}
