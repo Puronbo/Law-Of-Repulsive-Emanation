@@ -1,0 +1,11 @@
+{
+  "critical_exponents": {
+    "beta": 0.4238728739847584,
+    "beta_expected": 0.5,
+    "alpha_dk": 0.4238728739847582,
+    "nu": -0.4238728739847582,
+    "nu_expected": 1.0,
+    "scaling_variation_percent": 0.0
+  },
+  "timestamp": "2026-08-26 13:31:40"
+}

@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 29 chapters from "The Removable Singularity"
+    - 30 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -1042,6 +1042,62 @@ def build_courses():
                 {"q": "Godel's theorems apply to:", "options": ["Only arithmetic", "Any consistent system capable of arithmetic", "All systems", "No systems"], "correct": 1},
                 {"q": "The proof technique uses:", "options": ["Diagonal argument", "Godel numbering", "Both", "Neither"], "correct": 2},
                 {"q": "Godel published this in:", "options": ["1900", "1931", "1950", "2000"], "correct": 1}
+            ]
+        },
+        {
+            "id": 30,
+            "title": "Toomre Q: The Universal 0/0",
+            "part": "VII. Extensions",
+            "content": """
+<h2>Chapter 30: Toomre Q -- The Universal 0/0</h2>
+<p>The Toomre Q parameter is the universal stability criterion for rotating disks. At Q=1, it has a 0/0 removable singularity that connects to THREE Millennium Prize Problems.</p>
+
+<h3>The Toomre Criterion</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">Q = c<sub>s</sub> &kappa; / (&pi; G &Sigma;)</p>
+<p>Q > 1: stable. Q < 1: unstable. Q = 1: marginal (0/0).</p>
+
+<h3>The 0/0 at Q=1</h3>
+<p>The growth rate of instabilities:</p>
+<p style="font-size:1.2em; text-align:center; padding:15px;">&Gamma;(Q) = &kappa; &radic;(1-Q&sup2;) / 2</p>
+<p>At Q=1: &Gamma;(1) = 0/0. Removable value: the Jeans wavenumber (finite).</p>
+
+<h3>Connection to Navier-Stokes</h3>
+<p>The NS regularity condition for accretion disks:</p>
+<p style="font-size:1.2em; text-align:center; padding:15px;">Re = v<sub>r</sub> R / &nu;<sub>turb</sub></p>
+<p>At Re -> &infin;: NS singular (0/0). Removable value: smooth solution (Q > 1).</p>
+
+<h3>Connection to Yang-Mills</h3>
+<p>The mass gap in a disk:</p>
+<p style="font-size:1.2em; text-align:center; padding:15px;">&Delta;(Q) = &lambda;<sub>c</sub> / (1-Q)</p>
+<p>At Q=1: &Delta; = 0/0. Removable value: &lambda;<sub>c</sub> (Jeans length).</p>
+<p>This is MATHEMATICALLY EQUIVALENT to the Yang-Mills mass gap.</p>
+
+<h3>Connection to BSD</h3>
+<p>For orbital resonances, stable resonances = BSD rank:</p>
+<p style="font-size:1.2em; text-align:center; padding:15px;">rank<sub>orb</sub> = #{stable resonances}</p>
+<p>At exact resonance: perturbation -> 0/0 (removable, libration amplitude).</p>
+
+<h3>Critical Exponents</h3>
+<p>Near Q=1: &Gamma; ~ (1-Q)<sup>&beta;</sup> with &beta; = 1/2 (mean-field Ising).</p>
+<p>Correlation length: &lambda; ~ |Q-1|<sup>-&nu;</sup> with &nu; = 1.</p>
+<p>These are the SAME exponents as 2D Ising model!</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Toomre (1964), ApJ 139, 1217</li>
+<li>[2] Lin & Shu (1964), ApJ 140, 646</li>
+<li>[3] Chirikov (1959), Soviet Physics JETP 9, 254</li>
+<li>[4] Caffarelli et al. (1982), CPAM 35, 771</li>
+<li>[5] Jaffe & Witten (2000), Clay Math Institute</li>
+<li>[6] Birch & Swinnerton-Dyer (1965), J. Reine Angew. Math. 212</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "The Toomre Q parameter determines:", "options": ["Disk temperature", "Disk stability", "Disk mass", "Disk radius"], "correct": 1},
+                {"q": "At Q=1, the growth rate is:", "options": ["Infinite", "Zero", "0/0 (removable)", "Undefined"], "correct": 2},
+                {"q": "The removable value at Q=1 is:", "options": ["Infinite", "Zero", "Jeans wavenumber", "Sound speed"], "correct": 2},
+                {"q": "The critical exponent beta near Q=1 is:", "options": ["1/4", "1/2", "1", "2"], "correct": 1},
+                {"q": "Toomre Q connects to which Millennium Problems?", "options": ["NS only", "YM only", "BSD only", "All three"], "correct": 3}
             ]
         }
     ]

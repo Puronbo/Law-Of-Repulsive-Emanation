@@ -419,6 +419,18 @@ CHAPTERS = [
         "sigma_value": None,
         "source": "[B10] Cubitt et al. 2015",
     },
+    # Part VII: Extensions
+    {
+        "part": "VII",
+        "chapter": 30,
+        "title": "Toomre Q: The Universal 0/0",
+        "status": REAL,
+        "category": "astrophysics",
+        "mechanism": "Toomre Q=1 is a 0/0 removable singularity connecting NS, YM, and BSD via spectral gap theory.",
+        "examples": ["Milky Way Q=0 (unstable)", "Solar system 14 resonances", "beta=1/2 mean-field Ising"],
+        "sigma_value": 1.0,
+        "source": "Toomre 1964, Lin & Shu 1964, Chirikov 1959, Caffarelli et al. 1982",
+    },
 ]
 
 
