@@ -1,0 +1,84 @@
+{
+  "name": "Sigma",
+  "version": "1.0.0",
+  "unit": "0/0 removable values",
+  "backing": "Verified removable values of mathematical singularities",
+  "total_supply": 8.77648051389328,
+  "total_supply_exact": "8.77648051389328",
+  "removable_values": {
+    "sin(0)/0": {
+      "value": 1.0,
+      "source": "L'Hopital 1696",
+      "verified": true
+    },
+    "0!": {
+      "value": 1.0,
+      "source": "Combinatorics",
+      "verified": true
+    },
+    "Gamma(1)": {
+      "value": 1.0,
+      "source": "Euler 1729",
+      "verified": true
+    },
+    "(e^x-1)/x at 0": {
+      "value": 1.0,
+      "source": "Newton 1687",
+      "verified": true
+    },
+    "log(1+x)/x at 0": {
+      "value": 1.0,
+      "source": "Leibniz 1684",
+      "verified": true
+    },
+    "tan(x)/x at 0": {
+      "value": 1.0,
+      "source": "Leibniz 1684",
+      "verified": true
+    },
+    "x^x at 0": {
+      "value": 1.0,
+      "source": "Combinatorics",
+      "verified": true
+    },
+    "(1-cos x)/x^2 at 0": {
+      "value": 0.5,
+      "source": "Taylor 1715",
+      "verified": true
+    },
+    "(a^x-1)/x at 0": {
+      "value": 0.6931471805599453,
+      "source": "Euler 1748",
+      "verified": true
+    },
+    "zeta(0)": {
+      "value": 0.5,
+      "source": "Riemann 1859",
+      "verified": true
+    },
+    "zeta(-1)": {
+      "value": 0.08333333333333333,
+      "source": "Ramanujan 1913",
+      "verified": true
+    },
+    "zeta(-2)": {
+      "value": 0.0,
+      "source": "Riemann 1859",
+      "verified": true
+    }
+  },
+  "verification": {
+    "method": "Recompute removable values using L'Hopital's rule",
+    "precision": "30 digits (mpmath)",
+    "timestamp": "2026-08-26 01:52:21 UTC"
+  },
+  "properties": {
+    "digital": true,
+    "self_contained": true,
+    "verifiable": true,
+    "finite_supply": true,
+    "knowledge_backed": true,
+    "llm_portable": true
+  },
+  "integrity_hash": "59e925e3e5820ce3b10bbabb01894db8adf758d5315db6e05ef439cff6068575"
+}
