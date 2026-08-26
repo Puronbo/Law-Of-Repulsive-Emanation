@@ -11,6 +11,7 @@ Usage:
     python -m sigma bridge
     python -m sigma e8
     python -m sigma currency
+    python -m sigma book
 
 Author: Michael Grafiel S Puno
 Repository: https://github.com/Puronbo/Law-Of-Repulsive-Emanation
@@ -30,6 +31,7 @@ def main():
         print("  e8         Verify E8 structure")
         print("  currency   Show Sigma currency")
         print("  chassis    Show removable singularities")
+        print("  book       Show book integration")
         sys.exit(1)
     
     command = sys.argv[1]
@@ -39,6 +41,7 @@ def main():
         from .chassis.bridge import verify_bridge
         from .chassis.e8 import verify_e8
         from .chassis.currency import SigmaCurrency
+        from .chassis.book import BookIntegration
         from .chassis.verification import run_all_verifications
         
         c = Chassis()
@@ -53,6 +56,10 @@ def main():
         
         sc = SigmaCurrency()
         sc.print_summary()
+        print()
+        
+        b = BookIntegration()
+        b.summary()
         print()
         
         run_all_verifications()
@@ -80,6 +87,11 @@ def main():
         from .chassis.core import Chassis
         c = Chassis()
         c.summary()
+    
+    elif command == "book":
+        from .chassis.book import BookIntegration
+        b = BookIntegration()
+        b.summary()
     
     else:
         print("Unknown command: %s" % command)
