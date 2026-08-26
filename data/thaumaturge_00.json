@@ -1,0 +1,15 @@
+{
+  "transition": {
+    "H": 0.1,
+    "t_reheat": 0.7457181056895712,
+    "a_reheat": 1.0774227110822077,
+    "a_inflation_0": 1.0,
+    "a_matter_0": 0.0,
+    "0^0 = 1 vs 0^x = 0": "resolved by reheating"
+  },
+  "zeta_at_zero": {
+    "zeta_0": -0.5,
+    "zeta_neg1": -0.08333333333333333,
+    "zeta_neg2": 0.0
+  }
+}
