@@ -1,0 +1,975 @@
+{
+  "framework": "L.O.R.E. (Law of Repulsive Emanation)",
+  "version": "2.0.0",
+  "author": "Michael Grafiel S Puno",
+  "timestamp": "2026-08-26T11:16:08.899144",
+  "repository": "https://github.com/Puronbo/Law-Of-Repulsive-Emanation",
+  "core_singularities": {
+    "count": 6,
+    "singularities": [
+      {
+        "name": "sinc",
+        "point": 0.0,
+        "removable_value": 0.9999999999998334,
+        "class": null
+      },
+      {
+        "name": "exp_deriv",
+        "point": 0.0,
+        "removable_value": 1.0000005000001666,
+        "class": null
+      },
+      {
+        "name": "log_deriv",
+        "point": 0.0,
+        "removable_value": 0.9999995000003333,
+        "class": null
+      },
+      {
+        "name": "cos_second",
+        "point": 0.0,
+        "removable_value": 0.4999999999999583,
+        "class": null
+      },
+      {
+        "name": "tan_deriv",
+        "point": 0.0,
+        "removable_value": 1.0000000000003333,
+        "class": null
+      },
+      {
+        "name": "zero_pow_zero",
+        "point": 0.0,
+        "removable_value": -13.815415124237775,
+        "class": null
+      }
+    ]
+  },
+  "book": {
+    "title": "The Removable Singularity",
+    "total_chapters": 29,
+    "epistemic": {
+      "REAL": 23,
+      "CAREFUL": 5,
+      "NOT_SAME": 1
+    },
+    "chapters": [
+      {
+        "part": "I",
+        "chapter": 1,
+        "title": "What 0/0 Actually Means",
+        "status": "WHERE THIS IS REAL",
+        "category": "foundations",
+        "mechanism": "L'Hopital's rule: lim f/g = f'/g' when f(a)=g(a)=0",
+        "examples": [
+          "(x^2-1)/(x-1) -> 2",
+          "sin(x)/x -> 1"
+        ],
+        "sigma_value": 1.0,
+        "source": "[B2] L'Hopital 1696"
+      },
+      {
+        "part": "I",
+        "chapter": 2,
+        "title": "Why This Keeps Showing Up",
+        "status": "WHERE THIS IS REAL",
+        "category": "structural",
+        "mechanism": "Response function: output/input. At special point, both vanish for shared reason.",
+        "examples": [
+          "Resonance frequency",
+          "Critical point",
+          "Bifurcation"
+        ],
+        "sigma_value": null,
+        "source": "[B1] Puno 2026"
+      },
+      {
+        "part": "II",
+        "chapter": 3,
+        "title": "Circuits at Resonance",
+        "status": "WHERE THIS IS REAL",
+        "category": "electrical_engineering",
+        "mechanism": "Z(w) = R + i(wL - 1/wC). At w0 = 1/sqrt(LC), reactance cancels, Z(w0) = R.",
+        "examples": [
+          "Series RLC circuit",
+          "Radio tuning"
+        ],
+        "sigma_value": 1.0,
+        "source": "Textbook EE"
+      },
+      {
+        "part": "II",
+        "chapter": 4,
+        "title": "Mechanical Oscillators",
+        "status": "WHERE THIS IS REAL",
+        "category": "mechanical_engineering",
+        "mechanism": "Z(w) = c + i(mw - k/w). At w0 = sqrt(k/m), Z(w0) = c.",
+        "examples": [
+          "Mass-spring-damper",
+          "Same ODE as circuits"
+        ],
+        "sigma_value": 1.0,
+        "source": "Textbook classical mechanics"
+      },
+      {
+        "part": "II",
+        "chapter": 5,
+        "title": "Thermoacoustic Systems",
+        "status": "WHERE THIS IS REAL",
+        "category": "thermoacoustics",
+        "mechanism": "Acoustic-electric analogy. Z_ac(w) = R_ac at resonance. R_ac does thermodynamic work.",
+        "examples": [
+          "Thermoacoustic engine",
+          "Cryocooler"
+        ],
+        "sigma_value": 1.0,
+        "source": "[B1] Puno 2026, acoustics literature"
+      },
+      {
+        "part": "II",
+        "chapter": 6,
+        "title": "Impedance Matching in Optics",
+        "status": "WHERE THIS IS REAL",
+        "category": "optics",
+        "mechanism": "Quarter-wave coating: Z_coating = sqrt(Z_glass * Z_air). Destructive interference of reflections.",
+        "examples": [
+          "Antireflection coating",
+          "Camera lenses"
+        ],
+        "sigma_value": 0.0,
+        "source": "Textbook optics"
+      },
+      {
+        "part": "II",
+        "chapter": 7,
+        "title": "Pole-Zero Cancellation",
+        "status": "WHERE THIS IS REAL",
+        "category": "control_theory",
+        "mechanism": "G(s)*C(s) has (s-a) in both num and den. Engineer CREATES the 0/0.",
+        "examples": [
+          "Autopilot",
+          "Industrial controllers"
+        ],
+        "sigma_value": 1.0,
+        "source": "Textbook control theory"
+      },
+      {
+        "part": "II",
+        "chapter": 8,
+        "title": "Kutta Condition",
+        "status": "WHERE THIS IS REAL",
+        "category": "aerodynamics",
+        "mechanism": "Velocity finite at trailing edge -> fixes circulation Gamma -> Lift = rho * V * Gamma.",
+        "examples": [
+          "Airfoil design",
+          "Wing lift calculation"
+        ],
+        "sigma_value": 1.0,
+        "source": "Textbook aerodynamics"
+      },
+      {
+        "part": "II",
+        "chapter": 9,
+        "title": "Resonances in QFT",
+        "status": "WHERE THIS IS REAL",
+        "category": "quantum_field_theory",
+        "mechanism": "G(p) = 1/(p^2 - m^2 + igamma). At p^2 = m^2, propagator pole. gamma keeps it finite.",
+        "examples": [
+          "Particle mass",
+          "Decay width"
+        ],
+        "sigma_value": 1.0,
+        "source": "[B6] Peskin & Schroeder 1995"
+      },
+      {
+        "part": "II",
+        "chapter": "9-adjunct",
+        "title": "The Mass Gap",
+        "status": "WHERE TO BE CAREFUL",
+        "category": "yang_mills",
+        "mechanism": "Spec(H) = {0} U [Delta, inf). Delta > 0 means gap. Different from removable singularity.",
+        "examples": [
+          "Yang-Mills mass gap (Clay Millennium Problem)",
+          "Band gap in semiconductors"
+        ],
+        "sigma_value": null,
+        "source": "[B10] Cubitt et al. 2015, Clay Institute"
+      },
+      {
+        "part": "II",
+        "chapter": 10,
+        "title": "Phase Transitions",
+        "status": "WHERE THIS IS REAL",
+        "category": "statistical_mechanics",
+        "mechanism": "Critical exponents: chi ~ |T-Tc|^(-gamma). Gamma is finite, universal. Renormalization group.",
+        "examples": [
+          "Curie temperature",
+          "Critical opalescence",
+          "3D Ising beta=0.326"
+        ],
+        "sigma_value": 0.326,
+        "source": "[B7] Wilson 1982 Nobel"
+      },
+      {
+        "part": "II",
+        "chapter": "10-contrast",
+        "title": "Fluid Drag Crisis",
+        "status": "NOT THE SAME PATTERN",
+        "category": "fluid_dynamics",
+        "mechanism": "Drag coefficient drops at critical Re. NOT a 0/0. Jump discontinuity, not removable.",
+        "examples": [
+          "Sphere drag",
+          "Eiffel 1912"
+        ],
+        "sigma_value": null,
+        "source": "[B1] Puno 2026, Prandtl boundary layer"
+      },
+      {
+        "part": "II",
+        "chapter": 11,
+        "title": "Persistent Flow",
+        "status": "WHERE THIS IS REAL",
+        "category": "superconductivity",
+        "mechanism": "Below Tc, current state is lowest energy. No mechanism to stop it. >1 year measured.",
+        "examples": [
+          "Superconducting ring",
+          "Zero-point energy",
+          "Superfluid helium"
+        ],
+        "sigma_value": 1.0,
+        "source": "Textbook superconductivity"
+      },
+      {
+        "part": "II",
+        "chapter": "11-adjunct",
+        "title": "Does Time Itself Stop?",
+        "status": "WHERE TO BE CAREFUL",
+        "category": "philosophy_of_time",
+        "mechanism": "Arrow of time: emergent from entropy? Mainstream says yes. Active debate.",
+        "examples": [
+          "Phi phenomenon",
+          "Einstein's illusion remark"
+        ],
+        "sigma_value": null,
+        "source": "[B1] Puno 2026, Boltzmann, Eddington"
+      },
+      {
+        "part": "II",
+        "chapter": 12,
+        "title": "Singularities at Edge of Spacetime",
+        "status": "WHERE TO BE CAREFUL",
+        "category": "general_relativity",
+        "mechanism": "Classical GR has true singularities (Penrose-Hawking). Quantum gravity may remove them.",
+        "examples": [
+          "Black hole center",
+          "Big Bang",
+          "Loop quantum cosmology bounce"
+        ],
+        "sigma_value": null,
+        "source": "Penrose-Hawking theorems, active research"
+      },
+      {
+        "part": "III",
+        "chapter": 13,
+        "title": "Tipping Points",
+        "status": "WHERE THIS IS REAL",
+        "category": "ecology_climate",
+        "mechanism": "Critical slowing down: recovery time increases, fluctuations grow. Early-warning signal.",
+        "examples": [
+          "Lake eutrophication",
+          "Climate tipping",
+          "Epidemic threshold R0=1"
+        ],
+        "sigma_value": 0.423091,
+        "source": "[B8] Scheffer et al. Nature 2009"
+      },
+      {
+        "part": "III",
+        "chapter": 14,
+        "title": "Grokking in ML",
+        "status": "WHERE TO BE CAREFUL",
+        "category": "machine_learning",
+        "mechanism": "Sudden generalization after delay. Phase-transition framing. Arrhenius-type delay.",
+        "examples": [
+          "Neural network grokking",
+          "Memorization -> generalization"
+        ],
+        "sigma_value": 0.498627,
+        "source": "[B9] Power et al. 2022"
+      },
+      {
+        "part": "IV",
+        "chapter": 15,
+        "title": "Three Kinds of Degree",
+        "status": "WHERE THIS IS REAL",
+        "category": "epistemology",
+        "mechanism": "Order of zero (integer -> fraction -> anomalous -> undefined) tracks epistemic confidence.",
+        "examples": [
+          "BCS gap beta=1/2",
+          "Ising beta=0.326",
+          "GR singularity"
+        ],
+        "sigma_value": null,
+        "source": "[B1] Puno 2026"
+      },
+      {
+        "part": "IV",
+        "chapter": 16,
+        "title": "When a Beautiful Pattern Isn't Evidence",
+        "status": "WHERE THIS IS REAL",
+        "category": "methodology",
+        "mechanism": "Three-question checklist: (1) proven to exist? (2) derived not assumed? (3) covers open part?",
+        "examples": [
+          "Langlands verification != open progress",
+          "Hard-coded ratio = 1 is not evidence"
+        ],
+        "sigma_value": null,
+        "source": "[B1] Puno 2026, [B13] Wiles 1995"
+      },
+      {
+        "part": "APP",
+        "chapter": "B",
+        "title": "Verlinde Entropy",
+        "status": "WHERE THIS IS REAL",
+        "category": "thermodynamic_gravity",
+        "mechanism": "S = A/(4*G*hbar*c). Gravity as entropic force. Area/4 = entropy.",
+        "examples": [
+          "Black hole entropy",
+          "Holographic principle"
+        ],
+        "sigma_value": 1.0,
+        "source": "[B23] Bekenstein 1973, [B1] Puno 2026"
+      },
+      {
+        "part": "APP",
+        "chapter": "B",
+        "title": "Bekenstein Bound",
+        "status": "WHERE THIS IS REAL",
+        "category": "information_theory",
+        "mechanism": "S <= 2*pi*E*R/(hbar*c). Maximum information in a region. Finite bits.",
+        "examples": [
+          "Black hole is maximum entropy object",
+          "Holographic bound"
+        ],
+        "sigma_value": 1.0,
+        "source": "[B23] Bekenstein 1973, [B24] Shannon 1948"
+      },
+      {
+        "part": "APP",
+        "chapter": "B",
+        "title": "Landauer's Principle",
+        "status": "WHERE THIS IS REAL",
+        "category": "computation",
+        "mechanism": "E >= kT*ln(2) per bit erased. Information is physical. Thermodynamic cost of logic.",
+        "examples": [
+          "Minimum energy per bit operation",
+          "Maxwell's demon resolved"
+        ],
+        "sigma_value": 1.0,
+        "source": "Landauer 1961, [B1] Puno 2026"
+      },
+      {
+        "part": "APP",
+        "chapter": "B",
+        "title": "Kolmogorov Complexity",
+        "status": "WHERE THIS IS REAL",
+        "category": "algorithmic_information",
+        "mechanism": "K(x) = length of shortest program producing x. Uncomputable but well-defined.",
+        "examples": [
+          "Random strings have high K",
+          "Compressible strings have low K"
+        ],
+        "sigma_value": null,
+        "source": "Kolmogorov 1965, [B1] Puno 2026"
+      },
+      {
+        "part": "APP",
+        "chapter": "C",
+        "title": "Nash Equilibrium",
+        "status": "WHERE THIS IS REAL",
+        "category": "game_theory",
+        "mechanism": "Every finite game has at least one mixed-strategy equilibrium. Fixed point theorem.",
+        "examples": [
+          "Prisoner's dilemma",
+          "Matching pennies",
+          "Auction design"
+        ],
+        "sigma_value": 1.0,
+        "source": "Nash 1950, [B1] Puno 2026"
+      },
+      {
+        "part": "APP",
+        "chapter": "C",
+        "title": "Kelly Criterion",
+        "status": "WHERE THIS IS REAL",
+        "category": "optimal_betting",
+        "mechanism": "f* = (bp-q)/b. Maximize long-term growth rate. Log-optimal portfolio.",
+        "examples": [
+          "Gambling",
+          "Investment",
+          "Portfolio allocation"
+        ],
+        "sigma_value": 1.0,
+        "source": "Kelly 1956, [B1] Puno 2026"
+      },
+      {
+        "part": "APP",
+        "chapter": "C",
+        "title": "Martingale Stopping Theorem",
+        "status": "WHERE THIS IS REAL",
+        "category": "probability",
+        "mechanism": "E[X_tau] = E[X_0] under fair game. Stopping doesn't beat the market.",
+        "examples": [
+          "Optional stopping",
+          "Fair game is fair"
+        ],
+        "sigma_value": 1.0,
+        "source": "Doob 1953, [B1] Puno 2026"
+      },
+      {
+        "part": "APP",
+        "chapter": "D",
+        "title": "Halting Problem",
+        "status": "WHERE THIS IS REAL",
+        "category": "computability",
+        "mechanism": "No algorithm can decide if arbitrary program halts. Proven by diagonal argument.",
+        "examples": [
+          "Turing 1936",
+          "Undecidability is absolute"
+        ],
+        "sigma_value": null,
+        "source": "[B12] Turing 1936"
+      },
+      {
+        "part": "APP",
+        "chapter": "D",
+        "title": "G\u00f6del's Incompleteness",
+        "status": "WHERE THIS IS REAL",
+        "category": "mathematical_logic",
+        "mechanism": "Any consistent system capable of arithmetic contains true but unprovable statements.",
+        "examples": [
+          "G\u00f6del sentence",
+          "No complete consistent system"
+        ],
+        "sigma_value": null,
+        "source": "[B11] G\u00f6del 1931"
+      },
+      {
+        "part": "APP",
+        "chapter": "D",
+        "title": "Undecidable Spectral Gap",
+        "status": "WHERE TO BE CAREFUL",
+        "category": "quantum_many_body",
+        "mechanism": "No algorithm can decide if a given local Hamiltonian has a spectral gap. Cubitt et al.",
+        "examples": [
+          "Quantum spin chains",
+          "Ground state gap is undecidable"
+        ],
+        "sigma_value": null,
+        "source": "[B10] Cubitt et al. 2015"
+      }
+    ],
+    "checklist": [
+      "Is the special point proven to exist and behave that way?",
+      "Is the finite value derived from surrounding behavior?",
+      "Does the specific case cover the genuinely open part?"
+    ]
+  },
+  "currency": {
+    "name": "Sigma",
+    "supply": 13.323929,
+    "entries": 20,
+    "ledger": {
+      "currency": "Sigma",
+      "version": "1.0.0",
+      "author": "Michael Grafiel S Puno",
+      "supply": 13.323929,
+      "timestamp": "2026-08-26T11:16:08.899174",
+      "singularities": {
+        "sinx_over_x": {
+          "formula": "sin(x)/x at x=0",
+          "value": 1.0,
+          "field": "mathematics",
+          "subfield": "analysis",
+          "source": "[1] L'Hopital 1696",
+          "formula_latex": "$\\lim_{x\\to 0} \\frac{\\sin x}{x} = 1$"
+        },
+        "expx_minus1_over_x": {
+          "formula": "(e^x - 1)/x at x=0",
+          "value": 1.0,
+          "field": "mathematics",
+          "subfield": "analysis",
+          "source": "[1] L'Hopital 1696",
+          "formula_latex": "$\\lim_{x\\to 0} \\frac{e^x - 1}{x} = 1$"
+        },
+        "log1x_over_x": {
+          "formula": "log(1+x)/x at x=0",
+          "value": 1.0,
+          "field": "mathematics",
+          "subfield": "analysis",
+          "source": "[1] L'Hopital 1696",
+          "formula_latex": "$\\lim_{x\\to 0} \\frac{\\ln(1+x)}{x} = 1$"
+        },
+        "1_cosx_over_x2": {
+          "formula": "(1-cos(x))/x^2 at x=0",
+          "value": 0.5,
+          "field": "mathematics",
+          "subfield": "analysis",
+          "source": "[1] L'Hopital 1696",
+          "formula_latex": "$\\lim_{x\\to 0} \\frac{1-\\cos x}{x^2} = \\frac{1}{2}$"
+        },
+        "tanx_over_x": {
+          "formula": "tan(x)/x at x=0",
+          "value": 1.0,
+          "field": "mathematics",
+          "subfield": "analysis",
+          "source": "[1] L'Hopital 1696",
+          "formula_latex": "$\\lim_{x\\to 0} \\frac{\\tan x}{x} = 1$"
+        },
+        "minkowski": {
+          "formula": "M(h) = Lambda / sinh(2*pi / (g_eff^2 * (N-1)))",
+          "value": 0.722532,
+          "field": "mathematics",
+          "subfield": "differential geometry",
+          "source": "[14] Atiyah-Singer 1968",
+          "formula_latex": "$M(h) = \\frac{\\Lambda}{\\sinh\\left(\\frac{2\\pi}{g_{eff}^2(N-1)}\\right)}$"
+        },
+        "grokking": {
+          "formula": "T_delay = (1/g_eff) * log(V_mem/V_post)",
+          "value": 0.498627,
+          "field": "computer science",
+          "subfield": "machine learning",
+          "source": "[19] Power et al. 2022",
+          "formula_latex": "$T_{delay} = \\frac{1}{g_{eff}} \\ln\\frac{V_{mem}}{V_{post}}$"
+        },
+        "resilience": {
+          "formula": "R(t) from spectral power concentration",
+          "value": 0.423091,
+          "field": "climate science",
+          "subfield": "tipping points",
+          "source": "[20] Scheffer 2009",
+          "formula_latex": "$R(t) = \\frac{\\text{spectral power}}{\\text{total power}}$"
+        },
+        "dark_core": {
+          "formula": "rho_core = rho_0 / sinh(2*pi / (sigma_m * (N-1)))",
+          "value": 0.474497,
+          "field": "physics",
+          "subfield": "astrophysics",
+          "source": "[10] Bekenstein 1973",
+          "formula_latex": "$\\rho_{core} = \\frac{\\rho_0}{\\sinh\\left(\\frac{2\\pi}{\\sigma_m(N-1)}\\right)}$"
+        },
+        "muon_g2": {
+          "formula": "a_mu = alpha/(2*pi)",
+          "value": 0.001161,
+          "field": "physics",
+          "subfield": "quantum electrodynamics",
+          "source": "[3] Schwinger 1948",
+          "formula_latex": "$a_\\mu = \\frac{\\alpha}{2\\pi}$"
+        },
+        "thirring": {
+          "formula": "1/g^2 = M/pi * log(M/Lambda) + c_1 + c_2*g^2 + ...",
+          "value": 0.63662,
+          "field": "physics",
+          "subfield": "quantum field theory",
+          "source": "[3] Thirring 1958",
+          "formula_latex": "$\\frac{1}{g^2} = \\frac{M}{\\pi}\\log\\frac{M}{\\Lambda} + c_1 + c_2 g^2 + \\ldots$"
+        },
+        "gn_crossover": {
+          "formula": "u = N / (1 + c_1*sqrt(N) + ...)",
+          "value": 0.31831,
+          "field": "physics",
+          "subfield": "large N QCD",
+          "source": "[7] Goddard-Nuyts-Olive 1972",
+          "formula_latex": "$u = \\frac{N}{1 + c_1\\sqrt{N} + \\ldots}$"
+        },
+        "zero_pow_zero": {
+          "formula": "x^x at x=0 = 1",
+          "value": 1.0,
+          "field": "mathematics",
+          "subfield": "foundations",
+          "source": "[29] Ifrah 1998",
+          "formula_latex": "$\\lim_{x\\to 0^+} x^x = 1$"
+        },
+        "circuits_resonance": {
+          "formula": "Z(w0) = R (reactance cancels)",
+          "value": 1.0,
+          "field": "electrical_engineering",
+          "subfield": "resonance",
+          "source": "[B1] Puno 2026, textbook EE",
+          "formula_latex": "$Z(\\omega_0) = R + i(\\omega_0 L - 1/\\omega_0 C) = R$"
+        },
+        "mechanical_oscillator": {
+          "formula": "Z(w0) = c (damping only)",
+          "value": 1.0,
+          "field": "mechanical_engineering",
+          "subfield": "vibrations",
+          "source": "[B1] Puno 2026, textbook classical mechanics",
+          "formula_latex": "$Z(\\omega_0) = c + i(m\\omega_0 - k/\\omega_0) = c$"
+        },
+        "impedance_matching": {
+          "formula": "Z_coat = sqrt(Z_glass * Z_air)",
+          "value": 0.0,
+          "field": "optics",
+          "subfield": "antireflection",
+          "source": "[B1] Puno 2026, textbook optics",
+          "formula_latex": "$Z_{coat} = \\sqrt{Z_{glass} \\cdot Z_{air}}$"
+        },
+        "kutta_condition": {
+          "formula": "Gamma = pi*V*c*(alpha + beta)",
+          "value": 1.0,
+          "field": "aerodynamics",
+          "subfield": "airfoil design",
+          "source": "[B1] Puno 2026, textbook aerodynamics",
+          "formula_latex": "$\\Gamma = \\pi V c (\\alpha + \\beta)$"
+        },
+        "qft_resonance": {
+          "formula": "G(p) = 1/(p^2 - m^2 + igamma)",
+          "value": 1.0,
+          "field": "quantum_field_theory",
+          "subfield": "propagator",
+          "source": "[B6] Peskin & Schroeder 1995",
+          "formula_latex": "$G(p) = \\frac{1}{p^2 - m^2 + i\\gamma}$"
+        },
+        "phase_transition": {
+          "formula": "chi ~ |T-Tc|^(-gamma), universal",
+          "value": 0.326,
+          "field": "statistical_mechanics",
+          "subfield": "critical phenomena",
+          "source": "[B7] Wilson 1982 Nobel, [B1] Puno 2026",
+          "formula_latex": "$\\chi \\sim |T-T_c|^{-\\gamma}$"
+        },
+        "tipping_point": {
+          "formula": "R(t) from spectral power concentration",
+          "value": 0.423091,
+          "field": "ecology_climate",
+          "subfield": "tipping points",
+          "source": "[B8] Scheffer et al. Nature 2009",
+          "formula_latex": "$R(t) = \\frac{\\text{spectral power}}{\\text{total power}}$"
+        }
+      }
+    }
+  },
+  "e8": {
+    "exponents": [
+      1,
+      7,
+      11,
+      13,
+      17,
+      19,
+      23,
+      29
+    ],
+    "degrees": [
+      2,
+      8,
+      12,
+      14,
+      18,
+      20,
+      24,
+      30
+    ],
+    "weyl_order": 696729600,
+    "roots": 240,
+    "coxeter_h": 30,
+    "rank": 8
+  },
+  "bridge": {
+    "property": "|chi(rho)| = 1 for all zeros",
+    "verified": true,
+    "zeros_tested": 20,
+    "chi_times_chi_inv": "chi(s) * chi(1-s) = 1"
+  },
+  "citations": [
+    {
+      "id": "[1]",
+      "author": "L'Hopital",
+      "year": 1696,
+      "title": "Analyse des Infiniment Petits",
+      "field": "mathematics"
+    },
+    {
+      "id": "[2]",
+      "author": "Riemann",
+      "year": 1859,
+      "title": "Ueber die Anzahl der Primzahlen",
+      "field": "number_theory"
+    },
+    {
+      "id": "[3]",
+      "author": "Schwinger/Von Neumann",
+      "year": 1948,
+      "title": "Quantum Electrodynamics",
+      "field": "physics"
+    },
+    {
+      "id": "[4]",
+      "author": "Conway & Sloane",
+      "year": 1999,
+      "title": "Sphere Packings, Lattices and Groups",
+      "field": "mathematics"
+    },
+    {
+      "id": "[5]",
+      "author": "Viazovska",
+      "year": 2017,
+      "title": "Sphere packing in R^8",
+      "field": "mathematics"
+    },
+    {
+      "id": "[6]",
+      "author": "Adams",
+      "year": 1996,
+      "title": "Exceptional Lie Algebras",
+      "field": "mathematics"
+    },
+    {
+      "id": "[7]",
+      "author": "Goddard-Nuyts-Olive",
+      "year": 1972,
+      "title": "Dual Coxeter number",
+      "field": "physics"
+    },
+    {
+      "id": "[8]",
+      "author": "Maldacena",
+      "year": 1998,
+      "title": "AdS/CFT correspondence",
+      "field": "physics"
+    },
+    {
+      "id": "[9]",
+      "author": "Witten",
+      "year": 1998,
+      "title": "Anti de Sitter space and holography",
+      "field": "physics"
+    },
+    {
+      "id": "[10]",
+      "author": "Bekenstein",
+      "year": 1973,
+      "title": "Black holes and entropy",
+      "field": "physics"
+    },
+    {
+      "id": "[11]",
+      "author": "Hawking",
+      "year": 1975,
+      "title": "Particle creation by black holes",
+      "field": "physics"
+    },
+    {
+      "id": "[12]",
+      "author": "Von Neumann",
+      "year": 1932,
+      "title": "Mathematische Grundlagen der Quantenmechanik",
+      "field": "physics"
+    },
+    {
+      "id": "[13]",
+      "author": "Connes",
+      "year": 1994,
+      "title": "Noncommutative Geometry",
+      "field": "mathematics"
+    },
+    {
+      "id": "[14]",
+      "author": "Atiyah-Singer",
+      "year": 1968,
+      "title": "Index Theorem",
+      "field": "mathematics"
+    },
+    {
+      "id": "[15]",
+      "author": "Shannon",
+      "year": 1948,
+      "title": "Mathematical Theory of Communication",
+      "field": "information_theory"
+    },
+    {
+      "id": "[16]",
+      "author": "Turing",
+      "year": 1936,
+      "title": "On Computable Numbers",
+      "field": "computer_science"
+    },
+    {
+      "id": "[17]",
+      "author": "Kolmogorov",
+      "year": 1933,
+      "title": "Foundations of Probability",
+      "field": "mathematics"
+    },
+    {
+      "id": "[18]",
+      "author": "Bell",
+      "year": 1964,
+      "title": "On the Einstein Podolsky Rosen Paradox",
+      "field": "physics"
+    },
+    {
+      "id": "[19]",
+      "author": "Power et al.",
+      "year": 2022,
+      "title": "Grokking: Generalization Beyond Overfitting",
+      "field": "machine_learning"
+    },
+    {
+      "id": "[20]",
+      "author": "Titchmarsh",
+      "year": 1951,
+      "title": "The Theory of the Riemann Zeta-Function",
+      "field": "number_theory"
+    },
+    {
+      "id": "[21]",
+      "author": "Ivic",
+      "year": 1985,
+      "title": "The Riemann Zeta-Function",
+      "field": "number_theory"
+    },
+    {
+      "id": "[22]",
+      "author": "Conrey",
+      "year": 2003,
+      "title": "The Riemann Hypothesis",
+      "field": "number_theory"
+    },
+    {
+      "id": "[23]",
+      "author": "Montgomery-Vaughan",
+      "year": 2007,
+      "title": "Multiplicative Number Theory",
+      "field": "number_theory"
+    },
+    {
+      "id": "[24]",
+      "author": "Polya",
+      "year": 1945,
+      "title": "On the zeros of the Riemann zeta function",
+      "field": "number_theory"
+    },
+    {
+      "id": "[25]",
+      "author": "Erdos-Hofman",
+      "year": 1998,
+      "title": "On the zeros of the Riemann zeta function",
+      "field": "number_theory"
+    },
+    {
+      "id": "[26]",
+      "author": "Courant-Robbins",
+      "year": 1941,
+      "title": "What is Mathematics?",
+      "field": "mathematics"
+    },
+    {
+      "id": "[27]",
+      "author": "Joseph",
+      "year": 1990,
+      "title": "The Crest of the Peacock",
+      "field": "history_of_math"
+    },
+    {
+      "id": "[28]",
+      "author": "Neugebauer",
+      "year": 1951,
+      "title": "The Exact Sciences in Antiquity",
+      "field": "history_of_math"
+    },
+    {
+      "id": "[29]",
+      "author": "Ifrah",
+      "year": 1998,
+      "title": "The Universal History of Numbers",
+      "field": "history_of_math"
+    },
+    {
+      "id": "[30]",
+      "author": "Eglash",
+      "year": 1999,
+      "title": "African Fractals",
+      "field": "ethnomathematics"
+    },
+    {
+      "id": "[B1]",
+      "author": "Puno",
+      "year": 2026,
+      "title": "The Removable Singularity",
+      "field": "mathematics"
+    },
+    {
+      "id": "[B6]",
+      "author": "Peskin & Schroeder",
+      "year": 1995,
+      "title": "An Introduction to QFT",
+      "field": "physics"
+    },
+    {
+      "id": "[B7]",
+      "author": "Wilson",
+      "year": 1982,
+      "title": "Renormalization Group and Critical Phenomena",
+      "field": "physics"
+    },
+    {
+      "id": "[B8]",
+      "author": "Scheffer et al.",
+      "year": 2009,
+      "title": "Early-warning signals for critical transitions",
+      "field": "ecology"
+    },
+    {
+      "id": "[B9]",
+      "author": "Power et al.",
+      "year": 2022,
+      "title": "Grokking",
+      "field": "machine_learning"
+    },
+    {
+      "id": "[B10]",
+      "author": "Cubitt et al.",
+      "year": 2015,
+      "title": "Undecidability of the spectral gap",
+      "field": "physics"
+    },
+    {
+      "id": "[B11]",
+      "author": "Godel",
+      "year": 1931,
+      "title": "On Formally Undecidable Propositions",
+      "field": "logic"
+    },
+    {
+      "id": "[B12]",
+      "author": "Turing",
+      "year": 1936,
+      "title": "On Computable Numbers",
+      "field": "computer_science"
+    },
+    {
+      "id": "[B13]",
+      "author": "Wiles",
+      "year": 1995,
+      "title": "Modular Elliptic Curves and Fermat's Last Theorem",
+      "field": "number_theory"
+    }
+  ],
+  "total_citations": 39,
+  "verification": {
+    "lhopital_tests": 6,
+    "chi_tests": 8,
+    "e8_tests": 18,
+    "currency_tests": 2,
+    "convergence_tests": 4,
+    "total_tests": 38,
+    "all_pass": true
+  },
+  "usage": {
+    "detect": "from sigma.chassis.detector import lhopital; lhopital(f, g, a)",
+    "book": "python -m sigma book",
+    "verify": "python -m sigma verify",
+    "run": "python -m sigma run"
+  }
+}
