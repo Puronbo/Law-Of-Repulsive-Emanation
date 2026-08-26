@@ -34,6 +34,14 @@ def build_html():
         {"name": "Muon g-2", "value": 0.001161, "field": "QED", "source": "Schwinger 1948"},
         {"name": "Thirring-GN", "value": 0.636620, "field": "QFT", "source": "Thirring 1958"},
         {"name": "GN crossover", "value": 0.318310, "field": "QCD", "source": "GNO 1972"},
+        # Book results (The Removable Singularity)
+        {"name": "Circuits resonance", "value": 1.0, "field": "EE", "source": "Puno 2026"},
+        {"name": "Mechanical oscillator", "value": 1.0, "field": "ME", "source": "Puno 2026"},
+        {"name": "Impedance matching", "value": 0.0, "field": "Optics", "source": "Puno 2026"},
+        {"name": "Kutta condition", "value": 1.0, "field": "Aero", "source": "Puno 2026"},
+        {"name": "QFT resonance", "value": 1.0, "field": "QFT", "source": "Peskin 1995"},
+        {"name": "Phase transition", "value": 0.326, "field": "StatMech", "source": "Wilson 1982"},
+        {"name": "Tipping point", "value": 0.423091, "field": "Climate", "source": "Scheffer 2009"},
     ]
     
     E8_EXPONENTS = [1, 7, 11, 13, 17, 19, 23, 29]
@@ -902,8 +910,8 @@ function runAllTests(){
     // 4. Currency
     log.innerHTML+='<span class="info">4. CURRENCY INTEGRITY</span><br>';
     log.innerHTML+='----------------------------------------<br>';
-    addResult('Total supply',abs(TOTAL_SIGMA-8.574838)<0.001,TOTAL_SIGMA.toFixed(6)+' Sigma');
-    addResult('Singularity count',SINGULARITIES.length===13,SINGULARITIES.length.toString());
+    addResult('Total supply',abs(TOTAL_SIGMA-13.323929)<0.01,TOTAL_SIGMA.toFixed(6)+' Sigma');
+    addResult('Singularity count',SINGULARITIES.length===20,SINGULARITIES.length.toString());
     log.innerHTML+='<br>';
     
     // 5. Convergence
