@@ -1,0 +1,22 @@
+include LICENSE
+include README.md
+include pyproject.toml
+
+# Sigma Chassis
+include sigma_venv/sigma/pyproject.toml
+include sigma_venv/sigma/README.md
+recursive-include sigma_venv/sigma/chassis *.py
+recursive-include sigma_venv/sigma/examples *.py
+
+# Data
+include data/*.json
+
+# Tests
+recursive-include tests *.py
+
+# Papers
+recursive-include papers *.pdf *.tex
+
+# Webapp
+include webapp/sigma.html
+include sigma_server.py

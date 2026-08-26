@@ -18,6 +18,8 @@ data/*.npz
 !data/mersenne_m52_bridge.json
 !data/googol_census.json
 !data/epoch_0d.json
+!data/sigma_export.json
+!data/sigma_framework.json
 Universals/*.json
 Universals/*.dot
 
