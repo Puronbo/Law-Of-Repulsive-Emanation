@@ -160,3 +160,79 @@ class TestVerification:
         from sigma.chassis.verification import run_all_verifications
         result = run_all_verifications()
         assert result is True
+
+
+class TestSchool:
+    """Test Sigma Virtual School server."""
+    
+    def test_import(self):
+        """School server can be imported."""
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "sigma_school_server",
+            "sigma_school_server.py"
+        )
+        assert spec is not None
+    
+    def test_build_courses(self):
+        """School has 29 chapters."""
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "sigma_school_server",
+            "sigma_school_server.py"
+        )
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        courses = mod.build_courses()
+        assert len(courses) == 1
+        assert len(courses[0]['chapters']) == 29
+    
+    def test_chapter_structure(self):
+        """Each chapter has required fields."""
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "sigma_school_server",
+            "sigma_school_server.py"
+        )
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        courses = mod.build_courses()
+        for ch in courses[0]['chapters']:
+            assert 'id' in ch
+            assert 'title' in ch
+            assert 'content' in ch
+            assert 'quiz' in ch
+            assert len(ch['quiz']) == 5
+    
+    def test_quiz_structure(self):
+        """Each quiz question has required fields."""
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "sigma_school_server",
+            "sigma_school_server.py"
+        )
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        courses = mod.build_courses()
+        for ch in courses[0]['chapters']:
+            for q in ch['quiz']:
+                assert 'q' in q
+                assert 'options' in q
+                assert 'correct' in q
+                assert len(q['options']) == 4
+    
+    def test_password_hash(self):
+        """Password hashing works."""
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "sigma_school_server",
+            "sigma_school_server.py"
+        )
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        h1 = mod.hash_password("test")
+        h2 = mod.hash_password("test")
+        h3 = mod.hash_password("different")
+        assert h1 == h2
+        assert h1 != h3
+        assert len(h1) == 64
