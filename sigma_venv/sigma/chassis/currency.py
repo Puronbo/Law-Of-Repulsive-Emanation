@@ -18,6 +18,11 @@ Sources:
   [5] Hawking, "Particle creation by black holes" (1975)
   [6] Adams, "Exceptional Lie Algebras" (1996)
   [7] Goddard-Nuyts-Olive, "Dual Coxeter number" (1972)
+  [B1] Puno, "The Removable Singularity" (2026)
+  [B6] Peskin & Schroeder, "QFT" (1995)
+  [B7] Wilson, "Renormalization Group" (1982 Nobel)
+  [B8] Scheffer et al., "Early-warning signals" (Nature, 2009)
+  [B9] Power et al., "Grokking" (2022)
 """
 
 import numpy as np
@@ -146,6 +151,63 @@ class SigmaCurrency:
             'subfield': 'foundations',
             'source': '[29] Ifrah 1998',
             'formula_latex': r'$\lim_{x\to 0^+} x^x = 1$',
+        },
+        # Book results (The Removable Singularity)
+        'circuits_resonance': {
+            'formula': 'Z(w0) = R (reactance cancels)',
+            'value': 1.0,
+            'field': 'electrical_engineering',
+            'subfield': 'resonance',
+            'source': '[B1] Puno 2026, textbook EE',
+            'formula_latex': r'$Z(\omega_0) = R + i(\omega_0 L - 1/\omega_0 C) = R$',
+        },
+        'mechanical_oscillator': {
+            'formula': 'Z(w0) = c (damping only)',
+            'value': 1.0,
+            'field': 'mechanical_engineering',
+            'subfield': 'vibrations',
+            'source': '[B1] Puno 2026, textbook classical mechanics',
+            'formula_latex': r'$Z(\omega_0) = c + i(m\omega_0 - k/\omega_0) = c$',
+        },
+        'impedance_matching': {
+            'formula': 'Z_coat = sqrt(Z_glass * Z_air)',
+            'value': 0.0,
+            'field': 'optics',
+            'subfield': 'antireflection',
+            'source': '[B1] Puno 2026, textbook optics',
+            'formula_latex': r'$Z_{coat} = \sqrt{Z_{glass} \cdot Z_{air}}$',
+        },
+        'kutta_condition': {
+            'formula': 'Gamma = pi*V*c*(alpha + beta)',
+            'value': 1.0,
+            'field': 'aerodynamics',
+            'subfield': 'airfoil design',
+            'source': '[B1] Puno 2026, textbook aerodynamics',
+            'formula_latex': r'$\Gamma = \pi V c (\alpha + \beta)$',
+        },
+        'qft_resonance': {
+            'formula': 'G(p) = 1/(p^2 - m^2 + igamma)',
+            'value': 1.0,
+            'field': 'quantum_field_theory',
+            'subfield': 'propagator',
+            'source': '[B6] Peskin & Schroeder 1995',
+            'formula_latex': r'$G(p) = \frac{1}{p^2 - m^2 + i\gamma}$',
+        },
+        'phase_transition': {
+            'formula': 'chi ~ |T-Tc|^(-gamma), universal',
+            'value': 0.326,
+            'field': 'statistical_mechanics',
+            'subfield': 'critical phenomena',
+            'source': '[B7] Wilson 1982 Nobel, [B1] Puno 2026',
+            'formula_latex': r'$\chi \sim |T-T_c|^{-\gamma}$',
+        },
+        'tipping_point': {
+            'formula': 'R(t) from spectral power concentration',
+            'value': 0.423091,
+            'field': 'ecology_climate',
+            'subfield': 'tipping points',
+            'source': '[B8] Scheffer et al. Nature 2009',
+            'formula_latex': r'$R(t) = \frac{\text{spectral power}}{\text{total power}}$',
         },
     }
     

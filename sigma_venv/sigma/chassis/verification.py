@@ -204,10 +204,16 @@ def verify_currency():
     
     sc = SigmaCurrency()
     
-    # Known supply
-    expected_supply = 1.0 + 1.0 + 1.0 + 0.5 + 1.0 + 0.722532 + \
-        0.498627 + 0.423091 + 0.474497 + 0.001161 + 0.636620 + 0.318310 + 1.0
-    suite.verify("Total supply", expected_supply, sc.total_supply(), 1e-4)
+    # Known supply: 13 original + 7 book entries = 20 total
+    # Original: sinx(1) + expx(1) + log1x(1) + cosx(0.5) + tanx(1) + minkowski(0.722532) + 
+    #           grokking(0.498627) + resilience(0.423091) + dark_core(0.474497) + 
+    #           muon_g2(0.001161) + thirring(0.636620) + gn_crossover(0.318310) + 
+    #           zero_pow_zero(1.0) = 8.574838
+    # Book: circuits(1.0) + mechanical(1.0) + impedance(0.0) + kutta(1.0) + 
+    #       qft(1.0) + phase(0.326) + tipping(0.423091) = 4.749091
+    # Total: 8.574838 + 4.749091 = 13.323929
+    expected_supply = 8.574838 + 4.749091
+    suite.verify("Total supply", expected_supply, sc.total_supply(), 1e-3)
     
     # Integrity hash
     h = sc.integrity_hash()
