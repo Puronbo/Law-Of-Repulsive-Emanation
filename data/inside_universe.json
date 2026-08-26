@@ -1,0 +1,30 @@
+{
+  "log_structure": {
+    "s1_pole": "1/(s-1), removable value = gamma",
+    "s0_value": "-1/2 (removable from functional equation 0*infinity)",
+    "s_half_zeros": "zeta(1/2+i*gamma) = 0 (functional equation 0/0)"
+  },
+  "interior": {
+    "interior": [
+      "matter",
+      "radiation",
+      "dark_energy",
+      "prime_spectrum"
+    ],
+    "zeta_zeros_role": "eigenfrequencies of the universe"
+  },
+  "euler_product": {
+    "role": "eigenfrequencies",
+    "mechanism": "prime oscillation cancellation"
+  },
+  "growth": {
+    "growth_mode": "spectral superposition of zeta zero harmonics",
+    "bao_origin": "zeta zero frequencies in matter power spectrum",
+    "beginning": "log_0(0) = x (singularity at origin)",
+    "ending": "log_1(1) = 0 (tautology at boundary)"
+  },
+  "explicit_formula": {
+    "friedmann_explicit": true,
+    "bao_from_zeros": true
+  }
+}
