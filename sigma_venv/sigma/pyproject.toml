@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sigma-chassis"
+version = "2.0.0"
+description = "The Removable Singularity Chassis: 0/0 framework for mathematics, physics, and computation"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Michael Grafiel S Puno", email = "sigma@puno.dev"},
+]
+keywords = ["mathematics", "physics", "removable-singularity", "0/0", "lie-algebra", "e8", "riemann-hypothesis", "currency"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+dependencies = [
+    "numpy",
+    "mpmath",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+web = []
+
+[project.urls]
+Homepage = "https://github.com/Puronbo/Law-Of-Repulsive-Emanation"
+Repository = "https://github.com/Puronbo/Law-Of-Repulsive-Emanation"
+Documentation = "https://github.com/Puronbo/Law-Of-Repulsive-Emanation/blob/main/sigma_venv/sigma/README.md"
+
+[project.scripts]
+sigma = "sigma.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["sigma*"]
+
+[tool.setuptools.package-data]
+sigma = ["../data/*.json"]

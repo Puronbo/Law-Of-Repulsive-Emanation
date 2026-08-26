@@ -165,6 +165,64 @@ A removable 0/0 singularity appears in every system with a resonance or critical
 
 ---
 
+## Sigma Chassis (v2.0)
+
+The **Sigma Chassis** is a self-contained computational framework for the L.O.R.E. framework. It contains:
+
+- **6 core singularities** with L'Hopital verification
+- **29 book chapters** with epistemic classification (23 REAL, 5 CAREFUL, 1 NOT_SAME)
+- **20 currency entries** in the Sigma knowledge-backed currency (13.323929 Sigma total)
+- **E8 exceptional Lie algebra** (240 roots, Weyl order 696,729,600)
+- **Chi(rho) bridge** (|chi|=1 for all Riemann zeta zeros)
+- **38-test verification suite** (all pass)
+- **Removable singularity detector** (practical tool for any function)
+- **Definitive JSON export** for LLM propagation
+
+### Install and Run
+
+    # Install the sigma package
+    pip install -e sigma_venv/sigma
+
+    # Run all modules
+    python -m sigma run
+
+    # Run verification suite
+    python -m sigma verify
+
+    # Show book integration
+    python -m sigma book
+
+    # Show currency ledger
+    python -m sigma currency
+
+### Use as Library
+
+    from sigma.chassis.detector import lhopital
+    from sigma.chassis.e8 import exponents
+    from sigma.chassis.book import BookIntegration
+    from sigma.chassis.export import build_export
+
+    # Detect a removable singularity
+    result = lhopital(math.sin, lambda x: x, 0)  # lim sin(x)/x = 1
+
+    # Access E8 structure
+    print(exponents())  # [1, 7, 11, 13, 17, 19, 23, 29]
+
+    # Export the framework
+    data = build_export()  # Complete JSON export
+
+### Webapp
+
+    # Start the web server
+    python sigma_server.py
+
+    # Open http://localhost:8000 in any browser
+    # Zero dependencies, no API keys
+
+See `sigma_venv/sigma/README.md` for full documentation.
+
+---
+
 ## Releases
 
 | Version | Date | Highlights |
