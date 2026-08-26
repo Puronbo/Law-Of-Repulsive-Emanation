@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 31 chapters from "The Removable Singularity"
+    - 32 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -1144,6 +1144,64 @@ def build_courses():
                 {"q": "The phase transition at Q=1 occurs at:", "options": ["Planck scale", "Galaxy scale", "Cluster scale", "Solar system"], "correct": 2},
                 {"q": "For a < a_crit (Q < 1):", "options": ["Dark energy dominates", "Structure forms", "Universe is stable", "Nothing happens"], "correct": 1},
                 {"q": "Q_Planck is approximately:", "options": ["10^-36", "10^-18", "10^0", "10^18"], "correct": 0}
+            ]
+        },
+        {
+            "id": 32,
+            "title": "Black Hole Information: 0/0 at the Horizon",
+            "part": "VII. Extensions",
+            "content": """
+<h2>Chapter 32: Black Hole Information: 0/0 at the Horizon</h2>
+<p>The most extreme 0/0 in physics: the event horizon of a black hole.</p>
+
+<h3>The 0/0 Structure</h3>
+<p>At the event horizon (r = r_s):</p>
+<ul>
+<li>Information inside: I = 0 (nothing escapes)</li>
+<li>Information outside: I = infinity (all information)</li>
+<li>0/0: I_inside / I_outside = 0 / infinity = 0</li>
+</ul>
+<p style="font-size:1.2em; text-align:center; padding:15px;">Removable value: S_BH = A / (4 * l_Planck^2)</p>
+
+<h3>Bekenstein-Hawking Entropy</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">S_BH = k_B * A / (4 * l_Planck^2)</p>
+<p>For a solar mass black hole: S_BH/k_B ~ 10^77. For Sgr A*: ~10^90. For M87*: ~10^104.</p>
+
+<h3>Page Curve</h3>
+<p>The Page curve describes information recovery during evaporation:</p>
+<ul>
+<li>t = 0: I = 0 (no radiation)</li>
+<li>t = t_Page: I = S_BH (Page time, 0/0 removable)</li>
+<li>t = t_evap: I = S_BH (all information recovered)</li>
+</ul>
+
+<h3>Holographic Principle</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">Maximum information = Area / (4 * l_Planck^2)</p>
+<p>Information is proportional to AREA, not VOLUME. Same 0/0 structure as Toomre Q!</p>
+
+<h3>Connection to Toomre Q</h3>
+<p>The event horizon is a gravitational instability:</p>
+<ul>
+<li>Q < 1: unstable (horizon forms)</li>
+<li>Q > 1: stable (no horizon)</li>
+<li>Q = 1: marginal (0/0 removable singularity)</li>
+</ul>
+<p>Critical exponent: beta = 1/2 (mean-field Ising) -- SAME as Toomre Q!</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Bekenstein (1973), Phys. Rev. D 7, 2333</li>
+<li>[2] Hawking (1975), Comm. Math. Phys. 43, 199</li>
+<li>[3] Page (1993), Phys. Rev. Lett. 71, 1291</li>
+<li>[4] Maldacena (1998), AdS/CFT correspondence</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "At the event horizon, information inside is:", "options": ["Infinite", "Zero", "S_BH", "Undefined"], "correct": 1},
+                {"q": "The removable value at the horizon is:", "options": ["Zero", "Infinity", "S_BH = A/(4l_P^2)", "r_s"], "correct": 2},
+                {"q": "The Page time is when:", "options": ["Evaporation starts", "Information = S_BH", "BH disappears", "Temperature = 0"], "correct": 1},
+                {"q": "The holographic principle says information ~:", "options": ["Volume", "Area", "Mass", "Temperature"], "correct": 1},
+                {"q": "The critical exponent beta at the horizon is:", "options": ["1/4", "1/2", "1", "2"], "correct": 1}
             ]
         }
     ]

@@ -443,6 +443,18 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Planck 2020, Riess 1998, Bertone 2005, Weinberg 1989",
     },
+    # Part VII: Extensions (continued)
+    {
+        "part": "VII",
+        "chapter": 32,
+        "title": "Black Hole Information: 0/0 at the Horizon",
+        "status": REAL,
+        "category": "quantum_gravity",
+        "mechanism": "Event horizon is 0/0: I_inside/I_outside = 0/infinity = 0, removable S_BH = A/(4l_P^2).",
+        "examples": ["S_BH ~ 10^77 for 10 M_sun BH", "Page curve information recovery", "Holographic principle"],
+        "sigma_value": 1.0,
+        "source": "Bekenstein 1973, Hawking 1975, Page 1993, Maldacena 1998",
+    },
 ]
 
 
