@@ -306,6 +306,119 @@ CHAPTERS = [
         "sigma_value": None,
         "source": "[B1] Puno 2026, [B13] Wiles 1995",
     },
+    # Appendix B: Symmetry, Chaos, and Information
+    {
+        "part": "APP",
+        "chapter": "B",
+        "title": "Verlinde Entropy",
+        "status": REAL,
+        "category": "thermodynamic_gravity",
+        "mechanism": "S = A/(4*G*hbar*c). Gravity as entropic force. Area/4 = entropy.",
+        "examples": ["Black hole entropy", "Holographic principle"],
+        "sigma_value": 1.0,
+        "source": "[B23] Bekenstein 1973, [B1] Puno 2026",
+    },
+    {
+        "part": "APP",
+        "chapter": "B",
+        "title": "Bekenstein Bound",
+        "status": REAL,
+        "category": "information_theory",
+        "mechanism": "S <= 2*pi*E*R/(hbar*c). Maximum information in a region. Finite bits.",
+        "examples": ["Black hole is maximum entropy object", "Holographic bound"],
+        "sigma_value": 1.0,
+        "source": "[B23] Bekenstein 1973, [B24] Shannon 1948",
+    },
+    {
+        "part": "APP",
+        "chapter": "B",
+        "title": "Landauer's Principle",
+        "status": REAL,
+        "category": "computation",
+        "mechanism": "E >= kT*ln(2) per bit erased. Information is physical. Thermodynamic cost of logic.",
+        "examples": ["Minimum energy per bit operation", "Maxwell's demon resolved"],
+        "sigma_value": 1.0,
+        "source": "Landauer 1961, [B1] Puno 2026",
+    },
+    {
+        "part": "APP",
+        "chapter": "B",
+        "title": "Kolmogorov Complexity",
+        "status": REAL,
+        "category": "algorithmic_information",
+        "mechanism": "K(x) = length of shortest program producing x. Uncomputable but well-defined.",
+        "examples": ["Random strings have high K", "Compressible strings have low K"],
+        "sigma_value": None,
+        "source": "Kolmogorov 1965, [B1] Puno 2026",
+    },
+    # Appendix C: Randomness and Strategy
+    {
+        "part": "APP",
+        "chapter": "C",
+        "title": "Nash Equilibrium",
+        "status": REAL,
+        "category": "game_theory",
+        "mechanism": "Every finite game has at least one mixed-strategy equilibrium. Fixed point theorem.",
+        "examples": ["Prisoner's dilemma", "Matching pennies", "Auction design"],
+        "sigma_value": 1.0,
+        "source": "Nash 1950, [B1] Puno 2026",
+    },
+    {
+        "part": "APP",
+        "chapter": "C",
+        "title": "Kelly Criterion",
+        "status": REAL,
+        "category": "optimal_betting",
+        "mechanism": "f* = (bp-q)/b. Maximize long-term growth rate. Log-optimal portfolio.",
+        "examples": ["Gambling", "Investment", "Portfolio allocation"],
+        "sigma_value": 1.0,
+        "source": "Kelly 1956, [B1] Puno 2026",
+    },
+    {
+        "part": "APP",
+        "chapter": "C",
+        "title": "Martingale Stopping Theorem",
+        "status": REAL,
+        "category": "probability",
+        "mechanism": "E[X_tau] = E[X_0] under fair game. Stopping doesn't beat the market.",
+        "examples": ["Optional stopping", "Fair game is fair"],
+        "sigma_value": 1.0,
+        "source": "Doob 1953, [B1] Puno 2026",
+    },
+    # Appendix D: The Edge of Provability
+    {
+        "part": "APP",
+        "chapter": "D",
+        "title": "Halting Problem",
+        "status": REAL,
+        "category": "computability",
+        "mechanism": "No algorithm can decide if arbitrary program halts. Proven by diagonal argument.",
+        "examples": ["Turing 1936", "Undecidability is absolute"],
+        "sigma_value": None,
+        "source": "[B12] Turing 1936",
+    },
+    {
+        "part": "APP",
+        "chapter": "D",
+        "title": "Gödel's Incompleteness",
+        "status": REAL,
+        "category": "mathematical_logic",
+        "mechanism": "Any consistent system capable of arithmetic contains true but unprovable statements.",
+        "examples": ["Gödel sentence", "No complete consistent system"],
+        "sigma_value": None,
+        "source": "[B11] Gödel 1931",
+    },
+    {
+        "part": "APP",
+        "chapter": "D",
+        "title": "Undecidable Spectral Gap",
+        "status": CAREFUL,
+        "category": "quantum_many_body",
+        "mechanism": "No algorithm can decide if a given local Hamiltonian has a spectral gap. Cubitt et al.",
+        "examples": ["Quantum spin chains", "Ground state gap is undecidable"],
+        "sigma_value": None,
+        "source": "[B10] Cubitt et al. 2015",
+    },
 ]
 
 
@@ -333,12 +446,17 @@ class BookIntegration:
         additions = []
         for c in self.chapters:
             if c["sigma_value"] is not None and c["status"] == REAL:
+                ch = c["chapter"]
+                if isinstance(ch, int):
+                    name = "ch%d_%s" % (ch, c["category"])
+                else:
+                    name = "app%s_%s" % (ch, c["category"])
                 additions.append({
-                    "name": "ch%d_%s" % (c["chapter"], c["category"]),
+                    "name": name,
                     "value": c["sigma_value"],
                     "field": c["category"],
                     "source": c["source"],
-                    "chapter": c["chapter"],
+                    "chapter": ch,
                     "title": c["title"],
                 })
         return additions
@@ -382,6 +500,14 @@ class BookIntegration:
         for c in self.chapters:
             if c["part"] == "IV":
                 print("  Ch.%s: %s [%s]" % (c["chapter"], c["title"], c["status"]))
+        print()
+        
+        print("APPENDICES")
+        print("-" * 70)
+        for c in self.chapters:
+            if c["part"] == "APP":
+                print("  App.%s: %s [%s]" % (c["chapter"], c["title"], c["status"]))
+                print("    %s" % c["mechanism"][:80])
         print()
         
         print("EPISTEMIC CLASSIFICATION")
