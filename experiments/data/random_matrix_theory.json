@@ -1,0 +1,46 @@
+{
+  "rmt": {
+    "name": "Random Matrix Theory",
+    "ensembles": {
+      "GOE": {
+        "beta": 1,
+        "symmetry": "real symmetric"
+      },
+      "GUE": {
+        "beta": 2,
+        "symmetry": "complex Hermitian"
+      },
+      "GSE": {
+        "beta": 4,
+        "symmetry": "quaternion"
+      }
+    },
+    "level_repulsion": "P(s=0) = 0 (0/0)",
+    "wigner_semicircle": true
+  },
+  "wigner_surmise": {
+    "formula": "P(s) ~ s^beta * exp(-(beta+2)*s^2/4)",
+    "universal": true
+  },
+  "montgomery_odlyzko": {
+    "pair_correlation": "GUE",
+    "implies": "Primes are quantum chaotic",
+    "connected_to_riemann": true
+  },
+  "finance": {
+    "distribution": "Marchenko-Pastur",
+    "signal_noise_separation": true
+  },
+  "connections": {
+    "connects_to": [
+      "Zeta zeros",
+      "E8",
+      "Chaos",
+      "Finance",
+      "Consciousness",
+      "Ising"
+    ],
+    "most_universal": true
+  },
+  "timestamp": "2026-08-27 14:42:05"
+}

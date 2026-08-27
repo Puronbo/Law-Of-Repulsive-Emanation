@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 43 chapters from "The Removable Singularity"
+    - 44 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -1746,6 +1746,50 @@ def build_courses():
                 {"q": "At the onset of chaos, the Lyapunov exponent is:", "options": ["Negative", "Zero", "Positive", "Infinite"], "correct": 1},
                 {"q": "The Feigenbaum constants are:", "options": ["Map-specific", "Universal", "Approximate", "Imaginary"], "correct": 1},
                 {"q": "The bifurcation diagram is:", "options": ["Smooth", "Fractal", "Linear", "Periodic"], "correct": 1}
+            ]
+        },
+        {
+            "id": 44,
+            "title": "Random Matrix Theory: 0/0 of Universal Randomness",
+            "part": "VIII. Deep Connections",
+            "content": """
+<h2>Chapter 44: Random Matrix Theory: 0/0 of Universal Randomness</h2>
+<p>Random matrices have UNIVERSAL eigenvalue statistics. Level repulsion: P(s=0) = 0 exactly. Zeta zeros follow GUE (Montgomery-Odlyzko). Primes are quantum chaotic.</p>
+
+<h3>Three Universal Ensembles</h3>
+<ul>
+<li>GOE (beta=1): real symmetric, time-reversal invariant</li>
+<li>GUE (beta=2): complex Hermitian, no time-reversal</li>
+<li>GSE (beta=4): quaternion, spin-1/2 systems</li>
+</ul>
+
+<h3>Wigner Surmise</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">P(s) ~ s^beta * exp(-(beta+2)*s^2/4)</p>
+<p>UNIVERSAL for all three ensembles. At s=0: P(0) = 0 (level repulsion, 0/0).</p>
+
+<h3>Level Repulsion</h3>
+<p>P(s=0) = 0 EXACTLY. Eigenvalues push each other apart. This is the most fundamental 0/0 in RMT.</p>
+
+<h3>Montgomery-Odlyzko Law</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">Pair correlation of zeta zeros = GUE!</p>
+<p>The primes are "quantum chaotic." Montgomery (1973), Odlyzko (1987). Connected to Riemann hypothesis.</p>
+
+<h3>Finance: Correlation Matrices</h3>
+<p>Eigenvalue distribution follows Marchenko-Pastur (noise) + outliers (signal). RMT separates signal from noise.</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Wigner (1955), characteristic vectors of bordered matrices</li>
+<li>[2] Montgomery (1973), pair correlation of zeros</li>
+<li>[3] Odlyzko (1987), 10^20-th zero verification</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "Level repulsion means:", "options": ["P(s=0) = 1", "P(s=0) = 0", "P(s=0) = infinity", "P(s=0) = 0.5"], "correct": 1},
+                {"q": "The Montgomery-Odlyzko law says zeta zeros follow:", "options": ["Poisson", "GOE", "GUE", "GSE"], "correct": 2},
+                {"q": "The Wigner surmise is:", "options": ["Map-specific", "Universal", "Approximate", "Imaginary"], "correct": 1},
+                {"q": "GOE stands for:", "options": ["Gaussian Orthogonal Ensemble", "General Orthogonal Eigenvalues", "Global Orthogonal Equations", "None"], "correct": 0},
+                {"q": "The primes are described as:", "options": ["Random", "Quantum chaotic", "Periodic", "Simple"], "correct": 1}
             ]
         }
     ]

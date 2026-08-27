@@ -587,6 +587,18 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Feigenbaum 1978, Lanford 1982, May 1976, Lorenz 1963",
     },
+    # Part VIII: Deep Connections (continued)
+    {
+        "part": "VIII",
+        "chapter": 44,
+        "title": "Random Matrix Theory: 0/0 of Universal Randomness",
+        "status": REAL,
+        "category": "mathematics",
+        "mechanism": "Level repulsion P(s=0)=0. Wigner surmise P(s)~s^beta*exp(). GOE/GUE/GSE universal. Montgomery-Odlyzko: zeta zeros = GUE. Primes are quantum chaotic. Marchenko-Pastur in finance.",
+        "examples": ["P(s=0)=0 level repulsion", "Zeta zeros = GUE", "Wigner surmise universal", "Marchenko-Pastur finance"],
+        "sigma_value": 1.0,
+        "source": "Wigner 1955, Montgomery 1973, Odlyzko 1987, Marchenko-Pastur 1967",
+    },
 ]
 
 
