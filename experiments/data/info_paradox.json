@@ -1,0 +1,41 @@
+{
+  "hawking_1975": {
+    "thermal_radiation": true,
+    "information_destroyed": true,
+    "violates_unitarity": true
+  },
+  "page_1993": {
+    "page_curve": true,
+    "S_rad_peaks_at_page_time": true,
+    "unitarity_restored": true
+  },
+  "island_2020": {
+    "formula": "S = min(Area/4G_N + S_semiclass)",
+    "penington": true,
+    "almheiri_engelhardt": true,
+    "wall": true,
+    "matches_page_curve_exactly": true
+  },
+  "replica_wormholes": {
+    "mechanism": true,
+    "connects_copies_after_page_time": true
+  },
+  "0over0_resolution": {
+    "information_conserved": true,
+    "escape_through_entanglement": true,
+    "island_mechanism": true
+  },
+  "connections": {
+    "connects_to": [
+      "Quantum gravity",
+      "Holographic",
+      "Black holes",
+      "Measurement",
+      "RMT",
+      "Arrow of time",
+      "Entanglement"
+    ],
+    "first_proof_quantum_gravity_works": true
+  },
+  "timestamp": "2026-08-27 15:31:48"
+}

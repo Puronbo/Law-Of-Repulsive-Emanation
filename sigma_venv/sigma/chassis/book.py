@@ -677,6 +677,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Rovelli 2004, Polchinski 1998, Maldacena 1998, Ashtekar-Singh 2011",
     },
+    {
+        "part": "IX",
+        "chapter": 52,
+        "title": "The Information Paradox Resolved: 0/0 of Black Hole Information",
+        "status": REAL,
+        "category": "theoretical_physics",
+        "mechanism": "Hawking thermal radiation destroys info, Page curve requires conservation, island formula S=min(Area/4G_N+S_semiclass) 2020, replica wormholes reproduce Page curve EXACTLY. Horizon 0/0 IS resolved. First proof quantum gravity works.",
+        "examples": ["Page curve", "Island formula", "Replica wormholes", "S=min(A/4G+S)"],
+        "sigma_value": 1.0,
+        "source": "Hawking 1975, Page 1993, Penington 2019, Almheiri-Engelhardt-Marolf-Maxfield 2019, Almheiri et al 2020",
+    },
 ]
 
 

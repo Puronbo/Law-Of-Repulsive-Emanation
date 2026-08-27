@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 51 chapters from "The Removable Singularity"
+    - 52 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -2105,6 +2105,56 @@ def build_courses():
                 {"q": "The Big Bounce means:", "options": ["Singularity", "Density reaches maximum then bounces", "Universe collapses forever", "Nothing happens"], "correct": 1},
                 {"q": "In String Theory, gravity comes from:", "options": ["Open strings", "Closed strings", "Points", "Waves"], "correct": 1},
                 {"q": "AdS/CFT says quantum gravity is:", "options": ["Impossible", "Holographic", "Classical", "Simple"], "correct": 1}
+            ]
+        },
+        {
+            "id": 52,
+            "title": "The Information Paradox Resolved: 0/0 of Black Hole Information",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 52: The Information Paradox Resolved</h2>
+<p>For 45 years: Hawking showed black holes destroy information. The 2020 ISLAND FORMULA proved information IS conserved, replicating the Page curve EXACTLY.</p>
+
+<h3>Hawking (1975)</h3>
+<ul>
+<li>Black holes radiate (Hawking radiation)</li>
+<li>Radiation is purely THERMAL</li>
+<li>Information DESTROYED (violates unitarity)</li>
+<li>The 0/0: information lost at the horizon</li>
+</ul>
+
+<h3>Page (1993)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">S_rad peaks at Page time, then DECREASES</p>
+<p>Unitarity requires information conservation. Information DOES escape!</p>
+
+<h3>Island Formula (2020)</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">S_rad = min(Area(island) / 4G_N + S_semiclassical)</p>
+<p>The island is the entanglement wedge INSIDE the black hole. Reproduces Page curve EXACTLY!</p>
+
+<h3>Replica Wormholes</h3>
+<p>The mechanism: computing Tr(rho^n) directly. After Page time, wormholes CONNECT copies, giving the island.</p>
+
+<h3>Resolution</h3>
+<ul>
+<li>Information IS conserved (unitarity)</li>
+<li>Escapes through ENTANGLEMENT</li>
+<li>The horizon 0/0 IS resolved!</li>
+</ul>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Hawking (1975), particle creation</li>
+<li>[2] Page (1993), information in radiation</li>
+<li>[3] Penington (2019), entanglement wedge</li>
+<li>[4] Almheiri et al. (2020), replica wormholes</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "Hawking (1975) showed:", "options": ["Info is preserved", "Info is destroyed", "No radiation", "Black holes are cold"], "correct": 1},
+                {"q": "The Page curve requires:", "options": ["Info destroyed", "Info conserved", "No radiation", "Random entropy"], "correct": 1},
+                {"q": "The island formula gives:", "options": ["S = A/(4G_N)+S_semiclass", "S = 0", "S = infinity", "S = k*ln(Omega)"], "correct": 0},
+                {"q": "Replica wormholes:", "options": ["Destroy information", "Connect copies after Page time", "Create black holes", "Don't exist"], "correct": 1},
+                {"q": "Information escapes through:", "options": ["Radiation", "Entanglement", "Temperature", "Mass"], "correct": 1}
             ]
         }
     ]
