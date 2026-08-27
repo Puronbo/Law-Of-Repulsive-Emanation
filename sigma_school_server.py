@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 42 chapters from "The Removable Singularity"
+    - 43 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -1696,6 +1696,56 @@ def build_courses():
                 {"q": "If c is in the Mandelbrot set, J(c) is:", "options": ["Cantor dust", "Connected", "A point", "Empty"], "correct": 1},
                 {"q": "The same Mandelbrot also discovered:", "options": ["Quantum mechanics", "Fractal finance", "General relativity", "Thermodynamics"], "correct": 1},
                 {"q": "The Mandelbrot boundary is:", "options": ["Smooth", "Self-similar", "Finite length", "1-dimensional"], "correct": 1}
+            ]
+        },
+        {
+            "id": 43,
+            "title": "Chaos Theory: 0/0 at the Onset of Chaos",
+            "part": "VIII. Deep Connections",
+            "content": """
+<h2>Chapter 43: Chaos Theory: 0/0 at the Onset of Chaos</h2>
+<p>The Feigenbaum constants are UNIVERSAL -- the same for ALL maps with a quadratic maximum. Same universality as Ising (beta=1/8) but for dynamical systems.</p>
+
+<h3>The Logistic Map</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">x_{n+1} = r * x_n * (1 - x_n)</p>
+<p>Period doubling: 1 -> 2 -> 4 -> 8 -> ... At r_inf = 3.5699...: 0/0. Above: chaos.</p>
+
+<h3>Feigenbaum Constants</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">delta = 4.669201...  alpha = 2.502907...</p>
+<p>UNIVERSAL for ALL maps with quadratic maximum. Same universality as Ising!</p>
+
+<h3>Lyapunov Exponent</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">lambda = lim (1/n) * sum(ln|f'(x_i)|)</p>
+<p>lambda < 0: stable. lambda = 0: bifurcation (0/0). lambda > 0: chaos.</p>
+
+<h3>Universality</h3>
+<ul>
+<li>Ising: beta = 1/8 (same for all Z2 systems)</li>
+<li>Feigenbaum: delta = 4.669... (same for all quadratic maps)</li>
+<li>Both: UNIVERSALITY from symmetry class</li>
+</ul>
+
+<h3>Chaos in Nature</h3>
+<ul>
+<li>Weather: Lorenz 1963, butterfly effect</li>
+<li>Population: May 1976, logistic map in ecology</li>
+<li>Brain: chaos in neural activity (Ch.34)</li>
+<li>Finance: chaotic price movements (Ch.38)</li>
+</ul>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Feigenbaum (1978), universal properties of nonlinear maps</li>
+<li>[2] Lanford (1982), computer-assisted proof</li>
+<li>[3] May (1976), simple models with complicated dynamics</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "The Feigenbaum constant delta is approximately:", "options": ["2.503", "3.141", "4.669", "6.283"], "correct": 2},
+                {"q": "The logistic map is:", "options": ["x -> r*x*(1-x)", "x -> r*x^2", "x -> r*sin(x)", "x -> r*exp(x)"], "correct": 0},
+                {"q": "At the onset of chaos, the Lyapunov exponent is:", "options": ["Negative", "Zero", "Positive", "Infinite"], "correct": 1},
+                {"q": "The Feigenbaum constants are:", "options": ["Map-specific", "Universal", "Approximate", "Imaginary"], "correct": 1},
+                {"q": "The bifurcation diagram is:", "options": ["Smooth", "Fractal", "Linear", "Periodic"], "correct": 1}
             ]
         }
     ]

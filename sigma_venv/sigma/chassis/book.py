@@ -575,6 +575,18 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Mandelbrot 1982, Douady-Hubbard 1984, Falconer 2003",
     },
+    # Part VIII: Deep Connections (continued)
+    {
+        "part": "VIII",
+        "chapter": 43,
+        "title": "Chaos Theory: 0/0 at the Onset of Chaos",
+        "status": REAL,
+        "category": "dynamics",
+        "mechanism": "Logistic map x->r*x*(1-x): period doubling 1->2->4->8. Feigenbaum delta=4.669, alpha=2.502 UNIVERSAL. Lyapunov lambda=0 at 0/0. Bifurcation diagram is fractal. Same universality as Ising.",
+        "examples": ["delta=4.669 universal", "lambda=0 at bifurcation", "Fractal bifurcation diagram", "Sine map same constants"],
+        "sigma_value": 1.0,
+        "source": "Feigenbaum 1978, Lanford 1982, May 1976, Lorenz 1963",
+    },
 ]
 
 

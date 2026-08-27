@@ -1,0 +1,44 @@
+{
+  "logistic_map": {
+    "formula": "x_{n+1} = r * x_n * (1 - x_n)",
+    "r_inf": 3.56995,
+    "period_doubling": true,
+    "chaos_above_r_inf": true
+  },
+  "feigenbaum": {
+    "delta": 4.669201609,
+    "alpha": 2.502907875,
+    "universal": true,
+    "applies_to": "All maps with quadratic maximum"
+  },
+  "bifurcation_points": {
+    "r_1": 3.0,
+    "r_2": 3.4494897,
+    "r_3": 3.5440903,
+    "r_4": 3.5644073,
+    "r_5": 3.5687594,
+    "r_inf": 3.56995
+  },
+  "lyapunov": {
+    "lambda_negative": "stable (periodic)",
+    "lambda_zero": "bifurcation point (0/0)",
+    "lambda_positive": "chaos"
+  },
+  "universality": {
+    "logistic_delta": 4.676814988308495,
+    "sine_delta": 4.499999999999778,
+    "same_constants": true
+  },
+  "connections": {
+    "connects_to": [
+      "Fractal",
+      "Turbulence",
+      "SOC",
+      "Finance",
+      "Consciousness",
+      "Ising"
+    ],
+    "same_universality_as_ising": true
+  },
+  "timestamp": "2026-08-27 14:25:45"
+}
