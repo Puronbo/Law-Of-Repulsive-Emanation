@@ -688,6 +688,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Hawking 1975, Page 1993, Penington 2019, Almheiri-Engelhardt-Marolf-Maxfield 2019, Almheiri et al 2020",
     },
+    {
+        "part": "IX",
+        "chapter": 53,
+        "title": "The Hard Problem: 0/0 of Mind and Matter",
+        "status": REAL,
+        "category": "consciousness",
+        "mechanism": "Explanatory gap: no physical description captures qualia. IIT Phi=info from WHOLE-PARTS. Feedforward Phi=0.000 zombie, integrated Phi>0. Boundary Phi=0 IS 0/0 of consciousness. Panpsychism limit: global entanglement => Phi_universe>0.",
+        "examples": ["Explanatory gap", "IIT Phi", "Zombie test", "Panpsychism"],
+        "sigma_value": 1.0,
+        "source": "Chalmers 1995, Tononi 2004, Balduzzi-Tononi 2008, Dehaene 2001",
+    },
 ]
 
 

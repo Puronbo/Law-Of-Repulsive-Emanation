@@ -1,0 +1,45 @@
+{
+  "hard_problem": {
+    "chalmers_1995": true,
+    "explanatory_gap": true,
+    "easy_vs_hard": true
+  },
+  "IIT": {
+    "tononi_2004": true,
+    "phi_integrated_information": true,
+    "whole_minus_parts": true
+  },
+  "phi_results": {
+    "feedforward_phi": 0.0,
+    "bidirectional_phi": 0.167,
+    "strongly_coupled": 0.184,
+    "zombie_boundary_phi_0": true
+  },
+  "zombie_test": {
+    "physical_duplicate": true,
+    "no_experience": true,
+    "0over0_gap": true
+  },
+  "integration_argument": {
+    "unified_whole": true,
+    "whole_gt_parts": true
+  },
+  "panpsychism_limit": {
+    "global_phi_positive": true,
+    "universe_conscious": true
+  },
+  "connections": {
+    "connects_to": [
+      "Measurement",
+      "Information paradox",
+      "Quantum gravity",
+      "Holographic",
+      "Neural sync",
+      "RMT",
+      "Entanglement"
+    ],
+    "final_0over0": true,
+    "boundary_of_all_knowledge": true
+  },
+  "timestamp": "2026-08-27 15:46:04"
+}

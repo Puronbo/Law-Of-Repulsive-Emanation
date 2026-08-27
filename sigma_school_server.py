@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 52 chapters from "The Removable Singularity"
+    - 53 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -2155,6 +2155,54 @@ def build_courses():
                 {"q": "The island formula gives:", "options": ["S = A/(4G_N)+S_semiclass", "S = 0", "S = infinity", "S = k*ln(Omega)"], "correct": 0},
                 {"q": "Replica wormholes:", "options": ["Destroy information", "Connect copies after Page time", "Create black holes", "Don't exist"], "correct": 1},
                 {"q": "Information escapes through:", "options": ["Radiation", "Entanglement", "Temperature", "Mass"], "correct": 1}
+            ]
+        },
+        {
+            "id": 53,
+            "title": "The Hard Problem: 0/0 of Mind and Matter",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 53: The Hard Problem: 0/0 of Mind and Matter</h2>
+<p>WHY is there subjective experience at all? This IS a 0/0: the boundary where mind emerges from matter.</p>
+
+<h3>The Explanatory Gap</h3>
+<ul>
+<li>Physical facts are third-person (behavioral, neural)</li>
+<li>Experience is first-person (qualia: redness, pain)</li>
+<li>NO physical description captures the FEELING of red</li>
+<li>This gap IS the 0/0 of mind and matter</li>
+</ul>
+
+<h3>Integrated Information Theory</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">Phi = info from WHOLE - info in PARTS</p>
+<p>Parts alone: Phi = 0 (zombie). Integrated: Phi > 0 (experience). The boundary Phi = 0 IS the 0/0 of consciousness!</p>
+
+<h3>Computed Results</h3>
+<ul>
+<li>Feedforward (zombie): Phi = 0.000</li>
+<li>Bidirectional (conscious-like): Phi = 0.167</li>
+<li>Strongly coupled: Phi = 0.184</li>
+</ul>
+
+<h3>The Zombie Test</h3>
+<p>A physical duplicate without experience would behave and report identically. If yes: experience is NOT entailed by physics.</p>
+
+<h3>Panpsychism Limit</h3>
+<p>If the universe is globally entangled: Phi_universe > 0. The universe IS conscious (at some level).</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Chalmers (1995), the hard problem</li>
+<li>[2] Tononi (2004), integrated information theory</li>
+<li>[3] Balduzzi & Tononi (2008)</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "The hard problem asks:", "options": ["How neurons fire", "Why is there subjective experience", "How brains compute", "How memory works"], "correct": 1},
+                {"q": "The explanatory gap is between:", "options": ["Body and brain", "Physical facts and experience", "Mind and memory", "Input and output"], "correct": 1},
+                {"q": "IIT says consciousness equals:", "options": ["Neural activity", "Integrated information", "Brain size", "EEG waves"], "correct": 1},
+                {"q": "A feedforward system has Phi:", "options": ["Large", "= 0", "Negative", "Infinite"], "correct": 1},
+                {"q": "A zombie is:", "options": ["Mindless physical duplicate", "A brainless creature", "An AI", "A sleeping person"], "correct": 0}
             ]
         }
     ]
