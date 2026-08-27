@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 35 chapters from "The Removable Singularity"
+    - 36 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -1352,6 +1352,56 @@ def build_courses():
                 {"q": "The Erdos-Renyi giant component appears at:", "options": ["p = 0", "p = 1", "p = 1/N", "p = N"], "correct": 2},
                 {"q": "The critical exponent for ER percolation in 2D is:", "options": ["1/2", "1/3", "1", "3/2"], "correct": 1},
                 {"q": "Mycoplasma genitalium has approximately:", "options": ["100 genes", "300 genes", "525 genes", "1000 genes"], "correct": 2}
+            ]
+        },
+        {
+            "id": 36,
+            "title": "The Ising Model: 0/0 at the Phase Transition",
+            "part": "VII. Extensions",
+            "content": """
+<h2>Chapter 36: The Ising Model: 0/0 at the Phase Transition</h2>
+<p>The Ising model is the master 0/0 removable singularity: all phase transitions share the same 0/0 structure but have DIFFERENT critical exponents depending on dimensionality.</p>
+
+<h3>The Model</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">H = -J * sum_{&lt;ij&gt;} s_i * s_j</p>
+<ul>
+<li>T &lt; T_c: M &gt; 0 (magnetized)</li>
+<li>T &gt; T_c: M = 0 (disordered)</li>
+<li>T = T_c: M = 0/0 (removable singularity)</li>
+</ul>
+
+<h3>Critical Exponents by Dimension</h3>
+<table style="width:100%; border-collapse:collapse;">
+<tr><td style="padding:5px; border:1px solid #4a5568;"><b>Dimension</b></td><td style="padding:5px; border:1px solid #4a5568;"><b>beta</b></td><td style="padding:5px; border:1px solid #4a5568;"><b>Method</b></td></tr>
+<tr><td style="padding:5px; border:1px solid #4a5568;">2D</td><td style="padding:5px; border:1px solid #4a5568;">1/8 = 0.125</td><td style="padding:5px; border:1px solid #4a5568;">Onsager exact (1944)</td></tr>
+<tr><td style="padding:5px; border:1px solid #4a5568;">3D</td><td style="padding:5px; border:1px solid #4a5568;">0.326</td><td style="padding:5px; border:1px solid #4a5568;">Monte Carlo</td></tr>
+<tr><td style="padding:5px; border:1px solid #4a5568;">Mean-field</td><td style="padding:5px; border:1px solid #4a5568;">1/2 = 0.500</td><td style="padding:5px; border:1px solid #4a5568;">Bragg-Williams</td></tr>
+</table>
+
+<h3>Wilson's Renormalization Group (1971)</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">beta = 1/2 - epsilon/12</p>
+<p>epsilon = 4 - d. RG fixed points determine universality class.</p>
+
+<h3>All Prior 0/0 = Ising Universality Classes</h3>
+<ul>
+<li>Kuramoto, Toomre Q, BH, RT, Eigen, Kauffman = MF (beta=1/2)</li>
+<li>Erdos-Renyi percolation = 2D (beta=1/3) or MF (beta=1)</li>
+</ul>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Ising (1925), ferromagnetism</li>
+<li>[2] Onsager (1944), exact 2D solution</li>
+<li>[3] Wilson (1971), renormalization group (Nobel 1982)</li>
+<li>[4] Fisher (1974), RG theory</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "The 2D Ising critical exponent beta is:", "options": ["1/2", "1/4", "1/8", "1/3"], "correct": 2},
+                {"q": "Onsager solved the Ising model in which year?", "options": ["1925", "1944", "1971", "1982"], "correct": 1},
+                {"q": "Wilson's RG explains:", "options": ["Why T_c varies", "Why beta varies with dimension", "Why M = 0", "Why J > 0"], "correct": 1},
+                {"q": "The mean-field Ising beta is:", "options": ["1/8", "1/3", "1/2", "1"], "correct": 2},
+                {"q": "The upper critical dimension for Ising is:", "options": ["d = 2", "d = 3", "d = 4", "d = 6"], "correct": 2}
             ]
         }
     ]

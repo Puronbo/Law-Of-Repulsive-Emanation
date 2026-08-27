@@ -491,6 +491,18 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Eigen 1971, Kauffman 1993, Erdos & Renyi 1960, Venter 2010",
     },
+    # Part VII: Extensions (continued)
+    {
+        "part": "VII",
+        "chapter": 36,
+        "title": "The Ising Model: 0/0 at the Phase Transition",
+        "status": REAL,
+        "category": "statistical_mechanics",
+        "mechanism": "Master 0/0: M = 0/0 at T_c. Beta = 1/8 (2D, Onsager), 0.326 (3D, MC), 1/2 (MF). RG explains universality. All prior 0/0 are Ising classes.",
+        "examples": ["T_c = 2.269 (2D)", "beta = 1/8 exact (Onsager)", "Wilson RG epsilon-expansion", "All prior chapters = MF Ising"],
+        "sigma_value": 1.0,
+        "source": "Ising 1925, Onsager 1944, Wilson 1971, Fisher 1974",
+    },
 ]
 
 
