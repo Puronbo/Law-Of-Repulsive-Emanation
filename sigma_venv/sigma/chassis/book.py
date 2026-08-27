@@ -721,6 +721,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Libet 1983, Conway-Kochen 2006, Bell 1976, Dennett 1984, Laplace 1814",
     },
+    {
+        "part": "IX",
+        "chapter": 56,
+        "title": "The Self: 0/0 of Identity (Ship of Theseus)",
+        "status": REAL,
+        "category": "philosophy",
+        "mechanism": "98% atom turnover/yr, ~0 original after 10yr. Glider persists while cells turnover. Theseus material 1.000->0.000, pattern intact. No-cloning (W-Z 1982) gap 0.5858: no copies, only continuation. Self = information flow (0/0 of matter and identity).",
+        "examples": ["Ship of Theseus", "98% atom turnover", "Glider=self", "No-cloning"],
+        "sigma_value": 1.0,
+        "source": "Plutarch, Wootters-Zurek 1982, Chalmers 2010",
+    },
 ]
 
 

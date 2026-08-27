@@ -1,0 +1,37 @@
+{
+  "atom_turnover": {
+    "percent_replaced_yearly": 98,
+    "original_after_10yr": 0.0
+  },
+  "glider_self": {
+    "min_overlap_5cells": 0,
+    "pattern_persisted_all_generations": true
+  },
+  "ship_of_theseus": {
+    "material_overlap_final": 0.0,
+    "pattern_intact": true
+  },
+  "no_cloning": {
+    "wootters_zurek_1982": true,
+    "max_gap": 0.5858,
+    "cannot_duplicate_self": true
+  },
+  "immortality": {
+    "pattern_in_sim_persists": true,
+    "chalmers_2010": true
+  },
+  "the_0over0": {
+    "self_is_information_flow": true,
+    "self_is_removable_singularity": true,
+    "matter_becomes_self_at_boundary": true
+  },
+  "connections": [
+    "Simulation",
+    "Hard problem",
+    "Free will",
+    "Info paradox",
+    "Quantum",
+    "Arrow of time"
+  ],
+  "timestamp": "2026-08-27 16:11:32"
+}

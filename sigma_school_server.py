@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 55 chapters from "The Removable Singularity"
+    - 56 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -2303,6 +2303,51 @@ def build_courses():
                 {"q": "Libet found the readiness potential precedes:", "options": ["The movement", "Conscious intention", "Death", "Memory"], "correct": 1},
                 {"q": "Conway-Kochen's theorem implies:", "options": ["Particles have mass", "Free experimenters imply free particles", "Light has speed c", "Gravity bends light"], "correct": 1},
                 {"q": "Compatibilism resolves free will as:", "options": ["An illusion only", "Determined choice that feels free", "Total randomness", "Magic"], "correct": 1}
+            ]
+        },
+        {
+            "id": 56,
+            "title": "The Self: 0/0 of Identity (Ship of Theseus)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 56: The Self: 0/0 of Identity</h2>
+<p>The Ship of Theseus (Plutarch): if every part is replaced, is it the same ship? Identity IS a 0/0 - it lives in the pattern, not the parts.</p>
+
+<h3>Atom Turnover</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">original_after_years = (0.02)^years</p>
+<p>~98% of the body's atoms are replaced yearly. After 10 years: ~1e-17 ~ ZERO original matter. Yet "you" continue.</p>
+
+<h3>The Glider (Ch.54)</h3>
+<p>A glider's cells are fully replaced within ~8 generations, yet the pattern persists. THE GLIDER IS THE SHIP OF THESEUS.</p>
+
+<h3>Computed Ship</h3>
+<ul>
+<li>day 0: material 1.000</li>
+<li>day 125: 0.500</li>
+<li>day 250: 0.000</li>
+<li>yet the ship sails on: the pattern continued</li>
+</ul>
+
+<h3>No-Cloning (Wootters-Zurek 1982)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">gap_max = 0.5858</p>
+<p>The self cannot be duplicated - only continued or destroyed. Immortality = pattern continuation, not duplication.</p>
+
+<h3>The 0/0 Proof</h3>
+<p>No enduring particle exists. Self = information flow through matter. At each boundary cell, matter becomes self. The self IS the removable singularity of the body.</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Plutarch, Ship of Theseus</li>
+<li>[2] Wootters & Zurek (1982)</li>
+<li>[3] Chalmers (2010), upload and the mind</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "The Ship of Theseus asks:", "options": ["Is identity preserved through replacement", "Do ships sink", "Are swords sharp", "Are maps accurate"], "correct": 0},
+                {"q": "Percent of body atoms replaced yearly:", "options": ["10", "50", "98", "0"], "correct": 2},
+                {"q": "A glider keeps its:", "options": ["Cells forever", "Pattern while cells turn over", "Speed c", "Size"], "correct": 1},
+                {"q": "The no-cloning theorem states:", "options": ["Quantum wild", "States can be copied freely", "An unknown state cannot be duplicated", "Cloning is slow"], "correct": 2},
+                {"q": "In this framework the self is:", "options": ["An enduring soul-particle", "Information flow through matter", "A ghost", "The skull"], "correct": 1}
             ]
         }
     ]
