@@ -1,0 +1,50 @@
+{
+  "flatness": {
+    "Omega_m": 0.315,
+    "Omega_L": 0.685,
+    "Omega_total": 1.0,
+    "geometry": "flat",
+    "0over0": true
+  },
+  "scale_free_cosmic_web": {
+    "nodes": 1000,
+    "edges": 1996,
+    "mean_degree": 3.992,
+    "max_degree": 64,
+    "gamma": 1.933
+  },
+  "structure_formation": {
+    "critical_density": true,
+    "dark_matter": true,
+    "dark_energy": true
+  },
+  "cosmic_0over0": {
+    "Omega_total": 1.0,
+    "largest_0over0": true
+  },
+  "universality_scales": {
+    "subatomic": "quark_confinement",
+    "atomic": "electron_orbitals",
+    "molecular": "chemical_bonds",
+    "cellular": "neural_networks",
+    "social": "social_networks",
+    "financial": "market_networks",
+    "cosmic": "galaxy_web",
+    "gamma_all": "~2-3"
+  },
+  "connections": {
+    "connects_to": [
+      "Networks",
+      "Dark matter",
+      "Dark energy",
+      "Toomre Q",
+      "SOC",
+      "BKT",
+      "Ising",
+      "Black holes",
+      "Entanglement"
+    ],
+    "most_connected": true
+  },
+  "timestamp": "2026-08-27 15:00:58"
+}

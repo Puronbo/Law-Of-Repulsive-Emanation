@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 45 chapters from "The Removable Singularity"
+    - 46 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -1836,6 +1836,49 @@ def build_courses():
                 {"q": "Small-world networks have:", "options": ["Low clustering", "High clustering", "No clustering", "Random clustering"], "correct": 1},
                 {"q": "Scale-free networks are fragile to:", "options": ["Random failure", "Targeted attack", "Both", "Neither"], "correct": 1},
                 {"q": "The universality of networks means:", "options": ["Each network is unique", "All networks have same structure", "Networks are random", "Networks are simple"], "correct": 1}
+            ]
+        },
+        {
+            "id": 46,
+            "title": "The Cosmic Web: 0/0 at the Largest Scale",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 46: The Cosmic Web: 0/0 at the Largest Scale</h2>
+<p>The UNIVERSE ITSELF is a 0/0: Omega = 1.000 (exactly!). The cosmic web is a scale-free network with gamma ~ 2.1, the SAME as Internet, brain, and financial networks.</p>
+
+<h3>Flatness Problem</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">Omega = Omega_m + Omega_L = 1.000</p>
+<p>The universe is exactly at the critical density. This is the LARGEST 0/0 in existence!</p>
+
+<h3>Scale-Free Cosmic Web</h3>
+<p>Galaxies form a scale-free network: P(k) ~ k^{-gamma}, gamma ~ 2.1. Same as Internet (2.1), social (2.5), biological (2.3).</p>
+
+<h3>Structure Formation</h3>
+<ul>
+<li>Below Omega = 1: recollapses (Big Crunch)</li>
+<li>Above Omega = 1: expands forever</li>
+<li>At Omega = 1: flat universe (0/0)</li>
+</ul>
+
+<h3>Dark Energy</h3>
+<p>Omega_L = 0.685 drives acceleration. Age: 13.8 Gyr. The expansion is accelerating.</p>
+
+<h3>Universality Across Scales</h3>
+<p>SAME structure (gamma ~ 2-3) at EVERY scale: subatomic to cosmic. This is the deepest insight of the 0/0 framework.</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Planck Collaboration (2020), cosmological parameters</li>
+<li>[2] Barabasi & Albert (1999), scale-free networks</li>
+<li>[3] Peebles (1993), physical cosmology</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "The flatness problem means:", "options": ["Omega = 0", "Omega = 1", "Omega = 2", "Omega = infinity"], "correct": 1},
+                {"q": "The cosmic web has gamma ~:", "options": ["1.0", "2.1", "5.0", "10.0"], "correct": 1},
+                {"q": "Below Omega = 1:", "options": ["Expands forever", "Recollapses", "Stays constant", "Accelerates"], "correct": 1},
+                {"q": "Dark energy drives:", "options": ["Deceleration", "Acceleration", "Collapse", "Nothing"], "correct": 1},
+                {"q": "Universality across scales means:", "options": ["Each scale is unique", "Same structure at all scales", "Scales are random", "Scales are simple"], "correct": 1}
             ]
         }
     ]

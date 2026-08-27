@@ -611,6 +611,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Barabasi-Albert 1999, Watts-Strogatz 1998, Albert-Barabasi 2002",
     },
+    {
+        "part": "IX",
+        "chapter": 46,
+        "title": "The Cosmic Web: 0/0 at the Largest Scale",
+        "status": REAL,
+        "category": "cosmology",
+        "mechanism": "Flatness problem Omega=1.000, scale-free P(k)~k^{-gamma} gamma~2.1, SAME structure at ALL scales from subatomic to cosmic. Dark energy drives acceleration. Universe IS a 0/0.",
+        "examples": ["Omega=1.000", "P(k)~k^{-2.1}", "Dark energy", "Scale-free web"],
+        "sigma_value": 1.0,
+        "source": "Planck 2020, Barabasi-Albert 1999, Peebles 1993",
+    },
 ]
 
 
