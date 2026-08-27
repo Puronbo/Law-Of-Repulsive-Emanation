@@ -1,0 +1,48 @@
+{
+  "singularity": {
+    "density_infinity": true,
+    "temperature_infinity": true,
+    "0over0": true,
+    "quantum_gravity_resolves": true
+  },
+  "inflation": {
+    "factor_10_26": true,
+    "time_10_neg_32": true,
+    "solves_horizon": true,
+    "solves_flatness": true
+  },
+  "horizon_problem": {
+    "cmb_uniform": true,
+    "regions_separated": true,
+    "inflation_solves": true
+  },
+  "flatness_problem": {
+    "Omega_equal_1": true,
+    "inflation_drives_1": true
+  },
+  "matter_antimatter": {
+    "asymmetry_6e_neg_10": true,
+    "CP_violation": true
+  },
+  "timeline": {
+    "planck_time": 5.391e-44,
+    "inflation_time": 1e-32,
+    "nucleosynthesis": 1,
+    "recombination": 380000.0,
+    "now": 13800000000.0
+  },
+  "connections": {
+    "connects_to": [
+      "Cosmic web",
+      "Arrow of time",
+      "Holographic",
+      "Measurement",
+      "Black holes",
+      "SOC",
+      "Networks",
+      "Dark matter"
+    ],
+    "origin_of_all_0over0": true
+  },
+  "timestamp": "2026-08-27 15:18:55"
+}

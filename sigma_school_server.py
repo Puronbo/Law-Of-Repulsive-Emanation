@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 49 chapters from "The Removable Singularity"
+    - 50 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -2020,6 +2020,50 @@ def build_courses():
                 {"q": "Decoherence causes:", "options": ["More superposition", "Classical behavior", "Entanglement", "Nothing"], "correct": 1},
                 {"q": "Many-worlds says:", "options": ["Collapse happens", "No collapse, branching", "Only one world", "Worlds are random"], "correct": 1},
                 {"q": "Quantum Zeno effect:", "options": ["Measurement speeds evolution", "Measurement freezes evolution", "Measurement destroys system", "Measurement is random"], "correct": 1}
+            ]
+        },
+        {
+            "id": 50,
+            "title": "The Big Bang: 0/0 of Origin",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 50: The Big Bang: 0/0 of Origin</h2>
+<p>THE UNIVERSE ITSELF emerged from a singularity. The Big Bang IS the LARGEST 0/0: nothing -> singularity -> everything.</p>
+
+<h3>The Singularity</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">T = 0: density = infinity, temperature = infinity</p>
+<p>This is a 0/0: undefined. Quantum gravity may resolve this singularity!</p>
+
+<h3>Inflation</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">Factor = exp(60) ~ 10^26 in 10^-32 seconds</p>
+<p>Universe expanded by 10^26 in 10^-32 seconds! This solves the horizon and flatness problems.</p>
+
+<h3>Horizon Problem</h3>
+<ul>
+<li>CMB is uniform in ALL directions</li>
+<li>Regions too far apart to communicate</li>
+<li>Inflation: regions WERE in contact before</li>
+</ul>
+
+<h3>Flatness Problem</h3>
+<p>Omega = 1.000 (exactly!). Inflation drives Omega -> 1 exponentially.</p>
+
+<h3>Matter-Antimatter</h3>
+<p>eta = 6e-10. Tiny asymmetry created ALL matter!</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Guth (1981), inflationary universe</li>
+<li>[2] Penzias & Wilson (1965), CMB discovery</li>
+<li>[3] Sakharov (1967), matter-antimatter asymmetry</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "The Big Bang singularity means:", "options": ["Finite density", "Infinite density", "Zero density", "Negative density"], "correct": 1},
+                {"q": "Inflation expanded the universe by:", "options": ["10^6", "10^12", "10^26", "10^100"], "correct": 2},
+                {"q": "The horizon problem asks:", "options": ["Why is CMB cold?", "Why is CMB uniform?", "Why is CMB hot?", "Why is CMB random?"], "correct": 1},
+                {"q": "Inflation drives Omega toward:", "options": ["0", "0.5", "1", "infinity"], "correct": 2},
+                {"q": "The matter-antimatter asymmetry is:", "options": ["1 in 100", "1 in 10^6", "1 in 10^9", "1 in 10^12"], "correct": 2}
             ]
         }
     ]

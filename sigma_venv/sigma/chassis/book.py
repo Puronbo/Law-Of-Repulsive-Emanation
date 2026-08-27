@@ -655,6 +655,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Born 1926, Zeh 1970, Everett 1957, Wheeler 1978, Misra-Sudarshan 1977",
     },
+    {
+        "part": "IX",
+        "chapter": 50,
+        "title": "The Big Bang: 0/0 of Origin",
+        "status": REAL,
+        "category": "cosmology",
+        "mechanism": "Singularity T=0 density=infinity, inflation 10^26 in 10^-32s, horizon problem uniformity from chaos, flatness Omega=1.000, matter-antimatter eta=6e-10. Universe emerged from 0/0. Quantum gravity may resolve.",
+        "examples": ["Singularity", "Inflation 10^26", "Omega=1.000", "eta=6e-10"],
+        "sigma_value": 1.0,
+        "source": "Guth 1981, Penzias-Wilson 1965, Sakharov 1967, Planck 2020",
+    },
 ]
 
 
