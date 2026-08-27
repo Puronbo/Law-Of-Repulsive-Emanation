@@ -563,6 +563,18 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Bak-Tang-Wiesenfeld 1987, Gutenberg-Richter 1944, Beggs-Plenz 2003",
     },
+    # Part VIII: Deep Connections (continued)
+    {
+        "part": "VIII",
+        "chapter": 42,
+        "title": "Fractal Geometry: 0/0 at Every Point on the Boundary",
+        "status": REAL,
+        "category": "mathematics",
+        "mechanism": "Mandelbrot set z->z^2+c: boundary D=2 (space-filling), 0/0 everywhere. Julia sets transition connected/Cantor dust. Self-similarity at all scales. Same Mandelbrot discovered fractal finance.",
+        "examples": ["Mandelbrot boundary D=2", "Julia set 0/0", "Koch D=log4/log3", "Self-similar mini-Mandelbrots"],
+        "sigma_value": 1.0,
+        "source": "Mandelbrot 1982, Douady-Hubbard 1984, Falconer 2003",
+    },
 ]
 
 

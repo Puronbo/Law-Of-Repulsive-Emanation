@@ -1,0 +1,40 @@
+{
+  "mandelbrot": {
+    "formula": "z_{n+1} = z_n^2 + c",
+    "area": 1.5065,
+    "boundary_dimension": 2.0,
+    "connected": true,
+    "self_similar": true
+  },
+  "fractal_dimensions": {
+    "koch": 1.2619,
+    "sierpinski": 1.585,
+    "mandelbrot_boundary": 2.0,
+    "british_coastline": 1.25
+  },
+  "julia_sets": {
+    "connected_if_in_mandelbrot": true,
+    "cantor_dust_if_outside": true,
+    "boundary_0over0": true
+  },
+  "mandelbrot_finance": {
+    "same_person": "Benoit Mandelbrot",
+    "fractal_geometry": 1980,
+    "fractal_finance": 1963,
+    "connection": "Same fractal thinking applies to both"
+  },
+  "connections": {
+    "connects_to": [
+      "Finance",
+      "Turbulence",
+      "SOC",
+      "E8",
+      "Zeta",
+      "Ising",
+      "BKT"
+    ],
+    "universal_object": true,
+    "0over0_everywhere": true
+  },
+  "timestamp": "2026-08-27 14:18:31"
+}

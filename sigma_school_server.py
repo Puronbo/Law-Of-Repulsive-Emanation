@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 41 chapters from "The Removable Singularity"
+    - 42 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -1651,6 +1651,51 @@ def build_courses():
                 {"q": "Brain neuronal avalanches follow:", "options": ["P(s) ~ s^{-1}", "P(s) ~ s^{-3/2}", "P(s) ~ s^{-2}", "P(s) ~ s^{-3}"], "correct": 1},
                 {"q": "SOC introduces which universality class?", "options": ["tau ~ 0.5", "tau ~ 1.0-1.5", "tau ~ 2.0-3.0", "tau ~ 5.0"], "correct": 1},
                 {"q": "The key insight of SOC is:", "options": ["Systems avoid criticality", "0/0 singularities are natural", "Tuning is always required", "Only physics has criticality"], "correct": 1}
+            ]
+        },
+        {
+            "id": 42,
+            "title": "Fractal Geometry: 0/0 at Every Point on the Boundary",
+            "part": "VIII. Deep Connections",
+            "content": """
+<h2>Chapter 42: Fractal Geometry: 0/0 at Every Point on the Boundary</h2>
+<p>The Mandelbrot set is the universal object connecting all 0/0 singularities. Its boundary has Hausdorff dimension D=2 (space-filling!). Same Mandelbrot discovered fractal finance AND fractal geometry.</p>
+
+<h3>The Mandelbrot Set</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">z_{n+1} = z_n^2 + c</p>
+<p>Inside: bounded. Outside: diverges. On boundary: 0/0 (removable singularity). Boundary D=2 (space-filling!).</p>
+
+<h3>Escape Time</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">N(c) = min{n : |z_n| > 2}</p>
+<p>Inside: N=infinity. Outside: N=finite. On boundary: 0/0.</p>
+
+<h3>Julia Sets</h3>
+<p>If c is in Mandelbrot: J(c) is connected. If c is outside: J(c) is Cantor dust. At boundary: 0/0 (transition).</p>
+
+<h3>Fractal Dimensions</h3>
+<ul>
+<li>Line: D = 1 (smooth)</li>
+<li>Koch snowflake: D = log(4)/log(3) ~ 1.26</li>
+<li>Sierpinski triangle: D = log(3)/log(2) ~ 1.59</li>
+<li>Mandelbrot boundary: D = 2 (SPACE-FILLING!)</li>
+</ul>
+
+<h3>Same Mandelbrot: Geometry and Finance</h3>
+<p>Benoit Mandelbrot discovered BOTH fractal geometry (1980) AND fractal finance (1963). Same fractal thinking applies to both!</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Mandelbrot, "Fractal geometry of nature" (1982)</li>
+<li>[2] Douady & Hubbard (1984), Mandelbrot dynamics</li>
+<li>[3] Mandelbrot, "Fractals and scaling in finance" (1997)</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "The Mandelbrot set is defined by:", "options": ["z -> z^3 + c", "z -> z^2 + c", "z -> sin(z)", "z -> e^z"], "correct": 1},
+                {"q": "The Hausdorff dimension of the Mandelbrot boundary is:", "options": ["1.0", "1.5", "2.0", "3.0"], "correct": 2},
+                {"q": "If c is in the Mandelbrot set, J(c) is:", "options": ["Cantor dust", "Connected", "A point", "Empty"], "correct": 1},
+                {"q": "The same Mandelbrot also discovered:", "options": ["Quantum mechanics", "Fractal finance", "General relativity", "Thermodynamics"], "correct": 1},
+                {"q": "The Mandelbrot boundary is:", "options": ["Smooth", "Self-similar", "Finite length", "1-dimensional"], "correct": 1}
             ]
         }
     ]
