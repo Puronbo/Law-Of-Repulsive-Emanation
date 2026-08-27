@@ -109,7 +109,7 @@ class TestBook:
     
     def test_chapter_count(self):
         from sigma.chassis.book import CHAPTERS
-        assert len(CHAPTERS) == 38
+        assert len(CHAPTERS) == 39
     
     def test_epistemic_classifier(self):
         from sigma.chassis.book import EpistemicClassifier, REAL, CAREFUL
@@ -119,7 +119,7 @@ class TestBook:
     def test_real_results(self):
         from sigma.chassis.book import BookIntegration
         book = BookIntegration()
-        assert len(book.real_results()) == 32
+        assert len(book.real_results()) == 33
     
     def test_careful_results(self):
         from sigma.chassis.book import BookIntegration
@@ -148,7 +148,7 @@ class TestExport:
         data = build_export()
         assert data['framework'] == 'L.O.R.E. (Law of Repulsive Emanation)'
         assert data['version'] == '2.0.0'
-        assert data['book']['total_chapters'] == 38
+        assert data['book']['total_chapters'] == 39
         assert data['currency']['entries'] == 20
         assert data['verification']['all_pass'] is True
 
@@ -185,7 +185,7 @@ class TestSchool:
         spec.loader.exec_module(mod)
         courses = mod.build_courses()
         assert len(courses) == 1
-        assert len(courses[0]['chapters']) == 38
+        assert len(courses[0]['chapters']) == 39
     
     def test_chapter_structure(self):
         """Each chapter has required fields."""

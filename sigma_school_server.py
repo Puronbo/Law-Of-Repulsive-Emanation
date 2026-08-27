@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 38 chapters from "The Removable Singularity"
+    - 39 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -1496,6 +1496,57 @@ def build_courses():
                 {"q": "Sornette's model predicts crashes via:", "options": ["Gaussian noise", "Log-periodic oscillations", "Random walks", "Linear trends"], "correct": 1},
                 {"q": "The GARCH unit root occurs at:", "options": ["alpha+beta=0", "alpha+beta=0.5", "alpha+beta=1", "alpha+beta=2"], "correct": 2},
                 {"q": "Market herding is modeled by:", "options": ["Ising model", "Kuramoto model", "Navier-Stokes", "Euler equation"], "correct": 1}
+            ]
+        },
+        {
+            "id": 39,
+            "title": "Quantum Phase Transitions: 0/0 at Absolute Zero",
+            "part": "VIII. Deep Connections",
+            "content": """
+<h2>Chapter 39: Quantum Phase Transitions: 0/0 at Absolute Zero</h2>
+<p>Quantum phase transitions occur at ZERO temperature, driven by quantum fluctuations, not thermal fluctuations. This is the most fundamental 0/0.</p>
+
+<h3>Transverse Field Ising Model</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">H = -J*sum(sigma_z^i*sigma_z^{i+1}) - g*sum(sigma_x^i)</p>
+<p>At g = g_c = J: quantum critical point (0/0). Order parameter &lt;sigma_z&gt; = 0/0 with beta = 1/8.</p>
+
+<h3>Energy Gap Closing</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">Delta(g) = 2*J*|1 - g/J|</p>
+<p>At g_c: gap closes (Delta = 0). This is the quantum signature of the phase transition.</p>
+
+<h3>Entanglement Entropy</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">S ~ c/3 * log(L) at criticality, c = 1/2</p>
+<p>Logarithmic divergence at criticality. Area law (S ~ constant) away from criticality.</p>
+
+<h3>Quantum-Classical Correspondence</h3>
+<p>1D quantum Ising at T=0 has the SAME critical exponents as 2D classical Ising at T=T_c:</p>
+<ul>
+<li>beta = 1/8 (both)</li>
+<li>nu = 1 (both)</li>
+<li>z = 1 (quantum) vs z = 0 (classical)</li>
+</ul>
+<p>The extra dimension (imaginary time) maps quantum to classical.</p>
+
+<h3>Topological Signatures</h3>
+<ul>
+<li>Topological entanglement entropy: gamma = log(2) in ordered phase, 0 in disordered</li>
+<li>Berry phase: pi in ordered phase, 0 in disordered phase</li>
+<li>Both jump discontinuously at g_c (0/0)</li>
+</ul>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Sachdev, "Quantum phase transitions" (2011)</li>
+<li>[2] Suzuki, "Equivalence of d-dim classical and (d+1)-dim quantum" (1976)</li>
+<li>[3] Vidal, "Entanglement entropy in quantum critical systems" (2003)</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "Quantum phase transitions occur at:", "options": ["T = infinity", "T = 0 (absolute zero)", "T = T_c", "T = room temperature"], "correct": 1},
+                {"q": "At the quantum critical point g_c, the order parameter is:", "options": ["Finite", "Zero", "0/0 removable singularity", "Infinite"], "correct": 2},
+                {"q": "The 1D quantum Ising has the same exponents as:", "options": ["2D classical Ising", "3D classical Ising", "Mean-field Ising", "No classical model"], "correct": 0},
+                {"q": "The dynamical exponent z = 1 means:", "options": ["No dynamics", "Lorentz invariant", "Thermal fluctuations", "Classical behavior"], "correct": 1},
+                {"q": "The entanglement entropy at criticality:", "options": ["Is constant", "Diverges logarithmically", "Is zero", "Diverges exponentially"], "correct": 1}
             ]
         }
     ]

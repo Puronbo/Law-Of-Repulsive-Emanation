@@ -527,6 +527,18 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Black & Scholes 1973, Mandelbrot 1997, Sornette 2003, Bollerslev 1986",
     },
+    # Part VIII: Deep Connections
+    {
+        "part": "VIII",
+        "chapter": 39,
+        "title": "Quantum Phase Transitions: 0/0 at Absolute Zero",
+        "status": REAL,
+        "category": "physics",
+        "mechanism": "Transverse field Ising: <sigma_z> = 0/0 at g_c, beta=1/8, nu=1, z=1. Entanglement entropy S ~ c/3*log(L). Same exponents as 2D classical Ising. Topological gamma=log(2). Berry phase pi.",
+        "examples": ["<sigma_z>=0/0 at g_c=J", "Delta=0 (gap closes)", "S~c/3*log(L)", "z=1 quantum vs z=0 classical"],
+        "sigma_value": 1.0,
+        "source": "Sachdev 2011, Suzuki 1976, Pfeuty 1970, Vidal 2003, Kitaev & Preskill 2006",
+    },
 ]
 
 

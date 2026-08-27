@@ -1,0 +1,50 @@
+{
+  "transverse_ising": {
+    "formula": "H = -J*sum(sigma_z^i*sigma_z^{i+1}) - g*sum(sigma_x^i)",
+    "g_c": 1.0,
+    "beta": 0.125,
+    "nu": 1.0,
+    "z": 1.0,
+    "central_charge": 0.5
+  },
+  "order_parameter": {
+    "formula": "<sigma_z> = (1 - g^2/J^2)^{1/8} for g < J",
+    "beta": 0.125
+  },
+  "energy_gap": {
+    "formula": "Delta = 2*J*|1 - g/J|",
+    "closes_at_g_c": true
+  },
+  "entanglement": {
+    "critical": "S ~ c/3 * log(L), c = 1/2",
+    "area_law": "S ~ constant away from criticality"
+  },
+  "quantum_classical": {
+    "quantum_1D": {
+      "beta": 0.125,
+      "nu": 1.0,
+      "z": 1.0
+    },
+    "classical_2D": {
+      "beta": 0.125,
+      "nu": 1.0,
+      "z": 0.0
+    },
+    "same_exponents": true,
+    "different_dynamics": true
+  },
+  "topological": {
+    "gamma": "log(2) (Z2 topological order)",
+    "berry_phase": "pi (non-trivial topology)"
+  },
+  "connections": {
+    "is_same_as_classical_2D": true,
+    "connects_to": [
+      "Ising",
+      "Entanglement",
+      "Consciousness",
+      "Black holes"
+    ]
+  },
+  "timestamp": "2026-08-27 13:53:02"
+}
