@@ -622,6 +622,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Planck 2020, Barabasi-Albert 1999, Peebles 1993",
     },
+    {
+        "part": "IX",
+        "chapter": 47,
+        "title": "The Holographic Principle: 0/0 of Information",
+        "status": REAL,
+        "category": "theoretical_physics",
+        "mechanism": "Bekenstein-Hawking S=A/(4G_N), Ryu-Takayanagi entanglement=geometry, AdS/CFT D-dim gravity=(D-1)-dim CFT, Bekenstein bound I<=A/4. 3D world is hologram of 2D information. Deepest 0/0.",
+        "examples": ["S=A/(4G_N)", "Ryu-Takayanagi", "AdS/CFT", "Bekenstein bound"],
+        "sigma_value": 1.0,
+        "source": "Bekenstein 1973, Hawking 1975, Ryu-Takayanagi 2006, Maldacena 1998",
+    },
 ]
 
 

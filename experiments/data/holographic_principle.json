@@ -1,0 +1,37 @@
+{
+  "bekenstein_hawking": {
+    "S_area_scaling": true,
+    "S_A4G": true,
+    "area_not_volume": true
+  },
+  "ryu_takayanagi": {
+    "S_A_equal_Area_4G": true,
+    "entanglement_is_geometry": true
+  },
+  "information_paradox": {
+    "page_curve": true,
+    "unitarity_preserved": true,
+    "0over0_at_horizon": true
+  },
+  "adscft": {
+    "D_dim_gravity_equal_Dminus1_CFT": true,
+    "holographic_duality": true,
+    "3d_world_is_hologram": true
+  },
+  "bekenstein_bound": {
+    "I_max_equal_A_4": true,
+    "max_information": true
+  },
+  "connections": {
+    "connects_to": [
+      "Black holes",
+      "Entanglement",
+      "Consciousness",
+      "RMT",
+      "Networks",
+      "Cosmic web"
+    ],
+    "deepest_0over0": true
+  },
+  "timestamp": "2026-08-27 15:06:27"
+}

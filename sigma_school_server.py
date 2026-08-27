@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 46 chapters from "The Removable Singularity"
+    - 47 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -1879,6 +1879,52 @@ def build_courses():
                 {"q": "Below Omega = 1:", "options": ["Expands forever", "Recollapses", "Stays constant", "Accelerates"], "correct": 1},
                 {"q": "Dark energy drives:", "options": ["Deceleration", "Acceleration", "Collapse", "Nothing"], "correct": 1},
                 {"q": "Universality across scales means:", "options": ["Each scale is unique", "Same structure at all scales", "Scales are random", "Scales are simple"], "correct": 1}
+            ]
+        },
+        {
+            "id": 47,
+            "title": "The Holographic Principle: 0/0 of Information",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 47: The Holographic Principle: 0/0 of Information</h2>
+<p>ALL information in a volume can be encoded on its boundary. The 3D world is a HOLOGRAM of 2D information. S = A/(4G_N) IS a 0/0.</p>
+
+<h3>Bekenstein-Hawking Entropy</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">S = A / (4 * G_N)</p>
+<p>Entropy is proportional to AREA, not volume. This is the holographic 0/0!</p>
+
+<h3>Ryu-Takayanagi Formula</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">S_A = Area(gamma_A) / (4 * G_N)</p>
+<p>Entanglement entropy = area of minimal surface. Entanglement IS geometry!</p>
+
+<h3>Information Paradox</h3>
+<ul>
+<li>Information falls into black hole</li>
+<li>Is it destroyed? (violates unitarity)</li>
+<li>At horizon: 0/0 (superposition)</li>
+<li>Page curve: information IS preserved</li>
+</ul>
+
+<h3>AdS/CFT Correspondence</h3>
+<p>D-dimensional gravity = (D-1)-dimensional CFT. The 3D world is a hologram of 2D information!</p>
+
+<h3>Bekenstein Bound</h3>
+<p>I <= A/4. Maximum information bounded by area, not volume.</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Bekenstein (1973), black hole entropy</li>
+<li>[2] Hawking (1975), particle creation</li>
+<li>[3] Ryu & Takayanagi (2006), holographic entanglement</li>
+<li>[4] Maldacena (1998), AdS/CFT</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "Bekenstein-Hawking entropy scales with:", "options": ["Volume", "Area", "Mass", "Temperature"], "correct": 1},
+                {"q": "The Ryu-Takayanagi formula connects:", "options": ["Entropy and temperature", "Entanglement and geometry", "Mass and radius", "Energy and time"], "correct": 1},
+                {"q": "AdS/CFT says:", "options": ["3D = 4D", "D-dim gravity = (D-1)-dim CFT", "Gravity = electromagnetism", "Quantum = classical"], "correct": 1},
+                {"q": "The information paradox asks:", "options": ["Is information destroyed?", "Is information preserved?", "Both", "Neither"], "correct": 2},
+                {"q": "The holographic principle means:", "options": ["Volume is fundamental", "Boundary encodes all information", "Information is infinite", "Information is simple"], "correct": 1}
             ]
         }
     ]
