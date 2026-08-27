@@ -765,6 +765,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Landauer 1961, Bennett 1982, Friston 2010, Leibniz 1710, Plantinga 1974",
     },
+    {
+        "part": "IX",
+        "chapter": 60,
+        "title": "The Golden Rule: 0/0 of Self and Other",
+        "status": REAL,
+        "category": "philosophy",
+        "mechanism": "Axelrod IPD: cooperators bank 3.00/round, defectors 1.00/round = 3x (C-C 600 vs D-D 200 per 200r); TFT won Axelrod 1984. Hamilton: r*B>C (sisters +5.00, strangers -0.997). Empathy = predictive coupling I(A_{t-1};B_t) = 0.667 bits vs ~0. Rawls maximin: fair 0.50 vs greedy 0.10. Self/other boundary is 0/0; love = the 0/0 where two patterns become one.",
+        "examples": ["Cooperation 3x", "Hamilton r*B>C", "Empathy 0.667 bits", "Fairness wins maximin"],
+        "sigma_value": 1.0,
+        "source": "Axelrod 1984, Hamilton 1964, Trivers 1971, Rawls 1971",
+    },
 ]
 
 

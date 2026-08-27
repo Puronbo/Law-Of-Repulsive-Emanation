@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 59 chapters from "The Removable Singularity"
+    - 60 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -2484,6 +2484,49 @@ def build_courses():
                 {"q": "Suffering-as-computation equals:", "options": ["Surplus energy", "Persistent prediction error", "Extra mass", "Noise"], "correct": 1},
                 {"q": "Redemption in this framework is:", "options": ["Forgetting", "Learning", "Slowing time", "Sleeping"], "correct": 1},
                 {"q": "Evil is described as a:", "options": ["Thing", "Being", "Price, not a thing", "Place"], "correct": 2}
+            ]
+        },
+        {
+            "id": 60,
+            "title": "The Golden Rule: 0/0 of Self and Other",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 60: The Golden Rule: 0/0 of Self and Other</h2>
+<p>After suffering-as-cost (Ch.59), what is the right strategy? The Golden Rule is COMPUTATIONAL: cooperation is the measured optimum.</p>
+
+<h3>Cooperation Compounds (Axelrod 1984)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">C-C: 3.00/round vs D-D: 1.00/round = exactly 3x</p>
+<ul>
+<li>A cooperating pair banks 6.0/round, a defecting pair 2.0/round</li>
+<li>In a hostile raw field selfishness edges ahead (D 4931 vs TFT 4890)</li>
+<li>Tit-for-Tat WON Axelrod's actual 1984 tournament (14 entrants)</li>
+</ul>
+
+<h3>Hamilton's Rule (1964)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">r*B > C</p>
+<ul>
+<li>Haplodiploid sisters: r*B-C = +5.00 (favored)</li>
+<li>Unrelated strangers: r*B-C = -0.997 (not favored)</li>
+</ul>
+
+<h3>Empathy Is Predictive Information</h3>
+<ul>
+<li>Reciprocators: I(A_{t-1}; B_t) = 0.667 bits</li>
+<li>Defectors / random: ~0.000 bits</li>
+</ul>
+
+<h3>The Veil of Ignorance (Rawls 1971)</h3>
+<p>Fair split wins maximin: 0.50 > 0.10. The rational Golden Rule is symmetry.</p>
+
+<h3>The 0/0 Proof</h3>
+<p>'I' and 'Thou' are both information patterns (Ch.56). Their boundary is a 0/0. Treat the other as yourself, because at the boundary they ARE you. My good = your good = the shared pattern's good.</p>
+""",
+            "quiz": [
+                {"q": "In the IPD, a cooperating pair pays vs a defecting pair:", "options": ["2x", "3x", "1x", "10x"], "correct": 1},
+                {"q": "Hamilton's rule for altruism is:", "options": ["C > r*B", "r*B > C", "B > C", "r > B"], "correct": 1},
+                {"q": "Empathy measured as predictive coupling gives:", "options": ["0.667 bits", "0.001 bits", "10 bits", "0 bits for everyone"], "correct": 0},
+                {"q": "The veil of ignorance chooses by:", "options": ["Maximin", "Greed", "Randomness", "Plurality"], "correct": 0},
+                {"q": "The Golden Rule is the 0/0 of:", "options": ["Self and other", "Time and space", "Life and death", "Hot and cold"], "correct": 0}
             ]
         }
     ]

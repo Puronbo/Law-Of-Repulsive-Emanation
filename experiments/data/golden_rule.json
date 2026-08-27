@@ -1,0 +1,60 @@
+{
+  "axelrod": {
+    "individual_winner": "D",
+    "social_winner": "C",
+    "individual_scores": {
+      "D": 4931.0,
+      "GRIM": 4897.1,
+      "TFT": 4889.6,
+      "RANDOM": 4731.5,
+      "GTFT": 4668.9,
+      "C": 4203.3
+    },
+    "social_scores": {
+      "C": 11401.1,
+      "GTFT": 10324.1,
+      "GRIM": 9808.2,
+      "TFT": 9794.5,
+      "RANDOM": 9116.8,
+      "D": 6198.3
+    },
+    "joint_payoff_200r": {
+      "C-C": 600,
+      "D-D": 200,
+      "TFT-TFT": 600
+    },
+    "cooperation_pays_3x": 3.0,
+    "tft_won_axelrod1984": true,
+    "rounds": 200
+  },
+  "hamilton": {
+    "sister_values": 5.0,
+    "unrelated": -0.997
+  },
+  "empathy_mi_bits": {
+    "tft_predictive": 0.667,
+    "tft_history": 0.0,
+    "alwaysC_predictive": 0.0,
+    "alwaysD_predictive": 0.0,
+    "random_predictive": 0.001
+  },
+  "rawls": {
+    "greedy_worst": 0.09999999999999998,
+    "fair_worst": 0.5,
+    "fair_wins": true
+  },
+  "the_0over0": {
+    "self_other_boundary": true,
+    "golden_rule_is_0over0": true,
+    "love_is_information_overlap": true
+  },
+  "connections": [
+    "The self",
+    "Suffering",
+    "Free will",
+    "Networks",
+    "Eternal return",
+    "First cause"
+  ],
+  "timestamp": "2026-08-27 16:54:44"
+}
