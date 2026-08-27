@@ -1,0 +1,46 @@
+{
+  "planck_scale": {
+    "l_P": 1.616218686346517e-35,
+    "t_P": 5.391125237535218e-44,
+    "m_P": 2.1764832399238067e-08,
+    "0over0_of_physics": true
+  },
+  "loop_quantum_gravity": {
+    "discrete_spacetime": true,
+    "area_quantized": true,
+    "big_bounce": true,
+    "rho_max_0_41_rho_planck": true
+  },
+  "string_theory": {
+    "dimensions": {
+      "bosonic": 26,
+      "type_II": 10,
+      "M_theory": 11
+    },
+    "gravity_emergent": true,
+    "closed_strings_graviton": true
+  },
+  "adscft": {
+    "quantum_gravity_holographic": true,
+    "bulk_boundary_duality": true
+  },
+  "spacetime_entropy": {
+    "S_equal_A_4": true,
+    "space_is_information": true
+  },
+  "connections": {
+    "connects_to": [
+      "Big Bang",
+      "Black holes",
+      "Holographic",
+      "Measurement",
+      "RMT",
+      "Arrow of time",
+      "Cosmic web",
+      "Networks"
+    ],
+    "final_unification": true,
+    "resolves_all_0over0": true
+  },
+  "timestamp": "2026-08-27 15:25:17"
+}

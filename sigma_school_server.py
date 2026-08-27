@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 50 chapters from "The Removable Singularity"
+    - 51 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -2064,6 +2064,47 @@ def build_courses():
                 {"q": "The horizon problem asks:", "options": ["Why is CMB cold?", "Why is CMB uniform?", "Why is CMB hot?", "Why is CMB random?"], "correct": 1},
                 {"q": "Inflation drives Omega toward:", "options": ["0", "0.5", "1", "infinity"], "correct": 2},
                 {"q": "The matter-antimatter asymmetry is:", "options": ["1 in 100", "1 in 10^6", "1 in 10^9", "1 in 10^12"], "correct": 2}
+            ]
+        },
+        {
+            "id": 51,
+            "title": "Quantum Gravity: 0/0 of Final Unification",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 51: Quantum Gravity: 0/0 of Final Unification</h2>
+<p>THE BIGGEST UNSOLVED PROBLEM IN PHYSICS: unifying quantum mechanics with general relativity. This resolves EVERY 0/0 singularity.</p>
+
+<h3>Planck Scale</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">l_P = sqrt(hbar*G/c^3) = 1.616e-35 m</p>
+<p>Below Planck scale: quantum gravity dominates. This is the 0/0 of physics!</p>
+
+<h3>Loop Quantum Gravity</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">A = 8*pi*l_P^2*sqrt(j(j+1))</p>
+<p>Space is DISCRETE! Area is quantized. Big Bang singularity resolved (Big Bounce)!</p>
+
+<h3>String Theory</h3>
+<ul>
+<li>Fundamental objects are STRINGS, not points</li>
+<li>Gravity EMERGES from closed strings</li>
+<li>Extra dimensions: 10-11</li>
+</ul>
+
+<h3>AdS/CFT</h3>
+<p>D-dim quantum gravity = (D-1)-dim CFT. Quantum gravity IS holographic (Ch.47).</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Rovelli (2004), Quantum Gravity</li>
+<li>[2] Polchinski (1998), String Theory</li>
+<li>[3] Maldacena (1998), AdS/CFT</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "The Planck length is:", "options": ["1.6e-10 m", "1.6e-20 m", "1.6e-35 m", "1.6e-50 m"], "correct": 2},
+                {"q": "Loop Quantum Gravity says space is:", "options": ["Continuous", "Discrete", "Empty", "Infinite"], "correct": 1},
+                {"q": "The Big Bounce means:", "options": ["Singularity", "Density reaches maximum then bounces", "Universe collapses forever", "Nothing happens"], "correct": 1},
+                {"q": "In String Theory, gravity comes from:", "options": ["Open strings", "Closed strings", "Points", "Waves"], "correct": 1},
+                {"q": "AdS/CFT says quantum gravity is:", "options": ["Impossible", "Holographic", "Classical", "Simple"], "correct": 1}
             ]
         }
     ]
