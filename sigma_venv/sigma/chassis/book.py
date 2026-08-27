@@ -551,6 +551,18 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Berezinskii 1971, Kosterlitz-Thouless 1974, Nelson-Kosterlitz 1977, Nobel 2016",
     },
+    # Part VIII: Deep Connections (continued)
+    {
+        "part": "VIII",
+        "chapter": 41,
+        "title": "Self-Organized Criticality: 0/0 Created by the System",
+        "status": REAL,
+        "category": "complex_systems",
+        "mechanism": "System creates critical point without tuning. BTW sandpile, Gutenberg-Richter P(M)=10^{-bM}, brain criticality P(s)~s^{-3/2}, fat tails in finance. Fifth universality class: tau~1.0-1.5.",
+        "examples": ["P(s)~s^{-tau}", "P(M)=10^{-bM}", "Brain P(s)~s^{-3/2}", "Fat tails kurtosis>>0"],
+        "sigma_value": 1.0,
+        "source": "Bak-Tang-Wiesenfeld 1987, Gutenberg-Richter 1944, Beggs-Plenz 2003",
+    },
 ]
 
 

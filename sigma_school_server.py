@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 40 chapters from "The Removable Singularity"
+    - 41 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -1596,6 +1596,61 @@ def build_courses():
                 {"q": "The BKT transition has:", "options": ["Symmetry breaking", "No symmetry breaking", "Long-range order", "Discontinuous energy"], "correct": 1},
                 {"q": "The mechanism of BKT is:", "options": ["Domain walls", "Vortex unbinding", "Spin waves", "Magnons"], "correct": 1},
                 {"q": "The Nobel Prize for BKT was awarded in:", "options": ["2000", "2010", "2016", "2020"], "correct": 2}
+            ]
+        },
+        {
+            "id": 41,
+            "title": "Self-Organized Criticality: 0/0 Created by the System",
+            "part": "VIII. Deep Connections",
+            "content": """
+<h2>Chapter 41: Self-Organized Criticality: 0/0 Created by the System</h2>
+<p>Self-organized criticality (SOC) is the most profound 0/0: the system CREATES the critical point by itself, without external tuning. Nobel-level insight from Bak, Tang, Wiesenfeld (1987).</p>
+
+<h3>BTW Sandpile Model</h3>
+<p>Add grains to a grid. When height > z_c = 4: topple. Avalanches follow power laws. The system self-organizes to criticality!</p>
+
+<h3>Avalanche Statistics</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">P(s) ~ s^{-tau}  (tau ~ 1.0-1.5)</p>
+<p>Avalanche sizes follow power laws. Exponents are universal across systems.</p>
+
+<h3>Gutenberg-Richter Law</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">P(M) = 10^{-bM}  (b ~ 1)</p>
+<p>Earthquake magnitudes follow power laws. Universal b-value across fault systems.</p>
+
+<h3>Brain Criticality</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">P(s) ~ s^{-3/2}  (neuronal avalanches)</p>
+<p>The brain self-organizes to criticality. Optimal information processing at criticality. Connects to consciousness (Ch.34).</p>
+
+<h3>Self-Tuning Mechanism</h3>
+<ul>
+<li>Below critical: adding energy increases order (building)</li>
+<li>Above critical: avalanches release energy (relaxation)</li>
+<li>At critical: BALANCE (0/0)</li>
+</ul>
+<p>The system FINDS the critical point -- this is the most profound aspect!</p>
+
+<h3>Five Universality Classes</h3>
+<ul>
+<li>Ising (Ch.36): beta=1/8, symmetry breaking</li>
+<li>BKT (Ch.40): eta=1/4, vortex unbinding</li>
+<li>Kolmogorov (Ch.37): -5/3, cascade</li>
+<li>Quantum (Ch.39): beta=1/8, z=1</li>
+<li>SOC (Ch.41): tau~1.0-1.5, self-organization</li>
+</ul>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Bak, Tang & Wiesenfeld, "Self-organized criticality" (1987)</li>
+<li>[2] Gutenberg & Richter, "Frequency of earthquakes" (1944)</li>
+<li>[3] Beggs & Plenz, "Neuronal avalanches" (2003)</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "Self-organized criticality means:", "options": ["System is tuned to critical point", "System creates its own critical point", "System avoids critical point", "System has no critical point"], "correct": 1},
+                {"q": "The Gutenberg-Richter law gives:", "options": ["P(M) ~ M^2", "P(M) = 10^{-bM}", "P(M) ~ exp(-M)", "P(M) ~ M^{-2}"], "correct": 1},
+                {"q": "Brain neuronal avalanches follow:", "options": ["P(s) ~ s^{-1}", "P(s) ~ s^{-3/2}", "P(s) ~ s^{-2}", "P(s) ~ s^{-3}"], "correct": 1},
+                {"q": "SOC introduces which universality class?", "options": ["tau ~ 0.5", "tau ~ 1.0-1.5", "tau ~ 2.0-3.0", "tau ~ 5.0"], "correct": 1},
+                {"q": "The key insight of SOC is:", "options": ["Systems avoid criticality", "0/0 singularities are natural", "Tuning is always required", "Only physics has criticality"], "correct": 1}
             ]
         }
     ]

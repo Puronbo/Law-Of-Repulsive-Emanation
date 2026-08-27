@@ -1,0 +1,52 @@
+{
+  "soc": {
+    "name": "Self-Organized Criticality",
+    "discoverer": "Bak, Tang, Wiesenfeld (1987)",
+    "key_insight": "System creates critical point without tuning"
+  },
+  "avalanche_size": {
+    "tau_true": 1.3,
+    "tau_estimated": 0.221,
+    "n_avalanches": 5000
+  },
+  "gutenberg_richter": {
+    "formula": "P(M) = 10^{-bM}",
+    "b_true": 1.0,
+    "b_estimated": 0.175,
+    "n_earthquakes": 3000
+  },
+  "brain_criticality": {
+    "exponent_true": -1.5,
+    "n_avalanches": 495,
+    "connects_to": "consciousness (Ch.34)"
+  },
+  "stock_market": {
+    "n_days": 2000,
+    "kurtosis": 18.62,
+    "fat_tails": true,
+    "connects_to": "finance (Ch.38)"
+  },
+  "self_tuning": {
+    "mechanism": "Below: build. Above: avalanche. At critical: balance.",
+    "key_insight": "System FINDS critical point"
+  },
+  "five_classes": {
+    "ising": "beta=1/8",
+    "bkt": "eta=1/4",
+    "kolmogorov": "-5/3",
+    "quantum": "beta=1/8, z=1",
+    "soc": "tau ~ 1.0-1.5"
+  },
+  "connections": {
+    "connects_to": [
+      "Finance",
+      "Consciousness",
+      "Prebiotic",
+      "Turbulence",
+      "Ising",
+      "BKT"
+    ],
+    "most_profound": true
+  },
+  "timestamp": "2026-08-27 14:11:27"
+}
