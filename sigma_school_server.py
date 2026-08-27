@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 58 chapters from "The Removable Singularity"
+    - 59 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -2441,6 +2441,49 @@ def build_courses():
                 {"q": "Godel showed a system:", "options": ["Proves its own truth", "Cannot prove its own consistency", "Never ends", "Is silent"], "correct": 1},
                 {"q": "BB(5) equals:", "options": ["21", "107", "47,176,870", "1"], "correct": 2},
                 {"q": "The SM rests on this many unexplained constants:", "options": ["3", "10", "19", "100"], "correct": 2}
+            ]
+        },
+        {
+            "id": 59,
+            "title": "The Problem of Evil: 0/0 of Suffering",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 59: The Problem of Evil: 0/0 of Suffering</h2>
+<p>Why does a good creator permit suffering? Answer with computation: computation is not free (Landauer 1961). Suffering is a PRICE, not a thing.</p>
+
+<h3>Computation Is Not Free</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">E_erase = k_B * T * ln(2)</p>
+<p>At CMB 2.7 K: 2.584e-23 J/bit. At 310 K: 2.967e-21 J/bit. No free lunch (Landauer; Bennett 1982).</p>
+
+<h3>The Heat of Creation</h3>
+<p>If the simulation's ~10^121 ops each discarded one bit: ~2.6e98 J, 10^28x the universe's energy. The creator must compute ~10^-28 efficient (reversible, Bennett).</p>
+
+<h3>Suffering as Prediction Error (Friston 2010)</h3>
+<ul>
+<li>Correct prior: 2003.8 bits surprise</li>
+<li>Wrong prior (learns): 2018.3 bits - gap 14.5 bits</li>
+<li>Learning pulls the model toward truth: redemption</li>
+</ul>
+
+<h3>The Price of Freedom (Ch.55)</h3>
+<p>Real choice needs contingency (chaos, quantum). Love and virtue need real alternatives (Plantinga 1974). Suffering is the price of a universe that can choose.</p>
+
+<h3>The 0/0 Proof</h3>
+<p>Within the system, good/evil are interior labels; the mechanism is neutral. Suffering = cost of computation. Evil is neither a thing nor an absence but a PRICE. Redemption = learning: the cost is repaid as wisdom.</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Landauer (1961)</li>
+<li>[2] Friston (2010), free energy</li>
+<li>[3] Leibniz (1710), Theodicy</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "Landauer's cost to erase one bit is:", "options": ["zero", "k_B*T*ln2", "e^(mc^2)", "hbar/2"], "correct": 1},
+                {"q": "At CMB temperature the erasure cost is about:", "options": ["2.6e-23 J", "1 J", "3e10 J", "10^-50 J"], "correct": 0},
+                {"q": "Suffering-as-computation equals:", "options": ["Surplus energy", "Persistent prediction error", "Extra mass", "Noise"], "correct": 1},
+                {"q": "Redemption in this framework is:", "options": ["Forgetting", "Learning", "Slowing time", "Sleeping"], "correct": 1},
+                {"q": "Evil is described as a:", "options": ["Thing", "Being", "Price, not a thing", "Place"], "correct": 2}
             ]
         }
     ]

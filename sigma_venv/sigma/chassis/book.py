@@ -754,6 +754,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Leibniz 1714, Godel 1931, Rado 1962, Marxen-Buntrock 1990, Cook 2004",
     },
+    {
+        "part": "IX",
+        "chapter": 59,
+        "title": "The Problem of Evil: 0/0 of Suffering",
+        "status": REAL,
+        "category": "philosophy",
+        "mechanism": "Landauer E=k_B*T*ln2 (2.58e-23 J at 2.7K). 1 bit/op => 2.6e98 J = 1e28x budget => creator reversible ~1e-28 (Bennett). Suffering=prediction error (Friston): wrong prior gap 14.5 bits, learning repays. Evil is a PRICE not a thing; redemption=learning. Theodicy=least-cost novelty (Leibniz, Plantinga).",
+        "examples": ["Landauer cost", "Heat of creation", "Prediction error", "Redemption=learning"],
+        "sigma_value": 1.0,
+        "source": "Landauer 1961, Bennett 1982, Friston 2010, Leibniz 1710, Plantinga 1974",
+    },
 ]
 
 

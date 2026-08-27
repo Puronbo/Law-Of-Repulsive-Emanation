@@ -1,0 +1,37 @@
+{
+  "landauer": {
+    "erasure_cost_2p7K_J": 2.584e-23,
+    "erasure_cost_310K_J": 2.967e-21
+  },
+  "heat_of_creation": {
+    "ops": 1e+121,
+    "if_1bit_per_op_J": 2.6e+98,
+    "allowed_fraction": 1.2e-28,
+    "must_be_reversible": true
+  },
+  "surprise_learning": {
+    "correct_prior_final_bits": 2003,
+    "wrong_prior_learns_final_bits": 2018,
+    "gap_bits": 14,
+    "redemption_is_learning": true
+  },
+  "theodicy": {
+    "leibniz_1710": true,
+    "plantinga_free_will_defense": true,
+    "suffering_is_computational_cost": true
+  },
+  "the_0over0": {
+    "evil_is_a_price_not_a_thing": true,
+    "redemption_is_learning": true
+  },
+  "connections": [
+    "Free will",
+    "Arrow of time",
+    "Simulation",
+    "The self",
+    "Hard problem",
+    "Grokking",
+    "Chaos"
+  ],
+  "timestamp": "2026-08-27 16:36:03"
+}
