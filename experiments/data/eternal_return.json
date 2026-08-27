@@ -1,0 +1,36 @@
+{
+  "poincare_recurrence": {
+    "finite_deterministic_implies_cycle": true,
+    "tiny_machine_period": 2
+  },
+  "glider_torus": {
+    "60x60_period": 240,
+    "theory_4_lcm": 240
+  },
+  "rule30_ring": {
+    "n15_period": 1455
+  },
+  "poincare_time": {
+    "log10_t_rec_years": 3e+103,
+    "age_ratio_orders": "10^103"
+  },
+  "boltzmann_brains": {
+    "equilibrium_fluctuates_minds": true,
+    "eternity_guarantees_observers": true
+  },
+  "the_0over0": {
+    "once_vs_forever": true,
+    "time_is_cycle": true,
+    "eternal_return_is_theorem": true
+  },
+  "connections": [
+    "Simulation",
+    "The self",
+    "Arrow of time",
+    "Chaos",
+    "Measurement",
+    "Hard problem",
+    "Big Bang"
+  ],
+  "timestamp": "2026-08-27 16:18:00"
+}

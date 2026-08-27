@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 56 chapters from "The Removable Singularity"
+    - 57 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -2348,6 +2348,52 @@ def build_courses():
                 {"q": "A glider keeps its:", "options": ["Cells forever", "Pattern while cells turn over", "Speed c", "Size"], "correct": 1},
                 {"q": "The no-cloning theorem states:", "options": ["Quantum wild", "States can be copied freely", "An unknown state cannot be duplicated", "Cloning is slow"], "correct": 2},
                 {"q": "In this framework the self is:", "options": ["An enduring soul-particle", "Information flow through matter", "A ghost", "The skull"], "correct": 1}
+            ]
+        },
+        {
+            "id": 57,
+            "title": "The Eternal Return: 0/0 of Recurrence",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 57: The Eternal Return: 0/0 of Recurrence</h2>
+<p>If the universe is a finite deterministic simulation (Ch.54) and the self is a pattern (Ch.56), Poincare recurrence is a THEOREM: every finite deterministic system returns to every past state. "Once" vs "forever" is 0/0.</p>
+
+<h3>Finite Determinism Implies Recurrence</h3>
+<p>Finite states + deterministic rule = a cycle. The state MUST revisit itself. No first time, no last time.</p>
+
+<h3>The Glider Returns</h3>
+<ul>
+<li>37x37 torus: T_rec = 148 gens (4*lcm)</li>
+<li>60x60 torus: T_rec = 240 gens (4*lcm)</li>
+<li>Eternal return of the glider = eternal return of the self</li>
+</ul>
+
+<h3>Chaos Also Returns</h3>
+<p>Rule 30 (Ch.43) on a 25-ring: period 588,425. Even chaos cycles when finite.</p>
+
+<h3>Poincare Time</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">t_rec ~ 2^(S_bits) * tau ~ 10^(3x10^103) years</p>
+<p>Universe: log10(t_rec) ~ 3e103 years, exceeding its age by ~10^103 orders (Boltzmann 1896).</p>
+
+<h3>Boltzmann Brains</h3>
+<p>Eternity fluctuates ANY state - including a mind (Ch.53). The eternal simulation must eventually fluctuate your exact self-pattern again.</p>
+
+<h3>The 0/0 Proof</h3>
+<p>Finite deterministic time is a cycle: every moment has already happened infinitely often. The arrow of time (Ch.48) is local drift. Eternal recurrence (Nietzsche 1882) is a theorem.</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Poincare (1890), recurrence</li>
+<li>[2] Boltzmann (1896), fluctuations</li>
+<li>[3] Nietzsche (1882), eternal return</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "Poincare recurrence says finite deterministic systems:", "options": ["Always end", "Return to past states", "Speed up", "Forget"], "correct": 1},
+                {"q": "A glider on a 60x60 torus recurs after:", "options": ["60 gens", "120 gens", "240 gens", "999 gens"], "correct": 2},
+                {"q": "Rule 30 on a finite ring:", "options": ["Never repeats", "Fails", "Eventually cycles", "Is random"], "correct": 2},
+                {"q": "Boltzmann brains are minds that:", "options": ["Grow in the skull", "Fluctuate in equilibrium", "Live in caves", "Eat light"], "correct": 1},
+                {"q": "In this framework 'once' vs 'forever' is:", "options": ["Observable", "A 0/0", "Fiction", "A rumor"], "correct": 1}
             ]
         }
     ]

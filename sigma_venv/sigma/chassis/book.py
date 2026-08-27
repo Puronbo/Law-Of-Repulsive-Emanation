@@ -732,6 +732,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Plutarch, Wootters-Zurek 1982, Chalmers 2010",
     },
+    {
+        "part": "IX",
+        "chapter": 57,
+        "title": "The Eternal Return: 0/0 of Recurrence",
+        "status": REAL,
+        "category": "cosmology",
+        "mechanism": "Finite determinism implies recurrence (Poincare). Glider T_rec=4*lcm (60x60:240). Rule 30 ring periods up to 588425. t_rec~10^(3e103) yr >> age by 10^103 orders. Boltzmann brains: eternity fluctuates minds. Once vs forever IS 0/0; eternal recurrence (Nietzsche) is a theorem.",
+        "examples": ["Poincare recurrence", "T_rec=4*lcm", "Rule 30 cycle", "Boltzmann brain"],
+        "sigma_value": 1.0,
+        "source": "Poincare 1890, Boltzmann 1896, Nietzsche 1882, Eddington 1931, Dyson 1979",
+    },
 ]
 
 
