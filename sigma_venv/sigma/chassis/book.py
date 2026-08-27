@@ -710,6 +710,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Bostrom 2003, Lloyd 2002, Cook 2004, Wolfram 2002, Conway 1970",
     },
+    {
+        "part": "IX",
+        "chapter": 55,
+        "title": "Free Will: 0/0 of Agency",
+        "status": REAL,
+        "category": "philosophy",
+        "mechanism": "Determinism reproducible (Life), unpredictable (Lyapunov=ln2=0.6931), info conserved. Libet RP -550ms before W -200ms. Conway-Kochen: free experimenters imply free particles. Free vs determined histories identical => 0/0 of agency. Compatibilism: determined choice that feels free.",
+        "examples": ["Lyapunov ln 2", "Libet gap 350ms", "Conway-Kochen", "Compatibilism"],
+        "sigma_value": 1.0,
+        "source": "Libet 1983, Conway-Kochen 2006, Bell 1976, Dennett 1984, Laplace 1814",
+    },
 ]
 
 

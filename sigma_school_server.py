@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 54 chapters from "The Removable Singularity"
+    - 55 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -2253,6 +2253,56 @@ def build_courses():
                 {"q": "The Planck length acts as:", "options": ["A force", "The universe's pixel size", "A temperature", "An energy"], "correct": 1},
                 {"q": "Lloyd's bound gives the universe's:", "options": ["Age", "Size", "Total computable operations", "Mass"], "correct": 2},
                 {"q": "Real vs simulated distinction is:", "options": ["Observable", "Dangerous", "Observationally 0/0", "Impossible"], "correct": 2}
+            ]
+        },
+        {
+            "id": 55,
+            "title": "Free Will: 0/0 of Agency",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 55: Free Will: 0/0 of Agency</h2>
+<p>In the deterministic simulation (Ch.54), physics seems fully determined, yet we experience choice. Free will vs determinism produce IDENTICAL observable histories: the 0/0 of agency.</p>
+
+<h3>Determinism Is Reproducible</h3>
+<ul>
+<li>Same seed -> same future (Life, reproducibility 1.0000000)</li>
+<li>Zero law-violations in ~10^121 operations (Lloyd)</li>
+<li>Every "choice" is a logic gate</li>
+</ul>
+
+<h3>But Not Predictable</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">lambda = ln 2 = 0.6931 (logistic map)</p>
+<p>Deterministic yet chaotic (Ch.43). Laplace's demon is impossible. One bit of uncertainty destroys prediction in ~27 steps.</p>
+
+<h3>Choice Conserves Information</h3>
+<p>Entropy before = after (9.733550 bits, diff 3.9e-14). A choice TRANSFORMS information, never creates it.</p>
+
+<h3>Libet (1983)</h3>
+<ul>
+<li>Readiness potential ~ -550 ms</li>
+<li>Conscious intention (W) ~ -200 ms</li>
+<li>Gap ~350 ms: decision precedes awareness</li>
+</ul>
+
+<h3>Conway-Kochen (2006)</h3>
+<p>Free experimenters imply free particles; if particles are determined, so are we. Choice and law are ENTANGLED.</p>
+
+<h3>The 0/0 Proof</h3>
+<p>World A (determined) and World B (free) produce bit-identical histories. Distinction = zero observational content. Compatibilism: free will = determined choice that feels free.</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Libet (1983)</li>
+<li>[2] Conway & Kochen (2006)</li>
+<li>[3] Dennett (1984), Elbow Room</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "Determinism means:", "options": ["Actions are random", "Same seed gives same future", "Nothing is predictable", "No rules exist"], "correct": 1},
+                {"q": "The logistic map (r=4) has Lyapunov exponent:", "options": ["0", "ln 2", "e", "pi"], "correct": 1},
+                {"q": "Libet found the readiness potential precedes:", "options": ["The movement", "Conscious intention", "Death", "Memory"], "correct": 1},
+                {"q": "Conway-Kochen's theorem implies:", "options": ["Particles have mass", "Free experimenters imply free particles", "Light has speed c", "Gravity bends light"], "correct": 1},
+                {"q": "Compatibilism resolves free will as:", "options": ["An illusion only", "Determined choice that feels free", "Total randomness", "Magic"], "correct": 1}
             ]
         }
     ]

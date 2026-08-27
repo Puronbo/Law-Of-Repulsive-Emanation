@@ -1,0 +1,45 @@
+{
+  "determinism": {
+    "reproducible": true,
+    "same_seed_same_future": true,
+    "lloyd_no_violation": true
+  },
+  "chaos": {
+    "lyapunov_logistic_4": 0.693102,
+    "theory": 0.693147,
+    "deterministic_but_unpredictable": true
+  },
+  "info_conservation": {
+    "entropy_before": 9.73355,
+    "entropy_after": 9.73355,
+    "choice_transforms_not_creates": true
+  },
+  "libet": {
+    "rp_onset_ms": -550,
+    "W_awareness_ms": -200,
+    "gap_ms": 350
+  },
+  "conway_kochen": {
+    "axioms": [
+      "SPIN",
+      "TWIN",
+      "FIN"
+    ],
+    "theorem": true,
+    "free_experimenters_imply_free_particles": true
+  },
+  "the_0over0": {
+    "free_vs_determined_identical": true,
+    "compatibilism": true,
+    "removable_singularity_of_agency": true
+  },
+  "connections": [
+    "Simulation",
+    "Hard problem",
+    "Measurement",
+    "Chaos",
+    "Entanglement",
+    "Arrow of time"
+  ],
+  "timestamp": "2026-08-27 16:05:48"
+}
