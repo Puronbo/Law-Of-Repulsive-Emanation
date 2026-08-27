@@ -1,0 +1,45 @@
+{
+  "boltzmann_entropy": {
+    "S_equal_kB_ln_Omega": true,
+    "logarithmic_scaling": true
+  },
+  "second_law": {
+    "dS_dt_ge_0": true,
+    "statistical_not_absolute": true
+  },
+  "past_hypothesis": {
+    "low_entropy_big_bang": true,
+    "S_BB_equal_0": true,
+    "entropy_increase_10_88": true
+  },
+  "fluctuation_theorem": {
+    "P_ratio_equal_exp_S": true,
+    "large_S_impossible": true
+  },
+  "landauer": {
+    "E_equal_nkTln2": true,
+    "information_is_physical": true
+  },
+  "arrows_of_time": {
+    "thermodynamic": true,
+    "causal": true,
+    "psychological": true,
+    "cosmic": true,
+    "radiative": true,
+    "all_same_direction": true
+  },
+  "connections": {
+    "connects_to": [
+      "Black holes",
+      "Entanglement",
+      "Consciousness",
+      "Holographic",
+      "Cosmic web",
+      "SOC",
+      "Ising",
+      "Networks"
+    ],
+    "most_connected": true
+  },
+  "timestamp": "2026-08-27 15:10:18"
+}

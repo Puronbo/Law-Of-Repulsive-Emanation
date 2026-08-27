@@ -633,6 +633,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Bekenstein 1973, Hawking 1975, Ryu-Takayanagi 2006, Maldacena 1998",
     },
+    {
+        "part": "IX",
+        "chapter": 48,
+        "title": "The Arrow of Time: 0/0 of Entropy",
+        "status": REAL,
+        "category": "thermodynamics",
+        "mechanism": "Boltzmann S=k_B*ln(Omega), second law dS/dt>=0 statistical, Past Hypothesis low-entropy Big Bang 0/0, fluctuation theorem, Landauer E=nkTln2. Time EMERGES from 0/0. All arrows point same direction.",
+        "examples": ["S=k_B*ln(Omega)", "dS/dt>=0", "Past Hypothesis", "Landauer"],
+        "sigma_value": 1.0,
+        "source": "Boltzmann 1877, Penrose 1989, Landauer 1961, Evans-Searles 1994",
+    },
 ]
 
 

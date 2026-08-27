@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 47 chapters from "The Removable Singularity"
+    - 48 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -1925,6 +1925,53 @@ def build_courses():
                 {"q": "AdS/CFT says:", "options": ["3D = 4D", "D-dim gravity = (D-1)-dim CFT", "Gravity = electromagnetism", "Quantum = classical"], "correct": 1},
                 {"q": "The information paradox asks:", "options": ["Is information destroyed?", "Is information preserved?", "Both", "Neither"], "correct": 2},
                 {"q": "The holographic principle means:", "options": ["Volume is fundamental", "Boundary encodes all information", "Information is infinite", "Information is simple"], "correct": 1}
+            ]
+        },
+        {
+            "id": 48,
+            "title": "The Arrow of Time: 0/0 of Entropy",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 48: The Arrow of Time: 0/0 of Entropy</h2>
+<p>TIME flows because entropy increases. The 0/0 is at the Big Bang: entropy was LOW (ordered), and time EMERGES from this singularity.</p>
+
+<h3>Boltzmann Entropy</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">S = k_B * ln(Omega)</p>
+<p>Omega = number of microstates. More microstates = higher entropy.</p>
+
+<h3>Second Law</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">dS/dt >= 0</p>
+<p>Entropy ALWAYS increases. This is statistical, not absolute!</p>
+
+<h3>Past Hypothesis</h3>
+<ul>
+<li>Big Bang had LOW entropy (S ~ 0)</li>
+<li>This is the 0/0 of time!</li>
+<li>Entropy increased by 10^88 since then</li>
+</ul>
+
+<h3>Fluctuation Theorem</h3>
+<p>P(+S)/P(-S) = exp(S/k_B). Entropy CAN decrease, but only for small systems.</p>
+
+<h3>Landauer's Principle</h3>
+<p>Erasing 1 bit creates kT*ln(2) heat. Information IS physical!</p>
+
+<h3>Arrows of Time</h3>
+<p>Thermodynamic, causal, psychological, cosmic, radiative. ALL point the SAME direction!</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Boltzmann (1877), entropy and microstates</li>
+<li>[2] Penrose (1989), The Emperor's New Mind</li>
+<li>[3] Landauer (1961), irreversibility</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "Boltzmann entropy is:", "options": ["S = k*T", "S = k*ln(Omega)", "S = E/T", "S = P*V"], "correct": 1},
+                {"q": "The second law says:", "options": ["Entropy decreases", "Entropy increases", "Entropy is constant", "Entropy is random"], "correct": 1},
+                {"q": "The Past Hypothesis says:", "options": ["Big Bang had high entropy", "Big Bang had low entropy", "Big Bang had zero entropy", "Big Bang had infinite entropy"], "correct": 1},
+                {"q": "Landauer's principle says:", "options": ["Information is free", "Erasing info creates heat", "Information is energy", "Information is mass"], "correct": 1},
+                {"q": "All arrows of time:", "options": ["Point different directions", "Point the same direction", "Are random", "Don't exist"], "correct": 1}
             ]
         }
     ]
