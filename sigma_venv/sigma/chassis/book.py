@@ -467,6 +467,18 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Ryu & Takayanagi 2006, Maldacena 1998, Almheiri 2015, Maldacena & Susskind 2013",
     },
+    # Part VII: Extensions (continued)
+    {
+        "part": "VII",
+        "chapter": 34,
+        "title": "Consciousness & Neural Synchrony: 0/0 at the Critical Point",
+        "status": REAL,
+        "category": "neuroscience",
+        "mechanism": "Kuramoto order parameter r = 0/0 at K_c. Beta = 1/2 (mean-field Ising). Gamma synchrony binding. Phi at critical point.",
+        "examples": ["r = sqrt(1-K_c/K)", "P(S) ~ S^{-3/2}", "Phi max at K~2*K_c", "Anesthesia phase transition"],
+        "sigma_value": 1.0,
+        "source": "Kuramoto 1975, Strogatz & Mirollo 1991, Beggs & Plenz 2003, Tononi 2004, Singer & Gray 1995",
+    },
 ]
 
 

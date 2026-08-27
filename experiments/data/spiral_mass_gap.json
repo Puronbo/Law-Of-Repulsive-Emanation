@@ -1,0 +1,123 @@
+{
+  "parker": {
+    "spiral_angle_1au": 78.89456909268645,
+    "Br_01au": 1.7872973204838574e-24,
+    "Br_1au": 7.022095116607655e-28,
+    "Bphi_ratio_1au": 5.094486486472987
+  },
+  "corotation": {
+    "r_corot_au": 0.17583940464539843,
+    "omega_sun": 2.7e-06,
+    "omega_orbit_corot": 2.7e-06
+  },
+  "toomre": {
+    "Q": 12877385266.650208,
+    "cs": 1000,
+    "Sigma": 0.001,
+    "stable": true
+  },
+  "navier_stokes": {
+    "nu": 1000000000000000.0,
+    "t_myr": 1.0,
+    "max_Sigma": 1.6856002018018573e-43,
+    "central_0over0": true
+  },
+  "yang_mills": {
+    "Delta_MeV": 1870,
+    "m_g_MeV": 1870,
+    "classical_mass": 0,
+    "quantum_mass": 1870
+  },
+  "bsd_resonances": [
+    {
+      "pair": "Mercury:Venus",
+      "ratio": 2.5518672199170127,
+      "rational": "23/9",
+      "error": 0.0036883356385426502
+    },
+    {
+      "pair": "Mercury:Earth",
+      "ratio": 4.149377593360996,
+      "rational": "54/13",
+      "error": 0.00446856048515798
+    },
+    {
+      "pair": "Mercury:Mars",
+      "ratio": 7.804979253112034,
+      "rational": "39/5",
+      "error": 0.0049792531120340655
+    },
+    {
+      "pair": "Mercury:Jupiter",
+      "ratio": 49.211618257261414,
+      "rational": "49/1",
+      "error": 0.2116182572614136
+    },
+    {
+      "pair": "Mercury:Saturn",
+      "ratio": 122.24066390041494,
+      "rational": "1/1",
+      "error": 121.24066390041494
+    },
+    {
+      "pair": "Venus:Earth",
+      "ratio": 1.6260162601626016,
+      "rational": "13/8",
+      "error": 0.00101626016260159
+    },
+    {
+      "pair": "Venus:Mars",
+      "ratio": 3.0585365853658537,
+      "rational": "52/17",
+      "error": 0.00028694404591078637
+    },
+    {
+      "pair": "Venus:Jupiter",
+      "ratio": 19.284552845528456,
+      "rational": "77/4",
+      "error": 0.03455284552845583
+    },
+    {
+      "pair": "Venus:Saturn",
+      "ratio": 47.90243902439025,
+      "rational": "48/1",
+      "error": 0.09756097560975263
+    },
+    {
+      "pair": "Earth:Mars",
+      "ratio": 1.881,
+      "rational": "32/17",
+      "error": 0.0013529411764705568
+    },
+    {
+      "pair": "Earth:Jupiter",
+      "ratio": 11.86,
+      "rational": "83/7",
+      "error": 0.002857142857141781
+    },
+    {
+      "pair": "Earth:Saturn",
+      "ratio": 29.46,
+      "rational": "59/2",
+      "error": 0.03999999999999915
+    },
+    {
+      "pair": "Mars:Jupiter",
+      "ratio": 6.305156831472621,
+      "rational": "82/13",
+      "error": 0.0025354762196867497
+    },
+    {
+      "pair": "Mars:Saturn",
+      "ratio": 15.661881977671452,
+      "rational": "47/3",
+      "error": 0.004784688995213671
+    },
+    {
+      "pair": "Jupiter:Saturn",
+      "ratio": 2.4839797639123105,
+      "rational": "47/19",
+      "error": 0.010295553385994527
+    }
+  ]
+}

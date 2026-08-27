@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 33 chapters from "The Removable Singularity"
+    - 34 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -1250,6 +1250,56 @@ def build_courses():
                 {"q": "The holographic bound says information ~:", "options": ["Volume", "Area", "Mass", "Temperature"], "correct": 1},
                 {"q": "ER=EPR means:", "options": ["Energy = Momentum", "Wormholes = Entanglement", "Mass = Charge", "Spin = Orbit"], "correct": 1},
                 {"q": "The critical exponent beta for RT is:", "options": ["1/4", "1/2", "1", "2"], "correct": 1}
+            ]
+        },
+        {
+            "id": 34,
+            "title": "Consciousness & Neural Synchrony: 0/0 at the Critical Point",
+            "part": "VII. Extensions",
+            "content": """
+<h2>Chapter 34: Consciousness & Neural Synchrony: 0/0 at the Critical Point</h2>
+<p>The binding problem: how does the brain unify distributed features into a single conscious experience? The answer is a 0/0 removable singularity at the critical coupling threshold.</p>
+
+<h3>The Kuramoto Model</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">d(theta_i)/dt = w_i + (K/N) * sum_j sin(theta_j - theta_i)</p>
+<ul>
+<li>r = 0 for K &lt;= K_c (desynchronized, unconscious)</li>
+<li>r = sqrt(1 - K_c/K) for K &gt; K_c (synchronized, conscious)</li>
+<li>At K = K_c: r = 0/0 REMOVABLE SINGULARITY</li>
+</ul>
+
+<h3>Critical Exponent</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">r ~ (K - K_c)^{1/2}    beta = 1/2</p>
+<p>Same beta as: Toomre Q=1, Black hole horizon, Ryu-Takayanagi, Ising model.</p>
+
+<h3>Neural Criticality</h3>
+<p>At K = K_c: power-law avalanches P(S) ~ S^{-3/2} (tau = 3/2, mean-field).</p>
+
+<h3>Integrated Information (Phi)</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">Phi ~ r * (1-r) * log(N)</p>
+<p>Maximum at r ~ 1/2 (K ~ 2*K_c). Consciousness = removable singularity in Phi(K).</p>
+
+<h3>Anesthesia</h3>
+<p>Anesthesia reduces K toward zero. Consciousness vanishes as a phase transition.</p>
+
+<h3>Gamma Binding (30-100 Hz)</h3>
+<p>Gamma synchrony r = 0/0 at K_c. Binding = unified experience = removable singularity.</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Kuramoto (1975), self-entrainment of coupled oscillators</li>
+<li>[2] Strogatz & Mirollo (1991), stability of incoherence</li>
+<li>[3] Beggs & Plenz (2003), neuronal avalanches</li>
+<li>[4] Tononi (2004), integrated information theory</li>
+<li>[5] Singer & Gray (1995), neural binding</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "In the Kuramoto model, r = 0/0 occurs at:", "options": ["K = 0", "K = K_c", "K = infinity", "K = 1"], "correct": 1},
+                {"q": "The critical exponent beta for consciousness is:", "options": ["1/4", "1/2", "1", "3/2"], "correct": 1},
+                {"q": "At criticality, neural avalanches follow:", "options": ["Exponential", "Power law S^{-3/2}", "Gaussian", "Uniform"], "correct": 1},
+                {"q": "Gamma oscillations are in which frequency range?", "options": ["1-10 Hz", "10-30 Hz", "30-100 Hz", "100-300 Hz"], "correct": 2},
+                {"q": "Anesthesia reduces neural coupling K toward:", "options": ["K_c", "Infinity", "Zero", "Negative values"], "correct": 2}
             ]
         }
     ]

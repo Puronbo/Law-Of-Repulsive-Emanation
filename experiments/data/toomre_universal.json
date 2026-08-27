@@ -1,0 +1,155 @@
+{
+  "systems": {
+    "milky_way": {
+      "cs_kms": 10.0,
+      "kappa": 1.1665586519766689e-15,
+      "Sigma": 83541.62737746073,
+      "Q": 6.226990000721251e-07,
+      "growth_rate": 5.832793259882213e-16,
+      "stable": false
+    },
+    "high_z": {
+      "cs_kms": 50.0,
+      "kappa": 1.6202203499675956e-15,
+      "Sigma": 1044270.342218259,
+      "Q": 3.6999432930080763e-07,
+      "growth_rate": 8.101101749837423e-16,
+      "stable": false
+    },
+    "protoplanetary": {
+      "cs": 500,
+      "kappa": 2.7e-06,
+      "Sigma": 0.001,
+      "Q": 6438692633.325104,
+      "growth_rate": 0.0,
+      "stable": true
+    },
+    "solar_system": {
+      "periods": {
+        "Mercury": 0.241,
+        "Venus": 0.615,
+        "Earth": 1.0,
+        "Mars": 1.881,
+        "Jupiter": 11.86,
+        "Saturn": 29.46,
+        "Uranus": 84.01,
+        "Neptune": 164.8
+      },
+      "resonances": [
+        {
+          "ratio": 2.5518672199170127,
+          "p": 74,
+          "q": 29,
+          "error": 0.0001430819859780108,
+          "stable": true
+        },
+        {
+          "ratio": 4.149377593360996,
+          "p": 83,
+          "q": 20,
+          "error": 0.0006224066390041472,
+          "stable": true
+        },
+        {
+          "ratio": 7.804979253112034,
+          "p": 39,
+          "q": 5,
+          "error": 0.0049792531120340655,
+          "stable": true
+        },
+        {
+          "ratio": 1.6260162601626016,
+          "p": 13,
+          "q": 8,
+          "error": 0.00101626016260159,
+          "stable": true
+        },
+        {
+          "ratio": 3.0585365853658537,
+          "p": 52,
+          "q": 17,
+          "error": 0.00028694404591078637,
+          "stable": true
+        },
+        {
+          "ratio": 1.881,
+          "p": 79,
+          "q": 42,
+          "error": 4.7619047619074095e-05,
+          "stable": true
+        },
+        {
+          "ratio": 11.86,
+          "p": 83,
+          "q": 7,
+          "error": 0.002857142857141781,
+          "stable": true
+        },
+        {
+          "ratio": 6.305156831472621,
+          "p": 82,
+          "q": 13,
+          "error": 0.0025354762196867497,
+          "stable": true
+        },
+        {
+          "ratio": 15.661881977671452,
+          "p": 47,
+          "q": 3,
+          "error": 0.004784688995213671,
+          "stable": true
+        },
+        {
+          "ratio": 2.4839797639123105,
+          "p": 77,
+          "q": 31,
+          "error": 0.00010879617037495848,
+          "stable": true
+        },
+        {
+          "ratio": 7.083473861720068,
+          "p": 85,
+          "q": 12,
+          "error": 0.00014052838673528356,
+          "stable": true
+        },
+        {
+          "ratio": 2.851663272233537,
+          "p": 77,
+          "q": 27,
+          "error": 0.00018857961831475478,
+          "stable": true
+        },
+        {
+          "ratio": 5.594025797691786,
+          "p": 95,
+          "q": 17,
+          "error": 0.0057905035741390165,
+          "stable": true
+        },
+        {
+          "ratio": 1.9616712296155219,
+          "p": 51,
+          "q": 26,
+          "error": 0.00013276807706041893,
+          "stable": true
+        }
+      ],
+      "rank": 14
+    }
+  },
+  "pattern": {
+    "critical_exponents": {
+      "beta": 0.5,
+      "nu": 1.0,
+      "eta": 0.0,
+      "gamma": 1.0,
+      "alpha": 0.0
+    },
+    "universal_Q": 1.0,
+    "dispersion_relation": "omega^2 = kappa^2 - 2*pi*G*Sigma*|k| + cs^2*k^2",
+    "mass_gap_formula": "Delta = lambda_c / (1-Q)",
+    "chirikov_connection": "S(Q) = 1 at Q=1"
+  },
+  "timestamp": "2026-08-26 13:20:55"
+}
