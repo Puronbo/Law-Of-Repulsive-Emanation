@@ -644,6 +644,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Boltzmann 1877, Penrose 1989, Landauer 1961, Evans-Searles 1994",
     },
+    {
+        "part": "IX",
+        "chapter": 49,
+        "title": "The Measurement Problem: 0/0 of Quantum Measurement",
+        "status": REAL,
+        "category": "quantum_mechanics",
+        "mechanism": "Superposition |psi>=a|0>+b|1>, Born rule P=|a|^2, decoherence, collapse rho->|i><i|, many-worlds branching 2^n, quantum Zeno freezes evolution. Measurement CREATES reality. Deepest 0/0.",
+        "examples": ["Superposition", "Born rule", "Decoherence", "Many-worlds", "Quantum Zeno"],
+        "sigma_value": 1.0,
+        "source": "Born 1926, Zeh 1970, Everett 1957, Wheeler 1978, Misra-Sudarshan 1977",
+    },
 ]
 
 

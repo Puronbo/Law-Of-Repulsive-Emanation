@@ -1,0 +1,50 @@
+{
+  "superposition": {
+    "psi_equal_a0_plus_b1": true,
+    "normalization": true,
+    "0over0": true
+  },
+  "born_rule": {
+    "P_equal_abs_a_sq": true,
+    "probability_from_certainty": true
+  },
+  "decoherence": {
+    "off_diagonal_decay": true,
+    "classical_probabilities": true
+  },
+  "measurement_collapse": {
+    "rho_to_i_i": true,
+    "creates_definite_state": true
+  },
+  "many_worlds": {
+    "no_collapse": true,
+    "branching": true,
+    "2_n_branches": true
+  },
+  "wigner_friend": {
+    "relative_states": true,
+    "0over0_who_measures": true
+  },
+  "quantum_zeno": {
+    "measurement_freezes_evolution": true,
+    "creates_reality": true
+  },
+  "delayed_choice": {
+    "present_affects_past": true,
+    "creates_history": true
+  },
+  "connections": {
+    "connects_to": [
+      "Consciousness",
+      "Entanglement",
+      "Holographic",
+      "Arrow of time",
+      "Black holes",
+      "RMT",
+      "Ising",
+      "Quantum"
+    ],
+    "deepest_0over0": true
+  },
+  "timestamp": "2026-08-27 15:14:05"
+}

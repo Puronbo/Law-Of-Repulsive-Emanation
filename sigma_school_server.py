@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 48 chapters from "The Removable Singularity"
+    - 49 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -1972,6 +1972,54 @@ def build_courses():
                 {"q": "The Past Hypothesis says:", "options": ["Big Bang had high entropy", "Big Bang had low entropy", "Big Bang had zero entropy", "Big Bang had infinite entropy"], "correct": 1},
                 {"q": "Landauer's principle says:", "options": ["Information is free", "Erasing info creates heat", "Information is energy", "Information is mass"], "correct": 1},
                 {"q": "All arrows of time:", "options": ["Point different directions", "Point the same direction", "Are random", "Don't exist"], "correct": 1}
+            ]
+        },
+        {
+            "id": 49,
+            "title": "The Measurement Problem: 0/0 of Quantum Measurement",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 49: The Measurement Problem: 0/0 of Quantum Measurement</h2>
+<p>WHY does measuring a quantum system cause it to "collapse" from superposition into a definite state? This IS a 0/0: superposition -> measurement -> collapse.</p>
+
+<h3>Superposition</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">|psi> = a|0> + b|1></p>
+<p>Before measurement: system is in BOTH states simultaneously. This is the 0/0!</p>
+
+<h3>Born Rule</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">P(0) = |a|^2, P(1) = |b|^2</p>
+<p>Probability emerges from certainty. This is the 0/0!</p>
+
+<h3>Decoherence</h3>
+<ul>
+<li>Environment "measures" the system</li>
+<li>Off-diagonal elements decay</li>
+<li>Quantum -> classical probabilities</li>
+</ul>
+
+<h3>Many-Worlds</h3>
+<p>No collapse! Branching instead! After 100 measurements: 10^30 branches. ALL equally real!</p>
+
+<h3>Quantum Zeno</h3>
+<p>Frequent measurement prevents evolution! Measurement CREATES reality!</p>
+
+<h3>Delayed Choice</h3>
+<p>Wheeler (1978): present affects past. Measurement CREATES history!</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Born (1926), probabilistic interpretation</li>
+<li>[2] Zeh (1970), decoherence</li>
+<li>[3] Everett (1957), many-worlds</li>
+<li>[4] Wheeler (1978), delayed choice</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "Superposition means:", "options": ["One state", "Multiple states at once", "No state", "Random state"], "correct": 1},
+                {"q": "The Born rule says:", "options": ["P = a", "P = |a|^2", "P = a^2", "P = 2a"], "correct": 1},
+                {"q": "Decoherence causes:", "options": ["More superposition", "Classical behavior", "Entanglement", "Nothing"], "correct": 1},
+                {"q": "Many-worlds says:", "options": ["Collapse happens", "No collapse, branching", "Only one world", "Worlds are random"], "correct": 1},
+                {"q": "Quantum Zeno effect:", "options": ["Measurement speeds evolution", "Measurement freezes evolution", "Measurement destroys system", "Measurement is random"], "correct": 1}
             ]
         }
     ]
