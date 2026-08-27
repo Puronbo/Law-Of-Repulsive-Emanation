@@ -539,6 +539,18 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Sachdev 2011, Suzuki 1976, Pfeuty 1970, Vidal 2003, Kitaev & Preskill 2006",
     },
+    # Part VIII: Deep Connections (continued)
+    {
+        "part": "VIII",
+        "chapter": 40,
+        "title": "BKT Transition: 0/0 Without Symmetry Breaking",
+        "status": REAL,
+        "category": "physics",
+        "mechanism": "Vortex-antivortex unbinding at T_BKT. Universal jump eta=1/4 EXACTLY. K_c=2/pi. Order parameter = 0 ALWAYS (no symmetry breaking). Fourth universality class: topological. Nobel 2016.",
+        "examples": ["eta=1/4 universal jump", "K_c=2/pi", "Vortex unbinding", "NO symmetry breaking"],
+        "sigma_value": 1.0,
+        "source": "Berezinskii 1971, Kosterlitz-Thouless 1974, Nelson-Kosterlitz 1977, Nobel 2016",
+    },
 ]
 
 

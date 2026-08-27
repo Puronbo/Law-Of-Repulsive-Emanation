@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 39 chapters from "The Removable Singularity"
+    - 40 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -1547,6 +1547,55 @@ def build_courses():
                 {"q": "The 1D quantum Ising has the same exponents as:", "options": ["2D classical Ising", "3D classical Ising", "Mean-field Ising", "No classical model"], "correct": 0},
                 {"q": "The dynamical exponent z = 1 means:", "options": ["No dynamics", "Lorentz invariant", "Thermal fluctuations", "Classical behavior"], "correct": 1},
                 {"q": "The entanglement entropy at criticality:", "options": ["Is constant", "Diverges logarithmically", "Is zero", "Diverges exponentially"], "correct": 1}
+            ]
+        },
+        {
+            "id": 40,
+            "title": "BKT Transition: 0/0 Without Symmetry Breaking",
+            "part": "VIII. Deep Connections",
+            "content": """
+<h2>Chapter 40: BKT Transition: 0/0 Without Symmetry Breaking</h2>
+<p>The Berezinskii-Kosterlitz-Thouless (BKT) transition is a topological phase transition that occurs WITHOUT any symmetry breaking. Nobel Prize 2016.</p>
+
+<h3>The 2D XY Model</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">H = -J * sum(cos(theta_i - theta_j))</p>
+<p>U(1) symmetry (continuous rotation). Mermin-Wagner theorem: no long-range order in 2D. But BKT creates quasi-long-range order.</p>
+
+<h3>Universal Jump</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">eta(T_BKT) = 1/4  EXACTLY</p>
+<p>Below T_BKT: eta < 1/4 (power-law). Above: eta > 1/4 (exponential). At T_BKT: eta = 1/4 EXACTLY. K_c = 2/pi.</p>
+
+<h3>Vortex Mechanism</h3>
+<ul>
+<li>Below T_BKT: vortices bound in pairs (free energy > 0)</li>
+<li>Above T_BKT: vortices unbind and proliferate (free energy < 0)</li>
+<li>At T_BKT: 0/0 (binding/unbinding transition)</li>
+</ul>
+
+<h3>Kosterlitz RG Flow</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">dy/dl = (2-pi*K)y, dK/dl = -pi^2*y^2*K^2</p>
+<p>Below: flows to (K=inf, y=0). Above: flows to (K=0, y=inf). At T_BKT: flow changes direction.</p>
+
+<h3>Key Difference from Ising</h3>
+<ul>
+<li>Ising: symmetry breaking (Z2), order parameter jumps</li>
+<li>BKT: NO symmetry breaking, order parameter = 0 ALWAYS</li>
+<li>BKT is a FOURTH universality class: topological, eta=1/4</li>
+</ul>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Berezinskii (1971), destruction of long-range order</li>
+<li>[2] Kosterlitz & Thouless (1974), ordering and phase transitions</li>
+<li>[3] Nobel Prize 2016: Thouless, Haldane, Kosterlitz</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "The BKT transition occurs in:", "options": ["1D Ising", "2D XY model", "3D Heisenberg", "Mean-field model"], "correct": 1},
+                {"q": "At the BKT transition, eta equals:", "options": ["0", "1/8", "1/4", "1/2"], "correct": 2},
+                {"q": "The BKT transition has:", "options": ["Symmetry breaking", "No symmetry breaking", "Long-range order", "Discontinuous energy"], "correct": 1},
+                {"q": "The mechanism of BKT is:", "options": ["Domain walls", "Vortex unbinding", "Spin waves", "Magnons"], "correct": 1},
+                {"q": "The Nobel Prize for BKT was awarded in:", "options": ["2000", "2010", "2016", "2020"], "correct": 2}
             ]
         }
     ]

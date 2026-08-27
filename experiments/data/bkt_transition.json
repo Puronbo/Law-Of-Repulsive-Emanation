@@ -1,0 +1,58 @@
+{
+  "bkt_transition": {
+    "formula": "H = -J * sum(cos(theta_i - theta_j))",
+    "T_BKT": 0.89,
+    "eta_critical": 0.25,
+    "K_c": 0.6366197723675814,
+    "universal_jump": true,
+    "symmetry_breaking": false
+  },
+  "correlation": {
+    "below_T_BKT": "G(r) ~ r^{-eta}, eta < 1/4",
+    "at_T_BKT": "eta = 1/4 EXACTLY",
+    "above_T_BKT": "G(r) ~ exp(-r/xi)"
+  },
+  "vortex": {
+    "mechanism": "vortex-antivortex unbinding",
+    "below": "bound pairs",
+    "above": "free vortices",
+    "free_energy": "F_v = pi*K - 2*pi*ln(L)"
+  },
+  "rg_flow": {
+    "equations": "dy/dl = (2-pi*K)y, dK/dl = -pi^2*y^2*K^2",
+    "below_T_BKT": "flows to (K=inf, y=0)",
+    "above_T_BKT": "flows to (K=0, y=inf)"
+  },
+  "universal_jump": {
+    "eta": 0.25,
+    "K_c": 0.6366197723675814,
+    "discontinuous_in_eta": true,
+    "continuous_in_energy": true
+  },
+  "comparison": {
+    "ising": "beta=1/8, symmetry breaking",
+    "bkt": "eta=1/4, NO symmetry breaking",
+    "kolmogorov": "-5/3, cascade",
+    "quantum": "beta=1/8, z=1, quantum fluctuations"
+  },
+  "nobel_prize": {
+    "year": 2016,
+    "laureates": [
+      "Thouless",
+      "Haldane",
+      "Kosterlitz"
+    ]
+  },
+  "connections": {
+    "connects_to": [
+      "Ising",
+      "E8",
+      "Consciousness",
+      "Black holes",
+      "Finance"
+    ],
+    "different_from_ising": true,
+    "no_quantum_analogue": true
+  },
+  "timestamp": "2026-08-27 13:57:55"
+}
