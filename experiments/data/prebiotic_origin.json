@@ -1,0 +1,55 @@
+{
+  "eigen": {
+    "formula": "f = q^L * exp(f_0 * L)",
+    "q_c_formula": "q_c = e^{-1/L}",
+    "beta": 0.5,
+    "genome_lengths": [
+      50,
+      100,
+      200,
+      500,
+      1000
+    ],
+    "q_c_values": [
+      0.9801986733067553,
+      0.9900498337491681,
+      0.9950124791926823,
+      0.9980019986673331,
+      0.999000499833375
+    ]
+  },
+  "kauffman": {
+    "formula": "P ~ 1 - exp(-K*C/N^2)",
+    "threshold": "K*C = N^2",
+    "beta": 0.5
+  },
+  "erdos_renyi": {
+    "p_c": "1/N",
+    "beta_mean_field": 1.0,
+    "beta_2D": 0.3333333333333333,
+    "note": "Different universality class from Eigen/Kauffman"
+  },
+  "minimal_genome": {
+    "threshold": 300,
+    "experimental": "Mycoplasma genitalium = 525 genes",
+    "beta": 0.5
+  },
+  "quasispecies": {
+    "composition_change": "at error threshold",
+    "0_0_structure": "equal distribution at q_c"
+  },
+  "connections": {
+    "universalities": [
+      "mean-field (beta=1/2)",
+      "percolation (beta=1/3, 1)"
+    ],
+    "same_as": [
+      "Kuramoto",
+      "Toomre Q",
+      "Black hole",
+      "Ryu-Takayanagi",
+      "Ising"
+    ]
+  },
+  "timestamp": "2026-08-27 13:28:24"
+}

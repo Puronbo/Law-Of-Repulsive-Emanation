@@ -479,6 +479,18 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Kuramoto 1975, Strogatz & Mirollo 1991, Beggs & Plenz 2003, Tononi 2004, Singer & Gray 1995",
     },
+    # Part VII: Extensions (continued)
+    {
+        "part": "VII",
+        "chapter": 35,
+        "title": "Origin of Life: 0/0 at the Edge of Life",
+        "status": REAL,
+        "category": "prebiotic_chemistry",
+        "mechanism": "Eigen error threshold (beta=1/2), Kauffman autocatalytic sets (beta=1/2), ER percolation (beta=1/3,1). Three frameworks, same 0/0, different universality classes.",
+        "examples": ["q_c = e^{-1/L}", "K*C = N^2", "p_c = 1/N", "Minimal genome ~300 genes"],
+        "sigma_value": 1.0,
+        "source": "Eigen 1971, Kauffman 1993, Erdos & Renyi 1960, Venter 2010",
+    },
 ]
 
 

@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 34 chapters from "The Removable Singularity"
+    - 35 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -1300,6 +1300,58 @@ def build_courses():
                 {"q": "At criticality, neural avalanches follow:", "options": ["Exponential", "Power law S^{-3/2}", "Gaussian", "Uniform"], "correct": 1},
                 {"q": "Gamma oscillations are in which frequency range?", "options": ["1-10 Hz", "10-30 Hz", "30-100 Hz", "100-300 Hz"], "correct": 2},
                 {"q": "Anesthesia reduces neural coupling K toward:", "options": ["K_c", "Infinity", "Zero", "Negative values"], "correct": 2}
+            ]
+        },
+        {
+            "id": 35,
+            "title": "Origin of Life: 0/0 at the Edge of Life",
+            "part": "VII. Extensions",
+            "content": """
+<h2>Chapter 35: Origin of Life: 0/0 at the Edge of Life</h2>
+<p>The origin of life is a phase transition with 0/0 structure at the autocatalytic threshold. Three independent frameworks converge on the same singularity.</p>
+
+<h3>Eigen's Error Threshold (1971)</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">q_c = e^{-1/L}</p>
+<ul>
+<li>q < q_c: error catastrophe, extinction</li>
+<li>q > q_c: quasispecies survives, LIFE</li>
+<li>q = q_c: 0/0 removable singularity, beta = 1/2</li>
+</ul>
+
+<h3>Kauffman's Autocatalytic Sets (1993)</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">K*C > N^2 -> autocatalytic closure</p>
+<ul>
+<li>K*C < N^2: no self-replication</li>
+<li>K*C > N^2: autocatalytic closure, LIFE</li>
+<li>K*C = N^2: 0/0 removable singularity, beta = 1/2</li>
+</ul>
+
+<h3>Erdos-Renyi Percolation (1960)</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">p_c = 1/N</p>
+<ul>
+<li>p < p_c: disconnected fragments</li>
+<li>p > p_c: giant component, LIFE</li>
+<li>p = p_c: 0/0 removable singularity</li>
+<li>beta = 1/3 (2D), beta = 1 (mean-field) - DIFFERENT universality class!</li>
+</ul>
+
+<h3>Minimal Genome</h3>
+<p>Below ~300 genes: no self-replication. Above: self-replication possible. Mycoplasma genitalium = 525 genes (minimal). At 300 genes: 0/0.</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Eigen (1971), self-organization of matter</li>
+<li>[2] Kauffman (1993), The Origins of Order</li>
+<li>[3] Erdos & Renyi (1960), random graphs</li>
+<li>[4] Venter et al. (2010), synthetic genome</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "Eigen's error threshold occurs when:", "options": ["q = 1", "q^L = e^{-1}", "L = 0", "f_0 = 0"], "correct": 1},
+                {"q": "Kauffman's autocatalytic closure requires:", "options": ["K > N", "K*C > N^2", "L > 300", "p > 1/N"], "correct": 1},
+                {"q": "The Erdos-Renyi giant component appears at:", "options": ["p = 0", "p = 1", "p = 1/N", "p = N"], "correct": 2},
+                {"q": "The critical exponent for ER percolation in 2D is:", "options": ["1/2", "1/3", "1", "3/2"], "correct": 1},
+                {"q": "Mycoplasma genitalium has approximately:", "options": ["100 genes", "300 genes", "525 genes", "1000 genes"], "correct": 2}
             ]
         }
     ]
