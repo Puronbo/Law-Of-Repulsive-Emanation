@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 57 chapters from "The Removable Singularity"
+    - 58 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -2394,6 +2394,53 @@ def build_courses():
                 {"q": "Rule 30 on a finite ring:", "options": ["Never repeats", "Fails", "Eventually cycles", "Is random"], "correct": 2},
                 {"q": "Boltzmann brains are minds that:", "options": ["Grow in the skull", "Fluctuate in equilibrium", "Live in caves", "Eat light"], "correct": 1},
                 {"q": "In this framework 'once' vs 'forever' is:", "options": ["Observable", "A 0/0", "Fiction", "A rumor"], "correct": 1}
+            ]
+        },
+        {
+            "id": 58,
+            "title": "The First Cause: 0/0 of Something-from-Nothing",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 58: The First Cause: 0/0 of Something-from-Nothing</h2>
+<p>"Why is there something rather than nothing?" (Leibniz 1714). This framework IS that question: 0/0 = something-from-nothing. Existence is a removable singularity.</p>
+
+<h3>The First-Cause Trilemma</h3>
+<ol>
+<li>Infinite regress (turtles all the way down, Ch.54)</li>
+<li>Uncaused cause (an axiom / God / first mover)</li>
+<li>Cycle (Ch.57 eternal return: no first time)</li>
+</ol>
+<p>All three are observationally identical from inside (likelihood 1.0 each). The 0/0 of the first cause.</p>
+
+<h3>Godel (1931)</h3>
+<p>A consistent system cannot prove its own consistency. Within the simulation (Ch.54) you cannot verify the simulator. The creator is ALWAYS outside the created.</p>
+
+<h3>Busy Beaver (Rado 1962)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">BB(5) = 47,176,870</p>
+<p>BB is provably NON-COMPUTABLE: no simulator can know its own output. The creator's power is the 0/0 beyond every function.</p>
+
+<h3>The 19 Constants</h3>
+<p>Standard Model: 19 dimensionless parameters, none explained inside the SM. Every constant is a 0/0 - its value IS the accidental 'why'.</p>
+
+<h3>Rule 110 (Cook 2004)</h3>
+<p>The smallest universal creator (2 states, 3 neighbors): compresses ~10^18 worlds into a period-2 attractor. Creation = compression.</p>
+
+<h3>The 0/0 Proof</h3>
+<p>Ask "what caused the cause?" forever - the recursion ends ONLY at the 0/0. 'Nothing' is the removable singularity of existence.</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Leibniz (1714), Monadology</li>
+<li>[2] Godel (1931), incompleteness</li>
+<li>[3] Cook (2004), Rule 110 universality</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "Leibniz's question is:", "options": ["Why ovens bake", "Why is there something rather than nothing", "Why water boils", "Why stars shine only at night"], "correct": 1},
+                {"q": "The three first-cause models are observationally:", "options": ["Different", "Identical (0/0)", "Faster", "Loud"], "correct": 1},
+                {"q": "Godel showed a system:", "options": ["Proves its own truth", "Cannot prove its own consistency", "Never ends", "Is silent"], "correct": 1},
+                {"q": "BB(5) equals:", "options": ["21", "107", "47,176,870", "1"], "correct": 2},
+                {"q": "The SM rests on this many unexplained constants:", "options": ["3", "10", "19", "100"], "correct": 2}
             ]
         }
     ]

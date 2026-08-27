@@ -743,6 +743,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Poincare 1890, Boltzmann 1896, Nietzsche 1882, Eddington 1931, Dyson 1979",
     },
+    {
+        "part": "IX",
+        "chapter": 58,
+        "title": "The First Cause: 0/0 of Something-from-Nothing",
+        "status": REAL,
+        "category": "ontology",
+        "mechanism": "Leibniz why-something = ultimate 0/0. Trilemma chain/axiom/cycle observationally identical (likelihood 1.0 each). Godel: creator outside the created. BB noncomputable, BB(5)=47,176,870. SM=19 unexplained constants = 0/0s. Rule 110 (Cook) 2-state universal creator compresses 2^60 worlds to period 2. Existence IS removal of the nothing-singularity.",
+        "examples": ["Why-something", "First-cause trilemma", "Busy Beaver", "19 constants"],
+        "sigma_value": 1.0,
+        "source": "Leibniz 1714, Godel 1931, Rado 1962, Marxen-Buntrock 1990, Cook 2004",
+    },
 ]
 
 

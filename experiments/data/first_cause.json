@@ -1,0 +1,41 @@
+{
+  "leibniz_why": true,
+  "first_cause_trilemma": {
+    "chain_likelihood": 1.0,
+    "axiom_likelihood": 1.0,
+    "cycle_likelihood": 1.0,
+    "observationally_identical": true
+  },
+  "godel": {
+    "incompleteness": true,
+    "creator_outside_created": true,
+    "liar_consistent_values": 0
+  },
+  "busy_beaver": {
+    "BB1": 1,
+    "BB2": 6,
+    "BB3": 21,
+    "BB4": 107,
+    "BB5": 47176870,
+    "noncomputable": true
+  },
+  "sm_constants_count": 19,
+  "rule110": {
+    "universal": true,
+    "cook_2004": true,
+    "n12_period": 2
+  },
+  "the_0over0": {
+    "nothing_is_removable_singularity": true,
+    "0over0_is_creation": true
+  },
+  "connections": [
+    "Simulation",
+    "Big Bang",
+    "Eternal return",
+    "Information",
+    "Quantum",
+    "Cosmic Web"
+  ],
+  "timestamp": "2026-08-27 16:26:52"
+}
