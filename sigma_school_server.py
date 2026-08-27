@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 36 chapters from "The Removable Singularity"
+    - 37 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -1402,6 +1402,52 @@ def build_courses():
                 {"q": "Wilson's RG explains:", "options": ["Why T_c varies", "Why beta varies with dimension", "Why M = 0", "Why J > 0"], "correct": 1},
                 {"q": "The mean-field Ising beta is:", "options": ["1/8", "1/3", "1/2", "1"], "correct": 2},
                 {"q": "The upper critical dimension for Ising is:", "options": ["d = 2", "d = 3", "d = 4", "d = 6"], "correct": 2}
+            ]
+        },
+        {
+            "id": 37,
+            "title": "Turbulence & Kolmogorov: 0/0 at the Dissipation Scale",
+            "part": "VII. Extensions",
+            "content": """
+<h2>Chapter 37: Turbulence & Kolmogorov: 0/0 at the Dissipation Scale</h2>
+<p>Turbulence is the last great unsolved problem of classical physics. The Kolmogorov 1941 theory reveals a universal 0/0 at the dissipation scale.</p>
+
+<h3>Kolmogorov Energy Spectrum (K41)</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">E(k) = C_K * epsilon^{2/3} * k^{-5/3}</p>
+<ul>
+<li>The -5/3 exponent is UNIVERSAL across ALL turbulent flows</li>
+<li>C_K = 1.5 (Kolmogorov constant)</li>
+<li>Different universality class from Ising entirely!</li>
+</ul>
+
+<h3>Dissipation Scale (0/0 Point)</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">eta = (nu^3 / epsilon)^{1/4}</p>
+<p>Below eta: viscous dissipation. Above eta: inertial cascade. At eta: 0/0 removable singularity.</p>
+
+<h3>Richardson Cascade (1922)</h3>
+<p>"Big whorls have little whorls which feed on their velocity." Self-similar 0/0 at each scale. Fractal structure.</p>
+
+<h3>Reynolds Transition</h3>
+<p>Re = U*L/nu. Re &lt; 2000: laminar. Re &gt; 4000: turbulent. At Re_c: 0/0.</p>
+
+<h3>Intermittency & She-Leveque (1994)</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">zeta_p = p/3 - mu*p*(p-3)/18, mu = 2/9</p>
+<p>Log-Poisson cascade. Corrections to K41.</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Kolmogorov (1941), local structure of turbulence</li>
+<li>[2] Richardson (1922), weather prediction</li>
+<li>[3] She & Leveque (1994), universal scaling</li>
+<li>[4] Frisch (1995), Turbulence textbook</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "The Kolmogorov energy spectrum exponent is:", "options": ["-1", "-5/3", "-2", "-3"], "correct": 1},
+                {"q": "The Kolmogorov constant C_K is approximately:", "options": ["0.5", "1.0", "1.5", "2.0"], "correct": 2},
+                {"q": "The dissipation scale eta is:", "options": ["(nu/epsilon)^{1/2}", "(nu^3/epsilon)^{1/4}", "L/Re", "nu/U"], "correct": 1},
+                {"q": "The She-Leveque intermittency parameter mu is:", "options": ["0", "1/3", "2/9", "1/2"], "correct": 2},
+                {"q": "The Reynolds transition occurs at approximately:", "options": ["Re = 100", "Re = 1000", "Re = 2000-4000", "Re = 100000"], "correct": 2}
             ]
         }
     ]

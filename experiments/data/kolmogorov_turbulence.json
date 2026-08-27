@@ -1,0 +1,44 @@
+{
+  "kolmogorov": {
+    "formula": "E(k) = C_K * epsilon^{2/3} * k^{-5/3}",
+    "C_K": 1.5,
+    "exponent": -1.6666666666666667,
+    "universality": "All turbulent flows"
+  },
+  "dissipation_scale": {
+    "formula": "eta = (nu^3/epsilon)^{1/4}"
+  },
+  "richardson_cascade": {
+    "self_similar": true,
+    "fractal": true,
+    "energy_conservation": true
+  },
+  "reynolds_transition": {
+    "Re_c": [
+      2000,
+      4000
+    ],
+    "0_0_structure": true
+  },
+  "intermittency": {
+    "she_leveque": {
+      "mu": 0.2222222222222222,
+      "formula": "zeta_p = p/3 - mu*p*(p-3)/18"
+    },
+    "kolmogorov_62": {
+      "log_normal": true
+    }
+  },
+  "connections": {
+    "different_from_ising": true,
+    "exponent": "-5/3",
+    "appears_in": [
+      "Atmosphere",
+      "Ocean",
+      "Stars",
+      "Galaxies",
+      "QCD"
+    ]
+  },
+  "timestamp": "2026-08-27 13:38:36"
+}

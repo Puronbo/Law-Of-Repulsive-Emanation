@@ -503,6 +503,18 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Ising 1925, Onsager 1944, Wilson 1971, Fisher 1974",
     },
+    # Part VII: Extensions (continued)
+    {
+        "part": "VII",
+        "chapter": 37,
+        "title": "Turbulence & Kolmogorov: 0/0 at the Dissipation Scale",
+        "status": REAL,
+        "category": "fluid_dynamics",
+        "mechanism": "K41 spectrum E(k) ~ k^{-5/3} universal. 0/0 at dissipation scale eta. Richardson cascade self-similar. She-Leveque mu=2/9. Different universality class from Ising.",
+        "examples": ["E(k) = C_K*epsilon^{2/3}*k^{-5/3}", "eta = (nu^3/epsilon)^{1/4}", "Re_c ~ 2000-4000", "mu = 2/9"],
+        "sigma_value": 1.0,
+        "source": "Kolmogorov 1941, Richardson 1922, She & Leveque 1994, Frisch 1995",
+    },
 ]
 
 
