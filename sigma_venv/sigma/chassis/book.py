@@ -699,6 +699,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Chalmers 1995, Tononi 2004, Balduzzi-Tononi 2008, Dehaene 2001",
     },
+    {
+        "part": "IX",
+        "chapter": 54,
+        "title": "The Simulation Hypothesis: 0/0 of Existence",
+        "status": REAL,
+        "category": "ontology",
+        "mechanism": "Substrate-independent: no observation separates real from simulated. Life is Turing complete, glider speed c/4=0.3536. Universe = 5.4e61 pixel screen at Planck. Lloyd bound ~10^120 ops. Bostrom P(simulated)>99.99%. Real vs simulated IS 0/0 of ontology.",
+        "examples": ["Game of Life", "Planck pixels", "Lloyd bound", "Bostrom trilemma"],
+        "sigma_value": 1.0,
+        "source": "Bostrom 2003, Lloyd 2002, Cook 2004, Wolfram 2002, Conway 1970",
+    },
 ]
 
 

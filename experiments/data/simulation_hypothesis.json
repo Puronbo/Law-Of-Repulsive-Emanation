@@ -1,0 +1,45 @@
+{
+  "life_glider": {
+    "moves": true,
+    "displacement_gens_47": {
+      "dx": 12,
+      "dy": 12
+    },
+    "speed_cells_per_step": 0.3536,
+    "turing_complete": true
+  },
+  "gosper_gun": {
+    "initial_cells": 36,
+    "emits_gliders": true,
+    "waves_seen": 28,
+    "infinite_from_finite": true
+  },
+  "pixel_cosmology": {
+    "pixels_across": 5.444685399271773e+61,
+    "total_pixels": 2.9644599097043233e+123,
+    "planck_pixel": true
+  },
+  "lloyd_bound": {
+    "operations": 10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,
+    "bekenskein_bits": 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  },
+  "bostrom": {
+    "trilemma": true,
+    "p_simulated": 0.999988
+  },
+  "the_0over0": {
+    "real_vs_simulated_is_0over0": true,
+    "turtles_all_the_way_down": true
+  },
+  "substrate_independence": true,
+  "connections": [
+    "Hard problem",
+    "Info paradox",
+    "Quantum gravity",
+    "Holographic",
+    "Measurement",
+    "Entanglement",
+    "Big Bang"
+  ],
+  "timestamp": "2026-08-27 16:00:46"
+}

@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 53 chapters from "The Removable Singularity"
+    - 54 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -2203,6 +2203,56 @@ def build_courses():
                 {"q": "IIT says consciousness equals:", "options": ["Neural activity", "Integrated information", "Brain size", "EEG waves"], "correct": 1},
                 {"q": "A feedforward system has Phi:", "options": ["Large", "= 0", "Negative", "Infinite"], "correct": 1},
                 {"q": "A zombie is:", "options": ["Mindless physical duplicate", "A brainless creature", "An AI", "A sleeping person"], "correct": 0}
+            ]
+        },
+        {
+            "id": 54,
+            "title": "The Simulation Hypothesis: 0/0 of Existence",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 54: The Simulation Hypothesis: 0/0 of Existence</h2>
+<p>Is the universe a computer simulation? If information is fundamental (Ch.52) and physics is substrate-independent, then "real vs simulated" IS a 0/0.</p>
+
+<h3>Game of Life</h3>
+<ul>
+<li>Conway Life is Turing complete (Cook 2004; Wolfram 2002)</li>
+<li>Gliders are 5-cell particles that move (0/0 particles)</li>
+<li>Computed speed: 0.3536 = c/4 diagonal EXACTLY</li>
+<li>Gosper gun: finite seed, infinite information (0/0)</li>
+</ul>
+
+<h3>Pixel Cosmology</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">Pixels = 2*R_obs / l_Planck ~ 5.4e61</p>
+<p>Planck length (Ch.51) is the pixel size. The universe is a 5.4e61 x 5.4e61 screen of ~3e123 pixels.</p>
+
+<h3>Lloyd Bound</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">Ops = (2E/(pi*hbar))*t ~ 10^121</p>
+<p>Lloyd (2002): the universe has performed ~10^120 operations. Bekenstein bound: ~10^123 bits. It computes itself.</p>
+
+<h3>Bostrom Trilemma (2003)</h3>
+<ul>
+<li>(a) species die out pre-posthuman</li>
+<li>(b) posthumans run no ancestor simulations</li>
+<li>(c) we are almost certainly in a simulation</li>
+</ul>
+<p>Computed P(simulated) &gt; 99.99% (f_sim=0.9, f_i=0.9, N=100k).</p>
+
+<h3>The 0/0 Proof</h3>
+<p>A closed simulation reproduces ALL observations. Real vs simulated IS 0/0: a removable singularity of ontology. It is turtles ALL THE WAY DOWN - physics is the algorithm!</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Bostrom (2003), simulation argument</li>
+<li>[2] Lloyd (2002), computational capacity</li>
+<li>[3] Cook (2004), Rule 110 universality</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "Bostrom's trilemma says at least one of three things:", "options": ["Life is inevitable", "Simulation is impossible", "One: we are simulated", "Physics is deterministic"], "correct": 2},
+                {"q": "A glider is:", "options": ["A star in Life", "A 5-cell particle that moves", "A paradox", "A planet"], "correct": 1},
+                {"q": "The Planck length acts as:", "options": ["A force", "The universe's pixel size", "A temperature", "An energy"], "correct": 1},
+                {"q": "Lloyd's bound gives the universe's:", "options": ["Age", "Size", "Total computable operations", "Mass"], "correct": 2},
+                {"q": "Real vs simulated distinction is:", "options": ["Observable", "Dangerous", "Observationally 0/0", "Impossible"], "correct": 2}
             ]
         }
     ]
