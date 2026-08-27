@@ -515,6 +515,18 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Kolmogorov 1941, Richardson 1922, She & Leveque 1994, Frisch 1995",
     },
+    # Part VII: Extensions (continued)
+    {
+        "part": "VII",
+        "chapter": 38,
+        "title": "Financial Markets: 0/0 at the Crash",
+        "status": REAL,
+        "category": "economics",
+        "mechanism": "Black-Scholes 0/0 at boundary, market crash phase transition, Sornette LPPLS, Mandelbrot fractal finance, herding=Kuramoto, GARCH unit root. Human markets obey universal 0/0 laws.",
+        "examples": ["V=0/0 at S=0,T=0", "H=0.5 efficient market", "alpha+beta=1 IGARCH", "Herding=Kuramoto"],
+        "sigma_value": 1.0,
+        "source": "Black & Scholes 1973, Mandelbrot 1997, Sornette 2003, Bollerslev 1986",
+    },
 ]
 
 

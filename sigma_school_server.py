@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 37 chapters from "The Removable Singularity"
+    - 38 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -1448,6 +1448,54 @@ def build_courses():
                 {"q": "The dissipation scale eta is:", "options": ["(nu/epsilon)^{1/2}", "(nu^3/epsilon)^{1/4}", "L/Re", "nu/U"], "correct": 1},
                 {"q": "The She-Leveque intermittency parameter mu is:", "options": ["0", "1/3", "2/9", "1/2"], "correct": 2},
                 {"q": "The Reynolds transition occurs at approximately:", "options": ["Re = 100", "Re = 1000", "Re = 2000-4000", "Re = 100000"], "correct": 2}
+            ]
+        },
+        {
+            "id": 38,
+            "title": "Financial Markets: 0/0 at the Crash",
+            "part": "VII. Extensions",
+            "content": """
+<h2>Chapter 38: Financial Markets: 0/0 at the Crash</h2>
+<p>Financial markets exhibit 0/0 removable singularities at critical points. Human markets obey the SAME universal laws as physics.</p>
+
+<h3>Black-Scholes Boundary</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">V = S*N(d1) - K*e^{-rT}*N(d2)</p>
+<p>At S=0 or T=0: V = 0/0 removable singularity. Removable value: max(S-K, 0).</p>
+
+<h3>Market Crash as Phase Transition</h3>
+<ul>
+<li>Normal: Gaussian returns (efficient market)</li>
+<li>Critical: power-law returns (herding, bubbles)</li>
+<li>Crash: 0/0 removable singularity</li>
+</ul>
+
+<h3>Sornette Log-Periodic Model (LPPLS)</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">ln(P) = A + B*(t_c-t)^m + C*(t_c-t)^m*cos(omega*ln(t_c-t)-phi)</p>
+<p>Log-periodic oscillations BEFORE crash. Successfully predicted 2008 crisis.</p>
+
+<h3>Mandelbrot Fractal Finance</h3>
+<p>Hurst exponent H: H=0.5 efficient, H>0.5 trending, H<0.5 mean-reverting. Fractal dimension D=2-H. Universal across ALL markets.</p>
+
+<h3>Herding = Kuramoto</h3>
+<p>Traders as coupled oscillators. Same model as consciousness (Ch.34)! At critical K: herding transition (0/0).</p>
+
+<h3>GARCH Unit Root</h3>
+<p>sigma_t^2 = omega + alpha*r_{t-1}^2 + beta*sigma_{t-1}^2. At alpha+beta=1: unit root (0/0). IGARCH: infinite volatility.</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Black & Scholes (1973), option pricing</li>
+<li>[2] Mandelbrot (1997), fractal finance</li>
+<li>[3] Sornette (2003), critical market crashes</li>
+<li>[4] Bollerslev (1986), GARCH model</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "The Black-Scholes formula has 0/0 at:", "options": ["S=K", "S=0 or T=0", "sigma=1", "r=0"], "correct": 1},
+                {"q": "The Hurst exponent H=0.5 corresponds to:", "options": ["Trending market", "Efficient market", "Crash", "Bubble"], "correct": 1},
+                {"q": "Sornette's model predicts crashes via:", "options": ["Gaussian noise", "Log-periodic oscillations", "Random walks", "Linear trends"], "correct": 1},
+                {"q": "The GARCH unit root occurs at:", "options": ["alpha+beta=0", "alpha+beta=0.5", "alpha+beta=1", "alpha+beta=2"], "correct": 2},
+                {"q": "Market herding is modeled by:", "options": ["Ising model", "Kuramoto model", "Navier-Stokes", "Euler equation"], "correct": 1}
             ]
         }
     ]
