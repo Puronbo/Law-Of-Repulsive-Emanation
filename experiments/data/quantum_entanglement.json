@@ -1,0 +1,49 @@
+{
+  "ryu_takayanagi": {
+    "formula": "S_A = Area(gamma_A) / (4 * G_N)",
+    "boundary_behavior": "0/0 removable singularity"
+  },
+  "holographic_bound_scales": [
+    {
+      "name": "Planck length",
+      "L": 1.616e-35,
+      "S_max_over_kB": 8.901284963918026e-37
+    },
+    {
+      "name": "Nucleus",
+      "L": 1e-15,
+      "S_max_over_kB": 3408.5525331148706
+    },
+    {
+      "name": "Atom",
+      "L": 1e-10,
+      "S_max_over_kB": 34085525331148.707
+    },
+    {
+      "name": "Human",
+      "L": 1.7,
+      "S_max_over_kB": 9.850716820701973e+33
+    },
+    {
+      "name": "Earth",
+      "L": 6371000.0,
+      "S_max_over_kB": 1.3835192364877318e+47
+    },
+    {
+      "name": "Solar system",
+      "L": 10000000000000.0,
+      "S_max_over_kB": 3.40855253311487e+59
+    },
+    {
+      "name": "Galaxy",
+      "L": 1e+21,
+      "S_max_over_kB": 3.4085525331148702e+75
+    },
+    {
+      "name": "Observable universe",
+      "L": 4.4e+26,
+      "S_max_over_kB": 6.59895770411039e+86
+    }
+  ],
+  "timestamp": "2026-08-27 12:51:54"
+}

@@ -455,6 +455,18 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Bekenstein 1973, Hawking 1975, Page 1993, Maldacena 1998",
     },
+    # Part VII: Extensions (continued)
+    {
+        "part": "VII",
+        "chapter": 33,
+        "title": "Quantum Entanglement: 0/0 at AdS/CFT",
+        "status": REAL,
+        "category": "quantum_information",
+        "mechanism": "Ryu-Takayanagi: S_A = Area/(4G_N) = 0/0 at boundary, removable S_A. ER=EPR, holographic bound.",
+        "examples": ["S_max ~ 10^86 for observable universe", "Entanglement wedge = 0/0 at horizon", "beta=1/2 same as Toomre"],
+        "sigma_value": 1.0,
+        "source": "Ryu & Takayanagi 2006, Maldacena 1998, Almheiri 2015, Maldacena & Susskind 2013",
+    },
 ]
 
 

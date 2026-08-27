@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 32 chapters from "The Removable Singularity"
+    - 33 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -1202,6 +1202,54 @@ def build_courses():
                 {"q": "The Page time is when:", "options": ["Evaporation starts", "Information = S_BH", "BH disappears", "Temperature = 0"], "correct": 1},
                 {"q": "The holographic principle says information ~:", "options": ["Volume", "Area", "Mass", "Temperature"], "correct": 1},
                 {"q": "The critical exponent beta at the horizon is:", "options": ["1/4", "1/2", "1", "2"], "correct": 1}
+            ]
+        },
+        {
+            "id": 33,
+            "title": "Quantum Entanglement: 0/0 at AdS/CFT",
+            "part": "VII. Extensions",
+            "content": """
+<h2>Chapter 33: Quantum Entanglement: 0/0 at AdS/CFT</h2>
+<p>The Ryu-Takayanagi formula has a 0/0 structure at the AdS/CFT boundary.</p>
+
+<h3>The Ryu-Takayanagi Formula</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">S_A = Area(gamma_A) / (4 * G_N)</p>
+<ul>
+<li>In the bulk (AdS): S_A = 0 (no entanglement)</li>
+<li>On the boundary (CFT): S_A = infinity (maximum)</li>
+<li>At the boundary (removable): S_A = Area/(4G_N)</li>
+</ul>
+
+<h3>Holographic Bound</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">S_max = L^{d-1} / (4 * G_N)</p>
+<p>Maximum information in a region is proportional to its AREA, not VOLUME.</p>
+
+<h3>Entanglement Wedge</h3>
+<ul>
+<li>r < r_s: wedge = 0 (no reconstruction)</li>
+<li>r > r_s: wedge = r - r_s (reconstructable)</li>
+<li>r = r_s: 0/0 removable singularity</li>
+</ul>
+
+<h3>ER = EPR</h3>
+<p>Maldacena & Susskind (2013): Einstein-Rosen bridges = Einstein-Podolsky-Rosen pairs.</p>
+<p style="font-size:1.2em; text-align:center; padding:15px;">ER bridge = EPR pair = 0/0 at horizon</p>
+<p>Removable value: S_BH = Area/(4G_N).</p>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Ryu & Takayanagi (2006), Phys. Rev. Lett. 96, 181602</li>
+<li>[2] Maldacena (1998), AdS/CFT correspondence</li>
+<li>[3] Almheiri et al. (2015), Holographic QEC</li>
+<li>[4] Maldacena & Susskind (2013), ER=EPR</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "The Ryu-Takayanagi formula gives:", "options": ["S = V/(4G)", "S = Area/(4G)", "S = M*c^2", "S = kT"], "correct": 1},
+                {"q": "In the bulk (AdS), S_A is:", "options": ["Infinity", "Zero", "S_BH", "Undefined"], "correct": 1},
+                {"q": "The holographic bound says information ~:", "options": ["Volume", "Area", "Mass", "Temperature"], "correct": 1},
+                {"q": "ER=EPR means:", "options": ["Energy = Momentum", "Wormholes = Entanglement", "Mass = Charge", "Spin = Orbit"], "correct": 1},
+                {"q": "The critical exponent beta for RT is:", "options": ["1/4", "1/2", "1", "2"], "correct": 1}
             ]
         }
     ]
