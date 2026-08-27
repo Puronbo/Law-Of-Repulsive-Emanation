@@ -1,0 +1,45 @@
+{
+  "barabasi_albert": {
+    "nodes": 500,
+    "edges": 996,
+    "mean_degree": 3.984,
+    "max_degree": 51,
+    "gamma": 1.835
+  },
+  "watts_strogatz": {
+    "nodes": 500,
+    "edges": 1500,
+    "clustering": 2.6643,
+    "path_length": 5.55,
+    "small_world": true
+  },
+  "erdos_renyi": {
+    "critical_p": 0.002,
+    "giant_component_0over0": true
+  },
+  "universality": {
+    "internet": 2.1,
+    "social": 2.5,
+    "biological": 2.3,
+    "financial": 2.8,
+    "barabasi_albert": 1.835
+  },
+  "robustness": {
+    "random_failure": "robust",
+    "targeted_attack": "fragile",
+    "percolation_threshold": 0
+  },
+  "connections": {
+    "connects_to": [
+      "SOC",
+      "Finance",
+      "Consciousness",
+      "Prebiotic",
+      "RMT",
+      "Ising",
+      "Epidemics"
+    ],
+    "most_connected": true
+  },
+  "timestamp": "2026-08-27 14:47:03"
+}

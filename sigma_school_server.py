@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 44 chapters from "The Removable Singularity"
+    - 45 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -1790,6 +1790,52 @@ def build_courses():
                 {"q": "The Wigner surmise is:", "options": ["Map-specific", "Universal", "Approximate", "Imaginary"], "correct": 1},
                 {"q": "GOE stands for:", "options": ["Gaussian Orthogonal Ensemble", "General Orthogonal Eigenvalues", "Global Orthogonal Equations", "None"], "correct": 0},
                 {"q": "The primes are described as:", "options": ["Random", "Quantum chaotic", "Periodic", "Simple"], "correct": 1}
+            ]
+        },
+        {
+            "id": 45,
+            "title": "Complex Networks: 0/0 of Universal Connectivity",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 45: Complex Networks: 0/0 of Universal Connectivity</h2>
+<p>ALL complex systems have the SAME network structure. Scale-free: P(k) ~ k^{-gamma}, gamma ~ 2-3. Universality for networks.</p>
+
+<h3>Scale-Free Networks</h3>
+<p style="font-size:1.2em; text-align:center; padding:15px;">P(k) ~ k^{-gamma}  (gamma ~ 2-3)</p>
+<p>Internet (2.1), social (2.5), biological (2.3), financial (2.8). SAME gamma across all systems!</p>
+
+<h3>Three Models</h3>
+<ul>
+<li>Erdos-Renyi: random graph, Poisson degree</li>
+<li>Watts-Strogatz: small-world, high clustering</li>
+<li>Barabasi-Albert: scale-free, preferential attachment</li>
+</ul>
+
+<h3>Small-World Property</h3>
+<p>High clustering (C >> C_random), short paths (L ~ log(N)). "Six degrees of separation."</p>
+
+<h3>Giant Component (0/0)</h3>
+<p>Below critical: fragmented. At critical: 0/0 (giant appears). Above: connected.</p>
+
+<h3>Robustness</h3>
+<ul>
+<li>Random failure: robust (hubs are rare)</li>
+<li>Targeted attack: fragile (remove hubs)</li>
+</ul>
+
+<h3>Key Sources</h3>
+<ul>
+<li>[1] Barabasi & Albert (1999), emergence of scaling</li>
+<li>[2] Watts & Strogatz (1998), small-world networks</li>
+<li>[3] Albert & Barabasi (2002), statistical mechanics of networks</li>
+</ul>
+""",
+            "quiz": [
+                {"q": "Scale-free networks have:", "options": ["Poisson degree", "Power-law degree", "Normal degree", "Uniform degree"], "correct": 1},
+                {"q": "The giant component appears at:", "options": ["p = 0", "p = p_c (critical)", "p = 1", "p = infinity"], "correct": 1},
+                {"q": "Small-world networks have:", "options": ["Low clustering", "High clustering", "No clustering", "Random clustering"], "correct": 1},
+                {"q": "Scale-free networks are fragile to:", "options": ["Random failure", "Targeted attack", "Both", "Neither"], "correct": 1},
+                {"q": "The universality of networks means:", "options": ["Each network is unique", "All networks have same structure", "Networks are random", "Networks are simple"], "correct": 1}
             ]
         }
     ]
