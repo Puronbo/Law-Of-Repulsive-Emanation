@@ -3096,6 +3096,42 @@ def build_courses():
                 {"q": "The engaged far/near bit collapses q to:", "options": ["0.106 (slack 0.894)", "0.895", "1", "2"], "correct": 0},
                 {"q": "The removable value of knowing per dissipation is:", "options": ["1 (the TUR edge)", "0", "ln 2", "e"], "correct": 0}
             ]
+        },
+        {
+            "id": 77,
+            "title": "The Mirror at W = 0: the Detailed Fluctuation Theorem as a Straight Line Through the Origin (Crooks 1999, Jarzynski 1997)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 77: The Mirror at W = 0</h2>
+<p>Ch.76 priced knowing in variance; this chapter opens the detailed ledger beneath it. On a time-reversible cycle with DeltaF = 0, the Crooks fluctuation theorem fixes the ratio of the work distribution's two arms at every level - P(+W)/P(-W) = e^W - so the mirror graph M(w) = ln P(w) - ln P(-w) is a STRAIGHT LINE through the origin, slope 1, and the ratio at w = 0 is a 0/0 removed to the value 1.</p>
+
+<h3>1. The Detailed Ledger</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">P(+W)/P(-W) = e^{W} ; mirror M(w) = ln P(w) - ln P(-w) = w, slope 1 (Jarzynski 1997; Crooks 1999); P'(0)/P(0) = 1/2</p>
+<p>The integral form of Ch.71, &lt;e^(-W)&gt; = 1, is an area beneath the distribution; the detailed form is a pointwise mirror, true at every W. Differentiating the mirror identity at the origin pins P'(0)/P(0) = 1/2: the 0/0 of the ratio is filled to slope 1 - the same removable value by which Gaussian work saturates the TUR (Ch.76).</p>
+
+<h3>2. The Rigid Line on the Control</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">round trip V = lam x^2/2, 1 -&gt; 2 -&gt; 1: mirror slope 0.968 +/- 0.02 (core), 0.996 +/- 0.01 (wing); &lt;e^(-W)&gt; = 1.0003 ; q = 0.894</p>
+<p>On the no-feedback instrument, the mirror is the light line while the variance ledger bends: skew +1.30, kurtosis 7.0, yet the slopes are 1 to the digit where the distribution is thin enough that only the detailed form reaches. The TUR slack builds strictly off the mirror - in the shape of P itself, which the theorem does not constrain.</p>
+
+<h3>3. The Coin Leans the Mirror</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">engaged 0.35/2: mirror -0.25 +/- 0.09, &lt;e^(-W)&gt; = 1.0749 ; harvest 0.05/16: mirror -5.6, &lt;e^(-W)&gt; = 1.1384</p>
+<p>Feedback breaks the plain mirror exactly as it broke the plain ledger: the measured &lt;e^(-W)&gt; equals J_act = 1.075 and 1.138 of Ch.74/75 to the digit. Information is a single entry that debits the variance book and angles the detailed mirror at once - the coin shows in both ledgers.</p>
+
+<h3>4. The Tangent Has No Mirror</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">drag trap mu = +5.98, sigma = 3.47, q = 0.9926: negative arm unreadable (one-armed)</p>
+<p>A Gaussian sitting 1.7 sigma from the origin carries almost no negative mass at finite resolution, so the detailed ledger goes silent there and only the integral form (&lt;e^(-W)&gt; = 0.886, within its rare-tail error 0.86) and the tight variance survive. The mirror needs both arms; the tangent needs only 1.</p>
+
+<h3>5. Two Ledgers, One Book</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">removable value 1, reached twice: the slope of the mirror (this chapter), the tight ratio of the parabola (Ch.76)</p>
+<p>The detailed ledger is rigid - slope 1 through the origin - while the variance ledger bends (q from 0.894 to 0.11) and the coin leans both at once. The framework's cardinal removable value, 1, shows up in the mirror's tangent exactly where Ch.76 found it in the parabola's variance: one book, one price, paid twice - Ch.75's erasure bill closes all three accounts at par.</p>
+""",
+            "quiz": [
+                {"q": "The detailed fluctuation theorem fixes:", "options": ["P(+W)/P(-W) = e^W", "P(W) = Gaussian", "<W> = Var", "q = 1"], "correct": 0},
+                {"q": "Measured mirror slope on the control round trip:", "options": ["0.996 in the wing (exactly 1)", "0.894", "-5.6", "0"], "correct": 0},
+                {"q": "The control's variance ledger q reads:", "options": ["0.894 while the mirror stays at 1", "1", "-5.6", "0.1"], "correct": 0},
+                {"q": "The engaged coin leans the mirror to:", "options": ["-0.25 with J = 1.0749", "+1", "0.996", "0"], "correct": 0},
+                {"q": "The central 0/0 ratio P(W)/P(-W) at W = 0 is removed to:", "options": ["1 (P'(0)/P(0) = 1/2)", "0", "ln 2", "e"], "correct": 0}
+            ]
         }
     ]
     

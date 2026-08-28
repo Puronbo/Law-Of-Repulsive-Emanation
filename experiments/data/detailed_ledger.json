@@ -1,0 +1,97 @@
+{
+  "chapter": 77,
+  "title": "The Mirror at W = 0: the Detailed Fluctuation Theorem on the Same Two Instruments (Crooks 1999, Mazonka-Jarzynski 1999)",
+  "notes": "Crooks FT: P(+W)/P(-W) = e^W for time-reversible DeltaF=0 cycles; the mirror M(w)=ln P(w)-ln P(-w)=w is a straight line slope 1 through origin; ratio at w=0 is 0/0 with removable value 1; TUR slack of Ch.76 lives off the mirror in the shape of P.",
+  "rows": [
+    {
+      "name": "parabola",
+      "mean_work": 5.977338756397041,
+      "var": 12.044407643301895,
+      "skew": 0.0010318331881535108,
+      "kurt": -0.0017381290626623525,
+      "q": 0.9925500586525138,
+      "mirror_slope": 0.0,
+      "mirror_slope_se": 0.0,
+      "mirror_max_dev": 0.0,
+      "n_mirror_bins": 0,
+      "jarzynski_check": 0.8860752319015849,
+      "ft_identity_ratio": 0.7479907160592012,
+      "tilted_mean": -0.007905309182232256,
+      "central_fills": [
+        26.003,
+        1.255,
+        -0.254
+      ],
+      "far_slope": null,
+      "n_far_bins": 0
+    },
+    {
+      "name": "ctrl",
+      "mean_work": 0.11351345058897398,
+      "var": 0.2540687681360971,
+      "skew": 1.3022859367993895,
+      "kurt": 7.030363912172886,
+      "q": 0.8935647732047742,
+      "mirror_slope": 0.9682482152473634,
+      "mirror_slope_se": 0.021141794835407905,
+      "mirror_max_dev": 0.03829124959537923,
+      "n_mirror_bins": 33,
+      "jarzynski_check": 1.0003320305373846,
+      "ft_identity_ratio": 0.9997534548991432,
+      "tilted_mean": -0.00048060270066474595,
+      "central_fills": [
+        0.8031,
+        -0.1788,
+        0.4806
+      ],
+      "far_slope": 0.9964350797554541,
+      "n_far_bins": 26
+    },
+    {
+      "name": "engaged",
+      "mean_work": 0.04318413357863028,
+      "var": 0.25529011229039067,
+      "skew": 1.1884485947884031,
+      "kurt": 6.266753455954397,
+      "q": 0.33831418844384104,
+      "mirror_slope": -0.24672674227511987,
+      "mirror_slope_se": 0.09189602562730073,
+      "mirror_max_dev": 0.537251838404983,
+      "n_mirror_bins": 36,
+      "jarzynski_check": 1.0748655550184738,
+      "ft_identity_ratio": 4.647637086814432,
+      "tilted_mean": -0.06788867074493482,
+      "central_fills": [
+        -11.6197,
+        -6.1465,
+        -4.3174
+      ],
+      "far_slope": 0.5880576559083067,
+      "n_far_bins": 27
+    },
+    {
+      "name": "harvest",
+      "mean_work": -0.03917538052397491,
+      "var": 0.19758751591993146,
+      "skew": 1.2177118443259534,
+      "kurt": 6.5429949412344826,
+      "q": 0.0,
+      "mirror_slope": -5.592058397243107,
+      "mirror_slope_se": 0.250639793278511,
+      "mirror_max_dev": 1.470943739252236,
+      "n_mirror_bins": 11,
+      "jarzynski_check": 1.1383500726317661,
+      "ft_identity_ratio": -6.428397841358943,
+      "tilted_mean": -0.11860723674455738,
+      "central_fills": [
+        -2.9907,
+        -4.2506,
+        -4.2909
+      ],
+      "far_slope": 0.3598419767496767,
+      "n_far_bins": 3
+    }
+  ],
+  "threshold_median_abs_xmid": 0.5682337793295649,
+  "removable_value": 1.0
+}

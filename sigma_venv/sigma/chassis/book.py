@@ -952,6 +952,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Barato-Seifert 2015, Gingrich et al. 2016, Pietzonka-Seifert 2018, Dechant-Sasa 2018, Horowitz-Gingrich 2017, Mazonka-Jarzynski 1999, Onsager-Machlup 1953, Szilard 1929, Landauer 1961",
     },
+    {
+        "part": "IX",
+        "chapter": 77,
+        "title": "The Mirror at W = 0: the Detailed Fluctuation Theorem as a Straight Line Through the Origin (Crooks 1999, Jarzynski 1997)",
+        "status": REAL,
+        "category": "statistical_mechanics",
+        "mechanism": "Opening the DETAILED ledger beneath Ch.76's variance book on the SAME two instruments (Heun SRK2, seed 42, 800k+ runs): Crooks 1999 / Jarzynski 1997 fix P(+W)/P(-W) = e^W for a time-reversible DeltaF = 0 cycle, so the mirror graph M(w) = ln P(w) - ln P(-w) is the straight line slope 1 through the origin, and the ratio at W=0 is a 0/0 with removable value 1 (P'(0)/P(0) = 1/2). Control round trip V=lam x^2/2 1->2->1 (no bit): mirror slope 0.968 +/- 0.021 (core) and 0.996 +/- 0.01 (wing, 26 bins - exactly 1 where only the detailed form reaches), central 0/0 fills +0.80/-0.18/+0.48 ~ 1 within sampling; integral checks to four digits: <e^(-W)> = 1.0003, f-identity <W e^(-W)> = -<W> (0.9998), tilted mean under e^(-W/2) = -0.0005; yet the variance ledger of Ch.76 reads q = 0.894 (skew +1.30, kurt 7.0): the detailed theorem fixes every RATIO P(w)/P(-w) and nothing about the SHAPE of P, so the TUR slack lives strictly off the mirror. The coin leans the mirror (feedback breaks the plain theorem as it broke the plain ledger): engaged 0.35/2 mirror -0.25 +/- 0.09 with <e^(-W)> = 1.0749 (= J_act of Ch.74/75 to the digit), harvest 0.05/16 mirror -5.6 +/- 0.25 with <e^(-W)> = 1.1384 - information debits the variance book and angles the detailed mirror as one entry (Sagawa-Ueda 2010; Parrondo-Horowitz-Sagawa 2015). The Gaussian tangent (drag trap, mu=+5.98, sigma=3.47, q=0.9926) is ONE-ARMED: its negative arm is unreadable at finite resolution, the mirror goes silent, and only the integral form (<e^(-W)> = 0.886 within rare-tail error 0.86) and the tight variance survive - the mirror needs both arms. The 0/0 at W=0 and the TUR-tight value of Ch.76 are the SAME removable value 1: two ledgers, one book; the erasure bill of Ch.75 closes all three accounts at par.",
+        "examples": ["control mirror slope 0.996 (rigid) vs q 0.894 (bends)", "engaged mirror -0.25 with J_act 1.0749", "harvest mirror -5.6", "tangent one-armed: mirror silent, integral noisy"],
+        "sigma_value": 1.0,
+        "source": "Crooks 1999, Jarzynski 1997, Kurchan 1998, Lebowitz-Spohn 1999, Mazonka-Jarzynski 1999, Seifert 2012, Sagawa-Ueda 2010, Parrondo-Horowitz-Sagawa 2015, Barato-Seifert 2015, Gingrich et al. 2016",
+    },
 ]
 
 
