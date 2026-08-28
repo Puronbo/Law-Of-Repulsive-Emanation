@@ -1,0 +1,35 @@
+{
+  "chapter": 72,
+  "title": "The Fine Print of the Ledger: Work Fluctuation-Dissipation",
+  "k": 2.0,
+  "drag": 2.0,
+  "beta": 1.0,
+  "delta_f": 0.0,
+  "protocols": {
+    "fast   tau=2": {
+      "mean_work": 1.5047757008711355,
+      "sigma_W": 1.745073308235992,
+      "var_over_2mean": 1.0118720183196586,
+      "J": 1.0008792971479092
+    },
+    "medium tau=8": {
+      "mean_work": 0.4669485593185321,
+      "sigma_W": 0.9709566911529881,
+      "var_over_2mean": 1.009486888096009,
+      "J": 1.005058761571736
+    },
+    "slow   tau=32": {
+      "mean_work": 0.12406014072029274,
+      "sigma_W": 0.4954425245879217,
+      "var_over_2mean": 0.9892915393489576,
+      "J": 0.9988057287154228
+    }
+  },
+  "gaussian_tail": {
+    "skewness": 0.00723990379311433,
+    "excess_kurtosis": -0.007875017409358698,
+    "frac_z1": 0.6816833333333333,
+    "frac_z2": 0.9548916666666667,
+    "worst_ratio_dev": 0.2146925690942687
+  }
+}

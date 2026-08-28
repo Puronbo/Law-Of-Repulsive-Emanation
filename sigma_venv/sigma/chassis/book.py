@@ -897,6 +897,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Jarzynski 1997, Crooks 1999, Evans-Searles 1994, Mazonka-Jarzynski 1999, Liphardt et al. 2002, Wang et al. 2002, Collin et al. 2005, Douarche et al. 2005, Schmiedl-Seifert 2007, Kawai-Parrondo-van den Broeck 2007",
     },
+    {
+        "part": "IX",
+        "chapter": 72,
+        "title": "The Fine Print of the Ledger: Gaussian Work Rate and the Fluctuation-Dissipation of the Account (Einstein 1910, Onsager-Machlup 1953, Cramer 1938)",
+        "status": REAL,
+        "category": "statistical_mechanics",
+        "mechanism": "Dragged fixed-stiffness trap V=k(x-lambda)^2/2, k=2, drag L=2, D=1 (beta=1), DeltaF=0: W=k*int(lambda-x)dlambda is a linear functional of the Gaussian bath, hence exactly Gaussian at every speed (Mazonka-Jarzynski 1999). Work fluctuation-dissipation removes the 0/0 pair (diss=<W>, dispersion sigma_W) which vanish together only at reversibility: Var(W)=2<W>/beta measured Var/(2<W>)=0.9893 slow tau=32, 1.0095 medium tau=8, 1.0119 fast tau=2 (300,000 Heun SRK2 runs). Gaussian rate function (120,000 slow runs): skew +0.0072 (SE 0.0071), excess kurtosis -0.0079 (SE 0.0141), |z|<1 0.6817 (0.6827), |z|<2 0.9549 (0.9545), per-bin density ratios 0.985-1.06 across +/-3 sigma (Einstein 1910, Cramer 1938, Onsager-Machlup 1953). The Gaussian lock-step makes Jarzynski (Ch.71) and the fluctuation-dissipation relation (Ch.69) one equation: sigma^2/2=diss, exp(sigma^2/2-diss)=0.99867 vs J=0.99881 (slow), 1.00444 vs 1.00506 (medium); fast J=1.00088 restores e^-DeltaF=1 exactly. The fine print of Ch.71's RNA tweezers is this parabola: the noise fixes both the price and the variance of the loan.",
+        "examples": ["R 0.9893 -> 1", "skew 0.0072(71)", "|z|<1 0.6817", "sigma^2/2=diss 0.99867"],
+        "sigma_value": 1.0,
+        "source": "Einstein 1910, Cramer 1938, Onsager-Machlup 1953, Mazonka-Jarzynski 1999, Speck-Seifert 2005, Touchette 2009, Liphardt et al. 2002, Collin et al. 2005",
+    },
 ]
 
 

@@ -2918,6 +2918,42 @@ def build_courses():
                 {"q": "The second law at finite speed:", "options": ["<W> >= DeltaF", "<W> < DeltaF", "<W> = 0", "<W> = inf"], "correct": 0},
                 {"q": "Experimental verifications:", "options": ["RNA tweezers, colloidal drag, torsion pendulum", "LHC collisions", "telescope images", "protein folding only"], "correct": 0}
             ]
+        },
+        {
+            "id": 72,
+            "title": "The Fine Print of the Ledger: Gaussian Work Rate and the Fluctuation-Dissipation of the Account (Einstein 1910, Onsager-Machlup 1953, Cramer 1938)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 72: The Fine Print of the Ledger</h2>
+<p>Ch.71 balanced the exponential ledger; Ch.69 priced the note. This chapter reads the fine print: the shape of the work distribution that produces the balance. In a dragged fixed-stiffness trap the work is a linear functional of the Gaussian bath, hence exactly Gaussian at every speed, and the pair (dissipation, dispersion) - the 0/0 of the account - vanish together tied by the constant 2/beta.</p>
+
+<h3>1. The Shape Behind the Balance</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">Einstein 1910, Cramer 1938, Onsager-Machlup 1953: P(W) ~ exp(-(W-&lt;W&gt;)^2 / 2 Var(W))</p>
+<p>Every mean hides a distribution; the exponential mean hides on the cheap left tail. Near equilibrium the rate function is a parabola.</p>
+
+<h3>2. The Instrument: a Dragged Gaussian Trap</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">V = k(x-lambda)^2/2, k = 2, drag L = 2, DeltaF = 0; W = k*int (lambda-x) dlambda</p>
+<p>A linear functional of a Gaussian process is exactly Gaussian (Mazonka-Jarzynski 1999), so the fluctuation-dissipation structure is free of finite-time corrections. DeltaF = 0: every mean Joule of work is dissipation, and the loan of Ch.71 falls due on the dispersion itself.</p>
+
+<h3>3. Work Fluctuation-Dissipation: the 2/beta Tie</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">Var(W)/(2&lt;W&gt;/beta) = 0.9893 (slow tau=32), 1.0095 (medium tau=8), 1.0119 (fast tau=2)</p>
+<p>300,000 Heun (SRK2) trajectories. The dissipated work and its dispersion vanish only together in the reversible limit; before either reaches zero their ratio is locked to 2/beta - the same constant Ch.69 found inside the diffusing particle.</p>
+
+<h3>4. The Gaussian Rate Function</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">skewness +0.0072 (SE 0.0071), kurtosis -0.0079; |z|&lt;1 = 0.6817 (68.27%), tail ratios 0.99-1.06</p>
+<p>120,000 slow runs: the parabola of Einstein and Onsager-Machlup is measured, bin by bin, to three figures across +/- 3 sigma.</p>
+
+<h3>5. The Lock-Step: One Document</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">Gaussian regime: sigma^2/2 = diss &lt;=&gt; &lt;e^(-W)&gt; = e^(-DeltaF); exp(sigma^2/2-diss) = 0.99867 vs J = 0.99881</p>
+<p>Jarzynski (Ch.71) and the fluctuation-dissipation relation (Ch.69) collapse to a single statement, verified to four figures; Liphardt's RNA tweezers and every slow drag are this Gaussian. The fine print and the deed are one document: the noise fixes both the price and the variance of the loan.</p>
+""",
+            "quiz": [
+                {"q": "Dragged fixed-stiffness work W is exactly:", "options": ["Gaussian (linear functional of the Gaussian bath)", "Poisson", "chi-square", "uniform"], "correct": 0},
+                {"q": "The work fluctuation-dissipation tie:", "options": ["Var(W) = 2<W>/beta", "Var(W) = <W>^2", "Var = 0", "Var = inf"], "correct": 0},
+                {"q": "Measured slow ratio Var/(2<W>):", "options": ["0.9893", "0", "2", "e"], "correct": 0},
+                {"q": "Measured slow skewness (Gaussian = 0):", "options": ["+0.0072 (SE 0.0071)", "1", "2", "-3"], "correct": 0},
+                {"q": "In the Gaussian regime Jarzynski is exactly:", "options": ["sigma^2/2 = diss", "diss = 0", "sigma = 1", "W = DeltaF"], "correct": 0}
+            ]
         }
     ]
     
