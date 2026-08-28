@@ -2954,6 +2954,41 @@ def build_courses():
                 {"q": "Measured slow skewness (Gaussian = 0):", "options": ["+0.0072 (SE 0.0071)", "1", "2", "-3"], "correct": 0},
                 {"q": "In the Gaussian regime Jarzynski is exactly:", "options": ["sigma^2/2 = diss", "diss = 0", "sigma = 1", "W = DeltaF"], "correct": 0}
             ]
+        },
+        {
+            "id": 73,
+            "title": "The Engine and Its Fine Print: Power Prices the Reversible Corner (Carnot 1824, Schmiedl-Seifert 2008)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 73: The Engine and Its Fine Print</h2>
+<p>Ch.69 lent the noise, Ch.70 re-lent it as gain, Ch.71 balanced the ledger, Ch.72 priced it. This chapter cashes the loan: the same trapped Gaussian becomes a Brownian Carnot engine, converting the thermal gradient into work with an exact efficiency ceiling, and a universal price at maximum power.</p>
+
+<h3>1. The Machine</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">harmonic trap V = lam x^2/2; hot isotherm T_h=2 (lambda 4-&gt;1), adiabat 1-&gt;0.5, cold isotherm T_c=1 (lambda 0.5-&gt;2), adiabat 2-&gt;4</p>
+<p>A four-stroke cycle of instantaneous adiabatic strokes and isothermal ramps (Carnot 1824; Brownian Carnot engine, Martinez et al. 2016). DeltaF = 0 on each isotherm: the work comes from the thermal gradient.</p>
+
+<h3>2. The Reversible Corner</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">quasistatic W_out = 0.6931, Q_in = 1.3863, eta_C = 1 - T_c/T_h = 0.5</p>
+<p>The second law is measured at every speed: W_out &lt;= eta_C Q_in for all t (e.g. t=3: W_out 0.2859 vs ceiling 0.4583). Fast, the machine is driven backwards (a dissipator); slow, it approaches Carnot and the power vanishes.</p>
+
+<h3>3. The Frontier</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">t=2 eta=0.223; t=3 eta=0.312 (P_max); t=4 eta=0.355; t=8 eta=0.420 -&gt; 0.5</p>
+<p>Efficiency rises monotonically toward eta_C as the strokes slow; power peaks at an intermediate speed. A genuine efficiency-power tradeoff: you cannot buy both.</p>
+
+<h3>4. The 1/3 at Maximum Power</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">eta_C/(2-eta_C) = 1/2 / (2-1/2) = 1/3 ; measured eta(P_max) = 0.312 (94%)</p>
+<p>The removable 0/0 (P -&gt; 0, eta -&gt; eta_C) is priced at positive power by the universal maximum-power efficiency of Schmiedl-Seifert, Esposito-Lindenberg-Van den Broeck, and Izumida-Okuda; protocol shaping (asymmetric split, early ramps) buys more power (P=0.0592) at lower eta (0.2565) - the frontier bends and never crosses Carnot.</p>
+
+<h3>5. The Fine Print at Speed</h3>
+<p>Three honest costs of speed: heat leaks across the adiabats only at the corners (variance lag stretches Ch.72's lock-step; net +0.149), the isotherms must fight the trap relaxation, and Carnot is reached only at zero power. The machine, the ledger, and the noise are one object: the bath lends the fluctuation, the cycle prices it, and over many beats the accounts close to zero while the work climbs to Carnot's share - power is the interest, the fine print is the theorem.</p>
+""",
+            "quiz": [
+                {"q": "Carnot efficiency for T_h/T_c = 2:", "options": ["1/2", "1/3", "1", "2"], "correct": 0},
+                {"q": "Measured efficiency at maximum power:", "options": ["0.312", "0", "2", "e"], "correct": 0},
+                {"q": "The universal maximum-power efficiency:", "options": ["eta_C/(2-eta_C) = 1/3", "eta_C", "2 eta_C", "1"], "correct": 0},
+                {"q": "The second law at every speed, measured:", "options": ["W_out <= eta_C Q_in", "W_out = Q_in", "W_out > Q_in", "W_out = 0"], "correct": 0},
+                {"q": "At the reversible corner:", "options": ["P -> 0 and eta -> eta_C", "P = inf", "eta = 0", "nothing moves"], "correct": 0}
+            ]
         }
     ]
     

@@ -908,6 +908,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Einstein 1910, Cramer 1938, Onsager-Machlup 1953, Mazonka-Jarzynski 1999, Speck-Seifert 2005, Touchette 2009, Liphardt et al. 2002, Collin et al. 2005",
     },
+    {
+        "part": "IX",
+        "chapter": 73,
+        "title": "The Engine and Its Fine Print: Power Prices the Reversible Corner (Carnot 1824, Schmiedl-Seifert 2008)",
+        "status": REAL,
+        "category": "statistical_mechanics",
+        "mechanism": "Brownian Carnot engine from the trapped Gaussian: harmonic trap V=lam x^2/2, hot isotherm T_h=2 (lambda 4->1), instant adiabat 1->0.5, cold isotherm T_c=1 (lambda 0.5->2), instant adiabat 2->4; DeltaF=0 per isotherm so the work comes from the thermal gradient (Brownian Carnot engine; Martinez et al. Nature Phys. 2016, Blickle-Bechinger Nature Phys. 2012). Steady closed-cycle Heun (SRK2), cycles averaged after settling; second law measured at every speed W_out<=eta_C*Q_in (t=3: 0.2858 vs 0.4583); quasistatic closure W_out=0.6931, Q_in=1.3863, eta_C=1-T_c/T_h=0.5. The 0/0 (P->0, eta->eta_C) of the reversible corner is removed at positive power by the universal maximum-power efficiency eta_C/(2-eta_C)=1/3 (Curzon-Ahlborn 1975, Schmiedl-Seifert 2008, Esposito-Lindenberg-Van den Broeck 2010, Izumida-Okuda 2012): measured eta(P_max)=0.312 (94% of 1/3) at P_max=0.0476, t=3.0; protocol shaping (asymmetric split, p=0.5 early ramps) buys P=0.0592 at eta=0.2565 - the frontier bends, never crossing Carnot. Efficiency-power frontier t=1..8: eta -0.16 -> 0.222 -> 0.312 -> 0.355 -> 0.420 -> 0.5 as P peaks then -&gt;0; finite-speed costs: corner variance lag stretches Ch.72's lock-step (adiabats net +0.149), fast strokes liquefy the machine into a dissipator. The loan of Ch.69/71/72 cashed: the machine is the ledger converting the noise it already priced into work without violating the second law.",
+        "examples": ["eta 0.312 at P_max 0.0476", "1/3 bound 94%", "W_out <= eta_C Q_in", "eta 0.420 -> 0.5"],
+        "sigma_value": 1.0,
+        "source": "Carnot 1824, Curzon-Ahlborn 1975, Schmiedl-Seifert 2008, Esposito-Lindenberg-Van den Broeck 2010, Izumida-Okuda 2012, Blickle-Bechinger 2012, Martinez et al. 2016, Jarzynski 1997, Seifert 2012",
+    },
 ]
 
 
