@@ -1,0 +1,50 @@
+{
+  "law_reversible": {
+    "map": "(x+y, x+2y) mod L",
+    "inverse": "(2x-y, -x+y) mod L",
+    "det": 1,
+    "exact_on_lattice": true
+  },
+  "h_curve": {
+    "N": 262144,
+    "bins64": 64,
+    "H_0": 4.158883083359662,
+    "H_8": 8.317257100283664,
+    "rise_nats": 4.158374016924002,
+    "curve": [
+      4.158883,
+      4.379351,
+      4.708796,
+      5.362483,
+      6.243661,
+      7.189525,
+      8.066255,
+      8.315002,
+      8.317257
+    ]
+  },
+  "the_lens": {
+    "bins256": 256,
+    "H8_256": 11.039338199738756,
+    "rise64": 4.158374016923992,
+    "rise256": 4.107866394139303
+  },
+  "the_return": {
+    "missed_points": 0,
+    "worst_deviation": 0,
+    "H_after_return": 4.158883083359662,
+    "exact_restoration": true
+  },
+  "the_0over0": {
+    "fine_lens_H": 0.0,
+    "coarse_spends_as_heat": true
+  },
+  "connections": [
+    "Arrow of time",
+    "Eternal return",
+    "Reversible cycle",
+    "Noether",
+    "Meaning"
+  ],
+  "timestamp": "2026-08-28 12:15:10"
+}

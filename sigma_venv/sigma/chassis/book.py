@@ -842,6 +842,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Noether 1918, Newton 1687, Laplace 1799, Runge 1919, Lenz 1924, Gauss AGM",
     },
+    {
+        "part": "IX",
+        "chapter": 67,
+        "title": "The Arrow of the Reversible: Boltzmann's H and Loschmidt's Paradox",
+        "status": REAL,
+        "category": "statistical_mechanics",
+        "mechanism": "Arnold cat map on 2^18 integer torus (det=1, exact inverse): 262144 pts, 64x64 bins. H(t): 4.1589 (ln 64) to 8.3173 (saturation ln 4096) monotone in 8 steps, +4.158 nat = ln 64 - a Second Law from a deterministic reversible map (Loschmidt 1876 dissolved). Lens: 256x256 nose gives same clump-dilution ~4.11 nat (Gibbs 1902). Return: inverse x8 restores all 262144 pts exactly (0 deviations), H back to 4.158883 exactly (Zermelo 1896 defused). Exact state has H = 0 - the arrow is a 0/0 of coarse-graining; the lens spends hidden info as heat (Ch.65 fee).",
+        "examples": ["H 4.159 -> 8.317", "rise = ln 64", "0/262144 deviations", "H back exactly"],
+        "sigma_value": 1.0,
+        "source": "Boltzmann 1872, Loschmidt 1876, Zermelo 1896, Gibbs 1902, Arnold-Avez 1968",
+    },
 ]
 
 

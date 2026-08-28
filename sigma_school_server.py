@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 66 chapters from "The Removable Singularity"
+    - 67 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -2748,6 +2748,40 @@ def build_courses():
                 {"q": "The hidden SO(4) of 1/r conserves:", "options": ["Laplace-Runge-Lenz A", "Charge", "Isospin", "Flavor"], "correct": 0},
                 {"q": "Forward+backward, leapfrog returns to:", "options": ["4e-12", "0.02", "1.0", "infinity"], "correct": 0},
                 {"q": "The numerical Second Law is:", "options": ["RK4's secular drift", "Gravity", "Diffusion", "The pendulum"], "correct": 0}
+            ]
+        },
+        {
+            "id": 67,
+            "title": "The Arrow of the Reversible: Boltzmann's H and Loschmidt's Paradox",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 67: The Arrow of the Reversible (Boltzmann 1872, Loschmidt 1876)</h2>
+<p>The law is reversible (Ch.66). Why does the world run one way? The cat map answers: the arrow lives in the LENS.</p>
+
+<h3>1. The Law Is Reversible</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">(x,y) -&gt; (x+y, x+2y) mod L,  det = 1,  exact integer inverse</p>
+<p>Arnold's cat map on a 2^18 x 2^18 integer torus: volume preserved exactly, forward then inverse = identity at every site.</p>
+
+<h3>2. The H-Curve (Boltzmann 1872)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">H: 4.1589 -&gt; 8.3173 nats in 8 steps (monotone, +4.158)</p>
+<p>262,144 points start clumped (ln 64); coarse-grained H rises to saturation ln 4096. A Second Law from a deterministic reversible map - Loschmidt's reversibility objection dissolves.</p>
+
+<h3>3. The Lens (Gibbs 1902)</h3>
+<p>A 256x256 nose measures the same rise (~4.1 nats): the arrow is a property of the coarsening, not the system.</p>
+
+<h3>4. The Return (Zermelo 1896 defused)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">inverse x8: 0/262144 deviations, H restored to 4.158883 exactly</p>
+<p>The entropy that rose was never destroyed - only scattered across bin boundaries. Recurrence and reversibility hold inside the exact state.</p>
+
+<h3>5. The 0/0 Proof</h3>
+<p>With a fine-enough lens every point sits alone: H = 0 for all time - the exact state has no entropy; the arrow is a 0/0. Coarse-graining removes the singularity (sin(x)/x, Ch.64) and spends hidden information as heat (Ch.65 fee).</p>
+""",
+            "quiz": [
+                {"q": "Boltzmann's H-theorem was answered by:", "options": ["Loschmidt 1876 and Zermelo 1896", "Newton 1687", "Kepler 1609", "Bohr 1913"], "correct": 0},
+                {"q": "The cat map's determinant is:", "options": ["1", "0", "-1", "2"], "correct": 0},
+                {"q": "Measured H rises from ln 64 to:", "options": ["ln 4096", "ln 2", "0", "ln 64"], "correct": 0},
+                {"q": "After the inverse map, H returns to:", "options": ["ln 64 exactly", "ln 4096", "0", "infinite"], "correct": 0},
+                {"q": "The arrow of time is a property of:", "options": ["The lens (coarse-graining)", "The exact law", "Mass", "Charge"], "correct": 0}
             ]
         }
     ]
