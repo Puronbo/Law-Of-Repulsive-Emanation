@@ -2989,6 +2989,41 @@ def build_courses():
                 {"q": "The second law at every speed, measured:", "options": ["W_out <= eta_C Q_in", "W_out = Q_in", "W_out > Q_in", "W_out = 0"], "correct": 0},
                 {"q": "At the reversible corner:", "options": ["P -> 0 and eta -> eta_C", "P = inf", "eta = 0", "nothing moves"], "correct": 0}
             ]
+        },
+        {
+            "id": 74,
+            "title": "The Demon's Share: Unused Information Is Unheard (Sagawa-Ueda 2008/2010)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 74: The Demon's Share</h2>
+<p>Ch.71 balanced the ledger, Ch.72 priced it, Ch.73 cashed it. This chapter puts a demon behind the counter: one fair bit of information read off the particle at the turn-around, fed causally to the return protocol, moves the exponential ledger &lt;e^(-W)&gt; from 1 toward e^I = 2 -- while an equally priced bit that does not predict the work leaves the ledger untouched at 1.0002. Information is currency only when spent on the causal arrow; a bit that cannot act is unheard.</p>
+
+<h3>1. The Instrument: a Round Trip with an Operator</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">V = lam x^2/2; ramp 1 -&gt; 2 -&gt; 1, D = beta = 1, DeltaF = 0; no-feedback ledger &lt;e^(-W)&gt; = 1 exactly (Jarzynski, Ch.71)</p>
+<p>Heun (SRK2) round trips, seed 42, 1.3 million trajectories. At the midpoint the operator reads one bit of x_mid and chooses the return speed. No bias: the same bit costs the same coin whether or not it predicts.</p>
+
+<h3>2. The Fair Bit</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">median |x_mid| = 0.5682 ; p(far) = 0.4969 ; I = ln 2 = 0.6931 nats ; ceiling J &lt;= e^I = 2.000</p>
+<p>Cutting far/near at the median of |x_mid| makes the bit perfectly fair: p(far) = 1/2 by construction, one bit of information exactly (Szilard 1929 drew the same coin from a box). The Sagawa-Ueda bound turns each such coin into a strict ceiling on the ledger.</p>
+
+<h3>3. The Null Meter (unused information is unheard)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">sign bit -&gt; return speed: J = 1.00017, ln J = +0.00017, p(fast) = 0.4999 (control: J = 1.00214 / 0.99731 at tau 0.5 / 1.0)</p>
+<p>The sign of x carries no information about the work of the round trip -- the trap is reflection-symmetric. Feeding it to the return speed pays for the same coin and returns nothing: the ledger stays at 1.000. The bit is real, priced, and unheard.</p>
+
+<h3>4. The Engaged Bit (the ledger pays)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">far/near -&gt; return speed: J rises 1.0737 -&gt; 1.0975 -&gt; 1.1161 -&gt; 1.1270; ln J 0.0711 -&gt; 0.1196; J_act/J_control = 1.127 ; J_act/e^I = 0.564</p>
+<p>A far particle relaxes against a fast return and releases a large negative W; a near one returns almost freely. The demon predicts which, spends the bit, and the ledger obeys the generalized second law: &lt;e^(-W)&gt; &lt;= e^I = 2.000, measured at 56% of the ceiling. At the strongest leverage the mean work itself turns negative at DeltaF = 0 (&lt;W&gt; +0.0446 -&gt; -0.0227): work from information, capped by the coin.</p>
+
+<h3>5. Books Close with the Coin</h3>
+<p>No bit: J = 1. A bit in hand that cannot act: J = 1. A bit that predicts the work: J rises toward e^I and stops there. Sagawa and Ueda (PRL 100, 080603, 2008; PRL 104, 090602, 2010) proved the ceiling &lt;e^(-W-I)&gt; &lt;= 1; Parrondo, Horowitz, and Sagawa (2015) folded it into the thermodynamic uncertainty kernel; Toyabe et al. (2010) measured the coin in a bead rotor -- ~ln 2 k_B T of work per bit, exactly Ch.68's price of erasure (Landauer 1961). The demon is not a free source; the demon is a portfolio manager. The information is the payment, the ledger is the receipt, and the reversible corner of Ch.73 is priced per bit at the interest rate Ch.71 measured. The 0/0 of Ch.71 -- no bit and a dead bit both give J = 1 -- is removed only when information is spent causally: books close with the coin.</p>
+""",
+            "quiz": [
+                {"q": "No-feedback round-trip ledger <e^(-W)> equals:", "options": ["1 (DeltaF = 0)", "e", "0", "inf"], "correct": 0},
+                {"q": "The Sagawa-Ueda ceiling for one fair bit:", "options": ["J <= e^I = 2.000", "J = e", "J = inf", "J = 0"], "correct": 0},
+                {"q": "The null meter (sign bit -> return speed) measures:", "options": ["J = 1.00017", "J = 2", "J = e^I", "J = 0"], "correct": 0},
+                {"q": "Measured J_act/e^I at the strongest leverage:", "options": ["0.564", "0", "1", "2"], "correct": 0},
+                {"q": "The fair bit is cut at:", "options": ["the median of |x_mid| = 0.5682", "the mean of x", "the trap center", "x = 0"], "correct": 0}
+            ]
         }
     ]
     

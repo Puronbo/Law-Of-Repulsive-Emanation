@@ -919,6 +919,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Carnot 1824, Curzon-Ahlborn 1975, Schmiedl-Seifert 2008, Esposito-Lindenberg-Van den Broeck 2010, Izumida-Okuda 2012, Blickle-Bechinger 2012, Martinez et al. 2016, Jarzynski 1997, Seifert 2012",
     },
+    {
+        "part": "IX",
+        "chapter": 74,
+        "title": "The Demon's Share: Unused Information Is Unheard (Sagawa-Ueda 2008/2010)",
+        "status": REAL,
+        "category": "statistical_mechanics",
+        "mechanism": "Feedback demon on the round-trip trap V=lam x^2/2, lambda 1->2->1, D=beta=1, DeltaF=0, so the no-feedback exponential ledger <e^(-W)>=1 exactly (Jarzynski Ch.71). One fair bit cut at the median of |x_mid| (median 0.5682, p(far)=0.4969, I=ln2=0.6931 nats, Sagawa-Ueda ceiling J<=e^I=2.000). Null measurement (unused/uninformative information is unheard): feeding the sign of x to the return speed leaves the ledger untouched - J=1.00017, ln J +0.00017, p(fast)=0.4999, reflection symmetry; control J=1.00214/0.99731 at tau 0.5/1.0. Engaged measurement (the ledger pays): far/near bit routes fast/slow return, J rises with leverage 1.0737 (0.35/2.0), 1.0975 (0.25/4.0), 1.1161 (0.15/6.0), 1.1270 (0.10/8.0), ln J 0.0711->0.1196, J_act/J_control 1.127, J_act/e^I 0.564, always below the bound; Heun (SRK2), seed 42, 1.3M+ runs. At the strongest leverage the mean work turns negative at DeltaF=0 (<W> +0.0446 -> -0.0227): work from information, capped per bit (Sagawa-Ueda PRL 100 080603 (2008), PRL 104 090602 (2010); Parrondo-Horowitz-Sagawa Nat. Phys. 11 131 (2015); Toyabe et al. Nat. Phys. 6 988 (2010) measured ~ln2 k_B T per bit, the coin of Ch.68 erasure). The 0/0 (no bit: J=1; bit held that cannot act: J=1) is removed only when information is spent causally - generalized second law <e^(-W)> <= e^I, books close with the coin.",
+        "examples": ["null sign J=1.00017", "engaged J 1.1270 lnJ 0.1196", "J_act/e^I 0.564", "fair bit p 0.497 median 0.5682"],
+        "sigma_value": 1.0,
+        "source": "Sagawa-Ueda 2008, Sagawa-Ueda 2010, Parrondo-Horowitz-Sagawa 2015, Toyabe et al. 2010, Szilard 1929, Landauer 1961, Sagawa 2012, Jarzynski 1997, Mazonka-Jarzynski 1999",
+    },
 ]
 
 
