@@ -1,0 +1,45 @@
+{
+  "twenty_questions": {
+    "n_bits": 20,
+    "from": 1048576,
+    "to": 1,
+    "entropy_from": 20.0,
+    "entropy_to": 0.0,
+    "rows": {
+      "q0": 1048576,
+      "q5": 32768,
+      "q10": 1024,
+      "q15": 32,
+      "q20": 1
+    }
+  },
+  "bayes": {
+    "p_true": 0.65,
+    "final_meanA": 0.6572,
+    "final_meanB": 0.6557,
+    "final_varB": 5.614296139052308e-05,
+    "certainty_is_zero_of_doubt": true
+  },
+  "solomonoff": {
+    "law_ratio": 0.0002,
+    "zlib_law_ratio": 0.355,
+    "zlib_shuffled_ratio": 0.659
+  },
+  "triad": {
+    "good": "0/0 of self and other",
+    "true": "0/0 of statement and world",
+    "beautiful": "0/0 of order and surprise"
+  },
+  "the_0over0": {
+    "truth_is_correlation": true,
+    "shortest_description_is_0over0": true
+  },
+  "connections": [
+    "Beauty",
+    "Meaning",
+    "Suffering",
+    "The cave",
+    "First cause"
+  ],
+  "timestamp": "2026-08-28 11:38:37"
+}

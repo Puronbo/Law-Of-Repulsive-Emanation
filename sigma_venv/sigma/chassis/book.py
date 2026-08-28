@@ -798,6 +798,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Shannon 1948, Birkhoff 1933, Schmidhuber 1997, Helmholtz 1863",
     },
+    {
+        "part": "IX",
+        "chapter": 63,
+        "title": "Truth: 0/0 of the True (the shortest description of the world)",
+        "status": REAL,
+        "category": "philosophy",
+        "mechanism": "Falsification: 2^20 -> 1 hypotheses, entropy 20->0 bits (Popper 1934). Bayes: wrong prior rises 0.35->0.656, variance 1.9e-3->5.6e-5; certainty = 0 of doubt (1763/1774). Solomonoff: 7n+3 data law-coded to ratio 0.0002 (4-byte law) vs zlib 0.355, shuffled 0.659; truth = shortest description = world-compression. Triad: Good self/other, True word/world, Beauty order/surprise - one 0/0, three faces.",
+        "examples": ["2^20 -> 1 worlds", "variance -> 5.6e-5", "law-coder 0.0002", "Triad Good/True/Beautiful"],
+        "sigma_value": 1.0,
+        "source": "Popper 1934, Bayes 1763, Laplace 1774, Solomonoff 1964, Kolmogorov 1963, Tarski 1933, Plato c375BC, Keats 1819",
+    },
 ]
 
 

@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 62 chapters from "The Removable Singularity"
+    - 63 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -2603,6 +2603,43 @@ def build_courses():
                 {"q": "Equal temperament error for the perfect fifth:", "options": ["0.00 cents", "1.96 cents", "13.69 cents", "100 cents"], "correct": 1},
                 {"q": "Pure noise scores A =", "options": ["0.773", "0.365", "0.000", "1.000"], "correct": 1},
                 {"q": "Beauty is the 0/0 of:", "options": ["Order and complexity", "Hot and cold", "Space and time", "Life and death"], "correct": 0}
+            ]
+        },
+        {
+            "id": 63,
+            "title": "Truth: 0/0 of the True (the shortest description of the world)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 63: Truth: 0/0 of the True</h2>
+<p>After Beauty (62, order/surprise), the second pole of the Platonic triad: the True - the 0/0 of statement and world.</p>
+
+<h3>Falsification &amp; Twenty Questions (Popper 1934)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">2^20 worlds -&gt; 1 world; entropy 20 -&gt; 0 bits</p>
+<ul>
+<li>Each query halves the hypothesis space: 1,048,576 -&gt; 1 in 20</li>
+<li>Refutation, not verification, is the engine of truth</li>
+</ul>
+
+<h3>Bayesian Concentration (Bayes 1763; Laplace 1774)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">variance 1.9e-3 -&gt; 5.6e-5</p>
+<ul>
+<li>Wrong prior rises 0.35 -&gt; 0.656 toward the truth</li>
+<li>Certainty IS the 0 of doubt</li>
+</ul>
+
+<h3>Truth = Shortest Description (Solomonoff 1964; Kolmogorov 1963)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">law-coder 0.0002 vs zlib 0.355 vs shuffled 0.659</p>
+<p>The law is the code that makes data COMPRESS - physics = shortest description of all data (beauty's compression IS truth's scent).</p>
+
+<h3>The 0/0 Proof</h3>
+<p>A statement is nothing in itself; its truth is its correlation with the world. At the boundary, description and world COINCIDE. Triad: Good = self/other (60), True = word/world (63), Beauty = order/surprise (62) - one boundary, three faces.</p>
+""",
+            "quiz": [
+                {"q": "Twenty Questions eliminates hypotheses how fast:", "options": ["Halving per query", "Slowly", "Log cube", "Never"], "correct": 0},
+                {"q": "Bayesian variance at convergence ~", "options": ["5.6e-5", "1.9e10", "0.5", "2.0"], "correct": 0},
+                {"q": "The lawful sequence 7n+3 compresses via law-coder to:", "options": ["0.0002", "0.355", "0.659", "1.0"], "correct": 0},
+                {"q": "Solomonoff's truth criterion is:", "options": ["Shortest description", "Longest proof", "Most citations", "Latest paper"], "correct": 0},
+                {"q": "The True is the 0/0 of:", "options": ["Statement and world", "Heat and cold", "Two minds", "Order and surprise"], "correct": 0}
             ]
         }
     ]
