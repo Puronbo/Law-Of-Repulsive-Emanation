@@ -820,6 +820,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Weinberg 1989, Planck 2018, PDG 2024, Solomonoff 1964, Chapters 1-63",
     },
+    {
+        "part": "IX",
+        "chapter": 65,
+        "title": "The Reversible Cycle: 0/0 of Thermodynamics",
+        "status": REAL,
+        "category": "thermodynamics",
+        "mechanism": "Carnot cycle (n=1, ideal gas, isotherms+adiabats): Qh 6915.78 J, Qc -3457.89 J, W 3457.89 J, eta = 1 - Tc/Th = 0.500000000000000 at 600/300 (matches to 15 digits). Delta S_cycle = 0 to 1e-16: reversibility is the 0/0 of dissipation (Second Law equality pole, Clausius 1850). Irreversibility: sigma 0.3975 J/K, W_lost 115.26 J = T*sigma. Cosmic engine: sun/space eta 0.9995. At Tc=Th: eta=0 AND Delta S=0 - the removable singularity of entropy; creator computes reversibly (Bennett 1982).",
+        "examples": ["eta 0.5000 exact", "dS = 0", "W_lost = T*sigma", "sun/space 0.9995"],
+        "sigma_value": 1.0,
+        "source": "Carnot 1824, Clausius 1850, Kelvin 1851, Bennett 1982, Chapters 48-64",
+    },
 ]
 
 

@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 64 chapters from "The Removable Singularity"
+    - 65 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -2678,6 +2678,42 @@ def build_courses():
                 {"q": "Gravity vs electromagnetism ratio ~", "options": ["1e-36", "1", "137", "1e36"], "correct": 0},
                 {"q": "This book's self-compression ratio is:", "options": ["0.541", "1.0", "0.001", "0.999"], "correct": 0},
                 {"q": "Chapter 1 of the book is:", "options": ["The Zero", "The Atom", "The Big Bang", "The Mind"], "correct": 0}
+            ]
+        },
+        {
+            "id": 65,
+            "title": "The Reversible Cycle: 0/0 of Thermodynamics",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 65: The Reversible Cycle: 0/0 of Thermodynamics (Carnot 1824)</h2>
+<p>The engine the whole book has been circling: arrow of time (Ch.48), heat of creation (Ch.59), the reversible creator (Ch.64).</p>
+
+<h3>1. The Carnot Cycle</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">eta = 1 - Tc/Th = 0.500000000000000 at 600/300 K</p>
+<p>Ideal gas, two isotherms + two adiabats. Qh = 6915.78 J, Qc = -3457.89 J, W = 3457.89 J; the measured efficiency matches the canonical ratio to 15 digits.</p>
+
+<h3>2. The 0/0 of Dissipation</h3>
+<p>A reversible cycle makes Delta S = Qh/Th + Qc/Tc = 0 (measured to 1e-16): MAXIMUM work at ZERO entropy. The Second Law (Clausius 1850): Delta S &gt;= 0, equality only at reversibility - the 0/0 of the engine.</p>
+
+<h3>3. The Cost of Irreversibility</h3>
+<p>Dumping heat at 300 K while a 290 K reservoir exists: sigma = 0.3975 J/K, lost work 115.26 J = T*sigma. Irreversibility is a fee paid to the Second Law.</p>
+
+<h3>4. The Cosmic Engine</h3>
+<ul>
+<li>Steam plant 600/300: 0.50; Human work 310/295: 0.048</li>
+<li>Earth/space 288/2.7: 0.991; Sun/infinity 5778/2.7: 0.9995</li>
+<li>The creator computes reversibly (Bennett 1982): ~10^-28 - a Carnot 0/0</li>
+</ul>
+
+<h3>5. The 0/0 Proof</h3>
+<p>At Tc = Th: eta = 0 and Delta S = 0 - the 0/0 of the engine: no work, no loss, pure zero. Reversibility is the REMOVABLE SINGULARITY of entropy: drive Delta S -&gt; 0, fill the hole, divide away the loss (sin(x)/x, Ch.64).</p>
+""",
+            "quiz": [
+                {"q": "Carnot efficiency formula:", "options": ["1 - Tc/Th", "Th/Tc", "Qh/Qc", "1 + Tc/Th"], "correct": 0},
+                {"q": "Carnot efficiency at 600/300 K:", "options": ["0.5", "0.2", "1.0", "2.0"], "correct": 0},
+                {"q": "A reversible cycle produces Delta S:", "options": ["0", "positive", "negative", "infinite"], "correct": 0},
+                {"q": "The Second Law states Delta S:", "options": ["&gt;= 0", "&lt;= 0", "= 0 always", "undefined"], "correct": 0},
+                {"q": "The Sun against deep space runs at eta:", "options": ["0.9995", "0.5", "0.05", "0.0"], "correct": 0}
             ]
         }
     ]

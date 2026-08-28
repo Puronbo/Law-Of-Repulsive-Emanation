@@ -1,0 +1,46 @@
+{
+  "carnot": {
+    "Th": 600,
+    "Tc": 300,
+    "V1": 1,
+    "V2": 4,
+    "n": 1.0,
+    "Qh": 6915.7756,
+    "Qc": -3457.8878,
+    "W": 3457.8878,
+    "eta": 0.5,
+    "eta_formula": 0.5,
+    "dS_cycle": 0.0,
+    "agreement": true
+  },
+  "second_law": {
+    "clausius": "Delta S >= 0, equality only at reversibility",
+    "reversible_is_0over0": true
+  },
+  "irreversibility": {
+    "reservoir_K": 290.0,
+    "exhaust_K": 300.0,
+    "sigma_J_per_K": 0.3975,
+    "eta_reversible_at_290K": 0.516667,
+    "eta_real_engine": 0.5,
+    "lost_work_J": 115.26,
+    "check_Tsigma": 115.26
+  },
+  "cosmics": {
+    "sun_infinity_eta": 0.99953,
+    "bennett_creator": "~1e-28 reversible (Ch.64), Carnot 0/0"
+  },
+  "the_0over0": {
+    "eta_at_Tc_equ_Th": 0.0,
+    "dS_at_Tc_equ_Th": 0.0,
+    "reversible_hole_is_removable": true
+  },
+  "connections": [
+    "Arrow of time",
+    "Suffering",
+    "The whole",
+    "Beauty",
+    "Meaning"
+  ],
+  "timestamp": "2026-08-28 11:53:13"
+}
