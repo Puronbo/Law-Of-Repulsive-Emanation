@@ -886,6 +886,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Kramers 1940, Milankovitch 1941, Benzi-Parisi-Sutera-Vulpiani 1982, Fauve-Heslot 1983, McNamara-Wiesenfeld 1989, Longtin-Bulsara-Moss 1991, Douglass-Wilkens-Pantazelou-Moss 1993, Gammaitoni-Hanggi-Jung-Marchesoni 1998, Petit 1999, Russell-Wilkens-Moss 1999",
     },
+    {
+        "part": "IX",
+        "chapter": 71,
+        "title": "Jarzynski's 0/0: the Loan Always Repaid (Jarzynski 1997, Crooks 1999)",
+        "status": REAL,
+        "category": "statistical_mechanics",
+        "mechanism": "Overdamped trap V=lambda x^2/2, lambda ramp 1->2, D=k_B*T=1 (beta=1), Heun (SRK2) + trapezoidal work, 1.7e6 trajectories at 3 speeds: dissipation W-DeltaF positive (+0.0957 fast, +0.0398 medium, +0.0121 slow -> 0 reversible: the 0/0 pair of mean-deficit and dispersion) while the exponential ledger <e^-W>=e^-DeltaF=0.707107 balances at every speed: J=1.00004(7) medium, 0.99946(5) fast, 0.99916(6) slow. Crooks 1999 interest rate: ln[P_F(W)/P_R(-W)]=W-DeltaF over 8 bins, slope beta=0.9943 (1 part in 170), intercept -0.3493 vs -DeltaF=-0.3466. Rare low-work runs are refunds priced by the same beta, not violations. Experiments: RNA tweezers (Liphardt et al. Science 296, 2002), RNA cycles (Collin et al. Nature 437, 2005, to 0.6%), colloidal drag (Wang et al. PRL 89, 2002), torsion pendulum (Douarche et al. 2005); information identity work=DeltaF+k_B*T*I (Kawai-Parrondo-van den Broeck 2007) is the exact statement of Ch.68's demon. The loan of Ch.70 is repaid in the exponential ledger at every beating.",
+        "examples": ["J 1.00004(7)", "Crooks beta 0.9943", "W-DeltaF -> 0", "refund e^(W-DeltaF)"],
+        "sigma_value": 1.0,
+        "source": "Jarzynski 1997, Crooks 1999, Evans-Searles 1994, Mazonka-Jarzynski 1999, Liphardt et al. 2002, Wang et al. 2002, Collin et al. 2005, Douarche et al. 2005, Schmiedl-Seifert 2007, Kawai-Parrondo-van den Broeck 2007",
+    },
 ]
 
 

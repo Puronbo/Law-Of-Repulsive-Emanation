@@ -2883,6 +2883,41 @@ def build_courses():
                 {"q": "Kramers' rate law (1940):", "options": ["r = Q e^(-DU/D)", "r = e^(D/DU)", "r = DU D", "r = 1/D"], "correct": 0},
                 {"q": "The classic stochastic resonance evidence:", "options": ["ice-age cycles, Schmitt trigger, paddlefish", "black holes", "quarks", "dark matter"], "correct": 0}
             ]
+        },
+        {
+            "id": 71,
+            "title": "Jarzynski's 0/0: the Loan Always Repaid (Jarzynski 1997, Crooks 1999)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 71: Jarzynski's 0/0: the Loan Always Repaid</h2>
+<p>Ch.70 lent the repayment as gain. This chapter closes the account: the work to reset a channel against the noise exceeds Delta F on average (the second law), yet the exponential ledger &lt;e^(-W)&gt; = e^(-DeltaF) balances exactly at every speed.</p>
+
+<h3>1. The 0/0 of the Account</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">&lt;W&gt; &gt;= DeltaF (equality only reversible); excess W-DeltaF is 0/0 in (mean-deficit, dispersion)</p>
+<p>Both parts of the dissipated excess vanish together in the reversible limit and only there; Jarzynski removes the singularity at every speed with the exponential mean.</p>
+
+<h3>2. The Instrument</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">V = lambda x^2/2, ramp 1 -&gt; 2, D = k_B T = 1; DeltaF = 0.3466, e^(-DeltaF) = 0.707107</p>
+<p>1.7 million Heun (SRK2) trajectories at three speeds, trapping the overdamped oscillator as in Liphardt et al. 2002.</p>
+
+<h3>3. The Ledger at Every Speed</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">J = &lt;e^(-W)&gt;/e^(-DeltaF) = 1.00004 (medium), 0.99946 (fast), 0.99916 (slow)</p>
+<p>Dissipation +0.096 -&gt; +0.040 -&gt; +0.012 -&gt; 0 as the ramp slows, while the exponential balance holds to one part in a thousand at every beating.</p>
+
+<h3>4. Crooks' Interest Rate (1999)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">ln[P_F(W)/P_R(-W)] = W - DeltaF ; slope beta = 0.9943, intercept -0.3493 (theory -0.3466)</p>
+<p>Rare runs where W falls below DeltaF are not violations - they are refunds, priced line by line by the same beta: the interest rate of the noise itself.</p>
+
+<h3>5. Audits in the Laboratory</h3>
+<p>Liphardt et al. 2002 (RNA tweezers), Collin et al. 2005 (RNA, ratio to 0.6%), Wang et al. 2002 (colloidal drag), Douarche et al. 2005 (torsion pendulum) all verified the relations to the percent; Evans-Searles 1994 and Kawai-Parrondo-van den Broeck 2007 link the account to information - the exact statement of Ch.68's demon. The loan is always repaid: not on average, but in the exponential ledger, exactly, at every beating.</p>
+""",
+            "quiz": [
+                {"q": "Jarzynski's relation:", "options": ["<e^(-W)> = e^(-DeltaF)", "<W> = DeltaF", "e^(W) = DeltaF", "<e^W> = 0"], "correct": 0},
+                {"q": "Measured ledger J at the representative speed:", "options": ["1.00004", "0", "2", "e"], "correct": 0},
+                {"q": "Crooks' ratio slope measured:", "options": ["beta = 0.9943", "beta = 0", "beta = inf", "beta = c"], "correct": 0},
+                {"q": "The second law at finite speed:", "options": ["<W> >= DeltaF", "<W> < DeltaF", "<W> = 0", "<W> = inf"], "correct": 0},
+                {"q": "Experimental verifications:", "options": ["RNA tweezers, colloidal drag, torsion pendulum", "LHC collisions", "telescope images", "protein folding only"], "correct": 0}
+            ]
         }
     ]
     
