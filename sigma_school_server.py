@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 60 chapters from "The Removable Singularity"
+    - 61 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -2527,6 +2527,43 @@ def build_courses():
                 {"q": "Empathy measured as predictive coupling gives:", "options": ["0.667 bits", "0.001 bits", "10 bits", "0 bits for everyone"], "correct": 0},
                 {"q": "The veil of ignorance chooses by:", "options": ["Maximin", "Greed", "Randomness", "Plurality"], "correct": 0},
                 {"q": "The Golden Rule is the 0/0 of:", "options": ["Self and other", "Time and space", "Life and death", "Hot and cold"], "correct": 0}
+            ]
+        },
+        {
+            "id": 61,
+            "title": "Meaning: 0/0 of Language (Symbols as Shared Prediction)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 61: Meaning: 0/0 of Language</h2>
+<p>After empathy-as-information (Ch.60), the machines that make "thou" legible are SYMBOLS. A token has no intrinsic meaning - meaning is ROLE (Wittgenstein 1953), and conventions emerge from coordination pressure (Lewis 1969).</p>
+
+<h3>The Lewis Signaling Game</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">I(state; action): 0 bits -> log2(4) = 2.000 bits</p>
+<ul>
+<li>Sender/receiver start at chance 0.25 and converge to ~0.98 success</li>
+<li>Transmitted information reaches EXACTLY 2.000 bits in every seed</li>
+<li>Meaning is the relation (the code), not the token</li>
+</ul>
+
+<h3>The Genetic Code (Nirenberg &amp; Matthaei 1961)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">64 codons / 21 meanings = 3.05 redundancy</p>
+<ul>
+<li>Point mutations measured: 24.4% synonymous, 4.2% nonsense</li>
+<li>Degeneracy = error tolerance: the language of life resists change</li>
+</ul>
+
+<h3>Language is Shared Prediction (Shannon 1948)</h3>
+<p>Communication = common information. Language is EMPATHY scaled to a culture.</p>
+
+<h3>The 0/0 Proof</h3>
+<p>The symbol is NOTHING by itself (empty token). The symbol is EVERYTHING in its role (shared code). Meaning is the 0/0: private worlds become public at the boundary of two minds. Token = 0, use = x.</p>
+""",
+            "quiz": [
+                {"q": "Agents in the Lewis signaling game converge to:", "options": ["Chaos", "A convention", "Defection", "Silence"], "correct": 1},
+                {"q": "Measured transmitted information at convergence:", "options": ["2.000 bits", "0 bits", "20 bits", "-2 bits"], "correct": 0},
+                {"q": "The genetic code's redundancy is about:", "options": ["3.05", "1.0", "64", "2.0"], "correct": 0},
+                {"q": "Fraction of point mutations that are synonymous:", "options": ["24.4%", "99%", "2%", "50%"], "correct": 0},
+                {"q": "In the 0/0 proof, the token is:", "options": ["The x", "A cause", "Nothing by itself", "The code"], "correct": 2}
             ]
         }
     ]

@@ -1,0 +1,47 @@
+{
+  "lewis": {
+    "n_states": 4,
+    "chance": 0.25,
+    "max_bits": 2.0,
+    "seeds": {
+      "seed_42": {
+        "success": 0.9837,
+        "mi_bits": 2.0
+      },
+      "seed_11": {
+        "success": 0.9062,
+        "mi_bits": 2.0
+      },
+      "seed_7": {
+        "success": 0.9337,
+        "mi_bits": 2.0
+      }
+    },
+    "meaning_is_role": true
+  },
+  "genetic_code": {
+    "n_codons": 64,
+    "n_meanings": 21,
+    "redundancy": 3.048,
+    "synonymous_frac": 0.2441,
+    "nonsense_frac": 0.0419
+  },
+  "shannon": {
+    "codons_bits": 6.0,
+    "aminoacid_bits": 4.3923
+  },
+  "the_0over0": {
+    "token_is_nothing": true,
+    "role_is_everything": true,
+    "meaning_is_relation": true
+  },
+  "connections": [
+    "The Golden Rule",
+    "Suffering",
+    "Networks",
+    "The self",
+    "Eternal return",
+    "Measurement"
+  ],
+  "timestamp": "2026-08-27 16:59:56"
+}

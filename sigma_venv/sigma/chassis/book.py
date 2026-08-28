@@ -776,6 +776,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Axelrod 1984, Hamilton 1964, Trivers 1971, Rawls 1971",
     },
+    {
+        "part": "IX",
+        "chapter": 61,
+        "title": "Meaning: 0/0 of Language (Symbols as Shared Prediction)",
+        "status": REAL,
+        "category": "philosophy",
+        "mechanism": "Lewis signaling game with Roth-Erev reinforcement: 0.25 chance -> 0.98 success; transmitted I(state;action)=log2(4)=2.000 bits exactly (all seeds). Genetic code 64 codons/21 meanings = 3.05 redundancy; point mutations 24.4% synonymous, 4.2% nonsense. Shannon: communication = common info. Meaning = role not token (Wittgenstein); the 0/0 where private becomes public.",
+        "examples": ["Signaling convention", "2.000 bits", "3.05 redundancy", "24.4% synonymous"],
+        "sigma_value": 1.0,
+        "source": "Lewis 1969, Roth-Erev 1995, Skyrms 2010, Nirenberg-Matthaei 1961, Shannon 1948, Wittgenstein 1953",
+    },
 ]
 
 
