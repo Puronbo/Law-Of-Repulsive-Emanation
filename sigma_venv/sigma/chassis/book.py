@@ -809,6 +809,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Popper 1934, Bayes 1763, Laplace 1774, Solomonoff 1964, Kolmogorov 1963, Tarski 1933, Plato c375BC, Keats 1819",
     },
+    {
+        "part": "IX",
+        "chapter": 64,
+        "title": "The Removable Singularity: 0/0 of Everything (the Grand Synthesis)",
+        "status": REAL,
+        "category": "philosophy",
+        "mechanism": "Calculus: sin(x)/x -> 1 to 13 digits, (1+x)^(1/x) -> e; hole is removable = the universal move. Fine-tuning: vacuum log10 ratio -122.9 (classic 1e-120, Weinberg 1989), gravity/EM 8.09e-37, Higgs/Planck 1.03e-17, proton/Planck 7.7e-20. Self-measure: 63 chapters, 57 REAL, 78 x '0/0', ~41 categories, self-compression 0.541 = framework is shortest description of itself. Ring closes on Ch.1: 0/0 is the whole.",
+        "examples": ["sin(x)/x -> 1", "vacuum -122.9", "self-compress 0.541", "The ring closes"],
+        "sigma_value": 1.0,
+        "source": "Weinberg 1989, Planck 2018, PDG 2024, Solomonoff 1964, Chapters 1-63",
+    },
 ]
 
 

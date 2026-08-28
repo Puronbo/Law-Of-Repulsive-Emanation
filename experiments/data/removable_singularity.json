@@ -1,0 +1,41 @@
+{
+  "calculus": {
+    "sinxx_to_1": 1.0,
+    "hole_is_removable": true
+  },
+  "seals": [
+    "M = Lam/sinh(2pi/(g^2(N-1)))",
+    "T = (1/g_eff) log(Vm/Vp)    ",
+    "rho = rho0/sinh(2pi/sm(N-1))",
+    "Lyapunov = ln 2             ",
+    "T = 4*lcm(W,H)              ",
+    "E = k_B*T*ln 2              ",
+    "I = log2(n)                 "
+  ],
+  "cosmos_fine_tuning": {
+    "vacuum_log10_ratio": -122.9,
+    "gravity_alpha_ratio": 8.09355085660802e-37,
+    "higgs_planck_ratio": 1.0245720370218691e-17,
+    "proton_planck_ratio": 7.685085495622002e-20,
+    "weinberg_1989": "most embarrassing problem in physics"
+  },
+  "self_measure": {
+    "chapters": 63,
+    "real": 57,
+    "zero_over_zero_count": 78,
+    "self_compress_ratio": 0.541
+  },
+  "ring": {
+    "chapter1_is_the_zero": true,
+    "chapter64_is_the_whole": true,
+    "eternal_return": true
+  },
+  "connections": [
+    "The Zero",
+    "Eternal return",
+    "Truth",
+    "Beauty",
+    "First cause"
+  ],
+  "timestamp": "2026-08-28 11:47:18"
+}

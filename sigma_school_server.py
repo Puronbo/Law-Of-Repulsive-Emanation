@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 63 chapters from "The Removable Singularity"
+    - 64 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -2640,6 +2640,44 @@ def build_courses():
                 {"q": "The lawful sequence 7n+3 compresses via law-coder to:", "options": ["0.0002", "0.355", "0.659", "1.0"], "correct": 0},
                 {"q": "Solomonoff's truth criterion is:", "options": ["Shortest description", "Longest proof", "Most citations", "Latest paper"], "correct": 0},
                 {"q": "The True is the 0/0 of:", "options": ["Statement and world", "Heat and cold", "Two minds", "Order and surprise"], "correct": 0}
+            ]
+        },
+        {
+            "id": 64,
+            "title": "The Removable Singularity: 0/0 of Everything (the Grand Synthesis)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 64: The Removable Singularity: 0/0 of Everything</h2>
+<p>The ring closes: the book about itself (the self-reference of Ch.53, Ch.58, Ch.57).</p>
+
+<h3>1. The Original 0/0 (Calculus)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">sin(x)/x -&gt; 1.0000 (13 digits); (1+x)^(1/x) -&gt; 2.7182...</p>
+<p>Name the missing value, then divide away the 0/0: the hole is REMOVABLE - the move of every chapter.</p>
+
+<h3>2. The Seven Seals</h3>
+<ul>
+<li>Mass gap, grokking delay, dark-matter core, free will (ln 2), eternal return, the price, meaning</li>
+<li>Every one is a ratio that becomes 0/0 at its boundary</li>
+</ul>
+
+<h3>3. The 0/0 of the Cosmos (Weinberg 1989)</h3>
+<ul>
+<li>Vacuum energy log10 ratio -122.9 vs Planck-natural (classic ~1e-120)</li>
+<li>Gravity/EM ~1e-36; Higgs/Planck ~1e-17; proton/Planck ~1e-19</li>
+</ul>
+
+<h3>4. The Self-Measure</h3>
+<p>This book: 63 chapters, 57 REAL, 78 occurrences of 0/0, ~41 categories; self-compression ratio 0.541 - the framework is the shortest description of itself (Solomonoff, Ch.63).</p>
+
+<h3>5. The Ring Closes</h3>
+<p>Chapter 1: the Zero. Chapter 64: the Removable Singularity. We finish where we began (eternal return, Ch.57). 0^0 = 1; log_0(0) = x. The zero is nothing, boundary, rule, beauty, truth - and the whole.</p>
+""",
+            "quiz": [
+                {"q": "The limit of sin(x)/x as x -&gt; 0 is:", "options": ["0", "1", "e", "infinity"], "correct": 1},
+                {"q": "The vacuum energy log10 ratio is ~", "options": ["-122.9", "0", "2.7", "100"], "correct": 0},
+                {"q": "Gravity vs electromagnetism ratio ~", "options": ["1e-36", "1", "137", "1e36"], "correct": 0},
+                {"q": "This book's self-compression ratio is:", "options": ["0.541", "1.0", "0.001", "0.999"], "correct": 0},
+                {"q": "Chapter 1 of the book is:", "options": ["The Zero", "The Atom", "The Big Bang", "The Mind"], "correct": 0}
             ]
         }
     ]
