@@ -853,6 +853,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Boltzmann 1872, Loschmidt 1876, Zermelo 1896, Gibbs 1902, Arnold-Avez 1968",
     },
+    {
+        "part": "IX",
+        "chapter": 68,
+        "title": "Maxwell's Demon: the 0/0 of the Fine Lens",
+        "status": REAL,
+        "category": "thermodynamics",
+        "mechanism": "Szilard engine, 100,000 rounds per error rate: E[W] = k_B*T*ln2*(1-2p) measured to ~1% (p=0: 2.87098e-21 J/round = k_B*T*ln2 exact, ratio 1.000000; p=0.5 blind: ~0). Value of 1 bit = k_B*T*ln2. The bank: erasure of 100,000 bits costs 2.87098e-16 J; net ledger 1.69e-28 J = zero to 5.9e-13. The demon is the Fine Lens of Ch.67 personified: what coarsening spends as heat (1 nat/bit), the demon refunds; the bank re-bills. Information and heat exchange at k_B*ln2/bit: the 0/0 joint of the two entropies.",
+        "examples": ["E[W] = kBTln2(1-2p)", "bit = 2.871e-21 J", "ledger 1.7e-28 J", "rate k_B ln2/bit"],
+        "sigma_value": 1.0,
+        "source": "Maxwell 1867, Szilard 1929, Landauer 1961, Bennett 1982, Loyd 1982",
+    },
 ]
 
 

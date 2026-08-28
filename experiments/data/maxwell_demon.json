@@ -1,0 +1,43 @@
+{
+  "consts": {
+    "kB": 1.380649e-23,
+    "T": 300.0,
+    "kBTln2": 2.870978885078724e-21
+  },
+  "szilard": {
+    "rounds": 100000,
+    "measurements": {
+      "0.0": 2.870978885080418e-21,
+      "0.05": 2.5878429474320186e-21,
+      "0.1": 2.303501198651878e-21,
+      "0.25": 1.4319294287204904e-21,
+      "0.45": 2.923804896564728e-22
+    },
+    "theory_linear": "k_B T ln 2 (1 - 2p)",
+    "law_measured_like_theory": true
+  },
+  "value_of_bit": {
+    "measured": 2.870978885080418e-21,
+    "theory": 2.870978885078724e-21,
+    "ratio": 1.0000000000005902
+  },
+  "the_bank": {
+    "n_bits": 100000,
+    "erase_cost": 2.870978885078724e-16,
+    "work_extracted": 2.870978885080418e-16,
+    "net_ledger": 1.6940787939621229e-28,
+    "net_zero_measured": true
+  },
+  "the_0over0": {
+    "rate": 9.569929616929079e-24,
+    "information_is_currency": true
+  },
+  "connections": [
+    "Arrow of time",
+    "Landauer",
+    "Reversible cycle",
+    "The lens",
+    "Meaning"
+  ],
+  "timestamp": "2026-08-28 12:18:25"
+}

@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 67 chapters from "The Removable Singularity"
+    - 68 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -2782,6 +2782,36 @@ def build_courses():
                 {"q": "Measured H rises from ln 64 to:", "options": ["ln 4096", "ln 2", "0", "ln 64"], "correct": 0},
                 {"q": "After the inverse map, H returns to:", "options": ["ln 64 exactly", "ln 4096", "0", "infinite"], "correct": 0},
                 {"q": "The arrow of time is a property of:", "options": ["The lens (coarse-graining)", "The exact law", "Mass", "Charge"], "correct": 0}
+            ]
+        },
+        {
+            "id": 68,
+            "title": "Maxwell's Demon: the 0/0 of the Fine Lens",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 68: Maxwell's Demon - the 0/0 of the Fine Lens (1867-1929-1961)</h2>
+<p>Ch.67: the arrow lives in the coarse lens. The demon is the one who refuses the lens - and pays for it.</p>
+
+<h3>1. The Szilard Engine (1929)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">E[W] = k_B*T*ln 2 * (1 - 2p),  measured to ~1%</p>
+<p>100,000 rounds per error rate; at p=0 the work is exactly k_B*T*ln 2 = 2.871e-21 J (ratio 1.000000); a blind demon extracts ~0.</p>
+
+<h3>2. The Value of the Bit</h3>
+<p>One bit of information is worth exactly k_B*T*ln 2 - information and heat are one coin. One bit refunds one nat of the lens.</p>
+
+<h3>3. The Bank (Landauer 1961, Bennett 1982)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">Net ledger = 1.7e-28 J across 100,000 rounds (zero, 5.9e-13)</p>
+<p>The demon's memory must be erased: N*k_B*T*ln 2. Paid exactly what it earned - no perpetual motion.</p>
+
+<h3>4. The 0/0 Proof</h3>
+<p>The two entropies exchange at rate k_B*ln 2 per bit: the 0/0 of entropy (Ch.59's heat of creation is this rate). The demon is the Fine Lens personified: what coarsening spent, the demon refunds; the bank re-bills. The lens is paid; the arrow is the ledger.</p>
+""",
+            "quiz": [
+                {"q": "The Szilard engine work per round at p=0:", "options": ["k_B*T*ln 2", "0", "k_B*T", "infinite"], "correct": 0},
+                {"q": "The demon's unavoidable cost is:", "options": ["Erasure: N*k_B*T*ln 2", "Measurement", "Friction", "Light"], "correct": 0},
+                {"q": "One bit of information is worth:", "options": ["k_B*T*ln 2", "k_B*ln 2", "k_B*T", "nothing"], "correct": 0},
+                {"q": "Measured net ledger after 100k rounds:", "options": ["~0 (1.7e-28 J)", "k_B*T*ln 2", "infinite", "negative"], "correct": 0},
+                {"q": "Information and heat exchange at rate:", "options": ["k_B*ln 2 per bit", "c per bit", "h per bit", "e per bit"], "correct": 0}
             ]
         }
     ]
