@@ -941,6 +941,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Szilard 1929, Landauer 1961, Bennett 1982, Berut et al. 2012, Toyabe et al. 2010, Sagawa-Ueda 2008, Sagawa-Ueda 2010, Parrondo-Horowitz-Sagawa 2015, Jarzynski 1997, Seifert 2012",
     },
+    {
+        "part": "IX",
+        "chapter": 76,
+        "title": "Precisely Priced: the Thermodynamic Uncertainty Relation as the Demon's Handling Fee (Barato-Seifert 2015, Gingrich et al. 2016)",
+        "status": REAL,
+        "category": "statistical_mechanics",
+        "mechanism": "Pricing the act of knowing itself (O(1.5M) Heun SRK2 runs, seed 42, on the SAME instrument as Ch.74/75). TUR: for a cyclic DeltaF=0 round trip with <W>>0, Var(W) >= 2 <W> (Barato-Seifert PRL 114 158101 (2015); Gingrich et al. PRL 116 120601 (2016); time-dependent form Dechant-Sasa EPL 121 50006 (2018)); define q=2<W>/Var <= 1, slack s=1-q >= 0 = the deviation fee. Instrument A, the parabola (dragged fixed-stiffness trap V=k(x-lam)^2/2, k=2, lam 0->2->0): work is a linear functional of a Gaussian bath, hence exactly Gaussian (Mazonka-Jarzynski 1999; Onsager-Machlup 1953), skew=kurt=0 to error, and it SATURATES - q=0.9822/0.9934/0.9852 at tau 1/2/4 (<W> 8.9815/5.9852/3.4627, Var 18.288/12.050/7.029), slack 1.8/0.7/1.5 CE = pure O(dt) discretization, vanishing toward the continuum (Gaussian-Jarzynski <e^(-W)>=1 forces Var=2<W> exactly). Instrument B (stiffness round trip V=lam x^2/2 1->2->1, median far/near bit at |x_mid|=0.5647): work rides on x^2 so it is already non-Gaussian - control q=0.8951 (skew +1.250, kurt +6.642): slack 0.105 is the price of non-linearity. The coin bends further: dead sign bit q=0.8413 (slack 0.159, silence is not free); engaged far/near rows q=0.4616/0.3510/0.1058 (slack 0.538/0.649/0.894) as leverage 0.4/1.5 -> 0.35/2 -> 0.25/4 grows, while ln J rises 0.058 -> 0.097 - using information is expensive in accuracy. Harvest rows (<W><0: -0.02303, -0.03729) exit the X>0 province of the TUR (q flagged undefined) and pass to Ch.75's bill: W_net=+0.67012/+0.65586. The 0/0: precision^2=<W>^2/Var and Sigma/2=<W>/2 vanish together at reversibility; their ratio's removable value is q -> 1, reached only by Gaussian (linear, silent) reading - the TUR is the bookkeeper of the removable value of knowing per dissipation, billing every deviation from the tangent. Knowing costs twice: once in precision (this chapter), once in erasure (Ch.75); books close with the coin, metered by variance.",
+        "examples": ["Gaussian drag q = 0.9934, slack 0.7 CE", "control round trip q = 0.895 (non-Gaussian fee 0.105)", "dead coin q = 0.841", "engaged coin q -> 0.106 (slack 0.894)"],
+        "sigma_value": 1.0,
+        "source": "Barato-Seifert 2015, Gingrich et al. 2016, Pietzonka-Seifert 2018, Dechant-Sasa 2018, Horowitz-Gingrich 2017, Mazonka-Jarzynski 1999, Onsager-Machlup 1953, Szilard 1929, Landauer 1961",
+    },
 ]
 
 

@@ -3060,6 +3060,42 @@ def build_courses():
                 {"q": "Measured net cost W_net on the engaged frontier:", "options": ["+0.736 -> +0.654, never negative", "always negative", "= 0", "= ln 2"], "correct": 0},
                 {"q": "The removable value of W_net at the reversible corner is:", "options": ["0", "ln 2", "e", "1/2"], "correct": 0}
             ]
+        },
+        {
+            "id": 76,
+            "title": "Precisely Priced: the Thermodynamic Uncertainty Relation as the Demon's Handling Fee (Barato-Seifert 2015, Gingrich et al. 2016)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 76: Precisely Priced</h2>
+<p>Ch.75 priced the coin's erasure; this chapter prices the act of knowing itself. Every cyclic engine asks twice: what does it cost, and how well does it know what it did? The thermodynamic uncertainty relation answers the second -- Var(W) &gt;= 2 &lt;W&gt; for a round trip with &lt;W&gt; &gt; 0 (Barato-Seifert 2015; Gingrich et al. 2016) -- and the slack s = 1 - 2&lt;W&gt;/Var bills every deviation from the parabola. Gaussian work pays nothing; the demon pays a fortune.</p>
+
+<h3>1. The 2:1 Floor</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">Var(W) &gt;= 2 &lt;W&gt; (DeltaF = 0, &lt;W&gt; &gt; 0) ; q = 2&lt;W&gt;/Var &lt;= 1 ; slack s = 1 - q &gt;= 0</p>
+<p>The accumulated entropy production of a round trip is &lt;W&gt; exactly (potentials coincide at the ends), so the TUR becomes a plain 2:1 relation between variance and mean work. Ch.72 read the same constant backward (Var/(2&lt;W&gt;) ~ 1); the TUR makes it a theorem: relative fluctuations of the work are bounded below by 2/nats dissipated. Knowing is bounded by paying.</p>
+
+<h3>2. The Parabola Saturates</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">dragged trap V = k(x-lam)^2/2, k = 2, lam 0 -&gt; 2 -&gt; 0: q = 0.982 / 0.993 / 0.985 ; skew = kurt = 0.00 to error</p>
+<p>On a fixed-stiffness trap dragged by a protocol, the work is a linear functional of the Gaussian bath (Mazonka-Jarzynski 1999): exactly Gaussian, skew and excess kurtosis zero on every row of 150,000 runs. Gaussian work requires Var = 2&lt;W&gt; (from &lt;e^(-W)&gt; = 1), and the measured slack is 1-2 CE -- a pure finite-step residue vanishing toward the continuum. The parabola knows exactly what it pays: precision squared equals half the dissipation, one for one.</p>
+
+<h3>3. The Fee Is the Bending</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">round trip V = lam x^2/2, 1 -&gt; 2 -&gt; 1: control q = 0.895 (skew +1.25, kurt +6.6); coin rows q = 0.84, 0.46, 0.35, 0.11</p>
+<p>Stiffness work rides on x^2, so its distribution is already bent -- control slack 0.105 is the price of non-linearity. The demon's bit bends it further, and every bend costs: the dead coin pays slack 0.159 for silence, and the engaged far/near bit collapses q from 0.895 to 0.106 as the leverage grows, while ln J climbs to 0.097. The between-group variance of mixed return speeds is pure waste: using information is expensive in accuracy before any erasure is billed.</p>
+
+<h3>4. The Harvest Province Is the Erasure Province</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">&lt;W&gt; &lt; 0 rows: q undefined (X &lt; 0); W_net = +0.670 (0.10/8), +0.656 (0.05/16) -- Ch.75's bill governs</p>
+<p>At the strongest leverage the mean work turns negative, the TUR's &lt;X&gt; &gt; 0 province is exited, and the books pass to Ch.75: extraction is capped by the coin and net cost stays strictly positive. Precision drains there too -- the slack it leaves behind is what the harvest cost in accuracy.</p>
+
+<h3>5. The 0/0: Knowing per Dissipation</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">precision^2 = &lt;W&gt;^2/Var and &lt;W&gt;/2 vanish together; ratio -&gt; q -&gt; 1 on the parabola: removable value 1</p>
+<p>In the reversible limit both precision and dissipation fade to zero, and the fixed point of their ratio is 1 -- reached only by Gaussian, linear, silent reading. Every non-linearity -- a stiffness ramp, a dead coin, an engaged demon -- bends the parabola and is billed at slack measured here from 0.10 to 0.89. The TUR is the bookkeeper of the 0/0: it prices the removable value of knowing and collects, in variance, whatever the tangent is abandoned for. Knowing costs twice: once in precision, once in erasure. Books close with the coin, and the coin is metered by variance.</p>
+""",
+            "quiz": [
+                {"q": "The TUR floor for a round trip with <W> > 0 is:", "options": ["Var(W) >= 2 <W>", "Var(W) = <W>", "Var(W) >= 0", "Var(W) <= <W>"], "correct": 0},
+                {"q": "The Gaussian dragged trap saturates: measured", "options": ["q = 0.982-0.993, skew = kurt = 0", "q = 0.5", "q = 0", "q = 2"], "correct": 0},
+                {"q": "The non-Gaussian round trip pays slack:", "options": ["0.105 (control)", "0", "1", "0.5"], "correct": 0},
+                {"q": "The engaged far/near bit collapses q to:", "options": ["0.106 (slack 0.894)", "0.895", "1", "2"], "correct": 0},
+                {"q": "The removable value of knowing per dissipation is:", "options": ["1 (the TUR edge)", "0", "ln 2", "e"], "correct": 0}
+            ]
         }
     ]
     
