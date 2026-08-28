@@ -787,6 +787,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Lewis 1969, Roth-Erev 1995, Skyrms 2010, Nirenberg-Matthaei 1961, Shannon 1948, Wittgenstein 1953",
     },
+    {
+        "part": "IX",
+        "chapter": 62,
+        "title": "Beauty: 0/0 of Aesthetics (the sublime between order and surprise)",
+        "status": REAL,
+        "category": "philosophy",
+        "mechanism": "Shannon entropy + zlib compression of 5 classes: constant H2=0.000, rhythm 0.500, Fibonacci word 0.776, language 3.432, random 4.681 bits. Schmidhuber A=novelty x simplicity: golden 0.773 > language 0.615 > rhythm 0.496 > random 0.365 > constant 0.000. Birkhoff M=O/C is the 0/0 of taste. Harmony (Helmholtz): 12TET errors octave 0.00c, fifth 1.96c, third 13.69c. Beauty = removable singularity of the senses.",
+        "examples": ["A=golden 0.773", "Language 0.615", "Random 0.365", "Fifth error 1.96 cents"],
+        "sigma_value": 1.0,
+        "source": "Shannon 1948, Birkhoff 1933, Schmidhuber 1997, Helmholtz 1863",
+    },
 ]
 
 

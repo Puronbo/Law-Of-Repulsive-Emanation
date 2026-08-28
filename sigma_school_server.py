@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 61 chapters from "The Removable Singularity"
+    - 62 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -2564,6 +2564,45 @@ def build_courses():
                 {"q": "The genetic code's redundancy is about:", "options": ["3.05", "1.0", "64", "2.0"], "correct": 0},
                 {"q": "Fraction of point mutations that are synonymous:", "options": ["24.4%", "99%", "2%", "50%"], "correct": 0},
                 {"q": "In the 0/0 proof, the token is:", "options": ["The x", "A cause", "Nothing by itself", "The code"], "correct": 2}
+            ]
+        },
+        {
+            "id": 62,
+            "title": "Beauty: 0/0 of Aesthetics (the sublime between order and surprise)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 62: Beauty: 0/0 of Aesthetics</h2>
+<p>After meaning-as-role (Ch.61): what makes a form beautiful? Beauty is INFORMATION at the boundary of order and surprise.</p>
+
+<h3>Measurements (Shannon 1948)</h3>
+<table style="border-collapse:collapse;">
+<tr><th>Case</th><th>Bigram entropy</th><th>zlib ratio</th><th>Aesthetic A</th></tr>
+<tr><td>Constant</td><td>0.000</td><td>0.007</td><td>0.000</td></tr>
+<tr><td>Fibonacci (golden)</td><td>0.776</td><td>0.005</td><td>0.773</td></tr>
+<tr><td>Language</td><td>3.432</td><td>0.148</td><td>0.615</td></tr>
+<tr><td>Random</td><td>4.681</td><td>0.629</td><td>0.365</td></tr>
+</table>
+
+<h3>The Aesthetic Measure</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">M = O / C (Birkhoff 1933)  A = novelty x simplicity (Schmidhuber 1997)</p>
+<p>Pure order bores (0.000); pure noise repels (0.365); golden structure wins (0.773).</p>
+
+<h3>Harmony Is Small Ratios (Helmholtz 1863)</h3>
+<ul>
+<li>Octave 2:1 error 0.00 cents (exact)</li>
+<li>Perfect fifth 3:2 error 1.96 cents</li>
+<li>Major third 5:4 error 13.69 cents</li>
+</ul>
+
+<h3>The 0/0 Proof</h3>
+<p>Too much order (entropy -&gt; 0) bores; too much surprise (entropy -&gt; 1) repels. Beauty = the removable singularity of the senses, where order and surprise cancel and the form appears - 0 in itself, x in role.</p>
+""",
+            "quiz": [
+                {"q": "Birkhoff's aesthetic measure is:", "options": ["O/C", "C/O", "E=mc^2", "log n"], "correct": 0},
+                {"q": "The highest measured aesthetic A is:", "options": ["Random", "Fibonacci word", "Constant", "Rhythm"], "correct": 1},
+                {"q": "Equal temperament error for the perfect fifth:", "options": ["0.00 cents", "1.96 cents", "13.69 cents", "100 cents"], "correct": 1},
+                {"q": "Pure noise scores A =", "options": ["0.773", "0.365", "0.000", "1.000"], "correct": 1},
+                {"q": "Beauty is the 0/0 of:", "options": ["Order and complexity", "Hot and cold", "Space and time", "Life and death"], "correct": 0}
             ]
         }
     ]

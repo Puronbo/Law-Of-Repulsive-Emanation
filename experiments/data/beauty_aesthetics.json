@@ -1,0 +1,68 @@
+{
+  "shannon": {
+    "cases": {
+      "Constant (pure order)": {
+        "entropy": 0.0,
+        "novelty": 0.0,
+        "zlib_ratio": 0.007,
+        "simplicity": 0.993,
+        "A": 0.0
+      },
+      "Rhythm (ABABAB...)": {
+        "entropy": 1.0,
+        "novelty": 0.5,
+        "zlib_ratio": 0.008,
+        "simplicity": 0.992,
+        "A": 0.496
+      },
+      "Fibonacci word (golden)": {
+        "entropy": 0.959,
+        "novelty": 0.776,
+        "zlib_ratio": 0.005,
+        "simplicity": 0.995,
+        "A": 0.773
+      },
+      "Language (this manuscript)": {
+        "entropy": 4.159,
+        "novelty": 0.722,
+        "zlib_ratio": 0.148,
+        "simplicity": 0.852,
+        "A": 0.615
+      },
+      "Random (pure noise)": {
+        "entropy": 4.752,
+        "novelty": 0.984,
+        "zlib_ratio": 0.629,
+        "simplicity": 0.371,
+        "A": 0.365
+      }
+    },
+    "language_unigram": 4.159,
+    "language_bigram": 3.432,
+    "language_redundancy": 0.1252
+  },
+  "birkhoff": {
+    "measure": "M = O / C",
+    "is_the_0over0": true
+  },
+  "harmony": {
+    "octave_error_cents": 0.0,
+    "fifth_error_cents": 1.96,
+    "major_third_error_cents": -13.69
+  },
+  "the_0over0": {
+    "beauty_is_removable_singularity": true,
+    "order_pole_0": true,
+    "surprise_pole_0": true,
+    "form_is_nothing_in_itself": true
+  },
+  "connections": [
+    "Meaning",
+    "The Golden Rule",
+    "Chaos",
+    "Arrow of time",
+    "Eternal return",
+    "The 0"
+  ],
+  "timestamp": "2026-08-28 11:32:26"
+}
