@@ -831,6 +831,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Carnot 1824, Clausius 1850, Kelvin 1851, Bennett 1982, Chapters 48-64",
     },
+    {
+        "part": "IX",
+        "chapter": 66,
+        "title": "The Conserved 0/0: Noether's Theorem (1918)",
+        "status": REAL,
+        "category": "classical_mechanics",
+        "mechanism": "Pendulum (symplectic): period ratio 1.0000057 vs 2*pi*sqrt(L/g); exact nonlinear ratio 0.9999991 vs 2K(k)/pi*T0 with K by Gauss AGM (hole 5.7e-6 = theta0^2/16). Kepler a=1.5, e=0.5, 200 orbits: dE bounded 3.2e-4 (time->energy), dL 4.7e-14 (rotation->L), Laplace-Runge-Lenz |A| = e = 0.5002 in-plane (hidden SO(4), the extra charge). Time-reversal test (40 fwd + 40 bwd orbits): leapfrog returns 4.04e-12 (its own inverse, the 0/0 kept), RK4 returns 1.77e-2 (ratio 4.4e9) - the numerical Second Law, an arrow forged in a reversible law (Ch.65 discretization fee).",
+        "examples": ["ratio 1.0000057 / 0.9999991", "dL 4.7e-14", "|A| = e", "return 4e-12 vs 2e-2"],
+        "sigma_value": 1.0,
+        "source": "Noether 1918, Newton 1687, Laplace 1799, Runge 1919, Lenz 1924, Gauss AGM",
+    },
 ]
 
 

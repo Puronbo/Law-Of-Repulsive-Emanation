@@ -1,0 +1,47 @@
+{
+  "pendulum": {
+    "L": 1.0,
+    "g": 9.80665,
+    "T_linear": 2.0064092925890407,
+    "T_small_measured": 2.006420689684764,
+    "ratio_small": 1.000005680344367,
+    "T_large_exact": 2.666326241285401,
+    "T_large_measured": 2.666323809561992,
+    "ratio_large": 0.9999990879872944,
+    "energy_drift_small": 1.2261843421478225e-12,
+    "energy_drift_large": 6.373879442368757e-08
+  },
+  "kepler": {
+    "a": 1.5,
+    "e": 0.5,
+    "mu": 1.0,
+    "energy_drift_max": 0.0003221951205888976,
+    "L_drift_max": 4.6893428099355407e-14,
+    "A_magnitude": 0.500235739872404,
+    "LRL_minus_e": 0.00023573987240399497,
+    "A_z": 0.0
+  },
+  "algorithm_0over0": {
+    "dt": 0.05,
+    "orbits": 40,
+    "leapfrog_return": 4.036249717614809e-12,
+    "rk4_return": 0.01770384341377476,
+    "ratio": 4386211124.775677,
+    "leapfrog_is_own_inverse": true
+  },
+  "noether_map": {
+    "time": "energy",
+    "space": "momentum",
+    "rotation": "angular momentum",
+    "time_scaling": "virial identity",
+    "hidden_SO4": "Laplace-Runge-Lenz (|A| = e)"
+  },
+  "connections": [
+    "Reversible cycle",
+    "Arrow of time",
+    "Eternal return",
+    "The whole",
+    "Beauty"
+  ],
+  "timestamp": "2026-08-28 12:09:58"
+}

@@ -9,7 +9,7 @@ Usage:
     python sigma_school_server.py [--port PORT]
 
 Features:
-    - 65 chapters from "The Removable Singularity"
+    - 66 chapters from "The Removable Singularity"
     - MCQ quizzes with auto-grading
     - Progress tracking
     - Student dashboard
@@ -2714,6 +2714,40 @@ def build_courses():
                 {"q": "A reversible cycle produces Delta S:", "options": ["0", "positive", "negative", "infinite"], "correct": 0},
                 {"q": "The Second Law states Delta S:", "options": ["&gt;= 0", "&lt;= 0", "= 0 always", "undefined"], "correct": 0},
                 {"q": "The Sun against deep space runs at eta:", "options": ["0.9995", "0.5", "0.05", "0.0"], "correct": 0}
+            ]
+        },
+        {
+            "id": 66,
+            "title": "The Conserved 0/0: Noether's Theorem (1918)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 66: The Conserved 0/0: Noether's Theorem (1918)</h2>
+<p>Conservation is the zero of symmetry - the machinery that respects reversibility (Ch.65).</p>
+
+<h3>1. The Pendulum</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">small: T = 2*pi*sqrt(L/g), ratio 1.0000057<br/>large: elliptic K(k), ratio 0.9999991 (AGM)</p>
+<p>The exact nonlinear period (K via Gauss AGM) matches to 6 digits; the 5.7e-6 gap is the anharmonic correction theta0^2/16.</p>
+
+<h3>2. Kepler: the Hidden SO(4)</h3>
+<ul>
+<li>Energy: time-symmetry charge, drift bounded 3e-4</li>
+<li>Angular momentum: rotation-symmetry charge, drift 4.7e-14</li>
+<li>Laplace-Runge-Lenz |A| = e: the EXTRA conserved charge of the hidden SO(4), in-plane exactly</li>
+</ul>
+
+<h3>3. The Algorithm's 0/0 (Time-Reversal Test)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">forward 40 + backward 40 orbits:<br/>leapfrog returns 4.0e-12, RK4 returns 1.8e-2 (ratio 4.4e9)</p>
+<p>Kepler is time-reversible; leapfrog is exactly its own inverse (the 0/0 kept). RK4 forges an arrow: the NUMERICAL SECOND LAW, the discretization fee (Ch.65).</p>
+
+<h3>4. The 0/0 Proof</h3>
+<p>delta S = 0: the variation vanishes. A conservation law is a zero at the infinitesimal symmetry - the 0/0. The reversible integrator is the removable singularity of the numerical Second Law (sin(x)/x, Ch.64).</p>
+""",
+            "quiz": [
+                {"q": "Time-translation symmetry conserves:", "options": ["Energy", "Charge", "Color", "Spin"], "correct": 0},
+                {"q": "Rotation symmetry conserves:", "options": ["Angular momentum", "Mass", "Entropy", "Volume"], "correct": 0},
+                {"q": "The hidden SO(4) of 1/r conserves:", "options": ["Laplace-Runge-Lenz A", "Charge", "Isospin", "Flavor"], "correct": 0},
+                {"q": "Forward+backward, leapfrog returns to:", "options": ["4e-12", "0.02", "1.0", "infinity"], "correct": 0},
+                {"q": "The numerical Second Law is:", "options": ["RK4's secular drift", "Gravity", "Diffusion", "The pendulum"], "correct": 0}
             ]
         }
     ]
