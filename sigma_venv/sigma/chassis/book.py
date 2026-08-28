@@ -930,6 +930,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Sagawa-Ueda 2008, Sagawa-Ueda 2010, Parrondo-Horowitz-Sagawa 2015, Toyabe et al. 2010, Szilard 1929, Landauer 1961, Sagawa 2012, Jarzynski 1997, Mazonka-Jarzynski 1999",
     },
+    {
+        "part": "IX",
+        "chapter": 75,
+        "title": "The Coin's Price: the Szilard-Landauer Closure of the Demon's Ledger (Szilard 1929, Landauer 1961)",
+        "status": REAL,
+        "category": "statistical_mechanics",
+        "mechanism": "Closing the feedback demon's books on the SAME instrument as Ch.74 (trap V=lam x^2/2, lambda 1->2->1, D=beta=1, DeltaF=0; Heun SRK2, seed 42, 1.5M+ runs): the fair bit is a coin of face value I=ln2=0.6931 nats (Szilard 1929) costing E=ln2 to erase (Landauer 1961; measured 0.69 k_B T in a colloidal double-well trap by Berut et al. Nature 483 187 (2012); Toyabe et al. Nat. Phys. 6 988 (2010) measured the coin spending its face value per bit). Two measured ceilings on one instrument: J=<e^(-W)> <= e^I (Sagawa-Ueda 2008/2010) and W_net=<W>+ln2 >= 0 (Bennett 1982). Null/dead coin: sign bit -> return speed J=0.99985, ln J -0.00015, <W>+0.11069, W_net=+0.80383 (a coin spent that buys nothing vs control W_net=+0.11337, J=1.00214). Engaged frontier (far/near -> fast/slow): J 1.07484 -> 1.13681 (ln J 0.07217 -> 0.12822, never past 0.693), <W> +0.04261 -> -0.03898 (harvest +0.03898 at DeltaF=0), W_net closes +0.73576 -> +0.65417, never negative; H/ln2 -0.061 -> +0.056. The ideal Szilard corner (extraction -> ln 2, erasure -> ln 2) is the 0/0 with removable value 0: W_net -> 0 and H/ln2 -> 1 only as the power fades, exactly Carnot's corner of Ch.73 repeated - information engines and thermal engines are one portrait (Parrondo-Horowitz-Sagawa Nat. Phys. 11 131 (2015)). Books close with the coin.",
+        "examples": ["dead coin W_net +0.804", "W_net 0.736 -> 0.654", "J 1.1368 vs e^I 2", "H/ln2 -> 1 at zero power"],
+        "sigma_value": 1.0,
+        "source": "Szilard 1929, Landauer 1961, Bennett 1982, Berut et al. 2012, Toyabe et al. 2010, Sagawa-Ueda 2008, Sagawa-Ueda 2010, Parrondo-Horowitz-Sagawa 2015, Jarzynski 1997, Seifert 2012",
+    },
 ]
 
 

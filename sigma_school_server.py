@@ -3024,6 +3024,42 @@ def build_courses():
                 {"q": "Measured J_act/e^I at the strongest leverage:", "options": ["0.564", "0", "1", "2"], "correct": 0},
                 {"q": "The fair bit is cut at:", "options": ["the median of |x_mid| = 0.5682", "the mean of x", "the trap center", "x = 0"], "correct": 0}
             ]
+        },
+        {
+            "id": 75,
+            "title": "The Coin's Price: the Szilard-Landauer Closure of the Demon's Ledger (Szilard 1929, Landauer 1961)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 75: The Coin's Price</h2>
+<p>Ch.74 gave the demon one fair bit and measured the ledger it moves. This chapter lets the bank close the account: the bit is a coin of face value I = ln 2 (Szilard 1929) that costs ln 2 to erase (Landauer 1961) - and the books never close with a profit once the erasure bill is paid.</p>
+
+<h3>1. The Coin and the Bill</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">face value I = ln 2 = 0.6931 nats ; erasure bill E = ln 2 = 0.6931 (Landauer 1961)</p>
+<p>Bennett (1982) closed the demon's books a century after Szilard opened them; B&eacute;rut et al. (Nature 483, 187, 2012) MEASURED the bill in a colloidal double-well trap - 0.69 k_B T per bit at slow rates, exactly ln 2 - and Toyabe et al. (2010) measured the coin spending that same face value in a feedback bead rotor. A complete cycle returning the memory to a standard state cannot profit.</p>
+
+<h3>2. The Two Ceilings of the Coin</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">J = &lt;e^(-W)&gt; &lt;= e^I = 2.000 (Sagawa-Ueda 2008/2010) ; W_net = &lt;W&gt; + ln 2 &gt;= 0 (measured below)</p>
+<p>The exponential ledger never crosses e^I, and the mean book never closes with a profit once the coin is returned: both are one statement twice - information is the interest, not the principal.</p>
+
+<h3>3. The Dead Coin: a Bank Note, Unread</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">sign bit -&gt; return speed: J = 0.99985, ln J = -0.00015, &lt;W&gt; = +0.11069 ; W_net = +0.80383</p>
+<p>An uncorrelated bit (reflection symmetry) leaves J = 1 but still bills ln 2: the dead coin costs +0.69 against a control run that costs only +0.113. The null demon of Ch.74 is now priced - it pays 0.69 for silence.</p>
+
+<h3>4. The Frontier with the Bank</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">far/near -&gt; speed: J 1.0748 -&gt; 1.1368 (ln J 0.072 -&gt; 0.128); W_net 0.736 -&gt; 0.654; harvest -&gt; +0.0390; H/ln2 -&gt; 0.056</p>
+<p>Five leverage rows, 1.5M+ Heun (SRK2) runs. The engaged bit lifts J toward e^I, the mean work turns negative past the crossover (the demon harvests at DeltaF = 0), yet with the erasure bill in the books W_net stays strictly positive on every row and declines monotonically toward the quiet corner.</p>
+
+<h3>5. The 0/0: the Reversible Corner of the Information Engine</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">W_net -&gt; 0 as extraction -&gt; ln 2 and erasure -&gt; ln 2: 0/0, removable value 0</p>
+<p>The ideal Szilard corner extracts ln 2 per bit while the coin costs ln 2 to erase; measured W_net approaches 0 and H/ln 2 approaches 1 only as the power fades - exactly Carnot's corner of Ch.73, repeated: efficiency reaches its ceiling only at zero power. The removable singularity of the information engine is removed by its own currency: the coin's price is the bill's value, and the demon settles at par. Books close with the coin.</p>
+""",
+            "quiz": [
+                {"q": "The coin's face value and its erasure bill are both:", "options": ["ln 2", "e", "0", "infinite"], "correct": 0},
+                {"q": "Berut et al. (Nature 483, 187) measured the erasure bill per bit as:", "options": ["0.69 k_B T (ln 2)", "2 k_B T", "e k_B T", "0"], "correct": 0},
+                {"q": "The dead coin (sign bit -> speed) yields:", "options": ["J = 0.99985, W_net = +0.804", "J = 2", "J = e^I", "J = 0"], "correct": 0},
+                {"q": "Measured net cost W_net on the engaged frontier:", "options": ["+0.736 -> +0.654, never negative", "always negative", "= 0", "= ln 2"], "correct": 0},
+                {"q": "The removable value of W_net at the reversible corner is:", "options": ["0", "ln 2", "e", "1/2"], "correct": 0}
+            ]
         }
     ]
     
