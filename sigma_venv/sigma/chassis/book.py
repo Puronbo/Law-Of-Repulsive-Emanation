@@ -875,6 +875,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Einstein 1905, Sutherland 1905, Stokes 1851, Langevin 1908, Uhlenbeck-Ornstein 1930, Johnson 1928, Nyquist 1928, Callen-Welton 1951, Kubo 1957",
     },
+    {
+        "part": "IX",
+        "chapter": 70,
+        "title": "The Amplified 0/0: Stochastic Resonance (Benzi 1982, McNamara-Wiesenfeld 1989)",
+        "status": REAL,
+        "category": "nonlinear_dynamics",
+        "mechanism": "Bistable V(x)=x^4/4-x^2/2 (barrier 1/4, wells +-1), subthreshold drive A=0.1 < A*=0.3849, Euler-Maruyama dt=0.01, 2e6 steps: gain is 0/0 in noise D - g(D->0)=1 (static tilt A/|V''|=0.05, zero amplification), g(D->inf)->0 (buried); removable peak g*=3.36 at D_opt=0.155 (amplification 236% over floor; two-state SNR bell 0.0000->0.0143->0.0025). Kramers 1940 law r(D)=sqrt(2)/2pi*exp(-DU/D) verified over 40,000 s law-regime runs: DU_meas/DU=1.031 (point ratios 0.93..1.01). Synchrony identity at the peak: crossing rate meets the signal, r_opt/f_s=0.989 (theory 0.898; D_opt/D*=0.933, D* where r=f_s). Nature rents the noise: 100-kyr ice-age cycle (Benzi-Parisi-Sutera-Vulpiani, Tellus 34, 1982), Schmitt trigger (Fauve-Heslot 1983), crayfish (Douglass 1993), neurons (Longtin 1991), paddlefish (Russell, Wilkens, Moss, Nature 402, 1999). The bath repays the demon (Ch.69, k_B*T/dof) and the barrier re-lends it: gain is the repayment at the frequency of the borrower, no free lunch.",
+        "examples": ["Kramers DU 1.031", "gain 3.36 at D 0.155", "r/f_s 0.989", "D_opt/D* 0.933"],
+        "sigma_value": 1.0,
+        "source": "Kramers 1940, Milankovitch 1941, Benzi-Parisi-Sutera-Vulpiani 1982, Fauve-Heslot 1983, McNamara-Wiesenfeld 1989, Longtin-Bulsara-Moss 1991, Douglass-Wilkens-Pantazelou-Moss 1993, Gammaitoni-Hanggi-Jung-Marchesoni 1998, Petit 1999, Russell-Wilkens-Moss 1999",
+    },
 ]
 
 

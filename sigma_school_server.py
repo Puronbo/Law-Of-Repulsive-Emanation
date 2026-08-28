@@ -2848,6 +2848,41 @@ def build_courses():
                 {"q": "Resistor thermal noise (Nyquist):", "options": ["sqrt(4 k_B*T*R*df)", "k_B*T*R", "4*k_B*T", "sqrt(R*df)"], "correct": 0},
                 {"q": "The noise the bath repays equals:", "options": ["k_B*T per degree of freedom", "zero", "infinite", "h*nu"], "correct": 0}
             ]
+        },
+        {
+            "id": 70,
+            "title": "The Amplified 0/0: Stochastic Resonance (Benzi 1982, McNamara-Wiesenfeld 1989)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 70: The Amplified 0/0: Stochastic Resonance</h2>
+<p>Ch.69 caught the bath repaying the demon's bill as noise. This chapter catches the barrier re-lending it: a weak, subthreshold signal rides the noise across the barrier, and the noise of Ch.69 becomes the amplifier of Ch.70.</p>
+
+<h3>1. The Double Well and the 0/0 of Gain</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">V(x) = x^4/4 - x^2/2, barrier 1/4; drive A = 0.1 &lt; critical tilt A* = 0.3849</p>
+<p>Gain is 0/0 in noise D: at D-&gt;0 the particle is frozen (gain = 1, only the static tilt); at D-&gt;inf the signal is buried (gain -&gt; 0); between them the barrier admits a removable peak.</p>
+
+<h3>2. The Leak (Kramers 1940)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">r(D) = (sqrt(2)/2 pi) e^(-DU/D); DU_meas/DU = 1.031</p>
+<p>The barrier leaks at Kramers' rate; the Arrhenius fit over 40,000 s of simulation recovers the barrier to 3 parts in 100.</p>
+
+<h3>3. The Bell</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">gain g = 3.36 at D_opt = 0.155 (236% over the static floor)</p>
+<p>A signal that the barrier alone cannot pass is amplified nearly three and a half times by the noise Ch.69 measured as pure dissipation.</p>
+
+<h3>4. The Synchrony (the removable value)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">r_opt/f_s = 0.989 ; D_opt/D* = 0.933</p>
+<p>The peak sits where the leak meets the beat: gain is maximized when the well is bled once per signal period - the noise is lent at the frequency of the borrower.</p>
+
+<h3>5. Nature Rents the Noise</h3>
+<p>The 100-kyr ice-age cycle (Benzi et al. 1982, Tellus 34) amplifies a subthreshold Milankovitch forcing; Fauve and Heslot (1983) measured the bell in a Schmitt trigger; crayfish (Douglass 1993), neurons (Longtin 1991), and the paddlefish (Russell 1999) use it to detect prey. The demon bills (68), the bath repays (69), the barrier borrows back (70) - at measured interest g*-1 = 236%, payable not by the signal but by the noise already owed. No free lunch: the noise is not the payment; the noise is the loan.</p>
+""",
+            "quiz": [
+                {"q": "Ch.70's measured amplification gain peak:", "options": ["3.36 at D = 0.155", "0", "1", "infinite"], "correct": 0},
+                {"q": "The critical tilt A* of the double well:", "options": ["0.3849", "0", "1", "e"], "correct": 0},
+                {"q": "At the peak, the measured leak meets the signal:", "options": ["r_opt/f_s = 0.989", "r = 0", "r = inf", "r = c"], "correct": 0},
+                {"q": "Kramers' rate law (1940):", "options": ["r = Q e^(-DU/D)", "r = e^(D/DU)", "r = DU D", "r = 1/D"], "correct": 0},
+                {"q": "The classic stochastic resonance evidence:", "options": ["ice-age cycles, Schmitt trigger, paddlefish", "black holes", "quarks", "dark matter"], "correct": 0}
+            ]
         }
     ]
     
