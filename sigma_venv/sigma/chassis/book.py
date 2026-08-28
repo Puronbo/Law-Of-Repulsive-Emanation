@@ -864,6 +864,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Maxwell 1867, Szilard 1929, Landauer 1961, Bennett 1982, Loyd 1982",
     },
+    {
+        "part": "IX",
+        "chapter": 69,
+        "title": "The Fluctuation-Dissipation 0/0 (Einstein 1905, Nyquist 1928, Callen-Welton 1951)",
+        "status": REAL,
+        "category": "statistical_mechanics",
+        "mechanism": "Ornstein-Uhlenbeck, 2000+6000 particles, Euler-Maruyama dt=0.005, gamma/m=1, T=300K: <x^2>=2Dt from the origin (t=10..100 s tracks theory 2Dt(1-e^-t/tau)); D measured via 6000x40 near-independent 4 s blocks of squared displacement = 4.1370e-21 vs k_B*T/Mgamma 4.1419e-21 (ratio 0.99880, 1 part in 800). Friction: velocity autocorrelation Gamma = 1.0089 +/- 0.0065 (theory 1.0000; block scatter). Marriage: D*gamma/(k_B*T) = 1.0051 +/- 0.0065, equipartition continuum 1.0001 (raw 1.0026 = +0.25% Euler overshoot removed exactly). Johnson noise 10 kOhm/300K/100 kHz: V_rms measured 4.0701e-6 V vs sqrt(4k_B*T*R*df) 4.0704e-6 V (ratio 0.99993, 1 part in 14,000). The bath repays the demon's bill (Ch.68, k_B*T*ln2/bit) at rate k_B*T per degree of freedom: fluctuation is spent heat, the theorem is the 0/0 of the account.",
+        "examples": ["walk 0.99880", "Gamma 1.0089(65)", "D gamma/kT 1.0051(65)", "Vrms 0.99993"],
+        "sigma_value": 1.0,
+        "source": "Einstein 1905, Sutherland 1905, Stokes 1851, Langevin 1908, Uhlenbeck-Ornstein 1930, Johnson 1928, Nyquist 1928, Callen-Welton 1951, Kubo 1957",
+    },
 ]
 
 

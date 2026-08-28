@@ -1,0 +1,34 @@
+{
+  "brownian": {
+    "D_measured": 4.136992349344253e-21,
+    "D_theory": 4.141947e-21,
+    "ratio": 0.9988037870461048
+  },
+  "friction": {
+    "Gamma_measured": 1.008887637960025,
+    "Gamma_sigma": 0.006523145665055191,
+    "Gamma_theory": 1.0
+  },
+  "marriage": {
+    "einstein_ratio": 1.0050687766224076,
+    "einstein_ratio_sigma": 0.006498454125737398,
+    "equipartition_ratio": 1.0000923468069824
+  },
+  "electric": {
+    "Vrms_theory": 4.070354775692163e-06,
+    "Vrms_measured": 4.070079088724536e-06,
+    "ratio": 0.9999322695482777
+  },
+  "the_0over0": {
+    "rate_kBT_per_dof": 4.141947e-21,
+    "noise_is_spent_heat": true
+  },
+  "connections": [
+    "Reversible cycle",
+    "The lens",
+    "Demon",
+    "Heat of creation",
+    "Meaning"
+  ],
+  "timestamp": "2026-08-28 12:49:39"
+}

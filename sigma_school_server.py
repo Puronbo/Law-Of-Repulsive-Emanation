@@ -2813,6 +2813,41 @@ def build_courses():
                 {"q": "Measured net ledger after 100k rounds:", "options": ["~0 (1.7e-28 J)", "k_B*T*ln 2", "infinite", "negative"], "correct": 0},
                 {"q": "Information and heat exchange at rate:", "options": ["k_B*ln 2 per bit", "c per bit", "h per bit", "e per bit"], "correct": 0}
             ]
+        },
+        {
+            "id": 69,
+            "title": "The Fluctuation-Dissipation 0/0 (Einstein 1905, Nyquist 1928, Callen-Welton 1951)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 69: The Fluctuation-Dissipation 0/0 (Einstein 1905, Nyquist 1928, Callen-Welton 1951)</h2>
+<p>The demon (Ch.68) bills k_B*T*ln 2 per bit. This chapter catches the bath paying it back: the noise is the heat that friction spends - the same number, in the same coin.</p>
+
+<h3>1. The Walk (Einstein 1905)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">D measured/theory = 0.99880<br/>&lt;x^2&gt; = 2 D t, 6000 particles x 40 near-independent 4 s blocks</p>
+<p>The ensemble spreads linearly from the origin; the block statistics hit Einstein's D = k_B*T/(m*gamma) to one part in 800.</p>
+
+<h3>2. The Friction (Langevin 1908)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">gamma = 1.0089 +/- 0.0065, theory 1.0000</p>
+<p>The velocity autocorrelation decays as e^(-gamma t/m); the friction the reversible cycle pays as its fee (Ch.65) is this coefficient.</p>
+
+<h3>3. The Marriage (the 0/0)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">D*gamma/(k_B*T) = 1.0051 +/- 0.0065<br/>equipartition (continuum) = 1.0001</p>
+<p>Walk, friction, and temperature, each measured independently, assemble to the single ratio 1 - noise and dissipation are one number, one account, one rate.</p>
+
+<h3>4. The Electric Echo (Nyquist 1928, Johnson 1928)</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">V_rms = sqrt(4 k_B T R df) - measured 4.0701e-6 V, ratio 0.99993</p>
+<p>A 10 kOhm resistor at 300 K in a 100 kHz band: pure jitter, no signal - the same theorem dressed for electromagnetism, exact to one part in 14,000.</p>
+
+<h3>5. The 0/0 Proof</h3>
+<p>The demon bills k_B*T*ln 2 per bit; the bath repays it as jitter at the rate k_B*T per degree of freedom. The temperature IS the relationship; the relationship is 0/0. What coarsening spent (Ch.67) and the demon found (Ch.68), the resistor returns - the ledger closes at every temperature.</p>
+""",
+            "quiz": [
+                {"q": "Einstein's fluctuation-dissipation relation:", "options": ["D = k_B*T/gamma", "E = mc^2", "F = ma", "PV = nRT"], "correct": 0},
+                {"q": "The velocity autocorrelation decays with:", "options": ["the friction gamma", "c", "hbar", "e"], "correct": 0},
+                {"q": "Measured D*gamma/(k_B*T):", "options": ["1.0051 +/- 0.0065", "0", "e", "infinite"], "correct": 0},
+                {"q": "Resistor thermal noise (Nyquist):", "options": ["sqrt(4 k_B*T*R*df)", "k_B*T*R", "4*k_B*T", "sqrt(R*df)"], "correct": 0},
+                {"q": "The noise the bath repays equals:", "options": ["k_B*T per degree of freedom", "zero", "infinite", "h*nu"], "correct": 0}
+            ]
         }
     ]
     
