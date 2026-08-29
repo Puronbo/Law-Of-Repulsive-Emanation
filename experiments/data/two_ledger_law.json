@@ -1,0 +1,63 @@
+{
+  "seed": 42,
+  "median": 0.5682,
+  "rows": [
+    {
+      "name": "null_05_05",
+      "mu": 0.11523,
+      "lnJ": -0.00281,
+      "delta_mu": 0.00233,
+      "minus_lnJ": 0.00281,
+      "dev": -0.00049
+    },
+    {
+      "name": "eng_035_20",
+      "mu": 0.04285,
+      "lnJ": 0.07263,
+      "delta_mu": -0.07005,
+      "minus_lnJ": -0.07263,
+      "dev": 0.00258
+    },
+    {
+      "name": "eng_025_40",
+      "mu": 0.01504,
+      "lnJ": 0.09406,
+      "delta_mu": -0.09786,
+      "minus_lnJ": -0.09406,
+      "dev": -0.0038
+    },
+    {
+      "name": "eng_015_60",
+      "mu": -0.01018,
+      "lnJ": 0.11051,
+      "delta_mu": -0.12308,
+      "minus_lnJ": -0.11051,
+      "dev": -0.01257
+    },
+    {
+      "name": "eng_010_80",
+      "mu": -0.02392,
+      "lnJ": 0.11973,
+      "delta_mu": -0.13682,
+      "minus_lnJ": -0.11973,
+      "dev": -0.01709
+    },
+    {
+      "name": "eng_005_16",
+      "mu": -0.03836,
+      "lnJ": 0.12689,
+      "delta_mu": -0.15126,
+      "minus_lnJ": -0.12689,
+      "dev": -0.02437
+    }
+  ],
+  "fit": {
+    "slope_origin": -0.891,
+    "slope_free": -0.8478,
+    "intercept_free": 0.0053,
+    "nq": 6,
+    "slope_mild": -1.012,
+    "mean_dev_mild": -0.0006,
+    "dev_monotone": true
+  }
+}

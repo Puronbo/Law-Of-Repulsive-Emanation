@@ -1018,6 +1018,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Sagawa-Ueda 2010/2008, Parrondo-Horowitz-Sagawa 2015, Szilard 1929, Landauer 1961, Crooks 1999",
     },
+    {
+        "chapter": 83,
+        "title": "The Straight-Line Book: the Two-Ledger Law Delta mu = -ln J_act over the Whole Frontier - slope -1, and the Shaping as a Monotone Curve (Sagawa-Ueda 2010, Crooks 1999)",
+        "part": "IX",
+        "status": REAL,
+        "category": "statistical_mechanics",
+        "mechanism": "Promoting Ch.82's single-coin agreement into a LAW by measuring the FULL engaged frontier on the same round-trip trap (V=lam x^2/2, lam 1->2->1, DeltaF=0, D=beta=1, Heun SRK2, seed 42, median bit, run_stiff): sweep the fast/slow leverage 0.5/0.5 null, 0.35/2, 0.25/4, 0.15/6, 0.10/8, 0.05/16 and compare the tilt-center ledger Delta mu = mu_coin - mu_control (Ch.80/81) to the exponential information book -ln J_act = -ln <e^(-W)>, ln(sample) (Ch.74/75). MEASURED LAW - Delta mu = -ln J_act holds EXACTLY in the mild-coin (constant-detuning) limit: through-origin slope -1.012 ~ -1, mean |dev| = 0.0006, per-row dev +0.0026 (0.35/2) and -0.0038 (0.25/4); the deviation |Delta mu + ln J_act| is then a MONOTONE function of the leverage, 0.0126 (0.15/6), 0.0171 (0.10/8), 0.0244 (0.05/16 harvest), verified monotone = the Ch.81 shaping (netR) now measured as a CURVE against the coin rather than at single points. A weak coin is entirely a constant detuning, so its detuning dollar-for-dollar equals its information book; a strong coin bends the free fit to slope -0.85, intercept +0.005, the slope -1 belonging to the mild limit. THE 0/0 - at the null/control end (no feedback) Delta mu -> 0 and ln J_act -> 0 TOGETHER (both vanish at reversibility), so the slope Delta mu/ln J_act is 0/0 whose removable value is the measured -1: the SAME removable value the mirror carried at P'(0)/P(0) = 1/2 (Ch.77) and the tilt center a(1/2) = 0 (Ch.80) - one constant, now dressed as the slope of a law. The two-ledger identity is exact to the extent the demon is a constant, and the monotone deviation is the conditional state-dependent part that grows as the bit is engineered harder; neither is assumed, both are measured.",
+        "examples": ["two-ledger law Delta mu = -ln J_act exact in the mild limit: through-origin slope -1.012, mean |dev| 0.0006", "deviation |Delta mu + ln J| monotone in leverage 0.003 -> 0.024 = the Ch.81 shaping as a curve", "free fit over the strong frontier bends the slope to -0.85, intercept +0.005 (strong rows add shaping)", "0/0: both ledgers vanish together at control -> slope 0/0 -> -1, the mirror's own removable value"],
+        "sigma_value": 1.0,
+        "source": "Sagawa-Ueda 2010/2008, Crooks 1999, Parrondo-Horowitz-Sagawa 2015, Szilard 1929, Landauer 1961",
+    },
 ]
 
 

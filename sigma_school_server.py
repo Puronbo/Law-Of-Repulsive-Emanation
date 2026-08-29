@@ -3312,6 +3312,42 @@ def build_courses():
                 {"q": "The 0/0 efficiency per bit (coin fading to control) has removable value:", "options": ["bounded by 1 (Sagawa-Ueda J <= e^I)", "0 always", "ln 2", "infinity"], "correct": 0},
                 {"q": "The deviation |Delta mu + ln J_act| on the strong coin tracks:", "options": ["the shaping residual netR of Ch.81", "the median bit", "the variance", "the rate function"], "correct": 0}
             ]
+        },
+        {
+            "id": 83,
+            "title": "The Straight-Line Book: the Two-Ledger Law Delta mu = -ln J_act over the Whole Frontier - slope -1, and the Shaping as a Monotone Curve (Sagawa-Ueda 2010, Crooks 1999)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 83: The Straight-Line Book</h2>
+<p>Ch.82 found the two ledgers agreed on one coin; this chapter measures the FULL engaged frontier and promotes that into a LAW - Delta mu = -ln J_act, exact in the mild-coin limit, slope -1 through the origin, with the deviation a monotone function of the leverage (the Ch.81 shaping as a curve).</p>
+
+<h3>1. Why a Law</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">sweep the fast/slow leverage 0.5/0.5, 0.35/2, 0.25/4, 0.15/6, 0.10/8, 0.05/16 on the median-bit demon</p>
+<p>A single coincidence could be luck; a LAW is a straight line through the origin with a determined slope the whole frontier follows, whose residual is itself meaningful. Same round-trip trap (DeltaF = 0, D = beta = 1), Heun SRK2, seed 42.</p>
+
+<h3>2. Slope -1 in the Mild Limit</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">mild rows: through-origin slope = -1.012 ~ -1, mean |dev| = 0.0006 (dev 0.0026, 0.0038)</p>
+<p>A weak coin is entirely a constant detuning, so its detuning dollar-for-dollar equals its information book: the mild law is EXACT. The strong rows (dev 0.0126, 0.0171, 0.0244) bend the free fit to slope -0.85, but the slope -1 belongs to the mild limit.</p>
+
+<h3>3. The Deviation Is the Shaping Curve</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">|dev| = |Delta mu + ln J_act| : 0.003, 0.004, 0.013, 0.017, 0.024 - monotone in leverage</p>
+<p>The per-row deviation is nothing other than the Ch.81 state-dependence (netR), now measured as a function of the coin and verified MONOTONE. The law is exact to the extent the demon is a constant; the deviation is the conditional part that grows as the bit is engineered harder.</p>
+
+<h3>4. The 0/0 That Fixes the Slope</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">at the control end Delta mu -&gt; 0 and ln J -&gt; 0 together : the slope is 0/0 -&gt; -1</p>
+<p>The detuning and the information book both vanish at reversibility, so Delta mu / ln J_act is a 0/0 whose removable value is the measured -1 - the same constant the mirror carried at P'(0)/P(0) = 1/2 (Ch.77) and the tilt center a(1/2) = 0 (Ch.80). One removable value, dressed as the slope of a law.</p>
+
+<h3>5. One Law</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">Delta mu = -ln J_act : exact for the constant detuning of a weak demon, bent monotonically by a strong one's shaping</p>
+<p>Eight lenses on one equality P(+W)/P(-W) = e^W close as one law: the demon's price is a straight line through the origin with slope -1, fixed by the mirror's own removable value.</p>
+""",
+            "quiz": [
+                {"q": "In the mild-coin limit the two-ledger slope through the origin is:", "options": ["-1.012 ~ -1 with mean |dev| 0.0006 (the law is exact)", "-0.85", "0", "+1"], "correct": 0},
+                {"q": "The two-ledger law reads:", "options": ["Delta mu = -ln J_act", "Delta mu = ln J_act", "Delta mu = 0", "Delta mu = q"], "correct": 0},
+                {"q": "The |deviation| = |Delta mu + ln J_act| is:", "options": ["monotone in leverage (0.003 -> 0.024), the Ch.81 shaping", "always zero", "constant 0.9", "the median bit"], "correct": 0},
+                {"q": "At the control end the slope Delta mu/ln J is:", "options": ["0/0 whose removable value is -1", "0 exactly", "ln 2", "1"], "correct": 0},
+                {"q": "The free fit over the strong frontier bends the slope to:", "options": ["-0.85 (strong rows add shaping)", "-1.012", "0.97", "0.219"], "correct": 0}
+            ]
         }
     ]
     
