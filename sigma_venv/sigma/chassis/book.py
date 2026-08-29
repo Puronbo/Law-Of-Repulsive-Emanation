@@ -1007,6 +1007,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Sagawa-Ueda 2010, Parrondo-Horowitz-Sagawa 2015, Crooks 1999, Touchette 2009, Seifert 2012",
     },
+    {
+        "chapter": 82,
+        "title": "The Two Ledgers Are One Price: the Coin's Detuning, Its Information Book, and the Extraction Efficiency per Bit (Sagawa-Ueda 2010, Szilard-Landauer)",
+        "part": "IX",
+        "status": REAL,
+        "category": "statistical_mechanics",
+        "mechanism": "Uniting the demon's two books on the SAME feedback round-trip trap (V=lam x^2/2, lambda 1->2->1, DeltaF=0, D=beta=1, Heun SRK2, seed 42, rows of Ch.74-81): the exponential ledger ln J_act = ln <e^(-W)> (Ch.74/75, J_act 1.0748->1.1368, ln J 0.072->0.128, always below the bit's face value I=ln2=0.6931, W_net=<W>+ln2 >= 0) and the tilt-center ledger Delta mu = mu_coin - mu_control (Ch.80/81, the realized work detuning = the constant part of the demon, c=a(1/2)). On the reversible control ln J = 0.0006 ~ 0, so Delta mu is precisely the work the information purchases. MEASURED HYPOTHESIS - the two ledgers read the same price: engaged 0.35/2 Delta mu = -0.0701, -ln J_act = -0.0726, ratio 0.97 (agree to ~3%); engaged 0.25/4 Delta mu = -0.0979, -ln J = -0.0941, ratio 1.04; harvest 0.05/16 Delta mu = -0.1520, -ln J = -0.1294, ratio 1.18; dead 0.5/0.5 Delta mu +0.0023, -ln J +0.0028 (J~1). The deviation |Delta mu + ln J_act| grows exactly with the Ch.81 shaping residual netR: the CONSTANT part of the demon equals its ln J bookkeeping, and the excess is the conditional, state-dependent shaping a mere detuning cannot price. EXTRACTION EFFICIENCY of the bit epsilon = |Delta mu| / ln 2 (fraction of the ideal one-bit ceiling, Sagawa-Ueda J <= e^I = 2.000): 0.101 engaged 0.35/2, 0.141 engaged 0.25/4, 0.219 harvest - a real engine purchases one tenth to one fifth of the ideal extraction, never more, and Ch.75's W_net bill (erasure > extraction) is nowhere violated. The 0/0: as the coin fades to the no-feedback control, Delta mu -> 0 and ln J -> 0 TOGETHER (both vanish at reversibility), so the efficiency per bit is 0/0 whose removable value is bounded by 1 (J <= e^I); the measured 0.10-0.22 sit at a finite fraction of that bound. Seven lenses on one equality P(+W)/P(-W) = e^W close: the tilt-center translation and the exponential information book are the same measured price, a mild coin's ledgers agree to 3%, a strong coin's split is its shaping, and the demon collects only a tenth to a fifth of its bit.",
+        "examples": ["Delta mu = -ln J_act to 3% on engaged 0.35/2 (ratio 0.97): two ledgers one price", "extraction efficiency epsilon = |Delta mu|/ln 2: 0.101 -> 0.219, far below ideal 1.0", "deviation |Delta mu + ln J| grows with the Ch.81 shaping netR on the strong coin", "0/0: Delta mu and ln J vanish together at reversibility -> efficiency removable value bounded by 1"],
+        "sigma_value": 1.0,
+        "source": "Sagawa-Ueda 2010/2008, Parrondo-Horowitz-Sagawa 2015, Szilard 1929, Landauer 1961, Crooks 1999",
+    },
 ]
 
 

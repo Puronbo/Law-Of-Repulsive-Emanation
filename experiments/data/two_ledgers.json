@@ -1,0 +1,52 @@
+{
+  "seed": 42,
+  "median": 0.5682,
+  "ln2": 0.6931471805599453,
+  "rows": {
+    "engaged_0p5": {
+      "runs": 200000,
+      "mu": 0.11523,
+      "var": 0.24977,
+      "lnJ": -0.00281,
+      "delta_mu": 0.00233,
+      "minus_lnJ": 0.00281,
+      "ratio_dm_over_lnJ": -0.8273,
+      "efficiency_eps": 0.0034
+    },
+    "engaged_035": {
+      "runs": 200000,
+      "mu": 0.04285,
+      "var": 0.25548,
+      "lnJ": 0.07263,
+      "delta_mu": -0.07005,
+      "minus_lnJ": -0.07263,
+      "ratio_dm_over_lnJ": -0.9645,
+      "efficiency_eps": 0.1011
+    },
+    "engaged_025": {
+      "runs": 200000,
+      "mu": 0.01504,
+      "var": 0.24208,
+      "lnJ": 0.09406,
+      "delta_mu": -0.09786,
+      "minus_lnJ": -0.09406,
+      "ratio_dm_over_lnJ": -1.0404,
+      "efficiency_eps": 0.1412
+    },
+    "harvest_005": {
+      "runs": 100000,
+      "mu": -0.03907,
+      "var": 0.197,
+      "lnJ": 0.12937,
+      "delta_mu": -0.15197,
+      "minus_lnJ": -0.12937,
+      "ratio_dm_over_lnJ": -1.1747,
+      "efficiency_eps": 0.2192
+    }
+  },
+  "control": {
+    "mu": 0.1129,
+    "var": 0.25118,
+    "lnJ": 0.00061
+  }
+}

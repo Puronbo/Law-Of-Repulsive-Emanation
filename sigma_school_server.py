@@ -3276,6 +3276,42 @@ def build_courses():
                 {"q": "A pure detuning is invisible to:", "options": ["the mirror P(w)/P(-w) and every tilt center", "the variance", "Delta mu", "nothing"], "correct": 0},
                 {"q": "The State-Dependence Index (shaped fraction) is:", "options": ["~6% engaged, ~19% harvest", "0.894", "50%", "100%"], "correct": 0}
             ]
+        },
+        {
+            "id": 82,
+            "title": "The Two Ledgers Are One Price: the Coin's Detuning, Its Information Book, and the Extraction Efficiency per Bit (Sagawa-Ueda 2010, Szilard-Landauer)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 82: The Two Ledgers Are One Price</h2>
+<p>Ch.74/75 kept the demon's EXPONENTIAL ledger ln J_act = ln &lt;e^(-W)&gt; and Ch.80/81 kept the TILT-CENTER ledger, whose translation is the realized work detuning Delta mu = mu_coin - mu_control. This chapter asks whether they are the same price, and how efficiently a real coin buys the bit.</p>
+
+<h3>1. Two Books on One Engine</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">ln J_act = ln &lt;e^(-W)&gt; (Ch.74/75) ; Delta mu = mu_coin - mu_control (Ch.80/81) ; I = ln 2 = 0.6931 nats, J &lt;= e^I</p>
+<p>On the reversible control ln J = 0.0006 ~ 0, so Delta mu is precisely the work information purchases. The hypothesis: a mild (mostly constant-detuning) coin reads the same number in both books, Delta mu ~ -ln J_act.</p>
+
+<h3>2. The Ledgers Agree on the Mild Coin</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">engaged 0.35/2: Delta mu = -0.0701, -ln J = -0.0726, ratio 0.97 (~3%) ; 0.25/4: 1.04 ; harvest: 1.18</p>
+<p>The mild coin reads -0.070 in both books to 3%. The strong coin departs - the deviation |Delta mu + ln J_act| grows exactly with the shaping residual netR of Ch.81: the constant part of the demon equals its bookkeeping, and the excess is the conditional, state-dependent part a mere detuning cannot price.</p>
+
+<h3>3. The Extraction Efficiency per Bit</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">eps = |Delta mu| / ln 2 : 0.101 (0.35/2), 0.141 (0.25/4), 0.219 (harvest)</p>
+<p>Normalized to the bit's face value, the engine runs at 10-22% of the ideal one-bit extraction, never past the ceiling (Sagawa-Ueda). The Ch.75 bill W_net = &lt;W&gt; + ln 2 &gt;= 0 is never violated - erasure always out-buys extraction.</p>
+
+<h3>4. The 0/0 That Is the Efficiency</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">as the coin fades to control, Delta mu -&gt; 0 and ln J -&gt; 0 together: eps = |Delta mu|/ln 2 is 0/0, removable value bounded by 1</p>
+<p>The efficiency per bit is a 0/0 at reversibility whose removable value is bounded by 1 (J &lt;= e^I). The measured 0.10-0.22 sit at a finite fraction of that bound - the demon's fee is never more than the coin, and a practical engine keeps only a tenth to a fifth of it.</p>
+
+<h3>5. One Coin, Two Ledgers, One Price</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">Delta mu ~ -ln J_act to 3% (mild) ; the excess is the shaping of Ch.81</p>
+<p>Seven lenses on one equality close: the tilt-center translation and the exponential information book are the same measured price - a mild coin's two ledgers agree to 3%, a strong coin's split is its shaping - while the demon collects only a tenth to a fifth of its bit.</p>
+""",
+            "quiz": [
+                {"q": "On the mild engaged coin, the two ledgers agree:", "options": ["Delta mu = -ln J_act to ~3% (ratio 0.97)", "to 50%", "never", "only at t = 1/2"], "correct": 0},
+                {"q": "The extraction efficiency eps = |Delta mu|/ln 2 for engaged 0.35/2:", "options": ["0.101 (10% of the bit's face value)", "1.0", "0.693", "0.004"], "correct": 0},
+                {"q": "The efficiency rises with the coin to a maximum at harvest:", "options": ["0.219 (22%)", "1.0", "0.003", "0.90"], "correct": 0},
+                {"q": "The 0/0 efficiency per bit (coin fading to control) has removable value:", "options": ["bounded by 1 (Sagawa-Ueda J <= e^I)", "0 always", "ln 2", "infinity"], "correct": 0},
+                {"q": "The deviation |Delta mu + ln J_act| on the strong coin tracks:", "options": ["the shaping residual netR of Ch.81", "the median bit", "the variance", "the rate function"], "correct": 0}
+            ]
         }
     ]
     
