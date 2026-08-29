@@ -1,0 +1,43 @@
+{
+  "seed": 42,
+  "dt": 0.005,
+  "scaling": 40.0,
+  "median": 0.5682,
+  "rows": [
+    {
+      "name": "control",
+      "mu": 0.1131,
+      "sig2": 0.2512,
+      "q": 0.9004,
+      "far_residual": 3.055,
+      "far_argmax": 2.57
+    },
+    {
+      "name": "engaged",
+      "mu": 0.0448,
+      "sig2": 0.2588,
+      "q": 0.346,
+      "far_residual": 4.0125,
+      "s0": 1.075
+    },
+    {
+      "name": "harvest",
+      "mu": -0.0416,
+      "sig2": 0.193,
+      "q": -0.4315,
+      "far_residual": 5.1417,
+      "s0": 1.1379
+    }
+  ],
+  "theory": {
+    "mu": 5.977339,
+    "sig2": 12.044408,
+    "untilted_mode": 5.977339,
+    "tilted_mode": -6.067069000000001,
+    "k1_tilde_x2_over_2": 6.022204,
+    "mode_shift_minus_sig2": -12.044408,
+    "mirror_residual_gaussian": 0.0,
+    "sole": "I(a)=I(2mu-a) exactly; tilt shifts mode by -sigma^2 = k~_1",
+    "S0_control": 1.0002
+  }
+}

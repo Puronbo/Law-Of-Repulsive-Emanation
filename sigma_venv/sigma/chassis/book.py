@@ -974,6 +974,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Crooks 1999, Jarzynski 1997, Kurchan 1998, Mazonka-Jarzynski 1999, Onsager-Machlup 1953, Seifert 2012, Sagawa-Ueda 2010, Parrondo-Horowitz-Sagawa 2015, Barato-Seifert 2015",
     },
+    {
+        "chapter": 79,
+        "title": "The Rate Function Carries the Mirror: Large Deviations and the Legendre-Fenchel Dual of the Tilt (Onsager-Machlup 1953, Cramer 1938, Touchette 2009)",
+        "part": "IX",
+        "status": REAL,
+        "category": "statistical_mechanics",
+        "mechanism": "The third resolution of one equality P(+W)/P(-W) = e^W on the DeltaF = 0 round trip (Heun SRK2, seed 42, same instruments): Ch.77 read the PDF mirror M(w) = w, Ch.78 the cumulant ladder k~_n = (-1)^n k_n, and here the whole-curve level - the large-deviation rate function I(a) = sup_t[a t - ln phi(t)], the Legendre-Fenchel conjugate of the cumulant-generating function phi(t) = <e^(-tW)> = phi(1-t) (Gartner-Ellis; Cramer 1938; Touchette 2009; level-1 work large deviations, Touchette 2009 / Seifert 2012). For Gaussian work I(a) = (a-mu)^2/(2 sigma^2) is EXACTLY quadratic, even about the mean I(a) = I(2 mu - a) (Onsager-Machlup 1953; linearity of Gaussian work, Mazonka-Jarzynski 1999), and the e^(-W) tilt shifts the mode by exactly one variance: a* = mu - sigma^2 = k~_1 of Ch.78; on the drag parabola (mu=+5.98, sig^2=12.04, q=0.9926) the tilted mode lands at -6.07 = mu - sigma^2, and since sig^2 = 2 mu (VDT, Ch.72) the tilted mode is the mirror image -mu of the untilted +mu. The Ch.78 empty n>=3 rows ARE the quadratic's empty higher derivatives: a quadratic carries its ENTIRE tail in two numbers, R(a) = 0 to 3e-14, the 0/0 resolved. Measured mirror RESIDUAL R(a) = I(a) - I(2 mu - a) (the estimator of exactly the asymmetry a quadratic cannot hold): Gaussian 0; control round trip (q = 0.90 as Ch.76, skew +1.30, kurt 7.0) R = +3.06 at a = 2.57 (the skew's tail deposit - the shape the detailed theorem does not constrain, Ch.77's slack dressed as a whole curve); engaged 0.35/2 R = +4.01, harvest 0.05/16 R = +5.14 (one coin deepens the residual cumulatively, the mode heading toward the bit). Three books of one ledger: M(w) = w (Ch.77), k~_n = (-1)^n k_n (Ch.78), I(a) = I(2 mu - a) (this chapter) - the 0/0 resolves identically at each, and the demon's single entry prices knowing in variance, cumulants, and every tail point at once.",
+        "examples": ["parabola rate function a perfect mirror: I(a)=I(2mu-a) to 3e-14, tilt shifts mode by -sig^2 = k~_1", "control far-tail mirror residual +3.06 (Gaussian 0) while q = 0.90", "engaged residual +4.01, harvest +5.14: one coin moves the whole tail", "0/0: quadratic's empty n>=3 derivatives = whole tail in two numbers"],
+        "sigma_value": 1.0,
+        "source": "Crooks 1999, Jarzynski 1997, Onsager-Machlup 1953, Mazonka-Jarzynski 1999, Cramer 1938, Gartner-Ellis (Touchette 2009), Seifert 2012, Sagawa-Ueda 2010",
+    },
 ]
 
 

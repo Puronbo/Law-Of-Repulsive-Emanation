@@ -3168,6 +3168,42 @@ def build_courses():
                 {"q": "The Gaussian parabola's n >= 3 rows are:", "options": ["0/0 removed to (-1)^n", "q = 0.89", "mirror slope -5.6", "Var = 0"], "correct": 0},
                 {"q": "The parabola's channel 1 re-reads:", "options": ["-(1-q) = -0.0074, the Ch.76 discretization slack", "the coin's fee", "the median bit", "J = 1.075"], "correct": 0}
             ]
+        },
+        {
+            "id": 79,
+            "title": "The Rate Function Carries the Mirror: Large Deviations and the Legendre-Fenchel Dual of the Tilt (Onsager-Machlup 1953, Cramer 1938, Touchette 2009)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 79: The Rate Function Carries the Mirror</h2>
+<p>Ch.78 read the ladder - the Taylor coefficients of F = ln &lt;e^(-tW)&gt; at one point; this chapter reads the WHOLE curve. The large-deviation rate function I(a) = sup_t[a t - ln &lt;e^(-tW)&gt;] costs every averaged work value a, and the same equality P(+W)/P(-W) = e^W that fixed the mirror and the ladder here fixes a symmetry of the entire tail.</p>
+
+<h3>1. From the Ledger to the Curve</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">I(a) = sup_t[ a t - ln &lt;e^(-tW)&gt; ] (Gartner-Ellis, Cramer); the dual of phi(t) = phi(1-t) (Ch.78)</p>
+<p>The exponential of the moment-generating function and the rate function are Legendre-Fenchel conjugates: the exchange symmetry phi(t) = phi(1-t) of Ch.78 becomes a statement about how expensive different averaged-work values are. Same mirror, one level up, and the same 0/0 regimes appear as derivatives that vanish together.</p>
+
+<h3>2. The Quadratic That Is a Whole Book</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">I(a) = (a-mu)^2/(2 sig^2) ; tilt pushes mode to a* = mu - sig^2 = k~_1 ; I(a) = I(2mu-a) exactly</p>
+<p>Gaussian work has an EXACTLY quadratic rate function (Onsager-Machlup 1953; Mazonka-Jarzynski linearity). The tilt subtracts one variance from the mode - on the drag parabola (mu=+5.98, sig^2=12.04) the mode lands at -6.07 = mu - sig^2 = k~_1 of Ch.78, and since sig^2 = 2 &lt;W&gt; the tilted mode is the mirror image a* = -mu. The Ch.78 empty n&gt;=3 rows are the quadratic's empty higher derivatives: the whole tail is carried in two numbers.</p>
+
+<h3>3. The Mirror Residual on the Control</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">R(a) = I(a) - I(2mu-a) ; Gaussian 0 ; control +3.06 at a = 2.57 (far tail)</p>
+<p>The q = 0.90 round trip (skew +1.30, kurt 7.0) has a NON-Gaussian rate function. The mirror residual R(a) is exactly zero where the PDF mirror holds at rate level (the quadratic) and POSITIVE in the far tail - the skew's deposit, the same shape Ch.76 priced as q and Ch.77 showed lay off the mirror.</p>
+
+<h3>4. The Coin Is in the Far Tail of Both</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">control R = +3.06 ; engaged 0.35/2 R = +4.01 ; harvest 0.05/16 R = +5.14</p>
+<p>Feedback deepens the residual with each stronger coin. One coin, shown twice: the mode moves toward the bit and the whole far tail of I(a) leans - the rate function is the integrated ledger, and the demon's single entry prices knowing in variance (Ch.76), cumulants (Ch.78), and every tail point at once.</p>
+
+<h3>5. One Ledger, Three Books</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">M(w) = w (Ch.77, PDF) ; k~_n = (-1)^n k_n (Ch.78, cumulants) ; I(a) = I(2mu-a) (this chapter, tail)</p>
+<p>Three resolutions of one equality P(+W)/P(-W) = e^W: the point, the Taylor coefficients, the whole curve. The 0/0 resolves the same way at each - the Gaussian has its ladder empty above two and its rate function a perfect mirror - and the coin is one entry in all of them.</p>
+""",
+            "quiz": [
+                {"q": "The rate function I(a) is the Legendre-Fenchel conjugate of:", "options": ["ln <e^(-tW)> (the cumulant-generating function)", "the variance", "the median", "the skew"], "correct": 0},
+                {"q": "For Gaussian work the rate function is:", "options": ["(a-mu)^2/2 sig^2, even about the mean", "0 everywhere", "linear", "discontinuous"], "correct": 0},
+                {"q": "The tilt shifts the Gaussian mode by:", "options": ["exactly -sig^2 (to mu - sig^2 = k~_1)", "-mu", "the coin's fee", "nothing"], "correct": 0},
+                {"q": "Measured far-tail mirror residual on the control:", "options": ["+3.06 (skew's deposit; Gaussian is 0)", "0", "1.0003", "-5.6"], "correct": 0},
+                {"q": "The harvest coin deepens the residual to:", "options": ["+5.14", "0.894", "-0.0074", "+2.24"], "correct": 0}
+            ]
         }
     ]
     
