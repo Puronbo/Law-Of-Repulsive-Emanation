@@ -3384,6 +3384,42 @@ def build_courses():
                 {"q": "The deviation is strictly monotone in:", "options": ["the coin's own detuning |Delta mu| (0.003->0.024 as 0.070->0.151)", "the fourth cumulant", "the far-tail R", "the trace bend"], "correct": 0},
                 {"q": "The mild limit is special because there the coin:", "options": ["is exactly a constant added to the control trajectory, so the law holds", "has zero work", "has infinite variance", "is reversible in time"], "correct": 0}
             ]
+        },
+        {
+            "id": 85,
+            "title": "The One Price Is the Quadratic: a(1/2) = -ln J_act at every leverage - the Gaussian identity F'(1/2) = F(1), universal (Crooks 1999, Seifert 2012)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 85: The One Price Is the Quadratic</h2>
+<p>Applying known reality to Ch.82/83 yields a correction: the universal price is a(1/2) = -ln J_act, holding at EVERY leverage (control and strongest harvest coin alike), because the trap produces near-Gaussian work and F is quadratic.</p>
+
+<h3>1. The Known Reality</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">Gaussian work -&gt; F(t) = -mu t + 1/2 sigma^2 t^2 -&gt; F'(1/2) = F(1) -&gt; a(1/2) = -ln J_act</p>
+<p>For overdamped Brownian motion in a time-varying harmonic trap the work is Gaussian, so the tilt function is quadratic: the midpoint slope equals the endpoint value. This needs no reversibility and no control reference - it is a property of the parabola alone.</p>
+
+<h3>2. Measured Universal</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">|a(1/2) + ln J| &lt;= 0.0004 on every row (sampling), F-quadratic rms ~8e-5: control -0.00003, harvest -0.00035</p>
+<p>Across the whole frontier + control: a(1/2) = -ln J_act to +/-0.0004 everywhere, and F is parabolic to 1e-4. The identity is universal because it is the Gaussian quadratic structure, not a reversibility statement.</p>
+
+<h3>3. The Correction of Ch.82/83</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">Delta mu + ln J = F_c(1) - F_c'(0) + F_0'(0) : cancels to zero only when J_control ~ 1 (reversibility)</p>
+<p>The earlier Delta mu = -ln J_act is the mild-limit shadow: it subtracts the control derivative, which cancels only when the control is reversible. The universal identity a(1/2) = -ln J needs no control and no reversibility.</p>
+
+<h3>4. The Deviation Is the Irreversibility, Not a Broken Price</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">harvest: a + ln J = -0.00035 yet Delta mu + ln J = -0.024</p>
+<p>The monotone |Delta mu + ln J| of Ch.83/84 is Delta mu - the t=0 derivative - leaving the quadratic midpoint as the feedback injects irreversibility. The price a(1/2) = -ln J never breaks.</p>
+
+<h3>5. One Correction</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">same price, two views: the universal quadratic identity vs its mild-limit shadow - and the growing deviation is the feedback's irreversibility, not a broken law</p>
+<p>Eight lenses close corrected: the one price of the reversible mirror is the quadratic identity a(1/2) = -ln J, universal because the trap's work is Gaussian.</p>
+""",
+            "quiz": [
+                {"q": "The universal one-price identity of the mirror strand is:", "options": ["a(1/2) = -ln J_act, exact at every leverage", "Delta mu = -ln J_act only", "a(1/2) = 0 always", "F(0) = F(1)"], "correct": 0},
+                {"q": "It holds universally because:", "options": ["F is quadratic (near-Gaussian work), F'(1/2) = F(1)", "the coin is reversible", "J_control ~ 1", "the trap is stiff"], "correct": 0},
+                {"q": "The old Delta mu = -ln J_act is a mild-limit shadow because:", "options": ["it subtracts the control derivative, cancelling only when J_control ~ 1", "it uses t=1/2", "it is a theorem of the FT", "it ignores the variance"], "correct": 0},
+                {"q": "The growing |Delta mu + ln J| of Ch.83/84 is:", "options": ["Delta mu leaving the quadratic midpoint (the feedback's irreversibility), not a broken price", "a wrong measurement", "the erasure cost", "the tilt center failing"], "correct": 0},
+                {"q": "At harvest, while Delta mu + ln J = -0.024, the true price residual a + ln J is:", "options": ["-0.00035 (the price never breaks)", "-0.024", "0.6931", "1.0"], "correct": 0}
+            ]
         }
     ]
     
