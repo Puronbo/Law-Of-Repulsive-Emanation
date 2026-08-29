@@ -996,6 +996,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Crooks 1999, Jarzynski 1997, Touchette 2009 (biased ensemble), Gartner-Ellis, Seifert 2012, Sagawa-Ueda 2010",
     },
+    {
+        "chapter": 81,
+        "title": "The Coin Is a Constant: Feedback as Detuning vs Shaping - the Measurable Split of the Demon's Action (Sagawa-Ueda 2010, Parrondo-Horowitz-Sagawa 2015)",
+        "part": "IX",
+        "status": REAL,
+        "category": "statistical_mechanics",
+        "mechanism": "Ch.80 found the feedback coin TRANSLATES the work-tilt curve a(t) = <W e^(-tW)>/<e^(-tW)> (antisymmetric about a shifted center c = a(1/2) = -0.073 engaged, -0.129 harvest); this chapter measures how much of the coin is a PURE CONSTANT detuning vs a reshaping. For an unconditional constant bias delta (every trajectory's work shifted by delta - the leading effect of a detuned control) a(t) -> a(t) + delta at every t, so c = delta = Delta mu = mu_coin - mu_control exactly and the mirror never deforms (a pure detuning leaves every ratio P(w)/P(-w), every cumulant symmetry, and every tilt center unchanged - Sagawa-Ueda 2010; Parrondo-Horowitz-Sagawa 2015). Measured (Heun SRK2, seed 42, rows of Ch.76-80, 250k control / 200k engaged / 100k harvest): engaged 0.35/2 c = a(1/2) = -0.0726 vs Delta mu = -0.0683, |c - Delta mu| = 0.004 (6%), central reshaping residual netR = |a(t) - [a_control(t) + c]| over the well-conditioned window t in [-0.5, 2.0] = 0.037 - the coin is a translation to first order, ~94% detuned / ~6% shaped; harvest 0.05/16 c = -0.1294 vs Delta mu = -0.1547, c - Delta mu = +0.025 (19%) and netR = 0.289 - EIGHT times the engaged residual, ~81% detuned / ~19% shaped, the state-dependence of the bit now dominant. The departure of c from Delta mu and the reshaping residual are the SAME measure of how far each coin is from a mere priced offset; the demon's action splits between a constant part (invisible to the mirror, priced only in Delta mu which the Ch.76/78 variance-cumulant ledgers capture) and a conditional part (the reshaping, the information truly spent - Ch.75's two accounts, separated). The 0/0: as c -> 0 and the coin -> pure detuning, netR -> 0, so the reshaping-to-translation ratio is 0/0 whose removable value is the State-Dependence Index (~6% engaged, ~19% harvest). Six lenses on one equality; the demon, to first order, is a constant.",
+        "examples": ["engaged 0.35/2: c = -0.0726 ~ Delta mu = -0.0683 to 6%, netR 0.037 - near pure detuning", "harvest 0.05/16: c - Delta mu = +0.025 (19%), netR 0.289 (8x) - the coin now shapes", "a pure detuning is invisible to P(w)/P(-w), cumulant symmetries, tilt centers", "0/0 reshaping/translation -> State-Dependence Index (~6% engaged, ~19% harvest)"],
+        "sigma_value": 1.0,
+        "source": "Sagawa-Ueda 2010, Parrondo-Horowitz-Sagawa 2015, Crooks 1999, Touchette 2009, Seifert 2012",
+    },
 ]
 
 

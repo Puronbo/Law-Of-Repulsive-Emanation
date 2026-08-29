@@ -3240,6 +3240,42 @@ def build_courses():
                 {"q": "The feedback coin in tilt space:", "options": ["moves the center a(1/2) by the coin, preserving antisymmetry", "bends a(t) into a line", "zeroes the mean", "sets V = 0"], "correct": 0},
                 {"q": "The harvest coin displaces the center to:", "options": ["a(1/2) = -0.129 (mirror translated)", "+0.113", "0.496", "+5.14"], "correct": 0}
             ]
+        },
+        {
+            "id": 81,
+            "title": "The Coin Is a Constant: Feedback as Detuning vs Shaping - the Measurable Split of the Demon's Action (Sagawa-Ueda 2010, Parrondo-Horowitz-Sagawa 2015)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 81: The Coin Is a Constant</h2>
+<p>Ch.80 found the coin TRANSLATES the work-tilt curve - a(t) is antisymmetric about a shifted center c = a(1/2). This chapter measures HOW MUCH of the coin is a pure constant detuning: for a fixed offset delta the tilted mean obeys a(t) -&gt; a(t) + delta at every t, so c = delta = Delta mu.</p>
+
+<h3>1. Detuning vs Shaping</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">detuned: a(t) -&gt; a(t) + delta (mirror translates, never deforms); conditional: reshapes (Sagawa-Ueda 2010)</p>
+<p>A control that merely offsets every trajectory's work moves the distribution by a constant the mirror cannot see - ratios P(w)/P(-w) ignore an overall shift. A control that conditions on the state, as the information engine does, cannot be a single constant: it also reshapes the curve.</p>
+
+<h3>2. The Measured Split</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">engaged: c = -0.0726, Delta mu = -0.0683, c-Delta mu = -0.004 (6%), netR = 0.037 ; harvest: c-Delta mu = +0.025 (19%), netR = 0.289 (8x)</p>
+<p>For a pure detuning c = Delta mu exactly and the central reshaping residual netR (mean |a(t) - [a_control(t) + c]| over t in [-0.5, 2.0]) vanishes. The engaged coin meets this to 6% with netR = 0.037; the harvest deviates to 19% with an EIGHT times larger netR = 0.289 - the coin's departure from a translation is exactly its state-dependence.</p>
+
+<h3>3. The Mirror Cannot See the Constants</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">a pure detuning leaves every ratio P(w)/P(-w), every cumulant symmetry, every tilt center unchanged</p>
+<p>The constant part of the coin hides from every lens of Ch.77-80. Its fee shows only in Delta mu (which the variance/cumulant books of Ch.76/78 captured) and in this chapter's reshaping residual - Ch.75's two accounts, now separated into the constant and the conditional.</p>
+
+<h3>4. The 0/0 and the Constant</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">as c -&gt; 0 and the coin -&gt; pure detuning, netR -&gt; 0 : the reshaping/translation ratio is 0/0</p>
+<p>Its removable value is a State-Dependence Index: engaged ~6% detuned, harvest 19% - the fraction of the demon's work-curve action that cannot be absorbed by a shift, the part a Maxwell demon really spends on conditioning.</p>
+
+<h3>5. Part Priced, Part Engineered</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">engaged: 6% shaped, 94% detuned ; harvest: 19% shaped, 81% detuned</p>
+<p>The demon, to first order, is a constant - its whole action is a detuning invisible to the mirror - and only its state-dependent tail reshapes the curve. The split (6% engaged, 19% harvest) is the information cost in its purest measured form, and the 0/0 between translation and reshaping is resolved at last.</p>
+""",
+            "quiz": [
+                {"q": "For a pure constant detuning delta, the tilted mean obeys:", "options": ["a(t) -> a(t) + delta, so c = Delta mu", "a(t) -> 0", "a(t) -> sigma^2", "a(t) doubles"], "correct": 0},
+                {"q": "Measured c - Delta mu for the engaged coin:", "options": ["-0.004 (6%) - nearly pure detuning", "0.289", "-0.129", "0.90"], "correct": 0},
+                {"q": "The harvest coin's central reshaping residual netR is:", "options": ["0.289, eight times the engaged 0.037", "0.037", "-0.154", "3.06"], "correct": 0},
+                {"q": "A pure detuning is invisible to:", "options": ["the mirror P(w)/P(-w) and every tilt center", "the variance", "Delta mu", "nothing"], "correct": 0},
+                {"q": "The State-Dependence Index (shaped fraction) is:", "options": ["~6% engaged, ~19% harvest", "0.894", "50%", "100%"], "correct": 0}
+            ]
         }
     ]
     
