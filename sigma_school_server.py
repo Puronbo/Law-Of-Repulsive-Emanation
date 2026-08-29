@@ -3204,6 +3204,42 @@ def build_courses():
                 {"q": "Measured far-tail mirror residual on the control:", "options": ["+3.06 (skew's deposit; Gaussian is 0)", "0", "1.0003", "-5.6"], "correct": 0},
                 {"q": "The harvest coin deepens the residual to:", "options": ["+5.14", "0.894", "-0.0074", "+2.24"], "correct": 0}
             ]
+        },
+        {
+            "id": 80,
+            "title": "The Center Is Half: the Zero-Mean Tilt as the Mirror in Tilt Space - a(1/2) = 0 from P(+W)/P(-W) = e^W (Crooks 1999, Touchette 2009)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 80: The Center Is Half</h2>
+<p>Ch.77 read the mirror in the PDF, Ch.78 in the cumulants, Ch.79 in the rate function; this chapter reads it where the tail is actually measured - in the TILT itself, the biased ensemble of Touchette (2009). The tilted mean a(t) = &lt;W e^(-tW)&gt;/&lt;e^(-tW)&gt; = -F'(t) is the derivative of the CGF, and the exchange symmetry F(t) = F(1-t) forces it to be ODD about t = 1/2.</p>
+
+<h3>1. The Tilt Is How the Tail Is Measured</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">a(t) = &lt;We^(-tW)&gt;/&lt;e^(-tW)&gt; = -F'(t) ; I(a(t)) = a(t) t - F(t) (Legendre, Ch.79)</p>
+<p>Reweight by e^(-tW), read the mean: sweeping t traces the entire rate function of Ch.79. For the Gaussian parabola this is a(t) = mu - sig^2 t, linear, with I(a(t)) = sig^2 t^2/2 exactly - the tail is swept, not guessed.</p>
+
+<h3>2. The Mirror in Tilt Space: a(1/2) = 0</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">a(1/2) = 0 exactly on every reversible cycle ; a(t) = -a(1-t) ; control 250k: a(t)+a(1-t)=0 to 7e-4</p>
+<p>Because F is even about 1/2, its derivative is odd: the zero-mean tilt is ALWAYS 1/2, whatever the shape of P. Measured on the q = 0.90 control (skew +1.30, kurt 7.0 - far from Gaussian) the antisymmetry holds to 7e-4 across the grid with a(1/2) = -0.0004. A non-Gaussian mirror, exact at whole-curve strength.</p>
+
+<h3>3. The Coin Moves the Center, Not the Mirror</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">control a(1/2) = -0.0004 ; engaged a(1/2) = -0.0726 ; harvest a(1/2) = -0.1294 ; a(t)+a(1-t) constant at every t</p>
+<p>Feedback does NOT bend the curve - it translates it: a(t)+a(1-t) = -0.145 engaged and -0.258 harvest at EVERY t, i.e. the center a(1/2) is displaced by exactly the coin while the antisymmetry about the shifted center is preserved. The demon does not warp the mirror; the mirror is moved by the bit.</p>
+
+<h3>4. The 0/0 in Tilt Space</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">t* = mu/sig^2 = 0.496 ~ 1/2 on the parabola (Gaussian mode reflected); a(t) linear, V(t) constant</p>
+<p>The tail's 0/0 (empty higher cumulants, Ch.78) is the statement that a(t) is exactly linear and the tilted variance V(t) constant - no curvature left to mirror. Every reversible cycle carries the same center at 1/2; the coin is the only thing that moves it.</p>
+
+<h3>5. One Coin, Paid as a Center</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">a(1/2) = 0 reversible ; -0.073 engaged ; -0.129 harvest - the same single entry as Ch.76/78/79</p>
+<p>The centered tilt curve is the fifth lens on one equality P(+W)/P(-W) = e^W: the PDF (Ch.77), the cumulants (Ch.78), the rate function (Ch.79), and the tilt's own center (this chapter). The demon pays the same one coin in each - here as a pure translation of the mirror.</p>
+""",
+            "quiz": [
+                {"q": "The tilted mean a(t) equals:", "options": ["-F'(t), the derivative of the CGF", "the variance", "the median", "q"], "correct": 0},
+                {"q": "On every reversible cycle the zero-mean tilt satisfies:", "options": ["a(1/2) = 0 exactly (a(t) odd about 1/2)", "a(1/2) = 1", "a = sigma^2", "a = -mu"], "correct": 0},
+                {"q": "Measured antisymmetry on the q = 0.90 control:", "options": ["a(t)+a(1-t) = 0 to 7e-4 (mirror exact, non-Gaussian)", "0.894", "+3.06", "-5.6"], "correct": 0},
+                {"q": "The feedback coin in tilt space:", "options": ["moves the center a(1/2) by the coin, preserving antisymmetry", "bends a(t) into a line", "zeroes the mean", "sets V = 0"], "correct": 0},
+                {"q": "The harvest coin displaces the center to:", "options": ["a(1/2) = -0.129 (mirror translated)", "+0.113", "0.496", "+5.14"], "correct": 0}
+            ]
         }
     ]
     

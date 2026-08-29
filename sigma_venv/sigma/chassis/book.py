@@ -985,6 +985,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Crooks 1999, Jarzynski 1997, Onsager-Machlup 1953, Mazonka-Jarzynski 1999, Cramer 1938, Gartner-Ellis (Touchette 2009), Seifert 2012, Sagawa-Ueda 2010",
     },
+    {
+        "chapter": 80,
+        "title": "The Center Is Half: the Zero-Mean Tilt as the Mirror in Tilt Space - a(1/2) = 0 from P(+W)/P(-W) = e^W (Crooks 1999, Touchette 2009)",
+        "part": "IX",
+        "status": REAL,
+        "category": "statistical_mechanics",
+        "mechanism": "The fourth compression of one equality P(+W)/P(-W) = e^W on the DeltaF = 0 round trip (Heun SRK2, seed 42, same instruments): after the PDF mirror M(w)=w (Ch.77), the cumulant ladder k~_n = (-1)^n k_n (Ch.78), and the rate function I(a)=I(2mu-a) (Ch.79), this chapter reads the mirror where the tail is actually MEASURED - in the tilt (biased/tilted ensemble, Touchette 2009). The tilted mean a(t) = <W e^(-tW)>/<e^(-tW)> = -F'(t) is the derivative of the CGF F(t)=ln<e^(-tW)>, and the exchange symmetry F(t)=F(1-t) (a direct corollary of P(w)=e^w P(-w)) forces a(t) = -a(1-t): the tilted mean is odd about t=1/2, so the ZERO-MEAN tilt satisfies a(1/2) = 0 EXACTLY on every reversible cycle, whatever the shape of P (Gaussian or not, q = 0.90 or not) - strictly stronger than any single cumulant of Ch.78 because it is a whole-curve statement. Measured on the q = 0.90 control (250k, skew +1.30 kurt 7.0): a(t)+a(1-t) = 0 to 7e-4 across the grid (0.0001 at t=0, -0.0006 at t=0.25, -0.0007 at t=0.4, -0.0007 at t=0.5) with a(1/2) = -0.0004. The feedback coin does NOT bend this curve - it translates it: a(1/2) = -0.0726 engaged (0.35/2) and -0.1294 harvest (0.05/16), and a(t)+a(1-t) is a CONSTANT (-0.145 engaged, -0.258 harvest) at EVERY t, i.e. the antisymmetry about the shifted center is preserved while the center itself moves by exactly the coin - one coin, paid as a pure translation of the mirror curve. Parallel with the Legendre dual of Ch.79: sweeping t recovers I(a(t)) = a(t) t - F(t), exact for the Gaussian parabola where a(t) = mu - sig^2 t is linear and the tilted variance V(t) = sigma^2 constant (Ch.78's n=2 invariance at every slice); the 0/0 of the tail (empty higher cumulants) is the vanishing curvature of a(t) - nothing left to mirror. The Gaussian mode is reflected at t* = mu/sig^2 = 0.496 ~ 1/2. Five lenses on one equality; the demon pays the same single coin in every one - here as the translated center.",
+        "examples": ["control zero-mean tilt a(1/2) = -0.0004 with a(t)+a(1-t) = 0 to 7e-4 (non-Gaussian, q = 0.90)", "coin translates the center: a(1/2) = -0.073 engaged, -0.129 harvest, antisymmetry preserved", "tilt traces the Ch.79 rate function by I(a(t)) = a(t)t - F(t)", "parabola a(t) linear, V(t) constant: the tail 0/0 as zero curvature"],
+        "sigma_value": 1.0,
+        "source": "Crooks 1999, Jarzynski 1997, Touchette 2009 (biased ensemble), Gartner-Ellis, Seifert 2012, Sagawa-Ueda 2010",
+    },
 ]
 
 
