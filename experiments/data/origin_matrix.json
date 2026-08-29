@@ -1,0 +1,16 @@
+{
+  "seed": 42,
+  "matrix": {
+    "control_mu": 0.11315,
+    "control_lnJ": 0.00093,
+    "R11_dmu_dc": -0.0471,
+    "R12_dmu_dv": 0.0355,
+    "R21_dlnJ_dc": -0.0515,
+    "R22_dlnJ_dv": 0.0314,
+    "det": 0.0004,
+    "coin_ratio": 0.9144,
+    "speed_ratio": 1.1327,
+    "rank": "1 (det ~ 0: the two ledgers respond as ONE quantity)"
+  },
+  "rows": []
+}

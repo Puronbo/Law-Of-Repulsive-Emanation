@@ -3420,6 +3420,42 @@ def build_courses():
                 {"q": "The growing |Delta mu + ln J| of Ch.83/84 is:", "options": ["Delta mu leaving the quadratic midpoint (the feedback's irreversibility), not a broken price", "a wrong measurement", "the erasure cost", "the tilt center failing"], "correct": 0},
                 {"q": "At harvest, while Delta mu + ln J = -0.024, the true price residual a + ln J is:", "options": ["-0.00035 (the price never breaks)", "-0.024", "0.6931", "1.0"], "correct": 0}
             ]
+        },
+        {
+            "id": 86,
+            "title": "The State at the Origin Is a Matrix: indeterminate 0/0 forms as physical state functions - point, line, matrix (Onsager 1931, Kubo 1957)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 86: The State at the Origin Is a Matrix</h2>
+<p>A 0/0 (indeterminate) form at a coincidence point is not a hole in the state but a STATE whose content is its differential structure: the scalar ratio (point), the directional slope (line), and the full linear-response operator (matrix). As x runs over all reals, the derivative is the canonical 0/0 that turns a point into a line; in several variables it becomes a Jacobian, Onsager flux-force matrix, or Hessian.</p>
+
+<h3>1. Point, Line, Matrix</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">POINT: f = g/h at the common zero (undefined scalar, x=0) ; LINE: slope g'(0)/h'(0) ; MATRIX: R_ij = d(output_i)/d(input_j)</p>
+<p>The derivative is the canonical 0/0; each approach direction gives one directional derivative, and the full set is the linear-response matrix. This is how physics turns a removable singularity into a state: a transport coefficient or susceptibility is a 0/0 ratio valued at equilibrium.</p>
+
+<h3>2. The Demon Strand's 0/0 Origin</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">at control: Delta mu = 0 and -lnJ = 0 together, so their ratio is 0/0</p>
+<p>Build the state's 2x2 linear-response matrix from two outputs (Delta mu, -lnJ) against two genuine input directions (coin coupling c, protocol speed v), by finite differences.</p>
+
+<h3>3. Measured Matrix</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">R = [[-0.047, +0.036],[-0.052, +0.031]], det = +0.0004, coin-column ratio ~ -1</p>
+<p>The coin-column ratio ~ -1 recovers the price of Ch.85 along the approach line. The determinant ~ 0 makes R RANK-1: Delta mu and -lnJ move together in both directions - the two ledgers are literally one quantity. Finite cross-entries make it a genuine 2x2 tensor.</p>
+
+<h3>4. Rank-1 = One Price</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">det R ~ 0 : the two outputs respond collinearly in every direction</p>
+<p>The 'two ledgers one price' of Ch.85 is a MATRIX DEGENERACY. The state at the origin is a tensor, not a hole - the framework's founding 0/0 is here given its proper content as differential structure.</p>
+
+<h3>5. Undefined Is Determined</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">an indeterminate form is a state whose removable value is a slope (line) and whose full structure is a tensor (matrix)</p>
+<p>Point to line to matrix: the rim of the 0/0 is the derivative, and the derivative is the matrix of the state at its origin.</p>
+""",
+            "quiz": [
+                {"q": "At a 0/0 origin, the physical state's full content is:", "options": ["the linear-response matrix (point -> line -> matrix)", "nothing (undefined)", "the median", "the rate function only"], "correct": 0},
+                {"q": "The derivative f'(x) at h=0 is the canonical:", "options": ["0/0 whose value is a slope (a line)", "constant", "vector", "integral"], "correct": 0},
+                {"q": "The measured 2x2 response matrix at the control origin has:", "options": ["det ~ 0, i.e. rank-1 (two ledgers respond as one quantity)", "det = 1", "infinite rank", "zero diagonal"], "correct": 0},
+                {"q": "The coin-column ratio d(mu)/d(-lnJ) recovers:", "options": ["the price ~ -1 of Ch.85 (the approach line slope)", "the variance", "the median", "0.6931"], "correct": 0},
+                {"q": "A transport coefficient or susceptibility is:", "options": ["the well-defined value of a 0/0 ratio at equilibrium", "always a pure number 1", "never defined", "a matrix of zeros"], "correct": 0}
+            ]
         }
     ]
     

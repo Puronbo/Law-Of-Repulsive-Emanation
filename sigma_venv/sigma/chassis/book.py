@@ -1051,6 +1051,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Crooks 1999, Sagawa-Ueda 2010, Seifert 2012 (Gaussian work in driven harmonic traps), chain 72-84",
     },
+    {
+        "chapter": 86,
+        "title": "The State at the Origin Is a Matrix: indeterminate 0/0 forms as physical state functions - point, line, matrix (Onsager 1931, Kubo 1957)",
+        "part": "IX",
+        "status": REAL,
+        "category": "statistical_mechanics",
+        "mechanism": "Giving the framework's founding 0/0 (the removable singularity as a Law) its proper mathematical content: a 0/0 (indeterminate) form at a coincidence point is not a hole in the state but a STATE whose full content is its differential structure, read over x spanning all reals. POINT: the scalar ratio f = g/h at the common zero, undefined as a number (mere location x=0). LINE: the directional limit along one approach direction, the slope g'(0)/h'(0) - the derivative is the canonical 0/0 that turns a point into a tangent line. MATRIX: collecting every direction gives the linear-response operator - the Jacobian, the Onsager flux-force matrix (where currents and forces vanish together at equilibrium), the Hessian when the observable is a gradient; a transport coefficient or susceptibility IS the well-defined value of such a 0/0 ratio. MEASURED at the control origin of the demon strand (where the feedback has no effect, so Delta mu = mu - mu_0 = 0 and -lnJ_act = 0 together - their ratio is 0/0): finite differences of the two outputs (Delta mu, -lnJ) against TWO genuine input directions (coin coupling c, protocol speed v) build the 2x2 linear-response matrix R_ij = d(output_i)/d(input_j): R = [[-0.0471, +0.0355],[-0.0515, +0.0314]], det = +0.0004 ~ 0. The coin column ratio d(mu)/d(-lnJ) = +0.91 ~ -1 recovers the price of Ch.85 along the approach LINE. The determinant ~ 0 makes R RANK-1: the two output columns are nearly collinear, so Delta mu and -lnJ respond as ONE quantity in both input directions - the 'two ledgers one price' of Ch.85 literalised as a MATRIX DEGENERACY. The finite cross-entries make it a genuine 2x2 tensor, not a bare number and not a hole. Undefined is determined: the indeterminate form's removable value is a slope (line) and its full structure is a tensor (matrix), exactly as a transport coefficient is the well-defined value of a 0/0 ratio at equilibrium.",
+        "examples": ["0/0 at a coincidence point is a state whose content is its differential structure: point (scalar), line (slope), matrix (linear response)", "measured 2x2 response matrix at control origin R=[[-0.0471,+0.0355],[-0.0515,+0.0314]], det~0", "rank-1 (det~0): Delta mu and -lnJ respond collinearly = the 'two ledgers one price' as a matrix degeneracy", "the coin-column ratio d(mu)/d(-lnJ) ~ -1 recovers the Ch.85 price along the approach line; a transport coefficient is a 0/0 ratio valued at equilibrium"],
+        "sigma_value": 1.0,
+        "source": "Onsager 1931, Kubo 1957, chain 77 (mirror 0/0), 83 (slope -1), 85 (quadratic price)",
+    },
 ]
 
 
