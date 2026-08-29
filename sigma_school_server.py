@@ -3132,6 +3132,42 @@ def build_courses():
                 {"q": "The engaged coin leans the mirror to:", "options": ["-0.25 with J = 1.0749", "+1", "0.996", "0"], "correct": 0},
                 {"q": "The central 0/0 ratio P(W)/P(-W) at W = 0 is removed to:", "options": ["1 (P'(0)/P(0) = 1/2)", "0", "ln 2", "e"], "correct": 0}
             ]
+        },
+        {
+            "id": 78,
+            "title": "The Second Book: the Tilt Obeys the Mirror - Cumulant Identities k~_n = (-1)^n k_n from P(+W)/P(-W) = e^W (Crooks 1999, Jarzynski 1997)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 78: The Second Book</h2>
+<p>Ch.77 measured the mirror - P(+W)/P(-W) = e^W, slope 1 through the origin. This chapter asks what ELSE that one equality bookkeeps. In Laplace space the mirror is the exchange symmetry phi(t) = &lt;e^(-tW)&gt; = phi(1-t), so F = ln phi is even about t = 1/2, and a one-line parity argument forces the ENTIRE cumulant ladder under the reweighted measure e^(-W)P/&lt;e^(-W)&gt; to obey k~_n = (-1)^n k_n for every n.</p>
+
+<h3>1. The Tilt Obeys the Mirror</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">phi(t) = &lt;e^(-tW)&gt; = phi(1-t); F even about t = 1/2 ; k~_n = (-1)^n k_n (all n)</p>
+<p>n = 1 is the Ch.77 f-identity, &lt;We^(-W)&gt; = -&lt;W&gt;. n = 2 is NEW and sharp precisely where the distribution is NOT Gaussian: Var(W) = &lt;W^2e^(-W)&gt; - &lt;W&gt;^2 - the variance is INVARIANT under the exponential tilt even at skew +1.30 and kurtosis 7.0. Odd cumulants flip sign under the tilt; even cumulants survive it exactly.</p>
+
+<h3>2. The Ladder on the Control</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">stiffness round trip 1 -&gt; 2 -&gt; 1, no feedback: n=1: k~_1 = -k_1 to 6.6e-05 ; n=2: k~_2 = k_2 to 2% (reweighted sampling floor); channel 1 = +0.0003</p>
+<p>At q = 0.894 the variance ledger bends while the full cumulant book stays exact: every rung of the ladder obeys the mirror within the reweighted sampling noise, the n = 1 and n = 2 identities at the 10^-4 and ~2% effective-sample floor. The mirror fixes every moment-buying rule; the shape of P pays only in the variance.</p>
+
+<h3>3. The Parabola's Empty Rows</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">drag trap mu = +5.98, sigma = 3.47: k~_2/k_2 = 1.000000 ; n&gt;=3: 0/0 -&gt; (-1)^n ; channel 1 = -(1 - q) = -0.0074</p>
+<p>Gaussian work has its n &gt;= 3 rows EMPTY in both columns, 0/0 resolved to (-1)^n, and channel 1 re-reads the Ch.76 discretization slack exactly: k~_1 + k_1 = 2mu - sigma^2 = -(Var - 2&lt;W&gt;), so (k~_1 + k_1)/k_2 = -(1-q) = -0.0074 = the same slack Ch.76 found in the variance directly.</p>
+
+<h3>4. The Coin in Cumulant Space</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">engaged 0.35/2: channel 1 = -0.56, &lt;e^(-W)&gt; = 1.0749 ; harvest 0.05/16: channel 1 = -1.32, &lt;e^(-W)&gt; = 1.1384</p>
+<p>Feedback bends every rung at once: the coin's lean in channel 1 is -0.56 engaged and -1.32 harvest, while &lt;e^(-W)&gt; = J_act of Ch.74/75 to the digit. One coin, all rungs, both ledgers - information is a single book entry that debits the variance and the whole cumulant ladder together.</p>
+
+<h3>5. One Equality, One Complete Second Book</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">removable value 1: the rungs 0/0 -&gt; (-1)^n ; the slack 0/0 in the continuum; the mirror's center P'(0)/P(0) = 1/2 (Ch.77)</p>
+<p>The rigid mirror IS the market: it fixes every cumulant-buying rule, its Gaussian leaves the book empty above two, and the coin moves the whole book at once. Ch.76 priced knowing in variance, Ch.77 showed the mirror is rigid, and this chapter shows the rigid mirror prices everything else - exact on every rung where the coin is not spent.</p>
+""",
+            "quiz": [
+                {"q": "Under the e^(-W) tilt, the cumulant ladder obeys:", "options": ["k~_n = (-1)^n k_n", "k~_n = k_n", "k~_n = 0", "k~_n = 1"], "correct": 0},
+                {"q": "The NEW n = 2 identity states:", "options": ["Var(W) = <W^2e^(-W)> - <W>^2 (variance invariant under the tilt)", "q = 1", "P = Gaussian", "<W> = 0"], "correct": 0},
+                {"q": "On the control the n = 1 identity holds to:", "options": ["6.6e-05 while q = 0.894", "0.11", "1", "-5.6"], "correct": 0},
+                {"q": "The Gaussian parabola's n >= 3 rows are:", "options": ["0/0 removed to (-1)^n", "q = 0.89", "mirror slope -5.6", "Var = 0"], "correct": 0},
+                {"q": "The parabola's channel 1 re-reads:", "options": ["-(1-q) = -0.0074, the Ch.76 discretization slack", "the coin's fee", "the median bit", "J = 1.075"], "correct": 0}
+            ]
         }
     ]
     

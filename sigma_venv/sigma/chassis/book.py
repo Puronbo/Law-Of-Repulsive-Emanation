@@ -963,6 +963,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Crooks 1999, Jarzynski 1997, Kurchan 1998, Lebowitz-Spohn 1999, Mazonka-Jarzynski 1999, Seifert 2012, Sagawa-Ueda 2010, Parrondo-Horowitz-Sagawa 2015, Barato-Seifert 2015, Gingrich et al. 2016",
     },
+    {
+        "chapter": 78,
+        "title": "The Second Book: the Tilt Obeys the Mirror - Cumulant Identities k~_n = (-1)^n k_n from P(+W)/P(-W) = e^W (Crooks 1999, Jarzynski 1997)",
+        "part": "IX",
+        "status": REAL,
+        "category": "statistical_mechanics",
+        "mechanism": "The detailed mirror of Ch.77 (P(+W)/P(-W) = e^W on the DeltaF = 0 round trip, Heun SRK2, seed 42, same instruments) is an equality of DISTRIBUTIONS, and one more equality is free: its Laplace transform must obey the exchange symmetry phi(t) = <e^(-tW)> = phi(1-t), so F = ln phi is even about t = 1/2 and a one-line parity argument (F^(n)(0) = (-1)^n F^(n)(1)) pins the ENTIRE cumulant ladder of the normalized reweighted measure dP~ = e^(-W) P dW/<e^(-W)>: k~_n = (-1)^n k_n for every n (odd cumulants flip, even survive the tilt exactly - Mazonka-Jarzynski 1999 symmetry, Kurchan 1998, Crooks 1999; general thermodynamical tilt, Seifert 2012; Gaussian continuum Onsager-Machlup 1953). n = 1 is the Ch.77 f-identity; n = 2 is NEW and sharp where the distribution is NOT Gaussian: Var(W) = <W^2 e^(-W)> - <W>^2 - the variance is INVARIANT under the exponential tilt even at skew +1.30, kurt 7.0. Measured ladders (control stiff 1->2->1, 250k): n=1 k~_1 - (-1)^1 k_1 = +0.000066 (10^-4), n=2 k~_2 - k_2 = -0.005 (reweighted sampling floor), n=3..6 within growing 2-28% relative noise, channel 1 (k~_1 + k_1)/k_2 = +0.0003 (the mirror holds in cumulant space while the variance ledger reads q = 0.894 - Ch.76's slack lives off the mirror, not off this arithmetic). Gaussian parabola (drag trap, mu=+5.98, sigma=3.47, q=0.9926): k~_2/k_2 = 1.000000 analytic, n>=3 rows EMPTY in both columns - 0/0 resolved to (-1)^n - and channel 1 re-reads the Ch.76 discretization slack exactly: k~_1 + k_1 = 2mu - sigma^2 = -(Var - 2<W>), so (k~_1 + k_1)/k_2 = -(1-q) = -0.0074 (the DT residue sigma^2 - 2mu = +0.0897 matches Ch.76 to the digit). The coin bends every rung at once (feedback breaks the plain mirror): engaged 0.35/2 channel 1 = -0.5623 with <e^(-W)> = 1.0749 (= J_act), harvest 0.05/16 channel 1 = -1.3179 with <e^(-W)> = 1.1384 - one coin, all rungs, both ledgers (Sagawa-Ueda 2010; Parrondo-Horowitz-Sagawa 2015). Three fills of one 0/0: (i) the empty Gaussian rungs -> (-1)^n, (ii) the slack (sigma^2 - 2mu, k~_1 + k_1) -> 0/0 in the continuum with fixed ratio = -(1-q), (iii) the mirror's own center P'(0)/P(0) = 1/2 (Ch.77). One equality, one complete second book: the mirror IS the market, it fixes every cumulant-buying rule, its Gaussian leaves the book empty above two, and the coin moves the whole book at once.",
+        "examples": ["control n=1 to 6.6e-05 while q = 0.894", "variance invariant under the tilt (n=2, exact for any shape)", "parabola channel 1 = -(1-q) = -0.0074 re-reading Ch.76", "coin leans channel 1 by -1.32 at harvest"],
+        "sigma_value": 1.0,
+        "source": "Crooks 1999, Jarzynski 1997, Kurchan 1998, Mazonka-Jarzynski 1999, Onsager-Machlup 1953, Seifert 2012, Sagawa-Ueda 2010, Parrondo-Horowitz-Sagawa 2015, Barato-Seifert 2015",
+    },
 ]
 
 

@@ -1,0 +1,89 @@
+{
+  "chapter": 78,
+  "title": "The Second Book: the Tilt Obeys the Mirror - Cumulant Identities k~_n = (-1)^n k_n from P(+W)/P(-W) = e^W (Crooks 1999, Mazonka-Jarzynski 1999)",
+  "notes": "phi(t)=<e^{-tW}>=phi(1-t) is the detailed FT in Laplace space; F=log phi is even about t=1/2, which forces k~_n = (-1)^n k_n for EVERY cumulant under the e^{-W}-reweighted measure. n=1 is the Ch.77 f-identity; n=2 is Var(W)=<W^2 e^{-W}>-<W>^2, EXACT even for severely non-Gaussian FT-symmetric work (control: q=0.894, skew 1.3). Gaussian (Onsager-Machlup/Mazonka-Jarzynski) work has all n>=3 cumulants zero in both columns: the ladder reads 0/0 with removable value (-1)^n. Feedback rows break the plain mirror and the ladder diagnosis shows which cumulants the coin moves.",
+  "threshold_median_abs_xmid": 0.5682337793295649,
+  "rows": [
+    {
+      "name": "PARABOLA tau=2",
+      "S0": 0.8860752319015849,
+      "k": [
+        5.977338756397041,
+        12.044407643301895,
+        0.04313081465912205,
+        -0.2521464818508584,
+        -21.339630741928374,
+        -92.28169610214275
+      ],
+      "kt": [
+        -6.067068886904854,
+        12.044407643301895,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "ctrl stiff 0.5",
+      "S0": 1.0003320305373846,
+      "k": [
+        0.11351345058897398,
+        0.2540687681360971,
+        0.16677589253343736,
+        0.453816591636075,
+        0.8536415136546648,
+        2.7733909145613467
+      ],
+      "kt": [
+        -0.11344779627108893,
+        0.24899694783066093,
+        -0.14909333947694048,
+        0.39964884493440356,
+        -0.6450938866177506,
+        2.0086659030064564
+      ]
+    },
+    {
+      "name": "engaged 0.35/2",
+      "S0": 1.0748655550184738,
+      "k": [
+        0.04318413357863028,
+        0.25529011229039067,
+        0.15329620126273374,
+        0.40842338263681777,
+        0.7527702742754421,
+        2.6385539442995376
+      ],
+      "kt": [
+        -0.18672491628828963,
+        0.24943078821386702,
+        -0.1330210553512377,
+        0.341925316264512,
+        -0.4422820320087958,
+        1.1704888962704278
+      ]
+    },
+    {
+      "name": "HARVEST 0.05/16",
+      "S0": 1.1383500726317661,
+      "k": [
+        -0.03917538052397491,
+        0.19758751591993146,
+        0.10695073714770834,
+        0.2554439299470116,
+        0.3110570091962381,
+        1.1421393873274022
+      ],
+      "kt": [
+        -0.22122801908600495,
+        0.20879377127235085,
+        -0.17032500240089143,
+        0.5529105195847641,
+        -1.4687556195901788,
+        5.176882121585333
+      ]
+    }
+  ],
+  "removable_value": 1.0
+}
