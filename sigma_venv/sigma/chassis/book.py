@@ -1029,6 +1029,17 @@ CHAPTERS = [
         "sigma_value": 1.0,
         "source": "Sagawa-Ueda 2010/2008, Crooks 1999, Parrondo-Horowitz-Sagawa 2015, Szilard 1929, Landauer 1961",
     },
+    {
+        "chapter": 84,
+        "title": "No Local Fingerprint: the two-ledger deviation is invisible to every isolated feature of the work distribution - yet monotone in the coin (Sagawa-Ueda 2010)",
+        "part": "IX",
+        "status": REAL,
+        "category": "statistical_mechanics",
+        "mechanism": "Asking what the Ch.83 two-ledger deviation |Delta mu + ln J_act| IS, by measuring four natural fingerprints of the coin's work distribution on the same round-trip trap (V=lam x^2/2, lam 1->2->1, DeltaF=0, D=beta=1, Heun SRK2, seed 42, median bit) across the frontier 0.5/0.5, 0.35/2, 0.25/4, 0.15/6, 0.10/8, 0.05/16: (1) the far-tail rate mirror asymmetry R(a)=I(a)-I(2 mu - a) (Ch.79), (2) the midline bend spread(a(t)+a(1-t)) of the tilt trace (Ch.80), (3) the third cumulant k3, (4) the fourth cumulant k4. ALL FOUR FAIL: the deviation grows monotonically 0.003 -> 0.024 while R stays ~0.44-0.57 (the round trip's baseline kurtosis, nonzero even on the null - it IS the cubic tail term of Ch.78, present without any coin), the trace bend stays ~0.001-0.003 (the coin 'translates, not bends' all the way to harvest), and k3/k4 DECREASE (0.157->0.103, 0.429->0.245), the opposite of the deviation. So the deviation has NO local fingerprint: it is the global combination dev = Delta mu + lnJ = -F_c'(0) + F_0'(0) + F_c(1), a whole- distribution relation between the coin's work book and its information book, invisible to any single moment, tail shape, or local bend of the coin alone. YET it is a strictly monotone function of the coin's own detuning |Delta mu| (0.003->0.024 as 0.070->0.151, verified monotone) and EXACTLY ZERO on the null row: the correction to the law is driven entirely by how far the demon translates the bit, though readable from no isolated feature. A weak coin IS a translation (constant added to the control trajectory), so the two-ledger identity holds there; anything beyond a pure translation fails the law in a way no local statistic can fingerprint - the price of the bit is set by the whole work book against the whole information book, with no slice of the work distribution alone able to see it.",
+        "examples": ["deviation |Delta mu + ln J| invisible to all four isolated features - R flat, bend flat, k3/k4 decrease", "positive content: |dev| strictly monotone in the coin's own detuning |Delta mu| 0.003->0.024 as 0.070->0.151", "a weak coin IS a translation: the mild limit is special because there the coin is exactly a constant added to the control trajectory", "dev = -F_c'(0) + F_0'(0) + F_c(1): a whole-distribution relation with no local signature"],
+        "sigma_value": 1.0,
+        "source": "Sagawa-Ueda 2010/2008, Crooks 1999, chain 78 (cumulants), 79 (far-tail R), 80 (trace), 83 (two-ledger law)",
+    },
 ]
 
 

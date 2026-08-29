@@ -3348,6 +3348,42 @@ def build_courses():
                 {"q": "At the control end the slope Delta mu/ln J is:", "options": ["0/0 whose removable value is -1", "0 exactly", "ln 2", "1"], "correct": 0},
                 {"q": "The free fit over the strong frontier bends the slope to:", "options": ["-0.85 (strong rows add shaping)", "-1.012", "0.97", "0.219"], "correct": 0}
             ]
+        },
+        {
+            "id": 84,
+            "title": "No Local Fingerprint: the two-ledger deviation is invisible to every isolated feature of the work distribution - yet monotone in the coin (Sagawa-Ueda 2010)",
+            "part": "IX. Grand Unification",
+            "content": """
+<h2>Chapter 84: No Local Fingerprint</h2>
+<p>Ch.83's two-ledger law is exact in the mild limit. This chapter asks what the deviation |Delta mu + ln J_act| IS - and measures four natural fingerprints of the coin's work distribution, finding all fail to track it (a sharp honest negative that defines the law as a global identity).</p>
+
+<h3>1. The Question</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">four fingerprints: far-tail asymmetry R (Ch.79), midline trace bend (Ch.80), third and fourth cumulants (Ch.78)</p>
+<p>On the same round-trip trap, sweep the frontier and compare each feature of the coin's work distribution to the two-ledger deviation. Which one grows with the leverage and prices the deviation?</p>
+
+<h3>2. All Four Fail</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">dev grows 0.003-&gt;0.024 while R is flat ~0.5-0.6, bend flat ~0.001, and k3/k4 DECREASE (0.157-&gt;0.103, 0.429-&gt;0.245)</p>
+<p>The deviation grows monotonically while every isolated feature stays flat or moves the OPPOSITE way. The far-tail asymmetry is the round trip's own baseline kurtosis (nonzero even on the null); the trace "translates, not bends" all the way to harvest; the cumulants shrink as the coin strengthens.</p>
+
+<h3>3. A Global Relation, No Local Shadow</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">dev = Delta mu + ln J = -F_c'(0) + F_0'(0) + F_c(1) : a whole-distribution identity</p>
+<p>The deviation is a specific combination of the coin's work book and its information book - the tilt function at t=0 and t=1 against the control's derivative. No single moment, tail shape, or local bend of the coin alone carries it. The law is exact exactly for a coin that is a constant added to the control trajectory.</p>
+
+<h3>4. Yet Monotone in the Coin Itself</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">|dev| monotone in |Delta mu| : 0.003-&gt;0.024 as 0.070-&gt;0.151, and exactly zero at the null</p>
+<p>Despite having no local fingerprint, the deviation is a strictly monotone function of the coin's own detuning - the very translation the law prices. The correction is driven by how hard the demon works, though invisible to every isolated feature of the result.</p>
+
+<h3>5. One Definition</h3>
+<p style="font-size:1.1em; text-align:center; padding:10px;">the price of the bit is set by the whole work book against the whole information book - no slice of the work distribution alone can see it</p>
+<p>Four negatives define the law as a genuine whole-distribution identity: a weak coin IS a translation; anything beyond a pure translation fails the law in a way no local statistic can fingerprint.</p>
+""",
+            "quiz": [
+                {"q": "Which isolated feature of the coin's work distribution tracks the two-ledger deviation?", "options": ["none - all four fail (R flat, bend flat, k3/k4 decrease)", "the third cumulant", "the far-tail rate asymmetry", "the midline trace bend"], "correct": 0},
+                {"q": "As the coin strengthens, the third and fourth cumulants:", "options": ["decrease (0.157->0.103, 0.429->0.245), opposite to the deviation", "increase", "stay constant", "equal the deviation"], "correct": 0},
+                {"q": "The two-ledger deviation is a:", "options": ["global relation between work book and information book with no local signature", "local moment", "tail shape", "midline bend"], "correct": 0},
+                {"q": "The deviation is strictly monotone in:", "options": ["the coin's own detuning |Delta mu| (0.003->0.024 as 0.070->0.151)", "the fourth cumulant", "the far-tail R", "the trace bend"], "correct": 0},
+                {"q": "The mild limit is special because there the coin:", "options": ["is exactly a constant added to the control trajectory, so the law holds", "has zero work", "has infinite variance", "is reversible in time"], "correct": 0}
+            ]
         }
     ]
     
