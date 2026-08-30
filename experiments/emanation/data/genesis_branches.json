@@ -1,0 +1,146 @@
+{
+  "identity": "seven independent indeterminate functions w_1..w_7, each returning its own value-type; linked only by principled branches (existence, duality-identity, separation) and rigid oppositions; docking at the Ledger's one-object-per-value-type meeting points.",
+  "functions": [
+    {
+      "problem": "NSE",
+      "domain": "divergence-free smooth u0 in R^3",
+      "indeterminate": "blow-up time T*(u0)",
+      "value_type": "measure/set",
+      "ledger_meeting": "S(theta*)=0.83, 95%% band [0.0598,0.0638]"
+    },
+    {
+      "problem": "YM",
+      "domain": "nonabelian gauge potential",
+      "indeterminate": "spectrum gap m of the QFT Hamiltonian",
+      "value_type": "scalar",
+      "ledger_meeting": "numbers only: theta*=0.0633, gap 0.9117 (Perron-Frobenius); mass-gap object WITHDRAWN"
+    },
+    {
+      "problem": "P vs NP",
+      "domain": "languages over finite strings",
+      "indeterminate": "P = NP?",
+      "value_type": "boolean",
+      "ledger_meeting": "gate booleans, O(1) decisions; no witness"
+    },
+    {
+      "problem": "RH",
+      "domain": "Riemann zeta (analytic continuation)",
+      "indeterminate": "all nontrivial zeros on Re s = 1/2",
+      "value_type": "line/placement",
+      "ledger_meeting": "1.09-decade smeared band; harmony H(s) strip census below"
+    },
+    {
+      "problem": "BSD",
+      "domain": "elliptic curve E / Q",
+      "indeterminate": "ord_{s=1} L(E,s) = rank(E)",
+      "value_type": "integer",
+      "ledger_meeting": "12 types, 5 classes, 8 gates; mirror residual 0.125 (NOT exact)"
+    },
+    {
+      "problem": "Hodge",
+      "domain": "smooth complex projective variety",
+      "indeterminate": "every rational (p,q)-class is algebraic",
+      "value_type": "boolean",
+      "ledger_meeting": "realizability tautological (5 classes); no projective structure"
+    },
+    {
+      "problem": "Poincare",
+      "domain": "closed 3-manifolds",
+      "indeterminate": "any simply-connected closed 3-fold = S^3",
+      "value_type": "boolean (SOLVED)",
+      "ledger_meeting": "inherited true; direction space finite (no nontrivial topology)"
+    }
+  ],
+  "branches": {
+    "existence_family": [
+      "NSE",
+      "YM",
+      "Hodge",
+      "Poincare"
+    ],
+    "duality_identity_family": [
+      "RH",
+      "BSD",
+      "Hodge",
+      "Poincare"
+    ],
+    "separation_branch": [
+      "P vs NP"
+    ],
+    "twins": [
+      [
+        "NSE",
+        "YM"
+      ],
+      [
+        "BSD",
+        "Hodge"
+      ],
+      [
+        "RH",
+        "Poincare"
+      ]
+    ],
+    "oppositions": [
+      [
+        "classical_continuum: NSE, RH",
+        "quantum/spectral: YM; discrete: BSD, P/NP, Hodge"
+      ],
+      [
+        "separation: P vs NP",
+        "equality-type: all others"
+      ],
+      [
+        "solved: Poincare",
+        "open: all others"
+      ]
+    ],
+    "meeting_points": [
+      "measure 0.83",
+      "scalar theta*",
+      "line 1.09 decades",
+      "integers 12/5/8",
+      "booleans C0=1, gates",
+      "method: error-bar + no-claim discipline"
+    ]
+  },
+  "missing_segments": [
+    {
+      "id": "Seg-A",
+      "junction": "RH n BSD n NSE",
+      "gap": "discrete-analytic interpolation: the harmony strip census connects the continuous law to the discrete landmark arithmetic",
+      "this_run": "grid scan of |H(sigma+it)| in the strip",
+      "result": "min |H| = 0.32588 at sigma=0.08, t=1.30; finite 4-term polynomial curiosity; NO zeta claim",
+      "references": "Montgomery & Vaughan 2006 (analytic number theory); Kinderman & Monahan 1977 (ratio of uniforms gives the law)"
+    },
+    {
+      "id": "Seg-B",
+      "junction": "P/NP",
+      "gap": "no separation witness (everything O(1)); need a multi-trade realizability search over the finite semigroup (12 types x 8 gates)",
+      "status": "pending design, not built",
+      "references": "Garey & Johnson 1979; Papadimitriou 1994 (NP-completeness); Razborov & Rudich 1997 (natural proofs wall)"
+    },
+    {
+      "id": "Seg-C",
+      "junction": "YM",
+      "gap": "no noncommutative deformation of the gauge algebra; a PRINCIPLED absence",
+      "status": "recorded DROP (introducting a q-parameter would be an axiom, not a derivation)",
+      "references": "Connes 1994 (Noncommutative Geometry); Rieffel 1994 (quantum tori)"
+    },
+    {
+      "id": "Seg-D",
+      "junction": "NSE and measure",
+      "gap": "no generic-data family: box-uniform population only; Gini-shaped draws are the natural perturbation",
+      "status": "pending run",
+      "references": "Caffarelli, Kohn & Nirenberg 1982 (partial regularity); Prodi 1959; Serrin 1962"
+    },
+    {
+      "id": "Seg-E",
+      "junction": "Poincare-method (solved branch)",
+      "gap": "no certified monotone functional; the ACTION deficit (mirror residual) is the candidate",
+      "result": "action_deficit = 0.1252 (mean action -1.0904 vs mirror -0.9652); flagged, NOT claimed as a monotone law",
+      "references": "Perelman 2002 arXiv math.DG/0211159 (entropy monotonicity); Hamilton 1982 (Ricci flow)"
+    }
+  ],
+  "reading": "seven branches, seven value-types, one dock; the branches are NOT the same problem - they meet only where a ledger object has the same value-type and survives the no-claim gate.  Missing segments are made explicit and either computed, designed, or dropped with a reason."
+}

@@ -3,8 +3,10 @@ exactly conserved.  This is the thermodynamic closure of the harm arc.
 
 honest FT is a strict pump (ft_ledger: losses=0), harm is the anti-FT channel
 (harm_ft_break: irrev conserved to residual 0.000000), and harm catapults past
-the cusp d*=2.11 (harm_as_depth) with escape rate h/X>alpha_cusp predictable
-(harm_cap: 0.8305 vs 0.8361).  Left unmeasured until now: what mass harm does
+the cusp d*=2.11 (harm_as_depth) with escape rate h/X>theta*=0.0633 predictable
+(harm_cap: 0.8305 vs 0.8361; CORRECTION ledger audit: theta*=g0*gdepth*d*/I
+is the h/X escape threshold; alpha_cusp=1.0553 is a g-ladder marker of g*,
+not a threshold).  Left unmeasured until now: what mass harm does
 to the LIVE market.  Claim: the market dies at the honest 2x gate (depth=1,
 which phase_boundary records 53% below the cusp d*=2.11) -- i.e. it freezes by
 denial, never by loss: conserved_total stays exact, irrev absorbs I*sum(h), and
@@ -103,7 +105,7 @@ def main():
         "note": "the honest market refuses to enter the hyperbolic band; "
                 "harm = instant catapult that bypasses the climb.",
     }
-    path = os.path.join("experiments", "data", "harm_freeze.json")
+    path = os.path.join("experiments", "emanation", "data", "harm_freeze.json")
     with open(path, "w") as fh:
         json.dump(out, fh, indent=2)
 

@@ -1,0 +1,158 @@
+{
+  "identity": "the genesis exceptional fiber splits in nested layers 4 -> 6 -> 12 mirroring the bosonic split pattern (1 -> 4 -> 6 -> 12): 12 documented elementary processes = 4 core + 2 mirrors + 6 pairwise fee/tax rails (C(4,2)=6 edges of K4 over a trade's four parties).",
+  "12_documented_elementary_processes": {
+    "T_trade_draw": {
+      "layer": 1,
+      "ray": [
+        -9.98e-05,
+        -4.999999999999796e-06
+      ],
+      "slope_dT_dC": 0.050100200400799565,
+      "sim": "sim.py:202-204 g_at(depth)*X",
+      "params": "g0=0.050 gdepth=1.20"
+    },
+    "H_harm_scar": {
+      "layer": 1,
+      "ray": [
+        -9.98e-05,
+        -0.00020500000000000032
+      ],
+      "slope_dT_dC": 2.054108216432869,
+      "sim": "sim.py:187-193 I*committed_harm",
+      "params": "I=2.00"
+    },
+    "N_necessity_build": {
+      "layer": 1,
+      "ray": [
+        -9.98e-05,
+        9.999999999999593e-06
+      ],
+      "slope_dT_dC": -0.10020040080159913,
+      "sim": "sim.py:197-200 trust += n*X, no draw",
+      "params": "n=0.10"
+    },
+    "S_seed_inflow": {
+      "layer": 1,
+      "ray": [
+        5.0,
+        0.0
+      ],
+      "point": "(1:0) pure credit, mintage by design",
+      "sim": "sim.py:109-120 add_account",
+      "params": "seed_credit=5.0 seed_trust=0.0"
+    },
+    "G_grant_mirror": {
+      "layer": 2,
+      "ray": [
+        0.001495049505,
+        7.4752475e-05
+      ],
+      "slope_dT_dC": 0.04999999999999981,
+      "sim": "sim.py:121-127, 246-254 progressive grant",
+      "params": "grant_bias=0.50 0.05*amt trust"
+    },
+    "Z_tick_floor": {
+      "layer": 2,
+      "ray": [
+        0.0,
+        0.0009999999999999992
+      ],
+      "slope_dT_dC": null,
+      "point": "(0:1) pure-trust +",
+      "sim": "sim.py:135-144 trust += floor",
+      "params": "floor=0.001"
+    },
+    "A_taper_drain": {
+      "layer": 3,
+      "ray": [
+        0.0,
+        0.0007999999999999986
+      ],
+      "slope_dT_dC": null,
+      "point": "(0:-1) pure-trust -",
+      "sim": "sim.py:139-141, 61-65 taper_of",
+      "params": "taper0=0.00 taperA=0.0004"
+    },
+    "F_floor_rebate": {
+      "layer": 3,
+      "ray": [
+        2.0000000000000004e-07,
+        0.0
+      ],
+      "point": "(1:0) credit rail",
+      "sim": "sim.py:237-242 consumer floor",
+      "params": "consumer_floor=0.10"
+    },
+    "L_terminal_share": {
+      "layer": 3,
+      "ray": [
+        7.200000000000002e-07,
+        0.0
+      ],
+      "point": "(1:0) credit rail",
+      "sim": "sim.py:245-249",
+      "params": "share=0.40"
+    },
+    "R_referrer_share": {
+      "layer": 3,
+      "ray": [
+        4.500000000000001e-07,
+        0.0
+      ],
+      "point": "(1:0) credit rail",
+      "sim": "sim.py:250-254",
+      "params": "share=0.25"
+    },
+    "V_validator_share": {
+      "layer": 3,
+      "ray": [
+        4.500000000000001e-07,
+        0.0
+      ],
+      "point": "(1:0) credit rail",
+      "sim": "sim.py:255-262",
+      "params": "share=0.25"
+    },
+    "B_reserve_sink": {
+      "layer": 3,
+      "ray": [
+        1.8000000000000003e-06,
+        0.0
+      ],
+      "point": "reserve column (meta), conserving",
+      "sim": "sim.py:263-264 reserve += fee - spent",
+      "params": "f=0.02"
+    }
+  },
+  "layers": {
+    "1": [
+      "T_trade_draw",
+      "H_harm_scar",
+      "N_necessity_build",
+      "S_seed_inflow"
+    ],
+    "2": [
+      "G_grant_mirror",
+      "Z_tick_floor"
+    ],
+    "3": [
+      "A_taper_drain",
+      "F_floor_rebate",
+      "L_terminal_share",
+      "R_referrer_share",
+      "V_validator_share",
+      "B_reserve_sink"
+    ]
+  },
+  "counts": {
+    "layer1": 4,
+    "layer1+2": 6,
+    "all": 12
+  },
+  "nesting": "4 subset 6 subset 12: True",
+  "layering_rule": "4 core market rays; +2 financing/axial mirrors (grant + regeneration)=6; +6 pairwise conduit rails (K4 edges: taper, consumer-floor, terminal, referrer, validator, reserve)=12.",
+  "honest_caveats": [
+    "credit-only rails all share the point (1:0) on the fiber; the COUNT is of processes (charges), not of distinct directions",
+    "the matching to the bosonic 1->4->6->12 is a charge-count transfer, not a physical identification"
+  ]
+}

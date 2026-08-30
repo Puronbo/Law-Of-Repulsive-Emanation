@@ -1,0 +1,49 @@
+{
+  "identity": "IRREDUCIBILITY: the dark zone of the folded (escape-fraction) channel is an information limit, not a naive-observer artifact.  Escape count is sufficient for the floor f (Neyman-Pearson); the max-statistic is rate-equivalent; the window closes only through sample size OR family slope, never through a sharper test on the same folded numbers.  The primal channel (h, X per trade) has no plateau transform and is never silent.",
+  "theta_star": 0.06331760866327846,
+  "n": 64000,
+  "se_escape": 0.001581,
+  "section1_sufficiency": "N_esc | mixture is sufficient for f; fraction test UMP (Neyman-Pearson lemma); max-stat rate 0.8*n*S_A(theta*) coincides with the excess rate; dark zone irreducible at fixed n in the folded channel.",
+  "power_at_n64000_in_window": [
+    {
+      "floor_f": 0.06331760866327846,
+      "power_3sigma_test": 0.0
+    },
+    {
+      "floor_f": 0.065,
+      "power_3sigma_test": 0.004
+    },
+    {
+      "floor_f": 0.0675,
+      "power_3sigma_test": 0.131
+    },
+    {
+      "floor_f": 0.0682,
+      "power_3sigma_test": 0.315
+    },
+    {
+      "floor_f": 0.07,
+      "power_3sigma_test": 0.937
+    }
+  ],
+  "section2_structural_speedup": {
+    "family_x_span_1.5": {
+      "avg_S_A_prime_across_reach": 1.107,
+      "f_D": 0.06867,
+      "loud_margin": 0.00536
+    },
+    "family_x_span_1.0_steep": {
+      "avg_S_A_prime_across_reach": 2.135,
+      "f_D": 0.0661,
+      "loud_margin": 0.00278
+    },
+    "law": "margin_loud = 3*SE_p / (w_A * avg|S_A'|), where avg is the SECANT across (theta*, f_D): the box's edge density understates the reach; the average slope sets the window and reproduces the observed f_D."
+  },
+  "section3_where_knowledge_lives": {
+    "folded_take": "the external analyst receives only the escape transform; its shadow is the dark zone.",
+    "primal_take": "the engine reads (h,X) per trade - the joint law and the floor f are visible from every draw; the ledger is never in the dark zone.",
+    "hierarchy": "primal > folded > naive (each layer adds a transform and its shadow)."
+  },
+  "design_rule": "if the boundary must be monitored from OUTSIDE the ledger, keep floors loudly above theta* (f >= theta* + margin_loud) or enlarge n; the best monitor is the ledger itself, which reads the primal stream.",
+  "references_note": "Neyman-Pearson lemma and statistical power (Lehmann & Romano 2005, Testing Statistical Hypotheses); binomial power (Cohen 1988); folded-vs-primal observables is a choice I am making explicit here, not a theorem of the external literature."
+}

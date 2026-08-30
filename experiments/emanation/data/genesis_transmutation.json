@@ -1,0 +1,60 @@
+{
+  "bare_couplings_mass_spectrum": {
+    "g0_trade": 0.05,
+    "n_necessity": 0.1,
+    "I_harm": 2.0,
+    "genesis_masses.json": "T->g0 0.2%, N->n 0.2%, H->I 2.7%"
+  },
+  "derived_scales": {
+    "C_det_per_X": 0.0078,
+    "lambda_mixing_radius": 0.08831760866327847,
+    "g_star_phase_cusp": 0.17663521732655693,
+    "d_star_catapult": 2.1105869554426153,
+    "alpha_cusp_g_star_marker": 1.0552934777213077,
+    "mixing_gap": 0.9116823913367216,
+    "d_sigma0_depth_where_sigma=0": 1.3333333333333335,
+    "freeze_gate_depth_ratio": 1.0001
+  },
+  "tower_in_units_of_g0": {
+    "lambda/g0": 1.7664,
+    "g_star/g0": 3.5327,
+    "d_star/g0": 42.2117,
+    "alpha_cusp/g0": 21.1059,
+    "gap/g0": 18.2336,
+    "d_sigma0/g0": 26.6667,
+    "I/g0": 40.0,
+    "mass_hierarchy_I_over_g0": 40.0
+  },
+  "closed_form_crosschecks": [
+    {
+      "measured_source": "eigen_gate.json |lambda|=0.0883",
+      "closed_form_value": 0.0883,
+      "measured": 0.0883,
+      "residual": 0.0
+    },
+    {
+      "measured_source": "harm_cap.json g*=0.1766",
+      "closed_form_value": 0.1766,
+      "measured": 0.1766,
+      "residual": 0.0
+    },
+    {
+      "measured_source": "harm_as_depth.json d*=2.11",
+      "closed_form_value": 2.1106,
+      "measured": 2.11,
+      "residual": 0.0006
+    },
+    {
+      "measured_source": "harm_cap.json alpha_cusp=1.0553",
+      "closed_form_value": 1.0553,
+      "measured": 1.0553,
+      "residual": -0.0
+    },
+    {
+      "measured_source": "gap=1-|lambda|=0.9117",
+      "closed_form_value": 0.9117,
+      "measured": 0.9117,
+      "residual": -0.0
+    }
+  ]
+}

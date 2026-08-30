@@ -52,7 +52,10 @@ def test_full_flow_conservation(client):
 def test_harm_gauge_conserved_and_cited(client):
     """The '-1 conserved charge' (gate 14): a committed harm I*h shows in
     irrev_total, stays conserved (residual 0), and the physics gauges carry
-    the measured markers from experiments/harm_cap.json."""
+    the measured markers from experiments/emanation/harm_cap.json.  Also
+    pinning the ledger-audit correction: the h/X escape threshold is
+    theta_star = g0*gdepth*d*/I = 0.0633 (alpha_cusp is a g-ladder marker,
+    not a threshold)."""
     b = client.post("/api/accounts", json={"handle": "bob", "pin": "1234"})
     assert b.get_json()["ok"]
     s = client.post("/api/accounts", json={"handle": "grocery", "pin": "9999", "tier": "business"})
@@ -60,7 +63,7 @@ def test_harm_gauge_conserved_and_cited(client):
     st0 = client.get("/api/status").get_json()
     assert st0["irrev_total"] == 0.0
     assert st0["harm_events"] == 0
-    # physics gauges match the measured ladder (harm_cap.json)
+    # physics gauges match the measured ladder (emanation/harm_cap.json)
     pg = st0["physics"]
     I = appmod.ledger.p.I
     assert pg["sigma_floor"] == pytest.approx(
@@ -69,6 +72,7 @@ def test_harm_gauge_conserved_and_cited(client):
         (0.13 - 0.05) / (I * 0.05 * 1.20), abs=1e-4)  # 0.667
     assert pg["alpha_cusp"] == pytest.approx(
         (2 * (0.05 * 1.20 * 0.13) ** 0.5 - 0.05) / (I * 0.05 * 1.20), abs=1e-4)
+    assert pg["escape_h_over_X"] == pytest.approx(0.0633, abs=1e-4)
 
     bob = appmod.ledger.conn.execute(
         "SELECT id FROM accounts WHERE handle='bob'").fetchone()["id"]

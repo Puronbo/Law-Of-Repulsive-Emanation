@@ -1,0 +1,64 @@
+{
+  "identity": "Ledger mass spectrum = its own coupling spectrum {g0, n, I}, verified to <=3% : photon massless (credit, lambda=1), lightest charged mode T=g0 is the finite ",
+  "constant_matches": {
+    "T_trade": {
+      "dC": -9.98e-05,
+      "dT": -4.999999999999796e-06,
+      "slope": 0.050100200400799565,
+      "labels": "T<->g0  H<->I  N<->n",
+      "constant": 0.05,
+      "rel_err": 0.0020040080159912377
+    },
+    "H_harm": {
+      "dC": -9.98e-05,
+      "dT": -0.00020500000000000032,
+      "slope": 2.054108216432869,
+      "labels": "T<->g0  H<->I  N<->n",
+      "constant": 2.0,
+      "rel_err": 0.02705410821643439
+    },
+    "N_nec": {
+      "dC": -9.98e-05,
+      "dT": 9.999999999999593e-06,
+      "slope": 0.10020040080159913,
+      "labels": "T<->g0  H<->I  N<->n",
+      "constant": 0.1,
+      "rel_err": 0.0020040080159912377
+    }
+  },
+  "spectrum_sorted": [
+    {
+      "mode": "T_trade",
+      "mass": 0.050100200400799565,
+      "coupling": 0.05,
+      "rel_err": 0.0020040080159912377
+    },
+    {
+      "mode": "N_nec",
+      "mass": 0.10020040080159913,
+      "coupling": 0.1,
+      "rel_err": 0.0020040080159912377
+    },
+    {
+      "mode": "H_harm",
+      "mass": 2.054108216432869,
+      "coupling": 2.0,
+      "rel_err": 0.02705410821643439
+    }
+  ],
+  "photon": {
+    "ray": [
+      1.0,
+      0.0
+    ],
+    "eigenvalue": 1.0,
+    "label": "massless(1) credit photon / polar gauge"
+  },
+  "note": "masses are dimensionless engine constants; identification is structural (eigenvalue/gap language), numbers measured.",
+  "gap": {
+    "mixing_gap_off_origin": 0.9117,
+    "source": "eigen_gate.json |lambda|=0.0883",
+    "escape_threshold_h_over_X": 0.0633,
+    "source2": "harm_cap.json theta_star = g0*gdepth*d*/I (CORRECTION ledger audit: alpha_cusp=1.0553 is the g-ladder marker at g* = d*/I, not the h/X threshold)"
+  }
+}

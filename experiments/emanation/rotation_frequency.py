@@ -107,7 +107,7 @@ def main():
         "rows": rows,
         "chi_sq_per_point": CHI / max(1, N),
     }
-    path = os.path.join("experiments", "data", "rotation_frequency.json")
+    path = os.path.join("experiments", "emanation", "data", "rotation_frequency.json")
     with open(path, "w") as fh:
         json.dump(out, fh, indent=2)
 

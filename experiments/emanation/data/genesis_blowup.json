@@ -1,0 +1,50 @@
+{
+  "seed": 42,
+  "identity": "genesis blowup: the ledger's own 0/0 (account at credit,trust near the origin) unfolds on an exceptional fiber;each economic rule is a distinct homogeneous ray (dcredit:dtrust) -- the resolution VALUES differ (T slope ~0.05, H slope = I = 2.0, N slope ~-0.10, S pure credit) and NONE equals 1; 0/0=1 lives only in the conserving GAUGE (delta conserved = 0, exact)",
+  "ray_T_trade": {
+    "point_P1": [
+      -9.98e-05,
+      -5e-06
+    ],
+    "slope_dT_dC": 0.0501,
+    "delta_conserved": 0.0
+  },
+  "ray_H_harm": {
+    "point_P1": [
+      -9.98e-05,
+      -0.000205
+    ],
+    "slope_dT_dC": 2.054108,
+    "point_form": "(-1:-2) slope=I=2.0, tends to (0:1) as h/X->inf",
+    "delta_conserved": 0.0,
+    "note": "same spend X as ray T, but trust moves by I*h, not g0*X: the harm direction is the I-slope, not a credit-free ray"
+  },
+  "ray_N_necessity": {
+    "point_P1": [
+      -9.98e-05,
+      1e-05
+    ],
+    "slope_dT_dC": -0.1002,
+    "delta_conserved": 0.0
+  },
+  "ray_S_seed": {
+    "point_P1": [
+      5.0,
+      0.0
+    ],
+    "point_form": "(1:0) external inflow",
+    "delta_conserved": 5.0,
+    "note": "the one ray off the conserving membrane (mintage by Phase-0, by design)"
+  },
+  "exceptional_fiber_points": [
+    "T: (-0.00010 : -0.00001)",
+    "H: (-0.00010 : -0.00020)",
+    "N: (-0.00010 : 0.00001)",
+    "S: (1.0 : 0.0)"
+  ],
+  "conserving_gauge_exact": true,
+  "code_resolutions_cited": [
+    "sim.py:182 depth clamp max(0,-credit)/max(trust,1e-9) -> 0",
+    "_gini empty guard -> 0.0"
+  ]
+}

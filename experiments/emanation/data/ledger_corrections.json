@@ -1,0 +1,111 @@
+{
+  "title": "Ledger audit: corrections applied rigorously with sources",
+  "date": "2026-08-30",
+  "method": "re-read every script+JSON claim touching alpha_cusp, the escape
+            threshold, and the direction counts; verified each against the
+            code's own MC/closed forms; corrected scripts, regenerated JSONs,
+            and recorded every change here.  Key reconciliation: the escape
+            rule I*h/X > g0*gdepth*d* (=0.1266) is equivalent to h/X >
+            theta_star = g0*gdepth*d*/I = 0.0633, and theta_star =
+            g0*gdepth*alpha_cusp where alpha_cusp = (g*-g0)/(I*g0*gdepth) =
+            d*/I = 1.0553 is a DIMENSIONLESS g-axis marker at the phase
+            cusp g*, not an h/X threshold.",
+  "corrections": [
+    {
+      "id": "E1",
+      "location": "experiments/emanation/harm_cap.py (docstring, identity, print)",
+      "wrong_statement": "escape iff I*h/X > g0*gdepth*d*, i.e. h/X > alpha_cusp = 1.05529",
+      "correct_fact": "escape iff I*h/X > g0*gdepth*d* (=0.1266), i.e. h/X > theta_star = g0*gdepth*d*/I = 0.0633; alpha_cusp is the g-ladder coordinate at g* (d*/I), NOT the threshold",
+      "fix": "renamed marker field to alpha_cusp_g_star_marker; added escape_threshold_h_over_X=0.0633; docstring/print corrected with a CORRECTION note",
+      "verified": "MC rule unchanged => mc_escape=0.8305 (harm_cap MC benchmark intact); printed theta_star=0.06332"
+    },
+    {
+      "id": "E2",
+      "location": "experiments/emanation/genesis_gapfn.py (docstring, identity)",
+      "wrong_statement": "escape the rotation iff I*h/X > g0*gdepth*d* =: alpha_cusp (1.0553)",
+      "correct_fact": "I*h/X > g0*gdepth*d* = 0.1266 (threshold h/X > 0.0633); alpha_cusp = d*/I = 1.0553 is the g-ladder marker at g*",
+      "fix": "corrected text; NEW result: f(s) = S(theta_star/s), the EXACT closed-form survival of the threat ratio (genesis_tail law), verified row-by-row against MC",
+      "verified": "all 9 grid rows match S(theta*/s) to |resid|<=0.0014 (MC noise); midpoint ~0.5 consistent with S(theta*/s*)=0.5; calibrated s=1.0: MC 0.8306 vs closed form 0.8300"
+    },
+    {
+      "id": "E3",
+      "location": "experiments/emanation/genesis_transmutation.py + .json",
+      "wrong_statement": "field key 'alpha_cusp_escape_h_over_X' = 1.0553; docstring 'the escape threshold alpha_cusp'",
+      "correct_fact": "alpha_cusp (d*/I) is the g-ladder marker at g*; escape threshold is theta_star = g0*gdepth*d*/I = 0.0633",
+      "fix": "renamed key to alpha_cusp_g_star_marker; docstrings corrected; stale inline comment fixed",
+      "verified": "crosschecks unchanged (closed-form residuals vs recorded values all <=0.0006)"
+    },
+    {
+      "id": "E4",
+      "location": "experiments/emanation/genesis_scale.py + .json",
+      "wrong_statement": "n_distinct_directions = 6; verdict '~7 distinct directions'",
+      "correct_fact": "the label '6' counts T=0.0501 vs G=0.05 as distinct at 4dp and adds the null 'axis' class - a rounding artifact; physical direction classes = 5 ({-0.1, 0.0, 2.05} core slopes/polar + axis, T~G merged)",
+      "fix": "added robust clustering; new fields n_physical_direction_classes=5, physical_classes; verdict and identity corrected",
+      "verified": "core slopes unchanged {0.0501, 2.0541, -0.1002}; credit-rail collinearity and scale_recursion=False unchanged"
+    },
+    {
+      "id": "E5",
+      "location": "experiments/emanation/genesis_euler.py + .json",
+      "wrong_statement": "'12 rays fold to 12/2 = 6 axes (split 12 -> scale 6 measured)' 'matches genesis_scale_measured_6_labels'",
+      "correct_fact": "scale's '6' was a rounding artifact; physical classes = 5.  The Euler fold claim rests on the clock step pi/6, (e^(i*pi/6))^6 = -1, and |e^(i*pi)|^2=1 - not on the decimal 6",
+      "fix": "identity, fold object, docstring, and print corrected; JSON regenerated",
+      "verified": "numerics table unchanged (no pi/e/i magnitude match within 1% other than alpha~pi/3 at chance level)"
+    },
+    {
+      "id": "E6",
+      "location": "experiments/emanation/genesis_constants.py + .json",
+      "wrong_statement": "census row: '12 rays fold to 6 axes'",
+      "correct_fact": "12 charge generators fold to 5 physical direction classes (3 core slopes, polar credit point, axis)",
+      "fix": "row's measured text corrected; JSON regenerated",
+      "verified": "exact doubling checks unchanged (residuals 0.0 within booked 4dp)"
+    },
+    {
+      "id": "E7",
+      "location": "experiments/emanation/genesis_relaxation.py + .json",
+      "wrong_statement": "the catapult escape at alpha_cusp=1.0553 (harm_cap)",
+      "correct_fact": "catapult escape threshold is h/X > theta_star = 0.0633; alpha_cusp is the g-ladder marker",
+      "fix": "corrected_mapping and print updated with correction parenthetical",
+      "verified": "gapless result unchanged (ratios 1.0000, trust AC(1)=0.9994, halflife ~1171)"
+    },
+    {
+      "id": "E8",
+      "location": "experiments/emanation/harm_freeze.py (docstring)",
+      "wrong_statement": "escape rate h/X>alpha_cusp predictable",
+      "correct_fact": "escape rate h/X>theta*=0.0633; alpha_cusp is a g-ladder marker",
+      "fix": "docstring paragraph corrected",
+      "verified": "freeze gate 1.0001 and conservation residual -2.728e-12 unchanged"
+    },
+    {
+      "id": "E9",
+      "location": "experiments/emanation/genesis_masses.py + .json",
+      "wrong_statement": "gap: heaviest_escape_scale=1.0553; source2 'harm_cap.json alpha_cusp = I g0 gdepth d*/I' (garbled units)",
+      "correct_fact": "escape threshold h/X = 0.0633 = g0*gdepth*d*/I; alpha_cusp=1.0553 is the g-ladder marker (= d*/I)",
+      "fix": "replaced with escape_threshold_h_over_X=0.0633 and corrected source string",
+      "verified": "mass spectrum unchanged (T->g0 0.2%, N->n 0.2%, H->I 2.7%)"
+    },
+    {
+      "id": "E10",
+      "location": "credit_commons/web/app.py (_physics_gauges docstring + return)",
+      "wrong_statement": "the alpha ladder = h/X thresholds a harm must clear...",
+      "correct_fact": "alpha ladder = dimensionless g-axis coordinates (g-g0)/(I*g0*gdepth); the h/X escape threshold is theta* = 0.0633 = g0*gdepth*alpha_cusp",
+      "fix": "docstring corrected; added live gauge escape_h_over_X=0.0633",
+      "verified": "existing gauge values unchanged; test suite re-run green (see below)"
+    }
+  ],
+  "standing_withdrawals_unchanged": [
+    "genesis_relaxation.json: Yang-Mills-style spectral-mass-gap reading withdrawn (linear sector gapless); |lambda|=0.0883 is a rotation modulus, not a relaxation rate.",
+    "genesis_law.json: 'log-uniform (Jeffreys)' threat spectrum withdrawn (was a Jacobian bug); corrected density is Pareto-2 in the main band.",
+    "genesis_euler.json / genesis_tail.json: no pi/e/i numeric miracle claimed; alpha~pi/3 is a chance-level hit under 96 comparisons."
+  ],
+  "regenerated_after_correction": [
+    "experiments/emanation/data/harm_cap.json",
+    "experiments/emanation/data/genesis_gapfn.json",
+    "experiments/emanation/data/genesis_transmutation.json",
+    "experiments/emanation/data/genesis_scale.json",
+    "experiments/emanation/data/genesis_euler.json",
+    "experiments/emanation/data/genesis_constants.json",
+    "experiments/emanation/data/genesis_relaxation.json",
+    "experiments/emanation/data/harm_freeze.json",
+    "experiments/emanation/data/genesis_masses.json"
+  ]
+}

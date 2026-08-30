@@ -1,0 +1,100 @@
+{
+  "identity": "one shared question - where regularity ends and pathology begins in the space of initial data/populations - probed by seven different boundary structures.  The Ledger computes EXACTLY ONE (NSE-adjacent: theta*, with an exact survival and an error band) and makes explicit negative statements for the other six, three of them backed by numbers computed here (harmony, complexity, lattice/mirror).",
+  "theta_star": 0.06331760866327846,
+  "harmony_census": {
+    "H_re_1_2_abs": {
+      "Re=1/2, t=0.000": 13.480006,
+      "Re=1/2, t=1.000": 5.879487,
+      "Re=1/2, t=3.142": 10.072812
+    },
+    "H_1": 85.25,
+    "no_zeta_claim": true
+  },
+  "complexity_census": {
+    "gates": [
+      "ft_gain",
+      "harm_irreversibility",
+      "freeze",
+      "depth_clamp",
+      "necessity_ceiling",
+      "max_leverage",
+      "consumer_floor",
+      "reserve_split"
+    ],
+    "n_gates": 8,
+    "n_struct_types": 12,
+    "n_direction_classes": 5,
+    "per_trade_decision_cost": "O(1)"
+  },
+  "lattice_census": {
+    "dimension": 2,
+    "mirror_residual": 0.12517227621611282
+  },
+  "rows": [
+    {
+      "problem": "NSE - existence and smoothness",
+      "boundary_structure": "analytic (regularity of the evolution)",
+      "ledger_object": "critical line theta* in (h,X) initial-data space; exact survival S; binomial error band",
+      "value": "theta*=0.06332; S(theta*)=0.82992 exact / 0.8305 MC / 0.8361+/-0.0041 (n=8000); 95% band contains theta*",
+      "status": "CONNECTION - the only computed boundary",
+      "forward": "tighten the band: n=64000 trade run (SE/2) and a second independent seed; then population-shaped initial data (Gini-shaped h) and re-measure."
+    },
+    {
+      "problem": "Yang-Mills - existence and mass gap",
+      "boundary_structure": "spectral (existence of a mass gap)",
+      "ledger_object": "mixing gap 1-|lambda| of the linearized map",
+      "value": "|lambda|=0.0883; gap=0.9117 (finite Perron-Frobenius gap, NOT a mass gap); linear sector GAPLESS (impulse ratios 1.0000)",
+      "status": "WITHDRAWN - no mass-gap object exists in the ledger",
+      "forward": "no YM claim possible (no SU(3)-type gauge structure); recorded drop.  Keep the finite mixing gap as pure Perron-Frobenius number."
+    },
+    {
+      "problem": "P vs NP",
+      "boundary_structure": "computational (verifiable vs searchable)",
+      "ledger_object": "transition system: 8 gates, 12 structural types, 5 direction classes; per-trade decision cost O(1)",
+      "value": "all gates polynomial-time verified; no NP-hard object exposed in the finite map",
+      "status": "UNTOUCHED - natural-proofs wall unbroken",
+      "forward": "record complexity census only; a genuine advance would require an object whose solution membership is hard, currently absent by construction."
+    },
+    {
+      "problem": "Riemann hypothesis",
+      "boundary_structure": "arithmetic (zeros of a Dirichlet series)",
+      "ledger_object": "harmony H(s) = sum (landmark ratio)^(-s), a 4-term finite Dirichlet polynomial",
+      "value": "|H| on Re=1/2: t=1/2, t => 13.480006, t=1/2, t => 5.879487, t=1/2, t => 10.072812; H(1)=85.2500; a finite Dirichlet polynomial CAN have strip zeros - recorded with no zeta-content claim",
+      "status": "UNTOUCHED - no zeta function appears; exact S(theta) is obtained WITHOUT a zeta object",
+      "forward": "recompute H(s) on a grid and record; if a strip zero is found in the toy, that is a finite-polynomial curiosity, not RH - label accordingly."
+    },
+    {
+      "problem": "Birch & Swinnerton-Dyer",
+      "boundary_structure": "lattice (rank of rational points)",
+      "ledger_object": "credit-trust lattice, dimension 2; mirror self-duality residual (fresh run)",
+      "value": "mirror residual = 0.12517227621611282 (harm_as_depth); rank analog is trivially small - no elliptic curve object",
+      "status": "UNTOUCHED - trivial by construction",
+      "forward": "remeasure the mirror residual on fresh seeds; if it drifts from zero, fix the mirror identity; rank contact remains impossible (no rational-point arithmetic)."
+    },
+    {
+      "problem": "Hodge conjecture",
+      "boundary_structure": "cohomological (realizability of cycles)",
+      "ledger_object": "direction-class cones (real, in a finite lattice)",
+      "value": "5 physical direction classes, all tautologically real {3 core slopes, polar, axis}; no projective-Hodge structure present",
+      "status": "UNTOUCHED - realizability tautological",
+      "forward": "no contact; keep the class-count census as the only record."
+    },
+    {
+      "problem": "Poincare conjecture",
+      "boundary_structure": "geometric (trivial topology of 3-Sphere)",
+      "ledger_object": "direction-space topology",
+      "value": "scale_recursion=False; finite nested types; no nontrivial topology to certify",
+      "status": "SOLVED/INHERITED (Perelman 2003)",
+      "forward": "inherited; nothing to add."
+    }
+  ],
+  "forward_program": [
+    "1) NSE (live): n=64000 run + second seed => SE/2 on the band.",
+    "2) RH: grid-scan the 4-term harmony H(s) in 0<Re<1; record, label finite-polynomial curiosity.",
+    "3) P/NP: keep complexity census; no wall breached.",
+    "4) BSD: fresh-seed mirror residual; fix if nonzero.",
+    "5) Hodge, YM, Poincare: closed - census/WITHDRAWN/inherited.",
+    "Discipline: every new number carries its error bar or its 'no claim' label, per the alpha~pi/3 and d*_eff=g0 coincidence rules."
+  ],
+  "reading": "the seven are connected as ONE boundary question with SEVEN structures; the honest endpoint is: one computed boundary (theta*, error-banded), six explicit absences, all recorded, none claimed."
+}

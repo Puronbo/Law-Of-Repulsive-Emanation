@@ -10,7 +10,8 @@
   "mirror_ln": {
     "gain_over_draw_plus_harm": -0.9652361665027901,
     "mean_action_ln_geff": -1.090408442718903,
-    "residual": 0.12517227621611282
+    "residual": 0.12517227621611282,
+    "residual_note": "residual 0.125 (13%% in log units) is NOT zero: the mirror identity is approximate only, after Jensen recomputation the two meters disagree; the BSD-adjacent self-duality is a flagged approximation, not an exact symmetry (see genesis_seven.json lattice_census)."
   },
   "frac_past_cusp": 0.836125,
   "sample_events": [

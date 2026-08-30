@@ -105,7 +105,7 @@ def main():
             "irrev_residual": irrev_check,
         },
     }
-    path = os.path.join("experiments", "data", "harm_ft_break.json")
+    path = os.path.join("experiments", "emanation", "data", "harm_ft_break.json")
     with open(path, "w") as fh:
         json.dump(out, fh, indent=2)
 

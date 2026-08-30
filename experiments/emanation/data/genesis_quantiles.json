@@ -1,0 +1,51 @@
+{
+  "identity": "quantile calibration of the exact threat law.  Model self-consistency: MC escape 0.8305 inverts to theta_mc=0.06318 (theta_star=0.06332).  The n=8000 trade experiment (harm_as_depth) measured p=0.8361; its inversion theta_eff=0.06182 is NOISE-LEVEL (|z|=1.50 vs the exact closed form 0.82992, |z|=1.36 vs the 400k MC 0.8305): the 95% band [0.05983, 0.06378] CONTAINS theta*, so no significant market frailty is claimed.  The apparent d*(1-theta_eff/theta*) = d*(1-P.g0/d*) digit coincidence is flagged, not claimed (coincidence-discipline).  Transition sharpness: 10-90% coupling width = 12.28 (1.09 decades); midpoint s_half=0.446.  Sharpening condition: a single-severity population gives a STEP survival law (sharp gate); smearing width = the population's endogenous spread, exact in the ratio-landmark ladder.",
+  "theta_star": 0.06331760866327846,
+  "quantiles": {
+    "S_inv(0.9)_theta_lo": 0.046,
+    "S_inv(0.5)_theta_half": 0.14194,
+    "S_inv(0.1)_theta_hi": 0.56507
+  },
+  "calibration": {
+    "market_escape": 0.836125,
+    "n_trades": 8000,
+    "binomial_se": 0.004139,
+    "market_effective_threshold_h_over_X": 0.06182,
+    "model_mc_escape": 0.8305,
+    "model_mc_effective_threshold_h_over_X": 0.06318,
+    "model_self_closing_residual": -0.000141,
+    "effective_cusp_depth_market": 2.0605,
+    "book_cusp_depth": 2.1106,
+    "z_vs_exact": 1.5,
+    "z_vs_400k_mc": 1.36,
+    "theta_eff_95pct_band": [
+      0.05983,
+      0.06378
+    ],
+    "band_contains_theta_star": true,
+    "frailty_verdict": "NOT significant: |z|<1.65 (one-sided 5%); the 95% band contains theta*; the measured escape law closes across closed form (0.82992), 400k MC (0.8305) and the n=8000 experiment (0.8361) within sampling error.  Earlier text ('market ~2.4% frailer') is RETRACTED as a sampling illusion.",
+    "coincidence_check": {
+      "d_star_eff_vs_d_star_minus_g0": [
+        2.0605,
+        2.0606
+      ],
+      "digit_level_agreement": 4,
+      "status": "FLAGGED, NOT CLAIMED: the 8000-sample inversion hits d*_eff = d* - P.g0 to 4 digits, but the sample carries NO g0-scale depth (observed depth ~1e-4..2e-3 in sample_events), so no measured mechanism exists; coincidence-discipline as for alpha~pi/3 in genesis_euler.json."
+    }
+  },
+  "transition_sharpness": {
+    "beta_10pct_coupling_s": 0.1121,
+    "beta_90pct_coupling_s": 1.3764,
+    "width_ratio_s90_over_s10": 12.284,
+    "width_decades": 1.089,
+    "midpoint_coupling_s_half": 0.4461,
+    "sharpening_condition": "single-severity population => step survival => infinitely sharp gate; only population shaping (not threshold tuning) can sharpen the smeared transition."
+  },
+  "landmarks": {
+    "a/d": 0.013333333333333334,
+    "b/d": 0.13333333333333333,
+    "a/c": 0.39999999999999997,
+    "b/c": 4.0
+  },
+  "reading": "the gap function is the inverse-threshold law s(alpha) = theta_star / T(alpha), T = S^(-1): coupling calibration IS quantile analysis of the population's severity ratio.  Griffiths-smearing is not a defect to remove by tuning; it is the exact measure of population spread.  First error-banded quantity in the ledger: the critical line theta* = 0.06332 carries a 95% band from the n=8000 binomial measurement."
+}

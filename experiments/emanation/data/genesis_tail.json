@@ -1,0 +1,21 @@
+{
+  "identity": "exact tail law derived and verified: escape = P(h/x > theta*) where theta* = g0*gdepth*d*/I = 0.063318; closed-form f_esc = 0.82992 over the population box (h in 0.02..0.20, x in 0.05..1.50); MC 0.83009; harm_cap MC 0.8305; measured 0.8361.  The Griffiths-smeared transition of genesis_gapfn IS this closed-form tail; its landmarks are the pure population ratios {'a/d': 0.0133, 'b/d': 0.1333, 'a/c': 0.4, 'b/c': 4.0, 'theta_star': 0.063318, 'theta_inside': True}.",
+  "closed_form_escape": 0.82992,
+  "mc_escape": 0.830088,
+  "harm_cap_mc": 0.8305,
+  "measured_escape_0_8361": 0.8361,
+  "residuals": {
+    "closed_vs_mc": -0.000168,
+    "closed_vs_measured": -0.00618,
+    "mc_vs_measured": -0.006012
+  },
+  "threshold_and_landmarks": {
+    "a/d": 0.0133,
+    "b/d": 0.1333,
+    "a/c": 0.4,
+    "b/c": 4.0,
+    "theta_star": 0.063318,
+    "theta_inside": true
+  },
+  "reading": "safety = the exact tail of an endogenous ratio statistic; the engine's deterministic gates (depth clamp, Gini guard) act on the population that IS this distribution.  Tail-statistics object, honestly labelled - not a spectral/mass gap."
+}

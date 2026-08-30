@@ -1,0 +1,84 @@
+{
+  "identity": "gap function beta(s) = S(theta_star/s): the EXACT closed-form survival of the threat ratio (genesis_tail law), verified row-by-row against MC (max |resid|=0.0014, MC noise).  Rises 0.444 (s=0.4) to 0.988 (s=3.0), midpoint ~s=0.50 - NOT a clean step at alpha_cusp=1.0553 because alpha_cusp is the g-ladder MARKER at g*, while the h/X threshold is theta_star=0.0633 and the transition midpoint solves S(theta_star/s*)=0.5.  Reading: Griffiths-like smearing = the exact tail law over the population's 300:1 severity span; Pareto-2 threat density (genesis_law).",
+  "g_ladder_marker_at_g_star": 1.0552934777213077,
+  "escape_threshold_h_over_X": 0.0633,
+  "gap_function_table": [
+    {
+      "coupling_s": 0.4,
+      "escape_fraction": 0.4443,
+      "closed_form_S(theta*/s)": 0.4449,
+      "residual": -0.0006,
+      "side": "below-crit (gapless)"
+    },
+    {
+      "coupling_s": 0.6,
+      "escape_fraction": 0.6544,
+      "closed_form_S(theta*/s)": 0.6529,
+      "residual": 0.0014,
+      "side": "above-crit (gap open)"
+    },
+    {
+      "coupling_s": 0.8,
+      "escape_fraction": 0.765,
+      "closed_form_S(theta*/s)": 0.7642,
+      "residual": 0.0008,
+      "side": "above-crit (gap open)"
+    },
+    {
+      "coupling_s": 1.0,
+      "escape_fraction": 0.8306,
+      "closed_form_S(theta*/s)": 0.83,
+      "residual": 0.0006,
+      "side": "above-crit (gap open)"
+    },
+    {
+      "coupling_s": 1.0553,
+      "escape_fraction": 0.8427,
+      "closed_form_S(theta*/s)": 0.8436,
+      "residual": -0.001,
+      "side": "above-crit (gap open)"
+    },
+    {
+      "coupling_s": 1.2,
+      "escape_fraction": 0.8726,
+      "closed_form_S(theta*/s)": 0.873,
+      "residual": -0.0005,
+      "side": "above-crit (gap open)"
+    },
+    {
+      "coupling_s": 1.6,
+      "escape_fraction": 0.9254,
+      "closed_form_S(theta*/s)": 0.925,
+      "residual": 0.0003,
+      "side": "above-crit (gap open)"
+    },
+    {
+      "coupling_s": 2.0,
+      "escape_fraction": 0.9545,
+      "closed_form_S(theta*/s)": 0.9543,
+      "residual": 0.0002,
+      "side": "above-crit (gap open)"
+    },
+    {
+      "coupling_s": 3.0,
+      "escape_fraction": 0.9878,
+      "closed_form_S(theta*/s)": 0.9877,
+      "residual": 0.0002,
+      "side": "above-crit (gap open)"
+    }
+  ],
+  "step_by_coupling": 0.5435,
+  "midpoint_coupling": 0.5,
+  "calibrated_point": {
+    "s": 1.0,
+    "mc_escape": 0.8306,
+    "closed_form_S": 0.83,
+    "harm_cap_mc": 0.8305,
+    "measured_escape": 0.8361
+  },
+  "linear_sector": {
+    "result": "gapless (ratios 1.0000)",
+    "source": "genesis_relaxation.json"
+  },
+  "reading": "the Ledger's nonlinear transition is the exact tail of the endogenous interaction distribution h/X; a clean metal/insulator step would require tuning one coupling, which the engine never does - the population IS the disorder (Griffiths 1969 analog, honestly labelled)."
+}

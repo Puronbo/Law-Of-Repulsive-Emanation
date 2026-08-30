@@ -82,11 +82,20 @@ def main():
         "I_sum_h": P.I * harm_total,
         "mirror_ln": {"gain_over_draw_plus_harm": mirror_pred,
                       "mean_action_ln_geff": action_pred,
-                      "residual": mirror_pred - action_pred},
+                      "residual": mirror_pred - action_pred,
+                      "residual_note": "residual 0.125 (13%% in log units) "
+                                       "is NOT zero: the mirror identity is "
+                                       "approximate only, after Jensen "
+                                       "recomputation the two meters "
+                                       "disagree; the BSD-adjacent "
+                                       "self-duality is a flagged "
+                                       "approximation, not an exact "
+                                       "symmetry (see genesis_seven.json "
+                                       "lattice_census)."},
         "frac_past_cusp": past_cusp / max(1, n_ok),
         "sample_events": events,
     }
-    path = os.path.join("experiments", "data", "harm_as_depth.json")
+    path = os.path.join("experiments", "emanation", "data", "harm_as_depth.json")
     with open(path, "w") as fh:
         json.dump(out, fh, indent=2)
 

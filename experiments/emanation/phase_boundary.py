@@ -116,7 +116,7 @@ def main():
         "realized_hyperbolic_below_turn": sub_turn,
         "realized_across_depth_boundary": across,
     }
-    path = os.path.join("experiments", "data", "phase_boundary.json")
+    path = os.path.join("experiments", "emanation", "data", "phase_boundary.json")
     with open(path, "w") as fh:
         json.dump(out, fh, indent=2)
 

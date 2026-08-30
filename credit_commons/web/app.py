@@ -166,18 +166,24 @@ _P = Params()
 
 
 def _physics_gauges():
-    """The measured invariants as live gauges (experiments/harm_cap.json):
+    """The measured invariants as live gauges (experiments/emanation/harm_cap.json):
     sigma_floor = ln(reward/g_at(1)) is the honest minimum positive action;
-    the alpha ladder = h/X thresholds a harm must clear to step g_eff past
-    the gate, reward (sigma=0, FT flips), and the phase cusp g*=2*sqrt(C)."""
+    the alpha ladder = dimensionless g-axis coordinates (g-g0)/(I*g0*gdepth)
+    marking where g_eff = g + I*h/X steps past the gate, reward (sigma=0, FT
+    flips), and the phase cusp g*=2*sqrt(C).  escape_h_over_X = theta* =
+    g0*gdepth*d*/I = 0.0633 is the TRUE fresh-borrower escape h/X threshold
+    (equals g0*gdepth*alpha_cusp); alpha_cusp itself is a coordinate, not a
+    threshold (ledger audit correction)."""
     reward = _P.reward()
     g_star = 2.0 * (_P.g0 * _P.gdepth * reward) ** 0.5
+    d_star = (g_star / _P.g0 - 1.0) / _P.gdepth
     sigma_floor = math.log(reward / _P.g_at(1.0))
     return {
         "sigma_floor": round(sigma_floor, 4),
         "alpha_gate": round((_P.g_at(1.0) - _P.g0) / (_P.I * _P.g0 * _P.gdepth), 4),
         "alpha_zero": round((reward - _P.g0) / (_P.I * _P.g0 * _P.gdepth), 4),
         "alpha_cusp": round((g_star - _P.g0) / (_P.I * _P.g0 * _P.gdepth), 4),
+        "escape_h_over_X": round(_P.g0 * _P.gdepth * d_star / _P.I, 4),
     }
 
 

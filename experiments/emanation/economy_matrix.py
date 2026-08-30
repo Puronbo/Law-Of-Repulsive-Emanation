@@ -119,7 +119,7 @@ def main():
                       "asymmetry tilt 0.956 > physics 0.089: the economy "
                       "deliberately weights positive action (S5.6 alpha).",
     }
-    path = os.path.join("experiments", "data", "economy_matrix.json")
+    path = os.path.join("experiments", "emanation", "data", "economy_matrix.json")
     with open(path, "w") as fh:
         json.dump(out, fh, indent=2)
     print("WROTE data/economy_matrix.json")

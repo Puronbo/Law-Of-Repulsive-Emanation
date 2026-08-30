@@ -1,0 +1,110 @@
+{
+  "identity": "DARK-NUMBER window: for floors in (theta*, f_D) the population crosses the critical line yet the escape excess is below 3 sigma at n=64000 - catastrophe without statistics.  The boundary's shadow: near-critical populations can be in trouble silently.",
+  "theta_star": 0.06331760866327846,
+  "n": 64000,
+  "plateau": 0.2,
+  "se_p_at_n": 0.001581,
+  "detectability_3sigma_in_escape_units": 0.004743,
+  "windows": {
+    "dark_regime": "f < theta*: no excess escapes (0.20 plateau exact), safe and blind",
+    "silent_crossing": "(theta* = 0.06332, f_D = 0.06867), width (f_D-theta*)/theta* = 0.0846: excess exists, < 3 sigma, unreadable",
+    "twilight": "(f_D, f_S = 0.070): audible but naive reading still biased (|z_book|>1)",
+    "luminous": "f >= f_S: the threshold reads within 1 sigma",
+    "ethics": "in the silent window the naive observer sees the plateau and cannot distinguish theta* from f_D - metamery.  Design: either stay strictly below the line (accept blindness) or cross it LOUDLY (f >= f_D, and better f >= f_S).  Operating in (theta*, f_D) buys events without knowledge."
+  },
+  "excess_table": [
+    {
+      "floor_f": 0.063,
+      "excess_over_plateau": 0.0,
+      "excess_in_sigma": 0.0,
+      "audible": false,
+      "naive_z_book_from_crossover": null
+    },
+    {
+      "floor_f": 0.064,
+      "excess_over_plateau": 8.6e-05,
+      "excess_in_sigma": 0.05,
+      "audible": false,
+      "naive_z_book_from_crossover": null
+    },
+    {
+      "floor_f": 0.065,
+      "excess_over_plateau": 0.000511,
+      "excess_in_sigma": 0.32,
+      "audible": false,
+      "naive_z_book_from_crossover": null
+    },
+    {
+      "floor_f": 0.0675,
+      "excess_over_plateau": 0.002972,
+      "excess_in_sigma": 1.88,
+      "audible": false,
+      "naive_z_book_from_crossover": null
+    },
+    {
+      "floor_f": 0.0682,
+      "excess_over_plateau": 0.003984,
+      "excess_in_sigma": 2.52,
+      "audible": false,
+      "naive_z_book_from_crossover": null
+    },
+    {
+      "floor_f": 0.07,
+      "excess_over_plateau": 0.007164,
+      "excess_in_sigma": 4.53,
+      "audible": true,
+      "naive_z_book_from_crossover": null
+    },
+    {
+      "floor_f": 0.075,
+      "excess_over_plateau": 0.019707,
+      "excess_in_sigma": 12.46,
+      "audible": true,
+      "naive_z_book_from_crossover": null
+    },
+    {
+      "floor_f": 0.08,
+      "excess_over_plateau": 0.036533,
+      "excess_in_sigma": 23.11,
+      "audible": true,
+      "naive_z_book_from_crossover": null
+    }
+  ],
+  "scaling": {
+    "rule": "SE_p ~ 1/sqrt(n), so f_D descends toward theta* and the silent window SHRINKS: darkness is a finite-sample phenomenon.",
+    "data": [
+      {
+        "n": 8000,
+        "se": 0.004472,
+        "f_D": 0.07274,
+        "silence_fraction": 0.1487
+      },
+      {
+        "n": 32000,
+        "se": 0.002236,
+        "f_D": 0.06977,
+        "silence_fraction": 0.1019
+      },
+      {
+        "n": 64000,
+        "se": 0.001581,
+        "f_D": 0.06867,
+        "silence_fraction": 0.0846
+      },
+      {
+        "n": 256000,
+        "se": 0.000791,
+        "f_D": 0.06703,
+        "silence_fraction": 0.0587
+      },
+      {
+        "n": 1024000,
+        "se": 0.000395,
+        "f_D": 0.06591,
+        "silence_fraction": 0.0409
+      }
+    ]
+  },
+  "design_number": "loud crossing at n=64000 requires floor f >= 0.0700 (10.6% above theta*); 3-sigma audibility at f_D = 0.0687.",
+  "references_note": "binomial power analysis for the 3-sigma audibility threshold (Cohen 1988, Statistical Power Analysis; Casella & Berger 2002, Statistical Inference); survival/quants after Barlow & Proschan 1975; the boundary's use as the NSE-live assignment unchanged."
+}

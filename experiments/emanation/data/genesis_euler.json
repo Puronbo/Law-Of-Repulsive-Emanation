@@ -1,0 +1,81 @@
+{
+  "identity": "Euler enters as FORM, not number: the identity is the unit-fold e^(i*pi) = -1 ~ +1 mod |.|^2, i.e. the same gauge that gives the ledger's C0 = 0/0 = 1; it is the antipodal fold of the measured 12th-root clock (split). CORRECTION (ledger audit): genesis_scale's '6' was a rounding artifact - physical direction classes = 5 (3 core slopes + polar + axis); the clock period and the unit fold stand, the decimal 6 does not.  Magnitudes honestly show NO pi/e/i match within 1%: found 1.  No numeric miracle claimed.",
+  "fold": {
+    "identity_fold": {
+      "e^(i*pi)": -1,
+      "abs2_of_e^(i*pi)": 1.0,
+      "abs2_of_1": 1.0,
+      "statement": "abs2-fold identifies the antipode -1 with +1: the same unit-fold that declares C0 = 0/0 = 1 in the ledger gauge."
+    },
+    "phase_clock_fold": {
+      "split_clock_root_real_angle_deg": 30.0,
+      "root": "exp(i*pi/6)",
+      "sixth_power_cos_plus_i_sin": "cos(pi) = -1",
+      "CORRECTION_ledger_audit": "genesis_scale's label '6' is a rounding artifact (T 0.0501 vs G 0.05; axis null class); physical direction classes = 5.  The fold rests on the clock step pi/6 and on |e^(i*pi)|^2=1, not on the decimal 6.",
+      "antipodal_fold_reduces": [
+        12,
+        "->",
+        "5 physical classes"
+      ],
+      "matches_genesis_split_measured_12": true
+    }
+  },
+  "numerics_check": [
+    {
+      "constant": "I",
+      "value": 2.0,
+      "closest_pi_e_expr": "log(2*pi)",
+      "relative_deviation": 0.0811
+    },
+    {
+      "constant": "abs_lambda",
+      "value": 0.0883,
+      "closest_pi_e_expr": "pi-e",
+      "relative_deviation": 3.794
+    },
+    {
+      "constant": "alpha_cusp",
+      "value": 1.0553,
+      "closest_pi_e_expr": "pi/3",
+      "relative_deviation": 0.0077
+    },
+    {
+      "constant": "d_star",
+      "value": 2.1106,
+      "closest_pi_e_expr": "log(2*pi)",
+      "relative_deviation": 0.1292
+    },
+    {
+      "constant": "g0",
+      "value": 0.05,
+      "closest_pi_e_expr": "pi-e",
+      "relative_deviation": 7.4662
+    },
+    {
+      "constant": "g_star",
+      "value": 0.1766,
+      "closest_pi_e_expr": "pi-e",
+      "relative_deviation": 1.397
+    },
+    {
+      "constant": "mixing_gap",
+      "value": 0.9117,
+      "closest_pi_e_expr": "pi/3",
+      "relative_deviation": 0.1486
+    },
+    {
+      "constant": "reward",
+      "value": 0.13,
+      "closest_pi_e_expr": "pi-e",
+      "relative_deviation": 2.2562
+    }
+  ],
+  "one_percent_matches": [
+    [
+      "alpha_cusp",
+      "pi/3",
+      0.0077
+    ]
+  ],
+  "reading": "On the direction-clock e^(i*pi/6) the identity is the statement that the 6th power is the antipode (-1) and the 12th is the identity - the engine's 4->6->12 split is a subgroup of the clock; the 12->6 reduction is |.|^2 folding.  All labels measured or derived in prior JSONs; nothing fitted."
+}

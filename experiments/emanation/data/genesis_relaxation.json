@@ -1,0 +1,19 @@
+{
+  "identity": "NEGATIVE RESULT, honestly recorded: the Ledger's linear response is GApLESS.  Localized credit and trust impulses propagate as conserved differences in every protocol tried (free-flow ratio 1.0000, constrained ratio 1.0000); aggregate mean-trust is sticky drifting (AC(1)=0.9994).  The modulus |lambda|=0.0883 (eigen_gate) is therefore a ROTATION/linear-map object, not a relaxation rate: it underpins the catapult rotation, but the economy has no linear spectral gap.",
+  "aggregate": {
+    "accounts": 64,
+    "trades": 3862,
+    "trust_AC1": 0.9994081890935771,
+    "trust_halflife_trades": 1170.884224626829,
+    "credit_AC1": 0.9994191529704163,
+    "reading": "gapless free flow, conserved propagation"
+  },
+  "impulse": {
+    "closed_form_r": 0.08831760866327847,
+    "free_credit_ratio": 1.0,
+    "free_trust_ratio": 1.0,
+    "constrained_credit_ratio": 1.0,
+    "reading": "flat directions; gap off in linear domain"
+  },
+  "corrected_mapping": "the YM-style SPECTRAL gap reading is withdrawn. The Ledger's gap-analog is THRESHOLD-type: the catapult escape at the h/X threshold theta*=0.0633 (harm_cap) and the denial freeze at gate depth 1.0001 (harm_freeze) are nonlinear gate boundaries - Prodi-Serrin/Navier-Stokes-flavored, not Yang-Mills-mass-gap flavored.  (CORRECTION ledger audit: alpha_cusp=1.0553 is the g-ladder marker at g*, not the h/X threshold; the threshold is theta*=0.0633.)"
+}

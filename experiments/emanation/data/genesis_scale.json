@@ -1,0 +1,94 @@
+{
+  "identity": "scale test: the 4->6->12 splitting is a CHARGE-count (12 = 4 + 2 + C(4,2)) whose DIRECTION space collapses after one step -- core slopes {0.050, 2.054, -0.100} (dispersion 0.982) vs layer-3 credit rails locked to a single polar point (cross-rail trust dispersion 0.00e+00): no bosonic tower recursion; the ledger is a finite effective theory.  CORRECTION (ledger audit): the '6-to-7 directions' label count was a rounding artifact (T 0.0501 vs G 0.05 split at 4dp; 'axis' a null class); physical classes = 5 ([-0.1, 0.0, 0.05, 2.05, 'axis']).",
+  "rays": {
+    "T_trade": [
+      -9.98e-05,
+      -4.999999999999796e-06
+    ],
+    "H_harm": [
+      -9.98e-05,
+      -0.00020500000000000032
+    ],
+    "N_nec": [
+      -9.98e-05,
+      9.999999999999593e-06
+    ],
+    "S_seed": [
+      5.0,
+      0.0
+    ],
+    "G_grant": [
+      0.001495049504950495,
+      7.475247524752447e-05
+    ],
+    "Z_tick": [
+      0.0,
+      0.0009999999999999992
+    ],
+    "A_taper": [
+      0.0,
+      0.0007999999999999986
+    ],
+    "F_floor": [
+      2.0000000000000004e-07,
+      0.0
+    ],
+    "L_term": [
+      7.200000000000002e-07,
+      0.0
+    ],
+    "R_ref": [
+      4.500000000000001e-07,
+      0.0
+    ],
+    "V_valid": [
+      4.500000000000001e-07,
+      0.0
+    ],
+    "B_reserve": [
+      1.8000000000000003e-06,
+      0.0
+    ]
+  },
+  "slopes": {
+    "T_trade": 0.0501,
+    "H_harm": 2.054108,
+    "N_nec": -0.1002,
+    "S_seed": 0.0,
+    "G_grant": 0.05,
+    "Z_tick": null,
+    "A_taper": null,
+    "F_floor": 0.0,
+    "L_term": 0.0,
+    "R_ref": 0.0,
+    "V_valid": 0.0,
+    "B_reserve": 0.0
+  },
+  "direction_labels": {
+    "T_trade": 0.0501,
+    "H_harm": 2.0541,
+    "N_nec": -0.1002,
+    "S_seed": 0.0,
+    "G_grant": 0.05,
+    "Z_tick": "axis",
+    "A_taper": "axis",
+    "F_floor": 0.0,
+    "L_term": 0.0,
+    "R_ref": 0.0,
+    "V_valid": 0.0,
+    "B_reserve": 0.0
+  },
+  "n_distinct_label": 6,
+  "n_physical_direction_classes": 5,
+  "physical_classes": [
+    -0.1,
+    0.0,
+    0.05,
+    2.05,
+    "axis"
+  ],
+  "core_slope_dispersion": 0.982043,
+  "credit_rail_trust_dispersion": 0.0,
+  "scale_recursion": false,
+  "verdict": "layering is one-shot: 12 charge generators, 5 physical direction classes ([-0.1, 0.0, 0.05, 2.05, 'axis']), 5 credit-only generators colinear (1:0); degrees of freedom do not proliferate at finer scale."
+}

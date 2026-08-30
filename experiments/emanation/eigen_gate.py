@@ -77,7 +77,7 @@ def main():
         "det_trust": DET_TRUST,
         "sigma_area": SIGMA_AREA,
     }
-    path = os.path.join("experiments", "data", "eigen_gate.json")
+    path = os.path.join("experiments", "emanation", "data", "eigen_gate.json")
     with open(path, "w") as fh:
         json.dump(out, fh, indent=2)
 

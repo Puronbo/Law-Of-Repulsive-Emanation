@@ -1,0 +1,145 @@
+{
+  "identity": "PLATEAU-TRAP law of threshold metering: a population truncated below theta* (floor f = max h/X < theta*) gives a survival plateau in [f, theta*]; naive inversion of an over-plateau reading pins theta_est just below the floor and reports it with a fixed precision, so the deviation from book grows as the floor DESCENDS (z = -144 at f=0.03 .. -4.55 at f=0.0632).  Meter resolution requires the population's reach to STRADDLE theta* (box, narrow).  Initial 'divergence at the critical line' hypothesis REFUTED by its own curve and replaced by this corrected law.",
+  "theta_star": 0.06331760866327846,
+  "measured_conditions": {
+    "n": 64000,
+    "delta_p": 0.0034,
+    "p_meas": 0.2034,
+    "se_p": 0.001591
+  },
+  "meters": [
+    {
+      "floor_f": 0.03,
+      "hi_h_class": 0.024,
+      "theta_est": 0.028962,
+      "se_est": 0.000239,
+      "bias_theta_star_minus_est": 0.034355,
+      "theta_est_minus_floor": -0.001038,
+      "z_book": -144.01
+    },
+    {
+      "floor_f": 0.04,
+      "hi_h_class": 0.032,
+      "theta_est": 0.037943,
+      "se_est": 0.000469,
+      "bias_theta_star_minus_est": 0.025375,
+      "theta_est_minus_floor": -0.002057,
+      "z_book": -54.14
+    },
+    {
+      "floor_f": 0.05,
+      "hi_h_class": 0.04000000000000001,
+      "theta_est": 0.047042,
+      "se_est": 0.000671,
+      "bias_theta_star_minus_est": 0.016275,
+      "theta_est_minus_floor": -0.002958,
+      "z_book": -24.26
+    },
+    {
+      "floor_f": 0.055,
+      "hi_h_class": 0.044000000000000004,
+      "theta_est": 0.051607,
+      "se_est": 0.000769,
+      "bias_theta_star_minus_est": 0.011711,
+      "theta_est_minus_floor": -0.003393,
+      "z_book": -15.23
+    },
+    {
+      "floor_f": 0.058,
+      "hi_h_class": 0.046400000000000004,
+      "theta_est": 0.054348,
+      "se_est": 0.000827,
+      "bias_theta_star_minus_est": 0.00897,
+      "theta_est_minus_floor": -0.003652,
+      "z_book": -10.85
+    },
+    {
+      "floor_f": 0.06,
+      "hi_h_class": 0.048,
+      "theta_est": 0.056176,
+      "se_est": 0.000865,
+      "bias_theta_star_minus_est": 0.007142,
+      "theta_est_minus_floor": -0.003824,
+      "z_book": -8.25
+    },
+    {
+      "floor_f": 0.061,
+      "hi_h_class": 0.0488,
+      "theta_est": 0.05709,
+      "se_est": 0.000885,
+      "bias_theta_star_minus_est": 0.006227,
+      "theta_est_minus_floor": -0.00391,
+      "z_book": -7.04
+    },
+    {
+      "floor_f": 0.062,
+      "hi_h_class": 0.049600000000000005,
+      "theta_est": 0.058005,
+      "se_est": 0.000904,
+      "bias_theta_star_minus_est": 0.005313,
+      "theta_est_minus_floor": -0.003995,
+      "z_book": -5.88
+    },
+    {
+      "floor_f": 0.0625,
+      "hi_h_class": 0.05,
+      "theta_est": 0.058462,
+      "se_est": 0.000913,
+      "bias_theta_star_minus_est": 0.004856,
+      "theta_est_minus_floor": -0.004038,
+      "z_book": -5.32
+    },
+    {
+      "floor_f": 0.063,
+      "hi_h_class": 0.0504,
+      "theta_est": 0.058919,
+      "se_est": 0.000923,
+      "bias_theta_star_minus_est": 0.004398,
+      "theta_est_minus_floor": -0.004081,
+      "z_book": -4.77
+    },
+    {
+      "floor_f": 0.0632,
+      "hi_h_class": 0.05056000000000001,
+      "theta_est": 0.059102,
+      "se_est": 0.000927,
+      "bias_theta_star_minus_est": 0.004215,
+      "theta_est_minus_floor": -0.004098,
+      "z_book": -4.55
+    }
+  ],
+  "validation": {
+    "f0625_is_the_two_class_member": true,
+    "computed_z_book": -5.32,
+    "empirical_z": -5.3,
+    "agree": true
+  },
+  "plateau_trap": {
+    "trapped_at_floor": true,
+    "bias_grows_as_floor_descends": true,
+    "straddling_meters": [
+      {
+        "population": "box",
+        "max_h_over_X": 4.0,
+        "straddles_theta_star": true,
+        "z_measured": 1.27
+      },
+      {
+        "population": "narrow",
+        "max_h_over_X": 0.17,
+        "straddles_theta_star": true,
+        "z_measured": 0.93
+      },
+      {
+        "population": "two_class (low class)",
+        "max_h_over_X": 0.0625,
+        "straddles_theta_star": false,
+        "z_measured": -5.3
+      }
+    ],
+    "law": "resolution requires straddling; truncated populations read their own floor, with a bias that scales away from the threshold."
+  },
+  "design_rule": "to measure theta* with a ledger experiment, the probing population must span h/X both below AND above theta*.  An operator reading p = w_hazard at the plateau should interpret it structurally ('theta* lies at or above the floor'), not invert it: the trap is in the naive inversion, not in the physics.",
+  "refutation_record": "first framing ('divergence at the critical line', margin design delta) is WITHDRAWN and replaced, per the co-production no-claim discipline.",
+  "references_note": "survival per meter (Barlow & Proschan 1975); delta-method uncertainty (Kendall & Stuart); systematic vs statistical metrology bias (JCGM 2008 GUM): the plateau is a systematic-shape bias, its SE is statistical - the two must not be combined, which is the exact error the first framing made."
+}

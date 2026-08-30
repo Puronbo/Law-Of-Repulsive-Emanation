@@ -1,0 +1,32 @@
+{
+  "identity": "corrected threat density: PARETO-2 in the main band (K/2*(B^2-A^2)/r^2 on 0.1333..0.4).  Normalization total=1.00000 (expect 1); escape integral over theta*=0.063318 = 0.82992 (genesis_tail closed form 0.82992); per-decade mass fractions [0.4655, 0.5089, 0.0255].  LOG-UNIFORM claim of the earlier buggy run WITHDRAWN.",
+  "density_pieces": {
+    "A_over_D..B_over_D": "K/2*(1.5^2-(0.02/r)^2)",
+    "B_over_D..A_over_C": "K/2*(0.2^2-0.02^2)/r^2 (PARETO-2)",
+    "A_over_C..B_over_C": "K/2*((0.2/r)^2-0.05^2)"
+  },
+  "per_decade_fractions": [
+    {
+      "bucket": "decade1 0.0133-0.1333",
+      "fraction": 0.4655
+    },
+    {
+      "bucket": "decade2 0.1333-1.3333",
+      "fraction": 0.5089
+    },
+    {
+      "bucket": "tail    1.3333-4.0000",
+      "fraction": 0.0255
+    }
+  ],
+  "escape_integral": {
+    "theta_star": 0.063318,
+    "value": 0.82992,
+    "genesis_tail": 0.82992
+  },
+  "pareto2_check": {
+    "mass_ratio_mid_to_low": 0.3265993265992962,
+    "analytic_1_over_r0_ratio": 0.33333
+  },
+  "reading": "threat spectrum is heavy-tailed (Pareto alpha=2 in the main band): each doubling of a threshold halves the vulnerable mass; the transition smears because the SENSITIVITY is power-law (a threshold never kills the tail).  Additive gates still shape the *rate*; only the population or multiplicative terms reshape the tail. Honestly labelled; normalized, jacobian-correct."
+}
