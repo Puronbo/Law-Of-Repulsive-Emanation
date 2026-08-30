@@ -1,0 +1,54 @@
+{
+  "seed": 42,
+  "identity": "tilt sigma(d)=ln(reward/g_at(d)) contracts with depth (0.955 -> 0.167); mirror product =-1 under exchange",
+  "params": {
+    "reward": 0.13,
+    "g0": 0.05,
+    "gdepth": 1.2,
+    "alpha": 0.3
+  },
+  "rows": [
+    {
+      "depth": 0.0,
+      "buyer_trust_delta": -0.05000000000000071,
+      "seller_trust_delta": 0.13000000000000078,
+      "g_at_depth": 0.05,
+      "tilt_sigma": 0.9555114450274363,
+      "mirror_product_buy_times_sell": -0.38461538461538775
+    },
+    {
+      "depth": 0.25,
+      "buyer_trust_delta": -0.0649999999999995,
+      "seller_trust_delta": 0.13000000000000078,
+      "g_at_depth": 0.065,
+      "tilt_sigma": 0.6931471805599453,
+      "mirror_product_buy_times_sell": -0.49999999999999317
+    },
+    {
+      "depth": 0.5,
+      "buyer_trust_delta": -0.08000000000000007,
+      "seller_trust_delta": 0.13000000000000078,
+      "g_at_depth": 0.08000000000000002,
+      "tilt_sigma": 0.48550781578170066,
+      "mirror_product_buy_times_sell": -0.6153846153846122
+    },
+    {
+      "depth": 0.75,
+      "buyer_trust_delta": -0.09500000000000064,
+      "seller_trust_delta": 0.13000000000000078,
+      "g_at_depth": 0.095,
+      "tilt_sigma": 0.3136575588550416,
+      "mirror_product_buy_times_sell": -0.7307692307692313
+    },
+    {
+      "depth": 1.0,
+      "buyer_trust_delta": 0.0,
+      "seller_trust_delta": 0.0,
+      "g_at_depth": 0.11000000000000001,
+      "tilt_sigma": 0.16705408466316607,
+      "mirror_product_buy_times_sell": -0.8461538461538463,
+      "note": "hard gate: impossible to spend at full leverage"
+    }
+  ],
+  "conclusion": "the anti-concentration lever is the depth-dependence of the trust tilt; a constant coin/lambda=1 is the 11-25 pct error; requiring one scalar would make one actor control value -> the progressive g(d) is the anti-oligarchy principle made measurable."
+}

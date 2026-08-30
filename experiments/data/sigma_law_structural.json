@@ -1,0 +1,409 @@
+{
+  "seed": 42,
+  "identity": "sigma(d) = ln(reward/g_at(d)) holds per-trade in EVERY parameterization - a structural law.  Bin-level residual vs midpoint is exactly the Jensen gap (convex -ln g); using the within-bin mean of ln(reward/g_k) the residual is ~0 in all economies.",
+  "n_trades": 20000,
+  "bin": 0.1,
+  "economies": [
+    {
+      "label": "reference",
+      "reward": 0.13,
+      "g0": 0.05,
+      "g_depth": 1.2,
+      "bins": [
+        {
+          "depth_bin": 0.0,
+          "n": 8400,
+          "sigma_emp": 0.9469395601119893,
+          "sigma_pred_midpoint": 0.8972425369034606,
+          "sigma_pred_jensen_exact": 0.9469916045638227,
+          "res_midpoint": 0.04969702320852876,
+          "res_jensen": -5.204445183337736e-05
+        },
+        {
+          "depth_bin": 0.1,
+          "n": 1560,
+          "sigma_emp": 0.8699091722035991,
+          "sigma_pred_midpoint": 0.7899970065498632,
+          "sigma_pred_jensen_exact": 0.8701728643438758,
+          "res_midpoint": 0.07991216565373593,
+          "res_jensen": -0.0002636921402766612
+        },
+        {
+          "depth_bin": 0.2,
+          "n": 191,
+          "sigma_emp": 0.746312857814688,
+          "sigma_pred_midpoint": 0.6931471805599453,
+          "sigma_pred_jensen_exact": 0.7462188125348082,
+          "res_midpoint": 0.05316567725474275,
+          "res_jensen": 9.404527987988409e-05
+        },
+        {
+          "depth_bin": 0.30000000000000004,
+          "n": 581,
+          "sigma_emp": 0.6289707322407293,
+          "sigma_pred_midpoint": 0.6048545734142671,
+          "sigma_pred_jensen_exact": 0.6297885926981701,
+          "res_midpoint": 0.02411615882646223,
+          "res_jensen": -0.000817860457440811
+        },
+        {
+          "depth_bin": 0.4,
+          "n": 2397,
+          "sigma_emp": 0.5596490602065735,
+          "sigma_pred_midpoint": 0.5237290286018984,
+          "sigma_pred_jensen_exact": 0.5597453896022424,
+          "res_midpoint": 0.03592003160467505,
+          "res_jensen": -9.632939566894816e-05
+        },
+        {
+          "depth_bin": 0.5,
+          "n": 1343,
+          "sigma_emp": 0.48773363407423287,
+          "sigma_pred_midpoint": 0.4486938426589843,
+          "sigma_pred_jensen_exact": 0.4875738724169567,
+          "res_midpoint": 0.03903979141524855,
+          "res_jensen": 0.00015976165727615843
+        },
+        {
+          "depth_bin": 0.6000000000000001,
+          "n": 1486,
+          "sigma_emp": 0.41754989589931996,
+          "sigma_pred_midpoint": 0.3788980807234423,
+          "sigma_pred_jensen_exact": 0.4177349638634391,
+          "res_midpoint": 0.03865181517587768,
+          "res_jensen": -0.0001850679641191566
+        },
+        {
+          "depth_bin": 0.7000000000000001,
+          "n": 1658,
+          "sigma_emp": 0.3472650859061437,
+          "sigma_pred_midpoint": 0.31365755885504143,
+          "sigma_pred_jensen_exact": 0.3475354835319111,
+          "res_midpoint": 0.03360752705110226,
+          "res_jensen": -0.00027039762576741566
+        },
+        {
+          "depth_bin": 0.8,
+          "n": 991,
+          "sigma_emp": 0.28223452106047314,
+          "sigma_pred_midpoint": 0.252413933614323,
+          "sigma_pred_jensen_exact": 0.2824481862554511,
+          "res_midpoint": 0.029820587446150126,
+          "res_jensen": -0.00021366519497795222
+        },
+        {
+          "depth_bin": 0.9,
+          "n": 850,
+          "sigma_emp": 0.2248336775867291,
+          "sigma_pred_midpoint": 0.19470561599367617,
+          "sigma_pred_jensen_exact": 0.22464752795178944,
+          "res_midpoint": 0.030128061593052924,
+          "res_jensen": 0.00018614963493965297
+        },
+        {
+          "depth_bin": 1.0,
+          "n": 450,
+          "sigma_emp": 0.18074919771632106,
+          "sigma_pred_midpoint": 0.16705408466316607,
+          "sigma_pred_jensen_exact": 0.18079745669246838,
+          "res_midpoint": 0.01369511305315499,
+          "res_jensen": -4.8258976147325106e-05
+        }
+      ]
+    },
+    {
+      "label": "cheap_draw",
+      "reward": 0.13,
+      "g0": 0.02,
+      "g_depth": 0.8,
+      "bins": [
+        {
+          "depth_bin": 0.0,
+          "n": 8405,
+          "sigma_emp": 1.8697561695835507,
+          "sigma_pred_midpoint": 1.83258146374831,
+          "sigma_pred_jensen_exact": 1.8697982847573567,
+          "res_midpoint": 0.03717470583524074,
+          "res_jensen": -4.2115173805923334e-05
+        },
+        {
+          "depth_bin": 0.1,
+          "n": 3175,
+          "sigma_emp": 1.7952548036423739,
+          "sigma_pred_midpoint": 1.758473491594588,
+          "sigma_pred_jensen_exact": 1.7954660485003546,
+          "res_midpoint": 0.036781312047785786,
+          "res_jensen": -0.00021124485798074133
+        },
+        {
+          "depth_bin": 0.2,
+          "n": 1502,
+          "sigma_emp": 1.7222495909757007,
+          "sigma_pred_midpoint": 1.6894806201076369,
+          "sigma_pred_jensen_exact": 1.7228406284418516,
+          "res_midpoint": 0.03276897086806385,
+          "res_jensen": -0.0005910374661508566
+        },
+        {
+          "depth_bin": 0.30000000000000004,
+          "n": 3609,
+          "sigma_emp": 1.653007861997064,
+          "sigma_pred_midpoint": 1.6249420989700656,
+          "sigma_pred_jensen_exact": 1.6530615392879806,
+          "res_midpoint": 0.02806576302699848,
+          "res_jensen": -5.367729091654283e-05
+        },
+        {
+          "depth_bin": 0.4,
+          "n": 3018,
+          "sigma_emp": 1.6063029896994059,
+          "sigma_pred_midpoint": 1.5643174771536308,
+          "sigma_pred_jensen_exact": 1.606410553529352,
+          "res_midpoint": 0.041985512545775094,
+          "res_jensen": -0.00010756382994614455
+        },
+        {
+          "depth_bin": 0.5,
+          "n": 118,
+          "sigma_emp": 1.5393726291501602,
+          "sigma_pred_midpoint": 1.5071590633136822,
+          "sigma_pred_jensen_exact": 1.5400603769599237,
+          "res_midpoint": 0.03221356583647794,
+          "res_jensen": -0.0006877478097635503
+        },
+        {
+          "depth_bin": 0.6000000000000001,
+          "n": 97,
+          "sigma_emp": 1.4862792986761986,
+          "sigma_pred_midpoint": 1.4530918420434065,
+          "sigma_pred_jensen_exact": 1.4863945137044432,
+          "res_midpoint": 0.0331874566327921,
+          "res_jensen": -0.0001152150282446307
+        },
+        {
+          "depth_bin": 0.7000000000000001,
+          "n": 38,
+          "sigma_emp": 1.429495156518317,
+          "sigma_pred_midpoint": 1.4017985476558559,
+          "sigma_pred_jensen_exact": 1.4310211808425355,
+          "res_midpoint": 0.02769660886246106,
+          "res_jensen": -0.0015260243242185556
+        }
+      ]
+    },
+    {
+      "label": "flat_bias",
+      "reward": 0.10500000000000001,
+      "g0": 0.05,
+      "g_depth": 1.2,
+      "bins": [
+        {
+          "depth_bin": 0.0,
+          "n": 5224,
+          "sigma_emp": 0.7349990834442377,
+          "sigma_pred_midpoint": 0.6836684366054016,
+          "sigma_pred_jensen_exact": 0.7351744647080203,
+          "res_midpoint": 0.05133064683883615,
+          "res_jensen": -0.00017538126378258134
+        },
+        {
+          "depth_bin": 0.1,
+          "n": 2424,
+          "sigma_emp": 0.6307201208528541,
+          "sigma_pred_midpoint": 0.5764229062518041,
+          "sigma_pred_jensen_exact": 0.6311306601936022,
+          "res_midpoint": 0.05429721460104997,
+          "res_jensen": -0.00041053934074808396
+        },
+        {
+          "depth_bin": 0.2,
+          "n": 1861,
+          "sigma_emp": 0.5287560104257396,
+          "sigma_pred_midpoint": 0.4795730802618863,
+          "sigma_pred_jensen_exact": 0.5293074071098074,
+          "res_midpoint": 0.04918293016385333,
+          "res_jensen": -0.0005513966840677842
+        },
+        {
+          "depth_bin": 0.30000000000000004,
+          "n": 1383,
+          "sigma_emp": 0.4350800281145546,
+          "sigma_pred_midpoint": 0.3912804731162081,
+          "sigma_pred_jensen_exact": 0.4350466386882732,
+          "res_midpoint": 0.04379955499834648,
+          "res_jensen": 3.338942628139385e-05
+        },
+        {
+          "depth_bin": 0.4,
+          "n": 1699,
+          "sigma_emp": 0.3474855013643404,
+          "sigma_pred_midpoint": 0.31015492830383945,
+          "sigma_pred_jensen_exact": 0.3476832485335368,
+          "res_midpoint": 0.03733057306050097,
+          "res_jensen": -0.000197747169196405
+        },
+        {
+          "depth_bin": 0.5,
+          "n": 2629,
+          "sigma_emp": 0.27177420899865173,
+          "sigma_pred_midpoint": 0.23511974236092525,
+          "sigma_pred_jensen_exact": 0.2719567173896893,
+          "res_midpoint": 0.03665446663772648,
+          "res_jensen": -0.00018250839103756133
+        },
+        {
+          "depth_bin": 0.6000000000000001,
+          "n": 1984,
+          "sigma_emp": 0.20497414392875618,
+          "sigma_pred_midpoint": 0.16532398042538335,
+          "sigma_pred_jensen_exact": 0.2053669220356804,
+          "res_midpoint": 0.03965016350337283,
+          "res_jensen": -0.00039277810692422976
+        },
+        {
+          "depth_bin": 0.7000000000000001,
+          "n": 1045,
+          "sigma_emp": 0.13556058986182407,
+          "sigma_pred_midpoint": 0.10008345855698243,
+          "sigma_pred_jensen_exact": 0.1353295451473926,
+          "res_midpoint": 0.03547713130484163,
+          "res_jensen": 0.000231044714431472
+        },
+        {
+          "depth_bin": 0.8,
+          "n": 543,
+          "sigma_emp": 0.06999201061098732,
+          "sigma_pred_midpoint": 0.03883983331626396,
+          "sigma_pred_jensen_exact": 0.06935857006993373,
+          "res_midpoint": 0.031152177294723367,
+          "res_jensen": 0.0006334405410535898
+        },
+        {
+          "depth_bin": 0.9,
+          "n": 584,
+          "sigma_emp": 0.008839939955669708,
+          "sigma_pred_midpoint": -0.018868484304382805,
+          "sigma_pred_jensen_exact": 0.0088281377310504,
+          "res_midpoint": 0.027708424260052513,
+          "res_jensen": 1.1802224619307522e-05
+        },
+        {
+          "depth_bin": 1.0,
+          "n": 431,
+          "sigma_emp": -0.034090192198116716,
+          "sigma_pred_midpoint": -0.04652001563489293,
+          "sigma_pred_jensen_exact": -0.033647318927402026,
+          "res_midpoint": 0.012429823436776212,
+          "res_jensen": -0.0004428732707146901
+        }
+      ]
+    },
+    {
+      "label": "steep_debt",
+      "reward": 0.16799999999999998,
+      "g0": 0.08,
+      "g_depth": 2.0,
+      "bins": [
+        {
+          "depth_bin": 0.0,
+          "n": 6153,
+          "sigma_emp": 0.7281907804585467,
+          "sigma_pred_midpoint": 0.6466271649250522,
+          "sigma_pred_jensen_exact": 0.7284877009618065,
+          "res_midpoint": 0.08156361553349445,
+          "res_jensen": -0.000296920503259801
+        },
+        {
+          "depth_bin": 0.1,
+          "n": 3065,
+          "sigma_emp": 0.5581295255434691,
+          "sigma_pred_midpoint": 0.479573080261886,
+          "sigma_pred_jensen_exact": 0.5589090909191998,
+          "res_midpoint": 0.07855644528158306,
+          "res_jensen": -0.0007795653757307619
+        },
+        {
+          "depth_bin": 0.2,
+          "n": 2537,
+          "sigma_emp": 0.4047292020449958,
+          "sigma_pred_midpoint": 0.3364722366212129,
+          "sigma_pred_jensen_exact": 0.4057271675028453,
+          "res_midpoint": 0.0682569654237829,
+          "res_jensen": -0.0009979654578495256
+        },
+        {
+          "depth_bin": 0.30000000000000004,
+          "n": 2331,
+          "sigma_emp": 0.27619962376900975,
+          "sigma_pred_midpoint": 0.21130909366720677,
+          "sigma_pred_jensen_exact": 0.2766921963576816,
+          "res_midpoint": 0.06489053010180298,
+          "res_jensen": -0.0004925725886718579
+        },
+        {
+          "depth_bin": 0.4,
+          "n": 1013,
+          "sigma_emp": 0.1646007012386315,
+          "sigma_pred_midpoint": 0.10008345855698243,
+          "sigma_pred_jensen_exact": 0.1649316115005277,
+          "res_midpoint": 0.06451724268164906,
+          "res_jensen": -0.00033091026189621675
+        },
+        {
+          "depth_bin": 0.5,
+          "n": 723,
+          "sigma_emp": 0.04408407755909852,
+          "sigma_pred_midpoint": -1.1102230246251565e-16,
+          "sigma_pred_jensen_exact": 0.044011045193354414,
+          "res_midpoint": 0.04408407755909863,
+          "res_jensen": 7.303236574410232e-05
+        },
+        {
+          "depth_bin": 0.6000000000000001,
+          "n": 765,
+          "sigma_emp": -0.041102910119006894,
+          "sigma_pred_midpoint": -0.09097177820572687,
+          "sigma_pred_jensen_exact": -0.0409561429173384,
+          "res_midpoint": 0.049868868086719975,
+          "res_jensen": -0.00014676720166849344
+        },
+        {
+          "depth_bin": 0.7000000000000001,
+          "n": 1017,
+          "sigma_emp": -0.13929749304585032,
+          "sigma_pred_midpoint": -0.1743533871447779,
+          "sigma_pred_jensen_exact": -0.13899781181368476,
+          "res_midpoint": 0.03505589409892759,
+          "res_jensen": -0.00029968123216556064
+        },
+        {
+          "depth_bin": 0.8,
+          "n": 901,
+          "sigma_emp": -0.20663686035814174,
+          "sigma_pred_midpoint": -0.25131442828090633,
+          "sigma_pred_jensen_exact": -0.20660155338691433,
+          "res_midpoint": 0.04467756792276459,
+          "res_jensen": -3.530697122741677e-05
+        },
+        {
+          "depth_bin": 0.9,
+          "n": 756,
+          "sigma_emp": -0.289150118681273,
+          "sigma_pred_midpoint": -0.32277339226305135,
+          "sigma_pred_jensen_exact": -0.2889935989495902,
+          "res_midpoint": 0.03362327358177836,
+          "res_jensen": -0.00015651973168279154
+        },
+        {
+          "depth_bin": 1.0,
+          "n": 593,
+          "sigma_emp": -0.34100260237220587,
+          "sigma_pred_midpoint": -0.35667494393873245,
+          "sigma_pred_jensen_exact": -0.3409363122301097,
+          "res_midpoint": 0.015672341566526582,
+          "res_jensen": -6.629014209619255e-05
+        }
+      ]
+    }
+  ]
+}

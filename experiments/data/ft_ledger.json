@@ -1,0 +1,21 @@
+{
+  "seed": 42,
+  "identity": "live FT in log form: ln(sum_gains/sum_losses) = sum ln(reward/g_at(depth)) along the ledger",
+  "n_trades": 20000,
+  "n_ok": 18959,
+  "denied": 84,
+  "reward": 0.13,
+  "sum_action": 14584.844247945966,
+  "sum_gains": 1009.0861345332542,
+  "sum_losses": 0.0,
+  "gain_loss_ratio": 1009086134533254.1,
+  "ln_gain_loss_ratio": 34.547821498875784,
+  "action": 14584.844247945966,
+  "residual": -14550.29642644709,
+  "draw_total": 893.7358377922651,
+  "gain_total": 1898.231400000003,
+  "mirror_ln_gain_over_draw": 0.7532676414908872,
+  "mean_action_per_trade": 0.7692834141012694,
+  "n_pos": 18959,
+  "n_neg": 0
+}

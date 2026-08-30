@@ -28,6 +28,12 @@ Universals/*.dot
 .DS_Store
 Thumbs.db
 
+# Databases & local runtime state
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
 # Backups
 **/*.bak
 **/*.backup

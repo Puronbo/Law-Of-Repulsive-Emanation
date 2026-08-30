@@ -1,0 +1,48 @@
+{
+  "seed": 42,
+  "identity": "committed harm is the anti-FT channel: with identical RNG streams the mixed economy's cumulative community trust equals the control minus I*sum(h) PLUS a depth-feedback amplification (harm-depleted trust raises depth -> g -> draw).  I*sum(h) is exactly conserved into account irrev (gate 14).",
+  "n_trades": 8000,
+  "harm_range": [
+    0.02,
+    0.2
+  ],
+  "I": 2.0,
+  "control": {
+    "harm_style": "control",
+    "comm_total": 477.1684726211497,
+    "neg_events": 0,
+    "neg_total": 0.0,
+    "harm_committed": 0.0,
+    "I": 2.0,
+    "expected_harm_shift": -0.0,
+    "irrev_total": 0.0,
+    "residual": 0.0,
+    "neg_first": null
+  },
+  "mixed": {
+    "harm_style": "mixed",
+    "comm_total": -1295.5439354347861,
+    "neg_events": 7429,
+    "neg_total": 1309.3434363968584,
+    "harm_committed": 879.3959999999989,
+    "I": 2.0,
+    "expected_harm_shift": -1758.7919999999979,
+    "irrev_total": 1758.7920000000013,
+    "residual": -1758.7919999999979,
+    "neg_first": {
+      "x": 0.09,
+      "h": 0.0695,
+      "g": 0.05000538997346119,
+      "d": -0.13180000000011205
+    }
+  },
+  "comparison": {
+    "direct_shift_expected": -1758.7919999999979,
+    "measured_shift": -1772.7124080559358,
+    "depth_feedback_term": -13.920408055937969,
+    "amplification_factor": 1.0079147551591876,
+    "irrev_conserved": 1758.7920000000013,
+    "irrev_expected": 1758.7919999999979,
+    "irrev_residual": 3.410605131648481e-12
+  }
+}

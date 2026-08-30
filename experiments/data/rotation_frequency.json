@@ -1,0 +1,78 @@
+{
+  "seed": 42,
+  "identity": "rotation of the trust exchange is a critical onset: omega = sqrt(C*(X-X*)), mean-field exponent 1/2.  The minimum viable turn X*(0.5)=g(0.5)^2/4C separates pure decay (hyperbolic, omega=0) from rotation (elliptic, omega>0).  MSE of the realized frequencies against the sqrt law recorded as chi_sq/N.",
+  "depth": 0.5,
+  "g_at": 0.08000000000000002,
+  "C": 0.0078000000000000005,
+  "x_star": 0.2051282051282052,
+  "law": "omega = sqrt(C*(X - X*))",
+  "reduction": "J is a damped harmonic oscillator: stiffness C, damping g(d).  Damping ratio zeta = g/(2*sqrt(C*X)) = sqrt(X*/X) = |cos theta|; quality factor Q = 1/(2*zeta) = 1/(2*|cos theta|).  At X=X*: zeta=1, critical damping, theta=180 deg, det=0, rank-1 mirror (Ch.78) - no rotation, pure decay.",
+  "rows": [
+    {
+      "X": 0.22,
+      "x_star": 0.2051282051282052,
+      "drive": 0.014871794871794797,
+      "omega_analytic": 0.010770329614268982,
+      "omega_realized": 0.010770329614253657,
+      "theta_deg": 164.9300442503828,
+      "disc": -0.0004639999999986773,
+      "zeta": 0.9656090991705353,
+      "Q": 0.5178078794301995,
+      "cos_theta_sq": 0.932400932401111,
+      "zeta_sq": 0.9324009324009326
+    },
+    {
+      "X": 0.3,
+      "x_star": 0.2051282051282052,
+      "drive": 0.09487179487179478,
+      "omega_analytic": 0.027202941017470873,
+      "omega_realized": 0.02720294101749542,
+      "theta_deg": 145.78141729232803,
+      "disc": -0.0029600000000053386,
+      "zeta": 0.8268982305947232,
+      "Q": 0.6046693311223911,
+      "cos_theta_sq": 0.6837606837603103,
+      "zeta_sq": 0.6837606837606841
+    },
+    {
+      "X": 0.5,
+      "x_star": 0.2051282051282052,
+      "drive": 0.2948717948717948,
+      "omega_analytic": 0.04795831523312719,
+      "omega_realized": 0.04795831523312877,
+      "theta_deg": 129.83005455303595,
+      "disc": -0.009200000000000604,
+      "zeta": 0.6405126152203486,
+      "Q": 0.7806247497997997,
+      "cos_theta_sq": 0.4102564102564054,
+      "zeta_sq": 0.4102564102564104
+    },
+    {
+      "X": 1.0,
+      "x_star": 0.2051282051282052,
+      "drive": 0.7948717948717948,
+      "omega_analytic": 0.07874007874011811,
+      "omega_realized": 0.0787400787401196,
+      "theta_deg": 116.93059266843369,
+      "disc": -0.024800000000000932,
+      "zeta": 0.45291081365783836,
+      "Q": 1.1039701082909807,
+      "cos_theta_sq": 0.2051282051281992,
+      "zeta_sq": 0.20512820512820518
+    },
+    {
+      "X": 2.0,
+      "x_star": 0.2051282051282052,
+      "drive": 1.7948717948717947,
+      "omega_analytic": 0.11832159566199232,
+      "omega_realized": 0.11832159566199475,
+      "theta_deg": 108.67842598645126,
+      "disc": -0.056000000000002305,
+      "zeta": 0.3202563076101743,
+      "Q": 1.5612494995995994,
+      "cos_theta_sq": 0.10256410256409901,
+      "zeta_sq": 0.1025641025641026
+    }
+  ],
+  "chi_sq_per_point": 1.6958972088673648e-28
+}

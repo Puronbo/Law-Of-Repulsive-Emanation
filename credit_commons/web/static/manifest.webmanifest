@@ -1,0 +1,12 @@
+{
+  "name": "Credit-Commons Pilot",
+  "short_name": "CreditCommons",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f1410",
+  "theme_color": "#0e5c40",
+  "description": "A trust-backed mutual-credit commons — wins by use, in-network only.",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

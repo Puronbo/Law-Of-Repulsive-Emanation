@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0e5c40">
+<title>Credit-Commons Pilot</title>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/icon.svg">
+<style>
+  :root{--bg:#0f1410;--panel:#1a211c;--line:#2a352d;--acc:#2ecc71;--warn:#e67e22;--bad:#e74c3c;--txt:#e8efe9;--mut:#8ba192}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--txt);min-height:100dvh}
+  header{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--bg)}
+  header h1{font-size:18px;margin:0;font-weight:600}
+  header .sub{font-size:11px;color:var(--mut);margin-top:2px}
+  main{max-width:560px;margin:0 auto;padding:16px 20px 40px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;margin:14px 0}
+  label{display:block;font-size:12px;color:var(--mut);margin:10px 0 4px}
+  input,select,button{width:100%;padding:12px;margin-top:4px;border-radius:10px;border:1px solid var(--line);background:#11161;background:#11161b;color:var(--txt);font-size:16px}
+  button.primary{background:var(--acc);color:#04120a;font-weight:700;border:none}
+  button.ghost{background:transparent;border:1px solid var(--line);color:var(--txt)}
+  .big{display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:center}
+  .big .v{font-size:30px;font-weight:800}
+  .big .k{font-size:12px;color:var(--mut)}
+  .pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600}
+  .pill.ok{background:#12301f;color:var(--acc)}
+  .pill.bad{background:#3a1212;color:var(--bad)}
+  .row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #0f1410;font-size:14px}
+  .mut{color:var(--mut);font-size:12px}
+  .err{color:var(--bad);font-size:13px;min-height:18px;margin-top:8px}
+  .ok{color:var(--acc)}
+  @media (prefers-color-scheme: light){:root{--bg:#f4f7f4;--panel:#fff;--line:#d8e0d9;--txt:#0d1510;--mut:#5f7166}}
+  button.danger{background:transparent;border:1px solid var(--bad);color:var(--bad)}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Credit-Commons <span class="sub">pilot · wins by use · in-network only</span></h1>
+  </div>
+  <div style="display:flex;gap:8px">
+    <button class="ghost" id="btnStatus" style="width:auto">Network</button>
+    <button class="danger" id="btnLogout" style="width:auto;display:none">Sign out</button>
+  </div>
+</header>
+
+<main>
+  <!-- JOIN -->
+  <section id="join">
+    <div class="card">
+      <h2 style="margin-top:0">Join the commons</h2>
+      <label>Handle (a name you recall)</label>
+      <input id="jHandle" autocomplete="off">
+      <label>PIN (memorize it — 4 to 8 digits/letters)</label>
+      <input id="jPin" type="password" inputmode="text" autocomplete="off">
+      <label>Tier</label>
+      <select id="jTier">
+        <option value="individual">Individual — smallest seed</option>
+        <option value="business">Business — merchant terminal</option>
+        <option value="producer">Producer — supplier/anchor</option>
+      </select>
+      <button class="primary" id="btnJoin">Join with my one-time seed</button>
+      <div class="err" id="joinErr"></div>
+    </div>
+    <div class="card">
+      <label>Already a member? Sign in</label>
+      <input id="lHandle" placeholder="Handle">
+      <input id="lPin" type="password" placeholder="PIN">
+      <button class="primary" id="btnLogin" style="margin-top:12px">Sign in</button>
+      <div class="err" id="loginErr"></div>
+    </div>
+  </section>
+
+  <!-- HOME -->
+  <section id="home" style="display:none">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div id="meHandle" style="font-weight:700"></div>
+        <span class="pill ok" id="meTier"></span>
+      </div>
+      <div class="big" style="margin-top:16px">
+        <div><div class="v" id="meCredit">–</div><div class="k">credit (&gt;0 = others owe you)</div></div>
+        <div><div class="v" id="meTrust">–</div><div class="k">trust (spending ceiling)</div></div>
+      </div>
+      <div class="mut" style="margin-top:8px" id="meNote"></div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0">Make a trade</h3>
+      <label>Seller’s handle (who you’re buying from)</label>
+      <input id="tSeller">
+      <label>Amount (units)</label>
+      <input id="tX" type="number" min="0.01" step="0.01" value="1">
+      <label><input type="checkbox" id="tNecessity" style="width:auto"> This is a necessity (food, medicine, transport)</label>
+      <label>Terminal provider (merchant handle, optional)</label>
+      <input id="tTerminal">
+      <button class="primary" id="btnTrade" style="margin-top:14px">Confirm trade</button>
+      <div class="err" id="tradeErr"></div>
+      <div class="ok" id="tradeOk"></div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0">Ledger (living audit)</h3>
+      <div id="ledger"></div>
+      <button class="ghost" id="btnRefresh" style="margin-top:10px">Refresh</button>
+    </div>
+  </section>
+</main>
+
+<script>
+const $=id=>document.getElementById(id);
+const api=async(path,body)=>{
+  const r=await fetch(path,{method:body?'POST':'GET',
+    headers:body?{'Content-Type':'application/json'}:{},
+    body:body?JSON.stringify(body):undefined,credentials:'include'});
+  return r.json();
+};
+let ACCOUNT=null;
+
+function show(me){ACCOUNT=me;if(me){$('join').style.display='none';$('home').style.display='';$('btnLogout').style.display='';}
+  else{$('join').style.display='';$('home').style.display='none';$('btnLogout').style.display='none';}}
+function renderMe(){
+  if(!ACCOUNT)return;
+  $('meHandle').textContent=ACCOUNT.handle;
+  $('meTier').textContent=ACCOUNT.tier;
+  $('meCredit').textContent=ACCOUNT.credit.toFixed(2);
+  $('meTrust').textContent=ACCOUNT.trust.toFixed(2);
+  const ir=ACCOUNT.irrev>0?` · ⚠ irreversible scar ${ACCOUNT.irrev.toFixed(1)}`:'';
+  $('meNote').textContent=ACCOUNT.credit<0?`You owe the network ${(-ACCOUNT.credit).toFixed(2)} — repay by selling/contributing.${ir}`:
+    `You can spend up to your trust.${ir}`;
+}
+
+$('btnJoin').onclick=async()=>{
+  const r=await api('/api/accounts',{handle:$('jHandle').value,pin:$('jPin').value,tier:$('jTier').value});
+  if(r.ok){$('joinErr').textContent='Account created. Sign in to start.';$('jHandle').value='';$('jPin').value='';}
+  else $('joinErr').textContent=r.reason;
+};
+$('btnLogin').onclick=async()=>{
+  const r=await api('/api/session',{handle:$('lHandle').value,pin:$('lPin').value});
+  if(r.ok){show(r.account);renderMe();$('loginErr').textContent='';loadLedger();}
+  else $('loginErr').textContent=r.reason;
+};
+$('btnLogout').onclick=async()=>{await api('/api/logout',{});show(null);};
+$('btnTrade').onclick=async()=>{
+  $('tradeErr').textContent='';$('tradeOk').textContent='';
+  const r=await api('/api/trade',{seller:$('tSeller').value,x:parseFloat($('tX').value),
+    necessity:$('tNecessity').checked,terminal:$('tTerminal').value});
+  if(r.ok){$('tradeOk').textContent=`Done. Facilitation fee ${r.fee.toFixed(2)} conserved.`;const me=await api('/api/me');if(me.ok){ACCOUNT=me.account;renderMe();}loadLedger();$('tSeller').value='';}
+  else $('tradeErr').textContent=r.reason;
+};
+$('btnStatus').onclick=async()=>{
+  const st=await api('/api/status');
+  alert(`Members: ${st.members}\nCirculation: ${st.circulation}\nReserve (funds grants): ${st.reserve}\nGini(trust): ${st.gini_trust} (low = equitable)\nConserved total: ${st.conserved_total}\nTrades: ${st.trades}`);
+};
+$('btnRefresh').onclick=loadLedger;
+async function loadLedger(){
+  const r=await api('/api/ledger');
+  if(!r.ok)return;
+  const rows=r.ledger.map(it=>{
+    if(it.kind==='trade')
+      return `<div class="row"><span>${it.buyer} → ${it.seller} ${it.x.toFixed(2)}u${it.necessity?' (necessity)':''}</span><span class="mut">fee ${it.fee.toFixed(2)}</span></div>`;
+    return `<div class="row"><span>grant → ${it.recipient} ${it.amount.toFixed(2)}u</span><span class="mut">commons-funded</span></div>`;
+  }).join('');
+  $('ledger').innerHTML=rows||'<div class="mut">No trades yet.</div>';
+}
+
+(async()=>{ if('serviceWorker' in navigator){ try{ await navigator.serviceWorker.register('/sw.js'); }catch(e){} } })();
+</script>
+</body>
+</html>

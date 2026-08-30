@@ -1,0 +1,36 @@
+{
+  "seed": 42,
+  "identity": "coin_ratio = R11/R21 = 0.9144 (Ch.86, rank-1)",
+  "results": {
+    "unconstrained": {
+      "mode": "unconstrained",
+      "lambda_ground": -75758900.49338341,
+      "jacobian_ground": 0.8134223222732544,
+      "coin_measured": 0.9145631067961166,
+      "err_vs_coin_pct": 11.058918052924426,
+      "coin_constancy_mean": 0.8690751791000366,
+      "coin_constancy_spread": 0.1047476977109909,
+      "f0_abs": 7.575890049338341e-05,
+      "g0_abs": 7.189810276031494e-06
+    },
+    "conserved": {
+      "mode": "conserved",
+      "lambda_ground": 1.0037989252536093,
+      "jacobian_ground": 1.1477758884429932,
+      "coin_measured": 0.9145631067961166,
+      "err_vs_coin_pct": 25.499911369032144,
+      "coin_constancy_mean": 1.0801631212234497,
+      "coin_constancy_spread": 0.01219511590898037,
+      "f0_abs": 0.006634466350078583,
+      "g0_abs": 0.0066093578934669495
+    }
+  },
+  "switch_demo": {
+    "batch_g_mean_far_padded": -0.0257208701223135,
+    "batchmean_switch_on": true,
+    "lambda_at_origin_via_batchmean": NaN,
+    "origin_point_g": 0.0,
+    "per_point_routes_to": "jacobian",
+    "per_point_lambda": 0.9145631067961166
+  }
+}

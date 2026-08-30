@@ -1,0 +1,18 @@
+{
+  "seed": 42,
+  "identity": "death by denial: mass harm freezes the market at the honest 2x gate (depth=1, 53% below cusp d*=2.11) while credit conservation holds to floating-point; the scar I*sum(h) is real, once, in irrev.",
+  "X_per_trade": 1.0,
+  "harm_per_trade": 0.05,
+  "clean_trades": 928,
+  "harmed_trades": 850,
+  "denial_lag_delta_n": 78,
+  "scar_trust_budget_consumed": 0.0851,
+  "irrev_absorbed": 85.1,
+  "trust_gap_clean_minus_harmed_at_freeze": 78.281517,
+  "conserved_total_at_freeze": -2.7284841053187847e-12,
+  "conservation_residual": -3e-12,
+  "gate_depth_at_freeze": 1.000113,
+  "cusp_d_star": 2.111,
+  "denier": "2x gate (b.credit-X < -b.trust): depth=1 caps draw g<=0.11",
+  "note": "the honest market refuses to enter the hyperbolic band; harm = instant catapult that bypasses the climb."
+}

@@ -1,0 +1,100 @@
+{
+  "seed": 42,
+  "identity": "gate is inside the elliptic basin: disc<0 (rotation/recoverable trust) must hold.  Basin boundary is a curve in (X, d): disc = g(d)^2 - 4*C*X with C = g0*gdepth*reward = 0.0078 (det PER UNIT X - a measured claim of this run).  Minimum viable turn X*(d) = g(d)^2/4C: trades below it are hyperbolic (real negative eigenvalues, pure decay, no recovery rotation); trades above it are elliptic (rotation, the mirror cycles).",
+  "params": {
+    "reward": 0.13,
+    "g0": 0.05,
+    "gdepth": 1.2,
+    "g_star": 0.17663521732655693,
+    "d_star": 2.1105869554426153,
+    "gate_g": 0.11000000000000001,
+    "C": 0.0078000000000000005,
+    "margin_g_pct": 37.72476312204722,
+    "margin_d_pct": 52.619815193054286
+  },
+  "path": [
+    {
+      "depth": 0.0,
+      "g": 0.05,
+      "disc_at_X1": -0.028700000000000003,
+      "theta_deg": 106.44347338520578,
+      "x_star": 0.08012820512820513,
+      "regime": "elliptic"
+    },
+    {
+      "depth": 0.25,
+      "g": 0.065,
+      "disc_at_X1": -0.026975000000000002,
+      "theta_deg": 111.59171089808697,
+      "x_star": 0.13541666666666669,
+      "regime": "elliptic"
+    },
+    {
+      "depth": 0.5,
+      "g": 0.08000000000000002,
+      "disc_at_X1": -0.0248,
+      "theta_deg": 116.93059266843413,
+      "x_star": 0.2051282051282052,
+      "regime": "elliptic"
+    },
+    {
+      "depth": 0.75,
+      "g": 0.095,
+      "disc_at_X1": -0.022175,
+      "theta_deg": 122.53614751147992,
+      "x_star": 0.2892628205128205,
+      "regime": "elliptic"
+    },
+    {
+      "depth": 1.0,
+      "g": 0.11000000000000001,
+      "disc_at_X1": -0.0191,
+      "theta_deg": 128.5174067884329,
+      "x_star": 0.3878205128205129,
+      "regime": "elliptic"
+    },
+    {
+      "depth": 1.5,
+      "g": 0.13999999999999999,
+      "disc_at_X1": -0.011600000000000006,
+      "theta_deg": 142.42858277246188,
+      "x_star": 0.6282051282051281,
+      "regime": "elliptic"
+    },
+    {
+      "depth": 2.11,
+      "g": 0.17659999999999998,
+      "disc_at_X1": -1.2440000000009388e-05,
+      "theta_deg": 178.85584624573642,
+      "x_star": 0.9996012820512817,
+      "regime": "elliptic"
+    }
+  ],
+  "realized_elliptic_above_turn": {
+    "R11": -0.08000000000000007,
+    "R12": -0.060000000000002274,
+    "R21": 0.129999999999999,
+    "R22": 0.0,
+    "det": 0.0078000000000002356,
+    "T": -0.08000000000000007,
+    "disc": -0.024800000000000932
+  },
+  "realized_hyperbolic_below_turn": {
+    "R11": -0.08000000000000895,
+    "R12": -0.00600000000000378,
+    "R21": 0.129999999999999,
+    "R22": 0.0,
+    "det": 0.0007800000000004855,
+    "T": -0.08000000000000895,
+    "disc": 0.0032799999999994904
+  },
+  "realized_across_depth_boundary": {
+    "R11": -0.11000000000000121,
+    "R12": 0.0,
+    "R21": 0.129999999999999,
+    "R22": 0.0,
+    "det": -0.0,
+    "T": -0.11000000000000121,
+    "disc": 0.012100000000000265
+  }
+}

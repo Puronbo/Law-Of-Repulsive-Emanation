@@ -1,0 +1,41 @@
+{
+  "seed": 42,
+  "identity": "harm-cap law: fresh-borrower escape iff I*h/X > g0*gdepth*d*, i.e. h/X > alpha_cusp = 1.05529.  MC prediction vs the 0.8361 measured in harm_as_depth.",
+  "alpha_cusp": 1.0552934777213077,
+  "d_star": 2.1105869554426153,
+  "d_sigma0": 1.3333333333333335,
+  "I": 2.0,
+  "mc_escape_fraction": 0.8305325,
+  "measured_escape_fraction": 0.8361,
+  "frac_residual": -0.0055674999999999475,
+  "markers": [
+    {
+      "name": "g0 base draw",
+      "g": 0.05,
+      "sigma": 0.9555114450274363,
+      "alpha_h_over_x": 0.0,
+      "note": "honest shallow floor"
+    },
+    {
+      "name": "g_gate g_at(1)",
+      "g": 0.11000000000000001,
+      "sigma": 0.16705408466316607,
+      "alpha_h_over_x": 0.5000000000000001,
+      "note": "honest sigma floor 0.168"
+    },
+    {
+      "name": "reward sigma=0",
+      "g": 0.13,
+      "sigma": 0.0,
+      "alpha_h_over_x": 0.6666666666666667,
+      "note": "turn neither pumps nor drains; FT flips below"
+    },
+    {
+      "name": "g* cusp",
+      "g": 0.17663521732655693,
+      "sigma": -0.30655223644320434,
+      "alpha_h_over_x": 1.0552934777213077,
+      "note": "disc=0: rotation dies, hyperbolic band"
+    }
+  ]
+}

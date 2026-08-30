@@ -1,0 +1,27 @@
+{
+  "seed": 42,
+  "identity": "0/0 resolves to the directional derivative ratio; rank-1 matrix -> one coin for every approach; naive f/g is garbage",
+  "matrix": {
+    "control_mu": 0.11315,
+    "control_lnJ": 0.00093,
+    "R11_dmu_dc": -0.0471,
+    "R12_dmu_dv": 0.0355,
+    "R21_dlnJ_dc": -0.0515,
+    "R22_dlnJ_dv": 0.0314,
+    "det": 0.0004,
+    "coin_ratio": 0.9144,
+    "speed_ratio": 1.1327,
+    "rank": "1 (det ~ 0: the two ledgers respond as ONE quantity)"
+  },
+  "coin_directional_per_direction": {
+    "c_geodesic": 0.9145631067961166,
+    "v_geodesic": 1.1305732484076434,
+    "diag": 0.5771144278606968,
+    "anti": 0.9963811821471652
+  },
+  "coin_stored_R11_over_R21": 0.9145631067961166,
+  "det": 0.0004,
+  "naive_quotient_control_mu_over_lnJ": 121.66666666666666,
+  "naive_quotient_engaged_0p5_abs": 0.8291814946619217,
+  "conclusion": "directional derivative ratio is the removable value = 0.9144 (+/- det-tolerance); no finite quotient matches."
+}

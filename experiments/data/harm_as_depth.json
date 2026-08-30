@@ -1,0 +1,53 @@
+{
+  "seed": 42,
+  "identity": "harm = instantaneous depth: g_eff = g + I*h/X, d_eff = d + (I*h/X)/(g0*gdepth).  The mirror ratio extends to ln(gain/(draw + I*sum h)) and matches the mean per-trade action.  Harm alone hurled most trades past the phase cusp d*=2.11 into the hyperbolic band.",
+  "n_ok": 8000,
+  "d_star": 2.1105869554426153,
+  "I": 2.0,
+  "gain_total": 797.2484000000015,
+  "draw_total": 334.3100216821676,
+  "I_sum_h": 1758.7919999999979,
+  "mirror_ln": {
+    "gain_over_draw_plus_harm": -0.9652361665027901,
+    "mean_action_ln_geff": -1.090408442718903,
+    "residual": 0.12517227621611282
+  },
+  "frac_past_cusp": 0.836125,
+  "sample_events": [
+    {
+      "x": 0.09,
+      "h": 0.0695,
+      "depth": 8.983289101986134e-05,
+      "d_eff": 25.74083057363177,
+      "past_cusp": true
+    },
+    {
+      "x": 1.12,
+      "h": 0.1418,
+      "depth": 0.0010292494909080688,
+      "d_eff": 4.221267344729004,
+      "past_cusp": true
+    },
+    {
+      "x": 0.18,
+      "h": 0.0959,
+      "depth": 0.0,
+      "d_eff": 17.75925925925926,
+      "past_cusp": true
+    },
+    {
+      "x": 0.37,
+      "h": 0.111,
+      "depth": 0.0012211415452302123,
+      "d_eff": 10.00122114154523,
+      "past_cusp": true
+    },
+    {
+      "x": 0.34,
+      "h": 0.137,
+      "depth": 0.0015611011489759087,
+      "d_eff": 13.432933650168584,
+      "past_cusp": true
+    }
+  ]
+}

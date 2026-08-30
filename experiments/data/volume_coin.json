@@ -1,0 +1,30 @@
+{
+  "seed": 42,
+  "identity": "lambda = det(J_F)/det(J_G); lambda=1 ONLY on the quadratic manifold (Ch.85 E+/-0.0004); on measured tangents lambda is a measured volume coin.",
+  "forcings": [
+    {
+      "lambda_target": 1.0,
+      "detJF_detJG_at_origin": 1.0037314891815186,
+      "detJF_origin": 1.0037314891815186,
+      "data_mse_last": 0.015142255462706089,
+      "measured_det_physics": 0.0003493099999999998,
+      "measured_det_economy": 0.0078
+    },
+    {
+      "lambda_target": 0.0003493099999999998,
+      "detJF_detJG_at_origin": 0.00035429629497230053,
+      "detJF_origin": 0.00035429629497230053,
+      "data_mse_last": 1.098045387948332e-07,
+      "measured_det_physics": 0.0003493099999999998,
+      "measured_det_economy": 0.0078
+    },
+    {
+      "lambda_target": 0.0,
+      "detJF_detJG_at_origin": 0.00017701846081763506,
+      "detJF_origin": 0.00017701846081763506,
+      "data_mse_last": 3.3359009421474184e-07,
+      "measured_det_physics": 0.0003493099999999998,
+      "measured_det_economy": 0.0078
+    }
+  ]
+}

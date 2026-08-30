@@ -1,0 +1,26 @@
+{
+  "seed": 42,
+  "identity": "economy response matrix = image of physics origin_matrix; coin = R11/R21 = -g0/reward = -0.3846; sigma=ln(reward/g0)=0.956",
+  "params": {
+    "r": 0.1,
+    "alpha": 0.3,
+    "g0": 0.05,
+    "gdepth": 1.2,
+    "I": 2.0,
+    "floor": 0.001
+  },
+  "matrix": {
+    "R11": -0.05000000000000071,
+    "R12": -0.05999999999998451,
+    "R21": 0.13000000000000078,
+    "R22": 0.0
+  },
+  "det": 0.007799999999998033,
+  "coin_measured": -0.38461538461538775,
+  "coin_predicted": -0.38461538461538464,
+  "coin_ratio_speed": NaN,
+  "sigma_asymmetry": 0.9555114450274363,
+  "sigma_physics_from_coin_09146": 0.08926846775818227,
+  "level_quotient_after_200_steps": -0.42999621068585847,
+  "conclusion": "derivative ratio is stable (-0.3846); level quotient with background diverges -> the L'Hopital branch is required; asymmetry tilt 0.956 > physics 0.089: the economy deliberately weights positive action (S5.6 alpha)."
+}

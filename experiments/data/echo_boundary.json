@@ -1,0 +1,64 @@
+{
+  "seed": 42,
+  "identity": "trust exchange at unit turn crosses Q=1 (zeta=1/2) at d_echo ~ 0.64: shallower depths are underdamped - a sale provokes a reply past balance (reinvestment echo); deeper depths are overdamped - monotone creep to the mirror, no echo.  Q = 1/(2*zeta), zeta = sqrt(X*/X).",
+  "d_echo_for_X1": 0.638626811054641,
+  "C": 0.0078000000000000005,
+  "X": 1.0,
+  "rows": [
+    {
+      "depth": 0.0,
+      "g": 0.05,
+      "x_star": 0.08012820512820513,
+      "zeta": 0.28306925853614895,
+      "Q": 1.7663521732655694,
+      "regime": "echo (underdamped)",
+      "theta_deg": 106.44347338520515,
+      "omega": 0.08470537173048863,
+      "per_cycle_ratio": 0.00027255305095400456
+    },
+    {
+      "depth": 0.3,
+      "g": 0.06799999999999999,
+      "x_star": 0.14820512820512816,
+      "zeta": 0.38497419160916246,
+      "Q": 1.2987883626952719,
+      "regime": "echo (underdamped)",
+      "theta_deg": 112.64213805604344,
+      "omega": 0.08151073548926085,
+      "per_cycle_ratio": 0.00042816105136230296
+    },
+    {
+      "depth": 0.5,
+      "g": 0.08000000000000002,
+      "x_star": 0.2051282051282052,
+      "zeta": 0.45291081365783836,
+      "Q": 1.1039701082909807,
+      "regime": "echo (underdamped)",
+      "theta_deg": 116.93059266843369,
+      "omega": 0.0787400787401196,
+      "per_cycle_ratio": 0.0005690411710712007
+    },
+    {
+      "depth": 0.64,
+      "g": 0.0884,
+      "x_star": 0.2504666666666667,
+      "zeta": 0.5004664490919114,
+      "Q": 0.9990679713040549,
+      "regime": "creep (overdamped)",
+      "theta_deg": 120.03086482470897,
+      "omega": 0.07646149357683404,
+      "per_cycle_ratio": 0.0006901682024863451
+    },
+    {
+      "depth": 0.8,
+      "g": 0.098,
+      "x_star": 0.30782051282051287,
+      "zeta": 0.554815746730852,
+      "Q": 0.9012000884008006,
+      "regime": "creep (overdamped)",
+      "theta_deg": 123.69802481277125,
+      "omega": 0.07347788783028732,
+      "per_cycle_ratio": 0.0008563819428351294
+    }
+  ]
+}
