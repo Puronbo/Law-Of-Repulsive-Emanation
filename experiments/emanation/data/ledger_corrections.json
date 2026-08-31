@@ -1,15 +1,7 @@
 {
   "title": "Ledger audit: corrections applied rigorously with sources",
   "date": "2026-08-30",
-  "method": "re-read every script+JSON claim touching alpha_cusp, the escape
-            threshold, and the direction counts; verified each against the
-            code's own MC/closed forms; corrected scripts, regenerated JSONs,
-            and recorded every change here.  Key reconciliation: the escape
-            rule I*h/X > g0*gdepth*d* (=0.1266) is equivalent to h/X >
-            theta_star = g0*gdepth*d*/I = 0.0633, and theta_star =
-            g0*gdepth*alpha_cusp where alpha_cusp = (g*-g0)/(I*g0*gdepth) =
-            d*/I = 1.0553 is a DIMENSIONLESS g-axis marker at the phase
-            cusp g*, not an h/X threshold.",
+  "method": "re-read every script+JSON claim touching alpha_cusp, the escape threshold, and the direction counts; verified each against the code's own MC/closed forms; corrected scripts, regenerated JSONs, and recorded every change here.  Key reconciliation: the escape rule I*h/X > g0*gdepth*d* (=0.1266) is equivalent to h/X > theta_star = g0*gdepth*d*/I = 0.0633, and theta_star = g0*gdepth*alpha_cusp where alpha_cusp = (g*-g0)/(I*g0*gdepth) = d*/I = 1.0553 is a DIMENSIONLESS g-axis marker at the phase cusp g*, not an h/X threshold.",
   "corrections": [
     {
       "id": "E1",
@@ -90,6 +82,14 @@
       "correct_fact": "alpha ladder = dimensionless g-axis coordinates (g-g0)/(I*g0*gdepth); the h/X escape threshold is theta* = 0.0633 = g0*gdepth*alpha_cusp",
       "fix": "docstring corrected; added live gauge escape_h_over_X=0.0633",
       "verified": "existing gauge values unchanged; test suite re-run green (see below)"
+    },
+    {
+      "id": "E11",
+      "location": "experiments/emanation/genesis_grantlift.py + .json",
+      "wrong_statement": "first-draft claim that over-provisioned grant_bias (gb >= d*) 're-opens the denial line and lets drawdown reach the catapult d*'",
+      "correct_fact": "toy verification contradicts it: a depleted buyer under gb=0.5 vs 10 has essentially the same denials (11 vs 10) and stays near depth 0.92; grant is credit-not-scar so cannot catapult; grant only raises trust a little (0.247 vs 0.295 trust over 5 grants of 1.0 for gb 0.5 vs 20) - the fragility it enables is second-order and bounded by the same lever/ceiling.  The gb/d* ratio is a POSITION measure of the knob, not a reach to the cusp.",
+      "fix": "withdrawal recorded in the JSON identity/withdrawal fields, script docstring CORRECTION note, prints corrected",
+      "verified": "per-run denials 11 vs 10; depth 0.919 vs 0.922; trust_lift 0.2472 vs 0.2947 (seed 3, 5 grants)"
     }
   ],
   "standing_withdrawals_unchanged": [

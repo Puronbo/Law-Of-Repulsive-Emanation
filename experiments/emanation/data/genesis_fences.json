@@ -1,0 +1,32 @@
+{
+  "identity": "THE THREE FENCES of depth: 0.6 (interior protection, necessity ceiling), 1.0 (denial, max_leverage), 2.1106 (catastrophe cusp from Params), plus the uncapped necessity asymptote 1/(n+floor).  The interior fence ECHOES the same refusal law (refused would-be = L + 1/trust) with lever 0.6; the interior gaps (0.4, 1.11) are not readable from inside, by the echo law.",
+  "necessity_echo": {
+    "lever": 0.6,
+    "bounded_run": {
+      "trades": 640,
+      "denials": 5,
+      "refused_would_be_median": 0.6009,
+      "predicted": 0.6009,
+      "echo_ok": -0.0001
+    },
+    "uncapped_run": {
+      "max_depth_reached": 9.6425,
+      "asymptote_1_div_(n+floor)": 9.901,
+      "final_depth": 9.6425,
+      "above_cusp": 4.569
+    },
+    "interpretation": "necessity draws never deepen (draw=0, trust regenerates at n*X+floor = 0.101 per step), so the uncapped paper-depth converges FINITE ~9.90 - 4.7x ABOVE the catapult cusp; but necessity cannot catapult (no scar, no drawdown), so the fence is protection of the credit ledger's aesthetics; at 0.6 it sits far below both denial and cusp."
+  },
+  "fences": {
+    "interior_protection_L": 0.6,
+    "denial_L": 1.0,
+    "cusp_d_star": 2.1106,
+    "uncapped_asymptote_1/(n+floor)": 9.901
+  },
+  "gaps_not_readable_inside": {
+    "0.6_to_1.0": 0.4,
+    "1.0_to_cusp": 1.1106,
+    "note": "per the refusal echo, each fence's reading is its own lever; the gap between fences is recoverable only by straddling probes (genesis_crossover law)."
+  },
+  "references_note": "echo law and ignition (genesis_denial, genesis_crossover, genesis_metamery); d* recomputed from Params; necessity mechanics E1 in sim.py:172-200."
+}

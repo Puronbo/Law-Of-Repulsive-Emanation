@@ -1,0 +1,46 @@
+{
+  "identity": "GRANT is the legible lever: the engine's one interior instrument that is not a denial fence and therefore does not echo itself (refusal echo only binds safety gates). Measured (closed form, from Params): redistribution acts on the trust/p-potential scale with 1 credit = 1 credit; the marginal competitive lift on the depleted is 0.05*(1+grant_bias) per amt; grant_bias coefficient sit far below the interior unknowns - it cannot reach the catapult and works only in the living band.",
+  "instrument": {
+    "name": "grant_bias (redistribution)",
+    "code": "sim.py:121-131",
+    "quantity": 0.5,
+    "mechanics": "scale = 1 + grant_bias/(1+trust); amt=0.05*scale; credit + amt, trust + 0.05*amt*scale"
+  },
+  "recipient_table": [
+    {
+      "recipient": "trust_0",
+      "trust": 0.01,
+      "scale_amt": 1.495,
+      "lift_trust_per_amt": 0.075
+    },
+    {
+      "recipient": "mid",
+      "trust": 1.0,
+      "scale_amt": 1.25,
+      "lift_trust_per_amt": 0.0625
+    },
+    {
+      "recipient": "rich_100",
+      "trust": 100.0,
+      "scale_amt": 1.005,
+      "lift_trust_per_amt": 0.0502
+    }
+  ],
+  "ratios_to_interior_scales": {
+    "grant_bias_over_g0_trades": 10.0,
+    "grant_bias_over_mixing_radius": 5.66,
+    "grant_bias_over_phase_cusp": 2.83,
+    "grant_bias_over_catapult": 0.237,
+    "grant_bias_over_necessity_ceiling": 0.833
+  },
+  "findings": {
+    "conservation": "grant adds amt to total_credit and 0.05*amt (usable) to trust - the 'Q = grant' / one-credit-is-one-credit claim is TRUE: credit is conserved, no debasement of the credit unit; the 0.05 lift is a trust (standing) credit, not money.",
+    "reach": "grant_bias = 0.5 is 0.237 of the catapult d* - the instrument legibly works within the living band and cannot reach the catastrophe cusp; it is 10 g0-trades (a structural trading scale) and 5.7 mixing radii.",
+    "legibility": "unlike the three denial fences, grant's effect on an account is OBSERVABLE from inside (lifts trust/credit), so redistribution is the ONE governance channel the economy can measure and tune on its own - it is the honest interior instrument."
+  },
+  "genealogy_flagged_not_asserted": [
+    "grant's Q=1:1 credit conservation is true (no debasement)",
+    "grant_bias relative to interior gaps and the catapult is a structural fact (measured), NOT a numerical miracle - no coincidence claimed"
+  ],
+  "references_note": "grant mechanics sim.py:121-131; denial-fence echo (genesis_denial, genesis_fences); interior scales from genesis_transmutation (all recomputed here from Params); no new external refs."
+}

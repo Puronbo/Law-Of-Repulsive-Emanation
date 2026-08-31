@@ -1,0 +1,93 @@
+{
+  "identity": "REFUSAL ECHO: a denying gate returns its own lever L (every would-be refused depth = L + 1/trust), never the would-be excursion; archival of refusals cannot reveal what was refused.  max_leverage is the boundary's truncation lever: below the cusp d* = 2.1106 the ledger's deepest state is L-ish and d*-L is the dark margin of the engine's own reading; only a STRADDLING gate (L > d*) lets the engine enter/count the hyperbolic band - ignition on the primary boundary, same law as genesis_crossover.",
+  "d_star_recomputed": 2.1106,
+  "refusal_echo_law": "refused would-be depth = L + 1/trust; the refusal log is a flat echo of the gate, regardless of how deep the run would have gone.",
+  "truncation_margin": "d* - L: for L < d* the freeze hides this margin; only a straddling probe recovers it.",
+  "sweep_harmed": [
+    {
+      "lever_L": 1.0,
+      "clean": {
+        "accepted": 929,
+        "denials": 5,
+        "refusal_echo": 1.0007
+      },
+      "harmed": {
+        "accepted": 851,
+        "denials": 5,
+        "refusal_echo": 1.0013,
+        "refusal_echo_range": [
+          1.0013,
+          1.0013
+        ],
+        "deepest": 1.0001,
+        "freeze_depth": 1.000113
+      },
+      "truncation_margin_below_cusp": 1.1106
+    },
+    {
+      "lever_L": 1.5,
+      "clean": {
+        "accepted": 1328,
+        "denials": 5,
+        "refusal_echo": 1.5004
+      },
+      "harmed": {
+        "accepted": 1174,
+        "denials": 5,
+        "refusal_echo": 1.5001,
+        "refusal_echo_range": [
+          1.5001,
+          1.5001
+        ],
+        "deepest": 1.4989,
+        "freeze_depth": 1.49886
+      },
+      "truncation_margin_below_cusp": 0.6106
+    },
+    {
+      "lever_L": 2.0,
+      "clean": {
+        "accepted": 1692,
+        "denials": 5,
+        "refusal_echo": 2.0012
+      },
+      "harmed": {
+        "accepted": 1450,
+        "denials": 5,
+        "refusal_echo": 2.0001,
+        "refusal_echo_range": [
+          2.0001,
+          2.0001
+        ],
+        "deepest": 1.9987,
+        "freeze_depth": 1.998725
+      },
+      "truncation_margin_below_cusp": 0.1106
+    },
+    {
+      "lever_L": 2.5,
+      "clean": {
+        "accepted": 2024,
+        "denials": 5,
+        "refusal_echo": 2.5008
+      },
+      "harmed": {
+        "accepted": 1689,
+        "denials": 5,
+        "refusal_echo": 2.5022,
+        "refusal_echo_range": [
+          2.5022,
+          2.5022
+        ],
+        "deepest": 2.5007,
+        "freeze_depth": 2.500699
+      },
+      "truncation_margin_below_cusp": -0.3894
+    }
+  ],
+  "audit": {
+    "ledger_records_refusals": false,
+    "finding": "refusals are neither archived nor (by the echo law) recoverable from archival - they are the gate's own reading.  The excursion is observable only in counterfactual runs with L > d*, i.e. by a meter that straddles the boundary."
+  },
+  "references_note": "ignition/crossover law (genesis_crossover); truncated-meter plateau (genesis_meter); irreducibility of folded channels (genesis_metamery); metrology frame JCGM 2008; d* recomputed here from Params, not copied."
+}
