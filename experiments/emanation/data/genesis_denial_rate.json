@@ -1,0 +1,89 @@
+{
+  "identity": "DENIAL RATE AS FIRST-PASSAGE LAW - CORRECTED: the denial rate is NOT a stationary single number.  Per-window (500-step) rate at LOW g0 ramps monotonically without settling across 3000 steps (g0=0.06: 0.0046,0.0176,0.0225,0.0286,0.0302,0.0407 - a slow penetration, not burn-in); at HIGH g0 it saturates to a plateau after an initial transient (g0=0.15: 0.018,0.169,0.176,0.122,0.128,0.137 ~0.13). Forced power laws (g0-doubling) are HORIZON DEPENDENT and are not claimed.",
+  "g0_sweep_rate": [
+    {
+      "g0": 0.025,
+      "denials": 1156,
+      "attempts": 100000,
+      "rate": 0.01156,
+      "g0_over_base": 0.5,
+      "rate_ratio_vs_base": 0.693
+    },
+    {
+      "g0": 0.05,
+      "denials": 1668,
+      "attempts": 100000,
+      "rate": 0.01668,
+      "g0_over_base": 1.0,
+      "rate_ratio_vs_base": 1.0
+    },
+    {
+      "g0": 0.1,
+      "denials": 10818,
+      "attempts": 100000,
+      "rate": 0.10818,
+      "g0_over_base": 2.0,
+      "rate_ratio_vs_base": 6.486
+    },
+    {
+      "g0": 0.2,
+      "denials": 12330,
+      "attempts": 99840,
+      "rate": 0.1235,
+      "g0_over_base": 4.0,
+      "rate_ratio_vs_base": 7.404
+    }
+  ],
+  "floor_sweep_rate": [
+    {
+      "floor": 0.0,
+      "denials": 1692,
+      "attempts": 100000,
+      "rate": 0.01692
+    },
+    {
+      "floor": 0.001,
+      "denials": 1668,
+      "attempts": 100000,
+      "rate": 0.01668
+    },
+    {
+      "floor": 0.01,
+      "denials": 1461,
+      "attempts": 100000,
+      "rate": 0.01461
+    },
+    {
+      "floor": 0.1,
+      "denials": 741,
+      "attempts": 100000,
+      "rate": 0.00741
+    }
+  ],
+  "time_structure": {
+    "window_steps": 500,
+    "low_g0_006_windows": [
+      0.0046,
+      0.0176,
+      0.0225,
+      0.0286,
+      0.0302,
+      0.0407
+    ],
+    "low_g0_read": "monotonic ramp, never settles - slow first-passage penetration, not burn-in",
+    "high_g0_015_windows": [
+      0.018,
+      0.1687,
+      0.1756,
+      0.1216,
+      0.128,
+      0.1373
+    ],
+    "high_g0_read": "initial transient then plateau ~0.13 - a held rate at strong drawdown",
+    "no_single_steady_state_at_low_g0": true,
+    "low_g0_last_over_first": 8.85,
+    "n_windows": 6
+  },
+  "conclusion": "the denial/flood rate has NO single steady state at marginal drawdown: it ramps with observation time (slow penetration).  At strong drawdown it plateaus.  The '6.5x per g0 doubling, power 2.7' number from the coarse sweep is a HORIZON ARTIFACT and is WITHDRAWN; only the identity/excess/echo laws and the depth~0.8 quasi-stable gate are claimed as invariant.",
+  "references_note": "flood observation genesis_overshoot (1668->10818, now shown horizon-dependent); first-passage vocabulary is a liaison, not a solved measure; gates sim.py:174,177; mechanics sim.py:135-144.  No external refs."
+}

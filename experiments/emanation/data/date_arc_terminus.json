@@ -1,0 +1,37 @@
+{
+  "title": "Date-arc terminus: consolidated null result (natural-philosopher investigation of dates as arithmetic objects)",
+  "scope": "Oct-26-2000 10:26:20Z origin; forward/backward opposite seasons; ordinals and epoch seconds.",
+  "surviving_verified_arithmetic": [
+    "Exact identity (ordinal tier): 182 + 183 = 365 (the two opposite-season half-spans sum to the year). Survives because it is an EXACT EQUALITY of derived quantities, not a base-rate coincidence.",
+    "Exact identity (second tier): 15778463 + 15778464 = 31556927 s (half-year spans are consecutive integers summing to the year-in-seconds, a semiprime = 3571*8837).",
+    "Opposite-season TORSOR: Op(s)=s+year/2 is faithful, translation-equivariant, Op^2=year-shift (not an involution); forward-backward differ by exactly one tropical year (365.2422 d / 31556927 s). An exact identity, gauge-stable.",
+    "Fixed-integer primality: 730237 is prime, 2417 is prime. Gauge-stable facts about specific integers (invariant under unit choice), kept as elementary facts -- NOT claimed to be striking."
+  ],
+  "survivorship_correction_applied": [
+    "POST-SIEVE DEMOTION: 'triangular ordinal 730236 with prime index 2417' and 'prime-predecessor 730236=730237-1' moved from surviving to WITHDRAWN. Reason: these are COINCIDENCE-type features of a SELECTED integer. Base rates in the band (empirical, N=30000): gap<=1 = 0.074 (model 0.071), triangular = 0.0007 (model 0.0004). Under Bonferroni adjustment over ~10 properties x 3 integers (30 tests, threshold p<0.0017), gap<=1 is utterly typical and triangular barely clears -- and triangular was SELECTION (730236 chosen for being triangular), so multiplying rates double-counts the selection. No coincidence-type feature of any date is genuinely anomalous.",
+    "THE PATTERN (validated as a working sieve): every failure in this investigation had one root -- treating a salient feature of a calendar-converged integer as intrinsic structure via single-point/narrow-probe reasoning without base-rate calibration; precision was mistaken for significance; conclusions generalized beyond the probe's condition-space. The sieve rule 'before asserting a feature, compute its base rate and apply multiplicity adjustment; only exact identities and gauge-stable fixed-integer facts survive' correctly discarded every coincidence and kept every identity/stable fact -- including the self-caught demotion of the triangular claim above."
+  ],
+  "withdrawn_false_signals": [
+    {
+      "claim": "zeta-pattern: backward date zeta-cold, forward zeta-hot",
+      "falsifier": "windowed stats over +-6 heights (24 s-~25 zero-spacings) indistinguishable across the 3 bands (mean|zeta| 1.91/2.36/1.95); single-point |zeta| was lobe-position speckle in dense regime (zero-spacing 0.47). Rec. date_zeta_erasure.json"
+    },
+    {
+      "claim": "tau-GCD resonance: 12:1:3 with gcd=4=2^2 matching value-gcd",
+      "falsifier": "tau-GCD is unstable under +-3 s shifts (2,2,2,4,4,8,4): the 4 is a speckle of one instant. sigma-GCD even more unstable (6,18,4,2016,24,72,264)."
+    },
+    {
+      "claim": "prime-gap/triangular-prime-index structure is striking",
+      "falsifier": "statistical calibration: Expon(mean=ln x) gap model gives P(gap>obs)=0.86-0.93 (ordinal tier), 0.10-0.14 (epoch tier); gap<=1 at one specified 7e5 integer has P=0.071; joint Fisher chi2=13.11, P=0.64. All typical; not anomalous."
+    }
+  ],
+  "methodological_meta_lesson": "Divisibility invariants (tau, sigma, gcd, factorization) of calendar-converged integers are not gauge-invariant: they change under unit choice (ms->s->ordinal) and under +-1 s ticks. Exact arithmetic facts that are representation-independent (primality of fixed integers, additive closures of FIXED differences) survive; per-instant divisibility and statistical abstractions do not. The robust, non-overclaiming method is (a) exact facts about fixed differences, and (b) distributional calibration, not per-integer coincidence hunting.",
+  "statistical_quality_flag": "Gap p-values use the Poisson/Exponential spacing model (Cramer-conjectural, not a proof); reported as model-based calibration, not exact. Only the listed exact arithmetic is verified fact.",
+  "no_overclaims": [
+    "No Riemann zero discovered.",
+    "No numeric miracle claimed.",
+    "No date shown to preferentially sit near/away from zeta zeros."
+  ],
+  "tests": "19/19 green (test_credit_commons, test_credit_commons_web); test_sigma.py pre-existing ModuleNotFoundError untouched.",
+  "commit_state": "NOT committed."
+}

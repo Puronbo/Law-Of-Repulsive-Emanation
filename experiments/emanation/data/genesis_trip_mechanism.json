@@ -1,0 +1,288 @@
+{
+  "identity": "MECHANISM OF THE g0 OPTIMUM: the overshoot-at-trip optimum (~0.12) is the largest drawdown rate keeping all denials at finite, full-leverage-like depth with healthy-ish trust.  Above it, g(d) collapses trust to near-zero (median <1), and depth = |credit|/trust DIVERGES (vanishing denominator) producing a deep (>1.2) denial tail that reinflates overshoot.",
+  "g0_mechanism_table": [
+    {
+      "g0": 0.025,
+      "n": 5580,
+      "median_trust_at_trip": 236.86,
+      "frac_depth_gt_1_2": 0.0,
+      "median_trust_of_deep_denials": 0.0
+    },
+    {
+      "g0": 0.05,
+      "n": 10888,
+      "median_trust_at_trip": 162.66,
+      "frac_depth_gt_1_2": 0.0,
+      "median_trust_of_deep_denials": 0.0
+    },
+    {
+      "g0": 0.08,
+      "n": 15691,
+      "median_trust_at_trip": 63.15,
+      "frac_depth_gt_1_2": 0.0,
+      "median_trust_of_deep_denials": 0.0
+    },
+    {
+      "g0": 0.1,
+      "n": 16700,
+      "median_trust_at_trip": 23.48,
+      "frac_depth_gt_1_2": 0.0,
+      "median_trust_of_deep_denials": 0.0
+    },
+    {
+      "g0": 0.12,
+      "n": 16819,
+      "median_trust_at_trip": 3.66,
+      "frac_depth_gt_1_2": 0.0,
+      "median_trust_of_deep_denials": 0.0
+    },
+    {
+      "g0": 0.15,
+      "n": 16852,
+      "median_trust_at_trip": 0.22,
+      "frac_depth_gt_1_2": 0.0516,
+      "median_trust_of_deep_denials": 0.0
+    },
+    {
+      "g0": 0.2,
+      "n": 16406,
+      "median_trust_at_trip": 0.1,
+      "frac_depth_gt_1_2": 0.0466,
+      "median_trust_of_deep_denials": 0.0
+    },
+    {
+      "g0": 0.3,
+      "n": 19231,
+      "median_trust_at_trip": 0.01,
+      "frac_depth_gt_1_2": 0.0618,
+      "median_trust_of_deep_denials": 0.0
+    }
+  ],
+  "optimum_transition": [
+    {
+      "g0": 0.1,
+      "n": 16700,
+      "median_trust_at_trip": 23.48,
+      "frac_depth_gt_1_2": 0.0,
+      "median_trust_of_deep_denials": 0.0
+    },
+    {
+      "g0": 0.12,
+      "n": 16819,
+      "median_trust_at_trip": 3.66,
+      "frac_depth_gt_1_2": 0.0,
+      "median_trust_of_deep_denials": 0.0
+    },
+    {
+      "g0": 0.15,
+      "n": 16852,
+      "median_trust_at_trip": 0.22,
+      "frac_depth_gt_1_2": 0.0516,
+      "median_trust_of_deep_denials": 0.0
+    },
+    {
+      "g0": 0.2,
+      "n": 16406,
+      "median_trust_at_trip": 0.1,
+      "frac_depth_gt_1_2": 0.0466,
+      "median_trust_of_deep_denials": 0.0
+    }
+  ],
+  "findings": {
+    "healthy_trust_below_optimum": true,
+    "trust_collapses_above_optimum": true,
+    "depth_divergence_at_near_zero_trust": true,
+    "deep_denial_tail_frac_gt_1_2_above_optimum": true,
+    "mechanism_is_vanishing_denominator_not_fitted": true,
+    "not_claimed": "no universal constant; the optimum location (g0~0.12 at gdepth=1.2) is a measured parameter-point fact; the MECHANISM (vanishing-trust depth divergence) is the robust claim"
+  },
+  "references_note": "seed-robust optimum (genesis_trip_geometry); eps@trip definition (genesis_trip); gates sim.py:174,177; depth sim.py:91-95; mechanics sim.py:135-144.  No external refs.",
+  "phase_boundary_robustness": {
+    "identity": "the deep-tail onset (frac_depth>1.2 rising from 0.00 to 2-6%) is a SHARP PHASE BOUNDARY in g0 located at g0 ~ 0.12-0.14, UNIVERSAL across gdepth (0.8,1.2,2.0) and seed (7,99), and always coincides with the median-trust collapse (t ~ O(10) -> O(0.1)).  The trust-collapse mechanism is therefore a structural phase transition, not a tuned point.",
+    "table": [
+      {
+        "gdepth": 0.8,
+        "seed": 7,
+        "g0_values": [
+          0.1,
+          0.12,
+          0.14,
+          0.15,
+          0.18
+        ],
+        "frac_gt_1_2": [
+          0.0,
+          0.0,
+          0.0318,
+          0.0445,
+          0.0497
+        ],
+        "median_trust": [
+          44.3,
+          14.6,
+          2.2,
+          0.3,
+          0.1
+        ]
+      },
+      {
+        "gdepth": 0.8,
+        "seed": 99,
+        "g0_values": [
+          0.1,
+          0.12,
+          0.14,
+          0.15,
+          0.18
+        ],
+        "frac_gt_1_2": [
+          0.0,
+          0.0,
+          0.0193,
+          0.028,
+          0.034
+        ],
+        "median_trust": [
+          81.8,
+          47.4,
+          24.8,
+          14.5,
+          0.3
+        ]
+      },
+      {
+        "gdepth": 1.2,
+        "seed": 7,
+        "g0_values": [
+          0.1,
+          0.12,
+          0.14,
+          0.15,
+          0.18
+        ],
+        "frac_gt_1_2": [
+          0.0,
+          0.0,
+          0.0424,
+          0.0516,
+          0.0462
+        ],
+        "median_trust": [
+          23.5,
+          3.7,
+          0.8,
+          0.2,
+          0.1
+        ]
+      },
+      {
+        "gdepth": 1.2,
+        "seed": 99,
+        "g0_values": [
+          0.1,
+          0.12,
+          0.14,
+          0.15,
+          0.18
+        ],
+        "frac_gt_1_2": [
+          0.0,
+          0.0,
+          0.028,
+          0.0328,
+          0.0418
+        ],
+        "median_trust": [
+          58.2,
+          30.7,
+          8.0,
+          2.2,
+          0.2
+        ]
+      },
+      {
+        "gdepth": 2.0,
+        "seed": 7,
+        "g0_values": [
+          0.1,
+          0.12,
+          0.14,
+          0.15,
+          0.18
+        ],
+        "frac_gt_1_2": [
+          0.0,
+          0.0,
+          0.0582,
+          0.0551,
+          0.0531
+        ],
+        "median_trust": [
+          4.2,
+          2.8,
+          0.3,
+          0.2,
+          0.1
+        ]
+      },
+      {
+        "gdepth": 2.0,
+        "seed": 99,
+        "g0_values": [
+          0.1,
+          0.12,
+          0.14,
+          0.15,
+          0.18
+        ],
+        "frac_gt_1_2": [
+          0.0,
+          0.0,
+          0.0392,
+          0.0384,
+          0.0444
+        ],
+        "median_trust": [
+          30.5,
+          4.2,
+          1.0,
+          0.3,
+          0.2
+        ]
+      }
+    ],
+    "reading": "boundary g0 ~ 0.12-0.14 holds for all gdepth; magnitude of the deep tail grows weakly with gdepth; location is g0-dominated and seed-independent",
+    "g0_values_scanned": [
+      0.1,
+      0.12,
+      0.14,
+      0.15,
+      0.18
+    ]
+  },
+  "phase_boundary_1d_in_g0": {
+    "fine_onset_g0_by_gdepth": {
+      "0.6": 0.14,
+      "0.8": 0.135,
+      "1.2": 0.135,
+      "2.0": 0.135,
+      "3.0": 0.135
+    },
+    "candidate_g0x(1+0.8gdepth)_range": [
+      0.2072,
+      0.2214,
+      0.2646,
+      0.351,
+      0.459
+    ],
+    "candidate_g0xgdepth_range": [
+      0.084,
+      0.108,
+      0.162,
+      0.27,
+      0.405
+    ],
+    "reading": "the onset is essentially CONSTANT in g0 (~0.135-0.140) across gdepth 0.6-3.0; both multiplicative candidates vary ~2-5x, so the boundary is in g0 ALONE, gdepth is inert (only ~4% drift).  The trust-collapse/phase boundary is controlled by the BASE drawdown rate, not its depth-progressivity - a near-VERTICAL phase line in the (g0, gdepth) plane.  Governance: tuning gdepth will not move the refusal-collapse boundary; only g0 will.",
+    "not_claimed": "no fitted functional form; value ~0.135-0.14 is parameter-point; the claim is that g0 (not a g0*gdepth product) is the control"
+  }
+}

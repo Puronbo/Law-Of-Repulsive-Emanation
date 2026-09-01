@@ -1,0 +1,45 @@
+{
+  "seed": 7,
+  "n_accounts": 40,
+  "steps": 3000,
+  "total_draws": 162216.32392322272,
+  "identity": "REFUSAL ECHO AS A POPULATION LAW: with 40 accounts, stochastic necessity+leverage draws, redistributive grants and per-step trust regeneration, the refused would-be depth INFIMUM still sits at the gate (leverage L=1.0, necessity ceil=0.6) with excess ~1/trust: the fences self-echo under running dynamics.  Falsification test: any interior refused depth far from both gates would break the echo.",
+  "refusals_total": 2250,
+  "by_reason": {
+    "leverage": {
+      "name": "leverage",
+      "n": 1210,
+      "inf_depth": 1.0,
+      "inf_excess_over_gate": 0.0,
+      "mean_excess_over_gate": 0.0035,
+      "mean_1_over_trust": 0.0075,
+      "falsification": false
+    },
+    "necessity": {
+      "name": "necessity",
+      "n": 1040,
+      "inf_depth": 0.6,
+      "inf_excess_over_gate": 0.0,
+      "mean_excess_over_gate": 0.0011,
+      "mean_1_over_trust": 0.0017,
+      "falsification": false
+    }
+  },
+  "bimodality": {
+    "measured_infima": {
+      "leverage_gate_L": 1.0,
+      "necessity_gate_ceil": 0.6
+    },
+    "peak_markers": [
+      1.0,
+      0.6
+    ],
+    "two_echo_peaks_coexist": true,
+    "n_leverage_refusals": 1210,
+    "n_necessity_refusals": 1040
+  },
+  "falsification_count": 0,
+  "interior_depth_sample": [],
+  "conclusion": "echo survives the population: refused depths cluster only at the two fence levels; no interior mode restored",
+  "references_note": "gate semantics sim.py:172-177; echo closed form d'=L+O(1/trust) from genesis_denial; fences census genesis_fences.  No new external refs."
+}

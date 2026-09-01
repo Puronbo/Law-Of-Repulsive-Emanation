@@ -1,0 +1,45 @@
+{
+  "identity": "OVERSHOOT-AT-TRIP INVARIANT: leverage denial is a threshold-triggered measure (small draws -> ZERO leverage denials; a big draw trips the gate).  At the trip, eps = -(credit)-trust*1.0 is ~ -1.42 and is INVARIANT under the regeneration knobs n (0.10, 0.50) and moderate floor (0.001); a 100x floor (0.10) suppresses it (eps -1.73, denials 10888->4347).  Differential: n moves DEPTH (0.8->0.99, per genesis_depthpin) but leaves eps@trip; floor moves both.",
+  "trip_table": [
+    {
+      "probe": "n=0.10",
+      "eps_at_small_draw_1_5": 0.0,
+      "n_at_small_draw": 0,
+      "eps_at_big_draw_4_0": -1.424,
+      "n_at_big_draw": 10888,
+      "note": "small draw: 0 leverage denials (do not compare); big draw: the trip value"
+    },
+    {
+      "probe": "n=0.50",
+      "eps_at_small_draw_1_5": 0.0,
+      "n_at_small_draw": 0,
+      "eps_at_big_draw_4_0": -1.424,
+      "n_at_big_draw": 10888,
+      "note": "small draw: 0 leverage denials (do not compare); big draw: the trip value"
+    },
+    {
+      "probe": "floor=0.001",
+      "eps_at_small_draw_1_5": 0.0,
+      "n_at_small_draw": 0,
+      "eps_at_big_draw_4_0": -1.424,
+      "n_at_big_draw": 10888,
+      "note": "small draw: 0 leverage denials (do not compare); big draw: the trip value"
+    },
+    {
+      "probe": "floor=0.10",
+      "eps_at_small_draw_1_5": 0.0,
+      "n_at_small_draw": 0,
+      "eps_at_big_draw_4_0": -1.727,
+      "n_at_big_draw": 4347,
+      "note": "small draw: 0 leverage denials (do not compare); big draw: the trip value"
+    }
+  ],
+  "findings": {
+    "leverage_denial_is_threshold_triggered": true,
+    "eps_at_trip_invariant_in_n": true,
+    "eps_at_trip_invariant_in_moderate_floor": true,
+    "floor_x100_shifts_both_eps_and_rate": true,
+    "not_claimed": "the -1.42 is a measured threshold at this parameter point, not a universal constant; and the earlier 'compliance 0.475/tick' is WITHDRAWN as an empty-low-end-sample artifact (eps is a threshold, not a linear compliance)"
+  },
+  "references_note": "differential depth/overshoot law (genesis_depthpin); identity U=X+eps (genesis_echo_excess); flood non-stationarity (genesis_denial_rate); gates sim.py:174,177; mechanics sim.py:135-144; n/floor in Params sim.py:25-48.  No external refs."
+}

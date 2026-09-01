@@ -1,0 +1,32 @@
+{
+  "title": "Shift-bus verdict (REVISED): 4 soliton rules, NOT linear. Self-caught overclaim corrected.",
+  "scope": "The 16 numbers {4,12,36,44,68,76,100,108,132,140,164,172,196,204,228,236} read as elementary cellular automaton (Wolfram) rule numbers. Verified by exact simulation on an open lattice, t up to 1600.",
+  "revision_record": {
+    "original_claim": "All four mover rules (12,44,68,100) are LINEAR, i.e. exact XOR-superposition E(A xor B) == E(A) xor E(B).",
+    "falsifier": "Strict check on DENSE random configs (width 80, 500-3000 trials): rule 12 violates superposition in 2999/3000 trials; all four rules violate in >99%. Affine-linearity check over GF(2): PASSES for NONE of the four rules.",
+    "root_cause": "Superposition was only tested on far-apart, non-interacting packets, where solitons never meet -- that is compositionality of DISJOINT supports, not linearity. Rules 12 is literally the boolean gate out=(left AND NOT center); rules 44/68/100 are similar AND-NOT variants. None can be written as XOR of neighbors.",
+    "withdrawn_claim": "Any statement that these rules are 'linear CA' or 'additive'. They are NOT. Category-4 'signal mixers with superposition' narrative for rules 100/108/228/236 likewise unsupported.",
+    "kept_claim": "Exact ballistic soliton paths (verified): 12:{0}->{1}->{2}; 68:{0}->{-1}->{-2}; 44:{0}->{0,1}->{2}->{2,3}->...; 100: mirror of 44. Head position error == 0 over t in {200,400,800,1600}."
+  },
+  "rules_classification_verified": {
+    "clean_ballistic_movers_v_plus_1": [12, 44],
+    "clean_ballistic_movers_v_minus_1": [68, 100],
+    "broadcasters_period2_or_fullwidth": [76, 108, 132, 140, 164, 172, 196, 204, 228, 236],
+    "dies_immediately": [4],
+    "stationary_holder": [36]
+  },
+  "capabilities_delivered_in_code": [
+    "shift_bus.py: evolve/read packet bitmasks under any of the 4 rules; packet_bits/bits_to_positions bitmask round-trip; share_lanes and recover for the well-separated-packets case only.",
+    "tests/test_shift_bus.py: 24 tests, all green -- exact soliton paths for all 4 rules (long-horizon, zero error), a strict NONlinearity proof for all 4 rules, separation-compositionality for far-apart packets, end-to-end lane sharing with both legs recoverable, direction invariants, bitmask round-trips."
+  ],
+  "honest_limits": [
+    "NOT linear, NOT additive. Superposition holds ONLY for well-separated (disjoint-evolving) packets.",
+    "NOT a general computer: the rules are AND-NOT gates; a lone-1 soliton is a shift, but no configuration-collision yields a logic gate, no universality.",
+    "NOT unique: the 256-rule space contains 64 clean soliton rules; the 4-mover core is adequate but not special.",
+    "NOT noise-robust: 5%/step bit-flip noise collapses Jaccard fidelity to ~0 for all rules (12-seed test).",
+    "Lane-sharing via share_lanes/recover is only valid under the separation condition; on dense/interacting packs it silently fails."
+  ],
+  "status": "After self-correction: the honest usable artifact is a verified EXACT soliton shift bus (4 rules), whose only computational help is composition of disjoint packets. No linearity, no computation, and those overclaims are now withdrawn in both code and tests.",
+  "tests": "tests/test_shift_bus.py: 24/24 green.",
+  "commit_state": "NOT committed."
+}

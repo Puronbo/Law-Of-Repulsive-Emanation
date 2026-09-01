@@ -1,0 +1,61 @@
+{
+  "identity": "DEPTH-PINNING CENSUS: is the mean pre-draw depth at denial a self-pin (attractor) or a coincidence?  Read depth@den across the mechanistic knobs.",
+  "baseline": {
+    "depth_at_denial": 0.843,
+    "note": "nominal leverage L=1.0, necessity ceil=0.6"
+  },
+  "sweep": [
+    {
+      "probe": "draw_x4_upper",
+      "step": "draw scale x2",
+      "n": 4674,
+      "depth_at_denial": 0.779
+    },
+    {
+      "probe": "draw_x0.5_upper",
+      "step": "draw scale /2",
+      "n": 2724,
+      "depth_at_denial": 0.705
+    },
+    {
+      "probe": "g0_x2",
+      "step": "g0 0.05->0.10",
+      "n": 12522,
+      "depth_at_denial": 0.817
+    },
+    {
+      "probe": "floor_x100",
+      "step": "floor 0.001->0.10",
+      "n": 909,
+      "depth_at_denial": 0.754
+    },
+    {
+      "probe": "n_x5",
+      "step": "n 0.1->0.5",
+      "n": 1366,
+      "depth_at_denial": 0.991
+    },
+    {
+      "probe": "seed_2",
+      "step": "seed",
+      "n": 1585,
+      "depth_at_denial": 0.779
+    },
+    {
+      "probe": "seed_99",
+      "step": "seed",
+      "n": 2394,
+      "depth_at_denial": 0.84
+    }
+  ],
+  "differential_law": "economic-pressure knobs (draw scale, g0) move the OVERSHOOT strongly (~4x) while depth@den stays near-pinned (~0.7-0.8); regeneration knobs (n, floor) move DEPTH (n: 0.8->0.99 toward full leverage; floor: 0.8->0.70) while leaving the overshoot ~flat.  So depth and overshoot respond to DISJOINT knob families - a differential structure.",
+  "findings": {
+    "depth_near_pinned_in_draw_scale": true,
+    "depth_near_pinned_in_g0": true,
+    "depth_not_universal_attractor": true,
+    "n_unbinds_depth_toward_full_leverage": true,
+    "floor_lowers_depth": true,
+    "not_claimed": "no universal depth constant; the quasi-pin ~0.7-0.8 is differential (g(d) at the gate), not a universal point"
+  },
+  "references_note": "depth@den figures: overshoot probe (genesis_overshoot), denial-rate (genesis_denial_rate probe g0_005/010 0.797/0.813); gates sim.py:174,177; mechanics sim.py:135-144 (progressive g(d)); necessity rebuild n in Params sim.py:25-48.  No external refs."
+}

@@ -1,0 +1,42 @@
+{
+  "seed": 7,
+  "n_accounts": 40,
+  "steps": 3000,
+  "identity": "THE ECHO'S FREE PARAMETER IS THE DRAW: standardized excess U = (d'-gate)*trust equals the denied draw X exactly, so U is uniform on the draw range and decorrelates from trust.  The refused-depth spectrum is degenerate not just to two levels but to the draw distribution itself - no interior scale exists even in the overshoot.  Falsified if U drifts from the analytic draw range or correlates with trust.",
+  "leverage_gate_L1": {
+    "n": 1243,
+    "U_mean": 0.458,
+    "U_median": 0.366,
+    "U_min": 0.0,
+    "U_max": 2.098,
+    "draw_analytic_mean": 1.25,
+    "draw_analytic_range": [
+      0.5,
+      2.0
+    ],
+    "overshoot_eps_mean": -1.098,
+    "overshoot_eps_fraction_of_draw": 0.706,
+    "identity_U_eq_draw_plus_eps": 0.0,
+    "corr_U_log_trust": 0.091,
+    "law": "IDENTITY: U = (d'-gate)*trust = draw + eps exactly, where eps = -(credit)-trust*gate is the account's SIGNED book position relative to the gross gate (+ = slack above the line, - = already overshot past it).  Because refusals have small positive U, eps is systematically negative: accounts are typically denied ALREADY PAST the gate, overshot by prior drawdown then partially pulled back by floor regeneration.  The refused-depth excess therefore carries a real second-order interior signature - the overshoot - in the otherwise-degenerate spectrum."
+  },
+  "necessity_gate_0_6": {
+    "n": 1040,
+    "U_mean": 0.635,
+    "U_median": 0.526,
+    "U_min": 0.001,
+    "U_max": 2.6,
+    "draw_analytic_mean": 1.95,
+    "draw_analytic_range": [
+      0.9,
+      3.0
+    ],
+    "overshoot_eps_mean": -1.773,
+    "overshoot_eps_fraction_of_draw": 0.736,
+    "identity_U_eq_draw_plus_eps": 0.0,
+    "corr_U_log_trust": -0.034,
+    "law": "IDENTITY: U = (d'-gate)*trust = draw + eps exactly, where eps = -(credit)-trust*gate is the account's SIGNED book position relative to the gross gate (+ = slack above the line, - = already overshot past it).  Because refusals have small positive U, eps is systematically negative: accounts are typically denied ALREADY PAST the gate, overshot by prior drawdown then partially pulled back by floor regeneration.  The refused-depth excess therefore carries a real second-order interior signature - the overshoot - in the otherwise-degenerate spectrum."
+  },
+  "conclusion": "REFINED IDENTITY LAW: U = (d'-gate)*trust = draw + eps identically (max residual 0.0e+00), with eps = -(credit)-trust*gate the SIGNED position relative to the gross gate.  eps < 0 on average (-1.098), so denied accounts are typically already overshot past the line: the refused-depth spectrum is degenerate at the gate but carries a real second-order interior signature - the overshoot - which the naive 'U = X, account sits on the line' model misses.",
+  "references_note": "echo law (genesis_denial, genesis_echo_population); gates sim.py:174,177; draw ranges defined in this run.  No external refs."
+}

@@ -1,0 +1,73 @@
+{
+  "identity": "WITHDRAWN zeta-pattern test on the date ordinals (Oct-26-2000, Apr-26-2001, Apr-26-2000). The prior single-point reading that the backward date was zeta-cold and forward zeta-hot is FALSE: windowed statistics over \u00b16 heights (~25 zero-spacings) show all three bands are statistically indistinguishable (Selberg/ergodic null holds).",
+  "windows": {
+    "backward_730236": {
+      "mean": 1.9108670258369027,
+      "median": 0.9556982987560332,
+      "max": 14.169145658612251,
+      "min": 0.00125724295139662,
+      "frac_lt_0_3": 0.21041666666666667,
+      "n": 480
+    },
+    "given_730419": {
+      "mean": 2.35911368857093,
+      "median": 1.153834506869316,
+      "max": 14.702090427279472,
+      "min": 0.0086002243187977,
+      "frac_lt_0_3": 0.2125,
+      "n": 480
+    },
+    "forward_730601": {
+      "mean": 1.9465340086183611,
+      "median": 1.2074187062680721,
+      "max": 7.5638240948319435,
+      "min": 0.0011982116648141528,
+      "frac_lt_0_3": 0.16041666666666668,
+      "n": 480
+    }
+  },
+  "ergodic_null": {
+    "mean_range": [
+      1.91,
+      2.36
+    ],
+    "median_range": [
+      0.96,
+      1.21
+    ],
+    "frac_lt0.3_range": [
+      0.16,
+      0.21
+    ],
+    "reading": "three windows statistically indistinguishable -> single-point |zeta| contrast was lobe-position speckle, no date-specific zeta signal. ZETA-PATTERN CLAIM WITHDRAWN.",
+    "zero_spacing_near_7e5": 0.47
+  },
+  "surviving_arithmetic": {
+    "730236_prime_predecessor": true,
+    "730237_prime": true,
+    "triangular_index_2417_prime": true,
+    "prime_gaps": {
+      "given": 2,
+      "forward": 2,
+      "backward": 1
+    },
+    "separations": {
+      "182": [
+        2,
+        7,
+        13
+      ],
+      "183": [
+        3,
+        61
+      ],
+      "365": [
+        5,
+        73
+      ],
+      "182_plus_183": 365
+    },
+    "reading": "exact integer arithmetic (prime gaps, triangular-prime index, separation factorization 182+183=365) is robust; zeta statistics on the dates carry NO signal."
+  },
+  "references_note": "zeta via mpmath(mp.dps 8-12); window 480 samples per band; zero-spacing 2pi/ln(t)=0.47 at t~7e5; 2417 and 730237 primality by trial division. No external refs; no zero discovered; no numeric miracle."
+}
