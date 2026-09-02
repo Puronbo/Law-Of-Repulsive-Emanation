@@ -60,11 +60,24 @@ def test_fresh_table_detects_drift():
 
 
 def test_cli_gate_ok():
+    from experiments.emanation import law_discovery as ld
     env = dict(os.environ)
     r = subprocess.run([sys.executable, "scripts/certify_repo.py", "--gate"],
                        capture_output=True, text=True, env=env)
     assert r.returncode == 0, r.stdout + r.stderr
-    assert "all 7 claims believed" in r.stdout
+    n_disco = len(ld.discovery_claims()[0])
+    assert "all %d claims believed" % (7 + n_disco) in r.stdout
+
+
+def test_cli_gate_covers_discovery_laws():
+    from experiments.emanation import law_discovery as ld
+    claims, veto = ld.discovery_claims()
+    assert len(claims) == 48 and 105 in veto and 150 in veto
+    r = subprocess.run([sys.executable, "scripts/certify_repo.py", "--gate"],
+                       capture_output=True, text=True,
+                       env=dict(os.environ))
+    assert r.returncode == 0
+    assert "all %d claims believed" % (7 + len(claims)) in r.stdout
 
 
 def test_cli_claims_listing():

@@ -523,6 +523,24 @@ these rules.  The CI gate (`--gate`) now also refuses a stale discovery
 self-report: `discovery fresh: yes` is part of the pass condition -- the
 system may not silently forget what it failed to know.
 
+Eighth layer: **the supervisor auto-ingests the self-report (L17).**
+The gate's formal claim set is no longer hand-written: `certify_repo.py`
+derives 48 claims mechanically from the discovery self-report (one per
+certified rule: "rule r attractor law, self-discovered and
+out-of-sample certified -> requires DISCOVERED_r...") and also derives a
+VETO registry from the 208 unsolved rules (no_small_form_law,
+failed_to_generalize, measurement_inconclusive).  The supervisor now
+rejects any claim naming a vetoed rule BEFORE certificate lookup -- even
+a PASS-looking certificate cannot bless a guess over a rule the agent
+itself classified as unsolved.  Verified end-to-end: a fabricated
+"rule 105 attractor is 2^N" claim is vetoed (105 is mod-3 defective); a
+fabricated lucas-claim over rule 90 (failed_to_generalize in a synthetic
+report) is vetoed.  The gate now stands on 62 certificates and believes
+55 claims: the 7 core physics/system laws plus every law the
+self-directed agent earned.  This closes the loop: propose -> measure ->
+certify -> believe-or-veto, all enforced by one machine-readable gate
+that CI, the webapp, and agents all read.
+
 **This answers "can the proof-checking library be replaced by physics?":
 yes, for the characterized sector -- the prediction IS the law.**  And the
 laws VETO candidates that a checking harness might let pass:

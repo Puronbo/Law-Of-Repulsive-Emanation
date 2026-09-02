@@ -274,5 +274,821 @@
   "n_ok": 10,
   "points_checked": 10,
   "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r0_constant_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r1_constant_2",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 2",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r115_lucas_1_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 1",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r119_constant_2",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 2",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r12_lucas_1_0",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 0",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r123_lucas_1_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 1",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r127_constant_2",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 2",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r13_lucas_1_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 1",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r15_orbit2_1_0",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*2^N + 0",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r16_constant_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r17_constant_2",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 2",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r170_orbit2_1_0",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*2^N + 0",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r187_lucas_1_0",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 0",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r191_constant_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r2_constant_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r204_orbit2_1_0",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*2^N + 0",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r207_lucas_1_0",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 0",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r21_lucas_1_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 1",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r221_lucas_1_0",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 0",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r223_lucas_parity_0_3_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 0*L_N + 3 (N even) + 1 (N odd)",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r240_orbit2_1_0",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*2^N + 0",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r243_lucas_1_0",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 0",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r247_constant_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r251_lucas_1_0",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 0",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r255_constant_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r29_lucas_parity_2_-2_0",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 2*L_N - 2 (N even) + 0 (N odd)",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r3_constant_2",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 2",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r31_lucas_1_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 1",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r32_lucas_1_0",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 0",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r33_lucas_1_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 1",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r34_lucas_1_0",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 0",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r35_lucas_1_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 1",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r4_lucas_parity_0_3_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 0*L_N + 3 (N even) + 1 (N odd)",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r48_lucas_1_0",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 0",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r49_lucas_1_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 1",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r5_lucas_parity_0_4_2",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 0*L_N + 4 (N even) + 2 (N odd)",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r51_orbit2_1_0",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*2^N + 0",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r59_lucas_1_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 1",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r63_constant_2",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 2",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r68_lucas_1_0",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 0",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r69_lucas_1_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 1",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r7_lucas_1_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 1",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r71_lucas_parity_2_-2_0",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 2*L_N - 2 (N even) + 0 (N odd)",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r79_lucas_1_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 1",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r85_orbit2_1_0",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*2^N + 0",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r87_lucas_1_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 1",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r93_lucas_1_1",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 1*L_N + 1",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "DISCOVERED_r95_lucas_parity_0_4_2",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10] (full 2^N state spaces)",
+   "law": "|A(N,r)| = 0*L_N + 4 (N even) + 2 (N odd)",
+   "proposer": "law_discovery.fit (bounded exhaustive integer search over the documented zoo)",
+   "trained_on": "N in [3, 4, 5, 6] (zero error; documented zoo fit)"
+  },
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
  }
 ]

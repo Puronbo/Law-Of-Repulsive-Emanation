@@ -97,3 +97,56 @@ def test_certificate_table_roundtrip_with_statements():
     labels = {c["label"] for c in again}
     assert "L13_ring_attractor_29_71" in labels
     assert "L13_bad_even_omitted" in labels
+
+
+def test_veto_rejects_claim_over_unsolved_rule():
+    from experiments.emanation import law_discovery as ld
+    claims, veto = ld.discovery_claims()
+    assert 105 in veto and 150 in veto and 29 not in veto
+    # even a PASS-looking certificate cannot save a claim over a vetoed rule
+    fake = {"label": ld.cert_label(105, "orbit2", [1, 0]), "status": "PASS",
+            "points_checked": 3}
+    verdict = sv.supervise_build(
+        [{"law": "rule 105 attractor is 2^N",
+          "requires": [ld.cert_label(105, "orbit2", [1, 0])], "rule": 105}],
+        [fake], veto=veto)
+    assert verdict["accepted"] is False
+    reasons = verdict["results"][0]["rejection_reasons"]
+    assert "vetoed by the discovery self-report" in reasons[0]
+
+
+def test_veto_allows_certified_rule():
+    from experiments.emanation import law_discovery as ld
+    claims, veto = ld.discovery_claims()
+    c29 = next(c for c in claims if c.get("rule") == 29)
+    certs = ld.discovery_certificates()
+    verdict = sv.supervise_build(claims, certs, veto=veto)
+    assert verdict["accepted"] is True
+    assert verdict["n_claims"] == len(claims)
+    assert verdict["n_negative_claims"] == 0
+
+
+def test_veto_lists_failed_to_generalize_kind():
+    # a fabricated self-report with a fails-to-generalize rule must veto it
+    from experiments.emanation import law_discovery as ld
+    rep = ld.discovery_report_from_persisted()
+    rep = dict(rep)
+    rep["table"] = dict(rep["table"])
+    rep["table"]["90"] = {"kind": "failed_to_generalize",
+                          "family": "lucas", "params": [1, 0],
+                          "law": "|A(N,r)| = 1*L_N + 0"}
+    path = os.path.join(_DATA, "_veto_tmp.json")
+    with open(path, "w", encoding="utf-8") as fh:
+        json.dump({"report": rep}, fh)
+    try:
+        _, veto = ld.discovery_claims(path)
+        assert veto.get(90) == "failed_to_generalize"
+        verdict = sv.supervise_build(
+            [{"law": "rule 90 is lucas-like",
+              "requires": ["DISCOVERED_r90_lucas_1_0"], "rule": 90}],
+            [], veto=veto)
+        assert verdict["accepted"] is False
+        assert "failed_to_generalize" in \
+            verdict["results"][0]["rejection_reasons"][0]
+    finally:
+        os.remove(path)

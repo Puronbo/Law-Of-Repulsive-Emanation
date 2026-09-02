@@ -1,8 +1,8 @@
 {
  "accepted": true,
- "n_claims": 7,
+ "n_claims": 55,
  "n_negative_claims": 0,
- "n_required_certs": 7,
+ "n_required_certs": 55,
  "results": [
   {
    "law": "L1 free streaming (rule 29, gap>=2 sector)",
@@ -14,6 +14,7 @@
    "requires": [
     "L1_free_streaming_29"
    ],
+   "rule": null,
    "status": "BELIEVED FORMALLY"
   },
   {
@@ -26,6 +27,7 @@
    "requires": [
     "L1_free_streaming_71"
    ],
+   "rule": null,
    "status": "BELIEVED FORMALLY"
   },
   {
@@ -38,6 +40,7 @@
    "requires": [
     "L2_melt_single_cluster_29"
    ],
+   "rule": null,
    "status": "BELIEVED FORMALLY"
   },
   {
@@ -50,6 +53,7 @@
    "requires": [
     "L2_melt_single_cluster_71"
    ],
+   "rule": null,
    "status": "BELIEVED FORMALLY"
   },
   {
@@ -62,6 +66,7 @@
    "requires": [
     "L3_composition_mergerfree_29"
    ],
+   "rule": null,
    "status": "BELIEVED FORMALLY"
   },
   {
@@ -74,6 +79,7 @@
    "requires": [
     "L13_ring_attractor_29_71"
    ],
+   "rule": null,
    "status": "BELIEVED FORMALLY"
   },
   {
@@ -86,9 +92,634 @@
    "requires": [
     "L14_gate6_conservation"
    ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 0 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r0_constant_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r0_constant_1"
+   ],
+   "rule": 0,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 1 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 2",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r1_constant_2"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r1_constant_2"
+   ],
+   "rule": 1,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 115 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 1",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r115_lucas_1_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r115_lucas_1_1"
+   ],
+   "rule": 115,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 119 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 2",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r119_constant_2"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r119_constant_2"
+   ],
+   "rule": 119,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 12 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 0",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r12_lucas_1_0"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r12_lucas_1_0"
+   ],
+   "rule": 12,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 123 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 1",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r123_lucas_1_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r123_lucas_1_1"
+   ],
+   "rule": 123,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 127 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 2",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r127_constant_2"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r127_constant_2"
+   ],
+   "rule": 127,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 13 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 1",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r13_lucas_1_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r13_lucas_1_1"
+   ],
+   "rule": 13,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 15 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*2^N + 0",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r15_orbit2_1_0"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r15_orbit2_1_0"
+   ],
+   "rule": 15,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 16 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r16_constant_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r16_constant_1"
+   ],
+   "rule": 16,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 17 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 2",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r17_constant_2"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r17_constant_2"
+   ],
+   "rule": 17,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 170 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*2^N + 0",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r170_orbit2_1_0"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r170_orbit2_1_0"
+   ],
+   "rule": 170,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 187 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 0",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r187_lucas_1_0"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r187_lucas_1_0"
+   ],
+   "rule": 187,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 191 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r191_constant_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r191_constant_1"
+   ],
+   "rule": 191,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 2 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r2_constant_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r2_constant_1"
+   ],
+   "rule": 2,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 204 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*2^N + 0",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r204_orbit2_1_0"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r204_orbit2_1_0"
+   ],
+   "rule": 204,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 207 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 0",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r207_lucas_1_0"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r207_lucas_1_0"
+   ],
+   "rule": 207,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 21 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 1",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r21_lucas_1_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r21_lucas_1_1"
+   ],
+   "rule": 21,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 221 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 0",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r221_lucas_1_0"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r221_lucas_1_0"
+   ],
+   "rule": 221,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 223 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 0*L_N + 3 (N even) + 1 (N odd)",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r223_lucas_parity_0_3_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r223_lucas_parity_0_3_1"
+   ],
+   "rule": 223,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 240 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*2^N + 0",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r240_orbit2_1_0"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r240_orbit2_1_0"
+   ],
+   "rule": 240,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 243 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 0",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r243_lucas_1_0"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r243_lucas_1_0"
+   ],
+   "rule": 243,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 247 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r247_constant_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r247_constant_1"
+   ],
+   "rule": 247,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 251 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 0",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r251_lucas_1_0"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r251_lucas_1_0"
+   ],
+   "rule": 251,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 255 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r255_constant_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r255_constant_1"
+   ],
+   "rule": 255,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 29 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 2*L_N - 2 (N even) + 0 (N odd)",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r29_lucas_parity_2_-2_0"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r29_lucas_parity_2_-2_0"
+   ],
+   "rule": 29,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 3 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 2",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r3_constant_2"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r3_constant_2"
+   ],
+   "rule": 3,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 31 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 1",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r31_lucas_1_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r31_lucas_1_1"
+   ],
+   "rule": 31,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 32 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 0",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r32_lucas_1_0"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r32_lucas_1_0"
+   ],
+   "rule": 32,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 33 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 1",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r33_lucas_1_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r33_lucas_1_1"
+   ],
+   "rule": 33,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 34 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 0",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r34_lucas_1_0"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r34_lucas_1_0"
+   ],
+   "rule": 34,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 35 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 1",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r35_lucas_1_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r35_lucas_1_1"
+   ],
+   "rule": 35,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 4 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 0*L_N + 3 (N even) + 1 (N odd)",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r4_lucas_parity_0_3_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r4_lucas_parity_0_3_1"
+   ],
+   "rule": 4,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 48 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 0",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r48_lucas_1_0"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r48_lucas_1_0"
+   ],
+   "rule": 48,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 49 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 1",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r49_lucas_1_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r49_lucas_1_1"
+   ],
+   "rule": 49,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 5 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 0*L_N + 4 (N even) + 2 (N odd)",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r5_lucas_parity_0_4_2"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r5_lucas_parity_0_4_2"
+   ],
+   "rule": 5,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 51 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*2^N + 0",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r51_orbit2_1_0"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r51_orbit2_1_0"
+   ],
+   "rule": 51,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 59 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 1",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r59_lucas_1_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r59_lucas_1_1"
+   ],
+   "rule": 59,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 63 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 2",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r63_constant_2"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r63_constant_2"
+   ],
+   "rule": 63,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 68 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 0",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r68_lucas_1_0"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r68_lucas_1_0"
+   ],
+   "rule": 68,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 69 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 1",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r69_lucas_1_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r69_lucas_1_1"
+   ],
+   "rule": 69,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 7 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 1",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r7_lucas_1_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r7_lucas_1_1"
+   ],
+   "rule": 7,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 71 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 2*L_N - 2 (N even) + 0 (N odd)",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r71_lucas_parity_2_-2_0"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r71_lucas_parity_2_-2_0"
+   ],
+   "rule": 71,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 79 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 1",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r79_lucas_1_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r79_lucas_1_1"
+   ],
+   "rule": 79,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 85 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*2^N + 0",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r85_orbit2_1_0"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r85_orbit2_1_0"
+   ],
+   "rule": 85,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 87 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 1",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r87_lucas_1_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r87_lucas_1_1"
+   ],
+   "rule": 87,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 93 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 1*L_N + 1",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r93_lucas_1_1"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r93_lucas_1_1"
+   ],
+   "rule": 93,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 95 attractor law (self-discovered, out-of-sample certified): |A(N,r)| = 0*L_N + 4 (N even) + 2 (N odd)",
+   "ok": true,
+   "pass_evidence": [
+    "DISCOVERED_r95_lucas_parity_0_4_2"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "DISCOVERED_r95_lucas_parity_0_4_2"
+   ],
+   "rule": 95,
    "status": "BELIEVED FORMALLY"
   }
  ],
- "timestamp": "2026-09-02 07:17:39 UTC",
+ "timestamp": "2026-09-02 07:34:45 UTC",
  "verdict": "ACCEPTED"
 }

@@ -38,15 +38,28 @@ def status_of(certs, label):
     return "UNCERTIFIED", None
 
 
-def supervise_build(claims, certs):
-    """claims: list of {law, requires:[cert labels]}.  Returns the
-    per-claim results plus the build-level verdict."""
+def supervise_build(claims, certs, veto=None):
+    """claims: list of {law, requires:[cert labels], rule?}.  veto:
+    {rule: kind} -- the discovery self-report's unsolved rules.  A claim
+    naming a vetoed rule is rejected BEFORE certificate lookup: the
+    system cannot bless a guess (certified or not) for a rule its own
+    agent classified as unsolved.  Returns the per-claim results plus
+    the build-level verdict."""
+    veto = veto or {}
     results = []
     for claim in claims:
         ok = True
         reasons = []
         evidence = []
+        rule = claim.get("rule")
+        if rule is not None and rule in veto:
+            ok = False
+            reasons.append("vetoed by the discovery self-report: rule %s "
+                           "classified '%s' (no believed law may name it)"
+                           % (rule, veto[rule]))
         for lbl in claim.get("requires", []):
+            if not ok:
+                break
             status, c = status_of(certs, lbl)
             if status == "PASS":
                 if (c.get("points_checked") or 0) < 1:
@@ -68,6 +81,7 @@ def supervise_build(claims, certs):
             "ok": ok,
             "status": "BELIEVED FORMALLY" if ok else "REJECTED",
             "requires": claim.get("requires", []),
+            "rule": rule,
             "pass_evidence": evidence,
             "rejection_reasons": reasons,
         })

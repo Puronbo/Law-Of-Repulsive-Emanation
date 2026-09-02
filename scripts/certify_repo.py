@@ -30,9 +30,12 @@ from experiments.emanation import law_discovery as ld
 
 def claims():
     """FORMAL claims this repo stands behind (every named certificate must
-    be PASS).  The supervisor's richer demo_claims() deliberately includes
-    rejects; the gate must not."""
-    return [
+    be PASS).  Hand-written core laws PLUS the discovery agent's own
+    self-deriverd claims -- the gate now vets the whole learning loop:
+    every rule the agent certified, and nothing over the rules it
+    couldn't (veto).  The supervisor's richer demo_claims() deliberately
+    includes rejects; the gate must not."""
+    base = [
         {"law": "L1 free streaming (rule 29, gap>=2 sector)",
          "requires": ["L1_free_streaming_29"]},
         {"law": "L1 free streaming (rule 71, gap>=2 sector)",
@@ -48,6 +51,13 @@ def claims():
         {"law": "commons reserve conservation (spec gate 6)",
          "requires": ["L14_gate6_conservation"]},
     ]
+    discovered, _ = ld.discovery_claims()
+    return base + discovered
+
+
+def discovery_veto():
+    _, veto = ld.discovery_claims()
+    return veto
 
 
 def gate():
@@ -58,7 +68,7 @@ def gate():
     if not ok:
         return False, "discovery self-report drift: %s" % why
     certs = ra.full_table()
-    verdict = sv.supervise_build(claims(), certs)
+    verdict = sv.supervise_build(claims(), certs, veto=discovery_veto())
     rejected = [r for r in verdict["results"] if not r["ok"]]
     if verdict["accepted"] is False:
         lines = ["%d claims not believed:" % len(rejected)]
@@ -84,7 +94,7 @@ def summary():
     print("table fresh: %s" % (ok and "yes" or "DRIFT: %s" % drift))
     ok2, why2 = ld.fresh()
     print("discovery fresh: %s" % (ok2 and "yes" or "STALE: %s" % why2))
-    verdict = sv.supervise_build(claims(), certs)
+    verdict = sv.supervise_build(claims(), certs, veto=discovery_veto())
     print("supervisor: accepted=%s (%d claims, %d negative)" % (
         verdict["accepted"], verdict["n_claims"],
         verdict["n_negative_claims"]))

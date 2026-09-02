@@ -134,11 +134,13 @@ def system_certificates():
 
 def full_table():
     """Lab certificates + real-subsystem statements + T2 proposer
-    certificates (the complete, self-reproducing gate table)."""
+    certificates + the discovery agent's collected laws (the complete,
+    self-reproducing gate table)."""
     from experiments.emanation import law_checker as lc
     from experiments.emanation import law_proposer as lp
+    from experiments.emanation import law_discovery as ldd
     return (lc.all_certificates() + system_certificates()
-            + lp.proposer_certificates())
+            + lp.proposer_certificates() + ldd.discovery_certificates())
 
 
 def fresh_table_matches(path=_CERTS):

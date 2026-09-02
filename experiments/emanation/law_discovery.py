@@ -166,26 +166,41 @@ def fit(rule, trains):
     return survivors
 
 
+def cert_label(rule, family, params):
+    """The canonical certificate label of a discovered law (the label the
+    supervisor's formal claims must name; MUST match the label emitted by
+    the certificate builder below)."""
+    return "DISCOVERED_r%d_%s_%s" % (rule, family,
+                                     "_".join(map(str, params)))
+
+
+def statement_certificate(rule, survivor, trains, tests):
+    """The machine-readable PASS/negative certificate for one discovery
+    law, recomputed fresh at every call (deterministic, out-of-sample on
+    the CURRENT attractor implementation -- no cached measurement)."""
+    label = cert_label(rule, survivor["family"], survivor["params"])
+    domain = [(N, rule) for N in tests]
+    pred = lambda d, s=survivor: _y(d[0], s["family"], s["params"]) == \
+        measure(d[1], d[0])
+    return lc.certify_statement(
+        label,
+        {"domain": "out-of-sample (N, rule) in %s (full 2^N state "
+                   "spaces)" % (list(tests),),
+         "law": survivor["law_text"],
+         "trained_on": "N in %s (zero error; documented zoo fit)"
+                       % (list(trains),),
+         "proposer": "law_discovery.fit (bounded exhaustive integer "
+                     "search over the documented zoo)"},
+        pred, domain)
+
+
 def certify(rule, survivors, trains, tests):
     """Every survivor goes out-of-sample; first PASS (zoo order) wins,
     otherwise the first survivor is reported with its first failure."""
     picked = None
     fails = []
     for s in survivors:
-        domain = [(N, rule) for N in tests]
-        pred = lambda d, s=s: _y(d[0], s["family"], s["params"]) == \
-            measure(d[1], d[0])
-        cert = lc.certify_statement(
-            "DISCOVERED_r%d_%s_%s" % (rule, s["family"],
-                                      "_".join(map(str, s["params"]))),
-            {"domain": "out-of-sample (N, rule) in %s (full 2^N state "
-                       "spaces)" % (list(tests),),
-             "law": s["law_text"],
-             "trained_on": "N in %s (zero error; documented zoo fit)"
-                           % (list(trains),),
-             "proposer": "law_discovery.fit (bounded exhaustive integer "
-                         "search over the documented zoo)"},
-            pred, domain)
+        cert = statement_certificate(rule, s, trains, tests)
         s["status"] = cert["status"]
         s["first_failure"] = cert["first_failure"]
         s["points_checked"] = cert["points_checked"]
@@ -196,6 +211,49 @@ def certify(rule, survivors, trains, tests):
     if picked is None and survivors:
         picked = fails[0]
     return picked, (picked is not None and picked["status"] == "PASS")
+
+
+def discovery_certificates(table=_TBL):
+    """PASS certificates for every rule the discovery self-report
+    certified -- the discovery layer's contribution to the shared gate
+    table (joins lab + system + proposer certificates).  Computed fresh
+    from the CURRENT code and the CURRENT attractor implementation."""
+    report = discovery_report_from_persisted(table)
+    trains, tests = report["trains"], report["tests"]
+    certs = []
+    for rule, entry in report["table"].items():
+        if entry["kind"] != "certified":
+            continue
+        surv = [{"family": entry["family"], "params": entry["params"],
+                 "law_text": entry["law"]}]
+        certs.append(statement_certificate(int(rule), surv[0], trains,
+                                           tests))
+    return certs
+
+
+def discovery_claims(table=_TBL):
+    """Auto-derived formal claims + veto registry from the discovery
+    self-report.  claims: for every rule the agent certified, a claim
+    requiring its DISCOVERED certificate.  veto: {rule: kind} for every
+    rule the agent classified unsolved -- no believed claim may name
+    those rules (the system cannot bless its own ungeneralized guesses,
+    nor any guess a human floats over an unsolved rule)."""
+    report = discovery_report_from_persisted(table)
+    claims = []
+    veto = {}
+    for rule, entry in report["table"].items():
+        if entry["kind"] == "certified":
+            claims.append({
+                "law": "rule %s attractor law (self-discovered, "
+                       "out-of-sample certified): %s" % (rule, entry["law"]),
+                "requires": [cert_label(int(rule), entry["family"],
+                                        entry["params"])],
+                "rule": int(rule),
+            })
+        elif entry["kind"] in ("no_small_form_law", "failed_to_generalize",
+                               "measurement_inconclusive"):
+            veto[int(rule)] = entry["kind"]
+    return claims, veto
 
 
 def discover(rules=None, trains=(3, 4, 5, 6), tests=(8, 9, 10)):

@@ -101,3 +101,28 @@ def test_zoo_contract():
                                     "lucas", "lucas_parity", "fib",
                                     "orbit2", "orbit3"}
     assert set(ld.ZOOS) == set(ld.ZOO_FAMILIES)
+
+
+def test_discovery_claims_labels_match_certificates():
+    claims, veto = ld.discovery_claims()
+    certs = ld.discovery_certificates()
+    labels = {c["label"] for c in certs}
+    assert len(claims) == 48 and len(labels) == 48
+    for claim in claims:
+        assert claim["requires"][0] in labels  # every required cert exists
+    # no certified rule is vetoed, and 105/150 (mod-3 defect) are
+    assert not any(c["rule"] in veto for c in claims)
+    assert 105 in veto and 150 in veto
+    for c in certs:
+        assert c["status"] == "PASS"
+        assert c["points_checked"] == 3  # strictly out-of-sample N in 8..10
+
+
+def test_full_table_contains_discovery_layer():
+    # the shared gate table = lab + system + proposer + discovery
+    from experiments.emanation import repo_audit as ra
+    full = ra.full_table()
+    labels = {c["label"] for c in full}
+    assert "DISCOVERED_r0_constant_1" in labels          # rule 0 -> |A|=1
+    assert "DISCOVERED_r29_lucas_parity_2_-2_0" in labels  # 29 -> Lucas law
+    assert "DISCOVERED_r105" not in "".join(sorted(labels))  # refused
