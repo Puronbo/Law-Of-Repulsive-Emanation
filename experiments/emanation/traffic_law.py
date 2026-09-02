@@ -141,15 +141,21 @@ def evolve_ring(rule, positions, N, steps):
     neighbor is cell 0 (and cell 0's left neighbor is N-1), so no
     particles leak off an edge -- count, order and current are genuinely
     conserved as closed-system observables.
+
+    Rule 29 is the RIGHT-moving traffic rule; rule 71 its LEFT mirror
+    (verified = reflection of rule 29 on every ring state, N=5..10).
     """
+    left = rule == 71
     row = [0] * N
     for p in positions:
         row[p % N] = 1
     for _ in range(steps):
         nxt = [0] * N
         for j in range(N):
-            came = 1 if (row[(j - 1) % N] == 1 and row[j] == 0) else 0
-            stayed = 1 if (row[j] == 1 and row[(j + 1) % N] == 1) else 0
+            behind = (j - 1) % N if not left else (j + 1) % N
+            ahead = (j + 1) % N if not left else (j - 1) % N
+            came = 1 if (row[behind] == 1 and row[j] == 0) else 0
+            stayed = 1 if (row[j] == 1 and row[ahead] == 1) else 0
             nxt[j] = came or stayed
         row = nxt
     return {i for i, v in enumerate(row) if v}
@@ -160,18 +166,21 @@ def ring_bond_current(rule, positions, N, steps):
     bond) / N per step, time-averaged over `steps`.  A car crosses bond
     (i, i+1) when it leaves cell i, i.e. the number of moves per step is
     the number of (1,0)-positioned cars (for +1) or (0,1) (for -1).
+    |J| is mirror-symmetric between rules 29 and 71.
     """
+    left = rule == 71
     row = [0] * N
     for p in positions:
         row[p % N] = 1
     total = 0
-    v = _velocity(rule)
     for _ in range(steps):
         nxt = [0] * N
         moves = 0
         for j in range(N):
-            came = 1 if (row[(j - 1) % N] == 1 and row[j] == 0) else 0
-            stayed = 1 if (row[j] == 1 and row[(j + 1) % N] == 1) else 0
+            behind = (j - 1) % N if not left else (j + 1) % N
+            ahead = (j + 1) % N if not left else (j - 1) % N
+            came = 1 if (row[behind] == 1 and row[j] == 0) else 0
+            stayed = 1 if (row[j] == 1 and row[ahead] == 1) else 0
             nxt[j] = came or stayed
             if stayed == 0 and row[j] == 1:
                 moves += 1

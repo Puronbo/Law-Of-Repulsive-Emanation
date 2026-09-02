@@ -358,6 +358,44 @@ and L7 (erasure ledger) are ONE phenomenon: the dynamics collapses the
 whole sector onto the independent-set attractor, and every trajectory
 there is a rigid rotation forever.**  (`test_state_space_collapse_ring`.)
 
+**All densities.**  On the FULL ring state space (not a single n sector)
+the attractor is the union of BOTH complementary families -- cars
+isolated OR holes isolated -- minus the two alternating patterns when N
+is even, count measured exactly for N=5..9:
+
+     plateau(29/71 on all configs of N-ring)  =  2*i_cyc(N) - 2*delta(N even)
+
+with i_cyc(N) = total independent sets of the N-cycle (47 for C_8, so the
+29/71 ring attractor has 2*47-2 = 92 states).  The n-sector numbers of
+L8 are the projection of this onto one parity family.
+(`test_full_density_ring_attractor_29_71`.)
+
+**Correction (71 on rings).**  `traffic_law.evolve_ring` previously
+ignored the rule number (both 29 and 71 ran the RIGHT dynamics).  It now
+honors rule 71 as the exact LEFT mirror (verified: rule 71 == reflection
+of rule 29 on every ring state, N=5..10).  All count laws (fiber, ledger,
+attractor) are mirror-invariant and unchanged.
+
+## The erasure audit: a reusable instrument (T0 of the integration path)
+
+`experiments/emanation/erasure_audit.py` exposes the erasure-ledger and
+fiber machinery as a generic audit for ANY finite deterministic map:
+
+    audit(domain, f) -> total | image_1 | images_by_t (ledger) | flat_at
+                        | max_fiber | merge_classes | merged_configs
+                        | erased_bits  (= log2(total) - log2(image_1))
+
+Every number is exhaustive over the given domain -- measured fact, no
+simulation inference.  First dataset: the per-rule erasure spectrum of
+all 256 ECA rules on the N=8 ring
+(`data/rule_erasure_spectrum.json`): the injective rules are exactly the
+8 permutations {15,51,85,105,150,170,204,240}; 0/255 collapse to one
+state; mean one-step erasure over all rules is 1.266 bits; rules 29/71
+give image_1=132 of 256 states (relaxing to the 92-state attractor).
+This is the honest core of "a system that measures its own memory":
+point it at a simulator's transition map and it reports that map's
+forgetting clock and erasure budget.
+
 **This answers "can the proof-checking library be replaced by physics?":
 yes, for the characterized sector -- the prediction IS the law.**  And the
 laws VETO candidates that a checking harness might let pass:

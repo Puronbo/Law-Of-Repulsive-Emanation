@@ -1,0 +1,3842 @@
+{
+ "0": {
+  "erased_bits": 8.0,
+  "flat_at": 2,
+  "image_1": 1,
+  "images_by_t": [
+   256,
+   1,
+   1,
+   1
+  ],
+  "max_fiber": 256,
+  "merge_classes": 1,
+  "merged_configs": 255,
+  "total": 256
+ },
+ "1": {
+  "erased_bits": 2.476438043942987,
+  "flat_at": null,
+  "image_1": 46,
+  "images_by_t": [
+   256,
+   46,
+   26,
+   10
+  ],
+  "max_fiber": 131,
+  "merge_classes": 25,
+  "merged_configs": 210,
+  "total": 256
+ },
+ "10": {
+  "erased_bits": 2.3852901558847917,
+  "flat_at": 2,
+  "image_1": 49,
+  "images_by_t": [
+   256,
+   49,
+   49,
+   49
+  ],
+  "max_fiber": 9,
+  "merge_classes": 45,
+  "merged_configs": 207,
+  "total": 256
+ },
+ "100": {
+  "erased_bits": 0.9776321869715456,
+  "flat_at": 3,
+  "image_1": 130,
+  "images_by_t": [
+   256,
+   130,
+   65,
+   65
+  ],
+  "max_fiber": 6,
+  "merge_classes": 54,
+  "merged_configs": 126,
+  "total": 256
+ },
+ "101": {
+  "erased_bits": 0.0931094043914813,
+  "flat_at": null,
+  "image_1": 240,
+  "images_by_t": [
+   256,
+   240,
+   232,
+   228
+  ],
+  "max_fiber": 3,
+  "merge_classes": 15,
+  "merged_configs": 16,
+  "total": 256
+ },
+ "102": {
+  "erased_bits": 1.0,
+  "flat_at": null,
+  "image_1": 128,
+  "images_by_t": [
+   256,
+   128,
+   64,
+   32
+  ],
+  "max_fiber": 2,
+  "merge_classes": 128,
+  "merged_configs": 128,
+  "total": 256
+ },
+ "103": {
+  "erased_bits": 0.7145977811377513,
+  "flat_at": null,
+  "image_1": 156,
+  "images_by_t": [
+   256,
+   156,
+   96,
+   62
+  ],
+  "max_fiber": 5,
+  "merge_classes": 55,
+  "merged_configs": 100,
+  "total": 256
+ },
+ "104": {
+  "erased_bits": 0.6162957075259481,
+  "flat_at": null,
+  "image_1": 167,
+  "images_by_t": [
+   256,
+   167,
+   119,
+   95
+  ],
+  "max_fiber": 22,
+  "merge_classes": 45,
+  "merged_configs": 89,
+  "total": 256
+ },
+ "105": {
+  "erased_bits": 0.0,
+  "flat_at": 1,
+  "image_1": 256,
+  "images_by_t": [
+   256,
+   256,
+   256,
+   256
+  ],
+  "max_fiber": 1,
+  "merge_classes": 0,
+  "merged_configs": 0,
+  "total": 256
+ },
+ "106": {
+  "erased_bits": 0.19910010007969525,
+  "flat_at": null,
+  "image_1": 223,
+  "images_by_t": [
+   256,
+   223,
+   191,
+   171
+  ],
+  "max_fiber": 2,
+  "merge_classes": 33,
+  "merged_configs": 33,
+  "total": 256
+ },
+ "107": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   84,
+   52
+  ],
+  "max_fiber": 4,
+  "merge_classes": 72,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "108": {
+  "erased_bits": 0.7711813095041196,
+  "flat_at": null,
+  "image_1": 150,
+  "images_by_t": [
+   256,
+   150,
+   110,
+   85
+  ],
+  "max_fiber": 10,
+  "merge_classes": 54,
+  "merged_configs": 106,
+  "total": 256
+ },
+ "109": {
+  "erased_bits": 0.8707169830550336,
+  "flat_at": null,
+  "image_1": 140,
+  "images_by_t": [
+   256,
+   140,
+   68,
+   52
+  ],
+  "max_fiber": 11,
+  "merge_classes": 55,
+  "merged_configs": 116,
+  "total": 256
+ },
+ "11": {
+  "erased_bits": 1.5081469036703252,
+  "flat_at": 2,
+  "image_1": 90,
+  "images_by_t": [
+   256,
+   90,
+   90,
+   90
+  ],
+  "max_fiber": 6,
+  "merge_classes": 77,
+  "merged_configs": 166,
+  "total": 256
+ },
+ "110": {
+  "erased_bits": 0.733213459305099,
+  "flat_at": null,
+  "image_1": 154,
+  "images_by_t": [
+   256,
+   154,
+   129,
+   113
+  ],
+  "max_fiber": 10,
+  "merge_classes": 62,
+  "merged_configs": 102,
+  "total": 256
+ },
+ "111": {
+  "erased_bits": 1.4454111483223624,
+  "flat_at": null,
+  "image_1": 94,
+  "images_by_t": [
+   256,
+   94,
+   46,
+   22
+  ],
+  "max_fiber": 11,
+  "merge_classes": 37,
+  "merged_configs": 162,
+  "total": 256
+ },
+ "112": {
+  "erased_bits": 0.9665769984625499,
+  "flat_at": null,
+  "image_1": 131,
+  "images_by_t": [
+   256,
+   131,
+   79,
+   63
+  ],
+  "max_fiber": 6,
+  "merge_classes": 53,
+  "merged_configs": 125,
+  "total": 256
+ },
+ "113": {
+  "erased_bits": 0.9125371587496609,
+  "flat_at": null,
+  "image_1": 136,
+  "images_by_t": [
+   256,
+   136,
+   104,
+   88
+  ],
+  "max_fiber": 7,
+  "merge_classes": 84,
+  "merged_configs": 120,
+  "total": 256
+ },
+ "114": {
+  "erased_bits": 0.8003276551636356,
+  "flat_at": null,
+  "image_1": 147,
+  "images_by_t": [
+   256,
+   147,
+   79,
+   51
+  ],
+  "max_fiber": 7,
+  "merge_classes": 59,
+  "merged_configs": 109,
+  "total": 256
+ },
+ "115": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   104,
+   80
+  ],
+  "max_fiber": 4,
+  "merge_classes": 68,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "116": {
+  "erased_bits": 2.476438043942987,
+  "flat_at": 3,
+  "image_1": 46,
+  "images_by_t": [
+   256,
+   46,
+   21,
+   21
+  ],
+  "max_fiber": 9,
+  "merge_classes": 46,
+  "merged_configs": 210,
+  "total": 256
+ },
+ "117": {
+  "erased_bits": 1.5081469036703252,
+  "flat_at": 2,
+  "image_1": 90,
+  "images_by_t": [
+   256,
+   90,
+   90,
+   90
+  ],
+  "max_fiber": 6,
+  "merge_classes": 77,
+  "merged_configs": 166,
+  "total": 256
+ },
+ "118": {
+  "erased_bits": 0.733213459305099,
+  "flat_at": null,
+  "image_1": 154,
+  "images_by_t": [
+   256,
+   154,
+   102,
+   85
+  ],
+  "max_fiber": 10,
+  "merge_classes": 62,
+  "merged_configs": 102,
+  "total": 256
+ },
+ "119": {
+  "erased_bits": 1.5081469036703252,
+  "flat_at": null,
+  "image_1": 90,
+  "images_by_t": [
+   256,
+   90,
+   46,
+   34
+  ],
+  "max_fiber": 47,
+  "merge_classes": 41,
+  "merged_configs": 166,
+  "total": 256
+ },
+ "12": {
+  "erased_bits": 2.4454111483223624,
+  "flat_at": 2,
+  "image_1": 47,
+  "images_by_t": [
+   256,
+   47,
+   47,
+   47
+  ],
+  "max_fiber": 9,
+  "merge_classes": 45,
+  "merged_configs": 209,
+  "total": 256
+ },
+ "120": {
+  "erased_bits": 0.19910010007969525,
+  "flat_at": null,
+  "image_1": 223,
+  "images_by_t": [
+   256,
+   223,
+   191,
+   171
+  ],
+  "max_fiber": 2,
+  "merge_classes": 33,
+  "merged_configs": 33,
+  "total": 256
+ },
+ "121": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   84,
+   52
+  ],
+  "max_fiber": 4,
+  "merge_classes": 72,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "122": {
+  "erased_bits": 0.9556058806415466,
+  "flat_at": null,
+  "image_1": 132,
+  "images_by_t": [
+   256,
+   132,
+   92,
+   68
+  ],
+  "max_fiber": 7,
+  "merge_classes": 52,
+  "merged_configs": 124,
+  "total": 256
+ },
+ "123": {
+  "erased_bits": 1.2995602818589083,
+  "flat_at": null,
+  "image_1": 104,
+  "images_by_t": [
+   256,
+   104,
+   64,
+   48
+  ],
+  "max_fiber": 21,
+  "merge_classes": 45,
+  "merged_configs": 152,
+  "total": 256
+ },
+ "124": {
+  "erased_bits": 0.733213459305099,
+  "flat_at": null,
+  "image_1": 154,
+  "images_by_t": [
+   256,
+   154,
+   129,
+   113
+  ],
+  "max_fiber": 10,
+  "merge_classes": 62,
+  "merged_configs": 102,
+  "total": 256
+ },
+ "125": {
+  "erased_bits": 1.4454111483223624,
+  "flat_at": null,
+  "image_1": 94,
+  "images_by_t": [
+   256,
+   94,
+   46,
+   22
+  ],
+  "max_fiber": 11,
+  "merge_classes": 37,
+  "merged_configs": 162,
+  "total": 256
+ },
+ "126": {
+  "erased_bits": 1.9556058806415466,
+  "flat_at": null,
+  "image_1": 66,
+  "images_by_t": [
+   256,
+   66,
+   50,
+   42
+  ],
+  "max_fiber": 46,
+  "merge_classes": 66,
+  "merged_configs": 190,
+  "total": 256
+ },
+ "127": {
+  "erased_bits": 2.476438043942987,
+  "flat_at": null,
+  "image_1": 46,
+  "images_by_t": [
+   256,
+   46,
+   26,
+   10
+  ],
+  "max_fiber": 131,
+  "merge_classes": 25,
+  "merged_configs": 210,
+  "total": 256
+ },
+ "128": {
+  "erased_bits": 2.476438043942987,
+  "flat_at": 2,
+  "image_1": 46,
+  "images_by_t": [
+   256,
+   46,
+   46,
+   46
+  ],
+  "max_fiber": 131,
+  "merge_classes": 25,
+  "merged_configs": 210,
+  "total": 256
+ },
+ "129": {
+  "erased_bits": 1.9556058806415466,
+  "flat_at": null,
+  "image_1": 66,
+  "images_by_t": [
+   256,
+   66,
+   50,
+   42
+  ],
+  "max_fiber": 46,
+  "merge_classes": 66,
+  "merged_configs": 190,
+  "total": 256
+ },
+ "13": {
+  "erased_bits": 1.2995602818589083,
+  "flat_at": null,
+  "image_1": 104,
+  "images_by_t": [
+   256,
+   104,
+   64,
+   48
+  ],
+  "max_fiber": 7,
+  "merge_classes": 54,
+  "merged_configs": 152,
+  "total": 256
+ },
+ "130": {
+  "erased_bits": 1.4454111483223624,
+  "flat_at": null,
+  "image_1": 94,
+  "images_by_t": [
+   256,
+   94,
+   78,
+   70
+  ],
+  "max_fiber": 11,
+  "merge_classes": 37,
+  "merged_configs": 162,
+  "total": 256
+ },
+ "131": {
+  "erased_bits": 0.733213459305099,
+  "flat_at": null,
+  "image_1": 154,
+  "images_by_t": [
+   256,
+   154,
+   102,
+   85
+  ],
+  "max_fiber": 10,
+  "merge_classes": 62,
+  "merged_configs": 102,
+  "total": 256
+ },
+ "132": {
+  "erased_bits": 1.2995602818589083,
+  "flat_at": null,
+  "image_1": 104,
+  "images_by_t": [
+   256,
+   104,
+   64,
+   48
+  ],
+  "max_fiber": 21,
+  "merge_classes": 45,
+  "merged_configs": 152,
+  "total": 256
+ },
+ "133": {
+  "erased_bits": 0.9556058806415466,
+  "flat_at": null,
+  "image_1": 132,
+  "images_by_t": [
+   256,
+   132,
+   84,
+   52
+  ],
+  "max_fiber": 7,
+  "merge_classes": 52,
+  "merged_configs": 124,
+  "total": 256
+ },
+ "134": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   116,
+   92
+  ],
+  "max_fiber": 4,
+  "merge_classes": 72,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "135": {
+  "erased_bits": 0.19910010007969525,
+  "flat_at": null,
+  "image_1": 223,
+  "images_by_t": [
+   256,
+   223,
+   199,
+   191
+  ],
+  "max_fiber": 2,
+  "merge_classes": 33,
+  "merged_configs": 33,
+  "total": 256
+ },
+ "136": {
+  "erased_bits": 1.5081469036703252,
+  "flat_at": 2,
+  "image_1": 90,
+  "images_by_t": [
+   256,
+   90,
+   90,
+   90
+  ],
+  "max_fiber": 47,
+  "merge_classes": 41,
+  "merged_configs": 166,
+  "total": 256
+ },
+ "137": {
+  "erased_bits": 0.733213459305099,
+  "flat_at": null,
+  "image_1": 154,
+  "images_by_t": [
+   256,
+   154,
+   129,
+   113
+  ],
+  "max_fiber": 10,
+  "merge_classes": 62,
+  "merged_configs": 102,
+  "total": 256
+ },
+ "138": {
+  "erased_bits": 1.5081469036703252,
+  "flat_at": null,
+  "image_1": 90,
+  "images_by_t": [
+   256,
+   90,
+   62,
+   54
+  ],
+  "max_fiber": 6,
+  "merge_classes": 77,
+  "merged_configs": 166,
+  "total": 256
+ },
+ "139": {
+  "erased_bits": 2.476438043942987,
+  "flat_at": 3,
+  "image_1": 46,
+  "images_by_t": [
+   256,
+   46,
+   21,
+   21
+  ],
+  "max_fiber": 9,
+  "merge_classes": 46,
+  "merged_configs": 210,
+  "total": 256
+ },
+ "14": {
+  "erased_bits": 0.9665769984625499,
+  "flat_at": 2,
+  "image_1": 131,
+  "images_by_t": [
+   256,
+   131,
+   131,
+   131
+  ],
+  "max_fiber": 6,
+  "merge_classes": 53,
+  "merged_configs": 125,
+  "total": 256
+ },
+ "140": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   116,
+   100
+  ],
+  "max_fiber": 4,
+  "merge_classes": 68,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "141": {
+  "erased_bits": 0.8003276551636356,
+  "flat_at": null,
+  "image_1": 147,
+  "images_by_t": [
+   256,
+   147,
+   91,
+   59
+  ],
+  "max_fiber": 7,
+  "merge_classes": 59,
+  "merged_configs": 109,
+  "total": 256
+ },
+ "142": {
+  "erased_bits": 0.9125371587496609,
+  "flat_at": null,
+  "image_1": 136,
+  "images_by_t": [
+   256,
+   136,
+   104,
+   88
+  ],
+  "max_fiber": 7,
+  "merge_classes": 84,
+  "merged_configs": 120,
+  "total": 256
+ },
+ "143": {
+  "erased_bits": 0.9665769984625499,
+  "flat_at": 2,
+  "image_1": 131,
+  "images_by_t": [
+   256,
+   131,
+   131,
+   131
+  ],
+  "max_fiber": 6,
+  "merge_classes": 53,
+  "merged_configs": 125,
+  "total": 256
+ },
+ "144": {
+  "erased_bits": 1.4454111483223624,
+  "flat_at": null,
+  "image_1": 94,
+  "images_by_t": [
+   256,
+   94,
+   78,
+   70
+  ],
+  "max_fiber": 11,
+  "merge_classes": 37,
+  "merged_configs": 162,
+  "total": 256
+ },
+ "145": {
+  "erased_bits": 0.733213459305099,
+  "flat_at": null,
+  "image_1": 154,
+  "images_by_t": [
+   256,
+   154,
+   102,
+   85
+  ],
+  "max_fiber": 10,
+  "merge_classes": 62,
+  "merged_configs": 102,
+  "total": 256
+ },
+ "146": {
+  "erased_bits": 0.8707169830550336,
+  "flat_at": 3,
+  "image_1": 140,
+  "images_by_t": [
+   256,
+   140,
+   98,
+   98
+  ],
+  "max_fiber": 11,
+  "merge_classes": 55,
+  "merged_configs": 116,
+  "total": 256
+ },
+ "147": {
+  "erased_bits": 0.7711813095041196,
+  "flat_at": 3,
+  "image_1": 150,
+  "images_by_t": [
+   256,
+   150,
+   101,
+   101
+  ],
+  "max_fiber": 10,
+  "merge_classes": 54,
+  "merged_configs": 106,
+  "total": 256
+ },
+ "148": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   116,
+   92
+  ],
+  "max_fiber": 4,
+  "merge_classes": 72,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "149": {
+  "erased_bits": 0.19910010007969525,
+  "flat_at": null,
+  "image_1": 223,
+  "images_by_t": [
+   256,
+   223,
+   199,
+   191
+  ],
+  "max_fiber": 2,
+  "merge_classes": 33,
+  "merged_configs": 33,
+  "total": 256
+ },
+ "15": {
+  "erased_bits": 0.0,
+  "flat_at": 1,
+  "image_1": 256,
+  "images_by_t": [
+   256,
+   256,
+   256,
+   256
+  ],
+  "max_fiber": 1,
+  "merge_classes": 0,
+  "merged_configs": 0,
+  "total": 256
+ },
+ "150": {
+  "erased_bits": 0.0,
+  "flat_at": 1,
+  "image_1": 256,
+  "images_by_t": [
+   256,
+   256,
+   256,
+   256
+  ],
+  "max_fiber": 1,
+  "merge_classes": 0,
+  "merged_configs": 0,
+  "total": 256
+ },
+ "151": {
+  "erased_bits": 0.6162957075259481,
+  "flat_at": null,
+  "image_1": 167,
+  "images_by_t": [
+   256,
+   167,
+   103,
+   47
+  ],
+  "max_fiber": 22,
+  "merge_classes": 45,
+  "merged_configs": 89,
+  "total": 256
+ },
+ "152": {
+  "erased_bits": 0.7145977811377513,
+  "flat_at": null,
+  "image_1": 156,
+  "images_by_t": [
+   256,
+   156,
+   116,
+   96
+  ],
+  "max_fiber": 5,
+  "merge_classes": 55,
+  "merged_configs": 100,
+  "total": 256
+ },
+ "153": {
+  "erased_bits": 1.0,
+  "flat_at": null,
+  "image_1": 128,
+  "images_by_t": [
+   256,
+   128,
+   64,
+   32
+  ],
+  "max_fiber": 2,
+  "merge_classes": 128,
+  "merged_configs": 128,
+  "total": 256
+ },
+ "154": {
+  "erased_bits": 0.0931094043914813,
+  "flat_at": null,
+  "image_1": 240,
+  "images_by_t": [
+   256,
+   240,
+   224,
+   208
+  ],
+  "max_fiber": 3,
+  "merge_classes": 15,
+  "merged_configs": 16,
+  "total": 256
+ },
+ "155": {
+  "erased_bits": 0.9776321869715456,
+  "flat_at": null,
+  "image_1": 130,
+  "images_by_t": [
+   256,
+   130,
+   53,
+   37
+  ],
+  "max_fiber": 6,
+  "merge_classes": 54,
+  "merged_configs": 126,
+  "total": 256
+ },
+ "156": {
+  "erased_bits": 0.6076825772212393,
+  "flat_at": null,
+  "image_1": 168,
+  "images_by_t": [
+   256,
+   168,
+   108,
+   76
+  ],
+  "max_fiber": 7,
+  "merge_classes": 46,
+  "merged_configs": 88,
+  "total": 256
+ },
+ "157": {
+  "erased_bits": 0.9665769984625499,
+  "flat_at": null,
+  "image_1": 131,
+  "images_by_t": [
+   256,
+   131,
+   79,
+   63
+  ],
+  "max_fiber": 7,
+  "merge_classes": 63,
+  "merged_configs": 125,
+  "total": 256
+ },
+ "158": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   116,
+   92
+  ],
+  "max_fiber": 4,
+  "merge_classes": 72,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "159": {
+  "erased_bits": 1.3706433799203905,
+  "flat_at": null,
+  "image_1": 99,
+  "images_by_t": [
+   256,
+   99,
+   47,
+   27
+  ],
+  "max_fiber": 22,
+  "merge_classes": 37,
+  "merged_configs": 157,
+  "total": 256
+ },
+ "16": {
+  "erased_bits": 3.6076825772212393,
+  "flat_at": 3,
+  "image_1": 21,
+  "images_by_t": [
+   256,
+   21,
+   1,
+   1
+  ],
+  "max_fiber": 48,
+  "merge_classes": 21,
+  "merged_configs": 235,
+  "total": 256
+ },
+ "160": {
+  "erased_bits": 1.3561438102252756,
+  "flat_at": 2,
+  "image_1": 100,
+  "images_by_t": [
+   256,
+   100,
+   100,
+   100
+  ],
+  "max_fiber": 49,
+  "merge_classes": 19,
+  "merged_configs": 156,
+  "total": 256
+ },
+ "161": {
+  "erased_bits": 0.9556058806415466,
+  "flat_at": null,
+  "image_1": 132,
+  "images_by_t": [
+   256,
+   132,
+   92,
+   68
+  ],
+  "max_fiber": 7,
+  "merge_classes": 52,
+  "merged_configs": 124,
+  "total": 256
+ },
+ "162": {
+  "erased_bits": 1.2995602818589083,
+  "flat_at": null,
+  "image_1": 104,
+  "images_by_t": [
+   256,
+   104,
+   60,
+   44
+  ],
+  "max_fiber": 7,
+  "merge_classes": 54,
+  "merged_configs": 152,
+  "total": 256
+ },
+ "163": {
+  "erased_bits": 0.8003276551636356,
+  "flat_at": null,
+  "image_1": 147,
+  "images_by_t": [
+   256,
+   147,
+   79,
+   51
+  ],
+  "max_fiber": 7,
+  "merge_classes": 59,
+  "merged_configs": 109,
+  "total": 256
+ },
+ "164": {
+  "erased_bits": 1.0931094043914813,
+  "flat_at": null,
+  "image_1": 120,
+  "images_by_t": [
+   256,
+   120,
+   72,
+   44
+  ],
+  "max_fiber": 13,
+  "merge_classes": 80,
+  "merged_configs": 136,
+  "total": 256
+ },
+ "165": {
+  "erased_bits": 2.0,
+  "flat_at": null,
+  "image_1": 64,
+  "images_by_t": [
+   256,
+   64,
+   16,
+   4
+  ],
+  "max_fiber": 4,
+  "merge_classes": 64,
+  "merged_configs": 192,
+  "total": 256
+ },
+ "166": {
+  "erased_bits": 0.0931094043914813,
+  "flat_at": null,
+  "image_1": 240,
+  "images_by_t": [
+   256,
+   240,
+   224,
+   208
+  ],
+  "max_fiber": 3,
+  "merge_classes": 15,
+  "merged_configs": 16,
+  "total": 256
+ },
+ "167": {
+  "erased_bits": 0.8003276551636356,
+  "flat_at": null,
+  "image_1": 147,
+  "images_by_t": [
+   256,
+   147,
+   103,
+   77
+  ],
+  "max_fiber": 4,
+  "merge_classes": 71,
+  "merged_configs": 109,
+  "total": 256
+ },
+ "168": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   96,
+   68
+  ],
+  "max_fiber": 21,
+  "merge_classes": 57,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "169": {
+  "erased_bits": 0.19910010007969525,
+  "flat_at": null,
+  "image_1": 223,
+  "images_by_t": [
+   256,
+   223,
+   191,
+   171
+  ],
+  "max_fiber": 2,
+  "merge_classes": 33,
+  "merged_configs": 33,
+  "total": 256
+ },
+ "17": {
+  "erased_bits": 1.5081469036703252,
+  "flat_at": null,
+  "image_1": 90,
+  "images_by_t": [
+   256,
+   90,
+   46,
+   34
+  ],
+  "max_fiber": 47,
+  "merge_classes": 41,
+  "merged_configs": 166,
+  "total": 256
+ },
+ "170": {
+  "erased_bits": 0.0,
+  "flat_at": 1,
+  "image_1": 256,
+  "images_by_t": [
+   256,
+   256,
+   256,
+   256
+  ],
+  "max_fiber": 1,
+  "merge_classes": 0,
+  "merged_configs": 0,
+  "total": 256
+ },
+ "171": {
+  "erased_bits": 0.9665769984625499,
+  "flat_at": null,
+  "image_1": 131,
+  "images_by_t": [
+   256,
+   131,
+   79,
+   63
+  ],
+  "max_fiber": 6,
+  "merge_classes": 53,
+  "merged_configs": 125,
+  "total": 256
+ },
+ "172": {
+  "erased_bits": 0.9776321869715456,
+  "flat_at": null,
+  "image_1": 130,
+  "images_by_t": [
+   256,
+   130,
+   106,
+   98
+  ],
+  "max_fiber": 4,
+  "merge_classes": 85,
+  "merged_configs": 126,
+  "total": 256
+ },
+ "173": {
+  "erased_bits": 0.8003276551636356,
+  "flat_at": null,
+  "image_1": 147,
+  "images_by_t": [
+   256,
+   147,
+   119,
+   111
+  ],
+  "max_fiber": 4,
+  "merge_classes": 71,
+  "merged_configs": 109,
+  "total": 256
+ },
+ "174": {
+  "erased_bits": 1.5081469036703252,
+  "flat_at": null,
+  "image_1": 90,
+  "images_by_t": [
+   256,
+   90,
+   62,
+   54
+  ],
+  "max_fiber": 6,
+  "merge_classes": 77,
+  "merged_configs": 166,
+  "total": 256
+ },
+ "175": {
+  "erased_bits": 2.3852901558847917,
+  "flat_at": 2,
+  "image_1": 49,
+  "images_by_t": [
+   256,
+   49,
+   49,
+   49
+  ],
+  "max_fiber": 9,
+  "merge_classes": 45,
+  "merged_configs": 207,
+  "total": 256
+ },
+ "176": {
+  "erased_bits": 1.2995602818589083,
+  "flat_at": null,
+  "image_1": 104,
+  "images_by_t": [
+   256,
+   104,
+   60,
+   44
+  ],
+  "max_fiber": 7,
+  "merge_classes": 54,
+  "merged_configs": 152,
+  "total": 256
+ },
+ "177": {
+  "erased_bits": 0.8003276551636356,
+  "flat_at": null,
+  "image_1": 147,
+  "images_by_t": [
+   256,
+   147,
+   79,
+   51
+  ],
+  "max_fiber": 7,
+  "merge_classes": 59,
+  "merged_configs": 109,
+  "total": 256
+ },
+ "178": {
+  "erased_bits": 1.415037499278844,
+  "flat_at": null,
+  "image_1": 96,
+  "images_by_t": [
+   256,
+   96,
+   64,
+   48
+  ],
+  "max_fiber": 21,
+  "merge_classes": 58,
+  "merged_configs": 160,
+  "total": 256
+ },
+ "179": {
+  "erased_bits": 0.9665769984625499,
+  "flat_at": 2,
+  "image_1": 131,
+  "images_by_t": [
+   256,
+   131,
+   131,
+   131
+  ],
+  "max_fiber": 7,
+  "merge_classes": 63,
+  "merged_configs": 125,
+  "total": 256
+ },
+ "18": {
+  "erased_bits": 1.933910809542228,
+  "flat_at": 3,
+  "image_1": 67,
+  "images_by_t": [
+   256,
+   67,
+   21,
+   21
+  ],
+  "max_fiber": 48,
+  "merge_classes": 39,
+  "merged_configs": 189,
+  "total": 256
+ },
+ "180": {
+  "erased_bits": 0.0931094043914813,
+  "flat_at": null,
+  "image_1": 240,
+  "images_by_t": [
+   256,
+   240,
+   224,
+   208
+  ],
+  "max_fiber": 3,
+  "merge_classes": 15,
+  "merged_configs": 16,
+  "total": 256
+ },
+ "181": {
+  "erased_bits": 0.8003276551636356,
+  "flat_at": null,
+  "image_1": 147,
+  "images_by_t": [
+   256,
+   147,
+   103,
+   77
+  ],
+  "max_fiber": 4,
+  "merge_classes": 71,
+  "merged_configs": 109,
+  "total": 256
+ },
+ "182": {
+  "erased_bits": 0.8707169830550336,
+  "flat_at": 3,
+  "image_1": 140,
+  "images_by_t": [
+   256,
+   140,
+   98,
+   98
+  ],
+  "max_fiber": 11,
+  "merge_classes": 55,
+  "merged_configs": 116,
+  "total": 256
+ },
+ "183": {
+  "erased_bits": 1.933910809542228,
+  "flat_at": 3,
+  "image_1": 67,
+  "images_by_t": [
+   256,
+   67,
+   21,
+   21
+  ],
+  "max_fiber": 48,
+  "merge_classes": 39,
+  "merged_configs": 189,
+  "total": 256
+ },
+ "184": {
+  "erased_bits": 0.9556058806415466,
+  "flat_at": 2,
+  "image_1": 132,
+  "images_by_t": [
+   256,
+   132,
+   132,
+   132
+  ],
+  "max_fiber": 7,
+  "merge_classes": 90,
+  "merged_configs": 124,
+  "total": 256
+ },
+ "185": {
+  "erased_bits": 0.9665769984625499,
+  "flat_at": null,
+  "image_1": 131,
+  "images_by_t": [
+   256,
+   131,
+   95,
+   67
+  ],
+  "max_fiber": 7,
+  "merge_classes": 63,
+  "merged_configs": 125,
+  "total": 256
+ },
+ "186": {
+  "erased_bits": 1.2995602818589083,
+  "flat_at": null,
+  "image_1": 104,
+  "images_by_t": [
+   256,
+   104,
+   60,
+   44
+  ],
+  "max_fiber": 7,
+  "merge_classes": 54,
+  "merged_configs": 152,
+  "total": 256
+ },
+ "187": {
+  "erased_bits": 2.4454111483223624,
+  "flat_at": 2,
+  "image_1": 47,
+  "images_by_t": [
+   256,
+   47,
+   47,
+   47
+  ],
+  "max_fiber": 9,
+  "merge_classes": 45,
+  "merged_configs": 209,
+  "total": 256
+ },
+ "188": {
+  "erased_bits": 0.7145977811377513,
+  "flat_at": null,
+  "image_1": 156,
+  "images_by_t": [
+   256,
+   156,
+   116,
+   96
+  ],
+  "max_fiber": 5,
+  "merge_classes": 55,
+  "merged_configs": 100,
+  "total": 256
+ },
+ "189": {
+  "erased_bits": 2.4454111483223624,
+  "flat_at": 3,
+  "image_1": 47,
+  "images_by_t": [
+   256,
+   47,
+   21,
+   21
+  ],
+  "max_fiber": 10,
+  "merge_classes": 47,
+  "merged_configs": 209,
+  "total": 256
+ },
+ "19": {
+  "erased_bits": 1.5081469036703252,
+  "flat_at": 2,
+  "image_1": 90,
+  "images_by_t": [
+   256,
+   90,
+   90,
+   90
+  ],
+  "max_fiber": 47,
+  "merge_classes": 41,
+  "merged_configs": 166,
+  "total": 256
+ },
+ "190": {
+  "erased_bits": 1.4454111483223624,
+  "flat_at": null,
+  "image_1": 94,
+  "images_by_t": [
+   256,
+   94,
+   78,
+   70
+  ],
+  "max_fiber": 11,
+  "merge_classes": 37,
+  "merged_configs": 162,
+  "total": 256
+ },
+ "191": {
+  "erased_bits": 3.6076825772212393,
+  "flat_at": 3,
+  "image_1": 21,
+  "images_by_t": [
+   256,
+   21,
+   1,
+   1
+  ],
+  "max_fiber": 48,
+  "merge_classes": 21,
+  "merged_configs": 235,
+  "total": 256
+ },
+ "192": {
+  "erased_bits": 1.5081469036703252,
+  "flat_at": 2,
+  "image_1": 90,
+  "images_by_t": [
+   256,
+   90,
+   90,
+   90
+  ],
+  "max_fiber": 47,
+  "merge_classes": 41,
+  "merged_configs": 166,
+  "total": 256
+ },
+ "193": {
+  "erased_bits": 0.733213459305099,
+  "flat_at": null,
+  "image_1": 154,
+  "images_by_t": [
+   256,
+   154,
+   129,
+   113
+  ],
+  "max_fiber": 10,
+  "merge_classes": 62,
+  "merged_configs": 102,
+  "total": 256
+ },
+ "194": {
+  "erased_bits": 0.7145977811377513,
+  "flat_at": null,
+  "image_1": 156,
+  "images_by_t": [
+   256,
+   156,
+   116,
+   96
+  ],
+  "max_fiber": 5,
+  "merge_classes": 55,
+  "merged_configs": 100,
+  "total": 256
+ },
+ "195": {
+  "erased_bits": 1.0,
+  "flat_at": null,
+  "image_1": 128,
+  "images_by_t": [
+   256,
+   128,
+   64,
+   32
+  ],
+  "max_fiber": 2,
+  "merge_classes": 128,
+  "merged_configs": 128,
+  "total": 256
+ },
+ "196": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   116,
+   100
+  ],
+  "max_fiber": 4,
+  "merge_classes": 68,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "197": {
+  "erased_bits": 0.8003276551636356,
+  "flat_at": null,
+  "image_1": 147,
+  "images_by_t": [
+   256,
+   147,
+   91,
+   59
+  ],
+  "max_fiber": 7,
+  "merge_classes": 59,
+  "merged_configs": 109,
+  "total": 256
+ },
+ "198": {
+  "erased_bits": 0.6076825772212393,
+  "flat_at": null,
+  "image_1": 168,
+  "images_by_t": [
+   256,
+   168,
+   108,
+   76
+  ],
+  "max_fiber": 7,
+  "merge_classes": 46,
+  "merged_configs": 88,
+  "total": 256
+ },
+ "199": {
+  "erased_bits": 0.9665769984625499,
+  "flat_at": null,
+  "image_1": 131,
+  "images_by_t": [
+   256,
+   131,
+   79,
+   63
+  ],
+  "max_fiber": 7,
+  "merge_classes": 63,
+  "merged_configs": 125,
+  "total": 256
+ },
+ "2": {
+  "erased_bits": 3.6076825772212393,
+  "flat_at": 3,
+  "image_1": 21,
+  "images_by_t": [
+   256,
+   21,
+   1,
+   1
+  ],
+  "max_fiber": 48,
+  "merge_classes": 21,
+  "merged_configs": 235,
+  "total": 256
+ },
+ "20": {
+  "erased_bits": 1.3706433799203905,
+  "flat_at": null,
+  "image_1": 99,
+  "images_by_t": [
+   256,
+   99,
+   47,
+   27
+  ],
+  "max_fiber": 22,
+  "merge_classes": 37,
+  "merged_configs": 157,
+  "total": 256
+ },
+ "200": {
+  "erased_bits": 1.5081469036703252,
+  "flat_at": 3,
+  "image_1": 90,
+  "images_by_t": [
+   256,
+   90,
+   46,
+   46
+  ],
+  "max_fiber": 47,
+  "merge_classes": 41,
+  "merged_configs": 166,
+  "total": 256
+ },
+ "201": {
+  "erased_bits": 0.7711813095041196,
+  "flat_at": null,
+  "image_1": 150,
+  "images_by_t": [
+   256,
+   150,
+   110,
+   85
+  ],
+  "max_fiber": 10,
+  "merge_classes": 54,
+  "merged_configs": 106,
+  "total": 256
+ },
+ "202": {
+  "erased_bits": 0.9776321869715456,
+  "flat_at": null,
+  "image_1": 130,
+  "images_by_t": [
+   256,
+   130,
+   106,
+   98
+  ],
+  "max_fiber": 4,
+  "merge_classes": 85,
+  "merged_configs": 126,
+  "total": 256
+ },
+ "203": {
+  "erased_bits": 0.9776321869715456,
+  "flat_at": 3,
+  "image_1": 130,
+  "images_by_t": [
+   256,
+   130,
+   65,
+   65
+  ],
+  "max_fiber": 6,
+  "merge_classes": 54,
+  "merged_configs": 126,
+  "total": 256
+ },
+ "204": {
+  "erased_bits": 0.0,
+  "flat_at": 1,
+  "image_1": 256,
+  "images_by_t": [
+   256,
+   256,
+   256,
+   256
+  ],
+  "max_fiber": 1,
+  "merge_classes": 0,
+  "merged_configs": 0,
+  "total": 256
+ },
+ "205": {
+  "erased_bits": 0.9665769984625499,
+  "flat_at": null,
+  "image_1": 131,
+  "images_by_t": [
+   256,
+   131,
+   71,
+   55
+  ],
+  "max_fiber": 7,
+  "merge_classes": 63,
+  "merged_configs": 125,
+  "total": 256
+ },
+ "206": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   116,
+   100
+  ],
+  "max_fiber": 4,
+  "merge_classes": 68,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "207": {
+  "erased_bits": 2.4454111483223624,
+  "flat_at": 2,
+  "image_1": 47,
+  "images_by_t": [
+   256,
+   47,
+   47,
+   47
+  ],
+  "max_fiber": 9,
+  "merge_classes": 45,
+  "merged_configs": 209,
+  "total": 256
+ },
+ "208": {
+  "erased_bits": 1.5081469036703252,
+  "flat_at": null,
+  "image_1": 90,
+  "images_by_t": [
+   256,
+   90,
+   62,
+   54
+  ],
+  "max_fiber": 6,
+  "merge_classes": 77,
+  "merged_configs": 166,
+  "total": 256
+ },
+ "209": {
+  "erased_bits": 2.476438043942987,
+  "flat_at": 3,
+  "image_1": 46,
+  "images_by_t": [
+   256,
+   46,
+   21,
+   21
+  ],
+  "max_fiber": 9,
+  "merge_classes": 46,
+  "merged_configs": 210,
+  "total": 256
+ },
+ "21": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   104,
+   80
+  ],
+  "max_fiber": 21,
+  "merge_classes": 57,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "210": {
+  "erased_bits": 0.0931094043914813,
+  "flat_at": null,
+  "image_1": 240,
+  "images_by_t": [
+   256,
+   240,
+   224,
+   208
+  ],
+  "max_fiber": 3,
+  "merge_classes": 15,
+  "merged_configs": 16,
+  "total": 256
+ },
+ "211": {
+  "erased_bits": 0.9776321869715456,
+  "flat_at": null,
+  "image_1": 130,
+  "images_by_t": [
+   256,
+   130,
+   53,
+   37
+  ],
+  "max_fiber": 6,
+  "merge_classes": 54,
+  "merged_configs": 126,
+  "total": 256
+ },
+ "212": {
+  "erased_bits": 0.9125371587496609,
+  "flat_at": null,
+  "image_1": 136,
+  "images_by_t": [
+   256,
+   136,
+   104,
+   88
+  ],
+  "max_fiber": 7,
+  "merge_classes": 84,
+  "merged_configs": 120,
+  "total": 256
+ },
+ "213": {
+  "erased_bits": 0.9665769984625499,
+  "flat_at": 2,
+  "image_1": 131,
+  "images_by_t": [
+   256,
+   131,
+   131,
+   131
+  ],
+  "max_fiber": 6,
+  "merge_classes": 53,
+  "merged_configs": 125,
+  "total": 256
+ },
+ "214": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   116,
+   92
+  ],
+  "max_fiber": 4,
+  "merge_classes": 72,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "215": {
+  "erased_bits": 1.3706433799203905,
+  "flat_at": null,
+  "image_1": 99,
+  "images_by_t": [
+   256,
+   99,
+   47,
+   27
+  ],
+  "max_fiber": 22,
+  "merge_classes": 37,
+  "merged_configs": 157,
+  "total": 256
+ },
+ "216": {
+  "erased_bits": 0.9776321869715456,
+  "flat_at": null,
+  "image_1": 130,
+  "images_by_t": [
+   256,
+   130,
+   106,
+   98
+  ],
+  "max_fiber": 4,
+  "merge_classes": 85,
+  "merged_configs": 126,
+  "total": 256
+ },
+ "217": {
+  "erased_bits": 0.9776321869715456,
+  "flat_at": 3,
+  "image_1": 130,
+  "images_by_t": [
+   256,
+   130,
+   65,
+   65
+  ],
+  "max_fiber": 6,
+  "merge_classes": 54,
+  "merged_configs": 126,
+  "total": 256
+ },
+ "218": {
+  "erased_bits": 1.0931094043914813,
+  "flat_at": null,
+  "image_1": 120,
+  "images_by_t": [
+   256,
+   120,
+   72,
+   44
+  ],
+  "max_fiber": 13,
+  "merge_classes": 80,
+  "merged_configs": 136,
+  "total": 256
+ },
+ "219": {
+  "erased_bits": 1.9556058806415466,
+  "flat_at": 3,
+  "image_1": 66,
+  "images_by_t": [
+   256,
+   66,
+   21,
+   21
+  ],
+  "max_fiber": 46,
+  "merge_classes": 66,
+  "merged_configs": 190,
+  "total": 256
+ },
+ "22": {
+  "erased_bits": 0.6162957075259481,
+  "flat_at": null,
+  "image_1": 167,
+  "images_by_t": [
+   256,
+   167,
+   103,
+   47
+  ],
+  "max_fiber": 22,
+  "merge_classes": 45,
+  "merged_configs": 89,
+  "total": 256
+ },
+ "220": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   116,
+   100
+  ],
+  "max_fiber": 4,
+  "merge_classes": 68,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "221": {
+  "erased_bits": 2.4454111483223624,
+  "flat_at": 2,
+  "image_1": 47,
+  "images_by_t": [
+   256,
+   47,
+   47,
+   47
+  ],
+  "max_fiber": 9,
+  "merge_classes": 45,
+  "merged_configs": 209,
+  "total": 256
+ },
+ "222": {
+  "erased_bits": 1.2995602818589083,
+  "flat_at": null,
+  "image_1": 104,
+  "images_by_t": [
+   256,
+   104,
+   64,
+   48
+  ],
+  "max_fiber": 21,
+  "merge_classes": 45,
+  "merged_configs": 152,
+  "total": 256
+ },
+ "223": {
+  "erased_bits": 2.4454111483223624,
+  "flat_at": null,
+  "image_1": 47,
+  "images_by_t": [
+   256,
+   47,
+   19,
+   11
+  ],
+  "max_fiber": 90,
+  "merge_classes": 25,
+  "merged_configs": 209,
+  "total": 256
+ },
+ "224": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   96,
+   68
+  ],
+  "max_fiber": 21,
+  "merge_classes": 57,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "225": {
+  "erased_bits": 0.19910010007969525,
+  "flat_at": null,
+  "image_1": 223,
+  "images_by_t": [
+   256,
+   223,
+   191,
+   171
+  ],
+  "max_fiber": 2,
+  "merge_classes": 33,
+  "merged_configs": 33,
+  "total": 256
+ },
+ "226": {
+  "erased_bits": 0.9556058806415466,
+  "flat_at": 2,
+  "image_1": 132,
+  "images_by_t": [
+   256,
+   132,
+   132,
+   132
+  ],
+  "max_fiber": 7,
+  "merge_classes": 90,
+  "merged_configs": 124,
+  "total": 256
+ },
+ "227": {
+  "erased_bits": 0.9665769984625499,
+  "flat_at": null,
+  "image_1": 131,
+  "images_by_t": [
+   256,
+   131,
+   95,
+   67
+  ],
+  "max_fiber": 7,
+  "merge_classes": 63,
+  "merged_configs": 125,
+  "total": 256
+ },
+ "228": {
+  "erased_bits": 0.9776321869715456,
+  "flat_at": null,
+  "image_1": 130,
+  "images_by_t": [
+   256,
+   130,
+   106,
+   98
+  ],
+  "max_fiber": 4,
+  "merge_classes": 85,
+  "merged_configs": 126,
+  "total": 256
+ },
+ "229": {
+  "erased_bits": 0.8003276551636356,
+  "flat_at": null,
+  "image_1": 147,
+  "images_by_t": [
+   256,
+   147,
+   119,
+   111
+  ],
+  "max_fiber": 4,
+  "merge_classes": 71,
+  "merged_configs": 109,
+  "total": 256
+ },
+ "23": {
+  "erased_bits": 1.415037499278844,
+  "flat_at": null,
+  "image_1": 96,
+  "images_by_t": [
+   256,
+   96,
+   64,
+   48
+  ],
+  "max_fiber": 21,
+  "merge_classes": 58,
+  "merged_configs": 160,
+  "total": 256
+ },
+ "230": {
+  "erased_bits": 0.7145977811377513,
+  "flat_at": null,
+  "image_1": 156,
+  "images_by_t": [
+   256,
+   156,
+   116,
+   96
+  ],
+  "max_fiber": 5,
+  "merge_classes": 55,
+  "merged_configs": 100,
+  "total": 256
+ },
+ "231": {
+  "erased_bits": 2.4454111483223624,
+  "flat_at": 3,
+  "image_1": 47,
+  "images_by_t": [
+   256,
+   47,
+   21,
+   21
+  ],
+  "max_fiber": 10,
+  "merge_classes": 47,
+  "merged_configs": 209,
+  "total": 256
+ },
+ "232": {
+  "erased_bits": 1.415037499278844,
+  "flat_at": null,
+  "image_1": 96,
+  "images_by_t": [
+   256,
+   96,
+   64,
+   48
+  ],
+  "max_fiber": 21,
+  "merge_classes": 58,
+  "merged_configs": 160,
+  "total": 256
+ },
+ "233": {
+  "erased_bits": 0.6162957075259481,
+  "flat_at": null,
+  "image_1": 167,
+  "images_by_t": [
+   256,
+   167,
+   119,
+   95
+  ],
+  "max_fiber": 22,
+  "merge_classes": 45,
+  "merged_configs": 89,
+  "total": 256
+ },
+ "234": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   96,
+   68
+  ],
+  "max_fiber": 21,
+  "merge_classes": 57,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "235": {
+  "erased_bits": 1.3706433799203905,
+  "flat_at": null,
+  "image_1": 99,
+  "images_by_t": [
+   256,
+   99,
+   67,
+   51
+  ],
+  "max_fiber": 22,
+  "merge_classes": 37,
+  "merged_configs": 157,
+  "total": 256
+ },
+ "236": {
+  "erased_bits": 1.5081469036703252,
+  "flat_at": 3,
+  "image_1": 90,
+  "images_by_t": [
+   256,
+   90,
+   46,
+   46
+  ],
+  "max_fiber": 47,
+  "merge_classes": 41,
+  "merged_configs": 166,
+  "total": 256
+ },
+ "237": {
+  "erased_bits": 1.933910809542228,
+  "flat_at": null,
+  "image_1": 67,
+  "images_by_t": [
+   256,
+   67,
+   43,
+   35
+  ],
+  "max_fiber": 48,
+  "merge_classes": 39,
+  "merged_configs": 189,
+  "total": 256
+ },
+ "238": {
+  "erased_bits": 1.5081469036703252,
+  "flat_at": 2,
+  "image_1": 90,
+  "images_by_t": [
+   256,
+   90,
+   90,
+   90
+  ],
+  "max_fiber": 47,
+  "merge_classes": 41,
+  "merged_configs": 166,
+  "total": 256
+ },
+ "239": {
+  "erased_bits": 3.6076825772212393,
+  "flat_at": 2,
+  "image_1": 21,
+  "images_by_t": [
+   256,
+   21,
+   21,
+   21
+  ],
+  "max_fiber": 48,
+  "merge_classes": 21,
+  "merged_configs": 235,
+  "total": 256
+ },
+ "24": {
+  "erased_bits": 2.4454111483223624,
+  "flat_at": 3,
+  "image_1": 47,
+  "images_by_t": [
+   256,
+   47,
+   21,
+   21
+  ],
+  "max_fiber": 10,
+  "merge_classes": 47,
+  "merged_configs": 209,
+  "total": 256
+ },
+ "240": {
+  "erased_bits": 0.0,
+  "flat_at": 1,
+  "image_1": 256,
+  "images_by_t": [
+   256,
+   256,
+   256,
+   256
+  ],
+  "max_fiber": 1,
+  "merge_classes": 0,
+  "merged_configs": 0,
+  "total": 256
+ },
+ "241": {
+  "erased_bits": 0.9665769984625499,
+  "flat_at": null,
+  "image_1": 131,
+  "images_by_t": [
+   256,
+   131,
+   79,
+   63
+  ],
+  "max_fiber": 6,
+  "merge_classes": 53,
+  "merged_configs": 125,
+  "total": 256
+ },
+ "242": {
+  "erased_bits": 1.2995602818589083,
+  "flat_at": null,
+  "image_1": 104,
+  "images_by_t": [
+   256,
+   104,
+   60,
+   44
+  ],
+  "max_fiber": 7,
+  "merge_classes": 54,
+  "merged_configs": 152,
+  "total": 256
+ },
+ "243": {
+  "erased_bits": 2.4454111483223624,
+  "flat_at": 2,
+  "image_1": 47,
+  "images_by_t": [
+   256,
+   47,
+   47,
+   47
+  ],
+  "max_fiber": 9,
+  "merge_classes": 45,
+  "merged_configs": 209,
+  "total": 256
+ },
+ "244": {
+  "erased_bits": 1.5081469036703252,
+  "flat_at": null,
+  "image_1": 90,
+  "images_by_t": [
+   256,
+   90,
+   62,
+   54
+  ],
+  "max_fiber": 6,
+  "merge_classes": 77,
+  "merged_configs": 166,
+  "total": 256
+ },
+ "245": {
+  "erased_bits": 2.3852901558847917,
+  "flat_at": 2,
+  "image_1": 49,
+  "images_by_t": [
+   256,
+   49,
+   49,
+   49
+  ],
+  "max_fiber": 9,
+  "merge_classes": 45,
+  "merged_configs": 207,
+  "total": 256
+ },
+ "246": {
+  "erased_bits": 1.4454111483223624,
+  "flat_at": null,
+  "image_1": 94,
+  "images_by_t": [
+   256,
+   94,
+   78,
+   70
+  ],
+  "max_fiber": 11,
+  "merge_classes": 37,
+  "merged_configs": 162,
+  "total": 256
+ },
+ "247": {
+  "erased_bits": 3.6076825772212393,
+  "flat_at": 3,
+  "image_1": 21,
+  "images_by_t": [
+   256,
+   21,
+   1,
+   1
+  ],
+  "max_fiber": 48,
+  "merge_classes": 21,
+  "merged_configs": 235,
+  "total": 256
+ },
+ "248": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   96,
+   68
+  ],
+  "max_fiber": 21,
+  "merge_classes": 57,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "249": {
+  "erased_bits": 1.3706433799203905,
+  "flat_at": null,
+  "image_1": 99,
+  "images_by_t": [
+   256,
+   99,
+   67,
+   51
+  ],
+  "max_fiber": 22,
+  "merge_classes": 37,
+  "merged_configs": 157,
+  "total": 256
+ },
+ "25": {
+  "erased_bits": 0.7145977811377513,
+  "flat_at": null,
+  "image_1": 156,
+  "images_by_t": [
+   256,
+   156,
+   96,
+   62
+  ],
+  "max_fiber": 5,
+  "merge_classes": 55,
+  "merged_configs": 100,
+  "total": 256
+ },
+ "250": {
+  "erased_bits": 1.3561438102252756,
+  "flat_at": 2,
+  "image_1": 100,
+  "images_by_t": [
+   256,
+   100,
+   100,
+   100
+  ],
+  "max_fiber": 49,
+  "merge_classes": 19,
+  "merged_configs": 156,
+  "total": 256
+ },
+ "251": {
+  "erased_bits": 2.4454111483223624,
+  "flat_at": 2,
+  "image_1": 47,
+  "images_by_t": [
+   256,
+   47,
+   47,
+   47
+  ],
+  "max_fiber": 90,
+  "merge_classes": 25,
+  "merged_configs": 209,
+  "total": 256
+ },
+ "252": {
+  "erased_bits": 1.5081469036703252,
+  "flat_at": 2,
+  "image_1": 90,
+  "images_by_t": [
+   256,
+   90,
+   90,
+   90
+  ],
+  "max_fiber": 47,
+  "merge_classes": 41,
+  "merged_configs": 166,
+  "total": 256
+ },
+ "253": {
+  "erased_bits": 3.6076825772212393,
+  "flat_at": 2,
+  "image_1": 21,
+  "images_by_t": [
+   256,
+   21,
+   21,
+   21
+  ],
+  "max_fiber": 48,
+  "merge_classes": 21,
+  "merged_configs": 235,
+  "total": 256
+ },
+ "254": {
+  "erased_bits": 2.476438043942987,
+  "flat_at": 2,
+  "image_1": 46,
+  "images_by_t": [
+   256,
+   46,
+   46,
+   46
+  ],
+  "max_fiber": 131,
+  "merge_classes": 25,
+  "merged_configs": 210,
+  "total": 256
+ },
+ "255": {
+  "erased_bits": 8.0,
+  "flat_at": 2,
+  "image_1": 1,
+  "images_by_t": [
+   256,
+   1,
+   1,
+   1
+  ],
+  "max_fiber": 256,
+  "merge_classes": 1,
+  "merged_configs": 255,
+  "total": 256
+ },
+ "26": {
+  "erased_bits": 0.8003276551636356,
+  "flat_at": null,
+  "image_1": 147,
+  "images_by_t": [
+   256,
+   147,
+   103,
+   77
+  ],
+  "max_fiber": 4,
+  "merge_classes": 71,
+  "merged_configs": 109,
+  "total": 256
+ },
+ "27": {
+  "erased_bits": 0.9776321869715456,
+  "flat_at": null,
+  "image_1": 130,
+  "images_by_t": [
+   256,
+   130,
+   98,
+   74
+  ],
+  "max_fiber": 4,
+  "merge_classes": 85,
+  "merged_configs": 126,
+  "total": 256
+ },
+ "28": {
+  "erased_bits": 0.9665769984625499,
+  "flat_at": null,
+  "image_1": 131,
+  "images_by_t": [
+   256,
+   131,
+   79,
+   63
+  ],
+  "max_fiber": 7,
+  "merge_classes": 63,
+  "merged_configs": 125,
+  "total": 256
+ },
+ "29": {
+  "erased_bits": 0.9556058806415466,
+  "flat_at": null,
+  "image_1": 132,
+  "images_by_t": [
+   256,
+   132,
+   100,
+   92
+  ],
+  "max_fiber": 7,
+  "merge_classes": 90,
+  "merged_configs": 124,
+  "total": 256
+ },
+ "3": {
+  "erased_bits": 1.5081469036703252,
+  "flat_at": null,
+  "image_1": 90,
+  "images_by_t": [
+   256,
+   90,
+   46,
+   34
+  ],
+  "max_fiber": 47,
+  "merge_classes": 41,
+  "merged_configs": 166,
+  "total": 256
+ },
+ "30": {
+  "erased_bits": 0.19910010007969525,
+  "flat_at": null,
+  "image_1": 223,
+  "images_by_t": [
+   256,
+   223,
+   199,
+   191
+  ],
+  "max_fiber": 2,
+  "merge_classes": 33,
+  "merged_configs": 33,
+  "total": 256
+ },
+ "31": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   104,
+   80
+  ],
+  "max_fiber": 21,
+  "merge_classes": 57,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "32": {
+  "erased_bits": 2.4454111483223624,
+  "flat_at": 2,
+  "image_1": 47,
+  "images_by_t": [
+   256,
+   47,
+   47,
+   47
+  ],
+  "max_fiber": 90,
+  "merge_classes": 25,
+  "merged_configs": 209,
+  "total": 256
+ },
+ "33": {
+  "erased_bits": 1.2995602818589083,
+  "flat_at": null,
+  "image_1": 104,
+  "images_by_t": [
+   256,
+   104,
+   64,
+   48
+  ],
+  "max_fiber": 21,
+  "merge_classes": 45,
+  "merged_configs": 152,
+  "total": 256
+ },
+ "34": {
+  "erased_bits": 2.4454111483223624,
+  "flat_at": 2,
+  "image_1": 47,
+  "images_by_t": [
+   256,
+   47,
+   47,
+   47
+  ],
+  "max_fiber": 9,
+  "merge_classes": 45,
+  "merged_configs": 209,
+  "total": 256
+ },
+ "35": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   104,
+   80
+  ],
+  "max_fiber": 4,
+  "merge_classes": 68,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "36": {
+  "erased_bits": 1.9556058806415466,
+  "flat_at": 3,
+  "image_1": 66,
+  "images_by_t": [
+   256,
+   66,
+   21,
+   21
+  ],
+  "max_fiber": 46,
+  "merge_classes": 66,
+  "merged_configs": 190,
+  "total": 256
+ },
+ "37": {
+  "erased_bits": 1.0931094043914813,
+  "flat_at": null,
+  "image_1": 120,
+  "images_by_t": [
+   256,
+   120,
+   48,
+   24
+  ],
+  "max_fiber": 13,
+  "merge_classes": 80,
+  "merged_configs": 136,
+  "total": 256
+ },
+ "38": {
+  "erased_bits": 0.9776321869715456,
+  "flat_at": null,
+  "image_1": 130,
+  "images_by_t": [
+   256,
+   130,
+   53,
+   37
+  ],
+  "max_fiber": 6,
+  "merge_classes": 54,
+  "merged_configs": 126,
+  "total": 256
+ },
+ "39": {
+  "erased_bits": 0.9776321869715456,
+  "flat_at": null,
+  "image_1": 130,
+  "images_by_t": [
+   256,
+   130,
+   98,
+   74
+  ],
+  "max_fiber": 4,
+  "merge_classes": 85,
+  "merged_configs": 126,
+  "total": 256
+ },
+ "4": {
+  "erased_bits": 2.4454111483223624,
+  "flat_at": null,
+  "image_1": 47,
+  "images_by_t": [
+   256,
+   47,
+   19,
+   11
+  ],
+  "max_fiber": 90,
+  "merge_classes": 25,
+  "merged_configs": 209,
+  "total": 256
+ },
+ "40": {
+  "erased_bits": 1.3706433799203905,
+  "flat_at": null,
+  "image_1": 99,
+  "images_by_t": [
+   256,
+   99,
+   67,
+   51
+  ],
+  "max_fiber": 22,
+  "merge_classes": 37,
+  "merged_configs": 157,
+  "total": 256
+ },
+ "41": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   84,
+   52
+  ],
+  "max_fiber": 4,
+  "merge_classes": 72,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "42": {
+  "erased_bits": 0.9665769984625499,
+  "flat_at": null,
+  "image_1": 131,
+  "images_by_t": [
+   256,
+   131,
+   79,
+   63
+  ],
+  "max_fiber": 6,
+  "merge_classes": 53,
+  "merged_configs": 125,
+  "total": 256
+ },
+ "43": {
+  "erased_bits": 0.9125371587496609,
+  "flat_at": null,
+  "image_1": 136,
+  "images_by_t": [
+   256,
+   136,
+   104,
+   88
+  ],
+  "max_fiber": 7,
+  "merge_classes": 84,
+  "merged_configs": 120,
+  "total": 256
+ },
+ "44": {
+  "erased_bits": 0.9776321869715456,
+  "flat_at": 3,
+  "image_1": 130,
+  "images_by_t": [
+   256,
+   130,
+   65,
+   65
+  ],
+  "max_fiber": 6,
+  "merge_classes": 54,
+  "merged_configs": 126,
+  "total": 256
+ },
+ "45": {
+  "erased_bits": 0.0931094043914813,
+  "flat_at": null,
+  "image_1": 240,
+  "images_by_t": [
+   256,
+   240,
+   232,
+   228
+  ],
+  "max_fiber": 3,
+  "merge_classes": 15,
+  "merged_configs": 16,
+  "total": 256
+ },
+ "46": {
+  "erased_bits": 2.476438043942987,
+  "flat_at": 3,
+  "image_1": 46,
+  "images_by_t": [
+   256,
+   46,
+   21,
+   21
+  ],
+  "max_fiber": 9,
+  "merge_classes": 46,
+  "merged_configs": 210,
+  "total": 256
+ },
+ "47": {
+  "erased_bits": 1.5081469036703252,
+  "flat_at": 2,
+  "image_1": 90,
+  "images_by_t": [
+   256,
+   90,
+   90,
+   90
+  ],
+  "max_fiber": 6,
+  "merge_classes": 77,
+  "merged_configs": 166,
+  "total": 256
+ },
+ "48": {
+  "erased_bits": 2.4454111483223624,
+  "flat_at": 2,
+  "image_1": 47,
+  "images_by_t": [
+   256,
+   47,
+   47,
+   47
+  ],
+  "max_fiber": 9,
+  "merge_classes": 45,
+  "merged_configs": 209,
+  "total": 256
+ },
+ "49": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   104,
+   80
+  ],
+  "max_fiber": 4,
+  "merge_classes": 68,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "5": {
+  "erased_bits": 1.3561438102252756,
+  "flat_at": null,
+  "image_1": 100,
+  "images_by_t": [
+   256,
+   100,
+   36,
+   4
+  ],
+  "max_fiber": 49,
+  "merge_classes": 19,
+  "merged_configs": 156,
+  "total": 256
+ },
+ "50": {
+  "erased_bits": 0.9665769984625499,
+  "flat_at": 2,
+  "image_1": 131,
+  "images_by_t": [
+   256,
+   131,
+   131,
+   131
+  ],
+  "max_fiber": 7,
+  "merge_classes": 63,
+  "merged_configs": 125,
+  "total": 256
+ },
+ "51": {
+  "erased_bits": 0.0,
+  "flat_at": 1,
+  "image_1": 256,
+  "images_by_t": [
+   256,
+   256,
+   256,
+   256
+  ],
+  "max_fiber": 1,
+  "merge_classes": 0,
+  "merged_configs": 0,
+  "total": 256
+ },
+ "52": {
+  "erased_bits": 0.9776321869715456,
+  "flat_at": null,
+  "image_1": 130,
+  "images_by_t": [
+   256,
+   130,
+   53,
+   37
+  ],
+  "max_fiber": 6,
+  "merge_classes": 54,
+  "merged_configs": 126,
+  "total": 256
+ },
+ "53": {
+  "erased_bits": 0.9776321869715456,
+  "flat_at": null,
+  "image_1": 130,
+  "images_by_t": [
+   256,
+   130,
+   98,
+   74
+  ],
+  "max_fiber": 4,
+  "merge_classes": 85,
+  "merged_configs": 126,
+  "total": 256
+ },
+ "54": {
+  "erased_bits": 0.7711813095041196,
+  "flat_at": 3,
+  "image_1": 150,
+  "images_by_t": [
+   256,
+   150,
+   101,
+   101
+  ],
+  "max_fiber": 10,
+  "merge_classes": 54,
+  "merged_configs": 106,
+  "total": 256
+ },
+ "55": {
+  "erased_bits": 1.5081469036703252,
+  "flat_at": 2,
+  "image_1": 90,
+  "images_by_t": [
+   256,
+   90,
+   90,
+   90
+  ],
+  "max_fiber": 47,
+  "merge_classes": 41,
+  "merged_configs": 166,
+  "total": 256
+ },
+ "56": {
+  "erased_bits": 0.9665769984625499,
+  "flat_at": null,
+  "image_1": 131,
+  "images_by_t": [
+   256,
+   131,
+   95,
+   67
+  ],
+  "max_fiber": 7,
+  "merge_classes": 63,
+  "merged_configs": 125,
+  "total": 256
+ },
+ "57": {
+  "erased_bits": 0.6076825772212393,
+  "flat_at": null,
+  "image_1": 168,
+  "images_by_t": [
+   256,
+   168,
+   112,
+   76
+  ],
+  "max_fiber": 7,
+  "merge_classes": 46,
+  "merged_configs": 88,
+  "total": 256
+ },
+ "58": {
+  "erased_bits": 0.8003276551636356,
+  "flat_at": null,
+  "image_1": 147,
+  "images_by_t": [
+   256,
+   147,
+   79,
+   51
+  ],
+  "max_fiber": 7,
+  "merge_classes": 59,
+  "merged_configs": 109,
+  "total": 256
+ },
+ "59": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   104,
+   80
+  ],
+  "max_fiber": 4,
+  "merge_classes": 68,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "6": {
+  "erased_bits": 1.3706433799203905,
+  "flat_at": null,
+  "image_1": 99,
+  "images_by_t": [
+   256,
+   99,
+   47,
+   27
+  ],
+  "max_fiber": 22,
+  "merge_classes": 37,
+  "merged_configs": 157,
+  "total": 256
+ },
+ "60": {
+  "erased_bits": 1.0,
+  "flat_at": null,
+  "image_1": 128,
+  "images_by_t": [
+   256,
+   128,
+   64,
+   32
+  ],
+  "max_fiber": 2,
+  "merge_classes": 128,
+  "merged_configs": 128,
+  "total": 256
+ },
+ "61": {
+  "erased_bits": 0.7145977811377513,
+  "flat_at": null,
+  "image_1": 156,
+  "images_by_t": [
+   256,
+   156,
+   96,
+   62
+  ],
+  "max_fiber": 5,
+  "merge_classes": 55,
+  "merged_configs": 100,
+  "total": 256
+ },
+ "62": {
+  "erased_bits": 0.733213459305099,
+  "flat_at": null,
+  "image_1": 154,
+  "images_by_t": [
+   256,
+   154,
+   102,
+   85
+  ],
+  "max_fiber": 10,
+  "merge_classes": 62,
+  "merged_configs": 102,
+  "total": 256
+ },
+ "63": {
+  "erased_bits": 1.5081469036703252,
+  "flat_at": null,
+  "image_1": 90,
+  "images_by_t": [
+   256,
+   90,
+   46,
+   34
+  ],
+  "max_fiber": 47,
+  "merge_classes": 41,
+  "merged_configs": 166,
+  "total": 256
+ },
+ "64": {
+  "erased_bits": 3.6076825772212393,
+  "flat_at": 2,
+  "image_1": 21,
+  "images_by_t": [
+   256,
+   21,
+   21,
+   21
+  ],
+  "max_fiber": 48,
+  "merge_classes": 21,
+  "merged_configs": 235,
+  "total": 256
+ },
+ "65": {
+  "erased_bits": 1.4454111483223624,
+  "flat_at": null,
+  "image_1": 94,
+  "images_by_t": [
+   256,
+   94,
+   46,
+   22
+  ],
+  "max_fiber": 11,
+  "merge_classes": 37,
+  "merged_configs": 162,
+  "total": 256
+ },
+ "66": {
+  "erased_bits": 2.4454111483223624,
+  "flat_at": 3,
+  "image_1": 47,
+  "images_by_t": [
+   256,
+   47,
+   21,
+   21
+  ],
+  "max_fiber": 10,
+  "merge_classes": 47,
+  "merged_configs": 209,
+  "total": 256
+ },
+ "67": {
+  "erased_bits": 0.7145977811377513,
+  "flat_at": null,
+  "image_1": 156,
+  "images_by_t": [
+   256,
+   156,
+   96,
+   62
+  ],
+  "max_fiber": 5,
+  "merge_classes": 55,
+  "merged_configs": 100,
+  "total": 256
+ },
+ "68": {
+  "erased_bits": 2.4454111483223624,
+  "flat_at": 2,
+  "image_1": 47,
+  "images_by_t": [
+   256,
+   47,
+   47,
+   47
+  ],
+  "max_fiber": 9,
+  "merge_classes": 45,
+  "merged_configs": 209,
+  "total": 256
+ },
+ "69": {
+  "erased_bits": 1.2995602818589083,
+  "flat_at": null,
+  "image_1": 104,
+  "images_by_t": [
+   256,
+   104,
+   64,
+   48
+  ],
+  "max_fiber": 7,
+  "merge_classes": 54,
+  "merged_configs": 152,
+  "total": 256
+ },
+ "7": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   104,
+   80
+  ],
+  "max_fiber": 21,
+  "merge_classes": 57,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "70": {
+  "erased_bits": 0.9665769984625499,
+  "flat_at": null,
+  "image_1": 131,
+  "images_by_t": [
+   256,
+   131,
+   79,
+   63
+  ],
+  "max_fiber": 7,
+  "merge_classes": 63,
+  "merged_configs": 125,
+  "total": 256
+ },
+ "71": {
+  "erased_bits": 0.9556058806415466,
+  "flat_at": null,
+  "image_1": 132,
+  "images_by_t": [
+   256,
+   132,
+   100,
+   92
+  ],
+  "max_fiber": 7,
+  "merge_classes": 90,
+  "merged_configs": 124,
+  "total": 256
+ },
+ "72": {
+  "erased_bits": 1.933910809542228,
+  "flat_at": null,
+  "image_1": 67,
+  "images_by_t": [
+   256,
+   67,
+   43,
+   35
+  ],
+  "max_fiber": 48,
+  "merge_classes": 39,
+  "merged_configs": 189,
+  "total": 256
+ },
+ "73": {
+  "erased_bits": 0.8707169830550336,
+  "flat_at": null,
+  "image_1": 140,
+  "images_by_t": [
+   256,
+   140,
+   68,
+   52
+  ],
+  "max_fiber": 11,
+  "merge_classes": 55,
+  "merged_configs": 116,
+  "total": 256
+ },
+ "74": {
+  "erased_bits": 0.8003276551636356,
+  "flat_at": null,
+  "image_1": 147,
+  "images_by_t": [
+   256,
+   147,
+   119,
+   111
+  ],
+  "max_fiber": 4,
+  "merge_classes": 71,
+  "merged_configs": 109,
+  "total": 256
+ },
+ "75": {
+  "erased_bits": 0.0931094043914813,
+  "flat_at": null,
+  "image_1": 240,
+  "images_by_t": [
+   256,
+   240,
+   232,
+   228
+  ],
+  "max_fiber": 3,
+  "merge_classes": 15,
+  "merged_configs": 16,
+  "total": 256
+ },
+ "76": {
+  "erased_bits": 0.9665769984625499,
+  "flat_at": null,
+  "image_1": 131,
+  "images_by_t": [
+   256,
+   131,
+   71,
+   55
+  ],
+  "max_fiber": 7,
+  "merge_classes": 63,
+  "merged_configs": 125,
+  "total": 256
+ },
+ "77": {
+  "erased_bits": 1.415037499278844,
+  "flat_at": null,
+  "image_1": 96,
+  "images_by_t": [
+   256,
+   96,
+   64,
+   48
+  ],
+  "max_fiber": 21,
+  "merge_classes": 58,
+  "merged_configs": 160,
+  "total": 256
+ },
+ "78": {
+  "erased_bits": 0.8003276551636356,
+  "flat_at": null,
+  "image_1": 147,
+  "images_by_t": [
+   256,
+   147,
+   91,
+   59
+  ],
+  "max_fiber": 7,
+  "merge_classes": 59,
+  "merged_configs": 109,
+  "total": 256
+ },
+ "79": {
+  "erased_bits": 1.2995602818589083,
+  "flat_at": null,
+  "image_1": 104,
+  "images_by_t": [
+   256,
+   104,
+   64,
+   48
+  ],
+  "max_fiber": 7,
+  "merge_classes": 54,
+  "merged_configs": 152,
+  "total": 256
+ },
+ "8": {
+  "erased_bits": 3.6076825772212393,
+  "flat_at": 2,
+  "image_1": 21,
+  "images_by_t": [
+   256,
+   21,
+   21,
+   21
+  ],
+  "max_fiber": 48,
+  "merge_classes": 21,
+  "merged_configs": 235,
+  "total": 256
+ },
+ "80": {
+  "erased_bits": 2.3852901558847917,
+  "flat_at": 2,
+  "image_1": 49,
+  "images_by_t": [
+   256,
+   49,
+   49,
+   49
+  ],
+  "max_fiber": 9,
+  "merge_classes": 45,
+  "merged_configs": 207,
+  "total": 256
+ },
+ "81": {
+  "erased_bits": 1.5081469036703252,
+  "flat_at": 2,
+  "image_1": 90,
+  "images_by_t": [
+   256,
+   90,
+   90,
+   90
+  ],
+  "max_fiber": 6,
+  "merge_classes": 77,
+  "merged_configs": 166,
+  "total": 256
+ },
+ "82": {
+  "erased_bits": 0.8003276551636356,
+  "flat_at": null,
+  "image_1": 147,
+  "images_by_t": [
+   256,
+   147,
+   103,
+   77
+  ],
+  "max_fiber": 4,
+  "merge_classes": 71,
+  "merged_configs": 109,
+  "total": 256
+ },
+ "83": {
+  "erased_bits": 0.9776321869715456,
+  "flat_at": null,
+  "image_1": 130,
+  "images_by_t": [
+   256,
+   130,
+   98,
+   74
+  ],
+  "max_fiber": 4,
+  "merge_classes": 85,
+  "merged_configs": 126,
+  "total": 256
+ },
+ "84": {
+  "erased_bits": 0.9665769984625499,
+  "flat_at": 2,
+  "image_1": 131,
+  "images_by_t": [
+   256,
+   131,
+   131,
+   131
+  ],
+  "max_fiber": 6,
+  "merge_classes": 53,
+  "merged_configs": 125,
+  "total": 256
+ },
+ "85": {
+  "erased_bits": 0.0,
+  "flat_at": 1,
+  "image_1": 256,
+  "images_by_t": [
+   256,
+   256,
+   256,
+   256
+  ],
+  "max_fiber": 1,
+  "merge_classes": 0,
+  "merged_configs": 0,
+  "total": 256
+ },
+ "86": {
+  "erased_bits": 0.19910010007969525,
+  "flat_at": null,
+  "image_1": 223,
+  "images_by_t": [
+   256,
+   223,
+   199,
+   191
+  ],
+  "max_fiber": 2,
+  "merge_classes": 33,
+  "merged_configs": 33,
+  "total": 256
+ },
+ "87": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   104,
+   80
+  ],
+  "max_fiber": 21,
+  "merge_classes": 57,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "88": {
+  "erased_bits": 0.8003276551636356,
+  "flat_at": null,
+  "image_1": 147,
+  "images_by_t": [
+   256,
+   147,
+   119,
+   111
+  ],
+  "max_fiber": 4,
+  "merge_classes": 71,
+  "merged_configs": 109,
+  "total": 256
+ },
+ "89": {
+  "erased_bits": 0.0931094043914813,
+  "flat_at": null,
+  "image_1": 240,
+  "images_by_t": [
+   256,
+   240,
+   232,
+   228
+  ],
+  "max_fiber": 3,
+  "merge_classes": 15,
+  "merged_configs": 16,
+  "total": 256
+ },
+ "9": {
+  "erased_bits": 1.4454111483223624,
+  "flat_at": null,
+  "image_1": 94,
+  "images_by_t": [
+   256,
+   94,
+   46,
+   22
+  ],
+  "max_fiber": 11,
+  "merge_classes": 37,
+  "merged_configs": 162,
+  "total": 256
+ },
+ "90": {
+  "erased_bits": 2.0,
+  "flat_at": null,
+  "image_1": 64,
+  "images_by_t": [
+   256,
+   64,
+   16,
+   4
+  ],
+  "max_fiber": 4,
+  "merge_classes": 64,
+  "merged_configs": 192,
+  "total": 256
+ },
+ "91": {
+  "erased_bits": 1.0931094043914813,
+  "flat_at": null,
+  "image_1": 120,
+  "images_by_t": [
+   256,
+   120,
+   48,
+   24
+  ],
+  "max_fiber": 13,
+  "merge_classes": 80,
+  "merged_configs": 136,
+  "total": 256
+ },
+ "92": {
+  "erased_bits": 0.8003276551636356,
+  "flat_at": null,
+  "image_1": 147,
+  "images_by_t": [
+   256,
+   147,
+   91,
+   59
+  ],
+  "max_fiber": 7,
+  "merge_classes": 59,
+  "merged_configs": 109,
+  "total": 256
+ },
+ "93": {
+  "erased_bits": 1.2995602818589083,
+  "flat_at": null,
+  "image_1": 104,
+  "images_by_t": [
+   256,
+   104,
+   64,
+   48
+  ],
+  "max_fiber": 7,
+  "merge_classes": 54,
+  "merged_configs": 152,
+  "total": 256
+ },
+ "94": {
+  "erased_bits": 0.9556058806415466,
+  "flat_at": null,
+  "image_1": 132,
+  "images_by_t": [
+   256,
+   132,
+   84,
+   52
+  ],
+  "max_fiber": 7,
+  "merge_classes": 52,
+  "merged_configs": 124,
+  "total": 256
+ },
+ "95": {
+  "erased_bits": 1.3561438102252756,
+  "flat_at": null,
+  "image_1": 100,
+  "images_by_t": [
+   256,
+   100,
+   36,
+   4
+  ],
+  "max_fiber": 49,
+  "merge_classes": 19,
+  "merged_configs": 156,
+  "total": 256
+ },
+ "96": {
+  "erased_bits": 1.3706433799203905,
+  "flat_at": null,
+  "image_1": 99,
+  "images_by_t": [
+   256,
+   99,
+   67,
+   51
+  ],
+  "max_fiber": 22,
+  "merge_classes": 37,
+  "merged_configs": 157,
+  "total": 256
+ },
+ "97": {
+  "erased_bits": 0.7905466343710499,
+  "flat_at": null,
+  "image_1": 148,
+  "images_by_t": [
+   256,
+   148,
+   84,
+   52
+  ],
+  "max_fiber": 4,
+  "merge_classes": 72,
+  "merged_configs": 108,
+  "total": 256
+ },
+ "98": {
+  "erased_bits": 0.9665769984625499,
+  "flat_at": null,
+  "image_1": 131,
+  "images_by_t": [
+   256,
+   131,
+   95,
+   67
+  ],
+  "max_fiber": 7,
+  "merge_classes": 63,
+  "merged_configs": 125,
+  "total": 256
+ },
+ "99": {
+  "erased_bits": 0.6076825772212393,
+  "flat_at": null,
+  "image_1": 168,
+  "images_by_t": [
+   256,
+   168,
+   112,
+   76
+  ],
+  "max_fiber": 7,
+  "merge_classes": 46,
+  "merged_configs": 88,
+  "total": 256
+ }
+}
