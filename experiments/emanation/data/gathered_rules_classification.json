@@ -1,0 +1,85 @@
+{
+  "title": "Rigorous classification of the gathered 58 ECA rule numbers",
+  "date": "2026-09-01",
+  "method": "Solo-1 evolution on a wide open lattice (P=5000..10000, W=20001..30000, horizon 30..500 steps), plus exhaustive periodic-boundary density test (all 128 configs on W=7), plus gap-1/gap-2 two-particle collision census (T=60..200, multiple bases) against the closed-form elastic landing law.",
+  "gathered_rules": [4, 5, 12, 13, 28, 29, 36, 44, 68, 69, 70, 71, 76, 77, 78, 79, 92, 93, 100, 108, 132, 133, 140, 141, 150, 151, 156, 157, 159, 164, 165, 172, 182, 183, 191, 196, 197, 198, 199, 204, 205, 206, 207, 215, 220, 221, 222, 223, 228, 236, 237, 238, 239, 247, 252, 253, 254, 255],
+  "classification": {
+    "soliton_mover_single_v_plus_1_merge_gap1": [12, 13],
+    "soliton_mover_single_v_minus_1_merge_gap1": [68, 69],
+    "soliton_mover_blob_v_plus_1": [44],
+    "soliton_mover_blob_v_minus_1": [100],
+    "soliton_mover_static": [36],
+    "elastic_scatterer_density_conserving": {
+      "rules": [29, 71],
+      "velocity": {"29": 1, "71": -1},
+      "collision": "gap-1 ELASTIC: trailing delayed by exactly 1, leading free, count conserved, closed form {a+vT-v, lead+vT} exact for T in {1,7,50,120,200,400} and multiple bases."
+    },
+    "elastic_scatterer_not_density_conserving": {
+      "rules": [28, 70],
+      "velocity": {"28": 1, "70": -1},
+      "collision": "gap-1 ELASTIC with the SAME closed-form law as 29/71 (trailing delayed by 1, leading free), verified exact for T in {1,7,50,200,400}, but these rules are NOT number conserving on the periodic lattice."
+    },
+    "dies": [4, 5, 236],
+    "degenerate_absorb_fast": [238, 252, 254],
+    "falls_to_all_ones": [255],
+    "spreading_fan_or_pulsar": [76, 77, 78, 79, 92, 93, 108, 132, 133, 140, 141, 150, 151, 156, 157, 159, 164, 165, 172, 182, 183, 191, 196, 197, 198, 199, 204, 205, 206, 207, 215, 220, 221, 222, 223, 228, 237, 239, 247, 253]
+  },
+  "density_conserving_subset_among_gathered": [29, 71],
+  "already_used_crosscheck": {
+    "original_16_scope": [4, 12, 36, 44, 68, 76, 100, 108, 132, 140, 164, 172, 196, 204, 228, 236],
+    "confirmed_consistent": "Yes: 12/44/68/100 are the verified movers; 4 dies; 36 static; 76/108/132/140/164/172/196/204/228/236 are the previously-verified 'broadcaster period2-or-fullwidth' family (here: spreading fan or dies).",
+    "new_in_this_gather": {
+      "elastic_quartet_completes": "28 and 70 are NEW elastic scatterers not previously cataloged (join 29/71). 13 and 69 are NEW merge-gap1 movers (join 12 and 68).",
+      "note": "Rules 15 and 85 (transparent density-conserving movers) and 51 (static identity) from the prior elastic survey are NOT in this gathered list."
+    }
+  },
+  "bottom_line": "Of the 58 gathered rules: 10 are clean soliton movers (12,13,28,29,36,44,68,69,70,71,100); the elastic-scattering physics family (billiard-ball, trailing-delayed-by-1) is exactly {28,29} (v=+1) and {70,71} (v=-1), of which only 29/71 also conserve particle count (density-conserving). No gathered rule beyond these adds a NEW interaction primitive. Everything else is a spreading fan, a degenerate absorber, or dies.",
+  "block_law_topology": {
+    "integrable_ladder_29_71": {
+      "rules": [29, 71],
+      "law": "A block of k consecutive 1s settles after exactly k-1 steps into a spacing-2 LADDER of k particles, head always on its free trajectory (rule 29: {a + t - (k-1) + 2j}; rule 71: {b - t + 2j}). Block length k is a CONSERVED charge. Box-ball/ultra-discrete integrable structure.",
+      "verified": "exact for k in {2,3,4,5,8}, T to 60, several bases."
+    },
+    "collapsing_28_70": {
+      "rules": [28, 70],
+      "law": "Any block of k>=2 consecutive 1s collapses to its two END cells in ONE step; all k-2 interior 1s vanish, then the surviving pair drifts at velocity v. rule 28: {a, a+k}; rule 70: {b - t, b - t + k}.",
+      "verified": "exact for k in {2,3,4,5,8}, T in {1,2,3,5,10,25}.",
+      "consequence": "This is EXACTLY why 28/70 are NOT density-conserving despite elastic scattering at isolated gap-1 pairs; only 29/71 are truly integrable + conservative."
+    },
+    "twist_charge_and_clock": {
+      "rules": [29, 71],
+      "twist_Q": "sum(p) - n*v*T is conserved post-settling; distinguishes internal decompositions (split block lagged permanently by 1 per pair).",
+      "period2": "x(T+2) = x(T) + 2v exactly after settling; ladder gas walks on one parity sublattice.",
+      "verified": "T to 120 random sparse configs + fixed split/contiguous cases; locked in test_elastic_shift.py (period2, twist charge)."
+    }
+  },
+  "tasep_identification": {
+    "theorem": "Rules 29 (right) and 71 (left) are EXACTLY the parallel-update TASEP / hard-core exclusion dynamics on a padded 1D lattice: a particle hops +-1 iff the target cell is empty, otherwise it blocks in place.",
+    "capstone": "Rule 29 == ECA 184 (the canonical right-moving traffic rule; truth table 10111000). Rule 71 == ECA 226 (left-moving mirror, reflection of 184; 11100010). Verified by full truth-table identity, by direct rule-184 traffic simulation on 50 random ensembles, and by hundreds of random-config TASEP double checks.",
+    "evidence": "Random sparse configs, 300 (rule 29) and 250 (rule 71), horizons 1..25: rule output == TASEP simulation in every case.",
+    "consequences": "Explains the elastic landing law (gap-1 trailing delayed by exactly 1 = TASEP blocking), the spacing-2 ballistic ladder (jam pierce), the conserved twist Q, and gap>=2 pass-through. The 'bomber' / 'governor' / twist-charge language all reduces to standard traffic-CA (rule 184) phenomena.",
+    "non_injectivity": "HONEST CORRECTION: the collision is CONSERVATIVE, not elastic/reversible. The time-map is permanently NON-INJECTIVE: rule 29 sends both {a-1,a+1} and {a,a+1} to {a,a+2} (identical forever); rule 71 sends both {a,a+1} and {a,a+2} to {a-1,a+1}. Exhaustive over the 2-particle sector (1770 pairs): EVERY merge is one of exactly these templates (58 classes per rule, all 2-to-1; the other 1654 pairs are injective). EXACTLY ONE BIT is destroyed per touching junction (trailing offset {1,2} behind a shared leader), lost in one step and never recovered.",
+    "composition_laws": {
+      "L1_free_streaming": "All pairwise gaps >= 2 => pure rigid translation (every particle +v per step, frozen relatives), verified 2978/2978. This sector is a bijection = reversible.",
+      "L2_block_melting": "A touching k-block thaws into the spacing-2 ladder in exactly k-1 steps (elastic_shift.block_ladder).",
+      "L3_composition": "For T >= max cluster melt time, the trajectory is the UNION of per-cluster spacing-2 ladders; verified 800/800 random configs, horizons to 50. Clusters at gap>=2 may couple transiently during a melt but never fuse.",
+      "L4_ring_fundamental_diagram": "Periodic ring (traffic_law.evolve_ring): mean current per site J(rho) = min(rho, 1-rho), the canonical triangular traffic fundamental diagram (free-flow J=rho below half filling, jam J=1-rho above, max at rho=1/2). Verified over 51 densities, N=300. Mirror symmetry J(+1)=J(-1).",
+      "L5_ring_steady_state": "After relaxation the block count on an N-ring = min(k,N-k): the MINORITY species is fully isolated (cars alone = free flow at rho<=1/2; holes alone = jam phase at rho>=1/2). Verified N=60,120,180 x 7 densities x 8 draws, stable by T=400 and conserved forever. Hence J(rho) = min(rho,1-rho) = (# isolated minority)/N -- one curve, particle and hole faces. Max jam size is init-dependent (multiple jams persist; no single-shock phase separation in parallel TASEP).",
+      "L6_reversibility": "Rule 71^T after rule 29^T (padded open lattice) = IDENTITY iff the forward run develops NO contact. Rule 71 is the exact time-reversal of 29 on the contact-free sector; contact is the ONLY obstruction. Verified 997/997 free one-step + 700/700 free multi-step reverse exactly; 3/3 + 300/300 forced contacts do not (zero false pos/neg). Memory law: free flight is reversible (unit-like); erasure happens ONLY at a contact, at the exact multiplicity of the fiber law -- never in free flight.",
+      "L6b_fiber_fibonacci": "The one-step fiber of a spacing-2 free ladder over n particles has size F(n+1) with F1=F2=1 (2,3,5,8,13,21 for n=2..7, verified exhaustively on tight windows; the ladder attains the max each time). It equals the number of ways to contact any set of PAIRWISE NON-ADJACENT junctions (independent sets of the n-1-junction path). The celebrated '1 bit per junction' is the 2-particle special case; honest general loss at a ladder = log2(F(n+1)) ~ 0.694 bits per extra junction (log2(phi)) -- NOT 1 bit/junction.",
+      "L6c_fiber_lucas_ring": "Boundary selects the counting family: on a PERIODIC ring the wrap is one more junction so the junction graph is the cycle C_n and the fiber = Lucas L_n = F(n-1)+F(n+1) (3,4,7,11,18,29,47 for n=2..8 at N=2n, verified). open -> path -> Fibonacci F(n+1); ring -> cycle -> Lucas L_n. Both = #(contact-sets, no two adjacent junctions).",
+      "L7_erasure_ledger": "FINITE-TIME SECOND LAW (unified, open AND ring). Folds happen only while a block melts, so over the whole sector the number of distinct T-step images is CONSTANT for T >= kmax-1 where kmax = longest consecutive block in the sector. OPEN: canonical n=4 14-cell window (1001 configs): images 487/396/386/386/... plateau at T=3=kmax-1; step folds 514+91+10=615 configs folded; destroyed entropy log2(1001/386) ~ 1.375 bits, never grows after kmax-1. RING: all-packed config (n contiguous) exists so kmax=n and the ledger closes at T=n-1: N=6 [9..], N=8,n=3 [24,16,16..], N=12,n=5 [240,96,48,36,36..], N=16,n=6 [2024,816,448,352,336,336..]. All windows n=3..5 open and n=2..6 rings match. Erasure is punctual (contacts only), bounded (melt windows only), exact (log2(fiber) per fold); no slow leak in free flight.",
+      "consequence": "traffic_law.law_trajectory predicts every sparse trajectory with ARITHMETIC ONLY (no CA simulation). The proof-checking library can be replaced by deterministic physics laws on the characterized sector.",
+      "honest_negatives": {
+        "current_not_conserved": "'# of (1,0) bonds' is NOT an invariant: [292,527,990,991,1166,1754] has 5 bonds, jam (990,991) dissolves and the count rises to 6. J is a transient order parameter.",
+        "count_is_only_exact_invariant": "Exhaustive one-step graph of rings N=6,8,10: among {n,#10,#01,#11,sum-of-positions(mod N)}, ONLY particle count n is conserved across every edge.",
+        "twist_Q_not_exact": "Q = sum(p) - n*v*T jumps once at a contact (a 1-bit event); conserved only thereafter (asymptotic)."
+      }
+    },
+    "contact_pathologies": {
+      "pure_tasep_conservative_irreversible": [29, 71],
+      "sticky_fusion": "rules 12 (right) and 68 (left): TASEP when gaps>=2, but any touching k-block collapses to a SINGLE leading cell in one step (MERGE).",
+      "vaporizing": "rules 28 (right) and 70 (left): TASEP when gaps>=2, but any touching k-block collapses to its two END cells (k-2 interiors destroyed)."
+    }
+  }
+}
