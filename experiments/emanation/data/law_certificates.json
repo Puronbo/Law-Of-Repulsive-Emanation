@@ -221,5 +221,41 @@
   "n_ok": 8,
   "points_checked": 14,
   "status": "HONEST_NEGATIVE"
+ },
+ {
+  "configs_checked": 30,
+  "domain": "30 seeded action-sequences on 3 real accounts of the SQLite ledger (24 actions each: trades with necessity/harm draws plus grants; gate-rejections count too)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L14_gate6_conservation",
+  "meta": {
+   "domain": "30 seeded action-sequences on 3 real accounts of the SQLite ledger (24 actions each: trades with necessity/harm draws plus grants; gate-rejections count too)",
+   "law": "conserved_total = sum(account.credit) + reserve is invariant under every approved or rejected action (spec gate 6)",
+   "measured_on": "credit_commons.web.ledger.Ledger (sqlite), deterministic rng per sequence",
+   "note": "credit_commons.sim.Commons.grant mints credit without debiting reserve and so is NOT covered by this law",
+   "tolerance": 1e-06
+  },
+  "n_fail": 0,
+  "n_ok": 30,
+  "points_checked": 30,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 30,
+  "domain": "same 30 seeded action-sequences on the same ledger",
+  "first_failure": {
+   "datum": 0
+  },
+  "kind": "statement",
+  "label": "L14_bad_credit_sum_invariant",
+  "meta": {
+   "domain": "same 30 seeded action-sequences on the same ledger",
+   "honest_check": "must fail on sequences where fee residue reached the reserve or a grant was issued",
+   "law": "FLAWED CANDIDATE: sum(account.credit) alone (no reserve) is invariant -- reserve absorbs fee residue and pays out grants"
+  },
+  "n_fail": 30,
+  "n_ok": 0,
+  "points_checked": 30,
+  "status": "HONEST_NEGATIVE"
  }
 ]

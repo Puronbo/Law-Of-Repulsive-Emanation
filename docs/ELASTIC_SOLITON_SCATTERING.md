@@ -447,6 +447,28 @@ statements it certified itself:
 Demonstration verdict: 3 claims believed formally, 3 rejected
 (rule-44 misuse, even-correction omission, and an uncertified law).
 
+Fifth layer: **the supervisor audits a real subsystem**
+(`repo_audit.py`, `scripts/certify_repo.py`).  The first audited system
+is `credit_commons.web.ledger.Ledger` -- the SQLite mutual-credit
+ledger.  New statement certificates measured on the real code (30
+seeded deterministic action sequences on 3 accounts, 24 actions each,
+trades with necessity/harm draws plus grants; drift to 1e-6):
+    * L14 gate-6 conservation: conserved_total = sum(credit) + reserve
+      is invariant under every approved or rejected action -- PASS;
+    * L14_bad "credit-sum-only" invariant -- HONEST_NEGATIVE (reserve
+      absorption of fee residue and grant pay-outs break it), so the
+      supervisor rejects it concretely.
+FINDING recorded (not introduced): `credit_commons.sim.Commons.grant`
+mints credit to the recipient and grows total_credit WITHOUT debiting
+or tracking reserve -- a gate-6 divergence from the ledger, which does
+enforce the invariant; L14 is certified for the ledger only.
+Integration gate: `scripts/certify_repo.py` (--gate for CI) fails the
+build unless the persisted certificate table reproduces EXACTLY from
+current code (audit-the-audit drift detection: missing/stale/drifted
+entries) and each of the 7 formal claims is believed by the
+supervisor.  The same machine-readable table/verdict feed the webapp
+and any agent.
+
 **This answers "can the proof-checking library be replaced by physics?":
 yes, for the characterized sector -- the prediction IS the law.**  And the
 laws VETO candidates that a checking harness might let pass:

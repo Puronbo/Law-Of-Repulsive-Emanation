@@ -106,4 +106,8 @@ def demo_claims():
          "requires": ["L999_never_certified"]},
         {"law": "melt window exact on any single cluster (must accept)",
          "requires": ["L2_melt_single_cluster_29"]},
+        {"law": "commons reserve conservation, gate 6 (must accept)",
+         "requires": ["L14_gate6_conservation"]},
+        {"law": "candidate: credit-sum-only invariant (must reject)",
+         "requires": ["L14_bad_credit_sum_invariant"]},
     ]

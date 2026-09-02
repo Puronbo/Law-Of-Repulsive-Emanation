@@ -1,11 +1,11 @@
 {
- "accepted": false,
- "n_claims": 6,
- "n_negative_claims": 3,
- "n_required_certs": 6,
+ "accepted": true,
+ "n_claims": 7,
+ "n_negative_claims": 0,
+ "n_required_certs": 7,
  "results": [
   {
-   "law": "L1 free streaming (rule 29, sector gap>=2)",
+   "law": "L1 free streaming (rule 29, gap>=2 sector)",
    "ok": true,
    "pass_evidence": [
     "L1_free_streaming_29"
@@ -17,19 +17,55 @@
    "status": "BELIEVED FORMALLY"
   },
   {
-   "law": "29-traffic law as a law of rule 44 (must reject)",
-   "ok": false,
-   "pass_evidence": [],
-   "rejection_reasons": [
-    "required certificate HONEST_NEGATIVE_29law_on_44 is HONEST_NEGATIVE; counter-example: {'config': [5], 'T': 1, 'actual': [5, 6], 'law': [6]}"
+   "law": "L1 free streaming (rule 71, gap>=2 sector)",
+   "ok": true,
+   "pass_evidence": [
+    "L1_free_streaming_71"
    ],
+   "rejection_reasons": [],
    "requires": [
-    "HONEST_NEGATIVE_29law_on_44"
+    "L1_free_streaming_71"
    ],
-   "status": "REJECTED"
+   "status": "BELIEVED FORMALLY"
   },
   {
-   "law": "rule 29 ring attractor = 2*L_N - 2*(even) (must accept)",
+   "law": "melt window exact on any single cluster (29)",
+   "ok": true,
+   "pass_evidence": [
+    "L2_melt_single_cluster_29"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L2_melt_single_cluster_29"
+   ],
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "melt window exact on any single cluster (71)",
+   "ok": true,
+   "pass_evidence": [
+    "L2_melt_single_cluster_71"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L2_melt_single_cluster_71"
+   ],
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "L3 per-cluster union law (merge-free sector)",
+   "ok": true,
+   "pass_evidence": [
+    "L3_composition_mergerfree_29"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L3_composition_mergerfree_29"
+   ],
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "ring attractor = 2*L_N - 2*(N even)",
    "ok": true,
    "pass_evidence": [
     "L13_ring_attractor_29_71"
@@ -41,42 +77,18 @@
    "status": "BELIEVED FORMALLY"
   },
   {
-   "law": "rule 29 ring attractor = 2*L_N (must reject, even N)",
-   "ok": false,
-   "pass_evidence": [],
-   "rejection_reasons": [
-    "required certificate L13_bad_even_omitted is HONEST_NEGATIVE; counter-example: {'datum': [4, 29]}"
-   ],
-   "requires": [
-    "L13_bad_even_omitted"
-   ],
-   "status": "REJECTED"
-  },
-  {
-   "law": "a law we never certified (must reject)",
-   "ok": false,
-   "pass_evidence": [],
-   "rejection_reasons": [
-    "required certificate 'L999_never_certified' not in table"
-   ],
-   "requires": [
-    "L999_never_certified"
-   ],
-   "status": "REJECTED"
-  },
-  {
-   "law": "melt window exact on any single cluster (must accept)",
+   "law": "commons reserve conservation (spec gate 6)",
    "ok": true,
    "pass_evidence": [
-    "L2_melt_single_cluster_29"
+    "L14_gate6_conservation"
    ],
    "rejection_reasons": [],
    "requires": [
-    "L2_melt_single_cluster_29"
+    "L14_gate6_conservation"
    ],
    "status": "BELIEVED FORMALLY"
   }
  ],
- "timestamp": "2026-09-02 06:05:06 UTC",
- "verdict": "REJECTED (see records)"
+ "timestamp": "2026-09-02 06:23:29 UTC",
+ "verdict": "ACCEPTED"
 }
