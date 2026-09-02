@@ -1,0 +1,82 @@
+{
+ "accepted": false,
+ "n_claims": 6,
+ "n_negative_claims": 3,
+ "n_required_certs": 6,
+ "results": [
+  {
+   "law": "L1 free streaming (rule 29, sector gap>=2)",
+   "ok": true,
+   "pass_evidence": [
+    "L1_free_streaming_29"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L1_free_streaming_29"
+   ],
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "29-traffic law as a law of rule 44 (must reject)",
+   "ok": false,
+   "pass_evidence": [],
+   "rejection_reasons": [
+    "required certificate HONEST_NEGATIVE_29law_on_44 is HONEST_NEGATIVE; counter-example: {'config': [5], 'T': 1, 'actual': [5, 6], 'law': [6]}"
+   ],
+   "requires": [
+    "HONEST_NEGATIVE_29law_on_44"
+   ],
+   "status": "REJECTED"
+  },
+  {
+   "law": "rule 29 ring attractor = 2*L_N - 2*(even) (must accept)",
+   "ok": true,
+   "pass_evidence": [
+    "L13_ring_attractor_29_71"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L13_ring_attractor_29_71"
+   ],
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "rule 29 ring attractor = 2*L_N (must reject, even N)",
+   "ok": false,
+   "pass_evidence": [],
+   "rejection_reasons": [
+    "required certificate L13_bad_even_omitted is HONEST_NEGATIVE; counter-example: {'datum': [4, 29]}"
+   ],
+   "requires": [
+    "L13_bad_even_omitted"
+   ],
+   "status": "REJECTED"
+  },
+  {
+   "law": "a law we never certified (must reject)",
+   "ok": false,
+   "pass_evidence": [],
+   "rejection_reasons": [
+    "required certificate 'L999_never_certified' not in table"
+   ],
+   "requires": [
+    "L999_never_certified"
+   ],
+   "status": "REJECTED"
+  },
+  {
+   "law": "melt window exact on any single cluster (must accept)",
+   "ok": true,
+   "pass_evidence": [
+    "L2_melt_single_cluster_29"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L2_melt_single_cluster_29"
+   ],
+   "status": "BELIEVED FORMALLY"
+  }
+ ],
+ "timestamp": "2026-09-02 06:05:06 UTC",
+ "verdict": "REJECTED (see records)"
+}

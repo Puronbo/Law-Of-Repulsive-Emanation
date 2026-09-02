@@ -431,6 +431,22 @@ Retraction caused by the checker: `law_trajectory`'s old claim "exact
 for T >= max cluster melt time" was **FALSE**; now corrected to the
 merge-free sector (single clusters remain exact for all T).
 
+Fourth layer: **the law supervisor** (`supervisor.py`, verdict in
+`data/supervision_verdict.json`).  It decides what a build may believe,
+using only the certificate table: every claimed law must name the PASS
+certificates it relies on; HONEST_NEGATIVE certificates reject a claim
+with the exact counter-example; missing certificates reject it as
+UNCERTIFIED; a PASS with zero checked points is no evidence.  Fresh
+statements it certified itself:
+    * L13: on the N-ring, |attractor(rule 29/71)| = 2*L_N - 2*(N even)
+      -- every (N, rule) in {3..9} x {29,71} verified against the true
+      attractor over all 2^N states (PASS);
+    * L13_bad: the same law with the even correction dropped fails
+      exactly on N in {4,6,8} (HONEST_NEGATIVE) -- the supervisor
+      rejects it, as demonstrated in the verdict log.
+Demonstration verdict: 3 claims believed formally, 3 rejected
+(rule-44 misuse, even-correction omission, and an uncertified law).
+
 **This answers "can the proof-checking library be replaced by physics?":
 yes, for the characterized sector -- the prediction IS the law.**  And the
 laws VETO candidates that a checking harness might let pass:

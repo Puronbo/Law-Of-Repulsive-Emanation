@@ -116,6 +116,108 @@ def is_single_cluster(conf):
     return all(b - a == 1 for a, b in zip(conf, conf[1:]))
 
 
+def certify_statement(label, meta, pred, domain, configs_checked=None):
+    """Statement certificate: pred(datum) must hold for every datum in
+    the domain.  Same schema contract as certify() but kind='statement'
+    and a first_failure datum instead of a (config,T) mismatch.  The
+    verdict is always a measured fact on the stated domain."""
+    n_ok = 0
+    n_fail = 0
+    first = None
+    for d in domain:
+        if pred(d):
+            n_ok += 1
+        else:
+            n_fail += 1
+            if first is None:
+                first = {"datum": list(d) if isinstance(d, tuple) else d}
+    return {
+        "label": label,
+        "meta": meta,
+        "kind": "statement",
+        "domain": meta.get("domain"),
+        "configs_checked": configs_checked if configs_checked is not None
+        else len(domain),
+        "points_checked": len(domain),
+        "status": "HONEST_NEGATIVE" if first is not None else "PASS",
+        "n_fail": n_fail,
+        "n_ok": n_ok,
+        "first_failure": first,
+    }
+
+
+def independent_sets_ring(N):
+    """Total independent sets (stable sets) of the cycle C_N (Lucas
+    number L_N)."""
+    import itertools
+    total = 0
+    for r in range(N // 2 + 1):
+        cnt = 0
+        for s in itertools.combinations(range(N), r):
+            ok = True
+            for a, b in zip(s, s[1:] + s[:1]):
+                if (b - a) % N == 1:
+                    ok = False
+                    break
+            if ok:
+                cnt += 1
+        total += cnt
+    return total
+
+
+def statement_certificates():
+    """Fresh statements certified by direct measurement:
+
+    L13 ring-attractor law (rule 29/71 on the N-ring): |attractor| =
+    2*L_N - 2*(N even).  Domain: N in 3..9, rule in {29,71} -- every
+    element verified against the true attractor set over all 2^N states.
+    Also L13_bad: the same law with the even correction dropped
+    (candidate that must be rejected), demonstrating the supervisor.
+    """
+    from experiments.emanation import erasure_audit as ea
+    import itertools
+
+    def attractor_size(N, rule):
+        domain = tuple(itertools.product((0, 1), repeat=N))
+        acc, _ = ea.attractor(domain, lambda s, r=rule: ea.eca_ring_step(r, s),
+                              max_steps=48)
+        return len(acc)
+
+    domain = [(N, rule) for N in range(3, 10) for rule in (29, 71)]
+
+    def good(d):
+        N, rule = d
+        return attractor_size(N, rule) == 2 * independent_sets_ring(N) \
+            - 2 * (1 if N % 2 == 0 else 0)
+
+    def bad(d):
+        N, rule = d
+        return attractor_size(N, rule) == 2 * independent_sets_ring(N)
+
+    return [
+        certify_statement(
+            "L13_ring_attractor_29_71",
+            {"domain": "exhaustive (N, rule) in {3..9} x {29, 71}, "
+                       "attractor computed over the full 2^N state space",
+             "law": "|attractor(29/71 on N-ring)| = 2*L_N - 2*(1 if N even)",
+             "cardinality": "2*L_N - 2*delta(even) = 2*independent_sets(C_N) "
+                            "- 2*(N mod 2 == 0)"},
+            good, domain),
+        certify_statement(
+            "L13_bad_even_omitted",
+            {"domain": "exhaustive (N, rule) in {3..9} x {29, 71}",
+             "law": "FLAWED CANDIDATE: |attractor| = 2*L_N (no even "
+                    "correction) -- supervision must reject this on even N",
+             "honest_check": "each failing N is exactly an even N"},
+            bad, domain),
+    ]
+
+
+def all_certificates():
+    """Trajectory + statement certificates (the full certified table)."""
+    return open_certificates() + statement_certificates()
+
+
 def open_certificates():
     """The certified law set for rules 29/71 (plus honest negatives).
 

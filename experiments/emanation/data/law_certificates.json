@@ -184,5 +184,42 @@
   "n_mismatch": 1,
   "points_checked": 1,
   "status": "HONEST_NEGATIVE"
+ },
+ {
+  "configs_checked": 14,
+  "domain": "exhaustive (N, rule) in {3..9} x {29, 71}, attractor computed over the full 2^N state space",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L13_ring_attractor_29_71",
+  "meta": {
+   "cardinality": "2*L_N - 2*delta(even) = 2*independent_sets(C_N) - 2*(N mod 2 == 0)",
+   "domain": "exhaustive (N, rule) in {3..9} x {29, 71}, attractor computed over the full 2^N state space",
+   "law": "|attractor(29/71 on N-ring)| = 2*L_N - 2*(1 if N even)"
+  },
+  "n_fail": 0,
+  "n_ok": 14,
+  "points_checked": 14,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 14,
+  "domain": "exhaustive (N, rule) in {3..9} x {29, 71}",
+  "first_failure": {
+   "datum": [
+    4,
+    29
+   ]
+  },
+  "kind": "statement",
+  "label": "L13_bad_even_omitted",
+  "meta": {
+   "domain": "exhaustive (N, rule) in {3..9} x {29, 71}",
+   "honest_check": "each failing N is exactly an even N",
+   "law": "FLAWED CANDIDATE: |attractor| = 2*L_N (no even correction) -- supervision must reject this on even N"
+  },
+  "n_fail": 6,
+  "n_ok": 8,
+  "points_checked": 14,
+  "status": "HONEST_NEGATIVE"
  }
 ]
