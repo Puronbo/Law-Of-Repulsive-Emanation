@@ -1,0 +1,188 @@
+[
+ {
+  "configs_checked": 312,
+  "domain": "exhaustive gap>=2 configs, window=14 cells, n<=3",
+  "first_mismatch": null,
+  "label": "L1_free_streaming_29",
+  "meta": {
+   "domain": "exhaustive gap>=2 configs, window=14 cells, n<=3",
+   "law": "free streaming: x_j(T)=x_j(0)+T (v=+1)"
+  },
+  "n_mismatch": 0,
+  "points_checked": 2808,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 49,
+  "domain": "exhaustive gap>=2 configs, window=14 cells, n<=3, positions >= 6 (padding for the left mover)",
+  "first_mismatch": null,
+  "label": "L1_free_streaming_71",
+  "meta": {
+   "domain": "exhaustive gap>=2 configs, window=14 cells, n<=3, positions >= 6 (padding for the left mover)"
+  },
+  "n_mismatch": 0,
+  "points_checked": 294,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 44,
+  "domain": "exhaustive single clusters {a..a+k-1}, a in 2..12, k in 1..4, ALL horizons 0..9",
+  "first_mismatch": null,
+  "label": "L2_melt_single_cluster_29",
+  "meta": {
+   "domain": "exhaustive single clusters {a..a+k-1}, a in 2..12, k in 1..4, ALL horizons 0..9",
+   "law": "melt-window: spacing-2 launch after k-1 steps (exact for every T)"
+  },
+  "n_mismatch": 0,
+  "points_checked": 440,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 28,
+  "domain": "exhaustive single clusters translated right, all horizons 0..5 (padding for the left mover)",
+  "first_mismatch": null,
+  "label": "L2_melt_single_cluster_71",
+  "meta": {
+   "domain": "exhaustive single clusters translated right, all horizons 0..5 (padding for the left mover)"
+  },
+  "n_mismatch": 0,
+  "points_checked": 168,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 300,
+  "domain": "sampled configs (300 draws, n in 2..3, window=20) with min pairwise gap >= 5, per-config horizons T <= g_min - 2 (gaps stay >= 2, so clusters never interact)",
+  "first_mismatch": null,
+  "label": "L3_composition_mergerfree_29",
+  "meta": {
+   "domain": "sampled configs (300 draws, n in 2..3, window=20) with min pairwise gap >= 5, per-config horizons T <= g_min - 2 (gaps stay >= 2, so clusters never interact)",
+   "law": "trajectory = union of per-cluster spacing-2 ladders (exact in this sector by construction)",
+   "theorem": "gap(t) >= gap(0) - t (no left moves), so T <= g_min-2 keeps gaps >= 2 -> free streaming throughout"
+  },
+  "n_mismatch": 0,
+  "points_checked": 2403,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 80,
+  "domain": "sampled configs n<=3 window=12 (80 draws)",
+  "first_mismatch": {
+   "T": 1,
+   "actual": [
+    5,
+    6
+   ],
+   "config": [
+    5
+   ],
+   "law": [
+    6
+   ]
+  },
+  "label": "HONEST_NEGATIVE_29law_on_44",
+  "meta": {
+   "domain": "sampled configs n<=3 window=12 (80 draws)",
+   "law": "candidate: 29-traffic law_trajectory applied to rule 44 (44 is a blob mover, NOT traffic)"
+  },
+  "n_mismatch": 1,
+  "points_checked": 480,
+  "status": "HONEST_NEGATIVE"
+ },
+ {
+  "configs_checked": 80,
+  "domain": "sampled configs n<=3 window=12 (80 draws)",
+  "first_mismatch": {
+   "T": 1,
+   "actual": [
+    0,
+    1,
+    5,
+    6,
+    7,
+    8
+   ],
+   "config": [
+    1,
+    6,
+    8
+   ],
+   "law": [
+    2,
+    7,
+    9
+   ]
+  },
+  "label": "HONEST_NEGATIVE_29law_on_100",
+  "meta": {
+   "domain": "sampled configs n<=3 window=12 (80 draws)",
+   "law": "candidate: 29-traffic law_trajectory applied to rule 100"
+  },
+  "n_mismatch": 1,
+  "points_checked": 480,
+  "status": "HONEST_NEGATIVE"
+ },
+ {
+  "configs_checked": 60,
+  "domain": "sampled configs WITH contacts (n in 2..3, 60 draws)",
+  "first_mismatch": {
+   "T": 2,
+   "actual": [
+    7,
+    9,
+    11
+   ],
+   "config": [
+    6,
+    8,
+    9
+   ],
+   "law": [
+    8,
+    9,
+    11
+   ]
+  },
+  "label": "HONEST_NEGATIVE_free_streaming_on_touching",
+  "meta": {
+   "domain": "sampled configs WITH contacts (n in 2..3, 60 draws)",
+   "law": "candidate: free streaming x_j(T)=x_j(0)+T assumed valid even where a contact is present"
+  },
+  "n_mismatch": 1,
+  "points_checked": 360,
+  "status": "HONEST_NEGATIVE"
+ },
+ {
+  "configs_checked": 1,
+  "domain": "the single config {4,7,9,10}, T=6",
+  "first_mismatch": {
+   "T": 6,
+   "actual": [
+    10,
+    12,
+    14,
+    16
+   ],
+   "config": [
+    4,
+    7,
+    9,
+    10
+   ],
+   "law": [
+    10,
+    13,
+    14,
+    16
+   ]
+  },
+  "label": "HONEST_NEGATIVE_composition_merge_sector",
+  "meta": {
+   "claim_corrected": "composition law is exact only while gaps stay >= 2 (T <= g_min - 2); the old docstring 'exact for T >= max melt window' was FALSE and is retracted -- this is the discovered merge sector boundary",
+   "domain": "the single config {4,7,9,10}, T=6",
+   "law": "candidate: per-cluster union law (law_trajectory) used past the merge sector -- the trailing particle at 7 is caught by the melt of the {9,10} block (trailing gap 2 <= (k-1)+1 = 2 for a run of length k=2), so the union law overshoots: predicts 13, truth 12"
+  },
+  "n_mismatch": 1,
+  "points_checked": 1,
+  "status": "HONEST_NEGATIVE"
+ }
+]

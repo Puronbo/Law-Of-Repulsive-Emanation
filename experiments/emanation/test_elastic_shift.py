@@ -470,15 +470,23 @@ def test_composition_law_union_of_ladders():
     UNION of the per-cluster spacing-2 ladders (elastic_shift.block_ladder
     for touching clusters, free streaming for singletons).  So the full
     dynamics reduces to arithmetic -- no CA simulation required.
-    Verified with the law-only predictor traffic_law.law_trajectory."""
+    Verified with the law-only predictor traffic_law.law_trajectory.
+    Sector restriction (law_checker merge-sector discovery): the union is
+    exact only while no trailing particle merges into a cluster's melt;
+    here every config is drawn with min gap >= T + 3, i.e. gaps stay >= 2
+    for the whole trajectory (gap(t) >= gap(0) - t), so the sector is
+    merge-free by construction."""
     from experiments.emanation import traffic_law as tl
     rng = random.Random(99)
     tested = 0
     for _ in range(400):
         n = rng.randint(2, 12)
-        ps = sorted(rng.sample(range(2000, 4500), n))
-        maxk = max(len(c) for c in tl.clusters(ps))
-        T = rng.randint(maxk, 50)
+        T = rng.randint(1, 50)
+        while True:
+            ps = sorted(rng.sample(range(2000, 4500), n))
+            gaps = [b - a for a, b in zip(ps, ps[1:])]
+            if min(gaps) >= T + 3:
+                break
         for rule in (29, 71):
             assert sh.evolve(rule, ps, 5200, T) == tl.law_trajectory(rule, ps, T)
             tested += 1

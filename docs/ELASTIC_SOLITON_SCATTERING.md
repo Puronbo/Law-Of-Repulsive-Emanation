@@ -412,6 +412,25 @@ reachable periodic points).  On the N=8 ring, over all 256 rules:
 This is the "memory core" census: a rule's recurrent dimension is the
 size of the state space it can genuinely keep.
 
+Third layer: **law certificates** (`experiments/emanation/law_checker.py`,
+data in `data/law_certificates.json`).  A certificate is a measured
+fact: a candidate trajectory law, a stated domain, and the outcome of
+comparing the law against the true evolution at every (config, T) point
+-- status **PASS** (no disagreement) or **HONEST_NEGATIVE** (first exact
+counter-example recorded, so a supervisor never ships a wrong law).
+    5 PASS certificates: L1 free streaming (exhaustive gap>=2, rules
+    29/71), L2 melt window on every single cluster (exhaustive, all T),
+    L3 per-cluster union law on the merge-free sector T <= g_min - 2
+    (provable guard: gaps never move left, so gap(t) >= gap(0) - t).
+    4 HONEST_NEGATIVE certificates: the 29-traffic law against rules
+    44/100, free streaming on touching configs, and the discovered
+    MERGE SECTOR -- {4,7,9,10}, T=6: the trailing particle at 7 is
+    caught by the melt of the {9,10} block (trailing gap 2 <= k, k=2),
+    union law predicts {10,13,14,16}, truth is {10,12,14,16}.
+Retraction caused by the checker: `law_trajectory`'s old claim "exact
+for T >= max cluster melt time" was **FALSE**; now corrected to the
+merge-free sector (single clusters remain exact for all T).
+
 **This answers "can the proof-checking library be replaced by physics?":
 yes, for the characterized sector -- the prediction IS the law.**  And the
 laws VETO candidates that a checking harness might let pass:

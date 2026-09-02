@@ -117,12 +117,15 @@ def law_trajectory(rule, positions, steps):
     """Exact T-step trajectory by arithmetic laws (NO CA simulation).
 
     Single cluster: EXACT for every T (melt_window + settled ladder).
-    Multiple clusters: EXACT for T >= the max cluster melt time (verified
-    800/800); for T below the melt time a follower may be transiently
-    blocked at a melting company's trailing edge (the union is then an
-    upper bound -- dense-interaction contact is TASEP blocking itself).
-
-    Returns the predicted set of occupied cells after `steps`.
+    Multiple clusters: EXACT only while no trailing particle merges into a
+    cluster's melt.  Sufficient provable guard: every pairwise gap stays
+    >= 2, guaranteed when T <= g_min - 2 (gaps cannot move left, so
+    gap(t) >= gap(0) - t).  Outside that sector a trailing free particle
+    is caught by the preceding block's melt (catch condition observed:
+    trailing gap <= k for a run of length k ahead -- e.g. {4,7,9,10}, T=6
+    merges 7 into the {9,10} melt) and the union is only an upper bound.
+    Retracted: the earlier 'verified exact for T >= max cluster melt
+    time' claim was FALSE -- found and delimited by law_checker.py.
     """
     v = _velocity(rule)
     pred = set()
