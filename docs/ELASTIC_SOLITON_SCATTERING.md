@@ -396,6 +396,22 @@ This is the honest core of "a system that measures its own memory":
 point it at a simulator's transition map and it reports that map's
 forgetting clock and erasure budget.
 
+Second layer: the **recurrent structure** of every rule
+(`data/rule_erasure_attractors.json`).  `attractor(domain, f)` iterates
+the whole-domain image to its set fixpoint (the periodic core -- the map
+restricted there is a bijection, so the attractor is exactly the
+reachable periodic points).  On the N=8 ring, over all 256 rules:
+    * the immediate bijections are exactly the 8 permutations
+      {15,51,85,105,150,170,204,240} (attractor 256, closing step 1);
+    * 12 rules are nilpotent on N=8 -- attractor {00000000} (honest for
+      THIS N only): {0,2,16,60,90,102,153,165,191,195,247,255};
+    * rules 29/71: attractor = the 92 independent-family states, ledger
+      closed in 4 whole-domain steps (one-step image 132 of 256,
+      erased_bits 0.956, max_fiber 7);
+    * rule 0: closing step 2, max_fiber 256 (everything to zero).
+This is the "memory core" census: a rule's recurrent dimension is the
+size of the state space it can genuinely keep.
+
 **This answers "can the proof-checking library be replaced by physics?":
 yes, for the characterized sector -- the prediction IS the law.**  And the
 laws VETO candidates that a checking harness might let pass:

@@ -1,0 +1,1794 @@
+{
+ "0": {
+  "attractor_size": 1,
+  "closing_step": 2,
+  "erased_bits": 8.0,
+  "image_1": 1,
+  "max_fiber": 256
+ },
+ "1": {
+  "attractor_size": 2,
+  "closing_step": 5,
+  "erased_bits": 2.476438043942987,
+  "image_1": 46,
+  "max_fiber": 131
+ },
+ "10": {
+  "attractor_size": 49,
+  "closing_step": 2,
+  "erased_bits": 2.3852901558847917,
+  "image_1": 49,
+  "max_fiber": 9
+ },
+ "100": {
+  "attractor_size": 65,
+  "closing_step": 3,
+  "erased_bits": 0.9776321869715456,
+  "image_1": 130,
+  "max_fiber": 6
+ },
+ "101": {
+  "attractor_size": 226,
+  "closing_step": 5,
+  "erased_bits": 0.0931094043914813,
+  "image_1": 240,
+  "max_fiber": 3
+ },
+ "102": {
+  "attractor_size": 1,
+  "closing_step": 9,
+  "erased_bits": 1.0,
+  "image_1": 128,
+  "max_fiber": 2
+ },
+ "103": {
+  "attractor_size": 22,
+  "closing_step": 8,
+  "erased_bits": 0.7145977811377513,
+  "image_1": 156,
+  "max_fiber": 5
+ },
+ "104": {
+  "attractor_size": 47,
+  "closing_step": 9,
+  "erased_bits": 0.6162957075259481,
+  "image_1": 167,
+  "max_fiber": 22
+ },
+ "105": {
+  "attractor_size": 256,
+  "closing_step": 1,
+  "erased_bits": 0.0,
+  "image_1": 256,
+  "max_fiber": 1
+ },
+ "106": {
+  "attractor_size": 51,
+  "closing_step": 17,
+  "erased_bits": 0.19910010007969525,
+  "image_1": 223,
+  "max_fiber": 2
+ },
+ "107": {
+  "attractor_size": 52,
+  "closing_step": 4,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 4
+ },
+ "108": {
+  "attractor_size": 69,
+  "closing_step": 5,
+  "erased_bits": 0.7711813095041196,
+  "image_1": 150,
+  "max_fiber": 10
+ },
+ "109": {
+  "attractor_size": 30,
+  "closing_step": 8,
+  "erased_bits": 0.8707169830550336,
+  "image_1": 140,
+  "max_fiber": 11
+ },
+ "11": {
+  "attractor_size": 90,
+  "closing_step": 2,
+  "erased_bits": 1.5081469036703252,
+  "image_1": 90,
+  "max_fiber": 6
+ },
+ "110": {
+  "attractor_size": 97,
+  "closing_step": 5,
+  "erased_bits": 0.733213459305099,
+  "image_1": 154,
+  "max_fiber": 10
+ },
+ "111": {
+  "attractor_size": 22,
+  "closing_step": 4,
+  "erased_bits": 1.4454111483223624,
+  "image_1": 94,
+  "max_fiber": 11
+ },
+ "112": {
+  "attractor_size": 55,
+  "closing_step": 5,
+  "erased_bits": 0.9665769984625499,
+  "image_1": 131,
+  "max_fiber": 6
+ },
+ "113": {
+  "attractor_size": 88,
+  "closing_step": 4,
+  "erased_bits": 0.9125371587496609,
+  "image_1": 136,
+  "max_fiber": 7
+ },
+ "114": {
+  "attractor_size": 11,
+  "closing_step": 8,
+  "erased_bits": 0.8003276551636356,
+  "image_1": 147,
+  "max_fiber": 7
+ },
+ "115": {
+  "attractor_size": 48,
+  "closing_step": 7,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 4
+ },
+ "116": {
+  "attractor_size": 21,
+  "closing_step": 3,
+  "erased_bits": 2.476438043942987,
+  "image_1": 46,
+  "max_fiber": 9
+ },
+ "117": {
+  "attractor_size": 90,
+  "closing_step": 2,
+  "erased_bits": 1.5081469036703252,
+  "image_1": 90,
+  "max_fiber": 6
+ },
+ "118": {
+  "attractor_size": 45,
+  "closing_step": 8,
+  "erased_bits": 0.733213459305099,
+  "image_1": 154,
+  "max_fiber": 10
+ },
+ "119": {
+  "attractor_size": 2,
+  "closing_step": 8,
+  "erased_bits": 1.5081469036703252,
+  "image_1": 90,
+  "max_fiber": 47
+ },
+ "12": {
+  "attractor_size": 47,
+  "closing_step": 2,
+  "erased_bits": 2.4454111483223624,
+  "image_1": 47,
+  "max_fiber": 9
+ },
+ "120": {
+  "attractor_size": 51,
+  "closing_step": 17,
+  "erased_bits": 0.19910010007969525,
+  "image_1": 223,
+  "max_fiber": 2
+ },
+ "121": {
+  "attractor_size": 52,
+  "closing_step": 4,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 4
+ },
+ "122": {
+  "attractor_size": 43,
+  "closing_step": 6,
+  "erased_bits": 0.9556058806415466,
+  "image_1": 132,
+  "max_fiber": 7
+ },
+ "123": {
+  "attractor_size": 48,
+  "closing_step": 4,
+  "erased_bits": 1.2995602818589083,
+  "image_1": 104,
+  "max_fiber": 21
+ },
+ "124": {
+  "attractor_size": 97,
+  "closing_step": 5,
+  "erased_bits": 0.733213459305099,
+  "image_1": 154,
+  "max_fiber": 10
+ },
+ "125": {
+  "attractor_size": 22,
+  "closing_step": 4,
+  "erased_bits": 1.4454111483223624,
+  "image_1": 94,
+  "max_fiber": 11
+ },
+ "126": {
+  "attractor_size": 29,
+  "closing_step": 7,
+  "erased_bits": 1.9556058806415466,
+  "image_1": 66,
+  "max_fiber": 46
+ },
+ "127": {
+  "attractor_size": 2,
+  "closing_step": 5,
+  "erased_bits": 2.476438043942987,
+  "image_1": 46,
+  "max_fiber": 131
+ },
+ "128": {
+  "attractor_size": 46,
+  "closing_step": 2,
+  "erased_bits": 2.476438043942987,
+  "image_1": 46,
+  "max_fiber": 131
+ },
+ "129": {
+  "attractor_size": 29,
+  "closing_step": 7,
+  "erased_bits": 1.9556058806415466,
+  "image_1": 66,
+  "max_fiber": 46
+ },
+ "13": {
+  "attractor_size": 48,
+  "closing_step": 4,
+  "erased_bits": 1.2995602818589083,
+  "image_1": 104,
+  "max_fiber": 7
+ },
+ "130": {
+  "attractor_size": 38,
+  "closing_step": 8,
+  "erased_bits": 1.4454111483223624,
+  "image_1": 94,
+  "max_fiber": 11
+ },
+ "131": {
+  "attractor_size": 45,
+  "closing_step": 8,
+  "erased_bits": 0.733213459305099,
+  "image_1": 154,
+  "max_fiber": 10
+ },
+ "132": {
+  "attractor_size": 48,
+  "closing_step": 4,
+  "erased_bits": 1.2995602818589083,
+  "image_1": 104,
+  "max_fiber": 21
+ },
+ "133": {
+  "attractor_size": 31,
+  "closing_step": 8,
+  "erased_bits": 0.9556058806415466,
+  "image_1": 132,
+  "max_fiber": 7
+ },
+ "134": {
+  "attractor_size": 48,
+  "closing_step": 6,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 4
+ },
+ "135": {
+  "attractor_size": 171,
+  "closing_step": 7,
+  "erased_bits": 0.19910010007969525,
+  "image_1": 223,
+  "max_fiber": 2
+ },
+ "136": {
+  "attractor_size": 90,
+  "closing_step": 2,
+  "erased_bits": 1.5081469036703252,
+  "image_1": 90,
+  "max_fiber": 47
+ },
+ "137": {
+  "attractor_size": 97,
+  "closing_step": 5,
+  "erased_bits": 0.733213459305099,
+  "image_1": 154,
+  "max_fiber": 10
+ },
+ "138": {
+  "attractor_size": 46,
+  "closing_step": 5,
+  "erased_bits": 1.5081469036703252,
+  "image_1": 90,
+  "max_fiber": 6
+ },
+ "139": {
+  "attractor_size": 21,
+  "closing_step": 3,
+  "erased_bits": 2.476438043942987,
+  "image_1": 46,
+  "max_fiber": 9
+ },
+ "14": {
+  "attractor_size": 131,
+  "closing_step": 2,
+  "erased_bits": 0.9665769984625499,
+  "image_1": 131,
+  "max_fiber": 6
+ },
+ "140": {
+  "attractor_size": 100,
+  "closing_step": 4,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 4
+ },
+ "141": {
+  "attractor_size": 35,
+  "closing_step": 7,
+  "erased_bits": 0.8003276551636356,
+  "image_1": 147,
+  "max_fiber": 7
+ },
+ "142": {
+  "attractor_size": 88,
+  "closing_step": 4,
+  "erased_bits": 0.9125371587496609,
+  "image_1": 136,
+  "max_fiber": 7
+ },
+ "143": {
+  "attractor_size": 131,
+  "closing_step": 2,
+  "erased_bits": 0.9665769984625499,
+  "image_1": 131,
+  "max_fiber": 6
+ },
+ "144": {
+  "attractor_size": 38,
+  "closing_step": 8,
+  "erased_bits": 1.4454111483223624,
+  "image_1": 94,
+  "max_fiber": 11
+ },
+ "145": {
+  "attractor_size": 45,
+  "closing_step": 8,
+  "erased_bits": 0.733213459305099,
+  "image_1": 154,
+  "max_fiber": 10
+ },
+ "146": {
+  "attractor_size": 98,
+  "closing_step": 3,
+  "erased_bits": 0.8707169830550336,
+  "image_1": 140,
+  "max_fiber": 11
+ },
+ "147": {
+  "attractor_size": 101,
+  "closing_step": 3,
+  "erased_bits": 0.7711813095041196,
+  "image_1": 150,
+  "max_fiber": 10
+ },
+ "148": {
+  "attractor_size": 48,
+  "closing_step": 6,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 4
+ },
+ "149": {
+  "attractor_size": 171,
+  "closing_step": 7,
+  "erased_bits": 0.19910010007969525,
+  "image_1": 223,
+  "max_fiber": 2
+ },
+ "15": {
+  "attractor_size": 256,
+  "closing_step": 1,
+  "erased_bits": 0.0,
+  "image_1": 256,
+  "max_fiber": 1
+ },
+ "150": {
+  "attractor_size": 256,
+  "closing_step": 1,
+  "erased_bits": 0.0,
+  "image_1": 256,
+  "max_fiber": 1
+ },
+ "151": {
+  "attractor_size": 19,
+  "closing_step": 7,
+  "erased_bits": 0.6162957075259481,
+  "image_1": 167,
+  "max_fiber": 22
+ },
+ "152": {
+  "attractor_size": 42,
+  "closing_step": 9,
+  "erased_bits": 0.7145977811377513,
+  "image_1": 156,
+  "max_fiber": 5
+ },
+ "153": {
+  "attractor_size": 1,
+  "closing_step": 9,
+  "erased_bits": 1.0,
+  "image_1": 128,
+  "max_fiber": 2
+ },
+ "154": {
+  "attractor_size": 106,
+  "closing_step": 19,
+  "erased_bits": 0.0931094043914813,
+  "image_1": 240,
+  "max_fiber": 3
+ },
+ "155": {
+  "attractor_size": 21,
+  "closing_step": 6,
+  "erased_bits": 0.9776321869715456,
+  "image_1": 130,
+  "max_fiber": 6
+ },
+ "156": {
+  "attractor_size": 20,
+  "closing_step": 9,
+  "erased_bits": 0.6076825772212393,
+  "image_1": 168,
+  "max_fiber": 7
+ },
+ "157": {
+  "attractor_size": 55,
+  "closing_step": 5,
+  "erased_bits": 0.9665769984625499,
+  "image_1": 131,
+  "max_fiber": 7
+ },
+ "158": {
+  "attractor_size": 48,
+  "closing_step": 6,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 4
+ },
+ "159": {
+  "attractor_size": 11,
+  "closing_step": 6,
+  "erased_bits": 1.3706433799203905,
+  "image_1": 99,
+  "max_fiber": 22
+ },
+ "16": {
+  "attractor_size": 1,
+  "closing_step": 3,
+  "erased_bits": 3.6076825772212393,
+  "image_1": 21,
+  "max_fiber": 48
+ },
+ "160": {
+  "attractor_size": 100,
+  "closing_step": 2,
+  "erased_bits": 1.3561438102252756,
+  "image_1": 100,
+  "max_fiber": 49
+ },
+ "161": {
+  "attractor_size": 43,
+  "closing_step": 6,
+  "erased_bits": 0.9556058806415466,
+  "image_1": 132,
+  "max_fiber": 7
+ },
+ "162": {
+  "attractor_size": 12,
+  "closing_step": 7,
+  "erased_bits": 1.2995602818589083,
+  "image_1": 104,
+  "max_fiber": 7
+ },
+ "163": {
+  "attractor_size": 11,
+  "closing_step": 8,
+  "erased_bits": 0.8003276551636356,
+  "image_1": 147,
+  "max_fiber": 7
+ },
+ "164": {
+  "attractor_size": 26,
+  "closing_step": 6,
+  "erased_bits": 1.0931094043914813,
+  "image_1": 120,
+  "max_fiber": 13
+ },
+ "165": {
+  "attractor_size": 1,
+  "closing_step": 5,
+  "erased_bits": 2.0,
+  "image_1": 64,
+  "max_fiber": 4
+ },
+ "166": {
+  "attractor_size": 106,
+  "closing_step": 19,
+  "erased_bits": 0.0931094043914813,
+  "image_1": 240,
+  "max_fiber": 3
+ },
+ "167": {
+  "attractor_size": 61,
+  "closing_step": 6,
+  "erased_bits": 0.8003276551636356,
+  "image_1": 147,
+  "max_fiber": 4
+ },
+ "168": {
+  "attractor_size": 36,
+  "closing_step": 8,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 21
+ },
+ "169": {
+  "attractor_size": 51,
+  "closing_step": 17,
+  "erased_bits": 0.19910010007969525,
+  "image_1": 223,
+  "max_fiber": 2
+ },
+ "17": {
+  "attractor_size": 2,
+  "closing_step": 8,
+  "erased_bits": 1.5081469036703252,
+  "image_1": 90,
+  "max_fiber": 47
+ },
+ "170": {
+  "attractor_size": 256,
+  "closing_step": 1,
+  "erased_bits": 0.0,
+  "image_1": 256,
+  "max_fiber": 1
+ },
+ "171": {
+  "attractor_size": 55,
+  "closing_step": 5,
+  "erased_bits": 0.9665769984625499,
+  "image_1": 131,
+  "max_fiber": 6
+ },
+ "172": {
+  "attractor_size": 90,
+  "closing_step": 5,
+  "erased_bits": 0.9776321869715456,
+  "image_1": 130,
+  "max_fiber": 4
+ },
+ "173": {
+  "attractor_size": 81,
+  "closing_step": 9,
+  "erased_bits": 0.8003276551636356,
+  "image_1": 147,
+  "max_fiber": 4
+ },
+ "174": {
+  "attractor_size": 46,
+  "closing_step": 5,
+  "erased_bits": 1.5081469036703252,
+  "image_1": 90,
+  "max_fiber": 6
+ },
+ "175": {
+  "attractor_size": 49,
+  "closing_step": 2,
+  "erased_bits": 2.3852901558847917,
+  "image_1": 49,
+  "max_fiber": 9
+ },
+ "176": {
+  "attractor_size": 12,
+  "closing_step": 7,
+  "erased_bits": 1.2995602818589083,
+  "image_1": 104,
+  "max_fiber": 7
+ },
+ "177": {
+  "attractor_size": 11,
+  "closing_step": 8,
+  "erased_bits": 0.8003276551636356,
+  "image_1": 147,
+  "max_fiber": 7
+ },
+ "178": {
+  "attractor_size": 48,
+  "closing_step": 4,
+  "erased_bits": 1.415037499278844,
+  "image_1": 96,
+  "max_fiber": 21
+ },
+ "179": {
+  "attractor_size": 131,
+  "closing_step": 2,
+  "erased_bits": 0.9665769984625499,
+  "image_1": 131,
+  "max_fiber": 7
+ },
+ "18": {
+  "attractor_size": 21,
+  "closing_step": 3,
+  "erased_bits": 1.933910809542228,
+  "image_1": 67,
+  "max_fiber": 48
+ },
+ "180": {
+  "attractor_size": 106,
+  "closing_step": 19,
+  "erased_bits": 0.0931094043914813,
+  "image_1": 240,
+  "max_fiber": 3
+ },
+ "181": {
+  "attractor_size": 61,
+  "closing_step": 6,
+  "erased_bits": 0.8003276551636356,
+  "image_1": 147,
+  "max_fiber": 4
+ },
+ "182": {
+  "attractor_size": 98,
+  "closing_step": 3,
+  "erased_bits": 0.8707169830550336,
+  "image_1": 140,
+  "max_fiber": 11
+ },
+ "183": {
+  "attractor_size": 21,
+  "closing_step": 3,
+  "erased_bits": 1.933910809542228,
+  "image_1": 67,
+  "max_fiber": 48
+ },
+ "184": {
+  "attractor_size": 132,
+  "closing_step": 2,
+  "erased_bits": 0.9556058806415466,
+  "image_1": 132,
+  "max_fiber": 7
+ },
+ "185": {
+  "attractor_size": 35,
+  "closing_step": 8,
+  "erased_bits": 0.9665769984625499,
+  "image_1": 131,
+  "max_fiber": 7
+ },
+ "186": {
+  "attractor_size": 12,
+  "closing_step": 7,
+  "erased_bits": 1.2995602818589083,
+  "image_1": 104,
+  "max_fiber": 7
+ },
+ "187": {
+  "attractor_size": 47,
+  "closing_step": 2,
+  "erased_bits": 2.4454111483223624,
+  "image_1": 47,
+  "max_fiber": 9
+ },
+ "188": {
+  "attractor_size": 42,
+  "closing_step": 9,
+  "erased_bits": 0.7145977811377513,
+  "image_1": 156,
+  "max_fiber": 5
+ },
+ "189": {
+  "attractor_size": 21,
+  "closing_step": 3,
+  "erased_bits": 2.4454111483223624,
+  "image_1": 47,
+  "max_fiber": 10
+ },
+ "19": {
+  "attractor_size": 90,
+  "closing_step": 2,
+  "erased_bits": 1.5081469036703252,
+  "image_1": 90,
+  "max_fiber": 47
+ },
+ "190": {
+  "attractor_size": 38,
+  "closing_step": 8,
+  "erased_bits": 1.4454111483223624,
+  "image_1": 94,
+  "max_fiber": 11
+ },
+ "191": {
+  "attractor_size": 1,
+  "closing_step": 3,
+  "erased_bits": 3.6076825772212393,
+  "image_1": 21,
+  "max_fiber": 48
+ },
+ "192": {
+  "attractor_size": 90,
+  "closing_step": 2,
+  "erased_bits": 1.5081469036703252,
+  "image_1": 90,
+  "max_fiber": 47
+ },
+ "193": {
+  "attractor_size": 97,
+  "closing_step": 5,
+  "erased_bits": 0.733213459305099,
+  "image_1": 154,
+  "max_fiber": 10
+ },
+ "194": {
+  "attractor_size": 42,
+  "closing_step": 9,
+  "erased_bits": 0.7145977811377513,
+  "image_1": 156,
+  "max_fiber": 5
+ },
+ "195": {
+  "attractor_size": 1,
+  "closing_step": 9,
+  "erased_bits": 1.0,
+  "image_1": 128,
+  "max_fiber": 2
+ },
+ "196": {
+  "attractor_size": 100,
+  "closing_step": 4,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 4
+ },
+ "197": {
+  "attractor_size": 35,
+  "closing_step": 7,
+  "erased_bits": 0.8003276551636356,
+  "image_1": 147,
+  "max_fiber": 7
+ },
+ "198": {
+  "attractor_size": 20,
+  "closing_step": 9,
+  "erased_bits": 0.6076825772212393,
+  "image_1": 168,
+  "max_fiber": 7
+ },
+ "199": {
+  "attractor_size": 55,
+  "closing_step": 5,
+  "erased_bits": 0.9665769984625499,
+  "image_1": 131,
+  "max_fiber": 7
+ },
+ "2": {
+  "attractor_size": 1,
+  "closing_step": 3,
+  "erased_bits": 3.6076825772212393,
+  "image_1": 21,
+  "max_fiber": 48
+ },
+ "20": {
+  "attractor_size": 11,
+  "closing_step": 6,
+  "erased_bits": 1.3706433799203905,
+  "image_1": 99,
+  "max_fiber": 22
+ },
+ "200": {
+  "attractor_size": 46,
+  "closing_step": 3,
+  "erased_bits": 1.5081469036703252,
+  "image_1": 90,
+  "max_fiber": 47
+ },
+ "201": {
+  "attractor_size": 69,
+  "closing_step": 5,
+  "erased_bits": 0.7711813095041196,
+  "image_1": 150,
+  "max_fiber": 10
+ },
+ "202": {
+  "attractor_size": 90,
+  "closing_step": 5,
+  "erased_bits": 0.9776321869715456,
+  "image_1": 130,
+  "max_fiber": 4
+ },
+ "203": {
+  "attractor_size": 65,
+  "closing_step": 3,
+  "erased_bits": 0.9776321869715456,
+  "image_1": 130,
+  "max_fiber": 6
+ },
+ "204": {
+  "attractor_size": 256,
+  "closing_step": 1,
+  "erased_bits": 0.0,
+  "image_1": 256,
+  "max_fiber": 1
+ },
+ "205": {
+  "attractor_size": 47,
+  "closing_step": 5,
+  "erased_bits": 0.9665769984625499,
+  "image_1": 131,
+  "max_fiber": 7
+ },
+ "206": {
+  "attractor_size": 100,
+  "closing_step": 4,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 4
+ },
+ "207": {
+  "attractor_size": 47,
+  "closing_step": 2,
+  "erased_bits": 2.4454111483223624,
+  "image_1": 47,
+  "max_fiber": 9
+ },
+ "208": {
+  "attractor_size": 46,
+  "closing_step": 5,
+  "erased_bits": 1.5081469036703252,
+  "image_1": 90,
+  "max_fiber": 6
+ },
+ "209": {
+  "attractor_size": 21,
+  "closing_step": 3,
+  "erased_bits": 2.476438043942987,
+  "image_1": 46,
+  "max_fiber": 9
+ },
+ "21": {
+  "attractor_size": 48,
+  "closing_step": 7,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 21
+ },
+ "210": {
+  "attractor_size": 106,
+  "closing_step": 19,
+  "erased_bits": 0.0931094043914813,
+  "image_1": 240,
+  "max_fiber": 3
+ },
+ "211": {
+  "attractor_size": 21,
+  "closing_step": 6,
+  "erased_bits": 0.9776321869715456,
+  "image_1": 130,
+  "max_fiber": 6
+ },
+ "212": {
+  "attractor_size": 88,
+  "closing_step": 4,
+  "erased_bits": 0.9125371587496609,
+  "image_1": 136,
+  "max_fiber": 7
+ },
+ "213": {
+  "attractor_size": 131,
+  "closing_step": 2,
+  "erased_bits": 0.9665769984625499,
+  "image_1": 131,
+  "max_fiber": 6
+ },
+ "214": {
+  "attractor_size": 48,
+  "closing_step": 6,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 4
+ },
+ "215": {
+  "attractor_size": 11,
+  "closing_step": 6,
+  "erased_bits": 1.3706433799203905,
+  "image_1": 99,
+  "max_fiber": 22
+ },
+ "216": {
+  "attractor_size": 90,
+  "closing_step": 5,
+  "erased_bits": 0.9776321869715456,
+  "image_1": 130,
+  "max_fiber": 4
+ },
+ "217": {
+  "attractor_size": 65,
+  "closing_step": 3,
+  "erased_bits": 0.9776321869715456,
+  "image_1": 130,
+  "max_fiber": 6
+ },
+ "218": {
+  "attractor_size": 26,
+  "closing_step": 6,
+  "erased_bits": 1.0931094043914813,
+  "image_1": 120,
+  "max_fiber": 13
+ },
+ "219": {
+  "attractor_size": 21,
+  "closing_step": 3,
+  "erased_bits": 1.9556058806415466,
+  "image_1": 66,
+  "max_fiber": 46
+ },
+ "22": {
+  "attractor_size": 19,
+  "closing_step": 7,
+  "erased_bits": 0.6162957075259481,
+  "image_1": 167,
+  "max_fiber": 22
+ },
+ "220": {
+  "attractor_size": 100,
+  "closing_step": 4,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 4
+ },
+ "221": {
+  "attractor_size": 47,
+  "closing_step": 2,
+  "erased_bits": 2.4454111483223624,
+  "image_1": 47,
+  "max_fiber": 9
+ },
+ "222": {
+  "attractor_size": 48,
+  "closing_step": 4,
+  "erased_bits": 1.2995602818589083,
+  "image_1": 104,
+  "max_fiber": 21
+ },
+ "223": {
+  "attractor_size": 3,
+  "closing_step": 5,
+  "erased_bits": 2.4454111483223624,
+  "image_1": 47,
+  "max_fiber": 90
+ },
+ "224": {
+  "attractor_size": 36,
+  "closing_step": 8,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 21
+ },
+ "225": {
+  "attractor_size": 51,
+  "closing_step": 17,
+  "erased_bits": 0.19910010007969525,
+  "image_1": 223,
+  "max_fiber": 2
+ },
+ "226": {
+  "attractor_size": 132,
+  "closing_step": 2,
+  "erased_bits": 0.9556058806415466,
+  "image_1": 132,
+  "max_fiber": 7
+ },
+ "227": {
+  "attractor_size": 35,
+  "closing_step": 8,
+  "erased_bits": 0.9665769984625499,
+  "image_1": 131,
+  "max_fiber": 7
+ },
+ "228": {
+  "attractor_size": 90,
+  "closing_step": 5,
+  "erased_bits": 0.9776321869715456,
+  "image_1": 130,
+  "max_fiber": 4
+ },
+ "229": {
+  "attractor_size": 81,
+  "closing_step": 9,
+  "erased_bits": 0.8003276551636356,
+  "image_1": 147,
+  "max_fiber": 4
+ },
+ "23": {
+  "attractor_size": 48,
+  "closing_step": 4,
+  "erased_bits": 1.415037499278844,
+  "image_1": 96,
+  "max_fiber": 21
+ },
+ "230": {
+  "attractor_size": 42,
+  "closing_step": 9,
+  "erased_bits": 0.7145977811377513,
+  "image_1": 156,
+  "max_fiber": 5
+ },
+ "231": {
+  "attractor_size": 21,
+  "closing_step": 3,
+  "erased_bits": 2.4454111483223624,
+  "image_1": 47,
+  "max_fiber": 10
+ },
+ "232": {
+  "attractor_size": 48,
+  "closing_step": 4,
+  "erased_bits": 1.415037499278844,
+  "image_1": 96,
+  "max_fiber": 21
+ },
+ "233": {
+  "attractor_size": 47,
+  "closing_step": 9,
+  "erased_bits": 0.6162957075259481,
+  "image_1": 167,
+  "max_fiber": 22
+ },
+ "234": {
+  "attractor_size": 36,
+  "closing_step": 8,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 21
+ },
+ "235": {
+  "attractor_size": 51,
+  "closing_step": 4,
+  "erased_bits": 1.3706433799203905,
+  "image_1": 99,
+  "max_fiber": 22
+ },
+ "236": {
+  "attractor_size": 46,
+  "closing_step": 3,
+  "erased_bits": 1.5081469036703252,
+  "image_1": 90,
+  "max_fiber": 47
+ },
+ "237": {
+  "attractor_size": 29,
+  "closing_step": 6,
+  "erased_bits": 1.933910809542228,
+  "image_1": 67,
+  "max_fiber": 48
+ },
+ "238": {
+  "attractor_size": 90,
+  "closing_step": 2,
+  "erased_bits": 1.5081469036703252,
+  "image_1": 90,
+  "max_fiber": 47
+ },
+ "239": {
+  "attractor_size": 21,
+  "closing_step": 2,
+  "erased_bits": 3.6076825772212393,
+  "image_1": 21,
+  "max_fiber": 48
+ },
+ "24": {
+  "attractor_size": 21,
+  "closing_step": 3,
+  "erased_bits": 2.4454111483223624,
+  "image_1": 47,
+  "max_fiber": 10
+ },
+ "240": {
+  "attractor_size": 256,
+  "closing_step": 1,
+  "erased_bits": 0.0,
+  "image_1": 256,
+  "max_fiber": 1
+ },
+ "241": {
+  "attractor_size": 55,
+  "closing_step": 5,
+  "erased_bits": 0.9665769984625499,
+  "image_1": 131,
+  "max_fiber": 6
+ },
+ "242": {
+  "attractor_size": 12,
+  "closing_step": 7,
+  "erased_bits": 1.2995602818589083,
+  "image_1": 104,
+  "max_fiber": 7
+ },
+ "243": {
+  "attractor_size": 47,
+  "closing_step": 2,
+  "erased_bits": 2.4454111483223624,
+  "image_1": 47,
+  "max_fiber": 9
+ },
+ "244": {
+  "attractor_size": 46,
+  "closing_step": 5,
+  "erased_bits": 1.5081469036703252,
+  "image_1": 90,
+  "max_fiber": 6
+ },
+ "245": {
+  "attractor_size": 49,
+  "closing_step": 2,
+  "erased_bits": 2.3852901558847917,
+  "image_1": 49,
+  "max_fiber": 9
+ },
+ "246": {
+  "attractor_size": 38,
+  "closing_step": 8,
+  "erased_bits": 1.4454111483223624,
+  "image_1": 94,
+  "max_fiber": 11
+ },
+ "247": {
+  "attractor_size": 1,
+  "closing_step": 3,
+  "erased_bits": 3.6076825772212393,
+  "image_1": 21,
+  "max_fiber": 48
+ },
+ "248": {
+  "attractor_size": 36,
+  "closing_step": 8,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 21
+ },
+ "249": {
+  "attractor_size": 51,
+  "closing_step": 4,
+  "erased_bits": 1.3706433799203905,
+  "image_1": 99,
+  "max_fiber": 22
+ },
+ "25": {
+  "attractor_size": 22,
+  "closing_step": 8,
+  "erased_bits": 0.7145977811377513,
+  "image_1": 156,
+  "max_fiber": 5
+ },
+ "250": {
+  "attractor_size": 100,
+  "closing_step": 2,
+  "erased_bits": 1.3561438102252756,
+  "image_1": 100,
+  "max_fiber": 49
+ },
+ "251": {
+  "attractor_size": 47,
+  "closing_step": 2,
+  "erased_bits": 2.4454111483223624,
+  "image_1": 47,
+  "max_fiber": 90
+ },
+ "252": {
+  "attractor_size": 90,
+  "closing_step": 2,
+  "erased_bits": 1.5081469036703252,
+  "image_1": 90,
+  "max_fiber": 47
+ },
+ "253": {
+  "attractor_size": 21,
+  "closing_step": 2,
+  "erased_bits": 3.6076825772212393,
+  "image_1": 21,
+  "max_fiber": 48
+ },
+ "254": {
+  "attractor_size": 46,
+  "closing_step": 2,
+  "erased_bits": 2.476438043942987,
+  "image_1": 46,
+  "max_fiber": 131
+ },
+ "255": {
+  "attractor_size": 1,
+  "closing_step": 2,
+  "erased_bits": 8.0,
+  "image_1": 1,
+  "max_fiber": 256
+ },
+ "26": {
+  "attractor_size": 61,
+  "closing_step": 6,
+  "erased_bits": 0.8003276551636356,
+  "image_1": 147,
+  "max_fiber": 4
+ },
+ "27": {
+  "attractor_size": 42,
+  "closing_step": 7,
+  "erased_bits": 0.9776321869715456,
+  "image_1": 130,
+  "max_fiber": 4
+ },
+ "28": {
+  "attractor_size": 55,
+  "closing_step": 5,
+  "erased_bits": 0.9665769984625499,
+  "image_1": 131,
+  "max_fiber": 7
+ },
+ "29": {
+  "attractor_size": 92,
+  "closing_step": 4,
+  "erased_bits": 0.9556058806415466,
+  "image_1": 132,
+  "max_fiber": 7
+ },
+ "3": {
+  "attractor_size": 2,
+  "closing_step": 8,
+  "erased_bits": 1.5081469036703252,
+  "image_1": 90,
+  "max_fiber": 47
+ },
+ "30": {
+  "attractor_size": 171,
+  "closing_step": 7,
+  "erased_bits": 0.19910010007969525,
+  "image_1": 223,
+  "max_fiber": 2
+ },
+ "31": {
+  "attractor_size": 48,
+  "closing_step": 7,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 21
+ },
+ "32": {
+  "attractor_size": 47,
+  "closing_step": 2,
+  "erased_bits": 2.4454111483223624,
+  "image_1": 47,
+  "max_fiber": 90
+ },
+ "33": {
+  "attractor_size": 48,
+  "closing_step": 4,
+  "erased_bits": 1.2995602818589083,
+  "image_1": 104,
+  "max_fiber": 21
+ },
+ "34": {
+  "attractor_size": 47,
+  "closing_step": 2,
+  "erased_bits": 2.4454111483223624,
+  "image_1": 47,
+  "max_fiber": 9
+ },
+ "35": {
+  "attractor_size": 48,
+  "closing_step": 7,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 4
+ },
+ "36": {
+  "attractor_size": 21,
+  "closing_step": 3,
+  "erased_bits": 1.9556058806415466,
+  "image_1": 66,
+  "max_fiber": 46
+ },
+ "37": {
+  "attractor_size": 22,
+  "closing_step": 5,
+  "erased_bits": 1.0931094043914813,
+  "image_1": 120,
+  "max_fiber": 13
+ },
+ "38": {
+  "attractor_size": 21,
+  "closing_step": 6,
+  "erased_bits": 0.9776321869715456,
+  "image_1": 130,
+  "max_fiber": 6
+ },
+ "39": {
+  "attractor_size": 42,
+  "closing_step": 7,
+  "erased_bits": 0.9776321869715456,
+  "image_1": 130,
+  "max_fiber": 4
+ },
+ "4": {
+  "attractor_size": 3,
+  "closing_step": 5,
+  "erased_bits": 2.4454111483223624,
+  "image_1": 47,
+  "max_fiber": 90
+ },
+ "40": {
+  "attractor_size": 51,
+  "closing_step": 4,
+  "erased_bits": 1.3706433799203905,
+  "image_1": 99,
+  "max_fiber": 22
+ },
+ "41": {
+  "attractor_size": 52,
+  "closing_step": 4,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 4
+ },
+ "42": {
+  "attractor_size": 55,
+  "closing_step": 5,
+  "erased_bits": 0.9665769984625499,
+  "image_1": 131,
+  "max_fiber": 6
+ },
+ "43": {
+  "attractor_size": 88,
+  "closing_step": 4,
+  "erased_bits": 0.9125371587496609,
+  "image_1": 136,
+  "max_fiber": 7
+ },
+ "44": {
+  "attractor_size": 65,
+  "closing_step": 3,
+  "erased_bits": 0.9776321869715456,
+  "image_1": 130,
+  "max_fiber": 6
+ },
+ "45": {
+  "attractor_size": 226,
+  "closing_step": 5,
+  "erased_bits": 0.0931094043914813,
+  "image_1": 240,
+  "max_fiber": 3
+ },
+ "46": {
+  "attractor_size": 21,
+  "closing_step": 3,
+  "erased_bits": 2.476438043942987,
+  "image_1": 46,
+  "max_fiber": 9
+ },
+ "47": {
+  "attractor_size": 90,
+  "closing_step": 2,
+  "erased_bits": 1.5081469036703252,
+  "image_1": 90,
+  "max_fiber": 6
+ },
+ "48": {
+  "attractor_size": 47,
+  "closing_step": 2,
+  "erased_bits": 2.4454111483223624,
+  "image_1": 47,
+  "max_fiber": 9
+ },
+ "49": {
+  "attractor_size": 48,
+  "closing_step": 7,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 4
+ },
+ "5": {
+  "attractor_size": 4,
+  "closing_step": 4,
+  "erased_bits": 1.3561438102252756,
+  "image_1": 100,
+  "max_fiber": 49
+ },
+ "50": {
+  "attractor_size": 131,
+  "closing_step": 2,
+  "erased_bits": 0.9665769984625499,
+  "image_1": 131,
+  "max_fiber": 7
+ },
+ "51": {
+  "attractor_size": 256,
+  "closing_step": 1,
+  "erased_bits": 0.0,
+  "image_1": 256,
+  "max_fiber": 1
+ },
+ "52": {
+  "attractor_size": 21,
+  "closing_step": 6,
+  "erased_bits": 0.9776321869715456,
+  "image_1": 130,
+  "max_fiber": 6
+ },
+ "53": {
+  "attractor_size": 42,
+  "closing_step": 7,
+  "erased_bits": 0.9776321869715456,
+  "image_1": 130,
+  "max_fiber": 4
+ },
+ "54": {
+  "attractor_size": 101,
+  "closing_step": 3,
+  "erased_bits": 0.7711813095041196,
+  "image_1": 150,
+  "max_fiber": 10
+ },
+ "55": {
+  "attractor_size": 90,
+  "closing_step": 2,
+  "erased_bits": 1.5081469036703252,
+  "image_1": 90,
+  "max_fiber": 47
+ },
+ "56": {
+  "attractor_size": 35,
+  "closing_step": 8,
+  "erased_bits": 0.9665769984625499,
+  "image_1": 131,
+  "max_fiber": 7
+ },
+ "57": {
+  "attractor_size": 36,
+  "closing_step": 7,
+  "erased_bits": 0.6076825772212393,
+  "image_1": 168,
+  "max_fiber": 7
+ },
+ "58": {
+  "attractor_size": 11,
+  "closing_step": 8,
+  "erased_bits": 0.8003276551636356,
+  "image_1": 147,
+  "max_fiber": 7
+ },
+ "59": {
+  "attractor_size": 48,
+  "closing_step": 7,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 4
+ },
+ "6": {
+  "attractor_size": 11,
+  "closing_step": 6,
+  "erased_bits": 1.3706433799203905,
+  "image_1": 99,
+  "max_fiber": 22
+ },
+ "60": {
+  "attractor_size": 1,
+  "closing_step": 9,
+  "erased_bits": 1.0,
+  "image_1": 128,
+  "max_fiber": 2
+ },
+ "61": {
+  "attractor_size": 22,
+  "closing_step": 8,
+  "erased_bits": 0.7145977811377513,
+  "image_1": 156,
+  "max_fiber": 5
+ },
+ "62": {
+  "attractor_size": 45,
+  "closing_step": 8,
+  "erased_bits": 0.733213459305099,
+  "image_1": 154,
+  "max_fiber": 10
+ },
+ "63": {
+  "attractor_size": 2,
+  "closing_step": 8,
+  "erased_bits": 1.5081469036703252,
+  "image_1": 90,
+  "max_fiber": 47
+ },
+ "64": {
+  "attractor_size": 21,
+  "closing_step": 2,
+  "erased_bits": 3.6076825772212393,
+  "image_1": 21,
+  "max_fiber": 48
+ },
+ "65": {
+  "attractor_size": 22,
+  "closing_step": 4,
+  "erased_bits": 1.4454111483223624,
+  "image_1": 94,
+  "max_fiber": 11
+ },
+ "66": {
+  "attractor_size": 21,
+  "closing_step": 3,
+  "erased_bits": 2.4454111483223624,
+  "image_1": 47,
+  "max_fiber": 10
+ },
+ "67": {
+  "attractor_size": 22,
+  "closing_step": 8,
+  "erased_bits": 0.7145977811377513,
+  "image_1": 156,
+  "max_fiber": 5
+ },
+ "68": {
+  "attractor_size": 47,
+  "closing_step": 2,
+  "erased_bits": 2.4454111483223624,
+  "image_1": 47,
+  "max_fiber": 9
+ },
+ "69": {
+  "attractor_size": 48,
+  "closing_step": 4,
+  "erased_bits": 1.2995602818589083,
+  "image_1": 104,
+  "max_fiber": 7
+ },
+ "7": {
+  "attractor_size": 48,
+  "closing_step": 7,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 21
+ },
+ "70": {
+  "attractor_size": 55,
+  "closing_step": 5,
+  "erased_bits": 0.9665769984625499,
+  "image_1": 131,
+  "max_fiber": 7
+ },
+ "71": {
+  "attractor_size": 92,
+  "closing_step": 4,
+  "erased_bits": 0.9556058806415466,
+  "image_1": 132,
+  "max_fiber": 7
+ },
+ "72": {
+  "attractor_size": 29,
+  "closing_step": 6,
+  "erased_bits": 1.933910809542228,
+  "image_1": 67,
+  "max_fiber": 48
+ },
+ "73": {
+  "attractor_size": 30,
+  "closing_step": 8,
+  "erased_bits": 0.8707169830550336,
+  "image_1": 140,
+  "max_fiber": 11
+ },
+ "74": {
+  "attractor_size": 81,
+  "closing_step": 9,
+  "erased_bits": 0.8003276551636356,
+  "image_1": 147,
+  "max_fiber": 4
+ },
+ "75": {
+  "attractor_size": 226,
+  "closing_step": 5,
+  "erased_bits": 0.0931094043914813,
+  "image_1": 240,
+  "max_fiber": 3
+ },
+ "76": {
+  "attractor_size": 47,
+  "closing_step": 5,
+  "erased_bits": 0.9665769984625499,
+  "image_1": 131,
+  "max_fiber": 7
+ },
+ "77": {
+  "attractor_size": 48,
+  "closing_step": 4,
+  "erased_bits": 1.415037499278844,
+  "image_1": 96,
+  "max_fiber": 21
+ },
+ "78": {
+  "attractor_size": 35,
+  "closing_step": 7,
+  "erased_bits": 0.8003276551636356,
+  "image_1": 147,
+  "max_fiber": 7
+ },
+ "79": {
+  "attractor_size": 48,
+  "closing_step": 4,
+  "erased_bits": 1.2995602818589083,
+  "image_1": 104,
+  "max_fiber": 7
+ },
+ "8": {
+  "attractor_size": 21,
+  "closing_step": 2,
+  "erased_bits": 3.6076825772212393,
+  "image_1": 21,
+  "max_fiber": 48
+ },
+ "80": {
+  "attractor_size": 49,
+  "closing_step": 2,
+  "erased_bits": 2.3852901558847917,
+  "image_1": 49,
+  "max_fiber": 9
+ },
+ "81": {
+  "attractor_size": 90,
+  "closing_step": 2,
+  "erased_bits": 1.5081469036703252,
+  "image_1": 90,
+  "max_fiber": 6
+ },
+ "82": {
+  "attractor_size": 61,
+  "closing_step": 6,
+  "erased_bits": 0.8003276551636356,
+  "image_1": 147,
+  "max_fiber": 4
+ },
+ "83": {
+  "attractor_size": 42,
+  "closing_step": 7,
+  "erased_bits": 0.9776321869715456,
+  "image_1": 130,
+  "max_fiber": 4
+ },
+ "84": {
+  "attractor_size": 131,
+  "closing_step": 2,
+  "erased_bits": 0.9665769984625499,
+  "image_1": 131,
+  "max_fiber": 6
+ },
+ "85": {
+  "attractor_size": 256,
+  "closing_step": 1,
+  "erased_bits": 0.0,
+  "image_1": 256,
+  "max_fiber": 1
+ },
+ "86": {
+  "attractor_size": 171,
+  "closing_step": 7,
+  "erased_bits": 0.19910010007969525,
+  "image_1": 223,
+  "max_fiber": 2
+ },
+ "87": {
+  "attractor_size": 48,
+  "closing_step": 7,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 21
+ },
+ "88": {
+  "attractor_size": 81,
+  "closing_step": 9,
+  "erased_bits": 0.8003276551636356,
+  "image_1": 147,
+  "max_fiber": 4
+ },
+ "89": {
+  "attractor_size": 226,
+  "closing_step": 5,
+  "erased_bits": 0.0931094043914813,
+  "image_1": 240,
+  "max_fiber": 3
+ },
+ "9": {
+  "attractor_size": 22,
+  "closing_step": 4,
+  "erased_bits": 1.4454111483223624,
+  "image_1": 94,
+  "max_fiber": 11
+ },
+ "90": {
+  "attractor_size": 1,
+  "closing_step": 5,
+  "erased_bits": 2.0,
+  "image_1": 64,
+  "max_fiber": 4
+ },
+ "91": {
+  "attractor_size": 22,
+  "closing_step": 5,
+  "erased_bits": 1.0931094043914813,
+  "image_1": 120,
+  "max_fiber": 13
+ },
+ "92": {
+  "attractor_size": 35,
+  "closing_step": 7,
+  "erased_bits": 0.8003276551636356,
+  "image_1": 147,
+  "max_fiber": 7
+ },
+ "93": {
+  "attractor_size": 48,
+  "closing_step": 4,
+  "erased_bits": 1.2995602818589083,
+  "image_1": 104,
+  "max_fiber": 7
+ },
+ "94": {
+  "attractor_size": 31,
+  "closing_step": 8,
+  "erased_bits": 0.9556058806415466,
+  "image_1": 132,
+  "max_fiber": 7
+ },
+ "95": {
+  "attractor_size": 4,
+  "closing_step": 4,
+  "erased_bits": 1.3561438102252756,
+  "image_1": 100,
+  "max_fiber": 49
+ },
+ "96": {
+  "attractor_size": 51,
+  "closing_step": 4,
+  "erased_bits": 1.3706433799203905,
+  "image_1": 99,
+  "max_fiber": 22
+ },
+ "97": {
+  "attractor_size": 52,
+  "closing_step": 4,
+  "erased_bits": 0.7905466343710499,
+  "image_1": 148,
+  "max_fiber": 4
+ },
+ "98": {
+  "attractor_size": 35,
+  "closing_step": 8,
+  "erased_bits": 0.9665769984625499,
+  "image_1": 131,
+  "max_fiber": 7
+ },
+ "99": {
+  "attractor_size": 36,
+  "closing_step": 7,
+  "erased_bits": 0.6076825772212393,
+  "image_1": 168,
+  "max_fiber": 7
+ }
+}

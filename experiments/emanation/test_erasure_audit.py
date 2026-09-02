@@ -99,6 +99,45 @@ def test_audit_is_generic_non_eca_map():
     assert a["erased_bits"] == 1.0    # log2(4)-log2(2) exactly one bit
 
 
+def test_rule_attractor_table():
+    # recurrent structure of all 256 rules on the N=8 ring (exact census)
+    tab = ea.rule_attractor_table(N=8, rules=tuple(range(256)),
+                                  max_steps=32)
+    assert len(tab) == 256
+    # the permutations are exactly the immediate bijections
+    assert sorted(int(r) for r, d in tab.items()
+                  if d["attractor_size"] == 256 and d["closing_step"] == 1) \
+        == [15, 51, 85, 105, 150, 170, 204, 240]
+    # nilpotent rules on N=8 (everything to a single fixpoint; honest
+    # for THIS N -- nilpotency is N-dependent, do not extrapolate)
+    assert sorted(int(r) for r, d in tab.items()
+                  if d["attractor_size"] == 1) \
+        == [0, 2, 16, 60, 90, 102, 153, 165, 191, 195, 247, 255]
+    # the conservative traffic pair: 92-state attractor, ledger closes in 4
+    assert tab["29"]["attractor_size"] == 92
+    assert tab["29"]["closing_step"] == 4
+    assert tab["71"]["attractor_size"] == 92 and tab["71"]["closing_step"] == 4
+    # identity permutes nothing; rule 0 destroys everything in one step
+    assert tab["204"]["attractor_size"] == 256 and tab["204"]["max_fiber"] == 1
+    assert tab["0"]["attractor_size"] == 1 and tab["0"]["max_fiber"] == 256
+    assert tab["0"]["closing_step"] == 2
+
+
+def test_attractor_is_periodic_core():
+    # the map restricted to its attractor is a bijection: f(A) == A and
+    # injective -- so the attractor is exactly the reachable periodic
+    # points (the recurrent dimension is a true 'memory core').
+    N = 8
+    domain = tuple(itertools.product((0, 1), repeat=N))
+    for rule in (0, 29, 71, 90, 204, 240):
+        f = lambda s, r=rule: ea.eca_ring_step(r, s)
+        acc, closing = ea.attractor(domain, f, max_steps=32)
+        assert closing is not None
+        img = {f(a) for a in acc}
+        assert img == acc                      # attractor closed under f
+        assert len({f(a) for a in acc}) == len(acc)   # injective on A
+
+
 def test_rule_erasure_spectrum_roundtrip():
     spec = ea.rule_erasure_spectrum(N=6, rules=(0, 29, 71, 204),
                                     horizon=2)

@@ -128,6 +128,49 @@ def rule_erasure_spectrum(N=8, rules=tuple(range(256)), horizon=3):
     return spec
 
 
+def attractor(domain, f, max_steps=64):
+    """(attractor_set, closing_step) of map f on the finite domain.
+
+    Iterates the image of the WHOLE domain until it is a fixpoint AS A
+    SET (the tail / periodic core).  closing_step = first number of
+    applications i >= 1 with f^i(domain) == f^{i+1}(domain) -- the
+    forgetting clock of the map.  Bijective f -> closing_step 1; ECA
+    rules 0/255 -> 2 (collapse to a singleton in one step, fixpoint
+    verified at 2).  On the attractor f is a bijection, so the attractor
+    is exactly the set of periodic points reachable from the domain, and
+    |attractor| is the recurrent dimension.
+    """
+    cur = set(domain)
+    for i in range(1, max_steps + 1):
+        nxt = {f(c) for c in cur}
+        if nxt == cur:
+            return cur, i
+        cur = nxt
+    return cur, None
+
+
+def rule_attractor_table(N=8, rules=tuple(range(256)), max_steps=64):
+    """Per-rule recurrent structure on the full N-ring: attractor size,
+    closing (forgetting) step, plus the one-step erasure audit.  Returns
+    {rule: {attractor_size, closing_step, image_1, erased_bits,
+    max_fiber}} -- the complete 'recurrent dimension' census of all 256
+    ECA rules under one convention."""
+    domain = tuple(itertools.product((0, 1), repeat=N))
+    table = {}
+    for r in rules:
+        f = lambda s, r=r: eca_ring_step(r, s)
+        acc, closing = attractor(domain, f, max_steps=max_steps)
+        a = audit(domain, f, horizon=1)
+        table[str(r)] = {
+            "attractor_size": len(acc),
+            "closing_step": closing,
+            "image_1": a["image_1"],
+            "erased_bits": a["erased_bits"],
+            "max_fiber": a["max_fiber"],
+        }
+    return table
+
+
 def save_spectrum(spec, path=None):
     if path is None:
         path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
