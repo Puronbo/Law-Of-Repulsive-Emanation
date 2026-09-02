@@ -8,10 +8,13 @@ Usage:
 The gate fails (exit 1) if:
     * the persisted certificate table does not reproduce exactly from the
       current code (drift in a certificate, missing/stale entries), or
+    * the T2 discovery self-report no longer reproduces from current code
+      (the system may not forget what it failed to know), or
     * any claimed law is not formally believed by the supervisor
       (its named certificate missing or HONEST_NEGATIVE).
 These artifacts are machine-readable (data/law_certificates.json,
-data/supervision_verdict.json), so CI, the webapp, and agents query the
+data/supervision_verdict.json, data/law_discovery_table.json,
+data/discovery_verdict.json), so CI, the webapp, and agents query the
 same gated truth -- the physics-replaces-the-proof-checker contract.
 """
 import argparse
@@ -22,6 +25,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from experiments.emanation import repo_audit as ra
 from experiments.emanation import supervisor as sv
+from experiments.emanation import law_discovery as ld
 
 
 def claims():
@@ -50,6 +54,9 @@ def gate():
     ok, drift = ra.fresh_table_matches()
     if not ok:
         return False, "certificate table drift:\n  " + "\n  ".join(drift)
+    ok, why = ld.fresh()
+    if not ok:
+        return False, "discovery self-report drift: %s" % why
     certs = ra.full_table()
     verdict = sv.supervise_build(claims(), certs)
     rejected = [r for r in verdict["results"] if not r["ok"]]
@@ -75,17 +82,21 @@ def summary():
         print("  %-16s %-10s %d" % (status, kind, n))
     ok, drift = ra.fresh_table_matches()
     print("table fresh: %s" % (ok and "yes" or "DRIFT: %s" % drift))
+    ok2, why2 = ld.fresh()
+    print("discovery fresh: %s" % (ok2 and "yes" or "STALE: %s" % why2))
     verdict = sv.supervise_build(claims(), certs)
     print("supervisor: accepted=%s (%d claims, %d negative)" % (
         verdict["accepted"], verdict["n_claims"],
         verdict["n_negative_claims"]))
-    return verdict["accepted"] and ok
+    return verdict["accepted"] and ok and ok2
 
 
 def regenerate():
     ra.write_full_table()
     sv.write_verdict(claims(), ra.full_table())
-    print("regenerated certificates + verdict")
+    rep = ld.discover()
+    ld.save_discovery(rep)
+    print("regenerated certificates + verdict + discovery self-report")
 
 
 def main(argv=None):

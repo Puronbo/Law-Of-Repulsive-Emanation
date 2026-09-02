@@ -496,6 +496,33 @@ build whose proposer stopped generalizing.  Propose -> measure ->
 certify or self-reject; no human in the loop; no ungrounded claim
 survivable.
 
+Seventh layer: **the self-directed discovery agent over the whole rule
+space** (`law_discovery.py`).  The T2 proposer scaled to all 256 rules:
+it MEASURES the ring attractor of every rule on N in 3..6 (full 2^N
+state spaces), FITS from a *documented hypothesis zoo* (constant,
+linear, quadratic, lucas, lucas_parity, fib, orbit2, orbit3), and
+CERTIFIES every train-perfect candidate strictly out-of-sample on
+N in 8..10.  It files a machine-readable self-report
+(`data/law_discovery_table.json` + `data/discovery_verdict.json`) in
+three honest categories:
+  * certified -- a law passed out-of-sample (48 rules);
+  * no_small_form_law -- no zero-error law exists in the documented zoo
+    (208 rules; possibly N-dependent structure);
+  * failed_to_generalize -- a law was train-perfect but refused at test
+    time (0 here; the zoo is deliberately conservative).
+Landscape highlights: rule 0 => |A|=1; 12 => L_N exactly; the six
+ring-permutations 15/51/85/170/204/240 => 2^N for all N; and
+29/71 => 2*L_N - 2*[N even] (re-deriving the proposer's law).
+FINDING the agent surfaced (verified at N up to 11): rules 105 and 150
+are bijections on the N-ring **iff 3 does not divide N** -- at N=9 the
+attractor is 128, not 512.  The older census claim "exactly 8
+permutations at N=8" is correct *at* N=8 but does NOT generalize to all
+rings; because the agent's training window N in 3..6 includes failing
+N=3,6, no zoo law fits and the agent honestly refuses to float 2^N for
+these rules.  The CI gate (`--gate`) now also refuses a stale discovery
+self-report: `discovery fresh: yes` is part of the pass condition -- the
+system may not silently forget what it failed to know.
+
 **This answers "can the proof-checking library be replaced by physics?":
 yes, for the characterized sector -- the prediction IS the law.**  And the
 laws VETO candidates that a checking harness might let pass:

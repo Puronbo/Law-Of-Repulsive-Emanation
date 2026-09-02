@@ -1,0 +1,1340 @@
+{
+ "report": {
+  "summary": {
+   "certified": 48,
+   "failed_to_generalize": 0,
+   "measurement_inconclusive": 0,
+   "no_small_form_law": 208,
+   "scanned": 256
+  },
+  "table": {
+   "0": {
+    "family": "constant",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1",
+    "params": [
+     1
+    ],
+    "points_checked": 3
+   },
+   "1": {
+    "family": "constant",
+    "kind": "certified",
+    "law": "|A(N,r)| = 2",
+    "params": [
+     2
+    ],
+    "points_checked": 3
+   },
+   "10": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "100": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "101": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "102": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "103": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "104": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "105": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "106": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "107": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "108": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "109": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "11": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "110": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "111": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "112": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "113": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "114": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "115": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 1",
+    "params": [
+     1,
+     1
+    ],
+    "points_checked": 3
+   },
+   "116": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "117": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "118": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "119": {
+    "family": "constant",
+    "kind": "certified",
+    "law": "|A(N,r)| = 2",
+    "params": [
+     2
+    ],
+    "points_checked": 3
+   },
+   "12": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 0",
+    "params": [
+     1,
+     0
+    ],
+    "points_checked": 3
+   },
+   "120": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "121": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "122": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "123": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 1",
+    "params": [
+     1,
+     1
+    ],
+    "points_checked": 3
+   },
+   "124": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "125": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "126": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "127": {
+    "family": "constant",
+    "kind": "certified",
+    "law": "|A(N,r)| = 2",
+    "params": [
+     2
+    ],
+    "points_checked": 3
+   },
+   "128": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "129": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "13": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 1",
+    "params": [
+     1,
+     1
+    ],
+    "points_checked": 3
+   },
+   "130": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "131": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "132": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "133": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "134": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "135": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "136": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "137": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "138": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "139": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "14": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "140": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "141": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "142": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "143": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "144": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "145": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "146": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "147": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "148": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "149": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "15": {
+    "family": "orbit2",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*2^N + 0",
+    "params": [
+     1,
+     0
+    ],
+    "points_checked": 3
+   },
+   "150": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "151": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "152": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "153": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "154": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "155": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "156": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "157": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "158": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "159": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "16": {
+    "family": "constant",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1",
+    "params": [
+     1
+    ],
+    "points_checked": 3
+   },
+   "160": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "161": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "162": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "163": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "164": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "165": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "166": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "167": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "168": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "169": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "17": {
+    "family": "constant",
+    "kind": "certified",
+    "law": "|A(N,r)| = 2",
+    "params": [
+     2
+    ],
+    "points_checked": 3
+   },
+   "170": {
+    "family": "orbit2",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*2^N + 0",
+    "params": [
+     1,
+     0
+    ],
+    "points_checked": 3
+   },
+   "171": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "172": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "173": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "174": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "175": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "176": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "177": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "178": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "179": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "18": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "180": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "181": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "182": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "183": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "184": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "185": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "186": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "187": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 0",
+    "params": [
+     1,
+     0
+    ],
+    "points_checked": 3
+   },
+   "188": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "189": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "19": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "190": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "191": {
+    "family": "constant",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1",
+    "params": [
+     1
+    ],
+    "points_checked": 3
+   },
+   "192": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "193": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "194": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "195": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "196": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "197": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "198": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "199": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "2": {
+    "family": "constant",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1",
+    "params": [
+     1
+    ],
+    "points_checked": 3
+   },
+   "20": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "200": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "201": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "202": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "203": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "204": {
+    "family": "orbit2",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*2^N + 0",
+    "params": [
+     1,
+     0
+    ],
+    "points_checked": 3
+   },
+   "205": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "206": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "207": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 0",
+    "params": [
+     1,
+     0
+    ],
+    "points_checked": 3
+   },
+   "208": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "209": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "21": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 1",
+    "params": [
+     1,
+     1
+    ],
+    "points_checked": 3
+   },
+   "210": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "211": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "212": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "213": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "214": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "215": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "216": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "217": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "218": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "219": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "22": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "220": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "221": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 0",
+    "params": [
+     1,
+     0
+    ],
+    "points_checked": 3
+   },
+   "222": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "223": {
+    "family": "lucas_parity",
+    "kind": "certified",
+    "law": "|A(N,r)| = 0*L_N + 3 (N even) + 1 (N odd)",
+    "params": [
+     0,
+     3,
+     1
+    ],
+    "points_checked": 3
+   },
+   "224": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "225": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "226": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "227": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "228": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "229": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "23": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "230": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "231": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "232": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "233": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "234": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "235": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "236": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "237": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "238": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "239": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "24": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "240": {
+    "family": "orbit2",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*2^N + 0",
+    "params": [
+     1,
+     0
+    ],
+    "points_checked": 3
+   },
+   "241": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "242": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "243": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 0",
+    "params": [
+     1,
+     0
+    ],
+    "points_checked": 3
+   },
+   "244": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "245": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "246": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "247": {
+    "family": "constant",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1",
+    "params": [
+     1
+    ],
+    "points_checked": 3
+   },
+   "248": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "249": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "25": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "250": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "251": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 0",
+    "params": [
+     1,
+     0
+    ],
+    "points_checked": 3
+   },
+   "252": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "253": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "254": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "255": {
+    "family": "constant",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1",
+    "params": [
+     1
+    ],
+    "points_checked": 3
+   },
+   "26": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "27": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "28": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "29": {
+    "family": "lucas_parity",
+    "kind": "certified",
+    "law": "|A(N,r)| = 2*L_N - 2 (N even) + 0 (N odd)",
+    "params": [
+     2,
+     -2,
+     0
+    ],
+    "points_checked": 3
+   },
+   "3": {
+    "family": "constant",
+    "kind": "certified",
+    "law": "|A(N,r)| = 2",
+    "params": [
+     2
+    ],
+    "points_checked": 3
+   },
+   "30": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "31": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 1",
+    "params": [
+     1,
+     1
+    ],
+    "points_checked": 3
+   },
+   "32": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 0",
+    "params": [
+     1,
+     0
+    ],
+    "points_checked": 3
+   },
+   "33": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 1",
+    "params": [
+     1,
+     1
+    ],
+    "points_checked": 3
+   },
+   "34": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 0",
+    "params": [
+     1,
+     0
+    ],
+    "points_checked": 3
+   },
+   "35": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 1",
+    "params": [
+     1,
+     1
+    ],
+    "points_checked": 3
+   },
+   "36": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "37": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "38": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "39": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "4": {
+    "family": "lucas_parity",
+    "kind": "certified",
+    "law": "|A(N,r)| = 0*L_N + 3 (N even) + 1 (N odd)",
+    "params": [
+     0,
+     3,
+     1
+    ],
+    "points_checked": 3
+   },
+   "40": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "41": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "42": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "43": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "44": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "45": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "46": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "47": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "48": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 0",
+    "params": [
+     1,
+     0
+    ],
+    "points_checked": 3
+   },
+   "49": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 1",
+    "params": [
+     1,
+     1
+    ],
+    "points_checked": 3
+   },
+   "5": {
+    "family": "lucas_parity",
+    "kind": "certified",
+    "law": "|A(N,r)| = 0*L_N + 4 (N even) + 2 (N odd)",
+    "params": [
+     0,
+     4,
+     2
+    ],
+    "points_checked": 3
+   },
+   "50": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "51": {
+    "family": "orbit2",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*2^N + 0",
+    "params": [
+     1,
+     0
+    ],
+    "points_checked": 3
+   },
+   "52": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "53": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "54": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "55": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "56": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "57": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "58": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "59": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 1",
+    "params": [
+     1,
+     1
+    ],
+    "points_checked": 3
+   },
+   "6": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "60": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "61": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "62": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "63": {
+    "family": "constant",
+    "kind": "certified",
+    "law": "|A(N,r)| = 2",
+    "params": [
+     2
+    ],
+    "points_checked": 3
+   },
+   "64": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "65": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "66": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "67": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "68": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 0",
+    "params": [
+     1,
+     0
+    ],
+    "points_checked": 3
+   },
+   "69": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 1",
+    "params": [
+     1,
+     1
+    ],
+    "points_checked": 3
+   },
+   "7": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 1",
+    "params": [
+     1,
+     1
+    ],
+    "points_checked": 3
+   },
+   "70": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "71": {
+    "family": "lucas_parity",
+    "kind": "certified",
+    "law": "|A(N,r)| = 2*L_N - 2 (N even) + 0 (N odd)",
+    "params": [
+     2,
+     -2,
+     0
+    ],
+    "points_checked": 3
+   },
+   "72": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "73": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "74": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "75": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "76": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "77": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "78": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "79": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 1",
+    "params": [
+     1,
+     1
+    ],
+    "points_checked": 3
+   },
+   "8": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "80": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "81": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "82": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "83": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "84": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "85": {
+    "family": "orbit2",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*2^N + 0",
+    "params": [
+     1,
+     0
+    ],
+    "points_checked": 3
+   },
+   "86": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "87": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 1",
+    "params": [
+     1,
+     1
+    ],
+    "points_checked": 3
+   },
+   "88": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "89": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "9": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "90": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "91": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "92": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "93": {
+    "family": "lucas",
+    "kind": "certified",
+    "law": "|A(N,r)| = 1*L_N + 1",
+    "params": [
+     1,
+     1
+    ],
+    "points_checked": 3
+   },
+   "94": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "95": {
+    "family": "lucas_parity",
+    "kind": "certified",
+    "law": "|A(N,r)| = 0*L_N + 4 (N even) + 2 (N odd)",
+    "params": [
+     0,
+     4,
+     2
+    ],
+    "points_checked": 3
+   },
+   "96": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "97": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "98": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   },
+   "99": {
+    "kind": "no_small_form_law",
+    "note": "no zero-error law in the documented zoo on training"
+   }
+  },
+  "tests": [
+   8,
+   9,
+   10
+  ],
+  "trains": [
+   3,
+   4,
+   5,
+   6
+  ],
+  "zoo": [
+   "constant",
+   "linear",
+   "quadratic",
+   "lucas",
+   "lucas_parity",
+   "fib",
+   "orbit2",
+   "orbit3"
+  ]
+ }
+}
