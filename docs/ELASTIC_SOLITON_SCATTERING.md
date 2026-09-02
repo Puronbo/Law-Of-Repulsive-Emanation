@@ -332,6 +332,32 @@ N=12,n=5: [240,96,48,36,36,...]; N=16,n=6: [2024,816,448,352,336,336,...].
 only during the melt windows, and amounts to log2(fiber) at each fold --
 never any slow leak of information in free flight.**  (`test_erasure_ledger_closes_at_kmax_minus_1`.)
 
+### State-space collapse (the ring attractor is the independent set)
+
+The ledger plateau IS the attractor, with a closed-form size.  Under
+rules 29/71 on a periodic N-ring with n particles, the T-step image set
+stabilizes by T = n-1 at the latest and is then EXACTLY (as a SET) the
+cyclic no-adjacency configs -- every gap >= 2 cyclically, i.e. the
+minority-isolated steady states of L5, the free-ladder attractor:
+
+    images_T(n,N)  =  { configs with no two adjacent, cyclically }   (T >= n-1)
+
+Their count is the cyclic independence number (n <= N/2; symmetric under
+n <-> N-n via holes):
+
+    indep(N,n)  =  (N / (N-n)) * C(N-n, n)
+
+Verified exactly (set identity, not just count) on N=6..16:
+N=6,n=2 -> 9; N=8,n=3 -> 16; N=10,n=3 -> 50; N=12,n=4 -> 105;
+N=12,n=5 -> 36; N=16,n=6 -> 336; N=16,n=7 -> 64; and count-match on
+seven more (N=16,n=4 -> 660; N=10,n=4 -> 25; N=8,n=2 -> 20; N=14,n=4 ->
+294; N=16,n=3 -> 352; N=12,n=3 -> 112; N=14,n=5 -> 196).
+
+**So L4 (fundamental diagram), L5 (ring steady state), L6 (fiber law)
+and L7 (erasure ledger) are ONE phenomenon: the dynamics collapses the
+whole sector onto the independent-set attractor, and every trajectory
+there is a rigid rotation forever.**  (`test_state_space_collapse_ring`.)
+
 **This answers "can the proof-checking library be replaced by physics?":
 yes, for the characterized sector -- the prediction IS the law.**  And the
 laws VETO candidates that a checking harness might let pass:

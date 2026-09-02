@@ -9,6 +9,7 @@ see test_exact_image_structure_2particle_sector).  Both tags survive
 FORWARD but the map has no inverse.
 """
 import itertools as it
+import math
 import random
 import pytest
 
@@ -660,6 +661,59 @@ def test_erasure_ledger_closes_at_kmax_minus_1():
         # no folds after T = n-1 : images constant from T=n-1 onward
         assert imgs[n - 2] == imgs[n - 1]
         assert imgs[n - 1:] == [imgs[n - 1]] * len(imgs[n - 1:])
+
+
+def test_state_space_collapse_ring():
+    """STATE-SPACE COLLAPSE THEOREM (ring): under rules 29/71 on a
+    periodic N-ring with n particles, the T-step image set stabilizes by
+    T = n-1 at the latest and is then EXACTLY the set of cyclic
+    no-adjacency configs (independent sets: every gap >= 2, cyclically) --
+    the minority-isolated steady states of L5, the free-ladder attractor.
+
+        images_T(n,N)  =  {configs with no two adjacent, cyclically}  for
+                          every T >= n-1
+
+    Their count is the cyclic independence number (formula valid for
+    n <= N/2, symmetric under n <-> N-n via holes):
+
+        indep(N,n) = (N / (N-n)) * C(N-n, n)
+
+    Verified exactly (set identity, not just count) on N=6..16:
+
+        N=6,n=2 -> 9 ; N=8,n=3 -> 16 ; N=10,n=3 -> 50 ; N=12,n=4 -> 105
+        N=12,n=5 -> 36 ; N=16,n=6 -> 336 ; N=16,n=7 -> 64
+    and additionally (count match) N=16,n=4 -> 660, N=10,n=4 -> 25,
+    N=8,n=2 -> 20, N=14,n=4 -> 294, N=16,n=3 -> 352, N=12,n=3 -> 112,
+    N=14,n=5 -> 196.
+
+    So L4 (fundamental diagram), L5 (steady state), L7 (erasure ledger)
+    and L6 (fiber law) are ONE phenomenon: the dynamics collapses the
+    sector onto the independent-set attractor; every trajectory there is
+    a rigid rotation forever."""
+    import experiments.emanation.traffic_law as tl
+    def indep_count(n, N):
+        if n > N - n:
+            n = N - n
+        return (N * math.comb(N - n, n)) // (N - n)
+    def noadj_cyclic(n, N):
+        out = set()
+        for c in it.combinations(range(N), n):
+            s = sorted(c)
+            if all(s[i + 1] - s[i] > 1 for i in range(n - 1)) \
+               and (s[0] + N - s[-1]) > 1:
+                out.add(tuple(s))
+        return out
+    for (n, N) in ((2, 6), (3, 8), (3, 10), (4, 12), (5, 12), (6, 16), (7, 16)):
+        cfgs = list(it.combinations(range(N), n))
+        imgs = {tuple(sorted(tl.evolve_ring(29, list(c), N, n)))
+                for c in cfgs}
+        assert imgs == noadj_cyclic(n, N)
+        assert len(imgs) == indep_count(n, N)
+    for (n, N) in ((4, 16), (4, 10), (2, 8), (4, 14), (3, 16), (3, 12), (5, 14)):
+        cfgs = list(it.combinations(range(N), n))
+        imgs = {tuple(sorted(tl.evolve_ring(29, list(c), N, n)))
+                for c in cfgs}
+        assert len(imgs) == indep_count(n, N)
 
 
 def test_ring_steady_state_minority_isolated():
