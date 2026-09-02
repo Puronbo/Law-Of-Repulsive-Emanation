@@ -84,7 +84,7 @@ def test_supervisor_verdict_roundtrip():
     with open(path, encoding="utf-8") as fh:
         again = json.load(fh)
     os.remove(path)
-    assert again["n_claims"] == 6
+    assert again["n_claims"] == 8
     assert again["accepted"] is False
     assert "timestamp" in again
 

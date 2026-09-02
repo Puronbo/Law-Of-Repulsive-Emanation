@@ -469,6 +469,33 @@ entries) and each of the 7 formal claims is believed by the
 supervisor.  The same machine-readable table/verdict feed the webapp
 and any agent.
 
+Sixth layer: **the T2 seed -- the law proposer**
+(`experiments/emanation/law_proposer.py`).  The gate's first consumer as
+a workflow: an autonomous proposing agent forced to EARN its own
+certificates.  Protocol (deterministic, fully documented):
+    1. MEASURE |A(N, rule)| over train N in 3..7 for rules 29/71 (full
+       2^N state spaces; N=12 => 4096 states);
+    2. FIT each documented hypothesis family by exhaustive bounded
+       integer search -- only zero-error-on-training laws survive.
+       Families: `lucas_affine`, `lucas_parity` (parity bias),
+       `fib_affine` (plausible Fibonacci control), `constant`;
+    3. CERTIFY every survivor on the FRESH out-of-sample domain N in
+       8..12 with the standard statement certificates.  The certified
+       predicate recomputes the current attractor (use_cache=False): no
+       training-era cached measurement can leak into the test domain,
+       and a regression-level tamper test poisons the cache and
+       re-checks.
+Result: exactly ONE law survives -- |A(N,29/71)| = 2*L_N - 2*[N even] --
+and it certifies PASS on all 10 fresh (N, rule) points (N=12 => 642
+states).  Every look-alike dies at fit time: `fib_affine` and `constant`
+have no zero-error law on training; `lucas_affine` without the even
+correction errs on even N.  Headline facts land in
+`data/law_proposer_results.json`, and the PASS certificate joins the
+shared gate table (now 14 certificates) -- so `--gate` would reject a
+build whose proposer stopped generalizing.  Propose -> measure ->
+certify or self-reject; no human in the loop; no ungrounded claim
+survivable.
+
 **This answers "can the proof-checking library be replaced by physics?":
 yes, for the characterized sector -- the prediction IS the law.**  And the
 laws VETO candidates that a checking harness might let pass:

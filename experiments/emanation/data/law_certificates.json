@@ -257,5 +257,22 @@
   "n_ok": 0,
   "points_checked": 30,
   "status": "HONEST_NEGATIVE"
+ },
+ {
+  "configs_checked": 10,
+  "domain": "out-of-sample (N, rule) in [8, 9, 10, 11, 12] x {29,71}, attractor over the full 2^N state space",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "PROPOSED_lucas_parity_2_-2_0",
+  "meta": {
+   "domain": "out-of-sample (N, rule) in [8, 9, 10, 11, 12] x {29,71}, attractor over the full 2^N state space",
+   "law": "|A(N,29/71)| = 2*L_N - 2 (N even) + 0 (N odd)",
+   "proposer": "law_proposer.fit_laws (exhaustive bounded integer search over the documented families)",
+   "trained_on": "N in 3..7 (zero error on training)"
+  },
+  "n_fail": 0,
+  "n_ok": 10,
+  "points_checked": 10,
+  "status": "PASS"
  }
 ]
