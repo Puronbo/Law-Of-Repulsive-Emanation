@@ -422,7 +422,7 @@ counter-example recorded, so a supervisor never ships a wrong law).
     29/71), L2 melt window on every single cluster (exhaustive, all T),
     L3 per-cluster union law on the merge-free sector T <= g_min - 2
     (provable guard: gaps never move left, so gap(t) >= gap(0) - t).
-    4 HONEST_NEGATIVE certificates: the 29-traffic law against rules
+    6 HONEST_NEGATIVE certificates: the 29-traffic law against rules
     44/100, free streaming on touching configs, and the discovered
     MERGE SECTOR -- {4,7,9,10}, T=6: the trailing particle at 7 is
     caught by the melt of the {9,10} block (trailing gap 2 <= k, k=2),
@@ -564,9 +564,36 @@ same gate table the supervisor reads):
       date in the Gregorian cycle.
 Plus one HONEST_NEGATIVE: L23 "the tropical year is an exact integer"
 is FALSE -- `year_fraction` is nonzero at the very first day past the
-datum (the code correctly uses 365.2422, not an integer year).  The
-gate now stands on **68 certificates** and believes **60 claims**: the
-12 core physics/system/calendar laws plus the 48 self-discovered laws.
+datum (the code correctly uses 365.2422, not an integer year).
+
+Tenth layer: **the third real-subsystem audit -- hash-chain local
+ledger (L24-L27).** `puno_flow/ledger.py` is the blockchain-inspired,
+content-addressed, append-only chain of state blocks used by the
+decentralized network (`bazaar_*`, `decentral_web`, `search_service`).
+`chain_audit.py` certifies three PASS invariants by exhaustive
+single-block mutations over all chain lengths 2..9 x 10 seeds:
+    * L24 untampered verify: any chain built solely through `append()`
+      passes `verify()` -- recomputed hashes match stored hashes, prev
+      links hold (80 datums, all PASS);
+    * L25 non-terminal payload tamper (no re-hash): mutating the payload
+      of any non-terminal block k is always caught at exactly seq k
+      (the block's recomputed hash no longer matches the stored one);
+    * L26 non-terminal re-hash tamper: mutating payload AND re-hashing
+      a non-terminal block k is caught at its successor seq k+1, because
+      the forged block hash no longer matches the stored prev-link of
+      block k+1 (80 datums, all PASS, first failure always exactly k+1).
+Plus one HONEST_NEGATIVE: L27 "any payload modification is always
+detected, even with re-hashing" is **FALSE at the terminal (last)
+block** -- re-hashing the last block's stored hash evades `verify()`
+because a plain, unsigned hash chain has no successor to expose the
+forged prev.  This is the unbounded-authority limitation: a local-only
+chain without signatures cannot forbid an authority rewriting its own
+tail.
+
+The gate now stands on **72 certificates** and believes **63 claims**:
+15 core physics/system/calendar/ledger laws plus the 48 self-discovered
+laws.  The honest-negative set is now 7 strong: the system has
+deliberately rejected 7 laws it could otherwise have shipped.
 
 
   * "current = number of (1,0) bonds" is NOT conserved.  Counterexample:

@@ -1,8 +1,8 @@
 {
  "accepted": true,
- "n_claims": 60,
+ "n_claims": 63,
  "n_negative_claims": 0,
- "n_required_certs": 60,
+ "n_required_certs": 63,
  "results": [
   {
    "law": "L1 free streaming (rule 29, gap>=2 sector)",
@@ -156,6 +156,45 @@
    "rejection_reasons": [],
    "requires": [
     "L22_day_of_year_consistent"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "hash-chain verifies when untampered",
+   "ok": true,
+   "pass_evidence": [
+    "L24_chain_verify_untampered"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L24_chain_verify_untampered"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "non-terminal payload tamper (no re-hash) always detected",
+   "ok": true,
+   "pass_evidence": [
+    "L25_tamper_no_rehash_detected"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L25_tamper_no_rehash_detected"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "non-terminal re-hash tamper caught at successor block",
+   "ok": true,
+   "pass_evidence": [
+    "L26_rehash_tamper_detected"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L26_rehash_tamper_detected"
    ],
    "rule": null,
    "status": "BELIEVED FORMALLY"
@@ -785,6 +824,6 @@
    "status": "BELIEVED FORMALLY"
   }
  ],
- "timestamp": "2026-09-03 02:38:10 UTC",
+ "timestamp": "2026-09-03 02:51:13 UTC",
  "verdict": "ACCEPTED"
 }

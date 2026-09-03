@@ -60,6 +60,12 @@ def claims():
          "requires": ["L21_gregorian_monotonicity"]},
         {"law": "Day-of-year range consistency",
          "requires": ["L22_day_of_year_consistent"]},
+        {"law": "hash-chain verifies when untampered",
+         "requires": ["L24_chain_verify_untampered"]},
+        {"law": "non-terminal payload tamper (no re-hash) always detected",
+         "requires": ["L25_tamper_no_rehash_detected"]},
+        {"law": "non-terminal re-hash tamper caught at successor block",
+         "requires": ["L26_rehash_tamper_detected"]},
     ]
     discovered, _ = ld.discovery_claims()
     return base + discovered

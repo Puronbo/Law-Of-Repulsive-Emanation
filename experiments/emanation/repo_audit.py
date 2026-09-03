@@ -72,9 +72,11 @@ def _run_sequence(seed):
 
 
 def system_certificates():
-    """L14 / L14_bad measured on the real ledger + calendar exactness
-    invariants (both from real subsystems in this repository)."""
+    """Real-subsystem statements: the credit ledger (L14/L14_bad), the
+    universal calendar (L18-L23), and the hash-chain local ledger
+    (L24-L27) -- all from real, used modules in this repository."""
     from experiments.emanation.calendars_audit import calendar_certificates
+    from experiments.emanation.chain_audit import chain_certificates
     from experiments.emanation import law_checker as lc
     seeds = list(range(30))
 
@@ -131,7 +133,7 @@ def system_certificates():
              "honest_check": "must fail on sequences where fee residue "
                              "reached the reserve or a grant was issued"},
             lambda s: invariant_holds(s, credit_metric), seeds),
-    ] + calendar_certificates()
+    ] + calendar_certificates() + chain_certificates()
 
 
 def full_table():

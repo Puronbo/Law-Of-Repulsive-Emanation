@@ -351,6 +351,73 @@
   "status": "HONEST_NEGATIVE"
  },
  {
+  "configs_checked": 80,
+  "domain": "LedgerChain built purely by append() of distinct payloads; verify() == (True, None) over lengths 2..9 x 10 seeds",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L24_chain_verify_untampered",
+  "meta": {
+   "domain": "LedgerChain built purely by append() of distinct payloads; verify() == (True, None) over lengths 2..9 x 10 seeds",
+   "law": "a chain built through legitimate appends always verifies (recompute matches stored; prev links hold)",
+   "measured_on": "puno_flow.ledger.LedgerChain"
+  },
+  "n_fail": 0,
+  "n_ok": 80,
+  "points_checked": 80,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 80,
+  "domain": "mutate payload of every non-terminal block k in chains lengths 2..9 x 10 seeds; expect detect",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L25_tamper_no_rehash_detected",
+  "meta": {
+   "domain": "mutate payload of every non-terminal block k in chains lengths 2..9 x 10 seeds; expect detect",
+   "law": "any non-terminal payload mutation -- WITHOUT re-hashing the stored hash -- is caught at exactly the tampered block"
+  },
+  "n_fail": 0,
+  "n_ok": 80,
+  "points_checked": 80,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 80,
+  "domain": "mutate payload AND re-hash every non-terminal block k, lengths 2..9 x 10 seeds; expect detect at k+1",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L26_rehash_tamper_detected",
+  "meta": {
+   "domain": "mutate payload AND re-hash every non-terminal block k, lengths 2..9 x 10 seeds; expect detect at k+1",
+   "law": "re-hash tamper of a non-terminal block is exposed by its successor's prev-link mismatch (verify fails at k+1)"
+  },
+  "n_fail": 0,
+  "n_ok": 80,
+  "points_checked": 80,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 80,
+  "domain": "re-hash tamper of the LAST block, lengths 2..9 x 10 seeds",
+  "first_failure": {
+   "datum": [
+    2,
+    0
+   ]
+  },
+  "kind": "statement",
+  "label": "L27_any_payload_modification_detected",
+  "meta": {
+   "domain": "re-hash tamper of the LAST block, lengths 2..9 x 10 seeds",
+   "honest_check": "terminal re-hash must slip through verify()",
+   "law": "FALSE CANDIDATE: any payload modification is always detected, even with re-hashing -- the last block has no successor to expose the forged prev, so a plain hash chain cannot forbid an authority rewriting its own tail"
+  },
+  "n_fail": 80,
+  "n_ok": 0,
+  "points_checked": 80,
+  "status": "HONEST_NEGATIVE"
+ },
+ {
   "configs_checked": 10,
   "domain": "out-of-sample (N, rule) in [8, 9, 10, 11, 12] x {29,71}, attractor over the full 2^N state space",
   "first_failure": null,
