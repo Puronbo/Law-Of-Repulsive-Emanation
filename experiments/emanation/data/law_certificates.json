@@ -604,6 +604,162 @@
   "status": "HONEST_NEGATIVE"
  },
  {
+  "configs_checked": 60,
+  "domain": "n in {50,200,500} x m in {2,3} x seeds 0..9 (60 draws): sum(degree) must equal 2*|E| exactly",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L39_handshake_degree_sum",
+  "meta": {
+   "domain": "n in {50,200,500} x m in {2,3} x seeds 0..9 (60 draws): sum(degree) must equal 2*|E| exactly",
+   "law": "handshake lemma: sum_k d(k) = 2|E| for any undirected graph, verified via degree_sequence on the BA edge list",
+   "measured_on": "puno_flow.topology.preferential_attachment + degree_sequence"
+  },
+  "n_fail": 0,
+  "n_ok": 60,
+  "points_checked": 60,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 60,
+  "domain": "n in {50,200,500} x m in {2,3} x seeds 0..9 (60 draws): no self-loop, no duplicate edge",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L40_simple_graph_no_self_or_dup",
+  "meta": {
+   "domain": "n in {50,200,500} x m in {2,3} x seeds 0..9 (60 draws): no self-loop, no duplicate edge",
+   "law": "BA preferential_attachment uses a set() to pick m distinct targets per new node, so the edge list is a simple graph (no self-loops, no parallel edges)",
+   "measured_on": "puno_flow.topology.preferential_attachment"
+  },
+  "n_fail": 0,
+  "n_ok": 60,
+  "points_checked": 60,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 60,
+  "domain": "n in {50,200,500} x m in {2,3} x seeds 0..9 (60 draws): min(degree) == m",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L41_ba_min_degree_is_m",
+  "meta": {
+   "domain": "n in {50,200,500} x m in {2,3} x seeds 0..9 (60 draws): min(degree) == m",
+   "law": "the initial base clique (m+1 fully connected nodes) has degree m; every later node attaches to exactly m targets and receives no further edges until it is chosen as a target -- minimum degree is exactly m",
+   "measured_on": "puno_flow.topology.preferential_attachment + degree_sequence"
+  },
+  "n_fail": 0,
+  "n_ok": 60,
+  "points_checked": 60,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 6,
+  "domain": "6 large BA networks (n=50000, m=2, seeds 0..5): CSN discrete MLE tail exponent (xmin=15) must be within 0.15 of 3",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L42_ba_power_law_exponent_three",
+  "meta": {
+   "domain": "6 large BA networks (n=50000, m=2, seeds 0..5): CSN discrete MLE tail exponent (xmin=15) must be within 0.15 of 3",
+   "law": "the BA model has asymptotic degree distribution P(k) ~ k^-3; the Clauset-Shalizi-Newman estimator fitted to the degree tail of a single large draw should recover gamma ~ 3",
+   "measured_on": "puno_flow.topology.power_law_exponent"
+  },
+  "n_fail": 0,
+  "n_ok": 6,
+  "points_checked": 6,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 60,
+  "domain": "n in {50,200,500} x m in {2,3} x seeds 0..9 (60 draws): hubs(edges,n,k=20) degrees strictly descending",
+  "first_failure": {
+   "datum": [
+    50,
+    2,
+    0
+   ]
+  },
+  "kind": "statement",
+  "label": "L43_hubs_returns_strictly_descending",
+  "meta": {
+   "domain": "n in {50,200,500} x m in {2,3} x seeds 0..9 (60 draws): hubs(edges,n,k=20) degrees strictly descending",
+   "honest_check": "must find at least one (n,m,seed) where the returned hub degrees are NOT strictly descending",
+   "law": "FALSE CANDIDATE: hubs returns k nodes with strictly descending degrees; np.argsort breaks ties by index so the returned degrees can be non-increasing with equal neighbours at the selection boundary"
+  },
+  "n_fail": 60,
+  "n_ok": 0,
+  "points_checked": 60,
+  "status": "HONEST_NEGATIVE"
+ },
+ {
+  "configs_checked": 10,
+  "domain": "10 seeded sequences: reserve built via 15 trades, then 1-5 grants; conserved_total() checked to 1e-6 after each grant",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L44_webledger_grant_debits_reserve",
+  "meta": {
+   "domain": "10 seeded sequences: reserve built via 15 trades, then 1-5 grants; conserved_total() checked to 1e-6 after each grant",
+   "law": "Web Ledger.grant funds from the commons reserve (not minted): conserved_total() == accounts_sum() + reserve is invariant across grants",
+   "measured_on": "credit_commons.web.ledger.Ledger.grant, in-memory SQLite, deterministic rng per sequence",
+   "tolerance": 1e-06
+  },
+  "n_fail": 0,
+  "n_ok": 10,
+  "points_checked": 10,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 10,
+  "domain": "10 seeded sequences: reserve built via 10 trades, then an impossibly large grant (must fail) followed by a valid small grant (must succeed)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L45_webledger_grants_only_within_reserve",
+  "meta": {
+   "domain": "10 seeded sequences: reserve built via 10 trades, then an impossibly large grant (must fail) followed by a valid small grant (must succeed)",
+   "law": "The ledger refuses a grant that would draw more than the available reserve; grants within the reserve succeed",
+   "measured_on": "credit_commons.web.ledger.Ledger.grant return value (ok, msg), in-memory SQLite",
+   "tolerance": 1e-06
+  },
+  "n_fail": 0,
+  "n_ok": 10,
+  "points_checked": 10,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 10,
+  "domain": "10 seeded sequences of 30 trades each (mixed directions, necessity on/off, committed_harm in {0.0, 0.5}, terminal present); conserved_total() checked to 1e-6 after every trade",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L46_webledger_trade_conserves_total",
+  "meta": {
+   "domain": "10 seeded sequences of 30 trades each (mixed directions, necessity on/off, committed_harm in {0.0, 0.5}, terminal present); conserved_total() checked to 1e-6 after every trade",
+   "law": "A trade is pure redistribution: conserved_total() (accounts_sum + reserve) is exactly conserved (no minting, no destruction), with the conserved fee reaching accounts and any unclaimed residue flowing to the commons reserve",
+   "measured_on": "credit_commons.web.ledger.Ledger.trade, in-memory SQLite, deterministic rng per sequence",
+   "tolerance": 1e-06
+  },
+  "n_fail": 0,
+  "n_ok": 10,
+  "points_checked": 10,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 10,
+  "domain": "10 seeded sequences: reserve built via 8 trades, then one grant; recipient trust checked before/after",
+  "first_failure": {
+   "datum": 0
+  },
+  "kind": "statement",
+  "label": "L47_webledger_grant_increases_recipient_trust",
+  "meta": {
+   "domain": "10 seeded sequences: reserve built via 8 trades, then one grant; recipient trust checked before/after",
+   "honest_check": "recipient trust must be unchanged after the grant; since grants add 0.05*amt to trust, the pred is False and ships HONEST_NEGATIVE",
+   "law": "FALSE CANDIDATE: a grant never changes the recipient's trust -- in fact grants add 0.05*scaled_amount to the recipient's trust (progressive trust bonus per spec section 5.5)",
+   "tolerance": 1e-06
+  },
+  "n_fail": 10,
+  "n_ok": 0,
+  "points_checked": 10,
+  "status": "HONEST_NEGATIVE"
+ },
+ {
   "configs_checked": 10,
   "domain": "out-of-sample (N, rule) in [8, 9, 10, 11, 12] x {29,71}, attractor over the full 2^N state space",
   "first_failure": null,

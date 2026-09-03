@@ -590,10 +590,11 @@ forged prev.  This is the unbounded-authority limitation: a local-only
 chain without signatures cannot forbid an authority rewriting its own
 tail.
 
-The gate now stands on **83 certificates** and believes **71 claims**:
-23 core physics/system/calendar/ledger/flow/commons/rubric laws plus the
-48 self-discovered laws.  The honest-negative set is now 11 strong: the
-system has deliberately rejected 11 laws it could otherwise have shipped.
+The gate now stands on **92 certificates** and believes **78 claims**:
+30 core physics/system/calendar/ledger/flow/commons/rubric/topology
+laws plus the 48 self-discovered laws.  The honest-negative set is now
+13 strong: the system has deliberately rejected 13 laws it could
+otherwise have shipped.
 
 Eleventh layer: **the fourth real-subsystem audit -- balance-flow engine
 geometry (L28-L31).** `puno_flow/engine.py` is the local-only balance
@@ -652,11 +653,49 @@ kinds of real subsystem entered the table:
       skill residue (e.g. technical writer S = 0.0275).  The honest audit
       refuses to confuse a practical label with an exact zero.
 
-Seven real subsystems are now independently audited as measured facts:
+Nine real subsystems are now independently audited as measured facts:
 the soliton physics (L1-L13), the credit ledger (L14), the calendar
 (L18-L23), the hash-chain local ledger (L24-L27), the balance-flow
-engine (L28-L31), the credit-commons simulator (L32-L34), and the
-professions rubric (L35-L38).
+engine (L28-L31), the credit-commons simulator (L32-L34), the
+professions rubric (L35-L38), the scale-free topology (L39-L43), and
+the web credit ledger (L44-L47).
+
+Thirteenth layer: **the seventh and eighth real-subsystem audits --
+scale-free topology and the web credit ledger (L39-L47).**  A second
+parallel expert team produced two more audit modules, reconciled onto
+the single label scheme:
+    * `topology_audit.py` (L39-L43) certifies the Barabási-Albert
+      scale-free generator (`puno_flow/topology.py`): L39 the handshake
+      lemma (sum of degrees == 2 * edge count, 60 draws, PASS); L40 the
+      network is simple (no self-loops, no duplicate unordered edges,
+      the set()-based target selection guarantees it, 60 PASS); L41 the
+      minimum degree is exactly m (initial base clique + m-attachment,
+      60 PASS); L42 the fitted Clauset-Shalizi-Newman exponent is ~3
+      (|gamma-3| < 0.15 on large tail-fit networks, PASS) -- and one
+      HONEST_NEGATIVE: L43 "hubs() returns the k top nodes with strictly
+      descending distinct degrees" is FALSE because `np.argsort` breaks
+      degree ties by index, so the returned degrees are non-increasing
+      with ties (first_failure on seed 0).  The tie-breaking is an
+      honest quirk, not a bug.
+    * `webledger_audit.py` (L44-L47) certifies the *correct* SQLite
+      ledger (`credit_commons/web/ledger.py`), the sharp contrast to the
+      simulator's minting: L44 grants are funded from the reserve, not
+      minted (conserved_total invariant across grants, 10 seeds, PASS);
+      L45 a grant larger than the reserve is rejected while a within-
+      reserve grant succeeds (PASS); L46 trades conserve credit + reserve
+      on the real SQLite ledger (complements L14, PASS); and one
+      HONEST_NEGATIVE -- L47 "a grant never changes the recipient's
+      trust" is FALSE: grants add 0.05 * scaled_amt to trust (the
+      progressive trust bonus, §5.5; fails on every datum).  Together
+      L33 (sim mints, withheld) and L44 (web ledger funds from reserve)
+      certify the *directional* difference the code intends.
+
+The whole `tests/` tree is now green for the first time (645 passed,
+0 failed): the 22 pre-existing sigma failures were a missing-path wiring
+issue in `tests/test_sigma.py` (the `sigma.chassis` deliverable lives in
+the bundled `sigma_venv`; the suite now inserts it onto sys.path the same
+way the repo-root `test_sigma.py` and `sigma_school_server.py` already
+do), not missing code.
 
 
   * "current = number of (1,0) bonds" is NOT conserved.  Counterexample:

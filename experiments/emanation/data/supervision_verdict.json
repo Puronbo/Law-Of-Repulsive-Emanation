@@ -1,8 +1,8 @@
 {
  "accepted": true,
- "n_claims": 71,
+ "n_claims": 78,
  "n_negative_claims": 0,
- "n_required_certs": 71,
+ "n_required_certs": 78,
  "results": [
   {
    "law": "L1 free streaming (rule 29, gap>=2 sector)",
@@ -299,6 +299,97 @@
    "rejection_reasons": [],
    "requires": [
     "L37_mandate_fraction_is_skill_complement"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "BA network satisfies the handshake degree-sum lemma",
+   "ok": true,
+   "pass_evidence": [
+    "L39_handshake_degree_sum"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L39_handshake_degree_sum"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "BA network is simple (no self-loops or duplicate edges)",
+   "ok": true,
+   "pass_evidence": [
+    "L40_simple_graph_no_self_or_dup"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L40_simple_graph_no_self_or_dup"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "BA network minimum degree equals m",
+   "ok": true,
+   "pass_evidence": [
+    "L41_ba_min_degree_is_m"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L41_ba_min_degree_is_m"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "BA degree distribution has power-law exponent ~3",
+   "ok": true,
+   "pass_evidence": [
+    "L42_ba_power_law_exponent_three"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L42_ba_power_law_exponent_three"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "web ledger grants are funded from the reserve (not minted)",
+   "ok": true,
+   "pass_evidence": [
+    "L44_webledger_grant_debits_reserve"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L44_webledger_grant_debits_reserve"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "web ledger grants only within available reserve",
+   "ok": true,
+   "pass_evidence": [
+    "L45_webledger_grants_only_within_reserve"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L45_webledger_grants_only_within_reserve"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "web ledger trades conserve total credit + reserve",
+   "ok": true,
+   "pass_evidence": [
+    "L46_webledger_trade_conserves_total"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L46_webledger_trade_conserves_total"
    ],
    "rule": null,
    "status": "BELIEVED FORMALLY"
@@ -928,6 +1019,6 @@
    "status": "BELIEVED FORMALLY"
   }
  ],
- "timestamp": "2026-09-03 04:08:21 UTC",
+ "timestamp": "2026-09-03 04:35:05 UTC",
  "verdict": "ACCEPTED"
 }

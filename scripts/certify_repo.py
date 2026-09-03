@@ -82,6 +82,20 @@ def claims():
          "requires": ["L36_profession_names_unique_nonempty"]},
         {"law": "mandate fraction is the exact skill complement",
          "requires": ["L37_mandate_fraction_is_skill_complement"]},
+        {"law": "BA network satisfies the handshake degree-sum lemma",
+         "requires": ["L39_handshake_degree_sum"]},
+        {"law": "BA network is simple (no self-loops or duplicate edges)",
+         "requires": ["L40_simple_graph_no_self_or_dup"]},
+        {"law": "BA network minimum degree equals m",
+         "requires": ["L41_ba_min_degree_is_m"]},
+        {"law": "BA degree distribution has power-law exponent ~3",
+         "requires": ["L42_ba_power_law_exponent_three"]},
+        {"law": "web ledger grants are funded from the reserve (not minted)",
+         "requires": ["L44_webledger_grant_debits_reserve"]},
+        {"law": "web ledger grants only within available reserve",
+         "requires": ["L45_webledger_grants_only_within_reserve"]},
+        {"law": "web ledger trades conserve total credit + reserve",
+         "requires": ["L46_webledger_trade_conserves_total"]},
     ]
     discovered, _ = ld.discovery_claims()
     return base + discovered
