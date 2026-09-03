@@ -72,6 +72,16 @@ def claims():
          "requires": ["L29_to_disk_rim_exact"]},
         {"law": "flow_over dedups edges and ignores self/out-of-range links",
          "requires": ["L30_flow_over_dedup_and_self_loop_invariant"]},
+        {"law": "commons trades conserve total credit (never minted)",
+         "requires": ["L32_trade_conserves_total_credit"]},
+        {"law": "commons ledger conservation identity (credit + reserve)",
+         "requires": ["L34_ledger_conservation_identity"]},
+        {"law": "professions rubric score stays in the unit square",
+         "requires": ["L35_rubric_score_bounded"]},
+        {"law": "profession names unique/non-empty with positive-shares tasks",
+         "requires": ["L36_profession_names_unique_nonempty"]},
+        {"law": "mandate fraction is the exact skill complement",
+         "requires": ["L37_mandate_fraction_is_skill_complement"]},
     ]
     discovered, _ = ld.discovery_claims()
     return base + discovered

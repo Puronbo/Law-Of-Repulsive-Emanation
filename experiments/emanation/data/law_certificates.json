@@ -487,6 +487,124 @@
  },
  {
   "configs_checked": 10,
+  "domain": "30 seeded trade-only sequences (30 trades each) with mixed directions, necessity on/off, committed_harm in {0.0, 0.5}, and terminal/referrer/validators present; tolerance 1e-9 on the full money supply (sum(a.credit)+reserve) across each trade",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L32_trade_conserves_total_credit",
+  "meta": {
+   "domain": "30 seeded trade-only sequences (30 trades each) with mixed directions, necessity on/off, committed_harm in {0.0, 0.5}, and terminal/referrer/validators present; tolerance 1e-9 on the full money supply (sum(a.credit)+reserve) across each trade",
+   "law": "a trade is pure redistribution: sum(a.credit)+reserve is exactly conserved (no minting, no destruction), with the conserved facilitation fee reaching floor/terminal/referrer/validator accounts and any unclaimed residue flowing to the commons reserve",
+   "measured_on": "credit_commons.sim.Commons.trade / _split_fee, deterministic rng per sequence",
+   "tolerance": 1e-09
+  },
+  "n_fail": 0,
+  "n_ok": 10,
+  "points_checked": 10,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 10,
+  "domain": "10 seeded grant sequences (reserve pre-seeded through trades; 1-4 grants each)",
+  "first_failure": {
+   "datum": 0
+  },
+  "kind": "statement",
+  "label": "L33_grant_funded_from_reserve",
+  "meta": {
+   "domain": "10 seeded grant sequences (reserve pre-seeded through trades; 1-4 grants each)",
+   "honest_check": "the reserve must be drawn down by a reserve-funded grant; since grants never touch reserve, the pred is False and ships HONEST_NEGATIVE",
+   "law": "FALSE CANDIDATE: Commons funds its grants from the reserve, so total credit is conserved (never minted) -- Commons.grant credits the recipient and grows total_credit WITHOUT debiting reserve, so grants MINT new credit (cf ledger credit_commons/web/ledger.py which funds from reserve correctly)",
+   "tolerance": 1e-09
+  },
+  "n_fail": 10,
+  "n_ok": 0,
+  "points_checked": 10,
+  "status": "HONEST_NEGATIVE"
+ },
+ {
+  "configs_checked": 10,
+  "domain": "10 seeded sequences mixing 30 trades + grants each; assert total_credit == sum(a.credit) + reserve with tolerance 1e-9",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L34_ledger_conservation_identity",
+  "meta": {
+   "domain": "10 seeded sequences mixing 30 trades + grants each; assert total_credit == sum(a.credit) + reserve with tolerance 1e-9",
+   "law": "bookkeeping identity total_credit == sum(a.credit) + reserve holds after ANY mixture of trades and grants (both books are updated in lockstep)",
+   "measured_on": "credit_commons.sim.Commons (total_credit, accounts, reserve)",
+   "tolerance": 1e-09
+  },
+  "n_fail": 0,
+  "n_ok": 10,
+  "points_checked": 10,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 14,
+  "domain": "all 14 professions in professions_data.PROFESSIONS, every task and the effort-weighted K, S",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L35_rubric_score_bounded",
+  "meta": {
+   "domain": "all 14 professions in professions_data.PROFESSIONS, every task and the effort-weighted K, S",
+   "law": "0 <= k, s <= 1 and k + s <= 1 per task, so 0 <= K, S <= 1 and K + S <= 1 for the weighted score (rubric stays in the unit square)",
+   "measured_on": "professions.rubric.profession_verdict over the shared dataset"
+  },
+  "n_fail": 0,
+  "n_ok": 14,
+  "points_checked": 14,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 14,
+  "domain": "every profession entry in the dataset (name, tasks)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L36_profession_names_unique_nonempty",
+  "meta": {
+   "domain": "every profession entry in the dataset (name, tasks)",
+   "law": "name is a non-empty unique string; at least one task and every task has strictly positive effort share, so the _normalize divider is never zero"
+  },
+  "n_fail": 0,
+  "n_ok": 14,
+  "points_checked": 14,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 14,
+  "domain": "all 14 professions (name, tasks)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L37_mandate_fraction_is_skill_complement",
+  "meta": {
+   "domain": "all 14 professions (name, tasks)",
+   "law": "text_mandate_fraction(verdict) == 1 - verdict[skill_fraction] exactly: write-driveable fraction and skill residue are complements (mandate + S == 1)",
+   "measured_on": "professions.mandate.text_mandate_fraction"
+  },
+  "n_fail": 0,
+  "n_ok": 14,
+  "points_checked": 14,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 5,
+  "domain": "the 5 Class A professions in the dataset",
+  "first_failure": {
+   "datum": "technical writer"
+  },
+  "kind": "statement",
+  "label": "L38_classA_literal_zero_skill",
+  "meta": {
+   "domain": "the 5 Class A professions in the dataset",
+   "honest_check": "the first Class A datum must fail the literal S == 0 test (its skill_fraction is > 0)",
+   "law": "FALSE CANDIDATE: Class A means literally no skill-based knowledge (S == 0.0); the real Class A bar is the threshold S <= 0.10, and every Class A profession here carries a small but nonzero skill residue (e.g. technical writer S = 0.0275)"
+  },
+  "n_fail": 5,
+  "n_ok": 0,
+  "points_checked": 5,
+  "status": "HONEST_NEGATIVE"
+ },
+ {
+  "configs_checked": 10,
   "domain": "out-of-sample (N, rule) in [8, 9, 10, 11, 12] x {29,71}, attractor over the full 2^N state space",
   "first_failure": null,
   "kind": "statement",

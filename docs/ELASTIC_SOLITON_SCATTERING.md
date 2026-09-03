@@ -590,10 +590,10 @@ forged prev.  This is the unbounded-authority limitation: a local-only
 chain without signatures cannot forbid an authority rewriting its own
 tail.
 
-The gate now stands on **76 certificates** and believes **66 claims**:
-18 core physics/system/calendar/ledger/flow laws plus the 48
-self-discovered laws.  The honest-negative set is now 8 strong: the
-system has deliberately rejected 8 laws it could otherwise have shipped.
+The gate now stands on **83 certificates** and believes **71 claims**:
+23 core physics/system/calendar/ledger/flow/commons/rubric laws plus the
+48 self-discovered laws.  The honest-negative set is now 11 strong: the
+system has deliberately rejected 11 laws it could otherwise have shipped.
 
 Eleventh layer: **the fourth real-subsystem audit -- balance-flow engine
 geometry (L28-L31).** `puno_flow/engine.py` is the local-only balance
@@ -624,6 +624,39 @@ centroid drifts (nonzero displacement per step; first_failure on seed 0).
 A pure local balance flow already breaks exact centroid conservation; the
 honest audit reports that no such conserved quantity exists instead of
 inventing one.
+
+Twelfth layer: **the fifth and sixth real-subsystem audits -- the
+credit-commons simulator and the professions rubric stack (L32-L38).**
+These were produced by a team of parallel audit experts, each holding
+the same certificate contract, then reconciled into one gate.  Two more
+kinds of real subsystem entered the table:
+    * `credit_commons_audit.py` (L32-L34) certifies the simulator's money
+      story: L32 trade conserves total credit (trades never mint or
+      destroy credit -- 10 seeds of mixed trades with necessity/harm/
+      fee-split, all PASS); L34 the bookkeeping identity
+      `total_credit == sum(credit) + reserve` holds through any mixture
+      of trades and grants (both books updated in lockstep); and one
+      HONEST_NEGATIVE -- L33 "commons funds its grants from the reserve"
+      is FALSE: `grant()` mints credit into total_credit without drawing
+      the reserve at all (first_failure seed 0).  The known `sim.grant`
+      minting divergence is now a first-class measured fact in the gate.
+    * `professions_audit.py` (L35-L38) certifies the AI-performability
+      rubric: L35 the rubric score stays in the unit square (0<=k,s<=1,
+      k+s<=1 per task, so 0<=K,S<=1 and K+S<=1 -- all 14 professions,
+      PASS); L36 names are non-empty/unique with positive-share tasks
+      (so the effort-normalizer never divides by zero, PASS); L37
+      `text_mandate_fraction == 1 - skill_fraction` exactly (mandate + S
+      == 1, all 14, PASS); and one HONEST_NEGATIVE -- L38 "Class A means
+      literally S == 0" is FALSE: the Class A bar is the threshold
+      S <= 0.10, and every Class A profession carries a small nonzero
+      skill residue (e.g. technical writer S = 0.0275).  The honest audit
+      refuses to confuse a practical label with an exact zero.
+
+Seven real subsystems are now independently audited as measured facts:
+the soliton physics (L1-L13), the credit ledger (L14), the calendar
+(L18-L23), the hash-chain local ledger (L24-L27), the balance-flow
+engine (L28-L31), the credit-commons simulator (L32-L34), and the
+professions rubric (L35-L38).
 
 
   * "current = number of (1,0) bonds" is NOT conserved.  Counterexample:

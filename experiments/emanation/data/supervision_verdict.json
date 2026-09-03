@@ -1,8 +1,8 @@
 {
  "accepted": true,
- "n_claims": 66,
+ "n_claims": 71,
  "n_negative_claims": 0,
- "n_required_certs": 66,
+ "n_required_certs": 71,
  "results": [
   {
    "law": "L1 free streaming (rule 29, gap>=2 sector)",
@@ -234,6 +234,71 @@
    "rejection_reasons": [],
    "requires": [
     "L30_flow_over_dedup_and_self_loop_invariant"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "commons trades conserve total credit (never minted)",
+   "ok": true,
+   "pass_evidence": [
+    "L32_trade_conserves_total_credit"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L32_trade_conserves_total_credit"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "commons ledger conservation identity (credit + reserve)",
+   "ok": true,
+   "pass_evidence": [
+    "L34_ledger_conservation_identity"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L34_ledger_conservation_identity"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "professions rubric score stays in the unit square",
+   "ok": true,
+   "pass_evidence": [
+    "L35_rubric_score_bounded"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L35_rubric_score_bounded"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "profession names unique/non-empty with positive-shares tasks",
+   "ok": true,
+   "pass_evidence": [
+    "L36_profession_names_unique_nonempty"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L36_profession_names_unique_nonempty"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "mandate fraction is the exact skill complement",
+   "ok": true,
+   "pass_evidence": [
+    "L37_mandate_fraction_is_skill_complement"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L37_mandate_fraction_is_skill_complement"
    ],
    "rule": null,
    "status": "BELIEVED FORMALLY"
@@ -863,6 +928,6 @@
    "status": "BELIEVED FORMALLY"
   }
  ],
- "timestamp": "2026-09-03 03:44:39 UTC",
+ "timestamp": "2026-09-03 04:08:21 UTC",
  "verdict": "ACCEPTED"
 }
