@@ -155,8 +155,10 @@ def full_table():
     from experiments.emanation import law_checker as lc
     from experiments.emanation import law_proposer as lp
     from experiments.emanation import law_discovery as ldd
+    from experiments.emanation import transformer_proposer as tp
     return (lc.all_certificates() + system_certificates()
-            + lp.proposer_certificates() + ldd.discovery_certificates())
+            + lp.proposer_certificates() + ldd.discovery_certificates()
+            + tp.proposer_certificates())
 
 
 def fresh_table_matches(path=_CERTS):

@@ -96,6 +96,9 @@ def claims():
          "requires": ["L45_webledger_grants_only_within_reserve"]},
         {"law": "web ledger trades conserve total credit + reserve",
          "requires": ["L46_webledger_trade_conserves_total"]},
+        {"law": "toy transformer's proposed rule (reversal) is exact within "
+                "its trained length",
+         "requires": ["PROPOSED_TF_reversal_length4"]},
     ]
     discovered, _ = ld.discovery_claims()
     return base + discovered

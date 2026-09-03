@@ -1591,5 +1591,53 @@
   "n_ok": 3,
   "points_checked": 3,
   "status": "PASS"
+ },
+ {
+  "configs_checked": 200,
+  "domain": "out-of-sample length-4 sequences (200 fresh, seeded)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "PROPOSED_TF_reversal_length4",
+  "meta": {
+   "architecture": "sfiles toy transformer (FoldedReLU, He init, residuals, hand-derived gradient-checked backprop)",
+   "domain": "out-of-sample length-4 sequences (200 fresh, seeded)",
+   "law": "trained model's rule: out[j] = in[T-1-j] (reversal)",
+   "proposer": "transformer_proposer (trained model proposes; ground truth is np-style literal reversal)",
+   "trained_length": 4,
+   "vocab": 4
+  },
+  "n_fail": 0,
+  "n_ok": 200,
+  "points_checked": 200,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 200,
+  "domain": "out-of-sample length-6 sequences (200 fresh, seeded)",
+  "first_failure": {
+   "datum": [
+    1,
+    2,
+    1,
+    0,
+    1,
+    2
+   ]
+  },
+  "kind": "statement",
+  "label": "PROPOSED_TF_reversal_length6_overreach",
+  "meta": {
+   "architecture": "sfiles toy transformer (FoldedReLU, He init, residuals, hand-derived gradient-checked backprop)",
+   "domain": "out-of-sample length-6 sequences (200 fresh, seeded)",
+   "honest_check": "length-6 is outside the trained positional embedding support",
+   "law": "FLAWED PROPOSAL: the same length-4-trained model reverses length-6 sequences exactly -- extrapolation beyond any seen positional embedding; gate must reject it",
+   "proposer": "transformer_proposer (no certificate written; measured against literal reversal)",
+   "trained_length": 4,
+   "vocab": 4
+  },
+  "n_fail": 200,
+  "n_ok": 0,
+  "points_checked": 200,
+  "status": "HONEST_NEGATIVE"
  }
 ]

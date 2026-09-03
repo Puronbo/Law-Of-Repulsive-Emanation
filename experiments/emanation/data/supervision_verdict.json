@@ -1,8 +1,8 @@
 {
  "accepted": true,
- "n_claims": 78,
+ "n_claims": 79,
  "n_negative_claims": 0,
- "n_required_certs": 78,
+ "n_required_certs": 79,
  "results": [
   {
    "law": "L1 free streaming (rule 29, gap>=2 sector)",
@@ -390,6 +390,19 @@
    "rejection_reasons": [],
    "requires": [
     "L46_webledger_trade_conserves_total"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "toy transformer's proposed rule (reversal) is exact within its trained length",
+   "ok": true,
+   "pass_evidence": [
+    "PROPOSED_TF_reversal_length4"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "PROPOSED_TF_reversal_length4"
    ],
    "rule": null,
    "status": "BELIEVED FORMALLY"
@@ -1019,6 +1032,6 @@
    "status": "BELIEVED FORMALLY"
   }
  ],
- "timestamp": "2026-09-03 04:35:05 UTC",
+ "timestamp": "2026-09-03 05:14:46 UTC",
  "verdict": "ACCEPTED"
 }

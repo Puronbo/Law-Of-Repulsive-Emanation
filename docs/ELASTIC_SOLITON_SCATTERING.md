@@ -590,10 +590,11 @@ forged prev.  This is the unbounded-authority limitation: a local-only
 chain without signatures cannot forbid an authority rewriting its own
 tail.
 
-The gate now stands on **92 certificates** and believes **78 claims**:
-30 core physics/system/calendar/ledger/flow/commons/rubric/topology
-laws plus the 48 self-discovered laws.  The honest-negative set is now
-13 strong: the system has deliberately rejected 13 laws it could
+The gate now stands on **94 certificates** and believes **79 claims**:
+31 core physics/system/calendar/ledger/flow/commons/rubric/topology
+laws (including the toy-transformer proposer's certified reversal rule)
+plus the 48 self-discovered laws.  The honest-negative set is now
+14 strong: the system has deliberately rejected 14 laws it could
 otherwise have shipped.
 
 Eleventh layer: **the fourth real-subsystem audit -- balance-flow engine
@@ -689,6 +690,30 @@ the single label scheme:
       progressive trust bonus, §5.5; fails on every datum).  Together
       L33 (sim mints, withheld) and L44 (web ledger funds from reserve)
       certify the *directional* difference the code intends.
+
+Fourteenth layer: **the toy-model transformer as a gated-exact proposer
+partner.**  The from-scratch transformer in `sfiles/` (FoldedReLU, He
+initialization, residual blocks, hand-derived *and finite-difference
+gradient-checked* backprop -- relative error ~1e-10) is wired into the
+gate as a *proposer*, not an authority.  `transformer_proposer.py`
+trains it (fixed seed) to reverse length-4 symbol sequences -- a
+transformation it provably learns (200/200 exact on fresh sequences,
+gradient check passes).  It then proposes the general rule that model
+embodies: `out[j] = in[T-1-j]` (reversal).  The certificate gate vets
+every proposal **exhaustively against ground truth** (the literal
+reverse of each sequence -- the model's own output is never trusted):
+    * `PROPOSED_TF_reversal_length4` -- out-of-sample length-4
+      sequences, 200/200 fresh, PASS: within its trained length the
+      proposed rule is exact.
+    * `PROPOSED_TF_reversal_length6_overreach` -- HONEST_NEGATIVE: the
+      same model is asked to reverse length-6 sequences, *an
+      extrapolation beyond anything its positional embedding ever saw*,
+      and the gate rejects it with an exact counter-example (0/200
+      generalizable).  This is the deliberate boundary the gate draws:
+      a lossy, trained model may PROPOSE breadth, but the exhaustive
+      measurement of current, grounded truth -- never the weights -- is
+      the only thing that makes a belief.  The toy transformer is a
+      partner whose every claim the epistemic engine can and does veto.
 
 The whole `tests/` tree is now green for the first time (645 passed,
 0 failed): the 22 pre-existing sigma failures were a missing-path wiring
