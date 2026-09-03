@@ -5,6 +5,19 @@ Sigma Chassis: Complete Test Suite
 Run with: pytest tests/test_sigma.py -v
 """
 
+import os
+import sys
+
+# The sigma.chassis framework ships inside the bundled virtualenv sigma_venv/
+# (editable package import at repo root).  Ensure it -- and its own
+# site-packages (numpy, mpmath) -- are importable when this suite runs under
+# the host interpreter.  Mirrors the established pattern used by the root
+# test_sigma.py and sigma_school_server.py.
+_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_VENV = os.path.join(_ROOT, "sigma_venv")
+sys.path.insert(0, os.path.join(_VENV, "Lib", "site-packages"))
+sys.path.insert(0, _VENV)
+
 import pytest
 import math
 
