@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "soliton-eca"
+version = "0.1.0"
+description = "Validated soliton-bus elementary cellular automata and event-driven SNN research prototype"
+requires-python = ">=3.11"
+authors = [{name = "Research Prototype"}]
+dependencies = ["numpy>=1.24"]
+
+[project.scripts]
+soliton-cognitive = "soliton_eca.cli:main"
+
+[tool.setuptools]
+packages = ["soliton_eca"]
+
+[tool.pytest.ini_options]
+testpaths = ["soliton_eca/test_soliton_eca.py"]
