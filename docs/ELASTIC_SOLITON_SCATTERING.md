@@ -541,9 +541,33 @@ self-directed agent earned.  This closes the loop: propose -> measure ->
 certify -> believe-or-veto, all enforced by one machine-readable gate
 that CI, the webapp, and agents all read.
 
-**This answers "can the proof-checking library be replaced by physics?":
-yes, for the characterized sector -- the prediction IS the law.**  And the
-laws VETO candidates that a checking harness might let pass:
+Ninth layer: **the second real-subsystem audit -- calendar exactness
+(L18-L23).** The universal calendar (`calendars/`) is the repo's own
+exact, untruncated day axis, so it is the natural second target for
+`full_table()` beyond the credit ledger.  `calendars_audit.py` certifies
+five PASS invariants by exhaustive, pure-integer measurement over whole
+cycles (one machine-readable certificate per law, integrated into the
+same gate table the supervisor reads):
+    * L18 Gregorian roundtrip: `gregorian_ymd(civil_to_days(y,m,d)) ==
+      (y,m,d)` over all 146097 days of a full 400-year cycle (every
+      leap-year case exactly once);
+    * L19 Julian roundtrip: `julian_ymd(julian_to_days(y,m,d)) == (y,m,d)`
+      over all 1461 days of one 4-year Julian cycle (this forced the
+      missing inverse `julian_to_days`; roundtripping through the
+      Gregorian inverse was a category error and now correctly uses the
+      Julian inverse);
+    * L20 Tzolkin periodicity: `render(d+260) == render(d)` for all
+      d in 0..999 (the 260-day sacred round);
+    * L21 Gregorian monotonicity: `gregorian_ymd(d+1) > gregorian_ymd(d)`
+      lexicographically for all d in 0..146096;
+    * L22 day-of-year range: `1 <= day_of_year(y,m,d) <= 366` for every
+      date in the Gregorian cycle.
+Plus one HONEST_NEGATIVE: L23 "the tropical year is an exact integer"
+is FALSE -- `year_fraction` is nonzero at the very first day past the
+datum (the code correctly uses 365.2422, not an integer year).  The
+gate now stands on **68 certificates** and believes **60 claims**: the
+12 core physics/system/calendar laws plus the 48 self-discovered laws.
+
 
   * "current = number of (1,0) bonds" is NOT conserved.  Counterexample:
     [292,527,990,991,1166,1754] has 5 active bonds; the jam (990,991)

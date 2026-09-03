@@ -66,7 +66,7 @@ def test_cli_gate_ok():
                        capture_output=True, text=True, env=env)
     assert r.returncode == 0, r.stdout + r.stderr
     n_disco = len(ld.discovery_claims()[0])
-    assert "all %d claims believed" % (7 + n_disco) in r.stdout
+    assert "all %d claims believed" % (12 + n_disco) in r.stdout
 
 
 def test_cli_gate_covers_discovery_laws():
@@ -77,7 +77,7 @@ def test_cli_gate_covers_discovery_laws():
                        capture_output=True, text=True,
                        env=dict(os.environ))
     assert r.returncode == 0
-    assert "all %d claims believed" % (7 + len(claims)) in r.stdout
+    assert "all %d claims believed" % (12 + len(claims)) in r.stdout
 
 
 def test_cli_claims_listing():

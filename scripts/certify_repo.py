@@ -50,6 +50,16 @@ def claims():
          "requires": ["L13_ring_attractor_29_71"]},
         {"law": "commons reserve conservation (spec gate 6)",
          "requires": ["L14_gate6_conservation"]},
+        {"law": "Gregorian roundtrip exactness (400-year cycle)",
+         "requires": ["L18_gregorian_roundtrip"]},
+        {"law": "Julian roundtrip exactness (4-year cycle)",
+         "requires": ["L19_julian_roundtrip"]},
+        {"law": "Tzolkin 260-day periodicity",
+         "requires": ["L20_tzolkin_periodicity"]},
+        {"law": "Gregorian monotonicity (date ordering)",
+         "requires": ["L21_gregorian_monotonicity"]},
+        {"law": "Day-of-year range consistency",
+         "requires": ["L22_day_of_year_consistent"]},
     ]
     discovered, _ = ld.discovery_claims()
     return base + discovered

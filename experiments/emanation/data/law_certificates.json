@@ -259,6 +259,98 @@
   "status": "HONEST_NEGATIVE"
  },
  {
+  "configs_checked": 146097,
+  "domain": "Gregorian roundtrip: gregorian_ymd(civil_to_days(y,m,d)) == (y,m,d) for all integer days 0..146096 (one full 400-year cycle; every leap-year case once)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L18_gregorian_roundtrip",
+  "meta": {
+   "domain": "Gregorian roundtrip: gregorian_ymd(civil_to_days(y,m,d)) == (y,m,d) for all integer days 0..146096 (one full 400-year cycle; every leap-year case once)",
+   "method": "exhaustive, pure integer arithmetic (Hinnant algorithm)"
+  },
+  "n_fail": 0,
+  "n_ok": 146097,
+  "points_checked": 146097,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 1461,
+  "domain": "Julian roundtrip over one 4-year Julian cycle (days 0..1460)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L19_julian_roundtrip",
+  "meta": {
+   "domain": "Julian roundtrip over one 4-year Julian cycle (days 0..1460)",
+   "method": "exhaustive"
+  },
+  "n_fail": 0,
+  "n_ok": 1461,
+  "points_checked": 1461,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 1000,
+  "domain": "Tzolkin 260-day sacred round: render(d) == render(d+260) for all d in 0..999",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L20_tzolkin_periodicity",
+  "meta": {
+   "domain": "Tzolkin 260-day sacred round: render(d) == render(d+260) for all d in 0..999",
+   "method": "exhaustive"
+  },
+  "n_fail": 0,
+  "n_ok": 1000,
+  "points_checked": 1000,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 146096,
+  "domain": "Gregorian date ordering: gregorian_ymd(d+1) > gregorian_ymd(d) for all d in 0..146096 (lexicographic)",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L21_gregorian_monotonicity",
+  "meta": {
+   "domain": "Gregorian date ordering: gregorian_ymd(d+1) > gregorian_ymd(d) for all d in 0..146096 (lexicographic)",
+   "method": "exhaustive"
+  },
+  "n_fail": 0,
+  "n_ok": 146096,
+  "points_checked": 146096,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 146097,
+  "domain": "day_of_year(y,m,d) in 1..366 for every date in the 400-year Gregorian cycle",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L22_day_of_year_consistent",
+  "meta": {
+   "domain": "day_of_year(y,m,d) in 1..366 for every date in the 400-year Gregorian cycle",
+   "method": "exhaustive"
+  },
+  "n_fail": 0,
+  "n_ok": 146097,
+  "points_checked": 146097,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 1000,
+  "domain": "candidate: tropical year is an exact integer (year_fraction == 0 at every day); expected HONEST_NEGATIVE",
+  "first_failure": {
+   "datum": 1
+  },
+  "kind": "statement",
+  "label": "L23_tropical_integer",
+  "meta": {
+   "domain": "candidate: tropical year is an exact integer (year_fraction == 0 at every day); expected HONEST_NEGATIVE",
+   "method": "exhaustive over days 0..999"
+  },
+  "n_fail": 999,
+  "n_ok": 1,
+  "points_checked": 1000,
+  "status": "HONEST_NEGATIVE"
+ },
+ {
   "configs_checked": 10,
   "domain": "out-of-sample (N, rule) in [8, 9, 10, 11, 12] x {29,71}, attractor over the full 2^N state space",
   "first_failure": null,

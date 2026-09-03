@@ -1,8 +1,8 @@
 {
  "accepted": true,
- "n_claims": 55,
+ "n_claims": 60,
  "n_negative_claims": 0,
- "n_required_certs": 55,
+ "n_required_certs": 60,
  "results": [
   {
    "law": "L1 free streaming (rule 29, gap>=2 sector)",
@@ -91,6 +91,71 @@
    "rejection_reasons": [],
    "requires": [
     "L14_gate6_conservation"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "Gregorian roundtrip exactness (400-year cycle)",
+   "ok": true,
+   "pass_evidence": [
+    "L18_gregorian_roundtrip"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L18_gregorian_roundtrip"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "Julian roundtrip exactness (4-year cycle)",
+   "ok": true,
+   "pass_evidence": [
+    "L19_julian_roundtrip"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L19_julian_roundtrip"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "Tzolkin 260-day periodicity",
+   "ok": true,
+   "pass_evidence": [
+    "L20_tzolkin_periodicity"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L20_tzolkin_periodicity"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "Gregorian monotonicity (date ordering)",
+   "ok": true,
+   "pass_evidence": [
+    "L21_gregorian_monotonicity"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L21_gregorian_monotonicity"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "Day-of-year range consistency",
+   "ok": true,
+   "pass_evidence": [
+    "L22_day_of_year_consistent"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L22_day_of_year_consistent"
    ],
    "rule": null,
    "status": "BELIEVED FORMALLY"
@@ -720,6 +785,6 @@
    "status": "BELIEVED FORMALLY"
   }
  ],
- "timestamp": "2026-09-02 07:34:45 UTC",
+ "timestamp": "2026-09-03 02:38:10 UTC",
  "verdict": "ACCEPTED"
 }

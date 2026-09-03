@@ -101,6 +101,17 @@ def civil_to_days(y, m, d):
     return doe + era * 146097 - 719468 - int(_DAYS_1970_TO_EPOCH)
 
 
+def julian_to_days(y, m, d):
+    """Proleptic Julian civil date -> days since epoch_0d (exact int).
+    Inverse of julian_ymd; leap year every 4 years (no century exception)."""
+    y -= 1 if m <= 2 else 0
+    era = (y if y >= 0 else y - 3) // 4
+    yoe = y - era * 4
+    doy = (153 * (m + (-3 if m > 2 else 9)) + 2) // 5 + d - 1
+    doe = yoe * 365 + yoe // 4 + doy
+    return doe + era * 1461 - 719468 - int(_DAYS_1970_TO_EPOCH)
+
+
 def gregorian_ymd(day):
     """Proleptic Gregorian (y, m, d) for a day offset (exact for integers).
 
