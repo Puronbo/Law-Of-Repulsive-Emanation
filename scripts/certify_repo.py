@@ -66,6 +66,12 @@ def claims():
          "requires": ["L25_tamper_no_rehash_detected"]},
         {"law": "non-terminal re-hash tamper caught at successor block",
          "requires": ["L26_rehash_tamper_detected"]},
+        {"law": "to_disk radial clamp preserves in-disk points exactly",
+         "requires": ["L28_to_disk_inside_preserved"]},
+        {"law": "to_disk maps out-of-rim points exactly onto the sphere",
+         "requires": ["L29_to_disk_rim_exact"]},
+        {"law": "flow_over dedups edges and ignores self/out-of-range links",
+         "requires": ["L30_flow_over_dedup_and_self_loop_invariant"]},
     ]
     discovered, _ = ld.discovery_claims()
     return base + discovered

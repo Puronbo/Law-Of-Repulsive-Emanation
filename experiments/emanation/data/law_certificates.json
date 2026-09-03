@@ -418,6 +418,74 @@
   "status": "HONEST_NEGATIVE"
  },
  {
+  "configs_checked": 12,
+  "domain": "to_disk(q, max_r) over a dense 2-D in-disk grid (1e-6 jittered), max_r in {0.9, 1.0}, x 6 seeds: interior points must be left bit-exactly unchanged",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L28_to_disk_inside_preserved",
+  "meta": {
+   "domain": "to_disk(q, max_r) over a dense 2-D in-disk grid (1e-6 jittered), max_r in {0.9, 1.0}, x 6 seeds: interior points must be left bit-exactly unchanged",
+   "law": "the radial clamp never touches the interior: every point with r < max_r returns unchanged",
+   "measured_on": "puno_flow.engine.to_disk"
+  },
+  "n_fail": 0,
+  "n_ok": 12,
+  "points_checked": 12,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 12,
+  "domain": "out-of-rim radial profiles at radii {1.5,3.0,10.0} x 48 angles, max_r in {0.9,1.0} x 6 seeds",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L29_to_disk_rim_exact",
+  "meta": {
+   "domain": "out-of-rim radial profiles at radii {1.5,3.0,10.0} x 48 angles, max_r in {0.9,1.0} x 6 seeds",
+   "law": "every out-of-rim point lands exactly on the max_r sphere along its own ray: |out| == max_r, out = positive scalar * input (no angular drift)",
+   "measured_on": "puno_flow.engine.to_disk"
+  },
+  "n_fail": 0,
+  "n_ok": 12,
+  "points_checked": 12,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 12,
+  "domain": "40 random (u,v) edge entries over 7 units, x 6 seeds x 2 cases, steps=4",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L30_flow_over_dedup_and_self_loop_invariant",
+  "meta": {
+   "domain": "40 random (u,v) edge entries over 7 units, x 6 seeds x 2 cases, steps=4",
+   "law": "flow_over collapses each node's neighbour list via np.unique, so duplicate edges, self-loops, and out-of-range endpoints are exactly equivalent to their de-duplicated counterpart: identical trajectory",
+   "measured_on": "puno_flow.engine.FlowEngine.flow_over"
+  },
+  "n_fail": 0,
+  "n_ok": 12,
+  "points_checked": 12,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 6,
+  "domain": "6 seeded random 7-unit engines, 50 settle steps",
+  "first_failure": {
+   "datum": [
+    0
+   ]
+  },
+  "kind": "statement",
+  "label": "L31_settle_conserves_centroid",
+  "meta": {
+   "domain": "6 seeded random 7-unit engines, 50 settle steps",
+   "honest_check": "centroid must move (drift > 0); no conserved quantity to report",
+   "law": "FALSE CANDIDATE: FlowEngine.settle conserves the population centroid sum(q); the always-on home tether -A*mu0*(q-h) steadily pulls each unit homeward, so the centroid drifts"
+  },
+  "n_fail": 6,
+  "n_ok": 0,
+  "points_checked": 6,
+  "status": "HONEST_NEGATIVE"
+ },
+ {
   "configs_checked": 10,
   "domain": "out-of-sample (N, rule) in [8, 9, 10, 11, 12] x {29,71}, attractor over the full 2^N state space",
   "first_failure": null,

@@ -590,10 +590,40 @@ forged prev.  This is the unbounded-authority limitation: a local-only
 chain without signatures cannot forbid an authority rewriting its own
 tail.
 
-The gate now stands on **72 certificates** and believes **63 claims**:
-15 core physics/system/calendar/ledger laws plus the 48 self-discovered
-laws.  The honest-negative set is now 7 strong: the system has
-deliberately rejected 7 laws it could otherwise have shipped.
+The gate now stands on **76 certificates** and believes **66 claims**:
+18 core physics/system/calendar/ledger/flow laws plus the 48
+self-discovered laws.  The honest-negative set is now 8 strong: the
+system has deliberately rejected 8 laws it could otherwise have shipped.
+
+Eleventh layer: **the fourth real-subsystem audit -- balance-flow engine
+geometry (L28-L31).** `puno_flow/engine.py` is the local-only balance
+flow (the Puno PPA-001 dynamics: each unit talks only to its k nearest
+neighbours, no global mean/gradient).  `puno_flow_audit.py` certifies
+the geometry contract of its radial clamp and the exactness of its
+fixed-topology relaxation, all by exhaustive, reproducible numpy
+measurement:
+    * L28 to_disk inside preserved: `to_disk(q, max_r)` leaves every
+      point with r < max_r bit-exactly unchanged (the radial clamp never
+      touches the interior) -- dense 2-D in-disk grid, max_r in
+      {0.9,1.0} x 6 seeds, all PASS;
+    * L29 to_disk rim exact: every out-of-rim point lands exactly on the
+      max_r sphere along its own ray: |out| == max_r and out is a
+      non-negative scalar multiple of the input (no angular drift) --
+      radial profiles at {1.5,3.0,10.0} x 48 angles, all PASS (residual
+      ~1e-16, pure radial);
+    * L30 flow_over dedup/self-loop invariant: `flow_over` reads
+      neighbourhoods once and collapses each node's list through
+      `np.unique`, so duplicate edges, self-loops (u==v), and out-of-range
+      endpoints are exactly equivalent to their de-duplicated counterpart
+      -- 40 random (u,v) entries x 6 seeds x 2 cases, identical
+      trajectories, all PASS.
+Plus one HONEST_NEGATIVE: L31 "FlowEngine.settle conserves the population
+centroid" is **FALSE** -- the always-on private-home tether term
+`-A*mu0*(q-h)` steadily pulls each unit toward its own home, so the
+centroid drifts (nonzero displacement per step; first_failure on seed 0).
+A pure local balance flow already breaks exact centroid conservation; the
+honest audit reports that no such conserved quantity exists instead of
+inventing one.
 
 
   * "current = number of (1,0) bonds" is NOT conserved.  Counterexample:
