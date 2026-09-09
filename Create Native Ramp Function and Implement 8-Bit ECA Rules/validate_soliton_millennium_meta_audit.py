@@ -12,37 +12,68 @@ the register wording to the suite count.
             native_decide)              rule204_identity_widths,
                                         rule51_complement_widths,
                                         complementGen
-    Lean   PunoCalculus.MillenniumBridge  statuses :: NOT SETTLED BY
+Lean   PunoCalculus.MillenniumBridge  statuses :: NOT SETTLED BY
            (decidable strings)            THIS PROJECT, statuses.length=7
             (seven_problems_declared_unsolved)
     Lean   PunoTwin.TwinAnalyticLaws    rho_eq_structure,
            (mathlib v4.33.1)            rho_eq_abs_profile,
-                                        antiderivative_deriv,
-                                        antiderivative_hasDerivAt,
-                                        window_defect_exact,
-                                        defect_at_L,
-                                        defect_tendsto_zero
+                                         antiderivative_deriv,
+                                         antiderivative_hasDerivAt,
+                                         window_defect_exact,
+                                         defect_at_L,
+                                         defect_tendsto_zero,
+                                         defect_window_closed_form,
+                                         defect_at_L_tail_lt_window
     Lean   PunoTwin.TwinRingLaws        step204_eq, step51_eq,
            (mathlib v4.33.1)            sumBits_eq, compBits_eq,
-                                        rule204_identity_all,
-                                        rule51_complement_all
+                                         rule204_identity_all,
+                                         rule51_complement_all
     py     validate_..._closed_forms    exact rational 2048/65537,
-                                        65536/67108865
+                                         65536/67108865
     md     Soliton-Bus ... .md          "86 root validators", the
-                                        theorem names, the exact
-                                        rationals, seven delimitations
+                                         theorem names, the exact
+                                         rationals, seven delimitations
+
+Provenance: the PunoTwin twin files mirror the mathlib v4.33.1 origin
+repository github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof at
+commit 96d74f66373d69295788e912060e7910464a6a6b.  The vendored copies in
+PunoCalculus/PunoCalculus/PunoTwin and the origin tree must stay
+byte-identical (hash-audited); bumping the mathlib rev in either place
+invalidates the other.
 
 The honest constraint is re-pinned here as well: none of the three
 artifact kinds may assert that a Millennium problem is settled.
 """
 from __future__ import annotations
 
+import os
 import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-PW = Path(r"C:\Users\Me\Downloads\Puno_Calculus\PunoCalculus\PunoCalculus")
-MW = Path(r"C:\Users\Me\Desktop\Mamamogobyerno\fcc2\Millennium-Prize-Problem-Lean-4-Proof\PunoTwin")
+WORKSPACE = ROOT.parent
+PW = WORKSPACE / "PunoCalculus" / "PunoCalculus"
+TWIN_ORIGIN_SHA = "96d74f66373d69295788e912060e7910464a6a6b"
+TWIN_ORIGIN_URL = "github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof"
+
+
+def _puno_twin() -> Path:
+    env = os.environ.get("PUNO_TWIN_PATH")
+    cand = [Path(env)] if env else []
+    cand += [
+        PW / "PunoTwin",
+        Path(r"C:\Users\Me\Desktop\Mamamogobyerno\fcc2\Millennium-Prize-Problem-Lean-4-Proof\PunoTwin"),
+        Path.home() / "Desktop" / "Mamamogobyerno" / "fcc2"
+        / "Millennium-Prize-Problem-Lean-4-Proof" / "PunoTwin",
+    ]
+    for p in cand:
+        if p.is_dir():
+            return p
+    raise FileNotFoundError(
+        "PunoTwin not found; set PUNO_TWIN_PATH to its directory")
+
+
+MW = _puno_twin()
 DOC = ROOT / "Soliton-Bus Elementary Cellular Automata.md"
 
 ECHO = [
@@ -58,6 +89,12 @@ TWIN = [
     "rho_eq_structure", "rho_eq_abs_profile",
     "antiderivative_deriv", "antiderivative_hasDerivAt",
     "window_defect_exact", "defect_at_L", "defect_tendsto_zero",
+    "defect_window_closed_form",
+    "defect_window_closed_form :",
+    "(16 : ℚ) * 1 * 128 / (1 + 4 * 1 * 128 ^ 2) = (2048 : ℚ) / 65537",
+    "defect_at_L_tail_lt_window",
+    "defect_at_L_tail_lt_window :",
+    "(16 : ℚ) * 1 * 4096 / (1 + 4 * 1 * 4096 ^ 2) < (2048 : ℚ) / 65537",
 ]
 RING = [
     "step204_eq", "step51_eq",
@@ -65,8 +102,7 @@ RING = [
     "rule204_identity_all", "rule51_complement_all",
 ]
 DOCPINS = [
-    "87-check suite",
-    "all 87",
+    "86 root validators",
     "2048/65537",
     "65536/67108865",
     "TwinAnalyticLaws",
@@ -76,11 +112,14 @@ DOCPINS = [
     "NOT SETTLED BY THIS",
     "declared NOT SETTLED explicitly",
     "PunoTwin",
+    TWIN_ORIGIN_SHA,
+    TWIN_ORIGIN_URL,
 ]
 
 
 def _grep(path: Path, needles: list[str]) -> list[str]:
-    text = path.read_text(encoding="utf-8", errors="ignore")
+    text = re.sub(r"\s+", " ", path.read_text(encoding="utf-8",
+                                              errors="ignore"))
     return [n for n in needles if n not in text]
 
 
@@ -89,6 +128,10 @@ def _check(label: str, missing: list[str]) -> None:
     print(f"  [{'PASS ' if ok else 'FAIL '}] {label}"
           + ("" if ok else f" missing: {missing}"))
     assert not missing, (label, missing)
+
+
+def _root_validator_count() -> int:
+    return len(list(ROOT.glob("validate_*.py")))
 
 
 print("soliton millennium meta audit (bridge meta -> proofs)")
@@ -102,6 +145,9 @@ _check("TwinRingLaws carries the general-width ring closure",
        _grep(MW / "TwinRingLaws.lean", RING))
 _check("the docs pin the suite count and the certified rationals",
        _grep(DOC, DOCPINS))
+_check("on-disk validator count matches the prose-pinned count",
+       [] if _root_validator_count() == 86
+       else [f"on-disk {_root_validator_count()} != pinned 86"])
 
 # honest constraint across artifacts: no settlement assertion may appear
 # in any of the sources carrying these names.

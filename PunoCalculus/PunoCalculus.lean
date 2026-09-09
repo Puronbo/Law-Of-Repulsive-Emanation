@@ -11,3 +11,5 @@ import PunoCalculus.Hodge
 import PunoCalculus.Poincare
 import PunoCalculus.PvsNP
 import PunoCalculus.TwinPrime
+import PunoCalculus.EcaIsometry
+import PunoCalculus.MillenniumBridge

@@ -13,7 +13,7 @@ Independently re-derived facts:
     (Omega, eps) = (0.5, 0.20) on N = 8192, L = 64 crests inside
     [3.5, 3.9] near z = 3.2 with a window maximum below 4.0;
   - mass neutrality: the Peregrine window defect int(|u|^2-P) dt, L =
-    256, N = 16384, P = 1.0, equals 8L/(1+L^2) to within 1e-4 at
+    256, N = 16384, P = 1.0, equals 8PL/(1+PL^2) to within 1e-4 at
     z = 0 AND at z = 3 under the shared SSFM, and the defect is
     spread across z <= 1e-4;
   - modal depletion: at the measured crest the pump-sector power

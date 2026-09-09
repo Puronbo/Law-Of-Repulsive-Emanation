@@ -1,0 +1,144 @@
+name: ECA Certification Suite
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      full:
+        description: "Run the entire run_all_audits.py (>5 min)"
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  certify-python:
+    name: "Python: soliton_eca + millennium fast subset"
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
+
+    env:
+      PUNO_TWIN_PATH: ${{ github.workspace }}/PunoCalculus/PunoCalculus/PunoTwin
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy mpmath pytest
+
+      - name: "Fast subset: pytest soliton_eca"
+        id: fast
+        working-directory: "Create Native Ramp Function and Implement 8-Bit ECA Rules"
+        run: |
+          python -m pytest soliton_eca -q
+
+      - name: "Fast subset: validate_soliton_millennium_meta_audit"
+        working-directory: "Create Native Ramp Function and Implement 8-Bit ECA Rules"
+        run: |
+          python validate_soliton_millennium_meta_audit.py
+
+      - name: "Fast subset: validate_soliton_millennium_bridge_audit"
+        working-directory: "Create Native Ramp Function and Implement 8-Bit ECA Rules"
+        run: |
+          python validate_soliton_millennium_bridge_audit.py
+
+      - name: "Fast subset: validate_soliton_millennium_closed_forms"
+        working-directory: "Create Native Ramp Function and Implement 8-Bit ECA Rules"
+        run: |
+          python validate_soliton_millennium_closed_forms.py
+
+      - name: "Full suite: run_all_audits.py"
+        if: ${{ inputs.full == true && steps.fast.outcome == 'success' }}
+        working-directory: "Create Native Ramp Function and Implement 8-Bit ECA Rules"
+        run: |
+          python run_all_audits.py
+
+  twin-sniff:
+    name: "Lean twin-file theorem pinning"
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assert pinned theorem names across Lean sources
+        run: |
+          python - <<'PY'
+          import sys, re
+          from pathlib import Path
+
+          PW = Path("PunoCalculus") / "PunoCalculus"
+          MW = PW / "PunoTwin"
+
+          # Per-file pin lists, mirroring the meta-audit's ECHO / MBR / TWIN / RING.
+          CHECKS = {
+              PW / "EcaIsometry.lean": [
+                  "affine_class_exact", "isometry_class_exact",
+                  "rule204_identity_widths", "rule51_complement_widths",
+                  "complementGen",
+              ],
+              PW / "MillenniumBridge.lean": [
+                  "statuses", "seven_problems_declared_unsolved",
+              ],
+              MW / "TwinAnalyticLaws.lean": [
+                  "rho_eq_structure", "window_defect_exact",
+                  "defect_at_L", "defect_tendsto_zero",
+              ],
+              MW / "TwinRingLaws.lean": [
+                  "rule204_identity_all", "rule51_complement_all",
+              ],
+          }
+
+          ok = True
+          all_text = ""
+          for path, pins in CHECKS.items():
+              text = path.read_text(encoding="utf-8", errors="ignore")
+              all_text += text + "\n"
+              missing = [p for p in pins if p not in text]
+              if missing:
+                  print(f"::error file={path}::missing pins: {missing}")
+                  ok = False
+
+          bad = re.findall(r"\b(is solved|is settled|proves|proved:|are settled)\b",
+                           all_text, re.IGNORECASE)
+          if bad:
+              print(f"::error::Settlement assertions found: {bad}")
+              ok = False
+
+          if "sorry" in all_text:
+              print("::error::Lean sources contain 'sorry'")
+              ok = False
+
+          if ok:
+              print("twin-sniff PASS: all per-file pins found, no sorry, no settlement assertion")
+          else:
+              sys.exit(1)
+          PY
+
+      - name: "Optional: lake build pure-core PunoCalculus (no mathlib)"
+        if: ${{ false }}
+        run: |
+          cd PunoCalculus
+          lake build
+
+  # NOTE: lake build of PunoCalculus pure-core only typechecks the core modules.
+  # The vendored PunoTwin/*.lean files depend on mathlib and are NOT built here.
+  # The twin-sniff job above mirrors the meta-audit's theorem-pinning without
+  # requiring the Lean toolchain or mathlib.

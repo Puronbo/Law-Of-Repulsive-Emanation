@@ -34,9 +34,11 @@ The Big Bang, spatial infinity, and the Planck scale are all 0/0 singularities. 
 
 ---
 
-## Honest Audit: Millennium Problems
+## Honest Audit: Millennium Problems + Goldbach
 
-Each problem assessed with exact status.
+Eight problems assessed: the seven Clay Millennium Prize Problems plus
+Goldbach (added as an eighth, non-Millennium row). Each assessed with
+exact status.
 
 | Problem | Status | What We Showed | Gap |
 |---------|--------|----------------|-----|
@@ -56,8 +58,9 @@ Each problem assessed with exact status.
 ## Certified Digital Audit (soliton ECA + Lean twin proofs)
 
 Beside the papers runs a fully automated certificate line over a
-deterministic ECA soliton engine. The suite stands at **87 root
-validators** and re-runs from one command:
+deterministic ECA soliton engine. The suite stands at **86 root
+validators** (87 registered checks including the unit suite) and re-runs
+from one command:
 
     python run_all_audits.py
 

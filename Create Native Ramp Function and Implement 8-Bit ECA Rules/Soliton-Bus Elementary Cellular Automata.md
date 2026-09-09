@@ -725,7 +725,7 @@ the BI world (flat background, exponential sideband growth) connect.
 - **Energy drift**: 2.4e-14 over the full run.
 - **Mass neutrality (exact)**: the breather carries zero net mass. The
   window-integrated defect `∫(|u|² − P) dt` equals, to within 1e-4, the
-  closed-form two-tail correction `8L/(1 + L²)` — the analytic line
+  closed-form two-tail correction `8PL/(1 + PL²)` — the analytic line
   integral of `|u|² − P` is exactly 0, so the breather borrows all its
   extra core energy from the background and pays it back.
 - **Phase laws**: at z = 0 the center sits exactly π out of phase with the
@@ -1896,13 +1896,13 @@ continuum problem:
 - **Exact mass conservation** (`L_mil_nse_mass_conservation_exact`):
   the Peregrine breather conserves its mass-neutrality identity — the
   window defect `∫(|u|² − P)dt` equals the closed-form correction
-  `8L/(1+L²)` (L = 256) to within 1e-4, and is constant along z =
+  `8PL/(1+PL²)` (P = 1, L = 256) to within 1e-4, and is constant along z =
   0..3 within 1e-4.  The validator re-derives the correction as an
   **analytic closed form**: the symmetric window integral is
   `∫_{−a}^{a}(|u|² − P)dt = 16Pa/(1 + 4Pa²)` with a = L/2 (the
   arctan terms cancel on the symmetric window and only the boundary
-  term `x/(2(1+x²))` survives), which at P = 1 is exactly the
-  documented `8L/(1+L²)`; the two tails beyond ±a carry `−16Pa/(1+4Pa²)`
+  term `x/(2(1+x²))` survives), which at a = L/2 is exactly the
+  documented `8PL/(1+PL²)`; the two tails beyond ±a carry `−16Pa/(1+4Pa²)`
   and close the full-line integral to exactly 0 (mass neutrality).
   Measured and exact agree to 1e-4 on both the interior window and an
   extended 16× grid tail scan (plus the closed remainder beyond it).
@@ -2009,7 +2009,10 @@ filters) — the mathlib proof of the bridge's exact mass law is complete.
 widths 4..16 by construction (`native_decide` enumerates); the
 structural closure for *every* width now lives in mathlib as
 `C:\Users\Me\Desktop\Mamamogobyerno\fcc2\Millennium-Prize-Problem-Lean-4-Proof\PunoTwin\TwinRingLaws.lean`,
-namespace `PunoTwin`, compiles clean with `lake env lean`:
+namespace `PunoTwin`, compiles clean with `lake env lean`.  (The
+vendored `PunoCalculus/PunoCalculus/PunoTwin` copies mirror
+`github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof @
+96d74f66373d69295788e912060e7910464a6a6b`, mathlib v4.33.1):
 
 - `step204_eq`: the rule-204 step is exactly the width-`w` reading
   `sumBits s w := Σ_j (bit s j)·2^j` (via per-cell `center_bit` and an
@@ -2036,7 +2039,7 @@ algebraic fact with `fractions.Fraction` (directed rounding, no new
 dependencies):
 
 - the window defect **`D = 2048/65537`** exactly (P = 1, L = 256,
-  a = 128), identical to `8PL/(1 + PL^2)` — the Lean `defect_at_L`
+  a = 128), identical to `8PL/(1 + PL²)` — the Lean `defect_at_L`
   identity, equality of rationals;
 - the antiderivative rendering `D = 8P (G(a) − G(−a))`, exact;
 - `D` is pinned to width **1e-16** (vs the validator's 1e-4 tolerance),
@@ -2082,7 +2085,7 @@ convention — that a Millennium problem has been resolved.
 
 ## Audit register
 
-One command reproduces the entire certification: unit suite, all 87
+One command reproduces the entire certification: unit suite, all 86
 root validators, and every ticket across the rounds.
 
 ```bash
@@ -2100,7 +2103,7 @@ transient, with a flat-bottom interaction potential that recovers
 over an ~64-cell halo); the isometry pair carries two blocks with zero
 interaction at any distance and at every generation; the NLSE side
 closes with the Peregrine breather (exact seed, mass-neutrality
-`8L/(1+L²)`, phase law `arg(4P²z²−3−8iPz)`, P-scaling), the MI
+`8PL/(1+PL²)`, phase law `arg(4P²z²−3−8iPz)`, P-scaling), the MI
 recurrence laws of this round, the frequency-localized crest cap
 (Ω = 0.5 crests at 3.656, above the bound 3), the wavelength-monotone
 crest spectrum (2.476 → 4.697, the cap dividing the band at
@@ -2136,7 +2139,7 @@ exactly invariant and delta chirp `+ω_bin²/2` in the linear stage,
 while both hypotheses that the linear law reaches the crests are
 refuted).  Round 48 adds the Millennium bridge — three NSE-adjacent
 certified discrete laws (crest control 3.663 in the 3.656 basin, exact
-mass-neutrality `8L/(1+L²)` conserved to 1e-4, crest pump fraction
+mass-neutrality `8PL/(1+PL²)` conserved to 1e-4, crest pump fraction
 0.229 ≤ 0.25), seven scope delimitations (no settlement claim for any
 Millennium problem), and a scope-discipline check — together with the
 Lean 4 replica (`PunoCalculus.EcaIsometry`, every theorem closed by
@@ -2157,8 +2160,8 @@ basin, `P0 ≤ 0.25`).  Round 50 adds the T4 bridge-meta audit
 (`validate_soliton_millennium_meta_audit.py`): it greps the real Lean
 sources (`EcaIsometry`, `MillenniumBridge`, `PunoTwin.TwinAnalyticLaws`)
 and the docs for every theorem name and certified rational, and refuses
-any settlement phrasing anywhere — the suite now stands at 87 root
-validators.  Round 51 closes the general-width pass at the Lean level:
+any settlement phrasing anywhere — the suite now stands at **86 root
+validators**.  Round 51 closes the general-width pass at the Lean level:
 `PunoTwin.TwinRingLaws` (`step204_eq`, `step51_eq`, `sumBits_eq`,
 `compBits_eq`, `rule204_identity_all`, `rule51_complement_all`)
 extends the enumerated identity/complement facts from widths 4..16 to

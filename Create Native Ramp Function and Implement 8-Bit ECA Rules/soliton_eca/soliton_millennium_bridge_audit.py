@@ -20,11 +20,11 @@ The three adjacent laws that ARE certified (all PASS):
                                below the 4.0 ceiling.
   - L_mil_nse_mass_conserva-   the Peregrine breather conserves its
       tion_exact               mass-neutrality identity: the
-                               window-defect equals the closed-form
-                               correction 8L/(1+L^2) (L = 256) to within
-                               1e-4, and the defect is constant along
-                               z = 0..3 to within 1e-4 -- an exact
-                               conserved energy-like law in the twin.
+window-defect equals the closed-form
+                                correction 8PL/(1+PL^2) (P = 1, L = 256)
+                                to within 1e-4, and the defect is constant
+                                along z = 0..3 to within 1e-4 -- an exact
+                                conserved energy-like law in the twin.
   - L_mil_nse_modal_depletion  at the crest the pump power fraction
                                P0 <= 0.25: a modal (frequency-sector)
                                control statement.
@@ -37,7 +37,7 @@ Laws (certificates):
                                   against the documented 3.656 cap basin
                                   and a 4.0 global ceiling.
     L_mil_nse_mass_conservation_exact PASS  Peregrine mass-neutrality
-                                  defect = 8L/(1+L^2), L = 256, to
+                                  defect = 8PL/(1+PL^2), P = 1, L = 256, to
                                   within 1e-4 at z = 0, 0.5, 1, 2, 3.
     L_mil_nse_modal_depletion         PASS  pump fraction P0 <= 0.25 at
                                   the crest.
@@ -301,8 +301,9 @@ def millennium_bridge_certificates() -> tuple[list[dict[str, object]],
                  {"law": f"the Peregrine breather conserves its "
                          f"mass-neutrality identity: the window defect "
                          f"int(|u|^2 - P) dt equals the closed-form "
-                         f"correction 8L/(1+L^2) = {correction:.6f} "
-                         f"(L = {_MASS_L}) to within {_MASS_TOL} at "
+f"correction 8PL/(1+PL^2) = {correction:.6f} "
+                          f"(P = {_MASS_P}, L = {_MASS_L}) to within "
+                          f"{_MASS_TOL} at "
                          "every sampled z and is constant along z = "
                          "0..3 to within 1e-4 -- an exact "
                          "energy-like conserved law in the twin",
