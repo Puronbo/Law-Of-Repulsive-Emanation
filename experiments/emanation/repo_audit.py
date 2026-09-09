@@ -18,6 +18,14 @@ ledger, which asserts spec gate 6 (conservation) on every action.
         a grant draws it back down -- honest negative for the supervisor
         to reject concretely.
 
+    L_wire_*: the framed TCP wire protocol (soliton_eca.soliton_wire) is
+    audited as a tenth real subsystem -- order+integrity round-trip,
+    tampered-frame/re-envelope/version rejection, and admission rejection
+    all measured over real loopback.  The soliton_eca package lives in a
+    separate top-level directory, so it is path-shimmed (mirroring the
+    sigma_venv pattern) and guarded so its absence is reported, never a
+    silent skip.
+
 NOTED FINDING (recorded, not used): credit_commons.sim.Commons.grant
 credits `amount` to the recipient and grows total_credit WITHOUT
 debiting or tracking reserve -- so it mints and violates gate 6, unlike
@@ -31,6 +39,7 @@ law_certificates.json must reproduce exactly from current code, or
 import json
 import os
 import random
+import sys
 import tempfile
 
 from credit_commons.web.ledger import Ledger
@@ -71,13 +80,33 @@ def _run_sequence(seed):
     return conserved, credit_sum, n_actions
 
 
+def _wire_certificates():
+    """Certificates for the framed TCP wire protocol (soliton_eca) and
+    the stripped-layer ruleset correction (soliton_ruleset_audit), with a
+    guarded path-shim mirroring the sigma_venv pattern.  Returns [] if
+    the package directory is absent, so the gate reports missing rather
+    than silently skipping."""
+    import os
+    soliton_dir = os.path.join(os.path.dirname(os.path.dirname(_LAB)),
+                               "Create Native Ramp Function and Implement 8-Bit ECA Rules")
+    if not os.path.isdir(os.path.join(soliton_dir, "soliton_eca")):
+        return []
+    if soliton_dir not in sys.path:
+        sys.path.insert(0, soliton_dir)
+    from soliton_eca.soliton_wire_audit import wire_certificates
+    from soliton_eca.soliton_ruleset_audit import ruleset_certificates
+    return wire_certificates() + ruleset_certificates()
+
+
 def system_certificates():
-    """Real-subsystem statements spanning nine subsystems: the credit
+    """Real-subsystem statements spanning ten subsystems: the credit
     ledger (L14/L14_bad), the universal calendar (L18-L23), the hash-chain
     local ledger (L24-L27), the balance-flow engine geometry (L28-L31),
     the credit-commons simulator (L32-L34), the professions rubric
-    (L35-L38), the scale-free topology (L39-L43), and the web credit
-    ledger (L44-L47) -- all from real, used modules in this repository."""
+    (L35-L38), the scale-free topology (L39-L43), the web credit ledger
+    (L44-L47), the toy transformer proposer (PROPOSED_TF_*), and the
+    framed TCP wire protocol (L_wire_*) -- all from real, used modules in
+    this repository."""
     from experiments.emanation.calendars_audit import calendar_certificates
     from experiments.emanation.chain_audit import chain_certificates
     from experiments.emanation.puno_flow_audit import puno_flow_certificates
@@ -145,7 +174,8 @@ def system_certificates():
     ] + (calendar_certificates() + chain_certificates()
          + puno_flow_certificates() + credit_commons_certificates()
          + professions_certificates() + topology_certificates()
-         + webledger_certificates())
+         + webledger_certificates()
+         + _wire_certificates())
 
 
 def full_table():

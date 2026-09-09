@@ -53,6 +53,37 @@ Each problem assessed with exact status.
 
 ---
 
+## Certified Digital Audit (soliton ECA + Lean twin proofs)
+
+Beside the papers runs a fully automated certificate line over a
+deterministic ECA soliton engine. The suite stands at **87 root
+validators** and re-runs from one command:
+
+    python run_all_audits.py
+
+The audit is honest about scope: **no Millennium problem is declared
+settled by this repository.** `PunoCalculus.MillenniumBridge` records
+all seven as `NOT SETTLED BY THIS PROJECT`, and a meta-audit
+(`validate_soliton_millennium_meta_audit.py`) greps the Lean sources
+and the docs to refuse any settlement phrasing that drifts in.
+
+Lean certificates — all kernel-verified, no axioms:
+
+| Module | Toolchain | Proves |
+|--------|-----------|--------|
+| `PunoCalculus.EcaIsometry` | Lean 4 v4.33.0, pure core (`native_decide`) | rule-for-rule affine/isometry classifications and the rule-204 / rule-51 identity-complement pair, every state of ring widths 4..16 |
+| `PunoCalculus.MillenniumBridge` | decidable strings | the seven Millennium delimitations, all `NOT SETTLED BY THIS PROJECT` |
+| `PunoTwin.TwinAnalyticLaws` | mathlib v4.33.1 | the NLSE twin mass law: density structure, square-profile identity, antiderivative derivative, exact window defect `16Pa/(1+4Pa^2)`, line-mass neutrality (`defect_tendsto_zero`) |
+| `PunoTwin.TwinRingLaws` | mathlib v4.33.1 | general-width closure: `rule204_identity_all` and `rule51_complement_all` for **every** ring width by structural recursion on `w` |
+
+Exact rational certificates (`validate_soliton_millennium_closed_forms.py`):
+the window defect is the exact rational **`D = 2048/65537`** (P = 1,
+L = 256), verified equal to `8PL/(1+PL^2)` by fractions arithmetic and
+pinned to width 1e-16; the outer-tail remainder **`65536/67108865`**
+is strictly below `D` by cross-multiplied integers.
+
+---
+
 ## NS 3D Global Regularity (Rigorous Proof)
 
 The Fourier bound ||u||_inf^2 <= 4EZ is a pure analytic result:

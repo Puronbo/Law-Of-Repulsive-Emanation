@@ -16,11 +16,34 @@ def test_native_ramps_use_sign_gates():
 
 
 def test_all_requested_rules_are_available():
-    assert RULES == (4, 12, 36, 44, 68, 76, 100, 108,
-                     132, 140, 164, 172, 196, 204, 228, 236)
+    assert RULES == (4, 12, 19, 27, 36, 44, 51, 59, 68, 76, 83, 91,
+                     100, 108, 115, 123, 132, 140, 147, 155, 164, 172,
+                     179, 187, 196, 204, 211, 219, 228, 236, 243, 251)
+    assert len(set(RULES)) == 32
     for rule in RULES:
         assert {SolitonECA.apply_rule(rule, a, b, c)
                 for a in (0, 1) for b in (0, 1) for c in (0, 1)} <= {0, 1}
+
+
+def test_rule_family_is_complement_closed():
+    assert all(255 - rule in RULES for rule in RULES)
+
+
+def _ring_step(rule, state):
+    n = len(state)
+    return [(rule >> (((state[(i - 1) % n] << 2) |
+                       (state[i] << 1) | state[(i + 1) % n]))) & 1
+            for i in range(n)]
+
+
+def test_complement_twin_is_black_white_swap_on_rings():
+    for rule in RULES:
+        twin = 255 - rule
+        state = (0, 1, 0, 1, 0, 1, 1, 0, 1, 0)
+        for _ in range(4):
+            expected = [1 - b for b in _ring_step(rule, list(state))]
+            state = tuple(_ring_step(twin, list(state)))
+            assert list(state) == expected
 
 
 def test_rule_204_is_identity():

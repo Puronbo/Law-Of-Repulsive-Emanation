@@ -1,0 +1,3387 @@
+[
+  {
+    "id": "lore",
+    "title": "The L.O.R.E. Framework",
+    "description": "Master the Law of Repulsive Emanation: removable singularities across all of STEM",
+    "chapters": [
+      {
+        "id": 1,
+        "title": "What 0/0 Actually Means",
+        "part": "I. The Core Idea",
+        "content": "\n<h2>Chapter 1: What 0/0 Actually Means</h2>\n<p>The expression 0/0 is not \"undefined\" in the sense of being meaningless. It is the <em>most meaningful</em> expression in mathematics.</p>\n\n<h3>Why?</h3>\n<p>Because 0/0 represents the <strong>meeting point</strong> of two vanishing quantities. When both numerator and denominator approach zero, the question becomes: <em>how fast?</em></p>\n\n<h3>L'Hopital's Rule (1696)</h3>\n<p>If f(a) = 0 and g(a) = 0, then:</p>\n<p style=\"font-size:1.2em; text-align:center; padding:20px;\">lim<sub>x->a</sub> f(x)/g(x) = f'(a)/g'(a)</p>\n<p>The limit exists if f'(a) and g'(a) are not both zero.</p>\n\n<h3>Examples</h3>\n<table style=\"width:100%; border-collapse:collapse;\">\n<tr><td style=\"padding:10px; border:1px solid #4a5568;\"><code>sin(x)/x</code></td>\n<td style=\"padding:10px; border:1px solid #4a5568;\">lim<sub>x->0</sub> = <strong>1</strong></td></tr>\n<tr><td style=\"padding:10px; border:1px solid #4a5568;\"><code>(e^x - 1)/x</code></td>\n<td style=\"padding:10px; border:1px solid #4a5568;\">lim<sub>x->0</sub> = <strong>1</strong></td></tr>\n<tr><td style=\"padding:10px; border:1px solid #4a5568;\"><code>log(1+x)/x</code></td>\n<td style=\"padding:10px; border:1px solid #4a5568;\">lim<sub>x->0</sub> = <strong>1</strong></td></tr>\n<tr><td style=\"padding:10px; border:1px solid #4a5568;\"><code>(1-cos(x))/x^2</code></td>\n<td style=\"padding:10px; border:1px solid #4a5568;\">lim<sub>x->0</sub> = <strong>1/2</strong></td></tr>\n</table>\n\n<h3>The Principle</h3>\n<p>The removable singularity is not a pathology. It is the <em>norm</em>. Most interesting functions have a 0/0 at their most important point.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[1] L'Hopital, \"Analyse des Infiniment Petits\" (1696)</li>\n<li>[26] Courant & Robbins, \"What is Mathematics?\" (1941)</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "What is lim(x->0) sin(x)/x?",
+            "options": [
+              "0",
+              "1",
+              "infinity",
+              "undefined"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Who published the first rule for evaluating 0/0 limits?",
+            "options": [
+              "Newton",
+              "Euler",
+              "L'Hopital",
+              "Cauchy"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "What is lim(x->0) (1-cos(x))/x^2?",
+            "options": [
+              "0",
+              "1",
+              "1/2",
+              "2"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "A removable singularity means the function is:",
+            "options": [
+              "Infinite",
+              "Undefined everywhere",
+              "Defined everywhere except one point",
+              "Continuous everywhere"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "The expression 0/0 represents:",
+            "options": [
+              "An error",
+              "A meeting point of vanishing quantities",
+              "An infinite value",
+              "A complex number"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Why This Keeps Showing Up",
+        "part": "I. The Core Idea",
+        "content": "\n<h2>Chapter 2: Why This Keeps Showing Up</h2>\n<p>The 0/0 pattern appears everywhere because it is the <em>natural language</em> of response functions.</p>\n\n<h3>Response Functions</h3>\n<p>A response function measures output/input. At the special point, both output and input vanish for a shared reason.</p>\n\n<h3>The Pattern</h3>\n<p>Whenever you see:</p>\n<ul>\n<li>A system that becomes \"sensitive\" at a specific point</li>\n<li>A ratio where both numerator and denominator vanish</li>\n<li>A function that is \"almost\" defined but not quite</li>\n</ul>\n<p>...you are looking at a removable singularity.</p>\n\n<h3>Why It's Universal</h3>\n<p>The pattern is universal because <strong>all interesting systems have a special point</strong>. At that special point, the natural response function becomes 0/0.</p>\n\n<h3>The Key Insight</h3>\n<p>The removable singularity is not a bug. It is a <em>feature</em> of how nature encodes information.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[26] Courant & Robbins, \"What is Mathematics?\" (1941)</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "What type of function naturally produces 0/0?",
+            "options": [
+              "Step function",
+              "Response function",
+              "Exponential function",
+              "Logarithmic function"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "At the special point of a response function:",
+            "options": [
+              "Both vanish for different reasons",
+              "Both vanish for a shared reason",
+              "Only the numerator vanishes",
+              "The function is infinite"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The removable singularity pattern is:",
+            "options": [
+              "Rare",
+              "Universal",
+              "Limited to math",
+              "Only in physics"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The 0/0 pattern is best described as:",
+            "options": [
+              "A bug",
+              "A feature",
+              "An error",
+              "A limitation"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "All interesting systems have:",
+            "options": [
+              "No special points",
+              "One special point",
+              "Two special points",
+              "Infinite special points"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Circuits at Resonance",
+        "part": "II. Physics and Engineering",
+        "content": "\n<h2>Chapter 3: Circuits at Resonance</h2>\n<p>The series RLC circuit is the simplest physical system with a removable singularity.</p>\n\n<h3>The Impedance</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">Z(w) = R + i(wL - 1/wC)</p>\n\n<h3>At Resonance</h3>\n<p>When w0 = 1/sqrt(LC), the reactance cancels:</p>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">Z(w0) = R + i(0 - 0) = R</p>\n<p>The imaginary part is 0/0 in the limit. The circuit becomes purely resistive.</p>\n\n<h3>Why It Matters</h3>\n<ul>\n<li>Radio tuning: select a specific frequency</li>\n<li>Filters: pass or reject specific frequencies</li>\n<li>Oscillators: generate stable frequencies</li>\n</ul>\n\n<h3>The 0/0</h3>\n<p>The impedance at resonance is the removable value of the 0/0 singularity in the reactance.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[1] Puno 2026, textbook electrical engineering</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "What is the impedance of a series RLC circuit at resonance?",
+            "options": [
+              "0",
+              "R",
+              "infinity",
+              "Z0"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Resonance frequency w0 equals:",
+            "options": [
+              "RC",
+              "1/RC",
+              "1/sqrt(LC)",
+              "sqrt(LC)"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "At resonance, the circuit becomes:",
+            "options": [
+              "Purely capacitive",
+              "Purely inductive",
+              "Purely resistive",
+              "Infinite"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "The reactance at resonance is:",
+            "options": [
+              "R",
+              "Z0",
+              "0",
+              "infinity"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "Radio tuning uses the principle of:",
+            "options": [
+              "Resonance",
+              "Resistance",
+              "Capacitance",
+              "Inductance"
+            ],
+            "correct": 0
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Mechanical Oscillators",
+        "part": "II. Physics and Engineering",
+        "content": "\n<h2>Chapter 4: Mechanical Oscillators</h2>\n<p>Mechanical systems exhibit the same 0/0 pattern as electrical circuits.</p>\n\n<h3>The Impedance</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">Z(w) = c + i(mw - k/w)</p>\n\n<h3>At Resonance</h3>\n<p>When w0 = sqrt(k/m), the mechanical reactance cancels:</p>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">Z(w0) = c + i(0 - 0) = c</p>\n\n<h3>Examples</h3>\n<ul>\n<li>Car suspension: absorbs road vibrations</li>\n<li>Building抗震: withstands earthquakes</li>\n<li>Pendulum: precise timekeeping</li>\n</ul>\n\n<h3>The Universal Pattern</h3>\n<p>Whether electrical or mechanical, the pattern is the same: at resonance, the imaginary part vanishes as 0/0.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[1] Puno 2026, textbook classical mechanics</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "What is the resonance frequency of a mass-spring system?",
+            "options": [
+              "k/m",
+              "sqrt(k/m)",
+              "m/k",
+              "sqrt(m/k)"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "At mechanical resonance, impedance equals:",
+            "options": [
+              "0",
+              "c (damping)",
+              "infinity",
+              "mw"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "A car suspension system uses:",
+            "options": [
+              "Electrical resonance",
+              "Mechanical resonance",
+              "Chemical resonance",
+              "Nuclear resonance"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The mechanical reactance is:",
+            "options": [
+              "mw - k/w",
+              "mw + k/w",
+              "c + mw",
+              "k/w - c"
+            ],
+            "correct": 0
+          },
+          {
+            "q": "At resonance, the mechanical impedance becomes:",
+            "options": [
+              "Purely imaginary",
+              "Purely real",
+              "Complex",
+              "Zero"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Thermoacoustic Systems",
+        "part": "II. Physics and Engineering",
+        "content": "\n<h2>Chapter 5: Thermoacoustic Systems</h2>\n<p>Thermoacoustic systems convert heat to sound and back. The impedance analogy holds.</p>\n\n<h3>The Analogy</h3>\n<p>Acoustic impedance Z_ac is analogous to electrical impedance Z.</p>\n\n<h3>At Resonance</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">Z_ac(w0) = R_ac</p>\n<p>The thermoacoustic engine operates at this removable point.</p>\n\n<h3>Applications</h3>\n<ul>\n<li>Cryocoolers: cool without moving parts</li>\n<li>Engines: convert waste heat to electricity</li>\n<li>Refrigerators: solid-state cooling</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[1] Puno 2026, textbook thermoacoustics</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "What do thermoacoustic systems convert?",
+            "options": [
+              "Sound to light",
+              "Heat to sound",
+              "Electricity to heat",
+              "Sound to electricity"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "At resonance, acoustic impedance becomes:",
+            "options": [
+              "Purely imaginary",
+              "Purely real (R_ac)",
+              "Zero",
+              "Infinite"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Thermoacoustic cryocoolers have:",
+            "options": [
+              "Moving parts",
+              "No moving parts",
+              "Pistons",
+              "Turbines"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The acoustic-electric analogy means:",
+            "options": [
+              "Sound IS electricity",
+              "They share mathematical structure",
+              "They are the same thing",
+              "Sound becomes electricity"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "A thermoacoustic engine operates at:",
+            "options": [
+              "The 0 point",
+              "The removable singularity",
+              "The pole",
+              "The branch cut"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Impedance Matching in Optics",
+        "part": "II. Physics and Engineering",
+        "content": "\n<h2>Chapter 6: Impedance Matching in Optics</h2>\n<p>Optical impedance matching eliminates reflection at interfaces.</p>\n\n<h3>The Quarter-Wave Coating</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">Z_coat = sqrt(Z_glass * Z_air)</p>\n\n<h3>How It Works</h3>\n<p>Two reflections from the coating surfaces interfere destructively, canceling each other.</p>\n\n<h3>The 0/0</h3>\n<p>At the optimal coating thickness, the net reflection coefficient is 0/0 — it vanishes.</p>\n\n<h3>Applications</h3>\n<ul>\n<li>Anti-reflection coatings on lenses</li>\n<li>Solar cell efficiency</li>\n<li>Laser optics</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[1] Puno 2026, textbook optics</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "What is the optimal coating impedance?",
+            "options": [
+              "Z_glass",
+              "Z_air",
+              "sqrt(Z_glass * Z_air)",
+              "Z_glass + Z_air"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "Anti-reflection coatings work by:",
+            "options": [
+              "Absorption",
+              "Destructive interference",
+              "Reflection",
+              "Diffraction"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The net reflection at optimal thickness is:",
+            "options": [
+              "100%",
+              "50%",
+              "0%",
+              "200%"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "A quarter-wave coating has thickness:",
+            "options": [
+              "lambda/2",
+              "lambda/4",
+              "lambda",
+              "2*lambda"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Solar cells benefit from anti-reflection coatings because:",
+            "options": [
+              "They absorb more light",
+              "They reflect less light",
+              "They emit light",
+              "They refract light"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Pole-Zero Cancellation",
+        "part": "II. Physics and Engineering",
+        "content": "\n<h2>Chapter 7: Pole-Zero Cancellation</h2>\n<p>In control theory, engineers deliberately create 0/0 singularities.</p>\n\n<h3>The Mechanism</h3>\n<p>When G(s)*C(s) has (s-a) in both numerator and denominator:</p>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">G(s)*C(s) = (s-a)*N(s) / (s-a)*D(s) = N(s)/D(s)</p>\n\n<h3>The Engineer's Role</h3>\n<p>The engineer <em>creates</em> the 0/0 by choosing C(s) to cancel a pole of G(s).</p>\n\n<h3>Why It Matters</h3>\n<ul>\n<li>Stabilize unstable systems</li>\n<li>Improve transient response</li>\n<li>Eliminate steady-state error</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[1] Puno 2026, textbook control theory</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "Pole-zero cancellation involves:",
+            "options": [
+              "Adding poles",
+              "Canceling a pole with a zero",
+              "Removing all poles",
+              "Creating infinite poles"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "When a pole is canceled, the result is:",
+            "options": [
+              "Infinite",
+              "The remaining transfer function",
+              "Zero",
+              "Undefined"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Pole-zero cancellation is used to:",
+            "options": [
+              "Create instability",
+              "Stabilize unstable systems",
+              "Increase gain",
+              "Reduce bandwidth"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The engineer's role in pole-zero cancellation is:",
+            "options": [
+              "Passive",
+              "Active (chooses C(s))",
+              "None",
+              "Random"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "In G(s)*C(s) = N(s)/D(s), the cancellation means:",
+            "options": [
+              "(s-a) remains",
+              "(s-a) vanishes",
+              "s remains",
+              "a remains"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Kutta Condition",
+        "part": "II. Physics and Engineering",
+        "content": "\n<h2>Chapter 8: Kutta Condition</h2>\n<p>In aerodynamics, the Kutta condition determines the circulation around an airfoil.</p>\n\n<h3>The Condition</h3>\n<p>Velocity must be finite at the trailing edge. This fixes the circulation Gamma:</p>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">Gamma = pi * V * c * (alpha + beta)</p>\n\n<h3>The 0/0</h3>\n<p>Without the Kutta condition, the velocity at the trailing edge is infinite (a pole). The Kutta condition removes this singularity.</p>\n\n<h3>The Lift</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">Lift = rho * V * Gamma</p>\n\n<h3>Applications</h3>\n<ul>\n<li>Airplane wing design</li>\n<li>Wind turbine blades</li>\n<li>Helicopter rotors</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[1] Puno 2026, textbook aerodynamics</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "What does the Kutta condition fix?",
+            "options": [
+              "Drag",
+              "Circulation (Gamma)",
+              "Temperature",
+              "Pressure"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The velocity at the trailing edge must be:",
+            "options": [
+              "Infinite",
+              "Zero",
+              "Finite",
+              "Complex"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "Lift equals:",
+            "options": [
+              "rho * V",
+              "rho * V * Gamma",
+              "Gamma * c",
+              "V * c"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Without the Kutta condition, the trailing edge velocity is:",
+            "options": [
+              "Zero",
+              "Finite",
+              "Infinite",
+              "Oscillating"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "The Kutta condition is used in:",
+            "options": [
+              "Electrical circuits",
+              "Aerodynamics",
+              "Chemistry",
+              "Biology"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Resonances in QFT",
+        "part": "II. Physics and Engineering",
+        "content": "\n<h2>Chapter 9: Resonances in QFT</h2>\n<p>In quantum field theory, particle resonances are poles in the propagator.</p>\n\n<h3>The Propagator</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">G(p) = 1/(p^2 - m^2 + i*gamma)</p>\n\n<h3>At the Pole</h3>\n<p>When p^2 = m^2, the propagator would be infinite. But gamma (the width) keeps it finite.</p>\n\n<h3>The Mass Gap</h3>\n<p>Spec(H) = {0} union [Delta, inf). Delta > 0 means there is a gap. This is different from a removable singularity.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[9] Peskin & Schroeder, \"QFT\" (1995)</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "The QFT propagator has a pole when:",
+            "options": [
+              "p^2 = 0",
+              "p^2 = m^2",
+              "p^2 = infinity",
+              "p^2 = -m^2"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The width gamma in the propagator:",
+            "options": [
+              "Makes it infinite",
+              "Keeps it finite",
+              "Removes it",
+              "Changes the mass"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The mass gap Delta means:",
+            "options": [
+              "No mass",
+              "Minimum energy above vacuum",
+              "Infinite mass",
+              "Zero energy"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "A particle resonance corresponds to:",
+            "options": [
+              "A zero",
+              "A pole",
+              "A branch cut",
+              "A maximum"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The propagator G(p) describes:",
+            "options": [
+              "Particle creation",
+              "Particle propagation",
+              "Particle decay",
+              "Particle interaction"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Phase Transitions",
+        "part": "II. Physics and Engineering",
+        "content": "\n<h2>Chapter 10: Phase Transitions</h2>\n<p>At critical points, physical quantities diverge as power laws.</p>\n\n<h3>Critical Exponents</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">chi ~ |T - Tc|^(-gamma)</p>\n\n<h3>Universality</h3>\n<p>Systems with the same symmetry and dimension share the same critical exponents, regardless of microscopic details.</p>\n\n<h3>The 0/0</h3>\n<p>At T = Tc, the susceptibility chi diverges. This is a pole, not a removable singularity. But the critical exponents themselves are finite and universal.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[7] Wilson 1982 Nobel Prize</li>\n<li>[1] Puno 2026, textbook statistical mechanics</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "At a critical point, susceptibility:",
+            "options": [
+              "Vanishes",
+              "Diverges",
+              "Remains constant",
+              "Oscillates"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Universality means:",
+            "options": [
+              "All systems are the same",
+              "Systems with same symmetry share exponents",
+              "Only water has critical points",
+              "Exponents are random"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The critical exponent gamma describes:",
+            "options": [
+              "Energy",
+              "Magnetization",
+              "Susceptibility",
+              "Heat capacity"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "A phase transition at T=Tc is:",
+            "options": [
+              "A removable singularity",
+              "A pole",
+              "A branch point",
+              "Essential singularity"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Kenneth Wilson won the Nobel Prize for:",
+            "options": [
+              "Discovering critical points",
+              "Renormalization group theory",
+              " inventing temperature",
+              "Measuring water"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "title": "Persistent Flow",
+        "part": "II. Physics and Engineering",
+        "content": "\n<h2>Chapter 11: Persistent Flow</h2>\n<p>In superconductors and superfluids, current flows without resistance — indefinitely.</p>\n\n<h3>The Phenomenon</h3>\n<p>Below the critical temperature Tc, the current state is the lowest energy state. There is no mechanism to stop it.</p>\n\n<h3>Measurement</p>\n<p>Persistent currents have been measured to last > 1 year without decay.</p>\n\n<h3>The Connection</h3>\n<p>The persistent current is a macroscopic quantum state — a removable singularity in the resistance function.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[1] Puno 2026, textbook superconductivity</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "Persistent flow occurs below:",
+            "options": [
+              "Room temperature",
+              "Critical temperature Tc",
+              "Absolute zero",
+              "Melting point"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Persistent currents last:",
+            "options": [
+              "Microseconds",
+              "Seconds",
+              "Minutes",
+              "> 1 year"
+            ],
+            "correct": 3
+          },
+          {
+            "q": "The resistance in persistent flow is:",
+            "options": [
+              "High",
+              "Normal",
+              "Zero",
+              "Negative"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "Persistent flow is a:",
+            "options": [
+              "Classical effect",
+              "Macroscopic quantum state",
+              "Thermal effect",
+              "Magnetic effect"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Superconductivity was discovered by:",
+            "options": [
+              "Einstein",
+              "Onnes",
+              "Newton",
+              "Faraday"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "title": "Singularities at Edge of Spacetime",
+        "part": "II. Physics and Engineering",
+        "content": "\n<h2>Chapter 12: Singularities at Edge of Spacetime</h2>\n<p>Classical general relativity predicts true singularities — points where curvature becomes infinite.</p>\n\n<h3>Penrose-Hawking Theorems</h3>\n<p>Under reasonable energy conditions, gravitational collapse leads to singularities.</p>\n\n<h3>The Question</h3>\n<p>Are these true singularities, or removable ones that quantum gravity will resolve?</p>\n\n<h3>Evidence</h3>\n<ul>\n<li>Black hole information paradox</li>\n<li>Hawking radiation</li>\n<li>AdS/CFT correspondence</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[10] Bekenstein, \"Black holes and entropy\" (1973)</li>\n<li>[11] Hawking, \"Particle creation by black holes\" (1975)</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "Penrose-Hawking theorems predict:",
+            "options": [
+              "No singularities",
+              "True singularities",
+              "Removable singularities only",
+              "Black holes don't exist"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The black hole information paradox involves:",
+            "options": [
+              "Information storage",
+              "Information loss",
+              "Information creation",
+              "Information encryption"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Hawking radiation is:",
+            "options": [
+              "Classical",
+              "Quantum mechanical",
+              "Thermal only",
+              "Magnetic"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "AdS/CFT correspondence suggests:",
+            "options": [
+              "Gravity doesn't exist",
+              "Holographic duality",
+              "Singularities are real",
+              "Space is flat"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "At a true singularity, curvature:",
+            "options": [
+              "Vanishes",
+              "Is finite",
+              "Becomes infinite",
+              "Oscillates"
+            ],
+            "correct": 2
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "title": "Tipping Points",
+        "part": "III. Life, Chemistry, Computation",
+        "content": "\n<h2>Chapter 13: Tipping Points</h2>\n<p>In ecology and climate, systems can suddenly shift to a new state.</p>\n\n<h3>Critical Slowing Down</h3>\n<p>As a system approaches a tipping point:</p>\n<ul>\n<li>Recovery time from perturbations increases</li>\n<li>Fluctuations grow</li>\n<li>Autocorrelation increases</li>\n</ul>\n\n<h3>Early Warning Signals</h3>\n<p>These statistical changes can predict tipping points before they happen.</p>\n\n<h3>The 0/0</h3>\n<p>The resilience function R(t) has a 0/0 at the tipping point — both numerator and denominator vanish.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[8] Scheffer et al., \"Early-warning signals for critical transitions\" (2009)</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "Critical slowing down means:",
+            "options": [
+              "System speeds up",
+              "System recovers more slowly",
+              "System stops",
+              "System oscillates"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Early warning signals include:",
+            "options": [
+              "Decreased fluctuations",
+              "Increased fluctuations",
+              "Constant behavior",
+              "Random behavior"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The resilience function R(t) at a tipping point:",
+            "options": [
+              "Is infinite",
+              "Is 1",
+              "Is 0/0",
+              "Is negative"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "Tipping points occur in:",
+            "options": [
+              "Only climate",
+              "Only ecology",
+              "Many complex systems",
+              "Only math"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "Autocorrelation increases because:",
+            "options": [
+              "System forgets faster",
+              "System remembers longer",
+              "Nothing changes",
+              "System breaks"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "title": "Grokking in ML",
+        "part": "III. Life, Chemistry, Computation",
+        "content": "\n<h2>Chapter 14: Grokking in ML</h2>\n<p>Grokking is the sudden generalization after a long delay in neural network training.</p>\n\n<h3>The Phenomenon</h3>\n<p>After memorizing the training data, the network suddenly learns to generalize. The delay can be orders of magnitude longer than memorization.</p>\n\n<h3>The Predictor</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">T_delay = (1/g_eff) * log(V_mem / V_post)</p>\n\n<h3>Connection to 0/0</h3>\n<p>The grokking transition is a phase transition — a removable singularity in the generalization function.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[19] Power et al., \"Grokking: Generalization Beyond Overfitting\" (2022)</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "Grokking is:",
+            "options": [
+              "Gradual improvement",
+              "Sudden generalization after delay",
+              "Overfitting",
+              "Underfitting"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The delay in grokking can be:",
+            "options": [
+              "Microseconds",
+              "Minutes",
+              "Orders of magnitude longer than memorization",
+              "Zero"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "Grokking is connected to:",
+            "options": [
+              "Random guessing",
+              "Phase transitions",
+              "Overfitting",
+              "Data augmentation"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The grokking predictor T_delay depends on:",
+            "options": [
+              "Only training data",
+              "V_mem and V_post",
+              "Model size only",
+              "Learning rate only"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Grokking was first described by:",
+            "options": [
+              "Hinton",
+              "LeCun",
+              "Power et al.",
+              "Goodfellow"
+            ],
+            "correct": 2
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "title": "Three Kinds of Degree",
+        "part": "IV. Knowing Where the Pattern Stops",
+        "content": "\n<h2>Chapter 15: Three Kinds of Degree</h2>\n<p>Not all evidence is equal. There are three levels of mathematical certainty.</p>\n\n<h3>Level 1: Proven</h3>\n<p>The result follows logically from accepted axioms. Example: sin(x)/x -> 1 as x -> 0.</p>\n\n<h3>Level 2: Derived</h3>\n<p>The result follows from a plausible but unproven assumption. Example: Riemann Hypothesis follows from the Hilbert-Polya conjecture.</p>\n\n<h3>Level 3: Numerical</h3>\n<p>The result is supported by computation but not proven. Example: Goldbach's conjecture verified to 4x10^18.</p>\n\n<h3>The Lesson</h3>\n<p>Know which level you are on. Don't claim Level 1 for Level 3 results.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[24] Polya, \"How to Solve It\" (1945)</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "Level 1 evidence means:",
+            "options": [
+              "Numerically checked",
+              "Proven from axioms",
+              "Plausible",
+              "Guessed"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Level 3 evidence means:",
+            "options": [
+              "Proven",
+              "Derived",
+              "Numerically supported",
+              "Impossible"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "Goldbach's conjecture is at:",
+            "options": [
+              "Level 1",
+              "Level 2",
+              "Level 3",
+              "No level"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "The Riemann Hypothesis is at:",
+            "options": [
+              "Level 1",
+              "Level 2",
+              "Level 3",
+              "Level 4"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The key lesson is:",
+            "options": [
+              "All evidence is equal",
+              "Know which level you are on",
+              "Only Level 1 matters",
+              "Level 3 is worthless"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 16,
+        "title": "When a Beautiful Pattern Isn't Evidence",
+        "part": "IV. Knowing Where the Pattern Stops",
+        "content": "\n<h2>Chapter 16: When a Beautiful Pattern Isn't Evidence</h2>\n<p>A pattern matching is not proof. The L.O.R.E. framework must be honest about this.</p>\n\n<h3>The Three-Question Checklist</h3>\n<ol>\n<li>Is the special point <strong>proven</strong> to exist and behave that way?</li>\n<li>Is the finite value <strong>derived</strong> from surrounding behavior?</li>\n<li>Does the specific case <strong>cover</strong> the genuinely open part?</li>\n</ol>\n\n<h3>Classification</h3>\n<ul>\n<li><strong>REAL</strong>: All three answers are YES</li>\n<li><strong>CAREFUL</strong>: Any answer is NO</li>\n<li><strong>NOT_SAME</strong>: The pattern doesn't apply</li>\n</ul>\n\n<h3>Why This Matters</h3>\n<p>Honest classification is more valuable than inflated claims.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[25] Erdos & Hofman, \"Proofs from THE BOOK\" (1998)</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "The three-question checklist asks about:",
+            "options": [
+              "Price, quality, quantity",
+              "Proven, derived, covers",
+              "Fast, cheap, good",
+              "Small, medium, large"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "REAL classification requires:",
+            "options": [
+              "One YES",
+              "Two YESes",
+              "Three YESes",
+              "No YESes"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "CAREFUL classification means:",
+            "options": [
+              "All YES",
+              "Any NO",
+              "All NO",
+              "No classification"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The purpose of the checklist is:",
+            "options": [
+              "Inflate claims",
+              "Be honest",
+              "Hide weaknesses",
+              "Impress people"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "NOT_SAME means:",
+            "options": [
+              "The pattern applies",
+              "The pattern doesn't apply",
+              "The pattern is proven",
+              "The pattern is new"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 17,
+        "title": "What the Constants Actually Are",
+        "part": "V. The Constants",
+        "content": "\n<h2>Chapter 17: What the Constants Actually Are</h2>\n<p>The fundamental constants of nature are not arbitrary. They are determined by the requirement that the universe exists.</p>\n\n<h3>The Argument</h3>\n<p>If the constants were different, stars couldn't form, chemistry couldn't happen, life couldn't exist.</p>\n\n<h3>The 0/0 Connection</h3>\n<p>The constants sit at the removable singularity — the only values where the universe's response function is finite and meaningful.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[26] Courant & Robbins, \"What is Mathematics?\" (1941)</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "Fundamental constants are:",
+            "options": [
+              "Random",
+              "Arbitrary",
+              "Determined by universe's existence",
+              "Human inventions"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "If constants were different:",
+            "options": [
+              "Nothing changes",
+              "Universe still works",
+              "Stars and chemistry couldn't happen",
+              "Only colors change"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "The 0/0 connection means constants sit at:",
+            "options": [
+              "A pole",
+              "The removable singularity",
+              "A branch cut",
+              "Infinity"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The universe's response function is:",
+            "options": [
+              "Always infinite",
+              "Finite only at specific constant values",
+              "Always zero",
+              "Random"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The constants determine:",
+            "options": [
+              "Only physics",
+              "Only chemistry",
+              "Everything that can exist",
+              "Nothing"
+            ],
+            "correct": 2
+          }
+        ]
+      },
+      {
+        "id": 18,
+        "title": "The Entropy of Nothing",
+        "part": "V. The Constants",
+        "content": "\n<h2>Chapter 18: The Entropy of Nothing</h2>\n<p>The vacuum has entropy. Empty space is not empty — it is full of quantum fluctuations.</p>\n\n<h3>Bekenstein Bound</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">S <= 2*pi*E*R / (hbar*c)</p>\n<p>Maximum information in a region of space.</p>\n\n<h3>Landauer's Principle</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">E >= kT * ln(2) per bit erased</p>\n<p>Information is physical. Erasing a bit costs energy.</p>\n\n<h3>The Connection</h3>\n<p>Both bounds are 0/0 at the vacuum state — both numerator and denominator vanish, but the ratio is finite.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[10] Bekenstein, \"Black holes and entropy\" (1973)</li>\n<li>[11] Landauer, \"Irreversibility and heat generation\" (1961)</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "The Bekenstein bound limits:",
+            "options": [
+              "Energy",
+              "Information in a region",
+              "Temperature",
+              "Speed"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Landauer's principle states:",
+            "options": [
+              "Information is free",
+              "Erasing a bit costs energy",
+              "Bits are weightless",
+              "Computation is impossible"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The vacuum has:",
+            "options": [
+              "Zero entropy",
+              "Maximum entropy",
+              "Finite entropy",
+              "Negative entropy"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "Both bounds are 0/0 at:",
+            "options": [
+              "High temperature",
+              "The vacuum state",
+              "Absolute zero",
+              "Infinite energy"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Information is:",
+            "options": [
+              "Abstract",
+              "Physical",
+              "Immaterial",
+              "Infinite"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 19,
+        "title": "The Language of Symmetry",
+        "part": "V. The Constants",
+        "content": "\n<h2>Chapter 19: The Language of Symmetry</h2>\n<p>Symmetry is the deepest language of physics. The E8 exceptional Lie algebra is its most beautiful expression.</p>\n\n<h3>E8 Structure</h3>\n<ul>\n<li>Rank: 8</li>\n<li>Roots: 240</li>\n<li>Exponents: 1 + primes(2,3,5,7,11,13,17,19,23,29)</li>\n<li>Weyl group order: 696,729,600</li>\n</ul>\n\n<h3>The Prime Connection</h3>\n<p>The exponents of E8 are exactly 1 + the first 8 primes. This is not a coincidence.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[4] Conway & Sloane, \"Sphere Packings\" (1999)</li>\n<li>[5] Viazovska, \"Sphere packing in R^8\" (2017)</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "E8 has how many roots?",
+            "options": [
+              "8",
+              "240",
+              "696729600",
+              "1000"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The E8 exponents are:",
+            "options": [
+              "All primes",
+              "1 + primes(2..29)",
+              "Fibonacci numbers",
+              "Random"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The Weyl group order of E8 is:",
+            "options": [
+              "240",
+              "8",
+              "696,729,600",
+              "30"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "E8 is significant because:",
+            "options": [
+              "It's simple",
+              "It encodes universe's symmetry",
+              "It's small",
+              "It's new"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Viazovska proved sphere packing in:",
+            "options": [
+              "R^3",
+              "R^8",
+              "R^24",
+              "R^100"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 20,
+        "title": "The Fold Theorem",
+        "part": "V. The Constants",
+        "content": "\n<h2>Chapter 20: The Fold Theorem</h2>\n<p>The fold theorem describes how information is preserved across scale changes.</p>\n\n<h3>The Statement</h3>\n<p>When a system is folded (renormalized), the information at the fixed point is preserved exactly.</p>\n\n<h3>The 0/0</h3>\n<p>The renormalization group flow has a 0/0 at the fixed point — both the flow and its derivative vanish, but the fixed point value is well-defined.</p>\n\n<h3>Applications</h3>\n<ul>\n<li>Renormalization in QFT</li>\n<li>Scale invariance in critical phenomena</li>\n<li>Universality classes</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[7] Wilson 1982 Nobel Prize</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "The fold theorem describes:",
+            "options": [
+              "Paper folding",
+              "Information preservation across scales",
+              "Origami",
+              "Clothing design"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "At a fixed point of RG flow:",
+            "options": [
+              "Flow is infinite",
+              "Flow and its derivative vanish",
+              "Flow is maximum",
+              "Flow oscillates"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Scale invariance means:",
+            "options": [
+              "Size doesn't matter",
+              "Physics looks the same at all scales",
+              "Everything is flat",
+              "Nothing changes"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Universality classes group systems by:",
+            "options": [
+              "Size",
+              "Symmetry and dimension",
+              "Color",
+              "Temperature"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The renormalization group was developed by:",
+            "options": [
+              "Einstein",
+              "Wilson",
+              "Newton",
+              "Bohr"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 21,
+        "title": "Verlinde Entropy",
+        "part": "VI. Appendices",
+        "content": "\n<h2>Appendix B: Verlinde Entropy</h2>\n<p>Gravity may be an entropic force — emerging from entropy gradients rather than fundamental interaction.</p>\n\n<h3>The Formula</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">S = A / (4 * G * hbar * c)</p>\n\n<h3>The Idea</h3>\n<p>When a particle moves toward a holographic screen, it increases the entropy. This entropy gradient produces a force that looks like gravity.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[10] Bekenstein, \"Black holes and entropy\" (1973)</li>\n<li>[13] Verlinde, \"On the Origin of Gravity and the Laws of Newton\" (2011)</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "Verlinde entropy is:",
+            "options": [
+              "Classical entropy",
+              "Entropy of a holographic screen",
+              "Thermal entropy",
+              "Chemical entropy"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The entropy S equals:",
+            "options": [
+              "A * 4",
+              "A / (4 * G * hbar * c)",
+              "G * A",
+              "hbar * c / A"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Gravity as entropic force means:",
+            "options": [
+              "Gravity doesn't exist",
+              "Gravity emerges from entropy",
+              "Entropy causes gravity",
+              "They are unrelated"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "A holographic screen:",
+            "options": [
+              "Stores information on a surface",
+              "Projects images",
+              "Is a computer screen",
+              "Measures temperature"
+            ],
+            "correct": 0
+          },
+          {
+            "q": "The Bekenstein-Hawking entropy is proportional to:",
+            "options": [
+              "Volume",
+              "Area",
+              "Mass",
+              "Temperature"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 22,
+        "title": "Bekenstein Bound",
+        "part": "VI. Appendices",
+        "content": "\n<h2>Appendix B: Bekenstein Bound</h2>\n<p>There is a maximum amount of information that can be stored in a finite region of space.</p>\n\n<h3>The Formula</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">S <= 2*pi*E*R / (hbar*c)</p>\n\n<h3>Implications</h3>\n<ul>\n<li>Information is finite, not infinite</li>\n<li>Black holes maximize information density</li>\n<li>The universe is a hologram</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[10] Bekenstein, \"Black holes and entropy\" (1973)</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "The Bekenstein bound limits:",
+            "options": [
+              "Speed",
+              "Information in a region",
+              "Energy",
+              "Temperature"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Black holes:",
+            "options": [
+              "Destroy information",
+              "Maximize information density",
+              "Ignore information",
+              "Create information"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The holographic principle suggests:",
+            "options": [
+              "3D is real",
+              "Information is stored on 2D surfaces",
+              "Holograms are fake",
+              "Nothing is real"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The Bekenstein bound is proportional to:",
+            "options": [
+              "Volume",
+              "Area (E*R)",
+              "Mass^2",
+              "Temperature"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "hbar*c in the formula represents:",
+            "options": [
+              "Speed of light",
+              "Planck's constant times c",
+              "Energy",
+              "Entropy"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 23,
+        "title": "Landauer's Principle",
+        "part": "VI. Appendices",
+        "content": "\n<h2>Appendix B: Landauer's Principle</h2>\n<p>Erasing information has a minimum energy cost.</p>\n\n<h3>The Formula</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">E >= kT * ln(2) per bit erased</p>\n\n<h3>Implications</h3>\n<ul>\n<li>Information is physical</li>\n<li>Computation generates heat</li>\n<li>Reversible computing is theoretically possible</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[11] Landauer, \"Irreversibility and heat generation\" (1961)</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "Landauer's principle says erasing a bit costs:",
+            "options": [
+              "Zero energy",
+              "kT * ln(2)",
+              "kT",
+              "ln(2)"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "This means information is:",
+            "options": [
+              "Abstract",
+              "Physical",
+              "Virtual",
+              "Immaterial"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Reversible computing:",
+            "options": [
+              "Is impossible",
+              "Is theoretically possible",
+              "Uses no energy",
+              "Is faster"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "kT represents:",
+            "options": [
+              "Kinetic energy",
+              "Thermal energy",
+              "Potential energy",
+              "Light energy"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Computation generates heat because:",
+            "options": [
+              "Computers are hot",
+              "Information erasure is irreversible",
+              "Electricity is warm",
+              "Bits are physical"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 24,
+        "title": "Kolmogorov Complexity",
+        "part": "VI. Appendices",
+        "content": "\n<h2>Appendix B: Kolmogorov Complexity</h2>\n<p>The complexity of a string is the length of the shortest program that produces it.</p>\n\n<h3>The Definition</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">K(x) = length of shortest program producing x</p>\n\n<h3>Properties</h3>\n<ul>\n<li>Uncomputable in general</li>\n<li>Well-defined but not calculable</li>\n<li>Random strings have maximum complexity</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[16] Kolmogorov, \"Foundations of Probability\" (1933)</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "Kolmogorov complexity is:",
+            "options": [
+              "Computable",
+              "The shortest program length",
+              "Random",
+              "Infinite"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "A random string has:",
+            "options": [
+              "Minimum complexity",
+              "Maximum complexity",
+              "Zero complexity",
+              "Undefined complexity"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Kolmogorov complexity is:",
+            "options": [
+              "Always computable",
+              "Uncomputable in general",
+              "Only for numbers",
+              "Only for text"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The shortest program producing x is called:",
+            "options": [
+              "The generator",
+              "The compressor",
+              "The Kolmogorov program",
+              "The universal program"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "A string like '0000000000' has:",
+            "options": [
+              "High complexity",
+              "Low complexity",
+              "Maximum complexity",
+              "Undefined complexity"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 25,
+        "title": "Nash Equilibrium",
+        "part": "VI. Appendices",
+        "content": "\n<h2>Appendix C: Nash Equilibrium</h2>\n<p>Every finite game has at least one mixed-strategy equilibrium.</p>\n\n<h3>The Result</h3>\n<p>John Nash proved that in any finite game, there exists a strategy profile where no player can improve by unilaterally changing their strategy.</p>\n\n<h3>The Connection</h3>\n<p>The Nash equilibrium is a fixed point — a removable singularity in the payoff function.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[14] Nash, \"Non-Cooperative Games\" (1951)</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "Nash equilibrium exists in:",
+            "options": [
+              "Only 2-player games",
+              "Every finite game",
+              "Only zero-sum games",
+              "Only cooperative games"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "At Nash equilibrium:",
+            "options": [
+              "Everyone wins",
+              "No one can improve unilaterally",
+              "Everyone loses",
+              "The game ends"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Nash equilibrium is a:",
+            "options": [
+              "Maximum",
+              "Minimum",
+              "Fixed point",
+              "Random point"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "Mixed strategy means:",
+            "options": [
+              "Random play",
+              "Combining pure strategies probabilistically",
+              "Playing twice",
+              "Using mixed numbers"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "John Nash won the Nobel Prize in:",
+            "options": [
+              "Physics",
+              "Chemistry",
+              "Economics",
+              "Literature"
+            ],
+            "correct": 2
+          }
+        ]
+      },
+      {
+        "id": 26,
+        "title": "Kelly Criterion",
+        "part": "VI. Appendices",
+        "content": "\n<h2>Appendix C: Kelly Criterion</h2>\n<p>The optimal bet size maximizes long-term growth rate.</p>\n\n<h3>The Formula</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">f* = (bp - q) / b</p>\n\n<h3>Where</h3>\n<ul>\n<li>f* = fraction of bankroll to bet</li>\n<li>b = odds received on the bet</li>\n<li>p = probability of winning</li>\n<li>q = probability of losing (1-p)</li>\n</ul>\n\n<h3>The 0/0</h3>\n<p>The Kelly criterion is the removable value of the growth rate function — the optimal point where risk and reward balance.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[15] Kelly, \"A New Interpretation of Information Rate\" (1956)</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "The Kelly criterion maximizes:",
+            "options": [
+              "Winning probability",
+              "Long-term growth rate",
+              "Bet size",
+              "Luck"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "f* = (bp - q) / b means:",
+            "options": [
+              "Bet everything",
+              "Optimal fraction to bet",
+              "Never bet",
+              "Bet randomly"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The Kelly criterion is:",
+            "options": [
+              "Always optimal",
+              "Log-optimal portfolio",
+              "Random",
+              "Conservative"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "p represents:",
+            "options": [
+              "Profit",
+              "Probability of winning",
+              "Payout",
+              "Penalty"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Over-betting the Kelly criterion leads to:",
+            "options": [
+              "Higher returns",
+              "Eventually ruin",
+              "No change",
+              "Guaranteed profit"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 27,
+        "title": "Martingale Stopping Theorem",
+        "part": "VI. Appendices",
+        "content": "\n<h2>Appendix C: Martingale Stopping Theorem</h2>\n<p>Under fair game conditions, stopping doesn't beat the market.</p>\n\n<h3>The Theorem</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">E[X_tau] = E[X_0]</p>\n<p>The expected value at stopping time equals the initial value.</p>\n\n<h3>Implications</h3>\n<ul>\n<li>No betting strategy can beat a fair game</li>\n<li>Stopping rules don't change expected value</li>\n<li>The market is efficient under fair game conditions</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[17] Ville, \"Etude critique de la notion de ensemble\" (1939)</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "The martingale stopping theorem says:",
+            "options": [
+              "You can beat the market",
+              "Stopping doesn't change expected value",
+              "Betting is always good",
+              "The market is unfair"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "E[X_tau] = E[X_0] means:",
+            "options": [
+              "You always win",
+              "Expected value is preserved",
+              "You always lose",
+              "Value is random"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "This theorem applies to:",
+            "options": [
+              "Rigged games",
+              "Fair games",
+              "Only card games",
+              "Only stock markets"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "A martingale is:",
+            "options": [
+              "A type of bet",
+              "A fair game process",
+              "A losing strategy",
+              "A winning strategy"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The practical implication is:",
+            "options": [
+              "Always bet",
+              "No strategy beats a fair game",
+              "Double down",
+              "Quit while ahead"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 28,
+        "title": "Halting Problem",
+        "part": "VI. Appendices",
+        "content": "\n<h2>Appendix D: Halting Problem</h2>\n<p>No algorithm can decide whether an arbitrary program halts or runs forever.</p>\n\n<h3>The Proof</h3>\n<p>Assume a halting decider H exists. Construct a program D that calls H on itself and does the opposite. This leads to a contradiction.</p>\n\n<h3>Implications</h3>\n<ul>\n<li>Some problems are undecidable</li>\n<li>Computation has fundamental limits</li>\n<li>The 0/0 of computer science</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[16] Turing, \"On Computable Numbers\" (1936)</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "The halting problem says:",
+            "options": [
+              "All programs halt",
+              "No program halts",
+              "Some programs can't be decided",
+              "All programs are decidable"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "The proof uses:",
+            "options": [
+              "Induction",
+              "Diagonal argument",
+              "Contradiction only",
+              "Recursion"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The halting problem is:",
+            "options": [
+              "Decidable",
+              "Undecidable",
+              "Trivial",
+              "Unimportant"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Turing proved this in:",
+            "options": [
+              "1900",
+              "1936",
+              "1950",
+              "2000"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The practical consequence is:",
+            "options": [
+              "No bugs in programs",
+              "Some questions about programs are unanswerable",
+              "All programs are fast",
+              "Computers are omniscient"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
+        "id": 29,
+        "title": "Godel's Incompleteness",
+        "part": "VI. Appendices",
+        "content": "\n<h2>Appendix D: Godel's Incompleteness</h2>\n<p>Any consistent system capable of arithmetic contains true but unprovable statements.</p>\n\n<h3>The First Incompleteness Theorem</h3>\n<p>There exist statements that are true but cannot be proven within the system.</p>\n\n<h3>The Second Incompleteness Theorem</h3>\n<p>The system cannot prove its own consistency.</p>\n\n<h3>The Connection</h3>\n<p>Godel's theorems are the ultimate 0/0 — the system's self-reference creates a removable singularity in the space of provability.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[16] Godel, \"On formally undecidable propositions\" (1931)</li>\n</ul>\n",
+        "quiz": [
+          {
+            "q": "Godel's first theorem says:",
+            "options": [
+              "All true statements are provable",
+              "Some true statements are unprovable",
+              "No statements are true",
+              "All statements are provable"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The second theorem says:",
+            "options": [
+              "Systems can prove consistency",
+              "Systems cannot prove own consistency",
+              "Systems are inconsistent",
+              "Consistency doesn't matter"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Godel's theorems apply to:",
+            "options": [
+              "Only arithmetic",
+              "Any consistent system capable of arithmetic",
+              "All systems",
+              "No systems"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "The proof technique uses:",
+            "options": [
+              "Diagonal argument",
+              "Godel numbering",
+              "Both",
+              "Neither"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "Godel published this in:",
+            "options": [
+              "1900",
+              "1931",
+              "1950",
+              "2000"
+            ],
+            "correct": 1
+          }
+        ]
+      }
+    ],
+    "parts": {
+      "I. The Core Idea": [
+        {
+          "id": 1,
+          "title": "What 0/0 Actually Means",
+          "part": "I. The Core Idea",
+          "content": "\n<h2>Chapter 1: What 0/0 Actually Means</h2>\n<p>The expression 0/0 is not \"undefined\" in the sense of being meaningless. It is the <em>most meaningful</em> expression in mathematics.</p>\n\n<h3>Why?</h3>\n<p>Because 0/0 represents the <strong>meeting point</strong> of two vanishing quantities. When both numerator and denominator approach zero, the question becomes: <em>how fast?</em></p>\n\n<h3>L'Hopital's Rule (1696)</h3>\n<p>If f(a) = 0 and g(a) = 0, then:</p>\n<p style=\"font-size:1.2em; text-align:center; padding:20px;\">lim<sub>x->a</sub> f(x)/g(x) = f'(a)/g'(a)</p>\n<p>The limit exists if f'(a) and g'(a) are not both zero.</p>\n\n<h3>Examples</h3>\n<table style=\"width:100%; border-collapse:collapse;\">\n<tr><td style=\"padding:10px; border:1px solid #4a5568;\"><code>sin(x)/x</code></td>\n<td style=\"padding:10px; border:1px solid #4a5568;\">lim<sub>x->0</sub> = <strong>1</strong></td></tr>\n<tr><td style=\"padding:10px; border:1px solid #4a5568;\"><code>(e^x - 1)/x</code></td>\n<td style=\"padding:10px; border:1px solid #4a5568;\">lim<sub>x->0</sub> = <strong>1</strong></td></tr>\n<tr><td style=\"padding:10px; border:1px solid #4a5568;\"><code>log(1+x)/x</code></td>\n<td style=\"padding:10px; border:1px solid #4a5568;\">lim<sub>x->0</sub> = <strong>1</strong></td></tr>\n<tr><td style=\"padding:10px; border:1px solid #4a5568;\"><code>(1-cos(x))/x^2</code></td>\n<td style=\"padding:10px; border:1px solid #4a5568;\">lim<sub>x->0</sub> = <strong>1/2</strong></td></tr>\n</table>\n\n<h3>The Principle</h3>\n<p>The removable singularity is not a pathology. It is the <em>norm</em>. Most interesting functions have a 0/0 at their most important point.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[1] L'Hopital, \"Analyse des Infiniment Petits\" (1696)</li>\n<li>[26] Courant & Robbins, \"What is Mathematics?\" (1941)</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "What is lim(x->0) sin(x)/x?",
+              "options": [
+                "0",
+                "1",
+                "infinity",
+                "undefined"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Who published the first rule for evaluating 0/0 limits?",
+              "options": [
+                "Newton",
+                "Euler",
+                "L'Hopital",
+                "Cauchy"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "What is lim(x->0) (1-cos(x))/x^2?",
+              "options": [
+                "0",
+                "1",
+                "1/2",
+                "2"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "A removable singularity means the function is:",
+              "options": [
+                "Infinite",
+                "Undefined everywhere",
+                "Defined everywhere except one point",
+                "Continuous everywhere"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "The expression 0/0 represents:",
+              "options": [
+                "An error",
+                "A meeting point of vanishing quantities",
+                "An infinite value",
+                "A complex number"
+              ],
+              "correct": 1
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Why This Keeps Showing Up",
+          "part": "I. The Core Idea",
+          "content": "\n<h2>Chapter 2: Why This Keeps Showing Up</h2>\n<p>The 0/0 pattern appears everywhere because it is the <em>natural language</em> of response functions.</p>\n\n<h3>Response Functions</h3>\n<p>A response function measures output/input. At the special point, both output and input vanish for a shared reason.</p>\n\n<h3>The Pattern</h3>\n<p>Whenever you see:</p>\n<ul>\n<li>A system that becomes \"sensitive\" at a specific point</li>\n<li>A ratio where both numerator and denominator vanish</li>\n<li>A function that is \"almost\" defined but not quite</li>\n</ul>\n<p>...you are looking at a removable singularity.</p>\n\n<h3>Why It's Universal</h3>\n<p>The pattern is universal because <strong>all interesting systems have a special point</strong>. At that special point, the natural response function becomes 0/0.</p>\n\n<h3>The Key Insight</h3>\n<p>The removable singularity is not a bug. It is a <em>feature</em> of how nature encodes information.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[26] Courant & Robbins, \"What is Mathematics?\" (1941)</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "What type of function naturally produces 0/0?",
+              "options": [
+                "Step function",
+                "Response function",
+                "Exponential function",
+                "Logarithmic function"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "At the special point of a response function:",
+              "options": [
+                "Both vanish for different reasons",
+                "Both vanish for a shared reason",
+                "Only the numerator vanishes",
+                "The function is infinite"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The removable singularity pattern is:",
+              "options": [
+                "Rare",
+                "Universal",
+                "Limited to math",
+                "Only in physics"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The 0/0 pattern is best described as:",
+              "options": [
+                "A bug",
+                "A feature",
+                "An error",
+                "A limitation"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "All interesting systems have:",
+              "options": [
+                "No special points",
+                "One special point",
+                "Two special points",
+                "Infinite special points"
+              ],
+              "correct": 1
+            }
+          ]
+        }
+      ],
+      "II. Physics and Engineering": [
+        {
+          "id": 3,
+          "title": "Circuits at Resonance",
+          "part": "II. Physics and Engineering",
+          "content": "\n<h2>Chapter 3: Circuits at Resonance</h2>\n<p>The series RLC circuit is the simplest physical system with a removable singularity.</p>\n\n<h3>The Impedance</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">Z(w) = R + i(wL - 1/wC)</p>\n\n<h3>At Resonance</h3>\n<p>When w0 = 1/sqrt(LC), the reactance cancels:</p>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">Z(w0) = R + i(0 - 0) = R</p>\n<p>The imaginary part is 0/0 in the limit. The circuit becomes purely resistive.</p>\n\n<h3>Why It Matters</h3>\n<ul>\n<li>Radio tuning: select a specific frequency</li>\n<li>Filters: pass or reject specific frequencies</li>\n<li>Oscillators: generate stable frequencies</li>\n</ul>\n\n<h3>The 0/0</h3>\n<p>The impedance at resonance is the removable value of the 0/0 singularity in the reactance.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[1] Puno 2026, textbook electrical engineering</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "What is the impedance of a series RLC circuit at resonance?",
+              "options": [
+                "0",
+                "R",
+                "infinity",
+                "Z0"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Resonance frequency w0 equals:",
+              "options": [
+                "RC",
+                "1/RC",
+                "1/sqrt(LC)",
+                "sqrt(LC)"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "At resonance, the circuit becomes:",
+              "options": [
+                "Purely capacitive",
+                "Purely inductive",
+                "Purely resistive",
+                "Infinite"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "The reactance at resonance is:",
+              "options": [
+                "R",
+                "Z0",
+                "0",
+                "infinity"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "Radio tuning uses the principle of:",
+              "options": [
+                "Resonance",
+                "Resistance",
+                "Capacitance",
+                "Inductance"
+              ],
+              "correct": 0
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Mechanical Oscillators",
+          "part": "II. Physics and Engineering",
+          "content": "\n<h2>Chapter 4: Mechanical Oscillators</h2>\n<p>Mechanical systems exhibit the same 0/0 pattern as electrical circuits.</p>\n\n<h3>The Impedance</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">Z(w) = c + i(mw - k/w)</p>\n\n<h3>At Resonance</h3>\n<p>When w0 = sqrt(k/m), the mechanical reactance cancels:</p>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">Z(w0) = c + i(0 - 0) = c</p>\n\n<h3>Examples</h3>\n<ul>\n<li>Car suspension: absorbs road vibrations</li>\n<li>Building抗震: withstands earthquakes</li>\n<li>Pendulum: precise timekeeping</li>\n</ul>\n\n<h3>The Universal Pattern</h3>\n<p>Whether electrical or mechanical, the pattern is the same: at resonance, the imaginary part vanishes as 0/0.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[1] Puno 2026, textbook classical mechanics</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "What is the resonance frequency of a mass-spring system?",
+              "options": [
+                "k/m",
+                "sqrt(k/m)",
+                "m/k",
+                "sqrt(m/k)"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "At mechanical resonance, impedance equals:",
+              "options": [
+                "0",
+                "c (damping)",
+                "infinity",
+                "mw"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "A car suspension system uses:",
+              "options": [
+                "Electrical resonance",
+                "Mechanical resonance",
+                "Chemical resonance",
+                "Nuclear resonance"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The mechanical reactance is:",
+              "options": [
+                "mw - k/w",
+                "mw + k/w",
+                "c + mw",
+                "k/w - c"
+              ],
+              "correct": 0
+            },
+            {
+              "q": "At resonance, the mechanical impedance becomes:",
+              "options": [
+                "Purely imaginary",
+                "Purely real",
+                "Complex",
+                "Zero"
+              ],
+              "correct": 1
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "title": "Thermoacoustic Systems",
+          "part": "II. Physics and Engineering",
+          "content": "\n<h2>Chapter 5: Thermoacoustic Systems</h2>\n<p>Thermoacoustic systems convert heat to sound and back. The impedance analogy holds.</p>\n\n<h3>The Analogy</h3>\n<p>Acoustic impedance Z_ac is analogous to electrical impedance Z.</p>\n\n<h3>At Resonance</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">Z_ac(w0) = R_ac</p>\n<p>The thermoacoustic engine operates at this removable point.</p>\n\n<h3>Applications</h3>\n<ul>\n<li>Cryocoolers: cool without moving parts</li>\n<li>Engines: convert waste heat to electricity</li>\n<li>Refrigerators: solid-state cooling</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[1] Puno 2026, textbook thermoacoustics</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "What do thermoacoustic systems convert?",
+              "options": [
+                "Sound to light",
+                "Heat to sound",
+                "Electricity to heat",
+                "Sound to electricity"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "At resonance, acoustic impedance becomes:",
+              "options": [
+                "Purely imaginary",
+                "Purely real (R_ac)",
+                "Zero",
+                "Infinite"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Thermoacoustic cryocoolers have:",
+              "options": [
+                "Moving parts",
+                "No moving parts",
+                "Pistons",
+                "Turbines"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The acoustic-electric analogy means:",
+              "options": [
+                "Sound IS electricity",
+                "They share mathematical structure",
+                "They are the same thing",
+                "Sound becomes electricity"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "A thermoacoustic engine operates at:",
+              "options": [
+                "The 0 point",
+                "The removable singularity",
+                "The pole",
+                "The branch cut"
+              ],
+              "correct": 1
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "title": "Impedance Matching in Optics",
+          "part": "II. Physics and Engineering",
+          "content": "\n<h2>Chapter 6: Impedance Matching in Optics</h2>\n<p>Optical impedance matching eliminates reflection at interfaces.</p>\n\n<h3>The Quarter-Wave Coating</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">Z_coat = sqrt(Z_glass * Z_air)</p>\n\n<h3>How It Works</h3>\n<p>Two reflections from the coating surfaces interfere destructively, canceling each other.</p>\n\n<h3>The 0/0</h3>\n<p>At the optimal coating thickness, the net reflection coefficient is 0/0 — it vanishes.</p>\n\n<h3>Applications</h3>\n<ul>\n<li>Anti-reflection coatings on lenses</li>\n<li>Solar cell efficiency</li>\n<li>Laser optics</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[1] Puno 2026, textbook optics</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "What is the optimal coating impedance?",
+              "options": [
+                "Z_glass",
+                "Z_air",
+                "sqrt(Z_glass * Z_air)",
+                "Z_glass + Z_air"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "Anti-reflection coatings work by:",
+              "options": [
+                "Absorption",
+                "Destructive interference",
+                "Reflection",
+                "Diffraction"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The net reflection at optimal thickness is:",
+              "options": [
+                "100%",
+                "50%",
+                "0%",
+                "200%"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "A quarter-wave coating has thickness:",
+              "options": [
+                "lambda/2",
+                "lambda/4",
+                "lambda",
+                "2*lambda"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Solar cells benefit from anti-reflection coatings because:",
+              "options": [
+                "They absorb more light",
+                "They reflect less light",
+                "They emit light",
+                "They refract light"
+              ],
+              "correct": 1
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "title": "Pole-Zero Cancellation",
+          "part": "II. Physics and Engineering",
+          "content": "\n<h2>Chapter 7: Pole-Zero Cancellation</h2>\n<p>In control theory, engineers deliberately create 0/0 singularities.</p>\n\n<h3>The Mechanism</h3>\n<p>When G(s)*C(s) has (s-a) in both numerator and denominator:</p>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">G(s)*C(s) = (s-a)*N(s) / (s-a)*D(s) = N(s)/D(s)</p>\n\n<h3>The Engineer's Role</h3>\n<p>The engineer <em>creates</em> the 0/0 by choosing C(s) to cancel a pole of G(s).</p>\n\n<h3>Why It Matters</h3>\n<ul>\n<li>Stabilize unstable systems</li>\n<li>Improve transient response</li>\n<li>Eliminate steady-state error</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[1] Puno 2026, textbook control theory</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "Pole-zero cancellation involves:",
+              "options": [
+                "Adding poles",
+                "Canceling a pole with a zero",
+                "Removing all poles",
+                "Creating infinite poles"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "When a pole is canceled, the result is:",
+              "options": [
+                "Infinite",
+                "The remaining transfer function",
+                "Zero",
+                "Undefined"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Pole-zero cancellation is used to:",
+              "options": [
+                "Create instability",
+                "Stabilize unstable systems",
+                "Increase gain",
+                "Reduce bandwidth"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The engineer's role in pole-zero cancellation is:",
+              "options": [
+                "Passive",
+                "Active (chooses C(s))",
+                "None",
+                "Random"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "In G(s)*C(s) = N(s)/D(s), the cancellation means:",
+              "options": [
+                "(s-a) remains",
+                "(s-a) vanishes",
+                "s remains",
+                "a remains"
+              ],
+              "correct": 1
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "title": "Kutta Condition",
+          "part": "II. Physics and Engineering",
+          "content": "\n<h2>Chapter 8: Kutta Condition</h2>\n<p>In aerodynamics, the Kutta condition determines the circulation around an airfoil.</p>\n\n<h3>The Condition</h3>\n<p>Velocity must be finite at the trailing edge. This fixes the circulation Gamma:</p>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">Gamma = pi * V * c * (alpha + beta)</p>\n\n<h3>The 0/0</h3>\n<p>Without the Kutta condition, the velocity at the trailing edge is infinite (a pole). The Kutta condition removes this singularity.</p>\n\n<h3>The Lift</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">Lift = rho * V * Gamma</p>\n\n<h3>Applications</h3>\n<ul>\n<li>Airplane wing design</li>\n<li>Wind turbine blades</li>\n<li>Helicopter rotors</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[1] Puno 2026, textbook aerodynamics</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "What does the Kutta condition fix?",
+              "options": [
+                "Drag",
+                "Circulation (Gamma)",
+                "Temperature",
+                "Pressure"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The velocity at the trailing edge must be:",
+              "options": [
+                "Infinite",
+                "Zero",
+                "Finite",
+                "Complex"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "Lift equals:",
+              "options": [
+                "rho * V",
+                "rho * V * Gamma",
+                "Gamma * c",
+                "V * c"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Without the Kutta condition, the trailing edge velocity is:",
+              "options": [
+                "Zero",
+                "Finite",
+                "Infinite",
+                "Oscillating"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "The Kutta condition is used in:",
+              "options": [
+                "Electrical circuits",
+                "Aerodynamics",
+                "Chemistry",
+                "Biology"
+              ],
+              "correct": 1
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "title": "Resonances in QFT",
+          "part": "II. Physics and Engineering",
+          "content": "\n<h2>Chapter 9: Resonances in QFT</h2>\n<p>In quantum field theory, particle resonances are poles in the propagator.</p>\n\n<h3>The Propagator</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">G(p) = 1/(p^2 - m^2 + i*gamma)</p>\n\n<h3>At the Pole</h3>\n<p>When p^2 = m^2, the propagator would be infinite. But gamma (the width) keeps it finite.</p>\n\n<h3>The Mass Gap</h3>\n<p>Spec(H) = {0} union [Delta, inf). Delta > 0 means there is a gap. This is different from a removable singularity.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[9] Peskin & Schroeder, \"QFT\" (1995)</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "The QFT propagator has a pole when:",
+              "options": [
+                "p^2 = 0",
+                "p^2 = m^2",
+                "p^2 = infinity",
+                "p^2 = -m^2"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The width gamma in the propagator:",
+              "options": [
+                "Makes it infinite",
+                "Keeps it finite",
+                "Removes it",
+                "Changes the mass"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The mass gap Delta means:",
+              "options": [
+                "No mass",
+                "Minimum energy above vacuum",
+                "Infinite mass",
+                "Zero energy"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "A particle resonance corresponds to:",
+              "options": [
+                "A zero",
+                "A pole",
+                "A branch cut",
+                "A maximum"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The propagator G(p) describes:",
+              "options": [
+                "Particle creation",
+                "Particle propagation",
+                "Particle decay",
+                "Particle interaction"
+              ],
+              "correct": 1
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "title": "Phase Transitions",
+          "part": "II. Physics and Engineering",
+          "content": "\n<h2>Chapter 10: Phase Transitions</h2>\n<p>At critical points, physical quantities diverge as power laws.</p>\n\n<h3>Critical Exponents</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">chi ~ |T - Tc|^(-gamma)</p>\n\n<h3>Universality</h3>\n<p>Systems with the same symmetry and dimension share the same critical exponents, regardless of microscopic details.</p>\n\n<h3>The 0/0</h3>\n<p>At T = Tc, the susceptibility chi diverges. This is a pole, not a removable singularity. But the critical exponents themselves are finite and universal.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[7] Wilson 1982 Nobel Prize</li>\n<li>[1] Puno 2026, textbook statistical mechanics</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "At a critical point, susceptibility:",
+              "options": [
+                "Vanishes",
+                "Diverges",
+                "Remains constant",
+                "Oscillates"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Universality means:",
+              "options": [
+                "All systems are the same",
+                "Systems with same symmetry share exponents",
+                "Only water has critical points",
+                "Exponents are random"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The critical exponent gamma describes:",
+              "options": [
+                "Energy",
+                "Magnetization",
+                "Susceptibility",
+                "Heat capacity"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "A phase transition at T=Tc is:",
+              "options": [
+                "A removable singularity",
+                "A pole",
+                "A branch point",
+                "Essential singularity"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Kenneth Wilson won the Nobel Prize for:",
+              "options": [
+                "Discovering critical points",
+                "Renormalization group theory",
+                " inventing temperature",
+                "Measuring water"
+              ],
+              "correct": 1
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "title": "Persistent Flow",
+          "part": "II. Physics and Engineering",
+          "content": "\n<h2>Chapter 11: Persistent Flow</h2>\n<p>In superconductors and superfluids, current flows without resistance — indefinitely.</p>\n\n<h3>The Phenomenon</h3>\n<p>Below the critical temperature Tc, the current state is the lowest energy state. There is no mechanism to stop it.</p>\n\n<h3>Measurement</p>\n<p>Persistent currents have been measured to last > 1 year without decay.</p>\n\n<h3>The Connection</h3>\n<p>The persistent current is a macroscopic quantum state — a removable singularity in the resistance function.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[1] Puno 2026, textbook superconductivity</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "Persistent flow occurs below:",
+              "options": [
+                "Room temperature",
+                "Critical temperature Tc",
+                "Absolute zero",
+                "Melting point"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Persistent currents last:",
+              "options": [
+                "Microseconds",
+                "Seconds",
+                "Minutes",
+                "> 1 year"
+              ],
+              "correct": 3
+            },
+            {
+              "q": "The resistance in persistent flow is:",
+              "options": [
+                "High",
+                "Normal",
+                "Zero",
+                "Negative"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "Persistent flow is a:",
+              "options": [
+                "Classical effect",
+                "Macroscopic quantum state",
+                "Thermal effect",
+                "Magnetic effect"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Superconductivity was discovered by:",
+              "options": [
+                "Einstein",
+                "Onnes",
+                "Newton",
+                "Faraday"
+              ],
+              "correct": 1
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "title": "Singularities at Edge of Spacetime",
+          "part": "II. Physics and Engineering",
+          "content": "\n<h2>Chapter 12: Singularities at Edge of Spacetime</h2>\n<p>Classical general relativity predicts true singularities — points where curvature becomes infinite.</p>\n\n<h3>Penrose-Hawking Theorems</h3>\n<p>Under reasonable energy conditions, gravitational collapse leads to singularities.</p>\n\n<h3>The Question</h3>\n<p>Are these true singularities, or removable ones that quantum gravity will resolve?</p>\n\n<h3>Evidence</h3>\n<ul>\n<li>Black hole information paradox</li>\n<li>Hawking radiation</li>\n<li>AdS/CFT correspondence</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[10] Bekenstein, \"Black holes and entropy\" (1973)</li>\n<li>[11] Hawking, \"Particle creation by black holes\" (1975)</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "Penrose-Hawking theorems predict:",
+              "options": [
+                "No singularities",
+                "True singularities",
+                "Removable singularities only",
+                "Black holes don't exist"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The black hole information paradox involves:",
+              "options": [
+                "Information storage",
+                "Information loss",
+                "Information creation",
+                "Information encryption"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Hawking radiation is:",
+              "options": [
+                "Classical",
+                "Quantum mechanical",
+                "Thermal only",
+                "Magnetic"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "AdS/CFT correspondence suggests:",
+              "options": [
+                "Gravity doesn't exist",
+                "Holographic duality",
+                "Singularities are real",
+                "Space is flat"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "At a true singularity, curvature:",
+              "options": [
+                "Vanishes",
+                "Is finite",
+                "Becomes infinite",
+                "Oscillates"
+              ],
+              "correct": 2
+            }
+          ]
+        }
+      ],
+      "III. Life, Chemistry, Computation": [
+        {
+          "id": 13,
+          "title": "Tipping Points",
+          "part": "III. Life, Chemistry, Computation",
+          "content": "\n<h2>Chapter 13: Tipping Points</h2>\n<p>In ecology and climate, systems can suddenly shift to a new state.</p>\n\n<h3>Critical Slowing Down</h3>\n<p>As a system approaches a tipping point:</p>\n<ul>\n<li>Recovery time from perturbations increases</li>\n<li>Fluctuations grow</li>\n<li>Autocorrelation increases</li>\n</ul>\n\n<h3>Early Warning Signals</h3>\n<p>These statistical changes can predict tipping points before they happen.</p>\n\n<h3>The 0/0</h3>\n<p>The resilience function R(t) has a 0/0 at the tipping point — both numerator and denominator vanish.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[8] Scheffer et al., \"Early-warning signals for critical transitions\" (2009)</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "Critical slowing down means:",
+              "options": [
+                "System speeds up",
+                "System recovers more slowly",
+                "System stops",
+                "System oscillates"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Early warning signals include:",
+              "options": [
+                "Decreased fluctuations",
+                "Increased fluctuations",
+                "Constant behavior",
+                "Random behavior"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The resilience function R(t) at a tipping point:",
+              "options": [
+                "Is infinite",
+                "Is 1",
+                "Is 0/0",
+                "Is negative"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "Tipping points occur in:",
+              "options": [
+                "Only climate",
+                "Only ecology",
+                "Many complex systems",
+                "Only math"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "Autocorrelation increases because:",
+              "options": [
+                "System forgets faster",
+                "System remembers longer",
+                "Nothing changes",
+                "System breaks"
+              ],
+              "correct": 1
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "title": "Grokking in ML",
+          "part": "III. Life, Chemistry, Computation",
+          "content": "\n<h2>Chapter 14: Grokking in ML</h2>\n<p>Grokking is the sudden generalization after a long delay in neural network training.</p>\n\n<h3>The Phenomenon</h3>\n<p>After memorizing the training data, the network suddenly learns to generalize. The delay can be orders of magnitude longer than memorization.</p>\n\n<h3>The Predictor</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">T_delay = (1/g_eff) * log(V_mem / V_post)</p>\n\n<h3>Connection to 0/0</h3>\n<p>The grokking transition is a phase transition — a removable singularity in the generalization function.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[19] Power et al., \"Grokking: Generalization Beyond Overfitting\" (2022)</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "Grokking is:",
+              "options": [
+                "Gradual improvement",
+                "Sudden generalization after delay",
+                "Overfitting",
+                "Underfitting"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The delay in grokking can be:",
+              "options": [
+                "Microseconds",
+                "Minutes",
+                "Orders of magnitude longer than memorization",
+                "Zero"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "Grokking is connected to:",
+              "options": [
+                "Random guessing",
+                "Phase transitions",
+                "Overfitting",
+                "Data augmentation"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The grokking predictor T_delay depends on:",
+              "options": [
+                "Only training data",
+                "V_mem and V_post",
+                "Model size only",
+                "Learning rate only"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Grokking was first described by:",
+              "options": [
+                "Hinton",
+                "LeCun",
+                "Power et al.",
+                "Goodfellow"
+              ],
+              "correct": 2
+            }
+          ]
+        }
+      ],
+      "IV. Knowing Where the Pattern Stops": [
+        {
+          "id": 15,
+          "title": "Three Kinds of Degree",
+          "part": "IV. Knowing Where the Pattern Stops",
+          "content": "\n<h2>Chapter 15: Three Kinds of Degree</h2>\n<p>Not all evidence is equal. There are three levels of mathematical certainty.</p>\n\n<h3>Level 1: Proven</h3>\n<p>The result follows logically from accepted axioms. Example: sin(x)/x -> 1 as x -> 0.</p>\n\n<h3>Level 2: Derived</h3>\n<p>The result follows from a plausible but unproven assumption. Example: Riemann Hypothesis follows from the Hilbert-Polya conjecture.</p>\n\n<h3>Level 3: Numerical</h3>\n<p>The result is supported by computation but not proven. Example: Goldbach's conjecture verified to 4x10^18.</p>\n\n<h3>The Lesson</h3>\n<p>Know which level you are on. Don't claim Level 1 for Level 3 results.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[24] Polya, \"How to Solve It\" (1945)</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "Level 1 evidence means:",
+              "options": [
+                "Numerically checked",
+                "Proven from axioms",
+                "Plausible",
+                "Guessed"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Level 3 evidence means:",
+              "options": [
+                "Proven",
+                "Derived",
+                "Numerically supported",
+                "Impossible"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "Goldbach's conjecture is at:",
+              "options": [
+                "Level 1",
+                "Level 2",
+                "Level 3",
+                "No level"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "The Riemann Hypothesis is at:",
+              "options": [
+                "Level 1",
+                "Level 2",
+                "Level 3",
+                "Level 4"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The key lesson is:",
+              "options": [
+                "All evidence is equal",
+                "Know which level you are on",
+                "Only Level 1 matters",
+                "Level 3 is worthless"
+              ],
+              "correct": 1
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "title": "When a Beautiful Pattern Isn't Evidence",
+          "part": "IV. Knowing Where the Pattern Stops",
+          "content": "\n<h2>Chapter 16: When a Beautiful Pattern Isn't Evidence</h2>\n<p>A pattern matching is not proof. The L.O.R.E. framework must be honest about this.</p>\n\n<h3>The Three-Question Checklist</h3>\n<ol>\n<li>Is the special point <strong>proven</strong> to exist and behave that way?</li>\n<li>Is the finite value <strong>derived</strong> from surrounding behavior?</li>\n<li>Does the specific case <strong>cover</strong> the genuinely open part?</li>\n</ol>\n\n<h3>Classification</h3>\n<ul>\n<li><strong>REAL</strong>: All three answers are YES</li>\n<li><strong>CAREFUL</strong>: Any answer is NO</li>\n<li><strong>NOT_SAME</strong>: The pattern doesn't apply</li>\n</ul>\n\n<h3>Why This Matters</h3>\n<p>Honest classification is more valuable than inflated claims.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[25] Erdos & Hofman, \"Proofs from THE BOOK\" (1998)</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "The three-question checklist asks about:",
+              "options": [
+                "Price, quality, quantity",
+                "Proven, derived, covers",
+                "Fast, cheap, good",
+                "Small, medium, large"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "REAL classification requires:",
+              "options": [
+                "One YES",
+                "Two YESes",
+                "Three YESes",
+                "No YESes"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "CAREFUL classification means:",
+              "options": [
+                "All YES",
+                "Any NO",
+                "All NO",
+                "No classification"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The purpose of the checklist is:",
+              "options": [
+                "Inflate claims",
+                "Be honest",
+                "Hide weaknesses",
+                "Impress people"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "NOT_SAME means:",
+              "options": [
+                "The pattern applies",
+                "The pattern doesn't apply",
+                "The pattern is proven",
+                "The pattern is new"
+              ],
+              "correct": 1
+            }
+          ]
+        }
+      ],
+      "V. The Constants": [
+        {
+          "id": 17,
+          "title": "What the Constants Actually Are",
+          "part": "V. The Constants",
+          "content": "\n<h2>Chapter 17: What the Constants Actually Are</h2>\n<p>The fundamental constants of nature are not arbitrary. They are determined by the requirement that the universe exists.</p>\n\n<h3>The Argument</h3>\n<p>If the constants were different, stars couldn't form, chemistry couldn't happen, life couldn't exist.</p>\n\n<h3>The 0/0 Connection</h3>\n<p>The constants sit at the removable singularity — the only values where the universe's response function is finite and meaningful.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[26] Courant & Robbins, \"What is Mathematics?\" (1941)</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "Fundamental constants are:",
+              "options": [
+                "Random",
+                "Arbitrary",
+                "Determined by universe's existence",
+                "Human inventions"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "If constants were different:",
+              "options": [
+                "Nothing changes",
+                "Universe still works",
+                "Stars and chemistry couldn't happen",
+                "Only colors change"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "The 0/0 connection means constants sit at:",
+              "options": [
+                "A pole",
+                "The removable singularity",
+                "A branch cut",
+                "Infinity"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The universe's response function is:",
+              "options": [
+                "Always infinite",
+                "Finite only at specific constant values",
+                "Always zero",
+                "Random"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The constants determine:",
+              "options": [
+                "Only physics",
+                "Only chemistry",
+                "Everything that can exist",
+                "Nothing"
+              ],
+              "correct": 2
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "title": "The Entropy of Nothing",
+          "part": "V. The Constants",
+          "content": "\n<h2>Chapter 18: The Entropy of Nothing</h2>\n<p>The vacuum has entropy. Empty space is not empty — it is full of quantum fluctuations.</p>\n\n<h3>Bekenstein Bound</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">S <= 2*pi*E*R / (hbar*c)</p>\n<p>Maximum information in a region of space.</p>\n\n<h3>Landauer's Principle</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">E >= kT * ln(2) per bit erased</p>\n<p>Information is physical. Erasing a bit costs energy.</p>\n\n<h3>The Connection</h3>\n<p>Both bounds are 0/0 at the vacuum state — both numerator and denominator vanish, but the ratio is finite.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[10] Bekenstein, \"Black holes and entropy\" (1973)</li>\n<li>[11] Landauer, \"Irreversibility and heat generation\" (1961)</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "The Bekenstein bound limits:",
+              "options": [
+                "Energy",
+                "Information in a region",
+                "Temperature",
+                "Speed"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Landauer's principle states:",
+              "options": [
+                "Information is free",
+                "Erasing a bit costs energy",
+                "Bits are weightless",
+                "Computation is impossible"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The vacuum has:",
+              "options": [
+                "Zero entropy",
+                "Maximum entropy",
+                "Finite entropy",
+                "Negative entropy"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "Both bounds are 0/0 at:",
+              "options": [
+                "High temperature",
+                "The vacuum state",
+                "Absolute zero",
+                "Infinite energy"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Information is:",
+              "options": [
+                "Abstract",
+                "Physical",
+                "Immaterial",
+                "Infinite"
+              ],
+              "correct": 1
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "title": "The Language of Symmetry",
+          "part": "V. The Constants",
+          "content": "\n<h2>Chapter 19: The Language of Symmetry</h2>\n<p>Symmetry is the deepest language of physics. The E8 exceptional Lie algebra is its most beautiful expression.</p>\n\n<h3>E8 Structure</h3>\n<ul>\n<li>Rank: 8</li>\n<li>Roots: 240</li>\n<li>Exponents: 1 + primes(2,3,5,7,11,13,17,19,23,29)</li>\n<li>Weyl group order: 696,729,600</li>\n</ul>\n\n<h3>The Prime Connection</h3>\n<p>The exponents of E8 are exactly 1 + the first 8 primes. This is not a coincidence.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[4] Conway & Sloane, \"Sphere Packings\" (1999)</li>\n<li>[5] Viazovska, \"Sphere packing in R^8\" (2017)</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "E8 has how many roots?",
+              "options": [
+                "8",
+                "240",
+                "696729600",
+                "1000"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The E8 exponents are:",
+              "options": [
+                "All primes",
+                "1 + primes(2..29)",
+                "Fibonacci numbers",
+                "Random"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The Weyl group order of E8 is:",
+              "options": [
+                "240",
+                "8",
+                "696,729,600",
+                "30"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "E8 is significant because:",
+              "options": [
+                "It's simple",
+                "It encodes universe's symmetry",
+                "It's small",
+                "It's new"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Viazovska proved sphere packing in:",
+              "options": [
+                "R^3",
+                "R^8",
+                "R^24",
+                "R^100"
+              ],
+              "correct": 1
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "title": "The Fold Theorem",
+          "part": "V. The Constants",
+          "content": "\n<h2>Chapter 20: The Fold Theorem</h2>\n<p>The fold theorem describes how information is preserved across scale changes.</p>\n\n<h3>The Statement</h3>\n<p>When a system is folded (renormalized), the information at the fixed point is preserved exactly.</p>\n\n<h3>The 0/0</h3>\n<p>The renormalization group flow has a 0/0 at the fixed point — both the flow and its derivative vanish, but the fixed point value is well-defined.</p>\n\n<h3>Applications</h3>\n<ul>\n<li>Renormalization in QFT</li>\n<li>Scale invariance in critical phenomena</li>\n<li>Universality classes</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[7] Wilson 1982 Nobel Prize</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "The fold theorem describes:",
+              "options": [
+                "Paper folding",
+                "Information preservation across scales",
+                "Origami",
+                "Clothing design"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "At a fixed point of RG flow:",
+              "options": [
+                "Flow is infinite",
+                "Flow and its derivative vanish",
+                "Flow is maximum",
+                "Flow oscillates"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Scale invariance means:",
+              "options": [
+                "Size doesn't matter",
+                "Physics looks the same at all scales",
+                "Everything is flat",
+                "Nothing changes"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Universality classes group systems by:",
+              "options": [
+                "Size",
+                "Symmetry and dimension",
+                "Color",
+                "Temperature"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The renormalization group was developed by:",
+              "options": [
+                "Einstein",
+                "Wilson",
+                "Newton",
+                "Bohr"
+              ],
+              "correct": 1
+            }
+          ]
+        }
+      ],
+      "VI. Appendices": [
+        {
+          "id": 21,
+          "title": "Verlinde Entropy",
+          "part": "VI. Appendices",
+          "content": "\n<h2>Appendix B: Verlinde Entropy</h2>\n<p>Gravity may be an entropic force — emerging from entropy gradients rather than fundamental interaction.</p>\n\n<h3>The Formula</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">S = A / (4 * G * hbar * c)</p>\n\n<h3>The Idea</h3>\n<p>When a particle moves toward a holographic screen, it increases the entropy. This entropy gradient produces a force that looks like gravity.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[10] Bekenstein, \"Black holes and entropy\" (1973)</li>\n<li>[13] Verlinde, \"On the Origin of Gravity and the Laws of Newton\" (2011)</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "Verlinde entropy is:",
+              "options": [
+                "Classical entropy",
+                "Entropy of a holographic screen",
+                "Thermal entropy",
+                "Chemical entropy"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The entropy S equals:",
+              "options": [
+                "A * 4",
+                "A / (4 * G * hbar * c)",
+                "G * A",
+                "hbar * c / A"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Gravity as entropic force means:",
+              "options": [
+                "Gravity doesn't exist",
+                "Gravity emerges from entropy",
+                "Entropy causes gravity",
+                "They are unrelated"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "A holographic screen:",
+              "options": [
+                "Stores information on a surface",
+                "Projects images",
+                "Is a computer screen",
+                "Measures temperature"
+              ],
+              "correct": 0
+            },
+            {
+              "q": "The Bekenstein-Hawking entropy is proportional to:",
+              "options": [
+                "Volume",
+                "Area",
+                "Mass",
+                "Temperature"
+              ],
+              "correct": 1
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "title": "Bekenstein Bound",
+          "part": "VI. Appendices",
+          "content": "\n<h2>Appendix B: Bekenstein Bound</h2>\n<p>There is a maximum amount of information that can be stored in a finite region of space.</p>\n\n<h3>The Formula</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">S <= 2*pi*E*R / (hbar*c)</p>\n\n<h3>Implications</h3>\n<ul>\n<li>Information is finite, not infinite</li>\n<li>Black holes maximize information density</li>\n<li>The universe is a hologram</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[10] Bekenstein, \"Black holes and entropy\" (1973)</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "The Bekenstein bound limits:",
+              "options": [
+                "Speed",
+                "Information in a region",
+                "Energy",
+                "Temperature"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Black holes:",
+              "options": [
+                "Destroy information",
+                "Maximize information density",
+                "Ignore information",
+                "Create information"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The holographic principle suggests:",
+              "options": [
+                "3D is real",
+                "Information is stored on 2D surfaces",
+                "Holograms are fake",
+                "Nothing is real"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The Bekenstein bound is proportional to:",
+              "options": [
+                "Volume",
+                "Area (E*R)",
+                "Mass^2",
+                "Temperature"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "hbar*c in the formula represents:",
+              "options": [
+                "Speed of light",
+                "Planck's constant times c",
+                "Energy",
+                "Entropy"
+              ],
+              "correct": 1
+            }
+          ]
+        },
+        {
+          "id": 23,
+          "title": "Landauer's Principle",
+          "part": "VI. Appendices",
+          "content": "\n<h2>Appendix B: Landauer's Principle</h2>\n<p>Erasing information has a minimum energy cost.</p>\n\n<h3>The Formula</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">E >= kT * ln(2) per bit erased</p>\n\n<h3>Implications</h3>\n<ul>\n<li>Information is physical</li>\n<li>Computation generates heat</li>\n<li>Reversible computing is theoretically possible</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[11] Landauer, \"Irreversibility and heat generation\" (1961)</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "Landauer's principle says erasing a bit costs:",
+              "options": [
+                "Zero energy",
+                "kT * ln(2)",
+                "kT",
+                "ln(2)"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "This means information is:",
+              "options": [
+                "Abstract",
+                "Physical",
+                "Virtual",
+                "Immaterial"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Reversible computing:",
+              "options": [
+                "Is impossible",
+                "Is theoretically possible",
+                "Uses no energy",
+                "Is faster"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "kT represents:",
+              "options": [
+                "Kinetic energy",
+                "Thermal energy",
+                "Potential energy",
+                "Light energy"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Computation generates heat because:",
+              "options": [
+                "Computers are hot",
+                "Information erasure is irreversible",
+                "Electricity is warm",
+                "Bits are physical"
+              ],
+              "correct": 1
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "title": "Kolmogorov Complexity",
+          "part": "VI. Appendices",
+          "content": "\n<h2>Appendix B: Kolmogorov Complexity</h2>\n<p>The complexity of a string is the length of the shortest program that produces it.</p>\n\n<h3>The Definition</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">K(x) = length of shortest program producing x</p>\n\n<h3>Properties</h3>\n<ul>\n<li>Uncomputable in general</li>\n<li>Well-defined but not calculable</li>\n<li>Random strings have maximum complexity</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[16] Kolmogorov, \"Foundations of Probability\" (1933)</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "Kolmogorov complexity is:",
+              "options": [
+                "Computable",
+                "The shortest program length",
+                "Random",
+                "Infinite"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "A random string has:",
+              "options": [
+                "Minimum complexity",
+                "Maximum complexity",
+                "Zero complexity",
+                "Undefined complexity"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Kolmogorov complexity is:",
+              "options": [
+                "Always computable",
+                "Uncomputable in general",
+                "Only for numbers",
+                "Only for text"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The shortest program producing x is called:",
+              "options": [
+                "The generator",
+                "The compressor",
+                "The Kolmogorov program",
+                "The universal program"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "A string like '0000000000' has:",
+              "options": [
+                "High complexity",
+                "Low complexity",
+                "Maximum complexity",
+                "Undefined complexity"
+              ],
+              "correct": 1
+            }
+          ]
+        },
+        {
+          "id": 25,
+          "title": "Nash Equilibrium",
+          "part": "VI. Appendices",
+          "content": "\n<h2>Appendix C: Nash Equilibrium</h2>\n<p>Every finite game has at least one mixed-strategy equilibrium.</p>\n\n<h3>The Result</h3>\n<p>John Nash proved that in any finite game, there exists a strategy profile where no player can improve by unilaterally changing their strategy.</p>\n\n<h3>The Connection</h3>\n<p>The Nash equilibrium is a fixed point — a removable singularity in the payoff function.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[14] Nash, \"Non-Cooperative Games\" (1951)</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "Nash equilibrium exists in:",
+              "options": [
+                "Only 2-player games",
+                "Every finite game",
+                "Only zero-sum games",
+                "Only cooperative games"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "At Nash equilibrium:",
+              "options": [
+                "Everyone wins",
+                "No one can improve unilaterally",
+                "Everyone loses",
+                "The game ends"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Nash equilibrium is a:",
+              "options": [
+                "Maximum",
+                "Minimum",
+                "Fixed point",
+                "Random point"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "Mixed strategy means:",
+              "options": [
+                "Random play",
+                "Combining pure strategies probabilistically",
+                "Playing twice",
+                "Using mixed numbers"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "John Nash won the Nobel Prize in:",
+              "options": [
+                "Physics",
+                "Chemistry",
+                "Economics",
+                "Literature"
+              ],
+              "correct": 2
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "title": "Kelly Criterion",
+          "part": "VI. Appendices",
+          "content": "\n<h2>Appendix C: Kelly Criterion</h2>\n<p>The optimal bet size maximizes long-term growth rate.</p>\n\n<h3>The Formula</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">f* = (bp - q) / b</p>\n\n<h3>Where</h3>\n<ul>\n<li>f* = fraction of bankroll to bet</li>\n<li>b = odds received on the bet</li>\n<li>p = probability of winning</li>\n<li>q = probability of losing (1-p)</li>\n</ul>\n\n<h3>The 0/0</h3>\n<p>The Kelly criterion is the removable value of the growth rate function — the optimal point where risk and reward balance.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[15] Kelly, \"A New Interpretation of Information Rate\" (1956)</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "The Kelly criterion maximizes:",
+              "options": [
+                "Winning probability",
+                "Long-term growth rate",
+                "Bet size",
+                "Luck"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "f* = (bp - q) / b means:",
+              "options": [
+                "Bet everything",
+                "Optimal fraction to bet",
+                "Never bet",
+                "Bet randomly"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The Kelly criterion is:",
+              "options": [
+                "Always optimal",
+                "Log-optimal portfolio",
+                "Random",
+                "Conservative"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "p represents:",
+              "options": [
+                "Profit",
+                "Probability of winning",
+                "Payout",
+                "Penalty"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Over-betting the Kelly criterion leads to:",
+              "options": [
+                "Higher returns",
+                "Eventually ruin",
+                "No change",
+                "Guaranteed profit"
+              ],
+              "correct": 1
+            }
+          ]
+        },
+        {
+          "id": 27,
+          "title": "Martingale Stopping Theorem",
+          "part": "VI. Appendices",
+          "content": "\n<h2>Appendix C: Martingale Stopping Theorem</h2>\n<p>Under fair game conditions, stopping doesn't beat the market.</p>\n\n<h3>The Theorem</h3>\n<p style=\"font-size:1.1em; text-align:center; padding:15px;\">E[X_tau] = E[X_0]</p>\n<p>The expected value at stopping time equals the initial value.</p>\n\n<h3>Implications</h3>\n<ul>\n<li>No betting strategy can beat a fair game</li>\n<li>Stopping rules don't change expected value</li>\n<li>The market is efficient under fair game conditions</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[17] Ville, \"Etude critique de la notion de ensemble\" (1939)</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "The martingale stopping theorem says:",
+              "options": [
+                "You can beat the market",
+                "Stopping doesn't change expected value",
+                "Betting is always good",
+                "The market is unfair"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "E[X_tau] = E[X_0] means:",
+              "options": [
+                "You always win",
+                "Expected value is preserved",
+                "You always lose",
+                "Value is random"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "This theorem applies to:",
+              "options": [
+                "Rigged games",
+                "Fair games",
+                "Only card games",
+                "Only stock markets"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "A martingale is:",
+              "options": [
+                "A type of bet",
+                "A fair game process",
+                "A losing strategy",
+                "A winning strategy"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The practical implication is:",
+              "options": [
+                "Always bet",
+                "No strategy beats a fair game",
+                "Double down",
+                "Quit while ahead"
+              ],
+              "correct": 1
+            }
+          ]
+        },
+        {
+          "id": 28,
+          "title": "Halting Problem",
+          "part": "VI. Appendices",
+          "content": "\n<h2>Appendix D: Halting Problem</h2>\n<p>No algorithm can decide whether an arbitrary program halts or runs forever.</p>\n\n<h3>The Proof</h3>\n<p>Assume a halting decider H exists. Construct a program D that calls H on itself and does the opposite. This leads to a contradiction.</p>\n\n<h3>Implications</h3>\n<ul>\n<li>Some problems are undecidable</li>\n<li>Computation has fundamental limits</li>\n<li>The 0/0 of computer science</li>\n</ul>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[16] Turing, \"On Computable Numbers\" (1936)</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "The halting problem says:",
+              "options": [
+                "All programs halt",
+                "No program halts",
+                "Some programs can't be decided",
+                "All programs are decidable"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "The proof uses:",
+              "options": [
+                "Induction",
+                "Diagonal argument",
+                "Contradiction only",
+                "Recursion"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The halting problem is:",
+              "options": [
+                "Decidable",
+                "Undecidable",
+                "Trivial",
+                "Unimportant"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Turing proved this in:",
+              "options": [
+                "1900",
+                "1936",
+                "1950",
+                "2000"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The practical consequence is:",
+              "options": [
+                "No bugs in programs",
+                "Some questions about programs are unanswerable",
+                "All programs are fast",
+                "Computers are omniscient"
+              ],
+              "correct": 1
+            }
+          ]
+        },
+        {
+          "id": 29,
+          "title": "Godel's Incompleteness",
+          "part": "VI. Appendices",
+          "content": "\n<h2>Appendix D: Godel's Incompleteness</h2>\n<p>Any consistent system capable of arithmetic contains true but unprovable statements.</p>\n\n<h3>The First Incompleteness Theorem</h3>\n<p>There exist statements that are true but cannot be proven within the system.</p>\n\n<h3>The Second Incompleteness Theorem</h3>\n<p>The system cannot prove its own consistency.</p>\n\n<h3>The Connection</h3>\n<p>Godel's theorems are the ultimate 0/0 — the system's self-reference creates a removable singularity in the space of provability.</p>\n\n<h3>Key Sources</h3>\n<ul>\n<li>[16] Godel, \"On formally undecidable propositions\" (1931)</li>\n</ul>\n",
+          "quiz": [
+            {
+              "q": "Godel's first theorem says:",
+              "options": [
+                "All true statements are provable",
+                "Some true statements are unprovable",
+                "No statements are true",
+                "All statements are provable"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The second theorem says:",
+              "options": [
+                "Systems can prove consistency",
+                "Systems cannot prove own consistency",
+                "Systems are inconsistent",
+                "Consistency doesn't matter"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "Godel's theorems apply to:",
+              "options": [
+                "Only arithmetic",
+                "Any consistent system capable of arithmetic",
+                "All systems",
+                "No systems"
+              ],
+              "correct": 1
+            },
+            {
+              "q": "The proof technique uses:",
+              "options": [
+                "Diagonal argument",
+                "Godel numbering",
+                "Both",
+                "Neither"
+              ],
+              "correct": 2
+            },
+            {
+              "q": "Godel published this in:",
+              "options": [
+                "1900",
+                "1931",
+                "1950",
+                "2000"
+              ],
+              "correct": 1
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

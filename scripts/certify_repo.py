@@ -99,6 +99,19 @@ def claims():
         {"law": "toy transformer's proposed rule (reversal) is exact within "
                 "its trained length",
          "requires": ["PROPOSED_TF_reversal_length4"]},
+        {"law": "framed TCP wire protocol delivers frames intact and ordered "
+                "and rejects corruption/version/admission violations",
+         "requires": ["L_wire_order_integrity",
+                      "L_wire_tampered_frame_rejected",
+                      "L_wire_tampered_envelope_rejected",
+                      "L_wire_version_gate",
+                      "L_wire_admission_rejection"]},
+        {"law": "the fundamental conservative rule set (noise-as-measured-"
+                "data, background not a given zero) is exactly "
+                "{170,184,204,226,240}, and the bitmask 16-set reproduces",
+         "requires": ["L_ruleset_fundamental_conservation",
+                      "L_ruleset_204_storage_identity",
+                      "L_ruleset_bitmask16"]},
     ]
     discovered, _ = ld.discovery_claims()
     return base + discovered

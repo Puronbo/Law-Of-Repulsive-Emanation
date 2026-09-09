@@ -25,10 +25,15 @@ def negative_ramp(x: int | float) -> int | float:
     return x * (x < 0)
 
 
-# The requested rule family.  Values are keyed by the 3-bit neighborhood
-# encoded as (left << 2) | (center << 1) | right, i.e. 111 ... 000.
-RULES = (4, 12, 36, 44, 68, 76, 100, 108,
-         132, 140, 164, 172, 196, 204, 228, 236)
+# The requested rule family: the 32-rule twin set.  It contains the 16
+# bitmask rules with output window (f000, f001, f010, f100) = (0, 0, 1, 0)
+# and, for every such rule r, its bitwise complement 255 - r whose window is
+# (1, 1, 0, 1).  The family is therefore closed under black/white output
+# complement.  Values are keyed by the 3-bit neighborhood encoded as
+# (left << 2) | (center << 1) | right, i.e. 111 ... 000.
+RULES = (4, 12, 19, 27, 36, 44, 51, 59, 68, 76, 83, 91,
+         100, 108, 115, 123, 132, 140, 147, 155, 164, 172, 179, 187,
+         196, 204, 211, 219, 228, 236, 243, 251)
 
 
 @dataclass(frozen=True, slots=True)

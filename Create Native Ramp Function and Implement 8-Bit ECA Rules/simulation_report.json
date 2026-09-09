@@ -1,0 +1,157 @@
+{
+  "final_snapshot": {
+    "body": {
+      "bounds": [
+        -2.0,
+        2.0,
+        -2.0,
+        2.0
+      ],
+      "energy_per_unit": 0.2,
+      "events": 3,
+      "max_speed": 0.75,
+      "state": {
+        "battery": 0.9,
+        "tick": 3,
+        "x": 0.5,
+        "y": 0.0
+      }
+    },
+    "cognitive_events": 7,
+    "episodes": 2,
+    "facts": [
+      [
+        "battery",
+        "charged"
+      ],
+      [
+        "body_x",
+        "0"
+      ],
+      [
+        "body_x",
+        "0.5"
+      ],
+      [
+        "body_y",
+        "0"
+      ],
+      [
+        "horizontal",
+        "center"
+      ],
+      [
+        "horizontal",
+        "right"
+      ],
+      [
+        "location",
+        "east"
+      ],
+      [
+        "vertical",
+        "center"
+      ]
+    ],
+    "goal": "reach-east",
+    "memory_records": 7,
+    "snn_metrics": {
+      "current_time": 5,
+      "delivered_events": 2,
+      "emitted_spikes": 1,
+      "firing_rate_per_tick": 0.16666666666666666,
+      "max_queue_depth": 2,
+      "max_weight": 1.0,
+      "min_weight": 1.0
+    }
+  },
+  "memory_records": 7,
+  "real_hardware": false,
+  "simulation": "safe-soliton-body-v1",
+  "steps": [
+    {
+      "sensor": {
+        "action": "move-east",
+        "plan": [
+          "move-east"
+        ]
+      },
+      "step": 0
+    },
+    {
+      "actuator": {
+        "accepted": true,
+        "command": "east",
+        "dx": 0.5,
+        "dy": 0.0,
+        "reason": "accepted",
+        "state": {
+          "battery": 0.9,
+          "tick": 1,
+          "x": 0.5,
+          "y": 0.0
+        },
+        "tick": 1
+      },
+      "step": 1
+    },
+    {
+      "sensor": {
+        "action": null,
+        "plan": []
+      },
+      "step": 2
+    },
+    {
+      "actuator": {
+        "accepted": false,
+        "command": "unsafe-fast",
+        "dx": 1.0,
+        "dy": 0.0,
+        "reason": "speed limit exceeded",
+        "state": {
+          "battery": 0.9,
+          "tick": 2,
+          "x": 0.5,
+          "y": 0.0
+        },
+        "tick": 2
+      },
+      "step": 3
+    },
+    {
+      "actuator": {
+        "accepted": false,
+        "command": "unsafe-boundary",
+        "dx": 2.0,
+        "dy": 0.0,
+        "reason": "speed limit exceeded",
+        "state": {
+          "battery": 0.9,
+          "tick": 3,
+          "x": 0.5,
+          "y": 0.0
+        },
+        "tick": 3
+      },
+      "step": 4
+    },
+    {
+      "snn": {
+        "delivered": 2,
+        "emitted": 1,
+        "kind": "snn_batch",
+        "metrics": {
+          "current_time": 5,
+          "delivered_events": 2,
+          "emitted_spikes": 1,
+          "firing_rate_per_tick": 0.16666666666666666,
+          "max_queue_depth": 2,
+          "max_weight": 1.0,
+          "min_weight": 1.0
+        }
+      },
+      "step": 5
+    }
+  ]
+}

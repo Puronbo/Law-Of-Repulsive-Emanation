@@ -1,0 +1,37 @@
+{
+  "ae5deb822e0d": {
+    "username": "testuser",
+    "email": "test@example.com",
+    "password": "ecd71870d1963316a97e3ac3408c9835ad8cf0f3c1bc703527c30265534f75ae",
+    "created": "2026-08-26 12:47:05",
+    "session": "765132a94a8edbed66e2b11aa88cfbf8950b2f4a7bfe7ed4ac4118c519e81c3f"
+  },
+  "509e87a6c45e": {
+    "username": "student1",
+    "email": "s1@test.com",
+    "password": "9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c",
+    "created": "2026-08-26 12:47:32",
+    "session": "7308b915d4a97f3e854d3c7aae596edccfd83ca1214912bb44b6a8e3fd1c3e03"
+  },
+  "8c584fe72990": {
+    "username": "quizzer",
+    "email": "q@test.com",
+    "password": "9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c",
+    "created": "2026-08-26 12:47:55",
+    "session": "b40b8b3e337964181b283be7aeeb70b5cd7f5cc75cf7f585745943bbc64a55b0"
+  },
+  "2524937f5abf": {
+    "username": "sigmastudent",
+    "email": "s@test.com",
+    "password": "9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c",
+    "created": "2026-08-26 12:53:18",
+    "session": "a5dc08e8638ab3026b25e033fe8cc58f1376dc90d37676ba37b30c01f8f42b5d"
+  },
+  "ad328846aa18": {
+    "username": "s2",
+    "email": "s2@test.com",
+    "password": "9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c",
+    "created": "2026-08-26 12:54:19",
+    "session": "3ec2c46045cf0745d9e0ff270074d9119f62999d9e8a9ff8ae0342add670e5d5"
+  }
+}

@@ -19,6 +19,8 @@ import PunoCalculus.Hodge
 import PunoCalculus.Poincare
 import PunoCalculus.PvsNP
 import PunoCalculus.TwinPrime
+import PunoCalculus.EcaIsometry
+import PunoCalculus.MillenniumBridge
 
 def main : IO Unit := do
   IO.println "=========================================="
@@ -107,6 +109,19 @@ def main : IO Unit := do
 
   IO.println "  [TwinPrime] pi_2(100)=8, pi_2(1000)=35, Brun convergence:"
   IO.println s!"    Result: {TwinPrime.verifyFullTwinPrime}"
+  IO.println ""
+  IO.println "  [ECA] width-8 ring algebra (exact, native_decide theorems):"
+  IO.println s!"    affine sector is the 16 low-degree rules:"
+  IO.println s!"      {EcaIsometry.affineSet 8 == [0, 15, 51, 60, 85, 90, 102, 105, 150, 153, 165, 170, 195, 204, 240, 255]}"
+  IO.println s!"    isometry class is the 6 rotations:"
+  IO.println s!"      {EcaIsometry.isometrySet 8 == [15, 51, 85, 170, 204, 240]}"
+  IO.println s!"    rule 204 identity all-states:"
+  IO.println s!"      {(List.range 256).all (fun s => EcaIsometry.step 204 s 8 == s)}"
+  IO.println s!"    rule 51 complement all-states:"
+  IO.println s!"      {(List.range 256).all (fun s => EcaIsometry.step 51 s 8 == EcaIsometry.complement s)}"
+  IO.println "  [MillenniumBridge] seven problems declared NOT settled here:"
+  IO.println s!"      statuses length: {MillenniumBridge.statuses.length}"
+  IO.println s!"      taxonomy: {MillenniumBridge.problemTaxonomy}"
   IO.println ""
 
   IO.println "=========================================="

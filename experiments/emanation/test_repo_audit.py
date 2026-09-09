@@ -39,6 +39,23 @@ def test_full_table_contains_system_certs():
     assert "L14_bad_credit_sum_invariant" in labels
 
 
+def test_full_table_contains_wire_and_ruleset_certs():
+    labels = {c["label"] for c in ra.full_table()}
+    for lbl in ("L_wire_order_integrity",
+                "L_wire_tampered_frame_rejected",
+                "L_wire_version_gate",
+                "L_ruleset_bitmask16",
+                "L_ruleset_fundamental_conservation",
+                "L_ruleset_204_storage_identity"):
+        assert lbl in labels, lbl
+    # the corrected fundamentals: only rule 204 of the claimed 16 conserves
+    # active-bit count; the true fundamental set is exactly those 5 rules.
+    by = {c["label"]: c for c in ra.system_certificates()}
+    assert by["L_ruleset_blanket_conservation"]["status"] == "HONEST_NEGATIVE"
+    assert by["L_ruleset_fundamental_conservation"]["status"] == "PASS"
+    assert by["L_wire_single_stream"]["status"] == "HONEST_NEGATIVE"
+
+
 def test_fresh_table_detects_drift():
     # backs up the real table, generates a full fresh table, tampers a
     # verdict field, and asserts the drift detector sees it
@@ -66,7 +83,7 @@ def test_cli_gate_ok():
                        capture_output=True, text=True, env=env)
     assert r.returncode == 0, r.stdout + r.stderr
     n_disco = len(ld.discovery_claims()[0])
-    assert "all %d claims believed" % (31 + n_disco) in r.stdout
+    assert "all %d claims believed" % (33 + n_disco) in r.stdout
 
 
 def test_cli_gate_covers_discovery_laws():
@@ -77,7 +94,7 @@ def test_cli_gate_covers_discovery_laws():
                        capture_output=True, text=True,
                        env=dict(os.environ))
     assert r.returncode == 0
-    assert "all %d claims believed" % (31 + len(claims)) in r.stdout
+    assert "all %d claims believed" % (33 + len(claims)) in r.stdout
 
 
 def test_cli_claims_listing():

@@ -1,0 +1,72 @@
+{
+  "8c584fe72990": {
+    "quiz_1": {
+      "score": 5,
+      "total": 5,
+      "passed": true,
+      "results": [
+        {
+          "question": "What is lim(x->0) sin(x)/x?",
+          "user_answer": 1,
+          "correct_answer": 1,
+          "options": [
+            "0",
+            "1",
+            "infinity",
+            "undefined"
+          ],
+          "correct": true
+        },
+        {
+          "question": "Who published the first rule for evaluating 0/0 limits?",
+          "user_answer": 2,
+          "correct_answer": 2,
+          "options": [
+            "Newton",
+            "Euler",
+            "L'Hopital",
+            "Cauchy"
+          ],
+          "correct": true
+        },
+        {
+          "question": "What is lim(x->0) (1-cos(x))/x^2?",
+          "user_answer": 2,
+          "correct_answer": 2,
+          "options": [
+            "0",
+            "1",
+            "1/2",
+            "2"
+          ],
+          "correct": true
+        },
+        {
+          "question": "A removable singularity means the function is:",
+          "user_answer": 2,
+          "correct_answer": 2,
+          "options": [
+            "Infinite",
+            "Undefined everywhere",
+            "Defined everywhere except one point",
+            "Continuous everywhere"
+          ],
+          "correct": true
+        },
+        {
+          "question": "The expression 0/0 represents:",
+          "user_answer": 1,
+          "correct_answer": 1,
+          "options": [
+            "An error",
+            "A meeting point of vanishing quantities",
+            "An infinite value",
+            "A complex number"
+          ],
+          "correct": true
+        }
+      ],
+      "timestamp": "2026-08-26 12:47:55"
+    }
+  }
+}

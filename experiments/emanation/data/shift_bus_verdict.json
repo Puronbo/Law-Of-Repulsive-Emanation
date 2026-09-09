@@ -26,7 +26,50 @@
     "NOT noise-robust: 5%/step bit-flip noise collapses Jaccard fidelity to ~0 for all rules (12-seed test).",
     "Lane-sharing via share_lanes/recover is only valid under the separation condition; on dense/interacting packs it silently fails."
   ],
+  "not_an_internet_verdict": {
+    "answer": "NO. This is a shift-register / delay-line abstraction, not the internet and not a packet network.",
+    "routing_inexpressible": "A lane's direction is bound at parse/compile time; the DSL grammar provides NO clause to redirect a packet mid-flight (route/redirect/then all raise SpecError). No routing table, no adaptivity.",
+    "no_content_no_payload": "A cell holds exactly one bit; packets co-located at one position are indistinguishable (no header, no identifier, no payload field). Read-out is a pure function of POSITIONS: test_packets_have_no_content* proves rename- and colocation-invariance. The internet distinguishes packets by headers; here only position distinguishes bits.",
+    "collision_destroys_information": "Gap-1 collision under rule 12 merges two bits into one: distinct 2-bit inputs map to the same output (non-injective). No error detection, no redundancy, no retransmission under any config.",
+    "errors_permanent": "Injected bits are themselves stable solitons and persist forever; there is NO error correction or repair. Measured: 5%/step noise collapses Jaccard fidelity to ~0.",
+    "capacity_bound": "Separation-limited bandwidth: single-cell movers (12/68) at 0.5 bits/cell/lane/step; blob movers (44/100) at 0.25. Hard, verified ceiling (tests/test_shift_dsl.py::test_lane_capacity_bound).",
+    "contrast_to_internet": "Internet requires routing, content-addressable packets, error control, redundancy, protocol stack, hop-by-hop recovery, and adaptivity. This system has none of those; it is a deterministic private delay-line that cannot self-heal, cannot route, and cannot name its packets.",
+    "what_it_is_good_for": "A verified, exact delay line and shift-spec DSL: deterministic transport of well-separated bits over a fixed direction, with by-construction landing guarantees. Teaching soliton transport; delay-line layout specs; NOT a network substrate.",
+    "shadow_ca_verdict": {
+      "question": "If a shadow (de Bruijn / second-order CA) were applied, would it be better?",
+      "answer": "NO. The shadow construction PRESERVES additivity but never CREATES it (standard theorem, verified here). The shift rules are provably non-additive, so their shadows are non-additive too -- a shadow cannot buy back linearity, routing, error control, or computation that the base rule never had.",
+      "verified_by": "experiments/emanation/shadow_ca.py + test_shadow_ca.py: additive bases 90/150 keep additive shadows (0/1000 superposition failures); non-additive shift rules 12/44/68/100 keep non-additive shadows (100% failures). Sanity-pinned so the construction is validated against the known-good additive case.",
+      "cost": "Macro-cell = (top,bottom) = 2 bits per original cell; representing the same physical width doubles cell count, halving per-cell capacity (0.5 -> 0.25, 0.25 -> 0.125 bits/cell). Shadows change the algebra, not the information budget."
+    },
+    "collision_topology_answer": {
+      "question": "Could a language change make it do other things? (computation via collisions, billiard-ball style)",
+      "answer": "NO for collision-based logic. The collision census over ALL 4 rules and all gaps 1-7 yields exactly two outcomes, NEVER elastic deflection: PASS (gap>=2: separation preserved, no interaction, no device) and MERGE (fusion of two bits into one, irreversible). Billiard-ball/Fredkin-Toffoli/glider logic REQUIRES a DEFLECT outcome (particles interact but survive, exchanging trajectory); since DEFLECT does not exist in this rule family, no grammar or language extension can surface computation from particle interactions -- the gate itself is forbidden by the physics.",
+      "verified_by": "tests/test_shift_dsl.py::test_full_collision_census_never_deflects (28 cells: 4 rules x 7 gaps; asserts no DEFLECT and presence of at least one MERGE so the classification is not vacuously all-PASS).",
+      "what_language_changes_can_mean": [
+        "Richer invariants / larger topologies / multi-lane machine-checked routing declarations: yes, as specification power, not new physics.",
+        "Computation, universality, adaptive routing, self-repair: no - closed by nonlinearity, the no-deflect collision census, and the permanent-errors property."
+      ]
+    }
+  },
   "status": "After self-correction: the honest usable artifact is a verified EXACT soliton shift bus (4 rules), whose only computational help is composition of disjoint packets. No linearity, no computation, and those overclaims are now withdrawn in both code and tests.",
-  "tests": "tests/test_shift_bus.py: 24/24 green.",
+  "elastic_physics_discovery": {
+    "question": "What do additional degrees of freedom buy? Can the system 'do physics'?",
+    "answer": "Partial YES, and this is a verified discovery, not a metaphor.  Sweeping ALL 256 ECA rules for a conserved quantity (global particle count) via an exhaustive periodic-boundary test isolates exactly FIVE density-conserving rules: 15, 29, 51, 71, 85.  Of these, rules 29 (+1 velocity) and 71 (-1) exhibit TRUE ELASTIC soliton scattering -- the billiard-ball primitive that rules {12,44,68,100} provably cannot express (their census is PASS/MERGE only, zero DEFLECT).  Rules 15/85 are transparent non-interacting movers; 51 is the static identity.",
+    "taxonomy_verified": "15 and 85: pair-evolution == union of solos (TRULY transparent, no interaction).  29 and 71: pair != union yet count conserved and phase-exchanging (genuinely ELASTIC).  51: static, move never.  Constants in experiments/emanation/elastic_shift.py (VELOCITY, ELASTIC_RULES, TRANSPARENT_RULES, STATIC_RULE).",
+    "elastic_law_verified": "For rule 29 (v=+1), two lone 1s at gap 1, trailing at `a`, leading at `a+1`, after T steps land EXACTLY at {a+T-1, a+T+1} -- the leading travels free, the trailing is delayed by exactly one step, particle count conserved forever.  Rule 71 is the mirror (v=-1).  Verified exact for T in 1..400 and multiple bases (closed form == ground truth).",
+    "why_this_is_new_physics": "Rules 12/44/68/100 annihilation at gap-1 (MERGE, {10,11}->{12}) is information-destroying; rules 29/71 give a reversible, count-conserving phase-exchanging collision.  A label (DOF) transported through an elastic collision is delivered LOSSLESSLY (both tags survive) -- a bijective transport map -- whereas a label through a rule-12 MERGE loses one packet irrecoverably.  This is the difference between pure delay-line logic and an integrable elastic (billiard-ball) system.",
+    "dof_overview": [
+      "Tag/label DOF (experiments/emanation/tagged_shift.py): content rides the head exactly on PASS; MERGE destroys deterministically.  Verified: multiset conserved end-to-end, heads exact, delivery subset of true occupancy (test_tagged_shift.py, 33 green including 25-param fuzz x4 rules).",
+      "Elastic DOF (experiments/emanation/elastic_shift.py): rules 29/71 give reversible, count-conserving collisions with a closed-form landing law (test_elastic_shift.py, 21 green).  Labels are delivered bijectively."
+    ],
+    "verified_by": [
+      "Exhaustive periodic-boundary density test (W=7, all 128 configs): 15/29/51/71/85 conserve 1-count; all other 251 rules do not.",
+      "experiments/emanation/test_elastic_shift.py: elastic landing law exact for both rules over T in {1,7,50,120} and multiple bases; density conservation on periodic boundary; bijective label transport.",
+      "experiments/emanation/test_tagged_shift.py: tag conservation invariants under fuzz."
+    ],
+    "demo": "experiments/emanation/demo_elastic.py: side-by-side ASCII showing rule 12 MERGE (two packets -> one) vs rule 29 elastic scattering (two packets -> two, spacing 1->2, phase-exchanged).",
+    "scope_and_honest_boundary": "This unlocks ELASTIC / integrable collision physics and conserved-charge transport.  It does NOT claim universal computation: rules 29/71 are still nonlinear, and the elastic collision alone does not encode a universal logic gate -- the honest upgrade is from 'soliton delay line' to 'soliton gas with elastic (integrable) collisions and lossless labels'."
+  },
+  "tests": "tests/test_shift_bus.py: 24/24 green; tests/test_shift_dsl.py: 54/54 green (incl. not-an-internet properties: routing inexpressibility, no-content, collision non-injectivity, permanent errors, capacity bound); experiments/emanation/test_shadow_ca.py: 7 green; experiments/emanation/test_tagged_shift.py: 33 green; experiments/emanation/test_elastic_shift.py: 21 green.",
   "commit_state": "NOT committed."
 }

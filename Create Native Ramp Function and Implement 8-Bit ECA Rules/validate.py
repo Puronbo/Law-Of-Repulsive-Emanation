@@ -11,7 +11,11 @@ from soliton_eca import (  # noqa: E402
 
 assert [ramp(x) for x in (-2, -1, 0, 1, 2)] == [0, 0, 0, 1, 2]
 assert [negative_ramp(x) for x in (-2, -1, 0, 1, 2)] == [-2, -1, 0, 0, 0]
-assert RULES == (4, 12, 36, 44, 68, 76, 100, 108, 132, 140, 164, 172, 196, 204, 228, 236)
+assert RULES == (4, 12, 19, 27, 36, 44, 51, 59, 68, 76, 83, 91,
+                 100, 108, 115, 123, 132, 140, 147, 155, 164, 172,
+                 179, 187, 196, 204, 211, 219, 228, 236, 243, 251)
+assert len(RULES) == 32
+assert all(255 - rule in RULES for rule in RULES)
 for rule in RULES:
     assert {SolitonECA.apply_rule(rule, a, b, c) for a in (0, 1) for b in (0, 1) for c in (0, 1)} <= {0, 1}
 initial = (1, 0, 1, 1, 0)
