@@ -2078,7 +2078,17 @@ eigenvalue equation `α f″ − λ f′ + β f = 0` has discriminant `Δ = λ²
 - `defect_is_double_antiderivative`: `16P·a/(1+4P·a²) = 2·(8a/(1+4a²))`,
   `tail_is_double_antiderivative`: the same 2× evaluation of the
   antiderivative at `a` and `b = 4096` — the mass law re-expressed as twice
-  `Vρ(a)`.
+  `Vρ(a)`;
+- `antiderivative_first_order_law`: the mass-law antiderivative
+  `u(t) = t/(1+4Pt²)` satisfies the exact first-order rational ODE
+  `(1 + 4Pt²)·u′(t) + 8Pt·u(t) = 1` for every `t`, `P > 0` (stated with the
+  closed-form derivative from `TwinAnalyticLaws.antiderivative_deriv`).  This
+  is distinct from the exponential eigen-ODE of `A_{α,β}` — the defect ratio
+  pie bridge is an *arithmetic denominator* match, not an analytic
+  eigenfunction claim;
+- (exact-number footnote) `65537 = 2¹⁶ + 1` is a Fermat **prime**, whereas
+  `67108865 = 2²⁶ + 1 = 5·53·157·1613` is **composite** — the "Fermat number"
+  wording applies only to the window denominator.
 
 `PunoCalculus.MillenniumBridge` then records, as closed decidable
 statements and explicit prose, the pairing with the seven Millennium

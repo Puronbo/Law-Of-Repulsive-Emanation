@@ -78,4 +78,22 @@ theorem tail_is_double_antiderivative :
       = 2 * ((8 : ℚ) * 4096 / (1 + 4 * 1 * 4096 ^ 2)) := by
   norm_num
 
+/-- The mass-law antiderivative `u(t) = t/(1+4Pt²)` satisfies a genuinely
+*first-order* rational ODE with the closed-form derivative known from
+`PunoTwin.TwinAnalyticLaws.antiderivative_deriv`:
+
+    (1 + 4 P t²) · u′(t) + 8 P t · u(t) = 1   for every real `t`, `P > 0`.
+
+This is the exact algebraic content behind the "2 × antiderivative"
+identity above.  (It is NOT an eigenfunction statement for
+`A_{α,β}`: a constant-coefficient eigen-ODE has only exponential
+solutions, so the ratio pie bridge to the defect is purely an arithmetic
+denominator match, not an analytic solution match.) -/
+theorem antiderivative_first_order_law (hP : 0 < P) (t : ℝ) :
+    (1 + 4 * P * t ^ 2) * ((1 - 4 * P * t ^ 2) / (1 + 4 * P * t ^ 2) ^ 2)
+      + 8 * P * t * (t / (1 + 4 * P * t ^ 2)) = 1 := by
+  have hden : 0 < 1 + 4 * P * t ^ 2 := by positivity
+  field_simp [hden.ne']
+  ring
+
 end PunoTwin.MPOperator

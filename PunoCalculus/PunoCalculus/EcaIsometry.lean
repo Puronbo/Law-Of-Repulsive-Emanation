@@ -216,6 +216,18 @@ theorem rule51_complement_widths :
         step 51 s w == complementGen s w)) = true := by
   native_decide
 
+/-- The complement map `c ↦ (2^w) - 1 - c` is an involution on every
+    width-4..16 ring: `complementGen (complementGen s w) w == s`.  Together
+    with `rule204_identity_widths` (rule 204 = identity) this makes the
+    {204, 51} twin pair the eigensquares of the complement involution --
+    identity (+1) and complement (-1) -- the discrete transpose of the
+    MP-operator framework's two-root spectral picture. -/
+theorem complement_is_involution :
+    ((List.range 17).drop 4).all (fun w =>
+      (List.range (2 ^ w)).all (fun s =>
+        complementGen (complementGen s w) w == s)) = true := by
+  native_decide
+
 -- Sanity echoes, matching the Python audits' stdout behaviour.
 #eval affineSet 8
 #eval isometrySet 8

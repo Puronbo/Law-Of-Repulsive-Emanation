@@ -86,6 +86,7 @@ DOC = ROOT / "Soliton-Bus Elementary Cellular Automata.md"
 ECHO = [
     "affine_class_exact", "isometry_class_exact",
     "rule204_identity_widths", "rule51_complement_widths",
+    "complement_is_involution",
     "complementGen",
 ]
 MBR = [
@@ -122,6 +123,8 @@ MPOP = [
     "(16 : ℚ) * 1 * 128 / (1 + 4 * 1 * 128 ^ 2) = 2 * ((8 : ℚ) * 128 / (1 + 4 * 1 * 128 ^ 2))",
     "tail_is_double_antiderivative",
     "(16 : ℚ) * 1 * 4096 / (1 + 4 * 1 * 4096 ^ 2) = 2 * ((8 : ℚ) * 4096 / (1 + 4 * 1 * 4096 ^ 2))",
+    "antiderivative_first_order_law",
+    "+ 8 * P * t * (t / (1 + 4 * P * t ^ 2)) = 1",
 ]
 DOCPINS = [
     "86 root validators",
