@@ -2012,7 +2012,7 @@ structural closure for *every* width now lives in mathlib as
 namespace `PunoTwin`, compiles clean with `lake env lean`.  (The
 vendored `PunoCalculus/PunoCalculus/PunoTwin` copies mirror
 `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof @
-fa93c34dc55d5e41b9896e2909ebfac3fe89ddb9`, mathlib v4.33.1):
+12c6bb0091226ce8be5ac52daecce8b280072435`, mathlib v4.33.1):
 
 - `step204_eq`: the rule-204 step is exactly the width-`w` reading
   `sumBits s w := Σ_j (bit s j)·2^j` (via per-cell `center_bit` and an
@@ -2112,6 +2112,14 @@ eigenvalue equation `α f″ − λ f′ + β f = 0` has discriminant `Δ = λ²
   strictly between the two roots: `r₂ < 1/2 < r₁`.  The small root is
   therefore always contractive below 1/2, the algebraic gap behind the
   mass ceiling 4 (`char_poly_at_half_window` restates at `a = 128`);
+- `char_poly_at_zero` / `char_poly_at_one` / `char_poly_at_twice_window`:
+  the exact, `a`-proportional evaluations `P(0) = a`, `P(1) = −a`,
+  `P(2a+1) = a` for every half-window;
+- `spectral_bracket_window` (Round 55): at `a = 128` the four exact
+  evaluations `P(0) = 128`, `P(1/2) = −1/4`, `P(1) = −128`,
+  `P(2a+1) = 128` certify the sign alternation that, with the
+  upward-opening leading coefficient, brackets the two roots
+  `0 < r₂ < 1/2 < r₁ < 2a+1` — the spectral bracket;
 - `mass_radius_window_lt_tail`: `262144/65537 < 268435456/67108865` — the
   mass-radius product rises strictly from window to tail, closing in on the
   ceiling 4.
@@ -2267,6 +2275,14 @@ between the midpoint 1/2 and the expansive root — the classical
 open-upward argument (leading coefficient 1) anchors the bound with a
 single exact rational, `−1/4`, unchanged across the whole certified
 window.  `char_poly_at_half_window` restates the fact at `a = 128`.
+Round 55 completes the spectral bracket: `char_poly_at_zero`,
+`char_poly_at_one` and `char_poly_at_twice_window` certify the exact
+`a`-proportional evaluations `P(0) = a`, `P(1) = −a`, `P(2a+1) = a`;
+together with the Round 54 midpoint `P(1/2) = −1/4` and the upward-
+opening leading coefficient, the four sign locations pin the two roots
+inside `0 < r₂ < 1/2 < r₁ < 2a+1` for every `a > 0`.  The composite
+`spectral_bracket_window` restates all four exact evaluations at the
+certified window `a = 128` in one decidable statement.
 
 ## Native ramp primitives
 

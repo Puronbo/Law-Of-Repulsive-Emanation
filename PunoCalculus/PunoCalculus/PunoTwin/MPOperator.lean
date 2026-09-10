@@ -179,6 +179,47 @@ theorem char_poly_at_half_window :
     (1 / 2 : ℚ) ^ 2 - (2 * 128 + 1) * (1 / 2 : ℚ) + 128 = (-1 / 4 : ℚ) := by
   norm_num
 
+/-- Spectral-bracket evaluations.  On the bridge family, the characteristic
+    polynomial `P(r) = r² − (2a+1)r + a` takes the exact, `a`-proportional
+    values `P(0) = a` and `P(1) = −a` for every half-window `a`, and the
+    `a`-independent `P(1/2) = −1/4`.  With leading coefficient 1 the
+    quadratic opens upward, so wherever `P` is negative lies strictly
+    between its two real roots (by `bridge_discriminant_never_negative`).
+    Hence for `a > 0`: `0 < r₂ < 1/2 < r₁ < 2a+1` — the spectral bracket
+    pins the two roots between 0/1/2 and the window's edge, the discrete
+    analogue of a standing-wave sector between two halting thresholds. -/
+theorem char_poly_at_zero (a : ℚ) :
+    (0 : ℚ) ^ 2 - (2 * a + 1) * (0 : ℚ) + a = a := by
+  ring
+
+theorem char_poly_at_one (a : ℚ) :
+    (1 : ℚ) ^ 2 - (2 * a + 1) * (1 : ℚ) + a = -a := by
+  ring
+
+theorem char_poly_at_twice_window (a : ℚ) :
+    (2 * a + 1) ^ 2 - (2 * a + 1) * (2 * a + 1) + a = a := by
+  ring
+
+/-- The four exact evaluations of the spectral bracket in one decidable
+    statement, certified simultaneously at the window `a = 128`: the
+    polynomial is above the base (P(0) = 128), below the midpoint
+    (P(1/2) = −1/4), below the unit station (P(1) = −128), and back above at
+    the window edge (P(2a+1) = 128).  The bracket `0 < r₂ < 1/2 < r₁ <
+    2a+1` follows from the sign pattern and the upward-opening leading
+    coefficient. -/
+theorem spectral_bracket_window :
+    (0 : ℚ) ^ 2 - (2 * 128 + 1) * (0 : ℚ) + 128 = 128 ∧
+      (1 / 2 : ℚ) ^ 2 - (2 * 128 + 1) * (1 / 2 : ℚ) + 128 = -1 / 4 ∧
+      (1 : ℚ) ^ 2 - (2 * 128 + 1) * 1 + 128 = -128 ∧
+      (2 * 128 + 1) ^ 2 - (2 * 128 + 1) * (2 * 128 + 1) + 128 = 128 := by
+  constructor
+  · norm_num
+  constructor
+  · norm_num
+  constructor
+  · norm_num
+  norm_num
+
 /-- Monotonicity of the mass-radius product between the two certified
     windows: the tail's product `268435456/67108865` is strictly larger
     than the window's `262144/65537`, confirming the product rises toward
