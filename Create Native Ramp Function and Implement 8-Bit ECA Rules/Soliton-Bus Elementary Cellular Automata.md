@@ -2012,7 +2012,7 @@ structural closure for *every* width now lives in mathlib as
 namespace `PunoTwin`, compiles clean with `lake env lean`.  (The
 vendored `PunoCalculus/PunoCalculus/PunoTwin` copies mirror
 `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof @
-0d96d1d89845925648314ed2d0daa90571fa663e`, mathlib v4.33.1):
+eded786d199cbdafb22f1fea1e4bb62e46af3d03`, mathlib v4.33.1):
 
 - `step204_eq`: the rule-204 step is exactly the width-`w` reading
   `sumBits s w := Σ_j (bit s j)·2^j` (via per-cell `center_bit` and an
@@ -2096,11 +2096,19 @@ eigenvalue equation `α f″ − λ f′ + β f = 0` has discriminant `Δ = λ²
   the remainder) — the celebrated window defect is `4` decomposed against
   the denominator;
 - `mass_radius_window`: `D(128)·128 = 262144/65537` (rational, exact);
+- `mass_radius_tail`: `D(4096)·4096 = 268435456/67108865` (rational, exact),
+  keeping the tail product strictly below the mass ceiling 4 by the positive
+  remainder `4/(1+4·4096²) = 4/67108865`;
 - `window_discriminant_real_pos`: the bridge-family discriminant
   `1 + 4a² ≥ 1 > 0` for every real `a` — the two-root spectral picture
   never crosses into the Δ = 0 or Δ < 0 regime on the mass law;
 - `vieta_discriminant`: `(r₁+r₂)² − 4r₁r₂ = (r₁−r₂)²` universally — the
-  Vieta form of the bridge identity `(2a+1)² − 4a = Δ`.
+  Vieta form of the bridge identity `(2a+1)² − 4a = Δ`;
+- **E8 (discrete ±1 pairs):** the width-8 isometry class is exactly the
+  three XOR-complement pairs `(15, 240), (51, 204), (85, 170)` — each rule's
+  bitwise complement `255 − r` is its mate in the class, so every pair is an
+  identity/complement pair of its own two-sided orbit (Lean
+  `isometry_class_three_pairs`, `native_decide`).
 
 `PunoCalculus.MillenniumBridge` then records, as closed decidable
 statements and explicit prose, the pairing with the seven Millennium
@@ -2212,6 +2220,17 @@ validators**.  Round 51 closes the general-width pass at the Lean level:
 extends the enumerated identity/complement facts from widths 4..16 to
 every ring width by structural recursion in mathlib, with the same
 `native_decide` file kept as the kernel-verified eager certificate.
+Round 52 expands the MP-operator register with the exact algebraic core
+beneath the mass law: `antiderivative_first_order_law` (the first-order
+rational ODE `(1+4Pt²)u′ + 8Pt·u = 1` — honest, distinct from the
+exponential eigen-ODE), `mass_radius_identity`/`mass_radius_window`/
+`mass_radius_tail` (the mass ceiling: `D(a)·a = 4 − 4/(1+4a²)`, with the
+certified window `262144/65537` and tail `268435456/67108865`),
+`window_discriminant_real_pos` (the two-root regime never leaves the
+disc), `vieta_discriminant` (the Vieta bridge `(r₁+r₂)² − 4r₁r₂`), plus
+the discrete transpose `complement_is_involution` and
+`isometry_class_three_pairs` — the {204, 51} ±1 eigensquare and the three
+XOR-complement pairs of the width-8 isometry class.
 
 ## Native ramp primitives
 

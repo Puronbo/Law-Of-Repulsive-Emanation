@@ -43,7 +43,7 @@ Lean   PunoCalculus.MillenniumBridge  statuses :: NOT SETTLED BY
 
 Provenance: the PunoTwin twin files mirror the mathlib v4.33.1 origin
 repository github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof at
-commit 0d96d1d89845925648314ed2d0daa90571fa663e.  The vendored copies in
+commit eded786d199cbdafb22f1fea1e4bb62e46af3d03.  The vendored copies in
 PunoCalculus/PunoCalculus/PunoTwin and the origin tree must stay
 byte-identical (hash-audited); bumping the mathlib rev in either place
 invalidates the other.
@@ -60,7 +60,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 WORKSPACE = ROOT.parent
 PW = WORKSPACE / "PunoCalculus" / "PunoCalculus"
-TWIN_ORIGIN_SHA = "0d96d1d89845925648314ed2d0daa90571fa663e"
+TWIN_ORIGIN_SHA = "eded786d199cbdafb22f1fea1e4bb62e46af3d03"
 TWIN_ORIGIN_URL = "github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof"
 
 
@@ -87,6 +87,7 @@ ECHO = [
     "affine_class_exact", "isometry_class_exact",
     "rule204_identity_widths", "rule51_complement_widths",
     "complement_is_involution",
+    "isometry_class_three_pairs",
     "complementGen",
 ]
 MBR = [
@@ -129,6 +130,8 @@ MPOP = [
     "16 * a ^ 2 / (1 + 4 * a ^ 2) + 4 / (1 + 4 * a ^ 2) = 4",
     "mass_radius_window",
     "(16 : ℚ) * 1 * 128 / (1 + 4 * 1 * 128 ^ 2) * 128 = (262144 : ℚ) / 65537",
+    "mass_radius_tail",
+    "(16 : ℚ) * 1 * 4096 / (1 + 4 * 1 * 4096 ^ 2) * 4096 = (268435456 : ℚ) / 67108865",
     "window_discriminant_real_pos",
     "1 ≤ 1 + 4 * a ^ 2",
     "vieta_discriminant",

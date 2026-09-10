@@ -114,6 +114,15 @@ theorem mass_radius_window :
     (16 : ℚ) * 1 * 128 / (1 + 4 * 1 * 128 ^ 2) * 128 = (262144 : ℚ) / 65537 := by
   norm_num
 
+/-- The same mass-radius identity at the outer-tail length `b = 4096`
+    (P = 1): D(4096)·4096 = 65536/67108865 · 4096 = 268435456/67108865.
+    The remainder 4/(1+4·4096²) = 4/67108865 stays strictly positive, so
+    the product is strictly below the mass ceiling 4 at every half-window. -/
+theorem mass_radius_tail :
+    (16 : ℚ) * 1 * 4096 / (1 + 4 * 1 * 4096 ^ 2) * 4096
+      = (268435456 : ℚ) / 67108865 := by
+  norm_num
+
 /-- The bridge-family discriminant is positive for every real half-window
     `a`: 1 + 4a² ≥ 1 > 0.  Hence every characteristic polynomial
     r² − (2a+1)r + a of the two-root picture has two distinct real roots,

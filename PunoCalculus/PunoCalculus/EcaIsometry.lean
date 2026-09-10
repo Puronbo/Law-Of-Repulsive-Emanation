@@ -228,6 +228,17 @@ theorem complement_is_involution :
         complementGen (complementGen s w) w == s)) = true := by
   native_decide
 
+/-- The width-8 isometry class decomposes into exactly three
+    XOR-complement pairs: every rule `r` in {15, 51, 85, 170, 204, 240}
+    has its bitwise complement `255 - r` also in the class (and equal to
+    its mate): (15, 240), (51, 204), (85, 170).  Each pair is the
+    identity/complement pair of its own two-sided orbit, the finite
+    analogue of the MP-operator's one-dimensional eigenspace pairs. -/
+theorem isometry_class_three_pairs :
+    [15, 51, 85, 170, 204, 240].all (fun r =>
+      memList (255 - r) [15, 51, 85, 170, 204, 240]) = true := by
+  native_decide
+
 -- Sanity echoes, matching the Python audits' stdout behaviour.
 #eval affineSet 8
 #eval isometrySet 8
