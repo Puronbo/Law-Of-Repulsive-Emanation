@@ -28,6 +28,13 @@ Lean   PunoCalculus.MillenniumBridge  statuses :: NOT SETTLED BY
            (mathlib v4.33.1)            sumBits_eq, compBits_eq,
                                          rule204_identity_all,
                                          rule51_complement_all
+    Lean   PunoTwin.MPOperator          operator_discriminant_bridge,
+           (mathlib v4.33.1)            window_discriminant_closed_form,
+                                         tail_discriminant_closed_form,
+                                         fermat_denominator_window,
+                                         window_discriminant_pos,
+                                         defect_is_double_antiderivative,
+                                         tail_is_double_antiderivative
     py     validate_..._closed_forms    exact rational 2048/65537,
                                          65536/67108865
     md     Soliton-Bus ... .md          "86 root validators", the
@@ -36,7 +43,7 @@ Lean   PunoCalculus.MillenniumBridge  statuses :: NOT SETTLED BY
 
 Provenance: the PunoTwin twin files mirror the mathlib v4.33.1 origin
 repository github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof at
-commit 6acb7f9c2e0803714f8fc894ddf8fe8a5017bb72.  The vendored copies in
+commit d97f450547fa897a6abcd662bae9734788fc2fe5.  The vendored copies in
 PunoCalculus/PunoCalculus/PunoTwin and the origin tree must stay
 byte-identical (hash-audited); bumping the mathlib rev in either place
 invalidates the other.
@@ -53,7 +60,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 WORKSPACE = ROOT.parent
 PW = WORKSPACE / "PunoCalculus" / "PunoCalculus"
-TWIN_ORIGIN_SHA = "6acb7f9c2e0803714f8fc894ddf8fe8a5017bb72"
+TWIN_ORIGIN_SHA = "d97f450547fa897a6abcd662bae9734788fc2fe5"
 TWIN_ORIGIN_URL = "github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof"
 
 
@@ -101,12 +108,32 @@ RING = [
     "sumBits_eq", "compBits_eq",
     "rule204_identity_all", "rule51_complement_all",
 ]
+MPOP = [
+    "operator_discriminant_bridge",
+    "(2 * a + 1) ^ 2 - 4 * a = 1 + 4 * a ^ 2",
+    "window_discriminant_closed_form",
+    "(2 * (128 : ℚ) + 1) ^ 2 - 4 * 128 = 65537",
+    "tail_discriminant_closed_form",
+    "(2 * (4096 : ℚ) + 1) ^ 2 - 4 * 4096 = 67108865",
+    "fermat_denominator_window",
+    "1 + 4 * (128 : ℚ) ^ 2 = 2 ^ 16 + 1",
+    "window_discriminant_pos",
+    "defect_is_double_antiderivative",
+    "(16 : ℚ) * 1 * 128 / (1 + 4 * 1 * 128 ^ 2) = 2 * ((8 : ℚ) * 128 / (1 + 4 * 1 * 128 ^ 2))",
+    "tail_is_double_antiderivative",
+    "(16 : ℚ) * 1 * 4096 / (1 + 4 * 1 * 4096 ^ 2) = 2 * ((8 : ℚ) * 4096 / (1 + 4 * 1 * 4096 ^ 2))",
+]
 DOCPINS = [
     "86 root validators",
     "2048/65537",
     "65536/67108865",
     "TwinAnalyticLaws",
     "TwinRingLaws",
+    "MPOperator",
+    "operator_discriminant_bridge",
+    "window_discriminant_closed_form",
+    "65537",
+    "67108865",
     "rule204_identity_all",
     "rule51_complement_all",
     "NOT SETTLED BY THIS",
@@ -143,6 +170,8 @@ _check("TwinAnalyticLaws carries the seven mass-law theorems",
        _grep(MW / "TwinAnalyticLaws.lean", TWIN))
 _check("TwinRingLaws carries the general-width ring closure",
        _grep(MW / "TwinRingLaws.lean", RING))
+_check("MPOperator carries the operator-discriminant bridge theorems",
+       _grep(MW / "MPOperator.lean", MPOP))
 _check("the docs pin the suite count and the certified rationals",
        _grep(DOC, DOCPINS))
 _check("on-disk validator count matches the prose-pinned count",
@@ -154,7 +183,8 @@ _check("on-disk validator count matches the prose-pinned count",
 for name, path in [("EcaIsometry.lean", PW / "EcaIsometry.lean"),
                    ("MillenniumBridge.lean", PW / "MillenniumBridge.lean"),
                    ("TwinAnalyticLaws.lean", MW / "TwinAnalyticLaws.lean"),
-                   ("TwinRingLaws.lean", MW / "TwinRingLaws.lean")]:
+                   ("TwinRingLaws.lean", MW / "TwinRingLaws.lean"),
+                   ("MPOperator.lean", MW / "MPOperator.lean")]:
     text = path.read_text(encoding="utf-8", errors="ignore").lower()
     hits = [s for s in ("is solved", "is settled", "proves ", "proved:",
                         "are settled") if re.search(r"\b" + re.escape(s),

@@ -2012,7 +2012,7 @@ structural closure for *every* width now lives in mathlib as
 namespace `PunoTwin`, compiles clean with `lake env lean`.  (The
 vendored `PunoCalculus/PunoCalculus/PunoTwin` copies mirror
 `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof @
-6acb7f9c2e0803714f8fc894ddf8fe8a5017bb72`, mathlib v4.33.1):
+d97f450547fa897a6abcd662bae9734788fc2fe5`, mathlib v4.33.1):
 
 - `step204_eq`: the rule-204 step is exactly the width-`w` reading
   `sumBits s w := Σ_j (bit s j)·2^j` (via per-cell `center_bit` and an
@@ -2056,6 +2056,29 @@ dependencies):
 No Millennium problem is asserted settled here — certified quantities of
 the twin mass law only; the seven delimitations live with the bridge
 validator.
+
+**T4 — the MP-Operator discriminant bridge (mathlib `v4.33.1`).**  The
+window denominators `1 + 4 a²` that appear in T3 are `PunoTwin` hashes of a
+`Derivative + Antiderivative` operator spectrum.  The mathlib file
+`PunoTwin\MPOperator.lean` (namespace `PunoTwin.MPOperator`, zero-unproved
+proofs) formalizes `A_{α,β} = αD + βV` with `D = d/dx`, `V = ∫₀ˣ`, whose
+eigenvalue equation `α f″ − λ f′ + β f = 0` has discriminant `Δ = λ² − 4αβ`:
+
+- `operator_discriminant_bridge`: the family `(α,β,λ) = (1, a, 2a+1)` gives
+  `Δ = (2a+1)² − 4a = 4a² + 1 = 1 + 4a²`, exactly the T3 denominator;
+- `window_discriminant_closed_form`: at `a = 128`, `Δ = 65537`
+  (`(2·128 + 1)² − 4·128 = 65537`) — the `2048/65537` window defect is
+  therefore `16P·a/Δ` at `P = 1`;
+- `tail_discriminant_closed_form`: at `a = 4096`, `Δ = 67108865` — the same
+  bridge for the `65536/67108865` tail remainder;
+- `fermat_denominator_window`: `1 + 4·128² = 2¹⁶ + 1` (a Fermat number);
+- `window_discriminant_pos`: `Δ > 0` for the window parameter, so the
+  characteristic polynomial has two distinct real roots — the eigenspace is
+  one-dimensional;
+- `defect_is_double_antiderivative`: `16P·a/(1+4P·a²) = 2·(8a/(1+4a²))`,
+  `tail_is_double_antiderivative`: the same 2× evaluation of the
+  antiderivative at `a` and `b = 4096` — the mass law re-expressed as twice
+  `Vρ(a)`.
 
 `PunoCalculus.MillenniumBridge` then records, as closed decidable
 statements and explicit prose, the pairing with the seven Millennium

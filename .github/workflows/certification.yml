@@ -104,6 +104,15 @@ jobs:
               MW / "TwinRingLaws.lean": [
                   "rule204_identity_all", "rule51_complement_all",
               ],
+              MW / "MPOperator.lean": [
+                  "operator_discriminant_bridge",
+                  "window_discriminant_closed_form",
+                  "tail_discriminant_closed_form",
+                  "fermat_denominator_window",
+                  "window_discriminant_pos",
+                  "defect_is_double_antiderivative",
+                  "tail_is_double_antiderivative",
+              ],
           }
 
           ok = True
@@ -139,6 +148,8 @@ jobs:
             -o _upstream_twins/TwinAnalyticLaws.lean
           curl -fsSL "https://raw.githubusercontent.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof/main/PunoTwin/TwinRingLaws.lean" \
             -o _upstream_twins/TwinRingLaws.lean
+          curl -fsSL "https://raw.githubusercontent.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof/main/PunoTwin/MPOperator.lean" \
+            -o _upstream_twins/MPOperator.lean
 
       - name: "Hash audit: vendored twins must be byte-identical to upstream"
         run: |
@@ -146,7 +157,7 @@ jobs:
           ORIG_DIR="_upstream_twins"
           status=0
 
-          for twin in TwinAnalyticLaws.lean TwinRingLaws.lean; do
+          for twin in TwinAnalyticLaws.lean TwinRingLaws.lean MPOperator.lean; do
             v_sha=$(sha256sum "$VEND_DIR/$twin" | awk '{print $1}')
             o_sha=$(sha256sum "$ORIG_DIR/$twin"  | awk '{print $1}')
             if [ "$v_sha" != "$o_sha" ]; then
@@ -161,7 +172,7 @@ jobs:
             echo "::error::Vendored twins are not byte-identical to upstream main.  Aborting."
             exit 1
           fi
-          echo "Hash-audit PASS: both vendored twins match upstream main."
+          echo "Hash-audit PASS: all three vendored twin files match upstream main."
 
       # mathlib fetch is heavy (>5 min); only allow on manual workflow_dispatch.
       - name: "lake build pure-core PunoCalculus (no mathlib)"
