@@ -132,8 +132,40 @@ jobs:
               sys.exit(1)
           PY
 
-      - name: "Optional: lake build pure-core PunoCalculus (no mathlib)"
-        if: ${{ false }}
+      - name: Download upstream twin files for hash audit
+        run: |
+          mkdir -p _upstream_twins
+          curl -fsSL "https://raw.githubusercontent.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof/main/PunoTwin/TwinAnalyticLaws.lean" \
+            -o _upstream_twins/TwinAnalyticLaws.lean
+          curl -fsSL "https://raw.githubusercontent.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof/main/PunoTwin/TwinRingLaws.lean" \
+            -o _upstream_twins/TwinRingLaws.lean
+
+      - name: "Hash audit: vendored twins must be byte-identical to upstream"
+        run: |
+          VEND_DIR="PunoCalculus/PunoCalculus/PunoTwin"
+          ORIG_DIR="_upstream_twins"
+          status=0
+
+          for twin in TwinAnalyticLaws.lean TwinRingLaws.lean; do
+            v_sha=$(sha256sum "$VEND_DIR/$twin" | awk '{print $1}')
+            o_sha=$(sha256sum "$ORIG_DIR/$twin"  | awk '{print $1}')
+            if [ "$v_sha" != "$o_sha" ]; then
+              echo "::error::HASH MISMATCH for $twin: vendored=$v_sha  upstream=$o_sha"
+              status=1
+            else
+              echo "OK $twin  sha256=$v_sha"
+            fi
+          done
+
+          if [ "$status" -ne 0 ]; then
+            echo "::error::Vendored twins are not byte-identical to upstream main.  Aborting."
+            exit 1
+          fi
+          echo "Hash-audit PASS: both vendored twins match upstream main."
+
+      # mathlib fetch is heavy (>5 min); only allow on manual workflow_dispatch.
+      - name: "lake build pure-core PunoCalculus (no mathlib)"
+        if: ${{ always() && github.event_name == 'workflow_dispatch' }}
         run: |
           cd PunoCalculus
           lake build
