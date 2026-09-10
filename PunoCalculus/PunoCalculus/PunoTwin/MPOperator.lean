@@ -160,4 +160,12 @@ theorem bridge_discriminant_never_negative (a : ℝ) : 0 < 4 * a ^ 2 + 1 := by
 theorem bridge_discriminant_window_pos : (0 : ℚ) < 4 * 128 ^ 2 + 1 := by
   norm_num
 
+/-- Monotonicity of the mass-radius product between the two certified
+    windows: the tail's product `268435456/67108865` is strictly larger
+    than the window's `262144/65537`, confirming the product rises toward
+    the mass ceiling 4 as the half-window grows. -/
+theorem mass_radius_window_lt_tail :
+    (262144 : ℚ) / 65537 < (268435456 : ℚ) / 67108865 := by
+  norm_num
+
 end PunoTwin.MPOperator

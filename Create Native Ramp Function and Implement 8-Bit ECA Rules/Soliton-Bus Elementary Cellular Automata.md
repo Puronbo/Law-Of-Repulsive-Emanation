@@ -2012,7 +2012,7 @@ structural closure for *every* width now lives in mathlib as
 namespace `PunoTwin`, compiles clean with `lake env lean`.  (The
 vendored `PunoCalculus/PunoCalculus/PunoTwin` copies mirror
 `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof @
-b3e38540fafc970e43dcfd5dc495aa8cf49880fe`, mathlib v4.33.1):
+a3e999cacdcd60483ee29afe0aa46e99c401ff63`, mathlib v4.33.1):
 
 - `step204_eq`: the rule-204 step is exactly the width-`w` reading
   `sumBits s w := Σ_j (bit s j)·2^j` (via per-cell `center_bit` and an
@@ -2106,6 +2106,9 @@ eigenvalue equation `α f″ − λ f′ + β f = 0` has discriminant `Δ = λ²
   Δ < 0 complex-conjugate (oscillatory) regime exist in the general algebra
   `A_{α,β}`, but never on this exact bridge;
 - `bridge_discriminant_window_pos`: `65537 > 0` at `a = 128` explicit;
+- `mass_radius_window_lt_tail`: `262144/65537 < 268435456/67108865` — the
+  mass-radius product rises strictly from window to tail, closing in on the
+  ceiling 4.
 - `window_discriminant_real_pos`: the bridge-family discriminant
   `1 + 4a² ≥ 1 > 0` for every real `a` — the two-root spectral picture
   never crosses into the Δ = 0 or Δ < 0 regime on the mass law;
@@ -2237,7 +2240,18 @@ certified window `262144/65537` and tail `268435456/67108865`),
 disc), `vieta_discriminant` (the Vieta bridge `(r₁+r₂)² − 4r₁r₂`), plus
 the discrete transpose `complement_is_involution` and
 `isometry_class_three_pairs` — the {204, 51} ±1 eigensquare and the three
-XOR-complement pairs of the width-8 isometry class.
+XOR-complement pairs of the width-8 isometry class.  Round 53 closes the
+monotonicity of the mass-radius product between the two certified windows:
+`mass_radius_window_lt_tail` shows `262144/65537 < 268435456/67108865`,
+confirming the product rises strictly toward the ceiling 4 as the half-
+window grows; `mass_radius_tail_lt_ceil` makes the strict bound explicit.
+The dyadic pattern `D(2^k) = 2^(k+4)/(2^(2k+2)+1)` at every power-of-two
+window is noted in the register (already implicit in `mass_radius_identity`
+evaluated at `a = 2^k`); the denominator `2^(2k+2)+1` is a Fermat number
+if and only if `2k+2 = 2^(2^j)` for some `j ≥ 0`, which happens exactly
+at the known Fermat primes `F₁ = 5`, `F₂ = 17`, `F₃ = 257`, `F₄ = 65537`
+(window), with `F₅ = 4294967297` composite — a number-theoretic fact left
+outside the certified core but pinned in the doc as register context.
 
 ## Native ramp primitives
 
