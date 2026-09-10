@@ -2012,7 +2012,7 @@ structural closure for *every* width now lives in mathlib as
 namespace `PunoTwin`, compiles clean with `lake env lean`.  (The
 vendored `PunoCalculus/PunoCalculus/PunoTwin` copies mirror
 `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof @
-955fe296136800ade17eed397af52e7abf1bfb37`, mathlib v4.33.1):
+0d96d1d89845925648314ed2d0daa90571fa663e`, mathlib v4.33.1):
 
 - `step204_eq`: the rule-204 step is exactly the width-`w` reading
   `sumBits s w := Σ_j (bit s j)·2^j` (via per-cell `center_bit` and an
@@ -2088,7 +2088,19 @@ eigenvalue equation `α f″ − λ f′ + β f = 0` has discriminant `Δ = λ²
   eigenfunction claim;
 - (exact-number footnote) `65537 = 2¹⁶ + 1` is a Fermat **prime**, whereas
   `67108865 = 2²⁶ + 1 = 5·53·157·1613` is **composite** — the "Fermat number"
-  wording applies only to the window denominator.
+  wording applies only to the window denominator;
+- `mass_radius_identity`: the defect's mass-radius product is exactly
+  `D(a)·a = 16a²/(1+4a²) = 4 − 4/(1+4a²)`, so `D(a)·a + 4/(1+4a²) = 4` —
+  the mass ceiling **4** bounds the product for every half-window, and at
+  `a = 128` the certified rationals give `262144/65537` (with `4/65537` as
+  the remainder) — the celebrated window defect is `4` decomposed against
+  the denominator;
+- `mass_radius_window`: `D(128)·128 = 262144/65537` (rational, exact);
+- `window_discriminant_real_pos`: the bridge-family discriminant
+  `1 + 4a² ≥ 1 > 0` for every real `a` — the two-root spectral picture
+  never crosses into the Δ = 0 or Δ < 0 regime on the mass law;
+- `vieta_discriminant`: `(r₁+r₂)² − 4r₁r₂ = (r₁−r₂)²` universally — the
+  Vieta form of the bridge identity `(2a+1)² − 4a = Δ`.
 
 `PunoCalculus.MillenniumBridge` then records, as closed decidable
 statements and explicit prose, the pairing with the seven Millennium
