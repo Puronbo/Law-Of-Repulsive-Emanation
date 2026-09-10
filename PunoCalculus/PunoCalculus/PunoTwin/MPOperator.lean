@@ -123,6 +123,13 @@ theorem mass_radius_tail :
       = (268435456 : ℚ) / 67108865 := by
   norm_num
 
+/-- The mass-radius product at the tail lies strictly below the mass
+    ceiling 4, because the celebrated remainder 4/(1 + 4b²) is positive
+    (here 4/67108865 > 0). -/
+theorem mass_radius_tail_lt_ceil :
+    (16 : ℚ) * 1 * 4096 / (1 + 4 * 1 * 4096 ^ 2) * 4096 < 4 := by
+  norm_num
+
 /-- The bridge-family discriminant is positive for every real half-window
     `a`: 1 + 4a² ≥ 1 > 0.  Hence every characteristic polynomial
     r² − (2a+1)r + a of the two-root picture has two distinct real roots,
@@ -139,5 +146,18 @@ theorem window_discriminant_real_pos (a : ℝ) : 1 ≤ 1 + 4 * a ^ 2 := by
 theorem vieta_discriminant (r₁ r₂ : ℝ) :
     (r₁ + r₂) ^ 2 - 4 * r₁ * r₂ = (r₁ - r₂) ^ 2 := by
   ring
+
+/-- Three-regime classification on the bridge family: the discriminant
+    Δ = (2a+1)² − 4a = 4a² + 1 is always strictly positive, so the
+    characteristic polynomial r² − (2a+1)r + a has two distinct real roots
+    on the whole mass law; the Δ = 0 double-root point and the Δ < 0
+    complex-conjugate (oscillatory) pair can arise in the general operator
+    algebra A_{α,β} = αD + βV, but never on this exact bridge. -/
+theorem bridge_discriminant_never_negative (a : ℝ) : 0 < 4 * a ^ 2 + 1 := by
+  nlinarith [sq_nonneg a]
+
+/-- The exact value at the certified window: Δ(128) = 65537 > 0. -/
+theorem bridge_discriminant_window_pos : (0 : ℚ) < 4 * 128 ^ 2 + 1 := by
+  norm_num
 
 end PunoTwin.MPOperator

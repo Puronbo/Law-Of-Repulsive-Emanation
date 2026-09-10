@@ -1,4 +1,4 @@
-"""validate_soliton_millennium_meta_audit: T4, bridge meta pointing at proofs.
+﻿"""validate_soliton_millennium_meta_audit: T4, bridge meta pointing at proofs.
 
 The certificates live on three artifacts built in three different ways,
 and the meta-audit refuses to let any of them drift out of the doc
@@ -43,7 +43,7 @@ Lean   PunoCalculus.MillenniumBridge  statuses :: NOT SETTLED BY
 
 Provenance: the PunoTwin twin files mirror the mathlib v4.33.1 origin
 repository github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof at
-commit eded786d199cbdafb22f1fea1e4bb62e46af3d03.  The vendored copies in
+commit b3e38540fafc970e43dcfd5dc495aa8cf49880fe.  The vendored copies in
 PunoCalculus/PunoCalculus/PunoTwin and the origin tree must stay
 byte-identical (hash-audited); bumping the mathlib rev in either place
 invalidates the other.
@@ -60,7 +60,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 WORKSPACE = ROOT.parent
 PW = WORKSPACE / "PunoCalculus" / "PunoCalculus"
-TWIN_ORIGIN_SHA = "eded786d199cbdafb22f1fea1e4bb62e46af3d03"
+TWIN_ORIGIN_SHA = "b3e38540fafc970e43dcfd5dc495aa8cf49880fe"
 TWIN_ORIGIN_URL = "github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof"
 
 
@@ -100,10 +100,10 @@ TWIN = [
     "window_defect_exact", "defect_at_L", "defect_tendsto_zero",
     "defect_window_closed_form",
     "defect_window_closed_form :",
-    "(16 : ℚ) * 1 * 128 / (1 + 4 * 1 * 128 ^ 2) = (2048 : ℚ) / 65537",
+    "(16 : â„š) * 1 * 128 / (1 + 4 * 1 * 128 ^ 2) = (2048 : â„š) / 65537",
     "defect_at_L_tail_lt_window",
     "defect_at_L_tail_lt_window :",
-    "(16 : ℚ) * 1 * 4096 / (1 + 4 * 1 * 4096 ^ 2) < (2048 : ℚ) / 65537",
+    "(16 : â„š) * 1 * 4096 / (1 + 4 * 1 * 4096 ^ 2) < (2048 : â„š) / 65537",
 ]
 RING = [
     "step204_eq", "step51_eq",
@@ -114,28 +114,34 @@ MPOP = [
     "operator_discriminant_bridge",
     "(2 * a + 1) ^ 2 - 4 * a = 1 + 4 * a ^ 2",
     "window_discriminant_closed_form",
-    "(2 * (128 : ℚ) + 1) ^ 2 - 4 * 128 = 65537",
+    "(2 * (128 : â„š) + 1) ^ 2 - 4 * 128 = 65537",
     "tail_discriminant_closed_form",
-    "(2 * (4096 : ℚ) + 1) ^ 2 - 4 * 4096 = 67108865",
+    "(2 * (4096 : â„š) + 1) ^ 2 - 4 * 4096 = 67108865",
     "fermat_denominator_window",
-    "1 + 4 * (128 : ℚ) ^ 2 = 2 ^ 16 + 1",
+    "1 + 4 * (128 : â„š) ^ 2 = 2 ^ 16 + 1",
     "window_discriminant_pos",
     "defect_is_double_antiderivative",
-    "(16 : ℚ) * 1 * 128 / (1 + 4 * 1 * 128 ^ 2) = 2 * ((8 : ℚ) * 128 / (1 + 4 * 1 * 128 ^ 2))",
+    "(16 : â„š) * 1 * 128 / (1 + 4 * 1 * 128 ^ 2) = 2 * ((8 : â„š) * 128 / (1 + 4 * 1 * 128 ^ 2))",
     "tail_is_double_antiderivative",
-    "(16 : ℚ) * 1 * 4096 / (1 + 4 * 1 * 4096 ^ 2) = 2 * ((8 : ℚ) * 4096 / (1 + 4 * 1 * 4096 ^ 2))",
+    "(16 : â„š) * 1 * 4096 / (1 + 4 * 1 * 4096 ^ 2) = 2 * ((8 : â„š) * 4096 / (1 + 4 * 1 * 4096 ^ 2))",
     "antiderivative_first_order_law",
     "+ 8 * P * t * (t / (1 + 4 * P * t ^ 2)) = 1",
     "mass_radius_identity",
     "16 * a ^ 2 / (1 + 4 * a ^ 2) + 4 / (1 + 4 * a ^ 2) = 4",
     "mass_radius_window",
-    "(16 : ℚ) * 1 * 128 / (1 + 4 * 1 * 128 ^ 2) * 128 = (262144 : ℚ) / 65537",
+    "(16 : â„š) * 1 * 128 / (1 + 4 * 1 * 128 ^ 2) * 128 = (262144 : â„š) / 65537",
     "mass_radius_tail",
-    "(16 : ℚ) * 1 * 4096 / (1 + 4 * 1 * 4096 ^ 2) * 4096 = (268435456 : ℚ) / 67108865",
+    "(16 : â„š) * 1 * 4096 / (1 + 4 * 1 * 4096 ^ 2) * 4096 = (268435456 : â„š) / 67108865",
+    "mass_radius_tail_lt_ceil",
+    "(16 : â„š) * 1 * 4096 / (1 + 4 * 1 * 4096 ^ 2) * 4096 < 4",
     "window_discriminant_real_pos",
-    "1 ≤ 1 + 4 * a ^ 2",
+    "1 â‰¤ 1 + 4 * a ^ 2",
     "vieta_discriminant",
-    "(r₁ + r₂) ^ 2 - 4 * r₁ * r₂ = (r₁ - r₂) ^ 2",
+    "(râ‚ + râ‚‚) ^ 2 - 4 * râ‚ * râ‚‚ = (râ‚ - râ‚‚) ^ 2",
+    "bridge_discriminant_never_negative",
+    "0 < 4 * a ^ 2 + 1",
+    "bridge_discriminant_window_pos",
+    "(0 : â„š) < 4 * 128 ^ 2 + 1",
 ]
 DOCPINS = [
     "86 root validators",
