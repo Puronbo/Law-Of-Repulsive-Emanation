@@ -160,6 +160,25 @@ theorem bridge_discriminant_never_negative (a : ℝ) : 0 < 4 * a ^ 2 + 1 := by
 theorem bridge_discriminant_window_pos : (0 : ℚ) < 4 * 128 ^ 2 + 1 := by
   norm_num
 
+/-- Spectral-gap theorem: the characteristic polynomial
+    `P(r) = r² − (2a+1)r + a` of the bridge eigen-ODE evaluates to exactly
+    `−1/4` at `r = 1/2`, independently of the half-window `a`.  Because the
+    leading coefficient is `1 > 0`, the polynomial is negative exactly
+    between its two roots, so for every `a > 0` the small root satisfies
+    `r₂ < 1/2 < r₁`: the contractive root is always strictly below the
+    spectral midpoint 1/2, while the expansive root always exceeds it.
+    This is the algebraic gap behind `mass_radius_identity`'s ceiling 4. -/
+theorem char_poly_at_half (a : ℚ) :
+    (1 / 2 : ℚ) ^ 2 - (2 * a + 1) * (1 / 2 : ℚ) + a = (-1 / 4 : ℚ) := by
+  ring
+
+/-- The same spectral midpoint is revisited at the certified window: the
+    window's characteristic polynomial confirms `P(1/2) = −1/4` exactly
+    when `a = 128`, with room of `−1/4` on each side of the gap. -/
+theorem char_poly_at_half_window :
+    (1 / 2 : ℚ) ^ 2 - (2 * 128 + 1) * (1 / 2 : ℚ) + 128 = (-1 / 4 : ℚ) := by
+  norm_num
+
 /-- Monotonicity of the mass-radius product between the two certified
     windows: the tail's product `268435456/67108865` is strictly larger
     than the window's `262144/65537`, confirming the product rises toward

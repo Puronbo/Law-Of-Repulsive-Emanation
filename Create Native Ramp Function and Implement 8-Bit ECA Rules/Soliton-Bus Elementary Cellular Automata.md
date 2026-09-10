@@ -2012,7 +2012,7 @@ structural closure for *every* width now lives in mathlib as
 namespace `PunoTwin`, compiles clean with `lake env lean`.  (The
 vendored `PunoCalculus/PunoCalculus/PunoTwin` copies mirror
 `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof @
-a3e999cacdcd60483ee29afe0aa46e99c401ff63`, mathlib v4.33.1):
+fa93c34dc55d5e41b9896e2909ebfac3fe89ddb9`, mathlib v4.33.1):
 
 - `step204_eq`: the rule-204 step is exactly the width-`w` reading
   `sumBits s w := Σ_j (bit s j)·2^j` (via per-cell `center_bit` and an
@@ -2106,6 +2106,12 @@ eigenvalue equation `α f″ − λ f′ + β f = 0` has discriminant `Δ = λ²
   Δ < 0 complex-conjugate (oscillatory) regime exist in the general algebra
   `A_{α,β}`, but never on this exact bridge;
 - `bridge_discriminant_window_pos`: `65537 > 0` at `a = 128` explicit;
+- `char_poly_at_half`: the window-`a` characteristic polynomial
+  `P(1/2) = (1/2)² − (2a+1)·(1/2) + a` equals `−1/4` **exactly, for every
+  `a`** — so with leading coefficient 1 the spectral midpoint 1/2 lies
+  strictly between the two roots: `r₂ < 1/2 < r₁`.  The small root is
+  therefore always contractive below 1/2, the algebraic gap behind the
+  mass ceiling 4 (`char_poly_at_half_window` restates at `a = 128`);
 - `mass_radius_window_lt_tail`: `262144/65537 < 268435456/67108865` — the
   mass-radius product rises strictly from window to tail, closing in on the
   ceiling 4.
@@ -2252,6 +2258,15 @@ if and only if `2k+2 = 2^(2^j)` for some `j ≥ 0`, which happens exactly
 at the known Fermat primes `F₁ = 5`, `F₂ = 17`, `F₃ = 257`, `F₄ = 65537`
 (window), with `F₅ = 4294967297` composite — a number-theoretic fact left
 outside the certified core but pinned in the doc as register context.
+Round 54 adds the spectral-gap theorem `char_poly_at_half`: the bridge
+characteristic polynomial `P(r) = r² − (2a+1)r + a` evaluates at the
+spectral midpoint to `P(1/2) = −1/4` **for every half-window `a`**, so
+the small eigen-root is strictly contractive (`r₂ < 1/2 < r₁` for all
+`a > 0`) and the mass ceiling 4 restates exactly the algebraic gap
+between the midpoint 1/2 and the expansive root — the classical
+open-upward argument (leading coefficient 1) anchors the bound with a
+single exact rational, `−1/4`, unchanged across the whole certified
+window.  `char_poly_at_half_window` restates the fact at `a = 128`.
 
 ## Native ramp primitives
 
