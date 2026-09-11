@@ -160,6 +160,39 @@ theorem bridge_discriminant_never_negative (a : ℝ) : 0 < 4 * a ^ 2 + 1 := by
 theorem bridge_discriminant_window_pos : (0 : ℚ) < 4 * 128 ^ 2 + 1 := by
   norm_num
 
+/-- Square-squeeze of the discriminant: for every real half-window `a > 0`
+    the bridge discriminant Δ = 4a² + 1 sits strictly between the squares
+    `(2a)²` and `(2a+1)²`.  Since square root is monotone, this is the
+    bare-hands statement that `2a < √Δ < 2a+1` — no overt radicand lemma
+    needed — which is exactly what pins the spectral bracket
+    `0 < r₂ < 1/2 < r₁ < 2a+1` in `char_poly_at_half` and friends:
+    r₁ = (2a+1+√Δ)/2 < 2a+1 and r₂ = (2a+1−√Δ)/2 ∈ (0, 1/2). -/
+theorem bridge_discriminant_square_squeeze (a : ℝ) (ha : 0 < a) :
+    (2 * a) ^ 2 < 4 * a ^ 2 + 1 ∧ 4 * a ^ 2 + 1 < (2 * a + 1) ^ 2 := by
+  constructor
+  · nlinarith [sq_nonneg a]
+  · nlinarith [sq_nonneg a, ha]
+
+/-- Window form of the square-squeeze: at `a = 128` the discriminant
+    `65537` is sandwiched between 256² and 257², i.e.
+    `65536 < 65537 < 66049` — the tightest exact rational bracket of the
+    spectral roots at the certified window. -/
+theorem bridge_discriminant_square_squeeze_window :
+    (256 : ℚ) ^ 2 < 4 * 128 ^ 2 + 1 ∧ 4 * 128 ^ 2 + 1 < (257 : ℚ) ^ 2 := by
+  constructor
+  · norm_num
+  · norm_num
+
+/-- Tail form of the square-squeeze: at `a = 4096` the discriminant
+    `67108865` is sandwiched between 8192² and 8193², i.e.
+    `67108864 < 67108865 < 67125249` — the exact bracket at the tail
+    window (monotonic under `mass_radius_window_lt_tail`). -/
+theorem bridge_discriminant_square_squeeze_tail :
+    (8192 : ℚ) ^ 2 < 4 * 4096 ^ 2 + 1 ∧ 4 * 4096 ^ 2 + 1 < (8193 : ℚ) ^ 2 := by
+  constructor
+  · norm_num
+  · norm_num
+
 /-- Spectral-gap theorem: the characteristic polynomial
     `P(r) = r² − (2a+1)r + a` of the bridge eigen-ODE evaluates to exactly
     `−1/4` at `r = 1/2`, independently of the half-window `a`.  Because the

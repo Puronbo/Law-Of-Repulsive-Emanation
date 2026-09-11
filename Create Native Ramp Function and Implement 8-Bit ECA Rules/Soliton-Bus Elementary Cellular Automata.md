@@ -2012,7 +2012,7 @@ structural closure for *every* width now lives in mathlib as
 namespace `PunoTwin`, compiles clean with `lake env lean`.  (The
 vendored `PunoCalculus/PunoCalculus/PunoTwin` copies mirror
 `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof @
-12c6bb0091226ce8be5ac52daecce8b280072435`, mathlib v4.33.1):
+5209c2b7d05e5d1c18bb003855f2747ad991a0d4`, mathlib v4.33.1):
 
 - `step204_eq`: the rule-204 step is exactly the width-`w` reading
   `sumBits s w := Σ_j (bit s j)·2^j` (via per-cell `center_bit` and an
@@ -2120,6 +2120,14 @@ eigenvalue equation `α f″ − λ f′ + β f = 0` has discriminant `Δ = λ²
   `P(2a+1) = 128` certify the sign alternation that, with the
   upward-opening leading coefficient, brackets the two roots
   `0 < r₂ < 1/2 < r₁ < 2a+1` — the spectral bracket;
+- `bridge_discriminant_square_squeeze` (Round 56): for every real
+  `a > 0` the discriminant Δ = 4a² + 1 is sandwiched strictly between
+  the squares `(2a)²` and `(2a+1)²`; with monotone square root this is
+  the bare-hands `2a < √Δ < 2a+1` behind the bracket, with
+  `bridge_discriminant_square_squeeze_window` (`65536 < 65537 < 66049`)
+  and `bridge_discriminant_square_squeeze_tail`
+  (`67108864 < 67108865 < 67125249`) stating the exact rational
+  squeeze at both certified windows;
 - `mass_radius_window_lt_tail`: `262144/65537 < 268435456/67108865` — the
   mass-radius product rises strictly from window to tail, closing in on the
   ceiling 4.
@@ -2283,6 +2291,12 @@ opening leading coefficient, the four sign locations pin the two roots
 inside `0 < r₂ < 1/2 < r₁ < 2a+1` for every `a > 0`.  The composite
 `spectral_bracket_window` restates all four exact evaluations at the
 certified window `a = 128` in one decidable statement.
+Round 56 adds the square-squeeze of the discriminant: for every real
+`a > 0`, `Δ = 4a² + 1` lies strictly between `(2a)²` and `(2a+1)²`, the
+bare-hands statement that `2a < √Δ < 2a+1` (no overt radicand lemma) —
+exactly what pins `0 < r₂ < 1/2 < r₁ < 2a+1`; the window and tail forms
+`65536 < 65537 < 66049` and `67108864 < 67108865 < 67125249` give the
+tightest exact rational brackets at the two certified windows.
 
 ## Native ramp primitives
 
