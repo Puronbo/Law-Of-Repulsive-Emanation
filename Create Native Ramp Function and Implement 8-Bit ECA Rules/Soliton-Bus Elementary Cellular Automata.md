@@ -2012,7 +2012,7 @@ structural closure for *every* width now lives in mathlib as
 namespace `PunoTwin`, compiles clean with `lake env lean`.  (The
 vendored `PunoCalculus/PunoCalculus/PunoTwin` copies mirror
 `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof @
-ca3f4338caa02c075e000e1915b65090ffa6a352`, mathlib v4.33.1):
+45956524bcf59e55953823d01b758f067353e52c`, mathlib v4.33.1):
 
 - `step204_eq`: the rule-204 step is exactly the width-`w` reading
   `sumBits s w := Σ_j (bit s j)·2^j` (via per-cell `center_bit` and an
@@ -2182,6 +2182,28 @@ eigenvalue equation `α f″ − λ f′ + β f = 0` has discriminant `Δ = λ²
     `A^2 g = a^2 D^2 g + ab(2g-g(0)) + b^2 V^2 g`);
   - `operator_square_bridge_family`: at `α = 1, β = a` — the operator
     form behind the characteristic equation `λ² − (2a+1)λ + a = 0`.
+- the Round 61 reverse-Collatz spine (`PunoTwin.CollatzReach`,
+  zero-unproved, **NOT SETTLED BY THIS PROJECT** for the full
+  conjecture — only the spine family, step identities, and finite
+  L1..L7 corridors are certified): `collatzStep` is the standard step
+  `x/2` (even) / `3x+1` (odd); `odd_step_even` proves the odd step
+  always lands even, `3 * (2 * k + 1) + 1 = 2 * (3 * k + 2)` (ASCII:
+  `3*(2k+1)+1=2*(3k+2)`), the root of the reverse branching at `2y`
+  and `(y-1)/3`;
+  - the integer condition `m = (n*2^k-1)/3` (i.e. `3m+1 = n*2^k`):
+    for `n = 1` it forces `2^k ≡ 1 (mod 3)`, `k` even —
+    `two_pow_even_mod_three` (`(2 ^ (2 * j)) % 3 = 1`) against
+    `two_pow_odd_mod_three` (`(2 ^ (2 * j + 1)) % 3 = 2`);
+  - the spine family `spine k = (4^(k+1)-1)/3` (ASCII `(4^j-1)/3`),
+    exact division `spine_eq_spineSum` via `geom4_identity`, inverse
+    of the odd step (`spine_identity`: `3 * spine k + 1 = 4 ^ (k + 1)`),
+    always odd (`spine_odd`);
+  - `spine_reaches_one`: every spine element descends to `1` in
+    exactly `2(k+1)+1` steps — one `3x+1` onto a power of two, then
+    the halving corridors `halve_corridor`;
+  - `reverse_tree_levels` (`native_decide`): the reverse-tree census
+    L1..L7 collapses to 1, `L5: 5,32 | L6: 10,64 | L7: 3,20,21,128`
+    (ASCII pins `L5: 5,32`, `L6: 10,64`, `L7: 3,20,21,128`).
 - `mass_radius_window_lt_tail`: `262144/65537 < 268435456/67108865` — the
   mass-radius product rises strictly from window to tail, closing in on the
   ceiling 4.
@@ -2402,6 +2424,29 @@ operator form behind the characteristic equation `λ² − (2a+1)λ + a = 0`,
 made fully proved in `operator_square_bridge_family` at `α = 1, β = a`.
 Every statement is closed by `ring`/`field_simp`/`positivity`, zero
 `sorry`/`axiom`.
+
+Round 61 adds the closed-form **spine family of the reverse Collatz
+tree** (`PunoTwin.CollatzReach`).  `collatzStep` is the standard step
+`x/2` for even `x`, `3x+1` for odd `x`.  The odd step always lands on
+an even number — `odd_step_even`: `3 * (2 * k + 1) + 1 = 2 * (3 * k +
+2)` (ASCII `3*(2k+1)+1=2*(3k+2)`) — which is the root reason the
+reverse-nodes branch at `2y` and `(y-1)/3`.  For `n = 1` the integer
+condition `m = (n*2^k-1)/3` (i.e. `3m+1 = n*2^k`) forces `2^k ≡ 1
+(mod 3)`, hence `k` even: `two_pow_even_mod_three`
+`(2 ^ (2 * j)) % 3 = 1` against `two_pow_odd_mod_three`
+`(2 ^ (2 * j + 1)) % 3 = 2`.  The resulting inverse family is the
+spine `spine k = (4^(k+1)-1)/3`, an exact division
+(`spine_eq_spineSum` via `geom4_identity` `4^(k+1)=3*spineSum(k)+1`)
+and inverse of the odd step (`spine_identity` `3 * spine k + 1 = 4 ^
+(k + 1)`; `spine_odd` keeps each member odd so the `3x+1` step applies
+first).  `spine_reaches_one` proves every spine element descends to 1
+in exactly `2(k+1)+1` steps — one `3x+1` onto a power of two, then `k`
+halving corridors (`halve_corridor`).  `reverse_tree_levels` pins the
+reverse-tree census L1..L7 by computation (`native_decide`):
+`L5: 5,32 | L6: 10,64 | L7: 3,20,21,128`.  The full conjecture — that
+*every* positive integer lies in the tree rooted at 1 — remains
+**NOT SETTLED BY THIS PROJECT**; only the spine family, the step
+identities, and the finite L1..L7 corridors are certified here.
 
 ## Native ramp primitives
 

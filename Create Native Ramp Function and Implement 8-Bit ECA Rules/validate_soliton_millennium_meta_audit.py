@@ -28,15 +28,20 @@ Lean   PunoCalculus.MillenniumBridge  statuses :: NOT SETTLED BY
            (mathlib v4.33.1)            sumBits_eq, compBits_eq,
                                          rule204_identity_all,
                                          rule51_complement_all
-    Lean   PunoTwin.MPOperator          operator_discriminant_bridge,
+Lean   PunoTwin.MPOperator          operator_discriminant_bridge,
            (mathlib v4.33.1)            window_discriminant_closed_form,
-                                         tail_discriminant_closed_form,
-                                         fermat_denominator_window,
-                                         window_discriminant_pos,
-                                         defect_is_double_antiderivative,
-                                         tail_is_double_antiderivative
+                                          tail_discriminant_closed_form,
+                                          fermat_denominator_window,
+                                          window_discriminant_pos,
+                                          defect_is_double_antiderivative,
+                                          tail_is_double_antiderivative
+    Lean   PunoTwin.CollatzReach        odd_step_even, spine_identity,
+           (mathlib v4.33.1,            two_pow_even_mod_three,
+            native_decide)              two_pow_odd_mod_three,
+                                          spine_reaches_one,
+                                          reverse_tree_levels
     py     validate_..._closed_forms    exact rational 2048/65537,
-                                         65536/67108865
+                                          65536/67108865
     md     Soliton-Bus ... .md          "86 root validators", the
                                          theorem names, the exact
                                          rationals, seven delimitations
@@ -60,7 +65,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 WORKSPACE = ROOT.parent
 PW = WORKSPACE / "PunoCalculus" / "PunoCalculus"
-TWIN_ORIGIN_SHA = "ca3f4338caa02c075e000e1915b65090ffa6a352"
+TWIN_ORIGIN_SHA = "45956524bcf59e55953823d01b758f067353e52c"
 TWIN_ORIGIN_URL = "github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof"
 
 
@@ -109,6 +114,22 @@ RING = [
     "step204_eq", "step51_eq",
     "sumBits_eq", "compBits_eq",
     "rule204_identity_all", "rule51_complement_all",
+]
+COLLATZ = [
+    "odd_step_even",
+    "3 * (2 * k + 1) + 1 = 2 * (3 * k + 2)",
+    "geom4_identity",
+    "4 ^ (k + 1) = 3 * spineSum k + 1",
+    "spine_eq_spineSum",
+    "spine_identity",
+    "3 * spine k + 1 = 4 ^ (k + 1)",
+    "spine_reaches_one",
+    "two_pow_even_mod_three",
+    "(2 ^ (2 * j)) % 3 = 1",
+    "two_pow_odd_mod_three",
+    "(2 ^ (2 * j + 1)) % 3 = 2",
+    "reverse_tree_levels",
+    "L5: 5,32 | L6: 10,64 | L7: 3,20,21,128",
 ]
 MPOP = [
     "operator_discriminant_bridge",
@@ -213,6 +234,13 @@ DOCPINS = [
     "operator_square_commutation_defect",
     "A^2 g = a^2 D^2 g + ab(2g-g(0)) + b^2 V^2 g",
     "operator_square_bridge_family",
+    "odd_step_even",
+    "3 * (2 * k + 1) + 1 = 2 * (3 * k + 2)",
+    "spine_reaches_one",
+    "reverse_tree_levels",
+    "L5: 5,32 | L6: 10,64 | L7: 3,20,21,128",
+    "two_pow_even_mod_three",
+    "two_pow_odd_mod_three",
     "NOT SETTLED BY THIS",
     "declared NOT SETTLED explicitly",
     "PunoTwin",
@@ -249,6 +277,8 @@ _check("TwinRingLaws carries the general-width ring closure",
        _grep(MW / "TwinRingLaws.lean", RING))
 _check("MPOperator carries the operator-discriminant bridge theorems",
        _grep(MW / "MPOperator.lean", MPOP))
+_check("CollatzReach carries the closed-form spine laws and the reverse-tree census",
+       _grep(MW / "CollatzReach.lean", COLLATZ))
 _check("the docs pin the suite count and the certified rationals",
        _grep(DOC, DOCPINS))
 _check("on-disk validator count matches the prose-pinned count",
@@ -261,7 +291,8 @@ for name, path in [("EcaIsometry.lean", PW / "EcaIsometry.lean"),
                    ("MillenniumBridge.lean", PW / "MillenniumBridge.lean"),
                    ("TwinAnalyticLaws.lean", MW / "TwinAnalyticLaws.lean"),
                    ("TwinRingLaws.lean", MW / "TwinRingLaws.lean"),
-                   ("MPOperator.lean", MW / "MPOperator.lean")]:
+                   ("MPOperator.lean", MW / "MPOperator.lean"),
+                   ("CollatzReach.lean", MW / "CollatzReach.lean")]:
     text = path.read_text(encoding="utf-8", errors="ignore").lower()
     hits = [s for s in ("is solved", "is settled", "proves ", "proved:",
                         "are settled") if re.search(r"\b" + re.escape(s),
