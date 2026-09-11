@@ -2012,7 +2012,7 @@ structural closure for *every* width now lives in mathlib as
 namespace `PunoTwin`, compiles clean with `lake env lean`.  (The
 vendored `PunoCalculus/PunoCalculus/PunoTwin` copies mirror
 `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof @
-32ba30c6586b8908551a52572b765ef1628edd05`, mathlib v4.33.1):
+76d0058cac77710c1ffd2f1699a9aaac7ce5c68b`, mathlib v4.33.1):
 
 - `step204_eq`: the rule-204 step is exactly the width-`w` reading
   `sumBits s w := Σ_j (bit s j)·2^j` (via per-cell `center_bit` and an
@@ -2138,6 +2138,16 @@ eigenvalue equation `α f″ − λ f′ + β f = 0` has discriminant `Δ = λ²
 - `discrim_gap_quarter_scaling`: the gap shrinks by exactly 1/4 when
   the half-window doubles — the 32× window→tail step (4096 = 32·128)
   tightens the gap by 2⁻¹⁰;
+- `vieta_midpoint_bracket` (Round 58): for any two roots `r₁, r₂` of the
+  characteristic polynomial, the product of signed distances from the
+  spectral midpoint is exactly `−1/4`, independent of `a` — so the
+  midpoint lies strictly between the roots: `r₂ < 1/2 < r₁`;
+- `bridge_gap_square_squeeze` + `_window`/`_tail`: the identity
+  `(r₁−r₂)² = Δ = 4a²+1` (pure Vieta) is pinched, for every `a > 0`,
+  between `(2a)²` and the tight lid `(2a+1/(4a))²` — the
+  ordering-free form `2a < |r₁−r₂| < 2a + 1/(4a)` of the spectral-gap
+  shadow; at the certified windows: `65536 < (r₁−r₂)² < 65537 + 1/262144`
+  and `67108864 < (r₁−r₂)² < 67108865 + 1/268435456`;
 - `mass_radius_window_lt_tail`: `262144/65537 < 268435456/67108865` — the
   mass-radius product rises strictly from window to tail, closing in on the
   ceiling 4.
@@ -2316,6 +2326,18 @@ windows the lid is exact: `65537 + 1/262144` (a = 128, one part in
 `discrim_gap_quarter_scaling` certifies the exact law the gap obeys: it
 shrinks by 1/4 per doubling, so the 32× window→tail step (4096 = 32·128)
 tightens the gap by 2⁻¹⁰.
+Round 58 completes the rational shadow of the spectral gap.  Vieta's sum
+and product for the characteristic polynomial yield, for any two roots,
+the exact midpoint bracket `(1/2 − r₁)(1/2 − r₂) = −1/4`, independent of
+`a` — the midpoint lies strictly between the roots
+(`r₂ < 1/2 < r₁`).  The squared spectral gap `(r₁−r₂)² = Δ = 4a²+1`,
+a pure Vieta identity, is then pinched by the square-squeeze and the
+tight lid into the ordering-free shadow `2a < |r₁−r₂| < 2a + 1/(4a)`
+for every `a > 0`; at the certified windows this reads
+`65536 < (r₁−r₂)² < 65537 + 1/262144` and
+`67108864 < (r₁−r₂)² < 67108865 + 1/268435456`.  In ASCII:
+`65536 < (r1-r2)^2 < 65537 + 1/262144` and
+`67108864 < (r1-r2)^2 < 67108865 + 1/268435456`.
 
 ## Native ramp primitives
 

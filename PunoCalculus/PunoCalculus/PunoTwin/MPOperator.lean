@@ -226,6 +226,52 @@ theorem discrim_gap_quarter_scaling (a : ℝ) (ha : 0 < a) :
   field_simp
   ring
 
+/-- Vieta midpoint bracket: for any two roots `r₁, r₂` of the bridge
+    characteristic polynomial `r² − (2a+1)r + a` (so `r₁ + r₂ = 2a+1`
+    and `r₁r₂ = a`), the product of the signed distances from the spectral
+    midpoint is exactly `−1/4`, independent of `a`.  With a positive
+    leading coefficient the midpoint therefore lies strictly between the
+    two roots for every `a > 0`: `r₂ < 1/2 < r₁`. -/
+theorem vieta_midpoint_bracket (a r₁ r₂ : ℝ)
+    (hsum : r₁ + r₂ = 2 * a + 1) (hprod : r₁ * r₂ = a) :
+    (1 / 2 - r₁) * (1 / 2 - r₂) = (-1 / 4 : ℝ) := by
+  nlinarith
+
+/-- Spectral-gap squared squeeze: the identity `(r₁−r₂)² = Δ = 4a²+1`
+    (a pure consequence of Vieta's sum and product) is pinched, for every
+    `a > 0`, between the window square `(2a)²` and the tight lid
+    `(2a + 1/(4a))²` of `bridge_discriminant_tight_upper_square`.  This is
+    the ordering-free (absolute) form `2a < |r₁−r₂| < 2a + 1/(4a)` of the
+    spectral-gap shadow. -/
+theorem bridge_gap_square_squeeze (a r₁ r₂ : ℝ) (ha : 0 < a)
+    (hsum : r₁ + r₂ = 2 * a + 1) (hprod : r₁ * r₂ = a) :
+    (2 * a) ^ 2 < (r₁ - r₂) ^ 2 ∧
+      (r₁ - r₂) ^ 2 < (2 * a + 1 / (4 * a)) ^ 2 := by
+  have hgap : (r₁ - r₂) ^ 2 = 4 * a ^ 2 + 1 := by
+    nlinarith [hsum, hprod]
+  constructor
+  · rw [hgap]
+    exact (bridge_discriminant_square_squeeze a ha).1
+  · rw [hgap, bridge_discriminant_tight_upper_square a ha]
+    have hpos : 0 < 1 / (16 * a ^ 2) := by positivity
+    nlinarith
+
+/-- Window tag of the gap shadow: at `a = 128`, the squared distance
+    between the roots satisfies `65536 < (r₁−r₂)² < 65537 + 1/262144`. -/
+theorem bridge_gap_square_squeeze_window (r₁ r₂ : ℝ)
+    (hsum : r₁ + r₂ = (2 * 128 + 1 : ℝ)) (hprod : r₁ * r₂ = (128 : ℝ)) :
+    (2 * 128 : ℝ) ^ 2 < (r₁ - r₂) ^ 2 ∧
+      (r₁ - r₂) ^ 2 < (2 * 128 + 1 / (4 * 128)) ^ 2 := by
+  exact bridge_gap_square_squeeze 128 r₁ r₂ (by norm_num) hsum hprod
+
+/-- Tail tag of the gap shadow: at `a = 4096`, the squared distance
+    between the roots satisfies `67108864 < (r₁−r₂)² < 67108865 + 1/268435456`. -/
+theorem bridge_gap_square_squeeze_tail (r₁ r₂ : ℝ)
+    (hsum : r₁ + r₂ = (2 * 4096 + 1 : ℝ)) (hprod : r₁ * r₂ = (4096 : ℝ)) :
+    (2 * 4096 : ℝ) ^ 2 < (r₁ - r₂) ^ 2 ∧
+      (r₁ - r₂) ^ 2 < (2 * 4096 + 1 / (4 * 4096)) ^ 2 := by
+  exact bridge_gap_square_squeeze 4096 r₁ r₂ (by norm_num) hsum hprod
+
 /-- Spectral-gap theorem: the characteristic polynomial
     `P(r) = r² − (2a+1)r + a` of the bridge eigen-ODE evaluates to exactly
     `−1/4` at `r = 1/2`, independently of the half-window `a`.  Because the
