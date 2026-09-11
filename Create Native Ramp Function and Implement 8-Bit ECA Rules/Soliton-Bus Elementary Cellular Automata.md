@@ -2012,7 +2012,7 @@ structural closure for *every* width now lives in mathlib as
 namespace `PunoTwin`, compiles clean with `lake env lean`.  (The
 vendored `PunoCalculus/PunoCalculus/PunoTwin` copies mirror
 `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof @
-76d0058cac77710c1ffd2f1699a9aaac7ce5c68b`, mathlib v4.33.1):
+a60fcaee7f1ad2e797219bdb54d1df6600513771`, mathlib v4.33.1):
 
 - `step204_eq`: the rule-204 step is exactly the width-`w` reading
   `sumBits s w := Σ_j (bit s j)·2^j` (via per-cell `center_bit` and an
@@ -2148,6 +2148,24 @@ eigenvalue equation `α f″ − λ f′ + β f = 0` has discriminant `Δ = λ²
   ordering-free form `2a < |r₁−r₂| < 2a + 1/(4a)` of the spectral-gap
   shadow; at the certified windows: `65536 < (r₁−r₂)² < 65537 + 1/262144`
   and `67108864 < (r₁−r₂)² < 67108865 + 1/268435456`;
+- the Round 59 mirror/harmonic/bracket bundle (all `ℝ`, all closed):
+  - `spectral_midpoint_distance_sum/_prod`: the two signed distances
+    from the spectral midpoint `1/2` sum to `2a` and multiply to `−1/4`,
+    so they are the two roots of the mirror quadratic
+    `z² − 2a·z − 1/4 = 0`;
+  - `spectral_midpoint_between_roots`: `(1/2 − r₁)(1/2 − r₂) < 0` — the
+    midpoint lies strictly between the roots, universally;
+  - `spectral_distance_mirror_quadratic` +
+    `mirror_quadratic_discriminant_is_bridge`: the mirror quadratic
+    carries exactly the bridge discriminant `4a² + 1 = Δ`;
+  - `spectral_reciprocal_sum_law` (+`_window`/`_tail`): the reciprocal
+    roots sum to `2 + 1/a`; at the certified windows `1/r1 + 1/r2 =
+    2 + 1/128` and `1/r2`-twin-`1/r1`-sum `= 2 + 1/4096` (ASCII:
+    `1/r1 + 1/r2 = 2 + 1/a`, `2 + 1/128`, `2 + 1/4096`);
+  - `spectral_roots_bracket_explicit` (+`_window`): under the standard
+    ordering `r₂ < 1/2 < r₁` the full rational bracket
+    `0 < r₂ < 1/2 < r₁ < 2a+1` is proved for every `a > 0` (ASCII:
+    `0 < r2 < 1/2 < r1 < 2a+1`) — the R55 sign analysis, closed;
 - `mass_radius_window_lt_tail`: `262144/65537 < 268435456/67108865` — the
   mass-radius product rises strictly from window to tail, closing in on the
   ceiling 4.
@@ -2338,6 +2356,17 @@ for every `a > 0`; at the certified windows this reads
 `67108864 < (r₁−r₂)² < 67108865 + 1/268435456`.  In ASCII:
 `65536 < (r1-r2)^2 < 65537 + 1/262144` and
 `67108864 < (r1-r2)^2 < 67108865 + 1/268435456`.
+Round 59 closes the spectral-core register with three exact laws in
+`ℝ`.  Mirror law: the two signed distances from the spectral midpoint
+sum to `2a` and multiply to `−1/4`, so they are the two roots of the
+mirror quadratic `z² − 2a·z − 1/4 = 0`, whose discriminant is exactly
+the bridge discriminant `4a² + 1 = Δ`.  Harmonic law: the reciprocal
+roots satisfy `1/r₁ + 1/r₂ = 2 + 1/a`; at the certified windows
+`2 + 1/128` and `2 + 1/4096`.  Explicit bracket: under the standard
+root ordering `r₂ < 1/2 < r₁`, the sign-analysis window
+`0 < r₂ < 1/2 < r₁ < 2a+1` (ASCII `0 < r2 < 1/2 < r1 < 2a+1`) is proved
+for every `a > 0` — closing, by `field_simp`/`positivity`, what Round 55
+asserted for the polynomial evaluations alone.
 
 ## Native ramp primitives
 

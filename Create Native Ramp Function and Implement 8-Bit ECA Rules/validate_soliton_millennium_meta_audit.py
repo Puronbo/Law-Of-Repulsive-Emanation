@@ -43,7 +43,7 @@ Lean   PunoCalculus.MillenniumBridge  statuses :: NOT SETTLED BY
 
 Provenance: the PunoTwin twin files mirror the mathlib v4.33.1 origin
 repository github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof at
-commit 76d0058cac77710c1ffd2f1699a9aaac7ce5c68b.  The vendored copies in
+commit a60fcaee7f1ad2e797219bdb54d1df6600513771.  The vendored copies in
 PunoCalculus/PunoCalculus/PunoTwin and the origin tree must stay
 byte-identical (hash-audited); bumping the mathlib rev in either place
 invalidates the other.
@@ -60,7 +60,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 WORKSPACE = ROOT.parent
 PW = WORKSPACE / "PunoCalculus" / "PunoCalculus"
-TWIN_ORIGIN_SHA = "76d0058cac77710c1ffd2f1699a9aaac7ce5c68b"
+TWIN_ORIGIN_SHA = "a60fcaee7f1ad2e797219bdb54d1df6600513771"
 TWIN_ORIGIN_URL = "github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof"
 
 
@@ -161,6 +161,13 @@ MPOP = [
     "bridge_gap_square_squeeze",
     "bridge_gap_square_squeeze_window",
     "bridge_gap_square_squeeze_tail",
+    "spectral_midpoint_distance_sum",
+    "spectral_midpoint_distance_prod",
+    "spectral_midpoint_between_roots",
+    "spectral_distance_mirror_quadratic",
+    "mirror_quadratic_discriminant_is_bridge",
+    "spectral_reciprocal_sum_law",
+    "spectral_roots_bracket_explicit",
     "mass_radius_window_lt_tail",
     "(262144 : ℚ) / 65537 < (268435456 : ℚ) / 67108865",
 ]
@@ -187,6 +194,10 @@ DOCPINS = [
     "discrim_gap_quarter_scaling",
     "65536 < (r1-r2)^2 < 65537 + 1/262144",
     "67108864 < (r1-r2)^2 < 67108865 + 1/268435456",
+    "1/r1 + 1/r2 = 2 + 1/a",
+    "2 + 1/128",
+    "2 + 1/4096",
+    "0 < r2 < 1/2 < r1 < 2a+1",
     "NOT SETTLED BY THIS",
     "declared NOT SETTLED explicitly",
     "PunoTwin",

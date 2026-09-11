@@ -272,6 +272,138 @@ theorem bridge_gap_square_squeeze_tail (r₁ r₂ : ℝ)
       (r₁ - r₂) ^ 2 < (2 * 4096 + 1 / (4 * 4096)) ^ 2 := by
   exact bridge_gap_square_squeeze 4096 r₁ r₂ (by norm_num) hsum hprod
 
+/-- Mirror law of the spectral distance I: the two signed distances from
+    the spectral midpoint `1/2` to the roots sum to exactly `2a` — twice
+    the half-window, one half-window per side — for any two roots of
+    `r² − (2a+1)r + a`. -/
+theorem spectral_midpoint_distance_sum (a r₁ r₂ : ℝ)
+    (hsum : r₁ + r₂ = 2 * a + 1) :
+    (r₁ - 1 / 2) + (r₂ - 1 / 2) = 2 * a := by
+  nlinarith
+
+/-- Mirror law of the spectral distance II: the two signed distances from
+    the spectral midpoint multiply to exactly `−1/4`, independently of
+    `a`.  With sum `2a` and product `−1/4`, they are the two roots of the
+    mirror quadratic `z² − 2a·z − 1/4 = 0`, whose discriminant is exactly
+    the bridge discriminant `4a² + 1` — the gap shadow in centred
+    coordinates. -/
+theorem spectral_midpoint_distance_prod (a r₁ r₂ : ℝ)
+    (hsum : r₁ + r₂ = 2 * a + 1) (hprod : r₁ * r₂ = a) :
+    (r₁ - 1 / 2) * (r₂ - 1 / 2) = -1 / 4 := by
+  nlinarith
+
+/-- The spectral midpoint lies strictly between the two roots for every
+    half-window: `(1/2 − r₁)(1/2 − r₂) < 0`, universally in the roots'
+    data (no positivity hypothesis needed). -/
+theorem spectral_midpoint_between_roots (a r₁ r₂ : ℝ)
+    (hsum : r₁ + r₂ = 2 * a + 1) (hprod : r₁ * r₂ = a) :
+    (1 / 2 - r₁) * (1 / 2 - r₂) < 0 := by
+  have hb := vieta_midpoint_bracket a r₁ r₂ hsum hprod
+  nlinarith
+
+/-- Each signed distance from the midpoint solves the mirror quadratic:
+    `z² − 2a·z − 1/4 = 0` at `z = r₁ − 1/2` and at `z = r₂ − 1/2`. -/
+theorem spectral_distance_mirror_quadratic (a r₁ r₂ : ℝ)
+    (hsum : r₁ + r₂ = 2 * a + 1) (hprod : r₁ * r₂ = a) :
+    (r₁ - 1 / 2) ^ 2 - 2 * a * (r₁ - 1 / 2) - 1 / 4 = 0 ∧
+      (r₂ - 1 / 2) ^ 2 - 2 * a * (r₂ - 1 / 2) - 1 / 4 = 0 := by
+  have hl : (r₁ - 1 / 2) ^ 2 - 2 * a * (r₁ - 1 / 2) - 1 / 4
+      = r₁ ^ 2 - (2 * a + 1) * r₁ + a := by
+    ring
+  have hpl : r₁ ^ 2 - (2 * a + 1) * r₁ + a = 0 := by
+    rw [← hsum]
+    ring_nf
+    nlinarith [hprod]
+  have hr : (r₂ - 1 / 2) ^ 2 - 2 * a * (r₂ - 1 / 2) - 1 / 4
+      = r₂ ^ 2 - (2 * a + 1) * r₂ + a := by
+    ring
+  have hpr : r₂ ^ 2 - (2 * a + 1) * r₂ + a = 0 := by
+    rw [← hsum]
+    ring_nf
+    nlinarith [hprod]
+  constructor
+  · exact hl.trans hpl
+  · exact hr.trans hpr
+
+/-- The mirror quadratic `z² − 2a·z − 1/4` carries exactly the bridge
+    discriminant: `(−2a)² − 4·(−1/4) = 4a² + 1 = Δ`.  The centred shadow
+    is the same gap, measured from the midpoint. -/
+theorem mirror_quadratic_discriminant_is_bridge (a : ℝ) :
+    (2 * a) ^ 2 + 4 * (1 / 4) = 4 * a ^ 2 + 1 := by
+  ring
+
+/-- Harmonic law of the roots: the reciprocal roots sum to `2 + 1/a`.
+    Since `r₁r₂ = a > 0`, both roots are nonzero and
+    `1/r₁ + 1/r₂ = (r₁+r₂)/(r₁r₂) = (2a+1)/a = 2 + 1/a` — the exact
+    numeric shadow of the spectral pair in the twin ring `ℤ[a, 1/a]`. -/
+theorem spectral_reciprocal_sum_law (a r₁ r₂ : ℝ) (ha : 0 < a)
+    (hsum : r₁ + r₂ = 2 * a + 1) (hprod : r₁ * r₂ = a) :
+    1 / r₁ + 1 / r₂ = 2 + 1 / a := by
+  have h₁ : r₁ ≠ 0 := by
+    intro h
+    have : a = 0 := by nlinarith [hprod, h]
+    nlinarith
+  have h₂ : r₂ ≠ 0 := by
+    intro h
+    have : a = 0 := by nlinarith [hprod, h]
+    nlinarith
+  have hjoin : 1 / r₁ + 1 / r₂ = (r₁ + r₂) / (r₁ * r₂) := by
+    field_simp [h₁, h₂]
+    ring
+  rw [hjoin, hsum, hprod]
+  field_simp [ne_of_gt ha]
+
+/-- Explicit spectral bracket, under the standard root ordering
+    (`r₂` the contractive root, `r₁` the expansive root, so r₂ < 1/2 < r₁):
+    the full rational window `0 < r₂ < 1/2 < r₁ < 2a+1` holds for every
+    `a > 0`.  The top cap `r₁ < 2a+1` is equivalent to the positivity of
+    `r₂` via `r₁ + r₂ = 2a+1`, and `r₂ = a/r₁ > 0` follows from the Vieta
+    product.  This is the bracket asserted by the sign analysis in
+    `spectral_bracket_window`, now closed by `field_simp`/`positivity`. -/
+theorem spectral_roots_bracket_explicit (a r₁ r₂ : ℝ) (ha : 0 < a)
+    (hsum : r₁ + r₂ = 2 * a + 1) (hprod : r₁ * r₂ = a)
+    (hord : r₂ < 1 / 2 ∧ 1 / 2 < r₁) :
+    0 < r₂ ∧ r₂ < 1 / 2 ∧ 1 / 2 < r₁ ∧ r₁ < 2 * a + 1 := by
+  have hr₁ : 0 < r₁ := by linarith
+  have hrecip : r₂ = a / r₁ := by
+    rw [← hprod]
+    field_simp [ne_of_gt hr₁]
+  have hpos : 0 < r₂ := by
+    rw [hrecip]
+    positivity
+  have htop : r₁ < 2 * a + 1 := by
+    have : 2 * a + 1 - r₁ = r₂ := by linarith
+    linarith
+  constructor
+  · exact hpos
+  constructor
+  · exact hord.1
+  constructor
+  · exact hord.2
+  · exact htop
+
+/-- The explicit bracket at the certified window `a = 128`:
+    `0 < r₂ < 1/2 < r₁ < 257`. -/
+theorem spectral_roots_bracket_window (r₁ r₂ : ℝ)
+    (hsum : r₁ + r₂ = (2 * 128 + 1 : ℝ)) (hprod : r₁ * r₂ = (128 : ℝ))
+    (hord : r₂ < 1 / 2 ∧ 1 / 2 < r₁) :
+    0 < r₂ ∧ r₂ < 1 / 2 ∧ 1 / 2 < r₁ ∧ r₁ < (2 * 128 + 1 : ℝ) := by
+  exact spectral_roots_bracket_explicit 128 r₁ r₂ (by norm_num) hsum hprod hord
+
+/-- The harmonic law at the certified window: the reciprocal roots sum to
+    `2 + 1/128`. -/
+theorem spectral_reciprocal_sum_window (r₁ r₂ : ℝ)
+    (hsum : r₁ + r₂ = (2 * 128 + 1 : ℝ)) (hprod : r₁ * r₂ = (128 : ℝ)) :
+    1 / r₁ + 1 / r₂ = 2 + (1 / 128 : ℝ) := by
+  exact spectral_reciprocal_sum_law 128 r₁ r₂ (by norm_num) hsum hprod
+
+/-- The harmonic law at the outer-tail window: the reciprocal roots sum to
+    `2 + 1/4096`. -/
+theorem spectral_reciprocal_sum_tail (r₁ r₂ : ℝ)
+    (hsum : r₁ + r₂ = (2 * 4096 + 1 : ℝ)) (hprod : r₁ * r₂ = (4096 : ℝ)) :
+    1 / r₁ + 1 / r₂ = 2 + (1 / 4096 : ℝ) := by
+  exact spectral_reciprocal_sum_law 4096 r₁ r₂ (by norm_num) hsum hprod
+
 /-- Spectral-gap theorem: the characteristic polynomial
     `P(r) = r² − (2a+1)r + a` of the bridge eigen-ODE evaluates to exactly
     `−1/4` at `r = 1/2`, independently of the half-window `a`.  Because the
