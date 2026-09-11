@@ -404,6 +404,173 @@ theorem spectral_reciprocal_sum_tail (r₁ r₂ : ℝ)
     1 / r₁ + 1 / r₂ = 2 + (1 / 4096 : ℝ) := by
   exact spectral_reciprocal_sum_law 4096 r₁ r₂ (by norm_num) hsum hprod
 
+/-! ## The operator composition law on the polynomial model
+
+The pair (D, V) acts on polynomials: D is `Polynomial.derivative` and V is
+the antiderivative `integral` below, which divides the coefficient of
+`Xⁿ` by `(n+1)`.  On this model the two Leibniz half-turns are exact and
+provable by coefficient arithmetic:
+
+    D (V g) = g      (derivative of an antiderivative recovers g)
+    V (D g) = g − g(0)   (antiderivative of a derivative drops the constant)
+
+Hence the commuting-defect (anticommutator) of the pair is
+`D V + V D = 2 id − E₀` with `E₀ g = g(0)`, and the operator square of
+`A_{α,β} = α D + β V` satisfies
+
+    A_{α,β}² g = α² D² g + α β (2 g − g(0)) + β² V² g,
+
+which is the polynomial, fully-proved form of the composition law that
+Round 54's `vieta_midpoint_bracket` shadows in the spectral ring.  Every
+statement below is closed (no `sorry`/`axiom`); the coefficient lemmas
+`integral_coeff_*` are the computational backbone. -/
+
+/-- The antiderivative endomorphism on the polynomial model of the
+    operator pair (D, V): `V g = Σₙ cₙ xⁿ⁺¹/(n+1)`, the exact discrete
+    inverse of `Polynomial.derivative` up to constants. -/
+noncomputable def integral (p : Polynomial ℝ) : Polynomial ℝ :=
+  p.sum (fun n c => Polynomial.C (c / (↑n + 1)) * Polynomial.X ^ (n + 1))
+
+/-- The antiderivative has no constant term: `(V g).coeff 0 = 0`. -/
+lemma integral_coeff_zero (p : Polynomial ℝ) : (integral p).coeff 0 = 0 := by
+  rw [integral, Polynomial.coeff_sum, Polynomial.sum_def]
+  simp
+
+/-- The coefficient law of the antiderivative:
+    `(V g).coeff (n+1) = g.coeff n / (n+1)` for every `n`. -/
+lemma integral_coeff_succ (p : Polynomial ℝ) (n : ℕ) :
+    (integral p).coeff (n + 1) = p.coeff n / (↑n + 1) := by
+  rw [integral, Polynomial.coeff_sum, Polynomial.sum_def]
+  simp_rw [Polynomial.coeff_C_mul_X_pow]
+  have hguard : ∀ x, (if n + 1 = x + 1 then p.coeff x / (↑x + 1) else 0)
+      = if n = x then p.coeff n / (↑n + 1) else 0 := by
+    intro x
+    by_cases hx : x = n
+    · subst x
+      simp
+    · have hn : n ≠ x := by exact fun hn => hx (hn.symm)
+      simp [hn]
+  simp_rw [hguard]
+  rw [Finset.sum_ite_eq]
+  by_cases hn : n ∈ p.support
+  · rw [if_pos hn]
+  · rw [if_neg hn]
+    have hp : p.coeff n = 0 := by
+      rw [Polynomial.mem_support_iff] at hn
+      exact not_not.mp hn
+    simp [hp]
+
+/-- Commutation relation I: `D (V g) = g` — deriving an antiderivative
+    recovers the polynomial exactly.  This is the operator-level
+    `DV = id` on the polynomial model. -/
+theorem derivative_integral (p : Polynomial ℝ) :
+    Polynomial.derivative (integral p) = p := by
+  apply Polynomial.ext
+  intro n
+  rw [Polynomial.coeff_derivative, integral_coeff_succ]
+  have hnz : (↑n + 1 : ℝ) ≠ 0 := by positivity
+  field_simp [hnz]
+
+/-- Commutation relation II: `V (D g) = g − g(0)` — antideriving a
+    derivative returns the original polynomial minus its constant term,
+    i.e. `VD = id − E₀` with evaluation-at-zero `E₀`. -/
+theorem integral_derivative_sub_eval0 (p : Polynomial ℝ) :
+    integral (Polynomial.derivative p) = p - Polynomial.C (p.coeff 0) := by
+  apply Polynomial.ext
+  intro m
+  cases m with
+  | zero =>
+      rw [integral_coeff_zero]
+      simp
+  | succ n =>
+      rw [integral_coeff_succ, Polynomial.coeff_derivative]
+      have hnz : (↑n + 1 : ℝ) ≠ 0 := by positivity
+      field_simp [hnz]
+      simp
+
+/-- The antiderivative is additive: `V (f + g) = V f + V g`. -/
+lemma integral_add (f g : Polynomial ℝ) : integral (f + g) = integral f + integral g := by
+  apply Polynomial.ext
+  intro n
+  cases n with
+  | zero =>
+      simp [integral_coeff_zero]
+  | succ m =>
+      rw [integral_coeff_succ, Polynomial.coeff_add, Polynomial.coeff_add,
+        integral_coeff_succ, integral_coeff_succ]
+      field_simp
+
+/-- The antiderivative is `ℝ`-linear for constant multiples:
+    `V (C a · g) = C a · V g`. -/
+lemma integral_C_mul (a : ℝ) (f : Polynomial ℝ) :
+    integral (Polynomial.C a * f) = Polynomial.C a * integral f := by
+  apply Polynomial.ext
+  intro n
+  cases n with
+  | zero =>
+      simp [integral_coeff_zero]
+  | succ m =>
+      rw [integral_coeff_succ, Polynomial.coeff_C_mul, Polynomial.coeff_C_mul, integral_coeff_succ]
+      field_simp
+
+/-- The derivative is linear for constant multiples on the polynomial
+    model: `D (C c · g) = C c · D g`. -/
+lemma derivative_C_mul (c : ℝ) (f : Polynomial ℝ) :
+    Polynomial.derivative (Polynomial.C c * f) = Polynomial.C c * Polynomial.derivative f := by
+  rw [Polynomial.derivative_mul]
+  simp
+
+/-- The anticommutator defect of the operator pair: with `D = derivative`
+    and `V = integral` on the polynomial model,
+    `D V + V D = 2 id − E₀`, i.e. acting on any g:
+
+    D(V g) + V(D g) = 2 g − g(0).
+
+    This is the exact twist that the eigen-ODE
+    `α f' + β V f = λ f` inherits when the operator is applied twice, and
+    it locates the mass-law bridge at the single point `g(0)`. -/
+theorem anticommutator_defect (p : Polynomial ℝ) :
+    Polynomial.derivative (integral p) + integral (Polynomial.derivative p)
+      = (2 : ℝ) • p - Polynomial.C (p.coeff 0) := by
+  rw [derivative_integral, integral_derivative_sub_eval0]
+  rw [two_smul]
+  ring
+
+/-- The MP operator `A_{α,β} = α D + β V` acting on polynomials. -/
+noncomputable def opA (α β : ℝ) (f : Polynomial ℝ) : Polynomial ℝ :=
+  Polynomial.C α * Polynomial.derivative f + Polynomial.C β * integral f
+
+/-- The composition law of the MP operator on the polynomial model: for
+    every `α, β ∈ ℝ` and every polynomial `g`,
+
+    A_{α,β}² g = α² D² g + αβ(2g − g(0)) + β² V² g.
+
+    The proof unfolds the square, distributes D and V through the sum via
+    the linearity facts, and collapses the two commutation relations —
+    exactly the `2id − E₀` anticommutator of `anticommutator_defect`. -/
+theorem operator_square_commutation_defect (α β : ℝ) (g : Polynomial ℝ) :
+    opA α β (opA α β g)
+      = Polynomial.C (α ^ 2) * Polynomial.derivative (Polynomial.derivative g)
+        + Polynomial.C (α * β) * ((2 : ℝ) • g - Polynomial.C (g.coeff 0))
+        + Polynomial.C (β ^ 2) * integral (integral g) := by
+  unfold opA
+  simp [Polynomial.derivative_add, integral_add, integral_C_mul,
+    derivative_integral, integral_derivative_sub_eval0]
+  rw [two_smul]
+  ring
+
+/-- The composition law at the bridge family `α = 1`, `β = a` — the
+    exact operator form behind the characteristic equation
+    `λ² − (2a+1)λ + a = 0`: squaring the bridge operator sheds the
+    `2a+1`-cross-term `a(2g − g(0))` and the residual `a² V²`. -/
+theorem operator_square_bridge_family (a : ℝ) (g : Polynomial ℝ) :
+    opA 1 a (opA 1 a g)
+      = Polynomial.derivative (Polynomial.derivative g)
+        + Polynomial.C a * ((2 : ℝ) • g - Polynomial.C (g.coeff 0))
+        + Polynomial.C (a ^ 2) * integral (integral g) := by
+  rw [operator_square_commutation_defect 1 a g]
+  simp [Polynomial.C_1]
+
 /-- Spectral-gap theorem: the characteristic polynomial
     `P(r) = r² − (2a+1)r + a` of the bridge eigen-ODE evaluates to exactly
     `−1/4` at `r = 1/2`, independently of the half-window `a`.  Because the

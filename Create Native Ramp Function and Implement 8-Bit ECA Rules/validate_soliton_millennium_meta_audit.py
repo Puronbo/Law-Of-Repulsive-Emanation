@@ -60,7 +60,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 WORKSPACE = ROOT.parent
 PW = WORKSPACE / "PunoCalculus" / "PunoCalculus"
-TWIN_ORIGIN_SHA = "a60fcaee7f1ad2e797219bdb54d1df6600513771"
+TWIN_ORIGIN_SHA = "ca3f4338caa02c075e000e1915b65090ffa6a352"
 TWIN_ORIGIN_URL = "github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof"
 
 
@@ -168,6 +168,14 @@ MPOP = [
     "mirror_quadratic_discriminant_is_bridge",
     "spectral_reciprocal_sum_law",
     "spectral_roots_bracket_explicit",
+    "derivative_integral",
+    "Polynomial.derivative (integral p) = p",
+    "integral_derivative_sub_eval0",
+    "integral (Polynomial.derivative p) = p - Polynomial.C (p.coeff 0)",
+    "anticommutator_defect",
+    "operator_square_commutation_defect",
+    "operator_square_bridge_family",
+    "Polynomial.C (α ^ 2) * Polynomial.derivative (Polynomial.derivative g)",
     "mass_radius_window_lt_tail",
     "(262144 : ℚ) / 65537 < (268435456 : ℚ) / 67108865",
 ]
@@ -198,6 +206,13 @@ DOCPINS = [
     "2 + 1/128",
     "2 + 1/4096",
     "0 < r2 < 1/2 < r1 < 2a+1",
+    "derivative_integral",
+    "D(Vp)=p",
+    "V(Dp)=p-C(p.coeff 0)",
+    "DV+VD=2id-E0",
+    "operator_square_commutation_defect",
+    "A^2 g = a^2 D^2 g + ab(2g-g(0)) + b^2 V^2 g",
+    "operator_square_bridge_family",
     "NOT SETTLED BY THIS",
     "declared NOT SETTLED explicitly",
     "PunoTwin",

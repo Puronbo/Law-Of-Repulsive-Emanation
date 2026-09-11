@@ -2012,7 +2012,7 @@ structural closure for *every* width now lives in mathlib as
 namespace `PunoTwin`, compiles clean with `lake env lean`.  (The
 vendored `PunoCalculus/PunoCalculus/PunoTwin` copies mirror
 `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof @
-a60fcaee7f1ad2e797219bdb54d1df6600513771`, mathlib v4.33.1):
+ca3f4338caa02c075e000e1915b65090ffa6a352`, mathlib v4.33.1):
 
 - `step204_eq`: the rule-204 step is exactly the width-`w` reading
   `sumBits s w := Σ_j (bit s j)·2^j` (via per-cell `center_bit` and an
@@ -2166,6 +2166,22 @@ eigenvalue equation `α f″ − λ f′ + β f = 0` has discriminant `Δ = λ²
     ordering `r₂ < 1/2 < r₁` the full rational bracket
     `0 < r₂ < 1/2 < r₁ < 2a+1` is proved for every `a > 0` (ASCII:
     `0 < r2 < 1/2 < r1 < 2a+1`) — the R55 sign analysis, closed;
+- the Round 60 operator composition law (all `ℝ[X]`, all closed):
+  the MP pair is realized exactly on the polynomial model by
+  `D = Polynomial.derivative` and the antiderivative
+  `V g = Σₙ cₙ xⁿ⁺¹/(n+1)` (`noncomputable def integral`), with
+  `derivative_integral` proving `D(Vp)=p` and
+  `integral_derivative_sub_eval0` proving `V(Dp)=p-C(p.coeff 0)`, so
+  the anticommutator defect `anticommutator_defect` is
+  `DV+VD=2id-E0` (ASCII: `D(Vp)=p`, `V(Dp)=p-C(p.coeff 0)`,
+  `DV+VD=2id-E0`);
+  - `operator_square_commutation_defect`: for every `α, β ∈ ℝ` and
+    polynomial `g`, `A_{α,β}² g = α² D² g + αβ(2g − g(0)) + β² V² g`
+    — the exact composition law, closed by linearity of D and V and the
+    two commutation relations (ASCII form:
+    `A^2 g = a^2 D^2 g + ab(2g-g(0)) + b^2 V^2 g`);
+  - `operator_square_bridge_family`: at `α = 1, β = a` — the operator
+    form behind the characteristic equation `λ² − (2a+1)λ + a = 0`.
 - `mass_radius_window_lt_tail`: `262144/65537 < 268435456/67108865` — the
   mass-radius product rises strictly from window to tail, closing in on the
   ceiling 4.
@@ -2367,6 +2383,25 @@ root ordering `r₂ < 1/2 < r₁`, the sign-analysis window
 `0 < r₂ < 1/2 < r₁ < 2a+1` (ASCII `0 < r2 < 1/2 < r1 < 2a+1`) is proved
 for every `a > 0` — closing, by `field_simp`/`positivity`, what Round 55
 asserted for the polynomial evaluations alone.
+Round 60 lifts the operator pair to the polynomial model
+(`Polynomial ℝ`): `D = Polynomial.derivative` and the exact discrete
+antiderivative `V`, which divides the coefficient of `Xⁿ` by `(n+1)`.
+The two commutation relations are proved by coefficient arithmetic
+(backbone: `integral_coeff_zero`/`integral_coeff_succ` +
+`Finset.sum_ite_eq` + `mem_support_iff`): `derivative_integral` proves
+`D(Vp)=p`, `integral_derivative_sub_eval0` proves `V(Dp)=p-C(p.coeff 0)`
+(ASCII: `D(Vp)=p`, `V(Dp)=p-C(p.coeff 0)`), and therefore
+`anticommutator_defect` gives the twist `DV+VD=2id-E0`
+(ASCII `DV+VD=2id-E0`; E0 is evaluation at zero, `E₀ g = g(0)`).
+Squaring the MP operator `A_{α,β} = αD + βV` then collapses through the
+linearity facts (`integral_add`, `integral_C_mul`, `derivative_C_mul`)
+into `operator_square_commutation_defect`:
+`A_{α,β}² g = α² D² g + αβ(2g − g(0)) + β² V² g`
+(ASCII `A^2 g = a^2 D^2 g + ab(2g-g(0)) + b^2 V^2 g`) — the exact
+operator form behind the characteristic equation `λ² − (2a+1)λ + a = 0`,
+made fully proved in `operator_square_bridge_family` at `α = 1, β = a`.
+Every statement is closed by `ring`/`field_simp`/`positivity`, zero
+`sorry`/`axiom`.
 
 ## Native ramp primitives
 
