@@ -2012,7 +2012,7 @@ structural closure for *every* width now lives in mathlib as
 namespace `PunoTwin`, compiles clean with `lake env lean`.  (The
 vendored `PunoCalculus/PunoCalculus/PunoTwin` copies mirror
 `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof @
-5209c2b7d05e5d1c18bb003855f2747ad991a0d4`, mathlib v4.33.1):
+32ba30c6586b8908551a52572b765ef1628edd05`, mathlib v4.33.1):
 
 - `step204_eq`: the rule-204 step is exactly the width-`w` reading
   `sumBits s w := Σ_j (bit s j)·2^j` (via per-cell `center_bit` and an
@@ -2128,6 +2128,16 @@ eigenvalue equation `α f″ − λ f′ + β f = 0` has discriminant `Δ = λ²
   and `bridge_discriminant_square_squeeze_tail`
   (`67108864 < 67108865 < 67125249`) stating the exact rational
   squeeze at both certified windows;
+- `bridge_discriminant_tight_upper_square` (Round 57): the upper
+  endpoint of the squeeze refines to `2a + 1/(4a)`, whose square exceeds
+  the discriminant by exactly `1/(16a²)` — the tight rational lid
+  `r₁ − r₂ = √Δ < 2a + 1/(4a)`;
+- `bridge_discriminant_tight_upper_square_window` /
+  `_tail`: at `a = 128` the lid is `65537 + 1/262144`, at `a = 4096`
+  `67108865 + 1/268435456` — one part in 2¹⁸ / 2²⁸;
+- `discrim_gap_quarter_scaling`: the gap shrinks by exactly 1/4 when
+  the half-window doubles — the 32× window→tail step (4096 = 32·128)
+  tightens the gap by 2⁻¹⁰;
 - `mass_radius_window_lt_tail`: `262144/65537 < 268435456/67108865` — the
   mass-radius product rises strictly from window to tail, closing in on the
   ceiling 4.
@@ -2297,6 +2307,15 @@ bare-hands statement that `2a < √Δ < 2a+1` (no overt radicand lemma) —
 exactly what pins `0 < r₂ < 1/2 < r₁ < 2a+1`; the window and tail forms
 `65536 < 65537 < 66049` and `67108864 < 67108865 < 67125249` give the
 tightest exact rational brackets at the two certified windows.
+Round 57 adds the tight rational lid on the discriminant interval: the
+upper endpoint of the squeeze refines from `2a+1` to `2a + 1/(4a)`,
+whose square exceeds the discriminant by exactly `1/(16a²)` — bounding
+the spectral shadow `r₁ − r₂ = √Δ < 2a + 1/(4a)`.  At the certified
+windows the lid is exact: `65537 + 1/262144` (a = 128, one part in
+2¹⁸) and `67108865 + 1/268435456` (a = 4096, one part in 2²⁸).
+`discrim_gap_quarter_scaling` certifies the exact law the gap obeys: it
+shrinks by 1/4 per doubling, so the 32× window→tail step (4096 = 32·128)
+tightens the gap by 2⁻¹⁰.
 
 ## Native ramp primitives
 

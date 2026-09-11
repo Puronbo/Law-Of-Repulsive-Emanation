@@ -193,6 +193,39 @@ theorem bridge_discriminant_square_squeeze_tail :
   · norm_num
   · norm_num
 
+/-- Tight rational lid on the discriminant interval: the upper endpoint
+    of the squeeze can be refined from `2a+1` to `2a + 1/(4a)`, whose
+    square exceeds the discriminant Δ = 4a² + 1 by exactly `1/(16a²)`.
+    Symmetric refinement of the spectral-shadow bound
+    `r₁ − r₂ = √Δ < 2a + 1/(4a)` for every `a > 0`. -/
+theorem bridge_discriminant_tight_upper_square (a : ℝ) (ha : 0 < a) :
+    (2 * a + 1 / (4 * a)) ^ 2 = 4 * a ^ 2 + 1 + 1 / (16 * a ^ 2) := by
+  field_simp
+  ring
+
+/-- Window form of the tight lid: at `a = 128`,
+    `(2a + 1/(4a))² = 65537 + 1/262144` — the square of the refined upper
+    endpoint misses the discriminant by exactly one part in 262144. -/
+theorem bridge_discriminant_tight_upper_square_window :
+    (2 * (128 : ℚ) + 1 / (4 * 128)) ^ 2 = 4 * 128 ^ 2 + 1 + 1 / (16 * 128 ^ 2) := by
+  norm_num
+
+/-- Tail form of the tight lid: at `a = 4096`,
+    `(2a + 1/(4a))² = 67108865 + 1/268435456` — refining the tail to one
+    part in 2²⁸. -/
+theorem bridge_discriminant_tight_upper_square_tail :
+    (2 * (4096 : ℚ) + 1 / (4 * 4096)) ^ 2 = 4 * 4096 ^ 2 + 1 + 1 / (16 * 4096 ^ 2) := by
+  norm_num
+
+/-- Exact gap-scaling law: the lid's excess `1/(16a²)` over the
+    discriminant shrinks by the factor 1/4 when the half-window doubles —
+    so a 32× step from window to tail (4096 = 32·128) tightens the gap by
+    2⁻¹⁰, from 1/262144 to 1/268435456. -/
+theorem discrim_gap_quarter_scaling (a : ℝ) (ha : 0 < a) :
+    1 / (16 * (2 * a) ^ 2) = (1 / 4 : ℝ) * 1 / (16 * a ^ 2) := by
+  field_simp
+  ring
+
 /-- Spectral-gap theorem: the characteristic polynomial
     `P(r) = r² − (2a+1)r + a` of the bridge eigen-ODE evaluates to exactly
     `−1/4` at `r = 1/2`, independently of the half-window `a`.  Because the
