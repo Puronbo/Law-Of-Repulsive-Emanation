@@ -5,6 +5,7 @@ import Mathlib.NumberTheory.LSeries.Nonvanishing
 import Mathlib.NumberTheory.Bernoulli
 import Mathlib.Data.Nat.Prime.Defs
 import Mathlib.NumberTheory.LegendreSymbol.ZModChar
+import Mathlib.NumberTheory.SumTwoSquares
 
 open DirichletCharacter HurwitzZeta
 open scoped Real BigOperators
@@ -44,7 +45,12 @@ laws), closed in mathlib with zero `sorry`/`axiom`:
     with instances `5 ↔ 2|k`, `17 ↔ 8|k`, `257 ↔ 128|k`, `65537 ↔ 2^15|k`
     (`vonStaudt_B16`, `spike_law`, `spike_*`);  the `fermat_bridge`
     closes the loop to the MPOperator window denominator: at
-    `a = 2^(2^k−1)`, `1 + 4a² = 2^(2^(k+1)) + 1` (so `a = 128` → `65537`).
+    `a = 2^(2^k−1)`, `1 + 4a² = 2^(2^(k+1)) + 1` (so `a = 128` → `65537`);
+  * **conductor-denominator law**: every prime divisor of the window
+    denominator `1 + 4·a²` is `2` or `≡ 1 mod 4`, i.e. lies in the
+    splitting rule `χ₄(p) = 1` of the conductor-4 character
+    (`prime_divisor_of_denominator_family`, `chi4_splits_of_denominator`,
+    via the two-squares law `ZMod.exists_sq_eq_neg_one_iff`).
 
 Everything below is fully proved.  The remaining — exact transcendental
 identities such as `L(2, χ₋₄) = Catalans' G`, or any claim that the
@@ -347,6 +353,70 @@ lemma spike_65537_prime : Nat.Prime (2 ^ 16 + 1) := by
 /-- The 65537 spike condition: `65537 − 1 = 2^16` divides `2·2^15`. -/
 lemma spike_65537_cond : (2 ^ 16 + 1 - 1) ∣ 2 * 2 ^ 15 := by
   norm_num
+
+/-! ### Conductor-denominator law (the `1+4a²` window and conductor `4`) -/
+
+set_option linter.style.haveILetI false in
+/-- **Conductor-denominator law** (forward): every prime divisor of the
+window-denominator family `1 + 4·a²` is either `2` or `≡ 1 mod 4` —
+i.e. sits in the conductor-4 splitting rule of the character.  From
+`p | 1 + 4a²` one gets `(2a)² ≡ −1 (mod p)`, so `−1` is a square in
+`ZMod p`, and by the two-squares law (`ZMod.exists_sq_eq_neg_one_iff`)
+`p % 4 ≠ 3`, which forces `p = 2 ∨ p % 4 = 1`. -/
+lemma prime_divisor_of_denominator_family (p a : ℕ) (hp : p.Prime) (hd : p ∣ 1 + 4 * a ^ 2) :
+    p = 2 ∨ p % 4 = 1 := by
+  haveI : Fact p.Prime := ⟨hp⟩
+  -- -1 is a square mod p, since (2a)^2 = -1 mod p
+  have hsq : IsSquare (-1 : ZMod p) := by
+    refine ⟨((2 * a : ℕ) : ZMod p), ?_⟩
+    have hc0 : ((1 + 4 * a ^ 2 : ℕ) : ZMod p) = 0 := (ZMod.natCast_eq_zero_iff _ _).mpr hd
+    have hb : ((4 * a ^ 2 : ℕ) : ZMod p) = -1 := by
+      apply eq_neg_of_add_eq_zero_left
+      simpa [Nat.cast_add, add_comm] using hc0
+    rw [← hb]
+    norm_cast
+    ring_nf
+  -- two-squares / Euler: -1 is a square mod p iff p % 4 != 3
+  have h13 : p % 4 ≠ 3 := (ZMod.exists_sq_eq_neg_one_iff (p := p)).mp hsq
+  -- interval-cases the residue
+  have hlt : p % 4 < 4 := Nat.mod_lt p (by norm_num)
+  have hp_eq_two_of_two_dvd : 2 ∣ p → p = 2 := by
+    intro h2dvd
+    exact (Nat.Prime.dvd_iff_eq hp (by norm_num : (2 : ℕ) ≠ 1)).mp h2dvd
+  interval_cases hq : p % 4
+  · left
+    exact hp_eq_two_of_two_dvd <| Nat.dvd_trans (by norm_num : (2 : ℕ) ∣ 4)
+      ((Nat.dvd_iff_mod_eq_zero).mpr hq)
+  · right
+    rfl
+  · left
+    exact hp_eq_two_of_two_dvd ((Nat.dvd_iff_mod_eq_zero).mpr (by omega))
+  · exact (h13 rfl).elim
+
+/-- **Conductor-denominator law, χ₄ form**: for an odd prime divisor `p`
+of a window denominator `1 + 4·a²`, the character takes the splitting
+value `χ₄(p) = 1`. -/
+lemma chi4_splits_of_denominator (p a : ℕ) (hp : p.Prime) (hp2 : p ≠ 2)
+    (hd : p ∣ 1 + 4 * a ^ 2) : χ₄ℂ (p : ZMod 4) = 1 := by
+  rcases prime_divisor_of_denominator_family p a hp hd with rfl | hm
+  · exfalso
+    exact hp2 rfl
+  · have hcast : (p : ZMod 4) = (1 : ZMod 4) := by
+      have htmp : p % 4 = 1 % 4 := by
+        rw [hm]
+      exact (ZMod.natCast_eq_natCast_iff' p 1 4).mpr htmp
+    rw [hcast]
+    norm_num [χ₄ℂ]
+
+/-- Example: the Fermat prime `5` divides the window denominator at
+`a = 1` and satisfies `χ₄(5) = 1`. -/
+example : χ₄ℂ (5 : ZMod 4) = 1 := by
+  exact chi4_splits_of_denominator 5 1 (by decide) (by norm_num) (by norm_num)
+
+/-- Example: the `a = 2` window denominator `17` is `≡ 1 mod 4` and is
+`χ₄`-split. -/
+example : χ₄ℂ (17 : ZMod 4) = 1 := by
+  exact chi4_splits_of_denominator 17 2 (by decide) (by norm_num) (by norm_num)
 
 /-! ### Parity (trivial-zero) law for `χ₄`, `χ₈`, `χ₈'` -/
 
