@@ -54,7 +54,7 @@ Lean   PunoTwin.MPOperator          operator_discriminant_bridge,
 
 Provenance: the PunoTwin twin files mirror the mathlib v4.33.1 origin
 repository github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof at
-commit 7d34ba6fba1014114bc2979cf355d31fa496f21b.  The vendored copies in
+commit fc40cc732c00770a7431d351c3a51ce759200eae.  The vendored copies in
 PunoCalculus/PunoCalculus/PunoTwin and the origin tree must stay
 byte-identical (hash-audited); bumping the mathlib rev in either place
 invalidates the other.
@@ -71,7 +71,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 WORKSPACE = ROOT.parent
 PW = WORKSPACE / "PunoCalculus" / "PunoCalculus"
-TWIN_ORIGIN_SHA = "7d34ba6fba1014114bc2979cf355d31fa496f21b"
+TWIN_ORIGIN_SHA = "fc40cc732c00770a7431d351c3a51ce759200eae"
 TWIN_ORIGIN_URL = "github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof"
 
 
@@ -155,6 +155,8 @@ DIRL = [
     "fermat_bridge",
     "fermat_bridge_window",
     "χ₄ℂ_odd", "χ₈ℂ_even", "χ₈'ℂ_odd",
+    "χ₄𝕃_ne_zero_one", "χ₈𝕃_ne_zero_one", "χ₈'𝕃_ne_zero_one",
+    "riemann_no_zeros_on_boundary",
 ]
 MPOP = [
     "operator_discriminant_bridge",

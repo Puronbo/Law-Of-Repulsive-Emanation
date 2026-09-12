@@ -2012,7 +2012,7 @@ structural closure for *every* width now lives in mathlib as
 namespace `PunoTwin`, compiles clean with `lake env lean`.  (The
 vendored `PunoCalculus/PunoCalculus/PunoTwin` copies mirror
 `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof @
-  7d34ba6fba1014114bc2979cf355d31fa496f21b`, mathlib v4.33.1):
+  fc40cc732c00770a7431d351c3a51ce759200eae`, mathlib v4.33.1):
 
 - `step204_eq`: the rule-204 step is exactly the width-`w` reading
   `sumBits s w := Σ_j (bit s j)·2^j` (via per-cell `center_bit` and an
@@ -2471,6 +2471,11 @@ SETTLED BY THIS PROJECT**; only the mathlib-closed spine is certified:
   (`χ₄ℂ_odd`, `χ₈ℂ_even`, `χ₈'ℂ_odd`), giving the trivial zero laws
   `L(χ₄, negative odd) = 0`, `L(χ₈, negative even) = 0`, and
   `L(χ₈', negative odd) = 0` as examples;
+- **nonvanishing at `s = 1`** — the Dirichlet prime-theorem engine
+  (`χ₄𝕃_ne_zero_one`, `χ₈𝕃_ne_zero_one`, `χ₈'𝕃_ne_zero_one`):
+  `L(1, χ) ≠ 0` for each character, and `L(χ, s) ≠ 0` on the whole
+  boundary `Re s ≥ 1` (`LFunction_ne_zero_of_one_le_re`), plus
+  `riemann_no_zeros_on_boundary`: `ζ(s) ≠ 0` for `Re s ≥ 1`.
 - **von Staudt–Clausen + Fermat-spike lattice**
   (`vonStaudt_B16`, `spike_law`, `spike_5_prime/cond`,
   `spike_17_prime/cond`, `spike_257_prime/cond`,

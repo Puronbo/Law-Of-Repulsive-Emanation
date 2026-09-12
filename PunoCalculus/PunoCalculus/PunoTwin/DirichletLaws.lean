@@ -1,6 +1,7 @@
 import Mathlib.NumberTheory.LSeries.DirichletContinuation
 import Mathlib.NumberTheory.LSeries.HurwitzZetaValues
 import Mathlib.NumberTheory.EulerProduct.DirichletLSeries
+import Mathlib.NumberTheory.LSeries.Nonvanishing
 import Mathlib.NumberTheory.Bernoulli
 import Mathlib.Data.Nat.Prime.Defs
 import Mathlib.NumberTheory.LegendreSymbol.ZModChar
@@ -33,6 +34,11 @@ laws), closed in mathlib with zero `sorry`/`axiom`:
   * **parity (trivial-zero) law**: `L(χ₄, negative odd) = 0`,
     `L(χ₈, negative even) = 0`, `L(χ₈', negative odd) = 0`
     (`χ₄ℂ_odd`, `χ₈ℂ_even`, `χ₈'ℂ_odd` + examples);
+  * **nonvanishing at `s = 1`**: `L(1, χ₄) ≠ 0`, `L(1, χ₈) ≠ 0`,
+    `L(1, χ₈') ≠ 0` and `L(χ, s) ≠ 0` on `Re s ≥ 1` (the Dirichlet
+    prime-theorem engine, `LFunction_apply_one_ne_zero` /
+    `LFunction_ne_zero_of_one_le_re` in mathlib), plus the Riemann
+    boundary law `ζ(s) ≠ 0` on `Re s ≥ 1`;
   * **von Staudt–Clausen**: `B₁₆ + ∑_{p−1 | 16} 1/p` is an integer,
     and the Fermat-spike lattice `p = 2^(2^j)+1 ↔ 2^(2^j−1) | k`
     with instances `5 ↔ 2|k`, `17 ↔ 8|k`, `257 ↔ 128|k`, `65537 ↔ 2^15|k`
@@ -372,5 +378,46 @@ example (n : ℕ) [NeZero n] : LFunction χ₈ℂ (-(2 * n)) = 0 :=
 /-- **Trivial zeros** of `L(χ₈', s)` at all negative odd integers. -/
 example (n : ℕ) : LFunction χ₈'ℂ (-(2 * n) - 1) = 0 :=
   χ₈'ℂ_odd.LFunction_neg_two_mul_nat_sub_one n
+
+/-! ### Nonvanishing at `s = 1` (Dirichlet prime-theorem engine) -/
+
+/-- **`L(1, χ₄) ≠ 0`** — the nonvanishing law that underlies Dirichlet's
+theorem on primes in arithmetic progressions, specialized to `χ₄`
+(`LFunction_apply_one_ne_zero`, mathlib). -/
+lemma χ₄𝕃_ne_zero_one : LFunction χ₄ℂ 1 ≠ 0 :=
+  LFunction_apply_one_ne_zero χ₄ℂ.ne_char_one
+
+/-- **`L(1, χ₈) ≠ 0`** — nonvanishing for `χ₈`. -/
+lemma χ₈𝕃_ne_zero_one : LFunction χ₈ℂ 1 ≠ 0 :=
+  LFunction_apply_one_ne_zero χ₈ℂ.ne_char_one
+
+/-- **`L(1, χ₈') ≠ 0`** — nonvanishing for `χ₈'`. -/
+lemma χ₈'𝕃_ne_zero_one : LFunction χ₈'ℂ 1 ≠ 0 :=
+  LFunction_apply_one_ne_zero χ₈'ℂ.ne_char_one
+
+/-- **Nonvanishing on the critical-strip boundary**: for every character,
+`L(χ, s) ≠ 0` whenever `Re s ≥ 1` and `χ ≠ 1` (or `s ≠ 1`) — the
+`LFunction_ne_zero_of_one_le_re` law of mathlib, stated here for the
+concrete `χ₄`, `χ₈`, `χ₈'`. -/
+example {s : ℂ} (hs : 1 ≤ s.re) : LFunction χ₄ℂ s ≠ 0 :=
+  LFunction_ne_zero_of_one_le_re (χ := χ₄ℂ) (by
+    left
+    exact χ₄ℂ.ne_char_one) hs
+
+example {s : ℂ} (hs : 1 ≤ s.re) : LFunction χ₈ℂ s ≠ 0 :=
+  LFunction_ne_zero_of_one_le_re (χ := χ₈ℂ) (by
+    left
+    exact χ₈ℂ.ne_char_one) hs
+
+example {s : ℂ} (hs : 1 ≤ s.re) : LFunction χ₈'ℂ s ≠ 0 :=
+  LFunction_ne_zero_of_one_le_re (χ := χ₈'ℂ) (by
+    left
+    exact χ₈'ℂ.ne_char_one) hs
+
+/-- **Riemann ζ has no zeros on `Re s ≥ 1`** (mathlib
+`riemannZeta_ne_zero_of_one_le_re`), the boundary of the prime-number
+theorem. -/
+lemma riemann_no_zeros_on_boundary (s : ℂ) (hs : 1 ≤ s.re) : riemannZeta s ≠ 0 :=
+  riemannZeta_ne_zero_of_one_le_re hs
 
 end PunoTwin.Dirichlet
