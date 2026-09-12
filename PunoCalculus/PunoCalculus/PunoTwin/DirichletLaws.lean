@@ -48,9 +48,13 @@ laws), closed in mathlib with zero `sorry`/`axiom`:
     `a = 2^(2^k−1)`, `1 + 4a² = 2^(2^(k+1)) + 1` (so `a = 128` → `65537`);
   * **conductor-denominator law**: every prime divisor of the window
     denominator `1 + 4·a²` is `2` or `≡ 1 mod 4`, i.e. lies in the
-    splitting rule `χ₄(p) = 1` of the conductor-4 character
-    (`prime_divisor_of_denominator_family`, `chi4_splits_of_denominator`,
-    via the two-squares law `ZMod.exists_sq_eq_neg_one_iff`).
+    splitting rule `χ₄(p) = 1` of the conductor-4 character, and the
+    converse — every prime `p ≡ 1 mod 4` divides some `1 + 4·a²` — so
+    the odd primes dividing the window denominators are *exactly* the
+    `p ≡ 1 mod 4` primes (`prime_divisor_of_denominator_family`,
+    `denominator_exists_of_four_mod_one`, `prime_divides_denominator_iff`,
+    `chi4_splits_of_denominator`, via the two-squares law
+    `ZMod.exists_sq_eq_neg_one_iff`).
 
 Everything below is fully proved.  The remaining — exact transcendental
 identities such as `L(2, χ₋₄) = Catalans' G`, or any claim that the
@@ -417,6 +421,66 @@ example : χ₄ℂ (5 : ZMod 4) = 1 := by
 `χ₄`-split. -/
 example : χ₄ℂ (17 : ZMod 4) = 1 := by
   exact chi4_splits_of_denominator 17 2 (by decide) (by norm_num) (by norm_num)
+
+set_option linter.style.haveILetI false in
+/-- **Conductor-denominator law** (converse): every prime `p ≡ 1 mod 4`
+divides some window denominator `1 + 4·a²` — since `−1` is a square in
+`ZMod p`, take `a` to be the root divided by `2`. -/
+lemma denominator_exists_of_four_mod_one (p : ℕ) (hp : p.Prime) (hp1 : p % 4 = 1) :
+    ∃ a : ℕ, p ∣ 1 + 4 * a ^ 2 := by
+  haveI : Fact p.Prime := ⟨hp⟩
+  have hp2 : p ≠ 2 := by omega
+  have h2ne : (2 : ZMod p) ≠ 0 := by
+    intro hz
+    have hd : p ∣ 2 := (ZMod.natCast_eq_zero_iff 2 p).mp hz
+    have heq : p = 2 := (Nat.prime_dvd_prime_iff_eq hp Nat.prime_two).mp hd
+    exact hp2 heq
+  have h13 : p % 4 ≠ 3 := by
+    rw [hp1]
+    norm_num
+  have hsq : IsSquare (-1 : ZMod p) := (ZMod.exists_sq_eq_neg_one_iff (p := p)).mpr h13
+  rcases hsq with ⟨y, hy⟩
+  let a : ℕ := (y * (2 : ZMod p)⁻¹).val
+  refine ⟨a, ?_⟩
+  have hcast : (a : ZMod p) = y * (2 : ZMod p)⁻¹ := by
+    dsimp [a]
+    exact ZMod.natCast_zmod_val (y * (2 : ZMod p)⁻¹)
+  have h2a : (2 : ZMod p) * (a : ZMod p) = y := by
+    rw [hcast]
+    calc
+      (2 : ZMod p) * (y * (2 : ZMod p)⁻¹) = y * ((2 : ZMod p) * (2 : ZMod p)⁻¹) := by ring
+      _ = y := by rw [mul_inv_cancel₀ h2ne, mul_one]
+  have hsq2 : (2 * (a : ZMod p)) ^ 2 = -1 := by
+    rw [h2a]
+    simpa [pow_two] using hy.symm
+  have hconn : ((4 * a ^ 2 : ℕ) : ZMod p) = (2 * (a : ZMod p)) ^ 2 := by
+    simp [show 4 * a ^ 2 = (2 * a) ^ 2 by ring]
+  have hsq2_aln : ((4 * a ^ 2 : ℕ) : ZMod p) = -1 := by
+    rw [hconn]
+    exact hsq2
+  have hzmod : ((1 + 4 * a ^ 2 : ℕ) : ZMod p) = 0 := by
+    rw [Nat.cast_add]
+    rw [hsq2_aln]
+    norm_num
+  exact (ZMod.natCast_eq_zero_iff (1 + 4 * a ^ 2) p).mp hzmod
+
+/-- **Conductor-denominator law** (full iff): an odd prime divides a window
+denominator `1 + 4·a²` iff `p ≡ 1 mod 4`. -/
+lemma prime_divides_denominator_iff (p : ℕ) (hp : p.Prime) (hp2 : p ≠ 2) :
+    (∃ a : ℕ, p ∣ 1 + 4 * a ^ 2) ↔ p % 4 = 1 := by
+  constructor
+  · rintro ⟨a, hd⟩
+    rcases prime_divisor_of_denominator_family p a hp hd with hp2' | hm
+    · exfalso
+      exact hp2 hp2'
+    · exact hm
+  · intro hm
+    exact denominator_exists_of_four_mod_one p hp hm
+
+/-- Example: `13 ≡ 1 mod 4`, and indeed `13` divides the window denominator
+at `a = 4` since `13 | 65 = 1 + 4·4²`. -/
+example : 13 ∣ 1 + 4 * 4 ^ 2 := by
+  norm_num
 
 /-! ### Parity (trivial-zero) law for `χ₄`, `χ₈`, `χ₈'` -/
 

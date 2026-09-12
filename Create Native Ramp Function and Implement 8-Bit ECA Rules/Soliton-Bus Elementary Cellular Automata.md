@@ -2012,7 +2012,7 @@ structural closure for *every* width now lives in mathlib as
 namespace `PunoTwin`, compiles clean with `lake env lean`.  (The
 vendored `PunoCalculus/PunoCalculus/PunoTwin` copies mirror
 `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof @
-  `1f2b998f40222c2a2f425cdd61e338ee3fa2dbe7`, mathlib v4.33.1):
+  `6981ce4c89eaf30b521b214f847d2dc3f9778de0`, mathlib v4.33.1):
 
 - `step204_eq`: the rule-204 step is exactly the width-`w` reading
   `sumBits s w := Σ_j (bit s j)·2^j` (via per-cell `center_bit` and an
@@ -2495,9 +2495,13 @@ SETTLED BY THIS PROJECT**; only the mathlib-closed spine is certified:
   `≡ 1 mod 4` — from `p | 1 + 4a²` one gets `(2a)² ≡ −1 (mod p)`, so
   `−1` is a square in `ZMod p`, and by the two-squares law
   (`ZMod.exists_sq_eq_neg_one_iff`) `p % 4 ≠ 3`, forcing the splitting
-  value `χ₄(p) = 1`.  This ties the `MPOperator` denominator family
-  (whose Fermat members `5, 17, 257, 65537` all satisfy it) to the
-  conductor-4 character law.
+  value `χ₄(p) = 1`.  The converse
+  (`denominator_exists_of_four_mod_one`, `prime_divides_denominator_iff`)
+  shows every prime `p ≡ 1 mod 4` divides some `1 + 4·a²` (the square
+  root of `−1` divided by `2`), so the odd primes dividing the window
+  denominators are *exactly* the `p ≡ 1 mod 4` primes.  This ties the
+  `MPOperator` denominator family (whose Fermat members
+  `5, 17, 257, 65537` all satisfy it) to the conductor-4 character law.
 
 No Millennium problem is asserted settled; the exact transcendental
 identities (e.g. `L(2,χ₋₄) = G`) and the universality claims stay
