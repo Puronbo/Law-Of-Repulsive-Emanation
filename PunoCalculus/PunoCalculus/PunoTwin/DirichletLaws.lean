@@ -35,8 +35,10 @@ laws), closed in mathlib with zero `sorry`/`axiom`:
     (`χ₄ℂ_odd`, `χ₈ℂ_even`, `χ₈'ℂ_odd` + examples);
   * **von Staudt–Clausen**: `B₁₆ + ∑_{p−1 | 16} 1/p` is an integer,
     and the Fermat-spike lattice `p = 2^(2^j)+1 ↔ 2^(2^j−1) | k`
-    with instances `5 ↔ 2|k`, `17 ↔ 8|k`, `257 ↔ 128|k`
-    (`vonStaudt_B16`, `spike_law`, `spike_*`).
+    with instances `5 ↔ 2|k`, `17 ↔ 8|k`, `257 ↔ 128|k`, `65537 ↔ 2^15|k`
+    (`vonStaudt_B16`, `spike_law`, `spike_*`);  the `fermat_bridge`
+    closes the loop to the MPOperator window denominator: at
+    `a = 2^(2^k−1)`, `1 + 4a² = 2^(2^(k+1)) + 1` (so `a = 128` → `65537`).
 
 Everything below is fully proved.  The remaining — exact transcendental
 identities such as `L(2, χ₋₄) = Catalans' G`, or any claim that the
@@ -310,6 +312,35 @@ lemma spike_law (j : ℕ) : (2 ^ (2 ^ j) + 1 - 1 : ℕ) ∣ 2 * 2 ^ (2 ^ j - 1) 
   have hsucc : (2 ^ j - 1) + 1 = 2 ^ j := Nat.succ_pred_eq_of_pos hpos
   rw [← hsucc, pow_succ, mul_comm]
   exact dvd_rfl
+
+/-- **Bridge to the MPOperator Fermat denominators** (R57–60 window motif):
+at `a = 2^(2^k−1)` the window denominator `1 + 4·a²` is exactly the
+`(k+1)`-th Fermat number `2^(2^(k+1)) + 1`.  Instances: `a = 2` → `17`,
+`a = 8` → `257`, `a = 128` → `65537`. -/
+lemma fermat_bridge (k : ℕ) :
+    1 + 4 * (2 ^ (2 ^ k - 1)) ^ 2 = 2 ^ (2 ^ (k + 1)) + 1 := by
+  rw [show (4 : ℕ) = 2 ^ 2 by norm_num]
+  rw [← pow_mul]
+  rw [← pow_add]
+  have hsum : 2 + (2 ^ k - 1) * 2 = 2 ^ (k + 1) := by
+    rw [pow_succ]
+    have hpos : 0 < 2 ^ k := pow_pos (by norm_num) k
+    omega
+  rw [hsum]
+  omega
+
+/-- The `k=3` instance: `a = 128` gives the window denominator `65537`. -/
+lemma fermat_bridge_window :
+    1 + 4 * (2 ^ (2 ^ 3 - 1)) ^ 2 = 2 ^ (2 ^ 4) + 1 :=
+  fermat_bridge 3
+
+/-- `65537 = 2^16 + 1` is prime (the `a = 128` window denominator). -/
+lemma spike_65537_prime : Nat.Prime (2 ^ 16 + 1) := by
+  native_decide
+
+/-- The 65537 spike condition: `65537 − 1 = 2^16` divides `2·2^15`. -/
+lemma spike_65537_cond : (2 ^ 16 + 1 - 1) ∣ 2 * 2 ^ 15 := by
+  norm_num
 
 /-! ### Parity (trivial-zero) law for `χ₄`, `χ₈`, `χ₈'` -/
 
