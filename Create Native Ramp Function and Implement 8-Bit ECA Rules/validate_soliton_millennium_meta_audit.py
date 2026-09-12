@@ -40,6 +40,12 @@ Lean   PunoTwin.MPOperator          operator_discriminant_bridge,
             native_decide)              two_pow_odd_mod_three,
                                           spine_reaches_one,
                                           reverse_tree_levels
+    Lean   PunoTwin.DirichletLaws       center_symmetry, eulerProduct_tprod,
+           (mathlib v4.33.1)            zeta_neg_nat, χ₄ℂ.conductor_eq_four,
+                                          χ₈ℂ.conductor_eq_eight,
+                                          χ₈'ℂ.conductor_eq_eight,
+                                          vonStaudt_B16, spike_law,
+                                          χ₄ℂ_odd, χ₈ℂ_even, χ₈'ℂ_odd
     py     validate_..._closed_forms    exact rational 2048/65537,
                                           65536/67108865
     md     Soliton-Bus ... .md          "86 root validators", the
@@ -48,7 +54,7 @@ Lean   PunoTwin.MPOperator          operator_discriminant_bridge,
 
 Provenance: the PunoTwin twin files mirror the mathlib v4.33.1 origin
 repository github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof at
-commit a60fcaee7f1ad2e797219bdb54d1df6600513771.  The vendored copies in
+commit b7c03f49839e95d4c658374b8a90e7d7b45d9277.  The vendored copies in
 PunoCalculus/PunoCalculus/PunoTwin and the origin tree must stay
 byte-identical (hash-audited); bumping the mathlib rev in either place
 invalidates the other.
@@ -65,7 +71,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 WORKSPACE = ROOT.parent
 PW = WORKSPACE / "PunoCalculus" / "PunoCalculus"
-TWIN_ORIGIN_SHA = "45956524bcf59e55953823d01b758f067353e52c"
+TWIN_ORIGIN_SHA = "b7c03f49839e95d4c658374b8a90e7d7b45d9277"
 TWIN_ORIGIN_URL = "github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof"
 
 
@@ -130,6 +136,22 @@ COLLATZ = [
     "(2 ^ (2 * j + 1)) % 3 = 2",
     "reverse_tree_levels",
     "L5: 5,32 | L6: 10,64 | L7: 3,20,21,128",
+]
+DIRL = [
+    "center_symmetry",
+    "eulerProduct_tprod",
+    "zeta_neg_nat",
+    "riemannZeta_neg_nat_eq_bernoulli k",
+    "lemma conductor_eq_four : χ₄ℂ.conductor = 4",
+    "lemma conductor_eq_eight : χ₈ℂ.conductor = 8",
+    "lemma conductor_eq_eight : χ₈'ℂ.conductor = 8",
+    "vonStaudt_B16",
+    "bernoulli 16 + ∑ p",
+    "spike_law",
+    "spike_5_prime", "spike_5_cond",
+    "spike_17_prime", "spike_17_cond",
+    "spike_257_prime", "spike_257_cond",
+    "χ₄ℂ_odd", "χ₈ℂ_even", "χ₈'ℂ_odd",
 ]
 MPOP = [
     "operator_discriminant_bridge",
@@ -244,6 +266,11 @@ DOCPINS = [
     "NOT SETTLED BY THIS",
     "declared NOT SETTLED explicitly",
     "PunoTwin",
+    "DirichletLaws",
+    "center_symmetry",
+    "spike_law",
+    "vonStaudt",
+    "χ₄ℂ_odd",
     TWIN_ORIGIN_SHA,
     TWIN_ORIGIN_URL,
 ]
@@ -279,6 +306,8 @@ _check("MPOperator carries the operator-discriminant bridge theorems",
        _grep(MW / "MPOperator.lean", MPOP))
 _check("CollatzReach carries the closed-form spine laws and the reverse-tree census",
        _grep(MW / "CollatzReach.lean", COLLATZ))
+_check("DirichletLaws carries the L-function laws, primitive χ's, parity law and spike lattice",
+       _grep(MW / "DirichletLaws.lean", DIRL))
 _check("the docs pin the suite count and the certified rationals",
        _grep(DOC, DOCPINS))
 _check("on-disk validator count matches the prose-pinned count",
@@ -291,8 +320,9 @@ for name, path in [("EcaIsometry.lean", PW / "EcaIsometry.lean"),
                    ("MillenniumBridge.lean", PW / "MillenniumBridge.lean"),
                    ("TwinAnalyticLaws.lean", MW / "TwinAnalyticLaws.lean"),
                    ("TwinRingLaws.lean", MW / "TwinRingLaws.lean"),
-                   ("MPOperator.lean", MW / "MPOperator.lean"),
-                   ("CollatzReach.lean", MW / "CollatzReach.lean")]:
+("MPOperator.lean", MW / "MPOperator.lean"),
+                    ("CollatzReach.lean", MW / "CollatzReach.lean"),
+                    ("DirichletLaws.lean", MW / "DirichletLaws.lean")]:
     text = path.read_text(encoding="utf-8", errors="ignore").lower()
     hits = [s for s in ("is solved", "is settled", "proves ", "proved:",
                         "are settled") if re.search(r"\b" + re.escape(s),

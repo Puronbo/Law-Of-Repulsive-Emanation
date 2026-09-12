@@ -2012,7 +2012,7 @@ structural closure for *every* width now lives in mathlib as
 namespace `PunoTwin`, compiles clean with `lake env lean`.  (The
 vendored `PunoCalculus/PunoCalculus/PunoTwin` copies mirror
 `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof @
-45956524bcf59e55953823d01b758f067353e52c`, mathlib v4.33.1):
+  b7c03f49839e95d4c658374b8a90e7d7b45d9277`, mathlib v4.33.1):
 
 - `step204_eq`: the rule-204 step is exactly the width-`w` reading
   `sumBits s w := Σ_j (bit s j)·2^j` (via per-cell `center_bit` and an
@@ -2447,6 +2447,41 @@ reverse-tree census L1..L7 by computation (`native_decide`):
 *every* positive integer lies in the tree rooted at 1 — remains
 **NOT SETTLED BY THIS PROJECT**; only the spine family, the step
 identities, and the finite L1..L7 corridors are certified here.
+
+Round 62 adds the **provable spine of the Dirichlet L-function laws**
+(`PunoTwin.DirichletLaws`, mathlib `v4.33.1`, zero-unproved).  The
+L-function half-plane universality claims of Project Puno remain **NOT
+SETTLED BY THIS PROJECT**; only the mathlib-closed spine is certified:
+
+- **functional equation at `s = 1/2`** for every primitive `χ`:
+  `center_symmetry` gives `Λ(χ,1/2) = rootNumber χ · Λ(χ⁻¹,1/2)`
+  (via mathlib's `IsPrimitive.completedLFunction_one_sub`);
+- **Euler product** (`eulerProduct_tprod`): the Dirichlet series
+  `L(s,χ)` splits as `∏ₚ (1 − χ(p) p^{−s})⁻¹` on the convergent
+  half-plane;
+- **special values at negative integers** (`zeta_neg_nat`):
+  `ζ(−k) = (−1)ᵏ·Bₖ₊₁/(k+1)` — examples `ζ(−4) = B₅/5` and
+  `ζ(2) = π²/6`;
+- **concrete primitive quadratic characters**: `χ₄`, `χ₈`, `χ₈'`
+  (from `ZMod.χ₄/χ₈/χ₈'`, lifted to `ℂ`) are proved primitive —
+  `χ₄ℂ.conductor_eq_four`, `χ₈ℂ.conductor_eq_eight`,
+  `χ₈'ℂ.conductor_eq_eight` — so `center_symmetry` applies at `1/2`
+  for each;
+- **parity (trivial-zero) law**: `χ₄` and `χ₈'` are odd, `χ₈` even
+  (`χ₄ℂ_odd`, `χ₈ℂ_even`, `χ₈'ℂ_odd`), giving the trivial zero laws
+  `L(χ₄, negative odd) = 0`, `L(χ₈, negative even) = 0`, and
+  `L(χ₈', negative odd) = 0` as examples;
+- **von Staudt–Clausen + Fermat-spike lattice**
+  (`vonStaudt_B16`, `spike_law`, `spike_5_prime/cond`,
+  `spike_17_prime/cond`, `spike_257_prime/cond`): `B₁₆ +
+  ∑_{p−1|16} 1/p ∈ ℤ`, and the spike lattice `p = 2^(2^j)+1`
+  spikes in `B_{2k}` exactly when `2^(2^j−1) | k` — the instances
+  `5 ↔ 2|k`, `17 ↔ 8|k`, `257 ↔ 128|k` are the Bernoulli-side echo
+  of the Fermat denominators `1+4a²` certified in `MPOperator.lean`.
+
+No Millennium problem is asserted settled; the exact transcendental
+identities (e.g. `L(2,χ₋₄) = G`) and the universality claims stay
+outside the certified core, pinned here as register context only.
 
 ## Native ramp primitives
 
