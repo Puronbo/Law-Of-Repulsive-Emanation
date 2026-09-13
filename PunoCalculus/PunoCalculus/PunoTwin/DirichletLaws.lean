@@ -59,7 +59,10 @@ laws), closed in mathlib with zero `sorry`/`axiom`:
     `∃ a, p | 1 + 4·a² ⟺ χ₄(p) = 1` (`chi4_apply_eq_one_iff`,
     `chi4_splits_iff_denominator`) — a prime divides a window denominator
     iff smooth von Staudt–Clausen revision leaves the Fermat prime
-    `χ₄`-split, tying the smooth-lattice spike and the conductor-4 law.
+    `χ₄`-split, tying the smooth-lattice spike and the conductor-4 law;
+  * **Gauss sum and root number**: the `χ₄` Gauss sum evaluates to `2i`
+    (`chi4_gaussSum`), and the epsilon factor is `rootNumber χ₄ = 1`
+    (`chi4_rootNumber`), closing the conductor-4 character register.
 
 Everything below is fully proved.  The remaining — exact transcendental
 identities such as `L(2, χ₋₄) = Catalans' G`, or any claim that the
@@ -116,6 +119,9 @@ namespace χ₄ℂ
 
 lemma apply_one : χ₄ℂ 1 = 1 := by norm_num [χ₄ℂ]
 lemma apply_three : χ₄ℂ 3 = -1 := by norm_num [χ₄ℂ]
+
+lemma apply_zero : χ₄ℂ 0 = 0 := by norm_num [χ₄ℂ]
+lemma apply_two : χ₄ℂ 2 = 0 := by norm_num [χ₄ℂ]
 
 lemma ne_char_one : χ₄ℂ ≠ 1 := by
   intro h
@@ -593,6 +599,86 @@ example (n : ℕ) [NeZero n] : LFunction χ₈ℂ (-(2 * n)) = 0 :=
 /-- **Trivial zeros** of `L(χ₈', s)` at all negative odd integers. -/
 example (n : ℕ) : LFunction χ₈'ℂ (-(2 * n) - 1) = 0 :=
   χ₈'ℂ_odd.LFunction_neg_two_mul_nat_sub_one n
+
+/-! ### Gauss sum and root number of `χ₄` -/
+
+@[simp] lemma chi4_stdAddChar_zero : ZMod.stdAddChar (0 : ZMod 4) = 1 := by
+  change ZMod.stdAddChar ((0 : ℤ) : ZMod 4) = 1
+  rw [ZMod.stdAddChar_coe (0 : ℤ)]
+  norm_num [Complex.exp_zero]
+
+@[simp] lemma chi4_stdAddChar_one : ZMod.stdAddChar (1 : ZMod 4) = Complex.I := by
+  change ZMod.stdAddChar ((1 : ℤ) : ZMod 4) = Complex.I
+  rw [ZMod.stdAddChar_coe (1 : ℤ)]
+  have h₁ : (2 * π * Complex.I * (1 : ℤ) / ((4 : ℕ) : ℂ) : ℂ) = π / 2 * Complex.I := by ring_nf
+  rw [h₁, Complex.exp_pi_div_two_mul_I]
+
+@[simp] lemma chi4_stdAddChar_two : ZMod.stdAddChar (2 : ZMod 4) = -1 := by
+  change ZMod.stdAddChar ((2 : ℤ) : ZMod 4) = -1
+  rw [ZMod.stdAddChar_coe (2 : ℤ)]
+  have h₂ : (2 * π * Complex.I * (2 : ℤ) / ((4 : ℕ) : ℂ) : ℂ) = π * Complex.I := by ring_nf
+  rw [h₂, Complex.exp_pi_mul_I]
+
+@[simp] lemma chi4_stdAddChar_three : ZMod.stdAddChar (3 : ZMod 4) = -Complex.I := by
+  change ZMod.stdAddChar ((3 : ℤ) : ZMod 4) = -Complex.I
+  rw [ZMod.stdAddChar_coe (3 : ℤ)]
+  have h₃ : (2 * π * Complex.I * (3 : ℤ) / ((4 : ℕ) : ℂ) : ℂ) = -π / 2 * Complex.I + 2 * π * Complex.I := by ring_nf
+  rw [h₃, Complex.exp_add, Complex.exp_neg_pi_div_two_mul_I, Complex.exp_two_pi_mul_I]
+  norm_num
+
+lemma zmod4_sum_fin (f : Fin 4 → ℂ) : (∑ i : Fin 4, f i) = f 0 + f 1 + f 2 + f 3 := by
+  simp [Fin.sum_univ_four]
+
+lemma sigma_zmod4 (f : ZMod 4 → ℂ) : (∑ k : ZMod 4, f k) = f 0 + f 1 + f 2 + f 3 := by
+  calc
+    (∑ k : ZMod 4, f k) = (∑ i : Fin 4, f i) := by rfl
+    _ = f 0 + f 1 + f 2 + f 3 := by
+      rw [zmod4_sum_fin (fun i : Fin 4 => f i)]
+      rfl
+
+/-- The `χ₄` **Gauss sum**: `∑ₐ χ₄(a) e^{2πia/4} = 2i`. -/
+lemma chi4_gaussSum : gaussSum χ₄ℂ ZMod.stdAddChar = 2 * Complex.I := by
+  calc
+    gaussSum χ₄ℂ ZMod.stdAddChar = (∑ k : ZMod 4, χ₄ℂ k * ZMod.stdAddChar k) := by rfl
+    _ = (χ₄ℂ 0 * ZMod.stdAddChar 0 + χ₄ℂ 1 * ZMod.stdAddChar 1 +
+          χ₄ℂ 2 * ZMod.stdAddChar 2 + χ₄ℂ 3 * ZMod.stdAddChar 3) := by
+      exact sigma_zmod4 (fun k : ZMod 4 => χ₄ℂ k * ZMod.stdAddChar k)
+    _ = 2 * Complex.I := by
+      rw [χ₄ℂ.apply_zero, chi4_stdAddChar_zero, χ₄ℂ.apply_one, chi4_stdAddChar_one,
+        χ₄ℂ.apply_two, chi4_stdAddChar_two, χ₄ℂ.apply_three, chi4_stdAddChar_three]
+      ring
+
+set_option linter.style.haveILetI false in
+/-- **`4 ^ (1/2) = 2`** — the principal complex square root appearing in
+the root-number factor. -/
+lemma chi4_sqrt : ((4 : ℕ) : ℂ) ^ (1 / 2 : ℂ) = 2 := by
+  rw [Complex.cpow_def]
+  have h40 : ((4 : ℕ) : ℂ) ≠ 0 := by norm_num
+  rw [if_neg h40]
+  rw [show ((4 : ℕ) : ℂ) = ((4 : ℝ) : ℂ) by norm_num]
+  rw [(Complex.ofReal_log (by norm_num : (0 : ℝ) ≤ 4)).symm]
+  have hrlog : Real.log 4 = 2 * Real.log 2 := by
+    rw [show (4 : ℝ) = 2 ^ 2 by norm_num]
+    rw [Real.log_pow]
+    norm_num
+  rw [hrlog]
+  have hc : (↑(2 * Real.log 2 : ℝ) : ℂ) * (1 / 2 : ℂ) = (Real.log 2 : ℂ) := by
+    push_cast
+    ring
+  rw [hc]
+  have hlog2 : Complex.exp (↑(Real.log 2) : ℂ) = 2 := by
+    rw [← Complex.ofReal_exp, Real.exp_log (by norm_num : (0 : ℝ) < 2)]
+    norm_num
+  rw [hlog2]
+
+/-- **Root number of `χ₄`**: `rootNumber χ₄ = 1`. -/
+lemma chi4_rootNumber : rootNumber χ₄ℂ = 1 := by
+  rw [DirichletCharacter.rootNumber]
+  rw [chi4_gaussSum]
+  rw [if_neg]
+  · rw [chi4_sqrt]
+    norm_num [pow_one]
+  · exact χ₄ℂ_odd.not_even
 
 /-! ### Nonvanishing at `s = 1` (Dirichlet prime-theorem engine) -/
 

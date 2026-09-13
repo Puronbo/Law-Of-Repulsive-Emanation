@@ -2012,7 +2012,7 @@ structural closure for *every* width now lives in mathlib as
 namespace `PunoTwin`, compiles clean with `lake env lean`.  (The
 vendored `PunoCalculus/PunoCalculus/PunoTwin` copies mirror
 `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof @
-  `6afd942d620104c98467802f5ac5218e283cfce2`, mathlib v4.33.1):
+  `aa40c0fec4d1c09bcb00ecef401ee4001451fdb3`, mathlib v4.33.1):
 
 - `step204_eq`: the rule-204 step is exactly the width-`w` reading
   `sumBits s w := Σ_j (bit s j)·2^j` (via per-cell `center_bit` and an
@@ -2512,6 +2512,17 @@ SETTLED BY THIS PROJECT**; only the mathlib-closed spine is certified:
   (`chi4_apply_eq_one_iff`, `chi4_splits_iff_denominator`): the value
   of the lifted character `χ₄ℂ` on `p : ℤ/4` is `1` exactly when
   `p ≡ 1 mod 4` (mathlib's `ZMod.χ₄_nat_eq_if_mod_four`).
+- **Gauss sum and root number of `χ₄`**
+  (`chi4_gaussSum`, `chi4_rootNumber`): the four values of
+  `ZMod.stdAddChar` on `ℤ/4` are `1, i, −1, −i`
+  (`chi4_stdAddChar_zero/one/two/three`, via the rotation table
+  `exp(πi/2) = i`, `exp(πi) = −1`, `exp(3πi/2) = −i`), so the Gauss
+  sum `∑ₐ χ₄(a)·e^{2πia/4} = 2i` (`chi4_gaussSum`, using the 4-element
+  sum bridge over `ℤ/4`), the principal square root `4^{1/2} = 2`
+  (`chi4_sqrt`, via the complex-power/log path), and therefore — for
+  the odd character `χ₄` — the epsilon factor is
+  `rootNumber χ₄ = 1` (`chi4_rootNumber`), closing the character
+  register alongside `center_symmetry` at `s = 1/2`.
 
 No Millennium problem is asserted settled; the exact transcendental
 identities (e.g. `L(2,χ₋₄) = G`) and the universality claims stay
