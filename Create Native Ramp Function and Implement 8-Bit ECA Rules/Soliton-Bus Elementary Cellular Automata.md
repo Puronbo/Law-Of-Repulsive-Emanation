@@ -2012,7 +2012,7 @@ structural closure for *every* width now lives in mathlib as
 namespace `PunoTwin`, compiles clean with `lake env lean`.  (The
 vendored `PunoCalculus/PunoCalculus/PunoTwin` copies mirror
 `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof @
-  `6981ce4c89eaf30b521b214f847d2dc3f9778de0`, mathlib v4.33.1):
+  `710281e727a8b38a6e6be5e92a4d50edc7c94d0b`, mathlib v4.33.1):
 
 - `step204_eq`: the rule-204 step is exactly the width-`w` reading
   `sumBits s w := Σ_j (bit s j)·2^j` (via per-cell `center_bit` and an
@@ -2502,6 +2502,11 @@ SETTLED BY THIS PROJECT**; only the mathlib-closed spine is certified:
   denominators are *exactly* the `p ≡ 1 mod 4` primes.  This ties the
   `MPOperator` denominator family (whose Fermat members
   `5, 17, 257, 65537` all satisfy it) to the conductor-4 character law.
+  In the character register the same lattice is
+  `∃ a, p | 1+4·a² ⟺ χ₄(p) = 1`
+  (`chi4_apply_eq_one_iff`, `chi4_splits_iff_denominator`): the value
+  of the lifted character `χ₄ℂ` on `p : ℤ/4` is `1` exactly when
+  `p ≡ 1 mod 4` (mathlib's `ZMod.χ₄_nat_eq_if_mod_four`).
 
 No Millennium problem is asserted settled; the exact transcendental
 identities (e.g. `L(2,χ₋₄) = G`) and the universality claims stay

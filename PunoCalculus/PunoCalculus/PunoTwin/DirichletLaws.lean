@@ -54,7 +54,11 @@ laws), closed in mathlib with zero `sorry`/`axiom`:
     `p ≡ 1 mod 4` primes (`prime_divisor_of_denominator_family`,
     `denominator_exists_of_four_mod_one`, `prime_divides_denominator_iff`,
     `chi4_splits_of_denominator`, via the two-squares law
-    `ZMod.exists_sq_eq_neg_one_iff`).
+    `ZMod.exists_sq_eq_neg_one_iff`);  stated in the character register,
+    `∃ a, p | 1 + 4·a² ⟺ χ₄(p) = 1` (`chi4_apply_eq_one_iff`,
+    `chi4_splits_iff_denominator`) — a prime divides a window denominator
+    iff smooth von Staudt–Clausen revision leaves the Fermat prime
+    `χ₄`-split, tying the smooth-lattice spike and the conductor-4 law.
 
 Everything below is fully proved.  The remaining — exact transcendental
 identities such as `L(2, χ₋₄) = Catalans' G`, or any claim that the
@@ -481,6 +485,38 @@ lemma prime_divides_denominator_iff (p : ℕ) (hp : p.Prime) (hp2 : p ≠ 2) :
 at `a = 4` since `13 | 65 = 1 + 4·4²`. -/
 example : 13 ∣ 1 + 4 * 4 ^ 2 := by
   norm_num
+
+/-- The value of the lifted character `χ₄ℂ` on `p : ℤ/4` is `1` iff
+`p ≡ 1 mod 4` — the conductor-4 splitting rule at the residue level
+(mathlib evaluates `ZMod.χ₄ (p : ZMod 4)` by `p % 4`). -/
+lemma chi4_apply_eq_one_iff (p : ℕ) : χ₄ℂ (p : ZMod 4) = 1 ↔ p % 4 = 1 := by
+  have help : ZMod.χ₄ (p : ZMod 4) = (1 : ℤ) ↔ p % 4 = 1 := by
+    rw [ZMod.χ₄_nat_eq_if_mod_four]
+    constructor
+    · intro h
+      by_cases h2 : p % 2 = 0
+      · norm_num [h2] at h
+      · simp [h2] at h
+        by_cases h1 : p % 4 = 1
+        · exact h1
+        · norm_num [h1] at h
+    · intro h1
+      have h2 : p % 2 = 1 := Nat.odd_of_mod_four_eq_one h1
+      simp [h1, h2]
+  change (↑(ZMod.χ₄ (p : ZMod 4)) : ℂ) = (1 : ℂ) ↔ p % 4 = 1
+  rw [show ((1 : ℂ) = (↑(1 : ℤ) : ℂ)) by norm_num]
+  exact_mod_cast help
+
+/-- **Conductor-denominator law, full χ₄ form**: for an odd prime `p`,
+some window denominator `1 + 4·a²` is divisible by `p` iff the
+conductor-4 character takes the splitting value `χ₄(p) = 1`.  This is
+`prime_divides_denominator_iff` re-expressed through the character, so
+the `MPOperator` denominator family and the conductor-4 splitting rule
+pin the same lattice. -/
+lemma chi4_splits_iff_denominator (p : ℕ) (hp : p.Prime) (hp2 : p ≠ 2) :
+    (∃ a : ℕ, p ∣ 1 + 4 * a ^ 2) ↔ χ₄ℂ (p : ZMod 4) = 1 := by
+  rw [prime_divides_denominator_iff p hp hp2]
+  exact (chi4_apply_eq_one_iff p).symm
 
 /-! ### Parity (trivial-zero) law for `χ₄`, `χ₈`, `χ₈'` -/
 
