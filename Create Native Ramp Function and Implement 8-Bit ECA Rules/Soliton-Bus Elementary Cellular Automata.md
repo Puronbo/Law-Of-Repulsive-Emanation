@@ -2012,7 +2012,7 @@ structural closure for *every* width now lives in mathlib as
 namespace `PunoTwin`, compiles clean with `lake env lean`.  (The
 vendored `PunoCalculus/PunoCalculus/PunoTwin` copies mirror
 `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof @
-  `aa40c0fec4d1c09bcb00ecef401ee4001451fdb3`, mathlib v4.33.1):
+  `2103079`, mathlib v4.33.1):
 
 - `step204_eq`: the rule-204 step is exactly the width-`w` reading
   `sumBits s w := Σ_j (bit s j)·2^j` (via per-cell `center_bit` and an
@@ -2523,6 +2523,16 @@ SETTLED BY THIS PROJECT**; only the mathlib-closed spine is certified:
   the odd character `χ₄` — the epsilon factor is
   `rootNumber χ₄ = 1` (`chi4_rootNumber`), closing the character
   register alongside `center_symmetry` at `s = 1/2`.
+- **Self-duality and the completed functional equation of `χ₄`**
+  (`chi4_isQuadratic`, `chi4_self_conjugate`, `chi4_sq_eq_one`,
+  `chi4_neg_one`, `chi4_completedL_one_sub`): `χ₄` is quadratic
+  (values in `{0, ±1}`) hence self-dual `χ₄⁻¹ = χ₄`, with
+  `χ₄(−1) = −1` and the Gauss-square identity
+  `gaussSum(χ₄, stdAddChar)² = χ₄(−1)·4 = −4`
+  (`chi4_gaussSum_sq`, `chi4_gaussSum_sq_value`, consistent with
+  `(2i)² = −4`); combining self-duality with the root number `1` and
+  level `4`, mathlib's functional equation specializes to
+  `Λ(χ₄, 1−s) = 4^{s−1/2} · Λ(χ₄, s)` for every `s : ℂ`.
 
 No Millennium problem is asserted settled; the exact transcendental
 identities (e.g. `L(2,χ₋₄) = G`) and the universality claims stay

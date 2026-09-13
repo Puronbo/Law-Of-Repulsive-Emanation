@@ -62,7 +62,15 @@ laws), closed in mathlib with zero `sorry`/`axiom`:
     `χ₄`-split, tying the smooth-lattice spike and the conductor-4 law;
   * **Gauss sum and root number**: the `χ₄` Gauss sum evaluates to `2i`
     (`chi4_gaussSum`), and the epsilon factor is `rootNumber χ₄ = 1`
-    (`chi4_rootNumber`), closing the conductor-4 character register.
+    (`chi4_rootNumber`), closing the conductor-4 character register;
+  * **self-duality and the completed functional equation**: `χ₄` is
+    quadratic and self-dual (`chi4_isQuadratic`, `chi4_self_conjugate`,
+    `chi4_sq_eq_one`), `χ₄(−1) = −1` (`chi4_neg_one`), the Gauss-square
+    identity `gaussSum(χ₄, stdAddChar)² = χ₄(−1)·4 = −4`
+    (`chi4_gaussSum_sq`, `chi4_gaussSum_sq_value`), and the
+    **self-dual completed functional equation**
+    `Λ(χ₄, 1−s) = 4^{s−1/2} · Λ(χ₄, s)` (`chi4_completedL_one_sub`),
+    combining the level `4`, root number `1` and self-duality.
 
 Everything below is fully proved.  The remaining — exact transcendental
 identities such as `L(2, χ₋₄) = Catalans' G`, or any claim that the
@@ -679,6 +687,48 @@ lemma chi4_rootNumber : rootNumber χ₄ℂ = 1 := by
   · rw [chi4_sqrt]
     norm_num [pow_one]
   · exact χ₄ℂ_odd.not_even
+
+/-! ### Self-duality and the completed functional equation for `χ₄` -/
+
+/-- `χ₄` is a **quadratic character**: its values lie in `{0, ±1}`. -/
+lemma chi4_isQuadratic : χ₄ℂ.IsQuadratic := by
+  exact (ZMod.isQuadratic_χ₄).comp (algebraMap ℤ ℂ)
+
+/-- `χ₄` is **self-dual**: `χ₄⁻¹ = χ₄`. -/
+lemma chi4_self_conjugate : χ₄ℂ⁻¹ = χ₄ℂ := by
+  exact chi4_isQuadratic.inv
+
+/-- `χ₄² = 1` (trivial character). -/
+lemma chi4_sq_eq_one : χ₄ℂ ^ 2 = 1 := by
+  exact chi4_isQuadratic.sq_eq_one
+
+/-- Value at `−1`: `χ₄(−1) = −1`. -/
+lemma chi4_neg_one : χ₄ℂ (-1) = (-1 : ℂ) := by
+  rw [show (-1 : ZMod 4) = 3 by decide, χ₄ℂ.apply_three]
+
+/-- Square of the Gauss sum: from `chi4_gaussSum` = `2i`, we get
+`gaussSum(χ₄, stdAddChar)² = −4`. -/
+lemma chi4_gaussSum_sq : (gaussSum χ₄ℂ ZMod.stdAddChar) ^ 2 = -(4 : ℂ) := by
+  rw [chi4_gaussSum]
+  have hi_sq : Complex.I ^ 2 = (-1 : ℂ) := Complex.I_sq
+  rw [show (2 * Complex.I) ^ 2 = (2 : ℂ) ^ 2 * Complex.I ^ 2 from by ring]
+  rw [hi_sq]
+  norm_num
+
+/-- The quadratic-character Gauss-sum identity `χ₄(−1)·4 = −4`,
+consistent with `chi4_gaussSum`. -/
+lemma chi4_gaussSum_sq_value : χ₄ℂ (-1) * (4 : ℂ) = -(4 : ℂ) := by
+  rw [chi4_neg_one]
+  norm_num
+
+/-- The **self-dual functional equation** for `χ₄` (level `4`, root number
+`1`): `Λ(χ₄, 1−s) = 4^(s−1/2) · Λ(χ₄, s)`. -/
+lemma chi4_completedL_one_sub (s : ℂ) :
+    DirichletCharacter.completedLFunction χ₄ℂ (1 - s) =
+      (4 : ℂ) ^ (s - 1 / 2) * DirichletCharacter.completedLFunction χ₄ℂ s := by
+  have h := χ₄ℂ.isPrimitive.completedLFunction_one_sub s
+  rw [h, chi4_rootNumber, chi4_self_conjugate]
+  simp
 
 /-! ### Nonvanishing at `s = 1` (Dirichlet prime-theorem engine) -/
 
