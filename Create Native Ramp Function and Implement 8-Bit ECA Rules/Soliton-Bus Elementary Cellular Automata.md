@@ -2012,7 +2012,7 @@ structural closure for *every* width now lives in mathlib as
 namespace `PunoTwin`, compiles clean with `lake env lean`.  (The
 vendored `PunoCalculus/PunoCalculus/PunoTwin` copies mirror
 `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof @
-  `710281e727a8b38a6e6be5e92a4d50edc7c94d0b`, mathlib v4.33.1):
+  `6afd942d620104c98467802f5ac5218e283cfce2`, mathlib v4.33.1):
 
 - `step204_eq`: the rule-204 step is exactly the width-`w` reading
   `sumBits s w := Σ_j (bit s j)·2^j` (via per-cell `center_bit` and an
@@ -2484,7 +2484,12 @@ SETTLED BY THIS PROJECT**; only the mathlib-closed spine is certified:
   spikes in `B_{2k}` exactly when `2^(2^j−1) | k` — the instances
   `5 ↔ 2|k`, `17 ↔ 8|k`, `257 ↔ 128|k`, `65537 ↔ 2^15 | k` are the
   Bernoulli-side echo of the Fermat denominators `1+4a²` certified in
-  `MPOperator.lean`.  The `fermat_bridge` lemma closes the loop
+  `MPOperator.lean`.  The "at exactly the multiples" converse
+  (`spike_lattice`, `spike_iff`, `spike_5_iff` … `spike_65537_iff`)
+  certifies the lattice as an iff: `2^(2^j) | 2k ⟺ 2^(2^j−1) | k`,
+  so the `F_j`-spikes occur *exactly* on the multiples of
+  `2^(2^j−1)` and never between them.  The `fermat_bridge` lemma
+  closes the loop
   exactly: at `a = 2^(2^k−1)` the `MPOperator` window denominator is
   `1 + 4a² = 2^(2^(k+1)) + 1`, so `a = 2` → `17`, `a = 8` → `257`,
   `a = 128` → `65537` — the `k=3`/`a=128` instance is precisely

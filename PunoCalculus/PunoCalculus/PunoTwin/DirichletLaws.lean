@@ -43,7 +43,8 @@ laws), closed in mathlib with zero `sorry`/`axiom`:
   * **von Staudt–Clausen**: `B₁₆ + ∑_{p−1 | 16} 1/p` is an integer,
     and the Fermat-spike lattice `p = 2^(2^j)+1 ↔ 2^(2^j−1) | k`
     with instances `5 ↔ 2|k`, `17 ↔ 8|k`, `257 ↔ 128|k`, `65537 ↔ 2^15|k`
-    (`vonStaudt_B16`, `spike_law`, `spike_*`);  the `fermat_bridge`
+    (`vonStaudt_B16`, `spike_law`, `spike_*`, `spike_*_iff`);  the
+    `fermat_bridge`
     closes the loop to the MPOperator window denominator: at
     `a = 2^(2^k−1)`, `1 + 4a² = 2^(2^(k+1)) + 1` (so `a = 128` → `65537`);
   * **conductor-denominator law**: every prime divisor of the window
@@ -313,10 +314,11 @@ lemma vonStaudt_B16 :
 
 /-- **Fermat-spike lattice**: `p = 2^(2^j) + 1` spikes in the denominator
 of `B_{2k}` exactly when `p - 1 = 2^(2^j)` divides `2k`, i.e.
-`2^(2^j - 1) | k`.
+`2^(2^j - 1) | k` (`spike_lattice`: the "at exactly the multiples"
+converse).
 
 Concrete instances (R57-60 motif): `5 ↔ 2 | k`, `17 ↔ 8 | k`,
-`257 ↔ 128 | k`. -/
+`257 ↔ 128 | k`, `65537 ↔ 2^15 | k`. -/
 lemma spike_5_prime : Nat.Prime 5 := by decide
 lemma spike_5_cond : (5 - 1) ∣ 2 * 2 := by norm_num
 lemma spike_17_prime : Nat.Prime 17 := by decide
@@ -361,6 +363,49 @@ lemma spike_65537_prime : Nat.Prime (2 ^ 16 + 1) := by
 /-- The 65537 spike condition: `65537 − 1 = 2^16` divides `2·2^15`. -/
 lemma spike_65537_cond : (2 ^ 16 + 1 - 1) ∣ 2 * 2 ^ 15 := by
   norm_num
+
+/-- **Spike-lattice iff** (the "at exactly the multiples" converse): for
+the Fermat form `F_j = 2^(2^j) + 1`, the spike condition
+`F_j − 1 = 2^(2^j) | 2k` holds *exactly* when `2^(2^j − 1) | k` — so
+`B_{2k}` revisits `F_j`-spikes precisely at the lattice of multiples of
+`2^(2^j−1)`, never between them (purely arithmetic; the von Staudt–
+Clausen membership above is the Bernoulli-side half). -/
+lemma spike_lattice (j k : ℕ) :
+    (2 ^ (2 ^ j) ∣ 2 * k ↔ 2 ^ (2 ^ j - 1) ∣ k) := by
+  have hpos : 0 < 2 ^ j := pow_pos (by norm_num) j
+  have hpow : 2 ^ j = (2 ^ j - 1) + 1 := by omega
+  have h2 : 2 * 2 ^ (2 ^ j - 1) = 2 ^ (2 ^ j) := by
+    nth_rewrite 2 [hpow]
+    rw [pow_add, pow_one, mul_comm]
+  rw [← h2]
+  exact Nat.mul_dvd_mul_iff_left (by norm_num : 0 < (2 : ℕ))
+
+/-- The spike condition with the `+ 1 − 1` cancelled: `(F_j − 1) | 2k`
+reduces exactly to the lattice law. -/
+lemma spike_iff (j k : ℕ) :
+    (2 ^ (2 ^ j) + 1 - 1) ∣ 2 * k ↔ 2 ^ (2 ^ j - 1) ∣ k := by
+  rw [Nat.add_sub_cancel]
+  exact spike_lattice j k
+
+/-- `5 ↔ 2 | k`: `4 = 2² | 2k` iff `k` even — *exactly*, matching
+`spike_5_cond` at `k = 2`. -/
+lemma spike_5_iff (k : ℕ) : (5 - 1) ∣ 2 * k ↔ 2 ∣ k := by
+  convert spike_iff 1 k using 1 <;> norm_num
+
+/-- `17 ↔ 8 | k`: `16 = 2⁴ | 2k` iff `8 | k` — *exactly*, matching
+`spike_17_cond` at `k = 8`. -/
+lemma spike_17_iff (k : ℕ) : (17 - 1) ∣ 2 * k ↔ 8 ∣ k := by
+  convert spike_iff 2 k using 1 <;> norm_num
+
+/-- `257 ↔ 128 | k`: `256 = 2⁸ | 2k` iff `128 | k` — *exactly*, matching
+`spike_257_cond` at `k = 128`. -/
+lemma spike_257_iff (k : ℕ) : (257 - 1) ∣ 2 * k ↔ 128 ∣ k := by
+  convert spike_iff 3 k using 1 <;> norm_num
+
+/-- `65537 = 2^16 + 1 ↔ 2^15 | k`: `2^16 | 2k` iff `2^15 | k` —
+*exactly*, matching `spike_65537_cond` at `k = 2^15`. -/
+lemma spike_65537_iff (k : ℕ) : (2 ^ 16 + 1 - 1) ∣ 2 * k ↔ 2 ^ 15 ∣ k := by
+  convert spike_iff 4 k using 1 <;> norm_num
 
 /-! ### Conductor-denominator law (the `1+4a²` window and conductor `4`) -/
 
