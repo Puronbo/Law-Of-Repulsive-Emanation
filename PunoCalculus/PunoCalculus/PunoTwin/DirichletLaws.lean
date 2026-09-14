@@ -84,7 +84,16 @@ laws), closed in mathlib with zero `sorry`/`axiom`:
     `Λ(χ₈, 1−s) = 8^{s−1/2} · Λ(χ₈, s)` and
     `Λ(χ₈', 1−s) = 8^{s−1/2} · Λ(χ₈', s)`
     (`chi8_completedL_one_sub`, `chi8'_completedL_one_sub`),
-    closing the level-8 character register.
+    closing the level-8 character register;
+  * **Gauss sum and root number of `χ₃`**: the third-root Gauss sum
+    evaluates to `i·√3` (`chi3_gaussSum`), the epsilon factor is
+    `rootNumber χ₃ = 1` (`chi3_rootNumber`), the primitive cube roots are
+    `e^{2πi/3} = −1/2 + i·(√3/2)` and `e^{4πi/3} = −1/2 − i·(√3/2)`
+    (`exp_two_pi_div_three_mul_I`, `exp_four_pi_div_three_mul_I`), the
+    odd quadratic character `χ₃` is **self-dual** (`chi3_isQuadratic`,
+    `chi3_self_conjugate`), and the **self-dual completed functional
+    equation** `Λ(χ₃, 1−s) = 3^{s−1/2} · Λ(χ₃, s)` (`chi3_completedL_one_sub`)
+    closes the level-3 odd-parity register.
 
 Everything below is fully proved.  The remaining — exact transcendental
 identities such as `L(2, χ₋₄) = Catalans' G`, or any claim that the
@@ -1027,6 +1036,259 @@ lemma chi8'_completedL_one_sub (s : ℂ) :
   rw [h, chi8'_rootNumber, chi8'_self_conjugate]
   simp
 
+namespace ZMod
+
+/-- The nontrivial quadratic character on `ZMod 3` — `χ₃` (values in `ℤ`,
+mirroring mathlib's `χ₄`). -/
+@[simps]
+def χ₃ : MulChar (ZMod 3) ℤ where
+  toFun a :=
+    match a with
+    | 0 => 0
+    | 1 => 1
+    | 2 => -1
+  map_one' := rfl
+  map_mul' := by decide
+  map_nonunit' := by decide
+
+/-- `χ₃` takes values in `{0, 1, -1}` -/
+theorem isQuadratic_χ₃ : χ₃.IsQuadratic := by
+  unfold MulChar.IsQuadratic
+  decide
+
+end ZMod
+
+/-- `χ₃` (the mod-3 quadratic character) lifted to `ℂ`. -/
+def χ₃ℂ : DirichletCharacter ℂ 3 := ZMod.χ₃.ringHomComp (algebraMap ℤ ℂ)
+
+namespace χ₃ℂ
+
+lemma apply_zero : χ₃ℂ (0 : ZMod 3) = 0 := by norm_num [χ₃ℂ]
+lemma apply_one : χ₃ℂ (1 : ZMod 3) = 1 := by norm_num [χ₃ℂ]
+lemma apply_two : χ₃ℂ (2 : ZMod 3) = -1 := by norm_num [χ₃ℂ]
+
+lemma ne_char_one : χ₃ℂ ≠ 1 := by
+  intro h
+  have this := congrArg (fun ψ : DirichletCharacter ℂ 3 ↦ ψ (2 : ZMod 3)) h
+  change χ₃ℂ 2 = (1 : DirichletCharacter ℂ 3) 2 at this
+  have h2 : (1 : DirichletCharacter ℂ 3) 2 = (1 : ℂ) := by
+    have h2u : IsUnit (2 : ZMod 3) := by
+      exact (ZMod.isUnit_iff_coprime 2 3).mpr (by norm_num)
+    exact MulChar.one_apply h2u
+  rw [apply_two, h2] at this
+  norm_num at this
+
+/-- The conductor of `χ₃` is `3`. -/
+lemma conductor_eq_three : χ₃ℂ.conductor = 3 := by
+  apply le_antisymm
+  · have hd := χ₃ℂ.conductor_dvd_level
+    exact Nat.le_of_dvd (by norm_num) hd
+  · by_contra h
+    have hle : χ₃ℂ.conductor < 3 := lt_of_not_ge h
+    interval_cases hc : χ₃ℂ.conductor
+    · exfalso
+      exact χ₃ℂ.conductor_ne_zero hc
+    · have hχ : χ₃ℂ = 1 := (DirichletCharacter.eq_one_iff_conductor_eq_one).mpr hc
+      exact ne_char_one hχ
+    · have : (2 : ℕ) ∣ 3 := by simpa [hc] using χ₃ℂ.conductor_dvd_level
+      norm_num at this
+
+/-- `χ₃` is a **primitive** character (level equals conductor). -/
+lemma isPrimitive : χ₃ℂ.IsPrimitive := by
+  rw [DirichletCharacter.IsPrimitive]
+  exact conductor_eq_three
+
+end χ₃ℂ
+
+/-- `χ₃` is **odd**: `χ₃(−1) = −1`. -/
+lemma χ₃ℂ_odd : χ₃ℂ.Odd := by
+  rw [DirichletCharacter.Odd]
+  rw [show (-1 : ZMod 3) = 2 by decide]
+  norm_num [χ₃ℂ]
+
+/-! ### Gauss sum and root number of `χ₃` -/
+
+/-- `e^{2πi/3} = −1/2 + i·(√3/2)`: the primitive cube root of unity. -/
+lemma exp_two_pi_div_three_mul_I : Complex.exp ((↑(2 * Real.pi / 3 : ℝ)) * Complex.I) =
+    (↑(Real.sqrt 3 / (2 : ℝ))) * Complex.I - (1 / 2 : ℂ) := by
+  rw [← Complex.cos_add_sin_I]
+  rw [← Complex.ofReal_cos (2 * Real.pi / 3), ← Complex.ofReal_sin (2 * Real.pi / 3)]
+  rw [show (Real.cos (2 * Real.pi / 3) : ℝ) = -(1 / 2) by
+    rw [show 2 * Real.pi / 3 = Real.pi - Real.pi / 3 by ring]
+    rw [Real.cos_pi_sub, Real.cos_pi_div_three]]
+  rw [show (Real.sin (2 * Real.pi / 3) : ℝ) = Real.sqrt 3 / (2 : ℝ) by
+    rw [show 2 * Real.pi / 3 = Real.pi - Real.pi / 3 by ring]
+    rw [Real.sin_pi_sub, Real.sin_pi_div_three]]
+  norm_num
+  ring
+
+/-- `e^{4πi/3} = −1/2 − i·(√3/2)`: the square of the primitive cube root. -/
+lemma exp_four_pi_div_three_mul_I : Complex.exp ((↑(4 * Real.pi / 3 : ℝ)) * Complex.I) =
+    (↑(Real.sqrt 3 / (2 : ℝ))) * (-Complex.I) - (1 / 2 : ℂ) := by
+  rw [← Complex.cos_add_sin_I]
+  rw [← Complex.ofReal_cos (4 * Real.pi / 3), ← Complex.ofReal_sin (4 * Real.pi / 3)]
+  rw [show (Real.cos (4 * Real.pi / 3) : ℝ) = -(1 / 2) by
+    rw [show 4 * Real.pi / 3 = Real.pi / 3 + Real.pi by ring]
+    rw [Real.cos_add_pi, Real.cos_pi_div_three]]
+  rw [show (Real.sin (4 * Real.pi / 3) : ℝ) = -(Real.sqrt 3 / (2 : ℝ)) by
+    rw [show 4 * Real.pi / 3 = Real.pi / 3 + Real.pi by ring]
+    rw [Real.sin_add_pi, Real.sin_pi_div_three]]
+  norm_num
+  ring
+
+/-- Coefficient bridge: `2·(π/3) = 2π/3` as complex cast. -/
+lemma hen2 : (2 : ℂ) * (↑(Real.pi / (3 : ℝ)) : ℂ) = (↑(2 * Real.pi / (3 : ℝ)) : ℂ) := by
+  calc
+    (2 : ℂ) * (↑(Real.pi / (3 : ℝ)) : ℂ)
+        = (↑(2 : ℝ) : ℂ) * (↑(Real.pi / (3 : ℝ)) : ℂ) := by norm_num
+    _ = (↑((2 : ℝ) * (Real.pi / (3 : ℝ))) : ℂ) := by rw [Complex.ofReal_mul]
+    _ = (↑(2 * Real.pi / (3 : ℝ)) : ℂ) := by
+      exact congrArg (algebraMap ℝ ℂ)
+        (show (2 : ℝ) * (Real.pi / (3 : ℝ)) = 2 * Real.pi / (3 : ℝ) by ring)
+
+/-- Coefficient bridge: `4·(π/3) = 4π/3` as complex cast. -/
+lemma hen4 : (4 : ℂ) * (↑(Real.pi / (3 : ℝ)) : ℂ) = (↑(4 * Real.pi / (3 : ℝ)) : ℂ) := by
+  calc
+    (4 : ℂ) * (↑(Real.pi / (3 : ℝ)) : ℂ)
+        = (↑(4 : ℝ) : ℂ) * (↑(Real.pi / (3 : ℝ)) : ℂ) := by norm_num
+    _ = (↑((4 : ℝ) * (Real.pi / (3 : ℝ))) : ℂ) := by rw [Complex.ofReal_mul]
+    _ = (↑(4 * Real.pi / (3 : ℝ)) : ℂ) := by
+      exact congrArg (algebraMap ℝ ℂ)
+        (show (4 : ℝ) * (Real.pi / (3 : ℝ)) = 4 * Real.pi / (3 : ℝ) by ring)
+
+@[simp] lemma chi3_stdAddChar_zero : ZMod.stdAddChar (0 : ZMod 3) = 1 := by
+  change ZMod.stdAddChar ((0 : ℤ) : ZMod 3) = 1
+  rw [ZMod.stdAddChar_coe (0 : ℤ)]
+  norm_num [Complex.exp_zero]
+
+@[simp] lemma chi3_stdAddChar_one : ZMod.stdAddChar (1 : ZMod 3) =
+    (↑(Real.sqrt 3 / (2 : ℝ))) * Complex.I - (1 / 2 : ℂ) := by
+  change ZMod.stdAddChar ((1 : ℤ) : ZMod 3) =
+    (↑(Real.sqrt 3 / (2 : ℝ))) * Complex.I - (1 / 2 : ℂ)
+  rw [ZMod.stdAddChar_coe (1 : ℤ)]
+  have h₁ : (2 * π * Complex.I * (1 : ℤ) / ((3 : ℕ) : ℂ) : ℂ) =
+      (↑(2 * Real.pi / (3 : ℝ))) * Complex.I := by
+    have h₁' : (2 * π * Complex.I * (1 : ℤ) / ((3 : ℕ) : ℂ) : ℂ) =
+        (Real.pi : ℂ) / (3 : ℂ) * (2 : ℂ) * Complex.I := by ring_nf
+    calc
+      (2 * π * Complex.I * (1 : ℤ) / ((3 : ℕ) : ℂ) : ℂ) =
+          (Real.pi : ℂ) / (3 : ℂ) * (2 : ℂ) * Complex.I := h₁'
+      _ = (↑(Real.pi / (3 : ℝ)) : ℂ) * (2 : ℂ) * Complex.I := by
+        exact congrArg (fun t : ℂ => t * (2 : ℂ) * Complex.I)
+          (Complex.ofReal_div Real.pi (3 : ℝ)).symm
+      _ = (2 : ℂ) * (↑(Real.pi / (3 : ℝ)) : ℂ) * Complex.I := by ring
+      _ = (↑(2 * Real.pi / (3 : ℝ))) * Complex.I := by
+        rw [hen2]
+  rw [h₁, exp_two_pi_div_three_mul_I]
+
+@[simp] lemma chi3_stdAddChar_two : ZMod.stdAddChar (2 : ZMod 3) =
+    (↑(Real.sqrt 3 / (2 : ℝ))) * (-Complex.I) - (1 / 2 : ℂ) := by
+  change ZMod.stdAddChar ((2 : ℤ) : ZMod 3) =
+    (↑(Real.sqrt 3 / (2 : ℝ))) * (-Complex.I) - (1 / 2 : ℂ)
+  rw [ZMod.stdAddChar_coe (2 : ℤ)]
+  have h₂ : (2 * π * Complex.I * (2 : ℤ) / ((3 : ℕ) : ℂ) : ℂ) =
+      (↑(4 * Real.pi / (3 : ℝ))) * Complex.I := by
+    have h₂' : (2 * π * Complex.I * (2 : ℤ) / ((3 : ℕ) : ℂ) : ℂ) =
+        (Real.pi : ℂ) / (3 : ℂ) * (4 : ℂ) * Complex.I := by ring_nf
+    calc
+      (2 * π * Complex.I * (2 : ℤ) / ((3 : ℕ) : ℂ) : ℂ) =
+          (Real.pi : ℂ) / (3 : ℂ) * (4 : ℂ) * Complex.I := h₂'
+      _ = (↑(Real.pi / (3 : ℝ)) : ℂ) * (4 : ℂ) * Complex.I := by
+        exact congrArg (fun t : ℂ => t * (4 : ℂ) * Complex.I)
+          (Complex.ofReal_div Real.pi (3 : ℝ)).symm
+      _ = (4 : ℂ) * (↑(Real.pi / (3 : ℝ)) : ℂ) * Complex.I := by ring
+      _ = (↑(4 * Real.pi / (3 : ℝ))) * Complex.I := by
+        rw [hen4]
+  rw [h₂, exp_four_pi_div_three_mul_I]
+
+lemma zmod3_sum_fin (f : Fin 3 → ℂ) :
+    (∑ i : Fin 3, f i) = f 0 + (f 1 + f 2) := by
+  rw [Fin.sum_univ_succ]
+  rw [Fin.sum_univ_succ]
+  rw [Fin.sum_univ_succ]
+  simp
+
+lemma sigma_zmod3 (f : ZMod 3 → ℂ) :
+    (∑ k : ZMod 3, f k) = f 0 + (f 1 + f 2) := by
+  calc
+    (∑ k : ZMod 3, f k) = (∑ i : Fin 3, f i) := by rfl
+    _ = f 0 + (f 1 + f 2) := by
+      rw [zmod3_sum_fin (fun i : Fin 3 => f i)]
+      rfl
+
+/-- The `χ₃` **Gauss sum**: `∑ₐ χ₃(a) e^{2πia/3} = i·√3`. -/
+lemma chi3_gaussSum : gaussSum χ₃ℂ ZMod.stdAddChar = (Real.sqrt 3 : ℂ) * Complex.I := by
+  calc
+    gaussSum χ₃ℂ ZMod.stdAddChar = (∑ k : ZMod 3, χ₃ℂ k * ZMod.stdAddChar k) := by rfl
+    _ = (χ₃ℂ 0 * ZMod.stdAddChar 0 + (χ₃ℂ 1 * ZMod.stdAddChar 1 +
+          χ₃ℂ 2 * ZMod.stdAddChar 2)) := by
+      exact sigma_zmod3 (fun k : ZMod 3 => χ₃ℂ k * ZMod.stdAddChar k)
+    _ = (Real.sqrt 3 : ℂ) * Complex.I := by
+      rw [χ₃ℂ.apply_zero, chi3_stdAddChar_zero, χ₃ℂ.apply_one, chi3_stdAddChar_one,
+        χ₃ℂ.apply_two, chi3_stdAddChar_two]
+      rw [Complex.ofReal_div]
+      norm_num
+      ring
+
+/-- **`3 ^ (1/2) = √3`** — the principal complex square root in the
+root-number factor. -/
+lemma chi3_sqrt : ((3 : ℕ) : ℂ) ^ (1 / 2 : ℂ) = (Real.sqrt 3 : ℂ) := by
+  rw [show ((3 : ℕ) : ℂ) = ((3 : ℝ) : ℂ) by norm_num]
+  rw [show (1 / 2 : ℂ) = ((1 / 2 : ℝ) : ℂ) by norm_num]
+  rw [← Complex.ofReal_cpow (by norm_num : (0 : ℝ) ≤ 3) (1 / 2 : ℝ)]
+  rw [← Real.sqrt_eq_rpow (3 : ℝ)]
+
+/-- **Root number of `χ₃`**: `rootNumber χ₃ = 1`. -/
+lemma chi3_rootNumber : rootNumber χ₃ℂ = 1 := by
+  rw [DirichletCharacter.rootNumber]
+  rw [chi3_gaussSum]
+  rw [if_neg]
+  · rw [chi3_sqrt]
+    norm_num [pow_one]
+  · exact χ₃ℂ_odd.not_even
+
+/-! ### Self-duality and the completed functional equation for `χ₃` -/
+
+/-- `χ₃` is a **quadratic character**: its values lie in `{0, ±1}`. -/
+lemma chi3_isQuadratic : χ₃ℂ.IsQuadratic := by
+  exact (ZMod.isQuadratic_χ₃).comp (algebraMap ℤ ℂ)
+
+/-- `χ₃` is **self-dual**: `χ₃⁻¹ = χ₃`. -/
+lemma chi3_self_conjugate : χ₃ℂ⁻¹ = χ₃ℂ := by
+  exact chi3_isQuadratic.inv
+
+/-- `χ₃² = 1` (trivial character). -/
+lemma chi3_sq_eq_one : χ₃ℂ ^ 2 = 1 := by
+  exact chi3_isQuadratic.sq_eq_one
+
+/-- Value at `−1`: `χ₃(−1) = −1` (`χ₃` odd). -/
+lemma chi3_neg_one : χ₃ℂ (-1) = (-1 : ℂ) := by
+  rw [show (-1 : ZMod 3) = 2 by decide, χ₃ℂ.apply_two]
+
+/-- The quadratic-character Gauss-sum identity `χ₃(−1)·3 = −3`,
+consistent with `chi3_gaussSum`. -/
+lemma chi3_gaussSum_sq_value : χ₃ℂ (-1) * (3 : ℂ) = -(3 : ℂ) := by
+  rw [chi3_neg_one]
+  norm_num
+
+/-- Square of the Gauss sum: from `chi3_gaussSum` = `i·√3`, we get
+`gaussSum(χ₃, stdAddChar)² = −3`. -/
+lemma chi3_gaussSum_sq : (gaussSum χ₃ℂ ZMod.stdAddChar) ^ 2 = -(3 : ℂ) := by
+  rw [chi3_gaussSum]
+  ring_nf
+  rw [Complex.I_sq]
+  rw [← Complex.ofReal_pow]
+  norm_num [Real.sq_sqrt (by norm_num : (0 : ℝ) ≤ 3)]
+
+/-- The **self-dual functional equation** for `χ₃` (level `3`, root number
+`1`): `Λ(χ₃, 1−s) = 3^(s−1/2) · Λ(χ₃, s)`. -/
+lemma chi3_completedL_one_sub (s : ℂ) :
+    DirichletCharacter.completedLFunction χ₃ℂ (1 - s) =
+      (3 : ℂ) ^ (s - 1 / 2) * DirichletCharacter.completedLFunction χ₃ℂ s := by
+  have h := χ₃ℂ.isPrimitive.completedLFunction_one_sub s
+  rw [h, chi3_rootNumber, chi3_self_conjugate]
+  simp
+
 /-! ### Nonvanishing at `s = 1` (Dirichlet prime-theorem engine) -/
 
 /-- **`L(1, χ₄) ≠ 0`** — the nonvanishing law that underlies Dirichlet's
@@ -1042,6 +1304,10 @@ lemma χ₈𝕃_ne_zero_one : LFunction χ₈ℂ 1 ≠ 0 :=
 /-- **`L(1, χ₈') ≠ 0`** — nonvanishing for `χ₈'`. -/
 lemma χ₈'𝕃_ne_zero_one : LFunction χ₈'ℂ 1 ≠ 0 :=
   LFunction_apply_one_ne_zero χ₈'ℂ.ne_char_one
+
+/-- **`L(1, χ₃) ≠ 0`** — nonvanishing for `χ₃`. -/
+lemma χ₃𝕃_ne_zero_one : LFunction χ₃ℂ 1 ≠ 0 :=
+  LFunction_apply_one_ne_zero χ₃ℂ.ne_char_one
 
 /-- **Nonvanishing on the critical-strip boundary**: for every character,
 `L(χ, s) ≠ 0` whenever `Re s ≥ 1` and `χ ≠ 1` (or `s ≠ 1`) — the

@@ -40,15 +40,19 @@ Lean   PunoTwin.MPOperator          operator_discriminant_bridge,
             native_decide)              two_pow_odd_mod_three,
                                           spine_reaches_one,
                                           reverse_tree_levels
-    Lean   PunoTwin.DirichletLaws       center_symmetry, eulerProduct_tprod,
-           (mathlib v4.33.1)            zeta_neg_nat, χ₄ℂ.conductor_eq_four,
-                                          χ₈ℂ.conductor_eq_eight,
-                                          χ₈'ℂ.conductor_eq_eight,
-                                          vonStaudt_B16, spike_law,
-                                          χ₄ℂ_odd, χ₈ℂ_even, χ₈'ℂ_odd,
-                                          chi8_gaussSum, chi8'_gaussSum,
-                                          chi8_completedL_one_sub,
-                                          chi8'_completedL_one_sub
+Lean   PunoTwin.DirichletLaws       center_symmetry, eulerProduct_tprod,
+            (mathlib v4.33.1)            zeta_neg_nat, χ₄ℂ.conductor_eq_four,
+                                           χ₈ℂ.conductor_eq_eight,
+                                           χ₈'ℂ.conductor_eq_eight,
+                                           χ₃ℂ.conductor_eq_three,
+                                           vonStaudt_B16, spike_law,
+                                           χ₄ℂ_odd, χ₈ℂ_even, χ₈'ℂ_odd,
+                                           χ₃ℂ_odd,
+                                           chi8_gaussSum, chi8'_gaussSum,
+                                           chi8_completedL_one_sub,
+                                           chi8'_completedL_one_sub,
+                                           chi3_gaussSum, chi3_rootNumber,
+                                           chi3_completedL_one_sub
     py     validate_..._closed_forms    exact rational 2048/65537,
                                           65536/67108865
     md     Soliton-Bus ... .md          "86 root validators", the
@@ -57,7 +61,7 @@ Lean   PunoTwin.MPOperator          operator_discriminant_bridge,
 
 Provenance: the PunoTwin twin files mirror the mathlib v4.33.1 origin
 repository github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof at
-commit 36e1656.  The vendored copies in
+commit a89fe5b.  The vendored copies in
 PunoCalculus/PunoCalculus/PunoTwin and the origin tree must stay
 byte-identical (hash-audited); bumping the mathlib rev in either place
 invalidates the other.
@@ -74,7 +78,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 WORKSPACE = ROOT.parent
 PW = WORKSPACE / "PunoCalculus" / "PunoCalculus"
-TWIN_ORIGIN_SHA = "36e1656"
+TWIN_ORIGIN_SHA = "a89fe5b"
 TWIN_ORIGIN_URL = "github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof"
 
 
@@ -186,6 +190,20 @@ DIRL = [
     "chi8'_gaussSum_sq_value",
     "chi8_completedL_one_sub",
     "chi8'_completedL_one_sub",
+    "chi3_gaussSum",
+    "chi3_sqrt",
+    "chi3_rootNumber",
+    "lemma conductor_eq_three : χ₃ℂ.conductor = 3",
+    "χ₃ℂ_odd",
+    "exp_two_pi_div_three_mul_I",
+    "exp_four_pi_div_three_mul_I",
+    "chi3_isQuadratic",
+    "chi3_self_conjugate",
+    "chi3_neg_one",
+    "chi3_gaussSum_sq",
+    "chi3_gaussSum_sq_value",
+    "chi3_completedL_one_sub",
+    "χ₃𝕃_ne_zero_one",
     "riemann_no_zeros_on_boundary",
 ]
 MPOP = [
