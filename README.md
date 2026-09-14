@@ -78,6 +78,9 @@ Lean certificates — all kernel-verified, no axioms:
 | `PunoCalculus.MillenniumBridge` | decidable strings | the seven Millennium delimitations, all `NOT SETTLED BY THIS PROJECT` |
 | `PunoTwin.TwinAnalyticLaws` | mathlib v4.33.1 | the NLSE twin mass law: density structure, square-profile identity, antiderivative derivative, exact window defect `16Pa/(1+4Pa^2)`, line-mass neutrality (`defect_tendsto_zero`) |
 | `PunoTwin.TwinRingLaws` | mathlib v4.33.1 | general-width closure: `rule204_identity_all` and `rule51_complement_all` for **every** ring width by structural recursion on `w` |
+| `PunoTwin.MPOperator` | mathlib v4.33.1 | the `D+V` operator spectrum: window discriminant `(2a+1)^2-4a = 1+4a^2`, Fermat denominator window `1+4·128^2 = 2^16+1`, spectral brackets around the roots |
+| `PunoTwin.CollatzReach` | mathlib v4.33.1 | closed-form spine `4^(k+1)=3·spineSum k+1`, `3·spine k+1=4^(k+1)`, reverse-tree census levels `L5..L7` |
+| `PunoTwin.DirichletLaws` | mathlib v4.33.1 | L-function laws: center symmetry `Λ(χ,1/2)`, Euler product, ζ special values + von Staudt–Clausen + Fermat-spike lattice, primitive `χ₄`/`χ₈`/`χ₈'` with conductor/parity, nonvanishing at `s=1`, and the **Gauss-sum / root-number / self-dual completed functional equation registers** for `χ₄` (`4^(s-1/2)`), `χ₈` and `χ₈'` (`8^(s-1/2)`, root number `1`) |
 
 Exact rational certificates (`validate_soliton_millennium_closed_forms.py`):
 the window defect is the exact rational **`D = 2048/65537`** (P = 1,
@@ -264,6 +267,46 @@ See `sigma_venv/sigma/README.md` for full documentation.
 | **v2.1.0** | Aug 2026 | Poincare universe, honest audit, NS rigorous proof identified |
 | **v2.0.1** | Aug 2026 | Dark matter core predictor, muon g-2 vertex function |
 | **v2.0.0** | Aug 2026 | Grokking predictor, climate tipping detector, mass gap calculator |
+
+---
+
+## Repository Map
+
+This monorepo is deliberately load-bearing in a few places; the rest is
+content.  The three invariants that the certificate line depends on:
+
+- **`Create Native Ramp Function and Implement 8-Bit ECA Rules/`** — the
+  certified soliton-ECA suite.  All `validate_*.py` root validators **must
+  stay in this exact directory** (the meta-audit counts them there: the
+  pinned suite is **86 validators**), together with the pin document
+  `Soliton-Bus Elementary Cellular Automata.md`, the `soliton_eca/`
+  package, and `run_all_audits.py`.
+- **`PunoCalculus/PunoCalculus/PunoTwin/`** — the vendored Lean twins
+  (`TwinAnalyticLaws`, `TwinRingLaws`, `MPOperator`, `CollatzReach`,
+  `DirichletLaws`), mirrored **byte-identical** from the origin repository
+  `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof` at the
+  provenance commit pinned in
+  `validate_soliton_millennium_meta_audit.py` (currently `36e1656`) and in
+  this directory's pin document.  CI hash-audits the vendored twins against
+  origin `main`.
+- **`sigma_venv/sigma/`** — the Sigma Chassis local package, installed by
+  CI (`pip install -e sigma_venv/sigma`).  Keep the two `validate_*.py`
+  counts and the Lean namespace pins untouched when restructuring.
+
+Everything else is content:
+
+| Area | Contents |
+|------|----------|
+| `experiments/` | the 0/0 framework experiment corpus (600+ scripts) |
+| `papers/` | prose/tex/PDF papers (honest audit, NS, YM, Mil. overview) |
+| `docs/` | the long-form register (mandate book, verification ledger, shift DSL) |
+| `tests/` | pytest suite (`pythonpath = ["."]`, imports root modules) |
+| `PunoCalculus/` | the Lean twin vendor + pure-core package (no mathlib) |
+| `data/` | canonical JSON datasets (prime census, epoch_0d, sigma export) |
+| `Universals/` | the universal-calendar / manifold manifest corpus |
+| `scripts/` | retained sim/cleanup utilities (whitelisted in `.gitignore`) |
+| `archive/` | retired material (gitignored wholesale) |
+| repo root | `puno_cli.py` entry point + packaging (`pyproject.toml`) and the `generate_*`/`_gen_*` paper tooling |
 
 ---
 
