@@ -1516,30 +1516,45 @@ lemma chi3_LFunction_neg_odd (n : ℕ) :
 
 The analytic engine above — in particular the nonvanishing of
 `L(1, χ) ≠ 0` for every nontrivial character — activates mathlib's full
-Dirichlet theorem (`DirichletsTheorem`).  We instantiate it for the
-three supported levels: **every residue class coprime to `3`, `4`, or
-`8` contains infinitely many primes**. -/
+Dirichlet theorem (`DirichletsTheorem`).  The generic law below covers
+**every** coprime modulus/residue pair; the lemma family that follows
+instantiates it for the three supported levels (`3`, `4`, `8`), with
+per-residue coverage examples. -/
+
+/-- **Dirichlet's theorem** (generic): for any `q ≠ 0` and residue `a`
+coprime to `q`, there are infinitely many primes `p ≡ a [MOD q]`. -/
+lemma dirichlet_prime_infinitely_many (q a : ℕ) (hq : q ≠ 0) (ha : a.Coprime q) :
+    {p : ℕ | p.Prime ∧ p ≡ a [MOD q]}.Infinite :=
+  infinite_setOfPred_prime_and_modEq hq ha
+
+/-- **Dirichlet's theorem** (generic, order form): for any `q ≠ 0`,
+residue `a` coprime to `q`, and bound `n`, there is a prime `p > n`
+with `p ≡ a [MOD q]` — so each coprime residue class contains unboundedly
+many primes. -/
+lemma dirichlet_prime_gt (q a : ℕ) (hq : q ≠ 0) (ha : a.Coprime q) (n : ℕ) :
+    ∃ p : ℕ, p > n ∧ p.Prime ∧ p ≡ a [MOD q] :=
+  forall_exists_prime_gt_and_modEq n hq ha
 
 /-- **Dirichlet's theorem for the level `3`**: for any residue `a` coprime
 to `3` (i.e. `a = 1, 2`), there are infinitely many primes
 `p ≡ a [MOD 3]`. -/
 lemma infinitelyManyPrimes_mod_three (a : ℕ) (ha : a.Coprime 3) :
     {p : ℕ | p.Prime ∧ p ≡ a [MOD 3]}.Infinite :=
-  infinite_setOfPred_prime_and_modEq (q := 3) (by decide) ha
+  dirichlet_prime_infinitely_many 3 a (by decide) ha
 
 /-- **Dirichlet's theorem for the level `4`**: for any residue `a` coprime
 to `4` (i.e. `a = 1, 3`), there are infinitely many primes
 `p ≡ a [MOD 4]`. -/
 lemma infinitelyManyPrimes_mod_four (a : ℕ) (ha : a.Coprime 4) :
     {p : ℕ | p.Prime ∧ p ≡ a [MOD 4]}.Infinite :=
-  infinite_setOfPred_prime_and_modEq (q := 4) (by decide) ha
+  dirichlet_prime_infinitely_many 4 a (by decide) ha
 
 /-- **Dirichlet's theorem for the level `8`**: for any residue `a` coprime
 to `8` (i.e. `a = 1, 3, 5, 7` — the odd residues), there are infinitely
 many primes `p ≡ a [MOD 8]`. -/
 lemma infinitelyManyPrimes_mod_eight (a : ℕ) (ha : a.Coprime 8) :
     {p : ℕ | p.Prime ∧ p ≡ a [MOD 8]}.Infinite :=
-  infinite_setOfPred_prime_and_modEq (q := 8) (by decide) ha
+  dirichlet_prime_infinitely_many 8 a (by decide) ha
 
 /-- Coverage of the level-3 register: both coprime residue classes. -/
 example : {p : ℕ | p.Prime ∧ p ≡ 1 [MOD 3]}.Infinite :=
@@ -1567,5 +1582,16 @@ example : {p : ℕ | p.Prime ∧ p ≡ 5 [MOD 8]}.Infinite :=
 
 example : {p : ℕ | p.Prime ∧ p ≡ 7 [MOD 8]}.Infinite :=
   infinitelyManyPrimes_mod_eight 7 (by decide)
+
+/-- The generic law covers moduli beyond the registers: any coprime pair. -/
+example : {p : ℕ | p.Prime ∧ p ≡ 4 [MOD 5]}.Infinite :=
+  dirichlet_prime_infinitely_many 5 4 (by decide) (by decide)
+
+example : {p : ℕ | p.Prime ∧ p ≡ 9 [MOD 10]}.Infinite :=
+  dirichlet_prime_infinitely_many 10 9 (by decide) (by decide)
+
+/-- The order form: beyond every bound there is a prime in the class. -/
+example (n : ℕ) : ∃ p > n, p.Prime ∧ p ≡ 2 [MOD 5] :=
+  dirichlet_prime_gt 5 2 (by decide) (by decide) n
 
 end PunoTwin.Dirichlet

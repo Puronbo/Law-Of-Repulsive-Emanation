@@ -63,7 +63,9 @@ chi3_gaussSum, chi3_rootNumber,
                                             chi3_LFunction_neg_odd,
                                             infinitelyManyPrimes_mod_three,
                                             infinitelyManyPrimes_mod_four,
-                                            infinitelyManyPrimes_mod_eight
+                                            infinitelyManyPrimes_mod_eight,
+                                            dirichlet_prime_infinitely_many,
+                                            dirichlet_prime_gt
     py     validate_..._closed_forms    exact rational 2048/65537,
                                           65536/67108865
     md     Soliton-Bus ... .md          "86 root validators", the
@@ -72,7 +74,7 @@ chi3_gaussSum, chi3_rootNumber,
 
 Provenance: the PunoTwin twin files mirror the mathlib v4.33.1 origin
 repository github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof at
-commit 4949e9f.  The vendored copies in
+commit 43f3eb2.  The vendored copies in
 PunoCalculus/PunoCalculus/PunoTwin and the origin tree must stay
 byte-identical (hash-audited); bumping the mathlib rev in either place
 invalidates the other.
@@ -89,7 +91,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 WORKSPACE = ROOT.parent
 PW = WORKSPACE / "PunoCalculus" / "PunoCalculus"
-TWIN_ORIGIN_SHA = "4949e9f"
+TWIN_ORIGIN_SHA = "43f3eb2"
 TWIN_ORIGIN_URL = "github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof"
 
 
@@ -229,6 +231,8 @@ DIRL = [
     "infinitelyManyPrimes_mod_three",
     "infinitelyManyPrimes_mod_four",
     "infinitelyManyPrimes_mod_eight",
+    "dirichlet_prime_infinitely_many",
+    "dirichlet_prime_gt",
     "χ₃𝕃_ne_zero_one",
     "riemann_no_zeros_on_boundary",
 ]
