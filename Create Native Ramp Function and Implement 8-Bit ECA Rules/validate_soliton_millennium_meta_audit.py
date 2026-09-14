@@ -51,8 +51,12 @@ Lean   PunoTwin.DirichletLaws       center_symmetry, eulerProduct_tprod,
                                            chi8_gaussSum, chi8'_gaussSum,
                                            chi8_completedL_one_sub,
                                            chi8'_completedL_one_sub,
-                                           chi3_gaussSum, chi3_rootNumber,
-                                           chi3_completedL_one_sub
+chi3_gaussSum, chi3_rootNumber,
+                                            chi3_completedL_one_sub,
+                                            self_conjugate_of_quadratic,
+                                            gaussSum_sq_of_quadratic,
+                                            rootNumber_sq_of_quadratic,
+                                            completedL_one_sub_of_quadratic
     py     validate_..._closed_forms    exact rational 2048/65537,
                                           65536/67108865
     md     Soliton-Bus ... .md          "86 root validators", the
@@ -61,7 +65,7 @@ Lean   PunoTwin.DirichletLaws       center_symmetry, eulerProduct_tprod,
 
 Provenance: the PunoTwin twin files mirror the mathlib v4.33.1 origin
 repository github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof at
-commit a89fe5b.  The vendored copies in
+commit 8a1cf6d.  The vendored copies in
 PunoCalculus/PunoCalculus/PunoTwin and the origin tree must stay
 byte-identical (hash-audited); bumping the mathlib rev in either place
 invalidates the other.
@@ -78,7 +82,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 WORKSPACE = ROOT.parent
 PW = WORKSPACE / "PunoCalculus" / "PunoCalculus"
-TWIN_ORIGIN_SHA = "a89fe5b"
+TWIN_ORIGIN_SHA = "8a1cf6d"
 TWIN_ORIGIN_URL = "github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof"
 
 
@@ -203,6 +207,14 @@ DIRL = [
     "chi3_gaussSum_sq",
     "chi3_gaussSum_sq_value",
     "chi3_completedL_one_sub",
+    "self_conjugate_of_quadratic",
+    "cpow_half_sq",
+    "gaussSum_sq_of_quadratic",
+    "rootNumber_sq_of_quadratic",
+    "completedL_one_sub_of_quadratic",
+    "gaussSum χ₃ℂ ZMod.stdAddChar ^ 2 = χ₃ℂ (-1) * (3 : ℂ)",
+    "completedL_one_sub_of_quadratic 3 χ₃ℂ χ₃ℂ.isPrimitive chi3_isQuadratic s",
+    "self_conjugate_of_quadratic 8 χ₈'ℂ chi8'_isQuadratic",
     "χ₃𝕃_ne_zero_one",
     "riemann_no_zeros_on_boundary",
 ]

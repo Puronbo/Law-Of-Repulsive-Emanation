@@ -94,6 +94,19 @@ laws), closed in mathlib with zero `sorry`/`axiom`:
     `chi3_self_conjugate`), and the **self-dual completed functional
     equation** `Λ(χ₃, 1−s) = 3^{s−1/2} · Λ(χ₃, s)` (`chi3_completedL_one_sub`)
     closes the level-3 odd-parity register.
+  * **General quadratic-character lemma layer**: the character-independent
+    laws behind all four registers — a quadratic character is **self-dual**
+    (`self_conjugate_of_quadratic`), the **quadratic resolvent identity**
+    `gaussSum(χ, stdAddChar)² = χ(−1)·p` for prime conductors `p`
+    (`gaussSum_sq_of_quadratic`, via mathlib's `GaussSum.gaussSum_sq` over
+    `𝔽ₚ`), the epsilon-square law `rootNumber χ ∈ {±1}`
+    (`rootNumber_sq_of_quadratic`), and the **self-dual functional equation**
+    for every primitive quadratic character
+    `Λ(χ, 1−s) = N^{s−1/2} · rootNumber χ · Λ(χ, s)`
+    (`completedL_one_sub_of_quadratic`).  The sign of the root number (in
+    fact `+1` for `χ₄`, `χ₈`, `χ₈'`, `χ₃`) is pinned by the explicit
+    Gauss-sum evaluations; the composite moduli `4` and `8` are covered by
+    the direct computations above.
 
 Everything below is fully proved.  The remaining — exact transcendental
 identities such as `L(2, χ₋₄) = Catalans' G`, or any claim that the
@@ -1288,6 +1301,124 @@ lemma chi3_completedL_one_sub (s : ℂ) :
   have h := χ₃ℂ.isPrimitive.completedLFunction_one_sub s
   rw [h, chi3_rootNumber, chi3_self_conjugate]
   simp
+
+/-! ### General quadratic-character lemma layer -/
+
+/-- A quadratic character is **self-dual**: `χ⁻¹ = χ`. -/
+lemma self_conjugate_of_quadratic (N : ℕ) [NeZero N] (χ : DirichletCharacter ℂ N)
+    (hχ₂ : χ.IsQuadratic) : χ⁻¹ = χ :=
+  hχ₂.inv
+
+/-- `(N ^ (1/2))² = N` in `ℂ`, for a nonzero integer modulus `N`. -/
+lemma cpow_half_sq (N : ℕ) [NeZero N] : ((N : ℂ) ^ (1 / 2 : ℂ)) ^ 2 = (N : ℂ) := by
+  have h12 : (1 / 2 : ℂ) = (2 : ℂ)⁻¹ := by norm_num
+  rw [h12]
+  exact Complex.cpow_nat_inv_pow (x := (N : ℂ)) (n := 2) (by decide)
+
+/-- The **quadratic resolvent identity over `𝔽ₚ`**: for a nontrivial
+quadratic character `χ` of prime conductor `p`,
+`gaussSum(χ, stdAddChar)² = χ(−1)·p`.  This is mathlib's `GaussSum.gaussSum_sq`
+instantiated at `R = ZMod p`, `ψ = stdAddChar` — the one law that makes
+every prime-conductor quadratic register automatic, up to the explicit
+evaluation of the Gauss sum. -/
+lemma gaussSum_sq_of_quadratic (p : ℕ) [Fact p.Prime] [NeZero p]
+    (χ : DirichletCharacter ℂ p) (hχ₁ : χ ≠ 1) (hχ₂ : χ.IsQuadratic) :
+    gaussSum χ ZMod.stdAddChar ^ 2 = χ (-1) * (p : ℂ) := by
+  have hψ : (ZMod.stdAddChar (N := p)).IsPrimitive := ZMod.isPrimitive_stdAddChar p
+  have hcard : (Fintype.card (ZMod p) : ℂ) = (p : ℂ) := by
+    exact_mod_cast ZMod.card p
+  simpa [hcard] using
+    (gaussSum_sq (R := ZMod p) (R' := ℂ) (χ := χ) (ψ := ZMod.stdAddChar) hχ₁ hχ₂ hψ)
+
+set_option maxHeartbeats 800000 in
+/-- The **root number of a nontrivial quadratic character has square `1`**:
+`rootNumber χ ∈ {±1}`.  The sign — for the quadratic registers `χ₄`, `χ₈`,
+`χ₈'`, `χ₃` it is `+1` — is pinned by the explicit Gauss-sum evaluations
+above. -/
+lemma rootNumber_sq_of_quadratic (p : ℕ) [Fact p.Prime] [NeZero p]
+    (χ : DirichletCharacter ℂ p) (hχ₁ : χ ≠ 1) (hχ₂ : χ.IsQuadratic) :
+    rootNumber χ ^ 2 = 1 := by
+  classical
+  rw [DirichletCharacter.rootNumber]
+  have hG := gaussSum_sq_of_quadratic p χ hχ₁ hχ₂
+  have hS : ((p : ℂ) ^ (1 / 2 : ℂ)) ^ 2 = (p : ℂ) := cpow_half_sq p
+  have hψ : (ZMod.stdAddChar (N := p)).IsPrimitive := ZMod.isPrimitive_stdAddChar p
+  have hS0 : (p : ℂ) ^ (1 / 2 : ℂ) ≠ 0 := by
+    intro hs
+    have hs2 : (p : ℂ) = 0 := by
+      calc
+        (p : ℂ) = ((p : ℂ) ^ (1 / 2 : ℂ)) ^ 2 := hS.symm
+        _ = 0 := by
+          rw [hs]
+          norm_num
+    exact (NeZero.ne p) (Nat.cast_eq_zero.mp hs2)
+  have hG0 : gaussSum χ ZMod.stdAddChar ≠ 0 :=
+    gaussSum_ne_zero_of_nontrivial (h := by
+      change (Fintype.card (ZMod p) : ℂ) ≠ 0
+      rw [ZMod.card]
+      exact_mod_cast (NeZero.ne p)) hχ₁ hψ
+  by_cases hE : χ.Even
+  · have hneg : χ (-1) = (1 : ℂ) := by simpa [DirichletCharacter.Even] using hE
+    have hSq : gaussSum χ ZMod.stdAddChar ^ 2 =
+        (Complex.I ^ (if χ.Even then 0 else 1)) ^ 2 * ((p : ℂ) ^ (1 / 2 : ℂ)) ^ 2 := by
+      calc
+        gaussSum χ ZMod.stdAddChar ^ 2 = (p : ℂ) := by rw [hG, hneg]; norm_num
+        _ = (1 : ℂ) * ((p : ℂ) ^ (1 / 2 : ℂ)) ^ 2 := by rw [hS]; norm_num
+        _ = (Complex.I ^ 0) ^ 2 * ((p : ℂ) ^ (1 / 2 : ℂ)) ^ 2 := by norm_num
+        _ = (Complex.I ^ (if χ.Even then 0 else 1)) ^ 2 * ((p : ℂ) ^ (1 / 2 : ℂ)) ^ 2 := by
+          rw [if_pos hE]
+    rw [div_div, div_pow, mul_pow, ← hSq]
+    exact div_self (pow_ne_zero 2 hG0)
+  · have hO : χ.Odd := χ.even_or_odd.resolve_left hE
+    have hneg : χ (-1) = (-1 : ℂ) := by simpa [DirichletCharacter.Odd] using hO
+    have hSq : gaussSum χ ZMod.stdAddChar ^ 2 =
+        (Complex.I ^ (if χ.Even then 0 else 1)) ^ 2 * ((p : ℂ) ^ (1 / 2 : ℂ)) ^ 2 := by
+      calc
+        gaussSum χ ZMod.stdAddChar ^ 2 = -((p : ℂ)) := by rw [hG, hneg]; norm_num
+        _ = (Complex.I ^ 1) ^ 2 * ((p : ℂ) ^ (1 / 2 : ℂ)) ^ 2 := by
+          rw [hS]
+          rw [pow_one]
+          rw [Complex.I_sq]
+          norm_num
+        _ = (Complex.I ^ (if χ.Even then 0 else 1)) ^ 2 * ((p : ℂ) ^ (1 / 2 : ℂ)) ^ 2 := by
+          rw [if_neg hE]
+    rw [div_div, div_pow, mul_pow, ← hSq]
+    exact div_self (pow_ne_zero 2 hG0)
+
+/-- The **self-dual functional equation** for a primitive quadratic
+character: `Λ(χ, 1−s) = N^(s−1/2) · rootNumber χ · Λ(χ, s)` — the one
+statement that, together with the root number, specializes to each
+quadratic register. -/
+lemma completedL_one_sub_of_quadratic (N : ℕ) [NeZero N] (χ : DirichletCharacter ℂ N)
+    (hprim : χ.IsPrimitive) (hquad : χ.IsQuadratic) (s : ℂ) :
+    completedLFunction χ (1 - s) = (N : ℂ) ^ (s - 1 / 2) * rootNumber χ * completedLFunction χ s := by
+  rw [hprim.completedLFunction_one_sub s]
+  rw [hquad.inv]
+
+/-- Coverage of the general layer over the `χ₃` prime register: the
+resolvent identity, the epsilon-square law, self-duality, and the
+self-dual functional equation. -/
+example : gaussSum χ₃ℂ ZMod.stdAddChar ^ 2 = χ₃ℂ (-1) * (3 : ℂ) :=
+  gaussSum_sq_of_quadratic 3 χ₃ℂ χ₃ℂ.ne_char_one chi3_isQuadratic
+
+example : rootNumber χ₃ℂ ^ 2 = 1 :=
+  rootNumber_sq_of_quadratic 3 χ₃ℂ χ₃ℂ.ne_char_one chi3_isQuadratic
+
+example : χ₃ℂ⁻¹ = χ₃ℂ :=
+  self_conjugate_of_quadratic 3 χ₃ℂ chi3_isQuadratic
+
+example (s : ℂ) :
+    completedLFunction χ₃ℂ (1 - s) = (3 : ℂ) ^ (s - 1 / 2) * rootNumber χ₃ℂ * completedLFunction χ₃ℂ s :=
+  completedL_one_sub_of_quadratic 3 χ₃ℂ χ₃ℂ.isPrimitive chi3_isQuadratic s
+
+/-- Coverage on the composite-modulus registers: self-duality of `χ₄`,
+`χ₈`, `χ₈'` is a case of the layer (`χ² = 1`, hence `χ⁻¹ = χ`); their
+Gauss sums are evaluated directly above. -/
+example : χ₄ℂ⁻¹ = χ₄ℂ := self_conjugate_of_quadratic 4 χ₄ℂ chi4_isQuadratic
+
+example : χ₈ℂ⁻¹ = χ₈ℂ := self_conjugate_of_quadratic 8 χ₈ℂ chi8_isQuadratic
+
+example : χ₈'ℂ⁻¹ = χ₈'ℂ := self_conjugate_of_quadratic 8 χ₈'ℂ chi8'_isQuadratic
 
 /-! ### Nonvanishing at `s = 1` (Dirichlet prime-theorem engine) -/
 
