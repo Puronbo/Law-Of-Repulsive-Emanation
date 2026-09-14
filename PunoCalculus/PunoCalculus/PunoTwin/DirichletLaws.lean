@@ -107,6 +107,11 @@ laws), closed in mathlib with zero `sorry`/`axiom`:
     fact `+1` for `χ₄`, `χ₈`, `χ₈'`, `χ₃`) is pinned by the explicit
     Gauss-sum evaluations; the composite moduli `4` and `8` are covered by
     the direct computations above.
+  * **L-function trivial zeros**: vanishing at negative integers for
+    each register — `L(χ₄, −(2n+1)) = 0`, `L(χ₈, −2(n+1)) = 0`,
+    `L(χ₈', −(2n+1)) = 0`, `L(χ₃, −(2n+1)) = 0` — following from
+    the parity of the functional equation (Γ((s+1)/2) for odd χ,
+    Γ(s/2) for even χ).
 
 Everything below is fully proved.  The remaining — exact transcendental
 identities such as `L(2, χ₋₄) = Catalans' G`, or any claim that the
@@ -1464,5 +1469,39 @@ example {s : ℂ} (hs : 1 ≤ s.re) : LFunction χ₈'ℂ s ≠ 0 :=
 theorem. -/
 lemma riemann_no_zeros_on_boundary (s : ℂ) (hs : 1 ≤ s.re) : riemannZeta s ≠ 0 :=
   riemannZeta_ne_zero_of_one_le_re hs
+
+/-! ### L-function trivial zeros at negative integers
+
+The completed functional equation has a Γ-factor whose poles force
+`L(χ, s) = 0` at negative integers whose parity disagrees with the
+character's parity:
+- **odd** χ: Γ((s+1)/2) has poles at `s = −1, −3, −5, …` →
+  `L(χ, −(2n+1)) = 0`
+- **even** χ: Γ(s/2) has poles at `s = −2, −4, −6, …` →
+  `L(χ, −2(n+1)) = 0`
+
+These are the Dirichlet-L-series analogues of `zeta_neg_nat`. -/
+
+/-- `L(χ₄, −(2n+1)) = 0` — trivial zeros at every odd negative integer
+(odd character: Γ((s+1)/2) poles). -/
+lemma chi4_LFunction_neg_odd (n : ℕ) :
+    LFunction χ₄ℂ (-(2 * n) - 1) = 0 :=
+  DirichletCharacter.Odd.LFunction_neg_two_mul_nat_sub_one χ₄ℂ_odd n
+
+/-- `L(χ₈, −2(n+1)) = 0` — trivial zeros at every strictly negative
+even integer (even character: Γ(s/2) poles). -/
+lemma chi8_LFunction_neg_even (n : ℕ) :
+    LFunction χ₈ℂ (-(2 * (n + 1))) = 0 :=
+  DirichletCharacter.Even.LFunction_neg_two_mul_nat_add_one χ₈ℂ_even n
+
+/-- `L(χ₈', −(2n+1)) = 0` — trivial zeros at odd negative integers. -/
+lemma chi8'_LFunction_neg_odd (n : ℕ) :
+    LFunction χ₈'ℂ (-(2 * n) - 1) = 0 :=
+  DirichletCharacter.Odd.LFunction_neg_two_mul_nat_sub_one χ₈'ℂ_odd n
+
+/-- `L(χ₃, −(2n+1)) = 0` — trivial zeros at odd negative integers. -/
+lemma chi3_LFunction_neg_odd (n : ℕ) :
+    LFunction χ₃ℂ (-(2 * n) - 1) = 0 :=
+  DirichletCharacter.Odd.LFunction_neg_two_mul_nat_sub_one χ₃ℂ_odd n
 
 end PunoTwin.Dirichlet
