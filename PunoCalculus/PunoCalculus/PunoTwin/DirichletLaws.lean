@@ -1,5 +1,6 @@
 import Mathlib.NumberTheory.LSeries.DirichletContinuation
 import Mathlib.NumberTheory.LSeries.HurwitzZetaValues
+import Mathlib.NumberTheory.LSeries.PrimesInAP
 import Mathlib.NumberTheory.EulerProduct.DirichletLSeries
 import Mathlib.NumberTheory.LSeries.Nonvanishing
 import Mathlib.NumberTheory.Bernoulli
@@ -112,6 +113,13 @@ laws), closed in mathlib with zero `sorry`/`axiom`:
     `L(χ₈', −(2n+1)) = 0`, `L(χ₃, −(2n+1)) = 0` — following from
     the parity of the functional equation (Γ((s+1)/2) for odd χ,
     Γ(s/2) for even χ).
+  * **Dirichlet's theorem for the supported levels**: instantiating
+    mathlib's full theorem (`DirichletsTheorem`) — whose engine is the
+    nonvanishing of `L(1, χ)` above — every residue class coprime to
+    `3`, `4`, or `8` contains infinitely many primes
+    (`infinitelyManyPrimes_mod_three`, `infinitelyManyPrimes_mod_four`,
+    `infinitelyManyPrimes_mod_eight` and the per-residue coverage
+    examples).
 
 Everything below is fully proved.  The remaining — exact transcendental
 identities such as `L(2, χ₋₄) = Catalans' G`, or any claim that the
@@ -1503,5 +1511,61 @@ lemma chi8'_LFunction_neg_odd (n : ℕ) :
 lemma chi3_LFunction_neg_odd (n : ℕ) :
     LFunction χ₃ℂ (-(2 * n) - 1) = 0 :=
   DirichletCharacter.Odd.LFunction_neg_two_mul_nat_sub_one χ₃ℂ_odd n
+
+/-! ### Dirichlet's theorem on primes in arithmetic progressions
+
+The analytic engine above — in particular the nonvanishing of
+`L(1, χ) ≠ 0` for every nontrivial character — activates mathlib's full
+Dirichlet theorem (`DirichletsTheorem`).  We instantiate it for the
+three supported levels: **every residue class coprime to `3`, `4`, or
+`8` contains infinitely many primes**. -/
+
+/-- **Dirichlet's theorem for the level `3`**: for any residue `a` coprime
+to `3` (i.e. `a = 1, 2`), there are infinitely many primes
+`p ≡ a [MOD 3]`. -/
+lemma infinitelyManyPrimes_mod_three (a : ℕ) (ha : a.Coprime 3) :
+    {p : ℕ | p.Prime ∧ p ≡ a [MOD 3]}.Infinite :=
+  infinite_setOfPred_prime_and_modEq (q := 3) (by decide) ha
+
+/-- **Dirichlet's theorem for the level `4`**: for any residue `a` coprime
+to `4` (i.e. `a = 1, 3`), there are infinitely many primes
+`p ≡ a [MOD 4]`. -/
+lemma infinitelyManyPrimes_mod_four (a : ℕ) (ha : a.Coprime 4) :
+    {p : ℕ | p.Prime ∧ p ≡ a [MOD 4]}.Infinite :=
+  infinite_setOfPred_prime_and_modEq (q := 4) (by decide) ha
+
+/-- **Dirichlet's theorem for the level `8`**: for any residue `a` coprime
+to `8` (i.e. `a = 1, 3, 5, 7` — the odd residues), there are infinitely
+many primes `p ≡ a [MOD 8]`. -/
+lemma infinitelyManyPrimes_mod_eight (a : ℕ) (ha : a.Coprime 8) :
+    {p : ℕ | p.Prime ∧ p ≡ a [MOD 8]}.Infinite :=
+  infinite_setOfPred_prime_and_modEq (q := 8) (by decide) ha
+
+/-- Coverage of the level-3 register: both coprime residue classes. -/
+example : {p : ℕ | p.Prime ∧ p ≡ 1 [MOD 3]}.Infinite :=
+  infinitelyManyPrimes_mod_three 1 (by decide)
+
+example : {p : ℕ | p.Prime ∧ p ≡ 2 [MOD 3]}.Infinite :=
+  infinitelyManyPrimes_mod_three 2 (by decide)
+
+/-- Coverage of the level-4 register: both coprime residue classes. -/
+example : {p : ℕ | p.Prime ∧ p ≡ 1 [MOD 4]}.Infinite :=
+  infinitelyManyPrimes_mod_four 1 (by decide)
+
+example : {p : ℕ | p.Prime ∧ p ≡ 3 [MOD 4]}.Infinite :=
+  infinitelyManyPrimes_mod_four 3 (by decide)
+
+/-- Coverage of the level-8 register: all four odd residue classes. -/
+example : {p : ℕ | p.Prime ∧ p ≡ 1 [MOD 8]}.Infinite :=
+  infinitelyManyPrimes_mod_eight 1 (by decide)
+
+example : {p : ℕ | p.Prime ∧ p ≡ 3 [MOD 8]}.Infinite :=
+  infinitelyManyPrimes_mod_eight 3 (by decide)
+
+example : {p : ℕ | p.Prime ∧ p ≡ 5 [MOD 8]}.Infinite :=
+  infinitelyManyPrimes_mod_eight 5 (by decide)
+
+example : {p : ℕ | p.Prime ∧ p ≡ 7 [MOD 8]}.Infinite :=
+  infinitelyManyPrimes_mod_eight 7 (by decide)
 
 end PunoTwin.Dirichlet

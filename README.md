@@ -80,7 +80,7 @@ Lean certificates — all kernel-verified, no axioms:
 | `PunoTwin.TwinRingLaws` | mathlib v4.33.1 | general-width closure: `rule204_identity_all` and `rule51_complement_all` for **every** ring width by structural recursion on `w` |
 | `PunoTwin.MPOperator` | mathlib v4.33.1 | the `D+V` operator spectrum: window discriminant `(2a+1)^2-4a = 1+4a^2`, Fermat denominator window `1+4·128^2 = 2^16+1`, spectral brackets around the roots |
 | `PunoTwin.CollatzReach` | mathlib v4.33.1 | closed-form spine `4^(k+1)=3·spineSum k+1`, `3·spine k+1=4^(k+1)`, reverse-tree census levels `L5..L7` |
-| `PunoTwin.DirichletLaws` | mathlib v4.33.1 | L-function laws: center symmetry `Λ(χ,1/2)`, Euler product, ζ special values + von Staudt–Clausen + Fermat-spike lattice, primitive `χ₄`/`χ₈`/`χ₈'`/`χ₃` with conductor/parity, nonvanishing at `s=1`, the **Gauss-sum / root-number / self-dual completed functional equation registers** for `χ₄` (`4^(s-1/2)`), `χ₈` and `χ₈'` (`8^(s-1/2)`, root number `1`), and `χ₃` (`3^(s-1/2)`, root number `1`, Gauss sum `i·√3`), and the **general quadratic layer** (self-duality `χ⁻¹=χ`, `gaussSum(χ,stdAddChar)²=χ(−1)·p` over `𝔽ₚ`, `rootNumber χ ∈ {±1}`, `Λ(χ,1−s)=N^(s−1/2)·rootNumber χ·Λ(χ,s)`), plus L-function **trivial zeros at negative integers** (`L(χ₄,−(2n+1))=0`, `L(χ₈,−2(n+1))=0`, `L(χ₈',−(2n+1))=0`, `L(χ₃,−(2n+1))=0`) |
+| `PunoTwin.DirichletLaws` | mathlib v4.33.1 | L-function laws: center symmetry `Λ(χ,1/2)`, Euler product, ζ special values + von Staudt–Clausen + Fermat-spike lattice, primitive `χ₄`/`χ₈`/`χ₈'`/`χ₃` with conductor/parity, nonvanishing at `s=1`, the **Gauss-sum / root-number / self-dual completed functional equation registers** for `χ₄` (`4^(s-1/2)`), `χ₈` and `χ₈'` (`8^(s-1/2)`, root number `1`), and `χ₃` (`3^(s-1/2)`, root number `1`, Gauss sum `i·√3`), and the **general quadratic layer** (self-duality `χ⁻¹=χ`, `gaussSum(χ,stdAddChar)²=χ(−1)·p` over `𝔽ₚ`, `rootNumber χ ∈ {±1}`, `Λ(χ,1−s)=N^(s−1/2)·rootNumber χ·Λ(χ,s)`), plus L-function **trivial zeros at negative integers** (`L(χ₄,−(2n+1))=0`, `L(χ₈,−2(n+1))=0`, `L(χ₈',−(2n+1))=0`, `L(χ₃,−(2n+1))=0`), and **Dirichlet's theorem for the supported levels** (infinitely many primes in every residue class coprime to `3`, `4`, `8`, via mathlib's `DirichletsTheorem`) |
 
 Exact rational certificates (`validate_soliton_millennium_closed_forms.py`):
 the window defect is the exact rational **`D = 2048/65537`** (P = 1,
@@ -286,7 +286,7 @@ content.  The three invariants that the certificate line depends on:
   `DirichletLaws`), mirrored **byte-identical** from the origin repository
   `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof` at the
   provenance commit pinned in
-  `validate_soliton_millennium_meta_audit.py` (currently `233bff9`) and in
+  `validate_soliton_millennium_meta_audit.py` (currently `4949e9f`) and in
   this directory's pin document.  CI hash-audits the vendored twins against
   origin `main`.
 - **`sigma_venv/sigma/`** — the Sigma Chassis local package, installed by
