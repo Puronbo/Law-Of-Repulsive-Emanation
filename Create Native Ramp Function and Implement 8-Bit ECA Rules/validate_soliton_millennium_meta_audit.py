@@ -45,7 +45,10 @@ Lean   PunoTwin.MPOperator          operator_discriminant_bridge,
                                           χ₈ℂ.conductor_eq_eight,
                                           χ₈'ℂ.conductor_eq_eight,
                                           vonStaudt_B16, spike_law,
-                                          χ₄ℂ_odd, χ₈ℂ_even, χ₈'ℂ_odd
+                                          χ₄ℂ_odd, χ₈ℂ_even, χ₈'ℂ_odd,
+                                          chi8_gaussSum, chi8'_gaussSum,
+                                          chi8_completedL_one_sub,
+                                          chi8'_completedL_one_sub
     py     validate_..._closed_forms    exact rational 2048/65537,
                                           65536/67108865
     md     Soliton-Bus ... .md          "86 root validators", the
@@ -54,7 +57,7 @@ Lean   PunoTwin.MPOperator          operator_discriminant_bridge,
 
 Provenance: the PunoTwin twin files mirror the mathlib v4.33.1 origin
 repository github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof at
-commit 2103079.  The vendored copies in
+commit 36e1656.  The vendored copies in
 PunoCalculus/PunoCalculus/PunoTwin and the origin tree must stay
 byte-identical (hash-audited); bumping the mathlib rev in either place
 invalidates the other.
@@ -71,7 +74,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 WORKSPACE = ROOT.parent
 PW = WORKSPACE / "PunoCalculus" / "PunoCalculus"
-TWIN_ORIGIN_SHA = "2103079"
+TWIN_ORIGIN_SHA = "36e1656"
 TWIN_ORIGIN_URL = "github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof"
 
 
@@ -172,6 +175,17 @@ DIRL = [
     "chi4_self_conjugate",
     "chi4_gaussSum_sq",
     "chi4_completedL_one_sub",
+    "chi8_gaussSum",
+    "chi8'_gaussSum",
+    "chi8_rootNumber",
+    "chi8'_rootNumber",
+    "chi8_isQuadratic",
+    "chi8'_isQuadratic",
+    "chi8_gaussSum_sq",
+    "chi8_gaussSum_sq_value",
+    "chi8'_gaussSum_sq_value",
+    "chi8_completedL_one_sub",
+    "chi8'_completedL_one_sub",
     "riemann_no_zeros_on_boundary",
 ]
 MPOP = [

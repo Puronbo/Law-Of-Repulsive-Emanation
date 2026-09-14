@@ -70,7 +70,21 @@ laws), closed in mathlib with zero `sorry`/`axiom`:
     (`chi4_gaussSum_sq`, `chi4_gaussSum_sq_value`), and the
     **self-dual completed functional equation**
     `Λ(χ₄, 1−s) = 4^{s−1/2} · Λ(χ₄, s)` (`chi4_completedL_one_sub`),
-    combining the level `4`, root number `1` and self-duality.
+    combining the level `4`, root number `1` and self-duality;
+  * **Gauss sums and root numbers of `χ₈`, `χ₈'`**: the eighth-root
+    Gauss sums evaluate to `2·√2` resp. `2√2·i`
+    (`chi8_gaussSum`, `chi8'_gaussSum`), the epsilon factors are
+    `rootNumber χ₈ = 1` resp. `rootNumber χ₈' = 1` (`chi8_rootNumber`,
+    `chi8'_rootNumber`), `e^{πi/4} = (√2/2)(1+i)` (`exp_pi_div_four_mul_I`),
+    both characters are quadratic and **self-dual**
+    (`chi8_isQuadratic`, `chi8'_isQuadratic`), the Gauss-square identities
+    `gaussSum(χ₈, stdAddChar)² = 8` and `χ₈(−1)·8 = 8` resp.
+    `χ₈'(−1)·8 = −8` (`chi8_gaussSum_sq_value`, `chi8'_gaussSum_sq_value`),
+    and the **self-dual completed functional equations**
+    `Λ(χ₈, 1−s) = 8^{s−1/2} · Λ(χ₈, s)` and
+    `Λ(χ₈', 1−s) = 8^{s−1/2} · Λ(χ₈', s)`
+    (`chi8_completedL_one_sub`, `chi8'_completedL_one_sub`),
+    closing the level-8 character register.
 
 Everything below is fully proved.  The remaining — exact transcendental
 identities such as `L(2, χ₋₄) = Catalans' G`, or any claim that the
@@ -184,8 +198,13 @@ example : completedLFunction χ₄ℂ (1 / 2) = rootNumber χ₄ℂ * completedL
 
 namespace χ₈ℂ
 
+lemma apply_zero : χ₈ℂ (0 : ZMod 8) = 0 := by norm_num [χ₈ℂ]
+lemma apply_one : χ₈ℂ (1 : ZMod 8) = 1 := by norm_num [χ₈ℂ]
+lemma apply_two : χ₈ℂ (2 : ZMod 8) = 0 := by norm_num [χ₈ℂ]
 lemma apply_three : χ₈ℂ 3 = -1 := by norm_num [χ₈ℂ]
+lemma apply_four : χ₈ℂ (4 : ZMod 8) = 0 := by norm_num [χ₈ℂ]
 lemma apply_five : χ₈ℂ 5 = -1 := by norm_num [χ₈ℂ]
+lemma apply_six : χ₈ℂ (6 : ZMod 8) = 0 := by norm_num [χ₈ℂ]
 lemma apply_seven : χ₈ℂ 7 = 1 := by norm_num [χ₈ℂ]
 
 lemma ne_char_one : χ₈ℂ ≠ 1 := by
@@ -252,7 +271,13 @@ example : completedLFunction χ₈ℂ (1 / 2) = rootNumber χ₈ℂ * completedL
 
 namespace χ₈'ℂ
 
+lemma apply_zero : χ₈'ℂ (0 : ZMod 8) = 0 := by norm_num [χ₈'ℂ]
+lemma apply_one : χ₈'ℂ (1 : ZMod 8) = 1 := by norm_num [χ₈'ℂ]
+lemma apply_two : χ₈'ℂ (2 : ZMod 8) = 0 := by norm_num [χ₈'ℂ]
+lemma apply_three : χ₈'ℂ (3 : ZMod 8) = 1 := by norm_num [χ₈'ℂ]
+lemma apply_four : χ₈'ℂ (4 : ZMod 8) = 0 := by norm_num [χ₈'ℂ]
 lemma apply_five : χ₈'ℂ 5 = -1 := by norm_num [χ₈'ℂ]
+lemma apply_six : χ₈'ℂ (6 : ZMod 8) = 0 := by norm_num [χ₈'ℂ]
 lemma apply_seven : χ₈'ℂ 7 = -1 := by norm_num [χ₈'ℂ]
 
 lemma ne_char_one : χ₈'ℂ ≠ 1 := by
@@ -728,6 +753,278 @@ lemma chi4_completedL_one_sub (s : ℂ) :
       (4 : ℂ) ^ (s - 1 / 2) * DirichletCharacter.completedLFunction χ₄ℂ s := by
   have h := χ₄ℂ.isPrimitive.completedLFunction_one_sub s
   rw [h, chi4_rootNumber, chi4_self_conjugate]
+  simp
+
+/-! ### Gauss sum and root number of `χ₈`, `χ₈'` -/
+
+/-- `e^{πi/4} = (√2/2)·(1+i)`: the primitive eighth root of unity as a
+complex number. -/
+lemma exp_pi_div_four_mul_I : Complex.exp ((↑(Real.pi / 4 : ℝ)) * Complex.I) =
+    (↑(Real.sqrt 2 / (2 : ℝ))) * (1 + Complex.I) := by
+  rw [← Complex.cos_add_sin_I]
+  rw [← Complex.ofReal_cos (Real.pi / 4), ← Complex.ofReal_sin (Real.pi / 4)]
+  rw [show (Real.cos (Real.pi / 4) : ℝ) = Real.sqrt 2 / (2 : ℝ) by rw [Real.cos_pi_div_four]]
+  rw [show (Real.sin (Real.pi / 4) : ℝ) = Real.sqrt 2 / (2 : ℝ) by rw [Real.sin_pi_div_four]]
+  ring
+
+@[simp] lemma chi8_stdAddChar_zero : ZMod.stdAddChar (0 : ZMod 8) = 1 := by
+  change ZMod.stdAddChar ((0 : ℤ) : ZMod 8) = 1
+  rw [ZMod.stdAddChar_coe (0 : ℤ)]
+  norm_num [Complex.exp_zero]
+
+@[simp] lemma chi8_stdAddChar_one : ZMod.stdAddChar (1 : ZMod 8) =
+    (↑(Real.sqrt 2 / (2 : ℝ))) * (1 + Complex.I) := by
+  change ZMod.stdAddChar ((1 : ℤ) : ZMod 8) =
+    (↑(Real.sqrt 2 / (2 : ℝ))) * (1 + Complex.I)
+  rw [ZMod.stdAddChar_coe (1 : ℤ)]
+  have h₁ : (2 * π * Complex.I * (1 : ℤ) / ((8 : ℕ) : ℂ) : ℂ) =
+      (↑(Real.pi / 4 : ℝ)) * Complex.I := by
+    have h₁' : (2 * π * Complex.I * (1 : ℤ) / ((8 : ℕ) : ℂ) : ℂ) =
+        (Real.pi : ℂ) / (4 : ℂ) * Complex.I := by ring_nf
+    calc
+      (2 * π * Complex.I * (1 : ℤ) / ((8 : ℕ) : ℂ) : ℂ) =
+          (Real.pi : ℂ) / (4 : ℂ) * Complex.I := h₁'
+      _ = (↑(Real.pi / 4 : ℝ)) * Complex.I := by
+        exact congrArg (fun t : ℂ => t * Complex.I)
+          (Complex.ofReal_div Real.pi (4 : ℝ)).symm
+  rw [h₁, exp_pi_div_four_mul_I]
+
+set_option linter.style.haveILetI false in
+@[simp] lemma chi8_stdAddChar_three : ZMod.stdAddChar (3 : ZMod 8) =
+    (↑(Real.sqrt 2 / (2 : ℝ))) * (-1 + Complex.I) := by
+  change ZMod.stdAddChar ((3 : ℤ) : ZMod 8) =
+    (↑(Real.sqrt 2 / (2 : ℝ))) * (-1 + Complex.I)
+  rw [ZMod.stdAddChar_coe (3 : ℤ)]
+  have h₃ : (2 * π * Complex.I * (3 : ℤ) / ((8 : ℕ) : ℂ) : ℂ) =
+      (↑(Real.pi / 4 : ℝ)) * Complex.I + π / 2 * Complex.I := by
+    have h₃' : (2 * π * Complex.I * (3 : ℤ) / ((8 : ℕ) : ℂ) : ℂ) =
+        (Real.pi : ℂ) / (4 : ℂ) * Complex.I + π / 2 * Complex.I := by ring_nf
+    calc
+      (2 * π * Complex.I * (3 : ℤ) / ((8 : ℕ) : ℂ) : ℂ) =
+          (Real.pi : ℂ) / (4 : ℂ) * Complex.I + π / 2 * Complex.I := h₃'
+      _ = (↑(Real.pi / 4 : ℝ)) * Complex.I + π / 2 * Complex.I := by
+        exact congrArg (fun t : ℂ => t + π / 2 * Complex.I) (
+          congrArg (fun t : ℂ => t * Complex.I)
+            (Complex.ofReal_div Real.pi (4 : ℝ)).symm)
+  rw [h₃, Complex.exp_add, Complex.exp_pi_div_two_mul_I, exp_pi_div_four_mul_I]
+  ring_nf
+  rw [Complex.I_sq]
+  ring
+
+@[simp] lemma chi8_stdAddChar_five : ZMod.stdAddChar (5 : ZMod 8) =
+    (↑(Real.sqrt 2 / (2 : ℝ))) * (-1 - Complex.I) := by
+  change ZMod.stdAddChar ((5 : ℤ) : ZMod 8) =
+    (↑(Real.sqrt 2 / (2 : ℝ))) * (-1 - Complex.I)
+  rw [ZMod.stdAddChar_coe (5 : ℤ)]
+  have h₅ : (2 * π * Complex.I * (5 : ℤ) / ((8 : ℕ) : ℂ) : ℂ) =
+      (↑(Real.pi / 4 : ℝ)) * Complex.I + π * Complex.I := by
+    have h₅' : (2 * π * Complex.I * (5 : ℤ) / ((8 : ℕ) : ℂ) : ℂ) =
+        (Real.pi : ℂ) / (4 : ℂ) * Complex.I + π * Complex.I := by ring_nf
+    calc
+      (2 * π * Complex.I * (5 : ℤ) / ((8 : ℕ) : ℂ) : ℂ) =
+          (Real.pi : ℂ) / (4 : ℂ) * Complex.I + π * Complex.I := h₅'
+      _ = (↑(Real.pi / 4 : ℝ)) * Complex.I + π * Complex.I := by
+        exact congrArg (fun t : ℂ => t + π * Complex.I) (
+          congrArg (fun t : ℂ => t * Complex.I)
+            (Complex.ofReal_div Real.pi (4 : ℝ)).symm)
+  rw [h₅, Complex.exp_add, Complex.exp_pi_mul_I, exp_pi_div_four_mul_I]
+  ring
+
+set_option linter.style.haveILetI false in
+@[simp] lemma chi8_stdAddChar_seven : ZMod.stdAddChar (7 : ZMod 8) =
+    (↑(Real.sqrt 2 / (2 : ℝ))) * (1 - Complex.I) := by
+  change ZMod.stdAddChar ((7 : ℤ) : ZMod 8) =
+    (↑(Real.sqrt 2 / (2 : ℝ))) * (1 - Complex.I)
+  rw [ZMod.stdAddChar_coe (7 : ℤ)]
+  have h₇ : (2 * π * Complex.I * (7 : ℤ) / ((8 : ℕ) : ℂ) : ℂ) =
+      (↑(Real.pi / 4 : ℝ)) * Complex.I +
+        (-π / 2 * Complex.I + 2 * π * Complex.I) := by
+    have h₇' : (2 * π * Complex.I * (7 : ℤ) / ((8 : ℕ) : ℂ) : ℂ) =
+        (Real.pi : ℂ) / (4 : ℂ) * Complex.I +
+          (-π / 2 * Complex.I + 2 * π * Complex.I) := by ring_nf
+    calc
+      (2 * π * Complex.I * (7 : ℤ) / ((8 : ℕ) : ℂ) : ℂ) =
+          (Real.pi : ℂ) / (4 : ℂ) * Complex.I +
+            (-π / 2 * Complex.I + 2 * π * Complex.I) := h₇'
+      _ = (↑(Real.pi / 4 : ℝ)) * Complex.I +
+            (-π / 2 * Complex.I + 2 * π * Complex.I) := by
+        exact congrArg (fun t : ℂ => t + (-π / 2 * Complex.I + 2 * π * Complex.I)) (
+          congrArg (fun t : ℂ => t * Complex.I)
+            (Complex.ofReal_div Real.pi (4 : ℝ)).symm)
+  rw [h₇, Complex.exp_add, Complex.exp_add, Complex.exp_neg_pi_div_two_mul_I,
+    Complex.exp_two_pi_mul_I, exp_pi_div_four_mul_I]
+  ring_nf
+  rw [Complex.I_sq]
+  ring
+
+lemma zmod8_sum_fin (f : Fin 8 → ℂ) :
+    (∑ i : Fin 8, f i) = f 0 + (f 1 + (f 2 + (f 3 + (f 4 + (f 5 + (f 6 + f 7)))))) := by
+  rw [Fin.sum_univ_succ]
+  rw [Fin.sum_univ_succ]
+  rw [Fin.sum_univ_succ]
+  rw [Fin.sum_univ_succ]
+  rw [Fin.sum_univ_succ]
+  rw [Fin.sum_univ_succ]
+  rw [Fin.sum_univ_succ]
+  rw [Fin.sum_univ_succ]
+  simp
+
+lemma sigma_zmod8 (f : ZMod 8 → ℂ) :
+    (∑ k : ZMod 8, f k) = f 0 + (f 1 + (f 2 + (f 3 + (f 4 + (f 5 + (f 6 + f 7)))))) := by
+  calc
+    (∑ k : ZMod 8, f k) = (∑ i : Fin 8, f i) := by rfl
+    _ = f 0 + (f 1 + (f 2 + (f 3 + (f 4 + (f 5 + (f 6 + f 7)))))) := by
+      rw [zmod8_sum_fin (fun i : Fin 8 => f i)]
+      rfl
+
+set_option linter.style.haveILetI false in
+/-- The `χ₈` **Gauss sum**: `∑ₐ χ₈(a) e^{2πia/8} = 2·√2`. -/
+lemma chi8_gaussSum : gaussSum χ₈ℂ ZMod.stdAddChar = 2 * (Real.sqrt 2 : ℂ) := by
+  calc
+    gaussSum χ₈ℂ ZMod.stdAddChar = (∑ k : ZMod 8, χ₈ℂ k * ZMod.stdAddChar k) := by rfl
+    _ = (χ₈ℂ 0 * ZMod.stdAddChar 0 + (χ₈ℂ 1 * ZMod.stdAddChar 1 +
+          (χ₈ℂ 2 * ZMod.stdAddChar 2 + (χ₈ℂ 3 * ZMod.stdAddChar 3 +
+          (χ₈ℂ 4 * ZMod.stdAddChar 4 + (χ₈ℂ 5 * ZMod.stdAddChar 5 +
+          (χ₈ℂ 6 * ZMod.stdAddChar 6 + χ₈ℂ 7 * ZMod.stdAddChar 7))))))) := by
+      exact sigma_zmod8 (fun k : ZMod 8 => χ₈ℂ k * ZMod.stdAddChar k)
+    _ = 2 * (Real.sqrt 2 : ℂ) := by
+      rw [χ₈ℂ.apply_zero, χ₈ℂ.apply_one, χ₈ℂ.apply_two, χ₈ℂ.apply_three,
+        χ₈ℂ.apply_four, χ₈ℂ.apply_five, χ₈ℂ.apply_six, χ₈ℂ.apply_seven,
+        chi8_stdAddChar_zero, chi8_stdAddChar_one, chi8_stdAddChar_three,
+        chi8_stdAddChar_five, chi8_stdAddChar_seven]
+      rw [Complex.ofReal_div]
+      norm_num
+      ring
+
+set_option linter.style.haveILetI false in
+/-- The `χ₈'` **Gauss sum**: `∑ₐ χ₈'(a) e^{2πia/8} = 2√2·i`. -/
+lemma chi8'_gaussSum : gaussSum χ₈'ℂ ZMod.stdAddChar = 2 * (Real.sqrt 2 : ℂ) * Complex.I := by
+  calc
+    gaussSum χ₈'ℂ ZMod.stdAddChar = (∑ k : ZMod 8, χ₈'ℂ k * ZMod.stdAddChar k) := by rfl
+    _ = (χ₈'ℂ 0 * ZMod.stdAddChar 0 + (χ₈'ℂ 1 * ZMod.stdAddChar 1 +
+          (χ₈'ℂ 2 * ZMod.stdAddChar 2 + (χ₈'ℂ 3 * ZMod.stdAddChar 3 +
+          (χ₈'ℂ 4 * ZMod.stdAddChar 4 + (χ₈'ℂ 5 * ZMod.stdAddChar 5 +
+          (χ₈'ℂ 6 * ZMod.stdAddChar 6 + χ₈'ℂ 7 * ZMod.stdAddChar 7))))))) := by
+      exact sigma_zmod8 (fun k : ZMod 8 => χ₈'ℂ k * ZMod.stdAddChar k)
+    _ = 2 * (Real.sqrt 2 : ℂ) * Complex.I := by
+      rw [χ₈'ℂ.apply_zero, χ₈'ℂ.apply_one, χ₈'ℂ.apply_two, χ₈'ℂ.apply_three,
+        χ₈'ℂ.apply_four, χ₈'ℂ.apply_five, χ₈'ℂ.apply_six, χ₈'ℂ.apply_seven,
+        chi8_stdAddChar_zero, chi8_stdAddChar_one, chi8_stdAddChar_three,
+        chi8_stdAddChar_five, chi8_stdAddChar_seven]
+      rw [Complex.ofReal_div]
+      norm_num
+      ring
+
+set_option linter.style.haveILetI false in
+/-- **`8 ^ (1/2) = 2·√2`** — the principal complex square root appearing in
+the root-number factor. -/
+lemma chi8_sqrt : ((8 : ℕ) : ℂ) ^ (1 / 2 : ℂ) = 2 * (Real.sqrt 2 : ℂ) := by
+  rw [show ((8 : ℕ) : ℂ) = ((8 : ℝ) : ℂ) by norm_num]
+  rw [show (1 / 2 : ℂ) = ((1 / 2 : ℝ) : ℂ) by norm_num]
+  rw [← Complex.ofReal_cpow (by norm_num : (0 : ℝ) ≤ 8) (1 / 2 : ℝ)]
+  rw [← Real.sqrt_eq_rpow (8 : ℝ)]
+  have hr : Real.sqrt (8 : ℝ) = 2 * Real.sqrt 2 := by
+    rw [show (8 : ℝ) = 4 * 2 by norm_num]
+    rw [Real.sqrt_mul (by norm_num : (0 : ℝ) ≤ 4) (2 : ℝ)]
+    rw [show (4 : ℝ) = 2 ^ 2 by norm_num]
+    rw [Real.sqrt_sq (by norm_num : (0 : ℝ) ≤ 2)]
+  rw [hr]
+  rw [Complex.ofReal_mul]
+  norm_num
+
+/-- **Root number of `χ₈`**: `rootNumber χ₈ = 1`. -/
+lemma chi8_rootNumber : rootNumber χ₈ℂ = 1 := by
+  rw [DirichletCharacter.rootNumber]
+  rw [chi8_gaussSum]
+  rw [if_pos χ₈ℂ_even]
+  rw [chi8_sqrt]
+  norm_num [pow_zero]
+
+/-- **Root number of `χ₈'`**: `rootNumber χ₈' = 1`. -/
+lemma chi8'_rootNumber : rootNumber χ₈'ℂ = 1 := by
+  rw [DirichletCharacter.rootNumber]
+  rw [chi8'_gaussSum]
+  rw [if_neg]
+  · rw [chi8_sqrt]
+    norm_num [pow_one]
+  · exact χ₈'ℂ_odd.not_even
+
+/-! ### Self-duality and the completed functional equations for `χ₈`, `χ₈'` -/
+
+/-- `χ₈` is a **quadratic character**: its values lie in `{0, ±1}`. -/
+lemma chi8_isQuadratic : χ₈ℂ.IsQuadratic := by
+  exact (ZMod.isQuadratic_χ₈).comp (algebraMap ℤ ℂ)
+
+/-- `χ₈` is **self-dual**: `χ₈⁻¹ = χ₈`. -/
+lemma chi8_self_conjugate : χ₈ℂ⁻¹ = χ₈ℂ := by
+  exact chi8_isQuadratic.inv
+
+/-- `χ₈² = 1` (trivial character). -/
+lemma chi8_sq_eq_one : χ₈ℂ ^ 2 = 1 := by
+  exact chi8_isQuadratic.sq_eq_one
+
+/-- `χ₈'` is a **quadratic character**: its values lie in `{0, ±1}`. -/
+lemma chi8'_isQuadratic : χ₈'ℂ.IsQuadratic := by
+  exact (ZMod.isQuadratic_χ₈').comp (algebraMap ℤ ℂ)
+
+/-- `χ₈'` is **self-dual**: `χ₈'⁻¹ = χ₈'`. -/
+lemma chi8'_self_conjugate : χ₈'ℂ⁻¹ = χ₈'ℂ := by
+  exact chi8'_isQuadratic.inv
+
+/-- `χ₈'² = 1` (trivial character). -/
+lemma chi8'_sq_eq_one : χ₈'ℂ ^ 2 = 1 := by
+  exact chi8'_isQuadratic.sq_eq_one
+
+/-- Value at `−1`: `χ₈(−1) = 1` (`χ₈` even). -/
+lemma chi8_neg_one : χ₈ℂ (-1) = (1 : ℂ) := by
+  rw [show (-1 : ZMod 8) = 7 by decide, χ₈ℂ.apply_seven]
+
+/-- Value at `−1`: `χ₈'(−1) = −1` (`χ₈'` odd). -/
+lemma chi8'_neg_one : χ₈'ℂ (-1) = (-1 : ℂ) := by
+  rw [show (-1 : ZMod 8) = 7 by decide, χ₈'ℂ.apply_seven]
+
+set_option linter.style.haveILetI false in
+/-- Square of the Gauss sum: from `chi8_gaussSum` = `2√2`, we get
+`gaussSum(χ₈, stdAddChar)² = 8`. -/
+lemma chi8_gaussSum_sq : (gaussSum χ₈ℂ ZMod.stdAddChar) ^ 2 = (8 : ℂ) := by
+  rw [chi8_gaussSum]
+  have hs : (Real.sqrt 2 : ℂ) ^ 2 = (2 : ℂ) := by
+    rw [← Complex.ofReal_pow]
+    rw [show (Real.sqrt 2 ^ 2 : ℝ) = 2 by
+      rw [pow_two, Real.mul_self_sqrt (by norm_num : (0 : ℝ) ≤ 2)]]
+    rfl
+  rw [show (2 * (Real.sqrt 2 : ℂ)) ^ 2 = (2 : ℂ) ^ 2 * (Real.sqrt 2 : ℂ) ^ 2 from by ring]
+  rw [hs]
+  norm_num
+
+/-- The quadratic-character Gauss-sum identity `χ₈(−1)·8 = 8`,
+consistent with `chi8_gaussSum`. -/
+lemma chi8_gaussSum_sq_value : χ₈ℂ (-1) * (8 : ℂ) = (8 : ℂ) := by
+  rw [chi8_neg_one]
+  norm_num
+
+/-- The quadratic-character Gauss-sum identity `χ₈'(−1)·8 = −8`,
+consistent with `chi8'_gaussSum`. -/
+lemma chi8'_gaussSum_sq_value : χ₈'ℂ (-1) * (8 : ℂ) = -(8 : ℂ) := by
+  rw [chi8'_neg_one]
+  norm_num
+
+/-- The **self-dual functional equation** for `χ₈` (level `8`, root number
+`1`): `Λ(χ₈, 1−s) = 8^(s−1/2) · Λ(χ₈, s)`. -/
+lemma chi8_completedL_one_sub (s : ℂ) :
+    DirichletCharacter.completedLFunction χ₈ℂ (1 - s) =
+      (8 : ℂ) ^ (s - 1 / 2) * DirichletCharacter.completedLFunction χ₈ℂ s := by
+  have h := χ₈ℂ.isPrimitive.completedLFunction_one_sub s
+  rw [h, chi8_rootNumber, chi8_self_conjugate]
+  simp
+
+/-- The **self-dual functional equation** for `χ₈'` (level `8`, root number
+`1`): `Λ(χ₈', 1−s) = 8^(s−1/2) · Λ(χ₈', s)`. -/
+lemma chi8'_completedL_one_sub (s : ℂ) :
+    DirichletCharacter.completedLFunction χ₈'ℂ (1 - s) =
+      (8 : ℂ) ^ (s - 1 / 2) * DirichletCharacter.completedLFunction χ₈'ℂ s := by
+  have h := χ₈'ℂ.isPrimitive.completedLFunction_one_sub s
+  rw [h, chi8'_rootNumber, chi8'_self_conjugate]
   simp
 
 /-! ### Nonvanishing at `s = 1` (Dirichlet prime-theorem engine) -/
