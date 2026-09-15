@@ -8,10 +8,16 @@ import Mathlib.Data.Nat.Prime.Defs
 import Mathlib.NumberTheory.LegendreSymbol.ZModChar
 import Mathlib.NumberTheory.SumTwoSquares
 import Mathlib.Analysis.Real.Pi.Leibniz
+import Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
+import Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus
+import Mathlib.MeasureTheory.Integral.DominatedConvergence
+import Mathlib.Order.Interval.Set.UnorderedInterval
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.Arctan
 
 open DirichletCharacter HurwitzZeta Filter
 open scoped Real BigOperators Topology
 open Nat
+open intervalIntegral
 
 /-!
 # Dirichlet L-function laws (Lean 4, mathlib)
@@ -42,6 +48,14 @@ laws), closed in mathlib with zero `sorry`/`axiom`:
     prime-theorem engine, `LFunction_apply_one_ne_zero` /
     `LFunction_ne_zero_of_one_le_re` in mathlib), plus the Riemann
     boundary law `ζ(s) ≠ 0` on `Re s ≥ 1`;
+  * **exact special value at `s = 1` for `χ₃`**: the classical
+    `L(1, χ₃) = π/(3√3)` certified as a *Dirichlet-series* limit — the
+    ordered partial sums `Σₙ χ₃(n)/n` tend to `π/(3√3)`
+    (`chi3_series_real_pi_div_three_sqrt_three`,
+    `chi3_series_pi_div_three_sqrt_three`), through the reindex-by-3
+    (`chi3Partial_split`) and the integral
+    `∫₀¹ 1/(1+x+x²) dx = π/(3√3)` (`integral_cubic_value`);  the `χ₄`
+    instance `L(1, χ₄) = π/4` is certified in the Leibniz section below;
   * **von Staudt–Clausen**: `B₁₆ + ∑_{p−1 | 16} 1/p` is an integer,
     and the Fermat-spike lattice `p = 2^(2^j)+1 ↔ 2^(2^j−1) | k`
     with instances `5 ↔ 2|k`, `17 ↔ 8|k`, `257 ↔ 128|k`, `65537 ↔ 2^15|k`
@@ -1618,11 +1632,15 @@ mathlib's bridge from the analytic `LFunction` to the Dirichlet series
 `n = 2i + 1`.
 
 **Future work (NOT proved here):** the corresponding exact special values
-`Σₙ χ₃(n)/n → π/(3√3)`, `Σₙ χ₈(n)/n → ln(1+√2)/√2`,
-`Σₙ χ₈'(n)/n → π/(4√2)` follow the same reindex method and need further
-open-`mathlib` machinery (arctangent / root-of-unity series for `χ₃` and
-`χ₈'`, the `ln(1+√2)` series for `χ₈`).  They are left OPEN by design —
-no `sorry`, no unproved claims.
+`Σₙ χ₈(n)/n → ln(1+√2)/√2`, `Σₙ χ₈'(n)/n → π/(4√2)` follow the same
+reindex method and need further open-`mathlib` machinery (the `ln(1+√2)`
+series for `χ₈`).  They are left OPEN by design — no `sorry`, no unproved
+claims.
+
+The `χ₃` instance `Σₙ χ₃(n)/n → π/(3√3) = L(1, χ₃)` **is** closed, in the
+next section, by a different route: the grouped series telescopes to the
+geometric integral `∫₀¹ 1/(1+x+x²) dx = π/(3√3)` under dominated
+convergence.
 -/
 
 lemma chi4_even_zero_real {n : ℕ} (hn : n % 2 = 0) : ((ZMod.χ₄ n : ℤ) : ℝ) = 0 := by
@@ -1742,6 +1760,517 @@ lemma chi4_series_pi_div_four :
     change (algebraMap ℝ ℂ) (∑ n ∈ Finset.range N, (((ZMod.χ₄ n : ℤ) : ℝ) / (n : ℝ))) =
       ∑ n ∈ Finset.range N, (χ₄ℂ n) / (n : ℂ)
     exact chi4_series_eq_real N
+  simpa [hpi] using hc.congr' hobs
+
+/-!
+# Exact special value at `s = 1`: `L(1, χ₃) = π/(3√3)`
+
+Certified here as a *Dirichlet-series* convergence identity: the ordered
+partial sums of `Σₙ χ₃(n)/n` tend to `π/(3√3)`.  As with `χ₄`, mathlib's
+bridge from the analytic `LFunction` to the Dirichlet series
+(`LFunction_eq_LSeries`) requires `1 < s.re`, so no bridge exists at
+`s = 1`; the classical value is stated as the ordered-partial-sum
+(conditionally convergent) limit.
+
+The step function route differs from the `χ₄ = π/4` reindex: the grouped
+sums `Σₖ (1/(3k+1) − 1/(3k+2))` are realized on `(0,1]` by the step
+functions `χ₃StepF N x = Σ_{k<N} (x^(3k) − x^(3k+1))`, whose partial
+integrals coincide with the (real) grouped sums, whose limit is the
+(interval) integral `∫₀¹ 1/(1+x+x²) dx = π/(3√3)` (dominated
+convergence), and the ordered partial sums reduce to the grouped sums up
+to a vanishing correction (`χ₃TurnTail`).  All certified with zero
+`sorry`/`axiom`.
+-/
+
+set_option maxHeartbeats 400000
+
+-- `χ₃` pattern on `ℕ`, as real values
+noncomputable def chi3Z (n : ℕ) : ℝ :=
+  if n % 3 = 1 then 1 else if n % 3 = 2 then -1 else 0
+
+lemma chi3Z_three_mul (k : ℕ) : chi3Z (3 * k) = 0 := by
+  have h : (3 * k) % 3 = 0 := by omega
+  simp [chi3Z, h]
+lemma chi3Z_three_mul_add_one (k : ℕ) : chi3Z (3 * k + 1) = 1 := by
+  have h : (3 * k + 1) % 3 = 1 := by omega
+  simp [chi3Z, h]
+lemma chi3Z_three_mul_add_two (k : ℕ) : chi3Z (3 * k + 2) = -1 := by
+  have h : (3 * k + 2) % 3 = 2 := by omega
+  simp [chi3Z, h]
+
+/-- The mod-3 pattern `chi3Z` is exactly the real values of the character
+`ZMod.χ₃`: `χ₃(n) = 0, 1, -1` for `n ≡ 0, 1, 2 mod 3`. -/
+lemma chi3Z_eq_χ₃ (n : ℕ) : ((ZMod.χ₃ n : ℤ) : ℝ) = chi3Z n := by
+  have hmod : n % 3 = 0 ∨ n % 3 = 1 ∨ n % 3 = 2 := by omega
+  rcases hmod with h0 | h1 | h2
+  · have hn : (n : ZMod 3) = ((0 : ℕ) : ZMod 3) := by
+      rw [ZMod.natCast_eq_natCast_iff]
+      change n % 3 = 0 % 3
+      simp [h0]
+    have hz : ZMod.χ₃ (0 : ZMod 3) = 0 := by decide
+    simp [hn, hz, chi3Z, h0]
+  · have hn : (n : ZMod 3) = ((1 : ℕ) : ZMod 3) := by
+      rw [ZMod.natCast_eq_natCast_iff]
+      change n % 3 = 1 % 3
+      simp [h1]
+    have hz : ZMod.χ₃ (1 : ZMod 3) = 1 := by decide
+    simp [hn, hz, chi3Z, h1]
+  · have hn : (n : ZMod 3) = ((2 : ℕ) : ZMod 3) := by
+      rw [ZMod.natCast_eq_natCast_iff]
+      change n % 3 = 2 % 3
+      simp [h2]
+    have hz : ZMod.χ₃ (2 : ZMod 3) = -1 := by decide
+    simp [hn, hz, chi3Z, h2]
+
+-- the grouped series term, in `ℝ`
+noncomputable def chi3GroupTerm (k : ℕ) : ℝ :=
+  (1 : ℝ) / (3 * (k : ℝ) + 1) - (1 : ℝ) / (3 * (k : ℝ) + 2)
+
+noncomputable def chi3Group (M : ℕ) : ℝ :=
+  ∑ k ∈ Finset.range M, chi3GroupTerm k
+
+-- ordered partial sums of `χ₃ n / n`
+noncomputable def chi3Partial (N : ℕ) : ℝ :=
+  ∑ n ∈ Finset.range N, chi3Z n / (n : ℝ)
+
+-- the limit function on `[0,1]`: value is `1/(1+x+x^2)` for `x<1`, else 0
+noncomputable def chi3LimitF (x : ℝ) : ℝ :=
+  if x < 1 then 1 / (1 + x + x ^ 2) else 0
+
+noncomputable def thetaF (x : ℝ) : ℝ :=
+  (2 / Real.sqrt 3) * Real.arctan ((2 * x + 1) / Real.sqrt 3)
+
+lemma hasDerivAt_thetaF (x : ℝ) :
+    HasDerivAt thetaF (1 / (1 + x + x ^ 2)) x := by
+  have hlin : HasDerivAt (fun y : ℝ => (2 * y + 1) / Real.sqrt 3) (2 / Real.sqrt 3) x := by
+    have hA : HasDerivAt (fun y : ℝ => 2 * y + 1) 2 x := by
+      simpa using ((hasDerivAt_id x).const_mul 2 |>.add_const 1)
+    exact hA.div_const (Real.sqrt 3)
+  have hcomp : HasDerivAt (fun y : ℝ => Real.arctan ((2 * y + 1) / Real.sqrt 3))
+      ((1 / (1 + (((2 * x + 1) / Real.sqrt 3) ^ 2))) * (2 / Real.sqrt 3)) x := by
+    exact HasDerivAt.comp (x := x) (h₂ := Real.arctan)
+      (h₂' := (1 / (1 + (((2 * x + 1) / Real.sqrt 3) ^ 2)))) (h := fun y : ℝ => (2 * y + 1) / Real.sqrt 3)
+      (h' := (2 / Real.sqrt 3)) (Real.hasDerivAt_arctan ((2 * x + 1) / Real.sqrt 3)) hlin
+  have htot := hcomp.const_mul (2 / Real.sqrt 3)
+  have hfix : (2 / Real.sqrt 3) * ((1 / (1 + (((2 * x + 1) / Real.sqrt 3) ^ 2))) *
+      (2 / Real.sqrt 3)) = 1 / (1 + x + x ^ 2) := by
+    have hdz : 1 + x + x ^ 2 ≠ 0 := by
+      have hpos : 0 < 1 + x + x ^ 2 := by nlinarith [sq_nonneg (x + 1 / 2)]
+      exact ne_of_gt hpos
+    have hs2 : (Real.sqrt 3) ^ 2 = 3 := Real.sq_sqrt (by norm_num)
+    field_simp [hs2, hdz]
+    ring_nf
+    rw [hs2]
+    ring
+  convert htot using 1
+  · rfl
+  · rfl
+  · rfl
+  · exact hfix.symm
+
+lemma integral_cubic_value :
+    ∫ x in (0 : ℝ)..1, 1 / (1 + x + x ^ 2) = Real.pi / (3 * Real.sqrt 3) := by
+  have hcont : ContinuousOn thetaF (Set.Icc 0 1) := by
+    unfold thetaF
+    fun_prop
+  have hderiv : ∀ x ∈ Set.Ioo (0 : ℝ) 1, HasDerivAt thetaF (1 / (1 + x + x ^ 2)) x := by
+    intro x hx
+    exact hasDerivAt_thetaF x
+  have hint : IntervalIntegrable (fun x : ℝ => 1 / (1 + x + x ^ 2)) MeasureTheory.volume 0 1 := by
+    have hden : ∀ x : ℝ, 1 + x + x ^ 2 ≠ 0 := by
+      intro x
+      have hpos : 0 < 1 + x + x ^ 2 := by nlinarith [sq_nonneg (x + 1 / 2)]
+      exact ne_of_gt hpos
+    have hdencont : Continuous (fun x : ℝ => 1 + x + x ^ 2) := by fun_prop
+    have hc : Continuous (fun x : ℝ => 1 / (1 + x + x ^ 2)) := by
+      simpa using (hdencont.inv₀ hden).const_mul 1
+    exact hc.intervalIntegrable 0 1
+  have hftc := intervalIntegral.integral_eq_sub_of_hasDerivAt_of_le (a := (0 : ℝ)) (b := 1)
+    (by norm_num) hcont hderiv hint
+  have hval : thetaF 1 - thetaF 0 = Real.pi / (3 * Real.sqrt 3) := by
+    unfold thetaF
+    have hs2 : (Real.sqrt 3) ^ 2 = 3 := Real.sq_sqrt (by norm_num)
+    have h3 : (3 : ℝ) / Real.sqrt 3 = Real.sqrt 3 := by
+      field_simp [hs2]; rw [hs2]
+    have h1 : (1 : ℝ) / Real.sqrt 3 = (Real.sqrt 3)⁻¹ := by
+      rw [one_div]
+    rw [show (2 * 1 + 1 : ℝ) / Real.sqrt 3 = Real.sqrt 3 by
+        rw [show (2 * 1 + 1 : ℝ) = 3 by norm_num]; exact h3,
+      show (2 * 0 + 1 : ℝ) / Real.sqrt 3 = (Real.sqrt 3)⁻¹ by
+        rw [show (2 * 0 + 1 : ℝ) = 1 by norm_num]; exact h1]
+    rw [Real.arctan_sqrt_three, Real.arctan_inv_sqrt_three]
+    field_simp
+    norm_num
+  rwa [hval] at hftc
+
+lemma integral_pow_aux (m : ℕ) :
+    ∫ x in (0 : ℝ)..1, x ^ m = (1 : ℝ) / (m + 1) := by
+  have hF (x : ℝ) : HasDerivAt (fun y : ℝ => y ^ (m + 1) / (m + 1 : ℝ)) (x ^ m) x := by
+    have hd := (hasDerivAt_id x).pow (m + 1)
+    have hd' := hd.div_const (m + 1 : ℝ)
+    convert hd' using 1
+    · rfl
+    · rfl
+    · funext y
+      simp [id]
+    · have hc : (m + 1 : ℝ) ≠ 0 := by exact_mod_cast (Nat.succ_ne_zero m)
+      simp [id]
+      field_simp [hc]
+  have hint : IntervalIntegrable (fun x : ℝ => x ^ m) MeasureTheory.volume 0 1 := by
+    have hc : Continuous (fun x : ℝ => x ^ m) := by fun_prop
+    exact hc.intervalIntegrable 0 1
+  rw [intervalIntegral.integral_eq_sub_of_hasDerivAt (f := fun y : ℝ => y ^ (m + 1) / (m + 1 : ℝ))
+      (f' := fun x : ℝ => x ^ m) (fun x _ => hF x) hint]
+  simp
+
+-- the grouped step functions
+noncomputable def chi3StepF (N : ℕ) (x : ℝ) : ℝ :=
+  ∑ k ∈ Finset.range N, (x ^ (3 * k) - x ^ (3 * k + 1))
+
+lemma chi3StepF_closed (N : ℕ) (x : ℝ) :
+    chi3StepF N x = (1 - x ^ (3 * N)) / (1 + x + x ^ 2) := by
+  by_cases hx : x = 1
+  · subst hx
+    simp [chi3StepF]
+  · have hdz : 1 + x + x ^ 2 ≠ 0 := by
+      have hpos : 0 < 1 + x + x ^ 2 := by nlinarith [sq_nonneg x]
+      exact ne_of_gt hpos
+    have hx3ne : x ^ 3 ≠ 1 := by
+      intro h
+      have hfac : (x - 1) * (x ^ 2 + x + 1) = x ^ 3 - 1 := by ring
+      have hm : (x - 1) * (x ^ 2 + x + 1) = 0 := by
+        rw [hfac, h]; ring
+      have hq : x ^ 2 + x + 1 ≠ 0 := by
+        have hpos : 0 < x ^ 2 + x + 1 := by nlinarith [sq_nonneg x]
+        exact ne_of_gt hpos
+      have hz := mul_eq_zero.mp hm
+      rcases hz with hx1 | hq0
+      · exact hx (sub_eq_zero.mp hx1)
+      · exact (hq hq0).elim
+    have hsum : (∑ k ∈ Finset.range N, (x ^ 3) ^ k) = ((x ^ 3) ^ N - 1) / (x ^ 3 - 1) :=
+      geom_sum_eq hx3ne N
+    have hterm : ∀ k, x ^ (3 * k) - x ^ (3 * k + 1) = (1 - x) * (x ^ 3) ^ k := by
+      intro k
+      have h1 : x ^ (3 * k) = (x ^ 3) ^ k := by rw [pow_mul]
+      have h2 : x ^ (3 * k + 1) = x * (x ^ 3) ^ k := by
+        rw [← h1, pow_add, pow_one]
+        ring
+      calc
+        x ^ (3 * k) - x ^ (3 * k + 1) = (x ^ 3) ^ k - x * (x ^ 3) ^ k := by rw [h1, h2]
+        _ = (1 - x) * (x ^ 3) ^ k := by ring
+    calc
+      chi3StepF N x = ∑ k ∈ Finset.range N, (1 - x) * (x ^ 3) ^ k := by
+        unfold chi3StepF
+        refine Finset.sum_congr rfl ?_
+        intro k hk
+        exact hterm k
+      _ = (1 - x) * ∑ k ∈ Finset.range N, (x ^ 3) ^ k := by rw [Finset.mul_sum]
+      _ = (1 - x) * ((x ^ 3) ^ N - 1) / (x ^ 3 - 1) := by
+        rw [hsum]
+        ring
+      _ = (1 - x ^ (3 * N)) / (1 + x + x ^ 2) := by
+        have hpx : 1 - x ≠ 0 := sub_ne_zero.mpr (Ne.symm hx)
+        have h13 : (x ^ 3) ^ N = x ^ (3 * N) := by rw [pow_mul]
+        rw [h13]
+        field_simp [hpx, hdz, hx3ne]
+        ring_nf
+
+lemma chi3StepF_norm_le {N : ℕ} {x : ℝ} (hx : x ∈ Set.Ioc (0 : ℝ) 1) :
+    ‖chi3StepF N x‖ ≤ (1 : ℝ) := by
+  rcases hx with ⟨h0, hxle⟩
+  have hnum0 : 0 ≤ 1 - x ^ (3 * N) := by
+    have hpl : x ^ (3 * N) ≤ 1 := pow_le_one₀ (n := 3 * N) h0.le hxle
+    nlinarith
+  have hnum1 : 1 - x ^ (3 * N) ≤ 1 := by
+    nlinarith [pow_nonneg h0.le (3 * N)]
+  have hd : 0 < 1 + x + x ^ 2 := by nlinarith [sq_nonneg x]
+  have hden1 : 1 ≤ 1 + x + x ^ 2 := by nlinarith [sq_nonneg x]
+  have hge : 0 ≤ (1 - x ^ (3 * N)) / (1 + x + x ^ 2) := div_nonneg hnum0 hd.le
+  have hle : (1 - x ^ (3 * N)) / (1 + x + x ^ 2) ≤ 1 := by
+    exact (div_le_one hd).2 (by nlinarith [pow_nonneg h0.le (3 * N), hden1])
+  rw [chi3StepF_closed N x, Real.norm_eq_abs, abs_of_nonneg hge]
+  exact hle
+
+lemma chi3StepF_tendsto_limit {x : ℝ} (hx : x ∈ Set.Ioc (0 : ℝ) 1) :
+    Tendsto (fun N : ℕ => chi3StepF N x) atTop (𝓝 (chi3LimitF x)) := by
+  rcases hx with ⟨h0, hxle⟩
+  by_cases hx1 : x = 1
+  · subst hx1
+    simp [chi3StepF, chi3LimitF]
+  · have hlt : x < 1 := lt_of_le_of_ne hxle hx1
+    have hlim : chi3LimitF x = 1 / (1 + x + x ^ 2) := by
+      simp [chi3LimitF, hlt]
+    rw [hlim]
+    have hdz : 1 + x + x ^ 2 ≠ 0 := by
+      have hpos : 0 < 1 + x + x ^ 2 := by nlinarith [sq_nonneg x]
+      exact ne_of_gt hpos
+    have hx2 : x ^ 2 < 1 := by
+      have hlt2 : x ^ 2 < x := by
+        simpa [pow_two] using (mul_lt_mul_of_pos_left hlt h0)
+      exact lt_trans hlt2 hlt
+    have hx3 : x ^ 3 < 1 := by
+      have hle : x ^ 2 * x ≤ x ^ 2 := by
+        have hc := mul_le_mul_of_nonneg_left hlt.le (pow_nonneg h0.le 2)
+        simpa using hc
+      have hlt2 := lt_of_le_of_lt hle hx2
+      simpa [show x ^ 3 = x ^ 2 * x by ring] using hlt2
+    have hx3n : ‖x ^ 3‖ < (1 : ℝ) := by
+      rw [Real.norm_eq_abs, abs_of_pos (pow_pos h0 3)]
+      exact hx3
+    have ht0 : Tendsto (fun N : ℕ => (x ^ 3) ^ N) atTop (𝓝 (0 : ℝ)) :=
+      tendsto_pow_atTop_nhds_zero_of_norm_lt_one hx3n
+    have ht : Tendsto (fun N : ℕ => x ^ (3 * N)) atTop (𝓝 (0 : ℝ)) := by
+      simpa [pow_mul] using ht0
+    have hsub : Tendsto (fun N : ℕ => (1 : ℝ) - x ^ (3 * N)) atTop (𝓝 (1 : ℝ)) := by
+      simpa using (tendsto_const_nhds (x := (1 : ℝ))).sub ht
+    have ht1 : Tendsto (fun N : ℕ => (1 - x ^ (3 * N)) / (1 + x + x ^ 2)) atTop
+        (𝓝 (1 / (1 + x + x ^ 2))) :=
+      hsub.div tendsto_const_nhds hdz
+    convert ht1 using 1
+    · funext N
+      exact chi3StepF_closed N x
+
+lemma integral_chi3StepF (N : ℕ) :
+    ∫ x in (0 : ℝ)..1, chi3StepF N x = chi3Group N := by
+  unfold chi3StepF chi3Group
+  have hI1 (k : ℕ) : IntervalIntegrable (fun x : ℝ => x ^ (3 * k)) MeasureTheory.volume 0 1 := by
+    have hc : Continuous (fun x : ℝ => x ^ (3 * k)) := by fun_prop
+    exact hc.intervalIntegrable 0 1
+  have hI2 (k : ℕ) : IntervalIntegrable (fun x : ℝ => x ^ (3 * k + 1)) MeasureTheory.volume 0 1 := by
+    have hc : Continuous (fun x : ℝ => x ^ (3 * k + 1)) := by fun_prop
+    exact hc.intervalIntegrable 0 1
+  rw [intervalIntegral.integral_finsetSum (fun k hk => (hI1 k).sub (hI2 k))]
+  apply Finset.sum_congr rfl
+  intro k hk
+  rw [chi3GroupTerm]
+  rw [intervalIntegral.integral_sub (hI1 k) (hI2 k)]
+  rw [integral_pow_aux (3 * k), integral_pow_aux (3 * k + 1)]
+  norm_num [Nat.cast_add, Nat.cast_mul]
+  ring_nf
+
+lemma tendsto_integral_chi3StepF :
+    Tendsto (fun N : ℕ => ∫ x in (0 : ℝ)..1, chi3StepF N x) atTop
+      (𝓝 (∫ x in (0 : ℝ)..1, chi3LimitF x)) := by
+  refine intervalIntegral.tendsto_integral_filter_of_dominated_convergence
+      (μ := MeasureTheory.volume) (l := atTop) (F := fun N x => chi3StepF N x)
+      (bound := fun _ : ℝ => 1) (f := chi3LimitF) ?_ ?_ ?_ ?_
+  · refine Eventually.of_forall ?_
+    intro N
+    have hc : Continuous (chi3StepF N) := by
+      unfold chi3StepF
+      fun_prop
+    exact hc.aestronglyMeasurable
+  · refine Eventually.of_forall ?_
+    intro N
+    exact MeasureTheory.ae_of_all MeasureTheory.volume
+      (fun x => fun hx =>
+        chi3StepF_norm_le (N := N) (by
+          simpa [Set.uIoc_of_le (show (0 : ℝ) ≤ 1 by norm_num)] using hx))
+  · have hc : Continuous (fun _ : ℝ => (1 : ℝ)) := continuous_const
+    exact hc.intervalIntegrable 0 1
+  · exact MeasureTheory.ae_of_all MeasureTheory.volume
+      (fun x => fun hx =>
+        chi3StepF_tendsto_limit (by
+          simpa [Set.uIoc_of_le (show (0 : ℝ) ≤ 1 by norm_num)] using hx))
+
+lemma chi3_group_tendsto :
+    Tendsto chi3Group atTop (𝓝 (Real.pi / (3 * Real.sqrt 3))) := by
+  have h1 := tendsto_integral_chi3StepF
+  have hval : (∫ x in (0 : ℝ)..1, chi3LimitF x) = Real.pi / (3 * Real.sqrt 3) := by
+    have hcongr : ∫ x in (0 : ℝ)..1, chi3LimitF x = ∫ x in (0 : ℝ)..1, 1 / (1 + x + x ^ 2) := by
+      exact intervalIntegral.integral_congr_Ioo_of_le (show (0 : ℝ) ≤ 1 by norm_num)
+        (fun x hx => by simp [chi3LimitF, hx.2])
+    rw [hcongr]
+    exact integral_cubic_value
+  have h1' : Tendsto (fun N : ℕ => ∫ x in (0 : ℝ)..1, chi3StepF N x) atTop
+      (𝓝 (Real.pi / (3 * Real.sqrt 3))) := by
+    simpa [hval] using h1
+  exact h1'.congr' (Eventually.of_forall (fun N => integral_chi3StepF N))
+
+-- ordered partial sums reduce to the grouped series, plus a lim-vanishing correction
+
+lemma chi3Partial_three_mul (M : ℕ) : chi3Partial (3 * M) = chi3Group M := by
+  induction M with
+  | zero => simp [chi3Partial, chi3Group]
+  | succ M ih =>
+      rw [show 3 * (M + 1) = 3 * M + 3 by omega]
+      unfold chi3Partial
+      rw [Finset.sum_range_succ]
+      rw [Finset.sum_range_succ]
+      rw [Finset.sum_range_succ]
+      have h0 : chi3Z (3 * M) / ((3 * M : ℕ) : ℝ) = 0 := by
+        rw [chi3Z_three_mul M]; simp
+      have h1 : chi3Z (3 * M + 1) / ((3 * M + 1 : ℕ) : ℝ) = 1 / (3 * (M : ℝ) + 1) := by
+        have hc1 : (((3 * M + 1 : ℕ) : ℝ)) = 3 * (M : ℝ) + 1 := by
+          norm_num [Nat.cast_add, Nat.cast_mul]
+        rw [chi3Z_three_mul_add_one M, hc1]
+      have h2 : chi3Z (3 * M + 2) / ((3 * M + 2 : ℕ) : ℝ) = -(1 / (3 * (M : ℝ) + 2)) := by
+        have hc2 : (((3 * M + 2 : ℕ) : ℝ)) = 3 * (M : ℝ) + 2 := by
+          norm_num [Nat.cast_add, Nat.cast_mul]
+        rw [chi3Z_three_mul_add_two M, hc2, neg_div]
+      rw [h0, h1, h2]
+      unfold chi3Group
+      rw [Finset.sum_range_succ]
+      change chi3Partial (3 * M) + (0 : ℝ) + (1 / (3 * (M : ℝ) + 1)) +
+          (-(1 / (3 * (M : ℝ) + 2))) = chi3Group M + chi3GroupTerm M
+      rw [ih]
+      unfold chi3GroupTerm
+      ring
+
+noncomputable def chi3TurnTail (N : ℕ) : ℝ :=
+  ∑ j ∈ Finset.range (N % 3), chi3Z (3 * (N / 3) + j) / ((3 * (N / 3) + j : ℕ) : ℝ)
+
+lemma chi3TurnTail_eq_zero {N : ℕ} (hr : N % 3 = 0) : chi3TurnTail N = 0 := by
+  unfold chi3TurnTail
+  rw [hr]
+  simp
+
+lemma chi3TurnTail_eq_zero' {N : ℕ} (hr : N % 3 = 1) : chi3TurnTail N = 0 := by
+  unfold chi3TurnTail
+  rw [hr]
+  rw [Finset.sum_range_succ]
+  simp [chi3Z_three_mul]
+
+lemma chi3TurnTail_eq_inv {N : ℕ} (hr : N % 3 = 2) :
+    chi3TurnTail N = (1 : ℝ) / ((3 * (N / 3) + 1 : ℕ) : ℝ) := by
+  unfold chi3TurnTail
+  rw [hr]
+  rw [Finset.sum_range_succ, Finset.sum_range_succ]
+  simp [chi3Z_three_mul, chi3Z_three_mul_add_one]
+
+lemma chi3Partial_split (N : ℕ) :
+    chi3Partial N = chi3Partial (3 * (N / 3)) + chi3TurnTail N := by
+  unfold chi3Partial chi3TurnTail
+  conv_lhs => rw [← show (3 * (N / 3) + N % 3) = N by omega]
+  rw [Finset.sum_range_add]
+
+lemma chi3TurnTail_bound {N : ℕ} :
+    ‖chi3TurnTail N‖ ≤ (1 : ℝ) / ((3 * (N / 3) + 1 : ℕ) : ℝ) := by
+  have hmod : N % 3 = 0 ∨ N % 3 = 1 ∨ N % 3 = 2 := by omega
+  rcases hmod with h0 | h1 | h2
+  · rw [chi3TurnTail_eq_zero h0]
+    simp
+    have hk : (0 : ℕ) < 3 * (N / 3) + 1 := by omega
+    have hd : (0 : ℝ) < ((3 * (N / 3) + 1 : ℕ) : ℝ) := by exact_mod_cast hk
+    simpa using hd.le
+  · rw [chi3TurnTail_eq_zero' h1]
+    simp
+    have hk : (0 : ℕ) < 3 * (N / 3) + 1 := by omega
+    have hd : (0 : ℝ) < ((3 * (N / 3) + 1 : ℕ) : ℝ) := by exact_mod_cast hk
+    simpa using hd.le
+  · rw [chi3TurnTail_eq_inv h2]
+    have hk : (0 : ℕ) < 3 * (N / 3) + 1 := by omega
+    have hd1 : (0 : ℝ) < ((3 * (N / 3) + 1 : ℕ) : ℝ) := by exact_mod_cast hk
+    have hpos : (0 : ℝ) < 1 / ((3 * (N / 3) + 1 : ℕ) : ℝ) := div_pos (by norm_num) hd1
+    rw [Real.norm_eq_abs, abs_of_pos hpos]
+
+lemma chi3TurnTail_tendsto : Tendsto chi3TurnTail atTop (𝓝 (0 : ℝ)) := by
+  have hmd : Tendsto (fun N : ℕ => (3 * (N / 3) + 1 : ℕ)) atTop atTop := by
+    rw [tendsto_atTop_atTop]
+    intro b
+    refine ⟨3 * b + 3, ?_⟩
+    intro N hN
+    omega
+  have hcast : Tendsto (fun N : ℕ => (((3 * (N / 3) + 1 : ℕ) : ℝ))) atTop atTop :=
+    tendsto_natCast_atTop_atTop.comp hmd
+  have hinv : Tendsto (fun N : ℕ => (((3 * (N / 3) + 1 : ℕ) : ℝ)⁻¹)) atTop (𝓝 (0 : ℝ)) :=
+    tendsto_inv_atTop_zero.comp hcast
+  have hb : Tendsto (fun N : ℕ => (1 : ℝ) / ((3 * (N / 3) + 1 : ℕ) : ℝ)) atTop (𝓝 (0 : ℝ)) := by
+    exact hinv.congr' (Eventually.of_forall (fun N => by rw [← one_div]))
+  have hneg : Tendsto (fun N : ℕ => -((1 : ℝ) / ((3 * (N / 3) + 1 : ℕ) : ℝ))) atTop (𝓝 (0 : ℝ)) := by
+    simpa using hb.neg
+  refine tendsto_of_tendsto_of_tendsto_of_le_of_le hneg hb ?_ ?_
+  · intro N
+    have hbN : |chi3TurnTail N| ≤ (1 : ℝ) / ((3 * (N / 3) + 1 : ℕ) : ℝ) := by
+      simpa [Real.norm_eq_abs] using chi3TurnTail_bound (N := N)
+    exact (abs_le.mp hbN).1
+  · intro N
+    have hbN : |chi3TurnTail N| ≤ (1 : ℝ) / ((3 * (N / 3) + 1 : ℕ) : ℝ) := by
+      simpa [Real.norm_eq_abs] using chi3TurnTail_bound (N := N)
+    exact (abs_le.mp hbN).2
+
+lemma chi3Partial_tendsto :
+    Tendsto chi3Partial atTop (𝓝 (Real.pi / (3 * Real.sqrt 3))) := by
+  have hg : Tendsto (fun M : ℕ => chi3Partial (3 * M)) atTop (𝓝 (Real.pi / (3 * Real.sqrt 3))) :=
+    chi3_group_tendsto.congr' (Eventually.of_forall (fun M => (chi3Partial_three_mul M).symm))
+  have hq : Tendsto (fun N : ℕ => N / 3) atTop atTop := by
+    rw [tendsto_atTop_atTop]
+    intro b
+    refine ⟨3 * (b + 1), ?_⟩
+    intro N hN
+    omega
+  have hmain : Tendsto (fun N : ℕ => chi3Partial (3 * (N / 3))) atTop
+      (𝓝 (Real.pi / (3 * Real.sqrt 3))) :=
+    hg.comp hq
+  have htail : Tendsto (fun N : ℕ => chi3Partial N - chi3Partial (3 * (N / 3))) atTop (𝓝 (0 : ℝ)) :=
+    chi3TurnTail_tendsto.congr' (Eventually.of_forall (fun N => by
+      change chi3TurnTail N = chi3Partial N - chi3Partial (3 * (N / 3))
+      rw [chi3Partial_split]
+      ring))
+  have hsum := hmain.add htail
+  convert hsum using 1
+  · funext N
+    ring
+  · simp
+
+/-- The `χ₃` Dirichlet series at `s = 1` (`Σ χ₃(n)/n`): its ordered partial sums in `ℝ`
+coincide with the ordered partial sums of the mod-3 pattern `chi3Z n / n`. -/
+lemma chi3_series_partial_real (N : ℕ) :
+    (∑ n ∈ Finset.range N, ((ZMod.χ₃ n : ℤ) : ℝ) / (n : ℝ)) = chi3Partial N := by
+  unfold chi3Partial
+  refine Finset.sum_congr rfl ?_
+  intro n hn
+  rw [chi3Z_eq_χ₃ n]
+
+/-- `L(1, χ₃) = π/(3√3)` as a Dirichlet-series limit (in `ℝ`): the ordered partial sums
+`Σ_{n<N} χ₃(n)/n` tend to `π/(3√3)`. -/
+lemma chi3_series_real_pi_div_three_sqrt_three :
+    Tendsto (fun N : ℕ => ∑ n ∈ Finset.range N, ((ZMod.χ₃ n : ℤ) : ℝ) / (n : ℝ)) atTop
+      (𝓝 (Real.pi / (3 * Real.sqrt 3) : ℝ)) := by
+  convert chi3Partial_tendsto using 1
+  funext N
+  rw [chi3_series_partial_real]
+
+lemma chi3ℂ_term_eq (n : ℕ) :
+    (algebraMap ℝ ℂ) (((ZMod.χ₃ n : ℤ) : ℝ) / (n : ℝ)) = (χ₃ℂ n) / (n : ℂ) := by
+  have hnum : (algebraMap ℝ ℂ) (((ZMod.χ₃ n : ℤ) : ℝ)) = ((ZMod.χ₃ n : ℤ) : ℂ) := by norm_num
+  have hnum2 : ((ZMod.χ₃ n : ℤ) : ℂ) = (χ₃ℂ n) := by simp [χ₃ℂ]
+  have hden : (algebraMap ℝ ℂ) (n : ℝ) = (n : ℂ) := by rfl
+  rw [map_div₀, hnum, hnum2, hden]
+
+lemma chi3_series_eq_real (N : ℕ) :
+    (algebraMap ℝ ℂ) (∑ n ∈ Finset.range N, (((ZMod.χ₃ n : ℤ) : ℝ) / (n : ℝ)))
+      = ∑ n ∈ Finset.range N, (χ₃ℂ n) / (n : ℂ) := by
+  calc
+    (algebraMap ℝ ℂ) (∑ n ∈ Finset.range N, (((ZMod.χ₃ n : ℤ) : ℝ) / (n : ℝ)))
+        = ∑ n ∈ Finset.range N, (algebraMap ℝ ℂ) (((ZMod.χ₃ n : ℤ) : ℝ) / (n : ℝ)) :=
+          map_sum (algebraMap ℝ ℂ) (fun n : ℕ => ((ZMod.χ₃ n : ℤ) : ℝ) / (n : ℝ)) (Finset.range N)
+    _ = ∑ n ∈ Finset.range N, (χ₃ℂ n) / (n : ℂ) :=
+          Finset.sum_congr rfl (by intro n hn; exact chi3ℂ_term_eq n)
+
+/-- The `L(1, χ₃) = π/(3√3)` special value as a Dirichlet-series limit: the ordered partial
+sums `Σ_{n<N} χ₃(n)/n` (in `ℂ`) tend to `π/(3√3)`. -/
+lemma chi3_series_pi_div_three_sqrt_three :
+    Tendsto (fun N : ℕ => ∑ n ∈ Finset.range N, (χ₃ℂ n) / (n : ℂ)) atTop
+      (𝓝 (Real.pi / (3 * Real.sqrt 3) : ℂ)) := by
+  have hc : Tendsto (RCLike.ofReal ∘ (fun N : ℕ => ∑ n ∈ Finset.range N, ((ZMod.χ₃ n : ℤ) : ℝ) / (n : ℝ))) atTop
+      (𝓝 (RCLike.ofReal (K := ℂ) (Real.pi / (3 * Real.sqrt 3) : ℝ))) :=
+    RCLike.continuous_ofReal.continuousAt.tendsto.comp chi3_series_real_pi_div_three_sqrt_three
+  have hpi : 𝓝 (RCLike.ofReal (K := ℂ) (Real.pi / (3 * Real.sqrt 3) : ℝ)) =
+      𝓝 (Real.pi / (3 * Real.sqrt 3) : ℂ) := by
+    congr 1
+    change (algebraMap ℝ ℂ) (Real.pi / (3 * Real.sqrt 3)) =
+      (Real.pi : ℂ) / ((3 : ℂ) * (Real.sqrt 3 : ℂ))
+    rw [map_div₀, map_mul]
+    simp
+  have hobs : ∀ᶠ N in atTop,
+      (RCLike.ofReal ∘ (fun N : ℕ => ∑ n ∈ Finset.range N, ((ZMod.χ₃ n : ℤ) : ℝ) / (n : ℝ))) N =
+        ∑ n ∈ Finset.range N, (χ₃ℂ n) / (n : ℂ) := by
+    apply Filter.Eventually.of_forall
+    intro N
+    change (algebraMap ℝ ℂ) (∑ n ∈ Finset.range N, (((ZMod.χ₃ n : ℤ) : ℝ) / (n : ℝ))) =
+      ∑ n ∈ Finset.range N, (χ₃ℂ n) / (n : ℂ)
+    exact chi3_series_eq_real N
   simpa [hpi] using hc.congr' hobs
 
 end PunoTwin.Dirichlet
