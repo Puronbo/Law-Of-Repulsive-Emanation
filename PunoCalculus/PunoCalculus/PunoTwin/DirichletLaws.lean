@@ -7,9 +7,10 @@ import Mathlib.NumberTheory.Bernoulli
 import Mathlib.Data.Nat.Prime.Defs
 import Mathlib.NumberTheory.LegendreSymbol.ZModChar
 import Mathlib.NumberTheory.SumTwoSquares
+import Mathlib.Analysis.Real.Pi.Leibniz
 
-open DirichletCharacter HurwitzZeta
-open scoped Real BigOperators
+open DirichletCharacter HurwitzZeta Filter
+open scoped Real BigOperators Topology
 open Nat
 
 /-!
@@ -119,12 +120,23 @@ laws), closed in mathlib with zero `sorry`/`axiom`:
     `3`, `4`, or `8` contains infinitely many primes
     (`infinitelyManyPrimes_mod_three`, `infinitelyManyPrimes_mod_four`,
     `infinitelyManyPrimes_mod_eight` and the per-residue coverage
-    examples).
+    examples);
+  * **exact special value at `s = 1` for `χ₄`**: the Dirichlet series
+    `Σₙ χ₄(n)/n` converges (conditionally, in the ordered-partial-sum
+    sense) to `π/4` — the classical `L(1, χ₄) = π/4` value
+    (`chi4_series_real_pi_div_four`, `chi4_series_pi_div_four`).
+    mathlib's bridge from the *analytic* `LFunction` to the Dirichlet
+    series (`LFunction_eq_LSeries`) requires `1 < s.re`, so no bridge
+    exists at `s = 1`; the value is therefore certified here as the
+    limit of the ordered partial sums (via the Leibniz `π/4` series and
+    the reindex `n = 2i + 1`).
 
-Everything below is fully proved.  The remaining — exact transcendental
-identities such as `L(2, χ₋₄) = Catalans' G`, or any claim that the
-aperiodic lattice of the *discrete* twin reproduces these laws beyond
-the verified instances — is not claimed here.
+Everything below is fully proved.  The remaining — the exact
+transcendental identities `L(2, χ₋₄) = Catalan's G` and the
+`s = 1` special values `L(1, χ₃) = π/(3√3)`, `L(1, χ₈) = ln(1+√2)/√2`,
+`L(1, χ₈') = π/(4√2)` stated in the code as future-work goals, or any
+claim that the aperiodic lattice of the *discrete* twin reproduces these
+laws beyond the verified instances — is not claimed here.
 -/
 
 namespace PunoTwin.Dirichlet
@@ -1593,5 +1605,143 @@ example : {p : ℕ | p.Prime ∧ p ≡ 9 [MOD 10]}.Infinite :=
 /-- The order form: beyond every bound there is a prime in the class. -/
 example (n : ℕ) : ∃ p > n, p.Prime ∧ p ≡ 2 [MOD 5] :=
   dirichlet_prime_gt 5 2 (by decide) (by decide) n
+
+/-!
+# Exact special value at `s = 1`: `L(1, χ₄) = π/4` (Leibniz)
+
+Certified here as a *Dirichlet-series* convergence identity: the ordered
+partial sums of `Σₙ χ₄(n)/n` tend to `π/4`.  Rationale for this form:
+mathlib's bridge from the analytic `LFunction` to the Dirichlet series
+(`LFunction_eq_LSeries`) requires `1 < s.re`, so no bridge exists at
+`s = 1`; the classical value is therefore stated as the ordered-partial-sum
+(conditionally convergent) limit, reached through the Leibniz reindex
+`n = 2i + 1`.
+
+**Future work (NOT proved here):** the corresponding exact special values
+`Σₙ χ₃(n)/n → π/(3√3)`, `Σₙ χ₈(n)/n → ln(1+√2)/√2`,
+`Σₙ χ₈'(n)/n → π/(4√2)` follow the same reindex method and need further
+open-`mathlib` machinery (arctangent / root-of-unity series for `χ₃` and
+`χ₈'`, the `ln(1+√2)` series for `χ₈`).  They are left OPEN by design —
+no `sorry`, no unproved claims.
+-/
+
+lemma chi4_even_zero_real {n : ℕ} (hn : n % 2 = 0) : ((ZMod.χ₄ n : ℤ) : ℝ) = 0 := by
+  have hz : ZMod.χ₄ n = 0 := by
+    rw [ZMod.χ₄_nat_eq_if_mod_four]
+    simp [hn]
+  simp [hz]
+
+lemma ZMod.chi4_two_mul_add_one_real (i : ℕ) :
+    ((ZMod.χ₄ ((2 * i + 1 : ℕ) : ZMod 4) : ℤ) : ℝ) = (-1 : ℝ) ^ i := by
+  have hodd : (2 * i + 1) % 2 = 1 := by omega
+  have hhalf : (2 * i + 1) / 2 = i := by omega
+  have h := ZMod.χ₄_eq_neg_one_pow (n := 2 * i + 1) hodd
+  rw [hhalf] at h
+  rw [h]
+  norm_num
+
+/-- The `χ₄` Dirichlet series at `s = 1` (`Σ χ₄(n)/n`): its partial sums coincide with the
+Leibniz partial sums (limit `π/4`) after the reindex `n = 2i + 1`. -/
+lemma chi4_series_partial_real (N : ℕ) :
+    (∑ n ∈ Finset.range N, ((ZMod.χ₄ n : ℤ) : ℝ) / (n : ℝ)) =
+      ∑ i ∈ Finset.range (N / 2), (-1 : ℝ) ^ i / (2 * i + 1) := by
+  calc
+    (∑ n ∈ Finset.range N, ((ZMod.χ₄ n : ℤ) : ℝ) / (n : ℝ))
+        = ∑ n ∈ Finset.range N,
+            (if n % 2 = 1 then ((ZMod.χ₄ n : ℤ) : ℝ) / (n : ℝ) else 0) := by
+          refine Finset.sum_congr rfl ?_
+          intro n hn
+          by_cases h : n % 2 = 1
+          · simp [h]
+          · have h0 : ((ZMod.χ₄ n : ℤ) : ℝ) = 0 :=
+              chi4_even_zero_real (Nat.mod_two_eq_zero_or_one n |>.resolve_right h)
+            rw [h0]
+            simp [h]
+    _    = ∑ n ∈ (Finset.range N).filter (fun n : ℕ => n % 2 = 1),
+            ((ZMod.χ₄ n : ℤ) : ℝ) / (n : ℝ) := by
+          exact (Finset.sum_filter (s := Finset.range N)
+            (p := fun n : ℕ => n % 2 = 1)
+            (f := fun n : ℕ => ((ZMod.χ₄ n : ℤ) : ℝ) / (n : ℝ))).symm
+    _    = ∑ i ∈ Finset.range (N / 2), (-1 : ℝ) ^ i / (2 * i + 1) := by
+          symm
+          refine Finset.sum_bij (fun i _ => 2 * i + 1) ?_ ?_ ?_ ?_
+          · intro i hi
+            rw [Finset.mem_filter]
+            constructor
+            · rw [Finset.mem_range]
+              have hi' : i < N / 2 := by
+                rw [Finset.mem_range] at hi
+                exact hi
+              have hle : i + 1 ≤ N / 2 := Nat.succ_le_iff.mpr hi'
+              have hm : 2 * (i + 1) ≤ 2 * (N / 2) := Nat.mul_le_mul_left 2 hle
+              have hdiv : 2 * (N / 2) ≤ N := Nat.mul_div_le N 2
+              omega
+            · rw [show (2 * i + 1) % 2 = 1 by omega]
+          · intro i₁ h₁ a₂ h₂ h
+            omega
+          · intro n hn
+            rw [Finset.mem_filter, Finset.mem_range] at hn
+            rcases hn with ⟨hnN, hnodd⟩
+            refine ⟨n / 2, ⟨?_, ?_⟩⟩
+            · rw [Finset.mem_range]
+              omega
+            · omega
+          · intro i hi
+            rw [ZMod.chi4_two_mul_add_one_real i]
+            rw [show ((2 * i + 1 : ℕ) : ℝ) = 2 * (i : ℝ) + 1 by norm_num]
+
+lemma chi4_series_real_pi_div_four :
+    Tendsto (fun N : ℕ => ∑ n ∈ Finset.range N, ((ZMod.χ₄ n : ℤ) : ℝ) / (n : ℝ)) atTop
+      (𝓝 (Real.pi / 4 : ℝ)) := by
+  have hdiv : Tendsto (fun N : ℕ => N / 2) atTop atTop := by
+    rw [tendsto_atTop_atTop]
+    intro b
+    refine ⟨2 * b, ?_⟩
+    intro m hm
+    rw [Nat.le_div_iff_mul_le (by norm_num : 0 < 2)]
+    omega
+  have hmain : Tendsto (fun N : ℕ => ∑ i ∈ Finset.range (N / 2), (-1 : ℝ) ^ i / (2 * i + 1)) atTop
+      (𝓝 (Real.pi / 4 : ℝ)) := Real.tendsto_sum_pi_div_four.comp hdiv
+  convert hmain using 1
+  funext N
+  rw [chi4_series_partial_real]
+
+lemma chi4ℂ_term_eq (n : ℕ) :
+    (algebraMap ℝ ℂ) (((ZMod.χ₄ n : ℤ) : ℝ) / (n : ℝ)) = (χ₄ℂ n) / (n : ℂ) := by
+  have hnum : (algebraMap ℝ ℂ) (((ZMod.χ₄ n : ℤ) : ℝ)) = ((ZMod.χ₄ n : ℤ) : ℂ) := by norm_num
+  have hnum2 : ((ZMod.χ₄ n : ℤ) : ℂ) = (χ₄ℂ n) := by simp [χ₄ℂ]
+  have hden : (algebraMap ℝ ℂ) (n : ℝ) = (n : ℂ) := by rfl
+  rw [map_div₀, hnum, hnum2, hden]
+
+lemma chi4_series_eq_real (N : ℕ) :
+    (algebraMap ℝ ℂ) (∑ n ∈ Finset.range N, (((ZMod.χ₄ n : ℤ) : ℝ) / (n : ℝ)))
+      = ∑ n ∈ Finset.range N, (χ₄ℂ n) / (n : ℂ) := by
+  calc
+    (algebraMap ℝ ℂ) (∑ n ∈ Finset.range N, (((ZMod.χ₄ n : ℤ) : ℝ) / (n : ℝ)))
+        = ∑ n ∈ Finset.range N, (algebraMap ℝ ℂ) (((ZMod.χ₄ n : ℤ) : ℝ) / (n : ℝ)) :=
+          map_sum (algebraMap ℝ ℂ) (fun n : ℕ => ((ZMod.χ₄ n : ℤ) : ℝ) / (n : ℝ)) (Finset.range N)
+    _ = ∑ n ∈ Finset.range N, (χ₄ℂ n) / (n : ℂ) :=
+          Finset.sum_congr rfl (by intro n hn; exact chi4ℂ_term_eq n)
+
+/-- The `L(1, χ₄) = π/4` special value as a Dirichlet-series limit: the ordered partial
+sums `Σ_{n<N} χ₄(n)/n` (in `ℂ`) tend to `π/4`. -/
+lemma chi4_series_pi_div_four :
+    Tendsto (fun N : ℕ => ∑ n ∈ Finset.range N, (χ₄ℂ n) / (n : ℂ)) atTop (𝓝 (Real.pi / 4 : ℂ)) := by
+  have hc : Tendsto (RCLike.ofReal ∘ (fun N : ℕ => ∑ n ∈ Finset.range N, ((ZMod.χ₄ n : ℤ) : ℝ) / (n : ℝ))) atTop
+      (𝓝 (RCLike.ofReal (K := ℂ) (Real.pi / 4 : ℝ))) :=
+    RCLike.continuous_ofReal.continuousAt.tendsto.comp chi4_series_real_pi_div_four
+  have hpi : 𝓝 (RCLike.ofReal (K := ℂ) (Real.pi / 4 : ℝ)) = 𝓝 (Real.pi / 4 : ℂ) := by
+    congr 1
+    change (algebraMap ℝ ℂ) (Real.pi / 4) = (Real.pi : ℂ) / 4
+    exact map_div₀ (algebraMap ℝ ℂ) Real.pi 4
+  have hobs : ∀ᶠ N in atTop,
+      (RCLike.ofReal ∘ (fun N : ℕ => ∑ n ∈ Finset.range N, ((ZMod.χ₄ n : ℤ) : ℝ) / (n : ℝ))) N =
+        ∑ n ∈ Finset.range N, (χ₄ℂ n) / (n : ℂ) := by
+    apply Filter.Eventually.of_forall
+    intro N
+    change (algebraMap ℝ ℂ) (∑ n ∈ Finset.range N, (((ZMod.χ₄ n : ℤ) : ℝ) / (n : ℝ))) =
+      ∑ n ∈ Finset.range N, (χ₄ℂ n) / (n : ℂ)
+    exact chi4_series_eq_real N
+  simpa [hpi] using hc.congr' hobs
 
 end PunoTwin.Dirichlet
