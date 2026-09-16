@@ -2273,4 +2273,841 @@ lemma chi3_series_pi_div_three_sqrt_three :
     exact chi3_series_eq_real N
   simpa [hpi] using hc.congr' hobs
 
+
+noncomputable def chi8PrimeZ (n : ℕ) : ℝ :=
+  if n % 8 = 1 then 1 else if n % 8 = 3 then 1 else if n % 8 = 5 then -1 else
+    if n % 8 = 7 then -1 else 0
+
+lemma chi8PrimeZ_eight_mul (k : ℕ) : chi8PrimeZ (8 * k) = 0 := by
+  simp [chi8PrimeZ]
+lemma chi8PrimeZ_eight_mul_add_zero (k : ℕ) : chi8PrimeZ (8 * k + 0) = 0 := by
+  simp [chi8PrimeZ]
+lemma chi8PrimeZ_eight_mul_add_one (k : ℕ) : chi8PrimeZ (8 * k + 1) = 1 := by
+  simp [chi8PrimeZ]
+lemma chi8PrimeZ_eight_mul_add_two (k : ℕ) : chi8PrimeZ (8 * k + 2) = 0 := by
+  simp [chi8PrimeZ]
+lemma chi8PrimeZ_eight_mul_add_three (k : ℕ) : chi8PrimeZ (8 * k + 3) = 1 := by
+  simp [chi8PrimeZ]
+lemma chi8PrimeZ_eight_mul_add_four (k : ℕ) : chi8PrimeZ (8 * k + 4) = 0 := by
+  simp [chi8PrimeZ]
+lemma chi8PrimeZ_eight_mul_add_five (k : ℕ) : chi8PrimeZ (8 * k + 5) = -1 := by
+  simp [chi8PrimeZ]
+lemma chi8PrimeZ_eight_mul_add_six (k : ℕ) : chi8PrimeZ (8 * k + 6) = 0 := by
+  simp [chi8PrimeZ]
+lemma chi8PrimeZ_eight_mul_add_seven (k : ℕ) : chi8PrimeZ (8 * k + 7) = -1 := by
+  simp [chi8PrimeZ]
+
+/-- The mod-8 pattern `chi8PrimeZ` is exactly the real values of the character
+`ZMod.χ₈'`: `χ₈'(n) = 0, 1, 1, -1, -1` on `n ≡ 0, 1, 3, 5, 7 mod 8`. -/
+lemma chi8PrimeZ_eq_χ₈' (n : ℕ) : ((ZMod.χ₈' n : ℤ) : ℝ) = chi8PrimeZ n := by
+  have hmod : n % 8 = 0 ∨ n % 8 = 1 ∨ n % 8 = 2 ∨ n % 8 = 3 ∨ n % 8 = 4 ∨ n % 8 = 5 ∨
+      n % 8 = 6 ∨ n % 8 = 7 := by omega
+  rcases hmod with h0 | h1 | h2 | h3 | h4 | h5 | h6 | h7
+  · have hn : (n : ZMod 8) = ((0 : ℕ) : ZMod 8) := by
+      rw [ZMod.natCast_eq_natCast_iff]
+      change n % 8 = 0 % 8
+      simp [h0]
+    have hz : ZMod.χ₈' (0 : ZMod 8) = 0 := by decide
+    simp [hn, hz, chi8PrimeZ, h0]
+  · have hn : (n : ZMod 8) = ((1 : ℕ) : ZMod 8) := by
+      rw [ZMod.natCast_eq_natCast_iff]
+      change n % 8 = 1 % 8
+      simp [h1]
+    have hz : ZMod.χ₈' (1 : ZMod 8) = 1 := by decide
+    simp [hn, hz, chi8PrimeZ, h1]
+  · have hn : (n : ZMod 8) = ((2 : ℕ) : ZMod 8) := by
+      rw [ZMod.natCast_eq_natCast_iff]
+      change n % 8 = 2 % 8
+      simp [h2]
+    have hz : ZMod.χ₈' (2 : ZMod 8) = 0 := by decide
+    simp [hn, hz, chi8PrimeZ, h2]
+  · have hn : (n : ZMod 8) = ((3 : ℕ) : ZMod 8) := by
+      rw [ZMod.natCast_eq_natCast_iff]
+      change n % 8 = 3 % 8
+      simp [h3]
+    have hz : ZMod.χ₈' (3 : ZMod 8) = 1 := by decide
+    simp [hn, hz, chi8PrimeZ, h3]
+  · have hn : (n : ZMod 8) = ((4 : ℕ) : ZMod 8) := by
+      rw [ZMod.natCast_eq_natCast_iff]
+      change n % 8 = 4 % 8
+      simp [h4]
+    have hz : ZMod.χ₈' (4 : ZMod 8) = 0 := by decide
+    simp [hn, hz, chi8PrimeZ, h4]
+  · have hn : (n : ZMod 8) = ((5 : ℕ) : ZMod 8) := by
+      rw [ZMod.natCast_eq_natCast_iff]
+      change n % 8 = 5 % 8
+      simp [h5]
+    have hz : ZMod.χ₈' (5 : ZMod 8) = -1 := by decide
+    simp [hn, hz, chi8PrimeZ, h5]
+  · have hn : (n : ZMod 8) = ((6 : ℕ) : ZMod 8) := by
+      rw [ZMod.natCast_eq_natCast_iff]
+      change n % 8 = 6 % 8
+      simp [h6]
+    have hz : ZMod.χ₈' (6 : ZMod 8) = 0 := by decide
+    simp [hn, hz, chi8PrimeZ, h6]
+  · have hn : (n : ZMod 8) = ((7 : ℕ) : ZMod 8) := by
+      rw [ZMod.natCast_eq_natCast_iff]
+      change n % 8 = 7 % 8
+      simp [h7]
+    have hz : ZMod.χ₈' (7 : ZMod 8) = -1 := by decide
+    simp [hn, hz, chi8PrimeZ, h7]
+
+-- the grouped series term, in `ℝ`
+noncomputable def chi8PrimeGroupTerm (k : ℕ) : ℝ :=
+  (1 : ℝ) / (8 * (k : ℝ) + 1) + (1 : ℝ) / (8 * (k : ℝ) + 3)
+    - (1 : ℝ) / (8 * (k : ℝ) + 5) - (1 : ℝ) / (8 * (k : ℝ) + 7)
+
+noncomputable def chi8PrimeGroup (M : ℕ) : ℝ :=
+  ∑ k ∈ Finset.range M, chi8PrimeGroupTerm k
+
+-- ordered partial sums of `χ₈' n / n`
+noncomputable def chi8PrimePartial (N : ℕ) : ℝ :=
+  ∑ n ∈ Finset.range N, chi8PrimeZ n / (n : ℝ)
+
+-- the limit function on `[0,1]`: value is `(1+x^2)/(1+x^4)` for `x<1`, else 0
+noncomputable def chi8PrimeLimitF (x : ℝ) : ℝ :=
+  if x < 1 then (1 + x ^ 2) / (1 + x ^ 4) else 0
+
+noncomputable def chi8ThetaF (x : ℝ) : ℝ :=
+  (1 / Real.sqrt 2) * Real.arctan (Real.sqrt 2 * x - 1) +
+    (1 / Real.sqrt 2) * Real.arctan (Real.sqrt 2 * x + 1)
+
+lemma hasDerivAt_chi8PhiF (x : ℝ) :
+    HasDerivAt (fun y : ℝ => (1 / Real.sqrt 2) * Real.arctan (Real.sqrt 2 * y - 1))
+      (1 / (x ^ 2 - Real.sqrt 2 * x + 1) / 2) x := by
+  have hlin : HasDerivAt (fun y : ℝ => Real.sqrt 2 * y - 1) (Real.sqrt 2) x := by
+    simpa using ((hasDerivAt_id x).const_mul (Real.sqrt 2)).add_const (-1)
+  have harc : HasDerivAt (fun y : ℝ => Real.arctan (Real.sqrt 2 * y - 1))
+      ((1 / (1 + (Real.sqrt 2 * x - 1) ^ 2)) * Real.sqrt 2) x := by
+    exact HasDerivAt.comp (x := x) (h₂ := Real.arctan)
+      (h₂' := (1 / (1 + ((Real.sqrt 2 * x - 1) ^ 2))))
+      (h := fun y : ℝ => Real.sqrt 2 * y - 1)
+      (h' := Real.sqrt 2) (Real.hasDerivAt_arctan (Real.sqrt 2 * x - 1)) hlin
+  have htot := harc.const_mul (1 / Real.sqrt 2)
+  have hfix : (1 / Real.sqrt 2) * ((1 / (1 + (Real.sqrt 2 * x - 1) ^ 2)) * Real.sqrt 2)
+      = (1 / (x ^ 2 - Real.sqrt 2 * x + 1)) / 2 := by
+    have hsqrt : Real.sqrt 2 ≠ 0 := ne_of_gt (Real.sqrt_pos.mpr (by norm_num : (0 : ℝ) < 2))
+    have hdz : x ^ 2 - Real.sqrt 2 * x + 1 ≠ 0 := by
+      have hctx : (x - Real.sqrt 2 / 2) ^ 2 + 1 / 2 = x ^ 2 - Real.sqrt 2 * x + 1 := by
+        have hs2' : (Real.sqrt 2) ^ 2 = 2 := Real.sq_sqrt (by norm_num)
+        field_simp [hs2']
+        ring_nf
+        rw [hs2']
+        ring
+      have hpos : 0 < x ^ 2 - Real.sqrt 2 * x + 1 := by
+        nlinarith [sq_nonneg (x - Real.sqrt 2 / 2), hctx]
+      exact ne_of_gt hpos
+    have hden_eq : 1 + (Real.sqrt 2 * x - 1) ^ 2 = 2 * (x ^ 2 - Real.sqrt 2 * x + 1) := by
+      have hs2 : (Real.sqrt 2) ^ 2 = 2 := Real.sq_sqrt (by norm_num)
+      rw [show (Real.sqrt 2 * x - 1) ^ 2 = (Real.sqrt 2) ^ 2 * x ^ 2 - 2 * Real.sqrt 2 * x + 1 by ring]
+      rw [hs2]
+      ring
+    calc
+      (1 / Real.sqrt 2) * ((1 / (1 + (Real.sqrt 2 * x - 1) ^ 2)) * Real.sqrt 2)
+          = (1 / Real.sqrt 2) * ((1 / (2 * (x ^ 2 - Real.sqrt 2 * x + 1))) * Real.sqrt 2) := by
+            rw [hden_eq]
+      _ = ((1 / Real.sqrt 2) * Real.sqrt 2) * (1 / (2 * (x ^ 2 - Real.sqrt 2 * x + 1))) := by
+            ring
+      _ = (1 / (2 * (x ^ 2 - Real.sqrt 2 * x + 1))) := by
+            have hprod : (1 / Real.sqrt 2) * Real.sqrt 2 = 1 := by
+              field_simp [hsqrt]
+            rw [hprod]
+            ring
+      _ = (1 / (x ^ 2 - Real.sqrt 2 * x + 1)) / 2 := by
+            field_simp [hdz, (by norm_num : (2 : ℝ) ≠ 0)]
+  rw [hfix] at htot
+  exact htot
+
+lemma hasDerivAt_chi8PsiF (x : ℝ) :
+    HasDerivAt (fun y : ℝ => (1 / Real.sqrt 2) * Real.arctan (Real.sqrt 2 * y + 1))
+      (1 / (x ^ 2 + Real.sqrt 2 * x + 1) / 2) x := by
+  have hlin : HasDerivAt (fun y : ℝ => Real.sqrt 2 * y + 1) (Real.sqrt 2) x := by
+    simpa using ((hasDerivAt_id x).const_mul (Real.sqrt 2)).add_const 1
+  have harc : HasDerivAt (fun y : ℝ => Real.arctan (Real.sqrt 2 * y + 1))
+      ((1 / (1 + (Real.sqrt 2 * x + 1) ^ 2)) * Real.sqrt 2) x := by
+    exact HasDerivAt.comp (x := x) (h₂ := Real.arctan)
+      (h₂' := (1 / (1 + ((Real.sqrt 2 * x + 1) ^ 2))))
+      (h := fun y : ℝ => Real.sqrt 2 * y + 1)
+      (h' := Real.sqrt 2) (Real.hasDerivAt_arctan (Real.sqrt 2 * x + 1)) hlin
+  have htot := harc.const_mul (1 / Real.sqrt 2)
+  have hfix : (1 / Real.sqrt 2) * ((1 / (1 + (Real.sqrt 2 * x + 1) ^ 2)) * Real.sqrt 2)
+      = (1 / (x ^ 2 + Real.sqrt 2 * x + 1)) / 2 := by
+    have hsqrt : Real.sqrt 2 ≠ 0 := ne_of_gt (Real.sqrt_pos.mpr (by norm_num : (0 : ℝ) < 2))
+    have hdz : x ^ 2 + Real.sqrt 2 * x + 1 ≠ 0 := by
+      have hctx : (x + Real.sqrt 2 / 2) ^ 2 + 1 / 2 = x ^ 2 + Real.sqrt 2 * x + 1 := by
+        have hs2' : (Real.sqrt 2) ^ 2 = 2 := Real.sq_sqrt (by norm_num)
+        field_simp [hs2']
+        ring_nf
+        rw [hs2']
+        ring
+      have hpos : 0 < x ^ 2 + Real.sqrt 2 * x + 1 := by
+        nlinarith [sq_nonneg (x + Real.sqrt 2 / 2), hctx]
+      exact ne_of_gt hpos
+    have hden_eq : 1 + (Real.sqrt 2 * x + 1) ^ 2 = 2 * (x ^ 2 + Real.sqrt 2 * x + 1) := by
+      have hs2 : (Real.sqrt 2) ^ 2 = 2 := Real.sq_sqrt (by norm_num)
+      rw [show (Real.sqrt 2 * x + 1) ^ 2 = (Real.sqrt 2) ^ 2 * x ^ 2 + 2 * Real.sqrt 2 * x + 1 by ring]
+      rw [hs2]
+      ring
+    calc
+      (1 / Real.sqrt 2) * ((1 / (1 + (Real.sqrt 2 * x + 1) ^ 2)) * Real.sqrt 2)
+          = (1 / Real.sqrt 2) * ((1 / (2 * (x ^ 2 + Real.sqrt 2 * x + 1))) * Real.sqrt 2) := by
+            rw [hden_eq]
+      _ = ((1 / Real.sqrt 2) * Real.sqrt 2) * (1 / (2 * (x ^ 2 + Real.sqrt 2 * x + 1))) := by
+            ring
+      _ = (1 / (2 * (x ^ 2 + Real.sqrt 2 * x + 1))) := by
+            have hprod : (1 / Real.sqrt 2) * Real.sqrt 2 = 1 := by
+              field_simp [hsqrt]
+            rw [hprod]
+            ring
+      _ = (1 / (x ^ 2 + Real.sqrt 2 * x + 1)) / 2 := by
+            field_simp [hdz, (by norm_num : (2 : ℝ) ≠ 0)]
+  rw [hfix] at htot
+  exact htot
+
+lemma hasDerivAt_chi8ThetaF (x : ℝ) :
+    HasDerivAt chi8ThetaF ((1 + x ^ 2) / (1 + x ^ 4)) x := by
+  have hsum := (hasDerivAt_chi8PhiF x).add (hasDerivAt_chi8PsiF x)
+  have hfix : (1 / (x ^ 2 - Real.sqrt 2 * x + 1)) / 2 +
+        (1 / (x ^ 2 + Real.sqrt 2 * x + 1)) / 2 = (1 + x ^ 2) / (1 + x ^ 4) := by
+    have hs2 : (Real.sqrt 2) ^ 2 = 2 := Real.sq_sqrt (by norm_num)
+    have hdp : x ^ 2 - Real.sqrt 2 * x + 1 ≠ 0 := by
+      have hctx : (x - Real.sqrt 2 / 2) ^ 2 + 1 / 2 = x ^ 2 - Real.sqrt 2 * x + 1 := by
+        have hs2' : (Real.sqrt 2) ^ 2 = 2 := Real.sq_sqrt (by norm_num)
+        field_simp [hs2']
+        ring_nf
+        rw [hs2']
+        ring
+      have hpos : 0 < x ^ 2 - Real.sqrt 2 * x + 1 := by
+        nlinarith [sq_nonneg (x - Real.sqrt 2 / 2), hctx]
+      exact ne_of_gt hpos
+    have hdq : x ^ 2 + Real.sqrt 2 * x + 1 ≠ 0 := by
+      have hctx : (x + Real.sqrt 2 / 2) ^ 2 + 1 / 2 = x ^ 2 + Real.sqrt 2 * x + 1 := by
+        have hs2' : (Real.sqrt 2) ^ 2 = 2 := Real.sq_sqrt (by norm_num)
+        field_simp [hs2']
+        ring_nf
+        rw [hs2']
+        ring
+      have hpos : 0 < x ^ 2 + Real.sqrt 2 * x + 1 := by
+        nlinarith [sq_nonneg (x + Real.sqrt 2 / 2), hctx]
+      exact ne_of_gt hpos
+    have hdn : 1 + x ^ 4 ≠ 0 := by
+      have hpos : 0 < 1 + x ^ 4 := by nlinarith [sq_nonneg (x ^ 2)]
+      exact ne_of_gt hpos
+    have hAB : (x ^ 2 - Real.sqrt 2 * x + 1) * (x ^ 2 + Real.sqrt 2 * x + 1) = x ^ 4 + 1 := by
+      calc
+        (x ^ 2 - Real.sqrt 2 * x + 1) * (x ^ 2 + Real.sqrt 2 * x + 1)
+            = (x ^ 2 + 1) ^ 2 - (Real.sqrt 2 * x) ^ 2 := by ring
+        _ = (x ^ 2 + 1) ^ 2 - (Real.sqrt 2) ^ 2 * x ^ 2 := by
+              rw [show (Real.sqrt 2 * x) ^ 2 = (Real.sqrt 2) ^ 2 * x ^ 2 by ring]
+        _ = (x ^ 2 + 1) ^ 2 - 2 * x ^ 2 := by rw [hs2]
+        _ = x ^ 4 + 1 := by ring
+    have hsumden : (1 / (x ^ 2 - Real.sqrt 2 * x + 1)) + (1 / (x ^ 2 + Real.sqrt 2 * x + 1))
+        = (2 * (x ^ 2 + 1)) / (x ^ 4 + 1) := by
+      have hstep := div_add_div (a := (1 : ℝ)) (c := (1 : ℝ)) hdp hdq
+      rw [hstep]
+      rw [hAB]
+      congr 1
+      ring
+    calc
+      (1 / (x ^ 2 - Real.sqrt 2 * x + 1)) / 2 + (1 / (x ^ 2 + Real.sqrt 2 * x + 1)) / 2
+          = ((1 / (x ^ 2 - Real.sqrt 2 * x + 1)) + (1 / (x ^ 2 + Real.sqrt 2 * x + 1))) / 2 := by
+            ring
+      _ = ((2 * (x ^ 2 + 1)) / (x ^ 4 + 1)) / 2 := by rw [hsumden]
+      _ = (1 + x ^ 2) / (1 + x ^ 4) := by
+            field_simp [hdn]
+            ring
+  rw [hfix] at hsum
+  exact hsum
+
+lemma integral_chi8Prime_value :
+    ∫ x in (0 : ℝ)..1, (1 + x ^ 2) / (1 + x ^ 4) = Real.pi / (2 * Real.sqrt 2) := by
+  have hcont : ContinuousOn chi8ThetaF (Set.Icc 0 1) := by
+    unfold chi8ThetaF
+    fun_prop
+  have hderiv : ∀ x ∈ Set.Ioo (0 : ℝ) 1, HasDerivAt chi8ThetaF ((1 + x ^ 2) / (1 + x ^ 4)) x := by
+    intro x hx
+    exact hasDerivAt_chi8ThetaF x
+  have hint : IntervalIntegrable (fun x : ℝ => (1 + x ^ 2) / (1 + x ^ 4)) MeasureTheory.volume 0 1 := by
+    have hden : ∀ x : ℝ, 1 + x ^ 4 ≠ 0 := by
+      intro x
+      have hpos : 0 < 1 + x ^ 4 := by nlinarith [sq_nonneg (x ^ 2)]
+      exact ne_of_gt hpos
+    have hc1 : Continuous (fun x : ℝ => 1 + x ^ 4) := by fun_prop
+    have hc2 : Continuous (fun x : ℝ => 1 + x ^ 2) := by fun_prop
+    have hc : Continuous (fun x : ℝ => (1 + x ^ 2) / (1 + x ^ 4)) := by
+      have hcm : Continuous (fun x : ℝ => (1 + x ^ 2) * (1 + x ^ 4)⁻¹) := hc2.mul (hc1.inv₀ hden)
+      refine hcm.congr ?_
+      intro x
+      rw [← div_eq_mul_inv]
+    exact hc.intervalIntegrable 0 1
+  have hftc := intervalIntegral.integral_eq_sub_of_hasDerivAt_of_le (a := (0 : ℝ)) (b := 1)
+    (by norm_num) hcont hderiv hint
+  have hval : chi8ThetaF 1 - chi8ThetaF 0 = Real.pi / (2 * Real.sqrt 2) := by
+    unfold chi8ThetaF
+    have hls : (1 : ℝ) < Real.sqrt 2 := by
+      have h := Real.sqrt_lt_sqrt (by norm_num : (0 : ℝ) ≤ 1) (by norm_num : (1 : ℝ) < 2)
+      simpa [Real.sqrt_one] using h
+    have hp : 0 < Real.sqrt 2 - 1 := by linarith
+    have hsum : Real.arctan (Real.sqrt 2 - 1) + Real.arctan (Real.sqrt 2 + 1) = Real.pi / 2 := by
+      have hA := Real.arctan_inv_of_pos hp
+      rw [Real.inv_sqrt_two_sub_one] at hA
+      linarith
+    have hs0 : Real.arctan (Real.sqrt 2 * 0 - 1) + Real.arctan (Real.sqrt 2 * 0 + 1) = 0 := by
+      simp [Real.arctan_neg, Real.arctan_one]
+    rw [← mul_add, ← mul_add, hs0]
+    simp
+    rw [hsum]
+    have hsqrt : Real.sqrt 2 ≠ 0 := ne_of_gt (Real.sqrt_pos.mpr (by norm_num : (0 : ℝ) < 2))
+    field_simp [hsqrt, (by norm_num : (2 : ℝ) ≠ 0)]
+  rwa [hval] at hftc
+
+lemma integral_pow_aux8 (m : ℕ) :
+    ∫ x in (0 : ℝ)..1, x ^ m = (1 : ℝ) / (m + 1) := by
+  exact integral_pow_aux m
+
+-- the grouped step functions
+noncomputable def chi8PrimeStepF (N : ℕ) (x : ℝ) : ℝ :=
+  ∑ k ∈ Finset.range N, (x ^ (8 * k) + x ^ (8 * k + 2) - x ^ (8 * k + 4) - x ^ (8 * k + 6))
+
+lemma chi8PrimeStepF_closed {N : ℕ} {x : ℝ} (hx : x ∈ Set.Ioc (0 : ℝ) 1) :
+    chi8PrimeStepF N x = (1 + x ^ 2 - x ^ 4 - x ^ 6) * (1 - x ^ (8 * N)) / (1 - x ^ 8) := by
+  rcases hx with ⟨h0, hxle⟩
+  by_cases hx1 : x = 1
+  · subst hx1
+    have hstep : chi8PrimeStepF N 1 = 0 := by
+      unfold chi8PrimeStepF
+      apply Finset.sum_eq_zero
+      intro k hk
+      have h1 : (1 : ℝ) ^ (8 * k) = 1 := by simp
+      have h2 : (1 : ℝ) ^ (8 * k + 2) = 1 := by simp
+      have h4 : (1 : ℝ) ^ (8 * k + 4) = 1 := by simp
+      have h6 : (1 : ℝ) ^ (8 * k + 6) = 1 := by simp
+      rw [h1, h2, h4, h6]
+      norm_num
+    have h8N : (1 : ℝ) ^ (8 * N) = 1 := by simp
+    rw [hstep, h8N]
+    norm_num
+  · have hlt : x < 1 := lt_of_le_of_ne hxle hx1
+    have hx8ne : x ^ 8 ≠ 1 := by
+      have hp : x ^ 8 < 1 := pow_lt_one₀ h0.le hlt (by norm_num : (8 : ℕ) ≠ 0)
+      exact ne_of_lt hp
+    have hsum : (∑ k ∈ Finset.range N, (x ^ 8) ^ k) = ((x ^ 8) ^ N - 1) / (x ^ 8 - 1) :=
+      geom_sum_eq hx8ne N
+    have hterm : ∀ k, x ^ (8 * k) + x ^ (8 * k + 2) - x ^ (8 * k + 4) - x ^ (8 * k + 6)
+        = (1 + x ^ 2 - x ^ 4 - x ^ 6) * (x ^ 8) ^ k := by
+      intro k
+      have h1 : x ^ (8 * k) = (x ^ 8) ^ k := by rw [pow_mul]
+      have h2 : x ^ (8 * k + 2) = x ^ 2 * (x ^ 8) ^ k := by
+        calc x ^ (8 * k + 2) = x ^ (8 * k) * x ^ 2 := by rw [pow_add]
+             _ = (x ^ 8) ^ k * x ^ 2 := by rw [h1]
+             _ = x ^ 2 * (x ^ 8) ^ k := by ring
+      have h4 : x ^ (8 * k + 4) = x ^ 4 * (x ^ 8) ^ k := by
+        calc x ^ (8 * k + 4) = x ^ (8 * k) * x ^ 4 := by rw [pow_add]
+             _ = (x ^ 8) ^ k * x ^ 4 := by rw [h1]
+             _ = x ^ 4 * (x ^ 8) ^ k := by ring
+      have h6 : x ^ (8 * k + 6) = x ^ 6 * (x ^ 8) ^ k := by
+        calc x ^ (8 * k + 6) = x ^ (8 * k) * x ^ 6 := by rw [pow_add]
+             _ = (x ^ 8) ^ k * x ^ 6 := by rw [h1]
+             _ = x ^ 6 * (x ^ 8) ^ k := by ring
+      rw [h1, h2, h4, h6]
+      ring
+    calc
+      chi8PrimeStepF N x = ∑ k ∈ Finset.range N, (1 + x ^ 2 - x ^ 4 - x ^ 6) * (x ^ 8) ^ k := by
+        unfold chi8PrimeStepF
+        refine Finset.sum_congr rfl ?_
+        intro k hk
+        exact hterm k
+      _ = (1 + x ^ 2 - x ^ 4 - x ^ 6) * ∑ k ∈ Finset.range N, (x ^ 8) ^ k := by
+        rw [Finset.mul_sum]
+      _ = (1 + x ^ 2 - x ^ 4 - x ^ 6) * ((x ^ 8) ^ N - 1) / (x ^ 8 - 1) := by
+        rw [hsum]
+        ring
+      _ = (1 + x ^ 2 - x ^ 4 - x ^ 6) * (1 - x ^ (8 * N)) / (1 - x ^ 8) := by
+        have hpow : (x ^ 8) ^ N = x ^ (8 * N) := by rw [pow_mul]
+        have hneg : (x ^ 8) ^ N - 1 = -(1 - x ^ (8 * N)) := by
+          rw [hpow]
+          ring
+        have hneg2 : x ^ 8 - 1 = -(1 - x ^ 8) := by ring
+        have hd8 : (1 : ℝ) - x ^ 8 ≠ 0 := sub_ne_zero.mpr hx8ne.symm
+        rw [hneg, hneg2]
+        field_simp [hd8]
+
+lemma chi8PrimeStepF_norm_le {N : ℕ} {x : ℝ} (hx : x ∈ Set.Ioc (0 : ℝ) 1) :
+    ‖chi8PrimeStepF N x‖ ≤ (2 : ℝ) := by
+  rcases hx with ⟨h0, hxle⟩
+  by_cases hx1 : x = 1
+  · subst hx1
+    have hstep : chi8PrimeStepF N 1 = 0 := by
+      unfold chi8PrimeStepF
+      apply Finset.sum_eq_zero
+      intro k hk
+      have h1 : (1 : ℝ) ^ (8 * k) = 1 := by simp
+      have h2 : (1 : ℝ) ^ (8 * k + 2) = 1 := by simp
+      have h4 : (1 : ℝ) ^ (8 * k + 4) = 1 := by simp
+      have h6 : (1 : ℝ) ^ (8 * k + 6) = 1 := by simp
+      rw [h1, h2, h4, h6]
+      norm_num
+    rw [hstep]
+    norm_num
+  · have hlt : x < 1 := lt_of_le_of_ne hxle hx1
+    rw [chi8PrimeStepF_closed (N := N) (x := x) ⟨h0, hxle⟩]
+    have hfac : 1 + x ^ 2 - x ^ 4 - x ^ 6 = (1 - x ^ 2) * (1 + x ^ 2) ^ 2 := by ring
+    have hfac2 : 1 - x ^ 8 = (1 - x ^ 2) * (1 + x ^ 2) * (1 + x ^ 4) := by ring
+    have hge1 : 0 ≤ 1 - x ^ 2 := by
+      have hp := pow_le_one₀ (n := 2) h0.le hxle
+      nlinarith
+    have hgeX : 0 ≤ 1 + x ^ 2 := by nlinarith [sq_nonneg x]
+    have hge8 : 0 ≤ 1 - x ^ (8 * N) := by
+      have hp := pow_le_one₀ (n := 8 * N) h0.le hxle
+      nlinarith
+    have hdenpos : 0 < 1 - x ^ 8 := by
+      have hp : x ^ 8 < 1 := pow_lt_one₀ h0.le hlt (by norm_num : (8 : ℕ) ≠ 0)
+      nlinarith
+    have hx2le1 : (1 + x ^ 2) ≤ 2 := by
+      have h2' : x ^ 2 ≤ 1 := by nlinarith [sq_nonneg x, hxle]
+      nlinarith
+    have h4 : 0 ≤ x ^ 4 := pow_nonneg h0.le 4
+    have hmain : (1 + x ^ 2) * (1 - x ^ (8 * N)) ≤ 2 * (1 + x ^ 4) := by
+      have hb1 : (1 + x ^ 2) * (1 - x ^ (8 * N)) ≤ (1 + x ^ 2) * 1 :=
+        mul_le_mul_of_nonneg_left (by
+          have hx8 : 0 ≤ x ^ (8 * N) := pow_nonneg h0.le (8 * N)
+          nlinarith) hgeX
+      have hb3 : (1 + x ^ 2) ≤ 2 * (1 + x ^ 4) := by
+        have h0' : (2 : ℝ) ≤ 2 * (1 + x ^ 4) := by nlinarith [h4]
+        exact le_trans hx2le1 h0'
+      calc
+        (1 + x ^ 2) * (1 - x ^ (8 * N)) ≤ (1 + x ^ 2) * 1 := hb1
+        _ = 1 + x ^ 2 := by ring
+        _ ≤ 2 * (1 + x ^ 4) := hb3
+    have hinter : (1 + x ^ 2) ^ 2 * (1 - x ^ (8 * N)) ≤ (1 + x ^ 2) * (2 * (1 + x ^ 4)) := by
+      have hh := mul_le_mul_of_nonneg_left hmain hgeX
+      calc
+        (1 + x ^ 2) ^ 2 * (1 - x ^ (8 * N)) = (1 + x ^ 2) * ((1 + x ^ 2) * (1 - x ^ (8 * N))) := by ring
+        _ ≤ (1 + x ^ 2) * (2 * (1 + x ^ 4)) := hh
+    have hnum0 : 0 ≤ (1 + x ^ 2 - x ^ 4 - x ^ 6) * (1 - x ^ (8 * N)) := by
+      have hA : 0 ≤ 1 + x ^ 2 - x ^ 4 - x ^ 6 := by
+        rw [hfac]
+        exact mul_nonneg hge1 (sq_nonneg (1 + x ^ 2))
+      exact mul_nonneg hA hge8
+    have htop : (1 + x ^ 2 - x ^ 4 - x ^ 6) * (1 - x ^ (8 * N)) ≤ 2 * (1 - x ^ 8) := by
+      have hh := mul_le_mul_of_nonneg_left hinter hge1
+      calc
+        (1 + x ^ 2 - x ^ 4 - x ^ 6) * (1 - x ^ (8 * N))
+            = (1 - x ^ 2) * ((1 + x ^ 2) ^ 2 * (1 - x ^ (8 * N))) := by
+              rw [hfac]
+              ring
+        _ ≤ (1 - x ^ 2) * ((1 + x ^ 2) * (2 * (1 + x ^ 4))) := hh
+        _ = 2 * (1 - x ^ 8) := by rw [hfac2]; ring
+    have hge : 0 ≤ (1 + x ^ 2 - x ^ 4 - x ^ 6) * (1 - x ^ (8 * N)) / (1 - x ^ 8) :=
+      div_nonneg hnum0 hdenpos.le
+    have hle' : (1 + x ^ 2 - x ^ 4 - x ^ 6) * (1 - x ^ (8 * N)) / (1 - x ^ 8) ≤ 2 := by
+      rw [div_le_iff₀ hdenpos]
+      exact htop
+    rw [Real.norm_eq_abs, abs_of_nonneg hge]
+    exact hle'
+
+lemma chi8PrimeStepF_tendsto_limit {x : ℝ} (hx : x ∈ Set.Ioc (0 : ℝ) 1) :
+    Tendsto (fun N : ℕ => chi8PrimeStepF N x) atTop (𝓝 (chi8PrimeLimitF x)) := by
+  rcases hx with ⟨h0, hxle⟩
+  by_cases hx1 : x = 1
+  · subst hx1
+    have hz : ∀ N : ℕ, chi8PrimeStepF N 1 = 0 := by
+      intro N
+      unfold chi8PrimeStepF
+      apply Finset.sum_eq_zero
+      intro k hk
+      have h1 : (1 : ℝ) ^ (8 * k) = 1 := by simp
+      have h2 : (1 : ℝ) ^ (8 * k + 2) = 1 := by simp
+      have h4 : (1 : ℝ) ^ (8 * k + 4) = 1 := by simp
+      have h6 : (1 : ℝ) ^ (8 * k + 6) = 1 := by simp
+      rw [h1, h2, h4, h6]
+      norm_num
+    have hlf : chi8PrimeLimitF 1 = 0 := by simp [chi8PrimeLimitF]
+    simp [hz, hlf]
+  · have hlt : x < 1 := lt_of_le_of_ne hxle hx1
+    have hlim : chi8PrimeLimitF x = (1 + x ^ 2) / (1 + x ^ 4) := by
+      simp [chi8PrimeLimitF, hlt]
+    have hx8lt : ‖x ^ 8‖ < (1 : ℝ) := by
+      rw [Real.norm_eq_abs, abs_of_pos (pow_pos h0 8)]
+      exact pow_lt_one₀ h0.le hlt (by norm_num : (8 : ℕ) ≠ 0)
+    have ht0 : Tendsto (fun N : ℕ => (x ^ 8) ^ N) atTop (𝓝 (0 : ℝ)) :=
+      tendsto_pow_atTop_nhds_zero_of_norm_lt_one hx8lt
+    have ht8 : Tendsto (fun N : ℕ => x ^ (8 * N)) atTop (𝓝 (0 : ℝ)) := by
+      simpa [pow_mul] using ht0
+    have hsub : Tendsto (fun N : ℕ => (1 : ℝ) - x ^ (8 * N)) atTop (𝓝 (1 : ℝ)) := by
+      simpa using (tendsto_const_nhds (x := (1 : ℝ))).sub ht8
+    have hconst : Tendsto (fun _ : ℕ => (1 + x ^ 2 - x ^ 4 - x ^ 6 : ℝ)) atTop
+        (𝓝 (1 + x ^ 2 - x ^ 4 - x ^ 6)) := tendsto_const_nhds
+    have hnum : Tendsto (fun N : ℕ => (1 + x ^ 2 - x ^ 4 - x ^ 6) * (1 - x ^ (8 * N))) atTop
+        (𝓝 (1 + x ^ 2 - x ^ 4 - x ^ 6)) := by
+      have hm := hconst.mul hsub
+      simpa using hm
+    have hden : Tendsto (fun _ : ℕ => (1 - x ^ 8 : ℝ)) atTop (𝓝 (1 - x ^ 8)) := tendsto_const_nhds
+    have hd8 : (1 : ℝ) - x ^ 8 ≠ 0 := by
+      have hp : x ^ 8 < 1 := pow_lt_one₀ h0.le hlt (by norm_num : (8 : ℕ) ≠ 0)
+      nlinarith
+    have hq : Tendsto (fun N : ℕ => ((1 + x ^ 2 - x ^ 4 - x ^ 6) * (1 - x ^ (8 * N))) / (1 - x ^ 8))
+        atTop (𝓝 ((1 + x ^ 2 - x ^ 4 - x ^ 6) / (1 - x ^ 8))) :=
+      hnum.div hden hd8
+    have hv : (1 + x ^ 2 - x ^ 4 - x ^ 6) / (1 - x ^ 8) = (1 + x ^ 2) / (1 + x ^ 4) := by
+      have hd4p : 0 < 1 - x ^ 4 := by
+        have hp : x ^ 4 < 1 := pow_lt_one₀ h0.le hlt (by norm_num : (4 : ℕ) ≠ 0)
+        nlinarith
+      have hden4 : 1 + x ^ 4 ≠ 0 := by
+        have hpos : 0 < 1 + x ^ 4 := by nlinarith [sq_nonneg (x ^ 2)]
+        exact ne_of_gt hpos
+      have hfac : 1 + x ^ 2 - x ^ 4 - x ^ 6 = (1 + x ^ 2) * (1 - x ^ 4) := by ring
+      have hfac8 : 1 - x ^ 8 = (1 - x ^ 4) * (1 + x ^ 4) := by ring
+      calc
+        (1 + x ^ 2 - x ^ 4 - x ^ 6) / (1 - x ^ 8)
+            = ((1 + x ^ 2) * (1 - x ^ 4)) / ((1 - x ^ 4) * (1 + x ^ 4)) := by
+              rw [hfac, hfac8]
+        _ = (1 + x ^ 2) / (1 + x ^ 4) := by
+          field_simp [ne_of_gt hd4p, hden4]
+    have hq' : Tendsto (fun N : ℕ => chi8PrimeStepF N x) atTop
+        (𝓝 ((1 + x ^ 2) / (1 + x ^ 4))) := by
+      simpa [hv] using hq.congr' (Eventually.of_forall (fun N => by
+        exact (chi8PrimeStepF_closed (N := N) (x := x) ⟨h0, hxle⟩).symm))
+    convert hq' using 1
+    · rw [hlim]
+
+lemma integral_chi8PrimeStepF (N : ℕ) :
+    ∫ x in (0 : ℝ)..1, chi8PrimeStepF N x = chi8PrimeGroup N := by
+  unfold chi8PrimeStepF chi8PrimeGroup
+  have hI0 (k : ℕ) : IntervalIntegrable (fun x : ℝ => x ^ (8 * k)) MeasureTheory.volume 0 1 := by
+    have hc : Continuous (fun x : ℝ => x ^ (8 * k)) := by fun_prop
+    exact hc.intervalIntegrable 0 1
+  have hI2 (k : ℕ) : IntervalIntegrable (fun x : ℝ => x ^ (8 * k + 2)) MeasureTheory.volume 0 1 := by
+    have hc : Continuous (fun x : ℝ => x ^ (8 * k + 2)) := by fun_prop
+    exact hc.intervalIntegrable 0 1
+  have hI4 (k : ℕ) : IntervalIntegrable (fun x : ℝ => x ^ (8 * k + 4)) MeasureTheory.volume 0 1 := by
+    have hc : Continuous (fun x : ℝ => x ^ (8 * k + 4)) := by fun_prop
+    exact hc.intervalIntegrable 0 1
+  have hI6 (k : ℕ) : IntervalIntegrable (fun x : ℝ => x ^ (8 * k + 6)) MeasureTheory.volume 0 1 := by
+    have hc : Continuous (fun x : ℝ => x ^ (8 * k + 6)) := by fun_prop
+    exact hc.intervalIntegrable 0 1
+  rw [intervalIntegral.integral_finsetSum
+    (fun k hk => (((hI0 k).add (hI2 k)).sub (hI4 k)).sub (hI6 k))]
+  apply Finset.sum_congr rfl
+  intro k hk
+  unfold chi8PrimeGroupTerm
+  rw [intervalIntegral.integral_sub (((hI0 k).add (hI2 k)).sub (hI4 k)) (hI6 k)]
+  rw [intervalIntegral.integral_sub ((hI0 k).add (hI2 k)) (hI4 k)]
+  rw [intervalIntegral.integral_add (hI0 k) (hI2 k)]
+  rw [integral_pow_aux (8 * k), integral_pow_aux (8 * k + 2), integral_pow_aux (8 * k + 4),
+    integral_pow_aux (8 * k + 6)]
+  norm_num [Nat.cast_add, Nat.cast_mul]
+  ring
+
+lemma tendsto_integral_chi8PrimeStepF :
+    Tendsto (fun N : ℕ => ∫ x in (0 : ℝ)..1, chi8PrimeStepF N x) atTop
+      (𝓝 (∫ x in (0 : ℝ)..1, chi8PrimeLimitF x)) := by
+  refine intervalIntegral.tendsto_integral_filter_of_dominated_convergence
+      (μ := MeasureTheory.volume) (l := atTop) (F := fun N x => chi8PrimeStepF N x)
+      (bound := fun _ : ℝ => 2) (f := chi8PrimeLimitF) ?_ ?_ ?_ ?_
+  · refine Eventually.of_forall ?_
+    intro N
+    have hc : Continuous (chi8PrimeStepF N) := by
+      unfold chi8PrimeStepF
+      fun_prop
+    exact hc.aestronglyMeasurable
+  · refine Eventually.of_forall ?_
+    intro N
+    exact MeasureTheory.ae_of_all MeasureTheory.volume
+      (fun x => fun hx =>
+        chi8PrimeStepF_norm_le (N := N) (by
+          simpa [Set.uIoc_of_le (show (0 : ℝ) ≤ 1 by norm_num)] using hx))
+  · have hc : Continuous (fun _ : ℝ => (2 : ℝ)) := continuous_const
+    exact hc.intervalIntegrable 0 1
+  · exact MeasureTheory.ae_of_all MeasureTheory.volume
+      (fun x => fun hx =>
+        chi8PrimeStepF_tendsto_limit (by
+          simpa [Set.uIoc_of_le (show (0 : ℝ) ≤ 1 by norm_num)] using hx))
+
+lemma chi8PrimeGroup_tendsto :
+    Tendsto chi8PrimeGroup atTop (𝓝 (Real.pi / (2 * Real.sqrt 2))) := by
+  have h1 := tendsto_integral_chi8PrimeStepF
+  have hval : (∫ x in (0 : ℝ)..1, chi8PrimeLimitF x) = Real.pi / (2 * Real.sqrt 2) := by
+    have hcongr : ∫ x in (0 : ℝ)..1, chi8PrimeLimitF x = ∫ x in (0 : ℝ)..1, (1 + x ^ 2) / (1 + x ^ 4) := by
+      exact intervalIntegral.integral_congr_Ioo_of_le (show (0 : ℝ) ≤ 1 by norm_num)
+        (fun x hx => by simp [chi8PrimeLimitF, hx.2])
+    rw [hcongr]
+    exact integral_chi8Prime_value
+  have h1' : Tendsto (fun N : ℕ => ∫ x in (0 : ℝ)..1, chi8PrimeStepF N x) atTop
+      (𝓝 (Real.pi / (2 * Real.sqrt 2))) := by
+    simpa [hval] using h1
+  exact h1'.congr' (Eventually.of_forall (fun N => integral_chi8PrimeStepF N))
+
+-- ordered partial sums reduce to the grouped series, plus a lim-vanishing correction
+lemma chi8PrimePartial_eight_mul (M : ℕ) : chi8PrimePartial (8 * M) = chi8PrimeGroup M := by
+  induction M with
+  | zero => simp [chi8PrimePartial, chi8PrimeGroup]
+  | succ M ih =>
+      rw [show 8 * (M + 1) = 8 * M + 8 by omega]
+      unfold chi8PrimePartial
+      rw [Finset.sum_range_add]
+      have hb1 : chi8PrimeZ (8 * M + 1) / ((8 * M + 1 : ℕ) : ℝ) = 1 / (8 * (M : ℝ) + 1) := by
+        have hc : ((8 * M + 1 : ℕ) : ℝ) = 8 * (M : ℝ) + 1 := by norm_num [Nat.cast_add, Nat.cast_mul]
+        rw [chi8PrimeZ_eight_mul_add_one M, hc]
+      have hb3 : chi8PrimeZ (8 * M + 3) / ((8 * M + 3 : ℕ) : ℝ) = 1 / (8 * (M : ℝ) + 3) := by
+        have hc : ((8 * M + 3 : ℕ) : ℝ) = 8 * (M : ℝ) + 3 := by norm_num [Nat.cast_add, Nat.cast_mul]
+        rw [chi8PrimeZ_eight_mul_add_three M, hc]
+      have hb5 : chi8PrimeZ (8 * M + 5) / ((8 * M + 5 : ℕ) : ℝ) = -(1 / (8 * (M : ℝ) + 5)) := by
+        have hc : ((8 * M + 5 : ℕ) : ℝ) = 8 * (M : ℝ) + 5 := by norm_num [Nat.cast_add, Nat.cast_mul]
+        rw [chi8PrimeZ_eight_mul_add_five M, hc, neg_div]
+      have hb7 : chi8PrimeZ (8 * M + 7) / ((8 * M + 7 : ℕ) : ℝ) = -(1 / (8 * (M : ℝ) + 7)) := by
+        have hc : ((8 * M + 7 : ℕ) : ℝ) = 8 * (M : ℝ) + 7 := by norm_num [Nat.cast_add, Nat.cast_mul]
+        rw [chi8PrimeZ_eight_mul_add_seven M, hc, neg_div]
+      have hb0 : chi8PrimeZ (8 * M + 0) / ((8 * M + 0 : ℕ) : ℝ) = 0 := by
+        rw [chi8PrimeZ_eight_mul_add_zero M]
+        simp
+      have hb2 : chi8PrimeZ (8 * M + 2) / ((8 * M + 2 : ℕ) : ℝ) = 0 := by
+        rw [chi8PrimeZ_eight_mul_add_two M]
+        simp
+      have hb4 : chi8PrimeZ (8 * M + 4) / ((8 * M + 4 : ℕ) : ℝ) = 0 := by
+        rw [chi8PrimeZ_eight_mul_add_four M]
+        simp
+      have hb6 : chi8PrimeZ (8 * M + 6) / ((8 * M + 6 : ℕ) : ℝ) = 0 := by
+        rw [chi8PrimeZ_eight_mul_add_six M]
+        simp
+      have hblock : (∑ j ∈ Finset.range 8, chi8PrimeZ (8 * M + j) / ((8 * M + j : ℕ) : ℝ))
+          = chi8PrimeGroupTerm M := by
+        unfold chi8PrimeGroupTerm
+        rw [Finset.sum_range_succ, Finset.sum_range_succ, Finset.sum_range_succ,
+          Finset.sum_range_succ, Finset.sum_range_succ, Finset.sum_range_succ,
+          Finset.sum_range_succ, Finset.sum_range_succ]
+        rw [hb7, hb6, hb5, hb4, hb3, hb2, hb1, hb0]
+        ring
+      rw [hblock]
+      have hg : chi8PrimeGroup (M + 1) = chi8PrimeGroup M + chi8PrimeGroupTerm M := by
+        unfold chi8PrimeGroup
+        rw [Finset.sum_range_succ]
+      rw [hg]
+      rw [← ih]
+      rfl
+
+noncomputable def chi8PrimeTurnTail (N : ℕ) : ℝ :=
+  ∑ j ∈ Finset.range (N % 8), chi8PrimeZ (8 * (N / 8) + j) / ((8 * (N / 8) + j : ℕ) : ℝ)
+
+lemma chi8PrimePartial_split (N : ℕ) :
+    chi8PrimePartial N = chi8PrimePartial (8 * (N / 8)) + chi8PrimeTurnTail N := by
+  unfold chi8PrimePartial chi8PrimeTurnTail
+  conv_lhs => rw [← show (8 * (N / 8) + N % 8) = N by omega]
+  rw [Finset.sum_range_add]
+
+lemma chi8PrimeTurnTail_bound {N : ℕ} :
+    ‖chi8PrimeTurnTail N‖ ≤ (8 : ℝ) / ((8 * (N / 8) + 1 : ℕ) : ℝ) := by
+  unfold chi8PrimeTurnTail
+  have hkpos : (0 : ℕ) < 8 * (N / 8) + 1 := by omega
+  have hdpos : (0 : ℝ) < ((8 * (N / 8) + 1 : ℕ) : ℝ) := by exact_mod_cast hkpos
+  have hc : 0 ≤ (1 : ℝ) / ((8 * (N / 8) + 1 : ℕ) : ℝ) := div_nonneg (by norm_num) hdpos.le
+  have hb : ∑ j ∈ Finset.range (N % 8),
+        ‖chi8PrimeZ (8 * (N / 8) + j) / ((8 * (N / 8) + j : ℕ) : ℝ)‖
+      ≤ ∑ j ∈ Finset.range (N % 8), (1 : ℝ) / ((8 * (N / 8) + 1 : ℕ) : ℝ) := by
+    refine Finset.sum_le_sum ?_
+    intro j hjin
+    have hj8 : j < 8 := lt_of_lt_of_le (Finset.mem_range.mp hjin) (le_of_lt (Nat.mod_lt N (by norm_num : 0 < 8)))
+    have hjr : j = 0 ∨ j = 1 ∨ j = 2 ∨ j = 3 ∨ j = 4 ∨ j = 5 ∨ j = 6 ∨ j = 7 := by omega
+    rcases hjr with h0 | h1 | h2 | h3 | h4 | h5 | h6 | h7
+    · subst h0
+      have hz : chi8PrimeZ (8 * (N / 8) + 0) = 0 := chi8PrimeZ_eight_mul_add_zero (N / 8)
+      rw [hz, zero_div]
+      simpa using hc
+    · subst h1
+      have hz : chi8PrimeZ (8 * (N / 8) + 1) = 1 := chi8PrimeZ_eight_mul_add_one (N / 8)
+      rw [hz]
+      have hnorm : ‖(1 : ℝ) / ((8 * (N / 8) + 1 : ℕ) : ℝ)‖ = (1 : ℝ) / ((8 * (N / 8) + 1 : ℕ) : ℝ) := by
+        rw [Real.norm_eq_abs, abs_of_pos (div_pos (by norm_num) hdpos)]
+      rw [hnorm]
+    · subst h2
+      have hz : chi8PrimeZ (8 * (N / 8) + 2) = 0 := chi8PrimeZ_eight_mul_add_two (N / 8)
+      rw [hz, zero_div]
+      simpa using hc
+    · subst h3
+      have hk3 : (0 : ℕ) < 8 * (N / 8) + 3 := by omega
+      have hd3 : (0 : ℝ) < ((8 * (N / 8) + 3 : ℕ) : ℝ) := by exact_mod_cast hk3
+      have hz : chi8PrimeZ (8 * (N / 8) + 3) = 1 := chi8PrimeZ_eight_mul_add_three (N / 8)
+      rw [hz]
+      have hnorm : ‖(1 : ℝ) / ((8 * (N / 8) + 3 : ℕ) : ℝ)‖ = (1 : ℝ) / ((8 * (N / 8) + 3 : ℕ) : ℝ) := by
+        rw [Real.norm_eq_abs, abs_of_pos (div_pos (by norm_num) hd3)]
+      rw [hnorm]
+      have hleD : ((8 * (N / 8) + 1 : ℕ) : ℝ) ≤ ((8 * (N / 8) + 3 : ℕ) : ℝ) := by
+        exact_mod_cast (by omega : (8 * (N / 8) + 1 : ℕ) ≤ 8 * (N / 8) + 3)
+      have hide : ((8 * (N / 8) + 3 : ℕ) : ℝ)⁻¹ ≤ ((8 * (N / 8) + 1 : ℕ) : ℝ)⁻¹ := by
+        rw [inv_le_inv₀ hd3 hdpos]
+        exact hleD
+      simpa [one_div] using hide
+    · subst h4
+      have hz : chi8PrimeZ (8 * (N / 8) + 4) = 0 := chi8PrimeZ_eight_mul_add_four (N / 8)
+      rw [hz, zero_div]
+      simpa using hc
+    · subst h5
+      have hk5 : (0 : ℕ) < 8 * (N / 8) + 5 := by omega
+      have hd5 : (0 : ℝ) < ((8 * (N / 8) + 5 : ℕ) : ℝ) := by exact_mod_cast hk5
+      have hz : chi8PrimeZ (8 * (N / 8) + 5) = -1 := chi8PrimeZ_eight_mul_add_five (N / 8)
+      rw [hz]
+      have hnorm : ‖(-(1 : ℝ)) / ((8 * (N / 8) + 5 : ℕ) : ℝ)‖ = (1 : ℝ) / ((8 * (N / 8) + 5 : ℕ) : ℝ) := by
+        rw [neg_div]
+        rw [Real.norm_eq_abs, abs_neg, abs_of_pos (div_pos (by norm_num) hd5)]
+      rw [hnorm]
+      have hleD : ((8 * (N / 8) + 1 : ℕ) : ℝ) ≤ ((8 * (N / 8) + 5 : ℕ) : ℝ) := by
+        exact_mod_cast (by omega : (8 * (N / 8) + 1 : ℕ) ≤ 8 * (N / 8) + 5)
+      have hide : ((8 * (N / 8) + 5 : ℕ) : ℝ)⁻¹ ≤ ((8 * (N / 8) + 1 : ℕ) : ℝ)⁻¹ := by
+        rw [inv_le_inv₀ hd5 hdpos]
+        exact hleD
+      simpa [one_div] using hide
+    · subst h6
+      have hz : chi8PrimeZ (8 * (N / 8) + 6) = 0 := chi8PrimeZ_eight_mul_add_six (N / 8)
+      rw [hz, zero_div]
+      simpa using hc
+    · subst h7
+      have hk7 : (0 : ℕ) < 8 * (N / 8) + 7 := by omega
+      have hd7 : (0 : ℝ) < ((8 * (N / 8) + 7 : ℕ) : ℝ) := by exact_mod_cast hk7
+      have hz : chi8PrimeZ (8 * (N / 8) + 7) = -1 := chi8PrimeZ_eight_mul_add_seven (N / 8)
+      rw [hz]
+      have hnorm : ‖(-(1 : ℝ)) / ((8 * (N / 8) + 7 : ℕ) : ℝ)‖ = (1 : ℝ) / ((8 * (N / 8) + 7 : ℕ) : ℝ) := by
+        rw [neg_div]
+        rw [Real.norm_eq_abs, abs_neg, abs_of_pos (div_pos (by norm_num) hd7)]
+      rw [hnorm]
+      have hleD : ((8 * (N / 8) + 1 : ℕ) : ℝ) ≤ ((8 * (N / 8) + 7 : ℕ) : ℝ) := by
+        exact_mod_cast (by omega : (8 * (N / 8) + 1 : ℕ) ≤ 8 * (N / 8) + 7)
+      have hide : ((8 * (N / 8) + 7 : ℕ) : ℝ)⁻¹ ≤ ((8 * (N / 8) + 1 : ℕ) : ℝ)⁻¹ := by
+        rw [inv_le_inv₀ hd7 hdpos]
+        exact hleD
+      simpa [one_div] using hide
+  have hwell : ‖chi8PrimeTurnTail N‖
+      ≤ ∑ j ∈ Finset.range (N % 8), (1 : ℝ) / ((8 * (N / 8) + 1 : ℕ) : ℝ) := by
+    calc
+      ‖chi8PrimeTurnTail N‖
+          = ‖∑ j ∈ Finset.range (N % 8), chi8PrimeZ (8 * (N / 8) + j) / ((8 * (N / 8) + j : ℕ) : ℝ)‖ := rfl
+      _ ≤ ∑ j ∈ Finset.range (N % 8), ‖chi8PrimeZ (8 * (N / 8) + j) / ((8 * (N / 8) + j : ℕ) : ℝ)‖ :=
+          norm_sum_le (Finset.range (N % 8))
+            (fun j : ℕ => chi8PrimeZ (8 * (N / 8) + j) / ((8 * (N / 8) + j : ℕ) : ℝ))
+      _ ≤ ∑ j ∈ Finset.range (N % 8), (1 : ℝ) / ((8 * (N / 8) + 1 : ℕ) : ℝ) := hb
+  have hconst : ∑ j ∈ Finset.range (N % 8), (1 : ℝ) / ((8 * (N / 8) + 1 : ℕ) : ℝ)
+      ≤ (8 : ℝ) / ((8 * (N / 8) + 1 : ℕ) : ℝ) := by
+    have hcard : (N % 8 : ℕ) ≤ 8 := le_of_lt (Nat.mod_lt N (by norm_num : 0 < 8))
+    calc
+      (∑ j ∈ Finset.range (N % 8), (1 : ℝ) / ((8 * (N / 8) + 1 : ℕ) : ℝ))
+          = ((N % 8 : ℕ) : ℝ) * ((1 : ℝ) / ((8 * (N / 8) + 1 : ℕ) : ℝ)) := by
+            rw [Finset.sum_const, nsmul_eq_mul, Finset.card_range]
+      _ ≤ (8 : ℝ) * ((1 : ℝ) / ((8 * (N / 8) + 1 : ℕ) : ℝ)) := by
+            exact mul_le_mul_of_nonneg_right (by exact_mod_cast hcard) hc
+      _ = (8 : ℝ) / ((8 * (N / 8) + 1 : ℕ) : ℝ) := by
+            rw [mul_one_div]
+  exact le_trans hwell hconst
+
+lemma chi8PrimeTurnTail_tendsto : Tendsto chi8PrimeTurnTail atTop (𝓝 (0 : ℝ)) := by
+  have hmd : Tendsto (fun N : ℕ => (8 * (N / 8) + 1 : ℕ)) atTop atTop := by
+    rw [tendsto_atTop_atTop]
+    intro b
+    refine ⟨8 * (b + 1), ?_⟩
+    intro N hN
+    omega
+  have hcast : Tendsto (fun N : ℕ => (((8 * (N / 8) + 1 : ℕ) : ℝ))) atTop atTop :=
+    tendsto_natCast_atTop_atTop.comp hmd
+  have hinv : Tendsto (fun N : ℕ => (((8 * (N / 8) + 1 : ℕ) : ℝ)⁻¹)) atTop (𝓝 (0 : ℝ)) :=
+    tendsto_inv_atTop_zero.comp hcast
+  have hb : Tendsto (fun N : ℕ => (1 : ℝ) / ((8 * (N / 8) + 1 : ℕ) : ℝ)) atTop (𝓝 (0 : ℝ)) := by
+    exact hinv.congr' (Eventually.of_forall (fun N => by rw [← one_div]))
+  have hb8 : Tendsto (fun N : ℕ => (8 : ℝ) / ((8 * (N / 8) + 1 : ℕ) : ℝ)) atTop (𝓝 (0 : ℝ)) := by
+    have hb8m : Tendsto (fun N : ℕ => (8 : ℝ) * (1 / ((8 * (N / 8) + 1 : ℕ) : ℝ))) atTop (𝓝 (0 : ℝ)) := by
+      simpa using hb.const_mul (8 : ℝ)
+    exact hb8m.congr' (Eventually.of_forall (fun N => by rw [mul_one_div]))
+  have hneg : Tendsto (fun N : ℕ => -((8 : ℝ) / ((8 * (N / 8) + 1 : ℕ) : ℝ))) atTop (𝓝 (0 : ℝ)) := by
+    simpa using hb8.neg
+  refine tendsto_of_tendsto_of_tendsto_of_le_of_le hneg hb8 ?_ ?_
+  · intro N
+    have hbN : |chi8PrimeTurnTail N| ≤ (8 : ℝ) / ((8 * (N / 8) + 1 : ℕ) : ℝ) := by
+      simpa [Real.norm_eq_abs] using chi8PrimeTurnTail_bound (N := N)
+    exact (abs_le.mp hbN).1
+  · intro N
+    have hbN : |chi8PrimeTurnTail N| ≤ (8 : ℝ) / ((8 * (N / 8) + 1 : ℕ) : ℝ) := by
+      simpa [Real.norm_eq_abs] using chi8PrimeTurnTail_bound (N := N)
+    exact (abs_le.mp hbN).2
+
+lemma chi8PrimePartial_tendsto :
+    Tendsto chi8PrimePartial atTop (𝓝 (Real.pi / (2 * Real.sqrt 2))) := by
+  have hg : Tendsto (fun M : ℕ => chi8PrimePartial (8 * M)) atTop (𝓝 (Real.pi / (2 * Real.sqrt 2))) :=
+    chi8PrimeGroup_tendsto.congr' (Eventually.of_forall (fun M => (chi8PrimePartial_eight_mul M).symm))
+  have hq : Tendsto (fun N : ℕ => N / 8) atTop atTop := by
+    rw [tendsto_atTop_atTop]
+    intro b
+    refine ⟨8 * (b + 1), ?_⟩
+    intro N hN
+    omega
+  have hmain : Tendsto (fun N : ℕ => chi8PrimePartial (8 * (N / 8))) atTop
+      (𝓝 (Real.pi / (2 * Real.sqrt 2))) :=
+    hg.comp hq
+  have htail : Tendsto (fun N : ℕ => chi8PrimePartial N - chi8PrimePartial (8 * (N / 8))) atTop (𝓝 (0 : ℝ)) :=
+    chi8PrimeTurnTail_tendsto.congr' (Eventually.of_forall (fun N => by
+      change chi8PrimeTurnTail N = chi8PrimePartial N - chi8PrimePartial (8 * (N / 8))
+      rw [chi8PrimePartial_split]
+      ring))
+  have hsum := hmain.add htail
+  convert hsum using 1
+  · funext N
+    ring
+  · simp
+
+/-- The `χ₈'` Dirichlet series at `s = 1` (`Σ χ₈'(n)/n`): its ordered partial sums in `ℝ`
+coincide with the ordered partial sums of the mod-8 pattern `chi8PrimeZ n / n`. -/
+lemma chi8Prime_series_partial_real (N : ℕ) :
+    (∑ n ∈ Finset.range N, ((ZMod.χ₈' n : ℤ) : ℝ) / (n : ℝ)) = chi8PrimePartial N := by
+  unfold chi8PrimePartial
+  refine Finset.sum_congr rfl ?_
+  intro n hn
+  rw [chi8PrimeZ_eq_χ₈' n]
+
+/-- `L(1, χ₈') = π/(2√2)` as a Dirichlet-series limit (in `ℝ`): the ordered partial sums
+`Σ_{n<N} χ₈'(n)/n` tend to `π/(2√2)`. -/
+lemma chi8Prime_series_real_pi_div_two_sqrt_two :
+    Tendsto (fun N : ℕ => ∑ n ∈ Finset.range N, ((ZMod.χ₈' n : ℤ) : ℝ) / (n : ℝ)) atTop
+      (𝓝 (Real.pi / (2 * Real.sqrt 2) : ℝ)) := by
+  convert chi8PrimePartial_tendsto using 1
+  funext N
+  rw [chi8Prime_series_partial_real]
+
+lemma chi8Primeℂ_term_eq (n : ℕ) :
+    (algebraMap ℝ ℂ) (((ZMod.χ₈' n : ℤ) : ℝ) / (n : ℝ)) = (χ₈'ℂ n) / (n : ℂ) := by
+  have hnum : (algebraMap ℝ ℂ) (((ZMod.χ₈' n : ℤ) : ℝ)) = ((ZMod.χ₈' n : ℤ) : ℂ) := by norm_num
+  have hnum2 : ((ZMod.χ₈' n : ℤ) : ℂ) = (χ₈'ℂ n) := by simp [χ₈'ℂ]
+  have hden : (algebraMap ℝ ℂ) (n : ℝ) = (n : ℂ) := by rfl
+  rw [map_div₀, hnum, hnum2, hden]
+
+lemma chi8Prime_series_eq_real (N : ℕ) :
+    (algebraMap ℝ ℂ) (∑ n ∈ Finset.range N, (((ZMod.χ₈' n : ℤ) : ℝ) / (n : ℝ)))
+      = ∑ n ∈ Finset.range N, (χ₈'ℂ n) / (n : ℂ) := by
+  calc
+    (algebraMap ℝ ℂ) (∑ n ∈ Finset.range N, (((ZMod.χ₈' n : ℤ) : ℝ) / (n : ℝ)))
+        = ∑ n ∈ Finset.range N, (algebraMap ℝ ℂ) (((ZMod.χ₈' n : ℤ) : ℝ) / (n : ℝ)) :=
+          map_sum (algebraMap ℝ ℂ) (fun n : ℕ => ((ZMod.χ₈' n : ℤ) : ℝ) / (n : ℝ)) (Finset.range N)
+    _ = ∑ n ∈ Finset.range N, (χ₈'ℂ n) / (n : ℂ) :=
+          Finset.sum_congr rfl (by intro n hn; exact chi8Primeℂ_term_eq n)
+
+/-- The `L(1, χ₈') = π/(2√2)` special value as a Dirichlet-series limit: the ordered partial
+sums `Σ_{n<N} χ₈'(n)/n` (in `ℂ`) tend to `π/(2√2)`. -/
+lemma chi8Prime_series_pi_div_two_sqrt_two :
+    Tendsto (fun N : ℕ => ∑ n ∈ Finset.range N, (χ₈'ℂ n) / (n : ℂ)) atTop
+      (𝓝 (Real.pi / (2 * Real.sqrt 2) : ℂ)) := by
+  have hc : Tendsto (RCLike.ofReal ∘ (fun N : ℕ => ∑ n ∈ Finset.range N, ((ZMod.χ₈' n : ℤ) : ℝ) / (n : ℝ))) atTop
+      (𝓝 (RCLike.ofReal (K := ℂ) (Real.pi / (2 * Real.sqrt 2) : ℝ))) :=
+    RCLike.continuous_ofReal.continuousAt.tendsto.comp chi8Prime_series_real_pi_div_two_sqrt_two
+  have hpi : 𝓝 (RCLike.ofReal (K := ℂ) (Real.pi / (2 * Real.sqrt 2) : ℝ)) =
+      𝓝 (Real.pi / (2 * Real.sqrt 2) : ℂ) := by
+    congr 1
+    change (algebraMap ℝ ℂ) (Real.pi / (2 * Real.sqrt 2)) =
+      (Real.pi : ℂ) / ((2 : ℂ) * (Real.sqrt 2 : ℂ))
+    rw [map_div₀, map_mul]
+    simp
+  have hobs : ∀ᶠ N in atTop,
+      (RCLike.ofReal ∘ (fun N : ℕ => ∑ n ∈ Finset.range N, ((ZMod.χ₈' n : ℤ) : ℝ) / (n : ℝ))) N =
+        ∑ n ∈ Finset.range N, (χ₈'ℂ n) / (n : ℂ) := by
+    apply Filter.Eventually.of_forall
+    intro N
+    change (algebraMap ℝ ℂ) (∑ n ∈ Finset.range N, (((ZMod.χ₈' n : ℤ) : ℝ) / (n : ℝ))) =
+      ∑ n ∈ Finset.range N, (χ₈'ℂ n) / (n : ℂ)
+    exact chi8Prime_series_eq_real N
+  simpa [hpi] using hc.congr' hobs
+
 end PunoTwin.Dirichlet
