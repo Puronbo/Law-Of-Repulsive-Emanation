@@ -80,7 +80,20 @@ chi4_even_zero_real,
                                              chi8Prime_series_partial_real,
                                              chi8Prime_series_real_pi_div_two_sqrt_two,
                                              chi8Prime_series_pi_div_two_sqrt_two,
-                                             chi8Primeℂ_term_eq, chi8Prime_series_eq_real
+                                             chi8Primeℂ_term_eq, chi8Prime_series_eq_real,
+                                             chi8Z_eq_χ₈,
+                                             chi8StepF_closed, chi8StepF_norm_le,
+                                             chi8StepF_tendsto_limit,
+                                             integral_chi8_value, integral_chi8StepF,
+                                             tendsto_integral_chi8StepF,
+                                             chi8Group_tendsto, chi8Partial_eight_mul,
+                                             chi8Partial_split,
+                                             chi8TurnTail_bound, chi8TurnTail_tendsto,
+                                             chi8Partial_tendsto,
+                                             chi8_series_partial_real,
+                                             chi8_series_real_ln_one_plus_sqrt_two_div_sqrt_two,
+                                             chi8ℂ_term_eq, chi8_series_eq_real,
+                                             chi8_series_ln_one_plus_sqrt_two_div_sqrt_two
     py     validate_..._closed_forms    exact rational 2048/65537,
                                           65536/67108865
     md     Soliton-Bus ... .md          "86 root validators", the
@@ -89,7 +102,7 @@ chi4_even_zero_real,
 
 Provenance: the PunoTwin twin files mirror the mathlib v4.33.1 origin
 repository github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof at
-commit cb8608e.  The vendored copies in
+commit a975c74.  The vendored copies in
 PunoCalculus/PunoCalculus/PunoTwin and the origin tree must stay
 byte-identical (hash-audited); bumping the mathlib rev in either place
 invalidates the other.
@@ -106,7 +119,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 WORKSPACE = ROOT.parent
 PW = WORKSPACE / "PunoCalculus" / "PunoCalculus"
-TWIN_ORIGIN_SHA = "cb8608e"
+TWIN_ORIGIN_SHA = "a975c74"
 TWIN_ORIGIN_URL = "github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof"
 
 
@@ -250,6 +263,24 @@ DIRL = [
     "dirichlet_prime_gt",
     "χ₃𝕃_ne_zero_one",
     "riemann_no_zeros_on_boundary",
+    "chi8Z_eq_χ₈",
+    "chi8StepF_closed",
+    "chi8StepF_norm_le",
+    "chi8StepF_tendsto_limit",
+    "integral_chi8_value",
+    "integral_chi8StepF",
+    "tendsto_integral_chi8StepF",
+    "chi8Group_tendsto",
+    "chi8Partial_eight_mul",
+    "chi8Partial_split",
+    "chi8TurnTail_bound",
+    "chi8TurnTail_tendsto",
+    "chi8Partial_tendsto",
+    "chi8_series_partial_real",
+    "chi8_series_real_ln_one_plus_sqrt_two_div_sqrt_two",
+    "chi8ℂ_term_eq",
+    "chi8_series_eq_real",
+    "chi8_series_ln_one_plus_sqrt_two_div_sqrt_two",
 ]
 MPOP = [
     "operator_discriminant_bridge",
