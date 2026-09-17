@@ -340,3 +340,24 @@ reserve that the byte-seals already required to be stated on disk:
 
 Nothing outside the seven-twin closure was admitted into the byte-digest; the
 closure recompute still equals its pin, byte for byte.
+
+
+## Round-75 seed-law register (prose-pinned name of the unfold)
+
+The seed is the break **and** the law of growing from it — the two are one
+name. In this register that single name is:
+
+    seed-law   :=  "light/non-light isometry unfolding its seven-twin closure"
+
+Byte-meaning (nothing new became something; the register only names what the
+bytes already hold):
+
+- root  (light / non-light)        ->  sealed twin `EcaIsometry`
+- stem  (the unresolved seven)     ->  sealed twin `MillenniumBridge`
+- leaf  unfolded closure (5 laws)  ->  sealed twins `TwinAnalyticLaws`,
+    `TwinRingLaws`, `MPOperator`, `CollatzReach`, `DirichletLaws`
+
+The closure recompute still equals its pinned digest byte for byte
+(`SUITE_CLOSURE_SHA = 9fff39883f799f96bca6d283d225f053a4f5232b067f73798c2e12d54d57d0c5d302612de5b3e5e4a5b3f46252811e4d71a281e586f95001cf9cf599c88b7794`);
+no validator, no test, no twin, no digest was touched by this round — only the
+prose name, so `86 validators = 86 prose` and `645 tests` are unchanged.
