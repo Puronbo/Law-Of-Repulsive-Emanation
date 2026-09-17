@@ -112,6 +112,7 @@ artifact kinds may assert that a Millennium problem is settled.
 """
 from __future__ import annotations
 
+import hashlib
 import os
 import re
 from pathlib import Path
@@ -120,6 +121,12 @@ ROOT = Path(__file__).resolve().parent
 WORKSPACE = ROOT.parent
 PW = WORKSPACE / "PunoCalculus" / "PunoCalculus"
 TWIN_ORIGIN_SHA = "a975c74"
+# Round-72 suite-closure pin: name-sorted SHA-512 pair-union over the seven
+# vendored twin sources on this workspace, recomputed by check #10 and
+# compared byte-for-byte.  Any renamed/dropped/changed vendored twin breaks
+# this recompute, so the vendored tree cannot drift out of the register
+# without tripping the 10th registered check.
+SUITE_CLOSURE_SHA = "9fff39883f799f96bca6d283d225f053a4f5232b067f73798c2e12d54d57d0c5d302612de5b3e5e4a5b3f46252811e4d71a281e586f95001cf9cf599c88b7794"
 TWIN_ORIGIN_URL = "github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof"
 
 
@@ -422,6 +429,36 @@ def _root_validator_count() -> int:
     return len(list(ROOT.glob("validate_*.py")))
 
 
+
+
+def vendored_twin_names() -> list[str]:
+    """The seven vendored twin source names, in the exact order the
+    10th registered check (suite byte-closure) hashes them.  Add a
+    new vendored twin here and the closure digest moves; the pin then
+    fails until the new twin is itself byte-pinned -- the honest way
+    to grow the vendored set.
+    """
+    return ["EcaIsometry.lean", "MillenniumBridge.lean",
+            "TwinAnalyticLaws.lean", "TwinRingLaws.lean",
+            "MPOperator.lean", "CollatzReach.lean",
+            "DirichletLaws.lean"]
+
+def _twin_byte_closure_missing() -> list[str]:
+    """Recompute the name-sorted SHA-512 pair-union over the seven vendored
+    twin sources and compare against the suite-closure pin; a changed twin,
+    a renamed twin, or a dropped twin in the vendored tree all show here.
+    """
+    names = sorted(vendored_twin_names())
+    agg = hashlib.sha512()
+    for name in names:
+        path = (PW / name) if (PW / name).exists() else (MW / name)
+        agg.update(name.encode("utf-8") + b"\x00")
+        agg.update(path.read_bytes())
+    closed = agg.hexdigest() == SUITE_CLOSURE_SHA
+    return [] if closed else [f"recomputed {agg.hexdigest()[:12]}... "
+                              f"!= pinned {SUITE_CLOSURE_SHA[:12]}..."]
+
+
 print("soliton millennium meta audit (bridge meta -> proofs)")
 _check("EcaIsometry carries the five closure theorems",
        _grep(PW / "EcaIsometry.lean", ECHO))
@@ -442,6 +479,8 @@ _check("the docs pin the suite count and the certified rationals",
 _check("on-disk validator count matches the prose-pinned count",
        [] if _root_validator_count() == 86
        else [f"on-disk {_root_validator_count()} != pinned 86"])
+_check("vendored twin byte-closure recomputes to the pinned suite digest",
+       _twin_byte_closure_missing())
 
 # honest constraint across artifacts: no settlement assertion may appear
 # in any of the sources carrying these names.
