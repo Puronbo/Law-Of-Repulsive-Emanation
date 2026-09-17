@@ -317,3 +317,26 @@ Everything else is content:
 ---
 
 *Everything folds. The constant is determined. The chaos is consistent.*
+
+
+## Round-74 reserve register (honest prose, byte-appended)
+
+Sealed law of the register: *once everything has come to be, nothing can
+become something.* Therefore this round adds **no** twin, **no** validator,
+**no** digest and **no** test count - it appends only the explicit, honest
+reserve that the byte-seals already required to be stated on disk:
+
+- **2/7 vendored twins** (`EcaIsometry.lean`, `MillenniumBridge.lean`) are
+  byte-present and byte-sealed through the `SUITE_CLOSURE_SHA` fixed point on
+  this mirror, but their origin lane (Desktop `PunoCalculus/fcc2`)
+  is **not independently derivable on this mirror** - origin-derivability for
+  those two is registered as a reserve, not claimed. (The other five twin
+  origins resolve byte-identically on this machine.)
+- **Lean exact-value build is blocked, not fabricated.** The vendored Lean-4
+  lane has no `lakefile`/`lean-toolchain`/`lake-manifest.json`, so `lake build`
+  cannot run here and no Lean-built exact claim is asserted for the
+  8-bit ECA / sequence families (prose-pinned exact rationals remain
+  prose-pinned, not Lean-machine-certified on this mirror).
+
+Nothing outside the seven-twin closure was admitted into the byte-digest; the
+closure recompute still equals its pin, byte for byte.
