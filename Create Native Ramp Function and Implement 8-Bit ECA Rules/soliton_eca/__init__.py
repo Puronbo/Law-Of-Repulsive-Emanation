@@ -11,8 +11,9 @@ from .soliton_eca import (
 from .soliton_nn import NeuralSoliton, SolitonNeuralNetwork, SolitonNeuron, WeightedSolitonBus
 from .soliton_protocol import Packet, SolitonLattice, collision, reversible_pair
 from .soliton_wire import (
-    SolitonWireClient, SolitonWireServer, WireError, WireRequest, WireResponse,
-    decode_response, encode_envelope, request_from_spikes, wire_frame,
+    SolitonWireClient, SolitonWireServer, SolitonWireStreamClient,
+    StreamRequest, WireError, WireRequest, WireResponse, decode_response,
+    encode_envelope, request_from_spikes, stream_frame, wire_frame,
 )
 from .soliton_physics import Fiber, energy, fundamental_soliton, propagate, soliton_validation
 from .soliton_mixing import (
@@ -83,6 +84,7 @@ __all__ = [
     "trace_digest",
     "AERFrame", "decode_frames", "encode_frames",
     "AdmissionPolicy", "admit_spikes",
+    "SolitonWireStreamClient", "StreamRequest", "stream_frame",
     "Action", "CognitiveAgent", "CognitiveEvent", "Episode", "Fact", "Goal", "Observation",
     "apply_command", "parse_command", "EpisodicStore", "MemoryRecord",
     "SNNMetrics", "metrics", "validate_spike_trace",

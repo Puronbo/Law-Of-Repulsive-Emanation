@@ -106,6 +106,18 @@ def claims():
                       "L_wire_tampered_envelope_rejected",
                       "L_wire_version_gate",
                       "L_wire_admission_rejection"]},
+        {"law": "streaming wire path delivers the first verified spike at "
+                "the first tick (O(1), before the batch's tail is sent), "
+                "verifies every frame at its own tick, and seals the whole "
+                "exchange with a background band-level checksum so a "
+                "consistent rewrite or a policy violation rejects the "
+                "stream as a unit (never a success response)",
+         "requires": ["L_stream_first_tick_delivery",
+                      "L_stream_order_integrity",
+                      "L_stream_tampered_frame_rejected",
+                      "L_stream_band_level_rewrite",
+                      "L_stream_version_gate",
+                      "L_stream_admission_rejected"]},
         {"law": "the fundamental conservative rule set (noise-as-measured-"
                 "data, background not a given zero) is exactly "
                 "{170,184,204,226,240}, and the bitmask 16-set reproduces",

@@ -94,8 +94,10 @@ def _wire_certificates():
     if soliton_dir not in sys.path:
         sys.path.insert(0, soliton_dir)
     from soliton_eca.soliton_wire_audit import wire_certificates
+    from soliton_eca.soliton_wire_stream_audit import wire_stream_certificates
     from soliton_eca.soliton_ruleset_audit import ruleset_certificates
-    return wire_certificates() + ruleset_certificates()
+    return (wire_certificates() + wire_stream_certificates()
+            + ruleset_certificates())
 
 
 def system_certificates():

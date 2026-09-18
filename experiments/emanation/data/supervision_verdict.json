@@ -1,8 +1,8 @@
 {
  "accepted": true,
- "n_claims": 81,
+ "n_claims": 82,
  "n_negative_claims": 0,
- "n_required_certs": 87,
+ "n_required_certs": 93,
  "results": [
   {
    "law": "L1 free streaming (rule 29, gap>=2 sector)",
@@ -424,6 +424,29 @@
     "L_wire_tampered_envelope_rejected",
     "L_wire_version_gate",
     "L_wire_admission_rejection"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "streaming wire path delivers the first verified spike at the first tick (O(1), before the batch's tail is sent), verifies every frame at its own tick, and seals the whole exchange with a background band-level checksum so a consistent rewrite or a policy violation rejects the stream as a unit (never a success response)",
+   "ok": true,
+   "pass_evidence": [
+    "L_stream_first_tick_delivery",
+    "L_stream_order_integrity",
+    "L_stream_tampered_frame_rejected",
+    "L_stream_band_level_rewrite",
+    "L_stream_version_gate",
+    "L_stream_admission_rejected"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L_stream_first_tick_delivery",
+    "L_stream_order_integrity",
+    "L_stream_tampered_frame_rejected",
+    "L_stream_band_level_rewrite",
+    "L_stream_version_gate",
+    "L_stream_admission_rejected"
    ],
    "rule": null,
    "status": "BELIEVED FORMALLY"
@@ -1070,6 +1093,6 @@
    "status": "BELIEVED FORMALLY"
   }
  ],
- "timestamp": "2026-09-18 13:25:07 UTC",
+ "timestamp": "2026-09-18 14:52:14 UTC",
  "verdict": "ACCEPTED"
 }

@@ -852,6 +852,113 @@
   "status": "HONEST_NEGATIVE"
  },
  {
+  "domain": "real streaming loopback (header + inner chunks over one socket); measured, none assumed",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L_stream_first_tick_delivery",
+  "meta": {
+   "domain": "real streaming loopback (header + inner chunks over one socket); measured, none assumed",
+   "law": "the handler receives the first verified spike at the first tick, O(1) in the batch: BEFORE the tail of the batch is even sent (measured with deterministic thread events, no sleeps)",
+   "measured_on": "soliton_eca.soliton_wire streaming path"
+  },
+  "n_fail": 0,
+  "n_ok": 1,
+  "points_checked": 1,
+  "status": "PASS"
+ },
+ {
+  "domain": "real streaming loopback (header + inner chunks over one socket); measured, none assumed",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L_stream_order_integrity",
+  "meta": {
+   "domain": "real streaming loopback (header + inner chunks over one socket); measured, none assumed",
+   "law": "N contiguous AER frames arrive intact and in order over the streaming wire path",
+   "measured_on": "soliton_eca.soliton_wire streaming path"
+  },
+  "n_fail": 0,
+  "n_ok": 4,
+  "points_checked": 4,
+  "status": "PASS"
+ },
+ {
+  "domain": "real streaming loopback (header + inner chunks over one socket); measured, none assumed",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L_stream_tampered_frame_rejected",
+  "meta": {
+   "domain": "real streaming loopback (header + inner chunks over one socket); measured, none assumed",
+   "law": "an inner frame with a rewritten per-spike checksum is rejected at its tick and the stream is rejected as a unit",
+   "measured_on": "soliton_eca.soliton_wire streaming path"
+  },
+  "n_fail": 0,
+  "n_ok": 1,
+  "points_checked": 1,
+  "status": "PASS"
+ },
+ {
+  "domain": "real streaming loopback (header + inner chunks over one socket); measured, none assumed",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L_stream_band_level_rewrite",
+  "meta": {
+   "domain": "real streaming loopback (header + inner chunks over one socket); measured, none assumed",
+   "law": "a consistent rewrite that preserves every per-frame checksum but distorts the whole-batch stream_checksum is caught by the background band check and rejected; no success response",
+   "measured_on": "soliton_eca.soliton_wire streaming path"
+  },
+  "n_fail": 0,
+  "n_ok": 1,
+  "points_checked": 1,
+  "status": "PASS"
+ },
+ {
+  "domain": "real streaming loopback (header + inner chunks over one socket); measured, none assumed",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L_stream_version_gate",
+  "meta": {
+   "domain": "real streaming loopback (header + inner chunks over one socket); measured, none assumed",
+   "law": "a mismatched stream protocol version is rejected cleanly (no silently degraded exchange)",
+   "measured_on": "soliton_eca.soliton_wire streaming path"
+  },
+  "n_fail": 0,
+  "n_ok": 1,
+  "points_checked": 1,
+  "status": "PASS"
+ },
+ {
+  "domain": "real streaming loopback (header + inner chunks over one socket); measured, none assumed",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L_stream_admission_rejected",
+  "meta": {
+   "domain": "real streaming loopback (header + inner chunks over one socket); measured, none assumed",
+   "law": "a policy-violating spike (bad channel or oversized payload) is rejected at its own tick and the stream is rejected as a whole (no success response)",
+   "measured_on": "soliton_eca.soliton_wire streaming path"
+  },
+  "n_fail": 0,
+  "n_ok": 2,
+  "points_checked": 2,
+  "status": "PASS"
+ },
+ {
+  "domain": "real streaming loopback socket; all measured",
+  "first_failure": {
+   "datum": "serve_one_stream closes the connection after a single stream request"
+  },
+  "kind": "statement",
+  "label": "L_stream_single_stream",
+  "meta": {
+   "domain": "real streaming loopback socket; all measured",
+   "honest_check": "a claimed capability the code deliberately does not provide must be reported as the limitation it is",
+   "law": "FALSE CANDIDATE: one socket connection carries several streams in sequence"
+  },
+  "n_fail": 1,
+  "n_ok": 0,
+  "points_checked": 1,
+  "status": "HONEST_NEGATIVE"
+ },
+ {
   "configs_checked": 1,
   "first_failure": null,
   "kind": "statement",

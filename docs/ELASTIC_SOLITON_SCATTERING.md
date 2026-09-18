@@ -590,12 +590,12 @@ forged prev.  This is the unbounded-authority limitation: a local-only
 chain without signatures cannot forbid an authority rewriting its own
 tail.
 
-The gate now stands on **112 certificates** (94 PASS, 18 HONEST_NEGATIVE)
-and believes **81 claims**: 33 core physics/system/calendar/ledger/flow/
-commons/rubric/topology/wire-protocol/ruleset laws (including the
+The gate now stands on **119 certificates** (100 PASS, 19 HONEST_NEGATIVE)
+and believes **82 claims**: 34 core physics/system/calendar/ledger/flow/
+commons/rubric/topology/wire-protocol/streaming/ruleset laws (including the
 toy-transformer proposer's certified reversal rule) plus the 48
-self-discovered laws.  The honest-negative set is now 18 strong: the
-system has deliberately rejected 18 laws it could otherwise have shipped.
+self-discovered laws.  The honest-negative set is now 19 strong: the
+system has deliberately rejected 19 laws it could otherwise have shipped.
 
 Eleventh layer: **the fourth real-subsystem audit -- balance-flow engine
 geometry (L28-L31).** `puno_flow/engine.py` is the local-only balance
@@ -807,6 +807,41 @@ ruleset correction (bitmask16 + fundamental conservative set + 204
 storage).  Both believed.  The gate now stands on **112 certificates**,
 **81 claims all believed**, **18 honest-negatives**; emanation suite 252
 passed, `tests/` tree 645 passed, 0 failed.
+
+The **streaming extension** (`soliton_wire_stream_audit.py`) adds a
+first-tick O(1) delivery path over the same framed transport: the client
+sends a small stream header (with `count` + whole-batch
+`stream_checksum`) and then each inner AER frame as its own
+length-prefixed message, so the server can deliver the FIRST verified
+spike before the batch's tail has even been sent.  Each frame is still
+verified (per-spike SHA-256, contiguous sequence) and admitted at its
+own tick; a `StreamRequest.finish()` drain completes the band-level
+whole-batch checksum in the background, and any fault -- tampered frame,
+consistent rewrite that keeps every per-frame check but distorts the
+band seal, version mismatch, admission violation -- rejects the whole
+stream as a unit (a rejection envelope, never a success response).
+Measured over real loopback (7 certificates):
+    * `L_stream_first_tick_delivery` PASS -- the handler receives spike 0
+      BEFORE the tail is sent (deterministic thread events, no sleeps).
+    * `L_stream_order_integrity` PASS -- N contiguous frames intact and
+      in order (sizes 5..200).
+    * `L_stream_tampered_frame_rejected` PASS -- a rewritten inner
+      checksum is rejected at its tick.
+    * `L_stream_band_level_rewrite` PASS -- a rewrite that preserves
+      every per-frame checksum yet distorts the whole-batch
+      `stream_checksum` is caught by the background band check and the
+      stream is rejected as a unit.
+    * `L_stream_version_gate` PASS -- a mismatched stream protocol
+      version is rejected cleanly.
+    * `L_stream_admission_rejected` PASS -- a policy-violating spike (bad
+      channel / oversized payload) is rejected at its tick and the stream
+      is rejected as a whole.
+    * `L_stream_single_stream` HONEST_NEGATIVE -- one connection carries
+      exactly ONE stream request by design (mirrors the batch path's
+      limitation).
+The gate now stands on **119 certificates** (100 PASS, 19 honest-
+negatives), **82 claims all believed**; emanation suite 252 passed,
+`tests/` tree 645 passed, 0 failed.
 
   * "current = number of (1,0) bonds" is NOT conserved.  Counterexample:
     [292,527,990,991,1166,1754] has 5 active bonds; the jam (990,991)
