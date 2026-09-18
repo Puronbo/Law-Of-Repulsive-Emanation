@@ -169,13 +169,15 @@ def _conservation_scales_holds() -> bool:
 
 
 def certify(label: str, meta: dict[str, object],
-            pred: Callable[[], bool]) -> dict[str, object]:
+            pred: Callable[[], bool], points_checked: int = 1) -> dict[str, object]:
     n_ok = 1 if pred() else 0
     return {
         "label": label,
         "meta": meta,
         "kind": "statement",
         "status": "PASS" if n_ok else "HONEST_NEGATIVE",
+        "configs_checked": points_checked,
+        "points_checked": points_checked,
         "n_ok": n_ok,
         "n_fail": 0 if n_ok else 1,
         "first_failure": None if n_ok else {"datum": "the predicate Failed"},

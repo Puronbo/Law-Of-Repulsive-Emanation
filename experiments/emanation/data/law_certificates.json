@@ -760,6 +760,283 @@
   "status": "HONEST_NEGATIVE"
  },
  {
+  "domain": "real loopback round-trip; all measured, none assumed",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L_wire_order_integrity",
+  "meta": {
+   "domain": "real loopback round-trip; all measured, none assumed",
+   "law": "N contiguous AER frames arrive intact and in order over a real loopback request/response",
+   "measured_on": "soliton_eca.soliton_wire"
+  },
+  "n_fail": 0,
+  "n_ok": 4,
+  "points_checked": 4,
+  "status": "PASS"
+ },
+ {
+  "domain": "real loopback round-trip; all measured, none assumed",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L_wire_tampered_frame_rejected",
+  "meta": {
+   "domain": "real loopback round-trip; all measured, none assumed",
+   "law": "a frame with a rewritten inner per-spike checksum is rejected before the handler runs (explicit rejection, never admitted)",
+   "measured_on": "soliton_eca.soliton_wire"
+  },
+  "n_fail": 0,
+  "n_ok": 1,
+  "points_checked": 1,
+  "status": "PASS"
+ },
+ {
+  "domain": "real loopback round-trip; all measured, none assumed",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L_wire_tampered_envelope_rejected",
+  "meta": {
+   "domain": "real loopback round-trip; all measured, none assumed",
+   "law": "a tampered envelope checksum is rejected at the framing layer",
+   "measured_on": "soliton_eca.soliton_wire"
+  },
+  "n_fail": 0,
+  "n_ok": 1,
+  "points_checked": 1,
+  "status": "PASS"
+ },
+ {
+  "domain": "real loopback round-trip; all measured, none assumed",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L_wire_version_gate",
+  "meta": {
+   "domain": "real loopback round-trip; all measured, none assumed",
+   "law": "a mismatched protocol version is rejected cleanly (no silently degraded exchange)",
+   "measured_on": "soliton_eca.soliton_wire"
+  },
+  "n_fail": 0,
+  "n_ok": 1,
+  "points_checked": 1,
+  "status": "PASS"
+ },
+ {
+  "domain": "real loopback round-trip; all measured, none assumed",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L_wire_admission_rejection",
+  "meta": {
+   "domain": "real loopback round-trip; all measured, none assumed",
+   "law": "a request violating the admission policy (bad channel or oversized payload) is rejected with a structured error naming why, and the handler never runs",
+   "measured_on": "soliton_eca.soliton_wire"
+  },
+  "n_fail": 0,
+  "n_ok": 2,
+  "points_checked": 2,
+  "status": "PASS"
+ },
+ {
+  "domain": "real loopback socket; all measured, none assumed",
+  "first_failure": {
+   "datum": "serve_one closes the connection after a single request"
+  },
+  "kind": "statement",
+  "label": "L_wire_single_stream",
+  "meta": {
+   "domain": "real loopback socket; all measured, none assumed",
+   "honest_check": "a claimed capability the code deliberately does not provide must be reported as the limitation it is",
+   "law": "FALSE CANDIDATE: one socket connection carries several requests in sequence"
+  },
+  "n_fail": 1,
+  "n_ok": 0,
+  "points_checked": 1,
+  "status": "HONEST_NEGATIVE"
+ },
+ {
+  "configs_checked": 1,
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L_ruleset_bitmask16",
+  "meta": {
+   "domain": "all 256 Wolfram rules; bitmask conditions f(000)=0,f(001)=0,f(010)=1,f(100)=0",
+   "law": "the bitmask filters to exactly the claimed 16-rule set (structural: 4 output bits fixed, 4 free)",
+   "measured_on": "exhaustive 256-rule enumeration"
+  },
+  "n_fail": 0,
+  "n_ok": 1,
+  "points_checked": 1,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 1,
+  "first_failure": {
+   "datum": "the predicate Failed"
+  },
+  "kind": "statement",
+  "label": "L_ruleset_blanket_conservation",
+  "meta": {
+   "domain": "the claimed 16 rules, rings of width 8..12",
+   "honest_check": "treating the 0-vacuum as a given baseline does NOT imply signal conservation",
+   "law": "FALSE CANDIDATE: all 16 rules conserve active-bit count on rings -- only rule 204 does"
+  },
+  "n_fail": 1,
+  "n_ok": 0,
+  "points_checked": 1,
+  "status": "HONEST_NEGATIVE"
+ },
+ {
+  "configs_checked": 1,
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L_ruleset_fundamental_conservation",
+  "meta": {
+   "domain": "all 256 rules, EVERY ring configuration at widths 8..12 (noise/background included as measured data)",
+   "key_correction": "background is measured data, not a given zero",
+   "law": "the rules conserving the TOTAL active population for every configuration are exactly {170,184,204,226,240}"
+  },
+  "n_fail": 0,
+  "n_ok": 1,
+  "points_checked": 1,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 1,
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L_ruleset_204_storage_identity",
+  "meta": {
+   "domain": "rule 204, block 1110 and isolated 1 on a 21-ring over 20 steps",
+   "law": "rule 204 holds a block at an identical offset (genuine position-conserving storage)"
+  },
+  "n_fail": 0,
+  "n_ok": 1,
+  "points_checked": 1,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 1,
+  "first_failure": {
+   "datum": "the predicate Failed"
+  },
+  "kind": "statement",
+  "label": "L_ruleset_164_shift_claim",
+  "meta": {
+   "domain": "rule 164, isolated single 1 in vacuum on a 21-ring",
+   "honest_check": "164 is bitmask-stable but does not exhibit the stated +1 shift",
+   "law": "FALSE CANDIDATE: rule 164 shifts an isolated cell by +1 per cycle -- the lone 1 is stationary"
+  },
+  "n_fail": 1,
+  "n_ok": 0,
+  "points_checked": 1,
+  "status": "HONEST_NEGATIVE"
+ },
+ {
+  "configs_checked": 1,
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L_ruleset_twin32_characterization",
+  "meta": {
+   "domain": "all 256 Wolfram rules; output window (f000,f001,f010,f100) in {(0,0,1,0),(1,1,0,1)}",
+   "law": "the implemented 32-rule twin set is exactly the rules whose four fixed window bits are the bitmask pattern (0,0,1,0) or its bitwise complement (1,1,0,1); the 16 additions are 255-r twins of the original 16",
+   "measured_on": "exhaustive 256-rule enumeration"
+  },
+  "n_fail": 0,
+  "n_ok": 1,
+  "points_checked": 1,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 1,
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L_ruleset_twin32_complement_closure",
+  "meta": {
+   "domain": "the 32-rule twin family (exhaustively derived by the window condition)",
+   "law": "the family is closed under black/white output complement: every rule r has 255-r inside the same 32-rule set",
+   "measured_on": "closure over the full twin set"
+  },
+  "n_fail": 0,
+  "n_ok": 1,
+  "points_checked": 1,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 1,
+  "first_failure": {
+   "datum": "the predicate Failed"
+  },
+  "kind": "statement",
+  "label": "L_ruleset_twin32_blanket_conservation",
+  "meta": {
+   "domain": "all 32 twin rules, rings of width 8..12",
+   "honest_check": "extending the table by the 16 complements does not manufacture blanket conservation",
+   "law": "FALSE CANDIDATE: the extended 32-rule family conserve active-bit count on rings -- only rule 204 does; the honest conservative set remains {170,184,204,226,240}"
+  },
+  "n_fail": 1,
+  "n_ok": 0,
+  "points_checked": 1,
+  "status": "HONEST_NEGATIVE"
+ },
+ {
+  "configs_checked": 1,
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L_eca_engine_matches_reference",
+  "meta": {
+   "domain": "all 32 twin-family rules on a ghost-zero grid, width 4..9, ten deterministic probes, five generations per probe",
+   "law": "the soliton-bus engine reproduces the reference ECA step exactly; bus transport alters no rule semantics",
+   "measured_on": "32 rules x 6 widths x 10 probes x 5 generations, engine vs direct reference"
+  },
+  "n_fail": 0,
+  "n_ok": 1,
+  "points_checked": 1,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 1,
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L_ruleset_twin_output_swap",
+  "meta": {
+   "domain": "ring configurations, exhaustive widths 6..8 plus deterministic probes",
+   "law": "for every rule r, the complement twin 255-r maps any configuration to the bitwise complement of what r maps it to (black/white output swap)",
+   "measured_on": "all 32 rules over exhaustive rings 6..8 and probes, one generation per config"
+  },
+  "n_fail": 0,
+  "n_ok": 1,
+  "points_checked": 1,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 1,
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L_ruleset_family_distinct_dynamics",
+  "meta": {
+   "domain": "every unordered pair of the 32 rules over all ring configurations of width 3..5",
+   "law": "no two family members share identical dynamics: every pair diverges already at the first generation, because distinct 8-bit rules differ on some neighborhood triple and every triple occurs as a width-3 ring state",
+   "measured_on": "496 rule pairs, exhaustive first-generation sweep over rings width 3..5"
+  },
+  "n_fail": 0,
+  "n_ok": 1,
+  "points_checked": 1,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 1,
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L_ruleset_conservation_scales_14_16",
+  "meta": {
+   "domain": "the conservative set {170,184,204,226,240} on rings of width 14 and 16 (2^14 and 2^16 configurations each)",
+   "law": "the measured conservative set persists at widths 14 and 16, and no other family rule conserves at either width",
+   "measured_on": "vectorized ring-population census (cross-validated against the serial path at width 12, then applied at widths 14 and 16)"
+  },
+  "n_fail": 0,
+  "n_ok": 1,
+  "points_checked": 1,
+  "status": "PASS"
+ },
+ {
   "configs_checked": 10,
   "domain": "out-of-sample (N, rule) in [8, 9, 10, 11, 12] x {29,71}, attractor over the full 2^N state space",
   "first_failure": null,

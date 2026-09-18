@@ -590,12 +590,12 @@ forged prev.  This is the unbounded-authority limitation: a local-only
 chain without signatures cannot forbid an authority rewriting its own
 tail.
 
-The gate now stands on **94 certificates** and believes **79 claims**:
-31 core physics/system/calendar/ledger/flow/commons/rubric/topology
-laws (including the toy-transformer proposer's certified reversal rule)
-plus the 48 self-discovered laws.  The honest-negative set is now
-14 strong: the system has deliberately rejected 14 laws it could
-otherwise have shipped.
+The gate now stands on **112 certificates** (94 PASS, 18 HONEST_NEGATIVE)
+and believes **81 claims**: 33 core physics/system/calendar/ledger/flow/
+commons/rubric/topology/wire-protocol/ruleset laws (including the
+toy-transformer proposer's certified reversal rule) plus the 48
+self-discovered laws.  The honest-negative set is now 18 strong: the
+system has deliberately rejected 18 laws it could otherwise have shipped.
 
 Eleventh layer: **the fourth real-subsystem audit -- balance-flow engine
 geometry (L28-L31).** `puno_flow/engine.py` is the local-only balance
@@ -722,6 +722,91 @@ the bundled `sigma_venv`; the suite now inserts it onto sys.path the same
 way the repo-root `test_sigma.py` and `sigma_school_server.py` already
 do), not missing code.
 
+Fifteenth layer: **the framed TCP wire protocol and the stripped-layer
+ruleset correction join the gate as the ninth and tenth real-subsystem
+audits.**  Two new measured subsystems enter the supervised table from
+the soliton-cognitive package (`Create Native Ramp Function and Implement
+8-Bit ECA Rules/soliton_eca/`), path-shimmed onto sys.path (the sigma_venv
+pattern):
+
+* **The wire protocol (`soliton_wire.py`) -- a framed, checksummed,
+  versioned transport.**  The stack previously had an *integrity* layer
+  (per-spike `AERFrame` SHA-256 + contiguous sequence) and
+  `AdmissionPolicy`, but no *network* boundary.  The new `SolitonWireServer
+  / SolitonWireClient` move that integrity over a real TCP loopback:
+  length-prefixed (4-byte big-endian) binary-safe frames; a versioned
+  envelope `{version,kind,sequence,frames,checksum}` whose checksum is
+  computed over a **canonical byte layout that hashes the already-canonical
+  frame text verbatim** (measured ~5x faster than re-escaping the whole
+  payload just to hash it; the remaining inner-frame cost is the
+  per-spike SHA-256 integrity itself, which is a feature, not overhead);
+  and the server **re-verifies every inner `AERFrame` and enforces
+  `AdmissionPolicy` BEFORE the handler runs** -- a corrupted, forged,
+  out-of-order, wrong-version, or policy-violating request is answered
+  with a **structured error envelope**, so the client observes *why* it
+  was rejected rather than an ambiguous truncation.  Audited over real
+  loopback (6 certificates):
+      * `L_wire_order_integrity` PASS -- N contiguous frames arrive
+        intact and in order (sizes 5..200).
+      * `L_wire_tampered_frame_rejected` PASS, `L_wire_tampered_envelope_
+        rejected` PASS, `L_wire_version_gate` PASS -- each corrupted or
+        mismatched exchange is rejected cleanly, never silently admitted.
+      * `L_wire_admission_rejection` PASS -- a policy-violating request
+        (bad channel / oversized payload) is rejected with a structured
+        error and the handler never runs.
+      * `L_wire_single_stream` HONEST_NEGATIVE -- one connection carries
+        exactly ONE request by design (`serve_one` closes it after the
+        single exchange); a client cannot pipeline several calls over one
+        connection.  Reported as a measured limitation, not hidden.
+
+* **The ruleset correction (`soliton_ruleset_audit.py`) -- the layer
+  stripped, the rules corrected where fundamental.**  The claimed
+  "noiseless 16-rule framework" asserted a bitmask
+  `f(000)=0, f(001)=0, f(010)=1, f(100)=0` filters to exactly
+  {4,12,...,236} and that all 16 conserve active-bit count.  The audit
+  reproduces the 16-rule *set* (it is structurally trivial: the bitmask
+  fixes only 4 output bits, leaving 4 free -> 2^4 = 16 rules), but the
+  **conservation claim is FALSE**: treating the 0-vacuum as a *given*
+  background (rather than as measured data) does not imply signal
+  conservation.  Measured exhaustively over every ring configuration at
+  widths 4..12 (and a vectorized cross-checked census at 14 and 16):
+      * `L_ruleset_bitmask16` PASS -- the set reproduces exactly.
+      * `L_ruleset_blanket_conservation` HONEST_NEGATIVE -- of the 16,
+        only rule 204 conserves active-bit count on rings.
+      * `L_ruleset_fundamental_conservation` PASS -- the TRUE conservative
+        set (total active population conserved for EVERY configuration,
+        **background treated as measured data, not a given zero**) is
+        exactly **{170, 184, 204, 226, 240}**, verified exhaustively at
+        widths 4..12 and cross-validated at 14 and 16.
+      * `L_ruleset_204_storage_identity` PASS -- rule 204 holds a block
+        at an identical offset (genuine storage).
+      * `L_ruleset_164_shift_claim` HONEST_NEGATIVE -- rule 164 does NOT
+        shift an isolated cell by +1 per cycle in a vacuum (the lone 1 is
+        stationary).
+      * `L_ruleset_twin32_characterization` / `..._complement_closure`
+        PASS -- the implemented 32-rule table is exactly the 16 bitmask
+        rules plus their 16 bitwise complements (255-r), closed under
+        black/white output complement.
+      * `L_ruleset_twin32_blanket_conservation` HONEST_NEGATIVE -- adding
+        the 16 complements does NOT manufacture blanket conservation; only
+        204 conserves.
+      * `L_eca_engine_matches_reference` PASS -- the soliton-bus engine
+        reproduces the reference ghost-zero ECA step exactly for all 32
+        rules (soliton transport alters no rule semantics).
+      * `L_ruleset_twin_output_swap` PASS -- every complement twin 255-r
+        maps any configuration to the bitwise complement of what r maps it
+        to.
+      * `L_ruleset_family_distinct_dynamics` PASS -- no two of the 32
+        family rules share identical first-generation dynamics.
+      * `L_ruleset_conservation_scales_14_16` PASS -- the fundamental
+        five-rule conservative set persists at widths 14 and 16.
+
+Two new FORMAL claims join the gate: the wire protocol's
+deliver/verify/admit guarantees (5 required PASS certificates), and the
+ruleset correction (bitmask16 + fundamental conservative set + 204
+storage).  Both believed.  The gate now stands on **112 certificates**,
+**81 claims all believed**, **18 honest-negatives**; emanation suite 252
+passed, `tests/` tree 645 passed, 0 failed.
 
   * "current = number of (1,0) bonds" is NOT conserved.  Counterexample:
     [292,527,990,991,1166,1754] has 5 active bonds; the jam (990,991)

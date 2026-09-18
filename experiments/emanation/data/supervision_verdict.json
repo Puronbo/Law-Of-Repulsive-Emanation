@@ -1,8 +1,8 @@
 {
  "accepted": true,
- "n_claims": 79,
+ "n_claims": 81,
  "n_negative_claims": 0,
- "n_required_certs": 79,
+ "n_required_certs": 87,
  "results": [
   {
    "law": "L1 free streaming (rule 29, gap>=2 sector)",
@@ -403,6 +403,44 @@
    "rejection_reasons": [],
    "requires": [
     "PROPOSED_TF_reversal_length4"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "framed TCP wire protocol delivers frames intact and ordered and rejects corruption/version/admission violations",
+   "ok": true,
+   "pass_evidence": [
+    "L_wire_order_integrity",
+    "L_wire_tampered_frame_rejected",
+    "L_wire_tampered_envelope_rejected",
+    "L_wire_version_gate",
+    "L_wire_admission_rejection"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L_wire_order_integrity",
+    "L_wire_tampered_frame_rejected",
+    "L_wire_tampered_envelope_rejected",
+    "L_wire_version_gate",
+    "L_wire_admission_rejection"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "the fundamental conservative rule set (noise-as-measured-data, background not a given zero) is exactly {170,184,204,226,240}, and the bitmask 16-set reproduces",
+   "ok": true,
+   "pass_evidence": [
+    "L_ruleset_fundamental_conservation",
+    "L_ruleset_204_storage_identity",
+    "L_ruleset_bitmask16"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L_ruleset_fundamental_conservation",
+    "L_ruleset_204_storage_identity",
+    "L_ruleset_bitmask16"
    ],
    "rule": null,
    "status": "BELIEVED FORMALLY"
@@ -1032,6 +1070,6 @@
    "status": "BELIEVED FORMALLY"
   }
  ],
- "timestamp": "2026-09-03 05:14:46 UTC",
+ "timestamp": "2026-09-18 13:25:07 UTC",
  "verdict": "ACCEPTED"
 }
