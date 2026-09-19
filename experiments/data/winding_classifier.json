@@ -1,0 +1,55 @@
+{
+  "classes": [
+    "EARLY",
+    "STANDARD",
+    "LATE",
+    "NONE"
+  ],
+  "thresholds": {
+    "EARLY": 0.01,
+    "STANDARD": 0.05,
+    "LATE": 0.1
+  },
+  "test_results": {
+    "Litim (29,9)": {
+      "class": "EARLY",
+      "R_trans": 0.005,
+      "W_at_R": -1,
+      "nearest_grid": [
+        29,
+        9
+      ],
+      "distance": 0.0
+    },
+    "Exponential (est.)": {
+      "class": "LATE",
+      "R_trans": 0.08,
+      "W_at_R": 0,
+      "nearest_grid": [
+        20,
+        5
+      ],
+      "distance": 0.0
+    },
+    "Sharp (est.)": {
+      "class": "LATE",
+      "R_trans": 0.08,
+      "W_at_R": 0,
+      "nearest_grid": [
+        40,
+        15
+      ],
+      "distance": 0.0
+    },
+    "Optimized (32,15)": {
+      "class": "EARLY",
+      "R_trans": 0.002,
+      "W_at_R": -1,
+      "nearest_grid": [
+        32,
+        15
+      ],
+      "distance": 0.0
+    }
+  }
+}
