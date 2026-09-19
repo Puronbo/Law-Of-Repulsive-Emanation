@@ -1,0 +1,29 @@
+{
+  "cusp": {
+    "G": 0.0,
+    "lambda": 0.5,
+    "universal": true
+  },
+  "separation_law": {
+    "form": "0.25*sqrt(G*(16A-8B+B^2G))",
+    "universal_sqrtG": true
+  },
+  "drift": {
+    "form": "B*G/8",
+    "universal_form": true
+  },
+  "litim": {
+    "A": 0.12820814860180457,
+    "B": 0.039788735772973836,
+    "C": 0.32911059040285784,
+    "drift_slope": 0.0049735919716217296,
+    "lambda_initial_at_G06": 0.36951693388264406
+  },
+  "higgs_inflation": {
+    "N": 58,
+    "n_s": 0.96507,
+    "alpha_s": -0.00057,
+    "source": "experiments/higgs_inflation_spectrum.py"
+  },
+  "claim": "FP supplies initial scale and flatness: DERIVED from universal pole geometry"
+}

@@ -65,6 +65,7 @@ audit finding.
 | Higgs inflation sigma8 CONSISTENT with Planck (0.48σ) and local (1.80σ) structure growth | experiments/sigma8_confrontation.py + data/sigma8_confrontation.json | sigma8=0.814 (Planck 0.811+/-0.006, local 0.76+/-0.03); calibrated EH transfer function | CONCRETE (validation) |
 | Lower-ridge winding phase diagram: R_trans(A,B) mapped over 8x6 grid x 14 radii; W=-1 when loop encloses enough singular line arc | experiments/winding_phase_diagram.py + data/winding_phase_diagram.json | At Litim (29,9): R_trans=0.005; at (20,15): R_trans=0.2/none; at (32,15): R_trans=0.002; W is enclosure-dependent fingerprint | CONCRETE (fingerprint map) |
 | CMB dipole frame: framework is frame-invariant (C_0 scalar, Diff-invariant flow); dipole is kinematic artifact | experiments/dipole_frame_confrontation.py + data/dipole_frame_confrontation.json | v_CMB=369.82+/-0.11 km/s; no fundamental preferred frame predicted; CONSISTENT by construction | CONCRETE (validation) |
+| Universal cusp geometry supplies Higgs inflation initial conditions: cusp at (G=0, lambda=1/2), sqrt(G) separation, lower pole lambda_0=0.3695 | experiments/cusp_to_higgs_initial.py + data/cusp_to_higgs_initial.json | Cusp is A,B-invariant; G=0 axis smooth (beta_lambda=-2lambda); N=58 match derived from pole geometry | CONCRETE (framework synthesis) |
 
 ## Citations
 
