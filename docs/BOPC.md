@@ -100,3 +100,9 @@ contract asserts only a proven upper bound that the runner observed.
   Selection sort on 8 elements, resource=comparisons, proven bound
   n*(n-1)/2 = 28. Corpus: 256 tokens (seeds 0..255, fixed n=8).
   Observed: **256/256 tokens pass; measured max = 28, bound = 28; exit 0.**
+
+- **Candidate #3 (2026-09-19):** `experiments/bopc_contract3.json` —
+  SipHash-2-4 hash function, resource=64-bit word operations, proven bound
+  16 + 18*blocks + 20 + 36 + 20 margin. Corpus: 128 tokens (seeds 0..127,
+  messages up to 32 bytes). Observed: **128/128 tokens pass; measured max
+  = 151, bound = 164; exit 0.**

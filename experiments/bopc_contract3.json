@@ -1,0 +1,10 @@
+{
+  "ticket_id": "BOPC-0003",
+  "operator": "siphash@experiments/bopc_candidate3.py",
+  "resource": "64-bit word operations",
+  "upper_bound": { "formula": "16 + 18*blocks + 20 + 36 + 20 margin", "unit_invariant": true, "measured_required": true },
+  "semantics": "correct-or-raise (output must equal reference SipHash-2-4)",
+  "corpus": { "seed_min": 0, "seed_max": 127, "max_msg_len": 32 },
+  "lane": "application",
+  "note": "SipHash-2-4 hash function. Corpus: 128 seeds, random keys and messages up to 32 bytes. Bound <= 164 ops for 32-byte input."
+}

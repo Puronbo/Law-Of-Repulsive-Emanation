@@ -39,7 +39,7 @@ def load_operator(contract):
 
 
 def build_corpus(contract):
-    """Build corpus tokens from contract spec. Supports two formats."""
+    """Build corpus tokens from contract spec. Supports three formats."""
     corp = contract["corpus"]
     tokens = []
 
@@ -58,13 +58,24 @@ def build_corpus(contract):
         n = corp["size"]
         for seed in range(corp["seed_min"], corp["seed_max"] + 1):
             rng = random.Random(seed)
-            # Generate random 8-bit integers (0-255) for sorting
             arr = [rng.randint(0, 255) for _ in range(n)]
             tokens.append((seed, n, None, arr))
         desc = f"seeds {corp['seed_min']}..{corp['seed_max']}, size {n}"
 
+    # Format 3: SipHash-style with max_msg_len
+    elif "max_msg_len" in corp:
+        for seed in range(corp["seed_min"], corp["seed_max"] + 1):
+            rng = random.Random(seed)
+            # 16-byte key
+            key = bytes(rng.getrandbits(8) for _ in range(16))
+            # Random message length 0..max_msg_len
+            msg_len = rng.randint(0, corp["max_msg_len"])
+            msg = bytes(rng.getrandbits(8) for _ in range(msg_len))
+            tokens.append((seed, msg_len, None, (key, msg)))
+        desc = f"seeds {corp['seed_min']}..{corp['seed_max']}, max_msg_len {corp['max_msg_len']}"
+
     else:
-        raise ValueError("corpus must have either 'sizes'+'rules' or 'size'")
+        raise ValueError("corpus must have either 'sizes'+'rules' or 'size' or 'max_msg_len'")
 
     return tokens, desc
 
@@ -95,6 +106,11 @@ def main():
         if rule is not None:
             ref = ref_func(rule, inp)
             out, count = counted_func(rule, inp)
+        elif isinstance(inp, tuple) and len(inp) == 2:
+            # SipHash format: (key, msg)
+            key, msg = inp
+            ref = ref_func(key, msg)
+            out, count = counted_func(key, msg)
         else:
             ref = ref_func(inp)
             out, count = counted_func(inp)
