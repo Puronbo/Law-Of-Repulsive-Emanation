@@ -1,0 +1,85 @@
+{
+  "base": {
+    "sigma8_no_nu": 0.8138880304549205,
+    "n_s": 0.96507,
+    "A_s": 2.1e-09,
+    "alpha_s": -0.00057
+  },
+  "referee": {
+    "planck": {
+      "sigma8": 0.811,
+      "sigma": 0.006
+    },
+    "local": {
+      "sigma8": 0.76,
+      "sigma": 0.03
+    }
+  },
+  "scan": [
+    {
+      "sum_mnu_eV": 0.0,
+      "sigma8": 0.8138880304549205,
+      "planck_pull_sigma": 0.48133840915341264,
+      "local_pull_sigma": 1.7962676818306842,
+      "max_tension_sigma": 1.7962676818306842
+    },
+    {
+      "sum_mnu_eV": 0.06,
+      "sigma8": 0.7894713895412729,
+      "planck_pull_sigma": -3.588101743121186,
+      "local_pull_sigma": 0.9823796513757643,
+      "max_tension_sigma": 3.588101743121186
+    },
+    {
+      "sum_mnu_eV": 0.1,
+      "sigma8": 0.7731936289321745,
+      "planck_pull_sigma": -6.301061844637597,
+      "local_pull_sigma": 0.4397876310724821,
+      "max_tension_sigma": 6.301061844637597
+    },
+    {
+      "sum_mnu_eV": 0.15,
+      "sigma8": 0.7528464281708015,
+      "planck_pull_sigma": -9.692261971533092,
+      "local_pull_sigma": -0.2384523943066171,
+      "max_tension_sigma": 9.692261971533092
+    },
+    {
+      "sum_mnu_eV": 0.2,
+      "sigma8": 0.7324992274094285,
+      "planck_pull_sigma": -13.083462098428589,
+      "local_pull_sigma": -0.9166924196857162,
+      "max_tension_sigma": 13.083462098428589
+    },
+    {
+      "sum_mnu_eV": 0.3,
+      "sigma8": 0.6918048258866825,
+      "planck_pull_sigma": -19.865862352219597,
+      "local_pull_sigma": -2.2731724704439182,
+      "max_tension_sigma": 19.865862352219597
+    },
+    {
+      "sum_mnu_eV": 0.4,
+      "sigma8": 0.6511104243639365,
+      "planck_pull_sigma": -26.64826260601059,
+      "local_pull_sigma": -3.6296525212021167,
+      "max_tension_sigma": 26.64826260601059
+    },
+    {
+      "sum_mnu_eV": 0.5,
+      "sigma8": 0.6104160228411903,
+      "planck_pull_sigma": -33.430662859801615,
+      "local_pull_sigma": -4.986132571960322,
+      "max_tension_sigma": 33.430662859801615
+    }
+  ],
+  "best_fit": {
+    "sum_mnu_eV": 0.0,
+    "max_tension_sigma": 1.7962676818306842
+  },
+  "confrontation": {
+    "planck_2sigma": true,
+    "local_2sigma": true,
+    "tension_resolved": true
+  }
+}
