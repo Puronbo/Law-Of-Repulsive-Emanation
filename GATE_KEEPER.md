@@ -14,8 +14,11 @@ claim; every number below is a real tool output from the branch's own run.
 - validators 89=89  = recomputed counters, byte-true
 - meta-audit        = 10/10, exit 0 (real helper run)
 - pytest (sealed own suite) = 645 passed, exit 0 (real, bounded)
-- lean-build honesty: origin-lane `lake build` NOT claimed; needs the real
-  origin-lane go (the only honest lever to move 2/7 reserve -> 7/7).
+- lean-build: 5/7 derivable twins REAL `lake build` exit 0 (Lean/Lake
+  toolchain leanprover/lean4:v4.33.1, Mathlib v4.33.1 rev 0df444a3..., 8706
+  jobs; over bytes verified byte-identical to the vendored closure). The
+  2/7 reserved prose twins (EcaIsometry, MillenniumBridge) are standalone
+  by design and stay NOT-SETTLED. 7/7 still NOT claimed anywhere.
 
 ## THE GATE (how this lane stays truthful)
 1. Recompute the 7-twin closure digest; it must equal the pin above.
