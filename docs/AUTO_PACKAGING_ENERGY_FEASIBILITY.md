@@ -1,3 +1,10 @@
+> **LANE STATUS: ABANDONED & KEPT ALIVE.** This supply-chain lane was
+> consciously set aside by the lane owner; it is not actively worked. The
+> lane is deliberately alive: nothing is deleted, but nothing here is
+> load-bearing for the sealed soliton register, and no claim here joins
+> the register's counts. Trash is kept separate from treasure; if you are
+> looking for active work, this is not it.
+
 # Autonomous Packaging Line — Energy Feasibility & Build Cost
 
 **Purpose:** Answer two questions for the folding-mechanics schematic

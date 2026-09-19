@@ -195,6 +195,10 @@ The 14-profession verdict: 5 Class A with zero skill-based knowledge, 2 fully-ga
 
 ### Packaging-Line Systems
 
+> **LANE STATUS: ABANDONED & KEPT ALIVE** (supply-chain lane consciously
+> set aside by the owner; not actively worked, nothing deleted, no claim
+> here is load-bearing for the sealed soliton register).
+
 PLC IEC 61131-3 utilities, servo control, facility air sizing, rainwater collection, standby efficiency, servo regenerative energy. Consolidated in `docs/AUTO_PACKAGING_SYSTEM.md`.
 
 ### Refuted Claims Probe + Thaumaturge's Ledger
