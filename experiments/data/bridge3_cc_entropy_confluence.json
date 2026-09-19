@@ -1,0 +1,50 @@
+{
+  "identity": {
+    "formula": "S_dS = 3*pi / Lambda_tilde",
+    "S_dS_times_Lambda_tilde": 9.42477796076938,
+    "three_pi": 9.42477796076938,
+    "exact": true
+  },
+  "sil_units": {
+    "l_P": 1.61625502392855e-35,
+    "l_P2": 2.6122803023742777e-70,
+    "T_CMB_K": 2.72548,
+    "H0_planck_kmsMpc": 67.36,
+    "Omega_L_planck": 0.6847,
+    "R_hubble_m": 1.3733118565966211e+26,
+    "R_particle_horizon_m": 4.3992255e+26
+  },
+  "cc_gap": {
+    "lambda_obs_canon_m2": 1.06e-52,
+    "lambda_tilde_canon": 2.7690171205167346e-122,
+    "target_2_77e_122": 2.77e-122,
+    "ratio": 0.999645169861637,
+    "lambda_obs_planck2018_m2": 1.0891388340475554e-52,
+    "lambda_tilde_planck2018": 2.845135922733316e-122,
+    "audit_doc_typo": {
+      "printed_recipe_value": 27082690.910197563,
+      "reading": "doc divides by G/l_P^2 (2.7e7); correct factor is l_P^2"
+    }
+  },
+  "horizon_entropy": {
+    "S_dS_canon_kB": 3.403654636490869e+122,
+    "S_dS_planck2018_kB": 3.312593217590467e+122,
+    "map_quotes_3_1e122": true
+  },
+  "s_cmb_floor": {
+    "S_CMB_c_over_H0_kB": 1.6048324110525643e+88,
+    "S_CMB_46_5Gly_kB": 5.27534479361362e+89,
+    "cross_check_S_CMB_46_5Gly_kB": 5.278992550759872e+89,
+    "s_over_n": 3.601570710558752,
+    "is_inverse_of_cc_gap": false
+  },
+  "gates": {
+    "canon_gap_reproduced_to_5pct": true,
+    "planck_gap_same_order": true,
+    "inverse_identity_exact": true,
+    "sds_is_1e122": true,
+    "s_cmb_in_1e89_90": true,
+    "s_cmb_not_inverse": true
+  },
+  "status": "CONCRETE (confluence: S_dS = 3*pi / Lambda_tilde exact)"
+}

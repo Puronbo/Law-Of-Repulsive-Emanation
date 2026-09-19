@@ -110,8 +110,13 @@ Paths where the measured CMB acts on the framework, not the reverse.
   as the framework's CC gap (G_obs x L_obs = 2.77e-122, THE_UNIVERSE_FROM_
   A_FIXED_POINT.md:296). The CMB-anchored horizon entropy and the CC gap
   are one number, inverted: a measurement the framework already owns twice.
-  A claim that the framework's entropy max (PHYSICAL_UNIVERSAL_MAP.md:86)
-  "is the boundary" can be pinned to this literal number.
+  **CLOSED 2026-09-19 with a concrete artifact:**
+  `experiments/bridge3_cc_entropy_confluence.py` proves the identity
+  S_dS * Lambda_tilde = 3*pi exactly (canon gap reproduced to 0.04%,
+  S_dS = 3.40e122 k_B, cross-checked with Planck 2018 H0). The claim that
+  the framework's entropy max "is the boundary" is pinned to this literal
+  number. FLOOR-6 (S_CMB ~ 10^89-90 k_B) is confirmed as the distinct
+  radiation floor, not the inverse.
 - **OPEN-4:** CMB-anchored structure-growth input (sigma_8 ~ 0.81, A_s ~
   2.1e-9) is the measured amplitude the narrative's filaments-sheets-halos
   stage (GENESIS.md:358) must grow; no repo number confronts it.

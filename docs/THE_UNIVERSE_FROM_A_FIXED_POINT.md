@@ -192,8 +192,13 @@ But G(k) x L(k) = G~(k) x L~(k), which RUNS with k. It is only stationary at the
 
 The observed product in Planck units:
 
-    L_obs x G_N = 1.06 x 10^-52 x 6.674 x 10^-11 / (1.616 x 10^-35)^2
+    L_obs x G_N = 1.06 x 10^-52 x (1.616 x 10^-35)^2
                 = 2.77 x 10^-122
+
+(The dimensionless product is Lambda x l_P^2 with l_P^2 = G*hbar/c^3. The
+factor is l_P^2 itself, not G / l_P^2 — the original typeset arithmetic
+divided by l_P^2 instead of multiplying, which would give ~2.7e7.
+Corrected 2026-09-19 in the BRIDGE-3 concrete artifact.)
 
 The FP predicts 0.12. The observed value is 2.77 x 10^-122. The gap is 4 x 10^120.
 
