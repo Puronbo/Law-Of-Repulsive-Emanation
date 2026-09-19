@@ -1,0 +1,10 @@
+{
+  "ticket_id": "BOPC-0001",
+  "operator": "eca_step@experiments/bopc_candidate.py",
+  "resource": "comparisons",
+  "upper_bound": { "formula": "8*n + 2", "unit_invariant": true, "measured_required": true },
+  "semantics": "correct-or-raise",
+  "corpus": { "seed_min": 0, "seed_max": 63, "sizes": [8, 16, 32, 64, 128], "rules": [30, 110] },
+  "lane": "application",
+  "note": "Bound is derived, never assumed; scripts/bopc.py must observe count <= bound on every token."
+}

@@ -57,6 +57,9 @@ audit finding.
 | f(R) inflation deficit: N=3.7-7.9; N=60 needs delta_0~10^-60..-72 | experiments/fr_inflation.py | mechanism N=ln(1/d0)/theta+T_cross explicit | CONCRETE (model-level) |
 | Pole-pair scroll geometry: sep=(7/12*sqrt(pi))*sqrt(G)*sqrt(1+9G/3136pi); scroll-linear in s=sqrt(G); mid-line drift G/64pi | experiments/flow_pole_scroll.py | quadratic roots vs closed form, 7 G-values ratio 1.0000; c(s) in [0.1646,0.1696]; drift exact to 1e-9 | CONCRETE (model-level) |
 | Pole winding & feeding: lower ridge W=-1, upper ridge W=0 (ray-pole); G=0 axis smooth beta_lam=-2lam; seam crest beta_lam(G,1/2)->+2; numerator survives at D=0 (feed) | experiments/flow_pole_scroll.py | loops R=0.005: W -1.000/+0.000/+0.000; birth scan G 1e-8..1e-2; D-sign strip flips; N_lam=-2.09/-28.7 at ridges | CONCRETE (model-level) |
+| Regulator-robust pole geometry: cusp (0,1/2), sep=0.25*sqrt(G(16A-8B+B^2G)), drift=B*G/8, G=0 birth, and upper-ridge W=0 are UNIVERSAL in the (A,B) family; lower-ridge W=-1 is the Litim register fingerprint only | experiments/flow_pole_regulator_robust.py | 3x3 (A,B) grid ratios 1.0000000000; radius scan R=0.001..0.10 shows W is coefficient/enclosure-dependent; W=-1 on the A=29 column at R=0.05 | CONCRETE (framework-robustness) |
+| CMB measured ground as referee anchors (T 2.72548K, dipole 369.82 km/s, n_s 0.9649, r<0.036, Wien 1.06mm) | docs/CMB_RECONCILIATION.md | live-verified sources: Fixsen 2009, Planck 2018, BICEP/Keck (BK18), 2020a dipole | REAL |
+| n_s/r referee rules out pure-gravity CMB seeding (epsilon ~ -0.87; N=3.7-7.9) | docs/CMB_RECONCILIATION.md REFEREE-1/2 + experiments/fr_inflation.py | n_s=0.9649+/-0.0042 (plan ~1.8e-2), r<0.036 caps epsilon ~2e-3; sign and magnitude mismatched; Q2 forces d0=10^-60..-72 | CONCRETE (refutation) |
 
 ## Citations
 

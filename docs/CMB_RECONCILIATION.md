@@ -47,12 +47,23 @@ r < 0.036. Both are measured, both are confrontation laggards in this repo.
   of e^60 ~ 10^26) and no computed spectrum exists to compare with
   n_s = 0.9649. The Higgs-inflaton route [31] that would be testable is
   cited, not implemented.
+  **RESOLVED 2026-09-19 (as refutation).** The confrontation now exists
+  (REFEREE-1 above): measured n_s = 0.9649 +/- 0.0042 and r < 0.036 do not
+  refine the pure-gravity claim, they rule out its inflation-generating
+  capacity outright (wrong sign and magnitude of epsilon). The deficit is
+  closed as a scientific result; the live queue moves to the Higgs-inflaton
+  route [31] (implementable spectrum) and OPEN-4/OPEN-5 below.
 - **GAP-CMB-2:** PHYSICAL_UNIVERSAL_MAP.md (the 7-part formal correspondence)
   contains no entry for the CMB era, although the narrative GENESIS gives it
   two full stages (recombination glow; reionization second dawn).
+  **CLOSED 2026-09-19.** Map section 10.6 now carries a dated CMB-era
+  cross-reference table (recombination/reionization referents, BRIDGE-3,
+  FLOOR-6, measured T), status INVESTIGATION.
 - **GAP-CMB-3:** VERIFICATION_LEDGER.md has no CMB row. The microwave
   background carries zero load-bearing claims, so nothing is wrong — but
   nothing is pinned either.
+  **CLOSED 2026-09-19.** Ledger Quantum-gravity section now pins the
+  measured ground as REAL and the n_s/r referee as CONCRETE (refutation).
 
 ## Reverse arrows (CMB -> framework): where the measurement is the input
 

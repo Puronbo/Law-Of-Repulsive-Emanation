@@ -1,9 +1,8 @@
 # BOPC — Bandwidth-Optimal Performance Contract (ticket, application lane)
 
-- **Status:** OPEN (first filed on this lane; previously only a
-  conversation-level plan)
-- **Lane:** application (NOT the sealed soliton register; nothing here is
-  load-bearing for it)
+- **Status:** BUILT v1 (2026-09-19) — contract runs and gates; decisions
+  in section 6 and build record in section 8. Application lane only
+  (NOT the sealed soliton register; nothing here is load-bearing for it)
 - **Owner:** lane owner
 - **Reporter:** assistant (filing the ticket that was never written down)
 
@@ -63,15 +62,36 @@ No bound may be recorded without the measurer having run and the
 - An honest markdown example contract exists for exactly one operator.
 - Zero claims of bandwidth-optimality for anything not measured.
 
-## 6. Open questions (must be answered before build)
+## 6. Open questions — RESOLVED (2026-09-19)
 
-- Resource unit per candidate experiment (which existing experiment
-  first)?
-- Corpus size and seed policy for the fixed corpus.
-- Who owns monitoring when a bound is exceeded (alert vs gate).
+1. **Resource unit / first candidate.** DECIDED: resource = `comparisons`;
+   first operator = the Wolfram ECA 3-neighborhood step over a byte ring
+   (`experiments/bopc_candidate.py`, `eca_step`), the candidate named in
+   section 3. Bound is derived, not assumed: the counted implementation
+   performs at most 8 counted operations per cell plus one final loop
+   compare, so `comparisons <= 8*n + 2` for length n (closed, integer).
+2. **Corpus size and seed policy.** DECIDED: frozen corpus of 640 tokens —
+   seeds 0..63, cell sizes {8,16,32,64,128}, rules {30,110} — cells drawn
+   from `random.Random(seed)` (deterministic, no clock, no network). The
+   corpus spec lives in `experiments/bopc_contract.json` and is byte-frozen;
+   any change is a new contract revision.
+3. **Monitoring owner.** DECIDED: the application-lane owner. BOPC
+   self-gates: `scripts/bopc.py` exits non-zero on any bound violation or
+   semantic mismatch, and that non-zero exit is hoisted as the lane alert.
+   BOPC must never touch the soliton register's pinned counts.
 
 ## 7. Honest boundary
 
-This ticket is filed but not built. Building it is a real, bounded task
-that requires the two decisions in section 6; until then this ticket
-carries no measurement and no result claim.
+This ticket was filed, then built (v1) under the three decisions above.
+No bandwidth-*optimality* is claimed for anything not measured; the
+contract asserts only a proven upper bound that the runner observed.
+`scripts/bopc.py` is application-lane only.
+
+## 8. Build record (v1, 2026-09-19)
+
+- `scripts/bopc.py` reads `experiments/bopc_contract.json`, builds the
+  640-token corpus deterministically, runs the counted operator and an
+  independent reference, and exits 0 only if every token is byte-identical
+  to the reference and `count <= 8*n + 2`.
+- Observed: **640/640 tokens pass; measured max comparisons = 1025 at
+  n = 128, bound = 1026; exit 0.** No register count touched.
