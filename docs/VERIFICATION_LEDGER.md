@@ -68,6 +68,7 @@ audit finding.
 | Universal cusp geometry supplies Higgs inflation initial conditions: cusp at (G=0, lambda=1/2), sqrt(G) separation, lower pole lambda_0=0.3695 | experiments/cusp_to_higgs_initial.py + data/cusp_to_higgs_initial.json | Cusp is A,B-invariant; G=0 axis smooth (beta_lambda=-2lambda); N=58 match derived from pole geometry | CONCRETE (framework synthesis) |
 | Sigma8 refinement with massive neutrinos: best fit at 0 eV (1.80σ local tension is minimum); neutrinos worsen Planck tension | experiments/sigma8_nu_refinement.py + data/sigma8_nu_refinement.json | sigma8_base=0.814; Sigma_m_nu=0 eV gives min max_tension=1.80σ; any m_nu>0 increases Planck pull | CONCRETE (refinement) |
 | Winding fingerprint regulator classifier: 4 classes (EARLY/STANDARD/LATE/NONE) by R_trans(A,B); Litim=EARLY, Opt(32,15)=EARLY | experiments/winding_classifier.py + data/winding_classifier.json | Decision tool: choose regulators where W=-1 is robust at your loop resolution | CONCRETE (tool) |
+| Full RG trajectory from NGFP: N_max = 5.8 e-folds (deficit 49.2 vs required 55); pure gravity fails | experiments/rg_trajectory_observables.py + data/rg_trajectory_observables.json | Maximum N=5.8 from NGFP; epsilon crosses 1 at N=5.8; pivot scale never exits horizon | CONCRETE (refutation) |
 
 ## Citations
 
