@@ -54,6 +54,13 @@ class WireError(ValueError):
     """A malformed, corrupted, or out-of-protocol exchange."""
 
 
+class WireClosed(WireError):
+    """The peer closed the connection cleanly (honest EOF) inside a
+    framing read.  A keep-alive serve loop treats this as the signal
+    that the client finished its session; every other handler treats it
+    exactly as a WireError, so nothing else changes."""
+
+
 def _canonical_bytes(envelope: dict[str, object]) -> bytes:
     """Deterministic byte layout over the envelope's meaningful fields.
 
@@ -133,7 +140,7 @@ def _recv_exact(stream, n: int) -> bytes:
     while len(chunks) < n:
         chunk = stream.recv(n - len(chunks))
         if not chunk:
-            raise WireError("connection closed mid-frame (truncated)")
+            raise WireClosed("connection closed mid-frame (truncated)")
         chunks.extend(chunk)
     return bytes(chunks)
 
@@ -415,10 +422,15 @@ class StreamRequest:
 class SolitonWireServer:
     """A bounded, single-connection framed server for the runtime.
 
-    Handles one request per connection by default (insertion-corruption
-    on a shared connection is out of scope; each request is a fresh,
-    checked exchange).  Spawns a short-lived child thread so the
-    accept/serve loop is non-blocking and deterministic.
+    ``serve_one`` / ``serve_one_stream`` handle one request per
+    connection (insertion-corruption on a shared connection is out of
+    scope; each request is a fresh, checked exchange).  ``serve`` /
+    ``serve_streams`` run a keep-alive SESSION: one accepted connection
+    carries sequential requests, each independently verified and
+    answered, until the client closes it cleanly (``WireClosed``).
+
+    Spawns a short-lived child thread so the accept/serve loop is
+    non-blocking and deterministic.
     """
     def __init__(self, handler: Callable[[WireRequest], dict[str, object]],
                  *, host: str = "127.0.0.1", port: int = 0,
@@ -443,6 +455,41 @@ class SolitonWireServer:
             self._listen.close()
             self._listen = None
 
+    def _process_one(self, conn):
+        """Verify + answer ONE framed request on an accepted connection.
+
+        Returns the request object (None if it was rejected in-band with
+        a structured error envelope).  Raises WireError for a corrupted
+        envelope and WireClosed when the peer closed cleanly mid-frame.
+        """
+        req_env = recv_frame(conn)
+        if req_env["kind"] != "request":
+            self._reject(conn, "server expects a request envelope")
+            return None
+        request = WireRequest(req_env["sequence"], req_env["frames"])
+        # Verify the inner AER frames BEFORE any handler runs: a
+        # corrupted/forged/out-of-order frame is a first-class protocol
+        # error, never a silently degraded belief.  A rejection is
+        # answered with a structured error envelope so the client
+        # observes WHY, not an ambiguous truncation.
+        try:
+            spikes = request.spikes()
+        except ValueError as exc:
+            self._reject(conn, "request frame verification failed: %s" % exc)
+            return None
+        # Admit under the policy (channel/payload/horizon/capacity
+        # bounds) -- a request that violates policy is rejected up
+        # front, atomically, and is reported as a protocol error.
+        try:
+            admit_spikes(spikes, current_time=0, policy=self._policy)
+        except ValueError as exc:
+            self._reject(conn, "request failed admission policy: %s" % exc)
+            return None
+        result = self._handler(request)
+        response = WireResponse(request.sequence, result)
+        conn.sendall(wire_frame(response.envelope()))
+        return request
+
     def serve_one(self):
         """Accept one connection, handle one framed request, reply."""
         if self._listen is None:
@@ -450,35 +497,30 @@ class SolitonWireServer:
         conn, _ = self._listen.accept()
         try:
             with conn:
-                req_env = recv_frame(conn)
-                if req_env["kind"] != "request":
-                    self._reject(conn, "server expects a request envelope")
-                    return None
-                request = WireRequest(req_env["sequence"], req_env["frames"])
-                # Verify the inner AER frames BEFORE any handler runs: a
-                # corrupted/forged/out-of-order frame is a first-class
-                # protocol error, never a silently degraded belief.  A
-                # rejection is answered with a structured error envelope so
-                # the client observes WHY, not an ambiguous truncation.
-                try:
-                    spikes = request.spikes()
-                except ValueError as exc:
-                    self._reject(conn, "request frame verification failed: %s" % exc)
-                    return None
-                # Admit under the policy (channel/payload/horizon/capacity
-                # bounds) -- a request that violates policy is rejected up
-                # front, atomically, and is reported as a protocol error.
-                try:
-                    admit_spikes(spikes, current_time=0, policy=self._policy)
-                except ValueError as exc:
-                    self._reject(conn, "request failed admission policy: %s" % exc)
-                    return None
-                result = self._handler(request)
-                response = WireResponse(request.sequence, result)
-                conn.sendall(wire_frame(response.envelope()))
+                return self._process_one(conn)
         except WireError:
             raise
-        return request
+
+    def serve(self, *, max_requests: int | None = None) -> int:
+        """Keep-alive SESSION: accept ONE connection, then handle
+        sequential requests on it until the client closes it cleanly
+        (WireClosed) or ``max_requests`` exchanges were served.  Every
+        exchange is independently verified and answered -- a rejected
+        request is answered in-band with a structured error envelope and
+        the session continues.  Returns the number of exchanges served.
+        """
+        if self._listen is None:
+            raise RuntimeError("server not bound (use as a context manager)")
+        conn, _ = self._listen.accept()
+        with conn:
+            served = 0
+            while max_requests is None or served < max_requests:
+                try:
+                    self._process_one(conn)
+                except WireClosed:
+                    break
+                served += 1
+        return served
 
     @staticmethod
     def _reject(conn, message: str) -> None:
@@ -487,8 +529,8 @@ class SolitonWireServer:
                               json.dumps({"message": message}, sort_keys=True))
         conn.sendall(wire_frame(env))
 
-    def serve_one_stream(self):
-        """Accept one connection, handle one STREAMING request, reply.
+    def _process_one_stream(self, conn):
+        """Verify + answer ONE streaming request on an accepted conn.
 
         The header arrives first (with count + whole-batch
         ``stream_checksum``); capacity admission runs at the header's
@@ -498,37 +540,63 @@ class SolitonWireServer:
         returns, the band-level whole-batch checksum is verified in the
         background (``finish()``) and only a fully verified exchange gets
         a success response; anything less is an explicit rejection.
+        Returns the request object (None if rejected in-band).
+        """
+        header = recv_stream_header(conn)
+        # capacity admission is knowable at the header first tick
+        if header["count"] > self._policy.max_events:
+            self._reject(conn, "stream exceeds admission capacity")
+            return None
+        if header["count"] > self._policy.max_pending_events:
+            self._reject(conn, "stream exceeds pending capacity")
+            return None
+        request = StreamRequest(
+            header["sequence"], header["count"],
+            header["stream_checksum"], conn, self._policy)
+        try:
+            result = self._handler(request)
+            if not request.finish():
+                self._reject(
+                    conn, "stream whole-batch checksum did not verify")
+                return None
+        except WireError as exc:
+            self._reject(conn, "stream rejected: %s" % exc)
+            return None
+        response = WireResponse(request.sequence, result)
+        conn.sendall(wire_frame(response.envelope()))
+        return request
+
+    def serve_one_stream(self):
+        """Accept one connection, handle one STREAMING request, reply.
         """
         if self._listen is None:
             raise RuntimeError("server not bound (use as a context manager)")
         conn, _ = self._listen.accept()
         try:
             with conn:
-                header = recv_stream_header(conn)
-                # capacity admission is knowable at the header first tick
-                if header["count"] > self._policy.max_events:
-                    self._reject(conn, "stream exceeds admission capacity")
-                    return None
-                if header["count"] > self._policy.max_pending_events:
-                    self._reject(conn, "stream exceeds pending capacity")
-                    return None
-                request = StreamRequest(
-                    header["sequence"], header["count"],
-                    header["stream_checksum"], conn, self._policy)
-                try:
-                    result = self._handler(request)
-                    if not request.finish():
-                        self._reject(
-                            conn, "stream whole-batch checksum did not verify")
-                        return None
-                except WireError as exc:
-                    self._reject(conn, "stream rejected: %s" % exc)
-                    return None
-                response = WireResponse(request.sequence, result)
-                conn.sendall(wire_frame(response.envelope()))
+                return self._process_one_stream(conn)
         except WireError:
             raise
-        return request
+
+    def serve_streams(self, *, max_streams: int | None = None) -> int:
+        """Keep-alive STREAMING SESSION: accept ONE connection, then
+        handle sequential stream requests on it until the client closes
+        it cleanly (WireClosed) or ``max_streams`` streams were served.
+        Each stream gets its own verified + answered exchange.  Returns
+        the number of streams served.
+        """
+        if self._listen is None:
+            raise RuntimeError("server not bound (use as a context manager)")
+        conn, _ = self._listen.accept()
+        with conn:
+            served = 0
+            while max_streams is None or served < max_streams:
+                try:
+                    self._process_one_stream(conn)
+                except WireClosed:
+                    break
+                served += 1
+        return served
 
 
 class SolitonWireClient:

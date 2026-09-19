@@ -59,8 +59,8 @@ def test_full_table_contains_wire_and_ruleset_certs():
     by = {c["label"]: c for c in ra.system_certificates()}
     assert by["L_ruleset_blanket_conservation"]["status"] == "HONEST_NEGATIVE"
     assert by["L_ruleset_fundamental_conservation"]["status"] == "PASS"
-    assert by["L_wire_single_stream"]["status"] == "HONEST_NEGATIVE"
-    assert by["L_stream_single_stream"]["status"] == "HONEST_NEGATIVE"
+    assert by["L_wire_multi_request_session"]["status"] == "PASS"
+    assert by["L_stream_multi_stream_session"]["status"] == "PASS"
     # traffic-ring audit: 3 exact PASS + 3 rejected candidates
     assert by["L48_traffic_ring_block_law"]["status"] == "PASS"
     assert by["L49_traffic_ring_tasep_identification"]["status"] == "PASS"

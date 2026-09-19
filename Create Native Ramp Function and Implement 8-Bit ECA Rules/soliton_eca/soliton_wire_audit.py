@@ -23,16 +23,15 @@ port, a background accept thread, an actual socket round-trip):
                                        with a structured error envelope
                                        naming why, and the handler never
                                        runs.
-    L_wire_single_stream            HONEST_NEGATIVE -- the blanket claim
-                                       "one socket connection carries many
-                                       independent requests in sequence" is
-                                       FALSE by design: ``serve_one``
-                                       handles exactly ONE request per
-                                       accepted connection, then closes it,
-                                       so a client cannot pipeline several
-                                       calls over one connection.  The
-                                       audit reports this limitation
-                                       honestly rather than hiding it.
+    L_wire_multi_request_session   PASS -- one socket connection carries
+                                       N sequential independent requests,
+                                       each verified + answered over the
+                                       SAME connection (keep-alive); a
+                                       clean close ends the session.  The
+                                       legacy one-exchange-per-connection
+                                       behaviour (L_wire_single_stream)
+                                       is gone; the limitation was
+                                       deliberately lifted.
 
 Every verdict is a measured fact on the stated domain; nothing is assumed.
 """
@@ -44,7 +43,8 @@ from typing import Callable, Iterable
 from .soliton_snn import AERSpike
 from .soliton_wire import (
     SolitonWireClient, SolitonWireServer, WireError,
-    WireRequest, encode_envelope, request_from_spikes, wire_frame,
+    WireRequest, decode_response, encode_envelope, recv_frame,
+    request_from_spikes, wire_frame,
 )
 
 
@@ -186,57 +186,41 @@ def _L_admission_rejection(which):
     return not server_ran
 
 
-def _L_single_stream(_):
+def _L_multi_request_session(n):
     """Predicate for the candidate law 'one socket connection carries
-    several requests in sequence'.  Returns True ONLY IF a second request
-    actually completes on the same connection.  serve_one closes the
-    connection after a single request, so the second request cannot
-    complete here -> returns False -> the claim is audited as a measured
-    limitation (HONEST_NEGATIVE)."""
-    from socket import socket as Socket, SOL_SOCKET, SO_KEEPALIVE
-
-    def _exact(sock, n):
-        b = b""
-        while len(b) < n:
-            chunk = sock.recv(n - len(b))
-            if not chunk:
-                raise OSError("closed")
-            b += chunk
-        return b
+    several requests in sequence'.  True ONLY IF all n sequential
+    requests complete over the SAME connection, each verified and
+    answered, and the session ends cleanly on the client's close."""
+    from socket import socket as Socket
 
     with SolitonWireServer(lambda r: {"n": len(r.spikes())}) as srv:
         conn = Socket()
         conn.settimeout(3.0)
         conn.connect(("127.0.0.1", srv.bound_port))
-        req = request_from_spikes([AERSpike(0, 1, 2)])
-        # serve the first request on this connection
-        t = threading.Thread(target=lambda: srv.serve_one())
+        served = {}
+        ok = {}
+
+        def runner():
+            try:
+                served["n"] = srv.serve()
+            except BaseException as exc:  # noqa: BLE001
+                ok["error"] = repr(exc)
+
+        t = threading.Thread(target=runner)
         t.start()
-        # one request + its response over the connection
-        conn.sendall(wire_frame(req.envelope()))
-        h = _exact(conn, 4)
-        length = int.from_bytes(h, "big")
-        _exact(conn, length)  # first response, discarded
-        # a second request on the SAME connection
-        conn.setsockopt(SOL_SOCKET, SO_KEEPALIVE, 0)
-        try:
+        for i in range(n):
+            req = request_from_spikes([AERSpike(i, 1, 2)])
             conn.sendall(wire_frame(req.envelope()))
-        except OSError:
-            t.join()
-            return False  # already closed -> claim does not hold
-        try:
-            data = conn.recv(1)
-        except OSError:
-            # connection closed before a second response -> claim fails
-            t.join()
-            return False
-        try:
-            conn.close()
-        except OSError:
-            pass
+            resp = decode_response(recv_frame(conn))
+            if resp.result.get("n") != 1:
+                conn.close()
+                t.join()
+                return False
+        conn.close()
         t.join()
-        # a second response arrived only if the stream stayed open
-        return data != b""
+        if "error" in ok:
+            return False
+        return served.get("n") == n
 
 
 def wire_certificates() -> list[dict[str, object]]:
@@ -250,16 +234,6 @@ def wire_certificates() -> list[dict[str, object]]:
              "law": law,
              "measured_on": "soliton_eca.soliton_wire"},
             pred, domain))
-
-    def neg_cert(label, law, domain, pred):
-        certs.append(certify(
-            label,
-            {"domain": "real loopback socket; all measured, none assumed",
-             "law": "FALSE CANDIDATE: " + law,
-             "honest_check": "a claimed capability the code deliberately "
-                             "does not provide must be reported as the "
-                             "limitation it is"},
-            pred, [domain]))
 
     ok_cert("L_wire_order_integrity",
             "N contiguous AER frames arrive intact and in order over a "
@@ -281,10 +255,11 @@ def wire_certificates() -> list[dict[str, object]]:
             "oversized payload) is rejected with a structured error "
             "naming why, and the handler never runs",
             ["channel", "payload"], _L_admission_rejection)
-    neg_cert("L_wire_single_stream",
-             "one socket connection carries several requests in sequence",
-             "serve_one closes the connection after a single request",
-             _L_single_stream)
+    ok_cert("L_wire_multi_request_session",
+            "one socket connection carries N sequential independent "
+            "requests, each verified and answered over the SAME "
+            "connection; a clean close ends the session",
+            [3, 8, 25], _L_multi_request_session)
     return certs
 
 

@@ -590,13 +590,14 @@ forged prev.  This is the unbounded-authority limitation: a local-only
 chain without signatures cannot forbid an authority rewriting its own
 tail.
 
-The gate now stands on **125 certificates** (103 PASS, 22 HONEST_NEGATIVE)
+The gate now stands on **125 certificates** (105 PASS, 20 HONEST_NEGATIVE)
 and believes **83 claims**: 35 core physics/system/calendar/ledger/flow/
 commons/rubric/topology/wire-protocol/streaming/ruleset/traffic-ring laws
 (including the toy-transformer proposer's certified reversal rule) plus
-the 48 self-discovered laws.  The honest-negative set is now 22 strong:
-the system has deliberately rejected 22 laws it could otherwise have
-shipped.
+the 48 self-discovered laws.  The honest-negative set is 20 strong:
+the system has deliberately rejected 20 laws it could otherwise have
+shipped -- two more were deliberately lifted into features by the
+Seventeenth-layer keep-alive flip (see below).
 
 Eleventh layer: **the fourth real-subsystem audit -- balance-flow engine
 geometry (L28-L31).** `puno_flow/engine.py` is the local-only balance
@@ -755,10 +756,12 @@ pattern):
       * `L_wire_admission_rejection` PASS -- a policy-violating request
         (bad channel / oversized payload) is rejected with a structured
         error and the handler never runs.
-      * `L_wire_single_stream` HONEST_NEGATIVE -- one connection carries
-        exactly ONE request by design (`serve_one` closes it after the
-        single exchange); a client cannot pipeline several calls over one
-        connection.  Reported as a measured limitation, not hidden.
+      * `L_wire_multi_request_session` PASS -- one connection carries N
+        sequential independent requests, each verified + answered over
+        the SAME connection (`serve`, a keep-alive session); a clean
+        close ends the session.  The old one-exchange-per-connection
+        limit (formerly `L_wire_single_stream` HONEST_NEGATIVE) was
+        deliberately lifted -- see the Seventeenth layer.
 
 * **The ruleset correction (`soliton_ruleset_audit.py`) -- the layer
   stripped, the rules corrected where fundamental.**  The claimed
@@ -837,9 +840,12 @@ Measured over real loopback (7 certificates):
     * `L_stream_admission_rejected` PASS -- a policy-violating spike (bad
       channel / oversized payload) is rejected at its tick and the stream
       is rejected as a whole.
-    * `L_stream_single_stream` HONEST_NEGATIVE -- one connection carries
-      exactly ONE stream request by design (mirrors the batch path's
-      limitation).
+    * `L_stream_multi_stream_session` PASS -- one connection carries N
+      sequential stream requests, each fully handled + answered over the
+      SAME connection (`serve_streams`, a keep-alive session); a clean
+      close ends the session.  The old one-stream-per-connection limit
+      (formerly `L_stream_single_stream` HONEST_NEGATIVE) was
+      deliberately lifted -- see the Seventeenth layer.
 The gate now stands on **119 certificates** (100 PASS, 19 honest-
 negatives), **82 claims all believed**; emanation suite 252 passed,
 `tests/` tree 645 passed, 0 failed.
@@ -879,6 +885,32 @@ exactly defined (6 certificates):
       {n, #10, #01, #11, #00, sum(p) mod N} only n is conserved on every
       edge.
 The gate now stands on **125 certificates** (103 PASS, 22 honest-
+negatives), **83 claims all believed**; emanation suite 252 passed,
+`tests/` tree 645 passed, 0 failed.
+
+Seventeenth layer: **the keep-alive session flip (`soliton_wire.py`) --
+two honest limitations deliberately lifted into features.**  The batch
+and streaming servers grew keep-alive sessions: `serve` and
+`serve_streams` accept ONE connection and run sequential, independently
+verified exchanges on it until the client closes cleanly
+(`WireClosed`); a rejected request is answered in-band with a structured
+error envelope and the session continues.  The two `single_stream`
+HONEST_NEGATIVE certificates -- "one connection carries exactly ONE
+request / stream by design" -- are now FALSE by measurement, so they
+were honestly replaced by measured PASS laws (2 certificates; total
+still 125):
+    * `L_wire_multi_request_session` PASS -- N sequential independent
+      requests, each verified + answered over the same connection
+      (sizes 3, 8, 25; every response correct, server served-count == N).
+    * `L_stream_multi_stream_session` PASS -- N sequential stream
+      requests, each fully handled + answered over the same connection
+      (3, 8, 25 streams; every stream's count correct,
+      server served-count == N).
+Both are measured over the REAL loopback path: a single client socket,
+N exchanges, a clean client close, and the server's served-count equal
+to N.  The legacy one-exchange-per-connection entry points
+(`serve_one`, `serve_one_stream`) are unchanged and remain certified.
+The gate now stands on **125 certificates** (105 PASS, 20 honest-
 negatives), **83 claims all believed**; emanation suite 252 passed,
 `tests/` tree 645 passed, 0 failed.
 

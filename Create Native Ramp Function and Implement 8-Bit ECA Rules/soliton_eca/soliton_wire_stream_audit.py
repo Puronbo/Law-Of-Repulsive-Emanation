@@ -30,10 +30,15 @@ whole-batch ``stream_checksum`` seals the exchange at the end:
                                        (bad channel / oversized payload)
                                        is rejected at its own tick and the
                                        stream is rejected as a whole.
-    L_stream_single_stream        HONEST_NEGATIVE -- one socket connection
-                                       carries exactly ONE stream request;
-                                       pipelining several is false by
-                                       design (mirrors the batch path).
+    L_stream_multi_stream_session PASS -- one socket connection carries
+                                       N sequential stream requests, each
+                                       fully handled + answered over the
+                                       SAME connection (keep-alive); a
+                                       clean close ends the session.  The
+                                       legacy one-stream-per-connection
+                                       behaviour (L_stream_single_stream)
+                                       is gone; the limitation was
+                                       deliberately lifted.
 
 Every verdict is a measured fact on the real loopback path (ephemeral
 port, background accept thread, actual socket round-trip, deterministic
@@ -47,7 +52,7 @@ from typing import Callable, Iterable, Iterator
 from .soliton_snn import AERSpike
 from .soliton_wire import (
     SolitonWireStreamClient, SolitonWireServer, StreamRequest, WireError,
-    stream_frame, wire_frame,
+    decode_response, recv_frame, stream_frame, wire_frame,
 )
 from .soliton_wire_audit import certify
 
@@ -330,45 +335,44 @@ def _L_admission_rejected(which):
         return resp.get("kind") == "error"
 
 
-def _L_single_stream(_):
+def _L_multi_stream_session(n):
     """Predicate for 'one socket connection carries several streams in
-    sequence' -- returns True ONLY IF a second stream completes on the
-    same connection, which serve_one_stream never allows.  The claim is
-    then measured as a limitation (HONEST_NEGATIVE), mirroring the batch
-    path's L_wire_single_stream."""
-    from socket import socket as Socket, SOL_SOCKET, SO_KEEPALIVE
+    sequence' -- True ONLY IF all n sequential stream requests complete
+    over the SAME connection, each fully handled and answered, and the
+    session ends cleanly on the client's close."""
+    from socket import socket as Socket
+
     spikes = [AERSpike(0, 1, 2)]
     header, chunks = stream_frame(spikes)
     with SolitonWireServer(lambda r: {"n": len(list(r.spikes()))}) as srv:
         conn = Socket()
         conn.settimeout(3.0)
         conn.connect(("127.0.0.1", srv.bound_port))
-        t = threading.Thread(target=lambda: srv.serve_one_stream())
+        served = {}
+        ok = {}
+
+        def runner():
+            try:
+                served["n"] = srv.serve_streams()
+            except BaseException as exc:  # noqa: BLE001
+                ok["error"] = repr(exc)
+
+        t = threading.Thread(target=runner)
         t.start()
-        conn.sendall(wire_frame(header))
-        for chunk in chunks:
-            conn.sendall(chunk)
-        length = int.from_bytes(_recv_all(conn, 4), "big")
-        _recv_all(conn, length)  # first response, discarded
-        conn.setsockopt(SOL_SOCKET, SO_KEEPALIVE, 0)
-        try:
+        for _ in range(n):
             conn.sendall(wire_frame(header))
             for chunk in chunks:
                 conn.sendall(chunk)
-        except OSError:
-            t.join()
-            return False
-        try:
-            data = conn.recv(1)
-        except OSError:
-            t.join()
-            return False
-        try:
-            conn.close()
-        except OSError:
-            pass
+            resp = decode_response(recv_frame(conn))
+            if resp.result.get("n") != 1:
+                conn.close()
+                t.join()
+                return False
+        conn.close()
         t.join()
-        return data != b""
+        if "error" in ok:
+            return False
+        return served.get("n") == n
 
 
 def wire_stream_certificates() -> list[dict[str, object]]:
@@ -382,16 +386,6 @@ def wire_stream_certificates() -> list[dict[str, object]]:
              "law": law,
              "measured_on": "soliton_eca.soliton_wire streaming path"},
             pred, domain))
-
-    def neg_cert(label, law, domain, pred):
-        certs.append(certify(
-            label,
-            {"domain": "real streaming loopback socket; all measured",
-             "law": "FALSE CANDIDATE: " + law,
-             "honest_check": "a claimed capability the code deliberately "
-                             "does not provide must be reported as the "
-                             "limitation it is"},
-            pred, [domain]))
 
     ok_cert("L_stream_first_tick_delivery",
             "the handler receives the first verified spike at the first "
@@ -420,11 +414,11 @@ def wire_stream_certificates() -> list[dict[str, object]]:
             "is rejected at its own tick and the stream is rejected as a "
             "whole (no success response)",
             ["channel", "payload"], _L_admission_rejected)
-    neg_cert("L_stream_single_stream",
-             "one socket connection carries several streams in sequence",
-             "serve_one_stream closes the connection after a single "
-             "stream request",
-             _L_single_stream)
+    ok_cert("L_stream_multi_stream_session",
+            "one socket connection carries N sequential stream requests, "
+            "each fully handled and answered over the SAME connection; a "
+            "clean close ends the session",
+            [3, 8, 25], _L_multi_stream_session)
     return certs
 
 

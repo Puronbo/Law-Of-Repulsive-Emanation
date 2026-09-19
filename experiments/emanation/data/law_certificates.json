@@ -949,21 +949,19 @@
   "status": "PASS"
  },
  {
-  "domain": "real loopback socket; all measured, none assumed",
-  "first_failure": {
-   "datum": "serve_one closes the connection after a single request"
-  },
+  "domain": "real loopback round-trip; all measured, none assumed",
+  "first_failure": null,
   "kind": "statement",
-  "label": "L_wire_single_stream",
+  "label": "L_wire_multi_request_session",
   "meta": {
-   "domain": "real loopback socket; all measured, none assumed",
-   "honest_check": "a claimed capability the code deliberately does not provide must be reported as the limitation it is",
-   "law": "FALSE CANDIDATE: one socket connection carries several requests in sequence"
+   "domain": "real loopback round-trip; all measured, none assumed",
+   "law": "one socket connection carries N sequential independent requests, each verified and answered over the SAME connection; a clean close ends the session",
+   "measured_on": "soliton_eca.soliton_wire"
   },
-  "n_fail": 1,
-  "n_ok": 0,
-  "points_checked": 1,
-  "status": "HONEST_NEGATIVE"
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
  },
  {
   "domain": "real streaming loopback (header + inner chunks over one socket); measured, none assumed",
@@ -1056,21 +1054,19 @@
   "status": "PASS"
  },
  {
-  "domain": "real streaming loopback socket; all measured",
-  "first_failure": {
-   "datum": "serve_one_stream closes the connection after a single stream request"
-  },
+  "domain": "real streaming loopback (header + inner chunks over one socket); measured, none assumed",
+  "first_failure": null,
   "kind": "statement",
-  "label": "L_stream_single_stream",
+  "label": "L_stream_multi_stream_session",
   "meta": {
-   "domain": "real streaming loopback socket; all measured",
-   "honest_check": "a claimed capability the code deliberately does not provide must be reported as the limitation it is",
-   "law": "FALSE CANDIDATE: one socket connection carries several streams in sequence"
+   "domain": "real streaming loopback (header + inner chunks over one socket); measured, none assumed",
+   "law": "one socket connection carries N sequential stream requests, each fully handled and answered over the SAME connection; a clean close ends the session",
+   "measured_on": "soliton_eca.soliton_wire streaming path"
   },
-  "n_fail": 1,
-  "n_ok": 0,
-  "points_checked": 1,
-  "status": "HONEST_NEGATIVE"
+  "n_fail": 0,
+  "n_ok": 3,
+  "points_checked": 3,
+  "status": "PASS"
  },
  {
   "configs_checked": 1,
