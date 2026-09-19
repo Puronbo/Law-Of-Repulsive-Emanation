@@ -55,6 +55,8 @@ audit finding.
 | Critical surface eq.(11) coefficients | critical_surface.py | digit-for-digit vs arXiv:0705.1769 (verified against live abstract) | CONCRETE |
 | Two-loop robustness: best suppression 1195x, gap >=10^118 | experiments/two_loop_cc.py | 37 variants scanned; FP-destruction anti-correlation documented | CONCRETE (scan) |
 | f(R) inflation deficit: N=3.7-7.9; N=60 needs delta_0~10^-60..-72 | experiments/fr_inflation.py | mechanism N=ln(1/d0)/theta+T_cross explicit | CONCRETE (model-level) |
+| Pole-pair scroll geometry: sep=(7/12*sqrt(pi))*sqrt(G)*sqrt(1+9G/3136pi); scroll-linear in s=sqrt(G); mid-line drift G/64pi | experiments/flow_pole_scroll.py | quadratic roots vs closed form, 7 G-values ratio 1.0000; c(s) in [0.1646,0.1696]; drift exact to 1e-9 | CONCRETE (model-level) |
+| Pole winding & feeding: lower ridge W=-1, upper ridge W=0 (ray-pole); G=0 axis smooth beta_lam=-2lam; seam crest beta_lam(G,1/2)->+2; numerator survives at D=0 (feed) | experiments/flow_pole_scroll.py | loops R=0.005: W -1.000/+0.000/+0.000; birth scan G 1e-8..1e-2; D-sign strip flips; N_lam=-2.09/-28.7 at ridges | CONCRETE (model-level) |
 
 ## Citations
 
