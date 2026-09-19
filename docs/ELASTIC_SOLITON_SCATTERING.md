@@ -590,12 +590,13 @@ forged prev.  This is the unbounded-authority limitation: a local-only
 chain without signatures cannot forbid an authority rewriting its own
 tail.
 
-The gate now stands on **119 certificates** (100 PASS, 19 HONEST_NEGATIVE)
-and believes **82 claims**: 34 core physics/system/calendar/ledger/flow/
-commons/rubric/topology/wire-protocol/streaming/ruleset laws (including the
-toy-transformer proposer's certified reversal rule) plus the 48
-self-discovered laws.  The honest-negative set is now 19 strong: the
-system has deliberately rejected 19 laws it could otherwise have shipped.
+The gate now stands on **125 certificates** (103 PASS, 22 HONEST_NEGATIVE)
+and believes **83 claims**: 35 core physics/system/calendar/ledger/flow/
+commons/rubric/topology/wire-protocol/streaming/ruleset/traffic-ring laws
+(including the toy-transformer proposer's certified reversal rule) plus
+the 48 self-discovered laws.  The honest-negative set is now 22 strong:
+the system has deliberately rejected 22 laws it could otherwise have
+shipped.
 
 Eleventh layer: **the fourth real-subsystem audit -- balance-flow engine
 geometry (L28-L31).** `puno_flow/engine.py` is the local-only balance
@@ -843,6 +844,44 @@ The gate now stands on **119 certificates** (100 PASS, 19 honest-
 negatives), **82 claims all believed**; emanation suite 252 passed,
 `tests/` tree 645 passed, 0 failed.
 
+Sixteenth layer: **the traffic-ring audit (`traffic_audit.py`) -- the
+periodic-ring observables the open lattice cannot express.**  The open-
+lattice free/melt/composition laws were already certified (L1-L3); this
+audit certifies the ring world where a current and a block law are
+exactly defined (6 certificates):
+    * `L48_traffic_ring_block_law` PASS -- after relaxation (T=400) the
+      MINORITY species on the ring is fully isolated: no two minority
+      cells are adjacent on the cyclic boundary, and the isolation
+      persists (checked at T=400, 401, 410).  Count is conserved
+      throughout, so the steady state has EXACTLY min(k, N-k) isolated
+      minority cells -- the exact form of J(rho) = min(rho, 1-rho) =
+      (# isolated minority)/N.  Verified N in {60,120} x 9 densities x 8
+      seeds x rules {29,71} (288 realizations).
+    * `L49_traffic_ring_tasep_identification` PASS -- ring evolution
+      equals TASEP hard-core exclusion (hop into an EMPTY target, else
+      block), implemented independently; exhaustive over every ring state
+      N in {6,7,8} x rules {29,71} x horizons {1,2,3} (2688 checks).
+    * `L50_traffic_ring_mirror_symmetry` PASS -- rule 71 applied to the
+      spatial mirror of a configuration equals the mirror of rule 29's
+      trajectory; exhaustive over every ring state N in {5..9} (3968
+      checks).
+    * `L51_traffic_bond_count_not_conserved` HONEST_NEGATIVE -- the
+      candidate "current = number of (1,0) bonds is conserved" is FALSE:
+      the jam (990,991) dissolves and the count rises 5 -> 6 (the exact
+      counterexample already recorded below).
+    * `L52_traffic_twist_charge_not_exact` HONEST_NEGATIVE -- the
+      candidate "twist charge Q = sum(p) - n*v*T is exact for all T" is
+      FALSE at a single contact yield (a 1-bit event; conserved only
+      between contacts).
+    * `L53_traffic_ring_only_count_conserved` HONEST_NEGATIVE -- "some
+      exact invariant beyond particle count exists on the ring" is FALSE:
+      over the full one-step graph (N in {6,8,10} x rules {29,71}) among
+      {n, #10, #01, #11, #00, sum(p) mod N} only n is conserved on every
+      edge.
+The gate now stands on **125 certificates** (103 PASS, 22 honest-
+negatives), **83 claims all believed**; emanation suite 252 passed,
+`tests/` tree 645 passed, 0 failed.
+
   * "current = number of (1,0) bonds" is NOT conserved.  Counterexample:
     [292,527,990,991,1166,1754] has 5 active bonds; the jam (990,991)
     dissolves and the bond count rises to 6.  J fluctuates with jam
@@ -925,6 +964,9 @@ soliton-gas with a conserved twist charge.
   collide_tags (forward deterministic), block_ladder (29/71) and
   block_collapse (28/70), ELASTIC_RULES = (28,29,70,71), non-injectivity
   honesty note in the header.
+- `experiments/emanation/traffic_audit.py` -- the Sixteenth-layer audit:
+  ring block law, TASEP identification, mirror symmetry (PASS) plus
+  bond-count / twist-charge / only-count honest negatives (L48-L53).
 - `experiments/emanation/test_elastic_shift.py` -- 99 tests.
 - `experiments/emanation/tagged_shift.py` -- tag DOF over the 4 bus rules.
 - `experiments/emanation/test_tagged_shift.py` -- 33 tests.

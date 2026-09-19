@@ -430,6 +430,7 @@ def wire_stream_certificates() -> list[dict[str, object]]:
 
 if __name__ == "__main__":
     import json
+    import sys
     certs = wire_stream_certificates()
     print("soliton wire STREAMING audit")
     for c in certs:
@@ -438,3 +439,5 @@ if __name__ == "__main__":
     print("RESULT: %s" % ("PASS" if all(
         c["status"] in ("PASS", "HONEST_NEGATIVE") for c in certs)
         else "FAIL"))
+    sys.exit(0 if all(
+        c["status"] in ("PASS", "HONEST_NEGATIVE") for c in certs) else 1)

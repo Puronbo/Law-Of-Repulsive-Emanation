@@ -101,14 +101,14 @@ def _wire_certificates():
 
 
 def system_certificates():
-    """Real-subsystem statements spanning ten subsystems: the credit
+    """Real-subsystem statements spanning eleven subsystems: the credit
     ledger (L14/L14_bad), the universal calendar (L18-L23), the hash-chain
     local ledger (L24-L27), the balance-flow engine geometry (L28-L31),
     the credit-commons simulator (L32-L34), the professions rubric
     (L35-L38), the scale-free topology (L39-L43), the web credit ledger
-    (L44-L47), the toy transformer proposer (PROPOSED_TF_*), and the
-    framed TCP wire protocol (L_wire_*) -- all from real, used modules in
-    this repository."""
+    (L44-L47), the traffic-ring closed-form laws (L48-L53), the toy
+    transformer proposer (PROPOSED_TF_*), and the framed TCP wire protocol
+    (L_wire_*) -- all from real, used modules in this repository."""
     from experiments.emanation.calendars_audit import calendar_certificates
     from experiments.emanation.chain_audit import chain_certificates
     from experiments.emanation.puno_flow_audit import puno_flow_certificates
@@ -117,6 +117,7 @@ def system_certificates():
     from experiments.emanation.professions_audit import professions_certificates
     from experiments.emanation.topology_audit import topology_certificates
     from experiments.emanation.webledger_audit import webledger_certificates
+    from experiments.emanation.traffic_audit import traffic_certificates
     from experiments.emanation import law_checker as lc
     seeds = list(range(30))
 
@@ -176,7 +177,7 @@ def system_certificates():
     ] + (calendar_certificates() + chain_certificates()
          + puno_flow_certificates() + credit_commons_certificates()
          + professions_certificates() + topology_certificates()
-         + webledger_certificates()
+         + webledger_certificates() + traffic_certificates()
          + _wire_certificates())
 
 

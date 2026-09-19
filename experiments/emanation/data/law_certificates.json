@@ -760,6 +760,120 @@
   "status": "HONEST_NEGATIVE"
  },
  {
+  "configs_checked": 288,
+  "domain": "random ring draws, N in {60,120}, rho in {0.10..0.45, 0.60..0.90} x 8 seeds x rules {29,71}, isolation checked at T in {400,401,410}",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L48_traffic_ring_block_law",
+  "meta": {
+   "domain": "random ring draws, N in {60,120}, rho in {0.10..0.45, 0.60..0.90} x 8 seeds x rules {29,71}, isolation checked at T in {400,401,410}",
+   "law": "after relaxation the MINORITY species on the ring is fully isolated (no two minority cells adjacent on the cyclic boundary); count conserved throughout, so the steady state has exactly min(k, N-k) isolated minority cells",
+   "measured_on": "traffic_law.evolve_ring"
+  },
+  "n_fail": 0,
+  "n_ok": 288,
+  "points_checked": 288,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 2688,
+  "domain": "exhaustive over every ring state, N in {6,7,8} x rules {29,71} x horizons {1,2,3}",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L49_traffic_ring_tasep_identification",
+  "meta": {
+   "domain": "exhaustive over every ring state, N in {6,7,8} x rules {29,71} x horizons {1,2,3}",
+   "law": "ring evolution equals TASEP hard-core exclusion (hop into an EMPTY target, else block) -- rule 29 right, rule 71 left -- identical position sets at every horizon",
+   "measured_on": "traffic_law.evolve_ring vs independent TASEP"
+  },
+  "n_fail": 0,
+  "n_ok": 2688,
+  "points_checked": 2688,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 3968,
+  "domain": "exhaustive over every ring state, N in {5..9} x horizons {1,2}, both directions",
+  "first_failure": null,
+  "kind": "statement",
+  "label": "L50_traffic_ring_mirror_symmetry",
+  "meta": {
+   "domain": "exhaustive over every ring state, N in {5..9} x horizons {1,2}, both directions",
+   "law": "rule 71 applied to the spatial mirror of a configuration equals the mirror of rule 29's trajectory: the left mover IS the right mover reflected",
+   "measured_on": "traffic_law.evolve_ring"
+  },
+  "n_fail": 0,
+  "n_ok": 3968,
+  "points_checked": 3968,
+  "status": "PASS"
+ },
+ {
+  "configs_checked": 1,
+  "domain": "the documented counterexample [292,527,990,991,1166,1754], rule 29, first 6 steps",
+  "first_failure": {
+   "datum": [
+    29,
+    292,
+    527,
+    990,
+    991,
+    1166,
+    1754
+   ]
+  },
+  "kind": "statement",
+  "label": "L51_traffic_bond_count_not_conserved",
+  "meta": {
+   "domain": "the documented counterexample [292,527,990,991,1166,1754], rule 29, first 6 steps",
+   "law": "FALSE CANDIDATE: current = number of (1,0) bonds is conserved -- the jam (990,991) dissolves (991 leads, 990 below then frees) and the bond count rises 5 -> 6; J fluctuates with jam formation/dissolution and is a transient order parameter, not an invariant"
+  },
+  "n_fail": 1,
+  "n_ok": 0,
+  "points_checked": 1,
+  "status": "HONEST_NEGATIVE"
+ },
+ {
+  "configs_checked": 2,
+  "domain": "a single touching pair {a, a+1} and {a, a-1} (one contact), rules 29/71, first 6 steps",
+  "first_failure": {
+   "datum": [
+    29,
+    1000,
+    1001
+   ]
+  },
+  "kind": "statement",
+  "label": "L52_traffic_twist_charge_not_exact",
+  "meta": {
+   "domain": "a single touching pair {a, a+1} and {a, a-1} (one contact), rules 29/71, first 6 steps",
+   "law": "FALSE CANDIDATE: twist charge Q = sum(p) - n*v*T is exact for ALL T -- at a single contact yield Q jumps once (a 1-bit event); it is conserved only between contacts"
+  },
+  "n_fail": 2,
+  "n_ok": 0,
+  "points_checked": 2,
+  "status": "HONEST_NEGATIVE"
+ },
+ {
+  "configs_checked": 6,
+  "domain": "full one-step transition graph of the ring, N in {6,8,10} x rules {29,71} (every state, every edge)",
+  "first_failure": {
+   "datum": [
+    6,
+    29
+   ]
+  },
+  "kind": "statement",
+  "label": "L53_traffic_ring_only_count_conserved",
+  "meta": {
+   "domain": "full one-step transition graph of the ring, N in {6,8,10} x rules {29,71} (every state, every edge)",
+   "law": "FALSE CANDIDATE: some exact dynamical invariant beyond particle count exists on the ring -- among {n, #10, #01, #11, #00, sum(p) mod N} only particle count is conserved on every edge; each other observable breaks on at least one transition"
+  },
+  "n_fail": 6,
+  "n_ok": 0,
+  "points_checked": 6,
+  "status": "HONEST_NEGATIVE"
+ },
+ {
   "domain": "real loopback round-trip; all measured, none assumed",
   "first_failure": null,
   "kind": "statement",

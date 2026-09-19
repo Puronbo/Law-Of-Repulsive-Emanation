@@ -1,8 +1,8 @@
 {
  "accepted": true,
- "n_claims": 82,
+ "n_claims": 83,
  "n_negative_claims": 0,
- "n_required_certs": 93,
+ "n_required_certs": 96,
  "results": [
   {
    "law": "L1 free streaming (rule 29, gap>=2 sector)",
@@ -464,6 +464,23 @@
     "L_ruleset_fundamental_conservation",
     "L_ruleset_204_storage_identity",
     "L_ruleset_bitmask16"
+   ],
+   "rule": null,
+   "status": "BELIEVED FORMALLY"
+  },
+  {
+   "law": "traffic-ring closed-form laws: after relaxation the minority species on the ring is fully isolated (block law), ring evolution is exactly TASEP, and rule 71 is the spatial mirror of rule 29",
+   "ok": true,
+   "pass_evidence": [
+    "L48_traffic_ring_block_law",
+    "L49_traffic_ring_tasep_identification",
+    "L50_traffic_ring_mirror_symmetry"
+   ],
+   "rejection_reasons": [],
+   "requires": [
+    "L48_traffic_ring_block_law",
+    "L49_traffic_ring_tasep_identification",
+    "L50_traffic_ring_mirror_symmetry"
    ],
    "rule": null,
    "status": "BELIEVED FORMALLY"
@@ -1093,6 +1110,6 @@
    "status": "BELIEVED FORMALLY"
   }
  ],
- "timestamp": "2026-09-18 14:52:14 UTC",
+ "timestamp": "2026-09-19 02:58:25 UTC",
  "verdict": "ACCEPTED"
 }

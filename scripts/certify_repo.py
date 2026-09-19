@@ -124,6 +124,13 @@ def claims():
          "requires": ["L_ruleset_fundamental_conservation",
                       "L_ruleset_204_storage_identity",
                       "L_ruleset_bitmask16"]},
+        {"law": "traffic-ring closed-form laws: after relaxation the "
+                "minority species on the ring is fully isolated (block "
+                "law), ring evolution is exactly TASEP, and rule 71 is the "
+                "spatial mirror of rule 29",
+         "requires": ["L48_traffic_ring_block_law",
+                      "L49_traffic_ring_tasep_identification",
+                      "L50_traffic_ring_mirror_symmetry"]},
     ]
     discovered, _ = ld.discovery_claims()
     return base + discovered
