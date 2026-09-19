@@ -77,6 +77,8 @@ Byte-normalization audit (planner-only, read-only):
   to the vendored closure (see `scripts/twin_byte_check.py`).
   Reproduce: `lake update && lake build PunoTwin.{...}` in the temp
   project `C:\Users\Me\AppData\Local\Temp\opencode\twin_build`.
+  Fresh no-cache re-run confirmed: delete the five twin oleans, rebuild
+  the same targets, exit 0 again (8710 jobs) - NOT cache reuse.
 - The 2/7 reserved files contain NO resolution claims and are NOT part
   of the kernel pass: `MillenniumBridge` declares the seven problems
   NOT SETTLED by this project; `EcaIsometry` is exact-decidable prose

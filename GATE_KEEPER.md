@@ -19,6 +19,9 @@ claim; every number below is a real tool output from the branch's own run.
   jobs; over bytes verified byte-identical to the vendored closure). The
   2/7 reserved prose twins (EcaIsometry, MillenniumBridge) are standalone
   by design and stay NOT-SETTLED. 7/7 still NOT claimed anywhere.
+  Fresh no-cache re-verification (real, re-run): the five twin oleans
+  were DELETED, then rebuilt from source (21-23 s each) to exit 0 again
+  (8710 jobs) - the pass is provably NOT cache reuse.
 
 ## THE GATE (how this lane stays truthful)
 1. Recompute the 7-twin closure digest; it must equal the pin above.
