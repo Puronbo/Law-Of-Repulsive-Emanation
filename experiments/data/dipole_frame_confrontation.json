@@ -1,0 +1,22 @@
+{
+  "measured_dipole": {
+    "v_km_s": 369.82,
+    "v_err_km_s": 0.11,
+    "l_deg": 264.021,
+    "b_deg": 48.253,
+    "source": "Planck 2013/2018 + 2020a CatWISE"
+  },
+  "dipole_anomaly": {
+    "description": "CatWISE vs kinematic dipole >5 sigma",
+    "note": "Anomaly is in large-scale structure dipole, not CMB. Framework has no bulk flow prediction."
+  },
+  "framework": {
+    "C0": "scalar fixed point (0/0 structure) -> frame-invariant",
+    "RG_flow": "Diff-invariant effective action -> frame-invariant",
+    "prediction": "No fundamental preferred frame"
+  },
+  "confrontation": {
+    "result": "CONSISTENT",
+    "reasoning": "Framework has no frame-dependent prediction; dipole is kinematic artifact of observer motion."
+  }
+}

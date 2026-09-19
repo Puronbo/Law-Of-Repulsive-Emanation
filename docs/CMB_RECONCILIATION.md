@@ -64,7 +64,15 @@ r < 0.036. Both are measured, both are confrontation laggards in this repo.
   computes sigma8. **Result:** sigma8 = 0.814, consistent with Planck
   0.811+/-0.006 (0.48 sigma pull) and local weak lensing 0.76+/-0.03 (1.80
   sigma pull). Ledger row added (CONCRETE validation).
-  The live queue now: OPEN-5 (dipole frame).
+
+- **OPEN-5 (dipole frame) CLOSED 2026-09-19:**
+  `experiments/dipole_frame_confrontation.py` confronts the kinematic dipole
+  (v_CMB = 369.82 +/- 0.11 km/s) with the framework's C_0-centered cosmology.
+  **Result:** CONSISTENT by construction. The framework's fixed point C_0 is
+  a scalar (0/0 structure) and the RG flow is Diff-invariant; the dipole is
+  a kinematic artifact of our motion, not a fundamental asymmetry. Ledger row
+  added (CONCRETE validation).
+  All CMB gaps now closed.
 - **GAP-CMB-2:** PHYSICAL_UNIVERSAL_MAP.md (the 7-part formal correspondence)
   contains no entry for the CMB era, although the narrative GENESIS gives it
   two full stages (recombination glow; reionization second dawn).

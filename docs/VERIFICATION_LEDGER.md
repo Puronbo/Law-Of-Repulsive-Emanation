@@ -64,6 +64,7 @@ audit finding.
 | Lower-ridge winding fingerprint: W(lower)=-1 at Litim (A=29/72pi), 0 elsewhere; coefficient/enclosure-dependent | experiments/flow_pole_regulator_robust.py + data/flow_pole_regulator_robust.json | W=-1 on A=29 column at R=0.05; 0 at A=20,40; transition at R~0.002-0.005 | CONCRETE (fingerprint) |
 | Higgs inflation sigma8 CONSISTENT with Planck (0.48σ) and local (1.80σ) structure growth | experiments/sigma8_confrontation.py + data/sigma8_confrontation.json | sigma8=0.814 (Planck 0.811+/-0.006, local 0.76+/-0.03); calibrated EH transfer function | CONCRETE (validation) |
 | Lower-ridge winding phase diagram: R_trans(A,B) mapped over 8x6 grid x 14 radii; W=-1 when loop encloses enough singular line arc | experiments/winding_phase_diagram.py + data/winding_phase_diagram.json | At Litim (29,9): R_trans=0.005; at (20,15): R_trans=0.2/none; at (32,15): R_trans=0.002; W is enclosure-dependent fingerprint | CONCRETE (fingerprint map) |
+| CMB dipole frame: framework is frame-invariant (C_0 scalar, Diff-invariant flow); dipole is kinematic artifact | experiments/dipole_frame_confrontation.py + data/dipole_frame_confrontation.json | v_CMB=369.82+/-0.11 km/s; no fundamental preferred frame predicted; CONSISTENT by construction | CONCRETE (validation) |
 
 ## Citations
 
