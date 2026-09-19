@@ -914,6 +914,42 @@ The gate now stands on **125 certificates** (105 PASS, 20 honest-
 negatives), **83 claims all believed**; emanation suite 252 passed,
 `tests/` tree 645 passed, 0 failed.
 
+Eighteenth layer: **the runtime-over-wire adapter and three new root
+validators (the pin moves 86=86 to 89=89).**  `soliton_eca/runtime.py`
+grew `wire_handler()`: the cognitive runtime now exposes its LIVE SNN
+over the framed wire protocol -- every served batch is a 0-based frame
+sequence and is answered with the live `{delivered, emitted}` counts
+plus the SNN metrics snapshot.  Three new root validators joined the
+on-disk suite (validator count 86 -> 89):
+    * `validate_soliton_nn.py` PASS -- exact forward ramp semantics
+      (ramp(3*2+0.5)=6.5, ramp(-2.5)=0.0 with hand-set weights/biases),
+      learning loss halving (0.15479 -> 0.00408, seed 7), WeightedBus
+      transmit scaling + single-fire, input/epoch/target validation
+      rejections, seed-11 determinism (identical weights and outputs).
+    * `validate_soliton_drift.py` PASS -- acquisition-order residual
+      slope: 0.000 passes the gate with no drift, fitted slope
+      -0.050/step exactly (probe gains `+k*i`) trips the 0.01 gate,
+      `output_span` normalization, short-capture/bad-span/bad-threshold
+      validation rejections.
+    * `validate_soliton_metrics.py` PASS -- metrics snapshot is
+      repeatable and non-mutating and reports the scheduler truth
+      (delivered 2, firing rate 0.5/tick, weights [1.0, 1.0],
+      max queue depth 2); `validate_spike_trace` counts a valid ordered
+      trace and rejects unordered/non-finite; and the runtime-over-wire
+      end-to-end path: a keep-alive server session answers TWO framed
+      batches over ONE connection with live metrics, then a
+      `SolitonWireClient` round-trip delivers through the same adapter.
+These are root validators in the literal sense -- registered, counted,
+and pinned -- so the sealed pin, that byte-truth mechanism, moves
+**86=86 -> 89=89** in all enforced places (README pin, GATE_KEEPER
+(2 spots), the meta-audit's on-disk count check `== 89`, and the
+Soliton-Bus manual: 90-check suite / 89 root validators).  The sealed
+closure digest and the certificate totals are UNCHANGED by this layer:
+still **125 certificates** (105 PASS, 20 honest-negatives), **83 claims
+all believed**; the meta-audit stays 10/10 (its validator-count check
+now verifies 89), emanation 252 passed, `tests/` 645 passed, soliton_eca
+33 passed, 0 failed.
+
   * "current = number of (1,0) bonds" is NOT conserved.  Counterexample:
     [292,527,990,991,1166,1754] has 5 active bonds; the jam (990,991)
     dissolves and the bond count rises to 6.  J fluctuates with jam

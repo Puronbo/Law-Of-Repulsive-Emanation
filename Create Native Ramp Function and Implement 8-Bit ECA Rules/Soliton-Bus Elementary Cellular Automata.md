@@ -2238,7 +2238,7 @@ executable prints all checks:
     taxonomy: [P_NNP (P vs NP), HODGE, POINCARE, RH, YANG_MILLS, NAVIER_STOKES, BSD]
 ```
 
-The bridge is honest by construction: the 87-check suite runs this
+The bridge is honest by construction: the 90-check suite runs this
 round with the three NSE-adjacent laws, the T3 closed-form certificate,
 the T4 bridge-meta audit, and the scope discipline as additional
 certificates, and nothing anywhere asserts — explicitly or by status
@@ -2246,7 +2246,7 @@ convention — that a Millennium problem has been resolved.
 
 ## Audit register
 
-One command reproduces the entire certification: unit suite, all 86
+One command reproduces the entire certification: unit suite, all 89
 root validators, and every ticket across the rounds.
 
 ```bash

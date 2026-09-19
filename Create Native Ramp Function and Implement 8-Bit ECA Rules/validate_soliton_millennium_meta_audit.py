@@ -96,7 +96,7 @@ chi4_even_zero_real,
                                              chi8_series_ln_one_plus_sqrt_two_div_sqrt_two
     py     validate_..._closed_forms    exact rational 2048/65537,
                                           65536/67108865
-    md     Soliton-Bus ... .md          "86 root validators", the
+    md     Soliton-Bus ... .md          "89 root validators", the
                                          theorem names, the exact
                                          rationals, seven delimitations
 
@@ -359,7 +359,7 @@ MPOP = [
     "(262144 : ℚ) / 65537 < (268435456 : ℚ) / 67108865",
 ]
 DOCPINS = [
-    "86 root validators",
+    "89 root validators",
     "2048/65537",
     "65536/67108865",
     "TwinAnalyticLaws",
@@ -477,8 +477,8 @@ _check("DirichletLaws carries the L-function laws, primitive χ's, parity law an
 _check("the docs pin the suite count and the certified rationals",
        _grep(DOC, DOCPINS))
 _check("on-disk validator count matches the prose-pinned count",
-       [] if _root_validator_count() == 86
-       else [f"on-disk {_root_validator_count()} != pinned 86"])
+       [] if _root_validator_count() == 89
+       else [f"on-disk {_root_validator_count()} != pinned 89"])
 _check("vendored twin byte-closure recomputes to the pinned suite digest",
        _twin_byte_closure_missing())
 

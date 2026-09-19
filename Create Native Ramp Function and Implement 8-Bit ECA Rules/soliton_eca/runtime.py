@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from dataclasses import asdict
 from pathlib import Path
-from typing import Iterable, Sequence
+from typing import Callable, Iterable, Sequence
 
 from .cognitive_agent import Action, CognitiveAgent, CognitiveEvent
 from .episodic_store import EpisodicStore
@@ -64,6 +64,24 @@ class SolitonCognitiveRuntime:
         self._persist_new_events()
         return {"kind": "snn_batch", "delivered": len(delivered),
                 "emitted": len(emitted), "metrics": asdict(metrics(self.snn))}
+
+    def wire_handler(self) -> Callable[[object], dict[str, object]]:
+        """Adapt this runtime to the wire protocol's handler contract.
+
+        Each request's framed AER text is verified frame-by-frame,
+        admitted under the runtime policy, executed on the SNN, and
+        answered with the runtime's live batch metrics.  One handler
+        call == one framed batch, so the server can keep-alive a whole
+        session of sequential batches over a single connection.
+        """
+        from .soliton_wire import WireRequest
+
+        def handle(request: object) -> dict[str, object]:
+            if not isinstance(request, WireRequest):
+                raise TypeError("runtime wire handler expects a WireRequest")
+            return self.framed_events(request.frames)
+
+        return handle
 
     def snapshot(self) -> dict[str, object]:
         """Return a JSON-compatible state summary without mutating runtime state."""

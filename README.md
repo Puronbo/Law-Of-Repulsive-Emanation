@@ -278,7 +278,7 @@ content.  The three invariants that the certificate line depends on:
 - **`Create Native Ramp Function and Implement 8-Bit ECA Rules/`** — the
   certified soliton-ECA suite.  All `validate_*.py` root validators **must
   stay in this exact directory** (the meta-audit counts them there: the
-  pinned suite is **86 validators**), together with the pin document
+  pinned suite is **89 validators**), together with the pin document
   `Soliton-Bus Elementary Cellular Automata.md`, the `soliton_eca/`
   package, and `run_all_audits.py`.
 - **`PunoCalculus/PunoCalculus/PunoTwin/`** — the vendored Lean twins

@@ -4,14 +4,14 @@ Runs the unit test suite and every root validator, and prints a
 PASS/FAIL register.  Exit code 0 iff everything passed.
 
 The docs (README.md, Soliton-Bus Elementary Cellular Automata.md) pin
-the count at "86 root validators" / "87-check suite".  The constant
+the count at "89 root validators" / "90-check suite".  The constant
 PINCED_VALIDATORS below enforces that pin: if the on-disk validator
 count ever drifts, this script prints an explicit FAIL line and exits
 non-zero *even if every individual check passed*.
 
 One-command contract:
     python run_all_audits.py
-    # -> 87/87 registered checks passed  +  pinned: 86 validators … (OK)
+    # -> 90/90 registered checks passed  +  pinned: 89 validators … (OK)
 """
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-PINCED_VALIDATORS = 86
+PINCED_VALIDATORS = 89
 
 
 def run(cmd: list[str]) -> bool:
