@@ -95,3 +95,8 @@ contract asserts only a proven upper bound that the runner observed.
   to the reference and `count <= 8*n + 2`.
 - Observed: **640/640 tokens pass; measured max comparisons = 1025 at
   n = 128, bound = 1026; exit 0.** No register count touched.
+
+- **Candidate #2 (2026-09-19):** `experiments/bopc_contract2.json` —
+  Selection sort on 8 elements, resource=comparisons, proven bound
+  n*(n-1)/2 = 28. Corpus: 256 tokens (seeds 0..255, fixed n=8).
+  Observed: **256/256 tokens pass; measured max = 28, bound = 28; exit 0.**

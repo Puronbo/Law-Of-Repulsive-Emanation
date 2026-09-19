@@ -1,0 +1,10 @@
+{
+  "ticket_id": "BOPC-0002",
+  "operator": "sort8@experiments/bopc_candidate2.py",
+  "resource": "comparisons",
+  "upper_bound": { "formula": "n*(n-1)/2 = 28 (exact, n=8)", "unit_invariant": true, "measured_required": true },
+  "semantics": "correct-or-raise (output must equal sorted(input))",
+  "corpus": { "seed_min": 0, "seed_max": 255, "size": 8 },
+  "lane": "application",
+  "note": "Selection sort on 8 elements. Exactly 28 comparisons (n*(n-1)/2), data-independent. Corpus: 256 seeds = 256 tokens."
+}

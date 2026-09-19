@@ -60,6 +60,8 @@ audit finding.
 | Regulator-robust pole geometry: cusp (0,1/2), sep=0.25*sqrt(G(16A-8B+B^2G)), drift=B*G/8, G=0 birth, and upper-ridge W=0 are UNIVERSAL in the (A,B) family; lower-ridge W=-1 is the Litim register fingerprint only | experiments/flow_pole_regulator_robust.py | 3x3 (A,B) grid ratios 1.0000000000; radius scan R=0.001..0.10 shows W is coefficient/enclosure-dependent; W=-1 on the A=29 column at R=0.05 | CONCRETE (framework-robustness) |
 | CMB measured ground as referee anchors (T 2.72548K, dipole 369.82 km/s, n_s 0.9649, r<0.036, Wien 1.06mm) | docs/CMB_RECONCILIATION.md | live-verified sources: Fixsen 2009, Planck 2018, BICEP/Keck (BK18), 2020a dipole | REAL |
 | n_s/r referee rules out pure-gravity CMB seeding (epsilon ~ -0.87; N=3.7-7.9) | docs/CMB_RECONCILIATION.md REFEREE-1/2 + experiments/fr_inflation.py | n_s=0.9649+/-0.0042 (plan ~1.8e-2), r<0.036 caps epsilon ~2e-3; sign and magnitude mismatched; Q2 forces d0=10^-60..-72 | CONCRETE (refutation) |
+| Higgs inflation spectrum (Bezrukov-Shaposhnikov 2008) CONSISTENT with n_s/r/alpha_s referee at N=58 (chi^2=0.345) | experiments/higgs_inflation_spectrum.py + data/higgs_inflation_spectrum.json | n_s=0.96507 (+0.04σ), r=0.00357 (<0.036), alpha_s=-0.00057 (+0.59σ) | CONCRETE (validation) |
+| Lower-ridge winding fingerprint: W(lower)=-1 at Litim (A=29/72pi), 0 elsewhere; coefficient/enclosure-dependent | experiments/flow_pole_regulator_robust.py + data/flow_pole_regulator_robust.json | W=-1 on A=29 column at R=0.05; 0 at A=20,40; transition at R~0.002-0.005 | CONCRETE (fingerprint) |
 
 ## Citations
 

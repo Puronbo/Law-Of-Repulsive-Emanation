@@ -51,8 +51,13 @@ r < 0.036. Both are measured, both are confrontation laggards in this repo.
   (REFEREE-1 above): measured n_s = 0.9649 +/- 0.0042 and r < 0.036 do not
   refine the pure-gravity claim, they rule out its inflation-generating
   capacity outright (wrong sign and magnitude of epsilon). The deficit is
-  closed as a scientific result; the live queue moves to the Higgs-inflaton
-  route [31] (implementable spectrum) and OPEN-4/OPEN-5 below.
+  closed as a scientific result.
+- **Higgs-inflaton confrontation IMPLEMENTED 2026-09-19:**
+  `experiments/higgs_inflation_spectrum.py` computes the Bezrukov-Shaposhnikov
+  (2008) non-minimal coupling predictions and confronts Planck 2018 + BK18.
+  **Result:** CONSISTENT at N=58 (n_s=0.96507 +0.04σ, r=0.00357 < 0.036,
+  alpha_s=-0.00057 +0.59σ; chi^2=0.345). Ledger row added (CONCRETE validation).
+  The live queue now: OPEN-4 (σ8/As), OPEN-5 (dipole frame).
 - **GAP-CMB-2:** PHYSICAL_UNIVERSAL_MAP.md (the 7-part formal correspondence)
   contains no entry for the CMB era, although the narrative GENESIS gives it
   two full stages (recombination glow; reionization second dawn).
