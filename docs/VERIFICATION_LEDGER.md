@@ -62,6 +62,7 @@ audit finding.
 | n_s/r referee rules out pure-gravity CMB seeding (epsilon ~ -0.87; N=3.7-7.9) | docs/CMB_RECONCILIATION.md REFEREE-1/2 + experiments/fr_inflation.py | n_s=0.9649+/-0.0042 (plan ~1.8e-2), r<0.036 caps epsilon ~2e-3; sign and magnitude mismatched; Q2 forces d0=10^-60..-72 | CONCRETE (refutation) |
 | Higgs inflation spectrum (Bezrukov-Shaposhnikov 2008) CONSISTENT with n_s/r/alpha_s referee at N=58 (chi^2=0.345) | experiments/higgs_inflation_spectrum.py + data/higgs_inflation_spectrum.json | n_s=0.96507 (+0.04σ), r=0.00357 (<0.036), alpha_s=-0.00057 (+0.59σ) | CONCRETE (validation) |
 | Lower-ridge winding fingerprint: W(lower)=-1 at Litim (A=29/72pi), 0 elsewhere; coefficient/enclosure-dependent | experiments/flow_pole_regulator_robust.py + data/flow_pole_regulator_robust.json | W=-1 on A=29 column at R=0.05; 0 at A=20,40; transition at R~0.002-0.005 | CONCRETE (fingerprint) |
+| Higgs inflation sigma8 CONSISTENT with Planck (0.48σ) and local (1.80σ) structure growth | experiments/sigma8_confrontation.py + data/sigma8_confrontation.json | sigma8=0.814 (Planck 0.811+/-0.006, local 0.76+/-0.03); calibrated EH transfer function | CONCRETE (validation) |
 
 ## Citations
 

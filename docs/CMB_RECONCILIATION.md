@@ -57,7 +57,14 @@ r < 0.036. Both are measured, both are confrontation laggards in this repo.
   (2008) non-minimal coupling predictions and confronts Planck 2018 + BK18.
   **Result:** CONSISTENT at N=58 (n_s=0.96507 +0.04σ, r=0.00357 < 0.036,
   alpha_s=-0.00057 +0.59σ; chi^2=0.345). Ledger row added (CONCRETE validation).
-  The live queue now: OPEN-4 (σ8/As), OPEN-5 (dipole frame).
+
+- **OPEN-4 (sigma_8/As) CLOSED 2026-09-19:**
+  `experiments/sigma8_confrontation.py` evolves the Higgs inflation primordial
+  spectrum to z=0 using the calibrated Eisenstein & Hu transfer function and
+  computes sigma8. **Result:** sigma8 = 0.814, consistent with Planck
+  0.811+/-0.006 (0.48 sigma pull) and local weak lensing 0.76+/-0.03 (1.80
+  sigma pull). Ledger row added (CONCRETE validation).
+  The live queue now: OPEN-5 (dipole frame).
 - **GAP-CMB-2:** PHYSICAL_UNIVERSAL_MAP.md (the 7-part formal correspondence)
   contains no entry for the CMB era, although the narrative GENESIS gives it
   two full stages (recombination glow; reionization second dawn).

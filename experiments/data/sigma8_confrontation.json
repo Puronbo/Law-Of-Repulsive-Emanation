@@ -1,0 +1,35 @@
+{
+  "cosmology": {
+    "H0": 67.4,
+    "h": 0.674,
+    "OM_M": 0.315,
+    "OM_B": 0.0493,
+    "OM_L": 0.685
+  },
+  "primordial": {
+    "n_s": 0.96507,
+    "A_s": 2.1e-09,
+    "alpha_s": -0.00057,
+    "source": "higgs_inflation_spectrum.py N=58"
+  },
+  "referee": {
+    "planck": {
+      "sigma8": 0.811,
+      "sigma": 0.006,
+      "source": "Planck 2018 CMB lensing+BAO"
+    },
+    "local": {
+      "sigma8": 0.76,
+      "sigma": 0.03,
+      "source": "KiDS-1000 / DES Y3 weak lensing"
+    }
+  },
+  "result": {
+    "sigma8_computed": 0.8138880304549205,
+    "planck_pull_sigma": 0.48133840915341264,
+    "local_pull_sigma": 1.7962676818306842,
+    "consistent_planck_2sigma": true,
+    "consistent_local_2sigma": true,
+    "overall_consistent": true
+  }
+}
