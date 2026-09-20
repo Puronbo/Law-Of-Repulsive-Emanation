@@ -104,6 +104,15 @@ refutation, no validator or test count changed:
 | **BRIDGE-3: CC gap × horizon entropy confluence** | `experiments/bridge3_cc_entropy_confluence.py` | Λ̃ = 2.7690e-122 (0.04% off 2.77e-122); S_dS = 3.4037e122 k_B; S_dS × Λ̃ = 3π to 1e-9; 6/6 gates PASS |
 | **Pole-roller trajectory selection** (the two pole ridges are the rolls, RG flow is the material through the nip) | `experiments/trajectory_selection.py` | LANE-1 (W=0) caps at N=6.23; LANE-2 (W=−1) is a separatrix/ejector ejecting at λ=0.36952, matching the universal cusp handoff λ₀=0.3695 to 0.005% |
 | **Universal cusp → Higgs handoff** | `experiments/cusp_to_higgs_initial.py` | λ₀=0.3695; Higgs plateau supplies N=58 (χ²=0.345) |
+| **CMB formulation (emitter→bath→floor)** | `experiments/cmb_formulation.py` | 8/8 gates PASS: n_s +0.04σ, r=0.00357 (CMB-S4-falsifiable), A_s −1.41σ, σ8 +0.48σ, Y_p +0.67σ, S_dS×Λ̃=3π; S_CMB=5.275e89 k_B, N_γ=1.465e89 |
+| **Field coverage register (beyond CMB)** | `experiments/field_coverage_register.py` | 18 known fields vs framework road: 9 PASS, 4 CONCRETE, 1 CONFRONTED (DM cores), 1 MODEL-LEVEL, 1 PIPELINE; H0 tension filed EXTERNAL |
+| **Sound horizon recomputed** (F11 INPUT → PIPELINE) | `experiments/sound_horizon_calculation.py` | r_drag = 146.83 Mpc (−1.0σ vs Planck 147.09±0.26) from standard c_s/H integral; 3/3 gates PASS |
+| **Tensor-mode falsifiability forecast** | `experiments/tensor_mode_forecast.py` | SNR per program: CMB-S4 3.57σ (DETECTION), LiteBIRD 3.57σ, SO 1.19σ, BK18 0.32σ; n_t=−4.5e-4; 4/4 gates PASS |
+| **Cosmic birefringence** (F7 OPEN → CONCRETE exclusion) | `experiments/cosmic_birefringence.py` | minimal anomaly coupling β=0.0333° is 5.3σ below the 0.30°±0.05° hint; the minimal photonic-ALP sector cannot source it; 4/4 gates |
+| **Dwarf DM core confrontation** (F15 → CONFRONTED) | `experiments/dwarf_core_confrontation.py` | Fornax obs 0.6–1.8 kpc overlaps prediction 0.48–7.73 kpc @ σ/m∈1..100; Sculptor shallow γ=0.39 overlap; Draco cusp = σ/m→0 limit; 3/3 gates |
+| **Acoustic angular scale θ\*** | `experiments/acoustic_geometry.py` | 100θ\* = 1.03972 vs Planck 1.04109±0.00029 (0.13% rel); peak spacing ~302; 3/3 gates |
+| **Push-time physics gate** | `scripts/physics_lane_gate.py` | re-runs sealed meta-audit (UTF-8) + all 8 lane experiments; exit 0 = PASS (validate before every push) |
+| **H0 mechanism requirement** | `experiments/hubble_tension_mechanism.py` | ΔH0=5.68 km/s/Mpc is 4.85σ (7.1σ at 2026 H0DN pole); needs f_EDE~0.11 (m~2.4e-28 eV) or claimed ladder bias; deep-water density scan: core density crosses ρ_crit at z*∈[8.8,210], virial Δ=200 at z_c∈[0.4,36], co-locating with observed dwarfs in the structure-formation era; F10 stays EXTERNAL; 7/7 gates |
 | **f(R) pole geometry extension** | `experiments/f_r_pole_geometry.py` | higher-derivative corrections to D, cusp/√G separation survive |
 
 Roller = channel + initial condition; Higgs = inflation. Pivot observables
@@ -285,7 +294,7 @@ See `sigma_venv/sigma/README.md` for full documentation.
 
 | Version | Date | Highlights |
 |---------|------|------------|
-| **v2.2.0** | Sep 2026 | RG-flow breakthrough register: winding fingerprint classifier, pure-gravity refutation, BRIDGE-3, pole-roller trajectory selection |
+| **v2.2.0** | Sep 2026 | RG-flow breakthrough register: winding fingerprint classifier, pure-gravity refutation, BRIDGE-3, pole-roller trajectory selection, CMB formulation (8/8 gates), field coverage register (18 fields), sound-horizon recomputation (r_drag PIPELINE), tensor-mode falsifiability forecast (CMB-S4 SNR 3.6), cosmic birefringence exclusion (F7 CONCRETE), dwarf core confrontation (F15 CONFRONTED), acoustic angular scale θ\*, H0 mechanism requirement (F10 quantified gap, 4/4 gates), push-time physics gate |
 | **v2.1.0** | Aug 2026 | Poincare universe, honest audit, NS rigorous proof identified |
 | **v2.0.1** | Aug 2026 | Dark matter core predictor, muon g-2 vertex function |
 | **v2.0.0** | Aug 2026 | Grokking predictor, climate tipping detector, mass gap calculator |

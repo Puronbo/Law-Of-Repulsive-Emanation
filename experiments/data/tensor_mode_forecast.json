@@ -1,0 +1,69 @@
+{
+  "prediction": {
+    "r": 0.0035671819262782403,
+    "A_t": 7.338791028870097e-12,
+    "A_s": 2.0573077517599172e-09,
+    "N_inflation": null,
+    "alpha_s": -0.0005714666447988847,
+    "n_t": -0.00044589774078478004,
+    "n_t_consistency": "single-field"
+  },
+  "instruments": [
+    {
+      "name": "BICEP2/Keck Array (BK18) + Planck",
+      "sigma_r": 0.011,
+      "year": 2021,
+      "doc": "null r<0.036 (BICEP/Keck 2018 x Planck)",
+      "snr": 0.32428926602529456,
+      "verdict": "sub-signal  "
+    },
+    {
+      "name": "Simons Observatory (baseline)",
+      "sigma_r": 0.003,
+      "year": 2028,
+      "doc": "CMB-S4 precursor; reference sensitivity",
+      "snr": 1.1890606420927468,
+      "verdict": "sub-signal  "
+    },
+    {
+      "name": "CMB-S4 (design)",
+      "sigma_r": 0.001,
+      "year": 2032,
+      "doc": "Stage-4 deep-wide; sigma_r=0.001 target",
+      "snr": 3.56718192627824,
+      "verdict": "DETECTION"
+    },
+    {
+      "name": "LiteBIRD (JAXA)",
+      "sigma_r": 0.001,
+      "year": 2030,
+      "doc": "L2 foreground-cleaned full-sky",
+      "snr": 3.56718192627824,
+      "verdict": "DETECTION"
+    }
+  ],
+  "forecast": {
+    "max_snr": 3.56718192627824,
+    "strongest": "CMB-S4 (design)",
+    "horizon": "2028-2032"
+  },
+  "gates": {
+    "G1 next-decade program reaches SNR>=3": {
+      "pass": true,
+      "detail": "strongest = CMB-S4 (design) @ SNR=3.57"
+    },
+    "G2 prediction not excluded by BK18 today": {
+      "pass": true,
+      "detail": "r=0.00357 < 0.036 (BK18 2-sigma null)"
+    },
+    "G3 n_t consistency well-defined (|n_t| < 1e-3)": {
+      "pass": true,
+      "detail": "n_t=-4.46e-04"
+    },
+    "G4 n_t = -r/8 holds to 1e-4": {
+      "pass": true,
+      "detail": "exact consistency relation"
+    }
+  },
+  "label": "falsifiability forecast; r from cmb_formulation.json"
+}

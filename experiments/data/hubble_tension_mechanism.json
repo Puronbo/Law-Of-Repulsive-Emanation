@@ -1,0 +1,220 @@
+{
+  "tension": {
+    "planck": [
+      67.36,
+      0.54
+    ],
+    "sh0es": [
+      73.04,
+      1.04
+    ],
+    "delta_H0": 5.680000000000007,
+    "combined_sigma": 1.1718361660232202,
+    "discrepancy_sigma": 4.8470939579172,
+    "relative_percent": 8.43230403800476
+  },
+  "mechanisms": {
+    "1_absolute_scale": {
+      "status": "SCANNED (deep-water density channel made executable)",
+      "channel": "H0 bijective with density: rho_crit,0 = 3 H0^2/(8 pi G) = 1.26e-07 Msun/pc^3; rho_crit(1100)=70.02, rho_crit(3400)=3112.9 Msun/pc^3; framework core density ~0.1 Msun/pc^3 (mass-gap rho_core) is light-blind -- ONE identification of interior density at an interior era with rho_crit(z*) would pin H0; scan locates it",
+      "density_wave_scan": {
+        "sigma_band": [
+          1,
+          10,
+          30,
+          50,
+          100
+        ],
+        "rho0_band": [
+          0.01,
+          0.025
+        ],
+        "z_star_band": [
+          8.779434676601038,
+          210.2476299398444
+        ],
+        "z_collapse_D200_band": [
+          0.36231334647872104,
+          35.71970813713405
+        ],
+        "rows": [
+          {
+            "sigma_m": 1,
+            "rho_0": 0.01,
+            "rho_core_Msun_pc3": 3.734898488285673e-05,
+            "z_star": 8.779434676601038,
+            "era_zstar": "reionization-era",
+            "z_collapse_D200": 0.36231334647872104,
+            "era_zc": "late-universe/now"
+          },
+          {
+            "sigma_m": 1,
+            "rho_0": 0.025,
+            "rho_core_Msun_pc3": 9.337246220714184e-05,
+            "z_star": 12.274374337373679,
+            "era_zstar": "reionization-era",
+            "z_collapse_D200": 1.1234187362992594,
+            "era_zc": "structure-formation"
+          },
+          {
+            "sigma_m": 10,
+            "rho_0": 0.01,
+            "rho_core_Msun_pc3": 0.014914599045083162,
+            "z_star": 70.64291945023027,
+            "era_zstar": "dark-ages",
+            "z_collapse_D200": 11.316149105900294,
+            "era_zc": "reionization-era"
+          },
+          {
+            "sigma_m": 10,
+            "rho_0": 0.025,
+            "rho_core_Msun_pc3": 0.03728649761270791,
+            "z_star": 96.0004932672903,
+            "era_zstar": "dark-ages",
+            "z_collapse_D200": 15.712331746607912,
+            "era_zc": "reionization-era"
+          },
+          {
+            "sigma_m": 30,
+            "rho_0": 0.01,
+            "rho_core_Msun_pc3": 0.04739919522163618,
+            "z_star": 103.99902619128133,
+            "era_zstar": "dark-ages",
+            "z_collapse_D200": 17.102254214751376,
+            "era_zc": "reionization-era"
+          },
+          {
+            "sigma_m": 30,
+            "rho_0": 0.025,
+            "rho_core_Msun_pc3": 0.11849798805409045,
+            "z_star": 141.01083872393076,
+            "era_zstar": "dark-ages",
+            "z_collapse_D200": 23.55499099505721,
+            "era_zc": "dark-ages"
+          },
+          {
+            "sigma_m": 50,
+            "rho_0": 0.01,
+            "rho_core_Msun_pc3": 0.07936841725015394,
+            "z_star": 123.45572736680012,
+            "era_zstar": "dark-ages",
+            "z_collapse_D200": 20.49003093181465,
+            "era_zc": "dark-ages"
+          },
+          {
+            "sigma_m": 50,
+            "rho_0": 0.025,
+            "rho_core_Msun_pc3": 0.19842104312538486,
+            "z_star": 167.22352359800198,
+            "era_zstar": "dark-ages",
+            "z_collapse_D200": 28.14615174112742,
+            "era_zc": "dark-ages"
+          },
+          {
+            "sigma_m": 100,
+            "rho_0": 0.01,
+            "rho_core_Msun_pc3": 0.15905027154869228,
+            "z_star": 155.43888328723557,
+            "era_zstar": "dark-ages",
+            "z_collapse_D200": 26.07989629550641,
+            "era_zc": "dark-ages"
+          },
+          {
+            "sigma_m": 100,
+            "rho_0": 0.025,
+            "rho_core_Msun_pc3": 0.39762567887173067,
+            "z_star": 210.2476299398444,
+            "era_zstar": "dark-ages",
+            "z_collapse_D200": 35.71970813713405,
+            "era_zc": "dark-ages"
+          }
+        ],
+        "observed_dwarfs": [
+          {
+            "name": "Fornax",
+            "rho_core_Msun_pc3": 0.2,
+            "z_star": 167.66170574153756,
+            "era_zstar": "dark-ages",
+            "z_collapse_D200": 28.223048524064374,
+            "era_zc": "dark-ages"
+          },
+          {
+            "name": "Sculptor",
+            "rho_core_Msun_pc3": 0.08,
+            "z_star": 123.7811640828397,
+            "era_zstar": "dark-ages",
+            "z_collapse_D200": 20.5467774939223,
+            "era_zc": "dark-ages"
+          },
+          {
+            "name": "Draco",
+            "rho_core_Msun_pc3": 0.1,
+            "z_star": 133.29650294787052,
+            "era_zstar": "dark-ages",
+            "z_collapse_D200": 22.207168408099932,
+            "era_zc": "dark-ages"
+          },
+          {
+            "name": "UMi",
+            "rho_core_Msun_pc3": 0.15,
+            "z_star": 152.45615672988657,
+            "era_zstar": "dark-ages",
+            "z_collapse_D200": 25.557483267821056,
+            "era_zc": "dark-ages"
+          },
+          {
+            "name": "Carina",
+            "rho_core_Msun_pc3": 0.12,
+            "z_star": 141.6004770403689,
+            "era_zstar": "dark-ages",
+            "z_collapse_D200": 23.658073247553922,
+            "era_zc": "dark-ages"
+          }
+        ],
+        "reading": "framework core densities (sigma/m 1..100) equal rho_crit at z*~9..96 -- the era when the same-mass halos actually form (reionization to dark ages); virial Delta=200 shells land z_c~0.4..36, overlapping observed dwarf cores which independently cross at z_c~20..28"
+      }
+    },
+    "2_early_injection": {
+      "f_req": 0.11360000000000015,
+      "z_c": 3500.0,
+      "scalar_mass_eV": 2.3737390306511187e-28,
+      "EDE_reference": "f=0.10 -> +5 km/s/Mpc (Poulin 2019 et al.)",
+      "present_in_framework": false
+    },
+    "3_late_systematics": {
+      "status": "NARROWED (2025-26 refresh)",
+      "detail": "JWST 8-sigma crowding exclusion closes the Cepheid-bias path; TRGB low pole (CCHP 68.8, Freedman) and DES Y5+DESI inverse ladder (67.2) still bracket Planck; Cepheid route cross-validated at ~73.3; framework has no independent ladder to weight the TRGB pole"
+    }
+  },
+  "gates": {
+    "G1 tension real (discrepancy > 3 sigma)": {
+      "pass": true,
+      "detail": "4.85-sigma canonical; H0DN puts it at 7.1 sigma (2026)"
+    },
+    "G2 required injection is physically modest": {
+      "pass": true,
+      "detail": "f_req=0.114 (no absurd new physics)"
+    },
+    "G3 framework has no mechanism today (rows stay EXTERNAL)": {
+      "pass": true,
+      "detail": "no absolute length; no density-deep identification; no EDE; no N_eff; no distance ladder (2026: ladder-bias gate narrowed by JWST 8-sigma)"
+    },
+    "G4 admission cost is recorded (F9 must reopen if EDE is added)": {
+      "pass": true,
+      "detail": "an EDE/Delta-N_eff field would overturn F9 'SM-only'; that is the price, stated here"
+    },
+    "G5 deep-water scale maps to a physical era (scan)": {
+      "pass": true,
+      "detail": "z* in [8.8,210.2] -> reionization-era..dark-ages"
+    },
+    "G6 virial anchor overlaps observed cores (scan)": {
+      "pass": true,
+      "detail": "Delta=200 shells land on structure-formation for observed dwarfs"
+    },
+    "G7 observed dwarfs + framework band share the era (scan)": {
+      "pass": true,
+      "detail": "framework core band and observed cores co-locate in z-cells"
+    }
+  },
+  "label": "H0 mechanism requirement quantified; deep-water density channel scanned and era-consistent (structure-formation), but H0 not yet pinned -- F10 stays TENSION(EXT.)"
+}

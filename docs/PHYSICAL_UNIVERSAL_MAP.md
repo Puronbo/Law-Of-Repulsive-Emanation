@@ -325,8 +325,17 @@ as filed there; no claim is added in this section.
 |---|---|---|
 | §2 wound-up spring (low-entropy start) | recombination glow + reionization second dawn (GENESIS.md:342, 358) | INVESTIGATION: N = 3.7-7.9 e-folds cannot place CMB pivot modes beyond the horizon (REFEREE-2) |
 | §3 maximal-entropy boundary | horizon entropy S_dS = 3.40e122 k_B is the exact one-number inverse of the CC gap 2.77e-122 up to factor 3*pi (BRIDGE-3: S_dS x Lambda_tilde = 3pi) | CONCRETE (bridge3_cc_entropy_confluence.py) |
-| §3 Bekenstein bound | entropy floor of the radiation field, S_CMB ~ 10^89-90 k_B (FLOOR-6) | INVESTIGATION |
+| §3 Bekenstein bound | entropy floor of the radiation field, S_CMB ~ 10^89-90 k_B (FLOOR-6) | CONCRETE (cmb_formulation.py: S_CMB = 5.275e89 k_B, N_gamma = 1.465e89, N_b = 8.94e84 via eta) |
 | measured temperature | T_CMB = 2.72548 +/- 0.00057 K (Fixsen 2009) vs GENESIS.md:335 2.725 K | reconciled (0.84 sigma) |
+| emitter (inflation lane) | NGFP -> pole crash -> ridge eject lam = 0.36952 -> Higgs plateau N=58 -> (n_s, r, alpha_s, A_s) -> sigma8 -> CMB bath -> CC identity | CONCRETE (cmb_formulation.py, 8/8 gates; field_coverage_register.py) |
+
+---
+
+Note 2026-09-20: section 10.6 rows now point to the full CMB formulation
+artifact (experiments/cmb_formulation.py, 8/8 gates PASS) and the field
+coverage register (17 fields, 8 passing a data referee). The "investigation"
+steady state is upgraded to a formulated, gated lane wherever a number is
+computed; every computed number still traces to the listed artifact.
 
 ---
 

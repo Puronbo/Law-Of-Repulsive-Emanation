@@ -1,0 +1,79 @@
+{
+  "chain": {
+    "ngfp": [
+      0.7012,
+      0.1715
+    ],
+    "ridge_eject_lambda": 0.36952,
+    "higgs_N": 58,
+    "annot": "NGFP -> pole crash -> ridge eject lam=0.36952 -> Higgs plateau N=58"
+  },
+  "primordial": {
+    "n_s": 0.9650713436385256,
+    "r": 0.0035671819262782403,
+    "alpha_s": -0.0005714666447988847,
+    "A_s_predicted": 2.0573077517599172e-09,
+    "lamb_H": 0.16,
+    "xi": 47000.0,
+    "A_t_tensor": 7.338791028870097e-12,
+    "xi_over_sqrt_lamb_required": 116271.82030041127,
+    "formula_As": "A_s = lamb_H * N^2 / (12*pi^2*xi^2)"
+  },
+  "structure": {
+    "sigma8_computed": 0.8138880304549205,
+    "source": "sigma8_confrontation.json"
+  },
+  "bath": {
+    "T_K": 2.72548,
+    "n_gamma_cm3": 410.7178068782908,
+    "s_kB_cm3": 1479.2292235577784,
+    "s_over_n_kB": 3.6015707105587524,
+    "S_CMB_kB": 5.275418963260049e+89,
+    "N_gamma": 1.4647550713898418e+89,
+    "eta": 6.104e-05,
+    "N_baryons": 8.940864955763594e+84,
+    "Y_p": 0.247,
+    "D_over_H": 2.55e-05
+  },
+  "cc_identity": {
+    "lambda_tilde": 2.7690171205167346e-122,
+    "S_dS_kB": 3.403654636490869e+122,
+    "S_dS_times_lambda_tilde": 9.42477796076938,
+    "three_pi": 9.42477796076938
+  },
+  "gates": {
+    "G1 n_s within 2sigma": {
+      "pass": true,
+      "detail": "n_s=0.96507 pull +0.04 sigma"
+    },
+    "G2 r below BK18 bound": {
+      "pass": true,
+      "detail": "r=0.00357 < 0.036"
+    },
+    "G3 alpha_s within 2sigma": {
+      "pass": true,
+      "detail": "alpha_s=-0.00057 pull +0.59 sigma"
+    },
+    "G4 A_s within 2sigma (lamb_H=0.16)": {
+      "pass": true,
+      "detail": "A_s=2.057e-09 pull -1.41 sigma"
+    },
+    "G5 sigma8 within 2sigma both": {
+      "pass": true,
+      "detail": "sigma8=0.814 Planck +0.48 sigma, local +1.80 sigma"
+    },
+    "G6 BRIDGE-3 identity exact": {
+      "pass": true,
+      "detail": "S_dS x Lambda_tilde = 3*pi"
+    },
+    "G7 BBN helium within 2sigma": {
+      "pass": true,
+      "detail": "Y_p=0.2470 pull +0.67 sigma"
+    },
+    "G8 amplitude calibration physical": {
+      "pass": true,
+      "detail": "xi/sqrt(lamb_H)=1.1627e+05 (BS ballpark ~1.2e5)"
+    }
+  },
+  "overall": "PASS"
+}

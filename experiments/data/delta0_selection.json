@@ -1,0 +1,558 @@
+{
+  "instrument": "THE_ENTROPY_CONDITION_THEOREM.md:251-256",
+  "mandate": "CMB_RECONCILIATION.md:108-115 (REFEREE-2)",
+  "gap": "THE_UNIVERSE_FROM_A_FIXED_POINT.md:515",
+  "T_cross": {
+    "0.1": 2.04,
+    "0.01": 2.055
+  },
+  "N_req": [
+    50,
+    55,
+    60
+  ],
+  "Q1_removable_values": {
+    "50": {
+      "1": {
+        "theta": 2.382,
+        "log10_d_star": -49.59859696281606,
+        "removable_value": 1.6659240798008505e+49,
+        "lhopital_rel_err": 5.033569038043224e-07,
+        "removable_positive": true,
+        "numeric_consistent": true
+      },
+      "3": {
+        "theta": 2.711,
+        "log10_d_star": -56.44911686238217,
+        "removable_value": 1.0374981830218144e+56,
+        "lhopital_rel_err": 5.151510818684354e-07,
+        "removable_positive": true,
+        "numeric_consistent": true
+      },
+      "4": {
+        "theta": 2.864,
+        "log10_d_star": -59.634920949414436,
+        "removable_value": 1.5064264614922734e+59,
+        "lhopital_rel_err": 5.192583933447387e-07,
+        "removable_positive": true,
+        "numeric_consistent": true
+      },
+      "5": {
+        "theta": 2.527,
+        "log10_d_star": -52.61782305836951,
+        "removable_value": 1.6414128024612482e+52,
+        "lhopital_rel_err": 4.939915052344525e-07,
+        "removable_positive": true,
+        "numeric_consistent": true
+      },
+      "6": {
+        "theta": 2.414,
+        "log10_d_star": -50.2649089287313,
+        "removable_value": 7.623802954659156e+49,
+        "lhopital_rel_err": 4.922881967433903e-07,
+        "removable_positive": true,
+        "numeric_consistent": true
+      },
+      "7": {
+        "theta": 2.507,
+        "log10_d_star": -52.20137807967248,
+        "removable_value": 6.341963609780446e+51,
+        "lhopital_rel_err": 4.902723948955571e-07,
+        "removable_positive": true,
+        "numeric_consistent": true
+      },
+      "8": {
+        "theta": 2.407,
+        "log10_d_star": -50.11915318618734,
+        "removable_value": 5.466093999528001e+49,
+        "lhopital_rel_err": 5.029083003897819e-07,
+        "removable_positive": true,
+        "numeric_consistent": true
+      }
+    },
+    "55": {
+      "1": {
+        "theta": 2.382,
+        "log10_d_star": -54.771044242283786,
+        "removable_value": 2.4780067505309017e+54,
+        "lhopital_rel_err": 4.950483247736092e-07,
+        "removable_positive": true,
+        "numeric_consistent": true
+      },
+      "3": {
+        "theta": 2.711,
+        "log10_d_star": -62.33597856458075,
+        "removable_value": 7.995562952252003e+61,
+        "lhopital_rel_err": 5.249633664110345e-07,
+        "removable_positive": true,
+        "numeric_consistent": true
+      },
+      "4": {
+        "theta": 2.864,
+        "log10_d_star": -65.854017930269,
+        "removable_value": 2.4948527421732745e+65,
+        "lhopital_rel_err": 5.193293029215725e-07,
+        "removable_positive": true,
+        "numeric_consistent": true
+      },
+      "5": {
+        "theta": 2.527,
+        "log10_d_star": -58.1051338372171,
+        "removable_value": 5.0411381042852074e+57,
+        "lhopital_rel_err": 5.299774190045001e-07,
+        "removable_positive": true,
+        "numeric_consistent": true
+      },
+      "6": {
+        "theta": 2.414,
+        "log10_d_star": -55.50684332530356,
+        "removable_value": 1.3307793694195742e+55,
+        "lhopital_rel_err": 5.094059725731734e-07,
+        "removable_positive": true,
+        "numeric_consistent": true
+      },
+      "7": {
+        "theta": 2.507,
+        "log10_d_star": -57.64525941032974,
+        "removable_value": 1.7624024033111607e+57,
+        "lhopital_rel_err": 5.080725049993436e-07,
+        "removable_positive": true,
+        "numeric_consistent": true
+      },
+      "8": {
+        "theta": 2.407,
+        "log10_d_star": -55.34588727589298,
+        "removable_value": 9.213214567683662e+54,
+        "lhopital_rel_err": 5.029166634868092e-07,
+        "removable_positive": true,
+        "numeric_consistent": true
+      }
+    },
+    "60": {
+      "1": {
+        "theta": 2.382,
+        "log10_d_star": -59.94349152175152,
+        "removable_value": 3.685952757469461e+59,
+        "lhopital_rel_err": 5.121073355140459e-07,
+        "removable_positive": true,
+        "numeric_consistent": true
+      },
+      "3": {
+        "theta": 2.711,
+        "log10_d_star": -68.22284026677931,
+        "removable_value": 6.16184471159491e+67,
+        "lhopital_rel_err": 5.056564435527411e-07,
+        "removable_positive": true,
+        "numeric_consistent": true
+      },
+      "4": {
+        "theta": 2.864,
+        "log10_d_star": -72.07311491112357,
+        "removable_value": 4.1318247947952906e+71,
+        "lhopital_rel_err": 5.184364775274943e-07,
+        "removable_positive": true,
+        "numeric_consistent": true
+      },
+      "5": {
+        "theta": 2.527,
+        "log10_d_star": -63.59244461606469,
+        "removable_value": 1.548243887727049e+63,
+        "lhopital_rel_err": 5.120386440984353e-07,
+        "removable_positive": true,
+        "numeric_consistent": true
+      },
+      "6": {
+        "theta": 2.414,
+        "log10_d_star": -60.748777721875804,
+        "removable_value": 2.3229531778368357e+60,
+        "lhopital_rel_err": 5.093108848710803e-07,
+        "removable_positive": true,
+        "numeric_consistent": true
+      },
+      "7": {
+        "theta": 2.507,
+        "log10_d_star": -63.089140740987006,
+        "removable_value": 4.897634900343562e+62,
+        "lhopital_rel_err": 5.072159944083993e-07,
+        "removable_positive": true,
+        "numeric_consistent": true
+      },
+      "8": {
+        "theta": 2.407,
+        "log10_d_star": -60.57262136559861,
+        "removable_value": 1.5529063839280504e+60,
+        "lhopital_rel_err": 5.061050902008372e-07,
+        "removable_positive": true,
+        "numeric_consistent": true
+      }
+    }
+  },
+  "Q2_lane_selection": {
+    "50": {
+      "LANE-1_W0": {
+        "1": {
+          "n_cap": 6.226000000000414,
+          "formal_d_star": 2.5200144854525684e-50,
+          "numerator_at_d_star": 43.77399999999959,
+          "quotient_growth": {
+            "1e-06": 1.737053507140386e+57,
+            "1e-08": 1.7370535071403858e+59
+          },
+          "regime": "POLE"
+        },
+        "3": {
+          "n_cap": 6.226000000000414,
+          "formal_d_star": 3.5553563618363113e-57,
+          "numerator_at_d_star": 43.77399999999959,
+          "quotient_growth": {
+            "1e-06": 1.2312127265181005e+64,
+            "1e-08": 1.2312127265181004e+66
+          },
+          "regime": "POLE"
+        },
+        "4": {
+          "n_cap": 6.226000000000414,
+          "formal_d_star": 2.3178165021563867e-60,
+          "numerator_at_d_star": 43.77399999999959,
+          "quotient_growth": {
+            "1e-06": 1.888587813542372e+67,
+            "1e-08": 1.8885878135423717e+69
+          },
+          "regime": "POLE"
+        },
+        "5": {
+          "n_cap": 6.226000000000414,
+          "formal_d_star": 2.410887480014969e-53,
+          "numerator_at_d_star": 43.77399999999959,
+          "quotient_growth": {
+            "1e-06": 1.8156799254574835e+60,
+            "1e-08": 1.8156799254574835e+62
+          },
+          "regime": "POLE"
+        },
+        "6": {
+          "n_cap": 6.226000000000414,
+          "formal_d_star": 5.433642626767283e-51,
+          "numerator_at_d_star": 43.77399999999959,
+          "quotient_growth": {
+            "1e-06": 8.056105821969139e+57,
+            "1e-08": 8.056105821969137e+59
+          },
+          "regime": "POLE"
+        },
+        "7": {
+          "n_cap": 6.226000000000414,
+          "formal_d_star": 6.289583980402667e-53,
+          "numerator_at_d_star": 43.77399999999959,
+          "quotient_growth": {
+            "1e-06": 6.959760794416982e+59,
+            "1e-08": 6.959760794416982e+61
+          },
+          "regime": "POLE"
+        },
+        "8": {
+          "n_cap": 6.226000000000414,
+          "formal_d_star": 7.600581387307168e-51,
+          "numerator_at_d_star": 43.77399999999959,
+          "quotient_growth": {
+            "1e-06": 5.759296265559549e+57,
+            "1e-08": 5.759296265559549e+59
+          },
+          "regime": "POLE"
+        }
+      },
+      "LANE-2_Wm1": {
+        "handoff_lambda0": 0.36951793388264403,
+        "cusp_lambda0": 0.3695,
+        "handoff_gap_pct": 0.004853554166181041,
+        "higgs_N": 58,
+        "ridge_eject_lambda": 0.36952,
+        "regime": "REMOVABLE (positive value)"
+      }
+    },
+    "55": {
+      "LANE-1_W0": {
+        "1": {
+          "n_cap": 6.226000000000414,
+          "formal_d_star": 1.694165204296941e-55,
+          "numerator_at_d_star": 48.77399999999959,
+          "quotient_growth": {
+            "1e-06": 2.878940015784366e+62,
+            "1e-08": 2.878940015784366e+64
+          },
+          "regime": "POLE"
+        },
+        "3": {
+          "n_cap": 6.226000000000414,
+          "formal_d_star": 4.613403443170042e-63,
+          "numerator_at_d_star": 48.77399999999959,
+          "quotient_growth": {
+            "1e-06": 1.0572238175312312e+70,
+            "1e-08": 1.0572238175312315e+72
+          },
+          "regime": "POLE"
+        },
+        "4": {
+          "n_cap": 6.226000000000414,
+          "formal_d_star": 1.3995295404450532e-66,
+          "numerator_at_d_star": 48.77399999999959,
+          "quotient_growth": {
+            "1e-06": 3.485028260603157e+73,
+            "1e-08": 3.4850282606031568e+75
+          },
+          "regime": "POLE"
+        },
+        "5": {
+          "n_cap": 6.226000000000414,
+          "formal_d_star": 7.849936845860751e-59,
+          "numerator_at_d_star": 48.77399999999959,
+          "quotient_growth": {
+            "1e-06": 6.213298394332686e+65,
+            "1e-08": 6.213298394332686e+67
+          },
+          "regime": "POLE"
+        },
+        "6": {
+          "n_cap": 6.226000000000414,
+          "formal_d_star": 3.1128391125102937e-56,
+          "numerator_at_d_star": 48.77399999999959,
+          "quotient_growth": {
+            "1e-06": 1.5668654317526443e+63,
+            "1e-08": 1.566865431752644e+65
+          },
+          "regime": "POLE"
+        },
+        "7": {
+          "n_cap": 6.226000000000414,
+          "formal_d_star": 2.2632920069463435e-58,
+          "numerator_at_d_star": 48.77399999999959,
+          "quotient_growth": {
+            "1e-06": 2.1550025295147826e+65,
+            "1e-08": 2.1550025295147824e+67
+          },
+          "regime": "POLE"
+        },
+        "8": {
+          "n_cap": 6.226000000000414,
+          "formal_d_star": 4.509337322915412e-56,
+          "numerator_at_d_star": 48.77399999999959,
+          "quotient_growth": {
+            "1e-06": 1.0816223428693474e+63,
+            "1e-08": 1.0816223428693473e+65
+          },
+          "regime": "POLE"
+        }
+      },
+      "LANE-2_Wm1": {
+        "handoff_lambda0": 0.36951793388264403,
+        "cusp_lambda0": 0.3695,
+        "handoff_gap_pct": 0.004853554166181041,
+        "higgs_N": 58,
+        "ridge_eject_lambda": 0.36952,
+        "regime": "REMOVABLE (positive value)"
+      }
+    },
+    "60": {
+      "LANE-1_W0": {
+        "1": {
+          "n_cap": 6.226000000000414,
+          "formal_d_star": 1.1389600163092071e-60,
+          "numerator_at_d_star": 53.77399999999959,
+          "quotient_growth": {
+            "1e-06": 4.721324649679442e+67,
+            "1e-08": 4.7213246496794425e+69
+          },
+          "regime": "POLE"
+        },
+        "3": {
+          "n_cap": 6.226000000000414,
+          "formal_d_star": 5.986317309261528e-69,
+          "numerator_at_d_star": 53.77399999999959,
+          "quotient_growth": {
+            "1e-06": 8.982818187202501e+75,
+            "1e-08": 8.982818187202501e+77
+          },
+          "regime": "POLE"
+        },
+        "4": {
+          "n_cap": 6.226000000000414,
+          "formal_d_star": 8.450552201850646e-73,
+          "numerator_at_d_star": 53.77399999999959,
+          "quotient_growth": {
+            "1e-06": 6.363371140198772e+79,
+            "1e-08": 6.363371140198772e+81
+          },
+          "regime": "POLE"
+        },
+        "5": {
+          "n_cap": 6.226000000000414,
+          "formal_d_star": 2.555967833207271e-64,
+          "numerator_at_d_star": 53.77399999999959,
+          "quotient_growth": {
+            "1e-06": 2.1038605925068735e+71,
+            "1e-08": 2.1038605925068735e+73
+          },
+          "regime": "POLE"
+        },
+        "6": {
+          "n_cap": 6.226000000000414,
+          "formal_d_star": 1.7832912478712063e-61,
+          "numerator_at_d_star": 53.77399999999959,
+          "quotient_growth": {
+            "1e-06": 3.015435648225829e+68,
+            "1e-08": 3.015435648225829e+70
+          },
+          "regime": "POLE"
+        },
+        "7": {
+          "n_cap": 6.226000000000414,
+          "formal_d_star": 8.14440307128113e-64,
+          "numerator_at_d_star": 53.77399999999959,
+          "quotient_growth": {
+            "1e-06": 6.602571057615993e+70,
+            "1e-08": 6.602571057615992e+72
+          },
+          "regime": "POLE"
+        },
+        "8": {
+          "n_cap": 6.226000000000414,
+          "formal_d_star": 2.6753378532062763e-61,
+          "numerator_at_d_star": 53.77399999999959,
+          "quotient_growth": {
+            "1e-06": 2.0099891284965668e+68,
+            "1e-08": 2.0099891284965665e+70
+          },
+          "regime": "POLE"
+        }
+      },
+      "LANE-2_Wm1": {
+        "handoff_lambda0": 0.36951793388264403,
+        "cusp_lambda0": 0.3695,
+        "handoff_gap_pct": 0.004853554166181041,
+        "higgs_N": 58,
+        "ridge_eject_lambda": 0.36952,
+        "regime": "REMOVABLE (positive value)"
+      }
+    }
+  },
+  "Q3_decade_check": {
+    "1": {
+      "theta": 2.382,
+      "log10_d_star": [
+        -49.59859696281606,
+        -54.771044242283786,
+        -59.94349152175152
+      ],
+      "in_decade": [
+        false,
+        true,
+        true
+      ]
+    },
+    "3": {
+      "theta": 2.711,
+      "log10_d_star": [
+        -56.44911686238217,
+        -62.33597856458075,
+        -68.22284026677931
+      ],
+      "in_decade": [
+        true,
+        true,
+        true
+      ]
+    },
+    "4": {
+      "theta": 2.864,
+      "log10_d_star": [
+        -59.634920949414436,
+        -65.854017930269,
+        -72.07311491112357
+      ],
+      "in_decade": [
+        true,
+        true,
+        false
+      ]
+    },
+    "5": {
+      "theta": 2.527,
+      "log10_d_star": [
+        -52.61782305836951,
+        -58.1051338372171,
+        -63.59244461606469
+      ],
+      "in_decade": [
+        true,
+        true,
+        true
+      ]
+    },
+    "6": {
+      "theta": 2.414,
+      "log10_d_star": [
+        -50.2649089287313,
+        -55.50684332530356,
+        -60.748777721875804
+      ],
+      "in_decade": [
+        true,
+        true,
+        true
+      ]
+    },
+    "7": {
+      "theta": 2.507,
+      "log10_d_star": [
+        -52.20137807967248,
+        -57.64525941032974,
+        -63.089140740987006
+      ],
+      "in_decade": [
+        true,
+        true,
+        true
+      ]
+    },
+    "8": {
+      "theta": 2.407,
+      "log10_d_star": [
+        -50.11915318618734,
+        -55.34588727589298,
+        -60.57262136559861
+      ],
+      "in_decade": [
+        true,
+        true,
+        true
+      ]
+    },
+    "_span_log10_d_star": [
+      -72.07311491112357,
+      -49.59859696281606
+    ],
+    "_overlap_decade": true
+  },
+  "Q4_winding_selector": {
+    "LANE-1": {
+      "W": 0,
+      "regime": "POLE",
+      "selected": false
+    },
+    "LANE-2": {
+      "W": -1,
+      "regime": "REMOVABLE positive",
+      "selected": true
+    },
+    "selector": "W=-1 ejector lane carries the removable value; W=0 lane caps at epsilon=1 and stays on the pole side",
+    "consistent": true,
+    "falsifiable": "any regulator realization that drives lower-ridge W away from -1 at release scale breaks the selection (ties to winding_classifier / R_trans)"
+  },
+  "gates": {
+    "G1 Q1 removable, positive, numeric-L'Hopital consistent (<=1e-3 rel err, all truncations)": true,
+    "G2 LANE-1 pole / LANE-2 removable lane separation": true,
+    "G3 selected d* overlaps the REFEREE-2 decade (10^-60..-72)": true,
+    "G4 winding selector consistent (W0 pole, W-1 removable)": true
+  },
+  "overall": true
+}

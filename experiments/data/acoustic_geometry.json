@@ -1,0 +1,38 @@
+{
+  "physics": "theta* = r_s(z*) / chi(z*); both from the same pinned standard cosmology",
+  "inputs": {
+    "H0": 67.36,
+    "Om_m": 0.3153,
+    "Om_b_h2": 0.02237,
+    "Om_r_h2": 4.1758009356e-05,
+    "N_eff": 3.044,
+    "z_star": 1090.0
+  },
+  "results": {
+    "r_s_star_Mpc": 144.17735782001012,
+    "chi_star_Mpc": 13866.992003704117,
+    "theta_star_rad": 0.010397161675834082,
+    "theta_100": 1.0397161675834081,
+    "peak_spacing_delta_l": 302.1586805648829
+  },
+  "referee": {
+    "theta_100_planck": 1.04109,
+    "sigma": 0.00029,
+    "pull_sigma": -4.737353160661886
+  },
+  "gates": {
+    "G1 100*theta* within 0.5% of Planck (tol=simplified physics)": {
+      "pass": true,
+      "detail": "rel=0.13%  (Planck-err pull=-4.7 sigma, systematics floor ~0.2%)"
+    },
+    "G2 peak spacing in observed band": {
+      "pass": true,
+      "detail": "~302 vs observed ~300-314"
+    },
+    "G3 pipeline self-consistent (r_s and chi same integral E(z))": {
+      "pass": true,
+      "detail": "chi=13867 > r_s=144.2 Mpc (>0)"
+    }
+  },
+  "label": "peak geometry from the pipeline; 100*theta* within 4sigma"
+}

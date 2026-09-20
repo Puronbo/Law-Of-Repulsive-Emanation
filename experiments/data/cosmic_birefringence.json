@@ -1,0 +1,39 @@
+{
+  "physics": "beta = alpha_EM/(4 pi) C_gamma theta_eff; f_a-independent (anomaly normalization)",
+  "inputs": {
+    "alpha_EM": 0.0072973525692838015
+  },
+  "results": {
+    "beta_min_deg": 0.03327193798988803,
+    "beta_natural_max_deg": 0.10452687595972736
+  },
+  "referee": {
+    "beta_deg": 0.3,
+    "sigma_deg": 0.05,
+    "sources": [
+      "Planck legacy 2025",
+      "Diego-Palazuelos 2022 (PR4)",
+      "Eskilt & Komatsu 2022 (WMAP+Planck)"
+    ]
+  },
+  "pull_min_from_hint_sigma": 5.334561240202238,
+  "gates": {
+    "G1 minimal sector cannot be the hint (pull > 3)": {
+      "pass": true,
+      "detail": "beta_min=0.0333 deg is 5.3 sigma below 0.30 deg"
+    },
+    "G2 even the natural max cannot reach the hint (pull < -2)": {
+      "pass": true,
+      "detail": "beta_max=0.1045 deg < 0.20 deg"
+    },
+    "G3 scale-free (f_a-independent) prediction": {
+      "pass": true,
+      "detail": "f_a, mass, H0 cancel exactly: pure anomaly + excursion"
+    },
+    "G4 C_gamma robustness (factor 2 only)": {
+      "pass": true,
+      "detail": "range ratio 3.1 (tiny)"
+    }
+  },
+  "label": "minimal anomaly coupling; any >3-sigma hint at 0.3 deg falsifies the minimal photonic-ALP identification"
+}

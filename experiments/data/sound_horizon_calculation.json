@@ -1,0 +1,34 @@
+{
+  "inputs": {
+    "H0": 67.36,
+    "Om_m": 0.3153,
+    "Om_b_h2": 0.02237,
+    "Om_r_h2": 4.1758009356e-05,
+    "N_eff": 3.044
+  },
+  "anchors": {
+    "z_recomb": 1090.0,
+    "z_drag": 1060.0,
+    "r_drag_planck": 147.09
+  },
+  "results": {
+    "r_star_Mpc": 144.17735782001012,
+    "r_drag_Mpc": 146.8344191287359,
+    "pull_vs_planck_sigma": -0.9830033510157731
+  },
+  "gates": {
+    "G1 r_drag within 2% of Planck": {
+      "pass": true,
+      "detail": "r_drag=146.83 vs 147.09 (-0.26 Mpc)"
+    },
+    "G2 r_star within 5% of literature": {
+      "pass": true,
+      "detail": "r_star=144.18 vs ~144.5"
+    },
+    "G3 monotone in z": {
+      "pass": true,
+      "detail": "sound horizon shrinks as the cutoff (z_cut) rises"
+    }
+  },
+  "label": "standard-cosmology recomputation; anchors are empirical"
+}
