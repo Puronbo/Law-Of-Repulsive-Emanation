@@ -380,6 +380,24 @@ Each experiment produces a JSON data file in `data/`. The files contain:
 
 ---
 
+## Cross-Domain Applications (physics fields using the Index mechanism)
+
+Mechanism II (Index: winding number; THE_0_OVER_0_ATLAS.md:35) is not only
+a mathematical taxonomy — the framework's own physical lanes run on it:
+
+| Physical framework | 0/0 mechanism | Artifact | Status |
+|---|---|---|---|
+| FRG pole-pair winding: lower ridge W=-1, upper ridge W=0 (ray-pole); the winding number of the flow around the pole pair in (G, lam) is the argument-principle index Z-P of Mechanism II | Index (winding number over the pole-pair contour) | `experiments/flow_pole_regulator_robust.py`, `experiments/winding_phase_diagram.py`, `experiments/winding_classifier.py` | CONCRETE (fingerprint + R_trans(A,B) phase map + regulator classifier) |
+| Release-lane selection: the CMB's e-fold demand is a positive-removable-value demand (THE_ENTROPY_CONDITION_THEOREM.md:251); LANE-2 (W=-1) REMOVABLE/SELECTED, LANE-1 (W=0, epsilon=1 cap) POLE; d* spans 10^-72.1..10^-49.6 | Index (winding) + removable-value sign (selection criterion) | `experiments/delta0_selection.py` + `data/delta0_selection.json` | CONCRETE (4/4 gates PASS; closes the "no selection principle" gap, ledger F19) |
+| Higgs handoff: ridge eject lambda_0 = 0.36952 = universal cusp handoff 0.3695 (0.005%); Higgs plateau N=58 | Index (winding at lower-ridge ejector) + removable 0/0 of the cusp | `experiments/cusp_to_higgs_initial.py`, `experiments/trajectory_selection.py` | CONCRETE (framework synthesis) |
+
+Cross-reference: AUDIT.md (Poincare-Hopf index = chi(M); argument-principle
+zero counts), WHERE_0_OVER_0_SOLVES.md, THE_UNIVERSAL_ZERO.md §2.2 (Index
+mechanism). The winding number in the physics lane and the residue-theorem
+family above are the same object: an integer removable value of a 0/0.
+
+---
+
 *This atlas is a reference document. For the philosophical interpretation, see ON_THE_NATURE_OF_ZERO.md. For the synthesis, see THE_UNIVERSAL_ZERO.md. For the epistemology, see REMOVABLE_SINGULARITIES.md.*
 
 *All 55 experiments verified computationally. 149 regression tests passing.*

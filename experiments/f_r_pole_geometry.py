@@ -21,6 +21,8 @@ import json
 import os
 import sys
 
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
 PI = math.pi
 
 # EH reference values for comparison
@@ -47,29 +49,17 @@ def beta_fR(G, lam, A, B, C_grav=0.0):
   return bG, bl
 
 def pole_fR(G, A, B, C_grav=0.0):
-  """f(R) pole location with higher-derivative correction."""
-  if A - B * lam - C_grav * G <= 0:
-    return None, None
-  disc = (A - B * lam - C_grav * G) ** 2 + 4 * C_grav * G  # special form for fR
-  # Actually solve quadratic in lam for given G
-  # D_fR = (1-2λ)^2 - (A-Bλ)G - C_grav G^2 = 0
-  # => 4λ^2 - 4λ + 1 - AG + BλG + C_grav G^2 = 0
-  # => 4λ^2 + (BG - 4)λ + (1 + AG + C_grav G^2) = 0
-  a = 4.0
-  b = B * G - 4.0
-  c = 1.0 + A * G + C_grav * G ** 2
-  sol = (-b + math.sqrt(b**2 - 4*a*c)) / (2*a)
-  lo = (1 - disc**0.5) / 2  # wrong, need proper formula
-  # Actually solve properly:
-  # (1-2λ)^2 - (A-Bλ)G - C_grav G^2 = 0
-  # 1 - 4λ + 4λ^2 - AG + BλG - C_grav G^2 = 0
-  # 4λ^2 + (BG - 4)λ + (1 - AG - C_grav G^2) = 0
-  # λ = [4 - BG ± sqrt((BG-4)^2 - 16(1 - AG - C_grav G^2))] / 8
-  disc = (B*G - 4)**2 - 16*(1 - A*G - C_grav*G**2)
+  """f(R) pole location with higher-derivative correction.
+
+  D_fR = (1-2λ)^2 - (A-Bλ)G - C_grav G^2 = 0
+  => 4λ^2 + (BG - 4)λ + (1 - AG - C_grav G^2) = 0
+  => λ = [4 - BG ± sqrt((BG-4)^2 - 16(1 - AG - C_grav G^2))] / 8
+  """
+  disc = (B * G - 4.0) ** 2 - 16 * (1 - A * G - C_grav * G ** 2)
   if disc < 0:
     return None, None
-  lam1 = (4 - B*G + math.sqrt(disc)) / 8
-  lam2 = (4 - B*G - math.sqrt(disc)) / 8
+  lam1 = (4 - B * G + math.sqrt(disc)) / 8
+  lam2 = (4 - B * G - math.sqrt(disc)) / 8
   return lam1, lam2
 
 def main():

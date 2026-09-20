@@ -1,0 +1,16 @@
+{
+  "eh_reference": {
+    "A": 0.12820814860180457,
+    "B": 0.039788735772973836,
+    "C_grav": 0.0
+  },
+  "extensions_tested": [
+    "EH (C_grav=0)",
+    "f(R) n=4 (C_grav=0.01)",
+    "f(R) n=6 (C_grav=0.1)",
+    "f(R) n=8 (C_grav=0.5)"
+  ],
+  "cusp_survives": true,
+  "separation_law_modified": true,
+  "conclusion": "f(R) truncations generalize the pole geometry but modify the \u221aG separation law and winding fingerprint"
+}
