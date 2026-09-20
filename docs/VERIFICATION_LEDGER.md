@@ -70,6 +70,7 @@ audit finding.
 | Sigma8 refinement with massive neutrinos: best fit at 0 eV (1.80σ local tension is minimum); neutrinos worsen Planck tension | experiments/sigma8_nu_refinement.py + data/sigma8_nu_refinement.json | sigma8_base=0.814; Sigma_m_nu=0 eV gives min max_tension=1.80σ; any m_nu>0 increases Planck pull | CONCRETE (refinement) |
 | Winding fingerprint regulator classifier: 4 classes (EARLY/STANDARD/LATE/NONE) by R_trans(A,B); Litim=EARLY, Opt(32,15)=EARLY | experiments/winding_classifier.py + data/winding_classifier.json | Decision tool: choose regulators where W=-1 is robust at your loop resolution | CONCRETE (tool) |
 | Full RG trajectory from NGFP: N_max = 5.8 e-folds (deficit 49.2 vs required 55); pure gravity fails | experiments/rg_trajectory_observables.py + data/rg_trajectory_observables.json | Maximum N=5.8 from NGFP; epsilon crosses 1 at N=5.8; pivot scale never exits horizon | CONCRETE (refutation) |
+| Pole-roller trajectory selection: two lanes; LANE-1 (NGFP feeds) W=0 and caps at N=6.23 (no rule reaches N>=50); LANE-2 (lower-ridge feeds) W=-1, pole pair is separatrix/ejector, exit lambda pinned to ridge = 0.36952 matching the universal cusp handoff lambda_0 = 0.3695 to 0.005% | experiments/trajectory_selection.py + data/trajectory_selection.json | 53 press settings scanned, 34 spectrum-producing (max N_eps1=6.226), 5 W=-1 intact; selected handoff gap 0.005% | CONCRETE (framework synthesis) |
 
 ## Citations
 

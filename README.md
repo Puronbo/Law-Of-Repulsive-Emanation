@@ -90,6 +90,27 @@ is strictly below `D` by cross-multiplied integers.
 
 ---
 
+## RG-Flow Breakthrough Register (branch: `breakthrough-register`)
+
+The pole geometry of the Litim (A,B) = (29/72π, 9/72π) truncation (cusp at
+(G=0, λ=1/2), √G separation law, lower-ridge winding fingerprint W = −1)
+carries the cosmological/CMB lane. Six concrete artifacts, one honest
+refutation, no validator or test count changed:
+
+| Artifact | Experiment + Data | Gate Results |
+|----------|-------------------|--------------|
+| **Winding fingerprint regulator classifier** (EARLY/STANDARD/LATE/NONE by R_trans) | `experiments/winding_classifier.py` | Litim = EARLY; tool for choosing regulators where W=−1 is robust |
+| **Full RG trajectory from NGFP** — pure gravity fails | `experiments/rg_trajectory_observables.py` | N_max = 5.8 e-folds < 55 required; CONCRETE (refutation) |
+| **BRIDGE-3: CC gap × horizon entropy confluence** | `experiments/bridge3_cc_entropy_confluence.py` | Λ̃ = 2.7690e-122 (0.04% off 2.77e-122); S_dS = 3.4037e122 k_B; S_dS × Λ̃ = 3π to 1e-9; 6/6 gates PASS |
+| **Pole-roller trajectory selection** (the two pole ridges are the rolls, RG flow is the material through the nip) | `experiments/trajectory_selection.py` | LANE-1 (W=0) caps at N=6.23; LANE-2 (W=−1) is a separatrix/ejector ejecting at λ=0.36952, matching the universal cusp handoff λ₀=0.3695 to 0.005% |
+| **Universal cusp → Higgs handoff** | `experiments/cusp_to_higgs_initial.py` | λ₀=0.3695; Higgs plateau supplies N=58 (χ²=0.345) |
+| **f(R) pole geometry extension** | `experiments/f_r_pole_geometry.py` | higher-derivative corrections to D, cusp/√G separation survive |
+
+Roller = channel + initial condition; Higgs = inflation. Pivot observables
+(n_s, r, α_s) live in `experiments/higgs_inflation_spectrum.py`.
+
+---
+
 ## NS 3D Global Regularity (Rigorous Proof)
 
 The Fourier bound ||u||_inf^2 <= 4EZ is a pure analytic result:
@@ -264,6 +285,7 @@ See `sigma_venv/sigma/README.md` for full documentation.
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| **v2.2.0** | Sep 2026 | RG-flow breakthrough register: winding fingerprint classifier, pure-gravity refutation, BRIDGE-3, pole-roller trajectory selection |
 | **v2.1.0** | Aug 2026 | Poincare universe, honest audit, NS rigorous proof identified |
 | **v2.0.1** | Aug 2026 | Dark matter core predictor, muon g-2 vertex function |
 | **v2.0.0** | Aug 2026 | Grokking predictor, climate tipping detector, mass gap calculator |

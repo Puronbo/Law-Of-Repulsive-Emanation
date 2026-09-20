@@ -29,6 +29,10 @@ Universals/*.dot
 .DS_Store
 Thumbs.db
 
+# Lean build artifacts
+.lake/
+lake-manifest.json
+
 # Databases & local runtime state
 *.db
 *.sqlite
