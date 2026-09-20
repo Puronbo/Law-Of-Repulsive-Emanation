@@ -1,0 +1,106 @@
+{
+  "release": {
+    "G_c": 0.6,
+    "lam_lo": 0.36951693388264406,
+    "annulus": [
+      0.003938,
+      0.222368
+    ]
+  },
+  "P1_field_blur_scan": [
+    {
+      "s": 0.0001,
+      "W": -1.0000000000000002
+    },
+    {
+      "s": 0.0003,
+      "W": 1.000000000000001
+    },
+    {
+      "s": 0.001,
+      "W": -1.9999999999999978
+    },
+    {
+      "s": 0.003,
+      "W": -1.999999999999996
+    },
+    {
+      "s": 0.006,
+      "W": -1.000000000000001
+    },
+    {
+      "s": 0.01,
+      "W": -1.000000000000002
+    },
+    {
+      "s": 0.02,
+      "W": -0.9999999999999983
+    },
+    {
+      "s": 0.03,
+      "W": -4.311418568206101e-15
+    },
+    {
+      "s": 0.05,
+      "W": 3.0000000000000004
+    },
+    {
+      "s": 0.08,
+      "W": 1.90833280887811e-15
+    },
+    {
+      "s": 0.12,
+      "W": -1.0000000000000007
+    },
+    {
+      "s": 0.18,
+      "W": 0.9999999999999979
+    },
+    {
+      "s": 0.25,
+      "W": -0.9999999999999963
+    },
+    {
+      "s": 0.4,
+      "W": 0.9999999999999996
+    }
+  ],
+  "P1_min_dip": 0.020073491573332436,
+  "P1_distinct_integers": [
+    -2,
+    -1,
+    0,
+    1,
+    3
+  ],
+  "P2_probe_undersampling": [
+    {
+      "R": 0.05,
+      "n_crit": 13,
+      "step_crit": 0.0241660973353061,
+      "step_over_R": 0.483321946706122
+    },
+    {
+      "R": 0.1,
+      "n_crit": 10,
+      "step_crit": 0.06283185307179587,
+      "step_over_R": 0.6283185307179586
+    }
+  ],
+  "combined_domain": {
+    "R05_n3600": -0.9999999999999999,
+    "R05_n12": -7.067899292141149e-17,
+    "R30_n3600": 7.067899292141149e-17,
+    "R30_n12": 0.0
+  },
+  "selector_domain": "W=-1 iff R in (R_trans, R_flip_back) AND n > ~12.6 (step < ~0.5 R)",
+  "gates": {
+    "G1 blur consistency: W=-1 at s->0": true,
+    "G2 P1 EXCLUDED: blur axis chaotic (>=4 integers), no 0/0 (min|beta| >= 1e-3)": true,
+    "G3 P2 NOMINAL: sharp -1->0 flip, step_crit/R ~ 0.5 at R in {0.05,0.10}": true,
+    "G4 combined domain: annulus+fine -> -1, else 0 (all four)": true,
+    "G5 P2 step_crit lies inside the annulus band (< R_flip_back)": true
+  },
+  "overall": true,
+  "ties_to": "delta0_selection.py LANE-1/2; F20 annulus; THE_ENTROPY_CONDITION_THEOREM.md:224-231,251-256"
+}
