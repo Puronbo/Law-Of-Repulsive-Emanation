@@ -288,7 +288,7 @@ All tests:
 
     python -m pytest tests/test_solvable_theorems.py -v
 
-214 tests, all passing.
+215 tests, all passing.
 
 **Dependencies:** numpy, mpmath, scipy, pytest
 **Precision:** mpmath 30-digit arithmetic

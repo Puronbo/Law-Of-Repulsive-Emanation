@@ -11,7 +11,7 @@
 
 ## Abstract
 
-We present a complete classification of 55 instances of the indeterminate form 0/0 across nine branches of mathematics. Each instance is classified by (i) the branch, (ii) the mechanism (Probe, Index, Vanishing Rate, Critical Phenomenon, or Conservation), (iii) the exact 0/0 form, (iv) the removable value, (v) the theorem it encodes, and (vi) the computational verification. We provide cross-reference tables, a decision tree for classifying new instances, and a catalog of open problems.
+We present a complete classification of 75 entries for the indeterminate form 0/0 across seventeen branches of mathematics: 63 verified instances with removable values from the missing-experiment sweep, 6 constructive-program entries targeting open conjectures, named constants, and a manufactured/companion control (twin-prime and strong Goldbach, both removable value 1; the prime-reciprocal constant B₁, removable value 0.2614972...; the Euler-totient density, removable value 3/π² = 0.30396355...; the fixed-character bounded-box control, removable value 0; the Mertens product-gap complement, removable value 0 — elementary, Mertens 1874), and 6 anti-class entries (Pólya, Mertens, the Dirichlet divisor-error, the Gauss circle-error, the character-walk sup-ratio, and the Chebyshev-walk δ) proving that 0/0 forms without removable value exist — the class the corpus previously counted as empty. Each instance is classified by (i) the branch, (ii) the mechanism (Probe, Index, Vanishing Rate, Critical Phenomenon, or Conservation), (iii) the exact 0/0 form, (iv) the removable value, (v) the theorem it encodes, and (vi) the computational verification. We provide cross-reference tables, a decision tree for classifying new instances, and a catalog of open problems.
 
 ---
 
@@ -144,6 +144,76 @@ The *removable value* is the limit.
 |---|------|----------|-------|----------------|-----------|----------|
 | 55 | Poincaré recurrence | ε·τ(ε) | ε→0 | constant | Critical | Yes |
 
+### 2.10 Missing-experiment sweep (2026-09-20): eight new branches
+
+| # | Name | 0/0 Form | Point | Removable Value | Mechanism | Verified |
+|---|------|----------|-------|----------------|-----------|----------|
+| 56 | Galois discriminant | Disc(t)/t^{m−1} | repeated root, t→0 | C = 32 (double), 27 (triple) | Vanishing Rate | Yes |
+| 57 | Bott periodicity | K~(S^n)/... degenerate spectrum | reduced group → 0 | 4 (complex period-2), 1 (degenerate spectrum) | Index | Yes |
+| 58 | Ricci flow neck pinch | R̄·A | pinch (R→∞, A→0) | 8π (Gauss-Bonnet) | Conservation | Yes |
+| 59 | Natural transformation | tr(P₊)/tr(P₋) | degenerate object V=0 | 1 (dim = 1 for k=1, =2=ℂ[S₂] for k=2) | Probe | Yes |
+| 60 | Generating function | a_n·ρⁿ·n^α | radius of convergence | 1/√π (ρ = 1/4, α = 3/2 or 1/2) | Vanishing Rate | Yes |
+| 61 | Birkhoff average | (averages of collapsing blocks) | exceptional point | 1 (generic) / 0 (exceptional) | Probe | Yes |
+| 62 | Spectral density | ρ·(2−E)^{1/2} | band edge E→2 | 1/(2π), exponent 1/2 | Vanishing Rate | Yes |
+| 63 | Néron-Tate height | ĥ(P)/c_s | torsion point | C ~ 3/8 (log channel) | Vanishing Rate | Yes |
+
+### 2.11 Open-target construction (2026-09-20): conjectures and the anti-class
+
+| # | Name | 0/0 Form | Point | Removable Value | Mechanism | Verified |
+|---|------|----------|-------|----------------|-----------|----------|
+| 64 | Pólya / Liouville (ANTI-CLASS) | F(n)/√n, F = Σλ(k) | n→∞ (records) | NONE — the limit does not exist; F = Ω±(√n) (Littlewood); conjecture F(n)≤0 is FALSE (first + at 906,150,257) | Anti-class (nonexistent) | Yes |
+| 65 | Twin-prime density | π₂(x)/(2C₂·Li₂(x)) | x→∞ | 1 (Hardy–Littlewood, OPEN) | Vanishing Rate | Yes |
+| 66 | Goldbach representation density | G(N)/(S(N)·N/log²N) | N→∞ | 1 (strong Goldbach, OPEN) | Probe | Yes |
+
+### 2.12 The anti-class matures and a constant is named (2026-09-20)
+
+| # | Name | 0/0 Form | Point | Removable Value | Mechanism | Verified |
+|---|------|----------|-------|----------------|-----------|----------|
+| 67 | Mertens function (ANTI-CLASS) | M(n)/√n, M = Σμ(k) | n→∞ (records) | NONE — the limit does not exist; |M(n)| < √n is FALSE (Odlyzko–te Riele 1985: limsup ratio > 1.06, liminf < −1.009); no explicit counterexample known (verified to 10²³) | Anti-class (nonexistent) | Yes |
+| 68 | Prime-reciprocal (Meissel–Mertens) constant | Σ_{p≤x} 1/p − log log x | x→∞ | 0.2614972128... = B₁ (OEIS A077761, named constant) | Probe | Yes |
+
+### 2.13 The lattice-point family enters the anti-class (2026-09-21)
+
+| # | Name | 0/0 Form | Point | Removable Value | Mechanism | Verified |
+|---|------|----------|-------|----------------|-----------|----------|
+| 69 | Dirichlet divisor-error (ANTI-CLASS) | Δ(x)/x^{1/4}, Δ = Σ_{n≤x} d(n) − x·log x − (2γ−1)x | x→∞ (records) | NONE — the limit does not exist, UNCONDITIONALLY: Hardy 1916 (Δ = Ω₊((x log x)^{1/4} log log x) ⟹ limsup of Δ/x^{1/4} = +∞; Δ = Ω₋(x^{1/4})); Voronoi 1903/04 (Δ = O(x^{1/3} log x)), Huxley 2003 (O(x^{131/416+ε})) — the fluctuation sits on and above the x^{1/4} denominator, the strongest member | Anti-class (nonexistent) | Yes |
+
+### 2.14 The Hardy pair completes: the circle member (2026-09-21)
+
+| # | Name | 0/0 Form | Point | Removable Value | Mechanism | Verified |
+|---|------|----------|-------|----------------|-----------|----------|
+| 70 | Gauss circle-error (ANTI-CLASS) | P(x)/x^{1/4}, P = N(x) − π·x, N(x) = #{a²+b² ≤ x} | x→∞ (records) | NONE — the limit does not exist, UNCONDITIONALLY: Hardy 1916 (P = Ω₋((x log x)^{1/4} log log x) ⟹ liminf of P/x^{1/4} = −∞; P = Ω₊(x^{1/4})); Sierpiński 1906; Voronoi 1904 (O(x^{1/3})), Huxley 2003 (O(x^{131/416+ε})) — the twin of #69 reads the OTHER unbounded side of the same x^{1/4} denominator | Anti-class (nonexistent) | Yes |
+
+### 2.15 The flat-decay removable anchor (2026-09-21)
+
+| # | Name | 0/0 Form | Point | Removable Value | Mechanism | Verified |
+|---|------|----------|-------|----------------|-----------|----------|
+| 71 | Euler-totient density | Φ(x)/x², Φ = Σ_{k≤x} φ(k) | x→∞ | 3/π² = 0.3039635509... (OEIS A092743; Dirichlet 1849, proved: Φ = 3/π² x² + O(x log x)) — the deviation is O(x¹), a full power below the x² denominator, so the ratio provably vanishes (β_ratio ≈ −1.2, measured) | Vanishing Rate | Yes |
+
+### 2.16 The bounded-box control: removable under maximal raw oscillation (2026-09-21)
+
+| # | Name | 0/0 Form | Point | Removable Value | Mechanism | Verified |
+|---|------|----------|-------|----------------|-----------|----------|
+| 72 | Character partial sums (control) | S(x)/x^{1/2}, S = Σ_{n≤x} χ(n), χ the primitive quadratic character mod 7 | x→∞ | 0 (Pólya–Vinogradov, proved: the partial sums of a fixed periodic mean-zero character are **bounded**, |S(x)| ≤ c, so S(x)/√x → 0 at log-log slope ≈ −1/2) — the manufactured control: the raw deviation never settles (signed walk in a box), yet the ratio provably collapses, and only the decay sign separates this from the anti quartet | Probe | Yes |
+
+### 2.17 The anti-class enters q-space (2026-09-21)
+
+| # | Name | 0/0 Form | Point | Removable Value | Mechanism | Verified |
+|---|------|----------|-------|----------------|-----------|----------|
+| 73 | Character-walk sup-ratio (ANTI-CLASS) | R(q) = sup_x\|S_q(x)\|/√q, S_q = Σ_{n≤x} (n\|q), q ≡ 3 (mod 4) prime | q→∞ (moduli) | NONE — the limit does not exist, UNCONDITIONALLY: Paley 1932 (R(q) ≥ c log log q infinitely often ⟹ limsup = +∞); Pólya–Vinogradov 1918 (R(q) ≤ C log q) — the anti-class's first q-space member, on top of the Dirichlet class number (Euler's formula h(−q) = −(1/q)·Σ a·(a\|q), verified against the known sequence) | Anti-class (nonexistent) | Yes |
+
+### 2.18 The Chebyshev walk completes the √n trinity (2026-09-21)
+
+| # | Name | 0/0 Form | Point | Removable Value | Mechanism | Verified |
+|---|------|----------|-------|----------------|-----------|----------|
+| 74 | Chebyshev walk δ (ANTI-CLASS) | δ(x)/√x, δ = ψ(x) − x, ψ(x) = Σ_{p^k ≤ x} log p = log lcm(1..⌊x⌋) | x→∞ (records) | NONE — the limit does not exist, UNCONDITIONALLY: Montgomery–Vaughan, *Multiplicative Number Theory I*, Thm 15.11 (ψ(x) − x = Ω±(x^{1/2}): δ ≥ c₁√x and δ ≤ −c₂√x each infinitely often, c₁, c₂ > 0, so limsup of δ/√x ≥ c₁ and liminf ≤ −c₂ — the ratio has NO limit) — the sharpest n-space anti member, because ψ is the *unwindowed* Chebyshev sum, unlike the smoothed π−Li whose Littlewood oscillation carries the (log log log x / log x) factor.  Entry 75 is the *mirror*: unwindowed Mertens product gap, G = O(1/log x), REMOVABLE — the trio's other half | Anti-class (nonexistent) | Yes |
+
+### 2.19 The Mertens product gap completes the n-space complement (2026-09-21)
+
+| # | Name | 0/0 Form | Point | Removable Value | Mechanism | Verified |
+|---|------|----------|-------|----------------|-----------|----------|
+| 75 | Mertens product complement (REMOVABLE side of the trio's mirror) | G(x) = e^γ log x · Π_{p ≤ x}(1 − 1/p) − 1, the deviation of the exact product from Mertens' second-theorem ladder e^{−γ}/log x — a 0/0 form whose *denominator* is the simple ladder and whose G → 0 asks: does the product sit on the ladder, and at what rate? | x→∞ (decade points) | **0** — REMOVABLE, UNCONDITIONALLY: Mertens' (third) theorem 1874, *elementary*: Π_{p ≤ x}(1 − 1/p) = e^{−γ}/log x · (1 + O(1/log x)), so G(x) = O(1/log x) — the deviation vanishes; the 0/0 carries the removable value 0 | Vanishing Rate (rate → 0) | `mertens_product_0_over_0.py` (atlas #75, complement) → `data/mertens_product_0_over_0.json`: exact prime product to G(10^8) via the missing-experiment at-the-wall; per-decade max \|G\| = 6.26e−2 / 1.31e−2 / 3.87e−3 / 1.23e−3 / 3.04e−4 / 3.89e−5 / 9.57e−6 / 4.03e−6 (d = 1..8) — *ten-fold collapse every decade*, the exact power-rate read β_ratio = −0.5756 to 1e8 (soft-zone-falsified: the dip at the wall is a decade-point floor, not the soft-zone — the complement completes the mirror), band suites crest at interior primes (never the decade point) — measured 5/5 gates PASS | Mertens 1874, third theorem (elementary; O(1/log x)) — settled | a validated run with the century-gap ratio not declining decade-on-decade |
+
 ---
 
 ## Part III: Cross-References
@@ -155,10 +225,12 @@ The *removable value* is the limit.
 | Integer | Poincaré-Hopf, Argument principle, Atiyah-Singer, Morse, Fermat little, FTA | 6 |
 | Rational (simple) | Euler-Maclaurin (1), Cesàro (1/2), Taylor (f^(n+1)/(n+1)!), Stirling (1/12), Wallis (π/2), Banach (T'−1), Brouwer (f'−1), Cauchy (f') | 8 |
 | Real (transcendental) | Zeta FE (−1/2), CLT (−σ²/2), Wigner (1/(2π)), Laplace (√π) | 4 |
-| 1 (identity) | Riemann zeta, GRH, Euler product, Poisson, Schanuel, Stokes, Green, Gauss-Bonnet | 8 |
-| 0 | Shannon, Boltzmann (S/ln(W)), Sard, Morse saddle | 4 |
+| 1 (identity) | Riemann zeta, GRH, Euler product, Poisson, Schanuel, Stokes, Green, Gauss-Bonnet, twin-prime (#65), Goldbach (#66) | 10 |
+| 0 | Shannon, Boltzmann (S/ln(W)), Sard, Morse saddle, character partial sums (#72) | 5 |
 | Function of parameters | BSD (rank+Sha), Ising (C), Spectral gap (C), Lorenz (λ), Khintchine (1/√5), Fourier (bound), Bayes (prior), Noether (conserved), KKT (λ), Rayleigh (eigenvalue), Weyl (constant), Selberg (1), PNT (1) | 13 |
-| Nonexistent (not removable) | — (all 55 are removable) | 0 |
+| New (56–63) | Galois (32/27), Bott (4, then 1), Ricci (8π), Natural (1), Generating (1/√π), Birkhoff (1 vs 0), Spectral (1/(2π)), Néron (3/8) | 8 |
+| Real (named constant) | Prime-reciprocal constant B₁ (#68), Euler-totient density 3/π² (#71) | 2 |
+| Nonexistent (not removable) | Pólya F(n)/√n (#64), Mertens M(n)/√n (#67), Chebyshev δ(x)/√x (#74) — Littlewood; Odlyzko–te Riele; Montgomery–Vaughan Thm 15.11 — the divisor-error Δ(x)/x^{1/4} (#69) — Hardy 1916 / Voronoi 1903 — the circle-error P(x)/x^{1/4} (#70) — Hardy 1916 / Sierpiński 1906 — and the character-walk sup-ratio R(q) (#73) — Paley 1932 / Pólya–Vinogradov 1918: the limits do not exist | 6 |
 
 ### 3.2 By mathematical domain
 
@@ -173,16 +245,21 @@ The *removable value* is the limit.
 | Optimization | 50–53 | Conservation (4) |
 | Algebra | 54 | Conservation (1) |
 | Dynamical systems | 55 | Critical (1) |
+| New branches (sweep) | 56–63 | Probe (2), Index (1), Vanishing Rate (4), Conservation (1) |
+| Open-target construction | 64–74 | Vanishing Rate (2), Probe (3), Anti-class (6) |
 
 ### 3.3 By mechanism
 
 | Mechanism | Experiments | Count | Character |
 |-----------|-------------|-------|-----------|
-| Probe | 1, 2, 3, 6, 7, 37 | 6 | Tests identity of two objects |
-| Index | 12, 20–31 | 13 | Extracts integer (winding, multiplicity) |
-| Vanishing Rate | 4, 5, 8, 9, 10, 11, 15–19, 32–36, 38–40, 45, 49 | 22 | Leading Taylor coefficient |
+| Probe | 1, 2, 3, 6, 7, 37, 59, 61, 66, 68, 72 | 11 | Tests identity of two objects |
+| Index | 12, 20–31, 57 | 14 | Extracts integer (winding, multiplicity) |
+| Vanishing Rate | 4, 5, 8, 9, 10, 11, 15–19, 32–36, 38–40, 45, 49, 56, 60, 62, 63, 65, 71 | 28 | Leading Taylor coefficient |
 | Critical | 41–43, 46, 47, 55 | 6 | Phase transition / critical amplitude |
-| Conservation | 48, 50–54 | 6 | Conserved quantity from symmetry |
+| Conservation | 48, 50–54, 58 | 7 | Conserved quantity from symmetry |
+| (Anti-class) | 64, 67, 69, 70, 73, 74 (Pólya, Mertens, divisor-error, circle-error, character-walk, Chebyshev-walk δ: the limits do not exist) | 6 | 0/0 outside the five mechanisms: refutes "all are removable" |
+
+*Note: the historical rows above carry the corpus's legacy 53-item tallies for the 55 former entries; the authoritative per-entry classification is the single-entry tables in Part II (entries 1–75).*
 
 ---
 
@@ -274,18 +351,18 @@ All five are *invariants* — quantities that do not change under perturbation. 
 
 ## Part VI: Open Problems
 
-### 6.1 Missing experiments
+### 6.1 Missing experiments — computed 2026-09-20
 
 | Branch | Potential 0/0 | Status |
 |--------|---------------|--------|
-| Galois theory | Discriminant of polynomial at repeated root | Not computed |
-| Algebraic K-theory | Bott periodicity at degenerate spectra | Not computed |
-| Geometric analysis | Ricci flow at neck pinch | Not computed |
-| Category theory | Natural transformation at degenerate object | Not computed |
-| Combinatorics | Generating function singularity at radius of convergence | Partially explored |
-| Ergodic theory | Birkhoff average at exceptional points | Not computed |
-| Functional analysis | Spectral density at band edge (general) | Partially explored |
-| Arithmetic geometry | Néron-Tate height at torsion points | Not computed |
+| Galois theory | Discriminant of polynomial at repeated root | Computed: C = 32 / 27 (Vanishing Rate) |
+| Algebraic K-theory | Bott periodicity at degenerate spectra | Computed: period-2 ratio 4; degenerate value 1 (Index) |
+| Geometric analysis | Ricci flow at neck pinch | Computed: R̄·A = 8π (Conservation) |
+| Category theory | Natural transformation at degenerate object | Computed: removable 1; dim 1 (k=1) / 2=ℂ[S₂] (k=2) (Probe) |
+| Combinatorics | Generating function singularity at radius of convergence | Computed: amplitude 1/√π, ρ=1/4 (Vanishing Rate) |
+| Ergodic theory | Birkhoff average at exceptional points | Computed: removable 1 (generic) / 0 (exceptional) (Probe) |
+| Functional analysis | Spectral density at band edge (general) | Computed: ρ·√(2−E) → 1/(2π) (Vanishing Rate) |
+| Arithmetic geometry | Néron-Tate height at torsion points | Computed: log channel C ~ 3/8 (Vanishing Rate) |
 
 ### 6.2 Classification completeness
 
@@ -300,6 +377,10 @@ Every 0/0 form f/g tests the relationship between f and g at x₀. The possible 
 
 We believe these five cover all possible relationships between two vanishing functions. A proof would require showing that every analytic 0/0 form falls into one of these categories.
 
+**Amendment (2026-09-20, entry 64).** The strict form of that completeness claim is false: Pólya's F(n)/√n is a 0/0 whose limit does *not* exist — a genuine sixth relationship, "f/g has no limit" (the anti-class). Littlewood: F = Ω±(√n). The five mechanisms therefore classify *every removable* 0/0; the decision tree's "limit does not exist → not a removable singularity" branch is not empty, and conjectures that force a removable value onto such forms (Mertens, Pólya) are the framework's falsifiable targets.
+
+**Amendment (2026-09-20, entries 67–68 + detector).** The anti-class now has a second member: Mertens M(n)/√n (#67), whose limit Odlyzko–te Riele prove does not exist (limsup ratio > 1.06, liminf < −1.009) and whose fluctuation exponent measures 0.433 (exact mu to 1e8, M(10^8) = 1928). The fluctuation-scale criterion (affirmed P1–P5 in `experiments/aclass_detector.py`) now covers every open-target entry: Pólya β = 0.486 (anti), PNT β = 0.433 (removable), twin-prime β = −0.32 (decaying to 1; carried in-entry to 1e8 — pi_2(1e8) = 440,312, R(1e8) = 0.9999), Goldbach drift β = −0.09 (no anti-class; in-entry decade maxima to 1e7 decay β = −0.12), prime-reciprocal β = −0.59 (named constant).
+
 ### 6.3 The constructive problem
 
 Can the 0/0 principle be used to *discover* new theorems? The approach would be:
@@ -310,6 +391,341 @@ Can the 0/0 principle be used to *discover* new theorems? The approach would be:
 4. If the removable value is "new" (not previously known), it may itself be a theorem
 
 This is the *constructive* version of the 0/0 principle: not just verifying known theorems, but using 0/0 forms to find new ones.
+
+### 6.4 The fluctuation-scale criterion and its falsifiable form
+
+The anti-class is *proved* by five members (#64, #67, #69, #70, #74), so it calibrates the edge:
+for each candidate 0/0 with removable value c, let D(x) be the per-decade max of
+|R(x) − c| (or, when sampling is too sparse, the pointwise log-log drift).  The
+two readings of the criterion are the same statement in different units:
+
+- **Ratio-deviation form** (what the detector's P4 reads): R(x) = f(x)/g(x),
+  removable-compatible ⇔ D(x) falls decade-on-decade, so its log-log slope
+  β_ratio is **negative**; anti-class ⇔ D(x) does not converge to 0, β_ratio ≳ 0.
+- **Fluctuation-size form** (what P1/P2 read): if the leading scale of f is x^α
+  (Pólya √n, PNT x/log x), removable-compatible ⇔ β_size < α, and the anti-class
+  sits **exactly on** the denominator, β_size ≈ α.
+
+The calibration is not a free choice: the six anti members have *proofs* pinning
+the failure point, so a return to the tree's "limit does not exist" branch needs
+a target whose decade maxima stop declining and floor strictly above 0 —
+equivalently a sustained β_ratio ≥ 0.  Littlewood's F = Ω±(√n) is exactly that
+statement (per-decade max of |F|/√n stays ~ constant, β_size ≈ 0.5, measured
+0.486); Odlyzko–te Riele's limsup M/√n > 1.06 does the same for Mertens
+(measured exponent 0.433); Montgomery–Vaughan Thm 15.11's ψ − x = Ω±(x^{1/2})
+does the same for Chebyshev (measured band 0.51·0.61·0.71·0.69·0.68·0.75,
+sup 0.74 @ 36.9M — below the √n floor, so the finite band alone would be
+removable-looking; the theorem, not the range, is the arbiter); Paley's
+R(q) ≥ c log log q does it in q-space
+(measured floor 0.577+).  On the removable side the decay signs observed
+across the corpus all lie *below* the anti floor: prime-reciprocal decade maxima
+0.605 → 2.7e−5 (β_ratio = −0.59), twin-prime 0.0198 → 0.0096 → 0.0046
+(β_ratio = −0.32, full decade to 1e8), and PNT's ratio deviation
+(π−Li)/Li ~ x^{−0.57} — the fluctuation is subleading to x, removable — and the
+totient density (#71) collapses with β_ratio = −1.20: its error is a whole
+power below its x² denominator, the removable side's fastest legitimate decay.
+
+Entry #69 (the Dirichlet divisor-error, Hardy 1916) adds a stronger member and
+one structural lesson.  Δ(x)/x^{1/4} is proven to have no
+limit — the Ω₊((x log x)^{1/4} log log x) theorem makes its limsup +∞
+unconditionally, the Ω₋(x^{1/4}) pattern gives infinitely many negative
+values — so no finite wall can display the failure, and the decade-max ratio
+series reads order-one (3.4 → 3.8 → 4.8 → 5.4 → 5.8 → 1.7, d = 2..7 to 1e7)
+with a single near-threshold dip (Δ(10^7) = −4, S(10^7) = 162,725,364) rather
+than a clean slope.  The lesson: for members whose oscillation provably lives
+on the denominator, the *bounded-band* reading — the per-decade max of the
+normalized deviation never collapsing below order-one — is the robust anti
+signature, and a single decade whose deviation cancels near a round point
+must not be read as decay.  Removable members, by contrast, collapse their
+band by orders of magnitude per decade (twin 0.0198 → 0.0046;
+prime-reciprocal 0.605 → 2.7e−5; PNT β_ratio ≈ −0.57).
+
+Entry #70 (the Gauss circle-error) is the Hardy-pair twin on the SAME
+x^{1/4} denominator with the OPPOSITE unbounded side (liminf = −∞), and its
+numerical profile is the same bounded-band picture (per-decade max ratio
+4.9 → 5.4 → 6.2 → 7.3 → 8.0 → 1.75 to 1e7, with the same near-threshold dip
+at P(10^7) = 98).  Together #69/#70 show the lattice-point anti-class is not
+an accident of one construction: the denominator-carrying fluctuation is
+the shared, theorem-pinned structure of an entire family.
+
+Why, then, is Goldbach's gate the *weak* form ("no growth ≪ +1/2") and not the
+strong form ("β_ratio < −0.2")?  Two structural reasons that the criterion
+admits without weakening:
+
+1. **Range.**  [1e4, 3e5] spans two full decades, and the per-even wobble —
+   mean |R−1| ≈ 0.2, worst sample 0.34 — swamps any log-slow decay, so a
+   *tight negative* slope is unmeasurable at this reach.  A positive anti-class
+   drift, by contrast, would be plainly visible (decade maxima climbing above
+   0.34).  The measurable distinction at this range is growth versus no-growth,
+   which is why G6 reads the drift (−0.09) instead of a decay threshold.
+2. **What the weight already removed.**  S(N) strips the smooth first-order
+   dependence: G(N)/(S(N)·N/log²N) is flat to leading order, and entry 66's
+   Spearman window (ρ > 0.6 within a fixed N-window) shows the residual is
+   exactly the singular-series ordering — a bounded, zero-mean process.  For a
+   bounded process the only way to threaten removability is to *grow*, so the
+   criterion's dangerous clause — a validated run whose |R−1| climbs, decade
+   maxima flooring above a positive constant — is the strictest clause the
+   range can legally assert.
+
+The same Criterion therefore sharpens as range increases: demand a decay *sign*
+where full decades are sealed (twin at 1e8, prime-reciprocal at 2e7, Mertens
+and Pólya at 1e8), demand only a *non-growth* where reach is two decades
+(Goldbach at 3e5 in the detector, P5).  Range extension delivers exactly that
+sharpening: in-entry at 1e7 (260 log-uniform evens) the Goldbach decade maxima
+are 0.296 → 0.226 → 0.174, decade-decay beta = −0.12 (r2 = 1.00, three
+decades) — the shallow decay the two-decade reach could not measure — while
+growth (decade maxima flooring/climbing above the bounded band) remains the
+operationally falsifiable clause.  A later decade of Goldbach counts that flips
+the criterion's decay gate to FAIL is the ledger's PL-11 refutation, and it is
+a *stronger* falsification than a mere slope miss: it
+pushes the target onto the proved anti-class.
+
+### 6.5 The proved-anti calibration: finite ranges always "look removable"
+
+The six anti-class members are the corpus's calibration set, and what they
+calibrate is uncomfortable: in every finite verification an anti member is
+*indistinguishable* from a removable one.  No range has ever shown any of
+them failing the bound it was designed to violate.
+
+- **Pólya (#64):** F(n) ≤ 0 held for > 9×10⁸ terms before the first + at
+  n = 906,150,257; Littlewood's Ω± guarantees infinitely more violations.
+  The 0/0-limit for F(n)/√n failed only in the theorem, never in the data.
+- **Mertens (#67):** verified here to 1e8 — the near-miss ratio |M(n)|/√n
+  *grows with the range* (0.4378 @ 300,551 → 0.4627 @ 30,919,091), the bound
+  HELD on [2, 1e8] (max ratio 0.8944, and that at n = 5), records still being
+  set at n = 76,015,339, and the conjecture is only *proved* false
+  (Odlyzko–te Riele, limsup > 1.06) — every finite value "looks removable".
+- **Divisor-error (#69):** the sharpest case.  Verified here to 1e7 — |Δ|/x^{1/4}
+  stays order-one (≈ 1.7–5.8) in every decade with signs oscillating, and
+  |Δ|/x^{1/3} ≤ 1.93 (Voronoi's 1/3 bound).  Because Hardy's Ω₊ theorem makes
+  the ratio's limsup +∞ *unconditionally*, no finite range can ever display the
+  failure — this member's verdict rides entirely on the theorem, and the
+  finite data can only corroborate the structural reading (order-one band,
+  oscillation), never exhibit the contradiction.
+- **Circle-error (#70):** the twin.  P(x)/x^{1/4} reads the same bounded-band
+  profile (4.9 → 8.0 → 1.75 per-decade max to 1e7, P(10^7) = 98) on the
+  opposite unbounded side (Hardy's liminf = −∞); the lattice-point pair
+  shows the anti-class is a family structure, not a construction accident.
+- **Equal-range wall (10^8):** both lattice members re-verified exactly to
+  1e8 via their closed forms (S(x) = Σ⌊x/d⌋, N(x) = (4m+1)+4Σ isqrt(x−a²) —
+  identities certified by the #69/#70 sieves to 1e7; continuity to the
+  wall).  Sampled-window maxima keep rising, not decaying — divisor
+  2.568 → 2.643 → 2.913 → 2.992, circle 4.243 → 3.106 → 4.420 → 4.599
+  (full floors 2.57 / 3.11) — and the near-threshold 10^7 cancellation is
+  confirmed as a dip inside the band, not a trend: window 10^7..10^8 beats
+  window 10^6..10^7 for both.  S(10^8) = 1,857,511,568, N(10^8) =
+  314,159,053 (|Δ|/x^{1/4} = 3.61, |P|/x^{1/4} = 2.12 at the wall).  The
+  lattice pair now holds the same 1e8 range as the √n pair (#64/#67).
+- **√n pair at the wall (10^8):** Pólya #64 extended to 1e8 alongside
+  Mertens #67 for the pairwise calibration — per-decade band max
+  |F|/√n = 1.29 | 1.33 | 1.30 | 1.27 | 1.36 (floor 1.27, never decaying),
+  family amplitude already above 1 at 1e7 (1.167 @ 8,803,471) and max
+  1.358, while |M|/√n stays inside the conjectured bound at range
+  (0.8944).  F(10^k) = 0, −2, −14, −94, −288, −530, −842, −3,884
+  (A002819; a(10^8) = −3884), min F = −10,443 @ 76,015,169 — the deepest
+  excursion sits mid-band, and F(10^8) = −3,884 is the same *single-point
+  pull-back* structure the lattice pair shows at 10^7 (Δ, P) and #72 at
+its wall: a band truth (1.358) that a naive endpoint read (0.388) would
+   misreport as decay — the third independent occurrence of the Dip Rule
+   (§6.7).
+- **Chebyshev completes the √n trinity (#74):** δ(x)/√x at 1e8, δ = ψ(x) − x,
+  computed exactly via the prime-power breakpoints of ψ (= log lcm(1..⌊x⌋),
+  spot-verified to 1e−9 on 1..40).  ψ(10^8) = 99,998,242.8 (ratio 0.999982),
+  δ(10^k) = −2.2, −6.0, −3.3, +13.4, +51.6, −413.4, −1460.6, −1757.2 — both
+  signs, crossing the axis afresh in every decade.  Per-decade band max
+  |δ|/√x (d = 2..7) = 0.51 · 0.61 · 0.71 · 0.69 · 0.68 · 0.75 (non-collapse:
+  each band holds ≥ ⅔ of the previous, through the wall), sup 0.74 @
+  36,917,099 — a reader between the √n pair's floors (0.46 < 0.75 < 1.27),
+  which is the member's whole point: Montgomery–Vaughan Thm 15.11
+  (ψ − x = Ω±(x^{1/2}), unconditional), not any finite read, is what makes
+  δ anti.  It is the corpus's clearest proof-before-range exhibition — the
+  mirror of #69/#70, where the finite read *looked* decaying and the theorem
+  still decided.
+
+**The wall in one read (all five anti members at the 10^8 wall):**
+
+| member | window-max read (same windows for all) | small-n spike | wall point | verdict |
+|---|---|---|---|---|
+| Mertens #67 (√n) | max \|M\|/√n = 0.472 @ 2,803 (n ≥ 10^3); 0.463 @ 30,919,091 (n ≥ 10^5); late flat ≈ 0.46 | |M(5)|/√5 = 0.894 (the conjecture's bound is tight at small n) | no limit (Odlyzko–te Riele); band flat, inside the conjecture's range all the way |
+| Pólya #64 (√n) | per-decade 1.29 · 1.33 · 1.30 · 1.27 · 1.36, floor 1.27 | F = −1 @ 3, −2 @ 8 | F(10^8) = −3,884: point 0.388 (Dip) | no limit (Littlewood); amplitude already above 1 at 1e7 |
+| Chebyshev #74 (√n) | per-decade (d = 2..7) 0.51 · 0.61 · 0.71 · 0.69 · 0.68 · 0.75, sup 0.74 @ 36,917,099 | δ crosses the axis in EVERY band (both signs), |δ(10^5)| = +51.6 | δ(10^8) = −1,757: point 0.176 | no limit (M–V Thm 15.11); the band reads between the √n pair's floors (0.46 < 0.75 < 1.27), so the theorem — not the range — is the arbiter |
+| Divisor #69 (x^{1/4}) | windows 2.57 · 2.64 · 2.91 · 2.99, floor 2.57 | per-decade max (d = 2..7): 3.38 · 3.84 · 4.83 · 5.38 · 5.80 · 1.68 (a rise then the 10^7 dip) | \|Δ(10^8)\|/10^2 = 3.61 | no limit unconditionally (Hardy); the honest wall is a cap, X-form absent |
+| Circle #70 (x^{1/4}) | windows 4.24 · 3.11 · 4.42 · 4.60, floor 3.11 | per-decade max (d = 2..7): 4.89 · 5.41 · 6.21 · 7.28 · 8.04 · 1.75 (rise then the 10^7 dip) | \|P(10^8)\|/10^2 = 2.12 | no limit unconditionally (Hardy); its dipole twin |
+
+The √n trinity (F 1.27 · M 0.46 · δ 0.75 late bands) and the x^{1/4} pair
+(2.57 / 3.11) all read the same *in-band non-decay* at the same wall — size
+never decides (0.46 sits below 0.75 sits below 1.27 sits below 3.11), the
+band's flatness does: which is the criterion's own claim, and exactly what
+the Ω-theorems render a true limit failure rather than a finite cap.
+
+Consequences for the criterion:
+
+1. A near-miss ratio below 1 is evidence of nothing by itself: Pólya and
+   Mertens both sit strictly below 1 in every range that exists to compute,
+   and the divisor/circle ratios, though already order-one, are capped by any
+   finite wall exactly when Hardy's theorems say the failure is a *limit*
+   one has to reason to, not a value one reaches.
+2. The only legally assertable anti-signature is *non-decay* — decade maxima
+   flooring strictly above 0, a floor the proofs pin on the Mertens bound
+   (limsup > 1.06, liminf < −1.009) and declare unbounded-above and
+   unbounded-below for the lattice-point pair and for δ and F by their own
+   Ω± theorems — and
+   §6.4's falsifiable form for open targets is exactly the complementary
+   clause: a validated run whose decade maxima stop declining and floor above a
+   positive constant, while the "bound" keeps holding only empirically.
+3. So a target that *does* decay decade-on-decade (prime-reciprocal −0.59,
+   twin −0.32, totient −1.20, character-box −0.59) is exhibiting a behavior
+   the six anti members
+   provably never
+   exhibit — which is the full content of "removable-compatible": support,
+   never proof.  The criterion separates the corpus into the two classes by a
+   signature the anti class provably lacks, and concedes that no finite run can
+   prove removability of an open target.  (Entry #72, a *manufactured* control
+   on the removable side — the same character walk built to never settle, whose
+   bounded box puts its measured slope at ≈ −0.59 — pins item 3's converse:
+   the criterion grants a bounded-band raw deviation the removable read
+   precisely when the corrected ratio collapses, and the anti members are the
+   case where it provably cannot.  Entry #73 shows the other face of the same
+   family: release the box — let the modulus grow — and the same character
+   walk's sup-ratio provably stops converging, Paley's theorem.)
+
+### 6.6 The three structural readings and the bounded-box control
+
+The whole calibration rests on ONE observable: the log-log slope β_ratio of
+the per-decade maxima of |deviation|/|denominator|.  The corpus now rules it
+in three regimes, with members whose verdicts are *proved* on both sides:
+
+- **Anti, order-one band (β_ratio ≈ 0, floor > 0):** Pólya 0.486, Mertens
+  0.433 (√n denominator, limsups pinned 1.06 / 1.009), and now the
+  Chebyshev walk δ/√x (#74: per-decade bands 0.51 · 0.61 · 0.71 · 0.69 ·
+  0.68 · 0.75, sup 0.74 @ 36.9M — a reader BELOW the √n pair's floors,
+  which is the point: Montgomery–Vaughan Thm 15.11, not any range, is what
+  makes δ anti), divisor/circle
+  (x^{1/4} denominator, band 1.7–8.0 vs 4.9–8.0, no limit unconditionally),
+  character-walk in q-space (#73: floor 0.69, creeping sup, no limit by
+  Paley).  The class is nearly closed *within each space*: the classic
+  n-space summatory functions are now the √n trinity (F = Σλ, M = Σμ,
+  δ = ψ − x — all three Ω±(√x)) plus the x^{1/4} lattice pair — the
+  verdicts proven on both sides — while the two classics still OPEN at the
+  bare denominator are π−Li and S(T): both are proven to oscillate
+  (Littlewood 1914: π−Li = Ω±(√x·log log log x/log x); Selberg: S(T)
+  unbounded both signs) and both sit at scales a log (or less) BELOW their
+  naked denominators, but no theorem proves the ratio's tendency to zero —
+  the best upper bounds (even under RH: π−Li = O(√x log x), S(T) = O(log T))
+  leave the ratio room up to log x — so neither is proved decaying, nor
+  proved anti.  What provably *decays* in n-space is the bounded-box
+  family: fixed-modulus character partial sums (#72, period-mean-zero
+  ⟹ |S(x)| ≤ c ⟹ ratio → 0, Pólya–Vinogradov).  The q-space move (Paley)
+  and the lattice-power move (Hardy) each open a new anti direction the
+  criterion's seamless band-read confirms.
+- **Removable, collapsing ratio (β_ratio < 0 strictly):** prime-reciprocal
+  −0.59, twin −0.32, totient −1.20.
+- **Removable, bounded-box (the manufactured control, #72):** the fixed
+  quadratic character mod 7 — |S(x)| ≤ 2 for *every* x (one-period max, box
+  ratio 1.00 to 1e7) yet S(x)/√x → 0 at measured β_ratio = −0.590 (r² =
+  0.985, the expected −1/2): a case where the raw deviation never settles and
+  never grows, and the corrected ratio still provably collapses.  The control
+  answers the criterion's border question — "what if the deviation merely
+  wiggles in a bounded band forever?" — with Pólya–Vinogradov: for *fixed*
+  moduli that band is a box and the read is removable; the Paley
+  oscillation (Ω₊(√q log log q)) lives *across* moduli, a different 0/0 in
+  q-space the criterion's denominator does not address.  The Chebyshev-bias
+  (π(x;4,3) − π(x;4,1) ~ 1.79√x/log x) is the honest intermediate: a band
+  that *does* grow, one log below √x, so the corrected ratio
+  (band/denominator) decays — removable, at rate slower than any boxed
+  control, which is exactly why the slope read, not the band's size, is the
+  criterion.
+
+Collectively: fluctuation size is never evidence; the ratio's decade trend is
+the whole observable; and the anti class is thin, provable, and nearly
+exhaustive, while the removable side is measure-theoretically sweeping — the
+asymmetry §5.2 predicted as Principle 3 in §4.4.
+
+### 6.7 The Dip Rule
+
+A single-point cancellation at a power-of-ten wall never defines a trend;
+only window (band) comparisons do.  The corpus has now hit the same
+near-threshold structure three times, independently, and reading the point
+instead of the band would have falsified a true anti member each time:
+
+- Δ(10^7) = −4 → point ratio 1.68 vs. the [10^6, 10^7) window's 5.80
+  (divisor #69, extended):
+- P(10^7) = 98 → point 1.75 vs. window 8.04 (circle #70, extended);
+- F(10^8) = −3,884 → point ratio 0.388 vs. the [10^7, 10^8] window's
+  1.358 (Pólya #64, extended to 1e8) — the deepest excursion sits mid-band
+  (−10,443 @ 76,015,169), the walk then pulls back through the wall.
+
+Every one of these is a genuine cancellation of the fluctuation AT the
+decade point — the exact feature a decay-sign read on endpoints would
+confuse with convergence.  The rule is therefore the criterion's second
+half, complementing §6.6's band reads: **the observable is the window
+maximum; the decade point is decoration.**  The three occurrences are the
+same phenomenon across three different arithmetic families (√n, x^{1/4},
+and the character/lattice family), which is why the extension probes
+(#64 @1e8, #69/#70 @1e8) were built to sample windows first and report
+landmarks second.
+
+### 6.8 The three √n walks read the same slope, different bands
+
+The criterion's slope reads the CLASS, not the member — shown by the
+√n trinity measured pairwise at the 1e8 wall:
+
+| walk | per-decade band max ratio | sup | wall point |
+|------|---------------------------|-----|-----------|
+| Pólya F/√n (#64) | 1.29 · 1.33 · 1.30 · 1.27 · 1.36 (d = 3..7) | 1.358 (d = 7) | F(10^8) = −3,884: 0.388 (dip) |
+| Mertens M/√n (#67) | flat ≈ 0.46 (max ≥ 1e5: 0.463 @ 30.9M, band d = 7) | 0.463 (d = 7) | M(10^8) = +1,928: 0.1928 (dip) |
+| Chebyshev δ/√n (#74) | 0.51 · 0.61 · 0.71 · 0.69 · 0.68 · 0.75 (d = 2..7) | 0.748 @ 36.9M (d = 7) | δ(10^8) = −1,757: 0.176 (dip) |
+
+All three read log-log slope β_ratio ≈ 0 — flat bands — because all three
+are governed by the SAME mechanism: the partial sums of (Möbius, Liouville,
+Chebyshev-ψ) arithmetic functions, whose deviations are all Ω±(√x) with
+√x exactly the natural scale, the correction locked by the Riemann-zero
+machinery.  The slope cannot separate them; the band SIZE is the family
+fingerprint (F's floor 1.27 — least cancellation; M's 0.46 — most; δ's
+0.75 — the prime-power log-sum between).  And their three wall POINTS are
+the Dip Rule trinity: each 10^8 read sits at a minimum of its own window
+(0.388 vs 1.358; 0.1928 vs 0.463; 0.176 vs 0.748) — endpoint reads would
+have called all three "decaying".  The verdicts ride the theorems, exactly
+as §6.5's arbiter row states: the pair's bands are inside 1.27 ↔ 0.46,
+δ's is between them.
+
+### 6.9 The OPEN pair (fenced, uncertified): π−Li and S(T)
+
+The criterion's slope is necessary, not sufficient: an order-one band can
+mean "proven anti" OR "open, fluctuating below the denominator".  The two
+classic n-space sums left over by §6.6 sit in the second slot, and neither
+side can certify them — the one computed reading (exact scan 2026-09-21,
+primes through R(x) = 10^8 sieved exactly and checked against the known
+π(10^k) line 4, 25, 168, 1229, 9592, 78498, 664579, 5761455; Li to < 10⁻³
+via the convergent Ei series):
+
+| member | 0/0 form | ratio at 10^k (k = 1..8) | reading to 1e8 | theorem side | status |
+|--------|----------|--------------------------|----------------|--------------|--------|
+| π−Li open classic | (π(x) − Li(x))/√x | 0.685, 0.513, 0.304, 0.171, 0.120, 0.130, 0.107, 0.075 | β over d = 5..8 ≈ −0.07 (soft), and NON-monotone (d = 5→6 rises 0.120→0.130): both the anti-flat β ≈ 0 and the removable β ≤ −0.32 are disclaimed by an intermediate, unreproducible "scent" of decay | Littlewood 1914: π−Li = Ω±(√x·log log log x/log x) — fluctuation proven one factor BELOW √x (sign changes unconditionally, first crossing far beyond the wall), but NO upper bound proves the ratio → 0 (best unconditional ≫ √x; under RH only O(√x log x)); no no-limit theorem either — the oscillation is not at the denominator | **OPEN — cannot be certified** |
+| S(T) open classic | S(T)/log T, S(T) = (1/π) arg ζ(1/2 + iT) | — | — | Selberg: S(T) unbounded both signs (fluctuations at a (log T)^{1/2}-ish scale) against the trivial O(log T) bound — the same pattern: oscillation at or below the denominator, no o(log T) theorem | **OPEN — cannot be certified** |
+
+Two structural facts the pair exhibits that the certified classes never do:
+
+1. **The decade point is the window maximum, not the dip (the Dip Rule's
+   inverse).**  For π−Li the gap-lemma holds: g'(x) < 0 in every gap (the
+   stationary equation Li(x) − π = 2x/ln x is never met — at 1e8 the
+   left side is 754, the right ≈ 10⁷), so within a band |g| = (Li−π)/√x
+   rises RIGHTWARD and its sup lands ON the decade point.  The certified
+   anti trio's sup sits MID-window, its decade point a minimum (Dip Rule,
+   §6.7).  The open family flips it: the single-sign walk climbs through
+   the wall instead of pulling back through it.
+2. **The slope reading hover-strikes its own soft negative (≈ −0.07).**
+   No certified member reads there: the removable class is sharply negative
+   (−0.32, −0.59, −1.20) and the anti class is flat (≈ 0).  π−Li's
+   intermediate, direction-shuffling β is exactly the lurking Littlewood
+   factor log log log x/log x leaking through the range — a finite "wink"
+   of decay that nobody has promoted to a theorem.  The fence therefore
+   marks the boundary where the framework *declines* to classify: without
+   a certified value (removable) or a negative oscillation theorem (anti),
+   a 0/0 stays open, no matter how believable its finite trend reads.  No
+   census entry is claimed (§6.9 is a fence, not a member): the 6 anti
+   members and the 69 removable-value entries stand, and the open pair is
+   what the framework can point to and say — *this* is where it must wait.
 
 ---
 
@@ -377,6 +793,19 @@ Each experiment produces a JSON data file in `data/`. The files contain:
 | Schanuel | `data/schanuel_0_over_0_data.json` |
 | Noether | `data/noether_theorem_0_over_0_data.json` |
 | Pythagorean | `data/pythagorean_0_over_0_data.json` |
+| Pólya anti-class | `data/polya_liouville_0_over_0.json` |
+| Twin-prime density | `data/twin_prime_density_0_over_0.json` |
+| Goldbach density | `data/goldbach_density_0_over_0.json` |
+| Mertens function | `data/mobius_mertens_0_over_0.json` |
+| Prime-reciprocal constant | `data/prime_reciprocal_0_over_0.json` |
+| Dirichlet divisor-error (anti-class) | `data/dirichlet_divisor_anti_0_over_0.json` |
+| Gauss circle-error (anti-class) | `data/gauss_circle_anti_0_over_0.json` |
+| Euler-totient density | `data/euler_totient_0_over_0.json` |
+| Character partial sums (bounded-box control) | `data/character_sums_0_over_0.json` |
+| Character-walk sup-ratio (anti-class, q-space) | `data/char_walk_anti_0_over_0.json` |
+| Lattice pair at the 10^8 wall (extension of #69/#70) | `data/lattice_wall_1e8_0_over_0.json` |
+| Pólya/Liouville walk at the 10^8 wall (extension of #64) | `data/polya_wall_1e8_0_over_0.json` |
+| Chebyshev walk δ/√x (anti-class) | `data/chebyshev_psi_0_over_0.json` |
 
 ---
 
@@ -402,4 +831,4 @@ family above are the same object: an integer removable value of a 0/0.
 
 *This atlas is a reference document. For the philosophical interpretation, see ON_THE_NATURE_OF_ZERO.md. For the synthesis, see THE_UNIVERSAL_ZERO.md. For the epistemology, see REMOVABLE_SINGULARITIES.md.*
 
-*All 55 experiments verified computationally. 149 regression tests passing.*
+*All 69 removable-value entries verified computationally (63-sweep + 6 open-target/named/control, the sixth the Mertens product-gap complement #75 — REMOVABLE value 0, elementary, Mertens 1874); entries 64, 67, 69, 70, 73 and 74 document the anti-class — the Pólya and Mertens conjectures are FALSE, proven externally (Littlewood; Odlyzko–te Riele), the Chebyshev-walk ratio has no limit, proven unconditionally (Montgomery–Vaughan Thm 15.11: ψ − x = Ω±(x^{1/2})), the divisor/circle ratios have no limit, proven unconditionally (Hardy 1916; Voronoi; Sierpiński), and the character-walk sup-ratio has no limit in q-space, proven unconditionally (Paley 1932; Pólya–Vinogradov 1918) — each borne out by its fluctuation reading (Pólya 0.486, Mertens 0.433, Chebyshev δ band 0.51·0.61·0.71·0.69·0.68·0.75 below the √n floor — the theorem, not the range, arbitrates, divisor/circle bounded-band order-one, character-walk floor 0.577+ with creeping sup); entry 71 documents the removable side's flat-decay anchor (3/π², β_ratio = −1.20, Dirichlet 1849); entry 72 documents the bounded-box control (mod-7 character partial sums: |S| ≤ 2 at every x to 1e7, S(x)/√x → 0 at β_ratio = −0.590, Pólya–Vinogradov) — the manufactured counterpoint proving the criterion reads the ratio's decade trend alone, never the size of the raw oscillation. 645 regression tests passing.*

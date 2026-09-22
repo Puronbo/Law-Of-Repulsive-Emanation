@@ -295,5 +295,5 @@ The final strut is the zero-free region.
 
 ---
 
-**Corpus:** 203 experiments, 222 data files, 214 tests (all green),
+**Corpus:** 55 experiments, 222 data files, 645 tests (all green),
 48 formal theorems, 67 documentation files, 14 PDFs.

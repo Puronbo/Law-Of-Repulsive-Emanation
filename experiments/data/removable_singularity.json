@@ -20,10 +20,10 @@
     "weinberg_1989": "most embarrassing problem in physics"
   },
   "self_measure": {
-    "chapters": 63,
-    "real": 57,
-    "zero_over_zero_count": 78,
-    "self_compress_ratio": 0.541
+    "chapters": 86,
+    "real": 80,
+    "zero_over_zero_count": 131,
+    "self_compress_ratio": 0.437
   },
   "ring": {
     "chapter1_is_the_zero": true,
@@ -37,5 +37,5 @@
     "Beauty",
     "First cause"
   ],
-  "timestamp": "2026-08-28 11:47:18"
+  "timestamp": "2026-09-22 09:38:44"
 }

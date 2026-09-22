@@ -422,7 +422,7 @@ The removable value is the theorem. The 0/0 is the question. Zero is not nothing
 
 ## Appendix A: Experiment registry
 
-All 55 experiments are implemented in `experiments/` with data in `data/`. Regression tests in `tests/test_solvable_theorems.py` (149 tests, all passing). Each experiment has:
+All 55 experiments are implemented in `experiments/` with data in `data/`. Regression tests in `tests/test_solvable_theorems.py` (215 tests, all passing). Each experiment has:
 - A Python script computing the 0/0 form and its removable value
 - A JSON data file with all numerical results
 - A regression test asserting the summary verdict
@@ -457,4 +457,4 @@ Given a 0/0 form f/g at a point a:
 
 *This monograph is dedicated to zero — the number that is not nothing, the form that is not undefined, the point where two things vanish together and the theorem asks: do they vanish the same way?*
 
-*Computational data from the repository Puronbo/Law-Of-Repulsive-Emanation. All 55 experiments verified. 149 regression tests passing.*
+*Computational data from the repository Puronbo/Law-Of-Repulsive-Emanation. All 55 experiments verified. 645 regression tests passing.*

@@ -115,7 +115,18 @@ from __future__ import annotations
 import hashlib
 import os
 import re
+import sys
 from pathlib import Path
+
+# The audit prints needles that contain Unicode (e.g. "primitive chi's",
+# "Not SETTLED" glyphs).  On a cp1252 console that raises UnicodeEncodeError
+# even for a PASSING line, so stdout is pinned to UTF-8 here -- this makes
+# the auditor behave identically standalone and under the physics lane gate
+# without relying on a PYTHONUTF8=1 wrapper.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+elif os.environ.get("PYTHONIOENCODING") is None:
+    os.environ["PYTHONIOENCODING"] = "utf-8"
 
 ROOT = Path(__file__).resolve().parent
 WORKSPACE = ROOT.parent

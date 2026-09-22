@@ -270,7 +270,7 @@ The 0/0 is the question of *comparison at the vanishing point*. It asks: when bo
 
 ### Chapter 16: Zero is the answer
 
-In each of the 55 experiments, the 0/0 form asks a question, and the removable value is the answer:
+In each of the 69 removable-value experiments, the 0/0 form asks a question, and the removable value is the answer:
 
 - In topology: "What is the winding number?" Answer: an integer.
 - In number theory: "Is the zero on the critical line?" Answer: |χ(ρ)| = 1.
@@ -319,7 +319,7 @@ Zero is the number that makes the question possible. And the question — "do th
 The removable value is knowable. We can compute it by:
 1. Taking the limit (L'Hôpital's rule)
 2. Expanding in Taylor series and comparing leading terms
-3. Computing numerically (as we do in all 55 experiments)
+3. Computing numerically (as we do in all 75 entries)
 4. Using the functional equation or other structural identity
 
 The removable value is *determined* by the local behavior of f and g near x₀. It does not depend on the global behavior — only on the rates of vanishing. This is why the 0/0 form is such a powerful probe: it extracts *local* information from *global* objects.

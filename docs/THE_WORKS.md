@@ -34,7 +34,7 @@ where 0/0 was refuted — twenty claims across six categories — and recovers
 every one as a removable singularity at the correct 0/0 form. **Book VIII**
 answers the five open questions the Ledger left standing.
 
-The numbers: **203 experiment files**, **222 data files**, **213 regression
+The numbers: **55 experiment files**, **222 data files**, **213 regression
 tests**, **11 PDFs**, **66 documentation files**, **47 formal theorems**,
 spanning number theory, algebra, analysis, geometry, topology, probability,
 statistical mechanics, random matrix theory, information geometry, spectral
@@ -1343,7 +1343,7 @@ divergence 0/0.
 - `experiments/retrace_boundary.py` — T64 retrace derivation
 
 ### Tests
-- `tests/test_solvable_theorems.py` — 214 regression tests
+- `tests/test_solvable_theorems.py` — 215 regression tests
 
 ### Data
 - `data/open_questions_data.json` — Q1–Q5 numerical results

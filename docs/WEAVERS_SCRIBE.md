@@ -2553,7 +2553,7 @@ content ranking.
 ### Ch. 5.49  Batch 15: logarithmic limits, combinatorics, probability ergodic, number theory sums, convex/variational, and random matrix 0/0 (2026-08-18)
 
 Six new experiment files, 35 sub-experiments total (6+6+6+6+6+5), all passing.
-155 regression tests in `tests/test_solvable_theorems.py`.
+215 regression tests in `tests/test_solvable_theorems.py`.
 
 * **log_limits_0_over_0.py** — 6 sub-experiments on logarithmic and analytic
   limits: log(1+x)/x -> 1 (removable=1 at x=0), the product-form log

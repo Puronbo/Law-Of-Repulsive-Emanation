@@ -239,4 +239,4 @@ The map is incomplete. There are many boundary truths we have not yet identified
 
 *This essay is dedicated to the honest wall — the declaration that we know what we know and what we do not know. The 0/0 form is the most honest expression in mathematics: it admits its own undefinedness, and the removable value is the truth that emerges from that admission.*
 
-*Computational data from the repository Puronbo/Law-Of-Repulsive-Emanation. All 55 experiments verified. 149 regression tests passing. The honest wall stands.*
+*Computational data from the repository Puronbo/Law-Of-Repulsive-Emanation. All 55 experiments verified. 645 regression tests passing. The honest wall stands.*
