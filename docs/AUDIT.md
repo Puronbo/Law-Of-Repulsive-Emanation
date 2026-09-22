@@ -950,6 +950,18 @@ given so it can be re-run).
     Amplitude ratio: sqrt(2)*M*sqrt(b) = sqrt(T_c-T).  Above T_c: all M=0.
     Free energy has minima at M=0 (T>=T_c) and M=+-M_0 (T<T_c).
 
+    **Sequel 2026-09-22 -- Landau's function via 0/0: log g(n)/sqrt(n log n) -> 1**
+    (`experiments/landau_function_0_over_0.py`,
+    `data/landau_function_0_over_0_data.json`): maximal order g(n) of a
+    permutation of n elements, exact integer 0/1-knapsack over prime powers
+    (at most one per prime) to n = 2000.  Seeds g(1..10) =
+    [1,2,3,4,6,6,12,15,20,30] = A000793 exactly; independent brute-force
+    over partitions (carried-lcm) for n <= 24 agrees exactly;
+    rho(n) = log g(n)/sqrt(n log n) -> 1 unconditionally (Landau 1903,
+    settled referee) with per-decade max|rho-1| = 0.338 / 0.102 / 0.026
+    and rho(2000) = 1.022.  0/0: (log g(n))/(n log n)^{1/2};  removable = 1.
+    5/5 gates PASS.
+
     **Sequel 2026-08-17 — Euler-Maclaurin via 0/0: x/(e^x-1) at x=0**
     (`experiments/euler_maclaurin_0_over_0.py`,
     `data/euler_maclaurin_0_over_0_data.json`): B(x) = x/(e^x-1) -> 1

@@ -11,7 +11,7 @@
 
 ## Abstract
 
-We present a complete classification of 75 entries for the indeterminate form 0/0 across seventeen branches of mathematics: 63 verified instances with removable values from the missing-experiment sweep, 6 constructive-program entries targeting open conjectures, named constants, and a manufactured/companion control (twin-prime and strong Goldbach, both removable value 1; the prime-reciprocal constant B₁, removable value 0.2614972...; the Euler-totient density, removable value 3/π² = 0.30396355...; the fixed-character bounded-box control, removable value 0; the Mertens product-gap complement, removable value 0 — elementary, Mertens 1874), and 6 anti-class entries (Pólya, Mertens, the Dirichlet divisor-error, the Gauss circle-error, the character-walk sup-ratio, and the Chebyshev-walk δ) proving that 0/0 forms without removable value exist — the class the corpus previously counted as empty. Each instance is classified by (i) the branch, (ii) the mechanism (Probe, Index, Vanishing Rate, Critical Phenomenon, or Conservation), (iii) the exact 0/0 form, (iv) the removable value, (v) the theorem it encodes, and (vi) the computational verification. We provide cross-reference tables, a decision tree for classifying new instances, and a catalog of open problems.
+We present a complete classification of 76 entries for the indeterminate form 0/0 across seventeen branches of mathematics: 64 verified instances with removable values (63 from the missing-experiment sweep plus the Landau-function calibration #76 — removable value 1, log g(n)/√(n log n) → 1, Landau 1903 — added 2026-09-22, treated in §2.20), 6 constructive-program entries targeting open conjectures, named constants, and a manufactured/companion control (twin-prime and strong Goldbach, both removable value 1; the prime-reciprocal constant B₁, removable value 0.2614972...; the Euler-totient density, removable value 3/π² = 0.30396355...; the fixed-character bounded-box control, removable value 0; the Mertens product-gap complement, removable value 0 — elementary, Mertens 1874), and 6 anti-class entries (Pólya, Mertens, the Dirichlet divisor-error, the Gauss circle-error, the character-walk sup-ratio, and the Chebyshev-walk δ) proving that 0/0 forms without removable value exist — the class the corpus previously counted as empty. Each instance is classified by (i) the branch, (ii) the mechanism (Probe, Index, Vanishing Rate, Critical Phenomenon, or Conservation), (iii) the exact 0/0 form, (iv) the removable value, (v) the theorem it encodes, and (vi) the computational verification. We provide cross-reference tables, a decision tree for classifying new instances, and a catalog of open problems.
 
 ---
 
@@ -214,6 +214,12 @@ The *removable value* is the limit.
 |---|------|----------|-------|----------------|-----------|----------|
 | 75 | Mertens product complement (REMOVABLE side of the trio's mirror) | G(x) = e^γ log x · Π_{p ≤ x}(1 − 1/p) − 1, the deviation of the exact product from Mertens' second-theorem ladder e^{−γ}/log x — a 0/0 form whose *denominator* is the simple ladder and whose G → 0 asks: does the product sit on the ladder, and at what rate? | x→∞ (decade points) | **0** — REMOVABLE, UNCONDITIONALLY: Mertens' (third) theorem 1874, *elementary*: Π_{p ≤ x}(1 − 1/p) = e^{−γ}/log x · (1 + O(1/log x)), so G(x) = O(1/log x) — the deviation vanishes; the 0/0 carries the removable value 0 | Vanishing Rate (rate → 0) | `mertens_product_0_over_0.py` (atlas #75, complement) → `data/mertens_product_0_over_0.json`: exact prime product to G(10^8) via the missing-experiment at-the-wall; per-decade max \|G\| = 6.26e−2 / 1.31e−2 / 3.87e−3 / 1.23e−3 / 3.04e−4 / 3.89e−5 / 9.57e−6 / 4.03e−6 (d = 1..8) — *ten-fold collapse every decade*, the exact power-rate read β_ratio = −0.5756 to 1e8 (soft-zone-falsified: the dip at the wall is a decade-point floor, not the soft-zone — the complement completes the mirror), band suites crest at interior primes (never the decade point) — measured 5/5 gates PASS | Mertens 1874, third theorem (elementary; O(1/log x)) — settled | a validated run with the century-gap ratio not declining decade-on-decade |
 
+### 2.20 The Landau-function calibration enters the named-value 1 set (2026-09-22)
+
+| # | Name | 0/0 Form | Point | Removable Value | Mechanism | Verified |
+|---|------|----------|-------|----------------|-----------|----------|
+| 76 | Landau function | (log g(n))/(n log n)^{1/2} | n→∞ | **1** — REMOVABLE, UNCONDITIONALLY: Landau 1903 (log g(n) ~ (n log n)^{1/2}; g(n) = maximal order of a permutation of n elements, OEIS A000793) — the exact integer optimum is the 0/1-knapsack over prime powers, at most one per prime | Vanishing Rate | `landau_function_0_over_0.py` (corpus census #56, PL-21) → `data/landau_function_0_over_0_data.json`: exact integer DP to n = 2000, seeds g(1..10) = [1,2,3,4,6,6,12,15,20,30] = A000793, independent brute-force-over-partitions n ≤ 24 (carried-lcm), per-decade max|rho−1| = 0.338 / 0.102 / 0.026, rho(2000) = 1.022 — 5/5 gates PASS, settled referee (permanent calibration point) | Landau 1903 (settled) | a validated run with the per-decade decline of max|rho−1| stopping, or max|rho−1| growing with n |
+
 ---
 
 ## Part III: Cross-References
@@ -225,7 +231,7 @@ The *removable value* is the limit.
 | Integer | Poincaré-Hopf, Argument principle, Atiyah-Singer, Morse, Fermat little, FTA | 6 |
 | Rational (simple) | Euler-Maclaurin (1), Cesàro (1/2), Taylor (f^(n+1)/(n+1)!), Stirling (1/12), Wallis (π/2), Banach (T'−1), Brouwer (f'−1), Cauchy (f') | 8 |
 | Real (transcendental) | Zeta FE (−1/2), CLT (−σ²/2), Wigner (1/(2π)), Laplace (√π) | 4 |
-| 1 (identity) | Riemann zeta, GRH, Euler product, Poisson, Schanuel, Stokes, Green, Gauss-Bonnet, twin-prime (#65), Goldbach (#66) | 10 |
+| 1 (identity) | Riemann zeta, GRH, Euler product, Poisson, Schanuel, Stokes, Green, Gauss-Bonnet, twin-prime (#65), Goldbach (#66), Landau function (#76) | 11 |
 | 0 | Shannon, Boltzmann (S/ln(W)), Sard, Morse saddle, character partial sums (#72) | 5 |
 | Function of parameters | BSD (rank+Sha), Ising (C), Spectral gap (C), Lorenz (λ), Khintchine (1/√5), Fourier (bound), Bayes (prior), Noether (conserved), KKT (λ), Rayleigh (eigenvalue), Weyl (constant), Selberg (1), PNT (1) | 13 |
 | New (56–63) | Galois (32/27), Bott (4, then 1), Ricci (8π), Natural (1), Generating (1/√π), Birkhoff (1 vs 0), Spectral (1/(2π)), Néron (3/8) | 8 |
@@ -246,7 +252,7 @@ The *removable value* is the limit.
 | Algebra | 54 | Conservation (1) |
 | Dynamical systems | 55 | Critical (1) |
 | New branches (sweep) | 56–63 | Probe (2), Index (1), Vanishing Rate (4), Conservation (1) |
-| Open-target construction | 64–74 | Vanishing Rate (2), Probe (3), Anti-class (6) |
+| Open-target construction | 64–76 | Vanishing Rate (4), Probe (3), Anti-class (6) |
 
 ### 3.3 By mechanism
 
@@ -259,7 +265,7 @@ The *removable value* is the limit.
 | Conservation | 48, 50–54, 58 | 7 | Conserved quantity from symmetry |
 | (Anti-class) | 64, 67, 69, 70, 73, 74 (Pólya, Mertens, divisor-error, circle-error, character-walk, Chebyshev-walk δ: the limits do not exist) | 6 | 0/0 outside the five mechanisms: refutes "all are removable" |
 
-*Note: the historical rows above carry the corpus's legacy 53-item tallies for the 55 former entries; the authoritative per-entry classification is the single-entry tables in Part II (entries 1–75).*
+*Note: the historical rows above carry the corpus's legacy 53-item tallies for the 55 former entries; the authoritative per-entry classification is the single-entry tables in Part II (entries 1–76).*
 
 ---
 
@@ -724,7 +730,7 @@ Two structural facts the pair exhibits that the certified classes never do:
    a certified value (removable) or a negative oscillation theorem (anti),
    a 0/0 stays open, no matter how believable its finite trend reads.  No
    census entry is claimed (§6.9 is a fence, not a member): the 6 anti
-   members and the 69 removable-value entries stand, and the open pair is
+   members and the 70 removable-value entries stand, and the open pair is
    what the framework can point to and say — *this* is where it must wait.
 
 ---
@@ -806,7 +812,9 @@ Each experiment produces a JSON data file in `data/`. The files contain:
 | Lattice pair at the 10^8 wall (extension of #69/#70) | `data/lattice_wall_1e8_0_over_0.json` |
 | Pólya/Liouville walk at the 10^8 wall (extension of #64) | `data/polya_wall_1e8_0_over_0.json` |
 | Chebyshev walk δ/√x (anti-class) | `data/chebyshev_psi_0_over_0.json` |
+| Landau function | `data/landau_function_0_over_0_data.json` |
 
+*The Landau-function calibration (corpus #56, PL-21; registered 2026-09-22) -- REMOVABLE named value 1, Vanishing Rate, Landau 1903: log g(n)/sqrt(n log n) -> 1 unconditionally (A000793, 5/5 gates PASS, settled referee) -- is the numbered census's 76th entry (§2.20, above).*
 ---
 
 ## Cross-Domain Applications (physics fields using the Index mechanism)
@@ -831,4 +839,4 @@ family above are the same object: an integer removable value of a 0/0.
 
 *This atlas is a reference document. For the philosophical interpretation, see ON_THE_NATURE_OF_ZERO.md. For the synthesis, see THE_UNIVERSAL_ZERO.md. For the epistemology, see REMOVABLE_SINGULARITIES.md.*
 
-*All 69 removable-value entries verified computationally (63-sweep + 6 open-target/named/control, the sixth the Mertens product-gap complement #75 — REMOVABLE value 0, elementary, Mertens 1874); entries 64, 67, 69, 70, 73 and 74 document the anti-class — the Pólya and Mertens conjectures are FALSE, proven externally (Littlewood; Odlyzko–te Riele), the Chebyshev-walk ratio has no limit, proven unconditionally (Montgomery–Vaughan Thm 15.11: ψ − x = Ω±(x^{1/2})), the divisor/circle ratios have no limit, proven unconditionally (Hardy 1916; Voronoi; Sierpiński), and the character-walk sup-ratio has no limit in q-space, proven unconditionally (Paley 1932; Pólya–Vinogradov 1918) — each borne out by its fluctuation reading (Pólya 0.486, Mertens 0.433, Chebyshev δ band 0.51·0.61·0.71·0.69·0.68·0.75 below the √n floor — the theorem, not the range, arbitrates, divisor/circle bounded-band order-one, character-walk floor 0.577+ with creeping sup); entry 71 documents the removable side's flat-decay anchor (3/π², β_ratio = −1.20, Dirichlet 1849); entry 72 documents the bounded-box control (mod-7 character partial sums: |S| ≤ 2 at every x to 1e7, S(x)/√x → 0 at β_ratio = −0.590, Pólya–Vinogradov) — the manufactured counterpoint proving the criterion reads the ratio's decade trend alone, never the size of the raw oscillation. 645 regression tests passing.*
+*All 70 removable-value entries verified computationally (64-sweep + 6 open-target/named/control — the sweep's 64th, the Landau-function calibration #76 — REMOVABLE value 1, Vanishing Rate, Landau 1903; the sixth, the Mertens product-gap complement #75 — REMOVABLE value 0, elementary, Mertens 1874); entries 64, 67, 69, 70, 73 and 74 document the anti-class — the Pólya and Mertens conjectures are FALSE, proven externally (Littlewood; Odlyzko–te Riele), the Chebyshev-walk ratio has no limit, proven unconditionally (Montgomery–Vaughan Thm 15.11: ψ − x = Ω±(x^{1/2})), the divisor/circle ratios have no limit, proven unconditionally (Hardy 1916; Voronoi; Sierpiński), and the character-walk sup-ratio has no limit in q-space, proven unconditionally (Paley 1932; Pólya–Vinogradov 1918) — each borne out by its fluctuation reading (Pólya 0.486, Mertens 0.433, Chebyshev δ band 0.51·0.61·0.71·0.69·0.68·0.75 below the √n floor — the theorem, not the range, arbitrates, divisor/circle bounded-band order-one, character-walk floor 0.577+ with creeping sup); entry 71 documents the removable side's flat-decay anchor (3/π², β_ratio = −1.20, Dirichlet 1849); entry 72 documents the bounded-box control (mod-7 character partial sums: |S| ≤ 2 at every x to 1e7, S(x)/√x → 0 at β_ratio = −0.590, Pólya–Vinogradov) — the manufactured counterpoint proving the criterion reads the ratio's decade trend alone, never the size of the raw oscillation. 646 regression tests passing.*

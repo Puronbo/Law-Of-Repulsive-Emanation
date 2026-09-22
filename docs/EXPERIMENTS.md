@@ -32,6 +32,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Body fold symmetry | fold is EXACT, breaking is measured, tree mirror fails by factor of 2 |
 | Riemann-Siegel certifier | **648 zeros certified on Re(s)=1/2** via interval arithmetic + Turing method; NOT a proof of RH |
 | de Bruijn-Newman condensation | **finite probe** -- closest certified pair merger time t_c = -0.0482; NOT a bound on Lambda |
+| Landau's function (maximal order) | **log g(n)/sqrt(n log n) -> 1 UNCONDITIONALLY (Landau 1903)** - exact integer 0/1-knapsack over prime powers to n=2000; g(1..10) = 1,2,3,4,6,6,12,15,20,30 (A000793); brute-force-over-partitions cross-check n<=24; rho(2000) = 1.022; per-decade max|rho-1| = 0.338 -> 0.102 -> 0.026; 5/5 gates PASS |
 
 ## 0/0 Experiments (Batches 1-15)
 
@@ -55,6 +56,7 @@ Looking for a topic? `KEYWORDS.md` maps search terms to files, including topics 
 | Rayleigh quotient | R(x) = (x^T A x)/(x^T x); 0/0 at x=0; removable = eigenvalue |
 | Cauchy integral | f(z)/(z-a) at z=a is 0/0; removable = f'(a); max error 8.89e-05 |
 | Noether/Landau | M = tanh(M/T); 0/0 at T_c; removable = sqrt(3) |
+| Landau's function (maximal order) | log g(n)/sqrt(n log n) -> 1; the 0/0 of the maximal order of a permutation at the sqrt(n log n) scale; removable = 1 (Landau 1903) |
 | Euler-Maclaurin | B(x) = x/(e^x-1); 0/0 at x=0; removable = 1 |
 | Laplace method | I(n)*sqrt(n) = sqrt(pi); 0/0 at n=0; removable = sqrt(pi) |
 | Wallis product | prod (2n)^2/((2n-1)(2n+1)) -> pi/2; error 3.93e-08 at N=10^7 |

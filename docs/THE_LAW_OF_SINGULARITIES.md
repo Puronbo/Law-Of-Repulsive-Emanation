@@ -12,13 +12,13 @@
 
 ## Preface
 
-This document is the formal theory underlying 55 experiments across nine branches of mathematics. It is the **Law of Singularities**: the principle that the indeterminate form 0/0 is the mechanism by which mathematics extracts finite structure from points of mutual vanishing.
+This document is the formal theory underlying 56 experiments across nine branches of mathematics. It is the **Law of Singularities**: the principle that the indeterminate form 0/0 is the mechanism by which mathematics extracts finite structure from points of mutual vanishing.
 
 The theory has three layers:
 
 1. **Axioms** (Chapters 1-3): what we assume about zero, limits, and analytic structure.
 2. **Theorems** (Chapters 4-12): what follows from the axioms -- the five mechanisms, the classification theorem, the extraction theorem, the universality theorem.
-3. **Applications** (Chapters 13-18): the 55 experiments, organized as instances of the theory.
+3. **Applications** (Chapters 13-18): the 56 experiments, organized as instances of the theory.
 
 This is not a survey. It is a *theory* -- a collection of definitions, axioms, theorems, and proofs. The experiments are the evidence that the theory is correct.
 
@@ -359,7 +359,7 @@ The removable value of a 0/0 form IS the structure at the point of mutual vanish
 
 ### Corollary 10.1 (The theorem IS the removable value)
 
-In all 55 verified experiments, the removable value is the quantity the theorem asserts, computes, or bounds. This follows from Theorem 10.1: the removable value is not a metaphor for the theorem, it IS the theorem.
+In all 56 verified experiments, the removable value is the quantity the theorem asserts, computes, or bounds. This follows from Theorem 10.1: the removable value is not a metaphor for the theorem, it IS the theorem.
 
 ---
 
@@ -379,7 +379,7 @@ The 0/0 form arises in every major branch of mathematics:
 (h) Algebra: 1 experiment (Pythagorean theorem)
 (i) Dynamical systems: 1 experiment (Poincare recurrence)
 
-**Total: 55 experiments across 9 branches. All verified. All SUPPORTED.**
+**Total: 56 experiments across 9 branches. All verified. All SUPPORTED.**
 
 ### Conjecture 11.1 (No branch is exempt)
 
@@ -909,7 +909,7 @@ Already listed under Physics.
 
 *The five mechanisms (Probe, Index, Vanishing Rate, Critical Phenomenon, Conservation) are exhaustive and mutually exclusive. The removable value is always unique, always computable (in principle), and always the theorem.*
 
-*This is not a metaphor. It is a mathematical fact, verified in 55 experiments across 9 branches of mathematics, with 645 regression tests passing.*
+*This is not a metaphor. It is a mathematical fact, verified in 56 experiments across 9 branches of mathematics, with 646 regression tests passing.*
 
 ### Corollary 19.1 (The 0/0 is the deepest expression)
 
@@ -937,7 +937,7 @@ Is the five-mechanism classification truly exhaustive? The conjecture is yes, bu
 
 ### 20.3 The discovery principle
 
-Can the 0/0 form be used to discover genuinely new theorems? As of the 2026-09-21 sweep, the corpus is 75 entries: 69 verify known theorems, established constants, or established philosophy (55 sealed + 8 missing-experiment + 6 open-target/named/control, the sixth the Mertens product-gap complement #75 — removable value 0, elementary, Mertens 1874), and entries 64 (Pólya), 67 (Mertens), 69 (Dirichlet divisor-error), 70 (Gauss circle-error), 73 (character-walk sup-ratio, q-space) and 74 (Chebyshev-walk δ, ψ(x) − x over √x — Montgomery–Vaughan Thm 15.11) establish the anti-class — 0/0 forms with no removable value, proven externally (Littlewood; Odlyzko–te Riele; Hardy 1916; Paley 1932; Montgomery–Vaughan). Outside the census, §6.9 fences the two n-space classics the framework cannot certify either way — π(x) − Li(x) over √x (Littlewood's oscillation sits one log below √x; exact scan to 1e8 reads a soft, direction-shuffling β ≈ −0.07 with the decade point as the window maximum) and S(T) over log T — the OPEN pair that only theorems, not finite reads, could settle. The constructive principle (Chapter 12) is now exercised on open conjectures (twin-prime density #65, strong Goldbach #66, both removable value 1), on named constants (prime-reciprocal B₁, #68; Euler-totient density 3/π², #71), and on a manufactured control (character partial sums #72: the bounded-box removable-0, |S(x)| ≤ 2 at every x to 1e7, Pólya–Vinogradov): the framework's targets are the theorems still to be proven.
+Can the 0/0 form be used to discover genuinely new theorems? As of the 2026-09-22 extension, the corpus is 76 entries: 70 verify known theorems, established constants, or established philosophy (55 sealed + 8 missing-experiment + 7 open-target/named/control/calibration — the seventh the Landau-function calibration #76, removable value 1, Vanishing Rate, Landau 1903, added 2026-09-22; the sixth, the Mertens product-gap complement #75 — removable value 0, elementary, Mertens 1874), and entries 64 (Pólya), 67 (Mertens), 69 (Dirichlet divisor-error), 70 (Gauss circle-error), 73 (character-walk sup-ratio, q-space) and 74 (Chebyshev-walk δ, ψ(x) − x over √x — Montgomery–Vaughan Thm 15.11) establish the anti-class — 0/0 forms with no removable value, proven externally (Littlewood; Odlyzko–te Riele; Hardy 1916; Paley 1932; Montgomery–Vaughan). Outside the census, §6.9 fences the two n-space classics the framework cannot certify either way — π(x) − Li(x) over √x (Littlewood's oscillation sits one log below √x; exact scan to 1e8 reads a soft, direction-shuffling β ≈ −0.07 with the decade point as the window maximum) and S(T) over log T — the OPEN pair that only theorems, not finite reads, could settle. The constructive principle (Chapter 12) is now exercised on open conjectures (twin-prime density #65, strong Goldbach #66, both removable value 1), on named constants (prime-reciprocal B₁, #68; Euler-totient density 3/π², #71), and on a manufactured control (character partial sums #72: the bounded-box removable-0, |S(x)| ≤ 2 at every x to 1e7, Pólya–Vinogradov): the framework's targets are the theorems still to be proven.
 
 ### 20.4 The RH question
 
@@ -945,9 +945,9 @@ The 0/0 form of RH is: the removable value of |zeta(s)|/|zeta(1-s)| at every zer
 
 ---
 
-## Appendix: The 55 Experiments (sealed register)
+## Appendix: The 56 Experiments (sealed register)
 
-All experiments are implemented in `experiments/` with data in `data/`. Regression tests in `tests/test_solvable_theorems.py` (215 tests, all passing).
+All experiments are implemented in `experiments/` with data in `data/`. Regression tests in `tests/test_solvable_theorems.py` (216 tests, all passing).
 
 | # | Experiment | Mechanism | Removable Value | Status |
 |---|-----------|-----------|----------------|--------|
@@ -1006,8 +1006,9 @@ All experiments are implemented in `experiments/` with data in `data/`. Regressi
 | 53 | Noether theorem | Conservation | Conserved quantity | SUPPORTED |
 | 54 | Pythagorean | Conservation | 0 | SUPPORTED |
 | 55 | Poincare recurrence | Critical | Constant | SUPPORTED |
+| 56 | Landau function | Vanishing Rate | 1 (log g(n)/sqrt(n log n) -> 1, Landau 1903) | SUPPORTED |
 
-**55/55 SUPPORTED. 645/645 tests passing.**
+**56/56 SUPPORTED. 646/646 tests passing.**
 
 ---
 
