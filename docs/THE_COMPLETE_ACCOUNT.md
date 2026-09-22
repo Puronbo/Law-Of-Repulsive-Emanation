@@ -413,9 +413,9 @@ deep structure of mathematics.
 
 ## Appendix B: The Corpus
 
-- 55 experiment files (.py)
-- 222 data files (.json)
-- 645 regression tests (all green)
+- 56 experiment files (.py)
+- 223 data files (.json)
+- 646 regression tests (all green)
 - 48 formal theorems
 - 67 documentation files
 - 14 PDFs
@@ -429,4 +429,4 @@ deep structure of mathematics.
 - `docs/THE_WORKS.md` — the capstone
 - `experiments/hermite_biehler_proof.py` — the new proof
 - `experiments/phragmen_lindelof_analysis.py` — the new bound
-- `tests/test_solvable_theorems.py` — 215 tests, all green
+- `tests/test_solvable_theorems.py` — 216 tests, all green

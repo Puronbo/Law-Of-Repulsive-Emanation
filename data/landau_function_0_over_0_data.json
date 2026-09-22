@@ -1,0 +1,70 @@
+{
+  "name": "landau_function_0_over_0",
+  "title": "Landau's function: log g(n)/sqrt(n log n) -> 1 (Landau 1903)",
+  "verdict": "PASS",
+  "summary": {
+    "supported": true,
+    "exact_seeds_correct": true,
+    "brute_force_crosscheck": true,
+    "decade_rho_decays": true,
+    "late_ratio_near_one": true,
+    "rho_2000": 1.021995
+  },
+  "gates": {
+    "G1_exact_integer": true,
+    "G2_seeds_ok": true,
+    "G3_brute_ok": true,
+    "G4_rho_decay": true,
+    "G5_late_ratio": true
+  },
+  "class": "REMOVABLE (named value 1, settled referee: Landau 1903)",
+  "referee": "Landau 1903 (log g(n) ~ sqrt(n log n)); exact values A000793",
+  "refutation_condition": "per-decade max|rho-1| stops declining, or |rho(n)-1| grows with n, in a validated computation",
+  "values": {
+    "N": 2000,
+    "seeds_g_1_to_10": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      6,
+      12,
+      15,
+      20,
+      30
+    ],
+    "g_100": 232792560,
+    "g_1000": 1516385558956728808659224171023365600,
+    "g_2000": 5301036508850487626975427714489912082038158551922510400,
+    "rho_100": 0.897762,
+    "rho_1000": 1.002364,
+    "rho_2000": 1.021995,
+    "decades": [
+      {
+        "decade": "10-100",
+        "n": 91,
+        "mean_rho": 0.848736,
+        "max_dev": 0.337752
+      },
+      {
+        "decade": "100-1000",
+        "n": 901,
+        "mean_rho": 0.978615,
+        "max_dev": 0.102238
+      },
+      {
+        "decade": "1000-2000",
+        "n": 1001,
+        "mean_rho": 1.014426,
+        "max_dev": 0.025987
+      }
+    ]
+  },
+  "honest_walls": [
+    "A proved limit re-derived exactly; the fluctuations of g(n) about log g ~ sqrt(n log n) are open (Massias-type second-order).",
+    "No new mathematics: the referee (Landau 1903) is settled, this entry is a calibration point.",
+    "Integer DP to n = 2000 only; the brute-force cross-check is capped at n = 24 by partition blow-up."
+  ],
+  "elapsed_sec": 0.033
+}

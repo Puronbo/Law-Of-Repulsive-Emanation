@@ -2770,6 +2770,16 @@ def test_nt_sums_0_over_0():
         assert d[key]['passed'], f"{key} failed"
 
 
+def test_landau_function_0_over_0():
+    d = load('landau_function_0_over_0_data.json')
+    assert d['verdict'] == 'PASS'
+    assert d['gates']['G2_seeds_ok']
+    assert d['gates']['G3_brute_ok']
+    assert d['gates']['G4_rho_decay']
+    assert abs(d['values']['rho_2000'] - 1.0) < 0.10
+    assert [d['values']['seeds_g_1_to_10'][0], d['values']['seeds_g_1_to_10'][1]] == [1, 2]
+
+
 def test_convex_variational_0_over_0():
     d = load('convex_variational_0_over_0_data.json')
     for key in ['legendre_transform', 'convex_conjugate_duality', 'friedrichs_sobolev',
