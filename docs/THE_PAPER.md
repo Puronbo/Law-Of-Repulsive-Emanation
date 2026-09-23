@@ -298,4 +298,4 @@ structure of mathematics.
 
 **Key files:** See `docs/THE_WORKS.md` for the complete corpus.
 **Code:** See `experiments/` for all computational verification.
-**Tests:** 669 regression tests, all green.
+**Tests:** 670 regression tests, all green.

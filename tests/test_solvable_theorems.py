@@ -4106,3 +4106,20 @@ def test_aclass_detector():
     d = load('aclass_detector.json')
     assert d['overall'] is True
     assert all(d['gates'][k] for k in d['gates'])
+
+def test_crossing_a_zero():
+    d = load('crossing_a_zero.json')
+    assert d['overall'] is True
+    assert all(d['gates'][k] for k in d['gates'])
+    ins = d['instances']
+    assert ins['CONT_1']['value'] == '2048/65537'
+    assert ins['CR_1']['rate_constant'] == '2048/65537'
+    assert ins['CONT_2']['value'] == '65537/67108865'
+    assert ins['CR_3']['rate_constant'] == '65537/67108865'
+    for n in ins:
+        it = ins[n]
+        expect_flip = it['j'] >= 1 and it['j'] % 2 == 1
+        assert it['crosses_zero'] == expect_flip
+        want = it['j'] if it['j'] >= 1 else 1
+        assert abs(it['slope_left'] - want) < 0.02
+        assert abs(it['slope_right'] - want) < 0.02

@@ -12,13 +12,13 @@
 
 ## Preface
 
-This document is the formal theory underlying 79 experiments across nine branches of mathematics. It is the **Law of Singularities**: the principle that the indeterminate form 0/0 is the mechanism by which mathematics extracts finite structure from points of mutual vanishing.
+This document is the formal theory underlying 80 experiments across nine branches of mathematics. It is the **Law of Singularities**: the principle that the indeterminate form 0/0 is the mechanism by which mathematics extracts finite structure from points of mutual vanishing.
 
 The theory has three layers:
 
 1. **Axioms** (Chapters 1-3): what we assume about zero, limits, and analytic structure.
 2. **Theorems** (Chapters 4-12): what follows from the axioms -- the five mechanisms, the classification theorem, the extraction theorem, the universality theorem.
-3. **Applications** (Chapters 13-18): the 79 experiments, organized as instances of the theory.
+3. **Applications** (Chapters 13-18): the 80 experiments, organized as instances of the theory.
 
 This is not a survey. It is a *theory* -- a collection of definitions, axioms, theorems, and proofs. The experiments are the evidence that the theory is correct.
 
@@ -372,14 +372,14 @@ The 0/0 form arises in every major branch of mathematics:
 (a) Number theory: 11 experiments (zeta, GRH, BSD, abc, PNT, Fermat, Euler product, Weil, zeta FE, Khintchine, Mobius)
 (b) Complex analysis: 8 experiments (argument principle, Cauchy, Picard, Taylor, FTA, Stirling, Wallis, Cesaro)
 (c) Algebraic topology/geometry: 12 experiments (Poincare-Hopf, Atiyah-Singer, Gauss-Bonnet, Riemann-Roch, Weyl, Selberg, Lefschetz, Morse, Sard, Stokes, Green, Euler-Maclaurin)
-(d) Analysis: 10 experiments (CLT, Rayleigh, Banach, Brouwer, Fourier, Poisson, saddle point, Laplace, Noether-Landau, Euler-Maclaurin)
+(d) Analysis: 11 experiments (CLT, Rayleigh, Banach, Brouwer, Fourier, Poisson, saddle point, Laplace, Noether-Landau, Euler-Maclaurin, Crossing a zero)
 (e) Mathematical physics: 6 experiments (Ising, spectral gap, Lorenz, Wigner, Selberg, zeta FE)
 (f) Information theory: 4 experiments (Shannon, Boltzmann, Bayes, Fourier uncertainty)
 (g) Optimization: 4 experiments (gradient descent, KKT, Noether, Schanuel)
 (h) Algebra: 1 experiment (Pythagorean theorem)
 (i) Dynamical systems: 1 experiment (Poincare recurrence)
 
-**Total: 79 experiments across 9 branches. All verified. All SUPPORTED.**
+**Total: 80 experiments across 9 branches. All verified. All SUPPORTED.**
 
 ### Conjecture 11.1 (No branch is exempt)
 
@@ -909,7 +909,7 @@ Already listed under Physics.
 
 *The five mechanisms (Probe, Index, Vanishing Rate, Critical Phenomenon, Conservation) are exhaustive and mutually exclusive. The removable value is always unique, always computable (in principle), and always the theorem.*
 
-*This is not a metaphor. It is a mathematical fact, verified in 79 experiments across 9 branches of mathematics, with 669 regression tests passing.*
+*This is not a metaphor. It is a mathematical fact, verified in 80 experiments across 9 branches of mathematics, with 670 regression tests passing.*
 
 ### Corollary 19.1 (The 0/0 is the deepest expression)
 
@@ -945,9 +945,9 @@ The 0/0 form of RH is: the removable value of |zeta(s)|/|zeta(1-s)| at every zer
 
 ---
 
-## Appendix: The 79 Experiments (sealed register)
+## Appendix: The 80 Experiments (sealed register)
 
-All experiments are implemented in `experiments/` with data in `data/`. Regression tests in `tests/test_solvable_theorems.py` (239 tests, all passing).
+All experiments are implemented in `experiments/` with data in `data/`. Regression tests in `tests/test_solvable_theorems.py` (240 tests, all passing).
 
 | # | Experiment | Mechanism | Removable Value | Status |
 |---|-----------|-----------|----------------|--------|
@@ -1030,8 +1030,9 @@ All experiments are implemented in `experiments/` with data in `data/`. Regressi
 | 77 | Lattice wall 10^8 (ext of #69/#70) | Probe (anti-class) | NONE ? no limit | SUPPORTED |
 | 78 | Polya/Liouville wall 10^8 (ext of #64) | Probe (anti-class) | NONE ? no limit | SUPPORTED |
 | 79 | Fluctuation-scale detector (aclass) | Probe | None (method artifact) | SUPPORTED |
+| 80 | Crossing a zero | Critical | 0 (j>=1) / v0 (j=0); crossing iff j odd | SUPPORTED |
 
-**79/79 SUPPORTED. 669/669 tests passing.**
+**80/80 SUPPORTED. 670/670 tests passing.**
 
 ---
 

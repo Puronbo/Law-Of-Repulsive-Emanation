@@ -34,7 +34,7 @@ where 0/0 was refuted — twenty claims across six categories — and recovers
 every one as a removable singularity at the correct 0/0 form. **Book VIII**
 answers the five open questions the Ledger left standing.
 
-The numbers: **79 experiment files**, **246 data files**, **669 regression
+The numbers: **80 experiment files**, **247 data files**, **670 regression
 tests**, **14 PDFs**, **67 documentation files**, **48 formal theorems**,
 spanning number theory, algebra, analysis, geometry, topology, probability,
 statistical mechanics, random matrix theory, information geometry, spectral
