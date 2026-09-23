@@ -392,3 +392,34 @@ The closure recompute still equals its pinned digest byte for byte
 (`SUITE_CLOSURE_SHA = 9fff39883f799f96bca6d283d225f053a4f5232b067f73798c2e12d54d57d0c5d302612de5b3e5e4a5b3f46252811e4d71a281e586f95001cf9cf599c88b7794`);
 no validator, no test, no twin, no digest was touched by this round — only the
 prose name, so `86 validators = 86 prose` and `645 tests` are unchanged.
+
+
+## Lean completion round (origin lane genuinely built, 2026-09-23)
+
+The Round-74 reserve lines above recorded that the origin lane was not
+independently derivable on this mirror. That is now superseded by a real,
+re-verified Lean-kernel pass on the origin lane, appended byte-honestly:
+
+- The origin repository (`github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof`)
+  is mirrored on disk here at `fcc2/Millennium-Prize-Problem-Lean-4-Proof`
+  (checked out at upstream master HEAD `cb8608e…`; the mirror is gitignored
+  as an informational byte-mirror for `scripts/twin_byte_check.py`).
+- With the REAL toolchain (`leanprover/lean4:v4.33.1`, Mathlib v4.33.1 rev
+  `0df444a3…`, the origin's own committed `lean-toolchain` and
+  `lake-manifest.json`), `lake build MillenniumPrizeProblem PunoTwin` exits
+  **0, 8737 jobs**; after deleting the project's own oleans (Main, Solution,
+  Challenge, all `UniversalSingularity` modules, all `PunoTwin` roots) the
+  same build exits **0 again, 8737 jobs**, every project module recompiled
+  from source — NOT cache reuse of the project modules.
+- Byte-mirror facts: TwinAnalyticLaws, TwinRingLaws, MPOperator and
+  CollatzReach are byte-identical to the sealed closure on this mirror;
+  DirichletLaws.lean has since grown upstream (Round-70 special values
+  `L(1,χ3)`, `L(1,χ8)`, `L(1,χ8')`) and now differs on that one file; the
+  sealed `SUITE_CLOSURE_SHA` is untouched.
+- The two reserve names (EcaIsometry, MillenniumBridge) are NOT defined in
+  the origin repository and remain vendored-prose reserve by design;
+  `CollatzReach` is present but not a declared origin root; the origin's
+  own non-twin `UniversalSingularity` modules compile with `sorry`
+  placeholders (e.g. HilbertPolya). 7/7 remains unclaimed with these bytes.
+- Reproduce: mirror clone + warm package cache + `lake build` + no-cache
+  rebuild — exact commands in `HANDOFF.md` (section "The origin lane").

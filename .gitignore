@@ -47,6 +47,11 @@ debug_output/
 # Archives in archive/
 archive/
 
+# Origin-lane mirror of Millennium-Prize-Problem-Lean-4-Proof
+# (informational byte-mirror for scripts/twin_byte_check.py, not tracked;
+#  contains a 6.5 GB warm .lake package cache)
+fcc2/
+
 # Scripts that are not part of the core
 scripts/*
 !scripts/genesis_prime.py

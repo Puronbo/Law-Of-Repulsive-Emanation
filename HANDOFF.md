@@ -66,6 +66,53 @@ Grep expectations are the exact (byte) anchors the meta-audit's checks
 Byte-normalization audit (planner-only, read-only):
     python scripts\twin_byte_check.py                                                                               # closure == pin, per-file SHA-512, origin-mirror diffs
 
+## The origin lane (now genuinely built — recompute recipe)
+
+The register's former "genuine build NOT completed" bullet is closed. The
+origin repository `github.com/Puronbo/Millennium-Prize-Problem-Lean-4-Proof`
+is mirrored on disk at `fcc2\Millennium-Prize-Problem-Lean-4-Proof` (this
+mirror is gitignored; `scripts/twin_byte_check.py` reports it as an
+informational byte-mirror). Live state and exact recompute:
+
+- mirror checkout: upstream master HEAD `cb8608e…`
+  (`git -C fcc2\Millennium-Prize-Problem-Lean-4-Proof rev-parse HEAD`)
+- real toolchain: `leanprover/lean4:v4.33.1` (origin's own `lean-toolchain`),
+  Mathlib v4.33.1 rev `0df444a3…` (origin's committed `lake-manifest.json`)
+- warm package cache: `fcc2\...\.lake\packages` was populated from the mirror
+  lane's already-built cache (all nine package revs matched the origin
+  manifest byte-for-byte before copying), so no mathlib rebuild was needed.
+- build #1 (all modules): delete `.lake\build\lib\lean\*` oleans and run
+
+      $env:PATH = "$env:USERPROFILE\.elan\bin;$env:PATH"
+      lake build MillenniumPrizeProblem PunoTwin          # exit 0, 8737 jobs
+
+  at `fcc2\Millennium-Prize-Problem-Lean-4-Proof`. `Build completed
+  successfully (8737 jobs)`, TRUE exit 0.
+- build #2 (fresh no-cache on the project's own modules): DELETE the
+  project oleans (Main, Solution, Challenge, UniversalSingularity/*,
+  PunoTwin/*) and run the same command — exit 0 again, 8737 jobs, every
+  project module recompiled from source (e.g. PunoTwin.DirichletLaws 24 s,
+  TwinAnalyticLaws 26 s, TwinRingLaws 26 s, MPOperator 27 s). The pass is
+  provably NOT cache reuse of the project modules; only the vendored
+  dependency oleans (mathlib and aux packages) are reused, as in any lake
+  project.
+- scope facts (recorded, not hidden): the origin's `lean_lib PunoTwin`
+  declares roots TwinAnalyticLaws/TwinRingLaws/MPOperator/DirichletLaws —
+  `CollatzReach.lean` is present but NOT a declared origin root (its
+  byte-identical vendored copy compiles in the mirror lane's PunoTwin
+  target, 21-23 s); the origin's non-twin `UniversalSingularity` modules
+  compile with exit-0 `sorry` warnings (e.g. HilbertPolya; `declaration
+  uses sorry`); the origin raises NO 7/7 claim by itself.
+- byte-mirror facts after the build: TwinAnalyticLaws, TwinRingLaws,
+  MPOperator and CollatzReach remain byte-identical to the sealed vendored
+  closure; DirichletLaws.lean has SINCE grown upstream (Round-70 special
+  values L(1,χ3), L(1,χ8), L(1,χ8')) so its live origin bytes now differ
+  from the sealed closure on that single file. `SUITE_CLOSURE_SHA` is
+  untouched (check #10 still recomputes it over the sealed vendored tree).
+  The provenance pin `a975c74` predates the current upstream history and no
+  longer resolves in a fresh clone; the vendored closure remains pinned to
+  its recorded digest.
+
 ## Honest boundaries (do not let these be over-read)
 
 - The 5/7 derivable twins have a REAL kernel pass: `lake build` of
@@ -85,6 +132,10 @@ Byte-normalization audit (planner-only, read-only):
   (`native_decide`), intentionally outside Mathlib. The register stands
   at 5/7 kernel-pass + 2/7 reserved prose, and NO 7/7 is claimed
   anywhere.
+- The origin lane genuinely builds (see recipe above) but that does NOT
+  certify the 2/7 reserve: those two names do not exist in the origin
+  repository at all, so nothing upstream can be over-read as their
+  derivation.
 - Working-tree drift is real and visible (`git status --porcelain`);
   `experiments/emanation/data/supervision_verdict.json` carries a
   regenerate-time timestamp diff; the protected file
