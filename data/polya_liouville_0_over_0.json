@@ -1,0 +1,32 @@
+{
+  "form": "F(n)/sqrt(n), F(n)=sum lambda(k)",
+  "mechanism": "ANTI-CLASS",
+  "point": "n -> inf (records)",
+  "removable_value": null,
+  "conjecture": "Polya F(n)<=0 false (Littlewood Omega_+-)",
+  "first_positive_known": 906150257,
+  "first10": [
+    1,
+    0,
+    -1,
+    0,
+    -1,
+    0,
+    -1,
+    -2,
+    -1,
+    0
+  ],
+  "minF": -3461,
+  "minF_n": 8803471,
+  "n_records": 3462,
+  "last_record_n": 8803471,
+  "gates": {
+    "G1 F(1..10) exact (A002819)": true,
+    "G2 Polya predicate holds over [2,1e7]": true,
+    "G3 record census: live walk to 1e7 (oscillation signature)": true,
+    "G4 anti-class cited (Littlewood; first+ at 906150257)": true
+  },
+  "overall": true,
+  "wall": "finite range to 1e7; anti-class value from Littlewood"
+}

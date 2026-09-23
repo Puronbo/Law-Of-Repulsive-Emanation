@@ -1,0 +1,59 @@
+{
+  "form": "rho(E) * (2-E)^{1/2} -> 1/(2 pi) at E -> 2",
+  "mechanism": "Vanishing Rate",
+  "removable_value": 0.15915494309189535,
+  "edge_counts": [
+    [
+      0.2,
+      0.14355,
+      0.32098755817009483
+    ],
+    [
+      0.1,
+      0.10105,
+      0.3195481575600147
+    ],
+    [
+      0.05,
+      0.0713,
+      0.31886329359147003
+    ],
+    [
+      0.02,
+      0.04505,
+      0.31855160492453966
+    ],
+    [
+      0.01,
+      0.0318,
+      0.318
+    ],
+    [
+      0.005,
+      0.0225,
+      0.31819805153394637
+    ],
+    [
+      0.002,
+      0.0142,
+      0.31752165280497013
+    ],
+    [
+      0.001,
+      0.01005,
+      0.31780890484692215
+    ]
+  ],
+  "edge_exponent": 0.4986954283257537,
+  "edge_amplitude": 0.31780890484692215,
+  "edge_approach_slope": 1.9999999384598393,
+  "rho0": 0.15916290100279123,
+  "gates": {
+    "G1 edge exponent 1/2": true,
+    "G2 edge amplitude F/sqrt(eps) = 1/pi": true,
+    "G3 edge product rho*sqrt(2-E) = 1/(2 pi)": true,
+    "G4 interior rho(0) = 1/(2 pi)": true
+  },
+  "overall": true,
+  "wall": "exact finite-chain spectrum; standard free-electron DOS"
+}

@@ -3972,4 +3972,137 @@ def test_gap_analysis_0_over_0():
     # A5: Laplacian is positive (strict minimum)
     for g in grads:
         assert g['laplacian'] > 0
+# --- At-the-wall extensions and the anti-class sweep (atlas #56-#75, corpus #57-#79) ---
 
+def test_galois_discriminant_0_over_0():
+    d = load('galois_discriminant_0_over_0.json')
+    assert d['overall'] is True
+    assert d['gates']['G1 double-root rate m-1 = 1 (valuation)']
+    assert d['gates']['G2 triple-root rate m-1 = 2 (valuation)']
+
+def test_bott_periodicity_0_over_0():
+    d = load('bott_periodicity_0_over_0.json')
+    assert d['overall'] is True
+    assert d['gates']['G2 complex period-2 ratio 4']
+    assert d['gates']['G4 0/0 removable value 1 at odd n']
+
+def test_ricci_flow_neck_pinch_0_over_0():
+    d = load('ricci_flow_neck_pinch_0_over_0.json')
+    assert d['overall'] is True
+    assert abs(d['removable_value'] - 8 * 3.141592653589793) < 1e-6
+    assert d['gates']['G3 pinch-width sqrt scaling r^2 ~ 2(T-t)']
+
+def test_natural_transformation_0_over_0():
+    d = load('natural_transformation_0_over_0.json')
+    assert d['overall'] is True
+    assert d['gates']['G4 degenerate limit removable value 1']
+
+def test_generating_function_singularity_0_over_0():
+    d = load('generating_function_singularity_0_over_0.json')
+    assert d['overall'] is True
+    assert abs(d['radius'] - 4.0) < 1e-2
+    assert abs(d['removable_value'] - 1.0 / 1.7724538509055159) < 1e-6
+
+def test_birkhoff_average_0_over_0():
+    d = load('birkhoff_average_0_over_0.json')
+    assert d['overall'] is True
+    assert d['gates']['G1 generic: R -> 1 and A_full -> 1/3']
+    assert d['gates']['G2 exceptional: R -> 0 and A_full -> 5/18']
+
+def test_spectral_density_band_edge_0_over_0():
+    d = load('spectral_density_band_edge_0_over_0.json')
+    assert d['overall'] is True
+    assert abs(d['removable_value'] - 1.0 / (2 * 3.141592653589793)) < 1e-6
+    assert 0.4 < d['edge_exponent'] < 0.6
+
+def test_neron_tate_height_torsion_0_over_0():
+    d = load('neron_tate_height_torsion_0_over_0.json')
+    assert d['overall'] is True
+    assert abs(d['C_K1'] - 0.375) < 1e-3
+
+def test_polya_liouville_0_over_0():
+    d = load('polya_liouville_0_over_0.json')
+    assert d['overall'] is True
+    assert d['first_positive_known'] == 906150257
+    assert d['removable_value'] is None
+
+def test_twin_prime_density_0_over_0():
+    d = load('twin_prime_density_0_over_0.json')
+    assert d['overall'] is True
+    assert abs(d['removable_value'] - 1.0) < 1e-6
+    assert abs(d['C2_computed'] - 0.66016) < 1e-3
+
+def test_goldbach_density_0_over_0():
+    d = load('goldbach_density_0_over_0.json')
+    assert d['overall'] is True
+    assert d['removable_value'] == 1.0
+    assert 0.9 < d['mean_R'] < 1.5
+
+def test_mobius_mertens_0_over_0():
+    d = load('mobius_mertens_0_over_0.json')
+    assert d['overall'] is True
+    assert d['removable_value'] is None
+    assert 0.3 < d['fluctuation_beta'] < 0.55
+
+def test_prime_reciprocal_0_over_0():
+    d = load('prime_reciprocal_0_over_0.json')
+    assert d['overall'] is True
+    assert abs(d['removable_value'] - 0.26149721284764277) < 1e-6
+    assert d['pi_N'] == 1270607
+
+def test_dirichlet_divisor_anti_0_over_0():
+    d = load('dirichlet_divisor_anti_0_over_0.json')
+    assert d['overall'] is True
+    assert d['removable_value'] is None
+    assert d['min_decade_max_ratio_1e4_to_1e7'] > 1.0
+
+def test_gauss_circle_anti_0_over_0():
+    d = load('gauss_circle_anti_0_over_0.json')
+    assert d['overall'] is True
+    assert d['removable_value'] is None
+    assert d['min_decade_max_ratio_1e4_to_1e7'] > 1.0
+
+def test_euler_totient_0_over_0():
+    d = load('euler_totient_0_over_0.json')
+    assert d['overall'] is True
+    assert abs(d['removable_value'] - 0.3039635509270133) < 1e-6
+    assert d['ratio_beta'] < -0.5
+
+def test_character_sums_0_over_0():
+    d = load('character_sums_0_over_0.json')
+    assert d['overall'] is True
+    assert d['removable_value'] == 0.0
+    assert d['ratio_beta'] < -0.3
+
+def test_char_walk_anti_0_over_0():
+    d = load('char_walk_anti_0_over_0.json')
+    assert d['overall'] is True
+    assert d['removable_value'] is None
+    assert d['floor_beta'] > 0.0
+
+def test_chebyshev_psi_0_over_0():
+    d = load('chebyshev_psi_0_over_0.json')
+    assert d['overall'] is True
+    assert d['suppmax_ratio'] < 1.27
+    assert d['suppmax_x'] > 3e7
+
+def test_mertens_product_0_over_0():
+    d = load('mertens_product_0_over_0.json')
+    assert d['overall'] is True
+    assert -0.95 < d['beta_fit'] < -0.30
+
+def test_lattice_wall_1e8_0_over_0():
+    d = load('lattice_wall_1e8_0_over_0.json')
+    assert d['overall'] is True
+    assert d['band_floor_div'] >= 1.0
+    assert d['band_floor_cir'] >= 1.0
+
+def test_polya_wall_1e8_0_over_0():
+    d = load('polya_wall_1e8_0_over_0.json')
+    assert d['overall'] is True
+    assert d['first_positive_known'] == 906150257
+
+def test_aclass_detector():
+    d = load('aclass_detector.json')
+    assert d['overall'] is True
+    assert all(d['gates'][k] for k in d['gates'])

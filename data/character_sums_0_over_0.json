@@ -1,0 +1,43 @@
+{
+  "form": "S(x)/x^(1/2), S(x) = sum_{n<=x} chi(n), chi fixed primitive quadratic mod 7",
+  "mechanism": "Probe",
+  "point": "x -> infinity",
+  "removable_value": 0.0,
+  "conjecture": "S(x)/sqrt(x) -> 0: partial sums of a periodic mean-zero character are bounded (Poya-Vinogradov), so the ratio provably vanishes at slope ~ -1/2; the control member for 'raw oscillation is never evidence; only the ratio's decade trend is'",
+  "S_at_powers_of_10": {
+    "2": 2,
+    "3": 0,
+    "4": 2,
+    "5": 1,
+    "6": 1,
+    "7": 1
+  },
+  "decade_max_ratio": {
+    "2": 0.2,
+    "3": 0.06315089779506726,
+    "4": 0.02,
+    "5": 0.006324428833024958,
+    "6": 0.00199999900000075,
+    "7": 0.00031622776601683794
+  },
+  "decade_max_abs": {
+    "2": 2,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 2,
+    "7": 1
+  },
+  "ratio_beta": -0.5903081518423152,
+  "ratio_r2": 0.9846368548914478,
+  "box_ratio": 1.0,
+  "gates": {
+    "G1 character axioms (period sum, multiplicativity)": true,
+    "G2 removable 0 (Poya-Vinogradov, cited)": true,
+    "G3 decay sign (beta < -0.3, r2 > 0.9)": true,
+    "G4 bounded box (late/early max |S| <= 2)": true,
+    "G5 ratio below 0.01 at the wall": true
+  },
+  "overall": true,
+  "wall": "exact S(x) to 1e7; the truth of the limit rests on the Poya-Vinogradov bound, not the wall; the cross-modulus Paley oscillation (Omega_+(sqrt(q) log log q)) is a separate 0/0 in q-space beyond any finite x-range"
+}

@@ -800,6 +800,14 @@ Each experiment produces a JSON data file in `data/`. The files contain:
 | Noether | `data/noether_theorem_0_over_0_data.json` |
 | Pythagorean | `data/pythagorean_0_over_0_data.json` |
 | Pólya anti-class | `data/polya_liouville_0_over_0.json` |
+| Galois discriminant | `data/galois_discriminant_0_over_0.json` |
+| Bott periodicity | `data/bott_periodicity_0_over_0.json` |
+| Ricci flow neck pinch | `data/ricci_flow_neck_pinch_0_over_0.json` |
+| Natural transformation | `data/natural_transformation_0_over_0.json` |
+| Generating function singularity | `data/generating_function_singularity_0_over_0.json` |
+| Birkhoff average | `data/birkhoff_average_0_over_0.json` |
+| Spectral density (band edge) | `data/spectral_density_band_edge_0_over_0.json` |
+| Neron-Tate height (torsion) | `data/neron_tate_height_torsion_0_over_0.json` |
 | Twin-prime density | `data/twin_prime_density_0_over_0.json` |
 | Goldbach density | `data/goldbach_density_0_over_0.json` |
 | Mertens function | `data/mobius_mertens_0_over_0.json` |
@@ -812,6 +820,8 @@ Each experiment produces a JSON data file in `data/`. The files contain:
 | Lattice pair at the 10^8 wall (extension of #69/#70) | `data/lattice_wall_1e8_0_over_0.json` |
 | Pólya/Liouville walk at the 10^8 wall (extension of #64) | `data/polya_wall_1e8_0_over_0.json` |
 | Chebyshev walk δ/√x (anti-class) | `data/chebyshev_psi_0_over_0.json` |
+| Mertens product complement | `data/mertens_product_0_over_0.json` |
+| Fluctuation-scale detector (aclass) | `data/aclass_detector.json` |
 | Landau function | `data/landau_function_0_over_0_data.json` |
 
 *The Landau-function calibration (corpus #56, PL-21; registered 2026-09-22) -- REMOVABLE named value 1, Vanishing Rate, Landau 1903: log g(n)/sqrt(n log n) -> 1 unconditionally (A000793, 5/5 gates PASS, settled referee) -- is the numbered census's 76th entry (§2.20, above).*
@@ -839,4 +849,4 @@ family above are the same object: an integer removable value of a 0/0.
 
 *This atlas is a reference document. For the philosophical interpretation, see ON_THE_NATURE_OF_ZERO.md. For the synthesis, see THE_UNIVERSAL_ZERO.md. For the epistemology, see REMOVABLE_SINGULARITIES.md.*
 
-*All 70 removable-value entries verified computationally (64-sweep + 6 open-target/named/control — the sweep's 64th, the Landau-function calibration #76 — REMOVABLE value 1, Vanishing Rate, Landau 1903; the sixth, the Mertens product-gap complement #75 — REMOVABLE value 0, elementary, Mertens 1874); entries 64, 67, 69, 70, 73 and 74 document the anti-class — the Pólya and Mertens conjectures are FALSE, proven externally (Littlewood; Odlyzko–te Riele), the Chebyshev-walk ratio has no limit, proven unconditionally (Montgomery–Vaughan Thm 15.11: ψ − x = Ω±(x^{1/2})), the divisor/circle ratios have no limit, proven unconditionally (Hardy 1916; Voronoi; Sierpiński), and the character-walk sup-ratio has no limit in q-space, proven unconditionally (Paley 1932; Pólya–Vinogradov 1918) — each borne out by its fluctuation reading (Pólya 0.486, Mertens 0.433, Chebyshev δ band 0.51·0.61·0.71·0.69·0.68·0.75 below the √n floor — the theorem, not the range, arbitrates, divisor/circle bounded-band order-one, character-walk floor 0.577+ with creeping sup); entry 71 documents the removable side's flat-decay anchor (3/π², β_ratio = −1.20, Dirichlet 1849); entry 72 documents the bounded-box control (mod-7 character partial sums: |S| ≤ 2 at every x to 1e7, S(x)/√x → 0 at β_ratio = −0.590, Pólya–Vinogradov) — the manufactured counterpoint proving the criterion reads the ratio's decade trend alone, never the size of the raw oscillation. 646 regression tests passing.*
+*All 70 removable-value entries verified computationally (64-sweep + 6 open-target/named/control — the sweep's 64th, the Landau-function calibration #76 — REMOVABLE value 1, Vanishing Rate, Landau 1903; the sixth, the Mertens product-gap complement #75 — REMOVABLE value 0, elementary, Mertens 1874); entries 64, 67, 69, 70, 73 and 74 document the anti-class — the Pólya and Mertens conjectures are FALSE, proven externally (Littlewood; Odlyzko–te Riele), the Chebyshev-walk ratio has no limit, proven unconditionally (Montgomery–Vaughan Thm 15.11: ψ − x = Ω±(x^{1/2})), the divisor/circle ratios have no limit, proven unconditionally (Hardy 1916; Voronoi; Sierpiński), and the character-walk sup-ratio has no limit in q-space, proven unconditionally (Paley 1932; Pólya–Vinogradov 1918) — each borne out by its fluctuation reading (Pólya 0.486, Mertens 0.433, Chebyshev δ band 0.51·0.61·0.71·0.69·0.68·0.75 below the √n floor — the theorem, not the range, arbitrates, divisor/circle bounded-band order-one, character-walk floor 0.577+ with creeping sup); entry 71 documents the removable side's flat-decay anchor (3/π², β_ratio = −1.20, Dirichlet 1849); entry 72 documents the bounded-box control (mod-7 character partial sums: |S| ≤ 2 at every x to 1e7, S(x)/√x → 0 at β_ratio = −0.590, Pólya–Vinogradov) — the manufactured counterpoint proving the criterion reads the ratio's decade trend alone, never the size of the raw oscillation. 669 regression tests passing.*

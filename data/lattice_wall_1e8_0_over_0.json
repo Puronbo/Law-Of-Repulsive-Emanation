@@ -1,0 +1,80 @@
+{
+  "probe": "extension of atlas #69/#70 to the 10^8 wall (no new numbered member); equal range with #64/#67",
+  "form": "max-window |Delta(x)|/x^(1/4) and |P(x)|/x^(1/4), samples: 80 log-uniform points per decade, decades 4..7",
+  "S_at_powers_of_10": {
+    "2": 482,
+    "3": 7069,
+    "4": 93668,
+    "5": 1166750,
+    "6": 13970034,
+    "7": 162725364,
+    "8": 1857511568
+  },
+  "N_at_powers_of_10": {
+    "2": 317,
+    "3": 3149,
+    "4": 31417,
+    "5": 314197,
+    "6": 3141549,
+    "7": 31416025,
+    "8": 314159053
+  },
+  "wilson_windows_div": {
+    "4": {
+      "max_ratio": 2.568367691098759,
+      "argmax": 91727,
+      "delta": -44.69732117233798
+    },
+    "5": {
+      "max_ratio": 2.643316042982073,
+      "argmax": 530884,
+      "delta": 71.35082531534135
+    },
+    "6": {
+      "max_ratio": 2.912844555717163,
+      "argmax": 1000000,
+      "delta": 92.11223266087472
+    },
+    "7": {
+      "max_ratio": 2.9919956949647304,
+      "argmax": 99999999,
+      "delta": 299.1995687484741
+    }
+  },
+  "wilson_windows_cir": {
+    "4": {
+      "max_ratio": 4.243075249995311,
+      "argmax": 11220,
+      "p": -43.66957327747514
+    },
+    "5": {
+      "max_ratio": 3.105520864499814,
+      "argmax": 112201,
+      "p": -56.8373254283797
+    },
+    "6": {
+      "max_ratio": 4.419679112916978,
+      "argmax": 2113489,
+      "p": -168.51584283821285
+    },
+    "7": {
+      "max_ratio": 4.599348273962994,
+      "argmax": 25118864,
+      "p": -325.6089211255312
+    }
+  },
+  "dip_resolved": true,
+  "band_floor_div": 2.568367691098759,
+  "band_floor_cir": 3.105520864499814,
+  "Delta_1e8": 360.6244566440582,
+  "P_1e8": -212.35897928476334,
+  "gates": {
+    "G1 identity continuity (sieved tables reproduced)": true,
+    "G2 cited closed forms (method continuity)": true,
+    "G3 dip resolution (10^7 was not a trend)": true,
+    "G4 band >= 1.0 at the 10^8 wall": true,
+    "G5 wall landmarks sanity": true
+  },
+  "overall": true,
+  "wall": "windows are sampled maxima, not true records; the anti verdict is unchanged (no limit, Hardy 1916) and this file only corroborates that the finite read holds at the equal-range wall"
+}

@@ -1,0 +1,32 @@
+{
+  "form": "(A_N - m_N)/(A_N - 1/3) = 0/0 at N=inf",
+  "mechanism": "Probe",
+  "generic": {
+    "p": 455432628215,
+    "q": 1099511627783,
+    "last": [
+      1048576,
+      0.7424396690739286,
+      0.0008725936108217591,
+      0.0010303252984834033
+    ]
+  },
+  "exceptional": {
+    "p": 1,
+    "q": 3,
+    "last": [
+      1048576,
+      -0.0,
+      8.158473896457963e-13,
+      0.0
+    ]
+  },
+  "gates": {
+    "G1 generic: R -> 1 and A_full -> 1/3": true,
+    "G2 exceptional: R -> 0 and A_full -> 5/18": true,
+    "G3 generic: 0/0 blocks collapse": true,
+    "G4 exceptional: 0/0 blocks collapse": true
+  },
+  "overall": true,
+  "wall": "finite N; equidistribution heuristic"
+}

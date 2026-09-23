@@ -1,0 +1,40 @@
+{
+  "form": "R(q) = sup_x |S_q(x)|/sqrt(q), S_q(x) = sum_{n<=x} (n|q), q = 3 (mod 4) prime; a 0/0 in q-space",
+  "mechanism": "Anti-class (nonexistent)",
+  "point": "q -> infinity over primes = 3 (mod 4)",
+  "removable_value": null,
+  "conjecture": "lim R(q) does not exist: Poya-Vinogradov 1918 R <= C log q; Paley 1932 R >= c log log q infinitely often; numerically the band floors ~0.7 and never decays, the sup creeps 0.76 -> 1.91 to 2e4",
+  "decade_min_R": {
+    "0": 0.5773502691896258,
+    "1": 0.6882472016116852,
+    "2": 0.7049344049891616,
+    "3": 0.6985280930716612,
+    "4": 0.6927959018751502
+  },
+  "decade_med_R": {
+    "0": 0.6666396076040402,
+    "1": 0.9860784241299559,
+    "2": 1.0793245163997092,
+    "3": 1.1424214657111211,
+    "4": 1.1469942195590195
+  },
+  "decade_max_R": {
+    "0": 0.7559289460184544,
+    "1": 1.1867816581938533,
+    "2": 1.553572529459382,
+    "3": 1.839134408515068,
+    "4": 1.912896264328092
+  },
+  "n_primes": 1136,
+  "floor_beta": 0.01647712975602202,
+  "class_numbers_ok": true,
+  "gates": {
+    "G1 character axioms + zero period sum": true,
+    "G2 class-number formula h(-q) (known values)": true,
+    "G3 anti cited (Poya-Vinogradov + Paley, no limit)": true,
+    "G4 ratio non-decay: floor above 0.5 in every decade": true,
+    "G5 creeping sup >= 1.5x early (spike set shadow)": true
+  },
+  "overall": true,
+  "wall": "the finite read corroborates the structure (floor + creeping sup); the NO-LIMIT verdict rests on Paley 1932; the mean band ~1.15 sqrt(q) is the generic 'broken random walk' behavior, Paley's spikes are measure-zero anomalies the sup tracks"
+}

@@ -1,0 +1,64 @@
+{
+  "form": "M(n)/n^(1/2), M(n) = sum_{k<=n} mu(k)",
+  "mechanism": "ANTI-CLASS",
+  "point": "n -> infinity (records)",
+  "removable_value": null,
+  "conjecture": "|M(n)| < sqrt(n) is FALSE (Odlyzko-te Riele 1985: limsup ratio > 1.06, liminf < -1.009; no explicit counterexample known; verified numerically to 10^23)",
+  "M_at_powers_of_10": {
+    "0": 1,
+    "1": -1,
+    "2": 1,
+    "3": 2,
+    "4": -23,
+    "5": -48,
+    "6": 212,
+    "7": 1037,
+    "8": 1928
+  },
+  "fluctuation_beta": 0.43288671198752726,
+  "beta_r2": 0.9748588592268713,
+  "beta_ndecades": 7,
+  "max_abs_ratio_in_range": 0.8944271909999159,
+  "argmax_ratio": 5,
+  "near_miss_n_ge_1e3": {
+    "ratio": 0.47220269325540665,
+    "at": 2803
+  },
+  "near_miss_n_ge_1e5": {
+    "ratio": 0.4627286901166685,
+    "at": 30919091
+  },
+  "top_near_miss_holders": [
+    {
+      "n": 5,
+      "ratio": 0.8944271909999159
+    },
+    {
+      "n": 13,
+      "ratio": 0.8320502943378437
+    },
+    {
+      "n": 7,
+      "ratio": 0.7559289460184544
+    },
+    {
+      "n": 31,
+      "ratio": 0.7184212081070996
+    },
+    {
+      "n": 8,
+      "ratio": 0.7071067811865475
+    }
+  ],
+  "n_records": 3448,
+  "last_record_n": 76015339,
+  "gates": {
+    "G1 Mobius inversion identity sum_{d|n} mu(d) = [n==1]": true,
+    "G2 M(10^k) matches A084237 (k=4..8)": true,
+    "G3 Mertens bound holds on [2,1e8] (honest wall, designed to fail)": true,
+    "G4 fluctuation exponent ~ 1/2 (anti-class, calibrated at Polya)": true,
+    "G5 no removable value (Odlyzko-te Riele, cited)": true
+  },
+  "overall": true,
+  "wall": "exact mu to 1e8; first confirmed Mertens-counterexample region not reachable (conjecture verified to 10^23 externally)"
+}

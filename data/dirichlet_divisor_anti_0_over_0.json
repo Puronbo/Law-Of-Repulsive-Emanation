@@ -1,0 +1,46 @@
+{
+  "form": "Delta(x)/x^(1/4), Delta(x) = sum_{n<=x} d(n) - x*log(x) - (2*gamma-1)*x",
+  "mechanism": "ANTI-CLASS",
+  "point": "x -> infinity (records)",
+  "removable_value": null,
+  "conjecture": "Delta(x)/x^(1/4) has NO limit: Hardy (1916) Omega_+((x log x)^(1/4) log log x) gives limsup = +infinity and Omega_-(x^(1/4)) gives infinitely many negative values; Voronoi (1903) O(x^(1/3)); Huxley (2003) O(x^(131/416+eps)); the open question is the correction below x^(1/3) (Hardy's theta = 1/4 conjectured)",
+  "S_at_powers_of_10": {
+    "2": 482,
+    "3": 7069,
+    "4": 93668,
+    "5": 1166750,
+    "6": 13970034,
+    "7": 162725364
+  },
+  "decade_max_ratio": {
+    "2": 3.384392994941055,
+    "3": 3.8397212698388463,
+    "4": 4.827183314286606,
+    "5": 5.376321759246879,
+    "6": 5.804480126189333,
+    "7": 1.6750038087362078
+  },
+  "decade_max_dev": {
+    "2": 18.220093822043054,
+    "3": 35.486157070452464,
+    "4": 85.19401954719797,
+    "5": 169.24945365451276,
+    "6": 296.6293310970068,
+    "7": 94.19238615036011
+  },
+  "ratio_beta": -0.13457559019130685,
+  "ratio_r2": 0.47110818080652794,
+  "min_decade_max_ratio_1e4_to_1e7": 1.6750038087362078,
+  "max_dev_over_x13": 1.931038119265695,
+  "argmax_dev_over_x13": 840,
+  "gates": {
+    "G1 divisor identity S(x) = sum floor(x/d)": true,
+    "G2 divisor table d(1..16)": true,
+    "G3 no removable value (Hardy 1916 + Voronoi 1903, cited)": true,
+    "G4 ratio |Delta|/x^(1/4) stays order one (non-decay)": true,
+    "G5 |Delta|/x^(1/3) respects Voronoi's 1/3 bound": true,
+    "G6 signs oscillate in each late decade": true
+  },
+  "overall": true,
+  "wall": "exact S(x) and Delta(x) to 1e7; limsup of the ratio is unconditionally +infinity (Hardy), so no finite range can display the failure; the class already reads fluctuations on and above the 1/4 denominator, order-one to the wall"
+}
