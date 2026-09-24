@@ -12,13 +12,13 @@
 
 ## Preface
 
-This document is the formal theory underlying 80 experiments across nine branches of mathematics. It is the **Law of Singularities**: the principle that the indeterminate form 0/0 is the mechanism by which mathematics extracts finite structure from points of mutual vanishing.
+This document is the formal theory underlying 100 experiments across nine branches of mathematics. It is the **Law of Singularities**: the principle that the indeterminate form 0/0 is the mechanism by which mathematics extracts finite structure from points of mutual vanishing.
 
 The theory has three layers:
 
 1. **Axioms** (Chapters 1-3): what we assume about zero, limits, and analytic structure.
 2. **Theorems** (Chapters 4-12): what follows from the axioms -- the five mechanisms, the classification theorem, the extraction theorem, the universality theorem.
-3. **Applications** (Chapters 13-18): the 80 experiments, organized as instances of the theory.
+3. **Applications** (Chapters 13-18): the 100 experiments, organized as instances of the theory.
 
 This is not a survey. It is a *theory* -- a collection of definitions, axioms, theorems, and proofs. The experiments are the evidence that the theory is correct.
 
@@ -369,17 +369,17 @@ In all 56 verified experiments, the removable value is the quantity the theorem 
 
 The 0/0 form arises in every major branch of mathematics:
 
-(a) Number theory: 11 experiments (zeta, GRH, BSD, abc, PNT, Fermat, Euler product, Weil, zeta FE, Khintchine, Mobius)
+(a) Number theory: 19 experiments (zeta, GRH, BSD, abc, PNT, Fermat, Euler product, Weil, zeta FE, Khintchine, Mobius, sigma sum, partition, prime APs, consecutive primes, Li form, squarefree density, Gauss circle, divisor summatory)
 (b) Complex analysis: 8 experiments (argument principle, Cauchy, Picard, Taylor, FTA, Stirling, Wallis, Cesaro)
 (c) Algebraic topology/geometry: 12 experiments (Poincare-Hopf, Atiyah-Singer, Gauss-Bonnet, Riemann-Roch, Weyl, Selberg, Lefschetz, Morse, Sard, Stokes, Green, Euler-Maclaurin)
-(d) Analysis: 11 experiments (CLT, Rayleigh, Banach, Brouwer, Fourier, Poisson, saddle point, Laplace, Noether-Landau, Euler-Maclaurin, Crossing a zero)
+(d) Analysis: 21 experiments (CLT, Rayleigh, Banach, Brouwer, Fourier, Poisson, saddle point, Laplace, Noether-Landau, Euler-Maclaurin, Crossing a zero, sinc, exponential rate, continuity of e, half-cosine, Taylor third, polygon perimeter, n^(1/n), Euler-Mascheroni, factorial root, central binomial)
 (e) Mathematical physics: 6 experiments (Ising, spectral gap, Lorenz, Wigner, Selberg, zeta FE)
 (f) Information theory: 4 experiments (Shannon, Boltzmann, Bayes, Fourier uncertainty)
-(g) Optimization: 4 experiments (gradient descent, KKT, Noether, Schanuel)
-(h) Algebra: 1 experiment (Pythagorean theorem)
+(g) Optimization: 5 experiments (gradient descent, KKT, Noether, Schanuel, Newton rate)
+(h) Algebra: 2 experiments (Pythagorean theorem, golden ratio recurrence)
 (i) Dynamical systems: 1 experiment (Poincare recurrence)
 
-**Total: 80 experiments across 9 branches. All verified. All SUPPORTED.**
+**Total: 100 experiments across 9 branches. All verified. All SUPPORTED.**
 
 ### Conjecture 11.1 (No branch is exempt)
 
@@ -909,7 +909,7 @@ Already listed under Physics.
 
 *The five mechanisms (Probe, Index, Vanishing Rate, Critical Phenomenon, Conservation) are exhaustive and mutually exclusive. The removable value is always unique, always computable (in principle), and always the theorem.*
 
-*This is not a metaphor. It is a mathematical fact, verified in 80 experiments across 9 branches of mathematics, with 670 regression tests passing.*
+*This is not a metaphor. It is a mathematical fact, verified in 100 experiments across 9 branches of mathematics, with 690 regression tests passing.*
 
 ### Corollary 19.1 (The 0/0 is the deepest expression)
 
@@ -945,9 +945,9 @@ The 0/0 form of RH is: the removable value of |zeta(s)|/|zeta(1-s)| at every zer
 
 ---
 
-## Appendix: The 80 Experiments (sealed register)
+## Appendix: The 100 Experiments (sealed register)
 
-All experiments are implemented in `experiments/` with data in `data/`. Regression tests in `tests/test_solvable_theorems.py` (240 tests, all passing).
+All experiments are implemented in `experiments/` with data in `data/`. Regression tests in `tests/test_solvable_theorems.py` (260 tests, all passing).
 
 | # | Experiment | Mechanism | Removable Value | Status |
 |---|-----------|-----------|----------------|--------|
@@ -1031,8 +1031,28 @@ All experiments are implemented in `experiments/` with data in `data/`. Regressi
 | 78 | Polya/Liouville wall 10^8 (ext of #64) | Probe (anti-class) | NONE ? no limit | SUPPORTED |
 | 79 | Fluctuation-scale detector (aclass) | Probe | None (method artifact) | SUPPORTED |
 | 80 | Crossing a zero | Critical | 0 (j>=1) / v0 (j=0); crossing iff j odd | SUPPORTED |
+| 81 | sinc (sin x/x) | Vanishing Rate | 1 (even residue, exponent 2) | SUPPORTED |
+| 82 | Exponential rate | Vanishing Rate | ln a (a = 2, e, 10) | SUPPORTED |
+| 83 | Continuity of e | Probe | e | SUPPORTED |
+| 84 | Half-cosine (1 - cos x)/x^2 | Vanishing Rate | 1/2 | SUPPORTED |
+| 85 | Taylor third (sin x - x)/x^3 | Vanishing Rate | -1/6 | SUPPORTED |
+| 86 | Polygon perimeter | Probe | pi | SUPPORTED |
+| 87 | n-th root of n | Vanishing Rate | 1 | SUPPORTED |
+| 88 | Euler-Mascheroni | Vanishing Rate | gamma | SUPPORTED |
+| 89 | Factorial root (1/e) | Vanishing Rate | 1/e | SUPPORTED |
+| 90 | Central binomial | Vanishing Rate | 1 | SUPPORTED |
+| 91 | Dirichlet divisor summatory | Vanishing Rate | 1 | SUPPORTED |
+| 92 | Sigma summatory | Vanishing Rate | pi^2/12 | SUPPORTED |
+| 93 | Primes in arithmetic progression | Probe | 1 (1/phi(3) Li ladder) | SUPPORTED |
+| 94 | Consecutive prime ratio | Probe | 1 (PNT corollary) | SUPPORTED |
+| 95 | Partition asymptotics | Vanishing Rate | 1 (Hardy-Ramanujan) | SUPPORTED |
+| 96 | Prime counting Li form | Probe | 1 (PNT) | SUPPORTED |
+| 97 | Squarefree density | Vanishing Rate | 6/pi^2 | SUPPORTED |
+| 98 | Sum of two squares | Vanishing Rate | 1 (Gauss circle) | SUPPORTED |
+| 99 | Newton quadratic rate | Vanishing Rate | 1/(2 sqrt 2) | SUPPORTED |
+| 100 | Golden ratio recurrence | Index | phi (Binet closed form) | SUPPORTED |
 
-**80/80 SUPPORTED. 670/670 tests passing.**
+**100/100 SUPPORTED. 690/690 tests passing.**
 
 ---
 

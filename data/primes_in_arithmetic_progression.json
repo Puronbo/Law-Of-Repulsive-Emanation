@@ -1,0 +1,35 @@
+{
+  "form": "pi(x;3,1)/(Li(x)/phi(3)) at x -> oo (0/0 at infinity)",
+  "mechanism": "Probe",
+  "removable_value": "1 (1/phi(3) = 1/2 of the Li ladder; PNT-AP)",
+  "instances": [
+    {
+      "x": 100000,
+      "pi_x_mod1": 4784,
+      "pi_x_mod2": 4808,
+      "li_div_2": 4814.453560020383,
+      "R": 0.9936745552448005
+    },
+    {
+      "x": 1000000,
+      "pi_x_mod1": 39231,
+      "pi_x_mod2": 39267,
+      "li_div_2": 39312.32165129758,
+      "R": 0.9979313953518465
+    },
+    {
+      "x": 10000000,
+      "pi_x_mod1": 332194,
+      "pi_x_mod2": 332385,
+      "li_div_2": 332456.14264764235,
+      "R": 0.9992114970547553
+    }
+  ],
+  "gates": {
+    "G1 |R - 1| < 5e-3 at 1e6 and 1e7": true,
+    "G2 the two residue classes are comparable (ratio in (1/2, 3/2))": true,
+    "G3 |R(1e7) - 1| < 5e-3": true
+  },
+  "overall": true,
+  "wall": "exact sieve to 1e7; PNT for APs unconditional (de la Vallee Poussin); Li asymptotic series with controlled remainder"
+}

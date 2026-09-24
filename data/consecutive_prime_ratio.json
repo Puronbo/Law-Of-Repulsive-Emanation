@@ -1,0 +1,20 @@
+{
+  "form": "p_{n+1}/p_n at n -> oo (0/0 at infinity)",
+  "mechanism": "Probe",
+  "removable_value": "1 (PNT corollary: gaps are o(p))",
+  "stats": {
+    "x": 10000000,
+    "num_primes": 664579,
+    "window_mean_ratio_minus_1": 1.642216136329547e-06,
+    "window_mean_gap_law_logres": 2.6455909980854903e-05,
+    "max_surplus_at_p_ge_5e6": 2.4195230987400507e-05,
+    "largest_gap_after_5e6": 152
+  },
+  "gates": {
+    "G1 last-decade mean of (R_n - 1) < 1e-5 (R -> 1)": true,
+    "G2 mean((R-1) log p) vanishing below 1e-3 (gap law)": true,
+    "G3 largest surplus at p >= 5e6 < 3e-5": true
+  },
+  "overall": true,
+  "wall": "exact sieve to 1e7; PNT unconditional"
+}

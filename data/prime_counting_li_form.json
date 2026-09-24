@@ -1,0 +1,32 @@
+{
+  "form": "pi(x)/Li(x) at x -> oo (0/0 at infinity)",
+  "mechanism": "Probe",
+  "removable_value": "1 (PNT, logarithmic-integral form)",
+  "instances": [
+    {
+      "x": 100000,
+      "pi_x": 9592,
+      "Li": 9628.907120040765,
+      "R": 0.9961670499485917
+    },
+    {
+      "x": 1000000,
+      "pi_x": 78498,
+      "Li": 78624.64330259516,
+      "R": 0.9983892670634097
+    },
+    {
+      "x": 10000000,
+      "pi_x": 664579,
+      "Li": 664912.2852952847,
+      "R": 0.9994987529894462
+    }
+  ],
+  "gates": {
+    "G1 |R(1e7) - 1| < 5e-3": true,
+    "G2 |R - 1| < 5e-3 at 1e5, 1e6, 1e7": true,
+    "G3 relative error strictly shrinking (0.0038 -> 0.0005)": true
+  },
+  "overall": true,
+  "wall": "exact sieve to 1e7; PNT (de la Vallee Poussin) unconditional; Li asymptotic series with ~1e-6 remainder"
+}

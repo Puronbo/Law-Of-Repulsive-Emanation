@@ -1,0 +1,35 @@
+{
+  "form": "p(n)/HR(n) at n -> oo (0/0 at infinity)",
+  "mechanism": "Vanishing Rate",
+  "removable_value": "1 (Hardy-Ramanujan 1918)",
+  "instances": [
+    {
+      "n": 500,
+      "p_n": 2300165032574323995027,
+      "R": 0.9803009476220915
+    },
+    {
+      "n": 1000,
+      "p_n": 24061467864032622473692149727991,
+      "R": 0.9860450576113161
+    },
+    {
+      "n": 2000,
+      "p_n": 4720819175619413888601432406799959512200344166,
+      "R": 0.9901194342374537
+    },
+    {
+      "n": 5000,
+      "p_n": 169820168825442121851975101689306431361757683049829233322203824652329144349,
+      "R": 0.993743668587962
+    }
+  ],
+  "gates": {
+    "G0 exact anchors p(100)=190569292, p(200)=3972999029388": true,
+    "G1 |R - 1| monotonically shrinking over 500..5000": true,
+    "G2 |R(5000) - 1| < 1/sqrt(5000) (Hardy-Ramanujan bound)": true,
+    "G3 |R(5000) - 1| < 2e-2": true
+  },
+  "overall": true,
+  "wall": "exact pentagonal recurrence to n=5000; HR asymptotic unconditional"
+}

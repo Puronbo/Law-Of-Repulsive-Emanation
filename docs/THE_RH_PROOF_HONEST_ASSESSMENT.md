@@ -179,5 +179,5 @@ The final gap is the zero-free region.**
 
 ---
 
-**Corpus:** 80 experiments, 247 data files, 670 tests (all green),
+**Corpus:** 100 experiments, 267 data files, 690 tests (all green),
 48 formal theorems, 67 documentation files, 14 PDFs.

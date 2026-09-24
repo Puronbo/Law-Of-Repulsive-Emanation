@@ -1,0 +1,39 @@
+{
+  "form": "H_n - log n at n -> oo (oo - oo)",
+  "mechanism": "Conservation",
+  "removable_value": "gamma = 0.5772156649...",
+  "instances": [
+    {
+      "n": 10,
+      "H_minus_log": 0.6263831609742083,
+      "residue_times_n": 0.49167496072675426
+    },
+    {
+      "n": 100,
+      "H_minus_log": 0.5822073316515289,
+      "residue_times_n": 0.4991666749996032
+    },
+    {
+      "n": 1000,
+      "H_minus_log": 0.5777155815682079,
+      "residue_times_n": 0.499916666675
+    },
+    {
+      "n": 10000,
+      "H_minus_log": 0.5772656640681996,
+      "residue_times_n": 0.499991666666675
+    },
+    {
+      "n": 100000,
+      "H_minus_log": 0.5772206648931996,
+      "residue_times_n": 0.49999916666666666
+    }
+  ],
+  "gates": {
+    "G1 H_n - log n monotonically converging to gamma": true,
+    "G2 |(H-log) - gamma| < 1e-4 at n = 1e5": true,
+    "G3 residue (= (H-log-gamma)*n) -> 1/2 within 0.02": true
+  },
+  "overall": true,
+  "wall": "exact Decimal summation; Euler-Maclaurin expansion classical"
+}

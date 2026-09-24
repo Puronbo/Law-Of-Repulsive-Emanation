@@ -1,0 +1,44 @@
+{
+  "form": "N(x)/(pi x) at x -> oo (0/0 at infinity; Gauss circle law)",
+  "mechanism": "Vanishing Rate",
+  "removable_value": "1 (coefficient pi; Gauss 1834, Dirichlet 1849)",
+  "instances": [
+    {
+      "x": 100,
+      "N": 317,
+      "R": 1.0090423392026164,
+      "abs_error": 2.840734641020674
+    },
+    {
+      "x": 1000,
+      "N": 3149,
+      "R": 1.0023578315927568,
+      "abs_error": 7.407346410207083
+    },
+    {
+      "x": 10000,
+      "N": 31417,
+      "R": 1.0000341694236152,
+      "abs_error": 1.073464102068101
+    },
+    {
+      "x": 100000,
+      "N": 314197,
+      "R": 1.000120113092885,
+      "abs_error": 37.734641020710114
+    },
+    {
+      "x": 1000000,
+      "N": 3141549,
+      "R": 0.9999861046308015,
+      "abs_error": 43.65358979301527
+    }
+  ],
+  "gates": {
+    "G1 |R - 1| shrinks from 1e2 (1.009) to 1e6 (0.999986)": true,
+    "G2 |R(1e6) - 1| < 5e-4": true,
+    "G3 |N - pi x| below the Gauss/Dirichlet O(x^{1/2+eps}) scale": true
+  },
+  "overall": true,
+  "wall": "exact isqrt circle sweep to 1e6; Gauss/Dirichlet remainder O(x^{1/2+eps}) unconditional; the raw remainder oscillation is the anti-class lattice wall"
+}

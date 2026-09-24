@@ -11,7 +11,7 @@
 
 ## Abstract
 
-We examine the epistemological implications of the indeterminate form 0/0. We argue that the removable singularity is a *boundary phenomenon* — it lives at the exact point where the known meets the unknown, where the defined meets the undefined. The removable value is the *bridge* across this boundary: it is the finite quantity that connects what we can compute (the function near the singularity) to what we cannot compute (the function at the singularity). We show that the 80 experiments in this repository illuminate a general principle: the deepest mathematical truths are those that live on the boundary between the known and the unknown, and the removable singularity is the mechanism by which we extract truth from that boundary.
+We examine the epistemological implications of the indeterminate form 0/0. We argue that the removable singularity is a *boundary phenomenon* — it lives at the exact point where the known meets the unknown, where the defined meets the undefined. The removable value is the *bridge* across this boundary: it is the finite quantity that connects what we can compute (the function near the singularity) to what we cannot compute (the function at the singularity). We show that the 100 experiments in this repository illuminate a general principle: the deepest mathematical truths are those that live on the boundary between the known and the unknown, and the removable singularity is the mechanism by which we extract truth from that boundary.
 
 ---
 
@@ -65,11 +65,11 @@ This can be computed by:
 3. **Numerical evaluation:** evaluate f/g near x₀ and take the limit
 4. **Algebraic manipulation:** use identities to simplify f/g before taking the limit
 
-All four methods are used in our 80 experiments. The numerical method (3) is the most universal — it works for any computable f and g. The algebraic method (4) is the most powerful — it can give exact results.
+All four methods are used in our 100 experiments. The numerical method (3) is the most universal — it works for any computable f and g. The algebraic method (4) is the most powerful — it can give exact results.
 
 ### 2.2 The removable value is the theorem
 
-In each of the 80 experiments, the removable value *is* the quantity that the theorem asserts:
+In each of the 100 experiments, the removable value *is* the quantity that the theorem asserts:
 
 - In topology: the removable value is the Euler characteristic, the winding number, the index.
 - In number theory: the removable value is |χ(ρ)|, the prime-counting function, the Mertens function.
@@ -104,7 +104,7 @@ The 0/0 form is a *necessary* condition for the theorem, not a *sufficient* one.
 
 ### 3.2 Computation cannot decide the theorem
 
-In our 80 experiments, we compute the removable values numerically. The results are consistent with the theorems. But no finite computation can *prove* a theorem about all zeros, all functions, or all manifolds.
+In our 100 experiments, we compute the removable values numerically. The results are consistent with the theorems. But no finite computation can *prove* a theorem about all zeros, all functions, or all manifolds.
 
 The Odlyzko-te Riele theorem (1985) shows that the Mertens conjecture |M(x)| < √x is false, even though it holds for all x ≤ 10^{16} ever computed. The Skewes number shows that π(x) > Li(x) occurs, even though π(x) < Li(x) for all x ≤ 10^{316}.
 
@@ -231,7 +231,7 @@ I believe the following:
 4. The honest wall is the ethical framework that distinguishes evidence from proof.
 5. Zero is not nothing. Zero is the boundary. And the boundary is where the truth lives.
 
-The 80 experiments in this repository are a *census of boundary truths*. Each experiment identifies a 0/0 form, computes its removable value, and verifies that the removable value matches the theorem. The collection is a *map* of the boundary — a map of the places where the known meets the unknown and the removable value bridges the gap.
+The 100 experiments in this repository are a *census of boundary truths*. Each experiment identifies a 0/0 form, computes its removable value, and verifies that the removable value matches the theorem. The collection is a *map* of the boundary — a map of the places where the known meets the unknown and the removable value bridges the gap.
 
 The map is incomplete. There are many boundary truths we have not yet identified. The open problems in THE_0_OVER_0_ATLAS.md point to some of them. But the map is growing. And the principle is clear: wherever two things vanish together, look for the 0/0. The removable value is the theorem.
 
@@ -239,4 +239,4 @@ The map is incomplete. There are many boundary truths we have not yet identified
 
 *This essay is dedicated to the honest wall — the declaration that we know what we know and what we do not know. The 0/0 form is the most honest expression in mathematics: it admits its own undefinedness, and the removable value is the truth that emerges from that admission.*
 
-*Computational data from the repository Puronbo/Law-Of-Repulsive-Emanation. All 80 experiments verified. 670 regression tests passing. The honest wall stands.*
+*Computational data from the repository Puronbo/Law-Of-Repulsive-Emanation. All 100 experiments verified. 690 regression tests passing. The honest wall stands.*

@@ -1,0 +1,33 @@
+{
+  "form": "D(x)/(x log x) at x -> oo (0/0 at infinity)",
+  "mechanism": "Vanishing Rate",
+  "removable_value": "1 (Dirichlet divisor summatory, hyperbola method; correction (2g-1)/log x)",
+  "instances": [
+    {
+      "x": 10000,
+      "D": 93668,
+      "R": 1.0169873882728448,
+      "residue": 20.282982207515428
+    },
+    {
+      "x": 100000,
+      "D": 1166750,
+      "R": 1.0134261735212382,
+      "residue": 14.32052267058587
+    },
+    {
+      "x": 1000000,
+      "D": 13970034,
+      "R": 1.0111847797001354,
+      "residue": 92.11223266017468
+    }
+  ],
+  "expected_R_at_1e6": 1.01117811,
+  "gates": {
+    "G1 R(x) monotonically decreasing (to 1) over 1e4..1e6": true,
+    "G2 R(1e6) in (1.005, 1.020) -- matches 1 + (2g-1)/log x": true,
+    "G3 |D - x log x - (2g-1)x| < 1.2 sqrt(x) log x": true
+  },
+  "overall": true,
+  "wall": "exact divisor sieve to 1e6; Dirichlet hyperbola method (1849) unconditional"
+}

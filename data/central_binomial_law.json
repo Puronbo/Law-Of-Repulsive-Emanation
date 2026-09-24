@@ -1,0 +1,29 @@
+{
+  "form": "sqrt(pi n) C(2n,n)/4^n at n -> oo (0/0 at infinity)",
+  "mechanism": "Vanishing Rate",
+  "removable_value": "1",
+  "instances": [
+    {
+      "n": 100,
+      "R": 0.9987507861262518,
+      "eight_n_residue": 0.9993710989985432
+    },
+    {
+      "n": 1000,
+      "R": 0.9998750078173821,
+      "eight_n_residue": 0.9999374609426391
+    },
+    {
+      "n": 10000,
+      "R": 0.9999875000781299,
+      "eight_n_residue": 0.9999937496093801
+    }
+  ],
+  "gates": {
+    "G1 R(n) increasing towards 1 over 1e2..1e4": true,
+    "G2 |R - 1| < 2e-4 at n = 1e4": true,
+    "G3 (1-R)*8n -> 1 within 0.05 (Wallis residue)": true
+  },
+  "overall": true,
+  "wall": "exact big-integer binomials + Decimal ratios; Wallis product classical"
+}

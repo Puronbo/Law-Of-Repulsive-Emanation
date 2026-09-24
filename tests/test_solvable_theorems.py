@@ -4123,3 +4123,111 @@ def test_crossing_a_zero():
         want = it['j'] if it['j'] >= 1 else 1
         assert abs(it['slope_left'] - want) < 0.02
         assert abs(it['slope_right'] - want) < 0.02
+
+def test_sinc_0_over_0():
+    d = load('sinc_0_over_0.json')
+    assert d['overall'] is True
+    assert abs(d['approach']['exponent'] - 2.0) < 0.02
+
+def test_exponential_rate_0_over_0():
+    d = load('exponential_rate_0_over_0.json')
+    assert d['overall'] is True
+    assert abs(float(d['bases']['ln 2']['value']) - 0.693147180559945) < 1e-15
+
+def test_continuity_of_e_0_over_0():
+    d = load('continuity_of_e_0_over_0.json')
+    assert d['overall'] is True
+    assert abs(d['approach']['exponent'] - 1.0) < 0.02
+
+def test_half_cosine_0_over_0():
+    d = load('half_cosine_0_over_0.json')
+    assert d['overall'] is True
+    assert abs(d['approach']['exponent'] - 2.0) < 0.02
+
+def test_taylor_third_0_over_0():
+    d = load('taylor_third_0_over_0.json')
+    assert d['overall'] is True
+    assert abs(d['approach']['exponent'] - 2.0) < 0.02
+
+def test_polygon_perimeter_0_over_0():
+    d = load('polygon_perimeter_0_over_0.json')
+    assert d['overall'] is True
+    assert abs(d['approach']['exponent_in_n'] - 2.0) < 0.05
+
+def test_nth_root_of_n():
+    d = load('nth_root_of_n.json')
+    assert d['overall'] is True
+    assert d['instances'][-1]['surplus'] < 1e-10
+
+def test_euler_mascheroni_constant():
+    d = load('euler_mascheroni_constant.json')
+    assert d['overall'] is True
+    assert abs(d['instances'][-1]['H_minus_log'] -
+               0.5772156649015329) < 1e-4
+
+def test_factorial_root_1_over_e():
+    d = load('factorial_root_1_over_e.json')
+    assert d['overall'] is True
+    assert abs(d['instances'][-1]['R'] - 1.0 /
+               2.718281828459045) < 3e-4
+
+def test_central_binomial_law():
+    d = load('central_binomial_law.json')
+    assert d['overall'] is True
+    assert abs(d['instances'][-1]['R'] - 1.0) < 2e-4
+
+def test_dirichlet_divisor_summatory_0_over_0():
+    d = load('dirichlet_divisor_summatory_0_over_0.json')
+    assert d['overall'] is True
+    assert abs(d['instances'][-1]['R'] - 1.0) < 2e-2
+
+def test_sigma_summatory_pi2_12():
+    d = load('sigma_summatory_pi2_12.json')
+    assert d['overall'] is True
+    assert abs(d['instances'][-1]['R'] - 0.8224670334241132) < 5e-4
+
+def test_primes_in_arithmetic_progression():
+    d = load('primes_in_arithmetic_progression.json')
+    assert d['overall'] is True
+    assert abs(d['instances'][-1]['R'] - 1.0) < 5e-3
+
+def test_consecutive_prime_ratio():
+    d = load('consecutive_prime_ratio.json')
+    assert d['overall'] is True
+    assert d['stats']['max_surplus_at_p_ge_5e6'] < 3e-5
+
+def test_partition_asymptotics():
+    d = load('partition_asymptotics.json')
+    assert d['overall'] is True
+    assert d['instances'][0]['p_n'] == 2300165032574323995027
+    assert abs(d['instances'][-1]['R'] - 1.0) < 2e-2
+
+def test_prime_counting_li_form():
+    d = load('prime_counting_li_form.json')
+    assert d['overall'] is True
+    assert d['instances'][-1]['pi_x'] == 664579
+    assert d['instances'][-1]['R'] < 0.9995
+
+def test_squarefree_density():
+    d = load('squarefree_density.json')
+    assert d['overall'] is True
+    assert d['instances'][0]['Q'] == 61
+    assert d['instances'][-1]['Q'] == 607926
+    assert abs(d['instances'][-1]['R'] - 0.6079271018540266) < 1e-5
+
+def test_sum_of_two_squares_law():
+    d = load('sum_of_two_squares_law.json')
+    assert d['overall'] is True
+    assert d['instances'][-1]['N'] == 3141549
+    assert abs(d['instances'][-1]['R'] - 1.0) < 5e-4
+
+def test_newton_quadratic_rate_0_over_0():
+    d = load('newton_quadratic_rate_0_over_0.json')
+    assert d['overall'] is True
+    assert d['errors'][4] < 1e-20
+
+def test_golden_ratio_recurrence():
+    d = load('golden_ratio_recurrence.json')
+    assert d['overall'] is True
+    assert abs(float(d['contraction_per_step']) -
+               -0.4179752805085466) < 0.05

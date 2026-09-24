@@ -34,7 +34,7 @@ where 0/0 was refuted — twenty claims across six categories — and recovers
 every one as a removable singularity at the correct 0/0 form. **Book VIII**
 answers the five open questions the Ledger left standing.
 
-The numbers: **80 experiment files**, **247 data files**, **670 regression
+The numbers: **100 experiment files**, **267 data files**, **690 regression
 tests**, **14 PDFs**, **67 documentation files**, **48 formal theorems**,
 spanning number theory, algebra, analysis, geometry, topology, probability,
 statistical mechanics, random matrix theory, information geometry, spectral
@@ -1269,7 +1269,7 @@ divergence 0/0.
 | Zilber-Pink | **VERIFIED** | Andre-Oort, unlikely, dimension |
 | Shimura-Taniyama | **VERIFIED** | Euler product, CM, level |
 | Sato-Tate | **VERIFIED** | Semicircle, CM degeneration, moments |
-| 97 0/0 experiments | **ALL PASS** | 15 batches |
+| 100 0/0 experiments | **ALL PASS** | 15 batches |
 | 20 refuted claims | **ALL RECOVERED** | 6 categories |
 | 5 open questions | **ALL ANSWERED** | Q1–Q5 |
 
@@ -1371,7 +1371,7 @@ divergence 0/0.
 | The Bank | `736034d`–`f422af3` | T68–T72: ledger, consensus, TLS, O(1) |
 | Bazaar | `18ef622`–`657465c` | P2P social platform |
 | 0/0 Paper Suite | `089857f` | 5 papers, formal theory, web of proofs |
-| 0/0 Experiments | `251f971`–`898517e` | 80 experiments, 15 batches |
+| 0/0 Experiments | `251f971`–`898517e` | 100 experiments, 15 batches |
 | Refuted Claims | `08a1cbd`–`d0de6c0` | 20 claims, 6 categories, Ledger |
 | Open Questions | `898517e`–`729fe83` | Q1–Q5 answered |
 | Formal Theorems | `d15d6f6`–`9ca3fac` | 24 theorems: Gauss-Bonnet through RMT |

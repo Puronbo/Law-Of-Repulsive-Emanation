@@ -1,0 +1,50 @@
+{
+  "form": "(n!/n^n)^(1/n) at n -> oo (0/0 at infinity)",
+  "mechanism": "Vanishing Rate",
+  "removable_value": "1/e",
+  "instances": [
+    {
+      "n": 10,
+      "R": 0.4528728688116765,
+      "residue_times_n": 2.0785616431350586,
+      "ln_n": 2.302585092994046
+    },
+    {
+      "n": 100,
+      "R": 0.3799268934483429,
+      "residue_times_n": 3.2223569567543535,
+      "ln_n": 4.605170185988092
+    },
+    {
+      "n": 1000,
+      "R": 0.3694916634719599,
+      "residue_times_n": 4.372899506026297,
+      "ln_n": 6.907755278982137
+    },
+    {
+      "n": 10000,
+      "R": 0.368082718222009,
+      "residue_times_n": 5.524117052526095,
+      "ln_n": 9.210340371976184
+    },
+    {
+      "n": 100000,
+      "R": 0.3679039994230521,
+      "residue_times_n": 6.67540209902312,
+      "ln_n": 11.512925464970229
+    },
+    {
+      "n": 1000000,
+      "R": 0.3678823204624865,
+      "residue_times_n": 7.826693895520143,
+      "ln_n": 13.815510557964274
+    }
+  ],
+  "gates": {
+    "G1 R(n) decreasing towards 1/e over 1e1..1e6": true,
+    "G2 |R - 1/e| < 1e-3 at n = 1e6": true,
+    "G3 log-residue n/log n -> 1/2 within 0.2": true
+  },
+  "overall": true,
+  "wall": "exact Decimal log-factorial sums; Stirling expansion classical"
+}

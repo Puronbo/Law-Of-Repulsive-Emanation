@@ -1,0 +1,48 @@
+{
+  "form": "F_{n+1}/F_n at n -> oo (0/0 at infinity)",
+  "mechanism": "Index",
+  "removable_value": "phi = (1 + sqrt 5)/2 (Binet closed form)",
+  "instances": [
+    {
+      "n": 50,
+      "diff": 2.8230656464109255e-21
+    },
+    {
+      "n": 100,
+      "diff": 3.564158032823618e-42
+    },
+    {
+      "n": 150,
+      "diff": 4.499797055407206e-63
+    },
+    {
+      "n": 200,
+      "diff": 5.681053801032003e-84
+    },
+    {
+      "n": 250,
+      "diff": 7.172406198061196e-105
+    },
+    {
+      "n": 300,
+      "diff": 9.055258491064038e-126
+    },
+    {
+      "n": 400,
+      "diff": 1.4433538074413573e-167
+    },
+    {
+      "n": 500,
+      "diff": 0.0
+    }
+  ],
+  "contraction_per_step": -0.41797528049995747,
+  "predicted_per_step": -0.41797528049995747,
+  "gates": {
+    "G1 |R_n - phi| monotonically shrinking over 50..500": true,
+    "G2 |R(500) - phi| < 1e-12": true,
+    "G3 per-step contraction log10(r300/r150)/150 matches log10(|psi|/phi) within 0.01": true
+  },
+  "overall": true,
+  "wall": "exact big-integer Fibonacci; Binet elementary"
+}

@@ -1,0 +1,32 @@
+{
+  "form": "S(x)/x^2 at x -> oo (0/0 at infinity)",
+  "mechanism": "Vanishing Rate",
+  "removable_value": "pi^2/12 (Dirichlet 1849)",
+  "instances": [
+    {
+      "x": 10000,
+      "S": 82256014,
+      "R": 0.82256014,
+      "abs_residue": 9310.65758868459
+    },
+    {
+      "x": 100000,
+      "S": 8224740835,
+      "R": 0.8224740835,
+      "abs_residue": 70500.75886845886
+    },
+    {
+      "x": 1000000,
+      "S": 822468118437,
+      "R": 0.822468118437,
+      "abs_residue": 1085012.8868458862
+    }
+  ],
+  "gates": {
+    "G1 R(x) monotonically decreasing (to pi^2/12) over 1e4..1e6": true,
+    "G2 |R(1e6) - pi^2/12| < 5e-4": true,
+    "G3 |S - (pi^2/12)x^2| < 4 x log x (Dirichlet O(x log x))": true
+  },
+  "overall": true,
+  "wall": "exact sigma sieve to 1e6; Dirichlet's hyperbola method unconditional"
+}

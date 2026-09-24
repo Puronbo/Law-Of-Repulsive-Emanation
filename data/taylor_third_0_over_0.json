@@ -1,0 +1,16 @@
+{
+  "form": "(sin x - x)/x^3 at x = 0 (0/0)",
+  "mechanism": "Vanishing Rate",
+  "removable_value": "-1/6",
+  "approach": {
+    "exponent": 2,
+    "r2": 1.0
+  },
+  "fine_divergence_at_1e-10": 8.333333333333333e-19,
+  "gates": {
+    "G1 two-sided (sin x - x)/x^3 -> -1/6 within 1e-15 at |x| <= 1e-8": true,
+    "G2 approach exponent 2 (even residue), r2 > 0.999": true
+  },
+  "overall": true,
+  "wall": "alternating sin series, Decimal 60 digits"
+}

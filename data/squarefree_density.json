@@ -1,0 +1,39 @@
+{
+  "form": "Q(x)/x at x -> oo (0/0 at infinity)",
+  "mechanism": "Vanishing Rate",
+  "removable_value": "6/pi^2 (1/zeta(2); Gegenbauer 1885)",
+  "instances": [
+    {
+      "x": 100,
+      "Q": 61,
+      "R": 0.61
+    },
+    {
+      "x": 1000,
+      "Q": 608,
+      "R": 0.608
+    },
+    {
+      "x": 10000,
+      "Q": 6083,
+      "R": 0.6083
+    },
+    {
+      "x": 100000,
+      "Q": 60794,
+      "R": 0.60794
+    },
+    {
+      "x": 1000000,
+      "Q": 607926,
+      "R": 0.607926
+    }
+  ],
+  "gates": {
+    "G0 exact anchors Q(100)=61, Q(1000)=608": true,
+    "G1 |R - 6/pi^2| < 5e-3 over the whole sweep 1e2..1e6": true,
+    "G2 |Q(1e6)/1e6 - 6/pi^2| < 1e-5": true
+  },
+  "overall": true,
+  "wall": "exact square-multiples sieve to 1e6; the density is elementary inclusion-exclusion"
+}
