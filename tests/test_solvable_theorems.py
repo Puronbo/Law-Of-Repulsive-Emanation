@@ -121,7 +121,20 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def load(name):
-    with open(os.path.join(ROOT, 'data', name)) as fp:
+    path = os.path.join(ROOT, 'data', name)
+    if not os.path.exists(path):
+        raise AssertionError(
+            "PERSISTENCE FAILURE, not a verdict failure: data/%s is absent.\n"
+            "This standard is neither tracked in git nor regenerable from any "
+            "script in the repository (audited in PL-23, "
+            "docs/PREDICTION_LEDGER.md). A passing run of this test on another "
+            "machine would not be reproducible here.\n"
+            "Recover with:  python regen_data.py --regen-all   "
+            "(only helps if a generator exists)\n"
+            "Audit with:    python regen_data.py --unreproducible"
+            % name
+        )
+    with open(path) as fp:
         return json.load(fp)
 
 
@@ -2216,7 +2229,14 @@ def test_zeta_zero_spectral_match():
 
 def test_grh_dirichlet_0_over_0():
     d = load('grh_dirichlet_0_over_0_data.json')
-    assert d['verdict'] == 'SUPPORTED'
+    # CORRECTION 2026-09-28: this test used to assert d['verdict'] ==
+    # 'SUPPORTED', which encoded the withdrawn reading - it required the suite
+    # to certify a vacuous check. The three identities below are still
+    # required (they are true), but the verdict must now be the corrected one
+    # and the record must state that it is not evidence for GRH.
+    assert d['verdict'] == 'VACUOUS - not evidence for GRH'
+    assert d['verifies_grh'] is False
+    assert 'PREDICTION_LEDGER' in d['verdict_2026_09_28']
     # Gauss sums correct: |G(chi)| = sqrt(conductor) for all Legendre symbols
     assert d['all_gauss_sums_correct']
     # Root numbers are 1

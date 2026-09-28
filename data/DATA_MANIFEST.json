@@ -1,0 +1,1491 @@
+{
+  "generated_by": "regen_data.py --manifest",
+  "note": "Machine-readable artifact -> script map so that a fresh clone can recreate its verification standards. See regen_data.py.",
+  "persistence_rule": "data/*.json is gitignored; an artifact persists only if listed under 'tracked' or regenerable from 'scripts'. Anything under 'unreproducible' is a real loss and must be recovered by hand.",
+  "counts": {
+    "tracked": 301,
+    "recreatable": 46,
+    "unreproducible": 42
+  },
+  "unreproducible": [
+    "atiyah_singer_data.json",
+    "brody_navier_stokes_data.json",
+    "chern_gauss_bonnet_data.json",
+    "crease_data.json",
+    "de_rham_data.json",
+    "entropy_condition_data.json",
+    "entropy_data.json",
+    "epoch_0d_datescan.json",
+    "exp1_results.json",
+    "exp1b_results.json",
+    "exp2_results.json",
+    "exp3_early_stop_results.json",
+    "exp_ood_results.json",
+    "exp_pruning_results.json",
+    "fold_visual_data.json",
+    "googol_census_all_k_c7.json",
+    "h_theorem_navier_stokes_data.json",
+    "hamiltonian_data.json",
+    "information_conservation_data.json",
+    "knot_invariants_data.json",
+    "landscape_data.json",
+    "mersenne_congruence_data.json",
+    "mersenne_gap_data.json",
+    "mersenne_taxonomy_data.json",
+    "millennium_data.json",
+    "modular_data.json",
+    "modular_forms_data.json",
+    "noether_data.json",
+    "poincare_data.json",
+    "prime_data.json",
+    "prime_geodesic_data.json",
+    "qft_0_over_0_data.json",
+    "random_matrix_theory_data.json",
+    "recurrence_data.json",
+    "riemann_roch_data.json",
+    "selberg_trace_data.json",
+    "selberg_unification_data.json",
+    "selberg_zeta_data.json",
+    "t65_fourpack_data.json",
+    "thermo_data.json",
+    "web_data.json",
+    "zeta_zeros_analysis.json"
+  ],
+  "recreatable": [
+    "ai_performable_professions_data.json",
+    "air_sizing_data.json",
+    "bekenstein_shift_data.json",
+    "boundary_removal.json",
+    "c0_law_data.json",
+    "calendar_universal_data.json",
+    "chi_rho_vacuity_data.json",
+    "cold_crawler.json",
+    "combinatorics_0_over_0_data.json",
+    "complex_constant_test_data.json",
+    "convex_variational_0_over_0_data.json",
+    "derivative_analysis.json",
+    "energy_spectrum_data.json",
+    "euler_number_test_data.json",
+    "extreme_amplitude_data.json",
+    "golden_closure_constant_data.json",
+    "googol_census_all_k.json",
+    "harvest_energy_data.json",
+    "imaginary_identity_data.json",
+    "key_inequality_data.json",
+    "log_limits_0_over_0_data.json",
+    "mandate_report_data.json",
+    "ns_cascade_gap1.json",
+    "ns_graph_verification.json",
+    "ns_r3_proof_verification.json",
+    "nt_sums_0_over_0_data.json",
+    "outward_cascade.json",
+    "probability_0_over_0_data.json",
+    "rainwater_data.json",
+    "random_matrix_0_over_0_data.json",
+    "rh_conductor_ratio.json",
+    "rh_li_convergence.json",
+    "rh_li_correct.json",
+    "rh_li_exact.json",
+    "rh_li_inequality.json",
+    "rh_verification.json",
+    "servo_regen_data.json",
+    "space_spin_data.json",
+    "spectral_data.json",
+    "standby_efficiency_data.json",
+    "ym_allloop_ds.json",
+    "ym_constructive.json",
+    "ym_fold_singularity.json",
+    "ym_fold_verification.json",
+    "ym_rigorous_verification.json",
+    "zeta_zeros_progress.json"
+  ],
+  "tracked": [
+    "DATA_MANIFEST.json",
+    "abc_conjecture_0_over_0_data.json",
+    "abc_conjecture_data.json",
+    "aclass_detector.json",
+    "arakelov_grr_data.json",
+    "arakelov_theory_data.json",
+    "argument_principle_0_over_0_data.json",
+    "atiyah_singer_0_over_0_data.json",
+    "balance_auto_data.json",
+    "balance_continual_data.json",
+    "balance_scale_data.json",
+    "balance_survey_data.json",
+    "banach_fixed_point_0_over_0_data.json",
+    "bayes_theorem_0_over_0_data.json",
+    "bazaar_hybrid_data.json",
+    "bazaar_net_data.json",
+    "bekenstein_rerun_data.json",
+    "birkhoff_average_0_over_0.json",
+    "blowup_theorem_data.json",
+    "body_fold_symmetry_data.json",
+    "boltzmann_entropy_0_over_0_data.json",
+    "bott_periodicity_0_over_0.json",
+    "bridge_extension_data.json",
+    "bridging_identity_data.json",
+    "brouwer_fixed_point_0_over_0_data.json",
+    "bsd_0_over_0_data.json",
+    "bsd_extended.json",
+    "bsd_full_formula_data.json",
+    "bsd_millennium_data.json",
+    "bsd_rank2.json",
+    "c0_crossing_tsym_data.json",
+    "c0_curvature_data.json",
+    "c0_cusp_flow_data.json",
+    "calibration_probe_data.json",
+    "cascade_bound_3d.json",
+    "cascade_constraint_data.json",
+    "cascade_selfsimilarity_data.json",
+    "category_theory_0_over_0_data.json",
+    "cauchy_integral_0_over_0_data.json",
+    "central_binomial_law.json",
+    "central_limit_theorem_0_over_0_data.json",
+    "cesaro_summation_0_over_0_data.json",
+    "char_walk_anti_0_over_0.json",
+    "character_sums_0_over_0.json",
+    "chebyshev_psi_0_over_0.json",
+    "circuit_nonlinear.json",
+    "circuit_resonance.json",
+    "climate_tipping_0over0.json",
+    "clock_test_data.json",
+    "collatz_0_over0_data.json",
+    "colmez_conjecture_data.json",
+    "connes_dirac_data.json",
+    "connes_letter_data.json",
+    "consecutive_prime_ratio.json",
+    "constraint_verification.json",
+    "continuity_of_e_0_over_0.json",
+    "continuum_limit_drift.json",
+    "critical_computation_data.json",
+    "crossing_a_zero.json",
+    "dark_matter_core.json",
+    "de_branges_extended.json",
+    "de_branges_riemann_data.json",
+    "debruijn_newman_condensation_data.json",
+    "decentral_bank_bridge_data.json",
+    "decentral_bank_data.json",
+    "decentral_bank_net_data.json",
+    "decentral_net_anomaly_data.json",
+    "decentral_net_ceiling_data.json",
+    "decentral_net_continual_data.json",
+    "decentral_net_data.json",
+    "decentral_net_internet_data.json",
+    "decentral_net_live_data.json",
+    "decentral_net_mnist_data.json",
+    "decentral_net_t67_data.json",
+    "decentral_net_t72_data.json",
+    "decentral_net_union_data.json",
+    "decentral_web_data.json",
+    "dirichlet_divisor_anti_0_over_0.json",
+    "dirichlet_divisor_summatory_0_over_0.json",
+    "eikonal_fold_data.json",
+    "energy_enstrophy_coupling.json",
+    "epoch_0d.json",
+    "euler_maclaurin_0_over_0_data.json",
+    "euler_mascheroni_constant.json",
+    "euler_product_0_over_0_data.json",
+    "euler_totient_0_over_0.json",
+    "explicit_formula_data.json",
+    "exponential_rate_0_over_0.json",
+    "extreme_re_data.json",
+    "factorial_root_1_over_e.json",
+    "faltings_theorem_data.json",
+    "fermat_little_0_over_0_data.json",
+    "fib_stream_data.json",
+    "fibonacci_spiral_data.json",
+    "fibonacci_squares_data.json",
+    "flow_active_learning_data.json",
+    "flow_hier_incremental_data.json",
+    "flow_hier_reg_data.json",
+    "flow_hier_reg_scaled_data.json",
+    "flow_hierarchical_data.json",
+    "flow_incremental_data.json",
+    "flow_regularized_data.json",
+    "fold_golden_closure_data.json",
+    "fold_ladder_phi_data.json",
+    "fold_optimizer_data.json",
+    "fold_unitary_data.json",
+    "four_point_lattice_data.json",
+    "fourier_uncertainty_0_over_0_data.json",
+    "fr_inflation.json",
+    "frequency_cascade_data.json",
+    "fta_0_over_0_data.json",
+    "galois_discriminant_0_over_0.json",
+    "gap_analysis_data.json",
+    "gauss_bonnet_0_over_0_data.json",
+    "gauss_circle_anti_0_over_0.json",
+    "generating_function_singularity_0_over_0.json",
+    "global_monotonicity.json",
+    "goldbach_0_over0_data.json",
+    "goldbach_density_0_over_0.json",
+    "goldbach_large.json",
+    "golden_ratio_recurrence.json",
+    "golden_survey_data.json",
+    "googol_census.json",
+    "gradient_descent_0_over_0_data.json",
+    "greens_function_0_over_0_data.json",
+    "grh_dirichlet_0_over_0_data.json",
+    "grokking_0over0.json",
+    "gromov_non_squeezing_data.json",
+    "hadamard_curvature_data.json",
+    "half_cosine_0_over_0.json",
+    "hamiltonian_routing_data.json",
+    "hardy_z_riemann_data.json",
+    "hermite_biehler_proof_data.json",
+    "hodge_millennium_data.json",
+    "human_trial_package.json",
+    "human_trial_pilot_data.json",
+    "identity_verification.json",
+    "inside_universe.json",
+    "integrability_data.json",
+    "interlacing_de_branges_data.json",
+    "ising_model_0_over_0_data.json",
+    "iwasawa_main_conjecture_data.json",
+    "kawasaki_ctc_data.json",
+    "kawasaki_null_data.json",
+    "khintchine_0_over_0_data.json",
+    "kkt_conditions_0_over_0_data.json",
+    "kolmogorov_c0_data.json",
+    "landau_function_0_over_0_data.json",
+    "langlands_program_data.json",
+    "laplace_method_0_over_0_data.json",
+    "lattice_wall_1e8_0_over_0.json",
+    "learn_creativity_test_data.json",
+    "learn_curve_scale_data.json",
+    "lefschetz_fixed_point_0_over_0_data.json",
+    "legendre_0_over0_data.json",
+    "llm_knowledge_packet.json",
+    "log_corridor.json",
+    "logic_0_over_0_data.json",
+    "lorenz_attractor_0_over_0_data.json",
+    "manin_mumford_data.json",
+    "mass_gap_calculator.json",
+    "merger_scaling_data.json",
+    "mersenne_m52_bridge.json",
+    "mersenne_prime_5630.json",
+    "mertens_explicit_height_data.json",
+    "mertens_product_0_over_0.json",
+    "mertens_psi_census_data.json",
+    "mertens_psi_height_data.json",
+    "mertens_sublinear_census_data.json",
+    "metric_comparison_data.json",
+    "mobius_function_0_over_0_data.json",
+    "mobius_mertens_0_over_0.json",
+    "montgomery_odlyzko_data.json",
+    "morse_theory_0_over_0_data.json",
+    "muon_g2_0over0.json",
+    "natural_transformation_0_over_0.json",
+    "neron_tate_height_torsion_0_over_0.json",
+    "newton_quadratic_rate_0_over_0.json",
+    "noether_landau_0_over_0_data.json",
+    "noether_theorem_0_over_0_data.json",
+    "non_commutative_geometry_data.json",
+    "ns_1d_longtime_data.json",
+    "ns_1d_proof_data.json",
+    "ns_3d_millennium_data.json",
+    "nth_root_of_n.json",
+    "open_questions_data.json",
+    "outward_cascade_extended.json",
+    "p_np_clusters.json",
+    "p_np_contour.json",
+    "p_np_flow.json",
+    "p_vs_np_0over0_data.json",
+    "p_vs_np_re_l_u_data.json",
+    "partition_asymptotics.json",
+    "pgt_finite_l_data.json",
+    "phi_scheduler_data.json",
+    "photon_rubber_ball_data.json",
+    "phragmen_lindelof_data.json",
+    "picard_little_0_over_0_data.json",
+    "poincare_hopf_0_over_0_data.json",
+    "poincare_recurrence_0_over_0_data.json",
+    "poincare_universe.json",
+    "poisson_summation_0_over_0_data.json",
+    "polya_liouville_0_over_0.json",
+    "polya_wall_1e8_0_over_0.json",
+    "polygon_perimeter_0_over_0.json",
+    "polysphere_extensions_data.json",
+    "polysphere_mnist_data.json",
+    "polysphere_nnflow_viz_data.json",
+    "polysphere_routing_data.json",
+    "polysphere_use_cases_data.json",
+    "prime_counting_li_form.json",
+    "prime_engine_data.json",
+    "prime_number_theorem_0_over_0_data.json",
+    "prime_reciprocal_0_over_0.json",
+    "prime_time_data.json",
+    "primes_in_arithmetic_progression.json",
+    "prodi_serrin_data.json",
+    "pythagorean_0_over_0_data.json",
+    "rayleigh_quotient_0_over_0_data.json",
+    "refuted_claims_probe_data.json",
+    "retrace_boundary_data.json",
+    "reverse_pair_gaps_data.json",
+    "ricci_flow_neck_pinch_0_over_0.json",
+    "riemann_decimal_perspective_data.json",
+    "riemann_roch_0_over_0_data.json",
+    "riemann_siegel_certify_data.json",
+    "riemann_siegel_ordinate_data.json",
+    "riemann_siegel_roots_data.json",
+    "rotation_test_data.json",
+    "s_function_census_data.json",
+    "saddle_point_0_over_0_data.json",
+    "sard_theorem_0_over_0_data.json",
+    "sato_tate_data.json",
+    "schanuel_0_over_0_data.json",
+    "schanuels_conjecture_data.json",
+    "schwinger_model.json",
+    "second_l_asymptotic.json",
+    "second_l_data.json",
+    "selberg_paradigm_data.json",
+    "selberg_trace_0_over_0_data.json",
+    "self_balancing_data.json",
+    "selfsimilar_cascade.json",
+    "selfsimilar_type2.json",
+    "shannon_entropy_0_over_0_data.json",
+    "shimura_taniyama_data.json",
+    "sigma_currency.json",
+    "sigma_export.json",
+    "sigma_framework.json",
+    "sigma_summatory_pi2_12.json",
+    "sinc_0_over_0.json",
+    "spectral_density_band_edge_0_over_0.json",
+    "spectral_extended_data.json",
+    "spectral_gap_0_over_0_data.json",
+    "spin_blindness.json",
+    "spring_fold_data.json",
+    "squarefree_density.json",
+    "statistical_cascade_data.json",
+    "stirling_approx_0_over_0_data.json",
+    "stokes_de_rham_0_over_0_data.json",
+    "su2_ym_3d_mass_gap.json",
+    "sum_of_two_squares_law.json",
+    "t39_cusp_flow_data.json",
+    "t65_fourpack_results.json",
+    "tautology_principle.json",
+    "taylor_remainder_0_over_0_data.json",
+    "taylor_third_0_over_0.json",
+    "thaumaturge_00.json",
+    "thirring_gn_crossover.json",
+    "time_reversal_convergence_data.json",
+    "tqft_0_over_0_data.json",
+    "twin_prime_0_over0_data.json",
+    "twin_prime_density_0_over_0.json",
+    "two_loop_cc.json",
+    "uncertainty_vshape_data.json",
+    "unified_framework_connection.json",
+    "uniform_boundedness_data.json",
+    "universal_bound_data.json",
+    "universal_impedance.json",
+    "universal_mass_gap.json",
+    "valley_curvature_data.json",
+    "van_iterson_data.json",
+    "vojta_conjecture_data.json",
+    "w1_burgers_1d.json",
+    "w1_double_vortex.json",
+    "w1_gn_comprehensive.json",
+    "w1_multi_vortex.json",
+    "w1_proof_verification.json",
+    "wallis_product_0_over_0_data.json",
+    "weil_explicit_0_over_0_data.json",
+    "weyl_law_0_over_0_data.json",
+    "wheeler_dewitt_selection_data.json",
+    "wigner_semicircle_0_over_0_data.json",
+    "yang_mills_mass_gap_proof.json",
+    "yang_mills_millennium_data.json",
+    "yang_mills_running_coupling.json",
+    "zeta_direct_probe_data.json",
+    "zeta_functional_eq_0_over_0_data.json",
+    "zeta_interlacing_certify_data.json",
+    "zeta_lattice_alignment_data.json",
+    "zeta_zero_spectral_match_data.json",
+    "zilber_pink_data.json"
+  ],
+  "scripts": {
+    "DATA_MANIFEST.json": [
+      "regen_data.py",
+      "tests/test_data_persistence.py"
+    ],
+    "foo.json": [
+      "regen_data.py"
+    ],
+    "agent_toy_activity.json": [
+      "bobo_chain/agent_toy.py"
+    ],
+    "cold_crawler.json": [
+      "bobo_chain/cold_crawler.py"
+    ],
+    "prime_engine_data.json": [
+      "build/lib/puno_app/constant_explorer.py",
+      "experiments/prime_count_from_scratch.py",
+      "puno_app/constant_explorer.py"
+    ],
+    "spectral_data.json": [
+      "build/lib/puno_app/constant_explorer.py",
+      "experiments/zeta_zero_spectral_match.py",
+      "puno_app/constant_explorer.py"
+    ],
+    "googol_census_all_k.json": [
+      "Universals/continuous_spectrum.py",
+      "Universals/math_validation.py",
+      "Universals/proofs.py",
+      "Universals/spectrum_analysis.py",
+      "Universals/spectrum_extended.py",
+      "build/lib/Universals/continuous_spectrum.py",
+      "build/lib/Universals/math_validation.py",
+      "build/lib/Universals/proofs.py",
+      "build/lib/Universals/spectrum_analysis.py",
+      "build/lib/Universals/spectrum_extended.py"
+    ],
+    "epoch_0d.json": [
+      "calendars/axis.py",
+      "calendars/layers.py"
+    ],
+    "c0_law_data.json": [
+      "calendars/c0.py"
+    ],
+    "aclass_detector.json": [
+      "experiments/aclass_detector.py"
+    ],
+    "air_sizing_data.json": [
+      "experiments/air_sizing.py"
+    ],
+    "ai_performable_professions_data.json": [
+      "experiments/ai_performable_professions.py"
+    ],
+    "argument_principle_0_over_0_data.json": [
+      "experiments/argument_principle_0_over_0.py"
+    ],
+    "balance_auto_data.json": [
+      "experiments/balance_auto.py"
+    ],
+    "balance_continual_data.json": [
+      "experiments/balance_continual.py"
+    ],
+    "balance_scale_data.json": [
+      "experiments/balance_scale.py"
+    ],
+    "balance_survey_data.json": [
+      "experiments/balance_survey.py"
+    ],
+    "bayes_theorem_0_over_0_data.json": [
+      "experiments/bayes_theorem_0_over_0.py"
+    ],
+    "bazaar_hybrid_data.json": [
+      "experiments/bazaar_hybrid.py"
+    ],
+    "bekenstein_shift_data.json": [
+      "experiments/bekenstein_rerun.py"
+    ],
+    "bekenstein_rerun_data.json": [
+      "experiments/bekenstein_rerun.py"
+    ],
+    "birkhoff_average_0_over_0.json": [
+      "experiments/birkhoff_average_0_over_0.py"
+    ],
+    "blowup_theorem_data.json": [
+      "experiments/blowup_theorem.py"
+    ],
+    "body_fold_symmetry_data.json": [
+      "experiments/body_fold_symmetry.py",
+      "tests/test_solvable_theorems.py"
+    ],
+    "mertens_sublinear_census_data.json": [
+      "experiments/body_fold_symmetry.py",
+      "experiments/mertens_sublinear_census.py"
+    ],
+    "mertens_psi_height_data.json": [
+      "experiments/body_fold_symmetry.py",
+      "experiments/mertens_psi_height.py"
+    ],
+    "boltzmann_entropy_0_over_0_data.json": [
+      "experiments/boltzmann_entropy_0_over_0.py"
+    ],
+    "bott_periodicity_0_over_0.json": [
+      "experiments/bott_periodicity_0_over_0.py"
+    ],
+    "boundary_removal.json": [
+      "experiments/boundary_removal.py"
+    ],
+    "bridge_extension_data.json": [
+      "experiments/bridge_extension.py"
+    ],
+    "bridging_identity_data.json": [
+      "experiments/bridging_identity.py"
+    ],
+    "brouwer_fixed_point_0_over_0_data.json": [
+      "experiments/brouwer_fixed_point_0_over_0.py"
+    ],
+    "bsd_0_over_0_data.json": [
+      "experiments/bsd_0_over_0.py"
+    ],
+    "bsd_extended.json": [
+      "experiments/bsd_extended.py"
+    ],
+    "bsd_full_formula_data.json": [
+      "experiments/bsd_full_formula.py"
+    ],
+    "bsd_millennium_data.json": [
+      "experiments/bsd_millennium.py"
+    ],
+    "bsd_rank2.json": [
+      "experiments/bsd_rank2.py"
+    ],
+    "c0_crossing_tsym_data.json": [
+      "experiments/c0_crossing_tsym.py"
+    ],
+    "c0_curvature_data.json": [
+      "experiments/c0_curvature.py"
+    ],
+    "c0_cusp_flow_data.json": [
+      "experiments/c0_cusp_flow.py"
+    ],
+    "calendar_universal_data.json": [
+      "experiments/calendar_universal.py"
+    ],
+    "cascade_bound_3d.json": [
+      "experiments/cascade_bound_3d.py"
+    ],
+    "ns_cascade_gap1.json": [
+      "experiments/cascade_bound_gap1.py"
+    ],
+    "cascade_constraint_data.json": [
+      "experiments/cascade_constraint.py",
+      "experiments/unified_framework.py"
+    ],
+    "cascade_selfsimilarity_data.json": [
+      "experiments/cascade_selfsimilarity.py"
+    ],
+    "cauchy_integral_0_over_0_data.json": [
+      "experiments/cauchy_integral_0_over_0.py"
+    ],
+    "central_binomial_law.json": [
+      "experiments/central_binomial_law.py"
+    ],
+    "cesaro_summation_0_over_0_data.json": [
+      "experiments/cesaro_summation_0_over_0.py"
+    ],
+    "character_sums_0_over_0.json": [
+      "experiments/character_sums_0_over_0.py"
+    ],
+    "char_walk_anti_0_over_0.json": [
+      "experiments/char_walk_anti_0_over_0.py"
+    ],
+    "chebyshev_psi_0_over_0.json": [
+      "experiments/chebyshev_psi_0_over_0.py"
+    ],
+    "chi_rho_vacuity_data.json": [
+      "experiments/chi_rho_vacuity_0_over_0.py"
+    ],
+    "circuit_nonlinear.json": [
+      "experiments/circuit_nonlinear.py"
+    ],
+    "circuit_resonance.json": [
+      "experiments/circuit_resonance.py"
+    ],
+    "climate_tipping_0over0.json": [
+      "experiments/climate_tipping_0over0.py"
+    ],
+    "clock_test_data.json": [
+      "experiments/clock_test.py"
+    ],
+    "collatz_0_over0_data.json": [
+      "experiments/collatz_0_over0.py"
+    ],
+    "combinatorics_0_over_0_data.json": [
+      "experiments/combinatorics_0_over_0.py"
+    ],
+    "complex_constant_test_data.json": [
+      "experiments/complex_constant_test.py"
+    ],
+    "consecutive_prime_ratio.json": [
+      "experiments/consecutive_prime_ratio.py"
+    ],
+    "continuity_of_e_0_over_0.json": [
+      "experiments/continuity_of_e_0_over_0.py"
+    ],
+    "continuum_limit_drift.json": [
+      "experiments/continuum_limit.py"
+    ],
+    "convex_variational_0_over_0_data.json": [
+      "experiments/convex_variational_0_over_0.py"
+    ],
+    "critical_computation_data.json": [
+      "experiments/critical_computation.py"
+    ],
+    "crossing_a_zero.json": [
+      "experiments/crossing_a_zero.py"
+    ],
+    "dark_matter_core.json": [
+      "experiments/dark_matter_core.py"
+    ],
+    "decentral_bank_data.json": [
+      "experiments/decentral_bank.py"
+    ],
+    "decentral_bank_bridge_data.json": [
+      "experiments/decentral_bank_bridge.py"
+    ],
+    "decentral_bank_net_data.json": [
+      "experiments/decentral_bank_net.py"
+    ],
+    "decentral_net_data.json": [
+      "experiments/decentral_net.py"
+    ],
+    "decentral_net_ceiling_data.json": [
+      "experiments/decentral_net_ceiling.py"
+    ],
+    "decentral_net_continual_data.json": [
+      "experiments/decentral_net_continual.py"
+    ],
+    "decentral_net_live_data.json": [
+      "experiments/decentral_net_live.py"
+    ],
+    "decentral_net_mnist_data.json": [
+      "experiments/decentral_net_mnist.py"
+    ],
+    "decentral_net_t67_data.json": [
+      "experiments/decentral_net_t67.py"
+    ],
+    "decentral_net_t72_data.json": [
+      "experiments/decentral_net_t72.py"
+    ],
+    "delta0_selection.json": [
+      "experiments/delta0_selection.py"
+    ],
+    "derivative_analysis.json": [
+      "experiments/derivative_analysis.py"
+    ],
+    "de_branges_extended.json": [
+      "experiments/de_branges_extended.py"
+    ],
+    "directional_coin.json": [
+      "experiments/directional_coin.py"
+    ],
+    "dirichlet_divisor_anti_0_over_0.json": [
+      "experiments/dirichlet_divisor_anti_0_over_0.py"
+    ],
+    "dirichlet_divisor_summatory_0_over_0.json": [
+      "experiments/dirichlet_divisor_summatory_0_over_0.py"
+    ],
+    "echo_boundary.json": [
+      "experiments/echo_boundary.py"
+    ],
+    "eikonal_fold_data.json": [
+      "experiments/eikonal_fold.py"
+    ],
+    "energy_enstrophy_coupling.json": [
+      "experiments/energy_enstrophy_coupling.py",
+      "experiments/unified_framework.py"
+    ],
+    "energy_spectrum_data.json": [
+      "experiments/energy_spectrum.py"
+    ],
+    "euler_maclaurin_0_over_0_data.json": [
+      "experiments/euler_maclaurin_0_over_0.py"
+    ],
+    "euler_mascheroni_constant.json": [
+      "experiments/euler_mascheroni_constant.py"
+    ],
+    "euler_number_test_data.json": [
+      "experiments/euler_number_test.py"
+    ],
+    "euler_product_0_over_0_data.json": [
+      "experiments/euler_product_0_over_0.py"
+    ],
+    "euler_totient_0_over_0.json": [
+      "experiments/euler_totient_0_over_0.py"
+    ],
+    "exponential_rate_0_over_0.json": [
+      "experiments/exponential_rate_0_over_0.py"
+    ],
+    "extreme_amplitude_data.json": [
+      "experiments/extreme_amplitude.py"
+    ],
+    "extreme_re_data.json": [
+      "experiments/extreme_re.py",
+      "experiments/unified_framework.py"
+    ],
+    "factorial_root_1_over_e.json": [
+      "experiments/factorial_root_1_over_e.py"
+    ],
+    "fermat_little_0_over_0_data.json": [
+      "experiments/fermat_little_0_over_0.py"
+    ],
+    "fibonacci_spiral_data.json": [
+      "experiments/fibonacci_spiral.py"
+    ],
+    "fibonacci_squares_data.json": [
+      "experiments/fibonacci_squares.py"
+    ],
+    "fib_stream_data.json": [
+      "experiments/fib_stream.py"
+    ],
+    "zeta_zeros_extended.json": [
+      "experiments/find_zeta_zeros.py"
+    ],
+    "zeta_zeros_progress.json": [
+      "experiments/find_zeta_zeros.py"
+    ],
+    "flow_active_learning_data.json": [
+      "experiments/flow_active_learning.py"
+    ],
+    "flow_hierarchical_data.json": [
+      "experiments/flow_hierarchical.py"
+    ],
+    "flow_hier_incremental_data.json": [
+      "experiments/flow_hier_incremental.py"
+    ],
+    "flow_hier_reg_data.json": [
+      "experiments/flow_hier_reg.py"
+    ],
+    "flow_hier_reg_scaled_data.json": [
+      "experiments/flow_hier_reg_scaled.py"
+    ],
+    "flow_incremental_data.json": [
+      "experiments/flow_incremental.py"
+    ],
+    "flow_regularized_data.json": [
+      "experiments/flow_regularized.py"
+    ],
+    "fold_golden_closure_data.json": [
+      "experiments/fold_golden_closure.py"
+    ],
+    "fold_ladder_phi_data.json": [
+      "experiments/fold_ladder_phi.py"
+    ],
+    "fold_optimizer_data.json": [
+      "experiments/fold_optimizer.py"
+    ],
+    "fold_unitary_data.json": [
+      "experiments/fold_unitary.py"
+    ],
+    "fourier_uncertainty_0_over_0_data.json": [
+      "experiments/fourier_uncertainty_0_over_0.py"
+    ],
+    "frequency_cascade_data.json": [
+      "experiments/frequency_cascade.py"
+    ],
+    "fr_inflation.json": [
+      "experiments/fr_inflation.py"
+    ],
+    "fta_0_over_0_data.json": [
+      "experiments/fta_0_over_0.py"
+    ],
+    "ft_depth_bins.json": [
+      "experiments/ft_depth_bins.py"
+    ],
+    "ft_ledger.json": [
+      "experiments/ft_ledger.py"
+    ],
+    "galois_discriminant_0_over_0.json": [
+      "experiments/galois_discriminant_0_over_0.py"
+    ],
+    "gap_analysis_data.json": [
+      "experiments/gap_analysis.py",
+      "tests/test_solvable_theorems.py"
+    ],
+    "gauss_circle_anti_0_over_0.json": [
+      "experiments/gauss_circle_anti_0_over_0.py"
+    ],
+    "generating_function_singularity_0_over_0.json": [
+      "experiments/generating_function_singularity_0_over_0.py"
+    ],
+    "global_monotonicity.json": [
+      "experiments/global_identity.py",
+      "experiments/unified_framework.py"
+    ],
+    "goldbach_0_over0_data.json": [
+      "experiments/goldbach_0_over0.py"
+    ],
+    "goldbach_density_0_over_0.json": [
+      "experiments/goldbach_density_0_over_0.py"
+    ],
+    "goldbach_large.json": [
+      "experiments/goldbach_large.py"
+    ],
+    "golden_closure_constant_data.json": [
+      "experiments/golden_closure_constant.py"
+    ],
+    "golden_ratio_recurrence.json": [
+      "experiments/golden_ratio_recurrence.py"
+    ],
+    "golden_survey_data.json": [
+      "experiments/golden_survey.py"
+    ],
+    "gradient_descent_0_over_0_data.json": [
+      "experiments/gradient_descent_0_over_0.py"
+    ],
+    "greens_function_0_over_0_data.json": [
+      "experiments/greens_function_0_over_0.py"
+    ],
+    "grh_dirichlet_0_over_0_data.json": [
+      "experiments/grh_dirichlet_0_over_0.py"
+    ],
+    "grokking_0over0.json": [
+      "experiments/grokking_0over0.py"
+    ],
+    "hadamard_curvature_data.json": [
+      "experiments/hadamard_curvature.py"
+    ],
+    "half_cosine_0_over_0.json": [
+      "experiments/half_cosine_0_over_0.py"
+    ],
+    "hamiltonian_routing_data.json": [
+      "experiments/hamiltonian_routing.py"
+    ],
+    "harvest_energy_data.json": [
+      "experiments/harvest_energy.py"
+    ],
+    "hodge_millennium_data.json": [
+      "experiments/hodge_millennium.py"
+    ],
+    "human_trial_package.json": [
+      "experiments/human_trial_pilot.py",
+      "puno_app/human_trial.py",
+      "tests/test_solvable_theorems.py"
+    ],
+    "imaginary_identity_data.json": [
+      "experiments/imaginary_identity.py",
+      "experiments/unified_framework.py"
+    ],
+    "inside_universe.json": [
+      "experiments/inside_universe.py"
+    ],
+    "integrability_data.json": [
+      "experiments/integrability.py"
+    ],
+    "ising_model_0_over_0_data.json": [
+      "experiments/ising_model_0_over_0.py"
+    ],
+    "kawasaki_null_data.json": [
+      "experiments/kawasaki_ctc.py",
+      "experiments/kawasaki_null.py"
+    ],
+    "kawasaki_ctc_data.json": [
+      "experiments/kawasaki_ctc.py"
+    ],
+    "key_inequality_data.json": [
+      "experiments/key_inequality.py",
+      "experiments/unified_framework.py"
+    ],
+    "khintchine_0_over_0_data.json": [
+      "experiments/khintchine_0_over_0.py"
+    ],
+    "kkt_conditions_0_over_0_data.json": [
+      "experiments/kkt_conditions_0_over_0.py"
+    ],
+    "kolmogorov_c0_data.json": [
+      "experiments/kolmogorov_c0.py"
+    ],
+    "laplace_method_0_over_0_data.json": [
+      "experiments/laplace_method_0_over_0.py"
+    ],
+    "lattice_wall_1e8_0_over_0.json": [
+      "experiments/lattice_wall_1e8_0_over_0.py"
+    ],
+    "legendre_0_over0_data.json": [
+      "experiments/legendre_0_over0.py"
+    ],
+    "log_corridor.json": [
+      "experiments/log_corridor.py"
+    ],
+    "log_limits_0_over_0_data.json": [
+      "experiments/log_limits_0_over_0.py"
+    ],
+    "lorenz_attractor_0_over_0_data.json": [
+      "experiments/lorenz_attractor_0_over_0.py"
+    ],
+    "mandate_report_data.json": [
+      "experiments/mandate_report.py"
+    ],
+    "mass_gap_calculator.json": [
+      "experiments/mass_gap_calculator.py"
+    ],
+    "mertens_explicit_height_data.json": [
+      "experiments/mertens_explicit_height.py"
+    ],
+    "mertens_product_0_over_0.json": [
+      "experiments/mertens_product_0_over_0.py"
+    ],
+    "mertens_psi_census_data.json": [
+      "experiments/mertens_psi_census.py"
+    ],
+    "metric_comparison_data.json": [
+      "experiments/metric_comparison.py"
+    ],
+    "mobius_function_0_over_0_data.json": [
+      "experiments/mobius_function_0_over_0.py"
+    ],
+    "mobius_mertens_0_over_0.json": [
+      "experiments/mobius_mertens_0_over_0.py"
+    ],
+    "morse_theory_0_over_0_data.json": [
+      "experiments/morse_theory_0_over_0.py"
+    ],
+    "muon_g2_0over0.json": [
+      "experiments/muon_g2_0over0.py"
+    ],
+    "natural_transformation_0_over_0.json": [
+      "experiments/natural_transformation_0_over_0.py"
+    ],
+    "neron_tate_height_torsion_0_over_0.json": [
+      "experiments/neron_tate_height_torsion_0_over_0.py"
+    ],
+    "newton_quadratic_rate_0_over_0.json": [
+      "experiments/newton_quadratic_rate_0_over_0.py"
+    ],
+    "noether_landau_0_over_0_data.json": [
+      "experiments/noether_landau_0_over_0.py"
+    ],
+    "noether_theorem_0_over_0_data.json": [
+      "experiments/noether_theorem_0_over_0.py"
+    ],
+    "ns_1d_longtime_data.json": [
+      "experiments/ns_1d_longtime.py"
+    ],
+    "ns_1d_proof_data.json": [
+      "experiments/ns_1d_proof.py"
+    ],
+    "ns_3d_millennium_data.json": [
+      "experiments/ns_3d_millennium.py"
+    ],
+    "ns_graph_verification.json": [
+      "experiments/ns_graph_verification.py"
+    ],
+    "ns_r3_proof_verification.json": [
+      "experiments/ns_r3_proof.py"
+    ],
+    "nth_root_of_n.json": [
+      "experiments/nth_root_of_n.py"
+    ],
+    "nt_sums_0_over_0_data.json": [
+      "experiments/number_theory_sums_0_over_0.py"
+    ],
+    "outward_cascade.json": [
+      "experiments/outward_cascade.py"
+    ],
+    "outward_cascade_extended.json": [
+      "experiments/outward_cascade_extended.py"
+    ],
+    "partition_asymptotics.json": [
+      "experiments/partition_asymptotics.py"
+    ],
+    "pgt_finite_l_data.json": [
+      "experiments/pgt_finite_l.py"
+    ],
+    "phi_scheduler_data.json": [
+      "experiments/phi_scheduler.py"
+    ],
+    "photon_rubber_ball_data.json": [
+      "experiments/photon_rubber_ball.py"
+    ],
+    "phragmen_lindelof_data.json": [
+      "experiments/phragmen_lindelof_analysis.py",
+      "tests/test_solvable_theorems.py"
+    ],
+    "picard_little_0_over_0_data.json": [
+      "experiments/picard_little_0_over_0.py"
+    ],
+    "poincare_hopf_0_over_0_data.json": [
+      "experiments/poincare_hopf_0_over_0.py"
+    ],
+    "poincare_recurrence_0_over_0_data.json": [
+      "experiments/poincare_recurrence_0_over_0.py"
+    ],
+    "poincare_universe.json": [
+      "experiments/poincare_universe.py"
+    ],
+    "poisson_summation_0_over_0_data.json": [
+      "experiments/poisson_summation_0_over_0.py"
+    ],
+    "polya_liouville_0_over_0.json": [
+      "experiments/polya_liouville_0_over_0.py"
+    ],
+    "polya_wall_1e8_0_over_0.json": [
+      "experiments/polya_wall_1e8_0_over_0.py"
+    ],
+    "polygon_perimeter_0_over_0.json": [
+      "experiments/polygon_perimeter_0_over_0.py"
+    ],
+    "polysphere_extensions_data.json": [
+      "experiments/polysphere_extensions.py"
+    ],
+    "polysphere_mnist_data.json": [
+      "experiments/polysphere_mnist.py"
+    ],
+    "polysphere_nnflow_viz_data.json": [
+      "experiments/polysphere_nnflow_viz.py"
+    ],
+    "polysphere_routing_data.json": [
+      "experiments/polysphere_routing.py"
+    ],
+    "polysphere_use_cases_data.json": [
+      "experiments/polysphere_use_cases.py"
+    ],
+    "primes_in_arithmetic_progression.json": [
+      "experiments/primes_in_arithmetic_progression.py"
+    ],
+    "prime_counting_li_form.json": [
+      "experiments/prime_counting_li_form.py"
+    ],
+    "prime_number_theorem_0_over_0_data.json": [
+      "experiments/prime_number_theorem_0_over_0.py"
+    ],
+    "prime_reciprocal_0_over_0.json": [
+      "experiments/prime_reciprocal_0_over_0.py"
+    ],
+    "prime_time_data.json": [
+      "experiments/prime_time.py"
+    ],
+    "probability_0_over_0_data.json": [
+      "experiments/probability_0_over_0.py"
+    ],
+    "prodi_serrin_data.json": [
+      "experiments/prodi_serrin.py"
+    ],
+    "rh_verification.json": [
+      "experiments/proof_rh.py"
+    ],
+    "pythagorean_0_over_0_data.json": [
+      "experiments/pythagorean_0_over_0.py"
+    ],
+    "p_np_clusters.json": [
+      "experiments/p_np_clusters.py"
+    ],
+    "p_np_contour.json": [
+      "experiments/p_np_contour.py"
+    ],
+    "p_np_flow.json": [
+      "experiments/p_np_flow.py"
+    ],
+    "p_vs_np_0over0_data.json": [
+      "experiments/p_vs_np_0over0.py"
+    ],
+    "p_vs_np_re_l_u_data.json": [
+      "experiments/p_vs_np_re_l_u.py"
+    ],
+    "rainwater_data.json": [
+      "experiments/rainwater_sizing.py"
+    ],
+    "random_matrix_0_over_0_data.json": [
+      "experiments/random_matrix_0_over_0.py"
+    ],
+    "rayleigh_quotient_0_over_0_data.json": [
+      "experiments/rayleigh_quotient_0_over_0.py"
+    ],
+    "regulator_resolution_winding.json": [
+      "experiments/regulator_resolution_winding.py"
+    ],
+    "retrace_boundary_data.json": [
+      "experiments/retrace_boundary.py"
+    ],
+    "reverse_pair_gaps_data.json": [
+      "experiments/reverse_pair_gaps.py"
+    ],
+    "rh_conductor_ratio.json": [
+      "experiments/rh_conductor_ratio.py"
+    ],
+    "rh_li_convergence.json": [
+      "experiments/rh_li_convergence.py"
+    ],
+    "rh_li_correct.json": [
+      "experiments/rh_li_correct.py"
+    ],
+    "rh_li_exact.json": [
+      "experiments/rh_li_exact.py"
+    ],
+    "rh_li_inequality.json": [
+      "experiments/rh_li_inequality.py"
+    ],
+    "ricci_flow_neck_pinch_0_over_0.json": [
+      "experiments/ricci_flow_neck_pinch_0_over_0.py"
+    ],
+    "riemann_decimal_perspective_data.json": [
+      "experiments/riemann_decimal_perspective.py",
+      "experiments/riemann_siegel_roots.py"
+    ],
+    "riemann_siegel_certify_data.json": [
+      "experiments/riemann_siegel_certify.py"
+    ],
+    "riemann_siegel_ordinate_data.json": [
+      "experiments/riemann_siegel_ordinate.py"
+    ],
+    "riemann_siegel_roots_data.json": [
+      "experiments/riemann_siegel_roots.py"
+    ],
+    "rotation_test_data.json": [
+      "experiments/rotation_test.py"
+    ],
+    "saddle_point_0_over_0_data.json": [
+      "experiments/saddle_point_0_over_0.py"
+    ],
+    "sard_theorem_0_over_0_data.json": [
+      "experiments/sard_theorem_0_over_0.py"
+    ],
+    "schanuel_0_over_0_data.json": [
+      "experiments/schanuel_0_over_0.py"
+    ],
+    "schwinger_model.json": [
+      "experiments/schwinger_mass_gap.py"
+    ],
+    "second_l_data.json": [
+      "experiments/second_l.py"
+    ],
+    "second_l_asymptotic.json": [
+      "experiments/second_l_asymptotic.py"
+    ],
+    "selberg_paradigm_data.json": [
+      "experiments/selberg_paradigm.py"
+    ],
+    "selfsimilar_cascade.json": [
+      "experiments/selfsimilar_cascade.py"
+    ],
+    "selfsimilar_type2.json": [
+      "experiments/selfsimilar_type2.py"
+    ],
+    "self_balancing_data.json": [
+      "experiments/self_balancing.py"
+    ],
+    "servo_regen_data.json": [
+      "experiments/servo_regen.py"
+    ],
+    "shannon_entropy_0_over_0_data.json": [
+      "experiments/shannon_entropy_0_over_0.py"
+    ],
+    "sigma_law_structural.json": [
+      "experiments/sigma_law_structural.py"
+    ],
+    "sigma_summatory_pi2_12.json": [
+      "experiments/sigma_summatory_pi2_12.py"
+    ],
+    "sinc_0_over_0.json": [
+      "experiments/sinc_0_over_0.py"
+    ],
+    "space_spin_data.json": [
+      "experiments/space_spin.py"
+    ],
+    "spectral_density_band_edge_0_over_0.json": [
+      "experiments/spectral_density_band_edge_0_over_0.py"
+    ],
+    "spectral_extended_data.json": [
+      "experiments/spectral_extended.py",
+      "experiments/zeta_zero_spectral_match.py"
+    ],
+    "spectral_gap_0_over_0_data.json": [
+      "experiments/spectral_gap_0_over_0.py"
+    ],
+    "spin_blindness.json": [
+      "experiments/spin_blindness.py"
+    ],
+    "spring_fold_data.json": [
+      "experiments/spring_fold.py"
+    ],
+    "squarefree_density.json": [
+      "experiments/squarefree_density.py"
+    ],
+    "standby_efficiency_data.json": [
+      "experiments/standby_efficiency.py"
+    ],
+    "statistical_cascade_data.json": [
+      "experiments/statistical_cascade.py",
+      "experiments/unified_framework.py"
+    ],
+    "stirling_approx_0_over_0_data.json": [
+      "experiments/stirling_approx_0_over_0.py"
+    ],
+    "stokes_de_rham_0_over_0_data.json": [
+      "experiments/stokes_de_rham_0_over_0.py"
+    ],
+    "su2_ym_3d_mass_gap.json": [
+      "experiments/su2_ym_3d_gap.py"
+    ],
+    "sum_of_two_squares_law.json": [
+      "experiments/sum_of_two_squares_law.py"
+    ],
+    "s_function_census_data.json": [
+      "experiments/s_function_census.py"
+    ],
+    "t39_cusp_flow_data.json": [
+      "experiments/t39_cusp_flow.py"
+    ],
+    "t65_fourpack_results.json": [
+      "experiments/t65_fourpack.py"
+    ],
+    "tautology_principle.json": [
+      "experiments/tautology_principle.py"
+    ],
+    "taylor_remainder_0_over_0_data.json": [
+      "experiments/taylor_remainder_0_over_0.py"
+    ],
+    "taylor_third_0_over_0.json": [
+      "experiments/taylor_third_0_over_0.py"
+    ],
+    "thaumaturge_00.json": [
+      "experiments/thaumaturge_00.py"
+    ],
+    "thirring_gn_crossover.json": [
+      "experiments/thirring_gn_crossover.py"
+    ],
+    "tilt_depths.json": [
+      "experiments/tilt_depths.py"
+    ],
+    "time_reversal_convergence_data.json": [
+      "experiments/time_reversal_convergence.py"
+    ],
+    "twin_prime_0_over0_data.json": [
+      "experiments/twin_prime_0_over0.py"
+    ],
+    "twin_prime_density_0_over_0.json": [
+      "experiments/twin_prime_density_0_over_0.py"
+    ],
+    "two_loop_cc.json": [
+      "experiments/two_loop_cc.py"
+    ],
+    "constraint_verification.json": [
+      "experiments/two_parts.py",
+      "experiments/unified_framework.py"
+    ],
+    "uncertainty_vshape_data.json": [
+      "experiments/uncertainty_vshape.py",
+      "experiments/unified_framework.py"
+    ],
+    "unfold_fold_price.json": [
+      "experiments/unfold_fold_price.py"
+    ],
+    "unified_framework_connection.json": [
+      "experiments/unified_framework.py"
+    ],
+    "valley_curvature_data.json": [
+      "experiments/unified_framework.py",
+      "experiments/valley_curvature.py"
+    ],
+    "identity_verification.json": [
+      "experiments/unified_framework.py",
+      "experiments/verify_identity.py"
+    ],
+    "sigma_currency.json": [
+      "experiments/universal_0over0.py"
+    ],
+    "llm_knowledge_packet.json": [
+      "experiments/universal_0over0.py"
+    ],
+    "universal_bound_data.json": [
+      "experiments/universal_bound.py"
+    ],
+    "universal_impedance.json": [
+      "experiments/universal_impedance.py"
+    ],
+    "universal_mass_gap.json": [
+      "experiments/universal_mass_gap.py"
+    ],
+    "van_iterson_data.json": [
+      "experiments/van_iterson.py"
+    ],
+    "volume_coin.json": [
+      "experiments/volume_coin.py"
+    ],
+    "w1_burgers_1d.json": [
+      "experiments/w1_burgers_1d.py"
+    ],
+    "w1_double_vortex.json": [
+      "experiments/w1_double_vortex.py"
+    ],
+    "w1_gn_comprehensive.json": [
+      "experiments/w1_gn_comprehensive.py"
+    ],
+    "w1_multi_vortex.json": [
+      "experiments/w1_multi_vortex.py"
+    ],
+    "w1_proof_verification.json": [
+      "experiments/w1_proof_verify.py"
+    ],
+    "wallis_product_0_over_0_data.json": [
+      "experiments/wallis_product_0_over_0.py"
+    ],
+    "weil_explicit_0_over_0_data.json": [
+      "experiments/weil_explicit_0_over_0.py"
+    ],
+    "wheeler_dewitt_selection_data.json": [
+      "experiments/wheeler_dewitt_selection.py"
+    ],
+    "wigner_semicircle_0_over_0_data.json": [
+      "experiments/wigner_semicircle_0_over_0.py"
+    ],
+    "winding_transition_0_over_0.json": [
+      "experiments/winding_transition_0_over_0.py"
+    ],
+    "yang_mills_mass_gap_proof.json": [
+      "experiments/yang_mills_gap_proof.py"
+    ],
+    "yang_mills_millennium_data.json": [
+      "experiments/yang_mills_millennium.py"
+    ],
+    "yang_mills_running_coupling.json": [
+      "experiments/yang_mills_running.py"
+    ],
+    "ym_allloop_ds.json": [
+      "experiments/ym_allloop_ds.py"
+    ],
+    "ym_constructive.json": [
+      "experiments/ym_constructive.py"
+    ],
+    "ym_fold_singularity.json": [
+      "experiments/ym_fold_singularity.py"
+    ],
+    "ym_fold_verification.json": [
+      "experiments/ym_fold_verification.py"
+    ],
+    "ym_rigorous_verification.json": [
+      "experiments/ym_rigorous_verification.py"
+    ],
+    "zeta_functional_eq_0_over_0_data.json": [
+      "experiments/zeta_functional_eq_0_over_0.py"
+    ],
+    "zeta_zero_spectral_match_data.json": [
+      "experiments/zeta_zero_spectral_match.py",
+      "tests/test_solvable_theorems.py"
+    ],
+    "economy_matrix.json": [
+      "experiments/emanation/economy_matrix.py"
+    ],
+    "eigen_gate.json": [
+      "experiments/emanation/eigen_gate.py"
+    ],
+    "rule_erasure_spectrum.json": [
+      "experiments/emanation/erasure_audit.py"
+    ],
+    "genesis_blowup.json": [
+      "experiments/emanation/genesis_blowup.py"
+    ],
+    "genesis_branches.json": [
+      "experiments/emanation/genesis_branches.py"
+    ],
+    "genesis_constants.json": [
+      "experiments/emanation/genesis_constants.py"
+    ],
+    "genesis_crossover.json": [
+      "experiments/emanation/genesis_crossover.py"
+    ],
+    "genesis_darkzone.json": [
+      "experiments/emanation/genesis_darkzone.py"
+    ],
+    "genesis_denial.json": [
+      "experiments/emanation/genesis_denial.py"
+    ],
+    "genesis_denial_rate.json": [
+      "experiments/emanation/genesis_denial_rate.py"
+    ],
+    "genesis_depthpin.json": [
+      "experiments/emanation/genesis_depthpin.py"
+    ],
+    "genesis_echo_excess.json": [
+      "experiments/emanation/genesis_echo_excess.py"
+    ],
+    "genesis_echo_population.json": [
+      "experiments/emanation/genesis_echo_population.py"
+    ],
+    "genesis_euler.json": [
+      "experiments/emanation/genesis_euler.py"
+    ],
+    "genesis_fences.json": [
+      "experiments/emanation/genesis_fences.py"
+    ],
+    "genesis_gapfn.json": [
+      "experiments/emanation/genesis_gapfn.py"
+    ],
+    "genesis_grant.json": [
+      "experiments/emanation/genesis_grant.py"
+    ],
+    "genesis_grantlift.json": [
+      "experiments/emanation/genesis_grantlift.py"
+    ],
+    "genesis_law.json": [
+      "experiments/emanation/genesis_law.py"
+    ],
+    "genesis_masses.json": [
+      "experiments/emanation/genesis_masses.py"
+    ],
+    "genesis_metamery.json": [
+      "experiments/emanation/genesis_metamery.py"
+    ],
+    "genesis_meter.json": [
+      "experiments/emanation/genesis_meter.py"
+    ],
+    "genesis_millennium.json": [
+      "experiments/emanation/genesis_millennium.py"
+    ],
+    "genesis_overshoot.json": [
+      "experiments/emanation/genesis_overshoot.py"
+    ],
+    "genesis_populations.json": [
+      "experiments/emanation/genesis_populations.py"
+    ],
+    "genesis_quantiles.json": [
+      "experiments/emanation/genesis_quantiles.py"
+    ],
+    "genesis_relaxation.json": [
+      "experiments/emanation/genesis_relaxation.py"
+    ],
+    "genesis_scale.json": [
+      "experiments/emanation/genesis_scale.py"
+    ],
+    "genesis_seven.json": [
+      "experiments/emanation/genesis_seven.py"
+    ],
+    "genesis_split.json": [
+      "experiments/emanation/genesis_split.py"
+    ],
+    "genesis_tail.json": [
+      "experiments/emanation/genesis_tail.py"
+    ],
+    "genesis_transmutation.json": [
+      "experiments/emanation/genesis_transmutation.py"
+    ],
+    "genesis_trip.json": [
+      "experiments/emanation/genesis_trip.py"
+    ],
+    "genesis_trip_geometry.json": [
+      "experiments/emanation/genesis_trip_geometry.py"
+    ],
+    "genesis_trip_mechanism.json": [
+      "experiments/emanation/genesis_trip_mechanism.py"
+    ],
+    "harm_as_depth.json": [
+      "experiments/emanation/harm_as_depth.py"
+    ],
+    "harm_cap.json": [
+      "experiments/emanation/harm_cap.py"
+    ],
+    "harm_freeze.json": [
+      "experiments/emanation/harm_freeze.py"
+    ],
+    "harm_ft_break.json": [
+      "experiments/emanation/harm_ft_break.py"
+    ],
+    "law_discovery_table.json": [
+      "experiments/emanation/law_discovery.py",
+      "scripts/certify_repo.py"
+    ],
+    "discovery_verdict.json": [
+      "experiments/emanation/law_discovery.py",
+      "scripts/certify_repo.py"
+    ],
+    "phase_boundary.json": [
+      "experiments/emanation/phase_boundary.py"
+    ],
+    "rotation_frequency.json": [
+      "experiments/emanation/rotation_frequency.py"
+    ],
+    "supervision_verdict.json": [
+      "experiments/emanation/supervisor.py",
+      "scripts/certify_repo.py"
+    ],
+    "law_certificates.json": [
+      "scripts/certify_repo.py"
+    ],
+    "googol_census.json": [
+      "scripts/googol_census.py"
+    ]
+  }
+}

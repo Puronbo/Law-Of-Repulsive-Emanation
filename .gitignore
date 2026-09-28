@@ -12,9 +12,18 @@ venv/
 .pytest_cache/
 
 # Generated data artifacts (both canonical data/ and legacy Universals/ locations)
+#
+# Persistence rule (2026-09-28): a generated artifact is NOT stored, so it
+# persists only if regen_data.py can find its generating script. The
+# artifact -> script map is itself the standard, so it IS tracked.
+# `python regen_data.py --manifest` regenerates it; `--regen PATTERN`
+# recreates artifacts. Anything regen_data.py reports under
+# "unreproducible" is a genuine loss - currently 42, of which 17 are
+# load-bearing for tests/*.py. See docs/PREDICTION_LEDGER.md PL-23.
 data/*.json
 data/*.dot
 data/*.npz
+!data/DATA_MANIFEST.json
 !data/mersenne_prime_5630.json
 !data/mersenne_m52_bridge.json
 !data/googol_census.json

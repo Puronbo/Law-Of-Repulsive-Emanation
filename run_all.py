@@ -12,6 +12,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 os.chdir(ROOT)
 
 steps = [
+    ("Data Persistence Preflight (coverage report)", "python", "regen_data.py"),
     ("Formal Proofs (26 results: 5 axioms + 3 lemmas + 10 theorems + 8 corollaries)", "python", "Universals/proofs.py"),
     ("Validation (121 tests)", "python", "Universals/math_validation.py"),
     ("Dual Attestation (12 dualities)", "python", "Universals/duality.py"),
