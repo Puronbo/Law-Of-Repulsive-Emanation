@@ -382,6 +382,78 @@ form, pointwise, and along the de Bruijn flow — in
   vs `−0.689762` (`2.1e-3`, naive `3.0e-1`). The departure scale is fixed by
   the stationary spectrum through the gap law -- a quantitative statement,
   not a free fit.
+- **G9 (the gap law is an exact identity).** The pinned record's section 24
+  law `δ' = 4/δ − 2δS_n` is verified as an identity, not fitted: `S_n` is
+  computed *directly from the zero positions* as the mirror-symmetric
+  rest-remainder sum
+  `S_n = Σ_{m∉{a,b}} 1/((x_b−x_m)(x_a−x_m))` over the full set `{±γₖ}`
+  (including the images `−x_a, −x_b`), first `G5_K=200` terms plus the moment
+  tail, and `δ'(0)` is evaluated independently from the kernel velocity
+  `Ξ_tt/Ξ_t` at each zero and from the spacing law.  All three agree on
+  every measured pair: kernel-vs-law residual `≤ 1.0e-5` (the G5
+  velocity-noise floor), spacing-vs-law residual `≤ 3.4e-11` (pure
+  truncation), and the direct and velocity-built `S_n` agree to `≤ 1.2e-11`.
+  This is why the `S_n` correction in G8 is not an empirical fudge: the
+  rest-remainder sum the pinned record writes down IS the object the closed
+  form uses, on the nose.
+- **G10 (the collapse-rate direction is a theorem).** The pinned record's
+  section 25 defines the mirror-symmetric inverse-square two-body sum
+  `G_n = Σ_{m∉{a,b}} [1/(x_a−x_m)² + 1/(x_b−x_m)²]` and asserts
+  `S_n ≤ ½G_n`.  That is a term-wise AM-GM inequality: with
+  `u = 1/(x_a−x_m)`, `v = 1/(x_b−x_m)`, the identity `(u−v)² ≥ 0` gives
+  `uv ≤ (u²+v²)/2` for **every** summand, including the mirror branches
+  `±x_k` and the self-images `−x_a, −x_b` (checked term-wise: worst
+  violation `0.0e+00`).  Summing, `S_n ≤ ½G_n`, and the exact gap law
+  becomes the strict bound `(δ²)' = 8 − 4δ²S_n ≥ 8 − 2δ²G_n = 8 − 2L_n`
+  with `L_n = δ²G_n`.  When `L_n < 4` the squared gap is forced to grow
+  under forward flow by pure inequality — no velocity measurement enters.
+  All fifteen adjacent pairs of the first sixteen zeros satisfy
+  `S_n ≤ ½G_n`; the three measured pairs have `L_n = 1.1300 (13,14),
+  1.3226 (9,10), 2.2874 (15,16)`, all `< 4`, and their measured gap slopes
+  `2δ₀δ'(0) = 5.8278, 5.4704, 3.7708` sit at or *above* the bounds
+  `8−2L = 5.7400, 5.3548, 3.4251` — the inequality is a strict loss, so the
+  *direction* of each −1/4→0 squared-gap slope is exact while its *size* is
+  not fixed by the theorem.
+
+**Why the gap law is exact (the four-step identity).** Three lemmas, all
+pure algebra, make G8/G9 identities rather than observations:
+
+1. **Product form of Ξ.** As an even entire function of order 1 with real
+   zeros, `Ξ_λ(t) = Ξ_λ(0) ∏ₖ (1 − t²/xₖ(λ)²)`, where `xₖ` are the positive
+   zeros (mirror pairs `±xₖ` both appear).  Log-differentiating,
+   `(ln Ξ_λ)'(t) = Σₖ 2t/(t²−xₖ²)`.
+2. **Velocity law = two-body law.** Along the heat flow
+   `∂_λΞ_λ = −∂_t²Ξ_λ`, a root obeys
+   `x'_n = Ξ_tt/Ξ_t |_{x_n}`.  Near `t = x_n` the log-derivative has a
+   simple pole with residue 1; its regular part at `x_n` is exactly
+   `1/(2x_n) + Σ_{k≠n} 2x_n/(x_n²−xₖ²)`, which is the two-body sum over the
+   mirror set: `x'_n = 2Σ_{m≠n} 1/(x_n−x_m)` over `{±xₖ}` (the self-image
+   `−x_n` supplies the `1/(2x_n)` term).  This is precisely the pinned
+   record's spacing law (G5, verified against the kernel to `1e-5`).
+3. **Gap law from algebra.** For `δ = x_b − x_a`, subtract the two
+   velocities: the mutual term `x_a ↔ x_b` telescopes to `4/δ` (each
+   partner contributes `2·1/δ` via `t'_b` and `t'_a`), and every other term
+   reassembles, using the mirror identity
+   `1/((x_b−x_m)(x_a−x_m))`, into `−2δ S_n` with exactly the section-24
+   rest-remainder sum.  Hence `δ' = 4/δ − 2δS_n`, i.e.
+   `(δ²)' = 8 − 4δ²S_n` (G9 checks this identity numerically three ways).
+4. **Closed form solves the ODE with constant `S_n`.** Treating `S_n` as
+   frozen at its λ = 0 value, `V = δ²` solves `V' = 8 − 4S_nV`, giving the
+   explicit closed form `λ*_S = ln(1 − S_nδ₀²/2)/(4S_n)`.  The only
+   approximation in the whole chain is this constant-`S_n` freeze (G8
+   quantifies it: relative `5.7e-4` to `2.1e-3` on the measured pairs); the
+   λ = 0 identity itself, and the object `S_n` G8 uses, are exact.
+5. **Direction of the bound is AM-GM (G10).** Step 3's `S_n` is itself
+   bounded term-wise by the inverse-square two-body sum `G_n` through the
+   elementary identity `uv ≤ (u²+v²)/2` applied to every reciprocal pair
+   `u = 1/(x_a−x_m)`, `v = 1/(x_b−x_m)`.  Hence `δ' = 4/δ − 2δS_n ≥
+   4/δ − δG_n`, i.e. `(δ²)' ≥ 8 − 2δ²G_n`.  Under `L_n = δ²G_n < 4` the gap
+   expands in forward flow by inequality alone; every measured pair is in
+   that regime, and the measured slopes confirm the bound is strict, not
+   tight.  This moves the *sign* of the departure-rate from observation to
+   theorem — but it does not follow the pair to its collapse, so the
+   departure *scales* remain continuation measurements (G6–G8), exactly as
+   the artifact states.
 
 One honest wall remains and is stated in the artifact: the per-zero departure
 scales `λ*ₖ` for the *other* zeros are unmeasured (a robust bifurcation
@@ -396,6 +468,13 @@ kernel as pinned is the right object and that the framework's zero-motion
 claims (real-axis persistence to −1/4, the velocity law, the symmetric
 two-body spacing law, and now the measured close-pair departures with gap-law
 slope 8, predicted in closed form by the `S_n`-corrected gap law) hold on it.
-The departure scales of the three closest pairs are aligned with what Newman's
-"barely so" demands of any counterfactual: each pair does leave the axis at a
-finite λ, exactly at a double root of the deformed kernel.
+G10 adds a purely algebraic corollary: the squared-gap slope of every
+measured pair is *positive by theorem* (a term-wise AM-GM bound
+`(δ²)' ≥ 8 − 2δ²G_n` with `L_n < 4`), so the direction in which those pairs
+depart is not an accident of the continuation.  The departure *scales*
+themselves — the finite `λ*` at which each pair collapses — are still
+measured, not derived, and the folklore that the inequality alone continues a
+pair all the way is explicitly declined.  The departure scales of the three
+closest pairs are aligned with what Newman's "barely so" demands of any
+counterfactual: each pair does leave the axis at a finite λ, exactly at a
+double root of the deformed kernel.

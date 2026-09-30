@@ -42,15 +42,32 @@ piece of the framework's "zero trajectories as scale objects" programme:
   *   the two next-closest pairs (9,10) and (15,16) leave the real axis the
     same way, each at its own lambda* < 0 double root with gap^2 slope -> 8
     (G7),
-  *   lambda* is predicted in closed form: the gap law with S_n read off the
-    exact spacing law at lambda = 0,
-        S_n = (4/delta_0 - delta'(0)) / (2 delta_0),
-    solved with S_n constant gives
-        lambda*_S = ln(1 - S_n delta_0^2 / 2) / (4 S_n),
-    an explicit function of the stationary spectrum that reduces to the naive
-    lambda_c = -delta_0^2/8 as S_n -> 0.  Each measured departure (G6, G7)
-    matches this closed form to well within the gap-law tolerance, beating
-    the naive model by a wide margin (G8).
+*   lambda* is predicted in closed form: the gap law with S_n read off the
+        exact spacing law at lambda = 0,
+            S_n = (4/delta_0 - delta'(0)) / (2 delta_0),
+        solved with S_n constant gives
+            lambda*_S = ln(1 - S_n delta_0^2 / 2) / (4 S_n),
+        an explicit function of the stationary spectrum that reduces to the
+        naive lambda_c = -delta_0^2/8 as S_n -> 0.  Each measured departure
+        (G6, G7) matches this closed form to well within the gap-law
+        tolerance, beating the naive model by a wide margin (G8).
+  *   the exact gap law  delta' = 4/delta - 2 delta S_n  is checked as an
+        identity, not fitted: S_n is evaluated directly from the zero
+        positions (rest-remainder sum over the mirror-symmetric set
+        {+-gamma_k}, including the images -x_a, -x_b, first G5_K terms plus
+        the moment tail), and delta'(0) is evaluated independently from the
+        kernel velocity Xi_tt/Xi_t and from the spacing law.  All three
+        agree to tiny residuals on every measured pair (G9),
+  *   the collapse-rate direction of every pair is forced by a pure
+        inequality: with G_n = sum_{m != a,b} [1/(x_a-x_m)^2 + 1/(x_b-x_m)^2]
+        the two-body bound  u v <= (u^2+v^2)/2  (u = 1/(x_a-x_m),
+        v = 1/(x_b-x_m)) holds term-by-term including the mirror images, so
+        S_n <= G_n/2 and the exact gap law gives
+        (delta^2)' = 8 - 4 delta^2 S_n  >=  8 - 2 delta^2 G_n.
+        With L_n = delta^2 G_n < 4 the measured pairs have (delta^2)' > 0
+        (squared gap growing under forward flow) from the inequality alone
+        -- the AM-GM identity is exact, no velocity measurement enters
+        (G10).
 
 What is deliberately NOT claimed here: the per-zero departure scale lam*_k
 for every zero.  Departure scales are now measured for the three closest
@@ -59,7 +76,12 @@ adjacent pairs of the first sixteen zeros (G6: (13,14); G7: (9,10) and
 F = F_t = 0 at the double root, and each predicted in closed form by the
 gap law with S_n from the lambda = 0 spacing law (G8).  Those scales are
 measured; the tormented trajectories of the other zeros are not, and no RH
-statement follows.
+statement follows.  G10 adds a caveat-side fact: every departure that is
+measured starts from a pair whose lambda = 0 squared-gap slope is positive
+and bounded below by a pure inequality -- but the inequality itself says
+nothing about whether that slope stays positive all the way to the
+departure, so the departure scales remain a continuation statement, not a
+theorem about the whole flow.
 
 Every gate PASSES when the corresponding fact is confirmed.  The script is
 self-contained: it rebuilds its own Gauss-Legendre rule (no cache file), so a
@@ -234,7 +256,28 @@ def _log_xi_moments(jmax):
         mp.mp.dps = dps
 
 
-def _spacing_law(K, gxn):
+_G5_BASIS = {}          # memoised (moments, gz): shared by G5 and G9
+
+
+def _g5_basis():
+    """The spacing-law inputs, computed once: the moment sequence
+    M_{2j} = sum_k 1/gamma_k^{2j} (j = 1..G5_JMAX) and the first G5_K real
+    zeros.  Both the spacing-law gate (G5) and the gap-law identity gate
+    (G9) need exactly this pair, so it is built once and reused."""
+    if _G5_BASIS:
+        return _G5_BASIS["moments"], _G5_BASIS["gz"]
+    moments = _log_xi_moments(G5_JMAX)
+    dps = mp.mp.dps
+    mp.mp.dps = 30
+    try:
+        gz = [zetaze(k) for k in range(1, G5_K + 1)]
+    finally:
+        mp.mp.dps = dps
+    _G5_BASIS.update(moments=moments, gz=gz)
+    return moments, gz
+
+
+def _spacing_law(gxn):
     """Velocity of zero n under the symmetric two-body law:
 
         t'_n = 1/gamma_n + 4 gamma_n sum_{k != n} 1/(gamma_n^2 - gamma_k^2),
@@ -252,13 +295,7 @@ def _spacing_law(K, gxn):
     (positive-axis-only) version of the law misses those mirror images and is
     exactly the "O(1) mismatch" reported earlier.
     """
-    moments = _log_xi_moments(G5_JMAX)
-    dps = mp.mp.dps
-    mp.mp.dps = 30
-    try:
-        gz = [zetaze(k) for k in range(1, G5_K + 1)]
-    finally:
-        mp.mp.dps = dps
+    moments, gz = _g5_basis()
     preds = {}
     for n in range(1, len(gxn) + 1):
         g = gxn[n - 1]
@@ -273,6 +310,99 @@ def _spacing_law(K, gxn):
             tail += g ** (2 * (j - 1)) * (M2j - part)
         preds[n] = 1 / g + 4 * g * (s - tail)
     return preds
+
+
+def _gap_law_Sn(pa, pb, g_a, g_b):
+    """The pinned record's exact gap-law rest-remainder term at lambda = 0,
+    evaluated directly from the zero positions and the moment tail:
+
+        S_n = 4/delta_0 - 2 delta_0 S_n  is the exact identity,  where
+        S_n = sum_{m != a,b} 1/((x_b - x_m)(x_a - x_m))   over the whole
+        mirror-symmetric set {+-gamma_k} (the images -x_a, -x_b are
+        themselves members of that set and are included).
+
+    The sum over |m| <= G5_K is carried term by term; the tail |m| > G5_K
+    follows from 1/((x_b^2 - x_k^2)(x_a^2 - x_k^2)) expanded in powers of
+    1/x_k^2 with the moment sequence M_{2j}.  This is exactly the S_n that
+    G8 reads off the velocities: subtracting the two spacing-law velocities
+    telescopes the mutual term to 4/delta_0 and reassembles every other
+    term into -2 delta_0 S_n, so the G9 identity below is the same object
+    computed two independent ways.
+    """
+    a, b = g_a, g_b
+    moments, gz = _g5_basis()
+    S = mp.mpf(0)
+    for k in range(1, G5_K + 1):
+        xk = gz[k - 1]
+        if k == pa or k == pb:
+            continue
+        S += 2 * (a * b + xk * xk) / ((b * b - xk * xk)
+                                     * (a * a - xk * xk))
+    # images of the pair members themselves (-x_a, -x_b) are part of the
+    # sum:  1/((x_b + x_a)(x_a + x_a)) + 1/((x_b + x_b)(x_a + x_b))
+    S += 1 / (2 * a * (a + b)) + 1 / (2 * b * (a + b))
+    # tail: for x_k > G5_K,  1/((x_b^2 - x_k^2)(x_a^2 - x_k^2))
+    #      = sum_{i,j>=0} x_b^{2i} x_a^{2j} / x_k^{2(i+j+2)}   (converges
+    #     absolutely since x_a, x_b < x_{G5_K}); the two-body numerator
+    #     2 (x_a x_b + x_k^2) shifts the exponent to 2(i+j+2) and 2(i+j+1),
+    #     and the partial moments M_{2j} - sum_{k<=G5_K} 1/x_k^{2j} give the
+    #     tail sums.
+    dM = {2 * j: M2j - sum(1 / (gk ** (2 * j)) for gk in gz)
+          for j, M2j in moments.items()}
+    T = mp.mpf(0)
+    for i in range(6):
+        for j in range(6):
+            s = i + j
+            k1, k2 = 2 * (s + 2), 2 * (s + 1)
+            if k1 <= 12:
+                T += b ** (2 * i) * a ** (2 * j) * (a * b * dM[k1]
+                                                    + dM[k2])
+    return S + 2 * T
+
+
+def _gap_law_Gn(pa, pb, g_a, g_b):
+    """The pinned record's section 25 two-body rest remainder
+
+        G_n = sum_{m != a,b} [ 1/(x_a-x_m)^2 + 1/(x_b-x_m)^2 ]
+
+    over the whole mirror-symmetric set {+-gamma_k}, built exactly the way
+    _gap_law_Sn builds S_n: the self-images -x_a, -x_b are included (for
+    m = -x_a the two mirror branches give 1/(2 x_a)^2 + 1/(x_a+x_b)^2, and
+    similarly for -x_b), each mirror pair k <= G5_K is summed directly as
+    2 (x_a^2+x_k^2)/(x_a^2-x_k^2)^2 + 2 (x_b^2+x_k^2)/(x_b^2-x_k^2)^2, and
+    the tail k > G5_K follows from
+
+        (x_a^2 + x^2)/(x_a^2 - x^2)^2 = sum_{j>=0} (2j+1) x_a^{2j} x^{-2(j+1)}
+
+    with the partial moments M_{2j} - sum_{k<=K} 1/x_k^{2j}.
+        Because  u v <= (u^2+v^2)/2  for  u = 1/(x_b-x_m), v = 1/(x_a-x_m),
+    term by term  S_n <= G_n/2,  so the exact gap law gives
+
+        (delta^2)' = 8 - 4 delta^2 S_n  >=  8 - 2 delta^2 G_n = 8 - 2 L_n.
+
+    With  L_n = delta^2 G_n < 4,  (delta^2)' > 0 is forced by a pure
+    inequality, independently of any measured velocity (G10 checks this).
+    """
+    a, b = g_a, g_b
+    moments, gz = _g5_basis()
+    G = mp.mpf(0)
+    for k in range(1, G5_K + 1):
+        xk = gz[k - 1]
+        if k == pa or k == pb:
+            continue
+        G += 2 * (a * a + xk * xk) / (a * a - xk * xk) ** 2
+        G += 2 * (b * b + xk * xk) / (b * b - xk * xk) ** 2
+    # the self-images -x_a, -x_b
+    G += 1 / (2 * a) ** 2 + 1 / (a + b) ** 2        # m = -x_a
+    G += 1 / (a + b) ** 2 + 1 / (2 * b) ** 2        # m = -x_b
+    dM = {2 * j: M2j - sum(1 / (gk ** (2 * j)) for gk in gz)
+          for j, M2j in moments.items()}
+    T = mp.mpf(0)
+    for i in range(6):
+        e = 2 * (i + 1)
+        if e <= 12:
+            T += 2 * (2 * i + 1) * (a ** (2 * i) + b ** (2 * i)) * dM[e]
+    return G + T
 
 
 # ------------------------------------------------------------ main gates
@@ -407,7 +537,7 @@ def main():
     # Compared with the kernel velocity Ftt/Ft (the G4 estimator).
     sraw = []
     try:
-        preds = _spacing_law(G5_K, g0)
+        preds = _spacing_law(g0)
     except Exception as exc:                          # noqa: BLE001
         gate("G5: symmetric spacing law matches the kernel velocity",
              False,
@@ -574,6 +704,178 @@ def main():
              for r in g8rows))
     report["g8_predictions"] = g8rows
 
+    # -------------------------------------------------------- G9
+    # the exact gap law is checked as an identity, not fitted: with
+    #   delta_0 = x_b - x_a  and  S_n = sum_{m != a,b} 1/((x_b-x_m)(x_a-x_m))
+    # over the whole mirror-symmetric set {+-gamma_k}, the pinned record's
+    # section 24 law is   delta' = 4/delta - 2 delta S_n.  S_n is evaluated
+    # DIRECTLY from the zero positions (first G5_K terms + moment tail), and
+    # the left-hand side delta'(0) is evaluated independently two ways: the
+    # kernel velocity Xi_tt/Xi_t at each zero (G4 estimator) and the spacing
+    # law (G5 estimator).  All three must agree: the rest-sum build of S_n
+    # and the velocity-built S_n = (4/d0 - d'(0))/(2 d0) used by G8 are the
+    # same number by construction, which is a non-trivial algebraic identity
+    # (the mutual term telescopes to 4/delta_0 and everything else
+    # reassembles into -2 delta_0 S_n only with the mirror images included).
+    g9rows, g9ok = [], False
+    if preds and all_deps:
+        g9ok = True
+        for d in all_deps:
+            p1, p2 = d["pair"]
+            ga_, gb_ = d["gamma"]
+            delta0 = gb_ - ga_
+            Sn_dir = _gap_law_Sn(p1, p2, ga_, gb_)
+            dprime_kern = float(_kernel_velocity(K, gb_)
+                                - _kernel_velocity(K, ga_))  # v_b - v_a
+            dprime_spa = float(preds[p2] - preds[p1])
+            rhs = float(4 / delta0 - 2 * delta0 * Sn_dir)
+            Sn_vel = (4 / delta0 - dprime_spa) / (2 * delta0)
+            res_kern = abs(dprime_kern - rhs)
+            res_spa = abs(dprime_spa - rhs)
+            ok = (Sn_dir > 0 and res_kern < 1e-4 and res_spa < 1e-6
+                  and abs(Sn_dir - Sn_vel) < 1e-6)
+            g9rows.append({"pair": d["pair"], "delta0": delta0,
+                           "S_n_direct": float(Sn_dir),
+                           "S_n_velocity": float(Sn_vel),
+                           "delta_prime_kernel": dprime_kern,
+                           "delta_prime_spacing": dprime_spa,
+                           "gap_law_rhs": rhs,
+                           "res_kernel_vs_law": res_kern,
+                           "res_spacing_vs_law": res_spa, "ok": ok})
+            g9ok &= ok
+    gate("G9: the exact gap law delta' = 4/delta_0 - 2 delta_0 S_n holds "
+         "identically with S_n the mirror-symmetric rest-remainder sum",
+         g9ok,
+         "S_n = sum_{m != a,b} 1/((x_b-x_m)(x_a-x_m)) over {+-gamma_k} "
+         "(images -x_a, -x_b included), summed directly over the first %d "
+         "zeros plus the moment tail; independently, delta'(0) from the "
+         "kernel velocity Xi_tt/Xi_t and from the spacing law. %s.  Both "
+         "sides reconstruct the pinned record's section 24 law with the "
+         "mirror images: the mutual term telescopes to 4/delta_0 and every "
+         "other term reassembles into -2 delta_0 S_n; leaving the images "
+         "off the sum is the old O(1) failure, not a small correction."
+         % (G5_K, "; ".join(
+             "(%d,%d) d0=%.4f S_n=%.7f (dir) vs %.7f (vel) d'(0)=%.5f "
+             "(kernel) / %.5f (spacing) rhs=%.5f res_k=%.1e res_s=%.1e"
+             % (r["pair"][0], r["pair"][1], r["delta0"], r["S_n_direct"],
+                r["S_n_velocity"], r["delta_prime_kernel"],
+                r["delta_prime_spacing"], r["gap_law_rhs"],
+                r["res_kernel_vs_law"], r["res_spacing_vs_law"])
+             for r in g9rows)))
+    report["g9_gap_law_identity"] = g9rows
+
+    # ------------------------------------------------------- G10
+    # the exact gap law gives  (delta^2)' = 8 - 4 delta^2 S_n.  The pinned
+    # record's section 25 notes that with
+    #     G_n = sum_{m != a,b} [ 1/(x_a-x_m)^2 + 1/(x_b-x_m)^2 ]
+    # the two-body inequality  u v <= (u^2 + v^2)/2  (u, v the two
+    # reciprocal distances 1/(x_a-x_m), 1/(x_b-x_m)) bounds every term, so
+    #     S_n <= G_n/2   and   (delta^2)' >= 8 - 2 delta^2 G_n =: 8 - 2 L_n.
+    # With L_n = delta^2 G_n < 4,  (delta^2)' > 0 follows from the
+    # inequality alone -- no velocity measurement enters.  G10 verifies
+    # (i) the AM-GM inequality term-by-term over the shared direct mirror
+    # pairs and the self-images, (ii) the aggregate S_n <= G_n/2 for every
+    # adjacent pair among the first sixteen zeros, and (iii) the corollary
+    # L_n < 4 on the three measured pairs with the bound numerically close
+    # to the measured gap slope.
+    g10rows, g10ok = [], False
+    if preds:
+        g10ok = True
+        _mom, gz10 = _g5_basis()
+        worst_viol = mp.mpf(0)
+        viol_row = None
+        for n1 in range(1, 16):
+            p1, p2 = n1, n1 + 1
+            ga_, gb_ = gz10[p1 - 1], gz10[p2 - 1]
+            for k in range(1, G5_K + 1):
+                if k == p1 or k == p2:
+                    continue
+                xk = gz10[k - 1]
+                # u v <= (u^2 + v^2)/2 for each mirror branch separately
+                for sgn in (mp.mpf(1), mp.mpf(-1)):
+                    u = 1 / (ga_ - sgn * xk)
+                    v = 1 / (gb_ - sgn * xk)
+                    viol = u * v - (u * u + v * v) / 2
+                    if viol > worst_viol:
+                        worst_viol = viol
+                        viol_row = ((p1, p2), int(k), sgn)
+            # self-images -x_a, -x_b
+            for sgn in (mp.mpf(-1),):
+                ua = 1 / (ga_ - sgn * ga_)
+                va = 1 / (gb_ - sgn * ga_)
+                ub = 1 / (ga_ - sgn * gb_)
+                vb = 1 / (gb_ - sgn * gb_)
+                for u, v in ((ua, va), (ub, vb)):
+                    viol = u * v - (u * u + v * v) / 2
+                    if viol > worst_viol:
+                        worst_viol = viol
+                        viol_row = ((p1, p2), "self", sgn)
+        # aggregate S_n <= G_n/2 for all fifteen adjacent pairs of the
+        # first sixteen zeros, and the corollary L_n < 4.
+        agg_ok = True
+        for n1 in range(1, 16):
+            p1, p2 = n1, n1 + 1
+            ga_, gb_ = gz10[p1 - 1], gz10[p2 - 1]
+            delta0 = gb_ - ga_
+            S = _gap_law_Sn(p1, p2, ga_, gb_)
+            G = _gap_law_Gn(p1, p2, ga_, gb_)
+            L = delta0 * delta0 * G
+            dprime_kern = float(_kernel_velocity(K, gb_)
+                                - _kernel_velocity(K, ga_))  # delta'(0)
+            ok_row = S <= G / 2 + mp.mpf("1e-6")
+            agg_ok = agg_ok and ok_row
+            g10rows.append({"pair": (p1, p2), "delta0": float(delta0),
+                            "S_n": float(S), "G_n": float(G),
+                            "S_le_halfG": ok_row,
+                            "L_n": float(delta0 * delta0 * G),
+                            "bound8_minus_2L": float(8 - 2 * L),
+                            "delta_prime_kernel": dprime_kern})
+        g10ok = (worst_viol <= mp.mpf("1e-4") and agg_ok)
+        # corollary: the three measured pairs have L_n < 4, so
+        # (delta^2)' >= 8 - 2 L_n > 0 from the inequality alone, and the
+        # measured gap slope  (delta^2)' = 2 delta_0 delta'(0)  must sit at
+        # or above that bound (the bound is a strict loss).
+        corr_ok = True
+        for d in all_deps:
+            p1, p2 = d["pair"]
+            ga_, gb_ = d["gamma"]
+            delta0 = gb_ - ga_
+            G = _gap_law_Gn(p1, p2, ga_, gb_)
+            L = delta0 * delta0 * G
+            if not (L < 4):
+                corr_ok = False
+            dprime = float(_kernel_velocity(K, gb_)
+                           - _kernel_velocity(K, ga_))
+            d2_measured = 2 * float(delta0) * dprime   # (delta^2)'(0)
+            bound = 8 - 2 * float(L)
+            if d2_measured < bound - 1e-3:
+                corr_ok = False
+        g10ok = g10ok and corr_ok
+    gate("G10: the collapse bound (delta^2)' >= 8 - 2 delta^2 G_n is a "
+         "term-wise AM-GM identity, and L_n = delta^2 G_n < 4 holds for "
+         "every measured pair",
+         g10ok,
+         "u v <= (u^2+v^2)/2 with u = 1/(x_a-x_m), v = 1/(x_b-x_m) bounds "
+         "every summand, so S_n <= G_n/2 and (delta^2)' = 8 - 4 delta^2 "
+         "S_n >= 8 - 2 delta^2 G_n (section 25).  Term-wise worst violation "
+         "%.1e (0 is the identity); aggregate S_n <= G_n/2 passes for all "
+         "fifteen adjacent pairs of the first sixteen zeros; and the "
+         "measured pairs have L_n = %.4f (13,14), %.4f (9,10), %.4f "
+         "(15,16), all < 4, so (delta^2)' > 0 on those pairs -- the gap "
+         "slope direction is forced by the inequality alone, and the "
+         "measured slope 2*delta_0*delta'(0) = %.4f, %.4f, %.4f sits at or "
+         "above the bound 8-2L = %.4f, %.4f, %.4f as the strict AM-GM loss "
+         "requires."
+         % (float(worst_viol), g10rows[12]["L_n"], g10rows[8]["L_n"],
+            g10rows[14]["L_n"],
+            2 * g10rows[12]["delta0"] * g10rows[12]["delta_prime_kernel"],
+            2 * g10rows[8]["delta0"] * g10rows[8]["delta_prime_kernel"],
+            2 * g10rows[14]["delta0"] * g10rows[14]["delta_prime_kernel"],
+            g10rows[12]["bound8_minus_2L"],
+            g10rows[8]["bound8_minus_2L"],
+            g10rows[14]["bound8_minus_2L"]))
+    report["g10_amgm_collapse_bound"] = g10rows
+
     # ----------------------------------------- departure scales (measured)
     report["departure_scales_open"] = (
         "Departure scales are now measured for the three closest adjacent "
@@ -585,9 +887,18 @@ def main():
         "that each lambda* is predicted in closed form by the exact gap law "
         "(delta^2)' = 8 - 4 delta^2 S_n with S_n taken from the lambda = 0 "
         "spacing law -- the departure scale is fixed by the stationary "
-        "spectrum, not a free parameter of the walk.  The per-zero scales "
-        "lam*_k for the remaining zeros are still unmeasured; no general RH "
-        "statement follows from a finite set of departure scales."
+        "spectrum, not a free parameter of the walk.  Since the gap law is "
+"an exact identity (G9), these numbers are tied to the pinned "
+         "record's section 24 structure, not to a fitted remainder.  G10 "
+         "adds that every measured pair starts with (delta^2)'(0) > 0 "
+         "forced by a pure term-wise AM-GM inequality (S_n <= G_n/2 with "
+         "G_n the mirror-symmetric two-body inverse-square sum): the sign "
+         "of the gap slope at lambda = 0 is a theorem, though the finite "
+         "lambda* at which the pair actually departs is still a continued "
+         "observation.  The "
+         "per-zero scales lam*_k for the remaining zeros are still "
+         "unmeasured; no general RH "
+         "statement follows from a finite set of departure scales."
         % (trio[0][1], trio[0][2], all_deps[0]["fitted_lambda_star"],
            trio[1][1], trio[1][2], all_deps[1]["fitted_lambda_star"],
            trio[2][1], trio[2][2], all_deps[2]["fitted_lambda_star"]))
@@ -610,9 +921,19 @@ def main():
         "every departure is deeper than the naive mutual-only local model "
         "lambda_c = -delta_0^2/8; and the departures are predicted in "
         "closed form by the gap law with S_n taken from the lambda = 0 "
-        "spacing law -- the finite visible face of Newman's 'barely so'.  "
-        "Nothing here touches the truth of RH; the per-zero departure "
-        "scales lam*_k beyond these three pairs remain open."
+        "spacing law -- the finite visible face of Newman's 'barely so'; "
+        "and the gap law delta' = 4/delta - 2 delta S_n is verified as an "
+        "exact identity with S_n the mirror-symmetric rest-remainder sum "
+        "from the zero positions themselves (G9), in agreement with the "
+"kernel velocity and the spacing law on every measured pair.  "
+         "Finally, the sign (delta^2)'(0) > 0 on every measured pair -- "
+         "and its strict lower bound 8 - 2 L_n, L_n = delta^2 G_n -- is "
+         "forced by a term-wise AM-GM inequality on the mirror-symmetric "
+         "two-body inverse-square sum G_n, so the initial collapse-rate "
+         "direction is a theorem independent of the velocities (G10).  "
+         "Nothing here touches the truth of RH; the per-zero departure "
+         "scales lam*_k beyond these three pairs remain open, and G10's "
+         "inequality does not by itself follow the pair to its departure."
         % (gates_passed, len(report["gates"]),
            trio[0][1], trio[0][2], trio[1][1], trio[1][2],
            trio[2][1], trio[2][2],

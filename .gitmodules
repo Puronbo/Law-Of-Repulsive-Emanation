@@ -1,0 +1,6 @@
+[submodule "Folding-Calculus"]
+	path = Folding-Calculus
+	url = https://github.com/Puronbo/Folding-Calculus.git
+[submodule "j"]
+	path = j
+	url = https://github.com/Puronbo/Photon-Rubber-Ball-Research.git

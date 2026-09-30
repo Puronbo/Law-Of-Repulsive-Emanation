@@ -1,7 +1,204 @@
 {
-  "conclusion": "All 8/8 gates pass: the pinned kernel formula (exponents 9u/2, 5u/2, 2u, prefactor 4) reproduces Xi exactly on the closed form and at the first ten zeros; the de Bruijn flow equation is satisfied by the deformed kernel; the first sixteen zeros stay real and are tracked continuously for lambda down to -1/4; the drift obeys the velocity law t'(lam) = Xi_tt / Xi_t to <= 5e-4 relative (Richardson-corrected symmetric drift); at lambda = 0 the velocity satisfies the mirror-symmetric two-body spacing law t'_n = 1/gamma_n + 4 gamma_n sum 1/(gamma_n^2 - gamma_k^2) (this is the correct symmetric form of the pinned spacing law, whose one-sided version appeared to fail by O(1)); the three closest pairs (13,14), (9,10), (15,16) are continued to their real-axis departures at lambda* = -0.321318, -0.469478, -0.689762 -- each gap closes with gap^2 slope -> 8 (the exact gap law (delta^2)' = 8 - 4 delta^2 S_n), the double-root condition F = F_t = 0 holds at each, and every departure is deeper than the naive mutual-only local model lambda_c = -delta_0^2/8; and the departures are predicted in closed form by the gap law with S_n taken from the lambda = 0 spacing law -- the finite visible face of Newman's 'barely so'.  Nothing here touches the truth of RH; the per-zero departure scales lam*_k beyond these three pairs remain open.",
-  "departure_scales_open": "Departure scales are now measured for the three closest adjacent pairs of the first sixteen zeros: G6 measures (13,14) at lambda* = -0.321318 and G7 measures (9,10) at -0.469478 and (15,16) at -0.689762, in every case a double root F = F_t = 0 deeper than the naive mutual-only local model lambda_c = -delta_0^2/8 (the remaining-spectrum term S_n > 0 pulls the pair apart).  G8 shows that each lambda* is predicted in closed form by the exact gap law (delta^2)' = 8 - 4 delta^2 S_n with S_n taken from the lambda = 0 spacing law -- the departure scale is fixed by the stationary spectrum, not a free parameter of the walk.  The per-zero scales lam*_k for the remaining zeros are still unmeasured; no general RH statement follows from a finite set of departure scales.",
+  "conclusion": "All 10/10 gates pass: the pinned kernel formula (exponents 9u/2, 5u/2, 2u, prefactor 4) reproduces Xi exactly on the closed form and at the first ten zeros; the de Bruijn flow equation is satisfied by the deformed kernel; the first sixteen zeros stay real and are tracked continuously for lambda down to -1/4; the drift obeys the velocity law t'(lam) = Xi_tt / Xi_t to <= 5e-4 relative (Richardson-corrected symmetric drift); at lambda = 0 the velocity satisfies the mirror-symmetric two-body spacing law t'_n = 1/gamma_n + 4 gamma_n sum 1/(gamma_n^2 - gamma_k^2) (this is the correct symmetric form of the pinned spacing law, whose one-sided version appeared to fail by O(1)); the three closest pairs (13,14), (9,10), (15,16) are continued to their real-axis departures at lambda* = -0.321318, -0.469478, -0.689762 -- each gap closes with gap^2 slope -> 8 (the exact gap law (delta^2)' = 8 - 4 delta^2 S_n), the double-root condition F = F_t = 0 holds at each, and every departure is deeper than the naive mutual-only local model lambda_c = -delta_0^2/8; and the departures are predicted in closed form by the gap law with S_n taken from the lambda = 0 spacing law -- the finite visible face of Newman's 'barely so'; and the gap law delta' = 4/delta - 2 delta S_n is verified as an exact identity with S_n the mirror-symmetric rest-remainder sum from the zero positions themselves (G9), in agreement with the kernel velocity and the spacing law on every measured pair.  Finally, the sign (delta^2)'(0) > 0 on every measured pair -- and its strict lower bound 8 - 2 L_n, L_n = delta^2 G_n -- is forced by a term-wise AM-GM inequality on the mirror-symmetric two-body inverse-square sum G_n, so the initial collapse-rate direction is a theorem independent of the velocities (G10).  Nothing here touches the truth of RH; the per-zero departure scales lam*_k beyond these three pairs remain open, and G10's inequality does not by itself follow the pair to its departure.",
+  "departure_scales_open": "Departure scales are now measured for the three closest adjacent pairs of the first sixteen zeros: G6 measures (13,14) at lambda* = -0.321318 and G7 measures (9,10) at -0.469478 and (15,16) at -0.689762, in every case a double root F = F_t = 0 deeper than the naive mutual-only local model lambda_c = -delta_0^2/8 (the remaining-spectrum term S_n > 0 pulls the pair apart).  G8 shows that each lambda* is predicted in closed form by the exact gap law (delta^2)' = 8 - 4 delta^2 S_n with S_n taken from the lambda = 0 spacing law -- the departure scale is fixed by the stationary spectrum, not a free parameter of the walk.  Since the gap law is an exact identity (G9), these numbers are tied to the pinned record's section 24 structure, not to a fitted remainder.  G10 adds that every measured pair starts with (delta^2)'(0) > 0 forced by a pure term-wise AM-GM inequality (S_n <= G_n/2 with G_n the mirror-symmetric two-body inverse-square sum): the sign of the gap slope at lambda = 0 is a theorem, though the finite lambda* at which the pair actually departs is still a continued observation.  The per-zero scales lam*_k for the remaining zeros are still unmeasured; no general RH statement follows from a finite set of departure scales.",
   "experiment": "zero trajectories as scale objects: exact kernel + flow + real-axis persistence + velocity law",
+  "g10_amgm_collapse_bound": [
+    {
+      "G_n": 0.1644032781384971,
+      "L_n": 7.7984861001225125,
+      "S_le_halfG": true,
+      "S_n": 0.06762488733704528,
+      "bound8_minus_2L": -7.596972200245024,
+      "delta0": 6.887314497036861,
+      "delta_prime_kernel": -0.35072984112675276,
+      "pair": [
+        1,
+        2
+      ]
+    },
+    {
+      "G_n": 0.17815074790200935,
+      "L_n": 2.8344975052646237,
+      "S_le_halfG": true,
+      "S_n": 0.08329268046376005,
+      "bound8_minus_2L": 2.3310049894707525,
+      "delta0": 3.988817941374134,
+      "delta_prime_kernel": 0.33832467502859365,
+      "pair": [
+        2,
+        3
+      ]
+    },
+    {
+      "G_n": 0.3746432328132603,
+      "L_n": 10.981391389066022,
+      "S_le_halfG": true,
+      "S_n": 0.13649740188977014,
+      "bound8_minus_2L": -13.962782778132043,
+      "delta0": 5.414018545713825,
+      "delta_prime_kernel": -0.7391761935668828,
+      "pair": [
+        3,
+        4
+      ]
+    },
+    {
+      "G_n": 0.2555962432222348,
+      "L_n": 1.6105198655816428,
+      "S_le_halfG": true,
+      "S_n": 0.122213311613859,
+      "bound8_minus_2L": 4.778960268836714,
+      "delta0": 2.5101854618796766,
+      "delta_prime_kernel": 0.979951598879922,
+      "pair": [
+        4,
+        5
+      ]
+    },
+    {
+      "G_n": 0.4538125622743756,
+      "L_n": 9.817275133627046,
+      "S_le_halfG": true,
+      "S_n": 0.17269526668462934,
+      "bound8_minus_2L": -11.634550267254092,
+      "delta0": 4.651116571086481,
+      "delta_prime_kernel": -0.7464430871596901,
+      "pair": [
+        5,
+        6
+      ]
+    },
+    {
+      "G_n": 0.44365168201113403,
+      "L_n": 4.927119511480758,
+      "S_le_halfG": true,
+      "S_n": 0.18572520249588545,
+      "bound8_minus_2L": -1.8542390229615175,
+      "delta0": 3.332540853321824,
+      "delta_prime_kernel": -0.037588288972210906,
+      "pair": [
+        6,
+        7
+      ]
+    },
+    {
+      "G_n": 0.37565388944173816,
+      "L_n": 2.1788565265679174,
+      "S_le_halfG": true,
+      "S_n": 0.17535898738448671,
+      "bound8_minus_2L": 3.6422869468641657,
+      "delta0": 2.4083542687675044,
+      "delta_prime_kernel": 0.8162320843770516,
+      "pair": [
+        7,
+        8
+      ]
+    },
+    {
+      "G_n": 0.7671102841831431,
+      "L_n": 16.7877560003476,
+      "S_le_halfG": true,
+      "S_n": 0.25152754583550807,
+      "bound8_minus_2L": -25.575512000695202,
+      "delta0": 4.67807760025216,
+      "delta_prime_kernel": -1.498278672296743,
+      "pair": [
+        8,
+        9
+      ]
+    },
+    {
+      "G_n": 0.4227963683702104,
+      "L_n": 1.322606223984271,
+      "S_le_halfG": true,
+      "S_n": 0.20215930951827038,
+      "bound8_minus_2L": 5.354787552031458,
+      "delta0": 1.7686815965051426,
+      "delta_prime_kernel": 1.5464606608907545,
+      "pair": [
+        9,
+        10
+      ]
+    },
+    {
+      "G_n": 0.6945807106792942,
+      "L_n": 7.096907533322391,
+      "S_le_halfG": true,
+      "S_n": 0.26712192967538173,
+      "bound8_minus_2L": -6.193815066644782,
+      "delta0": 3.1964890000421584,
+      "delta_prime_kernel": -0.45633162880715894,
+      "pair": [
+        10,
+        11
+      ]
+    },
+    {
+      "G_n": 0.5470311741187889,
+      "L_n": 6.609265153719229,
+      "S_le_halfG": true,
+      "S_n": 0.2322472165868212,
+      "bound8_minus_2L": -5.218530307438457,
+      "delta0": 3.475926219348934,
+      "delta_prime_kernel": -0.4637759702987448,
+      "pair": [
+        11,
+        12
+      ]
+    },
+    {
+      "G_n": 0.8658237056418073,
+      "L_n": 7.285576782701456,
+      "S_le_halfG": true,
+      "S_n": 0.3206352946026026,
+      "bound8_minus_2L": -6.571153565402913,
+      "delta0": 2.9007963055389583,
+      "delta_prime_kernel": -0.48126370575962607,
+      "pair": [
+        12,
+        13
+      ]
+    },
+    {
+      "G_n": 0.5126031674677471,
+      "L_n": 1.1300011840727824,
+      "S_le_halfG": true,
+      "S_n": 0.2463390397388735,
+      "bound8_minus_2L": 5.739997631854435,
+      "delta0": 1.4847345220074568,
+      "delta_prime_kernel": 1.9625881381350863,
+      "pair": [
+        13,
+        14
+      ]
+    },
+    {
+      "G_n": 1.0876249712954948,
+      "L_n": 19.930676988477078,
+      "S_le_halfG": true,
+      "S_n": 0.3415285358704996,
+      "bound8_minus_2L": -31.86135397695416,
+      "delta0": 4.280765523471797,
+      "delta_prime_kernel": -1.9895915910114261,
+      "pair": [
+        14,
+        15
+      ]
+    },
+    {
+      "G_n": 0.5910510470509877,
+      "L_n": 2.2874487677552655,
+      "S_le_halfG": true,
+      "S_n": 0.27319767419968755,
+      "bound8_minus_2L": 3.4251024644894685,
+      "delta0": 1.967266481412567,
+      "delta_prime_kernel": 0.9583831508241814,
+      "pair": [
+        15,
+        16
+      ]
+    }
+  ],
   "g5_rows": [
     [
       1,
@@ -1134,6 +1331,53 @@
       "rel_naive": 0.29864663662914614
     }
   ],
+  "g9_gap_law_identity": [
+    {
+      "S_n_direct": 0.24633903973887353,
+      "S_n_velocity": 0.2463390397504344,
+      "delta0": 1.4847345220074573,
+      "delta_prime_kernel": 1.9625881381350843,
+      "delta_prime_spacing": 1.962588170426968,
+      "gap_law_rhs": 1.9625881704612977,
+      "ok": true,
+      "pair": [
+        13,
+        14
+      ],
+      "res_kernel_vs_law": 3.232621348381315e-08,
+      "res_spacing_vs_law": 3.4329650233644315e-11
+    },
+    {
+      "S_n_direct": 0.20215930951827035,
+      "S_n_velocity": 0.202159309519746,
+      "delta0": 1.7686815965051395,
+      "delta_prime_kernel": 1.5464606608907614,
+      "delta_prime_spacing": 1.546460660877967,
+      "gap_law_rhs": 1.5464606608831868,
+      "ok": true,
+      "pair": [
+        9,
+        10
+      ],
+      "res_kernel_vs_law": 7.574607607807593e-12,
+      "res_spacing_vs_law": 5.219824572577636e-12
+    },
+    {
+      "S_n_direct": 0.2731976741996873,
+      "S_n_velocity": 0.2731976742297031,
+      "delta0": 1.9672664814125653,
+      "delta_prime_kernel": 0.9583831508241828,
+      "delta_prime_spacing": 0.9583729198346032,
+      "gap_law_rhs": 0.9583729199527014,
+      "ok": true,
+      "pair": [
+        15,
+        16
+      ],
+      "res_kernel_vs_law": 1.0230871481442527e-05,
+      "res_spacing_vs_law": 1.1809819788766163e-10
+    }
+  ],
   "gates": [
     {
       "detail": "int Phi = xi(1/2) to 0.0e+00 (closed form, Gamma conv.); |Xi_0(gamma_k)| = 1.6e-25, 2.0e-25, 2.1e-25, 6.5e-26, 1.7e-25, max 2.1e-25 over k = 1..10.  The exponents (9u/2, 5u/2, 2u) and prefactor 4 are therefore exactly right.",
@@ -1173,6 +1417,16 @@
     {
       "detail": "for each departure (G6, G7): S_n = (4/d0 - d'(0))/(2 d0) from the exact symmetric spacing law at lambda = 0, then lambda*_S = ln(1 - S_n d0^2/2)/(4 S_n); (13,14) d0=1.4847 d'(0)=1.9626 S_n=0.2463 lambda*_S=-0.321502 vs measured -0.321318 (naive -0.2756; rel 5.73e-04 vs 1.42e-01); (9,10) d0=1.7687 d'(0)=1.5465 S_n=0.2022 lambda*_S=-0.470039 vs measured -0.469478 (naive -0.3910; rel 1.19e-03 vs 1.67e-01); (15,16) d0=1.9673 d'(0)=0.9584 S_n=0.2732 lambda*_S=-0.688300 vs measured -0.689762 (naive -0.4838; rel 2.12e-03 vs 2.99e-01).  The S_n -> 0 limit is the naive lambda_c = -d0^2/8, which misses every measured departure; the S_n-corrected closed form lands on it (S_n > 0 throughout: the rest of the spectrum pulls each pair apart, deepening lambda*).",
       "gate": "G8: a closed-form prediction of lambda* from the gap law with S_n from the lambda = 0 spacing law matches the measured departures to better than the naive mutual-only model",
+      "passed": true
+    },
+    {
+      "detail": "S_n = sum_{m != a,b} 1/((x_b-x_m)(x_a-x_m)) over {+-gamma_k} (images -x_a, -x_b included), summed directly over the first 200 zeros plus the moment tail; independently, delta'(0) from the kernel velocity Xi_tt/Xi_t and from the spacing law. (13,14) d0=1.4847 S_n=0.2463390 (dir) vs 0.2463390 (vel) d'(0)=1.96259 (kernel) / 1.96259 (spacing) rhs=1.96259 res_k=3.2e-08 res_s=3.4e-11; (9,10) d0=1.7687 S_n=0.2021593 (dir) vs 0.2021593 (vel) d'(0)=1.54646 (kernel) / 1.54646 (spacing) rhs=1.54646 res_k=7.6e-12 res_s=5.2e-12; (15,16) d0=1.9673 S_n=0.2731977 (dir) vs 0.2731977 (vel) d'(0)=0.95838 (kernel) / 0.95837 (spacing) rhs=0.95837 res_k=1.0e-05 res_s=1.2e-10.  Both sides reconstruct the pinned record's section 24 law with the mirror images: the mutual term telescopes to 4/delta_0 and every other term reassembles into -2 delta_0 S_n; leaving the images off the sum is the old O(1) failure, not a small correction.",
+      "gate": "G9: the exact gap law delta' = 4/delta_0 - 2 delta_0 S_n holds identically with S_n the mirror-symmetric rest-remainder sum",
+      "passed": true
+    },
+    {
+      "detail": "u v <= (u^2+v^2)/2 with u = 1/(x_a-x_m), v = 1/(x_b-x_m) bounds every summand, so S_n <= G_n/2 and (delta^2)' = 8 - 4 delta^2 S_n >= 8 - 2 delta^2 G_n (section 25).  Term-wise worst violation 0.0e+00 (0 is the identity); aggregate S_n <= G_n/2 passes for all fifteen adjacent pairs of the first sixteen zeros; and the measured pairs have L_n = 1.1300 (13,14), 1.3226 (9,10), 2.2874 (15,16), all < 4, so (delta^2)' > 0 on those pairs -- the gap slope direction is forced by the inequality alone, and the measured slope 2*delta_0*delta'(0) = 5.8278, 5.4704, 3.7708 sits at or above the bound 8-2L = 5.7400, 5.3548, 3.4251 as the strict AM-GM loss requires.",
+      "gate": "G10: the collapse bound (delta^2)' >= 8 - 2 delta^2 G_n is a term-wise AM-GM identity, and L_n = delta^2 G_n < 4 holds for every measured pair",
       "passed": true
     }
   ]
