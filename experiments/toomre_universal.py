@@ -93,13 +93,30 @@ def chirikov_overlap(omega_r, Omega_d, perturbation):
 
 def chi_rho_bridge(rho_n):
     """
-    Chi(rho) bridge: |chi(rho_n)| = 1 for all Riemann zeta zeros.
-    
+    Chi(rho) bridge: |chi(rho_n)| = 1 for Riemann zeta zeros ON THE LINE.
+
     This connects the spectral gap (mass gap) to the zeta function.
     The mass gap in the energy spectrum is analogous to the gap
     between consecutive zeta zeros.
+
+    CORRECTION 2026-09-28. This function used to be documented as "|chi(rho_n)|
+    = 1 for all Riemann zeta zeros" while simply returning the constant 1.0 -
+    a hardcoded value presented as a computation, and one that reads as though
+    it had settled the off-line question. Two problems, both now stated in the
+    code:
+
+      1. It is a CONSTANT, not a computation. Nothing is evaluated.
+      2. The identity is about the critical LINE, not the zeros. Since
+         |chi(1/2 + iy)| = 1 for every y, this value is also what you get at a
+         point that is not a zero (agreement ~1.97e-31), so it cannot
+         distinguish "zero" from "non-zero on the line" and is not evidence
+         about off-line zeros.
+
+    What does carry information is the level set: on the critical strip
+    0 < Re(s) < 1, |chi| = 1 forces Re(s) = 1/2. Globally that stronger form is
+    false (two extra roots at 1/2 +- d(t) for t < 6.2898, outside the strip).
+    See experiments/chi_rho_vacuity_0_over_0.py, PREDICTION_LEDGER PL-22.
     """
-    # |chi(rho)| = 1 on critical line
     return 1.0
 
 def navier_stokes_regularity(nu, v_grad, rho):

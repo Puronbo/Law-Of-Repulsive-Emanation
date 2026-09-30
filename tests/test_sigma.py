@@ -83,18 +83,58 @@ class TestE8:
 
 
 class TestBridge:
-    """Test Chi(rho) bridge."""
-    
+    """Test Chi(rho) bridge.
+
+    Correction 2026-09-28: the two tests above confirm only an identity of the
+    critical LINE, which holds at non-zeros as well and therefore cannot decide
+    RH. The falsification control below pins that fact down, so a future edit
+    cannot quietly restore the "verified" reading: a non-zero on the line MUST
+    pass the same modulus test, and displacing Re(s) MUST be caught.
+    """
+
     def test_chi_modulus_at_zero(self):
         from sigma.chassis.bridge import chi_modulus
         mod = chi_modulus(0.5 + 1j * 14.134725)
         assert abs(mod - 1.0) < 1e-8
-    
+
     def test_chi_modulus_arbitrary(self):
         from sigma.chassis.bridge import chi_modulus
         for y in [0.5, 1.0, 2.0, 5.0, 10.0]:
             mod = chi_modulus(0.5 + 1j * y)
             assert abs(mod - 1.0) < 1e-8
+
+    def test_line_identity_cannot_detect_zeros(self):
+        """FALSIFICATION CONTROL: a non-zero on the line passes identically.
+
+        This is the reason the line identity is not evidence for RH. If this
+        test ever fails, the property being guarded (that the check is
+        vacuous) has changed and the PL-22 claim must be re-examined.
+        """
+        import mpmath
+        from sigma.chassis.bridge import chi_modulus
+        rho = mpmath.zetazero(1)
+        impostor = 0.5 + 1j * float(mpmath.im(rho) + 0.5)
+        # genuinely not a zero: |zeta| is ~0.41 here, not ~0
+        assert abs(mpmath.zeta(impostor)) > 0.01
+        at_zero = chi_modulus(0.5 + 1j * float(mpmath.im(rho)))
+        at_impostor = chi_modulus(impostor)
+        assert abs(at_zero - at_impostor) < 1e-20      # indistinguishable
+        assert abs(at_impostor - 1.0) < 1e-8           # both "pass"
+
+    def test_displaced_real_part_is_caught(self):
+        """The half of chi with teeth: |chi| = 1 forces Re(s) = 1/2 in the strip."""
+        from sigma.chassis.bridge import chi_line_displaced
+        results = chi_line_displaced()
+        assert results, "displacement probe returned no samples"
+        for r in results:
+            assert r['caught'], "Re(s) displacement not caught: %r" % (r,)
+
+    def test_chi_ratio_is_pole_free(self):
+        """chi() raises at s = 2, 4, 6, ...; chi_ratio() must not."""
+        from sigma.chassis.bridge import chi_ratio
+        for s in [2, 4, 6, 8]:
+            assert abs(chi_ratio(s)) < float("inf")
+        assert abs(abs(chi_ratio(2)) - 2 * 3.141592653589793**2) < 1e-6
 
 
 class TestCurrency:

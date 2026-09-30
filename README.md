@@ -240,7 +240,11 @@ The **Sigma Chassis** is a self-contained computational framework for the L.O.R.
 - **29 book chapters** with epistemic classification (23 REAL, 5 CAREFUL, 1 NOT_SAME)
 - **20 currency entries** in the Sigma knowledge-backed currency (13.323929 Sigma total)
 - **E8 exceptional Lie algebra** (240 roots, Weyl order 696,729,600)
-- **Chi(rho) bridge** (|chi|=1 for all Riemann zeta zeros)
+- **Chi(rho) bridge** — the 0/0 `g(s)=|zeta(s)|/|zeta(1-s)|` fills in at each
+  zero with `|chi(rho)|=1` (proved, Schwarz reflection). This is a true identity
+  about the critical *line*, **not** a verification of RH: it holds at non-zeros
+  too, so the check has no power to decide anything. Reading withdrawn — see
+  `experiments/chi_rho_vacuity_0_over_0.py`, `PREDICTION_LEDGER` PL-22
 - **38-test verification suite** (all pass)
 - **Removable singularity detector** (practical tool for any function)
 - **Definitive JSON export** for LLM propagation

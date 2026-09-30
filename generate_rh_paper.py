@@ -129,17 +129,21 @@ pdf.add_page()
 pdf.title_block()
 
 pdf.abstract_block(
-    'We prove that the Riemann hypothesis is equivalent to the statement that '
-    'a single explicit function, g(s) = |zeta(s)| / |zeta(1-s)|, is identically '
-    'equal to 1 after removal of its singularities. The proof identifies the '
-    'exact value of each removable singularity as |chi(rho)|, where chi is the '
-    'completed factor of the functional equation, and shows that |chi(rho)| = 1 '
-    'if and only if Re(rho) = 1/2. Combined with the Rodgers-Tao theorem '
-    '(Lambda >= 0), this reduces RH to the single inequality Lambda = 0 for '
-    'the de Bruijn-Newman constant. We present the complete proof, the numerical '
-    'evidence from this repository (22,491 located zeros, exact Mertens and '
-    'Chebyshev functions to 10^14), and the reasons why no finite computation '
-    'can decide the problem.'
+    'We identify the exact value of each removable singularity of a single '
+    'explicit function, g(s) = |zeta(s)| / |zeta(1-s)|, as |chi(rho)|, where chi '
+    'is the completed factor of the functional equation, and we show that on the '
+    'critical strip |chi(rho)| = 1 if and only if Re(rho) = 1/2. This is a true '
+    'restatement of RH, not a verification of it, and we say so plainly: g is NOT '
+    'identically equal to 1, and evaluating |chi| at zeros located on the '
+    'critical line cannot decide anything, because |chi(1/2 + iy)| = 1 holds for '
+    'every y - zeros and non-zeros alike. Combined with the Rodgers-Tao theorem '
+    '(Lambda >= 0), RH is equivalent to the single inequality Lambda = 0 for the '
+    'de Bruijn-Newman constant, which is open. We present the complete argument, '
+    'the strip form of the level-set statement, the numerical evidence from this '
+    'repository (22,491 located zeros, exact Mertens and Chebyshev functions to '
+    '10^14), the reasons why no finite computation can decide the problem, and a '
+    'measurement of how much force the "verification" reading does and does not '
+    'have. Corrected 2026-09-28; RH remains open.'
 )
 
 # --- Section 1: Introduction ---
@@ -162,13 +166,17 @@ pdf.body(
 )
 
 pdf.body(
-    'In this paper, we identify a function whose identity is equivalent to RH. '
-    'Define g(s) = |zeta(s)| / |zeta(1-s)|. This function is the '
-    'zeta-theoretic analogue of f(x) = |(x-1)/(1-x)| = 1, a trivial '
-    'identity for real x != 1. The parallel is exact: both functions are '
-    'identically 1 where defined, and both have the indeterminate form 0/0 '
-    'at isolated points. We prove that g is identically 1 (after removal of '
-    'singularities) if and only if RH is true.'
+    'In this paper, we identify a function whose 0/0 behaviour at the zeros is '
+    'equivalent to RH. Define g(s) = |zeta(s)| / |zeta(1-s)|. This function is '
+    'the zeta-theoretic analogue of f(x) = |(x-1)/(1-x)| = 1, a trivial '
+    'identity for real x != 1. The parallel is exact in one respect and must be '
+    'limited in another: both functions have the indeterminate form 0/0 at '
+    'isolated points and both are removable there, but only f is identically 1 '
+    'where defined. g equals 1 on the critical line and nowhere else - the '
+    'functional equation gives g(s) = |chi(s)| identically off the zeros, and '
+    '|chi| = 1 only on the line, so g(2) = 19.74. We show that every '
+    'nontrivial zero filling in with value 1 is equivalent to RH, which is a '
+    're-encoding of RH rather than a proof of it.'
 )
 
 pdf.body(
@@ -208,10 +216,19 @@ pdf.body(
 pdf.section_head('3', 'Main Theorem')
 
 pdf.theorem(
-    'Theorem 3.1.',
-    'The function g(s) = |zeta(s)| / |zeta(1-s)| satisfies g = 1 '
-    '(after removal of singularities) if and only if the Riemann hypothesis '
-    'is true.'
+    'Theorem 3.1 (corrected 2026-09-28).',
+    'The function g(s) = |zeta(s)| / |zeta(1-s)| satisfies g(rho) = |chi(rho)| '
+    'at every nontrivial zero rho (removable value), and on the critical strip '
+    'g(s) = 1 forces Re(s) = 1/2. Consequently every nontrivial zero fills in '
+    'with value 1 if and only if the Riemann hypothesis is true.'
+)
+
+pdf.remark(
+    'The original statement read "g = 1 (after removal of singularities) if and '
+    'only if RH". That is FALSE: g = |chi| identically, and |chi| = 1 only on '
+    'the critical line, so g(2) = 19.74. The corrected statement is about the '
+    'values AT THE ZEROS and about the level set, and it is the form in which '
+    'the equivalence to RH is actually true.'
 )
 
 # --- Section 4: Proof ---
@@ -261,7 +278,7 @@ pdf.body(
 )
 
 pdf.proof_step(
-    'Step 4. |chi(rho)| = 1 if and only if Re(rho) = 1/2.',
+    'Step 4. On the critical strip, |chi(rho)| = 1 if and only if Re(rho) = 1/2.',
     'The completed factor is explicit:'
 )
 
@@ -270,18 +287,48 @@ pdf.display_math('|chi(sigma + it)| = pi^{sigma - 1/2} |Gamma((1-s)/2)| / |Gamma
 pdf.body(
     'On the critical line (sigma = 1/2): the prefactor pi^0 = 1 and '
     '|Gamma((1-s)/2)| = |Gamma(s/2)| (by conjugate symmetry when Re(s) = 1/2), '
-    'so |chi| = 1. Off the critical line (sigma != 1/2): the prefactor '
-    'pi^{sigma - 1/2} != 1, so |chi| != 1. Therefore:'
+    'so |chi| = 1. Off the line the prefactor and the gamma ratio act in '
+    'OPPOSITE directions, so the prefactor alone does not settle it. The '
+    'derivative d/dsigma log|chi| = log pi - (1/2) Re psi((1-s)/2) - (1/2) Re '
+    'psi(s/2) reduces at sigma = 1/2 to log pi - Re psi(1/4 + i t/2), which '
+    'vanishes at exactly one height t* = 6.2898359888369 and changes sign '
+    'across it. So the original justification here - that log|chi| is strictly '
+    'monotone in sigma and that the gamma ratio does not compensate - is FALSE '
+    'and is withdrawn.'
 )
 
-pdf.display_math('|chi(rho)| = 1  if and only if  Re(rho) = 1/2')
+pdf.body(
+    'What is true, and is all that is needed, is the strip statement: every '
+    'nontrivial zero has 0 < Re(rho) < 1, and on that strip |chi| = 1 forces '
+    'sigma = 1/2 (measured at 12 heights, gate 3 of '
+    'experiments/chi_rho_vacuity_0_over_0.py). Globally the stronger form is '
+    'FALSE: |chi(sigma+it)| = 1 has three solutions in sigma for t < t*, namely '
+    '1/2 and 1/2 +- d(t) (symmetric because |chi(1-s)| = 1/|chi(s)|), and only '
+    'one for t >= t*, the pair closing onto the line as a double root at t*. '
+    'All extras lie outside the strip, so RH is unaffected.'
+)
+
+pdf.display_math('|chi(rho)| = 1  if and only if  Re(rho) = 1/2    (for 0 < Re(rho) < 1)')
 
 pdf.proof_step(
     'Step 5. Combining.',
-    'From Steps 1-4:'
+    'From Steps 1-4, restricted throughout to the nontrivial zeros rho, which '
+    'satisfy 0 < Re(rho) < 1:'
 )
 
-pdf.display_math('g = 1  <=>  |chi(rho)| = 1 for every rho  <=>  Re(rho) = 1/2 for every rho  <=>  RH')
+pdf.display_math('|chi(rho)| = 1 for every rho  <=>  Re(rho) = 1/2 for every rho  <=>  RH')
+
+pdf.body(
+    'Read this chain honestly: it is a RE-ENCODING of RH, not a proof of it. '
+    'The middle step is tautological (a zero satisfies |chi(rho)| = 1 exactly '
+    'when it sits on the line) and the last step is the definition of RH. The '
+    'earlier "g = 1 <=>" link is DELETED, not restated, because g = |chi(s)| and '
+    '|chi| = 1 only on the line, so g = 1 is false (g(2) = 19.74). An earlier '
+    'draft was read as claiming the 0/0 "verified" RH by testing |chi(rho)| = 1 '
+    'at zeros found on the line. That reading is VACUOUS and withdrawn: since '
+    '|chi(1/2 + iy)| = 1 for every y, zeros and non-zeros agreeing to '
+    '1.97e-31, the test cannot fail and certifies nothing.'
+)
 
 pdf.remark('[Q.E.D.]')
 
@@ -289,9 +336,10 @@ pdf.remark('[Q.E.D.]')
 pdf.section_head('5', 'The de Bruijn-Newman Reduction')
 
 pdf.body(
-    'The proof of Theorem 3.1 establishes the equivalence g = 1 <=> RH. '
-    'To convert this into an inequality about a single analytic object, we '
-    'use the de Bruijn-Newman framework.'
+    'Step 5 identifies where the open content sits: RH is the statement that '
+    'every nontrivial zero fills in with value 1, and (corrected) that is what '
+    'RH means in this 0/0 language. To convert it into an inequality about a '
+    'single analytic object, we use the de Bruijn-Newman framework.'
 )
 
 pdf.body(
@@ -416,8 +464,11 @@ pdf.theorem(
 pdf.body(
     'Both theorems guarantee that the computable range looks exactly '
     'RH-correct while the truth beyond may differ. |M(x)| < sqrt(x) holds '
-    'for every x <= 10^16 ever computed, yet it is proven false. No finite '
-    'verification of g = 1 at finitely many points can decide whether g = 1.'
+    'for every x <= 10^16 ever computed, yet it is proven false. The same '
+    'asymmetry applies to this paper\'s bridge, and it is worth being exact: no '
+    'finite check can decide the 0/0 question, and checking |chi(rho)| = 1 at '
+    'finitely many zeros decides nothing at all, because the identity holds on '
+    'the whole line rather than only at the zeros.'
 )
 
 # --- Section 8: What Remains ---
@@ -463,19 +514,27 @@ pdf.body(
 )
 
 pdf.body(
-    '(1) The function g(s) = |zeta(s)|/|zeta(1-s)| is identically 1 on '
-    'the critical line (Schwarz reflection).\n\n'
-    '(2) At each zero rho, g has a removable singularity with value |chi(rho)|.\n\n'
-    '(3) |chi(rho)| = 1 if and only if Re(rho) = 1/2.\n\n'
-    '(4) Therefore g = 1 if and only if RH.\n\n'
+    '(1) The function g(s) = |zeta(s)|/|zeta(1-s)| equals 1 on the critical '
+    'line (Schwarz reflection).\n\n'
+    '(2) At each zero rho, g has a removable singularity with value |chi(rho)|, '
+    'and g(s) = |chi(s)| identically off the zeros.\n\n'
+    '(3) For a zero rho - necessarily 0 < Re(rho) < 1 - |chi(rho)| = 1 if and '
+    'only if Re(rho) = 1/2. (Globally this fails: |chi(sigma+it)| = 1 has three '
+    'solutions in sigma for t < t*, all extras outside the strip.)\n\n'
+    '(4) Therefore "every nontrivial zero fills in with value 1" is equivalent to '
+    'RH - a re-encoding of RH, not a proof of it.\n\n'
     '(5) RH is equivalent to Lambda = 0 (de Bruijn-Newman + Rodgers-Tao).'
 )
 
 pdf.body(
-    'The function is already constant where defined. The 0/0 at each zero '
-    'fills in with value 1 if and only if the zero lies on the critical '
-    'line. Proving Lambda = 0 fills in every singularity and completes '
-    'the proof.'
+    'The 0/0 at each zero fills in with value 1 exactly when that zero lies on '
+    'the critical line, and since every nontrivial zero has 0 < Re(rho) < 1, '
+    'the strip form of Step 4 transfers this to rho itself. But the function is '
+    'NOT constant away from the line (g = |chi|, and g(2) = 19.74), and - the '
+    'point the earlier draft obscured - filling in the 0/0 at a zero already '
+    'known to be on the line is not new information. Proving Lambda = 0 would '
+    'fill in every singularity, and that is the open part; nothing in Sections '
+    '1-5 does any part of it.'
 )
 
 pdf.body(

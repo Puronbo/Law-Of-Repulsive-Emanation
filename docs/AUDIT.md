@@ -756,7 +756,20 @@ given so it can be re-run).
     **Sequel 2026-08-17 — The RH reduction paper: g(s) = |ζ(s)|/|ζ(1−s)|
     is identically 1 iff RH** (`docs/RH_REDUCTION_PAPER.md`): the removable-
     singularity argument from Ch. 5.21v is now a complete, self-contained
-    paper.  Define g(s) = |ζ(s)|/|ζ(1−s)|.  (1) g = 1 on the critical line
+    paper.
+
+    > **WITHDRAWN 2026-09-28 — steps (4) and (5) below, and the "HONEST WALL"
+    > paragraph, are wrong.** Recorded here verbatim as the original state.
+    > Step (4) is the global level-set form, false: |χ(σ+it)| = 1 has three
+    > roots in σ for t < 6.2898, the extras at ½ ± d(t) outside the strip.
+    > Step (5) does not follow, because steps (1)–(3) hold at non-zeros on
+    > the line too (agreement ~1.97e-31) — the whole chain cannot fail and so
+    > never tested RH. The "HONEST WALL" claim that the open problem was
+    > finding a *different* criterion was misaimed: the limit was already
+    > evaluable, and its value was uninformative. See section 2 item 8 and
+    > `docs/PREDICTION_LEDGER.md` PL-22.
+
+    Define g(s) = |ζ(s)|/|ζ(1−s)|.  (1) g = 1 on the critical line
     by Schwarz reflection (|ζ(½+it)| = |ζ(½−it)|).  (2) At each zero ρ,
     g = 0/0 (both numerator and denominator vanish).  (3) The singularity is
     removable: near ρ, ζ(s) ≈ c₁(s−ρ) and ζ(1−s) ≈ −c₂'(s−ρ), so
@@ -1069,6 +1082,58 @@ given so it can be re-run).
    refuted at level-spacing level (for this finite-disk analog).  The WEAVERS
    eig[5]=12.060 claim is NOT reproducible from `data/spectral_data.json` (which
    holds 8.5406).
+8. **The Chi(ρ) bridge is NOT a verification of RH — the reading is VACUOUS.**
+   The corpus asserts in ~15 files that `ζ(s)=χ(s)ζ(1−s)` with
+   `χ(s)=2^s π^(s−1) sin(πs/2) Γ(1−s)` certifies the Riemann Hypothesis,
+   because the 0/0 `g(s)=|ζ(s)|/|ζ(1−s)|` has removable value `|χ(ρ)|=1` at
+   every nontrivial zero (README.md; `docs/FRAMEWORK.md` "**Verified**";
+   `docs/THE_LAW_OF_SINGULARITIES.md` "**SUPPORTED**";
+   `docs/RH_REDUCTION_PAPER.md` abstract; `sigma/bridge.py`;
+   `_gen_webapp.py`, which ships `zeros: 1e13, verified: true`).
+   **CORRECTED 2026-09-28** (`experiments/chi_rho_vacuity_0_over_0.py`,
+   `data/chi_rho_vacuity_data.json`, 7/7 gates): three statements run together
+   in that sentence and must be separated. **(A) TRUE** — off the zeros the
+   functional equation forces `g(s)=|χ(s)|` identically, so the 0/0 is a genuine
+   removable singularity with named value `|χ(ρ)|=1` (verified exactly at all 8
+   probes).    **(B) TRUE on the critical strip, FALSE as stated globally** — on the strip
+   `0<σ<1` the line is the *unique* solution of `|χ|=1`, which is the only part
+   RH uses (every nontrivial zero has `0<Re(ρ)<1`), and on-line worst deviation
+   is `1.97e-31` over 11 points with ζ≠0 (`y=0..1000`). But the paper's
+   *global* form `{σ : |χ(σ+it)|=1} = {1/2}` is **false**: scanning the whole
+   real σ-axis, `|χ|=1` has **three** solutions for `t<t*` — `1/2` and
+   `1/2±d(t)` — and **one** for `t≥t*` (12/12 heights match). `d` shrinks
+   `16.895`(t=0.1) → `3.323`(6) → `0.608`(6.28) → annihilated by 6.35,
+   merging into the line as a **double root** at
+   `t*=6.2898359888369027797` (the pair is symmetric about 1/2 because
+   `|χ(1-s)|=1/|χ(s)|`). Every extra root lies **outside** the strip, so the
+   strip statement — the one that matters — survives intact.
+   **(C) VACUOUS** — `|χ|=1` is a property of the **line**, so evaluating it at a
+   zero (a point on the line) cannot distinguish that zero from any other point
+   on the line. Measured: a zero `ρ_k` and a NON-zero at the same height
+   (`1/2+i(γ_k+0.5)`) agree in `|χ|` to `1.97e-31` across 10 zeros, so the
+   corpus's own `1e-25` check passes on a planted non-zero — the instrument
+   **cannot fail**, and by `PREDICTION_LEDGER` standing rule 3 ("a claim with no
+   refutation condition is not a claim") it was never a claim about RH. The
+   discriminating half exists and was never run: displacing `σ` by
+   `1e-1/1e-2/1e-3/1e-6` gives `|χ|=0.9221/0.9919/0.99919/0.99999919`, caught
+   every time. Two supporting refutations: (a) the paper's "strictly monotone in
+   σ for fixed t" is **false** — `d/dsigma log|χ|` at the line flips sign once, at
+   `t*=6.2898359888369027797`, near but **not** equal to `2π=6.2831853071795864769`
+   (delta `6.65e-3`; Stirling is leading-order only), so `|χ|>1` lies right of
+   the line for `t<t*` and left of it for `t>t*`, and no single monotonicity
+   statement covers both branches; (b) `|χ|` is **not** bounded by 1 (scanned
+   maxima reach `9.19e+41`), so the gamma ratio does compensate in the sense the
+   paper denies, and the correct statement is a level set, not a bound. The
+   abstract's "g is identically 1 after removal" is **false**: `g≡χ` and
+   `g=1` only on the line (`g≠1` at 6 of 8 probes, e.g. `g(2)=19.7`). **Not
+   retracted:** A and the strip form of B stand — B is the sharpest usable
+   statement in the file, and refuting C *strengthens* B into an instrument
+   with teeth. **Also fixed:** the
+   corpus's `sin·Γ` form of `χ` is a `0·∞` product that raises `gamma function
+   pole` at `s=2,4,6,8` where `χ` is finite (`|χ(2)|=2π²`); the regular form is
+   `π^(s−1/2) Γ((1−s)/2)/Γ(s/2)`, identical as a function. Registered as
+   `PREDICTION_LEDGER` **PL-22** with the refutation condition. **RH remains
+   open** and nothing here bears on it.
 
 ---
 

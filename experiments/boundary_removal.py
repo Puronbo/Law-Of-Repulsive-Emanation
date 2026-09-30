@@ -245,8 +245,19 @@ def rh_boundary_removal():
     
     We verify:
     - |chi(rho)| = 1 on the critical line
-    - |chi(sigma+it)| != 1 for sigma != 0.5 (boundary exists off-line)
+    - |chi(sigma+it)| != 1 for Re(s) inside the critical strip with sigma != 0.5
     - The boundary is self-removing: |chi| approaches 1 as sigma -> 0.5
+
+    CORRECTION 2026-09-28: the second bullet originally read "|chi(sigma+it)|
+    != 1 for sigma != 0.5" with no restriction on sigma. That GLOBAL form is
+    false: |chi(sigma+it)| = 1 has three real solutions in sigma for
+    t < t* = 6.2898359888369, namely 1/2 and 1/2 +- d(t) (symmetric because
+    |chi(1-s)| = 1/|chi(s)|), the pair merging into the line as a double root
+    at t*. All the extra roots lie OUTSIDE the open critical strip 0<sigma<1,
+    which is why the strip form stated above is the correct one and the one
+    that bears on RH. See experiments/chi_rho_vacuity_0_over_0.py gate 3.
+    Separately, the first bullet is an IDENTITY rather than a test: it holds at
+    non-zeros on the line too, so it cannot decide RH.
     """
     print("\n--- RH Boundary Removal ---")
     from scipy.special import gamma as gamma_func

@@ -36,10 +36,10 @@ def run_tests():
     print()
     
     # Test 2: Chi(rho) bridge
-    print("TEST 2: CHI(RHO) BRIDGE")
+    print("TEST 2: CHI(RHO) BRIDGE (identity check, does NOT test RH)")
     print("-" * 70)
     from sigma.chassis.bridge import chi_at_zeros, verify_bridge
-    
+
     results = chi_at_zeros(10)
     all_ok = True
     for r in results:
@@ -49,6 +49,11 @@ def run_tests():
         print("  rho_%2d: |chi| = %.15f  [%s]" % (
             r['n'], r['modulus'], "PASS" if ok else "FAIL"))
     print("  All |chi(rho)| = 1: %s" % ("YES" if all_ok else "NO"))
+    print("  NOTE 2026-09-28: |chi(1/2+it)| = 1 holds at NON-zeros on the line")
+    print("  too, to ~1.97e-31, so the block above cannot fail and cannot")
+    print("  distinguish a zero from a non-zero. It is not evidence for RH.")
+    print("  verify_bridge() below adds the falsification control that shows")
+    print("  this, plus the displaced-Re(s) probe that does have teeth.")
     print()
     
     # Test 3: E8 structure

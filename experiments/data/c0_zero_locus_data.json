@@ -1,0 +1,44 @@
+{
+  "experiment": "C0 origin and zero locus on the C0 scale",
+  "gates": {
+    "G1 zero set exists, C0 flat on it": {
+      "area_fraction": 0.8632776683981639,
+      "detail": "zero set = {r >= r*(theta)} with r* spanning 0.8483..0.9832 (86.3% of the disk); C0 == 0 identically there, so C0-per-zero is a constant and carries no per-zero information",
+      "pass": true,
+      "r_star_max": 0.983166938479457,
+      "r_star_min": 0.8482834997500206
+    },
+    "G2 origin is a max, not a zero": {
+      "detail": "V(origin)=26.4333 is the near-maximum of V; the zeros are at r >= r*. Origin and zeros are antipodal, not connected",
+      "pass": true
+    },
+    "G3 the 0/0 is NOT removable": {
+      "detail": "one-step limit = the last node's own term; 9 distinct values, spread 6.2154. Path-dependent, so the limit does not exist. Falsifies IF_C0_IS_0_OVER_0.md sec.2/3/9",
+      "pass": true
+    },
+    "G4 24.434792 is neither limit nor average": {
+      "detail": "24.434792 is the raw unnormalised sum for a hand-picked 2-node context; the document's own average is 3.0543 and the real limits span [0.0346, 6.2500]. It is not the removable value",
+      "pass": true
+    },
+    "G5 invariance claim is false": {
+      "detail": "a 0.01 coordinate edit changes the limit, and re-indexing gives 768 distinct values over 2^10 contexts. The value is a function of typed coordinates and of an arbitrary context choice",
+      "pass": true
+    },
+    "G6 zeta 0/0 is removable, C0 0/0 is not": {
+      "chi_bracket_err_1e8": 8.105487467766234e-09,
+      "chi_line_whole": true,
+      "chi_off_line_min": 0.03971728359695522,
+      "detail": "the zeta 0/0 is genuinely removable: zeta(s)/zeta(1-s) -> chi(rho) with the limit independent of approach direction (error 8.1e-09 at eps=1e-8). |chi| = 1 then holds on the WHOLE line -- at the zero to 1e-41 and at a non-zero impostor to 1e-41 -- so it is a property of the line and cannot decide RH (PL-22 gate C). Off the line it moves by 0.176, so it is not vacuous as a location identity, only as a zero detector. The real asymmetry with C0 is therefore sharper than the old text claimed: the zeta side HAS a unique removable value and the C0 side has none.",
+      "pass": true,
+      "zeta_limit_chi": true,
+      "zeta_removable": true
+    }
+  },
+  "summary": {
+    "alpha": 2.5,
+    "documented_c0": 24.434791603891032,
+    "gates": "6/6 PASS",
+    "nodes": 10
+  },
+  "verdict": "The zeros of the C0 scale form the region {r >= r*(theta)}, whose inner boundary spans 0.8483 to 0.9832 and is not circular; C0 is identically zero there, so C0-per-zero is a constant. The origin is the near-maximum of V, not a zero, and is antipodal to the zero set. The 0/0 of IF_C0_IS_0_OVER_0.md is path-dependent, so it is not a removable singularity, and 24.434792 is neither its limit nor the average the document defines. Nothing here connects to a Millennium Prize Problem."
+}

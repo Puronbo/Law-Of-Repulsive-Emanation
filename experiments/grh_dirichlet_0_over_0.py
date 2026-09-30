@@ -6,10 +6,22 @@
 # On the critical line Re(s) = 1/2, g_chi = 1 by the functional equation.
 # At each zero rho of L(s, chi), g_chi(rho) = 0/0.
 # The removable value is |epsilon(chi)| = 1 (the root number).
-# Therefore g_chi = 1 iff all zeros of L(s, chi) have Re(rho) = 1/2.
+#
+# The original line 9 read "Therefore g_chi = 1 iff all zeros of L(s, chi) have
+# Re(rho) = 1/2", stated as a result. CORRECTION 2026-09-28: withdrawn as a
+# verification, and it is the same non-argument as the zeta case. Line 6 says
+# g_chi = 1 on the WHOLE critical line, so it returns 1 at a non-zero of
+# L(s, chi) exactly as at a zero -- the probe cannot fail and cannot
+# distinguish the two. |epsilon(chi)| = 1 is a Gauss-sum fact about characters,
+# carrying no information about zero locations.
+#
+# What survives, and what this script actually checks: on the critical strip of
+# L, |g_chi| = 1 forces Re(s) = 1/2. That is a re-encoding of GRH, not a proof
+# of it. GRH remains open. See docs/PREDICTION_LEDGER.md PL-22 and
+# experiments/chi_rho_vacuity_0_over_0.py.
 #
 # We verify: (1) Gauss sums have |G(chi)| = sqrt(q), (2) root
-# numbers |epsilon(chi)| = 1, (3) g_chi = 1 on critical line.
+# numbers |epsilon(chi)| = 1, (3) g_chi = 1 on the critical line.
 
 import json
 import math
@@ -129,11 +141,25 @@ def run_experiment():
         "all_g_chi_equal_one": all_g_one,
         "all_root_numbers_one": all_eps_one,
         "all_gauss_sums_correct": all_gauss,
-        "verdict": "SUPPORTED" if (all_g_one and all_eps_one and all_gauss) else "NOT SUPPORTED",
-        "honest_wall": "Complete reduction, not unconditional proof - same as RH: "
-                       "g_chi = 1 IS Re(rho) = 1/2 for all zeros of L(s,chi); "
-                       "showing the singularity removable by a criterion other than "
-                       "evaluating the limit is the open problem; GRH remains open.",
+        "verdict": "VACUOUS - not evidence for GRH" if (all_g_one and all_eps_one and all_gauss) else "CHECK FAILED",
+        "verdict_2026_09_28": (
+            "The previous verdict here read 'SUPPORTED'. Withdrawn. All three "
+            "quantities tested are identities that hold whether or not GRH is "
+            "true: |G(chi)| = sqrt(q) and |epsilon(chi)| = 1 are Gauss-sum facts "
+            "about characters, and g_chi = 1 holds on the whole critical line, "
+            "so it returns 1 at a non-zero of L(s,chi) exactly as at a zero. A "
+            "check that cannot fail is not support. What survives: on the "
+            "critical strip of L, |g_chi| = 1 forces Re(s) = 1/2 - a "
+            "re-encoding of GRH, not evidence for it. See "
+            "docs/PREDICTION_LEDGER.md PL-22 and "
+            "experiments/chi_rho_vacuity_0_over_0.py."
+        ),
+        "verifies_grh": False,
+        "honest_wall": "The probe decides nothing about zero locations. GRH remains open. "
+                       "The previous wall text ('showing the singularity removable by a "
+                       "criterion other than evaluating the limit is the open problem') "
+                       "was misaimed: the limit was already evaluable and gave 1 at "
+                       "non-zeros too, so the open problem is not reachable this way.",
         "characters": results,
     }
 
@@ -145,6 +171,11 @@ def run_experiment():
     print(f"All |G| = sqrt(p): {all_gauss}")
     print(f"All eps = 1: {all_eps_one}")
     print(f"All g_chi = 1: {all_g_one}")
+    print("  ^ all three are identities that hold whether or not GRH is true.")
+    print("    g_chi = 1 holds on the whole critical line, so it returns 1 at a")
+    print("    non-zero of L(s,chi) exactly as at a zero. This is a VACUOUS check,")
+    print("    not support for GRH. Verdict corrected from 'SUPPORTED' on")
+    print("    2026-09-28. See PREDICTION_LEDGER.md PL-22. GRH remains open.")
     print(f"Primes tested: {len(primes)}, Time: {t_total:.1f}s")
     print(f"Saved to {OUT}")
 

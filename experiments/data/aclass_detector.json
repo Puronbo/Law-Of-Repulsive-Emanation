@@ -1,0 +1,149 @@
+{
+  "method": "fluctuation-scale test (anti-class detector)",
+  "criterion": "ratio A/D removable iff fluctuation exponent beta < alpha",
+  "probes": {
+    "P1_polya": {
+      "beta": 0.48601641324179157,
+      "r2": 0.9737545780303648,
+      "ndecades": 8,
+      "alpha_d": 0.5,
+      "class": "ANTI / borderline (fluctuations sit on the denominator)",
+      "maxF_abs": 3461,
+      "N": 10000000,
+      "miniF": 1,
+      "note": "Littlewood: F = Omega_+-(sqrt(n))"
+    },
+    "P2_pnt": {
+      "beta": 0.4326976953974748,
+      "r2": 0.9759287865711818,
+      "ndecades": 4,
+      "alpha_d": 1.0,
+      "class": "REMOVABLE-COMPATIBLE (subleading)",
+      "N": 20000000,
+      "max_dev": 338.6102608718211,
+      "piN": 1270607,
+      "liN": 1270904.4874020703,
+      "ratio_N": 0.999765924658368
+    },
+    "P3_collatz": {
+      "N": 10000000,
+      "decades": [
+        {
+          "decade": 0,
+          "lo": 1,
+          "hi": 9,
+          "n": 8,
+          "mean_ratio": 4.39262069064172,
+          "sd_ratio": 2.83837073346082,
+          "max_ratio": 8.647272652954955
+        },
+        {
+          "decade": 1,
+          "lo": 10,
+          "hi": 99,
+          "n": 90,
+          "mean_ratio": 8.578241298821338,
+          "sd_ratio": 8.537168514690794,
+          "max_ratio": 33.678851385192985
+        },
+        {
+          "decade": 2,
+          "lo": 100,
+          "hi": 999,
+          "n": 900,
+          "mean_ratio": 10.16201123418139,
+          "sd_ratio": 6.536926861973616,
+          "max_ratio": 26.293857283536852
+        },
+        {
+          "decade": 3,
+          "lo": 1000,
+          "hi": 9999,
+          "n": 9000,
+          "mean_ratio": 10.367987163932579,
+          "sd_ratio": 5.439327653532424,
+          "max_ratio": 29.90507312275144
+        },
+        {
+          "decade": 4,
+          "lo": 10000,
+          "hi": 99999,
+          "n": 90000,
+          "mean_ratio": 10.218651455141773,
+          "sd_ratio": 4.733912473524483,
+          "max_ratio": 31.189384827628057
+        },
+        {
+          "decade": 5,
+          "lo": 100000,
+          "hi": 999999,
+          "n": 900000,
+          "mean_ratio": 10.257749268334234,
+          "sd_ratio": 4.309178206736825,
+          "max_ratio": 38.42055307740162
+        },
+        {
+          "decade": 6,
+          "lo": 1000000,
+          "hi": 9999999,
+          "n": 9000000,
+          "mean_ratio": 10.271693678639338,
+          "sd_ratio": 3.9979687549429213,
+          "max_ratio": 42.963400633194844
+        },
+        {
+          "decade": 7,
+          "lo": 10000000,
+          "hi": 10000000,
+          "n": 1,
+          "mean_ratio": 8.996099982281645,
+          "sd_ratio": 0.0,
+          "max_ratio": 8.996099982281645
+        }
+      ],
+      "mean_slope": -0.007860733341234816,
+      "max_slope": -0.05046805696939359,
+      "final_mean": 8.996099982281645,
+      "final_max": 8.996099982281645,
+      "max_exponent": 0.5504680569693936,
+      "diagnosis": "MEAN-STABLE candidate (open): the mean ratio T/log n is flat across decades (not anti-class in the mean); limited to 1e7 and no theorem for the limit's existence."
+    },
+    "P4_twin": {
+      "beta": -0.316042012420121,
+      "r2": 0.9999958626786882,
+      "ndecades": 3,
+      "class": "DECAYING-TO-1 (removable-compatible, OPEN)",
+      "K_two_C2": 1.3203246909334605,
+      "N": 20000000,
+      "final_dev": 0.001502984085897996,
+      "max_dev": 0.019788291900399213,
+      "endpoints": {
+        "x": 20000000,
+        "pi2": 107407
+      },
+      "wall": "pi_2 to 2e7; per-decade maxima over 5/6/7 only (3 decade bins, coarse but sign-clear)"
+    },
+    "P5_goldbach": {
+      "beta": -0.09151392990542812,
+      "r2": 0.09598027518554361,
+      "n_sample": 5801,
+      "class": "no anti-class signal (removable not contradicted, OPEN)",
+      "two_C2": 1.3203239567500962,
+      "N_hi": 300000,
+      "mean_lo": 0.2355305097332289,
+      "mean_hi": 0.19963001536856714,
+      "max_hi": 0.3807794417543935,
+      "wall": "G to 3e5 sampled every 50th even N; strong Goldbach open; deviations scatter at this range"
+    }
+  },
+  "gates": {
+    "G1 Polya fluctuation exponent ~ 1/2 (anti-class)": true,
+    "G2 PNT ratio pi/Li -> 1 (removable)": true,
+    "G3 PNT fluctuation exponent subleading to x/log x": true,
+    "G4 detector octave-fit quality r2 > 0.9": true,
+    "G5 twin V(x)-1 decays (beta < -0.2, removable open)": true,
+    "G6 goldbach R(N)-1 no growth + drifts to 1 (removable open)": true
+  },
+  "overall": true,
+  "wall": "finite ranges (1e7 / 2e7 / 5e6); labelled probes gated, Collatz is an open diagnosis"
+}

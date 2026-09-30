@@ -195,8 +195,8 @@ lim<sub>x&rarr;a</sub> f(x)/g(x) = f'(a)/g'(a)
 </div>
 <div class="card">
 <h3>Chi(rho) Bridge</h3>
-<p>|chi(rho)| = 1 at all zeros</p>
-<p class="value">VERIFIED: 10^13 zeros</p>
+<p>g = |chi(s)| identically; removable value 1 at each zero</p>
+<p class="value">IDENTITY VERIFIED — but it holds on the whole line, so it cannot decide RH (reading withdrawn)</p>
 </div>
 <div class="card">
 <h3>E8 Structure</h3>
@@ -249,6 +249,11 @@ lim<sub>x&rarr;a</sub> f(x)/g(x) = f'(a)/g'(a)
 <h2>Chi(rho) Bridge</h2>
 <p>The functional equation: zeta(s) = chi(s) * zeta(1-s)</p>
 <p>At the zeros rho, chi(rho) is a pure PHASE with |chi(rho)| = 1.</p>
+<p><b>Read this correctly:</b> |chi| = 1 is a property of the whole critical
+LINE, not of the zeros. A non-zero point on the line gives the same answer to
+1.97e-31, so this check has no power to decide RH. The "verification" reading
+is withdrawn (experiments/chi_rho_vacuity_0_over_0.py, PREDICTION_LEDGER PL-22).
+RH remains open.</p>
 
 <div class="card" style="margin:15px 0">
 <h3>Compute |chi(1/2 + iy)|</h3>
@@ -260,14 +265,14 @@ lim<sub>x&rarr;a</sub> f(x)/g(x) = f'(a)/g'(a)
 <div id="chi-result" class="log"></div>
 </div>
 
-<h3>First 20 Zeros: |chi(rho)| = 1</h3>
+<h3>First 20 Zeros: |chi(rho)| = 1 (and so is every other point on the line)</h3>
 <canvas id="canvas-chi" width="600" height="300"></canvas>
 
 <h3>Bridge Properties</h3>
 <div class="grid">
 <div class="card">
 <h3>|chi(1/2+iy)| = 1</h3>
-<p class="value">VERIFIED for y = 0.5 to 1000</p>
+<p class="value">IDENTITY, y = 0.5 to 1000 (holds for ALL y, zero or not)</p>
 </div>
 <div class="card">
 <h3>chi(s)*chi(1-s) = 1</h3>
@@ -275,7 +280,7 @@ lim<sub>x&rarr;a</sub> f(x)/g(x) = f'(a)/g'(a)
 </div>
 <div class="card">
 <h3>Zeros on critical line</h3>
-<p class="value">VERIFIED: 10^13 zeros</p>
+<p class="value">Zeros verified to 3e12 (Platt-Trudgian) — evidence, not proof</p>
 </div>
 </div>
 </div>
@@ -600,7 +605,9 @@ function computeChi(){
         'Is unit: <span class="'+(isOne?'pass':'fail')+'">'+(isOne?'YES':'NO')+'</span><br>'+
         'Nearest zero: rho_'+(ZETA_ZEROS.indexOf(nearest)+1)+' = '+nearest.toFixed(6)+'<br>'+
         '<br>'+
-        '<span class="info">CONCLUSION: chi(rho) is a PHASE with |chi(rho)| = 1</span><br>'+
+        '<span class="info">CONCLUSION: |chi| = 1 at THIS point, and at every other point on the line</span><br>'+
+        '<span class="info">So this cannot distinguish a zero from a non-zero, and does NOT verify RH (reading withdrawn 2026-09-28)</span><br>'+
+        '<span class="info">The level set DOES have teeth: displacing Re(s) off 1/2 is caught (e.g. Re = 0.501 gives |chi| = 0.99919)</span><br>'+
         '<span class="info">Source: Riemann 1859, Titchmarsh 1951</span>';
 }
 
@@ -817,7 +824,7 @@ function copyPacket(){
         author:'Michael Grafiel S Puno',
         singularities:SINGULARITIES,
         e8:{exponents:[1,7,11,13,17,19,23,29],roots:240,weyl:696729600},
-        chi:{property:'|chi(rho)|=1',verified:true,zeros:10000000000000},
+        chi:{property:'g(s)=|chi(s)| identically; removable value 1 at each zero',identityVerified:true,rhReading:'withdrawn-vacuous',zerosVerifiedTo:3e12,note:'|chi|=1 holds on the whole critical line, zeros and non-zeros alike (agree to 1.97e-31), so this cannot decide RH; see experiments/chi_rho_vacuity_0_over_0.py and PREDICTION_LEDGER PL-22'},
         currency:{name:'Sigma',supply:TOTAL_SIGMA},
         fields:FIELDS
     };

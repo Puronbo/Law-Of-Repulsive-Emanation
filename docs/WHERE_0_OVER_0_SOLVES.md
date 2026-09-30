@@ -23,9 +23,14 @@ This is a **probe**: the removable value tells you something about the structure
 
 **Removable value:** |χ(ρ)|
 
-**What it solves:** |χ(ρ)| = 1 iff Re(ρ) = ½. Therefore g ≡ 1 iff RH.
+**What it solves:** nothing on its own — see the correction below. The removable value is 1, but 1 is what the *whole line* gives, zeros and non-zeros alike.
 
-**The probe:** the 0/0 tests whether the functional equation |ζ(s)| = |ζ(1−s)| holds at the zeros. It holds (value = 1) if and only if the zeros are on the critical line.
+**Correction 2026-09-28.** The original text here read "|χ(ρ)| = 1 iff Re(ρ) = ½. Therefore g ≡ 1 iff RH", and the line below claimed the 0/0 "holds (value = 1) if and only if the zeros are on the critical line". Both are **withdrawn**:
+
+- |χ(1/2+it)| = 1 for **all** t. A point on the line that is not a zero returns the same 1 to ~1.97e-31, so the probe cannot tell a zero from a non-zero and is not evidence for RH.
+- The level set form is what survives: on the critical strip 0 < Re(s) < 1, |χ| = 1 **forces** Re(s) = ½. That is a re-encoding of RH, not a proof of it. Globally the stronger form is false — |χ(σ+it)| = 1 has three solutions in σ for t < 6.2898, the extras outside the strip.
+
+**The probe, restated honestly:** the 0/0 records the removable value of a true identity. It is worth computing because the level-set statement above is sharp, not because it decides where the zeros are. RH remains open. See `docs/PREDICTION_LEDGER.md` PL-22 and `experiments/chi_rho_vacuity_0_over_0.py`.
 
 ---
 
@@ -37,9 +42,11 @@ This is a **probe**: the removable value tells you something about the structure
 
 **Removable value:** |ε(χ)|, the absolute value of the root number
 
-**What it solves:** |ε(χ)| = 1 for every character χ. Therefore g_χ ≡ 1 for every χ. The Generalized Riemann Hypothesis (GRH) — every zero of every Dirichlet L-function lies on the critical line — follows by the same argument.
+**What it solves:** nothing on its own. |ε(χ)| = 1 is an identity of the critical line of L(s,χ), true at non-zeros too.
 
-**Status:** proven for GRH in the same way as RH: the 0/0 argument is complete; what remains is proving Λ ≤ 0 for the L-function analog of the de Bruijn-Newman constant.
+**Correction 2026-09-28.** The original text here read "|ε(χ)| = 1 for every character χ. Therefore g_χ ≡ 1 for every χ", and below claimed GRH was "proven in the same way as RH" with "the 0/0 argument is complete". That is **withdrawn**: the line identity carries no information about whether zeros lie on the line, exactly as in the zeta case, so the argument is the same non-argument in both places. The strip form is what survives: on the critical strip of L, |g_χ| = 1 forces Re(s) = ½ — a re-encoding of GRH.
+
+**Status:** open. GRH is **not** proven by the 0/0 probe. The root number |ε(χ)| = 1 is a fact about characters, already known from the Gauss-sum computation; it says nothing about zero locations. See PL-22.
 
 ---
 

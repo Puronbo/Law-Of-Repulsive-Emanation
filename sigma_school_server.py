@@ -4385,7 +4385,11 @@ class SchoolHandler(BaseHTTPRequestHandler):
             <h2>What Each Category Tests</h2>
             <ul>
                 <li><strong>L'Hopital:</strong> 6 removable singularity computations (sin(x)/x, etc.)</li>
-                <li><strong>Chi(rho):</strong> 8 tests of |chi(s)|=1 on critical line</li>
+                <li><strong>Chi(rho):</strong> 8 tests of |chi(s)|=1 on critical line
+                    &mdash; these confirm a true identity that holds at <em>every</em> point
+                    of the line, zeros included, so they carry no information about
+                    RH; the "verified RH" reading is withdrawn 2026-09-28
+                    (<code>chi_rho_vacuity_0_over_0.py</code>, PL-22)</li>
                 <li><strong>E8:</strong> 18 tests of exceptional Lie algebra structure</li>
                 <li><strong>Currency:</strong> 2 tests of Sigma integrity (supply + hash)</li>
                 <li><strong>Convergence:</strong> 4 tests of series and product convergence</li>
@@ -4632,7 +4636,7 @@ class SchoolHandler(BaseHTTPRequestHandler):
                 <li>29 book chapters with epistemic classification</li>
                 <li>20 currency entries with values</li>
                 <li>E8 structure (exponents, degrees, Weyl order)</li>
-                <li>Chi(rho) bridge verification</li>
+                <li>Chi(rho) bridge identity (holds on the whole line; RH reading withdrawn)</li>
                 <li>38-test verification results</li>
                 <li>39 citations</li>
             </ul>

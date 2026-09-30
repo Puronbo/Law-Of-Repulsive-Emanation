@@ -1,0 +1,40 @@
+{
+  "probe": "extension of atlas #64 to the 10^8 wall (no new numbered member); equal range with #67",
+  "form": "per-decade max |F(n)|/sqrt(n), F = sum lambda(k)",
+  "F_at_powers_of_10": {
+    "1": 0,
+    "2": -2,
+    "3": -14,
+    "4": -94,
+    "5": -288,
+    "6": -530,
+    "7": -842,
+    "8": -3884
+  },
+  "decade_max_ratio": {
+    "0": 1.0,
+    "1": 1.118033988749895,
+    "2": 1.2268330994576706,
+    "3": 1.2903645416728189,
+    "4": 1.3302204651592284,
+    "5": 1.302114260347878,
+    "6": 1.272410738316952,
+    "7": 1.3582999822431292
+  },
+  "minF": -10443,
+  "minF_n": 76015169,
+  "n_records": 10443,
+  "last_record_n": 76015169,
+  "detector_maxF_1e7_crosscheck": 3461,
+  "first_positive_known": 906150257,
+  "first_positive_in_range": 1,
+  "gates": {
+    "G1 exact continuity (A002819 + detector P1 to 1e7)": true,
+    "G2 cited (Littlewood; first+ at 906150257, beyond wall)": true,
+    "G3 order-one band to 10^8 (non-decay)": true,
+    "G4 live-walk census + ratio > 1 within 1e8": true,
+    "G5 equal-range calibration vs #67": true
+  },
+  "overall": true,
+  "wall": "the NO-LIMIT verdict rests on Littlewood 1914; the first positive F (906,150,257) is beyond this wall; this file only establishes, with #67, the equal-range finite read"
+}

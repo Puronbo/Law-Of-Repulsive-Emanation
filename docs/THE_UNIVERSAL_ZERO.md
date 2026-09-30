@@ -54,11 +54,11 @@ The 55 experiments fall into five distinct mechanisms by which 0/0 arises:
 
 **Definition:** Two functions f and g are equal where defined, but both vanish at isolated points. Their ratio is 0/0 at those points. The removable value tests whether they are "the same" — whether the functional equation holds.
 
-**Prototype:** g(s) = |ζ(s)|/|ζ(1−s)|. On the critical line, g ≡ 1 (Schwarz reflection). At each zero ρ, both numerator and denominator vanish. The removable value is |χ(ρ)|, which equals 1 if and only if Re(ρ) = ½.
+**Prototype:** g(s) = |ζ(s)|/|ζ(1−s)|. On the critical line, g ≡ 1 (Schwarz reflection). At each zero ρ, both numerator and denominator vanish. The removable value is |χ(ρ)|. *(Correction 2026-09-28: the original line said "which equals 1 if and only if Re(ρ) = ½". That holds on the critical strip 0 < Re < 1 and is FALSE globally — |χ(σ+it)| = 1 has three roots in σ for t < 6.2898, the extras outside the strip. Also, the value 1 is what the whole line gives, zeros and non-zeros alike, to ~1.97e-31, so it carries no information about zero locations. See PL-22.)*
 
 **Instances (6):**
-- Riemann zeta: |ζ(s)|/|ζ(1−s)| → removable = |χ(ρ)| = 1 iff RH
-- GRH Dirichlet: |L(s,χ)|/|L(1−s,χ̄)| → removable = |ε(χ)| = 1 always
+- Riemann zeta: |ζ(s)|/|ζ(1−s)| → removable = |χ(ρ)| = 1 (a re-encoding of RH, **not** a proof; the "1 iff RH" reading is withdrawn 2026-09-28)
+- GRH Dirichlet: |L(s,χ)|/|L(1−s,χ̄)| → removable = |ε(χ)| = 1 always (same caveat)
 - BSD: L(s,E)/(s−1)^r → removable = leading coefficient a_r
 - Zeta functional equation: zeta(0) = −1/2 via 0×∞ = 0/0
 - Euler product: ∏(1−p^{−s})/zeta(s) → removable = 1
@@ -144,8 +144,10 @@ THE UNIVERSAL ZERO: 55 instances of 0/0
 
 ├── I. THE PROBE (6 instances)
 │   Testing whether two objects are "the same" at mutual zeros
-│   ├── |ζ(s)|/|ζ(1−s)| = 1 iff RH
-│   ├── |L(s,χ)|/|L(1−s,χ̄)| = 1 (GRH)
+│   ├── |ζ(s)|/|ζ(1−s)| = 1 iff RH   ← "iff RH" withdrawn 2026-09-28: the
+│   │      line identity holds at non-zeros too (PL-22); the strip level set
+│   │      |χ|=1 ⇒ Re=1/2 is the re-encoding, not a proof
+│   ├── |L(s,χ)|/|L(1−s,χ̄)| = 1 (GRH) — same caveat, nothing proven
 │   ├── L(s,E)/(s−1)^r → rank + Sha (BSD)
 │   ├── zeta functional equation → zeta(0) = −1/2
 │   ├── Euler product → 1
@@ -382,7 +384,11 @@ The indeterminate form 0/0 is usually treated as a pedagogical curiosity — "be
 
 ### 7.2 For the Riemann Hypothesis
 
-The RH reduction (g(s) = |ζ(s)|/|ζ(1−s)| ≡ 1 iff RH) is one instance of the universal pattern. The 0/0 at each zero tests whether the functional equation holds at that zero. If all removable values are 1, RH is true. The framework suggests that proving RH requires showing that a single 0/0 — the de Bruijn-Newman constant Λ = 0 — holds. This is the content of the Rodgers-Tao theorem combined with the g(s) argument.
+The RH reduction (g(s) = |ζ(s)|/|ζ(1−s)| ≡ 1 iff RH) is one instance of the universal pattern.
+
+> **Correction 2026-09-28 — the sentence "If all removable values are 1, RH is true" is withdrawn, and the parenthetical "(g ≡ 1 iff RH)" with it.** The removable values are 1 whether or not RH holds, because they are the values of a function that is 1 on the *whole* critical line. A non-zero point on the line yields 1 to ~1.97e-31, so the condition "all removable values are 1" is satisfied on any hypothesis, true or false — it is not a test. What does survive is the strip-level-set form: |χ| = 1 forces Re(s) = ½ *within* 0 < Re < 1, which re-encodes RH rather than evidencing it.
+
+The 0/0 at each zero records a true identity, which is worth computing because the level-set statement is sharp. The Rodgers–Tao theorem is unaffected by this correction, and RH remains open. See `docs/PREDICTION_LEDGER.md` PL-22 and `experiments/chi_rho_vacuity_0_over_0.py`.
 
 ### 7.3 For computation
 

@@ -1,0 +1,30 @@
+{
+  "experiment": "C0 at every zero on the scale",
+  "gates": {
+    "G1 law is a tautology": {
+      "pass": true,
+      "detail": "H=K+V, K(0)=0 => H(q,0)=V(q) identically; 528/528 pairs agree"
+    },
+    "G2 C0 moves with coordinates": {
+      "pass": true,
+      "detail": "a 0.01 coordinate edit shifts C0 by up to +0.0728; C0 is not invariant"
+    },
+    "G3 C0 is discrete, not analytic": {
+      "pass": true,
+      "detail": "1024 discrete contexts -> 768 distinct C0 values; no zero-locus exists"
+    },
+    "G4 millennium inference invalid": {
+      "pass": true,
+      "detail": "removable value is 1 for divergent Z too; A/A=1 is universal, cannot force A==0"
+    },
+    "G5 audit already self-flags": {
+      "pass": true,
+      "detail": "docs/AUDIT.md labels the C0*zeta match a tautology 'for ANY constant C0'"
+    }
+  },
+  "summary": {
+    "gates": "5/5 PASS",
+    "verdict": "C0-per-zero is not well-defined: C0 is a function of hand-typed word coordinates and a discrete context choice, with no analytic zero-locus. The corpus Millennium link rests on A/A=1 (valid for every A) being used to force A==0, which is invalid.",
+    "so_what": "Nothing here blocks work on genuine Millennium problems; it only rules out THIS route. The live open wall in the corpus is W1, the Kolmogorov uniform bound, which the NS document itself concedes is the open part."
+  }
+}

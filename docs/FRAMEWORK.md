@@ -105,7 +105,7 @@ Each Millennium problem asks whether a specific 0/0 is removable:
 
 | Problem | The 0/0 | Removable Value | Status |
 |---------|---------|-----------------|--------|
-| RH | g(s) = \|zeta(s)\|/\|zeta(1-s)\| at zeros | \|chi(rho)\| = 1 iff Re(rho)=1/2 | Verified |
+| RH | g(s) = \|zeta(s)\|/\|zeta(1-s)\| at zeros | \|chi(rho)\| = 1 iff Re(rho)=1/2 | Identity VERIFIED; the RH reading is VACUOUS — the identity holds on the whole line, not only at zeros, so it cannot decide RH (`chi_rho_vacuity_0_over_0.py`, PL-22) |
 | NS | R(t) = E/(nu*Z) at singularity | 0 (exponential decay) | Proved |
 | YM | Propagator at p^2 = 0 | Delta > 0 (mass gap) | Proved |
 | BSD | L(E,s) at s = 1 | Sha*Omega*Reg*c_p/tors^2 | Verified |

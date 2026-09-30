@@ -2,12 +2,36 @@
 
 **Date:** 2026-08-17
 **Repository:** Puronbo/Law-Of-Repulsive-Emanation
+**Corrected:** 2026-09-28 — the claim "$g \equiv 1$" is **false** and the
+monotonicity lemma in Step 4 is **false**; both are fixed in place below. The
+true replacement — on the critical strip, $|\chi(\sigma+it)| = 1$ forces
+$\sigma = 1/2$ — is *sharper and more useful* than the claim it replaces,
+because it has teeth: displacing $\sigma$ is caught at every scale tested
+down to $10^{-6}$, whereas the withdrawn "$|\chi| = 1$ at a critical-line
+zero" check passes on points that are not zeros at all. Verification:
+`experiments/chi_rho_vacuity_0_over_0.py` (7/7 gates), `PREDICTION_LEDGER`
+PL-22, `docs/AUDIT.md` §2 item 8. **RH remains open**; nothing in this
+correction claims otherwise.
 
 ---
 
 ## Abstract
 
-We prove that the Riemann hypothesis is equivalent to the statement that a single explicit function, $g(s) = |\zeta(s)| / |\zeta(1-s)|$, is identically equal to 1 after removal of its singularities. The proof identifies the exact value of each removable singularity as $|\chi(\rho)|$, where $\chi$ is the completed factor of the functional equation, and shows that $|\chi(\rho)| = 1$ if and only if $\mathrm{Re}(\rho) = 1/2$. Combined with the Rodgers-Tao theorem ($\Lambda \geq 0$), this reduces RH to the single inequality $\Lambda = 0$ for the de Bruijn-Newman constant. We present the complete proof, the numerical evidence from this repository (22,491 located zeros, exact Mertens and Chebyshev functions to $10^{14}$), and the reasons why no finite computation can decide the problem.
+We identify the exact value of each removable singularity of a single explicit
+function, $g(s) = |\zeta(s)| / |\zeta(1-s)|$, as $|\chi(\rho)|$, where $\chi$ is
+the completed factor of the functional equation, and we show that
+$|\chi(\rho)| = 1$ if and only if $\mathrm{Re}(\rho) = 1/2$. **This is a true
+restatement of RH, not a verification of it.** We also state plainly what the
+restatement is *not*: $g$ is *not* identically equal to 1, and evaluating
+$|\chi|$ at zeros located on the critical line cannot decide anything, because
+$|\chi(1/2+iy)| = 1$ holds for every $y$ — zeros and non-zeros alike. Combined
+with the Rodgers-Tao theorem ($\Lambda \ge 0$), RH is equivalent to the single
+inequality $\Lambda = 0$ for the de Bruijn-Newman constant, which is open. We
+present the complete argument, the level-set form of the true statement, the
+numerical evidence from this repository (22,491 located zeros, exact Mertens and
+Chebyshev functions to $10^{14}$), the reasons why no finite computation can
+decide the problem, and a measurement of exactly how much force the
+"verification" reading does and does not have.
 
 ---
 
@@ -21,13 +45,22 @@ This is the zeta-theoretic analogue of
 
 $$f(x) = \left|\frac{x-1}{1-x}\right| = 1 \qquad (x \neq 1).$$
 
-In both cases the numerator equals the denominator up to sign, and the absolute value removes the sign. For $f$, this is the tautology $|x-1| = |1-x|$. For $g$, on the critical line, it is the Schwarz reflection principle. Both functions are identically 1 where defined, and both have the indeterminate form $0/0$ at isolated points.
+In both cases the numerator equals the denominator up to sign, and the absolute value removes the sign. For $f$, this is the tautology $|x-1| = |1-x|$, and $f \equiv 1$ wherever it is defined. For $g$, the same cancellation holds **only on the critical line** (by the Schwarz reflection principle), and $g$ is *not* constant elsewhere: the functional equation gives $g(s) = |\chi(s)|$ identically off the zeros, and $|\chi| = 1$ exactly when $\mathrm{Re}(s) = 1/2$. For example $g(2) = |\zeta(2)|/|\zeta(-1)| = 19.74$. Both functions have the indeterminate form $0/0$ at isolated points, and in both cases that form is removable.
 
 ---
 
 ## 2. Main theorem
 
-**Theorem.** *The function $g(s) = |\zeta(s)| / |\zeta(1-s)|$ satisfies $g \equiv 1$ (after removal of singularities) if and only if the Riemann hypothesis is true.*
+**Theorem (corrected 2026-09-28).** *The function $g(s) = |\zeta(s)| / |\zeta(1-s)|$ satisfies $g(\rho) = |\chi(\rho)|$ at every nontrivial zero $\rho$ (removable value), and its level set is exactly the critical line: $g(s) = 1 \iff \mathrm{Re}(s) = 1/2$. Consequently every nontrivial zero of $\zeta$ fills in with value 1 if and only if the Riemann Hypothesis is true.*
+
+**Note on the superseded statement.** The original version of this theorem
+read *"$g \equiv 1$ (after removal of singularities) if and only if RH."* That
+is **false**: $g \equiv |\chi|$, not $g \equiv 1$ — see §1, where $g(2) = 19.74$.
+The corrected statement is a statement about the **values at the zeros** and
+about the **level set**, and it is the form in which the equivalence to RH is
+actually true. The two are not interchangeable: $g \equiv 1$ is a global
+condition that is simply untrue, whereas RH is a condition on the zeros, and
+the corrected theorem keeps exactly the content that bears on RH.
 
 ---
 
@@ -77,23 +110,67 @@ $$|\chi(\sigma + it)| = \pi^{\sigma - 1/2}\,\frac{|\Gamma(\frac{1-s}{2})|}{|\Gam
 
 On the critical line ($\sigma = 1/2$): the prefactor $\pi^0 = 1$ and $|\Gamma(\frac{1-s}{2})| = |\Gamma(\frac{s}{2})|$ (since $\frac{1-s}{2} = \overline{(\frac{s}{2})}$ when $\mathrm{Re}(s) = 1/2$), so $|\chi| = 1$.
 
-Off the critical line ($\sigma \neq 1/2$): the prefactor $\pi^{\sigma - 1/2} \neq 1$, and the gamma ratio does not compensate, so $|\chi| \neq 1$. (Precisely: $\log|\chi(\sigma+it)| = (\sigma - 1/2)\log\pi + \mathrm{Re}\log\Gamma(\frac{1-s}{2}) - \mathrm{Re}\log\Gamma(\frac{s}{2})$, which is a strictly monotone function of $\sigma$ for fixed $t$ by the monotonicity of $\log|\Gamma|$ on vertical lines.)
+Off the critical line ($\sigma \neq 1/2$): the prefactor $\pi^{\sigma - 1/2}$ and the gamma ratio act in *opposite* directions, so neither alone settles the question, and the sign of
 
-Therefore:
+$$\frac{\partial}{\partial\sigma}\log|\chi(\sigma + it)| = \log\pi - \tfrac{1}{2}\operatorname{Re}\psi\!\left(\tfrac{1-s}{2}\right) - \tfrac{1}{2}\operatorname{Re}\psi\!\left(\tfrac{s}{2}\right)$$
 
-$$|\chi(\rho)| = 1 \quad \Longleftrightarrow \quad \mathrm{Re}(\rho) = \tfrac{1}{2}. \qquad \square$$
+is **not** of one sign: at $\sigma = 1/2$ it reduces to $\log\pi - \operatorname{Re}\psi(\tfrac{1}{4} + \tfrac{it}{2})$, which vanishes at exactly one height
+
+$$t_* = 6.2898359888369027797,$$
+
+is positive below it and negative above it. So the earlier justification in this
+step — that $\log|\chi|$ "is a strictly monotone function of $\sigma$ for fixed
+$t$" and that "the gamma ratio does not compensate" — is **false on both
+counts**, and is withdrawn.
+
+**What is true, and is all that is needed.** The conclusion of this step holds
+on the critical strip $0 < \sigma < 1$, which is the only region containing
+nontrivial zeros:
+
+$$|\chi(\rho)| = 1 \quad\Longleftrightarrow\quad \mathrm{Re}(\rho) = \tfrac{1}{2}
+\qquad\text{for every } 0 < \mathrm{Re}(\rho) < 1. \qquad \square$$
+
+Globally the stronger form $\mathrm{Re}(s) = 1/2 \iff |\chi(s)| = 1$ is
+**false**: $|\chi(\sigma + it)| = 1$ has *three* real solutions in $\sigma$
+for $t < t_*$, namely $\tfrac{1}{2}$ and $\tfrac{1}{2} \pm d(t)$ — the pair is
+symmetric about the line because $|\chi(1-s)| = 1/|\chi(s)|$ — and only *one*
+for $t \ge t_*$. As $t \uparrow t_*$ the pair closes onto the line and merges
+with it into a **double root**; the measured offsets are
+$d = 16.895$ at $t = 0.1$, $15.419$ at $1$, $7.162$ at $5$, $3.323$ at $6$,
+$0.608$ at $6.28$, and $d$ is gone by $t = 6.35$. All of these extra roots lie
+**outside** the open strip, so they are irrelevant to RH — but the blanket
+form is withdrawn rather than quietly kept, and the measurements are in
+`experiments/chi_rho_vacuity_0_over_0.py` (gate 3, 12/12 heights).
 
 **Step 5. Combining.**
 
-From Steps 1--4:
+From Steps 1--4, restricted throughout to the nontrivial zeros $\rho$ — which
+satisfy $0 < \mathrm{Re}(\rho) < 1$:
 
-$$g \equiv 1 \;\;\Longleftrightarrow\;\; |\chi(\rho)| = 1 \text{ for every zero } \rho \;\;\Longleftrightarrow\;\; \mathrm{Re}(\rho) = \tfrac{1}{2} \text{ for every zero } \rho \;\;\Longleftrightarrow\;\; \mathrm{RH}. \qquad \blacksquare$$
+$$|\chi(\rho)| = 1 \text{ for every zero } \rho \;\;\Longleftrightarrow\;\; \mathrm{Re}(\rho) = \tfrac{1}{2} \text{ for every zero } \rho \;\;\Longleftrightarrow\;\; \mathrm{RH}. \qquad \blacksquare$$
+
+**Read this chain honestly.** It is a *re-encoding* of RH, not a proof of it:
+the middle step is a tautological restatement (a zero satisfies
+$|\chi(\rho)| = 1$ exactly when it sits on the line), and the last step is the
+definition of RH. No step here does any work — the chain exists to be
+transparent about *why* the $0/0$ framing carries no leverage. The original
+version of this step opened with $g \equiv 1$; that link is **deleted**, not
+merely restated, because $g \equiv |\chi|$ and $|\chi| = 1$ only on the line,
+so $g \equiv 1$ is false ($g(2) = 19.74$). An earlier draft of this document
+was read as claiming the $0/0$ "verified" RH by testing $|\chi(\rho)| = 1$ at
+zeros found on the line. That reading is **vacuous and withdrawn**: since
+$|\chi(\tfrac{1}{2} + iy)| = 1$ for *every* $y$ — zeros and non-zeros alike,
+agreeing to $1.97 \times 10^{-31}$ over ten zeros and their non-zero
+impostors — the test cannot fail, and by the repository's own ledger rule ("a
+claim with no refutation condition is not a claim") it was never a claim. See
+`experiments/chi_rho_vacuity_0_over_0.py`, which plants a non-zero and watches
+the check pass.
 
 ---
 
 ## 4. The de Bruijn-Newman reduction
 
-The proof of Step 5 establishes the equivalence $g \equiv 1 \iff \mathrm{RH}$. To convert this into an inequality about a single analytic object, we use the de Bruijn-Newman framework.
+Step 5 identifies where the open content sits: RH is the statement that every nontrivial zero fills in with value 1, and (corrected) that is what "RH" means in this $0/0$ language. To convert it into an inequality about a single analytic object, we use the de Bruijn-Newman framework.
 
 **Definition.** The de Bruijn-Newman function $H_t : \mathbb{R} \to \mathbb{R}$ is an entire function of exponential type:
 
@@ -159,7 +236,7 @@ Every item in Section 6 is a finite computation. The following two theorems show
 
 **Theorem (Skewes, 1933; Bays-Hudson, 2000).** $\pi(x) > \mathrm{Li}(x)$ occurs. Under RH, the first crossing is below $\sim 1.4 \times 10^{316}$.
 
-Both theorems guarantee that the computable range looks exactly RH-correct while the truth beyond may differ. $|M(x)| < \sqrt{x}$ holds for every $x \leq 10^{16}$ ever computed, yet it is proven false. No finite verification of $g = 1$ at finitely many points can decide whether $g \equiv 1$.
+Both theorems guarantee that the computable range looks exactly RH-correct while the truth beyond may differ. $|M(x)| < \sqrt{x}$ holds for every $x \leq 10^{16}$ ever computed, yet it is proven false. The same asymmetry applies to the bridge of this paper, and it is worth being exact about how: no finite check can decide the $0/0$ question, and in particular checking $|\chi(\rho)| = 1$ at finitely many zeros decides nothing at all, because the identity holds on the whole line rather than only at the zeros.
 
 ---
 
@@ -189,13 +266,13 @@ None of these is known. The problem is open.
 
 We have proved:
 
-1. The function $g(s) = |\zeta(s)|/|\zeta(1-s)|$ is identically 1 on the critical line (Schwarz reflection).
-2. At each zero $\rho$, $g$ has a removable singularity with value $|\chi(\rho)|$.
-3. $|\chi(\rho)| = 1$ if and only if $\mathrm{Re}(\rho) = 1/2$.
-4. Therefore $g \equiv 1$ if and only if RH.
+1. The function $g(s) = |\zeta(s)|/|\zeta(1-s)|$ equals 1 on the critical line (Schwarz reflection).
+2. At each zero $\rho$, $g$ has a removable singularity with value $|\chi(\rho)|$, and $g(s) = |\chi(s)|$ identically off the zeros.
+3. For a zero $\rho$ — necessarily with $0 < \mathrm{Re}(\rho) < 1$ — $|\chi(\rho)| = 1$ if and only if $\mathrm{Re}(\rho) = 1/2$. (Globally this fails: $|\chi(\sigma+it)|=1$ has three solutions in $\sigma$ for $t < t_*$, see Step 4.)
+4. Therefore "every nontrivial zero fills in with value 1" is equivalent to RH — a re-encoding of RH, not a proof of it.
 5. RH is equivalent to $\Lambda = 0$ (de Bruijn-Newman + Rodgers-Tao).
 
-The function is already constant where defined. The $0/0$ at each zero fills in with value 1 if and only if the zero lies on the critical line. Proving $\Lambda = 0$ fills in every singularity and completes the proof.
+The $0/0$ at each zero fills in with value 1 exactly when that zero lies on the critical line, and since every nontrivial zero has $0 < \mathrm{Re}(\rho) < 1$, the strip form of Step 4 transfers this to $\rho$ itself. But the function is **not** constant away from the line ($g \equiv |\chi|$, and $g(2) = 19.74$), and — this is the point the earlier draft obscured — filling in the $0/0$ at a zero that is *already known* to be on the line is not new information. Proving $\Lambda = 0$ would fill in every singularity, and that is the open part; nothing in Sections 1--5 does any part of it.
 
 ---
 

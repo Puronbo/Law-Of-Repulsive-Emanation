@@ -1,0 +1,89 @@
+{
+  "conclusion": "All 5 gates pass, i.e. all four obstructions are confirmed. The framework's proposed all-order positivity certificate D_n >= 0 is false at n = 0, and the natural Jensen repair is vacuous: at every degree tested it is satisfied by 1/(1+t^2/4), whose zeros are purely imaginary, so it constrains the decay profile of the coefficients while ignoring the location of the zeros. Independently, the de Bruijn flow is the index-INCREASING coefficient shift; the P\u00f3lya-Schur multiplier exp(lam z) A(z) is the index-DECREASING shift, an operation of the opposite sign with no transfer along the flow. The framework therefore reduces to the genuinely hard RH-equivalent conditions (Lambda = 0, or the correctly normalised GORZ construction) with no certificate obtained. Nothing here bears on the truth of RH.",
+  "experiment": "RH positivity certificate: falsity and repair attempt",
+  "gates": [
+    {
+      "detail": "checked against 11 polynomials with known positive-root counts; failures: none. The derivative convention is (n-j)*p[j] on descending lists and the sequence must start p, p' -- both were wrong in earlier drafts, which silently produced 'no real roots' for every input.",
+      "gate": "P1 Sturm root counting is correct",
+      "passed": true
+    },
+    {
+      "detail": "q_n = a_n a_(n+2)/a_(n+1)^2 = 2.791, 1.568, 1.328, 1.227, 1.172, 1.137 ... , all strictly above 1. q_n is scale invariant, so no rescaling of the coefficients can recover log-concavity. The proposed all-order certificate fails already at n = 0, which is a statement about the sequence, not a matter of degree.",
+      "gate": "P2 the framework's D_n >= 0 is false (sequence is log-CONvex)",
+      "passed": true
+    },
+    {
+      "detail": "the index-DECREASING shift b_n' = b_(n-1) is exactly [z^n] exp(lam z) A(z), i.e. multiplication of A(z) by the Polya-Schur multiplier exp(lam z), reproduced to 0.0e+00. The de Bruijn flow is the index-INCREASING shift a_n' = a_(n+1), satisfying the generating-function ODE d/dl A_lam = (A_lam - A_lam(0))/z; it differs from exp(lam z) A(z) by 3.46e-01, i.e. it is not a multiplication at all. A(z) = sum a_n z^n is not entire either (P4), so there is no generating-function object on which a positivity transfer could act along the flow. This is the precise algebraic obstruction, sharper than the document's integrability argument.",
+      "gate": "P3 the flow is the index-INCREASING shift, not the Polya-Schur multiplier",
+      "passed": true
+    },
+    {
+      "detail": "the coefficient ratios |a_(n+1)/a_n| = 0.8141, 0.8483, 0.8815, 0.9137 are still rising at the top of the computable range, so the ordinary generating function has a finite radius of convergence (bound 1.094) rather than being entire. Its roots are therefore an artefact of truncation and carry no information about the zeros of Xi.",
+      "gate": "P4 A(z) = sum a_n z^n is not entire",
+      "passed": true
+    },
+    {
+      "detail": "every even degree 2..40 of the Jensen transform of Xi is real-rooted (failing: none). But so is 1/(1+t^2/4) at every degree, and that function's zeros are PURELY IMAGINARY (failing: none). So the condition does not detect where the zeros are and cannot characterise RH. It is not entirely blind, though: the stretched decay (-1)^m 2^(-m^2) is rejected at degrees [32, 34, 36, 38, 40], so the condition constrains the decay profile of the coefficients while ignoring the location of the zeros. It cannot repair the certificate.",
+      "gate": "P5 the Jensen repair passes on Xi but is VACUOUS",
+      "passed": true
+    }
+  ],
+  "jensen_repair": {
+    "control_imaginary_zeros_failing_degrees": [],
+    "control_stretched_decay_failing_degrees": [
+      32,
+      34,
+      36,
+      38,
+      40
+    ],
+    "xi_failing_degrees": []
+  },
+  "ordinary_generating_function": {
+    "coefficient_ratios": [
+      "0.04621",
+      "0.128977",
+      "0.20227",
+      "0.268593",
+      "0.329501",
+      "0.386042",
+      "0.43896",
+      "0.48881",
+      "0.536016",
+      "0.580915",
+      "0.623774",
+      "0.664816",
+      "0.704225",
+      "0.742155",
+      "0.778739",
+      "0.814091",
+      "0.84831",
+      "0.881481",
+      "0.913681"
+    ],
+    "max_ratio": "0.913681",
+    "radius_bound_1_over_max_ratio": "1.09447",
+    "ratios_rising_at_top": true
+  },
+  "turan_ratios": [
+    "2.7911029",
+    "1.5682678",
+    "1.3278911",
+    "1.2267675",
+    "1.1715947",
+    "1.1370797",
+    "1.1135638",
+    "1.0965744",
+    "1.0837626",
+    "1.0737794",
+    "1.0657964",
+    "1.0592775",
+    "1.0538611",
+    "1.0492946",
+    "1.0453963",
+    "1.0420326",
+    "1.0391028",
+    "1.0365298",
+    "1.0342536"
+  ]
+}

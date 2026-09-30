@@ -43,6 +43,17 @@ asserts a result that was not produced by a real tool on real bytes.
 - It does not assert any Millennium problem is *solved*.
 - It does not assert 7/7 derivability, a Lean-kernel proof, or a mathlib
   build — none of those has a real byte-verifiable exit here.
+- It does not cover the Chi(ρ) bridge (`ζ(s)=χ(s)ζ(1−s)`, the 0/0
+  `g(s)=|ζ(s)|/|ζ(1−s)`) as a verification of the Riemann Hypothesis. The
+  removable-value identity, and the *strip* statement that `|χ(σ+it)|=1`
+  forces `σ=1/2` on `0<σ<1`, are true and byte-verified. `|χ|=1` is a
+  property of the critical *line*, so evaluating it at a critical-line zero
+  cannot distinguish that zero from a non-zero (they agree to `1.97e-31`),
+  and the "verification" reading is **vacuous**. The paper's stronger
+  *global* form `{σ : |χ(σ+it)|=1}={1/2}` is **false** — two extra roots sit
+  at `1/2±d(t)` for `t<t*`, all outside the strip. None of this is a claim
+  about RH; see `experiments/chi_rho_vacuity_0_over_0.py` and
+  `PREDICTION_LEDGER` PL-22.
 - It does not hide the 2/7 reserve or the origin-lane build block; both are
   stated here so the recall is honest by construction.
 

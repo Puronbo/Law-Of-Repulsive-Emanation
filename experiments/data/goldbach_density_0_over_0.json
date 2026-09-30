@@ -1,0 +1,38 @@
+{
+  "form": "G(N)/(S(N) N/log(N)^2)",
+  "mechanism": "Probe",
+  "point": "N -> inf, density 0/0 at the floor",
+  "removable_value": 1.0,
+  "conjecture": "strong Goldbach (OPEN)",
+  "mean_R": 1.1877372944268871,
+  "max_dev_R": 0.2960732148964067,
+  "min_G": [
+    14914,
+    275,
+    1.3205007452173612,
+    1.2895901564109535
+  ],
+  "worst_sample": 14914,
+  "band_mean_lo": 1.2275719331690018,
+  "band_mean_hi": 1.1653630333381282,
+  "spearman_S_G": 0.8894736842105263,
+  "window_n": 19,
+  "criterion_drift_beta": -0.08616842669124755,
+  "criterion_drift_r2": 0.829428209354324,
+  "criterion_decade_beta": -0.11527264507132895,
+  "criterion_decade_r2": 0.9999241411371292,
+  "per_decade_max": {
+    "10^4": 0.2960732148964067,
+    "10^5": 0.22614523773593032,
+    "10^6": 0.17412207314341077
+  },
+  "gates": {
+    "G1 density ratio trends to removable value 1 (band means)": true,
+    "G2 singular series orders the counts (Spearman, window)": true,
+    "G3 floor G(N) >= 1 held over the whole range": true,
+    "G4 criterion: |R-1| no growth, drift far below +1/2": true,
+    "G5 criterion: decade maxima of |R-1| do not grow": true
+  },
+  "overall": true,
+  "wall": "counts to 1e7 (260 random even N, log-uniform); theorem open"
+}

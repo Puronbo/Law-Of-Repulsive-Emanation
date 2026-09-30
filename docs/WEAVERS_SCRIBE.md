@@ -2089,6 +2089,18 @@ what does the repo's data say about each candidate shape?
 
 ### Ch. 5.21w  The RH reduction paper: g(s) is identically 1 iff RH (2026-08-17)
 
+> **WITHDRAWN 2026-09-28 — steps (4) and (5) below are wrong, and the
+> chapter title is wrong.** The title and step (5) are the withdrawn
+> "g ≡ 1 iff RH" claim. Step (4) is the global level-set form, which is
+> false: on the critical strip 0 < Re(s) < 1, |χ| = 1 forces Re(σ) = ½, but
+> globally |χ(σ+it)| = 1 has three roots in σ for t < 6.2898359888369, the
+> extras at ½ ± d(t), outside the strip. Steps (1)–(3) are fine as stated.
+> The decisive defect is that steps (1)–(3) hold at *non-zeros on the line
+> too* (agreement ~1.97e-31), so the whole chain cannot fail and never
+> tested RH. Kept verbatim below as a record; see
+> `docs/PREDICTION_LEDGER.md` PL-22 and
+> `experiments/chi_rho_vacuity_0_over_0.py`.
+
 The previous five 5.21 chapters (q/v) measured and asked what a proof
 needs.  Ch. 5.21w writes the paper — the complete, self-contained
 conditional proof.
@@ -2111,6 +2123,12 @@ conditional proof.
   proof.  g ≡ 1 IS the statement that Re(ρ) = ½ for all zeros — showing
   the singularity removable by a criterion OTHER than evaluating the limit
   is the open problem.  C₀ = V(q0) = H(q0,0) does not enter.
+
+  *Retrospective (2026-09-28):* the "honest wall" above was misaimed. The
+  limit *was* evaluable and gives exactly 1 — at non-zeros as well as zeros.
+  So the reduction was not blocked by needing another criterion; it had
+  already been evaluated, and the answer was uninformative. The open problem
+  is untouched by this chapter.
 
 ### Ch. 5.21x  What zero is: the complete definition and the pole/indeterminate distinction (2026-08-17)
 

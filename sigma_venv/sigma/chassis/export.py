@@ -7,7 +7,7 @@ Single JSON file capturing everything:
 - 20 currency entries with verified values
 - 30 citations with full metadata
 - E8 structure constants
-- Chi(rho) bridge verification
+- Chi(rho) bridge identity checks (does NOT verify RH — see PL-22)
 - 6 core singularities with L'Hopital values
 - Detector algorithm
 
@@ -151,10 +151,19 @@ def build_export():
         },
         
         "bridge": {
-            "property": "|chi(rho)| = 1 for all zeros",
-            "verified": True,
+            "property": "|chi(rho)| = 1 for all zeros on the critical line",
+            "identity_confirmed": True,
             "zeros_tested": 20,
             "chi_times_chi_inv": "chi(s) * chi(1-s) = 1",
+            "verifies_rh": False,
+            "why_not": (
+                "|chi(1/2+it)| = 1 for ALL t, zeros and non-zeros alike, so this "
+                "check cannot fail and cannot distinguish a zero from a non-zero "
+                "(they agree to ~1.97e-31). The usable statement is the level set: "
+                "on 0 < Re(s) < 1, |chi| = 1 forces Re(s) = 1/2, which re-encodes "
+                "RH rather than proving it. Withdrawn 2026-09-28; see "
+                "PREDICTION_LEDGER.md PL-22 and experiments/chi_rho_vacuity_0_over_0.py"
+            ),
         },
         
         "citations": citations,

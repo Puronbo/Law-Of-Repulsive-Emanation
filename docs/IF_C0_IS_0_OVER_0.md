@@ -4,6 +4,53 @@
 
 ---
 
+> ## ⚠️ CORRECTION NOTICE — 2026-09-29
+>
+> **The C₀ half of this document is falsified. Read
+> `docs/IF_C0_IS_0_OVER_0_CORRECTION.md` before using anything below.**
+>
+> The central claim — that `C₀ = V(q₀)/(N − |context|)` is a `0/0` whose
+> removable value is the average energy per remaining node — **is false. The
+> limit does not exist.** Absorbing the 10 nodes one at a time gives **9
+> distinct limits spanning 6.215407**, because the last node absorbed decides
+> the answer. That is a non-removable singularity.
+>
+> Consequently these sections are **withdrawn**:
+> - **§1, §2, §8, §9** — the `0/0` framing and "the removable value is the
+>   average energy per non-context node". The limit does not exist.
+> - **§3, §4, §5** — every uniqueness claim built on it ("the removable value is
+>   unique", "invariant under rotations, translations, re-indexings", "all local
+>   removable values are the same number"). A `0.01` coordinate edit moves the
+>   value, and re-indexing alone gives 768 distinct values over 1024 contexts.
+> - **§8, §9** — the identification of `24.434792` with any limit or average. It
+>   is a raw unnormalised sum; the document's own average is `3.054349`, and the
+>   real limits span `[0.034593, 6.250000]`.
+> - **§6** — withdrawn for a separate reason: the prime-counting formula is
+>   wrong. The correct explicit formula is for the Chebyshev function,
+>   `ψ(x) = x − Σ_ρ x^ρ/ρ − log(2π) − ½log(1−x⁻²)`, and `π(x)` comes from `ψ` by
+>   Möbius inversion, not by a sum of `Li(x^ρ)`.
+>
+> **The zeta half of this document is sound and is kept.** `ζ(s)/ζ(1−s)` *is*
+> genuinely removable at a zero, with limit `χ(ρ)` independent of approach
+> direction (deviation `8.1e-09` at `eps = 1e-8`), and `|χ(ρ)| = 1` iff
+> `Re(ρ) = ½` on the strip. What does **not** follow is RH: `|χ| = 1` is a
+> property of the whole line, holding at a non-zero impostor to `1e-41`, so it
+> certifies nothing (PL-22, gate C; the "⟺ RH" reading was withdrawn
+> 2026-09-28).
+>
+> **The asymmetry runs opposite to the document's framing.** The zeta `0/0` has
+> the unique removable value that the C₀ `0/0` lacks. The analogy fails because
+> the C₀ side is path-dependent — not because the zeta side is uninformative.
+>
+> Also false: the origin is not a zero. `V(q₀) = 26.433272` is the near-maximum
+> of `V`, while the zero set is `{q : d(q,x) ≥ 2.5 ∀x}` (star-shaped, ~86% of the
+> disk) on which `C₀ ≡ 0`.
+>
+> Evidence: `experiments/c0_zero_locus.py` (6/6), `experiments/c0_at_zeros.py`
+> (5/5), `experiments/chi_rho_vacuity_0_over_0.py` (PL-22).
+
+---
+
 ## 1. The statement
 
 C₀ = V(q₀) = H(q₀, 0). The energy at the starting configuration. Measured, not chosen.

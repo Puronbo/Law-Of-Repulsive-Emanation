@@ -1,0 +1,36 @@
+{
+  "form": "Phi(x)/x^2, Phi(x) = sum_{k<=x} phi(k)",
+  "mechanism": "Vanishing Rate",
+  "point": "x -> infinity",
+  "removable_value": 0.3039635509270133,
+  "constant": "3/pi^2 = 0.30396355092701333...",
+  "conjecture": "Phi(x) = (3/pi^2) x^2 + O(x log x) (Dirichlet 1849, proved); Montgomery: the error oscillates (Omega_- type sign changes) yet the ratio provably collapses as O(log x / x)",
+  "Phi_at_powers_of_10": {
+    "2": 3044,
+    "3": 304192,
+    "4": 30397486,
+    "5": 3039650754,
+    "6": 303963552392,
+    "7": 30396356427242
+  },
+  "decade_max_ratio": {
+    "2": 0.005438014597774132,
+    "3": 0.0005722372229270576,
+    "4": 6.129808463799825e-05,
+    "5": 6.1882784760164e-06,
+    "6": 6.440030730541534e-07,
+    "7": 1.3345406640625e-08
+  },
+  "ratio_beta": -1.196902718820531,
+  "ratio_r2": 0.9803300631494266,
+  "max_E_over_xlogx": 0.06825963762118896,
+  "gates": {
+    "G1 totient identity sum_{d|n} phi(d) = n": true,
+    "G2 phi(10^d) = 4*10^(d-1) (d=1..6)": true,
+    "G3 removable value 3/pi^2 (Dirichlet, cited)": true,
+    "G4 ratio decay sign (beta < -0.6, removable)": true,
+    "G5 |E(x)|/(x log x) consistent with O(x log x)": true
+  },
+  "overall": true,
+  "wall": "exact Phi(x) to 1e7; the definitive verification is the decay sign (provably negative slope, O(log x / x) collapse); contrasted with the anti quartet whose ratio floors above zero"
+}

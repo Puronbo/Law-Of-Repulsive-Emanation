@@ -1,0 +1,87 @@
+{
+  "probe": "atlas #74: Chebyshev walk psi(x)-x over sqrt(x) to 1e8",
+  "form": "max |psi(x)-x|/sqrt(x) per band; psi = sum_{p^k<=x} log p",
+  "psi_at_powers_of_10": {
+    "1": {
+      "psi": 7.832014180505469,
+      "delta": -2.1679858194945307
+    },
+    "2": {
+      "psi": 94.0453112293574,
+      "delta": -5.954688770642605
+    },
+    "3": {
+      "psi": 996.6809122471755,
+      "delta": -3.3190877528245437
+    },
+    "4": {
+      "psi": 10013.396693263108,
+      "delta": 13.396693263108316
+    },
+    "5": {
+      "psi": 100051.56402565801,
+      "delta": 51.56402565800818
+    },
+    "6": {
+      "psi": 999586.5974956311,
+      "delta": -413.402504368918
+    },
+    "7": {
+      "psi": 9998539.403345894,
+      "delta": -1460.5966541059315
+    },
+    "8": {
+      "psi": 99998242.7966194,
+      "delta": -1757.203380599618
+    }
+  },
+  "band_max_ratio": {
+    "0": 0.9240844906388214,
+    "1": 0.6279985021686696,
+    "2": 0.5065563596961873,
+    "3": 0.6107638090932987,
+    "4": 0.7101614715833923,
+    "5": 0.6881737657321585,
+    "6": 0.6754833517073506,
+    "7": 0.7480347108145801
+  },
+  "suppmax_ratio": 0.7480347108145801,
+  "suppmax_x": 36917099,
+  "records": 28,
+  "last_record_x": 36917099,
+  "signs_per_band": {
+    "2": [
+      -1,
+      1
+    ],
+    "3": [
+      -1,
+      1
+    ],
+    "4": [
+      -1,
+      1
+    ],
+    "5": [
+      -1,
+      1
+    ],
+    "6": [
+      -1,
+      1
+    ],
+    "7": [
+      -1,
+      1
+    ]
+  },
+  "gates": {
+    "G1 exact (lcm identity 1..40 + landmarks)": true,
+    "G2 cited (M-V 15.11: Omega_+-(x^1/2), no limit)": true,
+    "G3 live-walk non-collapse census (bands hold through wall)": true,
+    "G4 sign oscillation in every band (Omega_+-)": true,
+    "G5 theorem-not-range arbiter (sup < 1.27)": true
+  },
+  "overall": true,
+  "wall": "exact psi to 1e8 via prime-power breakpoints; class ANTI by M-V Thm 15.11 (psi-x = Omega_+-(x^1/2), unconditional); the finite band below the sqrt-n scale is the point: theorem, not range, arbitrates"
+}

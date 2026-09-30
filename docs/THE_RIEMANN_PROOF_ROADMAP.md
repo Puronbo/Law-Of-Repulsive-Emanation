@@ -151,6 +151,16 @@ Construct H = xp (position times momentum) and show:
 2. The eigenvalues of H are the zeros gamma_n
 3. Therefore gamma_n are real -> RH
 
+> **Gap flagged 2026-09-28 (separate from the Chi(rho) withdrawal):** step 3
+> holds only if a self-adjoint operator with those eigenvalues can actually be
+> constructed — the operator is defined on a bounded interval, so it is not
+> self-adjoint in the sense needed (essential self-adjointness fails, a
+> deficiency index of 1), and no such H is known. Without H, the zero-sum rule
+> ζ(0) = −½ cannot be converted into the eigenvalue identification, so step 2 is
+> an assumption rather than a result. This is the Berry–Keating construction,
+> not a proof, and it fails for a different reason than the Chi(rho) probe in
+> `docs/PREDICTION_LEDGER.md` PL-22. No claim here is verified.
+
 The 0/0 connection: the functional equation creates the
 self-duality that forces H = H*.
 

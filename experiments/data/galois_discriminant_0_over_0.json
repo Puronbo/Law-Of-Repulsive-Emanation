@@ -1,0 +1,22 @@
+{
+  "form": "Disc(f_t)/t^{m-1} at t=0 (0/0)",
+  "mechanism": "Vanishing Rate",
+  "double_root": {
+    "valuation": 1,
+    "leading_C": "-32",
+    "verified": true
+  },
+  "triple_root": {
+    "valuation": 2,
+    "leading_C": "-27",
+    "verified": true
+  },
+  "gates": {
+    "G1 double-root rate m-1 = 1 (valuation)": true,
+    "G2 triple-root rate m-1 = 2 (valuation)": true,
+    "G3 leading C matches closed form (double)": true,
+    "G4 leading C matches closed form (triple)": true
+  },
+  "overall": true,
+  "wall": "exact rational interpolation on two families"
+}

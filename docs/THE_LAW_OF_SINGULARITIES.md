@@ -147,15 +147,17 @@ Let h = f/g be a singularity probe with h = c on Omega \ Z. Then:
 
 ### Corollary 4.1 (The RH probe)
 
-g(s) = |zeta(s)| / |zeta(1 - s)| is a singularity probe on the critical strip. The probe value at each zero rho is |chi(rho)|. Therefore:
+g(s) = |zeta(s)| / |zeta(1 - s)| is a singularity probe on the critical strip. The probe value at each zero rho is |chi(rho)|, and on the strip |chi(rho)| = 1 iff Re(rho) = 1/2. Therefore:
 
-g = 1 (after removal) iff |chi(rho)| = 1 for every zero rho iff Re(rho) = 1/2 for every zero rho iff RH.
+every zero fills in with value 1 iff Re(rho) = 1/2 for every zero rho iff RH.
 
-*Proof.* On the critical line, Schwarz reflection gives zeta(1/2 - it) = conjugate(zeta(1/2 + it)), so |zeta(1/2 + it)| = |zeta(1/2 - it)| and g = 1. At each zero rho, the probe value is |chi(rho)| by the functional equation zeta(s) = chi(s)zeta(1 - s). By the explicit formula |chi(sigma + it)| = pi^{sigma - 1/2} |Gamma((1-s)/2)| / |Gamma(s/2)|, we have |chi| = 1 iff sigma = 1/2.
+*Proof.* On the critical line, Schwarz reflection gives zeta(1/2 - it) = conjugate(zeta(1/2 + it)), so |zeta(1/2 + it)| = |zeta(1/2 - it)| and g = 1. At each zero rho, the probe value is |chi(rho)| by the functional equation zeta(s) = chi(s)zeta(1 - s). By the explicit formula |chi(sigma + it)| = pi^{sigma - 1/2} |Gamma((1-s)/2)| / |Gamma(s/2)|, on 0 < sigma < 1 we have |chi| = 1 iff sigma = 1/2 (measured over 12 heights, gate 3 of `experiments/chi_rho_vacuity_0_over_0.py`; the global form fails, with two extra roots at 1/2 +- d(t) for t < t* = 6.2898359888369, all outside the strip).
+
+**Correction 2026-09-28.** This corollary originally read "g = 1 (after removal) iff ... iff RH", and the original proof asserted the global form of the level set with a monotonicity lemma. Both are withdrawn: `g = 1 (after removal)` is false, since g = |chi(s)| identically off the zeros and |chi| = 1 only on the line (g(2) = 19.74), and the level set is not globally {1/2}. More importantly the surviving chain is a **re-encoding of RH, not a verification of it**: |chi(1/2 + iy)| = 1 for *every* y, zeros and non-zeros alike (agreeing to 1.97e-31 over ten zeros and their non-zero impostors), so evaluating the probe at zeros already known to lie on the line cannot fail and decides nothing. See `PREDICTION_LEDGER` PL-22 and `docs/AUDIT.md` §2 item 8.
 
 ### Corollary 4.2 (The GRH probe)
 
-For a Dirichlet character chi, g_chi(s) = |L(s, chi)| / |L(1 - s, conjugate(chi)| is a singularity probe. The probe value at each zero rho is |epsilon(chi)| = 1 (the root number). Therefore g_chi = 1 unconditionally, and GRH follows by the same argument.
+**Correction 2026-09-28 — this corollary is withdrawn as a proof of GRH.** For a Dirichlet character chi the probe value at a zero rho is |epsilon(chi)|, the *root number*, which is a constant of the L-function independent of s: for real (quadratic) characters it is identically +1, whether or not GRH holds. So "g_chi = 1 unconditionally" is a tautology about a constant, and "GRH follows by the same argument" does not follow — the argument is exactly the vacuity identified in Corollary 4.1, in its purest form: a value that carries no information about where the zeros are. GRH remains open. The L-functions themselves are legitimate 0/0 probes; what is withdrawn is the inference from a constant root number.
 
 ---
 
@@ -379,7 +381,7 @@ The 0/0 form arises in every major branch of mathematics:
 (h) Algebra: 2 experiments (Pythagorean theorem, golden ratio recurrence)
 (i) Dynamical systems: 1 experiment (Poincare recurrence)
 
-**Total: 100 experiments across 9 branches. All verified. All SUPPORTED.**
+**Total: 100 experiments across 9 branches. 98 verified / SUPPORTED; #1 (Riemann zeta) and #2 (GRH Dirichlet) carry a verified *identity* but a WITHDRAWN *inference* (2026-09-28 — the probe value is constant along the critical line, so it cannot decide where the zeros are).**
 
 ### Conjecture 11.1 (No branch is exempt)
 
@@ -428,16 +430,16 @@ The 0/0 form can discover new theorems:
 **0/0:** |zeta(s)| / |zeta(1-s)| at each zero rho
 **Removable value:** |chi(rho)|, where chi is the completed factor
 **Mechanism:** Probe
-**Theorem:** g = 1 iff RH (Theorem 4.1, Corollary 4.1)
-**Status:** SUPPORTED (22,491 zeros verified)
+**Theorem:** every zero fills in with value 1 iff RH (Theorem 4.1, Corollary 4.1) — a re-encoding of RH, **not** a verification
+**Status:** IDENTITY VERIFIED (g = |chi| identically; removable value 1). The RH reading is **VACUOUS and withdrawn 2026-09-28**: the identity holds along the whole critical line, so the 22,491-zero check has no discriminating power (`chi_rho_vacuity_0_over_0.py`, PL-22)
 
 ### 13.2 GRH Dirichlet (Experiment #2)
 
 **0/0:** |L(s, chi)| / |L(1-s, conjugate(chi))| at zeros
-**Removable value:** |epsilon(chi)| = 1
+**Removable value:** |epsilon(chi)| — the root number, a constant
 **Mechanism:** Probe
 **Theorem:** g_chi = 1 unconditionally (Corollary 4.2)
-**Status:** SUPPORTED
+**Status:** WITHDRAWN as a GRH proof 2026-09-28 — |epsilon(chi)| = 1 is a constant, true for real characters whether or not GRH holds, so the inference to GRH is the same vacuity as §13.1. GRH remains open.
 
 ### 13.3 BSD (Experiment #3)
 
@@ -909,7 +911,7 @@ Already listed under Physics.
 
 *The five mechanisms (Probe, Index, Vanishing Rate, Critical Phenomenon, Conservation) are exhaustive and mutually exclusive. The removable value is always unique, always computable (in principle), and always the theorem.*
 
-*This is not a metaphor. It is a mathematical fact, verified in 100 experiments across 9 branches of mathematics, with 690 regression tests passing.*
+*This is not a metaphor. It is a mathematical fact, verified in 98 of 100 experiments across 9 branches of mathematics (the 2 exclusions are withdrawn *inferences* over verified identities, not failed experiments), with 690 regression tests passing.*
 
 ### Corollary 19.1 (The 0/0 is the deepest expression)
 
@@ -951,8 +953,8 @@ All experiments are implemented in `experiments/` with data in `data/`. Regressi
 
 | # | Experiment | Mechanism | Removable Value | Status |
 |---|-----------|-----------|----------------|--------|
-| 1 | Riemann zeta | Probe | |chi(rho)| = 1 iff RH | SUPPORTED |
-| 2 | GRH Dirichlet | Probe | |epsilon(chi)| = 1 | SUPPORTED |
+| 1 | Riemann zeta | Probe | \|chi(rho)\| = 1 (identity verified; the "iff RH" reading VACUOUS, withdrawn 2026-09-28) | IDENTITY VERIFIED / RH READING VACUOUS |
+| 2 | GRH Dirichlet | Probe | \|epsilon(chi)\| = 1 (a constant; inference to GRH withdrawn 2026-09-28) | WITHDRAWN |
 | 3 | BSD | Probe | Leading coefficient a_r | SUPPORTED |
 | 4 | abc conjecture | Vanishing Rate | 1 | SUPPORTED |
 | 5 | Fermat little | Vanishing Rate | p - 1 | SUPPORTED |
@@ -1052,7 +1054,7 @@ All experiments are implemented in `experiments/` with data in `data/`. Regressi
 | 99 | Newton quadratic rate | Vanishing Rate | 1/(2 sqrt 2) | SUPPORTED |
 | 100 | Golden ratio recurrence | Index | phi (Binet closed form) | SUPPORTED |
 
-**100/100 SUPPORTED. 690/690 tests passing.**
+**98/100 SUPPORTED, 2 WITHDRAWN (#1, #2 — verified identity, invalid inference; see 13.1/13.2). 690/690 tests passing.**
 
 ---
 

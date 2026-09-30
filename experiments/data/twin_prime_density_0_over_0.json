@@ -1,0 +1,46 @@
+{
+  "form": "pi_2(x)/(2*C_2*x/log(x)^2)",
+  "mechanism": "Vanishing Rate",
+  "point": "x -> inf (density 0/0)",
+  "removable_value": 1.0,
+  "conjecture": "Hardy-Littlewood twin-prime (OPEN)",
+  "C2_computed": 0.6601623454667302,
+  "two_C2_computed": 1.3203246909334605,
+  "rows": [
+    {
+      "x": 1000000,
+      "pi2": 8169,
+      "R": 0.9904174800191238
+    },
+    {
+      "x": 5000000,
+      "pi2": 32463,
+      "R": 1.0039758643751222
+    },
+    {
+      "x": 20000000,
+      "pi2": 107407,
+      "R": 1.001502984085898
+    },
+    {
+      "x": 100000000,
+      "pi2": 440312,
+      "R": 0.9998723990869899
+    }
+  ],
+  "criterion_decay_beta": -0.316042012420121,
+  "criterion_decay_r2": 0.9999958626786882,
+  "per_decade_max": {
+    "10^5": 0.019788291900399213,
+    "10^6": 0.009582519980876225,
+    "10^7": 0.004616621643118046
+  },
+  "gates": {
+    "G1 R(x) approaches 1 at the top of the range": true,
+    "G2 R stays in the H-L band across the range": true,
+    "G3 in-code 2*C_2 matches literature (target derived, not cited)": true,
+    "G4 criterion: per-decade max |R-1| decays (beta < -0.2)": true
+  },
+  "overall": true,
+  "wall": "counts to 1e8; asymptotic slow"
+}

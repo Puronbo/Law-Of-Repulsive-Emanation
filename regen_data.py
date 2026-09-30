@@ -50,6 +50,11 @@ import sys
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(ROOT, "data")
 MANIFEST = os.path.join(DATA, "DATA_MANIFEST.json")
+# Experiment scripts also emit artifacts, under experiments/data/. Those are
+# declared in the manifest like any other, so resolution has to look here too
+# or a test that reads an experiment artifact is reported as unsourced.
+EXP_DATA = os.path.join(ROOT, "experiments", "data")
+DATA_ROOTS = (DATA, EXP_DATA)
 
 SKIP_DIRS = re.compile(
     r"sigma_venv|site-packages|archive|\.git\\|node_modules|__pycache__|\\data\\"
@@ -121,15 +126,25 @@ def manifest_tracked():
     return set(payload.get("tracked") or [])
 
 
+def find_data(name):
+    """Absolute path of an artifact in any data root, or None."""
+    for root in DATA_ROOTS:
+        cand = os.path.join(root, name)
+        if os.path.exists(cand):
+            return cand
+    return None
+
+
 def classify(amap=None, tracked=None):
     """Partition on-disk artifacts into the three persistence buckets."""
     amap = build_map() if amap is None else amap
     tracked = tracked_files() if tracked is None else tracked
-    on_disk = sorted(
-        f for f in os.listdir(DATA) if f.endswith(".json")
-    ) if os.path.isdir(DATA) else []
+    names = set()
+    for root in DATA_ROOTS:
+        if os.path.isdir(root):
+            names.update(f for f in os.listdir(root) if f.endswith(".json"))
     buckets = {"tracked": [], "recreatable": [], "unreproducible": []}
-    for name in on_disk:
+    for name in sorted(names):
         if name in tracked:
             buckets["tracked"].append(name)
         elif amap.get(name):
@@ -160,7 +175,7 @@ def report(buckets, refs=None, amap=None):
         # earlier version missed these entirely, because classify() only
         # buckets files present on disk - so HT-RUN-001.json was invisible.
         ref_absent = [n for n in refset
-                      if not os.path.exists(os.path.join(DATA, n))]
+                      if not find_data(n)]
         ref_absent_lost = [n for n in ref_absent if not amap.get(n)]
         print("  load-bearing for the test suite (referenced by tests/*.py):")
         print("    total referenced              : %d" % len(refset))
@@ -230,7 +245,7 @@ def regenerate(pattern, amap, missing_only=False, only=None):
     if only is not None:
         targets = [n for n in targets if n in only]
     if missing_only:
-        targets = [n for n in targets if not os.path.exists(os.path.join(DATA, n))]
+        targets = [n for n in targets if not find_data(n)]
     if not targets:
         print("no artifact matches %r" % pattern)
         return 1

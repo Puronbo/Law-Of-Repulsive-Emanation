@@ -1,0 +1,149 @@
+{
+  "claims": [
+    {
+      "agrees": true,
+      "claim": "w=u^2:  Im(w) = 2*a*gamma, so RH <=> w on negative real axis",
+      "detail": "u=a+ig -> w=a^2-g^2+2ia g; Im w = 1.045620 = 2ag. For g!=0, Im(w)=0 <=> a=0, and then w=-g^2<0. Correct reformulation.",
+      "section": "3"
+    },
+    {
+      "agrees": true,
+      "claim": "H'/H = sum Q_n/(1+Q_n z) = P_1 - P_2 z + P_3 z^2 - ...",
+      "detail": "exact 1.497906783651 vs 4-term P-series 1.497906755428, residual 2.8e-08 -- pure truncation at z=0.013. Newton identities then link e_k to P_k. OK.",
+      "section": "6"
+    },
+    {
+      "agrees": false,
+      "claim": "xi'/xi = zeta'/zeta + 1/s + 1/(s-1) - log(pi)/2 - Gamma'/2Gamma",
+      "detail": "DISAGREES. d/ds log Gamma(s/2) = +1/2 Gamma'/Gamma, so the gamma term is POSITIVE; the document writes it negative. Residual with the document's sign 1.724e+00, with the corrected sign 5.0e-42. The sign error propagates into the sec 9 'prime data + archimedean data <-> zero data' identity.",
+      "section": "9"
+    },
+    {
+      "agrees": true,
+      "claim": "Hadamard: xi'/xi = B + sum_rho (1/(s-rho) + 1/rho); sum 1/rho finite",
+      "detail": "sum_rho 1/rho = log(2 sqrt(pi)) - 1 - gamma_E/2 = -0.0230957090, finite, so the +1/rho regularisation is legitimate. OK.",
+      "section": "9"
+    },
+    {
+      "agrees": true,
+      "claim": "a_n' = a_(n+1)  (coefficient shift under the deformation)",
+      "detail": "central-difference error 9.66e-07 -> 2.42e-07 -> 6.04e-08 as the step halves, ratios 4.00 and 4.00 (O(h^2) theory: 4). The 4x collapse confirms the derivative is exactly a_(n+1).",
+      "section": "10"
+    },
+    {
+      "agrees": true,
+      "claim": "d_lambda Xi_lam = -d_t^2 Xi_lam",
+      "detail": "residual 1.42e-16 relative at t=1.1. This is the heat equation that makes the whole framework work.",
+      "section": "10"
+    },
+    {
+      "agrees": true,
+      "claim": "RH <=> Lambda = 0, with Rodgers-Tao Lambda >= 0",
+      "detail": "recorded as a theorem, not numerically verified: a truncation test is meaningless here. At lambda=0 the degree-16 truncation already has roots off the real axis by 283 in y=t^2 (only 6 of 9 roots real-positive), because the low-order Xi truncations are not real-rooted. What IS verifiable, and verified above, is the mechanism the reduction rests on: a_n' = a_(n+1) and d_lambda Xi = -d_t^2 Xi. Rodgers-Tao (2018) gives Lambda >= 0; RH is exactly Lambda <= 0; hence RH <=> Lambda = 0.",
+      "section": "10"
+    },
+    {
+      "agrees": true,
+      "claim": "sum x_n conserved, and d/dlambda sum x_n^2 = 2N(N-1)",
+      "detail": "sum x drift 2.2e-16; sum x^2 derivative predicted 264.0, measured 264.0145 (relative error 5.5e-05, consistent with the 1e-6 step). Both conservation laws check out.",
+      "section": "14"
+    },
+    {
+      "agrees": true,
+      "claim": "E' = -sum_n (x_n')^2 <= 0  (gradient descent)",
+      "detail": "E: 76.042660 -> 76.028186, decreasing as the identity requires. Forward flow IS gradient descent of log-interaction energy.",
+      "section": "14"
+    },
+    {
+      "agrees": true,
+      "claim": "PF(lam0) => PF(lam>lam0) is one-way; the converse fails",
+      "detail": "confirmed structurally, and this is the cleanest form of the obstruction. With Phi(u) ~ e^(-u^2/2) the integrand is e^((lam-1/2)u^2), so at lam=0.4 the integral over [0,40] is 2.802e+00 (converges) while at lam=0.6 it reaches 3.849e+68 (diverges). The flow is defined only on lam in [0,1/2): a half-line, hence non-invertible, so hyperbolicity cannot be pulled back to the boundary. And Lambda is DEFINED as inf{lam >= 0 : Xi_lam real-rooted} -- a lower endpoint of the hyperbolic set. Forward propagation can only show the set is upward closed, never that its lower endpoint is 0. Since RH is exactly the assertion Lambda = 0, no forward-stability argument can reach it. The document names this correctly as the backward obstruction, and it is the central open step.",
+      "section": "11"
+    },
+    {
+      "agrees": false,
+      "claim": "D_n = a_(n+1)^2 - a_n a_(n+2) >= 0  (quadratic Jensen)",
+      "detail": "DISAGREES for the true coefficients: q_n = a_n a_(n+2)/a_(n+1)^2 is 2.7911, 1.5683, 1.3279, 1.2268, 1.1716, 1.1371, 1.1136, 1.0966, 1.0838 for n=0..8 -- all ABOVE 1, i.e. the sequence is strictly LOG-CONVEX, not log-concave. The degree-4 truncation is not real-rooted (discriminant (a_1/2)^2 - a_0a_2/6 < 0). Normalisation cannot rescue it: rescaling all a_n leaves q_n invariant. The inequality belongs to Jensen HYPERBOLICITY of a polynomial, which the low-order truncations of Xi do not have; if the document means Jensen POLYNOMIALS in the Griffin-Ono-Rolen-Zagier sense that is a different construction and should be stated.",
+      "section": "7"
+    },
+    {
+      "agrees": true,
+      "claim": "q=0.9, r=0.5 refutes 'degree 2 implies degree 3'",
+      "detail": "q^2r^2-6qr+4q+4r-3 = 0.1025 > 0, so (q<1, r<1) is genuinely insufficient. The refutation stands.",
+      "section": "7"
+    },
+    {
+      "agrees": true,
+      "claim": "q^2r^2-6qr+4q+4r-3 <= 0 is the degree-3 hyperbolicity test",
+      "detail": "516 random all-real-rooted cubics tested (roots centred, scale 2), 0 violate the inequality. The criterion is correct; note the real-rooted regime forces q = e2/e1^2 <= 1/3, far stricter than q < 1 (max q seen 0.333).",
+      "section": "7"
+    },
+    {
+      "agrees": false,
+      "claim": "D_n = a_n^2 (1 - r_(n-1) r_n),  boundary r_(n-1) r_n = 1",
+      "detail": "DISAGREES. Max relative mismatch 106.15. Since r_(n-1)r_n = a_(n+1)/a_(n-1), that product simply does not occur in D_n = a_(n+1)^2 - a_n a_(n+2). The correct identity is D_n = a_n^2 r_n (r_n - r_(n+1)), verified to 6.7e-41, so the quadratic boundary is r_n = r_(n+1) (monotone ratios), not r_(n-1)r_n = 1. The sign of r_n' <= 0 is still right, so the flow direction survives.",
+      "section": "12"
+    },
+    {
+      "agrees": true,
+      "claim": "Newton: e_(k-1) e_(k+1) / e_k^2 <= k/(k+1)  (under RH)",
+      "detail": "holds numerically for k=2..7: k=2: 0.627307 <= 0.6667, k=3: 0.711370 <= 0.7500, k=4: 0.763322 <= 0.8000, k=5: 0.798815 <= 0.8333, k=6: 0.824695 <= 0.8571, k=7: 0.844453 <= 0.8750",
+      "section": "13"
+    },
+    {
+      "agrees": false,
+      "claim": "=> a_(k-1)a_(k+1)/a_k^2 <= (2k+1)/(2k+2), margin >= 1/(2k+2)",
+      "detail": "DISAGREES, twice over. (i) Translating Newton through e_k = (-1)^k a_k/((2k)! Xi(0)) gives a_(k-1)a_(k+1)/a_k^2 <= (2k+1)/(2k-1), which EXCEEDS 1 and is therefore nearly vacuous -- the naive Newton route yields no curvature margin at all. (ii) The document's stated bound (2k+1)/(2k+2) < 1 is directly contradicted by the true coefficients, which give k=2: 1.5683, k=3: 1.3279, k=4: 1.2268, k=5: 1.1716, k=6: 1.1371, k=7: 1.1136 -- all above 1. This matters most because sec 13 presents this margin as the quantitative curvature the whole approach was reaching for. Its loss is a real setback, not a typo.",
+      "section": "13"
+    },
+    {
+      "agrees": true,
+      "claim": "generic positive kernels cannot reach the required ~3/(2n) bound",
+      "detail": "the required bound Var_n(u^2)/E_n(u^2)^2 <= (6n+8)/(2n+2)^2 decays like 3/(2n). Generic concentration DOES decay at the right order (0.714, 0.157, 0.032 for n=(5, 25, 125), i.e. ~1/n), so the document's 'order 2/n' heuristic is essentially right. But the constant is wrong: generic exceeds the requirement by a factor 2.71, 2.68, 2.67 -- remarkably stable. The sec 8 conclusion therefore still holds, for a sharper reason than the text gives: it is a constant-factor deficit, not an order-of-growth failure. Any successful kernel must beat the generic constant by a factor ~2.7 at every n, uniformly in n, which is why 'just a positive kernel' is not enough.",
+      "section": "8"
+    },
+    {
+      "agrees": true,
+      "claim": "the sec 17 list of insufficient shortcuts is correct",
+      "detail": "confirmed: (a) positive kernel alone fails the 1/n bound (above); (b) Hankel != Toeplitz is a structural fact, the two live in different orders of the same moments; (c) evenness Xi(-t)=Xi(t) is automatic and constrains nothing further; (d) degree-2 vs degree-3 refuted by the q=0.9, r=0.5 example; (e) finite-order != all-order is the PF_infty statement itself; (f) forward != backward stability demonstrated in group B. The refutations are the most valuable part of the document: they correctly fence off the standard dead ends, including the two most tempting ones (theta symmetry and Hankel positivity).",
+      "section": "17"
+    },
+    {
+      "agrees": true,
+      "claim": "mean spacing ~ 2 pi / log(T/2 pi)",
+      "detail": "at T=1e6 the mean spacing is 0.5246, so absolute height grows while average local spacing shrinks. Consistent with N(T) ~ T/2pi log(T/2pi) - T/2pi.",
+      "section": "5"
+    },
+    {
+      "agrees": true,
+      "claim": "L_n = g_n^2 G_n < 4 holds at most real zeta gaps",
+      "detail": "36 of 38 consecutive real gaps satisfy L_n < 4 (95%), so the local separation criterion is GENERICALLY true. That is precisely why the document insists local gap conditions are not a global RH proof -- and it is the correct diagnosis.",
+      "section": "15"
+    }
+  ],
+  "experiment": "audit of zero_to_riemann_zeta_complete_framework",
+  "summary": {
+    "agree": 16,
+    "checked": 20,
+    "disagree": 4,
+    "disagreements": [
+      {
+        "claim": "xi'/xi = zeta'/zeta + 1/s + 1/(s-1) - log(pi)/2 - Gamma'/2Gamma",
+        "section": "9"
+      },
+      {
+        "claim": "D_n = a_(n+1)^2 - a_n a_(n+2) >= 0  (quadratic Jensen)",
+        "section": "7"
+      },
+      {
+        "claim": "D_n = a_n^2 (1 - r_(n-1) r_n),  boundary r_(n-1) r_n = 1",
+        "section": "12"
+      },
+      {
+        "claim": "=> a_(k-1)a_(k+1)/a_k^2 <= (2k+1)/(2k+2), margin >= 1/(2k+2)",
+        "section": "13"
+      }
+    ]
+  },
+  "verdict": "The framework is serious and its spine is correct. Verified: RH <=> Lambda = 0 together with Rodgers-Tao, the coefficient shift a_n' = a_(n+1) (central-difference error collapsing by exactly 4x per halved step), the heat equation behind the deformation (residual 1e-16), both sec 14 conservation laws, the Hadamard product, the sec 6 log-derivative, the sec 3 w=u^2 reformulation, the sec 14 gradient-descent picture, the sec 5 spacing, the sec 15 local-gap statistics, the sec 7 cubic counterexample, and every shortcut refutation in sec 17. Four problems, and two of them are load-bearing. (1) sec 9 sign error: the gamma term in xi'/xi is +1/2 Gamma'/Gamma, not minus; this propagates into the sec 9 'prime data + archimedean data <-> zero data' identity. (2) sec 12 states a wrong identity: D_n = a_n^2 r_n (r_n - r_(n+1)) to 7e-41, so the quadratic boundary is r_n = r_(n+1) (monotone ratios), not r_(n-1) r_n = 1. The sign of r_n' <= 0 survives, so the flow direction is unaffected. (3) sec 7's D_n >= 0 does NOT hold for the actual Xi coefficients: q_n = a_n a_(n+2)/a_(n+1)^2 runs 2.7911, 1.5683, 1.3279, 1.2268, ... all strictly ABOVE 1, so the sequence is strictly log-convex, not log-concave, and the degree-4 truncation is not real-rooted. No rescaling can fix this since q_n is scale-invariant. Taken literally this is false as stated; if Jensen POLYNOMIALS in the Griffin-Ono-Rolen-Zagier sense are meant, that is a different construction and must be stated. It also means no truncation-level hyperbolicity test is valid for Xi, which is why the Newman-boundary step is a cited theorem rather than a numerical check here. (4) sec 13's Newton translation fails in the direction that matters: it yields (2k+1)/(2k-1) > 1, nearly vacuous, not the advertised 1/(2k+2) margin, and the true coefficients violate the stated bound outright. Together (3) and (4) remove the quantitative curvature margin the argument was reaching for -- that is a real setback, not a typo. Refinement of sec 8: generic kernels do decay at the right 1/n order, but exceed the requirement by a stable factor ~2.7, so the conclusion holds as a constant-factor deficit rather than the order-of-growth failure the text implies. The document's own bottom line -- no proof, with the backward obstruction to lambda=0 named precisely -- is honest and correct, and the integrability argument exp(lam u^2) shows that obstruction is structural, not merely technical."
+}

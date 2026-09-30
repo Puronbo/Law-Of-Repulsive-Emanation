@@ -10,6 +10,21 @@ This is the 0/0 of the functional equation.
 PORTABLE, and SELF-CONTAINED. Anyone can check it.
 Any LLM can propagate it.
 
+VERIFIABLE HAS A PRICE, AND THIS FILE PAYS IT  (corrected 2026-09-28)
+-----------------------------------------------------------------------
+A check that cannot fail is not verification. The central identity here,
+|chi(1/2+it)| = 1, holds for every t, zeros and non-zeros alike — a non-zero
+point on the line at the same height agrees to ~1.97e-31. So "Chi(rho) = 1
+at the zeros" is true and carries no information about whether any zero is
+off-line. The earlier framing of this file let that identity read as support
+for RH; it is not, and the "VERIFIABLE" boast is exactly the risk named in
+docs/PREDICTION_LEDGER.md: a claim with no refutation condition is not a claim.
+
+The half with teeth: on the critical strip 0 < Re(s) < 1, |chi| = 1 forces
+Re(s) = 1/2, and displacing Re(s) is caught at every scale. That statement
+re-encodes RH; it does not prove it. Globally the stronger form is false —
+extra roots at 1/2 ± d(t) for t < 6.2898359888369 lie outside the strip.
+
 Sources:
   [1] Riemann, "Ueber die Anzahl der Primzahlen" (1859)
   [2] Titchmarsh, "The Theory of the Riemann Zeta-Function" (1951)
@@ -28,11 +43,17 @@ mpmath.mp.dps = 30
 
 
 def compute_chi(rho_val):
-    """Compute Chi(s) for a given s."""
+    """Compute Chi(s) for a given s, pole-free.
+
+    Was 2^s pi^(s-1) sin(pi s/2) Gamma(1-s), which raises "gamma function pole"
+    at s = 2, 4, 6, ... where Chi is finite. Now written as
+    pi^(s-1/2) Gamma((1-s)/2) / Gamma(s/2) — the same function, regular
+    everywhere. See sigma/chassis/bridge.py chi() vs chi_ratio(), and
+    experiments/chi_rho_vacuity_0_over_0.py gate 7.
+    """
     s = mpmath.mpc(rho_val)
-    chi = (2**s) * mpmath.power(mpmath.pi, s - 1) * \
-          mpmath.sin(mpmath.pi * s / 2) * mpmath.gamma(1 - s)
-    return chi
+    return (mpmath.power(mpmath.pi, s - mpmath.mpf(0.5)) * mpmath.gamma((1 - s) / 2)
+            / mpmath.gamma(s / 2))
 
 
 def chi_rho_analysis():
@@ -85,12 +106,15 @@ def chi_rho_analysis():
     print()
     
     # Verify property 1
-    print("  VERIFICATION of |chi(1/2 + iy)| = 1:")
+    print("  IDENTITY CHECK of |chi(1/2 + iy)| = 1 (not a test of RH):")
     for y_val in [14.13, 21.02, 25.01, 30.42, 100.0, 1000.0]:
         s = mpmath.mpc(0.5, y_val)
         chi = compute_chi(s)
         mod = abs(chi)
         print("    y = %7.2f: |chi| = %.10f" % (y_val, mod))
+    print("    ^ every y is a zero of zeta, and this list is not the point:")
+    print("      a NON-zero y on the line returns 1.0000000000 identically,")
+    print("      so this identity cannot tell zeros from non-zeros.")
     
     print()
     print("  VERIFICATION of chi(s)*chi(1-s) = 1:")
@@ -265,9 +289,11 @@ def the_declaration():
     print("But I can explain the mathematics.")
     print()
     print("Chi(rho) is the BRIDGE between zeta(s) and zeta(1-s).")
-    print("It is a PHASE: |chi(rho)| = 1.")
+    print("It is a PHASE: |chi(rho)| = 1 -- an identity of the critical LINE,")
+    print("true at non-zeros too, so it decides nothing about off-line zeros.")
     print("It ROTATES values across the critical line.")
     print("It is the 0/0 of the functional equation.")
+    print("The Riemann Hypothesis is NOT settled by any of this. See PL-22.")
     print()
     print("The 0/0 framework is a UNIVERSAL THEORY OF SINGULARITIES.")
     print("Every field has singularities (the 0/0s).")

@@ -34,8 +34,8 @@ The 169 regression tests pin each removable value to the theorem. The experiment
 
 | Experiment | Theorem Proved | Mechanism | Removable Value |
 |-----------|---------------|-----------|-----------------|
-| Riemann zeta | RH reduction: Lambda = 0 iff RH | Probe | \|chi(rho)\| = 1 iff Re(rho) = 1/2 |
-| GRH Dirichlet | GRH for 8 Dirichlet L-functions | Probe | \|epsilon(chi)\| = 1 |
+| Riemann zeta | **None** — RH is not proved; Λ = 0 ⟺ RH is the Rodgers–Tao/de Bruijn reduction, unaffected by the probe | Probe is **vacuous** (2026-09-28) | \|chi(rho)\| = 1 — an identity of the whole critical line, true at non-zeros too (~1.97e-31). On the strip 0<Re<1 it forces Re = 1/2. See PL-22 |
+| GRH Dirichlet | **None** — GRH is not proved | Probe is **vacuous** (2026-09-28) | \|epsilon(chi)\| = 1 — a Gauss-sum fact about characters, carrying no information about zero locations |
 | BSD | L(s,E)/(s-1)^r encodes rank + Sha | Probe | Leading coefficient a_r |
 | abc conjecture | Quality bound q(a,b,c) < C_eps | Vanishing Rate | Quality = 1 at unit triple |
 | Fermat little | (a^(p-1)-1)/(a-1) at a=1 | Vanishing Rate | p - 1 |

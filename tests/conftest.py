@@ -52,7 +52,7 @@ def _collect():
     missing = sorted(
         n for n in referenced
         if n not in tracked_set and n not in recreatable
-        and not os.path.exists(os.path.join(DATA, n))
+        and regen_data.find_data(n) is None
     )
 
     summary = {

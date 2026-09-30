@@ -54,8 +54,15 @@ def experiment_information_conservation():
 
     # Zeta zeros: lambda = |chi(rho)| (removable value of g(s))
     # For the first zero rho ≈ 1/2 + 14.135i:
-    # chi(rho) = Gamma(1-rho)/Gamma(rho) × 2^{1-rho} × pi^{rho-1} × sin(pi rho/2)
+    # chi(rho) = pi^{rho-1/2} Gamma((1-rho)/2) / Gamma(rho/2)
     # |chi(rho)| ≈ 1 (numerically)
+    #
+    # NOTE 2026-09-28: |chi(rho)| = 1 is an identity of the critical LINE, not
+    # a property of the zeros — it holds at non-zeros on the line to ~1.97e-31.
+    # So this entry documents the removable value of a true 0/0 and carries no
+    # information about whether zeros are off-line. The pole-free form of chi
+    # above is used deliberately: the sin·Gamma form raises at s = 2, 4, 6, ...
+    # See experiments/chi_rho_vacuity_0_over_0.py, PREDICTION_LEDGER PL-22.
     lambda_zeta = 1.0
     I0_zeta = lambda_zeta ** 2
 

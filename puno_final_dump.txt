@@ -1,0 +1,16 @@
+THE_ALEMBIC.md :: 20
+'The journey: 55 experiments, 15 branches, 645 tests, 48 formal'
+THE_COMPLETE_ACCOUNT.md :: 416
+'- 55 experiment files (.py)'
+THE_COMPLETE_ACCOUNT.md :: 418
+'- 645 regression tests (all green)'
+THE_COMPLETE_ACCOUNT.md :: 420
+'- 67 documentation files'
+THE_COMPLETE_ACCOUNT.md :: 432
+'- `tests/test_solvable_theorems.py` — 215 tests, all green'
+THE_WORKS.md :: 37
+'The numbers: **203 experiment files**, **222 data files**, **213 regression'
+THE_WORKS.md :: 1346
+'- `tests/test_solvable_theorems.py` — 214 regression tests'
+KEYWORDS.md :: 261
+'- **The Works / compendium / capstone / complete account / all results / full corpus** -- `docs/THE_WORKS.md`, `docs/THE_WORKS.pdf` (capstone synthesis: 8 books covering the full arc from C0 = 0/0 through manifold, fold theorem, internet-scale routing, Decentral Bank consensus, 104 0/0 experiments, 48 formal theorems including Langlands/TQFT/Gromov/NCG/Faltings/ABC/Arakelov/Schanuel/Iwasawa/ArakelovGRR/Colmez/Vojta/Manin-Mumford/UniformBoundedness/ZilberPink/ShimuraTaniyama/SatoTate/ExplicitFormula/MontgomeryOdlyzko/HardyZ/DeBranges/Interlacing/HermiteBiehler/PhragmenLindelof, refuted claims recovery, and open questions answered; 55 experiments, 222 data files, 645 tests, 14 PDFs, 67 docs)'

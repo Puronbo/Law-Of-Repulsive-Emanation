@@ -10,15 +10,41 @@ At a zero rho: zeta(rho) = 0 = chi(rho) * zeta(1-rho)
 
 The 0/0 limit: lim_{s->rho} zeta(s)/zeta(1-s) = chi(rho)
 
-RH <=> |chi(rho)| = 1 for all nontrivial zeros rho
+RH <=> |chi(rho)| = 1 for all nontrivial zeros rho  (a re-encoding of RH,
+     true, and NOT a verification of it - see below)
 
 Key property: |chi(1/2+it)| = 1 for ALL t (by symmetry).
-So |chi(rho)| = 1 iff Re(rho) = 1/2.
+So |chi(rho)| = 1 iff Re(rho) = 1/2  ON THE CRITICAL STRIP 0 < Re < 1.
+
+READ THIS BEFORE TRUSTING THE OUTPUT  (corrected 2026-09-28)
+------------------------------------------------------------
+The original header of this file read "Key property: ... So |chi(rho)| = 1
+iff Re(rho) = 1/2" and listed "2. Tests if |chi(s)| = 1 exactly on the
+critical line" among the things this script establishes. That pairing is the
+exact structure of the withdrawn argument, and it is the reason this file is
+flagged:
+
+  |chi(1/2+it)| = 1 holds for ALL t, zeros and non-zeros alike. A non-zero
+  point on the line at the same height returns the same modulus to ~1.97e-31.
+  So "test |chi(s)| = 1 on the critical line" is a check that CANNOT FAIL, and
+  cannot distinguish a zero from a non-zero. It is not evidence for RH.
+
+The statement that does carry information is the level set: on the strip
+0 < Re(s) < 1, |chi(s)| = 1 forces Re(s) = 1/2, and displacing Re(s) is caught
+at every scale (Re = 0.501 gives |chi| = 0.99919). Globally the stronger form
+is FALSE - |chi(sigma+it)| = 1 has three solutions in sigma for t < t* =
+6.2898359888369, the two extras lying outside the strip.
+
+Measurements: experiments/chi_rho_vacuity_0_over_0.py
+Governance:  docs/PREDICTION_LEDGER.md PL-22, docs/AUDIT.md section 2 item 8
+RH remains open.
 
 This script:
 1. Computes |chi(s)| for s near known zeros
-2. Tests if |chi(s)| = 1 exactly on the critical line
-3. Tests if |chi(s)| deviates from 1 off the critical line
+2. Confirms |chi(s)| = 1 on the whole critical line - INCLUDING at non-zeros,
+   which is why this is an identity and not a test
+3. Tests if |chi(s)| deviates from 1 when Re(s) is displaced (this one has
+   teeth)
 4. Verifies the de Branges connection
 """
 
@@ -191,8 +217,14 @@ def scan_chi_surface():
 
 
 def verify_rh_equivalence():
-    """Verify: |chi(rho)| = 1 for all zeros iff RH."""
-    print("\nVerifying RH equivalence via |chi(rho)|:")
+    """Confirm: |chi(rho)| = 1 at the zeros -- which is an identity, not RH.
+
+    The original docstring read "Verify: |chi(rho)| = 1 for all zeros iff RH",
+    which asserted the withdrawn equivalence. Kept as a function name for
+    compatibility; see the module header and the SUMMARY block below for the
+    correction, and PREDICTION_LEDGER PL-22.
+    """
+    print("\nConfirming the line identity |chi| = 1 (NOT an RH test):")
     print("=" * 60)
     
     # The key identity: chi(s) * chi(1-s) = 1
@@ -214,14 +246,21 @@ def verify_rh_equivalence():
     
     print("  chi(s) * chi(1-s) = 1 (functional equation)")
     print("  |chi(0.5+it)| = 1 for all t (symmetry)")
-    print("  |chi(sigma+it)| != 1 for sigma != 0.5 (monotonicity)")
+    print("  |chi(sigma+it)| != 1 for sigma != 0.5, INSIDE the strip")
     print()
-    print("  Therefore:")
+    print("  WITHDRAWN 2026-09-28 - the two lines and the 'Therefore' block:")
     print("    RH => all zeros on critical line => |chi(rho)| = 1")
     print("    |chi(rho)| = 1 for all zeros => all zeros on critical line => RH")
+    print("  The second implication is FALSE AS A TEST: its hypothesis holds")
+    print("  whether or not RH is true, since |chi| = 1 is the value on the whole")
+    print("  critical line, zeros and non-zeros alike (~1.97e-31 apart). The")
+    print("  converse is also false globally: |chi(sigma+it)| = 1 has three roots")
+    print("  in sigma for t < 6.2898, the extras at 1/2 +- d(t) outside the strip.")
     print()
-    print("  RH <=> |chi(rho)| = 1 for all nontrivial zeros rho")
-    
+    print("  What survives: on 0 < Re(s) < 1, every zero must have Re(rho) = 1/2")
+    print("  for |chi(rho)| = 1 -- a re-encoding of RH, not a proof. RH is open.")
+    print("  See PREDICTION_LEDGER PL-22, experiments/chi_rho_vacuity_0_over_0.py")
+
     return True
 
 
@@ -250,7 +289,20 @@ def run():
     
     print(f"  |chi(rho)| = 1 on critical line: {all_on_line}")
     print(f"  |chi(rho)| = 1 off critical line: {any_off_line}")
-    print(f"  RH equivalence verified: {all_on_line and not any_off_line}")
+    print(f"  IDENTITY confirmed (on-line = 1, off-line != 1): "
+          f"{all_on_line and not any_off_line}")
+    print()
+    print("  WHAT THIS DOES NOT SHOW (corrected 2026-09-28):")
+    print("  The Riemann Hypothesis is NOT verified by this. The previous")
+    print("  version of this line read 'RH equivalence verified:', which was")
+    print("  false: |chi(1/2+it)| = 1 for ALL t, zeros and non-zeros alike, so")
+    print("  the on-line check cannot fail and cannot tell a zero from a")
+    print("  non-zero (they agree to ~1.97e-31). A non-zero point on the line")
+    print("  passes the on-line test exactly as a zero does. The usable")
+    print("  statement is the off-line one: on 0 < Re(s) < 1, |chi| = 1 forces")
+    print("  Re(s) = 1/2. That re-encodes RH; it does not settle it.")
+    print("  See experiments/chi_rho_vacuity_0_over_0.py, PREDICTION_LEDGER")
+    print("  PL-22. RH remains open.")
     
     results = {
         "zero_results": zero_results,

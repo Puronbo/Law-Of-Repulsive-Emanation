@@ -307,8 +307,13 @@ def paper_what_zero_is():
         'Corollary 7.1.',
         'g(s) = |zeta(s)|/|zeta(1-s)| = 1 on the critical line (Schwarz '
         'reflection). At each zero rho, g has a removable singularity with '
-        'value |chi(rho)|. |chi(rho)| = 1 iff Re(rho) = 1/2. Therefore '
-        'g = 1 iff RH.'
+        'value |chi(rho)|. On the critical strip 0 < Re(s) < 1, |chi| = 1 forces '
+        'Re(s) = 1/2. Globally the level set is larger: |chi(sigma+it)| = 1 has '
+        'three solutions in sigma for t < 6.2898, the extras lying outside the '
+        'strip. So g = 1 is NOT equivalent to RH off the line, and the identity '
+        'g = 1 on the line certifies nothing about off-line zeros (a non-zero '
+        'on the line returns 1 identically, to ~1.97e-31). Corrected 2026-09-28; '
+        'the previous wording of this corollary is withdrawn. RH remains open.'
     )
 
     # Section 8
@@ -318,7 +323,7 @@ def paper_what_zero_is():
     pdf.ref('[3] W. Rudin. Real and Complex Analysis. McGraw-Hill, 3rd edition, 1987.')
     pdf.ref('[4] E. M. Stein and R. Shakarchi. Complex Analysis. Princeton, 2003.')
     pdf.ref('[5] B. Rodgers and J. Tao. The de Bruijn-Newman constant is non-negative. arXiv:1801.05914, 2018.')
-    pdf.ref('[6] Puronbo Laboratory. RH reduction paper: g(s) = |zeta(s)|/|zeta(1-s)| is identically 1 iff RH. docs/RH_REDUCTION_PAPER.pdf, 2026.')
+    pdf.ref('[6] Puronbo Laboratory. RH reduction paper: g(s) = |zeta(s)|/|zeta(1-s)| is identically 1 iff RH. docs/RH_REDUCTION_PAPER.pdf, 2026. [Title as written 2026-08-17; the "iff RH" reading was WITHDRAWN 2026-09-28 as vacuous - the identity holds at non-zeros on the line too. See PREDICTION_LEDGER PL-22.]')
 
     out = os.path.join(OUT_DIR, 'WHAT_ZERO_IS.pdf')
     pdf.output(out)
@@ -368,28 +373,37 @@ def paper_where_0_over_0():
     pdf.theorem(
         'Theorem 2.1.',
         'g(s) = |zeta(s)|/|zeta(1-s)| = 1 on the critical line. At each zero '
-        'rho, g has a removable singularity with value |chi(rho)|. |chi(rho)| = 1 '
-        'iff Re(rho) = 1/2. Therefore g = 1 iff RH.'
+        'rho, g has a removable singularity with value |chi(rho)|. On the '
+        'critical strip 0 < Re(s) < 1, |chi| = 1 forces Re(s) = 1/2. Globally '
+        'the level set has two extra roots at 1/2 +- d(t) for t < 6.2898, '
+        'outside the strip, so g = 1 is not equivalent to RH off the line. '
+        'Corrected 2026-09-28; the earlier "Therefore g = 1 iff RH" is withdrawn.'
     )
     pdf.body(
-        'The 0/0 tests whether |zeta(s)| = |zeta(1-s)| at the zeros. It does '
-        '(value = 1) if and only if the zeros are on the critical line. '
-        'Reference: docs/RH_REDUCTION_PAPER.pdf.'
+        'The 0/0 tests whether |zeta(s)| = |zeta(1-s)| at the zeros. The line '
+        'identity holds for zeros and non-zeros alike and so discriminates '
+        'nothing; the strip level set is the statement that actually bears on '
+        'RH, and it re-encodes it rather than proving it. Reference: '
+        'docs/RH_REDUCTION_PAPER.pdf, and PREDICTION_LEDGER.md PL-22.'
     )
 
     # Section 3: GRH
     pdf.section('3', 'Generalized Riemann Hypothesis (Dirichlet L-functions)')
     pdf.theorem(
-        'Theorem 3.1.',
+        'Theorem 3.1 (re-encoding, not a proof).',
         'For a Dirichlet character chi, g_chi(s) = |L(s,chi)|/|L(1-s,chi_bar)| '
-        '= 1 on the critical line. At each zero rho, the removable value is '
-        '|epsilon(chi)| = 1. Therefore g_chi = 1 for every chi.'
+        '= 1 on the critical line. At each zero rho the removable value is '
+        '|epsilon(chi)| = 1, an identity of the line. On the critical strip of '
+        'L, |g_chi| = 1 forces Re(s) = 1/2. The last form re-encodes GRH; the '
+        'line identity does not establish it. Corrected 2026-09-28 — the '
+        'previous "Therefore g_chi = 1 for every chi" is withdrawn.'
     )
     pdf.body(
-        'The proof is identical to the zeta case: the functional equation for '
+        'The argument parallels the zeta case: the functional equation for '
         'Dirichlet L-functions gives L(s,chi) = epsilon(chi) * (gamma factors) '
-        '* L(1-s,chi_bar). The 0/0 at zeros gives |epsilon(chi)| = 1, which is '
-        'the generalized RH for L-functions.'
+        '* L(1-s,chi_bar), and the 0/0 at zeros gives |epsilon(chi)| = 1. That '
+        'last identity holds for zeros and non-zeros on the line alike, so it '
+        'is not evidence that the zeros are on the line. GRH remains open.'
     )
     pdf.ref('[1] H. M. Edwards. Riemann\'s Zeta Function. Dover, 2001.')
 
