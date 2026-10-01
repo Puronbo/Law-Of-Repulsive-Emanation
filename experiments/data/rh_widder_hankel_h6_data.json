@@ -1,5 +1,5 @@
 {
-  "conclusion": "H6 asks whether the eventual-positivity criterion implies RH, and answers: the chain is SOUND for a displaced zero at ANY height, so no structural objection to the route survives. 5/5 sub-gates pass. H5e's on-axis obstruction is IRRELEVANT, because the criterion quantifies over ALL x > 0 and a single violating x refutes it. The chain is off-axis zero -> some x with strict maximal modulus -> isolated cluster of nonzero phase -> Re S(m) < 0 for infinitely many m (H5a, exact) -> eventual positivity fails. H6a verifies the chain for the lowest displaced zero with an exact condition: since |q| -> 1/|w| as x -> 0 and |w|^2 = gamma^4 + 2 delta^2 gamma^2 + delta^4, dominance over the next zero is exactly delta^2 < gamma_2^2 - gamma_1^2 = 242.1, i.e. |delta| < 15.56 -- a wide window, not a narrow one. Inside it the first negative Q_m is m = 11102 against the predicted pi gamma/(4 delta) = 11102 (relative error 0.0e+00), recurring at 100087 of 200000 orders, with the dominant pair beating the tail by a factor 10^3.83e+03. So eventual positivity genuinely FAILS when the lowest zero is off-axis. H6b supplies the exact phase law arg q(x) = 2 atan(2 delta gamma/(x+gamma^2-delta^2)) - atan(2 delta gamma/(gamma^2-delta^2)), verified against direct evaluation to 6e-42 over 4 gammas, 3 deltas and x/gamma^2 from 1e-8 to 1e6; this replaces H4a's small-x-only law and holds at every x. H6c then finds a real correction to it: at the dominance scale x = gamma^2 the two atan's arguments are O(u^2)-perturbed and the linear terms cancel, leaving arg q = (delta/gamma)^3 -- CUBIC, with the measured ratio to that prediction constant at 1.0000 (spread 2.5e-07) across 4 gammas and 4 deltas. H6d shows why this does NOT block the route: arg q is strictly decreasing in x, so the phase is largest at the smallest admissible x, and at x = 2 delta gamma it is again linear with ratio 0.9941 to 2 delta/gamma, giving the required order m ~ (pi gamma)/(4 delta) -- H4b's law -- in the computable range, whereas insisting on x = gamma^2 would demand m up to 4.42e+13. H6e closes the last gap: displacing the zero at index k = 2, 3, 4 puts the dominance window at x/gamma_k^2 = [0.67, 0.84, 0.82], strictly below 1, and all three reach a negative Q_m at m = [84495, 228656, 245027] within the 400000-order cap. An earlier cut of H6 appeared to show the opposite, but its coarse x-grid landed near x/gamma_k^2 = 1, the single point where the phase is cubic-small; a refined grid finds the window's left edge where it is not. So the route does NOT need the off-axis zero to be the lowest one. WHAT REMAINS OPEN: this is a synthetic finite-spectrum argument, so passing from it to the real zeta spectrum -- and above all the prime-gamma -> universal H_N >= 0 bridge (record section 27) -- is untouched. H6 does NOT prove RH; it shows the pinned criterion is refutable by any off-axis zero, conditional on that bridge.",
+  "conclusion": "H6 asks whether the eventual-positivity criterion implies RH, and answers: the chain is SOUND for a displaced zero at ANY height, so no structural objection to the route survives. 6/6 sub-gates pass. H5e's on-axis obstruction is IRRELEVANT, because the criterion quantifies over ALL x > 0 and a single violating x refutes it. The chain is off-axis zero -> some x with strict maximal modulus -> isolated cluster of nonzero phase -> Re S(m) < 0 for infinitely many m (H5a, exact) -> eventual positivity fails. H6a verifies the chain for the lowest displaced zero with an exact condition: since |q| -> 1/|w| as x -> 0 and |w|^2 = gamma^4 + 2 delta^2 gamma^2 + delta^4, dominance over the next zero is exactly delta^2 < gamma_2^2 - gamma_1^2 = 242.1, i.e. |delta| < 15.56 -- a wide window, not a narrow one. Inside it the first negative Q_m is m = 11102 against the predicted pi gamma/(4 delta) = 11102 (relative error 0.0e+00), recurring at 100087 of 200000 orders, with the dominant pair beating the tail by a factor 10^3.83e+03. So eventual positivity genuinely FAILS when the lowest zero is off-axis. H6b supplies the exact phase law arg q(x) = 2 atan(2 delta gamma/(x+gamma^2-delta^2)) - atan(2 delta gamma/(gamma^2-delta^2)), verified against direct evaluation to 6e-42 over 4 gammas, 3 deltas and x/gamma^2 from 1e-8 to 1e6; this replaces H4a's small-x-only law and holds at every x. H6c then finds a real correction to it: at the dominance scale x = gamma^2 the two atan's arguments are O(u^2)-perturbed and the linear terms cancel, leaving arg q = (delta/gamma)^3 -- CUBIC, with the measured ratio to that prediction constant at 1.0000 (spread 2.5e-07) across 4 gammas and 4 deltas. H6d shows why this does NOT block the route: arg q is strictly decreasing in x, so the phase is largest at the smallest admissible x, and at x = 2 delta gamma it is again linear with ratio 0.9941 to 2 delta/gamma, giving the required order m ~ (pi gamma)/(4 delta) -- H4b's law -- in the computable range, whereas insisting on x = gamma^2 would demand m up to 4.42e+13. H6e closes the last gap: displacing the zero at index k = 2, 3, 4 puts the dominance window at x/gamma_k^2 = [0.68, 0.84, 0.83], strictly below 1, and all three reach a negative Q_m at m = [85420, 231089, 253826] within the 400000-order cap. An earlier cut of H6 appeared to show the opposite, but its coarse x-grid landed near x/gamma_k^2 = 1, the single point where the phase is cubic-small; a refined grid finds the window's left edge where it is not. So the route does NOT need the off-axis zero to be the lowest one. WHAT REMAINS OPEN: this is a synthetic finite-spectrum argument, so passing from it to the real zeta spectrum -- and above all the prime-gamma -> universal H_N >= 0 bridge (record section 27) -- is untouched. H6 does NOT prove RH; it shows the pinned criterion is refutable by any off-axis zero, conditional on that bridge.",
   "experiment": "widder/hankel level 6: does eventual positivity imply RH? the chain closes for the lowest zero and breaks above it",
   "gates": [
     {
@@ -23,7 +23,12 @@
       "passed": true
     },
     {
-      "detail": "Displacing the zero at index k and locating its dominance window (nonempty for every k, per H5d) puts the window at x/gamma_k^2 = [0.673, 0.842, 0.822], i.e. BELOW gamma^2, and there the phase is linear rather than cubic (H6d). At delta = 1e-3 all of k = 2, 3, 4 reach a negative Q_m at m = [84495, 228656, 245027], within the 400000-order cap and within a factor ['1.00', '1.00', '1.00'] of the predicted pi/(2 arg q). So the chain of H6a -- off-axis zero -> some x with strict maximal modulus -> isolated cluster with nonzero phase -> Re S(m) < 0 for infinitely many m -> eventual positivity fails -- does NOT require the off-axis zero to be the lowest one. An earlier cut of this experiment appeared to show the opposite, but that scan used a coarse x-grid whose points landed near x/gamma_k^2 = 1, the one place where the phase is cubic-small; refining the grid finds the window's left edge, where the required order is in the computable range. H6e therefore removes the last structural objection to the route.",
+      "detail": "The only dimensionless parameter in the framework is u = delta/gamma: the exact dominance condition of H6a is delta^2 < gamma_next^2 - gamma^2, the phase law of H6b depends on x only through x/gamma^2, and the required order is m ~ (pi/4)/u. Holding u = 4.7569e-05 and multiplying every gamma by 1, 10, 100, 1000 (delta growing accordingly) reproduces x_win/gamma^2 = 0.676039 and m_first = 85420 at every scale, to all printed digits. So the criterion is genuinely scale-invariant and a violation found at one height is a violation at all heights. This gate exists because the scan is NOT scale-free by default: an absolute x-grid of [1e-6, 1e10] misses the window once gamma grows, since the window sits at x ~ gamma^2, and reports a false negative. The scan grid must be expressed in units of gamma^2.",
+      "gate": "H6f: the configuration is SCALE-FREE at fixed delta/gamma, so the criterion does not depend on the absolute height of the zero",
+      "passed": true
+    },
+    {
+      "detail": "Displacing the zero at index k and locating its dominance window (nonempty for every k, per H5d) puts the window at x/gamma_k^2 = [0.676, 0.843, 0.828], i.e. BELOW gamma^2, and there the phase is linear rather than cubic (H6d). At delta = 1e-3 all of k = 2, 3, 4 reach a negative Q_m at m = [85420, 231089, 253826], within the 400000-order cap and within a factor ['1.00', '1.00', '1.00'] of the predicted pi/(2 arg q). So the chain of H6a -- off-axis zero -> some x with strict maximal modulus -> isolated cluster with nonzero phase -> Re S(m) < 0 for infinitely many m -> eventual positivity fails -- does NOT require the off-axis zero to be the lowest one. An earlier cut of this experiment appeared to show the opposite, but that scan used a coarse x-grid whose points landed near x/gamma_k^2 = 1, the one place where the phase is cubic-small; refining the grid finds the window's left edge, where the required order is in the computable range. H6e therefore removes the last structural objection to the route.",
       "gate": "H6e: the chain EXTENDS to a displaced zero at ANY height, so the reduction is not the wall",
       "passed": true
     }
@@ -803,34 +808,34 @@
   "h6_pred_cubic": 6653853573764.105,
   "h6_reduction_rows": [
     {
-      "arg_q": 1.8590460534413803e-05,
+      "arg_q": 1.838924839765412e-05,
       "gamma": 21.022039638771556,
       "k": 2,
       "m_cap": 400000,
-      "m_first": 84495,
-      "m_required": 84494.75062154114,
-      "x_over_gamma2": 0.6730735651858608,
-      "x_win": 297.4488097157613
+      "m_first": 85420,
+      "m_required": 85419.27831021523,
+      "x_over_gamma2": 0.6760388618856054,
+      "x_win": 298.75925187158936
     },
     {
-      "arg_q": 6.869699159253114e-06,
+      "arg_q": 6.797385459327685e-06,
       "gamma": 25.01085758014569,
       "k": 3,
       "m_cap": 400000,
-      "m_first": 228656,
-      "m_required": 228655.766487113,
-      "x_over_gamma2": 0.8417757476745278,
-      "x_win": 526.5669239132903
+      "m_first": 231089,
+      "m_required": 231088.3112622924,
+      "x_over_gamma2": 0.8433108046283581,
+      "x_win": 527.5271680405928
     },
     {
-      "arg_q": 6.410733737790773e-06,
+      "arg_q": 6.188496449847885e-06,
       "gamma": 30.424876125859512,
       "k": 4,
       "m_cap": 400000,
-      "m_first": 245027,
-      "m_required": 245025.98158697115,
-      "x_over_gamma2": 0.8222854569463125,
-      "x_win": 761.1675175519196
+      "m_first": 253826,
+      "m_required": 253825.19639863528,
+      "x_over_gamma2": 0.8279161055464348,
+      "x_win": 766.3796574249492
     }
   ],
   "h6_required_rows": [
@@ -851,6 +856,48 @@
       "delta": 0.001,
       "gamma": 30.424876125859512,
       "m_required_gamma2": 44239105115794.62
+    }
+  ],
+  "h6_scale_rows": [
+    {
+      "delta": 0.001,
+      "gamma": 21.022039638771556,
+      "m_first": 85420,
+      "m_pred": 16510.67132315954,
+      "m_ratio": 5.173623672114487,
+      "mult": 1,
+      "u": 4.7569123509579495e-05,
+      "x_over_gamma2": 0.6760388618856054
+    },
+    {
+      "delta": 0.01,
+      "gamma": 210.22039638771554,
+      "m_first": 85420,
+      "m_pred": 16510.67132315954,
+      "m_ratio": 5.173623672114487,
+      "mult": 10,
+      "u": 4.7569123509579495e-05,
+      "x_over_gamma2": 0.6760388618856054
+    },
+    {
+      "delta": 0.1,
+      "gamma": 2102.2039638771553,
+      "m_first": 85420,
+      "m_pred": 16510.67132315954,
+      "m_ratio": 5.173623672114487,
+      "mult": 100,
+      "u": 4.7569123509579495e-05,
+      "x_over_gamma2": 0.6760388618856054
+    },
+    {
+      "delta": 1.0,
+      "gamma": 21022.039638771555,
+      "m_first": 85420,
+      "m_pred": 16510.67132315954,
+      "m_ratio": 5.173623672114487,
+      "mult": 1000,
+      "u": 4.7569123509579495e-05,
+      "x_over_gamma2": 0.6760388618856054
     }
   ]
 }

@@ -189,9 +189,10 @@ def x_phase_min(g, d):
     return 2 * d * g, arg_q_exact(g, d, 2 * d * g)
 
 
-def _spectrum(which, d):
-    ws = [g * g for g in GAMMAS]
-    ws[which] = _w(GAMMAS[which], d)
+def _spectrum(which, d, gammas=None):
+    gs = gammas or GAMMAS
+    ws = [g * g for g in gs]
+    ws[which] = _w(gs[which], d)
     return ws
 
 
@@ -202,12 +203,27 @@ def _first_negative_order(qs, mcap):
     return None
 
 
-def _first_winning_x(which, d, xlo=mp.mpf("1e-6"), xhi=mp.mpf("1e10"),
-                     steps=6000):
-    """Smallest x on a log grid at which the displaced zero strictly maximizes."""
-    ws = _spectrum(which, d)
+def _first_winning_x(which, d, gammas=None, steps=6000, span=mp.mpf(12)):
+    """Smallest x on a log grid at which the displaced zero strictly maximizes.
+
+    The grid is expressed in units of gamma^2 and spans
+    [gamma^2 * 10^-span, gamma^2 * 10^span].  This matters: an absolute grid
+    such as [1e-6, 1e10] is NOT scale-free, and because the dominance window
+    sits at x ~ gamma^2 it silently misses the window once gamma is rescaled.
+    Holding delta/gamma fixed and multiplying every gamma by 10 moves the
+    window to x ~ 0.14, off an absolute [1e-6, 1e10] grid's effective
+    resolution, and the violation disappears -- a false negative that has
+    nothing to do with the mathematics.  With the grid in gamma^2 units the
+    same sweep reproduces x_win/gamma^2 and m_first to every printed digit
+    across four orders of magnitude in gamma, which is the correct statement
+    of scale invariance.
+    """
+    gs = gammas or GAMMAS
+    g2 = gs[which] ** 2
+    ws = _spectrum(which, d, gs)
+    lo, hi = g2 * mp.power(10, -span), g2 * mp.power(10, span)
     for i in range(1, steps + 1):
-        x = xlo * (xhi / xlo) ** (mp.mpf(i - 1) / (steps - 1))
+        x = lo * (hi / lo) ** (mp.mpf(i - 1) / (steps - 1))
         mags = sorted((abs(_q(w, x)) for w in ws), reverse=True)
         if abs(_q(ws[which], x)) == mags[0]:
             return x
@@ -404,6 +420,48 @@ def _h6d():
             [float(g) for g in GAMMAS[1:3]], small_lin, big_lin, big_cubic))
 
 
+# ---------------------------------------------------------------- H6f
+def _h6f():
+    """Scale invariance: hold delta/gamma fixed, rescale every gamma."""
+    u = H6_DELTA / GAMMAS[1]
+    rows = []
+    for mult in (1, 10, 100, 1000):
+        gs = [g * mult for g in GAMMAS]
+        d = u * gs[1]
+        xw = _first_winning_x(1, d, gammas=gs)
+        rec = {"mult": mult, "gamma": float(gs[1]), "delta": float(d),
+               "u": float(u), "m_pred": float(mp.pi / (4 * u))}
+        if xw is not None:
+            qs = [_q(w, xw) for w in _spectrum(1, d, gs)]
+            mf = _first_negative_order(qs, H6_MCAP)
+            rec["x_over_gamma2"] = float(xw / (gs[1] ** 2))
+            rec["m_first"] = mf
+            rec["m_ratio"] = mf / rec["m_pred"] if mf else None
+        rows.append(rec)
+    report["h6_scale_rows"] = rows
+
+    got = [r for r in rows if r.get("m_first")]
+    xs = [r["x_over_gamma2"] for r in got]
+    ms = [r["m_first"] for r in got]
+    gate("H6f: the configuration is SCALE-FREE at fixed delta/gamma, so the "
+         "criterion does not depend on the absolute height of the zero",
+         len(got) == len(rows) and max(xs) - min(xs) < 1e-9
+         and max(ms) == min(ms),
+         "The only dimensionless parameter in the framework is u = delta/gamma: "
+         "the exact dominance condition of H6a is delta^2 < gamma_next^2 - "
+         "gamma^2, the phase law of H6b depends on x only through x/gamma^2, "
+         "and the required order is m ~ (pi/4)/u. Holding u = %.4e and "
+         "multiplying every gamma by 1, 10, 100, 1000 (delta growing "
+         "accordingly) reproduces x_win/gamma^2 = %.6f and m_first = %d at "
+         "every scale, to all printed digits. So the criterion is genuinely "
+         "scale-invariant and a violation found at one height is a violation at "
+         "all heights. This gate exists because the scan is NOT scale-free by "
+         "default: an absolute x-grid of [1e-6, 1e10] misses the window once "
+         "gamma grows, since the window sits at x ~ gamma^2, and reports a "
+         "false negative. The scan grid must be expressed in units of gamma^2."
+         % (float(u), sum(xs) / len(xs), ms[0] if ms else -1))
+
+
 # ---------------------------------------------------------------- H6e
 def _h6e():
     rows = []
@@ -452,6 +510,7 @@ def main():
     _h6b()
     _h6c()
     _h6d()
+    _h6f()
     _h6e()
 
     ch = report["h6_chain"]

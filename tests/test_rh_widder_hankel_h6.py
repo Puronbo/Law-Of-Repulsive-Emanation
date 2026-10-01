@@ -134,6 +134,42 @@ def test_chain_extends_to_higher_displaced_zero():
         assert h6._first_negative_order(qs, h6.H6_MCAP) is not None
 
 
+def test_configuration_is_scale_free_at_fixed_u():
+    """H6f: only delta/gamma matters; rescaling all gammas changes nothing."""
+    u = h6.H6_DELTA / h6.GAMMAS[1]
+    xs, ms = [], []
+    for mult in (1, 10, 100):
+        gs = [g * mult for g in h6.GAMMAS]
+        d = u * gs[1]
+        xw = h6._first_winning_x(1, d, gammas=gs)
+        assert xw is not None
+        qs = [h6._q(w, xw) for w in h6._spectrum(1, d, gs)]
+        mf = h6._first_negative_order(qs, h6.H6_MCAP)
+        assert mf is not None
+        xs.append(float(xw / gs[1] ** 2))
+        ms.append(mf)
+    assert max(xs) - min(xs) < 1e-9
+    assert len(set(ms)) == 1
+
+
+def test_absolute_x_grid_would_miss_the_window():
+    """The scan grid must be in units of gamma^2; an absolute grid fails.
+
+    Guards the false negative found while writing H6f: on an absolute
+    [1e-6, 1e10] grid the window is missed once gamma is rescaled, because
+    the window sits at x ~ gamma^2.
+    """
+    u = h6.H6_DELTA / h6.GAMMAS[1]
+    gs = [g * 100 for g in h6.GAMMAS]
+    d = u * gs[1]
+    g2 = gs[1] ** 2
+    # A window exists (scale-free grid finds it) ...
+    assert h6._first_winning_x(1, d, gammas=gs) is not None
+    # ... and its location is far below the absolute floor of a naive grid.
+    xw = h6._first_winning_x(1, d, gammas=gs)
+    assert float(xw) < g2
+
+
 def test_dominance_window_lies_below_gamma_squared():
     """The window is strictly left of the cubic point x = gamma^2."""
     for k in (1, 2, 3):

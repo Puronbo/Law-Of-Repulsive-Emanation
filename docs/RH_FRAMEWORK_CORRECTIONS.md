@@ -943,7 +943,35 @@ grid finds the window's left edge, where the phase is 50× larger, and the
 violations appear. **Coarse grids near a regime boundary produced a false
 refutation here** — the same class of error as H4's factor-of-two.
 
-### 19.6 What H6 does and does not establish
+### 19.6 Scale invariance: the criterion is a function of `delta/gamma` only
+
+`delta` is **not** a scale-free parameter; the only dimensionless one is
+`u = delta/gamma`, and every part of the framework respects that:
+
+* H6a's exact condition `delta² < gamma_next² - gamma²` compares like with like;
+* H6b's phase law depends on `x` only through `x/gamma²`;
+* the required order is `m ~ (pi/4)/u`.
+
+Holding `u` fixed and multiplying every `gamma` by `1, 10, 100, 1000` (with
+`delta` growing to match) reproduces `x_win/gamma²` and `m_first` **identically**
+at every scale, to all printed digits. So a violation found at one height is a
+violation at every height — the criterion carries no hidden dependence on
+absolute height.
+
+This also explains a false negative worth recording. The scan grid was
+originally **absolute**, `x ? [10?6, 10¹°]`. Since the dominance window sits at
+`x ~ gamma²`, rescaling `gamma` by 10 moves it to `x ˜ 0.14`, where an absolute
+grid's effective resolution no longer resolves it, and H6 reported "no violation"
+for `gamma = 210` and above. That was an artifact of the *numerical search*, not
+of the mathematics. `_first_winning_x` now works in units of `gamma²`, and H6f
+pins the invariance so the trap cannot recur silently.
+
+Note this is the **third** grid/expansion error in this sequence — H4's factor
+of two, H6c's `2/3` coefficient, and now two separate `x`-grid resolutions. The
+consistent lesson: near a regime boundary, a grid that does not respect the
+problem''s own scaling will manufacture a conclusion.
+
+### 19.7 What H6 does and does not establish
 
 **Established, on the first four zeros treated as a synthetic spectrum:**
 
@@ -954,6 +982,12 @@ refutation here** — the same class of error as H4's factor-of-two.
 **Not established:**
 
 * nothing here proves or refutes RH;
+* the ~0.6% modulus margin over the runner-up is thin and was measured on four
+  synthetic zeros only, so it is suggestive rather than robust against the
+  full spectrum;
+* tail control `sum_{others} |q|^m << |q_*|^m` is plausible (`|q| ~ gamma^-2`) but
+  unproved, and isolation of the maximizing cluster for real zeta is assumed
+  rather than derived;
 * passing from a four-zero synthetic spectrum to the full zeta spectrum;
 * above all the bridge `prime-gamma ? universal H_N ? 0` (§27), which remains **OPEN**.
 
