@@ -993,3 +993,136 @@ problem''s own scaling will manufacture a conclusion.
 
 The pinned criterion may still be correct and sufficient. H6 removes the
 objections it could test; it does not supply the analytic bridge.
+## 20. H7 — the convergence/interchange audit (section 28, items 2 and 3)
+
+Section 28 leaves four items open. H6 took the first (positive Hankel kernel)
+partially. H7 takes the second (*verify every convergence/interchange
+condition*) and the third (*moment uniqueness/identification*), and it finds
+**one clarifying correction, one genuine defect, and one consistency check**.
+
+The whole audit turns on a single power of `gamma`.
+
+### 20.1 The decisive exponent: `q ~ gamma^-2`, not `gamma^-4`
+
+The summand is
+
+```
+q_rho(x) = w / (x + w)^2 ,      w = gamma^2 - delta^2 - 2 i delta gamma .
+```
+
+It is tempting to read the squared denominator as buying `gamma^-4`. It does
+not. The numerator is `w` itself, so
+
+```
+|q| ~ |w| / |w|^2 = 1/|w| ~ gamma^-2 .
+```
+
+Measured, not asserted: a log-log regression of `|q|` against `gamma` over ten
+Newton-refined real zeros gives slope **-1.9993**, and over six decades of
+synthetic heights -1.9985. The asymptote `q ~ x^2/gamma^4` is confirmed scale-free
+through the ratio `q gamma^4 / x^2`, which climbs by a factor of ~10 per decade
+of `gamma` (H7a).
+
+Two mistakes were made and are recorded because both produced confident wrong
+conclusions:
+
+* an early cut of the probe *predicted* slope -4, *measured* -2.00, and then
+  explained the gap as an undersampled asymptotic regime. The -2.00 was the
+  correct answer being reported as a failure. The `|q| ~ gamma^-2` in �19.7
+  was right all along;
+* the same cut normalized with `gamma^2 q / x^2`, which tends to `1/x^2 = 100`
+  at `x = 0.1` and so can never approach 1 unless `x = 1`. The limit is
+  correct; that normalization is not.
+
+### 20.2 DEFECT: `Q_m` converges if and only if `m >= 2`
+
+With `N(T) ~ (T/2pi) log(T/2pi)`,
+
+```
+sum_rho |q_rho(x)|^m  ~  int_T^inf N(t) t^-2m dt ,
+```
+
+which converges iff `2m > 2`. Hence
+
+* **`Q_1(x)` diverges**, growing like `(log T)^2/(4pi)`;
+* **`Q_m(x)` converges absolutely for every `m >= 2`**.
+
+Measured at `T = 100` with the ceiling raised from `1e4` to `1e12`, the `m = 1`
+tail runs `2.99, 9.35, 19.08, 32.19, 48.68`. Dividing by the predicted
+`(log(Tmax/2pi))^2/(4pi)` gives `0.69, 0.82, 0.87, 0.90, 0.92` — rising
+monotonically towards 1, which is the signature of `log^2` divergence rather
+than an artifact (H7b).
+
+**Consequence for the record.** Any statement ranging over `m >= 1` is false
+as written. The framework's moment sequence must begin at the **second**
+moment.
+
+A third bug belongs here, because it is the one that hid the defect. In the
+log-height substitution `s = log(t/T)` the Jacobian `dt = t ds` makes the
+integrand `N(t) t^{1-2m}`, not `N(t) t^{2-2m}`. At `m = 1` the wrong exponent
+integrates `N(t)` instead of `N(t)/t`; that integrand grows like `t log t`, so
+the "tail" came out like `Tmax^2` (`3.8e12` at `Tmax = 1e12`) and the `log^2`
+divergence was invisible. A test now cross-checks the substitution against
+direct quadrature in `t`.
+
+### 20.3 `Q_1` and `F_xi` are asymptotically the SAME series
+
+The ratio of the two summands is
+
+```
+q_rho(x) / (1/(x+w)) = w/(x+w) -> 1   as gamma -> inf ,
+```
+
+measured `0.99999999999` at `gamma = 10^4 x`. Built on a synthetic zeta-like
+spectrum `g ~ sqrt(k log k)`, the relative difference between the two partial
+sums falls `1.1e-3, 4.4e-5, 4.8e-11` at heights `100, 1e4, 1e6` while both
+sums grow like `log^2 T` (H7c).
+
+This **blocks the most natural rescue** of §27's middle arrow. One cannot
+regularize `F_xi` and read `Q_k` off it while claiming the Hankel kernel
+smooths the divergence away, because at moment one the two series agree to
+within a vanishing fraction of their divergent size. What separates them is
+the power `m`, and it starts at `m = 2`.
+
+### 20.4 Consistency: the Stieltjes measure fails exactly where Widder starts
+
+Section 3 writes `F_xi(x) = int dmu(t)/(x+t)` with
+`dmu(t) = 2 sum_{gamma>0} delta_{gamma^2}(t)`. That measure is **not locally
+finite**: its mass up to height `T` grows without bound (`8542, 1.59e6,
+2.32e8, 3.05e10` for ceilings `1e4 ... 1e10`) — the §20.2 divergence. The
+measure behind `Q_m`, with atoms `|q|^m` at `t = gamma^2`, stays bounded and
+settles (`1.83e-5` at every ceiling, relative change `< 1e-15`), so it is
+locally finite for `m >= 2` (H7d).
+
+So §28's third item splits cleanly: the **Widder** moment reading holds from
+the second moment on, and the **Stieltjes** reading of §3 fails as literally
+written.
+
+### 20.5 What H7 does and does not establish
+
+**Established:**
+
+* `q_rho(x) = gamma^-2` in magnitude, with the exponent measured two ways;
+* `Q_m(x)` converges absolutely for `m >= 2` and **diverges for `m = 1`**, the
+  divergence being `log^2`;
+* `Q_1` and `F_xi` are asymptotically indistinguishable, so the regularization
+  obligation on §27's middle arrow cannot be dodged by smoothing;
+* §3's Stieltjes measure is not a locally finite positive measure.
+
+**Not established:**
+
+* nothing here proves or refutes RH;
+* **H6 is untouched**, since its violations occur at orders of order `10^4`,
+  far above the `m = 2` threshold;
+* no positive Hankel kernel is supplied — §28's first item is still open;
+* the bridge `prime-gamma -> universal H_N >= 0` (§27) remains **OPEN**.
+
+What H7 does is shrink that bridge's technical obligation to a single
+precisely locatable statement:
+
+> Begin the moment sequence at `m = 2` and regularize `F_xi` consistently with
+> it — or show that the explicit formula's prime side supplies that
+> regularization for free.
+
+That is a much smaller and better-defined target than "verify every
+convergence/interchange condition".

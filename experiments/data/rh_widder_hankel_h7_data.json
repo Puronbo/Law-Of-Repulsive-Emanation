@@ -1,0 +1,209 @@
+{
+  "conclusion": "H7 audits section 28's convergence/interchange and moment-identification items. 4/4 sub-gates pass. CLARIFICATION (H7a): the summand q_rho(x) = w/(x+w)^2 decays like gamma^-2, not gamma^-4 -- the numerator w cancels one power of the squared denominator, since |w|/|w|^2 = 1/|w|. Measured log-log slope -1.9993 on 10 Newton-refined real zeros. An earlier cut predicted -4 and misread its own -2.00 measurement as a regime artefact. DEFECT (H7b): with N(T) ~ (T/2pi) log(T/2pi), the tail int_T^inf N(t) t^-2m dt converges iff 2m > 2. So Q_1(x) DIVERGES, growing like (log T)^2/(4pi), while Q_m converges for every m >= 2. The framework's moments exist from the second onward only, so any claim ranging over m >= 1 in sections 5, 9 or 10 is false as written. CONSEQUENCE (H7c): Q_1 and F_xi are asymptotically the same series -- their summands differ by w/(x+w) -> 1 -- so the middle arrow of section 27's chain cannot be rescued by smoothing, and its regularization obligation applies at moment one as well. CONSISTENCY (H7d): section 3's Stieltjes measure 2 sum delta_{gamma^2} is not locally finite, while Q_m's measure is for m >= 2, so the Stieltjes reading fails exactly where the Widder reading starts to hold. Nothing here proves or refutes RH; H6 is untouched since its violations occur at orders of order 10^4. No positive Hankel kernel is supplied, and section 27's bridge prime-gamma -> universal H_N >= 0 remains OPEN, its technical obligation now pinned to a single statement: begin the moment sequence at m = 2 and regularize F_xi consistently, or show the explicit formula's prime side supplies that regularization.",
+  "experiment": "convergence/interchange audit of record section 28",
+  "gates": [
+    {
+      "detail": "q_rho(x) = w/(x+w)^2. The naive reading is that a squared denominator buys gamma^-4, but the numerator is w itself, so |q| ~ |w|/|w|^2 = 1/|w| ~ gamma^-2. Measured directly: a log-log regression of |q| against gamma over 10 Newton-refined real zeros gives slope -1.9993 (worst |xi| residual 4.0e-37), and over six decades of synthetic heights -1.9985. The asymptote q ~ x^2/gamma^4 is confirmed through q gamma^4 / x^2, which grows by a factor 1209999.7580 per decade of gamma and would diverge if the exponent were -4. An earlier cut of this probe predicted slope -4, measured -2.00, and attributed the mismatch to an undersampled asymptotic regime; that attribution was wrong, and it separately used a ratio gamma^2 q / x^2 that tends to 1/x^2 rather than 1. The exponent -2 is the load-bearing fact that turns H7b into a defect rather than a pass.",
+      "gate": "H7a: |q_rho(x)| decays like gamma^-2 (the numerator w cancels one power), NOT gamma^-4",
+      "passed": true
+    },
+    {
+      "detail": "sum_rho |q|^m ~ int_T^{Tmax} N(t) t^-2m dt converges iff 2m > 2. Measured at T = 100 while the ceiling rises 1e4 ... 1e12, by quadrature in log-height (the Jacobian dt = t ds is what makes the m = 1 integrand N(t)/t rather than N(t)) against a composite-Simpson cross-check, worst relative disagreement 8.5e-10. m = 1 GROWS without bound: 2.9916, 9.3500, 19.0835, 32.1923, 48.6765. m = 2 converges, rising slowly to its limit 0.000018 ... 0.000018, and m = 3 faster still, 0.000000 ... 0.000000; for a lower-limit truncation the tail rises towards the total, so convergence shows up as a vanishing relative increment, 9.24e-16 at m = 2 against 0.51 at m = 1. The m = 1 values match the predicted log^2 law: divided by (log(Tmax/2pi))^2/(4pi) they give 0.6917, 0.8190, 0.8721, 0.9011, 0.9194 -- rising monotonically towards 1, which is the signature of log^2 divergence rather than an artifact. So the framework's moments exist from the second onward and not the first: any statement in sections 5, 9 or 10 ranging over m >= 1 is false as written. H6 is unaffected, its violations occurring at orders of order 10^4.",
+      "gate": "H7b: Q_m(x) converges if and only if m >= 2; Q_1 diverges like (log T)^2/(4pi)",
+      "passed": true
+    },
+    {
+      "detail": "Dividing q_rho(x) by F_xi's summand gives w/(x+w) -> 1 as gamma grows, measured 1.000000000 at gamma = 10^4 x. Built with a zeta-like synthetic spectrum g ~ sqrt(k log k), the two partial sums have relative difference 0.0011, 0.0000, 0.0000 at heights T = 100, 1e4, 1e6: the discrepancy is confined to the low-height end and shrinks monotonically, while both sums themselves grow like log^2 T. This blocks the most natural rescue of section 27's middle arrow. One cannot regularize F_xi and read Q_k off it while claiming the Hankel kernel smooths away the divergence, because at moment one the two series agree to within a vanishing fraction of their (divergent) size. What separates them is the power m, and it starts at m = 2.",
+      "gate": "H7c: Q_1 and F_xi are asymptotically the SAME series -- the ratio of summands is w/(x+w) -> 1",
+      "passed": true
+    },
+    {
+      "detail": "The measure behind F_xi in section 3, dmu(t) = 2 sum_{gamma>0} delta_{gamma^2}, has mass up to height T that grows without bound: 2.9916, 9.3500, 19.0835, 32.1923 as the ceiling rises 1e4 ... 1e10 -- the H7b log^2 divergence -- so it is not a positive measure in the sense Stieltjes requires. The measure behind Q_m, with atoms |q|^m at t = gamma^2, stays bounded and settles: 0.000018, 0.000018, 0.000018, 0.000018, converging to a finite total with a relative change of only 7.0e-12 between the last two ceilings. Hence it is locally finite for m >= 2. Section 28's third item, moment identification, therefore splits cleanly: the Widder moment reading holds from the second moment on, and the Stieltjes reading of section 3 fails as literally written.",
+      "gate": "H7d: section 3's Stieltjes measure 2 sum delta_{gamma^2} is not locally finite; Q_m's is, exactly when m >= 2",
+      "passed": true
+    }
+  ],
+  "h7_asymptote": [
+    {
+      "gamma_over_x": 10.0,
+      "rel_q_g4_over_x2": 82.64462809917356,
+      "rel_to_first": 1.0
+    },
+    {
+      "gamma_over_x": 100.0,
+      "rel_q_g4_over_x2": 9980.02996004994,
+      "rel_to_first": 120.75836251660428
+    },
+    {
+      "gamma_over_x": 1000.0,
+      "rel_q_g4_over_x2": 999980.000299996,
+      "rel_to_first": 12099.758003629951
+    },
+    {
+      "gamma_over_x": 10000.0,
+      "rel_q_g4_over_x2": 99999980.000003,
+      "rel_to_first": 1209999.7580000362
+    }
+  ],
+  "h7_gammas": [
+    14.134725141734695,
+    21.022039638771556,
+    25.01085758014569,
+    30.424876125859512,
+    32.93506158773919,
+    37.586178158825675,
+    40.9187190121475,
+    43.327073280915,
+    48.00515088116716,
+    49.7738324776723
+  ],
+  "h7_growth_m1": [
+    {
+      "log10_Tmax": 4.0,
+      "tail": 2.9916211250983737
+    },
+    {
+      "log10_Tmax": 6.0,
+      "tail": 9.349959543405616
+    },
+    {
+      "log10_Tmax": 8.0,
+      "tail": 19.083505371171725
+    },
+    {
+      "log10_Tmax": 10.0,
+      "tail": 32.1923435095592
+    },
+    {
+      "log10_Tmax": 12.0,
+      "tail": 48.676474807579666
+    }
+  ],
+  "h7_growth_m2": [
+    {
+      "log10_Tmax": 4.0,
+      "tail": 1.8328742813428563e-05
+    },
+    {
+      "log10_Tmax": 6.0,
+      "tail": 1.833421112426538e-05
+    },
+    {
+      "log10_Tmax": 8.0,
+      "tail": 1.8334212037498742e-05
+    },
+    {
+      "log10_Tmax": 10.0,
+      "tail": 1.833421203762671e-05
+    },
+    {
+      "log10_Tmax": 12.0,
+      "tail": 1.8334212037626726e-05
+    }
+  ],
+  "h7_growth_m3": [
+    {
+      "log10_Tmax": 4.0,
+      "tail": 8.201554027638741e-10
+    },
+    {
+      "log10_Tmax": 6.0,
+      "tail": 8.201554291155678e-10
+    },
+    {
+      "log10_Tmax": 8.0,
+      "tail": 8.201554291155683e-10
+    },
+    {
+      "log10_Tmax": 10.0,
+      "tail": 8.201554291155683e-10
+    },
+    {
+      "log10_Tmax": 12.0,
+      "tail": 8.201554291155683e-10
+    }
+  ],
+  "h7_m1_pred": [
+    4.32529143536654,
+    11.41647882755321,
+    21.882959387948745,
+    35.724733116553146,
+    52.94180001336642
+  ],
+  "h7_m1_ratio": [
+    0.6916576997880036,
+    0.818988033406576,
+    0.8720715070047281,
+    0.9011220155103915,
+    0.9194336950252944
+  ],
+  "h7_m1_ratio_monotone": true,
+  "h7_max_residual": 4.002546428221979e-37,
+  "h7_measure": {
+    "log10_Tmax": [
+      4.0,
+      6.0,
+      8.0,
+      10.0
+    ],
+    "mass_m1": [
+      2.9916211250983737,
+      9.349959543405616,
+      19.083505371171725,
+      32.1923435095592
+    ],
+    "mass_m2": [
+      1.8328742813428563e-05,
+      1.833421112426538e-05,
+      1.8334212037498742e-05,
+      1.833421203762671e-05
+    ]
+  },
+  "h7_partial": [
+    {
+      "F_partial": 4.591928750483969,
+      "Q1_partial": 4.586882523355209,
+      "Tmax": 100.0,
+      "count": 20000,
+      "rel_diff": 0.0010989341087288976
+    },
+    {
+      "F_partial": 0.0005605453366647686,
+      "Q1_partial": 0.0005605207586526947,
+      "Tmax": 10000.0,
+      "count": 20000,
+      "rel_diff": 4.3846608768849384e-05
+    },
+    {
+      "F_partial": 3.012520190480332e-10,
+      "Q1_partial": 3.0125201903352054e-10,
+      "Tmax": 1000000.0,
+      "count": 20000,
+      "rel_diff": 4.8174512046189217e-11
+    }
+  ],
+  "h7_ratio_rows": [
+    {
+      "gamma_over_x": 1.0,
+      "w_over_x_plus_w": 0.999000999000999
+    },
+    {
+      "gamma_over_x": 10.0,
+      "w_over_x_plus_w": 0.999990000099999
+    },
+    {
+      "gamma_over_x": 100.0,
+      "w_over_x_plus_w": 0.99999990000001
+    },
+    {
+      "gamma_over_x": 1000.0,
+      "w_over_x_plus_w": 0.999999999
+    },
+    {
+      "gamma_over_x": 10000.0,
+      "w_over_x_plus_w": 0.99999999999
+    }
+  ],
+  "h7_real_slope": -1.9993422533974896,
+  "h7_synth_slope": -1.998524042804383
+}
