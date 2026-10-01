@@ -1,0 +1,856 @@
+{
+  "conclusion": "H6 asks whether the eventual-positivity criterion implies RH, and answers: the chain is SOUND for a displaced zero at ANY height, so no structural objection to the route survives. 5/5 sub-gates pass. H5e's on-axis obstruction is IRRELEVANT, because the criterion quantifies over ALL x > 0 and a single violating x refutes it. The chain is off-axis zero -> some x with strict maximal modulus -> isolated cluster of nonzero phase -> Re S(m) < 0 for infinitely many m (H5a, exact) -> eventual positivity fails. H6a verifies the chain for the lowest displaced zero with an exact condition: since |q| -> 1/|w| as x -> 0 and |w|^2 = gamma^4 + 2 delta^2 gamma^2 + delta^4, dominance over the next zero is exactly delta^2 < gamma_2^2 - gamma_1^2 = 242.1, i.e. |delta| < 15.56 -- a wide window, not a narrow one. Inside it the first negative Q_m is m = 11102 against the predicted pi gamma/(4 delta) = 11102 (relative error 0.0e+00), recurring at 100087 of 200000 orders, with the dominant pair beating the tail by a factor 10^3.83e+03. So eventual positivity genuinely FAILS when the lowest zero is off-axis. H6b supplies the exact phase law arg q(x) = 2 atan(2 delta gamma/(x+gamma^2-delta^2)) - atan(2 delta gamma/(gamma^2-delta^2)), verified against direct evaluation to 6e-42 over 4 gammas, 3 deltas and x/gamma^2 from 1e-8 to 1e6; this replaces H4a's small-x-only law and holds at every x. H6c then finds a real correction to it: at the dominance scale x = gamma^2 the two atan's arguments are O(u^2)-perturbed and the linear terms cancel, leaving arg q = (delta/gamma)^3 -- CUBIC, with the measured ratio to that prediction constant at 1.0000 (spread 2.5e-07) across 4 gammas and 4 deltas. H6d shows why this does NOT block the route: arg q is strictly decreasing in x, so the phase is largest at the smallest admissible x, and at x = 2 delta gamma it is again linear with ratio 0.9941 to 2 delta/gamma, giving the required order m ~ (pi gamma)/(4 delta) -- H4b's law -- in the computable range, whereas insisting on x = gamma^2 would demand m up to 4.42e+13. H6e closes the last gap: displacing the zero at index k = 2, 3, 4 puts the dominance window at x/gamma_k^2 = [0.67, 0.84, 0.82], strictly below 1, and all three reach a negative Q_m at m = [84495, 228656, 245027] within the 400000-order cap. An earlier cut of H6 appeared to show the opposite, but its coarse x-grid landed near x/gamma_k^2 = 1, the single point where the phase is cubic-small; a refined grid finds the window's left edge where it is not. So the route does NOT need the off-axis zero to be the lowest one. WHAT REMAINS OPEN: this is a synthetic finite-spectrum argument, so passing from it to the real zeta spectrum -- and above all the prime-gamma -> universal H_N >= 0 bridge (record section 27) -- is untouched. H6 does NOT prove RH; it shows the pinned criterion is refutable by any off-axis zero, conditional on that bridge.",
+  "experiment": "widder/hankel level 6: does eventual positivity imply RH? the chain closes for the lowest zero and breaks above it",
+  "gates": [
+    {
+      "detail": "At x -> 0, |q| -> 1/|w|, so the maximizer is the smallest |w|; since |w|^2 = gamma^4 + 2 delta^2 gamma^2 + delta^4, dominance of a displaced lowest zero over the next one is exactly delta^2 < gamma_2^2 - gamma_1^2 = 242.1357, i.e. |delta| < 15.5607 -- a wide window, not a narrow one. The criterion and the numerics agree at every test point including both sides of the threshold (['0.001:True', '1:True', '10:True', '20.83:False', '21:False']). Inside the window the chain completes: at x = 0.001 the first negative Q_m is m = 11102 against the predicted pi gamma/(4 delta) = 11102 (relative error 0.0e+00), negativity recurs at 100087 of the next 200000 orders (~1/2 density, as H5a predicts), and the dominant pair beats the rest of the spectrum by a factor 3.83e+03. So eventual positivity genuinely FAILS when the lowest zero is off-axis -- a theorem-level statement, not a scan.",
+      "gate": "H6a: the chain closes for the LOWEST displaced zero, and the exact small-x dominance condition is delta^2 < gamma_next^2 - gamma^2",
+      "passed": true
+    },
+    {
+      "detail": "For w = gamma^2 - delta^2 - 2i delta gamma, arg q = arg w - 2 arg(x+w) gives the closed form arg q(x) = 2 atan(2 delta gamma/(x + gamma^2 - delta^2)) - atan(2 delta gamma/(gamma^2 - delta^2)). Checked against direct evaluation of arg(w/(x+w)^2) at 72 points spanning 4 gammas, 3 deltas and x/gamma^2 from 1e-8 to 1e6, the worst absolute discrepancy is 5.74e-42. This replaces H4a's small-x law arg q = 2 delta/gamma with something valid at every x, and it is what makes the cubic law of H6c visible: the two atan's leading terms cancel when x is of order gamma^2.",
+      "gate": "H6b: arg q(x) has an exact closed form, verified to < 1e-30",
+      "passed": true
+    },
+    {
+      "detail": "Substituting x = gamma^2 into the H6b closed form gives 2 atan(2u/(2-u^2)) - atan(2u/(1-u^2)) with u = delta/gamma; note the atan arguments are themselves O(u^2)-perturbed, which is why a naive 2 atan(u) - atan(2u) gives the wrong coefficient. The symbolic expansion is u^3 - u^5/2 + u^7/4 + O(u^8), so the leading term is u^3. Measured over 4 gammas x 4 deltas spanning 1e-2 to 1e-8, the ratio of the exact phase to (delta/gamma)^3 is 1.0000 with spread 2.5e-07 and worst relative deviation 2.5e-07. So the phase at the dominance-window scale x = gamma^2 is cubic-small, a genuine correction to the linear law 2 delta/gamma of H4a -- H6d shows why that correction does not, in the end, obstruct the route.",
+      "gate": "H6c: at x = gamma^2 the phase is CUBIC in delta, arg q = (delta/gamma)^3",
+      "passed": true
+    },
+    {
+      "detail": "Crucially arg q(x) is strictly decreasing in x: with A = 2 delta gamma and B = gamma^2 - delta^2, d/dx[2 atan(A/(x+B))] = -2A/((x+B)^2+A^2) < 0. Hence the phase is LARGEST at the smallest admissible x and tends to 0 as x -> infinity; the cubic phase of H6c at x = gamma^2 is a local feature, not the extremum that governs the route. Measured at the reference point x* = 2 delta gamma (well below gamma^2, where the dominance window of H6e actually begins), the ratio of the exact phase to the linear law 2 delta/gamma is 0.9941 with spread 1.9e-02 over gamma in ([21.022039638771556, 25.01085758014569]) and delta in (0.1, 0.01, 0.001). The required order m = pi/(2 arg q) then spans 168 to 2.39e+04, matching m ~ (pi gamma)/(4 delta) and staying in the computable range, whereas insisting on x = gamma^2 would demand m up to 4.42e+13. So H6c's cubic correction is real but AVOIDABLE: the route does not have to work at the dominance-window scale, and H4b's linear law is the operative one.",
+      "gate": "H6d: the required order is governed by the phase at SMALL x, so the linear law m ~ (pi gamma)/(4 delta) survives",
+      "passed": true
+    },
+    {
+      "detail": "Displacing the zero at index k and locating its dominance window (nonempty for every k, per H5d) puts the window at x/gamma_k^2 = [0.673, 0.842, 0.822], i.e. BELOW gamma^2, and there the phase is linear rather than cubic (H6d). At delta = 1e-3 all of k = 2, 3, 4 reach a negative Q_m at m = [84495, 228656, 245027], within the 400000-order cap and within a factor ['1.00', '1.00', '1.00'] of the predicted pi/(2 arg q). So the chain of H6a -- off-axis zero -> some x with strict maximal modulus -> isolated cluster with nonzero phase -> Re S(m) < 0 for infinitely many m -> eventual positivity fails -- does NOT require the off-axis zero to be the lowest one. An earlier cut of this experiment appeared to show the opposite, but that scan used a coarse x-grid whose points landed near x/gamma_k^2 = 1, the one place where the phase is cubic-small; refining the grid finds the window's left edge, where the required order is in the computable range. H6e therefore removes the last structural objection to the route.",
+      "gate": "H6e: the chain EXTENDS to a displaced zero at ANY height, so the reduction is not the wall",
+      "passed": true
+    }
+  ],
+  "h6_chain": {
+    "delta": 0.001,
+    "density_cap": 200000,
+    "m_found": 11102,
+    "m_pred": 11102,
+    "neg": 100087,
+    "pos": 88812,
+    "rel": 0.0,
+    "tail_log10_margin": 3826.581326811115,
+    "x": 0.001
+  },
+  "h6_crit_checks": [
+    {
+      "delta": 0.001,
+      "delta2_lt_crit": true,
+      "dominates": true
+    },
+    {
+      "delta": 1.0,
+      "delta2_lt_crit": true,
+      "dominates": true
+    },
+    {
+      "delta": 10.0,
+      "delta2_lt_crit": true,
+      "dominates": true
+    },
+    {
+      "delta": 20.83,
+      "delta2_lt_crit": false,
+      "dominates": false
+    },
+    {
+      "delta": 21.0,
+      "delta2_lt_crit": false,
+      "dominates": false
+    }
+  ],
+  "h6_cubic_rows": [
+    {
+      "arg_direct": 3.5410967109592633e-10,
+      "delta": 0.01,
+      "gamma": 14.134725141734695,
+      "ratio": 0.9999997497378564,
+      "rel": 2.502621435485601e-07,
+      "two_cube": 3.541097597161938e-10
+    },
+    {
+      "arg_direct": 3.541097597073318e-16,
+      "delta": 0.0001,
+      "gamma": 14.134725141734695,
+      "ratio": 0.9999999999749738,
+      "rel": 2.5026220617344267e-11,
+      "two_cube": 3.541097597161938e-16
+    },
+    {
+      "arg_direct": 3.541097597161929e-22,
+      "delta": 1e-06,
+      "gamma": 14.134725141734695,
+      "ratio": 0.9999999999999974,
+      "rel": 2.5026220617991867e-15,
+      "two_cube": 3.541097597161938e-22
+    },
+    {
+      "arg_direct": 3.541097597161938e-28,
+      "delta": 1e-08,
+      "gamma": 14.134725141734695,
+      "ratio": 1.0,
+      "rel": 2.5020963159439477e-19,
+      "two_cube": 3.541097597161938e-28
+    },
+    {
+      "arg_direct": 1.0764042378067879e-10,
+      "delta": 0.01,
+      "gamma": 21.022039638771556,
+      "ratio": 0.9999998868589373,
+      "rel": 1.1314106277258086e-07,
+      "two_cube": 1.0764043595923211e-10
+    },
+    {
+      "arg_direct": 1.0764043595801426e-16,
+      "delta": 0.0001,
+      "gamma": 21.022039638771556,
+      "ratio": 0.9999999999886859,
+      "rel": 1.1314107557220134e-11,
+      "two_cube": 1.0764043595923211e-16
+    },
+    {
+      "arg_direct": 1.07640435959232e-22,
+      "delta": 1e-06,
+      "gamma": 21.022039638771556,
+      "ratio": 0.9999999999999989,
+      "rel": 1.1314107557484312e-15,
+      "two_cube": 1.076404359592321e-22
+    },
+    {
+      "arg_direct": 1.076404359592321e-28,
+      "delta": 1e-08,
+      "gamma": 21.022039638771556,
+      "ratio": 1.0,
+      "rel": 1.1314734062649947e-19,
+      "two_cube": 1.076404359592321e-28
+    },
+    {
+      "arg_direct": 6.39166810529933e-11,
+      "delta": 0.01,
+      "gamma": 25.01085758014569,
+      "ratio": 0.9999999200694497,
+      "rel": 7.993055034060092e-08,
+      "two_cube": 6.39166861618892e-11
+    },
+    {
+      "arg_direct": 6.391668616137831e-17,
+      "delta": 0.0001,
+      "gamma": 25.01085758014569,
+      "ratio": 0.999999999992007,
+      "rel": 7.993055672885508e-12,
+      "two_cube": 6.39166861618892e-17
+    },
+    {
+      "arg_direct": 6.391668616188914e-23,
+      "delta": 1e-06,
+      "gamma": 25.01085758014569,
+      "ratio": 0.9999999999999992,
+      "rel": 7.993055672963728e-16,
+      "two_cube": 6.391668616188919e-23
+    },
+    {
+      "arg_direct": 6.39166861618892e-29,
+      "delta": 1e-08,
+      "gamma": 25.01085758014569,
+      "ratio": 1.0,
+      "rel": 7.978726923494116e-20,
+      "two_cube": 6.39166861618892e-29
+    },
+    {
+      "arg_direct": 3.550696241901091e-11,
+      "delta": 0.01,
+      "gamma": 30.424876125859512,
+      "ratio": 0.9999999459852533,
+      "rel": 5.40147466601979e-08,
+      "two_cube": 3.550696433691059e-11
+    },
+    {
+      "arg_direct": 3.55069643367188e-17,
+      "delta": 0.0001,
+      "gamma": 30.424876125859512,
+      "ratio": 0.9999999999945985,
+      "rel": 5.401474957749905e-12,
+      "two_cube": 3.550696433691059e-17
+    },
+    {
+      "arg_direct": 3.550696433691057e-23,
+      "delta": 1e-06,
+      "gamma": 30.424876125859512,
+      "ratio": 0.9999999999999994,
+      "rel": 5.401474957957132e-16,
+      "two_cube": 3.550696433691059e-23
+    },
+    {
+      "arg_direct": 3.5506964336910594e-29,
+      "delta": 1e-08,
+      "gamma": 30.424876125859512,
+      "ratio": 1.0,
+      "rel": 5.4085336446423725e-20,
+      "two_cube": 3.5506964336910594e-29
+    }
+  ],
+  "h6_dcrit": 15.560710001208031,
+  "h6_dominance_crit": 242.13569574169563,
+  "h6_linear_rows": {
+    "m_required": [
+      168.27963095089345,
+      1654.211840258665,
+      16513.81322717127,
+      199.60271217267265,
+      1967.4923716952978,
+      19646.623462794294,
+      242.11961393609732,
+      2392.7079278388096,
+      23898.783638627094
+    ],
+    "ratios": [
+      0.9811449686372085,
+      0.9980989690279212,
+      0.9998097408533988,
+      0.9841289927688135,
+      0.9984019196738073,
+      0.9998400817138543,
+      0.9869354011588551,
+      0.9986861142901149,
+      0.9998685369167877
+    ]
+  },
+  "h6_phase_rows": [
+    {
+      "arg_closed": 0.14126013315888417,
+      "arg_direct": 0.14126013315888417,
+      "delta": 1.0,
+      "err": 2.8698592549372254e-42,
+      "gamma": 14.134725141734695,
+      "x_over_gamma2": 5.0052441235941164e-11
+    },
+    {
+      "arg_closed": 0.141246110208916,
+      "arg_direct": 0.141246110208916,
+      "delta": 1.0,
+      "err": 5.739718509874451e-42,
+      "gamma": 14.134725141734695,
+      "x_over_gamma2": 5.0052441235941164e-05
+    },
+    {
+      "arg_closed": 0.11575614671704537,
+      "arg_direct": 0.11575614671704537,
+      "delta": 1.0,
+      "err": 1.4349296274686127e-42,
+      "gamma": 14.134725141734695,
+      "x_over_gamma2": 0.1
+    },
+    {
+      "arg_closed": 0.0003532257654409958,
+      "arg_direct": 0.0003532257654409958,
+      "delta": 1.0,
+      "err": 9.304621803116785e-43,
+      "gamma": 14.134725141734695,
+      "x_over_gamma2": 1.0
+    },
+    {
+      "arg_closed": 0.11552338792702237,
+      "arg_direct": 0.11552338792702237,
+      "delta": 1.0,
+      "err": 0.0,
+      "gamma": 14.134725141734695,
+      "x_over_gamma2": 10.0
+    },
+    {
+      "arg_closed": 0.14120360550951586,
+      "arg_direct": 0.14120360550951586,
+      "delta": 1.0,
+      "err": 2.8698592549372254e-42,
+      "gamma": 14.134725141734695,
+      "x_over_gamma2": 5005.244123594116
+    },
+    {
+      "arg_closed": 0.0014149547628709658,
+      "arg_direct": 0.0014149547628709658,
+      "delta": 0.01,
+      "err": 2.2420775429197073e-44,
+      "gamma": 14.134725141734695,
+      "x_over_gamma2": 5.0052441235941164e-11
+    },
+    {
+      "arg_closed": 0.001414813126339766,
+      "arg_direct": 0.001414813126339766,
+      "delta": 0.01,
+      "err": 2.2420775429197073e-44,
+      "gamma": 14.134725141734695,
+      "x_over_gamma2": 5.0052441235941164e-05
+    },
+    {
+      "arg_closed": 0.0011576904415591305,
+      "arg_direct": 0.0011576904415591305,
+      "delta": 0.01,
+      "err": 2.2420775429197073e-44,
+      "gamma": 14.134725141734695,
+      "x_over_gamma2": 0.1
+    },
+    {
+      "arg_closed": 3.5410967109592633e-10,
+      "arg_direct": 3.5410967109592633e-10,
+      "delta": 0.01,
+      "err": 6.399598329962291e-45,
+      "gamma": 14.134725141734695,
+      "x_over_gamma2": 1.0
+    },
+    {
+      "arg_closed": 0.0011576902074371123,
+      "arg_direct": 0.0011576902074371123,
+      "delta": 0.01,
+      "err": 0.0,
+      "gamma": 14.134725141734695,
+      "x_over_gamma2": 10.0
+    },
+    {
+      "arg_closed": 0.0014143894869436465,
+      "arg_direct": 0.0014143894869436465,
+      "delta": 0.01,
+      "err": 2.2420775429197073e-44,
+      "gamma": 14.134725141734695,
+      "x_over_gamma2": 5005.244123594116
+    },
+    {
+      "arg_closed": 1.4149549989204605e-05,
+      "arg_direct": 1.4149549989204605e-05,
+      "delta": 0.0001,
+      "err": 3.503246160812043e-46,
+      "gamma": 14.134725141734695,
+      "x_over_gamma2": 5.0052441235941164e-11
+    },
+    {
+      "arg_closed": 1.4148133622475004e-05,
+      "arg_direct": 1.4148133622475004e-05,
+      "delta": 0.0001,
+      "err": 1.7516230804060213e-46,
+      "gamma": 14.134725141734695,
+      "x_over_gamma2": 5.0052441235941164e-05
+    },
+    {
+      "arg_closed": 1.1576904537961767e-05,
+      "arg_direct": 1.1576904537961767e-05,
+      "delta": 0.0001,
+      "err": 1.7516230804060213e-46,
+      "gamma": 14.134725141734695,
+      "x_over_gamma2": 0.1
+    },
+    {
+      "arg_closed": 3.541097597073318e-16,
+      "arg_direct": 3.541097597073318e-16,
+      "delta": 0.0001,
+      "err": 1.616874537174406e-46,
+      "gamma": 14.134725141734695,
+      "x_over_gamma2": 1.0
+    },
+    {
+      "arg_closed": 1.1576904537727645e-05,
+      "arg_direct": 1.1576904537727645e-05,
+      "delta": 0.0001,
+      "err": 0.0,
+      "gamma": 14.134725141734695,
+      "x_over_gamma2": 10.0
+    },
+    {
+      "arg_closed": 1.414389722993198e-05,
+      "arg_direct": 1.414389722993198e-05,
+      "delta": 0.0001,
+      "err": 1.7516230804060213e-46,
+      "gamma": 14.134725141734695,
+      "x_over_gamma2": 5005.244123594116
+    },
+    {
+      "arg_closed": 0.09506658399547385,
+      "arg_direct": 0.09506658399547385,
+      "delta": 1.0,
+      "err": 1.4349296274686127e-42,
+      "gamma": 21.022039638771556,
+      "x_over_gamma2": 2.2628215114696286e-11
+    },
+    {
+      "arg_closed": 0.09506229789840015,
+      "arg_direct": 0.09506229789840015,
+      "delta": 1.0,
+      "err": 0.0,
+      "gamma": 21.022039638771556,
+      "x_over_gamma2": 2.2628215114696287e-05
+    },
+    {
+      "arg_closed": 0.07783657271985134,
+      "arg_direct": 0.07783657271985134,
+      "delta": 1.0,
+      "err": 2.8698592549372254e-42,
+      "gamma": 21.022039638771556,
+      "x_over_gamma2": 0.1
+    },
+    {
+      "arg_closed": 0.00010751878794241427,
+      "arg_direct": 0.00010751878794241427,
+      "delta": 1.0,
+      "err": 1.586269861615693e-42,
+      "gamma": 21.022039638771556,
+      "x_over_gamma2": 1.0
+    },
+    {
+      "arg_closed": 0.07776559337516298,
+      "arg_direct": 0.07776559337516298,
+      "delta": 1.0,
+      "err": 1.4349296274686127e-42,
+      "gamma": 21.022039638771556,
+      "x_over_gamma2": 10.0
+    },
+    {
+      "arg_closed": 0.09498253290158164,
+      "arg_direct": 0.09498253290158164,
+      "delta": 1.0,
+      "err": 2.8698592549372254e-42,
+      "gamma": 21.022039638771556,
+      "x_over_gamma2": 2262.8215114696286
+    },
+    {
+      "arg_closed": 0.0009513823983882528,
+      "arg_direct": 0.0009513823983882528,
+      "delta": 0.01,
+      "err": 1.1210387714598537e-44,
+      "gamma": 21.022039638771556,
+      "x_over_gamma2": 2.2628215114696286e-11
+    },
+    {
+      "arg_closed": 0.0009513393432506722,
+      "arg_direct": 0.0009513393432506722,
+      "delta": 0.01,
+      "err": 1.1210387714598537e-44,
+      "gamma": 21.022039638771556,
+      "x_over_gamma2": 2.2628215114696287e-05
+    },
+    {
+      "arg_closed": 0.0007784038355275501,
+      "arg_direct": 0.0007784038355275501,
+      "delta": 0.01,
+      "err": 2.2420775429197073e-44,
+      "gamma": 21.022039638771556,
+      "x_over_gamma2": 0.1
+    },
+    {
+      "arg_closed": 1.0764042378067879e-10,
+      "arg_direct": 1.0764042378067879e-10,
+      "delta": 0.01,
+      "err": 2.985323160819797e-45,
+      "gamma": 21.022039638771556,
+      "x_over_gamma2": 1.0
+    },
+    {
+      "arg_closed": 0.0007784037643603386,
+      "arg_direct": 0.0007784037643603386,
+      "delta": 0.01,
+      "err": 0.0,
+      "gamma": 21.022039638771556,
+      "x_over_gamma2": 10.0
+    },
+    {
+      "arg_closed": 0.0009505418882890858,
+      "arg_direct": 0.0009505418882890858,
+      "delta": 0.01,
+      "err": 1.1210387714598537e-44,
+      "gamma": 21.022039638771556,
+      "x_over_gamma2": 2262.8215114696286
+    },
+    {
+      "arg_closed": 9.513824701413577e-06,
+      "arg_direct": 9.513824701413577e-06,
+      "delta": 0.0001,
+      "err": 1.7516230804060213e-46,
+      "gamma": 21.022039638771556,
+      "x_over_gamma2": 2.2628215114696286e-11
+    },
+    {
+      "arg_closed": 9.513394149842945e-06,
+      "arg_direct": 9.513394149842945e-06,
+      "delta": 0.0001,
+      "err": 0.0,
+      "gamma": 21.022039638771556,
+      "x_over_gamma2": 2.2628215114696287e-05
+    },
+    {
+      "arg_closed": 7.784038392472924e-06,
+      "arg_direct": 7.784038392472924e-06,
+      "delta": 0.0001,
+      "err": 0.0,
+      "gamma": 21.022039638771556,
+      "x_over_gamma2": 0.1
+    },
+    {
+      "arg_closed": 1.0764043595801426e-16,
+      "arg_direct": 1.0764043595801426e-16,
+      "delta": 0.0001,
+      "err": 1.1534478716480423e-47,
+      "gamma": 21.022039638771556,
+      "x_over_gamma2": 1.0
+    },
+    {
+      "arg_closed": 7.784038392401758e-06,
+      "arg_direct": 7.784038392401758e-06,
+      "delta": 0.0001,
+      "err": 0.0,
+      "gamma": 21.022039638771556,
+      "x_over_gamma2": 10.0
+    },
+    {
+      "arg_closed": 9.505419600422746e-06,
+      "arg_direct": 9.505419600422746e-06,
+      "delta": 0.0001,
+      "err": 0.0,
+      "gamma": 21.022039638771556,
+      "x_over_gamma2": 2262.8215114696286
+    },
+    {
+      "arg_closed": 0.07992270052442779,
+      "arg_direct": 0.07992270052442779,
+      "delta": 1.0,
+      "err": 4.304788882405838e-42,
+      "gamma": 25.01085758014569,
+      "x_over_gamma2": 1.5986111345898794e-11
+    },
+    {
+      "arg_closed": 0.07992015205474978,
+      "arg_direct": 0.07992015205474978,
+      "delta": 1.0,
+      "err": 0.0,
+      "gamma": 25.01085758014569,
+      "x_over_gamma2": 1.5986111345898795e-05
+    },
+    {
+      "arg_closed": 0.06542388343424785,
+      "arg_direct": 0.06542388343424785,
+      "delta": 1.0,
+      "err": 2.8698592549372254e-42,
+      "gamma": 25.01085758014569,
+      "x_over_gamma2": 0.1
+    },
+    {
+      "arg_closed": 6.386563798016742e-05,
+      "arg_direct": 6.386563798016742e-05,
+      "delta": 1.0,
+      "err": 7.88931035414872e-43,
+      "gamma": 25.01085758014569,
+      "x_over_gamma2": 1.0
+    },
+    {
+      "arg_closed": 0.06538170333979436,
+      "arg_direct": 0.06538170333979436,
+      "delta": 1.0,
+      "err": 0.0,
+      "gamma": 25.01085758014569,
+      "x_over_gamma2": 10.0
+    },
+    {
+      "arg_closed": 0.07982271953916482,
+      "arg_direct": 0.07982271953916482,
+      "delta": 1.0,
+      "err": 0.0,
+      "gamma": 25.01085758014569,
+      "x_over_gamma2": 1598.6111345898794
+    },
+    {
+      "arg_closed": 0.000799652665628565,
+      "arg_direct": 0.000799652665628565,
+      "delta": 0.01,
+      "err": 1.1210387714598537e-44,
+      "gamma": 25.01085758014569,
+      "x_over_gamma2": 1.5986111345898794e-11
+    },
+    {
+      "arg_closed": 0.000799627099396546,
+      "arg_direct": 0.000799627099396546,
+      "delta": 0.01,
+      "err": 1.1210387714598537e-44,
+      "gamma": 25.01085758014569,
+      "x_over_gamma2": 1.5986111345898795e-05
+    },
+    {
+      "arg_closed": 0.0006542613045534834,
+      "arg_direct": 0.0006542613045534834,
+      "delta": 0.01,
+      "err": 2.2420775429197073e-44,
+      "gamma": 25.01085758014569,
+      "x_over_gamma2": 0.1
+    },
+    {
+      "arg_closed": 6.39166810529933e-11,
+      "arg_direct": 6.39166810529933e-11,
+      "delta": 0.01,
+      "err": 1.1780544555320114e-45,
+      "gamma": 25.01085758014569,
+      "x_over_gamma2": 1.0
+    },
+    {
+      "arg_closed": 0.0006542612622945252,
+      "arg_direct": 0.0006542612622945252,
+      "delta": 0.01,
+      "err": 0.0,
+      "gamma": 25.01085758014569,
+      "x_over_gamma2": 10.0
+    },
+    {
+      "arg_closed": 0.000798652856774269,
+      "arg_direct": 0.000798652856774269,
+      "delta": 0.01,
+      "err": 1.1210387714598537e-44,
+      "gamma": 25.01085758014569,
+      "x_over_gamma2": 1598.6111345898794
+    },
+    {
+      "arg_closed": 7.99652708235424e-06,
+      "arg_direct": 7.99652708235424e-06,
+      "delta": 0.0001,
+      "err": 1.7516230804060213e-46,
+      "gamma": 25.01085758014569,
+      "x_over_gamma2": 1.5986111345898794e-11
+    },
+    {
+      "arg_closed": 7.996271419952319e-06,
+      "arg_direct": 7.996271419952319e-06,
+      "delta": 0.0001,
+      "err": 0.0,
+      "gamma": 25.01085758014569,
+      "x_over_gamma2": 1.5986111345898795e-05
+    },
+    {
+      "arg_closed": 6.542613067622578e-06,
+      "arg_direct": 6.542613067622578e-06,
+      "delta": 0.0001,
+      "err": 0.0,
+      "gamma": 25.01085758014569,
+      "x_over_gamma2": 0.1
+    },
+    {
+      "arg_closed": 6.391668616137831e-17,
+      "arg_direct": 6.391668616137831e-17,
+      "delta": 0.0001,
+      "err": 7.641416562168434e-47,
+      "gamma": 25.01085758014569,
+      "x_over_gamma2": 1.0
+    },
+    {
+      "arg_closed": 6.542613067580319e-06,
+      "arg_direct": 6.542613067580319e-06,
+      "delta": 0.0001,
+      "err": 0.0,
+      "gamma": 25.01085758014569,
+      "x_over_gamma2": 10.0
+    },
+    {
+      "arg_closed": 7.986528993812277e-06,
+      "arg_direct": 7.986528993812277e-06,
+      "delta": 0.0001,
+      "err": 0.0,
+      "gamma": 25.01085758014569,
+      "x_over_gamma2": 1598.6111345898794
+    },
+    {
+      "arg_closed": 0.06571202661533798,
+      "arg_direct": 0.06571202661533798,
+      "delta": 1.0,
+      "err": 1.4349296274686127e-42,
+      "gamma": 30.424876125859512,
+      "x_over_gamma2": 1.0802949915558162e-11
+    },
+    {
+      "arg_closed": 0.06571060941711639,
+      "arg_direct": 0.06571060941711639,
+      "delta": 1.0,
+      "err": 1.4349296274686127e-42,
+      "gamma": 30.424876125859512,
+      "x_over_gamma2": 1.0802949915558162e-05
+    },
+    {
+      "arg_closed": 0.05378249879770311,
+      "arg_direct": 0.05378249879770311,
+      "delta": 1.0,
+      "err": 1.4349296274686127e-42,
+      "gamma": 30.424876125859512,
+      "x_over_gamma2": 0.1
+    },
+    {
+      "arg_closed": 3.5487795689211975e-05,
+      "arg_direct": 3.5487795689211975e-05,
+      "delta": 1.0,
+      "err": 2.076724324129379e-42,
+      "gamma": 30.424876125859512,
+      "x_over_gamma2": 1.0
+    },
+    {
+      "arg_closed": 0.05375905274325172,
+      "arg_direct": 0.05375905274325172,
+      "delta": 1.0,
+      "err": 1.4349296274686127e-42,
+      "gamma": 30.424876125859512,
+      "x_over_gamma2": 10.0
+    },
+    {
+      "arg_closed": 0.06559043954069867,
+      "arg_direct": 0.06559043954069867,
+      "delta": 1.0,
+      "err": 1.4349296274686127e-42,
+      "gamma": 30.424876125859512,
+      "x_over_gamma2": 1080.2949915558163
+    },
+    {
+      "arg_closed": 0.0006573568022639324,
+      "arg_direct": 0.0006573568022639324,
+      "delta": 0.01,
+      "err": 1.1210387714598537e-44,
+      "gamma": 30.424876125859512,
+      "x_over_gamma2": 1.0802949915558162e-11
+    },
+    {
+      "arg_closed": 0.0006573425996488992,
+      "arg_direct": 0.0006573425996488992,
+      "delta": 0.01,
+      "err": 1.1210387714598537e-44,
+      "gamma": 30.424876125859512,
+      "x_over_gamma2": 1.0802949915558162e-05
+    },
+    {
+      "arg_closed": 0.0005378374018224052,
+      "arg_direct": 0.0005378374018224052,
+      "delta": 0.01,
+      "err": 0.0,
+      "gamma": 30.424876125859512,
+      "x_over_gamma2": 0.1
+    },
+    {
+      "arg_closed": 3.550696241901091e-11,
+      "arg_direct": 3.550696241901091e-11,
+      "delta": 0.01,
+      "err": 1.1228384775773942e-45,
+      "gamma": 30.424876125859512,
+      "x_over_gamma2": 1.0
+    },
+    {
+      "arg_closed": 0.0005378373783467293,
+      "arg_direct": 0.0005378373783467293,
+      "delta": 0.01,
+      "err": 1.1210387714598537e-44,
+      "gamma": 30.424876125859512,
+      "x_over_gamma2": 10.0
+    },
+    {
+      "arg_closed": 0.000656140932730697,
+      "arg_direct": 0.000656140932730697,
+      "delta": 0.01,
+      "err": 1.1210387714598537e-44,
+      "gamma": 30.424876125859512,
+      "x_over_gamma2": 1080.2949915558163
+    },
+    {
+      "arg_closed": 6.573568259328732e-06,
+      "arg_direct": 6.573568259328732e-06,
+      "delta": 0.0001,
+      "err": 1.7516230804060213e-46,
+      "gamma": 30.424876125859512,
+      "x_over_gamma2": 1.0802949915558162e-11
+    },
+    {
+      "arg_closed": 6.5734262331477185e-06,
+      "arg_direct": 6.5734262331477185e-06,
+      "delta": 0.0001,
+      "err": 8.758115402030107e-47,
+      "gamma": 30.424876125859512,
+      "x_over_gamma2": 1.0802949915558162e-05
+    },
+    {
+      "arg_closed": 5.378374030494217e-06,
+      "arg_direct": 5.378374030494217e-06,
+      "delta": 0.0001,
+      "err": 0.0,
+      "gamma": 30.424876125859512,
+      "x_over_gamma2": 0.1
+    },
+    {
+      "arg_closed": 3.55069643367188e-17,
+      "arg_direct": 3.55069643367188e-17,
+      "delta": 0.0001,
+      "err": 9.504721896422268e-47,
+      "gamma": 30.424876125859512,
+      "x_over_gamma2": 1.0
+    },
+    {
+      "arg_closed": 5.378374030470741e-06,
+      "arg_direct": 5.378374030470741e-06,
+      "delta": 0.0001,
+      "err": 8.758115402030107e-47,
+      "gamma": 30.424876125859512,
+      "x_over_gamma2": 10.0
+    },
+    {
+      "arg_closed": 6.561409563997592e-06,
+      "arg_direct": 6.561409563997592e-06,
+      "delta": 0.0001,
+      "err": 8.758115402030107e-47,
+      "gamma": 30.424876125859512,
+      "x_over_gamma2": 1080.2949915558163
+    }
+  ],
+  "h6_pred_cubic": 6653853573764.105,
+  "h6_reduction_rows": [
+    {
+      "arg_q": 1.8590460534413803e-05,
+      "gamma": 21.022039638771556,
+      "k": 2,
+      "m_cap": 400000,
+      "m_first": 84495,
+      "m_required": 84494.75062154114,
+      "x_over_gamma2": 0.6730735651858608,
+      "x_win": 297.4488097157613
+    },
+    {
+      "arg_q": 6.869699159253114e-06,
+      "gamma": 25.01085758014569,
+      "k": 3,
+      "m_cap": 400000,
+      "m_first": 228656,
+      "m_required": 228655.766487113,
+      "x_over_gamma2": 0.8417757476745278,
+      "x_win": 526.5669239132903
+    },
+    {
+      "arg_q": 6.410733737790773e-06,
+      "gamma": 30.424876125859512,
+      "k": 4,
+      "m_cap": 400000,
+      "m_first": 245027,
+      "m_required": 245025.98158697115,
+      "x_over_gamma2": 0.8222854569463125,
+      "x_win": 761.1675175519196
+    }
+  ],
+  "h6_required_rows": [
+    {
+      "arg_q_at_gamma2": 1.0764043583744657e-13,
+      "delta": 0.001,
+      "gamma": 21.022039638771556,
+      "m_required_gamma2": 14592994858986.246
+    },
+    {
+      "arg_q_at_gamma2": 6.391668611080023e-14,
+      "delta": 0.001,
+      "gamma": 25.01085758014569,
+      "m_required_gamma2": 24575684729209.914
+    },
+    {
+      "arg_q_at_gamma2": 3.550696431773159e-14,
+      "delta": 0.001,
+      "gamma": 30.424876125859512,
+      "m_required_gamma2": 44239105115794.62
+    }
+  ]
+}

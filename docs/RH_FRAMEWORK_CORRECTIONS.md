@@ -851,3 +851,111 @@ scan over `x`; it is a single statement about the maximal-modulus cluster.
 exact identities and a measured window. None of them supplies the `x`. The
 pinned criterion may still be correct and sufficient. **Nothing here proves or
 refutes RH**; the bridge `prime-gamma â†’ universal H_N âª° 0` (Â§27) remains OPEN.
+
+## 19. H6 — does eventual positivity imply RH? (the chain closes)
+
+`experiments/rh_widder_hankel_h6.py` (5/5 gates) takes up the question §18.6 left
+open: is the pinned criterion refutable by an off-axis zero at *any* height, or
+only by the lowest one? The answer is that the chain is sound at any height, so
+the last structural objection to the route is removed.
+
+### 19.1 H5e's obstruction is irrelevant
+
+§18's H5e produced a configuration where an on-axis zero is the strict
+maximizer, contributing `1` to `S(m)` for every `m`, so `Re S(m) = 0`. That
+looks fatal, but eventual positivity quantifies over **all** `x > 0`:
+
+> `?x > 0, ?m = m0(x), Q_m(x) > 0`  is refuted by a **single** pair `(x, m)`.
+
+So H5e only shows the criterion is not refuted at *that* `x`. The chain H6 needs
+is therefore
+
+```
+any off-axis zero ? ?x: strict maximal modulus (H5d)
+                  ? isolated cluster, nonzero phase (H5b/H5c)
+                  ? Re S(m) < 0 for infinitely many m (H5a, exact)
+                  ? eventual positivity fails.
+```
+
+### 19.2 The exact dominance threshold (H6a)
+
+As `x ? 0`, `q(x) ? 1/w`, so the maximizer is the smallest `|w|`. Since
+
+```
+|w|² = ?4 + 2d²?² + d4,      |w_off| < ?_next²  ?  d² < ?_next² - ?²,
+```
+
+the condition is **exact**, not asymptotic. On the first four zeros the critical
+displacement is `sqrt(?2² - ?1²) = 15.56` — a wide window, not a narrow one. For
+`d = 10?³` the first negative `Q_m` is `m = 11102` against the predicted
+`p?/(4d) = 11102` (**exact**), recurring at `100087` of the next `200000` orders,
+consistent with H5a's ~½ density. So eventual positivity genuinely fails when
+the lowest zero is off-axis.
+
+### 19.3 The exact phase law (H6b) and the cubic correction (H6c)
+
+```
+arg q(x) = 2·atan( 2d?/(x + ?² - d²) ) - atan( 2d?/(?² - d²) ),
+```
+
+verified against direct evaluation to `6·10?4²`. This holds at **every** `x` and
+supersedes H4a's small-`x` asymptote `arg q = 2d/?`.
+
+Substituting `x = ?²` gives a surprise:
+
+```
+arg q(?²) = 2·atan( 2u/(2-u²) ) - atan( 2u/(1-u²) ),  u = d/?,
+          = u³ - u5/2 + u7/4 + O(u8).
+```
+
+The linear terms cancel and the phase is **cubic** in `d`. The coefficient is
+**1**, confirmed at ratio `1.0000` (spread `2.5·10?7`) across 4 `?` × 4 `d`.
+Worth recording: expanding `2 atan(u) - atan(2u)` naively gives the coefficient
+`2/3` and is **wrong**, because at `x = ?²` the `atan` arguments carry `O(u²)`
+perturbations that must be kept. A first cut of H6 read off `2/3`, failed its
+gate, and was corrected against the symbolic series.
+
+### 19.4 The cubic phase is not an obstruction (H6d)
+
+Since `d/dx[2 atan(A/(x+B))] = -2A/((x+B)² + A²) < 0` with `A = 2d?`,
+`B = ?² - d²`, the **signed** phase is strictly decreasing in `x`; `|arg q|`
+peaks at small `x` and relaxes toward `atan(A/B)`. The route is not obliged to
+work at `x = ?²`. At the reference point `x* = 2d? « ?²` the phase is again
+linear — measured ratio `0.9941` to `2d/?` — and the required order is
+`m ~ p?/(4d)`, i.e. **H4b's law survives**, in the computable range. Insisting on
+`x = ?²` would instead demand `m ~ (p/2)(?/d)³`, over `10¹³` at `d = 10?³`.
+
+This is the trap of the experiment: the cubic regime looks like a wall but is a
+local artifact of working at the dominance-window scale.
+
+### 19.5 The chain extends to any height (H6e)
+
+Displacing the zero at index `k = 2, 3, 4` puts the dominance window at
+`x/?_k² = 0.67, 0.84, 0.82` — strictly **below** `1`, i.e. away from the cubic
+point — and all three reach a negative `Q_m` at `m = 84495, 228656, 245027`
+within the `400000`-order cap. So the reduction to the lowest off-axis zero is
+**not** needed.
+
+This correction was itself earned the hard way: a first scan used a coarse `x`
+grid whose points landed near `x/?_k² = 1`, the single scale where the phase is
+cubic-small, and reported "no violation within the cap" for `k = 3, 4`. A refined
+grid finds the window's left edge, where the phase is 50× larger, and the
+violations appear. **Coarse grids near a regime boundary produced a false
+refutation here** — the same class of error as H4's factor-of-two.
+
+### 19.6 What H6 does and does not establish
+
+**Established, on the first four zeros treated as a synthetic spectrum:**
+
+* eventual positivity is refuted by an off-axis zero at any height, not just the lowest;
+* the dominance condition is the exact inequality `d² < ?_next² - ?²`;
+* the phase law is the closed form of §19.3, and the required order is `O(?/d)`.
+
+**Not established:**
+
+* nothing here proves or refutes RH;
+* passing from a four-zero synthetic spectrum to the full zeta spectrum;
+* above all the bridge `prime-gamma ? universal H_N ? 0` (§27), which remains **OPEN**.
+
+The pinned criterion may still be correct and sufficient. H6 removes the
+objections it could test; it does not supply the analytic bridge.
