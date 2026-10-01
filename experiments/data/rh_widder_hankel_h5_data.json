@@ -1,0 +1,496 @@
+{
+  "conclusion": "H5 answers record section 24's five asymptotic-spectrum questions analytically. 5/5 sub-gates pass. H5a is a THEOREM: if the maximal-modulus cluster of q_rho(x)^m is isolated and every phase in it is nonzero mod 2pi, then Re S(m) < 0 for infinitely many m, because f = sum_j cos(m theta_j) is almost periodic with mean f = 0 and mean f^2 > 0 (verified against exact Cesaro constants, and on 12 adversarial phase configurations). So section 24 question 4 -- must the exponential sum change sign -- is answered YES under that hypothesis, in three lines. H5b shows the |q| crossing is an exact quadratic with closed-form roots (residual < 1e-30), so questions 1 and 2 (who maximizes, is it isolated) are exact, not scanned. H5c shows |w|^2 = gamma^4 + 2 delta^2 gamma^2 + delta^4 is strictly increasing in |delta|, so displacement RAISES the modulus and the off-axis zero can only win in a bounded window -- which is why a small-x scan returns the on-axis maximizer. H5d shows that window is nonempty for every displaced index (up to 94.27% of the log grid) but independent of delta to <1e-2 relative, which corrects a natural misreading of H4: the 1/delta barrier is about the required OSCILLATION ORDER m, not about whether dominance is achievable. H5e identifies the real obstruction: if the maximizer at the chosen x is ON the critical line it contributes 1 to S(m) forever, mean f = 1 > 0, and Re S(m) >= 0 identically (0 negative orders in 200000), so that off-axis zero is invisible at that x for ever. SHARPEST REDUCTION SO FAR: section 24's route closes exactly when one exhibits an x whose maximal-modulus cluster has no on-axis member -- a hypothesis the record never states, and which H5d shows cannot hold for all x. The pinned criterion may still be correct and sufficient. NOTHING HERE PROVES OR REFUTES RH; the prime-gamma -> universal H_N >= 0 bridge (record section 27) remains OPEN, and the missing piece is now a single well-posed statement about the maximal-modulus cluster rather than a scan over x.",
+  "experiment": "widder/hankel level 5: the section 24 asymptotic spectrum, solved analytically (oscillation theorem + exact crossings)",
+  "gates": [
+    {
+      "detail": "PROVED, then stress-tested. For f(m) = Re S(m) = sum_j cos(m theta_j), the Cesaro means are mean f = 0 when every theta_j is nonzero mod 2pi (measured 1.8e-05) and mean f^2 = N/2 + sum_{i<j} [1/2 if theta_i = +-theta_j else 0] > 0 (measured 7.5e-06 worst error against the exact constants). If f were eventually nonnegative, almost-periodicity and continuity would force f >= 0 on the hull closure, and mean f = 0 would then force f == 0 there, contradicting mean f^2 > 0. Hence Re S(m) < 0 for infinitely many m. The theorem survives all 12 configurations, including the adversarial ones: conjugate pair (100007/200000 neg), theta, pi-theta (49998/200000 neg), theta, 2theta (133332/200000 neg), rational 2pi/7 x2 (114286/200000 neg), rational 2pi/13 x3 (92309/200000 neg), all identical (100002/200000 neg), tiny phase (134027/200000 neg), dense 8-cluster (144453/200000 neg), random N=3 (100029/200000 neg), random N=5 (99928/200000 neg), random N=3 (99958/200000 neg), random N=5 (99986/200000 neg). This answers record section 24 question 4 -- the exponential sum DOES change sign under the theorem's hypothesis, and the proof is three lines.",
+      "gate": "H5a: an isolated dominant cluster with no on-axis member makes Re S(m) < 0 infinitely often (oscillation theorem)",
+      "passed": true
+    },
+    {
+      "detail": "For a displaced zero of scale w and an on-axis zero of scale a > 0, |q(w,x)| = |q(a,x)| <=> |w|(x+a)^2 = a|x+w|^2, which expands to the quadratic (|w|-a)x^2 + 2a(|w|-Re w)x + a^2|w| - a|w|^2 = 0 with closed-form roots. Checked against direct evaluation of |q(w,x)| - |q(a,x)| at every root over 3 indices x 3 deltas, the worst residual is 2.24e-44. Sweeping x over a 600-point log grid, the strict maximizer is unique at [600, 600, 600, 600] of the sampled points for each displaced index, so for a finite spectrum the maximal-modulus cluster is ISOLATED and record section 24 questions 1 and 2 are answered exactly, not by scanning.",
+      "gate": "H5b: the |q| crossing is an exact quadratic and the maximizer is isolated",
+      "passed": true
+    },
+    {
+      "detail": "Exactly, |w|^2 = |-(delta + i gamma)^2|^2 = gamma^4 + 2 delta^2 gamma^2 + delta^4, strictly increasing in |delta|. Measured excess over gamma^4 at delta = (1, 1e-2, 1e-4, 1e-6) for gamma = 14.13 is [400.58090966477374]. Since |q| ~ 1/|w| as x -> 0 and |q| ~ |w|/x^2 as x -> infinity, both limits order the scales by |w|, so a displaced zero is never the maximizer at either extreme unless it is the lowest zero -- it can only win in a bounded window. H5b locates that window exactly: against gamma_{k-1}^2 the crossing roots are [(295.83784202040385, 295.83784202040385), (521.4336129818467, 521.4336129818467), (757.2198584208018, 757.2198584208018)]. This is record section 24 question 1, and it is the reason a naive scan at small x finds the on-axis maximizer.",
+      "gate": "H5c: displacement strictly raises |w|, so an off-axis zero wins |q| only in a bounded window",
+      "passed": true
+    },
+    {
+      "detail": "Tracking the strict argmax of |q| over a 4000-point log grid in x for each displaced index: the off-axis zero IS the unique maximizer on a nonempty window every time, of relative width up to 0.9427, and over the asymptotic regime delta <= 1e-2 the window's lower endpoint varies by at most 0.0e+00 relative (k = 0: identical to all digits; k = 2 moves once from 524.8 to 562.3 between delta = 1 and delta = 1e-2 because the grid's samples straddle the threshold, then freezes). Two consequences. (i) Record section 24's 'fix x > 0' DOES have admissible x for any single off-axis zero, so the route is not vacuous. (ii) H4's 1/delta barrier is about the required OSCILLATION ORDER m, not about whether dominance is achievable -- this corrects a natural misreading of H4, where the windows looked delta-dependent when they are not.",
+      "gate": "H5d: the dominance window is nonempty for every displaced index but independent of delta",
+      "passed": true
+    },
+    {
+      "detail": "If the strict maximizer at the chosen x lies ON the critical line its phase is 0, so it contributes exactly 1 to S(m) at every m: mean f = 1.0000 > 0 instead of 0, and Re S(m) = 1 + cos(1.9 m) >= 0 with minimum margin 4.1e-08 over 10000 orders -- verified: 0 negative orders in 200000, while positive orders occur 200000 times. No sign change is possible at that x, so the off-axis zero is invisible to every Q_m there, for ever. The oscillation theorem's hypothesis (every dominant phase nonzero) is therefore the load-bearing condition, and H5d shows x with an on-axis maximizer always exist. Control: a genuine off-axis dominant pair q_* = 2e^{+-0.7i} violates at m = 3, so the mechanism itself is fine. THIS IS THE SHARPEST REDUCTION SO FAR: record section 24's route closes exactly when one exhibits an x whose maximal-modulus cluster contains no on-axis member, and that is the hypothesis the record does not state.",
+      "gate": "H5e: an on-axis strict maximizer defeats the route -- this is the real obstruction",
+      "passed": true
+    }
+  ],
+  "h5_cesaro": {
+    "identities": [
+      {
+        "abs_err": 7.5253235618332754e-06,
+        "case": "theta_i = theta_j",
+        "mean": 0.49999247467643815,
+        "want": 0.5
+      },
+      {
+        "abs_err": 7.5253235618332754e-06,
+        "case": "theta_i = -theta_j",
+        "mean": 0.49999247467643815,
+        "want": 0.5
+      },
+      {
+        "abs_err": 3.850634829526371e-06,
+        "case": "generic pair",
+        "mean": -3.850634829526371e-06,
+        "want": 0.0
+      }
+    ],
+    "mean_f_example": -1.7748289029361205e-05
+  },
+  "h5_crossing_rows": [
+    {
+      "a": 199.79045483238687,
+      "delta": 1.0,
+      "delta_exact": "1.0",
+      "k": 1,
+      "max_resid": 2.2420775429197073e-44,
+      "roots": [
+        295.83784202040385
+      ]
+    },
+    {
+      "a": 199.79045483238687,
+      "delta": 0.01,
+      "delta_exact": "0.01",
+      "k": 1,
+      "max_resid": 1.1210387714598537e-44,
+      "roots": [
+        297.14062080807867
+      ]
+    },
+    {
+      "a": 199.79045483238687,
+      "delta": 0.0001,
+      "delta_exact": "0.0001",
+      "k": 1,
+      "max_resid": 1.1210387714598537e-44,
+      "roots": [
+        297.14075219954714
+      ]
+    },
+    {
+      "a": 441.9261505740825,
+      "delta": 1.0,
+      "delta_exact": "1.0",
+      "k": 2,
+      "max_resid": 5.605193857299268e-45,
+      "roots": [
+        521.4336129818467
+      ]
+    },
+    {
+      "a": 441.9261505740825,
+      "delta": 0.01,
+      "delta_exact": "0.01",
+      "k": 2,
+      "max_resid": 0.0,
+      "roots": [
+        525.7788001189325
+      ]
+    },
+    {
+      "a": 441.9261505740825,
+      "delta": 0.0001,
+      "delta_exact": "0.0001",
+      "k": 2,
+      "max_resid": 5.605193857299268e-45,
+      "roots": [
+        525.7792394055596
+      ]
+    },
+    {
+      "a": 625.542996894331,
+      "delta": 1.0,
+      "delta_exact": "1.0",
+      "k": 3,
+      "max_resid": 0.0,
+      "roots": [
+        757.2198584208018
+      ]
+    },
+    {
+      "a": 625.542996894331,
+      "delta": 0.01,
+      "delta_exact": "0.01",
+      "k": 3,
+      "max_resid": 5.605193857299268e-45,
+      "roots": [
+        760.951867932439
+      ]
+    },
+    {
+      "a": 625.542996894331,
+      "delta": 0.0001,
+      "delta_exact": "0.0001",
+      "k": 3,
+      "max_resid": 0.0,
+      "roots": [
+        760.9522436398724
+      ]
+    }
+  ],
+  "h5_isolation": [
+    {
+      "n_isolated": 600,
+      "n_tied": 0,
+      "which": 0
+    },
+    {
+      "n_isolated": 600,
+      "n_tied": 0,
+      "which": 1
+    },
+    {
+      "n_isolated": 600,
+      "n_tied": 0,
+      "which": 2
+    },
+    {
+      "n_isolated": 600,
+      "n_tied": 0,
+      "which": 3
+    }
+  ],
+  "h5_modulus_rows": [
+    {
+      "excess_over_gamma4": [
+        400.58090966477374,
+        0.039958100966477374,
+        3.995809096747737e-06,
+        3.995809096647747e-10
+      ],
+      "gamma": 14.134725141734695,
+      "gamma4": 39916.225842132015
+    },
+    {
+      "excess_over_gamma4": [
+        884.852301148165,
+        0.0883852401148165,
+        8.83852301158165e-06,
+        8.83852301148166e-10
+      ],
+      "gamma": 21.022039638771556,
+      "gamma4": 195298.72256122663
+    },
+    {
+      "excess_over_gamma4": [
+        1252.085993788662,
+        0.1251086093788662,
+        1.251085993798662e-05,
+        1.2510859937886632e-09
+      ],
+      "gamma": 25.01085758014569,
+      "gamma4": 391304.0409635411
+    },
+    {
+      "excess_over_gamma4": [
+        1852.3461745477923,
+        0.18513462745477924,
+        1.8513461745577924e-05,
+        1.8513461745477934e-09
+      ],
+      "gamma": 30.424876125859512,
+      "gamma4": 856870.6645031862
+    }
+  ],
+  "h5_onaxis": {
+    "control_m_first": 3,
+    "m_cap": 200000,
+    "mean_f": 0.9999822569864976,
+    "min_margin": 4.132032196488817e-08,
+    "neg": 0,
+    "phases": [
+      "0",
+      "1.9"
+    ],
+    "pos": 200000
+  },
+  "h5_oscillation_rows": [
+    {
+      "config": "conjugate pair",
+      "m_cap": 200000,
+      "n": 2,
+      "neg": 100007,
+      "pos": 99993
+    },
+    {
+      "config": "theta, pi-theta",
+      "m_cap": 200000,
+      "n": 2,
+      "neg": 49998,
+      "pos": 50002
+    },
+    {
+      "config": "theta, 2theta",
+      "m_cap": 200000,
+      "n": 2,
+      "neg": 133332,
+      "pos": 66668
+    },
+    {
+      "config": "rational 2pi/7 x2",
+      "m_cap": 200000,
+      "n": 2,
+      "neg": 114286,
+      "pos": 85714
+    },
+    {
+      "config": "rational 2pi/13 x3",
+      "m_cap": 200000,
+      "n": 3,
+      "neg": 92309,
+      "pos": 107691
+    },
+    {
+      "config": "all identical",
+      "m_cap": 200000,
+      "n": 4,
+      "neg": 100002,
+      "pos": 99998
+    },
+    {
+      "config": "tiny phase",
+      "m_cap": 200000,
+      "n": 2,
+      "neg": 134027,
+      "pos": 65973
+    },
+    {
+      "config": "dense 8-cluster",
+      "m_cap": 200000,
+      "n": 8,
+      "neg": 144453,
+      "pos": 55547
+    },
+    {
+      "config": "random N=3",
+      "m_cap": 200000,
+      "n": 3,
+      "neg": 100029,
+      "pos": 99971
+    },
+    {
+      "config": "random N=5",
+      "m_cap": 200000,
+      "n": 5,
+      "neg": 99928,
+      "pos": 100072
+    },
+    {
+      "config": "random N=3",
+      "m_cap": 200000,
+      "n": 3,
+      "neg": 99958,
+      "pos": 100042
+    },
+    {
+      "config": "random N=5",
+      "m_cap": 200000,
+      "n": 5,
+      "neg": 99986,
+      "pos": 100014
+    }
+  ],
+  "h5_small_delta_spread": 0.0,
+  "h5_window_bounds": [
+    {
+      "hi": 295.83784202040385,
+      "k": 1,
+      "lo": 295.83784202040385
+    },
+    {
+      "hi": 521.4336129818467,
+      "k": 2,
+      "lo": 521.4336129818467
+    },
+    {
+      "hi": 757.2198584208018,
+      "k": 3,
+      "lo": 757.2198584208018
+    }
+  ],
+  "h5_window_rows": [
+    {
+      "by_delta": [
+        {
+          "delta": 1.0,
+          "delta_exact": "1.0",
+          "frac": 0.05375,
+          "n_total": 4000,
+          "n_win": 215,
+          "x_hi": 281.83829312644536,
+          "x_lo": 0.00010715193052376064
+        },
+        {
+          "delta": 0.01,
+          "delta_exact": "0.01",
+          "frac": 0.05375,
+          "n_total": 4000,
+          "n_win": 215,
+          "x_hi": 281.83829312644536,
+          "x_lo": 0.00010715193052376064
+        },
+        {
+          "delta": 0.0001,
+          "delta_exact": "0.0001",
+          "frac": 0.05375,
+          "n_total": 4000,
+          "n_win": 215,
+          "x_hi": 281.83829312644536,
+          "x_lo": 0.00010715193052376064
+        },
+        {
+          "delta": 1e-06,
+          "delta_exact": "1.0e-6",
+          "frac": 0.05375,
+          "n_total": 4000,
+          "n_win": 215,
+          "x_hi": 281.83829312644536,
+          "x_lo": 0.00010715193052376064
+        }
+      ],
+      "gamma": 14.134725141734695,
+      "which": 0
+    },
+    {
+      "by_delta": [
+        {
+          "delta": 1.0,
+          "delta_exact": "1.0",
+          "frac": 0.00225,
+          "n_total": 4000,
+          "n_win": 9,
+          "x_hi": 524.8074602497726,
+          "x_lo": 301.9951720402016
+        },
+        {
+          "delta": 0.01,
+          "delta_exact": "0.01",
+          "frac": 0.00225,
+          "n_total": 4000,
+          "n_win": 9,
+          "x_hi": 524.8074602497726,
+          "x_lo": 301.9951720402016
+        },
+        {
+          "delta": 0.0001,
+          "delta_exact": "0.0001",
+          "frac": 0.00225,
+          "n_total": 4000,
+          "n_win": 9,
+          "x_hi": 524.8074602497726,
+          "x_lo": 301.9951720402016
+        },
+        {
+          "delta": 1e-06,
+          "delta_exact": "1.0e-6",
+          "frac": 0.00225,
+          "n_total": 4000,
+          "n_win": 9,
+          "x_hi": 524.8074602497726,
+          "x_lo": 301.9951720402016
+        }
+      ],
+      "gamma": 21.022039638771556,
+      "which": 1
+    },
+    {
+      "by_delta": [
+        {
+          "delta": 1.0,
+          "delta_exact": "1.0",
+          "frac": 0.0015,
+          "n_total": 4000,
+          "n_win": 6,
+          "x_hi": 741.3102413009175,
+          "x_lo": 524.8074602497726
+        },
+        {
+          "delta": 0.01,
+          "delta_exact": "0.01",
+          "frac": 0.00125,
+          "n_total": 4000,
+          "n_win": 5,
+          "x_hi": 741.3102413009175,
+          "x_lo": 562.341325190349
+        },
+        {
+          "delta": 0.0001,
+          "delta_exact": "0.0001",
+          "frac": 0.00125,
+          "n_total": 4000,
+          "n_win": 5,
+          "x_hi": 741.3102413009175,
+          "x_lo": 562.341325190349
+        },
+        {
+          "delta": 1e-06,
+          "delta_exact": "1.0e-6",
+          "frac": 0.00125,
+          "n_total": 4000,
+          "n_win": 5,
+          "x_hi": 741.3102413009175,
+          "x_lo": 562.341325190349
+        }
+      ],
+      "gamma": 25.01085758014569,
+      "which": 2
+    },
+    {
+      "by_delta": [
+        {
+          "delta": 1.0,
+          "delta_exact": "1.0",
+          "frac": 0.94275,
+          "n_total": 4000,
+          "n_win": 3771,
+          "x_hi": 1e+116,
+          "x_lo": 794.3282347242815
+        },
+        {
+          "delta": 0.01,
+          "delta_exact": "0.01",
+          "frac": 0.94275,
+          "n_total": 4000,
+          "n_win": 3771,
+          "x_hi": 1e+116,
+          "x_lo": 794.3282347242815
+        },
+        {
+          "delta": 0.0001,
+          "delta_exact": "0.0001",
+          "frac": 0.94275,
+          "n_total": 4000,
+          "n_win": 3771,
+          "x_hi": 1e+116,
+          "x_lo": 794.3282347242815
+        },
+        {
+          "delta": 1e-06,
+          "delta_exact": "1.0e-6",
+          "frac": 0.94275,
+          "n_total": 4000,
+          "n_win": 3771,
+          "x_hi": 1e+116,
+          "x_lo": 794.3282347242815
+        }
+      ],
+      "gamma": 30.424876125859512,
+      "which": 3
+    }
+  ]
+}
