@@ -1,0 +1,251 @@
+{
+  "conclusion": "H1 opens the Stieltjes/Widder/Hankel stage named in record section 14. All 5/5 sub-gates pass.  (a) The section 17 differential transform reproduces Q_k from the zero + moment-tail expansion to 2.9e-05 relative. (b) The section 18 explicit formula F_xi = F_rational + F_Gamma + F_prime closes to 1.3e-70, and the (1/2)log pi gamma-term sign is load-bearing (flipping it costs 2.5e+01).  (c) The section 10 Vandermonde identity D_m = sum_{i<j}(q_iq_j)^{2m+1}(q_i-q_j)^2 holds to 5.6e-69.  (d) D_0 and D_1 are positive at every sampled x > 0, computed from the explicit formula without any zero-location data.  (e) A strictly dominant synthetic off-axis pair drives D_m negative for large m, reproducing the derived obstruction.  Nothing here proves RH: the Widder criterion is assumed as an equivalence, positivity is checked only at finitely many x, and the prime-gamma -> Hankel bridge is open.",
+  "experiment": "widder/hankel level 1: shifted-Hankel determinant identities and the D_0, D_1 positivity samples",
+  "gates": [
+    {
+      "detail": "Q_k(x) = (1/2) sum_j C(k,j)(-x)^{k-j}(-1)^{2k-j-1}/(2k-j-1)! F_xi^{(2k-j-1)}(x) is rebuilt from zeta'/zeta by analytic continuation (no zetazero calls in F_xi) and compared with the mirror-symmetric zero expansion sum_rho q_rho^m; the slowly-converging m = 1 entry uses the exact log-Xi moment tail Q_1 = sum_j (-1)^j(j+1)x^j M_{2j+2}.  Worst relative residual over x in the grid and k = 1..5: 2.87e-05.",
+      "gate": "H1a: section 17 translation -- Q_k from the F_xi differential transform matches the zero + moment-tail expansion",
+      "passed": true
+    },
+    {
+      "detail": "F_xi is rebuilt independently from the completed xi function Xi(s) = (1/2) s(s-1) pi^{-s/2} Gamma(s/2) zeta(s) by logarithmic differentiation and matched against the rational + gamma + prime split; worst split residual 1.35e-70.  Flipping the sign of the (1/2)log pi term raises the residual to 2.48e+01, so the sign recorded in the pinned section 18 is the one that closes the identity.",
+      "gate": "H1b: section 18 explicit formula -- F_xi = F_rational + F_Gamma + F_prime reproduces xi'/xi(sqrt x)/sqrt x, and the gamma-term sign is load-bearing",
+      "passed": true
+    },
+    {
+      "detail": "For the 400 zero-side q_rho, the determinant D_m = Q_{2m+1}Q_{2m+3} - Q_{2m+2}^2 and the pair sum are algebraically identical; the worst relative mismatch over x and m = 0,1 is 5.63e-69.  Under RH each term q_i q_j (q_i-q_j)^2 >= 0, so D_m >= 0 term-by-term.",
+      "gate": "H1c: section 10 shifted-Hankel identity -- D_m equals the Vandermonde pair sum sum_{i<j} (q_i q_j)^{2m+1} (q_i - q_j)^2",
+      "passed": true
+    },
+    {
+      "detail": "D_0(x) = Q_1Q_3 - Q_2^2 and D_1(x) = Q_3Q_5 - Q_4^2 are computed from the explicit formula (no zero-location data) and are > 0 at every x in the grid [0.1, 0.5, 1.0, 2.0, 4.0, 16.0].  This is the sampled half-line of the Widder criterion's D_m >= 0; it is evidence consistent with RH, not a proof (the prime-gamma -> Hankel bridge is untouched).",
+      "gate": "H1d: the first two shifted-Hankel determinants are positive on the sampled half-line",
+      "passed": true
+    },
+    {
+      "detail": "A synthetic multiset of 20 real background q_j in [0, 1/3] plus the conjugate pair q_* = e^{+-i*0.7} has D_m negative for m >= 0 (D_24 = -1.660e+00); the pair contribution (q_* qbar_*)^{2m+1}(q_* - qbar_*)^2 = -4 sin^2(theta) < 0 dominates the O((1/3)^{2m+1}) background.  This reproduces the derivation, not an RH proof.",
+      "gate": "H1e: section 10 off-axis obstruction -- a strictly dominant conjugate pair drives D_m negative for large m",
+      "passed": true
+    }
+  ],
+  "h1_rows": [
+    {
+      "D0": 1.9433704449523485e-09,
+      "D0_analytic_minus_zero": 6.26761401277599e-14,
+      "D1": 2.3557868319114308e-20,
+      "Q1": 0.02309756291812934,
+      "Q3": 1.437767863741796e-07,
+      "Q5": 3.1978305977116936e-12,
+      "pair_identity_rel": 5.626381000235113e-69,
+      "translation_rel": 2.2758771047544014e-05,
+      "x": 0.1
+    },
+    {
+      "D0": 1.9197265666172037e-09,
+      "D0_analytic_minus_zero": 6.228901685075051e-14,
+      "D1": 2.2938087868544128e-20,
+      "Q1": 0.023067928316067715,
+      "Q3": 1.4220159757775669e-07,
+      "Q5": 3.135355420099254e-12,
+      "pair_identity_rel": 3.4670425087584615e-69,
+      "translation_rel": 2.290007748192731e-05,
+      "x": 0.5
+    },
+    {
+      "D0": 1.8906522515818847e-09,
+      "D0_analytic_minus_zero": 6.181007778576356e-14,
+      "D1": 2.2187695959524687e-20,
+      "Q1": 0.023031077802489523,
+      "Q3": 1.4026234901792868e-07,
+      "Q5": 3.059156203609839e-12,
+      "pair_identity_rel": 2.058666618294026e-69,
+      "translation_rel": 2.3077345789412616e-05,
+      "x": 1.0
+    },
+    {
+      "D0": 1.8340637587379606e-09,
+      "D0_analytic_minus_zero": 6.086844529300752e-14,
+      "D1": 2.0764265545102654e-20,
+      "Q1": 0.022958011842520703,
+      "Q3": 1.364805423658993e-07,
+      "Q5": 2.9128401551170685e-12,
+      "pair_identity_rel": 1.8795415032806465e-69,
+      "translation_rel": 2.343399523514651e-05,
+      "x": 2.0
+    },
+    {
+      "D0": 1.7268340533269731e-09,
+      "D0_analytic_minus_zero": 5.904776949948143e-14,
+      "D1": 1.8201163376454693e-20,
+      "Q1": 0.022814366951891596,
+      "Q3": 1.292865103650981e-07,
+      "Q5": 2.6429213210158807e-12,
+      "pair_identity_rel": 2.0228490849302024e-69,
+      "translation_rel": 2.4155710076302236e-05,
+      "x": 4.0
+    },
+    {
+      "D0": 1.220316782320906e-09,
+      "D0_analytic_minus_zero": 4.8854210515917734e-14,
+      "D1": 8.449781154830628e-21,
+      "Q1": 0.022016294075240257,
+      "Q3": 9.47195376048995e-08,
+      "Q5": 1.5057583657509304e-12,
+      "pair_identity_rel": 4.458967492942312e-69,
+      "translation_rel": 2.8717139494571252e-05,
+      "x": 16.0
+    }
+  ],
+  "h1_translation_residual": 2.8717139494571252e-05,
+  "h1a_translation_worst_rel": 2.8717139494571252e-05,
+  "h1b_explicit_formula": [
+    {
+      "split_rel": 1.3494427506767147e-70,
+      "wrong_gamma_rel": 24.812113551703042,
+      "x": 1.0
+    },
+    {
+      "split_rel": 1.2287233550222247e-70,
+      "wrong_gamma_rel": 17.57280524937562,
+      "x": 2.0
+    },
+    {
+      "split_rel": 1.1093504415901685e-70,
+      "wrong_gamma_rel": 12.465170869284226,
+      "x": 4.0
+    },
+    {
+      "split_rel": 2.5104878939395874e-71,
+      "wrong_gamma_rel": 6.347023774230544,
+      "x": 16.0
+    }
+  ],
+  "h1c_pair_identity_worst_rel": 5.626381000235113e-69,
+  "h1e_obstruction": [
+    {
+      "D_m": -5.344664158333061,
+      "det_check": 7.24454326306137e-71,
+      "m": 0
+    },
+    {
+      "D_m": -1.8481796927887466,
+      "det_check": 1.8111358157653425e-71,
+      "m": 1
+    },
+    {
+      "D_m": -1.6476448653714775,
+      "det_check": 7.24454326306137e-71,
+      "m": 2
+    },
+    {
+      "D_m": -1.6585507845281053,
+      "det_check": 3.622271631530685e-71,
+      "m": 3
+    },
+    {
+      "D_m": -1.6601217065045346,
+      "det_check": 1.0866814894592055e-70,
+      "m": 4
+    },
+    {
+      "D_m": -1.6600808423951634,
+      "det_check": 1.0866814894592055e-70,
+      "m": 5
+    },
+    {
+      "D_m": -1.6600656645208745,
+      "det_check": 1.2677950710357397e-70,
+      "m": 6
+    },
+    {
+      "D_m": -1.660065560917022,
+      "det_check": 1.8111358157653425e-70,
+      "m": 7
+    },
+    {
+      "D_m": -1.660065709512102,
+      "det_check": 1.448908652612274e-70,
+      "m": 8
+    },
+    {
+      "D_m": -1.6600657156769416,
+      "det_check": 2.173362978918411e-70,
+      "m": 9
+    },
+    {
+      "D_m": -1.6600657143025912,
+      "det_check": 2.3544765604949452e-70,
+      "m": 10
+    },
+    {
+      "D_m": -1.6600657141867339,
+      "det_check": 2.7167037236480137e-70,
+      "m": 11
+    },
+    {
+      "D_m": -1.660065714197897,
+      "det_check": 2.5355901420714795e-70,
+      "m": 12
+    },
+    {
+      "D_m": -1.6600657141996058,
+      "det_check": 3.078930886801082e-70,
+      "m": 13
+    },
+    {
+      "D_m": -1.66006571419954,
+      "det_check": 3.2600444683776165e-70,
+      "m": 14
+    },
+    {
+      "D_m": -1.6600657141995179,
+      "det_check": 3.622271631530685e-70,
+      "m": 15
+    },
+    {
+      "D_m": -1.6600657141995179,
+      "det_check": 3.9844987946837534e-70,
+      "m": 16
+    },
+    {
+      "D_m": -1.660065714199518,
+      "det_check": 3.803385213107219e-70,
+      "m": 17
+    },
+    {
+      "D_m": -1.660065714199518,
+      "det_check": 3.9844987946837534e-70,
+      "m": 18
+    },
+    {
+      "D_m": -1.660065714199518,
+      "det_check": 5.071180284142959e-70,
+      "m": 19
+    },
+    {
+      "D_m": -1.660065714199518,
+      "det_check": 4.7089531209898904e-70,
+      "m": 20
+    },
+    {
+      "D_m": -1.660065714199518,
+      "det_check": 4.346725957836822e-70,
+      "m": 21
+    },
+    {
+      "D_m": -1.660065714199518,
+      "det_check": 4.890066702566425e-70,
+      "m": 22
+    },
+    {
+      "D_m": -1.660065714199518,
+      "det_check": 5.071180284142959e-70,
+      "m": 23
+    },
+    {
+      "D_m": -1.660065714199518,
+      "det_check": 5.6145210288725617e-70,
+      "m": 24
+    }
+  ]
+}

@@ -478,3 +478,66 @@ pair all the way is explicitly declined.  The departure scales of the three
 closest pairs are aligned with what Newman's "barely so" demands of any
 counterfactual: each pair does leave the axis at a finite λ, exactly at a
 double root of the deformed kernel.
+
+---
+
+## 14. The Stieltjes/Widder/Hankel stage: the first shifted determinants (H1)
+
+The October 2026 pinned records (`rh_infinite_unit_stieltjes_pinned.md`,
+`rh_framework_pinned_october_2026.md`) reorganize the target around the
+normalized unit `U(u) = X(u)/X(0)`, the transformed zero scales
+`w_ρ = −u_ρ²`, the Stieltjes function `F_ξ(x) = 2G'(x)/G(x)` with
+`G(x) = X(√x)`, the Widder moments `Q_m(x) = Σ_ρ q_ρ(x)^m`,
+`q_ρ(x) = w_ρ/(x+w_ρ)²`, and the shifted Hankel determinants
+`D_m(x) = Q_{2m+1}Q_{2m+3} − Q_{2m+2}²`.  Section 14 of the first record names
+the immediate target explicitly: *do not add another independent criterion*,
+compute `D_0 = Q_1Q_3 − Q_2²`, then `D_1 = Q_3Q_5 − Q_4²`, in search of a
+positive-kernel representation.  `experiments/rh_widder_hankel_h1.py` opens
+that stage with five sub-gates (H1a–H1e); all pass.
+
+- **H1a (section 17 translation is exact).** The finite differential transform
+  `Q_k(x) = ½ Σ_{j=0}^k C(k,j)(−x)^{k−j} (−1)^{2k−j−1}/(2k−j−1)! F_ξ^{(2k−j−1)}(x)`
+  is rebuilt from `ζ'/ζ` by analytic continuation — *no* `zetazero` call enters
+  `F_ξ` — and matched against the mirror-symmetric zero expansion
+  `Σ_ρ q_ρ^m`.  The slowly-converging `m = 1` entry converges only like
+  `log²K/K` (400 zeros leave a ~1e-3 hole), so it is closed with the exact
+  log-Ξ moment tail `Q_1 = Σ_j (−1)^j(j+1)x^j M_{2j+2}` built from the Taylor
+  data already used by G5/G9.  Worst relative residual over `x ∈ {1/10, 1/2,
+  1, 2, 4, 16}` and `k = 1..5` is `2.9e-5`.  The pole at `s = 1` (i.e.
+  `x = 1/4`) is deliberately avoided.
+- **H1b (section 18 explicit formula, gamma sign load-bearing).** `F_ξ` is
+  rebuilt independently from `Xi(s) = ½ s(s−1) π^{−s/2} Γ(s/2) ζ(s)` by
+  logarithmic differentiation and matched against `F_rational + F_Gamma +
+  F_prime`; the split closes to `1.3e-70`.  Flipping the sign of the
+  `½log π` term of `F_Gamma` raises the residual to `2.5e+01`, so the sign in
+  the pinned section 18 is the one that closes the identity — the same
+  load-bearing sign that §2 of this document flagged in the Sept record.
+- **H1c (section 10 Vandermonde identity is exact algebra).** For the
+  zero-side `q_ρ`, `D_m = Q_{2m+1}Q_{2m+3} − Q_{2m+2}²` equals
+  `Σ_{i<j}(q_iq_j)^{2m+1}(q_i−q_j)²` to `5.6e-69` (machine).  Under RH each
+  term is `≥ 0`, so `D_m ≥ 0` term-by-term.  The check is made against the
+  *truncated* products from the same 400 `q`'s — comparing it against the
+  moment-tail-extended product would report a spurious ~11% mismatch, since
+  the tail runs past the 400 zeros and the pair sum does not.
+- **H1d (the first two determinants are positive on the sampled half-line).**
+  `D_0(x), D_1(x) > 0` at every sampled `x > 0`, computed from the explicit
+  formula without any zero-location data (e.g. `D_0(0.1) = 1.9434e-09`,
+  `D_1(0.1) = 2.3558e-20`).  This is the sampled, first-order face of the
+  Widder criterion's `D_m ≥ 0`; a *negative* sample would refute RH, positive
+  samples are evidence consistent with it, nothing more.
+- **H1e (section 10 off-axis obstruction reproduces).** A strictly dominant
+  synthetic conjugate pair (`q_* = e^{±0.7i}`) over `20` real background
+  `q_j ∈ [0, 1/3]` drives `D_m < 0` for `m ≥ 12` (`D_24 = −1.6601`), via the
+  pair contribution `(q_*q̄_*)^{2m+1}(q_*−q̄_*)^2 = −4sin²θ` dominating the
+  `O((1/3)^{2m+1})` background.  This is the derivation of section 10, not an
+  RH proof; the determinant identity is re-checked on the synthetic multiset
+  (`det_check = 5.6e-70`).
+
+**Honest wall.** H1 is an investigation, not a proof.  The Widder criterion
+(`RH ⇔ Q_m ≥ 0 ∀m`) is used only as a posited equivalence; positivity is
+checked at finitely many `x`; and the actual bottleneck named by both records
+— deriving the universal Hankel positivity from the prime–gamma explicit
+formula (`F_ξ → Q_k → H_N → cᵀH_Nc ≥ 0`, record section 27) — is untouched.
+The `D_0`, `D_1` samples are a first numerically-verified foothold on the
+zero side of that bridge, with the translation (H1a), the explicit-formula
+split (H1b), and the determinant algebra (H1c) now pinned exactly.
