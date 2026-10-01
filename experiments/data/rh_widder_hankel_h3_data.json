@@ -1,0 +1,563 @@
+{
+  "conclusion": "H3 investigates the prime\u2013gamma -> Hankel bridge and closes the algebraic links of the chain F_prime/F_Gamma/F_rational -> F_\u03be -> Q_k -> H_N -> c^T H_N c, without deriving universal positivity.  6/6 sub-gates pass.  (a) The von Mangoldt Dirichlet series closes the \u00a718 split to <1e-6 in the half-plane Re s > 1 where it represents \u03b6'/\u03b6.  (b) The critical-line heat trace is completely monotone, but the \u00a722 Widder kernels change sign, so h's positivity does not give termwise Widder positivity.  (c) c^T H_N c = \u2211_\u03c1 q_\u03c1 P(q_\u03c1)\u00b2 is exact algebra, for real and for complex q-multisets.  (d) The peak excess 4x|q_\u03c1| = 1 + \u03b4\u00b2/\u03b3\u00b2 is exact and equals 1 on the critical line.  (e) Maximal-shell isolation makes the form oscillate in sign.  (f) The transform is linear, and the Hankel entries are a delicate CANCELLATION of same-order rational, gamma and prime pieces (|Q_k| falls to ~1e-12 by k = 5) whose signs are mixed; notably Q_prime > 0 although F_prime < 0, so no sign argument on F_\u03be transfers to Q_k.  NOTHING HERE PROVES RH: the Widder criterion is posited, positivity is sampled, and the step prime\u2013gamma -> universal H_N \u2ab0 0 (record \u00a727) remains OPEN.",
+  "experiment": "widder/hankel level 3: prime\u2013gamma -> Hankel bridge (investigation; the bridge itself stays open)",
+  "gates": [
+    {
+      "detail": "F_\u03be = F_rational + F_Gamma + F_prime with F_prime = -1/\u221ax \u2211_{n<=40000} \u039b(n) n^{-s}, checked against \u03b6'/\u03b6 by analytic continuation at s = [2.5, 3.5] (record \u00a718 states the series for Re s > 1; the tail decays like N^{1-s}, so the check is restricted to that half-plane).  Worst relative residual: 9.07e-07.  Note F_prime is NEGATIVE at both points, and F_Gamma is negative at s = 2.5.",
+      "gate": "H3a: prime\u2013gamma split closes against the von Mangoldt Dirichlet series in the half-plane where it represents \u03b6'/\u03b6",
+      "passed": true
+    },
+    {
+      "detail": "h(t) = 2\u2211_\u03c1 e^{-\u03b3\u00b2t} (w_\u03c1 = \u03b3\u00b2) satisfies (-1)^n h^{(n)}(t) = 2\u2211_\u03c1 \u03b3^{2n} e^{-\u03b3\u00b2t} > 0 for n = 0..4 at t = 0.05 (record \u00a719; identity to 5e-71, verified against an independent numerical derivative).  But the record \u00a722 kernels P_1 = 1-y, P_2 = y\u00b2-6y+6, P_3 = -y\u00b3+15y\u00b2-60y+60, P_4 = y\u2074-28y\u00b3+252y\u00b2-840y+840 each take both signs on y > 0, so positivity of h does NOT give termwise Widder positivity -- the first reason the bridge is not free.",
+      "gate": "H3b: the heat trace is completely monotone on the critical-line zero side, but the Widder kernels change sign",
+      "passed": true
+    },
+    {
+      "detail": "For N = 1, 2 and two coefficient vectors, the quadratic form evaluated as a zero sum over a finite q-multiset equals the Hankel form built from the same finite moments M_{i+j} = \u2211 q^{i+j+1} -- for a real multiset AND for one containing a conjugate pair (where the form can go negative).  Worst relative residual: 1.6e-70.  This is the identity \u00a727 asks to make non-negative for ALL P; here it is verified, its positivity is not.",
+      "gate": "H3c: the \u00a79 quadratic form identity c^T H_N c = \u2211_\u03c1 q_\u03c1 P(q_\u03c1)\u00b2 is exact algebra",
+      "passed": true
+    },
+    {
+      "detail": "For the real zeros \u03b3 of \u03b6 and a synthetic displacement \u03b4, w = \u03b3\u00b2-\u03b4\u00b2-2i\u03b4\u03b3 and the peak amplitude 4|w||q(|w|)| equals 1 + \u03b4\u00b2/\u03b3\u00b2 to 1.8e-71 over 24 (\u03b3, \u03b4) pairs.  \u03b4 = 0 gives exactly 1.  This is the per-zero diagnostic of record \u00a711/\u00a712: it exceeds 1 iff \u03b4 \u2260 0, but only by O(\u03b4\u00b2/\u03b3\u00b2), so it is a geometric identity, not a proof.",
+      "gate": "H3d: the per-zero geometric excess 4x|q_\u03c1| = 1 + \u03b4\u00b2/\u03b3\u00b2 at x = |w_\u03c1| is exact, and equals 1 exactly on the critical line",
+      "passed": true
+    },
+    {
+      "detail": "With a dominant conjugate pair q_* = 2e^{\u00b10.7i}, an equal-modulus competing pair killed by R(u) = (u-2e^{1.9i})(u-2e^{-1.9i}), and background q_j \u2208 (0, 1/3), the form S_m = \u2211_\u03c1 q_\u03c1 P_m(q_\u03c1)\u00b2 with P_m(u) = u^m R(u) changes sign 7 times over m <= 150.  This is the record \u00a711 mechanism that removes the equal-modulus competitor problem -- algebraic, not an RH proof.",
+      "gate": "H3e: maximal-shell isolation makes the quadratic form oscillate in sign in m",
+      "passed": true
+    },
+    {
+      "detail": "At x = 4 the section 17 transform is applied separately to F_rational, F_Gamma and F_prime (the von Mangoldt series); their sum reproduces the Q_k built from the full F_\u03be to 2.8e-04 at k <= 2 when the residual is conditioned on the sum of the piece magnitudes; the prime-series truncation at N = 40000 dominates it.  The residual then grows to 3.3e-02 by k = 5 (recorded, NOT gated): the tail is O(N^{1-s}), the transform amplifies it as a degree-2k polynomial, and the total is itself a cancellation, so this is truncation error rather than a broken identity.  Note the total is a CANCELLATION: |Q_k| is already 2.8e-01 times smaller than the sum of its pieces at k = 1 and 4.9e-06 at k = 5, so conditioning on |Q_k| would report a spurious linearity failure.  Two findings.  (i) The sign of a piece of F_\u03be does NOT determine the sign of its Q_k: Q_prime is POSITIVE although F_prime < 0 on the real axis, because the transform mixes alternating-sign high-order derivatives -- a naive sign argument would have been wrong.  (ii) |Q_prime| is comparable to (indeed exceeds) the tiny total |Q_k| (ratio 2.3 .. 98199.4), and the rational and gamma pieces have mixed signs.  So the Hankel entries are a delicate CANCELLATION of same-order contributions and cannot be read off any one piece.",
+      "gate": "H3f: the transform is linear, so Q_k splits into rational / gamma / prime pieces of comparable size with mixed signs",
+      "passed": true
+    }
+  ],
+  "h3_excess_rows": [
+    {
+      "delta": 0.0,
+      "excess_formula": 1.0,
+      "gamma": 14.134725141734695,
+      "peak_4x_absq": 1.0,
+      "rel": 0.0
+    },
+    {
+      "delta": 0.5,
+      "excess_formula": 1.0012513110308985,
+      "gamma": 14.134725141734695,
+      "peak_4x_absq": 1.0012513110308985,
+      "rel": 1.8088723538355008e-71
+    },
+    {
+      "delta": 2.0,
+      "excess_formula": 1.0200209764943764,
+      "gamma": 14.134725141734695,
+      "peak_4x_absq": 1.0200209764943764,
+      "rel": 1.7755868335079554e-71
+    },
+    {
+      "delta": 0.0,
+      "excess_formula": 1.0,
+      "gamma": 21.022039638771556,
+      "peak_4x_absq": 1.0,
+      "rel": 0.0
+    },
+    {
+      "delta": 0.5,
+      "excess_formula": 1.0005657053778674,
+      "gamma": 21.022039638771556,
+      "peak_4x_absq": 1.0005657053778674,
+      "rel": 0.0
+    },
+    {
+      "delta": 2.0,
+      "excess_formula": 1.0090512860458785,
+      "gamma": 21.022039638771556,
+      "peak_4x_absq": 1.0090512860458785,
+      "rel": 0.0
+    },
+    {
+      "delta": 0.0,
+      "excess_formula": 1.0,
+      "gamma": 25.01085758014569,
+      "peak_4x_absq": 1.0,
+      "rel": 9.055679078826712e-72
+    },
+    {
+      "delta": 0.5,
+      "excess_formula": 1.0003996527836474,
+      "gamma": 25.01085758014569,
+      "peak_4x_absq": 1.0003996527836474,
+      "rel": 1.8104122794583073e-71
+    },
+    {
+      "delta": 2.0,
+      "excess_formula": 1.0063944445383595,
+      "gamma": 25.01085758014569,
+      "peak_4x_absq": 1.0063944445383595,
+      "rel": 0.0
+    },
+    {
+      "delta": 0.0,
+      "excess_formula": 1.0,
+      "gamma": 30.424876125859512,
+      "peak_4x_absq": 1.0,
+      "rel": 0.0
+    },
+    {
+      "delta": 0.5,
+      "excess_formula": 1.000270073747889,
+      "gamma": 30.424876125859512,
+      "peak_4x_absq": 1.000270073747889,
+      "rel": 0.0
+    },
+    {
+      "delta": 2.0,
+      "excess_formula": 1.0043211799662233,
+      "gamma": 30.424876125859512,
+      "peak_4x_absq": 1.0043211799662233,
+      "rel": 1.803343245062554e-71
+    },
+    {
+      "delta": 0.0,
+      "excess_formula": 1.0,
+      "gamma": 32.93506158773919,
+      "peak_4x_absq": 1.0,
+      "rel": 0.0
+    },
+    {
+      "delta": 0.5,
+      "excess_formula": 1.0002304745888377,
+      "gamma": 32.93506158773919,
+      "peak_4x_absq": 1.0002304745888377,
+      "rel": 0.0
+    },
+    {
+      "delta": 2.0,
+      "excess_formula": 1.0036875934214051,
+      "gamma": 32.93506158773919,
+      "peak_4x_absq": 1.0036875934214051,
+      "rel": 1.8044816212099222e-71
+    },
+    {
+      "delta": 0.0,
+      "excess_formula": 1.0,
+      "gamma": 37.586178158825675,
+      "peak_4x_absq": 1.0,
+      "rel": 0.0
+    },
+    {
+      "delta": 0.5,
+      "excess_formula": 1.0001769634891904,
+      "gamma": 37.586178158825675,
+      "peak_4x_absq": 1.0001769634891904,
+      "rel": 0.0
+    },
+    {
+      "delta": 2.0,
+      "excess_formula": 1.0028314158270446,
+      "gamma": 37.586178158825675,
+      "peak_4x_absq": 1.0028314158270446,
+      "rel": 1.8060222158793078e-71
+    },
+    {
+      "delta": 0.0,
+      "excess_formula": 1.0,
+      "gamma": 40.9187190121475,
+      "peak_4x_absq": 1.0,
+      "rel": 0.0
+    },
+    {
+      "delta": 0.5,
+      "excess_formula": 1.000149312425336,
+      "gamma": 40.9187190121475,
+      "peak_4x_absq": 1.000149312425336,
+      "rel": 0.0
+    },
+    {
+      "delta": 2.0,
+      "excess_formula": 1.0023889988053771,
+      "gamma": 40.9187190121475,
+      "peak_4x_absq": 1.0023889988053771,
+      "rel": 0.0
+    },
+    {
+      "delta": 0.0,
+      "excess_formula": 1.0,
+      "gamma": 43.327073280915,
+      "peak_4x_absq": 1.0,
+      "rel": 0.0
+    },
+    {
+      "delta": 0.5,
+      "excess_formula": 1.0001331745694237,
+      "gamma": 43.327073280915,
+      "peak_4x_absq": 1.0001331745694237,
+      "rel": 0.0
+    },
+    {
+      "delta": 2.0,
+      "excess_formula": 1.0021307931107812,
+      "gamma": 43.327073280915,
+      "peak_4x_absq": 1.0021307931107812,
+      "rel": 0.0
+    }
+  ],
+  "h3_heat_trace": {
+    "monotone_worst_rel": 4.870689416731113e-71,
+    "rows": [
+      {
+        "n": 0,
+        "positive": true,
+        "value": 9.175670097147148e-05
+      },
+      {
+        "n": 1,
+        "positive": true,
+        "value": 0.018332235726225957
+      },
+      {
+        "n": 2,
+        "positive": true,
+        "value": 3.662659944560633
+      },
+      {
+        "n": 3,
+        "positive": true,
+        "value": 731.7884647468796
+      },
+      {
+        "n": 4,
+        "positive": true,
+        "value": 146214.9441279598
+      }
+    ],
+    "t": 0.05
+  },
+  "h3_q_split_rows": [
+    {
+      "Q_gamma": -0.010928391544909677,
+      "Q_prime": 0.05152031216402025,
+      "Q_rational": -0.017777777777777778,
+      "Q_total": 0.022814366951891596,
+      "cancellation_ratio": 0.28437451735523994,
+      "k": 1,
+      "rel": 2.793473609298293e-06,
+      "rel_to_total": 9.823220572920367e-06
+    },
+    {
+      "Q_gamma": -0.001643386787216929,
+      "Q_prime": 0.0013632349211990828,
+      "Q_rational": 0.0003160493827160494,
+      "Q_total": 3.4967925818840204e-05,
+      "cancellation_ratio": 0.010524040706938088,
+      "k": 2,
+      "rel": 0.00027977216337904057,
+      "rel_to_total": 0.02658410121832746
+    },
+    {
+      "Q_gamma": -8.89413435182769e-05,
+      "Q_prime": 9.380291742905991e-05,
+      "Q_rational": -5.618655692729767e-06,
+      "Q_total": 1.292865103650981e-07,
+      "cancellation_ratio": 0.0006863692316473594,
+      "k": 3,
+      "rel": 0.004705641153378241,
+      "rel_to_total": 6.855845128844426
+    },
+    {
+      "Q_gamma": -4.8944430928194495e-06,
+      "Q_prime": 5.0604234926138346e-06,
+      "Q_rational": 9.988721231519585e-08,
+      "Q_total": 5.687643724664932e-10,
+      "cancellation_ratio": 5.6566713010303076e-05,
+      "k": 4,
+      "rel": 0.026385414608214634,
+      "rel_to_total": 466.4477252445053
+    },
+    {
+      "Q_gamma": -2.7556655520310047e-07,
+      "Q_prime": 2.5953315773847663e-07,
+      "Q_rational": -1.7757726633812596e-09,
+      "Q_total": 2.6429213210158807e-12,
+      "cancellation_ratio": 4.922782641188771e-06,
+      "k": 5,
+      "rel": 0.03317680454203552,
+      "rel_to_total": 6739.441279500382
+    }
+  ],
+  "h3_q_split_summary": {
+    "lin_tol": 0.001,
+    "mixed_signs": true,
+    "prime_over_total_max": 98199.35072403813,
+    "prime_over_total_min": 2.2582398307461506,
+    "worst_rel": 0.03317680454203552,
+    "worst_rel_low_k": 0.00027977216337904057
+  },
+  "h3_quadform_rows": [
+    {
+      "N": 1,
+      "c": [
+        1.0,
+        2.0
+      ],
+      "kind": "real",
+      "quad_matrix_side": 164.80618731855915,
+      "quad_zero_side": 164.80618731855915,
+      "rel": 1.4066546177047415e-71
+    },
+    {
+      "N": 1,
+      "c": [
+        2.0,
+        -1.0
+      ],
+      "kind": "real",
+      "quad_matrix_side": 44.46410056774684,
+      "quad_zero_side": 44.46410056774684,
+      "rel": 2.606882647550103e-71
+    },
+    {
+      "N": 2,
+      "c": [
+        1.0,
+        2.0,
+        -3.0
+      ],
+      "kind": "real",
+      "quad_matrix_side": 19.534368071792116,
+      "quad_zero_side": 19.534368071792116,
+      "rel": 1.1867565081499756e-70
+    },
+    {
+      "N": 2,
+      "c": [
+        2.0,
+        -1.0,
+        4.0
+      ],
+      "kind": "real",
+      "quad_matrix_side": 331.06679220095054,
+      "quad_zero_side": 331.06679220095054,
+      "rel": 2.8009500182942027e-71
+    },
+    {
+      "N": 1,
+      "c": [
+        1.0,
+        2.0
+      ],
+      "kind": "complex",
+      "quad_matrix_side": -0.6913053190279552,
+      "quad_zero_side": -0.6913053190279552,
+      "rel": 1.5719269902149586e-70
+    },
+    {
+      "N": 1,
+      "c": [
+        2.0,
+        -1.0
+      ],
+      "kind": "complex",
+      "quad_matrix_side": 5.245068645874265,
+      "quad_zero_side": 5.245068645874265,
+      "rel": 2.7624207621228666e-71
+    },
+    {
+      "N": 2,
+      "c": [
+        1.0,
+        2.0,
+        -3.0
+      ],
+      "kind": "complex",
+      "quad_matrix_side": 11.118963154646297,
+      "quad_zero_side": 11.118963154646297,
+      "rel": 5.212387638884536e-71
+    },
+    {
+      "N": 2,
+      "c": [
+        2.0,
+        -1.0,
+        4.0
+      ],
+      "kind": "complex",
+      "quad_matrix_side": -25.789167258528124,
+      "quad_zero_side": -25.789167258528124,
+      "rel": 0.0
+    }
+  ],
+  "h3_shell_rows": [
+    {
+      "S_m": -133.7953411277437,
+      "m": 0
+    },
+    {
+      "S_m": -294160.0360373334,
+      "m": 5
+    },
+    {
+      "S_m": -293722510.67497766,
+      "m": 10
+    },
+    {
+      "S_m": -145055998839.72485,
+      "m": 15
+    },
+    {
+      "S_m": 84025100153446.88,
+      "m": 20
+    },
+    {
+      "S_m": 2.818363060900755e+17,
+      "m": 25
+    },
+    {
+      "S_m": 3.4704624688851504e+20,
+      "m": 30
+    },
+    {
+      "S_m": 2.403097787853126e+23,
+      "m": 35
+    },
+    {
+      "S_m": 7.131966587019925e+24,
+      "m": 40
+    },
+    {
+      "S_m": -2.4097136855086002e+29,
+      "m": 45
+    },
+    {
+      "S_m": -3.795362301444892e+32,
+      "m": 50
+    },
+    {
+      "S_m": -3.3332403980871555e+35,
+      "m": 55
+    },
+    {
+      "S_m": -1.1667700777908137e+38,
+      "m": 60
+    },
+    {
+      "S_m": 1.6936724313575753e+41,
+      "m": 65
+    },
+    {
+      "S_m": 3.838463475606484e+44,
+      "m": 70
+    },
+    {
+      "S_m": 4.150611932403889e+47,
+      "m": 75
+    },
+    {
+      "S_m": 2.3835901813411666e+50,
+      "m": 80
+    },
+    {
+      "S_m": -6.719883228100996e+52,
+      "m": 85
+    },
+    {
+      "S_m": -3.536919929457844e+56,
+      "m": 90
+    },
+    {
+      "S_m": -4.756344600517139e+59,
+      "m": 95
+    },
+    {
+      "S_m": -3.635027789580411e+62,
+      "m": 100
+    },
+    {
+      "S_m": -6.250643654665342e+64,
+      "m": 105
+    },
+    {
+      "S_m": 2.84650863417402e+68,
+      "m": 110
+    },
+    {
+      "S_m": 5.050413529969336e+71,
+      "m": 115
+    },
+    {
+      "S_m": 4.813016524621233e+74,
+      "m": 120
+    },
+    {
+      "S_m": 2.1355157109948926e+77,
+      "m": 125
+    },
+    {
+      "S_m": -1.7495948326942245e+80,
+      "m": 130
+    },
+    {
+      "S_m": -4.940610626733993e+83,
+      "m": 135
+    },
+    {
+      "S_m": -5.793679226855018e+86,
+      "m": 140
+    },
+    {
+      "S_m": -3.764787587440984e+89,
+      "m": 145
+    },
+    {
+      "S_m": 2.6231176162164833e+91,
+      "m": 150
+    }
+  ],
+  "h3_split_rows": [
+    {
+      "Fgam": -0.3430458548064164,
+      "Fprime_series": -0.14437030113720875,
+      "Frat": 0.5333333333333333,
+      "Fxi": 0.04591713574782039,
+      "s": 2.5,
+      "split_rel": 9.068921031072587e-07,
+      "x": 4.0
+    },
+    {
+      "Fgam": -0.1495429053837565,
+      "Fprime_series": -0.03346521389179839,
+      "Frat": 0.22857142857142856,
+      "Fxi": 0.04556330929545743,
+      "s": 3.5,
+      "split_rel": 9.135614249461502e-12,
+      "x": 9.0
+    }
+  ],
+  "h3_widder_kernels": [
+    {
+      "changes_sign": true,
+      "m": 1,
+      "max": 0.98,
+      "min": -6.98
+    },
+    {
+      "changes_sign": true,
+      "m": 2,
+      "max": 21.8004,
+      "min": -3.0
+    },
+    {
+      "changes_sign": true,
+      "m": 3,
+      "max": 58.805992,
+      "min": -12.360576
+    },
+    {
+      "changes_sign": true,
+      "m": 4,
+      "max": 823.30057616,
+      "min": -89.5104
+    }
+  ]
+}

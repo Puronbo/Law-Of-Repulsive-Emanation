@@ -596,3 +596,71 @@ posited, positivity is sampled at finitely many `x` and matrix orders
 determinants of H1 are confirmed to be the leading edge of a coherent,
 numerically positive Hankel structure, with the determinant algebra (H2d) and
 the transform (H2a) pinned exactly.
+
+## 16. The prime–gamma → Hankel bridge: what closes and what stays open (H3)
+
+Sections 14–15 built the zero-side structure.  Section 27 of the pinned record
+names the remaining bottleneck: derive universal Hankel positivity
+`cᵀH_N(x)c ≥ 0` from the prime–gamma explicit formula.
+`experiments/rh_widder_hankel_h3.py` attacks that bridge directly (six
+sub-gates H3a–H3f; all pass).  The headline: **the algebraic links of the
+chain now close, and the step that would settle RH does not.**
+
+- **H3a (the section 18 split is real, in the right half-plane).** With the
+  genuine von Mangoldt series `F_prime = −1/√x ∑_{n≤40000} Λ(n) n^{−s}` — a
+  real `Λ(n)` sieve, not a stand-in — `F_rational + F_Gamma + F_prime`
+  reproduces `F_ξ` to `1e-5` at `s = 2.5, 3.5`.  The half-plane restriction is
+  load-bearing: the series represents `ζ'/ζ` only for `Re s > 1`, with tail
+  `O(N^{1−s})`.  An earlier version of this gate sampled `x = 1/2`
+  (`s ≈ 1.207`) and `x = 1` (`s = 1.5`) and reported residuals of `21.1` and
+  `0.40` — pure truncation error masquerading as a failed identity.
+- **H3b (the heat trace is positive but that is not enough).** On the
+  critical-line side `h(t) = 2∑_ρ e^{−γ²t}` satisfies
+  `(−1)ⁿh^{(n)}(t) = 2∑_ρ γ^{2n}e^{−γ²t} > 0` for `n = 0..4`, verified against
+  an independent numerical derivative (`1e-40`).  Yet the section 22 Widder
+  kernels `P_1 = 1−y`, `P_2 = y²−6y+6`, `P_3 = −y³+15y²−60y+60`,
+  `P_4 = y⁴−28y³+252y²−840y+840` **all take both signs on `y > 0`**.  This is
+  the first concrete reason the bridge is not free: positivity of `h` does not
+  make the Widder integrals termwise positive.
+- **H3c (the section 9 quadratic-form identity is exact — real and complex).**
+  `cᵀH_N(x)c = ∑_ρ q_ρ(x) P(q_ρ(x))²` holds to `1e-40` on finite
+  `q`-multisets, computed both as a zero sum and as a Hankel form built from
+  the same moments `M_{i+j} = ∑ q^{i+j+1}`.  It is checked on a multiset with
+  a **dominant** conjugate pair so the form actually goes negative — with a
+  mild pair the form stayed non-negative and the test correctly flagged the
+  check as vacuous.  The identity is verified; its positivity for all `P` is
+  not.
+- **H3d (the per-zero excess is exact).** At `x = |w_ρ|`,
+  `4x|q_ρ| = 1 + δ²/γ²` holds to `1e-30` across `8 × 3` (γ, δ) pairs built
+  from the real zero ordinates, and equals exactly `1` at `δ = 0`.  So the peak
+  amplitude exceeds `1` **iff** `δ ≠ 0` — an exact per-zero diagnostic whose
+  excess is only `O(δ²/γ²)`.
+- **H3e (maximal-shell isolation works).** With a dominant pair
+  `q_* = 2e^{±0.7i}`, an equal-modulus competing pair killed by
+  `R(u) = (u−2e^{1.9i})(u−2e^{-1.9i})`, and background `q_j ∈ (0, 1/3)`, the
+  form `S_m = ∑_ρ q_ρ P_m(q_ρ)²` with `P_m = u^m R` flips sign repeatedly
+  over `m ≤ 150`.  The section 11 competitor problem is genuinely removed.
+- **H3f (the Hankel entries are a delicate cancellation).** Linearity of the
+  section 17 transform gives `Q_k = Q_k^rat + Q_k^Γ + Q_k^prime`; at `k ≤ 2`
+  the split reproduces the full `Q_k` to `1e-3` when the residual is
+  conditioned on the **sum of the piece magnitudes**.  Two findings matter.
+  (i) The total `Q_k` is a near-cancellation: `|Q_k|` is already `2.8e-1`
+  times the sum of its pieces at `k = 1` and `4.9e-6` at `k = 5` (so
+  `|Q_k| ~ 1e-12`), which is why conditioning on `|Q_k|` alone would report a
+  spurious linearity failure (`rel_to_total` reaches `6.7e+03` for arithmetic
+  reasons alone).  (ii) **`F_prime < 0` on the real axis yet `Q_prime > 0`** —
+  the transform mixes alternating-sign high-order derivatives, so no sign
+  argument on `F_ξ` transfers to `Q_k`.  An earlier draft of this gate
+  asserted the opposite (`Q_prime < 0`) on the naive "negative function gives
+  negative moment" reading; the data corrected it.
+
+**Honest wall.** H3 closes the algebra, not the positivity.  Every link
+`F_prime/F_Gamma/F_rational → F_ξ → Q_k → H_N → cᵀH_Nc` is now verified as
+identity (H3a, H3c, H3f) and the obstruction mechanism is verified
+algebraically (H3d, H3e).  What is missing is exactly section 27: a
+derivation forcing `H_N ⪰ 0` for **all** `N` and **all** `x > 0` from the
+collective prime–gamma series.  H3f shows why this cannot be term-by-term —
+the entries are a cancellation of same-order, mixed-sign pieces, so a positive
+representation would have to survive that cancellation.  Positivity is still
+sampled at finitely many `x` and `N ≤ 3`, the Widder criterion stays posited,
+and nothing here proves RH.
