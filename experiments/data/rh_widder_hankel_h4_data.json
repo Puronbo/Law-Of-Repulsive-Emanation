@@ -1,0 +1,143 @@
+{
+  "conclusion": "H4 measures the falsifiability of the pinned criterion. 5/5 sub-gates pass.  The criterion is NOT vacuous (H4e: a dominant off-axis pair violates it at 198 of 399 orders), but it is not falsifiable by finite computation for small displacements: the separating phase is arg q = 2 delta/gamma (H4a), the first violating order is m_first ~ pi gamma/(4 delta) with m_first * delta constant to 0.9% over the small-angle regime (H4b), and at delta = 1e-3 no point of a 59-point log grid over [0.01, 30] shows any violation up to m = 200, while at delta = 1e-4 an exhaustive search to the order cap finds none at all and the law predicts the first at m ~ 1.11e+05 (H4c).  Displacing a higher zero confines the violating x to as few as 5 of 399 log samples (H4d), so the 'all x' quantifier that makes the criterion correct also makes it unverifiable.  CONSEQUENCE FOR THE PROGRAM: a clean finite Widder/Hankel scan -- everything H1-H3 computed -- carries NO evidential weight for RH, because the counterexamples it cannot see are the ones that matter.  This is a statement about METHOD, not about zeta: the pinned criterion may still be correct and sufficient.  NOTHING HERE PROVES OR REFUTES RH; the bridge prime-gamma -> universal H_N >= 0 (record section 27) remains OPEN, and H4 shows the numerical route to testing it is blocked at the required precision.",
+  "experiment": "widder/hankel level 4: falsifiability of the pinned criterion (a statement about method, not about zeta)",
+  "gates": [
+    {
+      "detail": "For a zero displaced by delta from the critical line the transformed scale is w = gamma^2 - delta^2 - 2i delta gamma, and q(x) = w/(x+w)^2 has phase arg q = arg w - 2 arg(x+w) -> -arg w = atan(2 delta gamma/(gamma^2-delta^2)) ~ 2 delta/gamma as x -> 0.  At the point where the displaced lowest zero first strictly dominates (x = 0.0001, inside the x << gamma^2 regime), the measured phase matches 2 delta/gamma to within 1.7e-03 relative for delta = [0.001, 0.01, 0.1, 1.0].  This is the exact small-angle content of record section 7's Im q, and it is what makes the phase -- and hence the oscillation period -- arbitrarily small for a near-critical zero.",
+      "gate": "H4a: the separating phase obeys arg q = 2 delta/gamma to leading order",
+      "passed": true
+    },
+    {
+      "detail": "A strictly dominant conjugate pair contributes 2 Q^m cos(m theta), so cos(m theta) < 0 first at m > pi/(2 theta); with H4a's theta ~ 2 delta/gamma this predicts m_first * delta ~ pi gamma/4 = 11.1014.  Measured over the small-angle regime delta in (0.001, 0.1] the products are [11.102, 11.11, 11.2] (relative spread 8.8e-03, max deviation from the predicted constant 8.9e-03), and the measured m_first matches pi/(2 theta) at each delta to [5e-05, 0.00077, 0.00887].  delta = 1 gives [12.0], outside the asymptotic regime as expected.  This is record section 20's amplification, now quantified.",
+      "gate": "H4b: the first violating order obeys m_first ~ pi gamma/(4 delta)",
+      "passed": true
+    },
+    {
+      "detail": "Displacing the lowest zero by delta = 0.001 (synthetic; NOT a claim about zeta) and scanning 59 log-spaced x in [0.01, 30] for any negative Q_m up to m = 200 finds 0 violating points -- eventual positivity holds at every sampled x despite a genuine off-axis scale.  For delta = 1e-4 an exhaustive search to m = 20000 finds no violation at all, and H4b's law predicts the first one at m ~ 1.11e+05, above the cap and far beyond feasible computation.  Record section 20's 'small displacement != absence of contradiction' therefore cuts both ways: it also means a clean finite scan certifies nothing.",
+      "gate": "H4c: a small off-line displacement is invisible at every point of a finite sampling grid, and its first violation exceeds the feasible cap",
+      "passed": true
+    },
+    {
+      "detail": "Displacing the 1-th lowest zero instead of the lowest confines the violating x to a band covering as few as 5 of 399 log-spaced samples (gamma = 25.01: x in [541.2, 764.4]).  Since record \u00a727's criterion quantifies over ALL x > 0, a finite grid can miss the violating band entirely; the 'all x' quantifier is exactly what makes the criterion true, and also exactly what makes it unverifiable.",
+      "gate": "H4d: the set of x that violates eventual positivity can be an arbitrarily narrow band",
+      "passed": true
+    },
+    {
+      "detail": "A strictly dominant pair q_* = 2e^{\u00b10.7i} over background q_j in (0, 1/3) first violates at m = 3 and violates at 198 of 399 orders -- so the mechanism of records \u00a78/\u00a710 is real and reachable.  An all-real-positive (RH-type) spectrum at x = 1 violates at 0 of 399. So H4c/H4d are NOT saying the criterion fails; they are saying the violating configuration is numerically out of reach for small delta.",
+      "gate": "H4e: the criterion is not vacuous -- a dominant off-axis pair breaks it and an RH-type spectrum never does",
+      "passed": true
+    }
+  ],
+  "h4_amplification_pred": 11.101387166446166,
+  "h4_amplification_rows": [
+    {
+      "delta": 0.001,
+      "delta_exact": "0.001",
+      "m_first": 11102,
+      "m_first_times_delta": 11.102,
+      "pi_over_2theta": 11101.398298003947,
+      "x_sep": 0.0001
+    },
+    {
+      "delta": 0.01,
+      "delta_exact": "0.01",
+      "m_first": 1111,
+      "m_first_times_delta": 11.11,
+      "pi_over_2theta": 1110.1400131646403,
+      "x_sep": 0.0001
+    },
+    {
+      "delta": 0.1,
+      "delta_exact": "0.1",
+      "m_first": 112,
+      "m_first_times_delta": 11.2,
+      "pi_over_2theta": 111.01583493444876,
+      "x_sep": 0.0001
+    },
+    {
+      "delta": 1.0,
+      "delta_exact": "1.0",
+      "m_first": 12,
+      "m_first_times_delta": 12.0,
+      "pi_over_2theta": 11.119895266467054,
+      "x_sep": 0.0001
+    }
+  ],
+  "h4_control": {
+    "dominant_denom": 399,
+    "dominant_m_first": 3,
+    "dominant_neg_count": 198,
+    "rh_neg_count": 0
+  },
+  "h4_invisible": {
+    "delta": 0.001,
+    "delta_1e4_m_first_within_cap": null,
+    "delta_1e4_predicted_m_first": 111013.87166446165,
+    "m_cap": 200,
+    "n_grid": 59,
+    "n_violated": 0,
+    "order_cap": 20000,
+    "violated": [],
+    "x_hi": 30.0,
+    "x_lo": 0.01
+  },
+  "h4_narrow_rows": [
+    {
+      "gamma": 21.022039638771556,
+      "max_neg": 255,
+      "n_samples": 399,
+      "n_violated": 11,
+      "which": 1,
+      "x_max": 520.7948328595463,
+      "x_min": 304.3219887107722
+    },
+    {
+      "gamma": 25.01085758014569,
+      "max_neg": 137,
+      "n_samples": 399,
+      "n_violated": 5,
+      "which": 2,
+      "x_max": 764.4222742526002,
+      "x_min": 541.1695265464637
+    },
+    {
+      "gamma": 30.424876125859512,
+      "max_neg": 260,
+      "n_samples": 399,
+      "n_violated": 100,
+      "which": 3,
+      "x_max": 44668.35921509631,
+      "x_min": 764.4222742526002
+    }
+  ],
+  "h4_phase_rows": [
+    {
+      "arg_q": 0.00014149535802866642,
+      "delta": 0.001,
+      "rel": 1.0027167283515787e-06,
+      "two_delta_over_gamma": 0.00014149549990857116,
+      "x_sep": 0.0001
+    },
+    {
+      "arg_q": 0.0014149533465756974,
+      "delta": 0.01,
+      "rel": 1.167888742254507e-06,
+      "two_delta_over_gamma": 0.0014149549990857117,
+      "x_sep": 0.0001
+    },
+    {
+      "arg_q": 0.01414929976180786,
+      "delta": 0.1,
+      "rel": 1.7684594168628258e-05,
+      "two_delta_over_gamma": 0.014149549990857118,
+      "x_sep": 0.0001
+    },
+    {
+      "arg_q": 0.14125999293642275,
+      "delta": 1.0,
+      "rel": 0.0016644131601401288,
+      "two_delta_over_gamma": 0.14149549990857116,
+      "x_sep": 0.0001
+    }
+  ]
+}

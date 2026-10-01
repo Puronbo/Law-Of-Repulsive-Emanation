@@ -664,3 +664,83 @@ the entries are a cancellation of same-order, mixed-sign pieces, so a positive
 representation would have to survive that cancellation.  Positivity is still
 sampled at finitely many `x` and `N ≤ 3`, the Widder criterion stays posited,
 and nothing here proves RH.
+
+---
+
+## 17. H4 — the criterion is not falsifiable by finite computation
+
+`experiments/rh_widder_hankel_h4.py` (5/5 gates) does not attack the positivity
+wall again. It attacks a question about **method** that the pinned records
+raise and then step past.
+
+### 17.1 The hedge that got skipped
+
+`rh_widder_stieltjes_explicit_details.md` §18 offers the eventual criterion and
+immediately hedges it — *"If this sparse/eventual criterion is rigorously
+sufficient under the relevant analytic hypotheses, then RH follows"* — and
+§23.5 warns that *"an off-line zero does not automatically dominate every
+Widder sum"*. §20 says a small displacement only postpones the contradiction
+to higher Widder order. §24 names *"fix `x > 0` and analyze the asymptotic
+spectrum"* as the sharpest next calculation. H1–H3 all **sampled** the
+criterion. None asked how far out of reach its counterexamples are. H4 does,
+because that number decides whether a clean scan is evidence.
+
+### 17.2 The phase law, with a factor of two worth recording
+
+For a zero displaced by `δ` from the critical line the transformed scale is
+
+```
+w = γ² - δ² - 2i δγ,        q(x) = w/(x+w)²,
+arg q(x) = arg w - 2 arg(x+w) →  -arg w  as x → 0,
+```
+
+so `arg q = atan(2 δγ/(γ²-δ²)) ~ 2δ/γ`. Equivalently, `q(0) = 1/w`.
+A first cut of this experiment predicted `δ/γ` and **every** gate failed; the
+error was a dropped factor of two, and it propagated into the amplification
+constant (`γ/2` instead of `πγ/4`). The tests now pin both the phase and the
+constant, and one test asserts the *wrong* law deviates by exactly `θ/2`.
+
+- **H4a (the separating phase).** At the `x` where the displaced lowest zero
+  first strictly dominates, `arg q` matches `2δ/γ` to `~1e-6` relative for
+  `δ = 1e-3, 1e-2` and `~2e-5` at `δ = 1e-1`.
+- **H4b (the `1/δ` amplification law).** A strictly dominant pair contributes
+  `2Q^m cos(mθ)`, so the first violating order is `m_first ~ π/2θ`, and with
+  H4a that is `m_first · δ ~ πγ/4 = 11.1014`. Measured
+  `m_first · δ = 11.102, 11.110, 11.200` for `δ = 1e-3, 1e-2, 1e-1` (spread
+  `0.9%`, max deviation from `πγ/4` `< 0.9%`), with `m_first` matching
+  `π/2θ` at each `δ`. `δ = 1` gives `12.0`, correctly outside the
+  small-angle regime.
+
+### 17.3 The barrier
+
+- **H4c (invisibility).** Displacing the lowest zero by `δ = 1e-3`
+  **synthetically** (not a claim about ζ) and scanning **59** log-spaced `x` in
+  `[0.01, 30]` finds **zero** violating points with `Q_m < 0` up to `m = 200`:
+  eventual positivity holds at every sampled `x` despite a genuine off-axis
+  scale. At `δ = 1e-4` an **exhaustive** search to `m = 20000` finds no
+  violation at all, and H4b predicts the first at `m ~ 1.11e5`.
+- **H4d (the violating band can be narrow).** Displacing the 3rd zero instead
+  of the lowest confines the violating `x` to as few as **5 of 399** log samples
+  (`γ = 25.01`: `x ∈ [541, 764]`). Since the criterion quantifies over **all**
+  `x > 0`, a finite grid can miss the band entirely.
+- **H4e (the criterion is not vacuous).** A strictly dominant pair
+  `q_* = 2e^{±0.7i}` over background `q_j ≪ (0, 1/3)` first violates at
+  `m = 3` and violates at **198 of 399** orders, while an all-real-positive
+  (RH-type) spectrum violates at **0 of 399**. So the mechanism is real and
+  reachable — it is the *small-`δ`* configuration that is out of reach.
+
+### 17.4 What this does and does not say
+
+It does **not** say the criterion is wrong. It says a **clean finite
+Widder/Hankel scan carries no evidential weight for RH**, because the
+counterexamples it cannot see are exactly the ones that matter, and the `all x`
+quantifier that makes the criterion correct is the same quantifier that makes it
+unverifiable. Concretely, the H1–H3 results should be read as **structural
+verification of the algebra**, not as numerical support for the positivity
+claim.
+
+The pinned criterion may still be correct and sufficient. **Nothing here proves
+or refutes RH**; the bridge `prime-gamma → universal H_N ⪰ 0` (§27) remains
+OPEN, and H4's contribution is to show that the numerical route to *testing*
+it is blocked at the required precision — which makes an analytic proof of
+the bridge the only remaining route.
