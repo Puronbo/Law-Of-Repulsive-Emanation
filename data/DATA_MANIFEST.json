@@ -4,7 +4,7 @@
   "persistence_rule": "data/*.json is gitignored; an artifact persists only if listed under 'tracked' or regenerable from 'scripts'. Anything under 'unreproducible' is a real loss and must be recovered by hand.",
   "counts": {
     "tracked": 301,
-    "recreatable": 63,
+    "recreatable": 64,
     "unreproducible": 123
   },
   "unreproducible": [
@@ -180,6 +180,7 @@
     "rh_positivity_certificate_data.json",
     "rh_verification.json",
     "rh_widder_hankel_h1_data.json",
+    "rh_widder_hankel_h2_data.json",
     "rh_zero_scale_objects_data.json",
     "servo_regen_data.json",
     "sigma_law_structural.json",
@@ -1210,6 +1211,9 @@
     ],
     "rh_widder_hankel_h1_data.json": [
       "experiments/rh_widder_hankel_h1.py"
+    ],
+    "rh_widder_hankel_h2_data.json": [
+      "experiments/rh_widder_hankel_h2.py"
     ],
     "rh_zero_scale_objects_data.json": [
       "experiments/rh_zero_scale_objects.py"

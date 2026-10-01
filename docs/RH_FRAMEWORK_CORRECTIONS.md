@@ -541,3 +541,58 @@ formula (`F_ξ → Q_k → H_N → cᵀH_Nc ≥ 0`, record section 27) — is un
 The `D_0`, `D_1` samples are a first numerically-verified foothold on the
 zero side of that bridge, with the translation (H1a), the explicit-formula
 split (H1b), and the determinant algebra (H1c) now pinned exactly.
+
+## 15. The full Hankel ladder and the shifted Schur identities (H2)
+
+Where H1 opened the stage with the first two shifted determinants, H2 climbs
+to the structure those determinants are the `2×2` shadows of:
+`experiments/rh_widder_hankel_h2.py` builds the Hankel matrices of the
+transformed-zero moment sequence `M_k(x) = Q_{k+1}(x)`,
+`H_N(x) = [M_{i+j}(x)]_{i,j=0}^N`, and checks the two positivity conditions a
+Stieltjes moment sequence must satisfy (records section 9 / section 16) —
+the Hamburger Hankel `[Q_{i+j+1}]` and the Stieltjes Hankel `[Q_{i+j+2}]` —
+together with the shifted Schur/Vandermonde determinant identity (section 10).
+All four sub-gates (H2a, H2d, H2b/H2c, H2e) pass.
+
+- **H2a (section 17 transform extends to `Q_1..Q_9`).** One Taylor expansion
+  of `F_ξ` at each `x` supplies `Q_1..Q_9` through the same finite
+  differential transform as H1a, and the result is cross-checked against the
+  zero-side: the direct zero sum for `Q_3..Q_9` (fast convergence at 300
+  zeros) and the exact log-Ξ moment series for `Q_1, Q_2`, whose `1/γ²`- and
+  `1/γ⁴`-tails are not negligible.  Worst relative residual over
+  `x ∈ {1/2, 1, 4}` is `1.3e-7`.  Again no `zetazero` call enters `F_ξ`.
+- **H2d (section 10 shifted Schur/Vandermonde identity is exact algebra).**
+  The shifted Hankel determinant factors as
+  `det[Q_{i+j+1}]_{i,j≤N} = Σ_{0≤i_0<…<i_N} (∏_a q_{i_a}) ∏_{a<b}(q_{i_a}−q_{i_b})²`,
+  so under RH (`q_ρ` real) every summand is `≥ 0` and `H_N ≥ 0` term by term;
+  the `D_m` Vandermonde form is the `N = 1` case.  The identity is algebraic,
+  hence holds for any finite multiset of `q`'s (real *or* complex) — the check
+  runs on the first 8 zeros, where the brute-force sum over `C(8,4) = 70`
+  quadruples is exact (enumerating `C(300,4) ≈ 3.3×10⁸` quadruples over all
+  300 zeros is infeasible and unnecessary).  Identity residual `5.8e-67` for
+  `N = 1, 2, 3` and `m = 0..3`.
+- **H2b/H2c (ladder and both Hankel matrices are positive on the sampled
+  half-line).** At every `x ∈ {1/2, 1, 4}` the ladder `D_0..D_3` and all
+  leading principal determinants of the Hamburger Hankel `[Q_{i+j+1}]` and the
+  Stieltjes Hankel `[Q_{i+j+2}]` are positive through order `N = 3`, computed
+  from the explicit formula with no zero-location data.  At `x = 1`:
+  `D = (1.891e-9, 2.219e-20, 1.730e-30)`,
+  Hamburger `= (2.303e-2, 1.891e-9, 2.028e-22, 1.051e-41)`,
+  Stieltjes `= (3.660e-5, 3.675e-15, 2.849e-31, 8.045e-54)`; the Stieltjes
+  entries sit strictly below the Hamburger entries they shift, as they must.
+  This is sampled evidence consistent with the Stieltjes/Widder positivity,
+  not a proof; a negative sample would refute RH.
+- **H2e (section 10 obstruction lifts to the full matrix).** A strictly
+  dominant synthetic conjugate pair `q_* = e^{±0.7i}` over four real background
+  `q_j ∈ [0.025, 0.1]` makes the full shifted Hankel determinant
+  `det[Q_{i+j+1}]` negative for `N = 1, 2, 3` — the same off-axis mechanism as
+  H1e, but now breaking Stieltjes positivity at the level of the whole matrix
+  rather than a single `2×2` shifted minor.
+
+**Honest wall.** H2 is an investigation, not a proof.  The Widder criterion is
+posited, positivity is sampled at finitely many `x` and matrix orders
+`N ≤ 3`, and the prime–gamma → Hankel bridge (record section 27:
+`F_ξ → Q_k → H_N → cᵀH_Nc ≥ 0`) remains open.  What H2 adds is that the first
+determinants of H1 are confirmed to be the leading edge of a coherent,
+numerically positive Hankel structure, with the determinant algebra (H2d) and
+the transform (H2a) pinned exactly.

@@ -1,0 +1,180 @@
+{
+  "conclusion": "H2 expands H1 from the 2x2 shifted determinants to the full Hankel structure.  All 4/4 sub-gates pass.  (a) The section 17 transform extends to Q_1..Q_9 and matches the zero + moment-tail expansion to 1.3e-07.  (b) At every sampled x > 0 the ladder D_0..D_3, the Hamburger Hankel [Q_{i+j+1}] and the Stieltjes Hankel [Q_{i+j+2}] are positive through order N = 3, computed without zero-location data.  (c) The shifted Schur/Vandermonde identity det[Q_{i+j+1}] = sum (prod q) prod (q_a-q_b)^2 holds to 5.8e-67.  (d) A strictly dominant synthetic off-axis pair drives the full shifted Hankel determinant negative for N = 1,2,3.  Nothing here proves RH: the Widder criterion is posited, positivity is sampled finitely, and the prime-gamma -> Hankel bridge is open.",
+  "experiment": "widder/hankel level 2: full Hankel positivity ladder and shifted Schur/Vandermonde identities",
+  "gates": [
+    {
+      "detail": "One Taylor expansion of F_xi at each x supplies Q_1..Q_9 through the finite differential transform; the cross-check uses the direct zero sum for Q_3..Q_9 (fast convergence at 300 zeros) and the exact log-Xi moment series for Q_1, Q_2 (whose 1/gamma^2 and 1/gamma^4 tails are not negligible).  Worst relative residual: 1.26e-07.",
+      "gate": "H2a: section 17 transform extends to Q_1..Q_9 and matches the zero + moment-tail expansion",
+      "passed": true
+    },
+    {
+      "detail": "On the first 8 zeros (the identity is algebraic, so a small multiset is exact; C(8,4) triples are infeasible over all 300 zeros), the shifted Hankel determinant matches the Schur/Vandermonde sum for N = 1, 2, 3, and the D_m Vandermonde form matches for m = 0..3, to 5.78e-67.  Under RH each summand is >= 0.",
+      "gate": "H2d: shifted Schur/Vandermonde identity -- det[Q_{i+j+1}] equals sum_{i_0<...<i_N} (prod q) prod (q_a - q_b)^2",
+      "passed": true
+    },
+    {
+      "detail": "At x in [0.5, 1.0, 4.0], D_m = Q_{2m+1}Q_{2m+3}-Q_{2m+2}^2 > 0 for m = 0..3, and both the Hamburger Hankel [Q_{i+j+1}] and the Stieltjes Hankel [Q_{i+j+2}] have all leading principal determinants positive up to order N = 3.  These are the sampled Stieltjes-moment positivity conditions (framework sections 9, 16), computed from the explicit formula without zero-location data -- evidence consistent with RH, not a proof.",
+      "gate": "H2b/H2c: the shifted-det ladder D_0..D_3 and the full Hankel matrices are positive on the sampled half-line",
+      "passed": true
+    },
+    {
+      "detail": "Replacing the real transformed-zero scales by a strictly dominant conjugate pair q_* = e^{+-0.7 i} over four real background q_j materially breaks Stieltjes positivity: det[Q_{i+j+1}] < 0 for N = 1, 2, 3 (N=1: -1.923e+00, N=2: -3.304e-01, N=3: -4.289e-05).  This is the section 10 obstruction lifted from the 2x2 shifted determinant to the full Hankel matrix -- the derived off-axis mechanism, not an RH proof.",
+      "gate": "H2e: a strictly dominant off-axis pair drives the full shifted Hankel determinant negative",
+      "passed": true
+    }
+  ],
+  "h2_identity_rows": [
+    {
+      "N": 1,
+      "det": 5.30030575863329e-10,
+      "rel": 1.2729466923069139e-70,
+      "schur": 5.30030575863329e-10,
+      "x": 0.5
+    },
+    {
+      "N": 2,
+      "det": 1.7706507757115565e-23,
+      "rel": 6.159562001438746e-69,
+      "schur": 1.7706507757115565e-23,
+      "x": 0.5
+    },
+    {
+      "N": 3,
+      "det": 1.4575029866750914e-43,
+      "rel": 2.968725914272631e-67,
+      "schur": 1.4575029866750914e-43,
+      "x": 0.5
+    },
+    {
+      "N": 1,
+      "det": 5.205383233695164e-10,
+      "rel": 4.8605979479041255e-71,
+      "schur": 5.205383233695164e-10,
+      "x": 1.0
+    },
+    {
+      "N": 2,
+      "det": 1.703035545015583e-23,
+      "rel": 6.896737812095587e-70,
+      "schur": 1.703035545015583e-23,
+      "x": 1.0
+    },
+    {
+      "N": 3,
+      "det": 1.3670371299502465e-43,
+      "rel": 4.7584133000755025e-67,
+      "schur": 1.3670371299502465e-43,
+      "x": 1.0
+    },
+    {
+      "N": 1,
+      "det": 4.674381137911057e-10,
+      "rel": 1.2629759264447525e-70,
+      "schur": 4.674381137911057e-10,
+      "x": 4.0
+    },
+    {
+      "N": 2,
+      "det": 1.3500673667842316e-23,
+      "rel": 6.054388530739555e-69,
+      "schur": 1.3500673667842316e-23,
+      "x": 4.0
+    },
+    {
+      "N": 3,
+      "det": 9.325207883384621e-44,
+      "rel": 5.781795230398493e-67,
+      "schur": 9.325207883384621e-44,
+      "x": 4.0
+    }
+  ],
+  "h2_rows": [
+    {
+      "D_m": [
+        1.9197265666172037e-09,
+        2.2938087868544128e-20,
+        1.817470502650781e-30
+      ],
+      "Q1": 0.023067928316067715,
+      "Q3": 1.4220159757775669e-07,
+      "Q5": 3.135355420099254e-12,
+      "hamburger_dets": [
+        0.023067928316067715,
+        1.9197265666172037e-09,
+        2.0991222737989155e-22,
+        1.1125343538239604e-41
+      ],
+      "stieltjes_dets": [
+        3.6885901002100996e-05,
+        3.766298260111387e-15,
+        2.981403635020656e-31,
+        8.622155107130121e-54
+      ],
+      "translation_rel": 2.2043637184063878e-08,
+      "x": 0.5
+    },
+    {
+      "D_m": [
+        1.8906522515818847e-09,
+        2.2187695959524687e-20,
+        1.7302341310936186e-30
+      ],
+      "Q1": 0.023031077802489523,
+      "Q3": 1.4026234901792868e-07,
+      "Q5": 3.059156203609839e-12,
+      "hamburger_dets": [
+        0.023031077802489523,
+        1.8906522515818847e-09,
+        2.028081669826578e-22,
+        1.0511899980283402e-41
+      ],
+      "stieltjes_dets": [
+        3.660247015448507e-05,
+        3.674624800205012e-15,
+        2.8492516627272348e-31,
+        8.04474735631769e-54
+      ],
+      "translation_rel": 2.234824930546662e-08,
+      "x": 1.0
+    },
+    {
+      "D_m": [
+        1.7268340533269731e-09,
+        1.8201163376454693e-20,
+        1.2907135708666054e-30
+      ],
+      "Q1": 0.022814366951891596,
+      "Q3": 1.292865103650981e-07,
+      "Q5": 2.6429213210158807e-12,
+      "hamburger_dets": [
+        0.022814366951891596,
+        1.7268340533269731e-09,
+        1.6520851008910227e-22,
+        7.496013727078655e-42
+      ],
+      "stieltjes_dets": [
+        3.4967925818840204e-05,
+        3.173508622422913e-15,
+        2.1746355050013707e-31,
+        5.321045229627753e-54
+      ],
+      "translation_rel": 1.2583173718017853e-07,
+      "x": 4.0
+    }
+  ],
+  "h2a_translation_worst_rel": 1.2583173718017853e-07,
+  "h2e_hankel_obstruction": [
+    {
+      "N": 1,
+      "det": -1.9228071078817008
+    },
+    {
+      "N": 2,
+      "det": -0.33042008025399294
+    },
+    {
+      "N": 3,
+      "det": -4.288553576371687e-05
+    }
+  ]
+}
