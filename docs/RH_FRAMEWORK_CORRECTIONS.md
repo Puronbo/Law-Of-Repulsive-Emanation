@@ -1351,7 +1351,7 @@ otherwise would produce a proof of nothing.
 
 **Lean 4 + Mathlib proves the analytic claims.**  Under
 `PunoCalculus/PunoCalculus/RH/`, imported from the library root so `lake build`
-covers them.  `lake build` is green (8724 jobs, exit 0).
+covers them.  `lake build` is green (8725 jobs, exit 0).
 
 ### Proved in Lean
 
@@ -1398,6 +1398,36 @@ covers them.  `lake build` is green (8724 jobs, exit 0).
   natural-exponent version in `Monotonicity.lean` it covers the real exponents
   the code evaluates.
 
+`RH/Hankel.lean` - the section 9 / 16 criterion itself:
+
+* `polyEval_sq`, `polyEvalR_sq` - `P(u)^2 = sum_{i,j} c_i c_j u^(i+j)`, where
+  `P(u) = sum_i c_i u^i` is the section 9 polynomial.
+* `quadForm_eq` - **H3c exactly**: the section 16 quadratic form
+  `c' H c` for `H = [M_{i+j}]` with `M_k = sum_j q_j^(k+1)` equals
+  `sum_j q_j P(q_j)^2`.  Holds for arbitrary *complex* atoms, which is what
+  makes it an identity rather than an inequality.
+  `rh_widder_hankel_h3.py` verifies the same statement numerically to `1e-40`;
+  this file proves it.
+* `quadFormR_eq` - the real form satisfies the same identity.
+* `quadFormR_nonneg` - the **sufficiency** direction of the criterion: if every
+  atom is a non-negative real then the form is non-negative, because each
+  summand is a non-negative weight times a real square.  Under RH the
+  transformed zeros are exactly such atoms.
+* `quadForm_ofReal`, `re_quadForm_of_real`, `quadForm_nonneg_of_real` - the
+  `C`-valued form the experiments build, restricted to real atoms, *equals* the
+  real form.  So `quadFormR_nonneg` is a statement about the object actually
+  computed, not about a weakened real surrogate.
+
+**What this does not do.**  It does not prove the converse - that positivity for
+all `c`, all orders and all `x > 0` forces the atoms to be real - which is the
+direction that would settle RH and which section 27 identifies as exactly the
+missing prime-side step.  Nor is `quadFormR_nonneg` instantiated at the zeta
+spectrum: its hypothesis `forall k, 0 <= q_k` *is* RH, so discharging it would
+assume the conclusion.  The file certifies the criterion is **sound** (a
+negative form would be a genuine obstruction) and pins the algebra the
+experiments measure.  It contributes nothing toward proving positivity for
+zeta; the gap above is the state of the art.
+
 ### Known scope limits, stated in the Lean sources themselves
 
 * `Monotonicity.lean` proves exponent monotonicity for `m` in the **natural
@@ -1410,6 +1440,11 @@ covers them.  `lake build` is green (8724 jobs, exit 0).
   convergence condition rather than a numerically motivated one; the
   local-finiteness claim `dμ = 2*sum δ_{γ²}`; and the transition map
   `T = G∘F` on `Xi`.
+* `Hankel.lean` proves the criterion's algebra and its sufficiency direction
+  for an arbitrary finite multiset of non-negative reals.  It does not
+  instantiate the hypothesis at the zeta zeros, and it does not prove the
+  converse that would settle RH.  Reading it as progress on the hard direction
+  would invert its meaning.
 * Local integrability holds for *every* `m`, so it is not where `m > 1/2`
   bites; only the behaviour at infinity is.  Worth stating because it is easy
   to conflate the two.
