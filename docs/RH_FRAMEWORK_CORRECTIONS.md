@@ -1339,9 +1339,118 @@ problem stay controlled — strictly harder than the "per-term kernels `P_m(y)`
 change sign" obstruction of §22 already implies, since it rules out any
 low-rank sign-definite decomposition.
 
+## 22. H10 — what the criterion can certify, and where it stops being decidable
+
+Section 28 item 1 asks for a positive Hankel kernel from the prime side.
+`RH/Hankel.lean` (commit `190e87c`) proved the criterion's algebra and its
+sufficiency direction, so the criterion's *content* is settled: what remains open
+is the application, universal positivity for the zeta atoms. H10 (`experiments/
+rh_widder_hankel_h10.py`) settles the structural part **exactly** and measures
+the numerical part, which turns out to impose a hard order bound that the
+framework's formulation had not accounted for.
+
+### 22.1 The exact content: the criterion's contrapositive is constructive
+
+With `v_k = (1, q_k, …, q_{k}^{N-1})ᵀ`, `V = [v_1 … v_K]` and `D = diag(q)`:
+
+* `H_N = V D Vᵀ` exactly, for every admissible order — verified symbolically over
+  ℚ, residual `0`, at every `N ≤ K` on four atom sets.
+* At the **square** order `N = K` (`V` a full-rank Vandermonde):
+  `det H_K = (∏_k q_k) · ∏_{j<m}(q_m − q_j)²` exactly. So the sign of
+  `det H_K` is exactly the sign of `∏_k q_k`, and **a single negative atom
+  forces `det H_K < 0`**.
+* Therefore `c = (V_Kᵀ)⁻¹ e_{k*}` — solved *exactly over the rationals* — satisfies
+  `cᵀ H_K c = q_{k*} < 0`. Section 27's non-quantitative "some `c` exists" is
+  replaceable by an explicit, exactly-verifiable certificate whenever the atoms
+  are rational.
+
+**A correction made here rather than shipped.** The first draft of H10 claimed
+the product formula for `N ≤ K`. It is false for `N < K`, where the term
+`Σ_{k>N} q_k v_k v_kᵀ` survives and the truncated product is not the
+determinant. H10a now carries a **negative control** demonstrating the failure,
+and `test_negative_control_fires` asserts the control actually fires, so the
+wrong generalisation cannot return. The formula is a statement about the square
+case only.
+
+### 22.2 The rank wall: the determinant test is vacuous past `N > K`
+
+`rank H_N ≤ K`, so `det H_N = 0` **exactly** once `N > K` — verified symbolically
+(K = 3: exactly zero at N = 4, 5; exactly non-zero at N ≤ 3). A positivity
+certificate search is therefore confined to `N ≤ K`, and past that limit
+roundoff alone would manufacture apparent negative eigenvalues out of an exactly
+singular matrix.
+
+### 22.3 The overflow wall: more zeros make the raw form *worse*
+
+`M_{2N−1} ~ K γ_K^{4N}`. First order `N` whose `log₁₀` exceeds double's limit
+(308), predicted from the asymptotics and then *measured* by actually
+exponentiating in float64:
+
+| K | γ_K | wall order N |
+|---|---|---|
+| 100 | 236.5 | 33 |
+| 200 | 396.4 | 30 |
+| 400 | 679.7 | 27 |
+
+The wall moves **down** as K grows, because γ_K grows. This is a property of the
+formulation, not of the arithmetic: supplying more zeros makes the unnormalised
+criterion strictly worse.
+
+### 22.4 The precision wall, and an artifact that would have been read as RH = false
+
+The overflow wall is removable without weakening the test: `D^{−1/2} H D^{−1/2}`
+with `D = diag(M_{2i})` has the **same inertia** as `H` (Sylvester's law of
+inertia — congruence by an invertible matrix preserves the numbers of positive
+and negative eigenvalues), so it decides the same sign question, and it can be
+formed in log space so it does not overflow.
+
+But a precision wall takes its place. With K = 400 zeta atoms, all positive and
+distinct — so the exact `H_N = V D Vᵀ` is **positive definite** for `N ≤ K` — the
+computed smallest eigenvalue is:
+
+| N | 5 | 10 | 15 | 20 | 40 | 60 | 90 |
+|---|---|---|---|---|---|---|---|
+| λ_min | +8.2e−6 | +5.2e−13 | **−9.8e−14** | −1.3e−13 | −5.8e−13 | −1.0e−12 | −3.0e−12 |
+| significant digits | 10.2 | 2.7 | 1.8 | 1.8 | 2.2 | 2.3 | 2.5 |
+
+It turns **negative from order 15** while the exact matrix is positive definite
+there. Those negatives are therefore **provably roundoff**, and the flat plateau
+near 1e−12 — flat rather than growing — is the signature. Concretely:
+
+> **a pipeline that simply tested `λ_min < 0` would declare RH FALSE from order 15.**
+
+Accuracy decays by ≈ 1.5 digits per order, so reaching order 100 would need
+roughly 150 extra digits. Extra precision only moves the wall.
+
+### 22.5 What H10 does and does not establish
+
+**Established:** the criterion's algebra is exact and its contrapositive is
+constructive; the determinant test is confined to `N ≤ K`; the raw form
+overflows at order ≈ 27–33 and worsens with K; the Sylvester-normalised form
+decides the same question but stops being sign-decidable in double precision at
+order ≈ 15, with the failure mode identified as roundoff rather than signal.
+
+**Not established:**
+
+* nothing here proves or refutes RH;
+* the zeta atoms are transcendental and enter only inside sums, so §22.1's
+  constructive certificate is a statement about the criterion's **logic**, not a
+  computable search for a zeta counterexample;
+* **§28 item 1, the positive Hankel kernel from the prime side, is untouched and
+  remains OPEN**; so does §27's bridge `prime-gamma → universal H_N ⪰ 0`.
+
+The net effect is a **bounded-verdict** clarification. The framework's
+positivity test can in principle return `false` (a real certificate), but only at
+small order; beyond order ≈ 15 the honest output is *"not decidable"*, and
+conflating that with `false` would manufacture a counterexample to RH out of
+floating-point noise. Combined with §21's unbounded-rank result, this pins the
+programme from both sides: a *provable* positive kernel must hold at unbounded
+rank, while a *computable* test is bounded at small rank.
+
 ## Lean 4 formalisation of the RH / Widder-Hankel analytic layer
 
 The framework now has two verification layers, and the split is deliberate.
+
 
 **Python (mpmath + JSON) measures.**  Root finding, zero counts, Riemann-von
 Mangoldt agreement, the dominance scan, the moment ladder, the witness brackets

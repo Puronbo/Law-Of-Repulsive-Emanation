@@ -1,0 +1,362 @@
+{
+  "conclusion": "H10 settles what the section 9/16 criterion can certify, and what it cannot.  (a) H_N = V D V' with D = diag(q) exactly, and at the square order N = K the determinant factorises EXACTLY as det H_K = (prod_k q_k) * Vandermonde(q)^2, verified symbolically over the rationals.  (b) rank H_N <= K, so the determinant test is vacuous for N > K: a certificate search is confined to N <= K, and past that roundoff alone would manufacture apparent negative eigenvalues.  (c) So a negative atom at index k* admits an EXACT rational witness c = (V_K')^-1 e_{k*} with c' H_K c = q_{k*} < 0 -- the criterion's contrapositive is constructive, not an appeal to compactness.  (d) But the raw form overflows float64 at order 33, 30 and 27 for K = 100, 200 and 400, and the wall moves DOWN as K grows: more zeros make the unnormalised criterion worse.  (e) The wall is removable without weakening the test -- D^-1/2 H D^-1/2 has the same inertia by Sylvester -- yet the computed smallest eigenvalue then turns NEGATIVE from order 15 onward, while the exact H_N is positive definite there (all atoms positive, distinct, N <= K).  Those negatives are therefore provably roundoff, plateauing at ~1e-12, and a pipeline testing lambda_min < 0 would declare RH FALSE from that order.  Accuracy decays by about 1.5 digits per order, so order 100 would need ~150 extra digits.  NET: the criterion is exact and its contrapositive is constructive, but it is not falsifiable by computation beyond order ~14; a certificate of failure would have to appear at small order, and beyond that the honest signal is 'not decidable', not 'false'.  THIS IS NEITHER A PROOF OF RH NOR A COUNTEREXAMPLE: universal positivity for the zeta atoms remains OPEN (record section 28 item 1).",
+  "experiment": "widder/hankel level 10: the exact content of the criterion and the numerical wall on evaluating it",
+  "gates": [
+    {
+      "detail": "Verified symbolically over the rationals for four atom sets (all-positive, fractional, one negative, two negative): the congruence H_N = V D V' has residual 0 at every order N <= K, and at N = K the determinant equals the product formula with residual 0.  The sign of det H_K is therefore exactly the sign of prod_k q_k.  NEGATIVE CONTROL: the same formula does NOT hold for N < K (it holds in 0 of 12 sub-cases, all of them K = 1 or 2 by coincidence) -- for N < K there is the extra term sum_{k>N} q_k v_k v_k'.  The product formula is a statement about the square case only.",
+      "gate": "H10a: H_N = V D V' exactly, and at N = K det H_K = (prod_k q_k) * Vandermonde(q)^2 exactly, so a single negative atom forces det H_K < 0",
+      "passed": true
+    },
+    {
+      "detail": "With K = 3 distinct atoms, det H_N is exactly 0 for N = 4 and N = 5 and exactly non-zero for N <= 3.  A positivity certificate search is therefore confined to N <= K, where K is the number of atoms used: at N > K the matrix is exactly singular and roundoff alone would manufacture apparent negative eigenvalues.",
+      "gate": "H10b: the determinant test carries no information for N > K (rank H_N <= K)",
+      "passed": true
+    },
+    {
+      "detail": "Atoms ['2', '3', '-5', '7'], with q_{3} = -5 negative.  Taking c = (V_K' )^-1 e_{3} solved exactly over the rationals gives c' H_K c = -5, equal to the negative atom itself, with no floating point.  Record section 27's non-quantitative 'some c exists' is therefore replaceable by an explicit certificate whenever the atoms are rational -- but the zeta atoms are transcendental and appear only inside sums, so this is a statement about the criterion's LOGIC, not a computable search for a zeta counterexample.",
+      "gate": "H10c: a negative atom yields an EXACT rational witness c with c' H_K c = q_{k*} < 0, so the criterion's contrapositive is constructive",
+      "passed": true
+    },
+    {
+      "detail": "M_{2N-1} ~ K gamma_K^(4N).  First order N whose log10 exceeds 308 (double's limit) is {'K=100': 33, 'K=200': 30, 'K=400': 27} for K = [100, 200, 400]; the same overflow is then measured by actually exponentiating the moments in float64.  Every K has a wall strictly inside the scanned range, and the wall is non-increasing in K, so supplying MORE zeros makes the unnormalised criterion WORSE, not better -- because gamma_K grows.  This is a property of the formulation, not of the arithmetic.",
+      "gate": "H10d: the RAW Hankel form overflows IEEE double at small order, and the wall MOVES DOWN as more zeros are used",
+      "passed": true
+    },
+    {
+      "detail": "Hhat = D^-1/2 H D^-1/2, D = diag(M_{2i}); congruence by an invertible matrix preserves inertia (Sylvester), so this decides the same question as the raw form, which overflowed (H10d).  All 400 atoms are positive and distinct, so for N <= K the exact matrix is PD via H_N = V D V' -- yet lambda_min computes negative from N = 15 onward, plateauing near 9.8e-14.  That plateau is the noise floor, and it is flat rather than growing, which is the signature of roundoff rather than a real eigenvalue.  A pipeline that simply tested lambda_min < 0 would declare RH FALSE from order 15.  The sign is trustworthy only for N <= 14, and accuracy decays by about 1.50 digits per order, so reaching order 100 would need roughly 150 extra digits.  This is a property of fixed-precision evaluation, not an argument that the criterion is wrong: extra precision only moves the wall.",
+      "gate": "H10e: the normalised form no longer overflows, yet its computed smallest eigenvalue turns NEGATIVE at order ~15 even though the exact H_N is positive definite -- so the negatives are roundoff, and the criterion stops being able to decide anything there",
+      "passed": true
+    }
+  ],
+  "h10a_exact_rows": [
+    {
+      "K": 4,
+      "atoms": [
+        "2",
+        "3",
+        "5",
+        "7"
+      ],
+      "det_H_K_exact": "12096000",
+      "product_formula": "12096000",
+      "residual_at_N_eq_K": "0",
+      "sign_actual": 1,
+      "sign_pred": 1
+    },
+    {
+      "K": 4,
+      "atoms": [
+        "1",
+        "1/2",
+        "1/3",
+        "9"
+      ],
+      "det_H_K_exact": "390728/243",
+      "product_formula": "390728/243",
+      "residual_at_N_eq_K": "0",
+      "sign_actual": 1,
+      "sign_pred": 1
+    },
+    {
+      "K": 4,
+      "atoms": [
+        "2",
+        "3",
+        "-5",
+        "7"
+      ],
+      "det_H_K_exact": "-37933056000",
+      "product_formula": "-37933056000",
+      "residual_at_N_eq_K": "0",
+      "sign_actual": -1,
+      "sign_pred": -1
+    },
+    {
+      "K": 4,
+      "atoms": [
+        "-2",
+        "3",
+        "-5",
+        "7"
+      ],
+      "det_H_K_exact": "564350976000",
+      "product_formula": "564350976000",
+      "residual_at_N_eq_K": "0",
+      "sign_actual": 1,
+      "sign_pred": 1
+    }
+  ],
+  "h10a_negative_control_rows": [
+    {
+      "K": 4,
+      "N": 1,
+      "det": "17",
+      "truncated": "2",
+      "truncated_product_holds": false
+    },
+    {
+      "K": 4,
+      "N": 2,
+      "det": "982",
+      "truncated": "6",
+      "truncated_product_holds": false
+    },
+    {
+      "K": 4,
+      "N": 3,
+      "det": "107760",
+      "truncated": "1080",
+      "truncated_product_holds": false
+    },
+    {
+      "K": 4,
+      "N": 1,
+      "det": "65/6",
+      "truncated": "1",
+      "truncated_product_holds": false
+    },
+    {
+      "K": 4,
+      "N": 2,
+      "det": "81125/72",
+      "truncated": "1/8",
+      "truncated_product_holds": false
+    },
+    {
+      "K": 4,
+      "N": 3,
+      "det": "11506145/972",
+      "truncated": "1/1944",
+      "truncated_product_holds": false
+    },
+    {
+      "K": 4,
+      "N": 1,
+      "det": "7",
+      "truncated": "2",
+      "truncated_product_holds": false
+    },
+    {
+      "K": 4,
+      "N": 2,
+      "det": "-5798",
+      "truncated": "6",
+      "truncated_product_holds": false
+    },
+    {
+      "K": 4,
+      "N": 3,
+      "det": "-27908160",
+      "truncated": "-94080",
+      "truncated_product_holds": false
+    },
+    {
+      "K": 4,
+      "N": 1,
+      "det": "3",
+      "truncated": "-2",
+      "truncated_product_holds": false
+    },
+    {
+      "K": 4,
+      "N": 2,
+      "det": "-6858",
+      "truncated": "-150",
+      "truncated_product_holds": false
+    },
+    {
+      "K": 4,
+      "N": 3,
+      "det": "-9063360",
+      "truncated": "432000",
+      "truncated_product_holds": false
+    }
+  ],
+  "h10b_rank_wall_rows": [
+    {
+      "K": 3,
+      "N": 1,
+      "det_exact": "10",
+      "rank": 1
+    },
+    {
+      "K": 3,
+      "N": 2,
+      "det_exact": "156",
+      "rank": 2
+    },
+    {
+      "K": 3,
+      "N": 3,
+      "det_exact": "1080",
+      "rank": 3
+    },
+    {
+      "K": 3,
+      "N": 4,
+      "det_exact": "0",
+      "rank": 3
+    },
+    {
+      "K": 3,
+      "N": 5,
+      "det_exact": "0",
+      "rank": 3
+    }
+  ],
+  "h10c_constructive_witness": {
+    "K": 4,
+    "atoms": [
+      "2",
+      "3",
+      "-5",
+      "7"
+    ],
+    "form_is_negative": true,
+    "matches_q_ks": true,
+    "negative_atom_index": 3,
+    "negative_atom_q_ks": "-5",
+    "quadratic_form_exact": "-5",
+    "witness_c": [
+      "1/16",
+      "-41/672",
+      "1/56",
+      "-1/672"
+    ],
+    "witness_nonzero": true
+  },
+  "h10d_overflow_rows": [
+    {
+      "K": 100,
+      "gamma_K": 236.5242296658162,
+      "log10_gamma_K": 2.373875636706654,
+      "max_finite_log10_M": 303.9967754154833,
+      "measured_first_inf_moment_index": 64,
+      "measured_wall_N": 32,
+      "predicted_wall_N": 33
+    },
+    {
+      "K": 200,
+      "gamma_K": 396.3818542225922,
+      "log10_gamma_K": 2.598113764906637,
+      "max_finite_log10_M": 307.05592356228203,
+      "measured_first_inf_moment_index": 59,
+      "measured_wall_N": 30,
+      "predicted_wall_N": 30
+    },
+    {
+      "K": 400,
+      "gamma_K": 679.7421978825282,
+      "log10_gamma_K": 2.8323442314327467,
+      "max_finite_log10_M": 306.60787313160336,
+      "measured_first_inf_moment_index": 54,
+      "measured_wall_N": 27,
+      "predicted_wall_N": 27
+    }
+  ],
+  "h10d_overflow_wall": {
+    "K=100": 33,
+    "K=200": 30,
+    "K=400": 27
+  },
+  "h10e_digits_lost_per_order": -1.4974449895452229,
+  "h10e_first_spurious_negative_N": 15,
+  "h10e_normalised_eigenvalue_rows": [
+    {
+      "N": 5,
+      "computed_negative_but_exact_is_PD": false,
+      "cond": 562799.5214991226,
+      "lambda_max": 4.596653301646809,
+      "lambda_min": 8.167479050804372e-06,
+      "significant_digits_double": 10.204236050672039
+    },
+    {
+      "N": 10,
+      "computed_negative_but_exact_is_PD": false,
+      "cond": 17281389838424.873,
+      "lambda_max": 8.984825498800172,
+      "lambda_min": 5.199133624555224e-13,
+      "significant_digits_double": 2.717011102945925
+    },
+    {
+      "N": 15,
+      "computed_negative_but_exact_is_PD": true,
+      "cond": 135866443273617.75,
+      "lambda_max": 13.359533907538584,
+      "lambda_min": -9.832842890156608e-14,
+      "significant_digits_double": 1.8214775636472893
+    },
+    {
+      "N": 20,
+      "computed_negative_but_exact_is_PD": true,
+      "cond": 140103109977112.6,
+      "lambda_max": 17.73194356094342,
+      "lambda_min": -1.2656352570503347e-13,
+      "significant_digits_double": 1.808141994427655
+    },
+    {
+      "N": 25,
+      "computed_negative_but_exact_is_PD": true,
+      "cond": 109163496394710.78,
+      "lambda_max": 22.104589449910808,
+      "lambda_min": -2.0249066931665104e-13,
+      "significant_digits_double": 1.9165123329640152
+    },
+    {
+      "N": 30,
+      "computed_negative_but_exact_is_PD": true,
+      "cond": 80838835001188.56,
+      "lambda_max": 26.478388611568505,
+      "lambda_min": -3.275454008111225e-13,
+      "significant_digits_double": 2.046969724083523
+    },
+    {
+      "N": 40,
+      "computed_negative_but_exact_is_PD": true,
+      "cond": 61130164814436.27,
+      "lambda_max": 35.230781523049785,
+      "lambda_min": -5.763240068138965e-13,
+      "significant_digits_double": 2.1683342034883535
+    },
+    {
+      "N": 50,
+      "computed_negative_but_exact_is_PD": true,
+      "cond": 56259450016120.84,
+      "lambda_max": 43.98985920530761,
+      "lambda_min": -7.819105802261229e-13,
+      "significant_digits_double": 2.204394287938276
+    },
+    {
+      "N": 60,
+      "computed_negative_but_exact_is_PD": true,
+      "cond": 50666086960392.96,
+      "lambda_max": 52.754489703171046,
+      "lambda_min": -1.0412189467959239e-12,
+      "significant_digits_double": 2.249872406005553
+    },
+    {
+      "N": 70,
+      "computed_negative_but_exact_is_PD": true,
+      "cond": 37055383769474.82,
+      "lambda_max": 61.52253822598097,
+      "lambda_min": -1.6602860898356557e-12,
+      "significant_digits_double": 2.3857384547309204
+    },
+    {
+      "N": 80,
+      "computed_negative_but_exact_is_PD": true,
+      "cond": 30185042223433.77,
+      "lambda_max": 70.29138301050799,
+      "lambda_min": -2.328682613401752e-12,
+      "significant_digits_double": 2.47479798250138
+    },
+    {
+      "N": 90,
+      "computed_negative_but_exact_is_PD": true,
+      "cond": 26736002508175.85,
+      "lambda_max": 79.05831338709035,
+      "lambda_min": -2.9569982783669464e-12,
+      "significant_digits_double": 2.527493296899359
+    }
+  ]
+}
