@@ -13,3 +13,6 @@ import PunoCalculus.PvsNP
 import PunoCalculus.TwinPrime
 import PunoCalculus.EcaIsometry
 import PunoCalculus.MillenniumBridge
+import PunoCalculus.RH.Dominance
+import PunoCalculus.RH.Monotonicity
+import PunoCalculus.RH.Density

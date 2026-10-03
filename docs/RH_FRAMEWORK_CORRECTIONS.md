@@ -852,16 +852,16 @@ exact identities and a measured window. None of them supplies the `x`. The
 pinned criterion may still be correct and sufficient. **Nothing here proves or
 refutes RH**; the bridge `prime-gamma → universal H_N ⪰ 0` (§27) remains OPEN.
 
-## 19. H6 � does eventual positivity imply RH? (the chain closes)
+## 19. H6 � does eventual positivity imply RH? (the chain closes)
 
-`experiments/rh_widder_hankel_h6.py` (5/5 gates) takes up the question �18.6 left
+`experiments/rh_widder_hankel_h6.py` (5/5 gates) takes up the question �18.6 left
 open: is the pinned criterion refutable by an off-axis zero at *any* height, or
 only by the lowest one? The answer is that the chain is sound at any height, so
 the last structural objection to the route is removed.
 
 ### 19.1 H5e's obstruction is irrelevant
 
-�18's H5e produced a configuration where an on-axis zero is the strict
+�18's H5e produced a configuration where an on-axis zero is the strict
 maximizer, contributing `1` to `S(m)` for every `m`, so `Re S(m) = 0`. That
 looks fatal, but eventual positivity quantifies over **all** `x > 0`:
 
@@ -882,48 +882,48 @@ any off-axis zero ? ?x: strict maximal modulus (H5d)
 As `x ? 0`, `q(x) ? 1/w`, so the maximizer is the smallest `|w|`. Since
 
 ```
-|w|� = ?4 + 2d�?� + d4,      |w_off| < ?_next�  ?  d� < ?_next� - ?�,
+|w|� = ?4 + 2d�?� + d4,      |w_off| < ?_next�  ?  d� < ?_next� - ?�,
 ```
 
 the condition is **exact**, not asymptotic. On the first four zeros the critical
-displacement is `sqrt(?2� - ?1�) = 15.56` � a wide window, not a narrow one. For
-`d = 10?�` the first negative `Q_m` is `m = 11102` against the predicted
+displacement is `sqrt(?2� - ?1�) = 15.56` � a wide window, not a narrow one. For
+`d = 10?�` the first negative `Q_m` is `m = 11102` against the predicted
 `p?/(4d) = 11102` (**exact**), recurring at `100087` of the next `200000` orders,
-consistent with H5a's ~� density. So eventual positivity genuinely fails when
+consistent with H5a's ~� density. So eventual positivity genuinely fails when
 the lowest zero is off-axis.
 
 ### 19.3 The exact phase law (H6b) and the cubic correction (H6c)
 
 ```
-arg q(x) = 2�atan( 2d?/(x + ?� - d�) ) - atan( 2d?/(?� - d�) ),
+arg q(x) = 2�atan( 2d?/(x + ?� - d�) ) - atan( 2d?/(?� - d�) ),
 ```
 
-verified against direct evaluation to `6�10?4�`. This holds at **every** `x` and
+verified against direct evaluation to `6�10?4�`. This holds at **every** `x` and
 supersedes H4a's small-`x` asymptote `arg q = 2d/?`.
 
-Substituting `x = ?�` gives a surprise:
+Substituting `x = ?�` gives a surprise:
 
 ```
-arg q(?�) = 2�atan( 2u/(2-u�) ) - atan( 2u/(1-u�) ),  u = d/?,
-          = u� - u5/2 + u7/4 + O(u8).
+arg q(?�) = 2�atan( 2u/(2-u�) ) - atan( 2u/(1-u�) ),  u = d/?,
+          = u� - u5/2 + u7/4 + O(u8).
 ```
 
 The linear terms cancel and the phase is **cubic** in `d`. The coefficient is
-**1**, confirmed at ratio `1.0000` (spread `2.5�10?7`) across 4 `?` � 4 `d`.
+**1**, confirmed at ratio `1.0000` (spread `2.5�10?7`) across 4 `?` � 4 `d`.
 Worth recording: expanding `2 atan(u) - atan(2u)` naively gives the coefficient
-`2/3` and is **wrong**, because at `x = ?�` the `atan` arguments carry `O(u�)`
+`2/3` and is **wrong**, because at `x = ?�` the `atan` arguments carry `O(u�)`
 perturbations that must be kept. A first cut of H6 read off `2/3`, failed its
 gate, and was corrected against the symbolic series.
 
 ### 19.4 The cubic phase is not an obstruction (H6d)
 
-Since `d/dx[2 atan(A/(x+B))] = -2A/((x+B)� + A�) < 0` with `A = 2d?`,
-`B = ?� - d�`, the **signed** phase is strictly decreasing in `x`; `|arg q|`
+Since `d/dx[2 atan(A/(x+B))] = -2A/((x+B)� + A�) < 0` with `A = 2d?`,
+`B = ?� - d�`, the **signed** phase is strictly decreasing in `x`; `|arg q|`
 peaks at small `x` and relaxes toward `atan(A/B)`. The route is not obliged to
-work at `x = ?�`. At the reference point `x* = 2d? � ?�` the phase is again
-linear � measured ratio `0.9941` to `2d/?` � and the required order is
+work at `x = ?�`. At the reference point `x* = 2d? � ?�` the phase is again
+linear � measured ratio `0.9941` to `2d/?` � and the required order is
 `m ~ p?/(4d)`, i.e. **H4b's law survives**, in the computable range. Insisting on
-`x = ?�` would instead demand `m ~ (p/2)(?/d)�`, over `10��` at `d = 10?�`.
+`x = ?�` would instead demand `m ~ (p/2)(?/d)�`, over `10��` at `d = 10?�`.
 
 This is the trap of the experiment: the cubic regime looks like a wall but is a
 local artifact of working at the dominance-window scale.
@@ -931,42 +931,42 @@ local artifact of working at the dominance-window scale.
 ### 19.5 The chain extends to any height (H6e)
 
 Displacing the zero at index `k = 2, 3, 4` puts the dominance window at
-`x/?_k� = 0.67, 0.84, 0.82` � strictly **below** `1`, i.e. away from the cubic
-point � and all three reach a negative `Q_m` at `m = 84495, 228656, 245027`
+`x/?_k� = 0.67, 0.84, 0.82` � strictly **below** `1`, i.e. away from the cubic
+point � and all three reach a negative `Q_m` at `m = 84495, 228656, 245027`
 within the `400000`-order cap. So the reduction to the lowest off-axis zero is
 **not** needed.
 
 This correction was itself earned the hard way: a first scan used a coarse `x`
-grid whose points landed near `x/?_k� = 1`, the single scale where the phase is
+grid whose points landed near `x/?_k� = 1`, the single scale where the phase is
 cubic-small, and reported "no violation within the cap" for `k = 3, 4`. A refined
-grid finds the window's left edge, where the phase is 50� larger, and the
+grid finds the window's left edge, where the phase is 50� larger, and the
 violations appear. **Coarse grids near a regime boundary produced a false
-refutation here** � the same class of error as H4's factor-of-two.
+refutation here** � the same class of error as H4's factor-of-two.
 
 ### 19.6 Scale invariance: the criterion is a function of `delta/gamma` only
 
 `delta` is **not** a scale-free parameter; the only dimensionless one is
 `u = delta/gamma`, and every part of the framework respects that:
 
-* H6a's exact condition `delta� < gamma_next� - gamma�` compares like with like;
-* H6b's phase law depends on `x` only through `x/gamma�`;
+* H6a's exact condition `delta� < gamma_next� - gamma�` compares like with like;
+* H6b's phase law depends on `x` only through `x/gamma�`;
 * the required order is `m ~ (pi/4)/u`.
 
 Holding `u` fixed and multiplying every `gamma` by `1, 10, 100, 1000` (with
-`delta` growing to match) reproduces `x_win/gamma�` and `m_first` **identically**
+`delta` growing to match) reproduces `x_win/gamma�` and `m_first` **identically**
 at every scale, to all printed digits. So a violation found at one height is a
-violation at every height � the criterion carries no hidden dependence on
+violation at every height � the criterion carries no hidden dependence on
 absolute height.
 
 This also explains a false negative worth recording. The scan grid was
-originally **absolute**, `x ? [10?6, 10��]`. Since the dominance window sits at
-`x ~ gamma�`, rescaling `gamma` by 10 moves it to `x � 0.14`, where an absolute
+originally **absolute**, `x ? [10?6, 10��]`. Since the dominance window sits at
+`x ~ gamma�`, rescaling `gamma` by 10 moves it to `x � 0.14`, where an absolute
 grid's effective resolution no longer resolves it, and H6 reported "no violation"
 for `gamma = 210` and above. That was an artifact of the *numerical search*, not
-of the mathematics. `_first_winning_x` now works in units of `gamma�`, and H6f
+of the mathematics. `_first_winning_x` now works in units of `gamma�`, and H6f
 pins the invariance so the trap cannot recur silently.
 
-Note this is the **third** grid/expansion error in this sequence � H4's factor
+Note this is the **third** grid/expansion error in this sequence � H4's factor
 of two, H6c's `2/3` coefficient, and now two separate `x`-grid resolutions. The
 consistent lesson: near a regime boundary, a grid that does not respect the
 problem''s own scaling will manufacture a conclusion.
@@ -976,8 +976,8 @@ problem''s own scaling will manufacture a conclusion.
 **Established, on the first four zeros treated as a synthetic spectrum:**
 
 * eventual positivity is refuted by an off-axis zero at any height, not just the lowest;
-* the dominance condition is the exact inequality `d� < ?_next� - ?�`;
-* the phase law is the closed form of �19.3, and the required order is `O(?/d)`.
+* the dominance condition is the exact inequality `d� < ?_next� - ?�`;
+* the phase law is the closed form of �19.3, and the required order is `O(?/d)`.
 
 **Not established:**
 
@@ -989,7 +989,7 @@ problem''s own scaling will manufacture a conclusion.
   unproved, and isolation of the maximizing cluster for real zeta is assumed
   rather than derived;
 * passing from a four-zero synthetic spectrum to the full zeta spectrum;
-* above all the bridge `prime-gamma ? universal H_N ? 0` (�27), which remains **OPEN**.
+* above all the bridge `prime-gamma ? universal H_N ? 0` (�27), which remains **OPEN**.
 
 The pinned criterion may still be correct and sufficient. H6 removes the
 objections it could test; it does not supply the analytic bridge.
@@ -1126,3 +1126,292 @@ precisely locatable statement:
 
 That is a much smaller and better-defined target than "verify every
 convergence/interchange condition".
+
+## 21. H8 — §8's dominance condition, exactly; §3 re-indexed
+
+§27's chain is `prime-gamma → F_xi → Q_k → H_N → cᵀH_N c ≥ 0`, and §28's
+first open item is the positive Hankel kernel. H6 attacked that from the zero
+side and found eventual positivity refutable by an off-axis zero — but on **four
+synthetic zeros**. Two things had to be settled before that could be applied to
+the real spectrum, and neither had been:
+
+* §8's dominance condition is `eta(x) = max over ALL real zeros |q_real| /
+  |q_off| < 1`. H6 checked a four-zero spectrum, never a max against real zeta.
+* the usable `x` window, and the witness order it forces.
+
+H8 answers both. The results are **stronger than H6 on dominance** (it is an
+identity) and **weaker than H6 on the witness order** (H6's `m ~ (π/4)γ/δ` is
+an unattainable infimum).
+
+### 21.1 THEOREM: dominance at `x = |w|` is an identity, not a smallness condition
+
+H6 required `δ² < γ_next² − γ²` and called the resulting margin "thin". That
+requirement is unnecessary. For `w = γ² − δ² − 2iδγ`:
+
+```
+|w| = γ² + δ²                          exactly, for all δ
+|q_off(|w|)| = 1/(4γ²)                 exactly, for all δ
+```
+
+The second follows from `|w + |w||² = |w|²(1 + e^{iφ})² = 4|w|²cos²(φ/2)` with
+`r = |w| = γ²+δ²`, giving `|q_off| = sec²(φ/2)/(4r) = 1/(4γ²)`. Measured
+deviation from `4γ²|q| = 1`: **< 1e-24** across five `(γ,δ)` pairs.
+
+Meanwhile a real zero contributes `|q_real(x,g)| = g²/(x+g²)²`, which is
+`≤ 1/(4x)` with **equality only at `g² = x`**. So at `x = r` the off-axis pair
+sits *above the entire real envelope* — measured ratios `r/γ²` = 1.0000003 to
+1.000017 — and every real zero is strictly below it unless its square happens
+to equal `r` exactly.
+
+In closed form, against a real zero of height `g`, with `s = g/γ` and
+`d₂ = δ²/γ²`:
+
+```
+eta = 4s² / (1 + s² + d₂)² ,      which equals 1 exactly when g² + δ² = γ² .
+```
+
+Measured against that formula: worst relative error **1e-17**. H6's
+four-zero margin concern was misplaced — the margin is not thin, it is
+*structurally favourable*, and needs no condition on δ at all.
+
+### 21.2 The admissible window, and why its width is spectral
+
+`eta < 1` requires that no real zero's square sit at `x`. Replacing the discrete
+spectrum by its continuous envelope (maximum `1/(4x)`, attained at `g² = x`)
+gives the **necessary** condition `|q_off| > 1/(4x)`, i.e.
+
+```
+x² + 2x(γ²−δ²) + r² < 4xr   ⟺   s² − 2(γ²+3δ²)/(γ²+δ²) · s + 1 < 0,   s = x/r,
+```
+
+whose roots are `exp(±a)` with `cosh a = (γ²+3δ²)/(γ²+δ²)`, so
+
+```
+|log(x/r)| < a,      a = 2δ/γ + O(δ³/γ³).
+```
+
+Measured: at `γ=60, δ=1e-3` the exact `a` is `3.33333e-05` against the
+asymptotic `3.33333e-05`. The real spectrum's usable window is **strictly
+wider**, by factors **1.06× to 413×**, because
+
+```
+g²/(x+g²)² = 1/(4x) − e²/(16x³) + O(e³),   e = x − g²,
+```
+
+so a zero whose square misses `x` by `e` relaxes the constraint at *second*
+order. The window is therefore governed by how nearly the squares `g_k²` land
+on `x` — a **diophantine property of the spectrum, not a closed-form constant**,
+and the widening factors span two orders of magnitude. No single constant
+describes the usable window.
+
+### 21.3 The witness order: H6's `m ~ (π/4)γ/δ` is unattainable
+
+From `q_off(x) = r e^{iφ}/(x + r e^{iφ})²` with `φ = arg w`,
+
+```
+theta(s) := |arg q_off| = |φ|(s−1)/(s+1) + O(φ³),
+```
+
+which is **monotone in `s`**, so the cheapest witness sits at the *largest*
+admissible `s`, and a negative `Q_m` needs `cos(m·theta) < 0`, i.e.
+`m > π/(2·theta)`. With `off = s − 1` this gives an exact invariant:
+
+```
+m_min · φ · off / (off + 2) = π/2        identically.
+```
+
+Verified to **1e-15** relative error in all six cases. The `off + 2` is
+`= s + 1`; an earlier cut wrote `(1 + off)`, used `s = off` instead of
+`s = 1 + off`, and reported `≈ π` — an off-by-one in the window coordinate that
+looked like a 2× failure of an exact law.
+
+The consequence is the opposite of §19.6's summary. H6 quoted `m ~ (π/4)γ/δ`,
+which is the `s → ∞` **infimum**; no real spectrum attains it, because as
+`x → ∞` a real zero at `g² ≈ x` always beats the off-axis pair. Measured:
+
+| γ | δ | `off_max` | `m_min` | naive `πγ/4δ` | ratio |
+|---|---|---|---|---|---|
+| 60 | 1e-3 | 1.39e-2 | 6.85e+06 | 4.71e+04 | 145× |
+| 60 | 1e-2 | 1.39e-2 | 6.84e+05 | 4.71e+03 | 145× |
+| 150 | 1e-2 | 3.69e-4 | 6.38e+07 | 1.18e+04 | 5420× |
+| 150 | 1e-1 | 1.60e-3 | 1.47e+06 | 1.18e+03 | 1248× |
+| 300 | 1e-1 | 7.48e-4 | 6.30e+06 | 2.36e+03 | 2673× |
+| 300 | 1 | 7.09e-3 | 6.67e+04 | 2.36e+02 | 283× |
+
+**An off-axis zero displaced by `δ → 0` is the *hardest* to refute, not the
+easiest**: the required rank grows without bound as `δ → 0`. So §9's
+refutation is **not uniformly decidable at any fixed rank**, and the best
+witness found anywhere in this sweep is still `m ≈ 6.7e4`.
+
+A second, subtler correction: `m_min` is **monotone decreasing in δ** but
+**not proportional to `1/δ`**. `m_min·δ` at `γ=150` is `6.38e5` at `δ=1e-2`
+and `1.47e5` at `δ=1e-1` — constant would require equal values, and they differ
+by 4.3×. The proportionality requires `off_max` to be δ-independent, and it is
+not. A test asserting `m_min·δ = const` initially failed and the hypothesis was
+revised, not the data.
+
+### 21.4 §3's equivalence must be stated for `K_N = [Q_{i+j+2}]`
+
+§3 asserts `F_xi(x) = ∫dμ/(x+t)` with `dμ = 2∑_{γ>0}δ_{γ²}`, then forms
+`H_2 = [Q_1 Q_2; Q_2 Q_3]` and tests its determinant. By §20.2 `Q_1` **diverges**
+(like `log²`), so that matrix has an infinite `(1,1)` entry and the determinant
+test is meaningless as written. The well-defined object is
+
+```
+K_N = [Q_{i+j+2}]_{i,j<N},      smallest entry Q_2,  not Q_3 and not Q_1.
+```
+
+The shift also drops `Q_1` from the identifying data, so §28 item 3's Widder
+uniqueness argument must be **redone starting at moment two**. No
+regularization assigning a finite value to `Q_1` while preserving the Hankel
+form has been exhibited. That is recorded as a wording defect, not a repair.
+
+A caution worth keeping: the `Q_1` divergence is a **full-spectrum** statement.
+Partial sums over *real zeros only* are **bounded** — at `x=1` they reach
+`0.0488` by `T=100` and settle at `0.0592`. An earlier cut read `Q_1`'s
+divergence off exactly those partial sums, watched it plateau, and concluded
+`Q_1` was finite. That contradicted §20.2 and was the bug, not the data. The
+divergence lives in the density tail `∫_T^∞ N(t) t^{1−2m} dt`, which is `log²`
+at `m=1` and bounded at `m=2` (measured at `T=100`: `2.3, 6.0, 9.7, 13.5, 17.2`
+versus `0.0000458` flat, a 380,000× separation).
+
+### 21.5 A fourth instance of the same class of error
+
+§21.1–21.3 rest on `max over the real zeros`, so the spectrum must be the real
+one. H8's zero scan used
+
+```
+1/2 [ s(s−1)π^{−s/2}ζ(s) + (1−s)(2−s)π^{−(1−s)/2}ζ(1−s) ],
+```
+
+which is **not ξ**. The gamma-free symmetric form has coefficient `s(s−1)` (not
+`(1−s)(2−s)`) and `π^{(s−1)/2}` in the reflected term. Because the broken form
+is **complex on the critical line**, scanning `Re ξ` for sign changes counted
+**189 zeros to `T=200` where Riemann–von Mangoldt predicts 79** — 110 phantoms
+manufactured by the residual imaginary part oscillating through zero. Every gate
+taking a max over that spectrum was measuring the wrong function.
+
+Two further mistakes compounded it, both mine and both recorded because they
+produced confident wrong numbers:
+
+* the `761 vs 341` count was "explained" by scanning below `γ_1 = 14.13`, where
+  `Re ξ` does oscillate spuriously. Raising the lower limit changed nothing —
+  the count stayed at 761. **The diagnosis was wrong**; only the RvM guard
+  located the real cause;
+* the window half-width was compared as a raw offset `off` against `exp(a) ≈ 1`,
+  which are different quantities and produced a spurious `0.0139` "narrowing".
+  The window lives in `log s`, so the comparison is `log(1 + off)` against `a`:
+  413× *wider*, not narrower.
+
+H7's copy of the ξ defect is **harmless there** — it only feeds the function to
+Newton iteration on tabulated seeds, which converges to the shared zero anyway.
+The defect bites only where the function is *scanned*, which is exactly what H8
+does. Both lessons are now pinned by tests: `xi_is_real_on_the_critical_line`
+and `zero_count_matches_riemann_von_mangoldt`.
+
+### 21.6 What H8 does and does not establish
+
+**Established:**
+
+* dominance of an off-axis pair at `x = |w|` is an **identity**, independent of
+  δ, with the real zero's shortfall given in closed form;
+* the continuous admissible window `|log(x/r)| < a`, `a = 2δ/γ + O(δ³/γ³)`,
+  and the real spectrum's window is wider by a spectral, non-constant factor;
+* the exact witness law `m_min·φ·off/(off+2) = π/2`, hence
+  `m_min → ∞` as `δ → 0`;
+* §3's equivalence must be stated for `K_N = [Q_{i+j+2}]`.
+
+**Not established:**
+
+* nothing here proves or refutes RH;
+* §21.2's widening factors have no closed form, so `m_min` is **not** a
+  universal function of `(γ,δ)` — it must be recomputed per spectrum;
+* no regularization of `Q_1` preserving the Hankel form;
+* **§28 item 1, the positive Hankel kernel from the prime side, is untouched
+  and remains OPEN**;
+* §27's bridge `prime-gamma → universal H_N ⪰ 0` remains **OPEN**.
+
+The net effect on the framework is a clarification with teeth: dominance is
+unconditional, but the **rank needed to see a violation is unbounded in `δ`**.
+A positive Hankel kernel derived from the prime side (§28 item 1) would
+therefore have to be established at ranks where the discriminants of the moment
+problem stay controlled — strictly harder than the "per-term kernels `P_m(y)`
+change sign" obstruction of §22 already implies, since it rules out any
+low-rank sign-definite decomposition.
+
+## Lean 4 formalisation of the RH / Widder-Hankel analytic layer
+
+The framework now has two verification layers, and the split is deliberate.
+
+**Python (mpmath + JSON) measures.**  Root finding, zero counts, Riemann-von
+Mangoldt agreement, the dominance scan, the moment ladder, the witness brackets
+and all `m > 1/2` numerical checks stay in `experiments/`.  Measured constants
+and certified numerics have no useful Lean representation, and pretending
+otherwise would produce a proof of nothing.
+
+**Lean 4 + Mathlib proves the analytic claims.**  Under
+`PunoCalculus/PunoCalculus/RH/`, imported from the library root so `lake build`
+covers them.  `lake build` is green (8724 jobs, exit 0).
+
+### Proved in Lean
+
+`RH/Dominance.lean` - Section 8's dominance algebra, machine-checked:
+
+* `normSq_wOf`, `norm_wOf`, `norm_wOf'` - `|w| = gamma^2 + delta^2` exactly, for
+  all real `gamma, delta`.  The Python code only evaluates it with
+  `gamma, delta >= 0`; the Lean statement is the stronger one.
+* `wOf_eq` - `wOf` *is* the polynomial `gamma^2 - delta^2 - 2i*delta*gamma` that
+  `rh_widder_hankel_h8.py` uses, so the two layers state the same object rather
+  than two lookalikes.
+* `qReal_le`, `qReal_eq_iff`, `qReal_max_attained`, `qReal_lt_of_ne` -
+  `q_real(x, g) <= 1/(4x)` for `x > 0`, with equality exactly at `g^2 = x`.
+  This is AM-GM on `x` and `g^2`, and the equality case is what makes `1/(4x)`
+  the envelope's *maximum* rather than a loose bound.
+* `qReal_envelope` - the three above bundled as H8a reports them.
+
+`RH/Monotonicity.lean` - Section 8's lower-bound mechanism:
+
+* `pow_antitone_of_le_one`, `moment_antitone` - `A(m) = sum_k rho_k^m` is
+  non-increasing in `m` for `0 <= rho_k <= 1`.
+* `qForm_sub_two_le`, `qForm_le_add_two` - `A(m) - 2 <= Q_m <= A(m) + 2`.  The
+  lower bound is recorded explicitly so the limit of the argument is visible:
+  `cos >= -1` yields nothing stronger, and no claim is made that `Q_m` is
+  bounded away from zero without a moment lower bound.
+* `qForm_pos_of_moment_gt_two` - `A(m) > 2` forces `Q_m > 0` for every phase and
+  every real `m`.  This is H8d's implication.
+* `moment_gt_two_at_coarser`, `qForm_pos_at_coarser` - positivity at a *finer*
+  exponent certifies positivity at every coarser `p <= q`.
+
+  A **corrected** statement, worth recording because the first draft had it
+  backwards: monotonicity gives `A(fine) <= A(coarse)`, so a bound proved at a
+  coarse exponent does **not** descend to a fine one - `A` only decreases, and
+  a lower bound on `A(p)` says nothing about `A(q)`.  What transfers is the
+  reverse: one verified fine exponent certifies a whole coarser interval.  The
+  reverse-transfer claim was removed rather than patched.
+
+`RH/Density.lean` - the H9 tail:
+
+* `tailDensity`, `tailIntegrand` - the rescaled density's `[T, ∞)` contribution
+  and its integrand.
+* `rpow_antitone_m` - on `T >= 1`, `T^(-2m)` is decreasing in real `m`.  This is
+  the monotonicity the ladder scan actually relies on, and unlike the
+  natural-exponent version in `Monotonicity.lean` it covers the real exponents
+  the code evaluates.
+
+### Known scope limits, stated in the Lean sources themselves
+
+* `Monotonicity.lean` proves exponent monotonicity for `m` in the **natural
+  numbers**; the real-exponent statement lives in `Density.lean` for the power
+  factor only.  The `Q_m` results hold for all real `m`.
+* Not yet formalised: the tail antiderivative as a `HasDerivAt` theorem and its
+  closed form `T^(1-2m)*(1 + (2m-1)log(T/2π)) / (2π(2m-1)^2)`; the improper
+  limit at `B -> ∞`; continuity of the integrand on `Ioi 0`; local
+  integrability (`IntervalIntegrable`); that `m > 1/2` is the **iff**
+  convergence condition rather than a numerically motivated one; the
+  local-finiteness claim `dμ = 2*sum δ_{γ²}`; and the transition map
+  `T = G∘F` on `Xi`.
+* Local integrability holds for *every* `m`, so it is not where `m > 1/2`
+  bites; only the behaviour at infinity is.  Worth stating because it is easy
+  to conflate the two.
+* No Lean file here is a proof of RH, and none should be cited as one.  The
+  Python artifacts remain the evidence for everything still unformalised.

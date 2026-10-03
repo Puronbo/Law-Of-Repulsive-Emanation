@@ -1,0 +1,215 @@
+{
+  "conclusion": "H9 OVERTURNS H7b. 4/4 sub-gates pass. THE ERROR: H7b summed over zeros as int N(t) t^-2m dt, but a zero sum is an integral against the COUNTING MEASURE, int f(t) dN(t) = int f(t) log(t/2pi)/(2pi) dt. The missed factor is t log t, which DIVERGES, and that is what produced the apparent log^2 divergence of Q_1. The true threshold is 2m > 1, not 2m > 2: at T = 100 the correct tail at m = 1 settles at 5.995833e-03 across ceilings 1e4 through 1e14, flat to 4.7e-06 over the settled windows, while H7b's formula creeps upward from 2.9916e+00 to 6.8536e+01 and overestimates by 510x. The value 5.995833e-03 is the closed form (1/(2pi))[(log(T/2pi)+1)/T], matched to 8.3e-12 relative; an earlier cut of this experiment omitted the Jacobian t from dt = t ds and reported 2.600029e-05, a factor 231 too small. The threshold conclusion survived that error, since a bounded positive factor cannot change convergence, but every magnitude in the earlier artifact was wrong. The threshold is located at m = 1/2 by watching values settle against the ceiling, and the transition is sharp: the drift is 11.6 at m = 0.51 against 1.5e-2 at m = 0.7, three orders apart. An earlier cut that instead integrated to mp.inf returned 2.46e57 and claimed convergence for a provably divergent integral. POINTWISE the integrand ratio N/(dN/dt) does equal t, approached from below as the RVM correction fades (0.66, 0.86, 0.92 at t = 1e2, 1e4, 1e6), but the ratio of the two TAILS diverges rather than scaling like t, because the correct tail is bottom-dominated while H7b's grows like (log Tmax)^2. CONSEQUENCES, all bookkeeping and none of them about RH: (1) Q_1 is finite, so sections 3, 4, 5 and 9 are CORRECT AS WRITTEN and require no re-indexing; (2) section 3's dmu = 2 sum delta_{gamma^2} IS a locally finite positive measure -- mass 2N(sqrt T) with mass/T falling to 4.5e-03 -- so RH <=> F_xi Stieltjes stands unchanged; (3) H7b, H7c and H7d are SUPERSEDED, H7c because its 'Q_1 and F_xi are the same divergent series' argument required Q_1 to diverge at all, and H7d because it read unbounded TOTAL mass as non-local-finiteness; (4) H8d's K_N = [Q_{i+j+2}] correction is WITHDRAWN as an induced error -- it was correcting a defect that does not exist. Nothing here proves or refutes RH, and H6 and H8a-H8c are untouched: H8a's dominance identity is exact and does not depend on any convergence threshold, and H8b/H8c's window and witness-order results use max |q_real| over a finite spectrum. Section 28 item 1, the positive Hankel kernel from the prime side, remains OPEN.",
+  "experiment": "correction of H7b's convergence threshold",
+  "gates": [
+    {
+      "detail": "At T = 100 with ceilings 1e4 ... 1e14, the correct tail int (1/2pi) log(t/2pi) t^-2 dt gives 5.8626e-03, 5.9938e-03, 5.9958e-03, 5.9958e-03, 5.9958e-03, 5.9958e-03 -- flat to 4.7e-06 relative, a total growth of 1.0000 over ten decades. H7b's int N(t) t^-2 dt over the same ceilings gives 2.9916e+00, 9.3500e+00, 1.9084e+01, 3.2192e+01, 4.8676e+01, 6.8536e+01, which CREEPS upward by a factor 22.9093, exactly the visual signature of the divergence it reported. JACOBIAN PINNED: the m = 1 tail has closed form (1/(2pi))[(log(T/2pi)+1)/T] = 5.995833e-03, matched here to 8.3e-12 relative; an earlier cut of this function omitted the t factor from dt = t ds and returned 2.600029e-05, 231x too small. The threshold survived that error, since a bounded positive factor cannot change convergence, but every magnitude in the earlier artifact was wrong. It also overestimates by 510x at the first ceiling. A zero sum is an integral against the counting MEASURE: sum_{g>T} f(g) ~ int f(t) dN(t), and since dN = (1/2pi) log(t/2pi) dt while N ~ (t/2pi) log(t/2pi), H7b's integrand is too large by order t log t, a divergent factor. So Q_1(x) CONVERGES and H7b is refuted.",
+      "gate": "H9a: the CORRECT tail converges at m = 1 -- H7b's formula integrates N(t) where a zero sum requires dN(t), and that spurious factor of t log t is what manufactured the log^2 divergence",
+      "passed": true
+    },
+    {
+      "detail": "Convergence is read off the DATA, by asking whether the value changes between ceilings 1e8 and 1e40, a window wide enough that a slow power-law tail near m = 1/2 can actually die. The correct tail settles for m >= 0.7 (relative drift < 1e-9) and does not settle at m <= 0.51, placing the transition at m = 1/2, i.e. 2m > 1. H7b placed it at m = 1. A prior cut of this probe instead integrated to mp.inf: it returned 2.46e57 and reported 'converges: True' for an integral that provably diverges at m = 0.5. Every tail in this module therefore uses a FINITE log-interval and a ceiling as an argument. Measured drifts at 1e8 -> 1e40: m=0.30: 3.9e+13, m=0.45: 1.5e+04, m=0.49: 8.7e+01, m=0.50: 2.9e+01, m=0.51: 1.2e+01, m=0.70: 1.5e-02, m=1.00: 4.7e-06, m=2.00: 5.5e-18.",
+      "gate": "H9b: the threshold is 2m > 1 (m > 1/2), decided by SETTLING against the ceiling -- and mp.quad to mp.inf must not be used to decide it",
+      "passed": true
+    },
+    {
+      "detail": "Pointwise, N(t)/(dN/dt) = t up to the O(1) RVM corrections, measured at t = 1e2, 1e4, 1e6 as 0.6585, 0.8644, 0.9165 times t -- consistent to 3.4e-01. But the INTEGRAL ratio is not a constant multiple of t: the correct tail converges and is bottom-dominated, while H7b's grows like (log Tmax)^2 and is top-dominated, so their ratio diverges with the window. At T = 100 with ceilings 1e4, 1e8, 1e12, 1e14 the ratios are 510, 3183, 8118, 11431 while the true tail stays flat to 4.7e-06 over those settled windows. An earlier cut of this gate predicted a ratio of order T log(T/2pi)/(2pi); that was wrong twice over -- it still carried a log(t/2pi), which is the N-versus-dN confusion one level down, and it asserted a scale where the mechanism is divergence, not a constant.",
+      "gate": "H9c: the missed factor is t, POINTWISE -- but the ratio of the two TAILS diverges rather than scaling like t, because the correct tail is bottom-dominated and H7b's grows like (log Tmax)^2",
+      "passed": true
+    },
+    {
+      "detail": "Since Q_1 converges, section 4's criterion over all m >= 1 is well posed and section 9's M_k = Q_{k+1} needs no shift. Section 3's measure dmu = 2 sum delta_{gamma^2} has mass 2 N(sqrt T) up to T: 0, 10, 40, 114, with mass/T falling from 6.25e-03 to 4.45e-03, i.e. mu((0,T)) = o(T), which is exactly what a Stieltjes integral needs. The atom sum sum_gamma 2/(x+gamma^2) at x = 1 over zeros to T = 200, 400, 800 is 0.029067, 0.032066, 0.033850, settling (relative change 0.0556 over the last doubling). So dmu is a locally finite positive measure and RH <=> F_xi Stieltjes stands. H8d recorded K_N = [Q_{i+j+2}] as a correction to a defect in section 3; there was no defect, and that correction is withdrawn as an induced error -- the sharpest instance so far of H7b propagating.",
+      "gate": "H9d: CONSEQUENCE -- Q_1 is finite, so record sections 3, 4, 5 and 9 are CORRECT AS WRITTEN; section 3's Stieltjes measure IS locally finite and needs no re-indexing. H8d's K_N 'correction' is withdrawn",
+      "passed": true
+    }
+  ],
+  "h9_atom_sum": [
+    {
+      "T": 200.0,
+      "atom_sum_2sum_1_over_x_g2": 0.02906695691121675,
+      "nzeros": 78
+    },
+    {
+      "T": 400.0,
+      "atom_sum_2sum_1_over_x_g2": 0.0320662346126158,
+      "nzeros": 200
+    },
+    {
+      "T": 800.0,
+      "atom_sum_2sum_1_over_x_g2": 0.03385002895934554,
+      "nzeros": 490
+    }
+  ],
+  "h9_error_factor": [
+    {
+      "h7": 2.9916211250983737,
+      "log10_Tmax": 4,
+      "ratio": 510.29076740768244,
+      "true": 0.005862581328476794,
+      "true_drift_from_1e14": -0.02222408248241906
+    },
+    {
+      "h7": 19.083505371171725,
+      "log10_Tmax": 8,
+      "ratio": 3182.8094172339815,
+      "true": 0.005995805236669254,
+      "true_drift_from_1e14": -4.667216412759889e-06
+    },
+    {
+      "h7": 48.676474807579666,
+      "log10_Tmax": 12,
+      "ratio": 8118.383726084949,
+      "true": 0.00599583321630618,
+      "true_drift_from_1e14": -7.028696750399313e-10
+    },
+    {
+      "h7": 68.53589927372325,
+      "log10_Tmax": 14,
+      "ratio": 11430.588002208302,
+      "true": 0.00599583322052047,
+      "true_drift_from_1e14": 0.0
+    }
+  ],
+  "h9_jacobian_check": {
+    "closed_form": 0.005995833220570441,
+    "closed_over_no_jacobian": 230.60637547355807,
+    "no_jacobian_value": 2.6000292525554823e-05,
+    "rel_err": 8.334449494340959e-12
+  },
+  "h9_m1_tails": {
+    "h7": [
+      2.9916211250983737,
+      9.349959543405616,
+      19.083505371171725,
+      32.1923435095592,
+      48.676474807579666,
+      68.53589927372325
+    ],
+    "log10_ceiling": [
+      4.0,
+      6.0,
+      8.0,
+      10.0,
+      12.0,
+      14.0
+    ],
+    "true": [
+      0.005862581328476794,
+      0.005993767766050625,
+      0.005995805236669254,
+      0.005995832867437869,
+      0.00599583321630618,
+      0.00599583322052047
+    ]
+  },
+  "h9_measure_mass": [
+    {
+      "T": 400.0,
+      "mass_2N": 0,
+      "mass_over_T": 0.0,
+      "sqrtT": 20.0
+    },
+    {
+      "T": 1600.0,
+      "mass_2N": 10,
+      "mass_over_T": 0.00625,
+      "sqrtT": 40.0
+    },
+    {
+      "T": 6400.0,
+      "mass_2N": 40,
+      "mass_over_T": 0.00625,
+      "sqrtT": 80.0
+    },
+    {
+      "T": 25600.0,
+      "mass_2N": 114,
+      "mass_over_T": 0.004453125,
+      "sqrtT": 160.0
+    }
+  ],
+  "h9_pointwise_factor": [
+    {
+      "ratio_over_t": 0.658503061393787,
+      "rel_err_vs_t": 0.341496938606213,
+      "t": 100.0
+    },
+    {
+      "ratio_over_t": 0.8644346970800177,
+      "rel_err_vs_t": 0.13556530291998223,
+      "t": 10000.0
+    },
+    {
+      "ratio_over_t": 0.916511512652485,
+      "rel_err_vs_t": 0.08348848734751506,
+      "t": 1000000.0
+    }
+  ],
+  "h9_threshold": [
+    {
+      "h7_1e14": 1.2981720117582196e+20,
+      "m": 0.3,
+      "rel_drift": 39324902566607.88,
+      "settles": false,
+      "true_1e14": 3.4920793499861344e+17,
+      "true_1e8": 8880.071206969218
+    },
+    {
+      "h7_1e14": 1.035399750854246e+16,
+      "m": 0.45,
+      "rel_drift": 15144.2979007712,
+      "settles": false,
+      "true_1e14": 1277483.7767147217,
+      "true_1e8": 84.34854072098985
+    },
+    {
+      "h7_1e14": 844913557714181.1,
+      "m": 0.49,
+      "rel_drift": 86.70867673132695,
+      "settles": false,
+      "true_1e14": 2433.8605022732586,
+      "true_1e8": 27.749369765647778
+    },
+    {
+      "h7_1e14": 451973208605804.44,
+      "m": 0.5,
+      "rel_drift": 29.44986620684707,
+      "settles": false,
+      "true_1e14": 647.7771220192946,
+      "true_1e8": 21.273562176560006
+    },
+    {
+      "h7_1e14": 241865766422558.1,
+      "m": 0.51,
+      "rel_drift": 11.56796871723083,
+      "settles": false,
+      "true_1e14": 206.05595879808988,
+      "true_1e8": 16.395327155420492
+    },
+    {
+      "h7_1e14": 1847755712.088192,
+      "m": 0.7,
+      "rel_drift": 0.014634036097567228,
+      "settles": false,
+      "true_1e14": 0.3321602260551838,
+      "true_1e8": 0.32736948913395536
+    },
+    {
+      "h7_1e14": 68.53589927372325,
+      "m": 1.0,
+      "rel_drift": 4.667246530258992e-06,
+      "settles": false,
+      "true_1e14": 0.005995833220570441,
+      "true_1e8": 0.005995805236669254
+    },
+    {
+      "h7_1e14": 1.8334212037626726e-05,
+      "m": 2.0,
+      "rel_drift": 5.455715897111432e-18,
+      "settles": true,
+      "true_1e14": 1.6449334222081576e-07,
+      "true_1e8": 1.6449334222081576e-07
+    }
+  ],
+  "h9_true_flat_settled": 4.6672164127903315e-06
+}

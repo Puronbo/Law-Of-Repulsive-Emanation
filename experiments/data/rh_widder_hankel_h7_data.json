@@ -1,28 +1,29 @@
 {
-  "conclusion": "H7 audits section 28's convergence/interchange and moment-identification items. 4/4 sub-gates pass. CLARIFICATION (H7a): the summand q_rho(x) = w/(x+w)^2 decays like gamma^-2, not gamma^-4 -- the numerator w cancels one power of the squared denominator, since |w|/|w|^2 = 1/|w|. Measured log-log slope -1.9993 on 10 Newton-refined real zeros. An earlier cut predicted -4 and misread its own -2.00 measurement as a regime artefact. DEFECT (H7b): with N(T) ~ (T/2pi) log(T/2pi), the tail int_T^inf N(t) t^-2m dt converges iff 2m > 2. So Q_1(x) DIVERGES, growing like (log T)^2/(4pi), while Q_m converges for every m >= 2. The framework's moments exist from the second onward only, so any claim ranging over m >= 1 in sections 5, 9 or 10 is false as written. CONSEQUENCE (H7c): Q_1 and F_xi are asymptotically the same series -- their summands differ by w/(x+w) -> 1 -- so the middle arrow of section 27's chain cannot be rescued by smoothing, and its regularization obligation applies at moment one as well. CONSISTENCY (H7d): section 3's Stieltjes measure 2 sum delta_{gamma^2} is not locally finite, while Q_m's measure is for m >= 2, so the Stieltjes reading fails exactly where the Widder reading starts to hold. Nothing here proves or refutes RH; H6 is untouched since its violations occur at orders of order 10^4. No positive Hankel kernel is supplied, and section 27's bridge prime-gamma -> universal H_N >= 0 remains OPEN, its technical obligation now pinned to a single statement: begin the moment sequence at m = 2 and regularize F_xi consistently, or show the explicit formula's prime side supplies that regularization.",
+  "conclusion": "H7 audits section 28's convergence/interchange and moment-identification items. 4/4 sub-gates pass. CLARIFICATION (H7a, stands): the summand q_rho(x) = w/(x+w)^2 decays like gamma^-2, not gamma^-4 -- the numerator w cancels one power of the squared denominator, since |w|/|w|^2 = 1/|w|. Measured log-log slope -1.9993 on 10 Newton-refined real zeros. An earlier cut predicted -4 and misread its own -2.00 measurement as a regime artefact. CORRECTION (H7b): the zero sum is weighted by dN, the Riemann-von Mangoldt DENSITY, not by N, so the tail is int_T^inf t^-2m dN(t) = int_T^inf (1/(2pi)) log(t/2pi) t^-2m dt and the threshold is 2m > 1, NOT 2m > 2. Q_1 therefore CONVERGES: its tail at T = 100 settles at 5.9958e-03 across ceilings 1e4 ... 1e14 with successive increments collapsing to 7.0e-10, while m = 1/2 does not converge. The earlier cut integrated N(t) t^-2m dt, weighting the COUNT by dt; that single Jacobian made the m=1 tail ~11431x too large and left it creeping upward, and it is the sole basis of the withdrawn claim that the framework's moments exist from the second moment onward and that sections 5, 9, 10 are false as written for m >= 1. H9b pins the same correction independently. SCOPE (H7c, narrowed): Q_1 and F_xi are asymptotically the same series -- their summands differ by w/(x+w) -> 1 -- so moment identification transfers to F_xi without smoothing. The earlier statement that this created a regularization obligation at moment one is WITHDRAWN: both series converge at m = 1 and their difference is a vanishing fraction of a common finite size, not a divergence to be regularized away. CORRECTION (H7d): dmu = 2 sum_{gamma>0} delta_{gamma^2} IS locally finite. Local finiteness asks that mu([0,U]) be finite for every finite U, and dmu([0,U]) = 2 #{gamma : gamma^2 <= U} is a count. The mass does grow like U^{1/2} log U, but unbounded TOTAL mass on an unbounded support is what every counting measure has, and Stieltjes theory does not object to it. The earlier cut conflated unbounded total mass with non-local-finiteness and built a spurious obstruction to section 3's whole Stieltjes reading; that is WITHDRAWN. The mirrored claim that Q_m's measure is locally finite 'exactly when m >= 2' is likewise withdrawn, since Q_1 converges. Net effect: section 3's moment identification needs no regularization at m = 1, and the sections previously flagged as false as written for m >= 1 are restored. Nothing here proves or refutes RH; H6 is untouched since its violations occur at orders of order 10^4. No positive Hankel kernel is supplied, and section 27's bridge prime-gamma -> universal H_N >= 0 remains OPEN, but its technical obligation is no longer the 'start at m = 2' workaround, which is withdrawn. What remains open is the substantive question H8c sharpened: whether any Hankel kernel of the Widder type is positive at all, since the required rank grows without bound as an off-axis zero's displacement delta -> 0.",
   "experiment": "convergence/interchange audit of record section 28",
   "gates": [
     {
-      "detail": "q_rho(x) = w/(x+w)^2. The naive reading is that a squared denominator buys gamma^-4, but the numerator is w itself, so |q| ~ |w|/|w|^2 = 1/|w| ~ gamma^-2. Measured directly: a log-log regression of |q| against gamma over 10 Newton-refined real zeros gives slope -1.9993 (worst |xi| residual 4.0e-37), and over six decades of synthetic heights -1.9985. The asymptote q ~ x^2/gamma^4 is confirmed through q gamma^4 / x^2, which grows by a factor 1209999.7580 per decade of gamma and would diverge if the exponent were -4. An earlier cut of this probe predicted slope -4, measured -2.00, and attributed the mismatch to an undersampled asymptotic regime; that attribution was wrong, and it separately used a ratio gamma^2 q / x^2 that tends to 1/x^2 rather than 1. The exponent -2 is the load-bearing fact that turns H7b into a defect rather than a pass.",
+      "detail": "q_rho(x) = w/(x+w)^2. The naive reading is that a squared denominator buys gamma^-4, but the numerator is w itself, so |q| ~ |w|/|w|^2 = 1/|w| ~ gamma^-2. Measured directly: a log-log regression of |q| against gamma over 10 Newton-refined real zeros gives slope -1.9993 (worst |xi| residual 5.9e-27), and over six decades of synthetic heights -1.9985. The asymptote q ~ x^2/gamma^4 is confirmed through q gamma^4 / x^2, which grows by a factor 1209999.7580 per decade of gamma and would diverge if the exponent were -4. An earlier cut of this probe predicted slope -4, measured -2.00, and attributed the mismatch to an undersampled asymptotic regime; that attribution was wrong, and it separately used a ratio gamma^2 q / x^2 that tends to 1/x^2 rather than 1. The exponent -2 is the load-bearing fact that turns H7b into a defect rather than a pass.",
       "gate": "H7a: |q_rho(x)| decays like gamma^-2 (the numerator w cancels one power), NOT gamma^-4",
       "passed": true
     },
     {
-      "detail": "sum_rho |q|^m ~ int_T^{Tmax} N(t) t^-2m dt converges iff 2m > 2. Measured at T = 100 while the ceiling rises 1e4 ... 1e12, by quadrature in log-height (the Jacobian dt = t ds is what makes the m = 1 integrand N(t)/t rather than N(t)) against a composite-Simpson cross-check, worst relative disagreement 8.5e-10. m = 1 GROWS without bound: 2.9916, 9.3500, 19.0835, 32.1923, 48.6765. m = 2 converges, rising slowly to its limit 0.000018 ... 0.000018, and m = 3 faster still, 0.000000 ... 0.000000; for a lower-limit truncation the tail rises towards the total, so convergence shows up as a vanishing relative increment, 9.24e-16 at m = 2 against 0.51 at m = 1. The m = 1 values match the predicted log^2 law: divided by (log(Tmax/2pi))^2/(4pi) they give 0.6917, 0.8190, 0.8721, 0.9011, 0.9194 -- rising monotonically towards 1, which is the signature of log^2 divergence rather than an artifact. So the framework's moments exist from the second onward and not the first: any statement in sections 5, 9 or 10 ranging over m >= 1 is false as written. H6 is unaffected, its violations occurring at orders of order 10^4.",
-      "gate": "H7b: Q_m(x) converges if and only if m >= 2; Q_1 diverges like (log T)^2/(4pi)",
+      "detail": "The zero sum is weighted by dN, the Riemann-von Mangoldt DENSITY, not by N. sum_rho |q|^m ~ int_T^inf t^-2m dN(t) = int_T^inf (1/(2pi)) log(t/2pi) t^-2m dt, whose integrand decays like t^-2m log t, so it converges iff 2m > 1 and Q_1 is FINE. Measured at T = 100 with the ceiling rising 1e4 ... 1e14, by quadrature in log-height against a composite-Simpson cross-check, worst relative disagreement 5.8e-10: the m = 1 tail SETTLES at 5.862581e-03, 5.993768e-03, 5.995805e-03, 5.995833e-03, 5.995833e-03, 5.995833e-03, successive increments collapsing to 7.0e-10, while m = 2 settles at 1.645e-07 with increment 0.0e+00 and is ~36450x smaller. m = 1/2 does NOT converge: its tail at ceiling 1e14 is 12162.6x the m = 1 value. The withdrawn N-weighted integral gives 2.9916e+00, 9.3500e+00, 1.9084e+01, 3.2192e+01, 4.8676e+01, 6.8536e+01 -- ~11431x too large and still creeping, its last increment being 4.1e-01. So the claim 'the framework's moments exist from the second onward only', and with it the corollary that sections 5, 9, 10 are false as written for m >= 1, is WITHDRAWN: Q_1 exists. H9b pins the same correction independently.",
+      "gate": "H7b CORRECTED: the threshold is 2m > 1, NOT 2m > 2; Q_1 converges and Q_1/2 diverges. The earlier cut integrated N(t) t^-2m dt, weighting the zero COUNT by dt rather than the DENSITY, and that single Jacobian was the whole defect",
       "passed": true
     },
     {
-      "detail": "Dividing q_rho(x) by F_xi's summand gives w/(x+w) -> 1 as gamma grows, measured 1.000000000 at gamma = 10^4 x. Built with a zeta-like synthetic spectrum g ~ sqrt(k log k), the two partial sums have relative difference 0.0011, 0.0000, 0.0000 at heights T = 100, 1e4, 1e6: the discrepancy is confined to the low-height end and shrinks monotonically, while both sums themselves grow like log^2 T. This blocks the most natural rescue of section 27's middle arrow. One cannot regularize F_xi and read Q_k off it while claiming the Hankel kernel smooths away the divergence, because at moment one the two series agree to within a vanishing fraction of their (divergent) size. What separates them is the power m, and it starts at m = 2.",
+      "detail": "Dividing q_rho(x) by F_xi's summand gives w/(x+w) -> 1 as gamma grows, measured 1.000000000 at gamma = 10^4 x. Built with a zeta-like synthetic spectrum g ~ sqrt(k log k), the two partial sums have relative difference 0.0011, 0.0000, 0.0000 at heights T = 100, 1e4, 1e6: the discrepancy is confined to the low-height end and shrinks monotonically, while both sums themselves grow like log^2 T. This blocks the most natural rescue of section 27's middle arrow. One cannot regularize F_xi and read Q_k off it while claiming the Hankel kernel smooths away the difference, because at moment one the two series agree to within a vanishing fraction of their common size. SCOPE CORRECTED: an earlier cut closed with 'what separates them is the power m, and it starts at m = 2', which imported H7b's withdrawn threshold. Both series converge at m = 1 (H7b corrected, H9b), and the difference between them at moment one is a finite vanishing fraction, not a divergence to be regularized away. What remains of H7c is only that Q_1 and F_xi are the same series to leading order, so moment identification transfers without smoothing; no regularization obligation arises at m = 1 from this comparison.",
       "gate": "H7c: Q_1 and F_xi are asymptotically the SAME series -- the ratio of summands is w/(x+w) -> 1",
       "passed": true
     },
     {
-      "detail": "The measure behind F_xi in section 3, dmu(t) = 2 sum_{gamma>0} delta_{gamma^2}, has mass up to height T that grows without bound: 2.9916, 9.3500, 19.0835, 32.1923 as the ceiling rises 1e4 ... 1e10 -- the H7b log^2 divergence -- so it is not a positive measure in the sense Stieltjes requires. The measure behind Q_m, with atoms |q|^m at t = gamma^2, stays bounded and settles: 0.000018, 0.000018, 0.000018, 0.000018, converging to a finite total with a relative change of only 7.0e-12 between the last two ceilings. Hence it is locally finite for m >= 2. Section 28's third item, moment identification, therefore splits cleanly: the Widder moment reading holds from the second moment on, and the Stieltjes reading of section 3 fails as literally written.",
-      "gate": "H7d: section 3's Stieltjes measure 2 sum delta_{gamma^2} is not locally finite; Q_m's is, exactly when m >= 2",
+      "detail": "Local finiteness asks that mu([0, U]) be finite for every finite U; dmu([0, U]) = 2 #{gamma : gamma^2 <= U} is a COUNT, hence finite for every finite U, whatever it does as U grows. Measured on U = 1e4, 1e5, 1e6 the enumerated masses are 58, 296, 1298, matching the asymptotic count 2 N(sqrt U) = 58.0, 295.5, 1297.2 to within 3. The mass does grow without bound as U grows -- it grows like U^{1/2} log U -- but that is unbounded TOTAL mass on an unbounded support, which every counting measure has and which Stieltjes theory does not object to. So the earlier claim 'not locally finite' is WITHDRAWN, and with it the claim that the Stieltjes reading of section 3 fails as literally written. The mirrored claim that Q_m's measure is locally finite 'exactly when m >= 2' is also withdrawn: Q_1 converges (H7b corrected, H9b), so its measure is locally finite from m = 1, settling at 5.995833e-03 with increment 7.0e-10 against 1.644933e-07, 0.0e+00 at m = 2. Both moments stand, and section 3's moment identification needs no regularization at m = 1.",
+      "gate": "H7d CORRECTED: dmu = 2 sum delta_{gamma^2} IS locally finite -- local finiteness is finite mass on each COMPACT, not bounded total mass. The earlier cut conflated the two and built a spurious obstruction to section 3's Stieltjes reading",
       "passed": true
     }
   ],
+  "h7_Nweighted_increment": 0.407988140978754,
   "h7_asymptote": [
     {
       "gamma_over_x": 10.0,
@@ -45,6 +46,29 @@
       "rel_to_first": 1209999.7580000362
     }
   ],
+  "h7_dmu_local_mass": [
+    {
+      "U": 10000.0,
+      "asym": 58.0046871746507,
+      "counted": 58,
+      "log10U": 4.0,
+      "sqrtU": 100.0
+    },
+    {
+      "U": 100000.0,
+      "asym": 295.5302340660859,
+      "counted": 296,
+      "log10U": 5.0,
+      "sqrtU": 316.22776601683796
+    },
+    {
+      "U": 1000000.0,
+      "asym": 1297.2324706259346,
+      "counted": 1298,
+      "log10U": 6.0,
+      "sqrtU": 1000.0
+    }
+  ],
   "h7_gammas": [
     14.134725141734695,
     21.022039638771556,
@@ -58,6 +82,32 @@
     49.7738324776723
   ],
   "h7_growth_m1": [
+    {
+      "log10_Tmax": 4.0,
+      "tail": 0.005862581328476794
+    },
+    {
+      "log10_Tmax": 6.0,
+      "tail": 0.005993767766050625
+    },
+    {
+      "log10_Tmax": 8.0,
+      "tail": 0.005995805236669254
+    },
+    {
+      "log10_Tmax": 10.0,
+      "tail": 0.005995832867437869
+    },
+    {
+      "log10_Tmax": 12.0,
+      "tail": 0.00599583321630618
+    },
+    {
+      "log10_Tmax": 14.0,
+      "tail": 0.00599583322052047
+    }
+  ],
+  "h7_growth_m1_Nweighted": [
     {
       "log10_Tmax": 4.0,
       "tail": 2.9916211250983737
@@ -77,86 +127,65 @@
     {
       "log10_Tmax": 12.0,
       "tail": 48.676474807579666
+    },
+    {
+      "log10_Tmax": 14.0,
+      "tail": 68.53589927372325
     }
   ],
   "h7_growth_m2": [
     {
       "log10_Tmax": 4.0,
-      "tail": 1.8328742813428563e-05
+      "tail": 1.6449293341560724e-07
     },
     {
       "log10_Tmax": 6.0,
-      "tail": 1.833421112426538e-05
+      "tail": 1.6449334222016264e-07
     },
     {
       "log10_Tmax": 8.0,
-      "tail": 1.8334212037498742e-05
+      "tail": 1.6449334222081576e-07
     },
     {
       "log10_Tmax": 10.0,
-      "tail": 1.833421203762671e-05
+      "tail": 1.6449334222081576e-07
     },
     {
       "log10_Tmax": 12.0,
-      "tail": 1.8334212037626726e-05
+      "tail": 1.6449334222081576e-07
+    },
+    {
+      "log10_Tmax": 14.0,
+      "tail": 1.6449334222081576e-07
     }
   ],
-  "h7_growth_m3": [
-    {
-      "log10_Tmax": 4.0,
-      "tail": 8.201554027638741e-10
-    },
-    {
-      "log10_Tmax": 6.0,
-      "tail": 8.201554291155678e-10
-    },
-    {
-      "log10_Tmax": 8.0,
-      "tail": 8.201554291155683e-10
-    },
-    {
-      "log10_Tmax": 10.0,
-      "tail": 8.201554291155683e-10
-    },
-    {
-      "log10_Tmax": 12.0,
-      "tail": 8.201554291155683e-10
-    }
-  ],
-  "h7_m1_pred": [
-    4.32529143536654,
-    11.41647882755321,
-    21.882959387948745,
-    35.724733116553146,
-    52.94180001336642
-  ],
-  "h7_m1_ratio": [
-    0.6916576997880036,
-    0.818988033406576,
-    0.8720715070047281,
-    0.9011220155103915,
-    0.9194336950252944
-  ],
-  "h7_m1_ratio_monotone": true,
-  "h7_max_residual": 4.002546428221979e-37,
+  "h7_m1_settled_increment": 7.028697623923108e-10,
+  "h7_m2_settled_increment": 0.0,
+  "h7_max_residual": 5.920605774054427e-27,
   "h7_measure": {
     "log10_Tmax": [
       4.0,
       6.0,
       8.0,
-      10.0
+      10.0,
+      12.0,
+      14.0
     ],
     "mass_m1": [
-      2.9916211250983737,
-      9.349959543405616,
-      19.083505371171725,
-      32.1923435095592
+      0.005862581328476794,
+      0.005993767766050625,
+      0.005995805236669254,
+      0.005995832867437869,
+      0.00599583321630618,
+      0.00599583322052047
     ],
     "mass_m2": [
-      1.8328742813428563e-05,
-      1.833421112426538e-05,
-      1.8334212037498742e-05,
-      1.833421203762671e-05
+      1.6449293341560724e-07,
+      1.6449334222016264e-07,
+      1.6449334222081576e-07,
+      1.6449334222081576e-07,
+      1.6449334222081576e-07,
+      1.6449334222081576e-07
     ]
   },
   "h7_partial": [
