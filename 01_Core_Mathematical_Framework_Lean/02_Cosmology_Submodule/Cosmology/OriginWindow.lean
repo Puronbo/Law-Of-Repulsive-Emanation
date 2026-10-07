@@ -137,17 +137,25 @@ borrow.  This is the cosmological counterpart of `not_a_newman_theorem` in
     Python wrapper must not be described as a restatement of (F) without this
     caveat;
   * `filter_leaves_eps_i_free` - the tripwire: `eps_i` is unconstrained.
+   * `epsExact_*` - the exact curvature law at the `SOf` level.  The closed
+     form `eps = 1/(D a^(-1-3w) - sigma)` is written without a variable
+     exponent as `eps = 1/(D e^(-S) - sigma)`, where `S = stiffness w * n =
+     (1+3w) ln a`, so that `e^(-S) = a^(-(1+3w))`.  `epsExact_SOf_factor`
+     factors the aggregate two-era law over eras, `epsExact_sigma_zero` shows
+     the `- sigma` shift is the WHOLE difference from the leading power law,
+     and `epsExact_leading_ratio` / `epsExact_radius_ratio_sq` reproduce the
+     `n7b`/`n7c` ratio laws (`1/(1 - sigma/X)` and `1 - sigma/X`, with
+     `X = D e^(-S)`) exactly, not to 1e-12;
 
 ## Not proved here, and said so rather than implied
 
-  * the closed form `eps = 1/(D a^(-1-3w) - sigma)` is verified numerically
-    against direct Friedmann integration in
+  * the direct `a^r` form `eps = 1/(D a^(-1-3w) - sigma)` is NOT formalised
+    here: it needs a variable exponent on a base of uncontrolled sign.  What IS
+    formalised (below) is the equivalent `exp(-S)` form, which carries the same
+    physics without raising a base to a variable exponent.  The numeric closed
+    form is verified against direct Friedmann integration in
     `02_Experimental_Implementations_and_Verification/01_Poincare_Universe_and_Cosmological_Models/origin_consistency_window_n7.py`
-    (gates `n7a`-`n7c`, to
-    `3e-16`) but is NOT formalised here, because it needs a variable exponent
-    `a^(-1-3w)` on a base of uncontrolled sign.  What IS formalised is the
-    exact relation between `S` and the two observables, which is what the
-    window itself rests on;
+    (gates `n7a`-`n7c`, to `3e-16`);
   * that GR is the correct theory of the very early universe.  This file is
     conditional on FLRW + GR throughout and says nothing at the `t < 1e-43 s`
     regime where that is conjectural;
@@ -753,6 +761,73 @@ theorem curvatureVerdict_boundary_disagrees (epsObs epsI : ℝ) (hO : 0 < epsObs
     unfold flatnessAdmissible at h
     unfold sRequired at h
     exact lt_irrefl _ h
+
+/-! ### The exact curvature law at the `SOf` level -/
+
+/-- The closed-form curvature law with `S` as the exponent:
+`eps = 1/(D e^(-S) - sigma)`.  In one era `S = stiffness w * n = (1+3w) ln a`,
+so `e^(-S) = a^(-(1+3w))`: this is the experiment's closed form
+`eps = 1/(D a^(-1-3w) - sigma)` written without raising a base to a variable
+exponent.  `D` is the matching constant fixed by the initial condition,
+`sigma` is the curvature shift from `-k = -sigma |k|`. -/
+def epsExact (D sigma S : ℝ) : ℝ := 1 / (D * Real.exp (-S) - sigma)
+
+/-- With `sigma = 0` the exact law IS the leading power law.  The `- sigma`
+term is therefore the entire difference between the two laws: formal half of
+the ``leading laws are ASYMPTOTIC, not identities'' gate (which is a statement
+about `sigma != 0`). -/
+theorem epsExact_sigma_zero (D S : ℝ) :
+    epsExact D 0 S = 1 / (D * Real.exp (-S)) := by
+  unfold epsExact
+  simp
+
+/-- **THE SOf-LEVEL EXACT LAW.**  The aggregate two-era closed form factors
+over eras at the `SOf` level: `e^(-SOf w₁ n₁ w₂ n₂)` is the product of the two
+per-era powers, so `eps = 1/(D e^(-SOf) - sigma)` is the same number written
+from the factored history.  This is the formal counterpart of ```S`` additive
+over eras'' applied to the exact law itself (gate `n7a`'s exponent splitting),
+and it is exactly the identity the two-era numeric `SOf` exercises. -/
+theorem epsExact_SOf_factor (D sigma w₁ n₁ w₂ n₂ : ℝ) :
+    epsExact D sigma (SOf w₁ n₁ w₂ n₂)
+      = 1 / (D * (Real.exp (-(stiffness w₁ * n₁)) * Real.exp (-(stiffness w₂ * n₂))) - sigma) := by
+  unfold epsExact SOf
+  have h : -(stiffness w₁ * n₁ + stiffness w₂ * n₂)
+      = -(stiffness w₁ * n₁) + -(stiffness w₂ * n₂) := by ring
+  rw [h, Real.exp_add]
+
+/-- `n7b` EXACT: with `X = D e^(-S)` the ratio
+`eps_exact / eps_leading = 1/(1 - sigma/X)` is a real-number identity, not a
+close approximation (the experiment quotes it to 1e-12). -/
+theorem epsExact_leading_ratio (D sigma S : ℝ) (hX : D * Real.exp (-S) ≠ 0)
+    (hden : D * Real.exp (-S) - sigma ≠ 0) :
+    epsExact D sigma S / (1 / (D * Real.exp (-S)))
+      = 1 / (1 - sigma / (D * Real.exp (-S))) := by
+  unfold epsExact
+  let X : ℝ := D * Real.exp (-S)
+  have hX' : X ≠ 0 := by simpa [X] using hX
+  have hden' : X - sigma ≠ 0 := by simpa [X] using hden
+  change (1 / (X - sigma)) / (1 / X) = 1 / (1 - sigma / X)
+  rw [div_div]
+  have hprod : (X - sigma) * (1 / X) = 1 - sigma / X := by
+    field_simp [hX']
+  rw [hprod]
+
+/-- `n7c` EXACT in squared form.  Since `r ∝ eps^(1/2)` (both are multiplied by
+`e^(S/2)` per era; see the header), `(r_exact / r_leading)^2 =
+eps_exact / eps_leading`, so with `X = D e^(-S)` this identity
+`eps_leading / eps_exact = 1 - sigma/X` is the exact content of
+`r_exact / r_leading = (1 - sigma/X)^(-1/2)` (square-rooting both sides is
+what the experiment does numerically). -/
+theorem epsExact_radius_ratio_sq (D sigma S : ℝ) (hX : D * Real.exp (-S) ≠ 0)
+    (hden : D * Real.exp (-S) - sigma ≠ 0) :
+    1 / (D * Real.exp (-S)) / epsExact D sigma S
+      = 1 - sigma / (D * Real.exp (-S)) := by
+  unfold epsExact
+  let X : ℝ := D * Real.exp (-S)
+  have hX' : X ≠ 0 := by simpa [X] using hX
+  have hden' : X - sigma ≠ 0 := by simpa [X] using hden
+  change (1 / X) / (1 / (X - sigma)) = 1 - sigma / X
+  field_simp [hX', hden']
 
 /-! ### The scope tripwire -/
 

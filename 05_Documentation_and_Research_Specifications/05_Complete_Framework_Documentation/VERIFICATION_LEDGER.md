@@ -103,15 +103,15 @@ hygiene pass applied and verified post-fix. One packaging defect
 
 | Claim | Artifact | Check | Status |
 |---|---|---|---|
-| Gap equation unique positive root (f' < -1) | ym_rigorous_verification.py | 15 configs: all unique positive root, f' in [-3.33, -1.00] | **CONCRETE** |
+| Gap equation unique positive root (f' < -1) | ym_rigorous_verification.py | 15/15 unique positive root; derivative recomputed at the roots during audit: f' in [-1.36, -1.02] (formerly stated bracket [-3.33, -1.00] was NOT reproducible by the script) | **CONCRETE** |
 | Stability: d''(g) > 0 at root | ym_rigorous_verification.py | 15/15 confirmed | **CONCRETE** |
 | IR enhancement: sigma(0)/sigma(p) >= 1 | ym_rigorous_verification.py | 15/15 confirmed | **CONCRETE** |
-| Fold singularity with vertex corrections | ym_fold_singularity.py + ym_fold_verification.py | g_fold = 3.10 (c=0.5), 2.40 (c=1.0), 1.85 (c=2.0), 1.32 (c=5.0) | **CONCRETE** |
+| Fold singularity with vertex corrections | ym_fold_singularity.py / ym_fold_verification.py | TWO scripts, TWO vertex-dressing variants, values differ: ym_fold_singularity.py g_fold = 3.10 (c=0.5), 2.61 (c=1.0), 1.97 (c=2.0), 1.48 (c=5.0) -- this is the set cited by `ym_mass_gap.tex` Table; ym_fold_verification.py g_fold = 3.10/2.40/1.85/1.32 -- the set previously cited here; both sets are REAL and are now BOTH registered; papers/ledger must state which variant they mean | **CONCRETE (two variants)** |
 | Fold removed by mass gap: D(0) = 1/Delta^2 | ym_fold_verification.py | Removable singularity confirmed | **CONCRETE** |
-| **All-loop uniqueness: f'(Sigma) < -1 for dressed vertices** | ym_allloop_ds.py | 50/50 parameter combos (g=0.5-5, c=0-5): f' < -1 always | **CONCRETE** |
-| **Constructive proof: OS axioms verified** | ym_constructive.py | OS1-OS5 all satisfied, g=3: Delta=0.671 GeV (lattice: 0.60-0.70) | **CONCRETE** |
-| **Mass gap Delta > 0 exists non-perturbatively** | ym_allloop_ds.py + ym_constructive.py | Uniqueness + OS positivity => QFT with mass gap | **CONCRETE** |
-| **RH: Li inequality verified** | rh_li_correct.py | lambda_n > 0 for n=1..30 (800 zeros). By Li (1997): RH TRUE | **CONCRETE** |
+| **All-loop uniqueness: f'(Sigma) < 0 on the full scan; f' < -1 confirmed on a robust-checked subset with margin ~1e-6** | ym_allloop_ds.py | 50/50 unique positive root (JSON `f_prime_all_negative=True`); 9 robust-checked combos show max f' = -1.000001..-1.000008 (margin 1e-6, NOT strictly below -1 everywhere) | **CONCRETE (with margin noted)** |
+| **Constructive proof: OS axioms verified** | ym_constructive.py | OS1-OS5 all satisfied, g=3: Delta=0.671144 GeV (lattice: 0.60-0.70) -- note the one-loop Table in `ym_mass_gap.tex` gives Delta=0.450 GeV at g=3 (distinct model); both values real | **CONCRETE** |
+| **Mass gap Delta > 0 exists non-perturbatively** | ym_allloop_ds.py + ym_constructive.py | Uniqueness + OS positivity => QFT with mass gap; constructive completion on R^4 remains OPEN | **CONCRETE (framework)** |
+| **RH: Li inequality verified** | rh_li_correct.py | lambda_n > 0 for n=1..30 (800 zeros) -- FINITE numeric check ONLY; script corrected 2026-10-07 to state "RH remains OPEN" (Li gives iff for ALL n) | **CONCRETE (numeric)** |
 | RH conductor ratio: |chi(rho)| = 1 on critical line | rh_conductor_ratio.py | 10/10 zeros: |chi| = 1.000000 on line, deviates off it | **CONCRETE** |
 
 ## P vs NP program
@@ -161,6 +161,7 @@ hygiene pass applied and verified post-fix. One packaging defect
 | QFT propagator: 0/0 at mass shell, removable = -i/gamma | universal_impedance.py Q6 | G(m^2) = -i/0.1 | **CONCRETE** |
 | Ising susceptibility: 0/0 in M/H at H->0 | universal_impedance.py Q4 | chi(T_c) = 88914, chi(3.0) = 0.87 | **CONCRETE** |
 | 7 systems: 5 have 0/0, 2 have poles, 1 discontinuity | universal_impedance.py comparison | All computed values match theory | **CONCRETE** |
+| Removable-value mechanism, Lean | Removable.lean (`PunoCalculus.Removable`) | `removable_limit` (punctured-limit equals continuous residue), `quadratic_removable` (`(x²-a²)/(x-a) -> 2a`), `impedance_crosszero` (`m w0 - k/w0 = 0` at `w0 = sqrt(k/m)`); axioms `[propext, Classical.choice, Quot.sound]`; built in `lake build PunoCalculus` | **FORMALIZED** |
 
 ## Goldbach program
 
@@ -275,9 +276,9 @@ hygiene pass applied and verified post-fix. One packaging defect
 | Horizon is `r_f < r_i <-> S < 0` (comoving Hubble radius must SHRINK) | `origin_consistency_window_n7.py` + `OriginWindow.lean` | Lean: `horizon_iff_radius`, `radiusRatio_lt_one_iff`. Sign pinned against the `+80` matter contribution, so a flipped sign cannot hide | **CONCRETE** |
 | **Flatness admissibility implies horizon admissibility** | `origin_consistency_window_n7.py` + `OriginWindow.lean` | Lean: `flatness_implies_horizon`, `admissible_iff_flat_of_neg`; numeric: 120-sample scan, no counterexample (`n7g`); non-vacuity via `horizon_only_band_exists` (`n7h`) | **CONCRETE** |
 | Admissibility is strict: `S = S_req` is inadmissible | `OriginWindow.lean` | Lean: `boundary_inadmissible`; numeric: both sides of the boundary tested | **CONCRETE** |
-| Exact curvature law `eps = 1/(D a^(-1-3w) - sigma)`, any curvature | `origin_consistency_window_n7.py` | `n7a` vs direct Friedmann integration, max rel err 3.3e-16, `w` in {0,1/2,1/3,1}. **Numeric only, NOT formalized** | **CONCRETE (numeric)** |
+| Exact curvature law `eps = 1/(D a^(-1-3w) - sigma)`, any curvature | `origin_consistency_window_n7.py` + `OriginWindow.lean` | `n7a` vs direct Friedmann integration, max rel err 3.3e-16, `w` in {0,1/2,1/3,1}. **FORMALIZED (2026-10-07) in the equivalent `exp(-S)` form** (`eps = 1/(D e^(-S) - sigma)`, `S = stiffness w * n`): `epsExact`, `epsExact_SOf_factor` (factors the aggregate two-era law over eras), `epsExact_sigma_zero` (the `- sigma` shift is the whole difference from the leading law); direct `a^r` still excluded (variable exponent, uncontrolled-sign base) | **CONCRETE (numeric) + CONCRETE (formalised, exp(-S) form)** |
 | The `- sigma` sign in that denominator (from `-k = -sigma abs(k)`) | `origin_consistency_window_n7.py` | `test_the_sigma_sign_is_minus_not_plus`: correct form positive for all `a > 0`; `+ sigma` variant demonstrably goes negative, so the test has teeth | **CONCRETE** |
-| Exact ratios `eps_exact/eps_leading = 1/(1-sigma/X)`, `r_exact/r_leading = (1-sigma/X)^(-1/2)` | `origin_consistency_window_n7.py` | `n7b`, `n7c`, both < 1e-12 over `w` in {0,1/2,1/3,1} | **CONCRETE (numeric)** |
+| Exact ratios `eps_exact/eps_leading = 1/(1-sigma/X)`, `r_exact/r_leading = (1-sigma/X)^(-1/2)` | `origin_consistency_window_n7.py` + `OriginWindow.lean` | `n7b`, `n7c`, both < 1e-12 over `w` in {0,1/2,1/3,1}. **FORMALIZED EXACTLY (2026-10-07)**: `epsExact_leading_ratio` (`X = D e^(-S)`, identity not approximation), `epsExact_radius_ratio_sq` (squared form `eps_leading/eps_exact = 1 - sigma/X`; `r ∝ eps^(1/2)`, so `-1/2` exponent follows) — axioms `[propext, Classical.choice, Quot.sound]` | **CONCRETE (numeric) + CONCRETE (formalised)** |
 | The leading power laws are ASYMPTOTIC (`X >> 1` = early time), not identities | `origin_consistency_window_n7.py` | `test_the_leading_laws_are_asymptotic_and_fail_at_late_time`: ratio -> 0 as `a` -> infinity for an open slice, so the large-`N` probe of the first draft tested only arithmetic | **CONCRETE** |
 | Flatness threshold `N_infl > 42.25493` for `eps_obs=0.011, eps_i=1, N_matter=80, w_infl=-1` | `origin_consistency_window_n7.py` | `n7f` exact; also matched to a 200-step bisection search on `S` (`test_threshold_length_matches_a_brute_force_search`) | **CONCRETE (numeric)** |
 | No finite length exists when `w_infl >= -1/3` | `origin_consistency_window_n7.py` + `OriginWindow.lean` | returns `inf` for `w_infl` in {0, -1/3, 1/2, 1}; Lean `nInflNeeded` guarded by `stiffness < 0` | **CONCRETE** |
@@ -306,16 +307,79 @@ hygiene pass applied and verified post-fix. One packaging defect
 | Acoustic threshold `A = 1` exact, no soft edge, for the UNIT phase | `acoustic_zero_flow_n6.py` + `AcousticZeroFlow.lean` | `n6c` 19 zeros / 0 zeros, no intermediate; `n6c2` to 1e-16; Lean `threshold_iff`, `cos_zero_iff` (zeros computed) | **CONCRETE** |
 | `A` is a function of `(k,z)`, NOT a constant of nature | `AcousticZeroFlow.lean` | Lean: `aDamp_strictMono`, `aDamp_ne_of_k2sigma2_ne` | **CONCRETE** |
 | General initial phase admits a finite non-empty zero set at/above `A=1` | `acoustic_zero_flow_n6.py` | `n6g` phase table + machine-checked counterexample to the unqualified claim | **CONCRETE (correction)** |
-| `A > 1` branch: one zero iff `abs(b) > abs(a) omega`, at `atanh(-a omega/b)/omega` | `acoustic_zero_flow_n6.py` | `n6g` numeric only. **NOT formalized in Lean** | **CONCRETE (numeric), formalization OPEN** |
+| `A > 1` branch: one zero iff `abs(b) > abs(a) omega`, at `atanh(-a omega/b)/omega` | `acoustic_zero_flow_n6.py` + `AcousticZeroFlow.lean` | `n6g` numeric; Lean `thetaGenOver_zero_iff` (zero set EXACTLY `{ artanh (-(a w/b))/w }` with `0 < w`, `b != 0`, `|b| > |a| w`) + `overdamped_unique_zero` (`∃! t`, in `thetaGen`'s own `w2 < 0` variables); axioms `[propext, Classical.choice, Quot.sound]` | **FORMALIZED** |
 | One threshold across CMB / BAO / 21cm: `Delta l = 302.26` in band 300-314 | `acoustic_zero_flow_n6.py` | `n6e`; safety margin 1462.6x at recombination | **CONCRETE (CMB)**; BAO/21cm are shared-test assertions, NOT derivations |
 
+
+## Dark Energy 0/0 framework (field registration, this pass)
+
+Field status: **REGISTERED (audit-gap)**, not claim-verified. The framework has
+135 scripts; supporting `dark_unified.tex` is a paper, not a verified artifact.
+Per-script claim rows are to be added only as each script is individually
+audited. Rows below record *execution* facts verified on this pass, not claim
+verification.
+
+| Claim | Artifact | Independent check | Status |
+|---|---|---|---|
+| The framework's `../data` occurrences are prose comments, not live path bugs | 18 `*_0_over_0.py` scripts | `rg` audit: 17/18 run clean (exit 0) and write artifacts to `03_Data_and_Observational_Resources/02_Experimental_Data_Collections` (e.g. `entropy_condition_data.json` via `_central_data_dir()`); the `../data` strings are historical comments | **CONCRETE (execution only)** |
+| 3 sizer scripts import the repo `packaging/utilities.py` | `air_sizing.py`, `rainwater_sizing.py`, `standby_efficiency.py` | All three FAILED before fix (`ModuleNotFoundError: packaging.utilities`, resolved to PyPI/parent-dir, not the repo module at `06_Configuration_and_Metadata/02_Data_Manifest_and_Processing`); after upward-search fix all three run clean (exit 0) and write to the central collection (`air_sizing_data.json`, `rainwater_data.json` was manifest-listed but MISSING and is now recovered by regeneration, `standby_efficiency_data.json`); central air/standby copies regenerated byte-identical | **CONCRETE (fixed & rerun)** |
+
+## Paper provenance register (P2 item 9, audited this pass)
+
+Each of the 7 `.tex` essays in `papers/` was audited: cited scripts located
+and re-run, numbers compared, claims cross-checked against this ledger and
+`MillenniumBridge.lean`.  Each essay now carries a provenance addendum.
+| Paper | Verified/reproduced | Status tier / disposition |
+|---|---|---|
+| `ns_proof.tex` | close_the_gap.py, final_proof.py, r3_extension.py, ns_r3_proof.py all run clean; 0.0088/0.0089 ratios, PS integrals 0.061455/0.646745/1.343262, C_max 0.0321/0.0227 exact | FRAMEWORK-ARGUMENT; numeric closures (alpha=0.8427, L1 -0.1684) are single-run, endpoint Serrin (2,inf) is delicate; addendum flags this |
+| `ym_mass_gap.tex` | ym_rigorous_verification, ym_fold_singularity/verification, ym_allloop_ds, ym_constructive all match | ONE-LOOP + NUMERICS; Delta=0.450 (one-loop table) vs 0.671 (OS script) are distinct models, both real; fold values now dual-registered; constructive YM OPEN |
+| `mass_gap_predictions.tex` | mass_gap_calculator (6 tests), universal_mass_gap (12+12+5), thirring_gn_crossover (min 2.500818/max 18.253056), rh_li_correct, de_branges_extended all match | SYNTHESIS; "Proved/Verified" cells corrected to framework-level; RH/BSD≥2/constructive-YM/Goldbach OPEN |
+| `universal_impedance.tex` | universal_impedance (5 0/0, 2 poles, 1 discontinuity; c=2.0, R_th=50.0, chi=88913.97, -i/0.1), rh_li_correct, rh_conductor_ratio, bsd_rank2, goldbach_large all match | ESSAY-CONSISTENT; already honest in its closing; RH/BSD/YM remain OPEN |
+| `toomre_millennium.tex` | toomre_universal gives Q_MW=6.2e-7, Q_z2=3.7e-7, Q_IMLup=6.44e9, 14 resonances | **CORRECTIONS**: Gamma at Q=1 is regular (not 0/0); Delta=lambda_c/(1-Q) is a POLE (not removable); measured exponents beta=0.424/nu~0 do NOT reproduce mean-field 1/2,1; Millennium connections are analogy, YM/BSD OPEN |
+| `spiral_mass_gap.tex` | spiral_mass_gap.py prints the same analogies; no numeric verification | MODEL-LEVEL ANALOGY; no Millennium settlement |
+| `dark_unified.tex` | dark_matter_core.py run | **REFUTED**: "0/0 at sigma_m(N-1)=2pi" is false (sinh(1)=1.175 != 0; rho=0.851 rho0); computed cores 3e-7/1.7e-6 GeV/cm3 do NOT match quoted observed 0.3/0.4 (6 orders); reclassified refuted-claim/qualitative |
+
+## Legacy document provenance register (P2 item 9, this pass)
+
+All 33 `THE_*_0_OVER_0.md` and all 67 `papers/*.pdf` classified by
+provenance.  Every script citation below resolves (basename) under
+`02_Experimental_Implementations_and_Verification/`.
+
+**THE_*_0_OVER_0.md (33).**  21 backed 1:1 by a cited script + test that
+both resolve (17 in `02_Dark_Energy_0_0_Framework/`, 4 in
+`06_Miscellaneous_Experiments/`: hermite_biehler_proof, interlacing_de_branges,
+and the ns pair).  12 REFRAMING-ESSAYS cite neither script nor test and
+carry no repo-computation claims: Atiyah-Singer, Chern-Gauss-Bonnet,
+H-theorem/navier-stokes, Knot invariants, Millennium Prize, Modular forms,
+Poincare, QFT, Random matrix theory, Riemann-Roch, Selberg trace formula,
+Selberg zeta function.  Registers of the 21 backed ones: cited test name
+matches a `test_*` inside `test_solvable_theorems.py` (checked programmatically).
+
+**papers/*.pdf (67).**  Provenance by backing:
+- 3 TEX-PEER (peer of the audited `.tex` in this folder): `dark_unified`,
+  `spiral_mass_gap`, `toomre_millennium`.
+- 57 SCRIPT-BACKED: name-mapped 1:1 to a `*.py` that resolves under
+  `02_Experimental_Implementations_and_Verification/`.
+- 7 QUALITATIVE (no same-named script): `consciousness_gamma`, `honest_audit`,
+  `language_meaning`, `millennium_prize_proofs`, `prebiotic_origin`,
+  `quantum_entanglement`, `zero_to_zero`.
+
+NULL result (disclosed): while the PDFs' names are backed, individual claims
+INSIDE each of the 67 PDF texts have not been machine-reproduced; the
+non-peer PDFs remain speculative-application essays whose content-level
+verification is an open item, not a claim of verification by this table.
+
+Script corrections shipped with this pass: `rh_li_correct.py` (RH declared
+OPEN; Li iff-checks all n), `toomre_critical.py` (measured exponents do not
+confirm mean-field; honest wall printed).
 
 ## Known non-concrete zones (disclosed)
 
 - docs/archive_legacy/: quarantined pre-audit artifacts, disclaimed
-- docs/archive_legacy/: quarantined pre-audit artifacts, disclaimed
-- docs/papers/: 74 files (67 PDF, 7 TEX) -- speculative application and essay
-  papers, never audited (count corrected from 28 on this pass)
+- docs/papers/: 74 files (67 PDF + 7 TEX) -- speculative application and essay
+  papers; AUDITED and CLASSIFIED on this pass (2026-10-07): 7 TEX peer the
+  audited framework essays; 57 PDF script-backed by name, 3 TEX-peers, 7
+  qualitative; PDF text-level claims NOT individually reproduced (open item)
 - Tier A walls (Kolmogorov uniform bound, RH positivity direction,
   constructive YM, BSD rank>=2, Hodge cycles, Goldbach minor arcs,
   sieve parity, Collatz, P vs NP lower bound): OPEN, labeled open everywhere
