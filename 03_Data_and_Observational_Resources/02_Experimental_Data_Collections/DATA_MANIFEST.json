@@ -1,11 +1,11 @@
 {
   "generated_by": "regen_data.py --manifest",
   "note": "Machine-readable artifact -> script map so that a fresh clone can recreate its verification standards. See regen_data.py.",
-  "persistence_rule": "data/*.json is gitignored; an artifact persists only if listed under 'tracked' or regenerable from 'scripts'. Anything under 'unreproducible' is a real loss and must be recovered by hand.",
+  "persistence_rule": "Generated artifacts are not committed; an artifact persists only if listed under 'tracked' or regenerable from 'scripts'. Anything under 'unreproducible' is a real loss and must be recovered by hand.",
   "counts": {
     "tracked": 301,
-    "recreatable": 148,
-    "unreproducible": 111
+    "recreatable": 151,
+    "unreproducible": 108
   },
   "unreproducible": [
     "HT-RUN-001.json",
@@ -98,7 +98,6 @@
     "sigma8_confrontation.json",
     "sigma8_nu_refinement.json",
     "simulation_hypothesis.json",
-    "spiral_mass_gap.json",
     "stochastic_resonance.json",
     "t65_fourpack_data.json",
     "tensor_mode_forecast.json",
@@ -106,9 +105,7 @@
     "thermo_data.json",
     "tilt_trace.json",
     "tilted_book.json",
-    "toomre_critical_corrected.json",
     "toomre_critical_exponents.json",
-    "toomre_universal.json",
     "trajectory_selection.json",
     "truth_knowledge.json",
     "tur_ledger.json",
@@ -257,9 +254,12 @@
     "sound_horizon_calculation.json",
     "space_spin_data.json",
     "spectral_data.json",
+    "spiral_mass_gap.json",
     "standby_efficiency_data.json",
     "supervision_verdict.json",
     "tilt_depths.json",
+    "toomre_critical_corrected.json",
+    "toomre_universal.json",
     "unfold_fold_price.json",
     "volume_coin.json",
     "winding_transition_0_over_0.json",
@@ -1791,6 +1791,15 @@
     ],
     "cold_crawler.json": [
       "07_Interdisciplinary_Connections_and_Frameworks/04_Theoretical_Physics_Implementations/bobo_chain/cold_crawler.py"
+    ],
+    "toomre_critical_corrected.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/toomre_critical.py"
+    ],
+    "toomre_universal.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/toomre_universal.py"
+    ],
+    "spiral_mass_gap.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/spiral_mass_gap.py"
     ]
   }
 }

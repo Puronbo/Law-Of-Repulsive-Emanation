@@ -167,3 +167,14 @@ P2 - adjudication before expansion:
 - N7 exact law (P0 item 1, this pass): the numeric-only curvature row is now
   formalized at the `SOf` level in `exp(-S)` form (4 new theorems, 3 standard
   axioms), closing the flagged numeric-only row.
+- Persistence standard re-audit (continuation pass, 2026-10-07): local data dirs
+  byte-match central (17/19; the 2 diffs are timestamp/1-ULP only); 3 toomre/
+  spiral artifacts moved `unreproducible` -> `recreatable` in DATA_MANIFEST.json
+  with script mappings (regeneration verified deterministic);
+  `regen_data.py._dark_energy_sources()` repaired (had required a
+  `_central_data_dir()` no script uses, so it mapped 0 DE artifacts; now keys on
+  the emit line, ~23 added); the persistence gate measured 54 phantom losses
+  that were a worktree-mid-reorg artifact - true fresh-clone partition of 273
+  referenced artifacts = 232 committed-in-git + 41 regenerable + 0 neither, so
+  the test now counts git-committed-anywhere and keeps budget 18. Full suite:
+  1129 passed / 1 skipped / 0 failed (15:53).
