@@ -178,3 +178,14 @@ P2 - adjudication before expansion:
   referenced artifacts = 232 committed-in-git + 41 regenerable + 0 neither, so
   the test now counts git-committed-anywhere and keeps budget 18. Full suite:
   1129 passed / 1 skipped / 0 failed (15:53).
+- Log 0/0 micro-lemma (2026-10-08): new certified-Lean module
+  `PunoCalculus.ZeroZero` -- `p·log p` value/removability/zero-outcome, and
+  `log (1+x)/x -> 1` real + complex, all `#print axioms` = the 3 standard;
+  runtime gates `shannon_entropy_0_over_0.py` (SUPPORTED) and
+  `log_limits_0_over_0.py` (all PASS) re-run clean.  Ledger rows added.  PNT
+  mislabelling corrected: the Test 4 "0/0 at the pole" is an ∞/∞ ratio
+  (both factors -> +∞); key renamed `pole_inf_over_inf` in script + central
+  artifact, script re-run SUPPORTED; a Lean `(x-1)/log x` theorem is deferred
+  as out of scope.  Disclosed: the 3 gates emit `<cwd>/data/` under
+  `02_Dark_Energy_0_0_Framework\`, an uncommitted path -- regenerability
+  path drift, not yet unified.

@@ -420,6 +420,22 @@ this branch -- 1861 legacy-path tracked files are unstaged deletions and the
 the reorg commit is made, the central tracked set should be `git add`ed so
 `tracked_files()` resolves 301 under the canonical root, matching the manifest.
 
+## Log 0/0 micro-lemma (ZeroZero.lean + runtime gates, 2026-10-08)
+
+A certified-Lean lane for the two log-flavoured 0/0 claims, in the
+`PunoCalculus.Removable` idiom (limits on the punctured neighbourhood only;
+never evaluating AT the point).  All theorems `#print axioms` to exactly
+`[propext, Classical.choice, Quot.sound]`; `lake build PunoCalculus` green
+(8730 jobs).
+
+| Claim | Artifact | Independent check | Status |
+|---|---|---|---|
+| Entropy term `p·log p`: value `0*log 0 = 0`, removable at `p = 0`, zero-outcome contributes 0 | `PunoCalculus/ZeroZero.lean` (`entropy_removable_value`, `entropy_term_continuous`, `entropy_removable_zero`, `entropy_sum_zero_outcome`) | `shannon_entropy_0_over_0.py` gate: `0*log(0) removable: True`, MI/KL/verdict SUPPORTED (exit 0) | **CONCRETE (formalised)** |
+| `log(1+x)/x -> 1` at `x = 0` (real) | `ZeroZero.lean` (`log_one_add_div_tendsto_one`, via `HasDerivAt.log` of `1+·` at 0) | `log_limits_0_over_0.py` gate 1: `PASS: log(1+x)/x at x=0: 0/0, removable=1` (exit 0) | **CONCRETE (formalised)** |
+| `Complex.log(1+z)/z -> 1` at `z = 0` (`slitPlane` branch: `z ↦ 1+z` stays in the branch near 0, `1 ∈ slitPlane`) | `ZeroZero.lean` (`clog_one_add_div_tendsto_one`, via `HasDerivAt.clog`) | same `log_limits_0_over_0.py` gate (complex branch of the same 0/0) | **CONCRETE (formalised)** |
+| **MISLABEL CORRECTION: the PNT "pole" test is ∞/∞, not 0/0** | `prime_number_theorem_0_over_0.py` Test 4 (`prime_number_theorem_0_over_0.py:147-164`) + central `prime_number_theorem_0_over_0_data.json` | Both `1/log(x)` and `1/(x-1)` -> +∞ at `x -> 1+`, so `1/log(x) / (1/(x-1))` is ∞/∞ (removable = 1); only the inner pair `(x-1), log(x)` -> 0.  Key renamed `pole_0_over_0` -> `pole_inf_over_inf`, note rewritten; script re-run SUPPORTED (exit 0).  No Lean `(x-1)/log x` theorem added: deferred (inverse-division bookkeeping exceeds this pass's scope) | **CORRECTED (was a mislabelling)** |
+| The three 0/0 gate scripts emit `<cwd>/data/` (an uncommitted path under `02_Dark_Energy_0_0_Framework\`) | `shannon_entropy_0_over_0.py`, `log_limits_0_over_0.py`, `prime_number_theorem_0_over_0.py` | ran with a created local `data/`; the committed central copies live under `03_Data_and_Observational_Resources\02_Experimental_Data_Collections\` (mirror updated by hand for the PNT key) -- regenerability path drift disclosed, not yet unified | **CONCRETE (execution only, disclosed)** |
+
 ## Known non-concrete zones (disclosed)
 
 - docs/archive_legacy/: quarantined pre-audit artifacts, disclaimed
