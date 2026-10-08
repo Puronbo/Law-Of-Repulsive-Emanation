@@ -189,3 +189,18 @@ P2 - adjudication before expansion:
   as out of scope.  Disclosed: the 3 gates emit `<cwd>/data/` under
   `02_Dark_Energy_0_0_Framework\`, an uncommitted path -- regenerability
   path drift, not yet unified.
+- AI-performable professions -- benchmark plumbing fixes (2026-10-08): the
+  runner wrote its verdict artifact to a nonexistent local `../data/`; it now
+  writes the committed central copy under `03_Data_and_Observational_Resources\
+  02_Experimental_Data_Collections\`, and the JSON gained deterministic
+  `schema` + `provenance` blocks.  Added schema-stable CSV export
+  (`professions/export.py`, `puno-mandates export [--out] [--tasks]`, pinned
+  by a round-trip test).  `puno_app/mandates_server.py` inserted the wrong dir
+  on `sys.path` (the `01_Lean` app dir, not the professions package's parent);
+  now resolves `PROF_SRC` from the repo root so `python -m puno_app.
+  mandates_server report|export|serve` runs with no `PYTHONPATH`.  Frozen
+  count assertions (`A==5/D==2/len==14`) replaced by dataset-derived internal
+  consistency in `test_professions_mandate.py` and `test_solvable_theorems.py`
+  (2 tests) -- counts legitimately track the stated [hypothesis]
+  decompositions; current values unchanged (A=5, B=2, C=5, D=2).  Ledger rows
+  added; affected tests green.

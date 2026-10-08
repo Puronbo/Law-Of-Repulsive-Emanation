@@ -436,6 +436,22 @@ never evaluating AT the point).  All theorems `#print axioms` to exactly
 | **MISLABEL CORRECTION: the PNT "pole" test is ∞/∞, not 0/0** | `prime_number_theorem_0_over_0.py` Test 4 (`prime_number_theorem_0_over_0.py:147-164`) + central `prime_number_theorem_0_over_0_data.json` | Both `1/log(x)` and `1/(x-1)` -> +∞ at `x -> 1+`, so `1/log(x) / (1/(x-1))` is ∞/∞ (removable = 1); only the inner pair `(x-1), log(x)` -> 0.  Key renamed `pole_0_over_0` -> `pole_inf_over_inf`, note rewritten; script re-run SUPPORTED (exit 0).  No Lean `(x-1)/log x` theorem added: deferred (inverse-division bookkeeping exceeds this pass's scope) | **CORRECTED (was a mislabelling)** |
 | The three 0/0 gate scripts emit `<cwd>/data/` (an uncommitted path under `02_Dark_Energy_0_0_Framework\`) | `shannon_entropy_0_over_0.py`, `log_limits_0_over_0.py`, `prime_number_theorem_0_over_0.py` | ran with a created local `data/`; the committed central copies live under `03_Data_and_Observational_Resources\02_Experimental_Data_Collections\` (mirror updated by hand for the PNT key) -- regenerability path drift disclosed, not yet unified | **CONCRETE (execution only, disclosed)** |
 
+## AI-performable professions -- benchmark plumbing fixes (2026-10-08)
+
+Audit-of-the-gates pass on the professions benchmark: it verified *programmatic
+agreement* (runner -> JSON artifact -> tests), it had never verified the runner
+writes to the *committed* artifact, and the count assertions were frozen to the
+dataset in force at the time they were written.
+
+| Fix | Files | Independent check | Status |
+|---|---|---|---|
+| Runner now writes to the committed central artifact, not `<runner>\..\data\` (a nonexistent local dir) | `07_Interdisciplinary_Connections_and_Frameworks\02_Mathematical_Physics_Connections\ai_performable_professions.py` (`DATA` = `REPO_ROOT\03_Data_and_Observational_Resources\02_Experimental_Data_Collections`) | re-run: `wrote ...\03_Data_and_Observational_Resources\02_Experimental_Data_Collections\ai_performable_professions_data.json`, exit 0 | **CONCRETE (fixed)** |
+| Schema + provenance block in the persisted JSON (deterministic, no timestamps -- byte-identical on regeneration) | `ai_performable_professions.py` (`"schema"`, `"provenance"` keys) | emitted artifact contains both blocks | **CONCRETE (fixed)** |
+| CSV export, schema-stable (profession rows + optional task rows), pinned by a round-trip test | new `professions/export.py`; `puno-mandates export [--out PATH] [--tasks]` subcommand in `puno_app/mandates_server.py` | `test_export_csv_matches_report` (round-trip vs `build_report()`); CLI export exit 0, both CSVs written | **CONCRETE (fixed)** |
+| Packaging: `puno_app/mandates_server.py` inserted `01_Lean` on `sys.path`, not the package dir -- `report`/`serve` worked only via `PYTHONPATH` | `puno_app/mandates_server.py` (`PROF_SRC` = repo-root `...\02_Mathematical_Physics_Connections`, inserted on `sys.path`) | `python -m puno_app.mandates_server report` and `export --tasks` exit 0 with no `PYTHONPATH` | **CONCRETE (fixed)** |
+| Frozen count assertions un-pinned to dataset-derived internal consistency (counts legitimately track the stated [hypothesis] decompositions) | `test_professions_mandate.py::test_report_status_counts_match_dataset`; `test_solvable_theorems.py::test_ai_performable_professions`, `test_mandate_report` | all affected tests pass; counts on this pass: A=5, B=2, C=5, D=2 (unchanged, but no longer asserted) | **CONCRETE (fixed)** |
+| (emanation toolchain) `transformer_proposer.py` looked for the scratch model at the pre-reorg `02_Experimental_Implementations_and_Verification\sfiles\` -- the canonical copy moved to `07_...\02_Mathematical_Physics_Connections\sfiles\`, so `test_professions_audit.py::test_drift_on_professions_table_tamper` failed `from block import TransformerBlock` | `02_Experimental_Implementations_and_Verification\06_Miscellaneous_Experiments\emanation\transformer_proposer.py` (sys.path candidates now `_REPO` + canonical `07_.../02_Mathematical_Physics_Connections/sfiles` + legacy fallback, inserted only when present) | `test_professions_audit.py` + `test_origin_consistency_window_n7.py` both green; note: the suite relies on `pip install -e .` (`__editable__.puno_calculus` finder) mapping `experiments.emanation` etc. -- a bare clone needs the editable install | **CONCRETE (fixed)** |
+
 ## Known non-concrete zones (disclosed)
 
 - docs/archive_legacy/: quarantined pre-audit artifacts, disclaimed

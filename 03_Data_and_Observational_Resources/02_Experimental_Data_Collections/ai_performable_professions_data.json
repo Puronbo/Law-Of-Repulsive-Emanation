@@ -1,0 +1,433 @@
+{
+  "claim": "professions decomposable into pure knowledge work (K>=0.90, S<=0.10, no gate) are the ones AI can do without any skill-based knowledge: 5 of 14 tested (copyeditor, translator (document, non-certified), technical writer, data analyst (reporting), tier-1 text support (async)); every other profession retains material skill or a licensing gate",
+  "method": "Each profession is decomposed into tasks (share, k, s, gate), k+s<=1; K and S are effort-weighted. A: K>=0.90, S<=0.10, no gate. B: K>=0.90, S<=0.10, gate. C: K>=0.50. D: K<0.50.",
+  "classes": {
+    "A": "AI-performable, no skill",
+    "B": "AI-performable, gated",
+    "C": "augment only",
+    "D": "skill-dominated"
+  },
+  "assumptions_note": "task decompositions are stated [hypothesis] estimates, not measurements; k+s<=1 per task",
+  "schema": {
+    "artifact": "ai_performable_professions",
+    "version": 1,
+    "thresholds": "professions/rubric.py profession_verdict: A K>=0.90 S<=0.10 no gate; B K>=0.90 S<=0.10 gate; C K>=0.50; D K<0.50",
+    "fields": {
+      "claim": "str",
+      "method": "str",
+      "classes": "dict {A,B,C,D: label}",
+      "assumptions_note": "str",
+      "schema": "this block",
+      "class_counts": "dict {class: count}",
+      "professions": "list[{name, tasks:list[{name,share,k,s,gate}], knowledge_fraction, skill_fraction, gate, gate_note, class}]",
+      "verdict": "str"
+    }
+  },
+  "provenance": {
+    "dataset": "professions/professions_data.py (stated [hypothesis] decompositions, not measurements)",
+    "logic": "professions/rubric.py profession_verdict",
+    "generator": "ai_performable_professions.py",
+    "determinism": "byte-identical on regeneration; no timestamps"
+  },
+  "class_counts": {
+    "A": 5,
+    "B": 2,
+    "C": 5,
+    "D": 2
+  },
+  "professions": [
+    {
+      "name": "copyeditor",
+      "tasks": [
+        {
+          "name": "line edit",
+          "share": 0.6,
+          "k": 0.99,
+          "s": 0.01,
+          "gate": false
+        },
+        {
+          "name": "fact and style check",
+          "share": 0.4,
+          "k": 0.99,
+          "s": 0.01,
+          "gate": false
+        }
+      ],
+      "knowledge_fraction": 0.99,
+      "skill_fraction": 0.01,
+      "gate": false,
+      "gate_note": null,
+      "class": "A"
+    },
+    {
+      "name": "translator (document, non-certified)",
+      "tasks": [
+        {
+          "name": "translate",
+          "share": 0.7,
+          "k": 0.98,
+          "s": 0.02,
+          "gate": false
+        },
+        {
+          "name": "glossary and consistency QA",
+          "share": 0.3,
+          "k": 0.98,
+          "s": 0.02,
+          "gate": false
+        }
+      ],
+      "knowledge_fraction": 0.98,
+      "skill_fraction": 0.019999999999999997,
+      "gate": false,
+      "gate_note": null,
+      "class": "A"
+    },
+    {
+      "name": "translator (court, sworn)",
+      "tasks": [
+        {
+          "name": "translate",
+          "share": 0.65,
+          "k": 0.98,
+          "s": 0.02,
+          "gate": false
+        },
+        {
+          "name": "glossary and consistency QA",
+          "share": 0.25,
+          "k": 0.98,
+          "s": 0.02,
+          "gate": false
+        },
+        {
+          "name": "sworn attestation of accuracy",
+          "share": 0.1,
+          "k": 0.95,
+          "s": 0.05,
+          "gate": true
+        }
+      ],
+      "knowledge_fraction": 0.977,
+      "skill_fraction": 0.023000000000000003,
+      "gate": true,
+      "gate_note": "court-recognized sworn attestation",
+      "class": "B"
+    },
+    {
+      "name": "technical writer",
+      "tasks": [
+        {
+          "name": "research and gather context",
+          "share": 0.35,
+          "k": 0.98,
+          "s": 0.02,
+          "gate": false
+        },
+        {
+          "name": "draft documentation",
+          "share": 0.4,
+          "k": 0.98,
+          "s": 0.02,
+          "gate": false
+        },
+        {
+          "name": "revise against stated criteria",
+          "share": 0.25,
+          "k": 0.95,
+          "s": 0.05,
+          "gate": false
+        }
+      ],
+      "knowledge_fraction": 0.9724999999999999,
+      "skill_fraction": 0.0275,
+      "gate": false,
+      "gate_note": null,
+      "class": "A"
+    },
+    {
+      "name": "data analyst (reporting)",
+      "tasks": [
+        {
+          "name": "query, clean, transform",
+          "share": 0.4,
+          "k": 0.97,
+          "s": 0.03,
+          "gate": false
+        },
+        {
+          "name": "compute metrics, narrate findings",
+          "share": 0.6,
+          "k": 0.97,
+          "s": 0.03,
+          "gate": false
+        }
+      ],
+      "knowledge_fraction": 0.97,
+      "skill_fraction": 0.03,
+      "gate": false,
+      "gate_note": null,
+      "class": "A"
+    },
+    {
+      "name": "compliance officer (regulated filings)",
+      "tasks": [
+        {
+          "name": "prepare filing from rules",
+          "share": 0.85,
+          "k": 0.97,
+          "s": 0.03,
+          "gate": false
+        },
+        {
+          "name": "certify and submit",
+          "share": 0.15,
+          "k": 0.95,
+          "s": 0.05,
+          "gate": true
+        }
+      ],
+      "knowledge_fraction": 0.967,
+      "skill_fraction": 0.033,
+      "gate": true,
+      "gate_note": "legal certification of submissions",
+      "class": "B"
+    },
+    {
+      "name": "tier-1 text support (async)",
+      "tasks": [
+        {
+          "name": "resolve from knowledge base",
+          "share": 0.85,
+          "k": 0.97,
+          "s": 0.03,
+          "gate": false
+        },
+        {
+          "name": "escalate and hand off",
+          "share": 0.15,
+          "k": 0.9,
+          "s": 0.1,
+          "gate": false
+        }
+      ],
+      "knowledge_fraction": 0.9595,
+      "skill_fraction": 0.040499999999999994,
+      "gate": false,
+      "gate_note": null,
+      "class": "A"
+    },
+    {
+      "name": "software engineer",
+      "tasks": [
+        {
+          "name": "design and write code",
+          "share": 0.5,
+          "k": 0.8,
+          "s": 0.2,
+          "gate": false
+        },
+        {
+          "name": "troubleshoot live systems",
+          "share": 0.3,
+          "k": 0.7,
+          "s": 0.3,
+          "gate": false
+        },
+        {
+          "name": "specification and review",
+          "share": 0.2,
+          "k": 0.95,
+          "s": 0.05,
+          "gate": false
+        }
+      ],
+      "knowledge_fraction": 0.8,
+      "skill_fraction": 0.2,
+      "gate": false,
+      "gate_note": null,
+      "class": "C"
+    },
+    {
+      "name": "tier-1 voice support (live)",
+      "tasks": [
+        {
+          "name": "resolve from knowledge base",
+          "share": 0.7,
+          "k": 0.9,
+          "s": 0.1,
+          "gate": false
+        },
+        {
+          "name": "live call handling and rapport",
+          "share": 0.3,
+          "k": 0.4,
+          "s": 0.6,
+          "gate": false
+        }
+      ],
+      "knowledge_fraction": 0.75,
+      "skill_fraction": 0.25,
+      "gate": false,
+      "gate_note": null,
+      "class": "C"
+    },
+    {
+      "name": "psychotherapist",
+      "tasks": [
+        {
+          "name": "assessment",
+          "share": 0.35,
+          "k": 0.9,
+          "s": 0.1,
+          "gate": false
+        },
+        {
+          "name": "therapeutic alliance sessions",
+          "share": 0.45,
+          "k": 0.4,
+          "s": 0.6,
+          "gate": false
+        },
+        {
+          "name": "documentation",
+          "share": 0.2,
+          "k": 0.95,
+          "s": 0.05,
+          "gate": false
+        }
+      ],
+      "knowledge_fraction": 0.685,
+      "skill_fraction": 0.315,
+      "gate": false,
+      "gate_note": "licensed practice and duty of care",
+      "class": "C"
+    },
+    {
+      "name": "teacher",
+      "tasks": [
+        {
+          "name": "lesson design",
+          "share": 0.3,
+          "k": 0.95,
+          "s": 0.05,
+          "gate": false
+        },
+        {
+          "name": "live classroom delivery",
+          "share": 0.5,
+          "k": 0.4,
+          "s": 0.6,
+          "gate": false
+        },
+        {
+          "name": "assessment",
+          "share": 0.2,
+          "k": 0.9,
+          "s": 0.1,
+          "gate": false
+        }
+      ],
+      "knowledge_fraction": 0.665,
+      "skill_fraction": 0.33499999999999996,
+      "gate": false,
+      "gate_note": null,
+      "class": "C"
+    },
+    {
+      "name": "physician",
+      "tasks": [
+        {
+          "name": "consult and diagnostic reasoning",
+          "share": 0.5,
+          "k": 0.85,
+          "s": 0.15,
+          "gate": false
+        },
+        {
+          "name": "physical examination",
+          "share": 0.3,
+          "k": 0.1,
+          "s": 0.9,
+          "gate": false
+        },
+        {
+          "name": "documentation and plan",
+          "share": 0.2,
+          "k": 0.95,
+          "s": 0.05,
+          "gate": false
+        }
+      ],
+      "knowledge_fraction": 0.645,
+      "skill_fraction": 0.35500000000000004,
+      "gate": false,
+      "gate_note": "prescribing, diagnosing, signing - licensed human only",
+      "class": "C"
+    },
+    {
+      "name": "surgeon",
+      "tasks": [
+        {
+          "name": "operative planning",
+          "share": 0.2,
+          "k": 0.9,
+          "s": 0.1,
+          "gate": false
+        },
+        {
+          "name": "surgical execution",
+          "share": 0.6,
+          "k": 0.2,
+          "s": 0.8,
+          "gate": false
+        },
+        {
+          "name": "perioperative judgement",
+          "share": 0.2,
+          "k": 0.4,
+          "s": 0.6,
+          "gate": false
+        }
+      ],
+      "knowledge_fraction": 0.38,
+      "skill_fraction": 0.62,
+      "gate": false,
+      "gate_note": "surgical licensure and institutional credentialing",
+      "class": "D"
+    },
+    {
+      "name": "electrician (installation)",
+      "tasks": [
+        {
+          "name": "plan and apply code",
+          "share": 0.25,
+          "k": 0.9,
+          "s": 0.1,
+          "gate": false
+        },
+        {
+          "name": "physical install",
+          "share": 0.5,
+          "k": 0.05,
+          "s": 0.95,
+          "gate": false
+        },
+        {
+          "name": "live fault-finding",
+          "share": 0.25,
+          "k": 0.4,
+          "s": 0.6,
+          "gate": false
+        }
+      ],
+      "knowledge_fraction": 0.35000000000000003,
+      "skill_fraction": 0.65,
+      "gate": false,
+      "gate_note": null,
+      "class": "D"
+    }
+  ],
+  "verdict": "The AI-performable set without any skill-based knowledge is exactly the professions whose output is a language artifact and whose whole effort decomposes into articulated knowledge work: copyeditor, translator (document, non-certified), technical writer, data analyst (reporting), tier-1 text support (async). Add a certification/attestation duty and the same work drops to Class B (capable, gated). Everything that requires live physical presence, live rapport, or embodied judgement lands in C (augment) or D (skill-dominated): software engineering sits at K=0.80 because live troubleshooting resists articulation, teaching and therapy lose most of their value in the alliance that cannot be stated, and surgery/electrical work are dominated by psychomotor skill. Honest wall: Class A is capability, not adoption - markets, liability and licensure (the B gate) decide who may occupy the role, and Class A verdicts degrade sharply for regulated output."
+}
