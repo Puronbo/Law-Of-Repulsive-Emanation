@@ -436,6 +436,33 @@ never evaluating AT the point).  All theorems `#print axioms` to exactly
 | **MISLABEL CORRECTION: the PNT "pole" test is ∞/∞, not 0/0** | `prime_number_theorem_0_over_0.py` Test 4 (`prime_number_theorem_0_over_0.py:147-164`) + central `prime_number_theorem_0_over_0_data.json` | Both `1/log(x)` and `1/(x-1)` -> +∞ at `x -> 1+`, so `1/log(x) / (1/(x-1))` is ∞/∞ (removable = 1); only the inner pair `(x-1), log(x)` -> 0.  Key renamed `pole_0_over_0` -> `pole_inf_over_inf`, note rewritten; script re-run SUPPORTED (exit 0).  No Lean `(x-1)/log x` theorem added: deferred (inverse-division bookkeeping exceeds this pass's scope) | **CORRECTED (was a mislabelling)** |
 | The three 0/0 gate scripts emit `<cwd>/data/` (an uncommitted path under `02_Dark_Energy_0_0_Framework\`) | `shannon_entropy_0_over_0.py`, `log_limits_0_over_0.py`, `prime_number_theorem_0_over_0.py` | ran with a created local `data/`; the committed central copies live under `03_Data_and_Observational_Resources\02_Experimental_Data_Collections\` (mirror updated by hand for the PNT key) -- regenerability path drift disclosed, not yet unified | **CONCRETE (execution only, disclosed)** |
 
+## ZeroZero removable-0/0 family (ZeroZero.lean + family gate, 2026-10-08)
+
+Phase-3 expansion of the certified-Lean 0/0 lane: `PunoCalculus/ZeroZero.lean`
+grows from 6 to 17 theorems, each `#print axioms` = exactly
+`[propext, Classical.choice, Quot.sound]`; `lake build` green (8730 jobs, zero
+warnings).  New runtime gate `zero_zero_family_0_over_0.py` re-derives every
+family value on shrinking lattices and emits the central artifact
+`zero_zero_family_0_over_0_data.json` via `_central_data_dir()` under
+`03_Data_and_Observational_Resources\02_Experimental_Data_Collections\`
+(regenerable: `regen_data.build_map()` resolves it to the script).  New
+`test_zero_zero_family_gate.py` pins per-key `passed`, the removable values,
+and the `lean_module`/theorem correspondence.
+
+| Claim | Artifact | Independent check | Status |
+|---|---|---|---|
+| KL 0/0 at `P = Q = Bernoulli(1/2)`: `KL = 0*log(1) = 0` | `ZeroZero.lean` (`kl_zero_zero_tendsto_zero`) | `zero_zero_family_0_over_0.py`: `PASS: KL(p||q) at p=q=Bernoulli(1/2): 0/0, removable=0` (exit 0) | **CONCRETE (formalised)** |
+| `sin(x)/x -> 1` at `x = 0` | `ZeroZero.lean` (`sin_x_div_tendsto_one`) | family gate: `PASS: sin(x)/x at x=0: 0/0, removable=1` | **CONCRETE (formalised)** |
+| `(1-cos(x))/x^2 -> 1/2` at `x = 0` | `ZeroZero.lean` (`one_sub_cos_div_sq_tendsto_half`) | family gate: `PASS: ... removable=1/2` (stable form `2 sin(x/2)^2/x^2`) | **CONCRETE (formalised)** |
+| `(e^x-1)/x -> 1` at `x = 0` | `ZeroZero.lean` (`exp_sub_one_div_tendsto_one`) | family gate: `PASS: (e^x-1)/x at x=0: 0/0, removable=1` | **CONCRETE (formalised)** |
+| `tan(x)/x -> 1` at `x = 0` (via `cos 0 = 1` ↩) | `ZeroZero.lean` (`tan_x_div_tendsto_one`) | family gate: `PASS: tan(x)/x at x=0: 0/0, removable=1` | **CONCRETE (formalised)** |
+| `log(x)/(x-1) -> 1` at `x = 1` | `ZeroZero.lean` (`log_div_sub_one_tendsto_one`) | family gate: `PASS: log(x)/(x-1) at x=1: 0/0, removable=1` | **CONCRETE (formalised)** |
+| `(x-1)/log(x) -> 1` at `x = 1` (the previously-deferred inverse of the PNT ∞/∞ pair, now formalised) | `ZeroZero.lean` (`sub_one_div_log_tendsto_one`) | family gate: `PASS: (x-1)/log(x) at x=1: 0/0, removable=1` | **CONCRETE (formalised)** |
+| `arcsin(x)/x -> 1` at `x = 0` | `ZeroZero.lean` (`arcsin_x_div_tendsto_one`) | family gate: `PASS: arcsin(x)/x at x=0: 0/0, removable=1` | **CONCRETE (formalised)** |
+| `x^x -> 1` at `x = 0+` (`0^0`) | `ZeroZero.lean` (`self_pow_tendsto_one`) | family gate: `PASS: x^x at x=0+: 0^0, removable=1` | **CONCRETE (formalised)** |
+| `(1+x)^(1/x) -> e` at `x = 0+` (defining characterisation of `e`) | `ZeroZero.lean` (`one_add_x_rpow_inv_tendsto_e`) | family gate: `PASS: (1+x)^(1/x) at x=0+: removable=e` | **CONCRETE (formalised)** |
+| `sin(z)/z -> 1` at `z = 0` in `ℂ` (`sin(i y)/(i y) = sinh(y)/y`) | `ZeroZero.lean` (`csin_x_div_tendsto_one`) | family gate: `PASS: sin(z)/z at z=0 (complex): 0/0, removable=1` | **CONCRETE (formalised)** |
+
 ## AI-performable professions -- benchmark plumbing fixes (2026-10-08)
 
 Audit-of-the-gates pass on the professions benchmark: it verified *programmatic

@@ -189,6 +189,18 @@ P2 - adjudication before expansion:
   as out of scope.  Disclosed: the 3 gates emit `<cwd>/data/` under
   `02_Dark_Energy_0_0_Framework\`, an uncommitted path -- regenerability
   path drift, not yet unified.
+- ZeroZero removable-0/0 family (2026-10-08): `PunoCalculus.ZeroZero` grows
+  6 -> 17 theorems -- `KL` 0/0, `sin(x)/x`, `(1-cos(x))/x^2`, `(e^x-1)/x`,
+  `tan(x)/x`, `log(x)/(x-1)`, `(x-1)/log(x)` (the previously-deferred inverse
+  of the PNT ∞/∞ pair), `arcsin(x)/x`, `x^x`, `(1+x)^(1/x) -> e`, and complex
+  `sin(z)/z` -- all `#print axioms` = the 3 standard; `lake build` green (8730
+  jobs), zero warnings, temp axiom file deleted.  New gate
+  `zero_zero_family_0_over_0.py` re-derives all 13 removable values and emits
+  the central artifact via `_central_data_dir()` (regenerable and persisted).
+  New `test_zero_zero_family_gate.py`: `summary.supported`, per-key `passed`,
+  removable values pinned (`math.isclose`), `lean_module =
+  PunoCalculus.ZeroZero` + theorem correspondence asserted; `regen_data`
+  resolves the artifact to the script.  Full-suite gate green.
 - AI-performable professions -- benchmark plumbing fixes (2026-10-08): the
   runner wrote its verdict artifact to a nonexistent local `../data/`; it now
   writes the committed central copy under `03_Data_and_Observational_Resources\

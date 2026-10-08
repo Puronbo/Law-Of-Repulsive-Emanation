@@ -1,0 +1,285 @@
+{
+  "log_one_add_div": {
+    "name": "log_one_add_div",
+    "description": "log(1+x)/x at x=0: 0/0, removable=1",
+    "removable_value": 1.0,
+    "limit_value": 1.000000082690371,
+    "last_error": 8.269037099495335e-08,
+    "errors": [
+      0.004966914683190771,
+      0.0004996669165767686,
+      4.9996667026874775e-05,
+      4.99996011593673e-06,
+      5.000819331968387e-07,
+      4.9416129521695495e-08,
+      1.1077470940534795e-08,
+      8.224037095772019e-08,
+      8.269037099495335e-08
+    ],
+    "passed": true
+  },
+  "entropy_term": {
+    "name": "entropy_term",
+    "description": "t*log(t) as t->0+: 0*(-inf), removable=0",
+    "removable_value": 0.0,
+    "limit_value": -2.302585092994046e-09,
+    "last_error": 2.302585092994046e-09,
+    "errors": [
+      0.04605170185988091,
+      0.006907755278982137,
+      0.0009210340371976182,
+      0.0001151292546497023,
+      1.3815510557964273e-05,
+      1.6118095650958319e-06,
+      1.8420680743952367e-07,
+      2.072326583694641e-08,
+      2.302585092994046e-09
+    ],
+    "passed": true
+  },
+  "kl_zero_zero": {
+    "name": "kl_zero_zero",
+    "description": "KL(p||q) at p=q=Bernoulli(1/2): 0/0, removable=0",
+    "removable_value": 0.0,
+    "limit_value": 0.0,
+    "last_error": 0.0,
+    "errors": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "passed": true
+  },
+  "sin_div": {
+    "name": "sin_div",
+    "description": "sin(x)/x at x=0: 0/0, removable=1",
+    "removable_value": 1.0,
+    "limit_value": 1.0,
+    "last_error": 0.0,
+    "errors": [
+      1.6666583333546647e-05,
+      1.666666583632903e-07,
+      1.66666658252268e-09,
+      1.6666779067975313e-11,
+      1.66644475996236e-13,
+      1.6653345369377348e-15,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "passed": true
+  },
+  "one_sub_cos_div_sq": {
+    "name": "one_sub_cos_div_sq",
+    "description": "(1-cos(x))/x^2 at x=0: 0/0, removable=1/2",
+    "removable_value": 0.5,
+    "limit_value": 0.5,
+    "last_error": 0.0,
+    "errors": [
+      4.1666527778594364e-06,
+      4.166666528471197e-08,
+      4.166665901195188e-10,
+      4.166722522569444e-12,
+      4.168887457467463e-14,
+      3.885780586188048e-16,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "passed": true
+  },
+  "exp_sub_one_div": {
+    "name": "exp_sub_one_div",
+    "description": "(e^x-1)/x at x=0: 0/0, removable=1",
+    "removable_value": 1.0,
+    "limit_value": 1.000000082740371,
+    "last_error": 8.274037099909037e-08,
+    "errors": [
+      0.005016708416794913,
+      0.0005001667083845973,
+      5.0001667140975314e-05,
+      5.000006964905879e-06,
+      4.999621836532242e-07,
+      4.943368026033568e-08,
+      6.07747097092215e-09,
+      8.274037099909037e-08,
+      8.274037099909037e-08
+    ],
+    "passed": true
+  },
+  "tan_div": {
+    "name": "tan_div",
+    "description": "tan(x)/x at x=0: 0/0, removable=1",
+    "removable_value": 1.0,
+    "limit_value": 1.0,
+    "last_error": 0.0,
+    "errors": [
+      3.3334666720730155e-05,
+      3.3333346682873355e-07,
+      3.333333387089965e-09,
+      3.33333360913457e-11,
+      3.33288951992472e-13,
+      3.3306690738754696e-15,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "passed": true
+  },
+  "arcsin_div": {
+    "name": "arcsin_div",
+    "description": "arcsin(x)/x at x=0: 0/0, removable=1",
+    "removable_value": 1.0,
+    "limit_value": 1.0,
+    "last_error": 0.0,
+    "errors": [
+      1.6667416711468874e-05,
+      1.6666674151899485e-07,
+      1.66666658252268e-09,
+      1.666666804567285e-11,
+      1.667554982986985e-13,
+      1.7763568394002505e-15,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "passed": true
+  },
+  "log_div_sub_one": {
+    "name": "log_div_sub_one",
+    "description": "log(x)/(x-1) at x=1: 0/0, removable=1",
+    "removable_value": 1.0,
+    "limit_value": 0.99999999995,
+    "last_error": 5.000000413701855e-11,
+    "errors": [
+      0.004966914683191659,
+      0.0004996669164667455,
+      4.999666691662963e-05,
+      4.999966667029732e-06,
+      4.999996666699147e-07,
+      4.9999996698524285e-08,
+      4.999999969612645e-09,
+      5.000000413701855e-10,
+      5.000000413701855e-11
+    ],
+    "passed": true
+  },
+  "sub_one_div_log": {
+    "name": "sub_one_div_log",
+    "description": "(x-1)/log(x) at x=1: 0/0, removable=1",
+    "removable_value": 1.0,
+    "limit_value": 1.00000000005,
+    "last_error": 5.000000413701855e-11,
+    "errors": [
+      0.004991708071305334,
+      0.0004999167083068468,
+      4.999916670844762e-05,
+      4.999991666920778e-06,
+      4.999999165811175e-07,
+      4.999999925203724e-08,
+      4.999999969612645e-09,
+      5.000000413701855e-10,
+      5.000000413701855e-11
+    ],
+    "passed": true
+  },
+  "self_pow": {
+    "name": "self_pow",
+    "description": "x^x at x=0+: 0^0, removable=1",
+    "removable_value": 1.0,
+    "limit_value": 0.9999999976974149,
+    "last_error": 2.302585122571088e-09,
+    "errors": [
+      0.045007413978564004,
+      0.006883951579066183,
+      0.0009206100155382257,
+      0.00011512262753143876,
+      1.3815415124240893e-05,
+      1.6118082660776523e-06,
+      1.8420679048780642e-07,
+      2.0723265659050583e-08,
+      2.302585122571088e-09
+    ],
+    "passed": true
+  },
+  "csin_div": {
+    "name": "csin_div",
+    "description": "sin(z)/z at z=0 (complex): 0/0, removable=1",
+    "removable_value": 1.0,
+    "limit_value": 1.0,
+    "last_error": 0.0,
+    "errors": [
+      1.6666750000338126e-05,
+      1.6666667512765798e-07,
+      1.66666658252268e-09,
+      1.666666804567285e-11,
+      1.667554982986985e-13,
+      1.7763568394002505e-15,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "passed": true
+  },
+  "one_add_x_rpow_inv": {
+    "name": "one_add_x_rpow_inv",
+    "description": "(1+x)^(1/x) at x=0+: removable=e",
+    "removable_value": 2.718281828459045,
+    "limit_value": 2.7182820532347876,
+    "last_error": 2.2477574246337895e-07,
+    "errors": [
+      0.01346799903751661,
+      0.0013578962234515046,
+      0.000135901634119584,
+      1.3591266748047559e-05,
+      1.359363291708604e-06,
+      1.3432696333026684e-07,
+      3.011168736577474e-08,
+      2.235525147220585e-07,
+      2.2477574246337895e-07
+    ],
+    "passed": true
+  },
+  "summary": {
+    "supported": true,
+    "all_passed": true,
+    "per_key": {
+      "log_one_add_div": true,
+      "entropy_term": true,
+      "kl_zero_zero": true,
+      "sin_div": true,
+      "one_sub_cos_div_sq": true,
+      "exp_sub_one_div": true,
+      "tan_div": true,
+      "arcsin_div": true,
+      "log_div_sub_one": true,
+      "sub_one_div_log": true,
+      "self_pow": true,
+      "csin_div": true,
+      "one_add_x_rpow_inv": true
+    },
+    "max_last_error": 2.2477574246337895e-07,
+    "lean_module": "PunoCalculus.ZeroZero",
+    "lean_theorems": {
+      "log_one_add_div": "log_one_add_div_tendsto_one",
+      "entropy_term": "entropy_removable_value",
+      "kl_zero_zero": "kl_zero_zero_tendsto_zero",
+      "sin_div": "sin_x_div_tendsto_one",
+      "one_sub_cos_div_sq": "one_sub_cos_div_sq_tendsto_half",
+      "exp_sub_one_div": "exp_sub_one_div_tendsto_one",
+      "tan_div": "tan_x_div_tendsto_one",
+      "arcsin_div": "arcsin_x_div_tendsto_one",
+      "log_div_sub_one": "log_div_sub_one_tendsto_one",
+      "sub_one_div_log": "sub_one_div_log_tendsto_one",
+      "self_pow": "self_pow_tendsto_one",
+      "csin_div": "csin_x_div_tendsto_one",
+      "one_add_x_rpow_inv": "one_add_x_rpow_inv_tendsto_e"
+    }
+  }
+}
