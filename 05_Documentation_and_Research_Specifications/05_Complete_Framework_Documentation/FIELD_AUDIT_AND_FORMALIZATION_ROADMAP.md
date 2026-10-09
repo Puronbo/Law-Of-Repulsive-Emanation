@@ -21,16 +21,16 @@ independent check; everything else is `PIPELINE`, `CONFRONTED`, `MODEL-LEVEL`,
 | Quantum gravity / asymptotic safety | `litim_flow.py`, `flow_pole_*`, `two_loop_cc`, `cusp_to_higgs`, winding instruments | **CONCRETE (numeric)** for the RG lane (reproductions of `arXiv:0705.1769`); framework-synthesis claims stay model-level | `VERIFICATION_LEDGER` QG | None obvious; instrument claims depend on numeric coefficient scans that are hard to make first-class Lean statements |
 | Cosmology - observable lane | sound horizon, acoustic scale, birefringence, sigma8, DM cores, H0 | **PIPELINE / CONFRONTED / TENSION (EXT.)**; inputs primary-sourced | `VERIFICATION_LEDGER` refs | None; these are referee gates, not theorems |
 | Particle physics - mass gaps | YM, Schwinger, Thirring-GN crossover, SU(2) 2+1D, universal mass gap | **CONCRETE (numeric)** formula reproductions; `MassGap.lean` exists but paper-level YM claims are UNAUDITED | `VERIFICATION_LEDGER` mass-gap family | Removable-value lemma for the universal `M = Lambda/sinh(2 pi/(g_eff^2(N-1)))` crossover at the circuit/0/0 level |
-| Number theory - Goldbach / twin / Collatz | `Goldbach.lean`, `TwinPrime.lean`, `TwinRingLaws.lean`, `Collatz.lean` | **CONCRETE (numeric)** for Goldbach <= 100K; Collatz **OPEN**; twin-prime Lean files formalize laws, no primality claim found | `VERIFICATION_LEDGER` Goldbach; Collatz OPEN | Goldbach computational bound as a certificate statement; do NOT advance a twin-prime claim |
-| Riemann hypothesis / zeta | RH Lean module (`NewmanFlow` etc.), `de_branges_extended.py`, `rh_li_correct.py`, `RH_PROOF_AUDIT.md` | **CONCRETE (numeric verification)**; "RH TRUE via Li" is a verification of `lambda_n > 0` up to n=30, NOT a formal proof; formal proof **OPEN** | `VERIFICATION_LEDGER` De Branges/RH; `RH_PROOF_AUDIT.md` | The Li-criterion equivalence itself as a formal statement, separated from the finite verification |
-| Complexity - P vs NP | `PvsNP.lean`, `p_np_contour.py`, `p_np_flow.py` | Constructive part **OPEN (conceptual wall stated)**: identity exact, no polynomial compilation | `VERIFICATION_LEDGER` P vs NP | Formalize the negative statement "no merging theorem for general formulas known" + the exact-for-N statements |
+| Number theory - Goldbach / twin / Collatz | `Goldbach.lean`, `TwinPrime.lean`, `TwinRingLaws.lean`, `Collatz.lean` | **FORMALIZED (finite certificate)** `goldbach_even_4_to_100000` by `native_decide` + **CONCRETE (numeric)** for Goldbach <= 100K; conjecture **OPEN** (`goldbach_conjecture_open := true`); Collatz **OPEN**; twin-prime Lean files formalize laws, no primality claim found | `VERIFICATION_LEDGER` Goldbach; Collatz OPEN | None: certificate boundary done (item 6); do NOT advance a twin-prime claim |
+| Riemann hypothesis / zeta | RH Lean module (`NewmanFlow`, `LiCriterion` etc.), `de_branges_extended.py`, `rh_li_correct.py`, `RH_PROOF_AUDIT.md` | **FORMALIZED (statement)** `liCriterionEquiv` + `finitePrefixNeverSettles` (no finite prefix settles the criterion) + **CONCRETE (numeric verification)**; "RH TRUE via Li" is a verification of `lambda_n > 0` up to n=30, NOT a formal proof; formal proof **OPEN** | `VERIFICATION_LEDGER` De Branges/RH; `RH_PROOF_AUDIT.md` | None: Li-criterion statement formalized (item 4); BOTH directions remain OPEN by design |
+| Complexity - P vs NP | `PvsNP.lean`, `p_np_contour.py`, `p_np_flow.py` | Constructive part **OPEN (conceptual wall stated)**: identity exact, no polynomial compilation. **FORMALIZED (OPEN marker)** `noPolynomialCompilationKnown` + `compilationWall` (never a negation of P = NP) | `VERIFICATION_LEDGER` P vs NP | None: negative statement formalized as a status marker (item 5); P vs NP remains OPEN |
 | Arithmetic geometry - BSD | `BSD.lean`, `bsd_extended.py` | **CONCRETE (numeric)** for 3 LMFDB curves; conjecture **OPEN** | `VERIFICATION_LEDGER` BSD | None; curve checks are numerical |
 | 0/0 universal mathematics | `universal_impedance.py`, `circuit_*.py`, `mass_gap_calculator.py` | **FORMALIZED** (`PunoCalculus.Removable`: `removable_limit` + `quadratic_removable` + `impedance_crosszero`) + **CONCRETE (numeric)** for the 7-system register (5 removable 0/0, 2 poles, 1 discontinuity) | `VERIFICATION_LEDGER` impedance/circuit | N6 `A > 1` single-zero theorem; mass-gap crossover formula at the circuit/0/0 level |
 | Applied 0/0 predictors | grokking, climate tipping, DM core, muon g-2 | **CONCRETE (numeric)** on their own data sets | `VERIFICATION_LEDGER` applied rows | None; data instruments |
 | Dark Energy 0/0 framework | `02_Dark_Energy_0_0_Framework` (135 scripts) | **REGISTERED** (`VERIFICATION_LEDGER` section added): 17/18 `*_0_over_0.py` run clean and write to the central collection; 3 sizer scripts (`air_sizing`, `rainwater_sizing`, `standby_efficiency`) had a broken `packaging.utilities` import, all FIXED and verified; 132 scripts still have no per-script ledger rows; `dark_unified.tex` is a paper, not a verified artifact | `VERIFICATION_LEDGER` Dark Energy section | Per-script ledger rows; N7 methodology applied field-wide |
 | Speculative math documents | 33 `THE_*_0_OVER_0.md` (ABC, Arakelov, Langlands, Faltings, Sato-Tate, Selberg, ...) | **CLASSIFIED** (P2 item 9): 21 backed 1:1 (script + `test_*` both resolve; 17 under `02_Dark_Energy_0_0_Framework`, 4 under `06_Miscellaneous_Experiments`); 12 reframing-essays with no computation cited (see ledger register) | `VERIFICATION_LEDGER` legacy-provenance register | Add per-document ledger rows for the 21 backed ones only |
 | Application / essay papers | `papers/` 74 files (67 pdf + 7 tex) | **CLASSIFIED** (P2 item 9): 7 `.tex` audited + provenance addenda; 3 PDF peer the audited `.tex`; 57 PDF script-backed by name; 7 qualitative; PDF text-level claims NOT individually reproduced (open item, disclosed) | `VERIFICATION_LEDGER` paper-provenance register + non-concrete zone | Content-level verification of the 57 script-backed PDFs, deferred |
-| Legacy Lean tree | `01_Lean/fcc2/Millennium-Prize-Problem-Lean-4-Proof/` (YangMills, RiemannHypothesis, PvsNP, NavierStokes, Hodge, BSD, ...) | **UNAUDITED / status unknown** - a second Lean tree duplicates the canonical `PunoCalculus` modules; two trees claiming coverage conflicts | this document | Resolve: legacy snapshot or live module; then either reconcile or quarantine |
+| Legacy Lean tree | `01_Lean/fcc2/Millennium-Prize-Problem-Lean-4-Proof/` (YangMills, RiemannHypothesis, PvsNP, NavierStokes, Hodge, BSD, ...) | **RESOLVED (P2 item 7): QUARANTINE as UNAUDITED-INDEPENDENT** - separate lake project (own name/`.lake`, namespaces `UniversalSingularity`/`PunoTwin`); its README disclaims solving the Millennium Problems; the one nontrivial theorem is `godForce_iff_Q_eq_one`; bridge modules carry explicit `sorry` gap markers; `BSD37a1.lean` is a fully-proved concrete analogue. Not reconciled (no conflict), not load-bearing: never import its modules from canonical code | this document | None: quarantined; provenance intact |
 
 ## Roadmap
 
@@ -67,9 +67,41 @@ P0 - machine-check next (bounded, provable cores, matching the N7 standard):
 P1 - statement-grade formalization:
 
 4. Li-criterion equivalence for the RH verification program (proof stays OPEN).
+   **[DONE]** `PunoCalculus.RH.LiCriterion` in
+   `01_Lean/PunoCalculus/RH/LiCriterion.lean` (junction target
+   `03_Riemann_Hypothesis_Module/RH`): `liCriterionEquiv` (the Li biconditional
+   `RH ↔ ∀ n ≥ 1, 0 ≤ λ n` as a parameterized statement; neither direction
+   proved), `liPrefixCond`, `liCoeffs30` (exact Float transcription of the 30
+   committed coefficients of `rh_li_correct.json`, `n_max=30`, 800 zeros),
+   `liPrefix30_positive : liCoeffs30.all (Float.le 0) = true` by `native_decide`,
+   and the gap theorem `finitePrefixNeverSettles (k)` -- for EVERY finite bound
+   some sequence passes the prefix and fails later (witness
+   `fun n => if n = k+1 then -1 else 0`), with `finiteCheck30NotEnough` as the
+   `k=30` corollary. `li_criterion_proof_open : Bool := true`; status string
+   records the script's honesty clause. Both directions and RH stay OPEN.
 5. PvsNP negative term ("no polynomial compilation known") formalized as an honest
    OPEN statement, never as a resolution.
+   **[DONE]** `PunoCalculus.PvsNP`: `noPolynomialCompilationKnown : Bool := true`
+   (genuinely open), `compilationWall` (verbatim `honest_wall` of
+   `p_np_contour.py`), `compilation_wall_recorded` and
+   `compilation_wall_is_open_status` by `native_decide`. Absence of knowledge is
+   encoded as a status marker/theorem, never as a mathematical negation of
+   P = NP. Interpretation strings softened to resolution-free form in
+   `millennium_0_over_0.py` + `millennium_data.json`
+   (`Q1_p_vs_np.p_vs_np.interpretation`, `Q3` meanings of NS/Hodge/BSD/YM) and
+   `p_np_contour.py` + `p_np_contour.json` (`key_insight`); all six Q3
+   resolution-flavoured `meaning` strings replaced; numbers unchanged.
 6. Goldbach computational-certificate boundary for the extended checks.
+   **[DONE]** `PunoCalculus.Goldbach`: Eratosthenes sieve (`markMultiples`,
+   `sieveGo`/`sieve`, `isPrimeSieve` -- sieve stores *composite* marks), early-exit
+   `goldbachWitness`, `goldbachCertificate limit` (sieve built once),
+   `theorem goldbach_even_4_to_100000 : goldbachCertificate 100000 = true` by
+   `native_decide`, `certificateBoundary = 100000` (matches
+   `goldbach_large.py` MAX), `citedExternalRecord = 4e18` (citation only),
+   `certificate_below_citation`, `goldbach_conjecture_open : Bool := true`.
+   `goldbach_large.py` `/json` honesty sweep: `key_insight` no longer asserts
+   the conjecture as fact, new `honest_wall`; artifact values byte-stable
+   (verification/milestones/density unchanged).
 
 P2 - adjudication before expansion:
 
@@ -186,9 +218,20 @@ P2 - adjudication before expansion:
   mislabelling corrected: the Test 4 "0/0 at the pole" is an ∞/∞ ratio
   (both factors -> +∞); key renamed `pole_inf_over_inf` in script + central
   artifact, script re-run SUPPORTED; a Lean `(x-1)/log x` theorem is deferred
-  as out of scope.  Disclosed: the 3 gates emit `<cwd>/data/` under
-  `02_Dark_Energy_0_0_Framework\`, an uncommitted path -- regenerability
-  path drift, not yet unified.
+  as out of scope.  **[Path drift now FIXED 2026-10-09]** the 3 gates
+  (`log_limits_0_over_0.py`, `shannon_entropy_0_over_0.py`,
+  `prime_number_theorem_0_over_0.py`) plus `rh_li_correct.py`, `p_np_contour.py`,
+  `goldbach_large.py` and `goldbach_0_over0.py` emitted `<cwd>/data/`; all seven
+  now compute the emit path from `_central_data_dir()` (upward search), re-ran
+  exit 0, and every numeric value is unchanged (`log_limits`/`shannon`
+  value-identical; `prime_number_theorem` identical modulo JSON `\u221e`
+  escaping, restored; `rh_li_correct` value-identical;
+  `p_np_contour`/`goldbach_large`/`goldbach_0_over0` only the intended honesty
+  strings changed).  Pinned by
+  `test_open_status_pins.py::test_path_drift_gates_emit_centrally`.  The wider
+  class (many `02_Dark_Energy_0_0_Framework`/`06_Miscellaneous_Experiments`
+  scripts still literal `data/...`) remains disclosed and audited per-script,
+  not bulk-rewritten.
 - ZeroZero removable-0/0 family (2026-10-08): `PunoCalculus.ZeroZero` grows
   6 -> 17 theorems -- `KL` 0/0, `sin(x)/x`, `(1-cos(x))/x^2`, `(e^x-1)/x`,
   `tan(x)/x`, `log(x)/(x-1)`, `(x-1)/log(x)` (the previously-deferred inverse
@@ -214,5 +257,22 @@ P2 - adjudication before expansion:
   count assertions (`A==5/D==2/len==14`) replaced by dataset-derived internal
   consistency in `test_professions_mandate.py` and `test_solvable_theorems.py`
   (2 tests) -- counts legitimately track the stated [hypothesis]
-  decompositions; current values unchanged (A=5, B=2, C=5, D=2).  Ledger rows
-  added; affected tests green.
+   decompositions; current values unchanged (A=5, B=2, C=5, D=2).  Ledger rows
+   added; affected tests green.
+- P1 statement-grade formalization + honesty sweep (2026-10-09): roadmap items
+   4/5/6 closed.  New `PunoCalculus.RH.LiCriterion` (statement + finite check +
+   `finitePrefixNeverSettles` gap theorem), `PunoCalculus.PvsNP` OPEN marker
+   (`noPolynomialCompilationKnown`, `compilationWall`), and a
+   `native_decide` Goldbach certificate `<= 100000` in `PunoCalculus.Goldbach`.
+   `lake build` green (8731 jobs, zero warnings).  Axioms: the non-`native_decide`
+   theorems are exactly `[propext, Classical.choice, Quot.sound]`; the
+   `native_decide` ones additionally carry the compiler-trust
+   `native_decide.ax`, exactly as the shipped precedent
+   `MillenniumBridge.seven_problems_declared_unsolved` (temp `#print axioms`
+   file deleted).  Honesty sweep: `millennium_0_over_0.py`/`millennium_data.json`
+   interpretations no longer claim P = NP / NS / Hodge / BSD / YM resolutions;
+   `p_np_contour.py`/`json` `key_insight` no longer asserts an unproven `iff`;
+   `goldbach_large.py`/`json` `key_insight` no longer asserts Goldbach as fact
+   (new `honest_wall`).  New `test_open_status_pins.py` (6 tests) pins all of it
+   plus central emit paths.  Six `<cwd>/data/` path-drift emissions unified to
+   `_central_data_dir()` with zero numeric drift (see the log-0/0 item above).

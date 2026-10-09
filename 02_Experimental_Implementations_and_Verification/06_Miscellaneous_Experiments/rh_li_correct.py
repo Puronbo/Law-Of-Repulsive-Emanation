@@ -18,7 +18,22 @@ import numpy as np
 import mpmath
 
 mpmath.mp.dps = 30
-OUT = "data/rh_li_correct.json"
+
+
+def _central_data_dir():
+    here = os.path.dirname(os.path.abspath(__file__))
+    while True:
+        cand = os.path.join(here, "03_Data_and_Observational_Resources",
+                            "02_Experimental_Data_Collections")
+        if os.path.isdir(cand):
+            return cand
+        parent = os.path.dirname(here)
+        if parent == here:
+            raise RuntimeError("repository root not found from " + __file__)
+        here = parent
+
+
+OUT = os.path.join(_central_data_dir(), "rh_li_correct.json")
 
 
 def run():

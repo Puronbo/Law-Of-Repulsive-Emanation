@@ -18,6 +18,7 @@ import PunoCalculus.RH.Monotonicity
 import PunoCalculus.RH.Density
 import PunoCalculus.RH.Hankel
 import PunoCalculus.RH.NewmanFlow
+import PunoCalculus.RH.LiCriterion
 import PunoCalculus.Cosmology.AcousticZeroFlow
 import PunoCalculus.Cosmology.OriginWindow
 import PunoCalculus.Removable

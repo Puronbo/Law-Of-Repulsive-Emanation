@@ -112,6 +112,7 @@ hygiene pass applied and verified post-fix. One packaging defect
 | **Constructive proof: OS axioms verified** | ym_constructive.py | OS1-OS5 all satisfied, g=3: Delta=0.671144 GeV (lattice: 0.60-0.70) -- note the one-loop Table in `ym_mass_gap.tex` gives Delta=0.450 GeV at g=3 (distinct model); both values real | **CONCRETE** |
 | **Mass gap Delta > 0 exists non-perturbatively** | ym_allloop_ds.py + ym_constructive.py | Uniqueness + OS positivity => QFT with mass gap; constructive completion on R^4 remains OPEN | **CONCRETE (framework)** |
 | **RH: Li inequality verified** | rh_li_correct.py | lambda_n > 0 for n=1..30 (800 zeros) -- FINITE numeric check ONLY; script corrected 2026-10-07 to state "RH remains OPEN" (Li gives iff for ALL n) | **CONCRETE (numeric)** |
+| RH: Li criterion, statement-grade Lean | PunoCalculus.RH.LiCriterion (`01_Lean/PunoCalculus/RH/LiCriterion.lean`) | `liCriterionEquiv` (`RH ↔ ∀ n≥1, 0 ≤ λ n`) as a statement; `liPrefix30_positive` (`native_decide`, exact 30 committed coeffs); `finitePrefixNeverSettles k` theorem -- no finite prefix settles the `∀n` criterion; BOTH directions and RH remain OPEN | **FORMALIZED (statement)** |
 | RH conductor ratio: |chi(rho)| = 1 on critical line | rh_conductor_ratio.py | 10/10 zeros: |chi| = 1.000000 on line, deviates off it | **CONCRETE** |
 
 ## P vs NP program
@@ -123,6 +124,7 @@ hygiene pass applied and verified post-fix. One packaging defect
 | Treewidth grows sublinearly: tw ~ 0.65N | p_np_contour.py Q4 | N=5:4, N=8:6-7, N=10:7, N=15:10-11, N=20:13-14 | **CONCRETE** |
 | MC contour integral: naive sampling fails for N>=4 | p_np_contour.py Q5 | N=3: converges; N=4,5: error > 20. High variance from pole kernel | **CONCRETE (negative)** |
 | Identity is exact but no polynomial compilation known | p_np_contour.py (honest_wall) | Equivalent to 2^N enumeration. No merging theorem for general formulas | **OPEN (conceptual)** |
+| PvsNP negative term, statement-grade Lean | PunoCalculus.PvsNP | `noPolynomialCompilationKnown := true` (genuinely OPEN); `compilationWall` = verbatim `honest_wall`; `compilation_wall_recorded`/`compilation_wall_is_open_status` by `native_decide`; absence of knowledge encoded as a status marker, NEVER as a negation of P = NP | **FORMALIZED (OPEN marker)** |
 | Spectral gap of incidence matrix does NOT close at phase transition | p_np_flow.py Q1 | Gap minimum at ratio ~1.0 (0.24), then increases. At transition (4.267): gap=2.16, still rising | **CONCRETE (negative)** |
 | Entropy reaches zero BEFORE phase transition | p_np_flow.py Q3 | H_norm=0 by ratio ~2.3. Solution space already constrained at transition | **CONCRETE** |
 | Algebraic connectivity (Laplacian gap) grows monotonically | p_np_flow.py Q1 | 0 below ratio 1, then 0.1->28.0 as density increases. Never closes | **CONCRETE** |
@@ -168,8 +170,9 @@ hygiene pass applied and verified post-fix. One packaging defect
 | Claim | Artifact | Independent check | Status |
 |---|---|---|---|
 | Goldbach verified up to 100K | goldbach_large.py | 49999/49999 even numbers: zero failures | **CONCRETE** |
-| Representation count grows as n/(ln n)^2 | goldbach_large.py Q4 | 5 milestones: 2, 6, 28, 127, 810 | **CONCRETE** |
+| Representation count grows as n/(ln n)^2 | goldbach_large.py Q4 | milestone list n=100..100000: 6, 28, 127, 450, 810 (the value 2 at n=10 is in the density list, not the milestone list) | **CONCRETE** |
 | Hardest instances: n=4,6,8,12 have 1 rep | goldbach_large.py Q3 | 4 numbers with minimum | **CONCRETE** |
+| Goldbach certificate boundary, Lean | PunoCalculus.Goldbach | Eratosthenes sieve + `goldbachWitness` + `goldbachCertificate`; `goldbach_even_4_to_100000` by `native_decide`; `certificateBoundary = 100000` (matches MAX); `citedExternalRecord = 4e18` CITATION only (not computed); `goldbach_conjecture_open := true` | **FORMALIZED (finite)** |
 
 ## De Branges / RH program
 

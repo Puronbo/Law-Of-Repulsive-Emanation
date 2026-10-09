@@ -38,7 +38,21 @@ HONEST WALL: numerical verification of the PNT asymptotic, not a proof.
 
 import numpy as np
 import json
+import os
 from math import isqrt, log
+
+
+def _central_data_dir():
+    here = os.path.dirname(os.path.abspath(__file__))
+    while True:
+        cand = os.path.join(here, "03_Data_and_Observational_Resources",
+                            "02_Experimental_Data_Collections")
+        if os.path.isdir(cand):
+            return cand
+        parent = os.path.dirname(here)
+        if parent == here:
+            raise RuntimeError("repository root not found from " + __file__)
+        here = parent
 
 
 def primesieve(n):
@@ -224,5 +238,7 @@ if __name__ == "__main__":
     print(f"  Error bounded:           {s['error_bounded']}")
     verdict = "SUPPORTED" if s["supported"] else "NOT SUPPORTED"
     print(f"  verdict: {verdict}")
-    with open("data/prime_number_theorem_0_over_0_data.json", "w") as f:
+    out_path = os.path.join(_central_data_dir(),
+                            "prime_number_theorem_0_over_0_data.json")
+    with open(out_path, "w") as f:
         json.dump(results, f, indent=2)

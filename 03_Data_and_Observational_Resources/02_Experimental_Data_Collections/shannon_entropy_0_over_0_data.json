@@ -1,0 +1,215 @@
+{
+  "tests": [],
+  "summary": {
+    "supported": true,
+    "zero_log_zero_removable": true,
+    "uniform_maximum": true,
+    "deterministic_zero": true,
+    "mi_0_over_0": true,
+    "kl_0_over_0": true,
+    "honest_wall": "numerical verification of information-theoretic 0/0 limits"
+  },
+  "zero_log_zero": {
+    "note": "lim_{p->0+} p*log(p) = 0: the 0*log(0) = 0/0 removable value",
+    "tests": [
+      {
+        "p": 0.1,
+        "p_log_p": -0.23025850929940456,
+        "approaches_zero": true
+      },
+      {
+        "p": 0.001,
+        "p_log_p": -0.006907755278982137,
+        "approaches_zero": true
+      },
+      {
+        "p": 1e-06,
+        "p_log_p": -1.3815510557964273e-05,
+        "approaches_zero": true
+      },
+      {
+        "p": 1e-10,
+        "p_log_p": -2.302585092994046e-09,
+        "approaches_zero": true
+      },
+      {
+        "p": 1e-15,
+        "p_log_p": -3.453877639491069e-14,
+        "approaches_zero": true
+      }
+    ]
+  },
+  "specific_distributions": {
+    "note": "uniform H = log(n), deterministic H = 0, binary max at p=0.5",
+    "tests": [
+      {
+        "name": "uniform_2",
+        "H": 0.6931471805599453,
+        "H_log_n": 1.0,
+        "is_maximum": true
+      },
+      {
+        "name": "uniform_3",
+        "H": 1.0986122886681096,
+        "H_log_n": 0.9999999999999998,
+        "is_maximum": true
+      },
+      {
+        "name": "uniform_5",
+        "H": 1.6094379124341005,
+        "H_log_n": 1.0000000000000002,
+        "is_maximum": true
+      },
+      {
+        "name": "uniform_10",
+        "H": 2.3025850929940455,
+        "H_log_n": 0.9999999999999998,
+        "is_maximum": true
+      },
+      {
+        "name": "deterministic_2",
+        "H": 0.0,
+        "is_zero": true
+      },
+      {
+        "name": "deterministic_5",
+        "H": 0.0,
+        "is_zero": true
+      },
+      {
+        "name": "deterministic_10",
+        "H": 0.0,
+        "is_zero": true
+      },
+      {
+        "name": "binary_0.0",
+        "H": 0.0,
+        "max_at_half": false
+      },
+      {
+        "name": "binary_0.1",
+        "H": 0.3250829733914482,
+        "max_at_half": false
+      },
+      {
+        "name": "binary_0.3",
+        "H": 0.6108643020548935,
+        "max_at_half": false
+      },
+      {
+        "name": "binary_0.5",
+        "H": 0.6931471805599453,
+        "max_at_half": true
+      },
+      {
+        "name": "binary_0.7",
+        "H": 0.6108643020548935,
+        "max_at_half": false
+      },
+      {
+        "name": "binary_0.9",
+        "H": 0.3250829733914482,
+        "max_at_half": false
+      },
+      {
+        "name": "binary_1.0",
+        "H": 0.0,
+        "max_at_half": false
+      }
+    ]
+  },
+  "entropy_ratios": {
+    "note": "H(deterministic)/H(deterministic) = 0/0, removable value = 0",
+    "tests": [
+      {
+        "P": "deterministic",
+        "Q": "uniform_2",
+        "H_P": 0.0,
+        "H_Q": 0.6931471805599453,
+        "ratio": 0.0,
+        "is_zero": true
+      },
+      {
+        "P": "deterministic",
+        "Q": "uniform_5",
+        "H_P": 0.0,
+        "H_Q": 1.6094379124341003,
+        "ratio": 0.0,
+        "is_zero": true
+      },
+      {
+        "P": "deterministic",
+        "Q": "uniform_10",
+        "H_P": 0.0,
+        "H_Q": 2.302585092994046,
+        "ratio": 0.0,
+        "is_zero": true
+      },
+      {
+        "P": "deterministic_10",
+        "Q": "deterministic_10",
+        "H_P": 0.0,
+        "H_Q": 0.0,
+        "ratio": "0/0",
+        "removable_value": "0 (both deterministic)"
+      }
+    ]
+  },
+  "mutual_information": {
+    "note": "I/H(X) = 1 for perfect correlation, 0 for independence",
+    "tests": [
+      {
+        "type": "perfect_correlation",
+        "I": 0.6931471805599453,
+        "H_X": 0.6931471805599453,
+        "ratio_I_H": 1.0,
+        "removable_value": 1.0
+      },
+      {
+        "type": "independence",
+        "I": 0.0,
+        "is_zero": true
+      },
+      {
+        "type": "both_deterministic",
+        "I": 0.0,
+        "H_X": 0.0,
+        "ratio_I_H": "0/0",
+        "removable_value": "1 (perfectly correlated deterministic)"
+      }
+    ]
+  },
+  "kl_divergence": {
+    "note": "D_KL(P||Q) >= 0, equality iff P = Q; 0*log(0/0) = 0/0 removable",
+    "tests": [
+      {
+        "type": "both_zero",
+        "p": 0.0,
+        "q": 0.0,
+        "contribution": "0*log(0/0) = 0/0",
+        "removable_value": 0
+      },
+      {
+        "type": "identical",
+        "D_KL": 0.0,
+        "is_zero": true
+      },
+      {
+        "type": "different",
+        "D_KL": 0.22380465718564752,
+        "is_positive": true
+      }
+    ]
+  },
+  "data_processing": {
+    "note": "Data processing inequality: I(X;Z) <= I(X;Y) for X->Y->Z",
+    "tests": [
+      {
+        "chain": "X=Y=Z",
+        "I_XY": 0.6931471805599453,
+        "I_XZ": 0.6931471805599453,
+        "satisfies_dpi": true
+      }
+    ]
+  }
+}
