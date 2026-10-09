@@ -1,0 +1,87 @@
+{
+  "claim": "C0 reflow keeps old classes stable while adding new ones; the random-add baseline risks the new anchor landing on an existing class",
+  "seed": 7,
+  "stage_rows": {
+    "6": {
+      "reflow": {
+        "min_d": 0.7999,
+        "disp_old": 0.0003,
+        "new_acc": 0.78,
+        "old_acc": 1.0,
+        "all_acc": 0.973
+      },
+      "random_add": {
+        "min_d": 0.2512,
+        "disp_old": 0.0,
+        "new_acc": 0.95,
+        "old_acc": 0.98,
+        "all_acc": 0.98
+      }
+    },
+    "7": {
+      "reflow": {
+        "min_d": 0.7749,
+        "disp_old": 0.2141,
+        "new_acc": 0.78,
+        "old_acc": 1.0,
+        "all_acc": 0.967
+      },
+      "random_add": {
+        "min_d": 0.3212,
+        "disp_old": 0.0,
+        "new_acc": 0.95,
+        "old_acc": 0.98,
+        "all_acc": 0.987
+      }
+    },
+    "8": {
+      "reflow": {
+        "min_d": 0.6927,
+        "disp_old": 0.1674,
+        "new_acc": 0.78,
+        "old_acc": 0.99,
+        "all_acc": 0.987
+      },
+      "random_add": {
+        "min_d": 0.5393,
+        "disp_old": 0.0,
+        "new_acc": 0.72,
+        "old_acc": 0.99,
+        "all_acc": 0.96
+      }
+    },
+    "9": {
+      "reflow": {
+        "min_d": 0.6053,
+        "disp_old": 0.1608,
+        "new_acc": 0.99,
+        "old_acc": 0.95,
+        "all_acc": 0.927
+      },
+      "random_add": {
+        "min_d": 0.3205,
+        "disp_old": 0.0,
+        "new_acc": 0.6,
+        "old_acc": 0.97,
+        "all_acc": 0.927
+      }
+    },
+    "10": {
+      "reflow": {
+        "min_d": 0.4944,
+        "disp_old": 0.2839,
+        "new_acc": 0.96,
+        "old_acc": 0.95,
+        "all_acc": 0.953
+      },
+      "random_add": {
+        "min_d": 0.4933,
+        "disp_old": 0.0,
+        "new_acc": 0.97,
+        "old_acc": 0.96,
+        "all_acc": 0.973
+      }
+    }
+  },
+  "verdict": "MIXED / NOT UNIFORMLY SUPPORTED: reflow does keep the layout separated (min_d 0.49-0.80 across growth vs 0.25-0.54 for random-add) but random-add does NOT risk collision at this noise and scale, and it achieves equal-or-better routing: new-class acc random-add wins or ties 4/5 stages (0.950/0.950/0.970 vs 0.780/0.780/0.960 reflow at k=6,7,10) and all-class acc random-add wins 3/5 (0.980/0.987/0.973 vs 0.973/0.967/0.953). Reflow's advantage shows only where random-add draws a weak position (k=8: 0.720, k=9: 0.600). The displacement cost of reflow (0.16-0.28) buys separation, not routing."
+}

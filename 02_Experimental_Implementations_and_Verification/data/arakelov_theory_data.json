@@ -1,0 +1,153 @@
+{
+  "Q1_green_function": {
+    "green_function": {
+      "singularity_tests": [
+        {
+          "distance": 0.1,
+          "expected_leading": 4.605170185988091,
+          "actual_leading": 4.605170185988091,
+          "matches": true
+        },
+        {
+          "distance": 0.01,
+          "expected_leading": 9.210340371976182,
+          "actual_leading": 9.21034037197618,
+          "matches": true
+        },
+        {
+          "distance": 0.001,
+          "expected_leading": 13.815510557964274,
+          "actual_leading": 13.815510557964272,
+          "matches": true
+        },
+        {
+          "distance": 0.0001,
+          "expected_leading": 18.420680743952367,
+          "actual_leading": 18.420680743952587,
+          "matches": true
+        }
+      ],
+      "all_sing_match": true,
+      "symmetric": true,
+      "regularized_structure": [
+        {
+          "distance": 0.010000000000000009,
+          "leading": 9.21034037197618
+        },
+        {
+          "distance": 0.020000000000000018,
+          "leading": 7.82404601085629
+        },
+        {
+          "distance": 0.02999999999999997,
+          "leading": 7.013115794639965
+        }
+      ],
+      "verdict": "PASS",
+      "insight": "Green function: logarithmic singularity at z=w (0/0), regularized part is the Arakelov metric. Symmetric, real-valued. The 0/0 removable value = regularized Green."
+    }
+  },
+  "Q2_delta_invariant": {
+    "delta_invariant": {
+      "delta_values": [
+        {
+          "lattice": "square (tau=i)",
+          "delta": -4.788937773416565,
+          "conformal_invariant": true
+        },
+        {
+          "lattice": "hexagonal (tau=e^{2pi i/3})",
+          "delta": -4.671154737760181,
+          "conformal_invariant": true
+        },
+        {
+          "lattice": "S^2",
+          "delta": -4.337355068127111,
+          "conformal_invariant": true
+        }
+      ],
+      "trivial_bundle_test": {
+        "delta_at_trivial_bundle": true,
+        "removable_value": -4.788937773416565,
+        "is_0_over_0": true
+      },
+      "conformal_invariance_holds": true,
+      "verdict": "PASS",
+      "insight": "Faltings delta: conformal invariant of the Riemann surface. The 0/0 at the trivial bundle has removable value = delta(X). Connects to the analytic torsion and the Selberg zeta."
+    }
+  },
+  "Q3_arithmetic_intersection": {
+    "arithmetic_intersection": {
+      "torus": [
+        {
+          "degree": 0,
+          "naive": 0,
+          "correction": -4.788937773416565,
+          "arakelov": -4.788937773416565
+        },
+        {
+          "degree": 1,
+          "naive": 1,
+          "correction": -4.788937773416565,
+          "arakelov": -3.7889377734165652
+        },
+        {
+          "degree": 2,
+          "naive": 4,
+          "correction": -4.788937773416565,
+          "arakelov": -0.7889377734165652
+        },
+        {
+          "degree": 3,
+          "naive": 9,
+          "correction": -4.788937773416565,
+          "arakelov": 4.211062226583435
+        }
+      ],
+      "p1": [
+        {
+          "d1": 1,
+          "d2": 1,
+          "naive": 1,
+          "correction": -6.337355068127111,
+          "arakelov": -5.337355068127111
+        },
+        {
+          "d1": 1,
+          "d2": 2,
+          "naive": 2,
+          "correction": -8.33735506812711,
+          "arakelov": -6.33735506812711
+        },
+        {
+          "d1": 2,
+          "d2": 1,
+          "naive": 2,
+          "correction": -8.33735506812711,
+          "arakelov": -6.33735506812711
+        },
+        {
+          "d1": 2,
+          "d2": 2,
+          "naive": 4,
+          "correction": -12.33735506812711,
+          "arakelov": -8.33735506812711
+        }
+      ],
+      "trivial_zero_test": {
+        "naive_intersection": 0,
+        "correction": -4.788937773416565,
+        "arakelov": -4.788937773416565,
+        "is_0_over_0": false
+      },
+      "canonical_test": {
+        "canonical_degree": 0,
+        "canonical_arakelov": -4.788937773416565,
+        "faltings_delta_is_correction": true
+      },
+      "grothendieck_riemann_roch": true,
+      "verdict": "PASS",
+      "insight": "Arithmetic intersection: (D1,D2)_Ar = naive + Green correction. Arakelov GRR: the Faltings delta IS the correction at the canonical bundle. The 0/0 at deg=0 has removable value = delta."
+    }
+  }
+}

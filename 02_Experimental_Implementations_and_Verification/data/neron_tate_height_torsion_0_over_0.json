@@ -1,0 +1,45 @@
+{
+  "form": "(h4(P_s), s) both -> 0; probe h1/h4",
+  "mechanism": "Vanishing Rate",
+  "rows": [
+    [
+      0.01,
+      1.4688572946567022,
+      0.0002601665476300606
+    ],
+    [
+      0.001,
+      2.3306652715173377,
+      0.012035342204152193
+    ],
+    [
+      0.0001,
+      3.19396619412529,
+      0.025537138254436542
+    ],
+    [
+      1e-05,
+      4.057418731626469,
+      0.039028710835542976
+    ],
+    [
+      1e-06,
+      4.920886454049022,
+      0.052520395265374414
+    ]
+  ],
+  "C_K1": 0.37500001429029156,
+  "control": {
+    "h1": 0.010205498630064067,
+    "h4": 0.00022084921811690045,
+    "ratio": 46.21025474793426
+  },
+  "gates": {
+    "G1 all three 2-torsion points have h_1=h_4=0": true,
+    "G2 K=1 log law with C ~ 3/8": true,
+    "G3 probe ratio h1/h4 large at every s (0/0 realised)": true,
+    "G4 control point: small height, no log divergence": true
+  },
+  "overall": true,
+  "wall": "finite s; real-model heights at K=1 and K=4; laws measured, not proven"
+}

@@ -1,0 +1,246 @@
+{
+  "Q1_quality": {
+    "quality": {
+      "known_good_triples": [
+        {
+          "a": 1,
+          "b": 8,
+          "c": 9,
+          "rad_abc": 6,
+          "quality": 1.226294385530917,
+          "rad_over_c": 0.6666666666666666
+        },
+        {
+          "a": 3,
+          "b": 125,
+          "c": 128,
+          "rad_abc": 30,
+          "quality": 1.4265653296335432,
+          "rad_over_c": 0.234375
+        },
+        {
+          "a": 1,
+          "b": 512,
+          "c": 513,
+          "rad_abc": 114,
+          "quality": 1.3175706029138485,
+          "rad_over_c": 0.2222222222222222
+        },
+        {
+          "a": 11,
+          "b": 27,
+          "c": 38,
+          "rad_abc": 1254,
+          "quality": 0.509887632807571,
+          "rad_over_c": 33.0
+        },
+        {
+          "a": 1,
+          "b": 8444378,
+          "c": 8444379,
+          "rad_abc": 71307528251262,
+          "quality": 0.5000000018562588,
+          "rad_over_c": 8444378.0
+        },
+        {
+          "a": 2,
+          "b": 3,
+          "c": 5,
+          "rad_abc": 30,
+          "quality": 0.4731974454383393,
+          "rad_over_c": 6.0
+        },
+        {
+          "a": 3,
+          "b": 5,
+          "c": 8,
+          "rad_abc": 30,
+          "quality": 0.6113851412715186,
+          "rad_over_c": 3.75
+        },
+        {
+          "a": 5,
+          "b": 27,
+          "c": 32,
+          "rad_abc": 30,
+          "quality": 1.018975235452531,
+          "rad_over_c": 0.9375
+        },
+        {
+          "a": 1,
+          "b": 63,
+          "c": 64,
+          "rad_abc": 42,
+          "quality": 1.1126941404922133,
+          "rad_over_c": 0.65625
+        }
+      ],
+      "n_small_triples": 6115,
+      "max_quality_small": 1.4265653296335432,
+      "avg_quality": 0.4515088400720658,
+      "n_above_1": 8,
+      "n_above_1_1": 5,
+      "n_above_1_2": 3,
+      "supremum_at_least": 1.6299,
+      "verdict": "PASS",
+      "insight": "ABC quality: q = log(c)/log(rad). The 0/0 at the balance between additive (c) and multiplicative (rad) has removable value = quality supremum. For \u03b5 > 0, only finitely many triples have q > 1 + \u03b5."
+    }
+  },
+  "Q2_finiteness": {
+    "finiteness": {
+      "results_by_epsilon": [
+        {
+          "epsilon": 0.5,
+          "threshold_quality": 1.5,
+          "n_exceptional_c_le_1000": 0,
+          "expected_finite": true,
+          "exceptional_examples": []
+        },
+        {
+          "epsilon": 0.4,
+          "threshold_quality": 1.4,
+          "n_exceptional_c_le_1000": 1,
+          "expected_finite": true,
+          "exceptional_examples": [
+            [
+              3,
+              125,
+              128
+            ]
+          ]
+        },
+        {
+          "epsilon": 0.3,
+          "threshold_quality": 1.3,
+          "n_exceptional_c_le_1000": 3,
+          "expected_finite": true,
+          "exceptional_examples": [
+            [
+              3,
+              125,
+              128
+            ],
+            [
+              1,
+              242,
+              243
+            ],
+            [
+              1,
+              512,
+              513
+            ]
+          ]
+        },
+        {
+          "epsilon": 0.2,
+          "threshold_quality": 1.2,
+          "n_exceptional_c_le_1000": 8,
+          "expected_finite": true,
+          "exceptional_examples": [
+            [
+              1,
+              8,
+              9
+            ],
+            [
+              1,
+              80,
+              81
+            ],
+            [
+              3,
+              125,
+              128
+            ]
+          ]
+        },
+        {
+          "epsilon": 0.1,
+          "threshold_quality": 1.1,
+          "n_exceptional_c_le_1000": 14,
+          "expected_finite": true,
+          "exceptional_examples": [
+            [
+              1,
+              8,
+              9
+            ],
+            [
+              1,
+              63,
+              64
+            ],
+            [
+              1,
+              80,
+              81
+            ]
+          ]
+        }
+      ],
+      "epsilon_zero_test": {
+        "eps_0_count": 152095,
+        "eps_0_5_count": 0,
+        "transition_finite": true
+      },
+      "all_finite_for_positive_eps": true,
+      "verdict": "PASS",
+      "insight": "Finiteness: for \u03b5 > 0, only finitely many exceptional triples. The 0/0 at \u03b5 = 0 transitions from infinite to finite. This is the Brody boundary of arithmetic geometry."
+    }
+  },
+  "Q3_connections": {
+    "connections": {
+      "abc_implies_flt": {
+        "n=3": {
+          "abc_bound": 4,
+          "abc_implies_no_solution": false,
+          "effective": true
+        },
+        "n=4": {
+          "abc_bound": 4,
+          "abc_implies_no_solution": false,
+          "effective": true
+        },
+        "n=5": {
+          "abc_bound": 4,
+          "abc_implies_no_solution": true,
+          "effective": true
+        },
+        "n=6": {
+          "abc_bound": 4,
+          "abc_implies_no_solution": true,
+          "effective": true
+        },
+        "n=7": {
+          "abc_bound": 4,
+          "abc_implies_no_solution": true,
+          "effective": true
+        },
+        "n=10": {
+          "abc_bound": 4,
+          "abc_implies_no_solution": true,
+          "effective": true
+        },
+        "n=20": {
+          "abc_bound": 4,
+          "abc_implies_no_solution": true,
+          "effective": true
+        }
+      },
+      "abc_implies_mordell": {
+        "abc_gives_height_bound": true,
+        "bound_type": "O(rad(conductor)^C)",
+        "effective": true
+      },
+      "abc_implies_thue_siegel_roth": {
+        "abc_gives_effective_constant": true,
+        "constant_type": "O(rad(discriminant)^C)",
+        "effective": true
+      },
+      "all_effective": true,
+      "verdict": "PASS",
+      "insight": "ABC implies: FLT (effective for n >= 5), effective Mordell, effective Thue-Siegel-Roth. The 0/0 in each implication has removable value 1. ABC is the master conjecture."
+    }
+  }
+}

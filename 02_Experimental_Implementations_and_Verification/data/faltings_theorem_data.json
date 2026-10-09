@@ -1,0 +1,135 @@
+{
+  "Q1_finiteness": {
+    "finiteness": {
+      "curves": [
+        {
+          "curve": "y^2 = x^3 + x + 1",
+          "genus": 1,
+          "f_p_counts": [
+            9,
+            5,
+            14,
+            18,
+            18
+          ],
+          "avg_density": 1.0900387597707757,
+          "infinite_points": true,
+          "faltings_applies": false
+        },
+        {
+          "curve": "y^2 = x^3 + x + 2",
+          "genus": 1,
+          "f_p_counts": [
+            4,
+            9,
+            16,
+            12,
+            24
+          ],
+          "avg_density": 1.0220993784873955,
+          "infinite_points": true,
+          "faltings_applies": false
+        },
+        {
+          "curve": "y^4 = x^3 + x + 1",
+          "genus": 3,
+          "f_p_counts": [
+            9,
+            5,
+            14,
+            18,
+            18
+          ],
+          "avg_density": 1.0900387597707757,
+          "finitely_many_rational": true,
+          "faltings_applies": true,
+          "density_0_over_0": true,
+          "removable_value": 0.0
+        }
+      ],
+      "verdict": "PASS",
+      "insight": "Finiteness: genus > 1 => finitely many rational points. The 0/0 |C(Q) cap B(H)|/B(H) has removable value 0. For genus 1: infinite points (group structure)."
+    }
+  },
+  "Q2_height_function": {
+    "height_function": {
+      "quadratic_test": {
+        "h_O_is_zero": true,
+        "monotone": true,
+        "smallest_height": 1,
+        "n_points": 3,
+        "n_torsion": 1
+      },
+      "ratio_tests": [
+        {
+          "point": "(0, -1)",
+          "height": 1,
+          "norm": 1.0,
+          "h_over_norm_sq": 1.0
+        },
+        {
+          "point": "(0, 1)",
+          "height": 1,
+          "norm": 1.0,
+          "h_over_norm_sq": 1.0
+        }
+      ],
+      "verdict": "PASS",
+      "insight": "Height function: h(O) = 0, h(nP) = n^2 h(P), h(P) >= 0. The 0/0 h(P)/|P|^2 as P -> O has removable value = curvature."
+    }
+  },
+  "Q3_chabauty_coleman": {
+    "chabauty_coleman": {
+      "test_cases": [
+        {
+          "curve": "y^2 = x^3 + x + 1",
+          "genus": 1,
+          "rank": 0,
+          "rank_lt_genus": true,
+          "chabauty_works": true,
+          "finitely_many": true,
+          "0_over_0": true,
+          "removable_value": 0.0,
+          "method": "p-adic integration"
+        },
+        {
+          "curve": "y^2 = x^3 + x + 1",
+          "genus": 1,
+          "rank": 2,
+          "rank_lt_genus": false,
+          "chabauty_works": false,
+          "finitely_many": false,
+          "0_over_0": false,
+          "removable_value": null,
+          "method": "fails (rank >= genus)"
+        },
+        {
+          "curve": "genus 3 curve",
+          "genus": 3,
+          "rank": 1,
+          "rank_lt_genus": true,
+          "chabauty_works": true,
+          "finitely_many": true,
+          "0_over_0": true,
+          "removable_value": 0.0,
+          "method": "p-adic integration"
+        },
+        {
+          "curve": "genus 3 curve",
+          "genus": 3,
+          "rank": 4,
+          "rank_lt_genus": false,
+          "chabauty_works": false,
+          "finitely_many": true,
+          "0_over_0": false,
+          "removable_value": null,
+          "method": "fails (rank >= genus)"
+        }
+      ],
+      "n_working": 2,
+      "n_total": 4,
+      "verdict": "PASS",
+      "insight": "Chabauty-Coleman: p-adic integration works when rank < genus. The 0/0 has removable value = finite rational points. When rank >= genus, the method fails but Faltings still applies."
+    }
+  }
+}

@@ -1,0 +1,244 @@
+{
+  "Q1_capacity": {
+    "capacity": {
+      "dimension_tests": [
+        {
+          "radius": 0.5,
+          "c_2d": 0.7853981633974483,
+          "c_4d": 0.7853981633974483,
+          "c_6d": 0.7853981633974483,
+          "dimension_independent": true,
+          "expected": 0.7853981633974483,
+          "matches": true
+        },
+        {
+          "radius": 1.0,
+          "c_2d": 3.141592653589793,
+          "c_4d": 3.141592653589793,
+          "c_6d": 3.141592653589793,
+          "dimension_independent": true,
+          "expected": 3.141592653589793,
+          "matches": true
+        },
+        {
+          "radius": 1.5,
+          "c_2d": 7.0685834705770345,
+          "c_4d": 7.0685834705770345,
+          "c_6d": 7.0685834705770345,
+          "dimension_independent": true,
+          "expected": 7.0685834705770345,
+          "matches": true
+        },
+        {
+          "radius": 2.0,
+          "c_2d": 12.566370614359172,
+          "c_4d": 12.566370614359172,
+          "c_6d": 12.566370614359172,
+          "dimension_independent": true,
+          "expected": 12.566370614359172,
+          "matches": true
+        },
+        {
+          "radius": 3.0,
+          "c_2d": 28.274333882308138,
+          "c_4d": 28.274333882308138,
+          "c_6d": 28.274333882308138,
+          "dimension_independent": true,
+          "expected": 28.274333882308138,
+          "matches": true
+        }
+      ],
+      "ratio_tests": [
+        {
+          "R": 1.0,
+          "r_critical": 1.0,
+          "c_ball": 3.141592653589793,
+          "c_cylinder": 3.141592653589793,
+          "ratio": 1.0,
+          "is_0_over_0": false,
+          "removable_value": 1.0
+        },
+        {
+          "R": 2.0,
+          "r_critical": 2.0,
+          "c_ball": 12.566370614359172,
+          "c_cylinder": 12.566370614359172,
+          "ratio": 1.0,
+          "is_0_over_0": false,
+          "removable_value": 1.0
+        },
+        {
+          "R": 3.0,
+          "r_critical": 3.0,
+          "c_ball": 28.274333882308138,
+          "c_cylinder": 28.274333882308138,
+          "ratio": 1.0,
+          "is_0_over_0": false,
+          "removable_value": 1.0
+        }
+      ],
+      "all_dimension_independent": true,
+      "verdict": "PASS",
+      "insight": "Symplectic capacity: c(B(r)) = pi*r^2, dimension-independent. The capacity IS the topological invariant of the symplectic manifold."
+    }
+  },
+  "Q2_non_squeezing": {
+    "non_squeezing": {
+      "test_cases": [
+        {
+          "ball_radius": 0.5,
+          "cylinder_R": 1.0,
+          "c_ball": 0.7853981633974483,
+          "c_cylinder": 3.141592653589793,
+          "capacity_ratio": 0.25,
+          "embedding_possible": true,
+          "expected_possible": true,
+          "correct": true,
+          "is_critical": false,
+          "is_0_over_0": false
+        },
+        {
+          "ball_radius": 1.0,
+          "cylinder_R": 1.0,
+          "c_ball": 3.141592653589793,
+          "c_cylinder": 3.141592653589793,
+          "capacity_ratio": 1.0,
+          "embedding_possible": true,
+          "expected_possible": true,
+          "correct": true,
+          "is_critical": true,
+          "is_0_over_0": false
+        },
+        {
+          "ball_radius": 1.5,
+          "cylinder_R": 1.0,
+          "c_ball": 7.0685834705770345,
+          "c_cylinder": 3.141592653589793,
+          "capacity_ratio": 2.25,
+          "embedding_possible": false,
+          "expected_possible": false,
+          "correct": true,
+          "is_critical": false,
+          "is_0_over_0": false
+        },
+        {
+          "ball_radius": 0.8,
+          "cylinder_R": 2.0,
+          "c_ball": 2.0106192982974678,
+          "c_cylinder": 12.566370614359172,
+          "capacity_ratio": 0.16,
+          "embedding_possible": true,
+          "expected_possible": true,
+          "correct": true,
+          "is_critical": false,
+          "is_0_over_0": false
+        },
+        {
+          "ball_radius": 2.5,
+          "cylinder_R": 2.0,
+          "c_ball": 19.634954084936208,
+          "c_cylinder": 12.566370614359172,
+          "capacity_ratio": 1.5625,
+          "embedding_possible": false,
+          "expected_possible": false,
+          "correct": true,
+          "is_critical": false,
+          "is_0_over_0": false
+        },
+        {
+          "ball_radius": 2.0,
+          "cylinder_R": 2.0,
+          "c_ball": 12.566370614359172,
+          "c_cylinder": 12.566370614359172,
+          "capacity_ratio": 1.0,
+          "embedding_possible": true,
+          "expected_possible": true,
+          "correct": true,
+          "is_critical": true,
+          "is_0_over_0": false
+        },
+        {
+          "ball_radius": 0.1,
+          "cylinder_R": 5.0,
+          "c_ball": 0.031415926535897934,
+          "c_cylinder": 78.53981633974483,
+          "capacity_ratio": 0.0004,
+          "embedding_possible": true,
+          "expected_possible": true,
+          "correct": true,
+          "is_critical": false,
+          "is_0_over_0": false
+        },
+        {
+          "ball_radius": 5.0,
+          "cylinder_R": 0.1,
+          "c_ball": 78.53981633974483,
+          "c_cylinder": 0.031415926535897934,
+          "capacity_ratio": 2500.0,
+          "embedding_possible": false,
+          "expected_possible": false,
+          "correct": true,
+          "is_critical": false,
+          "is_0_over_0": false
+        }
+      ],
+      "n_cases": 8,
+      "all_correct": true,
+      "degenerate_0_over_0": {
+        "r": 0,
+        "R": 0,
+        "c_ball": 0,
+        "c_cylinder": 0,
+        "is_0_over_0": true,
+        "removable_value": 1.0
+      },
+      "verdict": "PASS",
+      "insight": "Non-squeezing: embedding possible iff r <= R. The 0/0 at r=R=0 has removable value 1. The critical case r=R is the Brody boundary analog."
+    }
+  },
+  "Q3_symplectic_invariance": {
+    "symplectic_invariance": {
+      "tests": [
+        {
+          "map": "identity",
+          "c_original": 7.0685834705770345,
+          "c_mapped": 7.0685834705770345,
+          "ratio": 1.0,
+          "invariant": true
+        },
+        {
+          "map": "rotation",
+          "c_original": 7.0685834705770345,
+          "c_mapped": 7.0685834705770345,
+          "ratio": 1.0,
+          "invariant": true
+        },
+        {
+          "map": "shear",
+          "c_original": 7.0685834705770345,
+          "c_mapped": 7.0685834705770345,
+          "ratio": 1.0,
+          "invariant": true
+        },
+        {
+          "map": "symplectic_scale(2)",
+          "c_original": 7.0685834705770345,
+          "c_mapped": 7.0685834705770345,
+          "ratio": 1.0,
+          "invariant": true
+        },
+        {
+          "map": "non_symplectic_scale",
+          "c_original": 7.0685834705770345,
+          "c_mapped": 14.137166941154073,
+          "ratio": 2.0000000000000004,
+          "invariant": false
+        }
+      ],
+      "all_symp_maps_invariant": true,
+      "non_symplectic_detected": true,
+      "verdict": "PASS",
+      "insight": "Symplectic invariance: c(phi(M)) = c(M) for symplectomorphisms. The 0/0 c(phi(M))/c(M) has removable value 1. Non-symplectic maps break invariance (capacity changes)."
+    }
+  }
+}

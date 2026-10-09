@@ -1,0 +1,180 @@
+{
+  "Q1_hecke_eigenvalues": {
+    "hecke_eigenvalues": {
+      "curves": [
+        {
+          "curve": "y^2 = x^3 + x + 1",
+          "n_primes": 25,
+          "all_ramanujan_holds": true,
+          "all_hasse_bound": true,
+          "all_ratios_1": true,
+          "sample_alpha_product": 2.0000000000000004
+        },
+        {
+          "curve": "y^2 = x^3 + x + 2",
+          "n_primes": 25,
+          "all_ramanujan_holds": true,
+          "all_hasse_bound": true,
+          "all_ratios_1": true,
+          "sample_alpha_product": 2.0000000000000004
+        },
+        {
+          "curve": "y^2 = x^3 + 2x + 3",
+          "n_primes": 25,
+          "all_ramanujan_holds": true,
+          "all_hasse_bound": true,
+          "all_ratios_1": true,
+          "sample_alpha_product": 2.0000000000000004
+        }
+      ],
+      "n_curves": 3,
+      "verdict": "PASS",
+      "insight": "Langlands GL(2)/Q: Hecke eigenvalues = Frobenius traces. The 0/0 Galois/Automorphic has removable value 1."
+    }
+  },
+  "Q2_functional_equation": {
+    "functional_equation": {
+      "curves": [
+        {
+          "curve": "y^2 = x^3 + x + 1",
+          "L_values": [
+            {
+              "s": 1.0,
+              "L_value": 11.353250209832709
+            },
+            {
+              "s": 1.5,
+              "L_value": 3.0532898025630093
+            },
+            {
+              "s": 2.0,
+              "L_value": 1.8959695593904944
+            },
+            {
+              "s": 2.5,
+              "L_value": 1.5010410877177318
+            },
+            {
+              "s": 3.0,
+              "L_value": 1.3117170114440848
+            }
+          ],
+          "L_at_1": 11.353250209832709,
+          "L_at_2": 1.8959695593904944,
+          "L_nonzero_at_1": true,
+          "ratio_symmetry": 1.1603559037526922e-05,
+          "functional_equation_holds": false
+        },
+        {
+          "curve": "y^2 = x^3 + x + 2",
+          "L_values": [
+            {
+              "s": 1.0,
+              "L_value": 2.0394176410049405
+            },
+            {
+              "s": 1.5,
+              "L_value": 1.285437990589478
+            },
+            {
+              "s": 2.0,
+              "L_value": 1.1174467022102117
+            },
+            {
+              "s": 2.5,
+              "L_value": 1.0520028156866439
+            },
+            {
+              "s": 3.0,
+              "L_value": 1.0240704555251956
+            }
+          ],
+          "L_at_1": 2.0394176410049405,
+          "L_at_2": 1.1174467022102117,
+          "L_nonzero_at_1": true,
+          "ratio_symmetry": 0.00018055048034574568,
+          "functional_equation_holds": false
+        },
+        {
+          "curve": "y^2 = x^3 + 2x + 3",
+          "L_values": [
+            {
+              "s": 1.0,
+              "L_value": 15.528471446030771
+            },
+            {
+              "s": 1.5,
+              "L_value": 2.4265652014136374
+            },
+            {
+              "s": 2.0,
+              "L_value": 1.5280503385183146
+            },
+            {
+              "s": 2.5,
+              "L_value": 1.2785077128354305
+            },
+            {
+              "s": 3.0,
+              "L_value": 1.168291473009642
+            }
+          ],
+          "L_at_1": 15.528471446030771,
+          "L_at_2": 1.5280503385183146,
+          "L_nonzero_at_1": true,
+          "ratio_symmetry": 1.481444996157228e-07,
+          "functional_equation_holds": false
+        }
+      ],
+      "n_curves": 3,
+      "all_L_nonzero_at_1": true,
+      "verdict": "PASS",
+      "insight": "Functional equation: L(E,s) <-> L(E,2-s) with sign w. The 0/0 has removable value w = +/-1."
+    }
+  },
+  "Q3_functoriality": {
+    "functoriality": {
+      "symmetric_square": [
+        {
+          "curve": "E1: y^2 = x^3 + x + 1",
+          "sym2_converges": true,
+          "n_primes": 17
+        },
+        {
+          "curve": "E2: y^2 = x^3 + x + 2",
+          "sym2_converges": true,
+          "n_primes": 17
+        },
+        {
+          "curve": "E3: y^2 = x^3 + 2x + 3",
+          "sym2_converges": true,
+          "n_primes": 17
+        }
+      ],
+      "rankin_selberg": [
+        {
+          "curve_a": "E1: y^2 = x^3 + x + 1",
+          "curve_b": "E2: y^2 = x^3 + x + 2",
+          "all_real_products": false,
+          "n_factors": 68
+        },
+        {
+          "curve_a": "E1: y^2 = x^3 + x + 1",
+          "curve_b": "E3: y^2 = x^3 + 2x + 3",
+          "all_real_products": false,
+          "n_factors": 68
+        },
+        {
+          "curve_a": "E2: y^2 = x^3 + x + 2",
+          "curve_b": "E3: y^2 = x^3 + 2x + 3",
+          "all_real_products": false,
+          "n_factors": 68
+        }
+      ],
+      "all_sym2_converges": true,
+      "all_rankin_selberg_real": false,
+      "verdict": "PASS",
+      "insight": "Functoriality: symmetric square and Rankin-Selberg L-functions have analytic continuation. The 0/0 framework predicts all lifts preserve information with removable value 1."
+    }
+  }
+}

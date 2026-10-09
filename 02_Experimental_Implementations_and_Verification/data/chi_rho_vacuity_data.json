@@ -1,0 +1,621 @@
+{
+  "question": "does the Chi(rho) bridge test the Riemann Hypothesis?",
+  "verdict": "A and B are TRUE; C (the certification) is VACUOUS",
+  "gates": [
+    {
+      "name": "|chi(1/2+iy)| = 1 for arbitrary y, zeta != 0 there",
+      "points": [
+        {
+          "y": 0.0,
+          "abs_chi": "1.0",
+          "dev_from_1": "0.0",
+          "abs_zeta": "1.4603545",
+          "zeta_is_zero": false
+        },
+        {
+          "y": 0.5,
+          "abs_chi": "1.0",
+          "dev_from_1": "0.0",
+          "abs_zeta": "1.0653492",
+          "zeta_is_zero": false
+        },
+        {
+          "y": 1.0,
+          "abs_chi": "1.0",
+          "dev_from_1": "0.0",
+          "abs_zeta": "0.73630546",
+          "zeta_is_zero": false
+        },
+        {
+          "y": 2.0,
+          "abs_chi": "1.0",
+          "dev_from_1": "0.0",
+          "abs_zeta": "0.53963313",
+          "zeta_is_zero": false
+        },
+        {
+          "y": 5.0,
+          "abs_chi": "1.0",
+          "dev_from_1": "1.9722e-31",
+          "abs_zeta": "0.73886343",
+          "zeta_is_zero": false
+        },
+        {
+          "y": 7.0,
+          "abs_chi": "1.0",
+          "dev_from_1": "9.8608e-32",
+          "abs_zeta": "1.0955793",
+          "zeta_is_zero": false
+        },
+        {
+          "y": 11.0,
+          "abs_chi": "1.0",
+          "dev_from_1": "0.0",
+          "abs_zeta": "1.5010775",
+          "zeta_is_zero": false
+        },
+        {
+          "y": 20.0,
+          "abs_chi": "1.0",
+          "dev_from_1": "0.0",
+          "abs_zeta": "1.1478424",
+          "zeta_is_zero": false
+        },
+        {
+          "y": 30.0,
+          "abs_chi": "1.0",
+          "dev_from_1": "9.8608e-32",
+          "abs_zeta": "0.59602852",
+          "zeta_is_zero": false
+        },
+        {
+          "y": 100.0,
+          "abs_chi": "1.0",
+          "dev_from_1": "0.0",
+          "abs_zeta": "2.6926971",
+          "zeta_is_zero": false
+        },
+        {
+          "y": 1000.0,
+          "abs_chi": "1.0",
+          "dev_from_1": "0.0",
+          "abs_zeta": "0.99779464",
+          "zeta_is_zero": false
+        }
+      ],
+      "n_points": 11,
+      "n_with_zeta_nonzero": 11,
+      "worst_deviation_from_1": "1.9722e-31",
+      "pass": true,
+      "reading": "the identity holds off the zeros too, so it is a property of the LINE and says nothing about being a zero"
+    },
+    {
+      "name": "zero vs non-zero at the same height are indistinguishable",
+      "rows": [
+        {
+          "n": 1,
+          "gamma": "14.1347251417346938",
+          "abs_chi_at_zero": "1.0",
+          "abs_chi_at_nonzero": "1.0",
+          "difference": "0.0",
+          "impostor_abs_zeta": "0.41008702"
+        },
+        {
+          "n": 2,
+          "gamma": "21.022039638771555",
+          "abs_chi_at_zero": "1.0",
+          "abs_chi_at_nonzero": "1.0",
+          "difference": "0.0",
+          "impostor_abs_zeta": "0.54396567"
+        },
+        {
+          "n": 3,
+          "gamma": "25.0108575801456888",
+          "abs_chi_at_zero": "1.0",
+          "abs_chi_at_nonzero": "1.0",
+          "difference": "9.8608e-32",
+          "impostor_abs_zeta": "0.71724863"
+        },
+        {
+          "n": 4,
+          "gamma": "30.4248761258595132",
+          "abs_chi_at_zero": "1.0",
+          "abs_chi_at_nonzero": "1.0",
+          "difference": "9.8608e-32",
+          "impostor_abs_zeta": "0.56044358"
+        },
+        {
+          "n": 5,
+          "gamma": "32.9350615877391897",
+          "abs_chi_at_zero": "1.0",
+          "abs_chi_at_nonzero": "1.0",
+          "difference": "0.0",
+          "impostor_abs_zeta": "0.76260796"
+        },
+        {
+          "n": 6,
+          "gamma": "37.5861781588256713",
+          "abs_chi_at_zero": "1.0",
+          "abs_chi_at_nonzero": "1.0",
+          "difference": "0.0",
+          "impostor_abs_zeta": "0.89181891"
+        },
+        {
+          "n": 7,
+          "gamma": "40.9187190121474952",
+          "abs_chi_at_zero": "1.0",
+          "abs_chi_at_nonzero": "1.0",
+          "difference": "9.8608e-32",
+          "impostor_abs_zeta": "0.67001097"
+        },
+        {
+          "n": 8,
+          "gamma": "43.3270732809149995",
+          "abs_chi_at_zero": "1.0",
+          "abs_chi_at_nonzero": "1.0",
+          "difference": "9.8608e-32",
+          "impostor_abs_zeta": "1.0198885"
+        },
+        {
+          "n": 9,
+          "gamma": "48.0051508811671597",
+          "abs_chi_at_zero": "1.0",
+          "abs_chi_at_nonzero": "1.0",
+          "difference": "1.9722e-31",
+          "impostor_abs_zeta": "0.58193263"
+        },
+        {
+          "n": 10,
+          "gamma": "49.7738324776723022",
+          "abs_chi_at_zero": "1.0",
+          "abs_chi_at_nonzero": "1.0",
+          "difference": "1.9722e-31",
+          "impostor_abs_zeta": "0.78282263"
+        }
+      ],
+      "worst_difference": "1.9722e-31",
+      "pass": true,
+      "reading": "the bridge cannot distinguish a zero from a non-zero on the same vertical line - zero discriminating power"
+    },
+    {
+      "name": "level set has 3 solutions for t < t*, 1 for t > t*; extras lie outside the critical strip",
+      "t_star": "6.2898359888369027797",
+      "n_tested": 12,
+      "n_matching_expected": 12,
+      "rows": [
+        {
+          "t": "0.1",
+          "n_roots": 3,
+          "expected_n_roots": 3,
+          "roots": [
+            "-16.394957513942",
+            "0.5",
+            "17.394957513942"
+          ],
+          "abs_log_chi_at_line": "9.8608e-32",
+          "extras_offset_d": [
+            "16.8949575139",
+            "16.8949575139"
+          ],
+          "matches_expected": true,
+          "strip_has_no_other_zero": true
+        },
+        {
+          "t": "0.5",
+          "n_roots": 3,
+          "expected_n_roots": 3,
+          "roots": [
+            "-16.026971249368",
+            "0.5",
+            "17.026971249368"
+          ],
+          "abs_log_chi_at_line": "0.0",
+          "extras_offset_d": [
+            "16.5269712494",
+            "16.5269712494"
+          ],
+          "matches_expected": true,
+          "strip_has_no_other_zero": true
+        },
+        {
+          "t": "1.0",
+          "n_roots": 3,
+          "expected_n_roots": 3,
+          "roots": [
+            "-14.919295318818",
+            "0.5",
+            "15.919295318818"
+          ],
+          "abs_log_chi_at_line": "0.0",
+          "extras_offset_d": [
+            "15.4192953188",
+            "15.4192953188"
+          ],
+          "matches_expected": true,
+          "strip_has_no_other_zero": true
+        },
+        {
+          "t": "2.0",
+          "n_roots": 3,
+          "expected_n_roots": 3,
+          "roots": [
+            "-13.232926267494",
+            "0.5",
+            "14.232926267494"
+          ],
+          "abs_log_chi_at_line": "0.0",
+          "extras_offset_d": [
+            "13.7329262675",
+            "13.7329262675"
+          ],
+          "matches_expected": true,
+          "strip_has_no_other_zero": true
+        },
+        {
+          "t": "5.0",
+          "n_roots": 3,
+          "expected_n_roots": 3,
+          "roots": [
+            "-6.6618736049274",
+            "0.5",
+            "7.6618736049274"
+          ],
+          "abs_log_chi_at_line": "1.9722e-31",
+          "extras_offset_d": [
+            "7.16187360493",
+            "7.16187360493"
+          ],
+          "matches_expected": true,
+          "strip_has_no_other_zero": true
+        },
+        {
+          "t": "6.0",
+          "n_roots": 3,
+          "expected_n_roots": 3,
+          "roots": [
+            "-2.8231300640472",
+            "0.5",
+            "3.8231300640472"
+          ],
+          "abs_log_chi_at_line": "0.0",
+          "extras_offset_d": [
+            "3.32313006405",
+            "3.32313006405"
+          ],
+          "matches_expected": true,
+          "strip_has_no_other_zero": true
+        },
+        {
+          "t": "6.28",
+          "n_roots": 3,
+          "expected_n_roots": 3,
+          "roots": [
+            "-0.10810835485648",
+            "0.5",
+            "1.1081083548565"
+          ],
+          "abs_log_chi_at_line": "9.8608e-32",
+          "extras_offset_d": [
+            "0.608108354856",
+            "0.608108354856"
+          ],
+          "matches_expected": true,
+          "strip_has_no_other_zero": true
+        },
+        {
+          "t": "6.5",
+          "n_roots": 1,
+          "expected_n_roots": 1,
+          "roots": [
+            "0.5"
+          ],
+          "abs_log_chi_at_line": "0.0",
+          "extras_offset_d": [],
+          "matches_expected": true,
+          "strip_has_no_other_zero": true
+        },
+        {
+          "t": "7.0",
+          "n_roots": 1,
+          "expected_n_roots": 1,
+          "roots": [
+            "0.5"
+          ],
+          "abs_log_chi_at_line": "9.8608e-32",
+          "extras_offset_d": [],
+          "matches_expected": true,
+          "strip_has_no_other_zero": true
+        },
+        {
+          "t": "14.134725",
+          "n_roots": 1,
+          "expected_n_roots": 1,
+          "roots": [
+            "0.5"
+          ],
+          "abs_log_chi_at_line": "0.0",
+          "extras_offset_d": [],
+          "matches_expected": true,
+          "strip_has_no_other_zero": true
+        },
+        {
+          "t": "100.0",
+          "n_roots": 1,
+          "expected_n_roots": 1,
+          "roots": [
+            "0.5"
+          ],
+          "abs_log_chi_at_line": "0.0",
+          "extras_offset_d": [],
+          "matches_expected": true,
+          "strip_has_no_other_zero": true
+        },
+        {
+          "t": "1000.0",
+          "n_roots": 1,
+          "expected_n_roots": 1,
+          "roots": [
+            "0.5"
+          ],
+          "abs_log_chi_at_line": "0.0",
+          "extras_offset_d": [],
+          "matches_expected": true,
+          "strip_has_no_other_zero": true
+        }
+      ],
+      "d_samples": [
+        {
+          "t": "1.0",
+          "d": "15.4192953188"
+        },
+        {
+          "t": "5.0",
+          "d": "7.16187360493"
+        },
+        {
+          "t": "6.0",
+          "d": "3.32313006405"
+        },
+        {
+          "t": "6.2",
+          "d": "1.84137378198"
+        },
+        {
+          "t": "6.28",
+          "d": "0.608108354856"
+        },
+        {
+          "t": "6.35",
+          "d": "0 (annihilated)"
+        },
+        {
+          "t": "7.0",
+          "d": "0 (annihilated)"
+        }
+      ],
+      "all_extras_outside_strip": true,
+      "worst_strip_margin": "2.5324",
+      "pass": true,
+      "reading": "the GLOBAL claim {sigma : |chi|=1} = {1/2} is FALSE - there are two extra roots at 0.5 +- d(t) for t < t*, annihilating at t*; but every extra root lies outside the critical strip, so the line is the unique solution on 0<sigma<1, which is the only part RH uses"
+    },
+    {
+      "name": "d/dsigma log|chi| flips sign - not strictly monotone",
+      "samples": [
+        {
+          "t": 0.5,
+          "dlog_dsigma_at_half": "3.33200459468",
+          "direction": "increasing"
+        },
+        {
+          "t": 1.0,
+          "dlog_dsigma_at_half": "2.0251461931",
+          "direction": "increasing"
+        },
+        {
+          "t": 5.0,
+          "dlog_dsigma_at_half": "0.230118218246",
+          "direction": "increasing"
+        },
+        {
+          "t": 6.0,
+          "dlog_dsigma_at_half": "0.0472807363269",
+          "direction": "increasing"
+        },
+        {
+          "t": 7.0,
+          "dlog_dsigma_at_half": "-0.107179671276",
+          "direction": "decreasing"
+        },
+        {
+          "t": 10.0,
+          "dlog_dsigma_at_half": "-0.464290626865",
+          "direction": "decreasing"
+        },
+        {
+          "t": 100.0,
+          "dlog_dsigma_at_half": "-2.76728895284",
+          "direction": "decreasing"
+        },
+        {
+          "t": 1000.0,
+          "dlog_dsigma_at_half": "-5.06987817091",
+          "direction": "decreasing"
+        }
+      ],
+      "t_star": "6.2898359888369027797",
+      "two_pi": "6.2831853071795864769",
+      "t_star_minus_2pi": "0.0066506817",
+      "n_increasing": 4,
+      "n_decreasing": 4,
+      "pass": true,
+      "reading": "the sign flip is real and t* is close to but not equal to 2*pi (Stirling is only leading order), so the stated monotonicity justification is false"
+    },
+    {
+      "name": "|chi| is unbounded on a vertical line (no |chi| <= 1 bound)",
+      "rows": [
+        {
+          "t": 0.5,
+          "max_abs_chi": "315.0421324",
+          "argmax_sigma": "7.0"
+        },
+        {
+          "t": 5.0,
+          "max_abs_chi": "59304.68703",
+          "argmax_sigma": "-20.0"
+        },
+        {
+          "t": 20.0,
+          "max_abs_chi": "3.395330184e+11",
+          "argmax_sigma": "-20.0"
+        },
+        {
+          "t": 100.0,
+          "max_abs_chi": "4.998786946e+24",
+          "argmax_sigma": "-20.0"
+        },
+        {
+          "t": 700.0,
+          "max_abs_chi": "9.185315004e+41",
+          "argmax_sigma": "-20.0"
+        }
+      ],
+      "worst_max_abs_chi": "9.185315004e+41",
+      "exceeds_one_everywhere": true,
+      "pass": true,
+      "reading": "|chi| > 1 away from the line, so the gamma ratio does compensate in the sense the paper denies; the equivalence survives only as a level-set statement"
+    },
+    {
+      "name": "g(s) = |chi(s)| identically, but g is NOT identically 1",
+      "rows": [
+        {
+          "s": "2.0",
+          "g": "19.739208802178717238",
+          "abs_chi": "19.739208802178717238",
+          "g_equals_chi": true,
+          "g_equals_1": false
+        },
+        {
+          "s": "4.0",
+          "g": "129.87878804533658298",
+          "abs_chi": "129.87878804533658298",
+          "g_equals_chi": true,
+          "g_equals_1": false
+        },
+        {
+          "s": "-1.0",
+          "g": "0.050660591821168885722",
+          "abs_chi": "0.050660591821168885722",
+          "g_equals_chi": true,
+          "g_equals_1": false
+        },
+        {
+          "s": "(0.5 + 2.0j)",
+          "g": "1.0",
+          "abs_chi": "1.0",
+          "g_equals_chi": true,
+          "g_equals_1": true
+        },
+        {
+          "s": "(2.0 + 1.0j)",
+          "g": "10.665360580436597987",
+          "abs_chi": "10.665360580436597987",
+          "g_equals_chi": true,
+          "g_equals_1": false
+        },
+        {
+          "s": "(0.3 + 7.0j)",
+          "g": "1.0216952718702200213",
+          "abs_chi": "1.0216952718702200213",
+          "g_equals_chi": true,
+          "g_equals_1": false
+        },
+        {
+          "s": "(-0.5 + 1.0j)",
+          "g": "0.17794063585429426462",
+          "abs_chi": "0.17794063585429426462",
+          "g_equals_chi": true,
+          "g_equals_1": false
+        },
+        {
+          "s": "(0.5 + 7.0j)",
+          "g": "1.0",
+          "abs_chi": "1.0",
+          "g_equals_chi": true,
+          "g_equals_1": true
+        }
+      ],
+      "g_equals_chi_identically": true,
+      "n_points_where_g_ne_1": 6,
+      "n_points": 8,
+      "pass": true,
+      "reading": "g carries no information beyond chi (it IS chi), and it equals 1 only on the line, so 'g identically 1' is false"
+    },
+    {
+      "name": "corpus sin*Gamma form is singular where chi is finite",
+      "n_forms_compared": 6,
+      "n_agree": 6,
+      "worst_form_difference": "8.5792e-30",
+      "even_integers": [
+        {
+          "s": 2.0,
+          "raised": true,
+          "chi_is_finite": "19.7392088022"
+        },
+        {
+          "s": 4.0,
+          "raised": true,
+          "chi_is_finite": "129.878788045"
+        },
+        {
+          "s": 6.0,
+          "raised": true,
+          "chi_is_finite": "256.37045162"
+        },
+        {
+          "s": 8.0,
+          "raised": true,
+          "chi_is_finite": "240.978565488"
+        }
+      ],
+      "all_raised": true,
+      "pass": true,
+      "reading": "the two forms are identical as functions, but the corpus form cannot be evaluated at s = 2, 4, 6, ... where chi is perfectly finite (|chi(2)| = 2 pi^2); a robustness defect"
+    }
+  ],
+  "gates_passed": 7,
+  "gates_total": 7,
+  "teeth": {
+    "no_teeth": {
+      "check": "|chi(s)| = 1 at the corpus's 'zeros'",
+      "planted_input": "a NON-zero point 1/2 + i(gamma + 0.5)",
+      "zeta_there": "0.41008702",
+      "abs_chi_there": "1.0",
+      "still_passes_1e-25": true,
+      "verdict": "CANNOT FAIL - passes on a non-zero, so it certifies nothing"
+    },
+    "has_teeth": [
+      {
+        "sigma_displacement": "0.1",
+        "abs_chi": "0.922142317765621353",
+        "fails_1e-25": true
+      },
+      {
+        "sigma_displacement": "0.01",
+        "abs_chi": "0.99192727261751358321",
+        "fails_1e-25": true
+      },
+      {
+        "sigma_displacement": "0.001",
+        "abs_chi": "0.99918977966073918208",
+        "fails_1e-25": true
+      },
+      {
+        "sigma_displacement": "1.0e-6",
+        "abs_chi": "0.9999991894515841705",
+        "fails_1e-25": true
+      }
+    ],
+    "all_displacements_caught": true,
+    "reading": "the level-set half of chi discriminates and the zero-half does not; the corpus ran only the blind half"
+  }
+}

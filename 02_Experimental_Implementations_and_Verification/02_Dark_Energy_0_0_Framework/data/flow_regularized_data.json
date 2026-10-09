@@ -1,0 +1,59 @@
+{
+  "seed": 42,
+  "baseline": {
+    "test_acc": 0.905,
+    "routing": 0.9,
+    "sep_ratio": 1.58
+  },
+  "best": {
+    "lambda": 0.007,
+    "attract": 1.0,
+    "routing": 0.93,
+    "test_acc": 0.905,
+    "sep_ratio": 1.59
+  },
+  "sweep": [
+    {
+      "lambda": 0.003,
+      "attract": 1.0,
+      "test_acc": 0.908,
+      "routing": 0.91,
+      "routing_delta": 0.01,
+      "sep_ratio": 1.57
+    },
+    {
+      "lambda": 0.005,
+      "attract": 1.0,
+      "test_acc": 0.906,
+      "routing": 0.88,
+      "routing_delta": -0.02,
+      "sep_ratio": 1.58
+    },
+    {
+      "lambda": 0.007,
+      "attract": 1.0,
+      "test_acc": 0.905,
+      "routing": 0.93,
+      "routing_delta": 0.03,
+      "sep_ratio": 1.59
+    },
+    {
+      "lambda": 0.015,
+      "attract": 1.0,
+      "test_acc": 0.908,
+      "routing": 0.9,
+      "routing_delta": 0.0,
+      "sep_ratio": 1.56
+    },
+    {
+      "lambda": 0.01,
+      "attract": 1.0,
+      "test_acc": 0.907,
+      "routing": 0.83,
+      "routing_delta": -0.07,
+      "sep_ratio": 1.57
+    }
+  ],
+  "claim": "The C0 flow potential, added as a regularizer on 64D embeddings during MLP training (L = CE + lambda*[diff-class 1/|z_i-z_j| repulsion - attract*same-class 1/|z_i-z_j|^2 attraction]), improves routing accuracy on MNIST test embeddings while preserving test accuracy and separation.",
+  "verdict": "SUPPORTED with narrow-window caveat (seed=42): baseline CE-only MLP test_acc 0.905, routing 0.900, separation 1.58x. Best flow-regularized at lambda=0.007: test_acc 0.905 (preserved), routing 0.930 (+0.030), separation 1.59x - a genuine centroid-level routing gain with accuracy and separation held. BUT the effect is a narrow window AND the sweep is NON-MONOTONIC (lambda 0.003:+0.010, 0.005:-0.020, 0.007:+0.030, 0.010:-0.070, 0.015:+0.000), so a single-seed best could be partly sampling noise - the robust statement is only that small lambda never hurts accuracy and can help routing, while larger lambda (0.01) clearly HURTS routing (-0.070). HONEST CAVEATS: (1) routing is measured with a PolysphereRouter using logit truths on the model's own embeddings (in-distribution, so the +0.030 may not transfer to held-out routing tasks); (2) single seed 42; (3) the 'data-point-level flow was ineffective' note is a statement from the code's design history, not re-measured here."
+}

@@ -1,0 +1,316 @@
+{
+  "family": "Litim (A=29/72pi, B=9/72pi)",
+  "piecewise_family": [
+    {
+      "G_c": 0.1,
+      "lam_lo": 0.44746331063752975,
+      "W_sequence": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1
+      ],
+      "class": "ejector-flip"
+    },
+    {
+      "G_c": 0.2,
+      "lam_lo": 0.425407193991595,
+      "W_sequence": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -2
+      ],
+      "class": "double-winding"
+    },
+    {
+      "G_c": 0.3,
+      "lam_lo": 0.4083649257355171,
+      "W_sequence": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "class": "NGFP-rebalanced or none-before-Rmax"
+    },
+    {
+      "G_c": 0.4,
+      "lam_lo": 0.3939176435180898,
+      "W_sequence": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      "class": "ejector-flip"
+    },
+    {
+      "G_c": 0.5,
+      "lam_lo": 0.3811284681435014,
+      "W_sequence": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        0
+      ],
+      "class": "ejector-flip"
+    },
+    {
+      "G_c": 0.55,
+      "lam_lo": 0.37519639722825016,
+      "W_sequence": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        0,
+        0
+      ],
+      "class": "ejector-flip"
+    },
+    {
+      "G_c": 0.6,
+      "lam_lo": 0.36951693388264406,
+      "W_sequence": [
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        0,
+        0
+      ],
+      "class": "ejector-flip"
+    },
+    {
+      "G_c": 0.65,
+      "lam_lo": 0.364059062274564,
+      "W_sequence": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        0,
+        0,
+        0
+      ],
+      "class": "ejector-flip"
+    },
+    {
+      "G_c": 0.7,
+      "lam_lo": 0.35879763546434307,
+      "W_sequence": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0
+      ],
+      "class": "ejector-flip"
+    },
+    {
+      "G_c": 0.8,
+      "lam_lo": 0.34878462422977613,
+      "W_sequence": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "class": "ejector-flip"
+    },
+    {
+      "G_c": 0.9,
+      "lam_lo": 0.33934874578869983,
+      "W_sequence": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "class": "NGFP-rebalanced or none-before-Rmax"
+    },
+    {
+      "G_c": 1.0,
+      "lam_lo": 0.3303959679635786,
+      "W_sequence": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "class": "NGFP-rebalanced or none-before-Rmax"
+    }
+  ],
+  "release_window_flips": [
+    {
+      "G_c": 0.5,
+      "lam_lo": 0.3811284681435014,
+      "R_trans": 0.10571922302246095,
+      "R_flip_back": 0.29054775238037106,
+      "annulus_center_W": -1,
+      "W_below": 0,
+      "W_above": -1,
+      "contact_below": 3.017674276698196,
+      "contact_above": 3.005456971934235
+    },
+    {
+      "G_c": 0.55,
+      "lam_lo": 0.37519639722825016,
+      "R_trans": 0.05443067550659181,
+      "R_flip_back": 0.2536684036254883,
+      "annulus_center_W": -1,
+      "W_below": 0,
+      "W_above": -1,
+      "contact_below": 3.0246555937061728,
+      "contact_above": 3.01941960595019
+    },
+    {
+      "G_c": 0.6,
+      "lam_lo": 0.36951693388264406,
+      "R_trans": 0.003938232421875,
+      "R_flip_back": 0.22236843109130855,
+      "annulus_center_W": -1,
+      "W_below": 0,
+      "W_above": -1,
+      "contact_below": 6.173229564303944,
+      "contact_above": 3.029891581462156
+    },
+    {
+      "G_c": 0.65,
+      "lam_lo": 0.364059062274564,
+      "R_trans": 0.046727256774902345,
+      "R_flip_back": 0.1992424011230469,
+      "annulus_center_W": -1,
+      "W_below": 0,
+      "W_above": -1,
+      "contact_below": 3.0333822399661448,
+      "contact_above": 6.180210881311921
+    }
+  ],
+  "annulus_resolution_hierarchy": "R_trans < R < R_flip_back",
+  "near_tangency_G06": {
+    "R": 0.02,
+    "min_D": 1.3392161454794937e-07
+  },
+  "gates": {
+    "G1 ejector flip sharp (0->-1) at every release-window G_c": true,
+    "G2 contact-side exchange at the release point G_c = 0.6": true,
+    "G3 ejector-flip class occurs exactly in the release window (down from NGFP)": true,
+    "G4 tangency distinct from flip (structure, honest)": true
+  },
+  "overall": true,
+  "ties_to": "delta0_selection.py falsifiability clause; winding_phase_diagram.py; flow_pole_regulator_robust.py; THE_ENTROPY_CONDITION_THEOREM.md:224-231,251-256"
+}

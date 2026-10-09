@@ -1,0 +1,117 @@
+{
+  "experiment": "weyl_law_0_over_0",
+  "description": "Weyl law: N(lambda)/lambda^{d/2} -> C_weyl; 0/0 at lambda=0",
+  "torus": {
+    "name": "T^2",
+    "d": 2,
+    "volume": 39.47841760435743,
+    "weyl_constant": 3.141592653589793,
+    "omega_d": 3.141592653589793,
+    "mean_ratio_at_large_lambda": 3.1393889626540954,
+    "std_ratio": 0.09153321022400297,
+    "relative_error": 0.000701456610926193,
+    "converges": "True",
+    "n_eigenvalues": 200,
+    "lambda_vals": [
+      1.0,
+      6.7788944723618085,
+      12.557788944723617,
+      18.336683417085425,
+      24.115577889447234,
+      29.894472361809044,
+      35.67336683417085,
+      41.45226130653266,
+      47.23115577889447,
+      53.010050251256274
+    ],
+    "N_values": [
+      5,
+      21,
+      37,
+      61,
+      69,
+      97,
+      109,
+      137,
+      145,
+      177
+    ],
+    "ratios": [
+      5.0,
+      3.097850259451446,
+      2.9463785514205685,
+      3.3266648396821052,
+      2.86122108772661,
+      3.2447470163052614,
+      3.0555007747570087,
+      3.3050066674748457,
+      3.070007447600809,
+      3.3389894776756095
+    ]
+  },
+  "torus_0_over_0": {
+    "weyl_constant": 3.141592653589793,
+    "ratio_at_lambda_001": 100.0,
+    "ratio_at_lambda_1": 5.0,
+    "blows_up_at_zero": "True",
+    "converges_at_inf": true,
+    "explanation": "0/0 at lambda=0: N(0)=0 but the removable value is C_weyl from the large-lambda limit"
+  },
+  "sphere": {
+    "name": "S^2",
+    "d": 2,
+    "volume": 12.566370614359172,
+    "weyl_constant": 1.0,
+    "omega_d": 3.141592653589793,
+    "mean_ratio_at_large_lambda": 1.0077934446029253,
+    "std_ratio": 0.06310122201573035,
+    "relative_error": 0.0077934446029253035,
+    "converges": "True",
+    "n_eigenvalues": 100,
+    "lambda_vals": [
+      1.0,
+      9.040201005025127,
+      17.080402010050253,
+      25.12060301507538,
+      33.16080402010051,
+      41.20100502512563,
+      49.24120603015076,
+      57.28140703517588,
+      65.32160804020101,
+      73.36180904522614
+    ],
+    "N_values": [
+      1,
+      9,
+      16,
+      25,
+      36,
+      36,
+      49,
+      64,
+      64,
+      81
+    ],
+    "ratios": [
+      1.0,
+      0.9955530850472484,
+      0.9367461017946453,
+      0.9951990398079615,
+      1.0856190331868463,
+      0.8737650933040614,
+      0.9951015409735686,
+      1.1172909904377577,
+      0.979767674436495,
+      1.1041167203233098
+    ]
+  },
+  "sphere_0_over_0": {
+    "weyl_constant": 1.0,
+    "ratio_at_lambda_001": 100.0,
+    "ratio_at_lambda_1": 1.0,
+    "blows_up_at_zero": "True",
+    "converges_at_inf": true,
+    "explanation": "0/0 at lambda=0: N(0)=0 but the removable value is C_weyl from the large-lambda limit"
+  },
+  "overall": "SUPPORTED"
+}

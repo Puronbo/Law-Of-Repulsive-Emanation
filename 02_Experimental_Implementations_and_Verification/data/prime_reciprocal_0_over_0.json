@@ -1,0 +1,70 @@
+{
+  "form": "sum_{p<=x} 1/p - log(log x)  (x -> infinity)",
+  "mechanism": "Probe (named constant)",
+  "point": "x -> infinity",
+  "removable_value": 0.26149721284764277,
+  "constant": "B1 (OEIS A077761); Mertens' second theorem (1874)",
+  "E_N": 0.2615114537673806,
+  "abs_error_at_N": 1.4240919737840141e-05,
+  "decade_max_abs": [
+    {
+      "d": 0,
+      "lo": 1,
+      "hi": 9,
+      "max_abs": 0.6050157077340217
+    },
+    {
+      "d": 1,
+      "lo": 10,
+      "hi": 99,
+      "max_abs": 0.14058669642688987
+    },
+    {
+      "d": 2,
+      "lo": 100,
+      "hi": 999,
+      "max_abs": 0.03492658825280465
+    },
+    {
+      "d": 3,
+      "lo": 1000,
+      "hi": 9999,
+      "max_abs": 0.00623179221240594
+    },
+    {
+      "d": 4,
+      "lo": 10000,
+      "hi": 99999,
+      "max_abs": 0.0016068635383456598
+    },
+    {
+      "d": 5,
+      "lo": 100000,
+      "hi": 999999,
+      "max_abs": 0.0003878576340682893
+    },
+    {
+      "d": 6,
+      "lo": 1000000,
+      "hi": 9999999,
+      "max_abs": 0.00010024802612401684
+    },
+    {
+      "d": 7,
+      "lo": 10000000,
+      "hi": 20000000,
+      "max_abs": 2.7261879662787702e-05
+    }
+  ],
+  "decay_beta": -0.5898866113079397,
+  "decay_r2": 0.9996131138284889,
+  "pi_N": 1270607,
+  "gates": {
+    "G1 |E(2e7) - B1| < 0.05 (converges to the named constant)": true,
+    "G2 max|E-B1| decays decade-over-decade (final < first)": true,
+    "G3 decay exponent beta < -0.3 (vs anti-class beta ~ +1/2)": true,
+    "G4 pi(2e7) = 1,270,607 (cross-tool with aclass_detector P2)": true
+  },
+  "overall": true,
+  "wall": "exact prime harmonic to 2e7; B1 value external (40+ digits cited, A077761)"
+}

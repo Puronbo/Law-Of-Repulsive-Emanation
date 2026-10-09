@@ -1,0 +1,127 @@
+{
+  "Q1_disjoint_union": {
+    "disjoint_union": {
+      "tests": [
+        {
+          "manifold": "S^2 \u2294 S^2",
+          "Z_computed": 1.0,
+          "Z_expected": 1.0,
+          "ratio": 1.0
+        },
+        {
+          "manifold": "S^2 \u2294 T^2",
+          "Z_computed": 2.0,
+          "Z_expected": 2.0,
+          "ratio": 1.0
+        },
+        {
+          "manifold": "T^2 \u2294 T^2",
+          "Z_computed": 4.0,
+          "Z_expected": 4.0,
+          "ratio": 1.0
+        }
+      ],
+      "all_ratios_1": true,
+      "verdict": "PASS",
+      "insight": "Disjoint union axiom: Z(M1 \u2294 M2) = Z(M1) * Z(M2). The 0/0 Z(M1 \u2294 M2)/(Z(M1)*Z(M2)) has removable value 1."
+    }
+  },
+  "Q2_functoriality": {
+    "functoriality": {
+      "identity": {
+        "manifold": "S^2",
+        "Z(id)": 1.0,
+        "identity_holds": true
+      },
+      "poincare_duality": {
+        "manifold": "S^2",
+        "Z(M)": 1.0,
+        "Z(M^op)": 1.0,
+        "duality_holds": true
+      },
+      "cut_and_paste": {
+        "manifold": "S^2 (cut along S^1)",
+        "Z(D^2)": 1.0,
+        "Z(S^1)": 2.0,
+        "Z_reconstructed": 1.0,
+        "matches": true
+      },
+      "verdict": "PASS",
+      "insight": "Functoriality: Z is a monoidal functor from Cob to Vect. The 0/0 at composition has removable value = the composition."
+    }
+  },
+  "Q3_topological_invariance": {
+    "topological_invariance": {
+      "torus": [
+        {
+          "name": "minimal",
+          "V": 7,
+          "E": 21,
+          "F": 14,
+          "chi": 0
+        },
+        {
+          "name": "refined",
+          "V": 16,
+          "E": 48,
+          "F": 32,
+          "chi": 0
+        },
+        {
+          "name": "finer",
+          "V": 25,
+          "E": 75,
+          "F": 50,
+          "chi": 0
+        }
+      ],
+      "sphere": [
+        {
+          "name": "tetrahedron",
+          "V": 4,
+          "E": 6,
+          "F": 4,
+          "chi": 2
+        },
+        {
+          "name": "octahedron",
+          "V": 6,
+          "E": 12,
+          "F": 8,
+          "chi": 2
+        },
+        {
+          "name": "icosahedron",
+          "V": 12,
+          "E": 30,
+          "F": 20,
+          "chi": 2
+        }
+      ],
+      "torus_ratios": [
+        {
+          "triang1": "minimal",
+          "triang2": "refined",
+          "ratio": 1.0,
+          "is_0_over_0": true
+        },
+        {
+          "triang1": "minimal",
+          "triang2": "finer",
+          "ratio": 1.0,
+          "is_0_over_0": true
+        },
+        {
+          "triang1": "refined",
+          "triang2": "finer",
+          "ratio": 1.0,
+          "is_0_over_0": true
+        }
+      ],
+      "torus_invariant": true,
+      "sphere_invariant": true,
+      "verdict": "PASS",
+      "insight": "Topological invariance: Z(M) is independent of triangulation. The 0/0 Z(triang1)/Z(triang2) at chi=0 has removable value 1. For S^2, chi=2, so the ratio is also 1 (not 0/0, just invariant)."
+    }
+  }
+}

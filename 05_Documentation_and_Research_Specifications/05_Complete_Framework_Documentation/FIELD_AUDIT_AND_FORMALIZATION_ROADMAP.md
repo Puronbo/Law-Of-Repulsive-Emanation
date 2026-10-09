@@ -1,4 +1,4 @@
-# Field-by-field audit and formalization roadmap
+﻿# Field-by-field audit and formalization roadmap
 
 Register of every research field present in this repository, its current
 concreteness tier, and the next machine-checkable step for each. This document
@@ -52,15 +52,15 @@ P0 - machine-check next (bounded, provable cores, matching the N7 standard):
 2. **N6 `A > 1` single-zero branch** - the same discipline applied to the
    acoustic node. **[DONE]** `thetaGenOver_zero_iff` (zero set exactly
    `{ artanh (-(a w/b))/w }` under `0 < w`, `b != 0`, `|b| > |a| w`) and
-   `overdamped_unique_zero` (`∃! t` in `thetaGen`'s `w2 < 0` branch) in
+   `overdamped_unique_zero` (`âˆƒ! t` in `thetaGen`'s `w2 < 0` branch) in
    `AcousticZeroFlow.lean`. Axioms `[propext, Classical.choice, Quot.sound]`;
    the lemma `artanh = atanh` notation is the experiment's `atanh`.
 3. **Removable-value lemma for the 0/0 family** - the single most replicated
    claim of the framework (`lim` equal to the physical value at the 0/0) as a
    theorem, not a script print. **[DONE]** `PunoCalculus.Removable` in
    `01_Lean/PunoCalculus/Removable.lean`: `removable_limit` (cancel-then-limit,
-   `𝓝[≠]`-punctured, `g` continuous), `quadratic_removable` (`(x²-a²)/(x-a) -> 2a`
-   — the `(ω-ω₀)`-type cancellation), `impedance_crosszero` (`m ω₀ - k/ω₀ = 0`,
+   `ð“[â‰ ]`-punctured, `g` continuous), `quadratic_removable` (`(xÂ²-aÂ²)/(x-a) -> 2a`
+   â€” the `(Ï‰-Ï‰â‚€)`-type cancellation), `impedance_crosszero` (`m Ï‰â‚€ - k/Ï‰â‚€ = 0`,
    System 1 of `universal_impedance.py`). Axioms `[propext, Classical.choice,
    Quot.sound]`; module builds clean in `lake build PunoCalculus`.
 
@@ -70,7 +70,7 @@ P1 - statement-grade formalization:
    **[DONE]** `PunoCalculus.RH.LiCriterion` in
    `01_Lean/PunoCalculus/RH/LiCriterion.lean` (junction target
    `03_Riemann_Hypothesis_Module/RH`): `liCriterionEquiv` (the Li biconditional
-   `RH ↔ ∀ n ≥ 1, 0 ≤ λ n` as a parameterized statement; neither direction
+   `RH â†” âˆ€ n â‰¥ 1, 0 â‰¤ Î» n` as a parameterized statement; neither direction
    proved), `liPrefixCond`, `liCoeffs30` (exact Float transcription of the 30
    committed coefficients of `rh_li_correct.json`, `n_max=30`, 800 zeros),
    `liPrefix30_positive : liCoeffs30.all (Float.le 0) = true` by `native_decide`,
@@ -183,7 +183,7 @@ P2 - adjudication before expansion:
   zone corrected.
 - Dark Energy 0/0 framework: 135 scripts, no ledger section (largest
   unregistered field in the repo); the earlier "18 stale `../data` scripts"
-  figure was a prose-match artifact — 17/18 run clean, and the 3 real import
+  figure was a prose-match artifact â€” 17/18 run clean, and the 3 real import
   defects (`packaging.utilities`) are fixed as item 8.
 - `fcc2/` is a second, unaudited Lean tree replicating the canonical modules.
 - The RH ledger rows are numeric verifications; any proof-grade reading stays
@@ -211,12 +211,12 @@ P2 - adjudication before expansion:
   the test now counts git-committed-anywhere and keeps budget 18. Full suite:
   1129 passed / 1 skipped / 0 failed (15:53).
 - Log 0/0 micro-lemma (2026-10-08): new certified-Lean module
-  `PunoCalculus.ZeroZero` -- `p·log p` value/removability/zero-outcome, and
+  `PunoCalculus.ZeroZero` -- `pÂ·log p` value/removability/zero-outcome, and
   `log (1+x)/x -> 1` real + complex, all `#print axioms` = the 3 standard;
   runtime gates `shannon_entropy_0_over_0.py` (SUPPORTED) and
   `log_limits_0_over_0.py` (all PASS) re-run clean.  Ledger rows added.  PNT
-  mislabelling corrected: the Test 4 "0/0 at the pole" is an ∞/∞ ratio
-  (both factors -> +∞); key renamed `pole_inf_over_inf` in script + central
+  mislabelling corrected: the Test 4 "0/0 at the pole" is an âˆž/âˆž ratio
+  (both factors -> +âˆž); key renamed `pole_inf_over_inf` in script + central
   artifact, script re-run SUPPORTED; a Lean `(x-1)/log x` theorem is deferred
   as out of scope.  **[Path drift now FIXED 2026-10-09]** the 3 gates
   (`log_limits_0_over_0.py`, `shannon_entropy_0_over_0.py`,
@@ -235,7 +235,7 @@ P2 - adjudication before expansion:
 - ZeroZero removable-0/0 family (2026-10-08): `PunoCalculus.ZeroZero` grows
   6 -> 17 theorems -- `KL` 0/0, `sin(x)/x`, `(1-cos(x))/x^2`, `(e^x-1)/x`,
   `tan(x)/x`, `log(x)/(x-1)`, `(x-1)/log(x)` (the previously-deferred inverse
-  of the PNT ∞/∞ pair), `arcsin(x)/x`, `x^x`, `(1+x)^(1/x) -> e`, and complex
+  of the PNT âˆž/âˆž pair), `arcsin(x)/x`, `x^x`, `(1+x)^(1/x) -> e`, and complex
   `sin(z)/z` -- all `#print axioms` = the 3 standard; `lake build` green (8730
   jobs), zero warnings, temp axiom file deleted.  New gate
   `zero_zero_family_0_over_0.py` re-derives all 13 removable values and emits

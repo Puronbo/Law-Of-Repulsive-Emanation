@@ -1,0 +1,35 @@
+{
+  "form": "(a^x - 1)/x at x = 0 (0/0)",
+  "mechanism": "Vanishing Rate",
+  "removable_value": "ln a (ln 2, 1, ln 10)",
+  "approach": {
+    "exponent": 1,
+    "r2": 0.999999999999898
+  },
+  "bases": {
+    "ln 2": {
+      "value": "0.693147180559945309417232121458176568075500134360255254",
+      "fine_err_at_1e-10": 2.402265075141418e-09,
+      "exponent": 1.0000000000001166,
+      "r2": 0.999999999999898
+    },
+    "e": {
+      "value": "1",
+      "fine_err_at_1e-10": 5.000000016666667e-09,
+      "exponent": 1.0000000000002425,
+      "r2": 0.9999999999997884
+    },
+    "ln 10": {
+      "value": "2.30258509299404568401799145468436420760110148862877297",
+      "fine_err_at_1e-10": 2.650949075585985e-08,
+      "exponent": 1.0000000000012854,
+      "r2": 0.9999999999988775
+    }
+  },
+  "gates": {
+    "G1 two-sided (a^x-1)/x -> ln a to 1e-6 at |x| <= 1e-8 (a=2,e,10)": true,
+    "G2 approach exponent 1 (linear residue), r2 > 0.999": true
+  },
+  "overall": true,
+  "wall": "absolute Taylor series for a^x, Decimal 60 digits"
+}

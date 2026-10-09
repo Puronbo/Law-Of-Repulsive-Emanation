@@ -1,0 +1,72 @@
+{
+  "log_removable_singularity": {
+    "name": "log_removable_singularity",
+    "description": "log(1+x)/x at x=0: 0/0, removable=1",
+    "removable_value": 1.0,
+    "limit_value": 1.000000082690371,
+    "last_error": 8.269037099495335e-08,
+    "passed": true
+  },
+  "log_product_limit": {
+    "name": "log_product_limit",
+    "description": "(1/n)*sum k*ln(1+1/k) -> 1 (0/0 removable=1)",
+    "removable_value": 1.0,
+    "limit_value": 0.9999432459290023,
+    "last_error": 0.0004524167049161365,
+    "passed": true,
+    "details": [
+      {
+        "n": 100,
+        "avg_log_factor": 0.9777267612856244,
+        "error": 0.022273238714375587
+      },
+      {
+        "n": 1000,
+        "avg_log_factor": 0.9966266008270569,
+        "error": 0.0033733991729431034
+      },
+      {
+        "n": 10000,
+        "avg_log_factor": 0.9995475832950839,
+        "error": 0.0004524167049161365
+      },
+      {
+        "n": 100000,
+        "avg_log_factor": 0.9999432459290023,
+        "error": 5.675407099769991e-05
+      }
+    ]
+  },
+  "log_stirling_ratio": {
+    "name": "log_stirling_ratio",
+    "description": "log(n!) - Stirling -> 0 (0*inf = 0/0, removable=0)",
+    "removable_value": 0.0,
+    "limit_value": 8.333333153132116e-05,
+    "max_error": 0.008330563433359472,
+    "passed": true
+  },
+  "log_harmonic_difference": {
+    "name": "log_harmonic_difference",
+    "description": "H_n - ln(n) -> gamma (0/0 at n=inf, removable=gamma)",
+    "removable_value": 0.5772156649015329,
+    "limit_value": 0.5772161649014507,
+    "max_error": 0.00499166674999596,
+    "passed": true
+  },
+  "log_binet_formula": {
+    "name": "log_binet_formula",
+    "description": "F_n/phi^n -> 1/sqrt(5) (Binet, 0/0 removable=1/sqrt(5))",
+    "removable_value": 0.4472135954999579,
+    "limit_value": 0.4472135954999565,
+    "last_error": 1.4432899320127035e-15,
+    "passed": true
+  },
+  "log_gamma_reflection": {
+    "name": "log_gamma_reflection",
+    "description": "z*Gamma(z)*Gamma(1-z) -> 1 (Euler reflection, 0/0 removable=1)",
+    "removable_value": 1.0,
+    "limit_value": 1.0000000001644933,
+    "last_error": 1.644933078637223e-10,
+    "passed": true
+  }
+}

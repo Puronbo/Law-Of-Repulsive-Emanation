@@ -1,0 +1,16 @@
+{
+  "form": "(1 - cos x)/x^2 at x = 0 (0/0)",
+  "mechanism": "Vanishing Rate",
+  "removable_value": "1/2",
+  "approach": {
+    "exponent": 2,
+    "r2": 1.0000000000000002
+  },
+  "fine_divergence_at_1e-10": 4.166666666666667e-18,
+  "gates": {
+    "G1 two-sided (1-cos x)/x^2 -> 1/2 within 1e-15 at |x| <= 1e-8": true,
+    "G2 approach exponent 2 (even residue), r2 > 0.999": true
+  },
+  "overall": true,
+  "wall": "alternating cos series, Decimal 60 digits"
+}

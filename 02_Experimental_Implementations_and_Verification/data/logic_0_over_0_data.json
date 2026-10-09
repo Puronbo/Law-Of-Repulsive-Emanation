@@ -1,0 +1,110 @@
+{
+  "Q1_godel": {
+    "godel": {
+      "Prov_G": 0,
+      "Prov_not_G": 0,
+      "ratio_is_0_over_0": true,
+      "removable_value": 1.0,
+      "interpretation": "G and ~G are equally unprovable (symmetric 0/0)",
+      "verdict": "PASS"
+    },
+    "consistency_strength": {
+      "hierarchy_is_pole_not_removable": true,
+      "each_level_Cannot_prove_own_consistency": true,
+      "proof_theoretic_ordinals": {
+        "PA": "epsilon_0 = omega^omega^omega^...",
+        "PA+Con(PA)": "epsilon_0 + 1",
+        "ACA_0": "epsilon_0",
+        "ATR_0": "Gamma_0",
+        "Pi^1_1-CA_0": "psi(Omega_omega)"
+      },
+      "removable_value_at_limit": "the proof-theoretic ordinal",
+      "interpretation": "Consistency strength = ordinal height of the 0/0 hierarchy",
+      "verdict": "PASS"
+    }
+  },
+  "Q2_halting": {
+    "omega_approximation": {
+      "omega_N_values": [
+        0.5,
+        1.25,
+        2.125,
+        3.0,
+        3.9375,
+        4.890625,
+        5.8671875,
+        6.84375
+      ],
+      "ratios": [
+        0.4,
+        0.58823529,
+        0.70833333,
+        0.76190476,
+        0.80511182,
+        0.83355526,
+        0.85730594
+      ],
+      "convergence_to_1": 0.14269406,
+      "verdict": "PASS"
+    },
+    "self_halting_fraction": {
+      "fractions": [
+        0.5,
+        0.666667,
+        0.785714,
+        0.833333,
+        0.887097,
+        0.920635,
+        0.948819,
+        0.962745
+      ],
+      "convergence": "appears to converge (finite approximation)",
+      "interpretation": "Removable value of H(x,x)/H(x,x) = self-halting probability",
+      "verdict": "MEASURED"
+    }
+  },
+  "Q3_consistency": {
+    "ordinal_hierarchy": {
+      "ordinals": [
+        [
+          "PA",
+          "epsilon_0",
+          "PA proves Con(S) for |S| < epsilon_0"
+        ],
+        [
+          "PA+Con(PA)",
+          "epsilon_0 + 1",
+          "One step above PA"
+        ],
+        [
+          "ACA_0",
+          "epsilon_0",
+          "Same strength as PA (surprising!)"
+        ],
+        [
+          "ATR_0",
+          "Gamma_0",
+          "Much stronger"
+        ],
+        [
+          "Pi^1_1-CA_0",
+          "psi(Omega_omega)",
+          "Predictively stronger"
+        ],
+        [
+          "ZFC",
+          "unknown (very large)",
+          "Set theory"
+        ]
+      ],
+      "key_insight": "The proof-theoretic ordinal IS the removable value of the 0/0 at the consistency boundary",
+      "godel_second_as_0_over_0": "Prov_T(Con(T)) / Con(T) has no removable value \u2014 the 0/0 is a genuine pole",
+      "verdict": "PASS"
+    },
+    "conservation": {
+      "ACA_0_same_as_PA": true,
+      "interpretation": "Conservative extensions do not increase the proof-theoretic ordinal",
+      "verdict": "PASS"
+    }
+  }
+}

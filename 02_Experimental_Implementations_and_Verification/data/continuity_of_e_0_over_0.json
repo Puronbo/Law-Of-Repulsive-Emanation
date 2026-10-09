@@ -1,0 +1,16 @@
+{
+  "form": "(1 + x)^(1/x) at x = 0 (0/0)",
+  "mechanism": "Probe",
+  "removable_value": "e",
+  "approach": {
+    "exponent": 1,
+    "r2": 0.9999999999983992
+  },
+  "fine_divergence_at_1e-10": 1.3591409266883145e-08,
+  "gates": {
+    "G1 two-sided (1+x)^(1/x) -> e within 1e-5 at |x| <= 1e-8": true,
+    "G2 approach exponent 1 (linear, in log), r2 > 0.999": true
+  },
+  "overall": true,
+  "wall": "abslutely convergent log/exp series, Decimal 60 digits"
+}

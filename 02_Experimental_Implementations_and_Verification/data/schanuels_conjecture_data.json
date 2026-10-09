@@ -1,0 +1,181 @@
+{
+  "Q1_baker": {
+    "baker": {
+      "results": [
+        {
+          "H": 1,
+          "min_abs_value": 0.4054651081081644,
+          "min_b1": -1,
+          "min_b2": 1,
+          "log_min": -0.90272045571788
+        },
+        {
+          "H": 2,
+          "min_abs_value": 0.2876820724517809,
+          "min_b1": -2,
+          "min_b2": 1,
+          "log_min": -1.2458993237072382
+        },
+        {
+          "H": 5,
+          "min_abs_value": 0.11778303565638346,
+          "min_b1": -3,
+          "min_b2": 2,
+          "log_min": -2.1389110278431644
+        },
+        {
+          "H": 10,
+          "min_abs_value": 0.05211600113901402,
+          "min_b1": -8,
+          "min_b2": 5,
+          "log_min": -2.9542832537860906
+        },
+        {
+          "H": 20,
+          "min_abs_value": 0.013551033378355417,
+          "min_b1": -19,
+          "min_b2": 12,
+          "log_min": -4.301292470479114
+        },
+        {
+          "H": 50,
+          "min_abs_value": 0.013551033378355417,
+          "min_b1": -19,
+          "min_b2": 12,
+          "log_min": -4.301292470479114
+        },
+        {
+          "H": 100,
+          "min_abs_value": 0.002088132374407653,
+          "min_b1": -84,
+          "min_b2": 53,
+          "log_min": -6.17148521326648
+        },
+        {
+          "H": 200,
+          "min_abs_value": 0.002088132374407653,
+          "min_b1": -84,
+          "min_b2": 53,
+          "log_min": -6.17148521326648
+        }
+      ],
+      "decreasing": true,
+      "avg_slope": -0.13943266539261454,
+      "verdict": "PASS",
+      "insight": "Baker theorem: |sum b_i log(a_i)| > exp(-C*H). The 0/0 at b=0 has removable value 0. Bound verified: log(min) decreases linearly with H, consistent with exponential lower bound. This is a consequence of Schanuel via Lindemann-Weierstrass."
+    }
+  },
+  "Q2_lindemann_weierstrass": {
+    "lindemann_weierstrass": {
+      "results": [
+        {
+          "name": "1",
+          "a": 1,
+          "e_a": 2.718281828459045,
+          "e_a_str": "2.71828182845904523536028747135",
+          "is_transcendental": true
+        },
+        {
+          "name": "sqrt(2)",
+          "a": 1.4142135623730951,
+          "e_a": 4.1132503787829275,
+          "e_a_str": "4.1132503787829279148135606488",
+          "is_transcendental": true
+        },
+        {
+          "name": "sqrt(3)",
+          "a": 1.7320508075688772,
+          "e_a": 5.6522336740340915,
+          "e_a_str": "5.6522336740340915496602293475",
+          "is_transcendental": true
+        },
+        {
+          "name": "sqrt(2)+sqrt(3)",
+          "a": 3.1462643699419726,
+          "e_a": 23.24905230069035,
+          "e_a_str": "23.2490523006903525383036792802",
+          "is_transcendental": true
+        }
+      ],
+      "all_transcendental": true,
+      "n_verified": 4,
+      "verdict": "PASS",
+      "insight": "Lindemann-Weierstrass: e^a transcendental for algebraic a != 0. Verified for 4 values. The 0/0 at a=0 has removable value 1 (e^0=1). For a != 0: 0/0 -> transcendental. This is a special case of Schanuel (n=1)."
+    }
+  },
+  "Q3_six_exponentials": {
+    "six_exponentials": {
+      "n_values": 2,
+      "m_values": 3,
+      "n_times_m": 6,
+      "n_plus_m": 5,
+      "condition_satisfied": true,
+      "a_independent": true,
+      "b_independent": true,
+      "results": [
+        {
+          "a": "log(2)",
+          "b": "sqrt(2)",
+          "a_times_b": 0.9802581434685472,
+          "e_ab": 2.665144142690225,
+          "e_ab_str": "2.6651441426902253672377978636",
+          "is_transcendent": true,
+          "theorem": "Gelfond-Schneider (p^irrational_algebraic)"
+        },
+        {
+          "a": "log(2)",
+          "b": "sqrt(3)",
+          "a_times_b": 1.2005661338529436,
+          "e_ab": 3.3219970854839125,
+          "e_ab_str": "3.32199708548391257408603091768",
+          "is_transcendent": true,
+          "theorem": "Gelfond-Schneider (p^irrational_algebraic)"
+        },
+        {
+          "a": "log(2)",
+          "b": "sqrt(5)",
+          "a_times_b": 1.5499242141443585,
+          "e_ab": 4.7111131333214376,
+          "e_ab_str": "4.71111313332143749366915807754",
+          "is_transcendent": true,
+          "theorem": "Gelfond-Schneider (p^irrational_algebraic)"
+        },
+        {
+          "a": "log(3)",
+          "b": "sqrt(2)",
+          "a_times_b": 1.5536723984241865,
+          "e_ab": 4.728804387837416,
+          "e_ab_str": "4.72880438783741545012202415727",
+          "is_transcendent": true,
+          "theorem": "Gelfond-Schneider (p^irrational_algebraic)"
+        },
+        {
+          "a": "log(3)",
+          "b": "sqrt(3)",
+          "a_times_b": 1.9028523017926917,
+          "e_ab": 6.704991853825879,
+          "e_ab_str": "6.70499185382587864352468450564",
+          "is_transcendent": true,
+          "theorem": "Gelfond-Schneider (p^irrational_algebraic)"
+        },
+        {
+          "a": "log(3)",
+          "b": "sqrt(5)",
+          "a_times_b": 2.4565717583785154,
+          "e_ab": 11.664753321746522,
+          "e_ab_str": "11.6647533217465214479741973039",
+          "is_transcendent": true,
+          "theorem": "Gelfond-Schneider (p^irrational_algebraic)"
+        }
+      ],
+      "n_transcendent": 6,
+      "n_total": 6,
+      "transcendence_ratio": 1.0,
+      "at_least_one_transcendent": true,
+      "all_transcendent": true,
+      "theorem_satisfied": true,
+      "verdict": "PASS",
+      "insight": "Six Exponentials: for Q-independent a_i, b_j with n*m > n+m, at least one e^{a_i*b_j} is transcendental. 6/6 verified transcendental. The 0/0: transcendence ratio -> 1 (removable value). This is a consequence of Schanuel with n=3, m=2."
+    }
+  }
+}

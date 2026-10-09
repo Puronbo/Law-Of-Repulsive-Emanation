@@ -1,0 +1,16 @@
+{
+  "form": "n sin(pi/n) at n -> oo (half-perimeter of the inscribed n-gon; 0/0 at infinity)",
+  "mechanism": "Probe",
+  "removable_value": "pi",
+  "approach": {
+    "exponent_in_n": 2,
+    "r2": 0.9999999984619549
+  },
+  "fine_divergence_at_1e7": 5.167422045815329e-12,
+  "gates": {
+    "G1 n sin(pi/n) -> pi within 1e-8 at n >= 1e6": true,
+    "G2 approach exponent 2 in n (residual ~ pi^3/(6n^2)), r2 > 0.999": true
+  },
+  "overall": true,
+  "wall": "sin series + pinned pi, Decimal 60 digits"
+}

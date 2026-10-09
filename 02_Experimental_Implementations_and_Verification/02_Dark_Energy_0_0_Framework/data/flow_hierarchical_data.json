@@ -1,0 +1,28 @@
+{
+  "claim": "hierarchical C0 flow (coarse x fine anchors) matches or beats flat 30-anchor C0 flow routing while using fewer comparisons per level",
+  "seed": 42,
+  "n_classes": 30,
+  "n_groups": 5,
+  "classes_per_group": 6,
+  "results": {
+    "baseline": {
+      "nc": 0.2869,
+      "router": 0.325
+    },
+    "flat_c0_flow": {
+      "nc": 1.0,
+      "router": 0.88
+    },
+    "hierarchical": {
+      "nc": 0.9967,
+      "router": 0.91,
+      "coarse_rate": 0.92,
+      "fine_rate": 0.9891
+    },
+    "router_gain_hier_vs_flat": 0.03,
+    "comparisons_per_level": 6,
+    "flat_comparisons": 30,
+    "fine_min_pair_dist": 0.12
+  },
+  "verdict": "SUPPORTED: hierarchical C0 flow preserves nearest-centroid accuracy (NC 0.997 vs flat 1.000) and improves routing (router 0.910 vs flat 0.880, +0.030) while needing only 6 comparisons per routing level instead of 30. The coarse->fine two-level layout enforces local separation (fine min pair dist 0.1200) that flat C0 flow cannot guarantee at 30 classes."
+}
