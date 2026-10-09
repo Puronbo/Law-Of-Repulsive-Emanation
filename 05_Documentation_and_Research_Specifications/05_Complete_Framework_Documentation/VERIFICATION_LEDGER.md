@@ -38,6 +38,8 @@ audit finding.
 | **R^3: Z(t) exponential decay** | experiments/ns_r3_proof.py | alpha = 0.843 (heat eq: 0.219). NS nonlinear term accelerates decay. | **CONCRETE** |
 | **R^3: Prodi-Serrin integral converges** | experiments/ns_r3_proof.py | int ||u||_inf^2 dt = 0.000013 < inf. Chain: Fourier bound + L1 decreasing + Z exponential. | **CONCRETE** |
 | **MILLENNIUM PROOF: Complete (R^3)** | docs/MILLENNIUM_PROOF_R3.md | All steps verified: Fourier bound, L1 bounded, Z exponential, PS integral converges, Serrin criterion met. | **CONCRETE (proof)** |
+| **Lean: Serrin scaling arithmetic (2026-10-09)** | `PunoCalculus\NavierStokes.lean` | proofs: `serrinScaling 4 6 = 1` and `serrinScaling 3 9 = 1` (Serrin line), `prodiSerrinAdmissible 4 6` and `3 9`, `serrin_endpoint_q3_excluded p = 3` rejected for every finite `p` | **FORMAL (axioms exactly `[propext, Classical.choice, Quot.sound]`)** |
+| **Lean: Prodi-Serrin / Fourier-bound statement walls (2026-10-09)** | `PunoCalculus\NavierStokes.lean` (`fourierInfBound`, `prodiSerrinIntegralFiniteCertified = false`, `nsGlobalRegularityOpen = true`, `nsFormalizedFacts` length 6) | Fourier bound `||u||_inf^2 <= 4EZ` recorded as an unproved statement (the `sum 1/|k|^2` route diverges on `Z^3`: the T^3-vs-R^3 gap); Prodi-Serrin integral finiteness numerically suggested, not proved; implication to global regularity stays OPEN, consistent with `MillenniumBridge` `NAVIER_STOKES :: NOT SETTLED` | **FORMAL (OPEN WALL)** |
 
 ## Corrections shipped this cycle
 
@@ -227,6 +229,7 @@ hygiene pass applied and verified post-fix. One packaging defect
 | M = Lambda/sinh(2*pi/(g_eff^2*(N-1))) | thirring_gn_crossover.py | Bisection solves 25+21+6=52 points, all match to machine precision | **CONCRETE** |
 | g_eff^2 = g^2 + h^2/(N-1) unifies Thirring + GN | thirring_gn_crossover.py | Phase diagram 25 points, N-dep 6 values | **CONCRETE** |
 | Crossover is smooth and monotonic | thirring_gn_crossover.py | 21 points along g+h=2, min M=2.50, max M=18.25, no discontinuity | **CONCRETE** |
+| **Lean: removable 0/0 of the crossover (2026-10-09)** | `PunoCalculus\MassGap.lean` (`sinh_div_self_tendsto_one`, `massGapCrossoverRemovable`, `crossoverCertifiedFacts` length 4) | `sinh(a)/a -> 1` and `a/sinh(a) -> 1` as `a -> 0` on the punctured neighbourhood (from `Real.hasDerivAt_sinh`, no guessed constant); endpoint honesty rows keep the `a -> 0` pole of `M = Lambda/sinh(a)` and the CDM `g_eff^2 -> 0` special-case `M = Lambda` (which contradicts the pure-formula limit `M -> 0`) explicitly NOT machine-checked | **FORMAL (axioms exactly `[propext, Classical.choice, Quot.sound]`)** |
 
 ## SU(2) YM 2+1D mass gap
 
@@ -316,16 +319,173 @@ hygiene pass applied and verified post-fix. One packaging defect
 
 ## Dark Energy 0/0 framework (field registration, this pass)
 
-Field status: **REGISTERED (audit-gap)**, not claim-verified. The framework has
-135 scripts; supporting `dark_unified.tex` is a paper, not a verified artifact.
-Per-script claim rows are to be added only as each script is individually
-audited. Rows below record *execution* facts verified on this pass, not claim
-verification.
+Field status: **REGISTERED + PER-SCRIPT AUDITED (2026-10-09)**, not claim-verified.
+The framework has 136 `.py` scripts; supporting `dark_unified.tex` is a paper, not a
+verified artifact. The per-script audit below records *execution* facts verified on
+this pass, not claim verification: 127 scripts run to a PASS/completed verdict, 9 are
+unreproducible (missing `../Universals` dependency / path), 1 times out, and each
+subject's actual theorem remains **OPEN** (the framework computes the 0/0 interior
+value; it does not prove the surrounding theorem). Rows below record *execution*
+facts, not claim verification.
 
 | Claim | Artifact | Independent check | Status |
 |---|---|---|---|
-| The framework's `../data` occurrences are prose comments, not live path bugs | 18 `*_0_over_0.py` scripts | `rg` audit: 17/18 run clean (exit 0). NOTE corrected 2026-10-07: none of the 135 scripts use `_central_data_dir()`; they emit old-named `*_data.json` into `02_Experimental_Implementations_and_Verification/data/` (e.g. `abc_conjecture_data.json`), while the modern named central copies (e.g. `abc_conjecture_data.json`) were populated in the 2026-10-05 redirect rebuild. The `../data` strings are historical comments | **CONCRETE (execution only)** |
+| The framework's `../data` occurrences are prose comments, not live path bugs | 18 `*_0_over_0.py` scripts | `rg` audit: 17/18 run clean (exit 0). NOTE corrected 2026-10-07: at that audit none of the 135 scripts used `_central_data_dir()`; they emitted old-named `*_data.json` into `02_Experimental_Implementations_and_Verification/data/` (e.g. `abc_conjecture_data.json`), while the modern named central copies (e.g. `abc_conjecture_data.json`) were populated in the 2026-10-05 redirect rebuild. (As of the 2026-10-09 per-script audit, 7 of the framework scripts -- the ones listed in the path-drift fix -- now emit via `_central_data_dir()`; the rest still write the legacy local `data/` path, disclosed.) The `../data` strings are historical comments | **CONCRETE (execution only)** |
 | 3 sizer scripts import the repo `packaging/utilities.py` | `air_sizing.py`, `rainwater_sizing.py`, `standby_efficiency.py` | All three FAILED before fix (`ModuleNotFoundError: packaging.utilities`, resolved to PyPI/parent-dir, not the repo module at `06_Configuration_and_Metadata/02_Data_Manifest_and_Processing`); after upward-search fix all three run clean (exit 0) and write to the central collection (`air_sizing_data.json`, `rainwater_data.json` was manifest-listed but MISSING and is now recovered by regeneration, `standby_efficiency_data.json`); central air/standby copies regenerated byte-identical | **CONCRETE (fixed & rerun)** |
+
+### Per-script audit (2026-10-09)
+
+All 136 scripts under
+`02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/`
+were executed from the repo root (90 s cap; the two slowest re-run at 300 s).
+**127** ran to completion with a PASS/SUPPORTED/completion verdict and wrote an
+artifact; **9** fail at import time (the `../Universals` package is absent, or a
+sibling module is not on `sys.path`); **1** (`ising_model_0_over_0.py`) did not
+terminate in 300 s. Three emit RuntimeWarnings under numerical overflow
+(`brody_navier_stokes`, `picard_little`, `wigner_semicircle`) and are marked
+`CONCRETE (warn)`. Two report honest negatives/partials: `chi_rho_vacuity`
+(self-declared VACUOUS -- the |chi| bridge certifies nothing about RH) and
+`polya_wall_1e8` (OVERALL FAIL on a missing independent detector dependency).
+No tracked central artifact changed except JSON `\u221e` escaping (restored).
+
+| Claim (script subject as 0/0) | Script | Independent check (execution) | Status |
+|---|---|---|---|
+| ABC CONJECTURE | `abc_conjecture_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| air_sizing.py | `air_sizing.py` | exits 0; engineering sizing verdict printed, writes central `air_sizing_data.json` | **CONCRETE** |
+| ARAKELOV GROTHENDIECK-RIEMANN-ROCH | `arakelov_grr_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| ARAKELOV THEORY | `arakelov_theory_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| argument_principle_0_over_0 | `argument_principle_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Atiyah-Singer Index Theorem | `atiyah_singer_0_over_0.py` | exits 0; all probes complete, artifact written | **CONCRETE** |
+| Banach fixed-point theorem | `banach_fixed_point_0_over_0.py` | exits 0; 7 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Bayes theorem | `bayes_theorem_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| ERGODIC THEORY: BIRKHOFF AVERAGE AT THE EXCEPTIONAL POINT | `birkhoff_average_0_over_0.py` | exits 0; 5 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Boltzmann entropy | `boltzmann_entropy_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| ALGEBRAIC K-THEORY: BOTT PERIODICITY AT THE DEGENERATE SPECTRUM | `bott_periodicity_0_over_0.py` | exits 0; 5 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Brody Boundary + Navier-Stokes 0/0 | `brody_navier_stokes_0_over_0.py` | exits 0; all probes complete, artifact written (RuntimeWarning numerics) | **CONCRETE (warn)** |
+| Brouwer fixed-point theorem | `brouwer_fixed_point_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| bsd_0_over_0 | `bsd_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| 0/0 in Category Theory: Natural Transformations, Yoneda, Adjunctions | `category_theory_0_over_0.py` | exits 0; all probes complete, artifact written | **CONCRETE** |
+| Cauchy integral formula | `cauchy_integral_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Central limit theorem | `central_limit_theorem_0_over_0.py` | exits 0; 7 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Cesaro summation | `cesaro_summation_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| NUMBER THEORY (ANTI-CLASS, q-SPACE): THE CHARACTER-WALK SUP RATIO | `char_walk_anti_0_over_0.py` | exits 0; 9 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| NUMBER THEORY (REMOVABLE, VALUE 0): FIXED-CHARACTER PARTIAL SUMS | `character_sums_0_over_0.py` | exits 0; 6 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| NUMBER THEORY (ANTI-CLASS MEMBER #74): CHEBYSHEV WALK psi(x) - x OVER | `chebyshev_psi_0_over_0.py` | exits 0; 11 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Chern-Gauss-Bonnet | `chern_gauss_bonnet_0_over_0.py` | exits 0; all probes complete, artifact written | **CONCRETE** |
+| Chi(rho) bridge: does it test RH? | `chi_rho_vacuity_0_over_0.py` | exits 0; 7/7 gates PASS but the script's own verdict is **VACUOUS**: the |chi|=1 bridge passes on a non-zero, so it certifies nothing about RH; global claim |chi|=1 => sigma=1/2 is FALSE (extra roots outside the strip) | **CONCRETE (negative)** |
+| COLMEZ CONJECTURE | `colmez_conjecture_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| combinatorics_0_over_0 | `combinatorics_0_over_0.py` | exits 0; 6 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| CONTINUITY OF e: (1 + x)^(1/x) AT x = 0 | `continuity_of_e_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| convex_variational_0_over_0 | `convex_variational_0_over_0.py` | exits 0; 6 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| de Rham Theorem | `de_rham_0_over_0.py` | exits 0; all probes complete, artifact written | **CONCRETE** |
+| NUMBER THEORY (ANTI-CLASS): DIRICHLET DIVISOR ERROR Delta(x)/x^(1/4) | `dirichlet_divisor_anti_0_over_0.py` | exits 0; 7 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| DIRICHLET DIVISOR SUMMATORY: D(x)/(x log x) AT x = oo | `dirichlet_divisor_summatory_0_over_0.py` | exits 0; 4 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Entropy Condition 0/0 | `entropy_condition_0_over_0.py` | exits 0; all probes complete, artifact written | **CONCRETE** |
+| Euler-Maclaurin | `euler_maclaurin_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Euler product of the Riemann zeta function | `euler_product_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| NUMBER THEORY (REMOVABLE, NAMED CONSTANT): EULER TOTIENT DENSITY | `euler_totient_0_over_0.py` | exits 0; 6 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| EXPLICIT FORMULA | `explicit_formula_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| EXPONENTIAL RATE: (a^x - 1)/x AT x = 0 | `exponential_rate_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| FALTINGS' THEOREM | `faltings_theorem_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Fermat's little theorem | `fermat_little_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Flow-guided active learning on the Poincare disk | `flow_active_learning.py` | import-time failure: missing dependency `manifold` (absent `../Universals` package) -- not runnable | **UNREPRODUCIBLE (missing dep)** |
+| Combined hierarchical + incremental continual learning | `flow_hier_incremental.py` | import-time failure: missing dependency `manifold` (absent `../Universals` package) -- not runnable | **UNREPRODUCIBLE (missing dep)** |
+| T48b: Flow-regularized continual learning with hierarchical anchors | `flow_hier_reg.py` | import-time failure: missing dependency `manifold` (absent `../Universals` package) -- not runnable | **UNREPRODUCIBLE (missing dep)** |
+| T55b: n-scaled flow-reg retest (does A*(n) fix continual drift?) | `flow_hier_reg_scaled.py` | import-time failure: missing dependency `manifold` (absent `../Universals` package) -- not runnable | **UNREPRODUCIBLE (missing dep)** |
+| Hierarchical C0 flow anchors on the Poincare disk | `flow_hierarchical.py` | import-time failure: missing dependency `manifold` (absent `../Universals` package) -- not runnable | **UNREPRODUCIBLE (missing dep)** |
+| Incremental class growth with C0 reflow (continual learning) | `flow_incremental.py` | import-time failure: missing dependency `manifold` (absent `../Universals` package) -- not runnable | **UNREPRODUCIBLE (missing dep)** |
+| REGULATOR ROBUSTNESS OF THE EH POLE SCROLL (A,B family) | `flow_pole_regulator_robust.py` | exits 0; 6 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| FLOW SCROLL: POLE GEOMETRY, WINDING, AND FEEDING OF THE EH-GRAVITY SEC | `flow_pole_scroll.py` | import-time failure: missing dependency `litim_flow` (absent `../Universals` package) -- not runnable | **UNREPRODUCIBLE (missing dep)** |
+| Flow-regularized embedding training | `flow_regularized.py` | import-time failure: missing dependency `manifold` (absent `../Universals` package) -- not runnable | **UNREPRODUCIBLE (missing dep)** |
+| The Fluctuation-Dissipation 0/0 (Einstein 1905, Nyquist 1928 | `fluctuation_dissipation.py` | exit 0; FDT ratios D_gamma/kT=1.005069, equipartition 1.000092, all probes pass (completes >90 s) | **CONCRETE** |
+| Fourier uncertainty principle | `fourier_uncertainty_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Fundamental theorem of algebra | `fta_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| GALOIS THEORY: DISCRIMINANT AT A REPEATED ROOT | `galois_discriminant_0_over_0.py` | exits 0; 5 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Gauss-Bonnet theorem | `gauss_bonnet_0_over_0.py` | exits 0; 8 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| NUMBER THEORY (ANTI-CLASS): GAUSS CIRCLE-ERROR P(x)/x^(1/4), FOURTH | `gauss_circle_anti_0_over_0.py` | exits 0; 7 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| COMBINATORICS: GENERATING FUNCTION SINGULARITY AT THE RADIUS | `generating_function_singularity_0_over_0.py` | exits 0; 6 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| NUMBER THEORY: GOLDBACH REPRESENTATION DENSITY (OPEN TARGET) | `goldbach_density_0_over_0.py` | exits 0; 6 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| gradient_descent_0_over_0 | `gradient_descent_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Green's function | `greens_function_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| grh_dirichlet_0_over_0 | `grh_dirichlet_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| GROMOV NON-SQUEEZING | `gromov_non_squeezing_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| H-Theorem for Navier-Stokes | `h_theorem_navier_stokes_0_over_0.py` | exits 0; all probes complete, artifact written | **CONCRETE** |
+| HALF COSINE: (1 - cos x)/x^2 AT x = 0 | `half_cosine_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Information Conservation 0/0 | `information_conservation_0_over_0.py` | exits 0; all probes complete, artifact written | **CONCRETE** |
+| Ising model phase transition | `ising_model_0_over_0.py` | did not terminate within 300 s at the audit cap | **UNREPRODUCIBLE (timeout)** |
+| IWASAWA MAIN CONJECTURE | `iwasawa_main_conjecture_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Khintchine's theorem (metric Diophantine approximation) | `khintchine_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| KKT conditions | `kkt_conditions_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Knot Invariants | `knot_invariants_0_over_0.py` | exits 0; all probes complete, artifact written | **CONCRETE** |
+| Landau function 0/0: the maximal order of a permutation | `landau_function_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| LANGLANDS PROGRAM | `langlands_program_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Laplace's method | `laplace_method_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| NUMBER THEORY (ANTI-CLASS CORROBORATION): THE LATTICE PAIR AT THE | `lattice_wall_1e8_0_over_0.py` | exits 0; 10 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Lefschetz fixed-point theorem | `lefschetz_fixed_point_0_over_0.py` | exits 0; 7 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| log_limits_0_over_0 | `log_limits_0_over_0.py` | exits 0; 6 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Logic: Godel incompleteness, halting problem, consistency strength | `logic_0_over_0.py` | exits 0; all probes complete, artifact written | **CONCRETE** |
+| Lorenz attractor / chaos | `lorenz_attractor_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| MANIN-MUMFORD CONJECTURE | `manin_mumford_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| COMPLEMENT MEMBER #75: THE MERTENS PRODUCT GAP - THE ANTI TRIO'S MIRRO | `mertens_product_0_over_0.py` | exits 0; 12 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Millennium Prize Problems | `millennium_0_over_0.py` | exits 0; all probes complete, artifact written | **CONCRETE** |
+| Mobius function | `mobius_function_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| NUMBER THEORY (ANTI-CLASS): MERTENS FUNCTION M(n)/n^(1/2), SECOND | `mobius_mertens_0_over_0.py` | exits 0; 6 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Modular Forms | `modular_forms_0_over_0.py` | exits 0; all probes complete, artifact written | **CONCRETE** |
+| MONTGOMERY-ODLYZKO LAW | `montgomery_odlyzko_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Morse theory | `morse_theory_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| CATEGORY THEORY: NATURAL TRANSFORMATION AT THE DEGENERATE OBJECT | `natural_transformation_0_over_0.py` | exits 0; 5 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| ARITHMETIC GEOMETRY: NERON-TATE HEIGHT AT TORSION | `neron_tate_height_torsion_0_over_0.py` | exits 0; 5 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| NEWTON QUADRATIC RATE: |e_{k+1}|/|e_k|^2 AT e_k -> 0 | `newton_quadratic_rate_0_over_0.py` | exits 0; 4 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Noether's theorem | `noether_landau_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Noether's theorem (Lagrangian mechanics) | `noether_theorem_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| NON-COMMUTATIVE GEOMETRY | `non_commutative_geometry_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| number_theory_sums_0_over_0 | `number_theory_sums_0_over_0.py` | exits 0; 6 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Open Questions from the Thaumaturge's Ledger ù five probes answering t | `open_questions_0_over_0.py` | exits 0; 5 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Picard's little theorem | `picard_little_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) (RuntimeWarning numerics) | **CONCRETE (warn)** |
+| Poincare Conjecture | `poincare_0_over_0.py` | exits 0; all probes complete, artifact written | **CONCRETE** |
+| poincare_hopf_0_over_0 | `poincare_hopf_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Poincare recurrence theorem | `poincare_recurrence_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Poisson summation | `poisson_summation_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| NUMBER THEORY (ANTI-CLASS): POLYA'S CONJECTURE, THE 0/0 WITHOUT | `polya_liouville_0_over_0.py` | exits 0; 5 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| NUMBER THEORY (ANTI-CLASS CORROBORATION): POLYA/LIOUVILLE WALK TO THE | `polya_wall_1e8_0_over_0.py` | exits 0; OVERALL FAIL: G2-G5 PASS (band structure to 1e8, ratio>1) but G1 (independent detector to 1e7) FAIL -- depends on an absent detector artifact | **PARTIAL (G1 dependency)** |
+| POLYGON PERIMETER: n sin(pi/n) AT n = oo | `polygon_perimeter_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Prime-Geodesic Theorem 0/0 | `prime_geodesic_0_over_0.py` | exits 0; all probes complete, artifact written | **CONCRETE** |
+| Prime number theorem | `prime_number_theorem_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| NUMBER THEORY (REMOVABLE, NAMED CONSTANT): THE PRIME-RECIPROCAL | `prime_reciprocal_0_over_0.py` | exits 0; 5 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| probability_0_over_0 | `probability_0_over_0.py` | exits 0; 6 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Pythagorean theorem | `pythagorean_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| QFT 0/0: Renormalization as Removable Singularity | `qft_0_over_0.py` | exits 0; all probes complete, artifact written | **CONCRETE** |
+| random_matrix_0_over_0 | `random_matrix_0_over_0.py` | exits 0; 5 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Random Matrix Theory | `random_matrix_theory_0_over_0.py` | exits 0; all probes complete, artifact written | **CONCRETE** |
+| Rayleigh quotient | `rayleigh_quotient_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| GEOMETRIC ANALYSIS: RICCI FLOW AT THE NECK PINCH | `ricci_flow_neck_pinch_0_over_0.py` | exits 0; 5 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Riemann-Roch | `riemann_roch_0_over_0.py` | exits 0; all probes complete, artifact written | **CONCRETE** |
+| Saddle point approximation | `saddle_point_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Sard's theorem | `sard_theorem_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| SATO-TATE CONJECTURE | `sato_tate_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Schanuel's conjecture | `schanuel_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| SCHANUEL'S CONJECTURE | `schanuels_conjecture_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Selberg Trace Formula | `selberg_trace_0_over_0.py` | exits 0; all probes complete, artifact written | **CONCRETE** |
+| Selberg Zeta Function | `selberg_zeta_0_over_0.py` | exits 0; all probes complete, artifact written | **CONCRETE** |
+| Shannon entropy | `shannon_entropy_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| SHIMURA-TANIYAMA CORRESPONDENCE | `shimura_taniyama_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| SINC FUNCTION: sin(x)/x AT x = 0 | `sinc_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Stirling's approximation | `stirling_approx_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Stokes/de Rham theorem | `stokes_de_rham_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Taylor's theorem | `taylor_remainder_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| TAYLOR THIRD ORDER: (sin x - x)/x^3 AT x = 0 | `taylor_third_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| TQFT | `tqft_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| NUMBER THEORY: HARDY-LITTLEWOOD TWIN-PRIME DENSITY (OPEN TARGET) | `twin_prime_density_0_over_0.py` | exits 0; 5 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| UNIFORM BOUNDEDNESS CONJECTURE | `uniform_boundedness_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| VOJTA'S CONJECTURE | `vojta_conjecture_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Wallis product | `wallis_product_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Weil explicit formula | `weil_explicit_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Weyl's law | `weyl_law_0_over_0.py` | exits 0; 5 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Wigner semicircle law | `wigner_semicircle_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) (RuntimeWarning numerics) | **CONCRETE (warn)** |
+| WINDING TRANSITION AS A RESOLUTION-SCALED 0/0 | `winding_transition_0_over_0.py` | import-time failure: `winding_phase_diagram` not on sys.path (module lives in `06_Miscellaneous_Experiments/`) -- not runnable as-is | **UNREPRODUCIBLE (path)** |
+| ZeroZero family: the removable 0/0 catalogue (zero_zero_family_0_over_ | `zero_zero_family_0_over_0.py` | exits 0; 13 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| Riemann zeta functional equation | `zeta_functional_eq_0_over_0.py` | exits 0; 1 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
+| ZILBER-PINK CONJECTURE | `zilber_pink_0_over_0.py` | exits 0; 3 PASS/SUPPORTED verdict line(s) | **CONCRETE** |
 
 ## Paper provenance register (P2 item 9, audited this pass)
 
@@ -358,6 +518,35 @@ H-theorem/navier-stokes, Knot invariants, Millennium Prize, Modular forms,
 Poincare, QFT, Random matrix theory, Riemann-Roch, Selberg trace formula,
 Selberg zeta function.  For the 21 backed ones the cited test name matches a
 `test_*` inside `test_solvable_theorems.py` (checked programmatically).
+
+Per-document rows for the 21 backed `THE_*_0_OVER_0.md` (script + matching
+`test_*` both resolve and the test executes the script's verdict fields):
+
+| Document | Cited script | Backing test | Status |
+|---|---|---|---|
+| `THE_ABC_CONJECTURE_0_OVER_0.md` | `02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/abc_conjecture_0_over_0.py` | `test_abc_conjecture_0_over_0` (executes the cited script and asserts its verdict fields) | **CONCRETE (doc-claim)** |
+| `THE_ARAKELOV_GRR_0_OVER_0.md` | `02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/arakelov_grr_0_over_0.py` | `test_arakelov_grr` (executes the cited script and asserts its verdict fields) | **CONCRETE (doc-claim)** |
+| `THE_ARAKELOV_THEORY_0_OVER_0.md` | `02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/arakelov_theory_0_over_0.py` | `test_arakelov_theory` (executes the cited script and asserts its verdict fields) | **CONCRETE (doc-claim)** |
+| `THE_COLMEZ_CONJECTURE_0_OVER_0.md` | `02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/colmez_conjecture_0_over_0.py` | `test_colmez_conjecture` (executes the cited script and asserts its verdict fields) | **CONCRETE (doc-claim)** |
+| `THE_EXPLICIT_FORMULA_0_OVER_0.md` | `02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/explicit_formula_0_over_0.py` | `test_explicit_formula` (executes the cited script and asserts its verdict fields) | **CONCRETE (doc-claim)** |
+| `THE_FALTINGS_THEOREM_0_OVER_0.md` | `02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/faltings_theorem_0_over_0.py` | `test_faltings_theorem` (executes the cited script and asserts its verdict fields) | **CONCRETE (doc-claim)** |
+| `THE_GROMOV_NON_SQUEEZING_0_OVER_0.md` | `02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/gromov_non_squeezing_0_over_0.py` | `test_gromov_non_squeezing` (executes the cited script and asserts its verdict fields) | **CONCRETE (doc-claim)** |
+| `THE_IWASAWA_MAIN_CONJECTURE_0_OVER_0.md` | `02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/iwasawa_main_conjecture_0_over_0.py` | `test_iwasawa_main_conjecture` (executes the cited script and asserts its verdict fields) | **CONCRETE (doc-claim)** |
+| `THE_LANGLANDS_PROGRAM_0_OVER_0.md` | `02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/langlands_program_0_over_0.py` | `test_langlands_program` (executes the cited script and asserts its verdict fields) | **CONCRETE (doc-claim)** |
+| `THE_MANIN_MUMFORD_0_OVER_0.md` | `02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/manin_mumford_0_over_0.py` | `test_manin_mumford` (executes the cited script and asserts its verdict fields) | **CONCRETE (doc-claim)** |
+| `THE_MONTGOMERY_ODLYZKO_0_OVER_0.md` | `02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/montgomery_odlyzko_0_over_0.py` | `test_montgomery_odlyzko` (executes the cited script and asserts its verdict fields) | **CONCRETE (doc-claim)** |
+| `THE_NON_COMMUTATIVE_GEOMETRY_0_OVER_0.md` | `02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/non_commutative_geometry_0_over_0.py` | `test_non_commutative_geometry` (executes the cited script and asserts its verdict fields) | **CONCRETE (doc-claim)** |
+| `THE_SATO_TATE_0_OVER_0.md` | `02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/sato_tate_0_over_0.py` | `test_sato_tate` (executes the cited script and asserts its verdict fields) | **CONCRETE (doc-claim)** |
+| `THE_SCHANUELS_CONJECTURE_0_OVER_0.md` | `02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/schanuels_conjecture_0_over_0.py` | `test_schanuels_conjecture` (executes the cited script and asserts its verdict fields) | **CONCRETE (doc-claim)** |
+| `THE_SHIMURA_TANIYAMA_0_OVER_0.md` | `02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/shimura_taniyama_0_over_0.py` | `test_shimura_taniyama` (executes the cited script and asserts its verdict fields) | **CONCRETE (doc-claim)** |
+| `THE_TQFT_0_OVER_0.md` | `02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/tqft_0_over_0.py` | `test_tqft` (executes the cited script and asserts its verdict fields) | **CONCRETE (doc-claim)** |
+| `THE_UNIFORM_BOUNDEDNESS_0_OVER_0.md` | `02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/uniform_boundedness_0_over_0.py` | `test_uniform_boundedness` (executes the cited script and asserts its verdict fields) | **CONCRETE (doc-claim)** |
+| `THE_VOJTA_CONJECTURE_0_OVER_0.md` | `02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/vojta_conjecture_0_over_0.py` | `test_vojta_conjecture` (executes the cited script and asserts its verdict fields) | **CONCRETE (doc-claim)** |
+| `THE_ZILBER_PINK_0_OVER_0.md` | `02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/zilber_pink_0_over_0.py` | `test_zilber_pink` (executes the cited script and asserts its verdict fields) | **CONCRETE (doc-claim)** |
+| `THE_HERMITE_BIEHLER_PROOF_0_OVER_0.md` | `02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/hermite_biehler_proof.py` | `test_hermite_biehler_proof` (executes the cited script and asserts its verdict fields) | **CONCRETE (doc-claim)** |
+| `THE_INTERLACING_DE_BRANGES_0_OVER_0.md` | `02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/interlacing_de_branges.py` | `test_interlacing_de_branges` (executes the cited script and asserts its verdict fields) | **CONCRETE (doc-claim)** |
+
+
 
 **papers/*.pdf (67).**  Provenance by backing:
 - 3 TEX-PEER (peer of the audited `.tex` in this folder): `dark_unified`,
