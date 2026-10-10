@@ -59,6 +59,41 @@ Either way the forward step is to **name the exactly critical quantity and the
 next-order term that breaks its marginality** — the same move each column of the
 table above asks for.
 
+## The wall is dimensional (and what "mixing dimensions" can buy)
+
+The missing control is not a constant; it is a dimension. `H^1` embeds in
+`L^inf` **iff the effective dimension `d < 2`** (`dimension_threshold.py`):
+a unit-`H^1` bump at width `eps` has `||u||_inf^2 = 10^(d-2)` per decade —
+bounded at `d=2`, diverging for `d>2`. Physical `D=3` needs `s>3/2` and has
+`s=1`; Hou's effective `n~3.188` is short by `0.594`. So the energy method is
+one half-derivative (or one dimension) short, and this is the same wall.
+
+The natural repair is to let the dimension itself vary — "a mixture of all
+dimensions". `dimension_mixture.py` pins what that can and cannot do:
+
+- **No averaging.** `||u||_inf/||u||_{H^1}` of a mixture is governed by `max_i d_i`,
+  not a mean. Adding a low-dimension bulk to a `d=3` spike does not lower the
+  sup (bulk `0.965` -> with a tiny spike `1.461` -> pure spike `49.6`). Dimension
+  of a mixture is a sup, so mixing alone cannot push `d_eff` below `2`.
+- **Intermittency budget.** The only route is energy concentration: the
+  admissible high-dimension H^1 fraction is `theta_max = O(eps)` (measured
+  `3.33e-3` at `eps=1e-3` vs leading-order `3.29e-3`; a clean factor `0.10` per
+  decade). So closure requires the high-dimension energy to *vanish linearly
+  with scale* — which is exactly intermittency, quantified.
+
+Four viable readings of "a mixture of all dimensions", each with its open content:
+
+| Reading | Framework | Open content |
+|---|---|---|
+| Capacity/dimension spectrum | Riesz potentials on fractal measures (Adams/Hedberg) | which admissible `mu` is compatible with the NS/Puno energy identity |
+| Continuous dimension | dimensional regularisation / scaling-critical dimension (Tao; `L^2` critical at `D=2`) | the nonlinearity does not continue cleanly in `D` |
+| Dynamical dimension | spectral-in-`n` for `Delta_n` (Frontier 1's next step; threshold `n_c=1`, physical `n=3`) | `n`-independence is proved for *fixed* `n` only (`SelfSimilarExponents.lean`) |
+| Multifractal dimension | log-correlated fields / Gaussian multiplicative chaos | no rigorous bridge from NS singularity formation to such a measure yet |
+
+The unifying open content — the **bridge barrier** — is identical in all four:
+an equation-preserving reweighting that keeps the high-dimension energy under the
+`O(eps)` budget at every scale. Same shape as the refuted-bound wall.
+
 ## What this is not
 
 It is not a claim that the five problems are one theorem; the Millennium list is
