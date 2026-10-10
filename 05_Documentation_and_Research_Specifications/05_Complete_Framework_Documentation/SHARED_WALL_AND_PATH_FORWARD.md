@@ -104,6 +104,28 @@ The unifying open content — the **bridge barrier** — is identical in all fou
 an equation-preserving reweighting that keeps the high-dimension energy under the
 `O(eps)` budget at every scale. Same shape as the refuted-bound wall.
 
+### Where the three follow-up steps landed
+
+1. **Log corrections do not repair the wall** (`log_borderline.py`). At `d=2`
+   the BG-log ratio is bounded and decreasing (`0.340 -> 0.237`); at `d=3` it
+   grows `~22x` per three decades of scale. Every logarithmic rescale costs less
+   than one power, so 3D escape is `H^{3/2}` (Besov/Lorentz-class), not `H^1 log`
+   — the missed `1/2` derivative is already the dimensional wall.
+2. **The dimension is a spectral eigenvalue** (`spectral_in_n.py`).
+   `lambda_1(n) = j_{(n-1)/2,1}^2` grows with `n` (`5.783 -> 14.682 -> 26.375`
+   at `n = 1, 3, 5`), so the Laplacian stiffens with effective dimension, and the
+   threshold `n_c = 1` (`nu = 0`, `J_0`) sits exactly at `d_c = 2`. Carrying a
+   dynamical `n(t)` into the exponent balance is Frontier 1's concrete next step
+   (currently `n` fixed).
+3. **On-flow the marginal quantity is finite with constant flatness**
+   (`ns_critical_integral.py`). On resolved pseudo-spectral flows across
+   `nu = {0.2, 0.1, 0.05}` the exact identity `int Z dt = (E0-E(T))/(2 nu)` holds
+   to `1e-2..1e-3`, `int Z^2 dt` is finite, and temporal enstrophy flatness is
+   `F ~ 5-7` with sweep exponent `p = -0.20`: resolved viscous flows do not show
+   intermittency growth. Diagnosis: a genuine singularity must push the flatness
+   regime into the unresolved near-singular range, the same `O(eps)` energy budget
+   quantified by `dimension_mixture.py`.
+
 ## What this is not
 
 It is not a claim that the five problems are one theorem; the Millennium list is
