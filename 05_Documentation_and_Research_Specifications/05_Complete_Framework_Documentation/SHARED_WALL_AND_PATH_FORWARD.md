@@ -55,6 +55,16 @@ true. The honest options are:
    (consistent with Frontier 1 of `Linear Stability of Candidate Swirl
    Profiles.md` and with `SelfSimilarExponents.lean`).
 
+Option 1 is now explicit. The energy method reaches `L^p` exactly for `p <= 6`
+(Gagliardo–Nirenberg exponent `theta(p) = 3/2 - 3/p <= 1`, verified in
+`serrin_ladder.py`), and the admissible Serrin route at the ceiling `p = 6`
+(`q = 4`) closes only if `int Z^2 dt < inf` — whereas the energy identity gives
+only `int Z dt < inf`. The `p = 3` endpoint needs `L^inf` (the dimensional wall).
+So the exactly critical quantity is **one extra power of enstrophy**: the
+next-order term that would break the marginality is any estimate giving
+`int Z^{1+epsilon} dt < inf` for some `epsilon > 0`, or its Besov/Lorentz
+generalisation.
+
 Either way the forward step is to **name the exactly critical quantity and the
 next-order term that breaks its marginality** — the same move each column of the
 table above asks for.
