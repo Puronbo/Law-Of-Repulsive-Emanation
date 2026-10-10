@@ -24,3 +24,4 @@ import PunoCalculus.Cosmology.OriginWindow
 import PunoCalculus.Removable
 import PunoCalculus.ZeroZero
 import PunoCalculus.NavierStokes
+import PunoCalculus.SelfSimilarExponents
