@@ -106,6 +106,10 @@ EXTRA_SOURCES = {
     "06_Miscellaneous_Experiments/origin_matrix.py": [
         "origin_matrix.json",
     ],
+    "02_Experimental_Implementations_and_Verification/"
+    "experiments/stability_harness.py": [
+        "stability_harness.json",
+    ],
     # Toomre/spiral companions build their output path with
     # `os.path.join(OUTPUT_DIR, "<name>.json")`, so `ARTIFACT_RE` cannot see
     # them even though they regenerate their artifacts deterministically
