@@ -39,7 +39,8 @@ from ns_profile_collapse import radial_spectrum
 OUT = "data/ns_zero_order.json"
 
 
-def run_case(nu, N=32, dt=0.003, T_max=12.0, save_every=8, seed=7, K0=6):
+def run_case(nu, N=32, dt=0.003, T_max=12.0, save_every=8, seed=7, K0=6,
+             k0=4.0, sigma=1.5):
     spec = build_spectral(N)
     X, Y, Zg, kx, ky, kz, k2, k2i, k_inv, mask = spec
     h3 = (2 * np.pi / N) ** 3
@@ -51,7 +52,7 @@ def run_case(nu, N=32, dt=0.003, T_max=12.0, save_every=8, seed=7, K0=6):
     high = ken >= K0
     low = ~high
 
-    ux, uy, uz = make_broadband_ic(kx, ky, kz, k2, k_inv, k0=4.0, sigma=1.5,
+    ux, uy, uz = make_broadband_ic(kx, ky, kz, k2, k_inv, k0=k0, sigma=sigma,
                                    seed=seed, N=N)
     E0, Z0, _, _ = metrics(ux, uy, uz, kx, ky, kz, k2, h3, n3)
     scale = 1.0 / np.sqrt(2 * E0)

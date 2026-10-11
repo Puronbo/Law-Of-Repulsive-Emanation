@@ -250,6 +250,23 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
      grid-converged; refining the grid mimics lowering `nu` (`k` down, `lambda` up
      toward `0`) but never crosses to repulsion. Ten substantive theorems, axioms
      exactly `[propext, Classical.choice, Quot.sound]`; build green (8739 jobs).
+ 14. **The one pattern: order sets the rung, orientation sets the direction — two
+     numbers, one wall** (`OnePattern.lean`). The synthesis the whole register
+     points at. Every guise of the scaling-critical object is the same ladder
+     shifted by the order (`criticalCurve_through_ladder :
+     criticalSmoothness a p = sCrit p + (1 - a)`; the register ladder is `a = 1`),
+     and the recurrence identity `theta + criticalSmoothness a = 1/2 + (1 - a)`
+     collapses to `thetaAddSCrit` at order one. Orientation is the second number:
+     the sign of `log|L|` (`GreatAttractor.fixedPoint_logSign`). So the wall is
+     governed by exactly two quantities — the order of vanishing `k`
+     (removability / critical rung) and the multiplier `|L|` (attracting vs
+     repelling) — which is why NS, the fixed-point 0/0, and the critical ladder
+     are one object in many forms. On-flow both are read and both are robust:
+     order `k > 1` finite and orientation ATTRACTING at every `nu`, every
+     resolution (`ns_resolution_study.py`), and every initial condition
+     (`ns_zero_order_robust.py`). Five substantive theorems, axioms exactly
+     `[propext, Classical.choice, Quot.sound]`; build green (8740 jobs). The wall
+     itself stays OPEN: the pattern is identified, the singular-limit bound is not.
 
 ## Sources for the missing brick (scaling-critical control)
 
