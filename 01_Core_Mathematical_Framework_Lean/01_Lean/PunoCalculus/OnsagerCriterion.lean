@@ -47,6 +47,19 @@ theorem spike_of_excess {ι : Type*} (Z : ι → ℝ) (s : Finset ι) (n : ℕ) 
   simp only [not_exists, not_and, not_lt] at hc
   exact (lt_irrefl _) (h.trans_le (weighted_sum_le Z s n M hZ hc))
 
+/-- **The excess majorises the critical quantity.**  A positive excess weight
+`w ≥ 1` makes the supercritical sum dominate the critical sum, so controlling the
+Onsager-weighted cascade controls the critical one.  This is the other direction
+of the criterion -- the one that yields safety -- and is the mirror of
+`weighted_sum_le`. -/
+theorem excess_majorizes {ι : Type*} (a w : ι → ℝ) (s : Finset ι)
+    (ha : ∀ i ∈ s, 0 ≤ a i) (hw : ∀ i ∈ s, 1 ≤ w i) :
+    ∑ i ∈ s, a i ≤ ∑ i ∈ s, w i * a i := by
+  apply Finset.sum_le_sum
+  intro i hi
+  calc a i = 1 * a i := (one_mul _).symm
+    _ ≤ w i * a i := mul_le_mul_of_nonneg_right (hw i hi) (ha i hi)
+
 /-- The open brick: the uniform bound `M` on the invariant moment.  Stated as an
 open marker in the register idiom — the criterion above is sufficient, this
 boundedness is what is missing. -/
@@ -54,9 +67,9 @@ def criticalInvariantBoundedOpen : Prop := True
 
 /-- The formalised facts of this criterion brick. -/
 def onsagerCriterionFacts : List String :=
-  [ "weighted_sum_le", "spike_of_excess" ]
+  [ "weighted_sum_le", "spike_of_excess", "excess_majorizes" ]
 
-/-- The register has exactly two entries. -/
-theorem onsagerCriterionFacts_length : onsagerCriterionFacts.length = 2 := by decide
+/-- The register has exactly three entries. -/
+theorem onsagerCriterionFacts_length : onsagerCriterionFacts.length = 3 := by decide
 
 end PunoCalculus.OnsagerCriterion

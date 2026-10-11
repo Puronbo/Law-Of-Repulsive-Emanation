@@ -283,8 +283,21 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
      grid-converged, so the "approach to the Onsager bound" was a resolution
      artefact. The order/orientation probe, by contrast, IS grid-converged and
      IC-independent (bullet 13). The register keeps only what survives a resolution
-     study. Two substantive theorems, axioms exactly
+     study. Three substantive theorems (adding `excess_majorizes`, the safety
+     direction that the excess majorises the critical quantity), axioms exactly
      `[propext, Classical.choice, Quot.sound]`; build green (8741 jobs).
+ 16. **Cross-system: the order is shared, the orientation is the discriminator**
+     (`burgers_zero_order.py`). The same order/orientation probe run on a system
+     that *does* form a singularity — viscous Burgers (`2 sin x` IC, `N=512`). It
+     shares the finite order of vanishing (`k = 19.4 / 7.8 / 5.0` at
+     `nu = 0.1 / 0.02 / 0.004`, decreasing with `nu` exactly as in NS) but flips
+     the orientation: `lambda = +15.3 / +16.2 / +17.4 > 0`, REPELLING — the high
+     modes pile up at the shock. Resolved Navier-Stokes is ATTRACTING (`lambda < 0`).
+     So the one pattern recurs across systems and the two numbers separate them:
+     the order is shared, the orientation tells a shock-forming system from a
+     purely dissipating one. This sharpens the wall's reading: NS sits on the
+     *attracting* side in the resolved range, so any repulsion (and the blowup it
+     would signal) must live beyond the resolved range.
 
 ## Sources for the missing brick (scaling-critical control)
 
