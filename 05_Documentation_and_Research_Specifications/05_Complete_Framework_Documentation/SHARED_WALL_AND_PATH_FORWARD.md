@@ -371,6 +371,17 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       (`dZ/dt <= 0`) that is *not* available in 3D. Three substantive theorems,
       axioms exactly `[propext, Classical.choice, Quot.sound]`; build green (8743
       jobs). Wall OPEN.
+ 23. **The enstrophy barrier** (`EnstrophyBarrier.lean`). The wall's open half is
+      BOUNDEDNESS; the one difference between the 2D interior bound and the 3D
+      blow-up-capable regime is the ORDER of the enstrophy increment. *2D*:
+      non-increasing (`dZ/dt <= 0`) is bounded by its start (`mono_step_bounded`).
+      *3D*: a per-step increment `<= C * Z^2` forces no bound -- the doubling
+      schedule `y n = A * 2^n` satisfies it (once `C A >= 1`) yet is unbounded
+      (`quadratic_step_unbounded`, `quadratic_no_uniform_bound`). So the wall is
+      not a missing estimate of the same shape as the 2D bound: it is exactly the
+      gap between a linear (Lyapunov) increment and a quadratic (blow-up-capable)
+      one. Four substantive theorems, axioms exactly `[propext, Classical.choice,
+      Quot.sound]`; build green (8744 jobs). Wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 

@@ -35,3 +35,4 @@ import PunoCalculus.OnePattern
 import PunoCalculus.OnsagerCriterion
 import PunoCalculus.ContinuationCriterion
 import PunoCalculus.StableBounded
+import PunoCalculus.EnstrophyBarrier
