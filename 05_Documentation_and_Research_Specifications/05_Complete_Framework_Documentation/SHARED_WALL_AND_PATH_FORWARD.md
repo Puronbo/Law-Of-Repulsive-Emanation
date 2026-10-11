@@ -126,17 +126,28 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
    regime into the unresolved near-singular range, the same `O(eps)` energy budget
    quantified by `dimension_mixture.py`.
 4. **The one-extra-power is now machine-checked** (`SerrinLadder.lean`). The
-   ladder arithmetic `theta(p) = 3/2 - 3/p` with ceiling `theta(6) = 1`, the
-   Serrin `(6,4)` critical power `theta*q/2 = 2`, and `2 - 1 = 1` are formal
-   theorems (nine, axioms `[propext, Classical.choice, Quot.sound]`). The formal
-   target implied by 1-3 is exactly `int Z^{1+eps} dt` for some `eps > 0` (or its
-   Besov/Lorentz generalisation) — the next-order term that breaks the
-   marginality.
-5. **On-flow the enstrophy scale sits far from the grid** (`ns_spectral_slope.py`).
-   `k_eff = sqrt(Z/E)` never exceeds `0.32` of the dealiased cutoff across the
-   viscosity sweep, the ratio-vs-`nu` power is `+0.02` (flat), and the spectral
-   peak migrates *backward* (`4 -> 3`, no forward cascade): decaying resolved runs
-   approach the wall `s_c = 3/2` only in the unresolved near-singular range.
+    ladder arithmetic `theta(p) = 3/2 - 3/p` with ceiling `theta(p) <= 1 iff p <= 6`,
+    the full Serrin line `2/q + 3/p = 1`, the `(6,4)` critical power
+    `theta*q/2 = 2`, and `2 - 1 = 1` are formal theorems (eleven, axioms
+    `[propext, Classical.choice, Quot.sound]`). The formal target implied by 1-3 is
+    exactly `int Z^{1+eps} dt` for some `eps > 0` (or its Besov/Lorentz
+    generalisation) — the next-order term that breaks the marginality.
+ 5. **On-flow the enstrophy scale sits far from the grid** (`ns_spectral_slope.py`).
+    `k_eff = sqrt(Z/E)` never exceeds `0.32` of the dealiased cutoff across the
+    viscosity sweep, the ratio-vs-`nu` power is `+0.02` (flat), and the spectral
+    peak migrates *backward* (`4 -> 3`, no forward cascade): decaying resolved runs
+    approach the wall `s_c = 3/2` only in the unresolved near-singular range.
+ 6. **Even sustained forcing produces no intermittency on resolved scales**
+    (`ns_forced_intermittency.py`). With additive forcing pumping the band
+    `|k| in [2,3)` to a steady `Z ~ 12`, the enstrophy time series is
+    quasi-laminar: flatness `F = 1.008` at both `nu = 0.1` and `0.05` (sweep power
+    `+0.00`), the high-shell share peaks at `0.03-0.05%` against the `O(eps)`
+    intermittency budget of `dimension_mixture.py` (margin `> 431x`), and
+    `k_eff = 22%` of cutoff. No burst mechanism appears on resolved scales, in
+    either the forced or the decaying regime: growth-by-addition (mixtures,
+    `max_i d_i`, `int Z^{1+eps}`) is the measured route, and the stiffness that
+    would make `n(t)` matter is monotone (`SelfSimilarExponents.lean`) while never
+    changing the forced powers.
 
 ## What this is not
 

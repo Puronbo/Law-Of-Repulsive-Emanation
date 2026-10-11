@@ -163,6 +163,24 @@ theorem uzCoefficientPowerNIndependent (n n' basePower γ : ℝ) :
     advectionTermPower (n - 1) basePower γ =
       advectionTermPower (n' - 1) basePower γ := rfl
 
+/-- The advection prefactor `κ(n) = n - 1` is monotone in the dimension-like
+parameter: raising `n` stiffens the effective operator (no τ-power change). -/
+theorem kappaMonotone {n m : ℝ} (h : n ≤ m) : n - 1 ≤ m - 1 := by
+  nlinarith
+
+/-- **Dynamical dimension.**  For every real `n` the forced exponents remain
+the unique balance solution (`BalanceSystem` is `n`-free), and the only
+`n`-dependent object, the prefactor `κ(n) = n - 1`, is monotone (stiffening)
+while its τ-power never changes: a varying `n(t)` moves only prefactors, never
+the forced powers. -/
+theorem dynamicalNMonotoneStiffening_powersForced (n m : ℝ) (h : n ≤ m) :
+    n - 1 ≤ m - 1 ∧
+      advectionTermPower (n - 1) (-1) (1 / 2) =
+        advectionTermPower (m - 1) (-1) (1 / 2) := by
+  constructor
+  · nlinarith
+  · exact uzCoefficientPowerNIndependent n m (-1) (1 / 2)
+
 /-! ## Honesty markers (statement-layer convention)
 
 * `selfSimilarProfileExistenceOpen` — whether a bounded, admissible profile
@@ -190,12 +208,13 @@ def frontier1Facts : List String :=
   ["forced (p,q,s,γ) = (-1,-3/2,-1/2,1/2): unique four-way dominant balance (machine-checked)",
    "γ = 1/2 forced by u1 diffusion balance; s = -1/2 forced by u1 time/advection; q = -3/2 forced by Poisson; p = -1 forced by ω1 production (machine-checked)",
    "balance system is n-free; second-order and advection powers are prefactor-independent: exponents forced for EVERY real n, not just n = 3 (machine-checked)",
+   "dynamical n: kappa(n) = n-1 is monotone (operator stiffens with n) and never changes the τ-powers; a varying n(t) moves only prefactors, never the forced exponents (machine-checked)",
    "bounded profile at forced exponents EXISTS: OPEN (numerical searches fail; shape runs to domain corner)",
    "Type II blow-up naming: interpretive, NOT machine-checked",
    "connection to Hou γ ≈ 0.5233 / effective dimension ≈ 3.188: commentary only"]
 
-/-- The inventory has exactly six entries. -/
-theorem frontier1Facts_length : frontier1Facts.length = 6 := by
+/-- The inventory has exactly seven entries. -/
+theorem frontier1Facts_length : frontier1Facts.length = 7 := by
   native_decide
 
 /-- The profile-existence question is open (boolean `true`, READ as

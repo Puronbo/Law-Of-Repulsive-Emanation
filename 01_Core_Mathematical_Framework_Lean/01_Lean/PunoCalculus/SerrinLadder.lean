@@ -57,6 +57,30 @@ def serrinQ (p : ℝ) : ℝ := 2 * p / (p - 3)
 theorem serrinQ_six : serrinQ 6 = 4 := by
   norm_num [serrinQ]
 
+/-- `q(p) = 2p/(p-3)` lies exactly on the Serrin line for every admissible
+`p`: `2 / q(p) + 3 / p = 1` (with `p ≠ 0` and `p ≠ 3`). -/
+theorem serrinQ_line (hp0 : p ≠ 0) (hp3 : p ≠ 3) :
+    2 / serrinQ p + 3 / p = 1 := by
+  unfold serrinQ
+  field_simp [hp0, hp3]
+  ring
+
+/-- The energy method closes exactly for `p <= 6`: `theta(p) <= 1`
+iff `p <= 6`, for every positive `p`.  At `p = 6` this is the Sobolev
+`H^1 -> L^6` ceiling (`gnExponent_six`); above it no E,Z control exists. -/
+theorem gnExponent_le_one_iff (hp : 0 < p) : gnExponent p ≤ 1 ↔ p ≤ 6 := by
+  have hpne : p ≠ 0 := ne_of_gt hp
+  constructor
+  · intro h
+    have hh : 1 / 2 ≤ 3 / p := by nlinarith
+    have hm : (1 / 2) * p ≤ 3 := (le_div_iff_mul_le hp).mp hh
+    nlinarith
+  · intro hle
+    have hm : (1 / 2) * p ≤ 3 := by nlinarith
+    have hh : 1 / 2 ≤ 3 / p := (le_div_iff_mul_le hp).mpr hm
+    unfold gnExponent
+    nlinarith
+
 /-- The quantity integrated along the flow on the `(p, q)` route is
 `Z^{theta * q / 2}`; at `(6, 4)` this is `Z^2`. -/
 theorem criticalPower_six_four : gnExponent 6 * serrinQ 6 / 2 = 2 := by
@@ -69,14 +93,15 @@ theorem oneExtraPower : (gnExponent 6 * serrinQ 6 / 2) - 1 = 1 := by
 
 /-- Statement-grade inventory of the ladder file. -/
 def ladderFormalizedFacts : List String :=
-  ["theta(6) = 1: Sobolev H^1 -> L^6 ceiling (machine-checked)",
-   "theta(3) = 1/2, theta(2) = 0, theta(8) = 9/8 (machine-checked)",
+  ["theta(p) <= 1 iff p <= 6 (p > 0): energy method closes exactly at the Sobolev ceiling (machine-checked)",
+   "theta(6) = 1: Sobolev H^1 -> L^6 ceiling; theta(3) = 1/2, theta(2) = 0, theta(8) = 9/8 (machine-checked)",
+   "Serrin companion q(p) = 2p/(p-3) lies on the Serrin line 2/q + 3/p = 1; q(6) = 4 (machine-checked)",
    "Serrin (p, q) = (6, 4): integrated quantity is Z^2 (machine-checked)",
    "energy identity gives only Z^1: ONE extra power of enstrophy",
    "wall stays OPEN: int Z^2 < infinity and the p = 3 endpoint (L^inf)"]
 
-/-- The inventory has exactly five entries. -/
-theorem ladderFormalizedFacts_length : ladderFormalizedFacts.length = 5 := by
+/-- The inventory has exactly six entries. -/
+theorem ladderFormalizedFacts_length : ladderFormalizedFacts.length = 6 := by
   native_decide
 
 end
