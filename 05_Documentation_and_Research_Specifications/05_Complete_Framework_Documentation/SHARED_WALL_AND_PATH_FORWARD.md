@@ -229,7 +229,9 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
      points (`|x - x₀| < |T x - x₀|`) when `|L| > 1` and **attracts** them ("it
      shrinks itself") when `|L| < 1` — the trichotomy of `orientation`. The
      register's "great attractor that repels the known universe from itself" is
-     the `|L| > 1` branch. (b) *Order meets the ladder* — an object of amplitude
+     the `|L| > 1` branch; the sign of the **Lyapunov exponent** `log |L|` is the
+     orientation (`fixedPoint_logSign`), the formal twin of the measured rate.
+     (b) *Order meets the ladder* — an object of amplitude
      weight `a` in `L^p` has homogeneous-norm scaling weight `a + s - 3/p`,
      vanishing exactly on `s = criticalSmoothness a p = 3/p - a`; the register's
      critical ladder is the **order-one** rung (`criticalSmoothness 1 p = sCrit p`),
@@ -242,8 +244,12 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
      resolved flow is ATTRACTING at every `nu`, but `lambda` rises toward `0` and
      `k` falls as `nu -> 0`: both trends point at the wall in the unresolved
      range. The great attractor does not yet repel; repulsion would live beyond
-     the resolved range. Eight substantive theorems, axioms exactly
-     `[propext, Classical.choice, Quot.sound]`; build green (8739 jobs).
+     the resolved range. Resolution convergence (`ns_resolution_study.py`,
+     `nu = 0.1/0.05`, `N = 32/48/64`): both `k` and `lambda` settle within 3% from
+     `N = 48` to `64`, so the finite order and the attracting orientation are
+     grid-converged; refining the grid mimics lowering `nu` (`k` down, `lambda` up
+     toward `0`) but never crosses to repulsion. Ten substantive theorems, axioms
+     exactly `[propext, Classical.choice, Quot.sound]`; build green (8739 jobs).
 
 ## Sources for the missing brick (scaling-critical control)
 

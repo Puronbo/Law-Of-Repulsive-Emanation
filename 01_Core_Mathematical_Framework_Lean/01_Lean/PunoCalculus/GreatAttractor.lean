@@ -94,6 +94,37 @@ theorem orientation_trichotomy (L : ℝ) :
   · exact Or.inr (Or.inl h)
   · exact Or.inr (Or.inr h)
 
+/-- The **Lyapunov exponent** of the fixed point: the logarithm of the distance
+ratio tends to `log |L|`.  This is the exact formal twin of the on-flow
+repulsion rate `lambda` measured in `ns_zero_order.py`. -/
+theorem fixedPoint_logRate {T : ℝ → ℝ} {L x₀ : ℝ}
+    (hT : HasDerivAt T L x₀) (hfix : T x₀ = x₀) (hL : L ≠ 0) :
+    Tendsto (fun x : ℝ => Real.log |T x - x₀| - Real.log |x - x₀|)
+      (𝓝[≠] x₀) (𝓝 (Real.log |L|)) := by
+  have h := fixedPoint_distanceRatio hT hfix
+  have hpos : ∀ᶠ x in 𝓝[≠] x₀, 0 < |T x - x₀| / |x - x₀| :=
+    h.eventually (isOpen_Ioi.mem_nhds (abs_pos.mpr hL))
+  have hlog : Tendsto (fun x : ℝ => Real.log (|T x - x₀| / |x - x₀|))
+      (𝓝[≠] x₀) (𝓝 (Real.log |L|)) :=
+    (Real.continuousAt_log (abs_ne_zero.mpr hL)).tendsto.comp h
+  refine hlog.congr' ?_
+  filter_upwards [eventually_mem_nhdsWithin, hpos] with x hxne hxpos
+  have hx0 : |x - x₀| ≠ 0 := abs_ne_zero.mpr (sub_ne_zero.mpr hxne)
+  have hnum : |T x - x₀| ≠ 0 := by
+    intro hz
+    rw [hz, zero_div] at hxpos
+    exact lt_irrefl 0 hxpos
+  rw [Real.log_div hnum hx0]
+
+/-- The Lyapunov exponent carries the orientation: `log |L| > 0` iff the fixed
+point repels (`|L| > 1`), and `log |L| < 0` iff it attracts (`|L| < 1`).  So the
+sign of the formal exponent is exactly the on-flow orientation. -/
+theorem fixedPoint_logSign {L : ℝ} (hL : L ≠ 0) :
+    (0 < Real.log |L| ↔ 1 < |L|) ∧ (Real.log |L| < 0 ↔ |L| < 1) := by
+  have hx : 0 < |L| := abs_pos.mpr hL
+  exact ⟨by rw [← Real.log_one, Real.log_lt_log_iff zero_lt_one hx],
+         by rw [← Real.log_one, Real.log_lt_log_iff hx zero_lt_one]⟩
+
 /-! ## Order meets the ladder: the number of zeros shifts the critical rung -/
 
 /-- Critical smoothness for an object of amplitude scaling weight `a` measured
@@ -137,12 +168,14 @@ def greatAttractorFacts : List String :=
   , "fixedPoint_repels"
   , "fixedPoint_attracts"
   , "orientation_trichotomy"
+  , "fixedPoint_logRate"
+  , "fixedPoint_logSign"
   , "criticalSmoothness_one"
   , "criticalSmoothness_shift_order"
   , "criticalSmoothness_antitone_order"
   , "scalingWeight_zero_iff" ]
 
-/-- The register has exactly eight entries. -/
-theorem greatAttractorFacts_length : greatAttractorFacts.length = 8 := by decide
-
+/-- The register has exactly ten entries. -/
+theorem greatAttractorFacts_length : greatAttractorFacts.length = 10 := by
+  decide
 end PunoCalculus.GreatAttractor
