@@ -215,7 +215,7 @@ def frontier1Facts : List String :=
 
 /-- The inventory has exactly seven entries. -/
 theorem frontier1Facts_length : frontier1Facts.length = 7 := by
-  native_decide
+  decide
 
 /-- The profile-existence question is open (boolean `true`, READ as
 ``is open''): no axiom attached. -/
