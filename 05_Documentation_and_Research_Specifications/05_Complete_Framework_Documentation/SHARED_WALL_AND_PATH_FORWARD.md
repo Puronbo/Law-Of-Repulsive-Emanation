@@ -104,7 +104,7 @@ The unifying open content — the **bridge barrier** — is identical in all fou
 an equation-preserving reweighting that keeps the high-dimension energy under the
 `O(eps)` budget at every scale. Same shape as the refuted-bound wall.
 
-### Where the three follow-up steps landed
+### Where the follow-up steps landed
 
 1. **Log corrections do not repair the wall** (`log_borderline.py`). At `d=2`
    the BG-log ratio is bounded and decreasing (`0.340 -> 0.237`); at `d=3` it
@@ -125,6 +125,18 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
    intermittency growth. Diagnosis: a genuine singularity must push the flatness
    regime into the unresolved near-singular range, the same `O(eps)` energy budget
    quantified by `dimension_mixture.py`.
+4. **The one-extra-power is now machine-checked** (`SerrinLadder.lean`). The
+   ladder arithmetic `theta(p) = 3/2 - 3/p` with ceiling `theta(6) = 1`, the
+   Serrin `(6,4)` critical power `theta*q/2 = 2`, and `2 - 1 = 1` are formal
+   theorems (nine, axioms `[propext, Classical.choice, Quot.sound]`). The formal
+   target implied by 1-3 is exactly `int Z^{1+eps} dt` for some `eps > 0` (or its
+   Besov/Lorentz generalisation) — the next-order term that breaks the
+   marginality.
+5. **On-flow the enstrophy scale sits far from the grid** (`ns_spectral_slope.py`).
+   `k_eff = sqrt(Z/E)` never exceeds `0.32` of the dealiased cutoff across the
+   viscosity sweep, the ratio-vs-`nu` power is `+0.02` (flat), and the spectral
+   peak migrates *backward* (`4 -> 3`, no forward cascade): decaying resolved runs
+   approach the wall `s_c = 3/2` only in the unresolved near-singular range.
 
 ## What this is not
 
