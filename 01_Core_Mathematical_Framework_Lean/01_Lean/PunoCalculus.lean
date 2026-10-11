@@ -33,3 +33,4 @@ import PunoCalculus.ZeroFixedPoint
 import PunoCalculus.GreatAttractor
 import PunoCalculus.OnePattern
 import PunoCalculus.OnsagerCriterion
+import PunoCalculus.ContinuationCriterion

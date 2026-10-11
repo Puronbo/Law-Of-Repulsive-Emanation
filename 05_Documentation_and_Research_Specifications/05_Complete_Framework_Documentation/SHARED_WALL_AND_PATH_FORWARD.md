@@ -334,6 +334,18 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       singularity, not of a particular equation or a numerical artefact. Caveat:
       `t*` is grid-dependent (that is what finite-time blowup detection looks like),
       but the orientation and the finite order are consistent across grids. Wall OPEN.
+ 20. **The wall's logical shape, isolated** (`ContinuationCriterion.lean`). Every
+      continuation criterion shares one skeleton: local existence extends while the
+      invariant `N` stays bounded, so existence can fail at `T` only if `N` escapes
+      every bound on `[0,T)`. Formalised discretely and non-vacuously:
+      `exists_upto_of_bounded` (bounded invariant ⟹ the flow reaches every `t ≤ T`)
+      and its contrapositive `unbounded_of_first_failure` (a first failure at `T`
+      forces `N` to be unbounded — no proposed bound `M` holds anywhere). This is
+      the wall in its purest form: sufficiency (bounded ⟹ regular) is classical and
+      `OnsagerCriterion.weighted_sum_le` supplies a piece of it; the sole missing
+      brick is the boundedness this brick shows is *exactly* what a blowup requires
+      to fail. Two substantive theorems, axioms exactly
+      `[propext, Classical.choice, Quot.sound]`; build green (8742 jobs). Wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 
