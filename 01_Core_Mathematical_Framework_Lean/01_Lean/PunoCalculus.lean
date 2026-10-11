@@ -30,3 +30,4 @@ import PunoCalculus.MixtureGrowth
 import PunoCalculus.ForceNetwork
 import PunoCalculus.CriticalLadder
 import PunoCalculus.ZeroFixedPoint
+import PunoCalculus.GreatAttractor

@@ -222,6 +222,28 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
      (finite order), which is precisely the boundedness the critical ladder (9)
      and the flux probe (10) test on-flow. Five substantive theorems, axioms
      exactly `[propext, Classical.choice, Quot.sound]`; build green (8738 jobs).
+ 13. **The great attractor: the wall has an orientation, and its number of zeros
+     shifts the critical rung** (`GreatAttractor.lean` + `ns_zero_order.py`).
+     (a) *Orientation* — at a fixed point `T x₀ = x₀` with derivative `L`, the
+     distance ratio `|T x - x₀| / |x - x₀| -> |L|`; the point **repels** nearby
+     points (`|x - x₀| < |T x - x₀|`) when `|L| > 1` and **attracts** them ("it
+     shrinks itself") when `|L| < 1` — the trichotomy of `orientation`. The
+     register's "great attractor that repels the known universe from itself" is
+     the `|L| > 1` branch. (b) *Order meets the ladder* — an object of amplitude
+     weight `a` in `L^p` has homogeneous-norm scaling weight `a + s - 3/p`,
+     vanishing exactly on `s = criticalSmoothness a p = 3/p - a`; the register's
+     critical ladder is the **order-one** rung (`criticalSmoothness 1 p = sCrit p`),
+     each extra zero buys one order of smoothness, and higher order needs less
+     smoothness. So the single invariant (9) is the one-zero form of a
+     number-of-zeros family. On-flow (`ns_zero_order.py`, `nu = 0.2/0.1/0.05`):
+     the high-shell enstrophy has a FINITE order `k = 6.93 / 4.88 / 3.41 > 1`
+     (the wall reads as a removable 0/0 of finite order, not a pole), and the
+     share `Z_high/Z_low` has rate `lambda = -5.48 / -3.47 / -1.87 < 0` — the
+     resolved flow is ATTRACTING at every `nu`, but `lambda` rises toward `0` and
+     `k` falls as `nu -> 0`: both trends point at the wall in the unresolved
+     range. The great attractor does not yet repel; repulsion would live beyond
+     the resolved range. Eight substantive theorems, axioms exactly
+     `[propext, Classical.choice, Quot.sound]`; build green (8739 jobs).
 
 ## Sources for the missing brick (scaling-critical control)
 
