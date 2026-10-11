@@ -382,6 +382,17 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       gap between a linear (Lyapunov) increment and a quadratic (blow-up-capable)
       one. Four substantive theorems, axioms exactly `[propext, Classical.choice,
       Quot.sound]`; build green (8744 jobs). Wall OPEN.
+ 24. **The sufficiency loop closes in 2D, cannot start in 3D** (`SufficiencyLoop.lean`).
+      Composing the two shapes with the continuation skeleton: a non-increasing
+      invariant (2D) is bounded for free (`mono_step_bounded`), and a bounded
+      invariant feeds the continuation criterion (`exists_upto_of_bounded`) to give
+      existence at every time (`global_exists_of_mono`, bound `M = N 0`). In the 3D
+      shape the same engine cannot be started: a quadratic increment admits an
+      invariant escaping every bound (`quadratic_criterion_unavailable`), so the
+      hypothesis `∀ s ≤ T, N s ≤ M` holds for no `M`. The wall is therefore exactly
+      the question of whether the real 3D enstrophy increment is controllable below
+      quadratic. Two substantive theorems, axioms exactly `[propext,
+      Classical.choice, Quot.sound]`; build green (8745 jobs). Wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 
