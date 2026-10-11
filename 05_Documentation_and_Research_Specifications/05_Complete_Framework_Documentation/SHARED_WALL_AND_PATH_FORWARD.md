@@ -175,6 +175,41 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
     between its parts' (`networkValueBetween`) and `force/inertia` is antitone in
     inertia (`inertiaDampsChange`): the network reweights, it cannot mint
     concentration. With 3-7, no resolved mechanism concentrates change.
+  9. **The scaling-critical ladder is one invariant in many forms**
+     (`CriticalLadder.lean`). Under the NS rescaling the `B^s_{p,q}` norm carries
+     factor `lambda^{s+1-3/p}`, invariant exactly on `s = s_crit(p) = 3/p - 1`
+     (`L^3`, `H^{1/2}`, `H^{-1/2}` at `p = 3, 2, 6`). The Serrin interpolation
+     exponent and the critical smoothness are two faces of one invariant:
+     `theta(p) + s_crit(p) = 1/2` for EVERY `p` (`thetaAddSCrit`). The ladder is
+     antitone (`L^3` ⊂ `B^{-1+3/p}_{p,∞}` ⊂ `BMO^{-1}` ⊂ `B^{-1}_{∞,∞}`) and
+     `s_crit(p) > -1` for finite `p`. The wall becomes a single statement — whether
+     the invariant critical norm stays BOUNDED along the flow, equivalently whether
+     the Onsager excess `eta > 0` holds (`onsagerExcess_supercritical`;
+     `criticalInvariantBoundedOpen`). Eight substantive theorems, axioms exactly
+     `[propext, Classical.choice, Quot.sound]`; build green (8737 jobs).
+ 10. **On-flow the resolved cascade moves toward the Onsager bound as viscosity
+     drops** (`ns_onsager_flux.py`). The cumulative spectral flux `I(K) = int |Pi(K)| dt`
+     decays as `K^{-a}` with `a = 1.72 / 1.20 / 0.64` at `nu = 0.2 / 0.1 / 0.05`:
+     strictly supercritical (`eta_max = a-1 > 0`, "safe") at higher viscosity, and
+     CROSSING the Onsager-critical line `a = 1` at `nu = 0.05`. Lowering viscosity
+     drives the resolved cascade toward (past) the Onsager rate -- the direction of
+     the wall. Caveat: `nu = 0.05` is dissipatively under-resolved at N=32, so the
+     crossing may be grid-scale pile-up; diagnostic only.
+ 11. **The resolved spectrum has a common shape, but the nontrivial rescaling
+     variable is not distinguished** (`ns_profile_collapse.py`). "One pattern, many
+     forms" tested as a renormalisation fixed point: energy density `d(k) = E(k) k`
+     resampled in `xi = k/V` and compared across times and viscosities. Mean relative
+     L1 spread is small for every choice (`k_eff` 0.065, `k_peak` 0.168, bare `k`
+     0.055) — the resolved spectral shape is approximately invariant — but the
+     trivial bare-`k` variable is marginally best, so `k_eff` rescaling does NOT
+     improve the collapse at N=32. Whether a nontrivial rescaling is forced in the
+     singular limit stays OPEN. Together with 9-10: the single invariant is real and
+     formal, but resolved flows neither concentrate it nor single out a nontrivial
+     rescaling — the wall is to show the invariant stays bounded in the limit.
+
+## Sources for the missing brick (scaling-critical control)
+
+The invariant chain `L^3 ⊂ Ḃ^{-1+3/p}_{p,∞} ⊂ BMO^{-1} ⊂ Ḃ^{-1}_{∞,∞}` and its endpoint theory: Prodi (1959), Serrin (1962), Ladyzhenskaya (endpoint sufficiency `L^p_t L^q_x`, `2/q + 3/p <= 1`); Escauriaza-Seregin-Šverák (2003, endpoint `L^∞ L^3`); Koch-Tataru (2001, `BMO^{-1}`); Cheskidov-Shvydkoy (2010, arXiv:0708.3067 — largest critical space `B^{-1}_{∞,∞}`); Bourgain-Pavlović (2008 — norm inflation / ill-posedness in `Ḃ^{-1}_{∞,∞}`); Ri (arXiv:2307.11312, 2023 — claims a positive lower bound on `L^∞(Ḃ^{-1}_{∞,∞})`; single-author, unrefereed — treat as unverified); Tao (2021) plus Feng-He-Wang 2025 (Lorentz) and arXiv:2411.06483 (Besov) — quantitative triple/double/quadruple-log continuation bounds; Grujić (2024, JMFM, "Asymptotic Criticality" — the scaling gap as a derivative order `k -> ∞`). The **missing brick** is BOUNDEDNESS, not sufficiency: a positive margin (`eta > 0`) is classical and sufficient, but proving the invariant norm stays bounded along the flow is exactly what stays open.
 
 ## What this is not
 
