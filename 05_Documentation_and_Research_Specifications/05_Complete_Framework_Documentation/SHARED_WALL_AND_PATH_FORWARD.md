@@ -206,6 +206,22 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
      singular limit stays OPEN. Together with 9-10: the single invariant is real and
      formal, but resolved flows neither concentrate it nor single out a nontrivial
      rescaling — the wall is to show the invariant stays bounded in the limit.
+ 12. **The wall is itself a removable 0/0: zero defines its own position, and it
+     scales on how many zeros it has** (`ZeroFixedPoint.lean`). The register reading
+     of the honest wall (`THE_LAW_OF_SINGULARITIES.md` §12.1) made arithmetic:
+     (a) *self-position* — at a fixed point `T x₀ = x₀` with derivative `L`, the
+     change-of-position per change-of-position `(T x - x)/(x - x₀)` has removable
+     value `L - 1` (the Banach/Brouwer 0/0, Experiments #34/#35); for the identity
+     the self-shift is exactly `0`. `zero` is the point whose own position it
+     defines. (b) *scales on the number of zeros* — dividing `(x - x₀)^k · h` by
+     `(x - x₀)^j` yields the finite value `h x₀` when `j = k`, `0` when `j < k`,
+     and a pole (reciprocal `-> 0`) when `j > k`: the wall shrinks itself to a
+     finite value exactly at its order of vanishing `k`, Lemma 2.1 ("0/0 removable
+     iff equal order") as three exact limits. This does not prove regularity — it
+     recasts the wall as the statement that the singularity is a *removable* 0/0
+     (finite order), which is precisely the boundedness the critical ladder (9)
+     and the flux probe (10) test on-flow. Five substantive theorems, axioms
+     exactly `[propext, Classical.choice, Quot.sound]`; build green (8738 jobs).
 
 ## Sources for the missing brick (scaling-critical control)
 
