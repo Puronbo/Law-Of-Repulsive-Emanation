@@ -32,3 +32,4 @@ import PunoCalculus.CriticalLadder
 import PunoCalculus.ZeroFixedPoint
 import PunoCalculus.GreatAttractor
 import PunoCalculus.OnePattern
+import PunoCalculus.OnsagerCriterion

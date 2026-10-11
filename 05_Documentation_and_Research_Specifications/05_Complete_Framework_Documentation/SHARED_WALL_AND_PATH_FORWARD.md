@@ -194,7 +194,10 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
      CROSSING the Onsager-critical line `a = 1` at `nu = 0.05`. Lowering viscosity
      drives the resolved cascade toward (past) the Onsager rate -- the direction of
      the wall. Caveat: `nu = 0.05` is dissipatively under-resolved at N=32, so the
-     crossing may be grid-scale pile-up; diagnostic only.
+     crossing may be grid-scale pile-up; diagnostic only. **[RETRACTED this cycle:
+     a resolution study (`ns_onsager_flux_resolution.py`) gives `a = 1.20 / 7.96 /
+     12.01` at `N = 32/48/64` (`nu = 0.1`) -- NOT grid-converged -- so this trend
+     is a resolution artefact. See bullet 15.]**
  11. **The resolved spectrum has a common shape, but the nontrivial rescaling
      variable is not distinguished** (`ns_profile_collapse.py`). "One pattern, many
      forms" tested as a renormalisation fixed point: energy density `d(k) = E(k) k`
@@ -267,6 +270,21 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
      (`ns_zero_order_robust.py`). Five substantive theorems, axioms exactly
      `[propext, Classical.choice, Quot.sound]`; build green (8740 jobs). The wall
      itself stays OPEN: the pattern is identified, the singular-limit bound is not.
+ 15. **The wall's sufficiency half, and where a diagnostic was wrong**
+     (`OnsagerCriterion.lean`, `ns_onsager_flux_resolution.py`). Two honest steps
+     for the open wall. (a) *Formal sufficiency skeleton*: if the invariant moment
+     `Z` is uniformly bounded by `M`, then for every excess order `n` the
+     supercritical moment is controlled, `sum Z^{n+1} <= M^n * sum Z`
+     (`weighted_sum_le`); its contrapositive (`spike_of_excess`) is the wall — an
+     Onsager-violating cascade forces `Z` to exceed `M`. So the missing brick is
+     exactly "the invariant moment stays bounded", nothing more. (b) *A correction*:
+     the Onsager-flux diagnostic (bullet 10) is RETRACTED — re-running it at
+     `N = 32/48/64` gives `a = 1.20 / 7.96 / 12.01` (`nu = 0.1`), not
+     grid-converged, so the "approach to the Onsager bound" was a resolution
+     artefact. The order/orientation probe, by contrast, IS grid-converged and
+     IC-independent (bullet 13). The register keeps only what survives a resolution
+     study. Two substantive theorems, axioms exactly
+     `[propext, Classical.choice, Quot.sound]`; build green (8741 jobs).
 
 ## Sources for the missing brick (scaling-critical control)
 
