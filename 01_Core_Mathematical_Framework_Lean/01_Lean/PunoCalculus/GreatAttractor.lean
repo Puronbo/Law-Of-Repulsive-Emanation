@@ -125,6 +125,18 @@ theorem fixedPoint_logSign {L : ℝ} (hL : L ≠ 0) :
   exact ⟨by rw [← Real.log_one, Real.log_lt_log_iff zero_lt_one hx],
          by rw [← Real.log_one, Real.log_lt_log_iff hx zero_lt_one]⟩
 
+/-- **The orientation discriminates between systems.**  Two fixed points whose
+multipliers straddle `1` have opposite orientations: the repelling one pushes
+nearby points out, the attracting one pulls them in.  This is the formal content
+of the cross-system contrast (viscous Burgers repels, resolved Navier-Stokes
+attracts): the ORDER of vanishing is shared, the ORIENTATION is the discriminator. -/
+theorem orientationDiscriminator {T₁ T₂ : ℝ → ℝ} {L₁ L₂ x₁ x₂ : ℝ}
+    (hT₁ : HasDerivAt T₁ L₁ x₁) (hfix₁ : T₁ x₁ = x₁) (hL₁ : 1 < |L₁|)
+    (hT₂ : HasDerivAt T₂ L₂ x₂) (hfix₂ : T₂ x₂ = x₂) (hL₂ : |L₂| < 1) :
+    (∀ᶠ x in 𝓝[≠] x₁, |x - x₁| < |T₁ x - x₁|) ∧
+      (∀ᶠ x in 𝓝[≠] x₂, |T₂ x - x₂| < |x - x₂|) :=
+  ⟨fixedPoint_repels hT₁ hfix₁ hL₁, fixedPoint_attracts hT₂ hfix₂ hL₂⟩
+
 /-! ## Order meets the ladder: the number of zeros shifts the critical rung -/
 
 /-- Critical smoothness for an object of amplitude scaling weight `a` measured
@@ -170,12 +182,13 @@ def greatAttractorFacts : List String :=
   , "orientation_trichotomy"
   , "fixedPoint_logRate"
   , "fixedPoint_logSign"
+  , "orientationDiscriminator"
   , "criticalSmoothness_one"
   , "criticalSmoothness_shift_order"
   , "criticalSmoothness_antitone_order"
   , "scalingWeight_zero_iff" ]
 
-/-- The register has exactly ten entries. -/
-theorem greatAttractorFacts_length : greatAttractorFacts.length = 10 := by
+/-- The register has exactly eleven entries. -/
+theorem greatAttractorFacts_length : greatAttractorFacts.length = 11 := by
   decide
 end PunoCalculus.GreatAttractor

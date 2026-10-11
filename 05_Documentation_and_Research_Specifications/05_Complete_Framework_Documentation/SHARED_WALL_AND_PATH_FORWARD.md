@@ -251,8 +251,10 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
      `nu = 0.1/0.05`, `N = 32/48/64`): both `k` and `lambda` settle within 3% from
      `N = 48` to `64`, so the finite order and the attracting orientation are
      grid-converged; refining the grid mimics lowering `nu` (`k` down, `lambda` up
-     toward `0`) but never crosses to repulsion. Ten substantive theorems, axioms
-     exactly `[propext, Classical.choice, Quot.sound]`; build green (8739 jobs).
+      toward `0`) but never crosses to repulsion. Eleven substantive theorems
+      (adding `orientationDiscriminator`, the formal cross-system discriminator),
+      axioms exactly `[propext, Classical.choice, Quot.sound]`; build green
+      (8741 jobs).
  14. **The one pattern: order sets the rung, orientation sets the direction — two
      numbers, one wall** (`OnePattern.lean`). The synthesis the whole register
      points at. Every guise of the scaling-critical object is the same ladder
@@ -296,8 +298,19 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
      So the one pattern recurs across systems and the two numbers separate them:
      the order is shared, the orientation tells a shock-forming system from a
      purely dissipating one. This sharpens the wall's reading: NS sits on the
-     *attracting* side in the resolved range, so any repulsion (and the blowup it
-     would signal) must live beyond the resolved range.
+      *attracting* side in the resolved range, so any repulsion (and the blowup it
+      would signal) must live beyond the resolved range. The Burgers reading is
+      itself grid-converged (`burgers_resolution_study.py`: `k = 7.840`,
+      `lambda = +16.24` identical to four decimals at `N = 256/512/1024`), so the
+      cross-system comparison is rigorous, not a resolution artefact.
+ 17. **Resolved Navier-Stokes stays attracting under refinement**
+      (`ns_resolution_study.py --Ns 64,96`). Pushing the order/orientation probe to
+      `N = 96` (from 64) at `nu = 0.1`, fixed `T_max = 3.5`: `lambda = -4.46 -> -4.57`
+      and `k = 3.15 -> 3.21`, grid-converged (`|dk|/k = 0.018`,
+      `|dlambda|/|lambda| = 0.024`). Nearly three times the original resolution
+      still shows no repulsion: the discriminator (16) keeps resolved NS firmly on
+      the *attracting* side, so the repelling orientation — and the blowup it would
+      signal — is pushed strictly beyond the resolved range. Wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 
