@@ -359,6 +359,18 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       `ContinuationCriterion.unbounded_of_first_failure` names. Attracting
       (resolved/regular) and repelling (singular) are the two sides of the wall,
       read directly off the flow. Wall OPEN.
+ 22. **Attracting orbits are bounded** (`StableBounded.lean`). The wall's open half
+      is BOUNDEDNESS of the critical invariant; the two shapes of "boundedness for
+      free" in the register are now theorems. *Attracting*: a contraction on a
+      complete, nonempty metric space has a convergent -- hence bounded -- orbit
+      (`attracting_orbit_converges`, `attracting_orbit_bounded`), so "the great
+      attractor does not yet repel" is itself a boundedness statement and repulsion
+      is the only escape route. This is bullet 21's discriminator at the attracting
+      end. *Monotone*: a non-increasing quantity stays below its start
+      (`monotone_bounded`), the arithmetic core of the 2D enstrophy Lyapunov shape
+      (`dZ/dt <= 0`) that is *not* available in 3D. Three substantive theorems,
+      axioms exactly `[propext, Classical.choice, Quot.sound]`; build green (8743
+      jobs). Wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 
