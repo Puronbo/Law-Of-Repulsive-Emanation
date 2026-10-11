@@ -393,6 +393,19 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       the question of whether the real 3D enstrophy increment is controllable below
       quadratic. Two substantive theorems, axioms exactly `[propext,
       Classical.choice, Quot.sound]`; build green (8745 jobs). Wall OPEN.
+ 25. **Quantitative continuation: the barrier hierarchy by order**
+      (`QuantitativeContinuation.lean`). How much growth the invariant may have and
+      still be controlled on a finite window is set by the ORDER of its increment.
+      Order 0 (`N_{n+1} <= N_n + C`) is linear (`linear_bound`); order 1
+      (`N_{n+1} <= (1+C) N_n`) is geometric (`geometric_bound`); order 2 has no
+      uniform bound (the 3D shape). `barrier_hierarchy` states all three at once.
+      The payoff is `exists_upto_of_geometric`: an order-one increment yields the
+      computable window bound `(1+C)^T N_0`, which feeds the continuation criterion
+      to give existence up to `T` -- so a controlled growth rate (not boundedness
+      outright) already buys any finite window. This is the discrete shadow of the
+      classical double-log continuation bounds. Four substantive theorems, axioms
+      exactly `[propext, Classical.choice, Quot.sound]`; build green (8746 jobs).
+      Wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 
