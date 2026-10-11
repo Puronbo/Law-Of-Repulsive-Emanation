@@ -311,6 +311,17 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       still shows no repulsion: the discriminator (16) keeps resolved NS firmly on
       the *attracting* side, so the repelling orientation — and the blowup it would
       signal — is pushed strictly beyond the resolved range. Wall OPEN.
+ 18. **The discriminator separates singular from regular, not dimensions**
+      (`ns2d_zero_order.py`). Third system: 2D Navier-Stokes — the same equation
+      family, but a theorem (Ladyzhenskaya) proves global regularity. The probe
+      reads ATTRACTING (`lambda = -9.61 / -9.27 / -9.30` at `N = 96/128/160`),
+      grid-converged (`|dk|/k = 0.008`, `|dlambda|/|lambda| = 0.004`), exactly like
+      resolved 3D NS and unlike Burgers. Across three systems the orientation now
+      tracks singular-vs-regular: the sole REPELLING system (Burgers) is the sole
+      singularity-former; both NS systems sit on the attracting side, 2D by theorem
+      and 3D in the resolved range. So the discriminator (16) has meaning —
+      repulsion is the signature of an actual finite-time singularity, and resolved
+      NS shows none. Wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 
