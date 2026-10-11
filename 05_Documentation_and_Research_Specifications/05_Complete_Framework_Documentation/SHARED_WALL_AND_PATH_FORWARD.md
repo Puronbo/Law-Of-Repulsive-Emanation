@@ -161,6 +161,20 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
     reaches the wall scale. Together with 5-6, every resolved route to
     intermittency is quiet — the burst mechanism must live in the unresolved
     near-singular range.
+ 8. **The flow is a conservative, distributed force network and inertia is what
+    holds it** (`ns_force_network.py`; formal arithmetic in `ForceNetwork.lean`).
+    Reading change as "everything interconnected in force, each part a collection
+    of points held by inertia": nodes = wavenumber shells, inertia `I_m` = shell
+    energy, force `T_m` = nonlinear triad transfer, change `dI_m/dt = T_m - D_m`.
+    Measured over `nu = {0.2, 0.1, 0.05}`: the interconnection is conservative
+    (`|sum T_m|/sum|T_m| ~ 1e-5` — it redistributes, never creates), distributed
+    not focused (participation `PR_T ~ 4` of 10 nodes, max single-node share
+    `~0.35`), heavier shells change less per unit inertia (`corr = -0.44..-0.50`),
+    and all change is accounted for by the network minus the drag (closure
+    `1e-2..9e-2`). Formally (`ForceNetwork.lean`) a weighted network's value lies
+    between its parts' (`networkValueBetween`) and `force/inertia` is antitone in
+    inertia (`inertiaDampsChange`): the network reweights, it cannot mint
+    concentration. With 3-7, no resolved mechanism concentrates change.
 
 ## What this is not
 
