@@ -346,6 +346,19 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       brick is the boundedness this brick shows is *exactly* what a blowup requires
       to fail. Two substantive theorems, axioms exactly
       `[propext, Classical.choice, Quot.sound]`; build green (8742 jobs). Wall OPEN.
+ 21. **The orientation reads the wall** (`orientation_vs_invariant.py`). The
+      cross-system discriminator (16-19) is tied to the continuation criterion
+      (20): in each of four systems the sign of the orientation `lambda` equals the
+      sign of `mu = d/dt log`(scaling-critical content). 3D NS `lambda = -3.11`
+      with `mu(L3 u) = -0.41`; 2D NS `lambda = -9.27` with `mu(max|omega|) = -0.53`
+      (both ATTRACTING, critical norm shrinking); Burgers `lambda = +16.24` with
+      `mu(max|u_x|) = +2.39`; CLM `lambda = +34.75` with `mu(max|omega|) = +2.82`
+      (both REPELLING, critical content growing). So the orientation is not a
+      separate diagnostic: it is the flow's own reading of whether the critical
+      invariant escapes its bound — exactly the event
+      `ContinuationCriterion.unbounded_of_first_failure` names. Attracting
+      (resolved/regular) and repelling (singular) are the two sides of the wall,
+      read directly off the flow. Wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 
