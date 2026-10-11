@@ -322,6 +322,18 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       and 3D in the resolved range. So the discriminator (16) has meaning —
       repulsion is the signature of an actual finite-time singularity, and resolved
       NS shows none. Wall OPEN.
+ 19. **A second singular system confirms the repelling end** (`clm_zero_order.py`).
+      The Constantin-Lax-Majda model `d_t w = w H(w)` — a different, nonlocal PDE
+      with a *proven* finite-time blowup (Constantin-Lax-Majda 1985), no viscosity —
+      reads REPELLING (`lambda = +34.1 / +35.3 / +34.7` at `N = 256/512/1024`), with
+      finite order (`k = 1.97 / 2.11 / 2.40`) and blowup detected at
+      `t* = 2.44 / 2.20 / 2.09`. So the discriminator now holds across FOUR systems:
+      the two independent singularity-formers (Burgers, CLM) both REPEL, the two
+      Navier-Stokes systems (2D by theorem, 3D in the resolved range) both ATTRACT.
+      The repelling orientation is the signature of a genuine finite-time
+      singularity, not of a particular equation or a numerical artefact. Caveat:
+      `t*` is grid-dependent (that is what finite-time blowup detection looks like),
+      but the orientation and the finite order are consistent across grids. Wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 
