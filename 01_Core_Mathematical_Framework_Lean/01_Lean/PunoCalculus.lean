@@ -43,3 +43,4 @@ import PunoCalculus.TheoryOfEverything
 import PunoCalculus.EmergentTime
 import PunoCalculus.ExplicitClaims
 import PunoCalculus.OrientationLaw
+import PunoCalculus.DissipativeFlow

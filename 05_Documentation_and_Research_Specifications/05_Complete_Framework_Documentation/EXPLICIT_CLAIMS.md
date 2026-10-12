@@ -108,6 +108,16 @@ generally, with no geometric assumption, `logGrowth_of_ratio_eq` gives
 `mu = log(relative increment)` for any positive sequence and
 `exists_pos_logGrowth_of_unbounded` gives: unbounded content ⇒ some strictly positive
 growth rate (`bounded_of_nonpos_logGrowth` as contrapositive).
+growth rate (`bounded_of_nonpos_logGrowth` as contrapositive).
+**One-parameter family (dissipation order):** `orientation_vs_fractional_s.py` extends
+the empirical half to `u_t + u·∇u = -nu (-Δ)^s u`. The critical index is s-dependent
+(`H^sigma` critical at `sigma = 5/2 - 2s`); over that `s`-correct critical content the
+match holds at `s = 1.0 / 0.75 / 0.5` (`lambda = -3.15 / -1.29 / -0.30`, `mu = -0.63
+/ -0.67 / -0.56`), all attracting, with `|lambda|` shrinking toward the inviscid regime.
+**Provable energy face:** `DissipativeFlow.lean` proves `logGrowth_deriv` (log-growth
+`= m / X t`), `logGrowth_nonpos_of_dissipative` (`m <= 0` => `d/dt log X <= 0`) and
+`content_le_initial_of_dissipative` (a dissipative flow never lets its content grow,
+`X T <= X 0`).
 **Falsifier:** a grid-converged system with `sign(lambda) != sign(mu)`. **Missing
 entity:** the analytic claim that the identification `mu = lambda` survives the real
 flow; sources: Beale–Kato–Majda (1984); Constantin–Fefferman (1993); Deng–Hou–Yu (2015).
@@ -186,5 +196,8 @@ Razborov–Rudich (1997), Aaronson–Wigderson (2008); Yang–Mills: Osterwalder
 `exists_pos_logGrowth_of_unbounded`, the discrete BKM integral
 `log_eq_sum_logGrowth`, `bounded_of_bounded_sum_logGrowth`, `unbounded_sum_of_unbounded`,
 and the CONTINUOUS BKM integral `contLogGrowth_integral`, `continuous_content_bounded`
-(13 formalised facts). The remaining cards are cited (Theorem) or left OPEN with a
+(13 formalised facts). `DissipativeFlow.lean` (same axiom set): `logGrowth_deriv`,
+`logGrowth_nonpos_of_dissipative`, `content_le_initial_of_dissipative` -- the
+dissipative (L^2-energy) face of card C10, `X T <= X 0` under non-positive log-growth.
+The remaining cards are cited (Theorem) or left OPEN with a
 named missing entity (Conjecture; see C10-open). No card here is a Millennium result.

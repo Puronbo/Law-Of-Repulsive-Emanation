@@ -507,6 +507,32 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       card **C10-open** in `EXPLICIT_CLAIMS.md`; missing entity: an analytic lower bound
       on `d/dt log ‖u‖` (BKM 1984; Constantin–Fefferman 1993; Deng–Hou–Yu 2015). Axioms
       exactly `[propext, Classical.choice, Quot.sound]`; build green (8751 jobs). Wall OPEN.
+ 34. **Dissipative flows are attracting** (`DissipativeFlow.lean`). Card C10's PROVABLE
+      (energy) face as a theorem. `logGrowth_deriv` (the log-growth rate of a positive
+      content is `m / X t`, the content's relative rate of change); `logGrowth_nonpos_of_dissipative`
+      (content positive, `m <= 0` => `d/dt log X <= 0`); capstone `content_le_initial_of_dissipative`
+      (a continuous `g <= 0` on `[0, T]` => `X T <= X 0`) built on `continuous_content_bounded`
+      via interval-integral monotonicity. Scope, stated honestly: this is the L^2-energy face
+      (the NS energy identity `dE/dt = -nu ‖∇u‖^2 <= 0` is the motivating instance); the
+      scaling-critical content has NO such inner-product identity -- that absence is exactly
+      card C10-open. Axioms exactly `[propext, Classical.choice, Quot.sound]`; length
+      certificate axiom-free; build green (8752 jobs). Wall OPEN.
+ 35. **Fractional-NS sweep: the orientation holds one-parameter in the dissipation order**
+      (`orientation_vs_fractional_s.py`). Card C10 strengthened from a single PDE to the
+      family `u_t + u·∇u = -nu (-Δ)^s u`. Because the dissipation order sets the scaling,
+      the critical regularity index is `s`-dependent: the invariant scaling
+      `u_lambda = lambda^{2s-1} u(lambda x, lambda^{2s} t)` makes `H^sigma` critical exactly at
+      `sigma = 5/2 - 2s` (`sigma = 1/2`, the classical NS critical index, when `s = 1`). Over
+      the `s`-correct spectral critical content `‖u‖_{H^sigma}^2 = Σ_k |k|^{2 sigma} E(k)`, the
+      on-flow orientation matches at every order: `s = 1.0` `-3.15 / -0.63`; `s = 0.75`
+      `-1.29 / -0.67`; `s = 0.5` `-0.30 / -0.56` -- all attracting, `sign(lambda) = sign(mu)`.
+      `|lambda|` shrinks monotonically `3.15 -> 1.29 -> 0.30` as dissipation weakens, i.e. the
+      flow drifts toward the inviscid/repelling regime while remaining attracted. Window
+      caveat: `lambda` is the sampled slope of `log(Z_high/Z_low)`; with weak high-k
+      dissipation the ratio first rises (a transient high-k enstrophy pile-up) and only later
+      decays, so a SHORT window (`T ≈ 2.5`) reports a spurious `lambda > 0` at `s = 0.5`; the
+      sweep is run over the full relaxation window (`T = 6`). `EXIT=0`, artifact
+      `data/orientation_vs_fractional_s.json` (untracked). Diagnostic only; wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 
