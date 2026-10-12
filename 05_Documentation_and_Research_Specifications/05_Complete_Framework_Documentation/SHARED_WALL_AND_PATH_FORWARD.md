@@ -556,6 +556,16 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       `mu = -0.20`): the orientation LEADS the wall. So standard NS (`s = 1`) sits with a
       finite, healthy margin (`lambda = -3.15`, `nu >> nu*`), and the wall opens only in the
       deeply supercritical regime `s < s*`. Diagnostic only; wall OPEN.
+  38. **The margin is a boundary, not an artifact** (`fractional_margin_universality.py`).
+      Re-locates `s*` across the high/low band split `K0 in {4, 6, 8}` and across a
+      different initial condition (seed `1`), at fixed window `T = 5`. Found
+      `s* = 0.283 (K0=4)`, `0.300 (K0=6)`, `0.282 (K0=8)`, `0.320 (seed=1)`: overall
+      spread `0.037`, so `s*` does NOT track the arbitrary band split (K0-spread `0.018`)
+      and moves only mildly with the IC (`0.020`). The dominant sensitivity is the
+      measurement window: for `K0 = 6`, `s*` drifts `0.300 (T=5) -> 0.258 (T=6)`, a change
+      of `0.042`. So the margin is a robust property of the equation -- the standard regime
+      ends at order `s ~ 0.3` regardless of how the spectrum is split or seeded -- but it
+      is a soft crossover, not a sharp universal exponent. Diagnostic only; wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 
