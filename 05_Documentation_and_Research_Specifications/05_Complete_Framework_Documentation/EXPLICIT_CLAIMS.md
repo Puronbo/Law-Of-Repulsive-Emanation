@@ -103,10 +103,32 @@ CLM `+34.75 / +2.82`; linear heat `-66.74 / -0.13`. **Evidence:**
 `T = 8` (`N = 32/48/64`, `|dk|/k = 0.027`,
 `|dlambda|/|lambda| = 0.019`). **Formal model core:** `OrientationLaw.lean` proves
 `mu == lambda` on the geometric orbit (`logGrowth_geometric`), hence `sign_match`
-and `orientation_reads_wall` (`mu > 0` iff the invariant escapes every bound).
+and `orientation_reads_wall` (`mu > 0` iff the invariant escapes every bound). More
+generally, with no geometric assumption, `logGrowth_of_ratio_eq` gives
+`mu = log(relative increment)` for any positive sequence and
+`exists_pos_logGrowth_of_unbounded` gives: unbounded content ⇒ some strictly positive
+growth rate (`bounded_of_nonpos_logGrowth` as contrapositive).
 **Falsifier:** a grid-converged system with `sign(lambda) != sign(mu)`. **Missing
 entity:** the analytic claim that the identification `mu = lambda` survives the real
 flow; sources: Beale–Kato–Majda (1984); Constantin–Fefferman (1993); Deng–Hou–Yu (2015).
+
+## C10-open — The analytic residue: `mu = lambda` for the real flow
+
+**Type:** Conjecture/Open. **Statement.** Let `u` be a Leray–Hopf solution of 3D NS on
+`[0,T*)` and `X(t) = ‖u(t)‖_{Ḃ^{-1}_{∞,∞}}` its largest critical content. Define the
+orientation `lambda := limsup_{n} (1/n) log(X(n)/X(0))` and the growth rate
+`mu(n) = logGrowth X n`. Then `sign(lambda) = sign(mu)` asymptotically, and in
+particular `lambda > 0` iff `X` is unbounded (the content escapes the wall), `lambda
+<= 0` iff `X` is bounded. **Evidence (partial):** the discrete form is fully proved
+(`OrientationLaw.lean`: `logGrowth_geometric`, `log_eq_sum_logGrowth`,
+`bounded_of_bounded_sum_logGrowth`, `unbounded_sum_of_unbounded`); the sign match is
+empirical across 6 systems (`orientation_vs_invariant.py`). **Falsifier:** a
+Leray–Hopf solution with unbounded `‖u‖_{B^{-1}_{∞,∞}}` but `lambda <= 0`, or a global
+solution with `lambda > 0`. **Missing entity:** the bridge from the discrete
+telescoping identity to the *real* flow -- i.e. an analytic lower bound on
+`mu(t) = d/dt log ‖u(t)‖` (equivalently the BKM/Constantin–Fefferman critical-content
+integral). **Sources:** Beale–Kato–Majda (1984); Constantin–Fefferman (1993);
+Deng–Hou–Yu (2015); Cheskidov–Shvydkoy (2010).
 
 ## C11 — Orientation decides the wall
 
@@ -146,6 +168,7 @@ Razborov–Rudich (1997), Aaronson–Wigderson (2008); Yang–Mills: Osterwalder
 | boundedness of `||u||_{B^{-1}_{\inf,\inf}}` | Cheskidov–Shvydkoy 2010 (arXiv:0708.3067); Ri 2023 (arXiv:2307.11312, unrefereed) |
 | quantitative continuation / next-order term | Tao 2016, 2021; Feng–He–Wang 2025; arXiv:2411.06483 |
 | Lyapunov/orientation exponent identification | Beale–Kato–Majda 1984; Constantin–Fefferman 1993; Deng–Hou–Yu 2015 |
+| `mu = lambda` for the real flow (C10-open) | discrete form proved in `OrientationLaw.lean`; continuous bridge: BKM 1984; Constantin–Fefferman 1993; Deng–Hou–Yu 2015 |
 | intermittency / multifractal bridge | Constantin 1994; Frisch 1995; Sreenivasan |
 | dimension threshold / Riesz potentials | Adams–Hedberg 1996; Tao (dim. regularisation) |
 | method barriers (P vs NP) | Baker–Gill–Solovay 1975; Razborov–Rudich 1997; Aaronson–Wigderson 2008 |
@@ -155,6 +178,9 @@ Razborov–Rudich (1997), Aaronson–Wigderson (2008); Yang–Mills: Osterwalder
 `ExplicitClaims.lean` (axioms exactly `[propext, Classical.choice, Quot.sound]`):
 `morrey_threshold`, `physical_embedding_gap`, `extra_power_strengthens_above_unit`,
 `mean_le_dimMixture`. `OrientationLaw.lean` (same axiom set): `logGrowth_geometric`,
-`sign_match`, `orientation_reads_wall` (card C10's model core). The remaining cards
-are cited (Theorem) or left OPEN with a named missing entity (Conjecture). No card
-here is a Millennium result.
+`sign_match`, `orientation_reads_wall` (card C10's model core), the generalization
+`logGrowth_of_ratio_eq` / `logGrowth_pos_iff` / `bounded_of_nonpos_logGrowth` /
+`exists_pos_logGrowth_of_unbounded`, and the discrete BKM integral
+`log_eq_sum_logGrowth`, `bounded_of_bounded_sum_logGrowth`, `unbounded_sum_of_unbounded`
+(11 formalised facts). The remaining cards are cited (Theorem) or left OPEN with a
+named missing entity (Conjecture; see C10-open). No card here is a Millennium result.

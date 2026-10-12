@@ -487,6 +487,23 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       `+34.75/+2.82`; heat `-66.74/-0.13`). The inviscid Euler case is REPELLING, so it
       is the dissipation -- not the nonlinearity -- that makes NS attracting; the heat
       control is the pure attracting limit. `EXIT=0`; diagnostic only; wall OPEN.
+ 33. **The orientation law, generalized** (`OrientationLaw.lean`). Card C10's model core
+      now holds off the geometric orbit. For ANY positive sequence: the growth rate is
+      the log of the relative increment (`logGrowth_of_ratio_eq`); positive growth ⟺
+      strict increase (`logGrowth_pos_iff`); non-positive growth at every step forces
+      boundedness (`bounded_of_nonpos_logGrowth`), so unbounded content forces a strictly
+      positive growth rate somewhere (`exists_pos_logGrowth_of_unbounded`). The geometric
+      orbit is a corollary (constant relative increment ⇒ `mu = log r`,
+      `logGrowth_geometric`). The wall's repelling side is read by the sign of the growth
+      rate alone, no self-similarity assumed. It also carries the DISCRETE BKM INTEGRAL:
+      `log_eq_sum_logGrowth` (log of content = `log(N 0)` + running sum of growth rates,
+      telescoping), `bounded_of_bounded_sum_logGrowth` (bounded growth-sum ⇒ bounded
+      content), `unbounded_sum_of_unbounded` (unbounded content ⇒ diverging growth-sum) --
+      no blow-up without a diverging critical-content integral. The continuous residue
+      (that `mu = lambda` survives the real flow) is now an explicit OPEN proposition,
+      card **C10-open** in `EXPLICIT_CLAIMS.md`; missing entity: an analytic lower bound
+      on `d/dt log ‖u‖` (BKM 1984; Constantin–Fefferman 1993; Deng–Hou–Yu 2015). Axioms
+      exactly `[propext, Classical.choice, Quot.sound]`; build green (8751 jobs). Wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 
