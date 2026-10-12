@@ -149,15 +149,42 @@ theorem orientation_reads_wall {r A : ℝ} (hr : 0 < r) (hA : 0 < A) (n : ℕ) :
   simp only [logGrowth_geometric hr hA n, orientation, geometricOrbit]
   exact PunoCalculus.OrientationBoundedness.orientation_decides_boundedness hr hA
 
+/-- **Continuous telescoping (continuous BKM integral).**  If `g` is the log-derivative
+of the critical content `X` (`HasDerivAt (fun s => log (X s)) (g t) t`), then the
+integral of the growth rate over `[0, T]` is the log of the content ratio.  The
+continuous counterpart of `log_eq_sum_logGrowth`. -/
+theorem contLogGrowth_integral {X g : ℝ → ℝ} {T : ℝ}
+    (hderiv : ∀ t ∈ Set.uIcc 0 T, HasDerivAt (fun s => Real.log (X s)) (g t) t)
+    (hcont : ContinuousOn g (Set.uIcc 0 T)) :
+    ∫ t in (0)..T, g t = Real.log (X T) - Real.log (X 0) :=
+  intervalIntegral.integral_eq_sub_of_hasDerivAt hderiv hcont.intervalIntegrable
+
+/-- **Continuous content bound (provable part of C10-open).**  If the critical-content
+integral `∫_0^T g` is bounded by `B`, then `X T ≤ X 0 * exp B`.  The continuous
+analogue of `bounded_of_bounded_sum_logGrowth`: bounded content-integral ⇒ bounded
+content.  Only the NS-specific bound on the growth rate `g` stays open (card C10-open). -/
+theorem continuous_content_bounded {X g : ℝ → ℝ} {T B : ℝ}
+    (hX0 : 0 < X 0) (hXT : 0 < X T)
+    (hderiv : ∀ t ∈ Set.uIcc 0 T, HasDerivAt (fun s => Real.log (X s)) (g t) t)
+    (hcont : ContinuousOn g (Set.uIcc 0 T))
+    (hint : ∫ t in (0)..T, g t ≤ B) :
+    X T ≤ X 0 * Real.exp B := by
+  have hftc := contLogGrowth_integral hderiv hcont
+  have hlog : Real.log (X T) ≤ Real.log (X 0) + B := by
+    rw [hftc] at hint; linarith
+  calc X T = Real.exp (Real.log (X T)) := (Real.exp_log hXT).symm
+    _ ≤ Real.exp (Real.log (X 0) + B) := Real.exp_le_exp.mpr hlog
+    _ = X 0 * Real.exp B := by rw [Real.exp_add, Real.exp_log hX0]
+
 /-- Formalised-facts register for `OrientationLaw.lean`. -/
 def orientationLawFacts : List String :=
   [ "logGrowth_of_ratio_eq", "logGrowth_geometric", "sign_match", "logGrowth_pos_iff",
     "logGrowth_nonpos_iff", "bounded_of_nonpos_logGrowth",
     "exists_pos_logGrowth_of_unbounded", "log_eq_sum_logGrowth",
     "bounded_of_bounded_sum_logGrowth", "unbounded_sum_of_unbounded",
-    "orientation_reads_wall" ]
+    "contLogGrowth_integral", "continuous_content_bounded", "orientation_reads_wall" ]
 
-/-- The register has exactly eleven entries. -/
-theorem orientationLawFacts_length : orientationLawFacts.length = 11 := by decide
+/-- The register has exactly thirteen entries. -/
+theorem orientationLawFacts_length : orientationLawFacts.length = 13 := by decide
 
 end PunoCalculus.OrientationLaw

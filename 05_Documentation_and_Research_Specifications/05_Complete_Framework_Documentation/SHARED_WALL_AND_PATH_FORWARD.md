@@ -499,7 +499,10 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       `log_eq_sum_logGrowth` (log of content = `log(N 0)` + running sum of growth rates,
       telescoping), `bounded_of_bounded_sum_logGrowth` (bounded growth-sum ⇒ bounded
       content), `unbounded_sum_of_unbounded` (unbounded content ⇒ diverging growth-sum) --
-      no blow-up without a diverging critical-content integral. The continuous residue
+      no blow-up without a diverging critical-content integral. The CONTINUOUS analogue
+      is proved too: `contLogGrowth_integral` (`int_0^T g = log X T - log X 0`, Mathlib
+      FTC) and `continuous_content_bounded` (bounded `int_0^T g` => `X T <= X 0 * exp B`),
+      so the residue is exactly the NS-specific bound on `g = d/dt log X`. The continuous residue
       (that `mu = lambda` survives the real flow) is now an explicit OPEN proposition,
       card **C10-open** in `EXPLICIT_CLAIMS.md`; missing entity: an analytic lower bound
       on `d/dt log ‖u‖` (BKM 1984; Constantin–Fefferman 1993; Deng–Hou–Yu 2015). Axioms

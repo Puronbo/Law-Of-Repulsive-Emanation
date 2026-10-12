@@ -122,7 +122,10 @@ particular `lambda > 0` iff `X` is unbounded (the content escapes the wall), `la
 <= 0` iff `X` is bounded. **Evidence (partial):** the discrete form is fully proved
 (`OrientationLaw.lean`: `logGrowth_geometric`, `log_eq_sum_logGrowth`,
 `bounded_of_bounded_sum_logGrowth`, `unbounded_sum_of_unbounded`); the sign match is
-empirical across 6 systems (`orientation_vs_invariant.py`). **Falsifier:** a
+empirical across 6 systems (`orientation_vs_invariant.py`). **Continuous part proved:**
+`OrientationLaw.contLogGrowth_integral` (`int_0^T g = log X T - log X 0`) and
+`continuous_content_bounded` (bounded `int_0^T g` => `X T <= X 0 * exp B`) are
+machine-checked, so the residue is exactly the NS-specific bound on `g`. **Falsifier:** a
 Leray–Hopf solution with unbounded `‖u‖_{B^{-1}_{∞,∞}}` but `lambda <= 0`, or a global
 solution with `lambda > 0`. **Missing entity:** the bridge from the discrete
 telescoping identity to the *real* flow -- i.e. an analytic lower bound on
@@ -180,7 +183,8 @@ Razborov–Rudich (1997), Aaronson–Wigderson (2008); Yang–Mills: Osterwalder
 `mean_le_dimMixture`. `OrientationLaw.lean` (same axiom set): `logGrowth_geometric`,
 `sign_match`, `orientation_reads_wall` (card C10's model core), the generalization
 `logGrowth_of_ratio_eq` / `logGrowth_pos_iff` / `bounded_of_nonpos_logGrowth` /
-`exists_pos_logGrowth_of_unbounded`, and the discrete BKM integral
-`log_eq_sum_logGrowth`, `bounded_of_bounded_sum_logGrowth`, `unbounded_sum_of_unbounded`
-(11 formalised facts). The remaining cards are cited (Theorem) or left OPEN with a
+`exists_pos_logGrowth_of_unbounded`, the discrete BKM integral
+`log_eq_sum_logGrowth`, `bounded_of_bounded_sum_logGrowth`, `unbounded_sum_of_unbounded`,
+and the CONTINUOUS BKM integral `contLogGrowth_integral`, `continuous_content_bounded`
+(13 formalised facts). The remaining cards are cited (Theorem) or left OPEN with a
 named missing entity (Conjecture; see C10-open). No card here is a Millennium result.
