@@ -583,6 +583,21 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       pile-up, not a sharp regime boundary. A resolution check at `T = 6` gives
       `s* = 0.259 (N=32)` vs `0.265 (N=48)` (agreement `0.006`), so the intermediate-`T`
       values are resolution-stable. Diagnostic only; wall OPEN.
+  40. **...and the classical sufficiency direction is now formal too**
+      (`SerrinSufficiency.lean`).  `RegularityReduction.lean` gave the wall as an
+      equivalence (content bounded iff `int_0^T g` bounded).  The other half of
+      Prodi-Serrin -- that a finite *supercritical control* is sufficient -- is added
+      in the register's `(X, g)` abstraction: `content_le_of_growth_le_weight` (a
+      log-growth rate dominated by a weight of finite action gives
+      `X T <= X 0 * exp (R M)`) and `bounded_on_of_serrinAction` (a finite such control
+      on every `[0, T]` forbids finite-time blow-up).  The supercriticality is named by
+      the Serrin-margin arithmetic `serrinMargin p q = 1 - (2/q + 3/p)` (positive iff
+      strictly supercritical; `serrinMargin_eq_neg_ladder` shows a positive margin is
+      exactly "above the critical rung" `sCrit`).  Axioms exactly
+      `[propext, Classical.choice, Quot.sound]`; length certificate axiom-free.  So the
+      register now carries BOTH halves -- a sufficient control and the equivalence --
+      and the open residue is exactly the NS-specific *existence* of the control on the
+      real flow.  Wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 

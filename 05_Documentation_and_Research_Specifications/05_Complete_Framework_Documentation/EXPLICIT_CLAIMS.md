@@ -161,7 +161,16 @@ it as an equivalence -- `regularity_iff_integral_bounded`: the content is bounde
 in `T` iff the critical-content integral `int_0^T g` is bounded uniformly in `T`
 (`regularity_reduced_to_integral` and its converse `integral_le_of_content_le`, plus the
 contrapositive `integral_unbounded_of_content_unbounded`) -- so the residue is *exactly*
-the boundedness of the critical-content integral. **Margin (empirical):**
+the boundedness of the critical-content integral. **Sufficiency proved too:**
+`SerrinSufficiency.lean` supplies the classical Prodi-Serrin direction in the same
+`(X, g)` abstraction -- `content_le_of_growth_le_weight` (if the log-growth rate is
+dominated by a weight of finite action, `X T <= X 0 * exp (R M)`) and
+`bounded_on_of_serrinAction` (such a finite supercritical control forbids finite-time
+blow-up) -- alongside the Serrin-margin arithmetic `serrinMargin p q = 1 - (2/q + 3/p)`
+(positive = strictly supercritical; `serrinMargin_eq_neg_ladder` shows a positive margin
+is exactly "above the critical rung"). So the register now has BOTH halves: a bounded
+control (sufficient) and the equivalence; only the NS-specific existence of that control
+on the real flow stays open. **Margin (empirical):**
 `fractional_margin_sweep.py`
 finds the standard-regime boundary `s* = 0.258` (`beta = 1.19`) and `nu* = 0.049` at
 `s = 0.40` (`gamma = 1.03`), with the orientation leading the critical content.
@@ -244,5 +253,9 @@ dissipative (L^2-energy) face of card C10, `X T <= X 0` under non-positive log-g
 `integral_le_of_content_le`, `regularity_iff_integral_bounded` -- the wall reduced to a
 single inequality and stated as an EQUIVALENCE (content bounded iff `int_0^T g` bounded;
 5 formalised facts).
+`SerrinSufficiency.lean` (same axiom set): `serrinMargin_pos_iff`, `serrinMargin_line`,
+`serrinMargin_eq_neg_ladder` (supercritical-margin arithmetic), `content_le_of_growth_le_weight`,
+`bounded_on_of_serrinAction` -- the classical Prodi-Serrin SUFFICIENCY direction
+(finite supercritical control bounds the content; 5 formalised facts).
 The remaining cards are cited (Theorem) or left OPEN with a
 named missing entity (Conjecture; see C10-open). No card here is a Millennium result.

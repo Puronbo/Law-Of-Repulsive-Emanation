@@ -45,3 +45,4 @@ import PunoCalculus.ExplicitClaims
 import PunoCalculus.OrientationLaw
 import PunoCalculus.DissipativeFlow
 import PunoCalculus.RegularityReduction
+import PunoCalculus.SerrinSufficiency
