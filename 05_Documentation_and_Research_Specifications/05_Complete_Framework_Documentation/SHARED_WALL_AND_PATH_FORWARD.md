@@ -570,9 +570,11 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       `s*(T=5) = 0.297`, in near-perfect agreement with the independent `T = 5`
       re-location `0.300` from `fractional_margin_universality.py`. So `s*` is a
       WINDOW-DEPENDENT measurement that converges only algebraically, extrapolating to
-      `s*(T->inf) ~ 0.06` (reported at fixed `N = 32`; resolution untested). The
-      finite-window headline `s* = 0.258` (T = 6) is therefore a boundary, not a critical
-      order. Diagnostic only; wall OPEN.
+      `s*(T->inf) ~ 0.06`. A resolution check (`fractional_margin_resolution.py`) at fixed
+      `T = 6` gives `s* = 0.259 (N = 32)` vs `0.265 (N = 48)` -- agreement to `0.006`,
+      within the ~`0.02` seed noise -- so `s*` is RESOLUTION-STABLE and the `1/T` drift is
+      not a finite-mode artifact. So `s*` is a moving boundary that tracks the window, not
+      a critical order. Diagnostic only; wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 

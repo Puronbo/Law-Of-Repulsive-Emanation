@@ -129,9 +129,11 @@ the band split `K0 in {4, 6, 8}` and a different seed -- `s* = 0.28 .. 0.32` (sp
 `0.037`, `T = 5`), so the margin is NOT an artifact of the `K0` split. But
 `fractional_margin_window.py` shows `s*` is a MOVING boundary: over `T = 4, 6, 8, 10`
 it follows `s*(T) = 0.058 + 1.19/T` (rms `0.001`), so the finite-window value (`0.258`
-at `T = 6`) converges only algebraically, extrapolating to `s*(T->inf) ~ 0.06`. So `s*`
-is a window-dependent BOUNDARY, not a sharp critical order (extrapolation at fixed
-`N = 32`; resolution untested).
+at `T = 6`) converges only algebraically, extrapolating to `s*(T->inf) ~ 0.06`. A
+resolution check (`fractional_margin_resolution.py`) at fixed `T = 6` gives
+`s* = 0.259 (N = 32)` vs `0.265 (N = 48)` -- agreement to `0.006`, within the ~`0.02`
+seed noise -- so `s*` is resolution-STABLE and the drift is not a finite-mode artifact.
+So `s*` is a window-dependent BOUNDARY, not a sharp critical order.
 **Falsifier:** a grid-converged system with `sign(lambda) != sign(mu)`. **Missing
 entity:** the analytic claim that the identification `mu = lambda` survives the real
 flow; sources: Beale–Kato–Majda (1984); Constantin–Fefferman (1993); Deng–Hou–Yu (2015).
@@ -158,10 +160,12 @@ of the critical-content integral. **Margin (empirical):** `fractional_margin_swe
 finds the standard-regime boundary `s* = 0.258` (`beta = 1.19`) and `nu* = 0.049` at
 `s = 0.40` (`gamma = 1.03`), with the orientation leading the critical content.
 `fractional_margin_universality.py` shows `s* = 0.28 .. 0.32` across `K0 in {4, 6, 8}`
-and a different seed (spread `0.037`, `T = 5`), so it is not a `K0` artifact; but
+and a different seed (spread `0.037`, `T = 5`), so it is not a `K0` artifact;
 `fractional_margin_window.py` shows `s*(T) = 0.058 + 1.19/T` (rms `0.001`, `T = 4..10`),
 so the finite-window boundary is a moving measurement -- a boundary, not a sharp
-exponent. **Falsifier:** a
+exponent; and `fractional_margin_resolution.py` shows `s*(N=32) = 0.259` vs
+`s*(N=48) = 0.265` at `T = 6` (agreement `0.006`), so the boundary is resolution-stable.
+**Falsifier:** a
 Leray–Hopf solution with unbounded `‖u‖_{B^{-1}_{∞,∞}}` but `lambda <= 0`, or a global
 solution with `lambda > 0`. **Missing entity:** the bridge from the discrete
 telescoping identity to the *real* flow -- i.e. an analytic lower bound on
