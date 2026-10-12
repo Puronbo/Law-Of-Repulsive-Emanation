@@ -431,6 +431,19 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       lowering viscosity, moving toward the unresolved repelling range without
       reaching it. So "the great attractor does not repel" holds at full run length,
       not just the transient. Diagnostic only; wall OPEN.
+ 28. **Theory of everything: the register is one theorem over two numbers**
+      (`TheoryOfEverything.lean`). A `Register` is (order `a`, orientation `r`).
+      The two reduction lemmas are `order_sets_rung`
+      (`criticalSmoothness a p = sCrit p + (1-a)`) and `orientation_sets_side`
+      (`bounded ↔ r ≤ 1`). The single theorem `theoryOfEverything` is the whole
+      register as a conjunction: order sets the rung; the homogeneous norm is
+      scale-free exactly on that family; `gnExponent + sCrit = 1/2`; orientation
+      sets the side; the SIGN of `log r` (the `GreatAttractor` Lyapunov sign)
+      reads that side; the barrier hierarchy holds (order ≤ 1 controlled, order 2
+      not); and the sufficiency loop closes (`global_exists_of_mono`). Every conjunct
+      cites an earlier committed brick -- the capstone adds no analytic content, it
+      makes the register citable as ONE theorem. Axioms exactly
+      `[propext, Classical.choice, Quot.sound]`; build green (8748 jobs). Wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 
