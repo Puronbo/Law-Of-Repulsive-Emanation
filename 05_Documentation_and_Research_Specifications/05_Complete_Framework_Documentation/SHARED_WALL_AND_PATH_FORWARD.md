@@ -444,6 +444,18 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       cites an earlier committed brick -- the capstone adds no analytic content, it
       makes the register citable as ONE theorem. Axioms exactly
       `[propext, Classical.choice, Quot.sound]`; build green (8748 jobs). Wall OPEN.
+ 29. **Emergent time: change is transfer, time is the count** (`EmergentTime.lean`).
+      (1) A `Reservoir` of two energies with a `transfer` (remove from one, add to
+      the other): `transfer_conserves_total` (a change moves energy, never creates it:
+      decay is removal, growth is transfer -- one move, two readings); `transfer_iterate`
+      and `state_determined_by_count` (the state is a function of the transfer COUNT
+      alone: no clock exists, time is the count). (2) `sqrt_self_consistency`
+      (`sqrt b = a (a>0) => b / a = a`): the squaring relation is its own fixed ratio,
+      the self-consistency of the order-2 step. (3) dimension-parameter arithmetic
+      `sCritN d p = d/p - 1` (`sCritN_three` recovers the ladder at `d=3`),
+      `scaleFreeN_iff`, and `sCritN_mono` (higher dimension => higher change cost).
+      Axioms exactly `[propext, Classical.choice, Quot.sound]`. Structural reframing /
+      toy model, NOT a PDE claim; build green (8749 jobs). Wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 
