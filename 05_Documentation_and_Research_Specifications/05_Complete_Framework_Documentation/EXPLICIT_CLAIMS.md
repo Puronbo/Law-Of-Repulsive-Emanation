@@ -94,15 +94,17 @@ intermittency); Frisch, *Turbulence* (1995).
 
 ## C10 — Orientation sign equals the sign of the critical-content derivative
 
-**Type:** Empirical conjecture. **Statement.** `sign(lambda) = sign(mu)` across
-systems, where `lambda` is the orbit Lyapunov base and `mu = d/dt log(critical
+**Type:** Empirical + Formal (model core). **Statement.** `sign(lambda) = sign(mu)`
+across systems, where `lambda` is the orbit Lyapunov base and `mu = d/dt log(critical
 content)`: 3D NS `lambda = -3.11`, `mu = -0.41`; 2D NS `-9.27 / -0.53`; Burgers
-`+16.24 / +2.39`; CLM `+34.75 / +2.82`. **Evidence:**
-`orientation_vs_invariant.py`; resolution-converged at `T = 8` (`N = 32/48/64`,
-`|dk|/k = 0.027`, `|dlambda|/|lambda| = 0.019`). **Falsifier:** a grid-converged
-system with `sign(lambda) != sign(mu)`. **Missing entity:** a theorem linking the
-Lyapunov exponent to the derivative of the critical norm; nearest sources:
-Beale–Kato–Majda (1984); Constantin–Fefferman (1993); Deng–Hou–Yu (2015).
+`+16.24 / +2.39`; CLM `+34.75 / +2.82`. **Evidence:** `orientation_vs_invariant.py`;
+resolution-converged at `T = 8` (`N = 32/48/64`, `|dk|/k = 0.027`,
+`|dlambda|/|lambda| = 0.019`). **Formal model core:** `OrientationLaw.lean` proves
+`mu == lambda` on the geometric orbit (`logGrowth_geometric`), hence `sign_match`
+and `orientation_reads_wall` (`mu > 0` iff the invariant escapes every bound).
+**Falsifier:** a grid-converged system with `sign(lambda) != sign(mu)`. **Missing
+entity:** the analytic claim that the identification `mu = lambda` survives the real
+flow; sources: Beale–Kato–Majda (1984); Constantin–Fefferman (1993); Deng–Hou–Yu (2015).
 
 ## C11 — Orientation decides the wall
 
@@ -150,5 +152,7 @@ Razborov–Rudich (1997), Aaronson–Wigderson (2008); Yang–Mills: Osterwalder
 
 `ExplicitClaims.lean` (axioms exactly `[propext, Classical.choice, Quot.sound]`):
 `morrey_threshold`, `physical_embedding_gap`, `extra_power_strengthens_above_unit`,
-`mean_le_dimMixture`. The remaining cards are cited (Theorem) or left OPEN with a
-named missing entity (Conjecture). No card here is a Millennium result.
+`mean_le_dimMixture`. `OrientationLaw.lean` (same axiom set): `logGrowth_geometric`,
+`sign_match`, `orientation_reads_wall` (card C10's model core). The remaining cards
+are cited (Theorem) or left OPEN with a named missing entity (Conjecture). No card
+here is a Millennium result.

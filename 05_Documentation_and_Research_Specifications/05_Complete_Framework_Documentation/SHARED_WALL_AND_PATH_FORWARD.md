@@ -469,6 +469,16 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       Constantin–Fefferman 1993; Deng–Hou–Yu 2015; Adams–Hedberg 1996; Frisch 1995).
       Axioms exactly `[propext, Classical.choice, Quot.sound]`; build green
       (8750 jobs). No Millennium result.
+ 31. **The orientation law: growth rate equals orientation** (`OrientationLaw.lean`).
+      Card C10's model core as a theorem. On the geometric orbit `N n = r^n A` the
+      discrete growth rate `mu(n) = log N(n+1) - log N(n)` is constant and EQUALS the
+      orientation `lambda = log r` (`logGrowth_geometric`), so `sign(mu) = sign(lambda)`
+      (`sign_match`) and that shared sign reads the wall (`orientation_reads_wall`:
+      `mu > 0` iff unbounded). On the model the growth rate of the critical content
+      and the orientation are the same number, and it is the wall's own reading; the
+      analytic residue (that this survives the real flow, `orientation_vs_invariant.py`)
+      stays EMPIRICAL/OPEN. Axioms exactly `[propext, Classical.choice, Quot.sound]`;
+      build green (8751 jobs).
 
 ## Sources for the missing brick (scaling-critical control)
 
