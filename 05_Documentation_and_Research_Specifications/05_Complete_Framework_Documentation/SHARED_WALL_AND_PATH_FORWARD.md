@@ -566,18 +566,23 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       spread `0.037`, so `s*` does NOT track the arbitrary band split (K0-spread `0.018`)
       and moves only mildly with the IC (`0.020`). The standard-regime boundary is thus
       not an artifact of the band split or the seed. Diagnostic only; wall OPEN.
-  39. **...and the margin COLLAPSES: there is no critical order** (`fractional_margin_window.py`).
+  39. **...and the margin is a shrinking TRANSIENT (no well-resolved critical order)**
+      (`fractional_margin_window.py`, `fractional_margin_resolution.py`).
       Locates `s*` by bisection on the order for windows `T = 4, 6, 8, 10, 12`
-      (`K0 = 6`, seed `0`): `s* = 0.355, 0.259, 0.207, 0.176, 0.152`. Over `T <= 12` this
-      fits a clean algebraic law `s*(T) = 0.055 + 1.21/T` (rms `0.002`), which predicts
-      `s*(T=5) = 0.297`, matching the independent `T = 5` re-location `0.300`. But at
-      `T = 16` the crossing is GONE: `lambda < 0` for every `s >= 0.01` (down to the
-      numerical-damping floor), so the repelling regime COLLAPSES and `s*(T) -> 0`. Hence
-      there is NO positive critical dissipation order; the `lambda > 0` regime is a
-      finite-window TRANSIENT of the high-k pile-up, not a regime boundary. A resolution
-      check (`fractional_margin_resolution.py`) at `T = 6` gives `s* = 0.259 (N=32)` vs
-      `0.265 (N=48)` (agreement `0.006`), so the intermediate-`T` values are not a
-      finite-mode artifact either. Diagnostic only; wall OPEN.
+      (`K0 = 6`, seed `0`, `N = 32`): `s* = 0.355, 0.259, 0.207, 0.176, 0.152`. Over
+      `T <= 12` this fits a clean algebraic law `s*(T) = 0.055 + 1.21/T` (rms `0.002`),
+      which predicts `s*(T=5) = 0.297`, matching the independent `T = 5` re-location
+      `0.300`. At `T = 16`, `N = 32` the crossing is GONE (`lambda < 0` for every
+      `s >= 0.01`, down to the numerical-damping floor), but the resolution check shows
+      this "vanish" is PARTLY a numerical floor: at `N = 48`, `T = 16` the crossing
+      PERSISTS at `s* ~= 0.012` (`lambda(0.01) = +0.001`, `lambda(0.02) = -0.013`).
+      The honest reading: `s*(T)` collapses STEEPLY with `T` (`0.36 -> O(0.01)` over
+      `T = 4..16`) toward a small value, and whether the limit is exactly `0` is
+      resolution-limited at small `s`. So there is no WELL-RESOLVED positive critical
+      order; the `lambda > 0` regime is a finite-window TRANSIENT of the high-k
+      pile-up, not a sharp regime boundary. A resolution check at `T = 6` gives
+      `s* = 0.259 (N=32)` vs `0.265 (N=48)` (agreement `0.006`), so the intermediate-`T`
+      values are resolution-stable. Diagnostic only; wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 

@@ -127,13 +127,17 @@ critical content is still decaying where the orientation has flipped (s = 0.20:
 **Robustness (empirical):** `fractional_margin_universality.py` re-locates `s*` across
 the band split `K0 in {4, 6, 8}` and a different seed -- `s* = 0.28 .. 0.32` (spread
 `0.037`, `T = 5`), so the margin is NOT an artifact of the `K0` split. But
-`fractional_margin_window.py` shows `s*` is a MOVING, COLLAPSING boundary: over
-`T = 4, 6, 8, 10, 12` it follows `s*(T) = 0.055 + 1.21/T` (rms `0.002`), but at `T = 16`
-the crossing VANISHES (`lambda < 0` for all `s >= 0.01`), so `s*(T) -> 0`. Hence `s*` is a
-finite-window TRANSIENT of the high-k pile-up, NOT a critical order. A resolution check
-(`fractional_margin_resolution.py`) at fixed `T = 6` gives `s* = 0.259 (N = 32)` vs
+`fractional_margin_window.py` shows `s*` is a MOVING, SHRINKING boundary: over
+`T = 4, 6, 8, 10, 12` it follows `s*(T) = 0.055 + 1.21/T` (rms `0.002`), and by `T = 16`
+it has fallen to `O(0.01)`. At `N = 32`, `T = 16` the crossing VANISHES (`lambda < 0`
+for all `s >= 0.01`), but `fractional_margin_resolution.py` shows this vanish is PARTLY
+a numerical floor: at `N = 48`, `T = 16` the crossing PERSISTS at `s* ~= 0.012`
+(`lambda(0.01) = +0.001`, `lambda(0.02) = -0.013`). Hence `s*` is a finite-window
+TRANSIENT of the high-k pile-up that collapses steeply toward a small value -- NOT a
+well-resolved critical order (whether the limit is exactly `0` is resolution-limited at
+small `s`). A resolution check at fixed `T = 6` gives `s* = 0.259 (N = 32)` vs
 `0.265 (N = 48)` -- agreement to `0.006`, within the ~`0.02` seed noise -- so the
-intermediate-`T` values are not a finite-mode artifact either.
+intermediate-`T` values are resolution-stable.
 **Falsifier:** a grid-converged system with `sign(lambda) != sign(mu)`. **Missing
 entity:** the analytic claim that the identification `mu = lambda` survives the real
 flow; sources: Beale–Kato–Majda (1984); Constantin–Fefferman (1993); Deng–Hou–Yu (2015).
@@ -164,11 +168,13 @@ finds the standard-regime boundary `s* = 0.258` (`beta = 1.19`) and `nu* = 0.049
 `fractional_margin_universality.py` shows `s* = 0.28 .. 0.32` across `K0 in {4, 6, 8}`
 and a different seed (spread `0.037`, `T = 5`), so it is not a `K0` artifact;
 `fractional_margin_window.py` shows `s*(T) = 0.055 + 1.21/T` over `T = 4..12` (rms
-`0.002`) but at `T = 16` the crossing VANISHES (`lambda < 0` for all `s >= 0.01`), so
-`s*(T) -> 0`: the margin is a finite-window transient, not a boundary;
-`fractional_margin_resolution.py` shows `s*(N=32) = 0.259` vs
-`s*(N=48) = 0.265` at `T = 6` (agreement `0.006`), so the intermediate-`T` values are
-resolution-stable.
+`0.002`), falling to `O(0.01)` by `T = 16`: the margin is a shrinking finite-window
+transient, not a boundary. At `N = 32`, `T = 16` the crossing vanishes, but
+`fractional_margin_resolution.py` shows that is PARTLY a numerical floor -- at `N = 48`,
+`T = 16` it persists at `s* ~= 0.012` (`lambda(0.01) = +0.001`). And at fixed `T = 6`,
+`s*(N=32) = 0.259` vs `s*(N=48) = 0.265` (agreement `0.006`), so the intermediate-`T`
+values are resolution-stable. Whether the collapsing limit is exactly `0` is
+resolution-limited at small `s`.
 **Falsifier:** a
 Leray–Hopf solution with unbounded `‖u‖_{B^{-1}_{∞,∞}}` but `lambda <= 0`, or a global
 solution with `lambda > 0`. **Missing entity:** the bridge from the discrete

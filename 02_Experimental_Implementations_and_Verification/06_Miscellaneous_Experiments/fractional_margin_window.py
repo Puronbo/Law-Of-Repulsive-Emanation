@@ -49,7 +49,7 @@ def locate(T, lo=S_LO, hi=S_HI):
     rows = [(lo, flo, False), (hi, fhi, True)]
     if not (flo > 0.0 >= fhi):
         print(f"    T={T:<4} => NO crossing in [{lo},{hi}] "
-              f"(lam={flo:+.3f},{fhi:+.3f}): the repelling regime has collapsed.",
+              f"(lam={flo:+.3f},{fhi:+.3f}): no crossing (below numerical floor at this N).",
               flush=True)
         return None, rows
     while hi - lo > S_TOL:
@@ -109,10 +109,13 @@ def main():
         converged = rms < 0.01
         print("=" * 80)
         if none_T:
-            print(f"  At T = {none_T} the crossing is GONE (lambda < 0 for every s >= 0.01):")
-            print("      the repelling regime COLLAPSES, so s*(T) -> 0.  The 1/T fit is a")
-            print("      finite-window approximation that BREAKS by T = 16.")
-            print(f"  CONCLUSION: there is NO positive critical order -- the margin is a")
+            print(f"  At T = {none_T} the crossing is GONE at N = 32 (lambda < 0 for every s >= 0.01):")
+            print("      the repelling regime has fallen below the N = 32 numerical-damping floor.")
+            print("      CAVEAT: fractional_margin_resolution.py shows that at N = 48, T = 16 the")
+            print("      crossing PERSISTS at s* ~ 0.012, so the vanish is partly numerical. The")
+            print("      robust reading: s*(T) collapses STEEPLY toward a small value (s*(T) -> 0")
+            print("      or a small positive limit, resolution-limited at small s).")
+            print(f"  CONCLUSION: there is NO well-resolved positive critical order -- the margin is a")
             print("      finite-window transient of the high-k pile-up.  Wall OPEN (C10-open).")
         elif converged:
             print(f"PASS: s*(T) follows a clean 1/T law (rms {rms:.4f}); the finite-window")
