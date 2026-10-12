@@ -38,3 +38,4 @@ import PunoCalculus.StableBounded
 import PunoCalculus.EnstrophyBarrier
 import PunoCalculus.SufficiencyLoop
 import PunoCalculus.QuantitativeContinuation
+import PunoCalculus.OrientationBoundedness

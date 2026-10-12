@@ -406,6 +406,20 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       classical double-log continuation bounds. Four substantive theorems, axioms
       exactly `[propext, Classical.choice, Quot.sound]`; build green (8746 jobs).
       Wall OPEN.
+ 26. **Orientation decides boundedness: the two organizing numbers meet**
+      (`OrientationBoundedness.lean`). The register has two organizing numbers --
+      the ORDER of the increment (bullets 23/25) and the ORIENTATION `log |L|`
+      (bullets 17/21). This brick joins them for the exact geometric orbit
+      `N n = r^n A`: `r <= 1` (attracting/marginal) is bounded by its start
+      (`geometric_bounded_of_le_one`); `r > 1` (repelling) escapes every bound
+      (`geometric_unbounded_of_one_lt`); hence `bounded <=> r <= 1`
+      (`geometric_bounded_iff`) and the SIGN of `log r` reads the wall
+      (`orientation_decides_boundedness`: `0 < log r` iff unbounded, `log r <= 0`
+      iff bounded). With `r = |L|` this IS the `GreatAttractor` orientation
+      (`repelling_iff_unbounded`), so the on-flow orientation bridge is now a
+      theorem: direction = orientation = which side of the wall. Five substantive
+      theorems, axioms exactly `[propext, Classical.choice, Quot.sound]`; build
+      green (8747 jobs). Wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 
