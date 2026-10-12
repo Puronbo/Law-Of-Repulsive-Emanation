@@ -420,6 +420,17 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       theorem: direction = orientation = which side of the wall. Five substantive
       theorems, axioms exactly `[propext, Classical.choice, Quot.sound]`; build
       green (8747 jobs). Wall OPEN.
+ 27. **Full-length resolution: the attracting reading is grid-converged at `T=8`**
+      (`ns_resolution_study.py --Ns 32,48,64 --Tmax 8`). The prior finest grid
+      (N=96) ran only to `T=3.5`; re-running the order/orientation probe for the
+      FULL probe length at three resolutions gives `k = 4.140/4.061/3.955`,
+      `lambda = -3.753/-3.714/-3.644` (`nu = 0.1`), with `48 -> 64` convergence
+      `|dk|/k = 0.027`, `|dlambda|/|lambda| = 0.019` -- CONVERGED and ATTRACTING.
+      The residual `N -> infinity` trend reproduces the `nu -> 0` direction
+      (refining lowers `k`, raises `lambda` toward `0`): resolution behaves like
+      lowering viscosity, moving toward the unresolved repelling range without
+      reaching it. So "the great attractor does not repel" holds at full run length,
+      not just the transient. Diagnostic only; wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 
