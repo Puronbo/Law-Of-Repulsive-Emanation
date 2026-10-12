@@ -533,6 +533,29 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       decays, so a SHORT window (`T ≈ 2.5`) reports a spurious `lambda > 0` at `s = 0.5`; the
       sweep is run over the full relaxation window (`T = 6`). `EXIT=0`, artifact
       `data/orientation_vs_fractional_s.json` (untracked). Diagnostic only; wall OPEN.
+ 36. **The wall is one inequality** (`RegularityReduction.lean`). Packages the two
+      `OrientationLaw` facts into the wall statement itself. With `X` the critical content
+      and `g = d/dt log X`, the continuous BKM integral gives `X T = X 0 * exp (int_0^T g)`.
+      Hence `content_le_exp_of_integral_le` (an integral bound `int_0^T g <= B` forces
+      `X T <= X 0 * exp B`); `regularity_reduced_to_integral` (if `int_0^T g` is bounded
+      UNIFORMLY in `T` then `X` is bounded uniformly in `T`); and the contrapositive
+      `integral_unbounded_of_content_unbounded` (unbounded content => unbounded integral).
+      So the ENTIRE wall is the single analytic question: is `int_0^T d/dt log X` bounded
+      along the real flow? The discrete analogue is already `OrientationLaw`; the residue
+      is exactly the NS-specific lower bound on `g` (Beale–Kato–Majda 1984;
+      Constantin–Fefferman 1993). Axioms exactly `[propext, Classical.choice, Quot.sound]`;
+      length certificate axiom-free; build green (8753 jobs). Wall OPEN.
+ 37. **The margin: the boundary of the standard regime** (`fractional_margin_sweep.py`).
+      Reads the late-window orientation (`t >= T/2`, to avoid the early high-k pile-up) over
+      `(-Δ)^s`, against the `s`-correct critical Sobolev content `H^{5/2 - 2s}`. The
+      orientation crosses zero at the marginal dissipation order `s* = 0.258`, and the
+      scaling gap is LINEAR in the order: `|lambda| ~ |s - s*|^beta` with `beta = 1.19`.
+      At fixed `s = 0.40` the boundary in viscosity is `nu* = 0.049`, gap exponent
+      `gamma = 1.03`. At every order `s` the critical-content rate is still negative even
+      where the orientation has flipped repelling (at the deepest probed `s = 0.20`,
+      `mu = -0.20`): the orientation LEADS the wall. So standard NS (`s = 1`) sits with a
+      finite, healthy margin (`lambda = -3.15`, `nu >> nu*`), and the wall opens only in the
+      deeply supercritical regime `s < s*`. Diagnostic only; wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 

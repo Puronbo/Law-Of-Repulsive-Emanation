@@ -117,7 +117,13 @@ match holds at `s = 1.0 / 0.75 / 0.5` (`lambda = -3.15 / -1.29 / -0.30`, `mu = -
 **Provable energy face:** `DissipativeFlow.lean` proves `logGrowth_deriv` (log-growth
 `= m / X t`), `logGrowth_nonpos_of_dissipative` (`m <= 0` => `d/dt log X <= 0`) and
 `content_le_initial_of_dissipative` (a dissipative flow never lets its content grow,
-`X T <= X 0`).
+      `X T <= X 0`).
+**Margin (empirical):** `fractional_margin_sweep.py` locates the boundary of the
+standard regime: the late-window orientation crosses zero at the marginal order
+`s* = 0.258` (scaling gap `|lambda| ~ |s - s*|^beta`, `beta = 1.19`) and, at fixed
+`s = 0.40`, at viscosity `nu* = 0.049` (`gamma = 1.03`) -- both gaps linear. The
+critical content is still decaying where the orientation has flipped (s = 0.20:
+`lambda = +0.05`, `mu = -0.20`), so the orientation LEADS the wall.
 **Falsifier:** a grid-converged system with `sign(lambda) != sign(mu)`. **Missing
 entity:** the analytic claim that the identification `mu = lambda` survives the real
 flow; sources: Beale–Kato–Majda (1984); Constantin–Fefferman (1993); Deng–Hou–Yu (2015).
@@ -134,8 +140,15 @@ particular `lambda > 0` iff `X` is unbounded (the content escapes the wall), `la
 `bounded_of_bounded_sum_logGrowth`, `unbounded_sum_of_unbounded`); the sign match is
 empirical across 6 systems (`orientation_vs_invariant.py`). **Continuous part proved:**
 `OrientationLaw.contLogGrowth_integral` (`int_0^T g = log X T - log X 0`) and
-`continuous_content_bounded` (bounded `int_0^T g` => `X T <= X 0 * exp B`) are
-machine-checked, so the residue is exactly the NS-specific bound on `g`. **Falsifier:** a
+machine-checked, so the residue is exactly the NS-specific bound on `g`.
+**Wall isolated:** `RegularityReduction.lean` proves the reduction both ways --
+`regularity_reduced_to_integral` (a `T`-uniform bound on `int_0^T g` => content bounded
+uniformly in `T`) and its contrapositive `integral_unbounded_of_content_unbounded`
+(unbounded content => unbounded integral) -- so the residue is *exactly* the boundedness
+of the critical-content integral. **Margin (empirical):** `fractional_margin_sweep.py`
+finds the standard-regime boundary `s* = 0.258` (`beta = 1.19`) and `nu* = 0.049` at
+`s = 0.40` (`gamma = 1.03`), with the orientation leading the critical content.
+**Falsifier:** a
 Leray–Hopf solution with unbounded `‖u‖_{B^{-1}_{∞,∞}}` but `lambda <= 0`, or a global
 solution with `lambda > 0`. **Missing entity:** the bridge from the discrete
 telescoping identity to the *real* flow -- i.e. an analytic lower bound on
@@ -199,5 +212,8 @@ and the CONTINUOUS BKM integral `contLogGrowth_integral`, `continuous_content_bo
 (13 formalised facts). `DissipativeFlow.lean` (same axiom set): `logGrowth_deriv`,
 `logGrowth_nonpos_of_dissipative`, `content_le_initial_of_dissipative` -- the
 dissipative (L^2-energy) face of card C10, `X T <= X 0` under non-positive log-growth.
+`RegularityReduction.lean` (same axiom set): `content_le_exp_of_integral_le`,
+`regularity_reduced_to_integral`, `integral_unbounded_of_content_unbounded` -- the wall
+reduced to a single inequality (`int_0^T g` bounded => `X` bounded).
 The remaining cards are cited (Theorem) or left OPEN with a
 named missing entity (Conjecture; see C10-open). No card here is a Millennium result.

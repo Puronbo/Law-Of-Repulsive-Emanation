@@ -44,3 +44,4 @@ import PunoCalculus.EmergentTime
 import PunoCalculus.ExplicitClaims
 import PunoCalculus.OrientationLaw
 import PunoCalculus.DissipativeFlow
+import PunoCalculus.RegularityReduction
