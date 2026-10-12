@@ -152,11 +152,13 @@ empirical across 6 systems (`orientation_vs_invariant.py`). **Continuous part pr
 `OrientationLaw.contLogGrowth_integral` (`int_0^T g = log X T - log X 0`) and
 `continuous_content_bounded` (bounded `int_0^T g` => `X T <= X 0 * exp B`) are
 machine-checked, so the residue is exactly the NS-specific bound on `g`.
-**Wall isolated:** `RegularityReduction.lean` proves the reduction both ways --
-`regularity_reduced_to_integral` (a `T`-uniform bound on `int_0^T g` => content bounded
-uniformly in `T`) and its contrapositive `integral_unbounded_of_content_unbounded`
-(unbounded content => unbounded integral) -- so the residue is *exactly* the boundedness
-of the critical-content integral. **Margin (empirical):** `fractional_margin_sweep.py`
+**Wall isolated:** `RegularityReduction.lean` proves the reduction BOTH ways and packages
+it as an equivalence -- `regularity_iff_integral_bounded`: the content is bounded uniformly
+in `T` iff the critical-content integral `int_0^T g` is bounded uniformly in `T`
+(`regularity_reduced_to_integral` and its converse `integral_le_of_content_le`, plus the
+contrapositive `integral_unbounded_of_content_unbounded`) -- so the residue is *exactly*
+the boundedness of the critical-content integral. **Margin (empirical):**
+`fractional_margin_sweep.py`
 finds the standard-regime boundary `s* = 0.258` (`beta = 1.19`) and `nu* = 0.049` at
 `s = 0.40` (`gamma = 1.03`), with the orientation leading the critical content.
 `fractional_margin_universality.py` shows `s* = 0.28 .. 0.32` across `K0 in {4, 6, 8}`
@@ -230,7 +232,9 @@ and the CONTINUOUS BKM integral `contLogGrowth_integral`, `continuous_content_bo
 `logGrowth_nonpos_of_dissipative`, `content_le_initial_of_dissipative` -- the
 dissipative (L^2-energy) face of card C10, `X T <= X 0` under non-positive log-growth.
 `RegularityReduction.lean` (same axiom set): `content_le_exp_of_integral_le`,
-`regularity_reduced_to_integral`, `integral_unbounded_of_content_unbounded` -- the wall
-reduced to a single inequality (`int_0^T g` bounded => `X` bounded).
+`regularity_reduced_to_integral`, `integral_unbounded_of_content_unbounded`,
+`integral_le_of_content_le`, `regularity_iff_integral_bounded` -- the wall reduced to a
+single inequality and stated as an EQUIVALENCE (content bounded iff `int_0^T g` bounded;
+5 formalised facts).
 The remaining cards are cited (Theorem) or left OPEN with a
 named missing entity (Conjecture; see C10-open). No card here is a Millennium result.

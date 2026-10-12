@@ -538,13 +538,16 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       and `g = d/dt log X`, the continuous BKM integral gives `X T = X 0 * exp (int_0^T g)`.
       Hence `content_le_exp_of_integral_le` (an integral bound `int_0^T g <= B` forces
       `X T <= X 0 * exp B`); `regularity_reduced_to_integral` (if `int_0^T g` is bounded
-      UNIFORMLY in `T` then `X` is bounded uniformly in `T`); and the contrapositive
-      `integral_unbounded_of_content_unbounded` (unbounded content => unbounded integral).
-      So the ENTIRE wall is the single analytic question: is `int_0^T d/dt log X` bounded
+      UNIFORMLY in `T` then `X` is bounded uniformly in `T`); the contrapositive
+      `integral_unbounded_of_content_unbounded` (unbounded content => unbounded integral);
+      and the CONVERSE `integral_le_of_content_le` (bounded content => `int_0^T g` is
+      bounded). The two directions give the wall as an EQUIVALENCE
+      `regularity_iff_integral_bounded`: content bounded iff the critical-content integral
+      is bounded. So the ENTIRE wall is the single analytic question: is `int_0^T d/dt log X` bounded
       along the real flow? The discrete analogue is already `OrientationLaw`; the residue
       is exactly the NS-specific lower bound on `g` (Beale–Kato–Majda 1984;
       Constantin–Fefferman 1993). Axioms exactly `[propext, Classical.choice, Quot.sound]`;
-      length certificate axiom-free; build green (8753 jobs). Wall OPEN.
+      `regularityReductionFacts_length = 5` axiom-free; build green (8753 jobs). Wall OPEN.
  37. **The margin: the boundary of the standard regime** (`fractional_margin_sweep.py`).
       Reads the late-window orientation (`t >= T/2`, to avoid the early high-k pile-up) over
       `(-Δ)^s`, against the `s`-correct critical Sobolev content `H^{5/2 - 2s}`. The
