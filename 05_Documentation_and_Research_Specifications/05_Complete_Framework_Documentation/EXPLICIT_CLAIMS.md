@@ -95,10 +95,12 @@ intermittency); Frisch, *Turbulence* (1995).
 ## C10 — Orientation sign equals the sign of the critical-content derivative
 
 **Type:** Empirical + Formal (model core). **Statement.** `sign(lambda) = sign(mu)`
-across systems, where `lambda` is the orbit Lyapunov base and `mu = d/dt log(critical
-content)`: 3D NS `lambda = -3.11`, `mu = -0.41`; 2D NS `-9.27 / -0.53`; Burgers
-`+16.24 / +2.39`; CLM `+34.75 / +2.82`. **Evidence:** `orientation_vs_invariant.py`;
-resolution-converged at `T = 8` (`N = 32/48/64`, `|dk|/k = 0.027`,
+across systems (n = 6, balanced 3 repelling / 3 attracting), where `lambda` is the
+orbit Lyapunov base and `mu = d/dt log(critical content)`: 3D NS `-3.11 / -0.41`;
+2D NS `-9.27 / -0.53`; 3D Euler `+1.72 / +0.16`; 1D Burgers `+16.24 / +2.39`;
+CLM `+34.75 / +2.82`; linear heat `-66.74 / -0.13`. **Evidence:**
+`orientation_vs_invariant.py` (6 systems, all match); resolution-converged at
+`T = 8` (`N = 32/48/64`, `|dk|/k = 0.027`,
 `|dlambda|/|lambda| = 0.019`). **Formal model core:** `OrientationLaw.lean` proves
 `mu == lambda` on the geometric orbit (`logGrowth_geometric`), hence `sign_match`
 and `orientation_reads_wall` (`mu > 0` iff the invariant escapes every bound).

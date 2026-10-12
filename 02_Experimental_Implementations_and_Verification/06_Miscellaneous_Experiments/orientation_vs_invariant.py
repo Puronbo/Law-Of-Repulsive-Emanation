@@ -5,14 +5,16 @@ BRIDGE: does the on-flow ORIENTATION predict the wall?
 scaling-critical content escapes every bound.  The on-flow probe reads an
 orientation `lambda = d/dt log(Z_high/Z_low)`.  This script tests whether the sign
 of `lambda` MATCHES the sign of the growth rate `mu = d/dt log(critical-content)`
-across four systems, i.e. whether the orientation predicts whether the
+across six systems, i.e. whether the orientation predicts whether the
 scaling-critical content is escaping its bound:
 
     system            classical status      expected lambda   tracked critical content
     3D Navier-Stokes  open (resolved)       < 0  attracting   ||u||_{L^3}   (critical, d=3)
     2D Navier-Stokes  regular (theorem)     < 0  attracting   max|omega|    (2D non-increasing)
+    3D Euler          open (inviscid)       > 0  repelling    max|omega|    (vortex stretching, no dissipation)
     1D viscous Burgers singularity-forming  > 0  repelling    max|u_x|      (gradient blowup)
     CLM  w_t = w Hw   blowup proven         > 0  repelling    max|w|        (blows up)
+    linear heat       trivial (theorem)     < 0  attracting   max|u|        (pure dissipation control)
 
 Test: sign(lambda) == sign(mu) for every system -- the orientation is the on-flow
 reading of whether the critical invariant escapes its bound, i.e. of the wall.
@@ -136,6 +138,68 @@ def run_clm(amp=1.0, N=512, dt=5e-4, T_max=3.0, save_every=10, K0=16):
     return ts, sh, cr
 
 
+def run_euler3d(N=32, dt=2e-3, T_max=1.5, save_every=20, K0=6, seed=0):
+    """3D Euler (nu = 0): nonlinear, no dissipation -- the inviscid limit of `run_ns3d`."""
+    X, Y, Z, kx, ky, kz, k2, k2i, k_inv, mask = build_spectral(N)
+    h3 = (2.0 * np.pi / N) ** 3
+    n3 = float(N ** 3)
+    ratio = h3 / n3
+    nmax = int(np.floor((2.0 / 3.0) * (N / 2.0)))
+    ken = np.arange(1, nmax + 1).astype(float)
+    high = ken >= K0
+    low = ~high
+    ux, uy, uz = make_broadband_ic(kx, ky, kz, k2, k_inv, k0=4.0, sigma=1.5, seed=seed, N=N)
+    E0 = (ux * ux + uy * uy + uz * uz).mean()
+    s = 1.0 / np.sqrt(2 * E0)
+    ux, uy, uz = s * ux, s * uy, s * uz
+    ts, sh, cr = [], [], []
+    t = 0.0
+    for i in range(int(T_max / dt)):
+        ux, uy, uz = ns3d_step(ux, uy, uz, dt, 0.0, kx, ky, kz, k2, k_inv, mask)
+        t += dt
+        if not np.all(np.isfinite(ux)) or float(np.max(np.abs(ux))) > 1e4:
+            break
+        if (i + 1) % save_every == 0:
+            Ek = radial_spectrum(ux, uy, uz, k2, ratio, nmax)
+            Zh = float((Ek[high] * ken[high] ** 2).sum())
+            Zl = float((Ek[low] * ken[low] ** 2).sum())
+            uxh = np.fft.fftn(ux); uyh = np.fft.fftn(uy); uzh = np.fft.fftn(uz)
+            wx = np.real(np.fft.ifftn(1j * (ky * uzh - kz * uyh)))
+            wy = np.real(np.fft.ifftn(1j * (kz * uxh - kx * uzh)))
+            wz = np.real(np.fft.ifftn(1j * (kx * uyh - ky * uxh)))
+            crit = float(np.max(np.sqrt(wx * wx + wy * wy + wz * wz)))
+            if t > 0.5 and Zh > 0 and Zl > 0:
+                ts.append(t); sh.append(Zh / Zl); cr.append(crit)
+    return ts, sh, cr
+
+
+def run_heat(nu=0.1, N=256, dt=1e-3, T_max=1.0, save_every=50, K0=16):
+    """Linear heat equation (exact dissipation control): `max|u|` decays, high shells first."""
+    k = np.fft.fftfreq(N, d=1.0 / N)
+    k2 = k * k
+    x = 2.0 * np.pi * np.arange(N) / N
+    u = np.sin(x) + 0.1 * np.sin(8.0 * x) + 0.05 * np.sin(20.0 * x)
+    half = N // 2
+    ken = np.arange(1, half + 1).astype(float)
+    high = ken >= K0
+    low = ~high
+    decay = np.exp(-nu * k2 * dt)
+    ts, sh, cr = [], [], []
+    t = 0.0
+    for i in range(int(T_max / dt)):
+        u = np.real(np.fft.ifft(np.fft.fft(u) * decay))
+        t += dt
+        if (i + 1) % save_every == 0:
+            uh = np.fft.fft(u)
+            E = np.abs(uh[1:half + 1]) ** 2 + np.abs(uh[N - half:])[::-1] ** 2
+            Zh = float((E[high] * ken[high] ** 2).sum())
+            Zl = float((E[low] * ken[low] ** 2).sum())
+            crit = float(np.max(np.abs(u)))
+            if t > 0.1 and Zh > 0 and Zl > 0:
+                ts.append(t); sh.append(Zh / Zl); cr.append(crit)
+    return ts, sh, cr
+
+
 def main():
     print("=" * 80)
     print("BRIDGE: orientation (lambda) vs growth of the scaling-critical content (mu)")
@@ -146,8 +210,10 @@ def main():
     systems = [
         ("3D Navier-Stokes (attracting, resolved)", run_ns3d, "L3 velocity"),
         ("2D Navier-Stokes (attracting, regular)", run_ns2d, "max|vorticity|"),
+        ("3D Euler (repelling, inviscid)", run_euler3d, "max|vorticity|"),
         ("1D Burgers (repelling, singular)", run_burgers, "max|u_x|"),
         ("CLM (repelling, proven blowup)", run_clm, "max|omega|"),
+        ("linear heat (attracting, control)", run_heat, "max|u|"),
     ]
     out = {}
     rows = []
@@ -182,7 +248,7 @@ def main():
     print("  invariant escapes its bound.  Diagnostic only; the wall itself stays OPEN.")
     print("=" * 80)
     assert allmatch, "orientation and critical-norm growth disagree in some system"
-    print("PASS: sign(orientation) == sign(critical-content growth) across all four systems.")
+    print("PASS: sign(orientation) == sign(critical-content growth) across all six systems.")
     print("=" * 80)
     return 0
 

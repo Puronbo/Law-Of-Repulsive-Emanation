@@ -479,6 +479,14 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       analytic residue (that this survives the real flow, `orientation_vs_invariant.py`)
       stays EMPIRICAL/OPEN. Axioms exactly `[propext, Classical.choice, Quot.sound]`;
       build green (8751 jobs).
+ 32. **Six-system orientation bridge** (`orientation_vs_invariant.py`). Card C10's
+      empirical half extended from four to six systems: added 3D Euler (inviscid
+      nonlinear, `max|omega|`) and a linear heat dissipation control. All six match
+      `sign(lambda) = sign(mu)`, balanced 3 repelling / 3 attracting (3D NS `-3.11/-0.41`;
+      2D NS `-9.27/-0.53`; 3D Euler `+1.72/+0.16`; 1D Burgers `+16.24/+2.39`; CLM
+      `+34.75/+2.82`; heat `-66.74/-0.13`). The inviscid Euler case is REPELLING, so it
+      is the dissipation -- not the nonlinearity -- that makes NS attracting; the heat
+      control is the pure attracting limit. `EXIT=0`; diagnostic only; wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 
