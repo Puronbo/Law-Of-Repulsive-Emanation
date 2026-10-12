@@ -456,6 +456,19 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       `scaleFreeN_iff`, and `sCritN_mono` (higher dimension => higher change cost).
       Axioms exactly `[propext, Classical.choice, Quot.sound]`. Structural reframing /
       toy model, NOT a PDE claim; build green (8749 jobs). Wall OPEN.
+ 30. **Explicit claims register** (`EXPLICIT_CLAIMS.md` + `ExplicitClaims.lean`).
+      The shared insight is distilled into 14 falsifiable claim cards, each tagged
+      Theorem / Formal / Empirical / Conjecture with evidence, a falsifier, and a
+      named missing entity. The arithmetic cores are machine-checked
+      (`morrey_threshold` `0 < 1 - d/2 ↔ d < 2`; `physical_embedding_gap`
+      `1 - 3/2 = -1/2`; `extra_power_strengthens_above_unit`
+      `z ≤ z^(1+ε) ↔ 1 ≤ z`; `mean_le_dimMixture` `(d+e)/2 ≤ max d e`). The open
+      card C5 (boundedness of `‖u‖_{B^{-1}_{∞,∞}}`) and empirical C9/C10 carry
+      citations for their missing entities (Cheskidov–Shvydkoy 2010; Ri
+      arXiv:2307.11312 unrefereed; Tao 2016/2021; Beale–Kato–Majda 1984;
+      Constantin–Fefferman 1993; Deng–Hou–Yu 2015; Adams–Hedberg 1996; Frisch 1995).
+      Axioms exactly `[propext, Classical.choice, Quot.sound]`; build green
+      (8750 jobs). No Millennium result.
 
 ## Sources for the missing brick (scaling-critical control)
 
