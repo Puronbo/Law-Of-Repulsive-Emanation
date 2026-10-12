@@ -127,13 +127,13 @@ critical content is still decaying where the orientation has flipped (s = 0.20:
 **Robustness (empirical):** `fractional_margin_universality.py` re-locates `s*` across
 the band split `K0 in {4, 6, 8}` and a different seed -- `s* = 0.28 .. 0.32` (spread
 `0.037`, `T = 5`), so the margin is NOT an artifact of the `K0` split. But
-`fractional_margin_window.py` shows `s*` is a MOVING boundary: over `T = 4, 6, 8, 10`
-it follows `s*(T) = 0.058 + 1.19/T` (rms `0.001`), so the finite-window value (`0.258`
-at `T = 6`) converges only algebraically, extrapolating to `s*(T->inf) ~ 0.06`. A
-resolution check (`fractional_margin_resolution.py`) at fixed `T = 6` gives
-`s* = 0.259 (N = 32)` vs `0.265 (N = 48)` -- agreement to `0.006`, within the ~`0.02`
-seed noise -- so `s*` is resolution-STABLE and the drift is not a finite-mode artifact.
-So `s*` is a window-dependent BOUNDARY, not a sharp critical order.
+`fractional_margin_window.py` shows `s*` is a MOVING, COLLAPSING boundary: over
+`T = 4, 6, 8, 10, 12` it follows `s*(T) = 0.055 + 1.21/T` (rms `0.002`), but at `T = 16`
+the crossing VANISHES (`lambda < 0` for all `s >= 0.01`), so `s*(T) -> 0`. Hence `s*` is a
+finite-window TRANSIENT of the high-k pile-up, NOT a critical order. A resolution check
+(`fractional_margin_resolution.py`) at fixed `T = 6` gives `s* = 0.259 (N = 32)` vs
+`0.265 (N = 48)` -- agreement to `0.006`, within the ~`0.02` seed noise -- so the
+intermediate-`T` values are not a finite-mode artifact either.
 **Falsifier:** a grid-converged system with `sign(lambda) != sign(mu)`. **Missing
 entity:** the analytic claim that the identification `mu = lambda` survives the real
 flow; sources: Beale–Kato–Majda (1984); Constantin–Fefferman (1993); Deng–Hou–Yu (2015).
@@ -163,10 +163,12 @@ finds the standard-regime boundary `s* = 0.258` (`beta = 1.19`) and `nu* = 0.049
 `s = 0.40` (`gamma = 1.03`), with the orientation leading the critical content.
 `fractional_margin_universality.py` shows `s* = 0.28 .. 0.32` across `K0 in {4, 6, 8}`
 and a different seed (spread `0.037`, `T = 5`), so it is not a `K0` artifact;
-`fractional_margin_window.py` shows `s*(T) = 0.058 + 1.19/T` (rms `0.001`, `T = 4..10`),
-so the finite-window boundary is a moving measurement -- a boundary, not a sharp
-exponent; and `fractional_margin_resolution.py` shows `s*(N=32) = 0.259` vs
-`s*(N=48) = 0.265` at `T = 6` (agreement `0.006`), so the boundary is resolution-stable.
+`fractional_margin_window.py` shows `s*(T) = 0.055 + 1.21/T` over `T = 4..12` (rms
+`0.002`) but at `T = 16` the crossing VANISHES (`lambda < 0` for all `s >= 0.01`), so
+`s*(T) -> 0`: the margin is a finite-window transient, not a boundary;
+`fractional_margin_resolution.py` shows `s*(N=32) = 0.259` vs
+`s*(N=48) = 0.265` at `T = 6` (agreement `0.006`), so the intermediate-`T` values are
+resolution-stable.
 **Falsifier:** a
 Leray–Hopf solution with unbounded `‖u‖_{B^{-1}_{∞,∞}}` but `lambda <= 0`, or a global
 solution with `lambda > 0`. **Missing entity:** the bridge from the discrete

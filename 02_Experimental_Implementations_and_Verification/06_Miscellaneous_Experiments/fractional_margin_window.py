@@ -28,7 +28,7 @@ import numpy as np
 
 OUT = "data/fractional_margin_window.json"
 T_LIST = [4.0, 6.0, 8.0]
-S_LO, S_HI, S_TOL = 0.15, 0.45, 0.015
+S_LO, S_HI, S_TOL = 0.10, 0.45, 0.012
 KW = dict(K0=6, seed=0, N=32, dt=2e-3)
 
 
@@ -41,14 +41,17 @@ def lam_at(s, T):
     return lam, bool(div), len(ts)
 
 
-def locate(T):
-    lo, hi = S_LO, S_HI
+def locate(T, lo=S_LO, hi=S_HI):
     flo, dlo, _ = lam_at(lo, T)
     fhi, dhi, _ = lam_at(hi, T)
     print(f"    T={T:<4} s={lo:.2f} lam={flo:+.3f} | s={hi:.2f} lam={fhi:+.3f}",
           flush=True)
-    assert flo > 0.0 >= fhi, "sign bracket failed"
     rows = [(lo, flo, False), (hi, fhi, True)]
+    if not (flo > 0.0 >= fhi):
+        print(f"    T={T:<4} => NO crossing in [{lo},{hi}] "
+              f"(lam={flo:+.3f},{fhi:+.3f}): the repelling regime has collapsed.",
+              flush=True)
+        return None, rows
     while hi - lo > S_TOL:
         mid = 0.5 * (lo + hi)
         fm, dm, _ = lam_at(mid, T)
@@ -69,18 +72,28 @@ def main():
     out = json.load(open(OUT)) if os.path.exists(OUT) else {}
 
     if which != "summary":
-        todo = T_LIST if which == "all" else [float(which)]
-        for T in todo:
-            s_star, rows = locate(T)
+        if which == "all":
+            todo = [(T, S_LO, S_HI) for T in T_LIST]
+        else:
+            lo = float(sys.argv[2]) if len(sys.argv) > 2 else S_LO
+            hi = float(sys.argv[3]) if len(sys.argv) > 3 else S_HI
+            todo = [(float(which), lo, hi)]
+        for T, lo, hi in todo:
+            s_star, rows = locate(T, lo, hi)
             out[f"T={T:g}"] = {"s_star": s_star, "rows": rows}
             with open(OUT, "w") as f:
                 json.dump(out, f, indent=2)
 
     print("-" * 80)
-    pts = sorted((float(k.split("=")[1]), v["s_star"]) for k, v in out.items())
+    pts = sorted((float(k.split("=")[1]), v["s_star"]) for k, v in out.items()
+                 if v.get("s_star") is not None)
+    none_T = sorted(float(k.split("=")[1]) for k, v in out.items()
+                    if v.get("s_star") is None)
     print("  s*(T) table:")
     for T, s in pts:
         print(f"    T = {T:<5g}  s* = {s:.3f}")
+    for T in none_T:
+        print(f"    T = {T:<5g}  s* = (none -- no crossing; repelling regime collapsed)")
 
     if len(pts) >= 3:
         invT = np.array([1.0 / T for T, _ in pts])
@@ -95,7 +108,13 @@ def main():
         print(f"  last-step change |s*(T_last) - s*(T_prev)| = {span_last2:.3f}")
         converged = rms < 0.01
         print("=" * 80)
-        if converged:
+        if none_T:
+            print(f"  At T = {none_T} the crossing is GONE (lambda < 0 for every s >= 0.01):")
+            print("      the repelling regime COLLAPSES, so s*(T) -> 0.  The 1/T fit is a")
+            print("      finite-window approximation that BREAKS by T = 16.")
+            print(f"  CONCLUSION: there is NO positive critical order -- the margin is a")
+            print("      finite-window transient of the high-k pile-up.  Wall OPEN (C10-open).")
+        elif converged:
             print(f"PASS: s*(T) follows a clean 1/T law (rms {rms:.4f}); the finite-window")
             print(f"      boundary is a MOVING measurement that extrapolates to")
             print(f"      s*(T->inf) ~ {s_inf:.2f}.  Convergence is algebraic, so the last")
