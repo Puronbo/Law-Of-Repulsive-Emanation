@@ -685,6 +685,23 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       *resolve* (type-check) against `PunoCalculus`, not merely appear.  `pytest` framework
       validation green (769 tests, 1 skip).  No new mathematical content -- a bookkeeping
       brick that makes the register auditable; wall OPEN.
+  46. **The register now has an external axis, linked family-by-family to `openai/math`**
+      (`EXTERNAL_CORPORA_CROSSWALK.md`).  `CLAIM_TRACEABILITY.md` joins our cards to our
+      artifacts; the crosswalk joins our *modules* to the result families of the public
+      OpenAI Mathematics collection (`https://github.com/openai/math`, 719 manuscripts /
+      372 families, announced 2026-10-06).  The overlaps are real: the C1--C10 wall sits
+      beside family **376** (universal computation in *forced* Navier--Stokes -- a Turing
+      machine halts iff a designated fluid particle reaches a fixed region, at fixed
+      positive computable viscosity), and C14's diagonal engine sits beside the
+      fixed-point / undecidability families **206 / 242 / 328 / 314**; `BSD`/`Hodge`/
+      `MassGap`/`PvsNP` sit beside **002+006 / 032 / 215 / 102+105+106+274**.  The rule is
+      **adjacency, not equivalence**: our modules are numerical certificates that each
+      state their own non-settlement, and the external family results are *claimed* by an
+      unreleased model and independently unchecked -- so neither side's status transfers.
+      In particular family **376** is the *forced* system and does not settle our
+      *unforced* C3 / C10-open obligation.  Links pinned offline by
+      `test_external_crosswalk.py` (modules exist, are imported by the library root, and
+      every quoted family number is present).  No new mathematical content; wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 

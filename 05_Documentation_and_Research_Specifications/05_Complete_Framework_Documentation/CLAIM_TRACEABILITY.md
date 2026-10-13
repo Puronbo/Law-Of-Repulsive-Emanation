@@ -74,3 +74,15 @@ The declarations were additionally confirmed to *resolve* (not merely appear) by
 `#check` probe over `PunoCalculus` — all identifiers type-check and the root module
 imports every file, so `lake build PunoCalculus` covers them. No card here is a
 Millennium result; the wall stays OPEN (card C3 / C10-open).
+
+## Related external corpora
+
+This map joins our cards to *our* artifacts. For the **external** axis — where this
+repository's modules (including the MillenniumBridge set: `NavierStokes`, `BSD`,
+`Hodge`, `MassGap`, `PvsNP`, `LogicBarrier`, `ZeroFixedPoint` … ) touch neighbouring public
+mathematical corpora — see **`EXTERNAL_CORPORA_CROSSWALK.md`**. It links, family by
+family, to the **[`openai/math`](https://github.com/openai/math)** manuscript
+collection (cards C1–C10 touch its family **376**, Navier–Stokes universal computation;
+C14 touches its fixed-point/undecidability families **206 / 242 / 328 / 314**), under an
+explicit *adjacency ≠ equivalence* rule, and is checked offline by
+`test_external_crosswalk.py`.
