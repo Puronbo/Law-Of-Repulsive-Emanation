@@ -614,6 +614,26 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       at `T = 8`, `s* = 0.288 (N=256) / 0.212 (N=512) / 0.213 (N=768)` -- N=512 and
       N=768 agree to `0.001`, so N=256 is biased `~0.08` high but the margin is not a
       finite-grid artifact.  Diagnostic only; wall OPEN.
+  42. **The margin is a unique crossing, and the method barrier is a diagonal**
+      (`MarginCrossing.lean`, `LogicBarrier.lean`).  Two formal bricks close the register's
+      bookkeeping.  (a) *Margin:* `MarginCrossing.lean` proves a continuous, strictly
+      decreasing `lambda(s)` that is positive on the left and negative on the right has
+      exactly one zero (`existsUnique_zero_of_strictAntiOn`), that this zero separates a
+      repelling (`lambda > 0`) from an attracting (`lambda < 0`) side (`side_of_crossing`),
+      and bundles it (`margin_existsUnique`).  So the marginal order `s*` of the
+      order/orientation probe is well-defined the moment `lambda` is antitone in the
+      dissipation order `s`; what stays open is the NS-specific *antitonicity*, not the
+      arithmetic.  (b) *Method barrier (card C14):* `LogicBarrier.lean` proves Lawvere's
+      fixed-point theorem -- a surjection `α → (α → β)` forces every `f : β → β` to have a
+      fixed point (`lawvere_fixedpoint`); hence a fixed-point-free `f` forbids any such
+      enumeration (`no_surjective_of_no_fixedpoint`), no type enumerates its own predicates
+      (`no_surjective_predicates`, Cantor) and the diagonal predicate escapes every
+      enumeration (`diagonal_not_mem_range`).  This is the one skeleton shared by Cantor
+      (1891), Gödel's diagonal lemma (1931), and Turing's halting problem (1936) -- the
+      abstract form of C14's method barrier.  Axiom sets: `MarginCrossing` exactly
+      `[propext, Classical.choice, Quot.sound]`; `LogicBarrier` axiom-FREE (stronger).  The
+      capstone `TheoryOfEverything.method_and_margin_barriers` attaches both to the two
+      organising numbers.  No Millennium problem is touched; the walls stay OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 

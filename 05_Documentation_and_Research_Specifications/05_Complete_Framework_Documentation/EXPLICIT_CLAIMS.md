@@ -138,6 +138,13 @@ well-resolved critical order (whether the limit is exactly `0` is resolution-lim
 small `s`). A resolution check at fixed `T = 6` gives `s* = 0.259 (N = 32)` vs
 `0.265 (N = 48)` -- agreement to `0.006`, within the ~`0.02` seed noise -- so the
 intermediate-`T` values are resolution-stable.
+**Margin is a unique crossing (formal core):** `MarginCrossing.lean` proves that a
+continuous, strictly decreasing `lambda(s)` positive at the left endpoint and negative at
+the right has exactly ONE zero (`existsUnique_zero_of_strictAntiOn`), that this zero
+separates a repelling (`lambda > 0`) side from an attracting (`lambda < 0`) side
+(`side_of_crossing`), and packages both as `margin_existsUnique`. So the register's
+marginal order `s*` is well-defined the moment `lambda` is antitone in `s`; the open
+content is that antitonicity, not the arithmetic.
 **Falsifier:** a grid-converged system with `sign(lambda) != sign(mu)`. **Missing
 entity:** the analytic claim that the identification `mu = lambda` survives the real
 flow; sources: Beale–Kato–Majda (1984); Constantin–Fefferman (1993); Deng–Hou–Yu (2015).
@@ -221,11 +228,22 @@ in the model.
 
 ## C14 — Heterogeneous barrier types across the Millennium list
 
-**Type:** Interpretive (the one non-falsifiable card; kept to record the map).
+**Type:** Formal (the abstract barrier is machine-checked) / Interpretive (the card's
+"all walls are one type" reading stays a map, not a theorem).
 **Statement.** The recurring obstruction is (method-barrier / existence-barrier /
-bridge-barrier), not one theorem. **Sources:** P vs NP: Baker–Gill–Solovay (1975),
-Razborov–Rudich (1997), Aaronson–Wigderson (2008); Yang–Mills: Osterwalder–Schrader
-(1973), Jaffe–Witten (2000); NS/BSD/RH as in the register.
+bridge-barrier), and the cleanest of these -- the method barrier -- is a *diagonal,
+self-referential* construction. **Evidence (machine-checked):** `LogicBarrier.lean`
+proves Lawvere's fixed-point theorem -- if `α` surjects onto its own function space
+`α → β`, then *every* `f : β → β` has a fixed point (`lawvere_fixedpoint`); hence a
+fixed-point-free `f` forbids any such enumeration (`no_surjective_of_no_fixedpoint`), so
+no type enumerates its own predicates (`no_surjective_predicates`, Cantor's theorem in
+diagonal form) and the diagonal predicate escapes every enumeration
+(`diagonal_not_mem_range`). This one skeleton is shared by Cantor (1891), Gödel's
+diagonal lemma (1931), and Turing's halting problem (1936); no model of computation or of
+arithmetic is formalised, and no Millennium problem is touched. **Sources:** P vs NP:
+Baker–Gill–Solovay (1975), Razborov–Rudich (1997), Aaronson–Wigderson (2008); the
+diagonal engine: Cantor (1891), Gödel (1931), Turing (1936), Lawvere (1969); Yang–Mills:
+Osterwalder–Schrader (1973), Jaffe–Witten (2000); NS/BSD/RH as in the register.
 
 ## Sources for the missing entities (summary)
 
@@ -261,5 +279,13 @@ single inequality and stated as an EQUIVALENCE (content bounded iff `int_0^T g` 
 `serrinMargin_eq_neg_ladder` (supercritical-margin arithmetic), `content_le_of_growth_le_weight`,
 `bounded_on_of_serrinAction` -- the classical Prodi-Serrin SUFFICIENCY direction
 (finite supercritical control bounds the content; 5 formalised facts).
+`MarginCrossing.lean` (same axiom set): `existsUnique_zero_of_strictAntiOn` (an antitone
+`lambda` has a unique zero -- the margin `s*` is well-defined), `side_of_crossing` (the
+zero separates the repelling from the attracting side), `margin_existsUnique` (3 facts).
+`LogicBarrier.lean` (axiom-FREE): `lawvere_fixedpoint` (Lawvere's diagonal fixed-point
+theorem), `no_surjective_of_no_fixedpoint`, `no_surjective_predicates` (Cantor), and
+`diagonal_not_mem_range` -- the shared skeleton of Cantor/Gödel/Turing, card C14's formal
+core (4 facts). The capstone `TheoryOfEverything.method_and_margin_barriers` bundles the
+order margin and the method barrier alongside `twoNumbersClose`.
 The remaining cards are cited (Theorem) or left OPEN with a
 named missing entity (Conjecture; see C10-open). No card here is a Millennium result.

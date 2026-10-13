@@ -46,3 +46,5 @@ import PunoCalculus.OrientationLaw
 import PunoCalculus.DissipativeFlow
 import PunoCalculus.RegularityReduction
 import PunoCalculus.SerrinSufficiency
+import PunoCalculus.MarginCrossing
+import PunoCalculus.LogicBarrier

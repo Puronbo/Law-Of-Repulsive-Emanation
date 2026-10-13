@@ -9,6 +9,8 @@ import PunoCalculus.EnstrophyBarrier
 import PunoCalculus.SufficiencyLoop
 import PunoCalculus.QuantitativeContinuation
 import PunoCalculus.OrientationBoundedness
+import PunoCalculus.MarginCrossing
+import PunoCalculus.LogicBarrier
 
 /-!
 # The theory of everything: two numbers close the register
@@ -101,12 +103,27 @@ theorem twoNumbersClose :
     (∀ r A : ℝ, 0 < r → 0 < A → ((∃ B : ℝ, ∀ n, r ^ n * A ≤ B) ↔ r ≤ 1)) :=
   ⟨order_sets_rung, fun _ _ => orientation_sets_side⟩
 
+/-- **The register's two barriers, attached to the two numbers.**  The *order* margin is
+a unique crossing once the orientation `lambda(s)` is antitone (so the critical order
+`s*` is well-defined); the *method* barrier (card C14) is the diagonal escape of
+Cantor/Gödel/Turing -- no type enumerates its own predicate space.  Both are corollaries
+of the same discipline: uniqueness of the organising number, and the impossibility of a
+self-enumerating certificate. -/
+theorem method_and_margin_barriers :
+    (∀ {f : ℝ → ℝ} {a b : ℝ}, a < b → ContinuousOn f (Set.Icc a b) →
+        StrictAntiOn f (Set.Icc a b) → 0 < f a → f b < 0 →
+        ∃! c ∈ Set.Ioo a b, f c = 0) ∧
+    (∀ α : Type, ¬ ∃ φ : α → α → Bool, Function.Surjective φ) :=
+  ⟨PunoCalculus.MarginCrossing.existsUnique_zero_of_strictAntiOn,
+   PunoCalculus.LogicBarrier.no_surjective_predicates⟩
+
 /-- Formalised-facts register for the capstone. -/
 def theoryOfEverythingFacts : List String :=
-  [ "order_sets_rung", "orientation_sets_side", "twoNumbersClose", "theoryOfEverything" ]
+  [ "order_sets_rung", "orientation_sets_side", "twoNumbersClose", "theoryOfEverything",
+    "method_and_margin_barriers" ]
 
-/-- The register has exactly four entries. -/
-theorem theoryOfEverythingFacts_length : theoryOfEverythingFacts.length = 4 := by decide
+/-- The register has exactly five entries. -/
+theorem theoryOfEverythingFacts_length : theoryOfEverythingFacts.length = 5 := by decide
 
 end
 
