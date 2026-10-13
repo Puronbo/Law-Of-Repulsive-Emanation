@@ -142,6 +142,13 @@ ENTRIES = [
             "no_surjective_predicates", "diagonal_not_mem_range",
         ],
     }, []),
+    ("C15", {
+        "ZeroLink": [
+            "empty_unique_arrow", "empty_isInitial", "unit_unique_arrow",
+            "unit_isTerminal", "empty_classified_initial",
+            "unit_classified_terminal", "zero_links_all",
+        ],
+    }, []),
 ]
 
 

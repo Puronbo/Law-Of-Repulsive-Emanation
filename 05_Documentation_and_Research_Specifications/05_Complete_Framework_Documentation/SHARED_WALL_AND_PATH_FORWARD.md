@@ -700,8 +700,23 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       unreleased model and independently unchecked -- so neither side's status transfers.
       In particular family **376** is the *forced* system and does not settle our
       *unforced* C3 / C10-open obligation.  Links pinned offline by
-      `test_external_crosswalk.py` (modules exist, are imported by the library root, and
-      every quoted family number is present).  No new mathematical content; wall OPEN.
+       `test_external_crosswalk.py` (modules exist, are imported by the library root, and
+       every quoted family number is present).  No new mathematical content; wall OPEN.
+  47. **The origin is machine-checked: nothing is the universal link** (`ZeroLink.lean`,
+       card C15).  `Empty` (cardinality `0`) is the *initial object* of `Type` -- into
+       every type `α` there is an arrow `Empty → α` and it is **unique**
+       (`empty_unique_arrow`); dually `PUnit` is terminal.  Under `+` (coproduct) `0` is
+       the identity, under `×` (product) it is absorbing -- `0 + a = a`, `0 * a = 0`,
+       rebuilt with sets (`emptySumEquiv`, `prodEmptyEquiv`); initiality is classified
+       exactly as `IsEmpty` and terminality as `Subsingleton`.  This is the *structural*
+       reading of the register's own 0/0 doctrine (`Removable`, `ZeroZero`,
+       `ZeroFixedPoint`): an initial arrow **exists** and is **unique**, exactly as a
+       removable 0/0 has an existing, definite value.  The capstone `zero_links_all`
+       bundles it (axioms `⊆ [Quot.sound]`, build green).  It is *not* a zero object
+       claim: in `Type` the initial object is `Empty` and the terminal object is `PUnit`,
+       which are distinct -- the categorical zero object (initial ∧ terminal) needs an
+       Ab-enriched category such as modules, and is the named next micro-step.  No
+       Millennium problem touched; wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 

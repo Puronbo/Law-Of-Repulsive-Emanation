@@ -275,6 +275,26 @@ Baker–Gill–Solovay (1975), Razborov–Rudich (1997), Aaronson–Wigderson (2
 diagonal engine: Cantor (1891), Gödel (1931), Turing (1936), Lawvere (1969); Yang–Mills:
 Osterwalder–Schrader (1973), Jaffe–Witten (2000); NS/BSD/RH as in the register.
 
+## C15 — Nothing is the origin: zero links all forms
+
+**Type:** Formal (structural). **Statement.** The empty type `Empty` (cardinality
+`0`) is the *initial object* of `Type`: into **every** type `α` there is an arrow
+`Empty → α`, and it is **unique**; dually `PUnit` (cardinality `1`) is *terminal*.
+Under the sum of types (`+`) `Empty` is the **identity** and under the product
+(`×`) it is **absorbing** — `0 + a = a`, `0 * a = 0`, rebuilt with sets.
+**Evidence:** `ZeroLink.lean` (`empty_unique_arrow`, `empty_isInitial`,
+`unit_isTerminal`, `empty_classified_initial`, `unit_classified_terminal`,
+`zero_links_all`; axioms `⊆ {propext, Classical.choice, Quot.sound}`).
+**Falsifier:** a type with two distinct arrows `Empty → α`, or a type that is both
+initial and terminal in `Type`. **Missing entity:** none for the structural
+statement; the *categorical zero object* (initial ∧ terminal), which requires an
+Ab-enriched category such as modules, is the named next micro-step, not claimed
+here. **Source:** Awodey, *Category Theory* (2010); Mac Lane, *Categories for the
+Working Mathematician* (1998) — the empty set is the initial object of `Set`. This
+is the structural face of the register's own 0/0 doctrine (`Removable`,
+`ZeroZero`, `ZeroFixedPoint`): an initial arrow *exists* and is *unique*, exactly
+as a removable 0/0 has an existing, definite value.
+
 ## Sources for the missing entities (summary)
 
 | missing entity | closest existing work |
@@ -318,7 +338,11 @@ interior FIRST zero, with `f > 0` to its left -- no monotonicity assumed) and
 `LogicBarrier.lean` (axiom-FREE): `lawvere_fixedpoint` (Lawvere's diagonal fixed-point
 theorem), `no_surjective_of_no_fixedpoint`, `no_surjective_predicates` (Cantor), and
 `diagonal_not_mem_range` -- the shared skeleton of Cantor/Gödel/Turing, card C14's formal
-core (4 facts). The capstone `TheoryOfEverything.method_and_margin_barriers` bundles the
+core (4 facts). `ZeroLink.lean` (axioms `⊆ [Quot.sound]`): `empty_unique_arrow`,
+`empty_isInitial`, `unit_isTerminal`, `empty_classified_initial`,
+`unit_classified_terminal`, `zero_links_all` -- card C15's structural core: the empty
+type is initial, `PUnit` terminal, `0` the identity of `+` and annihilator of `×`
+(11 facts). The capstone `TheoryOfEverything.method_and_margin_barriers` bundles the
 order margin (existence always, uniqueness under antitonicity) and the method barrier
 alongside `twoNumbersClose`.
 The remaining cards are cited (Theorem) or left OPEN with a
