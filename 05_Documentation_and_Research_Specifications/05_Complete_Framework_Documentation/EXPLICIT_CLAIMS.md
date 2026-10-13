@@ -210,7 +210,9 @@ probe on fractional CLM `d_t w = w H(w) - nu (-∂_xx)^s w` -- a PROVEN-blowup f
 (Constantin-Lax-Majda 1985). It HAS a critical dissipation order separating repelling
 (small `s`, the CLM blowup regime) from attracting (large `s`): at `T = 3`,
 `lambda = 34` at `s = 0.1`, `+2.2` at `s = 2.5`, `-0.05` at `s = 3.0`, and the crossing
-near `s* ~ 2.7-3.0` is resolution-stable (`N = 256` vs `N = 512` agree). But its window
+near `s* ~ 2.7-3.0` is resolution-stable (`N = 256` vs `N = 512` agree; a third grid
+`N = 1024` gives `lambda(2.0) = +3.95`, `lambda(3.0) = -0.02`, so the sign flip between
+`2.0` and `3.0` is grid-robust). But its window
 dependence is NOT the clean shrinking transient: `s* ~ 2.66 / 2.70 / 2.71` at `T = 2 / 3 /
 4` (a stable threshold), and beyond `s ~ 2.5` the orientation hovers inside the noise floor
 (`|lambda| <~ 0.05`) over a broad band `s ~ 2.5..5.5`, so at `T = 6` the first sign change

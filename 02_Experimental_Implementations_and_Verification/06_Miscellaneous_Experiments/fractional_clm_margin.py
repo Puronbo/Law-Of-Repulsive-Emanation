@@ -189,7 +189,8 @@ def sweep(T=3.0, orders=(0.1, 0.3, 0.6, 1.0, 1.5, 2.0, 2.5, 3.0, 4.0, 5.5, 7.0, 
     return out
 
 
-def res_check(T=3.0, svals=(2.0, 3.0, 4.0, 5.5), grids=((256, 5e-4), (512, 2.5e-4))):
+def res_check(T=3.0, svals=(2.0, 3.0, 4.0, 5.5),
+              grids=((256, 5e-4), (512, 2.5e-4), (1024, 1.25e-4))):
     print(f"  FRACTIONAL CLM resolution check: T={T}, seed-averaged")
     rows = {}
     for N, dt in grids:
@@ -198,9 +199,9 @@ def res_check(T=3.0, svals=(2.0, 3.0, 4.0, 5.5), grids=((256, 5e-4), (512, 2.5e-
         print(f"  N={N:<4d} dt={dt:<8g} " + "  ".join(
             ("  inf" if not np.isfinite(v) else f"{v:+.3f}") for v in lams))
     print("  Reading: the crossing near s ~ 2.7-3.0 agrees across grids (lambda(2.0) ~ +3.95,")
-    print("  lambda(3.0) ~ -0.05 at both N=256 and N=512), so the CLM margin is")
-    print("  resolution-stable; the plateau beyond s ~ 4 is within the seed/discretisation")
-    print("  floor.  Diagnostic only; wall OPEN.")
+    print("  lambda(3.0) ~ -0.02..-0.06 at N=256, 512, 1024), so the CLM margin is")
+    print("  resolution-stable; the plateau beyond s ~ 3 is within the seed/discretisation")
+    print("  floor at every grid.  Diagnostic only; wall OPEN.")
     return rows
 
 

@@ -644,12 +644,15 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       1985) -- finds a third system with a critical dissipation order: repelling (small
       `s`, the CLM blowup regime) below the boundary, attracting above.  At `T = 3`:
       `lambda = 34` at `s = 0.1`, `+2.2` at `s = 2.5`, `-0.05` at `s = 3.0`, and the
-      crossing near `s* ~ 2.7-3.0` is resolution-stable (`N = 256` vs `N = 512` agree:
-      `lambda(2.0) ~ +3.95`, `lambda(3.0) ~ -0.05` at both).  BUT its window dependence is
+      crossing near `s* ~ 2.7-3.0` is resolution-stable (`N = 256` vs `N = 512`
+      agree: `lambda(2.0) ~ +3.95`, `lambda(3.0) ~ -0.05` at both; a third grid `N = 1024`
+      gives `lambda(2.0) = +3.95`, `lambda(3.0) = -0.02`, so the sign flip between `2.0`
+      and `3.0` is grid-robust).  BUT its window dependence is
       NOT the clean shrinking transient of NS / fractional Burgers: `s* ~ 2.66 / 2.70 /
       2.71` at `T = 2 / 3 / 4` (a stable threshold, no shrink), and beyond `s ~ 2.5` the
       orientation hovers inside the noise floor (`|lambda| <~ 0.05`) over a broad band
-      `s ~ 2.5..5.5`, so at `T = 6` the first sign change jumps out to `~5.4`.  So the
+      `s ~ 2.5..5.5` at every grid -- so at `T = 6` the first sign change jumps out to
+      `~5.4`.  So the
       *existence* of an order/orientation margin recurs across three fractionally-
       dissipated families, but the *shrinking-transient law* is specific to the
       NS/Burgers family, not universal.  Diagnostic only; wall OPEN.
