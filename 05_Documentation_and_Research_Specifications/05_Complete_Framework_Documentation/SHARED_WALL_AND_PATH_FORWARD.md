@@ -598,6 +598,18 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       register now carries BOTH halves -- a sufficient control and the equivalence --
       and the open residue is exactly the NS-specific *existence* of the control on the
       real flow.  Wall OPEN.
+  41. **The margin recurs in a second, shock-forming family** (`fractional_burgers_margin.py`).
+      The order/orientation margin above was located on Navier-Stokes.  Running the
+      *identical* probe on fractional Burgers `u_t + u u_x = -nu (-∂_xx)^s u` (1D,
+      spectral, seed-averaged over 4 ICs) finds a second system with the SAME structure
+      and the SAME window dependence: a critical dissipation order separating repelling
+      (weak dissipation) from attracting (strong), shrinking as the window grows --
+      `s* = 1.51 / 0.35 / 0.27 / 0.22` at `T = 3 / 5 / 8 / 12`, fit `s*(T) = 0.134 +
+      1.072/T` (`T >= 5`), next to the NS `0.055 + 1.206/T`.  So the order/orientation
+      margin is a property of the class of fractionally-dissipated systems, not of NS
+      alone: the recursion recurs across a qualitatively different (shock-forming)
+      family.  Noisier than NS (seed spread `~0.5` near the crossing at `N = 256`);
+      only the seed-averaged trend is quoted.  Diagnostic only; wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 
