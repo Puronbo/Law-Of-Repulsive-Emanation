@@ -12,6 +12,13 @@ The purpose is to move the insight out of prose: a claim is "explicit and factua
 only when it has (i) a precise statement, (ii) a falsifier, and (iii) a source for
 the entity it is missing. This register supplies those three for every card.
 
+Every card is also indexed -- card → Lean artifact (module + declarations) →
+numerical experiment -> citation -- in **`CLAIM_TRACEABILITY.md`**, and every link in
+that map is machine-checked by
+`04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_claim_traceability.py`
+(module exists and is imported by `PunoCalculus.lean`; identifier is really declared;
+experiment exists; the map references every card, module and script).
+
 ## Schema
 
 | field | meaning |

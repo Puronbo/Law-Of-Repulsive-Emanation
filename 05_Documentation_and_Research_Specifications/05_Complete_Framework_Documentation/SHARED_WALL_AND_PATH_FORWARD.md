@@ -669,6 +669,22 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       axiom-free.  The capstone `method_and_margin_barriers` now bundles all three: margin
       existence always, margin uniqueness under antitonicity, and the diagonal.  No
       Millennium problem touched; wall OPEN.
+  45. **Every claim card is now traceable to its artifact, and the links are machine-checked**
+      (`CLAIM_TRACEABILITY.md`).  The card register (`EXPLICIT_CLAIMS.md`) said what each
+      card *is*; it did not guarantee that the Lean module or experiment it quotes
+      actually exists.  `CLAIM_TRACEABILITY.md` joins them: each card (C1 … C14, C10-open)
+      → its type → the exact `PunoCalculus.<File>` module and the declarations it quotes
+      → the numerical script(s) supporting its empirical half → the literature anchoring
+      its missing entity.  The links are not prose: the checker
+      `test_claim_traceability.py` asserts (i) each card heading is present in the claims
+      register, (ii) every named Lean module exists and is imported by the library root
+      `PunoCalculus.lean` (so `lake build PunoCalculus` really compiles it), (iii) every
+      quoted identifier is declared in that module, (iv) every named experiment exists,
+      and (v) the map references every card, module and script -- so map, register and
+      test cannot drift.  A separate `#check` probe confirmed that all quoted identifiers
+      *resolve* (type-check) against `PunoCalculus`, not merely appear.  `pytest` framework
+      validation green (769 tests, 1 skip).  No new mathematical content -- a bookkeeping
+      brick that makes the register auditable; wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 
