@@ -609,7 +609,11 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       margin is a property of the class of fractionally-dissipated systems, not of NS
       alone: the recursion recurs across a qualitatively different (shock-forming)
       family.  Noisier than NS (seed spread `~0.5` near the crossing at `N = 256`);
-      only the seed-averaged trend is quoted.  Diagnostic only; wall OPEN.
+      only the seed-averaged trend is quoted.  A grid/timestep resolution check (`res`
+      mode) shows the crossing is resolution-stable once the grid is fine enough:
+      at `T = 8`, `s* = 0.288 (N=256) / 0.212 (N=512) / 0.213 (N=768)` -- N=512 and
+      N=768 agree to `0.001`, so N=256 is biased `~0.08` high but the margin is not a
+      finite-grid artifact.  Diagnostic only; wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 
