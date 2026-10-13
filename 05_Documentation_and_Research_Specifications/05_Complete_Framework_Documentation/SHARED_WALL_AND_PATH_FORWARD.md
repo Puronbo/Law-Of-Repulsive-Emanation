@@ -751,8 +751,28 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
        an arrow" are one statement; `extension_unique` (a continuous extension of a
        punctured map is unique) is its analytic form.  Axioms
        `⊆ [propext, Classical.choice, Quot.sound]` (`existsUnique_iff_...` and the
-       length certificate axiom-free).  `lake build PunoCalculus.RemovableValue` green.
-       No Millennium problem touched; wall OPEN.
+        length certificate axiom-free).  `lake build PunoCalculus.RemovableValue` green.
+        No Millennium problem touched; wall OPEN.
+  50. **Order of vanishing is a graded index: the number of zeros is the degree**
+        (`VanishOrder.lean`, card C18).  `ZeroFixedPoint` counts the zeros of a 0/0
+        (`zero_count_removable` / `under` / `over`); this brick turns that count into a
+        **grade**.  Level `k` of the vanishing filtration is `VanishesToOrder k f x₀`:
+        `f` factors as `(· - x₀)^k · g` with `g` continuous at `x₀`.  The filtration is
+        **decreasing** (`vanishes_succ_imp`, and `vanishes_antitone`: `k ≤ m` gives
+        `F m ⊆ F k` -- one more zero is strictly more restrictive), and -- the grade
+        itself -- dividing out one zero lowers the level by exactly one:
+        `vanishes_shift` is `F (k+1) f ↔ F k (divideOut x₀ f)` where
+        `divideOut x₀ f = f / (· - x₀)`.  Exact order `k` is `HasGrade k f x₀`
+        (level `k` but not level `k+1`); the canonical `(· - x₀)^k · h` with `h x₀ ≠ 0`
+        sits at exact grade `k` (`hasGrade_canonical`), the exact grade shifts by one
+        under `divideOut` (`hasGrade_shift`), and it is well-defined
+        (`grade_unique`: `HasGrade k → HasGrade m → k = m`).  So "it scales itself on how
+        many zeros it has" is a statement about one `ℕ`-grading, and it completes the
+        scaling story of `GreatAttractor` (`criticalSmoothness_shift_order`: each extra
+        zero buys one order of smoothness).  Axioms
+        `⊆ [propext, Classical.choice, Quot.sound]`; the length certificate is
+        axiom-free.  `lake build PunoCalculus.VanishOrder` green.  No Millennium problem
+        touched; wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 

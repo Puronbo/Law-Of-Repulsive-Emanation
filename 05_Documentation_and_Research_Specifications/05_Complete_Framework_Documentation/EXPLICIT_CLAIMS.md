@@ -334,6 +334,31 @@ not claimed here. **Source:** standard topology (uniqueness of limits in Hausdor
 spaces) applied to the register's own `Removable` and `ZeroLink` -- the analytic and
 categorical faces of one schema.
 
+## C18 — Order of vanishing as a graded index
+
+`PunoCalculus.ZeroFixedPoint` counts the zeros of a 0/0: dividing `(x - x₀)^k · h` by
+`(x - x₀)^j` gives `h x₀` at `j = k`, `0` at `j < k`, and diverges at `j > k`.  This
+card makes that "number of zeros" a **graded index** -- a level in a decreasing
+`ℕ`-filtration of punctured neighbourhoods.  Level `k` is `VanishesToOrder k f x₀`:
+`f` factors as `(· - x₀)^k · g` with `g` continuous at `x₀`.  The filtration is
+**decreasing** (`vanishes_succ_imp`, `vanishes_antitone`: `k ≤ m` gives `F m ⊆ F k`),
+and -- the grade itself -- dividing out one zero lowers the level by exactly one:
+`vanishes_shift` gives `F (k+1) f ↔ F k (divideOut x₀ f)` with
+`divideOut x₀ f = f / (· - x₀)`.  Exact order `k` (`HasGrade k f x₀`) is membership in
+`F k` but not `F (k+1)`; the canonical `(· - x₀)^k · h` with `h x₀ ≠ 0` has exact grade
+`k` (`hasGrade_canonical`), the exact grade shifts by one under `divideOut`
+(`hasGrade_shift`), and it is well-defined (`grade_unique`: `HasGrade k → HasGrade m →
+k = m`).  **Evidence:** `VanishOrder.lean` (`VanishesToOrder`, `divideOut`,
+`vanishes_zero`, `vanishes_succ_imp`, `vanishes_shift`, `HasGrade`, `hasGrade_canonical`,
+`hasGrade_shift`, `vanishes_antitone`, `grade_unique`, `order_is_graded`).
+**Falsifier:** a map with two distinct exact orders at a point, or a level-`(k+1)`
+member that is not a level-`k` member.  **Missing entity:** none for the filtration
+itself; identifying the graded degree with a *physical* scaling exponent stays
+object-specific (cards C1/C10).  **Source:** order-of-vanishing / valuation theory (the
+local ring of germs at `x₀` filtered by `(x - x₀)^k`), applied to the register's own
+`ZeroFixedPoint` `zero_count_*` results and completing the scaling story of
+`GreatAttractor`.
+
 ## Sources for the missing entities (summary)
 
 | missing entity | closest existing work |
@@ -390,7 +415,12 @@ set): `IsRemovableValue`, `removable_value_unique`, `existsUnique_iff_exists_and
 `extension_unique`, `removable_exists_unique`, `removable_value_bridge`,
 `initial_arrow_schema` -- card C17: the removable value of a 0/0 is a genuine `∃!`,
 the same schema as the initial arrow, so removability is existence + uniqueness
-(7 facts). The capstone `TheoryOfEverything.method_and_margin_barriers` bundles the
+(7 facts). `VanishOrder.lean` (same axiom set): `VanishesToOrder`, `divideOut`,
+`vanishes_zero`, `vanishes_succ_imp`, `vanishes_shift`, `HasGrade`, `hasGrade_canonical`,
+`hasGrade_shift`, `vanishes_antitone`, `grade_unique`, `order_is_graded` -- the order of
+vanishing as a decreasing `ℕ`-filtration whose grade shifts by one when a zero is
+divided out (11 formalised facts). The capstone
+`TheoryOfEverything.method_and_margin_barriers` bundles the
 order margin (existence always, uniqueness under antitonicity) and the method barrier
 alongside `twoNumbersClose`.
 The remaining cards are cited (Theorem) or left OPEN with a

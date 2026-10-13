@@ -165,6 +165,13 @@ ENTRIES = [
             "initial_arrow_schema",
         ],
     }, []),
+    ("C18", {
+        "VanishOrder": [
+            "VanishesToOrder", "divideOut", "vanishes_zero", "vanishes_succ_imp",
+            "vanishes_shift", "HasGrade", "hasGrade_canonical", "hasGrade_shift",
+            "vanishes_antitone", "grade_unique", "order_is_graded",
+        ],
+    }, []),
 ]
 
 
