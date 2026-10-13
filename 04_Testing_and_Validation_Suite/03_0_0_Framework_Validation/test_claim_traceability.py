@@ -157,6 +157,14 @@ ENTRIES = [
             "modules_zero_links",
         ],
     }, []),
+    ("C17", {
+        "RemovableValue": [
+            "IsRemovableValue", "removable_value_unique",
+            "existsUnique_iff_exists_and_unique", "extension_unique",
+            "removable_exists_unique", "removable_value_bridge",
+            "initial_arrow_schema",
+        ],
+    }, []),
 ]
 
 

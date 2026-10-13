@@ -734,6 +734,25 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
        needed.  Axioms `⊆ [propext, Classical.choice, Quot.sound]`; length certificate
        axiom-free.  `lake build PunoCalculus.ZeroObject` green.  No Millennium problem
        touched; wall OPEN.
+  49. **The 0/0 and the initial arrow are one schema: removability is existence +
+       uniqueness** (`RemovableValue.lean`, card C17).  Bullets 47-48 made the
+       structural face of "zero"; this brick joins it to the *analytic* face.
+       `Removable` proves the existence half of the 0/0 doctrine (a shared linear
+       factor gives a punctured limit); `ZeroLink` proves the structural half (the
+       initial arrow is a `∃!`).  `IsRemovableValue f a L` is `Tendsto f (𝓝[≠] a)
+       (𝓝 L)`; `removable_value_unique` shows it is unique when it exists (`ℝ` is
+       Hausdorff), so the removable value is a genuine "exactly one".  The schema is
+       isolated in `existsUnique_iff_exists_and_unique` (`∃!` = existence +
+       uniqueness for any predicate): `removable_exists_unique` feeds it the canonical
+       0/0 `(x-a)·g(x)/(x-a)` (value `g a`) and `initial_arrow_schema` feeds it
+       `ZeroLink.empty_unique_arrow` -- the *same* lemma yields both.  So
+       "removability is existence + uniqueness of a canonical extension"
+       (`removable_value_bridge`) and "the initial object is existence + uniqueness of
+       an arrow" are one statement; `extension_unique` (a continuous extension of a
+       punctured map is unique) is its analytic form.  Axioms
+       `⊆ [propext, Classical.choice, Quot.sound]` (`existsUnique_iff_...` and the
+       length certificate axiom-free).  `lake build PunoCalculus.RemovableValue` green.
+       No Millennium problem touched; wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 

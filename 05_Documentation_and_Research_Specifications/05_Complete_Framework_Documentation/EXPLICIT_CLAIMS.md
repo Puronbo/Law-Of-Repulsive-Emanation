@@ -313,6 +313,27 @@ not claimed. **Source:** Awodey, *Category Theory* (2010); Mac Lane (1998). This
 *completes* C15: zero links all forms **within a single object** exactly when the
 category has a zero object.
 
+## C17 — The 0/0 / initial-arrow bridge: removability is existence + uniqueness
+
+**Type:** Formal (analytic ↔ categorical schema). **Statement.** A *removable
+value* of `f` at a puncture `a` is a value `L` with `Tendsto f (𝓝[≠] a) (𝓝 L)`;
+when it exists it is **unique** (the target `ℝ` is Hausdorff), so the removable
+value is a genuine "exactly one" -- the *same* `∃!` schema that characterizes the
+initial arrow in `ZeroLink`. Concretely, the canonical 0/0
+`(x - a)·g(x)/(x - a)` with `g` continuous at `a` has the unique removable value
+`g a` (`Removable.removable_limit` for existence, `removable_value_unique` for
+uniqueness), and any continuous extension of a punctured map is unique
+(`extension_unique`). **Evidence:** `RemovableValue.lean` (`IsRemovableValue`,
+`removable_value_unique`, `existsUnique_iff_exists_and_unique`, `extension_unique`,
+`removable_exists_unique`, `removable_value_bridge`, `initial_arrow_schema`).
+**Falsifier:** two distinct values both being punctured limits of the same map at
+the same point, or two distinct continuous extensions agreeing off the point.
+**Missing entity:** none at the schema level; whether a *given physical* 0/0 has a
+limit is the object-specific content of the experimental programs (card-specific),
+not claimed here. **Source:** standard topology (uniqueness of limits in Hausdorff
+spaces) applied to the register's own `Removable` and `ZeroLink` -- the analytic and
+categorical faces of one schema.
+
 ## Sources for the missing entities (summary)
 
 | missing entity | closest existing work |
@@ -364,7 +385,12 @@ type is initial, `PUnit` terminal, `0` the identity of `+` and annihilator of `�
 `zero_isInitial`, `zero_isTerminal`, `zero_links_both_ways`, `zero_unique_up_to_iso`,
 `modules_haveZeroObject`, `modules_exists_zeroObject`, `modules_zero_links` -- card
 C16: a category with a zero object has ONE object that is at once origin and target,
-and `ModuleCat R` is such a category (9 facts). The capstone `TheoryOfEverything.method_and_margin_barriers` bundles the
+and `ModuleCat R` is such a category (9 facts). `RemovableValue.lean` (same axiom
+set): `IsRemovableValue`, `removable_value_unique`, `existsUnique_iff_exists_and_unique`,
+`extension_unique`, `removable_exists_unique`, `removable_value_bridge`,
+`initial_arrow_schema` -- card C17: the removable value of a 0/0 is a genuine `∃!`,
+the same schema as the initial arrow, so removability is existence + uniqueness
+(7 facts). The capstone `TheoryOfEverything.method_and_margin_barriers` bundles the
 order margin (existence always, uniqueness under antitonicity) and the method barrier
 alongside `twoNumbersClose`.
 The remaining cards are cited (Theorem) or left OPEN with a
