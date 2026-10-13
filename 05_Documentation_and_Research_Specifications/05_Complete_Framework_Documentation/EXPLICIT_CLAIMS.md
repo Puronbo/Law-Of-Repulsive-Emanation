@@ -145,6 +145,14 @@ separates a repelling (`lambda > 0`) side from an attracting (`lambda < 0`) side
 (`side_of_crossing`), and packages both as `margin_existsUnique`. So the register's
 marginal order `s*` is well-defined the moment `lambda` is antitone in `s`; the open
 content is that antitonicity, not the arithmetic.
+**Margin as a first crossing (no monotonicity needed):** `FirstCrossing.lean` drops the
+antitone hypothesis entirely -- the third family (fractional CLM) is NOT monotone in `s`.
+For any `Continuous f` with `0 < f a` and `f b < 0` on `a ≤ b` it proves the set `{x ∈
+[a,b] : f x ≤ 0}` (closed, bounded below) has a least element `c` that is an interior zero,
+with `f > 0` strictly on `[a,c)` (`exists_first_zero`), and that `c` is the FIRST zero --
+no earlier one (`margin_exists_firstCrossing`). So a margin EXISTS under the weakest
+hypothesis (continuity + one sign change); uniqueness is the extra content the NS/Burgers
+family carries.
 **Falsifier:** a grid-converged system with `sign(lambda) != sign(mu)`. **Missing
 entity:** the analytic claim that the identification `mu = lambda` survives the real
 flow; sources: Beale–Kato–Majda (1984); Constantin–Fefferman (1993); Deng–Hou–Yu (2015).
@@ -295,10 +303,14 @@ single inequality and stated as an EQUIVALENCE (content bounded iff `int_0^T g` 
 `MarginCrossing.lean` (same axiom set): `existsUnique_zero_of_strictAntiOn` (an antitone
 `lambda` has a unique zero -- the margin `s*` is well-defined), `side_of_crossing` (the
 zero separates the repelling from the attracting side), `margin_existsUnique` (3 facts).
+`FirstCrossing.lean` (same axiom set): `exists_first_zero` (a continuous sign change has an
+interior FIRST zero, with `f > 0` to its left -- no monotonicity assumed) and
+`margin_exists_firstCrossing` (that first zero is exact: no earlier zero; 2 facts).
 `LogicBarrier.lean` (axiom-FREE): `lawvere_fixedpoint` (Lawvere's diagonal fixed-point
 theorem), `no_surjective_of_no_fixedpoint`, `no_surjective_predicates` (Cantor), and
 `diagonal_not_mem_range` -- the shared skeleton of Cantor/Gödel/Turing, card C14's formal
 core (4 facts). The capstone `TheoryOfEverything.method_and_margin_barriers` bundles the
-order margin and the method barrier alongside `twoNumbersClose`.
+order margin (existence always, uniqueness under antitonicity) and the method barrier
+alongside `twoNumbersClose`.
 The remaining cards are cited (Theorem) or left OPEN with a
 named missing entity (Conjecture; see C10-open). No card here is a Millennium result.

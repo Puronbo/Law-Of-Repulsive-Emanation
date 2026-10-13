@@ -10,6 +10,7 @@ import PunoCalculus.SufficiencyLoop
 import PunoCalculus.QuantitativeContinuation
 import PunoCalculus.OrientationBoundedness
 import PunoCalculus.MarginCrossing
+import PunoCalculus.FirstCrossing
 import PunoCalculus.LogicBarrier
 
 /-!
@@ -104,17 +105,21 @@ theorem twoNumbersClose :
   ⟨order_sets_rung, fun _ _ => orientation_sets_side⟩
 
 /-- **The register's two barriers, attached to the two numbers.**  The *order* margin is
-a unique crossing once the orientation `lambda(s)` is antitone (so the critical order
-`s*` is well-defined); the *method* barrier (card C14) is the diagonal escape of
-Cantor/Gödel/Turing -- no type enumerates its own predicate space.  Both are corollaries
-of the same discipline: uniqueness of the organising number, and the impossibility of a
-self-enumerating certificate. -/
+a first crossing (existence, needing only continuity and a sign change -- the non-monotone
+regime the third family falls into) and a unique crossing once the orientation `lambda(s)`
+is antitone (so the critical order `s*` is well-defined); the *method* barrier (card C14)
+is the diagonal escape of Cantor/Gödel/Turing -- no type enumerates its own predicate
+space.  All three are corollaries of the same discipline: the organising number exists
+(and, under monotonicity, is unique), and no self-enumerating certificate can exist. -/
 theorem method_and_margin_barriers :
     (∀ {f : ℝ → ℝ} {a b : ℝ}, a < b → ContinuousOn f (Set.Icc a b) →
         StrictAntiOn f (Set.Icc a b) → 0 < f a → f b < 0 →
         ∃! c ∈ Set.Ioo a b, f c = 0) ∧
+    (∀ {f : ℝ → ℝ} {a b : ℝ}, Continuous f → a ≤ b → 0 < f a → f b < 0 →
+        ∃ c ∈ Set.Ioo a b, f c = 0 ∧ ∀ x ∈ Set.Ico a c, 0 < f x) ∧
     (∀ α : Type, ¬ ∃ φ : α → α → Bool, Function.Surjective φ) :=
   ⟨PunoCalculus.MarginCrossing.existsUnique_zero_of_strictAntiOn,
+   fun hf hab ha hb => PunoCalculus.FirstCrossing.exists_first_zero hf hab ha hb,
    PunoCalculus.LogicBarrier.no_surjective_predicates⟩
 
 /-- Formalised-facts register for the capstone. -/

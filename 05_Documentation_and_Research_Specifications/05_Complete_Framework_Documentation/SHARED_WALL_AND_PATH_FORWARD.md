@@ -653,6 +653,19 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       *existence* of an order/orientation margin recurs across three fractionally-
       dissipated families, but the *shrinking-transient law* is specific to the
       NS/Burgers family, not universal.  Diagnostic only; wall OPEN.
+  44. **The margin exists as a FIRST crossing -- monotonicity not needed**
+      (`FirstCrossing.lean`).  Bullet 42's uniqueness theorem needs `lambda` antitone, but
+      the third family shows that hypothesis can FAIL (bullet 43).  This brick keeps the
+      weakest hypothesis that still yields a margin: for any `Continuous f` on `a ≤ b` with
+      `0 < f a` and `f b < 0`, the set `{x ∈ [a,b] : f x ≤ 0}` is closed and bounded below,
+      so it has a least element `c`; `c` is an interior zero with `f > 0` strictly on
+      `[a,c)` (`exists_first_zero`), and `c` is the FIRST zero -- no earlier zero exists
+      (`margin_exists_firstCrossing`).  So a margin EXISTS whenever the orientation merely
+      changes sign; uniqueness is the extra content carried by NS / fractional Burgers.
+      Axioms exactly `[propext, Classical.choice, Quot.sound]`; length certificate
+      axiom-free.  The capstone `method_and_margin_barriers` now bundles all three: margin
+      existence always, margin uniqueness under antitonicity, and the diagonal.  No
+      Millennium problem touched; wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 
