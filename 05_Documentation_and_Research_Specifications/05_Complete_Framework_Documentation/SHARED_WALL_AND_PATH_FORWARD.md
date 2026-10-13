@@ -613,7 +613,11 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       mode) shows the crossing is resolution-stable once the grid is fine enough:
       at `T = 8`, `s* = 0.288 (N=256) / 0.212 (N=512) / 0.213 (N=768)` -- N=512 and
       N=768 agree to `0.001`, so N=256 is biased `~0.08` high but the margin is not a
-      finite-grid artifact.  Diagnostic only; wall OPEN.
+      finite-grid artifact.  The converged `window512` mode re-runs the whole table at
+      `N = 512, dt = 2.5e-4`: `s* = 1.457 / 0.299 / 0.228 / 0.213` at `T = 3 / 5 / 8 / 12`,
+      fit `s*(T) = 0.143 + 0.764/T` (`T >= 5`).  So the shrinking law survives grid
+      refinement and its extrapolated limit `s*(inf) ~ 0.14` is grid-stable (same
+      intercept as N=256, smaller slope).  Diagnostic only; wall OPEN.
   42. **The margin is a unique crossing, and the method barrier is a diagonal**
       (`MarginCrossing.lean`, `LogicBarrier.lean`).  Two formal bricks close the register's
       bookkeeping.  (a) *Margin:* `MarginCrossing.lean` proves a continuous, strictly
@@ -634,6 +638,21 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       `[propext, Classical.choice, Quot.sound]`; `LogicBarrier` axiom-FREE (stronger).  The
       capstone `TheoryOfEverything.method_and_margin_barriers` attaches both to the two
       organising numbers.  No Millennium problem is touched; the walls stay OPEN.
+  43. **The margin recurs in a third family, but the shrinking law does not**
+      (`fractional_clm_margin.py`).  Running the identical probe on fractional CLM
+      `d_t w = w H(w) - nu (-∂_xx)^s w` -- a PROVEN-blowup family (Constantin-Lax-Majda
+      1985) -- finds a third system with a critical dissipation order: repelling (small
+      `s`, the CLM blowup regime) below the boundary, attracting above.  At `T = 3`:
+      `lambda = 34` at `s = 0.1`, `+2.2` at `s = 2.5`, `-0.05` at `s = 3.0`, and the
+      crossing near `s* ~ 2.7-3.0` is resolution-stable (`N = 256` vs `N = 512` agree:
+      `lambda(2.0) ~ +3.95`, `lambda(3.0) ~ -0.05` at both).  BUT its window dependence is
+      NOT the clean shrinking transient of NS / fractional Burgers: `s* ~ 2.66 / 2.70 /
+      2.71` at `T = 2 / 3 / 4` (a stable threshold, no shrink), and beyond `s ~ 2.5` the
+      orientation hovers inside the noise floor (`|lambda| <~ 0.05`) over a broad band
+      `s ~ 2.5..5.5`, so at `T = 6` the first sign change jumps out to `~5.4`.  So the
+      *existence* of an order/orientation margin recurs across three fractionally-
+      dissipated families, but the *shrinking-transient law* is specific to the
+      NS/Burgers family, not universal.  Diagnostic only; wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 

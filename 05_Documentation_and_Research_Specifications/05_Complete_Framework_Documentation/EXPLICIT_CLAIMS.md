@@ -183,18 +183,31 @@ resolution-limited at small `s`.
 order/orientation probe on fractional Burgers `u_t + u u_x = -nu (-∂_xx)^s u`
 (1D, spectral, seed-averaged over 4 ICs). Burgers is shock-forming, yet it carries the
 SAME order/orientation margin -- a critical dissipation order separating repelling
-(weak dissipation) from attracting (strong) -- and it SHRINKS the same way as the window
-grows: `s* = 1.51 / 0.35 / 0.27 / 0.22` at `T = 3 / 5 / 8 / 12`, fit `s*(T) = 0.134 +
-1.072/T` (`T >= 5`), comparable to the NS `0.055 + 1.206/T`. So the margin is a property
-of the class of fractionally-dissipated systems, not of Navier-Stokes alone -- the
-recursion (order/orientation boundary) recurs across a second, qualitatively different
-of the class of fractionally-dissipated systems, not of Navier-Stokes alone -- the
-recursion (order/orientation boundary) recurs across a second, qualitatively different
-family. (Burgers is noisier: seed spread up to `~0.5` near the crossing at `N = 256`;
-only the seed-averaged trend is quoted.) A grid/timestep check (`res` mode) shows the
-crossing is resolution-stable once the grid is fine enough: at `T = 8`, `s* = 0.288
-(N = 256)` vs `0.212 (N = 512)` vs `0.213 (N = 768)` -- N=512 and N=768 agree to `0.001`
-(so N=256 is biased `~0.08` high, but the margin is not a finite-grid artifact).
+(weak dissipation) from attracting (strong) -- and it SHRINKS as the window grows:
+`s* = 1.51 / 0.35 / 0.27 / 0.22` at `T = 3 / 5 / 8 / 12` on `N = 256`, fit `s*(T) = 0.134 +
+1.072/T` (`T >= 5`), comparable to the NS `0.055 + 1.206/T`. (Burgers is noisier: seed
+spread up to `~0.5` near the crossing at `N = 256`; only the seed-averaged trend is
+quoted.) A grid/timestep check (`res` mode) shows the crossing is resolution-stable once
+the grid is fine enough: at `T = 8`, `s* = 0.288 (N = 256)` vs `0.212 (N = 512)` vs `0.213
+(N = 768)` -- N=512 and N=768 agree to `0.001` (N=256 is biased `~0.08` high). The
+converged `window512` mode re-runs the whole table at `N = 512, dt = 2.5e-4`:
+`s* = 1.457 / 0.299 / 0.228 / 0.213` at `T = 3 / 5 / 8 / 12`, fit `s*(T) = 0.143 + 0.764/T`
+(`T >= 5`). So the shrinking law survives grid refinement, and its extrapolated limit
+`s*(inf) ~ 0.14` is grid-stable (same intercept as N=256, smaller slope). So the margin is
+a property of the class of fractionally-dissipated systems, not of Navier-Stokes alone --
+the recursion (order/orientation boundary) recurs across a second, qualitatively different
+family.
+**Third family (empirical, honest negative):** `fractional_clm_margin.py` runs the same
+probe on fractional CLM `d_t w = w H(w) - nu (-∂_xx)^s w` -- a PROVEN-blowup family
+(Constantin-Lax-Majda 1985). It HAS a critical dissipation order separating repelling
+(small `s`, the CLM blowup regime) from attracting (large `s`): at `T = 3`,
+`lambda = 34` at `s = 0.1`, `+2.2` at `s = 2.5`, `-0.05` at `s = 3.0`, and the crossing
+near `s* ~ 2.7-3.0` is resolution-stable (`N = 256` vs `N = 512` agree). But its window
+dependence is NOT the clean shrinking transient: `s* ~ 2.66 / 2.70 / 2.71` at `T = 2 / 3 /
+4` (a stable threshold), and beyond `s ~ 2.5` the orientation hovers inside the noise floor
+(`|lambda| <~ 0.05`) over a broad band `s ~ 2.5..5.5`, so at `T = 6` the first sign change
+jumps out to `~5.4`. So the existence of a margin recurs across three families, but the
+shrinking law is specific to the NS/Burgers family, not universal.
 **Falsifier:** a
 Leray–Hopf solution with unbounded `‖u‖_{B^{-1}_{∞,∞}}` but `lambda <= 0`, or a global
 solution with `lambda > 0`. **Missing entity:** the bridge from the discrete
