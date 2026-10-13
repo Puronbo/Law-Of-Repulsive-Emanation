@@ -1,7 +1,7 @@
 # Claim Traceability Map
 
 **Status: machine-checked links.** This file is the join table for
-`EXPLICIT_CLAIMS.md`: every claim card (C1 … C15, C10-open) is mapped to the exact
+`EXPLICIT_CLAIMS.md`: every claim card (C1 … C16, C10-open) is mapped to the exact
 Lean artifact that carries it, the numerical experiment that supports its
 empirical half, and the literature that anchors its missing entity. The links are
 not prose — they are checked by `test_claim_traceability.py` (see *How this is
@@ -41,6 +41,7 @@ missing. This map adds the fourth item the register needs to stay honest: a
 | **C13** | Formal | `EmergentTime` (`transfer_conserves_total`, `state_determined_by_count`) | — | structural; not a physical claim | Lean |
 | **C14** | Formal / Interpretive | `LogicBarrier` (`lawvere_fixedpoint`, `no_surjective_of_no_fixedpoint`, `no_surjective_predicates`, `diagonal_not_mem_range`) | — | Cantor (1891); Gödel (1931); Turing (1936); Lawvere (1969); Baker–Gill–Solovay (1975); Razborov–Rudich (1997); Aaronson–Wigderson (2008) | Lean |
 | **C15** | Formal (structural) | `ZeroLink` (`empty_unique_arrow`, `empty_isInitial`, `unit_unique_arrow`, `unit_isTerminal`, `empty_classified_initial`, `unit_classified_terminal`, `zero_links_all`) | — | Awodey, *Category Theory* (2010); Mac Lane (1998); the register's own 0/0 doctrine (`Removable`, `ZeroZero`, `ZeroFixedPoint`) | Lean |
+| **C16** | Formal (structural / categorical) | `ZeroObject` (`initial_link`, `terminal_link`, `zero_isInitial`, `zero_isTerminal`, `zero_links_both_ways`, `zero_unique_up_to_iso`, `modules_haveZeroObject`, `modules_exists_zeroObject`, `modules_zero_links`) | — | Awodey (2010); Mac Lane (1998); completes C15 (the zero object in `ModuleCat R`) | Lean |
 
 ## Supporting bricks (not cards, but named by cards)
 

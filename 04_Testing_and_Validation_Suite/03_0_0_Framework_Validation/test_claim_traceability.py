@@ -149,6 +149,14 @@ ENTRIES = [
             "unit_classified_terminal", "zero_links_all",
         ],
     }, []),
+    ("C16", {
+        "ZeroObject": [
+            "initial_link", "terminal_link", "zero_isInitial", "zero_isTerminal",
+            "zero_links_both_ways", "zero_unique_up_to_iso",
+            "modules_haveZeroObject", "modules_exists_zeroObject",
+            "modules_zero_links",
+        ],
+    }, []),
 ]
 
 

@@ -288,12 +288,30 @@ Under the sum of types (`+`) `Empty` is the **identity** and under the product
 **Falsifier:** a type with two distinct arrows `Empty → α`, or a type that is both
 initial and terminal in `Type`. **Missing entity:** none for the structural
 statement; the *categorical zero object* (initial ∧ terminal), which requires an
-Ab-enriched category such as modules, is the named next micro-step, not claimed
-here. **Source:** Awodey, *Category Theory* (2010); Mac Lane, *Categories for the
+Ab-enriched category such as modules, is **card C16** (now claimed there for
+`ModuleCat R`), not claimed here. **Source:** Awodey, *Category Theory* (2010);
+Mac Lane, *Categories for the
 Working Mathematician* (1998) — the empty set is the initial object of `Set`. This
 is the structural face of the register's own 0/0 doctrine (`Removable`,
 `ZeroZero`, `ZeroFixedPoint`): an initial arrow *exists* and is *unique*, exactly
 as a removable 0/0 has an existing, definite value.
+
+## C16 — The zero object: one object is origin and target
+
+**Type:** Formal (structural / categorical). **Statement.** In a category with a
+*zero object*, a single object `Z` is simultaneously **initial** (a unique arrow
+`Z → Y` into every `Y`) and **terminal** (a unique arrow `Y → Z` from every `Y`) --
+the two directions that `Type` splits between `Empty` and `PUnit`. For a ring `R`,
+`ModuleCat R` has such an object (`ModuleCat.instHasZeroObject`), and any two zero
+objects are isomorphic. **Evidence:** `ZeroObject.lean` (`initial_link`,
+`terminal_link`, `zero_isInitial`, `zero_isTerminal`, `zero_links_both_ways`,
+`zero_unique_up_to_iso`, `modules_haveZeroObject`, `modules_exists_zeroObject`,
+`modules_zero_links`). **Falsifier:** a claimed zero object with two distinct arrows
+to or from some object. **Missing entity:** none for the module categories; `Type`
+itself has no zero object (initial `Empty` and terminal `PUnit` differ) -- recorded,
+not claimed. **Source:** Awodey, *Category Theory* (2010); Mac Lane (1998). This
+*completes* C15: zero links all forms **within a single object** exactly when the
+category has a zero object.
 
 ## Sources for the missing entities (summary)
 
@@ -342,7 +360,11 @@ core (4 facts). `ZeroLink.lean` (axioms `⊆ [Quot.sound]`): `empty_unique_arrow
 `empty_isInitial`, `unit_isTerminal`, `empty_classified_initial`,
 `unit_classified_terminal`, `zero_links_all` -- card C15's structural core: the empty
 type is initial, `PUnit` terminal, `0` the identity of `+` and annihilator of `×`
-(11 facts). The capstone `TheoryOfEverything.method_and_margin_barriers` bundles the
+(11 facts). `ZeroObject.lean` (same axiom set): `initial_link`, `terminal_link`,
+`zero_isInitial`, `zero_isTerminal`, `zero_links_both_ways`, `zero_unique_up_to_iso`,
+`modules_haveZeroObject`, `modules_exists_zeroObject`, `modules_zero_links` -- card
+C16: a category with a zero object has ONE object that is at once origin and target,
+and `ModuleCat R` is such a category (9 facts). The capstone `TheoryOfEverything.method_and_margin_barriers` bundles the
 order margin (existence always, uniqueness under antitonicity) and the method barrier
 alongside `twoNumbersClose`.
 The remaining cards are cited (Theorem) or left OPEN with a

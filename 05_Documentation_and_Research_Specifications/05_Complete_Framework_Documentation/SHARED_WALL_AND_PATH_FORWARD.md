@@ -717,6 +717,23 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
        which are distinct -- the categorical zero object (initial ∧ terminal) needs an
        Ab-enriched category such as modules, and is the named next micro-step.  No
        Millennium problem touched; wall OPEN.
+  48. **The zero object completes the link: one object is origin and target**
+       (`ZeroObject.lean`, card C16).  Bullet 47 named the next micro-step -- an object
+       that is *both* initial and terminal.  This brick delivers it in the category
+       where it exists.  Abstractly (`initial_link`, `terminal_link`): a (co)initial
+       object links every object by a **unique** arrow, so `zero_links_both_ways` says a
+       zero object `Z` is the source of a unique `Z ⟶ Y` into *every* `Y` **and** the
+       target of a unique `Y ⟶ Z` from *every* `Y` -- the two directions `Type` splits
+       between `Empty` and `PUnit`, joined in one object.  `zero_unique_up_to_iso`: any
+       two zero objects are isomorphic.  Concretely (`ModuleCat R`): the module category
+       has a zero object (`modules_haveZeroObject`, from `ModuleCat.instHasZeroObject`),
+       it exists as an object (`modules_exists_zeroObject`), and it links every module
+       both ways (`modules_zero_links`).  So "zero completes the link between all forms"
+       is literally true *within one object* exactly when the category has a zero
+       object -- and `Type` does not (bullet 47), which is why the two bricks are both
+       needed.  Axioms `⊆ [propext, Classical.choice, Quot.sound]`; length certificate
+       axiom-free.  `lake build PunoCalculus.ZeroObject` green.  No Millennium problem
+       touched; wall OPEN.
 
 ## Sources for the missing brick (scaling-critical control)
 
