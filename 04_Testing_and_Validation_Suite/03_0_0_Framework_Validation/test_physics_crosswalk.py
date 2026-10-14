@@ -32,15 +32,20 @@ CHECKER = os.path.join(
     "test_claim_traceability.py",
 )
 
-PHYS = os.path.join(ROOT, "07_Interdisciplinary_Connections_and_Frameworks")
-PHYSICS_DOCS = [
-    os.path.join(PHYS, "04_Theoretical_Physics_Implementations", "j",
-                 "PHYSICS_CATEGORIZATION.md"),
-    os.path.join(PHYS, "04_Theoretical_Physics_Implementations", "j",
-                 "THEORY_CONNECTIONS_SUMMARY.md"),
-    os.path.join(PHYS, "04_Theoretical_Physics_Implementations", "j",
-                 "VERIFIED_SYNTHESIS_AND_EQUIVALENTS.md"),
-    os.path.join(PHYS, "02_Mathematical_Physics_Connections", "summary.md"),
+# Tracked framework docs the map must link (exist in a CI checkout).
+BOUNDARY_DOCS = [
+    os.path.join(DOC_DIR, "EXTERNAL_CORPORA_CROSSWALK.md"),
+    os.path.join(DOC_DIR, "SHARED_WALL_AND_PATH_FORWARD.md"),
+    os.path.join(DOC_DIR, "WHAT_THIS_DOES_NOT_PROVE.md"),
+]
+
+# Physics sources live in the (larger, untracked) research tree: the map must
+# *name* them, but CI cannot require them on disk.
+PHYSICS_SOURCE_NAMES = [
+    "PHYSICS_CATEGORIZATION.md",
+    "THEORY_CONNECTIONS_SUMMARY.md",
+    "VERIFIED_SYNTHESIS_AND_EQUIVALENTS.md",
+    "summary.md",
 ]
 
 STATUSES = {"Lean-proved", "physics-known", "analogy", "open", "excluded"}
@@ -68,13 +73,19 @@ def test_crosswalk_exists_and_carries_scope_banner():
     )
 
 
-def test_every_cited_physics_document_exists_and_is_named():
+def test_tracked_framework_docs_exist_and_are_named():
     doc = _read(CROSSWALK)
-    missing_file = [p for p in PHYSICS_DOCS if not os.path.isfile(p)]
-    assert not missing_file, "cited physics docs missing on disk: %s" % missing_file
-    not_named = [os.path.basename(p) for p in PHYSICS_DOCS
+    missing_file = [p for p in BOUNDARY_DOCS if not os.path.isfile(p)]
+    assert not missing_file, "tracked framework docs missing on disk: %s" % missing_file
+    not_named = [os.path.basename(p) for p in BOUNDARY_DOCS
                  if os.path.basename(p) not in doc]
-    assert not not_named, "physics docs not named in the crosswalk: %s" % not_named
+    assert not not_named, "tracked framework docs not named in the crosswalk: %s" % not_named
+
+
+def test_every_physics_source_is_named():
+    doc = _read(CROSSWALK)
+    not_named = [p for p in PHYSICS_SOURCE_NAMES if p not in doc]
+    assert not not_named, "physics sources not named in the crosswalk: %s" % not_named
 
 
 def test_every_card_token_is_a_real_card():

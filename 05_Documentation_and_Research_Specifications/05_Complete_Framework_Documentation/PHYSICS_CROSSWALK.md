@@ -51,7 +51,16 @@ Navier–Stokes / Onsager wall); the rest are shape-analogies and are tagged as 
 | **[cert]** | `NavierStokes` | global-regularity wall | Prodi–Serrin sufficiency | open |
 | **[cert]** | `Cosmology.AcousticZeroFlow`, `Cosmology.OriginWindow` | Big-Bang / Planck “0/0” narrative | — | excluded |
 
+## Sibling maps (tracked)
+
+- [`EXTERNAL_CORPORA_CROSSWALK.md`](EXTERNAL_CORPORA_CROSSWALK.md) — cards linked to *external mathematics* (the mathematical twin of this file).
+- [`SHARED_WALL_AND_PATH_FORWARD.md`](SHARED_WALL_AND_PATH_FORWARD.md) — the honest account of what the wall is and is not.
+- [`WHAT_THIS_DOES_NOT_PROVE.md`](WHAT_THIS_DOES_NOT_PROVE.md) — the scope boundary this map obeys.
+
 ## Sources (physics documents)
+
+These live in the (larger) research tree and are cited by name; they are not part
+of the tracked verification checkout.
 
 - [`PHYSICS_CATEGORIZATION.md`](../../../07_Interdisciplinary_Connections_and_Frameworks/04_Theoretical_Physics_Implementations/j/PHYSICS_CATEGORIZATION.md) — the photon / rubber-ball verification catalogue (sourced, Tier II).
 - [`THEORY_CONNECTIONS_SUMMARY.md`](../../../07_Interdisciplinary_Connections_and_Frameworks/04_Theoretical_Physics_Implementations/j/THEORY_CONNECTIONS_SUMMARY.md) — the connection map.
