@@ -465,6 +465,29 @@ theorem is mathlib's; the bridge is the new content.  **Source:** Riemann's
 removable singularity theorem (Mathlib, Y. Kudryashov); the register's own 0/0
 doctrine (`Removable`, `RemovableValue`).
 
+## C24 — Liouville's theorem: global boundedness collapses the entire 0/0
+
+**Type:** Formal (analytic bridge / named theorem). **Statement.** Card C23 records that
+*local* boundedness at a puncture lets a 0/0 resolve to a finite value (Riemann's
+removable singularity theorem).  This card is the *global* dual: on the whole plane,
+boundedness is coercive.  Mathlib proves **Liouville's theorem** -- a function
+complex-differentiable on all of `ℂ` whose range is bounded is a constant -- formalised
+here in register form: `bounded_entire_const` (`∃ c, f = Function.const ℂ c`),
+`bounded_entire_apply_eq` (a bounded entire `f` takes the same value at any two points),
+`bounded_entire_value_unique` (it takes at most one value).  The register's statement is
+`eq_zero_of_bounded_of_eq_zero`: a bounded entire function that **vanishes at the origin**
+is *identically zero* -- global boundedness forces the register's 0/0 to `0`; no nonzero
+bounded entire function can carry a zero.  The bounded-at-infinity form
+`bounded_at_infinity_const` says an entire function tending to a finite value `c` at
+infinity (along `cocompact ℂ`) is the constant `c`.  **Evidence:** `LiouvilleBridge.lean`
+(`bounded_entire_const`, `bounded_entire_apply_eq`, `bounded_entire_value_unique`,
+`eq_zero_of_bounded_of_eq_zero`, `bounded_at_infinity_const`), over
+`Mathlib.Analysis.Complex.Liouville`.  **Falsifier:** a bounded entire function taking two
+distinct values, or a bounded entire function vanishing at the origin that is not zero.
+**Missing entity:** none -- the theorem is mathlib's; the register reading is the new
+content.  **Source:** Liouville's theorem (Mathlib, Y. Kudryashov); the register's own 0/0
+doctrine (`Removable`, `RemovableValue`, `RemovableComplexBridge`).
+
 ## Sources for the missing entities (summary)
 
 | missing entity | closest existing work |
@@ -545,7 +568,11 @@ genuine 0/0, `|x|/x`, with no removable value) and the mechanism faces bundled
 `limUnder_eq_of_isRemovableValue`, `canonical_zero_over_zero` -- card C23: Riemann's
 removable singularity theorem (Mathlib) read through the register's 0/0 schema over
 `ℂ`; the bounded holomorphic 0/0 has an *existing, unique* removable value, the
-`ℂ` twin of C17 (6 facts). The capstone
+`ℂ` twin of C17 (6 facts). `LiouvilleBridge.lean` (same axiom set): `bounded_entire_const`,
+`bounded_entire_apply_eq`, `bounded_entire_value_unique`, `eq_zero_of_bounded_of_eq_zero`,
+`bounded_at_infinity_const` -- card C24: Liouville's theorem (Mathlib) in register form,
+the *global* dual of C23 -- a bounded entire function is constant, so a bounded entire 0/0
+vanishes identically (5 facts). The capstone
 `TheoryOfEverything.method_and_margin_barriers` bundles the
 order margin (existence always, uniqueness under antitonicity) and the method barrier
 alongside `twoNumbersClose`.

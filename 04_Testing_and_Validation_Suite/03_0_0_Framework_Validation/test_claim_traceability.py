@@ -206,6 +206,13 @@ ENTRIES = [
             "limUnder_eq_of_isRemovableValue", "canonical_zero_over_zero",
         ],
     }, []),
+    ("C24", {
+        "LiouvilleBridge": [
+            "bounded_entire_const", "bounded_entire_apply_eq",
+            "bounded_entire_value_unique", "eq_zero_of_bounded_of_eq_zero",
+            "bounded_at_infinity_const",
+        ],
+    }, []),
 ]
 
 

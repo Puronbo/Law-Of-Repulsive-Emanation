@@ -822,6 +822,22 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
          axiom-free.  `lake build PunoCalculus.RemovableComplexBridge` green.
          No Millennium problem touched; wall OPEN.
 
+   53. **Liouville's theorem: global boundedness collapses the entire 0/0**
+         (`LiouvilleBridge.lean` C24).  Card C23 shows *local* boundedness at a
+         puncture lets a 0/0 resolve to a finite value; this bullet is the *global*
+         dual.  Mathlib's **Liouville theorem** (a complex-differentiable `f : `ℂ` → `ℂ`
+         with bounded range is a constant) is read in register form:
+         `bounded_entire_const` (`∃ c, f = const c`), `bounded_entire_apply_eq`
+         (any two points agree), `bounded_entire_value_unique` (at most one value),
+         and -- the register's statement -- `eq_zero_of_bounded_of_eq_zero`: a
+         bounded entire function that vanishes at the origin is *identically zero*,
+         so the global 0/0 collapses to `0` (no nonzero bounded entire function can
+         carry a zero).  The bounded-at-infinity form `bounded_at_infinity_const`
+         says an entire function tending to a finite value `c` at infinity is the
+         constant `c`.  Axioms `⊆ [propext, Classical.choice, Quot.sound]`; the
+         length certificate axiom-free.  `lake build PunoCalculus.LiouvilleBridge`
+         green.  No Millennium problem touched; wall OPEN.
+
 ## Sources for the missing brick (scaling-critical control)
 
 The invariant chain `L^3 ⊂ Ḃ^{-1+3/p}_{p,∞} ⊂ BMO^{-1} ⊂ Ḃ^{-1}_{∞,∞}` and its endpoint theory: Prodi (1959), Serrin (1962), Ladyzhenskaya (endpoint sufficiency `L^p_t L^q_x`, `2/q + 3/p <= 1`); Escauriaza-Seregin-Šverák (2003, endpoint `L^∞ L^3`); Koch-Tataru (2001, `BMO^{-1}`); Cheskidov-Shvydkoy (2010, arXiv:0708.3067 — largest critical space `B^{-1}_{∞,∞}`); Bourgain-Pavlović (2008 — norm inflation / ill-posedness in `Ḃ^{-1}_{∞,∞}`); Ri (arXiv:2307.11312, 2023 — claims a positive lower bound on `L^∞(Ḃ^{-1}_{∞,∞})`; single-author, unrefereed — treat as unverified); Tao (2021) plus Feng-He-Wang 2025 (Lorentz) and arXiv:2411.06483 (Besov) — quantitative triple/double/quadruple-log continuation bounds; Grujić (2024, JMFM, "Asymptotic Criticality" — the scaling gap as a derivative order `k -> ∞`). The **missing brick** is BOUNDEDNESS, not sufficiency: a positive margin (`eta > 0`) is classical and sufficient, but proving the invariant norm stays bounded along the flow is exactly what stays open.
