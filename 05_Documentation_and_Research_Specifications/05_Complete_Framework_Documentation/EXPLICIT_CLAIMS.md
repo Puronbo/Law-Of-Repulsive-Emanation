@@ -359,6 +359,83 @@ local ring of germs at `x₀` filtered by `(x - x₀)^k`), applied to the regist
 `ZeroFixedPoint` `zero_count_*` results and completing the scaling story of
 `GreatAttractor`.
 
+## C19 — The Probe mechanism: an identity 0/0 resolves to `1`
+
+**Type:** Formal (analytic mechanism). **Statement.** `THE_0_OVER_0_ATLAS.md`
+classifies a removable 0/0 into five mechanisms; the first is the **Probe**.  If two
+functions agree on the punctured neighbourhood of `x₀` (`f =ᶠ[𝓝[≠] x₀] g`) and the
+denominator is nonzero there, then the ratio `f/g` resolves to `1`: the identity 0/0
+has removable value `1` (`probe_identity`).  In particular `f/f` probes to `1` where
+`f ≠ 0` (`probe_self`); the probe value, when it exists, is unique
+(`probe_value_unique`); and it is literally an `IsRemovableValue`
+(`probe_is_removable`).  **Evidence:** `ZeroProbe.lean` (`ProbeValue`, `probe_identity`,
+`probe_self`, `probe_value_unique`, `probe_is_removable`).  **Falsifier:** two
+functions agreeing off the point whose ratio fails to tend to `1` where the denominator
+is nonzero.  **Missing entity:** none -- the probe value is the value at the point of
+the forced continuous extension.  **Source:** the register's own atlas (Probe
+mechanism, the "removable value `1`" class: functional-equation / identity entries).
+
+## C20 — The Vanishing-Rate mechanism: the order of vanishing is a valuation
+
+**Type:** Formal (analytic mechanism). **Statement.** `ZeroFixedPoint`/`VanishOrder`
+grade a 0/0 by a *filtration* -- and that grading is provably **not** additive under
+products (`|·|` and `|·|` both lie at grade `0`, their product `(·)^2` at grade `2`).
+The atlas's **Vanishing-Rate** mechanism ("leading Taylor coefficient") instead needs
+the genuine order of vanishing, defined by a residue limit:
+`HasOrder k f x₀` iff some nonzero `c` has `f / (· - x₀)^k → c` at the puncture.  This
+order **is** a valuation: it **adds under products** (`hasOrder_mul`, the law
+`order(f·g) = order f + order g`), **scales under powers** (`hasOrder_pow`,
+`order(f^n) = n·order f`), is `0` exactly on nonzero punctured limits
+(`hasOrder_zero_iff`), is realised by the canonical `(·-x₀)^n·h` with `h x₀ ≠ 0`
+(`hasOrder_canonical`), and is well-defined (`hasOrder_unique`, via
+`hasOrder_lt_imp_not`).  **Evidence:** `ZeroValuation.lean` (`HasOrder`, `hasOrder_one`,
+`hasOrder_zero_iff`, `hasOrder_mul`, `hasOrder_pow`, `hasOrder_canonical`,
+`hasOrder_lt_imp_not`, `hasOrder_unique`, `order_is_valuation`).  **Falsifier:** a
+nonzero residue giving a strictly smaller and a strictly larger order simultaneously.
+**Missing entity:** none for the valuation law; the equality of this order with a
+*physical* scaling exponent stays object-specific (C1/C10).  **Source:** order-of-
+vanishing / valuation theory (the `(x - x₀)`-adic valuation of germs at `x₀`), applied
+to the register's `ZeroFixedPoint` and complementing C18's filtration.
+
+## C21 — The Index mechanism: the root multiplicity is an additive integer
+
+**Type:** Formal (algebraic mechanism). **Statement.** The atlas's **Index**
+mechanism turns a 0/0 into an **integer** (winding number, multiplicity).  Its
+algebraic face is the root multiplicity: `Index a p := p.rootMultiplicity a`.  It is
+**additive under products** (`index_additive`, `Index a (p·q) = Index a p + Index a q`
+for `p·q ≠ 0`), **scales under powers** (`index_pow`), is `1` at a simple root
+(`index_X_sub_C_self`), is exactly `n` on `(X - a)^n` (`index_pow_self`) and on the
+canonical integer removable value `c·(X - a)^n` with `c ≠ 0` (`index_canonical`).
+**Evidence:** `ZeroIndex.lean` (`Index`, `index_one`, `index_additive`, `index_pow`,
+`index_X_sub_C_self`, `index_pow_self`, `index_canonical`, `index_is_multiplicity`).
+**Falsifier:** a product whose multiplicity differs from the sum of its factors'.
+**Missing entity:** none for the algebraic face; the topological faces (winding
+numbers, Poincaré–Hopf) are the same integer invariant in other categories -- recorded,
+not claimed here.  **Source:** polynomial algebra (multiplicity in a UFD / the local
+ring `R[X]_{(X-a)}`), the algebraic face of the register's Index mechanism.
+
+## C22 — The mechanism closure: the anti-class, and the five faces bundled
+
+**Type:** Formal (analytic mechanism / closure). **Statement.** The atlas's
+**amendment** records that the strict completeness claim is *false*: there are 0/0
+forms whose ratio has **no limit at all** (the "anti-class": Pólya `F(n)/√n`, Mertens,
+the divisor/circle errors, ...).  This card makes that a theorem and closes the
+mechanism register.  The genuine 0/0 `|x|/x` at `0` (both `|·|` and `·` vanish:
+`abs_vanish`, `id_vanish`) has **no** removable value: `|x|/x` tends to `1` from the
+right (`abs_div_self_tendsto_right`) and to `-1` from the left
+(`abs_div_self_tendsto_left`), so a punctured limit would force `1 = -1` --
+`abs_div_self_no_limit`, i.e. **the anti-class is nonempty** (`anti_class_nonempty`).
+The capstone `mechanisms_close` bundles the register's mechanism faces: Probe resolves
+a self-0/0 to `1`, the order of vanishing is additive, the index is additive, and the
+anti-class is nonempty -- a removable value is *not* automatic.  **Evidence:**
+`ZeroMechanisms.lean` (`abs_div_self_tendsto_right`, `abs_div_self_tendsto_left`,
+`abs_div_self_no_limit`, `abs_vanish`, `id_vanish`, `anti_class_nonempty`,
+`mechanisms_close`).  **Falsifier:** a limit of `|x|/x` at `0`, which would force the
+one-sided limits `1` and `-1` to agree.  **Missing entity:** none -- the anti-class
+member is explicit.  **Source:** the register's own atlas (amendment, entries 64/67/69
+/70/73/74), and standard one-sided-limit theory; the Critical and Conservation
+mechanisms remain object-specific (cards C1/C10).
+
 ## Sources for the missing entities (summary)
 
 | missing entity | closest existing work |
@@ -419,7 +496,22 @@ the same schema as the initial arrow, so removability is existence + uniqueness
 `vanishes_zero`, `vanishes_succ_imp`, `vanishes_shift`, `HasGrade`, `hasGrade_canonical`,
 `hasGrade_shift`, `vanishes_antitone`, `grade_unique`, `order_is_graded` -- the order of
 vanishing as a decreasing `ℕ`-filtration whose grade shifts by one when a zero is
-divided out (11 formalised facts). The capstone
+divided out vanishing as a decreasing `ℕ`-filtration whose grade shifts by one when a zero is
+divided out (11 formalised facts). `ZeroProbe.lean` (same axiom set): `ProbeValue`,
+`probe_identity`, `probe_self`, `probe_value_unique`, `probe_is_removable` -- card C19:
+the Probe mechanism, an identity 0/0 resolving to `1` (5 facts). `ZeroValuation.lean`
+(same axiom set): `HasOrder`, `hasOrder_one`, `hasOrder_zero_iff`, `hasOrder_mul`,
+`hasOrder_pow`, `hasOrder_canonical`, `hasOrder_lt_imp_not`, `hasOrder_unique`,
+`order_is_valuation` -- card C20: the order of vanishing as a valuation that is
+additive under products (9 facts). `ZeroIndex.lean` (same axiom set): `Index`,
+`index_one`, `index_additive`, `index_pow`, `index_X_sub_C_self`, `index_pow_self`,
+`index_canonical`, `index_is_multiplicity` -- card C21: the root multiplicity as an
+additive integer (the algebraic face of the Index mechanism; 8 facts).
+`ZeroMechanisms.lean` (same axiom set): `abs_div_self_tendsto_right`,
+`abs_div_self_tendsto_left`, `abs_div_self_no_limit`, `abs_vanish`, `id_vanish`,
+`anti_class_nonempty`, `mechanisms_close` -- card C22: the anti-class is nonempty (a
+genuine 0/0, `|x|/x`, with no removable value) and the mechanism faces bundled
+(7 facts). The capstone
 `TheoryOfEverything.method_and_margin_barriers` bundles the
 order margin (existence always, uniqueness under antitonicity) and the method barrier
 alongside `twoNumbersClose`.

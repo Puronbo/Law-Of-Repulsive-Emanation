@@ -774,6 +774,34 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
         axiom-free.  `lake build PunoCalculus.VanishOrder` green.  No Millennium problem
         touched; wall OPEN.
 
+   51. **The mechanism register closes: Probe, Vanishing Rate, Index, and the anti-class**
+         (`ZeroProbe.lean` C19, `ZeroValuation.lean` C20, `ZeroIndex.lean` C21,
+         `ZeroMechanisms.lean` C22).  `THE_0_OVER_0_ATLAS.md` classifies a *removable* 0/0
+         into five mechanisms; this bullet formalises the three with clean analytic /
+         algebraic content and, crucially, the **amendment** -- the classification covers
+         only the removable ones.  (i) **Probe**: if `f =ᶠ[𝓝[≠] x₀] g` and the
+         denominator is nonzero off the point, the ratio resolves to `1`
+         (`probe_identity`; `f/f ↦ 1` via `probe_self`); the probe value is unique
+         (`probe_value_unique`) and is an `IsRemovableValue` (`probe_is_removable`).
+         (ii) **Vanishing Rate**: the *filtration* grade of C18 is **not** additive
+         (`|·|`,`|·|` sit at grade `0`, their product at grade `2`), so the mechanism
+         uses the residue order `HasOrder k f x₀` (`f/(· - x₀)^k ↦` a nonzero `c`),
+         which **is** a valuation: additive under products (`hasOrder_mul`), scale
+         `n·` under powers (`hasOrder_pow`), well-defined (`hasOrder_unique`,
+         `hasOrder_lt_imp_not`), realised by the canonical `(· - x₀)^n·h`
+         (`hasOrder_canonical`).  (iii) **Index**: the root multiplicity
+         `Index a p = p.rootMultiplicity a` is additive under products
+         (`index_additive`), is `1` at a simple root (`index_X_sub_C_self`), exactly `n`
+         on `(X - a)^n` (`index_pow_self`) and on `c·(X - a)^n` with `c ≠ 0`
+         (`index_canonical`).  (iv) **Anti-class**: the genuine 0/0 `|x|/x` (both
+         numerator and denominator vanish: `abs_vanish`, `id_vanish`) has **no**
+         removable value -- `|x|/x ↦ 1` from the right and `↦ -1` from the left
+         (`abs_div_self_tendsto_right` / `_left`), so `1 = -1` (`abs_div_self_no_limit`);
+         the anti-class is nonempty (`anti_class_nonempty`) and `mechanisms_close`
+         bundles the faces.  Axioms `⊆ [propext, Classical.choice, Quot.sound]`; the
+         length certificates axiom-free.  `lake build PunoCalculus.ZeroMechanisms` green.
+         No Millennium problem touched; wall OPEN.
+
 ## Sources for the missing brick (scaling-critical control)
 
 The invariant chain `L^3 ⊂ Ḃ^{-1+3/p}_{p,∞} ⊂ BMO^{-1} ⊂ Ḃ^{-1}_{∞,∞}` and its endpoint theory: Prodi (1959), Serrin (1962), Ladyzhenskaya (endpoint sufficiency `L^p_t L^q_x`, `2/q + 3/p <= 1`); Escauriaza-Seregin-Šverák (2003, endpoint `L^∞ L^3`); Koch-Tataru (2001, `BMO^{-1}`); Cheskidov-Shvydkoy (2010, arXiv:0708.3067 — largest critical space `B^{-1}_{∞,∞}`); Bourgain-Pavlović (2008 — norm inflation / ill-posedness in `Ḃ^{-1}_{∞,∞}`); Ri (arXiv:2307.11312, 2023 — claims a positive lower bound on `L^∞(Ḃ^{-1}_{∞,∞})`; single-author, unrefereed — treat as unverified); Tao (2021) plus Feng-He-Wang 2025 (Lorentz) and arXiv:2411.06483 (Besov) — quantitative triple/double/quadruple-log continuation bounds; Grujić (2024, JMFM, "Asymptotic Criticality" — the scaling gap as a derivative order `k -> ∞`). The **missing brick** is BOUNDEDNESS, not sufficiency: a positive margin (`eta > 0`) is classical and sufficient, but proving the invariant norm stays bounded along the flow is exactly what stays open.

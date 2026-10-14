@@ -172,6 +172,33 @@ ENTRIES = [
             "vanishes_antitone", "grade_unique", "order_is_graded",
         ],
     }, []),
+    ("C19", {
+        "ZeroProbe": [
+            "ProbeValue", "probe_identity", "probe_self", "probe_value_unique",
+            "probe_is_removable",
+        ],
+    }, []),
+    ("C20", {
+        "ZeroValuation": [
+            "HasOrder", "hasOrder_one", "hasOrder_zero_iff", "hasOrder_mul",
+            "hasOrder_pow", "hasOrder_canonical", "hasOrder_lt_imp_not",
+            "hasOrder_unique", "order_is_valuation",
+        ],
+    }, []),
+    ("C21", {
+        "ZeroIndex": [
+            "Index", "index_one", "index_additive", "index_pow",
+            "index_X_sub_C_self", "index_pow_self", "index_canonical",
+            "index_is_multiplicity",
+        ],
+    }, []),
+    ("C22", {
+        "ZeroMechanisms": [
+            "abs_div_self_tendsto_right", "abs_div_self_tendsto_left",
+            "abs_div_self_no_limit", "abs_vanish", "id_vanish",
+            "anti_class_nonempty", "mechanisms_close",
+        ],
+    }, []),
 ]
 
 
