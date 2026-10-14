@@ -213,6 +213,78 @@ ENTRIES = [
             "bounded_at_infinity_const",
         ],
     }, []),
+    ("C25", {
+        "SerrinLadder": [
+            "gnExponent", "gnExponent_six", "gnExponent_two", "gnExponent_three_half",
+            "gnExponent_ceiling_chain", "serrinQ", "serrinQ_six", "serrinQ_line",
+            "gnExponent_le_one_iff", "criticalPower_six_four", "oneExtraPower",
+            "criticalPowerIdentity", "powerClosesCriticalAtSix",
+        ],
+    }, []),
+    ("C26", {
+        "GreatAttractor": [
+            "fixedPoint_distanceRatio", "fixedPoint_repels", "fixedPoint_attracts",
+            "orientation_trichotomy", "fixedPoint_logRate", "fixedPoint_logSign",
+            "orientationDiscriminator", "criticalSmoothness", "scalingWeight",
+            "criticalSmoothness_one", "criticalSmoothness_shift_order",
+            "criticalSmoothness_antitone_order", "scalingWeight_zero_iff",
+        ],
+    }, []),
+    ("C27", {
+        "ForceNetwork": [
+            "weightedValueLeMax", "leWeightedValueMin", "networkValueBetween",
+            "inertiaDampsChange",
+        ],
+    }, []),
+    ("C28", {
+        "MixtureGrowth": [
+            "normMixtureLeSum", "mixtureRatioBetween", "weightedSqBetween",
+            "spikeCannotLowerRatio",
+        ],
+    }, []),
+    ("C29", {
+        "OnsagerCriterion": [
+            "weighted_sum_le", "spike_of_excess", "excess_majorizes",
+        ],
+    }, []),
+    ("C30", {
+        "ContinuationCriterion": [
+            "exists_upto_of_bounded", "unbounded_of_first_failure",
+        ],
+    }, []),
+    ("C31", {
+        "StableBounded": [
+            "attracting_orbit_converges", "attracting_orbit_bounded", "monotone_bounded",
+        ],
+    }, []),
+    ("C32", {
+        "SufficiencyLoop": [
+            "global_exists_of_mono", "quadratic_criterion_unavailable",
+        ],
+    }, []),
+    ("C33", {
+        "SelfSimilarExponents": [
+            "BalanceSystem", "forcedP", "forcedQ", "forcedS", "forcedGamma",
+            "forcedExponentsSatisfy", "gammaForced", "sForced", "qForcedInPoisson",
+            "pForcedFromOmegaProduction", "forcedExponentsUnique", "secondOrderPower",
+            "secondOrderPowerPrefactorIndependent", "advectionTermPower",
+            "advectionTermPowerKappaIndependent", "uzCoefficientPowerNIndependent",
+            "kappaMonotone", "dynamicalNMonotoneStiffening_powersForced",
+            "profile_existence_is_open", "type_ii_naming_not_certified",
+        ],
+    }, []),
+    ("C34", {
+        "ZeroFixedPoint": [
+            "fixedPoint_selfSlope", "identity_selfSlope", "zero_count_removable",
+            "zero_count_under", "zero_count_over",
+        ],
+    }, []),
+    ("C35", {
+        "OnePattern": [
+            "criticalCurve_through_ladder", "ladder_is_order_one", "theta_add_criticalCurve",
+            "theta_add_criticalCurve_one", "scalingWeight_vanishes_family",
+        ],
+    }, []),
 ]
 
 

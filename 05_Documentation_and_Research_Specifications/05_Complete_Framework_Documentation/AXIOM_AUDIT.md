@@ -1,4 +1,4 @@
-# Axiom Audit — claim cards C1 … C24
+# Axiom Audit — claim cards C1 … C35
 
 **Status: generated and machine-checked.** This file records the *axiom footprint* of every Lean declaration quoted by a card in `CLAIM_TRACEABILITY.md` — the exact declarations the traceability checker asserts. It answers one question per card: *which axioms does the quoted theorem transitively depend on?*
 
@@ -16,10 +16,10 @@ yields one footprint per declaration, parsed into the table below
 
 ## Result
 
-- **Declarations audited:** 137, across the 23 cards C1 … C24 (some cards share declarations, e.g. `OrientationLaw` under C10 and C10-open).
+- **Declarations audited:** 211, across the 35 cards C1 … C35 (some cards share declarations, e.g. `OrientationLaw` under C10 and C10-open).
 - **Axioms observed across the whole register:** `propext`, `Classical.choice`, `Quot.sound` — the standard Lean/Mathlib foundations. Nothing else.
 - **`sorryAx`:** absent. No quoted declaration is proved by `sorry`.
-- **Axiom-free declarations:** 7 (`diagonal_not_mem_range`, `lawvere_fixedpoint`, `no_surjective_of_no_fixedpoint`, `no_surjective_predicates`, `existsUnique_iff_exists_and_unique`, `empty_classified_initial`, `unit_classified_terminal`).
+- **Axiom-free declarations:** 9 (`diagonal_not_mem_range`, `lawvere_fixedpoint`, `no_surjective_of_no_fixedpoint`, `no_surjective_predicates`, `existsUnique_iff_exists_and_unique`, `empty_classified_initial`, `unit_classified_terminal`, plus the two `rfl` open-marker restatements `SelfSimilarExponents.profile_existence_is_open` and `SelfSimilarExponents.type_ii_naming_not_certified`).
 
 So every card that is tagged *Formal* or *Theorem* rests, at worst, on the
 three standard axioms — and this is checked for the *specific* declarations the
@@ -287,3 +287,132 @@ register's own tagging.
 | `LiouvilleBridge.bounded_entire_value_unique` | propext, Classical.choice, Quot.sound |
 | `LiouvilleBridge.eq_zero_of_bounded_of_eq_zero` | propext, Classical.choice, Quot.sound |
 | `LiouvilleBridge.bounded_at_infinity_const` | propext, Classical.choice, Quot.sound |
+
+### C25
+
+| declaration | axiom footprint |
+|---|---|
+| `SerrinLadder.gnExponent` | propext, Classical.choice, Quot.sound |
+| `SerrinLadder.gnExponent_six` | propext, Classical.choice, Quot.sound |
+| `SerrinLadder.gnExponent_two` | propext, Classical.choice, Quot.sound |
+| `SerrinLadder.gnExponent_three_half` | propext, Classical.choice, Quot.sound |
+| `SerrinLadder.gnExponent_ceiling_chain` | propext, Classical.choice, Quot.sound |
+| `SerrinLadder.serrinQ` | propext, Classical.choice, Quot.sound |
+| `SerrinLadder.serrinQ_six` | propext, Classical.choice, Quot.sound |
+| `SerrinLadder.serrinQ_line` | propext, Classical.choice, Quot.sound |
+| `SerrinLadder.gnExponent_le_one_iff` | propext, Classical.choice, Quot.sound |
+| `SerrinLadder.criticalPower_six_four` | propext, Classical.choice, Quot.sound |
+| `SerrinLadder.oneExtraPower` | propext, Classical.choice, Quot.sound |
+| `SerrinLadder.criticalPowerIdentity` | propext, Classical.choice, Quot.sound |
+| `SerrinLadder.powerClosesCriticalAtSix` | propext, Classical.choice, Quot.sound |
+
+### C26
+
+| declaration | axiom footprint |
+|---|---|
+| `GreatAttractor.fixedPoint_distanceRatio` | propext, Classical.choice, Quot.sound |
+| `GreatAttractor.fixedPoint_repels` | propext, Classical.choice, Quot.sound |
+| `GreatAttractor.fixedPoint_attracts` | propext, Classical.choice, Quot.sound |
+| `GreatAttractor.orientation_trichotomy` | propext, Classical.choice, Quot.sound |
+| `GreatAttractor.fixedPoint_logRate` | propext, Classical.choice, Quot.sound |
+| `GreatAttractor.fixedPoint_logSign` | propext, Classical.choice, Quot.sound |
+| `GreatAttractor.orientationDiscriminator` | propext, Classical.choice, Quot.sound |
+| `GreatAttractor.criticalSmoothness` | propext, Classical.choice, Quot.sound |
+| `GreatAttractor.scalingWeight` | propext, Classical.choice, Quot.sound |
+| `GreatAttractor.criticalSmoothness_one` | propext, Classical.choice, Quot.sound |
+| `GreatAttractor.criticalSmoothness_shift_order` | propext, Classical.choice, Quot.sound |
+| `GreatAttractor.criticalSmoothness_antitone_order` | propext, Classical.choice, Quot.sound |
+| `GreatAttractor.scalingWeight_zero_iff` | propext, Classical.choice, Quot.sound |
+
+### C27
+
+| declaration | axiom footprint |
+|---|---|
+| `ForceNetwork.weightedValueLeMax` | propext, Classical.choice, Quot.sound |
+| `ForceNetwork.leWeightedValueMin` | propext, Classical.choice, Quot.sound |
+| `ForceNetwork.networkValueBetween` | propext, Classical.choice, Quot.sound |
+| `ForceNetwork.inertiaDampsChange` | propext, Classical.choice, Quot.sound |
+
+### C28
+
+| declaration | axiom footprint |
+|---|---|
+| `MixtureGrowth.normMixtureLeSum` | propext, Classical.choice, Quot.sound |
+| `MixtureGrowth.mixtureRatioBetween` | propext, Classical.choice, Quot.sound |
+| `MixtureGrowth.weightedSqBetween` | propext, Classical.choice, Quot.sound |
+| `MixtureGrowth.spikeCannotLowerRatio` | propext, Classical.choice, Quot.sound |
+
+### C29
+
+| declaration | axiom footprint |
+|---|---|
+| `OnsagerCriterion.weighted_sum_le` | propext, Classical.choice, Quot.sound |
+| `OnsagerCriterion.spike_of_excess` | propext, Classical.choice, Quot.sound |
+| `OnsagerCriterion.excess_majorizes` | propext, Classical.choice, Quot.sound |
+
+### C30
+
+| declaration | axiom footprint |
+|---|---|
+| `ContinuationCriterion.exists_upto_of_bounded` | propext, Classical.choice, Quot.sound |
+| `ContinuationCriterion.unbounded_of_first_failure` | propext, Classical.choice, Quot.sound |
+
+### C31
+
+| declaration | axiom footprint |
+|---|---|
+| `StableBounded.attracting_orbit_converges` | propext, Classical.choice, Quot.sound |
+| `StableBounded.attracting_orbit_bounded` | propext, Classical.choice, Quot.sound |
+| `StableBounded.monotone_bounded` | propext, Classical.choice, Quot.sound |
+
+### C32
+
+| declaration | axiom footprint |
+|---|---|
+| `SufficiencyLoop.global_exists_of_mono` | propext, Classical.choice, Quot.sound |
+| `SufficiencyLoop.quadratic_criterion_unavailable` | propext, Classical.choice, Quot.sound |
+
+### C33
+
+| declaration | axiom footprint |
+|---|---|
+| `SelfSimilarExponents.BalanceSystem` | propext, Classical.choice, Quot.sound |
+| `SelfSimilarExponents.forcedP` | propext, Classical.choice, Quot.sound |
+| `SelfSimilarExponents.forcedQ` | propext, Classical.choice, Quot.sound |
+| `SelfSimilarExponents.forcedS` | propext, Classical.choice, Quot.sound |
+| `SelfSimilarExponents.forcedGamma` | propext, Classical.choice, Quot.sound |
+| `SelfSimilarExponents.forcedExponentsSatisfy` | propext, Classical.choice, Quot.sound |
+| `SelfSimilarExponents.gammaForced` | propext, Classical.choice, Quot.sound |
+| `SelfSimilarExponents.sForced` | propext, Classical.choice, Quot.sound |
+| `SelfSimilarExponents.qForcedInPoisson` | propext, Classical.choice, Quot.sound |
+| `SelfSimilarExponents.pForcedFromOmegaProduction` | propext, Classical.choice, Quot.sound |
+| `SelfSimilarExponents.forcedExponentsUnique` | propext, Classical.choice, Quot.sound |
+| `SelfSimilarExponents.secondOrderPower` | propext, Classical.choice, Quot.sound |
+| `SelfSimilarExponents.secondOrderPowerPrefactorIndependent` | propext, Classical.choice, Quot.sound |
+| `SelfSimilarExponents.advectionTermPower` | propext, Classical.choice, Quot.sound |
+| `SelfSimilarExponents.advectionTermPowerKappaIndependent` | propext, Classical.choice, Quot.sound |
+| `SelfSimilarExponents.uzCoefficientPowerNIndependent` | propext, Classical.choice, Quot.sound |
+| `SelfSimilarExponents.kappaMonotone` | propext, Classical.choice, Quot.sound |
+| `SelfSimilarExponents.dynamicalNMonotoneStiffening_powersForced` | propext, Classical.choice, Quot.sound |
+| `SelfSimilarExponents.profile_existence_is_open` | none (axiom-free) |
+| `SelfSimilarExponents.type_ii_naming_not_certified` | none (axiom-free) |
+
+### C34
+
+| declaration | axiom footprint |
+|---|---|
+| `ZeroFixedPoint.fixedPoint_selfSlope` | propext, Classical.choice, Quot.sound |
+| `ZeroFixedPoint.identity_selfSlope` | propext, Classical.choice, Quot.sound |
+| `ZeroFixedPoint.zero_count_removable` | propext, Classical.choice, Quot.sound |
+| `ZeroFixedPoint.zero_count_under` | propext, Classical.choice, Quot.sound |
+| `ZeroFixedPoint.zero_count_over` | propext, Classical.choice, Quot.sound |
+
+### C35
+
+| declaration | axiom footprint |
+|---|---|
+| `OnePattern.criticalCurve_through_ladder` | propext, Classical.choice, Quot.sound |
+| `OnePattern.ladder_is_order_one` | propext, Classical.choice, Quot.sound |
+| `OnePattern.theta_add_criticalCurve` | propext, Classical.choice, Quot.sound |
+| `OnePattern.theta_add_criticalCurve_one` | propext, Classical.choice, Quot.sound |
+| `OnePattern.scalingWeight_vanishes_family` | propext, Classical.choice, Quot.sound |

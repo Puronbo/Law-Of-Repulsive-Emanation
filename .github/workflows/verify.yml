@@ -34,4 +34,6 @@ jobs:
             04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_scope_boundary.py \
             04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_stability_harness.py \
             04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_zero_zero_family_gate.py \
+            04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_module_ledger.py \
+            04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_physics_crosswalk.py \
             -q

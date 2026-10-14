@@ -1,4 +1,5 @@
 -- PunoCalculus library root
+import PunoCalculus.Basic
 import PunoCalculus.Core
 import PunoCalculus.CascadeRatio
 import PunoCalculus.Goldbach
