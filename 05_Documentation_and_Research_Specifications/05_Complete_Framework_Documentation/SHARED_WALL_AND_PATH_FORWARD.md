@@ -838,6 +838,31 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
          length certificate axiom-free.  `lake build PunoCalculus.LiouvilleBridge`
          green.  No Millennium problem touched; wall OPEN.
 
+   54. **The wall spine is fully carded: eleven bricks become claim cards C25–C35**
+         (`MODULE_LEDGER.md`, `PHYSICS_CROSSWALK.md`).  The wall's organising numbers --
+         the order of vanishing `k`, the orientation `log |L|`, the critical ladder
+         shifted by that order, and the one-extra-power of enstrophy -- were carried by
+         bricks (bullets 4, 13, 14, 15, 20, 22–26, 28) but were not *claim cards*: the
+         register could be read as if those bricks did not exist.  They are now cards:
+         `SerrinLadder` (C25), `GreatAttractor` (C26), `ForceNetwork` (C27),
+         `MixtureGrowth` (C28), `OnsagerCriterion` (C29), `ContinuationCriterion` (C30),
+         `StableBounded` (C31), `SufficiencyLoop` (C32), `SelfSimilarExponents` (C33),
+         `ZeroFixedPoint` (C34), `OnePattern` (C35).  The register is now C1 … C35
+         with **211** machine-checked declarations (axiom probe: 9 axiom-free).  Two new
+         machine-checked maps close the coverage gaps that let a brick exist outside the
+         graph: (i) `MODULE_LEDGER.md` classifies every one of the **61** Lean modules
+         exactly once and asserts each is imported by the library root `PunoCalculus.lean`
+         -- so `lake build PunoCalculus` compiles all of it -- enforced by
+         `test_module_ledger.py`; (ii) `PHYSICS_CROSSWALK.md` joins each card to a physics
+         phenomenon, a standard object/theorem, and a status tag under an explicit
+         *adjacency ≠ equivalence* rule -- enforced by `test_physics_crosswalk.py`.  The
+         spine is a single arc: **a 0/0 resolves** (C17/C19/C23/C24) **-> its order of
+         vanishing grades it** (C18/C34) **-> the order sets the ladder rung** (C25)
+         **-> the orientation sets the side** (C26/C31) **-> the wall is boundedness of
+         the invariant critical norm** (C29/C30/C32/C35).  This is bookkeeping, not new
+         analysis: the IA remains that the invariant stays bounded along the real flow.
+         No Millennium problem touched; wall OPEN.
+
 ## Sources for the missing brick (scaling-critical control)
 
 The invariant chain `L^3 ⊂ Ḃ^{-1+3/p}_{p,∞} ⊂ BMO^{-1} ⊂ Ḃ^{-1}_{∞,∞}` and its endpoint theory: Prodi (1959), Serrin (1962), Ladyzhenskaya (endpoint sufficiency `L^p_t L^q_x`, `2/q + 3/p <= 1`); Escauriaza-Seregin-Šverák (2003, endpoint `L^∞ L^3`); Koch-Tataru (2001, `BMO^{-1}`); Cheskidov-Shvydkoy (2010, arXiv:0708.3067 — largest critical space `B^{-1}_{∞,∞}`); Bourgain-Pavlović (2008 — norm inflation / ill-posedness in `Ḃ^{-1}_{∞,∞}`); Ri (arXiv:2307.11312, 2023 — claims a positive lower bound on `L^∞(Ḃ^{-1}_{∞,∞})`; single-author, unrefereed — treat as unverified); Tao (2021) plus Feng-He-Wang 2025 (Lorentz) and arXiv:2411.06483 (Besov) — quantitative triple/double/quadruple-log continuation bounds; Grujić (2024, JMFM, "Asymptotic Criticality" — the scaling gap as a derivative order `k -> ∞`). The **missing brick** is BOUNDEDNESS, not sufficiency: a positive margin (`eta > 0`) is classical and sufficient, but proving the invariant norm stays bounded along the flow is exactly what stays open.
