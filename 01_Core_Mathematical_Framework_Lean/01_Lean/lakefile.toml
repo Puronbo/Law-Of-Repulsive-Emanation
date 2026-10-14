@@ -1,0 +1,15 @@
+name = "PunoCalculus"
+version = "0.1.0"
+defaultTargets = ["PunoCalculus"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.33.1"
+
+[[lean_lib]]
+name = "PunoCalculus"
+
+[[lean_exe]]
+name = "punocalculus"
+root = "Main"
