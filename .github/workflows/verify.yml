@@ -1,0 +1,37 @@
+name: verify
+
+on:
+  push:
+    branches: [breakthrough-register, main]
+  pull_request:
+
+jobs:
+  verification-gates:
+    name: Verification gates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install test runner
+        run: python -m pip install --upgrade pip pytest numpy
+
+      # These gates run against a tracked-only checkout (exactly what CI has).
+      # They machine-enforce the project's honesty contract:
+      #   * no Millennium problem is claimed settled (scope boundary + status pins)
+      #   * every claim card is wired to a real declaration (traceability)
+      #   * the external-corpus crosswalk names only modules that exist
+      #   * the stability harness + 0/0 family gate stay green
+      - name: Run verification gates
+        run: |
+          python -m pytest \
+            04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_claim_traceability.py \
+            04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_external_crosswalk.py \
+            04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_open_status_pins.py \
+            04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_scope_boundary.py \
+            04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_stability_harness.py \
+            04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_zero_zero_family_gate.py \
+            -q

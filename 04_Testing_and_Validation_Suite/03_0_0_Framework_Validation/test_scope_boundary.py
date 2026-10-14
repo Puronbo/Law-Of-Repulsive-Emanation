@@ -10,8 +10,9 @@ drift away from it. This test pins the drift:
    such as "we prove" / "rigorous proof" must be negated or hedged on the same
    line);
 3. ``MillenniumBridge.lean`` still disclaims all seven problems;
-4. a repo-wide census of unhedged settlement lines in the documentation folder
-   stays at or below the pinned baseline (a ratchet). A document is *excused* if
+4. a repo-wide census of unhedged settlement lines, walked recursively across
+   all documentation trees, stays at or below the pinned baseline (a ratchet).
+   A document is *excused* if
    it carries the scope banner -- a link to ``WHAT_THIS_DOES_NOT_PROVE.md`` --
    which is the legitimate, top-of-paper way to disclaim a narrative. A document
    without the banner may not contain an unhedged settlement claim.
@@ -60,6 +61,16 @@ CENSUS_EXEMPT = {"WHAT_THIS_DOES_NOT_PROVE.md"}
 # A document that contains this link carries the scope banner and is treated as
 # honestly labelled narrative (all its settlement-sounding lines are disclaimed).
 BOUNDARY_LINK = "WHAT_THIS_DOES_NOT_PROVE.md"
+
+# Documentation trees walked (recursively) by the census.
+SCAN_ROOTS = [
+    os.path.join(ROOT, "05_Documentation_and_Research_Specifications"),
+    os.path.join(ROOT, "07_Interdisciplinary_Connections_and_Frameworks"),
+    os.path.join(ROOT, "03_Data_and_Observational_Resources"),
+    os.path.join(ROOT, "02_Experimental_Implementations_and_Verification"),
+]
+# Directories never scanned (tooling, caches, vendored worktrees).
+SKIP_DIRS = {".git", ".claude", "__pycache__", ".pytest_cache"}
 
 # Baseline measured on the current tree: unhedged settlement lines are
 # grandfathered at this count, and the ratchet fails if the count grows. Lower
@@ -118,22 +129,29 @@ def test_millennium_bridge_disclaims_all_seven_problems():
 def test_repo_wide_overclaim_census_within_baseline():
     total = 0
     offenders = []
-    unscoped = []
-    for name in sorted(os.listdir(DOC_DIR)):
-        if not name.endswith(".md") or name in CENSUS_EXEMPT:
-            continue
-        text = _read(os.path.join(DOC_DIR, name))
-        if BOUNDARY_LINK in text:
-            continue  # doc carries the scope banner; its narrative is disclaimed
-        unscoped.append(name)
-        hits = _unhedged_lines(text)
-        if hits:
-            total += len(hits)
-            offenders.append(f"  {len(hits):3d}  {name}")
+    unscoped = 0
+    for root in SCAN_ROOTS:
+        for dirpath, dirnames, filenames in os.walk(root):
+            dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
+            if any(part in SKIP_DIRS for part in dirpath.split(os.sep)):
+                continue
+            for name in sorted(filenames):
+                if not name.endswith(".md") or name in CENSUS_EXEMPT:
+                    continue
+                path = os.path.join(dirpath, name)
+                text = _read(path)
+                if BOUNDARY_LINK in text:
+                    continue  # carries the scope banner; narrative disclaimed
+                unscoped += 1
+                hits = _unhedged_lines(text)
+                if hits:
+                    total += len(hits)
+                    rel = os.path.relpath(path, ROOT)
+                    offenders.append(f"  {len(hits):3d}  {rel}")
     report = "\n".join(offenders)
     print(
         f"\nscope census: {total} unhedged settlement lines in "
-        f"{len(unscoped)} docs lacking the scope banner "
+        f"{unscoped} docs lacking the scope banner "
         f"(baseline {BASELINE_UNHEDGED})\n{report}"
     )
     assert total <= BASELINE_UNHEDGED, (
