@@ -199,6 +199,13 @@ ENTRIES = [
             "anti_class_nonempty", "mechanisms_close",
         ],
     }, []),
+    ("C23", {
+        "RemovableComplexBridge": [
+            "IsRemovableValueAt", "removable_value_exists",
+            "removable_value_unique", "exists_unique_removable_value",
+            "limUnder_eq_of_isRemovableValue", "canonical_zero_over_zero",
+        ],
+    }, []),
 ]
 
 

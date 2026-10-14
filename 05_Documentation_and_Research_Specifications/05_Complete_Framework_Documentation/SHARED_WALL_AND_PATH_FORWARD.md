@@ -802,6 +802,26 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
          length certificates axiom-free.  `lake build PunoCalculus.ZeroMechanisms` green.
          No Millennium problem touched; wall OPEN.
 
+   52. **Riemann's removable singularity, in the register's 0/0 schema**
+         (`RemovableComplexBridge.lean` C23).  Card C17 proved the register's 0/0
+         *schema* over `ℝ` (a punctured limit is unique when it exists) but not
+         that any given 0/0 has a limit.  This bullet anchors the schema to a
+         genuine, named theorem.  Mathlib's **Riemann removable singularity theorem**
+         (`Complex.tendsto_limUnder_of_differentiable_on_punctured_nhds_of_bounded_under`)
+         says a function complex-differentiable and bounded on a punctured
+         neighbourhood of `c` has a punctured limit; read through the register's
+         predicate `IsRemovableValueAt f c L := Tendsto f (𝒩[≠] c) (𝒩 L)` it
+         yields **existence** (`removable_value_exists`, value `limUnder (𝒩[≠] c) f`)
+         and **uniqueness** (`removable_value_unique`), i.e. the same `∃!` schema as
+         `RemovableValue.removable_exists_unique` now over `ℂ`
+         (`exists_unique_removable_value`).  The **coincidence**
+         `limUnder_eq_of_isRemovableValue` records that mathlib's `limUnder` *is* the
+         removable value, and `canonical_zero_over_zero` re-proves the concrete
+         `(z-c)*g(z)/(z-c) ↦ g c` on `ℂ`.  Axioms
+         `⊆ [propext, Classical.choice, Quot.sound]`; the length certificate
+         axiom-free.  `lake build PunoCalculus.RemovableComplexBridge` green.
+         No Millennium problem touched; wall OPEN.
+
 ## Sources for the missing brick (scaling-critical control)
 
 The invariant chain `L^3 ⊂ Ḃ^{-1+3/p}_{p,∞} ⊂ BMO^{-1} ⊂ Ḃ^{-1}_{∞,∞}` and its endpoint theory: Prodi (1959), Serrin (1962), Ladyzhenskaya (endpoint sufficiency `L^p_t L^q_x`, `2/q + 3/p <= 1`); Escauriaza-Seregin-Šverák (2003, endpoint `L^∞ L^3`); Koch-Tataru (2001, `BMO^{-1}`); Cheskidov-Shvydkoy (2010, arXiv:0708.3067 — largest critical space `B^{-1}_{∞,∞}`); Bourgain-Pavlović (2008 — norm inflation / ill-posedness in `Ḃ^{-1}_{∞,∞}`); Ri (arXiv:2307.11312, 2023 — claims a positive lower bound on `L^∞(Ḃ^{-1}_{∞,∞})`; single-author, unrefereed — treat as unverified); Tao (2021) plus Feng-He-Wang 2025 (Lorentz) and arXiv:2411.06483 (Besov) — quantitative triple/double/quadruple-log continuation bounds; Grujić (2024, JMFM, "Asymptotic Criticality" — the scaling gap as a derivative order `k -> ∞`). The **missing brick** is BOUNDEDNESS, not sufficiency: a positive margin (`eta > 0`) is classical and sufficient, but proving the invariant norm stays bounded along the flow is exactly what stays open.

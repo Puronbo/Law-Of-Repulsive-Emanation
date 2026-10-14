@@ -436,6 +436,35 @@ member is explicit.  **Source:** the register's own atlas (amendment, entries 64
 /70/73/74), and standard one-sided-limit theory; the Critical and Conservation
 mechanisms remain object-specific (cards C1/C10).
 
+## C23 — Riemann's removable singularity, in the register's 0/0 schema
+
+**Type:** Formal (analytic bridge / named theorem). **Statement.** Card C17 states
+the register's 0/0 schema over `ℝ` (`RemovableValue`): a punctured limit, when it
+exists, is unique, and the canonical `(x-a)·g(x)/(x-a)` has a removable value --
+but it proves the *schema*, not that any given 0/0 actually has a limit.  This card
+anchors the schema to a genuine theorem.  Mathlib proves **Riemann's removable
+singularity theorem**
+(`Complex.tendsto_limUnder_of_differentiable_on_punctured_nhds_of_bounded_under`):
+a function complex-differentiable and bounded on a punctured neighbourhood of `c`
+has a punctured limit.  Read through the register's predicate
+(`IsRemovableValueAt f c L := Tendsto f (𝓝[≠] c) (𝓝 L)`), it gives **existence**
+(`removable_value_exists`: the value is `limUnder (𝓝[≠] c) f`) and, with `ℂ`
+Hausdorff, **uniqueness** (`removable_value_unique`) -- a genuine `∃!`
+(`exists_unique_removable_value`), the identical shape of C17's
+`removable_exists_unique`, now over `ℂ`.  The **coincidence**
+(`limUnder_eq_of_isRemovableValue`) is that mathlib's `limUnder` *is* the removable
+value: it equals any punctured limit; and `canonical_zero_over_zero` re-proves the
+concrete 0/0 `(z-c)·g(z)/(z-c) ↦ g c` on `ℂ`.  **Evidence:**
+`RemovableComplexBridge.lean` (`IsRemovableValueAt`, `removable_value_exists`,
+`removable_value_unique`, `exists_unique_removable_value`,
+`limUnder_eq_of_isRemovableValue`, `canonical_zero_over_zero`), over
+`Mathlib.Analysis.Complex.RemovableSingularity`.  **Falsifier:** a bounded
+holomorphic 0/0 with two distinct removable values, or a canonical
+`(z-c)·g(z)/(z-c)` that fails to tend to `g c`.  **Missing entity:** none -- the
+theorem is mathlib's; the bridge is the new content.  **Source:** Riemann's
+removable singularity theorem (Mathlib, Y. Kudryashov); the register's own 0/0
+doctrine (`Removable`, `RemovableValue`).
+
 ## Sources for the missing entities (summary)
 
 | missing entity | closest existing work |
@@ -511,7 +540,12 @@ additive integer (the algebraic face of the Index mechanism; 8 facts).
 `abs_div_self_tendsto_left`, `abs_div_self_no_limit`, `abs_vanish`, `id_vanish`,
 `anti_class_nonempty`, `mechanisms_close` -- card C22: the anti-class is nonempty (a
 genuine 0/0, `|x|/x`, with no removable value) and the mechanism faces bundled
-(7 facts). The capstone
+(7 facts). `RemovableComplexBridge.lean` (same axiom set): `IsRemovableValueAt`,
+`removable_value_exists`, `removable_value_unique`, `exists_unique_removable_value`,
+`limUnder_eq_of_isRemovableValue`, `canonical_zero_over_zero` -- card C23: Riemann's
+removable singularity theorem (Mathlib) read through the register's 0/0 schema over
+`ℂ`; the bounded holomorphic 0/0 has an *existing, unique* removable value, the
+`ℂ` twin of C17 (6 facts). The capstone
 `TheoryOfEverything.method_and_margin_barriers` bundles the
 order margin (existence always, uniqueness under antitonicity) and the method barrier
 alongside `twoNumbersClose`.

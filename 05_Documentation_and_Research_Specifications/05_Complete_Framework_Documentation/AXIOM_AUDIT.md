@@ -1,4 +1,4 @@
-# Axiom Audit — claim cards C1 … C22
+# Axiom Audit — claim cards C1 … C23
 
 **Status: generated and machine-checked.** This file records the *axiom footprint* of every Lean declaration quoted by a card in `CLAIM_TRACEABILITY.md` — the exact declarations the traceability checker asserts. It answers one question per card: *which axioms does the quoted theorem transitively depend on?*
 
@@ -16,7 +16,7 @@ yields one footprint per declaration, parsed into the table below
 
 ## Result
 
-- **Declarations audited:** 126, across the 21 cards C1 … C22 (some cards share declarations, e.g. `OrientationLaw` under C10 and C10-open).
+- **Declarations audited:** 132, across the 22 cards C1 … C23 (some cards share declarations, e.g. `OrientationLaw` under C10 and C10-open).
 - **Axioms observed across the whole register:** `propext`, `Classical.choice`, `Quot.sound` — the standard Lean/Mathlib foundations. Nothing else.
 - **`sorryAx`:** absent. No quoted declaration is proved by `sorry`.
 - **Axiom-free declarations:** 7 (`diagonal_not_mem_range`, `lawvere_fixedpoint`, `no_surjective_of_no_fixedpoint`, `no_surjective_predicates`, `existsUnique_iff_exists_and_unique`, `empty_classified_initial`, `unit_classified_terminal`).
@@ -266,3 +266,14 @@ register's own tagging.
 | `ZeroMechanisms.id_vanish` | propext, Classical.choice, Quot.sound |
 | `ZeroMechanisms.anti_class_nonempty` | propext, Classical.choice, Quot.sound |
 | `ZeroMechanisms.mechanisms_close` | propext, Classical.choice, Quot.sound |
+
+### C23
+
+| declaration | axiom footprint |
+|---|---|
+| `RemovableComplexBridge.IsRemovableValueAt` | propext, Classical.choice, Quot.sound |
+| `RemovableComplexBridge.removable_value_exists` | propext, Classical.choice, Quot.sound |
+| `RemovableComplexBridge.removable_value_unique` | propext, Classical.choice, Quot.sound |
+| `RemovableComplexBridge.exists_unique_removable_value` | propext, Classical.choice, Quot.sound |
+| `RemovableComplexBridge.limUnder_eq_of_isRemovableValue` | propext, Classical.choice, Quot.sound |
+| `RemovableComplexBridge.canonical_zero_over_zero` | propext, Classical.choice, Quot.sound |

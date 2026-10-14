@@ -33,6 +33,7 @@ import PunoCalculus.ZeroFixedPoint
 import PunoCalculus.ZeroLink
 import PunoCalculus.ZeroObject
 import PunoCalculus.RemovableValue
+import PunoCalculus.RemovableComplexBridge
 import PunoCalculus.VanishOrder
 import PunoCalculus.ZeroProbe
 import PunoCalculus.ZeroValuation
