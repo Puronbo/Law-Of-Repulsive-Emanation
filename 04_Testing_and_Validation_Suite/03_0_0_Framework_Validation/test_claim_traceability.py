@@ -10,8 +10,9 @@ module + declarations -> experiment -> citation) and each link is asserted:
 2. Lean module file present under `.../PunoCalculus/` and imported by the library
    root `PunoCalculus.lean` (so `lake build PunoCalculus` actually compiles it);
 3. every quoted identifier is declared (`theorem`/`lemma`/`def`/`abbrev`) in that
-   module -- the declaration is confirmed to *resolve* separately by a `#check`
-   probe, this pins the source link;
+   module, and -- when a Lean toolchain and a built library are present -- is
+   confirmed to actually *resolve* by a generated `#check` probe (skipped in a
+   toolchain-free CI checkout), this pins the source link;
 4. every named experiment script exists;
 5. the human map `CLAIM_TRACEABILITY.md` references every card, module and script
    in the table (so the map and this test cannot drift).
@@ -21,6 +22,11 @@ Run:  python -m pytest 04_Testing_and_Validation_Suite/03_0_0_Framework_Validati
 
 import os
 import re
+import shutil
+import subprocess
+import tempfile
+
+import pytest
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 LEAN_DIR = os.path.join(
@@ -367,6 +373,65 @@ def test_every_quoted_identifier_is_declared():
                 if not _declared(src, name):
                     problems.append(f"{token}: {module}.lean does not declare {name}")
     assert not problems, "\n".join(problems)
+
+
+def _find_lake():
+    """Locate the Lean build tool: explicit override, PATH, then elan's default."""
+    candidates = []
+    override = os.environ.get("LAKE")
+    if override:
+        candidates.append(override)
+    on_path = shutil.which("lake")
+    if on_path:
+        candidates.append(on_path)
+    home = os.path.expanduser("~")
+    candidates += [
+        os.path.join(home, ".elan", "bin", "lake"),
+        os.path.join(home, ".elan", "bin", "lake.exe"),
+    ]
+    return next((c for c in candidates if c and os.path.isfile(c)), None)
+
+
+def test_quoted_identifiers_resolve_by_check_probe():
+    """Generate `#check PunoCalculus.<module>.<name>` for every quoted declaration
+    and assert the Lean compiler resolves every one. Requires a toolchain and a
+    built library; skipped in a toolchain-free (CI) checkout so the honesty gates
+    stay runnable everywhere."""
+    lake = _find_lake()
+    if lake is None:
+        pytest.skip("no Lean toolchain (`lake`) found; resolve probe skipped")
+    lean_dir = os.path.dirname(LEAN_ROOT)
+    lib_olean = os.path.join(
+        lean_dir, ".lake", "build", "lib", "lean", "PunoCalculus.olean"
+    )
+    if not os.path.isfile(lib_olean):
+        pytest.skip("library not built (no PunoCalculus.olean); run `lake build`")
+
+    lines = ["import PunoCalculus", ""]
+    for _token, lean, _ in ENTRIES:
+        for module, names in lean.items():
+            for name in names:
+                lines.append(f"#check PunoCalculus.{module}.{name}")
+
+    fd, probe = tempfile.mkstemp(suffix=".lean", prefix="resolve_probe_")
+    os.close(fd)
+    try:
+        with open(probe, "w", encoding="utf-8", newline="\n") as fp:
+            fp.write("\n".join(lines) + "\n")
+        proc = subprocess.run(
+            [lake, "env", "lean", probe],
+            cwd=lean_dir,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+        )
+        assert proc.returncode == 0, (
+            "the #check probe failed to resolve some quoted declaration(s):\n"
+            + (proc.stdout or "")
+            + (proc.stderr or "")
+        )
+    finally:
+        os.remove(probe)
 
 
 def test_mapped_lean_modules_have_no_sorry():

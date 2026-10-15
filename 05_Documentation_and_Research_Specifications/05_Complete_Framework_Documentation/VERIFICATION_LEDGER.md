@@ -129,6 +129,7 @@ audit finding.
 | log gain L^((d+1)/3) heuristic | algebra slip: |grad u|^2 scales lambda^4 not lambda^2*L^2; exact gain L^((d-1)/3); d=1 invariant even logarithmically | type2 script, NS doc 5.3, ratios note section 4 + Lemma 4 |
 | circular RH proof (pre-session) | assumed zero locations inside proof | rebuilt as honest equivalence verifier |
 | **"Onsager flux exponent falls with viscosity, approaching/crossing `a = 1`"** | **Resolution artefact**: the exponent is not grid-converged (`a = 1.20 / 7.96 / 12.01` at N=32/48/64 for `nu = 0.1`; `0.64 / 7.21 / 10.76` for `nu = 0.05`). The single-(under-)resolution N=32 reading does not survive a resolution study | `experiments\ns_onsager_flux_resolution.py` (this cycle); the Onsager-flux row above is marked retracted |
+| "quoted declarations are confirmed to *resolve* by a `#check` probe" (traceability docstring) | the checker only regex-matched the declaration keyword in the source; nothing verified the name actually resolves in Lean | `test_claim_traceability.py::test_quoted_identifiers_resolve_by_check_probe` generates `#check PunoCalculus.<module>.<name>` for all 233 quoted declarations and asserts the compiler resolves every one (skipped in a toolchain-free checkout, so the CI gates stay runnable) |
 
 ## Quantum gravity / cosmology
 
