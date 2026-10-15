@@ -294,6 +294,13 @@ ENTRIES = [
             "momentumAt_eq_initial", "conservationLaw",
         ],
     }, []),
+    ("C37", {
+        "UniverseGrowth": [
+            "chargeOn_eq_momentumOn_sub", "momentumOn_grow", "momentumOn_grow_eq",
+            "chargeOn_grow_eq", "universeGrowth_decomp", "universeGrowth_conserves",
+            "chargeOn_universeGrowth_conserves", "momentumOn_univ",
+        ],
+    }, []),
 ]
 
 def _read(path):

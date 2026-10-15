@@ -1,4 +1,4 @@
-# Axiom Audit — claim cards C1 … C36
+# Axiom Audit — claim cards C1 … C37
 
 **Status: generated and machine-checked.** This file records the *axiom footprint* of every Lean declaration quoted by a card in `CLAIM_TRACEABILITY.md` — the exact declarations the traceability checker asserts. It answers one question per card: *which axioms does the quoted theorem transitively depend on?*
 
@@ -16,10 +16,10 @@ yields one footprint per declaration, parsed into the table below
 
 ## Result
 
-- **Declarations audited:** 219, across the 36 cards C1 … C36 (some cards share declarations, e.g. `OrientationLaw` under C10 and C10-open).
+- **Declarations audited:** 227, across the 37 cards C1 … C37 (some cards share declarations, e.g. `OrientationLaw` under C10 and C10-open).
 - **Axioms observed across the whole register:** `propext`, `Classical.choice`, `Quot.sound` — the standard Lean/Mathlib foundations. Nothing else.
 - **`sorryAx`:** absent. No quoted declaration is proved by `sorry`.
-- **Axiom-free declarations:** 7 (`diagonal_not_mem_range`, `lawvere_fixedpoint`, `no_surjective_of_no_fixedpoint`, `no_surjective_predicates`, `existsUnique_iff_exists_and_unique`, `empty_classified_initial`, `unit_classified_terminal`).
+- **Axiom-free declarations:** 9 (`diagonal_not_mem_range`, `lawvere_fixedpoint`, `no_surjective_of_no_fixedpoint`, `no_surjective_predicates`, `existsUnique_iff_exists_and_unique`, `empty_classified_initial`, `unit_classified_terminal`, `profile_existence_is_open`, `type_ii_naming_not_certified`).
 
 So every card that is tagged *Formal* or *Theorem* rests, at worst, on the
 three standard axioms — and this is checked for the *specific* declarations the
@@ -429,3 +429,16 @@ register's own tagging.
 | `NoetherDiscrete.momentumAt_conserved` | propext, Classical.choice, Quot.sound |
 | `NoetherDiscrete.momentumAt_eq_initial` | propext, Classical.choice, Quot.sound |
 | `NoetherDiscrete.conservationLaw` | propext, Classical.choice, Quot.sound |
+
+### C37
+
+| declaration | axiom footprint |
+|---|---|
+| `UniverseGrowth.chargeOn_eq_momentumOn_sub` | propext, Classical.choice, Quot.sound |
+| `UniverseGrowth.momentumOn_grow` | propext, Classical.choice, Quot.sound |
+| `UniverseGrowth.momentumOn_grow_eq` | propext, Classical.choice, Quot.sound |
+| `UniverseGrowth.chargeOn_grow_eq` | propext, Classical.choice, Quot.sound |
+| `UniverseGrowth.universeGrowth_decomp` | propext, Classical.choice, Quot.sound |
+| `UniverseGrowth.universeGrowth_conserves` | propext, Classical.choice, Quot.sound |
+| `UniverseGrowth.chargeOn_universeGrowth_conserves` | propext, Classical.choice, Quot.sound |
+| `UniverseGrowth.momentumOn_univ` | propext, Classical.choice, Quot.sound |

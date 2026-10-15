@@ -18,7 +18,7 @@ imported by the root, fails the checker.
 
 | category | meaning |
 |---|---|
-| `card` | carries a named claim card C1 ... C36 in `EXPLICIT_CLAIMS.md` |
+| `card` | carries a named claim card C1 ... C37 in `EXPLICIT_CLAIMS.md` |
 | `millennium-cert` | a per-problem numerical record / status entry for a Clay problem; **no** settlement claim |
 | `rh-research` | Riemann-hypothesis exploratory / numerical module |
 | `number-theory-cert` | a *bounded* numerical certificate for a number-theory question (Collatz, Goldbach, twin primes, Legendre) |
@@ -84,6 +84,7 @@ imported by the root, fails the checker.
 | `SufficiencyLoop` | card | C32 | carries card(s) C32 |
 | `TheoryOfEverything` | card | C12 | carries card(s) C12 |
 | `TwinPrime` | number-theory-cert | — | bounded twin-prime certificate |
+| `UniverseGrowth` | card | C37 | carries card(s) C37 |
 | `VanishOrder` | card | C18 | carries card(s) C18 |
 | `ZeroFixedPoint` | card | C34 | carries card(s) C34 |
 | `ZeroIndex` | card | C21 | carries card(s) C21 |
@@ -96,6 +97,6 @@ imported by the root, fails the checker.
 
 ## Coverage
 
-- **Modules on disk:** 62 (all imported by `PunoCalculus.lean`).
-- **Card-carrying modules (`card`):** 36.
+- **Modules on disk:** 63 (all imported by `PunoCalculus.lean`).
+- **Card-carrying modules (`card`):** 37.
 - **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold):** 26.
