@@ -532,6 +532,12 @@ doctrine (`Removable`, `RemovableValue`, `RemovableComplexBridge`).
 
 **Type:** Formal (synthesis). **Statement.** The synthesis brick: every guise of the scaling-critical object is the register ladder `sCrit` shifted by the order. `criticalCurve_through_ladder : criticalSmoothness a p = sCrit p + (1 - a)` — a one-parameter family (parameter = order `a`) passing through the ladder at `a = 1` (`ladder_is_order_one`). The recurrence identity generalises `CriticalLadder.thetaAddSCrit`: `gnExponent p + criticalSmoothness a p = 1/2` at `a = 1`-shift (`theta_add_criticalCurve`, `theta_add_criticalCurve_one`), and the scaling weight vanishes along the whole family (`scalingWeight_vanishes_family`). With orientation — `GreatAttractor` — the whole register is two numbers: an order selecting the rung and a multiplier selecting the side. **Evidence:** `OnePattern.lean` (`criticalCurve_through_ladder`, `ladder_is_order_one`, `theta_add_criticalCurve`, `theta_add_criticalCurve_one`, `scalingWeight_vanishes_family`). **Falsifier:** a critical exponent not lying on the one-parameter order-shifted ladder. **Missing entity:** none — synthesis of already-checked bricks. **Source:** the register capstone; `CriticalLadder`, `GreatAttractor`.
 
+**Missing entity:** none — synthesis of already-checked bricks. **Source:** the register capstone; `CriticalLadder`, `GreatAttractor`.
+
+## C36 — The discrete Noether theorem: the Conservation mechanism
+
+**Type:** Formal (arithmetic). **Statement.** The register names five 0/0 mechanisms, of which only three were Lean-formalised (Probe C19, Vanishing Rate C18/C20, Index C21); the Conservation mechanism — “the conserved quantity is the ratio of two quantities that both vanish when the symmetry is broken” — had only prose. This card gives it a formal core over a finite site set: a configuration is a velocity field `v : ι → ℝ`, its momentum is the sum `Σᵢ vᵢ` (`momentum`), and the charge carried by `q` against `qm` is the total displacement `Σᵢ (qᵢ − qmᵢ)` (`charge`). The charge **is** a difference of two momenta (`charge_eq_momentum_sub`), vanishes with no displacement (`charge_self`), is invariant under a simultaneous translation of both configurations (**the symmetry**; `charge_translation_invariant`), and equals the removable value of the momentum rate `(Σᵢ vᵢ·dt)/dt` (`momentum_from_rate`, the Probe face). **The discrete Noether theorem:** for a balanced force field (`∀ q, Σᵢ Fᵢ(q) = 0`, the infinitesimal form of translation invariance) the time-symmetric update `q_{k+1} = 2 q_k - q_{k-1} + F(q_k)` conserves the charge (`momentum_conserved`); along any such trajectory the momentum equals its initial value at every step (`momentumAt_eq_initial`), and `conservationLaw` bundles the symmetry, the balance law and the constancy. **Evidence:** `NoetherDiscrete.lean` (`charge_eq_momentum_sub`, `charge_self`, `charge_translation_invariant`, `momentum_from_rate`, `momentum_conserved`, `momentumAt_conserved`, `momentumAt_eq_initial`, `conservationLaw`). **Falsifier:** a balanced force whose discrete-Newton step changes the charge, or a "symmetry" translation that changes it. **Missing entity:** none for the finite arithmetic; the continuum limit / field-theoretic Noether theorem is not taken here. **Source:** Noether, *Invariante Variationsprobleme* (1918); the register's `ZeroMechanisms.lean` Conservation mechanism.
+
 ## Sources for the missing entities (summary)
 
 | missing entity | closest existing work |
@@ -636,6 +642,12 @@ exponents; two honest open-marker restatements); `ZeroFixedPoint.lean` (C34, 5 f
 zero defines its own position, the wall shrinks itself); `OnePattern.lean` (C35, 5 facts
 — every critical exponent is the ladder shifted by the order). Each card names its
 missing entity (the open wall) explicitly; none is a Millennium result.
+
+The **Conservation-mechanism brick** (card C36, same axiom set
+`⊆ {propext, Classical.choice, Quot.sound}`) closes the last unformalised 0/0
+mechanism: `NoetherDiscrete.lean` (C36, 8 quoted facts — the discrete Noether
+theorem: a balanced force conserves the charge under the time-symmetric update, so
+momentum is a constant of the motion).
 
 The remaining cards are cited (Theorem) or left OPEN with a
 named missing entity (Conjecture; see C10-open). No card here is a Millennium result.

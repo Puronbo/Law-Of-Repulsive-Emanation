@@ -11,7 +11,7 @@ A unifying framework for mathematics and physics: removable 0/0 singularities ex
 > project.** Status labels such as "rigorous proof" or "complete" are **not** results — the older
 > sections and papers are aspirational storytelling. What is actually machine-checked
 > is confined to the elementary mechanism lemmas in `EXPLICIT_CLAIMS.md` (cards
-> C15–C35) with axiom footprints in `AXIOM_AUDIT.md`. The authoritative boundary is
+> C15–C36) with axiom footprints in `AXIOM_AUDIT.md`. The authoritative boundary is
 > **[`WHAT_THIS_DOES_NOT_PROVE.md`](WHAT_THIS_DOES_NOT_PROVE.md)**, and it is enforced
 > by `test_scope_boundary.py`.
 

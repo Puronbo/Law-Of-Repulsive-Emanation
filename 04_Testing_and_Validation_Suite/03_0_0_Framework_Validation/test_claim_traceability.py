@@ -281,12 +281,20 @@ ENTRIES = [
     }, []),
     ("C35", {
         "OnePattern": [
-            "criticalCurve_through_ladder", "ladder_is_order_one", "theta_add_criticalCurve",
-            "theta_add_criticalCurve_one", "scalingWeight_vanishes_family",
+            "criticalCurve_through_ladder", "ladder_is_order_one",
+            "theta_add_criticalCurve", "theta_add_criticalCurve_one",
+            "scalingWeight_vanishes_family",
+        ],
+    }, []),
+    ("C36", {
+        "NoetherDiscrete": [
+            "charge_eq_momentum_sub", "charge_self",
+            "charge_translation_invariant", "momentum_from_rate",
+            "momentum_conserved", "momentumAt_conserved",
+            "momentumAt_eq_initial", "conservationLaw",
         ],
     }, []),
 ]
-
 
 def _read(path):
     with open(path, encoding="utf-8") as fp:

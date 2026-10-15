@@ -18,7 +18,7 @@ imported by the root, fails the checker.
 
 | category | meaning |
 |---|---|
-| `card` | carries a named claim card C1 ... C35 in `EXPLICIT_CLAIMS.md` |
+| `card` | carries a named claim card C1 ... C36 in `EXPLICIT_CLAIMS.md` |
 | `millennium-cert` | a per-problem numerical record / status entry for a Clay problem; **no** settlement claim |
 | `rh-research` | Riemann-hypothesis exploratory / numerical module |
 | `number-theory-cert` | a *bounded* numerical certificate for a number-theory question (Collatz, Goldbach, twin primes, Legendre) |
@@ -59,6 +59,7 @@ imported by the root, fails the checker.
 | `MillenniumBridge` | millennium-cert | — | the seven-problem status record (`NOT SETTLED BY THIS PROJECT`, `statuses.length = 7`) |
 | `MixtureGrowth` | card | C28 | carries card(s) C28 |
 | `NavierStokes` | millennium-cert | — | Serrin-scaling arithmetic plus recorded open statements (`serrinScaling`, `prodiSerrinIntegralFiniteCertified = false`, `nsGlobalRegularityOpen = true`) |
+| `NoetherDiscrete` | card | C36 | carries card(s) C36 |
 | `OnePattern` | card | C35 | carries card(s) C35 |
 | `OnsagerCriterion` | card | C29 | carries card(s) C29 |
 | `OrientationBoundedness` | card | C10, C11 | carries card(s) C10, C11 |
@@ -95,6 +96,6 @@ imported by the root, fails the checker.
 
 ## Coverage
 
-- **Modules on disk:** 61 (all imported by `PunoCalculus.lean`).
-- **Card-carrying modules (`card`):** 35.
+- **Modules on disk:** 62 (all imported by `PunoCalculus.lean`).
+- **Card-carrying modules (`card`):** 36.
 - **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold):** 26.

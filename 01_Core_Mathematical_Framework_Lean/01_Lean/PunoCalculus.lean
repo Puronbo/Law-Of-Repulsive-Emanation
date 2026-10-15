@@ -60,3 +60,4 @@ import PunoCalculus.SerrinSufficiency
 import PunoCalculus.MarginCrossing
 import PunoCalculus.FirstCrossing
 import PunoCalculus.LogicBarrier
+import PunoCalculus.NoetherDiscrete

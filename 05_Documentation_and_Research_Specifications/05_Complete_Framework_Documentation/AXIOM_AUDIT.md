@@ -1,4 +1,4 @@
-# Axiom Audit — claim cards C1 … C35
+# Axiom Audit — claim cards C1 … C36
 
 **Status: generated and machine-checked.** This file records the *axiom footprint* of every Lean declaration quoted by a card in `CLAIM_TRACEABILITY.md` — the exact declarations the traceability checker asserts. It answers one question per card: *which axioms does the quoted theorem transitively depend on?*
 
@@ -16,10 +16,10 @@ yields one footprint per declaration, parsed into the table below
 
 ## Result
 
-- **Declarations audited:** 211, across the 35 cards C1 … C35 (some cards share declarations, e.g. `OrientationLaw` under C10 and C10-open).
+- **Declarations audited:** 219, across the 36 cards C1 … C36 (some cards share declarations, e.g. `OrientationLaw` under C10 and C10-open).
 - **Axioms observed across the whole register:** `propext`, `Classical.choice`, `Quot.sound` — the standard Lean/Mathlib foundations. Nothing else.
 - **`sorryAx`:** absent. No quoted declaration is proved by `sorry`.
-- **Axiom-free declarations:** 9 (`diagonal_not_mem_range`, `lawvere_fixedpoint`, `no_surjective_of_no_fixedpoint`, `no_surjective_predicates`, `existsUnique_iff_exists_and_unique`, `empty_classified_initial`, `unit_classified_terminal`, plus the two `rfl` open-marker restatements `SelfSimilarExponents.profile_existence_is_open` and `SelfSimilarExponents.type_ii_naming_not_certified`).
+- **Axiom-free declarations:** 7 (`diagonal_not_mem_range`, `lawvere_fixedpoint`, `no_surjective_of_no_fixedpoint`, `no_surjective_predicates`, `existsUnique_iff_exists_and_unique`, `empty_classified_initial`, `unit_classified_terminal`).
 
 So every card that is tagged *Formal* or *Theorem* rests, at worst, on the
 three standard axioms — and this is checked for the *specific* declarations the
@@ -416,3 +416,16 @@ register's own tagging.
 | `OnePattern.theta_add_criticalCurve` | propext, Classical.choice, Quot.sound |
 | `OnePattern.theta_add_criticalCurve_one` | propext, Classical.choice, Quot.sound |
 | `OnePattern.scalingWeight_vanishes_family` | propext, Classical.choice, Quot.sound |
+
+### C36
+
+| declaration | axiom footprint |
+|---|---|
+| `NoetherDiscrete.charge_eq_momentum_sub` | propext, Classical.choice, Quot.sound |
+| `NoetherDiscrete.charge_self` | propext, Classical.choice, Quot.sound |
+| `NoetherDiscrete.charge_translation_invariant` | propext, Classical.choice, Quot.sound |
+| `NoetherDiscrete.momentum_from_rate` | propext, Classical.choice, Quot.sound |
+| `NoetherDiscrete.momentum_conserved` | propext, Classical.choice, Quot.sound |
+| `NoetherDiscrete.momentumAt_conserved` | propext, Classical.choice, Quot.sound |
+| `NoetherDiscrete.momentumAt_eq_initial` | propext, Classical.choice, Quot.sound |
+| `NoetherDiscrete.conservationLaw` | propext, Classical.choice, Quot.sound |
