@@ -1,4 +1,4 @@
-# Axiom Audit — claim cards C1 … C37
+# Axiom Audit — claim cards C1 … C38
 
 **Status: generated and machine-checked.** This file records the *axiom footprint* of every Lean declaration quoted by a card in `CLAIM_TRACEABILITY.md` — the exact declarations the traceability checker asserts. It answers one question per card: *which axioms does the quoted theorem transitively depend on?*
 
@@ -16,7 +16,7 @@ yields one footprint per declaration, parsed into the table below
 
 ## Result
 
-- **Declarations audited:** 227, across the 37 cards C1 … C37 (some cards share declarations, e.g. `OrientationLaw` under C10 and C10-open).
+- **Declarations audited:** 233, across the 38 cards C1 … C38 (some cards share declarations, e.g. `OrientationLaw` under C10 and C10-open).
 - **Axioms observed across the whole register:** `propext`, `Classical.choice`, `Quot.sound` — the standard Lean/Mathlib foundations. Nothing else.
 - **`sorryAx`:** absent. No quoted declaration is proved by `sorry`.
 - **Axiom-free declarations:** 9 (`diagonal_not_mem_range`, `lawvere_fixedpoint`, `no_surjective_of_no_fixedpoint`, `no_surjective_predicates`, `existsUnique_iff_exists_and_unique`, `empty_classified_initial`, `unit_classified_terminal`, `profile_existence_is_open`, `type_ii_naming_not_certified`).
@@ -442,3 +442,14 @@ register's own tagging.
 | `UniverseGrowth.universeGrowth_conserves` | propext, Classical.choice, Quot.sound |
 | `UniverseGrowth.chargeOn_universeGrowth_conserves` | propext, Classical.choice, Quot.sound |
 | `UniverseGrowth.momentumOn_univ` | propext, Classical.choice, Quot.sound |
+
+### C38
+
+| declaration | axiom footprint |
+|---|---|
+| `CriticalAmplitude.amplitudeRatio_eq` | propext, Classical.choice, Quot.sound |
+| `CriticalAmplitude.orderParameter_at_critical` | propext, Classical.choice, Quot.sound |
+| `CriticalAmplitude.widom_relation` | propext, Classical.choice, Quot.sound |
+| `CriticalAmplitude.rushbrooke_relation` | propext, Classical.choice, Quot.sound |
+| `CriticalAmplitude.josephson_relation` | propext, Classical.choice, Quot.sound |
+| `CriticalAmplitude.fisher_relation` | propext, Classical.choice, Quot.sound |

@@ -18,7 +18,7 @@ imported by the root, fails the checker.
 
 | category | meaning |
 |---|---|
-| `card` | carries a named claim card C1 ... C37 in `EXPLICIT_CLAIMS.md` |
+| `card` | carries a named claim card C1 ... C38 in `EXPLICIT_CLAIMS.md` |
 | `millennium-cert` | a per-problem numerical record / status entry for a Clay problem; **no** settlement claim |
 | `rh-research` | Riemann-hypothesis exploratory / numerical module |
 | `number-theory-cert` | a *bounded* numerical certificate for a number-theory question (Collatz, Goldbach, twin primes, Legendre) |
@@ -39,6 +39,7 @@ imported by the root, fails the checker.
 | `Core` | rh-research | — | zeta-zero Hadamard-term positivity checks (`hadamardTerm`, `zetaZeros`, `checkAllTestPoints`) |
 | `Cosmology.AcousticZeroFlow` | cosmology | — | acoustic 0/0-flow cosmological model (framing; gate-A excluded) |
 | `Cosmology.OriginWindow` | cosmology | — | origin-window cosmological model (framing; gate-A excluded) |
+| `CriticalAmplitude` | card | C38 | carries card(s) C38 |
 | `CriticalLadder` | card | C1 | carries card(s) C1 |
 | `Curvature` | rh-research | — | numerical curvature of `xi'` / L-dash positivity at Riemann zeros |
 | `DissipativeFlow` | card | C10 | carries card(s) C10 |
@@ -97,6 +98,6 @@ imported by the root, fails the checker.
 
 ## Coverage
 
-- **Modules on disk:** 63 (all imported by `PunoCalculus.lean`).
-- **Card-carrying modules (`card`):** 37.
+- **Modules on disk:** 64 (all imported by `PunoCalculus.lean`).
+- **Card-carrying modules (`card`):** 38.
 - **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold):** 26.

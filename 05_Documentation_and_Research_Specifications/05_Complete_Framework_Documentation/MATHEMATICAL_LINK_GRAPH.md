@@ -18,7 +18,7 @@ that any Millennium obligation is discharged. See `WHAT_THIS_DOES_NOT_PROVE.md`.
 
 ## 1. The mesh (verified ↔ verified)
 
-The internal graph has **63 module nodes** and **42 directed edges**. An edge
+The internal graph has **64 module nodes** and **42 directed edges**. An edge
 `A -> B` is exactly an `import PunoCalculus.B` line in module `A` (self-edges and
 `import Mathlib` excluded). The block below is parsed by the checker; it must
 equal the imports actually present in the tree.
@@ -72,7 +72,7 @@ ZeroValuation -> VanishOrder
 
 ### Node labels
 
-The 37 card-carrying modules (the "verified findings" of this graph):
+The 38 card-carrying modules (the "verified findings" of this graph):
 
 | module | card | module | card |
 |---|---|---|---|
@@ -93,7 +93,7 @@ The 37 card-carrying modules (the "verified findings" of this graph):
 | RemovableValue | C17 | SerrinSufficiency | C10-open |
 | VanishOrder | C18 | NoetherDiscrete | C36 |
 | ZeroProbe | C19 | UniverseGrowth | C37 |
-| ZeroValuation | C20 | | |
+| ZeroValuation | C20 | CriticalAmplitude | C38 |
 | ZeroIndex | C21 | | |
 | ZeroMechanisms | C22 | | |
 
@@ -134,9 +134,10 @@ columns plus one aggregator. (Card labels on each node.)
 - **RH research.** `RH.Hankel -> RH.NewmanFlow` (the de Bruijn–Newman flow layer
   on top of the Hankel criterion).
 - **Standalone cards.** `ForceNetwork (C27)`, `MixtureGrowth (C28)`,
-  `SelfSimilarExponents (C33)` and `NoetherDiscrete (C36)` import only Mathlib, so
-  they carry their card without an internal edge (the Conservation mechanism is a
-  finite-sum fact about the register, not built on another module).
+  `SelfSimilarExponents (C33)`, `NoetherDiscrete (C36)` and `CriticalAmplitude (C38)`
+  import only Mathlib, so they carry their card without an internal edge (the
+  Conservation and Critical-Phenomenon mechanisms are finite-sum / real-algebra facts
+  about the register, not built on another module).
 - **Growth extension.** `UniverseGrowth (C37) -> NoetherDiscrete (C36)`: the
   increasing point universe lifts the discrete Noether theorem to a growing family
   of active sites, with the newly created points carrying no momentum.
@@ -209,10 +210,10 @@ asserts, offline:
    edge target resolves to a module file;
 4. every in-header citation string in the reference table appears in its module;
 5. every non-`—` provided document exists under the documentation directory;
-6. all 37 card tokens `C1 … C37` are present in the card list.
+6. all 38 card tokens `C1 … C38` are present in the card list.
 
 ## Cards covered
 
 <!-- CARDS:BEGIN -->
-C1 C2 C3 C4 C5 C6 C7 C8 C9 C10 C11 C12 C13 C14 C15 C16 C17 C18 C19 C20 C21 C22 C23 C24 C25 C26 C27 C28 C29 C30 C31 C32 C33 C34 C35 C36 C37
+C1 C2 C3 C4 C5 C6 C7 C8 C9 C10 C11 C12 C13 C14 C15 C16 C17 C18 C19 C20 C21 C22 C23 C24 C25 C26 C27 C28 C29 C30 C31 C32 C33 C34 C35 C36 C37 C38
 <!-- CARDS:END -->

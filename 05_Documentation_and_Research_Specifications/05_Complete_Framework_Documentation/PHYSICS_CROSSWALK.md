@@ -1,7 +1,7 @@
 # Physics Crosswalk
 
 **Status: bridge map, not an equivalence.** This file joins the *claim register*
-(`EXPLICIT_CLAIMS.md`, cards C1 … C37) to the physics side of the repository. It is
+(`EXPLICIT_CLAIMS.md`, cards C1 … C38) to the physics side of the repository. It is
 the physics twin of `EXTERNAL_CORPORA_CROSSWALK.md`: that map links our cards to
 *external mathematics*; this one links them to the physics programs under
 `07_Interdisciplinary_Connections_and_Frameworks/`.
@@ -46,6 +46,7 @@ Navier–Stokes / Onsager wall); the rest are shape-analogies and are tagged as 
 | **C33** | `SelfSimilarExponents` | exponents of a self-similar blow-up ansatz | Hou, arXiv:2405.10916 | analogy |
 | **C36** | `NoetherDiscrete` | a balanced force conserves momentum under one discrete-Newton step (conservation ↔ translation symmetry) | Noether's theorem (1918) | Lean-proved |
 | **C37** | `UniverseGrowth` | an increasing point universe that creates zero-momentum points conserves total momentum (growth as a continuity equation) | Noether's theorem (1918), cosmological particle creation | Lean-proved |
+| **C38** | `CriticalAmplitude` | at a phase transition the order parameter and its scale both vanish; their ratio's removable value is the critical amplitude, and the exponents satisfy the classical scaling relations | Widom (1965), Rushbrooke (1963), Josephson (1966), Fisher (1964) | Lean-proved |
 | **C19** | `ZeroProbe` | an identity 0/0 resolves to `1` (dimensionless ratios) | gauge-invariant ratios | Lean-proved |
 | **C20** | `ZeroValuation` | order of vanishing as a critical scaling exponent | renormalization-group exponent | analogy |
 | **C13** | `EmergentTime` | time as a transfer count | — (structural; not a physical claim) | analogy |

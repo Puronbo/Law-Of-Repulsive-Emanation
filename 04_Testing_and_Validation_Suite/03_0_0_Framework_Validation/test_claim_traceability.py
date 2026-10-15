@@ -301,6 +301,12 @@ ENTRIES = [
             "chargeOn_universeGrowth_conserves", "momentumOn_univ",
         ],
     }, []),
+    ("C38", {
+        "CriticalAmplitude": [
+            "amplitudeRatio_eq", "orderParameter_at_critical", "widom_relation",
+            "rushbrooke_relation", "josephson_relation", "fisher_relation",
+        ],
+    }, []),
 ]
 
 def _read(path):
