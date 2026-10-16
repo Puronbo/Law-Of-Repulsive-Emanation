@@ -37,6 +37,8 @@ DECLS = [
     "order_sets_rung",
     "orientation_sets_side",
     "twoNumbersClose",
+    "order_sets_rung_bijective",
+    "orientation_not_injective_on_side",
     "theoryOfEverything",
     "method_and_margin_barriers",
     "theoryOfEverythingFacts",

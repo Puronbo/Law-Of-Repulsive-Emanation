@@ -49,6 +49,17 @@ follows from the 0/0 doctrine is **narrative**, kept outside this boundary (see
   `PunoCalculus/GreatAttractor.lean` (`criticalSmoothness`, `scalingWeight`,
   `fixedPoint_logSign`).
 
+**How far the correspondence goes (increment T2).** The order half is a genuine
+*bijection*: for a fixed form `p`, the map `a ↦ criticalSmoothness a p` is
+injective (recover the order, `a = 3/p - s`) and surjective — this is
+`order_sets_rung_bijective`. The orientation half is **not** a bijection: the side
+predicate `r ↦ r <= 1` is many-to-one, so orientation is *not* recovered from the
+side — `orientation_not_injective_on_side` exhibits two distinct admissible
+orientations on the same side. So "two numbers close the register" means the pair
+`(order, orientation) ↦ (rung, side)` is a surjection that is injective in the
+order coordinate and many-to-one in the orientation coordinate; it is not a
+bijection of pairs. See §6, row **T2**.
+
 ---
 
 ## 2. The capstone: the register as one theorem
@@ -76,7 +87,9 @@ Two further reductions sit beside it:
 
 * **`twoNumbersClose`** — both the *which-rung* question (order) and the
   *which-side* question (orientation) are functions of the two numbers alone;
-  nothing else enters.
+  nothing else enters. **(T2 resolved, in part.)** The order↔rung is bijective
+  (`order_sets_rung_bijective`); the side does not determine orientation
+  (`orientation_not_injective_on_side`), so "bijection of pairs" does **not** hold.
 * **`method_and_margin_barriers`** — the margin is a unique / first crossing
   (`MarginCrossing.existsUnique_zero_of_strictAntiOn`,
   `FirstCrossing.exists_first_zero`) and the method barrier is the diagonal
@@ -117,10 +130,11 @@ Every conjunct traces to a committed brick and a card. The capstone is an
 The capstone is honest about its own gap. Uniqueness of the margin
 (`MarginCrossing`) needs the probe `lambda(s)` to be **antitone** in the
 dissipation order `s`. That antitoneity is **not** proved here — it is the
-Navier–Stokes-specific content. `FirstCrossing` keeps the weakest hypothesis
-(continuity + one sign change) so that a margin *exists* regardless, but its
-uniqueness and the whole analytic wall stay **OPEN** (cards **C3** and **C10-open**;
-see `VERIFICATION_LEDGER.md`: *"no Millennium problem touched. Wall OPEN."*).
+Navier–Stokes-specific content (**T3** of this program). `FirstCrossing` keeps the
+weakest hypothesis (continuity + one sign change) so that a margin *exists*
+regardless, but its uniqueness and the whole analytic wall stay **OPEN** (cards
+**C3** and **C10-open**; see `VERIFICATION_LEDGER.md`: *"no Millennium problem
+touched. Wall OPEN."*).
 
 ---
 
@@ -143,9 +157,9 @@ two-numbers claim. Each is stated with its **falsifier**, so it can fail.
 | ID | Increment | Falsifier |
 |---|---|---|
 | **T1** | Extend the order family from the one-pattern slide to every card's own order. | a register brick whose rung is not `sCrit p + (1 - a)`. |
-| **T2** | Sharpen `twoNumbersClose` to a *bijection* (order/orientation recovered from the register state). | two distinct `(order, orientation)` pairs with the same register state. |
+| **T2** | Sharpen `twoNumbersClose` to a *bijection* (order/orientation recovered from the register state). | **Realized (negative):** order half is a bijection (`order_sets_rung_bijective`); orientation half is *not* injective (`orientation_not_injective_on_side`) — side does not recover orientation. No single-pair bijection. |
 | **T3** | Close the margin gap: prove `lambda(s)` antitone for the NS/Burgers family. | a Leray–Hopf solution with `lambda <= 0` but unbounded critical norm. |
-| **T4** | Attach a numeric certificate to C12 as a whole (mirroring the per-card certificates). | the bundled certificate disagrees with any constituent card's certificate. |
+| **T4** | Attach a numeric certificate to C12 as a whole (mirroring the per-card certificates). | **Done:** `theory_of_everything_certificates.py` exists, runs green (PASS), and is wired into C12 evidence/traceability. |
 | **T5** | Add a cross-domain mechanism card C39+ only if it is expressible via `(order, orientation)`. | a new mechanism that is not. |
 
 ---
@@ -159,7 +173,8 @@ program so it cannot drift:
 * the capstone module and all 14 of its register imports exist on disk and are
   named here (the brick map);
 * the capstone exposes `order_sets_rung`, `orientation_sets_side`,
-  `twoNumbersClose`, `theoryOfEverything`, `method_and_margin_barriers`,
+  `twoNumbersClose`, `order_sets_rung_bijective`, `orientation_not_injective_on_side`,
+  `theoryOfEverything`, `method_and_margin_barriers`,
   `theoryOfEverythingFacts`;
 * the facts register `theoryOfEverythingFacts` has exactly **5** entries
   (`theoryOfEverythingFacts_length`);
@@ -175,7 +190,8 @@ certificate is axiom-free).
 ## Related
 
 * `EXPLICIT_CLAIMS.md` — card **C12** is this document's source of truth.
-* `CLAIM_TRACEABILITY.md` — C12 → `TheoryOfEverything.lean` → `register_ladder_certificates.py`.
+* `CLAIM_TRACEABILITY.md` — C12 → `TheoryOfEverything.lean` → `register_ladder_certificates.py`,
+  `theory_of_everything_certificates.py`.
 * `VERIFICATION_LEDGER.md` — the capstone's dated entry ("Wall OPEN").
 * `AXIOM_AUDIT.md` — axiom footprint of the capstone declarations.
 * `WHAT_THIS_DOES_NOT_PROVE.md` — the boundary this program obeys.

@@ -104,6 +104,30 @@ theorem twoNumbersClose :
     (∀ r A : ℝ, 0 < r → 0 < A → ((∃ B : ℝ, ∀ n, r ^ n * A ≤ B) ↔ r ≤ 1)) :=
   ⟨order_sets_rung, fun _ _ => orientation_sets_side⟩
 
+/-- **The order half is a bijection.**  For a fixed form `p`, the order `a` and the
+critical rung are in bijection: `a ↦ criticalSmoothness a p` is injective (the order
+is *recovered* from the rung, `a = 3/p - s`) and surjective (every rung is attained).
+This is the precise content of "order sets the rung": which-rung is not merely a
+function of the order, it is a *one-to-one correspondence*. -/
+theorem order_sets_rung_bijective (p : ℝ) :
+    Function.Bijective (fun a : ℝ => criticalSmoothness a p) := by
+  constructor
+  · intro a b h
+    simp only [criticalSmoothness] at h
+    linarith
+  · intro s
+    exact ⟨3 / p - s, by simp only [criticalSmoothness]; ring⟩
+
+/-- **The side does not recover the orientation.**  Two distinct positive
+orientations lie on the same side of the wall (both attracting/marginal, `r ≤ 1`),
+so the side predicate `r ↦ r ≤ 1` is *not* injective: "orientation sets the side" is
+a coarse sign, not a bijection.  The register's bijection is the pair
+`(order, orientation) ↦ (rung, side)` -- onto, injective in the order coordinate, and
+many-to-one in the orientation coordinate. -/
+theorem orientation_not_injective_on_side :
+    ∃ r r' : ℝ, 0 < r ∧ 0 < r' ∧ r ≤ 1 ∧ r' ≤ 1 ∧ r ≠ r' :=
+  ⟨(1 / 2 : ℝ), 1, by norm_num, by norm_num, by norm_num, by norm_num, by norm_num⟩
+
 /-- **The register's two barriers, attached to the two numbers.**  The *order* margin is
 a first crossing (existence, needing only continuity and a sign change -- the non-monotone
 regime the third family falls into) and a unique crossing once the orientation `lambda(s)`

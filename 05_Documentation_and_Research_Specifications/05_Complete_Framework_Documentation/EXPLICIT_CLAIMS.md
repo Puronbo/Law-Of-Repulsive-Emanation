@@ -244,7 +244,10 @@ Deng–Hou–Yu (2015); Cheskidov–Shvydkoy (2010).
 
 **Type:** Formal. **Statement.** Both *which-rung* (order) and *which-side*
 (orientation) are functions of the two numbers alone.
-**Evidence:** `TheoryOfEverything.lean` (`theoryOfEverything`, `twoNumbersClose`).
+**Evidence:** `TheoryOfEverything.lean` (`theoryOfEverything`, `twoNumbersClose`,
+`order_sets_rung`, `orientation_sets_side`, `method_and_margin_barriers`); numeric
+half `theory_of_everything_certificates.py` (the bundle certificate: all seven
+capstone clauses plus both reductions, run green by the coverage gate).
 **Falsifier:** a register brick not expressible via `(order, orientation)`.
 
 ## C13 — Time is emergent, not primitive

@@ -136,9 +136,10 @@ ENTRIES = [
     ("C12", {
         "TheoryOfEverything": [
             "order_sets_rung", "orientation_sets_side", "theoryOfEverything",
-            "twoNumbersClose",
+            "twoNumbersClose", "method_and_margin_barriers",
+            "order_sets_rung_bijective", "orientation_not_injective_on_side",
         ],
-    }, ["register_ladder_certificates.py"]),
+    }, ["register_ladder_certificates.py", "theory_of_everything_certificates.py"]),
     ("C13", {
         "EmergentTime": ["transfer_conserves_total", "state_determined_by_count"],
     }, ["register_ladder_certificates.py"]),
