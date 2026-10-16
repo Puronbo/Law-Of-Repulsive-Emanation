@@ -58,7 +58,7 @@ ENTRIES = [
             "thetaAddSCrit", "sCrit_antitone", "sCrit_gt_neg_one",
             "onsagerExcess_supercritical",
         ],
-    }, []),
+    }, ["register_core_certificates.py"]),
     ("C2", {}, []),
     ("C3", {}, []),
     ("C4/C6", {
@@ -71,7 +71,7 @@ ENTRIES = [
             "linear_bound", "geometric_bound", "barrier_hierarchy",
             "exists_upto_of_geometric",
         ],
-    }, []),
+    }, ["register_core_certificates.py"]),
     ("C4/C6", {
         "ExplicitClaims": ["morrey_threshold", "physical_embedding_gap"],
     }, ["dimension_threshold.py"]),

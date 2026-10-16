@@ -27,10 +27,10 @@ missing. This map adds the fourth item the register needs to stay honest: a
 
 | Card | Type | Lean artifact | Experiment | Citation | Link |
 |---|---|---|---|---|---|
-| **C1** | Theorem | `CriticalLadder` (`scalingInvariant_iff`, `sCrit_three`, `sCrit_two`, `sCrit_six`, `thetaAddSCrit`, `sCrit_antitone`, `sCrit_gt_neg_one`, `onsagerExcess_supercritical`) | — | Prodi (1959); Serrin (1962); Koch–Tataru (2001, *Adv. Math.*); Cheskidov–Shvydkoy (2010, arXiv:0708.3067) | Lean declared |
+| **C1** | Theorem | `CriticalLadder` (`scalingInvariant_iff`, `sCrit_three`, `sCrit_two`, `sCrit_six`, `thetaAddSCrit`, `sCrit_antitone`, `sCrit_gt_neg_one`, `onsagerExcess_supercritical`) | `register_core_certificates.py` | Prodi (1959); Serrin (1962); Koch–Tataru (2001, *Adv. Math.*); Cheskidov–Shvydkoy (2010, arXiv:0708.3067) | Lean + file |
 | **C2** | Theorem | — | — | Prodi–Serrin; Escauriaza–Seregin–Šverák (2003) | (cited) |
 | **C3** | Conjecture/Open | — | — | Cheskidov–Shvydkoy (2010, arXiv:0708.3067); Ri (2023, arXiv:2307.11312, unrefereed); Bourgain–Pavlovic (2008, JAMS) | — |
-| **C4/C6** (extra power) | Formal + Theorem | `ExplicitClaims` (`extra_power_strengthens_above_unit`); support `EnstrophyBarrier`, `QuantitativeContinuation` | — | Tao (2016, 2021); Feng–He–Wang (2025, Lorentz); arXiv:2411.06483; Grujic (2024, JMFM) | Lean |
+| **C4/C6** (extra power) | Formal + Theorem | `ExplicitClaims` (`extra_power_strengthens_above_unit`); support `EnstrophyBarrier`, `QuantitativeContinuation` | `register_core_certificates.py` | Tao (2016, 2021); Feng–He–Wang (2025, Lorentz); arXiv:2411.06483; Grujic (2024, JMFM) | Lean + file |
 | **C4/C6** (dim. threshold) | Formal | `ExplicitClaims` (`morrey_threshold`, `physical_embedding_gap`) | `dimension_threshold.py` (ledger-backed) | Adams–Hedberg (1996); Morrey | Lean |
 | **C8** | Formal | `ExplicitClaims.mean_le_dimMixture` | `dimension_mixture.py` | Adams–Hedberg (1996); Tao (dimensional regularisation) | Lean + file |
 | **C9** | Empirical | — | `dimension_mixture.py` | Constantin (1994); Frisch, *Turbulence* (1995) | file |

@@ -23,12 +23,15 @@ jobs:
       # They machine-enforce the project's honesty contract:
       #   * no Millennium problem is claimed settled (scope boundary + status pins)
       #   * every claim card is wired to a real declaration (traceability)
+      #   * every card's numeric half runs green and no card escapes the register
+      #     (register coverage: no orphan cards, certificates execute)
       #   * the external-corpus crosswalk names only modules that exist
       #   * the stability harness + 0/0 family gate stay green
       - name: Run verification gates
         run: |
           python -m pytest \
             04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_claim_traceability.py \
+            04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_register_coverage.py \
             04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_external_crosswalk.py \
             04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_open_status_pins.py \
             04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_scope_boundary.py \
