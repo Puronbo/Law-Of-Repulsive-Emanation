@@ -92,12 +92,19 @@ ANCHORS = [
     "Demaine", "Robertson", "Kawasaki", "Keup", "Telgarsky", "Lewandowski",
     "Stewart", "Wolfram", "Cook", "Nagel", "Fermat", "Lawvere", "Cantor",
     "Morrey", "Adams", "Frisch",
+    # Enriched grounding pass (verified citations).
+    "Schreckenberg", "Biham", "Maerivoet", "Chowdhury", "Fuks",
+    "Escauriaza", "Gallagher", "Planchon", "Isett", "Novack", "Vicol",
+    "Fjordholm", "Wiedemann", "Bardos", "Titi", "Cheskidov", "Shvydkoy",
+    "Albritton", "Marsden", "West", "Kane",
+    "Pelissetto", "Vicari", "Stanley", "Simons",
 ]
 
 # Mechanism tokens that must be present.
 MECHANISMS = [
     "0/0", "removable value", "folding", "ECA", "TASEP", "Serrin", "Onsager",
     "Noether", "twin", "soliton",
+    "fold-and-cut", "Besov", "s_crit", "hyperscaling", "Isett",
 ]
 
 
