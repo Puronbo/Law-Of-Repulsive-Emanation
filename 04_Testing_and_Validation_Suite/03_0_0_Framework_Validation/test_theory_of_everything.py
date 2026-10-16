@@ -116,3 +116,17 @@ def test_doc_states_the_honesty_boundary():
         "program doc must state that no Millennium problem is settled"
     )
     assert "OPEN" in doc, "program doc must keep the wall marked OPEN"
+
+
+def test_doc_states_the_margin_antitone_hypothesis_is_open():
+    doc = _read(DOC)
+    assert re.search(r"antitone hypothesis is assumed", doc, re.I), (
+        "program doc must state the margin antitone hypothesis is ASSUMED, "
+        "not proved"
+    )
+    assert re.search(r"\bT3\b", doc), (
+        "program doc must tie the antitone hypothesis to the open increment T3"
+    )
+    assert re.search(r"not proved here", doc, re.I), (
+        "program doc must reiterate the antitone hypothesis is not proved here"
+    )

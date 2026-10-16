@@ -203,17 +203,30 @@ def teo_two_numbers_close():
 
 
 def teo_margin_and_method_barriers():
-    # (a) unique crossing: a strictly decreasing continuous margin on [a, b]
-    f = lambda s: 20.0 - 3.7 * s
+    # (a) unique crossing: a strictly decreasing continuous margin on [a, b].
+    # The antitone hypothesis for the register's margin probe lambda(s) is ASSUMED
+    # here -- it is the Navier-Stokes-specific content (T3, OPEN), and is NOT proved.
+    # The strict-antitone branch therefore uses a *register-shaped stand-in*,
+    #     lambda_reg(s) = C - alpha * s     with positive C, alpha
+    # (C = 20.0, alpha = 3.7 below -- values consistent with the example).  This is a
+    # stand-in only; branch (b), FirstCrossing, is what shows existence without it.
+    C = 20.0
+    alpha = 3.7
+
+    def lambda_reg(s):
+        """Register-shaped stand-in probe lambda_reg(s) = C - alpha * s."""
+        return C - alpha * s
+
     a, b = 4.0, 6.0
     grid = [a + (b - a) * i / 4000.0 for i in range(4001)]
     crossings = sum(1 for i in range(len(grid) - 1)
-                    if (f(grid[i]) > 0.0) != (f(grid[i + 1]) > 0.0))
-    strict_anti = all(f(grid[i]) > f(grid[i + 1]) for i in range(len(grid) - 1))
-    root = 20.0 / 3.7
+                    if (lambda_reg(grid[i]) > 0.0) != (lambda_reg(grid[i + 1]) > 0.0))
+    strict_anti = all(lambda_reg(grid[i]) > lambda_reg(grid[i + 1])
+                      for i in range(len(grid) - 1))
+    root = C / alpha
 
-    # (b) first crossing: a *non-monotone* margin f(s) = 0.4 - (s-5.3)^2/2 - 1.2 (s-5.3)
-    #     f is concave, peaks near s = 4.1, with f(4) > 0 > f(6).
+    # (b) first crossing: a *non-monotone* margin g(s) = 0.4 - (s-5.3)^2/2 - 1.2 (s-5.3)
+    #     g is concave, peaks near s = 4.1, with g(4) > 0 > g(6).
     g = lambda s: 0.4 - 0.5 * (s - 5.3) ** 2 - 1.2 * (s - 5.3)
     non_monotone = any(g(grid[i]) < g(grid[i + 1]) for i in range(len(grid) - 1))
     first = next(s for s in grid if g(s) <= 0.0)
@@ -238,6 +251,8 @@ def teo_margin_and_method_barriers():
     diagonal_ok = all(no_surjection(n) for n in (1, 2, 3, 4))
 
     print("\n[C12.reduction] method_and_margin_barriers")
+    print("The antitone hypothesis for lambda(s) is ASSUMED (NS-specific, T3 OPEN); "
+          "FirstCrossing shows existence without it.")
     print(f"  strict-antitone unique crossing (count={crossings}, "
           f"root≈{root:.6f}) = {strict_anti and crossings == 1}")
     print(f"  non-monotone first crossing (at s≈{first:.6f})   = "

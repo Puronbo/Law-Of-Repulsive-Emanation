@@ -136,6 +136,18 @@ regardless, but its uniqueness and the whole analytic wall stay **OPEN** (cards
 **C3** and **C10-open**; see `VERIFICATION_LEDGER.md`: *"no Millennium problem
 touched. Wall OPEN."*).
 
+* **The C12 numeric certificate ties that assumption to the certificate and
+  does not prove it.** The numeric half of the capstone,
+  `02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/theory_of_everything_certificates.py`,
+  encodes the strict-antitone probe as a register-shaped *stand-in*
+  (`lambda_reg(s) = C - alpha * s`, positive `C`, `alpha`) rather than a proved
+  model: the antitone hypothesis is assumed here (NS-specific, T3 OPEN) and is
+  not proved here. The certificate prints exactly that -- *"The antitone
+  hypothesis for lambda(s) is ASSUMED (NS-specific, T3 OPEN); FirstCrossing shows
+  existence without it."* -- so the numeric half registers the assumption instead
+  of proving it. (The non-monotone `FirstCrossing` branch needs no such
+  assumption.)
+
 ---
 
 ## 5. What this does not claim
