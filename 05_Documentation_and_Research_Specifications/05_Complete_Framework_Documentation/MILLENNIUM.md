@@ -52,8 +52,11 @@ framework to four classical open conjectures:
 (Goldbach) r(n)/(2C2*n/ln(n)^2) is 0/0 at odd n; removable
 value = r(n) > 0 for all even n >= 4. Verified for 4999 even
 numbers up to 10000.
-(Twin Prime) pi_2(x)/x -> 0 but sum 1/p diverges (Euler
-1737); HL prediction verified: pi_2(10^6) = 8169 vs 6917.
+(Twin Prime) pi_2(x)/x -> 0 (vanishing density only); the
+reciprocal-twin-prime sum **converges** (Brun 1919), so density
+is the sole 0/0; HL prediction checked: pi_2(10^6) = 8169 vs 6917.
+[*Correction 2026-10-17:* an earlier abstract attributed twin-prime
+reciprocal divergence to Euler 1737 -- wrong; see Section 20.]
 (Collatz) sigma(n)/log(n) is 0/0 at n=1; stopping time
 finite for all n in [1, 10000]; max sigma = 261 at n=6171.
 (Legendre) pi((n+1)^2)-pi(n^2) / (2n/ln(n^2)) is 0/0 at
@@ -1460,23 +1463,34 @@ removable value exists and is positive.
 
 **Statement:** There are infinitely many primes p such that p+2 is also prime.
 
-**The 0/0 form:** pi_2(x)/x -> 0 as x -> infinity, but the sum
-sum_{p twin} 1/p diverges (Euler, 1737). This is the 0/0:
-numerator -> 0, denominator -> infinity, but in a way that
-the reciprocal sum diverges.
+**The 0/0 form:** pi_2(x)/x -> 0 as x -> infinity (the density
+vanishes), while the reciprocal-twin-prime sum stays *bounded*.
+The indeterminate reading lives in the vanishing density alone.
+
+**Corrected (2026-10-17).** An earlier version of this section
+claimed "sum_{p twin} 1/p diverges (Euler, 1737)" and that
+infinitude of twin primes "follows from" that divergence. Both
+statements are wrong:
+
+* Euler (1737) proved divergence of the reciprocal sum over **all**
+  primes, not over the twin-prime subset.
+* **Brun (1919)** proved the twin-prime reciprocal sum **converges**
+  (Brun's constant ~ 1.90216058). A convergent series is compatible
+  with *either* finitely or infinitely many terms, so it decides
+  nothing about infinitude.
 
 **Hardy-Littlewood prediction:** pi_2(x) ~ 2*C2 * x/ln(x)^2.
 
-**Verification:** pi_2(10^6) = 8169 (HL predicts 6917).
-Reciprocal sum at 10^6: 0.9583 (growing, diverges).
-C2 = 0.660162.
+**Verification (bounded, not a proof):** pi_2(10^6) = 8169 (HL
+predicts 6917); the partial twin-prime reciprocal sum at 10^6 is
+0.9583, i.e. *below* Brun's constant -- consistent with
+convergence, not divergence. C2 = 0.660162.
 
-**Theorem 18 (Euler 1737 + Verified):** The reciprocal sum
-diverges (unconditional). HL prediction verified up to 10^6.
-
-**Honest wall:** Euler's divergence proof is unconditional
-(1737). But the HL asymptotic is a conjecture. Infinitude
-follows from divergence of reciprocal sum.
+**Honest wall (OPEN).** Infinitude of twin primes is **not settled
+here** and is **not implied** by any reciprocal-sum statement. The
+genuine progress is bounded gaps (Zhang 2013; Polymath; Maynard),
+which give infinitely many prime pairs with *bounded* gap, but not
+gap 2. The HL asymptotic remains a conjecture.
 
 ---
 
@@ -1612,8 +1626,8 @@ to its supporting data.
 | Claim | Data File | Key Result |
 |-------|-----------|------------|
 | pi_2(10^6)=8169 | data/twin_prime_0_over0_data.json | HL predicts 6917 |
-| Reciprocal sum diverges | data/twin_prime_0_over0_data.json | Sum=0.958 at 10^6 |
-| Euler 1737 divergence | data/twin_prime_0_over0_data.json | Unconditional |
+| Reciprocal sum CONVERGES (Brun) | data/twin_prime_0_over0_data.json | Sum=0.958 at 10^6 (< Brun 1.902) |
+| Corrected: Euler 1737 is all primes; twin-prime sum converges | data/twin_prime_0_over0_data.json | OPEN |
 
 ### Collatz (Section 21)
 | Claim | Data File | Key Result |
