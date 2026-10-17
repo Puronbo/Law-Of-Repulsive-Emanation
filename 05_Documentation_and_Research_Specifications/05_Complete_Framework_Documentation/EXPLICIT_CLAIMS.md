@@ -238,7 +238,13 @@ Deng–Hou–Yu (2015); Cheskidov–Shvydkoy (2010).
 **Type:** Formal. **Statement.** For the geometric orbit, bounded `↔ r <= 1`, and
 `0 < log r` iff unbounded. **Evidence:** `OrientationBoundedness.lean`
 (`geometric_bounded_iff`, `orientation_decides_boundedness`,
-`repelling_iff_unbounded`). **Falsifier:** a model bounded with `r > 1`.
+`repelling_iff_unbounded`). The module also carries the **bounded orientation**
+`boundedOrientation r = (r - 1)/(2(r + 1))` -- the orientation folded into the open
+window `(-1/2, 1/2)`: a strict floor `-1/2`, a midpoint `0` at `r = 1`, and a strict
+ceiling `1/2` (`boundedOrientation_floor_midpoint_ceiling`), antisymmetric under
+`r ↦ 1/r`, strictly increasing, with the same sign as `log r`
+(`boundedOrientation_sign`) and the same wall reading
+(`boundedOrientation_reads_the_wall`). **Falsifier:** a model bounded with `r > 1`.
 
 ## C12 — Two numbers close the register
 

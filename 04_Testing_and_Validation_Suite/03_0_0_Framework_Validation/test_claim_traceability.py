@@ -131,6 +131,10 @@ ENTRIES = [
         "OrientationBoundedness": [
             "geometric_bounded_iff", "orientation_decides_boundedness",
             "repelling_iff_unbounded",
+            "boundedOrientation_floor", "boundedOrientation_midpoint",
+            "boundedOrientation_ceiling", "boundedOrientation_floor_midpoint_ceiling",
+            "boundedOrientation_antisymm", "boundedOrientation_strictMonoOn",
+            "boundedOrientation_sign", "boundedOrientation_reads_the_wall",
         ],
     }, ["register_ladder_certificates.py"]),
     ("C12", {
