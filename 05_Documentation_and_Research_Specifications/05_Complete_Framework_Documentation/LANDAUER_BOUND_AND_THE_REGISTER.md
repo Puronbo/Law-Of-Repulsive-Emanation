@@ -1,112 +1,112 @@
 # LANDAUER BOUND AND THE REGISTER
 
-> **Scope note (read first).** This document is *interpretive narrative*: it
-> separates established physics from an unsupported reading, and it does **not**
-> claim a physical unification or settle any Millennium problem. The authoritative
-> statement of what this project does and does not prove is
+> **Scope note (read first).** This document states an **OPEN** claim in the
+> register's card format (statement / missing entity / falsifier). It is **not**
+> proved here, makes **no** physical claim, and settles **no** Millennium problem.
+> The authoritative statement of what this project does and does not prove is
 > [`WHAT_THIS_DOES_NOT_PROVE.md`](WHAT_THIS_DOES_NOT_PROVE.md).
 
-**Status: interpretive (structural).** The only machine-checked content this note
-leans on is the register's own orientation sign (cards **C10/C11`**,
-`PunoCalculus/OrientationLaw.lean`, `PunoCalculus/DissipativeFlow.lean`,
-`PunoCalculus/OrientationBoundedness.lean`). The physical reading is a map, not a
-theorem.
+**Status: Conjecture / Open.** The claim below is not proved here and is **not** a
+register card: the claim asserts nothing that this repository has verified. Its
+only machine-checked inputs are the register's own orientation sign (cards
+**C10/C11**) and its removable value (card **C17**). By the program's own **T5**
+rule (`THEORY_OF_EVERYTHING.md` §6), a new card C39+ is admitted only if it is
+expressible via `(order, orientation)`; the claim here is the *statement of what
+would be needed* to satisfy such a reduction, not a proof that it holds.
 
 ---
 
-## 1. What is established (verified anchors)
+## 1. The claim (precise, falsifiable, OPEN)
 
-- **Landauer's principle (Landauer, 1961).** Erasing one bit at temperature `T`
-> dissipates at least `E_bit = k_B * T * ln(2)`. The discrete quantum of the cost
-> is `ln 2`. This is established statistical mechanics.
+**Claim (the Landauer–register bridge).** There exists a map `Phi` from register
+states -- the pair `(order a, orientation r)` plus a `0/0` removable value
+`lambda` (card C17) -- to thermodynamic states, such that:
 
-- **Landauer in the quantum many-body regime.** Aimet, Tajik, Schüttelkopf,
-  Sabino, Sotiriadis, Guarnieri, Schmiedmayer, Eisert, *Experimentally probing
-  Landauer's principle in the quantum many-body regime*, **Nature Physics 21,
-  1326 (2025)**, arXiv:2407.21690 (TU Wien / Freie Universität Berlin). An
-  ultracold Bose-gas quantum field simulator; the paper decomposes the entropy
-  production into an information term and a thermodynamic term.
+1. `Phi(lambda)` is the equilibrium free-energy ratio of the modeled system;
+2. `sign(log r)` (card C10/C11) equals the sign of the modeled entropy production;
+3. the minimum work to erase one bit of the modeled critical content at
+   temperature `T` is exactly `k_B T ln 2`.
 
-- **q-desics (quantum-corrected geodesics).** Koch, Riahinia, Rincon,
-  *Geodesics in quantum gravity*, **Phys. Rev. D 112, 084056 (2025)**,
-  arXiv:2510.00117 (TU Wien). If the metric is quantized and operators are
-  averaged after variation, particles obey a modified equation of motion (the
-  *q-desic*) rather than the geodesic of the averaged metric. The deviations are
-  tiny for ordinary gravity and become large at cosmological scales only when the
-  cosmological constant is included.
-
-These three are real, published results. The register's own orientation sign
-(card **C10/C11**) is real and machine-checked.
+If such a `Phi` exists and (1)–(3) hold, the Landauer bound and the register are
+linked by a theorem. Until then the link is unproven.
 
 ---
 
-## 2. What is *not* established (narrative)
+## 2. What is established (verified inputs -- none of which is the bridge)
 
-The following are **interpretive**, not proven, and are kept outside the boundary:
+* **Landauer (1961):** erasing one bit at temperature `T` costs at least
+  `k_B T ln 2`.
+* **Nature Physics 21, 1326 (2025)**, arXiv:2407.21690 (Aimet et al.): the
+  entropy production in the quantum many-body regime decomposes into an
+  information term and a thermodynamic term.
+* **q-desic:** Koch, Riahinia, Rincon, Phys. Rev. D 112, 084056 (2025),
+  arXiv:2510.00117: quantum-corrected geodesics; deviations become large at
+  cosmological scale only with the cosmological constant.
+* **Register:** the orientation sign `sign(log r)` (cards C10/C11,
+  `PunoCalculus/OrientationLaw.lean`, `PunoCalculus/OrientationBoundedness.lean`)
+  and the `0/0` removable value `lambda` (card C17, `PunoCalculus/RemovableValue.lean`).
 
-* "The universe is a **self-computing system**." The cited experiments show that
-  quantum fields behave *information-theoretically*, and that geodesics receive
-  quantum corrections. They do not establish computation as the fundamental
-  substrate.
-* "Information **has weight / mass**." Landauer gives a minimum *energy*
-  dissipation; via `E = m c^2` that energy corresponds to a (tiny) mass. "Mass of
-  information" is a compression, not a theorem.
-* "Gravity, matter, and the **human mind** are the same currency." No experiment
-  in either paper touches cognition. This is philosophy.
+Each supplies one half. **None of them provides `Phi`.**
+
+---
+
+## 3. The missing entity (what would have to be proved or measured)
+
+**Missing entity.** The map **`Phi`** -- a *validated physical instantiation of the
+register*: a concrete dynamical system whose critical content is a `0/0` (C17) and
+whose orientation is its dissipation sign (C10/C11), together with a proof (or a
+measurement) that its one-bit erasure cost equals `k_B T ln 2` and satisfies
+(1)–(3) above. Equivalently: a structure-preserving map from register states to
+thermodynamic states that carries the removable value `lambda` to the free-energy
+ratio and the orientation sign to the entropy-production sign.
+
+**Falsifier.** A register state `(a, r, lambda)` whose realized one-bit erasure
+cost is not `k_B T ln 2`, or whose `sign(log r)` disagrees with the sign of the
+system's entropy production.
+
+**Why the cited works do not close it.** Landauer supplies the bound (3) but no
+register map; the 2025 many-body experiment supplies the entropy decomposition
+but no register map; q-desic supplies quantum-corrected motion but no register
+map. None constructs `Phi`, and none relates `lambda` or `r` to a cost.
+
+---
+
+## 3b. What is *not* established (narrative)
+
+Kept outside the boundary, with no supporting result:
+
+* "the universe is a **self-computing system**";
+* "information **has weight / mass**"; 
+* "gravity, matter, and the **human mind** are the same currency".
 
 No card in `EXPLICIT_CLAIMS.md` rests on any of this.
 
 ---
 
-## 3. Structural correspondence to the register (the honest part)
-
-What *can* be said is a structural analogy between two independently established
-objects -- nothing more:
-
-| Register (machine-checked) | Landauer / q-desic (published) | Status |
-|---|---|---|
-| removable value of a `0/0` (card C17) | the discrete quantum `ln 2` per erased bit | analogy |
-| orientation `r`, with `sign(log r)` (card C10/C11) | direction of dissipation (irreversible processing) | analogy |
-| `r <= 1` attracting/bounded, dissipative | settles toward equilibrium, entropy produced | analogy |
-| `r > 1` repelling/unbounded | drives away from equilibrium | analogy |
-| dark energy = `0` / the center | the cosmological constant is the knob that makes q-desic deviations visible at large scale | analogy |
-
-The companion script `02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/landauer_orientation.py`
-asserts *only* the two structural facts (the positive quantum `ln 2`, and the sign
-of `log r`), then states the correspondence as an analogy. It makes no physical
-identification.
-
-**Read literally, the analogy is: a discrete cost (`ln 2`) with a direction (the
-side).** The register already has the direction half machine-checked; the Landauer
-half supplies the magnitude. Neither half proves the other.
-
----
-
 ## 4. Sources to discount
 
-Two references that circulated with this synthesis are **unverified** and should
-not be cited:
+Two references that circulated with this topic are **unverified** and must not be
+cited:
 
 * a ResearchGate item titled "... That Lead to Utopian Earth" -- the title alone
   disqualifies it as a source;
 * `roadtoomega.substack.com`, "The Unifying Theory of Reality" -- self-published,
   not peer-reviewed.
 
-These are not credible and are recorded here only so they are not mistaken for
-supporting evidence.
+Recorded here only so they are not mistaken for supporting evidence.
 
 ---
 
 ## 5. Boundary
 
-* This note is **interpretive** and makes **no physical claim** and **no
-  Millennium claim**; see `WHAT_THIS_DOES_NOT_PROVE.md`.
-* The machine-checked content it touches is card **C10/C11** (orientation sign),
-  already certified in `EXPLICIT_CLAIMS.md` and `CLAIM_TRACEABILITY.md`.
-* No register card is created here: by the program's own **T5** rule
-  (`THEORY_OF_EVERYTHING.md` §6), a new card C39+ is admitted only if it is
-  expressible via `(order, orientation)`. The Landauer/q-desic reading is an
-  analogy, not a proof of such a reduction, so it stays a note.
+* The claim is **OPEN**; the missing entity (`Phi`) and the falsifier are named,
+  so the claim can fail.
+* This note makes **no physical claim** and settles **no Millennium problem**
+  (`WHAT_THIS_DOES_NOT_PROVE.md`).
+* Machine-checked content it relies on: cards **C10/C11** (orientation) and
+  **C17** (removable value).
+* No register card is created (T5): the note states what a card *would* need, and
+  that is not yet proved.
 
 ---
 
@@ -115,5 +115,5 @@ supporting evidence.
 * `WHAT_THIS_DOES_NOT_PROVE.md` -- the authoritative boundary.
 * `THEORY_OF_EVERYTHING.md` -- the register program (cards C1--C38; this note is
   not a card).
-* `EXPLICIT_CLAIMS.md` / `CLAIM_TRACEABILITY.md` -- cards C10 and C11 (orientation).
+* `EXPLICIT_CLAIMS.md` / `CLAIM_TRACEABILITY.md` -- cards C10, C11, C17.
 * `landauer_orientation.py` -- the structural companion script.

@@ -209,8 +209,9 @@ certificate is axiom-free).
 * `VERIFICATION_LEDGER.md` — the capstone's dated entry ("Wall OPEN").
 * `AXIOM_AUDIT.md` — axiom footprint of the capstone declarations.
 * `WHAT_THIS_DOES_NOT_PROVE.md` — the boundary this program obeys.
-* `LANDAUER_BOUND_AND_THE_REGISTER.md` — an interpretive note on the
-  information/thermodynamic reading (not a card, no physical claim).
+* `LANDAUER_BOUND_AND_THE_REGISTER.md` — an OPEN note naming the missing entity
+  (a register-to-thermodynamics bridge) and its falsifier (not a card; no
+  physical claim).
 * `PunoCalculus/TheoryOfEverything.lean` — the theorem itself.
 
 ---

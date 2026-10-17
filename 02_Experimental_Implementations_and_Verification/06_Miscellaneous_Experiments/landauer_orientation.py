@@ -14,10 +14,11 @@ orbit with multiplier r, the log-growth is log r and the orientation is its sign
     r <= 1  <=>  log r <= 0  <=>  content non-increasing (dissipative, bounded)
     r >  1  <=>  log r >  0  <=>  content increasing   (repelling, unbounded)
 
-Structural correspondence (NOT a physical identification): each is a discrete
-cost with a direction -- a positive quantum (ln 2) and a sign (the side). The
-register's orientation is that sign; the Landauer cost is the magnitude of one
-crossing. This script asserts only the structural facts.
+Open bridge (NOT proved here): the claim that the Landauer quantum and the
+register's orientation sign are one structure is OPEN, with a named missing
+entity -- a register-to-thermodynamics map Phi; see
+LANDAUER_BOUND_AND_THE_REGISTER.md. This script asserts only the two structural
+facts above and does not prove the bridge.
 
 Prints a single PASS marker on success.
 """
@@ -61,9 +62,9 @@ def main():
     assert orientation_side(1.0)[0] == 0.0
     assert orientation_side(2.0)[0] > 0.0
 
-    print("Structural correspondence (NOT a physical identification):")
-    print("  positive quantum (ln 2)  <=>  Landauer cost per bit")
-    print("  direction sign(log r)    <=>  register orientation side")
+    print("Open bridge (NOT proved here): a register<->thermodynamics map Phi is")
+    print("the missing entity (see LANDAUER_BOUND_AND_THE_REGISTER.md); the two")
+    print("structural facts above are asserted, the bridge is OPEN.")
     print("PASS")
 
 

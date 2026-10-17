@@ -1,20 +1,21 @@
 """Information-register note gate.
 
-``LANDAUER_BOUND_AND_THE_REGISTER.md`` is an explicitly *interpretive* note that
-separates the established physics (Landauer 1961; the 2025 Nature Physics
-quantum-many-body experiment; the q-desic quantum-gravity corrections) from the
-unsupported narrative (a "self-computing universe", information "has mass",
-mind = gravity). It also records a *structural* analogy to the register's
-orientation sign (cards C10/C11), demonstrated by a deterministic companion
-script.
+``LANDAUER_BOUND_AND_THE_REGISTER.md`` states an **OPEN** claim (the
+Landauer-register bridge) in the register's card format: a precise statement, a
+named *missing entity* (a register-to-thermodynamics map ``Phi``), and a
+*falsifier*. It separates the established physics (Landauer 1961; the 2025
+Nature Physics quantum-many-body experiment; the q-desic quantum-gravity
+corrections) from the unsupported narrative (a "self-computing universe",
+information "has mass", mind = gravity).
 
 This gate pins that honesty:
 
 1. the note exists and carries the scope banner (a link to
    ``WHAT_THIS_DOES_NOT_PROVE.md``), so its narrative is disclaimed;
 2. it names the verified anchors and explicitly flags the sources to discount;
-3. it marks the reading interpretive and disclaims any physical claim;
-4. the companion script exists, runs green (exit 0, ``PASS``), and is stdlib-only.
+3. it states the claim OPEN, names a missing entity, and names a falsifier;
+4. it disclaims any physical claim and any Millennium claim;
+5. the companion script exists, runs green (exit 0, ``PASS``), and is stdlib-only.
 
 No Lean toolchain is required.
 
@@ -76,12 +77,19 @@ def test_note_flags_sources_to_discount():
     assert not missing, f"note must name the sources to discount: {missing}"
 
 
-def test_note_is_marked_interpretive_and_non_physical():
+def test_note_states_an_open_claim_with_missing_entity_and_falsifier():
     low = _read(DOC).lower()
-    assert "interpretive" in low, "note must be marked interpretive"
+    assert "missing entity" in low, "note must name its missing entity"
+    assert "falsifier" in low, "note must name its falsifier"
+    assert "open" in low, "note must mark the claim OPEN"
+
+
+def test_note_disclaims_physical_and_millennium_claims():
+    low = _read(DOC).lower()
     assert "no physical claim" in low or "not a physical claim" in low, (
         "note must disclaim any physical claim"
     )
+    assert "millennium" in low, "note must reference the Millennium boundary"
 
 
 def test_companion_script_runs_green():
