@@ -34,18 +34,19 @@ channels -- which is the structure `PunoCalculus/InformationMixture.lean` checks
 | Electrophoretic bead in a "virtual" trap | feedback trap | information-to-energy conversion at the bit | Jun, Gavrilov, Bechhoefer, *PRL* **113**, 190601 (2014) |
 | Single-electron box (SEB) | one-electron manipulation | one-bit manipulation in a nanoscale device | Koski et al., *PRL* **113**, 260601 (2014) |
 | Nanomagnetic memory cells | thermally activated switching | reset heat near the bit bound | Hong et al., *Sci. Adv.* **2**, e1501492 (2016) |
-| Molecular nanomagnet | single-molecule magnet | reset work `≈ ln 2` | Gaudenzi et al., *PRL* **120**, 117001 (2018) |
-| Trapped ion | single-atom engine | Landauer bound in a quantum two-level system | Yan et al., *PRL* **120**, 190601 (2018) |
+| Molecular nanomagnet | single-molecule magnet | reset work `≈ ln 2` | Gaudenzi et al., *Nat. Phys.* **14**, 565 (2018), DOI 10.1038/s41567-018-0070-7 |
+| Trapped ion | single-atom engine | Landauer bound in a quantum two-level system | Yan et al., *PRL* **120**, 210601 (2018) |
 | Superconducting qubit + cavity | Maxwell-demon memory (two subsystems) | work below the bound; memory entropy `≫ ln 2` | Cottet et al., *PNAS* **114**, 7561 (2017) |
 | Superconducting flux logic | single-flux-quantum bits | `W = 1.25 k_T`, `≈ 5.4×` the bound | Saira et al., *Phys. Rev. Research* **2**, 013249 (2020) |
-| Levitated nanosphere | optomechanical memory | single-quantum Landauer erasure | Ciampini et al., *Phys. Rev. Research* **7**, 043321 (2025) |
+| Levitated nanosphere | optomechanical memory | nonequilibrium erasure below the bound (negative heat) | Ciampini et al., *Phys. Rev. Research* **7**, 043321 (2025), DOI 10.1103/r81x-zblx |
 | DNA hairpin | single-molecule folding | resetting below `k_B T ln 2` (feedback) | Ribezzi-Crivellari & Ritort, *Nat. Phys.* **15**, 660 (2019) |
 | Underdamped oscillator | optomechanical | information-engine bounds | Dago et al., *PRL* **126**, 140601 (2021) |
 
 Each measures the *cost* side (the `k_B T ln 2` quantum and its deviations). None
 constructs `Phi`: none relates the register's removable value `lambda` (C17) or
 orientation `r` (C10/C11) to the measured cost. Bibliographic details here are
-recorded as a working list and should be re-verified before any external use.
+recorded as a working list; the entries re-checked in this pass are collected in
+§7 (verified anchors), and the remaining ones are flagged there as unverified.
 
 ## 3. Is the measured system a mixture of two or more?
 
@@ -56,10 +57,12 @@ is precisely the structure of `PunoCalculus/InformationMixture.lean`.
   1326 (2025), arXiv:2407.21690: the many-body entropy production reads
   `Σ = ΔI + ΔD`, an **information term** `ΔI` plus a thermodynamic (athermality)
   term `ΔD`; equivalently `β ΔE + ΔS`. Two channels.
-* **Population vs coherence split (quantum).** Xue et al. (2024): the entropy
-  production decomposes as `Σ = Σ_pop + Σ_coh`, a **population** (classical) part
-  plus a **coherence** (quantum) part. Two channels.
-* **Single-system three-channel split.** Yan et al., *PRL* **120**, 190601 (2018),
+* **Population vs coherence split (quantum).** Xue et al., *Phys. Rev. A* **110**,
+  042204 (2024), "Evidence of genuine quantum effects in nonequilibrium entropy
+  production via quantum photonics": the entropy production decomposes as
+  `Σ = Σ_pop + Σ_coh`, a **population** (classical) part plus a **coherence**
+  (quantum) part. Two channels.
+* **Single-system three-channel split.** Yan et al., *PRL* **120**, 210601 (2018),
   on the trapped ion: `ΔQ / k_B T = ΔS + I(S′:R′) + D(ρ_R′‖ρ_R)`, a weighted
   thermodynamic term plus a **mutual-information** term plus a relative-entropy
   term. Three channels.
@@ -138,6 +141,43 @@ candidate instantiation of `Phi`.
 * This note makes **no physical claim** and settles **no Millennium problem**
   (`WHAT_THIS_DOES_NOT_PROVE.md`).
 * No register card is created (T5).
+
+## 7. Verified anchors (best-effort)
+
+The anchors below were re-checked against publisher/DOI records in this pass.
+They are a **narrative working list**, not a derived result, and carry no
+physical or Millennium claim.
+
+| Anchor | Identifier |
+|---|---|
+| Bérut et al., colloidal bead | *Nature* **483**, 187 (2012); DOI 10.1038/nature10872 |
+| Jun, Gavrilov, Bechhoefer, feedback trap | *Phys. Rev. Lett.* **113**, 190601 (2014) |
+| Hong, Lambson, Dhuey, Bokor, nanomagnetic bits | *Sci. Adv.* **2**, e1501492 (2016) |
+| Gaudenzi et al., molecular nanomagnet | *Nat. Phys.* **14**, 565 (2018); DOI 10.1038/s41567-018-0070-7 |
+| Yan et al., single-atom quantum Landauer | *Phys. Rev. Lett.* **120**, 210601 (2018); DOI 10.1103/PhysRevLett.120.210601; arXiv:1803.10424 |
+| Cottet et al., quantum Maxwell demon (qubit + cavity) | *PNAS* **114**, 7561 (2017); DOI 10.1073/pnas.1704827114; arXiv:1702.05161 |
+| Saira et al., superconducting flux logic | *Phys. Rev. Research* **2**, 013249 (2020); DOI 10.1103/PhysRevResearch.2.013249 |
+| Ciampini et al., levitated nanosphere | *Phys. Rev. Research* **7**, 043321 (2025); DOI 10.1103/r81x-zblx |
+| Aimet et al., quantum many-body Landauer | *Nature Physics* **21**, 1326 (2025); DOI 10.1038/s41567-025-02930-9; arXiv:2407.21690 |
+| Xue et al., population/coherence split | *Phys. Rev. A* **110**, 042204 (2024); DOI 10.1103/PhysRevA.110.042204 |
+
+Three corrections fall out of this pass:
+
+* The trapped-ion reference in §2/§3 is **`Phys. Rev. Lett.` 120, 210601 (2018)**,
+  "Single-Atom Demonstration of the Quantum Landauer Principle"
+  (arXiv:1803.10424). The earlier working-list value `120, 190601 (2018)` is a
+  different paper (Bastianello--Piroli--Calabrese, Bose gas) and has been
+  corrected.
+* The molecular-nanomagnet reference is **`Nat. Phys.` 14, 565 (2018)**
+  (DOI 10.1038/s41567-018-0070-7), not the previously listed `PRL 120, 117001`.
+* The levitated-nanosphere entry is *nonequilibrium* erasure **below** the bound
+  (negative heat), not a "single-quantum" erasure.
+
+Still **unverified** in this pass (retained only as working-list placeholders):
+Koski et al. (the note cites both a 2014 single-electron-box device and a 2015
+two-device result), Ribezzi-Crivellari & Ritort (*Nat. Phys.* **15**, 660 (2019)),
+and Dago et al. (*Phys. Rev. Lett.* **126**, 140601 (2021)). These should be
+checked before any external use.
 
 ---
 
