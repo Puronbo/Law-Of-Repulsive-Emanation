@@ -41,6 +41,7 @@ CHECKER = os.path.join(
 CATEGORIES = {
     "card", "millennium-cert", "rh-research", "number-theory-cert",
     "fluid-diagnostic", "numerical-cert", "cosmology", "core-scaffold",
+    "information-bridge",
 }
 
 

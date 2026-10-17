@@ -26,6 +26,7 @@ imported by the root, fails the checker.
 | `numerical-cert` | a finite, bounded enumeration certificate |
 | `cosmology` | cosmological model (framing; excluded by the scope gate) |
 | `core-scaffold` | library scaffold or the base 0/0 / removable-value mechanism |
+| `information-bridge` | an information/thermodynamic bridge brick: arithmetic linking the register to a named physical input (Landauer); **no** physical or settlement claim |
 
 ## Ledger
 
@@ -52,6 +53,7 @@ imported by the root, fails the checker.
 | `Goldbach` | number-theory-cert | — | bounded Goldbach certificate (`goldbach_even_4_to_100000`) plus an explicit open marker |
 | `GreatAttractor` | card | C26 | carries card(s) C26 |
 | `Hodge` | millennium-cert | — | numerical Hodge record; no settlement claim |
+| `InformationBridge` | information-bridge | — | two-state (bit) instance of the Landauer–register schema: `binaryEntropy_half` (`log 2`), `resetCost_two`, `resetCost_eq_neg_orientation` (cost = −k_B T·orientation), `orientation_reset_nonpos`; the physical map `Phi` stays the named missing entity |
 | `Legendre` | number-theory-cert | — | bounded Legendre certificate |
 | `LiouvilleBridge` | card | C24 | carries card(s) C24 |
 | `LogicBarrier` | card | C14 | carries card(s) C14 |
@@ -98,6 +100,6 @@ imported by the root, fails the checker.
 
 ## Coverage
 
-- **Modules on disk:** 64 (all imported by `PunoCalculus.lean`).
+- **Modules on disk:** 65 (all imported by `PunoCalculus.lean`).
 - **Card-carrying modules (`card`):** 38.
-- **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold):** 26.
+- **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold / information-bridge):** 27.

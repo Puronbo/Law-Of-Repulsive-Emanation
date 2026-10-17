@@ -15,7 +15,9 @@ This gate pins that honesty:
 2. it names the verified anchors and explicitly flags the sources to discount;
 3. it states the claim OPEN, names a missing entity, and names a falsifier;
 4. it disclaims any physical claim and any Millennium claim;
-5. the companion script exists, runs green (exit 0, ``PASS``), and is stdlib-only.
+5. the companion script exists, runs green (exit 0, ``PASS``), and is stdlib-only;
+6. the two-state Lean instance (``PunoCalculus/InformationBridge.lean``) exists,
+   exposes its four declarations, imports cleanly, and stays free of ``sorry``.
 
 No Lean toolchain is required.
 
@@ -39,6 +41,21 @@ EXP_DIR = os.path.join(
 )
 DOC = os.path.join(DOC_DIR, "LANDAUER_BOUND_AND_THE_REGISTER.md")
 SCRIPT = os.path.join(EXP_DIR, "landauer_orientation.py")
+
+# The two-state Lean instance of the schema (file-reading only; no Lean toolchain).
+LEAN_DIR = os.path.join(
+    ROOT, "01_Core_Mathematical_Framework_Lean", "01_Lean"
+)
+LEAN = os.path.join(LEAN_DIR, "PunoCalculus", "InformationBridge.lean")
+LEAN_ROOT = os.path.join(LEAN_DIR, "PunoCalculus.lean")
+
+# Declarations the two-state brick must expose.
+DECLS = [
+    "binaryEntropy_half",
+    "resetCost_two",
+    "resetCost_eq_neg_orientation",
+    "orientation_reset_nonpos",
+]
 
 # Verified anchors the note must name.
 ANCHORS = ["Landauer", "Nature Physics", "2407.21690", "2510.00117", "q-desic"]
@@ -109,4 +126,19 @@ def test_companion_script_runs_green():
     )
     assert "PASS" in (proc.stdout or ""), (
         f"{os.path.basename(SCRIPT)} produced no PASS marker"
+    )
+
+
+def test_two_state_lean_brick_exists_and_is_wired():
+    assert os.path.isfile(LEAN), LEAN
+    text = _read(LEAN)
+    missing = [d for d in DECLS if d not in text]
+    assert not missing, f"InformationBridge.lean missing declarations: {missing}"
+    assert "sorry" not in text, "the two-state brick must be sorry-free"
+    assert "Phi" in text, (
+        "the brick must disclaim constructing the physical map Phi"
+    )
+    root = _read(LEAN_ROOT)
+    assert "import PunoCalculus.InformationBridge" in root, (
+        "InformationBridge.lean must be imported by the library root"
     )

@@ -45,8 +45,31 @@ linked by a theorem. Until then the link is unproven.
 * **Register:** the orientation sign `sign(log r)` (cards C10/C11,
   `PunoCalculus/OrientationLaw.lean`, `PunoCalculus/OrientationBoundedness.lean`)
   and the `0/0` removable value `lambda` (card C17, `PunoCalculus/RemovableValue.lean`).
+  The two-state instance of the schema is formalised in
+  `PunoCalculus/InformationBridge.lean` (see §2b).
 
 Each supplies one half. **None of them provides `Phi`.**
+
+---
+
+## 2b. What *is* machine-checked: the two-state (bit) instance
+
+`PunoCalculus/InformationBridge.lean` formalises the arithmetic of the simplest
+instance -- the **two-state (bit) register** -- and ties it to the register's own
+orientation sign:
+
+* `binaryEntropy_half` -- a fair bit carries `log 2` nats;
+* `resetCost_two` -- resetting a two-state register costs `k_B T log 2`;
+* `resetCost_eq_neg_orientation` -- `resetCost k_B T n = -k_B T * orientation (1/n)`,
+  i.e. the cost is minus the scaled orientation;
+* `orientation_reset_nonpos` -- for every `n >= 1`, `orientation (1/n) <= 0`
+  (a reset is dissipative in the register's sense).
+
+What this **does** establish: the two-state arithmetic is exact, and the reset
+cost carries the *same* constant `ln 2` and the *sign* of the register
+orientation. What it does **not** establish: it does not construct `Phi`, and it
+does **not** derive the Landauer bound (that stays the cited physical input). The
+map `Phi` remains the named missing entity of §3.
 
 ---
 
@@ -115,5 +138,9 @@ Recorded here only so they are not mistaken for supporting evidence.
 * `WHAT_THIS_DOES_NOT_PROVE.md` -- the authoritative boundary.
 * `THEORY_OF_EVERYTHING.md` -- the register program (cards C1--C38; this note is
   not a card).
+* `02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/landauer_orientation.py`
+  -- structural companion (prints the constraint, `PASS`).
+* `01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/InformationBridge.lean`
+  -- the two-state Lean instance (§2b).
 * `EXPLICIT_CLAIMS.md` / `CLAIM_TRACEABILITY.md` -- cards C10, C11, C17.
 * `landauer_orientation.py` -- the structural companion script.

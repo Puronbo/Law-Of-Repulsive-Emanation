@@ -31,6 +31,7 @@ EmergentTime -> CriticalLadder
 ExplicitClaims -> CriticalLadder
 GreatAttractor -> CriticalLadder
 GreatAttractor -> ZeroFixedPoint
+InformationBridge -> OrientationLaw
 LiouvilleBridge -> RemovableComplexBridge
 MillenniumBridge -> EcaIsometry
 OnePattern -> GreatAttractor
