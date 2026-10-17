@@ -31,6 +31,8 @@ noncomputable section
 
 namespace PunoCalculus.OrientationLaw
 
+open PunoCalculus.OrientationBoundedness
+
 /-- The geometric orbit `N n = r ^ n * A` (same model as `OrientationBoundedness`). -/
 def geometricOrbit (r A : ℝ) (n : ℕ) : ℝ := r ^ n * A
 
@@ -176,15 +178,86 @@ theorem continuous_content_bounded {X g : ℝ → ℝ} {T B : ℝ}
     _ ≤ Real.exp (Real.log (X 0) + B) := Real.exp_le_exp.mpr hlog
     _ = X 0 * Real.exp B := by rw [Real.exp_add, Real.exp_log hX0]
 
+/-! ## The bounded orientation face
+
+`boundedOrientation r = (r - 1) / (2 (r + 1))` (card C11) is a *bounded* reading of the
+orientation.  It was a leaf; here it earns its keep as a consumer of the orientation law.
+It carries the same sign as the named orientation `orientation r` -- closing the gap where
+the bounded form and the register symbol were never explicitly linked -- it reads the sign
+of the growth rate of a *general* positive sequence through its relative increment, and
+along the geometric orbit it is a *bounded* coordinate that moves strictly with the orbit:
+increasing when repelling, decreasing when attracting, pinned at the centre `r = 1`.  A
+bounded monotone coordinate is exactly a Lyapunov function -- the reason a bounded
+orientation is worth having at all (it can only ever read a fixed window `(-1/2, 1/2)` yet
+still tracks the wall's side). -/
+
+/-- **The bounded orientation carries the orientation's sign.**  `boundedOrientation` and
+the register's named orientation `orientation r = log r` agree on positivity, at the
+midpoint, and on negativity.  Explicit bridge between card C11's bounded window and card
+C10's Lyapunov base. -/
+theorem boundedOrientation_orientation_sign {r : ℝ} (hr : 0 < r) :
+    (0 < boundedOrientation r ↔ 0 < orientation r) ∧
+    (boundedOrientation r = 0 ↔ orientation r = 0) ∧
+    (boundedOrientation r < 0 ↔ orientation r < 0) := by
+  simpa only [orientation] using boundedOrientation_sign hr
+
+/-- **The bounded orientation reads the growth rate of a general sequence.**  For any
+positive `N`, the bounded orientation of its relative increment `N(n+1)/N n` has the same
+sign as the growth rate `logGrowth N n`; no geometric assumption. -/
+theorem boundedOrientation_ratio_sign {N : ℕ → ℝ} (hN : ∀ k, 0 < N k) (n : ℕ) :
+    (0 < boundedOrientation (N (n + 1) / N n) ↔ 0 < logGrowth N n) ∧
+    (boundedOrientation (N (n + 1) / N n) = 0 ↔ logGrowth N n = 0) ∧
+    (boundedOrientation (N (n + 1) / N n) < 0 ↔ logGrowth N n < 0) := by
+  have hpos : 0 < N (n + 1) / N n := div_pos (hN (n + 1)) (hN n)
+  have hlog : Real.log (N (n + 1) / N n) = logGrowth N n := by
+    unfold logGrowth
+    rw [Real.log_div (ne_of_gt (hN (n + 1))) (ne_of_gt (hN n))]
+  have h := boundedOrientation_sign hpos
+  rw [hlog] at h
+  exact h
+
+/-- **The bounded orientation of the orbit is confined to the open window.**  Along
+`N n = r^n` it always lies in `(-1/2, 1/2)`, for every positive `r`. -/
+theorem boundedOrientation_geometricOrbit_mem {r : ℝ} (hr : 0 < r) (n : ℕ) :
+    boundedOrientation (r ^ n) ∈ Set.Ioo (-(1 / 2)) (1 / 2) :=
+  ⟨boundedOrientation_floor (pow_pos hr n), boundedOrientation_ceiling (pow_pos hr n)⟩
+
+/-- **Repelling orbit: the bounded orientation strictly increases.**  For `1 < r` the
+bounded coordinate of `r^n` is strictly increasing in `n` (a Lyapunov function climbing
+toward the ceiling). -/
+theorem boundedOrientation_geometricOrbit_strictMono {r : ℝ} (hr : 1 < r) :
+    StrictMono (fun n : ℕ => boundedOrientation (r ^ n)) := by
+  intro m n hmn
+  exact boundedOrientation_strictMonoOn (pow_pos (lt_trans zero_lt_one hr) m)
+    (pow_pos (lt_trans zero_lt_one hr) n) (pow_lt_pow_right₀ hr hmn)
+
+/-- **Attracting orbit: the bounded orientation strictly decreases.**  For `0 < r < 1` it
+strictly decreases in `n`. -/
+theorem boundedOrientation_geometricOrbit_strictAnti {r : ℝ} (hr : 0 < r) (hr1 : r < 1) :
+    StrictAnti (fun n : ℕ => boundedOrientation (r ^ n)) := by
+  intro m n hmn
+  exact boundedOrientation_strictMonoOn (pow_pos hr n) (pow_pos hr m)
+    (pow_lt_pow_right_of_lt_one₀ hr hr1 hmn)
+
+/-- **Centre: the bounded orientation is pinned.**  At `r = 1` the orbit is frozen and the
+bounded orientation is identically `0`. -/
+theorem boundedOrientation_geometricOrbit_center {r : ℝ} (hr : r = 1) (n : ℕ) :
+    boundedOrientation (r ^ n) = 0 := by
+  subst hr
+  rw [one_pow, boundedOrientation_midpoint]
+
 /-- Formalised-facts register for `OrientationLaw.lean`. -/
 def orientationLawFacts : List String :=
   [ "logGrowth_of_ratio_eq", "logGrowth_geometric", "sign_match", "logGrowth_pos_iff",
     "logGrowth_nonpos_iff", "bounded_of_nonpos_logGrowth",
     "exists_pos_logGrowth_of_unbounded", "log_eq_sum_logGrowth",
     "bounded_of_bounded_sum_logGrowth", "unbounded_sum_of_unbounded",
-    "contLogGrowth_integral", "continuous_content_bounded", "orientation_reads_wall" ]
+    "contLogGrowth_integral", "continuous_content_bounded", "orientation_reads_wall",
+    "boundedOrientation_orientation_sign", "boundedOrientation_ratio_sign",
+    "boundedOrientation_geometricOrbit_mem", "boundedOrientation_geometricOrbit_strictMono",
+    "boundedOrientation_geometricOrbit_strictAnti", "boundedOrientation_geometricOrbit_center" ]
 
-/-- The register has exactly thirteen entries. -/
-theorem orientationLawFacts_length : orientationLawFacts.length = 13 := by decide
+/-- The register has exactly nineteen entries. -/
+theorem orientationLawFacts_length : orientationLawFacts.length = 19 := by decide
 
 end PunoCalculus.OrientationLaw

@@ -85,6 +85,11 @@ ENTRIES = [
             "log_eq_sum_logGrowth", "bounded_of_bounded_sum_logGrowth",
             "unbounded_sum_of_unbounded", "contLogGrowth_integral",
             "continuous_content_bounded",
+            "boundedOrientation_orientation_sign", "boundedOrientation_ratio_sign",
+            "boundedOrientation_geometricOrbit_mem",
+            "boundedOrientation_geometricOrbit_strictMono",
+            "boundedOrientation_geometricOrbit_strictAnti",
+            "boundedOrientation_geometricOrbit_center",
         ],
         "DissipativeFlow": [
             "logGrowth_deriv", "logGrowth_nonpos_of_dissipative",

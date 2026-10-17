@@ -52,7 +52,13 @@ follows from the 0/0 doctrine is **narrative**, kept outside this boundary (see
   `(-1/2, 1/2)` as an order isomorphism (`boundedOrientation_eq_tanh`,
   `boundedOrientation_bijOn`), additive along the register's count
   (`boundedOrientation_pow`) with a group-like addition law
-  (`boundedOrientation_mul`).
+  (`boundedOrientation_mul`). `OrientationLaw.lean` then consumes this bounded form as a
+  bounded Lyapunov coordinate: it carries the sign of `orientation r = log r`
+  (`boundedOrientation_orientation_sign`) and of the growth rate
+  (`boundedOrientation_ratio_sign`), stays in `(-1/2, 1/2)`
+  (`boundedOrientation_geometricOrbit_mem`) while moving strictly with the orbit --
+  increasing when repelling, decreasing when attracting, pinned at the centre
+  (`boundedOrientation_geometricOrbit_strictMono`, `..._strictAnti`, `..._center`).
 
 *Interpretive note (structural, not physical):* A minimal trinity {-1,0,+1} maps heuristically to C12: 0 is the center/margin boundary (neutral crossing), -1 and +1 are the orientation sides (r<1 attracting/bounded, r>1 repelling/unbounded); order a is the scale that sets the rung s_crit(p)+(1-a). This is a heuristic correspondence within the register only (no claim to physical unification or Millennium settlement).
 

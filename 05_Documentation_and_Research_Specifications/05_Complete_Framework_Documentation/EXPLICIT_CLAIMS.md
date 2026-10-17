@@ -251,6 +251,15 @@ multipliers onto the window with inverse `(1 + 2y)/(1 - 2y)`
 (`boundedOrientation_image`, `boundedOrientation_bijOn`, `boundedOrientation_right_inv`),
 and a group-like velocity-addition coordinate
 `boundedOrientation (r * s) = (x + y)/(1 + 4xy)` (`boundedOrientation_mul`).
+Downstream it stops being a leaf: `OrientationLaw.lean` consumes the bounded form as a
+*bounded orientation face* -- it carries the same sign as the register's named
+`orientation r = log r` (`boundedOrientation_orientation_sign`) and the same sign as the
+growth rate of any positive sequence through its relative increment
+(`boundedOrientation_ratio_sign`), and along the geometric orbit it is a bounded Lyapunov
+coordinate: confined to `(-1/2, 1/2)` (`boundedOrientation_geometricOrbit_mem`), strictly
+increasing when repelling and strictly decreasing when attracting
+(`boundedOrientation_geometricOrbit_strictMono`, `boundedOrientation_geometricOrbit_strictAnti`),
+pinned at the centre `r = 1` (`boundedOrientation_geometricOrbit_center`).
 **Falsifier:** a model bounded with `r > 1`.
 
 ## C12 — Two numbers close the register
