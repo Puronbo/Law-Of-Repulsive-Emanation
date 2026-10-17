@@ -97,6 +97,30 @@ derived.
 
 ---
 
+## 2d. The mixture structure of the measured systems
+
+`PHYSICAL_REALIZATION_OF_PHI.md` collects the measured apparatuses that realize
+the two-state Landauer content (colloidal bead, single-electron box, qubit +
+cavity, flux logic, levitated nanosphere, trapped ion, ...). The recurring
+finding is that the measured entropy production **decomposes** -- it is a
+*mixture of two or more* channels:
+
+* **information vs thermodynamic** -- `Σ = ΔI + ΔD` (Aimet et al., *Nature
+  Physics* 21, 1326 (2025));
+* **population vs coherence** -- `Σ = Σ_pop + Σ_coh` (Xue et al., 2024);
+* **three-channel** -- `ΔQ / k_B T = ΔS + I(S′:R′) + D` on a trapped ion
+  (Yan et al., *PRL* 120, 190601 (2018)).
+
+`PunoCalculus/InformationMixture.lean` formalises exactly that classical mixture
+algebra, with no physical content attached: `entropy_mixture` gives
+`H(mix) = t·H(a) + (1−t)·H(b) + binaryEntropy t`, `binaryEntropy_nonneg` and
+`entropy_mixture_ge` show the mixing (information) term is non-negative, and
+`entropy_mixture_half` shows a fair mixture adds exactly `log 2` -- the one-bit
+quantum. This is the scaffold a measured `Phi` would have to instantiate; it does
+**not** identify any apparatus.
+
+---
+
 ## 3. The missing entity (what would have to be proved or measured)
 
 **Missing entity.** The map **`Phi`** -- a *validated physical instantiation of the
@@ -168,5 +192,9 @@ Recorded here only so they are not mistaken for supporting evidence.
   -- the two-state Lean instance (§2b).
 * `01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/InformationPhi.lean`
   -- the constructed `Phi` on the relaxation 0/0 (§2c).
+* `PHYSICAL_REALIZATION_OF_PHI.md` -- the candidate measured systems and their
+  mixture decompositions (§2d).
+* `01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/InformationMixture.lean`
+  -- the machine-checked mixture algebra (§2d).
 * `EXPLICIT_CLAIMS.md` / `CLAIM_TRACEABILITY.md` -- cards C10, C11, C17.
 * `landauer_orientation.py` -- the structural companion script.

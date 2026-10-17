@@ -32,6 +32,7 @@ ExplicitClaims -> CriticalLadder
 GreatAttractor -> CriticalLadder
 GreatAttractor -> ZeroFixedPoint
 InformationBridge -> OrientationLaw
+InformationMixture -> InformationBridge
 InformationPhi -> InformationBridge
 InformationPhi -> OrientationLaw
 InformationPhi -> RemovableValue
