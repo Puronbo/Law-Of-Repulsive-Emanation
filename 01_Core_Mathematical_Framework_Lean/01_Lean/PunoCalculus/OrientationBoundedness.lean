@@ -32,6 +32,18 @@ bounded.  That is the on-flow wall (`orientation_vs_invariant.py`) as a theorem.
 carries the orientation's sign (`sign (boundedOrientation r) = sign (log r)`), so
 the bounded coordinate reads the wall exactly as `log r` does
 (`boundedOrientation_reads_the_wall`).
+
+## Linkages: the unbounded orientation, composition, and the window
+
+The bounded orientation is exactly the folded orientation
+`boundedOrientation r = (1/2) * tanh ((log r) / 2)` (`boundedOrientation_eq_tanh`),
+so it is a bijection of the positive multipliers onto the open window
+(`boundedOrientation_bijOn`, `boundedOrientation_image`), with the explicit inverse
+`boundedOrientationInv y = (1 + 2y) / (1 - 2y)`.  It is additive under the
+register's count (`boundedOrientation_pow`) and carries a velocity-addition
+composition law `boundedOrientation (r * s) = (x + y) / (1 + 4xy)` for
+`x = boundedOrientation r`, `y = boundedOrientation s` (`boundedOrientation_mul`),
+the half-angle addition of `tanh` (`tanh_add`).
 -/
 
 namespace PunoCalculus.OrientationBoundedness
@@ -298,6 +310,136 @@ def boundedOrientationFacts : List String :=
 
 /-- The bounded-orientation register has exactly ten entries. -/
 theorem boundedOrientationFacts_length : boundedOrientationFacts.length = 10 := by
+  decide
+
+/-! ## Linkages: the unbounded orientation, composition, and the window -/
+
+/-- **The hyperbolic form.**  The bounded orientation is half the hyperbolic tangent
+of half the orientation: `boundedOrientation r = (1/2) * tanh ((log r) / 2)`.  This
+is the exact link between the bounded coordinate and the unbounded orientation
+`Real.log`. -/
+theorem boundedOrientation_eq_tanh {r : ℝ} (hr : 0 < r) :
+    boundedOrientation r = 1 / 2 * Real.tanh (Real.log r / 2) := by
+  have h2y : (2 * boundedOrientation r) ∈ Set.Ioo (-1 : ℝ) 1 := by
+    refine ⟨?_, ?_⟩
+    · have := boundedOrientation_floor hr; linarith
+    · have := boundedOrientation_ceiling hr; linarith
+  have hratio :
+      (1 + 2 * boundedOrientation r) / (1 - 2 * boundedOrientation r) = r := by
+    unfold boundedOrientation
+    have hr1 : r + 1 ≠ 0 := ne_of_gt (by linarith : (0 : ℝ) < r + 1)
+    field_simp
+    ring
+  have ha : Real.artanh (2 * boundedOrientation r) = Real.log r / 2 := by
+    rw [Real.artanh_eq_half_log (Set.mem_Icc.mpr ⟨le_of_lt h2y.1, le_of_lt h2y.2⟩),
+      hratio]
+    ring
+  have h := Real.tanh_artanh h2y
+  rw [ha] at h
+  linarith [h]
+
+/-- **The count form.**  The bounded orientation of `r ^ n` is half the hyperbolic
+tangent of `n` times half the orientation: iterating the orbit adds the (halved)
+orientation, so the bounded coordinate is additive along the register's count. -/
+theorem boundedOrientation_pow {r : ℝ} (hr : 0 < r) (n : ℕ) :
+    boundedOrientation (r ^ n) = 1 / 2 * Real.tanh ((n : ℝ) * Real.log r / 2) := by
+  rw [boundedOrientation_eq_tanh (pow_pos hr n), Real.log_pow]
+
+/-- **The hyperbolic addition law.**  `tanh (a + b) = (tanh a + tanh b) /
+(1 + tanh a * tanh b)`.  The composition rule that makes `boundedOrientation` a
+group-like coordinate. -/
+theorem tanh_add (a b : ℝ) :
+    Real.tanh (a + b) = (Real.tanh a + Real.tanh b) / (1 + Real.tanh a * Real.tanh b) := by
+  have hden : 1 + Real.tanh a * Real.tanh b ≠ 0 := by
+    have hval : 1 + Real.tanh a * Real.tanh b
+        = Real.cosh (a + b) / (Real.cosh a * Real.cosh b) := by
+      rw [Real.tanh_eq_sinh_div_cosh a, Real.tanh_eq_sinh_div_cosh b, Real.cosh_add]
+      field_simp
+    rw [hval]
+    exact ne_of_gt (div_pos (Real.cosh_pos _) (mul_pos (Real.cosh_pos a) (Real.cosh_pos b)))
+  rw [Real.tanh_eq_sinh_div_cosh (a + b), Real.sinh_add, Real.cosh_add,
+    Real.tanh_eq_sinh_div_cosh a, Real.tanh_eq_sinh_div_cosh b]
+  field_simp
+
+/-- **Composition (velocity-addition law).**  Multiplying multipliers adds their
+bounded orientations by the hyperbolic addition law:
+`boundedOrientation (r * s) = (x + y) / (1 + 4 x y)` with `x = boundedOrientation r`
+and `y = boundedOrientation s`.  The bounded coordinate is a group-like (relativistic
+velocity) coordinate on the positive multipliers. -/
+theorem boundedOrientation_mul {r s : ℝ} (hr : 0 < r) (hs : 0 < s) :
+    boundedOrientation (r * s)
+      = (boundedOrientation r + boundedOrientation s)
+        / (1 + 4 * boundedOrientation r * boundedOrientation s) := by
+  rw [boundedOrientation_eq_tanh (mul_pos hr hs),
+    Real.log_mul (ne_of_gt hr) (ne_of_gt hs),
+    boundedOrientation_eq_tanh hr, boundedOrientation_eq_tanh hs]
+  have harg : (Real.log r + Real.log s) / 2 = Real.log r / 2 + Real.log s / 2 := by ring
+  rw [harg, tanh_add]
+  ring
+
+/-- The inverse of the bounded orientation on the open window:
+`boundedOrientationInv y = (1 + 2y) / (1 - 2y)`. -/
+noncomputable def boundedOrientationInv (y : ℝ) : ℝ := (1 + 2 * y) / (1 - 2 * y)
+
+/-- The inverse stays positive on the window. -/
+theorem boundedOrientationInv_pos {y : ℝ} (hy : y ∈ Set.Ioo (-(1 / 2)) (1 / 2)) :
+    0 < boundedOrientationInv y := by
+  unfold boundedOrientationInv
+  apply div_pos <;> linarith [hy.1, hy.2]
+
+/-- **Right inverse.**  `boundedOrientation` undoes `boundedOrientationInv` on the
+window: every window value is attained. -/
+theorem boundedOrientation_right_inv {y : ℝ} (hy : y ∈ Set.Ioo (-(1 / 2)) (1 / 2)) :
+    boundedOrientation (boundedOrientationInv y) = y := by
+  have h1 : (1 : ℝ) - 2 * y ≠ 0 := by linarith [hy.2]
+  unfold boundedOrientation boundedOrientationInv
+  field_simp
+  ring
+
+/-- **Left inverse.**  `boundedOrientationInv` undoes `boundedOrientation` on the
+positive multipliers. -/
+theorem boundedOrientation_left_inv {r : ℝ} (hr : 0 < r) :
+    boundedOrientationInv (boundedOrientation r) = r := by
+  have hr1 : r + 1 ≠ 0 := ne_of_gt (by linarith : (0 : ℝ) < r + 1)
+  unfold boundedOrientationInv boundedOrientation
+  field_simp
+  ring
+
+/-- **The window is the range.**  `boundedOrientation` maps the positive multipliers
+exactly onto the open window `(-1/2, 1/2)`. -/
+theorem boundedOrientation_image :
+    boundedOrientation '' Set.Ioi (0 : ℝ) = Set.Ioo (-(1 / 2)) (1 / 2) := by
+  ext y
+  constructor
+  · rintro ⟨r, hr, rfl⟩
+    exact ⟨boundedOrientation_floor hr, boundedOrientation_ceiling hr⟩
+  · intro hy
+    exact ⟨boundedOrientationInv y, boundedOrientationInv_pos hy,
+      boundedOrientation_right_inv hy⟩
+
+/-- **Surjectivity onto the window.** -/
+theorem boundedOrientation_surjOn :
+    Set.SurjOn boundedOrientation (Set.Ioi (0 : ℝ)) (Set.Ioo (-(1 / 2)) (1 / 2)) :=
+  fun y hy => ⟨boundedOrientationInv y, boundedOrientationInv_pos hy,
+    boundedOrientation_right_inv hy⟩
+
+/-- **Order isomorphism.**  `boundedOrientation` is a bijection from the positive
+multipliers onto the open window: strictly increasing, onto, window-valued. -/
+theorem boundedOrientation_bijOn :
+    Set.BijOn boundedOrientation (Set.Ioi (0 : ℝ)) (Set.Ioo (-(1 / 2)) (1 / 2)) :=
+  ⟨fun _ hr => ⟨boundedOrientation_floor hr, boundedOrientation_ceiling hr⟩,
+   boundedOrientation_strictMonoOn.injOn, boundedOrientation_surjOn⟩
+
+/-- Formalised-facts register for the bounded-orientation linkages. -/
+def boundedOrientationLinkFacts : List String :=
+  [ "boundedOrientation_eq_tanh", "boundedOrientation_pow", "tanh_add",
+    "boundedOrientation_mul", "boundedOrientationInv_pos",
+    "boundedOrientation_right_inv", "boundedOrientation_left_inv",
+    "boundedOrientation_image", "boundedOrientation_surjOn",
+    "boundedOrientation_bijOn" ]
+
+/-- The linkage register has exactly ten entries. -/
+theorem boundedOrientationLinkFacts_length : boundedOrientationLinkFacts.length = 10 := by
   decide
 
 end PunoCalculus.OrientationBoundedness

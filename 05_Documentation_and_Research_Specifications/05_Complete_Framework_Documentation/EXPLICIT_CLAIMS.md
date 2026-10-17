@@ -244,7 +244,14 @@ window `(-1/2, 1/2)`: a strict floor `-1/2`, a midpoint `0` at `r = 1`, and a st
 ceiling `1/2` (`boundedOrientation_floor_midpoint_ceiling`), antisymmetric under
 `r ↦ 1/r`, strictly increasing, with the same sign as `log r`
 (`boundedOrientation_sign`) and the same wall reading
-(`boundedOrientation_reads_the_wall`). **Falsifier:** a model bounded with `r > 1`.
+(`boundedOrientation_reads_the_wall`). Its linkages are machine-checked too: it is
+exactly `(1/2) tanh (log r / 2)` (`boundedOrientation_eq_tanh`), additive along the
+register's count (`boundedOrientation_pow`), a bijection from the positive
+multipliers onto the window with inverse `(1 + 2y)/(1 - 2y)`
+(`boundedOrientation_image`, `boundedOrientation_bijOn`, `boundedOrientation_right_inv`),
+and a group-like velocity-addition coordinate
+`boundedOrientation (r * s) = (x + y)/(1 + 4xy)` (`boundedOrientation_mul`).
+**Falsifier:** a model bounded with `r > 1`.
 
 ## C12 — Two numbers close the register
 

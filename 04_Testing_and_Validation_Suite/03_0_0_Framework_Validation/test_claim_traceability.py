@@ -135,6 +135,10 @@ ENTRIES = [
             "boundedOrientation_ceiling", "boundedOrientation_floor_midpoint_ceiling",
             "boundedOrientation_antisymm", "boundedOrientation_strictMonoOn",
             "boundedOrientation_sign", "boundedOrientation_reads_the_wall",
+            "boundedOrientation_eq_tanh", "boundedOrientation_pow",
+            "boundedOrientation_mul", "boundedOrientation_right_inv",
+            "boundedOrientation_left_inv", "boundedOrientation_image",
+            "boundedOrientation_surjOn", "boundedOrientation_bijOn",
         ],
     }, ["register_ladder_certificates.py"]),
     ("C12", {

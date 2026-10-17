@@ -138,6 +138,20 @@ register's own tagging.
 | `OrientationBoundedness.geometric_bounded_iff` | propext, Classical.choice, Quot.sound |
 | `OrientationBoundedness.orientation_decides_boundedness` | propext, Classical.choice, Quot.sound |
 | `OrientationBoundedness.repelling_iff_unbounded` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientation_floor` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientation_ceiling` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientation_antisymm` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientation_strictMonoOn` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientation_sign` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientation_reads_the_wall` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientation_eq_tanh` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientation_pow` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.tanh_add` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientation_mul` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientation_right_inv` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientation_left_inv` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientation_image` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientation_bijOn` | propext, Classical.choice, Quot.sound |
 
 ### C12
 
