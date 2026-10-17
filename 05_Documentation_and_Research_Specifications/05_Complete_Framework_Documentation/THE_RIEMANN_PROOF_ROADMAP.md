@@ -19,7 +19,7 @@
 We present a complete logical chain from the 0/0 structure of the
 Riemann zeta function to the Riemann Hypothesis. The chain consists
 of five verified theorems and one analytical gap. If the gap is filled,
-RH follows immediately.
+RH *would* follow immediately if the gap were filled.
 
 The key insight: the functional equation xi(s) = xi(1-s) creates a
 self-duality that forces the xi function into a de Branges Hilbert
