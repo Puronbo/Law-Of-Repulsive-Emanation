@@ -49,6 +49,8 @@ follows from the 0/0 doctrine is **narrative**, kept outside this boundary (see
   `PunoCalculus/GreatAttractor.lean` (`criticalSmoothness`, `scalingWeight`,
   `fixedPoint_logSign`).
 
+*Interpretive note (structural, not physical):* A minimal trinity {-1,0,+1} maps heuristically to C12: 0 is the center/margin boundary (neutral crossing), -1 and +1 are the orientation sides (r<1 attracting/bounded, r>1 repelling/unbounded); order a is the scale that sets the rung s_crit(p)+(1-a). This is a heuristic correspondence within the register only (no claim to physical unification or Millennium settlement).
+
 **How far the correspondence goes (increment T2).** The order half is a genuine
 *bijection*: for a fixed form `p`, the map `a ↦ criticalSmoothness a p` is
 injective (recover the order, `a = 3/p - s`) and surjective — this is
