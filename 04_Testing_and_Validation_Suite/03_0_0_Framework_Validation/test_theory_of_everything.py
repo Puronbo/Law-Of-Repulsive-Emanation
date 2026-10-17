@@ -118,6 +118,13 @@ def test_doc_states_the_honesty_boundary():
     assert "OPEN" in doc, "program doc must keep the wall marked OPEN"
 
 
+def test_doc_states_t5_boundary_filter():
+    doc = _read(DOC)
+    assert "C39" in doc, "doc must name card C39+ expansion path"
+    assert "expressible via" in doc, "doc must require expressibility via (order, orientation)"
+    assert "disallowed" in doc or "cannot be expressed" in doc, "doc must state disallowed when not expressible"
+
+
 def test_doc_states_the_margin_antitone_hypothesis_is_open():
     doc = _read(DOC)
     assert re.search(r"antitone hypothesis is assumed", doc, re.I), (

@@ -168,11 +168,11 @@ two-numbers claim. Each is stated with its **falsifier**, so it can fail.
 
 | ID | Increment | Falsifier |
 |---|---|---|
-| **T1** | Extend the order family from the one-pattern slide to every card's own order. | a register brick whose rung is not `sCrit p + (1 - a)`. |
+| **T1** | Extend the order family from the one-pattern slide to every card's own order. | a register brick whose rung is not `sCrit p + (1 - a)`. **Coverage (current):** explicit shift family appears in `OnePattern` (`criticalCurve_through_ladder`), `GreatAttractor` (`criticalSmoothness_*`), and is aggregated in `TheoryOfEverything` (`order_sets_rung`, `order_sets_rung_bijective`). Many base bricks define only `sCrit` (order-1); extending the family means re-parameterizing each card’s order to satisfy the same affine shift. |
 | **T2** | Sharpen `twoNumbersClose` to a *bijection* (order/orientation recovered from the register state). | **Realized (negative):** order half is a bijection (`order_sets_rung_bijective`); orientation half is *not* injective (`orientation_not_injective_on_side`) — side does not recover orientation. No single-pair bijection. |
-| **T3** | Close the margin gap: prove `lambda(s)` antitone for the NS/Burgers family. | a Leray–Hopf solution with `lambda <= 0` but unbounded critical norm. |
+| **T3** | Close the margin gap: prove `lambda(s)` antitone for the NS/Burgers family. | a Leray–Hopf solution with `lambda <= 0` but unbounded critical norm. **Numerical evidence:** fractional Burgers shows a single sign flip with roughly monotone post-flip behavior across windows; fractional CLM shows multiple orientation flips (non-monotone `lambda(s)`) in sweep data, so antitonicity is **not universal** across fractionally-dissipated families. The margin uniqueness hypothesis remains **NS-specific** and **OPEN**. |
 | **T4** | Attach a numeric certificate to C12 as a whole (mirroring the per-card certificates). | **Done:** `theory_of_everything_certificates.py` exists, runs green (PASS), and is wired into C12 evidence/traceability. |
-| **T5** | Add a cross-domain mechanism card C39+ only if it is expressible via `(order, orientation)`. | a new mechanism that is not. |
+| **T5** | Add a cross-domain mechanism card C39+ only if it is expressible via `(order, orientation)`. | a new mechanism that is not. **Boundary rule (active):** any new card C39+ must satisfy the two-numbers reduction (rung/side functions of `(order, orientation)` only); adding a mechanism that cannot be expressed via `(order, orientation)` is disallowed by this program. |
 
 ---
 
