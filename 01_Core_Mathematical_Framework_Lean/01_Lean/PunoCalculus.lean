@@ -64,3 +64,4 @@ import PunoCalculus.NoetherDiscrete
 import PunoCalculus.UniverseGrowth
 import PunoCalculus.CriticalAmplitude
 import PunoCalculus.InformationBridge
+import PunoCalculus.InformationPhi

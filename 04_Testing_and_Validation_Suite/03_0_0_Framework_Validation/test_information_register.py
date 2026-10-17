@@ -17,7 +17,9 @@ This gate pins that honesty:
 4. it disclaims any physical claim and any Millennium claim;
 5. the companion script exists, runs green (exit 0, ``PASS``), and is stdlib-only;
 6. the two-state Lean instance (``PunoCalculus/InformationBridge.lean``) exists,
-   exposes its four declarations, imports cleanly, and stays free of ``sorry``.
+   exposes its four declarations, imports cleanly, and stays free of ``sorry``;
+7. the ``Phi`` construction (``PunoCalculus/InformationPhi.lean``) exists, exposes
+   its declarations, keeps the OPEN-claim caveat, imports cleanly, no ``sorry``.
 
 No Lean toolchain is required.
 
@@ -55,6 +57,16 @@ DECLS = [
     "resetCost_two",
     "resetCost_eq_neg_orientation",
     "orientation_reset_nonpos",
+]
+
+# The concrete dynamical 0/0 instance (the `Phi` construction).
+LEAN_PHI = os.path.join(LEAN_DIR, "PunoCalculus", "InformationPhi.lean")
+PHI_DECLS = [
+    "deficitRate_isRemovableValue",
+    "deficitRate_stateCounting",
+    "register_entropy_rate",
+    "Phi_bit_eraseCost",
+    "Phi_satisfies_claim",
 ]
 
 # Verified anchors the note must name.
@@ -126,6 +138,20 @@ def test_companion_script_runs_green():
     )
     assert "PASS" in (proc.stdout or ""), (
         f"{os.path.basename(SCRIPT)} produced no PASS marker"
+    )
+
+
+def test_phi_construction_brick():
+    assert os.path.isfile(LEAN_PHI), LEAN_PHI
+    text = _read(LEAN_PHI)
+    missing = [d for d in PHI_DECLS if d not in text]
+    assert not missing, f"InformationPhi.lean missing declarations: {missing}"
+    assert "sorry" not in text, "InformationPhi.lean must be sorry-free"
+    assert "missing entity" in text, (
+        "the Phi brick must keep the OPEN claim's named missing entity"
+    )
+    assert "import PunoCalculus.InformationPhi" in _read(LEAN_ROOT), (
+        "InformationPhi must be imported by the library root"
     )
 
 

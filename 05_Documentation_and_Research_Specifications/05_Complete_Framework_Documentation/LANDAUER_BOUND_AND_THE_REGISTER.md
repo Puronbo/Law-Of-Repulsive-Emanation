@@ -73,6 +73,30 @@ map `Phi` remains the named missing entity of §3.
 
 ---
 
+## 2c. A constructed `Phi`: the relaxation 0/0
+
+`PunoCalculus/InformationPhi.lean` sharpens this on a concrete dynamical `0/0`.
+The relaxation `x |-> r^x` has content deficit per unit time `(1 - r^x)/x`, a
+`0/0` at `x = 0` whose **removable value is `-orientation r` (card C17)**
+(`deficitRate_isRemovableValue`); for the state-counting register `r = 1/n` it is
+`log n` (`deficitRate_stateCounting`, `orientation_one_div`). On this system the
+map `Phi` is constructed explicitly, and the claim's three clauses are proved for
+the bit:
+
+* `Phi_freeRatio_eq_exp_neg_lambda` -- the removable value maps to the free-energy
+  ratio `exp (-lambda)`;
+* `Phi_entropyProd_eq_orientation`, `register_entropy_rate` -- the orientation is
+  the register's entropy-production reading;
+* `Phi_bit_eraseCost`, `Phi_satisfies_claim` -- the one-bit erase cost is
+  `k_B T log 2`.
+
+The wall that remains: this `Phi` is the register's *own model* of a thermodynamic
+state. Identifying it with a **measured physical system** is exactly the map
+`Phi` of §3, still the missing entity. The Landauer bound stays a cited input, not
+derived.
+
+---
+
 ## 3. The missing entity (what would have to be proved or measured)
 
 **Missing entity.** The map **`Phi`** -- a *validated physical instantiation of the
@@ -142,5 +166,7 @@ Recorded here only so they are not mistaken for supporting evidence.
   -- structural companion (prints the constraint, `PASS`).
 * `01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/InformationBridge.lean`
   -- the two-state Lean instance (§2b).
+* `01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/InformationPhi.lean`
+  -- the constructed `Phi` on the relaxation 0/0 (§2c).
 * `EXPLICIT_CLAIMS.md` / `CLAIM_TRACEABILITY.md` -- cards C10, C11, C17.
 * `landauer_orientation.py` -- the structural companion script.

@@ -32,6 +32,9 @@ ExplicitClaims -> CriticalLadder
 GreatAttractor -> CriticalLadder
 GreatAttractor -> ZeroFixedPoint
 InformationBridge -> OrientationLaw
+InformationPhi -> InformationBridge
+InformationPhi -> OrientationLaw
+InformationPhi -> RemovableValue
 LiouvilleBridge -> RemovableComplexBridge
 MillenniumBridge -> EcaIsometry
 OnePattern -> GreatAttractor

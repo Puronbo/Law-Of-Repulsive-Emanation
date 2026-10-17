@@ -54,6 +54,7 @@ imported by the root, fails the checker.
 | `GreatAttractor` | card | C26 | carries card(s) C26 |
 | `Hodge` | millennium-cert | — | numerical Hodge record; no settlement claim |
 | `InformationBridge` | information-bridge | — | two-state (bit) instance of the Landauer–register schema: `binaryEntropy_half` (`log 2`), `resetCost_two`, `resetCost_eq_neg_orientation` (cost = −k_B T·orientation), `orientation_reset_nonpos`; the physical map `Phi` stays the named missing entity |
+| `InformationPhi` | information-bridge | — | concrete dynamical 0/0 instance: the relaxation `(1 − r^x)/x` has removable value `−orientation r` (C17), `deficitRate_stateCounting` gives `log n` at `r = 1/n`; the constructed map `Phi` satisfies the claim's three clauses (`Phi_satisfies_claim`); the physical identification stays the missing entity |
 | `Legendre` | number-theory-cert | — | bounded Legendre certificate |
 | `LiouvilleBridge` | card | C24 | carries card(s) C24 |
 | `LogicBarrier` | card | C14 | carries card(s) C14 |
@@ -100,6 +101,6 @@ imported by the root, fails the checker.
 
 ## Coverage
 
-- **Modules on disk:** 65 (all imported by `PunoCalculus.lean`).
+- **Modules on disk:** 66 (all imported by `PunoCalculus.lean`).
 - **Card-carrying modules (`card`):** 38.
-- **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold / information-bridge):** 27.
+- **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold / information-bridge):** 28.
