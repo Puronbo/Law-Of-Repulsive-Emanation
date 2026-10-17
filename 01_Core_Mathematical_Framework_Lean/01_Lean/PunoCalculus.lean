@@ -66,3 +66,4 @@ import PunoCalculus.CriticalAmplitude
 import PunoCalculus.InformationBridge
 import PunoCalculus.InformationMixture
 import PunoCalculus.InformationPhi
+import PunoCalculus.InformationTime

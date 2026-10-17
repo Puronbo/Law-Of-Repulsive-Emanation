@@ -109,6 +109,19 @@ measurements exhibit, with no physical content attached:
 This is the classical scaffold that a measured realisation would have to
 instantiate; it does **not** identify any apparatus.
 
+## 4c. The time reading: `Phi` is a rate
+
+`PunoCalculus/InformationTime.lean` reads the same `Phi` as a **time evolution**
+(the reading of `EmergentTime.lean`, card C13): the register's time is the count
+`n` (`evolution_pow_nat`), the orientation `orientation r = log r` is the per-step
+**rate** (`orientation_evolution_one`), and the trinity `{-1, 0, +1}` is only the
+**arrow of time** -- decay / stationary / growth (`retention_lt_one_iff`,
+`orientation_arrow`). `Phi`'s free-energy ratio is the one-step propagator
+`e ^ (-(lambda n))` (`Phi_freeRatio_eq_evolution`) and its entropy-production
+reading is `-lambda n` (`Phi_entropyProd_eq_neg_rate`). This fixes `Phi`'s
+*shape* as a rate datum; it still does **not** identify the apparatus or the
+`k_B T log 2` cost (the measured residue of §5).
+
 ## 5. Falsifier (concrete, measured)
 
 A measured system, presented as a candidate `Phi`, that (a) is *not* a mixture --
@@ -137,5 +150,7 @@ candidate instantiation of `Phi`.
   -- the machine-checked mixture algebra (§4b).
 * `01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/InformationBridge.lean`
   / `InformationPhi.lean` -- the two-state and `Phi` bricks.
+* `01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/InformationTime.lean`
+  -- the time reading of `Phi` (§4c), linking to `EmergentTime` (C13).
 * `THEORY_OF_EVERYTHING.md` -- the register program (cards C1--C38; this note is
   not a card).

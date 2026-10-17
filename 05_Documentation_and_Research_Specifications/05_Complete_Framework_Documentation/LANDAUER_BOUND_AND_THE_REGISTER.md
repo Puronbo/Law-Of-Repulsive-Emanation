@@ -121,6 +121,33 @@ quantum. This is the scaffold a measured `Phi` would have to instantiate; it doe
 
 ---
 
+## 2e. The time reading: the orientation is a rate, the count is time
+
+`PunoCalculus/InformationTime.lean` reads the same `Phi` the way
+`EmergentTime.lean` (card C13) reads its ontology: as a **time evolution**.
+
+* The register's time is the count `n` and nothing else
+  (`EmergentTime.state_determined_by_count`); the flow `evolution rate t` is a
+  one-parameter semigroup (`evolution_add`) whose value at count `n` is the
+  `n`-fold iterate of its one-step map (`evolution_pow_nat`) -- "time is the
+  count".
+* The orientation `orientation r = log r` is the **per-step rate** (an inverse
+  time). `orientation_evolution_one` gives `orientation (one-step) = -rate`, and
+  `retention_lt_one_iff` / `orientation_arrow` show the trinity `{-1, 0, +1}` is
+  exactly the decay / stationary / growth **arrow of time** (`sign (-rate)`).
+* `Phi_freeRatio_eq_evolution` -- `Phi`'s free-energy ratio is the one-step
+  propagator `e ^ (-(lambda n))`; `Phi_entropyProd_eq_neg_rate` -- its
+  entropy-production reading is `-lambda n`; `orbit_eq_evolution` -- the
+  register's geometric orbit at count `n` is the time-`n` evolution with rate
+  `-orientation r`.
+
+So `Phi`'s *shape* is a time/rate datum (a one-step evolution with rate
+`lambda n = log n`), determined by the register. The measured apparatus and the
+`k_B T log 2` cost identification are still the missing entity's empirical half;
+the time reading relocates the residue, it does not remove it.
+
+---
+
 ## 3. The missing entity (what would have to be proved or measured)
 
 **Missing entity.** The map **`Phi`** -- a *validated physical instantiation of the
@@ -196,5 +223,7 @@ Recorded here only so they are not mistaken for supporting evidence.
   mixture decompositions (§2d).
 * `01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/InformationMixture.lean`
   -- the machine-checked mixture algebra (§2d).
+* `01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/InformationTime.lean`
+  -- the time reading of `Phi` (§2e), linking to `EmergentTime` (C13).
 * `EXPLICIT_CLAIMS.md` / `CLAIM_TRACEABILITY.md` -- cards C10, C11, C17.
 * `landauer_orientation.py` -- the structural companion script.

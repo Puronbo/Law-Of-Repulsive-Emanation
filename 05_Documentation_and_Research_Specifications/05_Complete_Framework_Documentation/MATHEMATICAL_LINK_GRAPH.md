@@ -36,6 +36,9 @@ InformationMixture -> InformationBridge
 InformationPhi -> InformationBridge
 InformationPhi -> OrientationLaw
 InformationPhi -> RemovableValue
+InformationTime -> EmergentTime
+InformationTime -> InformationPhi
+InformationTime -> OrientationLaw
 LiouvilleBridge -> RemovableComplexBridge
 MillenniumBridge -> EcaIsometry
 OnePattern -> GreatAttractor

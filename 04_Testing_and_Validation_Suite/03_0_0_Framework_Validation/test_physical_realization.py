@@ -39,6 +39,10 @@ LEAN = os.path.join(
     ROOT, "01_Core_Mathematical_Framework_Lean", "01_Lean", "PunoCalculus",
     "InformationMixture.lean",
 )
+LEAN_TIME = os.path.join(
+    ROOT, "01_Core_Mathematical_Framework_Lean", "01_Lean", "PunoCalculus",
+    "InformationTime.lean",
+)
 
 # Measured two-state systems the note must name.
 SYSTEMS = [
@@ -56,6 +60,13 @@ MIXTURES = [
 DECLS = [
     "entropy_mixture", "binaryEntropy_nonneg", "entropy_mixture_ge",
     "entropy_mixture_half",
+]
+
+# Declarations the time brick must expose.
+TIME_DECLS = [
+    "evolution_add", "orientation_evolution_one", "evolution_pow_nat",
+    "orientation_arrow", "Phi_freeRatio_eq_evolution",
+    "Phi_entropyProd_eq_neg_rate", "orbit_eq_evolution",
 ]
 
 
@@ -111,4 +122,23 @@ def test_mixture_brick_exists_and_is_wired():
     root = _read(LEAN_ROOT)
     assert "import PunoCalculus.InformationMixture" in root, (
         "InformationMixture.lean must be imported by the library root"
+    )
+
+
+def test_time_brick_exists_and_is_wired():
+    lean_time = os.path.join(
+        ROOT, "01_Core_Mathematical_Framework_Lean", "01_Lean", "PunoCalculus",
+        "InformationTime.lean",
+    )
+    assert os.path.isfile(lean_time), lean_time
+    text = _read(lean_time)
+    missing = [d for d in TIME_DECLS if d not in text]
+    assert not missing, f"InformationTime.lean missing declarations: {missing}"
+    assert "sorry" not in text, "the time brick must be sorry-free"
+    assert "EmergentTime" in text, (
+        "the time brick must link the C13 time module"
+    )
+    root = _read(LEAN_ROOT)
+    assert "import PunoCalculus.InformationTime" in root, (
+        "InformationTime.lean must be imported by the library root"
     )
