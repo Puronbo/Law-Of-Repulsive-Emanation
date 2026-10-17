@@ -123,7 +123,27 @@ instantiate; it does **not** identify any apparatus.
 `e ^ (-(lambda n))` (`Phi_freeRatio_eq_evolution`) and its entropy-production
 reading is `-lambda n` (`Phi_entropyProd_eq_neg_rate`). This fixes `Phi`'s
 *shape* as a rate datum; it still does **not** identify the apparatus or the
-`k_B T log 2` cost (the measured residue of §5).
+  `k_B T log 2` cost (the measured residue of §5).
+
+## 4d. The cause-and-effect reading: orientation is the causal arrow
+
+The natural-language name for the orientation sign is **cause and effect**. In
+the register the orientation `orientation r = log r` has sign in the trinity
+`{-1, 0, +1}` (`orientation_arrow`), and that sign is the only structure that
+orders events as *before -> after*. Physically that ordering is the
+thermodynamic arrow: Rovelli, "How oriented causation is rooted into
+thermodynamics" (*Philosophy of Physics* **1**, 46 (2023), DOI
+10.31389/pop.46), argues that the arrow of causation (cause precedes effect) is
+grounded in -- and *only* in -- the entropy gradient. The erase is the cause;
+the irreversible heat is the effect, and its floor is the Landauer cost
+`k_B T log 2` (§1). The thermal-time reading (Connes--Rovelli 1994) makes the
+same point constructively: the time flow is the modular flow of the state, so the
+causal order is read off the state, not assumed.
+
+Hence the register's arrow `sign (orientation r)` and the physical causal arrow
+are the *same* datum, both fixed by the entropy gradient. This still does **not**
+identify the apparatus (the missing entity of §5); it states only what, in the
+register, the missing entity's orientation sign would *mean*.
 
 ## 5. Falsifier (concrete, measured)
 
@@ -160,6 +180,7 @@ physical or Millennium claim.
 | Ciampini et al., levitated nanosphere | *Phys. Rev. Research* **7**, 043321 (2025); DOI 10.1103/r81x-zblx |
 | Aimet et al., quantum many-body Landauer | *Nature Physics* **21**, 1326 (2025); DOI 10.1038/s41567-025-02930-9; arXiv:2407.21690 |
 | Xue et al., population/coherence split | *Phys. Rev. A* **110**, 042204 (2024); DOI 10.1103/PhysRevA.110.042204 |
+| Rovelli, causation rooted in thermodynamics | *Philosophy of Physics* **1**, 46 (2023); DOI 10.31389/pop.46 |
 
 Three corrections fall out of this pass:
 

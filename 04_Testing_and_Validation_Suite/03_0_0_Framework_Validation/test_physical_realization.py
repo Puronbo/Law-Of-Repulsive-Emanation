@@ -56,6 +56,9 @@ MIXTURES = [
     "Aimet", "2407.21690",
 ]
 
+# Causal-arrow (cause-and-effect) reading the note must name.
+CAUSATION = ["Rovelli", "10.31389/pop.46", "cause and effect", "entropy gradient"]
+
 # Declarations the mixture brick must expose.
 DECLS = [
     "entropy_mixture", "binaryEntropy_nonneg", "entropy_mixture_ge",
@@ -96,6 +99,12 @@ def test_note_names_the_mixture_decompositions():
     low = text.lower()
     missing = [m for m in MIXTURES if m.lower() not in low]
     assert not missing, f"note does not name the mixture decompositions: {missing}"
+
+
+def test_note_names_the_causal_arrow_reading():
+    low = _read(DOC).lower()
+    missing = [c for c in CAUSATION if c.lower() not in low]
+    assert not missing, f"note does not name the causal-arrow reading: {missing}"
 
 
 def test_note_states_open_with_missing_entity_and_falsifier():
