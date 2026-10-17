@@ -32,21 +32,21 @@ channels -- which is the structure `PunoCalculus/InformationMixture.lean` checks
 |---|---|---|---|
 | Colloidal bead in a double-well trap | optical tweezers | `⟨Q⟩ → 0.72 k_B T` vs the `0.693 k_B T` bound | Bérut et al., *Nature* **483**, 187 (2012), DOI 10.1038/nature10872 |
 | Electrophoretic bead in a "virtual" trap | feedback trap | information-to-energy conversion at the bit | Jun, Gavrilov, Bechhoefer, *PRL* **113**, 190601 (2014) |
-| Single-electron box (SEB) | one-electron manipulation | one-bit manipulation in a nanoscale device | Koski et al., *PRL* **113**, 260601 (2014) |
+| Single-electron box (SEB) | one-electron manipulation | one-bit manipulation in a nanoscale device | Koski et al., *PNAS* **111**, 13786 (2014), DOI 10.1073/pnas.1406966111 |
 | Nanomagnetic memory cells | thermally activated switching | reset heat near the bit bound | Hong et al., *Sci. Adv.* **2**, e1501492 (2016) |
 | Molecular nanomagnet | single-molecule magnet | reset work `≈ ln 2` | Gaudenzi et al., *Nat. Phys.* **14**, 565 (2018), DOI 10.1038/s41567-018-0070-7 |
 | Trapped ion | single-atom engine | Landauer bound in a quantum two-level system | Yan et al., *PRL* **120**, 210601 (2018) |
 | Superconducting qubit + cavity | Maxwell-demon memory (two subsystems) | work below the bound; memory entropy `≫ ln 2` | Cottet et al., *PNAS* **114**, 7561 (2017) |
 | Superconducting flux logic | single-flux-quantum bits | `W = 1.25 k_T`, `≈ 5.4×` the bound | Saira et al., *Phys. Rev. Research* **2**, 013249 (2020) |
 | Levitated nanosphere | optomechanical memory | nonequilibrium erasure below the bound (negative heat) | Ciampini et al., *Phys. Rev. Research* **7**, 043321 (2025), DOI 10.1103/r81x-zblx |
-| DNA hairpin | single-molecule folding | resetting below `k_B T ln 2` (feedback) | Ribezzi-Crivellari & Ritort, *Nat. Phys.* **15**, 660 (2019) |
-| Underdamped oscillator | optomechanical | information-engine bounds | Dago et al., *PRL* **126**, 140601 (2021) |
+| DNA hairpin | single-molecule folding | continuous Maxwell demon: work extraction bounded by information content | Ribezzi-Crivellari & Ritort, *Nat. Phys.* **15**, 660 (2019), DOI 10.1038/s41567-019-0481-0 |
+| Underdamped micromechanical oscillator | double-well feedback trap | Landauer bound reached to `1%` | Dago et al., *PRL* **126**, 170601 (2021), DOI 10.1103/PhysRevLett.126.170601 |
 
 Each measures the *cost* side (the `k_B T ln 2` quantum and its deviations). None
 constructs `Phi`: none relates the register's removable value `lambda` (C17) or
 orientation `r` (C10/C11) to the measured cost. Bibliographic details here are
-recorded as a working list; the entries re-checked in this pass are collected in
-§7 (verified anchors), and the remaining ones are flagged there as unverified.
+recorded as a working list; every entry cited in this note is collected and
+re-checked in §7 (verified anchors).
 
 ## 3. Is the measured system a mixture of two or more?
 
@@ -145,6 +145,13 @@ are the *same* datum, both fixed by the entropy gradient. This still does **not*
 identify the apparatus (the missing entity of §5); it states only what, in the
 register, the missing entity's orientation sign would *mean*.
 
+The register half of this reading is machine-checked:
+`InformationTime.orientation_sign_iff` classifies the base
+(`r < 1`, `r = 1`, `1 < r`), and `InformationTime.orientation_arrow_is_causal`
+proves that increasing the count by one moves the orbit in the direction that
+sign fixes -- contraction decreases, center is stationary, expansion increases --
+so `sign (orientation r)` is the register's ordered *before -> after* datum.
+
 ## 5. Falsifier (concrete, measured)
 
 A measured system, presented as a candidate `Phi`, that (a) is *not* a mixture --
@@ -172,17 +179,21 @@ physical or Millennium claim.
 |---|---|
 | Bérut et al., colloidal bead | *Nature* **483**, 187 (2012); DOI 10.1038/nature10872 |
 | Jun, Gavrilov, Bechhoefer, feedback trap | *Phys. Rev. Lett.* **113**, 190601 (2014) |
+| Koski et al., single-electron box (Szilard engine) | *PNAS* **111**, 13786 (2014); DOI 10.1073/pnas.1406966111 |
+| Koski et al., on-chip Maxwell's demon (two coupled devices) | *Phys. Rev. Lett.* **115**, 260602 (2015); DOI 10.1103/PhysRevLett.115.260602 |
 | Hong, Lambson, Dhuey, Bokor, nanomagnetic bits | *Sci. Adv.* **2**, e1501492 (2016) |
 | Gaudenzi et al., molecular nanomagnet | *Nat. Phys.* **14**, 565 (2018); DOI 10.1038/s41567-018-0070-7 |
 | Yan et al., single-atom quantum Landauer | *Phys. Rev. Lett.* **120**, 210601 (2018); DOI 10.1103/PhysRevLett.120.210601; arXiv:1803.10424 |
 | Cottet et al., quantum Maxwell demon (qubit + cavity) | *PNAS* **114**, 7561 (2017); DOI 10.1073/pnas.1704827114; arXiv:1702.05161 |
+| Ribezzi-Crivellari & Ritort, continuous Maxwell demon (DNA hairpin) | *Nat. Phys.* **15**, 660 (2019); DOI 10.1038/s41567-019-0481-0; arXiv:2005.11984 |
 | Saira et al., superconducting flux logic | *Phys. Rev. Research* **2**, 013249 (2020); DOI 10.1103/PhysRevResearch.2.013249 |
+| Dago et al., underdamped micromechanical oscillator | *Phys. Rev. Lett.* **126**, 170601 (2021); DOI 10.1103/PhysRevLett.126.170601 |
 | Ciampini et al., levitated nanosphere | *Phys. Rev. Research* **7**, 043321 (2025); DOI 10.1103/r81x-zblx |
 | Aimet et al., quantum many-body Landauer | *Nature Physics* **21**, 1326 (2025); DOI 10.1038/s41567-025-02930-9; arXiv:2407.21690 |
 | Xue et al., population/coherence split | *Phys. Rev. A* **110**, 042204 (2024); DOI 10.1103/PhysRevA.110.042204 |
 | Rovelli, causation rooted in thermodynamics | *Philosophy of Physics* **1**, 46 (2023); DOI 10.31389/pop.46 |
 
-Three corrections fall out of this pass:
+Five corrections fall out of this pass:
 
 * The trapped-ion reference in §2/§3 is **`Phys. Rev. Lett.` 120, 210601 (2018)**,
   "Single-Atom Demonstration of the Quantum Landauer Principle"
@@ -191,14 +202,18 @@ Three corrections fall out of this pass:
   corrected.
 * The molecular-nanomagnet reference is **`Nat. Phys.` 14, 565 (2018)**
   (DOI 10.1038/s41567-018-0070-7), not the previously listed `PRL 120, 117001`.
+* The single-electron-box reference is **`PNAS` 111, 13786 (2014)**
+  (DOI 10.1073/pnas.1406966111), not the previously listed `PRL 113, 260601`
+  (the two-device "on-chip Maxwell demon" paper is the separate
+  **`PRL` 115, 260602 (2015)**, DOI 10.1103/PhysRevLett.115.260602).
+* The underdamped-oscillator reference is **`PRL` 126, 170601 (2021)**
+  (DOI 10.1103/PhysRevLett.126.170601), not the previously listed
+  `PRL 126, 140601`.
 * The levitated-nanosphere entry is *nonequilibrium* erasure **below** the bound
   (negative heat), not a "single-quantum" erasure.
 
-Still **unverified** in this pass (retained only as working-list placeholders):
-Koski et al. (the note cites both a 2014 single-electron-box device and a 2015
-two-device result), Ribezzi-Crivellari & Ritort (*Nat. Phys.* **15**, 660 (2019)),
-and Dago et al. (*Phys. Rev. Lett.* **126**, 140601 (2021)). These should be
-checked before any external use.
+Every anchor cited in this note is now checked against publisher/DOI records;
+none remain unverified.
 
 ---
 

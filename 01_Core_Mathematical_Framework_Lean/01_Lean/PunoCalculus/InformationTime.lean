@@ -36,6 +36,11 @@ The brick makes this precise and machine-checked:
 * `orbit_eq_evolution` -- the register's geometric orbit at count `n`
   (`A * r ^ n`) is the time-`n` evolution with rate `-orientation r`, the
   multiplicative analogue of `EmergentTime.transfer_iterate`.
+* `orientation_sign_iff`, `orientation_arrow_is_causal` -- the sign of the
+  orientation is the register's *cause-and-effect* datum: the trinity classifies the
+  base (`r < 1`, `r = 1`, `1 < r`), and increasing the count by one moves the orbit
+  in the direction that sign fixes (contraction = decrease, center = stationary,
+  expansion = increase).
 
 What this establishes is only the *shape* of `Phi` as a time/rate datum (already
 determined by the register).  It does **not** identify a measured apparatus, and
@@ -48,7 +53,7 @@ noncomputable section
 
 namespace PunoCalculus.InformationTime
 
-open PunoCalculus.OrientationLaw (orientation)
+open PunoCalculus.OrientationLaw (orientation geometricOrbit)
 open PunoCalculus.InformationPhi (Phi lambda)
 
 /-- The one-parameter time flow: content relaxing at rate `rate` retains
@@ -105,6 +110,64 @@ theorem orientation_arrow (rate : ℝ) :
   rw [orientation_evolution_one]
   refine ⟨?_, ?_, ?_⟩ <;> constructor <;> intro h <;> linarith
 
+/-- **The orientation trinity, in terms of the base `r`.**  For a positive base the
+sign of the orientation `log r` classifies the orbit directly: negative =
+contraction (`r < 1`), zero = center (`r = 1`), positive = expansion (`1 < r`). -/
+theorem orientation_sign_iff (r : ℝ) (hr : 0 < r) :
+    (orientation r < 0 ↔ r < 1) ∧
+    (orientation r = 0 ↔ r = 1) ∧
+    (0 < orientation r ↔ 1 < r) := by
+  refine ⟨?_, ?_, ?_⟩
+  · constructor
+    · intro h
+      have h' : Real.log r < Real.log 1 := by rw [Real.log_one]; exact h
+      exact (Real.log_lt_log_iff hr zero_lt_one).mp h'
+    · intro h
+      have h' : Real.log r < Real.log 1 := (Real.log_lt_log_iff hr zero_lt_one).mpr h
+      rwa [Real.log_one] at h'
+  · constructor
+    · intro h
+      have h' : Real.exp (orientation r) = Real.exp 0 := by rw [h, Real.exp_zero]
+      rwa [orientation, Real.exp_log hr, Real.exp_zero] at h'
+    · intro h
+      rw [h, orientation, Real.log_one]
+  · constructor
+    · intro h
+      have h' : Real.log 1 < Real.log r := by rw [Real.log_one]; exact h
+      exact (Real.log_lt_log_iff zero_lt_one hr).mp h'
+    · intro h
+      have h' : Real.log 1 < Real.log r := (Real.log_lt_log_iff zero_lt_one hr).mpr h
+      rwa [Real.log_one] at h'
+
+/-- **The orientation sign is the causal arrow (cause -> effect).**  Stepping the
+count from `n` to `n + 1` -- a cause and its immediate effect -- moves the orbit in
+the direction fixed by `sign (orientation r)`: contraction (`orientation r < 0`) is
+monotone decrease, center (`= 0`) is stationary, expansion (`> 0`) is monotone
+increase.  Hence `sign (orientation r)` is the register's ordered *before -> after*
+datum, i.e. its causal arrow. -/
+theorem orientation_arrow_is_causal {r A : ℝ} (hr : 0 < r) (hA : 0 < A) :
+    (0 < orientation r → ∀ n, geometricOrbit r A n < geometricOrbit r A (n + 1)) ∧
+    (orientation r = 0 → ∀ n, geometricOrbit r A (n + 1) = geometricOrbit r A n) ∧
+    (orientation r < 0 → ∀ n, geometricOrbit r A (n + 1) < geometricOrbit r A n) := by
+  obtain ⟨hlt, heq, hgt⟩ := orientation_sign_iff r hr
+  have hpow : ∀ n : ℕ, 0 < r ^ n := fun n => pow_pos hr n
+  refine ⟨?_, ?_, ?_⟩
+  · intro hpos n
+    have hr1 : 1 < r := hgt.mp hpos
+    have : r ^ n < r ^ n * r := by nlinarith [hpow n, hr1]
+    calc geometricOrbit r A n = r ^ n * A := by rw [geometricOrbit]
+      _ < (r ^ n * r) * A := mul_lt_mul_of_pos_right this hA
+      _ = geometricOrbit r A (n + 1) := by rw [geometricOrbit, pow_succ]
+  · intro hzero n
+    have hr1 : r = 1 := heq.mp hzero
+    rw [geometricOrbit, geometricOrbit, hr1, one_pow, one_pow]
+  · intro hneg n
+    have hr1 : r < 1 := hlt.mp hneg
+    have : r ^ n * r < r ^ n := by nlinarith [hpow n, hr1]
+    calc geometricOrbit r A (n + 1) = r ^ n * r * A := by rw [geometricOrbit, pow_succ]
+      _ < r ^ n * A := mul_lt_mul_of_pos_right this hA
+      _ = geometricOrbit r A n := by rw [geometricOrbit]
+
 /-- **The one-step retention is `r`.**  For rate `-orientation r`, the one-step
 flow is exactly `r`. -/
 theorem evolution_orientation_one (r : ℝ) (hr : 0 < r) :
@@ -138,10 +201,11 @@ theorem orbit_eq_evolution (A r : ℝ) (n : ℕ) (hr : 0 < r) :
 def informationTimeFacts : List String :=
   [ "evolution_zero", "evolution_add", "orientation_evolution_one",
     "evolution_pow_nat", "retention_lt_one_iff", "orientation_arrow",
+    "orientation_sign_iff", "orientation_arrow_is_causal",
     "Phi_freeRatio_eq_evolution", "Phi_entropyProd_eq_neg_rate",
     "orbit_eq_evolution" ]
 
-/-- The register has exactly nine entries. -/
-theorem informationTimeFacts_length : informationTimeFacts.length = 9 := by decide
+/-- The register has exactly eleven entries. -/
+theorem informationTimeFacts_length : informationTimeFacts.length = 11 := by decide
 
 end PunoCalculus.InformationTime

@@ -68,7 +68,8 @@ DECLS = [
 # Declarations the time brick must expose.
 TIME_DECLS = [
     "evolution_add", "orientation_evolution_one", "evolution_pow_nat",
-    "orientation_arrow", "Phi_freeRatio_eq_evolution",
+    "orientation_arrow", "orientation_sign_iff", "orientation_arrow_is_causal",
+    "Phi_freeRatio_eq_evolution",
     "Phi_entropyProd_eq_neg_rate", "orbit_eq_evolution",
 ]
 
