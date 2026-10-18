@@ -87,7 +87,9 @@ fails when any row is stale by > 365 days.
 - **as_of:** 2026-10-18
 - **Reduction:** (1,1) Lefschetz; codim>=2 open (quintic threefold canonical example).
 - **Barrier:** no known geometric construction producing algebraic cycles representing general (2,1) Hodge classes.
-- **Missing:** algebraic cycle construction for codim>=2 classes, not computation.
+- **Known:** Lefschetz (1924), Murty (1979), Clemens (1984), Griffiths (1984).
+- **Missing (the object that does not exist as a proof):** a geometric construction that produces, for the relevant (2,1) Hodge classes on a smooth projective variety (e.g. quintic threefold), explicit algebraic cycles with nonzero projection onto those components, or a theorem showing the obstruction is unavoidable in a given class. Must specify the target variety/class.
+- **Falsifier:** the constructed cycle has zero Hodge-theoretic pairing with the claimed (2,1) forms, or the proposed construction fails on the standard example.
 
 ## G8 — Riemann Hypothesis
 - **Tier:** B (Millennium scope)
