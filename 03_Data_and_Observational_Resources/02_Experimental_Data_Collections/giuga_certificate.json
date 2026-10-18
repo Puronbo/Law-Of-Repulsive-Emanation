@@ -1,0 +1,76 @@
+{
+  "experiment": "giuga_counterexample_search",
+  "bound": 100000,
+  "giuga_numbers": [
+    {
+      "n": 30,
+      "prime_factors": [
+        2,
+        3,
+        5
+      ],
+      "is_carmichael": false
+    },
+    {
+      "n": 858,
+      "prime_factors": [
+        2,
+        3,
+        11,
+        13
+      ],
+      "is_carmichael": false
+    },
+    {
+      "n": 1722,
+      "prime_factors": [
+        2,
+        3,
+        7,
+        41
+      ],
+      "is_carmichael": false
+    },
+    {
+      "n": 66198,
+      "prime_factors": [
+        2,
+        3,
+        11,
+        17,
+        59
+      ],
+      "is_carmichael": false
+    }
+  ],
+  "giuga_numbers_value": [
+    30,
+    858,
+    1722,
+    66198
+  ],
+  "counterexamples_found": [],
+  "honest_wall": "Finite range only: no counterexample to Giuga's conjecture below 100000 (the four known Giuga numbers up to 100000 are all non-Carmichael). Giuga's conjecture stays OPEN; a counterexample would need >= 19908 digits (Borwein-Maitland-Skerritt 2013), and whether there are infinitely many Giuga numbers is likewise open.",
+  "known_giuga_numbers": [
+    30,
+    858,
+    1722,
+    66198,
+    2214408306,
+    24423128562,
+    432749205173838,
+    14737133470010574,
+    550843391309130318,
+    244197000982499715087866346,
+    554079914617070801288578559178,
+    1910667181420507984555759916338506
+  ],
+  "references": [
+    "Giuga 1950 (primality conjecture)",
+    "Korselt 1899 (Carmichael criterion)",
+    "Borwein, Borwein, Borwein, Girgensohn 1996 (bound 13800 digits)",
+    "Borwein, Maitland, Skerritt, INTEGERS 13 (2013) (bound 19908 digits)",
+    "Alford, Granville, Pomerance 1994 (infinitely many Carmichael numbers)",
+    "OEIS A007850 (Giuga numbers)"
+  ]
+}

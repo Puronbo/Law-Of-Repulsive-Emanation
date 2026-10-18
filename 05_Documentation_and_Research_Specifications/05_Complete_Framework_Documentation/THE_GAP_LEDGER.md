@@ -427,3 +427,17 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Known:** Euclid-Euler (even perfect numbers); Lucas (1876) / Lehmer (1930s) test; 52 Mersenne primes known as of 2025; largest 2^136279841 - 1 (GIMPS / Luke Durant, Oct 2024); all exponents below 136,279,841 tested at least once (2025).
 - **Missing (the object that does not exist as a proof):** a proof that infinitely many (or only finitely many) M_p are prime -- no unconditional result; finite Lucas-Lehmer certificate only for exponents up to pmax.
 - **Falsifier:** a proof that only finitely many M_p are prime, or an infinitude proof.
+
+## G30 - Giuga's conjecture (Giuga-and-Carmichael criterion)
+- **Tier:** B
+- **Subject:** Giuga's conjecture (Giuga-and-Carmichael criterion)
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/giuga_certificate.py
+- **Pin:** test_giuga_is_a_finite_certificate
+- **as_of:** 2026-10-18
+- **Reduction:** drafting the certificate is decidable: enumerate the Giuga numbers (composite n with p | (n/p - 1) for every prime p | n, i.e. sum_{k=1}^{n-1} k^{phi(n)} = -1 (mod n)) below a bound, then test each with Korselt's criterion; a Giuga number that is also Carmichael is exactly a counterexample to Giuga's conjecture, and none occurs below the bound.
+- **Barrier:** the search is finite while the conjecture is universal; no known structure rules out a counterexample, which would have to be simultaneously squarefree, Korselt-compliant (Carmichael) and satisfy the far stronger p^2(p-1) | (n - p) condition for every prime p | n.
+- **Known:** Giuga numbers 30, 858, 1722, 66198, 2214408306, ... (13 known, complete through the 12th term, OEIS A007850); all known Giuga numbers are even and it is unknown whether infinitely many exist or whether any odd one exists; every counterexample to Giuga's conjecture must have at least 19908 decimal digits (Borwein-Maitland-Skerritt, INTEGERS 13 (2013)); Alford-Granville-Pomerance (1994) proved there are infinitely many Carmichael numbers, and Luca-Pomerance-Shparlinski bound the Giuga count by O(X^{1/2} / log X).
+- **Missing (the object that does not exist as a proof):** an unconditional proof that no composite n is both a Giuga number and a Carmichael number (equivalently that sum_{k=1}^{n-1} k^{n-1} != -1 (mod n) for every composite n); also nothing settles the infinitude of Giuga numbers or the existence of an odd Giuga number.
+- **Falsifier:** a single composite n with p^2 (p-1) | (n - p) for every prime p | n (i.e. both Giuga and Carmichael) would refute Giuga's conjecture; a Giuga number <= 10^5 that is also Carmichael would refute the finite certificate's claim.

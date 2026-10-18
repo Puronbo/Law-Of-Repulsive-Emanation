@@ -584,3 +584,25 @@ def test_gap_row_forge_applies_end_to_end(tmp_path):
 
 
 
+
+
+def test_giuga_is_a_finite_certificate():
+    """G30: an exact search finds no counterexample to Giuga's conjecture below
+    10**5 -- the four Giuga numbers there (30, 858, 1722, 66198) are each
+    non-Carmichael, so Giuga's conjecture (equivalently, no number is both a
+    Giuga and a Carmichael number) holds to the bound and stays OPEN beyond it.
+    """
+    import importlib.util
+    path = os.path.join(
+        ROOT, "02_Experimental_Implementations_and_Verification",
+        "06_Miscellaneous_Experiments", "giuga_certificate.py")
+    spec = importlib.util.spec_from_file_location("_giuga_cert", path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+
+    nums = mod.giuga_numbers(10 ** 5)
+    assert [n for n, _, _ in nums] == [30, 858, 1722, 66198]
+    assert all(c is False for _, _, c in nums)
+    assert mod.is_giuga(30, [(2, 1), (3, 1), (5, 1)]) is True
+    assert mod.is_giuga(6, [(2, 1), (3, 1)]) is False
+    assert mod.is_carmichael(561, [(3, 1), (11, 1), (17, 1)]) is True
