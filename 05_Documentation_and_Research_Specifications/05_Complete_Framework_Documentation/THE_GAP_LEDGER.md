@@ -14,6 +14,7 @@ fails when any row is stale by > 365 days.
 - **Status:** RESEARCHED
 - **Related cards:** C3, C8-open
 - **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/NavierStokes.lean
+- **Pin:** test_ledger_artifacts_attach_no_sorry
 - **as_of:** 2026-10-18
 - **Reduction:** `u ∈ L^∞_tL²_x ∩ L²_tḢ¹_x` (Leray–Hopf) → need unconditional scale-critical control (`L^p_tL^q_x`, `2/p+3/q<=1`; `L^∞_tL³_x` closed by ESS 2003, `BMO⁻¹` small-data only).
 - **Known:** Leray (1934), LPS (1959/63/67), ESS (2003), Kato (1984), Koch–Tataru (2001), CKN (1982), Vasseur (2007), Gustafson–Kang–Tsai (2007).
@@ -27,6 +28,7 @@ fails when any row is stale by > 365 days.
 - **Status:** RESEARCHED
 - **Related cards:** C3, C8-open
 - **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/SerrinLadder.lean
+- **Pin:** test_ledger_artifacts_attach_no_sorry
 - **as_of:** 2026-10-18
 - **Reduction:** the monotonicity of `λ(s)` (in the scaling order `s`) is assumed (T3 OPEN) to close the margin gap and to align the endpoint ladder.
 - **Barrier:** equivalence of all `2/p+3/q=1` endpoint points does not by itself imply `λ(s)` antitone for the NS/Burgers family. The scaling map identifies norms only up to constants; monotonicity requires genuine endpoint embeddings for the concrete family, not just scale invariance.
@@ -40,6 +42,7 @@ fails when any row is stale by > 365 days.
 - **Status:** RESEARCHED
 - **Related cards:** C3, C8-open
 - **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/MillenniumBridge.lean
+- **Pin:** test_ledger_artifacts_attach_no_sorry
 - **as_of:** 2026-10-18
 - **Reduction:** the single open content recurs identically across four readings (the "bridge barrier"). If it is the same obstruction, the gap should reduce to one constructive reading.
 - **Barrier:** identifying equivalence does not force constructivity — the isomorphism is structural, not algorithmic for producing the missing a priori control.
@@ -53,6 +56,7 @@ fails when any row is stale by > 365 days.
 - **Status:** RESEARCHED
 - **Related cards:** C17, C10
 - **Proof attempt:** citation-only - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/InformationPhi.lean
+- **Pin:** test_ledger_artifacts_attach_no_sorry
 - **as_of:** 2026-10-18
 - **Reduction:** `InformationPhi.lean` documents the register entropy production/orientation; the bound `k_B T log 2` is cited as input.
 - **Barrier:** model is register-internal (not a measured result); operational definition of the observable is missing.
@@ -79,6 +83,7 @@ fails when any row is stale by > 365 days.
 - **Status:** RESEARCHED
 - **Related cards:** []
 - **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/BSD.lean
+- **Pin:** test_ledger_artifacts_attach_no_sorry
 - **as_of:** 2026-10-18
 - **Reduction:** rank<=1 Kolyvagin; rank>=2 needs Euler system detecting two independent Heegner classes.
 - **Barrier:** Euler system only generates one per imaginary quadratic field; no known rank>=2 Euler system.
@@ -92,6 +97,7 @@ fails when any row is stale by > 365 days.
 - **Status:** RESEARCHED
 - **Related cards:** []
 - **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Hodge.lean
+- **Pin:** test_ledger_artifacts_attach_no_sorry
 - **as_of:** 2026-10-18
 - **Reduction:** (1,1) Lefschetz; codim>=2 open (quintic threefold canonical example).
 - **Barrier:** no known geometric construction producing algebraic cycles representing general (2,1) Hodge classes.
@@ -148,6 +154,7 @@ fails when any row is stale by > 365 days.
 - **Status:** RESEARCHED
 - **Related cards:** []
 - **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/MassGap.lean
+- **Pin:** test_ledger_artifacts_attach_no_sorry
 - **as_of:** 2026-10-18
 - **Reduction:** gap to rigorous 4D YM construction + spectral gap remains.
 - **Barrier:** constructive quantum field theory in 4D nonabelian: renormalization + mass gap unproven in a mathematically rigorous sense.

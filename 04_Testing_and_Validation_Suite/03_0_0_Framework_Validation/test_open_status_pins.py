@@ -113,6 +113,31 @@ def test_lean_open_markers_pinned_and_no_sorry():
         assert "sorry" not in re.sub(r"`sorry`", "", src)
 
 
+def test_ledger_artifacts_attach_no_sorry():
+    """Gate-D live pin (general): every ``.lean`` artifact named by a ledger
+    ``Proof attempt:`` line is real and attaches no ``sorry`` in code.  The only
+    permitted occurrence is the literal `` `sorry` `` inside prose/comments."""
+    ledger = os.path.join(
+        ROOT,
+        "05_Documentation_and_Research_Specifications",
+        "05_Complete_Framework_Documentation",
+        "THE_GAP_LEDGER.md",
+    )
+    with open(ledger, encoding="utf-8") as fp:
+        text = fp.read()
+    attempts = [ln for ln in text.splitlines() if "**Proof attempt:**" in ln]
+    assert attempts, "no Proof attempt lines in ledger"
+    lean = set()
+    for ln in attempts:
+        lean.update(re.findall(r"[\w./]+\.lean", ln))
+    assert len(lean) >= 10, sorted(lean)
+    for rel in sorted(lean):
+        sub = os.path.relpath(
+            rel, "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus")
+        src = _lean(sub.replace("\\", "/"))
+        assert "sorry" not in re.sub(r"`sorry`", "", src), rel
+
+
 def test_path_drift_gates_emit_centrally():
     for rel in (
         "02_Dark_Energy_0_0_Framework/log_limits_0_over_0.py",

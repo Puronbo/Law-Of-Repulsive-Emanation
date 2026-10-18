@@ -89,11 +89,8 @@ def _tracked_files():
             ['git', 'ls-files'], cwd=ROOT, stderr=subprocess.DEVNULL)
     except Exception:
         return None
-        return {line.strip().replace('\\', '/')
-                for line in out.decode('utf-8', 'replace').splitlines() if line.strip()}
-
-#: controlled vocabulary for the Proof-attempt kind (Gate D)
-PROOF_KINDS = {'certificate', 'partial', 'no-go', 'citation-only', 'none'}
+    return {line.strip().replace('\\', '/')
+            for line in out.decode('utf-8', 'replace').splitlines() if line.strip()}
 
 def _existing_test_funcs():
     """Every ``def test_...`` name in the validation test directory (Gate D)."""
