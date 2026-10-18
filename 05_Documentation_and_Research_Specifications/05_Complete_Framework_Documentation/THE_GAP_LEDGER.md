@@ -202,12 +202,13 @@ fails when any row is stale by > 365 days.
 - **Subject:** Brocard's conjecture (≥ 4 primes between p_n² and p_{n+1}²)
 - **Status:** RESEARCHED
 - **Related cards:** []
-- **Proof attempt:** none - n/a
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_prime_gaps_certificate.py
+- **Pin:** test_brocard_is_a_finite_certificate
 - **as_of:** 2026-10-18
 - **Reduction:** a stronger prime-density statement in short intervals near squares than any unconditional bound currently gives.
 - **Barrier:** depends on prime distribution in intervals of relative size ~ p_{n+1}²−p_n² ≈ 2 p_n (p_{n+1}−p_n), far beyond current unconditional means.
 - **Known:** Brocard (1904), verified numerically for large n; related to Oppermann's conjecture.
-- **Missing (the object that does not exist as a proof):** a proof that every interval (p_n², p_{n+1}²) contains at least four primes for all n (no proof attempt artifact exists in this repository).
+- **Missing (the object that does not exist as a proof):** a proof that every interval (p_n², p_{n+1}²) contains at least four primes for all n (no unconditional proof for all n; finite certificate verified to 10^7 only).
 - **Falsifier:** an index n with at most three primes strictly between p_n² and p_{n+1}².
 
 ## G16 — Andrica's conjecture
@@ -215,10 +216,11 @@ fails when any row is stale by > 365 days.
 - **Subject:** Andrica's conjecture (√p_{n+1} − √p_n < 1 for all n)
 - **Status:** RESEARCHED
 - **Related cards:** []
-- **Proof attempt:** none - n/a
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_prime_gaps_certificate.py
+- **Pin:** test_andrica_is_a_finite_certificate
 - **as_of:** 2026-10-18
 - **Reduction:** equivalent to a prime gap bound g_n = p_{n+1}−p_n < 2√p_n + 1; verified numerically to large n.
 - **Barrier:** no unconditional prime-gap bound of size O(√p) is known (best ~ x^{0.525}, Baker–Harman–Pintz 2001).
 - **Known:** Andrica (1986); implies/related to Legendre and Oppermann; verified to ~10^18.
-- **Missing (the object that does not exist as a proof):** an unconditional proof that g_n < 2√p_n + 1 for every n (no proof attempt artifact exists in this repository).
+- **Missing (the object that does not exist as a proof):** an unconditional proof that g_n < 2√p_n + 1 for every n (no unconditional proof for all n; finite certificate verified to 10^7 only).
 - **Falsifier:** an n with √p_{n+1} − √p_n ≥ 1.

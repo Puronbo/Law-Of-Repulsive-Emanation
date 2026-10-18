@@ -1,0 +1,21 @@
+{
+  "experiment": "Prime-gap finite certificates (Gap Ledger G15/G16)",
+  "sieve_limit": 10000000,
+  "andrica": {
+    "limit": 10000000,
+    "pairs": 664578,
+    "max_sqrt_gap": 0.6708734792908091,
+    "argmax_pair": [
+      7,
+      11
+    ],
+    "all_below_one": true
+  },
+  "brocard": {
+    "n_checked": 444,
+    "min_prime_count": 5,
+    "min_prime_count_at_n": 2,
+    "all_at_least_four": true
+  },
+  "honest_wall": "Finite ranges only: Andrica verified up to the sieve limit, Brocard for intervals inside it. Both conjectures remain OPEN (no unconditional proof for all n)."
+}

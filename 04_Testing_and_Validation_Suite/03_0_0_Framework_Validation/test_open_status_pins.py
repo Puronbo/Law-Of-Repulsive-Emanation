@@ -122,6 +122,7 @@ def test_path_drift_gates_emit_centrally():
         "06_Miscellaneous_Experiments/p_np_contour.py",
         "06_Miscellaneous_Experiments/goldbach_large.py",
         "06_Miscellaneous_Experiments/goldbach_0_over0.py",
+        "06_Miscellaneous_Experiments/gap_prime_gaps_certificate.py",
     ):
         src = _script(rel)
         assert "_central_data_dir()" in src, rel
@@ -196,5 +197,31 @@ def test_margin_law_admits_scale_family():
         x = scale(c, r)
         y = scale(c, s)
         assert abs(scale(c, r * s) - (x + y) / (1 + 4 * x * y)) < 1e-12, c
+
+
+def test_andrica_is_a_finite_certificate():
+    """Andrica: max (sqrt(p_{n+1}) - sqrt(p_n)) < 1 over prime pairs <= 10^7."""
+    import math
+    limit = 10 ** 7
+    s = _sieve(limit)
+    ps = [i for i in range(2, limit + 1) if s[i]]
+    assert max(math.sqrt(b) - math.sqrt(a) for a, b in zip(ps, ps[1:])) < 1.0
+
+
+def test_brocard_is_a_finite_certificate():
+    """Brocard: >= 4 primes strictly between p_n^2 and p_{n+1}^2, for every n
+    whose interval fits in the sieve (n >= 2, limit 10^7)."""
+    limit = 10 ** 7
+    s = _sieve(limit)
+    ps = [i for i in range(2, limit + 1) if s[i]]
+    n_done = 0
+    for n in range(2, len(ps)):
+        a, b = ps[n - 1] ** 2, ps[n] ** 2
+        if b > limit:
+            break
+        assert sum(s[m] for m in range(a + 1, b)) >= 4, n
+        n_done += 1
+    assert n_done >= 400
+
 
 
