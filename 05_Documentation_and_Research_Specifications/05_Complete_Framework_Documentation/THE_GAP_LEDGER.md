@@ -125,9 +125,9 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Proof attempt:** certificate - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/RH/LiCriterion.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/rh_li_correct.py
 - **Pin:** test_rh_li_correct_is_a_finite_check
 - **as_of:** 2026-10-18
-- **Reduction:** Li inequality verified n=1..30 (800 zeros); Turing/interval arithmetic only.
-- **Barrier:** zero location proof still missing; known equivalences don't create the zero-free/critical-line proof.
-- **Known:** Hardy–Littlewood, Montgomery, Odlyzko, Conrey, de Branges framework context, Li criterion.
+- **Reduction:** RH is equivalent to Lambda <= 0 for the de Bruijn-Newman constant; the complementary bound Lambda >= 0 was proved by Rodgers-Tao (2018/2020), so RH is now exactly the statement Lambda = 0, with the best rigorous bracket 0 <= Lambda <= 0.2. Also equivalent to Li's criterion and to Weil positivity (Connes-Consani). RH verified for the first 10^13 nontrivial zeros (Gourdon-Demichel 2004); the function-field analogue is proved (Weil 1948).
+- **Barrier:** no unconditional proof that Re(rho)=1/2 for all zeros; the equivalences (Li, Weil positivity, de Bruijn-Newman) restate RH without supplying the needed positivity/zero-free region, and the de Bruijn-Newman route leaves only the interval 0 <= Lambda <= 0.2.
+- **Known:** Riemann (1859); Hardy (1914, infinitely many zeros on the line); Weil (1948, function fields); Montgomery (1973, pair correlation); Odlyzko; Conrey (1989, >2/5, refined to >41.7% by Pratt-Robles-Zaharescu–Zeindler 2020); Gourdon-Demichel (2004, first 10^13 zeros); Rodgers–Tao (2018/2020, Newman's conjecture Lambda >= 0); Polymath15 (2019, Lambda <= 0.22); Platt-Trudgian (2021, Lambda <= 0.2); Connes-Consani (Weil positivity).
 - **Missing (the object that does not exist as a proof):** a proof that for all nontrivial zeros ρ of ζ(s), Re(ρ)=1/2 (or a direct equivalence chain closed without the numerical step as proof of the universal claim). The ledger rejects "more zeros verified" as closure.
 - **Falsifier:** any nontrivial zero found off the critical line under sufficient precision, or a logical gap in the equivalence chain used.
 
@@ -154,9 +154,9 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/PvsNP.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/p_np_contour.py
 - **Pin:** test_lean_open_markers_pinned_and_no_sorry
 - **as_of:** 2026-10-18
-- **Reduction:** natural proofs (Razborov–Rudich), algebraization (Aaronson–Wigderson), relativization (Baker–Gill–Solovay) rule out standard classes.
-- **Barrier:** no known super-polynomial circuit lower bound for any explicit NP function.
-- **Known:** Razborov–Rudich (1997), Aaronson–Wigderson (2003), Baker–Gill–Solovay (1975).
+- **Reduction:** non-uniform route: P != NP would follow from any NP language lacking polynomial-size circuits. Three barriers block the standard techniques: relativization (Baker-Gill-Solovay 1975), natural proofs (Razborov-Rudich 1997), algebrization (Aaronson-Wigderson 2008). Williams (2011) broke relativization/natural-proofs with an algorithmic method (NEXP not in ACC^0). Meta-complexity (MCSP) is now the main program: hardness of MCSP is equivalent-in-spirit to circuit lower bounds (Kabanets-Cai; Hirahara 2022).
+- **Barrier:** no super-polynomial (indeed no fixed-polynomial) circuit lower bound is known for any explicit NP function; not even NE vs formulas (NEXP vs NC_1) is settled. Magnification and localization barriers further constrain current methods.
+- **Known:** Baker-Gill-Solovay (1975); Razborov-Rudich (1997); Aaronson-Wigderson (2008); Williams (2011, NEXP not in ACC^0; Godel Prize 2024); Murray-Williams (2017, MCSP not NP-hard under local reductions); Hirahara (2022, NP-hardness of meta-complexity via information-theoretic cryptography).
 - **Missing (the object that does not exist as a proof):** a non-relativizing, non-algebraizing, non-natural lower-bound method that yields a super-polynomial (or exponential) circuit lower bound for some explicit function in NP, or a constructive proof P=NP.
 - **Falsifier:** a relativized world where the claimed method fails, or the claimed lower-bound proof collapsing under algebraization/natural-proofs tests, or an explicit polynomial circuit for an NP-complete function.
 
