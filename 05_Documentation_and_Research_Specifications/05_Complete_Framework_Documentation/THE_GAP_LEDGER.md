@@ -66,6 +66,7 @@ fails when any row is stale by > 365 days.
 - **Status:** RESEARCHED
 - **Related cards:** C11, C12
 - **Proof attempt:** no-go - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/OrientationBoundedness.lean
+- **Pin:** test_margin_law_admits_scale_family
 - **as_of:** 2026-10-18
 - **Reduction:** `boundedOrientation r = (1/2)tanh(c·log r)` satisfies the composition law for every real `c` — uniqueness is false.
 - **Barrier:** the margin cannot be forced unique by the law alone; closeness/selection remains open.

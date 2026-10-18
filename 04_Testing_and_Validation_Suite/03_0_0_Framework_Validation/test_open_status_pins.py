@@ -170,10 +170,10 @@ def test_twin_prime_is_a_finite_certificate():
 
 
 def test_goldbach_extended_finite_certificate():
-    """Goldbach (extended): every even n in [4, 10^6] has a prime pair.
-    This raises the pinned boundary of ``goldbach_large.py`` (10^5) by 10x;
+    """Goldbach (extended): every even n in [4, 10^7] has a prime pair.
+    This raises the pinned boundary of ``goldbach_large.py`` (10^5) by 100x;
     the strong Goldbach conjecture remains OPEN."""
-    X = 10 ** 6
+    X = 10 ** 7
     s = _sieve(X)
     for n in range(4, X + 1, 2):
         for p in range(2, n // 2 + 1):
@@ -181,4 +181,20 @@ def test_goldbach_extended_finite_certificate():
                 break
         else:
             raise AssertionError("no prime pair for %d" % n)
+
+
+def test_margin_law_admits_scale_family():
+    """Gate-D pin for G5 (no-go): the register's margin composition law
+    ``f(r*s) = (x+y)/(1+4xy)`` is satisfied by the whole one-parameter family
+    ``f = (1/2) tanh(c * log r)`` -- for every real c.  So the law alone does
+    NOT single out a unique margin; uniqueness is false (G5)."""
+    import math
+    def scale(c, r):
+        return 0.5 * math.tanh(c * math.log(r))
+    r, s = 2.0, 3.0
+    for c in (0.1, 0.5, 1.0, 2.0, -0.7):
+        x = scale(c, r)
+        y = scale(c, s)
+        assert abs(scale(c, r * s) - (x + y) / (1 + 4 * x * y)) < 1e-12, c
+
 
