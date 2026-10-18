@@ -151,6 +151,121 @@ def validate_row(row):
     return problems
 
 
+ARTIFACT_TEMPLATE = '''"""TODO: {title}
+
+Finite certificate scaffold for Gap Ledger row {token} ({kind}).  This skeleton
+proves nothing: fill the computation and record the honest wall (bounded range
+only) before attaching it to the row.
+"""
+import json
+import os
+
+
+def _central_data_dir():
+    here = os.path.dirname(os.path.abspath(__file__))
+    while True:
+        cand = os.path.join(here, "03_Data_and_Observational_Resources",
+                            "02_Experimental_Data_Collections")
+        if os.path.isdir(cand):
+            return cand
+        parent = os.path.dirname(here)
+        if parent == here:
+            raise RuntimeError("repository root not found from " + __file__)
+        here = parent
+
+
+OUT = os.path.join(_central_data_dir(), "{slug}.json")
+
+
+def run():
+    out = {{"experiment": {title!r},
+           "honest_wall": "TODO: finite range only; the conjecture stays OPEN"}}
+    with open(OUT, "w") as f:
+        json.dump(out, f, indent=2, default=str)
+    return out
+
+
+if __name__ == "__main__":
+    run()
+'''
+
+PIN_TEMPLATE = '''
+
+def {pin}():
+    """TODO: {subject} -- replace this scaffold with a real finite certificate.
+    It deliberately raises until filled, so no gate can pass on an empty pin."""
+    raise NotImplementedError("TODO: fill in the {subject} certificate")
+'''
+
+
+def scaffold_artifact(path, subject, token="G?", kind="certificate", slug=None):
+    """Write a runnable artifact skeleton to ``path``; refuse to overwrite."""
+    if os.path.exists(path):
+        raise ValueError("artifact already exists: %s" % path)
+    slug = slug or os.path.splitext(os.path.basename(path))[0]
+    parent = os.path.dirname(path)
+    if parent:
+        os.makedirs(parent, exist_ok=True)
+    with open(path, "w", encoding="utf-8", newline="\n") as fp:
+        fp.write(ARTIFACT_TEMPLATE.format(title=subject, token=token,
+                                          kind=kind, slug=slug))
+    return True
+
+
+def scaffold_pin(tests_file, pin, subject):
+    """Append a *failing* pin scaffold to ``tests_file``; refuse duplicates."""
+    if not os.path.exists(tests_file):
+        raise ValueError("tests file does not exist: %s" % tests_file)
+    with open(tests_file, encoding="utf-8", errors="replace") as fp:
+        text = fp.read()
+    if re.search(r"(?m)^\s*def\s+" + re.escape(pin) + r"\s*\(", text):
+        raise ValueError("pin %r already defined in %s" % (pin, tests_file))
+    with open(tests_file, "a", encoding="utf-8", newline="\n") as fp:
+        fp.write(PIN_TEMPLATE.format(pin=pin, subject=subject))
+    return True
+
+
+def append_row(ledger_text, row):
+    """Return ``ledger_text`` with ``row`` appended as a new section (pure)."""
+    return ledger_text.rstrip("\n") + "\n\n" + row.strip("\n") + "\n"
+
+
+def apply(subject, kind, artifact_rel, pin, tier="B", tests_file_rel=None,
+          root=None, date=None, write=False):
+    """End-to-end: scaffold the artifact + pin (if absent), render the row with
+    the next G-number, and append it to the ledger.  Returns a report; only
+    writes the ledger when ``write`` is true."""
+    root = root or _repo_root()
+    ledger_path = os.path.join(root, LEDGER_REL)
+    with open(ledger_path, encoding="utf-8") as fp:
+        ledger = fp.read()
+    token = next_token(ledger)
+
+    created_artifact = False
+    if artifact_rel not in (None, "n/a", "") and kind != "none":
+        art_path = os.path.join(root, artifact_rel)
+        if not os.path.exists(art_path):
+            scaffold_artifact(art_path, subject, token, kind)
+            created_artifact = True
+
+    created_pin = False
+    if kind != "none" and not pin_exists(pin, root=root):
+        if not tests_file_rel:
+            raise ValueError("pin %r missing and no tests_file to scaffold it"
+                             % pin)
+        scaffold_pin(os.path.join(root, tests_file_rel), pin, subject)
+        created_pin = True
+
+    row = forge_row(subject, kind, artifact_rel, pin, tier=tier, date=date,
+                    root=root, token=token)
+    new_ledger = append_row(ledger, row)
+    if write:
+        with open(ledger_path, "w", encoding="utf-8", newline="\n") as fp:
+            fp.write(new_ledger)
+    return {"token": token, "row": row, "created_artifact": created_artifact,
+            "created_pin": created_pin, "ledger": new_ledger}
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Gap Ledger row forge")
     ap.add_argument("--subject", required=True)
@@ -158,9 +273,25 @@ def main(argv=None):
     ap.add_argument("--artifact", default="n/a")
     ap.add_argument("--pin", default="n/a")
     ap.add_argument("--tier", default="B")
+    ap.add_argument("--tests-file", default=None,
+                    help="test file (relative to repo root) to scaffold the pin"
+                         " into when --apply is used")
+    ap.add_argument("--apply", action="store_true",
+                    help="scaffold artifact + pin and append the row to the "
+                         "live ledger")
     args = ap.parse_args(argv)
 
-    with open(os.path.join(_repo_root(), LEDGER_REL), encoding="utf-8") as fp:
+    root = _repo_root()
+    if args.apply:
+        report = apply(args.subject, args.kind, args.artifact, args.pin,
+                       tier=args.tier, tests_file_rel=args.tests_file,
+                       root=root, write=True)
+        print(report["token"] + " appended; artifact scaffolded=%s, pin "
+              "scaffolded=%s"
+              % (report["created_artifact"], report["created_pin"]))
+        return 0
+
+    with open(os.path.join(root, LEDGER_REL), encoding="utf-8") as fp:
         token = next_token(fp.read())
     print(_render(token, args.subject, args.kind, args.artifact, args.pin,
                   args.tier, None, datetime.date.today().isoformat()))

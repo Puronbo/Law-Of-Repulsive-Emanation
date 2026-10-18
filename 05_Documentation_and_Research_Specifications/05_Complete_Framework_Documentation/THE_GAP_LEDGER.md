@@ -406,8 +406,9 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Related cards:** []
 - **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_row_forge.py
 - **Pin:** test_gap_row_forge_emits_gate_valid_rows
+- **Pin:** test_gap_row_forge_applies_end_to_end
 - **as_of:** 2026-10-18
-- **Reduction:** drafting a row is decidable: assign the next G-number, require a legal proof-attempt kind, a git-tracked artifact path, and a live pin, then reject anything Gate D would reject.
+- **Reduction:** drafting a row is decidable: assign the next G-number, require a legal proof-attempt kind, a git-tracked artifact path, and a live pin, then reject anything Gate D would reject; `apply` additionally scaffolds the artifact and a deliberately-failing pin and appends the row.
 - **Barrier:** none for the shape (decidable); the forge cannot supply the mathematical content (Reduction/Barrier/Known/Missing/Falsifier) nor prove any subject.
 - **Known:** the live ledger (G1-G27); Gate D in test_gap_ledger.py; the forge's own self-test.
 - **Missing (the object that does not exist as a proof):** an automatic prover that fills a row's mathematical fields and closes the gap; the forge only guarantees the shape is honest and machine-checkable.

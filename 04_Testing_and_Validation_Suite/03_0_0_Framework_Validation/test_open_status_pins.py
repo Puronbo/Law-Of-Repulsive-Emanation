@@ -555,4 +555,32 @@ def test_gap_row_forge_emits_gate_valid_rows():
                         pin="test_no_such_pin_exists_anywhere")
 
 
+def test_gap_row_forge_applies_end_to_end(tmp_path):
+    """G28: the forge closes the loop -- scaffold artifact + pin, then append a
+    Gate-D-valid row carrying the next G-number (all in a throwaway root)."""
+    forge = _load_gap_row_forge()
+    root = str(tmp_path)
+    ledger_path = tmp_path / forge.LEDGER_REL
+    os.makedirs(os.path.dirname(str(ledger_path)), exist_ok=True)
+    ledger_path.write_text("## G1 - seed\n- **Proof attempt:** no-go - n/a\n",
+                           encoding="utf-8")
+    tests_dir = tmp_path / forge.TESTS_DIR_REL
+    os.makedirs(str(tests_dir), exist_ok=True)
+    (tests_dir / "test_demo.py").write_text(
+        "def test_seed():\n    assert True\n", encoding="utf-8")
+
+    report = forge.apply(
+        subject="Demo certificate",
+        kind="certificate",
+        artifact_rel="exp/demo_cert.py",
+        pin="test_demo_certificate",
+        tests_file_rel=forge.TESTS_DIR_REL + "/test_demo.py",
+        root=root)
+    assert report["token"] == "G2"
+    assert report["created_artifact"] and report["created_pin"]
+    assert os.path.exists(os.path.join(root, "exp", "demo_cert.py"))
+    assert "## G2 - Demo certificate" in report["ledger"]
+    assert forge.validate_row(report["row"]) == []
+
+
 
