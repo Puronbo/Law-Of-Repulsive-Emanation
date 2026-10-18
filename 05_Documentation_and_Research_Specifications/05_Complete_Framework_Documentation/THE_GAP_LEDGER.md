@@ -51,8 +51,10 @@ fails when any row is stale by > 365 days.
 - **Related cards:** C17, C10
 - **as_of:** 2026-10-18
 - **Reduction:** `InformationPhi.lean` documents the register entropy production/orientation; the bound `k_B T log 2` is cited as input.
-- **Barrier:** model is register-internal (not a measured result).
-- **Missing:** empirical/operational link to a physical observable, not a PDE proof.
+- **Barrier:** model is register-internal (not a measured result); operational definition of the observable is missing.
+- **Known:** orientation–growth link (C10), removable value schema (C17), information/entropy markers in the register.
+- **Missing (the object that does not exist as a proof):** an **operational, reproducible experiment** (or a derivation from first principles linking to a measured quantity) that connects `Φ`/`InformationPhi` to a physical observable with defined units, protocol, and error bounds. The ledger requires an empirical anchor (not a PDE proof).
+- **Falsifier:** failing to reproduce the reported relation under stated conditions, or a measurement that contradicts the bound with stated uncertainty. Also, if no operational definition exists, the claim remains untestable.
 
 ## G5 — Margin uniqueness (refuted by family)
 - **Tier:** A (register debt)
