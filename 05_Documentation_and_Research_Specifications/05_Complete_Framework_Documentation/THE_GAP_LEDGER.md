@@ -75,7 +75,9 @@ fails when any row is stale by > 365 days.
 - **as_of:** 2026-10-18
 - **Reduction:** rank<=1 Kolyvagin; rank>=2 needs Euler system detecting two independent Heegner classes.
 - **Barrier:** Euler system only generates one per imaginary quadratic field; no known rank>=2 Euler system.
-- **Missing:** construction of a rank>=2 Euler system (or equivalent to control Sha for product), not better computation.
+- **Known:** Gross–Zagier (1986), Kolyvagin (1990), Rubin (1991), Kato (1993).
+- **Missing (the object that does not exist as a proof):** a **rank>=2 Euler system** (or an equivalent construction) that produces two linearly independent Selmer classes for a curve of algebraic rank>=2, or a proof of the BSD equality for some rank>=2 curve without assuming the conjectural Euler-system construction. The derivation must identify the missing object, not just cite partial results.
+- **Falsifier:** a curve of analytic rank>=2 for which the proposed construction fails to produce independent classes, or a counterexample to the claimed control over Sha.
 
 ## G7 — Hodge (codim >= 2)
 - **Tier:** B (Millennium scope)
