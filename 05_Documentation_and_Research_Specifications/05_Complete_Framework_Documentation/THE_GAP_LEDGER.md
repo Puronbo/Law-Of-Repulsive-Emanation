@@ -384,3 +384,17 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Known:** Dickson (1904); Hardy-Littlewood k-tuples heuristics; Maynard-Tao (2014) bounded gaps; smallest constellations (twin 3,5; quadruplet 5,7,11,13; quintuplet 5,7,11,13,17; sextuplet 7,11,13,17,19,23).
 - **Missing (the object that does not exist as a proof):** a proof that every admissible k-tuple pattern is realized by infinitely many prime translates (no unconditional proof; finite existence certificate gives one occurrence per pattern only).
 - **Falsifier:** an admissible pattern occurring only finitely often.
+
+## G27 - Odd perfect numbers (none known)
+- **Tier:** B (external open)
+- **Subject:** odd perfect numbers (does any odd n with sigma(n) = 2n exist?)
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/perfect_numbers_certificate.py
+- **Pin:** test_odd_perfect_numbers_no_small_certificate
+- **as_of:** 2026-10-18
+- **Reduction:** even perfect numbers are exactly 2^(p-1)(2^p-1) with 2^p-1 prime (Euclid-Euler); the odd case is open. Euler's necessary form: an odd perfect number is q^a m^2 with q prime, q = a = 1 (mod 4).
+- **Barrier:** no method shows existence or non-existence of an odd perfect number; only necessary conditions and lower bounds are known.
+- **Known:** Euclid-Euler (even case); Euler (odd form, 18th c.); Ochem-Rao (2012, lower bound > 10^1500); Nielsen (2015, at least 101 prime factors counted with multiplicity).
+- **Missing (the object that does not exist as a proof):** a proof that no odd n satisfies sigma(n) = 2n (or an explicit example) -- no unconditional result; finite certificate only that none exists up to the search limit.
+- **Falsifier:** an odd n with sigma(n) = 2n, or a proof that only even perfect numbers exist.

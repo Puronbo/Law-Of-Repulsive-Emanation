@@ -1,0 +1,17 @@
+{
+  "experiment": "Perfect numbers finite certificate (Gap Ledger G27)",
+  "search_limit": 1000000,
+  "even_perfect": [
+    6,
+    28,
+    496,
+    8128
+  ],
+  "odd_perfect": [],
+  "euler_form": {
+    "form": "n = q^a * m^2, q prime, q = a = 1 (mod 4), m odd",
+    "none_known": true,
+    "known_lower_bound_citation": "> 10^1500 (Ochem-Rao 2012)"
+  },
+  "honest_wall": "Finite search only: no odd perfect number exists up to the search limit; the even perfect numbers are exactly those built from Mersenne primes (Euclid-Euler). Whether any odd perfect number exists at all is OPEN (best known if one exists: > 10^1500)."
+}

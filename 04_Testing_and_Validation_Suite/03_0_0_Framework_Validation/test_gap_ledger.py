@@ -179,4 +179,4 @@ def test_d_proof_attempt_kind_and_artifacts_exist():
 def test_ledgers_heading_count_agrees():
     text = _read(LEDGER)
     heads = re.findall(r'^##\s+(G\d+)', text, re.M)
-    assert heads == [f'G{i}' for i in range(1, 27)], heads
+    assert heads == [f'G{i}' for i in range(1, 28)], heads

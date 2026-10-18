@@ -470,4 +470,19 @@ def test_prime_constellations_is_a_finite_certificate():
     assert smallest((0, 4, 6, 10, 12, 16)) == 7
 
 
+def test_odd_perfect_numbers_no_small_certificate():
+    """Odd perfect numbers: even perfect numbers <= 10^6 are exactly
+    {6, 28, 496, 8128} (Euclid-Euler); no odd perfect number exists <= 10^6.
+    Existence/non-existence in general stays OPEN."""
+    limit = 10 ** 6
+    sig = [0] * (limit + 1)
+    for d in range(1, limit + 1):
+        for m in range(d, limit + 1, d):
+            sig[m] += d
+    even = [n for n in range(2, limit + 1, 2) if sig[n] == 2 * n]
+    odd = [n for n in range(3, limit + 1, 2) if sig[n] == 2 * n]
+    assert even == [6, 28, 496, 8128]
+    assert odd == []
+
+
 
