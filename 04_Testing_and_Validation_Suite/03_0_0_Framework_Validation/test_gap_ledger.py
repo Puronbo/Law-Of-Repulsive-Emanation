@@ -140,8 +140,9 @@ def test_d_proof_attempt_kind_and_artifacts_exist():
     """Gate D: every gap declares what *kind* of proof artifact exists, and
     every path it names is a real, git-tracked file under the repository root
     (so the CI checkout actually contains it).  Every declared ``**Pin:**``
-    must name a real test function, and any ``certificate``-kind gap must carry
-    at least one live pin."""
+    must name a real test function, and any gap whose kind is not ``none``
+    (i.e. any gap that claims an artifact exists) must carry at least one
+    live pin."""
     funcs = _existing_test_funcs()
     tracked = _tracked_files()
     missing = []
@@ -149,7 +150,7 @@ def test_d_proof_attempt_kind_and_artifacts_exist():
     bad_paths = []
     untracked = []
     bad_pin = []
-    unpinned_cert = []
+    unpinned_claim = []
     for g in _parse_gaps():
         attempt = g['attempt']
         if not attempt:
@@ -170,14 +171,14 @@ def test_d_proof_attempt_kind_and_artifacts_exist():
         for pin in g['pins']:
             if pin not in funcs:
                 bad_pin.append((g['token'], pin))
-        if kind == 'certificate' and not g['pins']:
-            unpinned_cert.append(g['token'])
+        if kind != 'none' and not g['pins']:
+            unpinned_claim.append(g['token'])
     assert not missing, "gaps missing **Proof attempt:**: %s" % missing
     assert not bad_kind, "illegal proof-attempt kinds: %s" % bad_kind
     assert not bad_paths, "proof-attempt artifact paths do not exist: %s" % bad_paths
     assert not untracked, "proof-attempt artifacts are not git-tracked (absent in CI): %s" % untracked
     assert not bad_pin, "declared pins are not real test functions: %s" % bad_pin
-    assert not unpinned_cert, "certificate-kind gaps lack a live pin: %s" % unpinned_cert
+    assert not unpinned_claim, "non-none gaps lack a live pin: %s" % unpinned_claim
 
 def test_ledgers_heading_count_agrees():
     text = _read(LEDGER)
