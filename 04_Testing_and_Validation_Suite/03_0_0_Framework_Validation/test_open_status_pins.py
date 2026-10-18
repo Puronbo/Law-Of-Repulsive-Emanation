@@ -626,3 +626,21 @@ def test_lehmer_totient_is_a_finite_certificate():
     assert two == [561, 1105, 1729, 2465, 6601, 8481]
     phi = mod.totient_sieve(600)
     assert phi[561] == 320 and phi[561] != 560
+
+
+def test_wieferich_primes_is_a_finite_certificate():
+    """G32: exact search shows 1093 and 3511 are the only Wieferich primes base 2
+    below 10**6; infinitude stays OPEN."""
+    import importlib.util
+    path = os.path.join(
+        ROOT, "02_Experimental_Implementations_and_Verification",
+        "06_Miscellaneous_Experiments", "wieferich_certificate.py")
+    spec = importlib.util.spec_from_file_location("_wieferich_cert", path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+
+    assert mod.wieferich_primes(10 ** 6) == [1093, 3511]
+    assert mod.is_wieferich(1093) is True
+    assert mod.is_wieferich(3511) is True
+    assert mod.is_wieferich(3) is False
+    assert pow(2, 1092, 1093 * 1093) == 1

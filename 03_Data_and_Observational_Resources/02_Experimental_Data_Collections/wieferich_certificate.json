@@ -1,0 +1,22 @@
+{
+  "experiment": "wieferich_prime_search_base2",
+  "bound": 1000000,
+  "wieferich_primes": [
+    1093,
+    3511
+  ],
+  "fermat_quotients": {
+    "1093": 0,
+    "3511": 0
+  },
+  "honest_wall": "Finite range only: 1093 and 3511 are the only Wieferich primes below 1000000; whether infinitely many exist stays OPEN. No others are known below 6.7x10^15 (Dorais-Klyve 2011, since extended past 1.45x10^17, OEIS A001220).",
+  "references": [
+    "Wieferich 1909 (link to Fermat's Last Theorem, first case)",
+    "Meissner 1913 (1093), Beeger 1922 (3511)",
+    "Knauer-Richstein 2005 (no others < 1.25x10^15)",
+    "Dorais-Klyve 2011, JIS 14 (no others < 6.7x10^15)",
+    "Crandall, Dilcher, Pomerance 1997 (heuristic ~log log x)",
+    "Silverman 1988 (abc conjecture implies finitely many)",
+    "OEIS A001220"
+  ]
+}

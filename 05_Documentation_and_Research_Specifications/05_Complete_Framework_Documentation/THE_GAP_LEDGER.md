@@ -455,3 +455,17 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Known:** no composite n with phi(n) | (n - 1) is known; any such n is odd, squarefree and Carmichael (Lehmer 1932); omega(n) >= 14 (Cohen-Hagis 1980), improved to omega(n) >= 15, n > 10^26 (Renze; Pinch reports n > 10^30); if 3 | n then omega(n) >= 4x10^7 and n > 10^(3.6x10^8) (Burcsi-Czirbusz-Farkas 2011); counting bounds N(L,x) = O(x^{1/2} log^{3/4} x) (Pomerance 1977) and <= x^{1/2} / log^{1/2+o(1)} x (Luca-Pomerance 2019); the 2-Lehmer relaxation has the Carmichael numbers 561, 1105, 1729, 2465, 6601, 8481, ... as solutions (OEIS A173703).
 - **Missing (the object that does not exist as a proof):** an unconditional proof that no composite n satisfies phi(n) | (n - 1); equivalently a proof that the Lehmer set L is empty, or a single explicit member.
 - **Falsifier:** one composite n with phi(n) | (n - 1) (necessarily odd, squarefree, Carmichael, > 10^26) refutes the conjecture; a composite n <= 10^6 with phi(n) | (n - 1) would refute this finite certificate.
+
+## G32 - Wieferich primes (2^(p-1) = 1 mod p^2)
+- **Tier:** B
+- **Subject:** Wieferich primes (2^(p-1) = 1 mod p^2)
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/wieferich_certificate.py
+- **Pin:** test_wieferich_primes_is_a_finite_certificate
+- **as_of:** 2026-10-18
+- **Reduction:** membership is decidable per prime: sieve the primes and test pow(2, p - 1, p^2) == 1, recording the Fermat quotient; this decides the finite set of Wieferich primes below any bound and exhibits their Fermat quotients.
+- **Barrier:** deciding which primes are Wieferich below a bound says nothing about how many there are; the heuristic (Crandall-Dilcher-Pomerance) that A(p) = (2^(p-1) - 1)/p mod p behaves randomly predicts ~ log log x Wieferich primes up to x, i.e. infinitely many, with an infinite expected gap to the next one, so no finite search can evidence infinitude.
+- **Known:** only 1093 (Meissner 1913) and 3511 (Beeger 1922) are known; no others below 6.7x10^15 (Dorais-Klyve 2011), since extended beyond 1.45x10^17 (OEIS A001220); Wieferich 1909 linked them to the first case of Fermat's Last Theorem; Silverman 1988 proved finitely many follow from the abc conjecture; base-3 (Mirimanoff) primes are 11 and 1006003.
+- **Missing (the object that does not exist as a proof):** an unconditional proof that infinitely many Wieferich primes exist (equivalently a proof that the random-Fermat-quotient heuristic holds without the abc conjecture); also no proof that infinitely many non-Wieferich primes exist.
+- **Falsifier:** infinitely many primes p with 2^(p-1) not = 1 (mod p^2) beyond a point would refute infinitude of Wieferich primes; a Wieferich prime below 10^6 other than 1093 or 3511 would refute this finite certificate.
