@@ -485,4 +485,44 @@ def test_odd_perfect_numbers_no_small_certificate():
     assert odd == []
 
 
+def _load_gap_row_forge():
+    import importlib.util
+    path = os.path.join(
+        ROOT, "02_Experimental_Implementations_and_Verification",
+        "06_Miscellaneous_Experiments", "gap_row_forge.py")
+    spec = importlib.util.spec_from_file_location("_gap_row_forge", path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def test_gap_row_forge_emits_gate_valid_rows():
+    """G28: the row forge turns a claimed proof attempt into a Gate-D-valid row
+    and refuses illegal kinds, missing artifacts, and fake pins; it never emits
+    a resolved/DONE status."""
+    import pytest
+    forge = _load_gap_row_forge()
+    row = forge.forge_row(
+        subject="Synthetic self-test gap",
+        kind="certificate",
+        artifact="02_Experimental_Implementations_and_Verification/"
+                 "06_Miscellaneous_Experiments/gap_row_forge.py",
+        pin="test_gap_row_forge_emits_gate_valid_rows")
+    assert forge.validate_row(row) == []
+    assert "TODO" in row and "DONE" not in row
+    assert forge.next_token("## G1 - a\n## G2 - b\n") == "G3"
+
+    with pytest.raises(ValueError):
+        forge.forge_row(subject="x", kind="proved", artifact="n/a", pin="n/a")
+    with pytest.raises(ValueError):
+        forge.forge_row(subject="x", kind="certificate",
+                        artifact="does/not/exist.py",
+                        pin="test_gap_row_forge_emits_gate_valid_rows")
+    with pytest.raises(ValueError):
+        forge.forge_row(subject="x", kind="certificate",
+                        artifact="01_Core_Mathematical_Framework_Lean/"
+                                 "01_Lean/PunoCalculus/Hodge.lean",
+                        pin="test_no_such_pin_exists_anywhere")
+
+
 

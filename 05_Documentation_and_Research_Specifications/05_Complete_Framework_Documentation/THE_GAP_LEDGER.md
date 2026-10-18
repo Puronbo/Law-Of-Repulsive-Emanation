@@ -398,3 +398,17 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Known:** Euclid-Euler (even case); Euler (odd form, 18th c.); Ochem-Rao (2012, lower bound > 10^1500); Nielsen (2015, at least 101 prime factors counted with multiplicity).
 - **Missing (the object that does not exist as a proof):** a proof that no odd n satisfies sigma(n) = 2n (or an explicit example) -- no unconditional result; finite certificate only that none exists up to the search limit.
 - **Falsifier:** an odd n with sigma(n) = 2n, or a proof that only even perfect numbers exist.
+
+## G28 - Gap Ledger row forge (register tooling)
+- **Tier:** A (register debt)
+- **Subject:** the register's own row-forge tooling (drafting and validating ledger entries)
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_row_forge.py
+- **Pin:** test_gap_row_forge_emits_gate_valid_rows
+- **as_of:** 2026-10-18
+- **Reduction:** drafting a row is decidable: assign the next G-number, require a legal proof-attempt kind, a git-tracked artifact path, and a live pin, then reject anything Gate D would reject.
+- **Barrier:** none for the shape (decidable); the forge cannot supply the mathematical content (Reduction/Barrier/Known/Missing/Falsifier) nor prove any subject.
+- **Known:** the live ledger (G1-G27); Gate D in test_gap_ledger.py; the forge's own self-test.
+- **Missing (the object that does not exist as a proof):** an automatic prover that fills a row's mathematical fields and closes the gap; the forge only guarantees the shape is honest and machine-checkable.
+- **Falsifier:** a forge output that Gate D accepts but which claims resolution, or a legal-looking row emitted with an illegal kind, a missing artifact, or a fake pin.
