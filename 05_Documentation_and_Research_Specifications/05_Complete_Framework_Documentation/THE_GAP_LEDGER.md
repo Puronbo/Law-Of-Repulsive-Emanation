@@ -441,3 +441,17 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Known:** Giuga numbers 30, 858, 1722, 66198, 2214408306, ... (13 known, complete through the 12th term, OEIS A007850); all known Giuga numbers are even and it is unknown whether infinitely many exist or whether any odd one exists; every counterexample to Giuga's conjecture must have at least 19908 decimal digits (Borwein-Maitland-Skerritt, INTEGERS 13 (2013)); Alford-Granville-Pomerance (1994) proved there are infinitely many Carmichael numbers, and Luca-Pomerance-Shparlinski bound the Giuga count by O(X^{1/2} / log X).
 - **Missing (the object that does not exist as a proof):** an unconditional proof that no composite n is both a Giuga number and a Carmichael number (equivalently that sum_{k=1}^{n-1} k^{n-1} != -1 (mod n) for every composite n); also nothing settles the infinitude of Giuga numbers or the existence of an odd Giuga number.
 - **Falsifier:** a single composite n with p^2 (p-1) | (n - p) for every prime p | n (i.e. both Giuga and Carmichael) would refute Giuga's conjecture; a Giuga number <= 10^5 that is also Carmichael would refute the finite certificate's claim.
+
+## G31 - Lehmer's totient problem (phi(n) divides n-1)
+- **Tier:** B
+- **Subject:** Lehmer's totient problem (phi(n) divides n-1)
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/lehmer_totient_certificate.py
+- **Pin:** test_lehmer_totient_is_a_finite_certificate
+- **as_of:** 2026-10-18
+- **Reduction:** reading the conjecture is decidable on a finite range: compute phi(n) by sieve and test (n - 1) mod phi(n) = 0 for every composite n <= bound; no n passes. The relaxation phi(n) | (n - 1)^2 (2-Lehmer numbers) is checked the same way and does have solutions, confirming the two conditions are genuinely different.
+- **Barrier:** the test is finite while the conjecture quantifies over all composites; a counterexample must be simultaneously odd, squarefree and Carmichael, so it is invisible to any search below the known lower bound n > 10^26 with >= 15 distinct prime factors.
+- **Known:** no composite n with phi(n) | (n - 1) is known; any such n is odd, squarefree and Carmichael (Lehmer 1932); omega(n) >= 14 (Cohen-Hagis 1980), improved to omega(n) >= 15, n > 10^26 (Renze; Pinch reports n > 10^30); if 3 | n then omega(n) >= 4x10^7 and n > 10^(3.6x10^8) (Burcsi-Czirbusz-Farkas 2011); counting bounds N(L,x) = O(x^{1/2} log^{3/4} x) (Pomerance 1977) and <= x^{1/2} / log^{1/2+o(1)} x (Luca-Pomerance 2019); the 2-Lehmer relaxation has the Carmichael numbers 561, 1105, 1729, 2465, 6601, 8481, ... as solutions (OEIS A173703).
+- **Missing (the object that does not exist as a proof):** an unconditional proof that no composite n satisfies phi(n) | (n - 1); equivalently a proof that the Lehmer set L is empty, or a single explicit member.
+- **Falsifier:** one composite n with phi(n) | (n - 1) (necessarily odd, squarefree, Carmichael, > 10^26) refutes the conjecture; a composite n <= 10^6 with phi(n) | (n - 1) would refute this finite certificate.

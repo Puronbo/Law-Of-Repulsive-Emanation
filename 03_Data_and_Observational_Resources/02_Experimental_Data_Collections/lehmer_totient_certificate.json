@@ -1,0 +1,67 @@
+{
+  "experiment": "lehmer_totient_search",
+  "bound": 1000000,
+  "lehmer_composites": [],
+  "two_lehmer_bound": 10000,
+  "two_lehmer_numbers": [
+    {
+      "n": 561,
+      "prime_factors": [
+        3,
+        11,
+        17
+      ]
+    },
+    {
+      "n": 1105,
+      "prime_factors": [
+        5,
+        13,
+        17
+      ]
+    },
+    {
+      "n": 1729,
+      "prime_factors": [
+        7,
+        13,
+        19
+      ]
+    },
+    {
+      "n": 2465,
+      "prime_factors": [
+        5,
+        17,
+        29
+      ]
+    },
+    {
+      "n": 6601,
+      "prime_factors": [
+        7,
+        23,
+        41
+      ]
+    },
+    {
+      "n": 8481,
+      "prime_factors": [
+        3,
+        11,
+        257
+      ]
+    }
+  ],
+  "honest_wall": "Finite range only: no composite n <= 1000000 has phi(n) | (n - 1) (the conjecture stays OPEN beyond it), while phi(n) | (n - 1)^2 already holds for the first Carmichael numbers, so the 2-Lehmer relaxation is genuinely weaker. A Lehmer counterexample would be odd, squarefree and Carmichael, with >= 15 distinct prime factors and n > 10^26.",
+  "references": [
+    "Lehmer 1932 (posed the problem; counterexample odd, squarefree, >= 7 prime factors)",
+    "Cohen & Hagis 1980 (omega(n) >= 14, n > 10^20)",
+    "Renze (omega(n) >= 15); Pinch (n > 10^26)",
+    "Pomerance 1977, Pacific J. Math. (N(L,x) = O(x^{1/2} log^{3/4} x))",
+    "Luca-Pomerance 2019 (N(L,x) <= x^{1/2} / log^{1/2+o(1)} x)",
+    "Burcsi-Czirbusz-Farkas 2011 (3 | n => omega(n) >= 4e7, n > 10^3.6e8)",
+    "Burek-Zmija 2019 (n <= 2^(2^r) - 2^(2^(r-1)) if 2 <= omega(n) <= r)",
+    "Grau-Oller-Marcen (k-Lehmer numbers); OEIS A173703 (2-Lehmer)"
+  ]
+}

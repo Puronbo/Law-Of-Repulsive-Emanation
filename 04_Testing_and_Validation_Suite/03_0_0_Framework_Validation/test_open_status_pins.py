@@ -606,3 +606,23 @@ def test_giuga_is_a_finite_certificate():
     assert mod.is_giuga(30, [(2, 1), (3, 1), (5, 1)]) is True
     assert mod.is_giuga(6, [(2, 1), (3, 1)]) is False
     assert mod.is_carmichael(561, [(3, 1), (11, 1), (17, 1)]) is True
+
+
+def test_lehmer_totient_is_a_finite_certificate():
+    """G31: no composite n <= 10**6 has phi(n) | (n - 1), so Lehmer's totient
+    conjecture (no composite n with phi(n) | (n - 1)) holds to the bound and
+    stays OPEN beyond it; the 2-Lehmer relaxation phi(n) | (n - 1)^2 gives the
+    first Carmichael numbers, so the relaxation is strictly weaker."""
+    import importlib.util
+    path = os.path.join(
+        ROOT, "02_Experimental_Implementations_and_Verification",
+        "06_Miscellaneous_Experiments", "lehmer_totient_certificate.py")
+    spec = importlib.util.spec_from_file_location("_lehmer_cert", path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+
+    assert mod.lehmer_composites(10 ** 6) == []
+    two = [d["n"] for d in mod.two_lehmer_numbers(10 ** 4)]
+    assert two == [561, 1105, 1729, 2465, 6601, 8481]
+    phi = mod.totient_sieve(600)
+    assert phi[561] == 320 and phi[561] != 560
