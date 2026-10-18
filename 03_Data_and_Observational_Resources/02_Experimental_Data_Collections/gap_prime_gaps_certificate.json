@@ -1,5 +1,5 @@
 {
-  "experiment": "Prime finite certificates (Gap Ledger G15-G25)",
+  "experiment": "Prime finite certificates (Gap Ledger G15-G26)",
   "sieve_limit": 10000000,
   "andrica": {
     "limit": 10000000,
@@ -146,5 +146,61 @@
     "first_composite_n": 40,
     "prime_for_all_below_first_composite": true
   },
-  "honest_wall": "Finite ranges only: Andrica verified up to the sieve limit, Brocard/Oppermann for intervals inside it, Gilbreath to the first few thousand primes, Polignac existence for even k <= 100, Sophie Germain and n^2+1 prime counts to the sieve limit, Fermat primality for F_0..F_4 only. All corresponding conjectures remain OPEN (no unconditional proof for all n)."
+  "prime_constellations": {
+    "limit": 10000000,
+    "constellations": {
+      "twin (0,2)": {
+        "pattern": [
+          0,
+          2
+        ],
+        "start": 3,
+        "all_prime": true
+      },
+      "triplet (0,2,6)": {
+        "pattern": [
+          0,
+          2,
+          6
+        ],
+        "start": 5,
+        "all_prime": true
+      },
+      "quadruplet (0,2,6,8)": {
+        "pattern": [
+          0,
+          2,
+          6,
+          8
+        ],
+        "start": 5,
+        "all_prime": true
+      },
+      "quintuplet (0,2,6,8,12)": {
+        "pattern": [
+          0,
+          2,
+          6,
+          8,
+          12
+        ],
+        "start": 5,
+        "all_prime": true
+      },
+      "sextuplet (0,4,6,10,12,16)": {
+        "pattern": [
+          0,
+          4,
+          6,
+          10,
+          12,
+          16
+        ],
+        "start": 7,
+        "all_prime": true
+      }
+    },
+    "all_found": true
+  },
+  "honest_wall": "Finite ranges only: Andrica verified up to the sieve limit, Brocard/Oppermann for intervals inside it, Gilbreath to the first few thousand primes, Polignac existence for even k <= 100, Sophie Germain and n^2+1 prime counts to the sieve limit, Fermat primality for F_0..F_4 only, one occurrence per admissible k-tuple pattern. All corresponding conjectures remain OPEN (no unconditional proof for all n)."
 }

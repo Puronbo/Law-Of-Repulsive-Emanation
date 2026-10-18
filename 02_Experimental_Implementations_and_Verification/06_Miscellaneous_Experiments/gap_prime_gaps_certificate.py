@@ -1,4 +1,4 @@
-"""Finite certificates for the prime conjectures (Gap Ledger G15-G20).
+"""Finite certificates for the prime conjectures (Gap Ledger G15-G26).
 
 Honest finite computations, each certifying a bounded range only:
 
@@ -13,6 +13,8 @@ Honest finite computations, each certifying a bounded range only:
 * G19 Polignac: for every even k <= 100 there is a prime pair differing by k
   (existence only; infinitude is the open claim).
 * G20 Sophie Germain: finite count of primes p with 2p+1 prime (infinitude OPEN).
+* G26 Prime k-tuples: smallest start of each admissible constellation (twin,
+  triplet, quadruplet, quintuplet, sextuplet); infinitude is OPEN (Dickson).
 
 None certifies the conjecture for all n; all remain OPEN.
 """
@@ -203,6 +205,33 @@ def landau_n2_plus_1(s, limit, nmax=None):
     return {"nmax": nmax, "count": cnt, "first_n": first_n}
 
 
+def prime_constellations(s, limit):
+    """Prime k-tuples (Dickson-type constellations).  For each admissible
+    pattern below, record the smallest starting prime p such that p+offset is
+    prime for every offset in the pattern.  This is a finite existence
+    certificate; the open claim -- every admissible pattern recurs infinitely
+    often (Dickson's conjecture / the prime k-tuples conjecture, which contains
+    the twin-prime and Sophie-Germain statements) -- is not addressed."""
+    patterns = {
+        "twin (0,2)": (0, 2),
+        "triplet (0,2,6)": (0, 2, 6),
+        "quadruplet (0,2,6,8)": (0, 2, 6, 8),
+        "quintuplet (0,2,6,8,12)": (0, 2, 6, 8, 12),
+        "sextuplet (0,4,6,10,12,16)": (0, 4, 6, 10, 12, 16),
+    }
+    out = {}
+    for name, pat in patterns.items():
+        start = None
+        for p in range(2, limit - pat[-1] + 1):
+            if all(s[p + d] for d in pat):
+                start = p
+                break
+        out[name] = {"pattern": list(pat), "start": start,
+                     "all_prime": start is not None}
+    return {"limit": limit, "constellations": out,
+            "all_found": all(v["all_prime"] for v in out.values())}
+
+
 def euler_polynomial(nmax=40):
     """No-go: the naive claim 'n^2+n+41 is prime for all n>=0' is FALSE.  It is
     prime for n=0..39 but composite at n=40 (1681 = 41^2)."""
@@ -266,8 +295,11 @@ def run(limit=10 ** 7, brocard_max_n=100000):
     eu = euler_polynomial()
     print("Euler n^2+n+41 first composite at n=%s" % eu["first_composite_n"])
 
+    pc = prime_constellations(s, limit)
+    print("Prime constellations all found: %s" % pc["all_found"])
+
     out = {
-        "experiment": "Prime finite certificates (Gap Ledger G15-G25)",
+        "experiment": "Prime finite certificates (Gap Ledger G15-G26)",
         "sieve_limit": limit,
         "andrica": a,
         "brocard": b,
@@ -278,13 +310,15 @@ def run(limit=10 ** 7, brocard_max_n=100000):
         "fermat": fe,
         "landau_n2_plus_1": la,
         "euler_polynomial": eu,
+        "prime_constellations": pc,
         "honest_wall": (
             "Finite ranges only: Andrica verified up to the sieve limit, "
             "Brocard/Oppermann for intervals inside it, Gilbreath to the first "
             "few thousand primes, Polignac existence for even k <= 100, Sophie "
             "Germain and n^2+1 prime counts to the sieve limit, Fermat primality "
-            "for F_0..F_4 only. All corresponding conjectures remain OPEN "
-            "(no unconditional proof for all n)."
+            "for F_0..F_4 only, one occurrence per admissible k-tuple pattern. "
+            "All corresponding conjectures remain OPEN (no unconditional proof "
+            "for all n)."
         ),
     }
     with open(OUT, "w") as f:

@@ -449,4 +449,25 @@ def test_oppermann_is_a_finite_certificate():
     assert n_done >= 3000
 
 
+def test_prime_constellations_is_a_finite_certificate():
+    """Prime k-tuples (Dickson-type): each admissible constellation has a
+    smallest start whose shifted values are all prime -- twin (3,5), triplet
+    (5,7,11), quadruplet (5,7,11,13), quintuplet (5..17), sextuplet (7..23).
+    Existence only; infinitude (Dickson) stays OPEN."""
+    limit = 10 ** 6
+    s = _sieve(limit)
+
+    def smallest(pat):
+        for p in range(2, limit - pat[-1] + 1):
+            if all(s[p + d] for d in pat):
+                return p
+        return None
+
+    assert smallest((0, 2)) == 3
+    assert smallest((0, 2, 6)) == 5
+    assert smallest((0, 2, 6, 8)) == 5
+    assert smallest((0, 2, 6, 8, 12)) == 5
+    assert smallest((0, 4, 6, 10, 12, 16)) == 7
+
+
 

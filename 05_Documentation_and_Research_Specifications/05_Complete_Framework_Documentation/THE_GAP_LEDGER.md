@@ -370,3 +370,17 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Known:** Vinogradov (1937, large odd); Helfgott (2013/2014, all odd >= 7).
 - **Missing (the object that does not exist as a proof):** a self-contained Lean formalization of the cited theorem in this repository (the result itself is established externally).
 - **Falsifier:** an odd n >= 7 not representable as a sum of three primes.
+
+## G26 - Prime k-tuples (Dickson-type constellations)
+- **Tier:** B (external open)
+- **Subject:** prime k-tuples / Dickson's conjecture (every admissible pattern occurs infinitely often)
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_prime_gaps_certificate.py
+- **Pin:** test_prime_constellations_is_a_finite_certificate
+- **as_of:** 2026-10-18
+- **Reduction:** a single admissible pattern (twin, triplet, quadruplet, quintuplet, sextuplet) is realized finitely often; the infinitude claim is Dickson's conjecture, subsuming the twin prime (G13), Polignac k=2 (G19) and Sophie Germain (G20) cases.
+- **Barrier:** parity barrier of sieve methods; no method yields infinitude for a prescribed admissible pattern (Zhang/Maynard-Tao give only some bounded gap).
+- **Known:** Dickson (1904); Hardy-Littlewood k-tuples heuristics; Maynard-Tao (2014) bounded gaps; smallest constellations (twin 3,5; quadruplet 5,7,11,13; quintuplet 5,7,11,13,17; sextuplet 7,11,13,17,19,23).
+- **Missing (the object that does not exist as a proof):** a proof that every admissible k-tuple pattern is realized by infinitely many prime translates (no unconditional proof; finite existence certificate gives one occurrence per pattern only).
+- **Falsifier:** an admissible pattern occurring only finitely often.
