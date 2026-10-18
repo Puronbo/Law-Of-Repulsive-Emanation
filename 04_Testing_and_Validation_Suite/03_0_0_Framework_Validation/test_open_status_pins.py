@@ -611,8 +611,9 @@ def test_giuga_is_a_finite_certificate():
 def test_lehmer_totient_is_a_finite_certificate():
     """G31: no composite n <= 10**6 has phi(n) | (n - 1), so Lehmer's totient
     conjecture (no composite n with phi(n) | (n - 1)) holds to the bound and
-    stays OPEN beyond it; the 2-Lehmer relaxation phi(n) | (n - 1)^2 gives the
-    first Carmichael numbers, so the relaxation is strictly weaker."""
+    stays OPEN beyond it; the weaker 2-Lehmer condition phi(n) | (n - 1)^2
+    already holds for 561, 1105, 1729, 2465, 6601, 8481 below 10**4 (only the
+    first five of which are Carmichael)."""
     import importlib.util
     path = os.path.join(
         ROOT, "02_Experimental_Implementations_and_Verification",

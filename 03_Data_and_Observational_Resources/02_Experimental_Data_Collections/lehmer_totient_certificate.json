@@ -53,7 +53,7 @@
       ]
     }
   ],
-  "honest_wall": "Finite range only: no composite n <= 1000000 has phi(n) | (n - 1) (the conjecture stays OPEN beyond it), while phi(n) | (n - 1)^2 already holds for the first Carmichael numbers, so the 2-Lehmer relaxation is genuinely weaker. A Lehmer counterexample would be odd, squarefree and Carmichael, with >= 15 distinct prime factors and n > 10^26.",
+  "honest_wall": "Finite range only: no composite n <= 1000000 has phi(n) | (n - 1) (the conjecture stays OPEN beyond it), while the 2-Lehmer relaxation phi(n) | (n - 1)^2 already has solutions below 10^4 (and is thus strictly weaker). A Lehmer counterexample would be odd, squarefree and Carmichael, with >= 15 distinct prime factors and n > 10^26.",
   "references": [
     "Lehmer 1932 (posed the problem; counterexample odd, squarefree, >= 7 prime factors)",
     "Cohen & Hagis 1980 (omega(n) >= 14, n > 10^20)",

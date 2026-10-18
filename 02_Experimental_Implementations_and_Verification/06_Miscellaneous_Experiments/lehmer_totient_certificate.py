@@ -4,8 +4,9 @@ Lehmer (1932) asked whether any composite n satisfies phi(n) | (n - 1); none is
 known.  Such an n must be odd, squarefree and Carmichael, and (Cohen-Hagis 1980,
 Renze; Pinch) n > 10^26 with at least 15 distinct prime factors.  This script
 verifies by exact integer arithmetic that no composite n below a finite bound has
-phi(n) | (n - 1), and that the small *2-Lehmer* numbers (phi(n) | (n - 1)^2) are
-exactly the first Carmichael numbers 561, 1105, 1729, 2465, ... below the bound.
+phi(n) | (n - 1), and that the *2-Lehmer* relaxation (phi(n) | (n - 1)^2) is
+strictly weaker: it already has solutions below 10^4, namely 561, 1105, 1729,
+2465, 6601, 8481, where the first five are Carmichael numbers but 8481 is not.
 It does NOT settle the conjecture.
 """
 import json
@@ -95,9 +96,9 @@ def run(limit=10 ** 6):
         "two_lehmer_numbers": two_lehmer_numbers(m),
         "honest_wall": (
             "Finite range only: no composite n <= %d has phi(n) | (n - 1) (the "
-            "conjecture stays OPEN beyond it), while phi(n) | (n - 1)^2 already "
-            "holds for the first Carmichael numbers, so the 2-Lehmer relaxation "
-            "is genuinely weaker. A Lehmer counterexample would be odd, "
+            "conjecture stays OPEN beyond it), while the 2-Lehmer relaxation "
+            "phi(n) | (n - 1)^2 already has solutions below 10^4 (and is thus "
+            "strictly weaker). A Lehmer counterexample would be odd, "
             "squarefree and Carmichael, with >= 15 distinct prime factors and "
             "n > 10^26." % limit),
         "references": [
