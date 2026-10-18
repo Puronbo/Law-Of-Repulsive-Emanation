@@ -104,6 +104,7 @@ fails when any row is stale by > 365 days.
 - **Status:** RESEARCHED
 - **Related cards:** []
 - **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/RH/LiCriterion.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/rh_li_correct.py
+- **Pin:** test_rh_li_correct_is_a_finite_check
 - **as_of:** 2026-10-18
 - **Reduction:** Li inequality verified n=1..30 (800 zeros); Turing/interval arithmetic only.
 - **Barrier:** zero location proof still missing; known equivalences don't create the zero-free/critical-line proof.
@@ -117,6 +118,7 @@ fails when any row is stale by > 365 days.
 - **Status:** RESEARCHED
 - **Related cards:** []
 - **Proof attempt:** certificate - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Goldbach.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/goldbach_large.py
+- **Pin:** test_goldbach_large_is_a_finite_certificate
 - **as_of:** 2026-10-18
 - **Reduction:** ternary (every odd >= 7 sum of three primes) was proved by Helfgott (2013/2014) (unconditional). Strong (binary): every even >= 4 sum of two primes remains open.
 - **Barrier:** parity barrier of sieve methods; effective minor-arc bounds + Siegel zeros complicate explicit N0.
@@ -130,6 +132,7 @@ fails when any row is stale by > 365 days.
 - **Status:** RESEARCHED
 - **Related cards:** []
 - **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/PvsNP.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/p_np_contour.py
+- **Pin:** test_lean_open_markers_pinned_and_no_sorry
 - **as_of:** 2026-10-18
 - **Reduction:** natural proofs (Razborov–Rudich), algebraization (Aaronson–Wigderson), relativization (Baker–Gill–Solovay) rule out standard classes.
 - **Barrier:** no known super-polynomial circuit lower bound for any explicit NP function.

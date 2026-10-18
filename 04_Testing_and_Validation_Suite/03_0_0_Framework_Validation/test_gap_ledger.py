@@ -66,17 +66,31 @@ def _parse_gaps():
         cards = re.search(r'\*\*Related cards:\*\*\s*(.*)$', block, re.M)
         as_of = re.search(r'\*\*as_of:\*\*\s*(\d{4}-\d{2}-\d{2})', block)
         attempt = re.search(r'\*\*Proof attempt:\*\*\s*(.*)$', block, re.M)
+        pin = re.search(r'\*\*Pin:\*\*\s*(test_\w+)', block)
         gaps.append({
             'token': token,
             'status': status.group(1) if status else '',
             'cards': cards.group(1).strip() if cards else '',
             'as_of': as_of.group(1) if as_of else '',
             'attempt': attempt.group(1).strip() if attempt else '',
+            'pin': pin.group(1) if pin else '',
         })
     return gaps
 
 #: controlled vocabulary for the Proof-attempt kind (Gate D)
 PROOF_KINDS = {'certificate', 'partial', 'no-go', 'citation-only', 'none'}
+
+def _existing_test_funcs():
+    """Every ``def test_...`` name in the validation test directory (Gate D)."""
+    names = set()
+    local = os.path.join(ROOT, "04_Testing_and_Validation_Suite",
+                         "03_0_0_Framework_Validation")
+    for dirpath, _dirs, files in os.walk(local):
+        for f in files:
+            if f.startswith("test_") and f.endswith(".py"):
+                for m in re.finditer(r'^def\s+(test_\w+)\s*\(', _read(os.path.join(dirpath, f)), re.M):
+                    names.add(m.group(1))
+    return names
 
 def test_b_all_related_cards_are_real():
     cards = _card_tokens()
@@ -112,10 +126,15 @@ def test_c_no_unresearched_and_no_stale_rows():
 
 def test_d_proof_attempt_kind_and_artifacts_exist():
     """Gate D: every gap declares what *kind* of proof artifact exists, and
-    every path it names is a real file under the repository root."""
+    every path it names is a real file under the repository root.  A declared
+    ``**Pin:**`` must name a real test function, and any ``certificate``-kind
+    gap must carry a live pin."""
+    funcs = _existing_test_funcs()
     missing = []
     bad_kind = []
     bad_paths = []
+    bad_pin = []
+    unpinned_cert = []
     for g in _parse_gaps():
         attempt = g['attempt']
         if not attempt:
@@ -131,9 +150,15 @@ def test_d_proof_attempt_kind_and_artifacts_exist():
                     continue
                 if not os.path.exists(os.path.join(ROOT, path)):
                     bad_paths.append((g['token'], path))
+        if g['pin'] and g['pin'] not in funcs:
+            bad_pin.append((g['token'], g['pin']))
+        if kind == 'certificate' and not g['pin']:
+            unpinned_cert.append(g['token'])
     assert not missing, "gaps missing **Proof attempt:**: %s" % missing
     assert not bad_kind, "illegal proof-attempt kinds: %s" % bad_kind
     assert not bad_paths, "proof-attempt artifact paths do not exist: %s" % bad_paths
+    assert not bad_pin, "declared pins are not real test functions: %s" % bad_pin
+    assert not unpinned_cert, "certificate-kind gaps lack a live pin: %s" % unpinned_cert
 
 def test_ledgers_heading_count_agrees():
     text = _read(LEDGER)
