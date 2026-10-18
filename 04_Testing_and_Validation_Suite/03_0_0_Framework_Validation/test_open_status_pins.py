@@ -420,6 +420,19 @@ def test_massgap_crossover_pinned():
     assert "theorem sinh_div_self_tendsto_one" in src
 
 
+def test_information_phi_markers_pinned():
+    """G4 content pin: InformationPhi.lean formalizes the register's Phi model
+    (free-ratio, entropy-production, erase-cost, Landauer bit) -- the missing
+    object is the *empirical operational* anchor, not the formal side."""
+    src = _lean("InformationPhi.lean")
+    assert "def Phi (kB T :" in src
+    assert "theorem Phi_freeRatio_eq_exp_neg_lambda" in src
+    assert "theorem Phi_bit_eraseCost" in src
+    assert "theorem Phi_satisfies_claim" in src
+    assert "def informationPhiFacts : List String" in src
+    assert "theorem informationPhiFacts_length : informationPhiFacts.length = 9" in src
+
+
 def test_oppermann_is_a_finite_certificate():
     """Oppermann: for every n >= 2 with (n+1)^2 inside the sieve, a prime lies
     strictly between n^2 and n(n+1), and one between n(n+1) and (n+1)^2."""
