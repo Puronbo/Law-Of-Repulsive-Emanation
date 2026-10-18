@@ -270,6 +270,39 @@ def test_brocard_is_a_finite_certificate():
     assert n_done >= 400
 
 
+def test_gilbreath_is_a_finite_certificate():
+    """Gilbreath: the leading term of every row of absolute differences of the
+    primes is 1 (checked for the first 2000 primes)."""
+    s = _sieve(20000)
+    ps = [i for i in range(2, 20001) if s[i]][:2000]
+    assert len(ps) == 2000
+    row = ps
+    rows = 0
+    while len(row) > 1:
+        row = [abs(row[i + 1] - row[i]) for i in range(len(row) - 1)]
+        assert row[0] == 1
+        rows += 1
+    assert rows == 1999
+
+
+def test_polignac_is_a_finite_certificate():
+    """Polignac: for every even k <= 100 there is a prime pair with gap k
+    (existence only, limit 10^6)."""
+    limit = 10 ** 6
+    s = _sieve(limit)
+    for k in range(2, 101, 2):
+        assert any(s[p] and s[p + k] for p in range(2, limit - k + 1)), k
+
+
+def test_sophie_germain_is_a_finite_certificate():
+    """Sophie Germain primes (p with 2p+1 prime): count up to 10^6 is 4324."""
+    limit = 10 ** 6
+    s = _sieve(limit)
+    cnt = sum(1 for p in range(2, limit + 1)
+              if s[p] and 2 * p + 1 <= limit and s[2 * p + 1])
+    assert cnt == 4324
+
+
 def test_oppermann_is_a_finite_certificate():
     """Oppermann: for every n >= 2 with (n+1)^2 inside the sieve, a prime lies
     strictly between n^2 and n(n+1), and one between n(n+1) and (n+1)^2."""

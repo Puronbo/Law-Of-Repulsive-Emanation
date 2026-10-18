@@ -6,6 +6,12 @@ problems. It is wired to a gate (`test_gap_ledger.py`) that enforces
 consistency with `EXPLICIT_CLAIMS` tokens, forbids UNRESEARCHED rows, and
 fails when any row is stale by > 365 days.
 
+**Proof-attempt kinds** (controlled vocabulary, Gate D): `certificate` (a
+finite, in-repo, machine-checked certificate pin), `partial` (a real partial
+result / reduction exists), `no-go` (a refutation of a strengthened/naive
+version), `citation-only` (external citation, no repo artifact), `none` (no
+artifact). Every non-`none` row must carry at least one live `**Pin:**`.
+
 ---
 
 ## G1 — NS regularity: the endpoint ladder remains open
@@ -246,3 +252,45 @@ fails when any row is stale by > 365 days.
 - **Known:** Oppermann (1882); implies Legendre; verified numerically to large n.
 - **Missing (the object that does not exist as a proof):** an unconditional proof that each interval (n², n(n+1)) and (n(n+1), (n+1)²) contains a prime for every n >= 2 (no unconditional proof for all n; finite certificate verified only for (n+1)² <= 10^7).
 - **Falsifier:** an n >= 2 with no prime strictly between n² and n(n+1), or none strictly between n(n+1) and (n+1)².
+
+## G18 - Gilbreath's conjecture
+- **Tier:** B (external open)
+- **Subject:** Gilbreath's conjecture (leading term of each iterated difference row of the primes is 1)
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_prime_gaps_certificate.py
+- **Pin:** test_gilbreath_is_a_finite_certificate
+- **as_of:** 2026-10-18
+- **Reduction:** controlled by the sign pattern of consecutive prime gaps; verified numerically to great depth, no proof.
+- **Barrier:** equivalent to a strong regularity of prime gaps far beyond current unconditional means.
+- **Known:** Gilbreath (1958); Killgrove-Ralston and later computations to deep rows.
+- **Missing (the object that does not exist as a proof):** a proof that the leading entry of every iterated absolute-difference row of the prime sequence is 1 for all rows (no unconditional proof; finite certificate verified only to 2000 rows).
+- **Falsifier:** a row whose leading entry is not 1.
+
+## G19 - Polignac's conjecture
+- **Tier:** B (external open)
+- **Subject:** Polignac's conjecture (every even gap occurs infinitely often among primes)
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_prime_gaps_certificate.py
+- **Pin:** test_polignac_is_a_finite_certificate
+- **as_of:** 2026-10-18
+- **Reduction:** the case k=2 is the twin prime conjecture (G13); general even k needs a parity-crossing method; Zhang/Maynard-Tao give some bounded even gap, not all.
+- **Barrier:** parity barrier of sieve methods; no method yields infinitude for a prescribed even gap.
+- **Known:** Polignac (1849); Zhang (2013), Maynard-Tao (2014) (some bounded gap); exhaustive existence checks for every even k to large bounds.
+- **Missing (the object that does not exist as a proof):** a proof that for every even k there are infinitely many prime pairs (p, p+k) (no unconditional proof; finite existence certificate only for even k <= 100).
+- **Falsifier:** an even k with only finitely many prime pairs at distance k.
+
+## G20 - Sophie Germain primes
+- **Tier:** B (external open)
+- **Subject:** Sophie Germain primes (infinitely many primes p with 2p+1 prime)
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_prime_gaps_certificate.py
+- **Pin:** test_sophie_germain_is_a_finite_certificate
+- **as_of:** 2026-10-18
+- **Reduction:** infinitude of safe primes is open; a special case of the Hardy-Littlewood k-tuples heuristics; finite count only.
+- **Barrier:** parity barrier; no sieve method distinguishes the pair structure (p, 2p+1).
+- **Known:** Sophie Germain (18th c.); Hardy-Littlewood k-tuples heuristics; exhaustive counts (e.g. 4324 below 10^6).
+- **Missing (the object that does not exist as a proof):** a proof that infinitely many primes p have 2p+1 prime (no unconditional proof; finite count certificate only).
+- **Falsifier:** a proof that only finitely many such p exist.

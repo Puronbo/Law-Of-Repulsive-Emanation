@@ -1,6 +1,6 @@
-"""Finite certificates for the prime-gap conjectures (Gap Ledger).
+"""Finite certificates for the prime conjectures (Gap Ledger G15-G20).
 
-Three honest finite computations, each certifying a bounded range only:
+Honest finite computations, each certifying a bounded range only:
 
 * G16 Andrica: sqrt(p_{n+1}) - sqrt(p_n) < 1 for all consecutive prime pairs
   up to the sieve limit.
@@ -8,6 +8,11 @@ Three honest finite computations, each certifying a bounded range only:
   verified for every n whose interval fits inside the sieve limit.
 * G17 Oppermann: a prime strictly between n^2 and n(n+1), and one strictly
   between n(n+1) and (n+1)^2, for every n whose interval fits.
+* G18 Gilbreath: leading term of every absolute-difference row of the primes
+  is 1 (verified to the first few thousand primes; O(m^2)).
+* G19 Polignac: for every even k <= 100 there is a prime pair differing by k
+  (existence only; infinitude is the open claim).
+* G20 Sophie Germain: finite count of primes p with 2p+1 prime (infinitude OPEN).
 
 None certifies the conjecture for all n; all remain OPEN.
 """
@@ -107,6 +112,52 @@ def brocard(s, limit, ps, max_n):
     }
 
 
+def gilbreath(ps, m=2000):
+    """Gilbreath: with the primes as row 0, take absolute differences row by
+    row; the leading entry of every row is 1.  Checked on the first ``m`` primes
+    (the full check is O(m^2))."""
+    row = list(ps[:m])
+    rows = 0
+    ok = True
+    while len(row) > 1:
+        row = [abs(row[i + 1] - row[i]) for i in range(len(row) - 1)]
+        rows += 1
+        if row[0] != 1:
+            ok = False
+            break
+    return {"primes_used": min(len(ps), m), "rows": rows,
+            "leading_always_one": ok}
+
+
+def polignac(s, limit, kmax):
+    """Polignac: for each even gap k, some prime pair differs by k.  For each
+    even k <= kmax we record the smallest starting prime (existence, not the
+    open infinitude claim)."""
+    smallest = {}
+    for k in range(2, kmax + 1, 2):
+        found = None
+        for p in range(2, limit - k + 1):
+            if s[p] and s[p + k]:
+                found = p
+                break
+        smallest[k] = found
+    return {
+        "kmax": kmax,
+        "all_found": all(v is not None for v in smallest.values()),
+        "smallest": {str(k): v for k, v in smallest.items()},
+    }
+
+
+def sophie_germain(s, limit):
+    """Sophie Germain primes: primes p with 2p+1 also prime.  Records the finite
+    count up to the sieve limit (infinitude is OPEN)."""
+    cnt = 0
+    for p in range(2, limit + 1):
+        if s[p] and 2 * p + 1 <= limit and s[2 * p + 1]:
+            cnt += 1
+    return {"limit": limit, "count": cnt}
+
+
 def run(limit=10 ** 7, brocard_max_n=100000):
     print("Sieve to %d..." % limit)
     t0 = time.time()
@@ -126,16 +177,30 @@ def run(limit=10 ** 7, brocard_max_n=100000):
     print("Oppermann: %d intervals, all have prime: %s"
           % (o["n_checked"], o["all_have_prime"]))
 
+    g = gilbreath(ps)
+    print("Gilbreath: %d rows, leading always 1: %s"
+          % (g["rows"], g["leading_always_one"]))
+
+    po = polignac(s, limit, 100)
+    print("Polignac: even k<=100 all found: %s" % po["all_found"])
+
+    sg = sophie_germain(s, limit)
+    print("Sophie Germain primes <= %d: %d" % (limit, sg["count"]))
+
     out = {
-        "experiment": "Prime-gap finite certificates (Gap Ledger G15/G16/G17)",
+        "experiment": "Prime finite certificates (Gap Ledger G15-G20)",
         "sieve_limit": limit,
         "andrica": a,
         "brocard": b,
         "oppermann": o,
+        "gilbreath": g,
+        "polignac": po,
+        "sophie_germain": sg,
         "honest_wall": (
             "Finite ranges only: Andrica verified up to the sieve limit, "
-            "Brocard for intervals inside it, Oppermann for n with (n+1)^2 "
-            "inside it. All three conjectures remain OPEN "
+            "Brocard/Oppermann for intervals inside it, Gilbreath to the first "
+            "few thousand primes, Polignac existence for even k <= 100, Sophie "
+            "Germain count up to the limit. All these conjectures remain OPEN "
             "(no unconditional proof for all n)."
         ),
     }
