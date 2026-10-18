@@ -123,7 +123,9 @@ fails when any row is stale by > 365 days.
 - **as_of:** 2026-10-18
 - **Reduction:** natural proofs (Razborov–Rudich), algebraization (Aaronson–Wigderson), relativization (Baker–Gill–Solovay) rule out standard classes.
 - **Barrier:** no known super-polynomial circuit lower bound for any explicit NP function.
-- **Missing:** a non-relativizing, non-algebraizing, non-natural lower-bound method, not more algorithms.
+- **Known:** Razborov–Rudich (1997), Aaronson–Wigderson (2003), Baker–Gill–Solovay (1975).
+- **Missing (the object that does not exist as a proof):** a non-relativizing, non-algebraizing, non-natural lower-bound method that yields a super-polynomial (or exponential) circuit lower bound for some explicit function in NP, or a constructive proof P=NP.
+- **Falsifier:** a relativized world where the claimed method fails, or the claimed lower-bound proof collapsing under algebraization/natural-proofs tests, or an explicit polynomial circuit for an NP-complete function.
 
 ## G11 — Yang–Mills mass gap
 - **Tier:** B (Millennium scope)
