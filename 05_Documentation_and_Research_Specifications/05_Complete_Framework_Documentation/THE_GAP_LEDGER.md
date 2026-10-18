@@ -99,7 +99,9 @@ fails when any row is stale by > 365 days.
 - **as_of:** 2026-10-18
 - **Reduction:** Li inequality verified n=1..30 (800 zeros); Turing/interval arithmetic only.
 - **Barrier:** zero location proof still missing; known equivalences don't create the zero-free/critical-line proof.
-- **Missing:** proof all nontrivial zeros on Re(s)=1/2 (technique gap), not more zeros.
+- **Known:** Hardy–Littlewood, Montgomery, Odlyzko, Conrey, de Branges framework context, Li criterion.
+- **Missing (the object that does not exist as a proof):** a proof that for all nontrivial zeros ρ of ζ(s), Re(ρ)=1/2 (or a direct equivalence chain closed without the numerical step as proof of the universal claim). The ledger rejects "more zeros verified" as closure.
+- **Falsifier:** any nontrivial zero found off the critical line under sufficient precision, or a logical gap in the equivalence chain used.
 
 ## G9 — Goldbach
 - **Tier:** B (Millennium scope)
