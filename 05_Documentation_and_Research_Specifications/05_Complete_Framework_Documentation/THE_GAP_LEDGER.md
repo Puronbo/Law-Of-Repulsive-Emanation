@@ -29,6 +29,7 @@ fails when any row is stale by > 365 days.
 - **Related cards:** C3, C8-open
 - **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/SerrinLadder.lean
 - **Pin:** test_ledger_artifacts_attach_no_sorry
+- **Pin:** test_serrin_ladder_ceiling_arithmetic_certificate
 - **as_of:** 2026-10-18
 - **Reduction:** the monotonicity of `λ(s)` (in the scaling order `s`) is assumed (T3 OPEN) to close the margin gap and to align the endpoint ladder.
 - **Barrier:** equivalence of all `2/p+3/q=1` endpoint points does not by itself imply `λ(s)` antitone for the NS/Burgers family. The scaling map identifies norms only up to constants; monotonicity requires genuine endpoint embeddings for the concrete family, not just scale invariance.

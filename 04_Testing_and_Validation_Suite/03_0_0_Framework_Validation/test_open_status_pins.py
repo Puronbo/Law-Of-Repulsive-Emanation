@@ -209,6 +209,27 @@ def test_goldbach_extended_finite_certificate():
             raise AssertionError("no prime pair for %d" % n)
 
 
+def test_serrin_ladder_ceiling_arithmetic_certificate():
+    """G2 pin (arithmetic sub-result): re-check, in CI without Lean, the
+    Serrin-ladder arithmetic proved in ``SerrinLadder.lean`` -- the
+    Gagliardo-Nirenberg exponent ``theta(p) = 3/2 - 3/p`` satisfies
+    ``theta(p) <= 1  iff  p <= 6``, and the closed form
+    ``theta(p)*q(p)/2 = 3(p-2)/(2(p-3))`` with ``q(p) = 2p/(p-3)``.  This is
+    only the *arithmetic*; the PDE a priori bound (G1/G2) stays OPEN."""
+    def theta(p):
+        return 1.5 - 3.0 / p
+    def serrin_q(p):
+        return 2.0 * p / (p - 3.0)
+    for p in (1.5, 2.0, 3.0, 4.0, 5.0, 5.999, 6.0):
+        assert theta(p) <= 1.0 + 1e-12, p
+    for p in (6.001, 7.0, 8.0, 10.0, 100.0):
+        assert theta(p) > 1.0, p
+    assert abs(theta(6.0) - 1.0) < 1e-12
+    for p in (4.0, 5.0, 6.0, 10.0):
+        assert abs(theta(p) * serrin_q(p) / 2 - 3 * (p - 2) / (2 * (p - 3))) < 1e-12, p
+    assert abs(theta(6.0) * serrin_q(6.0) / 2 - 2.0) < 1e-12
+
+
 def test_margin_law_admits_scale_family():
     """Gate-D pin for G5 (no-go): the register's margin composition law
     ``f(r*s) = (x+y)/(1+4xy)`` is satisfied by the whole one-parameter family

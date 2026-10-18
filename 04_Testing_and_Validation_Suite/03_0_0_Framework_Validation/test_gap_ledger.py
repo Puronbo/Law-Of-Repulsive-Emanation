@@ -56,13 +56,9 @@ def _card_tokens():
 def _parse_gaps():
     text = _read(LEDGER)
     gaps = []
-    for m in re.finditer(r'^##\s+(G\d+)\b', text, re.M):
-        token = m.group(1)
-        # read forward a few lines
-        # find status, related_cards, as_of
-        start = m.end()
-        # crude: next 40 lines
-        block = '\n'.join(text[start:start+2000].splitlines()[:40])
+    # split so each block is exactly one gap (no overlap into the next heading)
+    parts = re.split(r'^##\s+(G\d+)\b', text, flags=re.M)
+    for token, block in zip(parts[1::2], parts[2::2]):
         status = re.search(r'\*\*Status:\*\*\s*(\w+)', block)
         cards = re.search(r'\*\*Related cards:\*\*\s*(.*)$', block, re.M)
         as_of = re.search(r'\*\*as_of:\*\*\s*(\d{4}-\d{2}-\d{2})', block)
