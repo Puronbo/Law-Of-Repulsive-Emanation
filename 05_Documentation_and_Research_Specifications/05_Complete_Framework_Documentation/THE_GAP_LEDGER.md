@@ -111,7 +111,9 @@ fails when any row is stale by > 365 days.
 - **as_of:** 2026-10-18
 - **Reduction:** circle method gives r(N)>0 for large N but N0 not effectively computable; Chen crosses to semiprime+prime (parity).
 - **Barrier:** parity barrier of sieve methods.
-- **Missing:** technique to cross parity barrier (or effective N0 + exhaustive small range closure by proof), not more verification.
+- **Known:** Hardy–Littlewood (1923), Chen (1973), Oliveira e Silva (2013).
+- **Missing (the object that does not exist as a proof):** a technique to cross the parity barrier (or an effective N0 and a proof covering all N <= N0 + the large-N tail by a non-sieve method), yielding an unconditional proof for all even n>=4.
+- **Falsifier:** an even integer n>=4 with no representation as sum of two primes (or a logical gap in the large-N tail bound).
 
 ## G10 — P vs NP
 - **Tier:** B (Millennium scope)
