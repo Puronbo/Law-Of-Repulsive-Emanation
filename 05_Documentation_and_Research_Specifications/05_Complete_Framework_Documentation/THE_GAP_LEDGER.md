@@ -38,8 +38,11 @@ fails when any row is stale by > 365 days.
 - **Status:** RESEARCHED
 - **Related cards:** C3, C8-open
 - **as_of:** 2026-10-18
-- **Barrier:** the single open content recurs identically across the four readings (the "bridge barrier").
-- **Missing:** identification of which reading is constructive, or proof the bridge cannot be split further.
+- **Reduction:** the single open content recurs identically across four readings (the "bridge barrier"). If it is the same obstruction, the gap should reduce to one constructive reading.
+- **Barrier:** identifying equivalence does not force constructivity — the isomorphism is structural, not algorithmic for producing the missing a priori control.
+- **Known:** four readings of "mixture of all dimensions"; identical open content shape.
+- **Missing (the object that does not exist as a proof):** a proof that exactly one reading is **constructive** (yields an unconditional a priori bound for Leray–Hopf), or a proof the bridge is **irreducible** (all four equivalent and none constructive).
+- **Falsifier:** find a counterexample in embedding/translation between readings that breaks equivalence of the open content, or produce the missing bound via one reading.
 
 ## G4 — Φ / InformationPhi (empirical, not formal)
 - **Tier:** A (register debt)
@@ -59,7 +62,8 @@ fails when any row is stale by > 365 days.
 - **as_of:** 2026-10-18
 - **Reduction:** `boundedOrientation r = (1/2)tanh(c·log r)` satisfies the composition law for every real `c` — uniqueness is false.
 - **Barrier:** the margin cannot be forced unique by the law alone; closeness/selection remains open.
-- **Missing:** an additional axiom that selects a canonical `c` (or proof none exists and all are equivalent).
+- **Missing (the object that does not exist as a proof):** an **additional selection axiom** (with a physical/mathematical justification) that picks a canonical `c`, or a proof that all `c` are equivalent for all claims. The ledger requires either a canonical choice with justification, or a no-go proof.
+- **Falsifier:** show no such selection is compatible with the register's claims, or derive contradiction from a proposed selection axiom.
 
 ## G6 — BSD (rank >= 2)
 - **Tier:** B (Millennium scope)
