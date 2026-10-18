@@ -1,5 +1,5 @@
 {
-  "experiment": "Perfect numbers finite certificate (Gap Ledger G27)",
+  "experiment": "Perfect numbers / Mersenne primes (Gap Ledger G27, G29)",
   "search_limit": 1000000,
   "even_perfect": [
     6,
@@ -13,5 +13,33 @@
     "none_known": true,
     "known_lower_bound_citation": "> 10^1500 (Ochem-Rao 2012)"
   },
-  "honest_wall": "Finite search only: no odd perfect number exists up to the search limit; the even perfect numbers are exactly those built from Mersenne primes (Euclid-Euler). Whether any odd perfect number exists at all is OPEN (best known if one exists: > 10^1500)."
+  "mersenne_primes": {
+    "pmax": 5000,
+    "exponents": [
+      2,
+      3,
+      5,
+      7,
+      13,
+      17,
+      19,
+      31,
+      61,
+      89,
+      107,
+      127,
+      521,
+      607,
+      1279,
+      2203,
+      2281,
+      3217,
+      4253,
+      4423
+    ],
+    "count": 20,
+    "known_total_citation": 52,
+    "largest_known_citation": "2^136279841 - 1 (GIMPS, Oct 2024)"
+  },
+  "honest_wall": "Finite search only: no odd perfect number exists up to the search limit; the even perfect numbers are exactly those built from Mersenne primes (Euclid-Euler). The Mersenne list is exact (Lucas-Lehmer) only for exponents <= pmax. Whether any odd perfect number exists (best known bound > 10^1500) and whether infinitely many Mersenne primes exist both remain OPEN."
 }

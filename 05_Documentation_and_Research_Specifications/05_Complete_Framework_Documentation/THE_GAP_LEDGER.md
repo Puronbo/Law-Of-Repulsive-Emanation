@@ -412,3 +412,17 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Known:** the live ledger (G1-G27); Gate D in test_gap_ledger.py; the forge's own self-test.
 - **Missing (the object that does not exist as a proof):** an automatic prover that fills a row's mathematical fields and closes the gap; the forge only guarantees the shape is honest and machine-checkable.
 - **Falsifier:** a forge output that Gate D accepts but which claims resolution, or a legal-looking row emitted with an illegal kind, a missing artifact, or a fake pin.
+
+## G29 - Mersenne primes
+- **Tier:** B (external open)
+- **Subject:** Mersenne primes (infinitely many primes of the form 2^p - 1?)
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/perfect_numbers_certificate.py
+- **Pin:** test_mersenne_primes_is_a_finite_certificate
+- **as_of:** 2026-10-18
+- **Reduction:** 2^p - 1 can be prime only if p is prime; for prime p the exact Lucas-Lehmer test decides M_p. Mersenne primes correspond bijectively to even perfect numbers (Euclid-Euler), so this row underwrites the even side of G27.
+- **Barrier:** no proof of infinitude (or finiteness); Lenstra-Pomerance-Wagstaff heuristics suggest infinitely many, but no unconditional method yields it.
+- **Known:** Euclid-Euler (even perfect numbers); Lucas (1876) / Lehmer (1930s) test; 52 Mersenne primes known as of 2025; largest 2^136279841 - 1 (GIMPS / Luke Durant, Oct 2024); all exponents below 136,279,841 tested at least once (2025).
+- **Missing (the object that does not exist as a proof):** a proof that infinitely many (or only finitely many) M_p are prime -- no unconditional result; finite Lucas-Lehmer certificate only for exponents up to pmax.
+- **Falsifier:** a proof that only finitely many M_p are prime, or an infinitude proof.

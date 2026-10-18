@@ -1,4 +1,5 @@
-"""Finite certificate for the odd-perfect-number problem (Gap Ledger G27).
+"""Finite certificate for the odd-perfect-number problem (Gap Ledger G27) and
+Mersenne primes / even perfect numbers (Gap Ledger G29).
 
 Honest finite computation only:
 
@@ -59,22 +60,59 @@ def euler_form_note():
     }
 
 
-def run(limit=10 ** 6):
+def _is_prime_small(n):
+    if n < 2:
+        return False
+    i = 2
+    while i * i <= n:
+        if n % i == 0:
+            return False
+        i += 1
+    return True
+
+
+def mersenne_primes(pmax):
+    """Exact Lucas-Lehmer certificate: for each prime exponent p <= pmax,
+    M_p = 2^p - 1 is prime iff the LL iteration s = s^2 - 2 (mod M_p),
+    s_0 = 4, terminates at 0 after p - 2 steps.  Returns the exponents found;
+    infinitude of Mersenne primes is OPEN (Euclid-Euler links them to the even
+    perfect numbers)."""
+    exps = [2] if pmax >= 2 else []
+    for p in range(3, pmax + 1, 2):
+        if not _is_prime_small(p):
+            continue
+        m = (1 << p) - 1
+        s = 4
+        for _ in range(p - 2):
+            s = (s * s - 2) % m
+        if s == 0:
+            exps.append(p)
+    return {"pmax": pmax, "exponents": exps, "count": len(exps),
+            "known_total_citation": 52,
+            "largest_known_citation": "2^136279841 - 1 (GIMPS, Oct 2024)"}
+
+
+def run(limit=10 ** 6, pmax=5000):
     sig = sigma_sieve(limit)
     found = perfect_search(sig, limit)
     print("Even perfect numbers <= %d: %s" % (limit, found["even"]))
     print("Odd perfect numbers <= %d: %s" % (limit, found["odd"]))
+    mp = mersenne_primes(pmax)
+    print("Mersenne prime exponents <= %d: %s" % (pmax, mp["exponents"]))
     out = {
-        "experiment": "Perfect numbers finite certificate (Gap Ledger G27)",
+        "experiment": "Perfect numbers / Mersenne primes (Gap Ledger G27, G29)",
         "search_limit": limit,
         "even_perfect": found["even"],
         "odd_perfect": found["odd"],
         "euler_form": euler_form_note(),
+        "mersenne_primes": mp,
         "honest_wall": (
             "Finite search only: no odd perfect number exists up to the search "
             "limit; the even perfect numbers are exactly those built from "
-            "Mersenne primes (Euclid-Euler). Whether any odd perfect number "
-            "exists at all is OPEN (best known if one exists: > 10^1500)."
+            "Mersenne primes (Euclid-Euler). The Mersenne list is exact (Lucas-"
+            "Lehmer) only for exponents <= pmax. Whether any odd perfect number "
+            "exists (best known bound > 10^1500) and whether infinitely many "
+            "Mersenne primes exist both remain OPEN."
         ),
     }
     with open(OUT, "w") as f:

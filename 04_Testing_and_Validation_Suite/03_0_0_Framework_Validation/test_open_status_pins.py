@@ -485,6 +485,36 @@ def test_odd_perfect_numbers_no_small_certificate():
     assert odd == []
 
 
+def test_mersenne_primes_is_a_finite_certificate():
+    """G29: exact Lucas-Lehmer certificate -- prime exponents p <= 2000 with
+    2^p - 1 prime are exactly [2,3,5,7,13,17,19,31,61,89,107,127,521,607,1279].
+    Infinitude of Mersenne primes stays OPEN."""
+    def isp(n):
+        if n < 2:
+            return False
+        i = 2
+        while i * i <= n:
+            if n % i == 0:
+                return False
+            i += 1
+        return True
+    found = []
+    for p in range(2, 2001):
+        if not isp(p):
+            continue
+        if p == 2:
+            found.append(p)
+            continue
+        m = (1 << p) - 1
+        s = 4
+        for _ in range(p - 2):
+            s = (s * s - 2) % m
+        if s == 0:
+            found.append(p)
+    assert found == [2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127,
+                     521, 607, 1279]
+
+
 def _load_gap_row_forge():
     import importlib.util
     path = os.path.join(
