@@ -384,6 +384,42 @@ def test_ternary_goldbach_citation_recorded():
         assert "Helfgott" in fp.read()
 
 
+def test_ns_wall_markers_pinned():
+    """G1 sub-result pin: NavierStokes.lean carries the open-wall markers
+    (global regularity OPEN; Prodi-Serrin integral NOT certified) plus the
+    Fourier bound -- the register does not claim to have closed NS."""
+    src = _lean("NavierStokes.lean")
+    assert "nsGlobalRegularityOpen : Bool := true" in src
+    assert "prodiSerrinIntegralFiniteCertified : Bool := false" in src
+    assert "theorem ns_global_regularity_wall_open" in src
+    assert "def fourierInfBound" in src
+
+
+def test_bsd_rank_records_pinned():
+    """G6 sub-result pin: BSD.lean records the rank ladder [0,0,1,2] and the
+    matching conductors, without claiming a general rank>=2 theorem."""
+    src = _lean("BSD.lean")
+    assert "def curve_rank : List Nat := [0, 0, 1, 2]" in src
+    assert "def curve_conductor : List Nat := [11, 14, 37, 389]" in src
+    assert "def verifyAll : Bool" in src
+
+
+def test_hodge_quintic_open_marker_pinned():
+    """G7 sub-result pin: Hodge.lean marks the quintic (2,1) codimension-2
+    classes as genuinely open."""
+    src = _lean("Hodge.lean")
+    assert "def quintic_codim2_open : Bool := true" in src
+
+
+def test_massgap_crossover_pinned():
+    """G11 sub-result pin: MassGap.lean carries the crossover fact
+    (a/sinh a -> 1) and the positivity check, without claiming a 4D proof."""
+    src = _lean("MassGap.lean")
+    assert "def verifyMassGapPositive : Bool" in src
+    assert "theorem massGapCrossoverRemovable" in src
+    assert "theorem sinh_div_self_tendsto_one" in src
+
+
 def test_oppermann_is_a_finite_certificate():
     """Oppermann: for every n >= 2 with (n+1)^2 inside the sieve, a prime lies
     strictly between n^2 and n(n+1), and one between n(n+1) and (n+1)^2."""

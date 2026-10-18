@@ -21,6 +21,7 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Related cards:** C3, C8-open
 - **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/NavierStokes.lean
 - **Pin:** test_ledger_artifacts_attach_no_sorry
+- **Pin:** test_ns_wall_markers_pinned
 - **as_of:** 2026-10-18
 - **Reduction:** `u ∈ L^∞_tL²_x ∩ L²_tḢ¹_x` (Leray–Hopf) → need unconditional scale-critical control (`L^p_tL^q_x`, `2/p+3/q<=1`; `L^∞_tL³_x` closed by ESS 2003, `BMO⁻¹` small-data only).
 - **Known:** Leray (1934), LPS (1959/63/67), ESS (2003), Kato (1984), Koch–Tataru (2001), CKN (1982), Vasseur (2007), Gustafson–Kang–Tsai (2007).
@@ -92,6 +93,7 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Related cards:** []
 - **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/BSD.lean
 - **Pin:** test_ledger_artifacts_attach_no_sorry
+- **Pin:** test_bsd_rank_records_pinned
 - **as_of:** 2026-10-18
 - **Reduction:** rank<=1 settled (Gross-Zagier 1986 + Kolyvagin 1990, extended to all E/Q by modularity); rank>=2 needs an Euler system detecting two independent Heegner classes.
 - **Barrier:** Euler system only generates one class per imaginary quadratic field; no known rank>=2 Euler system. Average-rank bounds (Bhargava-Shankar, avg rank <= 0.885) and majority results (Bhargava-Skinner-Zhang 2014, >66% of E/Q satisfy BSD) constrain proportions but do not produce two independent classes for any rank>=2 curve.
@@ -106,6 +108,7 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Related cards:** []
 - **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Hodge.lean
 - **Pin:** test_ledger_artifacts_attach_no_sorry
+- **Pin:** test_hodge_quintic_open_marker_pinned
 - **as_of:** 2026-10-18
 - **Reduction:** (1,1) Lefschetz; codim>=2 open (quintic threefold canonical example).
 - **Barrier:** no known geometric construction producing algebraic cycles representing general (2,1) Hodge classes.
@@ -163,6 +166,7 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Related cards:** []
 - **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/MassGap.lean
 - **Pin:** test_ledger_artifacts_attach_no_sorry
+- **Pin:** test_massgap_crossover_pinned
 - **as_of:** 2026-10-18
 - **Reduction:** gap to rigorous 4D YM construction + spectral gap remains.
 - **Barrier:** constructive quantum field theory in 4D nonabelian: renormalization + mass gap unproven in a mathematically rigorous sense.
