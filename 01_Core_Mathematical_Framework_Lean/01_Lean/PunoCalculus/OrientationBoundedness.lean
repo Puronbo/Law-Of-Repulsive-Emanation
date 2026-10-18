@@ -442,4 +442,233 @@ def boundedOrientationLinkFacts : List String :=
 theorem boundedOrientationLinkFacts_length : boundedOrientationLinkFacts.length = 10 := by
   decide
 
+/-! ## The scale family and the classification theorem
+
+The composition law `f (r * s) = (x + y) / (1 + 4xy)` does **not** by itself single
+out `boundedOrientation`.  The one-parameter family
+`boundedOrientationScale c r = (1/2) * tanh (c * log r)` satisfies the same law for
+every real `c` (`boundedOrientationScale_mul`); the register's bounded orientation is
+the member `c = 1/2` (`boundedOrientationScale_half`).  This is the honest fix for the
+naive uniqueness statement, which is false (the `squareOrientation` counterexample in
+`OrientationLaw.lean`).
+
+Adding differentiability at `r = 1` pins the family up to its scale: every solution of
+the law that is centered, bounded in the open window, and differentiable on `(0, ∞)`
+is a scale `boundedOrientationScale (2 * f' 1)` (`boundedOrientation_classification`),
+and the normalisation `f' 1 = 1/4` recovers `boundedOrientation` exactly
+(`boundedOrientation_classification_normalized`).  The proof passes to the
+multiplicative coordinate `u x = (1 + 2 f x) / (1 - 2 f x)`, turns the law into
+multiplicativity `u (r * s) = u r * u s`, differentiates at `s = 1` to get the
+separable ODE `r * u'(r) = u r * u'(1)`, and integrates it by showing
+`log (u r) - u'(1) * log r` is constant on `(0, ∞)`. -/
+
+/-- **The one-parameter scale family.**  `boundedOrientationScale c r =
+(1/2) * tanh (c * log r)`.  The register's bounded orientation is the member
+`c = 1/2`; every `c` satisfies the same composition law, so the law alone does *not*
+single out `boundedOrientation`. -/
+noncomputable def boundedOrientationScale (c r : ℝ) : ℝ :=
+  (1 / 2) * Real.tanh (c * Real.log r)
+
+/-- The scale family always lands in the open window `(-1/2, 1/2)`. -/
+theorem boundedOrientationScale_mem (c r : ℝ) :
+    boundedOrientationScale c r ∈ Set.Ioo (-(1 / 2)) (1 / 2) := by
+  refine ⟨?_, ?_⟩ <;>
+    · unfold boundedOrientationScale
+      nlinarith [Real.neg_one_lt_tanh (c * Real.log r), Real.tanh_lt_one (c * Real.log r)]
+
+/-- **The centre.**  Every scale vanishes at the neutral multiplier `r = 1`. -/
+theorem boundedOrientationScale_center (c : ℝ) : boundedOrientationScale c 1 = 0 := by
+  simp [boundedOrientationScale]
+
+/-- **The register's scale.**  `boundedOrientation` is the member `c = 1/2`. -/
+theorem boundedOrientationScale_half {r : ℝ} (hr : 0 < r) :
+    boundedOrientationScale (1 / 2) r = boundedOrientation r := by
+  rw [boundedOrientation_eq_tanh hr]
+  unfold boundedOrientationScale
+  ring_nf
+
+/-- **Composition holds for every scale.**  Multiplying multipliers adds their
+bounded orientations by the same velocity-addition law, for *any* parameter `c`; the
+law is not a uniqueness test. -/
+theorem boundedOrientationScale_mul {c r s : ℝ} (hr : 0 < r) (hs : 0 < s) :
+    boundedOrientationScale c (r * s) =
+      (boundedOrientationScale c r + boundedOrientationScale c s) /
+        (1 + 4 * boundedOrientationScale c r * boundedOrientationScale c s) := by
+  have hlog : Real.log (r * s) = Real.log r + Real.log s :=
+    Real.log_mul (ne_of_gt hr) (ne_of_gt hs)
+  unfold boundedOrientationScale
+  rw [hlog, mul_add, tanh_add]
+  ring_nf
+
+/-- **The exponential form of `tanh`.**  `tanh w = (e ^ (2w) - 1) / (e ^ (2w) + 1)`;
+the form used to invert the unitary coordinate in the classification. -/
+theorem tanh_eq_exp (w : ℝ) :
+    Real.tanh w = (Real.exp (2 * w) - 1) / (Real.exp (2 * w) + 1) := by
+  have h2 : Real.exp (2 * w) = Real.exp w * Real.exp w := by
+    rw [show 2 * w = w + w by ring, Real.exp_add]
+  have hn : Real.exp (-w) = (Real.exp w)⁻¹ := Real.exp_neg w
+  rw [Real.tanh_eq, h2, hn]
+  field_simp
+
+/-- **Classification up to scale.**  Any function satisfying the composition law,
+centered at `1`, bounded in the open window, and differentiable on `(0, ∞)` is a scale
+`boundedOrientationScale (2 * f' 1)`.  The scale `2 * f' 1` is free, which is exactly
+why the naive uniqueness statement needed a normalisation. -/
+theorem boundedOrientation_classification {f f' : ℝ → ℝ}
+    (h1 : f 1 = 0)
+    (hlaw : ∀ r s, 0 < r → 0 < s → f (r * s) = (f r + f s) / (1 + 4 * f r * f s))
+    (hwin : ∀ r, 0 < r → f r ∈ Set.Ioo (-(1 / 2)) (1 / 2))
+    (hdiff : ∀ r, 0 < r → HasDerivAt f (f' r) r) :
+    ∀ r, 0 < r → f r = boundedOrientationScale (2 * f' 1) r := by
+  set u : ℝ → ℝ := fun x => (1 + 2 * f x) / (1 - 2 * f x) with hu
+  have hden_ne : ∀ r, 0 < r → 1 - 2 * f r ≠ 0 := by
+    intro r hr; have := (hwin r hr).2; linarith
+  have hupos : ∀ r, 0 < r → 0 < u r := by
+    intro r hr
+    apply div_pos
+    · have := (hwin r hr).1; linarith
+    · have := (hwin r hr).2; linarith
+  have huone : u 1 = 1 := by simp only [hu, h1]; norm_num
+  have hd_pos : ∀ r s, 0 < r → 0 < s → 0 < 1 + 4 * f r * f s := by
+    intro r s hr hs
+    nlinarith [mul_pos (show 0 < 1 / 2 + f r by linarith [(hwin r hr).1])
+                 (show 0 < 1 / 2 + f s by linarith [(hwin s hs).1]),
+               mul_pos (show 0 < 1 / 2 - f r by linarith [(hwin r hr).2])
+                 (show 0 < 1 / 2 - f s by linarith [(hwin s hs).2])]
+  have hds_pos : ∀ r s, 0 < r → 0 < s →
+      0 < 1 - 2 * ((f r + f s) / (1 + 4 * f r * f s)) := by
+    intro r s hr hs
+    have hd := hd_pos r s hr hs
+    have hd' : (1 : ℝ) + f r * f s * 4 ≠ 0 := fun h => (ne_of_gt hd) (by linarith [h])
+    have hn : 0 < (1 - 2 * f r) * (1 - 2 * f s) :=
+      mul_pos (by linarith [(hwin r hr).2]) (by linarith [(hwin s hs).2])
+    rw [show 1 - 2 * ((f r + f s) / (1 + 4 * f r * f s))
+          = ((1 - 2 * f r) * (1 - 2 * f s)) / (1 + 4 * f r * f s) by
+        field_simp [ne_of_gt hd, hd']; ring]
+    exact div_pos hn hd
+  have h2rs_add : ∀ r s, 0 < r → 0 < s →
+      1 + 2 * f (r * s) = (1 + 2 * f r) * (1 + 2 * f s) / (1 + 4 * f r * f s) := by
+    intro r s hr hs
+    have hd := ne_of_gt (hd_pos r s hr hs)
+    have hd' : (1 : ℝ) + f r * f s * 4 ≠ 0 := fun h => hd (by linarith [h])
+    rw [hlaw r s hr hs]; field_simp [hd, hd']; ring
+  have h2rs_sub : ∀ r s, 0 < r → 0 < s →
+      1 - 2 * f (r * s) = (1 - 2 * f r) * (1 - 2 * f s) / (1 + 4 * f r * f s) := by
+    intro r s hr hs
+    have hd := ne_of_gt (hd_pos r s hr hs)
+    have hd' : (1 : ℝ) + f r * f s * 4 ≠ 0 := fun h => hd (by linarith [h])
+    rw [hlaw r s hr hs]; field_simp [hd, hd']; ring
+  have humul : ∀ r s, 0 < r → 0 < s → u (r * s) = u r * u s := by
+    intro r s hr hs
+    have hd := ne_of_gt (hd_pos r s hr hs)
+    have hd' : (1 : ℝ) + f r * f s * 4 ≠ 0 := fun h => hd (by linarith [h])
+    change (1 + 2 * f (r * s)) / (1 - 2 * f (r * s))
+        = ((1 + 2 * f r) / (1 - 2 * f r)) * ((1 + 2 * f s) / (1 - 2 * f s))
+    rw [h2rs_add r s hr hs, h2rs_sub r s hr hs]
+    field_simp [hd, hd', hden_ne r hr, hden_ne s hs]
+  have hudiff : ∀ r, 0 < r → HasDerivAt u (4 * f' r / (1 - 2 * f r) ^ 2) r := by
+    intro r hr
+    have hnum : HasDerivAt (fun x => 1 + 2 * f x) (2 * f' r) r :=
+      ((hdiff r hr).const_mul 2).const_add 1
+    have hden : HasDerivAt (fun x => 1 - 2 * f x) (-(2 * f' r)) r :=
+      ((hdiff r hr).const_mul 2).const_sub 1
+    have h := hnum.div hden (hden_ne r hr)
+    have hv : (2 * f' r * (1 - 2 * f r) - (1 + 2 * f r) * (-(2 * f' r))) / (1 - 2 * f r) ^ 2
+        = 4 * f' r / (1 - 2 * f r) ^ 2 := by ring
+    rw [hv] at h
+    rw [hu]; exact h
+  have hode : ∀ r, 0 < r → (4 * f' r / (1 - 2 * f r) ^ 2) * r = u r * (4 * f' 1) := by
+    intro r hr
+    have houter : HasDerivAt u (4 * f' r / (1 - 2 * f r) ^ 2) (r * 1) := by
+      simpa using hudiff r hr
+    have hinner : HasDerivAt (fun s : ℝ => r * s) r 1 := by
+      simpa using (hasDerivAt_id (1 : ℝ)).const_mul r
+    have hA : HasDerivAt (fun s => u (r * s)) ((4 * f' r / (1 - 2 * f r) ^ 2) * r) 1 :=
+      HasDerivAt.comp (1 : ℝ) houter hinner
+    have hB : HasDerivAt (fun s => u r * u s) (u r * (4 * f' 1)) 1 := by
+      have h1' : (4 * f' 1 / (1 - 2 * f 1) ^ 2) = 4 * f' 1 := by rw [h1]; ring
+      have := (hudiff 1 one_pos).const_mul (u r)
+      simpa [h1'] using this
+    have heq : (fun s => u (r * s)) =ᶠ[nhds 1] (fun s => u r * u s) := by
+      filter_upwards [isOpen_Ioi.mem_nhds (show (1 : ℝ) ∈ Set.Ioi 0 by norm_num)] with s hs
+      exact humul r s hr hs
+    exact (hA.congr_of_eventuallyEq heq.symm).unique hB
+  have hratio : ∀ r, 0 < r → (4 * f' r / (1 - 2 * f r) ^ 2) / u r = 4 * f' 1 / r := by
+    intro r hr
+    have h := hode r hr
+    rw [div_eq_div_iff (ne_of_gt (hupos r hr)) (ne_of_gt hr)]
+    rw [mul_comm (u r) (4 * f' 1)] at h
+    exact h
+  have hH : ∀ r, 0 < r → HasDerivAt (fun x => Real.log (u x) - 4 * f' 1 * Real.log x) 0 r := by
+    intro r hr
+    have h1a : HasDerivAt (fun x => Real.log (u x)) ((4 * f' r / (1 - 2 * f r) ^ 2) / u r) r :=
+      (hudiff r hr).log (ne_of_gt (hupos r hr))
+    have h2a : HasDerivAt (fun x => 4 * f' 1 * Real.log x) (4 * f' 1 * r⁻¹) r :=
+      (Real.hasDerivAt_log (ne_of_gt hr)).const_mul (4 * f' 1)
+    have h := h1a.sub h2a
+    have hz : 4 * f' 1 / r - 4 * f' 1 * r⁻¹ = 0 := by ring
+    rw [hratio r hr, hz] at h
+    exact h
+  have hconst : ∀ r, 0 < r →
+      (Real.log (u r) - 4 * f' 1 * Real.log r) = (Real.log (u 1) - 4 * f' 1 * Real.log 1) := by
+    intro r hr
+    have hfd : ∀ x ∈ Set.Ioi (0 : ℝ),
+        fderivWithin ℝ (fun x => Real.log (u x) - 4 * f' 1 * Real.log x) (Set.Ioi 0) x = 0 := by
+      intro x hx
+      rw [fderivWithin_of_isOpen isOpen_Ioi hx, (hH x hx).hasFDerivAt.fderiv]
+      simp
+    exact Convex.is_const_of_fderivWithin_eq_zero (convex_Ioi (0 : ℝ))
+      (fun x hx => (hH x hx).differentiableAt.differentiableWithinAt) hfd hr (by norm_num)
+  have hlogu : ∀ r, 0 < r → Real.log (u r) = 4 * f' 1 * Real.log r := by
+    intro r hr
+    have h := hconst r hr
+    simp only [huone, Real.log_one, mul_zero, sub_zero] at h
+    linarith
+  have hu_exp : ∀ r, 0 < r → u r = Real.exp (4 * f' 1 * Real.log r) := by
+    intro r hr
+    rw [← hlogu r hr, Real.exp_log (hupos r hr)]
+  intro r hr
+  have h2f : 2 * f r = (u r - 1) / (u r + 1) := by
+    have hp1 : u r + 1 ≠ 0 := by have := hupos r hr; linarith
+    have hkey : u r * (1 - 2 * f r) = 1 + 2 * f r := by
+      rw [hu]; field_simp [hden_ne r hr]
+    rw [eq_div_iff hp1]
+    nlinarith [hkey]
+  have htanh : Real.tanh (2 * f' 1 * Real.log r) = 2 * f r := by
+    rw [tanh_eq_exp]
+    have he : Real.exp (2 * (2 * f' 1 * Real.log r)) = u r := by
+      rw [show 2 * (2 * f' 1 * Real.log r) = 4 * f' 1 * Real.log r by ring,
+        ← hu_exp r hr]
+    rw [he, h2f]
+  unfold boundedOrientationScale
+  rw [htanh]
+  ring
+
+/-- **Normalisation.**  Under the same hypotheses, the normalisation `f' 1 = 1/4`
+pins the scale to `boundedOrientation`: the register's bounded orientation is the
+unique normalised solution of the law. -/
+theorem boundedOrientation_classification_normalized {f f' : ℝ → ℝ}
+    (h1 : f 1 = 0)
+    (hlaw : ∀ r s, 0 < r → 0 < s → f (r * s) = (f r + f s) / (1 + 4 * f r * f s))
+    (hwin : ∀ r, 0 < r → f r ∈ Set.Ioo (-(1 / 2)) (1 / 2))
+    (hdiff : ∀ r, 0 < r → HasDerivAt f (f' r) r)
+    (hnorm : f' 1 = 1 / 4) :
+    ∀ r, 0 < r → f r = boundedOrientation r := by
+  intro r hr
+  rw [boundedOrientation_classification h1 hlaw hwin hdiff r hr]
+  rw [show 2 * f' 1 = (1 / 2 : ℝ) by rw [hnorm]; norm_num]
+  exact boundedOrientationScale_half hr
+
+/-- Formalised-facts register for the scale family and the classification theorem. -/
+def boundedOrientationClassificationFacts : List String :=
+  [ "boundedOrientationScale", "boundedOrientationScale_mem",
+    "boundedOrientationScale_center", "boundedOrientationScale_half",
+    "boundedOrientationScale_mul", "tanh_eq_exp",
+    "boundedOrientation_classification", "boundedOrientation_classification_normalized" ]
+
+/-- The classification register has exactly eight entries. -/
+theorem boundedOrientationClassificationFacts_length :
+    boundedOrientationClassificationFacts.length = 8 := by
+  decide
+
 end PunoCalculus.OrientationBoundedness

@@ -158,6 +158,20 @@ register's own tagging.
 | `OrientationBoundedness.boundedOrientation_left_inv` | propext, Classical.choice, Quot.sound |
 | `OrientationBoundedness.boundedOrientation_image` | propext, Classical.choice, Quot.sound |
 | `OrientationBoundedness.boundedOrientation_bijOn` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientationScale` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientationScale_mem` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientationScale_center` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientationScale_half` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientationScale_mul` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.tanh_eq_exp` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientation_classification` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientation_classification_normalized` | propext, Classical.choice, Quot.sound |
+| `OrientationLaw.squareOrientation` | propext, Classical.choice, Quot.sound |
+| `OrientationLaw.squareOrientation_center` | propext, Classical.choice, Quot.sound |
+| `OrientationLaw.squareOrientation_mem` | propext, Classical.choice, Quot.sound |
+| `OrientationLaw.squareOrientation_strictMonoOn` | propext, Classical.choice, Quot.sound |
+| `OrientationLaw.squareOrientation_antisym` | propext, Classical.choice, Quot.sound |
+| `OrientationLaw.squareOrientation_not_scalar_multiple_of_boundedOrientation` | propext, Classical.choice, Quot.sound |
 
 ### C12
 

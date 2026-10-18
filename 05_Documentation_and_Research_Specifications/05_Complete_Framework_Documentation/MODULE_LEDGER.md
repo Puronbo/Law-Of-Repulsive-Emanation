@@ -69,7 +69,7 @@ imported by the root, fails the checker.
 | `OnePattern` | card | C35 | carries card(s) C35 |
 | `OnsagerCriterion` | card | C29 | carries card(s) C29 |
 | `OrientationBoundedness` | card | C10, C11 | carries card(s) C10, C11 |
-| `OrientationLaw` | card | C10, C10-open | carries card(s) C10, C10-open |
+| `OrientationLaw` | card | C10, C10-open, C11 | carries card(s) C10, C10-open, C11 |
 | `Poincare` | millennium-cert | — | numerical Poincare record; no settlement claim |
 | `PvsNP` | millennium-cert | — | contour-recorded wall (`noPolynomialCompilationKnown`, `compilation_wall_recorded`); no settlement claim |
 | `QuantitativeContinuation` | card | C4/C6 | carries card(s) C4/C6 |

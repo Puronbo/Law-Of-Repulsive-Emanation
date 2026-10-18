@@ -59,6 +59,15 @@ follows from the 0/0 doctrine is **narrative**, kept outside this boundary (see
   (`boundedOrientation_geometricOrbit_mem`) while moving strictly with the orbit --
   increasing when repelling, decreasing when attracting, pinned at the centre
   (`boundedOrientation_geometricOrbit_strictMono`, `..._strictAnti`, `..._center`).
+  The group-like addition law is honestly *not* a uniqueness test: the scale family
+  `boundedOrientationScale c r = (1/2) tanh (c log r)` obeys the same law for every
+  real `c` (`boundedOrientationScale_mul`), the register's `boundedOrientation` is the
+  member `c = 1/2` (`boundedOrientationScale_half`), and the naive uniqueness claim is
+  refuted by `OrientationLaw.lean`'s `squareOrientation`
+  (`squareOrientation_not_scalar_multiple_of_boundedOrientation`). What holds is
+  classification up to scale (`boundedOrientation_classification`) with the
+  normalisation `f' 1 = 1/4` pinning `boundedOrientation`
+  (`boundedOrientation_classification_normalized`).
 
 *Interpretive note (structural, not physical):* A minimal trinity {-1,0,+1} maps heuristically to C12: 0 is the center/margin boundary (neutral crossing), -1 and +1 are the orientation sides (r<1 attracting/bounded, r>1 repelling/unbounded); order a is the scale that sets the rung s_crit(p)+(1-a). This is a heuristic correspondence within the register only (no claim to physical unification or Millennium settlement).
 

@@ -260,6 +260,21 @@ coordinate: confined to `(-1/2, 1/2)` (`boundedOrientation_geometricOrbit_mem`),
 increasing when repelling and strictly decreasing when attracting
 (`boundedOrientation_geometricOrbit_strictMono`, `boundedOrientation_geometricOrbit_strictAnti`),
 pinned at the centre `r = 1` (`boundedOrientation_geometricOrbit_center`).
+The composition law is honestly *not* a uniqueness test: the one-parameter family
+`boundedOrientationScale c r = (1/2) tanh (c log r)` satisfies the same law for every
+real `c` (`boundedOrientationScale_mul`), and `boundedOrientation` is only the member
+`c = 1/2` (`boundedOrientationScale_half`). The naive uniqueness claim is false, and
+`OrientationLaw.lean` records the counterexample `squareOrientation r = (r^2 - 1)/(2(r^2 + 1))`,
+which is centred (`squareOrientation_center`), lands in the window (`squareOrientation_mem`),
+strictly increasing (`squareOrientation_strictMonoOn`), antisymmetric
+(`squareOrientation_antisym`) yet is no scalar multiple of `boundedOrientation`
+(`squareOrientation_not_scalar_multiple_of_boundedOrientation`). What *is* provable is
+classification *up to scale*: any centred, window-bounded, differentiable solution of the
+law is a scale `boundedOrientationScale (2 f' 1)`
+(`boundedOrientation_classification`, via the multiplicative coordinate
+`u x = (1 + 2 f x)/(1 - 2 f x)` and the separable ODE `r u'(r) = u r u'(1)`), and the
+normalisation `f' 1 = 1/4` pins it back to `boundedOrientation`
+(`boundedOrientation_classification_normalized`).
 **Falsifier:** a model bounded with `r > 1`.
 
 ## C12 — Two numbers close the register

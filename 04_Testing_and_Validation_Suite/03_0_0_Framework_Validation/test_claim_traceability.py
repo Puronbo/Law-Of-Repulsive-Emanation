@@ -144,6 +144,17 @@ ENTRIES = [
             "boundedOrientation_mul", "boundedOrientation_right_inv",
             "boundedOrientation_left_inv", "boundedOrientation_image",
             "boundedOrientation_surjOn", "boundedOrientation_bijOn",
+            "boundedOrientationScale", "boundedOrientationScale_mem",
+            "boundedOrientationScale_center", "boundedOrientationScale_half",
+            "boundedOrientationScale_mul", "tanh_eq_exp",
+            "boundedOrientation_classification",
+            "boundedOrientation_classification_normalized",
+        ],
+        "OrientationLaw": [
+            "squareOrientation", "squareOrientation_center",
+            "squareOrientation_mem", "squareOrientation_strictMonoOn",
+            "squareOrientation_antisym",
+            "squareOrientation_not_scalar_multiple_of_boundedOrientation",
         ],
     }, ["register_ladder_certificates.py"]),
     ("C12", {

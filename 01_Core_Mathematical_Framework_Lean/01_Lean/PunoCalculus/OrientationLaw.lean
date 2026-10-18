@@ -246,6 +246,54 @@ theorem boundedOrientation_geometricOrbit_center {r : ℝ} (hr : r = 1) (n : ℕ
   subst hr
   rw [one_pow, boundedOrientation_midpoint]
 
+/-! ## Counterexample: naive uniqueness is false
+
+The naive claim that center + antisymmetry + strict monotonicity + bounded in the window
+forces a scalar multiple of `boundedOrientation` is false.  The following example satisfies
+all four properties but is not a scalar multiple at `r=2,3`. -/
+
+noncomputable def squareOrientation (r : ℝ) : ℝ := (r ^ 2 - 1) / (2 * (r ^ 2 + 1))
+
+/-- `squareOrientation` is centered at `r=1`. -/
+theorem squareOrientation_center : squareOrientation 1 = 0 := by
+  norm_num [squareOrientation]
+
+/-- `squareOrientation` maps positive reals into the open window. -/
+theorem squareOrientation_mem {r : ℝ} (hr : 0 < r) :
+    squareOrientation r ∈ Set.Ioo (-(1 / 2)) (1 / 2) := by
+  have hpos : 0 < 2 * (r ^ 2 + 1) := by positivity
+  refine ⟨?_, ?_⟩
+  · rw [squareOrientation, lt_div_iff₀ hpos]
+    nlinarith [sq_nonneg r]
+  · rw [squareOrientation, div_lt_iff₀ hpos]
+    nlinarith [sq_nonneg r]
+
+/-- `squareOrientation` is strictly monotone on `(0, ∞)`. -/
+theorem squareOrientation_strictMonoOn : StrictMonoOn squareOrientation (Set.Ioi (0 : ℝ)) := by
+  intro r hr s hs hrs
+  have hposr : 0 < 2 * (r ^ 2 + 1) := by positivity
+  have hposs : 0 < 2 * (s ^ 2 + 1) := by positivity
+  have hrs2 : r ^ 2 < s ^ 2 := pow_lt_pow_left₀ hrs (le_of_lt hr) (by norm_num)
+  rw [squareOrientation, squareOrientation, div_lt_div_iff₀ hposr hposs]
+  nlinarith [hrs2]
+
+/-- `squareOrientation` satisfies the antisymmetry law `f(r⁻¹) = -f(r)`. -/
+theorem squareOrientation_antisym {r : ℝ} (hr : 0 < r) :
+    squareOrientation r⁻¹ = -squareOrientation r := by
+  unfold squareOrientation
+  field_simp
+  ring
+
+/-- The counterexample: no real `c` makes `squareOrientation` a scalar multiple of
+`boundedOrientation` on all positive reals. -/
+theorem squareOrientation_not_scalar_multiple_of_boundedOrientation :
+    ¬ ∃ c : ℝ, ∀ r : ℝ, 0 < r → squareOrientation r = c * boundedOrientation r := by
+  rintro ⟨c, hc⟩
+  have h2 := hc 2 (by norm_num)
+  have h3 := hc 3 (by norm_num)
+  norm_num [squareOrientation, boundedOrientation] at h2 h3
+  linarith
+
 /-- Formalised-facts register for `OrientationLaw.lean`. -/
 def orientationLawFacts : List String :=
   [ "logGrowth_of_ratio_eq", "logGrowth_geometric", "sign_match", "logGrowth_pos_iff",
