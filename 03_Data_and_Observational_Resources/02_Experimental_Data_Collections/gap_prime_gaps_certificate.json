@@ -1,5 +1,5 @@
 {
-  "experiment": "Prime finite certificates (Gap Ledger G15-G20)",
+  "experiment": "Prime finite certificates (Gap Ledger G15-G25)",
   "sieve_limit": 10000000,
   "andrica": {
     "limit": 10000000,
@@ -87,5 +87,64 @@
     "limit": 10000000,
     "count": 30657
   },
-  "honest_wall": "Finite ranges only: Andrica verified up to the sieve limit, Brocard/Oppermann for intervals inside it, Gilbreath to the first few thousand primes, Polignac existence for even k <= 100, Sophie Germain count up to the limit. All these conjectures remain OPEN (no unconditional proof for all n)."
+  "fermat": {
+    "known_fermat_primes": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "facts": [
+      {
+        "k": 0,
+        "value": 3,
+        "prime": true
+      },
+      {
+        "k": 1,
+        "value": 5,
+        "prime": true
+      },
+      {
+        "k": 2,
+        "value": 17,
+        "prime": true
+      },
+      {
+        "k": 3,
+        "value": 257,
+        "prime": true
+      },
+      {
+        "k": 4,
+        "value": 65537,
+        "prime": true
+      },
+      {
+        "k": 5,
+        "value": 4294967297,
+        "prime": false,
+        "factor": 641,
+        "divides": true
+      }
+    ]
+  },
+  "landau_n2_plus_1": {
+    "nmax": 3162,
+    "count": 316,
+    "first_n": [
+      1,
+      2,
+      4,
+      6,
+      10
+    ]
+  },
+  "euler_polynomial": {
+    "nmax": 40,
+    "first_composite_n": 40,
+    "prime_for_all_below_first_composite": true
+  },
+  "honest_wall": "Finite ranges only: Andrica verified up to the sieve limit, Brocard/Oppermann for intervals inside it, Gilbreath to the first few thousand primes, Polignac existence for even k <= 100, Sophie Germain and n^2+1 prime counts to the sieve limit, Fermat primality for F_0..F_4 only. All corresponding conjectures remain OPEN (no unconditional proof for all n)."
 }

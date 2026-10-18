@@ -318,6 +318,72 @@ def test_zero_over_zero_need_not_resolve():
     assert len({round(v, 12) for v in vals.values()}) >= 4
 
 
+def test_fermat_numbers_is_a_finite_certificate():
+    """Fermat numbers: F_0..F_4 = 3, 5, 17, 257, 65537 are prime; F_5 is
+    composite (641 | F_5).  Infinitude of Fermat primes stays OPEN."""
+    def isprime(n):
+        if n < 2:
+            return False
+        if n % 2 == 0:
+            return n == 2
+        i = 3
+        while i * i <= n:
+            if n % i == 0:
+                return False
+            i += 2
+        return True
+    for k in (0, 1, 2, 3, 4):
+        assert isprime((1 << (1 << k)) + 1), k
+    f5 = (1 << (1 << 5)) + 1
+    assert f5 == 4294967297 and f5 % 641 == 0
+
+
+def test_landau_n2_plus_1_is_a_finite_certificate():
+    """Landau: primes of the form n^2+1; exactly 112 for n <= 1000."""
+    s = _sieve(10 ** 6 + 1)
+    cnt = sum(1 for n in range(0, 1001) if s[n * n + 1])
+    assert cnt == 112
+
+
+def test_euler_polynomial_no_go():
+    """No-go: 'n^2+n+41 is prime for all n>=0' is false.  Prime for n=0..39,
+    composite at n=40 (1681 = 41^2)."""
+    def isprime(n):
+        if n < 2:
+            return False
+        i = 2
+        while i * i <= n:
+            if n % i == 0:
+                return False
+            i += 1
+        return True
+    assert all(isprime(n * n + n + 41) for n in range(0, 40))
+    v = 40 * 40 + 40 + 41
+    assert v == 1681 and v == 41 * 41 and not isprime(v)
+
+
+def test_bridge_statement_grade_classification_certificate():
+    """G3 sub-result: MillenniumBridge.lean machine-checks the *statement-grade*
+    classification (seven problems declared unsolved; adjacent classifications),
+    not the missing constructivity."""
+    src = _lean("MillenniumBridge.lean")
+    for name in ("seven_problems_declared_unsolved",
+                 "pnnp_adjacent_classification",
+                 "pnnp_adjacent_isometry_count",
+                 "rh_adjacent_finite_sector"):
+        assert ("theorem " + name) in src, name
+
+
+def test_ternary_goldbach_citation_recorded():
+    """G25: the register relies on Helfgott's ternary Goldbach theorem, cited
+    but not formalized in-repo; the citation must be recorded."""
+    ledger = os.path.join(
+        ROOT, "05_Documentation_and_Research_Specifications",
+        "05_Complete_Framework_Documentation", "THE_GAP_LEDGER.md")
+    with open(ledger, encoding="utf-8") as fp:
+        assert "Helfgott" in fp.read()
+
+
 def test_oppermann_is_a_finite_certificate():
     """Oppermann: for every n >= 2 with (n+1)^2 inside the sieve, a prime lies
     strictly between n^2 and n(n+1), and one between n(n+1) and (n+1)^2."""

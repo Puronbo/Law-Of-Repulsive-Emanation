@@ -158,6 +158,75 @@ def sophie_germain(s, limit):
     return {"limit": limit, "count": cnt}
 
 
+def fermat_numbers():
+    """Fermat numbers F_k = 2^(2^k)+1.  F_0..F_4 are prime (finite primality
+    certificate); F_5 is composite (641 | F_5).  Whether infinitely many Fermat
+    primes exist is OPEN."""
+    def isprime(n):
+        if n < 2:
+            return False
+        if n % 2 == 0:
+            return n == 2
+        i = 3
+        while i * i <= n:
+            if n % i == 0:
+                return False
+            i += 2
+        return True
+    facts = []
+    for k in range(0, 6):
+        v = (1 << (1 << k)) + 1
+        if k <= 4:
+            facts.append({"k": k, "value": v, "prime": isprime(v)})
+        else:
+            facts.append({"k": k, "value": v, "prime": False,
+                          "factor": 641, "divides": v % 641 == 0})
+    return {
+        "known_fermat_primes": [f["k"] for f in facts if f["prime"]],
+        "facts": facts,
+    }
+
+
+def landau_n2_plus_1(s, limit, nmax=None):
+    """Landau: infinitely many primes of the form n^2 + 1 (OPEN).  Finite
+    certificate: count of such primes for n with n^2+1 <= limit."""
+    if nmax is None:
+        nmax = int((limit - 1) ** 0.5)
+    cnt = 0
+    first_n = []
+    for n in range(0, nmax + 1):
+        v = n * n + 1
+        if v <= limit and s[v]:
+            cnt += 1
+            if len(first_n) < 5:
+                first_n.append(n)
+    return {"nmax": nmax, "count": cnt, "first_n": first_n}
+
+
+def euler_polynomial(nmax=40):
+    """No-go: the naive claim 'n^2+n+41 is prime for all n>=0' is FALSE.  It is
+    prime for n=0..39 but composite at n=40 (1681 = 41^2)."""
+    def isprime(n):
+        if n < 2:
+            return False
+        i = 2
+        while i * i <= n:
+            if n % i == 0:
+                return False
+            i += 1
+        return True
+    prime = {n: isprime(n * n + n + 41) for n in range(0, nmax + 1)}
+    first_composite = next((n for n in range(0, nmax + 1) if not prime[n]), None)
+    return {
+        "nmax": nmax,
+        "first_composite_n": first_composite,
+        "prime_for_all_below_first_composite": (
+            first_composite is not None
+            and all(prime[n] for n in range(0, first_composite))
+        ),
+    }
+
+
 def run(limit=10 ** 7, brocard_max_n=100000):
     print("Sieve to %d..." % limit)
     t0 = time.time()
@@ -187,8 +256,18 @@ def run(limit=10 ** 7, brocard_max_n=100000):
     sg = sophie_germain(s, limit)
     print("Sophie Germain primes <= %d: %d" % (limit, sg["count"]))
 
+    fe = fermat_numbers()
+    print("Fermat: known prime indices %s (F_5 composite)"
+          % fe["known_fermat_primes"])
+
+    la = landau_n2_plus_1(s, limit)
+    print("Landau n^2+1 primes (n<=%d): %d" % (la["nmax"], la["count"]))
+
+    eu = euler_polynomial()
+    print("Euler n^2+n+41 first composite at n=%s" % eu["first_composite_n"])
+
     out = {
-        "experiment": "Prime finite certificates (Gap Ledger G15-G20)",
+        "experiment": "Prime finite certificates (Gap Ledger G15-G25)",
         "sieve_limit": limit,
         "andrica": a,
         "brocard": b,
@@ -196,11 +275,15 @@ def run(limit=10 ** 7, brocard_max_n=100000):
         "gilbreath": g,
         "polignac": po,
         "sophie_germain": sg,
+        "fermat": fe,
+        "landau_n2_plus_1": la,
+        "euler_polynomial": eu,
         "honest_wall": (
             "Finite ranges only: Andrica verified up to the sieve limit, "
             "Brocard/Oppermann for intervals inside it, Gilbreath to the first "
             "few thousand primes, Polignac existence for even k <= 100, Sophie "
-            "Germain count up to the limit. All these conjectures remain OPEN "
+            "Germain and n^2+1 prime counts to the sieve limit, Fermat primality "
+            "for F_0..F_4 only. All corresponding conjectures remain OPEN "
             "(no unconditional proof for all n)."
         ),
     }

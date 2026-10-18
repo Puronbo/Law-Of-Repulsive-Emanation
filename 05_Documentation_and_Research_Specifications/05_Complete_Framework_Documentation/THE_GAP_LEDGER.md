@@ -50,6 +50,7 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Related cards:** C3, C8-open
 - **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/MillenniumBridge.lean
 - **Pin:** test_ledger_artifacts_attach_no_sorry
+- **Pin:** test_bridge_statement_grade_classification_certificate
 - **as_of:** 2026-10-18
 - **Reduction:** the single open content recurs identically across four readings (the "bridge barrier"). If it is the same obstruction, the gap should reduce to one constructive reading.
 - **Barrier:** identifying equivalence does not force constructivity — the isomorphism is structural, not algorithmic for producing the missing a priori control.
@@ -308,3 +309,59 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Known:** uniqueness of limits in Hausdorff spaces; standard counterexample xy/(x\u00b2+y\u00b2).
 - **Missing (the object that does not exist as a proof):** a proof that an arbitrary 0/0 has a removable value -- impossible in general; the register must supply the limit per object (as its experimental programs do).
 - **Falsifier:** the classic 0/0 xy/(x\u00b2+y\u00b2) at the origin has distinct ray limits (0, 1/2, 2/5, ...), so no removable value exists.
+
+## G22 - Euler polynomial: "n²+n+41 is prime for all n" is false (no-go)
+- **Tier:** B (external)
+- **Subject:** naive claim "n²+n+41 is prime for all n >= 0" (Euler's polynomial)
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** no-go - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_prime_gaps_certificate.py
+- **Pin:** test_euler_polynomial_no_go
+- **as_of:** 2026-10-18
+- **Reduction:** the polynomial is prime for n = 0..39 (a long initial run) but fails at n = 40 (1681 = 41²); the naive universal claim is false, not open.
+- **Barrier:** none (refuted); recorded so the long initial run is not mistaken for evidence of a universal statement.
+- **Known:** Euler (1772); 40²+40+41 = 1681 = 41².
+- **Missing (the object that does not exist as a proof):** a proof of the (false) universal claim -- impossible; this row records the refutation.
+- **Falsifier:** n = 40 gives 1681 = 41², composite.
+
+## G23 - Fermat primes (no-go for finiteness, open for infinitude)
+- **Tier:** B (external open)
+- **Subject:** Fermat primes (F_k = 2^(2^k)+1); infinitude is OPEN
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_prime_gaps_certificate.py
+- **Pin:** test_fermat_numbers_is_a_finite_certificate
+- **as_of:** 2026-10-18
+- **Reduction:** only F_0..F_4 are known Fermat primes; F_5 = 4294967297 = 641 · 6700417 is composite; whether infinitely many Fermat primes exist is OPEN.
+- **Barrier:** Fermat numbers grow doubly exponentially; no method shows infinitude (nor finiteness) of the prime ones.
+- **Known:** Fermat (1640); Euler (F_5 composite, 1732); modern distributed searches (no Fermat prime beyond F_4 found).
+- **Missing (the object that does not exist as a proof):** a proof that infinitely many F_k are prime, or that only finitely many are (no unconditional result; finite certificate only for F_0..F_4).
+- **Falsifier:** a proof that only finitely many Fermat numbers are prime, or an infinitude proof.
+
+## G24 - Landau's problem (primes of the form n²+1)
+- **Tier:** B (external open)
+- **Subject:** Landau's fourth problem (infinitely many primes of the form n²+1)
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_prime_gaps_certificate.py
+- **Pin:** test_landau_n2_plus_1_is_a_finite_certificate
+- **as_of:** 2026-10-18
+- **Reduction:** no proof that n²+1 is prime infinitely often; related to Bunyakovsky and Hardy-Littlewood k-tuples; finite count only.
+- **Barrier:** parity barrier; no sieve method produces a prescribed irreducible-polynomial prime pattern.
+- **Known:** Landau (1912); Hardy-Littlewood; exhaustive counts (112 such n <= 1000, 316 for n <= 3162).
+- **Missing (the object that does not exist as a proof):** a proof that infinitely many n have n²+1 prime (no unconditional proof; finite count certificate only).
+- **Falsifier:** a proof that only finitely many n²+1 are prime.
+
+## G25 - Ternary Goldbach (Helfgott): cited, not formalized (citation-only)
+- **Tier:** B (external, relied upon)
+- **Subject:** ternary Goldbach (every odd >= 7 is a sum of three primes) -- cited, not formalized in-repo
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** citation-only - 05_Documentation_and_Research_Specifications/05_Complete_Framework_Documentation/THE_GAP_LEDGER.md
+- **Pin:** test_ternary_goldbach_citation_recorded
+- **as_of:** 2026-10-18
+- **Reduction:** the register (G9) invokes ternary Goldbach; the theorem is Helfgott (2013/2014), established externally, cited here but not formalized.
+- **Barrier:** formalization debt only, not a mathematical gap -- the theorem is proved.
+- **Known:** Vinogradov (1937, large odd); Helfgott (2013/2014, all odd >= 7).
+- **Missing (the object that does not exist as a proof):** a self-contained Lean formalization of the cited theorem in this repository (the result itself is established externally).
+- **Falsifier:** an odd n >= 7 not representable as a sum of three primes.

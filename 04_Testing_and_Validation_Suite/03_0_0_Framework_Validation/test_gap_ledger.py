@@ -7,7 +7,7 @@ This gate enforces:
   (D) every row declares a **Proof attempt:** with a controlled kind
       (certificate | partial | no-go | citation-only | none) and every artifact
       path it names exists on disk AND is git-tracked (so CI checkouts have it).
-  Also: every G1..G21 heading in THE_GAP_LEDGER.md corresponds to a row.
+  Also: every G1..G25 heading in THE_GAP_LEDGER.md corresponds to a row.
 """
 import ast
 import io
@@ -179,4 +179,4 @@ def test_d_proof_attempt_kind_and_artifacts_exist():
 def test_ledgers_heading_count_agrees():
     text = _read(LEDGER)
     heads = re.findall(r'^##\s+(G\d+)', text, re.M)
-    assert heads == [f'G{i}' for i in range(1, 22)], heads
+    assert heads == [f'G{i}' for i in range(1, 26)], heads
