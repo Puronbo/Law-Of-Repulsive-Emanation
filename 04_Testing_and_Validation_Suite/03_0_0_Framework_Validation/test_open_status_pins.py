@@ -303,6 +303,21 @@ def test_sophie_germain_is_a_finite_certificate():
     assert cnt == 4324
 
 
+def test_zero_over_zero_need_not_resolve():
+    """G21 no-go: the register's C15 uniqueness of the removable value is
+    *conditional on existence* of the punctured limit.  The classic 0/0
+    ``f(x,y) = xy/(x^2+y^2)`` has no limit at the origin -- along distinct rays
+    it tends to distinct values -- so no removable value exists.  Uniqueness
+    cannot be strengthened to unconditional existence."""
+    def f(x, y):
+        return x * y / (x * x + y * y)
+    vals = {m: f(1.0, m) for m in (0.0, 0.5, 1.0, 2.0, -1.0)}
+    assert abs(vals[0.0] - 0.0) < 1e-12
+    assert abs(vals[1.0] - 0.5) < 1e-12
+    assert abs(vals[2.0] - 0.4) < 1e-12
+    assert len({round(v, 12) for v in vals.values()}) >= 4
+
+
 def test_oppermann_is_a_finite_certificate():
     """Oppermann: for every n >= 2 with (n+1)^2 inside the sieve, a prime lies
     strictly between n^2 and n(n+1), and one between n(n+1) and (n+1)^2."""

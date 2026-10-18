@@ -294,3 +294,17 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Known:** Sophie Germain (18th c.); Hardy-Littlewood k-tuples heuristics; exhaustive counts (e.g. 4324 below 10^6).
 - **Missing (the object that does not exist as a proof):** a proof that infinitely many primes p have 2p+1 prime (no unconditional proof; finite count certificate only).
 - **Falsifier:** a proof that only finitely many such p exist.
+
+## G21 - "Every 0/0 resolves" is false (no-go)
+- **Tier:** A (register debt)
+- **Subject:** the register's removable-value schema (C15) without its existence hypothesis
+- **Status:** RESEARCHED
+- **Related cards:** C15
+- **Proof attempt:** no-go - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/RemovableValue.lean
+- **Pin:** test_zero_over_zero_need_not_resolve
+- **as_of:** 2026-10-18
+- **Reduction:** C15's uniqueness of the removable value is conditional on *existence* of the punctured limit (Hausdorff target). Dropping that hypothesis yields a false claim.
+- **Barrier:** existence of the limit is object-specific; no general schema can supply it (C15's own caveat).
+- **Known:** uniqueness of limits in Hausdorff spaces; standard counterexample xy/(x\u00b2+y\u00b2).
+- **Missing (the object that does not exist as a proof):** a proof that an arbitrary 0/0 has a removable value -- impossible in general; the register must supply the limit per object (as its experimental programs do).
+- **Falsifier:** the classic 0/0 xy/(x\u00b2+y\u00b2) at the origin has distinct ray limits (0, 1/2, 2/5, ...), so no removable value exists.
