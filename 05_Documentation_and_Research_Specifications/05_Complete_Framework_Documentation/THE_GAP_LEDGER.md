@@ -13,6 +13,7 @@ fails when any row is stale by > 365 days.
 - **Subject:** Navier–Stokes 3D smoothness
 - **Status:** RESEARCHED
 - **Related cards:** C3, C8-open
+- **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/NavierStokes.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/ns_3d_millennium.py
 - **as_of:** 2026-10-18
 - **Reduction:** `u ∈ L^∞_tL²_x ∩ L²_tḢ¹_x` (Leray–Hopf) → need unconditional scale-critical control (`L^p_tL^q_x`, `2/p+3/q<=1`; `L^∞_tL³_x` closed by ESS 2003, `BMO⁻¹` small-data only).
 - **Known:** Leray (1934), LPS (1959/63/67), ESS (2003), Kato (1984), Koch–Tataru (2001), CKN (1982), Vasseur (2007), Gustafson–Kang–Tsai (2007).
@@ -25,6 +26,7 @@ fails when any row is stale by > 365 days.
 - **Subject:** Navier–Stokes/Burgers family
 - **Status:** RESEARCHED
 - **Related cards:** C3, C8-open
+- **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/SerrinLadder.lean
 - **as_of:** 2026-10-18
 - **Reduction:** the monotonicity of `λ(s)` (in the scaling order `s`) is assumed (T3 OPEN) to close the margin gap and to align the endpoint ladder.
 - **Barrier:** equivalence of all `2/p+3/q=1` endpoint points does not by itself imply `λ(s)` antitone for the NS/Burgers family. The scaling map identifies norms only up to constants; monotonicity requires genuine endpoint embeddings for the concrete family, not just scale invariance.
@@ -37,6 +39,7 @@ fails when any row is stale by > 365 days.
 - **Subject:** bridge across the four readings
 - **Status:** RESEARCHED
 - **Related cards:** C3, C8-open
+- **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/MillenniumBridge.lean
 - **as_of:** 2026-10-18
 - **Reduction:** the single open content recurs identically across four readings (the "bridge barrier"). If it is the same obstruction, the gap should reduce to one constructive reading.
 - **Barrier:** identifying equivalence does not force constructivity — the isomorphism is structural, not algorithmic for producing the missing a priori control.
@@ -49,6 +52,7 @@ fails when any row is stale by > 365 days.
 - **Subject:** register's model
 - **Status:** RESEARCHED
 - **Related cards:** C17, C10
+- **Proof attempt:** citation-only - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/InformationPhi.lean
 - **as_of:** 2026-10-18
 - **Reduction:** `InformationPhi.lean` documents the register entropy production/orientation; the bound `k_B T log 2` is cited as input.
 - **Barrier:** model is register-internal (not a measured result); operational definition of the observable is missing.
@@ -61,6 +65,7 @@ fails when any row is stale by > 365 days.
 - **Subject:** uniqueness of margin
 - **Status:** RESEARCHED
 - **Related cards:** C11, C12
+- **Proof attempt:** no-go - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/OrientationBoundedness.lean
 - **as_of:** 2026-10-18
 - **Reduction:** `boundedOrientation r = (1/2)tanh(c·log r)` satisfies the composition law for every real `c` — uniqueness is false.
 - **Barrier:** the margin cannot be forced unique by the law alone; closeness/selection remains open.
@@ -72,6 +77,7 @@ fails when any row is stale by > 365 days.
 - **Subject:** Birch–Swinnerton-Dyer
 - **Status:** RESEARCHED
 - **Related cards:** []
+- **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/BSD.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/bsd_rank2.py
 - **as_of:** 2026-10-18
 - **Reduction:** rank<=1 Kolyvagin; rank>=2 needs Euler system detecting two independent Heegner classes.
 - **Barrier:** Euler system only generates one per imaginary quadratic field; no known rank>=2 Euler system.
@@ -84,6 +90,7 @@ fails when any row is stale by > 365 days.
 - **Subject:** Hodge conjecture
 - **Status:** RESEARCHED
 - **Related cards:** []
+- **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Hodge.lean
 - **as_of:** 2026-10-18
 - **Reduction:** (1,1) Lefschetz; codim>=2 open (quintic threefold canonical example).
 - **Barrier:** no known geometric construction producing algebraic cycles representing general (2,1) Hodge classes.
@@ -96,6 +103,7 @@ fails when any row is stale by > 365 days.
 - **Subject:** Riemann Hypothesis
 - **Status:** RESEARCHED
 - **Related cards:** []
+- **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/RH/LiCriterion.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/rh_li_correct.py
 - **as_of:** 2026-10-18
 - **Reduction:** Li inequality verified n=1..30 (800 zeros); Turing/interval arithmetic only.
 - **Barrier:** zero location proof still missing; known equivalences don't create the zero-free/critical-line proof.
@@ -108,6 +116,7 @@ fails when any row is stale by > 365 days.
 - **Subject:** Goldbach conjecture (strong/binary)
 - **Status:** RESEARCHED
 - **Related cards:** []
+- **Proof attempt:** certificate - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Goldbach.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/goldbach_large.py
 - **as_of:** 2026-10-18
 - **Reduction:** ternary (every odd >= 7 sum of three primes) was proved by Helfgott (2013/2014) (unconditional). Strong (binary): every even >= 4 sum of two primes remains open.
 - **Barrier:** parity barrier of sieve methods; effective minor-arc bounds + Siegel zeros complicate explicit N0.
@@ -120,6 +129,7 @@ fails when any row is stale by > 365 days.
 - **Subject:** P vs NP
 - **Status:** RESEARCHED
 - **Related cards:** []
+- **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/PvsNP.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/p_np_contour.py
 - **as_of:** 2026-10-18
 - **Reduction:** natural proofs (Razborov–Rudich), algebraization (Aaronson–Wigderson), relativization (Baker–Gill–Solovay) rule out standard classes.
 - **Barrier:** no known super-polynomial circuit lower bound for any explicit NP function.
@@ -132,6 +142,7 @@ fails when any row is stale by > 365 days.
 - **Subject:** Yang–Mills existence & mass gap
 - **Status:** RESEARCHED
 - **Related cards:** []
+- **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/MassGap.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/yang_mills_gap_proof.py
 - **as_of:** 2026-10-18
 - **Reduction:** gap to rigorous 4D YM construction + spectral gap remains.
 - **Barrier:** constructive quantum field theory in 4D nonabelian: renormalization + mass gap unproven in a mathematically rigorous sense.

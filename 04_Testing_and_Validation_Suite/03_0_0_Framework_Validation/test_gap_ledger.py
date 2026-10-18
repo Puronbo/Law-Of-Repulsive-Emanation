@@ -3,7 +3,10 @@
 This gate enforces:
   (B) every related_cards[i] is a token in EXPLICIT_CLAIMS (ENTRIES);
   (C) no row has status UNRESEARCHED; no row's as_of > STALE_DAYS (365) old
-      (hard-fail).
+      (hard-fail);
+  (D) every row declares a **Proof attempt:** with a controlled kind
+      (certificate | partial | no-go | citation-only | none) and every artifact
+      path it names exists on disk.
   Also: every G1..G11 heading in THE_GAP_LEDGER.md corresponds to a row.
 """
 import ast
@@ -62,13 +65,18 @@ def _parse_gaps():
         status = re.search(r'\*\*Status:\*\*\s*(\w+)', block)
         cards = re.search(r'\*\*Related cards:\*\*\s*(.*)$', block, re.M)
         as_of = re.search(r'\*\*as_of:\*\*\s*(\d{4}-\d{2}-\d{2})', block)
+        attempt = re.search(r'\*\*Proof attempt:\*\*\s*(.*)$', block, re.M)
         gaps.append({
             'token': token,
             'status': status.group(1) if status else '',
             'cards': cards.group(1).strip() if cards else '',
             'as_of': as_of.group(1) if as_of else '',
+            'attempt': attempt.group(1).strip() if attempt else '',
         })
     return gaps
+
+#: controlled vocabulary for the Proof-attempt kind (Gate D)
+PROOF_KINDS = {'certificate', 'partial', 'no-go', 'citation-only', 'none'}
 
 def test_b_all_related_cards_are_real():
     cards = _card_tokens()
@@ -101,6 +109,31 @@ def test_c_no_unresearched_and_no_stale_rows():
                 bad_stale.append((g['token'], 'stale', age))
     assert not bad_unres, "UNRESEARCHED rows: %s" % bad_unres
     assert not bad_stale, "stale rows: %s" % bad_stale
+
+def test_d_proof_attempt_kind_and_artifacts_exist():
+    """Gate D: every gap declares what *kind* of proof artifact exists, and
+    every path it names is a real file under the repository root."""
+    missing = []
+    bad_kind = []
+    bad_paths = []
+    for g in _parse_gaps():
+        attempt = g['attempt']
+        if not attempt:
+            missing.append(g['token'])
+            continue
+        parts = re.split(r'\s+[-\u2014\u2013]\s+', attempt, maxsplit=1)
+        kind = parts[0].strip()
+        if kind not in PROOF_KINDS:
+            bad_kind.append((g['token'], kind))
+        if len(parts) > 1:
+            for path in [x.strip() for x in parts[1].split(',') if x.strip()]:
+                if path == 'n/a':
+                    continue
+                if not os.path.exists(os.path.join(ROOT, path)):
+                    bad_paths.append((g['token'], path))
+    assert not missing, "gaps missing **Proof attempt:**: %s" % missing
+    assert not bad_kind, "illegal proof-attempt kinds: %s" % bad_kind
+    assert not bad_paths, "proof-attempt artifact paths do not exist: %s" % bad_paths
 
 def test_ledgers_heading_count_agrees():
     text = _read(LEDGER)
