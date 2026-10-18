@@ -26,9 +26,11 @@ fails when any row is stale by > 365 days.
 - **Status:** RESEARCHED
 - **Related cards:** C3, C8-open
 - **as_of:** 2026-10-18
-- **Reduction:** the monotonicity of `λ(s)` (in the scaling order `s`) is assumed (T3 OPEN) to close the margin gap.
-- **Barrier:** equivalence of all `2/p+3/q=1` endpoint points does not by itself imply `λ(s)` antitone for the NS/Burgers family.
-- **Missing:** proof of antitonicity for the actual family (or an explicit counterexample rule) — not reducible from scale invariance.
+- **Reduction:** the monotonicity of `λ(s)` (in the scaling order `s`) is assumed (T3 OPEN) to close the margin gap and to align the endpoint ladder.
+- **Barrier:** equivalence of all `2/p+3/q=1` endpoint points does not by itself imply `λ(s)` antitone for the NS/Burgers family. The scaling map identifies norms only up to constants; monotonicity requires genuine endpoint embeddings for the concrete family, not just scale invariance.
+- **Known:** Prodi–Serrin/Ladyzhenskaya hierarchy; endpoint `L^∞_tL³_x` (ESS); Koch–Tataru `BMO⁻¹` (small-data).
+- **Missing (the object that does not exist as a proof):** a proof that for the actual NS/Burgers family, `s < t` (in the admissible scaling order used by the register) implies `λ(s) >= λ(t)` (antitone), under the admissible interpolation/embedding chain that enters `B^{-1}_{∞,∞}`. Alternatively, the dependency graph: which embeddings are needed (Besov/Morrey `B^{-1+3/p}_{p,∞}` ladder → `BMO⁻¹` → `B^{-1}_{∞,∞}`?) and why they hold unconditionally for Leray–Hopf.
+- **Falsifier:** construct an explicit family within the Burgers/NS model class where `λ(s)` is not monotone on that chain, or show some required embedding fails unconditionally. Proof of monotonicity for the concrete family (with cited lemmas) closes T3.
 
 ## G3 — Bridge barrier (shared across mixture-of-dimensions readings)
 - **Tier:** A (register debt)
