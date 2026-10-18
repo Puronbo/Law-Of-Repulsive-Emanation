@@ -484,3 +484,17 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Known:** Beal (1993), AMS $1,000,000 prize; Wiles (FLT); Darmon-Granville (finiteness for fixed exponents); Poonen-Schaefer-Stoll, Bruin, Zureick-Brown resolved specific (x,y,z) families; large computational searches (Norvig, Vanderkam, Beal team) found no coprime counterexamples in wide windows.
 - **Missing (the object that does not exist as a proof):** a proof that there are no positive integers a,b,c,x,y,z>2 with gcd(a,b,c)=1 and a^x+b^y=c^z, or a single explicit counterexample meeting those conditions.
 - **Falsifier:** any coprime (a,b,c,x,y,z>2) with a^x+b^y=c^z refutes Beal's conjecture; such a triple in the window searched would refute this certificate.
+
+## G34 - Erd\u0151s-Moser equation (power sum = square of triangular number)
+- **Tier:** B
+- **Subject:** Erd\u0151s-Moser equation (power sum = square of triangular number)
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/erdos_moser_certificate.py
+- **Pin:** test_erdos_moser_is_a_finite_certificate
+- **as_of:** 2026-10-18
+- **Reduction:** for each (m,k) with 1 < m <= max_m, 1 <= k <= max_k, test sum_{j < m} j^k == m^k; the only known solution is (3,1). Absence in a finite window is not a proof of the conjecture.
+- **Barrier:** any further solution requires k even, satisfies strong p-adic/divisibility conditions, and is known to have m > 10^10^6 (bounds have improved further), so no feasible finite search can exclude all solutions (the conjecture is open).
+- **Known:** Erdős (conjectured no other solutions); Moser (1953) gave necessary conditions and m > 10^10^6; Gallot-Moree-Zudilin (2010) improved to m > 10^10^9; Kellner/Moree gave further conditions.
+- **Missing (the object that does not exist as a proof):** a proof that sum_{j < m} j^k = m^k has no integer solutions with (m,k) != (3,1), or an explicit counterexample.
+- **Falsifier:** a pair (m,k) with (m,k) != (3,1) and sum_{j < m} j^k == m^k would refute Erdős–Moser; such a pair in the window would refute this certificate.

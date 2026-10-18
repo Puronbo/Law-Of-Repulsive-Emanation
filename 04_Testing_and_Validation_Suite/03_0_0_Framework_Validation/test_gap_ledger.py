@@ -194,7 +194,7 @@ def test_d_proof_attempt_kind_and_artifacts_exist():
 def test_ledgers_heading_count_agrees():
     text = _read(LEDGER)
     heads = re.findall(r'^##\s+(G\d+)', text, re.M)
-    assert heads == [f'G{i}' for i in range(1, 34)], heads
+    assert heads == [f'G{i}' for i in range(1, 35)], heads
 
 def test_e_narrative_fields_present_and_filled():
     """Gate E: every row fills Reduction, Barrier, Known, Missing and Falsifier

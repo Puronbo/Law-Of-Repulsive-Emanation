@@ -665,3 +665,21 @@ def test_beal_is_a_finite_certificate():
     # known trivial non-coprime small example 3^3 + 6^3 = 3^5? 27+216=243, 3^5=243, gcd 3>1
     a, x, b, y, rz, z, _s = (3, 3, 6, 3, 3, 5, 243)
     assert a ** x + b ** y == rz ** z and gcd(gcd(a, b), rz) == 3 > 1
+
+
+def test_erdos_moser_is_a_finite_certificate():
+    """G34: finite search finds only (3,1); no other solution in window, so
+    Erdős–Moser conjecture holds to the bound and stays OPEN."""
+    import importlib.util
+    path = os.path.join(
+        ROOT, "02_Experimental_Implementations_and_Verification",
+        "06_Miscellaneous_Experiments", "erdos_moser_certificate.py")
+    spec = importlib.util.spec_from_file_location("_em_cert", path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+
+    sol = mod.erdos_moser_solutions(max_m=90, max_k=15)
+    assert (3, 1) not in sol  # we don't include m<4; search starts at 4
+    assert sol == []
+    assert mod.power_sum(2, 1) == 3 and 3 ** 1 == 3  # 1+2=3
+    assert mod.power_sum(3, 2) == 14 and 4 ** 2 == 16  # 1+4!=16
