@@ -52,5 +52,8 @@ jobs:
             04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_axiom_audit.py \
             04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_mathematical_links.py \
             04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_data_persistence.py \
+            04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_mathematical_links.py \
+            04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_data_persistence.py \
             04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_professions_mandate.py \
+            04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_gap_ledger.py \
             -q

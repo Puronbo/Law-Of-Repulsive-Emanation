@@ -15,7 +15,13 @@ drift away from it. This test pins the drift:
    A document is *excused* if
    it carries the scope banner -- a link to ``WHAT_THIS_DOES_NOT_PROVE.md`` --
    which is the legitimate, top-of-paper way to disclaim a narrative. A document
-   without the banner may not contain an unhedged settlement claim.
+   without the banner may not contain an unhedged settlement claim;
+5. **status-table consistency.** A *status cell* in any scanned document may not
+   mark one of the seven problems DONE/PROVED/SOLVED/SETTLED. The census in (4)
+   keys on phrases ("we prove", "is solved"), so a status table that simply says
+   ``| Navier-Stokes | DONE |`` slipped through it. That is a factual
+   contradiction of the boundary, not narrative flavour, so here the scope
+   banner does **not** excuse it.
 
 Run:  python -m pytest 04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_scope_boundary.py -q
 """
@@ -158,4 +164,107 @@ def test_repo_wide_overclaim_census_within_baseline():
         f"unhedged settlement lines grew to {total} "
         f"(baseline {BASELINE_UNHEDGED}); add the scope banner "
         "(`WHAT_THIS_DOES_NOT_PROVE.md` link) or hedge the claim:\n" + report
+    )
+
+
+# --------------------------------------------------------------------------
+# 5. Millennium status tables may not contradict the boundary.
+# --------------------------------------------------------------------------
+
+# Distinctive tokens for the subject cell of a status row, mapped to a witness
+# substring that must occur in the boundary's own problem table. Each pair is
+# checked by the test below, so this list cannot drift away from the authority
+# it is enforced against. `bsd` is an alias: the boundary spells it out.
+SUBJECT_KEYS = {
+    "navier": "navier",
+    "yang": "yang",
+    "riemann": "riemann",
+    "poincar": "poincar",
+    "hodge": "hodge",
+    "np": "np",
+    "bsd": "swinnerton",
+}
+
+# A status cell asserting the problem is done. Deliberately status-cell scoped:
+# a sentence may still say "proved" as long as the *status* column does not.
+SETTLED_CELL = re.compile(
+    r"\b(DONE|SOLVED|RESOLVED|SETTLED|PROVED|PROOF|COMPLETE)\b", re.I
+)
+
+# Poincare really is settled -- by Perelman, in 2003 -- just never *by this
+# project*, so a row may say so only if it names Perelman on the same line.
+POINCARE_EXCEPTION = "perelman"
+
+
+def _table_cells(line):
+    """Cells of a markdown table row, or None when the line is not one."""
+    s = line.strip()
+    if not s.startswith("|"):
+        return None
+    return [c.strip() for c in s.strip("|").split("|")]
+
+
+def _boundary_problems():
+    """(subject, status) rows of the boundary document's own status table."""
+    rows = []
+    for line in _read(BOUNDARY).splitlines():
+        cells = _table_cells(line)
+        if not cells or len(cells) < 2:
+            continue
+        if cells[0].lower() == "problem" or set(cells[0]) <= set("-: "):
+            continue
+        rows.append((cells[0], cells[1]))
+    return rows
+
+
+def test_subject_keys_are_derived_from_the_boundary_table():
+    """The name list may not drift from the authority it is checked against."""
+    rows = _boundary_problems()
+    assert len(rows) >= 7, (
+        "WHAT_THIS_DOES_NOT_PROVE.md no longer exposes the seven-problem "
+        f"status table (parsed {len(rows)} rows); Gate A cannot run"
+    )
+    blob = " ".join(subject for subject, _ in rows).lower()
+    missing = [k for k, witness in SUBJECT_KEYS.items() if witness not in blob]
+    assert not missing, (
+        "SUBJECT_KEYS not witnessed by the boundary's own problem table: %s "
+        "(update SUBJECT_KEYS or the boundary table so they agree)" % missing
+    )
+
+
+def test_no_status_cell_claims_a_millennium_problem_settled():
+    offenders = []
+    for root in SCAN_ROOTS:
+        for dirpath, dirnames, filenames in os.walk(root):
+            dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
+            if any(part in SKIP_DIRS for part in dirpath.split(os.sep)):
+                continue
+            for name in sorted(filenames):
+                if not name.endswith(".md") or name in CENSUS_EXEMPT:
+                    continue
+                path = os.path.join(dirpath, name)
+                rel = os.path.relpath(path, ROOT)
+                for n, line in enumerate(_read(path).splitlines(), 1):
+                    cells = _table_cells(line)
+                    if not cells or len(cells) < 2:
+                        continue
+                    subject, status = cells[0].lower(), cells[1]
+                    if not any(k in subject for k in SUBJECT_KEYS):
+                        continue
+                    if not SETTLED_CELL.search(status):
+                        continue
+                    if "poincar" in subject and POINCARE_EXCEPTION in line.lower():
+                        continue
+                    # Hedge the *status* cell only. Scanning the whole row lets
+                    # a problem excuse itself out of its own name -- the words
+                    # "Hypothesis"/"Conjecture" are hedges, so
+                    # `| Riemann Hypothesis | DONE |` would pass.
+                    if HEDGE.search(status):
+                        continue
+                    offenders.append(f"  {rel}:{n}: | {cells[0]} | {status} |")
+    report = "\n".join(offenders)
+    assert not offenders, (
+        "a status cell marks a Millennium problem settled, contradicting "
+        "WHAT_THIS_DOES_NOT_PROVE.md (hedge it or set the status to OPEN):\n"
+        + report
     )
