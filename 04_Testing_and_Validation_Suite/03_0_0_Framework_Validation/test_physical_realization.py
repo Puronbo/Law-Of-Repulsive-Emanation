@@ -146,7 +146,7 @@ def test_time_brick_exists_and_is_wired():
     assert not missing, f"InformationTime.lean missing declarations: {missing}"
     assert "sorry" not in text, "the time brick must be sorry-free"
     assert "EmergentTime" in text, (
-        "the time brick must link the C13 time module"
+        "the time brick must link the C11 time module"
     )
     root = _read(LEAN_ROOT)
     assert "import PunoCalculus.InformationTime" in root, (

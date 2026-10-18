@@ -59,7 +59,7 @@ arXiv:0708.3067); Ri (arXiv:2307.11312, 2023 — **single-author, unrefereed, tr
 as unverified**). **Source:** Bourgain–Pavlovic (2008, JAMS) for the ill-posedness
 scale.
 
-## C4/C6 — The missing control is exactly one extra power of enstrophy
+## C4 — The missing control is exactly one extra power of enstrophy
 
 **Type:** Formal (arithmetic core) + Theorem (analytic frame). **Statement.** The
 exactly critical quantity is `int Z^{1+eps} dt`; the energy identity gives only
@@ -72,7 +72,7 @@ estimate (the "one extra power"); source: Tao (2016, 2021 quantitative continuat
 bounds); Feng–He–Wang (2025, Lorentz); arXiv:2411.06483 (Besov); Grujic (2024, JMFM,
 "Asymptotic Criticality").
 
-## C4/C6 — Dimension threshold and the half-derivative gap
+## C5 — Dimension threshold and the half-derivative gap
 
 **Type:** Formals. **Statement.** `H^1` embeds in `L^\inf` iff `d < 2`; at physical
 `d = 3` the gap is exactly `1/2` derivative. **Evidence:**
@@ -80,7 +80,7 @@ bounds); Feng–He–Wang (2025, Lorentz); arXiv:2411.06483 (Besov); Grujic (202
 `ExplicitClaims.physical_embedding_gap` (`1 - 3/2 = -1/2`). **Falsifier:** an
 `H^1 -> L^\inf` embedding in `d = 3`. **Missing entity:** none (arithmetic).
 
-## C8 — Dimension of a mixture is a sup, not a mean
+## C6 — Dimension of a mixture is a sup, not a mean
 
 **Type:** Formal. **Statement.** `(d + e)/2 <= max d e`; averaging cannot lower the
 effective dimension. **Evidence:** `ExplicitClaims.mean_le_dimMixture`;
@@ -90,7 +90,7 @@ equation-preserving reweighting keeping high-dimension energy under the `O(eps)`
 budget; sources: Adams–Hedberg (1996, Riesz potentials / fractal measures); Tao
 (dimensional regularisation).
 
-## C9 — Intermittency budget theta_max = O(eps)
+## C7 — Intermittency budget theta_max = O(eps)
 
 **Type:** Empirical. **Statement.** The admissible high-dimension `H^1` fraction
 vanishes linearly with scale: `theta_max = O(eps)` (measured `3.33e-3` at
@@ -99,7 +99,7 @@ vanishes linearly with scale: `theta_max = O(eps)` (measured `3.33e-3` at
 entity:** a rigorous multifractal measure bridge; sources: Constantin (1994,
 intermittency); Frisch, *Turbulence* (1995).
 
-## C10 — Orientation sign equals the sign of the critical-content derivative
+## C8 — Orientation sign equals the sign of the critical-content derivative
 
 **Type:** Empirical + Formal (model core). **Statement.** `sign(lambda) = sign(mu)`
 across systems (n = 6, balanced 3 repelling / 3 attracting), where `lambda` is the
@@ -164,7 +164,7 @@ family carries.
 entity:** the analytic claim that the identification `mu = lambda` survives the real
 flow; sources: Beale–Kato–Majda (1984); Constantin–Fefferman (1993); Deng–Hou–Yu (2015).
 
-## C10-open — The analytic residue: `mu = lambda` for the real flow
+## C8-open — The analytic residue: `mu = lambda` for the real flow
 
 **Type:** Conjecture/Open. **Statement.** Let `u` be a Leray–Hopf solution of 3D NS on
 `[0,T*)` and `X(t) = ‖u(t)‖_{Ḃ^{-1}_{∞,∞}}` its largest critical content. Define the
@@ -233,7 +233,7 @@ telescoping identity to the *real* flow -- i.e. an analytic lower bound on
 integral). **Sources:** Beale–Kato–Majda (1984); Constantin–Fefferman (1993);
 Deng–Hou–Yu (2015); Cheskidov–Shvydkoy (2010).
 
-## C11 — Orientation decides the wall
+## C9 — Orientation decides the wall
 
 **Type:** Formal. **Statement.** For the geometric orbit, bounded `↔ r <= 1`, and
 `0 < log r` iff unbounded. **Evidence:** `OrientationBoundedness.lean`
@@ -277,7 +277,7 @@ normalisation `f' 1 = 1/4` pins it back to `boundedOrientation`
 (`boundedOrientation_classification_normalized`).
 **Falsifier:** a model bounded with `r > 1`.
 
-## C12 — Two numbers close the register
+## C10 — Two numbers close the register
 
 **Type:** Formal. **Statement.** Both *which-rung* (order) and *which-side*
 (orientation) are functions of the two numbers alone.
@@ -287,7 +287,7 @@ half `theory_of_everything_certificates.py` (the bundle certificate: all seven
 capstone clauses plus both reductions, run green by the coverage gate).
 **Falsifier:** a register brick not expressible via `(order, orientation)`.
 
-## C13 — Time is emergent, not primitive
+## C11 — Time is emergent, not primitive
 
 **Type:** Formal (structural; **not** a physical claim). **Statement.** Change is
 transfer (energy moved, total conserved); the state is a function of the transfer
@@ -296,7 +296,7 @@ count alone, so time is the count, not a variable. **Evidence:**
 **Falsifier:** a conservative change that depends on something other than its index
 in the model.
 
-## C14 — Heterogeneous barrier types across the Millennium list
+## C12 — Heterogeneous barrier types across the Millennium list
 
 **Type:** Formal (the abstract barrier is machine-checked) / Interpretive (the card's
 "all walls are one type" reading stays a map, not a theorem).
@@ -315,7 +315,7 @@ Baker–Gill–Solovay (1975), Razborov–Rudich (1997), Aaronson–Wigderson (2
 diagonal engine: Cantor (1891), Gödel (1931), Turing (1936), Lawvere (1969); Yang–Mills:
 Osterwalder–Schrader (1973), Jaffe–Witten (2000); NS/BSD/RH as in the register.
 
-## C15 — Nothing is the origin: zero links all forms
+## C13 — Nothing is the origin: zero links all forms
 
 **Type:** Formal (structural). **Statement.** The empty type `Empty` (cardinality
 `0`) is the *initial object* of `Type`: into **every** type `α` there is an arrow
@@ -328,7 +328,7 @@ Under the sum of types (`+`) `Empty` is the **identity** and under the product
 **Falsifier:** a type with two distinct arrows `Empty → α`, or a type that is both
 initial and terminal in `Type`. **Missing entity:** none for the structural
 statement; the *categorical zero object* (initial ∧ terminal), which requires an
-Ab-enriched category such as modules, is **card C16** (now claimed there for
+Ab-enriched category such as modules, is **card C14** (now claimed there for
 `ModuleCat R`), not claimed here. **Source:** Awodey, *Category Theory* (2010);
 Mac Lane, *Categories for the
 Working Mathematician* (1998) — the empty set is the initial object of `Set`. This
@@ -336,7 +336,7 @@ is the structural face of the register's own 0/0 doctrine (`Removable`,
 `ZeroZero`, `ZeroFixedPoint`): an initial arrow *exists* and is *unique*, exactly
 as a removable 0/0 has an existing, definite value.
 
-## C16 — The zero object: one object is origin and target
+## C14 — The zero object: one object is origin and target
 
 **Type:** Formal (structural / categorical). **Statement.** In a category with a
 *zero object*, a single object `Z` is simultaneously **initial** (a unique arrow
@@ -350,10 +350,10 @@ objects are isomorphic. **Evidence:** `ZeroObject.lean` (`initial_link`,
 to or from some object. **Missing entity:** none for the module categories; `Type`
 itself has no zero object (initial `Empty` and terminal `PUnit` differ) -- recorded,
 not claimed. **Source:** Awodey, *Category Theory* (2010); Mac Lane (1998). This
-*completes* C15: zero links all forms **within a single object** exactly when the
+*completes* C13: zero links all forms **within a single object** exactly when the
 category has a zero object.
 
-## C17 — The 0/0 / initial-arrow bridge: removability is existence + uniqueness
+## C15 — The 0/0 / initial-arrow bridge: removability is existence + uniqueness
 
 **Type:** Formal (analytic ↔ categorical schema). **Statement.** A *removable
 value* of `f` at a puncture `a` is a value `L` with `Tendsto f (𝓝[≠] a) (𝓝 L)`;
@@ -374,7 +374,7 @@ not claimed here. **Source:** standard topology (uniqueness of limits in Hausdor
 spaces) applied to the register's own `Removable` and `ZeroLink` -- the analytic and
 categorical faces of one schema.
 
-## C18 — Order of vanishing as a graded index
+## C16 — Order of vanishing as a graded index
 
 `PunoCalculus.ZeroFixedPoint` counts the zeros of a 0/0: dividing `(x - x₀)^k · h` by
 `(x - x₀)^j` gives `h x₀` at `j = k`, `0` at `j < k`, and diverges at `j > k`.  This
@@ -394,12 +394,12 @@ k = m`).  **Evidence:** `VanishOrder.lean` (`VanishesToOrder`, `divideOut`,
 **Falsifier:** a map with two distinct exact orders at a point, or a level-`(k+1)`
 member that is not a level-`k` member.  **Missing entity:** none for the filtration
 itself; identifying the graded degree with a *physical* scaling exponent stays
-object-specific (cards C1/C10).  **Source:** order-of-vanishing / valuation theory (the
+object-specific (cards C1/C8).  **Source:** order-of-vanishing / valuation theory (the
 local ring of germs at `x₀` filtered by `(x - x₀)^k`), applied to the register's own
 `ZeroFixedPoint` `zero_count_*` results and completing the scaling story of
 `GreatAttractor`.
 
-## C19 — The Probe mechanism: an identity 0/0 resolves to `1`
+## C17 — The Probe mechanism: an identity 0/0 resolves to `1`
 
 **Type:** Formal (analytic mechanism). **Statement.** `THE_0_OVER_0_ATLAS.md`
 classifies a removable 0/0 into five mechanisms; the first is the **Probe**.  If two
@@ -415,7 +415,7 @@ is nonzero.  **Missing entity:** none -- the probe value is the value at the poi
 the forced continuous extension.  **Source:** the register's own atlas (Probe
 mechanism, the "removable value `1`" class: functional-equation / identity entries).
 
-## C20 — The Vanishing-Rate mechanism: the order of vanishing is a valuation
+## C18 — The Vanishing-Rate mechanism: the order of vanishing is a valuation
 
 **Type:** Formal (analytic mechanism). **Statement.** `ZeroFixedPoint`/`VanishOrder`
 grade a 0/0 by a *filtration* -- and that grading is provably **not** additive under
@@ -433,11 +433,11 @@ order **is** a valuation: it **adds under products** (`hasOrder_mul`, the law
 `hasOrder_lt_imp_not`, `hasOrder_unique`, `order_is_valuation`).  **Falsifier:** a
 nonzero residue giving a strictly smaller and a strictly larger order simultaneously.
 **Missing entity:** none for the valuation law; the equality of this order with a
-*physical* scaling exponent stays object-specific (C1/C10).  **Source:** order-of-
+*physical* scaling exponent stays object-specific (C1/C8).  **Source:** order-of-
 vanishing / valuation theory (the `(x - x₀)`-adic valuation of germs at `x₀`), applied
-to the register's `ZeroFixedPoint` and complementing C18's filtration.
+to the register's `ZeroFixedPoint` and complementing C16's filtration.
 
-## C21 — The Index mechanism: the root multiplicity is an additive integer
+## C19 — The Index mechanism: the root multiplicity is an additive integer
 
 **Type:** Formal (algebraic mechanism). **Statement.** The atlas's **Index**
 mechanism turns a 0/0 into an **integer** (winding number, multiplicity).  Its
@@ -454,7 +454,7 @@ numbers, Poincaré–Hopf) are the same integer invariant in other categories --
 not claimed here.  **Source:** polynomial algebra (multiplicity in a UFD / the local
 ring `R[X]_{(X-a)}`), the algebraic face of the register's Index mechanism.
 
-## C22 — The mechanism closure: the anti-class, and the five faces bundled
+## C20 — The mechanism closure: the anti-class, and the five faces bundled
 
 **Type:** Formal (analytic mechanism / closure). **Statement.** The atlas's
 **amendment** records that the strict completeness claim is *false*: there are 0/0
@@ -474,11 +474,11 @@ anti-class is nonempty -- a removable value is *not* automatic.  **Evidence:**
 one-sided limits `1` and `-1` to agree.  **Missing entity:** none -- the anti-class
 member is explicit.  **Source:** the register's own atlas (amendment, entries 64/67/69
 /70/73/74), and standard one-sided-limit theory; the Critical and Conservation
-mechanisms remain object-specific (cards C1/C10).
+mechanisms remain object-specific (cards C1/C8).
 
-## C23 — Riemann's removable singularity, in the register's 0/0 schema
+## C21 — Riemann's removable singularity, in the register's 0/0 schema
 
-**Type:** Formal (analytic bridge / named theorem). **Statement.** Card C17 states
+**Type:** Formal (analytic bridge / named theorem). **Statement.** Card C15 states
 the register's 0/0 schema over `ℝ` (`RemovableValue`): a punctured limit, when it
 exists, is unique, and the canonical `(x-a)·g(x)/(x-a)` has a removable value --
 but it proves the *schema*, not that any given 0/0 actually has a limit.  This card
@@ -490,7 +490,7 @@ has a punctured limit.  Read through the register's predicate
 (`IsRemovableValueAt f c L := Tendsto f (𝓝[≠] c) (𝓝 L)`), it gives **existence**
 (`removable_value_exists`: the value is `limUnder (𝓝[≠] c) f`) and, with `ℂ`
 Hausdorff, **uniqueness** (`removable_value_unique`) -- a genuine `∃!`
-(`exists_unique_removable_value`), the identical shape of C17's
+(`exists_unique_removable_value`), the identical shape of C15's
 `removable_exists_unique`, now over `ℂ`.  The **coincidence**
 (`limUnder_eq_of_isRemovableValue`) is that mathlib's `limUnder` *is* the removable
 value: it equals any punctured limit; and `canonical_zero_over_zero` re-proves the
@@ -505,9 +505,9 @@ theorem is mathlib's; the bridge is the new content.  **Source:** Riemann's
 removable singularity theorem (Mathlib, Y. Kudryashov); the register's own 0/0
 doctrine (`Removable`, `RemovableValue`).
 
-## C24 — Liouville's theorem: global boundedness collapses the entire 0/0
+## C22 — Liouville's theorem: global boundedness collapses the entire 0/0
 
-**Type:** Formal (analytic bridge / named theorem). **Statement.** Card C23 records that
+**Type:** Formal (analytic bridge / named theorem). **Statement.** Card C21 records that
 *local* boundedness at a puncture lets a 0/0 resolve to a finite value (Riemann's
 removable singularity theorem).  This card is the *global* dual: on the whole plane,
 boundedness is coercive.  Mathlib proves **Liouville's theorem** -- a function
@@ -528,63 +528,63 @@ distinct values, or a bounded entire function vanishing at the origin that is no
 content.  **Source:** Liouville's theorem (Mathlib, Y. Kudryashov); the register's own 0/0
 doctrine (`Removable`, `RemovableValue`, `RemovableComplexBridge`).
 
-## C25 — The Serrin ladder: one extra power of enstrophy is the wall
+## C23 — The Serrin ladder: one extra power of enstrophy is the wall
 
 **Type:** Formal (arithmetic core) + Theorem (analytic frame). **Statement.** The energy+enstrophy route reaches the Serrin line `2/q + 3/p = 1` only up to `p = 6`: the Gagliardo–Nirenberg exponent `theta(p) = 3/2 - 3/p` satisfies `theta(p) <= 1` **iff** `p <= 6` (`gnExponent_le_one_iff`), the Sobolev ceiling `H^1 -> L^6` is the only reachable critical endpoint, and the exactly-critical quantity integrated along the flow is `Z^{theta(p)*q(p)/2} = Z^2` at `(6,4)` (`criticalPowerIdentity`) while the energy identity supplies only `Z^1` (`oneExtraPower`, `powerClosesCriticalAtSix`: `1 + eps` closes the `(6,4)` route iff `eps >= 1`). So the missing control is exactly one extra power of enstrophy. **Evidence:** `SerrinLadder.lean` (`gnExponent`, `gnExponent_six`, `gnExponent_two`, `gnExponent_three_half`, `gnExponent_ceiling_chain`, `serrinQ`, `serrinQ_six`, `serrinQ_line`, `gnExponent_le_one_iff`, `criticalPower_six_four`, `oneExtraPower`, `criticalPowerIdentity`, `powerClosesCriticalAtSix`). **Falsifier:** a `theta(p) <= 1` interpolation ladder reaching a critical pair beyond `p = 6`, or a proof that `int Z dt < inf` already closes every critical norm. **Missing entity:** whether any `int Z^{1+eps} dt` is finite along the real flow (marker `extraEnstrophyPowerIntegralOpen`). **Source:** Prodi (1959); Serrin (1962); Sobolev `H^1 -> L^6`; Tao (2016, 2021 quantitative continuation).
 
-## C26 — The great attractor: orientation of a fixed point, and the order that shifts the rung
+## C24 — The great attractor: orientation of a fixed point, and the order that shifts the rung
 
-**Type:** Formal (analytic). **Statement.** At a fixed point `T x₀ = x₀` with derivative `L`, the distance ratio `|T x - x₀| / |x - x₀| -> |L|` (`fixedPoint_distanceRatio`), so nearby points are pushed OUT exactly when `|L| > 1` (`fixedPoint_repels`) and fall IN when `|L| < 1` (`fixedPoint_attracts`); the orientation is a trichotomy (`orientation_trichotomy`) and the Lyapunov exponent `log |L|` is its sign (`fixedPoint_logRate`, `fixedPoint_logSign`). The same object scales on how many zeros it has: an `L^p` object of amplitude weight `a` has scaling weight `a + s - 3/p`, vanishing exactly on `s = criticalSmoothness a p = 3/p - a` (`scalingWeight_zero_iff`), which slides the critical rung by the order. **Evidence:** `GreatAttractor.lean` (`fixedPoint_distanceRatio`, `fixedPoint_repels`, `fixedPoint_attracts`, `orientation_trichotomy`, `fixedPoint_logRate`, `fixedPoint_logSign`, `orientationDiscriminator`, `criticalSmoothness`, `scalingWeight`, `criticalSmoothness_one`, `criticalSmoothness_shift_order`, `criticalSmoothness_antitone_order`, `scalingWeight_zero_iff`). **Falsifier:** a fixed point with `|L| > 1` whose neighbours fall inward, or a scaling weight that vanishes off `s = 3/p - a`. **Missing entity:** none for the arithmetic; the on-flow identification of `L` with the real multiplier is object-specific (C10/C10-open). **Source:** the register's own `THE_LAW_OF_SINGULARITIES.md` §12.1; `HasDerivAt.tendsto_slope`; `CriticalLadder`.
+**Type:** Formal (analytic). **Statement.** At a fixed point `T x₀ = x₀` with derivative `L`, the distance ratio `|T x - x₀| / |x - x₀| -> |L|` (`fixedPoint_distanceRatio`), so nearby points are pushed OUT exactly when `|L| > 1` (`fixedPoint_repels`) and fall IN when `|L| < 1` (`fixedPoint_attracts`); the orientation is a trichotomy (`orientation_trichotomy`) and the Lyapunov exponent `log |L|` is its sign (`fixedPoint_logRate`, `fixedPoint_logSign`). The same object scales on how many zeros it has: an `L^p` object of amplitude weight `a` has scaling weight `a + s - 3/p`, vanishing exactly on `s = criticalSmoothness a p = 3/p - a` (`scalingWeight_zero_iff`), which slides the critical rung by the order. **Evidence:** `GreatAttractor.lean` (`fixedPoint_distanceRatio`, `fixedPoint_repels`, `fixedPoint_attracts`, `orientation_trichotomy`, `fixedPoint_logRate`, `fixedPoint_logSign`, `orientationDiscriminator`, `criticalSmoothness`, `scalingWeight`, `criticalSmoothness_one`, `criticalSmoothness_shift_order`, `criticalSmoothness_antitone_order`, `scalingWeight_zero_iff`). **Falsifier:** a fixed point with `|L| > 1` whose neighbours fall inward, or a scaling weight that vanishes off `s = 3/p - a`. **Missing entity:** none for the arithmetic; the on-flow identification of `L` with the real multiplier is object-specific (C8/C8-open). **Source:** the register's own `THE_LAW_OF_SINGULARITIES.md` §12.1; `HasDerivAt.tendsto_slope`; `CriticalLadder`.
 
-## C27 — Change as an interconnected force held by inertia
+## C25 — Change as an interconnected force held by inertia
 
 **Type:** Formal (arithmetic). **Statement.** Change is interconnection-mediated (force) and held by inertia: a finite collection of inertial parts coupled by any nonnegative weights has an aggregate value between the smallest and largest part (`networkValueBetween`; `weightedValueLeMax`, `leWeightedValueMin`), so interconnection reweights but cannot mint a value outside its parts; and for a nonnegative force the induced change `force / inertia` is antitone in inertia (`inertiaDampsChange`): more inertia, less change. **Evidence:** `ForceNetwork.lean` (`weightedValueLeMax`, `leWeightedValueMin`, `networkValueBetween`, `inertiaDampsChange`). **Falsifier:** a network with nonnegative weights whose aggregate lies outside the range of its parts, or a change that grows with inertia. **Missing entity:** none — pure arithmetic (generalises `MixtureGrowth` from two parts to any finite network). **Source:** the register's own reading, `PAPER.md` §4–5; on-flow companion `ns_force_network.py`.
 
-## C28 — Addition of parts cannot fabricate concentration
+## C26 — Addition of parts cannot fabricate concentration
 
 **Type:** Formal (arithmetic). **Statement.** A mixture's norm is at most the sum of the parts (`normMixtureLeSum`): adding parts transmits concentration, never creates it. A two-part mixture's ratio — and its energy-weighted square — is bracketed by the parts' ratios, `min <= mixture <= max` (`mixtureRatioBetween`, `weightedSqBetween`), so no averaging can fabricate a ratio above the largest part (`spikeCannotLowerRatio`). **Evidence:** `MixtureGrowth.lean` (`normMixtureLeSum`, `mixtureRatioBetween`, `weightedSqBetween`, `spikeCannotLowerRatio`). **Falsifier:** a mixture whose effective ratio exceeds the maximum part ratio. **Missing entity:** none — machine-checks `dimension_mixture.py`'s “max, not mean”. **Source:** the register's `dimension_mixture.py`; `norm_add_le`.
 
-## C29 — The Onsager sufficiency skeleton: a bounded invariant frees the excess
+## C27 — The Onsager sufficiency skeleton: a bounded invariant frees the excess
 
 **Type:** Formal (analytic skeleton). **Statement.** If the enstrophy `Z` is uniformly bounded by `M` on a sample set, then for every excess order `n` the supercritical moment is controlled, `sum Z^{n+1} <= M^n * sum Z` (`weighted_sum_le`): a positive Onsager excess is *free* once the invariant moment is bounded. The contrapositive is the wall itself (`spike_of_excess`): if the supercritical moment exceeds `M^n * sum Z`, then `Z` exceeds `M` somewhere, so an Onsager-violating cascade cannot hide beneath a bounded invariant. An excess weight `w >= 1` makes the supercritical sum dominate the critical one (`excess_majorizes`). **Evidence:** `OnsagerCriterion.lean` (`weighted_sum_le`, `spike_of_excess`, `excess_majorizes`). **Falsifier:** a bounded `Z` whose supercritical moment exceeds `M^n * sum Z`. **Missing entity:** the boundedness of the invariant moment itself (marker `criticalInvariantBoundedOpen`). **Source:** Onsager (1949); the register's `CriticalLadder`.
 
-## C30 — The continuation criterion: the logical shape of the wall
+## C28 — The continuation criterion: the logical shape of the wall
 
 **Type:** Formal (logical skeleton). **Statement.** The logical skeleton every continuation criterion shares, independent of which norm plays the invariant: if a local-existence step is always available while the invariant `N <= M` on `[0,T]` and the flow starts at `0`, then the flow reaches `T` (`exists_upto_of_bounded`); equivalently, if the flow exists at `0` but FAILS at `T`, then no bound `M` holds and the scaling-critical invariant must escape every bound (`unbounded_of_first_failure`). Boundedness is not a technical convenience but exactly what stands between local existence and global regularity. **Evidence:** `ContinuationCriterion.lean` (`exists_upto_of_bounded`, `unbounded_of_first_failure`). **Falsifier:** a flow that stays bounded yet fails to extend, or one that blows up with a bounded invariant. **Missing entity:** which norm is the invariant on the real flow (the object-specific content of C1/C3). **Source:** Beale–Kato–Majda (1984) continuation criterion; the register's `OnsagerCriterion`, `GreatAttractor`.
 
-## C31 — Attracting implies bounded: the sufficiency half of the general mechanism
+## C29 — Attracting implies bounded: the sufficiency half of the general mechanism
 
 **Type:** Formal (analytic). **Statement.** Two shapes of “boundedness for free”. (1) *Attracting*: a contraction `f` on a complete nonempty metric space (`ContractingWith K f`, `K < 1`) has its orbit converge to the fixed point (`attracting_orbit_converges`, from Mathlib `tendsto_iterate_fixedPoint`), hence a BOUNDED range (`attracting_orbit_bounded`): “the great attractor does not yet repel” is formally a boundedness statement, so repulsion is the only escape route. (2) *Monotone*: a non-increasing quantity stays below its start (`monotone_bounded`), the arithmetic core of the 2D enstrophy Lyapunov shape that is not available in 3D. **Evidence:** `StableBounded.lean` (`attracting_orbit_converges`, `attracting_orbit_bounded`, `monotone_bounded`). **Falsifier:** a contraction whose orbit is unbounded, or a non-increasing quantity exceeding its initial value. **Missing entity:** none for the arithmetic; the on-flow multiplier is object-specific. **Source:** Mathlib metrization (`tendsto_iterate_fixedPoint`); the register's `orientation_vs_invariant.py` bridge.
 
-## C32 — The sufficiency loop: 2D closes, 3D does not
+## C30 — The sufficiency loop: 2D closes, 3D does not
 
 **Type:** Formal (synthesis). **Statement.** Plugs the register pieces together. If the invariant `N` is non-increasing (the 2D enstrophy shape, `EnstrophyBarrier.mono_step_bounded`) then feeding `M = N 0` to the continuation criterion closes the loop: existence holds at every time (`global_exists_of_mono`). But a per-step increment bounded by `C * (value)^2` (`C > 0`, the 3D shape) admits an invariant that escapes EVERY bound (`quadratic_criterion_unavailable`, from `EnstrophyBarrier.quadratic_step_unbounded`), so the hypothesis the continuation criterion needs holds for no `M`: the sufficiency engine cannot be started from a quadratic increment. **Evidence:** `SufficiencyLoop.lean` (`global_exists_of_mono`, `quadratic_criterion_unavailable`). **Falsifier:** a quadratic-increment invariant that nevertheless admits a uniform bound. **Missing entity:** whether the real 3D enstrophy increment can be controlled below quadratic. **Source:** the register's `EnstrophyBarrier` + `ContinuationCriterion`.
 
-## C33 — Self-similar exponents are forced, and dimension-independent
+## C31 — Self-similar exponents are forced, and dimension-independent
 
 **Type:** Formal (from `Linear Stability of Candidate Swirl Profiles.md` Frontier 1). **Statement.** The four-way dominant balance of the reduced `(u₁, omega₁)` system forces `(p, q, s, gamma) = (-1, -3/2, -1/2, 1/2)` uniquely and dimension-independently (`forcedExponentsSatisfy`, `forcedExponentsUnique`, `gammaForced`, `sForced`, `qForcedInPoisson`, `pForcedFromOmegaProduction`); the balance system is `n`-free, since the second-order diffusion power and the `kappa = n - 1` advection prefactor rescale coefficients, never powers (`secondOrderPowerPrefactorIndependent`, `advectionTermPowerKappaIndependent`, `uzCoefficientPowerNIndependent`), and the stiffening parameter is monotone in the effective dimension (`kappaMonotone`, `dynamicalNMonotoneStiffening_powersForced`): dimensions add stiffness, never powers. **Evidence:** `SelfSimilarExponents.lean` (`BalanceSystem`, `forcedP`, `forcedQ`, `forcedS`, `forcedGamma`, `forcedExponentsSatisfy`, `gammaForced`, `sForced`, `qForcedInPoisson`, `pForcedFromOmegaProduction`, `forcedExponentsUnique`, `secondOrderPower`, `secondOrderPowerPrefactorIndependent`, `advectionTermPower`, `advectionTermPowerKappaIndependent`, `uzCoefficientPowerNIndependent`, `kappaMonotone`, `dynamicalNMonotoneStiffening_powersForced`, `profile_existence_is_open`, `type_ii_naming_not_certified`). **Falsifier:** a balance solution with exponents other than `(-1, -3/2, -1/2, 1/2)`, or one whose `tau`-powers depend on `n`. **Missing entity:** bounded-profile existence at the forced exponents stays OPEN (`profile_existence_is_open`; marker `selfSimilarProfileExistenceOpen`). **Source:** Hou, arXiv:2405.10916; `Linear Stability of Candidate Swirl Profiles.md` Frontier 1.
 
-## C34 — Zero defines its own position; the wall shrinks itself
+## C32 — Zero defines its own position; the wall shrinks itself
 
 **Type:** Formal (removable-value arithmetic). **Statement.** The register's honest wall as a removable 0/0 in the `Removable` idiom (a `Tendsto` on the punctured neighbourhood, never a value AT the point). (1) “zero is the point that defines its own position”: at a fixed point `T x₀ = x₀` with derivative `L`, the change-of-position per change-of-position `(T x - x)/(x - x₀)` has removable value `L - 1` (`fixedPoint_selfSlope`); for the identity the self-shift is `0` (`identity_selfSlope`). (2) “it scales itself on how many zeros it has”: at a point of mutual vanishing the removable value is singled out exactly by the order of vanishing `k` — dividing `(x - x₀)^k * h` by `(x - x₀)^j` gives `h x₀` when `j = k` (`zero_count_removable`), `0` when `j < k` (`zero_count_under`), and blows up when `j > k` (`zero_count_over`). **Evidence:** `ZeroFixedPoint.lean` (`fixedPoint_selfSlope`, `identity_selfSlope`, `zero_count_removable`, `zero_count_under`, `zero_count_over`). **Falsifier:** a removable value at a mutual-vanishing point not singled out by the order of vanishing. **Missing entity:** none for the arithmetic; the wall's on-flow finiteness is diagnostic (`ns_zero_order.py`). **Source:** the register's `THE_LAW_OF_SINGULARITIES.md` §12.1; `Removable`.
 
-## C35 — The one pattern: every critical exponent is the ladder shifted by the order
+## C33 — The one pattern: every critical exponent is the ladder shifted by the order
 
 **Type:** Formal (synthesis). **Statement.** The synthesis brick: every guise of the scaling-critical object is the register ladder `sCrit` shifted by the order. `criticalCurve_through_ladder : criticalSmoothness a p = sCrit p + (1 - a)` — a one-parameter family (parameter = order `a`) passing through the ladder at `a = 1` (`ladder_is_order_one`). The recurrence identity generalises `CriticalLadder.thetaAddSCrit`: `gnExponent p + criticalSmoothness a p = 1/2` at `a = 1`-shift (`theta_add_criticalCurve`, `theta_add_criticalCurve_one`), and the scaling weight vanishes along the whole family (`scalingWeight_vanishes_family`). With orientation — `GreatAttractor` — the whole register is two numbers: an order selecting the rung and a multiplier selecting the side. **Evidence:** `OnePattern.lean` (`criticalCurve_through_ladder`, `ladder_is_order_one`, `theta_add_criticalCurve`, `theta_add_criticalCurve_one`, `scalingWeight_vanishes_family`). **Falsifier:** a critical exponent not lying on the one-parameter order-shifted ladder. **Missing entity:** none — synthesis of already-checked bricks. **Source:** the register capstone; `CriticalLadder`, `GreatAttractor`.
 
 **Missing entity:** none — synthesis of already-checked bricks. **Source:** the register capstone; `CriticalLadder`, `GreatAttractor`.
 
-## C36 — The discrete Noether theorem: the Conservation mechanism
+## C34 — The discrete Noether theorem: the Conservation mechanism
 
-**Type:** Formal (arithmetic). **Statement.** The register names five 0/0 mechanisms, of which only three were Lean-formalised (Probe C19, Vanishing Rate C18/C20, Index C21); the Conservation mechanism — “the conserved quantity is the ratio of two quantities that both vanish when the symmetry is broken” — had only prose. This card gives it a formal core over a finite site set: a configuration is a velocity field `v : ι → ℝ`, its momentum is the sum `Σᵢ vᵢ` (`momentum`), and the charge carried by `q` against `qm` is the total displacement `Σᵢ (qᵢ − qmᵢ)` (`charge`). The charge **is** a difference of two momenta (`charge_eq_momentum_sub`), vanishes with no displacement (`charge_self`), is invariant under a simultaneous translation of both configurations (**the symmetry**; `charge_translation_invariant`), and equals the removable value of the momentum rate `(Σᵢ vᵢ·dt)/dt` (`momentum_from_rate`, the Probe face). **The discrete Noether theorem:** for a balanced force field (`∀ q, Σᵢ Fᵢ(q) = 0`, the infinitesimal form of translation invariance) the time-symmetric update `q_{k+1} = 2 q_k - q_{k-1} + F(q_k)` conserves the charge (`momentum_conserved`); along any such trajectory the momentum equals its initial value at every step (`momentumAt_eq_initial`), and `conservationLaw` bundles the symmetry, the balance law and the constancy. **Evidence:** `NoetherDiscrete.lean` (`charge_eq_momentum_sub`, `charge_self`, `charge_translation_invariant`, `momentum_from_rate`, `momentum_conserved`, `momentumAt_conserved`, `momentumAt_eq_initial`, `conservationLaw`). **Falsifier:** a balanced force whose discrete-Newton step changes the charge, or a "symmetry" translation that changes it. **Missing entity:** none for the finite arithmetic; the continuum limit / field-theoretic Noether theorem is not taken here. **Source:** Noether, *Invariante Variationsprobleme* (1918); the register's `ZeroMechanisms.lean` Conservation mechanism.
+**Type:** Formal (arithmetic). **Statement.** The register names five 0/0 mechanisms, of which only three were Lean-formalised (Probe C17, Vanishing Rate C16/C18, Index C19); the Conservation mechanism — “the conserved quantity is the ratio of two quantities that both vanish when the symmetry is broken” — had only prose. This card gives it a formal core over a finite site set: a configuration is a velocity field `v : ι → ℝ`, its momentum is the sum `Σᵢ vᵢ` (`momentum`), and the charge carried by `q` against `qm` is the total displacement `Σᵢ (qᵢ − qmᵢ)` (`charge`). The charge **is** a difference of two momenta (`charge_eq_momentum_sub`), vanishes with no displacement (`charge_self`), is invariant under a simultaneous translation of both configurations (**the symmetry**; `charge_translation_invariant`), and equals the removable value of the momentum rate `(Σᵢ vᵢ·dt)/dt` (`momentum_from_rate`, the Probe face). **The discrete Noether theorem:** for a balanced force field (`∀ q, Σᵢ Fᵢ(q) = 0`, the infinitesimal form of translation invariance) the time-symmetric update `q_{k+1} = 2 q_k - q_{k-1} + F(q_k)` conserves the charge (`momentum_conserved`); along any such trajectory the momentum equals its initial value at every step (`momentumAt_eq_initial`), and `conservationLaw` bundles the symmetry, the balance law and the constancy. **Evidence:** `NoetherDiscrete.lean` (`charge_eq_momentum_sub`, `charge_self`, `charge_translation_invariant`, `momentum_from_rate`, `momentum_conserved`, `momentumAt_conserved`, `momentumAt_eq_initial`, `conservationLaw`). **Falsifier:** a balanced force whose discrete-Newton step changes the charge, or a "symmetry" translation that changes it. **Missing entity:** none for the finite arithmetic; the continuum limit / field-theoretic Noether theorem is not taken here. **Source:** Noether, *Invariante Variationsprobleme* (1918); the register's `ZeroMechanisms.lean` Conservation mechanism.
 
-## C37 — The increasing point universe: growth is momentum-neutral
+## C35 — The increasing point universe: growth is momentum-neutral
 
-**Type:** Formal (arithmetic). **Statement.** Card C36 formalised the Conservation mechanism on a *fixed* finite site set. This card lifts it to an **increasing (growing) point universe**: a monotone family of finite active sets `U : ℕ → Finset ι` with `U k ⊆ U (k+1)` (`IsGrowingUniverse U := Monotone U`). The momentum over a universe is `momentumOn s v = Σ_{x∈s} v x` and the register charge is `chargeOn s q qm = Σ_{x∈s} (q x − qm x)` (`chargeOn_eq_momentumOn_sub`). **Growth splits the total:** when `s ⊆ t`, `momentumOn t v = momentumOn s v + momentumOn (t \ s) v` (`momentumOn_grow`) — the momentum over the grown universe is the old momentum plus the momentum of the sites that were added. The **creation current** is exactly that added term, `influx U v k = momentumOn (U (k+1) \ U k) v`, so the **growth continuity equation** reads `momentumOn (U (k+1)) v = momentumOn (U k) v + influx U v k` (`universeGrowth_decomp`). **The growth theorem:** if every newly created point enters with zero velocity (`∀ k, ∀ x ∈ U (k+1) \ U k, v x = 0`), the total momentum is a constant of the universe, `∀ k, momentumOn (U k) v = momentumOn (U 0) v` (`universeGrowth_conserves`); the same constancy holds for the register charge `Σ (q x − qm x)` (`chargeOn_universeGrowth_conserves`). On a saturated universe the observable is exactly the C36 momentum, `momentumOn Finset.univ v = NoetherDiscrete.momentum v` (`momentumOn_univ`), so C37 is a strict extension of C36, not a rival. **Evidence:** `UniverseGrowth.lean` (`chargeOn_eq_momentumOn_sub`, `momentumOn_grow`, `momentumOn_grow_eq`, `chargeOn_grow_eq`, `universeGrowth_decomp`, `universeGrowth_conserves`, `chargeOn_universeGrowth_conserves`, `momentumOn_univ`). **Falsifier:** an increasing family `U` with zero-velocity new points whose total momentum changes between stages, or a growth step that adds momentum without a matching creation current. **Missing entity:** none for the finite arithmetic; the continuum limit and what physically counts as a "new point" are not settled here. **Source:** the register's discrete Noether card C36 (`NoetherDiscrete.lean`); the Conservation mechanism.
+**Type:** Formal (arithmetic). **Statement.** Card C34 formalised the Conservation mechanism on a *fixed* finite site set. This card lifts it to an **increasing (growing) point universe**: a monotone family of finite active sets `U : ℕ → Finset ι` with `U k ⊆ U (k+1)` (`IsGrowingUniverse U := Monotone U`). The momentum over a universe is `momentumOn s v = Σ_{x∈s} v x` and the register charge is `chargeOn s q qm = Σ_{x∈s} (q x − qm x)` (`chargeOn_eq_momentumOn_sub`). **Growth splits the total:** when `s ⊆ t`, `momentumOn t v = momentumOn s v + momentumOn (t \ s) v` (`momentumOn_grow`) — the momentum over the grown universe is the old momentum plus the momentum of the sites that were added. The **creation current** is exactly that added term, `influx U v k = momentumOn (U (k+1) \ U k) v`, so the **growth continuity equation** reads `momentumOn (U (k+1)) v = momentumOn (U k) v + influx U v k` (`universeGrowth_decomp`). **The growth theorem:** if every newly created point enters with zero velocity (`∀ k, ∀ x ∈ U (k+1) \ U k, v x = 0`), the total momentum is a constant of the universe, `∀ k, momentumOn (U k) v = momentumOn (U 0) v` (`universeGrowth_conserves`); the same constancy holds for the register charge `Σ (q x − qm x)` (`chargeOn_universeGrowth_conserves`). On a saturated universe the observable is exactly the C34 momentum, `momentumOn Finset.univ v = NoetherDiscrete.momentum v` (`momentumOn_univ`), so C35 is a strict extension of C34, not a rival. **Evidence:** `UniverseGrowth.lean` (`chargeOn_eq_momentumOn_sub`, `momentumOn_grow`, `momentumOn_grow_eq`, `chargeOn_grow_eq`, `universeGrowth_decomp`, `universeGrowth_conserves`, `chargeOn_universeGrowth_conserves`, `momentumOn_univ`). **Falsifier:** an increasing family `U` with zero-velocity new points whose total momentum changes between stages, or a growth step that adds momentum without a matching creation current. **Missing entity:** none for the finite arithmetic; the continuum limit and what physically counts as a "new point" are not settled here. **Source:** the register's discrete Noether card C34 (`NoetherDiscrete.lean`); the Conservation mechanism.
 
-## C38 — The critical phenomenon: the critical amplitude is the removable value of a 0/0
+## C36 — The critical phenomenon: the critical amplitude is the removable value of a 0/0
 
-**Type:** Formal (arithmetic). **Statement.** The register's atlas ends with five 0/0 mechanisms; four were Lean-formalised (Probe C19, Vanishing Rate C18/C20, Index C21, Conservation C36/C37). This card closes the fifth, the **Critical Phenomenon**, on a real line. The order parameter near a critical point is `orderParameter A β x = A · |x|^β` with amplitude `A` and order-parameter exponent `β`; it vanishes at `x = 0` for `β ≠ 0` (`orderParameter_at_critical`). The probe ratio `amplitudeRatio A β x = orderParameter A β x / |x|^β` is a genuine `0/0` — numerator and denominator both vanish at the critical point — and off the critical point it equals the amplitude exactly, `amplitudeRatio_eq : amplitudeRatio A β x = A`: **the critical amplitude is the removable value of the 0/0**. The card also records the classical **critical scaling relations** as identities of the exponent set forced by the Widom form (`m ~ t^β`, `h ~ m^δ`): susceptibility `gamma β δ = β(δ-1)` and specific heat `alpha β δ = 2 - β(δ+1)`, whence `widom_relation : gamma β δ = β(δ-1)`, `rushbrooke_relation : alpha β δ + 2β + gamma β δ = 2`, hyperscaling `nu d β δ = (2-alpha β δ)/d` with `josephson_relation : nu d β δ · d = 2 - alpha β δ` (`d ≠ 0`), and the Fisher relation `eta d β δ = 2 - gamma β δ / nu d β δ` with `fisher_relation : nu d β δ · (2 - eta d β δ) = gamma β δ` (`nu ≠ 0`). **Evidence:** `CriticalAmplitude.lean` (`amplitudeRatio_eq`, `orderParameter_at_critical`, `widom_relation`, `rushbrooke_relation`, `josephson_relation`, `fisher_relation`). **Falsifier:** a scaling exponent set of this form violating one of the four relations, or a probe ratio off the critical point not equal to the amplitude. **Missing entity:** none for the real algebra; no statistical-mechanics model is instantiated and no transition is proved critical. **Source:** Widom, *Equation of State near the Critical Point* (1965); the scaling-relation literature (Rushbrooke 1963, Josephson 1966, Fisher 1964); the atlas's Mechanism IV.
+**Type:** Formal (arithmetic). **Statement.** The register's atlas ends with five 0/0 mechanisms; four were Lean-formalised (Probe C17, Vanishing Rate C16/C18, Index C19, Conservation C34/C35). This card closes the fifth, the **Critical Phenomenon**, on a real line. The order parameter near a critical point is `orderParameter A β x = A · |x|^β` with amplitude `A` and order-parameter exponent `β`; it vanishes at `x = 0` for `β ≠ 0` (`orderParameter_at_critical`). The probe ratio `amplitudeRatio A β x = orderParameter A β x / |x|^β` is a genuine `0/0` — numerator and denominator both vanish at the critical point — and off the critical point it equals the amplitude exactly, `amplitudeRatio_eq : amplitudeRatio A β x = A`: **the critical amplitude is the removable value of the 0/0**. The card also records the classical **critical scaling relations** as identities of the exponent set forced by the Widom form (`m ~ t^β`, `h ~ m^δ`): susceptibility `gamma β δ = β(δ-1)` and specific heat `alpha β δ = 2 - β(δ+1)`, whence `widom_relation : gamma β δ = β(δ-1)`, `rushbrooke_relation : alpha β δ + 2β + gamma β δ = 2`, hyperscaling `nu d β δ = (2-alpha β δ)/d` with `josephson_relation : nu d β δ · d = 2 - alpha β δ` (`d ≠ 0`), and the Fisher relation `eta d β δ = 2 - gamma β δ / nu d β δ` with `fisher_relation : nu d β δ · (2 - eta d β δ) = gamma β δ` (`nu ≠ 0`). **Evidence:** `CriticalAmplitude.lean` (`amplitudeRatio_eq`, `orderParameter_at_critical`, `widom_relation`, `rushbrooke_relation`, `josephson_relation`, `fisher_relation`). **Falsifier:** a scaling exponent set of this form violating one of the four relations, or a probe ratio off the critical point not equal to the amplitude. **Missing entity:** none for the real algebra; no statistical-mechanics model is instantiated and no transition is proved critical. **Source:** Widom, *Equation of State near the Critical Point* (1965); the scaling-relation literature (Rushbrooke 1963, Josephson 1966, Fisher 1964); the atlas's Mechanism IV.
 
 ## Sources for the missing entities (summary)
 
@@ -593,7 +593,7 @@ doctrine (`Removable`, `RemovableValue`, `RemovableComplexBridge`).
 | boundedness of `||u||_{B^{-1}_{\inf,\inf}}` | Cheskidov–Shvydkoy 2010 (arXiv:0708.3067); Ri 2023 (arXiv:2307.11312, unrefereed) |
 | quantitative continuation / next-order term | Tao 2016, 2021; Feng–He–Wang 2025; arXiv:2411.06483 |
 | Lyapunov/orientation exponent identification | Beale–Kato–Majda 1984; Constantin–Fefferman 1993; Deng–Hou–Yu 2015 |
-| `mu = lambda` for the real flow (C10-open) | discrete form proved in `OrientationLaw.lean`; continuous bridge: BKM 1984; Constantin–Fefferman 1993; Deng–Hou–Yu 2015 |
+| `mu = lambda` for the real flow (C8-open) | discrete form proved in `OrientationLaw.lean`; continuous bridge: BKM 1984; Constantin–Fefferman 1993; Deng–Hou–Yu 2015 |
 | intermittency / multifractal bridge | Constantin 1994; Frisch 1995; Sreenivasan |
 | dimension threshold / Riesz potentials | Adams–Hedberg 1996; Tao (dim. regularisation) |
 | method barriers (P vs NP) | Baker–Gill–Solovay 1975; Razborov–Rudich 1997; Aaronson–Wigderson 2008 |
@@ -603,14 +603,14 @@ doctrine (`Removable`, `RemovableValue`, `RemovableComplexBridge`).
 `ExplicitClaims.lean` (axioms exactly `[propext, Classical.choice, Quot.sound]`):
 `morrey_threshold`, `physical_embedding_gap`, `extra_power_strengthens_above_unit`,
 `mean_le_dimMixture`. `OrientationLaw.lean` (same axiom set): `logGrowth_geometric`,
-`sign_match`, `orientation_reads_wall` (card C10's model core), the generalization
+`sign_match`, `orientation_reads_wall` (card C8's model core), the generalization
 `logGrowth_of_ratio_eq` / `logGrowth_pos_iff` / `bounded_of_nonpos_logGrowth` /
 `exists_pos_logGrowth_of_unbounded`, the discrete BKM integral
 `log_eq_sum_logGrowth`, `bounded_of_bounded_sum_logGrowth`, `unbounded_sum_of_unbounded`,
 and the CONTINUOUS BKM integral `contLogGrowth_integral`, `continuous_content_bounded`
 (13 formalised facts). `DissipativeFlow.lean` (same axiom set): `logGrowth_deriv`,
 `logGrowth_nonpos_of_dissipative`, `content_le_initial_of_dissipative` -- the
-dissipative (L^2-energy) face of card C10, `X T <= X 0` under non-positive log-growth.
+dissipative (L^2-energy) face of card C8, `X T <= X 0` under non-positive log-growth.
 `RegularityReduction.lean` (same axiom set): `content_le_exp_of_integral_le`,
 `regularity_reduced_to_integral`, `integral_unbounded_of_content_unbounded`,
 `integral_le_of_content_le`, `regularity_iff_integral_bounded` -- the wall reduced to a
@@ -628,19 +628,19 @@ interior FIRST zero, with `f > 0` to its left -- no monotonicity assumed) and
 `margin_exists_firstCrossing` (that first zero is exact: no earlier zero; 2 facts).
 `LogicBarrier.lean` (axiom-FREE): `lawvere_fixedpoint` (Lawvere's diagonal fixed-point
 theorem), `no_surjective_of_no_fixedpoint`, `no_surjective_predicates` (Cantor), and
-`diagonal_not_mem_range` -- the shared skeleton of Cantor/Gödel/Turing, card C14's formal
+`diagonal_not_mem_range` -- the shared skeleton of Cantor/Gödel/Turing, card C12's formal
 core (4 facts). `ZeroLink.lean` (axioms `⊆ [Quot.sound]`): `empty_unique_arrow`,
 `empty_isInitial`, `unit_isTerminal`, `empty_classified_initial`,
-`unit_classified_terminal`, `zero_links_all` -- card C15's structural core: the empty
+`unit_classified_terminal`, `zero_links_all` -- card C13's structural core: the empty
 type is initial, `PUnit` terminal, `0` the identity of `+` and annihilator of `×`
 (11 facts). `ZeroObject.lean` (same axiom set): `initial_link`, `terminal_link`,
 `zero_isInitial`, `zero_isTerminal`, `zero_links_both_ways`, `zero_unique_up_to_iso`,
 `modules_haveZeroObject`, `modules_exists_zeroObject`, `modules_zero_links` -- card
-C16: a category with a zero object has ONE object that is at once origin and target,
+C14: a category with a zero object has ONE object that is at once origin and target,
 and `ModuleCat R` is such a category (9 facts). `RemovableValue.lean` (same axiom
 set): `IsRemovableValue`, `removable_value_unique`, `existsUnique_iff_exists_and_unique`,
 `extension_unique`, `removable_exists_unique`, `removable_value_bridge`,
-`initial_arrow_schema` -- card C17: the removable value of a 0/0 is a genuine `∃!`,
+`initial_arrow_schema` -- card C15: the removable value of a 0/0 is a genuine `∃!`,
 the same schema as the initial arrow, so removability is existence + uniqueness
 (7 facts). `VanishOrder.lean` (same axiom set): `VanishesToOrder`, `divideOut`,
 `vanishes_zero`, `vanishes_succ_imp`, `vanishes_shift`, `HasGrade`, `hasGrade_canonical`,
@@ -648,54 +648,54 @@ the same schema as the initial arrow, so removability is existence + uniqueness
 vanishing as a decreasing `ℕ`-filtration whose grade shifts by one when a zero is
 divided out vanishing as a decreasing `ℕ`-filtration whose grade shifts by one when a zero is
 divided out (11 formalised facts). `ZeroProbe.lean` (same axiom set): `ProbeValue`,
-`probe_identity`, `probe_self`, `probe_value_unique`, `probe_is_removable` -- card C19:
+`probe_identity`, `probe_self`, `probe_value_unique`, `probe_is_removable` -- card C17:
 the Probe mechanism, an identity 0/0 resolving to `1` (5 facts). `ZeroValuation.lean`
 (same axiom set): `HasOrder`, `hasOrder_one`, `hasOrder_zero_iff`, `hasOrder_mul`,
 `hasOrder_pow`, `hasOrder_canonical`, `hasOrder_lt_imp_not`, `hasOrder_unique`,
-`order_is_valuation` -- card C20: the order of vanishing as a valuation that is
+`order_is_valuation` -- card C18: the order of vanishing as a valuation that is
 additive under products (9 facts). `ZeroIndex.lean` (same axiom set): `Index`,
 `index_one`, `index_additive`, `index_pow`, `index_X_sub_C_self`, `index_pow_self`,
-`index_canonical`, `index_is_multiplicity` -- card C21: the root multiplicity as an
+`index_canonical`, `index_is_multiplicity` -- card C19: the root multiplicity as an
 additive integer (the algebraic face of the Index mechanism; 8 facts).
 `ZeroMechanisms.lean` (same axiom set): `abs_div_self_tendsto_right`,
 `abs_div_self_tendsto_left`, `abs_div_self_no_limit`, `abs_vanish`, `id_vanish`,
-`anti_class_nonempty`, `mechanisms_close` -- card C22: the anti-class is nonempty (a
+`anti_class_nonempty`, `mechanisms_close` -- card C20: the anti-class is nonempty (a
 genuine 0/0, `|x|/x`, with no removable value) and the mechanism faces bundled
 (7 facts). `RemovableComplexBridge.lean` (same axiom set): `IsRemovableValueAt`,
 `removable_value_exists`, `removable_value_unique`, `exists_unique_removable_value`,
-`limUnder_eq_of_isRemovableValue`, `canonical_zero_over_zero` -- card C23: Riemann's
+`limUnder_eq_of_isRemovableValue`, `canonical_zero_over_zero` -- card C21: Riemann's
 removable singularity theorem (Mathlib) read through the register's 0/0 schema over
 `ℂ`; the bounded holomorphic 0/0 has an *existing, unique* removable value, the
-`ℂ` twin of C17 (6 facts). `LiouvilleBridge.lean` (same axiom set): `bounded_entire_const`,
+`ℂ` twin of C15 (6 facts). `LiouvilleBridge.lean` (same axiom set): `bounded_entire_const`,
 `bounded_entire_apply_eq`, `bounded_entire_value_unique`, `eq_zero_of_bounded_of_eq_zero`,
-`bounded_at_infinity_const` -- card C24: Liouville's theorem (Mathlib) in register form,
-the *global* dual of C23 -- a bounded entire function is constant, so a bounded entire 0/0
+`bounded_at_infinity_const` -- card C22: Liouville's theorem (Mathlib) in register form,
+the *global* dual of C21 -- a bounded entire function is constant, so a bounded entire 0/0
 vanishes identically (5 facts). The capstone
 `TheoryOfEverything.method_and_margin_barriers` bundles the
 order margin (existence always, uniqueness under antitonicity) and the method barrier
 alongside `twoNumbersClose`.
-The **Navier–Stokes wall bricks** (cards C25 … C35, same axiom set
+The **Navier–Stokes wall bricks** (cards C23 … C33, same axiom set
 `⊆ {propext, Classical.choice, Quot.sound}`) are the arithmetic core of the open wall,
-each kernel-checked and now card-linked: `SerrinLadder.lean` (C25, 13 facts — the
+each kernel-checked and now card-linked: `SerrinLadder.lean` (C23, 13 facts — the
 interpolation ladder `theta(p) = 3/2 - 3/p`, ceiling `p = 6`, and the one-extra-power
-gap); `GreatAttractor.lean` (C26, 13 facts — fixed-point orientation `|L| ⋚ 1` and the
-order-shifted critical rung); `ForceNetwork.lean` (C27, 4 facts — interconnection
-reweights, inertia damps change); `MixtureGrowth.lean` (C28, 4 facts — addition of parts
-cannot fabricate concentration); `OnsagerCriterion.lean` (C29, 3 facts — bounded
+gap); `GreatAttractor.lean` (C24, 13 facts — fixed-point orientation `|L| ⋚ 1` and the
+order-shifted critical rung); `ForceNetwork.lean` (C25, 4 facts — interconnection
+reweights, inertia damps change); `MixtureGrowth.lean` (C26, 4 facts — addition of parts
+cannot fabricate concentration); `OnsagerCriterion.lean` (C27, 3 facts — bounded
 invariant frees the excess, its contrapositive is the wall); `ContinuationCriterion.lean`
-(C30, 2 facts — bounded invariant ⟺ no blow-up); `StableBounded.lean` (C31, 3 facts —
-attracting ⇒ bounded); `SufficiencyLoop.lean` (C32, 2 facts — 2D closes, 3D does not);
-`SelfSimilarExponents.lean` (C33, 20 facts — forced, dimension-independent self-similar
-exponents; two honest open-marker restatements); `ZeroFixedPoint.lean` (C34, 5 facts —
-zero defines its own position, the wall shrinks itself); `OnePattern.lean` (C35, 5 facts
+(C28, 2 facts — bounded invariant ⟺ no blow-up); `StableBounded.lean` (C29, 3 facts —
+attracting ⇒ bounded); `SufficiencyLoop.lean` (C30, 2 facts — 2D closes, 3D does not);
+`SelfSimilarExponents.lean` (C31, 20 facts — forced, dimension-independent self-similar
+exponents; two honest open-marker restatements); `ZeroFixedPoint.lean` (C32, 5 facts —
+zero defines its own position, the wall shrinks itself); `OnePattern.lean` (C33, 5 facts
 — every critical exponent is the ladder shifted by the order). Each card names its
 missing entity (the open wall) explicitly; none is a Millennium result.
 
-The **Conservation-mechanism brick** (card C36, same axiom set
+The **Conservation-mechanism brick** (card C34, same axiom set
 `⊆ {propext, Classical.choice, Quot.sound}`) closes the last unformalised 0/0
-mechanism: `NoetherDiscrete.lean` (C36, 8 quoted facts — the discrete Noether
+mechanism: `NoetherDiscrete.lean` (C34, 8 quoted facts — the discrete Noether
 theorem: a balanced force conserves the charge under the time-symmetric update, so
 momentum is a constant of the motion).
 
 The remaining cards are cited (Theorem) or left OPEN with a
-named missing entity (Conjecture; see C10-open). No card here is a Millennium result.
+named missing entity (Conjecture; see C8-open). No card here is a Millennium result.

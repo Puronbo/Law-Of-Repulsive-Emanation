@@ -2,7 +2,7 @@ import Mathlib
 import PunoCalculus.RemovableValue
 
 /-!
-# C19 -- the **Probe** mechanism: the identity 0/0 resolves to `1`
+# C17 -- the **Probe** mechanism: the identity 0/0 resolves to `1`
 
 `THE_0_OVER_0_ATLAS.md` classifies removable `0/0` forms into five mechanisms; the
 first is the **Probe**: two functions that *vanish identically together* (`f =ᶠ g`)

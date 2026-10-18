@@ -2,9 +2,9 @@ import Mathlib
 import PunoCalculus.OrientationLaw
 
 /-!
-# Dissipative flows are attracting: the energy face of the orientation law (C10)
+# Dissipative flows are attracting: the energy face of the orientation law (C8)
 
-Card **C10** identifies the orientation `lambda` with the growth rate `mu` of the
+Card **C8** identifies the orientation `lambda` with the growth rate `mu` of the
 critical content.  For a *dissipative* flow -- one whose content has non-positive time
 derivative, the prototypical case being the Navier-Stokes energy identity
 `dE/dt = -nu ||grad u||^2 <= 0` -- the growth rate of `log(content)` is non-positive.
@@ -16,7 +16,7 @@ grow.  This is the *attracting* side of the on-flow probe (`orientation_vs_invar
 Honesty: this is the energy (L^2-type) face.  For the scaling-critical content
 `||u||_{B^{-1}_{inf,inf}}` there is no such energy identity, so `g` need not be
 non-positive; proving `int_0^T g < inf` for the critical content is exactly the open
-wall (card C10-open).  This brick closes the dissipative half, not the wall.
+wall (card C8-open).  This brick closes the dissipative half, not the wall.
 -/
 
 noncomputable section

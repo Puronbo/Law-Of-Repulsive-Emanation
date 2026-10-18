@@ -9,7 +9,7 @@ open Filter Function
 open scoped Topology
 
 /-- **Liouville's theorem** (register form): a function complex-differentiable on all of `C`
-whose range is bounded is a constant -- the *global* dual of card C23's *local* resolution.
+whose range is bounded is a constant -- the *global* dual of card C21's *local* resolution.
 There local boundedness lets a `0/0` resolve to a finite value; here global boundedness is
 coercive. -/
 theorem bounded_entire_const (f : ℂ → ℂ) (hf : Differentiable ℂ f)

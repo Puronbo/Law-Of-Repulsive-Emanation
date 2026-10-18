@@ -12,7 +12,7 @@ given so a reader can re-verify each link.*
 
 ## Purpose
 
-The register (`EXPLICIT_CLAIMS.md`, cards C1–C38; `VERIFICATION_LEDGER.md`) is
+The register (`EXPLICIT_CLAIMS.md`, cards C1–C36; `VERIFICATION_LEDGER.md`) is
 self-contained: each card pairs a Lean theorem half with a numeric certificate
 half. This document is the **outward** half of the same honesty contract. It
 anchors each of the framework's mechanisms to **named, checkable studies** in the
@@ -68,10 +68,10 @@ anchors present) so the map cannot drift from the tree.
 
 ## M2. The five 0/0 mechanisms
 
-* **Ours** — `PunoCalculus/ZeroProbe.lean` (C19), `VanishOrder.lean` /
-  `ZeroValuation.lean` (C18/C20), `ZeroIndex.lean` (C21),
-  `NoetherDiscrete.lean` / `UniverseGrowth.lean` (C36/C37),
-  `CriticalAmplitude.lean` (C38); numeric halves
+* **Ours** — `PunoCalculus/ZeroProbe.lean` (C17), `VanishOrder.lean` /
+  `ZeroValuation.lean` (C16/C18), `ZeroIndex.lean` (C19),
+  `NoetherDiscrete.lean` / `UniverseGrowth.lean` (C34/C35),
+  `CriticalAmplitude.lean` (C36); numeric halves
   `zero_mechanism_certificates.py`, `arithmetic_shadow_certificates.py`.
 * **Known studies** — root **index** / multiplicity; algebraic **valuations**
   (order of vanishing, `v(xy)=v(x)+v(y)`); discrete conservation laws
@@ -176,9 +176,9 @@ anchors present) so the map cannot drift from the tree.
 
 ## M5. The scaling-critical ladder (the Navier–Stokes wall)
 
-* **Ours** — `CriticalLadder.lean` (C1), `SerrinLadder.lean` (C25),
-  `OnsagerCriterion.lean` (C29), `ContinuationCriterion.lean` (C30),
-  `SufficiencyLoop.lean` (C32), `EnstrophyBarrier.lean`,
+* **Ours** — `CriticalLadder.lean` (C1), `SerrinLadder.lean` (C23),
+  `OnsagerCriterion.lean` (C27), `ContinuationCriterion.lean` (C28),
+  `SufficiencyLoop.lean` (C30), `EnstrophyBarrier.lean`,
   `QuantitativeContinuation.lean`; numeric halves
   `register_core_certificates.py`, `register_ladder_certificates.py`,
   `register_criteria_certificates.py`.
@@ -251,8 +251,8 @@ anchors present) so the map cannot drift from the tree.
 
 ## M7. Orientation and boundedness (the great attractor)
 
-* **Ours** — `GreatAttractor.lean` (C26), `OrientationBoundedness.lean` (C11),
-  `OrientationLaw.lean` / `DissipativeFlow.lean` (C10); numeric half
+* **Ours** — `GreatAttractor.lean` (C24), `OrientationBoundedness.lean` (C9),
+  `OrientationLaw.lean` / `DissipativeFlow.lean` (C8); numeric half
   `register_ladder_certificates.py`.
 * **Known studies** — Lyapunov stability and the sign of log-growth; fixed-point
   stability by linearization (`|f'|`); the attractive / neutral / repelling
@@ -270,7 +270,7 @@ anchors present) so the map cannot drift from the tree.
 
 ## M8. The logic barrier
 
-* **Ours** — `PunoCalculus/LogicBarrier.lean` (C14: `lawvere_fixedpoint`,
+* **Ours** — `PunoCalculus/LogicBarrier.lean` (C12: `lawvere_fixedpoint`,
   `no_surjective_of_no_fixedpoint`, `no_surjective_predicates`,
   `diagonal_not_mem_range`; axiom-free).
 * **Known studies** — the **Lawvere** fixed-point theorem (1969); **Cantor**'s

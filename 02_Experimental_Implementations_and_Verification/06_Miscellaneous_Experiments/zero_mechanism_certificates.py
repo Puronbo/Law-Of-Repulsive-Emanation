@@ -1,27 +1,27 @@
 """
-ZERO-MECHANISM CERTIFICATES (cards C15 / C16 / C17 / C18 / C19 / C20 / C21 /
+ZERO-MECHANISM CERTIFICATES (cards C13 / C14 / C15 / C16 / C17 / C18 / C19 /
 ===========================================================================
-                             C22 / C23 / C24)
+                             C20 / C21 / C22)
 Numerical/combinatorial companion to the zero-object, removable-value and
 0/0-mechanism cards.  Each block re-derives, by finite enumeration or by exact
 arithmetic on samples, the content that the corresponding Lean card proves.  The
 proof is the Lean theorem; this is the arithmetic shadow and it must agree.
 
-  C15  ZeroLink                -- Empty is initial, PUnit is terminal (∃! arrow)
-  C16  ZeroObject              -- one object initial AND terminal (the zero module)
-  C17  RemovableValue          -- the punctured limit is exist-and-be-unique
-  C18  VanishOrder             -- the "number of zeros" is a graded index
-  C19  ZeroProbe               -- the identity 0/0 resolves to 1
-  C20  ZeroValuation           -- order of vanishing is a valuation (additive)
-  C21  ZeroIndex               -- root multiplicity is an additive index
-  C22  ZeroMechanisms          -- the anti-class: |x|/x has NO limit at 0
-  C23  RemovableComplexBridge  -- the same ∃! schema over C
-  C24  LiouvilleBridge         -- bounded entire functions are constant
+  C13  ZeroLink                -- Empty is initial, PUnit is terminal (∃! arrow)
+  C14  ZeroObject              -- one object initial AND terminal (the zero module)
+  C15  RemovableValue          -- the punctured limit is exist-and-be-unique
+  C16  VanishOrder             -- the "number of zeros" is a graded index
+  C17  ZeroProbe               -- the identity 0/0 resolves to 1
+  C18  ZeroValuation           -- order of vanishing is a valuation (additive)
+  C19  ZeroIndex               -- root multiplicity is an additive index
+  C20  ZeroMechanisms          -- the anti-class: |x|/x has NO limit at 0
+  C21  RemovableComplexBridge  -- the same ∃! schema over C
+  C22  LiouvilleBridge         -- bounded entire functions are constant
 
 Scope: finite enumeration and real/complex arithmetic only.  No PDE, no
 Millennium problem (see WHAT_THIS_DOES_NOT_PROVE.md).  Honest boundary: cards
 that are universally quantified over types / categories / analytic hypotheses
-(C15, C16, C24) are certified on a *concrete instance* or on finite samples; the
+(C13, C14, C22) are certified on a *concrete instance* or on finite samples; the
 instance is the arithmetic shadow, not the theorem.
 Run:  python zero_mechanism_certificates.py            (prints PASS)
 """
@@ -86,7 +86,7 @@ def hom_count(m, n):
 
 
 # ---------------------------------------------------------------------------
-# C15 -- ZeroLink: Empty is initial, PUnit is terminal
+# C13 -- ZeroLink: Empty is initial, PUnit is terminal
 # ---------------------------------------------------------------------------
 
 
@@ -104,7 +104,7 @@ def c15_zero_link():
     # zero_links_all: Empty is the identity for + and absorbing for x
     ring_ok = all((a + 0 == a) and (0 + a == a) and (a * 0 == 0) and (0 * a == 0)
                   for a in range(0, 9))
-    print("\n[C15] ZeroLink (Empty initial, PUnit terminal)")
+    print("\n[C13] ZeroLink (Empty initial, PUnit terminal)")
     print(f"  exactly one arrow Empty -> A for all A          = {one_out}")
     print(f"  exactly one arrow A -> PUnit for all A          = {one_in}")
     print(f"  types with a unique arrow to every A            = {initial_sizes}")
@@ -118,7 +118,7 @@ def c15_zero_link():
 
 
 # ---------------------------------------------------------------------------
-# C16 -- ZeroObject: the zero module is initial AND terminal (concrete instance)
+# C14 -- ZeroObject: the zero module is initial AND terminal (concrete instance)
 # ---------------------------------------------------------------------------
 
 
@@ -142,7 +142,7 @@ def c16_zero_object():
     dims = [k for k in range(0, 6) if all(hom(k, m) == 1 for m in (1, 2, 3))]
     # modules_zero_links: from/to the zero module both ways
     links = all(hom(0, m) == 1 and hom(m, 0) == 1 for m in range(0, 7))
-    print("\n[C16] ZeroObject (instance: GF(2)-Mod)")
+    print("\n[C14] ZeroObject (instance: GF(2)-Mod)")
     print(f"  unique arrow 0 -> V for every V                 = {init}")
     print(f"  unique arrow M -> 0 for every M                 = {term}")
     print(f"  both at once                                    = {both}")
@@ -156,7 +156,7 @@ def c16_zero_object():
 
 
 # ---------------------------------------------------------------------------
-# C17 -- RemovableValue: the punctured limit exists and is unique
+# C15 -- RemovableValue: the punctured limit exists and is unique
 # ---------------------------------------------------------------------------
 
 
@@ -189,7 +189,7 @@ def c17_removable_value():
     n_empty = len(list(itertools.product(range(4), repeat=0)))   # maps from ∅
     n_once = len(list(itertools.product(range(4), repeat=1)))    # maps from a 1-set
     one_arrow = (n_empty == 1) and (n_once == 4)
-    print("\n[C17] RemovableValue (exist-and-be-unique)")
+    print("\n[C15] RemovableValue (exist-and-be-unique)")
     print(f"  one-sided limit estimates |f(r) - f(l)|         = {e_uniq:.3e}")
     print(f"  |limit - g(a)| (removable value = g(a))         = {e_val:.3e}")
     print(f"  |f(x) - limit| as x -> a (convergence)          = {e_haus:.3e}")
@@ -203,7 +203,7 @@ def c17_removable_value():
 
 
 # ---------------------------------------------------------------------------
-# C18 -- VanishOrder: the number of zeros is a graded index
+# C16 -- VanishOrder: the number of zeros is a graded index
 # ---------------------------------------------------------------------------
 
 
@@ -232,7 +232,7 @@ def c18_vanish_order():
     for k in range(0, 6):
         if root_multiplicity([0.0] * (k + 1) + h, 0.0) < k:
             e_succ += 1
-    print("\n[C18] VanishOrder (a graded, shifting, unique index of zeros)")
+    print("\n[C16] VanishOrder (a graded, shifting, unique index of zeros)")
     print(f"  recovered grades for t^k h, k = 0..6            = {grades}")
     print(f"  grade-shift failures (divideOut lowers by one)  = {e_shift:.1f}")
     print(f"  antitone failures                               = {e_ant:.1f}")
@@ -245,7 +245,7 @@ def c18_vanish_order():
 
 
 # ---------------------------------------------------------------------------
-# C19 -- ZeroProbe: the identity 0/0 resolves to 1
+# C17 -- ZeroProbe: the identity 0/0 resolves to 1
 # ---------------------------------------------------------------------------
 
 
@@ -262,15 +262,15 @@ def c19_zero_probe():
     # probe_identity : f = g off x0 and g != 0  =>  f/g -> 1
     vals_ident = [f(x) / g(x) for x in xs if g(x) != 0.0]
     worst_1 = max(abs(v - 1.0) for v in vals_self + vals_ident)
-    print("\n[C19] ZeroProbe (the identity 0/0 resolves to 1)")
+    print("\n[C17] ZeroProbe (the identity 0/0 resolves to 1)")
     print(f"  max |f/f - 1| and |f/g - 1| over punctured pts   = {worst_1:.3e}")
     assert worst_1 == 0.0, worst_1
     print("  -> the probe ratio is exactly 1 away from the point, and the value 1 is "
-          "\n     the removable value (C17).")
+          "\n     the removable value (C15).")
 
 
 # ---------------------------------------------------------------------------
-# C20 -- ZeroValuation: order of vanishing is a valuation
+# C18 -- ZeroValuation: order of vanishing is a valuation
 # ---------------------------------------------------------------------------
 
 
@@ -298,7 +298,7 @@ def c20_zero_valuation():
                                     and checks["hasOrder_pow"]
                                     and checks["hasOrder_unique"]
                                     and checks["hasOrder_canonical"])
-    print("\n[C20] ZeroValuation (order of vanishing is additive)")
+    print("\n[C18] ZeroValuation (order of vanishing is additive)")
     print(f"  ord(1+t) = {ord_p},  ord(5t^2) = {ord_q},  ord(-2t+t^2) = {ord_r}")
     for k in sorted(checks):
         print(f"  {k:<24} = {checks[k]}")
@@ -308,7 +308,7 @@ def c20_zero_valuation():
 
 
 # ---------------------------------------------------------------------------
-# C21 -- ZeroIndex: root multiplicity is an additive index
+# C19 -- ZeroIndex: root multiplicity is an additive index
 # ---------------------------------------------------------------------------
 
 
@@ -333,7 +333,7 @@ def c21_zero_index():
     checks["index_is_multiplicity"] = all(
         checks[k] for k in ("index_one", "index_X_sub_C_self", "index_additive",
                             "index_pow", "index_canonical"))
-    print("\n[C21] ZeroIndex (root multiplicity is an additive index)")
+    print("\n[C19] ZeroIndex (root multiplicity is an additive index)")
     for k in sorted(checks):
         print(f"  {k:<26} = {checks[k]}")
     print(f"  multiplicity of (X-{a})^2 at {a}            = {root_multiplicity(p, a)}")
@@ -342,7 +342,7 @@ def c21_zero_index():
 
 
 # ---------------------------------------------------------------------------
-# C22 -- ZeroMechanisms: the anti-class (no limit at all)
+# C20 -- ZeroMechanisms: the anti-class (no limit at all)
 # ---------------------------------------------------------------------------
 
 
@@ -355,7 +355,7 @@ def c22_zero_mechanisms():
     e_i = min(abs(x) for x in (1e-3, 1e-6, 1e-9, 1e-12))   # denominator -> 0
     gap = abs(right[0] - left[0])            # one-sided limits differ by 2
     no_limit = gap > 1e-9 and e_r < 1e-9 and e_l < 1e-9
-    print("\n[C22] ZeroMechanisms (the anti-class: a 0/0 with no limit)")
+    print("\n[C20] ZeroMechanisms (the anti-class: a 0/0 with no limit)")
     print(f"  | |x|/x - 1 | on x -> 0+                        = {e_r:.3e}")
     print(f"  | |x|/x + 1 | on x -> 0-                        = {e_l:.3e}")
     print(f"  |x| -> 0 (numerator vanishes, smallest sample)  = {e_v:.3e}")
@@ -370,7 +370,7 @@ def c22_zero_mechanisms():
 
 
 # ---------------------------------------------------------------------------
-# C23 -- RemovableComplexBridge: the same ∃! schema over C
+# C21 -- RemovableComplexBridge: the same ∃! schema over C
 # ---------------------------------------------------------------------------
 
 
@@ -391,7 +391,7 @@ def c23_removable_complex_bridge():
     limits = [f(s[-1]) for s in seqs]
     spread = max(abs(lim - g(c0)) for lim in limits)
     e_val = abs(limits[0] - limits[1])
-    print("\n[C23] RemovableComplexBridge (the ∃! schema over C)")
+    print("\n[C21] RemovableComplexBridge (the ∃! schema over C)")
     print(f"  |f(z) - g(c)| at z -> c, 5 approaches            = {spread:.3e}")
     print(f"  |limit approach 1 - approach 2|                  = {e_val:.3e}")
     assert spread < 1e-9 and e_val < 1e-9
@@ -400,7 +400,7 @@ def c23_removable_complex_bridge():
 
 
 # ---------------------------------------------------------------------------
-# C24 -- LiouvilleBridge: boundedness of an entire function forces constancy
+# C22 -- LiouvilleBridge: boundedness of an entire function forces constancy
 # ---------------------------------------------------------------------------
 
 
@@ -435,7 +435,7 @@ def c24_liouville_bridge():
         grows[name] = vals[-1] > vals[0] * 10.0
     const_vals = [sample_radius(R, const_fn) for R in radii]
     const_flat = max(const_vals) - min(const_vals) < 1e-12
-    print("\n[C24] LiouvilleBridge (bounded entire => constant)")
+    print("\n[C22] LiouvilleBridge (bounded entire => constant)")
     for name, fn in (("exp", exp_fn), ("sin", sin_fn), ("z^2+1", poly_fn)):
         vals = [f"{sample_radius(R, fn):.3e}" for R in radii]
         print(f"  max |{name:<6}| on |z| = {radii}  = {vals}")
@@ -452,7 +452,7 @@ def c24_liouville_bridge():
 
 def main():
     print("=" * 78)
-    print("ZERO-MECHANISM CERTIFICATES: C15-C24")
+    print("ZERO-MECHANISM CERTIFICATES: C13-C22")
     print("=" * 78)
     c15_zero_link()
     c16_zero_object()
@@ -465,9 +465,9 @@ def main():
     c23_removable_complex_bridge()
     c24_liouville_bridge()
     print("\n" + "=" * 78)
-    print("PASS: C15/C16 initial-terminal uniqueness; C17/C23 unique removable value; "
-          "C18/C20/C21 graded index and valuation; C19 probe = 1; C22 anti-class has "
-          "no limit; C24 boundedness excludes the growing candidates.")
+    print("PASS: C13/C14 initial-terminal uniqueness; C15/C21 unique removable value; "
+          "C16/C18/C19 graded index and valuation; C17 probe = 1; C20 anti-class has "
+          "no limit; C22 boundedness excludes the growing candidates.")
     print("=" * 78)
     return 0
 

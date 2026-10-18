@@ -1,9 +1,9 @@
 /-
   PunoCalculus.LogicBarrier
 
-  THE METHOD BARRIER, in its abstract form (card C14).
+  THE METHOD BARRIER, in its abstract form (card C12).
 
-  The register's C14 observes that the Millennium walls are METHOD barriers, not merely
+  The register's C12 observes that the Millennium walls are METHOD barriers, not merely
   missing computations.  The cleanest such barrier is one theorem of Lawvere: a
   diagonal, self-referential construction.  In a cartesian closed setting, if a type `α`
   can SURJECT onto its own function space `α → β` (`φ` an enumeration of all predicates),

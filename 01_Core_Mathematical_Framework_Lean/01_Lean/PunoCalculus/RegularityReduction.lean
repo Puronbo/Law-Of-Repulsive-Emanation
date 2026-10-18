@@ -2,7 +2,7 @@ import Mathlib
 import PunoCalculus.OrientationLaw
 
 /-!
-# Global regularity reduces to boundedness of the critical-content integral (C10-open)
+# Global regularity reduces to boundedness of the critical-content integral (C8-open)
 
 This brick packages the two OrientationLaw facts into the wall statement itself.  With
 `X` the critical content and `g = d/dt log X` its log-growth rate, the continuous BKM
@@ -95,7 +95,7 @@ theorem integral_le_of_content_le {X g : ℝ → ℝ}
 log-differentiable with continuous rate `g`), the critical content is bounded uniformly
 in `T` if and only if its critical-content integral `int_0^T g` is bounded uniformly in
 `T`.  Both directions are proved; this is the sharpest form of the open residue -- only
-the NS-specific bound on the real flow's `g` stays open (card C10-open). -/
+the NS-specific bound on the real flow's `g` stays open (card C8-open). -/
 theorem regularity_iff_integral_bounded {X g : ℝ → ℝ}
     (hX0 : 0 < X 0)
     (hpos : ∀ T, 0 ≤ T → 0 < X T)

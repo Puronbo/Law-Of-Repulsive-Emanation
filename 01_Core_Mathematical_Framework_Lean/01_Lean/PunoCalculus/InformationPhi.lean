@@ -12,7 +12,7 @@ The note `LANDAUER_BOUND_AND_THE_REGISTER.md` states an **OPEN** claim: a map
 two sharper things the note asks for:
 
 1. **It exhibits a genuine dynamical 0/0 whose removable value is the register's
-   `lambda` (card C17).**  The relaxation `x |-> r ^ x` has a content deficit per
+   `lambda` (card C15).**  The relaxation `x |-> r ^ x` has a content deficit per
    unit time `(1 - r^x)/x`, a `0/0` at `x = 0`; its removable value is
    `-log r = -orientation r` (`deficitRate_isRemovableValue`).  For the
    state-counting register `r = 1/n` that value is `log n` -- the register's
@@ -41,13 +41,13 @@ open PunoCalculus.OrientationLaw (orientation)
 open PunoCalculus.RemovableValue (IsRemovableValue)
 open PunoCalculus.InformationBridge (resetCost)
 
-/-! ## 1. The dynamical 0/0 and its removable value (card C17) -/
+/-! ## 1. The dynamical 0/0 and its removable value (card C15) -/
 
 /-- Content deficit per unit time of the relaxation `x |-> r ^ x`: the `0/0`
 `(1 - r^x)/x` at `x = 0`. -/
 def deficitRate (r x : ℝ) : ℝ := (1 - r ^ x) / x
 
-/-- **The relaxation 0/0 resolves to `-orientation r` (C17).**  As the time step
+/-- **The relaxation 0/0 resolves to `-orientation r` (C15).**  As the time step
 `x -> 0`, the per-unit-time content deficit `(1 - r^x)/x` tends to `-log r`. -/
 theorem deficitRate_isRemovableValue (r : ℝ) (hr : 0 < r) :
     IsRemovableValue (deficitRate r) 0 (-orientation r) := by
@@ -68,7 +68,7 @@ theorem orientation_one_div (n : ℕ) :
   unfold orientation
   rw [one_div, Real.log_inv]
 
-/-- **`lambda` for the state-counting register (C17).**  For `r = 1/n` the
+/-- **`lambda` for the state-counting register (C15).**  For `r = 1/n` the
 removable value of the relaxation 0/0 is `log n`, the register's content. -/
 theorem deficitRate_stateCounting (n : ℕ) (hn : 0 < n) :
     IsRemovableValue (deficitRate (1 / (n : ℝ))) 0 (Real.log n) := by
@@ -89,12 +89,12 @@ structure ThermoState where
   /-- Minimum work (heat) to erase the register. -/
   eraseCost : ℝ
 
-/-- The register's removable value `lambda` (C17) for an `n`-state register. -/
+/-- The register's removable value `lambda` (C15) for an `n`-state register. -/
 def lambda (n : ℕ) : ℝ := Real.log n
 
 /-- **The candidate register-to-thermodynamics map `Phi`** of the OPEN claim, for
 the `n`-state relaxation at temperature `T`.  It carries the removable value
-`lambda` (C17) to the free-energy ratio `exp (-lambda)`, the orientation to the
+`lambda` (C15) to the free-energy ratio `exp (-lambda)`, the orientation to the
 entropy-production reading, and `k_B T * lambda` to the erase cost. -/
 def Phi (kB T : ℝ) (n : ℕ) : ThermoState :=
   { freeRatio := 1 / (n : ℝ)
@@ -112,7 +112,7 @@ theorem Phi_freeRatio_eq_exp_neg_lambda (kB T : ℝ) (n : ℕ) (hn : 0 < n) :
 theorem Phi_entropyProd_eq_orientation (kB T : ℝ) (n : ℕ) :
     (Phi kB T n).entropyProd = orientation (1 / (n : ℝ)) := rfl
 
-/-- **The register entropy production is the orientation (C10).**  The per-unit-time
+/-- **The register entropy production is the orientation (C8).**  The per-unit-time
 register entropy change of the relaxation is `orientation r`, for every `x != 0`. -/
 theorem register_entropy_rate {r : ℝ} (hr : 0 < r) {x : ℝ} (hx : x ≠ 0) :
     Real.log (r ^ x) / x = orientation r := by

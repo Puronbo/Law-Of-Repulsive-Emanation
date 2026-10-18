@@ -7,7 +7,7 @@
 > result.
 
 Status: **OPEN** (candidate identification, not a proof). No register card is
-created: by the T5 rule (`THEORY_OF_EVERYTHING.md` §6) a card C39+ requires an
+created: by the T5 rule (`THEORY_OF_EVERYTHING.md` §6) a card C37+ requires an
 expressible `(order, orientation)` reduction, which is exactly what is still
 missing.
 
@@ -17,8 +17,8 @@ missing.
 
 `LANDAUER_BOUND_AND_THE_REGISTER.md` states an **OPEN** claim whose **missing
 entity** is the map `Phi`: a *validated physical instantiation of the register* --
-a concrete dynamical system whose critical content is a `0/0` (card C17), whose
-orientation is its dissipation sign (cards C10/C11), and whose one-bit erasure
+a concrete dynamical system whose critical content is a `0/0` (card C15), whose
+orientation is its dissipation sign (cards C8/C9), and whose one-bit erasure
 cost is `k_B T ln 2`. `PunoCalculus/InformationPhi.lean` constructs `Phi` as the
 register's *own model* of a thermodynamic state; §2c of that note flags the wall:
 **identifying it with a measured apparatus** is the missing entity. This note
@@ -43,8 +43,8 @@ channels -- which is the structure `PunoCalculus/InformationMixture.lean` checks
 | Underdamped micromechanical oscillator | double-well feedback trap | Landauer bound reached to `1%` | Dago et al., *PRL* **126**, 170601 (2021), DOI 10.1103/PhysRevLett.126.170601 |
 
 Each measures the *cost* side (the `k_B T ln 2` quantum and its deviations). None
-constructs `Phi`: none relates the register's removable value `lambda` (C17) or
-orientation `r` (C10/C11) to the measured cost. Bibliographic details here are
+constructs `Phi`: none relates the register's removable value `lambda` (C15) or
+orientation `r` (C8/C9) to the measured cost. Bibliographic details here are
 recorded as a working list; every entry cited in this note is collected and
 re-checked in §7 (verified anchors).
 
@@ -115,7 +115,7 @@ instantiate; it does **not** identify any apparatus.
 ## 4c. The time reading: `Phi` is a rate
 
 `PunoCalculus/InformationTime.lean` reads the same `Phi` as a **time evolution**
-(the reading of `EmergentTime.lean`, card C13): the register's time is the count
+(the reading of `EmergentTime.lean`, card C11): the register's time is the count
 `n` (`evolution_pow_nat`), the orientation `orientation r = log r` is the per-step
 **rate** (`orientation_evolution_one`), and the trinity `{-1, 0, +1}` is only the
 **arrow of time** -- decay / stationary / growth (`retention_lt_one_iff`,
@@ -158,7 +158,7 @@ A measured system, presented as a candidate `Phi`, that (a) is *not* a mixture -
 its entropy production shows no separable information/thermodynamic (or
 population/coherence) channel -- yet is claimed to satisfy the register map; **or**
 (b) whose measured one-bit erasure cost is not `k_B T ln 2`, or whose measured
-dissipation sign disagrees with `sign(log r)` (C10/C11). Either falsifies the
+dissipation sign disagrees with `sign(log r)` (C8/C9). Either falsifies the
 candidate instantiation of `Phi`.
 
 ## 6. Boundary
@@ -227,6 +227,6 @@ none remain unverified.
 * `01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/InformationBridge.lean`
   / `InformationPhi.lean` -- the two-state and `Phi` bricks.
 * `01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/InformationTime.lean`
-  -- the time reading of `Phi` (§4c), linking to `EmergentTime` (C13).
-* `THEORY_OF_EVERYTHING.md` -- the register program (cards C1--C38; this note is
+  -- the time reading of `Phi` (§4c), linking to `EmergentTime` (C11).
+* `THEORY_OF_EVERYTHING.md` -- the register program (cards C1--C36; this note is
   not a card).

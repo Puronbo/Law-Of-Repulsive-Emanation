@@ -463,14 +463,14 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       (`morrey_threshold` `0 < 1 - d/2 ↔ d < 2`; `physical_embedding_gap`
       `1 - 3/2 = -1/2`; `extra_power_strengthens_above_unit`
       `z ≤ z^(1+ε) ↔ 1 ≤ z`; `mean_le_dimMixture` `(d+e)/2 ≤ max d e`). The open
-      card C5 (boundedness of `‖u‖_{B^{-1}_{∞,∞}}`) and empirical C9/C10 carry
+      card C3 (boundedness of `‖u‖_{B^{-1}_{∞,∞}}`) and empirical C7/C8 carry
       citations for their missing entities (Cheskidov–Shvydkoy 2010; Ri
       arXiv:2307.11312 unrefereed; Tao 2016/2021; Beale–Kato–Majda 1984;
       Constantin–Fefferman 1993; Deng–Hou–Yu 2015; Adams–Hedberg 1996; Frisch 1995).
       Axioms exactly `[propext, Classical.choice, Quot.sound]`; build green
       (8750 jobs). No Millennium result.
  31. **The orientation law: growth rate equals orientation** (`OrientationLaw.lean`).
-      Card C10's model core as a theorem. On the geometric orbit `N n = r^n A` the
+      Card C8's model core as a theorem. On the geometric orbit `N n = r^n A` the
       discrete growth rate `mu(n) = log N(n+1) - log N(n)` is constant and EQUALS the
       orientation `lambda = log r` (`logGrowth_geometric`), so `sign(mu) = sign(lambda)`
       (`sign_match`) and that shared sign reads the wall (`orientation_reads_wall`:
@@ -479,7 +479,7 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       analytic residue (that this survives the real flow, `orientation_vs_invariant.py`)
       stays EMPIRICAL/OPEN. Axioms exactly `[propext, Classical.choice, Quot.sound]`;
       build green (8751 jobs).
- 32. **Six-system orientation bridge** (`orientation_vs_invariant.py`). Card C10's
+ 32. **Six-system orientation bridge** (`orientation_vs_invariant.py`). Card C8's
       empirical half extended from four to six systems: added 3D Euler (inviscid
       nonlinear, `max|omega|`) and a linear heat dissipation control. All six match
       `sign(lambda) = sign(mu)`, balanced 3 repelling / 3 attracting (3D NS `-3.11/-0.41`;
@@ -487,7 +487,7 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       `+34.75/+2.82`; heat `-66.74/-0.13`). The inviscid Euler case is REPELLING, so it
       is the dissipation -- not the nonlinearity -- that makes NS attracting; the heat
       control is the pure attracting limit. `EXIT=0`; diagnostic only; wall OPEN.
- 33. **The orientation law, generalized** (`OrientationLaw.lean`). Card C10's model core
+ 33. **The orientation law, generalized** (`OrientationLaw.lean`). Card C8's model core
       now holds off the geometric orbit. For ANY positive sequence: the growth rate is
       the log of the relative increment (`logGrowth_of_ratio_eq`); positive growth ⟺
       strict increase (`logGrowth_pos_iff`); non-positive growth at every step forces
@@ -504,10 +504,10 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       FTC) and `continuous_content_bounded` (bounded `int_0^T g` => `X T <= X 0 * exp B`),
       so the residue is exactly the NS-specific bound on `g = d/dt log X`. The continuous residue
       (that `mu = lambda` survives the real flow) is now an explicit OPEN proposition,
-      card **C10-open** in `EXPLICIT_CLAIMS.md`; missing entity: an analytic lower bound
+      card **C8-open** in `EXPLICIT_CLAIMS.md`; missing entity: an analytic lower bound
       on `d/dt log ‖u‖` (BKM 1984; Constantin–Fefferman 1993; Deng–Hou–Yu 2015). Axioms
       exactly `[propext, Classical.choice, Quot.sound]`; build green (8751 jobs). Wall OPEN.
- 34. **Dissipative flows are attracting** (`DissipativeFlow.lean`). Card C10's PROVABLE
+ 34. **Dissipative flows are attracting** (`DissipativeFlow.lean`). Card C8's PROVABLE
       (energy) face as a theorem. `logGrowth_deriv` (the log-growth rate of a positive
       content is `m / X t`, the content's relative rate of change); `logGrowth_nonpos_of_dissipative`
       (content positive, `m <= 0` => `d/dt log X <= 0`); capstone `content_le_initial_of_dissipative`
@@ -515,10 +515,10 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       via interval-integral monotonicity. Scope, stated honestly: this is the L^2-energy face
       (the NS energy identity `dE/dt = -nu ‖∇u‖^2 <= 0` is the motivating instance); the
       scaling-critical content has NO such inner-product identity -- that absence is exactly
-      card C10-open. Axioms exactly `[propext, Classical.choice, Quot.sound]`; length
+      card C8-open. Axioms exactly `[propext, Classical.choice, Quot.sound]`; length
       certificate axiom-free; build green (8752 jobs). Wall OPEN.
  35. **Fractional-NS sweep: the orientation holds one-parameter in the dissipation order**
-      (`orientation_vs_fractional_s.py`). Card C10 strengthened from a single PDE to the
+      (`orientation_vs_fractional_s.py`). Card C8 strengthened from a single PDE to the
       family `u_t + u·∇u = -nu (-Δ)^s u`. Because the dissipation order sets the scaling,
       the critical regularity index is `s`-dependent: the invariant scaling
       `u_lambda = lambda^{2s-1} u(lambda x, lambda^{2s} t)` makes `H^sigma` critical exactly at
@@ -627,14 +627,14 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       and bundles it (`margin_existsUnique`).  So the marginal order `s*` of the
       order/orientation probe is well-defined the moment `lambda` is antitone in the
       dissipation order `s`; what stays open is the NS-specific *antitonicity*, not the
-      arithmetic.  (b) *Method barrier (card C14):* `LogicBarrier.lean` proves Lawvere's
+      arithmetic.  (b) *Method barrier (card C12):* `LogicBarrier.lean` proves Lawvere's
       fixed-point theorem -- a surjection `α → (α → β)` forces every `f : β → β` to have a
       fixed point (`lawvere_fixedpoint`); hence a fixed-point-free `f` forbids any such
       enumeration (`no_surjective_of_no_fixedpoint`), no type enumerates its own predicates
       (`no_surjective_predicates`, Cantor) and the diagonal predicate escapes every
       enumeration (`diagonal_not_mem_range`).  This is the one skeleton shared by Cantor
       (1891), Gödel's diagonal lemma (1931), and Turing's halting problem (1936) -- the
-      abstract form of C14's method barrier.  Axiom sets: `MarginCrossing` exactly
+      abstract form of C12's method barrier.  Axiom sets: `MarginCrossing` exactly
       `[propext, Classical.choice, Quot.sound]`; `LogicBarrier` axiom-FREE (stronger).  The
       capstone `TheoryOfEverything.method_and_margin_barriers` attaches both to the two
       organising numbers.  No Millennium problem is touched; the walls stay OPEN.
@@ -672,7 +672,7 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
   45. **Every claim card is now traceable to its artifact, and the links are machine-checked**
       (`CLAIM_TRACEABILITY.md`).  The card register (`EXPLICIT_CLAIMS.md`) said what each
       card *is*; it did not guarantee that the Lean module or experiment it quotes
-      actually exists.  `CLAIM_TRACEABILITY.md` joins them: each card (C1 … C14, C10-open)
+      actually exists.  `CLAIM_TRACEABILITY.md` joins them: each card (C1 … C12, C8-open)
       → its type → the exact `PunoCalculus.<File>` module and the declarations it quotes
       → the numerical script(s) supporting its empirical half → the literature anchoring
       its missing entity.  The links are not prose: the checker
@@ -689,21 +689,21 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
       (`EXTERNAL_CORPORA_CROSSWALK.md`).  `CLAIM_TRACEABILITY.md` joins our cards to our
       artifacts; the crosswalk joins our *modules* to the result families of the public
       OpenAI Mathematics collection (`https://github.com/openai/math`, 719 manuscripts /
-      372 families, announced 2026-10-06).  The overlaps are real: the C1--C10 wall sits
+      372 families, announced 2026-10-06).  The overlaps are real: the C1--C8 wall sits
       beside family **376** (universal computation in *forced* Navier--Stokes -- a Turing
       machine halts iff a designated fluid particle reaches a fixed region, at fixed
-      positive computable viscosity), and C14's diagonal engine sits beside the
+      positive computable viscosity), and C12's diagonal engine sits beside the
       fixed-point / undecidability families **206 / 242 / 328 / 314**; `BSD`/`Hodge`/
       `MassGap`/`PvsNP` sit beside **002+006 / 032 / 215 / 102+105+106+274**.  The rule is
       **adjacency, not equivalence**: our modules are numerical certificates that each
       state their own non-settlement, and the external family results are *claimed* by an
       unreleased model and independently unchecked -- so neither side's status transfers.
       In particular family **376** is the *forced* system and does not settle our
-      *unforced* C3 / C10-open obligation.  Links pinned offline by
+      *unforced* C3 / C8-open obligation.  Links pinned offline by
        `test_external_crosswalk.py` (modules exist, are imported by the library root, and
        every quoted family number is present).  No new mathematical content; wall OPEN.
   47. **The origin is machine-checked: nothing is the universal link** (`ZeroLink.lean`,
-       card C15).  `Empty` (cardinality `0`) is the *initial object* of `Type` -- into
+       card C13).  `Empty` (cardinality `0`) is the *initial object* of `Type` -- into
        every type `α` there is an arrow `Empty → α` and it is **unique**
        (`empty_unique_arrow`); dually `PUnit` is terminal.  Under `+` (coproduct) `0` is
        the identity, under `×` (product) it is absorbing -- `0 + a = a`, `0 * a = 0`,
@@ -718,7 +718,7 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
        Ab-enriched category such as modules, and is the named next micro-step.  No
        Millennium problem touched; wall OPEN.
   48. **The zero object completes the link: one object is origin and target**
-       (`ZeroObject.lean`, card C16).  Bullet 47 named the next micro-step -- an object
+       (`ZeroObject.lean`, card C14).  Bullet 47 named the next micro-step -- an object
        that is *both* initial and terminal.  This brick delivers it in the category
        where it exists.  Abstractly (`initial_link`, `terminal_link`): a (co)initial
        object links every object by a **unique** arrow, so `zero_links_both_ways` says a
@@ -735,7 +735,7 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
        axiom-free.  `lake build PunoCalculus.ZeroObject` green.  No Millennium problem
        touched; wall OPEN.
   49. **The 0/0 and the initial arrow are one schema: removability is existence +
-       uniqueness** (`RemovableValue.lean`, card C17).  Bullets 47-48 made the
+       uniqueness** (`RemovableValue.lean`, card C15).  Bullets 47-48 made the
        structural face of "zero"; this brick joins it to the *analytic* face.
        `Removable` proves the existence half of the 0/0 doctrine (a shared linear
        factor gives a punctured limit); `ZeroLink` proves the structural half (the
@@ -754,7 +754,7 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
         length certificate axiom-free).  `lake build PunoCalculus.RemovableValue` green.
         No Millennium problem touched; wall OPEN.
   50. **Order of vanishing is a graded index: the number of zeros is the degree**
-        (`VanishOrder.lean`, card C18).  `ZeroFixedPoint` counts the zeros of a 0/0
+        (`VanishOrder.lean`, card C16).  `ZeroFixedPoint` counts the zeros of a 0/0
         (`zero_count_removable` / `under` / `over`); this brick turns that count into a
         **grade**.  Level `k` of the vanishing filtration is `VanishesToOrder k f x₀`:
         `f` factors as `(· - x₀)^k · g` with `g` continuous at `x₀`.  The filtration is
@@ -775,15 +775,15 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
         touched; wall OPEN.
 
    51. **The mechanism register closes: Probe, Vanishing Rate, Index, and the anti-class**
-         (`ZeroProbe.lean` C19, `ZeroValuation.lean` C20, `ZeroIndex.lean` C21,
-         `ZeroMechanisms.lean` C22).  `THE_0_OVER_0_ATLAS.md` classifies a *removable* 0/0
+         (`ZeroProbe.lean` C17, `ZeroValuation.lean` C18, `ZeroIndex.lean` C19,
+         `ZeroMechanisms.lean` C20).  `THE_0_OVER_0_ATLAS.md` classifies a *removable* 0/0
          into five mechanisms; this bullet formalises the three with clean analytic /
          algebraic content and, crucially, the **amendment** -- the classification covers
          only the removable ones.  (i) **Probe**: if `f =ᶠ[𝓝[≠] x₀] g` and the
          denominator is nonzero off the point, the ratio resolves to `1`
          (`probe_identity`; `f/f ↦ 1` via `probe_self`); the probe value is unique
          (`probe_value_unique`) and is an `IsRemovableValue` (`probe_is_removable`).
-         (ii) **Vanishing Rate**: the *filtration* grade of C18 is **not** additive
+         (ii) **Vanishing Rate**: the *filtration* grade of C16 is **not** additive
          (`|·|`,`|·|` sit at grade `0`, their product at grade `2`), so the mechanism
          uses the residue order `HasOrder k f x₀` (`f/(· - x₀)^k ↦` a nonzero `c`),
          which **is** a valuation: additive under products (`hasOrder_mul`), scale
@@ -803,7 +803,7 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
          No Millennium problem touched; wall OPEN.
 
    52. **Riemann's removable singularity, in the register's 0/0 schema**
-         (`RemovableComplexBridge.lean` C23).  Card C17 proved the register's 0/0
+         (`RemovableComplexBridge.lean` C21).  Card C15 proved the register's 0/0
          *schema* over `ℝ` (a punctured limit is unique when it exists) but not
          that any given 0/0 has a limit.  This bullet anchors the schema to a
          genuine, named theorem.  Mathlib's **Riemann removable singularity theorem**
@@ -823,7 +823,7 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
          No Millennium problem touched; wall OPEN.
 
    53. **Liouville's theorem: global boundedness collapses the entire 0/0**
-         (`LiouvilleBridge.lean` C24).  Card C23 shows *local* boundedness at a
+         (`LiouvilleBridge.lean` C22).  Card C21 shows *local* boundedness at a
          puncture lets a 0/0 resolve to a finite value; this bullet is the *global*
          dual.  Mathlib's **Liouville theorem** (a complex-differentiable `f : `ℂ` → `ℂ`
          with bounded range is a constant) is read in register form:
@@ -838,16 +838,16 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
          length certificate axiom-free.  `lake build PunoCalculus.LiouvilleBridge`
          green.  No Millennium problem touched; wall OPEN.
 
-   54. **The wall spine is fully carded: eleven bricks become claim cards C25–C35**
+   54. **The wall spine is fully carded: eleven bricks become claim cards C23–C33**
          (`MODULE_LEDGER.md`, `PHYSICS_CROSSWALK.md`).  The wall's organising numbers --
          the order of vanishing `k`, the orientation `log |L|`, the critical ladder
          shifted by that order, and the one-extra-power of enstrophy -- were carried by
          bricks (bullets 4, 13, 14, 15, 20, 22–26, 28) but were not *claim cards*: the
          register could be read as if those bricks did not exist.  They are now cards:
-         `SerrinLadder` (C25), `GreatAttractor` (C26), `ForceNetwork` (C27),
-         `MixtureGrowth` (C28), `OnsagerCriterion` (C29), `ContinuationCriterion` (C30),
-         `StableBounded` (C31), `SufficiencyLoop` (C32), `SelfSimilarExponents` (C33),
-         `ZeroFixedPoint` (C34), `OnePattern` (C35).  The register is now C1 … C35
+         `SerrinLadder` (C23), `GreatAttractor` (C24), `ForceNetwork` (C25),
+         `MixtureGrowth` (C26), `OnsagerCriterion` (C27), `ContinuationCriterion` (C28),
+         `StableBounded` (C29), `SufficiencyLoop` (C30), `SelfSimilarExponents` (C31),
+         `ZeroFixedPoint` (C32), `OnePattern` (C33).  The register is now C1 … C33
          with **211** machine-checked declarations (axiom probe: 9 axiom-free).  Two new
          machine-checked maps close the coverage gaps that let a brick exist outside the
          graph: (i) `MODULE_LEDGER.md` classifies every one of the **61** Lean modules
@@ -856,10 +856,10 @@ an equation-preserving reweighting that keeps the high-dimension energy under th
          `test_module_ledger.py`; (ii) `PHYSICS_CROSSWALK.md` joins each card to a physics
          phenomenon, a standard object/theorem, and a status tag under an explicit
          *adjacency ≠ equivalence* rule -- enforced by `test_physics_crosswalk.py`.  The
-         spine is a single arc: **a 0/0 resolves** (C17/C19/C23/C24) **-> its order of
-         vanishing grades it** (C18/C34) **-> the order sets the ladder rung** (C25)
-         **-> the orientation sets the side** (C26/C31) **-> the wall is boundedness of
-         the invariant critical norm** (C29/C30/C32/C35).  This is bookkeeping, not new
+         spine is a single arc: **a 0/0 resolves** (C15/C17/C21/C22) **-> its order of
+         vanishing grades it** (C16/C32) **-> the order sets the ladder rung** (C23)
+         **-> the orientation sets the side** (C24/C29) **-> the wall is boundedness of
+         the invariant critical norm** (C27/C28/C30/C33).  This is bookkeeping, not new
          analysis: the IA remains that the invariant stays bounded along the real flow.
          No Millennium problem touched; wall OPEN.
 

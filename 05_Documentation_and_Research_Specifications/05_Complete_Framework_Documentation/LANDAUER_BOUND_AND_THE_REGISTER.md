@@ -9,8 +9,8 @@
 **Status: Conjecture / Open.** The claim below is not proved here and is **not** a
 register card: the claim asserts nothing that this repository has verified. Its
 only machine-checked inputs are the register's own orientation sign (cards
-**C10/C11**) and its removable value (card **C17**). By the program's own **T5**
-rule (`THEORY_OF_EVERYTHING.md` §6), a new card C39+ is admitted only if it is
+**C8/C9**) and its removable value (card **C15**). By the program's own **T5**
+rule (`THEORY_OF_EVERYTHING.md` §6), a new card C37+ is admitted only if it is
 expressible via `(order, orientation)`; the claim here is the *statement of what
 would be needed* to satisfy such a reduction, not a proof that it holds.
 
@@ -20,10 +20,10 @@ would be needed* to satisfy such a reduction, not a proof that it holds.
 
 **Claim (the Landauer–register bridge).** There exists a map `Phi` from register
 states -- the pair `(order a, orientation r)` plus a `0/0` removable value
-`lambda` (card C17) -- to thermodynamic states, such that:
+`lambda` (card C15) -- to thermodynamic states, such that:
 
 1. `Phi(lambda)` is the equilibrium free-energy ratio of the modeled system;
-2. `sign(log r)` (card C10/C11) equals the sign of the modeled entropy production;
+2. `sign(log r)` (card C8/C9) equals the sign of the modeled entropy production;
 3. the minimum work to erase one bit of the modeled critical content at
    temperature `T` is exactly `k_B T ln 2`.
 
@@ -42,9 +42,9 @@ linked by a theorem. Until then the link is unproven.
 * **q-desic:** Koch, Riahinia, Rincon, Phys. Rev. D 112, 084056 (2025),
   arXiv:2510.00117: quantum-corrected geodesics; deviations become large at
   cosmological scale only with the cosmological constant.
-* **Register:** the orientation sign `sign(log r)` (cards C10/C11,
+* **Register:** the orientation sign `sign(log r)` (cards C8/C9,
   `PunoCalculus/OrientationLaw.lean`, `PunoCalculus/OrientationBoundedness.lean`)
-  and the `0/0` removable value `lambda` (card C17, `PunoCalculus/RemovableValue.lean`).
+  and the `0/0` removable value `lambda` (card C15, `PunoCalculus/RemovableValue.lean`).
   The two-state instance of the schema is formalised in
   `PunoCalculus/InformationBridge.lean` (see §2b).
 
@@ -77,7 +77,7 @@ map `Phi` remains the named missing entity of §3.
 
 `PunoCalculus/InformationPhi.lean` sharpens this on a concrete dynamical `0/0`.
 The relaxation `x |-> r^x` has content deficit per unit time `(1 - r^x)/x`, a
-`0/0` at `x = 0` whose **removable value is `-orientation r` (card C17)**
+`0/0` at `x = 0` whose **removable value is `-orientation r` (card C15)**
 (`deficitRate_isRemovableValue`); for the state-counting register `r = 1/n` it is
 `log n` (`deficitRate_stateCounting`, `orientation_one_div`). On this system the
 map `Phi` is constructed explicitly, and the claim's three clauses are proved for
@@ -124,7 +124,7 @@ quantum. This is the scaffold a measured `Phi` would have to instantiate; it doe
 ## 2e. The time reading: the orientation is a rate, the count is time
 
 `PunoCalculus/InformationTime.lean` reads the same `Phi` the way
-`EmergentTime.lean` (card C13) reads its ontology: as a **time evolution**.
+`EmergentTime.lean` (card C11) reads its ontology: as a **time evolution**.
 
 * The register's time is the count `n` and nothing else
   (`EmergentTime.state_determined_by_count`); the flow `evolution rate t` is a
@@ -151,8 +151,8 @@ the time reading relocates the residue, it does not remove it.
 ## 3. The missing entity (what would have to be proved or measured)
 
 **Missing entity.** The map **`Phi`** -- a *validated physical instantiation of the
-register*: a concrete dynamical system whose critical content is a `0/0` (C17) and
-whose orientation is its dissipation sign (C10/C11), together with a proof (or a
+register*: a concrete dynamical system whose critical content is a `0/0` (C15) and
+whose orientation is its dissipation sign (C8/C9), together with a proof (or a
 measurement) that its one-bit erasure cost equals `k_B T ln 2` and satisfies
 (1)–(3) above. Equivalently: a structure-preserving map from register states to
 thermodynamic states that carries the removable value `lambda` to the free-energy
@@ -201,8 +201,8 @@ Recorded here only so they are not mistaken for supporting evidence.
   so the claim can fail.
 * This note makes **no physical claim** and settles **no Millennium problem**
   (`WHAT_THIS_DOES_NOT_PROVE.md`).
-* Machine-checked content it relies on: cards **C10/C11** (orientation) and
-  **C17** (removable value).
+* Machine-checked content it relies on: cards **C8/C9** (orientation) and
+  **C15** (removable value).
 * No register card is created (T5): the note states what a card *would* need, and
   that is not yet proved.
 
@@ -211,7 +211,7 @@ Recorded here only so they are not mistaken for supporting evidence.
 ## Related
 
 * `WHAT_THIS_DOES_NOT_PROVE.md` -- the authoritative boundary.
-* `THEORY_OF_EVERYTHING.md` -- the register program (cards C1--C38; this note is
+* `THEORY_OF_EVERYTHING.md` -- the register program (cards C1--C36; this note is
   not a card).
 * `02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/landauer_orientation.py`
   -- structural companion (prints the constraint, `PASS`).
@@ -224,6 +224,6 @@ Recorded here only so they are not mistaken for supporting evidence.
 * `01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/InformationMixture.lean`
   -- the machine-checked mixture algebra (§2d).
 * `01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/InformationTime.lean`
-  -- the time reading of `Phi` (§2e), linking to `EmergentTime` (C13).
-* `EXPLICIT_CLAIMS.md` / `CLAIM_TRACEABILITY.md` -- cards C10, C11, C17.
+  -- the time reading of `Phi` (§2e), linking to `EmergentTime` (C11).
+* `EXPLICIT_CLAIMS.md` / `CLAIM_TRACEABILITY.md` -- cards C8, C9, C15.
 * `landauer_orientation.py` -- the structural companion script.

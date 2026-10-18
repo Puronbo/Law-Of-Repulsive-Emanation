@@ -2,7 +2,7 @@
 
 *Status: **research program / map**, not a proof. This document fixes what
 "theory of everything" means *inside this repository*: the structural
-unification already formalized as **card C12** (`PunoCalculus/TheoryOfEverything.lean`).
+unification already formalized as **card C10** (`PunoCalculus/TheoryOfEverything.lean`).
 It does **not** claim to settle any Millennium problem. Where this document and
 `WHAT_THIS_DOES_NOT_PROVE.md` disagree, that boundary wins.*
 
@@ -19,8 +19,8 @@ It means the register's own claim, and only that claim:
 > **A scaling-critical system is governed by exactly two organizing numbers.**
 
 Those two numbers — the **order** and the **orientation** — are defined over the
-repository's own register (cards C1–C38), and the entire register is packaged as
-one theorem. That theorem is card **C12** in `EXPLICIT_CLAIMS.md`, formalized in
+repository's own register (cards C1–C36), and the entire register is packaged as
+one theorem. That theorem is card **C10** in `EXPLICIT_CLAIMS.md`, formalized in
 `PunoCalculus/TheoryOfEverything.lean` and recorded in `VERIFICATION_LEDGER.md`
 as a **capstone synthesis** that *"proves no new analytic content — it makes the
 whole register citable as one theorem."*
@@ -69,7 +69,7 @@ follows from the 0/0 doctrine is **narrative**, kept outside this boundary (see
   normalisation `f' 1 = 1/4` pinning `boundedOrientation`
   (`boundedOrientation_classification_normalized`).
 
-*Interpretive note (structural, not physical):* A minimal trinity {-1,0,+1} maps heuristically to C12: 0 is the center/margin boundary (neutral crossing), -1 and +1 are the orientation sides (r<1 attracting/bounded, r>1 repelling/unbounded); order a is the scale that sets the rung s_crit(p)+(1-a). This is a heuristic correspondence within the register only (no claim to physical unification or Millennium settlement).
+*Interpretive note (structural, not physical):* A minimal trinity {-1,0,+1} maps heuristically to C10: 0 is the center/margin boundary (neutral crossing), -1 and +1 are the orientation sides (r<1 attracting/bounded, r>1 repelling/unbounded); order a is the scale that sets the rung s_crit(p)+(1-a). This is a heuristic correspondence within the register only (no claim to physical unification or Millennium settlement).
 
 **How far the correspondence goes (increment T2).** The order half is a genuine
 *bijection*: for a fixed form `p`, the map `a ↦ criticalSmoothness a p` is
@@ -130,20 +130,20 @@ Every conjunct traces to a committed brick and a card. The capstone is an
 
 | Conjunct / reduction | Brick module (`PunoCalculus/`) | Card |
 |---|---|---|
-| order sets the rung; scale-invariance | `OnePattern.lean` | C12 (via C1) |
+| order sets the rung; scale-invariance | `OnePattern.lean` | C10 (via C1) |
 | critical ladder, `s_crit`, complementarity | `CriticalLadder.lean` | C1 |
-| Serrin exponent `gnExponent` | `SerrinLadder.lean` | C25 |
-| Onsager-excess borderline | `OnsagerCriterion.lean` | C29 |
-| continuation criterion | `ContinuationCriterion.lean` | C30 |
-| quantitative continuation | `QuantitativeContinuation.lean` | C31 |
+| Serrin exponent `gnExponent` | `SerrinLadder.lean` | C23 |
+| Onsager-excess borderline | `OnsagerCriterion.lean` | C27 |
+| continuation criterion | `ContinuationCriterion.lean` | C28 |
+| quantitative continuation | `QuantitativeContinuation.lean` | C29 |
 | stability of bounded states | `StableBounded.lean` | C-stable |
 | barrier hierarchy | `EnstrophyBarrier.lean` | C-barrier |
-| sufficiency loop | `SufficiencyLoop.lean` | C32 |
-| orientation decides the side | `OrientationBoundedness.lean` | C11 |
-| Lyapunov sign / great attractor | `GreatAttractor.lean` | C26 |
+| sufficiency loop | `SufficiencyLoop.lean` | C30 |
+| orientation decides the side | `OrientationBoundedness.lean` | C9 |
+| Lyapunov sign / great attractor | `GreatAttractor.lean` | C24 |
 | margin: unique / first crossing | `MarginCrossing.lean`, `FirstCrossing.lean` | C-margin |
-| method barrier (diagonal) | `LogicBarrier.lean` | C14 |
-| **capstone aggregator** | `TheoryOfEverything.lean` | **C12** |
+| method barrier (diagonal) | `LogicBarrier.lean` | C12 |
+| **capstone aggregator** | `TheoryOfEverything.lean` | **C10** |
 
 ---
 
@@ -155,10 +155,10 @@ dissipation order `s`. That antitoneity is **not** proved here — it is the
 Navier–Stokes-specific content (**T3** of this program). `FirstCrossing` keeps the
 weakest hypothesis (continuity + one sign change) so that a margin *exists*
 regardless, but its uniqueness and the whole analytic wall stay **OPEN** (cards
-**C3** and **C10-open**; see `VERIFICATION_LEDGER.md`: *"no Millennium problem
+**C3** and **C8-open**; see `VERIFICATION_LEDGER.md`: *"no Millennium problem
 touched. Wall OPEN."*).
 
-* **The C12 numeric certificate ties that assumption to the certificate and
+* **The C10 numeric certificate ties that assumption to the certificate and
   does not prove it.** The numeric half of the capstone,
   `02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/theory_of_everything_certificates.py`,
   encodes the strict-antitone probe as a register-shaped *stand-in*
@@ -193,8 +193,8 @@ two-numbers claim. Each is stated with its **falsifier**, so it can fail.
 | **T1** | Extend the order family from the one-pattern slide to every card's own order. | a register brick whose rung is not `sCrit p + (1 - a)`. **Coverage (current):** explicit shift family appears in `OnePattern` (`criticalCurve_through_ladder`), `GreatAttractor` (`criticalSmoothness_*`), and is aggregated in `TheoryOfEverything` (`order_sets_rung`, `order_sets_rung_bijective`). Many base bricks define only `sCrit` (order-1); extending the family means re-parameterizing each card’s order to satisfy the same affine shift. |
 | **T2** | Sharpen `twoNumbersClose` to a *bijection* (order/orientation recovered from the register state). | **Realized (negative):** order half is a bijection (`order_sets_rung_bijective`); orientation half is *not* injective (`orientation_not_injective_on_side`) — side does not recover orientation. No single-pair bijection. |
 | **T3** | Close the margin gap: prove `lambda(s)` antitone for the NS/Burgers family. | a Leray–Hopf solution with `lambda <= 0` but unbounded critical norm. **Numerical evidence:** fractional Burgers shows a single sign flip with roughly monotone post-flip behavior across windows; fractional CLM shows multiple orientation flips (non-monotone `lambda(s)`) in sweep data, so antitonicity is **not universal** across fractionally-dissipated families. The margin uniqueness hypothesis remains **NS-specific** and **OPEN**. |
-| **T4** | Attach a numeric certificate to C12 as a whole (mirroring the per-card certificates). | **Done:** `theory_of_everything_certificates.py` exists, runs green (PASS), and is wired into C12 evidence/traceability. |
-| **T5** | Add a cross-domain mechanism card C39+ only if it is expressible via `(order, orientation)`. | a new mechanism that is not. **Boundary rule (active):** any new card C39+ must satisfy the two-numbers reduction (rung/side functions of `(order, orientation)` only); adding a mechanism that cannot be expressed via `(order, orientation)` is disallowed by this program. |
+| **T4** | Attach a numeric certificate to C10 as a whole (mirroring the per-card certificates). | **Done:** `theory_of_everything_certificates.py` exists, runs green (PASS), and is wired into C10 evidence/traceability. |
+| **T5** | Add a cross-domain mechanism card C37+ only if it is expressible via `(order, orientation)`. | a new mechanism that is not. **Boundary rule (active):** any new card C37+ must satisfy the two-numbers reduction (rung/side functions of `(order, orientation)` only); adding a mechanism that cannot be expressed via `(order, orientation)` is disallowed by this program. |
 
 ---
 
@@ -213,7 +213,7 @@ program so it cannot drift:
 * the facts register `theoryOfEverythingFacts` has exactly **5** entries
   (`theoryOfEverythingFacts_length`);
 * this document states the honesty boundary (no Millennium problem settled; the
-  wall is **OPEN**) and names card **C12**.
+  wall is **OPEN**) and names card **C10**.
 
 Axiom footprint of every quoted capstone declaration is recorded in
 `AXIOM_AUDIT.md` (`⊆ {propext, Classical.choice, Quot.sound}`; the length
@@ -223,8 +223,8 @@ certificate is axiom-free).
 
 ## Related
 
-* `EXPLICIT_CLAIMS.md` — card **C12** is this document's source of truth.
-* `CLAIM_TRACEABILITY.md` — C12 → `TheoryOfEverything.lean` → `register_ladder_certificates.py`,
+* `EXPLICIT_CLAIMS.md` — card **C10** is this document's source of truth.
+* `CLAIM_TRACEABILITY.md` — C10 → `TheoryOfEverything.lean` → `register_ladder_certificates.py`,
   `theory_of_everything_certificates.py`.
 * `VERIFICATION_LEDGER.md` — the capstone's dated entry ("Wall OPEN").
 * `AXIOM_AUDIT.md` — axiom footprint of the capstone declarations.

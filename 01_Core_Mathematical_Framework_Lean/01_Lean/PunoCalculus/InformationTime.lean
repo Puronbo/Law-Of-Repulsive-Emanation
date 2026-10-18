@@ -8,7 +8,7 @@ import PunoCalculus.OrientationLaw
 
 `InformationPhi.lean` constructs the register-to-thermodynamics map `Phi` on a
 relaxation and proves the claim's three clauses for the bit.  Read the *other*
-way -- the way `EmergentTime.lean` (card C13) reads it -- the same object is a
+way -- the way `EmergentTime.lean` (card C11) reads it -- the same object is a
 **time evolution**, not a thermometer.
 
 * The register's time is the count `n` and nothing else

@@ -34,7 +34,7 @@ carry the *aspiration*, not a proof.
 ## The wall stays open
 
 The register itself says so. In `EXPLICIT_CLAIMS.md` the honest open cards are
-**C3** and **C10-open**; `CLAIM_TRACEABILITY.md` states outright "No card here is
+**C3** and **C8-open**; `CLAIM_TRACEABILITY.md` states outright "No card here is
 a Millennium result; the wall stays OPEN." That sentence is authoritative.
 
 ## What *is* machine-checked
@@ -50,7 +50,7 @@ The honest summary of *scope*:
 
 - **Formal (Lean, kernel-checked):** the elementary mechanism lemmas — removable
   values, order of vanishing, polynomial root multiplicity, the categorical zero
-  object, one-sided-limit non-removability of `|x|/x` (cards C15–C22), plus the
+  object, one-sided-limit non-removability of `|x|/x` (cards C13–C20), plus the
   register's earlier structural lemmas.
 - **Empirical (scripts, reproducible):** numerical experiments tagged as such.
 - **Interpretive / narrative (not a proof):** every claim that a Millennium

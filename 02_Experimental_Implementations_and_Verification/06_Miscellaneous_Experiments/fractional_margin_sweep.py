@@ -127,7 +127,7 @@ def main():
     print(f"      At fixed s=0.40 the boundary in viscosity is nu* = {nu_star}.  The")
     print(f"      deepest probed order s={xs[0]:.2f} still has decaying critical content")
     print(f"      (mu = {mus[0]:+.3f} < 0): the orientation LEADS the wall.  Diagnostic")
-    print( "      only; the wall (finiteness of int g) stays OPEN -- card C10-open.")
+    print( "      only; the wall (finiteness of int g) stays OPEN -- card C8-open.")
     print("=" * 80)
     return 0
 

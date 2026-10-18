@@ -4,8 +4,8 @@ import Mathlib
 # The critical phenomenon: the amplitude is the removable value of a 0/0
 
 The register's atlas names five 0/0 mechanisms.  Four are now machine-checked:
-Probe (`ZeroProbe`, C19), Vanishing Rate (`ZeroValuation`, C18/C20), Index
-(`ZeroIndex`, C21) and Conservation (cards C36/C37).  This file gives the fifth --
+Probe (`ZeroProbe`, C17), Vanishing Rate (`ZeroValuation`, C16/C18), Index
+(`ZeroIndex`, C19) and Conservation (cards C34/C35).  This file gives the fifth --
 the **Critical Phenomenon** -- a formal core: at a phase transition two quantities
 vanish together as powers of the reduced control parameter and their ratio is a
 `0/0` whose removable value is a **critical amplitude**.

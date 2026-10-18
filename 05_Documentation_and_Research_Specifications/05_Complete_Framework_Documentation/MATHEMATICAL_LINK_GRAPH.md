@@ -84,26 +84,26 @@ The 38 card-carrying modules (the "verified findings" of this graph):
 
 | module | card | module | card |
 |---|---|---|---|
-| CriticalLadder | C1 | RemovableComplexBridge | C23 |
-| EnstrophyBarrier | C4/C6 | LiouvilleBridge | C24 |
-| ExplicitClaims | C4/C6, C8 | SerrinLadder | C25 |
-| QuantitativeContinuation | C4/C6 | GreatAttractor | C26 |
-| DissipativeFlow | C10 | ForceNetwork | C27 |
-| FirstCrossing | C10 | MixtureGrowth | C28 |
-| MarginCrossing | C10 | OnsagerCriterion | C29 |
-| OrientationLaw | C10, C10-open | ContinuationCriterion | C30 |
-| OrientationBoundedness | C10, C11 | StableBounded | C31 |
-| TheoryOfEverything | C12 | SufficiencyLoop | C32 |
-| EmergentTime | C13 | SelfSimilarExponents | C33 |
-| LogicBarrier | C14 | ZeroFixedPoint | C34 |
-| ZeroLink | C15 | OnePattern | C35 |
-| ZeroObject | C16 | RegularityReduction | C10-open |
-| RemovableValue | C17 | SerrinSufficiency | C10-open |
-| VanishOrder | C18 | NoetherDiscrete | C36 |
-| ZeroProbe | C19 | UniverseGrowth | C37 |
-| ZeroValuation | C20 | CriticalAmplitude | C38 |
-| ZeroIndex | C21 | | |
-| ZeroMechanisms | C22 | | |
+| CriticalLadder | C1 | RemovableComplexBridge | C21 |
+| EnstrophyBarrier | C4 | LiouvilleBridge | C22 |
+| ExplicitClaims | C4, C5, C6 | SerrinLadder | C23 |
+| QuantitativeContinuation | C4 | GreatAttractor | C24 |
+| DissipativeFlow | C8 | ForceNetwork | C25 |
+| FirstCrossing | C8 | MixtureGrowth | C26 |
+| MarginCrossing | C8 | OnsagerCriterion | C27 |
+| OrientationLaw | C8, C8-open | ContinuationCriterion | C28 |
+| OrientationBoundedness | C8, C9 | StableBounded | C29 |
+| TheoryOfEverything | C10 | SufficiencyLoop | C30 |
+| EmergentTime | C11 | SelfSimilarExponents | C31 |
+| LogicBarrier | C12 | ZeroFixedPoint | C32 |
+| ZeroLink | C13 | OnePattern | C33 |
+| ZeroObject | C14 | RegularityReduction | C8-open |
+| RemovableValue | C15 | SerrinSufficiency | C8-open |
+| VanishOrder | C16 | NoetherDiscrete | C34 |
+| ZeroProbe | C17 | UniverseGrowth | C35 |
+| ZeroValuation | C18 | CriticalAmplitude | C36 |
+| ZeroIndex | C19 | | |
+| ZeroMechanisms | C20 | | |
 
 The remaining 30 nodes are non-card modules (evidence carriers, not claims):
 `BSD`, `Basic`, `CascadeRatio`, `Collatz`, `Core`, `Cosmology.AcousticZeroFlow`,
@@ -118,36 +118,36 @@ The remaining 30 nodes are non-card modules (evidence carriers, not claims):
 Reading the edges as "is built on", the graph decomposes into a few load-bearing
 columns plus one aggregator. (Card labels on each node.)
 
-- **Wall ladder.** `SerrinLadder (C25) -> CriticalLadder (C1) -> EmergentTime
-  (C13)`; `CriticalLadder` also feeds `ExplicitClaims (C4/C6,C8)` and
-  `GreatAttractor (C26)`. This is the scaling-critical core of the wall.
-- **Orientation column.** `GreatAttractor (C26) -> OrientationBoundedness
-  (C10,C11) -> OrientationLaw (C10,C10-open) -> DissipativeFlow (C10)`, and
-  `OrientationLaw -> RegularityReduction (C10-open) -> SerrinSufficiency
-  (C10-open) -> { CriticalLadder, RegularityReduction, SerrinLadder }`. The loop
+- **Wall ladder.** `SerrinLadder (C23) -> CriticalLadder (C1) -> EmergentTime
+  (C11)`; `CriticalLadder` also feeds `ExplicitClaims (C4,C5,C6)` and
+  `GreatAttractor (C24)`. This is the scaling-critical core of the wall.
+- **Orientation column.** `GreatAttractor (C24) -> OrientationBoundedness
+  (C8,C9) -> OrientationLaw (C8,C8-open) -> DissipativeFlow (C8)`, and
+  `OrientationLaw -> RegularityReduction (C8-open) -> SerrinSufficiency
+  (C8-open) -> { CriticalLadder, RegularityReduction, SerrinLadder }`. The loop
   closes the ladder back onto the Serrin core.
-- **Continuation block.** `ContinuationCriterion (C30)` and `EnstrophyBarrier
-  (C4/C6)` feed `QuantitativeContinuation (C4/C6) -> SufficiencyLoop (C32) ->
+- **Continuation block.** `ContinuationCriterion (C28)` and `EnstrophyBarrier
+  (C4)` feed `QuantitativeContinuation (C4) -> SufficiencyLoop (C30) ->
   { ContinuationCriterion, EnstrophyBarrier }` — a second closed loop.
-- **Zero-mechanism cluster.** `VanishOrder (C18) -> ZeroValuation (C20) ->
-  ZeroMechanisms (C22)`, with `ZeroProbe (C19) -> ZeroMechanisms` and
-  `ZeroIndex (C21) -> ZeroMechanisms`; and `ZeroProbe -> RemovableValue (C17) ->
-  { Removable, ZeroLink (C15) }`.
-- **Removable bridge.** `ZeroLink (C15) -> RemovableValue (C17) ->
-  RemovableComplexBridge (C23) -> LiouvilleBridge (C24)`: the value mechanism
+- **Zero-mechanism cluster.** `VanishOrder (C16) -> ZeroValuation (C18) ->
+  ZeroMechanisms (C20)`, with `ZeroProbe (C17) -> ZeroMechanisms` and
+  `ZeroIndex (C19) -> ZeroMechanisms`; and `ZeroProbe -> RemovableValue (C15) ->
+  { Removable, ZeroLink (C13) }`.
+- **Removable bridge.** `ZeroLink (C13) -> RemovableValue (C15) ->
+  RemovableComplexBridge (C21) -> LiouvilleBridge (C22)`: the value mechanism
   lifted to complex analysis and then to Liouville.
-- **Aggregator.** `TheoryOfEverything (C12)` imports 13 modules — the single node
+- **Aggregator.** `TheoryOfEverything (C10)` imports 13 modules — the single node
   that touches every other column.
 - **Certificate link.** `MillenniumBridge -> EcaIsometry` joins the taxonomy
   record to its numerical certificate.
 - **RH research.** `RH.Hankel -> RH.NewmanFlow` (the de Bruijn–Newman flow layer
   on top of the Hankel criterion).
-- **Standalone cards.** `ForceNetwork (C27)`, `MixtureGrowth (C28)`,
-  `SelfSimilarExponents (C33)`, `NoetherDiscrete (C36)` and `CriticalAmplitude (C38)`
+- **Standalone cards.** `ForceNetwork (C25)`, `MixtureGrowth (C26)`,
+  `SelfSimilarExponents (C31)`, `NoetherDiscrete (C34)` and `CriticalAmplitude (C36)`
   import only Mathlib, so they carry their card without an internal edge (the
   Conservation and Critical-Phenomenon mechanisms are finite-sum / real-algebra facts
   about the register, not built on another module).
-- **Growth extension.** `UniverseGrowth (C37) -> NoetherDiscrete (C36)`: the
+- **Growth extension.** `UniverseGrowth (C35) -> NoetherDiscrete (C34)`: the
   increasing point universe lifts the discrete Noether theorem to a growing family
   of active sites, with the newly created points carrying no momentum.
 
@@ -219,10 +219,10 @@ asserts, offline:
    edge target resolves to a module file;
 4. every in-header citation string in the reference table appears in its module;
 5. every non-`—` provided document exists under the documentation directory;
-6. all 38 card tokens `C1 … C38` are present in the card list.
+6. all 36 card tokens `C1 … C36` are present in the card list.
 
 ## Cards covered
 
 <!-- CARDS:BEGIN -->
-C1 C2 C3 C4 C5 C6 C7 C8 C9 C10 C11 C12 C13 C14 C15 C16 C17 C18 C19 C20 C21 C22 C23 C24 C25 C26 C27 C28 C29 C30 C31 C32 C33 C34 C35 C36 C37 C38
+C1 C2 C3 C4 C5 C6 C7 C8 C9 C10 C11 C12 C13 C14 C15 C16 C17 C18 C19 C20 C21 C22 C23 C24 C25 C26 C27 C28 C29 C30 C31 C32 C33 C34 C35 C36
 <!-- CARDS:END -->

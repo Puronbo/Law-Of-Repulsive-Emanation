@@ -1,17 +1,17 @@
 """
-ARITHMETIC SHADOWS OF THREE CARDS (C36 / C37 / C38)
+ARITHMETIC SHADOWS OF THREE CARDS (C34 / C35 / C36)
 ===================================================
 Numerical companion to three formal cards.  Each Lean card proves a fact about
-finite sums of reals (C36, C37) or real powers (C38); this script re-derives the
+finite sums of reals (C34, C35) or real powers (C36); this script re-derives the
 same arithmetic independently in floating point and asserts it holds.  It is the
 *empirical half* of each card, not a proof: the proof is the Lean theorem.  Where
 the checker (`test_claim_traceability.py`) confirms the declaration *resolves*,
 this confirms the *arithmetic* the declaration names is the arithmetic that
 actually happens.
 
-  C36  `NoetherDiscrete`   -- the discrete Noether theorem (Conservation mechanism)
-  C37  `UniverseGrowth`    -- the increasing point universe is momentum-neutral
-  C38  `CriticalAmplitude` -- the critical amplitude is the removable value of a 0/0
+  C34  `NoetherDiscrete`   -- the discrete Noether theorem (Conservation mechanism)
+  C35  `UniverseGrowth`    -- the increasing point universe is momentum-neutral
+  C36  `CriticalAmplitude` -- the critical amplitude is the removable value of a 0/0
 
 Scope, as everywhere: finite sums and real powers.  No continuum limit, no PDE, no
 statistical-mechanics model, no Millennium problem (see WHAT_THIS_DOES_NOT_PROVE.md).
@@ -23,7 +23,7 @@ import numpy as np
 RNG = np.random.default_rng(20261015)
 
 # ---------------------------------------------------------------------------
-# C36 -- NoetherDiscrete.lean
+# C34 -- NoetherDiscrete.lean
 #   momentum v = sum v ;  charge q qm = sum (q - qm) ;
 #   step F qm q = 2q - qm + F q ;  momentumAt u k = charge (u (k+1)) (u k).
 # The card proves: (a) charge = momentum q - momentum qm;
@@ -88,7 +88,7 @@ def c36_noether_discrete():
     mom = np.array([charge(steps[k + 1], steps[k]) for k in range(40)])
     drift_d = float(np.max(np.abs(mom - mom[0])))
 
-    print("\n[C36] discrete Noether (Conservation mechanism)")
+    print("\n[C34] discrete Noether (Conservation mechanism)")
     print(f"  (a) |charge - (momentum q - momentum qm)|        = {ez_a:.3e}")
     print(f"  (b) |charge(q+c,qm+c) - charge(q,qm)|            = {ez_b:.3e}")
     print(f"       max |sum_i F_i(q)| over configs             = {net:.3e}")
@@ -102,7 +102,7 @@ def c36_noether_discrete():
 
 
 # ---------------------------------------------------------------------------
-# C37 -- UniverseGrowth.lean
+# C35 -- UniverseGrowth.lean
 #   momentumOn U v = sum_{x in U} v x ;  influx U v k = momentumOn (U(k+1)\U k) v.
 # The card proves: momentumOn_grow (a split), the continuity equation
 # momentumOn (U(k+1)) = momentumOn (U k) + influx, and neutrality/conservation
@@ -135,10 +135,10 @@ def c37_universe_growth():
     ch1 = momentum(q[U1] - qm[U1])
     ez_chg = abs(ch1 - ch0)
 
-    # on a saturated universe this is exactly the C36 total momentum
+    # on a saturated universe this is exactly the C34 total momentum
     ez_univ = abs(momentum(v[U1]) - momentum(v))
 
-    print("\n[C37] increasing point universe (growth is momentum-neutral)")
+    print("\n[C35] increasing point universe (growth is momentum-neutral)")
     print(f"  momentumOn U0 = {mom0:+.6f}   momentumOn U1 = {mom1:+.6f}")
     print(f"  influx (new sites) = {influx:+.3e}")
     print(f"  |momentumOn U1 - (momentumOn U0 + influx)|      = {ez_split:.3e}")
@@ -152,7 +152,7 @@ def c37_universe_growth():
 
 
 # ---------------------------------------------------------------------------
-# C38 -- CriticalAmplitude.lean
+# C36 -- CriticalAmplitude.lean
 #   orderParameter A beta x = A * |x|^beta ;  amplitudeRatio A beta x = op / |x|^beta.
 #   gamma = beta*(delta-1) ; alpha = 2 - beta*(delta+1) ;
 #   nu = (2 - alpha)/d ; eta = 2 - gamma/nu.
@@ -187,7 +187,7 @@ def c38_critical_amplitude():
     den = np.abs(xs) ** beta              # |x|^beta
     ratio = num / den                     # amplitudeRatio
     op0 = A * np.abs(0.0) ** beta         # orderParameter at the critical point
-    print("\n[C38] critical amplitude (removable value of a 0/0) and scaling relations")
+    print("\n[C36] critical amplitude (removable value of a 0/0) and scaling relations")
     print(f"  A = {A:.6f}, beta = {beta:.6f}")
     print("    x          orderParameter      |x|^beta        ratio")
     for x, n_, d_, r_ in zip(xs, num, den, ratio):
@@ -222,15 +222,15 @@ def c38_critical_amplitude():
 
 def main():
     print("=" * 78)
-    print("ARITHMETIC SHADOWS OF CARDS C36 / C37 / C38")
+    print("ARITHMETIC SHADOWS OF CARDS C34 / C35 / C36")
     print("=" * 78)
     c36_noether_discrete()
     c37_universe_growth()
     c38_critical_amplitude()
     print("\n" + "=" * 78)
-    print("PASS: (C36) charge = difference of momenta, conserved for balanced force;")
-    print("      (C37) zero-velocity growth is momentum- and charge-neutral;")
-    print("      (C38) amplitude = removable value of the 0/0; scaling relations exact.")
+    print("PASS: (C34) charge = difference of momenta, conserved for balanced force;")
+    print("      (C35) zero-velocity growth is momentum- and charge-neutral;")
+    print("      (C36) amplitude = removable value of the 0/0; scaling relations exact.")
     print("=" * 78)
     return 0
 

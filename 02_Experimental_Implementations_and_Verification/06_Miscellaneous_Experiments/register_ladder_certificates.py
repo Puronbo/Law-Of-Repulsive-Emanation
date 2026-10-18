@@ -1,5 +1,5 @@
 """
-REGISTER LADDER CERTIFICATES (cards C11 / C12 / C13 / C25 / C26 / C35)
+REGISTER LADDER CERTIFICATES (cards C9 / C10 / C11 / C23 / C24 / C33)
 ======================================================================
 Numerical companion to the "two numbers" family: the order ladder, the
 orientation wall, and emergent time.  Each block re-derives, in floating point,
@@ -7,12 +7,12 @@ the finite real/rational arithmetic that the corresponding Lean card proves.
 The proof is the Lean theorem; this is the arithmetic shadow -- and it must
 agree with it.
 
-  C11  OrientationBoundedness  -- a geometric orbit r^n A is bounded iff r <= 1
-  C12  TheoryOfEverything       -- order sets the rung, orientation sets the side
-  C13  EmergentTime             -- a transfer conserves the total; n is the clock
-  C25  SerrinLadder             -- the interpolation/companion exponent arithmetic
-  C26  GreatAttractor           -- distance ratio -> |L|; scaling weight algebra
-  C35  OnePattern               -- one order-one ladder shifted by the order a
+  C9  OrientationBoundedness  -- a geometric orbit r^n A is bounded iff r <= 1
+  C10  TheoryOfEverything       -- order sets the rung, orientation sets the side
+  C11  EmergentTime             -- a transfer conserves the total; n is the clock
+  C23  SerrinLadder             -- the interpolation/companion exponent arithmetic
+  C24  GreatAttractor           -- distance ratio -> |L|; scaling weight algebra
+  C33  OnePattern               -- one order-one ladder shifted by the order a
 
 Scope: finite sums and real arithmetic only.  No PDE, no regularity result, no
 Millennium problem (see WHAT_THIS_DOES_NOT_PROVE.md).  Seeded/deterministic.
@@ -66,7 +66,7 @@ def geometric(r, a, n):
 
 
 # ---------------------------------------------------------------------------
-# C11 -- OrientationBoundedness: orientation decides boundedness
+# C9 -- OrientationBoundedness: orientation decides boundedness
 # ---------------------------------------------------------------------------
 
 
@@ -88,14 +88,14 @@ def c11_orientation_boundedness():
         # repelling: each step moves AWAY from x0 (distance ratio = r)
         ratios = [seq[n] / seq[n - 1] for n in range(1, N + 1)]
         assert all(abs(ratio - r) < 1e-12 for ratio in ratios)
-    print("\n[C11] OrientationBoundedness")
+    print("\n[C9] OrientationBoundedness")
     print(f"  max r^n/A over r<=1 (should be <= 1)            = {worst_bounded:.6f}")
     print(f"  min final value / A over r>1 (should be >> 1)   = {worst_unbounded:.6e}")
     print("  -> geometric orbits are bounded iff r <= 1; the log sign reads the side.")
 
 
 # ---------------------------------------------------------------------------
-# C12 -- TheoryOfEverything: two numbers close the register
+# C10 -- TheoryOfEverything: two numbers close the register
 # ---------------------------------------------------------------------------
 
 
@@ -121,7 +121,7 @@ def c12_theory_of_everything():
             e_bound += 1
         if (sign <= 0) != bounded:
             e_bound += 1
-    print("\n[C12] TheoryOfEverything (order sets the rung, orientation the side)")
+    print("\n[C10] TheoryOfEverything (order sets the rung, orientation the side)")
     print(f"  max |cs(a,p) - (sCrit p + (1-a))|               = {e_rung:.3e}")
     print(f"  max |scalW(cs(a,p),a,p)|                        = {e_weight:.3e}")
     print(f"  max |gnExp(p) + sCrit(p) - 1/2|                 = {e_sum:.3e}")
@@ -131,7 +131,7 @@ def c12_theory_of_everything():
 
 
 # ---------------------------------------------------------------------------
-# C13 -- EmergentTime: a transfer conserves the total, n is the clock
+# C11 -- EmergentTime: a transfer conserves the total, n is the clock
 # ---------------------------------------------------------------------------
 
 
@@ -157,7 +157,7 @@ def c13_emergent_time():
     # order one vanishes in every dimension
     e_w = max(abs(scaling_weight_n(s_crit_n(d, p), 1.0, d, p))
               for d in (1.0, 2.0, 3.0, 4.0) for p in (3.0, 5.0, 7.0))
-    print("\n[C13] EmergentTime (transfer conserves the total; n is the clock)")
+    print("\n[C11] EmergentTime (transfer conserves the total; n is the clock)")
     print(f"  |(transfer d r).total - r.total|                = {e_cons:.3e}")
     print(f"  max |state after n steps - (hot-n*d, cold+n*d)| = {worst_state:.3e}")
     print(f"  sCritN(d,p): {[round(x, 4) for x in exps]}  increasing = {mono}")
@@ -169,7 +169,7 @@ def c13_emergent_time():
 
 
 # ---------------------------------------------------------------------------
-# C25 -- SerrinLadder: the exponent arithmetic
+# C23 -- SerrinLadder: the exponent arithmetic
 # ---------------------------------------------------------------------------
 
 
@@ -203,7 +203,7 @@ def c25_serrin_ladder():
         lhs = (1.0 + eps >= gn_exp(6.0) * serrin_q(6.0) / 2.0 - 1e-15)
         if lhs != (1.0 <= eps + 1e-15):
             e_close += 1
-    print("\n[C25] SerrinLadder (interpolation / companion exponents)")
+    print("\n[C23] SerrinLadder (interpolation / companion exponents)")
     for k, v in checks.items():
         print(f"  |{k}| = {v:.3e}")
     print(f"  max |2/q(p)+3/p - 1|                            = {e_line:.3e}")
@@ -217,7 +217,7 @@ def c25_serrin_ladder():
 
 
 # ---------------------------------------------------------------------------
-# C26 -- GreatAttractor: orientation of a fixed point + the scaling algebra
+# C24 -- GreatAttractor: orientation of a fixed point + the scaling algebra
 # ---------------------------------------------------------------------------
 
 
@@ -250,7 +250,7 @@ def c26_great_attractor():
             for b in (a, a + 0.75, a + 2.0):
                 if a <= b and crit_smooth(b, p) > crit_smooth(a, p):
                     e_ant += 1.0
-    print("\n[C26] GreatAttractor (distance ratio -> |L|, orientation, scaling weight)")
+    print("\n[C24] GreatAttractor (distance ratio -> |L|, orientation, scaling weight)")
     print(f"  max | |Tx-x0|/|x-x0| - |L| |                   = {e_ratio:.3e}")
     print(f"  max | log|Tx-x0| - log|x-x0| - log|L| |         = {e_rate:.3e}")
     print(f"  orientation/log-sign mismatches                 = {e_rep:.3e}")
@@ -265,7 +265,7 @@ def c26_great_attractor():
 
 
 # ---------------------------------------------------------------------------
-# C35 -- OnePattern: one ladder shifted by the order
+# C33 -- OnePattern: one ladder shifted by the order
 # ---------------------------------------------------------------------------
 
 
@@ -279,7 +279,7 @@ def c35_one_pattern():
                                        - (0.5 + (1.0 - a))))
             e_theta1 = max(e_theta1, abs(gn_exp(p) + crit_smooth(1.0, p) - 0.5))
             e_w = max(e_w, abs(scaling_weight(crit_smooth(a, p), a, p)))
-    print("\n[C35] OnePattern (one order-one ladder, shifted by the order)")
+    print("\n[C33] OnePattern (one order-one ladder, shifted by the order)")
     print(f"  max |cs(a,p) - (sCrit p + (1-a))|               = {e_curve:.3e}")
     print(f"  max |cs(1,p) - sCrit(p)|                        = {e_one:.3e}")
     print(f"  max |theta(p) + cs(a,p) - (1/2 + (1-a))|        = {e_theta:.3e}")
@@ -292,7 +292,7 @@ def c35_one_pattern():
 
 def main():
     print("=" * 78)
-    print("REGISTER LADDER CERTIFICATES: C11 / C12 / C13 / C25 / C26 / C35")
+    print("REGISTER LADDER CERTIFICATES: C9 / C10 / C11 / C23 / C24 / C33")
     print("=" * 78)
     c11_orientation_boundedness()
     c12_theory_of_everything()
@@ -301,9 +301,9 @@ def main():
     c26_great_attractor()
     c35_one_pattern()
     print("\n" + "=" * 78)
-    print("PASS: C11 boundedness-by-orientation; C12 two-number closure; C13 transfer "
-          "conservation;\n      C25 ladder exponents; C26 fixed-point orientation + "
-          "scaling algebra; C35 one pattern.")
+    print("PASS: C9 boundedness-by-orientation; C10 two-number closure; C11 transfer "
+          "conservation;\n      C23 ladder exponents; C24 fixed-point orientation + "
+          "scaling algebra; C33 one pattern.")
     print("=" * 78)
     return 0
 

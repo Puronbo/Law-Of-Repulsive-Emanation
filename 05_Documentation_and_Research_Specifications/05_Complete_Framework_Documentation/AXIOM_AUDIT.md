@@ -1,4 +1,4 @@
-# Axiom Audit — claim cards C1 … C38
+# Axiom Audit — claim cards C1 … C36
 
 **Status: generated and machine-checked.** This file records the *axiom footprint* of every Lean declaration quoted by a card in `CLAIM_TRACEABILITY.md` — the exact declarations the traceability checker asserts. It answers one question per card: *which axioms does the quoted theorem transitively depend on?*
 
@@ -16,15 +16,15 @@ yields one footprint per declaration, parsed into the table below
 
 ## Result
 
-- **Declarations audited:** 272, across the 38 cards C1 … C38 (some cards share declarations, e.g. `OrientationLaw` under C10 and C10-open).
+- **Declarations audited:** 272, across the 36 cards C1 … C36 (some cards share declarations, e.g. `OrientationLaw` under C8 and C8-open).
 - **Axioms observed across the whole register:** `propext`, `Classical.choice`, `Quot.sound` — the standard Lean/Mathlib foundations. Nothing else.
 - **`sorryAx`:** absent. No quoted declaration is proved by `sorry`.
 - **Axiom-free declarations:** 9 (`lawvere_fixedpoint`, `no_surjective_of_no_fixedpoint`, `no_surjective_predicates`, `diagonal_not_mem_range`, `empty_classified_initial`, `unit_classified_terminal`, `existsUnique_iff_exists_and_unique`, `profile_existence_is_open`, `type_ii_naming_not_certified`).
 
 So every card that is tagged *Formal* or *Theorem* rests, at worst, on the
 three standard axioms — and this is checked for the *specific* declarations the
-cards quote, not asserted in prose. The empirical and conjecture cards (C3, C9,
-C10-open, C2, C4/C6's open half) carry no Lean link of their own, matching the
+cards quote, not asserted in prose. The empirical and conjecture cards (C3, C7,
+C8-open, C2, C4/C5's open half) carry no Lean link of their own, matching the
 register's own tagging.
 
 ## Footprint by card
@@ -52,7 +52,7 @@ register's own tagging.
 | declaration | axiom footprint |
 |---|---|
 
-### C4/C6
+### C4
 
 | declaration | axiom footprint |
 |---|---|
@@ -66,25 +66,25 @@ register's own tagging.
 | `QuantitativeContinuation.barrier_hierarchy` | propext, Classical.choice, Quot.sound |
 | `QuantitativeContinuation.exists_upto_of_geometric` | propext, Classical.choice, Quot.sound |
 
-### C4/C6
+### C5
 
 | declaration | axiom footprint |
 |---|---|
 | `ExplicitClaims.morrey_threshold` | propext, Classical.choice, Quot.sound |
 | `ExplicitClaims.physical_embedding_gap` | propext, Classical.choice, Quot.sound |
 
-### C8
+### C6
 
 | declaration | axiom footprint |
 |---|---|
 | `ExplicitClaims.mean_le_dimMixture` | propext, Classical.choice, Quot.sound |
 
-### C9
+### C7
 
 | declaration | axiom footprint |
 |---|---|
 
-### C10
+### C8
 
 | declaration | axiom footprint |
 |---|---|
@@ -116,7 +116,7 @@ register's own tagging.
 | `FirstCrossing.exists_first_zero` | propext, Classical.choice, Quot.sound |
 | `FirstCrossing.margin_exists_firstCrossing` | propext, Classical.choice, Quot.sound |
 
-### C10-open
+### C8-open
 
 | declaration | axiom footprint |
 |---|---|
@@ -137,7 +137,7 @@ register's own tagging.
 | `SerrinSufficiency.content_le_of_growth_le_weight` | propext, Classical.choice, Quot.sound |
 | `SerrinSufficiency.bounded_on_of_serrinAction` | propext, Classical.choice, Quot.sound |
 
-### C11
+### C9
 
 | declaration | axiom footprint |
 |---|---|
@@ -175,7 +175,7 @@ register's own tagging.
 | `OrientationLaw.squareOrientation_antisym` | propext, Classical.choice, Quot.sound |
 | `OrientationLaw.squareOrientation_not_scalar_multiple_of_boundedOrientation` | propext, Classical.choice, Quot.sound |
 
-### C12
+### C10
 
 | declaration | axiom footprint |
 |---|---|
@@ -187,14 +187,14 @@ register's own tagging.
 | `TheoryOfEverything.order_sets_rung_bijective` | propext, Classical.choice, Quot.sound |
 | `TheoryOfEverything.orientation_not_injective_on_side` | propext, Classical.choice, Quot.sound |
 
-### C13
+### C11
 
 | declaration | axiom footprint |
 |---|---|
 | `EmergentTime.transfer_conserves_total` | propext, Classical.choice, Quot.sound |
 | `EmergentTime.state_determined_by_count` | propext, Classical.choice, Quot.sound |
 
-### C14
+### C12
 
 | declaration | axiom footprint |
 |---|---|
@@ -203,7 +203,7 @@ register's own tagging.
 | `LogicBarrier.no_surjective_predicates` | none (axiom-free) |
 | `LogicBarrier.diagonal_not_mem_range` | none (axiom-free) |
 
-### C15
+### C13
 
 | declaration | axiom footprint |
 |---|---|
@@ -215,7 +215,7 @@ register's own tagging.
 | `ZeroLink.unit_classified_terminal` | none (axiom-free) |
 | `ZeroLink.zero_links_all` | Quot.sound |
 
-### C16
+### C14
 
 | declaration | axiom footprint |
 |---|---|
@@ -229,7 +229,7 @@ register's own tagging.
 | `ZeroObject.modules_exists_zeroObject` | propext, Quot.sound |
 | `ZeroObject.modules_zero_links` | propext, Classical.choice, Quot.sound |
 
-### C17
+### C15
 
 | declaration | axiom footprint |
 |---|---|
@@ -241,7 +241,7 @@ register's own tagging.
 | `RemovableValue.removable_value_bridge` | propext, Classical.choice, Quot.sound |
 | `RemovableValue.initial_arrow_schema` | Quot.sound |
 
-### C18
+### C16
 
 | declaration | axiom footprint |
 |---|---|
@@ -257,7 +257,7 @@ register's own tagging.
 | `VanishOrder.grade_unique` | propext, Classical.choice, Quot.sound |
 | `VanishOrder.order_is_graded` | propext, Classical.choice, Quot.sound |
 
-### C19
+### C17
 
 | declaration | axiom footprint |
 |---|---|
@@ -267,7 +267,7 @@ register's own tagging.
 | `ZeroProbe.probe_value_unique` | propext, Classical.choice, Quot.sound |
 | `ZeroProbe.probe_is_removable` | propext, Classical.choice, Quot.sound |
 
-### C20
+### C18
 
 | declaration | axiom footprint |
 |---|---|
@@ -281,7 +281,7 @@ register's own tagging.
 | `ZeroValuation.hasOrder_unique` | propext, Classical.choice, Quot.sound |
 | `ZeroValuation.order_is_valuation` | propext, Classical.choice, Quot.sound |
 
-### C21
+### C19
 
 | declaration | axiom footprint |
 |---|---|
@@ -294,7 +294,7 @@ register's own tagging.
 | `ZeroIndex.index_canonical` | propext, Classical.choice, Quot.sound |
 | `ZeroIndex.index_is_multiplicity` | propext, Classical.choice, Quot.sound |
 
-### C22
+### C20
 
 | declaration | axiom footprint |
 |---|---|
@@ -306,7 +306,7 @@ register's own tagging.
 | `ZeroMechanisms.anti_class_nonempty` | propext, Classical.choice, Quot.sound |
 | `ZeroMechanisms.mechanisms_close` | propext, Classical.choice, Quot.sound |
 
-### C23
+### C21
 
 | declaration | axiom footprint |
 |---|---|
@@ -317,7 +317,7 @@ register's own tagging.
 | `RemovableComplexBridge.limUnder_eq_of_isRemovableValue` | propext, Classical.choice, Quot.sound |
 | `RemovableComplexBridge.canonical_zero_over_zero` | propext, Classical.choice, Quot.sound |
 
-### C24
+### C22
 
 | declaration | axiom footprint |
 |---|---|
@@ -327,7 +327,7 @@ register's own tagging.
 | `LiouvilleBridge.eq_zero_of_bounded_of_eq_zero` | propext, Classical.choice, Quot.sound |
 | `LiouvilleBridge.bounded_at_infinity_const` | propext, Classical.choice, Quot.sound |
 
-### C25
+### C23
 
 | declaration | axiom footprint |
 |---|---|
@@ -345,7 +345,7 @@ register's own tagging.
 | `SerrinLadder.criticalPowerIdentity` | propext, Classical.choice, Quot.sound |
 | `SerrinLadder.powerClosesCriticalAtSix` | propext, Classical.choice, Quot.sound |
 
-### C26
+### C24
 
 | declaration | axiom footprint |
 |---|---|
@@ -363,7 +363,7 @@ register's own tagging.
 | `GreatAttractor.criticalSmoothness_antitone_order` | propext, Classical.choice, Quot.sound |
 | `GreatAttractor.scalingWeight_zero_iff` | propext, Classical.choice, Quot.sound |
 
-### C27
+### C25
 
 | declaration | axiom footprint |
 |---|---|
@@ -372,7 +372,7 @@ register's own tagging.
 | `ForceNetwork.networkValueBetween` | propext, Classical.choice, Quot.sound |
 | `ForceNetwork.inertiaDampsChange` | propext, Classical.choice, Quot.sound |
 
-### C28
+### C26
 
 | declaration | axiom footprint |
 |---|---|
@@ -381,7 +381,7 @@ register's own tagging.
 | `MixtureGrowth.weightedSqBetween` | propext, Classical.choice, Quot.sound |
 | `MixtureGrowth.spikeCannotLowerRatio` | propext, Classical.choice, Quot.sound |
 
-### C29
+### C27
 
 | declaration | axiom footprint |
 |---|---|
@@ -389,14 +389,14 @@ register's own tagging.
 | `OnsagerCriterion.spike_of_excess` | propext, Classical.choice, Quot.sound |
 | `OnsagerCriterion.excess_majorizes` | propext, Classical.choice, Quot.sound |
 
-### C30
+### C28
 
 | declaration | axiom footprint |
 |---|---|
 | `ContinuationCriterion.exists_upto_of_bounded` | propext, Classical.choice, Quot.sound |
 | `ContinuationCriterion.unbounded_of_first_failure` | propext, Classical.choice, Quot.sound |
 
-### C31
+### C29
 
 | declaration | axiom footprint |
 |---|---|
@@ -404,14 +404,14 @@ register's own tagging.
 | `StableBounded.attracting_orbit_bounded` | propext, Classical.choice, Quot.sound |
 | `StableBounded.monotone_bounded` | propext, Classical.choice, Quot.sound |
 
-### C32
+### C30
 
 | declaration | axiom footprint |
 |---|---|
 | `SufficiencyLoop.global_exists_of_mono` | propext, Classical.choice, Quot.sound |
 | `SufficiencyLoop.quadratic_criterion_unavailable` | propext, Classical.choice, Quot.sound |
 
-### C33
+### C31
 
 | declaration | axiom footprint |
 |---|---|
@@ -436,7 +436,7 @@ register's own tagging.
 | `SelfSimilarExponents.profile_existence_is_open` | none (axiom-free) |
 | `SelfSimilarExponents.type_ii_naming_not_certified` | none (axiom-free) |
 
-### C34
+### C32
 
 | declaration | axiom footprint |
 |---|---|
@@ -446,7 +446,7 @@ register's own tagging.
 | `ZeroFixedPoint.zero_count_under` | propext, Classical.choice, Quot.sound |
 | `ZeroFixedPoint.zero_count_over` | propext, Classical.choice, Quot.sound |
 
-### C35
+### C33
 
 | declaration | axiom footprint |
 |---|---|
@@ -456,7 +456,7 @@ register's own tagging.
 | `OnePattern.theta_add_criticalCurve_one` | propext, Classical.choice, Quot.sound |
 | `OnePattern.scalingWeight_vanishes_family` | propext, Classical.choice, Quot.sound |
 
-### C36
+### C34
 
 | declaration | axiom footprint |
 |---|---|
@@ -469,7 +469,7 @@ register's own tagging.
 | `NoetherDiscrete.momentumAt_eq_initial` | propext, Classical.choice, Quot.sound |
 | `NoetherDiscrete.conservationLaw` | propext, Classical.choice, Quot.sound |
 
-### C37
+### C35
 
 | declaration | axiom footprint |
 |---|---|
@@ -482,7 +482,7 @@ register's own tagging.
 | `UniverseGrowth.chargeOn_universeGrowth_conserves` | propext, Classical.choice, Quot.sound |
 | `UniverseGrowth.momentumOn_univ` | propext, Classical.choice, Quot.sound |
 
-### C38
+### C36
 
 | declaration | axiom footprint |
 |---|---|

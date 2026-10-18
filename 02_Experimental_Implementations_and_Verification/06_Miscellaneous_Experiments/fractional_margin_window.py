@@ -19,7 +19,7 @@ Run all:         python fractional_margin_window.py
 Summary only:    python fractional_margin_window.py summary
 
 Honesty: single resolution (N=32); a convergence check for the empirical boundary, not a
-proof.  The wall stays OPEN (card C10-open).
+proof.  The wall stays OPEN (card C8-open).
 """
 import json
 import os
@@ -116,7 +116,7 @@ def main():
             print("      robust reading: s*(T) collapses STEEPLY toward a small value (s*(T) -> 0")
             print("      or a small positive limit, resolution-limited at small s).")
             print(f"  CONCLUSION: there is NO well-resolved positive critical order -- the margin is a")
-            print("      finite-window transient of the high-k pile-up.  Wall OPEN (C10-open).")
+            print("      finite-window transient of the high-k pile-up.  Wall OPEN (C8-open).")
         elif converged:
             print(f"PASS: s*(T) follows a clean 1/T law (rms {rms:.4f}); the finite-window")
             print(f"      boundary is a MOVING measurement that extrapolates to")
@@ -126,7 +126,7 @@ def main():
         else:
             print(f"NOTE: s*(T) does NOT follow a clean 1/T law (rms {rms:.3f}); the")
             print("      boundary is window-dependent -- report s* as a moving boundary,")
-            print("      not a critical exponent.  Wall OPEN (C10-open).")
+            print("      not a critical exponent.  Wall OPEN (C8-open).")
         print("=" * 80)
     return 0
 

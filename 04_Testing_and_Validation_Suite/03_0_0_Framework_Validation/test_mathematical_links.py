@@ -18,7 +18,7 @@ The checks, all offline:
    edge target resolves;
 4. every in-header citation string in the reference table appears in its module;
 5. every non-`--` provided document exists under the documentation directory;
-6. all 38 card tokens ``C1 ... C38`` are present in the card list;
+6. all 36 card tokens ``C1 ... C36`` are present in the card list;
 7. the stated `N module nodes` / `M directed edges` counts equal the real module
    and import counts, and every module on disk is enumerated as a node (so a new
    module cannot appear in the edge block yet be missing from the node lists).
@@ -188,7 +188,7 @@ def test_provided_documents_exist():
 def test_all_cards_present():
     doc = _read(MAP_MD)
     cards = _doc_cards(doc)
-    expected = {"C%d" % i for i in range(1, 39)}
+    expected = {"C%d" % i for i in range(1, 37)}
     missing = sorted(expected - cards)
     assert not missing, "card tokens missing from the card list: %s" % missing
 

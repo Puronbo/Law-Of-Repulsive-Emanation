@@ -24,7 +24,7 @@ to a conserved quantity.  The answer is exact and elementary:
   enters with zero velocity (carries nothing), the total momentum is a constant of
   the growing universe, equal to its value on `U 0`.
 * `chargeOn_universeGrowth_conserves` -- the same for the register's charge
-  `Σ_{x ∈ U k} (q x - qm x)`, so the C36 conserved quantity survives an expanding
+  `Σ_{x ∈ U k} (q x - qm x)`, so the C34 conserved quantity survives an expanding
   universe.
 * `momentumOn_univ` -- on a saturated universe (`Finset.univ`) this is exactly
   `NoetherDiscrete.momentum`.
@@ -127,7 +127,7 @@ theorem chargeOn_universeGrowth_conserves (U : ℕ → Finset ι) (q qm : ι →
         (fun x hx hxs => hnew k x (Finset.mem_sdiff.mpr ⟨hx, hxs⟩))
     rw [hstep, ih]
 
-/-- On a saturated universe the growth observable is exactly the C36 momentum. -/
+/-- On a saturated universe the growth observable is exactly the C34 momentum. -/
 theorem momentumOn_univ [Fintype ι] (v : ι → ℝ) :
     momentumOn Finset.univ v = NoetherDiscrete.momentum v := by
   unfold momentumOn NoetherDiscrete.momentum

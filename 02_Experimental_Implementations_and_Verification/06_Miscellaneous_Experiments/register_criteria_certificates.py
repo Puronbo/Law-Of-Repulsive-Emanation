@@ -1,24 +1,24 @@
 """
-CRITERIA CERTIFICATES (cards C14 / C27 / C28 / C29 / C30 / C31 / C32 / C33 / C34)
+CRITERIA CERTIFICATES (cards C12 / C25 / C26 / C27 / C28 / C29 / C30 / C31 / C32)
 =================================================================================
 Numerical companion to the diagonal-barrier, force/mixture, sufficiency and
 fixed-point cards.  Each block re-derives, by finite enumeration or exact
 arithmetic on samples, the content the corresponding Lean card proves.  The Lean
 theorem is the proof; this is the arithmetic shadow and it must agree.
 
-  C14  LogicBarrier   -- the diagonal, self-referential method barrier (Cantor)
-  C27  ForceNetwork   -- weighted value between min and max; inertia damps change
-  C28  MixtureGrowth  -- addition transmits, never fabricates, concentration
-  C29  OnsagerCriterion -- bounded invariant frees the excess (and its wall)
-  C30  ContinuationCriterion -- bounded <=> extendable; failure <=> unbounded
-  C31  StableBounded  -- attracting orbits converge and are bounded
-  C32  SufficiencyLoop -- 2D closes the loop; a quadratic increment cannot be
-  C33  SelfSimilarExponents -- the four exponents are forced, n-independently
-  C34  ZeroFixedPoint -- zero defines its own position and scales by its zeros
+  C12  LogicBarrier   -- the diagonal, self-referential method barrier (Cantor)
+  C25  ForceNetwork   -- weighted value between min and max; inertia damps change
+  C26  MixtureGrowth  -- addition transmits, never fabricates, concentration
+  C27  OnsagerCriterion -- bounded invariant frees the excess (and its wall)
+  C28  ContinuationCriterion -- bounded <=> extendable; failure <=> unbounded
+  C29  StableBounded  -- attracting orbits converge and are bounded
+  C30  SufficiencyLoop -- 2D closes the loop; a quadratic increment cannot be
+  C31  SelfSimilarExponents -- the four exponents are forced, n-independently
+  C32  ZeroFixedPoint -- zero defines its own position and scales by its zeros
 
 Scope: finite enumeration and real arithmetic only.  No PDE, no Millennium
 problem (see WHAT_THIS_DOES_NOT_PROVE.md).  Honest boundary: cards quantified
-over all types / all maps / all flows (C14, C30, C31) are certified on a concrete
+over all types / all maps / all flows (C12, C28, C29) are certified on a concrete
 finite instance or a sampled model; the instance is the shadow, not the theorem.
 Run:  python register_criteria_certificates.py            (prints PASS)
 """
@@ -69,7 +69,7 @@ def norm(v):
 
 
 # ---------------------------------------------------------------------------
-# C14 -- LogicBarrier: the diagonal, self-referential method barrier
+# C12 -- LogicBarrier: the diagonal, self-referential method barrier
 # ---------------------------------------------------------------------------
 
 
@@ -91,7 +91,7 @@ def c14_logic_barrier():
     diag_escapes = (diag not in rows) and (0 <= diag < 2 ** n)
     # and it IS a function alpha -> Bool (one of the 2^n), just not in the list
     diag_is_function = diag in range(2 ** n)
-    print("\n[C14] LogicBarrier (the diagonal method barrier, finite instance)")
+    print("\n[C12] LogicBarrier (the diagonal method barrier, finite instance)")
     print(f"  2^n > n for n = 0..12 (no surjection alpha ↠ (alpha->Bool)) = {no_surjection}")
     print(f"  (n, 2^n): {growth}")
     print(f"  not : Bool -> Bool has no fixed point                     = {not_fp_absent}")
@@ -107,7 +107,7 @@ def c14_logic_barrier():
 
 
 # ---------------------------------------------------------------------------
-# C27 -- ForceNetwork: weighted value between min and max; inertia damps change
+# C25 -- ForceNetwork: weighted value between min and max; inertia damps change
 # ---------------------------------------------------------------------------
 
 
@@ -126,7 +126,7 @@ def c27_force_network():
     # sampled monotonicity across many inertias
     damp_all = all((F / I2) <= (F / I1)
                    for I1, I2 in [(0.5, 1.0), (1.0, 2.0), (2.0, 8.0), (3.0, 3.5)])
-    print("\n[C27] ForceNetwork (weighted value in [min, max]; inertia damps change)")
+    print("\n[C25] ForceNetwork (weighted value in [min, max]; inertia damps change)")
     print(f"  weights = {w}   parts = {c}")
     print(f"  network value = {value:.6f}  in [{c0}, {C}]            = {between}")
     print(f"  value <= max (weightedValueLeMax)                         = {le_max}")
@@ -139,7 +139,7 @@ def c27_force_network():
 
 
 # ---------------------------------------------------------------------------
-# C28 -- MixtureGrowth: addition transmits, never fabricates, concentration
+# C26 -- MixtureGrowth: addition transmits, never fabricates, concentration
 # ---------------------------------------------------------------------------
 
 
@@ -162,7 +162,7 @@ def c28_mixture_growth():
                 m = f1_ * r1_ + f2_ * r2_
                 if not (r1_ - 1e-12 <= m <= r2_ + 1e-12):
                     sweep_ok = False
-    print("\n[C28] MixtureGrowth (addition never fabricates concentration)")
+    print("\n[C26] MixtureGrowth (addition never fabricates concentration)")
     print(f"  ||u+v|| <= ||u||+||v||                                   = {mix_le}")
     print(f"  ratio bracket min <= mixture <= max                       = {lo and hi}")
     print(f"  weighted squared ratios also bracketed                    = {sq_lo and sq_hi}")
@@ -173,7 +173,7 @@ def c28_mixture_growth():
 
 
 # ---------------------------------------------------------------------------
-# C29 -- OnsagerCriterion: bounded invariant frees the excess (and its wall)
+# C27 -- OnsagerCriterion: bounded invariant frees the excess (and its wall)
 # ---------------------------------------------------------------------------
 
 
@@ -200,7 +200,7 @@ def c29_onsager_criterion():
     a = [0.2, 0.5, 0.3]
     w = [1.0, 2.0, 1.5]
     majorizes = sum(a) <= sum(wi * ai for wi, ai in zip(w, a)) + 1e-12
-    print("\n[C29] OnsagerCriterion (a bounded invariant frees the excess)")
+    print("\n[C27] OnsagerCriterion (a bounded invariant frees the excess)")
     print(f"  sum Z^(n+1) <= M^n sum Z (n={n}, M={M})                = {sufficiency}")
     print(f"  sufficiency sweep over orders and bounds                  = {sweep_ok}")
     print(f"  excess => a spike above M (spike_of_excess / wall)        = {wall}")
@@ -211,7 +211,7 @@ def c29_onsager_criterion():
 
 
 # ---------------------------------------------------------------------------
-# C30 -- ContinuationCriterion: bounded <=> extendable; failure <=> unbounded
+# C28 -- ContinuationCriterion: bounded <=> extendable; failure <=> unbounded
 # ---------------------------------------------------------------------------
 
 
@@ -235,7 +235,7 @@ def c30_continuation_criterion():
     ex2 = build_exists(N_unb, M, 10)
     first_fail = next(t for t in range(11) if not ex2[t])
     unbounded = not all(N_unb[s] <= M + 1e-12 for s in range(0, first_fail + 1))
-    print("\n[C30] ContinuationCriterion (bounded <=> extendable)")
+    print("\n[C28] ContinuationCriterion (bounded <=> extendable)")
     print(f"  bounded invariant reaches T=30 (exists_upto_of_bounded)   = {reaches}")
     print(f"  unbounded model: first failure at t={first_fail}, "
           f"N[{first_fail}]={N_unb[first_fail]:.2f}")
@@ -246,7 +246,7 @@ def c30_continuation_criterion():
 
 
 # ---------------------------------------------------------------------------
-# C31 -- StableBounded: attracting orbits converge and are bounded
+# C29 -- StableBounded: attracting orbits converge and are bounded
 # ---------------------------------------------------------------------------
 
 
@@ -266,7 +266,7 @@ def c31_stable_bounded():
     N = [1.0 / (t + 1) for t in range(0, 20)]
     mono_ok = all(N[t] <= N[0] + 1e-15 for t in range(len(N))) and \
         all(N[t + 1] <= N[t] + 1e-15 for t in range(len(N) - 1))
-    print("\n[C31] StableBounded (attracting => convergent & bounded)")
+    print("\n[C29] StableBounded (attracting => convergent & bounded)")
     print(f"  |orbit - fixed point| after 60 steps                     = "
           f"{abs(orbit[-1] - fp):.3e}")
     print(f"  orbit converges to the fixed point                        = {converges}")
@@ -279,7 +279,7 @@ def c31_stable_bounded():
 
 
 # ---------------------------------------------------------------------------
-# C32 -- SufficiencyLoop: 2D closes the loop; a quadratic increment cannot
+# C30 -- SufficiencyLoop: 2D closes the loop; a quadratic increment cannot
 # ---------------------------------------------------------------------------
 
 
@@ -307,7 +307,7 @@ def c32_sufficiency_loop():
         y = y_new
         steps += 1
     unlimited = y >= 1e9
-    print("\n[C32] SufficiencyLoop (2D closes; the 3D shape cannot start it)")
+    print("\n[C30] SufficiencyLoop (2D closes; the 3D shape cannot start it)")
     print(f"  non-increasing N (2D enstrophy shape)                     = {noninc}")
     print(f"  M = N 0 closes the loop: exists at every time             = {global_exists}")
     print(f"  quadratic increment y+C y^2 grows without bound           = {unlimited}")
@@ -319,7 +319,7 @@ def c32_sufficiency_loop():
 
 
 # ---------------------------------------------------------------------------
-# C33 -- SelfSimilarExponents: the four exponents are forced, n-independently
+# C31 -- SelfSimilarExponents: the four exponents are forced, n-independently
 # ---------------------------------------------------------------------------
 
 
@@ -362,7 +362,7 @@ def c33_self_similar_exponents():
         advection_power(bp, g) == advection_power(bp, g)
         for bp in (-1, 0, 2) for g in (0.5, 1.0))
     kappa_monotone = all((n - 1) <= (m - 1) for n, m in [(1, 2), (3, 3.5), (-2, 5)])
-    print("\n[C33] SelfSimilarExponents (exponents forced, n-independent)")
+    print("\n[C31] SelfSimilarExponents (exponents forced, n-independent)")
     print(f"  balance system rank = {rank}, inconsistent = {inconsistent}")
     print(f"  solution = {sol}   (forced = {forced})")
     print(f"  |solution - forced|(inf)                                  = {e_sol:.3e}")
@@ -377,7 +377,7 @@ def c33_self_similar_exponents():
 
 
 # ---------------------------------------------------------------------------
-# C34 -- ZeroFixedPoint: zero defines its own position and scales by its zeros
+# C32 -- ZeroFixedPoint: zero defines its own position and scales by its zeros
 # ---------------------------------------------------------------------------
 
 
@@ -405,7 +405,7 @@ def c34_zero_fixed_point():
             else:
                 recip = dx ** j / num          # signed reciprocal -> 0 means blowup
                 e_over = max(e_over, abs(recip))
-    print("\n[C34] ZeroFixedPoint (zero defines its own position)")
+    print("\n[C32] ZeroFixedPoint (zero defines its own position)")
     print(f"  |(T x - x)/(x - x0) - (L-1)| (fixedPoint_selfSlope)     = {e_slope:.3e}")
     print(f"  |(x - x)/(x - x0)| (identity_selfSlope)                 = {e_ident:.3e}")
     print(f"  |(x-x0)^k h / (x-x0)^k - h(x0)| (zero_count_removable)   = {e_rem:.3e}")
@@ -419,7 +419,7 @@ def c34_zero_fixed_point():
 
 def main():
     print("=" * 78)
-    print("CRITERIA CERTIFICATES: C14 / C27-C34")
+    print("CRITERIA CERTIFICATES: C12 / C25-C32")
     print("=" * 78)
     c14_logic_barrier()
     c27_force_network()
@@ -431,10 +431,10 @@ def main():
     c33_self_similar_exponents()
     c34_zero_fixed_point()
     print("\n" + "=" * 78)
-    print("PASS: C14 diagonal escape; C27 weighted value bracketed; C28 addition "
-          "transmits not fabricates; C29 bounded frees the excess; C30 bounded<=>"
-          "extendable; C31 attracting bounded; C32 2D loop closes / 3D quadratic "
-          "escapes; C33 exponents forced; C34 zero self-positions.")
+    print("PASS: C12 diagonal escape; C25 weighted value bracketed; C26 addition "
+          "transmits not fabricates; C27 bounded frees the excess; C28 bounded<=>"
+          "extendable; C29 attracting bounded; C30 2D loop closes / 3D quadratic "
+          "escapes; C31 exponents forced; C32 zero self-positions.")
     print("=" * 78)
     return 0
 

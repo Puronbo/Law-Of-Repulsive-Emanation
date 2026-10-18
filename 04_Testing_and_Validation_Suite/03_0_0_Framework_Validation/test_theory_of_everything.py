@@ -1,7 +1,7 @@
-"""Theory-of-everything (C12 capstone) program gate.
+"""Theory-of-everything (C10 capstone) program gate.
 
 ``THEORY_OF_EVERYTHING.md`` fixes what "theory of everything" means *inside this
-repository*: the register's structural unification as card **C12** -- a
+repository*: the register's structural unification as card **C10** -- a
 scaling-critical system is governed by exactly two organizing numbers (order and
 orientation), formalized in ``PunoCalculus/TheoryOfEverything.lean``. This gate
 pins that program so it cannot drift from the tree:
@@ -12,7 +12,7 @@ pins that program so it cannot drift from the tree:
    stated import count matches the tree;
 3. the facts register ``theoryOfEverythingFacts`` has exactly five entries;
 4. the document states the honesty boundary (no Millennium problem settled) and
-   names card C12, keeping the wall marked OPEN.
+   names card C10, keeping the wall marked OPEN.
 
 No Lean toolchain is required: this is a file-reading gate, exactly like the
 other verification gates that run in CI.
@@ -102,7 +102,7 @@ def test_stated_import_count_matches_capstone():
 def test_capstone_is_named_in_the_doc():
     doc = _read(DOC)
     assert "TheoryOfEverything" in doc, "doc must name the capstone module"
-    assert "C12" in doc, "doc must name card C12"
+    assert "C10" in doc, "doc must name card C10"
 
 
 def test_facts_register_has_exactly_five_entries():
@@ -130,7 +130,7 @@ def test_doc_states_the_honesty_boundary():
 
 def test_doc_states_t5_boundary_filter():
     doc = _read(DOC)
-    assert "C39" in doc, "doc must name card C39+ expansion path"
+    assert "C37" in doc, "doc must name card C37+ expansion path"
     assert "expressible via" in doc, "doc must require expressibility via (order, orientation)"
     assert "disallowed" in doc or "cannot be expressed" in doc, "doc must state disallowed when not expressible"
 

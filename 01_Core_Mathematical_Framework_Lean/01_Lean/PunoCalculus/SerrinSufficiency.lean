@@ -7,7 +7,7 @@ import PunoCalculus.SerrinLadder
 # Prodi-Serrin sufficiency: a finite supercritical control bounds the content
 
 `RegularityReduction.lean` reduces the wall to *boundedness of the critical-content
-integral* `int_0^T g` (card C10-open).  This brick supplies the classical **sufficiency
+integral* `int_0^T g` (card C8-open).  This brick supplies the classical **sufficiency
 direction** in the register's own `(X, g)` abstraction, and the Serrin-margin arithmetic
 that names "supercritical".
 
@@ -24,7 +24,7 @@ that names "supercritical".
 * `bounded_on_of_serrinAction`: applied on every `[0, T]`, a finite supercritical control
   forbids finite-time blow-up of the critical content -- the abstract conclusion.
 
-What stays open (card C10-open) is the NS-specific *existence* of that control on the
+What stays open (card C8-open) is the NS-specific *existence* of that control on the
 real flow: this brick proves sufficiency, not the a priori bound.
 -/
 
@@ -93,7 +93,7 @@ theorem content_le_of_growth_le_weight {X g w : ℝ → ℝ} {T R M : ℝ}
 rate is dominated by a nonnegative weight (`g <= R w`, `R >= 0`) whose action is finite
 on every `[0, T]`, then the critical content is bounded on every `[0, T]`.  This is the
 abstract Prodi-Serrin conclusion; the NS-specific availability of the control stays open
-(card C10-open). -/
+(card C8-open). -/
 theorem bounded_on_of_serrinAction {X g w : ℝ → ℝ} {R : ℝ}
     (hR : 0 ≤ R)
     (hX0 : 0 < X 0)

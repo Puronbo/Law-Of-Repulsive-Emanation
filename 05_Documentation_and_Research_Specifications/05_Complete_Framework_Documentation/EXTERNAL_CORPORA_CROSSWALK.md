@@ -45,7 +45,7 @@ only claim each row makes is: *these two artifacts concern the same problem fami
 
 | Topic | Ours (module · what it is · standing) | `openai/math` family |
 |---|---|---|
-| 3D Navier–Stokes | `PunoCalculus.NavierStokes` (`serrinScaling`, `prodiSerrinAdmissible`, `serrin_endpoint_q3_excluded`, `nsGlobalRegularityOpen := true`) + the C1–C10 wall (`ExplicitClaims`, `OrientationLaw`, `RegularityReduction`, `SerrinSufficiency`) | **376. Universal computation in forced Navier–Stokes flows** |
+| 3D Navier–Stokes | `PunoCalculus.NavierStokes` (`serrinScaling`, `prodiSerrinAdmissible`, `serrin_endpoint_q3_excluded`, `nsGlobalRegularityOpen := true`) + the C1–C8 wall (`ExplicitClaims`, `OrientationLaw`, `RegularityReduction`, `SerrinSufficiency`) | **376. Universal computation in forced Navier–Stokes flows** |
 | BSD | `PunoCalculus.BSD` (`namespace BSD`; `verifyCurve`, `verifyAllClose`, `verifyFullBSD`) — float check of the leading-term formula on 4 curves (conductor 11 / 14 / 37 / 389; ranks 0, 0, 1, 2) | **002. The full BSD formula from low Selmer corank** (+ companion *two-primary BSD* / *Selmer converse*), **006. Goldfeld's conjecture** |
 | Hodge | `PunoCalculus.Hodge` (`cpnHodgeCount`, `h11`, `h20`, `verifyAbelian`, `quintic_codim2_open := true`) — Hodge-number / count checks for CP^n, curve products, abelian surfaces, the quintic | **032. The rational Hodge conjecture for CM abelian varieties** |
 | Mass gap | `PunoCalculus.MassGap` (`massGapVal`, `verifyMassGapPositive`, `sinh_div_self_tendsto_one`, `massGapCrossoverRemovable`) — crossover / removable-singularity certificate | **215. Canonical O(3) continuum limit and exact O(4) mass asymptotics** (positive mass gap) |
@@ -67,9 +67,9 @@ different statement: **026. Positive lower density of large prime gaps**.)
 
 - No shared code: this project imports none of `openai/math`'s Lean sources, and vice
   versa. Both use Lean 4 + Mathlib, but the libraries are independent.
-- No shared result: where the two corpora touch (e.g. family **376** vs. our C10-open /
-  C14), the objects differ — e.g. **376** is about Navier–Stokes *under smooth external
-  forcing* (universal computation), whereas our wall C3 / C10-open is the *unforced*
+- No shared result: where the two corpora touch (e.g. family **376** vs. our C8-open /
+  C12), the objects differ — e.g. **376** is about Navier–Stokes *under smooth external
+  forcing* (universal computation), whereas our wall C3 / C8-open is the *unforced*
   boundedness obligation; universality of the forced system does not settle it.
 - No verification transfer: their family results are *claimed* by an unreleased model
   and independently unchecked; our modules are machine-checked or numerically

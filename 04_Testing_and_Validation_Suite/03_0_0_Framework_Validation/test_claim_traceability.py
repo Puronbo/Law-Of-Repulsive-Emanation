@@ -49,8 +49,7 @@ CLAIMS_MD = os.path.join(DOC_DIR, "EXPLICIT_CLAIMS.md")
 TRACE_MD = os.path.join(DOC_DIR, "CLAIM_TRACEABILITY.md")
 
 # card -> (Lean {module: [declared names]}, [experiment scripts])
-# A card may repeat (C4/C6 carries two distinct statements); the same token then
-# appears twice, which is fine for link checking.
+# Each card token is unique; C4 and C5 are the split of the former C4/C6 pair.
 ENTRIES = [
     ("C1", {
         "CriticalLadder": [
@@ -61,7 +60,7 @@ ENTRIES = [
     }, ["register_core_certificates.py"]),
     ("C2", {}, []),
     ("C3", {}, []),
-    ("C4/C6", {
+    ("C4", {
         "ExplicitClaims": ["extra_power_strengthens_above_unit"],
         "EnstrophyBarrier": [
             "mono_step_bounded", "doubling_succ", "quadratic_step_unbounded",
@@ -72,12 +71,12 @@ ENTRIES = [
             "exists_upto_of_geometric",
         ],
     }, ["register_core_certificates.py"]),
-    ("C4/C6", {
+    ("C5", {
         "ExplicitClaims": ["morrey_threshold", "physical_embedding_gap"],
     }, ["dimension_threshold.py"]),
-    ("C8", {"ExplicitClaims": ["mean_le_dimMixture"]}, ["dimension_mixture.py"]),
-    ("C9", {}, ["dimension_mixture.py"]),
-    ("C10", {
+    ("C6", {"ExplicitClaims": ["mean_le_dimMixture"]}, ["dimension_mixture.py"]),
+    ("C7", {}, ["dimension_mixture.py"]),
+    ("C8", {
         "OrientationLaw": [
             "logGrowth_geometric", "sign_match", "orientation_reads_wall",
             "logGrowth_of_ratio_eq", "logGrowth_pos_iff",
@@ -111,7 +110,7 @@ ENTRIES = [
         "fractional_margin_window.py",
         "fractional_margin_resolution.py",
     ]),
-    ("C10-open", {
+    ("C8-open", {
         "OrientationLaw": [
             "contLogGrowth_integral", "continuous_content_bounded",
             "logGrowth_geometric", "log_eq_sum_logGrowth",
@@ -132,7 +131,7 @@ ENTRIES = [
         "fractional_burgers_margin.py",
         "fractional_clm_margin.py",
     ]),
-    ("C11", {
+    ("C9", {
         "OrientationBoundedness": [
             "geometric_bounded_iff", "orientation_decides_boundedness",
             "repelling_iff_unbounded",
@@ -157,30 +156,30 @@ ENTRIES = [
             "squareOrientation_not_scalar_multiple_of_boundedOrientation",
         ],
     }, ["register_ladder_certificates.py"]),
-    ("C12", {
+    ("C10", {
         "TheoryOfEverything": [
             "order_sets_rung", "orientation_sets_side", "theoryOfEverything",
             "twoNumbersClose", "method_and_margin_barriers",
             "order_sets_rung_bijective", "orientation_not_injective_on_side",
         ],
     }, ["register_ladder_certificates.py", "theory_of_everything_certificates.py"]),
-    ("C13", {
+    ("C11", {
         "EmergentTime": ["transfer_conserves_total", "state_determined_by_count"],
     }, ["register_ladder_certificates.py"]),
-    ("C14", {
+    ("C12", {
         "LogicBarrier": [
             "lawvere_fixedpoint", "no_surjective_of_no_fixedpoint",
             "no_surjective_predicates", "diagonal_not_mem_range",
         ],
     }, ["register_criteria_certificates.py"]),
-    ("C15", {
+    ("C13", {
         "ZeroLink": [
             "empty_unique_arrow", "empty_isInitial", "unit_unique_arrow",
             "unit_isTerminal", "empty_classified_initial",
             "unit_classified_terminal", "zero_links_all",
         ],
     }, ["zero_mechanism_certificates.py"]),
-    ("C16", {
+    ("C14", {
         "ZeroObject": [
             "initial_link", "terminal_link", "zero_isInitial", "zero_isTerminal",
             "zero_links_both_ways", "zero_unique_up_to_iso",
@@ -188,7 +187,7 @@ ENTRIES = [
             "modules_zero_links",
         ],
     }, ["zero_mechanism_certificates.py"]),
-    ("C17", {
+    ("C15", {
         "RemovableValue": [
             "IsRemovableValue", "removable_value_unique",
             "existsUnique_iff_exists_and_unique", "extension_unique",
@@ -196,55 +195,55 @@ ENTRIES = [
             "initial_arrow_schema",
         ],
     }, ["zero_mechanism_certificates.py"]),
-    ("C18", {
+    ("C16", {
         "VanishOrder": [
             "VanishesToOrder", "divideOut", "vanishes_zero", "vanishes_succ_imp",
             "vanishes_shift", "HasGrade", "hasGrade_canonical", "hasGrade_shift",
             "vanishes_antitone", "grade_unique", "order_is_graded",
         ],
     }, ["zero_mechanism_certificates.py"]),
-    ("C19", {
+    ("C17", {
         "ZeroProbe": [
             "ProbeValue", "probe_identity", "probe_self", "probe_value_unique",
             "probe_is_removable",
         ],
     }, ["zero_mechanism_certificates.py"]),
-    ("C20", {
+    ("C18", {
         "ZeroValuation": [
             "HasOrder", "hasOrder_one", "hasOrder_zero_iff", "hasOrder_mul",
             "hasOrder_pow", "hasOrder_canonical", "hasOrder_lt_imp_not",
             "hasOrder_unique", "order_is_valuation",
         ],
     }, ["zero_mechanism_certificates.py"]),
-    ("C21", {
+    ("C19", {
         "ZeroIndex": [
             "Index", "index_one", "index_additive", "index_pow",
             "index_X_sub_C_self", "index_pow_self", "index_canonical",
             "index_is_multiplicity",
         ],
     }, ["zero_mechanism_certificates.py"]),
-    ("C22", {
+    ("C20", {
         "ZeroMechanisms": [
             "abs_div_self_tendsto_right", "abs_div_self_tendsto_left",
             "abs_div_self_no_limit", "abs_vanish", "id_vanish",
             "anti_class_nonempty", "mechanisms_close",
         ],
     }, ["zero_mechanism_certificates.py"]),
-    ("C23", {
+    ("C21", {
         "RemovableComplexBridge": [
             "IsRemovableValueAt", "removable_value_exists",
             "removable_value_unique", "exists_unique_removable_value",
             "limUnder_eq_of_isRemovableValue", "canonical_zero_over_zero",
         ],
     }, ["zero_mechanism_certificates.py"]),
-    ("C24", {
+    ("C22", {
         "LiouvilleBridge": [
             "bounded_entire_const", "bounded_entire_apply_eq",
             "bounded_entire_value_unique", "eq_zero_of_bounded_of_eq_zero",
             "bounded_at_infinity_const",
         ],
     }, ["zero_mechanism_certificates.py"]),
-    ("C25", {
+    ("C23", {
         "SerrinLadder": [
             "gnExponent", "gnExponent_six", "gnExponent_two", "gnExponent_three_half",
             "gnExponent_ceiling_chain", "serrinQ", "serrinQ_six", "serrinQ_line",
@@ -252,7 +251,7 @@ ENTRIES = [
             "criticalPowerIdentity", "powerClosesCriticalAtSix",
         ],
     }, ["register_ladder_certificates.py"]),
-    ("C26", {
+    ("C24", {
         "GreatAttractor": [
             "fixedPoint_distanceRatio", "fixedPoint_repels", "fixedPoint_attracts",
             "orientation_trichotomy", "fixedPoint_logRate", "fixedPoint_logSign",
@@ -261,39 +260,39 @@ ENTRIES = [
             "criticalSmoothness_antitone_order", "scalingWeight_zero_iff",
         ],
     }, ["register_ladder_certificates.py"]),
-    ("C27", {
+    ("C25", {
         "ForceNetwork": [
             "weightedValueLeMax", "leWeightedValueMin", "networkValueBetween",
             "inertiaDampsChange",
         ],
     }, ["register_criteria_certificates.py"]),
-    ("C28", {
+    ("C26", {
         "MixtureGrowth": [
             "normMixtureLeSum", "mixtureRatioBetween", "weightedSqBetween",
             "spikeCannotLowerRatio",
         ],
     }, ["register_criteria_certificates.py"]),
-    ("C29", {
+    ("C27", {
         "OnsagerCriterion": [
             "weighted_sum_le", "spike_of_excess", "excess_majorizes",
         ],
     }, ["register_criteria_certificates.py"]),
-    ("C30", {
+    ("C28", {
         "ContinuationCriterion": [
             "exists_upto_of_bounded", "unbounded_of_first_failure",
         ],
     }, ["register_criteria_certificates.py"]),
-    ("C31", {
+    ("C29", {
         "StableBounded": [
             "attracting_orbit_converges", "attracting_orbit_bounded", "monotone_bounded",
         ],
     }, ["register_criteria_certificates.py"]),
-    ("C32", {
+    ("C30", {
         "SufficiencyLoop": [
             "global_exists_of_mono", "quadratic_criterion_unavailable",
         ],
     }, ["register_criteria_certificates.py"]),
-    ("C33", {
+    ("C31", {
         "SelfSimilarExponents": [
             "BalanceSystem", "forcedP", "forcedQ", "forcedS", "forcedGamma",
             "forcedExponentsSatisfy", "gammaForced", "sForced", "qForcedInPoisson",
@@ -304,20 +303,20 @@ ENTRIES = [
             "profile_existence_is_open", "type_ii_naming_not_certified",
         ],
     }, ["register_criteria_certificates.py"]),
-    ("C34", {
+    ("C32", {
         "ZeroFixedPoint": [
             "fixedPoint_selfSlope", "identity_selfSlope", "zero_count_removable",
             "zero_count_under", "zero_count_over",
         ],
     }, ["register_criteria_certificates.py"]),
-    ("C35", {
+    ("C33", {
         "OnePattern": [
             "criticalCurve_through_ladder", "ladder_is_order_one",
             "theta_add_criticalCurve", "theta_add_criticalCurve_one",
             "scalingWeight_vanishes_family",
         ],
     }, ["register_ladder_certificates.py"]),
-    ("C36", {
+    ("C34", {
         "NoetherDiscrete": [
             "charge_eq_momentum_sub", "charge_self",
             "charge_translation_invariant", "momentum_from_rate",
@@ -325,14 +324,14 @@ ENTRIES = [
             "momentumAt_eq_initial", "conservationLaw",
         ],
     }, ["arithmetic_shadow_certificates.py"]),
-    ("C37", {
+    ("C35", {
         "UniverseGrowth": [
             "chargeOn_eq_momentumOn_sub", "momentumOn_grow", "momentumOn_grow_eq",
             "chargeOn_grow_eq", "universeGrowth_decomp", "universeGrowth_conserves",
             "chargeOn_universeGrowth_conserves", "momentumOn_univ",
         ],
     }, ["arithmetic_shadow_certificates.py"]),
-    ("C38", {
+    ("C36", {
         "CriticalAmplitude": [
             "amplitudeRatio_eq", "orderParameter_at_critical", "widom_relation",
             "rushbrooke_relation", "josephson_relation", "fisher_relation",

@@ -1,10 +1,10 @@
 """
-REGISTER CORE CERTIFICATES (cards C1 and C4/C6)
+REGISTER CORE CERTIFICATES (cards C1 and C4)
 ===============================================
 Numerical companion to the two *core* cards that pin the wall's arithmetic:
 
   C1     CriticalLadder          -- the scaling-critical ladder s_crit(p) = 3/p - 1
-  C4/C6  ExplicitClaims /        -- one extra power tightens the marginality;
+  C4  ExplicitClaims /        -- one extra power tightens the marginality;
          EnstrophyBarrier /         linear (2D) bounded vs quadratic (3D) unbounded;
          QuantitativeContinuation   order sets the continuation window
 
@@ -84,7 +84,7 @@ def c1_critical_ladder():
 
 
 # ---------------------------------------------------------------------------
-# C4/C6 -- ExplicitClaims: one extra power strengthens exactly above unit level
+# C4 -- ExplicitClaims: one extra power strengthens exactly above unit level
 # ---------------------------------------------------------------------------
 
 
@@ -99,7 +99,7 @@ def c46_extra_power():
                 e_pow += 1
     # the excess vanishes exactly at the borderline z = 1
     excess = [z ** (1.0 + 1.0) - z for z in (0.5, 0.9, 1.0, 1.1, 2.0)]
-    print("\n[C4/C6] ExplicitClaims (one extra power tightens above unit level)")
+    print("\n[C4] ExplicitClaims (one extra power tightens above unit level)")
     print(f"  z <= z^(1+eps) <-> 1 <= z mismatches            = {e_pow}")
     print(f"  excess z^(2)-z on [0.5,0.9,1.0,1.1,2.0]        = "
           f"{[round(x, 4) for x in excess]}")
@@ -110,7 +110,7 @@ def c46_extra_power():
 
 
 # ---------------------------------------------------------------------------
-# C4/C6 -- EnstrophyBarrier + QuantitativeContinuation: order sets the bound
+# C4 -- EnstrophyBarrier + QuantitativeContinuation: order sets the bound
 # ---------------------------------------------------------------------------
 
 
@@ -156,7 +156,7 @@ def c46_barrier_hierarchy():
     ok_ineq = all(quad[n + 1] <= quad[n] + Cq * quad[n] ** 2 + 1e-9
                   for n in range(len(quad) - 1))
     grows = quad[-1] > 1e9 and quad[-1] > quad[0]
-    print("\n[C4/C6] EnstrophyBarrier + QuantitativeContinuation (order sets the bound)")
+    print("\n[C4] EnstrophyBarrier + QuantitativeContinuation (order sets the bound)")
     print(f"  max |doubling(A,n+1) - 2 doubling(A,n)|         = {e_dbl:.3e}")
     print(f"  2D: non-increasing bounded by start             = {m2}")
     print(f"  order 0: max (N_t - (N_0 + C t)) (should be <=0)= {e_lin:.3e}")
@@ -173,13 +173,13 @@ def c46_barrier_hierarchy():
 
 def main():
     print("=" * 78)
-    print("REGISTER CORE CERTIFICATES: C1 / C4-C6")
+    print("REGISTER CORE CERTIFICATES: C1 / C4")
     print("=" * 78)
     c1_critical_ladder()
     c46_extra_power()
     c46_barrier_hierarchy()
     print("\n" + "=" * 78)
-    print("PASS: C1 critical-ladder arithmetic; C4/C6 extra-power marginality and the")
+    print("PASS: C1 critical-ladder arithmetic; C4 extra-power marginality and the")
     print("      order-0/1/2 barrier hierarchy (2D bounded vs 3D blow-up-capable).")
     print("=" * 78)
     return 0

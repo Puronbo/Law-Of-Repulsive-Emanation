@@ -1,8 +1,8 @@
 """
-REGISTER BUNDLE CERTIFICATE (card C12)
+REGISTER BUNDLE CERTIFICATE (card C10)
 ======================================
 The numeric half of the *capstone* -- not one brick but the whole conjunction.
-Where ``register_ladder_certificates.py`` checks the C12 rung/side arithmetic, this
+Where ``register_ladder_certificates.py`` checks the C10 rung/side arithmetic, this
 script shadows the full ``TheoryOfEverything.theoryOfEverything`` statement clause
 by clause, plus both reduction theorems:
 
@@ -83,7 +83,7 @@ def teo_clause12_order_sets_rung():
             if v in seen and abs(seen[v] - a) > 1e-9:
                 e_inj += 1
             seen[v] = a
-    print("\n[C12.1-2] order sets the rung; the norm is scale-free on the family")
+    print("\n[C10.1-2] order sets the rung; the norm is scale-free on the family")
     print(f"  max |cs(a,p) - (sCrit p + (1-a))|               = {e_rung:.3e}")
     print(f"  max |scalW(cs(a,p),a,p)|                        = {e_weight:.3e}")
     print(f"  rung not injective in the order (violations)    = {e_inj}")
@@ -97,7 +97,7 @@ def teo_clause12_order_sets_rung():
 
 def teo_clause3_serrin_complementary():
     e_sum = max(abs(gn_exp(p) + s_crit(p) - 0.5) for p in FORMS)
-    print("\n[C12.3] Serrin complementarity  gnExp(p) + sCrit(p) = 1/2")
+    print("\n[C10.3] Serrin complementarity  gnExp(p) + sCrit(p) = 1/2")
     print(f"  max |gnExp(p) + sCrit(p) - 1/2| (order one)     = {e_sum:.3e}")
     assert e_sum < 1e-12
 
@@ -122,7 +122,7 @@ def teo_clause45_orientation_side():
             e_sign += 1
         if (sign <= 0.0) != bounded:
             e_sign += 1
-    print("\n[C12.4-5] orientation sets the side; sign(log r) reads it")
+    print("\n[C10.4-5] orientation sets the side; sign(log r) reads it")
     print(f"  (exists B, r^n A <= B) <-> r<=1 failures       = {e_bound}")
     print(f"  log-sign reads the side (failures)              = {e_sign}")
     assert e_bound == 0 and e_sign == 0
@@ -145,7 +145,7 @@ def teo_clause6_barrier_by_order():
                   for n in range(len(y) - 1))
     unbounded = y[-1] > 1e9 and y[-1] > y[0]
 
-    print("\n[C12.6] barrier by order (mono controlled vs quadratic unbounded)")
+    print("\n[C10.6] barrier by order (mono controlled vs quadratic unbounded)")
     print(f"  non-increasing bounded by its start             = {bounded_ok}")
     print(f"  y(n+1) <= y(n) + y(n)^2 for y = 2^n             = {ineq_ok}")
     print(f"  y escapes every bound (y_40)                    = {y[-1]:.3e}  grows={unbounded}")
@@ -173,7 +173,7 @@ def teo_clause7_sufficiency_loop():
     e = lambda t: all(N(s) <= N(0) + 1e-15 for s in range(0, t + 1))
     horizon = 50
     ok = all(_sufficiency_loop(N, e, T) for T in range(0, horizon + 1))
-    print("\n[C12.7] sufficiency loop (order <= 1): e 0 -> for all T, e T")
+    print("\n[C10.7] sufficiency loop (order <= 1): e 0 -> for all T, e T")
     print(f"  predicate survives to horizon T={horizon}        = {ok}")
     assert ok
 
@@ -191,7 +191,7 @@ def teo_two_numbers_close():
         seq = [geometric(r, 2.0, n) for n in range(61)]
         if (max(seq) <= 2.0 * (1.0 + 1e-12)) != (r <= 1.0):
             e_side += 1
-    print("\n[C12.reduction] twoNumbersClose (rung from order, side from orientation)")
+    print("\n[C10.reduction] twoNumbersClose (rung from order, side from orientation)")
     print(f"  rung clause failures                            = {e_rung:.3e}")
     print(f"  side clause failures                            = {e_side}")
     assert e_rung < 1e-12 and e_side == 0
@@ -250,7 +250,7 @@ def teo_margin_and_method_barriers():
 
     diagonal_ok = all(no_surjection(n) for n in (1, 2, 3, 4))
 
-    print("\n[C12.reduction] method_and_margin_barriers")
+    print("\n[C10.reduction] method_and_margin_barriers")
     print("The antitone hypothesis for lambda(s) is ASSUMED (NS-specific, T3 OPEN); "
           "FirstCrossing shows existence without it.")
     print(f"  strict-antitone unique crossing (count={crossings}, "
@@ -265,7 +265,7 @@ def teo_margin_and_method_barriers():
 
 def main():
     print("=" * 78)
-    print("REGISTER BUNDLE CERTIFICATE: C12 (two numbers close the register)")
+    print("REGISTER BUNDLE CERTIFICATE: C10 (two numbers close the register)")
     print("=" * 78)
     teo_clause12_order_sets_rung()
     teo_clause3_serrin_complementary()

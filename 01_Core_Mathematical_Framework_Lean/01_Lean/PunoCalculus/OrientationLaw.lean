@@ -2,9 +2,9 @@ import Mathlib
 import PunoCalculus.OrientationBoundedness
 
 /-!
-# Orientation law: the growth rate equals the orientation (C10, model core)
+# Orientation law: the growth rate equals the orientation (C8, model core)
 
-Card **C10** of `EXPLICIT_CLAIMS.md` claims `sign(lambda) = sign(mu)`, where `lambda`
+Card **C8** of `EXPLICIT_CLAIMS.md` claims `sign(lambda) = sign(mu)`, where `lambda`
 is the orbit's Lyapunov base (the *orientation*) and `mu = d/dt log(critical content)`
 is the growth rate.  Empirically it holds in six systems (`orientation_vs_invariant.py`), three attracting
 and three repelling.  Its *model core* is a theorem, and that is what this brick proves.
@@ -24,7 +24,7 @@ Hence `sign(mu) = sign(lambda)` (`sign_match`), and by
 wall*: `mu > 0` iff the invariant escapes every bound (`orientation_reads_wall`).
 So on the model, "the growth rate of the critical content" and "the orientation" are
 the same number, and it is the wall's own reading -- the analytic claim that this
-identification survives the real flow (card C10 proper) stays empirical/OPEN.
+identification survives the real flow (card C8 proper) stays empirical/OPEN.
 -/
 
 noncomputable section
@@ -45,7 +45,7 @@ def logGrowth (N : ℕ → ℝ) (n : ℕ) : ℝ := Real.log (N (n + 1)) - Real.l
 
 /-- **General growth law.**  For any positive sequence whose *relative increment* is
 the constant `r` (`N (n+1) = r * N n`), the growth rate is `log r`.  The geometric
-orbit is the special case `A * r^n`; this is the honest model form of C10 -- the
+orbit is the special case `A * r^n`; this is the honest model form of C8 -- the
 growth rate of the content is the log of its relative increment. -/
 theorem logGrowth_of_ratio_eq {N : ℕ → ℝ} (hN : ∀ k, 0 < N k) {r : ℝ} (hr : 0 < r)
     (h : ∀ n, N (n + 1) = r * N n) (n : ℕ) : logGrowth N n = Real.log r := by
@@ -53,7 +53,7 @@ theorem logGrowth_of_ratio_eq {N : ℕ → ℝ} (hN : ∀ k, 0 < N k) {r : ℝ} 
   rw [h n, Real.log_mul (ne_of_gt hr) (ne_of_gt (hN n))]
   ring
 
-/-- **C10 model core: `mu == lambda`.**  On the geometric orbit the growth rate is
+/-- **C8 model core: `mu == lambda`.**  On the geometric orbit the growth rate is
 constant and equals the orientation `log r`.  Now a corollary of the general growth
 law `logGrowth_of_ratio_eq` (the geometric orbit has constant relative increment). -/
 theorem logGrowth_geometric {r A : ℝ} (hr : 0 < r) (hA : 0 < A) (n : ℕ) :
@@ -133,13 +133,13 @@ theorem unbounded_sum_of_unbounded {N : ℕ → ℝ} (hN : ∀ k, 0 < N k)
     ¬ ∃ B, ∀ n, ∑ k ∈ range n, logGrowth N k ≤ B :=
   fun hB => h (bounded_of_bounded_sum_logGrowth hN hB)
 
-/-- **C10, sign form.**  The growth of the critical content has the same sign as the
+/-- **C8, sign form.**  The growth of the critical content has the same sign as the
 orientation. -/
 theorem sign_match {r A : ℝ} (hr : 0 < r) (hA : 0 < A) (n : ℕ) :
     (0 < logGrowth (geometricOrbit r A) n) ↔ (0 < orientation r) := by
   rw [logGrowth_geometric hr hA n]
 
-/-- **C10 + C11, model form.**  The (common) sign of the growth rate and the
+/-- **C8 + C9, model form.**  The (common) sign of the growth rate and the
 orientation is exactly the wall: positive iff the invariant escapes every bound,
 non-positive iff it is bounded.  This is `orientation_vs_invariant.py` as a theorem
 on the model. -/
@@ -161,10 +161,10 @@ theorem contLogGrowth_integral {X g : ℝ → ℝ} {T : ℝ}
     ∫ t in (0)..T, g t = Real.log (X T) - Real.log (X 0) :=
   intervalIntegral.integral_eq_sub_of_hasDerivAt hderiv hcont.intervalIntegrable
 
-/-- **Continuous content bound (provable part of C10-open).**  If the critical-content
+/-- **Continuous content bound (provable part of C8-open).**  If the critical-content
 integral `∫_0^T g` is bounded by `B`, then `X T ≤ X 0 * exp B`.  The continuous
 analogue of `bounded_of_bounded_sum_logGrowth`: bounded content-integral ⇒ bounded
-content.  Only the NS-specific bound on the growth rate `g` stays open (card C10-open). -/
+content.  Only the NS-specific bound on the growth rate `g` stays open (card C8-open). -/
 theorem continuous_content_bounded {X g : ℝ → ℝ} {T B : ℝ}
     (hX0 : 0 < X 0) (hXT : 0 < X T)
     (hderiv : ∀ t ∈ Set.uIcc 0 T, HasDerivAt (fun s => Real.log (X s)) (g t) t)
@@ -180,7 +180,7 @@ theorem continuous_content_bounded {X g : ℝ → ℝ} {T B : ℝ}
 
 /-! ## The bounded orientation face
 
-`boundedOrientation r = (r - 1) / (2 (r + 1))` (card C11) is a *bounded* reading of the
+`boundedOrientation r = (r - 1) / (2 (r + 1))` (card C9) is a *bounded* reading of the
 orientation.  It was a leaf; here it earns its keep as a consumer of the orientation law.
 It carries the same sign as the named orientation `orientation r` -- closing the gap where
 the bounded form and the register symbol were never explicitly linked -- it reads the sign
@@ -193,8 +193,8 @@ still tracks the wall's side). -/
 
 /-- **The bounded orientation carries the orientation's sign.**  `boundedOrientation` and
 the register's named orientation `orientation r = log r` agree on positivity, at the
-midpoint, and on negativity.  Explicit bridge between card C11's bounded window and card
-C10's Lyapunov base. -/
+midpoint, and on negativity.  Explicit bridge between card C9's bounded window and card
+C8's Lyapunov base. -/
 theorem boundedOrientation_orientation_sign {r : ℝ} (hr : 0 < r) :
     (0 < boundedOrientation r ↔ 0 < orientation r) ∧
     (boundedOrientation r = 0 ↔ orientation r = 0) ∧

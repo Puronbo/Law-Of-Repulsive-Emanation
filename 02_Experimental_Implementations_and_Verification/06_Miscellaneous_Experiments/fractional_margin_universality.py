@@ -18,7 +18,7 @@ Run one config:   python fractional_margin_universality.py "K0=8"
 Run them all:     python fractional_margin_universality.py
 
 Honesty: single resolution (N=32), single window (T=5); a robustness check for the
-empirical margin, not a proof.  The wall stays OPEN (card C10-open).
+empirical margin, not a proof.  The wall stays OPEN (card C8-open).
 """
 import json
 import os
@@ -97,7 +97,7 @@ def main():
             print("=" * 80)
             if stable:
                 print("PASS: s* is stable across K0 and the initial condition -- the")
-                print("      margin is a property of the equation.  Wall OPEN (C10-open).")
+                print("      margin is a property of the equation.  Wall OPEN (C8-open).")
             else:
                 print("NOTE: s* varies with the measurement/IC -- report as such.")
             print("=" * 80)

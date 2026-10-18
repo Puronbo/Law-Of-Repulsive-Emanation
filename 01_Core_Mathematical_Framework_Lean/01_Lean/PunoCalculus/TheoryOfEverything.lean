@@ -131,7 +131,7 @@ theorem orientation_not_injective_on_side :
 /-- **The register's two barriers, attached to the two numbers.**  The *order* margin is
 a first crossing (existence, needing only continuity and a sign change -- the non-monotone
 regime the third family falls into) and a unique crossing once the orientation `lambda(s)`
-is antitone (so the critical order `s*` is well-defined); the *method* barrier (card C14)
+is antitone (so the critical order `s*` is well-defined); the *method* barrier (card C12)
 is the diagonal escape of Cantor/Gödel/Turing -- no type enumerates its own predicate
 space.  All three are corollaries of the same discipline: the organising number exists
 (and, under monotonicity, is unique), and no self-enumerating certificate can exist. -/
