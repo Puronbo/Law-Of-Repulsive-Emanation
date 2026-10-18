@@ -232,3 +232,17 @@ fails when any row is stale by > 365 days.
 - **Known:** Andrica (1986); implies/related to Legendre and Oppermann; verified to ~10^18.
 - **Missing (the object that does not exist as a proof):** an unconditional proof that g_n < 2√p_n + 1 for every n (no unconditional proof for all n; finite certificate verified to 10^7 only).
 - **Falsifier:** an n with √p_{n+1} − √p_n ≥ 1.
+
+## G17 - Oppermann's conjecture
+- **Tier:** B (external open)
+- **Subject:** Oppermann's conjecture (a prime in n²..n(n+1) and in n(n+1)..(n+1)²)
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_prime_gaps_certificate.py
+- **Pin:** test_oppermann_is_a_finite_certificate
+- **as_of:** 2026-10-18
+- **Reduction:** for every n >= 2, a prime strictly between n² and n(n+1), and a prime strictly between n(n+1) and (n+1)²; this implies Legendre (G14).
+- **Barrier:** needs a prime-gap bound of size O(√x); no unconditional bound this small is known (best ~ x^{0.525}, Baker–Harman–Pintz 2001).
+- **Known:** Oppermann (1882); implies Legendre; verified numerically to large n.
+- **Missing (the object that does not exist as a proof):** an unconditional proof that each interval (n², n(n+1)) and (n(n+1), (n+1)²) contains a prime for every n >= 2 (no unconditional proof for all n; finite certificate verified only for (n+1)² <= 10^7).
+- **Falsifier:** an n >= 2 with no prime strictly between n² and n(n+1), or none strictly between n(n+1) and (n+1)².

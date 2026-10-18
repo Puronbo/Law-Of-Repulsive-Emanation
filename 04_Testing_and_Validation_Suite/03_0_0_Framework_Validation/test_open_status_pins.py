@@ -270,4 +270,20 @@ def test_brocard_is_a_finite_certificate():
     assert n_done >= 400
 
 
+def test_oppermann_is_a_finite_certificate():
+    """Oppermann: for every n >= 2 with (n+1)^2 inside the sieve, a prime lies
+    strictly between n^2 and n(n+1), and one between n(n+1) and (n+1)^2."""
+    limit = 10 ** 7
+    s = _sieve(limit)
+    n_done = 0
+    for n in range(2, 4000):
+        a, b, c = n * n, n * (n + 1), (n + 1) * (n + 1)
+        if c > limit:
+            break
+        assert any(s[m] for m in range(a + 1, b)), n
+        assert any(s[m] for m in range(b + 1, c)), n
+        n_done += 1
+    assert n_done >= 3000
+
+
 

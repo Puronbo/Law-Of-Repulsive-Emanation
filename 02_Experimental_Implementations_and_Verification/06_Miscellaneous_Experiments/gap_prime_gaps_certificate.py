@@ -1,13 +1,15 @@
 """Finite certificates for the prime-gap conjectures (Gap Ledger).
 
-Two honest finite computations, each certifying a bounded range only:
+Three honest finite computations, each certifying a bounded range only:
 
 * G16 Andrica: sqrt(p_{n+1}) - sqrt(p_n) < 1 for all consecutive prime pairs
   up to the sieve limit.
 * G15 Brocard: at least four primes lie strictly between p_n^2 and p_{n+1}^2,
   verified for every n whose interval fits inside the sieve limit.
+* G17 Oppermann: a prime strictly between n^2 and n(n+1), and one strictly
+  between n(n+1) and (n+1)^2, for every n whose interval fits.
 
-Neither certifies the conjecture for all n; both remain OPEN.
+None certifies the conjecture for all n; all remain OPEN.
 """
 import math
 import json
@@ -64,6 +66,28 @@ def andrica(s, limit, ps):
     }
 
 
+def oppermann(s, limit, max_n):
+    """Oppermann: for every n >= 2 there is a prime strictly between n^2 and
+    n(n+1), and one strictly between n(n+1) and (n+1)^2."""
+    n_done = 0
+    worst = None
+    for n in range(2, max_n + 1):
+        a, b, c = n * n, n * (n + 1), (n + 1) * (n + 1)
+        if c > limit:
+            break
+        left = any(s[m] for m in range(a + 1, b))
+        right = any(s[m] for m in range(b + 1, c))
+        n_done += 1
+        if not (left and right):
+            worst = n
+            break
+    return {
+        "n_checked": n_done,
+        "all_have_prime": worst is None,
+        "first_failure": worst,
+    }
+
+
 def brocard(s, limit, ps, max_n):
     worst_n, worst_c = None, None
     n_done = 0
@@ -98,14 +122,20 @@ def run(limit=10 ** 7, brocard_max_n=100000):
     print("Brocard: %d intervals, min count %s (all>=4: %s)"
           % (b["n_checked"], b["min_prime_count"], b["all_at_least_four"]))
 
+    o = oppermann(s, limit, brocard_max_n)
+    print("Oppermann: %d intervals, all have prime: %s"
+          % (o["n_checked"], o["all_have_prime"]))
+
     out = {
-        "experiment": "Prime-gap finite certificates (Gap Ledger G15/G16)",
+        "experiment": "Prime-gap finite certificates (Gap Ledger G15/G16/G17)",
         "sieve_limit": limit,
         "andrica": a,
         "brocard": b,
+        "oppermann": o,
         "honest_wall": (
             "Finite ranges only: Andrica verified up to the sieve limit, "
-            "Brocard for intervals inside it. Both conjectures remain OPEN "
+            "Brocard for intervals inside it, Oppermann for n with (n+1)^2 "
+            "inside it. All three conjectures remain OPEN "
             "(no unconditional proof for all n)."
         ),
     }

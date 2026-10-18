@@ -1,5 +1,5 @@
 {
-  "experiment": "Prime-gap finite certificates (Gap Ledger G15/G16)",
+  "experiment": "Prime-gap finite certificates (Gap Ledger G15/G16/G17)",
   "sieve_limit": 10000000,
   "andrica": {
     "limit": 10000000,
@@ -17,5 +17,10 @@
     "min_prime_count_at_n": 2,
     "all_at_least_four": true
   },
-  "honest_wall": "Finite ranges only: Andrica verified up to the sieve limit, Brocard for intervals inside it. Both conjectures remain OPEN (no unconditional proof for all n)."
+  "oppermann": {
+    "n_checked": 3160,
+    "all_have_prime": true,
+    "first_failure": null
+  },
+  "honest_wall": "Finite ranges only: Andrica verified up to the sieve limit, Brocard for intervals inside it, Oppermann for n with (n+1)^2 inside it. All three conjectures remain OPEN (no unconditional proof for all n)."
 }
