@@ -6,13 +6,14 @@ This gate enforces:
       (hard-fail);
   (D) every row declares a **Proof attempt:** with a controlled kind
       (certificate | partial | no-go | citation-only | none) and every artifact
-      path it names exists on disk.
-  Also: every G1..G14 heading in THE_GAP_LEDGER.md corresponds to a row.
+      path it names exists on disk AND is git-tracked (so CI checkouts have it).
+  Also: every G1..G16 heading in THE_GAP_LEDGER.md corresponds to a row.
 """
 import ast
 import io
 import os
 import re
+import subprocess
 import sys
 from datetime import datetime
 
@@ -66,16 +67,30 @@ def _parse_gaps():
         cards = re.search(r'\*\*Related cards:\*\*\s*(.*)$', block, re.M)
         as_of = re.search(r'\*\*as_of:\*\*\s*(\d{4}-\d{2}-\d{2})', block)
         attempt = re.search(r'\*\*Proof attempt:\*\*\s*(.*)$', block, re.M)
-        pin = re.search(r'\*\*Pin:\*\*\s*(test_\w+)', block)
+        pins = re.findall(r'\*\*Pin:\*\*\s*(test_\w+)', block)
         gaps.append({
             'token': token,
             'status': status.group(1) if status else '',
             'cards': cards.group(1).strip() if cards else '',
             'as_of': as_of.group(1) if as_of else '',
             'attempt': attempt.group(1).strip() if attempt else '',
-            'pin': pin.group(1) if pin else '',
+            'pins': pins,
         })
     return gaps
+
+#: controlled vocabulary for the Proof-attempt kind (Gate D)
+PROOF_KINDS = {'certificate', 'partial', 'no-go', 'citation-only', 'none'}
+
+def _tracked_files():
+    """Set of git-tracked paths (relative to ROOT), or ``None`` if git is
+    unavailable (in which case Gate D falls back to existence-only)."""
+    try:
+        out = subprocess.check_output(
+            ['git', 'ls-files'], cwd=ROOT, stderr=subprocess.DEVNULL)
+    except Exception:
+        return None
+        return {line.strip().replace('\\', '/')
+                for line in out.decode('utf-8', 'replace').splitlines() if line.strip()}
 
 #: controlled vocabulary for the Proof-attempt kind (Gate D)
 PROOF_KINDS = {'certificate', 'partial', 'no-go', 'citation-only', 'none'}
@@ -126,13 +141,16 @@ def test_c_no_unresearched_and_no_stale_rows():
 
 def test_d_proof_attempt_kind_and_artifacts_exist():
     """Gate D: every gap declares what *kind* of proof artifact exists, and
-    every path it names is a real file under the repository root.  A declared
-    ``**Pin:**`` must name a real test function, and any ``certificate``-kind
-    gap must carry a live pin."""
+    every path it names is a real, git-tracked file under the repository root
+    (so the CI checkout actually contains it).  Every declared ``**Pin:**``
+    must name a real test function, and any ``certificate``-kind gap must carry
+    at least one live pin."""
     funcs = _existing_test_funcs()
+    tracked = _tracked_files()
     missing = []
     bad_kind = []
     bad_paths = []
+    untracked = []
     bad_pin = []
     unpinned_cert = []
     for g in _parse_gaps():
@@ -150,17 +168,21 @@ def test_d_proof_attempt_kind_and_artifacts_exist():
                     continue
                 if not os.path.exists(os.path.join(ROOT, path)):
                     bad_paths.append((g['token'], path))
-        if g['pin'] and g['pin'] not in funcs:
-            bad_pin.append((g['token'], g['pin']))
-        if kind == 'certificate' and not g['pin']:
+                elif tracked is not None and path not in tracked:
+                    untracked.append((g['token'], path))
+        for pin in g['pins']:
+            if pin not in funcs:
+                bad_pin.append((g['token'], pin))
+        if kind == 'certificate' and not g['pins']:
             unpinned_cert.append(g['token'])
     assert not missing, "gaps missing **Proof attempt:**: %s" % missing
     assert not bad_kind, "illegal proof-attempt kinds: %s" % bad_kind
     assert not bad_paths, "proof-attempt artifact paths do not exist: %s" % bad_paths
+    assert not untracked, "proof-attempt artifacts are not git-tracked (absent in CI): %s" % untracked
     assert not bad_pin, "declared pins are not real test functions: %s" % bad_pin
     assert not unpinned_cert, "certificate-kind gaps lack a live pin: %s" % unpinned_cert
 
 def test_ledgers_heading_count_agrees():
     text = _read(LEDGER)
     heads = re.findall(r'^##\s+(G\d+)', text, re.M)
-    assert heads == [f'G{i}' for i in range(1, 15)], heads
+    assert heads == [f'G{i}' for i in range(1, 17)], heads

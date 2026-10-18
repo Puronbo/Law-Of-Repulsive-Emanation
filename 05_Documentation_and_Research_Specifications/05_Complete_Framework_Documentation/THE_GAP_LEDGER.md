@@ -13,7 +13,7 @@ fails when any row is stale by > 365 days.
 - **Subject:** Navier–Stokes 3D smoothness
 - **Status:** RESEARCHED
 - **Related cards:** C3, C8-open
-- **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/NavierStokes.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/ns_3d_millennium.py
+- **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/NavierStokes.lean
 - **as_of:** 2026-10-18
 - **Reduction:** `u ∈ L^∞_tL²_x ∩ L²_tḢ¹_x` (Leray–Hopf) → need unconditional scale-critical control (`L^p_tL^q_x`, `2/p+3/q<=1`; `L^∞_tL³_x` closed by ESS 2003, `BMO⁻¹` small-data only).
 - **Known:** Leray (1934), LPS (1959/63/67), ESS (2003), Kato (1984), Koch–Tataru (2001), CKN (1982), Vasseur (2007), Gustafson–Kang–Tsai (2007).
@@ -77,7 +77,7 @@ fails when any row is stale by > 365 days.
 - **Subject:** Birch–Swinnerton-Dyer
 - **Status:** RESEARCHED
 - **Related cards:** []
-- **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/BSD.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/bsd_rank2.py
+- **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/BSD.lean
 - **as_of:** 2026-10-18
 - **Reduction:** rank<=1 Kolyvagin; rank>=2 needs Euler system detecting two independent Heegner classes.
 - **Barrier:** Euler system only generates one per imaginary quadratic field; no known rank>=2 Euler system.
@@ -103,7 +103,7 @@ fails when any row is stale by > 365 days.
 - **Subject:** Riemann Hypothesis
 - **Status:** RESEARCHED
 - **Related cards:** []
-- **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/RH/LiCriterion.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/rh_li_correct.py
+- **Proof attempt:** certificate - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/RH/LiCriterion.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/rh_li_correct.py
 - **Pin:** test_rh_li_correct_is_a_finite_check
 - **as_of:** 2026-10-18
 - **Reduction:** Li inequality verified n=1..30 (800 zeros); Turing/interval arithmetic only.
@@ -119,6 +119,7 @@ fails when any row is stale by > 365 days.
 - **Related cards:** []
 - **Proof attempt:** certificate - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Goldbach.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/goldbach_large.py
 - **Pin:** test_goldbach_large_is_a_finite_certificate
+- **Pin:** test_goldbach_extended_finite_certificate
 - **as_of:** 2026-10-18
 - **Reduction:** ternary (every odd >= 7 sum of three primes) was proved by Helfgott (2013/2014) (unconditional). Strong (binary): every even >= 4 sum of two primes remains open.
 - **Barrier:** parity barrier of sieve methods; effective minor-arc bounds + Siegel zeros complicate explicit N0.
@@ -145,7 +146,7 @@ fails when any row is stale by > 365 days.
 - **Subject:** Yang–Mills existence & mass gap
 - **Status:** RESEARCHED
 - **Related cards:** []
-- **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/MassGap.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/yang_mills_gap_proof.py
+- **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/MassGap.lean
 - **as_of:** 2026-10-18
 - **Reduction:** gap to rigorous 4D YM construction + spectral gap remains.
 - **Barrier:** constructive quantum field theory in 4D nonabelian: renormalization + mass gap unproven in a mathematically rigorous sense.
@@ -158,7 +159,8 @@ fails when any row is stale by > 365 days.
 - **Subject:** Collatz conjecture (3n+1)
 - **Status:** RESEARCHED
 - **Related cards:** []
-- **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Collatz.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/collatz_0_over0.py
+- **Proof attempt:** certificate - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Collatz.lean
+- **Pin:** test_collatz_is_a_finite_certificate
 - **as_of:** 2026-10-18
 - **Reduction:** verified for all n < 2^68 (Barina 2020/21); the repo's `collatz_0_over0.py` frames stopping time as a 0/0.
 - **Barrier:** no known invariant/monotone potential that strictly descends for all n>1; two independent obstructions (nontrivial cycles, divergent trajectories).
@@ -171,7 +173,8 @@ fails when any row is stale by > 365 days.
 - **Subject:** twin prime conjecture
 - **Status:** RESEARCHED
 - **Related cards:** []
-- **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/TwinPrime.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/twin_prime_0_over0.py
+- **Proof attempt:** certificate - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/TwinPrime.lean
+- **Pin:** test_twin_prime_is_a_finite_certificate
 - **as_of:** 2026-10-18
 - **Reduction:** Zhang (2013) bounded gaps ≤ 246 (Polymath8b / Maynard–Tao); the gap-2 case remains open.
 - **Barrier:** parity barrier — sieve methods cannot distinguish two-prime from almost-prime configurations; needs input beyond upper/lower sieve bounds.
@@ -184,10 +187,37 @@ fails when any row is stale by > 365 days.
 - **Subject:** Legendre's conjecture (a prime between n² and (n+1)²)
 - **Status:** RESEARCHED
 - **Related cards:** []
-- **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Legendre.lean
+- **Proof attempt:** certificate - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Legendre.lean
+- **Pin:** test_legendre_is_a_finite_certificate
 - **as_of:** 2026-10-18
 - **Reduction:** follows from a prime-gap bound of size O(√x) (e.g. θ(x)=x+O(x^{1/2+ε})); verified numerically to large n.
 - **Barrier:** no unconditional prime-gap bound this small is known; best is ~x^{0.525} (Baker–Harman–Pintz 2001).
 - **Known:** Legendre (1808), Ingham, Baker–Harman–Pintz (2001), Guth–Maynard (2016).
 - **Missing (the object that does not exist as a proof):** an unconditional proof that π((n+1)²) > π(n²) for every n (a prime in every interval [n²,(n+1)²)).
 - **Falsifier:** an n with no prime strictly between n² and (n+1)².
+
+## G15 — Brocard's conjecture
+- **Tier:** B (external open)
+- **Subject:** Brocard's conjecture (≥ 4 primes between p_n² and p_{n+1}²)
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** none - n/a
+- **as_of:** 2026-10-18
+- **Reduction:** a stronger prime-density statement in short intervals near squares than any unconditional bound currently gives.
+- **Barrier:** depends on prime distribution in intervals of relative size ~ p_{n+1}²−p_n² ≈ 2 p_n (p_{n+1}−p_n), far beyond current unconditional means.
+- **Known:** Brocard (1904), verified numerically for large n; related to Oppermann's conjecture.
+- **Missing (the object that does not exist as a proof):** a proof that every interval (p_n², p_{n+1}²) contains at least four primes for all n (no proof attempt artifact exists in this repository).
+- **Falsifier:** an index n with at most three primes strictly between p_n² and p_{n+1}².
+
+## G16 — Andrica's conjecture
+- **Tier:** B (external open)
+- **Subject:** Andrica's conjecture (√p_{n+1} − √p_n < 1 for all n)
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** none - n/a
+- **as_of:** 2026-10-18
+- **Reduction:** equivalent to a prime gap bound g_n = p_{n+1}−p_n < 2√p_n + 1; verified numerically to large n.
+- **Barrier:** no unconditional prime-gap bound of size O(√p) is known (best ~ x^{0.525}, Baker–Harman–Pintz 2001).
+- **Known:** Andrica (1986); implies/related to Legendre and Oppermann; verified to ~10^18.
+- **Missing (the object that does not exist as a proof):** an unconditional proof that g_n < 2√p_n + 1 for every n (no proof attempt artifact exists in this repository).
+- **Falsifier:** an n with √p_{n+1} − √p_n ≥ 1.

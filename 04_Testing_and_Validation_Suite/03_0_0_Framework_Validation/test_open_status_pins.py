@@ -126,3 +126,59 @@ def test_path_drift_gates_emit_centrally():
         src = _script(rel)
         assert "_central_data_dir()" in src, rel
         assert '"data/' not in src, rel
+
+
+# --- Gate-D live pins: self-contained finite certificates (Gap Ledger) -------
+# These recompute a small, honest finite certificate in-process so the Gap
+# Ledger's `certificate`-kind rows are exercised, not merely declared.  Each
+# certifies a finite range only; the corresponding conjecture stays OPEN.
+
+def _sieve(limit):
+    """Bytearray sieve: index i is 1 iff i is prime, for 0 <= i <= limit."""
+    s = bytearray([1]) * (limit + 1)
+    s[0] = s[1] = 0
+    i = 2
+    while i * i <= limit:
+        if s[i]:
+            s[i * i::i] = bytearray(len(range(i * i, limit + 1, i)))
+        i += 1
+    return s
+
+
+def test_collatz_is_a_finite_certificate():
+    """Collatz: every n in [2, 10000] reaches 1 (finite range only)."""
+    def reaches_one(n):
+        while n != 1:
+            n = n // 2 if n % 2 == 0 else 3 * n + 1
+        return True
+    assert all(reaches_one(n) for n in range(2, 10001))
+
+
+def test_legendre_is_a_finite_certificate():
+    """Legendre: a prime lies strictly between n^2 and (n+1)^2, n in [1, 1000]."""
+    N = 1000
+    s = _sieve((N + 1) * (N + 1))
+    for n in range(1, N + 1):
+        assert sum(s[m] for m in range(n * n + 1, (n + 1) * (n + 1))) > 0, n
+
+
+def test_twin_prime_is_a_finite_certificate():
+    """Twin primes: the number of pairs (p, p+2) with p <= 10^6 is 8169."""
+    X = 10 ** 6
+    s = _sieve(X + 2)
+    assert sum(1 for p in range(2, X + 1) if s[p] and s[p + 2]) == 8169
+
+
+def test_goldbach_extended_finite_certificate():
+    """Goldbach (extended): every even n in [4, 10^6] has a prime pair.
+    This raises the pinned boundary of ``goldbach_large.py`` (10^5) by 10x;
+    the strong Goldbach conjecture remains OPEN."""
+    X = 10 ** 6
+    s = _sieve(X)
+    for n in range(4, X + 1, 2):
+        for p in range(2, n // 2 + 1):
+            if s[p] and s[n - p]:
+                break
+        else:
+            raise AssertionError("no prime pair for %d" % n)
+
