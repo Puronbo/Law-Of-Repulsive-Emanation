@@ -30,6 +30,8 @@ jobs:
       #   * the "theory of everything" is the honest C12 register capstone and
       #     nothing more (TOE program: capstone decls + brick map + OPEN marker)
       #   * the external-corpus crosswalk names only modules that exist
+      #   * the generated axiom audit's declaration list cannot drift from the
+      #     traceability table (AXIOM_AUDIT gate)
       #   * the stability harness + 0/0 family gate stay green
       - name: Run verification gates
         run: |
@@ -47,6 +49,7 @@ jobs:
             04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_zero_zero_family_gate.py \
             04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_module_ledger.py \
             04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_physics_crosswalk.py \
+            04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_axiom_audit.py \
             04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_mathematical_links.py \
             04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_data_persistence.py \
             04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_professions_mandate.py \

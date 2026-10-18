@@ -65,10 +65,10 @@ Navier–Stokes / Onsager wall); the rest are shape-analogies and are tagged as 
 These live in the (larger) research tree and are cited by name; they are not part
 of the tracked verification checkout.
 
-- [`PHYSICS_CATEGORIZATION.md`](../../../07_Interdisciplinary_Connections_and_Frameworks/04_Theoretical_Physics_Implementations/j/PHYSICS_CATEGORIZATION.md) — the photon / rubber-ball verification catalogue (sourced, Tier II).
-- [`THEORY_CONNECTIONS_SUMMARY.md`](../../../07_Interdisciplinary_Connections_and_Frameworks/04_Theoretical_Physics_Implementations/j/THEORY_CONNECTIONS_SUMMARY.md) — the connection map.
-- [`VERIFIED_SYNTHESIS_AND_EQUIVALENTS.md`](../../../07_Interdisciplinary_Connections_and_Frameworks/04_Theoretical_Physics_Implementations/j/VERIFIED_SYNTHESIS_AND_EQUIVALENTS.md) — the honest verdict, including which families are *excluded*.
-- [`summary.md`](../../../07_Interdisciplinary_Connections_and_Frameworks/02_Mathematical_Physics_Connections/summary.md) — the L.O.R.E. 0/0-pattern chapter series (statistical mechanics).
+- [`PHYSICS_CATEGORIZATION.md`](../../07_Interdisciplinary_Connections_and_Frameworks/04_Theoretical_Physics_Implementations/j/PHYSICS_CATEGORIZATION.md) — the photon / rubber-ball verification catalogue (sourced, Tier II).
+- [`THEORY_CONNECTIONS_SUMMARY.md`](../../07_Interdisciplinary_Connections_and_Frameworks/04_Theoretical_Physics_Implementations/j/THEORY_CONNECTIONS_SUMMARY.md) — the connection map.
+- [`VERIFIED_SYNTHESIS_AND_EQUIVALENTS.md`](../../07_Interdisciplinary_Connections_and_Frameworks/04_Theoretical_Physics_Implementations/j/VERIFIED_SYNTHESIS_AND_EQUIVALENTS.md) — the honest verdict, including which families are *excluded*.
+- [`summary.md`](../../07_Interdisciplinary_Connections_and_Frameworks/02_Mathematical_Physics_Connections/summary.md) — the L.O.R.E. 0/0-pattern chapter series (statistical mechanics).
 
 ## What this does not claim
 
