@@ -645,3 +645,23 @@ def test_wieferich_primes_is_a_finite_certificate():
     assert mod.is_wieferich(3511) is True
     assert mod.is_wieferich(3) is False
     assert pow(2, 1092, 1093 * 1093) == 1
+
+
+def test_beal_is_a_finite_certificate():
+    """G33: no coprime solution to a^x+b^y=c^z with x,y,z>2 found in the small
+    search window; Beal's conjecture stays OPEN in general."""
+    import importlib.util
+    path = os.path.join(
+        ROOT, "02_Experimental_Implementations_and_Verification",
+        "06_Miscellaneous_Experiments", "beal_certificate.py")
+    spec = importlib.util.spec_from_file_location("_beal_cert", path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+
+    from math import gcd
+    cex = mod.beal_counterexamples(max_base=80, max_exp=6)
+    assert cex == []
+    assert gcd(gcd(6, 10), 15) == 1  # just sanity (gcd of three)
+    # known trivial non-coprime small example 3^3 + 6^3 = 3^5? 27+216=243, 3^5=243, gcd 3>1
+    a, x, b, y, rz, z, _s = (3, 3, 6, 3, 3, 5, 243)
+    assert a ** x + b ** y == rz ** z and gcd(gcd(a, b), rz) == 3 > 1

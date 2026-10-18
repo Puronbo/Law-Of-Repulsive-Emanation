@@ -470,3 +470,17 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Known:** only 1093 (Meissner 1913) and 3511 (Beeger 1922) are known; no others below 6.7x10^15 (Dorais-Klyve 2011), since extended beyond 1.45x10^17 (OEIS A001220); Wieferich 1909 linked them to the first case of Fermat's Last Theorem; Silverman 1988 proved finitely many follow from the abc conjecture; base-3 (Mirimanoff) primes are 11 and 1006003.
 - **Missing (the object that does not exist as a proof):** an unconditional proof that infinitely many Wieferich primes exist (equivalently a proof that the random-Fermat-quotient heuristic holds without the abc conjecture); also no proof that infinitely many non-Wieferich primes exist.
 - **Falsifier:** infinitely many primes p with 2^(p-1) not = 1 (mod p^2) beyond a point would refute infinitude of Wieferich primes; a Wieferich prime below 10^6 other than 1093 or 3511 would refute this finite certificate.
+
+## G33 - Beal's conjecture (a^x+b^y=c^z with x,y,z>2, gcd=1 => none?)
+- **Tier:** B
+- **Subject:** Beal's conjecture (a^x+b^y=c^z with x,y,z>2, gcd=1 => none?)
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/beal_certificate.py
+- **Pin:** test_beal_is_a_finite_certificate
+- **as_of:** 2026-10-18
+- **Reduction:** for each triple (a^x, b^y, c^z) with x,y,z > 2, test equality and check gcd(a,b,c); the search is exact up to the chosen bound. Absence in a window is finite evidence only.
+- **Barrier:** no known proof method extends a finite window to all positive integers (Beal is open); the Darmon-Granville theorem gives finiteness for fixed exponents satisfying 1/x+1/y+1/z < 1 but Beal allows all x,y,z > 2 and no fixed sum constraint except the equation.
+- **Known:** Beal (1993), AMS $1,000,000 prize; Wiles (FLT); Darmon-Granville (finiteness for fixed exponents); Poonen-Schaefer-Stoll, Bruin, Zureick-Brown resolved specific (x,y,z) families; large computational searches (Norvig, Vanderkam, Beal team) found no coprime counterexamples in wide windows.
+- **Missing (the object that does not exist as a proof):** a proof that there are no positive integers a,b,c,x,y,z>2 with gcd(a,b,c)=1 and a^x+b^y=c^z, or a single explicit counterexample meeting those conditions.
+- **Falsifier:** any coprime (a,b,c,x,y,z>2) with a^x+b^y=c^z refutes Beal's conjecture; such a triple in the window searched would refute this certificate.

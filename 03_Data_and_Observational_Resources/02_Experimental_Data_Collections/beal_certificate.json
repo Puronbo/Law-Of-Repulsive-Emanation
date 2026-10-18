@@ -1,0 +1,15 @@
+{
+  "experiment": "beal_conjecture_search",
+  "max_base": 100,
+  "max_exp": 6,
+  "coprime_counterexamples": [],
+  "honest_wall": "Finite range only: no coprime solution to a^x+b^y=c^z with x,y,z>2 found below the search window (100^5); Beal's conjecture stays OPEN in general. Published searches have eliminated large windows without counterexamples (Norvig, Vanderkam, others).",
+  "references": [
+    "Beal 1993 (posed; AMS prize $1,000,000)",
+    "Wiles 1995 (Fermat's Last Theorem)",
+    "Darmon-Granville (Fermat-Catalan finiteness for fixed exponents)",
+    "Poonen-Schaefer-Stoll 2005 (2,3,7), Bruin (2,3,8),(2,3,9), Zureick-Brown (2,3,10), etc.",
+    "Norvig computational searches; notabs.org/Beal summary (2013)",
+    "AMS: Beal Conjecture prize statement"
+  ]
+}
