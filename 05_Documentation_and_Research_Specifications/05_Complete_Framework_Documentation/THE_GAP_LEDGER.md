@@ -152,3 +152,42 @@ fails when any row is stale by > 365 days.
 - **Known:** lattice gauge theory (Wilson), constructive QFT program (Glimm–Jaffe–Spencer, etc.), asymptotic freedom (Gross–Wilczek, Politzer).
 - **Missing (the object that does not exist as a proof):** a rigorous construction of pure Yang–Mills theory in 4D on R^4 (in the appropriate Wightman/Haag–Kastler or Osterwalder–Schrader sense) that exhibits a **strictly positive mass gap** m>0 (a gap in the spectrum above the vacuum).
 - **Falsifier:** failure to satisfy Wightman axioms, failure to prove clustering/existence, or proof the constructed theory is trivial / has continuous spectrum to 0. Not satisfied by lattice numerics alone.
+
+## G12 — Collatz (3n+1)
+- **Tier:** B (external open)
+- **Subject:** Collatz conjecture (3n+1)
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Collatz.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/collatz_0_over0.py
+- **as_of:** 2026-10-18
+- **Reduction:** verified for all n < 2^68 (Barina 2020/21); the repo's `collatz_0_over0.py` frames stopping time as a 0/0.
+- **Barrier:** no known invariant/monotone potential that strictly descends for all n>1; two independent obstructions (nontrivial cycles, divergent trajectories).
+- **Known:** Lagarias survey, Oliveira e Silva, Barina (2^68, 2020).
+- **Missing (the object that does not exist as a proof):** an invariant/potential function on the positive integers that strictly decreases under the Collatz map for every n>1, ruling out both nontrivial cycles and divergent trajectories, and forcing descent to 1.
+- **Falsifier:** an n>1 whose trajectory never reaches 1 (a nontrivial cycle or a divergent orbit).
+
+## G13 — Twin prime conjecture
+- **Tier:** B (external open)
+- **Subject:** twin prime conjecture
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/TwinPrime.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/twin_prime_0_over0.py
+- **as_of:** 2026-10-18
+- **Reduction:** Zhang (2013) bounded gaps ≤ 246 (Polymath8b / Maynard–Tao); the gap-2 case remains open.
+- **Barrier:** parity barrier — sieve methods cannot distinguish two-prime from almost-prime configurations; needs input beyond upper/lower sieve bounds.
+- **Known:** Brun (1919), Zhang (2013), Maynard–Tao (2014), Polymath8b (246).
+- **Missing (the object that does not exist as a proof):** a proof that infinitely many primes p have p+2 also prime (e.g. a parity-crossing method, a Siegel-zero-free route, or a Friedlander–Iwaniec-type bilinear structure).
+- **Falsifier:** a valid theorem that the set of twin primes is finite, or a demonstrated failure of the core bounded-gap estimate.
+
+## G14 — Legendre's conjecture
+- **Tier:** B (external open)
+- **Subject:** Legendre's conjecture (a prime between n² and (n+1)²)
+- **Status:** RESEARCHED
+- **Related cards:** []
+- **Proof attempt:** partial - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Legendre.lean
+- **as_of:** 2026-10-18
+- **Reduction:** follows from a prime-gap bound of size O(√x) (e.g. θ(x)=x+O(x^{1/2+ε})); verified numerically to large n.
+- **Barrier:** no unconditional prime-gap bound this small is known; best is ~x^{0.525} (Baker–Harman–Pintz 2001).
+- **Known:** Legendre (1808), Ingham, Baker–Harman–Pintz (2001), Guth–Maynard (2016).
+- **Missing (the object that does not exist as a proof):** an unconditional proof that π((n+1)²) > π(n²) for every n (a prime in every interval [n²,(n+1)²)).
+- **Falsifier:** an n with no prime strictly between n² and (n+1)².
