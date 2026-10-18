@@ -135,4 +135,6 @@ fails when any row is stale by > 365 days.
 - **as_of:** 2026-10-18
 - **Reduction:** gap to rigorous 4D YM construction + spectral gap remains.
 - **Barrier:** constructive quantum field theory in 4D nonabelian: renormalization + mass gap unproven in a mathematically rigorous sense.
-- **Missing:** rigorous construction of pure YM in 4D with mass gap (technique/construction), not lattice numerics.
+- **Known:** lattice gauge theory (Wilson), constructive QFT program (Glimm–Jaffe–Spencer, etc.), asymptotic freedom (Gross–Wilczek, Politzer).
+- **Missing (the object that does not exist as a proof):** a rigorous construction of pure Yang–Mills theory in 4D on R^4 (in the appropriate Wightman/Haag–Kastler or Osterwalder–Schrader sense) that exhibits a **strictly positive mass gap** m>0 (a gap in the spectrum above the vacuum).
+- **Falsifier:** failure to satisfy Wightman axioms, failure to prove clustering/existence, or proof the constructed theory is trivial / has continuous spectrum to 0. Not satisfied by lattice numerics alone.
