@@ -16,10 +16,10 @@ yields one footprint per declaration, parsed into the table below
 
 ## Result
 
-- **Declarations audited:** 233, across the 38 cards C1 … C38 (some cards share declarations, e.g. `OrientationLaw` under C10 and C10-open).
+- **Declarations audited:** 272, across the 38 cards C1 … C38 (some cards share declarations, e.g. `OrientationLaw` under C10 and C10-open).
 - **Axioms observed across the whole register:** `propext`, `Classical.choice`, `Quot.sound` — the standard Lean/Mathlib foundations. Nothing else.
 - **`sorryAx`:** absent. No quoted declaration is proved by `sorry`.
-- **Axiom-free declarations:** 9 (`diagonal_not_mem_range`, `lawvere_fixedpoint`, `no_surjective_of_no_fixedpoint`, `no_surjective_predicates`, `existsUnique_iff_exists_and_unique`, `empty_classified_initial`, `unit_classified_terminal`, `profile_existence_is_open`, `type_ii_naming_not_certified`).
+- **Axiom-free declarations:** 9 (`lawvere_fixedpoint`, `no_surjective_of_no_fixedpoint`, `no_surjective_predicates`, `diagonal_not_mem_range`, `empty_classified_initial`, `unit_classified_terminal`, `existsUnique_iff_exists_and_unique`, `profile_existence_is_open`, `type_ii_naming_not_certified`).
 
 So every card that is tagged *Formal* or *Theorem* rests, at worst, on the
 three standard axioms — and this is checked for the *specific* declarations the
@@ -145,18 +145,20 @@ register's own tagging.
 | `OrientationBoundedness.orientation_decides_boundedness` | propext, Classical.choice, Quot.sound |
 | `OrientationBoundedness.repelling_iff_unbounded` | propext, Classical.choice, Quot.sound |
 | `OrientationBoundedness.boundedOrientation_floor` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientation_midpoint` | propext, Classical.choice, Quot.sound |
 | `OrientationBoundedness.boundedOrientation_ceiling` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientation_floor_midpoint_ceiling` | propext, Classical.choice, Quot.sound |
 | `OrientationBoundedness.boundedOrientation_antisymm` | propext, Classical.choice, Quot.sound |
 | `OrientationBoundedness.boundedOrientation_strictMonoOn` | propext, Classical.choice, Quot.sound |
 | `OrientationBoundedness.boundedOrientation_sign` | propext, Classical.choice, Quot.sound |
 | `OrientationBoundedness.boundedOrientation_reads_the_wall` | propext, Classical.choice, Quot.sound |
 | `OrientationBoundedness.boundedOrientation_eq_tanh` | propext, Classical.choice, Quot.sound |
 | `OrientationBoundedness.boundedOrientation_pow` | propext, Classical.choice, Quot.sound |
-| `OrientationBoundedness.tanh_add` | propext, Classical.choice, Quot.sound |
 | `OrientationBoundedness.boundedOrientation_mul` | propext, Classical.choice, Quot.sound |
 | `OrientationBoundedness.boundedOrientation_right_inv` | propext, Classical.choice, Quot.sound |
 | `OrientationBoundedness.boundedOrientation_left_inv` | propext, Classical.choice, Quot.sound |
 | `OrientationBoundedness.boundedOrientation_image` | propext, Classical.choice, Quot.sound |
+| `OrientationBoundedness.boundedOrientation_surjOn` | propext, Classical.choice, Quot.sound |
 | `OrientationBoundedness.boundedOrientation_bijOn` | propext, Classical.choice, Quot.sound |
 | `OrientationBoundedness.boundedOrientationScale` | propext, Classical.choice, Quot.sound |
 | `OrientationBoundedness.boundedOrientationScale_mem` | propext, Classical.choice, Quot.sound |
@@ -181,6 +183,9 @@ register's own tagging.
 | `TheoryOfEverything.orientation_sets_side` | propext, Classical.choice, Quot.sound |
 | `TheoryOfEverything.theoryOfEverything` | propext, Classical.choice, Quot.sound |
 | `TheoryOfEverything.twoNumbersClose` | propext, Classical.choice, Quot.sound |
+| `TheoryOfEverything.method_and_margin_barriers` | propext, Classical.choice, Quot.sound |
+| `TheoryOfEverything.order_sets_rung_bijective` | propext, Classical.choice, Quot.sound |
+| `TheoryOfEverything.orientation_not_injective_on_side` | propext, Classical.choice, Quot.sound |
 
 ### C13
 
