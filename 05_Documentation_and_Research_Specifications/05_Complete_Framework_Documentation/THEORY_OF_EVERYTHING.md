@@ -204,7 +204,7 @@ two-numbers claim. Each is stated with its **falsifier**, so it can fail.
 `04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/`) pins this
 program so it cannot drift:
 
-* the capstone module and all 14 of its register imports exist on disk and are
+* the capstone module and all 13 of its register imports exist on disk and are
   named here (the brick map);
 * the capstone exposes `order_sets_rung`, `orientation_sets_side`,
   `twoNumbersClose`, `order_sets_rung_bijective`, `orientation_not_injective_on_side`,

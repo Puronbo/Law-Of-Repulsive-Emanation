@@ -18,7 +18,7 @@ that any Millennium obligation is discharged. See `WHAT_THIS_DOES_NOT_PROVE.md`.
 
 ## 1. The mesh (verified ↔ verified)
 
-The internal graph has **64 module nodes** and **42 directed edges**. An edge
+The internal graph has **68 module nodes** and **50 directed edges**. An edge
 `A -> B` is exactly an `import PunoCalculus.B` line in module `A` (self-edges and
 `import Mathlib` excluded). The block below is parsed by the checker; it must
 equal the imports actually present in the tree.
@@ -105,9 +105,10 @@ The 38 card-carrying modules (the "verified findings" of this graph):
 | ZeroIndex | C21 | | |
 | ZeroMechanisms | C22 | | |
 
-The remaining 26 nodes are non-card modules (evidence carriers, not claims):
+The remaining 30 nodes are non-card modules (evidence carriers, not claims):
 `BSD`, `Basic`, `CascadeRatio`, `Collatz`, `Core`, `Cosmology.AcousticZeroFlow`,
 `Cosmology.OriginWindow`, `Curvature`, `EcaIsometry`, `Goldbach`, `Hodge`,
+`InformationBridge`, `InformationMixture`, `InformationPhi`, `InformationTime`,
 `Legendre`, `MassGap`, `MillenniumBridge`, `NavierStokes`, `Poincare`, `PvsNP`,
 `RH.Density`, `RH.Dominance`, `RH.Hankel`, `RH.LiCriterion`, `RH.Monotonicity`,
 `Removable`, `TwinPrime`, `ZeroZero`, `RH.NewmanFlow`.

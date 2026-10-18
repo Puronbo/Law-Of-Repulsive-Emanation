@@ -18,7 +18,10 @@ The checks, all offline:
    edge target resolves;
 4. every in-header citation string in the reference table appears in its module;
 5. every non-`--` provided document exists under the documentation directory;
-6. all 38 card tokens ``C1 ... C38`` are present in the card list.
+6. all 38 card tokens ``C1 ... C38`` are present in the card list;
+7. the stated `N module nodes` / `M directed edges` counts equal the real module
+   and import counts, and every module on disk is enumerated as a node (so a new
+   module cannot appear in the edge block yet be missing from the node lists).
 
 Run:  python -m pytest 04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_mathematical_links.py -q
 """
@@ -70,6 +73,32 @@ def _actual_edges():
                 if target != module:
                     edges.add((module, target))
     return edges
+
+
+def _disk_modules():
+    """Every Lean module under PunoCalculus (recursively), dotted."""
+    mods = set()
+    for root, _dirs, files in os.walk(LEAN_DIR):
+        for fname in files:
+            if fname.endswith(".lean"):
+                path = os.path.join(root, fname)
+                mods.add(os.path.relpath(path, LEAN_DIR).replace("\\", ".")[:-5])
+    return mods
+
+
+def _doc_node_sets(doc):
+    """(card_modules, noncard_modules) named in the 'Node labels' section."""
+    seg = doc[doc.index("### Node labels"):doc.index("## 2.")]
+    card = set()
+    for line in seg.splitlines():
+        if not line.startswith("|"):
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        for c in cells[0::2]:
+            if c and c != "module" and not set(c) <= set("-: "):
+                card.add(c)
+    noncard = set(re.findall(r"`([^`]+)`", seg[seg.index("The remaining"):]))
+    return card, noncard
 
 
 def _doc_edges(doc):
@@ -162,3 +191,29 @@ def test_all_cards_present():
     expected = {"C%d" % i for i in range(1, 39)}
     missing = sorted(expected - cards)
     assert not missing, "card tokens missing from the card list: %s" % missing
+
+
+def test_stated_module_and_edge_counts_match():
+    doc = _read(MAP_MD)
+    m_nodes = re.search(r"\*\*(\d+) module nodes\*\*", doc)
+    m_edges = re.search(r"\*\*(\d+) directed edges\*\*", doc)
+    assert m_nodes, "map must state '**N module nodes**'"
+    assert m_edges, "map must state '**M directed edges**'"
+    mods = _disk_modules()
+    edges = _actual_edges()
+    assert int(m_nodes.group(1)) == len(mods), (
+        "map states %s module nodes, %d on disk" % (m_nodes.group(1), len(mods))
+    )
+    assert int(m_edges.group(1)) == len(edges), (
+        "map states %s directed edges, %d real imports" % (m_edges.group(1), len(edges))
+    )
+
+
+def test_every_module_is_enumerated_as_a_node():
+    card, noncard = _doc_node_sets(_read(MAP_MD))
+    enumerated = card | noncard
+    mods = _disk_modules()
+    missing = sorted(mods - enumerated)
+    extra = sorted(enumerated - mods)
+    assert not missing, "modules on disk absent from the node lists: %s" % missing
+    assert not extra, "node lists name modules with no file on disk: %s" % extra

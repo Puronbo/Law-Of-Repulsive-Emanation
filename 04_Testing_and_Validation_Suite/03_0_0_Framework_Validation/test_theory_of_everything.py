@@ -8,7 +8,8 @@ pins that program so it cannot drift from the tree:
 
 1. the capstone module exists and exposes the six quoted declarations;
 2. every ``PunoCalculus`` module the capstone imports exists on disk and is named
-   in the program document (the brick map stays complete);
+   in the program document (the brick map stays complete), and the document's
+   stated import count matches the tree;
 3. the facts register ``theoryOfEverythingFacts`` has exactly five entries;
 4. the document states the honesty boundary (no Millennium problem settled) and
    names card C12, keeping the wall marked OPEN.
@@ -87,6 +88,15 @@ def test_every_capstone_import_exists_and_is_named_in_the_doc():
         if stem not in doc:
             problems.append(f"capstone import not named in the doc: {stem}")
     assert not problems, "\n".join(problems)
+
+
+def test_stated_import_count_matches_capstone():
+    m = re.search(r"all\s+(\d+)\s+of its register imports", _read(DOC))
+    assert m, "doc must state 'all N of its register imports'"
+    n = len(_capstone_imports(_read(CAPSTONE)))
+    assert int(m.group(1)) == n, (
+        "doc states %s register imports, capstone has %d" % (m.group(1), n)
+    )
 
 
 def test_capstone_is_named_in_the_doc():
