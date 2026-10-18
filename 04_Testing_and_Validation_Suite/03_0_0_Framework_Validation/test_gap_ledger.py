@@ -7,7 +7,10 @@ This gate enforces:
   (D) every row declares a **Proof attempt:** with a controlled kind
       (certificate | partial | no-go | citation-only | none) and every artifact
       path it names exists on disk AND is git-tracked (so CI checkouts have it).
-  Also: every G1..G25 heading in THE_GAP_LEDGER.md corresponds to a row.
+  (E) every row fills the five narrative fields (Reduction, Barrier, Known,
+      Missing, Falsifier) exactly once each and none is empty or left as TODO
+      (the forge emits "TODO"; this gate refuses it).
+  Also: every G1..G32 heading in THE_GAP_LEDGER.md corresponds to a row.
 """
 import ast
 import io
@@ -71,8 +74,20 @@ def _parse_gaps():
             'as_of': as_of.group(1) if as_of else '',
             'attempt': attempt.group(1).strip() if attempt else '',
             'pins': pins,
+            'narr': {label: re.findall(
+                r'\*\*' + re.escape(label) + r'[^:\n]*:\*\*\s*(.*)',
+                block, re.M) for label in NARRATIVE_LABELS},
         })
     return gaps
+
+#: the five per-row narrative fields (Gate E), in ledger order
+NARRATIVE_LABELS = [
+    'Reduction',
+    'Barrier',
+    'Known',
+    'Missing (the object that does not exist as a proof)',
+    'Falsifier',
+]
 
 #: controlled vocabulary for the Proof-attempt kind (Gate D)
 PROOF_KINDS = {'certificate', 'partial', 'no-go', 'citation-only', 'none'}
@@ -180,3 +195,26 @@ def test_ledgers_heading_count_agrees():
     text = _read(LEDGER)
     heads = re.findall(r'^##\s+(G\d+)', text, re.M)
     assert heads == [f'G{i}' for i in range(1, 33)], heads
+
+def test_e_narrative_fields_present_and_filled():
+    """Gate E: every row fills Reduction, Barrier, Known, Missing and Falsifier
+    exactly once each, none empty, and none left as ``TODO`` (the forge's stub),
+    so an unfinished or forged row cannot masquerade as a researched gap."""
+    not_once = []
+    empty = []
+    todo = []
+    for g in _parse_gaps():
+        for label in NARRATIVE_LABELS:
+            vals = g['narr'].get(label, [])
+            if len(vals) != 1:
+                not_once.append((g['token'], label, len(vals)))
+                continue
+            v = vals[0].strip()
+            if not v:
+                empty.append((g['token'], label))
+            elif v.upper().startswith('TODO'):
+                todo.append((g['token'], label))
+    assert not not_once, ("rows must carry each narrative field exactly once: %s"
+                          % not_once)
+    assert not empty, "rows with an empty narrative field: %s" % empty
+    assert not todo, "rows left as TODO (unfinished): %s" % todo

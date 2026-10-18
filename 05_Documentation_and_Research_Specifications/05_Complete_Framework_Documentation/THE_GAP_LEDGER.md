@@ -84,6 +84,7 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **as_of:** 2026-10-18
 - **Reduction:** `boundedOrientation r = (1/2)tanh(c·log r)` satisfies the composition law for every real `c` — uniqueness is false.
 - **Barrier:** the margin cannot be forced unique by the law alone; closeness/selection remains open.
+- **Known:** `OrientationBoundedness.lean` (`boundedOrientation`, `boundedOrientationScale`); the one-parameter scale family `boundedOrientationScale c` satisfies the composition law for every real `c`, so uniqueness is refuted; register cards C11/C12 record the margin.
 - **Missing (the object that does not exist as a proof):** an **additional selection axiom** (with a physical/mathematical justification) that picks a canonical `c`, or a proof that all `c` are equivalent for all claims. The ledger requires either a canonical choice with justification, or a no-go proof.
 - **Falsifier:** show no such selection is compatible with the register's claims, or derive contradiction from a proposed selection axiom.
 
