@@ -234,6 +234,29 @@ theorem logistic_conjugacy (φ : ℝ) :
   rw [logistic, Real.sin_two_mul]
   nlinarith [Real.sin_sq_add_cos_sq φ]
 
+/-- The derivative of the logistic map: `f'(x) = 4 − 8x`.  Proved through the
+outer scalar derivative rather than by `convert`-ing a `HasDerivAt` product, so
+no instance-diamond between the various `ℝ`-module structures can appear. -/
+theorem hasDerivAt_logistic (x : ℝ) : HasDerivAt logistic (4 - 8 * x) x := by
+  have hd : deriv logistic x = 4 - 8 * x := by
+    have hfun : logistic = (fun y : ℝ => 4 * y) - (fun y : ℝ => 4 * y ^ 2) := by
+      funext y; unfold logistic; simp only [Pi.sub_apply]; ring
+    rw [hfun, deriv_sub (by fun_prop) (by fun_prop), deriv_const_mul_id,
+      deriv_const_mul_field, deriv_pow_field]
+    ring_nf
+  rw [← hd]
+  exact (by unfold logistic; fun_prop : DifferentiableAt ℝ logistic x).hasDerivAt
+
+/-- At the fixed point `0` the derivative is `f'(0) = 4`. -/
+theorem deriv_logistic_zero : deriv logistic 0 = 4 := by
+  simpa using (hasDerivAt_logistic 0).deriv
+
+/-- **The origin is a repelling fixed point.** `|f'(0)| = 4 > 1`, so the
+orbit of every nearby point is pushed *away* from `0` — this is the precise
+sense in which "from zero it expands". -/
+theorem logistic_zero_repelling : 1 < |deriv logistic 0| := by
+  rw [deriv_logistic_zero]; norm_num
+
 /-- Register of rigorously established facts about the polar parabola. -/
 def parabolaVertexFacts : List (String × String) :=
   [ ("vertex_radius", "r(0) = l / (1 + e); for l = e = 1 this is 1/2"),
@@ -246,8 +269,10 @@ def parabolaVertexFacts : List (String × String) :=
     ("vertexCoefficient_eq", "l*e/(2*(1+e)^2) = l/8 - l*(1-e)^2/(8*(1+e)^2)"),
     ("logistic_vertex", "logistic(1/2) = 1: the apex of 4x(1-x) sits at x = 1/2"),
     ("logistic_conjugacy", "sin(2*phi)^2 = logistic(sin^2 phi): the parabola is the doubling map"),
+    ("logistic_deriv", "f'(x) = 4 - 8x, so f'(0) = 4"),
+    ("logistic_zero_repelling", "|f'(0)| = 4 > 1: the origin is a repelling fixed point"),
     ("mirror", "the shadow x -> 1/x swaps the vertex radius 1/2 with 2 (see ShadowZeroZero)") ]
 
-theorem parabolaVertexFacts_length : parabolaVertexFacts.length = 11 := by decide
+theorem parabolaVertexFacts_length : parabolaVertexFacts.length = 13 := by decide
 
 end PunoCalculus.ParabolaVertex
