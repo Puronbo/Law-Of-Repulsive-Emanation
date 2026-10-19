@@ -741,3 +741,53 @@ def test_wieferich_primes_are_machine_checked():
     assert "wieferichFacts.length = 10" in src
     root = _lean("../PunoCalculus.lean")
     assert "import PunoCalculus.Wieferich" in root, "root must import Wieferich"
+
+def test_wilson_primes_are_machine_checked():
+    """G36: the three known Wilson primes are certified *inside* Lean.  563 needs
+    an exact modular factorial (`factMod`) because 562! has 1304 digits; the
+    kernel `decide` on `factMod 562 563^2` is the certificate, and the module
+    proves Wilson's theorem (the universal first-order zero) plus the order-2 /
+    Wilson-quotient restatements.  Infinitude stays OPEN."""
+    src = _lean("Wilson.lean")
+    for decl in ("def IsWilsonPrime", "def factMod", "theorem factMod_modEq",
+                 "theorem factMod_lt", "theorem factMod_eq",
+                 "theorem factMod_562", "theorem prime_five",
+                 "theorem prime_thirteen", "theorem prime_563",
+                 "theorem wilson_dvd", "theorem wilson_five",
+                 "theorem wilson_thirteen", "theorem wilson_563_sq",
+                 "theorem wilson_563", "theorem sq_dvd_iff_dvd_div",
+                 "def wilsonQuotient",
+                 "theorem isWilsonPrime_iff_quotient_dvd",
+                 "theorem quotient_five_dvd", "theorem quotient_thirteen_dvd",
+                 "theorem quotient_563_dvd",
+                 "theorem first_order_tests_are_universal",
+                 "def wilsonFacts", "theorem wilsonFacts_length"):
+        assert decl in src, "Wilson.lean is missing %r" % decl
+    assert "sorry" not in src, "Wilson.lean must not contain sorry"
+    assert "native_decide" not in src, "certificate must be axiom-free (no native_decide)"
+    assert "wilsonFacts.length = 11" in src
+    assert "infinitely many" not in src or "OPEN" in src, (
+        "Wilson.lean must not claim infinitude (it stays OPEN)")
+    root = _lean("../PunoCalculus.lean")
+    assert "import PunoCalculus.Wilson" in root, "root must import Wilson"
+
+def test_first_order_certificate_no_go_is_machine_checked():
+    """G37: the no-go itself is machine-checked, not asserted.  `fermat_dvd`
+    proves the first-order Fermat vanishing for every odd prime, `3` is a
+    counterexample to the square condition, and their combination refutes the
+    pointwise equivalence -- so no certificate whose only content is the
+    first-order test can be sound and complete.  This is a barrier against the
+    method; it does NOT decide the infinitude of Wieferich primes."""
+    src = _lean("Wieferich.lean")
+    for decl in ("theorem fermat_dvd", "theorem prime_3",
+                 "theorem not_wieferich_3",
+                 "theorem first_order_holds_but_not_wieferich_3",
+                 "theorem first_order_not_iff_isWieferich"):
+        assert decl in src, "Wieferich.lean is missing the no-go decl %r" % decl
+    assert "¬ ∀ p, (p ∣ 2 ^ (p - 1) - 1) ↔ IsWieferich p" in src, (
+        "the no-go statement must quantify over all p")
+    assert "sorry" not in src, "Wieferich.lean must not contain sorry"
+    assert "native_decide" not in src, "no-go must be axiom-free (no native_decide)"
+    wsrc = _lean("Wilson.lean")
+    assert "theorem first_order_tests_are_universal" in wsrc, (
+        "the Wilson sibling of the no-go must be machine-checked too")

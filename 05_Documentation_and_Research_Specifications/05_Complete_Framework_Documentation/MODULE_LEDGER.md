@@ -42,7 +42,8 @@ imported by the root, fails the checker.
 | `Cosmology.AcousticZeroFlow` | cosmology | — | acoustic 0/0-flow cosmological model (framing; gate-A excluded) |
 | `Cosmology.OriginWindow` | cosmology | — | origin-window cosmological model (framing; gate-A excluded) |
 | `Crease` | core-scaffold | — | the local normal form of every fold: the fold germ `Φ a x = x³ − a·x` with crease set `3x² = a` (`deriv_fold_zero_iff`), two creases `±√(a/3)` for `a > 0` colliding at the cusp `a = 0` (`crease_eq_sqrt_or`, `crease_zero_iff`), the cusp potential `V a b x = x⁴/4 − a·x²/2 − b·x` whose gradient is the fold germ (`deriv_cusp`), the crease as a double root on the cusp curve `(x−r)²(x+2r)` with vanishing discriminant `4a³ = 27b²` (`cusp_curve_factor`, `cusp_discriminant`), and the logistic apex `x = 1/2` as a crease (`deriv_logistic_half`); the brain-folding reading is empirical (see `BRAIN_CREASE.md`) |
-| `Wieferich` | core-scaffold | — | the arithmetic crease: Wieferich primes (base 2) as the second-order zero of the Fermat resolvent. Fermat gives `p ∣ 2^(p-1) − 1` (`fermat_dvd`), so the quotient `q_p = (2^(p-1) − 1)/p` is an integer (a resolvable 0/0); Wieferich ⟺ `p² ∣ 2^(p-1) − 1` (`isWieferich_iff_sq_dvd`) ⟺ `p ∣ q_p` (`isWieferich_iff_quotient_dvd`). Kernel-checked instances `1093` and `3511` (`wieferich_1093`, `wieferich_3511`) plus their quotients (`quotient_1093_dvd`, `quotient_3511_dvd`); infinitude OPEN |
+| `Wieferich` | core-scaffold | — | the arithmetic crease: Wieferich primes (base 2) as the second-order zero of the Fermat resolvent. Fermat gives `p ∣ 2^(p-1) − 1` (`fermat_dvd`), so the quotient `q_p = (2^(p-1) − 1)/p` is an integer (a resolvable 0/0); Wieferich ⟺ `p² ∣ 2^(p-1) − 1` (`isWieferich_iff_sq_dvd`) ⟺ `p ∣ q_p` (`isWieferich_iff_quotient_dvd`). Kernel-checked instances `1093` and `3511` (`wieferich_1093`, `wieferich_3511`) plus their quotients (`quotient_1093_dvd`, `quotient_3511_dvd`); infinitude OPEN. Carries the first-order no-go: `p ∣ 2^(p-1) − 1` holds for every odd prime while `¬ IsWieferich 3`, so no first-order certificate can detect the crease (`first_order_not_iff_isWieferich`) |
+| `Wilson` | core-scaffold | — | the Wilson arithmetic crease: Wilson primes as the second-order zero of the Wilson resolvent. Wilson's theorem gives `p ∣ (p-1)! + 1` for every prime (`wilson_dvd`), a universal first-order zero; a Wilson prime ⟺ `p² ∣ (p-1)! + 1` ⟺ `p ∣ w_p` (`isWilsonPrime_iff_quotient_dvd`). Exact modular factorial `factMod` with bridge `factMod_eq` certifies `562! ≡ −1 (mod 563²)` by `decide`, so all three instances `5`, `13`, `563` are kernel-checked (`wilson_five`, `wilson_thirteen`, `wilson_563`); `first_order_tests_are_universal` puts Fermat's and Wilson's first-order tests side by side. Infinitude OPEN |
 | `CriticalAmplitude` | card | C36 | carries card(s) C36 |
 | `CriticalLadder` | card | C1 | carries card(s) C1 |
 | `Curvature` | rh-research | — | numerical curvature of `xi'` / L-dash positivity at Riemann zeros |
@@ -108,6 +109,6 @@ imported by the root, fails the checker.
 
 ## Coverage
 
-- **Modules on disk:** 73 (all imported by `PunoCalculus.lean`).
+- **Modules on disk:** 74 (all imported by `PunoCalculus.lean`).
 - **Card-carrying modules (`card`):** 38.
-- **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold / information-bridge):** 35.
+- **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold / information-bridge):** 36.

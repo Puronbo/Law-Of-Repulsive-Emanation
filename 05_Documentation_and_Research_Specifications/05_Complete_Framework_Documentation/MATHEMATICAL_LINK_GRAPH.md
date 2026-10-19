@@ -18,7 +18,7 @@ that any Millennium obligation is discharged. See `WHAT_THIS_DOES_NOT_PROVE.md`.
 
 ## 1. The mesh (verified ↔ verified)
 
-The internal graph has **73 module nodes** and **54 directed edges**. An edge
+The internal graph has **74 module nodes** and **55 directed edges**. An edge
 `A -> B` is exactly an `import PunoCalculus.B` line in module `A` (self-edges and
 `import Mathlib` excluded). The block below is parsed by the checker; it must
 equal the imports actually present in the tree.
@@ -74,6 +74,7 @@ TheoryOfEverything -> OrientationBoundedness
 TheoryOfEverything -> QuantitativeContinuation
 TheoryOfEverything -> StableBounded
 TheoryOfEverything -> SufficiencyLoop
+Wilson -> Wieferich
 ZeroMechanisms -> ZeroIndex
 ZeroMechanisms -> ZeroProbe
 ZeroMechanisms -> ZeroValuation
@@ -109,13 +110,13 @@ The 38 card-carrying modules (the "verified findings" of this graph):
 | ZeroIndex | C19 | | |
 | ZeroMechanisms | C20 | | |
 
-The remaining 35 nodes are non-card modules (evidence carriers, not claims):
+The remaining 36 nodes are non-card modules (evidence carriers, not claims):
 `BSD`, `Basic`, `Beal`, `CascadeRatio`, `Collatz`, `Core`, `Cosmology.AcousticZeroFlow`,
 `Cosmology.OriginWindow`, `Crease`, `Curvature`, `EcaIsometry`, `Goldbach`, `Hodge`,
 `InformationBridge`, `InformationMixture`, `InformationPhi`, `InformationTime`,
 `Legendre`, `MassGap`, `MillenniumBridge`, `ParabolaVertex`, `NavierStokes`, `Poincare`, `PvsNP`,
 `RH.Density`, `RH.Dominance`, `RH.Hankel`, `RH.LiCriterion`, `RH.Monotonicity`,
-`Removable`, `ShadowZeroZero`, `TwinPrime`, `Wieferich`, `ZeroZero`, `RH.NewmanFlow`.
+`Removable`, `ShadowZeroZero`, `TwinPrime`, `Wieferich`, `Wilson`, `ZeroZero`, `RH.NewmanFlow`.
 
 ## 2. The chains
 
@@ -174,6 +175,21 @@ columns plus one aggregator. (Card labels on each node.)
   analogue of a `Crease`. The two known instances `1093` and `3511` are proved
   (`wieferich_1093`, `wieferich_3511`, kernel-checked by `decide`). Infinitude
   stays OPEN.
+- **The Wilson crease.** `Wilson -> Wieferich`: the same first-order →
+  second-order reading, run on a second, independent resolvent. Wilson's theorem
+  says `p | (p-1)! + 1` for *every* prime (`wilson_dvd`), so the Wilson resolvent
+  already vanishes at first order everywhere on its domain — and Fermat's
+  `p | 2^(p-1) − 1` does the same on its own (`Wieferich.fermat_dvd`);
+  `first_order_tests_are_universal` states both at once. That is precisely why
+  neither first-order test can discriminate: `first_order_not_iff_isWieferich`
+  (in `Wieferich`) exhibits `p = 3`, which passes the first-order test and is not
+  Wieferich, so no first-order certificate can detect the crease — a proved
+  barrier, not an assertion. The discriminating content is the *second-order*
+  zero, `p² | (p-1)! + 1` ⟺ `p | w_p` (`isWilsonPrime_iff_quotient_dvd`). All
+  three known instances are certified in the kernel: `5` and `13` by `norm_num`,
+  and `563` — whose factorial has 1304 digits — by the exact modular factorial
+  `factMod` bridged to `562! % 563²` (`factMod_eq`) and discharged by `decide`
+  (`wilson_five`, `wilson_thirteen`, `wilson_563`). Infinitude stays OPEN.
 - **The Beal crease at exponent three.** `Beal` (standalone, Mathlib only): a
   *proven* modular obstruction behind the finite certificate. A base coprime to `3`
   is a unit of `ZMod 9` and has cube `±1 (mod 9)` (`cube_mod9`), and no two such
@@ -228,6 +244,7 @@ the module source and that any named document exists in a CI checkout.
 | ZeroMechanisms | THE_0_OVER_0_ATLAS | — |
 | ZeroProbe | THE_0_OVER_0_ATLAS | — |
 | Crease | Mota & Herculano-Houzel | BRAIN_CREASE.md |
+| Wilson | Wilson 1770 | — |
 <!-- REFS:END -->
 
 ## 4. Provided reference library (tracked)

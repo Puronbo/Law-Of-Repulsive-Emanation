@@ -72,3 +72,4 @@ import PunoCalculus.ShadowZeroZero
 import PunoCalculus.ParabolaVertex
 import PunoCalculus.Crease
 import PunoCalculus.Wieferich
+import PunoCalculus.Wilson

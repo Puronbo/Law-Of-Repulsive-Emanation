@@ -26,8 +26,19 @@
   primes rare.
 
   Scope.  Proves: the two known instances and their primality; the order-2
-  divisibility restatement; Fermat's divisibility; the quotient restatement; and
-  the two quotient instances.  Infinitude stays OPEN.
+  divisibility restatement; Fermat's divisibility; the quotient restatement; the
+  two quotient instances; and the *no-go* that records why a first-order
+  certificate cannot work at all (see `first_order_not_iff_isWieferich`).
+  Infinitude stays OPEN.
+
+  The no-go.  `fermat_dvd` makes the first-order resolvent `2^(p-1) - 1` vanish
+  mod `p` for *every* odd prime, so the first-order predicate is identically true
+  on that domain and separates nothing.  `not_wieferich_3` gives a prime that
+  passes that test and is still not Wieferich, so the two predicates are not
+  pointwise equivalent (`first_order_not_iff_isWieferich`).  Any certificate whose
+  only content is the first-order vanishing therefore accepts every odd prime and
+  cannot detect the crease: the discriminating information lives entirely in the
+  second order.  This barrier is *proved*, not asserted.
 -/
 import Mathlib
 
@@ -99,6 +110,34 @@ theorem quotient_1093_dvd : 1093 ∣ fermatQuotient2 1093 :=
 /-- `3511` divides its Fermat quotient: the second-order zero at 3511. -/
 theorem quotient_3511_dvd : 3511 ∣ fermatQuotient2 3511 :=
   (isWieferich_iff_quotient_dvd 3511 prime_3511 (by norm_num)).mp wieferich_3511
+
+theorem prime_3 : Nat.Prime 3 := by norm_num
+
+/-- The witness prime for the no-go: `3` is not a Wieferich prime, since
+`2^(3-1) % 3^2 = 4`, not `1`. -/
+theorem not_wieferich_3 : ¬ IsWieferich 3 := by
+  intro h
+  have := h.2
+  norm_num at this
+
+/-- The discriminating witness: `p = 3` satisfies the *first-order* Fermat
+vanishing `3 | 2^2 - 1` and yet is not Wieferich.  Passing the first-order test
+therefore does not imply the crease. -/
+theorem first_order_holds_but_not_wieferich_3 :
+    3 ∣ 2 ^ (3 - 1) - 1 ∧ ¬ IsWieferich 3 :=
+  ⟨by norm_num, not_wieferich_3⟩
+
+/-- **No-go for first-order certificates.**  There is no pointwise equivalence
+between the first-order Fermat vanishing `p | 2^(p-1) - 1` and the Wieferich
+condition: the first holds for *every* odd prime (`fermat_dvd`), yet it fails to
+imply the second already at `p = 3`.  Hence a certificate whose only content is
+the first-order vanishing accepts every odd prime and cannot detect the crease --
+the discriminating information is entirely second-order.  The barrier is proved
+here rather than asserted; it does *not* say Wieferich primes are finite. -/
+theorem first_order_not_iff_isWieferich :
+    ¬ ∀ p, (p ∣ 2 ^ (p - 1) - 1) ↔ IsWieferich p := by
+  intro h
+  exact not_wieferich_3 ((h 3).mp (by norm_num))
 
 /-- Register of rigorously established facts about Wieferich primes (base 2). -/
 def wieferichFacts : List (String × String) :=
