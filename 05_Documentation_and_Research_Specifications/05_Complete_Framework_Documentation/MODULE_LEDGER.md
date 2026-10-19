@@ -70,6 +70,7 @@ imported by the root, fails the checker.
 | `OnsagerCriterion` | card | C27 | carries card(s) C27 |
 | `OrientationBoundedness` | card | C8, C9 | carries card(s) C8, C9 |
 | `OrientationLaw` | card | C8, C8-open, C9 | carries card(s) C8, C8-open, C9 |
+| `ParabolaVertex` | core-scaffold | — | the conic vertex as a removable 0/0: the radial excess `(r(θ) − r(0))/θ² → l·e/(2(1+e)²)` (`vertex_removable`), `1/8` for the vertex-at-`1/2` parabola (`vertex_removable_one`), and the escape direction as a pole, not a removable value (`escape_pole`) |
 | `Poincare` | millennium-cert | — | numerical Poincare record; no settlement claim |
 | `PvsNP` | millennium-cert | — | contour-recorded wall (`noPolynomialCompilationKnown`, `compilation_wall_recorded`); no settlement claim |
 | `QuantitativeContinuation` | card | C4 | carries card(s) C4 |
@@ -104,6 +105,6 @@ imported by the root, fails the checker.
 
 ## Coverage
 
-- **Modules on disk:** 69 (all imported by `PunoCalculus.lean`).
+- **Modules on disk:** 70 (all imported by `PunoCalculus.lean`).
 - **Card-carrying modules (`card`):** 38.
-- **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold / information-bridge):** 31.
+- **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold / information-bridge):** 32.

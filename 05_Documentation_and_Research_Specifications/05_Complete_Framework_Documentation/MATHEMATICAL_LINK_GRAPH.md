@@ -18,7 +18,7 @@ that any Millennium obligation is discharged. See `WHAT_THIS_DOES_NOT_PROVE.md`.
 
 ## 1. The mesh (verified ↔ verified)
 
-The internal graph has **69 module nodes** and **51 directed edges**. An edge
+The internal graph has **70 module nodes** and **52 directed edges**. An edge
 `A -> B` is exactly an `import PunoCalculus.B` line in module `A` (self-edges and
 `import Mathlib` excluded). The block below is parsed by the checker; it must
 equal the imports actually present in the tree.
@@ -44,6 +44,7 @@ MillenniumBridge -> EcaIsometry
 OnePattern -> GreatAttractor
 OrientationBoundedness -> GreatAttractor
 OrientationLaw -> OrientationBoundedness
+ParabolaVertex -> ZeroZero
 QuantitativeContinuation -> ContinuationCriterion
 QuantitativeContinuation -> EnstrophyBarrier
 RH.NewmanFlow -> RH.Hankel
@@ -106,11 +107,11 @@ The 38 card-carrying modules (the "verified findings" of this graph):
 | ZeroIndex | C19 | | |
 | ZeroMechanisms | C20 | | |
 
-The remaining 31 nodes are non-card modules (evidence carriers, not claims):
+The remaining 32 nodes are non-card modules (evidence carriers, not claims):
 `BSD`, `Basic`, `CascadeRatio`, `Collatz`, `Core`, `Cosmology.AcousticZeroFlow`,
 `Cosmology.OriginWindow`, `Curvature`, `EcaIsometry`, `Goldbach`, `Hodge`,
 `InformationBridge`, `InformationMixture`, `InformationPhi`, `InformationTime`,
-`Legendre`, `MassGap`, `MillenniumBridge`, `NavierStokes`, `Poincare`, `PvsNP`,
+`Legendre`, `MassGap`, `MillenniumBridge`, `ParabolaVertex`, `NavierStokes`, `Poincare`, `PvsNP`,
 `RH.Density`, `RH.Dominance`, `RH.Hankel`, `RH.LiCriterion`, `RH.Monotonicity`,
 `Removable`, `ShadowZeroZero`, `TwinPrime`, `ZeroZero`, `RH.NewmanFlow`.
 
@@ -138,6 +139,11 @@ columns plus one aggregator. (Card labels on each node.)
   `x ↦ 1/x` relocates a removable 0/0 (`0 → ∞`) keeping its value, and as the
   term-reciprocal gives the `∞/∞` mirror that inverts it — the one reverse in the
   register proved to be an exact involution.
+- **Conic vertex.** `ParabolaVertex -> ZeroZero`: the polar conic `r(θ) =
+  l/(1 + e·cos θ)` with focus at the origin (the framework's zero); the radial
+  excess above the vertex is a removable 0/0 with value `l·e/(2(1+e)²)` (equals
+  `1/8` for the vertex-at-`1/2` parabola), while the escape direction `θ → π` is
+  a genuine pole — a Vanishing-Rate instance built on the `ZeroZero` limit family.
 - **Removable bridge.** `ZeroLink (C13) -> RemovableValue (C15) ->
   RemovableComplexBridge (C21) -> LiouvilleBridge (C22)`: the value mechanism
   lifted to complex analysis and then to Liouville.

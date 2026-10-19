@@ -68,3 +68,4 @@ import PunoCalculus.InformationMixture
 import PunoCalculus.InformationPhi
 import PunoCalculus.InformationTime
 import PunoCalculus.ShadowZeroZero
+import PunoCalculus.ParabolaVertex
