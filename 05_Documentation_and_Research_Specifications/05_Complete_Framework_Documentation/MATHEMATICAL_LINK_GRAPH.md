@@ -18,7 +18,7 @@ that any Millennium obligation is discharged. See `WHAT_THIS_DOES_NOT_PROVE.md`.
 
 ## 1. The mesh (verified ↔ verified)
 
-The internal graph has **70 module nodes** and **52 directed edges**. An edge
+The internal graph has **70 module nodes** and **53 directed edges**. An edge
 `A -> B` is exactly an `import PunoCalculus.B` line in module `A` (self-edges and
 `import Mathlib` excluded). The block below is parsed by the checker; it must
 equal the imports actually present in the tree.
@@ -44,6 +44,7 @@ MillenniumBridge -> EcaIsometry
 OnePattern -> GreatAttractor
 OrientationBoundedness -> GreatAttractor
 OrientationLaw -> OrientationBoundedness
+ParabolaVertex -> GreatAttractor
 ParabolaVertex -> ZeroZero
 QuantitativeContinuation -> ContinuationCriterion
 QuantitativeContinuation -> EnstrophyBarrier
@@ -144,6 +145,9 @@ columns plus one aggregator. (Card labels on each node.)
   excess above the vertex is a removable 0/0 with value `l·e/(2(1+e)²)` (equals
   `1/8` for the vertex-at-`1/2` parabola), while the escape direction `θ → π` is
   a genuine pole — a Vanishing-Rate instance built on the `ZeroZero` limit family.
+  Its dynamical reading `ParabolaVertex -> GreatAttractor` reuses the framework's
+  own `fixedPoint_repels`: the logistic parabola `4x(1−x)` has `f'(0) = 4 > 1`, so
+  the vertex-origin is a fixed point the map repels its neighbourhood from.
 - **Removable bridge.** `ZeroLink (C13) -> RemovableValue (C15) ->
   RemovableComplexBridge (C21) -> LiouvilleBridge (C22)`: the value mechanism
   lifted to complex analysis and then to Liouville.

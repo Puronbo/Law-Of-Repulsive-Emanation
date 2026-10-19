@@ -1,5 +1,6 @@
 import Mathlib
 import PunoCalculus.ZeroZero
+import PunoCalculus.GreatAttractor
 
 /-!
 # The conic vertex as a removable 0/0
@@ -257,6 +258,20 @@ sense in which "from zero it expands". -/
 theorem logistic_zero_repelling : 1 < |deriv logistic 0| := by
   rw [deriv_logistic_zero]; norm_num
 
+/-- The repelling is *eventual*, not merely a derivative inequality: this is
+the framework's own `GreatAttractor.fixedPoint_repels`, instantiated at the
+logistic parabola.  It closes the loop between the conic vertex and the
+"Law of Repulsive Emanation": the point where the radius bends (`x = 0`) is
+exactly a point the map drives the known neighbourhood away from. -/
+theorem logistic_zero_repelling_nhd :
+    ∀ᶠ x : ℝ in 𝓝[≠] 0, |x| < |logistic x| := by
+  have h : ∀ᶠ x : ℝ in 𝓝[≠] 0, |x - 0| < |logistic x - 0| :=
+    PunoCalculus.GreatAttractor.fixedPoint_repels
+      (by simpa using hasDerivAt_logistic 0)
+      (by norm_num [logistic])
+      (by norm_num)
+  simpa only [sub_zero] using h
+
 /-- Register of rigorously established facts about the polar parabola. -/
 def parabolaVertexFacts : List (String × String) :=
   [ ("vertex_radius", "r(0) = l / (1 + e); for l = e = 1 this is 1/2"),
@@ -271,8 +286,9 @@ def parabolaVertexFacts : List (String × String) :=
     ("logistic_conjugacy", "sin(2*phi)^2 = logistic(sin^2 phi): the parabola is the doubling map"),
     ("logistic_deriv", "f'(x) = 4 - 8x, so f'(0) = 4"),
     ("logistic_zero_repelling", "|f'(0)| = 4 > 1: the origin is a repelling fixed point"),
+    ("logistic_zero_repelling_nhd", "|x| < |logistic x| eventually near 0 (GreatAttractor.fixedPoint_repels)"),
     ("mirror", "the shadow x -> 1/x swaps the vertex radius 1/2 with 2 (see ShadowZeroZero)") ]
 
-theorem parabolaVertexFacts_length : parabolaVertexFacts.length = 13 := by decide
+theorem parabolaVertexFacts_length : parabolaVertexFacts.length = 14 := by decide
 
 end PunoCalculus.ParabolaVertex
