@@ -28,6 +28,11 @@ This module formalises the local mathematics in its entirety:
 * the **cusp curve** itself: parametrised by `a = 3r²`, `b = −2r³`, the gradient
   factors as `(x − r)²(x + 2r)` — the crease is exactly a **double root**, and the
   discriminant vanishes, `4a³ = 27b²`;
+* the **discriminant, identified**: the fold cubic `X³ − aX − b` is a `Cubic`, and
+  Mathlib's actual `Cubic.discr` (a Sylvester-determinant discriminant) computes to
+  `4a³ − 27b²`.  So the cusp curve is not merely a curve on which a discriminant
+  identity happens to hold — it is exactly the discriminant-zero locus of the fold's
+  cubic, and there the cubic factors with a double root;
 * and the concrete instance from `ParabolaVertex`: the **logistic apex** `x = 1/2`
   is a crease of the doubling map (`deriv logistic (1/2) = 0`) — the same point the
   conic vertex sits on.
@@ -42,6 +47,8 @@ and that statement is complete.
 noncomputable section
 
 namespace PunoCalculus.Crease
+
+open Polynomial
 
 /-- The fold germ in one parameter: `Φ a x = x³ − a·x`.  Its derivative
 `3x² − a` vanishes on the crease set; the parameter `a` unfolds the fold and at
@@ -142,6 +149,51 @@ theorem cusp_curve_factor (r x : ℝ) :
 theorem cusp_discriminant (r : ℝ) : 4 * (3 * r ^ 2) ^ 3 = 27 * (-(2 * r ^ 3)) ^ 2 := by
   ring
 
+/-- **The fold cubic, as a `Cubic`.**  The cusp gradient `x³ − a·x − b`, viewed as a
+cubic with coefficients `⟨1, 0, −a, −b⟩`.  This is the object whose discriminant
+governs whether the crease is a genuine fold or a degenerate one. -/
+def depressedCubic (a b : ℝ) : Cubic ℝ := ⟨1, 0, -a, -b⟩
+
+/-- **Its polynomial form.** `toPoly ⟨1,0,−a,−b⟩ = X³ − C a · X − C b`. -/
+theorem depressedCubic_toPoly (a b : ℝ) :
+    (depressedCubic a b).toPoly = X ^ 3 - C a * X - C b := by
+  simp only [depressedCubic, Cubic.toPoly, C_1, C_0, map_neg, one_mul, zero_mul, add_zero,
+    neg_mul]
+  ring
+
+/-- **The discriminant of the fold cubic is `4a³ − 27b²`.**  This is not a coincidence
+of notation: `Cubic.discr` is Mathlib's genuine (Sylvester-determinant) discriminant
+`b²c² − 4ac³ − 4b³d − 27a²d² + 18abcd`, which for `⟨1,0,−a,−b⟩` collapses to
+`4a³ − 27b²`.  The identity `4a³ = 27b²` is therefore literally the statement
+`discr = 0`. -/
+theorem depressedCubic_discr (a b : ℝ) :
+    (depressedCubic a b).discr = 4 * a ^ 3 - 27 * b ^ 2 := by
+  simp only [depressedCubic, Cubic.discr]
+  ring
+
+/-- **The cusp curve is the discriminant-zero locus.**  The fold cubic has a multiple
+root exactly when `discr = 0`, i.e. exactly when `4a³ = 27b²` — the cusp curve in the
+`(a, b)` parameter plane. -/
+theorem discr_eq_zero_iff_cusp (a b : ℝ) :
+    (depressedCubic a b).discr = 0 ↔ 4 * a ^ 3 = 27 * b ^ 2 := by
+  rw [depressedCubic_discr]; constructor <;> intro h <;> linarith
+
+/-- On the cusp curve `a = 3r²`, `b = −2r³` the discriminant **vanishes** — combining
+`depressedCubic_discr` with the vanishing `cusp_discriminant` at the curve. -/
+theorem cusp_point_discr_zero (r : ℝ) :
+    (depressedCubic (3 * r ^ 2) (-(2 * r ^ 3))).discr = 0 := by
+  rw [depressedCubic_discr]; ring
+
+/-- **The cusp cubic has a double root.**  At the curve the fold cubic evaluates to
+`(x − r)²(x + 2r)` — the two creases have collided into one double root, exactly as
+`cusp_curve_factor` says for the germ, now stated for the cubic polynomial itself. -/
+theorem cusp_curve_factor_eval (r x : ℝ) :
+    (depressedCubic (3 * r ^ 2) (-(2 * r ^ 3))).toPoly.eval x
+      = (x - r) ^ 2 * (x + 2 * r) := by
+  rw [depressedCubic_toPoly]
+  simp only [eval_pow, eval_X, eval_sub, eval_mul, eval_C]
+  ring
+
 /-- **The logistic apex is a crease.**  The vertex-origin parabola of
 `ParabolaVertex` has its apex at `x = 1/2`, where the derivative of the doubling
 map vanishes: `deriv logistic (1/2) = 0`.  The conic vertex and the crease of the
@@ -164,9 +216,13 @@ def creaseFacts : List (String × String) :=
     ("deriv_cusp", "d/dx (V a b) x = x^3 - a*x - b: the fold germ is the cusp gradient"),
     ("cusp_curve_factor", "x^3 - 3r^2x + 2r^3 = (x-r)^2 (x+2r): the crease is a double root"),
     ("cusp_discriminant", "4a^3 = 27b^2 on the cusp curve a=3r^2, b=-2r^3"),
+    ("depressedCubic", "depressedCubic a b = <1,0,-a,-b>: the fold cubic X^3 - aX - b"),
+    ("depressedCubic_discr", "Cubic.discr of X^3 - aX - b computes to 4a^3 - 27b^2"),
+    ("discr_zero_iff_cusp", "the fold cubic has discr = 0 iff 4a^3 = 27b^2: the cusp curve IS the discriminant locus"),
+    ("cusp_double_root", "on the cusp curve the cubic evaluates to (x-r)^2 (x+2r): a double root"),
     ("logistic_apex_crease", "the logistic apex x = 1/2 is a crease: deriv logistic (1/2) = 0") ]
 
-/-- The register has exactly twelve entries. -/
-theorem creaseFacts_length : creaseFacts.length = 12 := by decide
+/-- The register has exactly sixteen entries. -/
+theorem creaseFacts_length : creaseFacts.length = 16 := by decide
 
 end PunoCalculus.Crease

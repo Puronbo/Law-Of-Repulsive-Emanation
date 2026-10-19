@@ -697,6 +697,10 @@ def test_crease_module_is_a_partial_formalization():
                  "theorem crease_zero_iff", "theorem no_crease_of_neg",
                  "theorem deriv_cusp", "theorem cusp_curve_factor",
                  "theorem cusp_discriminant", "theorem deriv_logistic_half",
+                 "def depressedCubic", "theorem depressedCubic_discr",
+                 "theorem discr_eq_zero_iff_cusp",
+                 "theorem cusp_point_discr_zero",
+                 "theorem cusp_curve_factor_eval",
                  "theorem creaseFacts_length"):
         assert decl in src, "Crease.lean is missing %r" % decl
     assert "sorry" not in src, "Crease.lean must not contain sorry"
