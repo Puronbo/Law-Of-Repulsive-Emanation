@@ -462,14 +462,15 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Subject:** Wieferich primes (2^(p-1) = 1 mod p^2)
 - **Status:** RESEARCHED
 - **Related cards:** []
-- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/wieferich_certificate.py
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/wieferich_certificate.py, 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Wieferich.lean
 - **Pin:** test_wieferich_primes_is_a_finite_certificate
-- **as_of:** 2026-10-18
-- **Reduction:** membership is decidable per prime: sieve the primes and test pow(2, p - 1, p^2) == 1, recording the Fermat quotient; this decides the finite set of Wieferich primes below any bound and exhibits their Fermat quotients.
-- **Barrier:** deciding which primes are Wieferich below a bound says nothing about how many there are; the heuristic (Crandall-Dilcher-Pomerance) that A(p) = (2^(p-1) - 1)/p mod p behaves randomly predicts ~ log log x Wieferich primes up to x, i.e. infinitely many, with an infinite expected gap to the next one, so no finite search can evidence infinitude.
-- **Known:** only 1093 (Meissner 1913) and 3511 (Beeger 1922) are known; no others below 6.7x10^15 (Dorais-Klyve 2011), since extended beyond 1.45x10^17 (OEIS A001220); Wieferich 1909 linked them to the first case of Fermat's Last Theorem; Silverman 1988 proved finitely many follow from the abc conjecture; base-3 (Mirimanoff) primes are 11 and 1006003.
-- **Missing (the object that does not exist as a proof):** an unconditional proof that infinitely many Wieferich primes exist (equivalently a proof that the random-Fermat-quotient heuristic holds without the abc conjecture); also no proof that infinitely many non-Wieferich primes exist.
-- **Falsifier:** infinitely many primes p with 2^(p-1) not = 1 (mod p^2) beyond a point would refute infinitude of Wieferich primes; a Wieferich prime below 10^6 other than 1093 or 3511 would refute this finite certificate.
+- **Pin:** test_wieferich_primes_are_machine_checked
+- **as_of:** 2026-10-19
+- **Reduction:** membership is decidable per prime: sieve the primes and test pow(2, p - 1, p^2) == 1, recording the Fermat quotient; this decides the finite set of Wieferich primes below any bound and exhibits their Fermat quotients. The two known instances are additionally *machine-checked*: `Wieferich.lean` proves `IsWieferich 1093` and `IsWieferich 3511` by kernel `decide` (axiom-free), and proves the structural restatements `Wieferich p ↔ p^2 | 2^(p-1) - 1 ↔ p | (2^(p-1) - 1)/p` (the Fermat quotient's second-order zero). Reduction is finite (the range) plus exact (the instances).
+- **Barrier:** deciding which primes are Wieferich below a bound says nothing about how many there are; the heuristic (Crandall-Dilcher-Pomerance) that A(p) = (2^(p-1) - 1)/p mod p behaves randomly predicts ~ log log x Wieferich primes up to x, i.e. infinitely many, with an infinite expected gap to the next one, so no finite search can evidence infinitude. Machine-checking the two instances only certifies them, not the count.
+- **Known:** only 1093 (Meissner 1913) and 3511 (Beeger 1922) are known; no others below 6.7x10^15 (Dorais-Klyve 2011), since extended beyond 1.45x10^17 (OEIS A001220); Wieferich 1909 linked them to the first case of Fermat's Last Theorem; Silverman 1988 proved finitely many follow from the abc conjecture; base-3 (Mirimanoff) primes are 11 and 1006003. In `Wieferich.lean`: `prime_1093`, `prime_3511`, `wieferich_1093`, `wieferich_3511`, `fermat_dvd`, `isWieferich_iff_sq_dvd`, `isWieferich_iff_quotient_dvd`, `quotient_1093_dvd`, `quotient_3511_dvd` (register `wieferichFacts`, ten entries).
+- **Missing (the object that does not exist as a proof):** an unconditional proof that infinitely many Wieferich primes exist (equivalently a proof that the random-Fermat-quotient heuristic holds without the abc conjecture); also no proof that infinitely many non-Wieferich primes exist. The instances can be certified but the arithmetic crease's *frequency* cannot be counted.
+- **Falsifier:** infinitely many primes p with 2^(p-1) not = 1 (mod p^2) beyond a point would refute infinitude of Wieferich primes; a Wieferich prime below 10^6 other than 1093 or 3511 would refute the finite certificate; a Lean-accepted `IsWieferich p` whose `p` failed the modular identity would refute `Wieferich.lean`.
 
 ## G33 - Beal's conjecture (a^x+b^y=c^z with x,y,z>2, gcd=1 => none?)
 - **Tier:** B

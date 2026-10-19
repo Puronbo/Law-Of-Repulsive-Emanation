@@ -702,3 +702,21 @@ def test_crease_module_is_a_partial_formalization():
     assert "sorry" not in src, "Crease.lean must not contain sorry"
     root = _lean("../PunoCalculus.lean")
     assert "import PunoCalculus.Crease" in root, "root must import Crease"
+
+def test_wieferich_primes_are_machine_checked():
+    """G32 (strengthened): the two known Wieferich primes are certified *inside*
+    Lean (kernel `decide`, axiom-free), not merely by the Python range scan.  The
+    module also proves the Fermat-quotient restatement (the arithmetic crease)."""
+    src = _lean("Wieferich.lean")
+    for decl in ("def IsWieferich", "theorem prime_1093", "theorem prime_3511",
+                 "theorem wieferich_1093", "theorem wieferich_3511",
+                 "theorem isWieferich_iff_sq_dvd", "def fermatQuotient2",
+                 "theorem fermat_dvd", "theorem isWieferich_iff_quotient_dvd",
+                 "theorem quotient_1093_dvd", "theorem quotient_3511_dvd",
+                 "def wieferichFacts", "theorem wieferichFacts_length"):
+        assert decl in src, "Wieferich.lean is missing %r" % decl
+    assert "sorry" not in src, "Wieferich.lean must not contain sorry"
+    assert "native_decide" not in src, "certificate must be axiom-free (no native_decide)"
+    assert "wieferichFacts.length = 10" in src
+    root = _lean("../PunoCalculus.lean")
+    assert "import PunoCalculus.Wieferich" in root, "root must import Wieferich"

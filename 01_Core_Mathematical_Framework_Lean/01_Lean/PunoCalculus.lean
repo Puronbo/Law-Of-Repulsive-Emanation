@@ -70,3 +70,4 @@ import PunoCalculus.InformationTime
 import PunoCalculus.ShadowZeroZero
 import PunoCalculus.ParabolaVertex
 import PunoCalculus.Crease
+import PunoCalculus.Wieferich

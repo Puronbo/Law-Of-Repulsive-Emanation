@@ -18,7 +18,7 @@ that any Millennium obligation is discharged. See `WHAT_THIS_DOES_NOT_PROVE.md`.
 
 ## 1. The mesh (verified ↔ verified)
 
-The internal graph has **71 module nodes** and **54 directed edges**. An edge
+The internal graph has **72 module nodes** and **54 directed edges**. An edge
 `A -> B` is exactly an `import PunoCalculus.B` line in module `A` (self-edges and
 `import Mathlib` excluded). The block below is parsed by the checker; it must
 equal the imports actually present in the tree.
@@ -109,13 +109,13 @@ The 38 card-carrying modules (the "verified findings" of this graph):
 | ZeroIndex | C19 | | |
 | ZeroMechanisms | C20 | | |
 
-The remaining 33 nodes are non-card modules (evidence carriers, not claims):
+The remaining 34 nodes are non-card modules (evidence carriers, not claims):
 `BSD`, `Basic`, `CascadeRatio`, `Collatz`, `Core`, `Cosmology.AcousticZeroFlow`,
 `Cosmology.OriginWindow`, `Crease`, `Curvature`, `EcaIsometry`, `Goldbach`, `Hodge`,
 `InformationBridge`, `InformationMixture`, `InformationPhi`, `InformationTime`,
 `Legendre`, `MassGap`, `MillenniumBridge`, `ParabolaVertex`, `NavierStokes`, `Poincare`, `PvsNP`,
 `RH.Density`, `RH.Dominance`, `RH.Hankel`, `RH.LiCriterion`, `RH.Monotonicity`,
-`Removable`, `ShadowZeroZero`, `TwinPrime`, `ZeroZero`, `RH.NewmanFlow`.
+`Removable`, `ShadowZeroZero`, `TwinPrime`, `Wieferich`, `ZeroZero`, `RH.NewmanFlow`.
 
 ## 2. The chains
 
@@ -165,6 +165,15 @@ columns plus one aggregator. (Card labels on each node.)
   the logistic apex `x = 1/2` is a crease (`deriv_logistic_half`). The brain reading
   (cortical gyri/sulci as these creases, and their universal folding scaling) is
   *empirical* and lives in `BRAIN_CREASE.md` — not claimed here.
+- **The arithmetic crease (Wieferich).** `Wieferich` (standalone, Mathlib only):
+  the 0/0 theme in number theory. Fermat gives `p | 2^(p-1) − 1` for a prime
+  `p ≠ 2` (`fermat_dvd`), so the Fermat quotient `q_p = (2^(p-1) − 1)/p` is an
+  integer — a *resolvable* 0/0. A Wieferich prime is exactly where `q_p` again
+  vanishes mod `p`, i.e. `p² | 2^(p-1) − 1` (`isWieferich_iff_sq_dvd`,
+  `isWieferich_iff_quotient_dvd`): the *second-order* zero — the arithmetic
+  analogue of a `Crease`. The two known instances `1093` and `3511` are proved
+  (`wieferich_1093`, `wieferich_3511`, kernel-checked by `decide`). Infinitude
+  stays OPEN.
 - **Removable bridge.** `ZeroLink (C13) -> RemovableValue (C15) ->
   RemovableComplexBridge (C21) -> LiouvilleBridge (C22)`: the value mechanism
   lifted to complex analysis and then to Liouville.
