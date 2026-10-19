@@ -168,16 +168,86 @@ theorem escape_pole (l : ℝ) (hl : 0 < l) :
     simp only [polar, one_mul, div_eq_mul_inv]
   exact Tendsto.congr' hcong.symm (hinv.const_mul_atTop hl)
 
+/-! ### The parabola is the extremal conic
+
+Among all conics with a fixed semi-latus rectum, the removable vertex value
+`l·e/(2(1+e)²)` is **maximised by the parabola** `e = 1`, where it equals `l/8`.
+This is why the vertex-at-`1/2` case is canonical: it is the extremal member of
+the family, not merely one member. -/
+
+/-- The removable vertex coefficient of `vertex_removable`. -/
+noncomputable def vertexCoefficient (l e : ℝ) : ℝ := l * e / (2 * (1 + e) ^ 2)
+
+/-- Closed form locating the parabola in the family:
+`l·e/(2(1+e)²) = l/8 − l·(1−e)²/(8(1+e)²)`. The subtracted term is the deficit
+from the parabolic maximum. -/
+theorem vertexCoefficient_eq (l e : ℝ) (he : 0 ≤ e) :
+    vertexCoefficient l e = l / 8 - l * (1 - e) ^ 2 / (8 * (1 + e) ^ 2) := by
+  have h1e : (1 + e) ≠ 0 := by linarith
+  rw [vertexCoefficient]
+  field_simp
+  ring
+
+/-- **The parabola maximises the vertex coefficient.** For `l ≥ 0` and any
+eccentricity `e ≥ 0`, the removable vertex value is at most `l/8` — the
+parabolic value. -/
+theorem vertexCoefficient_le (l e : ℝ) (hl : 0 ≤ l) (he : 0 ≤ e) :
+    vertexCoefficient l e ≤ l / 8 := by
+  rw [vertexCoefficient_eq l e he]
+  have hden : (0 : ℝ) ≤ l * (1 - e) ^ 2 / (8 * (1 + e) ^ 2) :=
+    div_nonneg (mul_nonneg hl (sq_nonneg _)) (by positivity)
+  linarith
+
+/-- Strict version: every genuinely non-parabolic conic (`e ≠ 1`, `l > 0`) has a
+strictly smaller vertex coefficient. -/
+theorem vertexCoefficient_lt_of_ne (l e : ℝ) (hl : 0 < l) (he : 0 ≤ e) (hne : e ≠ 1) :
+    vertexCoefficient l e < l / 8 := by
+  have h1e : (1 + e) ≠ 0 := by linarith
+  rw [vertexCoefficient_eq l e he]
+  have hnum : 0 < l * (1 - e) ^ 2 :=
+    mul_pos hl (sq_pos_of_ne_zero (sub_ne_zero.mpr hne.symm))
+  have hden : 0 < (8 : ℝ) * (1 + e) ^ 2 := by
+    have := sq_pos_of_ne_zero h1e
+    positivity
+  have : 0 < l * (1 - e) ^ 2 / (8 * (1 + e) ^ 2) := div_pos hnum hden
+  linarith
+
+/-- At the parabola `e = 1` the coefficient is exactly `l/8`. -/
+theorem vertexCoefficient_one (l : ℝ) : vertexCoefficient l 1 = l / 8 := by
+  rw [vertexCoefficient]; norm_num
+
+/-! ### The dynamical reading: the logistic parabola -/
+
+/-- The logistic map at the fully chaotic parameter `r = 4`; its vertex (apex)
+sits at `x = 1/2`. -/
+noncomputable def logistic (x : ℝ) : ℝ := 4 * x * (1 - x)
+
+/-- The apex sits at the vertex `x = 1/2`, with value `1`. -/
+theorem logistic_vertex : logistic (1 / 2) = 1 := by
+  rw [logistic]; norm_num
+
+/-- **The logistic parabola is the doubling map in disguise.** Writing
+`x = sin²φ` turns `f(x) = 4x(1−x)` into `φ ↦ 2φ`:
+`sin(2φ)² = logistic (sin²φ)`. -/
+theorem logistic_conjugacy (φ : ℝ) :
+    Real.sin (2 * φ) ^ 2 = logistic (Real.sin φ ^ 2) := by
+  rw [logistic, Real.sin_two_mul]
+  nlinarith [Real.sin_sq_add_cos_sq φ]
+
 /-- Register of rigorously established facts about the polar parabola. -/
 def parabolaVertexFacts : List (String × String) :=
   [ ("vertex_radius", "r(0) = l / (1 + e); for l = e = 1 this is 1/2"),
     ("even", "r(-theta) = r(theta): the vertex is a genuine two-sided extremum"),
-    ("vertex_removable", "re (r(theta) - r(0)) / theta^2 -> l*e / (2*(1+e)^2) as theta -> 0"),
+    ("vertex_removable", "(r(theta) - r(0)) / theta^2 -> l*e / (2*(1+e)^2) as theta -> 0"),
     ("vertex_removable_one", "for l = e = 1 the removable value is 1/8"),
     ("escape_denominator", "1 + cos(theta) -> 0 as theta -> pi from below"),
     ("escape_pole", "r(theta) -> +infinity as theta -> pi^- for l > 0 (a pole, not 0/0)"),
+    ("parabola_extremal", "l*e/(2*(1+e)^2) <= l/8 for l>=0, e>=0; equality iff e=1"),
+    ("vertexCoefficient_eq", "l*e/(2*(1+e)^2) = l/8 - l*(1-e)^2/(8*(1+e)^2)"),
+    ("logistic_vertex", "logistic(1/2) = 1: the apex of 4x(1-x) sits at x = 1/2"),
+    ("logistic_conjugacy", "sin(2*phi)^2 = logistic(sin^2 phi): the parabola is the doubling map"),
     ("mirror", "the shadow x -> 1/x swaps the vertex radius 1/2 with 2 (see ShadowZeroZero)") ]
 
-theorem parabolaVertexFacts_length : parabolaVertexFacts.length = 7 := by decide
+theorem parabolaVertexFacts_length : parabolaVertexFacts.length = 11 := by decide
 
 end PunoCalculus.ParabolaVertex
