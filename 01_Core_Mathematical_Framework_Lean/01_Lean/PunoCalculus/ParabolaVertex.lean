@@ -25,7 +25,12 @@ vanishes quadratically, divided by `θ²`, yields a finite removable value that
 is a curvature coefficient. Contrast the *escape to infinity* at `θ = π`,
 where `1 + cos θ → 0` with a constant numerator — a genuine **pole**, not a
 removable value (the Ising-heat-capacity situation, not the `sin x / x`
-situation).
+situation).  That pole is an **infinity generator** of exact order two: scaled
+by `(π − θ)²` the divergent radius has the finite rate `2l`
+(`escape_infinity_rate`), and reciprocating the radius turns it into a removable
+*zero* of rate `1/(2l)` — the reciprocal of the generator (`shadow_of_pole_is_removable_zero`).
+The vanishing denominator that the vertex *cancels* and the escape *keeps* is one
+object; the vertex and the escape are its negative and positive images.
 
 Every statement is a `Tendsto`, never an evaluation at the singular point,
 matching the `PunoCalculus.ZeroZero` idiom.
@@ -122,6 +127,29 @@ theorem one_add_cos_eq (θ : ℝ) : 1 + Real.cos θ = 2 * Real.cos (θ / 2) ^ 2 
   rw [show (2 : ℝ) * (θ / 2) = θ by ring] at h
   linarith
 
+/-- The same identity measured from the **escape direction**: at `θ = π` the
+denominator is `1 + cos θ = 2·sin((π−θ)/2)²`.  This is the vanishing that
+generates the pole, in the exact variable `π − θ`. -/
+theorem one_add_cos_eq_pi (θ : ℝ) :
+    1 + Real.cos θ = 2 * Real.sin ((Real.pi - θ) / 2) ^ 2 := by
+  rw [one_add_cos_eq, show θ / 2 = Real.pi / 2 - (Real.pi - θ) / 2 by ring,
+    Real.cos_pi_div_two_sub]
+
+/-- `(π − θ)/2 → 0` on the punctured neighbourhood as `θ → π⁻`: the substitution
+variable that reduces the escape to the origin. -/
+theorem tendsto_half_at_pi :
+    Tendsto (fun θ : ℝ => (Real.pi - θ) / 2) (𝓝[<] Real.pi) (𝓝[≠] (0 : ℝ)) := by
+  rw [tendsto_nhdsWithin_iff]
+  refine ⟨?_, ?_⟩
+  · have hc : Continuous (fun θ : ℝ => (Real.pi - θ) / 2) := by continuity
+    have h := (hc.continuousAt (x := Real.pi)).tendsto
+    have h0 : (Real.pi - Real.pi) / 2 = 0 := by norm_num
+    rw [h0] at h
+    exact h.mono_left nhdsWithin_le_nhds
+  · filter_upwards [self_mem_nhdsWithin] with θ hθ
+    simp only [Set.mem_compl_iff, Set.mem_singleton_iff]
+    exact div_ne_zero (sub_ne_zero.mpr (ne_of_gt hθ)) (by norm_num)
+
 /-- Approaching the escape direction from below, `1 + cos θ → 0`. -/
 theorem escape_denominator_tendsto_zero :
     Tendsto (fun θ : ℝ => 1 + Real.cos θ) (𝓝[<] Real.pi) (𝓝 0) := by
@@ -168,6 +196,88 @@ theorem escape_pole (l : ℝ) (hl : 0 < l) :
     filter_upwards with θ
     simp only [polar, one_mul, div_eq_mul_inv]
   exact Tendsto.congr' hcong.symm (hinv.const_mul_atTop hl)
+
+/-- **The infinity generator.**  The escape pole is exactly second order: scaled
+by `(π − θ)²` the divergent radius has the finite rate `2l`.  So the same vanishing
+denominator that the vertex *cancels* (giving the finite `0/0` value `l/8`) here
+*generates infinity* at a precisely measured rate — the order-two twin of the
+vertex curve, read through the substitution `u = (π − θ)/2`. -/
+theorem escape_infinity_rate (l : ℝ) (hl : 0 < l) :
+    Tendsto (fun θ : ℝ => (Real.pi - θ) ^ 2 * polar l 1 θ)
+      (𝓝[<] Real.pi) (𝓝 (2 * l)) := by
+  have hu := tendsto_half_at_pi
+  have hsin := PunoCalculus.ZeroZero.sin_x_div_tendsto_one
+  have hinv : Tendsto (fun u : ℝ => (Real.sin u / u)⁻¹) (𝓝[≠] (0 : ℝ)) (𝓝 1) := by
+    simpa using hsin.inv₀ (by norm_num : (1 : ℝ) ≠ 0)
+  have hbase : Tendsto (fun u : ℝ => u / Real.sin u) (𝓝[≠] (0 : ℝ)) (𝓝 1) := by
+    refine Tendsto.congr' ?_ hinv
+    filter_upwards with u
+    rw [inv_div]
+  have hbase2 : Tendsto (fun u : ℝ => (u / Real.sin u) ^ 2) (𝓝[≠] (0 : ℝ)) (𝓝 1) := by
+    simpa using hbase.pow 2
+  have hcomp : Tendsto (fun θ : ℝ => (((Real.pi - θ) / 2) / Real.sin ((Real.pi - θ) / 2)) ^ 2)
+      (𝓝[<] Real.pi) (𝓝 1) := hbase2.comp hu
+  have hlim : Tendsto
+      (fun θ : ℝ => 2 * l * (((Real.pi - θ) / 2) / Real.sin ((Real.pi - θ) / 2)) ^ 2)
+      (𝓝[<] Real.pi) (𝓝 (2 * l)) := by
+    have := hcomp.const_mul (2 * l)
+    simpa using this
+  refine Tendsto.congr' ?_ hlim
+  have hIoi : Set.Ioi (Real.pi - 1) ∈ 𝓝[<] Real.pi :=
+    mem_nhdsWithin_of_mem_nhds
+      (isOpen_Ioi.mem_nhds (by rw [Set.mem_Ioi]; linarith [Real.pi_pos]))
+  have hIio : Set.Iio Real.pi ∈ 𝓝[<] Real.pi := self_mem_nhdsWithin
+  filter_upwards [hIoi, hIio] with θ hgt hlt
+  have hgt' : Real.pi - 1 < θ := hgt
+  have hlt' : θ < Real.pi := hlt
+  have hu_pos : 0 < (Real.pi - θ) / 2 := by linarith
+  have hu_lt : (Real.pi - θ) / 2 < Real.pi := by linarith [Real.pi_gt_three]
+  have hsin_pos : 0 < Real.sin ((Real.pi - θ) / 2) :=
+    Real.sin_pos_of_pos_of_lt_pi hu_pos hu_lt
+  have hsin_ne : Real.sin ((Real.pi - θ) / 2) ≠ 0 := ne_of_gt hsin_pos
+  have hu_ne : (Real.pi - θ) / 2 ≠ 0 := ne_of_gt hu_pos
+  have hnum_ne : Real.pi - θ ≠ 0 := by linarith
+  rw [polar]
+  rw [show (1 : ℝ) + 1 * Real.cos θ = 1 + Real.cos θ by ring, one_add_cos_eq_pi]
+  field_simp
+
+/-- **The shadow of the infinity generator is a removable zero.**  Reciprocating
+the radius turns the order-two pole into an order-two *zero* whose coefficient is
+the reciprocal `1/(2l)` of the generator's rate.  The same reciprocal that
+`ShadowZeroZero` proves preserves a removable *value* here inverts the generator's
+*rate* — the `0/0 ↔ ∞` mirror of the vertex. -/
+theorem shadow_of_pole_is_removable_zero (l : ℝ) (hl : 0 < l) :
+    Tendsto (fun θ : ℝ => (polar l 1 θ)⁻¹ / (Real.pi - θ) ^ 2)
+      (𝓝[<] Real.pi) (𝓝 (1 / (2 * l))) := by
+  have hu := tendsto_half_at_pi
+  have hbase2 : Tendsto (fun u : ℝ => (Real.sin u / u) ^ 2) (𝓝[≠] (0 : ℝ)) (𝓝 1) := by
+    simpa using PunoCalculus.ZeroZero.sin_x_div_tendsto_one.pow 2
+  have hcomp : Tendsto
+      (fun θ : ℝ => (Real.sin ((Real.pi - θ) / 2) / ((Real.pi - θ) / 2)) ^ 2)
+      (𝓝[<] Real.pi) (𝓝 1) := hbase2.comp hu
+  have hlim : Tendsto
+      (fun θ : ℝ => 1 / (2 * l) * (Real.sin ((Real.pi - θ) / 2) / ((Real.pi - θ) / 2)) ^ 2)
+      (𝓝[<] Real.pi) (𝓝 (1 / (2 * l))) := by
+    have := hcomp.const_mul (1 / (2 * l))
+    simpa using this
+  refine Tendsto.congr' ?_ hlim
+  have hIoi : Set.Ioi (Real.pi - 1) ∈ 𝓝[<] Real.pi :=
+    mem_nhdsWithin_of_mem_nhds
+      (isOpen_Ioi.mem_nhds (by rw [Set.mem_Ioi]; linarith [Real.pi_pos]))
+  have hIio : Set.Iio Real.pi ∈ 𝓝[<] Real.pi := self_mem_nhdsWithin
+  filter_upwards [hIoi, hIio] with θ hgt hlt
+  have hgt' : Real.pi - 1 < θ := hgt
+  have hlt' : θ < Real.pi := hlt
+  have hu_pos : 0 < (Real.pi - θ) / 2 := by linarith
+  have hu_lt : (Real.pi - θ) / 2 < Real.pi := by linarith [Real.pi_gt_three]
+  have hsin_ne : Real.sin ((Real.pi - θ) / 2) ≠ 0 :=
+    ne_of_gt (Real.sin_pos_of_pos_of_lt_pi hu_pos hu_lt)
+  have hu_ne : (Real.pi - θ) / 2 ≠ 0 := ne_of_gt hu_pos
+  have hnum_ne : Real.pi - θ ≠ 0 := by linarith
+  have hlne : l ≠ 0 := ne_of_gt hl
+  rw [polar]
+  rw [show (1 : ℝ) + 1 * Real.cos θ = 1 + Real.cos θ by ring, one_add_cos_eq_pi]
+  field_simp
 
 /-! ### The parabola is the extremal conic
 
@@ -280,6 +390,9 @@ def parabolaVertexFacts : List (String × String) :=
     ("vertex_removable_one", "for l = e = 1 the removable value is 1/8"),
     ("escape_denominator", "1 + cos(theta) -> 0 as theta -> pi from below"),
     ("escape_pole", "r(theta) -> +infinity as theta -> pi^- for l > 0 (a pole, not 0/0)"),
+    ("escape_half_angle", "1 + cos(theta) = 2*sin((pi-theta)/2)^2: the escape measured from pi"),
+    ("escape_infinity_rate", "(pi-theta)^2 * r(theta) -> 2l: the escape is an exact order-2 pole (the infinity generator)"),
+    ("shadow_pole_zero", "(1/r(theta))/(pi-theta)^2 -> 1/(2l): the reciprocal turns the pole into a removable zero, inverting the rate"),
     ("parabola_extremal", "l*e/(2*(1+e)^2) <= l/8 for l>=0, e>=0; equality iff e=1"),
     ("vertexCoefficient_eq", "l*e/(2*(1+e)^2) = l/8 - l*(1-e)^2/(8*(1+e)^2)"),
     ("logistic_vertex", "logistic(1/2) = 1: the apex of 4x(1-x) sits at x = 1/2"),
@@ -289,6 +402,6 @@ def parabolaVertexFacts : List (String × String) :=
     ("logistic_zero_repelling_nhd", "|x| < |logistic x| eventually near 0 (GreatAttractor.fixedPoint_repels)"),
     ("mirror", "the shadow x -> 1/x swaps the vertex radius 1/2 with 2 (see ShadowZeroZero)") ]
 
-theorem parabolaVertexFacts_length : parabolaVertexFacts.length = 14 := by decide
+theorem parabolaVertexFacts_length : parabolaVertexFacts.length = 17 := by decide
 
 end PunoCalculus.ParabolaVertex

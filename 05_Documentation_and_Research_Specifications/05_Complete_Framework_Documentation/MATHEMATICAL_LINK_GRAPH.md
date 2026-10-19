@@ -145,6 +145,10 @@ columns plus one aggregator. (Card labels on each node.)
   excess above the vertex is a removable 0/0 with value `l·e/(2(1+e)²)` (equals
   `1/8` for the vertex-at-`1/2` parabola), while the escape direction `θ → π` is
   a genuine pole — a Vanishing-Rate instance built on the `ZeroZero` limit family.
+  That pole is an **infinity generator** of exact order two (`escape_infinity_rate`:
+  `(π−θ)²·r(θ) → 2l`), and reciprocating the radius makes it a removable *zero* of
+  rate `1/(2l)` (`shadow_of_pole_is_removable_zero`) — the reciprocal of the
+  generator, tying the module to `ShadowZeroZero`.
   Its dynamical reading `ParabolaVertex -> GreatAttractor` reuses the framework's
   own `fixedPoint_repels`: the logistic parabola `4x(1−x)` has `f'(0) = 4 > 1`, so
   the vertex-origin is a fixed point the map repels its neighbourhood from.
