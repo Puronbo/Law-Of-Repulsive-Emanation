@@ -18,7 +18,7 @@ that any Millennium obligation is discharged. See `WHAT_THIS_DOES_NOT_PROVE.md`.
 
 ## 1. The mesh (verified ↔ verified)
 
-The internal graph has **72 module nodes** and **54 directed edges**. An edge
+The internal graph has **73 module nodes** and **54 directed edges**. An edge
 `A -> B` is exactly an `import PunoCalculus.B` line in module `A` (self-edges and
 `import Mathlib` excluded). The block below is parsed by the checker; it must
 equal the imports actually present in the tree.
@@ -109,8 +109,8 @@ The 38 card-carrying modules (the "verified findings" of this graph):
 | ZeroIndex | C19 | | |
 | ZeroMechanisms | C20 | | |
 
-The remaining 34 nodes are non-card modules (evidence carriers, not claims):
-`BSD`, `Basic`, `CascadeRatio`, `Collatz`, `Core`, `Cosmology.AcousticZeroFlow`,
+The remaining 35 nodes are non-card modules (evidence carriers, not claims):
+`BSD`, `Basic`, `Beal`, `CascadeRatio`, `Collatz`, `Core`, `Cosmology.AcousticZeroFlow`,
 `Cosmology.OriginWindow`, `Crease`, `Curvature`, `EcaIsometry`, `Goldbach`, `Hodge`,
 `InformationBridge`, `InformationMixture`, `InformationPhi`, `InformationTime`,
 `Legendre`, `MassGap`, `MillenniumBridge`, `ParabolaVertex`, `NavierStokes`, `Poincare`, `PvsNP`,
@@ -174,6 +174,14 @@ columns plus one aggregator. (Card labels on each node.)
   analogue of a `Crease`. The two known instances `1093` and `3511` are proved
   (`wieferich_1093`, `wieferich_3511`, kernel-checked by `decide`). Infinitude
   stays OPEN.
+- **The Beal crease at exponent three.** `Beal` (standalone, Mathlib only): a
+  *proven* modular obstruction behind the finite certificate. A base coprime to `3`
+  is a unit of `ZMod 9` and has cube `±1 (mod 9)` (`cube_mod9`), and no two such
+  residues sum to a third (`no_unit_cubes_solution`, discharged by `decide` over the
+  nine-element ring). Lifting to `ℕ`: `A³ + B³ = C³` forces `3 | A ∨ 3 | B ∨ 3 | C`
+  (`three_dvd_of_cubes`) — so a Beal window scan may skip every triple whose three
+  bases are all coprime to `3`, and any coprime `a³ + b³ = c³` with `3 ∤ a,b` has
+  `3 | c` (`three_dvd_of_cubes_of_not_dvd`). Beal's conjecture stays OPEN.
 - **Removable bridge.** `ZeroLink (C13) -> RemovableValue (C15) ->
   RemovableComplexBridge (C21) -> LiouvilleBridge (C22)`: the value mechanism
   lifted to complex analysis and then to Liouville.

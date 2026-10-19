@@ -667,6 +667,23 @@ def test_beal_is_a_finite_certificate():
     assert a ** x + b ** y == rz ** z and gcd(gcd(a, b), rz) == 3 > 1
 
 
+def test_beal_mod9_obstruction_is_machine_checked():
+    """G33: the exponent-three Beal/FLT modular obstruction is machine-checked in
+    PunoCalculus/Beal.lean -- a base coprime to 3 has cube +/-1 (mod 9), so
+    A^3 + B^3 = C^3 forces 3 | A or 3 | B or 3 | C.  Beal's conjecture stays OPEN."""
+    src = _lean("Beal.lean")
+    for decl in ("theorem unit_cube", "theorem no_unit_cubes_solution",
+                 "theorem unit_of_not_dvd", "theorem cube_mod9",
+                 "theorem three_dvd_of_cubes",
+                 "theorem three_dvd_of_cubes_of_not_dvd",
+                 "theorem bealFacts_length"):
+        assert decl in src, "Beal.lean is missing %r" % decl
+    assert "sorry" not in src, "Beal.lean must not contain sorry"
+    assert "native_decide" not in src, "Beal.lean must stay axiom-free (use decide)"
+    root = _lean("../PunoCalculus.lean")
+    assert "import PunoCalculus.Beal" in root, "root must import Beal"
+
+
 def test_erdos_moser_is_a_finite_certificate():
     """G34: finite search finds only (3,1); no other solution in window, so
     Erdős–Moser conjecture holds to the bound and stays OPEN."""

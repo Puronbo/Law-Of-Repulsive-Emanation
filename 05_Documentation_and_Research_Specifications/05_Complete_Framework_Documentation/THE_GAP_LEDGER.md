@@ -477,12 +477,13 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Subject:** Beal's conjecture (a^x+b^y=c^z with x,y,z>2, gcd=1 => none?)
 - **Status:** RESEARCHED
 - **Related cards:** []
-- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/beal_certificate.py
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/beal_certificate.py, 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Beal.lean
 - **Pin:** test_beal_is_a_finite_certificate
-- **as_of:** 2026-10-18
-- **Reduction:** for each triple (a^x, b^y, c^z) with x,y,z > 2, test equality and check gcd(a,b,c); the search is exact up to the chosen bound. Absence in a window is finite evidence only.
+- **Pin:** test_beal_mod9_obstruction_is_machine_checked
+- **as_of:** 2026-10-19
+- **Reduction:** for each triple (a^x, b^y, c^z) with x,y,z > 2, test equality and check gcd(a,b,c); the search is exact up to the chosen bound and, since 2026-10-19, in exact integer arithmetic: the candidate root `c = s^(1/z)` is an exact integer z-th root (`_iroot`, Newton with an integer correction step) rather than a float `round(s**(1/z))`, and every candidate sum first passes an exact necessary check that `s % 9` is a z-th power residue modulo 9. On top of the window scan sits a *machine-checked, window-independent* reduction, `PunoCalculus.Beal.three_dvd_of_cubes`: a base coprime to 3 is a unit of `ZMod 9` with cube `±1` (`cube_mod9`), no two such residues sum to a third (`no_unit_cubes_solution`, by `decide`), hence `A^3 + B^3 = C^3` forces `3 | A or 3 | B or 3 | C` -- eliminating the whole class of triples with all three bases coprime to 3, and giving `3 | c` whenever `3 ∤ a, b` (`three_dvd_of_cubes_of_not_dvd`). Absence in a window is finite evidence only.
 - **Barrier:** no known proof method extends a finite window to all positive integers (Beal is open); the Darmon-Granville theorem gives finiteness for fixed exponents satisfying 1/x+1/y+1/z < 1 but Beal allows all x,y,z > 2 and no fixed sum constraint except the equation.
-- **Known:** Beal (1993), AMS $1,000,000 prize; Wiles (FLT); Darmon-Granville (finiteness for fixed exponents); Poonen-Schaefer-Stoll, Bruin, Zureick-Brown resolved specific (x,y,z) families; large computational searches (Norvig, Vanderkam, Beal team) found no coprime counterexamples in wide windows.
+- **Known:** Beal (1993), AMS $1,000,000 prize; Wiles (FLT); Darmon-Granville (finiteness for fixed exponents); Poonen-Schaefer-Stoll, Bruin, Zureick-Brown resolved specific (x,y,z) families; large computational searches (Norvig, Vanderkam, Beal team) found no coprime counterexamples in wide windows; the classical modulo-9 obstruction at exponent 3 (no solution with all bases coprime to 3), machine-checked in `Beal.lean` (`three_dvd_of_cubes`).
 - **Missing (the object that does not exist as a proof):** a proof that there are no positive integers a,b,c,x,y,z>2 with gcd(a,b,c)=1 and a^x+b^y=c^z, or a single explicit counterexample meeting those conditions.
 - **Falsifier:** any coprime (a,b,c,x,y,z>2) with a^x+b^y=c^z refutes Beal's conjecture; such a triple in the window searched would refute this certificate.
 

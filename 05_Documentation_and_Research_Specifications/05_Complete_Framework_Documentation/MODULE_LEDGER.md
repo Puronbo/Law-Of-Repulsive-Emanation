@@ -34,6 +34,7 @@ imported by the root, fails the checker.
 |---|---|---|---|
 | `BSD` | millennium-cert | — | numerical BSD record (L-values, Omega, regulator, Sha, Tamagawa, ranks) over a few curves; no settlement claim |
 | `Basic` | core-scaffold | — | library smoke module (`def hello := "world"`); no content, wired so `lake build` covers every file |
+| `Beal` | core-scaffold | — | the exponent-three Beal/FLT modular crease: a base coprime to `3` is a unit of `ZMod 9` with cube `±1` (`cube_mod9`), and no two such residues sum to a third (`no_unit_cubes_solution`, by `decide` over `ZMod 9`); lifts to `A³ + B³ = C³ ⟹ 3 ∣ A ∨ 3 ∣ B ∨ 3 ∣ C` (`three_dvd_of_cubes`), so any coprime `a³ + b³ = c³` with `3 ∤ a, b` has `3 ∣ c` (`three_dvd_of_cubes_of_not_dvd`); the finite certificate `beal_certificate.py` rests on this reduction. Beal's conjecture OPEN |
 | `CascadeRatio` | fluid-diagnostic | — | NS energy/enstrophy decay-ratio arithmetic (`energyDecay`, `enstrophyDecay`, `cascadeRatio`, `verifyRDecays`) |
 | `Collatz` | number-theory-cert | — | bounded Collatz certificate (`verifyCollatz100`, `maxStopN`); not a proof of Collatz |
 | `ContinuationCriterion` | card | C28 | carries card(s) C28 |
@@ -107,6 +108,6 @@ imported by the root, fails the checker.
 
 ## Coverage
 
-- **Modules on disk:** 72 (all imported by `PunoCalculus.lean`).
+- **Modules on disk:** 73 (all imported by `PunoCalculus.lean`).
 - **Card-carrying modules (`card`):** 38.
-- **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold / information-bridge):** 34.
+- **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold / information-bridge):** 35.

@@ -3,6 +3,8 @@
   "max_base": 100,
   "max_exp": 6,
   "coprime_counterexamples": [],
+  "method": "exact integer z-th roots + exact modulo-9 power-residue pre-check",
+  "mod9_reduction": "PunoCalculus.Beal.three_dvd_of_cubes (machine-checked): A^3 + B^3 = C^3 forces 3 | A or 3 | B or 3 | C; no solution has all three bases coprime to 3.",
   "honest_wall": "Finite range only: no coprime solution to a^x+b^y=c^z with x,y,z>2 found below the search window (100^5); Beal's conjecture stays OPEN in general. Published searches have eliminated large windows without counterexamples (Norvig, Vanderkam, others).",
   "references": [
     "Beal 1993 (posed; AMS prize $1,000,000)",
