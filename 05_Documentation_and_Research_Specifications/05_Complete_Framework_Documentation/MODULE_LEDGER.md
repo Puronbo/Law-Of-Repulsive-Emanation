@@ -86,6 +86,7 @@ imported by the root, fails the checker.
 | `SelfSimilarExponents` | card | C31 | carries card(s) C31 |
 | `SerrinLadder` | card | C23 | carries card(s) C23 |
 | `SerrinSufficiency` | card | C8-open | carries card(s) C8-open |
+| `ShadowZeroZero` | core-scaffold | — | the shadow mechanism: the reciprocal mirror `x ↦ 1/x` relocates a removable 0/0 (`0 → ∞`) preserving its value (`shadow_preserves_value`) and, as the term-reciprocal, becomes the `∞/∞` mirror inverting it (`shadow_inverts_value`) |
 | `StableBounded` | card | C29 | carries card(s) C29 |
 | `SufficiencyLoop` | card | C30 | carries card(s) C30 |
 | `TheoryOfEverything` | card | C10 | carries card(s) C10 |
@@ -103,6 +104,6 @@ imported by the root, fails the checker.
 
 ## Coverage
 
-- **Modules on disk:** 68 (all imported by `PunoCalculus.lean`).
+- **Modules on disk:** 69 (all imported by `PunoCalculus.lean`).
 - **Card-carrying modules (`card`):** 38.
-- **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold / information-bridge):** 30.
+- **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold / information-bridge):** 31.

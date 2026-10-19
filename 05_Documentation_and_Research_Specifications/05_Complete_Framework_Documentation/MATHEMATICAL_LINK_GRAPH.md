@@ -18,7 +18,7 @@ that any Millennium obligation is discharged. See `WHAT_THIS_DOES_NOT_PROVE.md`.
 
 ## 1. The mesh (verified ↔ verified)
 
-The internal graph has **68 module nodes** and **50 directed edges**. An edge
+The internal graph has **69 module nodes** and **51 directed edges**. An edge
 `A -> B` is exactly an `import PunoCalculus.B` line in module `A` (self-edges and
 `import Mathlib` excluded). The block below is parsed by the checker; it must
 equal the imports actually present in the tree.
@@ -54,6 +54,7 @@ RemovableValue -> ZeroLink
 SerrinSufficiency -> CriticalLadder
 SerrinSufficiency -> RegularityReduction
 SerrinSufficiency -> SerrinLadder
+ShadowZeroZero -> ZeroZero
 SufficiencyLoop -> ContinuationCriterion
 SufficiencyLoop -> EnstrophyBarrier
 UniverseGrowth -> NoetherDiscrete
@@ -105,13 +106,13 @@ The 38 card-carrying modules (the "verified findings" of this graph):
 | ZeroIndex | C19 | | |
 | ZeroMechanisms | C20 | | |
 
-The remaining 30 nodes are non-card modules (evidence carriers, not claims):
+The remaining 31 nodes are non-card modules (evidence carriers, not claims):
 `BSD`, `Basic`, `CascadeRatio`, `Collatz`, `Core`, `Cosmology.AcousticZeroFlow`,
 `Cosmology.OriginWindow`, `Curvature`, `EcaIsometry`, `Goldbach`, `Hodge`,
 `InformationBridge`, `InformationMixture`, `InformationPhi`, `InformationTime`,
 `Legendre`, `MassGap`, `MillenniumBridge`, `NavierStokes`, `Poincare`, `PvsNP`,
 `RH.Density`, `RH.Dominance`, `RH.Hankel`, `RH.LiCriterion`, `RH.Monotonicity`,
-`Removable`, `TwinPrime`, `ZeroZero`, `RH.NewmanFlow`.
+`Removable`, `ShadowZeroZero`, `TwinPrime`, `ZeroZero`, `RH.NewmanFlow`.
 
 ## 2. The chains
 
@@ -133,6 +134,10 @@ columns plus one aggregator. (Card labels on each node.)
   ZeroMechanisms (C20)`, with `ZeroProbe (C17) -> ZeroMechanisms` and
   `ZeroIndex (C19) -> ZeroMechanisms`; and `ZeroProbe -> RemovableValue (C15) ->
   { Removable, ZeroLink (C13) }`.
+- **Shadow mirror.** `ShadowZeroZero -> ZeroZero`: the reciprocal mirror
+  `x ↦ 1/x` relocates a removable 0/0 (`0 → ∞`) keeping its value, and as the
+  term-reciprocal gives the `∞/∞` mirror that inverts it — the one reverse in the
+  register proved to be an exact involution.
 - **Removable bridge.** `ZeroLink (C13) -> RemovableValue (C15) ->
   RemovableComplexBridge (C21) -> LiouvilleBridge (C22)`: the value mechanism
   lifted to complex analysis and then to Liouville.
