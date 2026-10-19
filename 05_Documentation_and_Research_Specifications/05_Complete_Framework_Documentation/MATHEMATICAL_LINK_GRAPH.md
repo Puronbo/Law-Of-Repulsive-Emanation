@@ -18,13 +18,14 @@ that any Millennium obligation is discharged. See `WHAT_THIS_DOES_NOT_PROVE.md`.
 
 ## 1. The mesh (verified ↔ verified)
 
-The internal graph has **70 module nodes** and **53 directed edges**. An edge
+The internal graph has **71 module nodes** and **54 directed edges**. An edge
 `A -> B` is exactly an `import PunoCalculus.B` line in module `A` (self-edges and
 `import Mathlib` excluded). The block below is parsed by the checker; it must
 equal the imports actually present in the tree.
 
 <!-- EDGES:BEGIN -->
 ```
+Crease -> ParabolaVertex
 CriticalLadder -> SerrinLadder
 DissipativeFlow -> OrientationLaw
 EmergentTime -> CriticalLadder
@@ -108,9 +109,9 @@ The 38 card-carrying modules (the "verified findings" of this graph):
 | ZeroIndex | C19 | | |
 | ZeroMechanisms | C20 | | |
 
-The remaining 32 nodes are non-card modules (evidence carriers, not claims):
+The remaining 33 nodes are non-card modules (evidence carriers, not claims):
 `BSD`, `Basic`, `CascadeRatio`, `Collatz`, `Core`, `Cosmology.AcousticZeroFlow`,
-`Cosmology.OriginWindow`, `Curvature`, `EcaIsometry`, `Goldbach`, `Hodge`,
+`Cosmology.OriginWindow`, `Crease`, `Curvature`, `EcaIsometry`, `Goldbach`, `Hodge`,
 `InformationBridge`, `InformationMixture`, `InformationPhi`, `InformationTime`,
 `Legendre`, `MassGap`, `MillenniumBridge`, `ParabolaVertex`, `NavierStokes`, `Poincare`, `PvsNP`,
 `RH.Density`, `RH.Dominance`, `RH.Hankel`, `RH.LiCriterion`, `RH.Monotonicity`,
@@ -152,6 +153,18 @@ columns plus one aggregator. (Card labels on each node.)
   Its dynamical reading `ParabolaVertex -> GreatAttractor` reuses the framework's
   own `fixedPoint_repels`: the logistic parabola `4x(1−x)` has `f'(0) = 4 > 1`, so
   the vertex-origin is a fixed point the map repels its neighbourhood from.
+- **The crease (cusp normal form).** `Crease -> ParabolaVertex`: the local
+  mathematics of *every* generic fold. The fold germ `Φ a x = x³ − a·x` has its
+  derivative `3x² − a` vanish exactly on the crease set (`deriv_fold_zero_iff`), so
+  a crease exists only for `a ≥ 0`; for `a > 0` there are exactly two, `±√(a/3)`
+  (`crease_eq_sqrt_or`), colliding at the cusp `a = 0` (`crease_zero_iff`). The cusp
+  potential `V a b x = x⁴/4 − a·x²/2 − b·x` has that fold germ as its gradient
+  (`deriv_cusp`), and on the cusp curve `a = 3r²`, `b = −2r³` the crease is a
+  **double root** `(x−r)²(x+2r)` (`cusp_curve_factor`) with vanishing discriminant
+  `4a³ = 27b²` (`cusp_discriminant`). The instance is shared with `ParabolaVertex`:
+  the logistic apex `x = 1/2` is a crease (`deriv_logistic_half`). The brain reading
+  (cortical gyri/sulci as these creases, and their universal folding scaling) is
+  *empirical* and lives in `BRAIN_CREASE.md` — not claimed here.
 - **Removable bridge.** `ZeroLink (C13) -> RemovableValue (C15) ->
   RemovableComplexBridge (C21) -> LiouvilleBridge (C22)`: the value mechanism
   lifted to complex analysis and then to Liouville.
@@ -197,6 +210,7 @@ the module source and that any named document exists in a CI checkout.
 | ZeroFixedPoint | THE_LAW_OF_SINGULARITIES | — |
 | ZeroMechanisms | THE_0_OVER_0_ATLAS | — |
 | ZeroProbe | THE_0_OVER_0_ATLAS | — |
+| Crease | Mota & Herculano-Houzel | BRAIN_CREASE.md |
 <!-- REFS:END -->
 
 ## 4. Provided reference library (tracked)
@@ -215,6 +229,7 @@ side of the links above.
 | NS / physics | `THE_H_THEOREM_NAVIER_STOKES_0_OVER_0.md`, `THE_QFT_0_OVER_0.md`, `THE_BRODY_BOUNDARY_THEOREM.md`, `THE_ENTROPY_CONDITION_THEOREM.md` |
 | structure / synthesis | `THE_COMPLETE_ACCOUNT.md`, `THE_FINAL_SYNTHESIS.md`, `THE_UNIVERSAL_ZERO.md`, `THE_MILLENNIUM_PRIZE_0_OVER_0.md`, `THE_PAPER.md`, `THE_GAP_ANALYSIS.md` |
 | other 0/0 entries | `THE_KNOT_INVARIANTS_0_OVER_0.md`, `THE_LAURENT_DECOMPOSITION.md`, `THE_MODULAR_FORMS_0_OVER_0.md` |
+| brain / crease | `BRAIN_CREASE.md` |
 
 ## What is not claimed
 

@@ -683,3 +683,22 @@ def test_erdos_moser_is_a_finite_certificate():
     assert sol == []
     assert mod.power_sum(2, 1) == 3 and 3 ** 1 == 3  # 1+2=3
     assert mod.power_sum(3, 2) == 14 and 4 ** 2 == 16  # 1+4!=16
+
+def test_crease_module_is_a_partial_formalization():
+    """G35: the local mathematics of every fold is machine-checked in
+    PunoCalculus/Crease.lean -- the cusp is the normal form of every generic
+    crease.  The global claim (that the brain's cortical folds are these
+    creases, obeying a universal scaling) is empirical and stays OPEN here."""
+    src = _lean("Crease.lean")
+    for decl in ("def fold", "def cusp", "def IsCrease",
+                 "theorem deriv_fold", "theorem deriv_fold_zero_iff",
+                 "theorem crease_nonneg", "theorem crease_sqrt",
+                 "theorem crease_neg_sqrt", "theorem crease_eq_sqrt_or",
+                 "theorem crease_zero_iff", "theorem no_crease_of_neg",
+                 "theorem deriv_cusp", "theorem cusp_curve_factor",
+                 "theorem cusp_discriminant", "theorem deriv_logistic_half",
+                 "theorem creaseFacts_length"):
+        assert decl in src, "Crease.lean is missing %r" % decl
+    assert "sorry" not in src, "Crease.lean must not contain sorry"
+    root = _lean("../PunoCalculus.lean")
+    assert "import PunoCalculus.Crease" in root, "root must import Crease"
