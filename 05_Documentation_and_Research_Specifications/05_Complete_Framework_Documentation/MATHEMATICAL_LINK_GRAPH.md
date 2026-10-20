@@ -18,7 +18,7 @@ that any Millennium obligation is discharged. See `WHAT_THIS_DOES_NOT_PROVE.md`.
 
 ## 1. The mesh (verified ↔ verified)
 
-The internal graph has **74 module nodes** and **55 directed edges**. An edge
+The internal graph has **82 module nodes** and **64 directed edges**. An edge
 `A -> B` is exactly an `import PunoCalculus.B` line in module `A` (self-edges and
 `import Mathlib` excluded). The block below is parsed by the checker; it must
 equal the imports actually present in the tree.
@@ -30,6 +30,12 @@ CriticalLadder -> SerrinLadder
 DissipativeFlow -> OrientationLaw
 EmergentTime -> CriticalLadder
 ExplicitClaims -> CriticalLadder
+FrontierCensus -> ErdosMoser
+FrontierCensus -> Factorization
+FrontierCensus -> Giuga
+FrontierCensus -> Lehmer
+FrontierCensus -> Wieferich
+Giuga -> Factorization
 GreatAttractor -> CriticalLadder
 GreatAttractor -> ZeroFixedPoint
 InformationBridge -> OrientationLaw
@@ -41,12 +47,15 @@ InformationTime -> EmergentTime
 InformationTime -> InformationPhi
 InformationTime -> OrientationLaw
 LiouvilleBridge -> RemovableComplexBridge
+Lehmer -> Factorization
 MillenniumBridge -> EcaIsometry
 OnePattern -> GreatAttractor
 OrientationBoundedness -> GreatAttractor
 OrientationLaw -> OrientationBoundedness
 ParabolaVertex -> GreatAttractor
 ParabolaVertex -> ZeroZero
+PerfectNumbers -> FiniteScan
+PrimeGaps -> FiniteScan
 QuantitativeContinuation -> ContinuationCriterion
 QuantitativeContinuation -> EnstrophyBarrier
 RH.NewmanFlow -> RH.Hankel
@@ -110,11 +119,13 @@ The 38 card-carrying modules (the "verified findings" of this graph):
 | ZeroIndex | C19 | | |
 | ZeroMechanisms | C20 | | |
 
-The remaining 36 nodes are non-card modules (evidence carriers, not claims):
+The remaining 44 nodes are non-card modules (evidence carriers, not claims):
 `BSD`, `Basic`, `Beal`, `CascadeRatio`, `Collatz`, `Core`, `Cosmology.AcousticZeroFlow`,
-`Cosmology.OriginWindow`, `Crease`, `Curvature`, `EcaIsometry`, `Goldbach`, `Hodge`,
+`Cosmology.OriginWindow`, `Crease`, `Curvature`, `EcaIsometry`, `ErdosMoser`,
+`Factorization`, `FiniteScan`, `FrontierCensus`, `Giuga`, `Goldbach`, `Hodge`,
 `InformationBridge`, `InformationMixture`, `InformationPhi`, `InformationTime`,
-`Legendre`, `MassGap`, `MillenniumBridge`, `ParabolaVertex`, `NavierStokes`, `Poincare`, `PvsNP`,
+`Legendre`, `Lehmer`, `MassGap`, `MillenniumBridge`, `ParabolaVertex`, `NavierStokes`,
+`PerfectNumbers`, `Poincare`, `PrimeGaps`, `PvsNP`,
 `RH.Density`, `RH.Dominance`, `RH.Hankel`, `RH.LiCriterion`, `RH.Monotonicity`,
 `Removable`, `ShadowZeroZero`, `TwinPrime`, `Wieferich`, `Wilson`, `ZeroZero`, `RH.NewmanFlow`.
 

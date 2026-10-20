@@ -74,6 +74,8 @@ import PunoCalculus.Crease
 import PunoCalculus.Wieferich
 import PunoCalculus.Wilson
 import PunoCalculus.PerfectNumbers
+import PunoCalculus.FiniteScan
+import PunoCalculus.PrimeGaps
 import PunoCalculus.Factorization
 import PunoCalculus.Giuga
 import PunoCalculus.Lehmer

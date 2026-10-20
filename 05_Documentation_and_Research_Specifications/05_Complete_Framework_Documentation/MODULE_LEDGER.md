@@ -51,9 +51,14 @@ imported by the root, fails the checker.
 | `EcaIsometry` | numerical-cert | — | elementary cellular automaton affine/isometry census (16 affine, 6 isometry classes) |
 | `EmergentTime` | card | C11 | carries card(s) C11 |
 | `EnstrophyBarrier` | card | C4 | carries card(s) C4 |
+| `ErdosMoser` | number-theory-cert | — | bounded Erdős–Moser certificate: the `(3,1)` solution and the empty window `4 ≤ m ≤ 80, 1 ≤ k ≤ 12` certified by kernel `decide` (`em_solution_3_1`, `em_window`), with the power sum tied to Mathlib's `Finset` sum (`powerSum_10_2_eq`); uniqueness of `(3,1)` stays OPEN |
 | `ExplicitClaims` | card | C4, C5, C6 | carries card(s) C4, C5, C6 |
+| `Factorization` | core-scaffold | — | trial-division factoriser `primeFacGo` and `totientFac`, with the proved invariant that every emitted factor divides the input (`primeFacGo_dvd`) and is prime (`primeFacGo_prime`); the machine-checked product law (`primeFacGo_prod_window`) the number-theory certificates rest on |
+| `FiniteScan` | core-scaffold | — | shared finite-scan primitives (`primesUpTo`, `isPrimeB`, `anyPrime`, `absDiff`, `gilbreathHolds`, `firstConstellation`) for the bounded number-theory certificates |
 | `FirstCrossing` | card | C8 | carries card(s) C8 |
 | `ForceNetwork` | card | C25 | carries card(s) C25 |
+| `FrontierCensus` | core-scaffold | — | the synthesised census/crease theory of the arithmetic open-status rows (G30/G31/G32/G34/G36): `census_window_agree` (a window cannot separate two predicates), the `Crease` structure with `refine_sub`/`undershoot`, the compiled Wieferich and Giuga crease instances, a five-row `registry`; decides no open row (see `THE_FRONTIER_CENSUS_SPECIFICATION.md`) |
+| `Giuga` | number-theory-cert | — | bounded Giuga certificate: the window `30, 858, 1722` below `10^4`, the instance `66198`, the Carmichael window, and the absence of any Giuga-and-Carmichael number below `10^4` (`giuga_window`, `no_giuga_carmichael_window`); Giuga's conjecture OPEN |
 | `Goldbach` | number-theory-cert | — | bounded Goldbach certificate (`goldbach_even_4_to_100000`) plus an explicit open marker |
 | `GreatAttractor` | card | C24 | carries card(s) C24 |
 | `Hodge` | millennium-cert | — | numerical Hodge record; no settlement claim |
@@ -62,6 +67,7 @@ imported by the root, fails the checker.
 | `InformationPhi` | information-bridge | — | concrete dynamical 0/0 instance: the relaxation `(1 − r^x)/x` has removable value `−orientation r` (C15), `deficitRate_stateCounting` gives `log n` at `r = 1/n`; the constructed map `Phi` satisfies the claim's three clauses (`Phi_satisfies_claim`); the physical identification stays the missing entity |
 | `InformationTime` | information-bridge | — | the time reading of `Phi`: `evolution` is a one-parameter semigroup (`evolution_add`), the orientation is minus the rate (`orientation_evolution_one`), the count is time (`evolution_pow_nat`), and the `{-1,0,+1}` trinity is the decay/stationary/growth arrow (`orientation_arrow`); links `Phi` to `EmergentTime` (C11); no physical claim |
 | `Legendre` | number-theory-cert | — | bounded Legendre certificate |
+| `Lehmer` | number-theory-cert | — | bounded Lehmer certificate: the empty Lehmer window below `10^4` (`lehmer_window`) and the six 2-Lehmer solutions `561, 1105, 1729, 2465, 6601, 8481`, with `totientFac` cross-checked against Mathlib's `Nat.totient`; Lehmer's problem OPEN |
 | `LiouvilleBridge` | card | C22 | carries card(s) C22 |
 | `LogicBarrier` | card | C12 | carries card(s) C12 |
 | `MarginCrossing` | card | C8 | carries card(s) C8 |
@@ -75,7 +81,9 @@ imported by the root, fails the checker.
 | `OrientationBoundedness` | card | C8, C9 | carries card(s) C8, C9 |
 | `OrientationLaw` | card | C8, C8-open, C9 | carries card(s) C8, C8-open, C9 |
 | `ParabolaVertex` | core-scaffold | — | the conic vertex as a removable 0/0: the radial excess `(r(θ) − r(0))/θ² → l·e/(2(1+e)²)` (`vertex_removable`), `1/8` for the vertex-at-`1/2` parabola (`vertex_removable_one`), the escape direction as a pole, not a removable value (`escape_pole`), the parabola as the extremal conic maximising the coefficient (`vertexCoefficient_le`, equality iff `e = 1`), and the logistic apex/doubling-map reading (`logistic_vertex`, `logistic_conjugacy`) |
+| `PerfectNumbers` | number-theory-cert | — | bounded perfect-number certificate: the four known perfect numbers, the even/odd windows, and the complete Mersenne-primality classification for prime exponents `≤ 31` (`perfect_8128`, `even_perfect_window`, `odd_perfect_window`, `mersenne_primality_window`); odd perfect numbers and Mersenne infinitude stay OPEN |
 | `Poincare` | millennium-cert | — | numerical Poincare record; no settlement claim |
+| `PrimeGaps` | number-theory-cert | — | bounded prime-gap certificates (G15–G20, G22–G24, G26): Fermat numbers and the Euler no-go, Andrica, Oppermann, Brocard, Gilbreath, Polignac, Sophie Germain, Landau `n²+1`, and the k-tuple constellations, each on a finite window (`primeGapsFacts`); the infinitude claims stay OPEN |
 | `PvsNP` | millennium-cert | — | contour-recorded wall (`noPolynomialCompilationKnown`, `compilation_wall_recorded`); no settlement claim |
 | `QuantitativeContinuation` | card | C4 | carries card(s) C4 |
 | `RH.Density` | rh-research | — | Riemann-hypothesis zero-density numerical module |
