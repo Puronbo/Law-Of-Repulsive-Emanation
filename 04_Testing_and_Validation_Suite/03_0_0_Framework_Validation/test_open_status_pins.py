@@ -897,3 +897,30 @@ def test_first_order_certificate_no_go_is_machine_checked():
     wsrc = _lean("Wilson.lean")
     assert "theorem first_order_tests_are_universal" in wsrc, (
         "the Wilson sibling of the no-go must be machine-checked too")
+
+
+def test_frontier_census_is_machine_checked():
+    """G38: the synthesised theory's skeleton is machine-checked in
+    PunoCalculus/FrontierCensus.lean -- `census_window_agree` (a window cannot
+    separate two predicates), the `Crease` structure, two compiled crease
+    instances (Wieferich, Giuga) with their decided censuses and undershoots,
+    and the five-row registry.  It decides NO open row: the crease hypothesis is
+    reviewed, not proved, and the open status is recorded in the module."""
+    src = _lean("FrontierCensus.lean")
+    for decl in ("def census", "def WindowAgree", "theorem census_window_agree",
+                 "structure CensusRun", "structure Crease",
+                 "def wieferichCreaseInstance", "def giugaCreaseInstance",
+                 "def lehmerCreaseRun", "def twoLehmerCreaseRun",
+                 "def emCreaseRun", "def registry", "theorem registry_length",
+                 "theorem undershoot_instances",
+                 "def frontierCensusFacts", "theorem frontierCensusFacts_length"):
+        assert decl in src, "FrontierCensus.lean is missing %r" % decl
+    assert "sorry" not in src, "FrontierCensus.lean must not contain sorry"
+    assert "native_decide" not in src, (
+        "the certificate must be axiom-free (no native_decide)")
+    assert "frontierCensusFacts.length = 7" in src
+    assert "OPEN" in src, "the open status must be recorded in the module"
+    root = _lean("../PunoCalculus.lean")
+    assert "import PunoCalculus.FrontierCensus" in root, (
+        "root must import FrontierCensus")
+

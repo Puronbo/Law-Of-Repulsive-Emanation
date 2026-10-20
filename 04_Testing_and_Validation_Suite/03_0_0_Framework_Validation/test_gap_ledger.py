@@ -10,7 +10,7 @@ This gate enforces:
   (E) every row fills the five narrative fields (Reduction, Barrier, Known,
       Missing, Falsifier) exactly once each and none is empty or left as TODO
       (the forge emits "TODO"; this gate refuses it).
-  Also: every G1..G37 heading in THE_GAP_LEDGER.md corresponds to a row.
+  Also: every G1..G38 heading in THE_GAP_LEDGER.md corresponds to a row.
 """
 import ast
 import io
@@ -194,7 +194,7 @@ def test_d_proof_attempt_kind_and_artifacts_exist():
 def test_ledgers_heading_count_agrees():
     text = _read(LEDGER)
     heads = re.findall(r'^##\s+(G\d+)', text, re.M)
-    assert heads == [f'G{i}' for i in range(1, 38)], heads
+    assert heads == [f'G{i}' for i in range(1, 39)], heads
 
 def test_e_narrative_fields_present_and_filled():
     """Gate E: every row fills Reduction, Barrier, Known, Missing and Falsifier
