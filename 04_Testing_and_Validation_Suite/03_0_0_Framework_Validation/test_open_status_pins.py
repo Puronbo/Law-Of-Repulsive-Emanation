@@ -773,7 +773,9 @@ def test_giuga_numbers_are_machine_checked():
     assert "import PunoCalculus.Giuga" in root, "root must import Giuga"
     factorization = _lean("Factorization.lean")
     for decl in ("def primeFacGo", "theorem primeFacGo_prod_window",
-                 "theorem primeFacGo_dvd_window", "def totientFac"):
+                 "theorem primeFacGo_dvd_window", "def totientFac",
+                 "theorem primeFacGo_dvd", "theorem primeFacGo_prime",
+                 "theorem primeFacGo_prime_of_inv"):
         assert decl in factorization, "Factorization.lean is missing %r" % decl
     assert "sorry" not in factorization, "Factorization.lean must not contain sorry"
     assert "native_decide" not in factorization, (
