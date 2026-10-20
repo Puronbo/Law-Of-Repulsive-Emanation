@@ -391,12 +391,13 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Subject:** odd perfect numbers (does any odd n with sigma(n) = 2n exist?)
 - **Status:** RESEARCHED
 - **Related cards:** []
-- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/perfect_numbers_certificate.py
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/perfect_numbers_certificate.py, 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/PerfectNumbers.lean
 - **Pin:** test_odd_perfect_numbers_no_small_certificate
-- **as_of:** 2026-10-18
-- **Reduction:** even perfect numbers are exactly 2^(p-1)(2^p-1) with 2^p-1 prime (Euclid-Euler); the odd case is open. Euler's necessary form: an odd perfect number is q^a m^2 with q prime, q = a = 1 (mod 4).
+- **Pin:** test_perfect_numbers_are_machine_checked
+- **as_of:** 2026-10-20
+- **Reduction:** even perfect numbers are exactly 2^(p-1)(2^p-1) with 2^p-1 prime (Euclid-Euler); the odd case is open. Euler's necessary form: an odd perfect number is q^a m^2 with q prime, q = a = 1 (mod 4). Since 2026-10-20 the small-window and structural facts are machine-checked in `PerfectNumbers.lean`: `Nat.Perfect` holds for 6, 28, 496 and 8128 (Mathlib's Finset sigma), `even_perfect_window` and `odd_perfect_window` decide by direct divisor summation that no other even perfect number and no odd perfect number lies below 2000 (the Python certificate sweeps to 10^6), and `eulerOddForm_mod4` records the conditional structural restatement that Euler's form with q = 1 mod 4 forces n = 1 mod 4.
 - **Barrier:** no method shows existence or non-existence of an odd perfect number; only necessary conditions and lower bounds are known.
-- **Known:** Euclid-Euler (even case); Euler (odd form, 18th c.); Ochem-Rao (2012, lower bound > 10^1500); Nielsen (2015, at least 101 prime factors counted with multiplicity).
+- **Known:** Euclid-Euler (even case); Euler (odd form, 18th c.); Ochem-Rao (2012, lower bound > 10^1500); Nielsen (2015, at least 101 prime factors counted with multiplicity). In `PerfectNumbers.lean`: `perfect_6`, `perfect_28`, `perfect_496`, `perfect_8128`, `isPerfect_8128`, `even_perfect_window`, `odd_perfect_window`, `eulerOddForm_mod4`, `euclidForm_2`, `euclidForm_3`, `euclidForm_5`, `euclidForm_7` (register `perfectNumberFacts`, eight entries).
 - **Missing (the object that does not exist as a proof):** a proof that no odd n satisfies sigma(n) = 2n (or an explicit example) -- no unconditional result; finite certificate only that none exists up to the search limit.
 - **Falsifier:** an odd n with sigma(n) = 2n, or a proof that only even perfect numbers exist.
 
@@ -420,12 +421,13 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Subject:** Mersenne primes (infinitely many primes of the form 2^p - 1?)
 - **Status:** RESEARCHED
 - **Related cards:** []
-- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/perfect_numbers_certificate.py
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/perfect_numbers_certificate.py, 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/PerfectNumbers.lean
 - **Pin:** test_mersenne_primes_is_a_finite_certificate
-- **as_of:** 2026-10-18
-- **Reduction:** 2^p - 1 can be prime only if p is prime; for prime p the exact Lucas-Lehmer test decides M_p. Mersenne primes correspond bijectively to even perfect numbers (Euclid-Euler), so this row underwrites the even side of G27.
+- **Pin:** test_perfect_numbers_are_machine_checked
+- **as_of:** 2026-10-20
+- **Reduction:** 2^p - 1 can be prime only if p is prime; for prime p the exact Lucas-Lehmer test decides M_p. Mersenne primes correspond bijectively to even perfect numbers (Euclid-Euler), so this row underwrites the even side of G27. Since 2026-10-20 the classification is machine-checked in `PerfectNumbers.lean` for every prime exponent p <= 31: `mersenne_primality_window` (kernel `decide`, p <= 13), `mersenne_17` / `mersenne_19` / `mersenne_31` (M_p prime) and `not_mersenne_11` / `not_mersenne_23` / `not_mersenne_29` (M_p composite), all by `norm_num`, and `mersenne_window_ll` -- the Lucas-Lehmer iteration accepts exactly 2,3,5,7,13,17,19,31 among the prime exponents <= 31. The equivalence between Lucas-Lehmer acceptance and primality is classical and cited, not proved; the primality statements themselves do not rely on it.
 - **Barrier:** no proof of infinitude (or finiteness); Lenstra-Pomerance-Wagstaff heuristics suggest infinitely many, but no unconditional method yields it.
-- **Known:** Euclid-Euler (even perfect numbers); Lucas (1876) / Lehmer (1930s) test; 52 Mersenne primes known as of 2025; largest 2^136279841 - 1 (GIMPS / Luke Durant, Oct 2024); all exponents below 136,279,841 tested at least once (2025).
+- **Known:** Euclid-Euler (even perfect numbers); Lucas (1876) / Lehmer (1930s) test; 52 Mersenne primes known as of 2025; largest 2^136279841 - 1 (GIMPS / Luke Durant, Oct 2024); all exponents below 136,279,841 tested at least once (2025). In `PerfectNumbers.lean`: `mersenne_primality_window`, `mersenne_17`, `mersenne_19`, `mersenne_31`, `not_mersenne_11`, `not_mersenne_23`, `not_mersenne_29`, `mersenne_window_ll`, `llAux`, `lucasLehmerB`.
 - **Missing (the object that does not exist as a proof):** a proof that infinitely many (or only finitely many) M_p are prime -- no unconditional result; finite Lucas-Lehmer certificate only for exponents up to pmax.
 - **Falsifier:** a proof that only finitely many M_p are prime, or an infinitude proof.
 
@@ -434,12 +436,13 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Subject:** Giuga's conjecture (Giuga-and-Carmichael criterion)
 - **Status:** RESEARCHED
 - **Related cards:** []
-- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/giuga_certificate.py
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/giuga_certificate.py, 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Giuga.lean
 - **Pin:** test_giuga_is_a_finite_certificate
-- **as_of:** 2026-10-18
-- **Reduction:** drafting the certificate is decidable: enumerate the Giuga numbers (composite n with p | (n/p - 1) for every prime p | n, i.e. sum_{k=1}^{n-1} k^{phi(n)} = -1 (mod n)) below a bound, then test each with Korselt's criterion; a Giuga number that is also Carmichael is exactly a counterexample to Giuga's conjecture, and none occurs below the bound.
+- **Pin:** test_giuga_numbers_are_machine_checked
+- **as_of:** 2026-10-20
+- **Reduction:** drafting the certificate is decidable: enumerate the Giuga numbers (composite n with p | (n/p - 1) for every prime p | n, i.e. sum_{k=1}^{n-1} k^{phi(n)} = -1 (mod n)) below a bound, then test each with Korselt's criterion; a Giuga number that is also Carmichael is exactly a counterexample to Giuga's conjecture, and none occurs below the bound. Since 2026-10-20 the window is machine-checked in `Giuga.lean`: `giuga_window` decides that the Giuga numbers below 10^4 are exactly 30, 858, 1722, `carmichael_window` decides the Korselt set below 10^4 (561, 1105, 1729, 2465, 2821, 6601, 8911), `no_giuga_carmichael_window` decides that no n below 10^4 is both, `giuga_66198` certifies the fourth known Giuga number as an exact instance, and `carmichael_1729`/`not_giuga_1729`/`not_carmichael_30` pin the two criteria apart. Everything stands on `Factorization.lean`, where `primeFacGo_prod_window` and `primeFacGo_dvd_window` machine-check the trial-division factorization's product and divisor laws for every 1 <= n < 10^4; the primality of individual factors is the standard trial-division invariant (reviewed, not proved) and the factor-sum form of the Giuga condition is equated with the k^{n-1} power-sum form by citation.
 - **Barrier:** the search is finite while the conjecture is universal; no known structure rules out a counterexample, which would have to be simultaneously squarefree, Korselt-compliant (Carmichael) and satisfy the far stronger p^2(p-1) | (n - p) condition for every prime p | n.
-- **Known:** Giuga numbers 30, 858, 1722, 66198, 2214408306, ... (twelve known explicitly, the list complete through the 12th term; a 13th enormous candidate is listed but not certified, OEIS A007850); all known Giuga numbers are even and it is unknown whether infinitely many exist or whether any odd one exists; every counterexample to Giuga's conjecture must have at least 19908 decimal digits (Borwein-Maitland-Skerritt, INTEGERS 13 (2013)); Alford-Granville-Pomerance (1994) proved there are infinitely many Carmichael numbers, and Luca-Pomerance-Shparlinski bound the Giuga count by O(X^{1/2} (log X)^2).
+- **Known:** Giuga numbers 30, 858, 1722, 66198, 2214408306, ... (twelve known explicitly, the list complete through the 12th term; a 13th enormous candidate is listed but not certified, OEIS A007850); all known Giuga numbers are even and it is unknown whether infinitely many exist or whether any odd one exists; every counterexample to Giuga's conjecture must have at least 19908 decimal digits (Borwein-Maitland-Skerritt, INTEGERS 13 (2013)); Alford-Granville-Pomerance (1994) proved there are infinitely many Carmichael numbers, and Luca-Pomerance-Shparlinski bound the Giuga count by O(X^{1/2} (log X)^2). In `Giuga.lean`: `giuga_30`, `giuga_858`, `giuga_1722`, `giuga_66198`, `carmichael_561`, `carmichael_1729`, `not_giuga_1729`, `not_carmichael_30`, `giuga_window`, `carmichael_window`, `no_giuga_carmichael_window` (register `giugaFacts`, seven entries), standing on `Factorization.lean` (`primeFacGo`, `primeFacGo_prod_window`, `primeFacGo_dvd_window`, `totientFac`).
 - **Missing (the object that does not exist as a proof):** an unconditional proof that no composite n is both a Giuga number and a Carmichael number (equivalently that sum_{k=1}^{n-1} k^{n-1} != -1 (mod n) for every composite n); also nothing settles the infinitude of Giuga numbers or the existence of an odd Giuga number.
 - **Falsifier:** a single composite n with p^2 (p-1) | (n - p) for every prime p | n (i.e. both Giuga and Carmichael) would refute Giuga's conjecture; a Giuga number <= 10^5 that is also Carmichael would refute the finite certificate's claim.
 
@@ -448,12 +451,13 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Subject:** Lehmer's totient problem (phi(n) divides n-1)
 - **Status:** RESEARCHED
 - **Related cards:** []
-- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/lehmer_totient_certificate.py
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/lehmer_totient_certificate.py, 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Lehmer.lean
 - **Pin:** test_lehmer_totient_is_a_finite_certificate
-- **as_of:** 2026-10-18
-- **Reduction:** reading the conjecture is decidable on a finite range: compute phi(n) by sieve and test (n - 1) mod phi(n) = 0 for every composite n <= bound; no n passes. The relaxation phi(n) | (n - 1)^2 (2-Lehmer numbers) is checked the same way and does have solutions, confirming the two conditions are genuinely different.
+- **Pin:** test_lehmer_totient_is_machine_checked
+- **as_of:** 2026-10-20
+- **Reduction:** reading the conjecture is decidable on a finite range: compute phi(n) by sieve and test (n - 1) mod phi(n) = 0 for every composite n <= bound; no n passes. The relaxation phi(n) | (n - 1)^2 (2-Lehmer numbers) is checked the same way and does have solutions, confirming the two conditions are genuinely different. Since 2026-10-20 both sweeps are machine-checked in `Lehmer.lean`: `lehmer_window` decides that no composite n <= 10000 satisfies the Lehmer condition (the Python certificate sweeps to 10^6), `two_lehmer_window` decides that the 2-Lehmer solutions below 10^4 are exactly 561, 1105, 1729, 2465, 6601, 8481, and `two_lehmer_8481`/`not_lehmer_8481` pin the separation at 8481 in the kernel. The phi computation is `Factorization.lean`'s `totientFac` (trial-division derived), cross-checked against Mathlib's proved `Nat.totient` at 6, 561, 1105, 1729, 2465, 6601 and 8481 (`totientFac_6`, ..., `totientFac_8481`) -- exactly the numbers the conclusions rest on.
 - **Barrier:** the test is finite while the conjecture quantifies over all composites; a counterexample must be simultaneously odd, squarefree and Carmichael, so it is invisible to any search below the known lower bound n > 10^26 with >= 15 distinct prime factors.
-- **Known:** no composite n with phi(n) | (n - 1) is known; any such n is odd, squarefree and Carmichael (Lehmer 1932); omega(n) >= 14 (Cohen-Hagis 1980), improved to omega(n) >= 15, n > 10^26 (Renze; Pinch reports n > 10^30); if 3 | n then omega(n) >= 4x10^7 and n > 10^(3.6x10^8) (Burcsi-Czirbusz-Farkas 2011); counting bounds N(L,x) = O(x^{1/2} log^{3/4} x) (Pomerance 1977) and <= x^{1/2} / log^{1/2+o(1)} x (Luca-Pomerance 2019); the 2-Lehmer relaxation phi(n) | (n - 1)^2 does have solutions, e.g. 561, 1105, 1729, 2465, 6601, 8481 below 10^4 (OEIS A173703) -- the first five are Carmichael but 8481 = 3.11.257 is not, so 2-Lehmer is strictly weaker than the Lehmer condition.
+- **Known:** no composite n with phi(n) | (n - 1) is known; any such n is odd, squarefree and Carmichael (Lehmer 1932); omega(n) >= 14 (Cohen-Hagis 1980), improved to omega(n) >= 15, n > 10^26 (Renze; Pinch reports n > 10^30); if 3 | n then omega(n) >= 4x10^7 and n > 10^(3.6x10^8) (Burcsi-Czirbusz-Farkas 2011); counting bounds N(L,x) = O(x^{1/2} log^{3/4} x) (Pomerance 1977) and <= x^{1/2} / log^{1/2+o(1)} x (Luca-Pomerance 2019); the 2-Lehmer relaxation phi(n) | (n - 1)^2 does have solutions, e.g. 561, 1105, 1729, 2465, 6601, 8481 below 10^4 (OEIS A173703) -- the first five are Carmichael but 8481 = 3.11.257 is not, so 2-Lehmer is strictly weaker than the Lehmer condition. In `Lehmer.lean`: `isLehmerB`, `isTwoLehmerB`, `totientFac_6`, `totientFac_561`, `totientFac_1105`, `totientFac_1729`, `totientFac_2465`, `totientFac_6601`, `totientFac_8481`, `lehmer_window`, `two_lehmer_window`, `two_lehmer_8481`, `not_lehmer_8481` (register `lehmerFacts`, six entries).
 - **Missing (the object that does not exist as a proof):** an unconditional proof that no composite n satisfies phi(n) | (n - 1); equivalently a proof that the Lehmer set L is empty, or a single explicit member.
 - **Falsifier:** one composite n with phi(n) | (n - 1) (necessarily odd, squarefree, Carmichael, > 10^26) refutes the conjecture; a composite n <= 10^6 with phi(n) | (n - 1) would refute this finite certificate.
 
@@ -492,12 +496,13 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Subject:** Erd\u0151s-Moser equation (power sum = square of triangular number)
 - **Status:** RESEARCHED
 - **Related cards:** []
-- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/erdos_moser_certificate.py
+- **Proof attempt:** certificate - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/erdos_moser_certificate.py, 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/ErdosMoser.lean
 - **Pin:** test_erdos_moser_is_a_finite_certificate
-- **as_of:** 2026-10-18
-- **Reduction:** for each (m,k) with 1 < m <= max_m, 1 <= k <= max_k, test sum_{j < m} j^k == m^k; the only known solution is (3,1). Absence in a finite window is not a proof of the conjecture.
+- **Pin:** test_erdos_moser_is_machine_checked
+- **as_of:** 2026-10-20
+- **Reduction:** for each (m,k) with 1 < m <= max_m, 1 <= k <= max_k, test sum_{j < m} j^k == m^k; the only known solution is (3,1). Absence in a finite window is not a proof of the conjecture. Since 2026-10-20 the window is machine-checked in `ErdosMoser.lean`: `em_solution_3_1` certifies the known solution 1 + 2 = 3 by kernel `decide`, `not_em_4_2` is a negative control, and `em_window` decides that no pair with 4 <= m <= 80, 1 <= k <= 12 solves the equation -- the same window the Python certificate searches. `powerSum_10_2_eq` ties the fold-based sum the scan uses to Mathlib's canonical `Finset` sum on an instance.
 - **Barrier:** any further solution requires k even, satisfies strong p-adic/divisibility conditions, and is known to have m > 10^10^6 (bounds have improved further), so no feasible finite search can exclude all solutions (the conjecture is open).
-- **Known:** Erdős (conjectured no other solutions); Moser (1953) gave necessary conditions and m > 10^10^6; Gallot-Moree-Zudilin (2010) improved to m > 10^10^9; Kellner/Moree gave further conditions.
+- **Known:** Erdős (conjectured no other solutions); Moser (1953) gave necessary conditions and m > 10^10^6; Gallot-Moree-Zudilin (2010) improved to m > 10^10^9; Kellner/Moree gave further conditions. In `ErdosMoser.lean`: `powerSum`, `isEmSol`, `powerSum_10_2_eq`, `em_solution_3_1`, `not_em_4_2`, `em_window` (register `erdosMoserFacts`, five entries).
 - **Missing (the object that does not exist as a proof):** a proof that sum_{j < m} j^k = m^k has no integer solutions with (m,k) != (3,1), or an explicit counterexample.
 - **Falsifier:** a pair (m,k) with (m,k) != (3,1) and sum_{j < m} j^k == m^k would refute Erdős–Moser; such a pair in the window would refute this certificate.
 

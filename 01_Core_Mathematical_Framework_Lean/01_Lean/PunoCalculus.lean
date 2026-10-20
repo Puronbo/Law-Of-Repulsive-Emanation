@@ -73,3 +73,8 @@ import PunoCalculus.ParabolaVertex
 import PunoCalculus.Crease
 import PunoCalculus.Wieferich
 import PunoCalculus.Wilson
+import PunoCalculus.PerfectNumbers
+import PunoCalculus.Factorization
+import PunoCalculus.Giuga
+import PunoCalculus.Lehmer
+import PunoCalculus.ErdosMoser

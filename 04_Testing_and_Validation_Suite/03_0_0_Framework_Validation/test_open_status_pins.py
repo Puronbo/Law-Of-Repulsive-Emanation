@@ -515,6 +515,35 @@ def test_mersenne_primes_is_a_finite_certificate():
                      521, 607, 1279]
 
 
+def test_perfect_numbers_are_machine_checked():
+    """G27/G29 (strengthened): the four known perfect numbers, the window scans,
+    and the complete Mersenne-primality classification for prime exponents
+    <= 31 are certified *inside* Lean (kernel decide / norm_num, axiom-free).
+    Odd perfect numbers and the infinitude of Mersenne primes stay OPEN."""
+    src = _lean("PerfectNumbers.lean")
+    for decl in ("def divisorSum", "def isPerfectB", "theorem perfect_6",
+                 "theorem perfect_28", "theorem perfect_496",
+                 "theorem perfect_8128", "theorem isPerfect_8128",
+                 "theorem even_perfect_window", "theorem odd_perfect_window",
+                 "def eulerOddForm", "theorem eulerOddForm_mod4",
+                 "def euclidForm", "theorem euclidForm_2", "theorem euclidForm_3",
+                 "theorem euclidForm_5", "theorem euclidForm_7",
+                 "def llAux", "def lucasLehmerB", "theorem mersenne_window_ll",
+                 "theorem mersenne_primality_window", "theorem mersenne_17",
+                 "theorem mersenne_19", "theorem mersenne_31",
+                 "theorem not_mersenne_11", "theorem not_mersenne_23",
+                 "theorem not_mersenne_29",
+                 "def perfectNumberFacts", "theorem perfectNumberFacts_length"):
+        assert decl in src, "PerfectNumbers.lean is missing %r" % decl
+    assert "sorry" not in src, "PerfectNumbers.lean must not contain sorry"
+    assert "native_decide" not in src, "certificate must be axiom-free (no native_decide)"
+    assert "perfectNumberFacts.length = 8" in src
+    assert "OPEN" in src, "the open status must be recorded in the module"
+    root = _lean("../PunoCalculus.lean")
+    assert "import PunoCalculus.PerfectNumbers" in root, (
+        "root must import PerfectNumbers")
+
+
 def _load_gap_row_forge():
     import importlib.util
     path = os.path.join(
@@ -700,6 +729,81 @@ def test_erdos_moser_is_a_finite_certificate():
     assert sol == []
     assert mod.power_sum(2, 1) == 3 and 3 ** 1 == 3  # 1+2=3
     assert mod.power_sum(3, 2) == 14 and 4 ** 2 == 16  # 1+4!=16
+
+
+def test_erdos_moser_is_machine_checked():
+    """G34 (strengthened): the (3,1) solution and the empty window
+    4 <= m <= 80, 1 <= k <= 12 are certified *inside* Lean (kernel decide,
+    axiom-free); the sum is tied to Mathlib's Finset sum on an instance.
+    Uniqueness of (3,1) stays OPEN."""
+    src = _lean("ErdosMoser.lean")
+    for decl in ("def powerSum", "def isEmSol", "theorem powerSum_10_2_eq",
+                 "theorem em_solution_3_1", "theorem not_em_4_2",
+                 "theorem em_window",
+                 "def erdosMoserFacts", "theorem erdosMoserFacts_length"):
+        assert decl in src, "ErdosMoser.lean is missing %r" % decl
+    assert "sorry" not in src, "ErdosMoser.lean must not contain sorry"
+    assert "native_decide" not in src, "certificate must be axiom-free (no native_decide)"
+    assert "erdosMoserFacts.length = 5" in src
+    assert "OPEN" in src, "the open status must be recorded in the module"
+    root = _lean("../PunoCalculus.lean")
+    assert "import PunoCalculus.ErdosMoser" in root, "root must import ErdosMoser"
+
+
+def test_giuga_numbers_are_machine_checked():
+    """G30 (strengthened): the Giuga window (30, 858, 1722 below 10^4), the
+    Carmichael window, the exact instance 66198, and the *absence* of any
+    Giuga-and-Carmichael number below 10^4 are certified *inside* Lean (kernel
+    decide, axiom-free), standing on Factorization.lean's machine-checked
+    product law.  Giuga's conjecture stays OPEN."""
+    src = _lean("Giuga.lean")
+    for decl in ("def isGiugaB", "def isCarmichaelB",
+                 "theorem giuga_30", "theorem giuga_858", "theorem giuga_1722",
+                 "theorem giuga_66198", "theorem carmichael_561",
+                 "theorem carmichael_1729", "theorem not_giuga_1729",
+                 "theorem giuga_window", "theorem carmichael_window",
+                 "theorem no_giuga_carmichael_window",
+                 "def giugaFacts", "theorem giugaFacts_length"):
+        assert decl in src, "Giuga.lean is missing %r" % decl
+    assert "sorry" not in src, "Giuga.lean must not contain sorry"
+    assert "native_decide" not in src, "certificate must be axiom-free (no native_decide)"
+    assert "giugaFacts.length = 7" in src
+    assert "OPEN" in src, "the open status must be recorded in the module"
+    root = _lean("../PunoCalculus.lean")
+    assert "import PunoCalculus.Giuga" in root, "root must import Giuga"
+    factorization = _lean("Factorization.lean")
+    for decl in ("def primeFacGo", "theorem primeFacGo_prod_window",
+                 "theorem primeFacGo_dvd_window", "def totientFac"):
+        assert decl in factorization, "Factorization.lean is missing %r" % decl
+    assert "sorry" not in factorization, "Factorization.lean must not contain sorry"
+    assert "native_decide" not in factorization, (
+        "Factorization.lean must be axiom-free (no native_decide)")
+    assert "import PunoCalculus.Factorization" in root, (
+        "root must import Factorization")
+
+
+def test_lehmer_totient_is_machine_checked():
+    """G31 (strengthened): the empty Lehmer window (no composite n <= 10000
+    with phi(n) | n-1) and the six 2-Lehmer solutions are certified *inside*
+    Lean (kernel decide, axiom-free), with totientFac cross-checked against
+    Mathlib's proved Nat.totient on every number the conclusions rest on.
+    Lehmer's problem stays OPEN."""
+    src = _lean("Lehmer.lean")
+    for decl in ("def isLehmerB", "def isTwoLehmerB",
+                 "theorem totientFac_6", "theorem totientFac_561",
+                 "theorem totientFac_8481", "theorem lehmer_window",
+                 "theorem two_lehmer_window", "theorem two_lehmer_8481",
+                 "theorem not_lehmer_8481",
+                 "def lehmerFacts", "theorem lehmerFacts_length"):
+        assert decl in src, "Lehmer.lean is missing %r" % decl
+    assert "sorry" not in src, "Lehmer.lean must not contain sorry"
+    assert "native_decide" not in src, "certificate must be axiom-free (no native_decide)"
+    assert "lehmerFacts.length = 6" in src
+    assert "OPEN" in src, "the open status must be recorded in the module"
+    root = _lean("../PunoCalculus.lean")
+    assert "import PunoCalculus.Lehmer" in root, "root must import Lehmer"
+    assert "import PunoCalculus.Factorization" in root, (
+        "root must import Factorization")
 
 def test_crease_module_is_a_partial_formalization():
     """G35: the local mathematics of every fold is machine-checked in
