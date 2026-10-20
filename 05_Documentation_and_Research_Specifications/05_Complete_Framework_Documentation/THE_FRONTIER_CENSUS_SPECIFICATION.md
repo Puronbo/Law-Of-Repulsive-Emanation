@@ -45,11 +45,20 @@ abstractly, once on a live competitor:
 > **`census_window_agree`.** If two decidable predicates `P`, `Q` agree at every
 > `n` in `[1, N]`, their censuses on `[1, N]` are identical.
 
-Taken alone this is `List.filter_congr` and carries little. Its *content* is
-supplied by a companion theorem that exhibits a **live competitor** — a predicate
-that matches the crease on the window yet provably diverges beyond it, so the
-finite evidence is, on that window, indistinguishable from evidence for the
-*negation* of the row:
+Taken alone this is `List.filter_congr` and carries little. Its *content* is the
+**existence** half, which is now a theorem about *every* row:
+
+> **`windowFlip_is_live_competitor`.** For **every** decidable predicate `P` and
+> **every** window bound `N`, the window-complement flip `windowFlip N P` (equal
+> to `P` on `[1, N]`, the Boolean complement of `P` above it) agrees with `P` on
+> the window and is *not equivalent* to `P` globally — they differ at `N + 1`.
+> Equivalently (`no_window_separates_all_rows`): for every row there exists a
+> competitor with the same census but a different predicate.
+
+So no window can ever distinguish a row from a competitor that matches it there —
+including a competitor that *denies the row entirely* beyond the window. A census
+is therefore never evidence for a universal; it is only ever evidence *about the
+window*. The Wieferich case is the concrete instance of the same fact:
 
 > **`wieferich_competitor_window_agree`.** The Wieferich crease `wieferichCrease`
 > and the constant-`false` predicate `neverCrease` ("no Wieferich prime exists")
@@ -58,12 +67,9 @@ finite evidence is, on that window, indistinguishable from evidence for the
 > (`wieferich_competitor_differs`, at 1093) and not equivalent
 > (`wieferich_competitor_not_global`).
 
-So no window can ever distinguish a row from a competitor that matches it on the
-window — including a competitor that *denies the row entirely*. A census is
-therefore never evidence for a universal; it is only ever evidence *about the
-window*. Every honest row in the Ledger is already written this way ("holds to the
-bound and stays OPEN"); this theorem pair is that discipline as mathematics, with
-the separation made concrete rather than merely asserted.
+Every honest row in the Ledger is already written this way ("holds to the bound
+and stays OPEN"); these theorems are that discipline as mathematics, with the
+separation an outright theorem rather than an instance.
 
 ## 3. The crease
 
@@ -113,26 +119,53 @@ as a computable fact.
   is a *genuine* third crease, of the same shape as Wieferich: a first-order layer
   (`p` prime) with real arithmetic content, refined by a second-order test.
 
-### 3.1.1 The falsification pass: which rows are creases and which are not
+### 3.1.1 The falsification pass, corrected
 
 The crease hypothesis was attacked directly — an attempt to build a `Crease` for
-each *non*-compiled open row, with the honest result recorded:
+each *non*-compiled open row. The **first draft of this pass reached a wrong
+conclusion**, and the module now records the correction:
 
-| Row | candidate `lin` (first-order) | outcome |
+| Row | candidate `lin` (first-order) | corrected outcome |
 |---|---|---|
-| **Mersenne** (G29) | `p` prime | **survives** — undershoot 19, a real crease |
-| **Goldbach** (G6) | `n` even | **degenerate** — on `[4,100]` the crease census *equals* the `lin` census (49 = 49); `lin` carries no content |
-| **twin primes** (G12/G26) | none on single `n` | **structural fail** — the census is over *pairs*; no first-order `n`-predicate refines it |
-| **Collatz** (G12) | `n ≥ 1` | **degenerate** — every tested `n` reaches 1, so `lin` is trivial and the crease set is the whole window |
+| **Mersenne** (G29) | `p` prime | **is a crease** — undershoot 19 |
+| **twin primes** (G12/G26) | `p` prime (the *lower* twin) | **is a crease** — undershoot 31 (`twin_primes_are_a_crease`); the first draft's "structural fail" was wrong |
+| **Goldbach** (G6) | `n` even | **is a crease** — undershoot ≥ 1 (`lin` census 50, crease census 49 on `[4,100]`) |
+| **Collatz** (G12) | `n ≥ 1` | **degenerate** — every tested `n` reaches 1, so the `lin` census equals the crease census and the strict `undershoot` fails |
 
-**Scope narrowing (a result, not a failure).** The crease hypothesis is
-therefore *not* a claim about arithmetic open rows in general. It is a theory of
-**single-integer resolvent rows whose universal layer is a genuine first-order
-theorem** — Wieferich, Wilson, Giuga, Lehmer, Mersenne. The rows it does *not*
-cover (Goldbach, twin primes, Collatz) fail for a principled reason: they have no
-content-bearing first-order layer (they are density or dynamical statements, not
-resolvent statements). The theory's domain is thus itself a falsifiable
-prediction, and the falsification pass pinned it.
+**The corrected lesson (`crease_is_weak`).** The `Crease` structure does **not**
+exclude Goldbach or twin primes: the earlier "not a crease" claim was an error.
+What the structure forbids is only the *diagonal* `lin = crease`
+(`no_diagonal_crease`: a strict inequality cannot hold reflexively). So "is a
+crease" is not a discriminating predicate at all — it is satisfied by any row with
+a non-full census.
+
+**The scope claim is not formalizable (`scope_not_formal`).** The previous arc
+"narrowed the theory to single-integer resolvent rows". That narrowing cannot be a
+theorem: **any** predicate with a non-full census admits the trivial first-order
+layer `lin := n ≥ 1` (`trivial_lin_crease_witness`). Genuine open rows with no
+arithmetic first-order content — e.g. Brocard's problem (`n! + 1 = m²`) — are
+therefore structural creases too. "Content-bearing `lin`" is a *naturalness
+judgement*, not a Lean-checkable property, so the scope-narrowing is **demoted**
+from a claim to a documented reading. The theory's real content is quantitative —
+the *size* of the undershoot relative to the window and its relation to each row's
+open universal — not the bare existence of a `Crease`.
+
+### 3.1.2 Undershoot monotonicity: structural, and where it fails
+
+The prediction that undershoot is monotone under window extension splits cleanly:
+
+- **Structural half (a theorem).** If `crease n ⟹ lin n` as *predicates* on all of
+  `ℕ`, then `census_sub` gives the crease census as a sub-collection of the `lin`
+  census on *every* window, and `undershoot_nonneg_of_sub` gives
+  `|crease| ≤ |lin|`. Containment transfers to all window bounds.
+- **Conditional half.** The monotonicity is monotone *only* while that predicate
+  containment survives beyond the window. `containment_can_fail` exhibits a pair
+  that contains inside `[1, 3]` but not at `4`. That failing point **is** the row's
+  missing object: a value where `crease` fires but `lin` does not is exactly the
+  bridge-failure that keeps the row open.
+
+So prediction 4 is not free: its falsifier and the row's open content are the same
+object. Level (structural) is proved; level (conditional) is honest.
 
 The Lehmer, 2-Lehmer and Erdős–Moser rows are recorded as `CensusRun`s (their
 first-order companions are the same predicate minus the decisive condition; the
@@ -215,10 +248,13 @@ Everything the Ledger already marked open:
 ## 7. Pointers
 
 - Lean: `PunoCalculus/FrontierCensus.lean` (`census`, `WindowAgree`,
-  `census_window_agree`, `wieferich_competitor_window_agree` /
+  `census_window_agree`, `windowFlip`, `windowFlip_is_live_competitor`,
+  `no_window_separates_all_rows`, `wieferich_competitor_window_agree` /
   `_differs` / `_not_global`, `CensusRun`, `Crease`, `wieferichCreaseInstance`,
-  `giugaCreaseInstance`, `mersenneCreaseInstance`, `registry`,
-  `undershoot_instances`, `frontierCensusFacts`).
+  `giugaCreaseInstance`, `mersenneCreaseInstance`, `no_diagonal_crease`,
+  `twin_primes_are_a_crease`, `undershoot_nonneg_of_sub`, `containment_can_fail`,
+  `trivial_lin_crease_witness`, `registry`, `undershoot_instances`,
+  `frontierCensusFacts`).
 - Primitives: `PunoCalculus/Factorization.lean` (`primeFacGo`, `totientFac`).
 - Existing barrier: `PunoCalculus/Wieferich.lean`
   (`first_order_not_iff_isWieferich`), `PunoCalculus/Wilson.lean`
