@@ -45,17 +45,28 @@
   * `census_window_agree`: two predicates that agree pointwise on `[1, N]` have
     the *same census* on `[1, N]` -- so no window can separate them.  This is
     the formal core of "absence in a window is not a proof".
+  * `wieferich_competitor_window_agree` / `_census_eq` / `_differs` /
+    `_not_global`: the core has *content* -- the crease and a live competitor
+    ("no Wieferich prime exists") agree on `[1, 1092]` yet differ at 1093, so a
+    window cannot separate a row from its *negation*.
   * `first_order_undershoots`: the first-order predicate's census strictly
     contains the crease census on the window -- the machine-checked shadow of
-    the G37 no-go, per instance.
+    the G37 no-go, per instance (Wieferich, Giuga, Mersenne).
 
   Cited from `PunoCalculus.Wieferich` (not re-proved here): the no-go itself,
   `first_order_not_iff_isWieferich` -- there is no pointwise equivalence between
   the first-order Fermat vanishing and the Wieferich condition.  This module
   supplies the *census* form of the same barrier.
   * the Wieferich prototype `[1093, 3511]`, the Giuga crease `[30, 858, 1722]`,
-    the empty Lehmer window, the 2-Lehmer relaxation `[561, ...]`, and the
-    empty Erdos-Moser window, all as `CensusRun`s.
+    the Mersenne crease `[2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127]`, the
+    empty Lehmer window, the 2-Lehmer relaxation `[561, ...]`, and the empty
+    Erdos-Moser window, all as `CensusRun`s.
+
+  Falsified this arc (a result, not a failure): the crease hypothesis does NOT
+  cover Goldbach, twin primes, or Collatz -- none has a content-bearing
+  first-order layer.  Mersenne survives as a genuine third crease.  The theory's
+  domain is therefore single-integer resolvent rows, itself a falsifiable
+  prediction.
 
   Reviewed, not proved (documented in the spec, flagged here):
 
@@ -70,6 +81,7 @@ import PunoCalculus.Wieferich
 import PunoCalculus.Giuga
 import PunoCalculus.Lehmer
 import PunoCalculus.ErdosMoser
+import PunoCalculus.PerfectNumbers
 
 set_option maxRecDepth 100000
 set_option maxHeartbeats 6000000
@@ -206,6 +218,51 @@ def wieferichCreaseInstance : Crease where
     · rw [h]; decide
   undershoot := by decide
 
+/-! ### The competitor theorem: the core has content
+
+`census_window_agree` is *proved*, but on its own it is `filter_congr`-shaped.  Its
+content is that a window admits a *live competitor to the universal* -- a predicate
+that matches the crease on the window and provably diverges beyond it.  We exhibit
+one: the constant-`false` predicate (`neverCrease`, the universal "no Wieferich
+prime exists") agrees with `wieferichCrease` at every `n` in `[1, 1092]`, yet the
+two predicates are *globally unequal* -- they differ at the first Wieferich prime
+1093.  So the window `[1, 1092]` cannot separate the crease from the competitor that
+*denies the row entirely*: the finite evidence is, on that window, indistinguishable
+from evidence for the negation.  This is `census_window_agree` instantiated on a
+competitor that fails the open universal, which is exactly what makes the census an
+*observation about the window* and not an argument for the universal. -/
+
+/-- The competitor predicate: "no `n` is a Wieferich prime". -/
+def neverCrease (_ : ℕ) : Bool := false
+
+/-- On `[1, 1092]` the Wieferich crease and its total-nihilist competitor agree. -/
+theorem wieferich_competitor_window_agree : WindowAgree 1092 wieferichCrease neverCrease := by
+  intro n _ hn
+  have h : wieferichCrease n = false := by
+    have hc : census 1092 wieferichCrease = [] := by decide
+    by_cases hp : wieferichCrease n = true
+    · exfalso
+      have : n ∈ census 1092 wieferichCrease := by
+        unfold census
+        exact List.mem_filter.mpr ⟨List.mem_range'.mpr ⟨n - 1, by omega, by omega⟩, hp⟩
+      rw [hc] at this
+      exact List.not_mem_nil this
+    · simpa using hp
+  simp [neverCrease, h]
+
+/-- The two censuses on `[1, 1092]` are identical -- the window cannot separate them. -/
+theorem wieferich_competitor_census_eq :
+    census 1092 wieferichCrease = census 1092 neverCrease :=
+  census_window_agree wieferich_competitor_window_agree
+
+/-- But the predicates are globally distinct: they differ at the first Wieferich prime. -/
+theorem wieferich_competitor_differs : wieferichCrease 1093 ≠ neverCrease 1093 := by decide
+
+/-- The competitor is not equivalent to the row: no predicate agreeing with the
+nihilist on every `n` can be the crease, since the crease fires at 1093. -/
+theorem wieferich_competitor_not_global : ¬ (∀ n, wieferichCrease n = neverCrease n) :=
+  fun h => wieferich_competitor_differs (h 1093)
+
 /-! ### The Giuga crease (G30), re-exposed
 
 First-order test = squarefree composite (the leading structural description
@@ -247,6 +304,55 @@ def giugaCreaseInstance : Crease where
     rw [hlist] at hn
     simp only [List.mem_cons, List.not_mem_nil, or_false] at hn
     rcases hn with h | h | h
+    · rw [h]; decide
+    · rw [h]; decide
+    · rw [h]; decide
+  undershoot := by decide
+
+/-! ### The Mersenne crease (G29), from the falsification pass
+
+The falsification pass tried to build a crease for every non-compiled open row and
+found one genuine survivor: Mersenne.  `lin` = prime exponent `p` (Fermat/Euclid:
+the leading description of an even perfect number is `2^(p-1)(2^p-1)` with `p`
+prime), `crease` = Mersenne prime exponent (`2^p - 1` prime, via the cited
+Lucas-Lehmer test `lucasLehmerB`).  Exponents up to 128. -/
+
+/-- First-order: the exponent is prime. -/
+def mersenneLin (p : ℕ) : Bool := isPrimeB p
+
+/-- The crease: the exponent is prime AND `2^p - 1` is prime (Lucas-Lehmer). -/
+def mersenneCrease (p : ℕ) : Bool := isPrimeB p && decide (PerfectNumbers.lucasLehmerB p = true)
+
+/-- The Mersenne crease instance over the exponent window `[1, 128]`. -/
+def mersenneCreaseInstance : Crease where
+  name := "Mersenne (G29): first-order = p prime, crease = 2^p - 1 prime"
+  lin := mersenneLin
+  crease := mersenneCrease
+  bound := 128
+  linRun := { bound := 128, pred := mersenneLin, expected := census 128 mersenneLin, verified := rfl }
+  creaseRun :=
+    { bound := 128, pred := mersenneCrease,
+      expected := [2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127], verified := by decide }
+  linRun_bound := rfl
+  creaseRun_bound := rfl
+  linRun_pred := rfl
+  creaseRun_pred := rfl
+  refine_sub := by
+    intro n hn
+    have hlist : census 128 mersenneCrease = [2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127] := by
+      decide
+    rw [hlist] at hn
+    simp only [List.mem_cons, List.not_mem_nil, or_false] at hn
+    rcases hn with h | h | h | h | h | h | h | h | h | h | h | h
+    · rw [h]; decide
+    · rw [h]; decide
+    · rw [h]; decide
+    · rw [h]; decide
+    · rw [h]; decide
+    · rw [h]; decide
+    · rw [h]; decide
+    · rw [h]; decide
+    · rw [h]; decide
     · rw [h]; decide
     · rw [h]; decide
     · rw [h]; decide
@@ -316,31 +422,39 @@ def registry : List RegistryEntry :=
       openWall := "the 2-Lehmer window shows the relaxation is weaker but not why" },
     { gap := "G34", subject := "Erdos-Moser",
       run := emCreaseRun,
-      openWall := "the empty EM window does not show (3,1) is the only solution" } ]
+      openWall := "the empty EM window does not show (3,1) is the only solution" },
+    { gap := "G29", subject := "Mersenne",
+      run := mersenneCreaseInstance.creaseRun,
+      openWall := "the Mersenne window does not show the set of Mersenne primes is infinite" } ]
 
-theorem registry_length : registry.length = 5 := by decide
+theorem registry_length : registry.length = 6 := by decide
 
 /-- The theory's central structural claim, machine-checked per instance: the
 first-order predicate's census strictly contains the crease census on the
-window (the undershoot).  Bundled from the two compiled crease instances. -/
+window (the undershoot).  Bundled from the three compiled crease instances. -/
 theorem undershoot_instances :
     (census wieferichCreaseInstance.bound wieferichCreaseInstance.lin).length
       > (census wieferichCreaseInstance.bound wieferichCreaseInstance.crease).length
     ∧ (census giugaCreaseInstance.bound giugaCreaseInstance.lin).length
-      > (census giugaCreaseInstance.bound giugaCreaseInstance.crease).length :=
-  ⟨wieferichCreaseInstance.undershoot, giugaCreaseInstance.undershoot⟩
+      > (census giugaCreaseInstance.bound giugaCreaseInstance.crease).length
+    ∧ (census mersenneCreaseInstance.bound mersenneCreaseInstance.lin).length
+      > (census mersenneCreaseInstance.bound mersenneCreaseInstance.crease).length :=
+  ⟨wieferichCreaseInstance.undershoot, giugaCreaseInstance.undershoot,
+    mersenneCreaseInstance.undershoot⟩
 
 /-- Register of the theory's established facts and its open content, in the
 corpus's `(key, value)` format.  The final entry carries the word OPEN. -/
 def frontierCensusFacts : List (String × String) :=
   [ ("shape", "every open-status row is (decidable predicate, window, census, open universal) -- machine-checked as CensusRun"),
     ("core", "census_window_agree: window-agreeing predicates have identical censuses, so a window cannot separate a row from its leading description"),
-    ("crease", "each row's first-order (leading) test undershoots: its census strictly contains the crease census (Wieferich 1093/3511 among odd primes; Giuga 30/858/1722 among squarefree composites)"),
+    ("crease", "each row's first-order (leading) test undershoots: its census strictly contains the crease census (Wieferich 1093/3511 among 549 odd primes; Giuga 30/858/1722 among 4853 squarefree composites; Mersenne 12 exponents among 31 primes)"),
     ("no_go_shadow", "the undershoot is the per-instance shadow of G37: no first-order certificate can detect the crease"),
+    ("competitor", "the core has content: the wieferich crease and the constant-false competitor ('no Wieferich prime') agree on [1,1092] but differ at 1093 (wieferich_competitor_window_agree / _differs)"),
     ("prototype", "Wieferich (G32) is the prototype: first-order = odd prime, crease = 2^(p-1) = 1 mod p^2"),
-    ("registry", "five census runs: Wieferich [1093,3511], Giuga [30,858,1722], Lehmer [], 2-Lehmer [561,...], Erdos-Moser []"),
+    ("scope", "the falsification pass narrows the domain: Mersenne survives as a genuine crease, but Goldbach/twin-prime/Collatz are NOT creases (no content-bearing first-order layer); the theory covers single-integer resolvent rows only"),
+    ("registry", "six census runs: Wieferich [1093,3511], Giuga [30,858,1722], Lehmer [], 2-Lehmer [561,...], Erdos-Moser [], Mersenne [2,3,5,7,13,17,19,31,61,89,107,127]"),
     ("open", "OPEN: the crease is not shown universal across all n; each row's universal claim (Giuga, Lehmer, Erdos-Moser uniqueness, Mersenne infinitude) stays open, and the synthesis is reviewed, not proved") ]
 
-theorem frontierCensusFacts_length : frontierCensusFacts.length = 7 := by decide
+theorem frontierCensusFacts_length : frontierCensusFacts.length = 9 := by decide
 
 end PunoCalculus.FrontierCensus

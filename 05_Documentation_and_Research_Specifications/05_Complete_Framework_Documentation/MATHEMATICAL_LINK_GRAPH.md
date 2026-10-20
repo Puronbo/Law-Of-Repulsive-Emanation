@@ -18,7 +18,7 @@ that any Millennium obligation is discharged. See `WHAT_THIS_DOES_NOT_PROVE.md`.
 
 ## 1. The mesh (verified ↔ verified)
 
-The internal graph has **82 module nodes** and **64 directed edges**. An edge
+The internal graph has **82 module nodes** and **65 directed edges**. An edge
 `A -> B` is exactly an `import PunoCalculus.B` line in module `A` (self-edges and
 `import Mathlib` excluded). The block below is parsed by the checker; it must
 equal the imports actually present in the tree.
@@ -34,6 +34,7 @@ FrontierCensus -> ErdosMoser
 FrontierCensus -> Factorization
 FrontierCensus -> Giuga
 FrontierCensus -> Lehmer
+FrontierCensus -> PerfectNumbers
 FrontierCensus -> Wieferich
 Giuga -> Factorization
 GreatAttractor -> CriticalLadder
