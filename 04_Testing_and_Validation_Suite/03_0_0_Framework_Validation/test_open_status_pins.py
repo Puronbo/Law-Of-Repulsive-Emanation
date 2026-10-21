@@ -943,3 +943,24 @@ def test_frontier_census_is_machine_checked():
     assert "import PunoCalculus.FrontierCensus" in root, (
         "root must import FrontierCensus")
 
+
+def test_role_collision_is_machine_checked():
+    """G39: the `x = x + 1` "therefore 0 = 1" paradox is RESOLVED in
+    PunoCalculus/RoleCollision.lean -- the equation reading is proved
+    unsatisfiable and derives 0 = 1 by ex falso, while the recurrence reading is a
+    state map with a closed form; the two readings are proved distinct and only
+    coincide at the impossible case."""
+    src = _lean("RoleCollision.lean")
+    for decl in ("def EqReading", "theorem eq_reading_unsat",
+                 "theorem eq_reading_implies_zero_eq_one",
+                 "def Step", "theorem recurrence_closed_form",
+                 "theorem recurrence_as_equation_is_collision",
+                 "theorem readings_differ"):
+        assert decl in src, "RoleCollision.lean is missing %r" % decl
+    assert "sorry" not in src, "RoleCollision.lean must not contain sorry"
+    assert "native_decide" not in src, (
+        "the certificate must be axiom-free (no native_decide)")
+    root = _lean("../PunoCalculus.lean")
+    assert "import PunoCalculus.RoleCollision" in root, (
+        "root must import RoleCollision")
+

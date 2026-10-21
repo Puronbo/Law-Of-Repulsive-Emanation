@@ -81,3 +81,4 @@ import PunoCalculus.Giuga
 import PunoCalculus.Lehmer
 import PunoCalculus.ErdosMoser
 import PunoCalculus.FrontierCensus
+import PunoCalculus.RoleCollision

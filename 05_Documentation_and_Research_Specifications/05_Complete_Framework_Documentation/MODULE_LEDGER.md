@@ -96,6 +96,7 @@ imported by the root, fails the checker.
 | `Removable` | core-scaffold | — | the field-agnostic removable-value mechanism (`removable_limit`, `quadratic_removable`, `impedance_crosszero`); base of card C15 |
 | `RemovableComplexBridge` | card | C21 | carries card(s) C21 |
 | `RemovableValue` | card | C15 | carries card(s) C15 |
+| `RoleCollision` | core-scaffold | — | the role-collision lesson (G39): `x = x + 1` read as an *equation* is unsatisfiable (`eq_reading_unsat`, and `eq_reading_implies_zero_eq_one` derives `0 = 1` by ex falso), while read as a *recurrence* it is a state map with closed form `(Step^[t]) x0 = x0 + t` (`recurrence_closed_form`); `recurrence_as_equation_is_collision` pins where the two readings coincide (only at the impossible `0 = 1`), and `readings_differ` proves they are distinct propositions -- the `0 = 1` "paradox" is a symbol used in two incompatible roles (value vs. state, equality vs. assignment) |
 | `SelfSimilarExponents` | card | C31 | carries card(s) C31 |
 | `SerrinLadder` | card | C23 | carries card(s) C23 |
 | `SerrinSufficiency` | card | C8-open | carries card(s) C8-open |
@@ -117,6 +118,6 @@ imported by the root, fails the checker.
 
 ## Coverage
 
-- **Modules on disk:** 74 (all imported by `PunoCalculus.lean`).
+- **Modules on disk:** 75 (all imported by `PunoCalculus.lean`).
 - **Card-carrying modules (`card`):** 38.
-- **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold / information-bridge):** 36.
+- **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold / information-bridge):** 37.
