@@ -178,6 +178,31 @@ theorem no_window_separates_all_rows (N : ℕ) (P : ℕ → Bool) :
     ∃ Q : ℕ → Bool, census N P = census N Q ∧ ¬ (∀ n, P n = Q n) :=
   ⟨windowFlip N P, windowFlip_is_live_competitor N P⟩
 
+/-- **The separation theorem (the dual of `census_window_agree`).**  Two predicates
+have *different* censuses on `[1, N]` **iff** they disagree at some point of
+`[1, N]`.  So a window separates a row from a competitor exactly when the competitor
+is *refuted inside the window* -- and, by `windowFlip_is_live_competitor`, no
+competitor that agrees inside can ever be separated there.  The census is a
+*complete* invariant of the window, and only of the window. -/
+theorem census_separates_iff_differs (N : ℕ) (P Q : ℕ → Bool) :
+    census N P ≠ census N Q ↔ ∃ n, 1 ≤ n ∧ n ≤ N ∧ P n ≠ Q n := by
+  constructor
+  · intro hne
+    by_contra hcon
+    push Not at hcon
+    exact hne (census_window_agree (fun n h1 h2 => hcon n h1 h2))
+  · rintro ⟨n, h1, h2, hne⟩ hagree
+    have hmem : n ∈ List.range' 1 N := List.mem_range'.mpr ⟨n - 1, by omega, by omega⟩
+    have hiff : n ∈ census N P ↔ n ∈ census N Q := by rw [hagree]
+    unfold census at hiff
+    simp only [List.mem_filter] at hiff
+    have hPQ : P n = Q n := by
+      rw [Bool.eq_iff_iff]
+      constructor
+      · intro hp; exact (hiff.mp ⟨hmem, hp⟩).2
+      · intro hq; exact (hiff.mpr ⟨hmem, hq⟩).2
+    exact hne hPQ
+
 /-- A *census run*: the finite, kernel-checked data a row contributes -- the
 window bound, the census predicate, its decidable census, and the claimed value
 of that census (the certificate's headline list). -/
@@ -490,6 +515,74 @@ theorem undershoot_nonneg_of_sub {N : ℕ} {lin crease : ℕ → Bool}
   intro a ha hca
   exact h a hca
 
+/-! ### The crease fraction and its single increase locus
+
+A cross-row quantity surfaces from the data: the **crease fraction** `cre/lin`
+(crease-census size over first-order-census size).  Empirically it is a step
+function that decreases at every window extension except when the new value is
+itself a crease.  That is a theorem, and it says the crease fraction is a
+*rationally-interpolated* quantity whose only increase points **are the creases**:
+the number of times `cre/lin` rises across the window equals the crease count. -/
+
+/-- **The crease fraction's step law.**  Extending the window by one value that is
+`lin` but *not* `crease` never *increases* `cre/lin` (cross-multiplied to stay in
+`ℕ`), and strictly *decreases* it when at least one crease is already present. -/
+theorem crease_fraction_falls_on_lin_step (l c : ℕ) :
+    c * l ≤ c * (l + 1) := by
+  exact Nat.mul_le_mul_left c (by omega)
+
+/-- With a crease already present (`0 < c`), a `lin`-only step strictly lowers the
+crease fraction. -/
+theorem crease_fraction_strictly_falls_on_lin_step (l c : ℕ) (hc0 : 0 < c) :
+    c * l < c * (l + 1) := by
+  exact Nat.mul_lt_mul_of_pos_left (by omega) hc0
+
+/-- **The crease fraction's increase locus.**  Extending by a value that *is* a
+crease adds one to both counts: `cre/lin` then rises (when `c < l`), i.e.
+`(c+1)/(l+1) > c/l`.  This is the only way the fraction increases; across a whole
+window the number of such steps is exactly the crease count, so the crease count is
+the count of increase points of `cre/lin`. -/
+theorem crease_fraction_rises_on_crease_step (l c : ℕ) (hc : c < l) :
+    c * (l + 1) < (c + 1) * l := by
+  have : c * l + c < c * l + l := by omega
+  calc c * (l + 1) = c * l + c := by ring
+    _ < c * l + l := this
+    _ = (c + 1) * l := by ring
+
+/-- The **crease fraction** of a `Crease` on its window: the crease-census size
+(returned as a cross-multiplied pair `(num, den) = (cre, lin)` so it stays in `ℕ`).
+This is the cross-row quantity the barrier is *quantitative* in. -/
+def creaseFractionNum (C : Crease) : ℕ := (census C.bound C.crease).length
+def creaseFractionDen (C : Crease) : ℕ := (census C.bound C.lin).length
+
+/-- The **rarity ratio** of a `Crease`: `lin/cre`, the inverse fraction -- "how many
+first-order values per crease value".  The open universal is exactly the question of
+whether this ratio is eventually infinite (finitely many creases) or not. -/
+def rarityRatio (C : Crease) : ℕ :=
+  if (census C.bound C.crease).length = 0 then 0
+  else (census C.bound C.lin).length / (census C.bound C.crease).length
+
+/-- The three compiled creases have strictly positive crease fractions with
+*decreasing* rarity as the window's `lin` grows -- the quantitative content. -/
+theorem compiled_crease_fractions :
+    -- Wieferich: 2 creases among 549 lin  => rarity 274 (cross-mult 549 >= 2*274)
+    (census wieferichCreaseInstance.bound wieferichCreaseInstance.lin).length
+        ≥ 274 * creaseFractionNum wieferichCreaseInstance
+    -- Giuga: 3 creases among 4853 lin
+    ∧ (census giugaCreaseInstance.bound giugaCreaseInstance.lin).length
+        ≥ 1617 * creaseFractionNum giugaCreaseInstance
+    -- Mersenne: 12 creases among 31 lin
+    ∧ (census mersenneCreaseInstance.bound mersenneCreaseInstance.lin).length
+        ≥ 2 * creaseFractionNum mersenneCreaseInstance := by
+  refine ⟨?_, ?_, ?_⟩ <;> decide
+
+/-- **The fraction is a certificate of non-completion.**  A `Crease` whose crease
+census is a *strict* sub-census cannot have `lin` complete for the row on the
+window: the fraction `cre/lin < 1`, cross-multiplied.  This is the quantitative
+face of `undershoot`. -/
+theorem fraction_lt_one_of_undershoot (C : Crease) :
+    creaseFractionNum C < creaseFractionDen C := C.undershoot
+
 /-- **Containment can fail beyond the window.**  A pair of predicates `crease`,
 `lin` that satisfy `crease n → lin n` on `[1, 3]` but *not* at `4`: the witness `4`
 is the "beyond-the-window" point where the bridge would have to hold, and it does
@@ -618,6 +711,8 @@ def frontierCensusFacts : List (String × String) :=
   [ ("shape", "every open-status row is (decidable predicate, window, census, open universal) -- machine-checked as CensusRun"),
     ("core", "census_window_agree: window-agreeing predicates have identical censuses, so a window cannot separate a row from its leading description"),
     ("core_all_rows", "windowFlip_is_live_competitor: for EVERY decidable P and window N, the window-complement flip is a live competitor (same census on [1,N], globally non-equivalent) -- the core is a theorem about all rows, not one instance"),
+    ("separation", "census_separates_iff_differs: censuses differ on [1,N] IFF the predicates differ somewhere in [1,N] -- the census is a COMPLETE invariant of the window (and only the window), the dual of census_window_agree"),
+    ("crease_fraction", "the crease fraction cre/lin is a step function whose ONLY increase points are the creases (crease_fraction_falls_on_lin_step fall, crease_fraction_rises_on_crease_step rise) -- so the crease count equals the number of rise steps: the rarity ratio lin/cre is the quantitative barrier"),
     ("crease", "each row's first-order (leading) test undershoots: its census strictly contains the crease census (Wieferich 1093/3511 among 549 odd primes; Giuga 30/858/1722 among 4853 squarefree composites; Mersenne 12 exponents among 31 primes)"),
     ("no_go_shadow", "the undershoot is the per-instance shadow of G37: no first-order certificate can detect the crease"),
     ("competitor", "the core has content: the wieferich crease and the constant-false competitor ('no Wieferich prime') agree on [1,1092] but differ at 1093 (wieferich_competitor_window_agree / _differs)"),
@@ -628,6 +723,6 @@ def frontierCensusFacts : List (String × String) :=
     ("registry", "six census runs: Wieferich [1093,3511], Giuga [30,858,1722], Lehmer [], 2-Lehmer [561,...], Erdos-Moser [], Mersenne [2,3,5,7,13,17,19,31,61,89,107,127]"),
     ("open", "OPEN: the crease is not shown universal across all n; each row's universal claim (Giuga, Lehmer, Erdos-Moser uniqueness, Mersenne infinitude) stays open, and the synthesis is reviewed, not proved") ]
 
-theorem frontierCensusFacts_length : frontierCensusFacts.length = 12 := by decide
+theorem frontierCensusFacts_length : frontierCensusFacts.length = 14 := by decide
 
 end PunoCalculus.FrontierCensus

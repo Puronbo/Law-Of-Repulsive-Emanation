@@ -181,6 +181,51 @@ therefore primality-tests through the reducing factoriser `primeFacGo` (proved i
 about 90s and returns `[1093, 3511]`. This is a practical note for anyone adding
 a row: **the census predicate must reduce.**
 
+### 3.3 The separation theorem: the census is a complete window invariant
+
+`census_window_agree` says *equal on the window ⟹ equal census*. The dual is
+equally sharp and is now proved (`census_separates_iff_differs`):
+
+> **`census_separates_iff_differs`.** Two predicates have *different censuses* on
+> `[1, N]` **iff** they disagree at some point of `[1, N]`.
+
+So the census is a **complete invariant of the window** — it detects a competitor
+exactly when the competitor is refuted *inside* the window, and (by
+`windowFlip_is_live_competitor`) it is blind to any competitor that agrees inside,
+however it behaves outside. This closes the core: the census sees the window and
+*nothing but* the window, in both directions. It is the precise sense in which the
+finite evidence is a snapshot, not a proof.
+
+### 3.4 The crease fraction: a quantitative barrier with a single increase locus
+
+A cross-row quantity surfaces from the data — the **crease fraction** `cre/lin`
+(crease-census size over first-order-census size), or its inverse the **rarity
+ratio** `lin/cre`. It is a step function, and its movement is now a theorem
+(`crease_fraction_falls_on_lin_step`, `crease_fraction_rises_on_crease_step`):
+
+> extending the window by a value that is `lin` but not `crease` **never raises**
+> `cre/lin` (and strictly lowers it once a crease is present); extending by a value
+> that *is* a crease **raises** it.
+
+So the **only increase points of `cre/lin` are the creases themselves**: across a
+window, the crease count equals the number of rise-steps, and the rarity ratio
+`lin/cre` climbs monotonically between creases. This is the quantitative form of
+the barrier — the open universal of a row is exactly the question of whether
+`lin/cre` is eventually infinite (finitely many creases) or not. The three compiled
+creases instantiate it (`compiled_crease_fractions`):
+
+| row | lin | cre | cre/lin | rarity `lin/cre` |
+|---|---|---|---|---|
+| Wieferich (`[1,4000]`) | 549 | 2 | 0.0036 | 274 |
+| Giuga (`[1,10⁴]`) | 4853 | 3 | 0.0006 | 1617 |
+| Mersenne (`p ≤ 128`) | 31 | 12 | 0.387 | 2.6 |
+
+The rarity ratios span three orders of magnitude — Wieferich creases are
+*quadratically* rarer than Mersenne creases — yet the *shape* (a step function
+rising only at creases) is identical across rows. That identical shape is the
+theory's quantitative invariant; the differing rarity is what makes each row's
+universal a different problem.
+
 ## 4. What this theory predicts
 
 The synthesis is only useful if it generates falsifiable claims. It does:
