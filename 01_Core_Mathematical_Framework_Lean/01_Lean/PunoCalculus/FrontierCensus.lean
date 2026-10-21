@@ -511,6 +511,64 @@ theorem no_full_self_crossing (C : Crease)
     C.undershoot
   omega
 
+/-! ### The fold that does not seal
+
+The familiar picture (Kaluza-Klein's hose, a black-hole horizon): a dimension
+*folds back on itself* but does not *collapse*.  In this theory that is exactly a
+`Crease`: it **folds** at the points where `lin` and `crease` coincide, and it
+**does not seal** because `undershoot` keeps the two censuses strictly apart. -/
+
+/-- The **fold set**: the points where the boundary touches itself.  On the window
+the coincidence points of `lin` and `crease` are exactly the crease values
+(`refine_sub` gives `crease ⊆ lin`, so `lin && crease` holds precisely on the
+crease census), so the fold set *is* the crease census. -/
+def foldSet (C : Crease) : List ℕ := census C.bound C.crease
+
+/-- The fold set is exactly the crease census (definitionally), which is the
+`lin ∩ crease` coincidence set on the window. -/
+theorem foldSet_is_coincidence (C : Crease) :
+    foldSet C
+      = (List.range' 1 C.bound).filter (fun n => C.lin n && C.crease n) := by
+  unfold foldSet census
+  apply List.filter_congr
+  intro n hn
+  by_cases hc : C.crease n = true
+  · have hmem : n ∈ census C.bound C.crease := by
+      simp only [census, List.mem_filter]
+      exact ⟨hn, by simpa using hc⟩
+    have hlin : C.lin n = true := by
+      have := C.refine_sub n hmem
+      exact (List.mem_filter.mp this).2
+    simp [hlin, hc]
+  · simp [hc]
+
+/-- **A Crease actually folds** (the fold set is non-empty) as soon as the row has
+at least one crease value. -/
+theorem fold_is_nonempty (C : Crease) (h : 0 < (census C.bound C.crease).length) :
+    0 < (foldSet C).length := by
+  simpa [foldSet] using h
+
+/-- **The fold never seals.**  A `Crease` cannot be a closed self-loop: the
+"sealed" condition (`crease` coincides with `lin` on the whole window) is exactly
+`no_full_self_crossing`, impossible. -/
+theorem fold_never_seals (C : Crease) :
+    ¬ (∀ n ∈ census C.bound C.lin, n ∈ census C.bound C.crease) :=
+  fun h => no_full_self_crossing C h
+
+/-- **The gap keeps the fold open** (the quantitative form of "does not seal"):
+the distance between the leading census and the fold is strictly positive. -/
+theorem fold_leaves_gap (C : Crease) :
+    (census C.bound C.lin).length - (foldSet C).length > 0 := by
+  have h := C.undershoot
+  simp only [foldSet]
+  omega
+
+/-- The Wieferich crease **folds** (it has a non-empty fold set -- its two
+Wieferich primes are coincidence points). -/
+theorem wieferich_folds : 0 < (foldSet wieferichCreaseInstance).length := by
+  apply fold_is_nonempty
+  decide
+
 
 /-- Twin primes *do* form a `Crease` (contradicting the first falsification draft):
 `lin` = prime, `crease` = smaller twin prime.  Window `[1, 200]`: 46 primes, 15
@@ -814,12 +872,13 @@ def frontierCensusFacts : List (String × String) :=
     ("competitor", "the core has content: the wieferich crease and the constant-false competitor ('no Wieferich prime') agree on [1,1092] but differ at 1093 (wieferich_competitor_window_agree / _differs)"),
     ("crease_is_weak", "CORRECTION: the Crease structure does NOT exclude Goldbach or twin primes -- twin primes have a Crease (lin = prime, undershoot 31) and Goldbach does too (lin = even, undershoot 1); what forbids the diagonal is only the strict undershoot inequality (no_diagonal_crease)"),
     ("self_crossing", "if the boundary (invariant lin) crosses itself: at a coincidence point the signed role count is +1 - 1 = 0 (self_crossing_index_zero -- the figure-eight winding cancels there, a local value collision, not a new object); and a FULL self-crossing (lin coincides with crease everywhere on the window) collapses to the diagonal (full_self_crossing_is_diagonal) and is impossible (no_full_self_crossing) -- so a valid crease is only ever a partial self-crossing, never a closed self-loop"),
+    ("fold", "the fold that does not seal (the familiar hose/horizon picture): a Crease FOLDS at its coincidence points (foldSet_is_coincidence: the fold set is exactly the crease census; fold_is_nonempty: Wieferich folds, wieferich_folds) and never SEALS (fold_never_seals: the closed self-loop is no_full_self_crossing), leaving a strict gap (fold_leaves_gap: the leading census minus the fold is positive) -- it folds back on itself but does not collapse"),
     ("monotone", "undershoot_nonneg_of_sub is structural: predicate-level containment gives non-negative undershoot on every window; containment_can_fail shows the containment itself can fail beyond the window -- the monotonicity is conditional, and its condition is the row's missing object"),
     ("scope_not_formal", "DEMOTION: the scope-narrowing claim (single-integer resolvent rows only) is NOT formalizable -- any non-full census admits the trivial lin (n >= 1), witness trivial_lin_crease_witness; 'content-bearing lin' is a naturalness judgement, not a Lean-checkable property"),
     ("prototype", "Wieferich (G32) is the prototype: first-order = odd prime, crease = 2^(p-1) = 1 mod p^2"),
     ("registry", "six census runs: Wieferich [1093,3511], Giuga [30,858,1722], Lehmer [], 2-Lehmer [561,...], Erdos-Moser [], Mersenne [2,3,5,7,13,17,19,31,61,89,107,127]"),
     ("open", "OPEN: the crease is not shown universal across all n; each row's universal claim (Giuga, Lehmer, Erdos-Moser uniqueness, Mersenne infinitude) stays open, and the synthesis is reviewed, not proved") ]
 
-theorem frontierCensusFacts_length : frontierCensusFacts.length = 17 := by decide
+theorem frontierCensusFacts_length : frontierCensusFacts.length = 18 := by decide
 
 end PunoCalculus.FrontierCensus

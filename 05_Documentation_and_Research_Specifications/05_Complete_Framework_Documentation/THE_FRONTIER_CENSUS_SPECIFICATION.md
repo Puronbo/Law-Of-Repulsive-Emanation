@@ -267,6 +267,26 @@ The reading: a valid crease is only ever a **partial** self-crossing -- scattere
 coincidence points inside the window, never a closed self-loop. The boundary can
 fold, but it cannot seal; `undershoot` is the width of the gap that keeps it open.
 
+### 3.6 The fold that does not seal
+
+The same facts, read as the familiar "a dimension folds back on itself but does
+not collapse" picture (Kaluza-Klein's hose; the horizon as a dimensional lock):
+
+- **The fold set is the crease census** (`foldSet`, `foldSet_is_coincidence`): on
+  the window, the points where `lin` and `crease` coincide are exactly the crease
+  values (`refine_sub` gives `crease ⊆ lin`).
+- **A crease actually folds** (`fold_is_nonempty`, and `wieferich_folds` for the
+  compiled Wieferich instance): the fold set is non-empty.
+- **It never seals** (`fold_never_seals`): the "closed self-loop" condition is
+  `no_full_self_crossing`, impossible.
+- **The gap is strict** (`fold_leaves_gap`): leading census minus fold is positive.
+
+So a `Crease` is a loop that is *open by construction*: it folds (bends back on
+itself at the crease points) yet the fold has positive width, so it can never
+close. This is the formal sense in which a fold is a fold and not a collapse --
+and it is exactly the role-preserving reading that keeps "compactified" distinct
+from "equal to a point."
+
 ## 4. What this theory predicts
 
 The synthesis is only useful if it generates falsifiable claims. It does:

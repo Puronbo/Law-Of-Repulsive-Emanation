@@ -920,6 +920,12 @@ def test_frontier_census_is_machine_checked():
                  "theorem self_crossing_index_zero",
                  "theorem full_self_crossing_is_diagonal",
                  "theorem no_full_self_crossing",
+                 "def foldSet",
+                 "theorem foldSet_is_coincidence",
+                 "theorem fold_is_nonempty",
+                 "theorem fold_never_seals",
+                 "theorem fold_leaves_gap",
+                 "theorem wieferich_folds",
                  "theorem twin_primes_are_a_crease",
                  "theorem undershoot_nonneg_of_sub",
                  "theorem containment_can_fail",
@@ -939,7 +945,7 @@ def test_frontier_census_is_machine_checked():
     assert "sorry" not in src, "FrontierCensus.lean must not contain sorry"
     assert "native_decide" not in src, (
         "the certificate must be axiom-free (no native_decide)")
-    assert "frontierCensusFacts.length = 17" in src
+    assert "frontierCensusFacts.length = 18" in src
     assert "registry.length = 6" in src
     assert "OPEN" in src, "the open status must be recorded in the module"
     root = _lean("../PunoCalculus.lean")
