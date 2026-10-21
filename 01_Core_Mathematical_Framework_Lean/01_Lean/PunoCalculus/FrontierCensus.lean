@@ -515,6 +515,21 @@ theorem undershoot_nonneg_of_sub {N : ℕ} {lin crease : ℕ → Bool}
   intro a ha hca
   exact h a hca
 
+/-- **The census step law (the link that makes the fraction law apply to real
+rows).**  Growing the window from `[1, N]` to `[1, N+1]` appends at most one
+element to the census -- `N+1` itself, iff `P (N+1)`.  So every window extension
+decomposes into single-`n` steps, which is exactly the granularity at which
+`crease_fraction_falls_on_lin_step` / `_rises_on_crease_step` operate. -/
+theorem census_succ (N : ℕ) (P : ℕ → Bool) :
+    census (N + 1) P = census N P ++ (if P (N + 1) then [N + 1] else []) := by
+  unfold census
+  have h : List.range' 1 (N + 1) = List.range' 1 N ++ [N + 1] := by
+    have := List.range'_concat (s := 1) (step := 1) (n := N)
+    simpa [Nat.add_comm] using this
+  rw [h, List.filter_append]
+  congr 1
+  simp [List.filter_singleton]
+
 /-! ### The crease fraction and its single increase locus
 
 A cross-row quantity surfaces from the data: the **crease fraction** `cre/lin`
@@ -574,6 +589,32 @@ theorem compiled_crease_fractions :
     -- Mersenne: 12 creases among 31 lin
     ∧ (census mersenneCreaseInstance.bound mersenneCreaseInstance.lin).length
         ≥ 2 * creaseFractionNum mersenneCreaseInstance := by
+  refine ⟨?_, ?_, ?_⟩ <;> decide
+
+/-- **The exact rarity ratios** (stronger than the `≥` bounds above): the
+integer rarity `lin / cre` is exactly `274` (Wieferich), `1617` (Giuga), `2`
+(Mersenne), with the exact census sizes alongside.  These are the numbers the spec
+quotes; here they are pinned by `decide`, not merely bounded. -/
+theorem compiled_rarity_exact :
+    (census wieferichCreaseInstance.bound wieferichCreaseInstance.lin).length = 549
+    ∧ creaseFractionNum wieferichCreaseInstance = 2
+    ∧ rarityRatio wieferichCreaseInstance = 274
+    ∧ (census giugaCreaseInstance.bound giugaCreaseInstance.lin).length = 4853
+    ∧ creaseFractionNum giugaCreaseInstance = 3
+    ∧ rarityRatio giugaCreaseInstance = 1617
+    ∧ (census mersenneCreaseInstance.bound mersenneCreaseInstance.lin).length = 31
+    ∧ creaseFractionNum mersenneCreaseInstance = 12
+    ∧ rarityRatio mersenneCreaseInstance = 2 := by
+  refine ⟨?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩ <;> decide
+
+/-- **Caveat: the ratios are window-relative.**  The three creases are computed on
+*different* windows (4000, 10⁴, 128), so their rarity ratios are not directly
+comparable as densities -- only the *step shape* of `cre/lin` is comparable, which
+is why the theory's invariant is the shape, not the number. -/
+theorem rarity_is_window_relative :
+    wieferichCreaseInstance.bound ≠ giugaCreaseInstance.bound
+    ∧ giugaCreaseInstance.bound ≠ mersenneCreaseInstance.bound
+    ∧ wieferichCreaseInstance.bound ≠ mersenneCreaseInstance.bound := by
   refine ⟨?_, ?_, ?_⟩ <;> decide
 
 /-- **The fraction is a certificate of non-completion.**  A `Crease` whose crease
@@ -713,6 +754,8 @@ def frontierCensusFacts : List (String × String) :=
     ("core_all_rows", "windowFlip_is_live_competitor: for EVERY decidable P and window N, the window-complement flip is a live competitor (same census on [1,N], globally non-equivalent) -- the core is a theorem about all rows, not one instance"),
     ("separation", "census_separates_iff_differs: censuses differ on [1,N] IFF the predicates differ somewhere in [1,N] -- the census is a COMPLETE invariant of the window (and only the window), the dual of census_window_agree"),
     ("crease_fraction", "the crease fraction cre/lin is a step function whose ONLY increase points are the creases (crease_fraction_falls_on_lin_step fall, crease_fraction_rises_on_crease_step rise) -- so the crease count equals the number of rise steps: the rarity ratio lin/cre is the quantitative barrier"),
+    ("census_step", "census_succ: growing the window by one appends at most one element (n = N+1 iff P holds) -- the granularity at which the fraction step law applies to REAL censuses, linking the abstract law to the compiled rows"),
+    ("rarity_exact", "compiled_rarity_exact pins the exact rarities lin/cre = 274 (Wieferich 549/2), 1617 (Giuga 4853/3), 2 (Mersenne 31/12); rarity_is_window_relative warns the three are on different windows (4000, 1e4, 128), so only the STEP SHAPE is comparable, not the number"),
     ("crease", "each row's first-order (leading) test undershoots: its census strictly contains the crease census (Wieferich 1093/3511 among 549 odd primes; Giuga 30/858/1722 among 4853 squarefree composites; Mersenne 12 exponents among 31 primes)"),
     ("no_go_shadow", "the undershoot is the per-instance shadow of G37: no first-order certificate can detect the crease"),
     ("competitor", "the core has content: the wieferich crease and the constant-false competitor ('no Wieferich prime') agree on [1,1092] but differ at 1093 (wieferich_competitor_window_agree / _differs)"),
@@ -723,6 +766,6 @@ def frontierCensusFacts : List (String × String) :=
     ("registry", "six census runs: Wieferich [1093,3511], Giuga [30,858,1722], Lehmer [], 2-Lehmer [561,...], Erdos-Moser [], Mersenne [2,3,5,7,13,17,19,31,61,89,107,127]"),
     ("open", "OPEN: the crease is not shown universal across all n; each row's universal claim (Giuga, Lehmer, Erdos-Moser uniqueness, Mersenne infinitude) stays open, and the synthesis is reviewed, not proved") ]
 
-theorem frontierCensusFacts_length : frontierCensusFacts.length = 14 := by decide
+theorem frontierCensusFacts_length : frontierCensusFacts.length = 16 := by decide
 
 end PunoCalculus.FrontierCensus

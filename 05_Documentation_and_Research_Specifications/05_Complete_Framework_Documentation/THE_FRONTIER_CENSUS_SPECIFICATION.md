@@ -218,13 +218,32 @@ creases instantiate it (`compiled_crease_fractions`):
 |---|---|---|---|---|
 | Wieferich (`[1,4000]`) | 549 | 2 | 0.0036 | 274 |
 | Giuga (`[1,10⁴]`) | 4853 | 3 | 0.0006 | 1617 |
-| Mersenne (`p ≤ 128`) | 31 | 12 | 0.387 | 2.6 |
+| Mersenne (`p ≤ 128`) | 31 | 12 | 0.387 | 2 |
 
-The rarity ratios span three orders of magnitude — Wieferich creases are
+The rarity ratios span two orders of magnitude — Wieferich creases are
 *quadratically* rarer than Mersenne creases — yet the *shape* (a step function
 rising only at creases) is identical across rows. That identical shape is the
 theory's quantitative invariant; the differing rarity is what makes each row's
 universal a different problem.
+
+**Three supporting details, each now machine-checked:**
+
+1. **The ratios are exact, not just bounded.** `compiled_rarity_exact` pins the
+   integer rarities `lin/cre` to exactly `274` (Wieferich, `549/2`), `1617`
+   (Giuga, `4853/3`), `2` (Mersenne, `31/12`), alongside the exact census sizes.
+   The weaker `compiled_crease_fractions` gives the one-sided `lin ≥ k · cre`
+   bounds; the exact theorem is the stronger statement.
+2. **The fractions are window-relative.** The three creases live on *different*
+   windows (4000, 10⁴, 128), and `rarity_is_window_relative` makes that explicit.
+   So their rarity ratios are **not** directly comparable as densities — the
+   invariant the theory carries across rows is the *step shape* of `cre/lin`, not
+   the number. (This is why the spec's table is a snapshot, not a fixed constant.)
+3. **The step law applies to real censuses.** `crease_fraction_falls_on_lin_step` /
+   `_rises_on_crease_step` are stated for an abstract `(l, c)`. The link
+   `census_succ` shows `census (N+1) P = census N P ++ (if P (N+1) then [N+1] else [])`:
+   growing the window by one appends at most one element, so every real window
+   extension decomposes into exactly the single-`n` steps the fraction law operates
+   on. That closes the gap between the abstract step law and the compiled rows.
 
 ## 4. What this theory predicts
 
