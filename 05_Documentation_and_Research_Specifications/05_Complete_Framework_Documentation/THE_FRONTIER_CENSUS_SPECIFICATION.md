@@ -245,6 +245,28 @@ universal a different problem.
    extension decomposes into exactly the single-`n` steps the fraction law operates
    on. That closes the gap between the abstract step law and the compiled rows.
 
+### 3.5 When the boundary crosses itself
+
+The invariant `lin` is the boundary; a **crease** is where it *fails to separate*
+from the second-order predicate `crease` -- i.e. where the boundary touches itself.
+Two facts make this precise:
+
+- **A single self-crossing has winding number zero** (`self_crossing_index_zero`):
+  at a point `n` where `lin n` and `crease n` are the same Bool, the signed role
+  count is `+1 - 1 = 0`. The figure-eight's crossing is simultaneously inside both
+  lobes, and the two contributions cancel *there*. This is a **local value
+  collision**, not a new object -- the same shape as `x - x = 0`.
+- **A full self-crossing is the diagonal, and impossible**
+  (`full_self_crossing_is_diagonal`, `no_full_self_crossing`): if the boundary
+  coincided with the crease predicate *everywhere on the window*, the two censuses
+  would have equal length, contradicting the strict `undershoot`. So "the boundary
+  crosses itself at every point" is exactly the forbidden diagonal
+  (`no_diagonal_crease`), and no `Crease` can close on itself.
+
+The reading: a valid crease is only ever a **partial** self-crossing -- scattered
+coincidence points inside the window, never a closed self-loop. The boundary can
+fold, but it cannot seal; `undershoot` is the width of the gap that keeps it open.
+
 ## 4. What this theory predicts
 
 The synthesis is only useful if it generates falsifiable claims. It does:

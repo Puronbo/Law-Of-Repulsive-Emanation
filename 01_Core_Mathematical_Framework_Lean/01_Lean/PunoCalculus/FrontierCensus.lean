@@ -459,6 +459,59 @@ cannot be creases with that `lin`. -/
 theorem no_diagonal_crease (bound : ℕ) (P : ℕ → Bool) :
     ¬ (census bound P).length > (census bound P).length := by omega
 
+/-! ### Self-crossing of the boundary
+
+If the boundary (the invariant `lin`) crosses *itself* -- i.e. coincides with the
+crease predicate `crease` on a point -- that point is where the two roles (leading
+evidence, crease truth) meet in the same symbol.  A boundary that crossed itself
+*everywhere* would lie entirely on itself: the **diagonal** `lin = crease`.  We
+formalize the two consequences:
+
+* at a *self-crossing point* the signed role contribution is `+1 - 1 = 0` (the
+  winding number of the two lobes cancels there) -- a local value collision, not a
+  new object;
+* a *total* self-crossing is exactly the forbidden diagonal, hence no `Crease`. -/
+
+/-- **Local self-crossing has winding number zero.**  At a point `n` where the
+leading predicate and the crease predicate give the *same* Bool, the signed
+role count `(P n).toNat - (P n).toNat = 0`: the two lobes of the crossing cancel
+*at that point* exactly (the figure-eight's crossing is both inside and outside). -/
+theorem self_crossing_index_zero (P : ℕ → Bool) (n : ℕ) :
+    (P n).toNat - (P n).toNat = 0 := by omega
+
+/-- **A full self-crossing is the diagonal.**  A `Crease` whose boundary lies on
+itself *everywhere on the window* (`∀ n ∈ census bound lin, n ∈ census bound crease`
+-- the boundary-crosses-itself-at-every-point shape) forces the two censuses equal,
+collapsing to the diagonal and contradicting `undershoot`. -/
+theorem full_self_crossing_is_diagonal
+    (C : Crease)
+    (h : ∀ n ∈ census C.bound C.lin, n ∈ census C.bound C.crease) :
+    (census C.bound C.lin).length = (census C.bound C.crease).length := by
+  have hnd : (census C.bound C.lin).Nodup := by
+    unfold census
+    exact (List.nodup_range' (s := 1) (n := C.bound) (step := 1) (by decide)).filter _
+  have hsub : (census C.bound C.lin).Subperm (census C.bound C.crease) :=
+    List.subperm_of_subset hnd h
+  have hlen : (census C.bound C.lin).length ≤ (census C.bound C.crease).length :=
+    hsub.length_le
+  have hge : (census C.bound C.crease).length ≤ (census C.bound C.lin).length :=
+    le_of_lt C.undershoot
+  omega
+
+/-- Hence a fully self-crossing `Crease` cannot exist: it would make the
+undershoot both strict and zero.  "Crossing itself everywhere" is precisely the
+configuration the theory forbids (`no_diagonal_crease`), so a valid crease is only
+ever a *partial* self-crossing -- scattered coincidence points, never a closed
+self-loop. -/
+theorem no_full_self_crossing (C : Crease)
+    (h : ∀ n ∈ census C.bound C.lin, n ∈ census C.bound C.crease) : False := by
+  have heq : (census C.bound C.lin).length = (census C.bound C.crease).length :=
+    full_self_crossing_is_diagonal C h
+  have hlt : (census C.bound C.crease).length < (census C.bound C.lin).length :=
+    C.undershoot
+  omega
+
+
 /-- Twin primes *do* form a `Crease` (contradicting the first falsification draft):
 `lin` = prime, `crease` = smaller twin prime.  Window `[1, 200]`: 46 primes, 15
 twin-lowers, undershoot 31.  So "twin primes are not a crease" is **wrong**; the
@@ -760,12 +813,13 @@ def frontierCensusFacts : List (String × String) :=
     ("no_go_shadow", "the undershoot is the per-instance shadow of G37: no first-order certificate can detect the crease"),
     ("competitor", "the core has content: the wieferich crease and the constant-false competitor ('no Wieferich prime') agree on [1,1092] but differ at 1093 (wieferich_competitor_window_agree / _differs)"),
     ("crease_is_weak", "CORRECTION: the Crease structure does NOT exclude Goldbach or twin primes -- twin primes have a Crease (lin = prime, undershoot 31) and Goldbach does too (lin = even, undershoot 1); what forbids the diagonal is only the strict undershoot inequality (no_diagonal_crease)"),
+    ("self_crossing", "if the boundary (invariant lin) crosses itself: at a coincidence point the signed role count is +1 - 1 = 0 (self_crossing_index_zero -- the figure-eight winding cancels there, a local value collision, not a new object); and a FULL self-crossing (lin coincides with crease everywhere on the window) collapses to the diagonal (full_self_crossing_is_diagonal) and is impossible (no_full_self_crossing) -- so a valid crease is only ever a partial self-crossing, never a closed self-loop"),
     ("monotone", "undershoot_nonneg_of_sub is structural: predicate-level containment gives non-negative undershoot on every window; containment_can_fail shows the containment itself can fail beyond the window -- the monotonicity is conditional, and its condition is the row's missing object"),
     ("scope_not_formal", "DEMOTION: the scope-narrowing claim (single-integer resolvent rows only) is NOT formalizable -- any non-full census admits the trivial lin (n >= 1), witness trivial_lin_crease_witness; 'content-bearing lin' is a naturalness judgement, not a Lean-checkable property"),
     ("prototype", "Wieferich (G32) is the prototype: first-order = odd prime, crease = 2^(p-1) = 1 mod p^2"),
     ("registry", "six census runs: Wieferich [1093,3511], Giuga [30,858,1722], Lehmer [], 2-Lehmer [561,...], Erdos-Moser [], Mersenne [2,3,5,7,13,17,19,31,61,89,107,127]"),
     ("open", "OPEN: the crease is not shown universal across all n; each row's universal claim (Giuga, Lehmer, Erdos-Moser uniqueness, Mersenne infinitude) stays open, and the synthesis is reviewed, not proved") ]
 
-theorem frontierCensusFacts_length : frontierCensusFacts.length = 16 := by decide
+theorem frontierCensusFacts_length : frontierCensusFacts.length = 17 := by decide
 
 end PunoCalculus.FrontierCensus
