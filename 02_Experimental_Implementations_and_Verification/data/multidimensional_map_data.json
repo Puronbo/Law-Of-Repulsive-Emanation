@@ -1,0 +1,4656 @@
+{
+ "items": [
+  {
+   "id": "BSD",
+   "label": "BSD",
+   "kind": "module",
+   "category": "millennium-cert",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 14,
+   "decls": [
+    "curve_L",
+    "curve_Omega",
+    "curve_Reg",
+    "curve_sha",
+    "curve_tam",
+    "curve_tors",
+    "curve_rank",
+    "curve_conductor",
+    "verifyCurve",
+    "verifyAll",
+    "verifyAllClose",
+    "ranksVerified",
+    "verifyRanks",
+    "verifyFullBSD"
+   ],
+   "gaps": [
+    "G6"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/BSD.lean",
+   "detail": "—"
+  },
+  {
+   "id": "Basic",
+   "label": "Basic",
+   "kind": "module",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 1,
+   "decls": [
+    "hello"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Basic.lean",
+   "detail": "—"
+  },
+  {
+   "id": "Beal",
+   "label": "Beal",
+   "kind": "module",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 8,
+   "decls": [
+    "unit_cube",
+    "no_unit_cubes_solution",
+    "unit_of_not_dvd",
+    "cube_mod9",
+    "three_dvd_of_cubes",
+    "three_dvd_of_cubes_of_not_dvd",
+    "bealFacts",
+    "bealFacts_length"
+   ],
+   "gaps": [
+    "G33"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Beal.lean",
+   "detail": "—"
+  },
+  {
+   "id": "CascadeRatio",
+   "label": "CascadeRatio",
+   "kind": "module",
+   "category": "fluid-diagnostic",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 5,
+   "decls": [
+    "energyDecay",
+    "enstrophyDecay",
+    "cascadeRatio",
+    "verifyRDecays",
+    "verifyAllNSCases"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/CascadeRatio.lean",
+   "detail": "—"
+  },
+  {
+   "id": "Collatz",
+   "label": "Collatz",
+   "kind": "module",
+   "category": "number-theory-cert",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 4,
+   "decls": [
+    "collatzStep",
+    "collatzSteps",
+    "verifyCollatz100",
+    "maxStopN"
+   ],
+   "gaps": [
+    "G12"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Collatz.lean",
+   "detail": "—"
+  },
+  {
+   "id": "ContinuationCriterion",
+   "label": "ContinuationCriterion",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 4,
+   "decls": [
+    "exists_upto_of_bounded",
+    "unbounded_of_first_failure",
+    "continuationFacts",
+    "continuationFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C28",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/ContinuationCriterion.lean",
+   "detail": "C28"
+  },
+  {
+   "id": "Core",
+   "label": "Core",
+   "kind": "module",
+   "category": "rh-research",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 7,
+   "decls": [
+    "hadamardTerm",
+    "hadamardSum",
+    "zetaZeros",
+    "checkTermsPositive",
+    "checkSumPositive",
+    "checkNearLinePositive",
+    "checkAllTestPoints"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Core.lean",
+   "detail": "—"
+  },
+  {
+   "id": "Cosmology.AcousticZeroFlow",
+   "label": "Cosmology.AcousticZeroFlow",
+   "kind": "module",
+   "category": "cosmology",
+   "status": "citation-only",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Cosmology.AcousticZeroFlow.lean",
+   "detail": "—"
+  },
+  {
+   "id": "Cosmology.OriginWindow",
+   "label": "Cosmology.OriginWindow",
+   "kind": "module",
+   "category": "cosmology",
+   "status": "citation-only",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Cosmology.OriginWindow.lean",
+   "detail": "—"
+  },
+  {
+   "id": "Crease",
+   "label": "Crease",
+   "kind": "module",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 4,
+   "tier": "",
+   "ndecls": 26,
+   "decls": [
+    "fold",
+    "deriv_fold",
+    "hasDerivAt_fold",
+    "IsCrease",
+    "deriv_fold_zero_iff",
+    "crease_nonneg",
+    "crease_sq",
+    "crease_iff",
+    "crease_sqrt",
+    "crease_neg_sqrt",
+    "crease_eq_sqrt_or",
+    "crease_zero_iff",
+    "no_crease_of_neg",
+    "cusp",
+    "deriv_cusp",
+    "cusp_curve_factor",
+    "cusp_discriminant",
+    "depressedCubic",
+    "depressedCubic_toPoly",
+    "depressedCubic_discr",
+    "discr_eq_zero_iff_cusp",
+    "cusp_point_discr_zero",
+    "cusp_curve_factor_eval",
+    "deriv_logistic_half"
+   ],
+   "gaps": [
+    "G35"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Crease.lean",
+   "detail": "—"
+  },
+  {
+   "id": "Wieferich",
+   "label": "Wieferich",
+   "kind": "module",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 17,
+   "decls": [
+    "IsWieferich",
+    "prime_1093",
+    "prime_3511",
+    "wieferich_1093",
+    "wieferich_3511",
+    "isWieferich_iff_sq_dvd",
+    "fermatQuotient2",
+    "fermat_dvd",
+    "isWieferich_iff_quotient_dvd",
+    "quotient_1093_dvd",
+    "quotient_3511_dvd",
+    "prime_3",
+    "not_wieferich_3",
+    "first_order_holds_but_not_wieferich_3",
+    "first_order_not_iff_isWieferich",
+    "wieferichFacts",
+    "wieferichFacts_length"
+   ],
+   "gaps": [
+    "G32",
+    "G37"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Wieferich.lean",
+   "detail": "—"
+  },
+  {
+   "id": "Wilson",
+   "label": "Wilson",
+   "kind": "module",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "",
+   "ndecls": 23,
+   "decls": [
+    "IsWilsonPrime",
+    "factMod",
+    "factMod_modEq",
+    "factMod_lt",
+    "factMod_eq",
+    "factMod_562",
+    "prime_five",
+    "prime_thirteen",
+    "prime_563",
+    "wilson_dvd",
+    "wilson_five",
+    "wilson_thirteen",
+    "wilson_563_sq",
+    "wilson_563",
+    "sq_dvd_iff_dvd_div",
+    "wilsonQuotient",
+    "isWilsonPrime_iff_quotient_dvd",
+    "quotient_five_dvd",
+    "quotient_thirteen_dvd",
+    "quotient_563_dvd",
+    "first_order_tests_are_universal",
+    "wilsonFacts",
+    "wilsonFacts_length"
+   ],
+   "gaps": [
+    "G36"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Wilson.lean",
+   "detail": "—"
+  },
+  {
+   "id": "CriticalAmplitude",
+   "label": "CriticalAmplitude",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 15,
+   "decls": [
+    "orderParameter",
+    "amplitudeRatio",
+    "abs_rpow_ne_zero",
+    "amplitudeRatio_eq",
+    "orderParameter_at_critical",
+    "gamma",
+    "alpha",
+    "nu",
+    "eta",
+    "widom_relation",
+    "rushbrooke_relation",
+    "josephson_relation",
+    "fisher_relation",
+    "criticalAmplitudeFacts",
+    "criticalAmplitudeFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C36",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/CriticalAmplitude.lean",
+   "detail": "C36"
+  },
+  {
+   "id": "CriticalLadder",
+   "label": "CriticalLadder",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "",
+   "ndecls": 12,
+   "decls": [
+    "sCrit",
+    "scalingInvariant_iff",
+    "sCrit_three",
+    "sCrit_two",
+    "sCrit_six",
+    "thetaAddSCrit",
+    "sCrit_antitone",
+    "sCrit_gt_neg_one",
+    "onsagerExcess_supercritical",
+    "criticalInvariantBoundedOpen",
+    "criticalLadderFacts",
+    "criticalLadderFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C1",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/CriticalLadder.lean",
+   "detail": "C1"
+  },
+  {
+   "id": "Curvature",
+   "label": "Curvature",
+   "kind": "module",
+   "category": "rh-research",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 9,
+   "decls": [
+    "zetaGammas",
+    "ldashAt",
+    "verifyLdashPositive",
+    "verifyLdashLargeNearZero",
+    "verifyRatioConverges",
+    "getNth",
+    "xiPrimeSqNorm",
+    "verifyCurvatureAtZeros",
+    "verifyFullCurvature"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Curvature.lean",
+   "detail": "—"
+  },
+  {
+   "id": "DissipativeFlow",
+   "label": "DissipativeFlow",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 5,
+   "tier": "",
+   "ndecls": 5,
+   "decls": [
+    "logGrowth_deriv",
+    "logGrowth_nonpos_of_dissipative",
+    "content_le_initial_of_dissipative",
+    "dissipativeFlowFacts",
+    "dissipativeFlowFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C8",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/DissipativeFlow.lean",
+   "detail": "C8"
+  },
+  {
+   "id": "EcaIsometry",
+   "label": "EcaIsometry",
+   "kind": "module",
+   "category": "numerical-cert",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 36,
+   "decls": [
+    "covers",
+    "bit",
+    "neighborIdx",
+    "step",
+    "hamming",
+    "xor",
+    "statesEq",
+    "affineCheck",
+    "affineSet",
+    "isometryCheck",
+    "isometrySet",
+    "memList",
+    "noDup",
+    "bijective",
+    "flipBit",
+    "inputCount",
+    "complement",
+    "affine_is_sixteen",
+    "isometry_is_six",
+    "rule204_identity",
+    "rule51_complement",
+    "constants_pair",
+    "transducer_is_eight",
+    "extras_not_isometry"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/EcaIsometry.lean",
+   "detail": "—"
+  },
+  {
+   "id": "EmergentTime",
+   "label": "EmergentTime",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 2,
+   "tier": "",
+   "ndecls": 14,
+   "decls": [
+    "Reservoir.ext",
+    "Reservoir.total",
+    "transfer",
+    "transfer_conserves_total",
+    "transfer_iterate",
+    "state_determined_by_count",
+    "sqrt_self_consistency",
+    "sCritN",
+    "sCritN_three",
+    "scalingWeightN",
+    "scaleFreeN_iff",
+    "sCritN_mono",
+    "emergentTimeFacts",
+    "emergentTimeFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C11",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/EmergentTime.lean",
+   "detail": "C11"
+  },
+  {
+   "id": "EnstrophyBarrier",
+   "label": "EnstrophyBarrier",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 7,
+   "decls": [
+    "mono_step_bounded",
+    "doubling",
+    "doubling_succ",
+    "quadratic_step_unbounded",
+    "quadratic_no_uniform_bound",
+    "enstrophyBarrierFacts",
+    "enstrophyBarrierFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C4",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/EnstrophyBarrier.lean",
+   "detail": "C4"
+  },
+  {
+   "id": "ErdosMoser",
+   "label": "ErdosMoser",
+   "kind": "module",
+   "category": "number-theory-cert",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 8,
+   "decls": [
+    "powerSum",
+    "isEmSol",
+    "powerSum_10_2_eq",
+    "em_solution_3_1",
+    "not_em_4_2",
+    "em_window",
+    "erdosMoserFacts",
+    "erdosMoserFacts_length"
+   ],
+   "gaps": [
+    "G34"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/ErdosMoser.lean",
+   "detail": "—"
+  },
+  {
+   "id": "ExplicitClaims",
+   "label": "ExplicitClaims",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 2,
+   "tier": "",
+   "ndecls": 7,
+   "decls": [
+    "morrey_threshold",
+    "physical_embedding_gap",
+    "extra_power_strengthens_above_unit",
+    "dimMixture",
+    "mean_le_dimMixture",
+    "explicitClaimsFacts",
+    "explicitClaimsFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C4, C5, C6",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/ExplicitClaims.lean",
+   "detail": "C4, C5, C6"
+  },
+  {
+   "id": "Factorization",
+   "label": "Factorization",
+   "kind": "module",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 8,
+   "decls": [
+    "primeFacGo",
+    "primeFacGo_dvd",
+    "prime_of_dvd_of_inv",
+    "primeFacGo_prime_of_inv",
+    "primeFacGo_prime",
+    "primeFacGo_prod_window",
+    "primeFacGo_dvd_window",
+    "totientFac"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Factorization.lean",
+   "detail": "—"
+  },
+  {
+   "id": "FiniteScan",
+   "label": "FiniteScan",
+   "kind": "module",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 17,
+   "decls": [
+    "isPrimeB",
+    "isPrimeB_eq_iff",
+    "primesUpTo",
+    "mem_primesUpTo",
+    "firstPrimes",
+    "natAbsDiff",
+    "absDiff",
+    "length_absDiff",
+    "gilbreathAux",
+    "gilbreathHolds",
+    "anyPrime",
+    "anyPrime_eq_iff",
+    "allConsecutive",
+    "countIf",
+    "firstWhere",
+    "startsPattern",
+    "firstConstellation"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/FiniteScan.lean",
+   "detail": "—"
+  },
+  {
+   "id": "FirstCrossing",
+   "label": "FirstCrossing",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 4,
+   "decls": [
+    "exists_first_zero",
+    "margin_exists_firstCrossing",
+    "firstCrossingFacts",
+    "firstCrossingFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C8",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/FirstCrossing.lean",
+   "detail": "C8"
+  },
+  {
+   "id": "ForceNetwork",
+   "label": "ForceNetwork",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 6,
+   "decls": [
+    "weightedValueLeMax",
+    "leWeightedValueMin",
+    "networkValueBetween",
+    "inertiaDampsChange",
+    "forceNetworkFacts",
+    "forceNetworkFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C25",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/ForceNetwork.lean",
+   "detail": "C25"
+  },
+  {
+   "id": "FrontierCensus",
+   "label": "FrontierCensus",
+   "kind": "module",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 2,
+   "tier": "",
+   "ndecls": 76,
+   "decls": [
+    "isPrimeB",
+    "powModAcc",
+    "powMod",
+    "census",
+    "WindowAgree",
+    "census_window_agree",
+    "windowFlip",
+    "windowFlip_agree",
+    "windowFlip_is_live_competitor",
+    "no_window_separates_all_rows",
+    "census_separates_iff_differs",
+    "wieferichLin",
+    "wieferichCrease",
+    "wieferichCreaseInstance",
+    "neverCrease",
+    "wieferich_competitor_window_agree",
+    "wieferich_competitor_census_eq",
+    "wieferich_competitor_differs",
+    "wieferich_competitor_not_global",
+    "isSquarefreeB",
+    "giugaLin",
+    "giugaCrease",
+    "giugaCreaseInstance",
+    "mersenneLin"
+   ],
+   "gaps": [
+    "G38"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/FrontierCensus.lean",
+   "detail": "—"
+  },
+  {
+   "id": "Giuga",
+   "label": "Giuga",
+   "kind": "module",
+   "category": "number-theory-cert",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "",
+   "ndecls": 15,
+   "decls": [
+    "isGiugaB",
+    "isCarmichaelB",
+    "giuga_30",
+    "giuga_858",
+    "giuga_1722",
+    "giuga_66198",
+    "carmichael_561",
+    "carmichael_1729",
+    "not_giuga_1729",
+    "not_carmichael_30",
+    "giuga_window",
+    "carmichael_window",
+    "no_giuga_carmichael_window",
+    "giugaFacts",
+    "giugaFacts_length"
+   ],
+   "gaps": [
+    "G30"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Giuga.lean",
+   "detail": "—"
+  },
+  {
+   "id": "Goldbach",
+   "label": "Goldbach",
+   "kind": "module",
+   "category": "number-theory-cert",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 17,
+   "decls": [
+    "isPrimeLoop",
+    "isPrime",
+    "goldbachRepsGo",
+    "goldbachReps",
+    "verifyGoldbach100",
+    "markMultiples",
+    "sieveGo",
+    "sieve",
+    "isPrimeSieve",
+    "goldbachWitness",
+    "goldbachCertificate",
+    "certificateBoundary",
+    "citedExternalRecord",
+    "goldbach_conjecture_open",
+    "goldbach_even_4_to_100000",
+    "goldbach_certificate_at_boundary",
+    "certificate_below_citation"
+   ],
+   "gaps": [
+    "G9"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Goldbach.lean",
+   "detail": "—"
+  },
+  {
+   "id": "GreatAttractor",
+   "label": "GreatAttractor",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 2,
+   "tier": "",
+   "ndecls": 15,
+   "decls": [
+    "fixedPoint_distanceRatio",
+    "fixedPoint_repels",
+    "fixedPoint_attracts",
+    "orientation_trichotomy",
+    "fixedPoint_logRate",
+    "fixedPoint_logSign",
+    "orientationDiscriminator",
+    "criticalSmoothness",
+    "scalingWeight",
+    "criticalSmoothness_one",
+    "criticalSmoothness_shift_order",
+    "criticalSmoothness_antitone_order",
+    "scalingWeight_zero_iff",
+    "greatAttractorFacts",
+    "greatAttractorFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C24",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/GreatAttractor.lean",
+   "detail": "C24"
+  },
+  {
+   "id": "Hodge",
+   "label": "Hodge",
+   "kind": "module",
+   "category": "millennium-cert",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 17,
+   "decls": [
+    "cpnHodgeCount",
+    "verifyCPN",
+    "h11",
+    "h20",
+    "verifyProducts",
+    "abelianH11",
+    "abelianH20",
+    "abelianNSRange",
+    "verifyAbelian",
+    "quintic_h30",
+    "quintic_h21",
+    "quintic_h12",
+    "quintic_h03",
+    "quintic_divisors_verified",
+    "quintic_codim2_open",
+    "verifyQuintic",
+    "verifyFullHodge"
+   ],
+   "gaps": [
+    "G7"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Hodge.lean",
+   "detail": "—"
+  },
+  {
+   "id": "InformationBridge",
+   "label": "InformationBridge",
+   "kind": "module",
+   "category": "information-bridge",
+   "status": "machine-checked",
+   "depth": 5,
+   "tier": "",
+   "ndecls": 8,
+   "decls": [
+    "binaryEntropy",
+    "binaryEntropy_half",
+    "resetCost",
+    "resetCost_two",
+    "resetCost_eq_neg_orientation",
+    "orientation_reset_nonpos",
+    "informationBridgeFacts",
+    "informationBridgeFacts_length"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/InformationBridge.lean",
+   "detail": "—"
+  },
+  {
+   "id": "InformationMixture",
+   "label": "InformationMixture",
+   "kind": "module",
+   "category": "information-bridge",
+   "status": "machine-checked",
+   "depth": 6,
+   "tier": "",
+   "ndecls": 10,
+   "decls": [
+    "shannonEntropy",
+    "mixture",
+    "mixture_inl",
+    "mixture_inr",
+    "entropy_mixture",
+    "binaryEntropy_nonneg",
+    "entropy_mixture_ge",
+    "entropy_mixture_half",
+    "informationMixtureFacts",
+    "informationMixtureFacts_length"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/InformationMixture.lean",
+   "detail": "—"
+  },
+  {
+   "id": "InformationPhi",
+   "label": "InformationPhi",
+   "kind": "module",
+   "category": "information-bridge",
+   "status": "machine-checked",
+   "depth": 6,
+   "tier": "",
+   "ndecls": 14,
+   "decls": [
+    "deficitRate",
+    "deficitRate_isRemovableValue",
+    "orientation_one_div",
+    "deficitRate_stateCounting",
+    "lambda",
+    "Phi",
+    "Phi_freeRatio_eq_exp_neg_lambda",
+    "Phi_entropyProd_eq_orientation",
+    "register_entropy_rate",
+    "Phi_eraseCost_eq_resetCost",
+    "Phi_bit_eraseCost",
+    "Phi_satisfies_claim",
+    "informationPhiFacts",
+    "informationPhiFacts_length"
+   ],
+   "gaps": [
+    "G4"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/InformationPhi.lean",
+   "detail": "—"
+  },
+  {
+   "id": "InformationTime",
+   "label": "InformationTime",
+   "kind": "module",
+   "category": "information-bridge",
+   "status": "machine-checked",
+   "depth": 7,
+   "tier": "",
+   "ndecls": 16,
+   "decls": [
+    "evolution",
+    "evolution_zero",
+    "evolution_add",
+    "evolution_one",
+    "orientation_evolution_one",
+    "evolution_pow_nat",
+    "retention_lt_one_iff",
+    "orientation_arrow",
+    "orientation_sign_iff",
+    "orientation_arrow_is_causal",
+    "evolution_orientation_one",
+    "Phi_freeRatio_eq_evolution",
+    "Phi_entropyProd_eq_neg_rate",
+    "orbit_eq_evolution",
+    "informationTimeFacts",
+    "informationTimeFacts_length"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/InformationTime.lean",
+   "detail": "—"
+  },
+  {
+   "id": "Legendre",
+   "label": "Legendre",
+   "kind": "module",
+   "category": "number-theory-cert",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 6,
+   "decls": [
+    "isPrimeLoop",
+    "isPrime",
+    "primesBetweenCount",
+    "primesBetween",
+    "verifyLegendre100",
+    "minPrimeCount100"
+   ],
+   "gaps": [
+    "G14"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Legendre.lean",
+   "detail": "—"
+  },
+  {
+   "id": "Lehmer",
+   "label": "Lehmer",
+   "kind": "module",
+   "category": "number-theory-cert",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "",
+   "ndecls": 15,
+   "decls": [
+    "isLehmerB",
+    "isTwoLehmerB",
+    "totientFac_6",
+    "totientFac_561",
+    "totientFac_1105",
+    "totientFac_1729",
+    "totientFac_2465",
+    "totientFac_6601",
+    "totientFac_8481",
+    "lehmer_window",
+    "two_lehmer_window",
+    "two_lehmer_8481",
+    "not_lehmer_8481",
+    "lehmerFacts",
+    "lehmerFacts_length"
+   ],
+   "gaps": [
+    "G31"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Lehmer.lean",
+   "detail": "—"
+  },
+  {
+   "id": "LiouvilleBridge",
+   "label": "LiouvilleBridge",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 3,
+   "tier": "",
+   "ndecls": 7,
+   "decls": [
+    "bounded_entire_const",
+    "bounded_entire_apply_eq",
+    "bounded_entire_value_unique",
+    "eq_zero_of_bounded_of_eq_zero",
+    "bounded_at_infinity_const",
+    "liouvilleBridgeFacts",
+    "liouvilleBridgeFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C22",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/LiouvilleBridge.lean",
+   "detail": "C22"
+  },
+  {
+   "id": "LogicBarrier",
+   "label": "LogicBarrier",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 7,
+   "decls": [
+    "lawvere_fixedpoint",
+    "no_surjective_of_no_fixedpoint",
+    "no_surjective_predicates",
+    "diagonal",
+    "diagonal_not_mem_range",
+    "logicBarrierFacts",
+    "logicBarrierFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C12",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/LogicBarrier.lean",
+   "detail": "C12"
+  },
+  {
+   "id": "MarginCrossing",
+   "label": "MarginCrossing",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 5,
+   "decls": [
+    "existsUnique_zero_of_strictAntiOn",
+    "side_of_crossing",
+    "margin_existsUnique",
+    "marginCrossingFacts",
+    "marginCrossingFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C8",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/MarginCrossing.lean",
+   "detail": "C8"
+  },
+  {
+   "id": "MassGap",
+   "label": "MassGap",
+   "kind": "module",
+   "category": "millennium-cert",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 7,
+   "decls": [
+    "b0",
+    "massGapVal",
+    "verifyMassGapPositive",
+    "sinh_div_self_tendsto_one",
+    "massGapCrossoverRemovable",
+    "crossoverCertifiedFacts",
+    "crossoverCertifiedFacts_length"
+   ],
+   "gaps": [
+    "G11"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/MassGap.lean",
+   "detail": "—"
+  },
+  {
+   "id": "MillenniumBridge",
+   "label": "MillenniumBridge",
+   "kind": "module",
+   "category": "millennium-cert",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "",
+   "ndecls": 6,
+   "decls": [
+    "problemTaxonomy",
+    "statuses",
+    "seven_problems_declared_unsolved",
+    "pnnp_adjacent_classification",
+    "pnnp_adjacent_isometry_count",
+    "rh_adjacent_finite_sector"
+   ],
+   "gaps": [
+    "G3"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/MillenniumBridge.lean",
+   "detail": "—"
+  },
+  {
+   "id": "MixtureGrowth",
+   "label": "MixtureGrowth",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 6,
+   "decls": [
+    "normMixtureLeSum",
+    "mixtureRatioBetween",
+    "weightedSqBetween",
+    "spikeCannotLowerRatio",
+    "mixtureGrowthFacts",
+    "mixtureGrowthFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C26",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/MixtureGrowth.lean",
+   "detail": "C26"
+  },
+  {
+   "id": "NavierStokes",
+   "label": "NavierStokes",
+   "kind": "module",
+   "category": "millennium-cert",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 14,
+   "decls": [
+    "serrinScaling",
+    "prodiSerrinAdmissible",
+    "serrinScaling_line_4_6",
+    "prodiSerrin_admissible_4_6",
+    "serrinScaling_line_3_9",
+    "prodiSerrin_admissible_3_9",
+    "serrin_endpoint_q3_excluded",
+    "fourierInfBound",
+    "prodiSerrinIntegralFiniteCertified",
+    "nsGlobalRegularityOpen",
+    "nsFormalizedFacts",
+    "nsFormalizedFacts_length",
+    "prodiSerrinIntegral_is_open",
+    "ns_global_regularity_wall_open"
+   ],
+   "gaps": [
+    "G1"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/NavierStokes.lean",
+   "detail": "—"
+  },
+  {
+   "id": "NoetherDiscrete",
+   "label": "NoetherDiscrete",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 16,
+   "decls": [
+    "Velocity",
+    "momentum",
+    "charge",
+    "charge_eq_momentum_sub",
+    "charge_self",
+    "charge_translation_invariant",
+    "momentum_from_rate",
+    "step",
+    "momentum_conserved",
+    "IsDiscreteNewton",
+    "momentumAt",
+    "momentumAt_conserved",
+    "momentumAt_eq_initial",
+    "conservationLaw",
+    "noetherDiscreteFacts",
+    "noetherDiscreteFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C34",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/NoetherDiscrete.lean",
+   "detail": "C34"
+  },
+  {
+   "id": "OnePattern",
+   "label": "OnePattern",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 3,
+   "tier": "",
+   "ndecls": 7,
+   "decls": [
+    "criticalCurve_through_ladder",
+    "ladder_is_order_one",
+    "theta_add_criticalCurve",
+    "theta_add_criticalCurve_one",
+    "scalingWeight_vanishes_family",
+    "onePatternFacts",
+    "onePatternFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C33",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/OnePattern.lean",
+   "detail": "C33"
+  },
+  {
+   "id": "OnsagerCriterion",
+   "label": "OnsagerCriterion",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 6,
+   "decls": [
+    "weighted_sum_le",
+    "spike_of_excess",
+    "excess_majorizes",
+    "criticalInvariantBoundedOpen",
+    "onsagerCriterionFacts",
+    "onsagerCriterionFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C27",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/OnsagerCriterion.lean",
+   "detail": "C27"
+  },
+  {
+   "id": "OrientationBoundedness",
+   "label": "OrientationBoundedness",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 3,
+   "tier": "",
+   "ndecls": 46,
+   "decls": [
+    "geometric_bounded_of_le_one",
+    "geometric_unbounded_of_one_lt",
+    "geometric_bounded_iff",
+    "orientation_decides_boundedness",
+    "repelling_iff_unbounded",
+    "boundedOrientation_eq_floor_form",
+    "boundedOrientation_eq_ceiling_form",
+    "boundedOrientation_floor",
+    "boundedOrientation_ceiling",
+    "boundedOrientation_midpoint",
+    "boundedOrientation_floor_midpoint_ceiling",
+    "boundedOrientation_antisymm",
+    "boundedOrientation_lt",
+    "boundedOrientation_strictMonoOn",
+    "boundedOrientation_pos",
+    "boundedOrientation_neg",
+    "boundedOrientation_pos_iff",
+    "boundedOrientation_eq_zero",
+    "boundedOrientation_neg_iff",
+    "boundedOrientation_sign",
+    "boundedOrientation_reads_the_wall",
+    "orientationBoundednessFacts",
+    "orientationBoundednessFacts_length",
+    "boundedOrientationFacts"
+   ],
+   "gaps": [
+    "G5"
+   ],
+   "cards": "C8, C9",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/OrientationBoundedness.lean",
+   "detail": "C8, C9"
+  },
+  {
+   "id": "OrientationLaw",
+   "label": "OrientationLaw",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 4,
+   "tier": "",
+   "ndecls": 29,
+   "decls": [
+    "geometricOrbit",
+    "orientation",
+    "logGrowth",
+    "logGrowth_of_ratio_eq",
+    "logGrowth_geometric",
+    "logGrowth_pos_iff",
+    "logGrowth_nonpos_iff",
+    "bounded_of_nonpos_logGrowth",
+    "exists_pos_logGrowth_of_unbounded",
+    "log_eq_sum_logGrowth",
+    "bounded_of_bounded_sum_logGrowth",
+    "unbounded_sum_of_unbounded",
+    "sign_match",
+    "orientation_reads_wall",
+    "contLogGrowth_integral",
+    "continuous_content_bounded",
+    "boundedOrientation_orientation_sign",
+    "boundedOrientation_ratio_sign",
+    "boundedOrientation_geometricOrbit_mem",
+    "boundedOrientation_geometricOrbit_strictMono",
+    "boundedOrientation_geometricOrbit_strictAnti",
+    "boundedOrientation_geometricOrbit_center",
+    "squareOrientation_center",
+    "squareOrientation_mem"
+   ],
+   "gaps": [],
+   "cards": "C8, C8-open, C9",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/OrientationLaw.lean",
+   "detail": "C8, C8-open, C9"
+  },
+  {
+   "id": "ParabolaVertex",
+   "label": "ParabolaVertex",
+   "kind": "module",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 3,
+   "tier": "",
+   "ndecls": 27,
+   "decls": [
+    "polar_zero",
+    "polar_one_one",
+    "vertex_radius_one",
+    "polar_neg",
+    "polar_sub_polar_zero",
+    "vertex_removable",
+    "vertex_removable_one",
+    "one_add_cos_eq",
+    "one_add_cos_eq_pi",
+    "tendsto_half_at_pi",
+    "escape_denominator_tendsto_zero",
+    "escape_denominator_tendsto_zero_pos",
+    "escape_pole",
+    "escape_infinity_rate",
+    "shadow_of_pole_is_removable_zero",
+    "vertexCoefficient_eq",
+    "vertexCoefficient_le",
+    "vertexCoefficient_lt_of_ne",
+    "vertexCoefficient_one",
+    "logistic_vertex",
+    "logistic_conjugacy",
+    "hasDerivAt_logistic",
+    "deriv_logistic_zero",
+    "logistic_zero_repelling"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/ParabolaVertex.lean",
+   "detail": "—"
+  },
+  {
+   "id": "PerfectNumbers",
+   "label": "PerfectNumbers",
+   "kind": "module",
+   "category": "number-theory-cert",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "",
+   "ndecls": 28,
+   "decls": [
+    "divisorSum",
+    "isPerfectB",
+    "perfect_6",
+    "perfect_28",
+    "perfect_496",
+    "perfect_8128",
+    "isPerfect_8128",
+    "even_perfect_window",
+    "odd_perfect_window",
+    "eulerOddForm",
+    "eulerOddForm_mod4",
+    "euclidForm",
+    "euclidForm_2",
+    "euclidForm_3",
+    "euclidForm_5",
+    "euclidForm_7",
+    "llAux",
+    "lucasLehmerB",
+    "mersenne_window_ll",
+    "mersenne_primality_window",
+    "mersenne_17",
+    "mersenne_19",
+    "mersenne_31",
+    "not_mersenne_11"
+   ],
+   "gaps": [
+    "G27",
+    "G29"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/PerfectNumbers.lean",
+   "detail": "—"
+  },
+  {
+   "id": "Poincare",
+   "label": "Poincare",
+   "kind": "module",
+   "category": "millennium-cert",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 11,
+   "decls": [
+    "neckpinchRatio",
+    "degenerateRatio",
+    "verifyNeckpinch",
+    "verifyDegenerate",
+    "simplyConnected",
+    "hamiltonRemovable",
+    "isPole",
+    "verifySCRemovable",
+    "verifyNoPoles",
+    "verifyPoincareConjecture",
+    "verifyFullPoincare"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Poincare.lean",
+   "detail": "—"
+  },
+  {
+   "id": "PrimeGaps",
+   "label": "PrimeGaps",
+   "kind": "module",
+   "category": "number-theory-cert",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "",
+   "ndecls": 31,
+   "decls": [
+    "fermatNumber",
+    "fermat_0",
+    "fermat_1",
+    "fermat_2",
+    "fermat_3",
+    "fermat_4",
+    "fermat_5_factor",
+    "fermat_5_dvd",
+    "fermat_5_composite",
+    "eulerPoly",
+    "euler_poly_prime_below_40",
+    "euler_poly_40_value",
+    "euler_poly_40_composite",
+    "andricaPair",
+    "andrica_window",
+    "oppermannAt",
+    "oppermann_window",
+    "brocardAt",
+    "brocard_window",
+    "gilbreath_window",
+    "gapExists",
+    "polignac_window",
+    "sophie_germain_window",
+    "landau_n2_plus_1_window"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/PrimeGaps.lean",
+   "detail": "—"
+  },
+  {
+   "id": "PvsNP",
+   "label": "PvsNP",
+   "kind": "module",
+   "category": "millennium-cert",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 18,
+   "decls": [
+    "c2k",
+    "c3k",
+    "c4k",
+    "c5k",
+    "ratioK",
+    "verifyOrdering",
+    "verify2SATinP",
+    "verifyNPComplete",
+    "alphaC3",
+    "alphaC4",
+    "alphaC5",
+    "verifyPhaseTransitions",
+    "noPolynomialCompilationKnown",
+    "compilationWall",
+    "compilation_wall_recorded",
+    "compilation_wall_is_open_status",
+    "verifySingularityClassification",
+    "verifyFullPvsNP"
+   ],
+   "gaps": [
+    "G10"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/PvsNP.lean",
+   "detail": "—"
+  },
+  {
+   "id": "QuantitativeContinuation",
+   "label": "QuantitativeContinuation",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "",
+   "ndecls": 6,
+   "decls": [
+    "linear_bound",
+    "geometric_bound",
+    "barrier_hierarchy",
+    "exists_upto_of_geometric",
+    "quantitativeContinuationFacts",
+    "quantitativeContinuationFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C4",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/QuantitativeContinuation.lean",
+   "detail": "C4"
+  },
+  {
+   "id": "RH.Density",
+   "label": "RH.Density",
+   "kind": "module",
+   "category": "rh-research",
+   "status": "citation-only",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/RH.Density.lean",
+   "detail": "—"
+  },
+  {
+   "id": "RH.Dominance",
+   "label": "RH.Dominance",
+   "kind": "module",
+   "category": "rh-research",
+   "status": "citation-only",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/RH.Dominance.lean",
+   "detail": "—"
+  },
+  {
+   "id": "RH.Hankel",
+   "label": "RH.Hankel",
+   "kind": "module",
+   "category": "rh-research",
+   "status": "citation-only",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/RH.Hankel.lean",
+   "detail": "—"
+  },
+  {
+   "id": "RH.LiCriterion",
+   "label": "RH.LiCriterion",
+   "kind": "module",
+   "category": "rh-research",
+   "status": "citation-only",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/RH.LiCriterion.lean",
+   "detail": "—"
+  },
+  {
+   "id": "RH.Monotonicity",
+   "label": "RH.Monotonicity",
+   "kind": "module",
+   "category": "rh-research",
+   "status": "citation-only",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/RH.Monotonicity.lean",
+   "detail": "—"
+  },
+  {
+   "id": "RH.NewmanFlow",
+   "label": "RH.NewmanFlow",
+   "kind": "module",
+   "category": "rh-research",
+   "status": "citation-only",
+   "depth": 1,
+   "tier": "",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/RH.NewmanFlow.lean",
+   "detail": "—"
+  },
+  {
+   "id": "RegularityReduction",
+   "label": "RegularityReduction",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 5,
+   "tier": "",
+   "ndecls": 7,
+   "decls": [
+    "content_le_exp_of_integral_le",
+    "regularity_reduced_to_integral",
+    "integral_unbounded_of_content_unbounded",
+    "integral_le_of_content_le",
+    "regularity_iff_integral_bounded",
+    "regularityReductionFacts",
+    "regularityReductionFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C8-open",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/RegularityReduction.lean",
+   "detail": "C8-open"
+  },
+  {
+   "id": "Removable",
+   "label": "Removable",
+   "kind": "module",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 4,
+   "decls": [
+    "quotient_eq_of_ne",
+    "removable_limit",
+    "quadratic_removable",
+    "impedance_crosszero"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Removable.lean",
+   "detail": "—"
+  },
+  {
+   "id": "RemovableComplexBridge",
+   "label": "RemovableComplexBridge",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 2,
+   "tier": "",
+   "ndecls": 8,
+   "decls": [
+    "IsRemovableValueAt",
+    "removable_value_exists",
+    "removable_value_unique",
+    "exists_unique_removable_value",
+    "limUnder_eq_of_isRemovableValue",
+    "canonical_zero_over_zero",
+    "removableComplexBridgeFacts",
+    "removableComplexBridgeFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C21",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/RemovableComplexBridge.lean",
+   "detail": "C21"
+  },
+  {
+   "id": "RemovableValue",
+   "label": "RemovableValue",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "",
+   "ndecls": 9,
+   "decls": [
+    "IsRemovableValue",
+    "removable_value_unique",
+    "existsUnique_iff_exists_and_unique",
+    "extension_unique",
+    "removable_exists_unique",
+    "removable_value_bridge",
+    "initial_arrow_schema",
+    "removableValueFacts",
+    "removableValueFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C15",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/RemovableValue.lean",
+   "detail": "C15"
+  },
+  {
+   "id": "RoleCollision",
+   "label": "RoleCollision",
+   "kind": "module",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 7,
+   "decls": [
+    "EqReading",
+    "eq_reading_unsat",
+    "eq_reading_implies_zero_eq_one",
+    "Step",
+    "recurrence_closed_form",
+    "recurrence_as_equation_is_collision",
+    "readings_differ"
+   ],
+   "gaps": [
+    "G39"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/RoleCollision.lean",
+   "detail": "—"
+  },
+  {
+   "id": "NumberParity",
+   "label": "NumberParity",
+   "kind": "module",
+   "category": "number-theory-cert",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 9,
+   "decls": [
+    "even_iff_dvd",
+    "evens_closed_add",
+    "evens_closed_mul",
+    "doubling_injective",
+    "even_range_is_doubling",
+    "sum_evens",
+    "product_consecutive_even",
+    "sum_evens_even",
+    "two_unique_even_prime"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/NumberParity.lean",
+   "detail": "—"
+  },
+  {
+   "id": "NullAbundance",
+   "label": "NullAbundance",
+   "kind": "module",
+   "category": "number-theory-cert",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 8,
+   "decls": [
+    "singleton_null",
+    "countable_null",
+    "rationals_countable",
+    "rationals_dense",
+    "rationals_null_and_dense",
+    "evens_countable",
+    "evens_pile_is_null",
+    "unit_interval_not_null"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/NullAbundance.lean",
+   "detail": "—"
+  },
+  {
+   "id": "EulerPolynomial",
+   "label": "EulerPolynomial",
+   "kind": "module",
+   "category": "number-theory-cert",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 7,
+   "decls": [
+    "euler",
+    "euler_forty_eq_square",
+    "euler_forty_not_prime",
+    "euler_zero_prime",
+    "euler_thirtynine_prime",
+    "shifted_at_pred_eq_square",
+    "shifted_not_prime_at_pred"
+   ],
+   "gaps": [
+    "G22"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/EulerPolynomial.lean",
+   "detail": "—"
+  },
+  {
+   "id": "SolarBounds",
+   "label": "SolarBounds",
+   "kind": "module",
+   "category": "information-bridge",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 6,
+   "decls": [
+    "carnot_mono_source",
+    "carnot_strict_mono_source",
+    "carnot_lt_one",
+    "exergy_budget_squeeze",
+    "more_electric_less_thermal",
+    "hybrid_beats_pure_pv"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/SolarBounds.lean",
+   "detail": "—"
+  },
+  {
+   "id": "ShockleyQueisser",
+   "label": "ShockleyQueisser",
+   "kind": "module",
+   "category": "information-bridge",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 7,
+   "decls": [
+    "absorbed_strict_decreasing",
+    "voltage_strict_increasing",
+    "efficiency_zero_lt_half",
+    "efficiency_one_lt_half",
+    "efficiency_not_monotone",
+    "efficiency_not_antitone",
+    "half_is_max"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/ShockleyQueisser.lean",
+   "detail": "—"
+  },
+  {
+   "id": "TandemCells",
+   "label": "TandemCells",
+   "kind": "module",
+   "category": "information-bridge",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 4,
+   "decls": [
+    "ceiling_monotone",
+    "ceiling_le_limit",
+    "ceiling_increment",
+    "ceiling_increments_shrink"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/TandemCells.lean",
+   "detail": "—"
+  },
+  {
+   "id": "NoUniversalResolve",
+   "label": "NoUniversalResolve",
+   "kind": "module",
+   "category": "information-bridge",
+   "status": "machine-checked",
+   "depth": 2,
+   "tier": "",
+   "ndecls": 3,
+   "decls": [
+    "signStep",
+    "signStep_has_no_limit",
+    "id_over_id_resolves"
+   ],
+   "gaps": [
+    "G21"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/NoUniversalResolve.lean",
+   "detail": "—"
+  },
+  {
+   "id": "EssentialIdentity",
+   "label": "EssentialIdentity",
+   "kind": "module",
+   "category": "information-bridge",
+   "status": "machine-checked",
+   "depth": 3,
+   "tier": "",
+   "ndecls": 6,
+   "decls": [
+    "is",
+    "self_ratio_eq_one",
+    "self_ratio_limit_one",
+    "ratio_paths_disagree",
+    "sin_one_over_has_no_limit",
+    "identity_breaks_only_at_zero"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/EssentialIdentity.lean",
+   "detail": "—"
+  },
+  {
+   "id": "StaticUncovered",
+   "label": "StaticUncovered",
+   "kind": "module",
+   "category": "information-bridge",
+   "status": "machine-checked",
+   "depth": 4,
+   "tier": "",
+   "ndecls": 11,
+   "decls": [
+    "turnPos",
+    "turnNeg",
+    "turnPos_value",
+    "turnNeg_value",
+    "turnPos_pos",
+    "turnNeg_pos",
+    "turnPos_lt",
+    "turnNeg_lt",
+    "plus_one_arbitrarily_near",
+    "minus_one_arbitrarily_near",
+    "static_has_both_extremes"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/StaticUncovered.lean",
+   "detail": "—"
+  },
+  {
+   "id": "SelfSimilarExponents",
+   "label": "SelfSimilarExponents",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 24,
+   "decls": [
+    "BalanceSystem",
+    "forcedP",
+    "forcedQ",
+    "forcedS",
+    "forcedGamma",
+    "forcedExponentsSatisfy",
+    "gammaForced",
+    "sForced",
+    "qForcedInPoisson",
+    "pForcedFromOmegaProduction",
+    "forcedExponentsUnique",
+    "secondOrderPower",
+    "secondOrderPowerPrefactorIndependent",
+    "advectionTermPower",
+    "advectionTermPowerKappaIndependent",
+    "uzCoefficientPowerNIndependent",
+    "kappaMonotone",
+    "dynamicalNMonotoneStiffening_powersForced",
+    "selfSimilarProfileExistenceOpen",
+    "typeIINamingCertified",
+    "frontier1Facts",
+    "frontier1Facts_length",
+    "profile_existence_is_open",
+    "type_ii_naming_not_certified"
+   ],
+   "gaps": [],
+   "cards": "C31",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/SelfSimilarExponents.lean",
+   "detail": "C31"
+  },
+  {
+   "id": "SerrinLadder",
+   "label": "SerrinLadder",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 16,
+   "decls": [
+    "gnExponent",
+    "gnExponent_six",
+    "gnExponent_two",
+    "gnExponent_three_half",
+    "gnExponent_ceiling_chain",
+    "serrinQ",
+    "serrinQ_six",
+    "serrinQ_line",
+    "gnExponent_le_one_iff",
+    "criticalPower_six_four",
+    "oneExtraPower",
+    "criticalPowerIdentity",
+    "powerClosesCriticalAtSix",
+    "extraEnstrophyPowerIntegralOpen",
+    "ladderFormalizedFacts",
+    "ladderFormalizedFacts_length"
+   ],
+   "gaps": [
+    "G2"
+   ],
+   "cards": "C23",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/SerrinLadder.lean",
+   "detail": "C23"
+  },
+  {
+   "id": "SerrinSufficiency",
+   "label": "SerrinSufficiency",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 6,
+   "tier": "",
+   "ndecls": 8,
+   "decls": [
+    "serrinMargin",
+    "serrinMargin_pos_iff",
+    "serrinMargin_line",
+    "serrinMargin_eq_neg_ladder",
+    "content_le_of_growth_le_weight",
+    "bounded_on_of_serrinAction",
+    "serrinSufficiencyFacts",
+    "serrinSufficiencyFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C8-open",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/SerrinSufficiency.lean",
+   "detail": "C8-open"
+  },
+  {
+   "id": "ShadowZeroZero",
+   "label": "ShadowZeroZero",
+   "kind": "module",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "",
+   "ndecls": 9,
+   "decls": [
+    "shadow",
+    "shadow_involution",
+    "tendsto_inv_atTop_nhdsGT_zero_R",
+    "shadow_preserves_value",
+    "shadow_preserves_value_of_ne",
+    "shadow_inverts_value",
+    "shadow_sin_over_x",
+    "shadowZeroZeroFacts",
+    "shadowZeroZeroFacts_length"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/ShadowZeroZero.lean",
+   "detail": "—"
+  },
+  {
+   "id": "StableBounded",
+   "label": "StableBounded",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 5,
+   "decls": [
+    "attracting_orbit_converges",
+    "attracting_orbit_bounded",
+    "monotone_bounded",
+    "stableBoundedFacts",
+    "stableBoundedFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C29",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/StableBounded.lean",
+   "detail": "C29"
+  },
+  {
+   "id": "SufficiencyLoop",
+   "label": "SufficiencyLoop",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "",
+   "ndecls": 4,
+   "decls": [
+    "global_exists_of_mono",
+    "quadratic_criterion_unavailable",
+    "sufficiencyLoopFacts",
+    "sufficiencyLoopFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C30",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/SufficiencyLoop.lean",
+   "detail": "C30"
+  },
+  {
+   "id": "TheoryOfEverything",
+   "label": "TheoryOfEverything",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 4,
+   "tier": "",
+   "ndecls": 9,
+   "decls": [
+    "order_sets_rung",
+    "orientation_sets_side",
+    "theoryOfEverything",
+    "twoNumbersClose",
+    "order_sets_rung_bijective",
+    "orientation_not_injective_on_side",
+    "method_and_margin_barriers",
+    "theoryOfEverythingFacts",
+    "theoryOfEverythingFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C10",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/TheoryOfEverything.lean",
+   "detail": "C10"
+  },
+  {
+   "id": "TwinPrime",
+   "label": "TwinPrime",
+   "kind": "module",
+   "category": "number-theory-cert",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 13,
+   "decls": [
+    "isPrimeLoop",
+    "isPrime",
+    "isTwinPrime",
+    "countTwinPrimesUpTo",
+    "verifyTwinPrimes100",
+    "verifyKnownPairs",
+    "verifyTwinPrimes1000",
+    "eulerSum8",
+    "eulerSum12",
+    "brunConstantApprox",
+    "verifyBrunConverges",
+    "verifyDensity",
+    "verifyFullTwinPrime"
+   ],
+   "gaps": [
+    "G13"
+   ],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/TwinPrime.lean",
+   "detail": "—"
+  },
+  {
+   "id": "UniverseGrowth",
+   "label": "UniverseGrowth",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "",
+   "ndecls": 14,
+   "decls": [
+    "momentumOn",
+    "chargeOn",
+    "chargeOn_eq_momentumOn_sub",
+    "momentumOn_grow",
+    "momentumOn_grow_eq",
+    "chargeOn_grow_eq",
+    "IsGrowingUniverse",
+    "influx",
+    "universeGrowth_decomp",
+    "universeGrowth_conserves",
+    "chargeOn_universeGrowth_conserves",
+    "momentumOn_univ",
+    "universeGrowthFacts",
+    "universeGrowthFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C35",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/UniverseGrowth.lean",
+   "detail": "C35"
+  },
+  {
+   "id": "VanishOrder",
+   "label": "VanishOrder",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 13,
+   "decls": [
+    "VanishesToOrder",
+    "divideOut",
+    "vanishes_zero",
+    "vanishes_succ_imp",
+    "vanishes_shift",
+    "vanishes_antitone",
+    "HasGrade",
+    "hasGrade_canonical",
+    "hasGrade_shift",
+    "grade_unique",
+    "order_is_graded",
+    "vanishOrderFacts",
+    "vanishOrderFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C16",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/VanishOrder.lean",
+   "detail": "C16"
+  },
+  {
+   "id": "ZeroFixedPoint",
+   "label": "ZeroFixedPoint",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 7,
+   "decls": [
+    "fixedPoint_selfSlope",
+    "identity_selfSlope",
+    "zero_count_removable",
+    "zero_count_under",
+    "zero_count_over",
+    "zeroFixedPointFacts",
+    "zeroFixedPointFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C32",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/ZeroFixedPoint.lean",
+   "detail": "C32"
+  },
+  {
+   "id": "ZeroIndex",
+   "label": "ZeroIndex",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 10,
+   "decls": [
+    "Index",
+    "index_one",
+    "index_additive",
+    "index_pow",
+    "index_X_sub_C_self",
+    "index_pow_self",
+    "index_canonical",
+    "index_is_multiplicity",
+    "zeroIndexFacts",
+    "zeroIndexFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C19",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/ZeroIndex.lean",
+   "detail": "C19"
+  },
+  {
+   "id": "ZeroLink",
+   "label": "ZeroLink",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 17,
+   "decls": [
+    "ofEmpty",
+    "empty_unique_arrow",
+    "Initial",
+    "empty_isInitial",
+    "toUnit",
+    "unit_unique_arrow",
+    "Terminal",
+    "unit_isTerminal",
+    "empty_classified_initial",
+    "unit_classified_terminal",
+    "emptySumEquiv",
+    "sumEmptyEquiv",
+    "prodEmptyEquiv",
+    "emptyProdEquiv",
+    "zero_links_all",
+    "zeroLinkFacts",
+    "zeroLinkFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C13",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/ZeroLink.lean",
+   "detail": "C13"
+  },
+  {
+   "id": "ZeroMechanisms",
+   "label": "ZeroMechanisms",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 3,
+   "tier": "",
+   "ndecls": 9,
+   "decls": [
+    "abs_div_self_tendsto_right",
+    "abs_div_self_tendsto_left",
+    "abs_div_self_no_limit",
+    "abs_vanish",
+    "id_vanish",
+    "anti_class_nonempty",
+    "mechanisms_close",
+    "zeroMechanismsFacts",
+    "zeroMechanismsFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C20",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/ZeroMechanisms.lean",
+   "detail": "C20"
+  },
+  {
+   "id": "ZeroObject",
+   "label": "ZeroObject",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 8,
+   "decls": [
+    "initial_link",
+    "terminal_link",
+    "zero_links_both_ways",
+    "modules_haveZeroObject",
+    "modules_exists_zeroObject",
+    "modules_zero_links",
+    "zeroObjectFacts",
+    "zeroObjectFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C14",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/ZeroObject.lean",
+   "detail": "C14"
+  },
+  {
+   "id": "ZeroProbe",
+   "label": "ZeroProbe",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 2,
+   "tier": "",
+   "ndecls": 7,
+   "decls": [
+    "ProbeValue",
+    "probe_identity",
+    "probe_self",
+    "probe_value_unique",
+    "probe_is_removable",
+    "zeroProbeFacts",
+    "zeroProbeFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C17",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/ZeroProbe.lean",
+   "detail": "C17"
+  },
+  {
+   "id": "ZeroValuation",
+   "label": "ZeroValuation",
+   "kind": "module",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "",
+   "ndecls": 11,
+   "decls": [
+    "HasOrder",
+    "hasOrder_one",
+    "hasOrder_zero_iff",
+    "hasOrder_mul",
+    "hasOrder_pow",
+    "hasOrder_canonical",
+    "hasOrder_lt_imp_not",
+    "hasOrder_unique",
+    "order_is_valuation",
+    "zeroValuationFacts",
+    "zeroValuationFacts_length"
+   ],
+   "gaps": [],
+   "cards": "C18",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/ZeroValuation.lean",
+   "detail": "C18"
+  },
+  {
+   "id": "ZeroZero",
+   "label": "ZeroZero",
+   "kind": "module",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 17,
+   "decls": [
+    "entropy_removable_value",
+    "entropy_term_continuous",
+    "entropy_removable_zero",
+    "entropy_sum_zero_outcome",
+    "log_one_add_div_tendsto_one",
+    "clog_one_add_div_tendsto_one",
+    "kl_zero_zero_tendsto_zero",
+    "sin_x_div_tendsto_one",
+    "exp_sub_one_div_tendsto_one",
+    "one_sub_cos_div_sq_tendsto_half",
+    "tan_x_div_tendsto_one",
+    "log_div_sub_one_tendsto_one",
+    "sub_one_div_log_tendsto_one",
+    "arcsin_x_div_tendsto_one",
+    "self_pow_tendsto_one",
+    "one_add_x_rpow_inv_tendsto_e",
+    "csin_x_div_tendsto_one"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/ZeroZero.lean",
+   "detail": "—"
+  },
+  {
+   "id": "G1",
+   "label": "G1",
+   "kind": "gap",
+   "category": "millennium-cert",
+   "status": "partial",
+   "depth": 0,
+   "tier": "A",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G1"
+   ],
+   "cards": [
+    "C3",
+    "C8-open"
+   ],
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/NavierStokes.lean",
+   "title": "NS regularity: the endpoint ladder remains open",
+   "subject": "Navier–Stokes 3D smoothness",
+   "proof_kind": "partial",
+   "pins": [],
+   "barrier": "energy bounds are supercritical under `u^λ=λu(λx,λ²t)`; no general proof of endpoint `B^{-1}_{∞,∞}` control for arbitrary Leray–Hopf solution. The hierarchy of regularity: weak (not unique, known to exist) ⊏ strong (unique, short-time) — the bridge is the missing unconditional scale-critical bound.",
+   "missing": ""
+  },
+  {
+   "id": "G2",
+   "label": "G2",
+   "kind": "gap",
+   "category": "card",
+   "status": "partial",
+   "depth": 0,
+   "tier": "A",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G2"
+   ],
+   "cards": [
+    "C3",
+    "C8-open"
+   ],
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/SerrinLadder.lean",
+   "title": "T3: λ(s) antitonicity",
+   "subject": "Navier–Stokes/Burgers family",
+   "proof_kind": "partial",
+   "pins": [],
+   "barrier": "equivalence of all `2/p+3/q=1` endpoint points does not by itself imply `λ(s)` antitone for the NS/Burgers family. The scaling map identifies norms only up to constants; monotonicity requires genuine endpoint embeddings for the concrete family, not just scale invariance.",
+   "missing": ""
+  },
+  {
+   "id": "G3",
+   "label": "G3",
+   "kind": "gap",
+   "category": "millennium-cert",
+   "status": "partial",
+   "depth": 1,
+   "tier": "A",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G3"
+   ],
+   "cards": [
+    "C3",
+    "C8-open"
+   ],
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/MillenniumBridge.lean",
+   "title": "Bridge barrier (shared across mixture-of-dimensions readings)",
+   "subject": "bridge across the four readings",
+   "proof_kind": "partial",
+   "pins": [],
+   "barrier": "identifying equivalence does not force constructivity — the isomorphism is structural, not algorithmic for producing the missing a priori control.",
+   "missing": ""
+  },
+  {
+   "id": "G4",
+   "label": "G4",
+   "kind": "gap",
+   "category": "information-bridge",
+   "status": "citation-only",
+   "depth": 6,
+   "tier": "A",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G4"
+   ],
+   "cards": [
+    "C17",
+    "C10"
+   ],
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/InformationPhi.lean",
+   "title": "Φ / InformationPhi (empirical, not formal)",
+   "subject": "register's model",
+   "proof_kind": "citation-only",
+   "pins": [],
+   "barrier": "model is register-internal (not a measured result); operational definition of the observable is missing.",
+   "missing": ""
+  },
+  {
+   "id": "G5",
+   "label": "G5",
+   "kind": "gap",
+   "category": "card",
+   "status": "no-go",
+   "depth": 3,
+   "tier": "A",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G5"
+   ],
+   "cards": [
+    "C11",
+    "C12"
+   ],
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/OrientationBoundedness.lean",
+   "title": "Margin uniqueness (refuted by family)",
+   "subject": "uniqueness of margin",
+   "proof_kind": "no-go",
+   "pins": [],
+   "barrier": "the margin cannot be forced unique by the law alone; closeness/selection remains open.",
+   "missing": ""
+  },
+  {
+   "id": "G6",
+   "label": "G6",
+   "kind": "gap",
+   "category": "millennium-cert",
+   "status": "partial",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G6"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/BSD.lean",
+   "title": "BSD (rank >= 2)",
+   "subject": "Birch–Swinnerton-Dyer",
+   "proof_kind": "partial",
+   "pins": [],
+   "barrier": "Euler system only generates one class per imaginary quadratic field; no known rank>=2 Euler system. Average-rank bounds (Bhargava-Shankar, avg rank <= 0.885) and majority results (Bhargava-Skinner-Zhang 2014, >66% of E/Q satisfy BSD) constrain proportions but do not produce two independent classes for any rank>=2 curve.",
+   "missing": ""
+  },
+  {
+   "id": "G7",
+   "label": "G7",
+   "kind": "gap",
+   "category": "millennium-cert",
+   "status": "partial",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G7"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Hodge.lean",
+   "title": "Hodge (codim >= 2)",
+   "subject": "Hodge conjecture",
+   "proof_kind": "partial",
+   "pins": [],
+   "barrier": "no general geometric construction produces algebraic cycles representing arbitrary (2,1) Hodge classes; only special classes are reachable (Lefschetz divisors, generated-in-degree-one abelian varieties, cubic fourfolds). Mumford (1969) shows Hdg^2 need not be generated by divisor products, so degree-one generation is unavailable in general.",
+   "missing": ""
+  },
+  {
+   "id": "G8",
+   "label": "G8",
+   "kind": "gap",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G8"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/RH/LiCriterion.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/rh_li_correct.py",
+   "title": "Riemann Hypothesis",
+   "subject": "Riemann Hypothesis",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "no unconditional proof that Re(rho)=1/2 for all zeros; the equivalences (Li, Weil positivity, de Bruijn-Newman) restate RH without supplying the needed positivity/zero-free region, and the de Bruijn-Newman route leaves only the interval 0 <= Lambda <= 0.2.",
+   "missing": ""
+  },
+  {
+   "id": "G9",
+   "label": "G9",
+   "kind": "gap",
+   "category": "number-theory-cert",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G9"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Goldbach.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/goldbach_large.py",
+   "title": "Goldbach (strong)",
+   "subject": "Goldbach conjecture (strong/binary)",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "parity barrier of sieve methods; effective minor-arc bounds + Siegel zeros complicate explicit N0.",
+   "missing": ""
+  },
+  {
+   "id": "G10",
+   "label": "G10",
+   "kind": "gap",
+   "category": "millennium-cert",
+   "status": "partial",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G10"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/PvsNP.lean, 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/p_np_contour.py",
+   "title": "P vs NP",
+   "subject": "P vs NP",
+   "proof_kind": "partial",
+   "pins": [],
+   "barrier": "no super-polynomial (indeed no fixed-polynomial) circuit lower bound is known for any explicit NP function; not even NE vs formulas (NEXP vs NC_1) is settled. Magnification and localization barriers further constrain current methods.",
+   "missing": ""
+  },
+  {
+   "id": "G11",
+   "label": "G11",
+   "kind": "gap",
+   "category": "millennium-cert",
+   "status": "partial",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G11"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/MassGap.lean",
+   "title": "Yang–Mills mass gap",
+   "subject": "Yang–Mills existence & mass gap",
+   "proof_kind": "partial",
+   "pins": [],
+   "barrier": "no rigorous 4D continuum limit of nonabelian lattice gauge theory satisfying the Osterwalder-Schrader axioms, together with a uniform positive lower bound on the mass gap along the continuum/renormalization trajectory; the Clay problem is explicitly open (Jaffe-Witten 2000). Numerous 2024-2025 preprints claim full proofs (e.g. arXiv:2506.00284; Agawa; Nye; Lim) but none is peer-reviewed or accepte",
+   "missing": ""
+  },
+  {
+   "id": "G12",
+   "label": "G12",
+   "kind": "gap",
+   "category": "number-theory-cert",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G12"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Collatz.lean",
+   "title": "Collatz (3n+1)",
+   "subject": "Collatz conjecture (3n+1)",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "no known invariant/monotone potential that strictly descends for all n>1; two independent obstructions (nontrivial cycles, divergent trajectories).",
+   "missing": ""
+  },
+  {
+   "id": "G13",
+   "label": "G13",
+   "kind": "gap",
+   "category": "number-theory-cert",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G13"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/TwinPrime.lean",
+   "title": "Twin prime conjecture",
+   "subject": "twin prime conjecture",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "parity barrier — sieve methods cannot distinguish two-prime from almost-prime configurations; needs input beyond upper/lower sieve bounds.",
+   "missing": ""
+  },
+  {
+   "id": "G14",
+   "label": "G14",
+   "kind": "gap",
+   "category": "number-theory-cert",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G14"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Legendre.lean",
+   "title": "Legendre's conjecture",
+   "subject": "Legendre's conjecture (a prime between n² and (n+1)²)",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "no unconditional prime-gap bound this small is known; best is ~x^{0.525} (Baker–Harman–Pintz 2001).",
+   "missing": ""
+  },
+  {
+   "id": "G15",
+   "label": "G15",
+   "kind": "gap",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G15"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_prime_gaps_certificate.py",
+   "title": "Brocard's conjecture",
+   "subject": "Brocard's conjecture (≥ 4 primes between p_n² and p_{n+1}²)",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "depends on prime distribution in intervals of relative size ~ p_{n+1}²−p_n² ≈ 2 p_n (p_{n+1}−p_n), far beyond current unconditional means.",
+   "missing": ""
+  },
+  {
+   "id": "G16",
+   "label": "G16",
+   "kind": "gap",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G16"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_prime_gaps_certificate.py",
+   "title": "Andrica's conjecture",
+   "subject": "Andrica's conjecture (√p_{n+1} − √p_n < 1 for all n)",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "no unconditional prime-gap bound of size O(√p) is known (best ~ x^{0.525}, Baker–Harman–Pintz 2001).",
+   "missing": ""
+  },
+  {
+   "id": "G17",
+   "label": "G17",
+   "kind": "gap",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G17"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_prime_gaps_certificate.py",
+   "title": "Oppermann's conjecture",
+   "subject": "Oppermann's conjecture (a prime in n²..n(n+1) and in n(n+1)..(n+1)²)",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "needs a prime-gap bound of size O(√x); no unconditional bound this small is known (best ~ x^{0.525}, Baker–Harman–Pintz 2001).",
+   "missing": ""
+  },
+  {
+   "id": "G18",
+   "label": "G18",
+   "kind": "gap",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G18"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_prime_gaps_certificate.py",
+   "title": "Gilbreath's conjecture",
+   "subject": "Gilbreath's conjecture (leading term of each iterated difference row of the primes is 1)",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "equivalent to a strong regularity of prime gaps far beyond current unconditional means.",
+   "missing": ""
+  },
+  {
+   "id": "G19",
+   "label": "G19",
+   "kind": "gap",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G19"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_prime_gaps_certificate.py",
+   "title": "Polignac's conjecture",
+   "subject": "Polignac's conjecture (every even gap occurs infinitely often among primes)",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "parity barrier of sieve methods; no method yields infinitude for a prescribed even gap.",
+   "missing": ""
+  },
+  {
+   "id": "G20",
+   "label": "G20",
+   "kind": "gap",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G20"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_prime_gaps_certificate.py",
+   "title": "Sophie Germain primes",
+   "subject": "Sophie Germain primes (infinitely many primes p with 2p+1 prime)",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "parity barrier; no sieve method distinguishes the pair structure (p, 2p+1).",
+   "missing": ""
+  },
+  {
+   "id": "G21",
+   "label": "G21",
+   "kind": "gap",
+   "category": "information-bridge",
+   "status": "no-go",
+   "depth": 2,
+   "tier": "A",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G21"
+   ],
+   "cards": [
+    "C15"
+   ],
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/NoUniversalResolve.lean",
+   "title": "\"Every 0/0 resolves\" is false (no-go)",
+   "subject": "the register's removable-value schema (C15) without its existence hypothesis",
+   "proof_kind": "no-go",
+   "pins": [],
+   "barrier": "existence of the limit is object-specific; no general schema can supply it (C15's own caveat).",
+   "missing": ""
+  },
+  {
+   "id": "G22",
+   "label": "G22",
+   "kind": "gap",
+   "category": "number-theory-cert",
+   "status": "no-go",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G22"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/EulerPolynomial.lean",
+   "title": "Euler polynomial: \"n²+n+41 is prime for all n\" is false (no-go)",
+   "subject": "naive claim \"n²+n+41 is prime for all n >= 0\" (Euler's polynomial)",
+   "proof_kind": "no-go",
+   "pins": [],
+   "barrier": "none (refuted); recorded so the long initial run is not mistaken for evidence of a universal statement.",
+   "missing": ""
+  },
+  {
+   "id": "G23",
+   "label": "G23",
+   "kind": "gap",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G23"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_prime_gaps_certificate.py",
+   "title": "Fermat primes (no-go for finiteness, open for infinitude)",
+   "subject": "Fermat primes (F_k = 2^(2^k)+1); infinitude is OPEN",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "Fermat numbers grow doubly exponentially; no method shows infinitude (nor finiteness) of the prime ones.",
+   "missing": ""
+  },
+  {
+   "id": "G24",
+   "label": "G24",
+   "kind": "gap",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G24"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_prime_gaps_certificate.py",
+   "title": "Landau's problem (primes of the form n²+1)",
+   "subject": "Landau's fourth problem (infinitely many primes of the form n²+1)",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "parity barrier; no sieve method produces a prescribed irreducible-polynomial prime pattern.",
+   "missing": ""
+  },
+  {
+   "id": "G25",
+   "label": "G25",
+   "kind": "gap",
+   "category": "core-scaffold",
+   "status": "citation-only",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G25"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "05_Documentation_and_Research_Specifications/05_Complete_Framework_Documentation/THE_GAP_LEDGER.md",
+   "title": "Ternary Goldbach (Helfgott): cited, not formalized (citation-only)",
+   "subject": "ternary Goldbach (every odd >= 7 is a sum of three primes) -- cited, not formalized in-repo",
+   "proof_kind": "citation-only",
+   "pins": [],
+   "barrier": "formalization debt only, not a mathematical gap -- the theorem is proved.",
+   "missing": ""
+  },
+  {
+   "id": "G26",
+   "label": "G26",
+   "kind": "gap",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G26"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_prime_gaps_certificate.py",
+   "title": "Prime k-tuples (Dickson-type constellations)",
+   "subject": "prime k-tuples / Dickson's conjecture (every admissible pattern occurs infinitely often)",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "parity barrier of sieve methods; no method yields infinitude for a prescribed admissible pattern (Zhang/Maynard-Tao give only some bounded gap).",
+   "missing": ""
+  },
+  {
+   "id": "G27",
+   "label": "G27",
+   "kind": "gap",
+   "category": "number-theory-cert",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G27"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/perfect_numbers_certificate.py, 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/PerfectNumbers.lean",
+   "title": "Odd perfect numbers (none known)",
+   "subject": "odd perfect numbers (does any odd n with sigma(n) = 2n exist?)",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "no method shows existence or non-existence of an odd perfect number; only necessary conditions and lower bounds are known.",
+   "missing": ""
+  },
+  {
+   "id": "G28",
+   "label": "G28",
+   "kind": "gap",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "A",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G28"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_row_forge.py",
+   "title": "Gap Ledger row forge (register tooling)",
+   "subject": "the register's own row-forge tooling (drafting and validating ledger entries)",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "none for the shape (decidable); the forge cannot supply the mathematical content (Reduction/Barrier/Known/Missing/Falsifier) nor prove any subject.",
+   "missing": ""
+  },
+  {
+   "id": "G29",
+   "label": "G29",
+   "kind": "gap",
+   "category": "number-theory-cert",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G29"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/perfect_numbers_certificate.py, 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/PerfectNumbers.lean",
+   "title": "Mersenne primes",
+   "subject": "Mersenne primes (infinitely many primes of the form 2^p - 1?)",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "no proof of infinitude (or finiteness); Lenstra-Pomerance-Wagstaff heuristics suggest infinitely many, but no unconditional method yields it.",
+   "missing": ""
+  },
+  {
+   "id": "G30",
+   "label": "G30",
+   "kind": "gap",
+   "category": "number-theory-cert",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G30"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/giuga_certificate.py, 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Giuga.lean",
+   "title": "Giuga's conjecture (Giuga-and-Carmichael criterion)",
+   "subject": "Giuga's conjecture (Giuga-and-Carmichael criterion)",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "the search is finite while the conjecture is universal; no known structure rules out a counterexample, which would have to be simultaneously squarefree, Korselt-compliant (Carmichael) and satisfy the far stronger p^2(p-1) | (n - p) condition for every prime p | n.",
+   "missing": ""
+  },
+  {
+   "id": "G31",
+   "label": "G31",
+   "kind": "gap",
+   "category": "number-theory-cert",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G31"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/lehmer_totient_certificate.py, 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Lehmer.lean",
+   "title": "Lehmer's totient problem (phi(n) divides n-1)",
+   "subject": "Lehmer's totient problem (phi(n) divides n-1)",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "the test is finite while the conjecture quantifies over all composites; a counterexample must be simultaneously odd, squarefree and Carmichael, so it is invisible to any search below the known lower bound n > 10^26 with >= 15 distinct prime factors.",
+   "missing": ""
+  },
+  {
+   "id": "G32",
+   "label": "G32",
+   "kind": "gap",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G32"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/wieferich_certificate.py, 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Wieferich.lean",
+   "title": "Wieferich primes (2^(p-1) = 1 mod p^2)",
+   "subject": "Wieferich primes (2^(p-1) = 1 mod p^2)",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "deciding which primes are Wieferich below a bound says nothing about how many there are; the heuristic (Crandall-Dilcher-Pomerance) that A(p) = (2^(p-1) - 1)/p mod p behaves randomly predicts ~ log log x Wieferich primes up to x, i.e. infinitely many, with an infinite expected gap to the next one, so no finite search can evidence infinitude. Machine-checking the two instances only certifies them, ",
+   "missing": ""
+  },
+  {
+   "id": "G33",
+   "label": "G33",
+   "kind": "gap",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G33"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/beal_certificate.py, 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Beal.lean",
+   "title": "Beal's conjecture (a^x+b^y=c^z with x,y,z>2, gcd=1 => none?)",
+   "subject": "Beal's conjecture (a^x+b^y=c^z with x,y,z>2, gcd=1 => none?)",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "no known proof method extends a finite window to all positive integers (Beal is open); the Darmon-Granville theorem gives finiteness for fixed exponents satisfying 1/x+1/y+1/z < 1 but Beal allows all x,y,z > 2 and no fixed sum constraint except the equation.",
+   "missing": ""
+  },
+  {
+   "id": "G34",
+   "label": "G34",
+   "kind": "gap",
+   "category": "number-theory-cert",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G34"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/erdos_moser_certificate.py, 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/ErdosMoser.lean",
+   "title": "Erd\\u0151s-Moser equation (power sum = square of triangular number)",
+   "subject": "Erd\\u0151s-Moser equation (power sum = square of triangular number)",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "any further solution requires k even, satisfies strong p-adic/divisibility conditions, and is known to have m > 10^10^6 (bounds have improved further), so no feasible finite search can exclude all solutions (the conjecture is open).",
+   "missing": ""
+  },
+  {
+   "id": "G35",
+   "label": "G35",
+   "kind": "gap",
+   "category": "core-scaffold",
+   "status": "partial",
+   "depth": 4,
+   "tier": "A",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G35"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Crease.lean",
+   "title": "The crease: the cusp normal form of every fold (brain folds)",
+   "subject": "the local normal form of every generic crease (the cusp) and its reading as a brain/cortical fold",
+   "proof_kind": "partial",
+   "pins": [],
+   "barrier": "the reduction is strictly local: it proves that *if* a fold is generic its crease is a cusp, but it does not derive any particular crease pattern (a cortex, a crumpled sheet, a trained network's decision boundary) from a stated physical energy, and it does not fix the folding exponent; the global scaling law (Mota-Herculano-Houzel, predicted exponent 1.25, observed ~1.305) is an empirical/modellin",
+   "missing": ""
+  },
+  {
+   "id": "G36",
+   "label": "G36",
+   "kind": "gap",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "B",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G36"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Wilson.lean",
+   "title": "Wilson primes: the second-order zero of the Wilson resolvent",
+   "subject": "Wilson primes (p^2 divides (p-1)! + 1) as the square-modulus upgrade of Wilson's theorem",
+   "proof_kind": "certificate",
+   "pins": [],
+   "barrier": "deciding a finite window is not deciding the family: every argument above runs on a single given `p` and never bounds the *number* of such `p`, so nothing promotes `5, 13, 563` to a statement about how many Wilson primes exist. The first-order test `p | (p-1)! + 1` is provably true of every prime (Wilson's theorem) and therefore carries no discriminating content at all; only the square condition d",
+   "missing": ""
+  },
+  {
+   "id": "G37",
+   "label": "G37",
+   "kind": "gap",
+   "category": "core-scaffold",
+   "status": "no-go",
+   "depth": 0,
+   "tier": "A",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G37"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/Wieferich.lean",
+   "title": "The first-order certificate no-go: why a mod-p test cannot detect the crease",
+   "subject": "the proved impossibility of a sound-and-complete first-order (Fermat) certificate for Wieferich primes, with the Wilson sibling",
+   "proof_kind": "no-go",
+   "pins": [],
+   "barrier": "this is a barrier against a *method*, not a resolution of G32: it proves that no certificate whose only content is the first-order Fermat vanishing can be both sound and complete for Wieferich primes, because that content is provably identical for every odd prime and so carries no information about which prime is the crease. It deliberately says nothing about whether Wieferich primes are finite or",
+   "missing": ""
+  },
+  {
+   "id": "G38",
+   "label": "G38",
+   "kind": "gap",
+   "category": "core-scaffold",
+   "status": "partial",
+   "depth": 2,
+   "tier": "A",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G38"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/FrontierCensus.lean",
+   "title": "The Frontier Census: the shared skeleton of the arithmetic open-status rows",
+   "subject": "a unifying theory for the arithmetic open-status rows (G30 Giuga, G31 Lehmer, G32 Wieferich, G34 Erdos-Moser, G36 Wilson): every row is a decidable predicate over a window whose finite census cannot settle its open universal, and each carries a *crease* where a first-order test under-shooots the second-order crease test",
+   "proof_kind": "partial",
+   "pins": [],
+   "barrier": "the shared skeleton is a *bridge-barrier*, not a resolution: the census (finite, decided) and the universal (global, open) are two independently-defined worlds, and the missing object is always the same -- a second-order invariant not merely *consistent with* the census but *equivalent to it beyond the window*. `census_window_agree` and its all-rows competitor theorem are the machine-checked state",
+   "missing": ""
+  },
+  {
+   "id": "G39",
+   "label": "G39",
+   "kind": "gap",
+   "category": "core-scaffold",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "A",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [
+    "G39"
+   ],
+   "cards": [
+    "[]"
+   ],
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/RoleCollision.lean",
+   "title": "The role collision: `x = x + 1` as equation vs. assignment",
+   "subject": "the classic \"`x = x + 1` therefore `0 = 1`\" paradox. The error is that a single symbol (`=`, and the name `x`) is used in two incompatible roles: as *equality* between two equal values, and as *assignment* (a state update `x_{t+1} = x_t + 1`). Spelled out, there is no paradox -- only an unsatisfiable equation conflated with a satisfiable recurrence.",
+   "proof_kind": "resolved",
+   "pins": [],
+   "barrier": "the paradox is a *type/syntax* collision, not a mathematical one: the left `0` in `0 = y` is a *value* where an *lvalue* (a place) is required (a Python run rejects it with `SyntaxError: cannot assign to literal`), and the equation reading is unsatisfiable (`x = x + 1`, `0 = y` with `y = 1` have an empty simultaneous integer solution set). The formal system refuses the collision at the point where",
+   "missing": ""
+  },
+  {
+   "id": "Card",
+   "label": "Card",
+   "kind": "card",
+   "category": "card",
+   "status": "open",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [],
+   "cards": [
+    "Card"
+   ],
+   "artifact": "",
+   "title": "ID in `EXPLICIT_CLAIMS.md`"
+  },
+  {
+   "id": "Citation",
+   "label": "Citation",
+   "kind": "card",
+   "category": "card",
+   "status": "open",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [],
+   "cards": [
+    "Citation"
+   ],
+   "artifact": "",
+   "title": "literature anchor for the theorem / missing entity"
+  },
+  {
+   "id": "C1",
+   "label": "C1",
+   "kind": "card",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "",
+   "ndecls": 9,
+   "decls": [
+    "CriticalLadder",
+    "scalingInvariant_iff",
+    "sCrit_three",
+    "sCrit_two",
+    "sCrit_six",
+    "thetaAddSCrit",
+    "sCrit_antitone",
+    "sCrit_gt_neg_one",
+    "onsagerExcess_supercritical"
+   ],
+   "gaps": [],
+   "cards": [
+    "C1"
+   ],
+   "artifact": "`CriticalLadder` (`scalingInvariant_iff`, `sCrit_three`, `sCrit_two`, `sCrit_six`, `thetaAddSCrit`, `sCrit_antitone`, `sCrit_gt_neg_one`, `onsagerExcess_supercritical`)",
+   "title": "Theorem"
+  },
+  {
+   "id": "C2",
+   "label": "C2",
+   "kind": "card",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [],
+   "cards": [
+    "C2"
+   ],
+   "artifact": "—",
+   "title": "Theorem"
+  },
+  {
+   "id": "C3",
+   "label": "C3",
+   "kind": "card",
+   "category": "card",
+   "status": "open",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [],
+   "cards": [
+    "C3"
+   ],
+   "artifact": "—",
+   "title": "Conjecture/Open"
+  },
+  {
+   "id": "C6",
+   "label": "C6",
+   "kind": "card",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 1,
+   "decls": [
+    "ExplicitClaims.mean_le_dimMixture"
+   ],
+   "gaps": [],
+   "cards": [
+    "C6"
+   ],
+   "artifact": "`ExplicitClaims.mean_le_dimMixture`",
+   "title": "Formal"
+  },
+  {
+   "id": "C7",
+   "label": "C7",
+   "kind": "card",
+   "category": "card",
+   "status": "empirical",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 0,
+   "decls": [],
+   "gaps": [],
+   "cards": [
+    "C7"
+   ],
+   "artifact": "—",
+   "title": "Empirical"
+  },
+  {
+   "id": "C8",
+   "label": "C8",
+   "kind": "card",
+   "category": "card",
+   "status": "open",
+   "depth": 5,
+   "tier": "",
+   "ndecls": 26,
+   "decls": [
+    "OrientationLaw",
+    "logGrowth_geometric",
+    "sign_match",
+    "orientation_reads_wall",
+    "logGrowth_of_ratio_eq",
+    "logGrowth_pos_iff",
+    "bounded_of_nonpos_logGrowth",
+    "exists_pos_logGrowth_of_unbounded",
+    "log_eq_sum_logGrowth",
+    "bounded_of_bounded_sum_logGrowth",
+    "unbounded_sum_of_unbounded",
+    "contLogGrowth_integral",
+    "continuous_content_bounded",
+    "boundedOrientation_orientation_sign",
+    "boundedOrientation_ratio_sign",
+    "boundedOrientation_geometricOrbit_mem",
+    "boundedOrientation_geometricOrbit_strictMono",
+    "boundedOrientation_geometricOrbit_strictAnti",
+    "boundedOrientation_geometricOrbit_center",
+    "DissipativeFlow",
+    "logGrowth_deriv",
+    "logGrowth_nonpos_of_dissipative",
+    "content_le_initial_of_dissipative",
+    "OrientationBoundedness.orientation_decides_boundedness"
+   ],
+   "gaps": [],
+   "cards": [
+    "C8"
+   ],
+   "artifact": "`OrientationLaw` (`logGrowth_geometric`, `sign_match`, `orientation_reads_wall`, `logGrowth_of_ratio_eq`, `logGrowth_pos_iff`, `bounded_of_nonpos_logGrowth`, `exists_pos_logGrowth_of_unbounded`, `log_eq_sum_logGrowth`, `bounded_of_bounded_sum_logGrowth`, `unbounded_sum_of_unbounded`, `contLogGrowth_integral`, `continuous_content_bounded`, `boundedOrientation_orientation_sign`, `boundedOrientation_ratio_sign`, `boundedOrientation_geometricOrbit_mem`, `boundedOrientation_geometricOrbit_strictMono`, `boundedOrientation_geometricOrbit_strictAnti`, `boundedOrientation_geometricOrbit_center`); `DissipativeFlow` (`logGrowth_deriv`, `logGrowth_nonpos_of_dissipative`, `content_le_initial_of_dissipative`); `OrientationBoundedness.orientation_decides_boundedness`; `MarginCrossing`; `FirstCrossing`",
+   "title": "Empirical + Formal"
+  },
+  {
+   "id": "C8-open",
+   "label": "C8-open",
+   "kind": "card",
+   "category": "card",
+   "status": "open",
+   "depth": 6,
+   "tier": "",
+   "ndecls": 19,
+   "decls": [
+    "OrientationLaw",
+    "contLogGrowth_integral",
+    "continuous_content_bounded",
+    "logGrowth_geometric",
+    "log_eq_sum_logGrowth",
+    "bounded_of_bounded_sum_logGrowth",
+    "unbounded_sum_of_unbounded",
+    "RegularityReduction",
+    "regularity_iff_integral_bounded",
+    "regularity_reduced_to_integral",
+    "integral_le_of_content_le",
+    "integral_unbounded_of_content_unbounded",
+    "content_le_exp_of_integral_le",
+    "SerrinSufficiency",
+    "serrinMargin_pos_iff",
+    "serrinMargin_line",
+    "serrinMargin_eq_neg_ladder",
+    "content_le_of_growth_le_weight",
+    "bounded_on_of_serrinAction"
+   ],
+   "gaps": [],
+   "cards": [
+    "C8-open"
+   ],
+   "artifact": "`OrientationLaw` (`contLogGrowth_integral`, `continuous_content_bounded`, `logGrowth_geometric`, `log_eq_sum_logGrowth`, `bounded_of_bounded_sum_logGrowth`, `unbounded_sum_of_unbounded`); `RegularityReduction` (`regularity_iff_integral_bounded`, `regularity_reduced_to_integral`, `integral_le_of_content_le`, `integral_unbounded_of_content_unbounded`, `content_le_exp_of_integral_le`); `SerrinSufficiency` (`serrinMargin_pos_iff`, `serrinMargin_line`, `serrinMargin_eq_neg_ladder`, `content_le_of_growth_le_weight`, `bounded_on_of_serrinAction`)",
+   "title": "Conjecture/Open"
+  },
+  {
+   "id": "C9",
+   "label": "C9",
+   "kind": "card",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 4,
+   "tier": "",
+   "ndecls": 35,
+   "decls": [
+    "OrientationBoundedness",
+    "geometric_bounded_iff",
+    "orientation_decides_boundedness",
+    "repelling_iff_unbounded",
+    "boundedOrientation_floor",
+    "boundedOrientation_midpoint",
+    "boundedOrientation_ceiling",
+    "boundedOrientation_floor_midpoint_ceiling",
+    "boundedOrientation_antisymm",
+    "boundedOrientation_strictMonoOn",
+    "boundedOrientation_sign",
+    "boundedOrientation_reads_the_wall",
+    "boundedOrientation_eq_tanh",
+    "boundedOrientation_pow",
+    "boundedOrientation_mul",
+    "boundedOrientation_right_inv",
+    "boundedOrientation_left_inv",
+    "boundedOrientation_image",
+    "boundedOrientation_surjOn",
+    "boundedOrientation_bijOn",
+    "boundedOrientationScale",
+    "boundedOrientationScale_mem",
+    "boundedOrientationScale_center",
+    "boundedOrientationScale_half"
+   ],
+   "gaps": [],
+   "cards": [
+    "C9"
+   ],
+   "artifact": "`OrientationBoundedness` (`geometric_bounded_iff`, `orientation_decides_boundedness`, `repelling_iff_unbounded`, `boundedOrientation_floor`, `boundedOrientation_midpoint`, `boundedOrientation_ceiling`, `boundedOrientation_floor_midpoint_ceiling`, `boundedOrientation_antisymm`, `boundedOrientation_strictMonoOn`, `boundedOrientation_sign`, `boundedOrientation_reads_the_wall`, `boundedOrientation_eq_tanh`, `boundedOrientation_pow`, `boundedOrientation_mul`, `boundedOrientation_right_inv`, `boundedOrientation_left_inv`, `boundedOrientation_image`, `boundedOrientation_surjOn`, `boundedOrientation_bijOn`, `boundedOrientationScale`, `boundedOrientationScale_mem`, `boundedOrientationScale_center`, `boundedOrientationScale_half`, `boundedOrientationScale_mul`, `tanh_eq_exp`, `boundedOrientation_classification`, `boundedOrientation_classification_normalized`); `OrientationLaw` (`squareOrientation`, `squareOrientation_center`, `squareOrientation_mem`, `squareOrientation_strictMonoOn`, `squareOrientation_antisym`, `squareOrientation_not_scalar_multiple_of_boundedOrientation`)",
+   "title": "Formal"
+  },
+  {
+   "id": "C10",
+   "label": "C10",
+   "kind": "card",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 4,
+   "tier": "",
+   "ndecls": 6,
+   "decls": [
+    "TheoryOfEverything",
+    "theoryOfEverything",
+    "twoNumbersClose",
+    "order_sets_rung",
+    "orientation_sets_side",
+    "method_and_margin_barriers"
+   ],
+   "gaps": [],
+   "cards": [
+    "C10"
+   ],
+   "artifact": "`TheoryOfEverything` (`theoryOfEverything`, `twoNumbersClose`, `order_sets_rung`, `orientation_sets_side`, `method_and_margin_barriers`)",
+   "title": "Formal"
+  },
+  {
+   "id": "C11",
+   "label": "C11",
+   "kind": "card",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 2,
+   "tier": "",
+   "ndecls": 3,
+   "decls": [
+    "EmergentTime",
+    "transfer_conserves_total",
+    "state_determined_by_count"
+   ],
+   "gaps": [],
+   "cards": [
+    "C11"
+   ],
+   "artifact": "`EmergentTime` (`transfer_conserves_total`, `state_determined_by_count`)",
+   "title": "Formal"
+  },
+  {
+   "id": "C12",
+   "label": "C12",
+   "kind": "card",
+   "category": "card",
+   "status": "open",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 5,
+   "decls": [
+    "LogicBarrier",
+    "lawvere_fixedpoint",
+    "no_surjective_of_no_fixedpoint",
+    "no_surjective_predicates",
+    "diagonal_not_mem_range"
+   ],
+   "gaps": [],
+   "cards": [
+    "C12"
+   ],
+   "artifact": "`LogicBarrier` (`lawvere_fixedpoint`, `no_surjective_of_no_fixedpoint`, `no_surjective_predicates`, `diagonal_not_mem_range`)",
+   "title": "Formal / Interpretive"
+  },
+  {
+   "id": "C13",
+   "label": "C13",
+   "kind": "card",
+   "category": "card",
+   "status": "open",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 8,
+   "decls": [
+    "ZeroLink",
+    "empty_unique_arrow",
+    "empty_isInitial",
+    "unit_unique_arrow",
+    "unit_isTerminal",
+    "empty_classified_initial",
+    "unit_classified_terminal",
+    "zero_links_all"
+   ],
+   "gaps": [],
+   "cards": [
+    "C13"
+   ],
+   "artifact": "`ZeroLink` (`empty_unique_arrow`, `empty_isInitial`, `unit_unique_arrow`, `unit_isTerminal`, `empty_classified_initial`, `unit_classified_terminal`, `zero_links_all`)",
+   "title": "Formal (structural)"
+  },
+  {
+   "id": "C14",
+   "label": "C14",
+   "kind": "card",
+   "category": "card",
+   "status": "open",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 10,
+   "decls": [
+    "ZeroObject",
+    "initial_link",
+    "terminal_link",
+    "zero_isInitial",
+    "zero_isTerminal",
+    "zero_links_both_ways",
+    "zero_unique_up_to_iso",
+    "modules_haveZeroObject",
+    "modules_exists_zeroObject",
+    "modules_zero_links"
+   ],
+   "gaps": [],
+   "cards": [
+    "C14"
+   ],
+   "artifact": "`ZeroObject` (`initial_link`, `terminal_link`, `zero_isInitial`, `zero_isTerminal`, `zero_links_both_ways`, `zero_unique_up_to_iso`, `modules_haveZeroObject`, `modules_exists_zeroObject`, `modules_zero_links`)",
+   "title": "Formal (structural / categorical)"
+  },
+  {
+   "id": "C15",
+   "label": "C15",
+   "kind": "card",
+   "category": "card",
+   "status": "open",
+   "depth": 1,
+   "tier": "",
+   "ndecls": 8,
+   "decls": [
+    "RemovableValue",
+    "IsRemovableValue",
+    "removable_value_unique",
+    "existsUnique_iff_exists_and_unique",
+    "extension_unique",
+    "removable_exists_unique",
+    "removable_value_bridge",
+    "initial_arrow_schema"
+   ],
+   "gaps": [],
+   "cards": [
+    "C15"
+   ],
+   "artifact": "`RemovableValue` (`IsRemovableValue`, `removable_value_unique`, `existsUnique_iff_exists_and_unique`, `extension_unique`, `removable_exists_unique`, `removable_value_bridge`, `initial_arrow_schema`)",
+   "title": "Formal (analytic ↔ categorical schema)"
+  },
+  {
+   "id": "C16",
+   "label": "C16",
+   "kind": "card",
+   "category": "card",
+   "status": "open",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 12,
+   "decls": [
+    "VanishOrder",
+    "VanishesToOrder",
+    "divideOut",
+    "vanishes_zero",
+    "vanishes_succ_imp",
+    "vanishes_shift",
+    "HasGrade",
+    "hasGrade_canonical",
+    "hasGrade_shift",
+    "vanishes_antitone",
+    "grade_unique",
+    "order_is_graded"
+   ],
+   "gaps": [],
+   "cards": [
+    "C16"
+   ],
+   "artifact": "`VanishOrder` (`VanishesToOrder`, `divideOut`, `vanishes_zero`, `vanishes_succ_imp`, `vanishes_shift`, `HasGrade`, `hasGrade_canonical`, `hasGrade_shift`, `vanishes_antitone`, `grade_unique`, `order_is_graded`)",
+   "title": "Formal (graded index / valuation)"
+  },
+  {
+   "id": "C17",
+   "label": "C17",
+   "kind": "card",
+   "category": "card",
+   "status": "open",
+   "depth": 2,
+   "tier": "",
+   "ndecls": 6,
+   "decls": [
+    "ZeroProbe",
+    "ProbeValue",
+    "probe_identity",
+    "probe_self",
+    "probe_value_unique",
+    "probe_is_removable"
+   ],
+   "gaps": [],
+   "cards": [
+    "C17"
+   ],
+   "artifact": "`ZeroProbe` (`ProbeValue`, `probe_identity`, `probe_self`, `probe_value_unique`, `probe_is_removable`)",
+   "title": "Formal (analytic mechanism: Probe)"
+  },
+  {
+   "id": "C18",
+   "label": "C18",
+   "kind": "card",
+   "category": "card",
+   "status": "open",
+   "depth": 1,
+   "tier": "",
+   "ndecls": 10,
+   "decls": [
+    "ZeroValuation",
+    "HasOrder",
+    "hasOrder_one",
+    "hasOrder_zero_iff",
+    "hasOrder_mul",
+    "hasOrder_pow",
+    "hasOrder_canonical",
+    "hasOrder_lt_imp_not",
+    "hasOrder_unique",
+    "order_is_valuation"
+   ],
+   "gaps": [],
+   "cards": [
+    "C18"
+   ],
+   "artifact": "`ZeroValuation` (`HasOrder`, `hasOrder_one`, `hasOrder_zero_iff`, `hasOrder_mul`, `hasOrder_pow`, `hasOrder_canonical`, `hasOrder_lt_imp_not`, `hasOrder_unique`, `order_is_valuation`)",
+   "title": "Formal (analytic mechanism: Vanishing Rate)"
+  },
+  {
+   "id": "C19",
+   "label": "C19",
+   "kind": "card",
+   "category": "card",
+   "status": "open",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 9,
+   "decls": [
+    "ZeroIndex",
+    "Index",
+    "index_one",
+    "index_additive",
+    "index_pow",
+    "index_X_sub_C_self",
+    "index_pow_self",
+    "index_canonical",
+    "index_is_multiplicity"
+   ],
+   "gaps": [],
+   "cards": [
+    "C19"
+   ],
+   "artifact": "`ZeroIndex` (`Index`, `index_one`, `index_additive`, `index_pow`, `index_X_sub_C_self`, `index_pow_self`, `index_canonical`, `index_is_multiplicity`)",
+   "title": "Formal (algebraic mechanism: Index)"
+  },
+  {
+   "id": "C20",
+   "label": "C20",
+   "kind": "card",
+   "category": "card",
+   "status": "open",
+   "depth": 3,
+   "tier": "",
+   "ndecls": 8,
+   "decls": [
+    "ZeroMechanisms",
+    "abs_div_self_tendsto_right",
+    "abs_div_self_tendsto_left",
+    "abs_div_self_no_limit",
+    "abs_vanish",
+    "id_vanish",
+    "anti_class_nonempty",
+    "mechanisms_close"
+   ],
+   "gaps": [],
+   "cards": [
+    "C20"
+   ],
+   "artifact": "`ZeroMechanisms` (`abs_div_self_tendsto_right`, `abs_div_self_tendsto_left`, `abs_div_self_no_limit`, `abs_vanish`, `id_vanish`, `anti_class_nonempty`, `mechanisms_close`)",
+   "title": "Formal (analytic mechanism / closure)"
+  },
+  {
+   "id": "C21",
+   "label": "C21",
+   "kind": "card",
+   "category": "card",
+   "status": "open",
+   "depth": 2,
+   "tier": "",
+   "ndecls": 7,
+   "decls": [
+    "RemovableComplexBridge",
+    "IsRemovableValueAt",
+    "removable_value_exists",
+    "removable_value_unique",
+    "exists_unique_removable_value",
+    "limUnder_eq_of_isRemovableValue",
+    "canonical_zero_over_zero"
+   ],
+   "gaps": [],
+   "cards": [
+    "C21"
+   ],
+   "artifact": "`RemovableComplexBridge` (`IsRemovableValueAt`, `removable_value_exists`, `removable_value_unique`, `exists_unique_removable_value`, `limUnder_eq_of_isRemovableValue`, `canonical_zero_over_zero`)",
+   "title": "Formal (analytic bridge / named theorem)"
+  },
+  {
+   "id": "C22",
+   "label": "C22",
+   "kind": "card",
+   "category": "card",
+   "status": "open",
+   "depth": 3,
+   "tier": "",
+   "ndecls": 6,
+   "decls": [
+    "LiouvilleBridge",
+    "bounded_entire_const",
+    "bounded_entire_apply_eq",
+    "bounded_entire_value_unique",
+    "eq_zero_of_bounded_of_eq_zero",
+    "bounded_at_infinity_const"
+   ],
+   "gaps": [],
+   "cards": [
+    "C22"
+   ],
+   "artifact": "`LiouvilleBridge` (`bounded_entire_const`, `bounded_entire_apply_eq`, `bounded_entire_value_unique`, `eq_zero_of_bounded_of_eq_zero`, `bounded_at_infinity_const`)",
+   "title": "Formal (analytic bridge / named theorem)"
+  },
+  {
+   "id": "C23",
+   "label": "C23",
+   "kind": "card",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 14,
+   "decls": [
+    "SerrinLadder",
+    "gnExponent",
+    "gnExponent_six",
+    "gnExponent_two",
+    "gnExponent_three_half",
+    "gnExponent_ceiling_chain",
+    "serrinQ",
+    "serrinQ_six",
+    "serrinQ_line",
+    "gnExponent_le_one_iff",
+    "criticalPower_six_four",
+    "oneExtraPower",
+    "criticalPowerIdentity",
+    "powerClosesCriticalAtSix"
+   ],
+   "gaps": [],
+   "cards": [
+    "C23"
+   ],
+   "artifact": "`SerrinLadder` (`gnExponent`, `gnExponent_six`, `gnExponent_two`, `gnExponent_three_half`, `gnExponent_ceiling_chain`, `serrinQ`, `serrinQ_six`, `serrinQ_line`, `gnExponent_le_one_iff`, `criticalPower_six_four`, `oneExtraPower`, `criticalPowerIdentity`, `powerClosesCriticalAtSix`)",
+   "title": "Formal"
+  },
+  {
+   "id": "C24",
+   "label": "C24",
+   "kind": "card",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 2,
+   "tier": "",
+   "ndecls": 14,
+   "decls": [
+    "GreatAttractor",
+    "fixedPoint_distanceRatio",
+    "fixedPoint_repels",
+    "fixedPoint_attracts",
+    "orientation_trichotomy",
+    "fixedPoint_logRate",
+    "fixedPoint_logSign",
+    "orientationDiscriminator",
+    "criticalSmoothness",
+    "scalingWeight",
+    "criticalSmoothness_one",
+    "criticalSmoothness_shift_order",
+    "criticalSmoothness_antitone_order",
+    "scalingWeight_zero_iff"
+   ],
+   "gaps": [],
+   "cards": [
+    "C24"
+   ],
+   "artifact": "`GreatAttractor` (`fixedPoint_distanceRatio`, `fixedPoint_repels`, `fixedPoint_attracts`, `orientation_trichotomy`, `fixedPoint_logRate`, `fixedPoint_logSign`, `orientationDiscriminator`, `criticalSmoothness`, `scalingWeight`, `criticalSmoothness_one`, `criticalSmoothness_shift_order`, `criticalSmoothness_antitone_order`, `scalingWeight_zero_iff`)",
+   "title": "Formal"
+  },
+  {
+   "id": "C25",
+   "label": "C25",
+   "kind": "card",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 5,
+   "decls": [
+    "ForceNetwork",
+    "weightedValueLeMax",
+    "leWeightedValueMin",
+    "networkValueBetween",
+    "inertiaDampsChange"
+   ],
+   "gaps": [],
+   "cards": [
+    "C25"
+   ],
+   "artifact": "`ForceNetwork` (`weightedValueLeMax`, `leWeightedValueMin`, `networkValueBetween`, `inertiaDampsChange`)",
+   "title": "Formal"
+  },
+  {
+   "id": "C26",
+   "label": "C26",
+   "kind": "card",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 5,
+   "decls": [
+    "MixtureGrowth",
+    "normMixtureLeSum",
+    "mixtureRatioBetween",
+    "weightedSqBetween",
+    "spikeCannotLowerRatio"
+   ],
+   "gaps": [],
+   "cards": [
+    "C26"
+   ],
+   "artifact": "`MixtureGrowth` (`normMixtureLeSum`, `mixtureRatioBetween`, `weightedSqBetween`, `spikeCannotLowerRatio`)",
+   "title": "Formal"
+  },
+  {
+   "id": "C27",
+   "label": "C27",
+   "kind": "card",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 4,
+   "decls": [
+    "OnsagerCriterion",
+    "weighted_sum_le",
+    "spike_of_excess",
+    "excess_majorizes"
+   ],
+   "gaps": [],
+   "cards": [
+    "C27"
+   ],
+   "artifact": "`OnsagerCriterion` (`weighted_sum_le`, `spike_of_excess`, `excess_majorizes`)",
+   "title": "Formal"
+  },
+  {
+   "id": "C28",
+   "label": "C28",
+   "kind": "card",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 3,
+   "decls": [
+    "ContinuationCriterion",
+    "exists_upto_of_bounded",
+    "unbounded_of_first_failure"
+   ],
+   "gaps": [],
+   "cards": [
+    "C28"
+   ],
+   "artifact": "`ContinuationCriterion` (`exists_upto_of_bounded`, `unbounded_of_first_failure`)",
+   "title": "Formal"
+  },
+  {
+   "id": "C29",
+   "label": "C29",
+   "kind": "card",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 4,
+   "decls": [
+    "StableBounded",
+    "attracting_orbit_converges",
+    "attracting_orbit_bounded",
+    "monotone_bounded"
+   ],
+   "gaps": [],
+   "cards": [
+    "C29"
+   ],
+   "artifact": "`StableBounded` (`attracting_orbit_converges`, `attracting_orbit_bounded`, `monotone_bounded`)",
+   "title": "Formal"
+  },
+  {
+   "id": "C30",
+   "label": "C30",
+   "kind": "card",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "",
+   "ndecls": 3,
+   "decls": [
+    "SufficiencyLoop",
+    "global_exists_of_mono",
+    "quadratic_criterion_unavailable"
+   ],
+   "gaps": [],
+   "cards": [
+    "C30"
+   ],
+   "artifact": "`SufficiencyLoop` (`global_exists_of_mono`, `quadratic_criterion_unavailable`)",
+   "title": "Formal"
+  },
+  {
+   "id": "C31",
+   "label": "C31",
+   "kind": "card",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 21,
+   "decls": [
+    "SelfSimilarExponents",
+    "BalanceSystem",
+    "forcedP",
+    "forcedQ",
+    "forcedS",
+    "forcedGamma",
+    "forcedExponentsSatisfy",
+    "gammaForced",
+    "sForced",
+    "qForcedInPoisson",
+    "pForcedFromOmegaProduction",
+    "forcedExponentsUnique",
+    "secondOrderPower",
+    "secondOrderPowerPrefactorIndependent",
+    "advectionTermPower",
+    "advectionTermPowerKappaIndependent",
+    "uzCoefficientPowerNIndependent",
+    "kappaMonotone",
+    "dynamicalNMonotoneStiffening_powersForced",
+    "profile_existence_is_open",
+    "type_ii_naming_not_certified"
+   ],
+   "gaps": [],
+   "cards": [
+    "C31"
+   ],
+   "artifact": "`SelfSimilarExponents` (`BalanceSystem`, `forcedP`, `forcedQ`, `forcedS`, `forcedGamma`, `forcedExponentsSatisfy`, `gammaForced`, `sForced`, `qForcedInPoisson`, `pForcedFromOmegaProduction`, `forcedExponentsUnique`, `secondOrderPower`, `secondOrderPowerPrefactorIndependent`, `advectionTermPower`, `advectionTermPowerKappaIndependent`, `uzCoefficientPowerNIndependent`, `kappaMonotone`, `dynamicalNMonotoneStiffening_powersForced`, `profile_existence_is_open`, `type_ii_naming_not_certified`)",
+   "title": "Formal"
+  },
+  {
+   "id": "C32",
+   "label": "C32",
+   "kind": "card",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 6,
+   "decls": [
+    "ZeroFixedPoint",
+    "fixedPoint_selfSlope",
+    "identity_selfSlope",
+    "zero_count_removable",
+    "zero_count_under",
+    "zero_count_over"
+   ],
+   "gaps": [],
+   "cards": [
+    "C32"
+   ],
+   "artifact": "`ZeroFixedPoint` (`fixedPoint_selfSlope`, `identity_selfSlope`, `zero_count_removable`, `zero_count_under`, `zero_count_over`)",
+   "title": "Formal"
+  },
+  {
+   "id": "C33",
+   "label": "C33",
+   "kind": "card",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 3,
+   "tier": "",
+   "ndecls": 6,
+   "decls": [
+    "OnePattern",
+    "criticalCurve_through_ladder",
+    "ladder_is_order_one",
+    "theta_add_criticalCurve",
+    "theta_add_criticalCurve_one",
+    "scalingWeight_vanishes_family"
+   ],
+   "gaps": [],
+   "cards": [
+    "C33"
+   ],
+   "artifact": "`OnePattern` (`criticalCurve_through_ladder`, `ladder_is_order_one`, `theta_add_criticalCurve`, `theta_add_criticalCurve_one`, `scalingWeight_vanishes_family`)",
+   "title": "Formal"
+  },
+  {
+   "id": "C34",
+   "label": "C34",
+   "kind": "card",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 9,
+   "decls": [
+    "NoetherDiscrete",
+    "charge_eq_momentum_sub",
+    "charge_self",
+    "charge_translation_invariant",
+    "momentum_from_rate",
+    "momentum_conserved",
+    "momentumAt_conserved",
+    "momentumAt_eq_initial",
+    "conservationLaw"
+   ],
+   "gaps": [],
+   "cards": [
+    "C34"
+   ],
+   "artifact": "`NoetherDiscrete` (`charge_eq_momentum_sub`, `charge_self`, `charge_translation_invariant`, `momentum_from_rate`, `momentum_conserved`, `momentumAt_conserved`, `momentumAt_eq_initial`, `conservationLaw`)",
+   "title": "Formal"
+  },
+  {
+   "id": "C35",
+   "label": "C35",
+   "kind": "card",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "",
+   "ndecls": 9,
+   "decls": [
+    "UniverseGrowth",
+    "chargeOn_eq_momentumOn_sub",
+    "momentumOn_grow",
+    "momentumOn_grow_eq",
+    "chargeOn_grow_eq",
+    "universeGrowth_decomp",
+    "universeGrowth_conserves",
+    "chargeOn_universeGrowth_conserves",
+    "momentumOn_univ"
+   ],
+   "gaps": [],
+   "cards": [
+    "C35"
+   ],
+   "artifact": "`UniverseGrowth` (`chargeOn_eq_momentumOn_sub`, `momentumOn_grow`, `momentumOn_grow_eq`, `chargeOn_grow_eq`, `universeGrowth_decomp`, `universeGrowth_conserves`, `chargeOn_universeGrowth_conserves`, `momentumOn_univ`)",
+   "title": "Formal"
+  },
+  {
+   "id": "C36",
+   "label": "C36",
+   "kind": "card",
+   "category": "card",
+   "status": "machine-checked",
+   "depth": 0,
+   "tier": "",
+   "ndecls": 7,
+   "decls": [
+    "CriticalAmplitude",
+    "amplitudeRatio_eq",
+    "orderParameter_at_critical",
+    "widom_relation",
+    "rushbrooke_relation",
+    "josephson_relation",
+    "fisher_relation"
+   ],
+   "gaps": [],
+   "cards": [
+    "C36"
+   ],
+   "artifact": "`CriticalAmplitude` (`amplitudeRatio_eq`, `orderParameter_at_critical`, `widom_relation`, `rushbrooke_relation`, `josephson_relation`, `fisher_relation`)",
+   "title": "Formal"
+  }
+ ],
+ "edges": [
+  [
+   "Crease",
+   "ParabolaVertex"
+  ],
+  [
+   "CriticalLadder",
+   "SerrinLadder"
+  ],
+  [
+   "DissipativeFlow",
+   "OrientationLaw"
+  ],
+  [
+   "EmergentTime",
+   "CriticalLadder"
+  ],
+  [
+   "EssentialIdentity",
+   "NoUniversalResolve"
+  ],
+  [
+   "EssentialIdentity",
+   "RemovableValue"
+  ],
+  [
+   "ExplicitClaims",
+   "CriticalLadder"
+  ],
+  [
+   "FrontierCensus",
+   "ErdosMoser"
+  ],
+  [
+   "FrontierCensus",
+   "Factorization"
+  ],
+  [
+   "FrontierCensus",
+   "Giuga"
+  ],
+  [
+   "FrontierCensus",
+   "Lehmer"
+  ],
+  [
+   "FrontierCensus",
+   "PerfectNumbers"
+  ],
+  [
+   "FrontierCensus",
+   "Wieferich"
+  ],
+  [
+   "Giuga",
+   "Factorization"
+  ],
+  [
+   "GreatAttractor",
+   "CriticalLadder"
+  ],
+  [
+   "GreatAttractor",
+   "ZeroFixedPoint"
+  ],
+  [
+   "InformationBridge",
+   "OrientationLaw"
+  ],
+  [
+   "InformationMixture",
+   "InformationBridge"
+  ],
+  [
+   "InformationPhi",
+   "InformationBridge"
+  ],
+  [
+   "InformationPhi",
+   "OrientationLaw"
+  ],
+  [
+   "InformationPhi",
+   "RemovableValue"
+  ],
+  [
+   "InformationTime",
+   "EmergentTime"
+  ],
+  [
+   "InformationTime",
+   "InformationPhi"
+  ],
+  [
+   "InformationTime",
+   "OrientationLaw"
+  ],
+  [
+   "LiouvilleBridge",
+   "RemovableComplexBridge"
+  ],
+  [
+   "Lehmer",
+   "Factorization"
+  ],
+  [
+   "MillenniumBridge",
+   "EcaIsometry"
+  ],
+  [
+   "NoUniversalResolve",
+   "RemovableValue"
+  ],
+  [
+   "OnePattern",
+   "GreatAttractor"
+  ],
+  [
+   "OrientationBoundedness",
+   "GreatAttractor"
+  ],
+  [
+   "OrientationLaw",
+   "OrientationBoundedness"
+  ],
+  [
+   "ParabolaVertex",
+   "GreatAttractor"
+  ],
+  [
+   "ParabolaVertex",
+   "ZeroZero"
+  ],
+  [
+   "PerfectNumbers",
+   "FiniteScan"
+  ],
+  [
+   "PrimeGaps",
+   "FiniteScan"
+  ],
+  [
+   "QuantitativeContinuation",
+   "ContinuationCriterion"
+  ],
+  [
+   "QuantitativeContinuation",
+   "EnstrophyBarrier"
+  ],
+  [
+   "RH.NewmanFlow",
+   "RH.Hankel"
+  ],
+  [
+   "RegularityReduction",
+   "OrientationLaw"
+  ],
+  [
+   "RemovableComplexBridge",
+   "RemovableValue"
+  ],
+  [
+   "RemovableValue",
+   "Removable"
+  ],
+  [
+   "RemovableValue",
+   "ZeroLink"
+  ],
+  [
+   "SerrinSufficiency",
+   "CriticalLadder"
+  ],
+  [
+   "SerrinSufficiency",
+   "RegularityReduction"
+  ],
+  [
+   "SerrinSufficiency",
+   "SerrinLadder"
+  ],
+  [
+   "ShadowZeroZero",
+   "ZeroZero"
+  ],
+  [
+   "StaticUncovered",
+   "EssentialIdentity"
+  ],
+  [
+   "SufficiencyLoop",
+   "ContinuationCriterion"
+  ],
+  [
+   "SufficiencyLoop",
+   "EnstrophyBarrier"
+  ],
+  [
+   "UniverseGrowth",
+   "NoetherDiscrete"
+  ],
+  [
+   "TheoryOfEverything",
+   "ContinuationCriterion"
+  ],
+  [
+   "TheoryOfEverything",
+   "CriticalLadder"
+  ],
+  [
+   "TheoryOfEverything",
+   "EnstrophyBarrier"
+  ],
+  [
+   "TheoryOfEverything",
+   "FirstCrossing"
+  ],
+  [
+   "TheoryOfEverything",
+   "GreatAttractor"
+  ],
+  [
+   "TheoryOfEverything",
+   "LogicBarrier"
+  ],
+  [
+   "TheoryOfEverything",
+   "MarginCrossing"
+  ],
+  [
+   "TheoryOfEverything",
+   "OnePattern"
+  ],
+  [
+   "TheoryOfEverything",
+   "OnsagerCriterion"
+  ],
+  [
+   "TheoryOfEverything",
+   "OrientationBoundedness"
+  ],
+  [
+   "TheoryOfEverything",
+   "QuantitativeContinuation"
+  ],
+  [
+   "TheoryOfEverything",
+   "StableBounded"
+  ],
+  [
+   "TheoryOfEverything",
+   "SufficiencyLoop"
+  ],
+  [
+   "Wilson",
+   "Wieferich"
+  ],
+  [
+   "ZeroMechanisms",
+   "ZeroIndex"
+  ],
+  [
+   "ZeroMechanisms",
+   "ZeroProbe"
+  ],
+  [
+   "ZeroMechanisms",
+   "ZeroValuation"
+  ],
+  [
+   "ZeroProbe",
+   "RemovableValue"
+  ],
+  [
+   "ZeroValuation",
+   "VanishOrder"
+  ]
+ ],
+ "dims": {
+  "category": [
+   "card",
+   "millennium-cert",
+   "rh-research",
+   "number-theory-cert",
+   "fluid-diagnostic",
+   "numerical-cert",
+   "cosmology",
+   "core-scaffold",
+   "information-bridge"
+  ],
+  "status": [
+   "machine-checked",
+   "partial",
+   "no-go",
+   "citation-only",
+   "empirical",
+   "open"
+  ],
+  "kind": [
+   "module",
+   "gap",
+   "card"
+  ],
+  "tier": [
+   "A",
+   "B",
+   "C"
+  ]
+ },
+ "counts": {
+  "modules": 92,
+  "gaps": 39,
+  "cards": 37,
+  "edges": 69,
+  "items": 168
+ }
+}

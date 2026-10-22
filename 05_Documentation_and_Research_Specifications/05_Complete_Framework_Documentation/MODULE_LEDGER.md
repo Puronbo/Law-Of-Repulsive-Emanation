@@ -127,6 +127,7 @@ imported by the root, fails the checker.
 
 ## Coverage
 
-- **Modules on disk:** 84 (all imported by `PunoCalculus.lean`).
+- **Modules on disk:** 92 (all imported by `PunoCalculus.lean`; this count includes the
+  namespaced sub-namespace modules such as `RH.Hankel` and `Cosmology.OriginWindow`).
 - **Card-carrying modules (`card`):** 38.
-- **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold / information-bridge):** 46.
+- **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold / information-bridge):** 54.

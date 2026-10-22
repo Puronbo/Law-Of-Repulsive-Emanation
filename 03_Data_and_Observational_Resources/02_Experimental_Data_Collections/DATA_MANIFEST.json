@@ -3,9 +3,9 @@
   "note": "Machine-readable artifact -> script map so that a fresh clone can recreate its verification standards. See regen_data.py.",
   "persistence_rule": "Generated artifacts are not committed; an artifact persists only if listed under 'tracked' or regenerable from 'scripts'. Anything under 'unreproducible' is a real loss and must be recovered by hand.",
   "counts": {
-    "tracked": 301,
-    "recreatable": 151,
-    "unreproducible": 108
+    "tracked": 320,
+    "recreatable": 170,
+    "unreproducible": 112
   },
   "unreproducible": [
     "HT-RUN-001.json",
@@ -15,6 +15,7 @@
     "black_hole_information.json",
     "boltzmann_h.json",
     "bridge3_cc_entropy_confluence.json",
+    "burgers_resolution_study_nu0.02.json",
     "carnot_engine.json",
     "chaos_theory.json",
     "cmb_formulation.json",
@@ -46,9 +47,6 @@
     "f_r_pole_extensions.json",
     "field_coverage_register.json",
     "financial_0over0.json",
-    "flow_pole_regulator_robust.json",
-    "flow_pole_scroll.json",
-    "fluctuation_dissipation.json",
     "fold_visual_data.json",
     "fractal_geometry.json",
     "free_will.json",
@@ -77,6 +75,13 @@
     "no_local_fingerprint.json",
     "noether_data.json",
     "noether_symmetry.json",
+    "ns_onsager_flux_res_nu0.05.json",
+    "ns_onsager_flux_res_nu0.1.json",
+    "ns_resolution_study_nu0.05.json",
+    "ns_resolution_study_nu0.1.json",
+    "ns_resolution_study_nu0.1_T3p5_backup.json",
+    "ns_zero_order_robust_nu0.05.json",
+    "ns_zero_order_robust_nu0.1.json",
     "prime_data.json",
     "problem_of_evil.json",
     "progress.json",
@@ -114,13 +119,11 @@
     "users.json",
     "web_data.json",
     "winding_classifier.json",
-    "winding_phase_diagram.json",
     "zeta_zeros_analysis.json"
   ],
   "recreatable": [
     "acoustic_geometry.json",
     "acoustic_zero_flow_n6_data.json",
-    "ai_performable_professions_data.json",
     "air_sizing_data.json",
     "atiyah_singer_data.json",
     "audit_zero_to_riemann_zeta_data.json",
@@ -128,12 +131,13 @@
     "big_bang_origin.json",
     "boundary_removal.json",
     "brody_navier_stokes_data.json",
+    "burgers_zero_order.json",
     "c0_at_zeros_data.json",
     "c0_law_data.json",
     "c0_zero_locus_data.json",
     "calendar_universal_data.json",
     "chern_gauss_bonnet_data.json",
-    "chi_rho_vacuity_data.json",
+    "clm_zero_order.json",
     "cold_crawler.json",
     "combinatorics_0_over_0_data.json",
     "complex_constant_test_data.json",
@@ -151,6 +155,16 @@
     "euler_number_test_data.json",
     "extreme_amplitude_data.json",
     "first_cause.json",
+    "fractional_burgers_margin.json",
+    "fractional_burgers_margin_cache.json",
+    "fractional_burgers_margin_window512.json",
+    "fractional_clm_margin.json",
+    "fractional_clm_margin_cache.json",
+    "fractional_margin_resolution.json",
+    "fractional_margin_resolution_cache.json",
+    "fractional_margin_sweep.json",
+    "fractional_margin_universality.json",
+    "fractional_margin_window.json",
     "ft_depth_bins.json",
     "ft_ledger.json",
     "genesis_blowup.json",
@@ -199,15 +213,25 @@
     "knot_invariants_data.json",
     "law_certificates.json",
     "law_discovery_table.json",
-    "log_limits_0_over_0_data.json",
     "mandate_report_data.json",
-    "millennium_data.json",
     "modular_forms_data.json",
+    "multidimensional_map_data.json",
+    "ns2d_zero_order.json",
     "ns_cascade_gap1.json",
+    "ns_critical_integral.json",
+    "ns_force_network.json",
+    "ns_forced_intermittency.json",
     "ns_graph_verification.json",
+    "ns_onsager_flux.json",
+    "ns_profile_collapse.json",
     "ns_r3_proof_verification.json",
+    "ns_resolution_study.json",
+    "ns_spectral_slope.json",
+    "ns_spike_mixture.json",
+    "ns_zero_order.json",
     "nt_sums_0_over_0_data.json",
-    "origin_consistency_window_n7_data.json",
+    "orientation_vs_fractional_s.json",
+    "orientation_vs_invariant.json",
     "origin_matrix.json",
     "outward_cascade.json",
     "phase_boundary.json",
@@ -222,7 +246,6 @@
     "regulator_resolution_winding.json",
     "rh_conductor_ratio.json",
     "rh_li_convergence.json",
-    "rh_li_correct.json",
     "rh_li_exact.json",
     "rh_li_inequality.json",
     "rh_newman_flow_h1_data.json",
@@ -255,6 +278,7 @@
     "space_spin_data.json",
     "spectral_data.json",
     "spiral_mass_gap.json",
+    "stability_harness.json",
     "standby_efficiency_data.json",
     "supervision_verdict.json",
     "tilt_depths.json",
@@ -262,7 +286,6 @@
     "toomre_universal.json",
     "unfold_fold_price.json",
     "volume_coin.json",
-    "winding_transition_0_over_0.json",
     "ym_allloop_ds.json",
     "ym_constructive.json",
     "ym_fold_singularity.json",
@@ -275,6 +298,7 @@
     "abc_conjecture_0_over_0_data.json",
     "abc_conjecture_data.json",
     "aclass_detector.json",
+    "ai_performable_professions_data.json",
     "arakelov_grr_data.json",
     "arakelov_theory_data.json",
     "argument_principle_0_over_0_data.json",
@@ -287,6 +311,7 @@
     "bayes_theorem_0_over_0_data.json",
     "bazaar_hybrid_data.json",
     "bazaar_net_data.json",
+    "beal_certificate.json",
     "bekenstein_rerun_data.json",
     "birkhoff_average_0_over_0.json",
     "blowup_theorem_data.json",
@@ -316,6 +341,7 @@
     "char_walk_anti_0_over_0.json",
     "character_sums_0_over_0.json",
     "chebyshev_psi_0_over_0.json",
+    "chi_rho_vacuity_data.json",
     "circuit_nonlinear.json",
     "circuit_resonance.json",
     "climate_tipping_0over0.json",
@@ -353,6 +379,7 @@
     "eikonal_fold_data.json",
     "energy_enstrophy_coupling.json",
     "epoch_0d.json",
+    "erdos_moser_certificate.json",
     "euler_maclaurin_0_over_0_data.json",
     "euler_mascheroni_constant.json",
     "euler_product_0_over_0_data.json",
@@ -372,7 +399,10 @@
     "flow_hier_reg_scaled_data.json",
     "flow_hierarchical_data.json",
     "flow_incremental_data.json",
+    "flow_pole_regulator_robust.json",
+    "flow_pole_scroll.json",
     "flow_regularized_data.json",
+    "fluctuation_dissipation.json",
     "fold_golden_closure_data.json",
     "fold_ladder_phi_data.json",
     "fold_optimizer_data.json",
@@ -384,9 +414,11 @@
     "fta_0_over_0_data.json",
     "galois_discriminant_0_over_0.json",
     "gap_analysis_data.json",
+    "gap_prime_gaps_certificate.json",
     "gauss_bonnet_0_over_0_data.json",
     "gauss_circle_anti_0_over_0.json",
     "generating_function_singularity_0_over_0.json",
+    "giuga_certificate.json",
     "global_monotonicity.json",
     "goldbach_0_over0_data.json",
     "goldbach_density_0_over_0.json",
@@ -426,8 +458,10 @@
     "learn_curve_scale_data.json",
     "lefschetz_fixed_point_0_over_0_data.json",
     "legendre_0_over0_data.json",
+    "lehmer_totient_certificate.json",
     "llm_knowledge_packet.json",
     "log_corridor.json",
+    "log_limits_0_over_0_data.json",
     "logic_0_over_0_data.json",
     "lorenz_attractor_0_over_0_data.json",
     "manin_mumford_data.json",
@@ -441,6 +475,7 @@
     "mertens_psi_height_data.json",
     "mertens_sublinear_census_data.json",
     "metric_comparison_data.json",
+    "millennium_data.json",
     "mobius_function_0_over_0_data.json",
     "mobius_mertens_0_over_0.json",
     "montgomery_odlyzko_data.json",
@@ -457,6 +492,7 @@
     "ns_3d_millennium_data.json",
     "nth_root_of_n.json",
     "open_questions_data.json",
+    "origin_consistency_window_n7_data.json",
     "outward_cascade_extended.json",
     "p_np_clusters.json",
     "p_np_contour.json",
@@ -464,6 +500,7 @@
     "p_vs_np_0over0_data.json",
     "p_vs_np_re_l_u_data.json",
     "partition_asymptotics.json",
+    "perfect_numbers_certificate.json",
     "pgt_finite_l_data.json",
     "phi_scheduler_data.json",
     "photon_rubber_ball_data.json",
@@ -493,6 +530,7 @@
     "refuted_claims_probe_data.json",
     "retrace_boundary_data.json",
     "reverse_pair_gaps_data.json",
+    "rh_li_correct.json",
     "ricci_flow_neck_pinch_0_over_0.json",
     "riemann_decimal_perspective_data.json",
     "riemann_roch_0_over_0_data.json",
@@ -562,10 +600,14 @@
     "weil_explicit_0_over_0_data.json",
     "weyl_law_0_over_0_data.json",
     "wheeler_dewitt_selection_data.json",
+    "wieferich_certificate.json",
     "wigner_semicircle_0_over_0_data.json",
+    "winding_phase_diagram.json",
+    "winding_transition_0_over_0.json",
     "yang_mills_mass_gap_proof.json",
     "yang_mills_millennium_data.json",
     "yang_mills_running_coupling.json",
+    "zero_zero_family_0_over_0_data.json",
     "zeta_direct_probe_data.json",
     "zeta_functional_eq_0_over_0_data.json",
     "zeta_interlacing_certify_data.json",
@@ -597,8 +639,17 @@
     "origin_consistency_window_n7_data.json": [
       "02_Experimental_Implementations_and_Verification/01_Poincare_Universe_and_Cosmological_Models/origin_consistency_window_n7.py"
     ],
+    "abc_conjecture_data.json": [
+      "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/abc_conjecture_0_over_0.py"
+    ],
     "air_sizing_data.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/air_sizing.py"
+    ],
+    "arakelov_grr_data.json": [
+      "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/arakelov_grr_0_over_0.py"
+    ],
+    "arakelov_theory_data.json": [
+      "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/arakelov_theory_0_over_0.py"
     ],
     "argument_principle_0_over_0_data.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/argument_principle_0_over_0.py"
@@ -648,6 +699,9 @@
     "chi_rho_vacuity_data.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/chi_rho_vacuity_0_over_0.py"
     ],
+    "colmez_conjecture_data.json": [
+      "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/colmez_conjecture_0_over_0.py"
+    ],
     "combinatorics_0_over_0_data.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/combinatorics_0_over_0.py"
     ],
@@ -678,8 +732,14 @@
     "euler_totient_0_over_0.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/euler_totient_0_over_0.py"
     ],
+    "explicit_formula_data.json": [
+      "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/explicit_formula_0_over_0.py"
+    ],
     "exponential_rate_0_over_0.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/exponential_rate_0_over_0.py"
+    ],
+    "faltings_theorem_data.json": [
+      "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/faltings_theorem_0_over_0.py"
     ],
     "fermat_little_0_over_0_data.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/fermat_little_0_over_0.py"
@@ -732,6 +792,9 @@
     "grh_dirichlet_0_over_0_data.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/grh_dirichlet_0_over_0.py"
     ],
+    "gromov_non_squeezing_data.json": [
+      "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/gromov_non_squeezing_0_over_0.py"
+    ],
     "half_cosine_0_over_0.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/half_cosine_0_over_0.py"
     ],
@@ -744,6 +807,9 @@
     "ising_model_0_over_0_data.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/ising_model_0_over_0.py"
     ],
+    "iwasawa_main_conjecture_data.json": [
+      "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/iwasawa_main_conjecture_0_over_0.py"
+    ],
     "khintchine_0_over_0_data.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/khintchine_0_over_0.py"
     ],
@@ -752,6 +818,12 @@
     ],
     "knot_invariants_data.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/knot_invariants_0_over_0.py"
+    ],
+    "landau_function_0_over_0_data.json": [
+      "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/landau_function_0_over_0.py"
+    ],
+    "langlands_program_data.json": [
+      "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/langlands_program_0_over_0.py"
     ],
     "laplace_method_0_over_0_data.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/laplace_method_0_over_0.py"
@@ -764,6 +836,9 @@
     ],
     "lorenz_attractor_0_over_0_data.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/lorenz_attractor_0_over_0.py"
+    ],
+    "manin_mumford_data.json": [
+      "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/manin_mumford_0_over_0.py"
     ],
     "mertens_product_0_over_0.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/mertens_product_0_over_0.py"
@@ -779,6 +854,9 @@
     ],
     "modular_forms_data.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/modular_forms_0_over_0.py"
+    ],
+    "montgomery_odlyzko_data.json": [
+      "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/montgomery_odlyzko_0_over_0.py"
     ],
     "morse_theory_0_over_0_data.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/morse_theory_0_over_0.py"
@@ -797,6 +875,9 @@
     ],
     "noether_theorem_0_over_0_data.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/noether_theorem_0_over_0.py"
+    ],
+    "non_commutative_geometry_data.json": [
+      "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/non_commutative_geometry_0_over_0.py"
     ],
     "nt_sums_0_over_0_data.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/number_theory_sums_0_over_0.py"
@@ -864,6 +945,12 @@
     "sard_theorem_0_over_0_data.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/sard_theorem_0_over_0.py"
     ],
+    "sato_tate_data.json": [
+      "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/sato_tate_0_over_0.py"
+    ],
+    "schanuels_conjecture_data.json": [
+      "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/schanuels_conjecture_0_over_0.py"
+    ],
     "schanuel_0_over_0_data.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/schanuel_0_over_0.py"
     ],
@@ -875,6 +962,9 @@
     ],
     "shannon_entropy_0_over_0_data.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/shannon_entropy_0_over_0.py"
+    ],
+    "shimura_taniyama_data.json": [
+      "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/shimura_taniyama_0_over_0.py"
     ],
     "sinc_0_over_0.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/sinc_0_over_0.py"
@@ -891,8 +981,17 @@
     "taylor_third_0_over_0.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/taylor_third_0_over_0.py"
     ],
+    "tqft_0_over_0_data.json": [
+      "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/tqft_0_over_0.py"
+    ],
     "twin_prime_density_0_over_0.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/twin_prime_density_0_over_0.py"
+    ],
+    "uniform_boundedness_data.json": [
+      "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/uniform_boundedness_0_over_0.py"
+    ],
+    "vojta_conjecture_data.json": [
+      "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/vojta_conjecture_0_over_0.py"
     ],
     "wallis_product_0_over_0_data.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/wallis_product_0_over_0.py"
@@ -906,8 +1005,14 @@
     "winding_transition_0_over_0.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/winding_transition_0_over_0.py"
     ],
+    "zero_zero_family_0_over_0_data.json": [
+      "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/zero_zero_family_0_over_0.py"
+    ],
     "zeta_functional_eq_0_over_0_data.json": [
       "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/zeta_functional_eq_0_over_0.py"
+    ],
+    "zilber_pink_data.json": [
+      "02_Experimental_Implementations_and_Verification/02_Dark_Energy_0_0_Framework/zilber_pink_0_over_0.py"
     ],
     "audit_zero_to_riemann_zeta_data.json": [
       "02_Experimental_Implementations_and_Verification/03_Riemann_Hypothesis_and_Newman_Flow_Experiments/audit_zero_to_riemann_zeta.py"
@@ -1014,6 +1119,9 @@
     "bsd_rank2.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/bsd_rank2.py"
     ],
+    "burgers_zero_order.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/burgers_zero_order.py"
+    ],
     "c0_at_zeros_data.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/c0_at_zeros.py"
     ],
@@ -1056,6 +1164,9 @@
     ],
     "climate_tipping_0over0.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/climate_tipping_0over0.py"
+    ],
+    "clm_zero_order.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/clm_zero_order.py"
     ],
     "clock_test_data.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/clock_test.py"
@@ -1176,6 +1287,36 @@
     "fold_unitary_data.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/fold_unitary.py"
     ],
+    "fractional_burgers_margin_cache.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/fractional_burgers_margin.py"
+    ],
+    "fractional_burgers_margin.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/fractional_burgers_margin.py"
+    ],
+    "fractional_burgers_margin_window512.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/fractional_burgers_margin.py"
+    ],
+    "fractional_clm_margin_cache.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/fractional_clm_margin.py"
+    ],
+    "fractional_clm_margin.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/fractional_clm_margin.py"
+    ],
+    "fractional_margin_resolution_cache.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/fractional_margin_resolution.py"
+    ],
+    "fractional_margin_resolution.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/fractional_margin_resolution.py"
+    ],
+    "fractional_margin_sweep.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/fractional_margin_sweep.py"
+    ],
+    "fractional_margin_universality.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/fractional_margin_universality.py"
+    ],
+    "fractional_margin_window.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/fractional_margin_window.py"
+    ],
     "frequency_cascade_data.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/frequency_cascade.py"
     ],
@@ -1194,12 +1335,6 @@
     "global_monotonicity.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/global_identity.py",
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/unified_framework.py"
-    ],
-    "goldbach_0_over0_data.json": [
-      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/goldbach_0_over0.py"
-    ],
-    "goldbach_large.json": [
-      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/goldbach_large.py"
     ],
     "golden_closure_constant_data.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/golden_closure_constant.py"
@@ -1273,6 +1408,9 @@
     "muon_g2_0over0.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/muon_g2_0over0.py"
     ],
+    "ns2d_zero_order.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/ns2d_zero_order.py"
+    ],
     "ns_1d_longtime_data.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/ns_1d_longtime.py"
     ],
@@ -1282,14 +1420,47 @@
     "ns_3d_millennium_data.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/ns_3d_millennium.py"
     ],
+    "ns_critical_integral.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/ns_critical_integral.py"
+    ],
+    "ns_forced_intermittency.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/ns_forced_intermittency.py"
+    ],
+    "ns_force_network.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/ns_force_network.py"
+    ],
     "ns_graph_verification.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/ns_graph_verification.py"
+    ],
+    "ns_onsager_flux.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/ns_onsager_flux.py"
+    ],
+    "ns_profile_collapse.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/ns_profile_collapse.py"
     ],
     "ns_r3_proof_verification.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/ns_r3_proof.py"
     ],
+    "ns_resolution_study.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/ns_resolution_study.py"
+    ],
+    "ns_spectral_slope.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/ns_spectral_slope.py"
+    ],
+    "ns_spike_mixture.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/ns_spike_mixture.py"
+    ],
+    "ns_zero_order.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/ns_zero_order.py"
+    ],
     "nth_root_of_n.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/nth_root_of_n.py"
+    ],
+    "orientation_vs_fractional_s.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/orientation_vs_fractional_s.py"
+    ],
+    "orientation_vs_invariant.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/orientation_vs_invariant.py"
     ],
     "origin_matrix.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/origin_matrix.py"
@@ -1354,9 +1525,6 @@
     "p_np_clusters.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/p_np_clusters.py"
     ],
-    "p_np_contour.json": [
-      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/p_np_contour.py"
-    ],
     "p_np_flow.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/p_np_flow.py"
     ],
@@ -1383,9 +1551,6 @@
     ],
     "rh_li_convergence.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/rh_li_convergence.py"
-    ],
-    "rh_li_correct.json": [
-      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/rh_li_correct.py"
     ],
     "rh_li_exact.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/rh_li_exact.py"
@@ -1488,6 +1653,9 @@
     "spin_blindness.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/spin_blindness.py"
     ],
+    "spiral_mass_gap.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/spiral_mass_gap.py"
+    ],
     "spring_fold_data.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/spring_fold.py"
     ],
@@ -1530,6 +1698,12 @@
     ],
     "time_reversal_convergence_data.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/time_reversal_convergence.py"
+    ],
+    "toomre_critical_corrected.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/toomre_critical.py"
+    ],
+    "toomre_universal.json": [
+      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/toomre_universal.py"
     ],
     "twin_prime_0_over0_data.json": [
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/twin_prime_0_over0.py"
@@ -1757,6 +1931,12 @@
       "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/emanation/supervisor.py",
       "06_Configuration_and_Metadata/02_Data_Manifest_and_Processing/scripts/certify_repo.py"
     ],
+    "stability_harness.json": [
+      "02_Experimental_Implementations_and_Verification/experiments/stability_harness.py"
+    ],
+    "multidimensional_map_data.json": [
+      "04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/build_multidimensional_map.py"
+    ],
     "DATA_MANIFEST.json": [
       "04_Testing_and_Validation_Suite/03_0_0_Framework_Validation/test_data_persistence.py",
       "07_Interdisciplinary_Connections_and_Frameworks/02_Mathematical_Physics_Connections/regen_data.py"
@@ -1769,9 +1949,6 @@
     ],
     "aclass_detector.json": [
       "07_Interdisciplinary_Connections_and_Frameworks/02_Mathematical_Physics_Connections/aclass_detector.py"
-    ],
-    "ai_performable_professions_data.json": [
-      "07_Interdisciplinary_Connections_and_Frameworks/02_Mathematical_Physics_Connections/ai_performable_professions.py"
     ],
     "gate_data.json": [
       "07_Interdisciplinary_Connections_and_Frameworks/02_Mathematical_Physics_Connections/regen_data.py"
@@ -1791,15 +1968,6 @@
     ],
     "cold_crawler.json": [
       "07_Interdisciplinary_Connections_and_Frameworks/04_Theoretical_Physics_Implementations/bobo_chain/cold_crawler.py"
-    ],
-    "toomre_critical_corrected.json": [
-      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/toomre_critical.py"
-    ],
-    "toomre_universal.json": [
-      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/toomre_universal.py"
-    ],
-    "spiral_mass_gap.json": [
-      "02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/spiral_mass_gap.py"
     ]
   }
 }

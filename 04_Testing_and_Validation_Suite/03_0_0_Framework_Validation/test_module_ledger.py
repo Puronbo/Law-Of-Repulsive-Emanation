@@ -143,3 +143,46 @@ def test_every_module_is_imported_by_the_library_root():
     assert not not_imported, (
         "modules never built (not imported by PunoCalculus.lean): %s" % not_imported
     )
+
+
+def _stated_counts():
+    """Read the three coverage numbers the ledger asserts in prose."""
+    text = _read(LEDGER)
+    def grab(pattern):
+        m = re.search(pattern, text)
+        assert m, "ledger coverage line not found: %r" % pattern
+        return int(m.group(1))
+    return (
+        grab(r"\*\*Modules on disk:\*\*\s*(\d+)"),
+        grab(r"\*\*Card-carrying modules \(`card`\):\*\*\s*(\d+)"),
+        grab(r"\*\*Non-card modules[^)]*\):\*\*\s*(\d+)"),
+    )
+
+
+def test_stated_coverage_counts_match_the_ledger_rows():
+    """The prose coverage numbers must equal the rows the table actually has.
+
+    This closes a real drift: the ledger table carried 92 rows (including the
+    namespaced ``RH.*`` / ``Cosmology.*`` sub-namespace modules) while the prose
+    claimed 84, because the namespaced modules were never counted.  The prose is
+    now computed from the table, and this gate keeps it that way.
+    """
+    rows = _ledger_rows()
+    card = sum(1 for cat, _ in rows.values() if cat == "card")
+    stated_total, stated_card, stated_noncard = _stated_counts()
+    assert stated_total == len(rows), (
+        "ledger claims %d modules on disk but the table has %d rows"
+        % (stated_total, len(rows))
+    )
+    assert stated_card == card, (
+        "ledger claims %d card modules but the table has %d 'card' rows"
+        % (stated_card, card)
+    )
+    assert stated_noncard == len(rows) - card, (
+        "ledger claims %d non-card modules but the table has %d"
+        % (stated_noncard, len(rows) - card)
+    )
+    assert stated_total == len(_disk_modules()), (
+        "ledger claims %d modules on disk but %d .lean files exist"
+        % (stated_total, len(_disk_modules()))
+    )
