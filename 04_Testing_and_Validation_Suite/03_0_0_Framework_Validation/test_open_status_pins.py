@@ -1054,3 +1054,27 @@ def test_euler_polynomial_is_machine_checked():
     assert "import PunoCalculus.EulerPolynomial" in root, (
         "root must import EulerPolynomial")
 
+
+def test_solar_bounds_is_machine_checked():
+    """Thermodynamic/accounting ceilings on solar harvesting:
+    PunoCalculus/SolarBounds.lean proves Carnot monotonicity (hotter source is
+    better), carnot_lt_one (no perfect engine), exergy_budget_squeeze (fixed
+    budget: no free lunch), and hybrid_beats_pure_pv (a PV-T mixture never loses
+    on total exergy).  The full Shockley-Queisser integral is NOT formalized."""
+    src = _lean("SolarBounds.lean")
+    for decl in ("def carnot",
+                 "def hybridExergy",
+                 "theorem carnot_mono_source",
+                 "theorem carnot_strict_mono_source",
+                 "theorem carnot_lt_one",
+                 "theorem exergy_budget_squeeze",
+                 "theorem more_electric_less_thermal",
+                 "theorem hybrid_beats_pure_pv"):
+        assert decl in src, "SolarBounds.lean is missing %r" % decl
+    assert "sorry" not in src, "SolarBounds.lean must not contain sorry"
+    assert "native_decide" not in src, (
+        "the certificate must be axiom-free (no native_decide)")
+    root = _lean("../PunoCalculus.lean")
+    assert "import PunoCalculus.SolarBounds" in root, (
+        "root must import SolarBounds")
+

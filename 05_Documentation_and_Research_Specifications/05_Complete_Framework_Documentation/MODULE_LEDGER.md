@@ -100,6 +100,7 @@ imported by the root, fails the checker.
 | `NumberParity` | number-theory-cert | — | elementary parity: `even_iff_dvd` (even = divisible by 2), `evens_closed_add`/`evens_closed_mul` (the evens are closed under + and *), `doubling_injective` and `even_range_is_doubling` (the evens are exactly the image of doubling), `sum_evens` (the first n evens sum to `n(n+1)`) with `sum_evens_even` (the pile-up never escapes: every partial sum of evens is even), and `two_unique_even_prime` (2 is the unique even prime) |
 | `NullAbundance` | number-theory-cert | — | measure-theoretic "nothing as abundant substrate": `singleton_null` (a point is null), `countable_null` (any countable set is null), `rationals_countable`/`rationals_dense`/`rationals_null_and_dense` (the rationals are dense yet null -- presence without magnitude), `evens_countable`/`evens_pile_is_null` (the evens pile up without end and still measure nothing), and `unit_interval_not_null` (uncountable need not be null; `[0,1]` has measure 1) -- infinite count does not buy positive measure |
 | `EulerPolynomial` | number-theory-cert | — | G22 no-go: `euler_forty_not_prime` refutes "n^2+n+41 is prime for all n" (fails at n=40 = 41^2), `euler_zero_prime`/`euler_thirtynine_prime` record the long initial run, and `shifted_not_prime_at_pred` gives the **structural reason**: for any `p > 1`, `n^2+n+p` is composite at `n = p-1` (it equals `p^2`, via `shifted_at_pred_eq_square`) |
+| `SolarBounds` | information-bridge | — | thermodynamic/accounting ceilings on solar harvesting (no settlement claim): `carnot` (heat-engine efficiency `1 - Tc/Th`), `carnot_mono_source`/`carnot_strict_mono_source` (hotter source is better), `carnot_lt_one` (no perfect engine), `exergy_budget_squeeze`/`more_electric_less_thermal` (fixed budget: more electric strictly squeezes thermal -- no free lunch), `hybridExergy` + `hybrid_beats_pure_pv` (a PV-T mixture never loses on total exergy) -- the provable skeleton of "the most efficient harvesters are mixtures". The full Shockley-Queisser detailed-balance integral is NOT formalized (empirical spectrum input) |
 | `SelfSimilarExponents` | card | C31 | carries card(s) C31 |
 | `SerrinLadder` | card | C23 | carries card(s) C23 |
 | `SerrinSufficiency` | card | C8-open | carries card(s) C8-open |
@@ -121,6 +122,6 @@ imported by the root, fails the checker.
 
 ## Coverage
 
-- **Modules on disk:** 78 (all imported by `PunoCalculus.lean`).
+- **Modules on disk:** 79 (all imported by `PunoCalculus.lean`).
 - **Card-carrying modules (`card`):** 38.
-- **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold / information-bridge):** 40.
+- **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold / information-bridge):** 41.

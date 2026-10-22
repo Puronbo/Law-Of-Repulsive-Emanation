@@ -85,3 +85,4 @@ import PunoCalculus.RoleCollision
 import PunoCalculus.NumberParity
 import PunoCalculus.NullAbundance
 import PunoCalculus.EulerPolynomial
+import PunoCalculus.SolarBounds
