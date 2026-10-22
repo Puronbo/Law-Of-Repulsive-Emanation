@@ -308,7 +308,8 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Status:** RESEARCHED
 - **Related cards:** C15
 - **Proof attempt:** no-go - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/RemovableValue.lean
-- **Pin:** test_zero_over_zero_need_not_resolve
+- **Proof attempt:** no-go - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/NoUniversalResolve.lean
+- **Pin:** test_zero_over_zero_need_not_resolve; test_no_universal_resolve_is_machine_checked
 - **as_of:** 2026-10-18
 - **Reduction:** C15's uniqueness of the removable value is conditional on *existence* of the punctured limit (Hausdorff target). Dropping that hypothesis yields a false claim.
 - **Barrier:** existence of the limit is object-specific; no general schema can supply it (C15's own caveat).

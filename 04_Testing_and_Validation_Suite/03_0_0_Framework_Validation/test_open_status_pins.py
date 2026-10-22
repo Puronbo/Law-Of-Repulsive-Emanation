@@ -1078,3 +1078,63 @@ def test_solar_bounds_is_machine_checked():
     assert "import PunoCalculus.SolarBounds" in root, (
         "root must import SolarBounds")
 
+
+def test_shockley_queisser_is_machine_checked():
+    """ShockleyQueisser.lean: the absorbed fraction is strictly decreasing and the
+    per-photon voltage strictly increasing in the bandgap, so the efficiency has an
+    interior optimum (not monotone either way); the model (1-g)*g peaks at g=1/2."""
+    src = _lean("ShockleyQueisser.lean")
+    for decl in ("def absorbed",
+                 "def voltage",
+                 "def efficiency",
+                 "theorem absorbed_strict_decreasing",
+                 "theorem voltage_strict_increasing",
+                 "theorem efficiency_zero_lt_half",
+                 "theorem efficiency_one_lt_half",
+                 "theorem efficiency_not_monotone",
+                 "theorem efficiency_not_antitone",
+                 "theorem half_is_max"):
+        assert decl in src, "ShockleyQueisser.lean is missing %r" % decl
+    assert "sorry" not in src, "ShockleyQueisser.lean must not contain sorry"
+    assert "native_decide" not in src, (
+        "the certificate must be axiom-free (no native_decide)")
+    root = _lean("../PunoCalculus.lean")
+    assert "import PunoCalculus.ShockleyQueisser" in root, (
+        "root must import ShockleyQueisser")
+
+
+def test_tandem_cells_is_machine_checked():
+    """TandemCells.lean: the multijunction ceiling is monotone in the junction
+    count, bounded by the asymptotic limit L, and has diminishing increments
+    (each added junction buys at most the previous)."""
+    src = _lean("TandemCells.lean")
+    for decl in ("def ceiling",
+                 "theorem ceiling_monotone",
+                 "theorem ceiling_le_limit",
+                 "theorem ceiling_increment",
+                 "theorem ceiling_increments_shrink"):
+        assert decl in src, "TandemCells.lean is missing %r" % decl
+    assert "sorry" not in src, "TandemCells.lean must not contain sorry"
+    assert "native_decide" not in src, (
+        "the certificate must be axiom-free (no native_decide)")
+    root = _lean("../PunoCalculus.lean")
+    assert "import PunoCalculus.TandemCells" in root, (
+        "root must import TandemCells")
+
+
+def test_no_universal_resolve_is_machine_checked():
+    """G21 (no-go): NoUniversalResolve.lean proves "every 0/0 resolves" is FALSE --
+    the sign-step function has no punctured limit at 0 (left -1, right +1), while
+    the genuine removable 0/0 x/x does resolve to 1."""
+    src = _lean("NoUniversalResolve.lean")
+    for decl in ("def signStep",
+                 "theorem signStep_has_no_limit",
+                 "theorem id_over_id_resolves"):
+        assert decl in src, "NoUniversalResolve.lean is missing %r" % decl
+    assert "sorry" not in src, "NoUniversalResolve.lean must not contain sorry"
+    assert "native_decide" not in src, (
+        "the certificate must be axiom-free (no native_decide)")
+    root = _lean("../PunoCalculus.lean")
+    assert "import PunoCalculus.NoUniversalResolve" in root, (
+        "root must import NoUniversalResolve")
+

@@ -86,3 +86,6 @@ import PunoCalculus.NumberParity
 import PunoCalculus.NullAbundance
 import PunoCalculus.EulerPolynomial
 import PunoCalculus.SolarBounds
+import PunoCalculus.ShockleyQueisser
+import PunoCalculus.TandemCells
+import PunoCalculus.NoUniversalResolve
