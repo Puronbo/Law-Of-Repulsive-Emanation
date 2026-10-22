@@ -287,6 +287,27 @@ close. This is the formal sense in which a fold is a fold and not a collapse --
 and it is exactly the role-preserving reading that keeps "compactified" distinct
 from "equal to a point."
 
+### 3.7 The asymptotic reading: finitely many creases force the rarity to grow
+
+The open universal of a row is "finitely many creases, or infinitely many?" The
+theory carries the **finite-crease side** of that question with *no limit object*:
+
+- **`census_mono_step`**: the census is monotone in the window -- growing the
+  window never drops a value.
+- **`crease_census_bounded_of_bound`**: if every crease value lies below `K`
+  (finitely many creases, or fewer), then *every* window, however wide, has crease
+  census of length `≤ K`. Bounding the creases globally bounds every window.
+- **`rarity_ge_of_crease_bound`**: with creases bounded by `K`, a window whose
+  leading census has `≥ M · K` elements (and at least one crease) has rarity ratio
+  `lin/cre ≥ M`.
+
+The reading: **bounding the creases while `lin` grows past every bound forces the
+rarity ratio past every `M`.** That is the finite-crease direction of "`lin/cre`
+eventually infinite," proved as a finite statement -- no `limsup`, no infinity, no
+archimedean closure assumed. What is *not* proved (and is the row's open object)
+is the converse: that an infinite crease set must keep the ratio bounded. That
+converse is exactly the universal claim, and no window supplies it.
+
 ## 4. What this theory predicts
 
 The synthesis is only useful if it generates falsifiable claims. It does:

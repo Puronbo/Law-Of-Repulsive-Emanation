@@ -688,6 +688,68 @@ def rarityRatio (C : Crease) : ℕ :=
   if (census C.bound C.crease).length = 0 then 0
   else (census C.bound C.lin).length / (census C.bound C.crease).length
 
+/-! ### The asymptotic reading: finitely many creases => unbounded rarity
+
+The open universal of a row is "are there finitely or infinitely many creases?".
+The theory carries the skeleton of that question without any limit notion: if the
+crease count is *bounded* (`≤ K`, finitely many creases) while the leading count
+grows with the window, then the rarity ratio is forced to grow.  We prove the
+monotone growth of the census, that a globally-bounded crease census is eventually
+constant, and the resulting rarity ceiling -- the finite-crease side of the
+"eventually infinite" claim. -/
+
+/-- **The census is monotone in the window.**  A larger bound contains the smaller
+census: `census N P ⊆ census (N+k) P` (here the single-step form). -/
+theorem census_mono_step (N : ℕ) (P : ℕ → Bool) :
+    census N P ⊆ census (N + 1) P := by
+  rw [census_succ N P]
+  exact fun a ha => List.mem_append_left _ ha
+
+/-- **A globally-bounded crease census cannot exceed its bound.**  If every crease
+value lies below `K` (finitely many creases, or fewer), then the crease census of
+*any* window has length `≤ K`.  This is the finite-crease hypothesis in census
+form: no window, however wide, sees more than `K` creases. -/
+theorem crease_census_bounded_of_bound (P : ℕ → Bool) (K : ℕ)
+    (h : ∀ n, P n = true → n ≤ K) (N : ℕ) :
+    (census N P).length ≤ K := by
+  have hnd : (census N P).Nodup := by
+    unfold census
+    exact (List.nodup_range' (s := 1) (n := N) (step := 1) (by decide)).filter _
+  have hle : ∀ a ∈ census N P, a ≤ K := by
+    intro a ha
+    rw [census, List.mem_filter] at ha
+    exact h a ha.2
+  have hge : ∀ a ∈ census N P, 1 ≤ a := by
+    intro a ha
+    rw [census, List.mem_filter, List.mem_range'] at ha
+    obtain ⟨i, _, rfl⟩ := ha.1
+    omega
+  have hcard : (census N P).toFinset.card ≤ K := by
+    have hsub : (census N P).toFinset ⊆ Finset.Icc 1 K := by
+      intro a ha
+      rw [List.mem_toFinset] at ha
+      exact Finset.mem_Icc.mpr ⟨hge a ha, hle a ha⟩
+    calc (census N P).toFinset.card ≤ (Finset.Icc 1 K).card := Finset.card_le_card hsub
+      _ = K := by simp
+  rwa [List.toFinset_card_of_nodup hnd] at hcard
+
+/-- **Finitely many creases forced the rarity to grow.**  The rigorous skeleton of
+"finitely many creases => `lin/cre` eventually infinite": with the crease census
+bounded by `K` on every window, a window whose leading census has `≥ M * K`
+elements (and at least one crease) has rarity ratio `≥ M`.  So bounding the
+creases while `lin` grows unboundedly *forces* the rarity ratio past every `M` --
+without any limit object. -/
+theorem rarity_ge_of_crease_bound (P Q : ℕ → Bool) (K : ℕ)
+    (hbound : ∀ N, (census N Q).length ≤ K)
+    (N M : ℕ) (hlin : (census N P).length ≥ M * K)
+    (hcre : 0 < (census N Q).length) :
+    (census N P).length / (census N Q).length ≥ M := by
+  have hK : 0 < (census N Q).length := hcre
+  rw [ge_iff_le]
+  exact (Nat.le_div_iff_mul_le hK).2 (by
+    calc M * (census N Q).length ≤ M * K := Nat.mul_le_mul_left M (hbound N)
+      _ ≤ (census N P).length := hlin)
+
 /-- The three compiled creases have strictly positive crease fractions with
 *decreasing* rarity as the window's `lin` grows -- the quantitative content. -/
 theorem compiled_crease_fractions :
@@ -873,12 +935,13 @@ def frontierCensusFacts : List (String × String) :=
     ("crease_is_weak", "CORRECTION: the Crease structure does NOT exclude Goldbach or twin primes -- twin primes have a Crease (lin = prime, undershoot 31) and Goldbach does too (lin = even, undershoot 1); what forbids the diagonal is only the strict undershoot inequality (no_diagonal_crease)"),
     ("self_crossing", "if the boundary (invariant lin) crosses itself: at a coincidence point the signed role count is +1 - 1 = 0 (self_crossing_index_zero -- the figure-eight winding cancels there, a local value collision, not a new object); and a FULL self-crossing (lin coincides with crease everywhere on the window) collapses to the diagonal (full_self_crossing_is_diagonal) and is impossible (no_full_self_crossing) -- so a valid crease is only ever a partial self-crossing, never a closed self-loop"),
     ("fold", "the fold that does not seal (the familiar hose/horizon picture): a Crease FOLDS at its coincidence points (foldSet_is_coincidence: the fold set is exactly the crease census; fold_is_nonempty: Wieferich folds, wieferich_folds) and never SEALS (fold_never_seals: the closed self-loop is no_full_self_crossing), leaving a strict gap (fold_leaves_gap: the leading census minus the fold is positive) -- it folds back on itself but does not collapse"),
+    ("asymptotic", "the finite-crease skeleton of 'finitely many creases => lin/cre eventually infinite', with NO limit object: census_mono_step (the census is monotone in the window), crease_census_bounded_of_bound (a globally-bounded crease predicate -- finitely many creases -- has census length <= K on EVERY window, however wide), and rarity_ge_of_crease_bound (bounded creases + a leading census of >= M*K forces the rarity ratio >= M). So bounding the creases while lin grows past every bound forces the rarity past every M -- the finite-crease direction of the open universal, proved without a limit"),
     ("monotone", "undershoot_nonneg_of_sub is structural: predicate-level containment gives non-negative undershoot on every window; containment_can_fail shows the containment itself can fail beyond the window -- the monotonicity is conditional, and its condition is the row's missing object"),
     ("scope_not_formal", "DEMOTION: the scope-narrowing claim (single-integer resolvent rows only) is NOT formalizable -- any non-full census admits the trivial lin (n >= 1), witness trivial_lin_crease_witness; 'content-bearing lin' is a naturalness judgement, not a Lean-checkable property"),
     ("prototype", "Wieferich (G32) is the prototype: first-order = odd prime, crease = 2^(p-1) = 1 mod p^2"),
     ("registry", "six census runs: Wieferich [1093,3511], Giuga [30,858,1722], Lehmer [], 2-Lehmer [561,...], Erdos-Moser [], Mersenne [2,3,5,7,13,17,19,31,61,89,107,127]"),
     ("open", "OPEN: the crease is not shown universal across all n; each row's universal claim (Giuga, Lehmer, Erdos-Moser uniqueness, Mersenne infinitude) stays open, and the synthesis is reviewed, not proved") ]
 
-theorem frontierCensusFacts_length : frontierCensusFacts.length = 18 := by decide
+theorem frontierCensusFacts_length : frontierCensusFacts.length = 19 := by decide
 
 end PunoCalculus.FrontierCensus
