@@ -82,3 +82,4 @@ import PunoCalculus.Lehmer
 import PunoCalculus.ErdosMoser
 import PunoCalculus.FrontierCensus
 import PunoCalculus.RoleCollision
+import PunoCalculus.NumberParity

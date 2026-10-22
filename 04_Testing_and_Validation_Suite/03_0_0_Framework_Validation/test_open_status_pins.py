@@ -983,3 +983,27 @@ def test_role_collision_is_machine_checked():
     assert "import PunoCalculus.RoleCollision" in root, (
         "root must import RoleCollision")
 
+
+def test_number_parity_is_machine_checked():
+    """The elementary parity module PunoCalculus/NumberParity.lean: evenness is
+    divisibility by 2; the evens are closed under + and *; they are exactly the
+    image of doubling; the pile-up of the first n evens is n(n+1) and every partial
+    sum is even; 2 is the unique even prime.  Elementary and kernel-checked."""
+    src = _lean("NumberParity.lean")
+    for decl in ("theorem even_iff_dvd",
+                 "theorem evens_closed_add",
+                 "theorem evens_closed_mul",
+                 "theorem doubling_injective",
+                 "theorem even_range_is_doubling",
+                 "theorem sum_evens",
+                 "theorem product_consecutive_even",
+                 "theorem sum_evens_even",
+                 "theorem two_unique_even_prime"):
+        assert decl in src, "NumberParity.lean is missing %r" % decl
+    assert "sorry" not in src, "NumberParity.lean must not contain sorry"
+    assert "native_decide" not in src, (
+        "the certificate must be axiom-free (no native_decide)")
+    root = _lean("../PunoCalculus.lean")
+    assert "import PunoCalculus.NumberParity" in root, (
+        "root must import NumberParity")
+

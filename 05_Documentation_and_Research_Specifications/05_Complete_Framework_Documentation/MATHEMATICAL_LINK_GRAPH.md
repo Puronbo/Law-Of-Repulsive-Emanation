@@ -18,7 +18,7 @@ that any Millennium obligation is discharged. See `WHAT_THIS_DOES_NOT_PROVE.md`.
 
 ## 1. The mesh (verified ↔ verified)
 
-The internal graph has **83 module nodes** and **65 directed edges**. An edge
+The internal graph has **84 module nodes** and **65 directed edges**. An edge
 `A -> B` is exactly an `import PunoCalculus.B` line in module `A` (self-edges and
 `import Mathlib` excluded). The block below is parsed by the checker; it must
 equal the imports actually present in the tree.
@@ -120,13 +120,13 @@ The 38 card-carrying modules (the "verified findings" of this graph):
 | ZeroIndex | C19 | | |
 | ZeroMechanisms | C20 | | |
 
-The remaining 45 nodes are non-card modules (evidence carriers, not claims):
+The remaining 46 nodes are non-card modules (evidence carriers, not claims):
 `BSD`, `Basic`, `Beal`, `CascadeRatio`, `Collatz`, `Core`, `Cosmology.AcousticZeroFlow`,
 `Cosmology.OriginWindow`, `Crease`, `Curvature`, `EcaIsometry`, `ErdosMoser`,
 `Factorization`, `FiniteScan`, `FrontierCensus`, `Giuga`, `Goldbach`, `Hodge`,
 `InformationBridge`, `InformationMixture`, `InformationPhi`, `InformationTime`,
-`Legendre`, `Lehmer`, `MassGap`, `MillenniumBridge`, `ParabolaVertex`, `NavierStokes`,
-`PerfectNumbers`, `Poincare`, `PrimeGaps`, `PvsNP`, `RoleCollision`,
+`Legendre`, `Lehmer`, `MassGap`, `MillenniumBridge`, `NavierStokes`, `NumberParity`,
+`ParabolaVertex`, `PerfectNumbers`, `Poincare`, `PrimeGaps`, `PvsNP`, `RoleCollision`,
 `RH.Density`, `RH.Dominance`, `RH.Hankel`, `RH.LiCriterion`, `RH.Monotonicity`,
 `Removable`, `ShadowZeroZero`, `TwinPrime`, `Wieferich`, `Wilson`, `ZeroZero`, `RH.NewmanFlow`.
 
