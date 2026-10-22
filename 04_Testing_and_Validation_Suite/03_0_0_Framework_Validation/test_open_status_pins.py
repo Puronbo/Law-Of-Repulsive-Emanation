@@ -1007,3 +1007,28 @@ def test_number_parity_is_machine_checked():
     assert "import PunoCalculus.NumberParity" in root, (
         "root must import NumberParity")
 
+
+def test_null_abundance_is_machine_checked():
+    """Measure-theoretic "nothing as abundant substrate":
+    PunoCalculus/NullAbundance.lean proves a point is null, any countable set is
+    null, the rationals are dense yet null (presence without magnitude), the evens
+    pile up and still measure nothing, and uncountable need not be null.  Infinite
+    count does not buy positive measure; the "pile = nothing" value claim is 0/0
+    and NOT asserted."""
+    src = _lean("NullAbundance.lean")
+    for decl in ("theorem singleton_null",
+                 "theorem countable_null",
+                 "theorem rationals_countable",
+                 "theorem rationals_dense",
+                 "theorem rationals_null_and_dense",
+                 "theorem evens_countable",
+                 "theorem evens_pile_is_null",
+                 "theorem unit_interval_not_null"):
+        assert decl in src, "NullAbundance.lean is missing %r" % decl
+    assert "sorry" not in src, "NullAbundance.lean must not contain sorry"
+    assert "native_decide" not in src, (
+        "the certificate must be axiom-free (no native_decide)")
+    root = _lean("../PunoCalculus.lean")
+    assert "import PunoCalculus.NullAbundance" in root, (
+        "root must import NullAbundance")
+

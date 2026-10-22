@@ -98,6 +98,7 @@ imported by the root, fails the checker.
 | `RemovableValue` | card | C15 | carries card(s) C15 |
 | `RoleCollision` | core-scaffold | — | the role-collision lesson (G39): `x = x + 1` read as an *equation* is unsatisfiable (`eq_reading_unsat`, and `eq_reading_implies_zero_eq_one` derives `0 = 1` by ex falso), while read as a *recurrence* it is a state map with closed form `(Step^[t]) x0 = x0 + t` (`recurrence_closed_form`); `recurrence_as_equation_is_collision` pins where the two readings coincide (only at the impossible `0 = 1`), and `readings_differ` proves they are distinct propositions -- the `0 = 1` "paradox" is a symbol used in two incompatible roles (value vs. state, equality vs. assignment) |
 | `NumberParity` | number-theory-cert | — | elementary parity: `even_iff_dvd` (even = divisible by 2), `evens_closed_add`/`evens_closed_mul` (the evens are closed under + and *), `doubling_injective` and `even_range_is_doubling` (the evens are exactly the image of doubling), `sum_evens` (the first n evens sum to `n(n+1)`) with `sum_evens_even` (the pile-up never escapes: every partial sum of evens is even), and `two_unique_even_prime` (2 is the unique even prime) |
+| `NullAbundance` | number-theory-cert | — | measure-theoretic "nothing as abundant substrate": `singleton_null` (a point is null), `countable_null` (any countable set is null), `rationals_countable`/`rationals_dense`/`rationals_null_and_dense` (the rationals are dense yet null -- presence without magnitude), `evens_countable`/`evens_pile_is_null` (the evens pile up without end and still measure nothing), and `unit_interval_not_null` (uncountable need not be null; `[0,1]` has measure 1) -- infinite count does not buy positive measure |
 | `SelfSimilarExponents` | card | C31 | carries card(s) C31 |
 | `SerrinLadder` | card | C23 | carries card(s) C23 |
 | `SerrinSufficiency` | card | C8-open | carries card(s) C8-open |
@@ -119,6 +120,6 @@ imported by the root, fails the checker.
 
 ## Coverage
 
-- **Modules on disk:** 76 (all imported by `PunoCalculus.lean`).
+- **Modules on disk:** 77 (all imported by `PunoCalculus.lean`).
 - **Card-carrying modules (`card`):** 38.
-- **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold / information-bridge):** 38.
+- **Non-card modules (millennium-cert / rh-research / number-theory-cert / fluid-diagnostic / numerical-cert / cosmology / core-scaffold / information-bridge):** 39.
