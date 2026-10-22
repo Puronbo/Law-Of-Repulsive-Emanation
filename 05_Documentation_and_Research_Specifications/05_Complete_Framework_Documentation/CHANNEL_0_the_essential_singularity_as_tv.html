@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Channel 0 — the essential singularity as a television set</title>
+<style>
+  :root { --ink:#e8e8e8; --dim:#8a8a8a; --ok:#56d364; --warn:#e3b341; --bad:#f85149; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#0b0b0d; color:var(--ink);
+         font-family:"Consolas","DejaVu Sans Mono",monospace; }
+  header { padding:18px 24px 6px; }
+  h1 { font-size:18px; margin:0 0 4px; letter-spacing:2px; }
+  .sub { color:var(--dim); font-size:12px; max-width:900px; line-height:1.5; }
+  .stage { display:flex; gap:24px; padding:16px 24px; flex-wrap:wrap; }
+  .tv { position:relative; }
+  .cabinet { background:#1a1a1f; border:2px solid #2e2e36; border-radius:18px;
+             padding:22px 22px 64px; box-shadow:inset 0 0 40px #000, 0 8px 30px #000; }
+  canvas { display:block; background:#000; border-radius:10px;
+           box-shadow:0 0 0 2px #000, inset 0 0 60px #000; }
+  .crt::after { /* scanlines + vignette */
+    content:""; position:absolute; inset:22px 22px 64px; border-radius:10px;
+    pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(0,0,0,.28) 0 1px, transparent 1px 3px);
+    box-shadow:inset 0 0 80px 10px rgba(0,0,0,.65);
+    mix-blend-mode:multiply;
+  }
+  .dial { position:absolute; left:22px; right:22px; bottom:14px;
+          display:flex; justify-content:space-between; align-items:center; }
+  .knob { width:46px; height:46px; border-radius:50%;
+          background:radial-gradient(circle at 35% 30%, #444, #111);
+          border:2px solid #333; position:relative; }
+  .knob::after { content:""; position:absolute; left:50%; top:6px; width:2px; height:16px;
+                 background:var(--ink); transform:translateX(-50%);
+                 transform-origin:50% 17px; transition:transform .35s ease; }
+  .chlabel { font-size:13px; letter-spacing:3px; color:var(--warn); }
+  .panel { flex:1; min-width:340px; max-width:560px; }
+  .card { border:1px solid #2e2e36; border-radius:12px; padding:14px 16px; margin-bottom:12px;
+          background:#111114; }
+  .card h3 { margin:0 0 6px; font-size:13px; letter-spacing:1px; }
+  .card p { margin:0 0 8px; font-size:12px; color:var(--dim); line-height:1.5; }
+  code { color:#9cdcfe; }
+  .tag { font-size:11px; padding:2px 8px; border-radius:999px; border:1px solid; }
+  .tag.proven { color:var(--ok); border-color:var(--ok); }
+  .tag.open { color:var(--bad); border-color:var(--bad); }
+  .btnrow { display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; }
+  button { font-family:inherit; font-size:12px; letter-spacing:1px; cursor:pointer;
+           background:#17171c; color:var(--ink); border:1px solid #3a3a44;
+           border-radius:8px; padding:9px 14px; }
+  button:hover { border-color:var(--warn); color:var(--warn); }
+  button.on { border-color:var(--warn); color:var(--warn); background:#1e1a10; }
+  .readout { font-size:12px; color:var(--dim); margin-top:10px; line-height:1.6; }
+  .readout b { color:var(--ink); }
+  footer { padding:6px 24px 40px; color:var(--dim); font-size:11px; max-width:980px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>CHANNEL&nbsp;0</h1>
+  <div class="sub">
+    One screen, one punctured neighbourhood <code>&#120125;[&#8800;]0</code>, several channels.
+    The topic is not the picture — it is what happens when you <em>change channel</em>.
+    Mapped to <code>PunoCalculus.EssentialIdentity</code>. Every panel below is a
+    kernel-checked Lean declaration; nothing here is open unless tagged OPEN.
+  </div>
+</header>
+
+<div class="stage">
+  <div class="tv crt">
+    <div class="cabinet">
+      <canvas id="screen" width="440" height="330"></canvas>
+    </div>
+    <div class="dial">
+      <div class="knob" id="knob"></div>
+      <div class="chlabel" id="chlabel">CH 1 &middot; x/x &middot; SOLID</div>
+      <div class="knob" style="visibility:hidden"></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="card">
+      <h3>THE DIAL IS THE PUNCTURE</h3>
+      <p>The screen is the punctured neighbourhood. Turning the dial <em>is</em>
+      the path to 0. Different paths &rarr; different pictures from the same set.</p>
+      <div class="btnrow">
+        <button class="on" data-ch="1">CH 1 &middot; x/x</button>
+        <button data-ch="2">CH 2 &middot; 2x/x</button>
+        <button data-ch="3">CH 3 &middot; sin(1/x)</button>
+      </div>
+      <div class="readout" id="readout"></div>
+    </div>
+
+    <div class="card">
+      <h3>WHAT EACH CHANNEL PROVES</h3>
+      <p id="prooftext"></p>
+      <span class="tag" id="prooftag"></span>
+    </div>
+
+    <div class="card">
+      <h3>THE THESIS</h3>
+      <p>"0/0 = 1" is <b>true on the self-ratio path</b>
+      (<code>self_ratio_limit_one</code>) and <b>false as a value</b>
+      (<code>ratio_paths_disagree</code>). The generic case is the
+      <b>essential singularity</b> (<code>sin_one_over_has_no_limit</code>),
+      where the picture never locks. Removable is the special case; essential is the rule.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  The static on CH&nbsp;3 is not a broken television. It is the honest signal that no
+  value exists there &mdash; only the accumulation. Cf.
+  <code>NoUniversalResolve.signStep_has_no_limit</code> (G21 no-go) and
+  <code>RemovableValue.removable_value_unique</code> (the removable case, when it exists).
+</footer>
+
+<script>
+const cv = document.getElementById('screen');
+const ctx = cv.getContext('2d');
+const W = cv.width, H = cv.height;
+const knob = document.getElementById('knob');
+const chlabel = document.getElementById('chlabel');
+const readout = document.getElementById('readout');
+const prooftext = document.getElementById('prooftext');
+const prooftag = document.getElementById('prooftag');
+
+let channel = 1;
+let t = 0;
+
+// Channels: each maps x in (-1,1)\{0} -> y. y view range [-2.2, 2.2].
+const channels = {
+  1: {
+    label:"CH 1 \u00b7 x/x \u00b7 SOLID",
+    f: x => x/x,
+    target: 1,
+    proof:"<code>self_ratio_limit_one</code>: x/x \u2192 1 through the puncture. A clean, steady picture. This is the ONLY channel on which \u201c0/0 = 1\u201d is read literally \u2014 and it is true there.",
+    tag:["proven","REMOVABLE \u2014 the special case"],
+    read:"The bar sits at <b>1</b> and never moves. Picture locks. The limit exists and is unique."
+  },
+  2: {
+    label:"CH 2 \u00b7 2x/x \u00b7 SOLID",
+    f: x => (2*x)/x,
+    target: 2,
+    proof:"<code>ratio_paths_disagree</code>: x/x \u2192 1 while 2x/x \u2192 2. Same set, same puncture, a DIFFERENT picture. So 0/0 has no single value \u2014 it is an indeterminate form, not a number.",
+    tag:["proven","INDETERMINATE \u2014 {\u201c= 1\u201d} was a path"],
+    read:"The bar sits at <b>2</b>. Same \u201c0/0\u201d as CH 1, different value. This is why \u201c0/0 = 1\u201d is a choice, not a fact."
+  },
+  3: {
+    label:"CH 3 \u00b7 sin(1/x) \u00b7 NO LOCK",
+    f: x => Math.sin(1/x),
+    target: null,
+    proof:"<code>sin_one_over_has_no_limit</code>: two subsequences with x\u2099 \u2192 0 give images constantly 1 and constantly \u22121. A limit would equal both. So the punctured limit DOES NOT EXIST \u2014 the canonical ESSENTIAL singularity.",
+    tag:["proven","ESSENTIAL \u2014 the generic case"],
+    read:"Picture <b>never locks</b>. It fills the screen, flickering 1 / \u22121 forever. No tuning resolves it. This is the truth of the generic singularity."
+  }
+};
+
+function drawGrid(){
+  ctx.strokeStyle = "#141418";
+  ctx.lineWidth = 1;
+  for (let i=1;i<8;i++){ const x=i*W/8; ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+  for (let i=1;i<6;i++){ const y=i*H/6; ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
+  // axes
+  ctx.strokeStyle="#2a2a32";
+  ctx.beginPath(); ctx.moveTo(W/2,0); ctx.lineTo(W/2,H); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(0,H/2); ctx.lineTo(W,H/2); ctx.stroke();
+}
+
+function yToPix(y){ return H/2 - y*(H/2)/2.2; }
+
+function drawTargetBar(y, color){
+  if (y===null) return;
+  const py = yToPix(y);
+  ctx.strokeStyle = color; ctx.lineWidth = 2;
+  ctx.setLineDash([6,6]);
+  ctx.beginPath(); ctx.moveTo(0,py); ctx.lineTo(W,py); ctx.stroke();
+  ctx.setLineDash([]);
+}
+
+function drawT(currentT){
+  const ch = channels[channel];
+  ctx.fillStyle="#000"; ctx.fillRect(0,0,W,H);
+  drawGrid();
+
+  // the singularity: infinitely many turning points piling at x=0
+  // draw the graph as x samples walking toward the puncture
+  ctx.strokeStyle = "#56d364";
+  ctx.lineWidth = 1.6;
+  ctx.beginPath();
+  const N = 2200;
+  let started = false;
+  for (let i=0;i<=N;i++){
+    // sample x symmetric, with density increasing toward 0
+    const u = i/N;                 // 0..1
+    const x = (u<0.5? -1:1) * Math.pow(1-2*Math.abs(u-0.5), 2.2);
+    if (x===0) continue;
+    let y = ch.f(x);
+    if (!isFinite(y)) continue;
+    y = Math.max(-2.2, Math.min(2.2, y));
+    const px = W/2 + x*(W/2)*0.96;
+    const py = yToPix(y);
+    if(!started){ ctx.moveTo(px,py); started=true; } else ctx.lineTo(px,py);
+  }
+  ctx.stroke();
+
+  // channel 3: the "static" ring near the puncture that never locks
+  if (channel===3){
+    const breathe = 0.5 + 0.5*Math.sin(currentT*0.004);
+    ctx.strokeStyle = `rgba(248,81,73,${0.25+0.35*breathe})`;
+    ctx.lineWidth = 2;
+    for (let k=0;k<26;k++){
+      const x = (k%2? 1:-1) * (0.002 + 0.03*Math.pow(k/26,1.5));
+      const y = Math.sin(1/x);
+      const px = W/2 + x*(W/2)*0.96;
+      const py = yToPix(Math.max(-2.2,Math.min(2.2,y)));
+      ctx.beginPath(); ctx.arc(px,py,2.2,0,7); ctx.stroke();
+    }
+    // label
+    ctx.fillStyle="#f85149"; ctx.font="12px monospace";
+    ctx.fillText("NO LIMIT \u2014 accumulation only", 14, 22);
+  } else {
+    drawTargetBar(ch.target, "#e3b341");
+    ctx.fillStyle="#e3b341"; ctx.font="12px monospace";
+    ctx.fillText("limit = "+ch.target, 14, 22);
+  }
+
+  // the puncture marker
+  ctx.fillStyle="#000"; ctx.strokeStyle="#e8e8e8"; ctx.lineWidth=1.5;
+  ctx.beginPath(); ctx.arc(W/2, yToPix(0), 5, 0, 7); ctx.fill(); ctx.stroke();
+  ctx.fillStyle="#8a8a8a"; ctx.font="11px monospace";
+  ctx.fillText("x = 0 (puncture)", W/2+10, yToPix(0)+16);
+}
+
+function applyChannel(){
+  const ch = channels[channel];
+  chlabel.textContent = ch.label;
+  const deg = {1:0,2:120,3:240}[channel];
+  knob.style.transform = 'rotate('+deg+'deg)';
+  readout.innerHTML = ch.read;
+  prooftext.innerHTML = ch.proof;
+  prooftag.className = "tag " + (ch.tag[0]==='proven'?'proven':'open');
+  prooftag.textContent = ch.tag[1];
+  document.querySelectorAll('button[data-ch]').forEach(b=>{
+    b.classList.toggle('on', Number(b.dataset.ch)===channel);
+  });
+}
+
+document.querySelectorAll('button[data-ch]').forEach(b=>{
+  b.addEventListener('click', ()=>{ channel = Number(b.dataset.ch); applyChannel(); });
+});
+
+function loop(ts){ t = ts||0; drawT(t); requestAnimationFrame(loop); }
+applyChannel();
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>

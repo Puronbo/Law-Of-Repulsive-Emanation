@@ -1138,3 +1138,48 @@ def test_no_universal_resolve_is_machine_checked():
     assert "import PunoCalculus.NoUniversalResolve" in root, (
         "root must import NoUniversalResolve")
 
+
+def test_essential_identity_is_machine_checked():
+    """EssentialIdentity.lean (capstone of the 0/0 arc): the corrected master thesis.
+    self-ratio is 1 for every nonzero x and x/x -> 1 through the puncture (so
+    "0/0 = 1" holds on the self-ratio path); but x/x -> 1 while 2x/x -> 2, so 0/0
+    is indeterminate, not a value; sin(1/x) is the canonical ESSENTIAL singularity
+    -- no punctured limit at 0 (two subsequences give 1 and -1)."""
+    src = _lean("EssentialIdentity.lean")
+    for decl in ("theorem self_ratio_eq_one",
+                 "theorem self_ratio_limit_one",
+                 "theorem ratio_paths_disagree",
+                 "theorem sin_one_over_has_no_limit",
+                 "theorem identity_breaks_only_at_zero"):
+        assert decl in src, "EssentialIdentity.lean is missing %r" % decl
+    assert "sorry" not in src, "EssentialIdentity.lean must not contain sorry"
+    assert "native_decide" not in src, (
+        "the certificate must be axiom-free (no native_decide)")
+    root = _lean("../PunoCalculus.lean")
+    assert "import PunoCalculus.EssentialIdentity" in root, (
+        "root must import EssentialIdentity")
+
+
+def test_static_uncovered_is_machine_checked():
+    """StaticUncovered.lean: uncovers what the sin(1/x) 'static' actually is -- the
+    turning-point families x_n = 1/(pi/2+2 pi n) (sin(1/x_n)=1) and z_n =
+    1/(3 pi/2+2 pi n) (sin(1/z_n)=-1) head to the puncture, so every
+    right-neighbourhood of 0 contains both +1 and -1 (the flicker is not noise)."""
+    src = _lean("StaticUncovered.lean")
+    for decl in ("def turnPos",
+                 "def turnNeg",
+                 "theorem turnPos_value",
+                 "theorem turnNeg_value",
+                 "theorem turnPos_lt",
+                 "theorem turnNeg_lt",
+                 "theorem plus_one_arbitrarily_near",
+                 "theorem minus_one_arbitrarily_near",
+                 "theorem static_has_both_extremes"):
+        assert decl in src, "StaticUncovered.lean is missing %r" % decl
+    assert "sorry" not in src, "StaticUncovered.lean must not contain sorry"
+    assert "native_decide" not in src, (
+        "the certificate must be axiom-free (no native_decide)")
+    root = _lean("../PunoCalculus.lean")
+    assert "import PunoCalculus.StaticUncovered" in root, (
+        "root must import StaticUncovered")
+
