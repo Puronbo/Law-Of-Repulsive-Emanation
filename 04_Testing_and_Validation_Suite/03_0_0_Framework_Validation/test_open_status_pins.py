@@ -1032,3 +1032,25 @@ def test_null_abundance_is_machine_checked():
     assert "import PunoCalculus.NullAbundance" in root, (
         "root must import NullAbundance")
 
+
+def test_euler_polynomial_is_machine_checked():
+    """G22 (no-go): PunoCalculus/EulerPolynomial.lean machine-checks that
+    "n^2+n+41 is prime for all n" is FALSE (fails at n=40=41^2), records the real
+    long initial run, and gives the structural reason -- for any p>1, n^2+n+p is
+    composite at n=p-1, where it equals p^2."""
+    src = _lean("EulerPolynomial.lean")
+    for decl in ("def euler",
+                 "theorem euler_forty_eq_square",
+                 "theorem euler_forty_not_prime",
+                 "theorem euler_zero_prime",
+                 "theorem euler_thirtynine_prime",
+                 "theorem shifted_at_pred_eq_square",
+                 "theorem shifted_not_prime_at_pred"):
+        assert decl in src, "EulerPolynomial.lean is missing %r" % decl
+    assert "sorry" not in src, "EulerPolynomial.lean must not contain sorry"
+    assert "native_decide" not in src, (
+        "the certificate must be axiom-free (no native_decide)")
+    root = _lean("../PunoCalculus.lean")
+    assert "import PunoCalculus.EulerPolynomial" in root, (
+        "root must import EulerPolynomial")
+

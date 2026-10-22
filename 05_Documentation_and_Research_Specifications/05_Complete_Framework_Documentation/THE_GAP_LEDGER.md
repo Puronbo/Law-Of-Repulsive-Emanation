@@ -322,7 +322,8 @@ artifact). Every non-`none` row must carry at least one live `**Pin:**`.
 - **Status:** RESEARCHED
 - **Related cards:** []
 - **Proof attempt:** no-go - 02_Experimental_Implementations_and_Verification/06_Miscellaneous_Experiments/gap_prime_gaps_certificate.py
-- **Pin:** test_euler_polynomial_no_go
+- **Proof attempt:** no-go - 01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/EulerPolynomial.lean
+- **Pin:** test_euler_polynomial_no_go; test_euler_polynomial_is_machine_checked
 - **as_of:** 2026-10-18
 - **Reduction:** the polynomial is prime for n = 0..39 (a long initial run) but fails at n = 40 (1681 = 41²); the naive universal claim is false, not open.
 - **Barrier:** none (refuted); recorded so the long initial run is not mistaken for evidence of a universal statement.
