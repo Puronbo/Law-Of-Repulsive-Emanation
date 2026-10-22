@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Channel 1 — nothing and something filling everything</title>
+<style>
+  :root { --ink:#e8e8e8; --dim:#8a8a8a; --ok:#56d364; --warn:#e3b341; --bad:#f85149; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#0b0b0d; color:var(--ink);
+         font-family:"Consolas","DejaVu Sans Mono",monospace; }
+  header { padding:18px 24px 6px; }
+  h1 { font-size:18px; margin:0 0 4px; letter-spacing:2px; }
+  .sub { color:var(--dim); font-size:12px; max-width:900px; line-height:1.5; }
+  .stage { display:flex; gap:24px; padding:16px 24px; flex-wrap:wrap; }
+  .tv { position:relative; }
+  .cabinet { background:#1a1a1f; border:2px solid #2e2e36; border-radius:18px;
+             padding:22px 22px 64px; box-shadow:inset 0 0 40px #000, 0 8px 30px #000; }
+  canvas { display:block; background:#000; border-radius:10px;
+           box-shadow:0 0 0 2px #000, inset 0 0 60px #000; }
+  .crt::after { content:""; position:absolute; inset:22px 22px 64px; border-radius:10px;
+                pointer-events:none;
+                background:repeating-linear-gradient(0deg, rgba(0,0,0,.28) 0 1px, transparent 1px 3px);
+                box-shadow:inset 0 0 80px 10px rgba(0,0,0,.65);
+                mix-blend-mode:multiply; }
+  .dial { position:absolute; left:22px; right:22px; bottom:14px;
+          display:flex; justify-content:space-between; align-items:center; }
+  .knob { width:46px; height:46px; border-radius:50%;
+          background:radial-gradient(circle at 35% 30%, #444, #111);
+          border:2px solid #333; position:relative; }
+  .knob::after { content:""; position:absolute; left:50%; top:6px; width:2px; height:16px;
+                 background:var(--ink); transform:translateX(-50%);
+                 transform-origin:50% 17px; transition:transform .35s ease; }
+  .chlabel { font-size:12px; letter-spacing:2px; color:var(--warn); text-align:center; }
+  .panel { flex:1; min-width:340px; max-width:560px; }
+  .card { border:1px solid #2e2e36; border-radius:12px; padding:14px 16px; margin-bottom:12px;
+          background:#111114; }
+  .card h3 { margin:0 0 6px; font-size:13px; letter-spacing:1px; }
+  .card p { margin:0 0 8px; font-size:12px; color:var(--dim); line-height:1.5; }
+  code { color:#9cdcfe; }
+  .tag { font-size:11px; padding:2px 8px; border-radius:999px; border:1px solid; }
+  .tag.proven { color:var(--ok); border-color:var(--ok); }
+  .btnrow { display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; }
+  button { font-family:inherit; font-size:12px; letter-spacing:1px; cursor:pointer;
+           background:#17171c; color:var(--ink); border:1px solid #3a3a44;
+           border-radius:8px; padding:9px 14px; }
+  button:hover { border-color:var(--warn); color:var(--warn); }
+  button.on { border-color:var(--warn); color:var(--warn); background:#1e1a10; }
+  .readout { font-size:12px; color:var(--dim); margin-top:10px; line-height:1.7; }
+  .readout b { color:var(--ink); }
+  .readout .hi { color:var(--warn); }
+  .readout .inf { color:var(--ok); }
+  footer { padding:6px 24px 40px; color:var(--dim); font-size:11px; max-width:980px; line-height:1.6; }
+</style>
+</head>
+<body>
+<header>
+  <h1>CHANNEL&nbsp;1</h1>
+  <div class="sub">
+    One screen, one line of real numbers, two ways to fill it with nothing.
+    The topic is not the picture — it is what the picture <em>cannot</em> tell you.
+    Mapped to <code>PunoCalculus.NothingFillsAll</code>. Every panel below is a
+    kernel-checked Lean declaration; nothing here is open.
+  </div>
+</header>
+
+<div class="stage">
+  <div class="tv crt">
+    <div class="cabinet">
+      <canvas id="screen" width="520" height="360"></canvas>
+    </div>
+    <div class="dial">
+      <div class="knob" id="knob"></div>
+      <div class="chlabel" id="chlabel">CH 1 &middot; countable dust &middot; MEASURE 0</div>
+      <div class="knob" style="visibility:hidden"></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="card">
+      <h3>THE FILL IS COUNTABLE OR IT IS NOT</h3>
+      <p>Every dot on the line is a <em>null singleton</em>: measure zero. On both
+      channels every piece is nothing. The channels differ only in how many pieces
+      you are allowed — and the measure of the union is the whole story.</p>
+      <div class="btnrow">
+        <button class="on" data-ch="1">CH 1 &middot; countable dust</button>
+        <button data-ch="2">CH 2 &middot; all points</button>
+      </div>
+      <div class="readout" id="readout"></div>
+    </div>
+
+    <div class="card">
+      <h3>WHAT EACH CHANNEL PROVES</h3>
+      <p id="prooftext"></p>
+      <span class="tag" id="prooftag"></span>
+    </div>
+
+    <div class="card">
+      <h3>THE THESIS</h3>
+      <p>Nothing fills everything <code>(nothing_fills_everything)</code> — the whole
+      line <b>is</b> the union of its null singletons — and something remains
+      <code>(something_remains)</code>: <code>volume&nbsp;univ&nbsp;=&nbsp;&#8868;</code>.
+      The hinge is <b>countability</b>: countably many nothings stay nothing
+      <code>(countable_nothings_stay_nothing)</code>, so nothing countable can fill
+      <code>(no_countable_filling)</code>, and countable nothing is everywhere but
+      never covers <code>(nowhere_without_covering)</code>).</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Look closely: at the final stage the two channels draw the <em>same picture</em> (up to the channel colour).
+  The screens are indistinguishable and the readouts are not. That is the point —
+  the difference between "countably much nothing" and "everything" is a difference of
+  <b>cardinality</b>, and no pixel can report a cardinality. Finite stages are always
+  nothing (<code>every_finite_stage_is_nothing</code>); the infinite stage is
+  everything (<code>nothing_at_finite_stages_everything_at_the_end</code>).
+  A countable accumulation of nullities <b>resolves</b>; the accumulation of all of them
+  <b>jumps</b> (<code>accumulation_resolves_countably_but_not_uncountably</code>) —
+  the measure-theoretic image of an essential singularity.
+</footer>
+
+<script>
+const cv = document.getElementById('screen');
+const ctx = cv.getContext('2d');
+const W = cv.width, H = cv.height;
+const knob = document.getElementById('knob');
+const chlabel = document.getElementById('chlabel');
+const readout = document.getElementById('readout');
+const prooftext = document.getElementById('prooftext');
+const prooftag = document.getElementById('prooftag');
+
+const LINE_Y = 118;
+const X0 = 44, X1 = 476;
+const SPAN = 1.25;               // the visible window is [-1.25, 1.25] of R
+const STAGE_Y = 196;
+const BAR_Y = 268, BAR_H = 22;
+const BAR_X0 = 44, BAR_X1 = 476;
+const TEST_LO = -0.5, TEST_HI = 0.5;
+
+let channel = 1;
+
+/* ---------- the countable dust: dyadic rationals, in enumeration order ---------- */
+const dust = [];
+for (let k = 1; k <= 9; k++) {
+  const m = Math.pow(2, k);
+  for (let j = -m; j <= m; j++) dust.push(j / m);
+}
+const TOTAL_DUST = dust.length;
+
+const STAGES = 8;               // finite stages 1..7 then the infinite stage
+const STAGE_MS = 620;
+
+function xOf(v) { return X0 + (v + SPAN) / (2 * SPAN) * (X1 - X0); }
+
+/* how many dust points are visible at a given stage */
+function visibleCount(stage) {
+  if (stage >= STAGES) return TOTAL_DUST;
+  return Math.min(TOTAL_DUST, Math.pow(2, stage));
+}
+
+function stageName(stage) {
+  if (stage >= STAGES) return '&#8734;';
+  return String(Math.pow(2, stage));
+}
+
+const CH = {
+  1: {
+    label: 'CH 1 &middot; countable dust &middot; MEASURE 0',
+    angle: -40,
+    proof: 'A <b>countable</b> family of null sets has a null union: ' +
+           '<code>countable_nothings_stay_nothing</code>. So the dust can pile up ' +
+           'forever &mdash; and the measure of the pile never budges off zero. ' +
+           '<code>countable_nothings_cover_no_interval</code> says the pile may be ' +
+           'dense (everywhere) yet never <em>cover</em> an interval.',
+    tag: 'PROVEN &middot; countable_nothings_stay_nothing',
+    tagclass: 'proven'
+  },
+  2: {
+    label: 'CH 2 &middot; all points &middot; MEASURE &#8734;',
+    angle: 40,
+    proof: 'Take <em>every</em> point instead: still all null singletons, but the ' +
+           'union is the whole line &mdash; <code>nothing_fills_everything</code> &mdash; ' +
+           'and its measure is infinite, <code>something_remains</code>. ' +
+           '<code>no_countable_filling</code> proves no countable family could ever ' +
+           'have done it.',
+    tag: 'PROVEN &middot; nothing_fills_everything',
+    tagclass: 'proven'
+  }
+};
+
+function drawGrid() {
+  ctx.strokeStyle = '#1d2733';
+  ctx.lineWidth = 1;
+  for (let v = -1; v <= 1.0001; v += 0.25) {
+    const x = xOf(v);
+    ctx.beginPath();
+    ctx.moveTo(x, LINE_Y - 34);
+    ctx.lineTo(x, LINE_Y + 26);
+    ctx.stroke();
+    ctx.fillStyle = '#4d5b6b';
+    ctx.font = '10px Consolas, monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText(v.toFixed(2).replace('0.00', '0').replace('0.25', '.25')
+                 .replace('0.50', '.5').replace('0.75', '.75')
+                 .replace('-0.25', '-.25').replace('-0.50', '-.5')
+                 .replace('-0.75', '-.75'), x, LINE_Y + 40);
+  }
+  ctx.strokeStyle = '#2a3a4d';
+  ctx.beginPath();
+  ctx.moveTo(X0, LINE_Y); ctx.lineTo(X1, LINE_Y);
+  ctx.stroke();
+  ctx.fillStyle = '#4d5b6b';
+  ctx.font = '10px Consolas, monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('a window of \u211D  \u2014  every dot is a null singleton', X0, LINE_Y - 44);
+}
+
+function drawDust(stage) {
+  const n = visibleCount(stage);
+  const isInfinity = stage >= STAGES;
+  for (let i = 0; i < n; i++) {
+    const x = xOf(dust[i]);
+    const y = LINE_Y + Math.sin(i * 12.9898) * 3.0;
+    if (channel === 2 && isInfinity) {
+      ctx.fillStyle = '#56d364';
+    } else {
+      ctx.fillStyle = isInfinity ? '#7fb3ff' : '#5b7fb3';
+    }
+    ctx.fillRect(x - 0.6, y - 0.6, 1.6, 1.6);
+  }
+  /* on CH 2 at the infinite stage the line itself is the union: draw it solid */
+  if (channel === 2 && isInfinity) {
+    ctx.strokeStyle = 'rgba(86,211,100,.85)';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.moveTo(xOf(-1.25), LINE_Y);
+    ctx.lineTo(xOf(1.25), LINE_Y);
+    ctx.stroke();
+  }
+  /* on CH 1 at the infinite stage the countable dust is dense: it looks solid,
+     and still measures nothing -- that is the whole point of the picture. */
+  if (channel === 1 && isInfinity) {
+    ctx.strokeStyle = 'rgba(127,179,255,.55)';
+    ctx.lineWidth = 1.6;
+    ctx.beginPath();
+    ctx.moveTo(xOf(-1.25), LINE_Y);
+    ctx.lineTo(xOf(1.25), LINE_Y);
+    ctx.stroke();
+  }
+}
+
+function drawStages(stage) {
+  ctx.textAlign = 'center';
+  ctx.font = '10px Consolas, monospace';
+  const n = 9;
+  const gap = (X1 - X0) / n;
+  for (let i = 0; i < n; i++) {
+    const x = X0 + gap * (i + 0.5);
+    const on = stage >= i;
+    ctx.fillStyle = on ? '#e3b341' : '#33404f';
+    ctx.fillText(stageName(i), x, STAGE_Y);
+  }
+  ctx.fillStyle = '#4d5b6b';
+  ctx.textAlign = 'left';
+  ctx.fillText('finite stages \u2192 \u221e', X0, STAGE_Y - 26);
+  ctx.textAlign = 'right';
+  ctx.fillStyle = '#6f8092';
+  ctx.fillText('every finite stage: measure 0', X1, STAGE_Y - 26);
+
+  /* the stage ladder: a bar whose height is the union measure */
+  const w = (X1 - X0);
+  const finite = Math.min(stage, STAGES - 1);
+  const bw = w * (finite / (STAGES - 1));
+  const isInfinity = stage >= STAGES;
+  ctx.fillStyle = '#33404f';
+  ctx.fillRect(X0, STAGE_Y + 10, w, 8);
+  if (channel === 1) {
+    ctx.fillStyle = '#5b7fb3';
+    ctx.fillRect(X0, STAGE_Y + 10, isInfinity ? w : bw, 8);
+  } else {
+    ctx.fillStyle = isInfinity ? '#56d364' : '#33404f';
+    ctx.fillRect(X0, STAGE_Y + 10, isInfinity ? w : bw, 8);
+  }
+}
+
+function drawCoverage(stage) {
+  const isInfinity = stage >= STAGES;
+  ctx.fillStyle = '#141a22';
+  ctx.fillRect(BAR_X0, BAR_Y, BAR_X1 - BAR_X0, BAR_H);
+  /* the test interval [TEST_LO, TEST_HI] drawn as a sub-bar */
+  const tx0 = xOf(TEST_LO), tx1 = xOf(TEST_HI);
+  ctx.strokeStyle = '#3a4a5c';
+  ctx.strokeRect(tx0, BAR_Y - 4, tx1 - tx0, BAR_H + 8);
+  ctx.fillStyle = '#1c2530';
+  ctx.fillRect(tx0, BAR_Y, tx1 - tx0, BAR_H);
+
+  const covered = (channel === 2 && isInfinity) ? 1 : 0;
+  if (covered) {
+    ctx.fillStyle = 'rgba(86,211,100,.75)';
+    ctx.fillRect(tx0, BAR_Y, tx1 - tx0, BAR_H);
+  } else {
+    /* countably many never cover: show the dust inside the interval, measure 0 */
+    ctx.fillStyle = 'rgba(91,127,179,.55)';
+    for (let i = 0; i < TOTAL_DUST; i++) {
+      if (dust[i] < TEST_LO || dust[i] > TEST_HI) continue;
+      if (!isInfinity && i >= visibleCount(stage)) continue;
+      const x = xOf(dust[i]);
+      ctx.fillRect(x - 0.6, BAR_Y + BAR_H / 2 - 0.6, 1.6, 1.6);
+    }
+  }
+  ctx.fillStyle = '#4d5b6b';
+  ctx.font = '10px Consolas, monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('measure of the covered part of [-0.5, 0.5]', BAR_X0, BAR_Y + BAR_H + 16);
+  ctx.textAlign = 'right';
+  ctx.fillStyle = covered ? '#56d364' : '#5b7fb3';
+  ctx.fillText(covered ? '1' : '0', BAR_X1, BAR_Y + BAR_H + 16);
+}
+
+function draw(t) {
+  ctx.fillStyle = '#000';
+  ctx.fillRect(0, 0, W, H);
+  const stage = Math.min(STAGES, Math.floor(t / STAGE_MS));
+
+  drawGrid();
+  drawDust(stage);
+  drawStages(stage);
+  drawCoverage(stage);
+
+  /* live readout inside the screen */
+  const isInfinity = stage >= STAGES;
+  ctx.textAlign = 'left';
+  ctx.font = '11px Consolas, monospace';
+  ctx.fillStyle = '#e3b341';
+  const head = 'stage ' + stageName(stage) + '  \u00b7  ' +
+    (isInfinity
+      ? (channel === 1 ? 'union = the dyadics' : 'union = \u211D')
+      : 'union = ' + visibleCount(stage) + ' null singletons');
+  ctx.fillText(head, X0, 30);
+  ctx.fillStyle = isInfinity && channel === 2 ? '#56d364' : '#7fb3ff';
+  ctx.font = 'bold 13px Consolas, monospace';
+  const meas = isInfinity
+    ? (channel === 1 ? 'volume(union) = 0' : 'volume(union) = \u221e')
+    : 'volume(union) = 0';
+  ctx.fillText(meas, X0, 50);
+}
+
+function setChannel(ch) {
+  channel = ch;
+  const meta = CH[ch];
+  chlabel.innerHTML = meta.label;
+  prooftext.innerHTML = meta.proof;
+  prooftag.innerHTML = meta.tag;
+  prooftag.className = 'tag ' + meta.tagclass;
+  knob.style.transform = 'rotate(' + meta.angle + 'deg)';
+  document.querySelectorAll('button[data-ch]').forEach(function (b) {
+    b.classList.toggle('on', b.getAttribute('data-ch') === String(ch));
+  });
+  updateReadout();
+}
+
+function updateReadout() {
+  const isInfinity = stageCur >= STAGES;
+  const covered = (channel === 2 && isInfinity) ? '1' : '0';
+  const meas = (channel === 2 && isInfinity)
+    ? '<span class="inf">&#8734;</span>'
+    : '<span class="hi">0</span>';
+  const fam = (channel === 1)
+    ? 'countable family (dyadic singletons)'
+    : 'the family of <i>all</i> singletons of &#8477;';
+  readout.innerHTML =
+    'stage <b>' + stageName(stageCur) + '</b> &middot; pieces: <b>null singletons</b><br>' +
+    'family: ' + fam + '<br>' +
+    'volume(union) = ' + meas + '<br>' +
+    'covered part of [-0.5, 0.5]: measure <b>' + covered + '</b><br>' +
+    (channel === 1
+      ? '<span class="hi">countable</span> &rarr; the accumulation <b>resolves</b> (value 0)'
+      : '<span class="inf">uncountable</span> &rarr; the accumulation <b>jumps</b> (no value in between)') +
+    (isInfinity && channel === 1
+      ? '<br><span class="hi">the picture is now identical to CH 2 &mdash; and still measures 0</span>'
+      : '') +
+    (isInfinity && channel === 2
+      ? '<br><span class="inf">nothing filled everything, and something remained</span>'
+      : '');
+}
+
+let stageCur = 0;
+const buttons = document.querySelectorAll('button[data-ch]');
+buttons.forEach(function (b) {
+  b.addEventListener('click', function () { setChannel(parseInt(b.getAttribute('data-ch'), 10)); });
+});
+setChannel(1);
+
+let t0 = null;
+function loop(ts) {
+  if (t0 === null) t0 = ts;
+  const elapsed = ts - t0;
+  const st = Math.min(STAGES, Math.floor(elapsed / STAGE_MS));
+  if (st !== stageCur) { stageCur = st; updateReadout(); }
+  draw(elapsed);
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>

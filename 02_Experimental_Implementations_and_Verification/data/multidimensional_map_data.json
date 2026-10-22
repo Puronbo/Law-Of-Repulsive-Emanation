@@ -1957,6 +1957,34 @@
    "detail": "—"
   },
   {
+   "id": "NothingFillsAll",
+   "label": "NothingFillsAll",
+   "kind": "module",
+   "category": "information-bridge",
+   "status": "machine-checked",
+   "depth": 1,
+   "tier": "",
+   "ndecls": 12,
+   "decls": [
+    "nothing_fills_everything",
+    "something_remains",
+    "the_whole_is_not_nothing",
+    "countable_nothings_stay_nothing",
+    "no_countable_filling",
+    "countable_nothings_cover_no_interval",
+    "the_filling_is_uncountable",
+    "every_finite_stage_is_nothing",
+    "finite_stages_never_reach_the_whole",
+    "nothing_at_finite_stages_everything_at_the_end",
+    "accumulation_resolves_countably_but_not_uncountably",
+    "nowhere_without_covering"
+   ],
+   "gaps": [],
+   "cards": "—",
+   "artifact": "01_Core_Mathematical_Framework_Lean/01_Lean/PunoCalculus/NothingFillsAll.lean",
+   "detail": "—"
+  },
+  {
    "id": "SelfSimilarExponents",
    "label": "SelfSimilarExponents",
    "kind": "module",
@@ -4451,6 +4479,10 @@
    "RemovableValue"
   ],
   [
+   "NothingFillsAll",
+   "NullAbundance"
+  ],
+  [
    "OnePattern",
    "GreatAttractor"
   ],
@@ -4647,10 +4679,10 @@
   ]
  },
  "counts": {
-  "modules": 92,
+  "modules": 93,
   "gaps": 39,
   "cards": 37,
-  "edges": 69,
-  "items": 168
+  "edges": 70,
+  "items": 169
  }
 }

@@ -18,7 +18,7 @@ that any Millennium obligation is discharged. See `WHAT_THIS_DOES_NOT_PROVE.md`.
 
 ## 1. The mesh (verified ↔ verified)
 
-The internal graph has **92 module nodes** and **69 directed edges**. An edge
+The internal graph has **93 module nodes** and **70 directed edges**. An edge
 `A -> B` is exactly an `import PunoCalculus.B` line in module `A` (self-edges and
 `import Mathlib` excluded). The block below is parsed by the checker; it must
 equal the imports actually present in the tree.
@@ -53,6 +53,7 @@ LiouvilleBridge -> RemovableComplexBridge
 Lehmer -> Factorization
 MillenniumBridge -> EcaIsometry
 NoUniversalResolve -> RemovableValue
+NothingFillsAll -> NullAbundance
 OnePattern -> GreatAttractor
 OrientationBoundedness -> GreatAttractor
 OrientationLaw -> OrientationBoundedness
@@ -124,13 +125,13 @@ The 38 card-carrying modules (the "verified findings" of this graph):
 | ZeroIndex | C19 | | |
 | ZeroMechanisms | C20 | | |
 
-The remaining 54 nodes are non-card modules (evidence carriers, not claims):
+The remaining 55 nodes are non-card modules (evidence carriers, not claims):
 `BSD`, `Basic`, `Beal`, `CascadeRatio`, `Collatz`, `Core`, `Cosmology.AcousticZeroFlow`,
 `Cosmology.OriginWindow`, `Crease`, `Curvature`, `EcaIsometry`, `ErdosMoser`,
 `EssentialIdentity`, `EulerPolynomial`, `Factorization`, `FiniteScan`, `FrontierCensus`, `Giuga`,
 `Goldbach`, `Hodge`, `InformationBridge`, `InformationMixture`, `InformationPhi`,
 `InformationTime`, `Legendre`, `Lehmer`, `MassGap`, `MillenniumBridge`, `NavierStokes`,
-`NoUniversalResolve`, `NullAbundance`, `NumberParity`, `ParabolaVertex`,
+`NoUniversalResolve`, `NothingFillsAll`, `NullAbundance`, `NumberParity`, `ParabolaVertex`,
 `PerfectNumbers`, `Poincare`, `PrimeGaps`, `PvsNP`, `RoleCollision`, `RH.Density`,
 `RH.Dominance`, `RH.Hankel`, `RH.LiCriterion`, `RH.Monotonicity`, `Removable`,
 `ShadowZeroZero`, `ShockleyQueisser`, `SolarBounds`, `StaticUncovered`, `TandemCells`, `TwinPrime`,

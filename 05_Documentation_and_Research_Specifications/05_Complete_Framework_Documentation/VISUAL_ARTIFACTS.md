@@ -1,8 +1,8 @@
 # Visual artifacts — the register rendered
 
-**Status: two self-contained HTML artifacts, both generated or hand-authored from
-kernel-checked material.**  Neither claims anything that the Lean tree does not
-already carry.  Both open in any browser with no server and no network access.
+**Status: three self-contained HTML artifacts, all generated or hand-authored from
+kernel-checked material.**  None claims anything that the Lean tree does not
+already carry.  All open in any browser with no server and no network access.
 
 ---
 
@@ -38,8 +38,8 @@ structure, not an artist's impression.  Click any point to open its panel: the
 Lean declarations it carries, the artifact path, the pins, and — for a gap — the
 barrier and the **missing object** (the thing that does not exist as a proof).
 
-**Current extent:** 92 modules, 39 gap rows, 37 cards, 69 real import edges,
-168 points.
+**Current extent:** 93 modules, 39 gap rows, 37 cards, 70 real import edges,
+169 points.
 
 **Regenerate:**
 
@@ -78,6 +78,43 @@ channel, not a fact.  The static is not a broken television — it is the honest
 signal that no value exists there, only the accumulation, and
 `StaticUncovered.lean` proves exactly what it is made of (the two turning-point
 families, both extremes recurring at every scale).
+
+---
+
+## 3. `CHANNEL_1_nothing_filling_everything_as_tv.html` — the countable hinge as a television
+
+**What it is.**  The screen is a window of `ℝ`.  Every dot on it is a **null
+singleton** — measure zero.  Two channels, and they differ in exactly one thing:
+how many dots you are allowed.
+
+| channel | the family | the union's measure |
+|---|---|---|
+| `CH 1 · countable dust` | a countable family of null singletons (the dyadics) | **0** |
+| `CH 2 · all points` | *every* singleton of `ℝ` | **∞** |
+
+**The animation is the theorem.**  The stage counter walks the finite stages
+`1, 2, 4, …, 128` — each one a pile of null singletons, each one measuring **0** —
+and then lands on `∞`, where the union jumps.  The two channels walk the *same*
+stages and end up drawing the *same picture*: a line that looks completely filled.
+**The pictures are indistinguishable; the readouts are not.**  That is the point.
+No pixel can report a cardinality, so the difference between "countably much
+nothing" and "everything" is invisible *by construction*.
+
+The second bar makes the same point in the other direction: the measure of the
+covered part of a test interval `[-0.5, 0.5]` stays **0** on CH 1 (countable
+nothing is *everywhere* — the rationals — but never *covers*) and becomes **1**
+on CH 2.
+
+**The theorems behind it** (`PunoCalculus.NothingFillsAll`):
+
+- `nothing_fills_everything` — the whole line **is** the union of its null singletons
+- `something_remains` — and its measure is `⊤`
+- `countable_nothings_stay_nothing` — countably many nothings stay nothing
+- `no_countable_filling` — so no countable family could have done it
+- `countable_nothings_cover_no_interval` / `nowhere_without_covering` — everywhere is not covering
+- `every_finite_stage_is_nothing` + `nothing_at_finite_stages_everything_at_the_end`
+  — nothing at every finite stage, everything at the end
+- `accumulation_resolves_countably_but_not_uncountably` — the hinge, stated once
 
 ---
 

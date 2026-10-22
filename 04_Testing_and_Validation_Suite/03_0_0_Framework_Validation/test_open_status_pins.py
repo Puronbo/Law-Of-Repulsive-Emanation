@@ -1182,4 +1182,32 @@ def test_static_uncovered_is_machine_checked():
     root = _lean("../PunoCalculus.lean")
     assert "import PunoCalculus.StaticUncovered" in root, (
         "root must import StaticUncovered")
-
+def test_nothing_fills_all_is_machine_checked():
+    """NothingFillsAll.lean: "nothing and something filling everything", in measure
+    theory.  Every point is null (nothing); the whole line IS the union of those
+    null singletons (nothing fills everything); yet the whole line has infinite
+    measure (something remains).  The hinge is COUNTABILITY: a countable union of
+    null sets is null, so no countable family of nothings can cover even one
+    interval -- the filling that does occur is uncountable.  And the accumulation
+    is essential, not removable: every finite stage is nothing while the infinite
+    stage is everything (nothing_at_finite_stages_everything_at_the_end)."""
+    src = _lean("NothingFillsAll.lean")
+    for decl in ("theorem nothing_fills_everything",
+                 "theorem something_remains",
+                 "theorem the_whole_is_not_nothing",
+                 "theorem countable_nothings_stay_nothing",
+                 "theorem no_countable_filling",
+                 "theorem countable_nothings_cover_no_interval",
+                 "theorem the_filling_is_uncountable",
+                 "theorem every_finite_stage_is_nothing",
+                 "theorem finite_stages_never_reach_the_whole",
+                 "theorem nothing_at_finite_stages_everything_at_the_end",
+                 "theorem accumulation_resolves_countably_but_not_uncountably",
+                 "theorem nowhere_without_covering"):
+        assert decl in src, "NothingFillsAll.lean is missing %r" % decl
+    assert "sorry" not in src, "NothingFillsAll.lean must not contain sorry"
+    assert "native_decide" not in src, (
+        "the certificate must be axiom-free (no native_decide)")
+    root = _lean("../PunoCalculus.lean")
+    assert "import PunoCalculus.NothingFillsAll" in root, (
+        "root must import NothingFillsAll")

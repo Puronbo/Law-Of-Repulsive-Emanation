@@ -361,8 +361,8 @@ material and neither claiming anything the Lean tree does not already carry:
 
 - **`MULTIDIMENSIONAL_MAP.html`** — the whole register as a rotating point cloud.
   Every point is a real repository item; every axis is a real attribute read from
-  the ledgers; the blue lines are the **actual** `import` edges.  92 modules,
-  39 gap rows, 37 cards, 69 edges.
+  the ledgers; the blue lines are the **actual** `import` edges.  93 modules,
+  39 gap rows, 37 cards, 70 edges.
 - **`CHANNEL_0_the_essential_singularity_as_tv.html`** — the 0/0 arc as a
   television set: the screen is the punctured neighbourhood, the dial is the
   path to `0`, and the three channels (`x/x`, `2x/x`, `sin(1/x)`) are the three
