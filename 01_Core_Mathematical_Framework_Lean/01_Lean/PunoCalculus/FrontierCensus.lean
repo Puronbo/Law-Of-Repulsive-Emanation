@@ -750,6 +750,59 @@ theorem rarity_ge_of_crease_bound (P Q : ℕ → Bool) (K : ℕ)
     calc M * (census N Q).length ≤ M * K := Nat.mul_le_mul_left M (hbound N)
       _ ≤ (census N P).length := hlin)
 
+/-! ### Layers: the "first layer of the infinite"
+
+"The first layer of infinite consciousness" is a role collision (the *first* of
+something with no first).  Three machine-checked statements pin this down: (1) an
+unbounded set has a *first* element only relative to a cut, never absolutely;
+(2) the windows form a chain with a bottom and no top; (3) therefore "the first
+layer" exists only relative to a chosen boundary -- the cut is the content. -/
+
+/-- **(1) The collision, made a theorem.**  An unbounded-above set has no maximal
+element: "the last layer of the infinite" is unsatisfiable.  (The mirror statement
+-- no least element of a set unbounded below -- is the same proof on `ℤ`.) -/
+theorem no_top_of_unbounded (S : Set ℤ) (h : ∀ m, ∃ n ∈ S, m < n) :
+    ¬ ∃ m ∈ S, ∀ n ∈ S, n ≤ m := by
+  rintro ⟨m, _, hmax⟩
+  obtain ⟨n, hnS, hlt⟩ := h m
+  exact absurd (hmax n hnS) (not_le.mpr hlt)
+
+/-- The integers themselves have no least element: "the first layer of all layers"
+in the absolute sense does not exist (`m - 1` is always lower). -/
+theorem ints_have_no_least : ¬ ∃ m : ℤ, ∀ n : ℤ, m ≤ n := by
+  rintro ⟨m, hm⟩
+  have := hm (m - 1); omega
+
+/-- **(2) The window chain: a bottom exists.**  `layer N` is the set of the first
+`N` values; `layer 1` is the bottom.  Topologically it is the minimal layer. -/
+def layer (N : ℕ) : Finset ℕ := Finset.range (N + 1)
+
+/-- Layers are monotone: a bigger window contains a smaller one. -/
+theorem layer_mono : Monotone layer := by
+  intro a b hab
+  simp only [layer, Finset.range_subset_range]; omega
+
+/-- **But there is no top**: for every layer `N` a strictly larger one exists --
+the chain is unbounded, so no layer is "the infinite" one. -/
+theorem layer_no_top : ∀ N, ∃ M, ¬ layer M ⊆ layer N := by
+  intro N
+  exact ⟨N + 2, by simp only [layer, Finset.range_subset_range]; omega⟩
+
+/-- **(3) The first element is relative to the cut.**  In *every* non-degenerate
+layer the least element is the same `0` -- there is no layer-relative way to
+produce a "first of the infinite".  The bottom (`0`) is fixed by the chosen cut,
+not discovered from outside. -/
+theorem layer_least_is_relative (N : ℕ) : ∀ x ∈ layer N, 0 ≤ x := by
+  intro x hx
+  simp only [layer, Finset.mem_range] at hx
+  omega
+
+/-- **The cut is the content.**  The bottom layer `layer 0` is the singleton `{0}`
+-- the origin, the least cut, containing only the point where every layer begins.
+It is the only layer whose "first element" is itself. -/
+theorem layer_0_is_singleton : layer 0 = {0} := by
+  simp [layer]
+
 /-- The three compiled creases have strictly positive crease fractions with
 *decreasing* rarity as the window's `lin` grows -- the quantitative content. -/
 theorem compiled_crease_fractions :
@@ -936,12 +989,13 @@ def frontierCensusFacts : List (String × String) :=
     ("self_crossing", "if the boundary (invariant lin) crosses itself: at a coincidence point the signed role count is +1 - 1 = 0 (self_crossing_index_zero -- the figure-eight winding cancels there, a local value collision, not a new object); and a FULL self-crossing (lin coincides with crease everywhere on the window) collapses to the diagonal (full_self_crossing_is_diagonal) and is impossible (no_full_self_crossing) -- so a valid crease is only ever a partial self-crossing, never a closed self-loop"),
     ("fold", "the fold that does not seal (the familiar hose/horizon picture): a Crease FOLDS at its coincidence points (foldSet_is_coincidence: the fold set is exactly the crease census; fold_is_nonempty: Wieferich folds, wieferich_folds) and never SEALS (fold_never_seals: the closed self-loop is no_full_self_crossing), leaving a strict gap (fold_leaves_gap: the leading census minus the fold is positive) -- it folds back on itself but does not collapse"),
     ("asymptotic", "the finite-crease skeleton of 'finitely many creases => lin/cre eventually infinite', with NO limit object: census_mono_step (the census is monotone in the window), crease_census_bounded_of_bound (a globally-bounded crease predicate -- finitely many creases -- has census length <= K on EVERY window, however wide), and rarity_ge_of_crease_bound (bounded creases + a leading census of >= M*K forces the rarity ratio >= M). So bounding the creases while lin grows past every bound forces the rarity past every M -- the finite-crease direction of the open universal, proved without a limit"),
+    ("layers", "'the first layer of infinite consciousness' is a role collision (the first of something with no first), pinned three ways: no_top_of_unbounded and ints_have_no_least (an unbounded set has no last/first element -- the collision is unsatisfiable), layer_mono + layer_no_top + layer_least_is_relative (the windows form a chain with a bottom 0, no top, so 'first' exists only relative to a chosen cut), layer_0_is_singleton (the bottom layer is {0}, the origin). The cut is the content"),
     ("monotone", "undershoot_nonneg_of_sub is structural: predicate-level containment gives non-negative undershoot on every window; containment_can_fail shows the containment itself can fail beyond the window -- the monotonicity is conditional, and its condition is the row's missing object"),
     ("scope_not_formal", "DEMOTION: the scope-narrowing claim (single-integer resolvent rows only) is NOT formalizable -- any non-full census admits the trivial lin (n >= 1), witness trivial_lin_crease_witness; 'content-bearing lin' is a naturalness judgement, not a Lean-checkable property"),
     ("prototype", "Wieferich (G32) is the prototype: first-order = odd prime, crease = 2^(p-1) = 1 mod p^2"),
     ("registry", "six census runs: Wieferich [1093,3511], Giuga [30,858,1722], Lehmer [], 2-Lehmer [561,...], Erdos-Moser [], Mersenne [2,3,5,7,13,17,19,31,61,89,107,127]"),
     ("open", "OPEN: the crease is not shown universal across all n; each row's universal claim (Giuga, Lehmer, Erdos-Moser uniqueness, Mersenne infinitude) stays open, and the synthesis is reviewed, not proved") ]
 
-theorem frontierCensusFacts_length : frontierCensusFacts.length = 19 := by decide
+theorem frontierCensusFacts_length : frontierCensusFacts.length = 20 := by decide
 
 end PunoCalculus.FrontierCensus

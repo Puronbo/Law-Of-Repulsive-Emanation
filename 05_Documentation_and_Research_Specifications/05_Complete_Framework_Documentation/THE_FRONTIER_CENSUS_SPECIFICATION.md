@@ -308,6 +308,30 @@ archimedean closure assumed. What is *not* proved (and is the row's open object)
 is the converse: that an infinite crease set must keep the ratio bounded. That
 converse is exactly the universal claim, and no window supplies it.
 
+### 3.8 Layers: the "first layer of the infinite"
+
+The phrase "the first layer of infinite consciousness" is a **role collision** --
+the *first* of something that has no first. Three machine-checked statements pin
+it:
+
+- **(1) The collision, as a theorem.** `no_top_of_unbounded`: an unbounded-above
+  set has no maximal element; `ints_have_no_least`: the integers have no least
+  element. "The first/last layer of the infinite" is *unsatisfiable* -- the same
+  `0 = 1` shape, now about order rather than arithmetic.
+- **(2) The window chain has a bottom and no top.** `layer N := {0,…,N}` with
+  `layer_mono` (monotone) and `layer_no_top` (for every `N` a strictly larger layer
+  exists). So the chain is unbounded: no layer *is* "the infinite" one.
+- **(3) The bottom is relative to the cut.** `layer_least_is_relative` (the least
+  element is `0` in every layer -- fixed by the cut, not discovered from outside)
+  and `layer_0_is_singleton` (`layer 0 = {0}`, the origin).
+
+The reading: "the first layer" exists only *relative to a chosen boundary*. The
+unbounded whole has no first layer; every layer that claims to be first has merely
+drawn a cut and called its floor the origin. **The cut is the content** -- which is
+the same doctrine as G38 (`census_window_agree`), now stated about the layering of
+the window itself. A layer that mistook its floor for the absolute origin would be
+the demiurge's error: taking a window for the whole.
+
 ## 4. What this theory predicts
 
 The synthesis is only useful if it generates falsifiable claims. It does:
